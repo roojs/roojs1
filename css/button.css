@@ -1,0 +1,175 @@
+
+
+/* ------------ BUTTON FONTS ------------------ */
+
+.x-btn
+{
+	font:normal 9px arial, tahoma, verdana, helvetica;
+	white-space: nowrap;
+    text-decoration:none !important;
+    color:black !important;
+    -moz-user-select: none;
+	-khtml-user-select: none;
+    cursor:pointer;
+    /** no sure **/
+    vertical-align: middle;
+    text-align:center;
+    border: 0px none;
+}
+/* override em (which is what the <button> is wrapped in) */
+.x-btn em
+{
+    font-weight: normal;
+    font-style: normal;
+}
+ 
+/* -------- BUTTON LEFT RIGHT MAKE SMALL */
+.x-toolbar .x-btn-left, 
+.x-toolbar .x-btn-right,
+
+.x-btn-left, 
+.x-btn-right
+{
+	font-size:1px;
+	line-height:1px;
+    width: 3px;
+}
+
+
+.x-btn-left i 
+.x-btn-right i 
+{
+    display: block;
+    overflow: hidden
+    width: 3px;
+    line-height: 1px;
+    font-size: 1px;
+    /*
+    padding: 0px;
+    margin: 0px;
+    */
+    
+}
+
+/* -------- BUTTON BACKGROUND IMAGE -------------- */
+.x-btn-left,
+.x-btn-center,
+.x-btn-right
+
+{
+    background-image :url(../images/default/basic-dialog/btn-sprite.gif);
+    background-repeat: no-repeat;
+    /* might have height, and padding / margin zero'd */
+    height:21px;
+    
+    
+}
+.x-btn-left
+{
+    background-position:0 0;
+}
+.x-btn-right
+{
+	background-position:0 -21px;
+}
+.x-btn-center
+{
+	background-position: 0 -42px;
+    background-repeat: repeat-x;
+    width:auto; 
+    /* ??? not sure **/
+    padding:0 5px;
+    
+}
+/* -------------------------- BUTTON OVER -------------------------- */
+.x-btn-over .x-btn-left
+{
+	background-position:0 -63px;
+}
+.x-btn-over .x-btn-right
+{
+	background-position:0 -84px;
+}
+.x-btn-over .x-btn-center
+{
+	background-position:0 -105px;
+}
+/* -------------------------- BUTTON CLICK -------------------------- */
+.x-btn-click .x-btn-left
+{
+	background-position:0 -63px; /* FIXME */
+}
+.x-btn-click .x-btn-right
+{
+	background-position:0 -84px; /* FIXME */
+}
+.x-btn-click .x-btn-center
+{
+	background-position:0 -126px;
+}
+
+/* -------------------------- BUTTON FOCUS -------------------------- */
+/* ??? any special settings ?? */
+ 
+/* -------------------------- BUTTON DISABLED -------------------------- */ 
+.x-btn .x-btn-disabled
+{
+	cursor:default;
+}
+.x-btn-disabled .x-btn-center
+{
+	color:gray;
+}
+/* -------------------------- BUTTON ELEMENT -------------------------- */ 
+.x-btn button {
+    font-size: 11px;
+    background: none;
+    cursor:pointer;
+    margin: 0px;
+    outline: none;
+    color: -moz-use-text-color;
+    overflow: visible;
+    width: auto;
+    border: 0px none;
+}
+.roo-gecko .x-btn button
+{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+/* -------------------------- BUTTON WITH ICONS  -------------------------- */ 
+.x-btn-text-icon .x-btn-center .x-btn-text
+{
+   background-position:0 2px; 
+    /* padding : 3px 0 2px 18px; */
+    padding : 0 0 2px 18px; 
+
+}
+/* -------------------------- BUTTON WITH MENUS  -------------------------- */ 
+button.x-btn-menu-arrow-el
+{
+    display: block;
+    background: url(../images/default/grid/sort_desc.gif) no-repeat scroll left 7px;
+}
+
+ 
+.x-btn-text-icon .x-btn-with-menu .x-btn-center em
+{
+    display: block;
+    background: url(../images/default/grid/sort_desc.gif) no-repeat scroll right 6px;
+}
+
+.x-btn-with-menu .x-btn-center em
+{
+    display: block;
+    /* ??? background: url(../images/default/grid/sort_desc.gif) no-repeat scroll right 3px */
+    padding-right: 14px;
+    
+}
+.x-btn-pressed .x-btn-center .x-btn-text
+{
+    /* padding : 3px 0 2px 18px; */
+    padding : 0 0 2px 0px; 
+}
+
+  

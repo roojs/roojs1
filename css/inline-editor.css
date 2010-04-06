@@ -1,0 +1,72 @@
+/*
+.yinline-editor {
+	border: 1px solid #a3bac9;
+	font: normal 11px arial,helvetica,sans-serif;
+	left: 0;
+	overflow: hidden;
+	padding: 1px 0 0 1px;
+	position: absolute;
+	top: 0;
+}
+.yinline-editor-multiline {
+	overflow: hidden;
+	padding: 0;
+	white-space: nowrap;
+}
+.yinline-editor-sizer {
+	font: normal 11px arial,helvetica,sans-serif;
+	left: -1000px;
+	padding: 3px;
+	padding-right: 6px;
+	position: absolute;
+	top: -1000px;
+	visibility: hidden;
+	white-space: nowrap;
+}
+.yinline-editor-wrap {
+	color: white;
+	overflow: auto;
+	position: absolute;
+	top: 0;
+	visibility: hidden;
+	z-index: 15002;
+}
+
+*/
+.x-html-editor-wrap
+{
+    background-color:#000;
+    border:1px solid #a3bac9;
+}
+
+/*-------- all the buttons -------*/
+
+.x-html-editor-tb .x-btn-text {
+    background:transparent url(../images/default/form/htmleditor.gif) no-repeat scroll 0% 0%;
+}
+.x-html-editor-tb  .x-btn-text { width: 18px; }
+/* all the rest are done with background offsets ( -16 height each one ) */
+
+
+.x-html-editor-tb .x-edit-bold .x-btn-text              { background-position: 0 0px; }
+.x-html-editor-tb .x-edit-italic .x-btn-text            { background-position: 0 -16px; } 
+.x-html-editor-tb .x-edit-underline .x-btn-text         { background-position: 0 -32px; } 
+.x-html-editor-tb .x-edit-increasefontsize .x-btn-text  { background-position: 0 -48px; } 
+.x-html-editor-tb .x-edit-decreasefontsize .x-btn-text  { background-position: 0 -64px; } 
+.x-html-editor-tb .x-edit-insertorderedlist .x-btn-text { background-position: 0 -80px; } 
+.x-html-editor-tb .x-edit-insertunorderedlist .x-btn-text { background-position: 0 -96px; } 
+.x-html-editor-tb .x-edit-justifyleft .x-btn-text       { background-position: 0 -112px; } 
+.x-html-editor-tb .x-edit-justifycenter .x-btn-text     { background-position: 0 -128px; } 
+.x-html-editor-tb .x-edit-justifyright .x-btn-text      { background-position: 0 -144px; } 
+
+.x-html-editor-tb .x-edit-forecolor .x-btn-text         { background-position: 0 -160px; } 
+.x-html-editor-tb .x-edit-backcolor .x-btn-text         { background-position: 0 -176px; } 
+.x-html-editor-tb .x-edit-sourceedit .x-btn-text        { background-position: 0 -192px; } 
+.x-html-editor-tb .x-edit-createlink .x-btn-text        { background-position: 0 -208px; } 
+
+
+.x-html-editor-tb .x-toolbar .x-btn {
+    margin-left:0px;
+    margin-right:0px;
+}
+  

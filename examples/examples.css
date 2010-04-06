@@ -1,0 +1,95 @@
+/*
+ * yui-ext
+ * Copyright(c) 2006, Jack Slocum.
+ */
+
+body {
+	font-family:verdana,tahoma,helvetica;
+	padding:20px;
+	font-size:13px;
+	background-color:#fff !important;
+}
+p {
+	margin-bottom:15px;
+}
+h1 {
+	font-size:large; 
+	margin-bottom:20px;
+}
+.example-info{
+	float:right;
+	width:150px;
+	border:1px solid #c3daf9;
+	border-top:1px solid #DCEAFB;
+	border-left:1px solid #DCEAFB;
+	background:#ecf5fe url('info-bg.gif') repeat-x;
+	font-size:10px;
+	padding:8px;
+}
+pre.code{
+	background: #F8F8F8;
+	border: 1px solid #e8e8e8;
+	padding:10px;
+	margin:10px;
+	margin-left:0px;
+	border-left:5px solid #e8e8e8;
+	font-size: 12px !important;
+	line-height:14px !important;
+}
+
+/** ---- for column tree --- */
+
+.x-column-tree .x-tree-node {
+    zoom:1;
+    
+}
+.x-column-tree .x-tree-node-el {
+    border-bottom:1px solid #eee; 
+     border-right: 1px solid #ccc;
+    zoom:1;
+}
+.x-column-tree .x-tree-selected {
+    background: #d9e8fb;
+}
+.x-column-tree  .x-tree-node a {
+    line-height:18px;
+    vertical-align:middle;
+}
+.x-column-tree  .x-tree-node a span{
+	
+}
+.x-column-tree  .x-tree-node .x-tree-selected a span{
+	background:transparent;
+	color:#000;
+}
+.x-column-tree .x-tree-col {
+    float:left;
+    overflow:hidden;
+    padding:0;
+    
+    border-left: 1px solid #ccc;
+    height: 18px;
+    zoom:1;
+}
+
+.x-column-tree .x-tree-col-text,.x-column-tree  .x-tree-hd-text {
+    overflow:hidden;
+    -o-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+    padding:3px 3px 3px 5px;
+    white-space: nowrap;
+    font:normal 11px arial, tahoma, helvetica, sans-serif;
+}
+
+.x-column-tree .x-tree-headers {
+    background: #EBEADB url(../../images/gray/grid/grid-hrow.gif) repeat-x scroll 0 0;
+	cursor:default;
+    zoom:1;
+}
+
+.x-column-tree .x-tree-hd {
+    float:left;
+    overflow:hidden;
+    border-left:1px solid #eee;
+    border-right:1px solid #d0d0d0;
+}

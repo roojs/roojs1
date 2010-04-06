@@ -1,0 +1,58 @@
+Changes since 1.1.1
+
+* Doc comments (to help doctool & compressor)
+ 
+Core
+* new Roo.factory method, honours xtype's, 
+* Quicktips no longer use semi-transparent shadows (need CSS/images)
+* Fixed issues with Safari DomHelper
+
+Tree
+* TreeLoader - New root property, to Make loader comaptible to return values for Stores
+* TreeLoader - if uiProvider.default is available it is used as the default provider
+* TreeLoader - queryPararm - value to query node on (default is  ?node=XXXX), you can set this to parent_id etc.
+* Column Tree - fixed up example Columned Tree and added it to Roo.
+
+Menus
+* Menu - new config item 'registerMenu' (default true) - enables you to turn off registering of menus
+  So they can stay open even if someone clicks elsewhere on the page.
+  
+Data
+* JsonReader - now has default values 'total', 'success', 'data' and 'id'
+* Store - supports xtype for reader, proxy
+* Store - can handle Json decoding / failure better, by issuing loadExceptions
+
+Grid
+* Grid - supports xtypes for selModel and dataSource
+* Grid - accepts a JS Object for colmodel, and calls new on ColumnModel for you.
+* EditorGrid - Allways fires afterEdit, even when content not changed.
+* ColumnModel - fixed CSS bugs by using Ext.id(), rather than column number for grid width CSS
+* ColumnModel -  findColumnIndex now public and documented.
+
+Form
+* ComboBox - supports xtype for store.
+* ComboBox - new property blockFocus - (used by borked HTML Editor at present)
+* FCKeditor - Added to core (requires installing FCK editor seperatly, no extra includes required though)
+* HTML Editor - currently rather broken in everything but firefox, but supports  
+	extra toolbars etc.
+* Hidden - new standard form element type.
+* Form - allItems property contains everything added to form
+* Form - findById - finds a form element by name.
+* Form - addxtype - add's xtype elements.
+
+Toolbar
+* Toolbar - fix layout in Chrome / Safari
+* Toolbar - new hide/show methods.
+* Toolbar fields property added so Form fields added to toolbars and found.
+
+
+CSS
+* Fixes for width of Calendar in Firefox
+
+
+FIXME's
+- Column Tree - needs better docs.
+- HTML Editor - is broken in IE/Safari - needs better solution than FCK
+
+ 
+

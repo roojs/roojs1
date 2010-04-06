@@ -1,0 +1,59 @@
+/**
+* This is not part of the lib - it's just for the docs..
+*
+*/
+
+.jsdoc-keyword,
+.jsdoc-syntax ,
+.jsdoc-comment ,
+.jsdoc-keyword ,
+.jsdoc-string ,
+.with-ident,
+.with-ident2,
+.jsdoc-var {
+    white-space: pre;
+    display:inline;
+    font-family:monospace;
+
+}
+
+.with-ident {
+    text-decoration: underline;
+   }
+.with-ident2 {
+    text-decoration: strikethrough;
+   }
+   
+.jsdoc-keyword {
+    color : black;
+    font-weight: bold;
+}
+
+.jsdoc-syntax {
+    color : green;
+}
+.jsdoc-comment {
+    color : brown;
+}
+
+
+.jsdoc-string {
+    color : red;
+}    
+
+.jsdoc-var {
+    color : blue;
+}
+
+
+body.highlightpage
+{
+    background:#F8F8F8 none repeat scroll 0% 0%;
+    border-color:#ccc;
+    border-style:solid;
+    border-width:1px 1px 1px 5px;
+    font-size:12px !important;
+    line-height:14px !important;
+    margin:10px 10px 10px 10px;
+    padding:10px;
+}

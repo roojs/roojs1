@@ -1,0 +1,264 @@
+/* Form CSS - based on details in form_design.svg  */
+
+
+/* ---------------------- LABELS --------------------- */
+.x-form-item label
+{
+    clear:left;
+    display : block;
+    float : left;
+    padding-left: 0px;
+    padding-right: 3px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    position: relative;
+    z-index: 2;
+}
+
+.x-form-label-right
+{
+    align: right;
+}
+
+.x-form-label-top .x-form-item label
+{
+    clear: none;
+    float: none;
+    display: inline;
+    position: static;
+    margin-bottom: 2px;
+    width: auto;
+}
+
+/* ---------------------- FONTS --------------------- */
+/* --- move to a more generic place... ---*/
+.x-form-item,
+.x-form-text,
+.x-combo-list
+{
+    font: normal 11px tahoma, verdana, helvetica;
+}
+
+/* ---------------------- FORM ITEM/ELEMENT/TEXT WRAPPING --------------------- */
+.x-form-item {
+    display : block;
+    margin-bottom: 4px;
+}
+
+.x-form-element {
+    padding-left : 100px;
+    position: relative;
+}
+.x-form-field
+{
+    margin: 0px;
+    
+}
+.x-form-text 
+{
+    height: 20px;
+    line-height: 18px;
+    vertical-align: middle;
+    background: url(../images/default/form/bg.gif) repeat-x 0 0;  
+   
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+/* -- border around text elements */
+.x-form-text,
+.x-form-textarea,
+.x-html-editor-wrap
+{    
+ border: solid 1px black;
+}
+.x-form-field-wrap
+{
+    position: relative;
+    whitespace: nowrap;
+}
+
+asdffff
+/* gecko specific fix */
+
+}
+.roo-ie .roo-strict .x-form-text,
+.roo-ie .x-form-text
+{
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: -1px;
+    height: 22px;
+}
+
+.roo-ie .x-toolbar .x-form-text
+{
+    
+    padding-top: 0px;
+    padding-left: 2px;
+    height: 18px !important;
+}
+
+
+.roo-ie .x-form-date-trigger,
+.roo-ie .x-form-arrow-trigger 
+{
+    margin: 0px;
+    margin-top: 1px;
+    height: 20px !important;
+}
+
+/** some kind of kludge for the combo demo */
+.roo-gecko .roo-strict .x-form-text {
+    height:18px;
+}
+
+.roo-gecko .x-form-item .x-form-text {
+    height:18px;
+}
+.roo-gecko .x-form-text {
+    height:18px;
+    padding-top: 2px;
+    padding-bottom: 0px;
+}
+
+/* ---------------------- FORM INVALID --------------------- */
+
+.x-form-invalid-icon 
+{
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 16px;
+    width: 16px;
+    visibility: hidden;
+    /* need a nice icon for this */
+    background: url(../images/default/tree/drop-no.gif) no-repeat 0 0;
+    
+}
+.x-form-invalid
+{
+    
+    background: url(../images/default/grid/invalid_line.gif) repeat-x 0 16px;
+    border: 1px solid red;
+}
+textarea.x-form-invalid
+{
+    background: none;
+    
+}
+
+
+/* ---------------------- FORM LINE CLEARER  --------------------- */
+
+.x-form-clear-left ,
+.x-form-clear,
+{
+    font-size: 0px;
+    height: 0px;
+    line-height: 0px;
+    overflow: hidden;
+}
+.x-form-clear-left
+{
+    clear: left;
+}
+.x-form-clear
+{
+    clear: both;
+}
+
+/* ---------------------- FORM COLUMNS --------------------- */
+
+.x-form-column
+{
+    float: left;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    width: 47%;
+    
+}
+
+/* ---------------------- FORM FIELDSETS --------------------- */
+
+
+.x-form fieldset
+{
+    border: 1px solid #ccc;
+    padding-top: 12px;
+    padding-left: 12px;
+    padding-bottom: 16px;
+    
+    
+}
+
+
+/* ---------------------- FORM CHECKBOXES --------------------- */
+
+.x-form-cb-label
+{
+    clear :none !important;
+    float: none !important;;
+    display: inline !important;;
+    margin-left: 4px;
+}
+
+/* ---------------------- FORM COMBOS --------------------- */
+
+/** -- see also the combo.css */
+
+.x-form-field-wrap .x-form-trigger {
+     
+     cursor: pointer;
+     border-left: 0px solid;
+     
+     position: absolute;
+     
+     top:0px;
+     background:url(../images/default/combo/arrow.gif); /* arrow image, 15x15px */
+     background-repeat:no-repeat;
+     background-position:center; /* centers image in div, creating 1px white border effect */
+}
+
+
+
+/* ---------------------- FORM BUTTON BAR --------------------- */
+
+.x-form .x-form-btns-ct .x-form-btns-center {
+    text-align: center;
+}
+.x-form .x-form-btns-ct .x-form-btns-center table {
+    margin: 0px auto;
+}
+
+.x-form .x-form-btns-ct   .x-form-btns td.x-form-btn-td {
+    padding: 3px;
+}
+
+.x-form .x-form-btns-ct .x-form-btns td  {
+    border: 0px;
+    padding: 0px;
+}
+
+.x-form .x-form-btns-ct .x-btn {
+    clear: none;
+    float: right;
+}
+
+/* ---------------------- FORM RESIZE CALC TRICK --------------------- */
+.x-form-grow-sizer
+{
+    position: absolute;
+    top: -10000px;
+    left: -10000px;
+    visibility: hidden;
+}
+
+
+
+
+
+

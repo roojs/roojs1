@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<response success="false">
+    <errors>
+      <field>
+        <id>last</id>
+        <msg><![CDATA[ something wrong with the last name]]></msg>
+      </field>
+          <field>
+        <id>company</id>
+        <msg><![CDATA[ you can put some <B>HTML</B> in the error ]]></msg>
+      </field>
+    
+   </errors>
+</response>

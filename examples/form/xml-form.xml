@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<response success="true">
+    <contact>
+      <name>
+         <first>Fred</first>
+         <last>Blogs</last>
+      </name>
+      <company>RooJS</company>
+      <email>test@example.com</email>
+      <state>NZ</state>
+      <dob>01/01/2001</dob>
+   </contact>
+</response>

@@ -1,0 +1,250 @@
+/*** DATE AND COLOR PICKER **/
+
+
+
+/* ------------------- DATE --------------------- */
+x-date
+{
+	background: white;
+	padding:2px;
+	border: 1px solid gray;
+	z-index:12001;
+	-moz-outline:none;
+	position:absolute;
+	display:none;
+	top:0;
+	left:0;
+}
+.x-date-shadow {
+	background: #dddddd;
+	filter: progid:DXImageTransform.Microsoft.Blur(MakeShadow=true,pixelradius=1) Alpha(opacity=35,style=1,startX=0,finishX=200,FinishOpacity=35);
+	padding: 0;
+	position:absolute;
+	z-index:12000;
+	display:none; 
+	top:0; 
+	left:0;
+}
+.x-date-head{
+	width:150px;
+	background: #93b5e4;
+}
+.x-date-head td{
+	padding:1px;
+}
+.x-date-month{
+	color: white;
+	font: bold 7pt verdana;
+	text-decoration: none;
+	text-align:center;
+}
+.x-date-head .x-date-arrow{
+	width:16px;
+	text-align:center;
+	cursor:pointer;
+	-moz-user-select: none;
+}
+
+
+.x-date-picker {
+	background: #ccc;
+    width: 190px;
+	/* border-bottom: 1px solid #cccccc; */
+}
+.x-date-picker tr{
+	
+}
+.x-date-picker td{
+	/*
+    box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	border: 1px solid white;
+	*/
+	color:#aaaaaa;
+	cursor:pointer;
+	font:normal 8pt arial;
+	/*
+	padding:1px 2px; */
+	/* width:12px;
+	height:12px;
+    */
+    
+}
+
+td.x-date-middle
+{
+    background: url(../images/default/basic-dialog/hd-sprite.gif); 
+}
+td.x-date-middle td
+{
+    background: none; 
+    color: #000;
+    font-weight: bold;
+}
+td.x-date-right ,
+td.x-date-left
+{
+    background: url(../images/default/basic-dialog/hd-sprite.gif) repeat-x 0 0;  
+    text-align: center;
+    width: 18px;
+}
+
+td.x-date-right a {
+	/* width:16px; */
+	background: url(../images/default/grid/arrow-right-white.gif) no-repeat right center;
+	cursor:pointer;
+    text-decoration: none;
+}
+td.x-date-left a {
+	/* width:16px; */
+	background: url(../images/default/grid/arrow-left-white.gif)  no-repeat 0 center;
+	cursor:pointer;
+    text-decoration: none;
+}
+.x-date-inner {
+    background-color: white; 
+    /* width: 100%; */
+    position: relative;
+    text-align: center;
+    display: block;
+    overflow:hidden;
+    border-collapse:separate;
+
+}
+table.x-date-inner {
+    table-layout:fixed;
+    width: 100%;
+}
+
+
+.x-date-inner td {
+    width:26px;
+    height:26px;
+    border-collapse:separate;
+}
+.x-date-mp a,
+.x-date-inner a 
+{
+    text-decoration: none;
+    font-weight: bold;
+    color: #000;
+}
+
+.x-date-picker td.x-date-today {
+	border: 1px solid darkred;
+}
+.x-date-picker .x-date-inner th{
+	text-align:center !important;
+	border:0;
+	border-bottom: 1px solid #cccccc;
+	font-size: 8pt;
+	font-weight: normal;
+	text-align:right;
+	color:black;
+	cursor:default;
+}
+.x-date-picker td.active{
+	cursor:pointer;
+	color:black;
+}
+.x-date-picker td.x-date-disabled{
+	cursor:default;
+	background:#eeeeee;
+	border: 1px solid #eeeeee;
+	color:#bbbbbb;
+}
+
+.x-date-mp td.x-date-mp-sel,
+
+.x-date-picker td.x-date-selected{
+	background: #ddecfe;
+	border: 1px solid #c3daf9;
+}
+.x-date-today{
+	color: black;
+	cursor: hand;
+	/* display: inline-block; */
+	font: normal 8pt arial;
+	/* margin-left: 2px;  */
+	text-decoration: none;
+    
+	/* margin-top:2px; */
+}
+
+ 
+.x-date-prevday,
+.x-date-nextday {
+    background-color: #aac;
+}
+/* the month/year pulldown */
+.x-date-mp {
+    background-color: #ccc;
+    
+    display: none;
+    position: absolute;
+    top: 0;
+    left 0;
+     
+}
+.x-date-mp table {
+   text-align: center;
+    background-color: #fff;
+    
+}
+.x-date-picker td.x-date-middle td.x-btn-center button {
+    color: white;
+}
+
+
+
+/* ------------------- COLOR PICKER --------------------- */
+
+
+.x-menu-plain .x-color-palette,
+.x-menu-plain .x-date-picker
+{
+    border: none;
+    margin : 0px;
+}
+
+
+.x-menu .x-color-palette,
+.x-menu .x-date-picker
+{
+    margin-left: 32px;
+    margin-right: 4px;
+    
+}
+.x-color-palette
+{
+    pointer: pointer;
+    width: 150px;
+    height: 92px;
+}
+
+.x-color-palette a
+{
+    border: 1px solid white;
+    pointer: pointer;
+    float: left;
+    padding: 2px;
+    text-decoration: none;
+    outline: white none 0;
+}
+
+.x-color-palette em span
+{
+    pointer: pointer;
+    display: block;
+    width: 10px;
+    height: 10px;
+    line-height: 10px;
+
+}
+.x-color-palette em
+{
+    
+    display: block;
+    border: 1pt solid black;
+}
+

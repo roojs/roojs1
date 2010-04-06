@@ -1,0 +1,504 @@
+
+/** unknown styles from new grid **/
+
+/*
+.x-layout-grid-wrapper
+
+
+.x-grid-container
+
+
+.x-grid
+*/
+.x-grid {
+    background-color:#FFFFFF;
+    position:relative;
+    overflow:hidden;
+    
+}
+
+.x-grid-locked,
+.x-grid-viewport
+{
+    
+    position: absolute;
+    display: block;
+    z-index: 2;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+}
+ .x-grid-scroller {
+    overflow: auto;
+}
+     
+
+.x-grid-hd-text {
+	font-size: 8pt;
+    padding-left: 6px;
+}
+.x-grid-hd-text,
+.x-grid-cell-text {
+	display: block;
+	overflow: hidden;
+	padding: 3px 5px;
+    /* stops jumping? */
+    -moz-user-select: none;
+/*	white-space: nowrap; */
+}
+.x-grid-col{
+	cursor: default;
+	height:21px !important;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+/*	position:absolute; 
+	display:block;
+    */
+	-moz-outline: none;
+	-moz-user-focus: normal;
+	overflow: hidden;
+	border-left: 1px solid #f1efe2;
+}
+.x-edit-grid .x-grid-col{
+	-moz-outline: normal;
+}
+.x-grid-col, .x-grid-header {
+	-o-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+}
+.x-grid-col-0{
+	border-left: 0;
+}
+.x-grid-col-last{
+	border-right: 1px solid #f1efe2;
+}
+.x-grid-editor {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	/* position:absolute; */
+	/* visibility:hidden; */
+	font: normal 8pt arial;
+	border: 1px solid #afbdc9;
+	z-index:10;
+}
+.x-grid-editor input{
+	font: normal 8pt arial;
+	border: 0;
+	padding-top:2px;
+	padding-left:3px;
+    height: 18px;
+}
+.x-grid-editor-container{
+	overflow:hidden;
+	display:block;
+	background-color:white;
+}
+.x-grid-editor .pick-button{
+	width:15px;
+	height:20px;
+	position:absolute;
+	display:block;
+	right:0;
+	top:0;
+	z-index:2;
+	background-image: url(../images/default/grid/pick-button.gif);
+	background-repeat: no-repeat;
+}
+.x-grid-editor-invalid{
+	background-image: url(../images/default/grid/invalid_line.gif);
+	background-repeat: repeat-x;
+	background-position: bottom;
+	border: 1px solid #afbdc9;
+}
+.x-grid-checkbox-editor{
+	text-align: center;
+	overflow:hidden;
+	display:block;
+	background-color:white;
+}
+.x-grid-checkbox-editor input{
+	margin-top:3px;
+	height:13px;
+	width:13px;
+}
+select.x-grid-editor{
+	padding: 0;
+	-moz-outline: none;
+	border: 1px solid #afbdc9;
+}
+.x-grid-num-editor{
+	text-align:right;
+	padding-top:2px;
+	padding-left:3px;
+}
+.x-grid-text-editor{
+	padding-top:2px;
+	padding-left:3px;
+}
+.x-grid-header {
+	font: normal 8pt arial;
+	background-color: #ebeadb;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	display: block;
+	position: absolute;
+	overflow:hidden;
+    width: 100%;
+    height: 22px;
+    border-bottom: 1px solid #333;
+    cursor: pointer;
+}
+.x-grid-column-sizer {
+	width:1px;
+	border-right:1px dashed #6593cf;
+	background:none;
+	cursor: col-resize;
+}
+.x-grid-drag-proxy{
+	width:150px;
+	height:24px;
+	background-color:#3366cc;
+	border: 1px solid #002266;
+	position:absolute;
+	visibility:hidden;
+	z-index:10000;
+}
+.x-grid-drag-text{
+   font: normal 8pt arial;
+	color:white;
+	position:absolute;
+	top:0;
+	left:26px;
+	padding:3px;
+	display:block;
+}
+.x-grid-drop-icon{
+   position:absolute;
+	top:0;
+	left:0;
+	display:block;
+	width:24px;
+	height:100%;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.x-grid-drop-nodrop{
+   background-image: url(../images/default/grid/drop-no.gif);
+}
+.x-grid-drop-ok{
+   background-image: url(../images/default/grid/drop-yes.gif);
+}
+
+.x-grid-hd-row img.x-grid-sort-icon {
+    height: 4px;
+	width: 13px;
+    border: 0;
+    margin-left: 4px;
+    vertical-align: middle;
+    
+}
+.x-grid-hd-row .sort-asc img.x-grid-sort-icon {
+	background-image: url(../images/default/grid/sort_asc.gif);
+	background-position: right;
+	background-repeat: no-repeat;
+	/* display: none; */
+ 
+}
+.x-grid-hd-row .sort-desc img.x-grid-sort-icon {
+	background-image: url(../images/default/grid/sort_desc.gif);
+	background-position: right;
+	background-repeat: no-repeat;
+	/* display: none; */
+ 
+}
+.x-grid-hd-body {
+	cursor: default;
+	display: block;
+	font: normal 8pt arial;
+	left: 0;
+	overflow: hidden;
+	padding: 3px 5px;
+	position: relative;
+	top: 0;
+	white-space: nowrap;
+}
+.x-grid-hd-body span {
+	font: normal 8pt arial;
+	white-space: nowrap; 
+}
+.x-grid-hd-over{
+	border-bottom: 2px solid #fcc247;
+}
+.x-grid-hd-over .x-grid-hd-body{
+	background-color: #faf9f4;
+	border-bottom: 1px solid #f9a900;
+}
+.x-grid-split {
+	background-image: url(../images/default/grid/grid-split.gif);
+	background-position: center;
+	background-repeat: no-repeat;
+	cursor: e-resize;
+	display: block;
+	font-size: 1px;
+	height: 16px;
+	overflow: hidden;
+	position: absolute;
+	top: 2px;
+	width: 6px;
+	z-index: 3;
+}
+.x-grid-hrow{
+	background: #ebeadb url(../images/default/grid/grid-hrow.gif) repeat-x;
+	display: block;
+	height: 22px;
+	left: 0;
+	position: relative;
+	top: 0;
+	width: 10000px;
+	overflow:hidden;
+	z-index:2;
+}
+.x-grid-hrow-frame{
+	height: 22px;
+	left: 0;
+	display:block;
+	position: absolute;
+	top: 0;
+	width: 10000px;
+	z-index:1;
+}
+.x-grid-footer .x-toolbar{
+	border:0;
+}
+.x-grid-page-number{
+	width:24px;
+	height:14px;	
+}
+
+ 
+.x-grid-page-first button {
+	background: url(../images/default/grid/page-first.gif) no-repeat;
+    width:16px;
+}
+.x-grid-loading button {
+	background: url(../images/default/grid/done.gif) no-repeat;
+    width:16px;
+}
+.x-grid-page-last button {
+	background: url(../images/default/grid/page-last.gif) no-repeat;
+    width:16px;
+}
+.x-date-mp-next,
+.x-grid-page-next button 
+{
+	background: url(../images/default/grid/page-next.gif) no-repeat;
+    width:16px;
+}
+.x-date-mp-prev,
+.x-grid-page-prev button 
+{
+	background: url(../images/default/grid/page-prev.gif) no-repeat;
+    width:16px;
+}
+.x-date-mp-prev, 
+.x-date-mp-next
+{
+    display: block;
+    width: 16px;
+    height: 16px;
+}
+    
+
+
+.x-item-disabled .x-grid-loading button {
+	background: url(../images/default/grid/loading.gif) no-repeat;
+}
+.x-item-disabled .x-grid-page-first button {
+	background: url(../images/default/grid/page-first-disabled.gif) no-repeat;
+}
+.x-item-disabled .x-grid-page-last button {
+	background: url(../images/default/grid/page-last-disabled.gif) no-repeat;
+}
+.x-item-disabled .x-grid-page-next button {
+	background: url(../images/default/grid/page-next-disabled.gif) no-repeat;
+}
+.x-item-disabled .x-grid-page-prev button {
+	background: url(../images/default/grid/page-prev-disabled.gif) no-repeat;
+}
+.x-grid-mso{
+}
+.x-grid-mso .x-grid-header{
+	background:none;
+	border-bottom:0;
+}
+.x-grid-mso .x-grid-footer {
+	border-top: 1px solid #6593cf;
+}
+
+.x-grid-mso .x-grid-footer .x-grid-fbutton{
+	border:0;
+}
+.x-grid-mso .x-grid-hd-body {
+	border-bottom:0;
+}
+.x-grid-mso .x-grid-hd-over{
+	border-bottom:0;
+}
+.x-grid-mso .x-grid-hd-over .x-grid-hd-body{
+	background-color: transparent;
+}
+.x-grid-mso .x-grid-split {
+	background-image: url(../images/default/grid/grid-blue-split.gif);
+}
+.x-grid-mso .x-toolbar .x-tb-sep {
+	background-image: url(../images/default/grid/grid-blue-split.gif);
+}
+.x-grid-mso .x-grid-hrow{
+	background: url(../images/default/grid/mso-hd.gif);
+	border-bottom: 1px solid #6593cf;
+	height: 21px;
+}
+.x-grid-mso .x-grid-row{
+	color: black;
+	border-bottom: 1px solid #ddecfe;
+}
+.x-grid-mso .x-grid-row-alt{
+	background-color: #f5f5f5;
+}
+.x-grid-mso .x-grid-row-selected{
+	background-color: #b3c8e8  !important;
+	color: black;
+}
+.x-grid-mso .x-grid-row-selected span{
+	color: black !important;
+}
+.x-props-grid .x-grid-col-1{
+	 background-color: #f1efe2;
+}
+.x-props-grid .x-grid-col-1 .x-grid-cell-text{
+	 background-color: white;
+}
+.x-props-grid .x-grid-col-0{
+	 background-color: #f1efe2;
+}
+.x-props-grid .x-grid-col-0 .x-grid-cell-text{
+	 background-color: white;
+	 margin-left:10px;
+}
+.x-props-grid .x-grid-prop-edting .x-grid-col-0 .x-grid-cell-text{
+	 background-color: #316ac5;
+	 color: white;
+}
+.x-props-grid .x-grid-prop-edting .x-grid-col-0{
+	 color: white;
+}
+.x-props-grid .x-grid-num-editor{
+	text-align:left;
+}
+.x-grid-row td,
+.x-grid-hd-row td
+{
+	font: normal 8pt arial;
+	border-bottom: 1px solid #f1efe2;
+	overflow: visible;
+	white-space: nowrap;
+	/* height:21px; */
+	/* width:10000px; */
+	/* box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	display:block;
+    */
+	/* position:absolute; */
+}
+.x-grid-row-alt{
+	background-color: #fcfaf6;
+}
+.x-grid-row-over{
+	background-color: #f1f1f1;
+	color: black;
+}
+.x-grid-row-selected{
+	background-color: #316ac5 !important;
+	color: white;
+}
+.x-grid-row-selected span{
+	color: white !important;
+} 
+/* 
+  To have the scrollbars overlap the header, change .x-grid-wrap top style to 0 and 
+  and ygrid-wrap-body top to 22px
+  Then grid.getView().scrollbarMode = YAHOO.ext.grid.GridView.SCROLLBARS_OVERLAP;
+ */
+.x-grid-body {
+	height: 100%;
+	left: 0;
+	overflow: hidden;
+	position: relative;
+	top: 22px;
+	/* width: 100%; */
+}
+.x-grid-footer{
+	display: block;
+	padding:0;
+	border-top: 1px solid #cbc7b8;
+}
+.x-grid-wrap-footer {
+	display: block;
+	overflow: hidden;
+	width:100%;
+	height:25px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	background-color: #ebeadb;
+	position:absolute;
+	bottom:0;
+}
+.x-grid-wrap-body {
+	left: 0;
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	display: block;
+}
+.x-grid-wrap-headers {
+	left: 0;
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	z-index: 12;
+}
+
+
+
+.x-grid-simple-view .x-grid-col{
+	 height:100% !important;
+	 position:static;
+	 display:table-cell;
+	 display:inline-block;
+}
+.x-grid-simple-view .x-grid-row{
+	 position:static; 
+	 display: table-row;
+}
+
+ /* -----------------------   PAGING ---------------------- */
+ 
+ .x-paging-info
+ {
+     position: absolute;
+     right: 7px;
+     top: 7px;
+}
+
+.x-grid-topbar, .x-grid-bottombar
+{
+    line-height: 0px; 
+    display: none;
+    
+}
+/* --- checkbox wrapping hides background -- */
+.x-grid-editor .x-form-check-wrap {
+    background-color:#FFFFFF;
+    padding: 2px 0px;
+    
+} 

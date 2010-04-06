@@ -1,0 +1,9 @@
+
+#// in top level directory..
+
+mjslite buildSDK/bundle_build.js -L/usr/src/gtkDS/examples/jstoolkit2/ -- buildSDK/dependancy_order.txt
+
+#// for the docs..
+
+mjslite buildSDK/docs_build.js -L/usr/src/gtkDS/examples/jstoolkit2/
+

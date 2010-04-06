@@ -1,0 +1,272 @@
+/** 
+* Basic-Dialog 
+*/
+.x-dlg-proxy {
+	background-image: url(../images/gray/layout/gradient-bg.gif);
+	background-color:#EAE8D5;
+	border:1px solid #b3b6b0;
+}
+.x-dlg-shadow{
+	background:#aaaaaa;
+}
+.x-dlg-proxy .tabset{
+    background:url(../images/gray/layout/gradient-bg.gif);
+}
+.x-dlg .x-dlg-header {
+	background: url(../images/gray/basic-dialog/hd-sprite.gif) repeat-x 0px -82px;
+	background-color:#333333;
+}
+.x-dlg .x-dlg-header-left {
+	background: url(../images/gray/basic-dialog/hd-sprite.gif) no-repeat 0px -41px;
+}
+.x-dlg .x-dlg-header-right {
+	background: url(../images/gray/basic-dialog/hd-sprite.gif) no-repeat right 0px;
+}
+.x-dlg .x-dlg-dlg-body{
+	background:#efefec;
+	border:1px solid #b3b6b0;
+	border-top:0px none;
+}
+.x-dlg .x-tabs-top .roo-tabbody{
+	border:1px solid #b3b6b0;
+	border-top:0px none;
+}
+.x-dlg .x-tabs-bottom .roo-tabbody{
+	border:1px solid #b3b6b0;
+	border-bottom:0px none;
+}
+.x-dlg .x-layout-container  .roo-tabbody{
+	border:0px none;
+}
+.x-dlg .x-dlg-close {
+	background-image:url(../images/gray/basic-dialog/close.gif);
+}
+.x-dlg div.x-resizable-handle-east{
+	background-image:url(../images/gray/basic-dialog/e-handle.gif);
+	border:0px none;
+}
+.x-dlg div.x-resizable-handle-south{
+	background-image:url(../images/gray/basic-dialog/s-handle.gif);
+	border:0px none;
+}
+.x-dlg div.x-resizable-handle-west{
+	background-image:url(../images/gray/basic-dialog/e-handle.gif);
+	border:0px none;
+}
+.x-dlg div.x-resizable-handle-southeast{
+	background-image:url(../images/gray/basic-dialog/se-handle.gif);
+	background-position: bottom right;
+	width:8px;
+	height:8px;
+	border:0px;
+}
+.x-dlg div.x-resizable-handle-southwest{
+	background-image:url(../images/gray/sizer/sw-handle-dark.gif);
+	background-position: top right;
+	margin-left:1px;
+	margin-bottom:1px;
+	border:0px;
+}
+.x-dlg div.x-resizable-handle-north{
+	background-image:url(../images/gray/s.gif);
+	border:0px none;
+}
+
+/** 
+* Tabs
+*/
+.x-tabs-wrap {
+	border-bottom:1px solid #aca899;
+}
+.x-tabs-strip .on .x-tabs-text {
+	cursor:default;
+	color:#333333;
+}
+.x-tabs-top .x-tabs-strip .on .x-tabs-right {
+	 background: url(../images/gray/tabs/tab-sprite.gif) no-repeat right 0px;
+}
+.x-tabs-top .x-tabs-strip .on .x-tabs-left {
+	 background: url(../images/gray/tabs/tab-sprite.gif) no-repeat 0px -100px;
+}
+.x-tabs-top .x-tabs-strip .x-tabs-right {
+	 background: url(../images/gray/tabs/tab-sprite.gif) no-repeat right -50px;
+}
+.x-tabs-top .x-tabs-strip .x-tabs-left {
+	 background: url(../images/gray/tabs/tab-sprite.gif) no-repeat 0px -150px;
+}
+.x-tabs-strip .x-tabs-closable .close-icon{
+	background-image:url(../images/gray/layout/layout-sprite.gif);
+  background-position: 50% -60px;
+}
+.x-tabs-strip .on .close-icon{
+	background-image:url(../images/gray/layout/layout-sprite.gif);
+  background-position: 50% -60px;
+}
+.x-tabs-strip .x-tabs-closable .close-over{
+	background-image:url(../images/gray/layout/layout-sprite.gif);
+  background-position: 50% -72px;
+}
+
+.x-tabs-bottom .x-tabs-wrap {
+	border-bottom:0px none;
+	padding-top:0px;
+	border-top:1px solid #aca899;
+}
+.x-tabs-bottom .x-tabs-strip .x-tabs-right {
+	 background: url(../images/gray/tabs/tab-btm-inactive-right-bg.gif) no-repeat bottom left;
+}
+.x-tabs-bottom .x-tabs-strip .x-tabs-left {
+	 background: url(../images/gray/tabs/tab-btm-inactive-left-bg.gif) no-repeat bottom right;
+}
+.x-tabs-bottom .x-tabs-strip .on .x-tabs-right {
+	 background: url(../images/gray/tabs/tab-btm-right-bg.gif) no-repeat bottom left;
+}
+.x-tabs-bottom .x-tabs-strip .on .x-tabs-left {
+	 background: url(../images/gray/tabs/tab-btm-left-bg.gif) no-repeat bottom right;
+}
+
+/* QuickTips */
+
+.x-tip .x-tip-header-right{
+	background: url(../images/gray/basic-dialog/hd-sprite.gif) no-repeat right 0px;
+}
+.x-tip .x-tip-header-left{
+	background: url(../images/gray/basic-dialog/hd-sprite.gif) no-repeat 0px -41px;
+}
+.x-tip .x-tip-header{
+	background: url(../images/gray/basic-dialog/hd-sprite.gif) repeat-x 0px -82px;
+}
+.x-tip .x-tip-close{
+	background-image: url(../images/gray/basic-dialog/close.gif);
+}
+.x-tip .x-tip-bd{
+	background: #e7e7e7 url(../images/gray/qtip/bg.gif);
+	border: 1px solid #ababab;
+}
+
+/* BorderLayout */
+
+.x-layout-container{
+    background-color:#f3f2e7;
+}
+.x-layout-collapsed{
+    background-color:#f3f2e7;
+	 border:1px solid #aca899;
+}
+.x-layout-collapsed-over{
+	 background-color:#fbfbef;
+}
+.x-layout-panel{
+    border:1px solid #aca899;
+}
+.x-layout-nested-layout .x-layout-panel {
+	  border:0px none;
+}
+.x-layout-split{
+    background-color:#f3f2e7;
+}
+.x-layout-panel-header{
+    background-image: url(../images/gray/layout/panel-title-light-bg.gif);
+    border-bottom:1px solid #aca899;
+}
+.x-layout-tools-button-over{
+    border:1px solid #aca899;
+}
+.x-layout-close{
+    background-image:url(../images/gray/layout/layout-sprite.gif);
+    background-repeat: no-repeat;
+    background-position: 50% -48px;
+}
+.x-layout-collapse-west,.x-layout-expand-east{
+    background-image:url(../images/gray/layout/layout-sprite.gif);
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+}
+.x-layout-expand-west,.x-layout-collapse-east{
+    background-image:url(../images/gray/layout/layout-sprite.gif);
+    background-repeat: no-repeat;
+    background-position: 50% -12px;
+}
+.x-layout-collapse-north,.x-layout-expand-south{
+    background-image:url(../images/gray/layout/layout-sprite.gif);
+    background-repeat: no-repeat;
+    background-position: 50% -24px;
+}
+.x-layout-expand-north,.x-layout-collapse-south{
+    background-image:url(../images/gray/layout/layout-sprite.gif);
+    background-repeat: no-repeat;
+    background-position: 50% -36px;
+}
+.x-layout-split-h{
+    background-image:url(../images/gray/sizer/e-handle-dark.gif);
+}
+.x-layout-split-v{
+    background-image:url(../images/gray/sizer/s-handle-dark.gif);
+}
+.x-layout-panel .x-tabs-wrap{
+    background:url(../images/gray/layout/gradient-bg.gif);
+}
+.x-layout-nested-layout .x-layout-panel-north {
+	  border-bottom:1px solid #aca899;
+}
+.x-layout-nested-layout .x-layout-panel-south {
+	  border-top:1px solid #aca899;
+}
+.x-layout-nested-layout .x-layout-panel-east {
+	  border-left:1px solid #aca899;
+}
+.x-layout-nested-layout .x-layout-panel-west {
+	  border-right:1px solid #aca899;
+}
+.x-layout-panel-dragover {
+	border: 2px solid #aca899;
+}
+.x-layout-panel-proxy {
+	background-image: url(../images/gray/layout/gradient-bg.gif);
+	background-color:#f3f2e7;
+	border:1px dashed #aca899;
+}
+/** Resizable */
+
+.x-resizable-over .x-resizable-handle-east, .x-resizable-pinned .x-resizable-handle-east{
+    background:url(../images/gray/sizer/e-handle.gif);
+	 background-position: left;
+}
+.x-resizable-over .x-resizable-handle-east, .x-resizable-pinned .x-resizable-handle-west{
+    background:url(../images/gray/sizer/e-handle.gif);
+	 background-position: left;
+}
+.x-resizable-over .x-resizable-handle-south, .x-resizable-pinned .x-resizable-handle-south{
+    background:url(../images/gray/sizer/s-handle.gif);
+    background-position: top;
+}
+.x-resizable-over .x-resizable-handle-south, .x-resizable-pinned .x-resizable-handle-north{
+    background:url(../images/gray/sizer/s-handle.gif);
+    background-position: top;
+}
+.x-resizable-over .x-resizable-handle-southeast, .x-resizable-pinned .x-resizable-handle-southeast{
+    background:url(../images/gray/sizer/se-handle.gif);
+    background-position: top left;
+}
+.x-resizable-over .x-resizable-handle-northwest,.x-resizable-pinned .x-resizable-handle-northwest{
+    background:url(../images/gray/sizer/nw-handle.gif);
+    background-position:bottom right;
+}
+.x-resizable-over .x-resizable-handle-northeast,.x-resizable-pinned .x-resizable-handle-northeast{
+    background:url(../images/gray/sizer/ne-handle.gif);
+    background-position: bottom left;
+}
+.x-resizable-over .x-resizable-handle-southwest,.x-resizable-pinned .x-resizable-handle-southwest{
+    background:url(../images/gray/sizer/sw-handle.gif);
+    background-position: top right;
+}
+.x-resizable-proxy{
+    border: 1px dashed #615e55;
+}
+
+/** Toolbar */
+.x-toolbar{
+	border:0px none;
+	background: #efefe3 url(../images/gray/toolbar/gray-bg.gif) repeat-x;
+	padding:3px;
+}

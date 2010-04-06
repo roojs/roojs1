@@ -1,0 +1,10 @@
+This CSS and images where taken from http://demo.xteconline.com/system/js/builds/yui-ext.0.40.alpha1/
+- which was released under a BSD like licence.
+
+CSS files have been modifed - replacing .y*** with .x-***
+
+
+
+
+
+
