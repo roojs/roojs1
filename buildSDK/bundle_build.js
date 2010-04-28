@@ -1,5 +1,13 @@
 /**
  * Usage:
+ 
+ 
+ OLD VERSION!!?!?
+ 
+ try
+ seed pack.js -fbuildSDK/depenancy_order.txt -oroojs-all.js -Oroojs-debug.js
+ 
+ 
  * 
  * In the top level Roojs directory.. (you need to change the path of the jstoolkit)
  * 
