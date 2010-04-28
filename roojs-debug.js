@@ -16694,4 +16694,730 @@ Roo.dd.DragDropMgr = function() {
 Roo.dd.DDM = Roo.dd.DragDropMgr;
 Roo.dd.DDM._addListeners();
 
-}
+}/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.dd.DD
+ * A DragDrop implementation where the linked element follows the
+ * mouse cursor during a drag.
+ * @extends Roo.dd.DragDrop
+ * @constructor
+ * @param {String} id the id of the linked element
+ * @param {String} sGroup the group of related DragDrop items
+ * @param {object} config an object containing configurable attributes
+ *                Valid properties for DD:
+ *                    scroll
+ */
+Roo.dd.DD = function(id, sGroup, config) {
+    if (id) {
+        this.init(id, sGroup, config);
+    }
+};
+
+Roo.extend(Roo.dd.DD, Roo.dd.DragDrop, {
+
+    /**
+     * When set to true, the utility automatically tries to scroll the browser
+     * window wehn a drag and drop element is dragged near the viewport boundary.
+     * Defaults to true.
+     * @property scroll
+     * @type boolean
+     */
+    scroll: true,
+
+    /**
+     * Sets the pointer offset to the distance between the linked element's top
+     * left corner and the location the element was clicked
+     * @method autoOffset
+     * @param {int} iPageX the X coordinate of the click
+     * @param {int} iPageY the Y coordinate of the click
+     */
+    autoOffset: function(iPageX, iPageY) {
+        var x = iPageX - this.startPageX;
+        var y = iPageY - this.startPageY;
+        this.setDelta(x, y);
+    },
+
+    /**
+     * Sets the pointer offset.  You can call this directly to force the
+     * offset to be in a particular location (e.g., pass in 0,0 to set it
+     * to the center of the object)
+     * @method setDelta
+     * @param {int} iDeltaX the distance from the left
+     * @param {int} iDeltaY the distance from the top
+     */
+    setDelta: function(iDeltaX, iDeltaY) {
+        this.deltaX = iDeltaX;
+        this.deltaY = iDeltaY;
+    },
+
+    /**
+     * Sets the drag element to the location of the mousedown or click event,
+     * maintaining the cursor location relative to the location on the element
+     * that was clicked.  Override this if you want to place the element in a
+     * location other than where the cursor is.
+     * @method setDragElPos
+     * @param {int} iPageX the X coordinate of the mousedown or drag event
+     * @param {int} iPageY the Y coordinate of the mousedown or drag event
+     */
+    setDragElPos: function(iPageX, iPageY) {
+        // the first time we do this, we are going to check to make sure
+        // the element has css positioning
+
+        var el = this.getDragEl();
+        this.alignElWithMouse(el, iPageX, iPageY);
+    },
+
+    /**
+     * Sets the element to the location of the mousedown or click event,
+     * maintaining the cursor location relative to the location on the element
+     * that was clicked.  Override this if you want to place the element in a
+     * location other than where the cursor is.
+     * @method alignElWithMouse
+     * @param {HTMLElement} el the element to move
+     * @param {int} iPageX the X coordinate of the mousedown or drag event
+     * @param {int} iPageY the Y coordinate of the mousedown or drag event
+     */
+    alignElWithMouse: function(el, iPageX, iPageY) {
+        var oCoord = this.getTargetCoord(iPageX, iPageY);
+        var fly = el.dom ? el : Roo.fly(el);
+        if (!this.deltaSetXY) {
+            var aCoord = [oCoord.x, oCoord.y];
+            fly.setXY(aCoord);
+            var newLeft = fly.getLeft(true);
+            var newTop  = fly.getTop(true);
+            this.deltaSetXY = [ newLeft - oCoord.x, newTop - oCoord.y ];
+        } else {
+            fly.setLeftTop(oCoord.x + this.deltaSetXY[0], oCoord.y + this.deltaSetXY[1]);
+        }
+
+        this.cachePosition(oCoord.x, oCoord.y);
+        this.autoScroll(oCoord.x, oCoord.y, el.offsetHeight, el.offsetWidth);
+        return oCoord;
+    },
+
+    /**
+     * Saves the most recent position so that we can reset the constraints and
+     * tick marks on-demand.  We need to know this so that we can calculate the
+     * number of pixels the element is offset from its original position.
+     * @method cachePosition
+     * @param iPageX the current x position (optional, this just makes it so we
+     * don't have to look it up again)
+     * @param iPageY the current y position (optional, this just makes it so we
+     * don't have to look it up again)
+     */
+    cachePosition: function(iPageX, iPageY) {
+        if (iPageX) {
+            this.lastPageX = iPageX;
+            this.lastPageY = iPageY;
+        } else {
+            var aCoord = Roo.lib.Dom.getXY(this.getEl());
+            this.lastPageX = aCoord[0];
+            this.lastPageY = aCoord[1];
+        }
+    },
+
+    /**
+     * Auto-scroll the window if the dragged object has been moved beyond the
+     * visible window boundary.
+     * @method autoScroll
+     * @param {int} x the drag element's x position
+     * @param {int} y the drag element's y position
+     * @param {int} h the height of the drag element
+     * @param {int} w the width of the drag element
+     * @private
+     */
+    autoScroll: function(x, y, h, w) {
+
+        if (this.scroll) {
+            // The client height
+            var clientH = Roo.lib.Dom.getViewWidth();
+
+            // The client width
+            var clientW = Roo.lib.Dom.getViewHeight();
+
+            // The amt scrolled down
+            var st = this.DDM.getScrollTop();
+
+            // The amt scrolled right
+            var sl = this.DDM.getScrollLeft();
+
+            // Location of the bottom of the element
+            var bot = h + y;
+
+            // Location of the right of the element
+            var right = w + x;
+
+            // The distance from the cursor to the bottom of the visible area,
+            // adjusted so that we don't scroll if the cursor is beyond the
+            // element drag constraints
+            var toBot = (clientH + st - y - this.deltaY);
+
+            // The distance from the cursor to the right of the visible area
+            var toRight = (clientW + sl - x - this.deltaX);
+
+
+            // How close to the edge the cursor must be before we scroll
+            // var thresh = (document.all) ? 100 : 40;
+            var thresh = 40;
+
+            // How many pixels to scroll per autoscroll op.  This helps to reduce
+            // clunky scrolling. IE is more sensitive about this ... it needs this
+            // value to be higher.
+            var scrAmt = (document.all) ? 80 : 30;
+
+            // Scroll down if we are near the bottom of the visible page and the
+            // obj extends below the crease
+            if ( bot > clientH && toBot < thresh ) {
+                window.scrollTo(sl, st + scrAmt);
+            }
+
+            // Scroll up if the window is scrolled down and the top of the object
+            // goes above the top border
+            if ( y < st && st > 0 && y - st < thresh ) {
+                window.scrollTo(sl, st - scrAmt);
+            }
+
+            // Scroll right if the obj is beyond the right border and the cursor is
+            // near the border.
+            if ( right > clientW && toRight < thresh ) {
+                window.scrollTo(sl + scrAmt, st);
+            }
+
+            // Scroll left if the window has been scrolled to the right and the obj
+            // extends past the left border
+            if ( x < sl && sl > 0 && x - sl < thresh ) {
+                window.scrollTo(sl - scrAmt, st);
+            }
+        }
+    },
+
+    /**
+     * Finds the location the element should be placed if we want to move
+     * it to where the mouse location less the click offset would place us.
+     * @method getTargetCoord
+     * @param {int} iPageX the X coordinate of the click
+     * @param {int} iPageY the Y coordinate of the click
+     * @return an object that contains the coordinates (Object.x and Object.y)
+     * @private
+     */
+    getTargetCoord: function(iPageX, iPageY) {
+
+
+        var x = iPageX - this.deltaX;
+        var y = iPageY - this.deltaY;
+
+        if (this.constrainX) {
+            if (x < this.minX) { x = this.minX; }
+            if (x > this.maxX) { x = this.maxX; }
+        }
+
+        if (this.constrainY) {
+            if (y < this.minY) { y = this.minY; }
+            if (y > this.maxY) { y = this.maxY; }
+        }
+
+        x = this.getTick(x, this.xTicks);
+        y = this.getTick(y, this.yTicks);
+
+
+        return {x:x, y:y};
+    },
+
+    /*
+     * Sets up config options specific to this class. Overrides
+     * Roo.dd.DragDrop, but all versions of this method through the
+     * inheritance chain are called
+     */
+    applyConfig: function() {
+        Roo.dd.DD.superclass.applyConfig.call(this);
+        this.scroll = (this.config.scroll !== false);
+    },
+
+    /*
+     * Event that fires prior to the onMouseDown event.  Overrides
+     * Roo.dd.DragDrop.
+     */
+    b4MouseDown: function(e) {
+        // this.resetConstraints();
+        this.autoOffset(e.getPageX(),
+                            e.getPageY());
+    },
+
+    /*
+     * Event that fires prior to the onDrag event.  Overrides
+     * Roo.dd.DragDrop.
+     */
+    b4Drag: function(e) {
+        this.setDragElPos(e.getPageX(),
+                            e.getPageY());
+    },
+
+    toString: function() {
+        return ("DD " + this.id);
+    }
+
+    //////////////////////////////////////////////////////////////////////////
+    // Debugging ygDragDrop events that can be overridden
+    //////////////////////////////////////////////////////////////////////////
+    /*
+    startDrag: function(x, y) {
+    },
+
+    onDrag: function(e) {
+    },
+
+    onDragEnter: function(e, id) {
+    },
+
+    onDragOver: function(e, id) {
+    },
+
+    onDragOut: function(e, id) {
+    },
+
+    onDragDrop: function(e, id) {
+    },
+
+    endDrag: function(e) {
+    }
+
+    */
+
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.dd.DDProxy
+ * A DragDrop implementation that inserts an empty, bordered div into
+ * the document that follows the cursor during drag operations.  At the time of
+ * the click, the frame div is resized to the dimensions of the linked html
+ * element, and moved to the exact location of the linked element.
+ *
+ * References to the "frame" element refer to the single proxy element that
+ * was created to be dragged in place of all DDProxy elements on the
+ * page.
+ *
+ * @extends Roo.dd.DD
+ * @constructor
+ * @param {String} id the id of the linked html element
+ * @param {String} sGroup the group of related DragDrop objects
+ * @param {object} config an object containing configurable attributes
+ *                Valid properties for DDProxy in addition to those in DragDrop:
+ *                   resizeFrame, centerFrame, dragElId
+ */
+Roo.dd.DDProxy = function(id, sGroup, config) {
+    if (id) {
+        this.init(id, sGroup, config);
+        this.initFrame();
+    }
+};
+
+/**
+ * The default drag frame div id
+ * @property Roo.dd.DDProxy.dragElId
+ * @type String
+ * @static
+ */
+Roo.dd.DDProxy.dragElId = "ygddfdiv";
+
+Roo.extend(Roo.dd.DDProxy, Roo.dd.DD, {
+
+    /**
+     * By default we resize the drag frame to be the same size as the element
+     * we want to drag (this is to get the frame effect).  We can turn it off
+     * if we want a different behavior.
+     * @property resizeFrame
+     * @type boolean
+     */
+    resizeFrame: true,
+
+    /**
+     * By default the frame is positioned exactly where the drag element is, so
+     * we use the cursor offset provided by Roo.dd.DD.  Another option that works only if
+     * you do not have constraints on the obj is to have the drag frame centered
+     * around the cursor.  Set centerFrame to true for this effect.
+     * @property centerFrame
+     * @type boolean
+     */
+    centerFrame: false,
+
+    /**
+     * Creates the proxy element if it does not yet exist
+     * @method createFrame
+     */
+    createFrame: function() {
+        var self = this;
+        var body = document.body;
+
+        if (!body || !body.firstChild) {
+            setTimeout( function() { self.createFrame(); }, 50 );
+            return;
+        }
+
+        var div = this.getDragEl();
+
+        if (!div) {
+            div    = document.createElement("div");
+            div.id = this.dragElId;
+            var s  = div.style;
+
+            s.position   = "absolute";
+            s.visibility = "hidden";
+            s.cursor     = "move";
+            s.border     = "2px solid #aaa";
+            s.zIndex     = 999;
+
+            // appendChild can blow up IE if invoked prior to the window load event
+            // while rendering a table.  It is possible there are other scenarios
+            // that would cause this to happen as well.
+            body.insertBefore(div, body.firstChild);
+        }
+    },
+
+    /**
+     * Initialization for the drag frame element.  Must be called in the
+     * constructor of all subclasses
+     * @method initFrame
+     */
+    initFrame: function() {
+        this.createFrame();
+    },
+
+    applyConfig: function() {
+        Roo.dd.DDProxy.superclass.applyConfig.call(this);
+
+        this.resizeFrame = (this.config.resizeFrame !== false);
+        this.centerFrame = (this.config.centerFrame);
+        this.setDragElId(this.config.dragElId || Roo.dd.DDProxy.dragElId);
+    },
+
+    /**
+     * Resizes the drag frame to the dimensions of the clicked object, positions
+     * it over the object, and finally displays it
+     * @method showFrame
+     * @param {int} iPageX X click position
+     * @param {int} iPageY Y click position
+     * @private
+     */
+    showFrame: function(iPageX, iPageY) {
+        var el = this.getEl();
+        var dragEl = this.getDragEl();
+        var s = dragEl.style;
+
+        this._resizeProxy();
+
+        if (this.centerFrame) {
+            this.setDelta( Math.round(parseInt(s.width,  10)/2),
+                           Math.round(parseInt(s.height, 10)/2) );
+        }
+
+        this.setDragElPos(iPageX, iPageY);
+
+        Roo.fly(dragEl).show();
+    },
+
+    /**
+     * The proxy is automatically resized to the dimensions of the linked
+     * element when a drag is initiated, unless resizeFrame is set to false
+     * @method _resizeProxy
+     * @private
+     */
+    _resizeProxy: function() {
+        if (this.resizeFrame) {
+            var el = this.getEl();
+            Roo.fly(this.getDragEl()).setSize(el.offsetWidth, el.offsetHeight);
+        }
+    },
+
+    // overrides Roo.dd.DragDrop
+    b4MouseDown: function(e) {
+        var x = e.getPageX();
+        var y = e.getPageY();
+        this.autoOffset(x, y);
+        this.setDragElPos(x, y);
+    },
+
+    // overrides Roo.dd.DragDrop
+    b4StartDrag: function(x, y) {
+        // show the drag frame
+        this.showFrame(x, y);
+    },
+
+    // overrides Roo.dd.DragDrop
+    b4EndDrag: function(e) {
+        Roo.fly(this.getDragEl()).hide();
+    },
+
+    // overrides Roo.dd.DragDrop
+    // By default we try to move the element to the last location of the frame.
+    // This is so that the default behavior mirrors that of Roo.dd.DD.
+    endDrag: function(e) {
+
+        var lel = this.getEl();
+        var del = this.getDragEl();
+
+        // Show the drag frame briefly so we can get its position
+        del.style.visibility = "";
+
+        this.beforeMove();
+        // Hide the linked element before the move to get around a Safari
+        // rendering bug.
+        lel.style.visibility = "hidden";
+        Roo.dd.DDM.moveToEl(lel, del);
+        del.style.visibility = "hidden";
+        lel.style.visibility = "";
+
+        this.afterDrag();
+    },
+
+    beforeMove : function(){
+
+    },
+
+    afterDrag : function(){
+
+    },
+
+    toString: function() {
+        return ("DDProxy " + this.id);
+    }
+
+});
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+ /**
+ * @class Roo.dd.DDTarget
+ * A DragDrop implementation that does not move, but can be a drop
+ * target.  You would get the same result by simply omitting implementation
+ * for the event callbacks, but this way we reduce the processing cost of the
+ * event listener and the callbacks.
+ * @extends Roo.dd.DragDrop
+ * @constructor
+ * @param {String} id the id of the element that is a drop target
+ * @param {String} sGroup the group of related DragDrop objects
+ * @param {object} config an object containing configurable attributes
+ *                 Valid properties for DDTarget in addition to those in
+ *                 DragDrop:
+ *                    none
+ */
+Roo.dd.DDTarget = function(id, sGroup, config) {
+    if (id) {
+        this.initTarget(id, sGroup, config);
+    }
+};
+
+// Roo.dd.DDTarget.prototype = new Roo.dd.DragDrop();
+Roo.extend(Roo.dd.DDTarget, Roo.dd.DragDrop, {
+    toString: function() {
+        return ("DDTarget " + this.id);
+    }
+});
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+
+/**
+ * @class Roo.dd.ScrollManager
+ * Provides automatic scrolling of overflow regions in the page during drag operations.<br><br>
+ * <b>Note: This class uses "Point Mode" and is untested in "Intersect Mode".</b>
+ * @singleton
+ */
+Roo.dd.ScrollManager = function(){
+    var ddm = Roo.dd.DragDropMgr;
+    var els = {};
+    var dragEl = null;
+    var proc = {};
+    
+    var onStop = function(e){
+        dragEl = null;
+        clearProc();
+    };
+    
+    var triggerRefresh = function(){
+        if(ddm.dragCurrent){
+             ddm.refreshCache(ddm.dragCurrent.groups);
+        }
+    };
+    
+    var doScroll = function(){
+        if(ddm.dragCurrent){
+            var dds = Roo.dd.ScrollManager;
+            if(!dds.animate){
+                if(proc.el.scroll(proc.dir, dds.increment)){
+                    triggerRefresh();
+                }
+            }else{
+                proc.el.scroll(proc.dir, dds.increment, true, dds.animDuration, triggerRefresh);
+            }
+        }
+    };
+    
+    var clearProc = function(){
+        if(proc.id){
+            clearInterval(proc.id);
+        }
+        proc.id = 0;
+        proc.el = null;
+        proc.dir = "";
+    };
+    
+    var startProc = function(el, dir){
+        clearProc();
+        proc.el = el;
+        proc.dir = dir;
+        proc.id = setInterval(doScroll, Roo.dd.ScrollManager.frequency);
+    };
+    
+    var onFire = function(e, isDrop){
+        if(isDrop || !ddm.dragCurrent){ return; }
+        var dds = Roo.dd.ScrollManager;
+        if(!dragEl || dragEl != ddm.dragCurrent){
+            dragEl = ddm.dragCurrent;
+            // refresh regions on drag start
+            dds.refreshCache();
+        }
+        
+        var xy = Roo.lib.Event.getXY(e);
+        var pt = new Roo.lib.Point(xy[0], xy[1]);
+        for(var id in els){
+            var el = els[id], r = el._region;
+            if(r && r.contains(pt) && el.isScrollable()){
+                if(r.bottom - pt.y <= dds.thresh){
+                    if(proc.el != el){
+                        startProc(el, "down");
+                    }
+                    return;
+                }else if(r.right - pt.x <= dds.thresh){
+                    if(proc.el != el){
+                        startProc(el, "left");
+                    }
+                    return;
+                }else if(pt.y - r.top <= dds.thresh){
+                    if(proc.el != el){
+                        startProc(el, "up");
+                    }
+                    return;
+                }else if(pt.x - r.left <= dds.thresh){
+                    if(proc.el != el){
+                        startProc(el, "right");
+                    }
+                    return;
+                }
+            }
+        }
+        clearProc();
+    };
+    
+    ddm.fireEvents = ddm.fireEvents.createSequence(onFire, ddm);
+    ddm.stopDrag = ddm.stopDrag.createSequence(onStop, ddm);
+    
+    return {
+        /**
+         * Registers new overflow element(s) to auto scroll
+         * @param {String/HTMLElement/Element/Array} el The id of or the element to be scrolled or an array of either
+         */
+        register : function(el){
+            if(el instanceof Array){
+                for(var i = 0, len = el.length; i < len; i++) {
+                	this.register(el[i]);
+                }
+            }else{
+                el = Roo.get(el);
+                els[el.id] = el;
+            }
+        },
+        
+        /**
+         * Unregisters overflow element(s) so they are no longer scrolled
+         * @param {String/HTMLElement/Element/Array} el The id of or the element to be removed or an array of either
+         */
+        unregister : function(el){
+            if(el instanceof Array){
+                for(var i = 0, len = el.length; i < len; i++) {
+                	this.unregister(el[i]);
+                }
+            }else{
+                el = Roo.get(el);
+                delete els[el.id];
+            }
+        },
+        
+        /**
+         * The number of pixels from the edge of a container the pointer needs to be to 
+         * trigger scrolling (defaults to 25)
+         * @type Number
+         */
+        thresh : 25,
+        
+        /**
+         * The number of pixels to scroll in each scroll increment (defaults to 50)
+         * @type Number
+         */
+        increment : 100,
+        
+        /**
+         * The frequency of scrolls in milliseconds (defaults to 500)
+         * @type Number
+         */
+        frequency : 500,
+        
+        /**
+         * True to animate the scroll (defaults to true)
+         * @type Boolean
+         */
+        animate: true,
+        
+        /**
+         * The animation duration in seconds - 
+         * MUST BE less than Roo.dd.ScrollManager.frequency! (defaults to .4)
+         * @type Number
+         */
+        animDuration: .4,
+        
+        /**
+         * Manually trigger a cache refresh.
+         */
+        refreshCache : function(){
+            for(var id in els){
+                if(typeof els[id] == 'object'){ // for people extending the object prototype
+                    els[id]._region = els[id].getRegion();
+                }
+            }
+        }
+    };
+}();
