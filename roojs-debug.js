@@ -11347,4 +11347,1264 @@ Roo.Ajax = new Roo.data.Connection({
     serializeForm : function(form){
         return Roo.lib.Ajax.serializeForm(form);
     }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.Ajax
+ * @extends Roo.data.Connection
+ * Global Ajax request class.
+ *
+ * @instanceOf  Roo.data.Connection
+ */
+Roo.Ajax = new Roo.data.Connection({
+    // fix up the docs
+    
+    /**
+     * fix up scoping
+     * @scope Roo.Ajax
+     */
+    
+   /**
+     * @cfg {String} url @hide
+     */
+    /**
+     * @cfg {Object} extraParams @hide
+     */
+    /**
+     * @cfg {Object} defaultHeaders @hide
+     */
+    /**
+     * @cfg {String} method (Optional) @hide
+     */
+    /**
+     * @cfg {Number} timeout (Optional) @hide
+     */
+    /**
+     * @cfg {Boolean} autoAbort (Optional) @hide
+     */
+
+    /**
+     * @cfg {Boolean} disableCaching (Optional) @hide
+     */
+
+    /**
+     * @property  disableCaching
+     * True to add a unique cache-buster param to GET requests. (defaults to true)
+     * @type Boolean
+     */
+    /**
+     * @property  url
+     * The default URL to be used for requests to the server. (defaults to undefined)
+     * @type String
+     */
+    /**
+     * @property  extraParams
+     * An object containing properties which are used as
+     * extra parameters to each request made by this object. (defaults to undefined)
+     * @type Object
+     */
+    /**
+     * @property  defaultHeaders
+     * An object containing request headers which are added to each request made by this object. (defaults to undefined)
+     * @type Object
+     */
+    /**
+     * @property  method
+     * The default HTTP method to be used for requests. (defaults to undefined; if not set but parms are present will use POST, otherwise GET)
+     * @type String
+     */
+    /**
+     * @property  timeout
+     * The timeout in milliseconds to be used for requests. (defaults to 30000)
+     * @type Number
+     */
+
+    /**
+     * @property  autoAbort
+     * Whether a new request should abort any pending requests. (defaults to false)
+     * @type Boolean
+     */
+    autoAbort : false,
+
+    /**
+     * Serialize the passed form into a url encoded string
+     * @param {String/HTMLElement} form
+     * @return {String}
+     */
+    serializeForm : function(form){
+        return Roo.lib.Ajax.serializeForm(form);
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+ 
+/**
+ * @class Roo.UpdateManager
+ * @extends Roo.util.Observable
+ * Provides AJAX-style update for Element object.<br><br>
+ * Usage:<br>
+ * <pre><code>
+ * // Get it from a Roo.Element object
+ * var el = Roo.get("foo");
+ * var mgr = el.getUpdateManager();
+ * mgr.update("http://myserver.com/index.php", "param1=1&amp;param2=2");
+ * ...
+ * mgr.formUpdate("myFormId", "http://myserver.com/index.php");
+ * <br>
+ * // or directly (returns the same UpdateManager instance)
+ * var mgr = new Roo.UpdateManager("myElementId");
+ * mgr.startAutoRefresh(60, "http://myserver.com/index.php");
+ * mgr.on("update", myFcnNeedsToKnow);
+ * <br>
+   // short handed call directly from the element object
+   Roo.get("foo").load({
+        url: "bar.php",
+        scripts:true,
+        params: "for=bar",
+        text: "Loading Foo..."
+   });
+ * </code></pre>
+ * @constructor
+ * Create new UpdateManager directly.
+ * @param {String/HTMLElement/Roo.Element} el The element to update
+ * @param {Boolean} forceNew (optional) By default the constructor checks to see if the passed element already has an UpdateManager and if it does it returns the same instance. This will skip that check (useful for extending this class).
+ */
+Roo.UpdateManager = function(el, forceNew){
+    el = Roo.get(el);
+    if(!forceNew && el.updateManager){
+        return el.updateManager;
+    }
+    /**
+     * The Element object
+     * @type Roo.Element
+     */
+    this.el = el;
+    /**
+     * Cached url to use for refreshes. Overwritten every time update() is called unless "discardUrl" param is set to true.
+     * @type String
+     */
+    this.defaultUrl = null;
+
+    this.addEvents({
+        /**
+         * @event beforeupdate
+         * Fired before an update is made, return false from your handler and the update is cancelled.
+         * @param {Roo.Element} el
+         * @param {String/Object/Function} url
+         * @param {String/Object} params
+         */
+        "beforeupdate": true,
+        /**
+         * @event update
+         * Fired after successful update is made.
+         * @param {Roo.Element} el
+         * @param {Object} oResponseObject The response Object
+         */
+        "update": true,
+        /**
+         * @event failure
+         * Fired on update failure.
+         * @param {Roo.Element} el
+         * @param {Object} oResponseObject The response Object
+         */
+        "failure": true
+    });
+    var d = Roo.UpdateManager.defaults;
+    /**
+     * Blank page URL to use with SSL file uploads (Defaults to Roo.UpdateManager.defaults.sslBlankUrl or "about:blank").
+     * @type String
+     */
+    this.sslBlankUrl = d.sslBlankUrl;
+    /**
+     * Whether to append unique parameter on get request to disable caching (Defaults to Roo.UpdateManager.defaults.disableCaching or false).
+     * @type Boolean
+     */
+    this.disableCaching = d.disableCaching;
+    /**
+     * Text for loading indicator (Defaults to Roo.UpdateManager.defaults.indicatorText or '&lt;div class="loading-indicator"&gt;Loading...&lt;/div&gt;').
+     * @type String
+     */
+    this.indicatorText = d.indicatorText;
+    /**
+     * Whether to show indicatorText when loading (Defaults to Roo.UpdateManager.defaults.showLoadIndicator or true).
+     * @type String
+     */
+    this.showLoadIndicator = d.showLoadIndicator;
+    /**
+     * Timeout for requests or form posts in seconds (Defaults to Roo.UpdateManager.defaults.timeout or 30 seconds).
+     * @type Number
+     */
+    this.timeout = d.timeout;
+
+    /**
+     * True to process scripts in the output (Defaults to Roo.UpdateManager.defaults.loadScripts (false)).
+     * @type Boolean
+     */
+    this.loadScripts = d.loadScripts;
+
+    /**
+     * Transaction object of current executing transaction
+     */
+    this.transaction = null;
+
+    /**
+     * @private
+     */
+    this.autoRefreshProcId = null;
+    /**
+     * Delegate for refresh() prebound to "this", use myUpdater.refreshDelegate.createCallback(arg1, arg2) to bind arguments
+     * @type Function
+     */
+    this.refreshDelegate = this.refresh.createDelegate(this);
+    /**
+     * Delegate for update() prebound to "this", use myUpdater.updateDelegate.createCallback(arg1, arg2) to bind arguments
+     * @type Function
+     */
+    this.updateDelegate = this.update.createDelegate(this);
+    /**
+     * Delegate for formUpdate() prebound to "this", use myUpdater.formUpdateDelegate.createCallback(arg1, arg2) to bind arguments
+     * @type Function
+     */
+    this.formUpdateDelegate = this.formUpdate.createDelegate(this);
+    /**
+     * @private
+     */
+    this.successDelegate = this.processSuccess.createDelegate(this);
+    /**
+     * @private
+     */
+    this.failureDelegate = this.processFailure.createDelegate(this);
+
+    if(!this.renderer){
+     /**
+      * The renderer for this UpdateManager. Defaults to {@link Roo.UpdateManager.BasicRenderer}.
+      */
+    this.renderer = new Roo.UpdateManager.BasicRenderer();
+    }
+    
+    Roo.UpdateManager.superclass.constructor.call(this);
+};
+
+Roo.extend(Roo.UpdateManager, Roo.util.Observable, {
+    /**
+     * Get the Element this UpdateManager is bound to
+     * @return {Roo.Element} The element
+     */
+    getEl : function(){
+        return this.el;
+    },
+    /**
+     * Performs an async request, updating this element with the response. If params are specified it uses POST, otherwise it uses GET.
+     * @param {Object/String/Function} url The url for this request or a function to call to get the url or a config object containing any of the following options:
+<pre><code>
+um.update({<br/>
+    url: "your-url.php",<br/>
+    params: {param1: "foo", param2: "bar"}, // or a URL encoded string<br/>
+    callback: yourFunction,<br/>
+    scope: yourObject, //(optional scope)  <br/>
+    discardUrl: false, <br/>
+    nocache: false,<br/>
+    text: "Loading...",<br/>
+    timeout: 30,<br/>
+    scripts: false<br/>
 });
+</code></pre>
+     * The only required property is url. The optional properties nocache, text and scripts
+     * are shorthand for disableCaching, indicatorText and loadScripts and are used to set their associated property on this UpdateManager instance.
+     * @param {String/Object} params (optional) The parameters to pass as either a url encoded string "param1=1&amp;param2=2" or an object {param1: 1, param2: 2}
+     * @param {Function} callback (optional) Callback when transaction is complete - called with signature (oElement, bSuccess, oResponse)
+     * @param {Boolean} discardUrl (optional) By default when you execute an update the defaultUrl is changed to the last used url. If true, it will not store the url.
+     */
+    update : function(url, params, callback, discardUrl){
+        if(this.fireEvent("beforeupdate", this.el, url, params) !== false){
+            var method = this.method, cfg;
+            if(typeof url == "object"){ // must be config object
+                cfg = url;
+                url = cfg.url;
+                params = params || cfg.params;
+                callback = callback || cfg.callback;
+                discardUrl = discardUrl || cfg.discardUrl;
+                if(callback && cfg.scope){
+                    callback = callback.createDelegate(cfg.scope);
+                }
+                if(typeof cfg.method != "undefined"){method = cfg.method;};
+                if(typeof cfg.nocache != "undefined"){this.disableCaching = cfg.nocache;};
+                if(typeof cfg.text != "undefined"){this.indicatorText = '<div class="loading-indicator">'+cfg.text+"</div>";};
+                if(typeof cfg.scripts != "undefined"){this.loadScripts = cfg.scripts;};
+                if(typeof cfg.timeout != "undefined"){this.timeout = cfg.timeout;};
+            }
+            this.showLoading();
+            if(!discardUrl){
+                this.defaultUrl = url;
+            }
+            if(typeof url == "function"){
+                url = url.call(this);
+            }
+
+            method = method || (params ? "POST" : "GET");
+            if(method == "GET"){
+                url = this.prepareUrl(url);
+            }
+
+            var o = Roo.apply(cfg ||{}, {
+                url : url,
+                params: params,
+                success: this.successDelegate,
+                failure: this.failureDelegate,
+                callback: undefined,
+                timeout: (this.timeout*1000),
+                argument: {"url": url, "form": null, "callback": callback, "params": params}
+            });
+
+            this.transaction = Roo.Ajax.request(o);
+        }
+    },
+
+    /**
+     * Performs an async form post, updating this element with the response. If the form has the attribute enctype="multipart/form-data", it assumes it's a file upload.
+     * Uses this.sslBlankUrl for SSL file uploads to prevent IE security warning.
+     * @param {String/HTMLElement} form The form Id or form element
+     * @param {String} url (optional) The url to pass the form to. If omitted the action attribute on the form will be used.
+     * @param {Boolean} reset (optional) Whether to try to reset the form after the update
+     * @param {Function} callback (optional) Callback when transaction is complete - called with signature (oElement, bSuccess, oResponse)
+     */
+    formUpdate : function(form, url, reset, callback){
+        if(this.fireEvent("beforeupdate", this.el, form, url) !== false){
+            if(typeof url == "function"){
+                url = url.call(this);
+            }
+            form = Roo.getDom(form);
+            this.transaction = Roo.Ajax.request({
+                form: form,
+                url:url,
+                success: this.successDelegate,
+                failure: this.failureDelegate,
+                timeout: (this.timeout*1000),
+                argument: {"url": url, "form": form, "callback": callback, "reset": reset}
+            });
+            this.showLoading.defer(1, this);
+        }
+    },
+
+    /**
+     * Refresh the element with the last used url or defaultUrl. If there is no url, it returns immediately
+     * @param {Function} callback (optional) Callback when transaction is complete - called with signature (oElement, bSuccess)
+     */
+    refresh : function(callback){
+        if(this.defaultUrl == null){
+            return;
+        }
+        this.update(this.defaultUrl, null, callback, true);
+    },
+
+    /**
+     * Set this element to auto refresh.
+     * @param {Number} interval How often to update (in seconds).
+     * @param {String/Function} url (optional) The url for this request or a function to call to get the url (Defaults to the last used url)
+     * @param {String/Object} params (optional) The parameters to pass as either a url encoded string "&param1=1&param2=2" or as an object {param1: 1, param2: 2}
+     * @param {Function} callback (optional) Callback when transaction is complete - called with signature (oElement, bSuccess)
+     * @param {Boolean} refreshNow (optional) Whether to execute the refresh now, or wait the interval
+     */
+    startAutoRefresh : function(interval, url, params, callback, refreshNow){
+        if(refreshNow){
+            this.update(url || this.defaultUrl, params, callback, true);
+        }
+        if(this.autoRefreshProcId){
+            clearInterval(this.autoRefreshProcId);
+        }
+        this.autoRefreshProcId = setInterval(this.update.createDelegate(this, [url || this.defaultUrl, params, callback, true]), interval*1000);
+    },
+
+    /**
+     * Stop auto refresh on this element.
+     */
+     stopAutoRefresh : function(){
+        if(this.autoRefreshProcId){
+            clearInterval(this.autoRefreshProcId);
+            delete this.autoRefreshProcId;
+        }
+    },
+
+    isAutoRefreshing : function(){
+       return this.autoRefreshProcId ? true : false;
+    },
+    /**
+     * Called to update the element to "Loading" state. Override to perform custom action.
+     */
+    showLoading : function(){
+        if(this.showLoadIndicator){
+            this.el.update(this.indicatorText);
+        }
+    },
+
+    /**
+     * Adds unique parameter to query string if disableCaching = true
+     * @private
+     */
+    prepareUrl : function(url){
+        if(this.disableCaching){
+            var append = "_dc=" + (new Date().getTime());
+            if(url.indexOf("?") !== -1){
+                url += "&" + append;
+            }else{
+                url += "?" + append;
+            }
+        }
+        return url;
+    },
+
+    /**
+     * @private
+     */
+    processSuccess : function(response){
+        this.transaction = null;
+        if(response.argument.form && response.argument.reset){
+            try{ // put in try/catch since some older FF releases had problems with this
+                response.argument.form.reset();
+            }catch(e){}
+        }
+        if(this.loadScripts){
+            this.renderer.render(this.el, response, this,
+                this.updateComplete.createDelegate(this, [response]));
+        }else{
+            this.renderer.render(this.el, response, this);
+            this.updateComplete(response);
+        }
+    },
+
+    updateComplete : function(response){
+        this.fireEvent("update", this.el, response);
+        if(typeof response.argument.callback == "function"){
+            response.argument.callback(this.el, true, response);
+        }
+    },
+
+    /**
+     * @private
+     */
+    processFailure : function(response){
+        this.transaction = null;
+        this.fireEvent("failure", this.el, response);
+        if(typeof response.argument.callback == "function"){
+            response.argument.callback(this.el, false, response);
+        }
+    },
+
+    /**
+     * Set the content renderer for this UpdateManager. See {@link Roo.UpdateManager.BasicRenderer#render} for more details.
+     * @param {Object} renderer The object implementing the render() method
+     */
+    setRenderer : function(renderer){
+        this.renderer = renderer;
+    },
+
+    getRenderer : function(){
+       return this.renderer;
+    },
+
+    /**
+     * Set the defaultUrl used for updates
+     * @param {String/Function} defaultUrl The url or a function to call to get the url
+     */
+    setDefaultUrl : function(defaultUrl){
+        this.defaultUrl = defaultUrl;
+    },
+
+    /**
+     * Aborts the executing transaction
+     */
+    abort : function(){
+        if(this.transaction){
+            Roo.Ajax.abort(this.transaction);
+        }
+    },
+
+    /**
+     * Returns true if an update is in progress
+     * @return {Boolean}
+     */
+    isUpdating : function(){
+        if(this.transaction){
+            return Roo.Ajax.isLoading(this.transaction);
+        }
+        return false;
+    }
+});
+
+/**
+ * @class Roo.UpdateManager.defaults
+ * @static (not really - but it helps the doc tool)
+ * The defaults collection enables customizing the default properties of UpdateManager
+ */
+   Roo.UpdateManager.defaults = {
+       /**
+         * Timeout for requests or form posts in seconds (Defaults 30 seconds).
+         * @type Number
+         */
+         timeout : 30,
+
+         /**
+         * True to process scripts by default (Defaults to false).
+         * @type Boolean
+         */
+        loadScripts : false,
+
+        /**
+        * Blank page URL to use with SSL file uploads (Defaults to "javascript:false").
+        * @type String
+        */
+        sslBlankUrl : (Roo.SSL_SECURE_URL || "javascript:false"),
+        /**
+         * Whether to append unique parameter on get request to disable caching (Defaults to false).
+         * @type Boolean
+         */
+        disableCaching : false,
+        /**
+         * Whether to show indicatorText when loading (Defaults to true).
+         * @type Boolean
+         */
+        showLoadIndicator : true,
+        /**
+         * Text for loading indicator (Defaults to '&lt;div class="loading-indicator"&gt;Loading...&lt;/div&gt;').
+         * @type String
+         */
+        indicatorText : '<div class="loading-indicator">Loading...</div>'
+   };
+
+/**
+ * Static convenience method. This method is deprecated in favor of el.load({url:'foo.php', ...}).
+ *Usage:
+ * <pre><code>Roo.UpdateManager.updateElement("my-div", "stuff.php");</code></pre>
+ * @param {String/HTMLElement/Roo.Element} el The element to update
+ * @param {String} url The url
+ * @param {String/Object} params (optional) Url encoded param string or an object of name/value pairs
+ * @param {Object} options (optional) A config object with any of the UpdateManager properties you want to set - for example: {disableCaching:true, indicatorText: "Loading data..."}
+ * @static
+ * @deprecated
+ * @member Roo.UpdateManager
+ */
+Roo.UpdateManager.updateElement = function(el, url, params, options){
+    var um = Roo.get(el, true).getUpdateManager();
+    Roo.apply(um, options);
+    um.update(url, params, options ? options.callback : null);
+};
+// alias for backwards compat
+Roo.UpdateManager.update = Roo.UpdateManager.updateElement;
+/**
+ * @class Roo.UpdateManager.BasicRenderer
+ * Default Content renderer. Updates the elements innerHTML with the responseText.
+ */
+Roo.UpdateManager.BasicRenderer = function(){};
+
+Roo.UpdateManager.BasicRenderer.prototype = {
+    /**
+     * This is called when the transaction is completed and it's time to update the element - The BasicRenderer
+     * updates the elements innerHTML with the responseText - To perform a custom render (i.e. XML or JSON processing),
+     * create an object with a "render(el, response)" method and pass it to setRenderer on the UpdateManager.
+     * @param {Roo.Element} el The element being rendered
+     * @param {Object} response The YUI Connect response object
+     * @param {UpdateManager} updateManager The calling update manager
+     * @param {Function} callback A callback that will need to be called if loadScripts is true on the UpdateManager
+     */
+     render : function(el, response, updateManager, callback){
+        el.update(response.responseText, updateManager.loadScripts, callback);
+    }
+};
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.util.DelayedTask
+ * Provides a convenient method of performing setTimeout where a new
+ * timeout cancels the old timeout. An example would be performing validation on a keypress.
+ * You can use this class to buffer
+ * the keypress events for a certain number of milliseconds, and perform only if they stop
+ * for that amount of time.
+ * @constructor The parameters to this constructor serve as defaults and are not required.
+ * @param {Function} fn (optional) The default function to timeout
+ * @param {Object} scope (optional) The default scope of that timeout
+ * @param {Array} args (optional) The default Array of arguments
+ */
+Roo.util.DelayedTask = function(fn, scope, args){
+    var id = null, d, t;
+
+    var call = function(){
+        var now = new Date().getTime();
+        if(now - t >= d){
+            clearInterval(id);
+            id = null;
+            fn.apply(scope, args || []);
+        }
+    };
+    /**
+     * Cancels any pending timeout and queues a new one
+     * @param {Number} delay The milliseconds to delay
+     * @param {Function} newFn (optional) Overrides function passed to constructor
+     * @param {Object} newScope (optional) Overrides scope passed to constructor
+     * @param {Array} newArgs (optional) Overrides args passed to constructor
+     */
+    this.delay = function(delay, newFn, newScope, newArgs){
+        if(id && delay != d){
+            this.cancel();
+        }
+        d = delay;
+        t = new Date().getTime();
+        fn = newFn || fn;
+        scope = newScope || scope;
+        args = newArgs || args;
+        if(!id){
+            id = setInterval(call, d);
+        }
+    };
+
+    /**
+     * Cancel the last queued timeout
+     */
+    this.cancel = function(){
+        if(id){
+            clearInterval(id);
+            id = null;
+        }
+    };
+};/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+ 
+Roo.util.TaskRunner = function(interval){
+    interval = interval || 10;
+    var tasks = [], removeQueue = [];
+    var id = 0;
+    var running = false;
+
+    var stopThread = function(){
+        running = false;
+        clearInterval(id);
+        id = 0;
+    };
+
+    var startThread = function(){
+        if(!running){
+            running = true;
+            id = setInterval(runTasks, interval);
+        }
+    };
+
+    var removeTask = function(task){
+        removeQueue.push(task);
+        if(task.onStop){
+            task.onStop();
+        }
+    };
+
+    var runTasks = function(){
+        if(removeQueue.length > 0){
+            for(var i = 0, len = removeQueue.length; i < len; i++){
+                tasks.remove(removeQueue[i]);
+            }
+            removeQueue = [];
+            if(tasks.length < 1){
+                stopThread();
+                return;
+            }
+        }
+        var now = new Date().getTime();
+        for(var i = 0, len = tasks.length; i < len; ++i){
+            var t = tasks[i];
+            var itime = now - t.taskRunTime;
+            if(t.interval <= itime){
+                var rt = t.run.apply(t.scope || t, t.args || [++t.taskRunCount]);
+                t.taskRunTime = now;
+                if(rt === false || t.taskRunCount === t.repeat){
+                    removeTask(t);
+                    return;
+                }
+            }
+            if(t.duration && t.duration <= (now - t.taskStartTime)){
+                removeTask(t);
+            }
+        }
+    };
+
+    /**
+     * Queues a new task.
+     * @param {Object} task
+     */
+    this.start = function(task){
+        tasks.push(task);
+        task.taskStartTime = new Date().getTime();
+        task.taskRunTime = 0;
+        task.taskRunCount = 0;
+        startThread();
+        return task;
+    };
+
+    this.stop = function(task){
+        removeTask(task);
+        return task;
+    };
+
+    this.stopAll = function(){
+        stopThread();
+        for(var i = 0, len = tasks.length; i < len; i++){
+            if(tasks[i].onStop){
+                tasks[i].onStop();
+            }
+        }
+        tasks = [];
+        removeQueue = [];
+    };
+};
+
+Roo.TaskMgr = new Roo.util.TaskRunner();/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+ 
+/**
+ * @class Roo.util.MixedCollection
+ * @extends Roo.util.Observable
+ * A Collection class that maintains both numeric indexes and keys and exposes events.
+ * @constructor
+ * @param {Boolean} allowFunctions True if the addAll function should add function references to the
+ * collection (defaults to false)
+ * @param {Function} keyFn A function that can accept an item of the type(s) stored in this MixedCollection
+ * and return the key value for that item.  This is used when available to look up the key on items that
+ * were passed without an explicit key parameter to a MixedCollection method.  Passing this parameter is
+ * equivalent to providing an implementation for the {@link #getKey} method.
+ */
+Roo.util.MixedCollection = function(allowFunctions, keyFn){
+    this.items = [];
+    this.map = {};
+    this.keys = [];
+    this.length = 0;
+    this.addEvents({
+        /**
+         * @event clear
+         * Fires when the collection is cleared.
+         */
+        "clear" : true,
+        /**
+         * @event add
+         * Fires when an item is added to the collection.
+         * @param {Number} index The index at which the item was added.
+         * @param {Object} o The item added.
+         * @param {String} key The key associated with the added item.
+         */
+        "add" : true,
+        /**
+         * @event replace
+         * Fires when an item is replaced in the collection.
+         * @param {String} key he key associated with the new added.
+         * @param {Object} old The item being replaced.
+         * @param {Object} new The new item.
+         */
+        "replace" : true,
+        /**
+         * @event remove
+         * Fires when an item is removed from the collection.
+         * @param {Object} o The item being removed.
+         * @param {String} key (optional) The key associated with the removed item.
+         */
+        "remove" : true,
+        "sort" : true
+    });
+    this.allowFunctions = allowFunctions === true;
+    if(keyFn){
+        this.getKey = keyFn;
+    }
+    Roo.util.MixedCollection.superclass.constructor.call(this);
+};
+
+Roo.extend(Roo.util.MixedCollection, Roo.util.Observable, {
+    allowFunctions : false,
+    
+/**
+ * Adds an item to the collection.
+ * @param {String} key The key to associate with the item
+ * @param {Object} o The item to add.
+ * @return {Object} The item added.
+ */
+    add : function(key, o){
+        if(arguments.length == 1){
+            o = arguments[0];
+            key = this.getKey(o);
+        }
+        if(typeof key == "undefined" || key === null){
+            this.length++;
+            this.items.push(o);
+            this.keys.push(null);
+        }else{
+            var old = this.map[key];
+            if(old){
+                return this.replace(key, o);
+            }
+            this.length++;
+            this.items.push(o);
+            this.map[key] = o;
+            this.keys.push(key);
+        }
+        this.fireEvent("add", this.length-1, o, key);
+        return o;
+    },
+   
+/**
+  * MixedCollection has a generic way to fetch keys if you implement getKey.
+<pre><code>
+// normal way
+var mc = new Roo.util.MixedCollection();
+mc.add(someEl.dom.id, someEl);
+mc.add(otherEl.dom.id, otherEl);
+//and so on
+
+// using getKey
+var mc = new Roo.util.MixedCollection();
+mc.getKey = function(el){
+   return el.dom.id;
+};
+mc.add(someEl);
+mc.add(otherEl);
+
+// or via the constructor
+var mc = new Roo.util.MixedCollection(false, function(el){
+   return el.dom.id;
+});
+mc.add(someEl);
+mc.add(otherEl);
+</code></pre>
+ * @param o {Object} The item for which to find the key.
+ * @return {Object} The key for the passed item.
+ */
+    getKey : function(o){
+         return o.id; 
+    },
+   
+/**
+ * Replaces an item in the collection.
+ * @param {String} key The key associated with the item to replace, or the item to replace.
+ * @param o {Object} o (optional) If the first parameter passed was a key, the item to associate with that key.
+ * @return {Object}  The new item.
+ */
+    replace : function(key, o){
+        if(arguments.length == 1){
+            o = arguments[0];
+            key = this.getKey(o);
+        }
+        var old = this.item(key);
+        if(typeof key == "undefined" || key === null || typeof old == "undefined"){
+             return this.add(key, o);
+        }
+        var index = this.indexOfKey(key);
+        this.items[index] = o;
+        this.map[key] = o;
+        this.fireEvent("replace", key, old, o);
+        return o;
+    },
+   
+/**
+ * Adds all elements of an Array or an Object to the collection.
+ * @param {Object/Array} objs An Object containing properties which will be added to the collection, or
+ * an Array of values, each of which are added to the collection.
+ */
+    addAll : function(objs){
+        if(arguments.length > 1 || objs instanceof Array){
+            var args = arguments.length > 1 ? arguments : objs;
+            for(var i = 0, len = args.length; i < len; i++){
+                this.add(args[i]);
+            }
+        }else{
+            for(var key in objs){
+                if(this.allowFunctions || typeof objs[key] != "function"){
+                    this.add(key, objs[key]);
+                }
+            }
+        }
+    },
+   
+/**
+ * Executes the specified function once for every item in the collection, passing each
+ * item as the first and only parameter. returning false from the function will stop the iteration.
+ * @param {Function} fn The function to execute for each item.
+ * @param {Object} scope (optional) The scope in which to execute the function.
+ */
+    each : function(fn, scope){
+        var items = [].concat(this.items); // each safe for removal
+        for(var i = 0, len = items.length; i < len; i++){
+            if(fn.call(scope || items[i], items[i], i, len) === false){
+                break;
+            }
+        }
+    },
+   
+/**
+ * Executes the specified function once for every key in the collection, passing each
+ * key, and its associated item as the first two parameters.
+ * @param {Function} fn The function to execute for each item.
+ * @param {Object} scope (optional) The scope in which to execute the function.
+ */
+    eachKey : function(fn, scope){
+        for(var i = 0, len = this.keys.length; i < len; i++){
+            fn.call(scope || window, this.keys[i], this.items[i], i, len);
+        }
+    },
+   
+/**
+ * Returns the first item in the collection which elicits a true return value from the
+ * passed selection function.
+ * @param {Function} fn The selection function to execute for each item.
+ * @param {Object} scope (optional) The scope in which to execute the function.
+ * @return {Object} The first item in the collection which returned true from the selection function.
+ */
+    find : function(fn, scope){
+        for(var i = 0, len = this.items.length; i < len; i++){
+            if(fn.call(scope || window, this.items[i], this.keys[i])){
+                return this.items[i];
+            }
+        }
+        return null;
+    },
+   
+/**
+ * Inserts an item at the specified index in the collection.
+ * @param {Number} index The index to insert the item at.
+ * @param {String} key The key to associate with the new item, or the item itself.
+ * @param {Object} o  (optional) If the second parameter was a key, the new item.
+ * @return {Object} The item inserted.
+ */
+    insert : function(index, key, o){
+        if(arguments.length == 2){
+            o = arguments[1];
+            key = this.getKey(o);
+        }
+        if(index >= this.length){
+            return this.add(key, o);
+        }
+        this.length++;
+        this.items.splice(index, 0, o);
+        if(typeof key != "undefined" && key != null){
+            this.map[key] = o;
+        }
+        this.keys.splice(index, 0, key);
+        this.fireEvent("add", index, o, key);
+        return o;
+    },
+   
+/**
+ * Removed an item from the collection.
+ * @param {Object} o The item to remove.
+ * @return {Object} The item removed.
+ */
+    remove : function(o){
+        return this.removeAt(this.indexOf(o));
+    },
+   
+/**
+ * Remove an item from a specified index in the collection.
+ * @param {Number} index The index within the collection of the item to remove.
+ */
+    removeAt : function(index){
+        if(index < this.length && index >= 0){
+            this.length--;
+            var o = this.items[index];
+            this.items.splice(index, 1);
+            var key = this.keys[index];
+            if(typeof key != "undefined"){
+                delete this.map[key];
+            }
+            this.keys.splice(index, 1);
+            this.fireEvent("remove", o, key);
+        }
+    },
+   
+/**
+ * Removed an item associated with the passed key fom the collection.
+ * @param {String} key The key of the item to remove.
+ */
+    removeKey : function(key){
+        return this.removeAt(this.indexOfKey(key));
+    },
+   
+/**
+ * Returns the number of items in the collection.
+ * @return {Number} the number of items in the collection.
+ */
+    getCount : function(){
+        return this.length; 
+    },
+   
+/**
+ * Returns index within the collection of the passed Object.
+ * @param {Object} o The item to find the index of.
+ * @return {Number} index of the item.
+ */
+    indexOf : function(o){
+        if(!this.items.indexOf){
+            for(var i = 0, len = this.items.length; i < len; i++){
+                if(this.items[i] == o) return i;
+            }
+            return -1;
+        }else{
+            return this.items.indexOf(o);
+        }
+    },
+   
+/**
+ * Returns index within the collection of the passed key.
+ * @param {String} key The key to find the index of.
+ * @return {Number} index of the key.
+ */
+    indexOfKey : function(key){
+        if(!this.keys.indexOf){
+            for(var i = 0, len = this.keys.length; i < len; i++){
+                if(this.keys[i] == key) return i;
+            }
+            return -1;
+        }else{
+            return this.keys.indexOf(key);
+        }
+    },
+   
+/**
+ * Returns the item associated with the passed key OR index. Key has priority over index.
+ * @param {String/Number} key The key or index of the item.
+ * @return {Object} The item associated with the passed key.
+ */
+    item : function(key){
+        var item = typeof this.map[key] != "undefined" ? this.map[key] : this.items[key];
+        return typeof item != 'function' || this.allowFunctions ? item : null; // for prototype!
+    },
+    
+/**
+ * Returns the item at the specified index.
+ * @param {Number} index The index of the item.
+ * @return {Object}
+ */
+    itemAt : function(index){
+        return this.items[index];
+    },
+    
+/**
+ * Returns the item associated with the passed key.
+ * @param {String/Number} key The key of the item.
+ * @return {Object} The item associated with the passed key.
+ */
+    key : function(key){
+        return this.map[key];
+    },
+   
+/**
+ * Returns true if the collection contains the passed Object as an item.
+ * @param {Object} o  The Object to look for in the collection.
+ * @return {Boolean} True if the collection contains the Object as an item.
+ */
+    contains : function(o){
+        return this.indexOf(o) != -1;
+    },
+   
+/**
+ * Returns true if the collection contains the passed Object as a key.
+ * @param {String} key The key to look for in the collection.
+ * @return {Boolean} True if the collection contains the Object as a key.
+ */
+    containsKey : function(key){
+        return typeof this.map[key] != "undefined";
+    },
+   
+/**
+ * Removes all items from the collection.
+ */
+    clear : function(){
+        this.length = 0;
+        this.items = [];
+        this.keys = [];
+        this.map = {};
+        this.fireEvent("clear");
+    },
+   
+/**
+ * Returns the first item in the collection.
+ * @return {Object} the first item in the collection..
+ */
+    first : function(){
+        return this.items[0]; 
+    },
+   
+/**
+ * Returns the last item in the collection.
+ * @return {Object} the last item in the collection..
+ */
+    last : function(){
+        return this.items[this.length-1];   
+    },
+    
+    _sort : function(property, dir, fn){
+        var dsc = String(dir).toUpperCase() == "DESC" ? -1 : 1;
+        fn = fn || function(a, b){
+            return a-b;
+        };
+        var c = [], k = this.keys, items = this.items;
+        for(var i = 0, len = items.length; i < len; i++){
+            c[c.length] = {key: k[i], value: items[i], index: i};
+        }
+        c.sort(function(a, b){
+            var v = fn(a[property], b[property]) * dsc;
+            if(v == 0){
+                v = (a.index < b.index ? -1 : 1);
+            }
+            return v;
+        });
+        for(var i = 0, len = c.length; i < len; i++){
+            items[i] = c[i].value;
+            k[i] = c[i].key;
+        }
+        this.fireEvent("sort", this);
+    },
+    
+    /**
+     * Sorts this collection with the passed comparison function
+     * @param {String} direction (optional) "ASC" or "DESC"
+     * @param {Function} fn (optional) comparison function
+     */
+    sort : function(dir, fn){
+        this._sort("value", dir, fn);
+    },
+    
+    /**
+     * Sorts this collection by keys
+     * @param {String} direction (optional) "ASC" or "DESC"
+     * @param {Function} fn (optional) a comparison function (defaults to case insensitive string)
+     */
+    keySort : function(dir, fn){
+        this._sort("key", dir, fn || function(a, b){
+            return String(a).toUpperCase()-String(b).toUpperCase();
+        });
+    },
+    
+    /**
+     * Returns a range of items in this collection
+     * @param {Number} startIndex (optional) defaults to 0
+     * @param {Number} endIndex (optional) default to the last item
+     * @return {Array} An array of items
+     */
+    getRange : function(start, end){
+        var items = this.items;
+        if(items.length < 1){
+            return [];
+        }
+        start = start || 0;
+        end = Math.min(typeof end == "undefined" ? this.length-1 : end, this.length-1);
+        var r = [];
+        if(start <= end){
+            for(var i = start; i <= end; i++) {
+        	    r[r.length] = items[i];
+            }
+        }else{
+            for(var i = start; i >= end; i--) {
+        	    r[r.length] = items[i];
+            }
+        }
+        return r;
+    },
+        
+    /**
+     * Filter the <i>objects</i> in this collection by a specific property. 
+     * Returns a new collection that has been filtered.
+     * @param {String} property A property on your objects
+     * @param {String/RegExp} value Either string that the property values 
+     * should start with or a RegExp to test against the property
+     * @return {MixedCollection} The new filtered collection
+     */
+    filter : function(property, value){
+        if(!value.exec){ // not a regex
+            value = String(value);
+            if(value.length == 0){
+                return this.clone();
+            }
+            value = new RegExp("^" + Roo.escapeRe(value), "i");
+        }
+        return this.filterBy(function(o){
+            return o && value.test(o[property]);
+        });
+	},
+    
+    /**
+     * Filter by a function. * Returns a new collection that has been filtered.
+     * The passed function will be called with each 
+     * object in the collection. If the function returns true, the value is included 
+     * otherwise it is filtered.
+     * @param {Function} fn The function to be called, it will receive the args o (the object), k (the key)
+     * @param {Object} scope (optional) The scope of the function (defaults to this) 
+     * @return {MixedCollection} The new filtered collection
+     */
+    filterBy : function(fn, scope){
+        var r = new Roo.util.MixedCollection();
+        r.getKey = this.getKey;
+        var k = this.keys, it = this.items;
+        for(var i = 0, len = it.length; i < len; i++){
+            if(fn.call(scope||this, it[i], k[i])){
+				r.add(k[i], it[i]);
+			}
+        }
+        return r;
+    },
+    
+    /**
+     * Creates a duplicate of this collection
+     * @return {MixedCollection}
+     */
+    clone : function(){
+        var r = new Roo.util.MixedCollection();
+        var k = this.keys, it = this.items;
+        for(var i = 0, len = it.length; i < len; i++){
+            r.add(k[i], it[i]);
+        }
+        r.getKey = this.getKey;
+        return r;
+    }
+});
+/**
+ * Returns the item associated with the passed key or index.
+ * @method
+ * @param {String/Number} key The key or index of the item.
+ * @return {Object} The item associated with the passed key.
+ */
+Roo.util.MixedCollection.prototype.get = Roo.util.MixedCollection.prototype.item;
