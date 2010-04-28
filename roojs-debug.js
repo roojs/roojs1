@@ -32175,4 +32175,1024 @@ Roo.extend(Roo.tree.RootTreeNodeUI, Roo.tree.TreeNodeUI, {
     },
     expand : function(){
     }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+/**
+ * @class Roo.tree.TreeLoader
+ * @extends Roo.util.Observable
+ * A TreeLoader provides for lazy loading of an {@link Roo.tree.TreeNode}'s child
+ * nodes from a specified URL. The response must be a javascript Array definition
+ * who's elements are node definition objects. eg:
+ * <pre><code>
+   [{ 'id': 1, 'text': 'A folder Node', 'leaf': false },
+    { 'id': 2, 'text': 'A leaf Node', 'leaf': true }]
+</code></pre>
+ * <br><br>
+ * A server request is sent, and child nodes are loaded only when a node is expanded.
+ * The loading node's id is passed to the server under the parameter name "node" to
+ * enable the server to produce the correct child nodes.
+ * <br><br>
+ * To pass extra parameters, an event handler may be attached to the "beforeload"
+ * event, and the parameters specified in the TreeLoader's baseParams property:
+ * <pre><code>
+    myTreeLoader.on("beforeload", function(treeLoader, node) {
+        this.baseParams.category = node.attributes.category;
+    }, this);
+</code></pre><
+ * This would pass an HTTP parameter called "category" to the server containing
+ * the value of the Node's "category" attribute.
+ * @constructor
+ * Creates a new Treeloader.
+ * @param {Object} config A config object containing config properties.
+ */
+Roo.tree.TreeLoader = function(config){
+    this.baseParams = {};
+    this.requestMethod = "POST";
+    Roo.apply(this, config);
+
+    this.addEvents({
+        /**
+         * @event beforeload
+         * Fires before a network request is made to retrieve the Json text which specifies a node's children.
+         * @param {Object} This TreeLoader object.
+         * @param {Object} node The {@link Roo.tree.TreeNode} object being loaded.
+         * @param {Object} callback The callback function specified in the {@link #load} call.
+         */
+        "beforeload" : true,
+        /**
+         * @event load
+         * Fires when the node has been successfuly loaded.
+         * @param {Object} This TreeLoader object.
+         * @param {Object} node The {@link Roo.tree.TreeNode} object being loaded.
+         * @param {Object} response The response object containing the data from the server.
+         */
+        "load" : true,
+        /**
+         * @event loadexception
+         * Fires if the network request failed.
+         * @param {Object} This TreeLoader object.
+         * @param {Object} node The {@link Roo.tree.TreeNode} object being loaded.
+         * @param {Object} response The response object containing the data from the server.
+         */
+        "loadexception" : true
+    });
+
+    Roo.tree.TreeLoader.superclass.constructor.call(this);
+};
+
+Roo.extend(Roo.tree.TreeLoader, Roo.util.Observable, {
+    /**
+    * @cfg {String} dataUrl The URL from which to request a Json string which
+    * specifies an array of node definition object representing the child nodes
+    * to be loaded.
+    */
+    /**
+    * @cfg {Object} baseParams (optional) An object containing properties which
+    * specify HTTP parameters to be passed to each request for child nodes.
+    */
+    /**
+    * @cfg {Object} baseAttrs (optional) An object containing attributes to be added to all nodes
+    * created by this loader. If the attributes sent by the server have an attribute in this object,
+    * they take priority.
+    */
+    /**
+    * @cfg {Object} uiProviders (optional) An object containing properties which
+    * specify custom {@link Roo.tree.TreeNodeUI} implementations. If the optional
+    * <i>uiProvider</i> attribute of a returned child node is a string rather
+    * than a reference to a TreeNodeUI implementation, this that string value
+    * is used as a property name in the uiProviders object. You can define the provider named
+    * 'default' , and this will be used for all nodes (if no uiProvider is delivered by the node data)
+    */
+    uiProviders : {},
+
+    /**
+    * @cfg {Boolean} clearOnLoad (optional) Default to true. Remove previously existing
+    * child nodes before loading.
+    */
+    clearOnLoad : true,
+
+    /**
+    * @cfg {String} root (optional) Default to false. Use this to read data from an object 
+    * property on loading, rather than expecting an array. (eg. more compatible to a standard
+    * Grid query { data : [ .....] }
+    */
+    
+    root : false,
+     /**
+    * @cfg {String} queryParam (optional) 
+    * Name of the query as it will be passed on the querystring (defaults to 'node')
+    * eg. the request will be ?node=[id]
+    */
+    
+    
+    queryParam: false,
+    
+    /**
+     * Load an {@link Roo.tree.TreeNode} from the URL specified in the constructor.
+     * This is called automatically when a node is expanded, but may be used to reload
+     * a node (or append new children if the {@link #clearOnLoad} option is false.)
+     * @param {Roo.tree.TreeNode} node
+     * @param {Function} callback
+     */
+    load : function(node, callback){
+        if(this.clearOnLoad){
+            while(node.firstChild){
+                node.removeChild(node.firstChild);
+            }
+        }
+        if(node.attributes.children){ // preloaded json children
+            var cs = node.attributes.children;
+            for(var i = 0, len = cs.length; i < len; i++){
+                node.appendChild(this.createNode(cs[i]));
+            }
+            if(typeof callback == "function"){
+                callback();
+            }
+        }else if(this.dataUrl){
+            this.requestData(node, callback);
+        }
+    },
+
+    getParams: function(node){
+        var buf = [], bp = this.baseParams;
+        for(var key in bp){
+            if(typeof bp[key] != "function"){
+                buf.push(encodeURIComponent(key), "=", encodeURIComponent(bp[key]), "&");
+            }
+        }
+        var n = this.queryParam === false ? 'node' : this.queryParam;
+        buf.push(n + "=", encodeURIComponent(node.id));
+        return buf.join("");
+    },
+
+    requestData : function(node, callback){
+        if(this.fireEvent("beforeload", this, node, callback) !== false){
+            this.transId = Roo.Ajax.request({
+                method:this.requestMethod,
+                url: this.dataUrl||this.url,
+                success: this.handleResponse,
+                failure: this.handleFailure,
+                scope: this,
+                argument: {callback: callback, node: node},
+                params: this.getParams(node)
+            });
+        }else{
+            // if the load is cancelled, make sure we notify
+            // the node that we are done
+            if(typeof callback == "function"){
+                callback();
+            }
+        }
+    },
+
+    isLoading : function(){
+        return this.transId ? true : false;
+    },
+
+    abort : function(){
+        if(this.isLoading()){
+            Roo.Ajax.abort(this.transId);
+        }
+    },
+
+    /**
+    * Override this function for custom TreeNode node implementation
+    */
+    createNode : function(attr){
+        // apply baseAttrs, nice idea Corey!
+        if(this.baseAttrs){
+            Roo.applyIf(attr, this.baseAttrs);
+        }
+        if(this.applyLoader !== false){
+            attr.loader = this;
+        }
+        if(typeof(attr.uiProvider) == 'string'){
+            
+           attr.uiProvider = this.uiProviders[attr.uiProvider] || 
+                /**  eval:var:attr */ eval(attr.uiProvider);
+        }
+        if(typeof(this.uiProviders['default']) != 'undefined') {
+            attr.uiProvider = this.uiProviders['default'];
+        }
+        attr.leaf  = typeof(attr.leaf) == 'string' ? attr.leaf * 1 : attr.leaf;
+        return(attr.leaf ?
+                        new Roo.tree.TreeNode(attr) :
+                        new Roo.tree.AsyncTreeNode(attr));
+    },
+
+    processResponse : function(response, node, callback){
+        var json = response.responseText;
+        try {
+            
+            var o = /**  eval:var:zzzzzzzzzz */ eval("("+json+")");
+            if (this.root !== false) {
+                o = o[this.root];
+            }
+            
+            for(var i = 0, len = o.length; i < len; i++){
+                var n = this.createNode(o[i]);
+                if(n){
+                    node.appendChild(n);
+                }
+            }
+            if(typeof callback == "function"){
+                callback(this, node);
+            }
+        }catch(e){
+            this.handleFailure(response);
+        }
+    },
+
+    handleResponse : function(response){
+        this.transId = false;
+        var a = response.argument;
+        this.processResponse(response, a.node, a.callback);
+        this.fireEvent("load", this, a.node, response);
+    },
+
+    handleFailure : function(response){
+        this.transId = false;
+        var a = response.argument;
+        this.fireEvent("loadexception", this, a.node, response);
+        if(typeof a.callback == "function"){
+            a.callback(this, a.node);
+        }
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+* @class Roo.tree.TreeFilter
+* Note this class is experimental and doesn't update the indent (lines) or expand collapse icons of the nodes
+* @param {TreePanel} tree
+* @param {Object} config (optional)
+ */
+Roo.tree.TreeFilter = function(tree, config){
+    this.tree = tree;
+    this.filtered = {};
+    Roo.apply(this, config);
+};
+
+Roo.tree.TreeFilter.prototype = {
+    clearBlank:false,
+    reverse:false,
+    autoClear:false,
+    remove:false,
+
+     /**
+     * Filter the data by a specific attribute.
+     * @param {String/RegExp} value Either string that the attribute value
+     * should start with or a RegExp to test against the attribute
+     * @param {String} attr (optional) The attribute passed in your node's attributes collection. Defaults to "text".
+     * @param {TreeNode} startNode (optional) The node to start the filter at.
+     */
+    filter : function(value, attr, startNode){
+        attr = attr || "text";
+        var f;
+        if(typeof value == "string"){
+            var vlen = value.length;
+            // auto clear empty filter
+            if(vlen == 0 && this.clearBlank){
+                this.clear();
+                return;
+            }
+            value = value.toLowerCase();
+            f = function(n){
+                return n.attributes[attr].substr(0, vlen).toLowerCase() == value;
+            };
+        }else if(value.exec){ // regex?
+            f = function(n){
+                return value.test(n.attributes[attr]);
+            };
+        }else{
+            throw 'Illegal filter type, must be string or regex';
+        }
+        this.filterBy(f, null, startNode);
+	},
+
+    /**
+     * Filter by a function. The passed function will be called with each
+     * node in the tree (or from the startNode). If the function returns true, the node is kept
+     * otherwise it is filtered. If a node is filtered, its children are also filtered.
+     * @param {Function} fn The filter function
+     * @param {Object} scope (optional) The scope of the function (defaults to the current node)
+     */
+    filterBy : function(fn, scope, startNode){
+        startNode = startNode || this.tree.root;
+        if(this.autoClear){
+            this.clear();
+        }
+        var af = this.filtered, rv = this.reverse;
+        var f = function(n){
+            if(n == startNode){
+                return true;
+            }
+            if(af[n.id]){
+                return false;
+            }
+            var m = fn.call(scope || n, n);
+            if(!m || rv){
+                af[n.id] = n;
+                n.ui.hide();
+                return false;
+            }
+            return true;
+        };
+        startNode.cascade(f);
+        if(this.remove){
+           for(var id in af){
+               if(typeof id != "function"){
+                   var n = af[id];
+                   if(n && n.parentNode){
+                       n.parentNode.removeChild(n);
+                   }
+               }
+           }
+        }
+    },
+
+    /**
+     * Clears the current filter. Note: with the "remove" option
+     * set a filter cannot be cleared.
+     */
+    clear : function(){
+        var t = this.tree;
+        var af = this.filtered;
+        for(var id in af){
+            if(typeof id != "function"){
+                var n = af[id];
+                if(n){
+                    n.ui.show();
+                }
+            }
+        }
+        this.filtered = {};
+    }
+};
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+
+/**
+ * @class Roo.tree.TreeSorter
+ * Provides sorting of nodes in a TreePanel
+ * 
+ * @cfg {Boolean} folderSort True to sort leaf nodes under non leaf nodes
+ * @cfg {String} property The named attribute on the node to sort by (defaults to text)
+ * @cfg {String} dir The direction to sort (asc or desc) (defaults to asc)
+ * @cfg {String} leafAttr The attribute used to determine leaf nodes in folder sort (defaults to "leaf")
+ * @cfg {Boolean} caseSensitive true for case sensitive sort (defaults to false)
+ * @cfg {Function} sortType A custom "casting" function used to convert node values before sorting
+ * @constructor
+ * @param {TreePanel} tree
+ * @param {Object} config
+ */
+Roo.tree.TreeSorter = function(tree, config){
+    Roo.apply(this, config);
+    tree.on("beforechildrenrendered", this.doSort, this);
+    tree.on("append", this.updateSort, this);
+    tree.on("insert", this.updateSort, this);
+    
+    var dsc = this.dir && this.dir.toLowerCase() == "desc";
+    var p = this.property || "text";
+    var sortType = this.sortType;
+    var fs = this.folderSort;
+    var cs = this.caseSensitive === true;
+    var leafAttr = this.leafAttr || 'leaf';
+
+    this.sortFn = function(n1, n2){
+        if(fs){
+            if(n1.attributes[leafAttr] && !n2.attributes[leafAttr]){
+                return 1;
+            }
+            if(!n1.attributes[leafAttr] && n2.attributes[leafAttr]){
+                return -1;
+            }
+        }
+    	var v1 = sortType ? sortType(n1) : (cs ? n1.attributes[p] : n1.attributes[p].toUpperCase());
+    	var v2 = sortType ? sortType(n2) : (cs ? n2.attributes[p] : n2.attributes[p].toUpperCase());
+    	if(v1 < v2){
+			return dsc ? +1 : -1;
+		}else if(v1 > v2){
+			return dsc ? -1 : +1;
+        }else{
+	    	return 0;
+        }
+    };
+};
+
+Roo.tree.TreeSorter.prototype = {
+    doSort : function(node){
+        node.sort(this.sortFn);
+    },
+    
+    compareNodes : function(n1, n2){
+        return (n1.text.toUpperCase() > n2.text.toUpperCase() ? 1 : -1);
+    },
+    
+    updateSort : function(tree, node){
+        if(node.childrenRendered){
+            this.doSort.defer(1, this, [node]);
+        }
+    }
+};/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+if(Roo.dd.DropZone){
+    
+Roo.tree.TreeDropZone = function(tree, config){
+    this.allowParentInsert = false;
+    this.allowContainerDrop = false;
+    this.appendOnly = false;
+    Roo.tree.TreeDropZone.superclass.constructor.call(this, tree.innerCt, config);
+    this.tree = tree;
+    this.lastInsertClass = "x-tree-no-status";
+    this.dragOverData = {};
+};
+
+Roo.extend(Roo.tree.TreeDropZone, Roo.dd.DropZone, {
+    ddGroup : "TreeDD",
+    
+    expandDelay : 1000,
+    
+    expandNode : function(node){
+        if(node.hasChildNodes() && !node.isExpanded()){
+            node.expand(false, null, this.triggerCacheRefresh.createDelegate(this));
+        }
+    },
+    
+    queueExpand : function(node){
+        this.expandProcId = this.expandNode.defer(this.expandDelay, this, [node]);
+    },
+    
+    cancelExpand : function(){
+        if(this.expandProcId){
+            clearTimeout(this.expandProcId);
+            this.expandProcId = false;
+        }
+    },
+    
+    isValidDropPoint : function(n, pt, dd, e, data){
+        if(!n || !data){ return false; }
+        var targetNode = n.node;
+        var dropNode = data.node;
+        // default drop rules
+        if(!(targetNode && targetNode.isTarget && pt)){
+            return false;
+        }
+        if(pt == "append" && targetNode.allowChildren === false){
+            return false;
+        }
+        if((pt == "above" || pt == "below") && (targetNode.parentNode && targetNode.parentNode.allowChildren === false)){
+            return false;
+        }
+        if(dropNode && (targetNode == dropNode || dropNode.contains(targetNode))){
+            return false;
+        }
+        // reuse the object
+        var overEvent = this.dragOverData;
+        overEvent.tree = this.tree;
+        overEvent.target = targetNode;
+        overEvent.data = data;
+        overEvent.point = pt;
+        overEvent.source = dd;
+        overEvent.rawEvent = e;
+        overEvent.dropNode = dropNode;
+        overEvent.cancel = false;  
+        var result = this.tree.fireEvent("nodedragover", overEvent);
+        return overEvent.cancel === false && result !== false;
+    },
+    
+    getDropPoint : function(e, n, dd){
+        var tn = n.node;
+        if(tn.isRoot){
+            return tn.allowChildren !== false ? "append" : false; // always append for root
+        }
+        var dragEl = n.ddel;
+        var t = Roo.lib.Dom.getY(dragEl), b = t + dragEl.offsetHeight;
+        var y = Roo.lib.Event.getPageY(e);
+        var noAppend = tn.allowChildren === false || tn.isLeaf();
+        if(this.appendOnly || tn.parentNode.allowChildren === false){
+            return noAppend ? false : "append";
+        }
+        var noBelow = false;
+        if(!this.allowParentInsert){
+            noBelow = tn.hasChildNodes() && tn.isExpanded();
+        }
+        var q = (b - t) / (noAppend ? 2 : 3);
+        if(y >= t && y < (t + q)){
+            return "above";
+        }else if(!noBelow && (noAppend || y >= b-q && y <= b)){
+            return "below";
+        }else{
+            return "append";
+        }
+    },
+    
+    onNodeEnter : function(n, dd, e, data){
+        this.cancelExpand();
+    },
+    
+    onNodeOver : function(n, dd, e, data){
+        var pt = this.getDropPoint(e, n, dd);
+        var node = n.node;
+        
+        // auto node expand check
+        if(!this.expandProcId && pt == "append" && node.hasChildNodes() && !n.node.isExpanded()){
+            this.queueExpand(node);
+        }else if(pt != "append"){
+            this.cancelExpand();
+        }
+        
+        // set the insert point style on the target node
+        var returnCls = this.dropNotAllowed;
+        if(this.isValidDropPoint(n, pt, dd, e, data)){
+           if(pt){
+               var el = n.ddel;
+               var cls;
+               if(pt == "above"){
+                   returnCls = n.node.isFirst() ? "x-tree-drop-ok-above" : "x-tree-drop-ok-between";
+                   cls = "x-tree-drag-insert-above";
+               }else if(pt == "below"){
+                   returnCls = n.node.isLast() ? "x-tree-drop-ok-below" : "x-tree-drop-ok-between";
+                   cls = "x-tree-drag-insert-below";
+               }else{
+                   returnCls = "x-tree-drop-ok-append";
+                   cls = "x-tree-drag-append";
+               }
+               if(this.lastInsertClass != cls){
+                   Roo.fly(el).replaceClass(this.lastInsertClass, cls);
+                   this.lastInsertClass = cls;
+               }
+           }
+       }
+       return returnCls;
+    },
+    
+    onNodeOut : function(n, dd, e, data){
+        this.cancelExpand();
+        this.removeDropIndicators(n);
+    },
+    
+    onNodeDrop : function(n, dd, e, data){
+        var point = this.getDropPoint(e, n, dd);
+        var targetNode = n.node;
+        targetNode.ui.startDrop();
+        if(!this.isValidDropPoint(n, point, dd, e, data)){
+            targetNode.ui.endDrop();
+            return false;
+        }
+        // first try to find the drop node
+        var dropNode = data.node || (dd.getTreeNode ? dd.getTreeNode(data, targetNode, point, e) : null);
+        var dropEvent = {
+            tree : this.tree,
+            target: targetNode,
+            data: data,
+            point: point,
+            source: dd,
+            rawEvent: e,
+            dropNode: dropNode,
+            cancel: !dropNode   
+        };
+        var retval = this.tree.fireEvent("beforenodedrop", dropEvent);
+        if(retval === false || dropEvent.cancel === true || !dropEvent.dropNode){
+            targetNode.ui.endDrop();
+            return false;
+        }
+        // allow target changing
+        targetNode = dropEvent.target;
+        if(point == "append" && !targetNode.isExpanded()){
+            targetNode.expand(false, null, function(){
+                this.completeDrop(dropEvent);
+            }.createDelegate(this));
+        }else{
+            this.completeDrop(dropEvent);
+        }
+        return true;
+    },
+    
+    completeDrop : function(de){
+        var ns = de.dropNode, p = de.point, t = de.target;
+        if(!(ns instanceof Array)){
+            ns = [ns];
+        }
+        var n;
+        for(var i = 0, len = ns.length; i < len; i++){
+            n = ns[i];
+            if(p == "above"){
+                t.parentNode.insertBefore(n, t);
+            }else if(p == "below"){
+                t.parentNode.insertBefore(n, t.nextSibling);
+            }else{
+                t.appendChild(n);
+            }
+        }
+        n.ui.focus();
+        if(this.tree.hlDrop){
+            n.ui.highlight();
+        }
+        t.ui.endDrop();
+        this.tree.fireEvent("nodedrop", de);
+    },
+    
+    afterNodeMoved : function(dd, data, e, targetNode, dropNode){
+        if(this.tree.hlDrop){
+            dropNode.ui.focus();
+            dropNode.ui.highlight();
+        }
+        this.tree.fireEvent("nodedrop", this.tree, targetNode, data, dd, e);
+    },
+    
+    getTree : function(){
+        return this.tree;
+    },
+    
+    removeDropIndicators : function(n){
+        if(n && n.ddel){
+            var el = n.ddel;
+            Roo.fly(el).removeClass([
+                    "x-tree-drag-insert-above",
+                    "x-tree-drag-insert-below",
+                    "x-tree-drag-append"]);
+            this.lastInsertClass = "_noclass";
+        }
+    },
+    
+    beforeDragDrop : function(target, e, id){
+        this.cancelExpand();
+        return true;
+    },
+    
+    afterRepair : function(data){
+        if(data && Roo.enableFx){
+            data.node.ui.highlight();
+        }
+        this.hideProxy();
+    }    
+});
+
+}/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+
+if(Roo.dd.DragZone){
+Roo.tree.TreeDragZone = function(tree, config){
+    Roo.tree.TreeDragZone.superclass.constructor.call(this, tree.getTreeEl(), config);
+    this.tree = tree;
+};
+
+Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
+    ddGroup : "TreeDD",
+    
+    onBeforeDrag : function(data, e){
+        var n = data.node;
+        return n && n.draggable && !n.disabled;
+    },
+    
+    onInitDrag : function(e){
+        var data = this.dragData;
+        this.tree.getSelectionModel().select(data.node);
+        this.proxy.update("");
+        data.node.ui.appendDDGhost(this.proxy.ghost.dom);
+        this.tree.fireEvent("startdrag", this.tree, data.node, e);
+    },
+    
+    getRepairXY : function(e, data){
+        return data.node.ui.getDDRepairXY();
+    },
+    
+    onEndDrag : function(data, e){
+        this.tree.fireEvent("enddrag", this.tree, data.node, e);
+    },
+    
+    onValidDrop : function(dd, e, id){
+        this.tree.fireEvent("dragdrop", this.tree, this.dragData.node, dd, e);
+        this.hideProxy();
+    },
+    
+    beforeInvalidDrop : function(e, id){
+        // this scrolls the original position back into view
+        var sm = this.tree.getSelectionModel();
+        sm.clearSelections();
+        sm.select(this.dragData.node);
+    }
+});
+}/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+/**
+ * @class Roo.tree.TreeEditor
+ * @extends Roo.Editor
+ * Provides editor functionality for inline tree node editing.  Any valid {@link Roo.form.Field} can be used
+ * as the editor field.
+ * @constructor
+ * @param {TreePanel} tree
+ * @param {Object} config Either a prebuilt {@link Roo.form.Field} instance or a Field config object
+ */
+Roo.tree.TreeEditor = function(tree, config){
+    config = config || {};
+    var field = config.events ? config : new Roo.form.TextField(config);
+    Roo.tree.TreeEditor.superclass.constructor.call(this, field);
+
+    this.tree = tree;
+
+    tree.on('beforeclick', this.beforeNodeClick, this);
+    tree.getTreeEl().on('mousedown', this.hide, this);
+    this.on('complete', this.updateNode, this);
+    this.on('beforestartedit', this.fitToTree, this);
+    this.on('startedit', this.bindScroll, this, {delay:10});
+    this.on('specialkey', this.onSpecialKey, this);
+};
+
+Roo.extend(Roo.tree.TreeEditor, Roo.Editor, {
+    /**
+     * @cfg {String} alignment
+     * The position to align to (see {@link Roo.Element#alignTo} for more details, defaults to "l-l").
+     */
+    alignment: "l-l",
+    // inherit
+    autoSize: false,
+    /**
+     * @cfg {Boolean} hideEl
+     * True to hide the bound element while the editor is displayed (defaults to false)
+     */
+    hideEl : false,
+    /**
+     * @cfg {String} cls
+     * CSS class to apply to the editor (defaults to "x-small-editor x-tree-editor")
+     */
+    cls: "x-small-editor x-tree-editor",
+    /**
+     * @cfg {Boolean} shim
+     * True to shim the editor if selects/iframes could be displayed beneath it (defaults to false)
+     */
+    shim:false,
+    // inherit
+    shadow:"frame",
+    /**
+     * @cfg {Number} maxWidth
+     * The maximum width in pixels of the editor field (defaults to 250).  Note that if the maxWidth would exceed
+     * the containing tree element's size, it will be automatically limited for you to the container width, taking
+     * scroll and client offsets into account prior to each edit.
+     */
+    maxWidth: 250,
+
+    editDelay : 350,
+
+    // private
+    fitToTree : function(ed, el){
+        var td = this.tree.getTreeEl().dom, nd = el.dom;
+        if(td.scrollLeft >  nd.offsetLeft){ // ensure the node left point is visible
+            td.scrollLeft = nd.offsetLeft;
+        }
+        var w = Math.min(
+                this.maxWidth,
+                (td.clientWidth > 20 ? td.clientWidth : td.offsetWidth) - Math.max(0, nd.offsetLeft-td.scrollLeft) - /*cushion*/5);
+        this.setSize(w, '');
+    },
+
+    // private
+    triggerEdit : function(node){
+        this.completeEdit();
+        this.editNode = node;
+        this.startEdit(node.ui.textNode, node.text);
+    },
+
+    // private
+    bindScroll : function(){
+        this.tree.getTreeEl().on('scroll', this.cancelEdit, this);
+    },
+
+    // private
+    beforeNodeClick : function(node, e){
+        var sinceLast = (this.lastClick ? this.lastClick.getElapsed() : 0);
+        this.lastClick = new Date();
+        if(sinceLast > this.editDelay && this.tree.getSelectionModel().isSelected(node)){
+            e.stopEvent();
+            this.triggerEdit(node);
+            return false;
+        }
+    },
+
+    // private
+    updateNode : function(ed, value){
+        this.tree.getTreeEl().un('scroll', this.cancelEdit, this);
+        this.editNode.setText(value);
+    },
+
+    // private
+    onHide : function(){
+        Roo.tree.TreeEditor.superclass.onHide.call(this);
+        if(this.editNode){
+            this.editNode.ui.focus();
+        }
+    },
+
+    // private
+    onSpecialKey : function(field, e){
+        var k = e.getKey();
+        if(k == e.ESC){
+            e.stopEvent();
+            this.cancelEdit();
+        }else if(k == e.ENTER && !e.hasModifier()){
+            e.stopEvent();
+            this.completeEdit();
+        }
+    }
+});//<Script type="text/javascript">
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * Not documented??? - probably should be...
+ */
+
+Roo.tree.ColumnNodeUI = Roo.extend(Roo.tree.TreeNodeUI, {
+    //focus: Roo.emptyFn, // prevent odd scrolling behavior
+    
+    renderElements : function(n, a, targetNode, bulkRender){
+        //consel.log("renderElements?");
+        this.indentMarkup = n.parentNode ? n.parentNode.ui.getChildIndent() : '';
+
+        var t = n.getOwnerTree();
+        var tid = Pman.Tab.Document_TypesTree.tree.el.id;
+        
+        var cols = t.columns;
+        var bw = t.borderWidth;
+        var c = cols[0];
+        var href = a.href ? a.href : Roo.isGecko ? "" : "#";
+         var cb = typeof a.checked == "boolean";
+        var tx = String.format('{0}',n.text || (c.renderer ? c.renderer(a[c.dataIndex], n, a) : a[c.dataIndex]));
+        var colcls = 'x-t-' + tid + '-c0';
+        var buf = [
+            '<li class="x-tree-node">',
+            
+                
+                '<div class="x-tree-node-el ', a.cls,'">',
+                    // extran...
+                    '<div class="x-tree-col ', colcls, '" style="width:', c.width-bw, 'px;">',
+                
+                
+                        '<span class="x-tree-node-indent">',this.indentMarkup,'</span>',
+                        '<img src="', this.emptyIcon, '" class="x-tree-ec-icon  " />',
+                        '<img src="', a.icon || this.emptyIcon, '" class="x-tree-node-icon',
+                           (a.icon ? ' x-tree-node-inline-icon' : ''),
+                           (a.iconCls ? ' '+a.iconCls : ''),
+                           '" unselectable="on" />',
+                        (cb ? ('<input class="x-tree-node-cb" type="checkbox" ' + 
+                             (a.checked ? 'checked="checked" />' : ' />')) : ''),
+                             
+                        '<a class="x-tree-node-anchor" hidefocus="on" href="',href,'" tabIndex="1" ',
+                            (a.hrefTarget ? ' target="' +a.hrefTarget + '"' : ''), '>',
+                            '<span unselectable="on" qtip="' + tx + '">',
+                             tx,
+                             '</span></a>' ,
+                    '</div>',
+                     '<a class="x-tree-node-anchor" hidefocus="on" href="',href,'" tabIndex="1" ',
+                            (a.hrefTarget ? ' target="' +a.hrefTarget + '"' : ''), '>',
+                 ];
+        
+        for(var i = 1, len = cols.length; i < len; i++){
+            c = cols[i];
+            colcls = 'x-t-' + tid + '-c' +i;
+            tx = String.format('{0}', (c.renderer ? c.renderer(a[c.dataIndex], n, a) : a[c.dataIndex]));
+            buf.push('<div class="x-tree-col ', colcls, ' ' ,(c.cls?c.cls:''),'" style="width:',c.width-bw,'px;">',
+                        '<div class="x-tree-col-text" qtip="' + tx +'">',tx,"</div>",
+                      "</div>");
+         }
+         
+         buf.push(
+            '</a>',
+            '<div class="x-clear"></div></div>',
+            '<ul class="x-tree-node-ct" style="display:none;"></ul>',
+            "</li>");
+        
+        if(bulkRender !== true && n.nextSibling && n.nextSibling.ui.getEl()){
+            this.wrap = Roo.DomHelper.insertHtml("beforeBegin",
+                                n.nextSibling.ui.getEl(), buf.join(""));
+        }else{
+            this.wrap = Roo.DomHelper.insertHtml("beforeEnd", targetNode, buf.join(""));
+        }
+        var el = this.wrap.firstChild;
+        this.elRow = el;
+        this.elNode = el.firstChild;
+        this.ranchor = el.childNodes[1];
+        this.ctNode = this.wrap.childNodes[1];
+        var cs = el.firstChild.childNodes;
+        this.indentNode = cs[0];
+        this.ecNode = cs[1];
+        this.iconNode = cs[2];
+        var index = 3;
+        if(cb){
+            this.checkbox = cs[3];
+            index++;
+        }
+        this.anchor = cs[index];
+        
+        this.textNode = cs[index].firstChild;
+        
+        //el.on("click", this.onClick, this);
+        //el.on("dblclick", this.onDblClick, this);
+        
+        
+       // console.log(this);
+    },
+    initEvents : function(){
+        Roo.tree.ColumnNodeUI.superclass.initEvents.call(this);
+        
+            
+        var a = this.ranchor;
+
+        var el = Roo.get(a);
+
+        if(Roo.isOpera){ // opera render bug ignores the CSS
+            el.setStyle("text-decoration", "none");
+        }
+
+        el.on("click", this.onClick, this);
+        el.on("dblclick", this.onDblClick, this);
+        el.on("contextmenu", this.onContextMenu, this);
+        
+    },
+    
+    /*onSelectedChange : function(state){
+        if(state){
+            this.focus();
+            this.addClass("x-tree-selected");
+        }else{
+            //this.blur();
+            this.removeClass("x-tree-selected");
+        }
+    },*/
+    addClass : function(cls){
+        if(this.elRow){
+            Roo.fly(this.elRow).addClass(cls);
+        }
+        
+    },
+    
+    
+    removeClass : function(cls){
+        if(this.elRow){
+            Roo.fly(this.elRow).removeClass(cls);
+        }
+    }
+
+    
+    
 });
