@@ -2796,4 +2796,904 @@ Roo.lib.Event = function() {
 
 
     };
+})();/*
+ * Portions of this file are based on pieces of Yahoo User Interface Library
+ * Copyright (c) 2007, Yahoo! Inc. All rights reserved.
+ * YUI licensed under the BSD License:
+ * http://developer.yahoo.net/yui/license.txt
+ * <script type="text/javascript">
+ *
+ */
+
+Roo.lib.Region = function(t, r, b, l) {
+    this.top = t;
+    this[1] = t;
+    this.right = r;
+    this.bottom = b;
+    this.left = l;
+    this[0] = l;
+};
+
+
+Roo.lib.Region.prototype = {
+    contains : function(region) {
+        return ( region.left >= this.left &&
+                 region.right <= this.right &&
+                 region.top >= this.top &&
+                 region.bottom <= this.bottom    );
+
+    },
+
+    getArea : function() {
+        return ( (this.bottom - this.top) * (this.right - this.left) );
+    },
+
+    intersect : function(region) {
+        var t = Math.max(this.top, region.top);
+        var r = Math.min(this.right, region.right);
+        var b = Math.min(this.bottom, region.bottom);
+        var l = Math.max(this.left, region.left);
+
+        if (b >= t && r >= l) {
+            return new Roo.lib.Region(t, r, b, l);
+        } else {
+            return null;
+        }
+    },
+    union : function(region) {
+        var t = Math.min(this.top, region.top);
+        var r = Math.max(this.right, region.right);
+        var b = Math.max(this.bottom, region.bottom);
+        var l = Math.min(this.left, region.left);
+
+        return new Roo.lib.Region(t, r, b, l);
+    },
+
+    adjust : function(t, l, b, r) {
+        this.top += t;
+        this.left += l;
+        this.right += r;
+        this.bottom += b;
+        return this;
+    }
+};
+
+Roo.lib.Region.getRegion = function(el) {
+    var p = Roo.lib.Dom.getXY(el);
+
+    var t = p[1];
+    var r = p[0] + el.offsetWidth;
+    var b = p[1] + el.offsetHeight;
+    var l = p[0];
+
+    return new Roo.lib.Region(t, r, b, l);
+};
+/*
+ * Portions of this file are based on pieces of Yahoo User Interface Library
+ * Copyright (c) 2007, Yahoo! Inc. All rights reserved.
+ * YUI licensed under the BSD License:
+ * http://developer.yahoo.net/yui/license.txt
+ * <script type="text/javascript">
+ *
+ */
+//@@dep Roo.lib.Region
+
+
+Roo.lib.Point = function(x, y) {
+    if (x instanceof Array) {
+        y = x[1];
+        x = x[0];
+    }
+    this.x = this.right = this.left = this[0] = x;
+    this.y = this.top = this.bottom = this[1] = y;
+};
+
+Roo.lib.Point.prototype = new Roo.lib.Region();
+/*
+ * Portions of this file are based on pieces of Yahoo User Interface Library
+ * Copyright (c) 2007, Yahoo! Inc. All rights reserved.
+ * YUI licensed under the BSD License:
+ * http://developer.yahoo.net/yui/license.txt
+ * <script type="text/javascript">
+ *
+ */
+ 
+(function() {   
+
+    Roo.lib.Anim = {
+        scroll : function(el, args, duration, easing, cb, scope) {
+            this.run(el, args, duration, easing, cb, scope, Roo.lib.Scroll);
+        },
+
+        motion : function(el, args, duration, easing, cb, scope) {
+            this.run(el, args, duration, easing, cb, scope, Roo.lib.Motion);
+        },
+
+        color : function(el, args, duration, easing, cb, scope) {
+            this.run(el, args, duration, easing, cb, scope, Roo.lib.ColorAnim);
+        },
+
+        run : function(el, args, duration, easing, cb, scope, type) {
+            type = type || Roo.lib.AnimBase;
+            if (typeof easing == "string") {
+                easing = Roo.lib.Easing[easing];
+            }
+            var anim = new type(el, args, duration, easing);
+            anim.animateX(function() {
+                Roo.callback(cb, scope);
+            });
+            return anim;
+        }
+    };
+})();/*
+ * Portions of this file are based on pieces of Yahoo User Interface Library
+ * Copyright (c) 2007, Yahoo! Inc. All rights reserved.
+ * YUI licensed under the BSD License:
+ * http://developer.yahoo.net/yui/license.txt
+ * <script type="text/javascript">
+ *
+ */
+
+(function() {    
+    var libFlyweight;
+    
+    function fly(el) {
+        if (!libFlyweight) {
+            libFlyweight = new Roo.Element.Flyweight();
+        }
+        libFlyweight.dom = el;
+        return libFlyweight;
+    }
+
+    // since this uses fly! - it cant be in DOM (which does not have fly yet..)
+    
+   
+    
+    Roo.lib.AnimBase = function(el, attributes, duration, method) {
+        if (el) {
+            this.init(el, attributes, duration, method);
+        }
+    };
+
+    Roo.lib.AnimBase.fly = fly;
+    
+    
+    
+    Roo.lib.AnimBase.prototype = {
+
+        toString: function() {
+            var el = this.getEl();
+            var id = el.id || el.tagName;
+            return ("Anim " + id);
+        },
+
+        patterns: {
+            noNegatives:        /width|height|opacity|padding/i,
+            offsetAttribute:  /^((width|height)|(top|left))$/,
+            defaultUnit:        /width|height|top$|bottom$|left$|right$/i,
+            offsetUnit:         /\d+(em|%|en|ex|pt|in|cm|mm|pc)$/i
+        },
+
+
+        doMethod: function(attr, start, end) {
+            return this.method(this.currentFrame, start, end - start, this.totalFrames);
+        },
+
+
+        setAttribute: function(attr, val, unit) {
+            if (this.patterns.noNegatives.test(attr)) {
+                val = (val > 0) ? val : 0;
+            }
+
+            Roo.fly(this.getEl(), '_anim').setStyle(attr, val + unit);
+        },
+
+
+        getAttribute: function(attr) {
+            var el = this.getEl();
+            var val = fly(el).getStyle(attr);
+
+            if (val !== 'auto' && !this.patterns.offsetUnit.test(val)) {
+                return parseFloat(val);
+            }
+
+            var a = this.patterns.offsetAttribute.exec(attr) || [];
+            var pos = !!( a[3] );
+            var box = !!( a[2] );
+
+
+            if (box || (fly(el).getStyle('position') == 'absolute' && pos)) {
+                val = el['offset' + a[0].charAt(0).toUpperCase() + a[0].substr(1)];
+            } else {
+                val = 0;
+            }
+
+            return val;
+        },
+
+
+        getDefaultUnit: function(attr) {
+            if (this.patterns.defaultUnit.test(attr)) {
+                return 'px';
+            }
+
+            return '';
+        },
+
+        animateX : function(callback, scope) {
+            var f = function() {
+                this.onComplete.removeListener(f);
+                if (typeof callback == "function") {
+                    callback.call(scope || this, this);
+                }
+            };
+            this.onComplete.addListener(f, this);
+            this.animate();
+        },
+
+
+        setRuntimeAttribute: function(attr) {
+            var start;
+            var end;
+            var attributes = this.attributes;
+
+            this.runtimeAttributes[attr] = {};
+
+            var isset = function(prop) {
+                return (typeof prop !== 'undefined');
+            };
+
+            if (!isset(attributes[attr]['to']) && !isset(attributes[attr]['by'])) {
+                return false;
+            }
+
+            start = ( isset(attributes[attr]['from']) ) ? attributes[attr]['from'] : this.getAttribute(attr);
+
+
+            if (isset(attributes[attr]['to'])) {
+                end = attributes[attr]['to'];
+            } else if (isset(attributes[attr]['by'])) {
+                if (start.constructor == Array) {
+                    end = [];
+                    for (var i = 0, len = start.length; i < len; ++i) {
+                        end[i] = start[i] + attributes[attr]['by'][i];
+                    }
+                } else {
+                    end = start + attributes[attr]['by'];
+                }
+            }
+
+            this.runtimeAttributes[attr].start = start;
+            this.runtimeAttributes[attr].end = end;
+
+
+            this.runtimeAttributes[attr].unit = ( isset(attributes[attr].unit) ) ? attributes[attr]['unit'] : this.getDefaultUnit(attr);
+        },
+
+
+        init: function(el, attributes, duration, method) {
+
+            var isAnimated = false;
+
+
+            var startTime = null;
+
+
+            var actualFrames = 0;
+
+
+            el = Roo.getDom(el);
+
+
+            this.attributes = attributes || {};
+
+
+            this.duration = duration || 1;
+
+
+            this.method = method || Roo.lib.Easing.easeNone;
+
+
+            this.useSeconds = true;
+
+
+            this.currentFrame = 0;
+
+
+            this.totalFrames = Roo.lib.AnimMgr.fps;
+
+
+            this.getEl = function() {
+                return el;
+            };
+
+
+            this.isAnimated = function() {
+                return isAnimated;
+            };
+
+
+            this.getStartTime = function() {
+                return startTime;
+            };
+
+            this.runtimeAttributes = {};
+
+
+            this.animate = function() {
+                if (this.isAnimated()) {
+                    return false;
+                }
+
+                this.currentFrame = 0;
+
+                this.totalFrames = ( this.useSeconds ) ? Math.ceil(Roo.lib.AnimMgr.fps * this.duration) : this.duration;
+
+                Roo.lib.AnimMgr.registerElement(this);
+            };
+
+
+            this.stop = function(finish) {
+                if (finish) {
+                    this.currentFrame = this.totalFrames;
+                    this._onTween.fire();
+                }
+                Roo.lib.AnimMgr.stop(this);
+            };
+
+            var onStart = function() {
+                this.onStart.fire();
+
+                this.runtimeAttributes = {};
+                for (var attr in this.attributes) {
+                    this.setRuntimeAttribute(attr);
+                }
+
+                isAnimated = true;
+                actualFrames = 0;
+                startTime = new Date();
+            };
+
+
+            var onTween = function() {
+                var data = {
+                    duration: new Date() - this.getStartTime(),
+                    currentFrame: this.currentFrame
+                };
+
+                data.toString = function() {
+                    return (
+                            'duration: ' + data.duration +
+                            ', currentFrame: ' + data.currentFrame
+                            );
+                };
+
+                this.onTween.fire(data);
+
+                var runtimeAttributes = this.runtimeAttributes;
+
+                for (var attr in runtimeAttributes) {
+                    this.setAttribute(attr, this.doMethod(attr, runtimeAttributes[attr].start, runtimeAttributes[attr].end), runtimeAttributes[attr].unit);
+                }
+
+                actualFrames += 1;
+            };
+
+            var onComplete = function() {
+                var actual_duration = (new Date() - startTime) / 1000 ;
+
+                var data = {
+                    duration: actual_duration,
+                    frames: actualFrames,
+                    fps: actualFrames / actual_duration
+                };
+
+                data.toString = function() {
+                    return (
+                            'duration: ' + data.duration +
+                            ', frames: ' + data.frames +
+                            ', fps: ' + data.fps
+                            );
+                };
+
+                isAnimated = false;
+                actualFrames = 0;
+                this.onComplete.fire(data);
+            };
+
+
+            this._onStart = new Roo.util.Event(this);
+            this.onStart = new Roo.util.Event(this);
+            this.onTween = new Roo.util.Event(this);
+            this._onTween = new Roo.util.Event(this);
+            this.onComplete = new Roo.util.Event(this);
+            this._onComplete = new Roo.util.Event(this);
+            this._onStart.addListener(onStart);
+            this._onTween.addListener(onTween);
+            this._onComplete.addListener(onComplete);
+        }
+    };
 })();
+/*
+ * Portions of this file are based on pieces of Yahoo User Interface Library
+ * Copyright (c) 2007, Yahoo! Inc. All rights reserved.
+ * YUI licensed under the BSD License:
+ * http://developer.yahoo.net/yui/license.txt
+ * <script type="text/javascript">
+ *
+ */
+
+Roo.lib.AnimMgr = new function() {
+
+        var thread = null;
+
+
+        var queue = [];
+
+
+        var tweenCount = 0;
+
+
+        this.fps = 1000;
+
+
+        this.delay = 1;
+
+
+        this.registerElement = function(tween) {
+            queue[queue.length] = tween;
+            tweenCount += 1;
+            tween._onStart.fire();
+            this.start();
+        };
+
+
+        this.unRegister = function(tween, index) {
+            tween._onComplete.fire();
+            index = index || getIndex(tween);
+            if (index != -1) {
+                queue.splice(index, 1);
+            }
+
+            tweenCount -= 1;
+            if (tweenCount <= 0) {
+                this.stop();
+            }
+        };
+
+
+        this.start = function() {
+            if (thread === null) {
+                thread = setInterval(this.run, this.delay);
+            }
+        };
+
+
+        this.stop = function(tween) {
+            if (!tween) {
+                clearInterval(thread);
+
+                for (var i = 0, len = queue.length; i < len; ++i) {
+                    if (queue[0].isAnimated()) {
+                        this.unRegister(queue[0], 0);
+                    }
+                }
+
+                queue = [];
+                thread = null;
+                tweenCount = 0;
+            }
+            else {
+                this.unRegister(tween);
+            }
+        };
+
+
+        this.run = function() {
+            for (var i = 0, len = queue.length; i < len; ++i) {
+                var tween = queue[i];
+                if (!tween || !tween.isAnimated()) {
+                    continue;
+                }
+
+                if (tween.currentFrame < tween.totalFrames || tween.totalFrames === null)
+                {
+                    tween.currentFrame += 1;
+
+                    if (tween.useSeconds) {
+                        correctFrame(tween);
+                    }
+                    tween._onTween.fire();
+                }
+                else {
+                    Roo.lib.AnimMgr.stop(tween, i);
+                }
+            }
+        };
+
+        var getIndex = function(anim) {
+            for (var i = 0, len = queue.length; i < len; ++i) {
+                if (queue[i] == anim) {
+                    return i;
+                }
+            }
+            return -1;
+        };
+
+
+        var correctFrame = function(tween) {
+            var frames = tween.totalFrames;
+            var frame = tween.currentFrame;
+            var expected = (tween.currentFrame * tween.duration * 1000 / tween.totalFrames);
+            var elapsed = (new Date() - tween.getStartTime());
+            var tweak = 0;
+
+            if (elapsed < tween.duration * 1000) {
+                tweak = Math.round((elapsed / expected - 1) * tween.currentFrame);
+            } else {
+                tweak = frames - (frame + 1);
+            }
+            if (tweak > 0 && isFinite(tweak)) {
+                if (tween.currentFrame + tweak >= frames) {
+                    tweak = frames - (frame + 1);
+                }
+
+                tween.currentFrame += tweak;
+            }
+        };
+    };/*
+ * Portions of this file are based on pieces of Yahoo User Interface Library
+ * Copyright (c) 2007, Yahoo! Inc. All rights reserved.
+ * YUI licensed under the BSD License:
+ * http://developer.yahoo.net/yui/license.txt
+ * <script type="text/javascript">
+ *
+ */
+Roo.lib.Bezier = new function() {
+
+        this.getPosition = function(points, t) {
+            var n = points.length;
+            var tmp = [];
+
+            for (var i = 0; i < n; ++i) {
+                tmp[i] = [points[i][0], points[i][1]];
+            }
+
+            for (var j = 1; j < n; ++j) {
+                for (i = 0; i < n - j; ++i) {
+                    tmp[i][0] = (1 - t) * tmp[i][0] + t * tmp[parseInt(i + 1, 10)][0];
+                    tmp[i][1] = (1 - t) * tmp[i][1] + t * tmp[parseInt(i + 1, 10)][1];
+                }
+            }
+
+            return [ tmp[0][0], tmp[0][1] ];
+
+        };
+    };/*
+ * Portions of this file are based on pieces of Yahoo User Interface Library
+ * Copyright (c) 2007, Yahoo! Inc. All rights reserved.
+ * YUI licensed under the BSD License:
+ * http://developer.yahoo.net/yui/license.txt
+ * <script type="text/javascript">
+ *
+ */
+(function() {
+
+    Roo.lib.ColorAnim = function(el, attributes, duration, method) {
+        Roo.lib.ColorAnim.superclass.constructor.call(this, el, attributes, duration, method);
+    };
+
+    Roo.extend(Roo.lib.ColorAnim, Roo.lib.AnimBase);
+
+    var fly = Roo.lib.AnimBase.fly;
+    var Y = Roo.lib;
+    var superclass = Y.ColorAnim.superclass;
+    var proto = Y.ColorAnim.prototype;
+
+    proto.toString = function() {
+        var el = this.getEl();
+        var id = el.id || el.tagName;
+        return ("ColorAnim " + id);
+    };
+
+    proto.patterns.color = /color$/i;
+    proto.patterns.rgb = /^rgb\(([0-9]+)\s*,\s*([0-9]+)\s*,\s*([0-9]+)\)$/i;
+    proto.patterns.hex = /^#?([0-9A-F]{2})([0-9A-F]{2})([0-9A-F]{2})$/i;
+    proto.patterns.hex3 = /^#?([0-9A-F]{1})([0-9A-F]{1})([0-9A-F]{1})$/i;
+    proto.patterns.transparent = /^transparent|rgba\(0, 0, 0, 0\)$/;
+
+
+    proto.parseColor = function(s) {
+        if (s.length == 3) {
+            return s;
+        }
+
+        var c = this.patterns.hex.exec(s);
+        if (c && c.length == 4) {
+            return [ parseInt(c[1], 16), parseInt(c[2], 16), parseInt(c[3], 16) ];
+        }
+
+        c = this.patterns.rgb.exec(s);
+        if (c && c.length == 4) {
+            return [ parseInt(c[1], 10), parseInt(c[2], 10), parseInt(c[3], 10) ];
+        }
+
+        c = this.patterns.hex3.exec(s);
+        if (c && c.length == 4) {
+            return [ parseInt(c[1] + c[1], 16), parseInt(c[2] + c[2], 16), parseInt(c[3] + c[3], 16) ];
+        }
+
+        return null;
+    };
+    // since this uses fly! - it cant be in ColorAnim (which does not have fly yet..)
+    proto.getAttribute = function(attr) {
+        var el = this.getEl();
+        if (this.patterns.color.test(attr)) {
+            var val = fly(el).getStyle(attr);
+
+            if (this.patterns.transparent.test(val)) {
+                var parent = el.parentNode;
+                val = fly(parent).getStyle(attr);
+
+                while (parent && this.patterns.transparent.test(val)) {
+                    parent = parent.parentNode;
+                    val = fly(parent).getStyle(attr);
+                    if (parent.tagName.toUpperCase() == 'HTML') {
+                        val = '#fff';
+                    }
+                }
+            }
+        } else {
+            val = superclass.getAttribute.call(this, attr);
+        }
+
+        return val;
+    };
+    proto.getAttribute = function(attr) {
+        var el = this.getEl();
+        if (this.patterns.color.test(attr)) {
+            var val = fly(el).getStyle(attr);
+
+            if (this.patterns.transparent.test(val)) {
+                var parent = el.parentNode;
+                val = fly(parent).getStyle(attr);
+
+                while (parent && this.patterns.transparent.test(val)) {
+                    parent = parent.parentNode;
+                    val = fly(parent).getStyle(attr);
+                    if (parent.tagName.toUpperCase() == 'HTML') {
+                        val = '#fff';
+                    }
+                }
+            }
+        } else {
+            val = superclass.getAttribute.call(this, attr);
+        }
+
+        return val;
+    };
+
+    proto.doMethod = function(attr, start, end) {
+        var val;
+
+        if (this.patterns.color.test(attr)) {
+            val = [];
+            for (var i = 0, len = start.length; i < len; ++i) {
+                val[i] = superclass.doMethod.call(this, attr, start[i], end[i]);
+            }
+
+            val = 'rgb(' + Math.floor(val[0]) + ',' + Math.floor(val[1]) + ',' + Math.floor(val[2]) + ')';
+        }
+        else {
+            val = superclass.doMethod.call(this, attr, start, end);
+        }
+
+        return val;
+    };
+
+    proto.setRuntimeAttribute = function(attr) {
+        superclass.setRuntimeAttribute.call(this, attr);
+
+        if (this.patterns.color.test(attr)) {
+            var attributes = this.attributes;
+            var start = this.parseColor(this.runtimeAttributes[attr].start);
+            var end = this.parseColor(this.runtimeAttributes[attr].end);
+
+            if (typeof attributes[attr]['to'] === 'undefined' && typeof attributes[attr]['by'] !== 'undefined') {
+                end = this.parseColor(attributes[attr].by);
+
+                for (var i = 0, len = start.length; i < len; ++i) {
+                    end[i] = start[i] + end[i];
+                }
+            }
+
+            this.runtimeAttributes[attr].start = start;
+            this.runtimeAttributes[attr].end = end;
+        }
+    };
+})();
+
+/*
+ * Portions of this file are based on pieces of Yahoo User Interface Library
+ * Copyright (c) 2007, Yahoo! Inc. All rights reserved.
+ * YUI licensed under the BSD License:
+ * http://developer.yahoo.net/yui/license.txt
+ * <script type="text/javascript">
+ *
+ */
+Roo.lib.Easing = {
+
+
+    easeNone: function (t, b, c, d) {
+        return c * t / d + b;
+    },
+
+
+    easeIn: function (t, b, c, d) {
+        return c * (t /= d) * t + b;
+    },
+
+
+    easeOut: function (t, b, c, d) {
+        return -c * (t /= d) * (t - 2) + b;
+    },
+
+
+    easeBoth: function (t, b, c, d) {
+        if ((t /= d / 2) < 1) {
+            return c / 2 * t * t + b;
+        }
+
+        return -c / 2 * ((--t) * (t - 2) - 1) + b;
+    },
+
+
+    easeInStrong: function (t, b, c, d) {
+        return c * (t /= d) * t * t * t + b;
+    },
+
+
+    easeOutStrong: function (t, b, c, d) {
+        return -c * ((t = t / d - 1) * t * t * t - 1) + b;
+    },
+
+
+    easeBothStrong: function (t, b, c, d) {
+        if ((t /= d / 2) < 1) {
+            return c / 2 * t * t * t * t + b;
+        }
+
+        return -c / 2 * ((t -= 2) * t * t * t - 2) + b;
+    },
+
+
+
+    elasticIn: function (t, b, c, d, a, p) {
+        if (t == 0) {
+            return b;
+        }
+        if ((t /= d) == 1) {
+            return b + c;
+        }
+        if (!p) {
+            p = d * .3;
+        }
+
+        if (!a || a < Math.abs(c)) {
+            a = c;
+            var s = p / 4;
+        }
+        else {
+            var s = p / (2 * Math.PI) * Math.asin(c / a);
+        }
+
+        return -(a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * d - s) * (2 * Math.PI) / p)) + b;
+    },
+
+
+    elasticOut: function (t, b, c, d, a, p) {
+        if (t == 0) {
+            return b;
+        }
+        if ((t /= d) == 1) {
+            return b + c;
+        }
+        if (!p) {
+            p = d * .3;
+        }
+
+        if (!a || a < Math.abs(c)) {
+            a = c;
+            var s = p / 4;
+        }
+        else {
+            var s = p / (2 * Math.PI) * Math.asin(c / a);
+        }
+
+        return a * Math.pow(2, -10 * t) * Math.sin((t * d - s) * (2 * Math.PI) / p) + c + b;
+    },
+
+
+    elasticBoth: function (t, b, c, d, a, p) {
+        if (t == 0) {
+            return b;
+        }
+
+        if ((t /= d / 2) == 2) {
+            return b + c;
+        }
+
+        if (!p) {
+            p = d * (.3 * 1.5);
+        }
+
+        if (!a || a < Math.abs(c)) {
+            a = c;
+            var s = p / 4;
+        }
+        else {
+            var s = p / (2 * Math.PI) * Math.asin(c / a);
+        }
+
+        if (t < 1) {
+            return -.5 * (a * Math.pow(2, 10 * (t -= 1)) *
+                          Math.sin((t * d - s) * (2 * Math.PI) / p)) + b;
+        }
+        return a * Math.pow(2, -10 * (t -= 1)) *
+               Math.sin((t * d - s) * (2 * Math.PI) / p) * .5 + c + b;
+    },
+
+
+
+    backIn: function (t, b, c, d, s) {
+        if (typeof s == 'undefined') {
+            s = 1.70158;
+        }
+        return c * (t /= d) * t * ((s + 1) * t - s) + b;
+    },
+
+
+    backOut: function (t, b, c, d, s) {
+        if (typeof s == 'undefined') {
+            s = 1.70158;
+        }
+        return c * ((t = t / d - 1) * t * ((s + 1) * t + s) + 1) + b;
+    },
+
+
+    backBoth: function (t, b, c, d, s) {
+        if (typeof s == 'undefined') {
+            s = 1.70158;
+        }
+
+        if ((t /= d / 2 ) < 1) {
+            return c / 2 * (t * t * (((s *= (1.525)) + 1) * t - s)) + b;
+        }
+        return c / 2 * ((t -= 2) * t * (((s *= (1.525)) + 1) * t + s) + 2) + b;
+    },
+
+
+    bounceIn: function (t, b, c, d) {
+        return c - Roo.lib.Easing.bounceOut(d - t, 0, c, d) + b;
+    },
+
+
+    bounceOut: function (t, b, c, d) {
+        if ((t /= d) < (1 / 2.75)) {
+            return c * (7.5625 * t * t) + b;
+        } else if (t < (2 / 2.75)) {
+            return c * (7.5625 * (t -= (1.5 / 2.75)) * t + .75) + b;
+        } else if (t < (2.5 / 2.75)) {
+            return c * (7.5625 * (t -= (2.25 / 2.75)) * t + .9375) + b;
+        }
+        return c * (7.5625 * (t -= (2.625 / 2.75)) * t + .984375) + b;
+    },
+
+
+    bounceBoth: function (t, b, c, d) {
+        if (t < d / 2) {
+            return Roo.lib.Easing.bounceIn(t * 2, 0, c, d) * .5 + b;
+        }
+        return Roo.lib.Easing.bounceOut(t * 2 - d, 0, c, d) * .5 + c * .5 + b;
+    }
+};
