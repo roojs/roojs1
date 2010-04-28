@@ -34174,4 +34174,1100 @@ Roo.extend(Roo.menu.BaseItem, Roo.Component, {
     hideMenu : function(){
         // do nothing
     }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.menu.Adapter
+ * @extends Roo.menu.BaseItem
+ * A base utility class that adapts a non-menu component so that it can be wrapped by a menu item and added to a menu.
+ * It provides basic rendering, activation management and enable/disable logic required to work in menus.
+ * @constructor
+ * Creates a new Adapter
+ * @param {Object} config Configuration options
+ */
+Roo.menu.Adapter = function(component, config){
+    Roo.menu.Adapter.superclass.constructor.call(this, config);
+    this.component = component;
+};
+Roo.extend(Roo.menu.Adapter, Roo.menu.BaseItem, {
+    // private
+    canActivate : true,
+
+    // private
+    onRender : function(container, position){
+        this.component.render(container);
+        this.el = this.component.getEl();
+    },
+
+    // private
+    activate : function(){
+        if(this.disabled){
+            return false;
+        }
+        this.component.focus();
+        this.fireEvent("activate", this);
+        return true;
+    },
+
+    // private
+    deactivate : function(){
+        this.fireEvent("deactivate", this);
+    },
+
+    // private
+    disable : function(){
+        this.component.disable();
+        Roo.menu.Adapter.superclass.disable.call(this);
+    },
+
+    // private
+    enable : function(){
+        this.component.enable();
+        Roo.menu.Adapter.superclass.enable.call(this);
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.menu.TextItem
+ * @extends Roo.menu.BaseItem
+ * Adds a static text string to a menu, usually used as either a heading or group separator.
+ * @constructor
+ * Creates a new TextItem
+ * @param {String} text The text to display
+ */
+Roo.menu.TextItem = function(text){
+    this.text = text;
+    Roo.menu.TextItem.superclass.constructor.call(this);
+};
+
+Roo.extend(Roo.menu.TextItem, Roo.menu.BaseItem, {
+    /**
+     * @cfg {Boolean} hideOnClick True to hide the containing menu after this item is clicked (defaults to false)
+     */
+    hideOnClick : false,
+    /**
+     * @cfg {String} itemCls The default CSS class to use for text items (defaults to "x-menu-text")
+     */
+    itemCls : "x-menu-text",
+
+    // private
+    onRender : function(){
+        var s = document.createElement("span");
+        s.className = this.itemCls;
+        s.innerHTML = this.text;
+        this.el = s;
+        Roo.menu.TextItem.superclass.onRender.apply(this, arguments);
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.menu.Separator
+ * @extends Roo.menu.BaseItem
+ * Adds a separator bar to a menu, used to divide logical groups of menu items. Generally you will
+ * add one of these by using "-" in you call to add() or in your items config rather than creating one directly.
+ * @constructor
+ * @param {Object} config Configuration options
+ */
+Roo.menu.Separator = function(config){
+    Roo.menu.Separator.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.menu.Separator, Roo.menu.BaseItem, {
+    /**
+     * @cfg {String} itemCls The default CSS class to use for separators (defaults to "x-menu-sep")
+     */
+    itemCls : "x-menu-sep",
+    /**
+     * @cfg {Boolean} hideOnClick True to hide the containing menu after this item is clicked (defaults to false)
+     */
+    hideOnClick : false,
+
+    // private
+    onRender : function(li){
+        var s = document.createElement("span");
+        s.className = this.itemCls;
+        s.innerHTML = "&#160;";
+        this.el = s;
+        li.addClass("x-menu-sep-li");
+        Roo.menu.Separator.superclass.onRender.apply(this, arguments);
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+/**
+ * @class Roo.menu.Item
+ * @extends Roo.menu.BaseItem
+ * A base class for all menu items that require menu-related functionality (like sub-menus) and are not static
+ * display items.  Item extends the base functionality of {@link Roo.menu.BaseItem} by adding menu-specific
+ * activation and click handling.
+ * @constructor
+ * Creates a new Item
+ * @param {Object} config Configuration options
+ */
+Roo.menu.Item = function(config){
+    Roo.menu.Item.superclass.constructor.call(this, config);
+    if(this.menu){
+        this.menu = Roo.menu.MenuMgr.get(this.menu);
+    }
+};
+Roo.extend(Roo.menu.Item, Roo.menu.BaseItem, {
+    /**
+     * @cfg {String} icon
+     * The path to an icon to display in this menu item (defaults to Roo.BLANK_IMAGE_URL)
+     */
+    /**
+     * @cfg {String} itemCls The default CSS class to use for menu items (defaults to "x-menu-item")
+     */
+    itemCls : "x-menu-item",
+    /**
+     * @cfg {Boolean} canActivate True if this item can be visually activated (defaults to true)
+     */
+    canActivate : true,
+    /**
+     * @cfg {Number} showDelay Length of time in milliseconds to wait before showing this item (defaults to 200)
+     */
+    showDelay: 200,
+    // doc'd in BaseItem
+    hideDelay: 200,
+
+    // private
+    ctype: "Roo.menu.Item",
+    
+    // private
+    onRender : function(container, position){
+        var el = document.createElement("a");
+        el.hideFocus = true;
+        el.unselectable = "on";
+        el.href = this.href || "#";
+        if(this.hrefTarget){
+            el.target = this.hrefTarget;
+        }
+        el.className = this.itemCls + (this.menu ?  " x-menu-item-arrow" : "") + (this.cls ?  " " + this.cls : "");
+        el.innerHTML = String.format(
+                '<img src="{0}" class="x-menu-item-icon {2}" />{1}',
+                this.icon || Roo.BLANK_IMAGE_URL, this.text, this.iconCls || '');
+        this.el = el;
+        Roo.menu.Item.superclass.onRender.call(this, container, position);
+    },
+
+    /**
+     * Sets the text to display in this menu item
+     * @param {String} text The text to display
+     */
+    setText : function(text){
+        this.text = text;
+        if(this.rendered){
+            this.el.update(String.format(
+                '<img src="{0}" class="x-menu-item-icon {2}">{1}',
+                this.icon || Roo.BLANK_IMAGE_URL, this.text, this.iconCls || ''));
+            this.parentMenu.autoWidth();
+        }
+    },
+
+    // private
+    handleClick : function(e){
+        if(!this.href){ // if no link defined, stop the event automatically
+            e.stopEvent();
+        }
+        Roo.menu.Item.superclass.handleClick.apply(this, arguments);
+    },
+
+    // private
+    activate : function(autoExpand){
+        if(Roo.menu.Item.superclass.activate.apply(this, arguments)){
+            this.focus();
+            if(autoExpand){
+                this.expandMenu();
+            }
+        }
+        return true;
+    },
+
+    // private
+    shouldDeactivate : function(e){
+        if(Roo.menu.Item.superclass.shouldDeactivate.call(this, e)){
+            if(this.menu && this.menu.isVisible()){
+                return !this.menu.getEl().getRegion().contains(e.getPoint());
+            }
+            return true;
+        }
+        return false;
+    },
+
+    // private
+    deactivate : function(){
+        Roo.menu.Item.superclass.deactivate.apply(this, arguments);
+        this.hideMenu();
+    },
+
+    // private
+    expandMenu : function(autoActivate){
+        if(!this.disabled && this.menu){
+            clearTimeout(this.hideTimer);
+            delete this.hideTimer;
+            if(!this.menu.isVisible() && !this.showTimer){
+                this.showTimer = this.deferExpand.defer(this.showDelay, this, [autoActivate]);
+            }else if (this.menu.isVisible() && autoActivate){
+                this.menu.tryActivate(0, 1);
+            }
+        }
+    },
+
+    // private
+    deferExpand : function(autoActivate){
+        delete this.showTimer;
+        this.menu.show(this.container, this.parentMenu.subMenuAlign || "tl-tr?", this.parentMenu);
+        if(autoActivate){
+            this.menu.tryActivate(0, 1);
+        }
+    },
+
+    // private
+    hideMenu : function(){
+        clearTimeout(this.showTimer);
+        delete this.showTimer;
+        if(!this.hideTimer && this.menu && this.menu.isVisible()){
+            this.hideTimer = this.deferHide.defer(this.hideDelay, this);
+        }
+    },
+
+    // private
+    deferHide : function(){
+        delete this.hideTimer;
+        this.menu.hide();
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.menu.CheckItem
+ * @extends Roo.menu.Item
+ * Adds a menu item that contains a checkbox by default, but can also be part of a radio group.
+ * @constructor
+ * Creates a new CheckItem
+ * @param {Object} config Configuration options
+ */
+Roo.menu.CheckItem = function(config){
+    Roo.menu.CheckItem.superclass.constructor.call(this, config);
+    this.addEvents({
+        /**
+         * @event beforecheckchange
+         * Fires before the checked value is set, providing an opportunity to cancel if needed
+         * @param {Roo.menu.CheckItem} this
+         * @param {Boolean} checked The new checked value that will be set
+         */
+        "beforecheckchange" : true,
+        /**
+         * @event checkchange
+         * Fires after the checked value has been set
+         * @param {Roo.menu.CheckItem} this
+         * @param {Boolean} checked The checked value that was set
+         */
+        "checkchange" : true
+    });
+    if(this.checkHandler){
+        this.on('checkchange', this.checkHandler, this.scope);
+    }
+};
+Roo.extend(Roo.menu.CheckItem, Roo.menu.Item, {
+    /**
+     * @cfg {String} group
+     * All check items with the same group name will automatically be grouped into a single-select
+     * radio button group (defaults to '')
+     */
+    /**
+     * @cfg {String} itemCls The default CSS class to use for check items (defaults to "x-menu-item x-menu-check-item")
+     */
+    itemCls : "x-menu-item x-menu-check-item",
+    /**
+     * @cfg {String} groupClass The default CSS class to use for radio group check items (defaults to "x-menu-group-item")
+     */
+    groupClass : "x-menu-group-item",
+
+    /**
+     * @cfg {Boolean} checked True to initialize this checkbox as checked (defaults to false).  Note that
+     * if this checkbox is part of a radio group (group = true) only the last item in the group that is
+     * initialized with checked = true will be rendered as checked.
+     */
+    checked: false,
+
+    // private
+    ctype: "Roo.menu.CheckItem",
+
+    // private
+    onRender : function(c){
+        Roo.menu.CheckItem.superclass.onRender.apply(this, arguments);
+        if(this.group){
+            this.el.addClass(this.groupClass);
+        }
+        Roo.menu.MenuMgr.registerCheckable(this);
+        if(this.checked){
+            this.checked = false;
+            this.setChecked(true, true);
+        }
+    },
+
+    // private
+    destroy : function(){
+        if(this.rendered){
+            Roo.menu.MenuMgr.unregisterCheckable(this);
+        }
+        Roo.menu.CheckItem.superclass.destroy.apply(this, arguments);
+    },
+
+    /**
+     * Set the checked state of this item
+     * @param {Boolean} checked The new checked value
+     * @param {Boolean} suppressEvent (optional) True to prevent the checkchange event from firing (defaults to false)
+     */
+    setChecked : function(state, suppressEvent){
+        if(this.checked != state && this.fireEvent("beforecheckchange", this, state) !== false){
+            if(this.container){
+                this.container[state ? "addClass" : "removeClass"]("x-menu-item-checked");
+            }
+            this.checked = state;
+            if(suppressEvent !== true){
+                this.fireEvent("checkchange", this, state);
+            }
+        }
+    },
+
+    // private
+    handleClick : function(e){
+       if(!this.disabled && !(this.checked && this.group)){// disable unselect on radio item
+           this.setChecked(!this.checked);
+       }
+       Roo.menu.CheckItem.superclass.handleClick.apply(this, arguments);
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.menu.DateItem
+ * @extends Roo.menu.Adapter
+ * A menu item that wraps the {@link Roo.DatPicker} component.
+ * @constructor
+ * Creates a new DateItem
+ * @param {Object} config Configuration options
+ */
+Roo.menu.DateItem = function(config){
+    Roo.menu.DateItem.superclass.constructor.call(this, new Roo.DatePicker(config), config);
+    /** The Roo.DatePicker object @type Roo.DatePicker */
+    this.picker = this.component;
+    this.addEvents({select: true});
+    
+    this.picker.on("render", function(picker){
+        picker.getEl().swallowEvent("click");
+        picker.container.addClass("x-menu-date-item");
+    });
+
+    this.picker.on("select", this.onSelect, this);
+};
+
+Roo.extend(Roo.menu.DateItem, Roo.menu.Adapter, {
+    // private
+    onSelect : function(picker, date){
+        this.fireEvent("select", this, date, picker);
+        Roo.menu.DateItem.superclass.handleClick.call(this);
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.menu.ColorItem
+ * @extends Roo.menu.Adapter
+ * A menu item that wraps the {@link Roo.ColorPalette} component.
+ * @constructor
+ * Creates a new ColorItem
+ * @param {Object} config Configuration options
+ */
+Roo.menu.ColorItem = function(config){
+    Roo.menu.ColorItem.superclass.constructor.call(this, new Roo.ColorPalette(config), config);
+    /** The Roo.ColorPalette object @type Roo.ColorPalette */
+    this.palette = this.component;
+    this.relayEvents(this.palette, ["select"]);
+    if(this.selectHandler){
+        this.on('select', this.selectHandler, this.scope);
+    }
+};
+Roo.extend(Roo.menu.ColorItem, Roo.menu.Adapter);/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+
+/**
+ * @class Roo.menu.DateMenu
+ * @extends Roo.menu.Menu
+ * A menu containing a {@link Roo.menu.DateItem} component (which provides a date picker).
+ * @constructor
+ * Creates a new DateMenu
+ * @param {Object} config Configuration options
+ */
+Roo.menu.DateMenu = function(config){
+    Roo.menu.DateMenu.superclass.constructor.call(this, config);
+    this.plain = true;
+    var di = new Roo.menu.DateItem(config);
+    this.add(di);
+    /**
+     * The {@link Roo.DatePicker} instance for this DateMenu
+     * @type DatePicker
+     */
+    this.picker = di.picker;
+    /**
+     * @event select
+     * @param {DatePicker} picker
+     * @param {Date} date
+     */
+    this.relayEvents(di, ["select"]);
+
+    this.on('beforeshow', function(){
+        if(this.picker){
+            this.picker.hideMonthPicker(true);
+        }
+    }, this);
+};
+Roo.extend(Roo.menu.DateMenu, Roo.menu.Menu, {
+    cls:'x-date-menu'
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+
+/**
+ * @class Roo.menu.ColorMenu
+ * @extends Roo.menu.Menu
+ * A menu containing a {@link Roo.menu.ColorItem} component (which provides a basic color picker).
+ * @constructor
+ * Creates a new ColorMenu
+ * @param {Object} config Configuration options
+ */
+Roo.menu.ColorMenu = function(config){
+    Roo.menu.ColorMenu.superclass.constructor.call(this, config);
+    this.plain = true;
+    var ci = new Roo.menu.ColorItem(config);
+    this.add(ci);
+    /**
+     * The {@link Roo.ColorPalette} instance for this ColorMenu
+     * @type ColorPalette
+     */
+    this.palette = ci.palette;
+    /**
+     * @event select
+     * @param {ColorPalette} palette
+     * @param {String} color
+     */
+    this.relayEvents(ci, ["select"]);
+};
+Roo.extend(Roo.menu.ColorMenu, Roo.menu.Menu);/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.form.Field
+ * @extends Roo.BoxComponent
+ * Base class for form fields that provides default event handling, sizing, value handling and other functionality.
+ * @constructor
+ * Creates a new Field
+ * @param {Object} config Configuration options
+ */
+Roo.form.Field = function(config){
+    Roo.form.Field.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.form.Field, Roo.BoxComponent,  {
+    /**
+     * @cfg {String} fieldLabel Label to use when rendering a form.
+     */
+       /**
+     * @cfg {String} qtip Mouse over tip
+     */
+     
+    /**
+     * @cfg {String} invalidClass The CSS class to use when marking a field invalid (defaults to "x-form-invalid")
+     */
+    invalidClass : "x-form-invalid",
+    /**
+     * @cfg {String} invalidText The error text to use when marking a field invalid and no message is provided (defaults to "The value in this field is invalid")
+     */
+    invalidText : "The value in this field is invalid",
+    /**
+     * @cfg {String} focusClass The CSS class to use when the field receives focus (defaults to "x-form-focus")
+     */
+    focusClass : "x-form-focus",
+    /**
+     * @cfg {String/Boolean} validationEvent The event that should initiate field validation. Set to false to disable
+      automatic validation (defaults to "keyup").
+     */
+    validationEvent : "keyup",
+    /**
+     * @cfg {Boolean} validateOnBlur Whether the field should validate when it loses focus (defaults to true).
+     */
+    validateOnBlur : true,
+    /**
+     * @cfg {Number} validationDelay The length of time in milliseconds after user input begins until validation is initiated (defaults to 250)
+     */
+    validationDelay : 250,
+    /**
+     * @cfg {String/Object} autoCreate A DomHelper element spec, or true for a default element spec (defaults to
+     * {tag: "input", type: "text", size: "20", autocomplete: "off"})
+     */
+    defaultAutoCreate : {tag: "input", type: "text", size: "20", autocomplete: "off"},
+    /**
+     * @cfg {String} fieldClass The default CSS class for the field (defaults to "x-form-field")
+     */
+    fieldClass : "x-form-field",
+    /**
+     * @cfg {String} msgTarget The location where error text should display.  Should be one of the following values (defaults to 'qtip'):
+     *<pre>
+Value         Description
+-----------   ----------------------------------------------------------------------
+qtip          Display a quick tip when the user hovers over the field
+title         Display a default browser title attribute popup
+under         Add a block div beneath the field containing the error text
+side          Add an error icon to the right of the field with a popup on hover
+[element id]  Add the error text directly to the innerHTML of the specified element
+</pre>
+     */
+    msgTarget : 'qtip',
+    /**
+     * @cfg {String} msgFx <b>Experimental</b> The effect used when displaying a validation message under the field (defaults to 'normal').
+     */
+    msgFx : 'normal',
+
+    /**
+     * @cfg {Boolean} readOnly True to mark the field as readOnly in HTML (defaults to false) -- Note: this only sets the element's readOnly DOM attribute.
+     */
+    readOnly : false,
+
+    /**
+     * @cfg {Boolean} disabled True to disable the field (defaults to false).
+     */
+    disabled : false,
+
+    /**
+     * @cfg {String} inputType The type attribute for input fields -- e.g. radio, text, password (defaults to "text").
+     */
+    inputType : undefined,
+    
+    /**
+     * @cfg {Number} tabIndex The tabIndex for this field. Note this only applies to fields that are rendered, not those which are built via applyTo (defaults to undefined).
+	 */
+	tabIndex : undefined,
+	
+    // private
+    isFormField : true,
+
+    // private
+    hasFocus : false,
+    /**
+     * @property {Roo.Element} fieldEl
+     * Element Containing the rendered Field (with label etc.)
+     */
+    /**
+     * @cfg {Mixed} value A value to initialize this field with.
+     */
+    value : undefined,
+
+    /**
+     * @cfg {String} name The field's HTML name attribute.
+     */
+    /**
+     * @cfg {String} cls A CSS class to apply to the field's underlying element.
+     */
+
+	// private ??
+	initComponent : function(){
+        Roo.form.Field.superclass.initComponent.call(this);
+        this.addEvents({
+            /**
+             * @event focus
+             * Fires when this field receives input focus.
+             * @param {Roo.form.Field} this
+             */
+            focus : true,
+            /**
+             * @event blur
+             * Fires when this field loses input focus.
+             * @param {Roo.form.Field} this
+             */
+            blur : true,
+            /**
+             * @event specialkey
+             * Fires when any key related to navigation (arrows, tab, enter, esc, etc.) is pressed.  You can check
+             * {@link Roo.EventObject#getKey} to determine which key was pressed.
+             * @param {Roo.form.Field} this
+             * @param {Roo.EventObject} e The event object
+             */
+            specialkey : true,
+            /**
+             * @event change
+             * Fires just before the field blurs if the field value has changed.
+             * @param {Roo.form.Field} this
+             * @param {Mixed} newValue The new value
+             * @param {Mixed} oldValue The original value
+             */
+            change : true,
+            /**
+             * @event invalid
+             * Fires after the field has been marked as invalid.
+             * @param {Roo.form.Field} this
+             * @param {String} msg The validation message
+             */
+            invalid : true,
+            /**
+             * @event valid
+             * Fires after the field has been validated with no errors.
+             * @param {Roo.form.Field} this
+             */
+            valid : true
+        });
+    },
+
+    /**
+     * Returns the name attribute of the field if available
+     * @return {String} name The field name
+     */
+    getName: function(){
+         return this.rendered && this.el.dom.name ? this.el.dom.name : (this.hiddenName || '');
+    },
+
+    // private
+    onRender : function(ct, position){
+        Roo.form.Field.superclass.onRender.call(this, ct, position);
+        if(!this.el){
+            var cfg = this.getAutoCreate();
+            if(!cfg.name){
+                cfg.name = this.name || this.id;
+            }
+            if(this.inputType){
+                cfg.type = this.inputType;
+            }
+            this.el = ct.createChild(cfg, position);
+        }
+        var type = this.el.dom.type;
+        if(type){
+            if(type == 'password'){
+                type = 'text';
+            }
+            this.el.addClass('x-form-'+type);
+        }
+        if(this.readOnly){
+            this.el.dom.readOnly = true;
+        }
+        if(this.tabIndex !== undefined){
+            this.el.dom.setAttribute('tabIndex', this.tabIndex);
+        }
+
+        this.el.addClass([this.fieldClass, this.cls]);
+        this.initValue();
+    },
+
+    /**
+     * Apply the behaviors of this component to an existing element. <b>This is used instead of render().</b>
+     * @param {String/HTMLElement/Element} el The id of the node, a DOM node or an existing Element
+     * @return {Roo.form.Field} this
+     */
+    applyTo : function(target){
+        this.allowDomMove = false;
+        this.el = Roo.get(target);
+        this.render(this.el.dom.parentNode);
+        return this;
+    },
+
+    // private
+    initValue : function(){
+        if(this.value !== undefined){
+            this.setValue(this.value);
+        }else if(this.el.dom.value.length > 0){
+            this.setValue(this.el.dom.value);
+        }
+    },
+
+    /**
+     * Returns true if this field has been changed since it was originally loaded and is not disabled.
+     */
+    isDirty : function() {
+        if(this.disabled) {
+            return false;
+        }
+        return String(this.getValue()) !== String(this.originalValue);
+    },
+
+    // private
+    afterRender : function(){
+        Roo.form.Field.superclass.afterRender.call(this);
+        this.initEvents();
+    },
+
+    // private
+    fireKey : function(e){
+        if(e.isNavKeyPress()){
+            this.fireEvent("specialkey", this, e);
+        }
+    },
+
+    /**
+     * Resets the current field value to the originally loaded value and clears any validation messages
+     */
+    reset : function(){
+        this.setValue(this.originalValue);
+        this.clearInvalid();
+    },
+
+    // private
+    initEvents : function(){
+        this.el.on(Roo.isIE ? "keydown" : "keypress", this.fireKey,  this);
+        this.el.on("focus", this.onFocus,  this);
+        this.el.on("blur", this.onBlur,  this);
+
+        // reference to original value for reset
+        this.originalValue = this.getValue();
+    },
+
+    // private
+    onFocus : function(){
+        if(!Roo.isOpera && this.focusClass){ // don't touch in Opera
+            this.el.addClass(this.focusClass);
+        }
+        if(!this.hasFocus){
+            this.hasFocus = true;
+            this.startValue = this.getValue();
+            this.fireEvent("focus", this);
+        }
+    },
+
+    beforeBlur : Roo.emptyFn,
+
+    // private
+    onBlur : function(){
+        this.beforeBlur();
+        if(!Roo.isOpera && this.focusClass){ // don't touch in Opera
+            this.el.removeClass(this.focusClass);
+        }
+        this.hasFocus = false;
+        if(this.validationEvent !== false && this.validateOnBlur && this.validationEvent != "blur"){
+            this.validate();
+        }
+        var v = this.getValue();
+        if(String(v) !== String(this.startValue)){
+            this.fireEvent('change', this, v, this.startValue);
+        }
+        this.fireEvent("blur", this);
+    },
+
+    /**
+     * Returns whether or not the field value is currently valid
+     * @param {Boolean} preventMark True to disable marking the field invalid
+     * @return {Boolean} True if the value is valid, else false
+     */
+    isValid : function(preventMark){
+        if(this.disabled){
+            return true;
+        }
+        var restore = this.preventMark;
+        this.preventMark = preventMark === true;
+        var v = this.validateValue(this.processValue(this.getRawValue()));
+        this.preventMark = restore;
+        return v;
+    },
+
+    /**
+     * Validates the field value
+     * @return {Boolean} True if the value is valid, else false
+     */
+    validate : function(){
+        if(this.disabled || this.validateValue(this.processValue(this.getRawValue()))){
+            this.clearInvalid();
+            return true;
+        }
+        return false;
+    },
+
+    processValue : function(value){
+        return value;
+    },
+
+    // private
+    // Subclasses should provide the validation implementation by overriding this
+    validateValue : function(value){
+        return true;
+    },
+
+    /**
+     * Mark this field as invalid
+     * @param {String} msg The validation message
+     */
+    markInvalid : function(msg){
+        if(!this.rendered || this.preventMark){ // not rendered
+            return;
+        }
+        this.el.addClass(this.invalidClass);
+        msg = msg || this.invalidText;
+        switch(this.msgTarget){
+            case 'qtip':
+                this.el.dom.qtip = msg;
+                this.el.dom.qclass = 'x-form-invalid-tip';
+                if(Roo.QuickTips){ // fix for floating editors interacting with DND
+                    Roo.QuickTips.enable();
+                }
+                break;
+            case 'title':
+                this.el.dom.title = msg;
+                break;
+            case 'under':
+                if(!this.errorEl){
+                    var elp = this.el.findParent('.x-form-element', 5, true);
+                    this.errorEl = elp.createChild({cls:'x-form-invalid-msg'});
+                    this.errorEl.setWidth(elp.getWidth(true)-20);
+                }
+                this.errorEl.update(msg);
+                Roo.form.Field.msgFx[this.msgFx].show(this.errorEl, this);
+                break;
+            case 'side':
+                if(!this.errorIcon){
+                    var elp = this.el.findParent('.x-form-element', 5, true);
+                    this.errorIcon = elp.createChild({cls:'x-form-invalid-icon'});
+                }
+                this.alignErrorIcon();
+                this.errorIcon.dom.qtip = msg;
+                this.errorIcon.dom.qclass = 'x-form-invalid-tip';
+                this.errorIcon.show();
+                this.on('resize', this.alignErrorIcon, this);
+                break;
+            default:
+                var t = Roo.getDom(this.msgTarget);
+                t.innerHTML = msg;
+                t.style.display = this.msgDisplay;
+                break;
+        }
+        this.fireEvent('invalid', this, msg);
+    },
+
+    // private
+    alignErrorIcon : function(){
+        this.errorIcon.alignTo(this.el, 'tl-tr', [2, 0]);
+    },
+
+    /**
+     * Clear any invalid styles/messages for this field
+     */
+    clearInvalid : function(){
+        if(!this.rendered || this.preventMark){ // not rendered
+            return;
+        }
+        this.el.removeClass(this.invalidClass);
+        switch(this.msgTarget){
+            case 'qtip':
+                this.el.dom.qtip = '';
+                break;
+            case 'title':
+                this.el.dom.title = '';
+                break;
+            case 'under':
+                if(this.errorEl){
+                    Roo.form.Field.msgFx[this.msgFx].hide(this.errorEl, this);
+                }
+                break;
+            case 'side':
+                if(this.errorIcon){
+                    this.errorIcon.dom.qtip = '';
+                    this.errorIcon.hide();
+                    this.un('resize', this.alignErrorIcon, this);
+                }
+                break;
+            default:
+                var t = Roo.getDom(this.msgTarget);
+                t.innerHTML = '';
+                t.style.display = 'none';
+                break;
+        }
+        this.fireEvent('valid', this);
+    },
+
+    /**
+     * Returns the raw data value which may or may not be a valid, defined value.  To return a normalized value see {@link #getValue}.
+     * @return {Mixed} value The field value
+     */
+    getRawValue : function(){
+        var v = this.el.getValue();
+        if(v === this.emptyText){
+            v = '';
+        }
+        return v;
+    },
+
+    /**
+     * Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {@link #getRawValue}.
+     * @return {Mixed} value The field value
+     */
+    getValue : function(){
+        var v = this.el.getValue();
+        if(v === this.emptyText || v === undefined){
+            v = '';
+        }
+        return v;
+    },
+
+    /**
+     * Sets the underlying DOM field's value directly, bypassing validation.  To set the value with validation see {@link #setValue}.
+     * @param {Mixed} value The value to set
+     */
+    setRawValue : function(v){
+        return this.el.dom.value = (v === null || v === undefined ? '' : v);
+    },
+
+    /**
+     * Sets a data value into the field and validates it.  To set the value directly without validation see {@link #setRawValue}.
+     * @param {Mixed} value The value to set
+     */
+    setValue : function(v){
+        this.value = v;
+        if(this.rendered){
+            this.el.dom.value = (v === null || v === undefined ? '' : v);
+            this.validate();
+        }
+    },
+
+    adjustSize : function(w, h){
+        var s = Roo.form.Field.superclass.adjustSize.call(this, w, h);
+        s.width = this.adjustWidth(this.el.dom.tagName, s.width);
+        return s;
+    },
+
+    adjustWidth : function(tag, w){
+        tag = tag.toLowerCase();
+        if(typeof w == 'number' && Roo.isStrict && !Roo.isSafari){
+            if(Roo.isIE && (tag == 'input' || tag == 'textarea')){
+                if(tag == 'input'){
+                    return w + 2;
+                }
+                if(tag = 'textarea'){
+                    return w-2;
+                }
+            }else if(Roo.isOpera){
+                if(tag == 'input'){
+                    return w + 2;
+                }
+                if(tag = 'textarea'){
+                    return w-2;
+                }
+            }
+        }
+        return w;
+    }
 });
+
+
+// anything other than normal should be considered experimental
+Roo.form.Field.msgFx = {
+    normal : {
+        show: function(msgEl, f){
+            msgEl.setDisplayed('block');
+        },
+
+        hide : function(msgEl, f){
+            msgEl.setDisplayed(false).update('');
+        }
+    },
+
+    slide : {
+        show: function(msgEl, f){
+            msgEl.slideIn('t', {stopFx:true});
+        },
+
+        hide : function(msgEl, f){
+            msgEl.slideOut('t', {stopFx:true,useDisplay:true});
+        }
+    },
+
+    slideRight : {
+        show: function(msgEl, f){
+            msgEl.fixDisplay();
+            msgEl.alignTo(f.el, 'tl-tr');
+            msgEl.slideIn('l', {stopFx:true});
+        },
+
+        hide : function(msgEl, f){
+            msgEl.slideOut('l', {stopFx:true,useDisplay:true});
+        }
+    }
+};
