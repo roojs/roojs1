@@ -23946,4 +23946,1564 @@ Roo.extend(Roo.JsonView, Roo.View, {
             }
         }
     }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+
+/**
+ * @class Roo.ColorPalette
+ * @extends Roo.Component
+ * Simple color palette class for choosing colors.  The palette can be rendered to any container.<br />
+ * Here's an example of typical usage:
+ * <pre><code>
+var cp = new Roo.ColorPalette({value:'993300'});  // initial selected color
+cp.render('my-div');
+
+cp.on('select', function(palette, selColor){
+    // do something with selColor
 });
+</code></pre>
+ * @constructor
+ * Create a new ColorPalette
+ * @param {Object} config The config object
+ */
+Roo.ColorPalette = function(config){
+    Roo.ColorPalette.superclass.constructor.call(this, config);
+    this.addEvents({
+        /**
+	     * @event select
+	     * Fires when a color is selected
+	     * @param {ColorPalette} this
+	     * @param {String} color The 6-digit color hex code (without the # symbol)
+	     */
+        select: true
+    });
+
+    if(this.handler){
+        this.on("select", this.handler, this.scope, true);
+    }
+};
+Roo.extend(Roo.ColorPalette, Roo.Component, {
+    /**
+     * @cfg {String} itemCls
+     * The CSS class to apply to the containing element (defaults to "x-color-palette")
+     */
+    itemCls : "x-color-palette",
+    /**
+     * @cfg {String} value
+     * The initial color to highlight (should be a valid 6-digit color hex code without the # symbol).  Note that
+     * the hex codes are case-sensitive.
+     */
+    value : null,
+    clickEvent:'click',
+    // private
+    ctype: "Roo.ColorPalette",
+
+    /**
+     * @cfg {Boolean} allowReselect If set to true then reselecting a color that is already selected fires the selection event
+     */
+    allowReselect : false,
+
+    /**
+     * <p>An array of 6-digit color hex code strings (without the # symbol).  This array can contain any number
+     * of colors, and each hex code should be unique.  The width of the palette is controlled via CSS by adjusting
+     * the width property of the 'x-color-palette' class (or assigning a custom class), so you can balance the number
+     * of colors with the width setting until the box is symmetrical.</p>
+     * <p>You can override individual colors if needed:</p>
+     * <pre><code>
+var cp = new Roo.ColorPalette();
+cp.colors[0] = "FF0000";  // change the first box to red
+</code></pre>
+
+Or you can provide a custom array of your own for complete control:
+<pre><code>
+var cp = new Roo.ColorPalette();
+cp.colors = ["000000", "993300", "333300"];
+</code></pre>
+     * @type Array
+     */
+    colors : [
+        "000000", "993300", "333300", "003300", "003366", "000080", "333399", "333333",
+        "800000", "FF6600", "808000", "008000", "008080", "0000FF", "666699", "808080",
+        "FF0000", "FF9900", "99CC00", "339966", "33CCCC", "3366FF", "800080", "969696",
+        "FF00FF", "FFCC00", "FFFF00", "00FF00", "00FFFF", "00CCFF", "993366", "C0C0C0",
+        "FF99CC", "FFCC99", "FFFF99", "CCFFCC", "CCFFFF", "99CCFF", "CC99FF", "FFFFFF"
+    ],
+
+    // private
+    onRender : function(container, position){
+        var t = new Roo.MasterTemplate(
+            '<tpl><a href="#" class="color-{0}" hidefocus="on"><em><span style="background:#{0}" unselectable="on">&#160;</span></em></a></tpl>'
+        );
+        var c = this.colors;
+        for(var i = 0, len = c.length; i < len; i++){
+            t.add([c[i]]);
+        }
+        var el = document.createElement("div");
+        el.className = this.itemCls;
+        t.overwrite(el);
+        container.dom.insertBefore(el, position);
+        this.el = Roo.get(el);
+        this.el.on(this.clickEvent, this.handleClick,  this, {delegate: "a"});
+        if(this.clickEvent != 'click'){
+            this.el.on('click', Roo.emptyFn,  this, {delegate: "a", preventDefault:true});
+        }
+    },
+
+    // private
+    afterRender : function(){
+        Roo.ColorPalette.superclass.afterRender.call(this);
+        if(this.value){
+            var s = this.value;
+            this.value = null;
+            this.select(s);
+        }
+    },
+
+    // private
+    handleClick : function(e, t){
+        e.preventDefault();
+        if(!this.disabled){
+            var c = t.className.match(/(?:^|\s)color-(.{6})(?:\s|$)/)[1];
+            this.select(c.toUpperCase());
+        }
+    },
+
+    /**
+     * Selects the specified color in the palette (fires the select event)
+     * @param {String} color A valid 6-digit color hex code (# will be stripped if included)
+     */
+    select : function(color){
+        color = color.replace("#", "");
+        if(color != this.value || this.allowReselect){
+            var el = this.el;
+            if(this.value){
+                el.child("a.color-"+this.value).removeClass("x-color-palette-sel");
+            }
+            el.child("a.color-"+color).addClass("x-color-palette-sel");
+            this.value = color;
+            this.fireEvent("select", this, color);
+        }
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.DatePicker
+ * @extends Roo.Component
+ * Simple date picker class.
+ * @constructor
+ * Create a new DatePicker
+ * @param {Object} config The config object
+ */
+Roo.DatePicker = function(config){
+    Roo.DatePicker.superclass.constructor.call(this, config);
+
+    this.value = config && config.value ?
+                 config.value.clearTime() : new Date().clearTime();
+
+    this.addEvents({
+        /**
+	     * @event select
+	     * Fires when a date is selected
+	     * @param {DatePicker} this
+	     * @param {Date} date The selected date
+	     */
+        select: true
+    });
+
+    if(this.handler){
+        this.on("select", this.handler,  this.scope || this);
+    }
+    // build the disabledDatesRE
+    if(!this.disabledDatesRE && this.disabledDates){
+        var dd = this.disabledDates;
+        var re = "(?:";
+        for(var i = 0; i < dd.length; i++){
+            re += dd[i];
+            if(i != dd.length-1) re += "|";
+        }
+        this.disabledDatesRE = new RegExp(re + ")");
+    }
+};
+
+Roo.extend(Roo.DatePicker, Roo.Component, {
+    /**
+     * @cfg {String} todayText
+     * The text to display on the button that selects the current date (defaults to "Today")
+     */
+    todayText : "Today",
+    /**
+     * @cfg {String} okText
+     * The text to display on the ok button
+     */
+    okText : "&#160;OK&#160;", // &#160; to give the user extra clicking room
+    /**
+     * @cfg {String} cancelText
+     * The text to display on the cancel button
+     */
+    cancelText : "Cancel",
+    /**
+     * @cfg {String} todayTip
+     * The tooltip to display for the button that selects the current date (defaults to "{current date} (Spacebar)")
+     */
+    todayTip : "{0} (Spacebar)",
+    /**
+     * @cfg {Date} minDate
+     * Minimum allowable date (JavaScript date object, defaults to null)
+     */
+    minDate : null,
+    /**
+     * @cfg {Date} maxDate
+     * Maximum allowable date (JavaScript date object, defaults to null)
+     */
+    maxDate : null,
+    /**
+     * @cfg {String} minText
+     * The error text to display if the minDate validation fails (defaults to "This date is before the minimum date")
+     */
+    minText : "This date is before the minimum date",
+    /**
+     * @cfg {String} maxText
+     * The error text to display if the maxDate validation fails (defaults to "This date is after the maximum date")
+     */
+    maxText : "This date is after the maximum date",
+    /**
+     * @cfg {String} format
+     * The default date format string which can be overriden for localization support.  The format must be
+     * valid according to {@link Date#parseDate} (defaults to 'm/d/y').
+     */
+    format : "m/d/y",
+    /**
+     * @cfg {Array} disabledDays
+     * An array of days to disable, 0-based. For example, [0, 6] disables Sunday and Saturday (defaults to null).
+     */
+    disabledDays : null,
+    /**
+     * @cfg {String} disabledDaysText
+     * The tooltip to display when the date falls on a disabled day (defaults to "")
+     */
+    disabledDaysText : "",
+    /**
+     * @cfg {RegExp} disabledDatesRE
+     * JavaScript regular expression used to disable a pattern of dates (defaults to null)
+     */
+    disabledDatesRE : null,
+    /**
+     * @cfg {String} disabledDatesText
+     * The tooltip text to display when the date falls on a disabled date (defaults to "")
+     */
+    disabledDatesText : "",
+    /**
+     * @cfg {Boolean} constrainToViewport
+     * True to constrain the date picker to the viewport (defaults to true)
+     */
+    constrainToViewport : true,
+    /**
+     * @cfg {Array} monthNames
+     * An array of textual month names which can be overriden for localization support (defaults to Date.monthNames)
+     */
+    monthNames : Date.monthNames,
+    /**
+     * @cfg {Array} dayNames
+     * An array of textual day names which can be overriden for localization support (defaults to Date.dayNames)
+     */
+    dayNames : Date.dayNames,
+    /**
+     * @cfg {String} nextText
+     * The next month navigation button tooltip (defaults to 'Next Month (Control+Right)')
+     */
+    nextText: 'Next Month (Control+Right)',
+    /**
+     * @cfg {String} prevText
+     * The previous month navigation button tooltip (defaults to 'Previous Month (Control+Left)')
+     */
+    prevText: 'Previous Month (Control+Left)',
+    /**
+     * @cfg {String} monthYearText
+     * The header month selector tooltip (defaults to 'Choose a month (Control+Up/Down to move years)')
+     */
+    monthYearText: 'Choose a month (Control+Up/Down to move years)',
+    /**
+     * @cfg {Number} startDay
+     * Day index at which the week should begin, 0-based (defaults to 0, which is Sunday)
+     */
+    startDay : 0,
+    /**
+     * @cfg {Bool} showClear
+     * Show a clear button (usefull for date form elements that can be blank.)
+     */
+    
+    showClear: false,
+    
+    /**
+     * Sets the value of the date field
+     * @param {Date} value The date to set
+     */
+    setValue : function(value){
+        var old = this.value;
+        this.value = value.clearTime(true);
+        if(this.el){
+            this.update(this.value);
+        }
+    },
+
+    /**
+     * Gets the current selected value of the date field
+     * @return {Date} The selected date
+     */
+    getValue : function(){
+        return this.value;
+    },
+
+    // private
+    focus : function(){
+        if(this.el){
+            this.update(this.activeDate);
+        }
+    },
+
+    // private
+    onRender : function(container, position){
+        var m = [
+             '<table cellspacing="0">',
+                '<tr><td class="x-date-left"><a href="#" title="', this.prevText ,'">&#160;</a></td><td class="x-date-middle" align="center"></td><td class="x-date-right"><a href="#" title="', this.nextText ,'">&#160;</a></td></tr>',
+                '<tr><td colspan="3"><table class="x-date-inner" cellspacing="0"><thead><tr>'];
+        var dn = this.dayNames;
+        for(var i = 0; i < 7; i++){
+            var d = this.startDay+i;
+            if(d > 6){
+                d = d-7;
+            }
+            m.push("<th><span>", dn[d].substr(0,1), "</span></th>");
+        }
+        m[m.length] = "</tr></thead><tbody><tr>";
+        for(var i = 0; i < 42; i++) {
+            if(i % 7 == 0 && i != 0){
+                m[m.length] = "</tr><tr>";
+            }
+            m[m.length] = '<td><a href="#" hidefocus="on" class="x-date-date" tabIndex="1"><em><span></span></em></a></td>';
+        }
+        m[m.length] = '</tr></tbody></table></td></tr><tr>'+
+            '<td colspan="3" class="x-date-bottom" align="center"></td></tr></table><div class="x-date-mp"></div>';
+
+        var el = document.createElement("div");
+        el.className = "x-date-picker";
+        el.innerHTML = m.join("");
+
+        container.dom.insertBefore(el, position);
+
+        this.el = Roo.get(el);
+        this.eventEl = Roo.get(el.firstChild);
+
+        new Roo.util.ClickRepeater(this.el.child("td.x-date-left a"), {
+            handler: this.showPrevMonth,
+            scope: this,
+            preventDefault:true,
+            stopDefault:true
+        });
+
+        new Roo.util.ClickRepeater(this.el.child("td.x-date-right a"), {
+            handler: this.showNextMonth,
+            scope: this,
+            preventDefault:true,
+            stopDefault:true
+        });
+
+        this.eventEl.on("mousewheel", this.handleMouseWheel,  this);
+
+        this.monthPicker = this.el.down('div.x-date-mp');
+        this.monthPicker.enableDisplayMode('block');
+        
+        var kn = new Roo.KeyNav(this.eventEl, {
+            "left" : function(e){
+                e.ctrlKey ?
+                    this.showPrevMonth() :
+                    this.update(this.activeDate.add("d", -1));
+            },
+
+            "right" : function(e){
+                e.ctrlKey ?
+                    this.showNextMonth() :
+                    this.update(this.activeDate.add("d", 1));
+            },
+
+            "up" : function(e){
+                e.ctrlKey ?
+                    this.showNextYear() :
+                    this.update(this.activeDate.add("d", -7));
+            },
+
+            "down" : function(e){
+                e.ctrlKey ?
+                    this.showPrevYear() :
+                    this.update(this.activeDate.add("d", 7));
+            },
+
+            "pageUp" : function(e){
+                this.showNextMonth();
+            },
+
+            "pageDown" : function(e){
+                this.showPrevMonth();
+            },
+
+            "enter" : function(e){
+                e.stopPropagation();
+                return true;
+            },
+
+            scope : this
+        });
+
+        this.eventEl.on("click", this.handleDateClick,  this, {delegate: "a.x-date-date"});
+
+        this.eventEl.addKeyListener(Roo.EventObject.SPACE, this.selectToday,  this);
+
+        this.el.unselectable();
+        
+        this.cells = this.el.select("table.x-date-inner tbody td");
+        this.textNodes = this.el.query("table.x-date-inner tbody span");
+
+        this.mbtn = new Roo.Button(this.el.child("td.x-date-middle", true), {
+            text: "&#160;",
+            tooltip: this.monthYearText
+        });
+
+        this.mbtn.on('click', this.showMonthPicker, this);
+        this.mbtn.el.child(this.mbtn.menuClassTarget).addClass("x-btn-with-menu");
+
+
+        var today = (new Date()).dateFormat(this.format);
+        
+        var baseTb = new Roo.Toolbar(this.el.child("td.x-date-bottom", true));
+        baseTb.add({
+            text: String.format(this.todayText, today),
+            tooltip: String.format(this.todayTip, today),
+            handler: this.selectToday,
+            scope: this
+        });
+        
+        //var todayBtn = new Roo.Button(this.el.child("td.x-date-bottom", true), {
+            
+        //});
+        if (this.showClear) {
+            
+            baseTb.add( new Roo.Toolbar.Fill());
+            baseTb.add({
+                text: '&#160;',
+                cls: 'x-btn-icon x-btn-clear',
+                handler: function() {
+                    //this.value = '';
+                    this.fireEvent("select", this, '');
+                },
+                scope: this
+            });
+        }
+        
+        
+        if(Roo.isIE){
+            this.el.repaint();
+        }
+        this.update(this.value);
+    },
+
+    createMonthPicker : function(){
+        if(!this.monthPicker.dom.firstChild){
+            var buf = ['<table border="0" cellspacing="0">'];
+            for(var i = 0; i < 6; i++){
+                buf.push(
+                    '<tr><td class="x-date-mp-month"><a href="#">', this.monthNames[i].substr(0, 3), '</a></td>',
+                    '<td class="x-date-mp-month x-date-mp-sep"><a href="#">', this.monthNames[i+6].substr(0, 3), '</a></td>',
+                    i == 0 ?
+                    '<td class="x-date-mp-ybtn" align="center"><a class="x-date-mp-prev"></a></td><td class="x-date-mp-ybtn" align="center"><a class="x-date-mp-next"></a></td></tr>' :
+                    '<td class="x-date-mp-year"><a href="#"></a></td><td class="x-date-mp-year"><a href="#"></a></td></tr>'
+                );
+            }
+            buf.push(
+                '<tr class="x-date-mp-btns"><td colspan="4"><button type="button" class="x-date-mp-ok">',
+                    this.okText,
+                    '</button><button type="button" class="x-date-mp-cancel">',
+                    this.cancelText,
+                    '</button></td></tr>',
+                '</table>'
+            );
+            this.monthPicker.update(buf.join(''));
+            this.monthPicker.on('click', this.onMonthClick, this);
+            this.monthPicker.on('dblclick', this.onMonthDblClick, this);
+
+            this.mpMonths = this.monthPicker.select('td.x-date-mp-month');
+            this.mpYears = this.monthPicker.select('td.x-date-mp-year');
+
+            this.mpMonths.each(function(m, a, i){
+                i += 1;
+                if((i%2) == 0){
+                    m.dom.xmonth = 5 + Math.round(i * .5);
+                }else{
+                    m.dom.xmonth = Math.round((i-1) * .5);
+                }
+            });
+        }
+    },
+
+    showMonthPicker : function(){
+        this.createMonthPicker();
+        var size = this.el.getSize();
+        this.monthPicker.setSize(size);
+        this.monthPicker.child('table').setSize(size);
+
+        this.mpSelMonth = (this.activeDate || this.value).getMonth();
+        this.updateMPMonth(this.mpSelMonth);
+        this.mpSelYear = (this.activeDate || this.value).getFullYear();
+        this.updateMPYear(this.mpSelYear);
+
+        this.monthPicker.slideIn('t', {duration:.2});
+    },
+
+    updateMPYear : function(y){
+        this.mpyear = y;
+        var ys = this.mpYears.elements;
+        for(var i = 1; i <= 10; i++){
+            var td = ys[i-1], y2;
+            if((i%2) == 0){
+                y2 = y + Math.round(i * .5);
+                td.firstChild.innerHTML = y2;
+                td.xyear = y2;
+            }else{
+                y2 = y - (5-Math.round(i * .5));
+                td.firstChild.innerHTML = y2;
+                td.xyear = y2;
+            }
+            this.mpYears.item(i-1)[y2 == this.mpSelYear ? 'addClass' : 'removeClass']('x-date-mp-sel');
+        }
+    },
+
+    updateMPMonth : function(sm){
+        this.mpMonths.each(function(m, a, i){
+            m[m.dom.xmonth == sm ? 'addClass' : 'removeClass']('x-date-mp-sel');
+        });
+    },
+
+    selectMPMonth: function(m){
+        
+    },
+
+    onMonthClick : function(e, t){
+        e.stopEvent();
+        var el = new Roo.Element(t), pn;
+        if(el.is('button.x-date-mp-cancel')){
+            this.hideMonthPicker();
+        }
+        else if(el.is('button.x-date-mp-ok')){
+            this.update(new Date(this.mpSelYear, this.mpSelMonth, (this.activeDate || this.value).getDate()));
+            this.hideMonthPicker();
+        }
+        else if(pn = el.up('td.x-date-mp-month', 2)){
+            this.mpMonths.removeClass('x-date-mp-sel');
+            pn.addClass('x-date-mp-sel');
+            this.mpSelMonth = pn.dom.xmonth;
+        }
+        else if(pn = el.up('td.x-date-mp-year', 2)){
+            this.mpYears.removeClass('x-date-mp-sel');
+            pn.addClass('x-date-mp-sel');
+            this.mpSelYear = pn.dom.xyear;
+        }
+        else if(el.is('a.x-date-mp-prev')){
+            this.updateMPYear(this.mpyear-10);
+        }
+        else if(el.is('a.x-date-mp-next')){
+            this.updateMPYear(this.mpyear+10);
+        }
+    },
+
+    onMonthDblClick : function(e, t){
+        e.stopEvent();
+        var el = new Roo.Element(t), pn;
+        if(pn = el.up('td.x-date-mp-month', 2)){
+            this.update(new Date(this.mpSelYear, pn.dom.xmonth, (this.activeDate || this.value).getDate()));
+            this.hideMonthPicker();
+        }
+        else if(pn = el.up('td.x-date-mp-year', 2)){
+            this.update(new Date(pn.dom.xyear, this.mpSelMonth, (this.activeDate || this.value).getDate()));
+            this.hideMonthPicker();
+        }
+    },
+
+    hideMonthPicker : function(disableAnim){
+        if(this.monthPicker){
+            if(disableAnim === true){
+                this.monthPicker.hide();
+            }else{
+                this.monthPicker.slideOut('t', {duration:.2});
+            }
+        }
+    },
+
+    // private
+    showPrevMonth : function(e){
+        this.update(this.activeDate.add("mo", -1));
+    },
+
+    // private
+    showNextMonth : function(e){
+        this.update(this.activeDate.add("mo", 1));
+    },
+
+    // private
+    showPrevYear : function(){
+        this.update(this.activeDate.add("y", -1));
+    },
+
+    // private
+    showNextYear : function(){
+        this.update(this.activeDate.add("y", 1));
+    },
+
+    // private
+    handleMouseWheel : function(e){
+        var delta = e.getWheelDelta();
+        if(delta > 0){
+            this.showPrevMonth();
+            e.stopEvent();
+        } else if(delta < 0){
+            this.showNextMonth();
+            e.stopEvent();
+        }
+    },
+
+    // private
+    handleDateClick : function(e, t){
+        e.stopEvent();
+        if(t.dateValue && !Roo.fly(t.parentNode).hasClass("x-date-disabled")){
+            this.setValue(new Date(t.dateValue));
+            this.fireEvent("select", this, this.value);
+        }
+    },
+
+    // private
+    selectToday : function(){
+        this.setValue(new Date().clearTime());
+        this.fireEvent("select", this, this.value);
+    },
+
+    // private
+    update : function(date){
+        var vd = this.activeDate;
+        this.activeDate = date;
+        if(vd && this.el){
+            var t = date.getTime();
+            if(vd.getMonth() == date.getMonth() && vd.getFullYear() == date.getFullYear()){
+                this.cells.removeClass("x-date-selected");
+                this.cells.each(function(c){
+                   if(c.dom.firstChild.dateValue == t){
+                       c.addClass("x-date-selected");
+                       setTimeout(function(){
+                            try{c.dom.firstChild.focus();}catch(e){}
+                       }, 50);
+                       return false;
+                   }
+                });
+                return;
+            }
+        }
+        var days = date.getDaysInMonth();
+        var firstOfMonth = date.getFirstDateOfMonth();
+        var startingPos = firstOfMonth.getDay()-this.startDay;
+
+        if(startingPos <= this.startDay){
+            startingPos += 7;
+        }
+
+        var pm = date.add("mo", -1);
+        var prevStart = pm.getDaysInMonth()-startingPos;
+
+        var cells = this.cells.elements;
+        var textEls = this.textNodes;
+        days += startingPos;
+
+        // convert everything to numbers so it's fast
+        var day = 86400000;
+        var d = (new Date(pm.getFullYear(), pm.getMonth(), prevStart)).clearTime();
+        var today = new Date().clearTime().getTime();
+        var sel = date.clearTime().getTime();
+        var min = this.minDate ? this.minDate.clearTime() : Number.NEGATIVE_INFINITY;
+        var max = this.maxDate ? this.maxDate.clearTime() : Number.POSITIVE_INFINITY;
+        var ddMatch = this.disabledDatesRE;
+        var ddText = this.disabledDatesText;
+        var ddays = this.disabledDays ? this.disabledDays.join("") : false;
+        var ddaysText = this.disabledDaysText;
+        var format = this.format;
+
+        var setCellClass = function(cal, cell){
+            cell.title = "";
+            var t = d.getTime();
+            cell.firstChild.dateValue = t;
+            if(t == today){
+                cell.className += " x-date-today";
+                cell.title = cal.todayText;
+            }
+            if(t == sel){
+                cell.className += " x-date-selected";
+                setTimeout(function(){
+                    try{cell.firstChild.focus();}catch(e){}
+                }, 50);
+            }
+            // disabling
+            if(t < min) {
+                cell.className = " x-date-disabled";
+                cell.title = cal.minText;
+                return;
+            }
+            if(t > max) {
+                cell.className = " x-date-disabled";
+                cell.title = cal.maxText;
+                return;
+            }
+            if(ddays){
+                if(ddays.indexOf(d.getDay()) != -1){
+                    cell.title = ddaysText;
+                    cell.className = " x-date-disabled";
+                }
+            }
+            if(ddMatch && format){
+                var fvalue = d.dateFormat(format);
+                if(ddMatch.test(fvalue)){
+                    cell.title = ddText.replace("%0", fvalue);
+                    cell.className = " x-date-disabled";
+                }
+            }
+        };
+
+        var i = 0;
+        for(; i < startingPos; i++) {
+            textEls[i].innerHTML = (++prevStart);
+            d.setDate(d.getDate()+1);
+            cells[i].className = "x-date-prevday";
+            setCellClass(this, cells[i]);
+        }
+        for(; i < days; i++){
+            intDay = i - startingPos + 1;
+            textEls[i].innerHTML = (intDay);
+            d.setDate(d.getDate()+1);
+            cells[i].className = "x-date-active";
+            setCellClass(this, cells[i]);
+        }
+        var extraDays = 0;
+        for(; i < 42; i++) {
+             textEls[i].innerHTML = (++extraDays);
+             d.setDate(d.getDate()+1);
+             cells[i].className = "x-date-nextday";
+             setCellClass(this, cells[i]);
+        }
+
+        this.mbtn.setText(this.monthNames[date.getMonth()] + " " + date.getFullYear());
+
+        if(!this.internalRender){
+            var main = this.el.dom.firstChild;
+            var w = main.offsetWidth;
+            this.el.setWidth(w + this.el.getBorderWidth("lr"));
+            Roo.fly(main).setWidth(w);
+            this.internalRender = true;
+            // opera does not respect the auto grow header center column
+            // then, after it gets a width opera refuses to recalculate
+            // without a second pass
+            if(Roo.isOpera && !this.secondPass){
+                main.rows[0].cells[1].style.width = (w - (main.rows[0].cells[0].offsetWidth+main.rows[0].cells[2].offsetWidth)) + "px";
+                this.secondPass = true;
+                this.update.defer(10, this, [date]);
+            }
+        }
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+/**
+ * @class Roo.TabPanel
+ * @extends Roo.util.Observable
+ * A lightweight tab container.
+ * <br><br>
+ * Usage:
+ * <pre><code>
+// basic tabs 1, built from existing content
+var tabs = new Roo.TabPanel("tabs1");
+tabs.addTab("script", "View Script");
+tabs.addTab("markup", "View Markup");
+tabs.activate("script");
+
+// more advanced tabs, built from javascript
+var jtabs = new Roo.TabPanel("jtabs");
+jtabs.addTab("jtabs-1", "Normal Tab", "My content was added during construction.");
+
+// set up the UpdateManager
+var tab2 = jtabs.addTab("jtabs-2", "Ajax Tab 1");
+var updater = tab2.getUpdateManager();
+updater.setDefaultUrl("ajax1.htm");
+tab2.on('activate', updater.refresh, updater, true);
+
+// Use setUrl for Ajax loading
+var tab3 = jtabs.addTab("jtabs-3", "Ajax Tab 2");
+tab3.setUrl("ajax2.htm", null, true);
+
+// Disabled tab
+var tab4 = jtabs.addTab("tabs1-5", "Disabled Tab", "Can't see me cause I'm disabled");
+tab4.disable();
+
+jtabs.activate("jtabs-1");
+ * </code></pre>
+ * @constructor
+ * Create a new TabPanel.
+ * @param {String/HTMLElement/Roo.Element} container The id, DOM element or Roo.Element container where this TabPanel is to be rendered.
+ * @param {Object/Boolean} config Config object to set any properties for this TabPanel, or true to render the tabs on the bottom.
+ */
+Roo.TabPanel = function(container, config){
+    /**
+    * The container element for this TabPanel.
+    * @type Roo.Element
+    */
+    this.el = Roo.get(container, true);
+    if(config){
+        if(typeof config == "boolean"){
+            this.tabPosition = config ? "bottom" : "top";
+        }else{
+            Roo.apply(this, config);
+        }
+    }
+    if(this.tabPosition == "bottom"){
+        this.bodyEl = Roo.get(this.createBody(this.el.dom));
+        this.el.addClass("x-tabs-bottom");
+    }
+    this.stripWrap = Roo.get(this.createStrip(this.el.dom), true);
+    this.stripEl = Roo.get(this.createStripList(this.stripWrap.dom), true);
+    this.stripBody = Roo.get(this.stripWrap.dom.firstChild.firstChild, true);
+    if(Roo.isIE){
+        Roo.fly(this.stripWrap.dom.firstChild).setStyle("overflow-x", "hidden");
+    }
+    if(this.tabPosition != "bottom"){
+    /** The body element that contains {@link Roo.TabPanelItem} bodies.
+     * @type Roo.Element
+     */
+      this.bodyEl = Roo.get(this.createBody(this.el.dom));
+      this.el.addClass("x-tabs-top");
+    }
+    this.items = [];
+
+    this.bodyEl.setStyle("position", "relative");
+
+    this.active = null;
+    this.activateDelegate = this.activate.createDelegate(this);
+
+    this.addEvents({
+        /**
+         * @event tabchange
+         * Fires when the active tab changes
+         * @param {Roo.TabPanel} this
+         * @param {Roo.TabPanelItem} activePanel The new active tab
+         */
+        "tabchange": true,
+        /**
+         * @event beforetabchange
+         * Fires before the active tab changes, set cancel to true on the "e" parameter to cancel the change
+         * @param {Roo.TabPanel} this
+         * @param {Object} e Set cancel to true on this object to cancel the tab change
+         * @param {Roo.TabPanelItem} tab The tab being changed to
+         */
+        "beforetabchange" : true
+    });
+
+    Roo.EventManager.onWindowResize(this.onResize, this);
+    this.cpad = this.el.getPadding("lr");
+    this.hiddenCount = 0;
+
+    Roo.TabPanel.superclass.constructor.call(this);
+};
+
+Roo.extend(Roo.TabPanel, Roo.util.Observable, {
+	/*
+	 *@cfg {String} tabPosition "top" or "bottom" (defaults to "top")
+	 */
+    tabPosition : "top",
+	/*
+	 *@cfg {Number} currentTabWidth The width of the current tab (defaults to 0)
+	 */
+    currentTabWidth : 0,
+	/*
+	 *@cfg {Number} minTabWidth The minimum width of a tab (defaults to 40) (ignored if {@link #resizeTabs} is not true)
+	 */
+    minTabWidth : 40,
+	/*
+	 *@cfg {Number} maxTabWidth The maximum width of a tab (defaults to 250) (ignored if {@link #resizeTabs} is not true)
+	 */
+    maxTabWidth : 250,
+	/*
+	 *@cfg {Number} preferredTabWidth The preferred (default) width of a tab (defaults to 175) (ignored if {@link #resizeTabs} is not true)
+	 */
+    preferredTabWidth : 175,
+	/*
+	 *@cfg {Boolean} resizeTabs True to enable dynamic tab resizing (defaults to false)
+	 */
+    resizeTabs : false,
+	/*
+	 *@cfg {Boolean} monitorResize Set this to true to turn on window resize monitoring (ignored if {@link #resizeTabs} is not true) (defaults to true)
+	 */
+    monitorResize : true,
+
+    /**
+     * Creates a new {@link Roo.TabPanelItem} by looking for an existing element with the provided id -- if it's not found it creates one.
+     * @param {String} id The id of the div to use <b>or create</b>
+     * @param {String} text The text for the tab
+     * @param {String} content (optional) Content to put in the TabPanelItem body
+     * @param {Boolean} closable (optional) True to create a close icon on the tab
+     * @return {Roo.TabPanelItem} The created TabPanelItem
+     */
+    addTab : function(id, text, content, closable){
+        var item = new Roo.TabPanelItem(this, id, text, closable);
+        this.addTabItem(item);
+        if(content){
+            item.setContent(content);
+        }
+        return item;
+    },
+
+    /**
+     * Returns the {@link Roo.TabPanelItem} with the specified id/index
+     * @param {String/Number} id The id or index of the TabPanelItem to fetch.
+     * @return {Roo.TabPanelItem}
+     */
+    getTab : function(id){
+        return this.items[id];
+    },
+
+    /**
+     * Hides the {@link Roo.TabPanelItem} with the specified id/index
+     * @param {String/Number} id The id or index of the TabPanelItem to hide.
+     */
+    hideTab : function(id){
+        var t = this.items[id];
+        if(!t.isHidden()){
+           t.setHidden(true);
+           this.hiddenCount++;
+           this.autoSizeTabs();
+        }
+    },
+
+    /**
+     * "Unhides" the {@link Roo.TabPanelItem} with the specified id/index.
+     * @param {String/Number} id The id or index of the TabPanelItem to unhide.
+     */
+    unhideTab : function(id){
+        var t = this.items[id];
+        if(t.isHidden()){
+           t.setHidden(false);
+           this.hiddenCount--;
+           this.autoSizeTabs();
+        }
+    },
+
+    /**
+     * Adds an existing {@link Roo.TabPanelItem}.
+     * @param {Roo.TabPanelItem} item The TabPanelItem to add
+     */
+    addTabItem : function(item){
+        this.items[item.id] = item;
+        this.items.push(item);
+        if(this.resizeTabs){
+           item.setWidth(this.currentTabWidth || this.preferredTabWidth);
+           this.autoSizeTabs();
+        }else{
+            item.autoSize();
+        }
+    },
+
+    /**
+     * Removes a {@link Roo.TabPanelItem}.
+     * @param {String/Number} id The id or index of the TabPanelItem to remove.
+     */
+    removeTab : function(id){
+        var items = this.items;
+        var tab = items[id];
+        if(!tab) return;
+        var index = items.indexOf(tab);
+        if(this.active == tab && items.length > 1){
+            var newTab = this.getNextAvailable(index);
+            if(newTab)newTab.activate();
+        }
+        this.stripEl.dom.removeChild(tab.pnode.dom);
+        if(tab.bodyEl.dom.parentNode == this.bodyEl.dom){ // if it was moved already prevent error
+            this.bodyEl.dom.removeChild(tab.bodyEl.dom);
+        }
+        items.splice(index, 1);
+        delete this.items[tab.id];
+        tab.fireEvent("close", tab);
+        tab.purgeListeners();
+        this.autoSizeTabs();
+    },
+
+    getNextAvailable : function(start){
+        var items = this.items;
+        var index = start;
+        // look for a next tab that will slide over to
+        // replace the one being removed
+        while(index < items.length){
+            var item = items[++index];
+            if(item && !item.isHidden()){
+                return item;
+            }
+        }
+        // if one isn't found select the previous tab (on the left)
+        index = start;
+        while(index >= 0){
+            var item = items[--index];
+            if(item && !item.isHidden()){
+                return item;
+            }
+        }
+        return null;
+    },
+
+    /**
+     * Disables a {@link Roo.TabPanelItem}. It cannot be the active tab, if it is this call is ignored.
+     * @param {String/Number} id The id or index of the TabPanelItem to disable.
+     */
+    disableTab : function(id){
+        var tab = this.items[id];
+        if(tab && this.active != tab){
+            tab.disable();
+        }
+    },
+
+    /**
+     * Enables a {@link Roo.TabPanelItem} that is disabled.
+     * @param {String/Number} id The id or index of the TabPanelItem to enable.
+     */
+    enableTab : function(id){
+        var tab = this.items[id];
+        tab.enable();
+    },
+
+    /**
+     * Activates a {@link Roo.TabPanelItem}. The currently active one will be deactivated.
+     * @param {String/Number} id The id or index of the TabPanelItem to activate.
+     * @return {Roo.TabPanelItem} The TabPanelItem.
+     */
+    activate : function(id){
+        var tab = this.items[id];
+        if(!tab){
+            return null;
+        }
+        if(tab == this.active || tab.disabled){
+            return tab;
+        }
+        var e = {};
+        this.fireEvent("beforetabchange", this, e, tab);
+        if(e.cancel !== true && !tab.disabled){
+            if(this.active){
+                this.active.hide();
+            }
+            this.active = this.items[id];
+            this.active.show();
+            this.fireEvent("tabchange", this, this.active);
+        }
+        return tab;
+    },
+
+    /**
+     * Gets the active {@link Roo.TabPanelItem}.
+     * @return {Roo.TabPanelItem} The active TabPanelItem or null if none are active.
+     */
+    getActiveTab : function(){
+        return this.active;
+    },
+
+    /**
+     * Updates the tab body element to fit the height of the container element
+     * for overflow scrolling
+     * @param {Number} targetHeight (optional) Override the starting height from the elements height
+     */
+    syncHeight : function(targetHeight){
+        var height = (targetHeight || this.el.getHeight())-this.el.getBorderWidth("tb")-this.el.getPadding("tb");
+        var bm = this.bodyEl.getMargins();
+        var newHeight = height-(this.stripWrap.getHeight()||0)-(bm.top+bm.bottom);
+        this.bodyEl.setHeight(newHeight);
+        return newHeight;
+    },
+
+    onResize : function(){
+        if(this.monitorResize){
+            this.autoSizeTabs();
+        }
+    },
+
+    /**
+     * Disables tab resizing while tabs are being added (if {@link #resizeTabs} is false this does nothing)
+     */
+    beginUpdate : function(){
+        this.updating = true;
+    },
+
+    /**
+     * Stops an update and resizes the tabs (if {@link #resizeTabs} is false this does nothing)
+     */
+    endUpdate : function(){
+        this.updating = false;
+        this.autoSizeTabs();
+    },
+
+    /**
+     * Manual call to resize the tabs (if {@link #resizeTabs} is false this does nothing)
+     */
+    autoSizeTabs : function(){
+        var count = this.items.length;
+        var vcount = count - this.hiddenCount;
+        if(!this.resizeTabs || count < 1 || vcount < 1 || this.updating) return;
+        var w = Math.max(this.el.getWidth() - this.cpad, 10);
+        var availWidth = Math.floor(w / vcount);
+        var b = this.stripBody;
+        if(b.getWidth() > w){
+            var tabs = this.items;
+            this.setTabWidth(Math.max(availWidth, this.minTabWidth)-2);
+            if(availWidth < this.minTabWidth){
+                /*if(!this.sleft){    // incomplete scrolling code
+                    this.createScrollButtons();
+                }
+                this.showScroll();
+                this.stripClip.setWidth(w - (this.sleft.getWidth()+this.sright.getWidth()));*/
+            }
+        }else{
+            if(this.currentTabWidth < this.preferredTabWidth){
+                this.setTabWidth(Math.min(availWidth, this.preferredTabWidth)-2);
+            }
+        }
+    },
+
+    /**
+     * Returns the number of tabs in this TabPanel.
+     * @return {Number}
+     */
+     getCount : function(){
+         return this.items.length;
+     },
+
+    /**
+     * Resizes all the tabs to the passed width
+     * @param {Number} The new width
+     */
+    setTabWidth : function(width){
+        this.currentTabWidth = width;
+        for(var i = 0, len = this.items.length; i < len; i++) {
+        	if(!this.items[i].isHidden())this.items[i].setWidth(width);
+        }
+    },
+
+    /**
+     * Destroys this TabPanel
+     * @param {Boolean} removeEl (optional) True to remove the element from the DOM as well (defaults to undefined)
+     */
+    destroy : function(removeEl){
+        Roo.EventManager.removeResizeListener(this.onResize, this);
+        for(var i = 0, len = this.items.length; i < len; i++){
+            this.items[i].purgeListeners();
+        }
+        if(removeEl === true){
+            this.el.update("");
+            this.el.remove();
+        }
+    }
+});
+
+/**
+ * @class Roo.TabPanelItem
+ * @extends Roo.util.Observable
+ * Represents an individual item (tab plus body) in a TabPanel.
+ * @param {Roo.TabPanel} tabPanel The {@link Roo.TabPanel} this TabPanelItem belongs to
+ * @param {String} id The id of this TabPanelItem
+ * @param {String} text The text for the tab of this TabPanelItem
+ * @param {Boolean} closable True to allow this TabPanelItem to be closable (defaults to false)
+ */
+Roo.TabPanelItem = function(tabPanel, id, text, closable){
+    /**
+     * The {@link Roo.TabPanel} this TabPanelItem belongs to
+     * @type Roo.TabPanel
+     */
+    this.tabPanel = tabPanel;
+    /**
+     * The id for this TabPanelItem
+     * @type String
+     */
+    this.id = id;
+    /** @private */
+    this.disabled = false;
+    /** @private */
+    this.text = text;
+    /** @private */
+    this.loaded = false;
+    this.closable = closable;
+
+    /**
+     * The body element for this TabPanelItem.
+     * @type Roo.Element
+     */
+    this.bodyEl = Roo.get(tabPanel.createItemBody(tabPanel.bodyEl.dom, id));
+    this.bodyEl.setVisibilityMode(Roo.Element.VISIBILITY);
+    this.bodyEl.setStyle("display", "block");
+    this.bodyEl.setStyle("zoom", "1");
+    this.hideAction();
+
+    var els = tabPanel.createStripElements(tabPanel.stripEl.dom, text, closable);
+    /** @private */
+    this.el = Roo.get(els.el, true);
+    this.inner = Roo.get(els.inner, true);
+    this.textEl = Roo.get(this.el.dom.firstChild.firstChild.firstChild, true);
+    this.pnode = Roo.get(els.el.parentNode, true);
+    this.el.on("mousedown", this.onTabMouseDown, this);
+    this.el.on("click", this.onTabClick, this);
+    /** @private */
+    if(closable){
+        var c = Roo.get(els.close, true);
+        c.dom.title = this.closeText;
+        c.addClassOnOver("close-over");
+        c.on("click", this.closeClick, this);
+     }
+
+    this.addEvents({
+         /**
+         * @event activate
+         * Fires when this tab becomes the active tab.
+         * @param {Roo.TabPanel} tabPanel The parent TabPanel
+         * @param {Roo.TabPanelItem} this
+         */
+        "activate": true,
+        /**
+         * @event beforeclose
+         * Fires before this tab is closed. To cancel the close, set cancel to true on e (e.cancel = true).
+         * @param {Roo.TabPanelItem} this
+         * @param {Object} e Set cancel to true on this object to cancel the close.
+         */
+        "beforeclose": true,
+        /**
+         * @event close
+         * Fires when this tab is closed.
+         * @param {Roo.TabPanelItem} this
+         */
+         "close": true,
+        /**
+         * @event deactivate
+         * Fires when this tab is no longer the active tab.
+         * @param {Roo.TabPanel} tabPanel The parent TabPanel
+         * @param {Roo.TabPanelItem} this
+         */
+         "deactivate" : true
+    });
+    this.hidden = false;
+
+    Roo.TabPanelItem.superclass.constructor.call(this);
+};
+
+Roo.extend(Roo.TabPanelItem, Roo.util.Observable, {
+    purgeListeners : function(){
+       Roo.util.Observable.prototype.purgeListeners.call(this);
+       this.el.removeAllListeners();
+    },
+    /**
+     * Shows this TabPanelItem -- this <b>does not</b> deactivate the currently active TabPanelItem.
+     */
+    show : function(){
+        this.pnode.addClass("on");
+        this.showAction();
+        if(Roo.isOpera){
+            this.tabPanel.stripWrap.repaint();
+        }
+        this.fireEvent("activate", this.tabPanel, this);
+    },
+
+    /**
+     * Returns true if this tab is the active tab.
+     * @return {Boolean}
+     */
+    isActive : function(){
+        return this.tabPanel.getActiveTab() == this;
+    },
+
+    /**
+     * Hides this TabPanelItem -- if you don't activate another TabPanelItem this could look odd.
+     */
+    hide : function(){
+        this.pnode.removeClass("on");
+        this.hideAction();
+        this.fireEvent("deactivate", this.tabPanel, this);
+    },
+
+    hideAction : function(){
+        this.bodyEl.hide();
+        this.bodyEl.setStyle("position", "absolute");
+        this.bodyEl.setLeft("-20000px");
+        this.bodyEl.setTop("-20000px");
+    },
+
+    showAction : function(){
+        this.bodyEl.setStyle("position", "relative");
+        this.bodyEl.setTop("");
+        this.bodyEl.setLeft("");
+        this.bodyEl.show();
+    },
+
+    /**
+     * Set the tooltip for the tab.
+     * @param {String} tooltip The tab's tooltip
+     */
+    setTooltip : function(text){
+        if(Roo.QuickTips && Roo.QuickTips.isEnabled()){
+            this.textEl.dom.qtip = text;
+            this.textEl.dom.removeAttribute('title');
+        }else{
+            this.textEl.dom.title = text;
+        }
+    },
+
+    onTabClick : function(e){
+        e.preventDefault();
+        this.tabPanel.activate(this.id);
+    },
+
+    onTabMouseDown : function(e){
+        e.preventDefault();
+        this.tabPanel.activate(this.id);
+    },
+
+    getWidth : function(){
+        return this.inner.getWidth();
+    },
+
+    setWidth : function(width){
+        var iwidth = width - this.pnode.getPadding("lr");
+        this.inner.setWidth(iwidth);
+        this.textEl.setWidth(iwidth-this.inner.getPadding("lr"));
+        this.pnode.setWidth(width);
+    },
+
+    /**
+     * Show or hide the tab
+     * @param {Boolean} hidden True to hide or false to show.
+     */
+    setHidden : function(hidden){
+        this.hidden = hidden;
+        this.pnode.setStyle("display", hidden ? "none" : "");
+    },
+
+    /**
+     * Returns true if this tab is "hidden"
+     * @return {Boolean}
+     */
+    isHidden : function(){
+        return this.hidden;
+    },
+
+    /**
+     * Returns the text for this tab
+     * @return {String}
+     */
+    getText : function(){
+        return this.text;
+    },
+
+    autoSize : function(){
+        //this.el.beginMeasure();
+        this.textEl.setWidth(1);
+        this.setWidth(this.textEl.dom.scrollWidth+this.pnode.getPadding("lr")+this.inner.getPadding("lr"));
+        //this.el.endMeasure();
+    },
+
+    /**
+     * Sets the text for the tab (Note: this also sets the tooltip text)
+     * @param {String} text The tab's text and tooltip
+     */
+    setText : function(text){
+        this.text = text;
+        this.textEl.update(text);
+        this.setTooltip(text);
+        if(!this.tabPanel.resizeTabs){
+            this.autoSize();
+        }
+    },
+    /**
+     * Activates this TabPanelItem -- this <b>does</b> deactivate the currently active TabPanelItem.
+     */
+    activate : function(){
+        this.tabPanel.activate(this.id);
+    },
+
+    /**
+     * Disables this TabPanelItem -- this does nothing if this is the active TabPanelItem.
+     */
+    disable : function(){
+        if(this.tabPanel.active != this){
+            this.disabled = true;
+            this.pnode.addClass("disabled");
+        }
+    },
+
+    /**
+     * Enables this TabPanelItem if it was previously disabled.
+     */
+    enable : function(){
+        this.disabled = false;
+        this.pnode.removeClass("disabled");
+    },
+
+    /**
+     * Sets the content for this TabPanelItem.
+     * @param {String} content The content
+     * @param {Boolean} loadScripts true to look for and load scripts
+     */
+    setContent : function(content, loadScripts){
+        this.bodyEl.update(content, loadScripts);
+    },
+
+    /**
+     * Gets the {@link Roo.UpdateManager} for the body of this TabPanelItem. Enables you to perform Ajax updates.
+     * @return {Roo.UpdateManager} The UpdateManager
+     */
+    getUpdateManager : function(){
+        return this.bodyEl.getUpdateManager();
+    },
+
+    /**
+     * Set a URL to be used to load the content for this TabPanelItem.
+     * @param {String/Function} url The URL to load the content from, or a function to call to get the URL
+     * @param {String/Object} params (optional) The string params for the update call or an object of the params. See {@link Roo.UpdateManager#update} for more details. (Defaults to null)
+     * @param {Boolean} loadOnce (optional) Whether to only load the content once. If this is false it makes the Ajax call every time this TabPanelItem is activated. (Defaults to false)
+     * @return {Roo.UpdateManager} The UpdateManager
+     */
+    setUrl : function(url, params, loadOnce){
+        if(this.refreshDelegate){
+            this.un('activate', this.refreshDelegate);
+        }
+        this.refreshDelegate = this._handleRefresh.createDelegate(this, [url, params, loadOnce]);
+        this.on("activate", this.refreshDelegate);
+        return this.bodyEl.getUpdateManager();
+    },
+
+    /** @private */
+    _handleRefresh : function(url, params, loadOnce){
+        if(!loadOnce || !this.loaded){
+            var updater = this.bodyEl.getUpdateManager();
+            updater.update(url, params, this._setLoaded.createDelegate(this));
+        }
+    },
+
+    /**
+     *   Forces a content refresh from the URL specified in the {@link #setUrl} method.
+     *   Will fail silently if the setUrl method has not been called.
+     *   This does not activate the panel, just updates its content.
+     */
+    refresh : function(){
+        if(this.refreshDelegate){
+           this.loaded = false;
+           this.refreshDelegate();
+        }
+    },
+
+    /** @private */
+    _setLoaded : function(){
+        this.loaded = true;
+    },
+
+    /** @private */
+    closeClick : function(e){
+        var o = {};
+        e.stopEvent();
+        this.fireEvent("beforeclose", this, o);
+        if(o.cancel !== true){
+            this.tabPanel.removeTab(this.id);
+        }
+    },
+    /**
+     * The text displayed in the tooltip for the close icon.
+     * @type String
+     */
+    closeText : "Close this tab"
+});
+
+/** @private */
+Roo.TabPanel.prototype.createStrip = function(container){
+    var strip = document.createElement("div");
+    strip.className = "x-tabs-wrap";
+    container.appendChild(strip);
+    return strip;
+};
+/** @private */
+Roo.TabPanel.prototype.createStripList = function(strip){
+    // div wrapper for retard IE
+    strip.innerHTML = '<div class="x-tabs-strip-wrap"><table class="x-tabs-strip" cellspacing="0" cellpadding="0" border="0"><tbody><tr></tr></tbody></table></div>';
+    return strip.firstChild.firstChild.firstChild.firstChild;
+};
+/** @private */
+Roo.TabPanel.prototype.createBody = function(container){
+    var body = document.createElement("div");
+    Roo.id(body, "tab-body");
+    Roo.fly(body).addClass("x-tabs-body");
+    container.appendChild(body);
+    return body;
+};
+/** @private */
+Roo.TabPanel.prototype.createItemBody = function(bodyEl, id){
+    var body = Roo.getDom(id);
+    if(!body){
+        body = document.createElement("div");
+        body.id = id;
+    }
+    Roo.fly(body).addClass("x-tabs-item-body");
+    bodyEl.insertBefore(body, bodyEl.firstChild);
+    return body;
+};
+/** @private */
+Roo.TabPanel.prototype.createStripElements = function(stripEl, text, closable){
+    var td = document.createElement("td");
+    stripEl.appendChild(td);
+    if(closable){
+        td.className = "x-tabs-closable";
+        if(!this.closeTpl){
+            this.closeTpl = new Roo.Template(
+               '<a href="#" class="x-tabs-right"><span class="x-tabs-left"><em class="x-tabs-inner">' +
+               '<span unselectable="on"' + (this.disableTooltips ? '' : ' title="{text}"') +' class="x-tabs-text">{text}</span>' +
+               '<div unselectable="on" class="close-icon">&#160;</div></em></span></a>'
+            );
+        }
+        var el = this.closeTpl.overwrite(td, {"text": text});
+        var close = el.getElementsByTagName("div")[0];
+        var inner = el.getElementsByTagName("em")[0];
+        return {"el": el, "close": close, "inner": inner};
+    } else {
+        if(!this.tabTpl){
+            this.tabTpl = new Roo.Template(
+               '<a href="#" class="x-tabs-right"><span class="x-tabs-left"><em class="x-tabs-inner">' +
+               '<span unselectable="on"' + (this.disableTooltips ? '' : ' title="{text}"') +' class="x-tabs-text">{text}</span></em></span></a>'
+            );
+        }
+        var el = this.tabTpl.overwrite(td, {"text": text});
+        var inner = el.getElementsByTagName("em")[0];
+        return {"el": el, "inner": inner};
+    }
+};
