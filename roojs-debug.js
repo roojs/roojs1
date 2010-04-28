@@ -17420,4 +17420,1081 @@ Roo.dd.ScrollManager = function(){
             }
         }
     };
-}();
+}();/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+
+/**
+ * @class Roo.dd.Registry
+ * Provides easy access to all drag drop components that are registered on a page.  Items can be retrieved either
+ * directly by DOM node id, or by passing in the drag drop event that occurred and looking up the event target.
+ * @singleton
+ */
+Roo.dd.Registry = function(){
+    var elements = {}; 
+    var handles = {}; 
+    var autoIdSeed = 0;
+
+    var getId = function(el, autogen){
+        if(typeof el == "string"){
+            return el;
+        }
+        var id = el.id;
+        if(!id && autogen !== false){
+            id = "roodd-" + (++autoIdSeed);
+            el.id = id;
+        }
+        return id;
+    };
+    
+    return {
+    /**
+     * Register a drag drop element
+     * @param {String/HTMLElement) element The id or DOM node to register
+     * @param {Object} data (optional) A custom data object that will be passed between the elements that are involved
+     * in drag drop operations.  You can populate this object with any arbitrary properties that your own code
+     * knows how to interpret, plus there are some specific properties known to the Registry that should be
+     * populated in the data object (if applicable):
+     * <pre>
+Value      Description<br />
+---------  ------------------------------------------<br />
+handles    Array of DOM nodes that trigger dragging<br />
+           for the element being registered<br />
+isHandle   True if the element passed in triggers<br />
+           dragging itself, else false
+</pre>
+     */
+        register : function(el, data){
+            data = data || {};
+            if(typeof el == "string"){
+                el = document.getElementById(el);
+            }
+            data.ddel = el;
+            elements[getId(el)] = data;
+            if(data.isHandle !== false){
+                handles[data.ddel.id] = data;
+            }
+            if(data.handles){
+                var hs = data.handles;
+                for(var i = 0, len = hs.length; i < len; i++){
+                	handles[getId(hs[i])] = data;
+                }
+            }
+        },
+
+    /**
+     * Unregister a drag drop element
+     * @param {String/HTMLElement) element The id or DOM node to unregister
+     */
+        unregister : function(el){
+            var id = getId(el, false);
+            var data = elements[id];
+            if(data){
+                delete elements[id];
+                if(data.handles){
+                    var hs = data.handles;
+                    for(var i = 0, len = hs.length; i < len; i++){
+                    	delete handles[getId(hs[i], false)];
+                    }
+                }
+            }
+        },
+
+    /**
+     * Returns the handle registered for a DOM Node by id
+     * @param {String/HTMLElement} id The DOM node or id to look up
+     * @return {Object} handle The custom handle data
+     */
+        getHandle : function(id){
+            if(typeof id != "string"){ // must be element?
+                id = id.id;
+            }
+            return handles[id];
+        },
+
+    /**
+     * Returns the handle that is registered for the DOM node that is the target of the event
+     * @param {Event} e The event
+     * @return {Object} handle The custom handle data
+     */
+        getHandleFromEvent : function(e){
+            var t = Roo.lib.Event.getTarget(e);
+            return t ? handles[t.id] : null;
+        },
+
+    /**
+     * Returns a custom data object that is registered for a DOM node by id
+     * @param {String/HTMLElement} id The DOM node or id to look up
+     * @return {Object} data The custom data
+     */
+        getTarget : function(id){
+            if(typeof id != "string"){ // must be element?
+                id = id.id;
+            }
+            return elements[id];
+        },
+
+    /**
+     * Returns a custom data object that is registered for the DOM node that is the target of the event
+     * @param {Event} e The event
+     * @return {Object} data The custom data
+     */
+        getTargetFromEvent : function(e){
+            var t = Roo.lib.Event.getTarget(e);
+            return t ? elements[t.id] || handles[t.id] : null;
+        }
+    };
+}();/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+
+/**
+ * @class Roo.dd.StatusProxy
+ * A specialized drag proxy that supports a drop status icon, {@link Roo.Layer} styles and auto-repair.  This is the
+ * default drag proxy used by all Roo.dd components.
+ * @constructor
+ * @param {Object} config
+ */
+Roo.dd.StatusProxy = function(config){
+    Roo.apply(this, config);
+    this.id = this.id || Roo.id();
+    this.el = new Roo.Layer({
+        dh: {
+            id: this.id, tag: "div", cls: "x-dd-drag-proxy "+this.dropNotAllowed, children: [
+                {tag: "div", cls: "x-dd-drop-icon"},
+                {tag: "div", cls: "x-dd-drag-ghost"}
+            ]
+        }, 
+        shadow: !config || config.shadow !== false
+    });
+    this.ghost = Roo.get(this.el.dom.childNodes[1]);
+    this.dropStatus = this.dropNotAllowed;
+};
+
+Roo.dd.StatusProxy.prototype = {
+    /**
+     * @cfg {String} dropAllowed
+     * The CSS class to apply to the status element when drop is allowed (defaults to "x-dd-drop-ok").
+     */
+    dropAllowed : "x-dd-drop-ok",
+    /**
+     * @cfg {String} dropNotAllowed
+     * The CSS class to apply to the status element when drop is not allowed (defaults to "x-dd-drop-nodrop").
+     */
+    dropNotAllowed : "x-dd-drop-nodrop",
+
+    /**
+     * Updates the proxy's visual element to indicate the status of whether or not drop is allowed
+     * over the current target element.
+     * @param {String} cssClass The css class for the new drop status indicator image
+     */
+    setStatus : function(cssClass){
+        cssClass = cssClass || this.dropNotAllowed;
+        if(this.dropStatus != cssClass){
+            this.el.replaceClass(this.dropStatus, cssClass);
+            this.dropStatus = cssClass;
+        }
+    },
+
+    /**
+     * Resets the status indicator to the default dropNotAllowed value
+     * @param {Boolean} clearGhost True to also remove all content from the ghost, false to preserve it
+     */
+    reset : function(clearGhost){
+        this.el.dom.className = "x-dd-drag-proxy " + this.dropNotAllowed;
+        this.dropStatus = this.dropNotAllowed;
+        if(clearGhost){
+            this.ghost.update("");
+        }
+    },
+
+    /**
+     * Updates the contents of the ghost element
+     * @param {String} html The html that will replace the current innerHTML of the ghost element
+     */
+    update : function(html){
+        if(typeof html == "string"){
+            this.ghost.update(html);
+        }else{
+            this.ghost.update("");
+            html.style.margin = "0";
+            this.ghost.dom.appendChild(html);
+        }
+        // ensure float = none set?? cant remember why though.
+        var el = this.ghost.dom.firstChild;
+		if(el){
+			Roo.fly(el).setStyle('float', 'none');
+		}
+    },
+    
+    /**
+     * Returns the underlying proxy {@link Roo.Layer}
+     * @return {Roo.Layer} el
+    */
+    getEl : function(){
+        return this.el;
+    },
+
+    /**
+     * Returns the ghost element
+     * @return {Roo.Element} el
+     */
+    getGhost : function(){
+        return this.ghost;
+    },
+
+    /**
+     * Hides the proxy
+     * @param {Boolean} clear True to reset the status and clear the ghost contents, false to preserve them
+     */
+    hide : function(clear){
+        this.el.hide();
+        if(clear){
+            this.reset(true);
+        }
+    },
+
+    /**
+     * Stops the repair animation if it's currently running
+     */
+    stop : function(){
+        if(this.anim && this.anim.isAnimated && this.anim.isAnimated()){
+            this.anim.stop();
+        }
+    },
+
+    /**
+     * Displays this proxy
+     */
+    show : function(){
+        this.el.show();
+    },
+
+    /**
+     * Force the Layer to sync its shadow and shim positions to the element
+     */
+    sync : function(){
+        this.el.sync();
+    },
+
+    /**
+     * Causes the proxy to return to its position of origin via an animation.  Should be called after an
+     * invalid drop operation by the item being dragged.
+     * @param {Array} xy The XY position of the element ([x, y])
+     * @param {Function} callback The function to call after the repair is complete
+     * @param {Object} scope The scope in which to execute the callback
+     */
+    repair : function(xy, callback, scope){
+        this.callback = callback;
+        this.scope = scope;
+        if(xy && this.animRepair !== false){
+            this.el.addClass("x-dd-drag-repair");
+            this.el.hideUnders(true);
+            this.anim = this.el.shift({
+                duration: this.repairDuration || .5,
+                easing: 'easeOut',
+                xy: xy,
+                stopFx: true,
+                callback: this.afterRepair,
+                scope: this
+            });
+        }else{
+            this.afterRepair();
+        }
+    },
+
+    // private
+    afterRepair : function(){
+        this.hide(true);
+        if(typeof this.callback == "function"){
+            this.callback.call(this.scope || this);
+        }
+        this.callback = null;
+        this.scope = null;
+    }
+};/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.dd.DragSource
+ * @extends Roo.dd.DDProxy
+ * A simple class that provides the basic implementation needed to make any element draggable.
+ * @constructor
+ * @param {String/HTMLElement/Element} el The container element
+ * @param {Object} config
+ */
+Roo.dd.DragSource = function(el, config){
+    this.el = Roo.get(el);
+    this.dragData = {};
+    
+    Roo.apply(this, config);
+    
+    if(!this.proxy){
+        this.proxy = new Roo.dd.StatusProxy();
+    }
+
+    Roo.dd.DragSource.superclass.constructor.call(this, this.el.dom, this.ddGroup || this.group,
+          {dragElId : this.proxy.id, resizeFrame: false, isTarget: false, scroll: this.scroll === true});
+    
+    this.dragging = false;
+};
+
+Roo.extend(Roo.dd.DragSource, Roo.dd.DDProxy, {
+    /**
+     * @cfg {String} dropAllowed
+     * The CSS class returned to the drag source when drop is allowed (defaults to "x-dd-drop-ok").
+     */
+    dropAllowed : "x-dd-drop-ok",
+    /**
+     * @cfg {String} dropNotAllowed
+     * The CSS class returned to the drag source when drop is not allowed (defaults to "x-dd-drop-nodrop").
+     */
+    dropNotAllowed : "x-dd-drop-nodrop",
+
+    /**
+     * Returns the data object associated with this drag source
+     * @return {Object} data An object containing arbitrary data
+     */
+    getDragData : function(e){
+        return this.dragData;
+    },
+
+    // private
+    onDragEnter : function(e, id){
+        var target = Roo.dd.DragDropMgr.getDDById(id);
+        this.cachedTarget = target;
+        if(this.beforeDragEnter(target, e, id) !== false){
+            if(target.isNotifyTarget){
+                var status = target.notifyEnter(this, e, this.dragData);
+                this.proxy.setStatus(status);
+            }else{
+                this.proxy.setStatus(this.dropAllowed);
+            }
+            
+            if(this.afterDragEnter){
+                /**
+                 * An empty function by default, but provided so that you can perform a custom action
+                 * when the dragged item enters the drop target by providing an implementation.
+                 * @param {Roo.dd.DragDrop} target The drop target
+                 * @param {Event} e The event object
+                 * @param {String} id The id of the dragged element
+                 * @method afterDragEnter
+                 */
+                this.afterDragEnter(target, e, id);
+            }
+        }
+    },
+
+    /**
+     * An empty function by default, but provided so that you can perform a custom action
+     * before the dragged item enters the drop target and optionally cancel the onDragEnter.
+     * @param {Roo.dd.DragDrop} target The drop target
+     * @param {Event} e The event object
+     * @param {String} id The id of the dragged element
+     * @return {Boolean} isValid True if the drag event is valid, else false to cancel
+     */
+    beforeDragEnter : function(target, e, id){
+        return true;
+    },
+
+    // private
+    alignElWithMouse: function() {
+        Roo.dd.DragSource.superclass.alignElWithMouse.apply(this, arguments);
+        this.proxy.sync();
+    },
+
+    // private
+    onDragOver : function(e, id){
+        var target = this.cachedTarget || Roo.dd.DragDropMgr.getDDById(id);
+        if(this.beforeDragOver(target, e, id) !== false){
+            if(target.isNotifyTarget){
+                var status = target.notifyOver(this, e, this.dragData);
+                this.proxy.setStatus(status);
+            }
+
+            if(this.afterDragOver){
+                /**
+                 * An empty function by default, but provided so that you can perform a custom action
+                 * while the dragged item is over the drop target by providing an implementation.
+                 * @param {Roo.dd.DragDrop} target The drop target
+                 * @param {Event} e The event object
+                 * @param {String} id The id of the dragged element
+                 * @method afterDragOver
+                 */
+                this.afterDragOver(target, e, id);
+            }
+        }
+    },
+
+    /**
+     * An empty function by default, but provided so that you can perform a custom action
+     * while the dragged item is over the drop target and optionally cancel the onDragOver.
+     * @param {Roo.dd.DragDrop} target The drop target
+     * @param {Event} e The event object
+     * @param {String} id The id of the dragged element
+     * @return {Boolean} isValid True if the drag event is valid, else false to cancel
+     */
+    beforeDragOver : function(target, e, id){
+        return true;
+    },
+
+    // private
+    onDragOut : function(e, id){
+        var target = this.cachedTarget || Roo.dd.DragDropMgr.getDDById(id);
+        if(this.beforeDragOut(target, e, id) !== false){
+            if(target.isNotifyTarget){
+                target.notifyOut(this, e, this.dragData);
+            }
+            this.proxy.reset();
+            if(this.afterDragOut){
+                /**
+                 * An empty function by default, but provided so that you can perform a custom action
+                 * after the dragged item is dragged out of the target without dropping.
+                 * @param {Roo.dd.DragDrop} target The drop target
+                 * @param {Event} e The event object
+                 * @param {String} id The id of the dragged element
+                 * @method afterDragOut
+                 */
+                this.afterDragOut(target, e, id);
+            }
+        }
+        this.cachedTarget = null;
+    },
+
+    /**
+     * An empty function by default, but provided so that you can perform a custom action before the dragged
+     * item is dragged out of the target without dropping, and optionally cancel the onDragOut.
+     * @param {Roo.dd.DragDrop} target The drop target
+     * @param {Event} e The event object
+     * @param {String} id The id of the dragged element
+     * @return {Boolean} isValid True if the drag event is valid, else false to cancel
+     */
+    beforeDragOut : function(target, e, id){
+        return true;
+    },
+    
+    // private
+    onDragDrop : function(e, id){
+        var target = this.cachedTarget || Roo.dd.DragDropMgr.getDDById(id);
+        if(this.beforeDragDrop(target, e, id) !== false){
+            if(target.isNotifyTarget){
+                if(target.notifyDrop(this, e, this.dragData)){ // valid drop?
+                    this.onValidDrop(target, e, id);
+                }else{
+                    this.onInvalidDrop(target, e, id);
+                }
+            }else{
+                this.onValidDrop(target, e, id);
+            }
+            
+            if(this.afterDragDrop){
+                /**
+                 * An empty function by default, but provided so that you can perform a custom action
+                 * after a valid drag drop has occurred by providing an implementation.
+                 * @param {Roo.dd.DragDrop} target The drop target
+                 * @param {Event} e The event object
+                 * @param {String} id The id of the dropped element
+                 * @method afterDragDrop
+                 */
+                this.afterDragDrop(target, e, id);
+            }
+        }
+        delete this.cachedTarget;
+    },
+
+    /**
+     * An empty function by default, but provided so that you can perform a custom action before the dragged
+     * item is dropped onto the target and optionally cancel the onDragDrop.
+     * @param {Roo.dd.DragDrop} target The drop target
+     * @param {Event} e The event object
+     * @param {String} id The id of the dragged element
+     * @return {Boolean} isValid True if the drag drop event is valid, else false to cancel
+     */
+    beforeDragDrop : function(target, e, id){
+        return true;
+    },
+
+    // private
+    onValidDrop : function(target, e, id){
+        this.hideProxy();
+        if(this.afterValidDrop){
+            /**
+             * An empty function by default, but provided so that you can perform a custom action
+             * after a valid drop has occurred by providing an implementation.
+             * @param {Object} target The target DD 
+             * @param {Event} e The event object
+             * @param {String} id The id of the dropped element
+             * @method afterInvalidDrop
+             */
+            this.afterValidDrop(target, e, id);
+        }
+    },
+
+    // private
+    getRepairXY : function(e, data){
+        return this.el.getXY();  
+    },
+
+    // private
+    onInvalidDrop : function(target, e, id){
+        this.beforeInvalidDrop(target, e, id);
+        if(this.cachedTarget){
+            if(this.cachedTarget.isNotifyTarget){
+                this.cachedTarget.notifyOut(this, e, this.dragData);
+            }
+            this.cacheTarget = null;
+        }
+        this.proxy.repair(this.getRepairXY(e, this.dragData), this.afterRepair, this);
+
+        if(this.afterInvalidDrop){
+            /**
+             * An empty function by default, but provided so that you can perform a custom action
+             * after an invalid drop has occurred by providing an implementation.
+             * @param {Event} e The event object
+             * @param {String} id The id of the dropped element
+             * @method afterInvalidDrop
+             */
+            this.afterInvalidDrop(e, id);
+        }
+    },
+
+    // private
+    afterRepair : function(){
+        if(Roo.enableFx){
+            this.el.highlight(this.hlColor || "c3daf9");
+        }
+        this.dragging = false;
+    },
+
+    /**
+     * An empty function by default, but provided so that you can perform a custom action after an invalid
+     * drop has occurred.
+     * @param {Roo.dd.DragDrop} target The drop target
+     * @param {Event} e The event object
+     * @param {String} id The id of the dragged element
+     * @return {Boolean} isValid True if the invalid drop should proceed, else false to cancel
+     */
+    beforeInvalidDrop : function(target, e, id){
+        return true;
+    },
+
+    // private
+    handleMouseDown : function(e){
+        if(this.dragging) {
+            return;
+        }
+        var data = this.getDragData(e);
+        if(data && this.onBeforeDrag(data, e) !== false){
+            this.dragData = data;
+            this.proxy.stop();
+            Roo.dd.DragSource.superclass.handleMouseDown.apply(this, arguments);
+        } 
+    },
+
+    /**
+     * An empty function by default, but provided so that you can perform a custom action before the initial
+     * drag event begins and optionally cancel it.
+     * @param {Object} data An object containing arbitrary data to be shared with drop targets
+     * @param {Event} e The event object
+     * @return {Boolean} isValid True if the drag event is valid, else false to cancel
+     */
+    onBeforeDrag : function(data, e){
+        return true;
+    },
+
+    /**
+     * An empty function by default, but provided so that you can perform a custom action once the initial
+     * drag event has begun.  The drag cannot be canceled from this function.
+     * @param {Number} x The x position of the click on the dragged object
+     * @param {Number} y The y position of the click on the dragged object
+     */
+    onStartDrag : Roo.emptyFn,
+
+    // private - YUI override
+    startDrag : function(x, y){
+        this.proxy.reset();
+        this.dragging = true;
+        this.proxy.update("");
+        this.onInitDrag(x, y);
+        this.proxy.show();
+    },
+
+    // private
+    onInitDrag : function(x, y){
+        var clone = this.el.dom.cloneNode(true);
+        clone.id = Roo.id(); // prevent duplicate ids
+        this.proxy.update(clone);
+        this.onStartDrag(x, y);
+        return true;
+    },
+
+    /**
+     * Returns the drag source's underlying {@link Roo.dd.StatusProxy}
+     * @return {Roo.dd.StatusProxy} proxy The StatusProxy
+     */
+    getProxy : function(){
+        return this.proxy;  
+    },
+
+    /**
+     * Hides the drag source's {@link Roo.dd.StatusProxy}
+     */
+    hideProxy : function(){
+        this.proxy.hide();  
+        this.proxy.reset(true);
+        this.dragging = false;
+    },
+
+    // private
+    triggerCacheRefresh : function(){
+        Roo.dd.DDM.refreshCache(this.groups);
+    },
+
+    // private - override to prevent hiding
+    b4EndDrag: function(e) {
+    },
+
+    // private - override to prevent moving
+    endDrag : function(e){
+        this.onEndDrag(this.dragData, e);
+    },
+
+    // private
+    onEndDrag : function(data, e){
+    },
+    
+    // private - pin to cursor
+    autoOffset : function(x, y) {
+        this.setDelta(-12, -20);
+    }    
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+
+/**
+ * @class Roo.dd.DropTarget
+ * @extends Roo.dd.DDTarget
+ * A simple class that provides the basic implementation needed to make any element a drop target that can have
+ * draggable items dropped onto it.  The drop has no effect until an implementation of notifyDrop is provided.
+ * @constructor
+ * @param {String/HTMLElement/Element} el The container element
+ * @param {Object} config
+ */
+Roo.dd.DropTarget = function(el, config){
+    this.el = Roo.get(el);
+    
+    Roo.apply(this, config);
+    
+    if(this.containerScroll){
+        Roo.dd.ScrollManager.register(this.el);
+    }
+    
+    Roo.dd.DropTarget.superclass.constructor.call(this, this.el.dom, this.ddGroup || this.group, 
+          {isTarget: true});
+
+};
+
+Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
+    /**
+     * @cfg {String} overClass
+     * The CSS class applied to the drop target element while the drag source is over it (defaults to "").
+     */
+    /**
+     * @cfg {String} dropAllowed
+     * The CSS class returned to the drag source when drop is allowed (defaults to "x-dd-drop-ok").
+     */
+    dropAllowed : "x-dd-drop-ok",
+    /**
+     * @cfg {String} dropNotAllowed
+     * The CSS class returned to the drag source when drop is not allowed (defaults to "x-dd-drop-nodrop").
+     */
+    dropNotAllowed : "x-dd-drop-nodrop",
+
+    // private
+    isTarget : true,
+
+    // private
+    isNotifyTarget : true,
+
+    /**
+     * The function a {@link Roo.dd.DragSource} calls once to notify this drop target that the source is now over the
+     * target.  This default implementation adds the CSS class specified by overClass (if any) to the drop element
+     * and returns the dropAllowed config value.  This method should be overridden if drop validation is required.
+     * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
+     * @param {Event} e The event
+     * @param {Object} data An object containing arbitrary data supplied by the drag source
+     * @return {String} status The CSS class that communicates the drop status back to the source so that the
+     * underlying {@link Roo.dd.StatusProxy} can be updated
+     */
+    notifyEnter : function(dd, e, data){
+        if(this.overClass){
+            this.el.addClass(this.overClass);
+        }
+        return this.dropAllowed;
+    },
+
+    /**
+     * The function a {@link Roo.dd.DragSource} calls continuously while it is being dragged over the target.
+     * This method will be called on every mouse movement while the drag source is over the drop target.
+     * This default implementation simply returns the dropAllowed config value.
+     * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
+     * @param {Event} e The event
+     * @param {Object} data An object containing arbitrary data supplied by the drag source
+     * @return {String} status The CSS class that communicates the drop status back to the source so that the
+     * underlying {@link Roo.dd.StatusProxy} can be updated
+     */
+    notifyOver : function(dd, e, data){
+        return this.dropAllowed;
+    },
+
+    /**
+     * The function a {@link Roo.dd.DragSource} calls once to notify this drop target that the source has been dragged
+     * out of the target without dropping.  This default implementation simply removes the CSS class specified by
+     * overClass (if any) from the drop element.
+     * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
+     * @param {Event} e The event
+     * @param {Object} data An object containing arbitrary data supplied by the drag source
+     */
+    notifyOut : function(dd, e, data){
+        if(this.overClass){
+            this.el.removeClass(this.overClass);
+        }
+    },
+
+    /**
+     * The function a {@link Roo.dd.DragSource} calls once to notify this drop target that the dragged item has
+     * been dropped on it.  This method has no default implementation and returns false, so you must provide an
+     * implementation that does something to process the drop event and returns true so that the drag source's
+     * repair action does not run.
+     * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
+     * @param {Event} e The event
+     * @param {Object} data An object containing arbitrary data supplied by the drag source
+     * @return {Boolean} True if the drop was valid, else false
+     */
+    notifyDrop : function(dd, e, data){
+        return false;
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+
+/**
+ * @class Roo.dd.DragZone
+ * @extends Roo.dd.DragSource
+ * This class provides a container DD instance that proxies for multiple child node sources.<br />
+ * By default, this class requires that draggable child nodes are registered with {@link Roo.dd.Registry}.
+ * @constructor
+ * @param {String/HTMLElement/Element} el The container element
+ * @param {Object} config
+ */
+Roo.dd.DragZone = function(el, config){
+    Roo.dd.DragZone.superclass.constructor.call(this, el, config);
+    if(this.containerScroll){
+        Roo.dd.ScrollManager.register(this.el);
+    }
+};
+
+Roo.extend(Roo.dd.DragZone, Roo.dd.DragSource, {
+    /**
+     * @cfg {Boolean} containerScroll True to register this container with the Scrollmanager
+     * for auto scrolling during drag operations.
+     */
+    /**
+     * @cfg {String} hlColor The color to use when visually highlighting the drag source in the afterRepair
+     * method after a failed drop (defaults to "c3daf9" - light blue)
+     */
+
+    /**
+     * Called when a mousedown occurs in this container. Looks in {@link Roo.dd.Registry}
+     * for a valid target to drag based on the mouse down. Override this method
+     * to provide your own lookup logic (e.g. finding a child by class name). Make sure your returned
+     * object has a "ddel" attribute (with an HTML Element) for other functions to work.
+     * @param {EventObject} e The mouse down event
+     * @return {Object} The dragData
+     */
+    getDragData : function(e){
+        return Roo.dd.Registry.getHandleFromEvent(e);
+    },
+    
+    /**
+     * Called once drag threshold has been reached to initialize the proxy element. By default, it clones the
+     * this.dragData.ddel
+     * @param {Number} x The x position of the click on the dragged object
+     * @param {Number} y The y position of the click on the dragged object
+     * @return {Boolean} true to continue the drag, false to cancel
+     */
+    onInitDrag : function(x, y){
+        this.proxy.update(this.dragData.ddel.cloneNode(true));
+        this.onStartDrag(x, y);
+        return true;
+    },
+    
+    /**
+     * Called after a repair of an invalid drop. By default, highlights this.dragData.ddel 
+     */
+    afterRepair : function(){
+        if(Roo.enableFx){
+            Roo.Element.fly(this.dragData.ddel).highlight(this.hlColor || "c3daf9");
+        }
+        this.dragging = false;
+    },
+
+    /**
+     * Called before a repair of an invalid drop to get the XY to animate to. By default returns
+     * the XY of this.dragData.ddel
+     * @param {EventObject} e The mouse up event
+     * @return {Array} The xy location (e.g. [100, 200])
+     */
+    getRepairXY : function(e){
+        return Roo.Element.fly(this.dragData.ddel).getXY();  
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+/**
+ * @class Roo.dd.DropZone
+ * @extends Roo.dd.DropTarget
+ * This class provides a container DD instance that proxies for multiple child node targets.<br />
+ * By default, this class requires that child nodes accepting drop are registered with {@link Roo.dd.Registry}.
+ * @constructor
+ * @param {String/HTMLElement/Element} el The container element
+ * @param {Object} config
+ */
+Roo.dd.DropZone = function(el, config){
+    Roo.dd.DropZone.superclass.constructor.call(this, el, config);
+};
+
+Roo.extend(Roo.dd.DropZone, Roo.dd.DropTarget, {
+    /**
+     * Returns a custom data object associated with the DOM node that is the target of the event.  By default
+     * this looks up the event target in the {@link Roo.dd.Registry}, although you can override this method to
+     * provide your own custom lookup.
+     * @param {Event} e The event
+     * @return {Object} data The custom data
+     */
+    getTargetFromEvent : function(e){
+        return Roo.dd.Registry.getTargetFromEvent(e);
+    },
+
+    /**
+     * Called internally when the DropZone determines that a {@link Roo.dd.DragSource} has entered a drop node
+     * that it has registered.  This method has no default implementation and should be overridden to provide
+     * node-specific processing if necessary.
+     * @param {Object} nodeData The custom data associated with the drop node (this is the same value returned from 
+     * {@link #getTargetFromEvent} for this node)
+     * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop zone
+     * @param {Event} e The event
+     * @param {Object} data An object containing arbitrary data supplied by the drag source
+     */
+    onNodeEnter : function(n, dd, e, data){
+        
+    },
+
+    /**
+     * Called internally while the DropZone determines that a {@link Roo.dd.DragSource} is over a drop node
+     * that it has registered.  The default implementation returns this.dropNotAllowed, so it should be
+     * overridden to provide the proper feedback.
+     * @param {Object} nodeData The custom data associated with the drop node (this is the same value returned from
+     * {@link #getTargetFromEvent} for this node)
+     * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop zone
+     * @param {Event} e The event
+     * @param {Object} data An object containing arbitrary data supplied by the drag source
+     * @return {String} status The CSS class that communicates the drop status back to the source so that the
+     * underlying {@link Roo.dd.StatusProxy} can be updated
+     */
+    onNodeOver : function(n, dd, e, data){
+        return this.dropAllowed;
+    },
+
+    /**
+     * Called internally when the DropZone determines that a {@link Roo.dd.DragSource} has been dragged out of
+     * the drop node without dropping.  This method has no default implementation and should be overridden to provide
+     * node-specific processing if necessary.
+     * @param {Object} nodeData The custom data associated with the drop node (this is the same value returned from
+     * {@link #getTargetFromEvent} for this node)
+     * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop zone
+     * @param {Event} e The event
+     * @param {Object} data An object containing arbitrary data supplied by the drag source
+     */
+    onNodeOut : function(n, dd, e, data){
+        
+    },
+
+    /**
+     * Called internally when the DropZone determines that a {@link Roo.dd.DragSource} has been dropped onto
+     * the drop node.  The default implementation returns false, so it should be overridden to provide the
+     * appropriate processing of the drop event and return true so that the drag source's repair action does not run.
+     * @param {Object} nodeData The custom data associated with the drop node (this is the same value returned from
+     * {@link #getTargetFromEvent} for this node)
+     * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop zone
+     * @param {Event} e The event
+     * @param {Object} data An object containing arbitrary data supplied by the drag source
+     * @return {Boolean} True if the drop was valid, else false
+     */
+    onNodeDrop : function(n, dd, e, data){
+        return false;
+    },
+
+    /**
+     * Called internally while the DropZone determines that a {@link Roo.dd.DragSource} is being dragged over it,
+     * but not over any of its registered drop nodes.  The default implementation returns this.dropNotAllowed, so
+     * it should be overridden to provide the proper feedback if necessary.
+     * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop zone
+     * @param {Event} e The event
+     * @param {Object} data An object containing arbitrary data supplied by the drag source
+     * @return {String} status The CSS class that communicates the drop status back to the source so that the
+     * underlying {@link Roo.dd.StatusProxy} can be updated
+     */
+    onContainerOver : function(dd, e, data){
+        return this.dropNotAllowed;
+    },
+
+    /**
+     * Called internally when the DropZone determines that a {@link Roo.dd.DragSource} has been dropped on it,
+     * but not on any of its registered drop nodes.  The default implementation returns false, so it should be
+     * overridden to provide the appropriate processing of the drop event if you need the drop zone itself to
+     * be able to accept drops.  It should return true when valid so that the drag source's repair action does not run.
+     * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop zone
+     * @param {Event} e The event
+     * @param {Object} data An object containing arbitrary data supplied by the drag source
+     * @return {Boolean} True if the drop was valid, else false
+     */
+    onContainerDrop : function(dd, e, data){
+        return false;
+    },
+
+    /**
+     * The function a {@link Roo.dd.DragSource} calls once to notify this drop zone that the source is now over
+     * the zone.  The default implementation returns this.dropNotAllowed and expects that only registered drop
+     * nodes can process drag drop operations, so if you need the drop zone itself to be able to process drops
+     * you should override this method and provide a custom implementation.
+     * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop zone
+     * @param {Event} e The event
+     * @param {Object} data An object containing arbitrary data supplied by the drag source
+     * @return {String} status The CSS class that communicates the drop status back to the source so that the
+     * underlying {@link Roo.dd.StatusProxy} can be updated
+     */
+    notifyEnter : function(dd, e, data){
+        return this.dropNotAllowed;
+    },
+
+    /**
+     * The function a {@link Roo.dd.DragSource} calls continuously while it is being dragged over the drop zone.
+     * This method will be called on every mouse movement while the drag source is over the drop zone.
+     * It will call {@link #onNodeOver} while the drag source is over a registered node, and will also automatically
+     * delegate to the appropriate node-specific methods as necessary when the drag source enters and exits
+     * registered nodes ({@link #onNodeEnter}, {@link #onNodeOut}). If the drag source is not currently over a
+     * registered node, it will call {@link #onContainerOver}.
+     * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop zone
+     * @param {Event} e The event
+     * @param {Object} data An object containing arbitrary data supplied by the drag source
+     * @return {String} status The CSS class that communicates the drop status back to the source so that the
+     * underlying {@link Roo.dd.StatusProxy} can be updated
+     */
+    notifyOver : function(dd, e, data){
+        var n = this.getTargetFromEvent(e);
+        if(!n){ // not over valid drop target
+            if(this.lastOverNode){
+                this.onNodeOut(this.lastOverNode, dd, e, data);
+                this.lastOverNode = null;
+            }
+            return this.onContainerOver(dd, e, data);
+        }
+        if(this.lastOverNode != n){
+            if(this.lastOverNode){
+                this.onNodeOut(this.lastOverNode, dd, e, data);
+            }
+            this.onNodeEnter(n, dd, e, data);
+            this.lastOverNode = n;
+        }
+        return this.onNodeOver(n, dd, e, data);
+    },
+
+    /**
+     * The function a {@link Roo.dd.DragSource} calls once to notify this drop zone that the source has been dragged
+     * out of the zone without dropping.  If the drag source is currently over a registered node, the notification
+     * will be delegated to {@link #onNodeOut} for node-specific handling, otherwise it will be ignored.
+     * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
+     * @param {Event} e The event
+     * @param {Object} data An object containing arbitrary data supplied by the drag zone
+     */
+    notifyOut : function(dd, e, data){
+        if(this.lastOverNode){
+            this.onNodeOut(this.lastOverNode, dd, e, data);
+            this.lastOverNode = null;
+        }
+    },
+
+    /**
+     * The function a {@link Roo.dd.DragSource} calls once to notify this drop zone that the dragged item has
+     * been dropped on it.  The drag zone will look up the target node based on the event passed in, and if there
+     * is a node registered for that event, it will delegate to {@link #onNodeDrop} for node-specific handling,
+     * otherwise it will call {@link #onContainerDrop}.
+     * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop zone
+     * @param {Event} e The event
+     * @param {Object} data An object containing arbitrary data supplied by the drag source
+     * @return {Boolean} True if the drop was valid, else false
+     */
+    notifyDrop : function(dd, e, data){
+        if(this.lastOverNode){
+            this.onNodeOut(this.lastOverNode, dd, e, data);
+            this.lastOverNode = null;
+        }
+        var n = this.getTargetFromEvent(e);
+        return n ?
+            this.onNodeDrop(n, dd, e, data) :
+            this.onContainerDrop(dd, e, data);
+    },
+
+    // private
+    triggerCacheRefresh : function(){
+        Roo.dd.DDM.refreshCache(this.groups);
+    }  
+});
