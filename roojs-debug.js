@@ -39959,4 +39959,969 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
 });
 
 // back compat
-Roo.BasicForm = Roo.form.BasicForm;
+Roo.BasicForm = Roo.form.BasicForm;/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.form.Form
+ * @extends Roo.form.BasicForm
+ * Adds the ability to dynamically render forms with JavaScript to {@link Roo.form.BasicForm}.
+ * @constructor
+ * @param {Object} config Configuration options
+ */
+Roo.form.Form = function(config){
+    var xitems =  [];
+    if (config.items) {
+        xitems = config.items;
+        delete config.items;
+    }
+    
+    
+    Roo.form.Form.superclass.constructor.call(this, null, config);
+    this.url = this.url || this.action;
+    if(!this.root){
+        this.root = new Roo.form.Layout(Roo.applyIf({
+            id: Roo.id()
+        }, config));
+    }
+    this.active = this.root;
+    /**
+     * Array of all the buttons that have been added to this form via {@link addButton}
+     * @type Array
+     */
+    this.buttons = [];
+    this.allItems = [];
+    this.addEvents({
+        /**
+         * @event clientvalidation
+         * If the monitorValid config option is true, this event fires repetitively to notify of valid state
+         * @param {Form} this
+         * @param {Boolean} valid true if the form has passed client-side validation
+         */
+        clientvalidation: true,
+        /**
+         * @event rendered
+         * Fires when the form is rendered
+         * @param {Roo.form.Form} form
+         */
+        rendered : true
+    });
+    
+    Roo.each(xitems, this.addxtype, this);
+    
+    
+    
+};
+
+Roo.extend(Roo.form.Form, Roo.form.BasicForm, {
+    /**
+     * @cfg {Number} labelWidth The width of labels. This property cascades to child containers.
+     */
+    /**
+     * @cfg {String} itemCls A css class to apply to the x-form-item of fields. This property cascades to child containers.
+     */
+    /**
+     * @cfg {String} buttonAlign Valid values are "left," "center" and "right" (defaults to "center")
+     */
+    buttonAlign:'center',
+
+    /**
+     * @cfg {Number} minButtonWidth Minimum width of all buttons in pixels (defaults to 75)
+     */
+    minButtonWidth:75,
+
+    /**
+     * @cfg {String} labelAlign Valid values are "left," "top" and "right" (defaults to "left").
+     * This property cascades to child containers if not set.
+     */
+    labelAlign:'left',
+
+    /**
+     * @cfg {Boolean} monitorValid If true the form monitors its valid state <b>client-side</b> and
+     * fires a looping event with that state. This is required to bind buttons to the valid
+     * state using the config value formBind:true on the button.
+     */
+    monitorValid : false,
+
+    /**
+     * @cfg {Number} monitorPoll The milliseconds to poll valid state, ignored if monitorValid is not true (defaults to 200)
+     */
+    monitorPoll : 200,
+
+    /**
+     * Opens a new {@link Roo.form.Column} container in the layout stack. If fields are passed after the config, the
+     * fields are added and the column is closed. If no fields are passed the column remains open
+     * until end() is called.
+     * @param {Object} config The config to pass to the column
+     * @param {Field} field1 (optional)
+     * @param {Field} field2 (optional)
+     * @param {Field} etc (optional)
+     * @return Column The column container object
+     */
+    column : function(c){
+        var col = new Roo.form.Column(c);
+        this.start(col);
+        if(arguments.length > 1){ // duplicate code required because of Opera
+            this.add.apply(this, Array.prototype.slice.call(arguments, 1));
+            this.end();
+        }
+        return col;
+    },
+
+    /**
+     * Opens a new {@link Roo.form.FieldSet} container in the layout stack. If fields are passed after the config, the
+     * fields are added and the fieldset is closed. If no fields are passed the fieldset remains open
+     * until end() is called.
+     * @param {Object} config The config to pass to the fieldset
+     * @param {Field} field1 (optional)
+     * @param {Field} field2 (optional)
+     * @param {Field} etc (optional)
+     * @return FieldSet The fieldset container object
+     */
+    fieldset : function(c){
+        var fs = new Roo.form.FieldSet(c);
+        this.start(fs);
+        if(arguments.length > 1){ // duplicate code required because of Opera
+            this.add.apply(this, Array.prototype.slice.call(arguments, 1));
+            this.end();
+        }
+        return fs;
+    },
+
+    /**
+     * Opens a new {@link Roo.form.Layout} container in the layout stack. If fields are passed after the config, the
+     * fields are added and the container is closed. If no fields are passed the container remains open
+     * until end() is called.
+     * @param {Object} config The config to pass to the Layout
+     * @param {Field} field1 (optional)
+     * @param {Field} field2 (optional)
+     * @param {Field} etc (optional)
+     * @return Layout The container object
+     */
+    container : function(c){
+        var l = new Roo.form.Layout(c);
+        this.start(l);
+        if(arguments.length > 1){ // duplicate code required because of Opera
+            this.add.apply(this, Array.prototype.slice.call(arguments, 1));
+            this.end();
+        }
+        return l;
+    },
+
+    /**
+     * Opens the passed container in the layout stack. The container can be any {@link Roo.form.Layout} or subclass.
+     * @param {Object} container A Roo.form.Layout or subclass of Layout
+     * @return {Form} this
+     */
+    start : function(c){
+        // cascade label info
+        Roo.applyIf(c, {'labelAlign': this.active.labelAlign, 'labelWidth': this.active.labelWidth, 'itemCls': this.active.itemCls});
+        this.active.stack.push(c);
+        c.ownerCt = this.active;
+        this.active = c;
+        return this;
+    },
+
+    /**
+     * Closes the current open container
+     * @return {Form} this
+     */
+    end : function(){
+        if(this.active == this.root){
+            return this;
+        }
+        this.active = this.active.ownerCt;
+        return this;
+    },
+
+    /**
+     * Add Roo.form components to the current open container (e.g. column, fieldset, etc.).  Fields added via this method
+     * can also be passed with an additional property of fieldLabel, which if supplied, will provide the text to display
+     * as the label of the field.
+     * @param {Field} field1
+     * @param {Field} field2 (optional)
+     * @param {Field} etc. (optional)
+     * @return {Form} this
+     */
+    add : function(){
+        this.active.stack.push.apply(this.active.stack, arguments);
+        this.allItems.push.apply(this.allItems,arguments);
+        var r = [];
+        for(var i = 0, a = arguments, len = a.length; i < len; i++) {
+            if(a[i].isFormField){
+                r.push(a[i]);
+            }
+        }
+        if(r.length > 0){
+            Roo.form.Form.superclass.add.apply(this, r);
+        }
+        return this;
+    },
+     /**
+     * Find any element that has been added to a form, using it's ID or name
+     * This can include framesets, columns etc. along with regular fields..
+     * @param {String} id - id or name to find.
+     
+     * @return {Element} e - or false if nothing found.
+     */
+    findbyId : function(id)
+    {
+        var ret = false;
+        if (!id) {
+            return ret;
+        }
+        Ext.each(this.allItems, function(f){
+            if (f.id == id || f.name == id ){
+                ret = f;
+                return false;
+            }
+        });
+        return ret;
+    },
+
+    
+    
+    /**
+     * Render this form into the passed container. This should only be called once!
+     * @param {String/HTMLElement/Element} container The element this component should be rendered into
+     * @return {Form} this
+     */
+    render : function(ct){
+        ct = Roo.get(ct);
+        var o = this.autoCreate || {
+            tag: 'form',
+            method : this.method || 'POST',
+            id : this.id || Roo.id()
+        };
+        this.initEl(ct.createChild(o));
+
+        this.root.render(this.el);
+
+        this.items.each(function(f){
+            f.render('x-form-el-'+f.id);
+        });
+
+        if(this.buttons.length > 0){
+            // tables are required to maintain order and for correct IE layout
+            var tb = this.el.createChild({cls:'x-form-btns-ct', cn: {
+                cls:"x-form-btns x-form-btns-"+this.buttonAlign,
+                html:'<table cellspacing="0"><tbody><tr></tr></tbody></table><div class="x-clear"></div>'
+            }}, null, true);
+            var tr = tb.getElementsByTagName('tr')[0];
+            for(var i = 0, len = this.buttons.length; i < len; i++) {
+                var b = this.buttons[i];
+                var td = document.createElement('td');
+                td.className = 'x-form-btn-td';
+                b.render(tr.appendChild(td));
+            }
+        }
+        if(this.monitorValid){ // initialize after render
+            this.startMonitoring();
+        }
+        this.fireEvent('rendered', this);
+        return this;
+    },
+
+    /**
+     * Adds a button to the footer of the form - this <b>must</b> be called before the form is rendered.
+     * @param {String/Object} config A string becomes the button text, an object can either be a Button config
+     * object or a valid Roo.DomHelper element config
+     * @param {Function} handler The function called when the button is clicked
+     * @param {Object} scope (optional) The scope of the handler function
+     * @return {Roo.Button}
+     */
+    addButton : function(config, handler, scope){
+        var bc = {
+            handler: handler,
+            scope: scope,
+            minWidth: this.minButtonWidth,
+            hideParent:true
+        };
+        if(typeof config == "string"){
+            bc.text = config;
+        }else{
+            Roo.apply(bc, config);
+        }
+        var btn = new Roo.Button(null, bc);
+        this.buttons.push(btn);
+        return btn;
+    },
+
+     /**
+     * Adds a series of form elements (using the xtype property as the factory method.
+     * Valid xtypes are:  TextField, TextArea .... Button, Layout, FieldSet, Column, (and 'end' to close a block)
+     * @param {Object} config 
+     */
+    
+    addxtype : function()
+    {
+        var ar = Array.prototype.slice.call(arguments, 0);
+        var ret = false;
+        for(var i = 0; i < ar.length; i++) {
+            if (!ar[i]) {
+                continue; // skip -- if this happends something invalid got sent, we 
+                // should ignore it, as basically that interface element will not show up
+                // and that should be pretty obvious!!
+            }
+            
+            if (Roo.form[ar[i].xtype]) {
+                ar[i].form = this;
+                var fe = Roo.factory(ar[i], Roo.form);
+                if (!ret) {
+                    ret = fe;
+                }
+                fe.form = this;
+                if (fe.store) {
+                    fe.store.form = this;
+                }
+                if (fe.isLayout) {  
+                         
+                    this.start(fe);
+                    this.allItems.push(fe);
+                    if (fe.items && fe.addxtype) {
+                        fe.addxtype.apply(fe, fe.items);
+                        delete fe.items;
+                    }
+                     this.end();
+                    continue;
+                }
+                
+                
+                 
+                this.add(fe);
+              //  console.log('adding ' + ar[i].xtype);
+            }
+            if (ar[i].xtype == 'Button') {  
+                //console.log('adding button');
+                //console.log(ar[i]);
+                this.addButton(ar[i]);
+                this.allItems.push(fe);
+                continue;
+            }
+            
+            if (ar[i].xtype == 'end') { // so we can add fieldsets... / layout etc.
+                alert('end is not supported on xtype any more, use items');
+            //    this.end();
+            //    //console.log('adding end');
+            }
+            
+        }
+        return ret;
+    },
+    
+    /**
+     * Starts monitoring of the valid state of this form. Usually this is done by passing the config
+     * option "monitorValid"
+     */
+    startMonitoring : function(){
+        if(!this.bound){
+            this.bound = true;
+            Roo.TaskMgr.start({
+                run : this.bindHandler,
+                interval : this.monitorPoll || 200,
+                scope: this
+            });
+        }
+    },
+
+    /**
+     * Stops monitoring of the valid state of this form
+     */
+    stopMonitoring : function(){
+        this.bound = false;
+    },
+
+    // private
+    bindHandler : function(){
+        if(!this.bound){
+            return false; // stops binding
+        }
+        var valid = true;
+        this.items.each(function(f){
+            if(!f.isValid(true)){
+                valid = false;
+                return false;
+            }
+        });
+        for(var i = 0, len = this.buttons.length; i < len; i++){
+            var btn = this.buttons[i];
+            if(btn.formBind === true && btn.disabled === valid){
+                btn.setDisabled(!valid);
+            }
+        }
+        this.fireEvent('clientvalidation', this, valid);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+});
+
+
+// back compat
+Roo.Form = Roo.form.Form;
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+ /**
+ * @class Roo.form.Action
+ * Internal Class used to handle form actions
+ * @constructor
+ * @param {Roo.form.BasicForm} el The form element or its id
+ * @param {Object} config Configuration options
+ */
+ 
+ 
+// define the action interface
+Roo.form.Action = function(form, options){
+    this.form = form;
+    this.options = options || {};
+};
+/**
+ * Client Validation Failed
+ * @const 
+ */
+Roo.form.Action.CLIENT_INVALID = 'client';
+/**
+ * Server Validation Failed
+ * @const 
+ */
+ Roo.form.Action.SERVER_INVALID = 'server';
+ /**
+ * Connect to Server Failed
+ * @const 
+ */
+Roo.form.Action.CONNECT_FAILURE = 'connect';
+/**
+ * Reading Data from Server Failed
+ * @const 
+ */
+Roo.form.Action.LOAD_FAILURE = 'load';
+
+Roo.form.Action.prototype = {
+    type : 'default',
+    failureType : undefined,
+    response : undefined,
+    result : undefined,
+
+    // interface method
+    run : function(options){
+
+    },
+
+    // interface method
+    success : function(response){
+
+    },
+
+    // interface method
+    handleResponse : function(response){
+
+    },
+
+    // default connection failure
+    failure : function(response){
+        this.response = response;
+        this.failureType = Roo.form.Action.CONNECT_FAILURE;
+        this.form.afterAction(this, false);
+    },
+
+    processResponse : function(response){
+        this.response = response;
+        if(!response.responseText){
+            return true;
+        }
+        this.result = this.handleResponse(response);
+        return this.result;
+    },
+
+    // utility functions used internally
+    getUrl : function(appendParams){
+        var url = this.options.url || this.form.url || this.form.el.dom.action;
+        if(appendParams){
+            var p = this.getParams();
+            if(p){
+                url += (url.indexOf('?') != -1 ? '&' : '?') + p;
+            }
+        }
+        return url;
+    },
+
+    getMethod : function(){
+        return (this.options.method || this.form.method || this.form.el.dom.method || 'POST').toUpperCase();
+    },
+
+    getParams : function(){
+        var bp = this.form.baseParams;
+        var p = this.options.params;
+        if(p){
+            if(typeof p == "object"){
+                p = Roo.urlEncode(Roo.applyIf(p, bp));
+            }else if(typeof p == 'string' && bp){
+                p += '&' + Roo.urlEncode(bp);
+            }
+        }else if(bp){
+            p = Roo.urlEncode(bp);
+        }
+        return p;
+    },
+
+    createCallback : function(){
+        return {
+            success: this.success,
+            failure: this.failure,
+            scope: this,
+            timeout: (this.form.timeout*1000),
+            upload: this.form.fileUpload ? this.success : undefined
+        };
+    }
+};
+
+Roo.form.Action.Submit = function(form, options){
+    Roo.form.Action.Submit.superclass.constructor.call(this, form, options);
+};
+
+Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
+    type : 'submit',
+
+    run : function(){
+        var o = this.options;
+        var method = this.getMethod();
+        var isPost = method == 'POST';
+        if(o.clientValidation === false || this.form.isValid()){
+            Roo.Ajax.request(Roo.apply(this.createCallback(), {
+                form:this.form.el.dom,
+                url:this.getUrl(!isPost),
+                method: method,
+                params:isPost ? this.getParams() : null,
+                isUpload: this.form.fileUpload
+            }));
+
+        }else if (o.clientValidation !== false){ // client validation failed
+            this.failureType = Roo.form.Action.CLIENT_INVALID;
+            this.form.afterAction(this, false);
+        }
+    },
+
+    success : function(response){
+        var result = this.processResponse(response);
+        if(result === true || result.success){
+            this.form.afterAction(this, true);
+            return;
+        }
+        if(result.errors){
+            this.form.markInvalid(result.errors);
+            this.failureType = Roo.form.Action.SERVER_INVALID;
+        }
+        this.form.afterAction(this, false);
+    },
+
+    handleResponse : function(response){
+        if(this.form.errorReader){
+            var rs = this.form.errorReader.read(response);
+            var errors = [];
+            if(rs.records){
+                for(var i = 0, len = rs.records.length; i < len; i++) {
+                    var r = rs.records[i];
+                    errors[i] = r.data;
+                }
+            }
+            if(errors.length < 1){
+                errors = null;
+            }
+            return {
+                success : rs.success,
+                errors : errors
+            };
+        }
+        var ret = false;
+        try {
+            ret = Roo.decode(response.responseText);
+        } catch (e) {
+            ret = {
+                success: false,
+                errorMsg: "Failed to read server message: " + response.responseText,
+                errors : []
+            };
+        }
+        return ret;
+        
+    }
+});
+
+
+Roo.form.Action.Load = function(form, options){
+    Roo.form.Action.Load.superclass.constructor.call(this, form, options);
+    this.reader = this.form.reader;
+};
+
+Roo.extend(Roo.form.Action.Load, Roo.form.Action, {
+    type : 'load',
+
+    run : function(){
+        Roo.Ajax.request(Roo.apply(
+                this.createCallback(), {
+                    method:this.getMethod(),
+                    url:this.getUrl(false),
+                    params:this.getParams()
+        }));
+    },
+
+    success : function(response){
+        var result = this.processResponse(response);
+        if(result === true || !result.success || !result.data){
+            this.failureType = Roo.form.Action.LOAD_FAILURE;
+            this.form.afterAction(this, false);
+            return;
+        }
+        this.form.clearInvalid();
+        this.form.setValues(result.data);
+        this.form.afterAction(this, true);
+    },
+
+    handleResponse : function(response){
+        if(this.form.reader){
+            var rs = this.form.reader.read(response);
+            var data = rs.records && rs.records[0] ? rs.records[0].data : null;
+            return {
+                success : rs.success,
+                data : data
+            };
+        }
+        return Roo.decode(response.responseText);
+    }
+});
+
+Roo.form.Action.ACTION_TYPES = {
+    'load' : Roo.form.Action.Load,
+    'submit' : Roo.form.Action.Submit
+};/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.form.Layout
+ * @extends Roo.Component
+ * Creates a container for layout and rendering of fields in an {@link Roo.form.Form}.
+ * @constructor
+ * @param {Object} config Configuration options
+ */
+Roo.form.Layout = function(config){
+    var xitems = [];
+    if (config.items) {
+        xitems = config.items;
+        delete config.items;
+    }
+    Roo.form.Layout.superclass.constructor.call(this, config);
+    this.stack = [];
+    Roo.each(xitems, this.addxtype, this);
+     
+};
+
+Roo.extend(Roo.form.Layout, Roo.Component, {
+    /**
+     * @cfg {String/Object} autoCreate
+     * A DomHelper element spec used to autocreate the layout (defaults to {tag: 'div', cls: 'x-form-ct'})
+     */
+    /**
+     * @cfg {String/Object/Function} style
+     * A style specification string, e.g. "width:100px", or object in the form {width:"100px"}, or
+     * a function which returns such a specification.
+     */
+    /**
+     * @cfg {String} labelAlign
+     * Valid values are "left," "top" and "right" (defaults to "left")
+     */
+    /**
+     * @cfg {Number} labelWidth
+     * Fixed width in pixels of all field labels (defaults to undefined)
+     */
+    /**
+     * @cfg {Boolean} clear
+     * True to add a clearing element at the end of this layout, equivalent to CSS clear: both (defaults to true)
+     */
+    clear : true,
+    /**
+     * @cfg {String} labelSeparator
+     * The separator to use after field labels (defaults to ':')
+     */
+    labelSeparator : ':',
+    /**
+     * @cfg {Boolean} hideLabels
+     * True to suppress the display of field labels in this layout (defaults to false)
+     */
+    hideLabels : false,
+
+    // private
+    defaultAutoCreate : {tag: 'div', cls: 'x-form-ct'},
+    
+    isLayout : true,
+    
+    // private
+    onRender : function(ct, position){
+        if(this.el){ // from markup
+            this.el = Roo.get(this.el);
+        }else {  // generate
+            var cfg = this.getAutoCreate();
+            this.el = ct.createChild(cfg, position);
+        }
+        if(this.style){
+            this.el.applyStyles(this.style);
+        }
+        if(this.labelAlign){
+            this.el.addClass('x-form-label-'+this.labelAlign);
+        }
+        if(this.hideLabels){
+            this.labelStyle = "display:none";
+            this.elementStyle = "padding-left:0;";
+        }else{
+            if(typeof this.labelWidth == 'number'){
+                this.labelStyle = "width:"+this.labelWidth+"px;";
+                this.elementStyle = "padding-left:"+((this.labelWidth+(typeof this.labelPad == 'number' ? this.labelPad : 5))+'px')+";";
+            }
+            if(this.labelAlign == 'top'){
+                this.labelStyle = "width:auto;";
+                this.elementStyle = "padding-left:0;";
+            }
+        }
+        var stack = this.stack;
+        var slen = stack.length;
+        if(slen > 0){
+            if(!this.fieldTpl){
+                var t = new Roo.Template(
+                    '<div class="x-form-item {5}">',
+                        '<label for="{0}" style="{2}">{1}{4}</label>',
+                        '<div class="x-form-element" id="x-form-el-{0}" style="{3}">',
+                        '</div>',
+                    '</div><div class="x-form-clear-left"></div>'
+                );
+                t.disableFormats = true;
+                t.compile();
+                Roo.form.Layout.prototype.fieldTpl = t;
+            }
+            for(var i = 0; i < slen; i++) {
+                if(stack[i].isFormField){
+                    this.renderField(stack[i]);
+                }else{
+                    this.renderComponent(stack[i]);
+                }
+            }
+        }
+        if(this.clear){
+            this.el.createChild({cls:'x-form-clear'});
+        }
+    },
+
+    // private
+    renderField : function(f){
+        f.fieldEl = Roo.get(this.fieldTpl.append(this.el, [
+               f.id, //0
+               f.fieldLabel, //1
+               f.labelStyle||this.labelStyle||'', //2
+               this.elementStyle||'', //3
+               typeof f.labelSeparator == 'undefined' ? this.labelSeparator : f.labelSeparator, //4
+               f.itemCls||this.itemCls||''  //5
+       ], true).getPrevSibling());
+    },
+
+    // private
+    renderComponent : function(c){
+        c.render(c.isLayout ? this.el : this.el.createChild());    
+    },
+    /**
+     * Adds a object form elements (using the xtype property as the factory method.)
+     * Valid xtypes are:  TextField, TextArea .... Button, Layout, FieldSet, Column
+     * @param {Object} config 
+     */
+    addxtype : function(o)
+    {
+        // create the lement.
+        o.form = this.form;
+        var fe = Roo.factory(o, Roo.form);
+        this.form.allItems.push(fe);
+        this.stack.push(fe);
+        
+        if (fe.isFormField) {
+            this.form.items.add(fe);
+        }
+         
+        return fe;
+    }
+});
+
+/**
+ * @class Roo.form.Column
+ * @extends Roo.form.Layout
+ * Creates a column container for layout and rendering of fields in an {@link Roo.form.Form}.
+ * @constructor
+ * @param {Object} config Configuration options
+ */
+Roo.form.Column = function(config){
+    Roo.form.Column.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.form.Column, Roo.form.Layout, {
+    /**
+     * @cfg {Number/String} width
+     * The fixed width of the column in pixels or CSS value (defaults to "auto")
+     */
+    /**
+     * @cfg {String/Object} autoCreate
+     * A DomHelper element spec used to autocreate the column (defaults to {tag: 'div', cls: 'x-form-ct x-form-column'})
+     */
+
+    // private
+    defaultAutoCreate : {tag: 'div', cls: 'x-form-ct x-form-column'},
+
+    // private
+    onRender : function(ct, position){
+        Roo.form.Column.superclass.onRender.call(this, ct, position);
+        if(this.width){
+            this.el.setWidth(this.width);
+        }
+    }
+});
+
+
+/**
+ * @class Roo.form.Row
+ * @extends Roo.form.Layout
+ * Creates a row container for layout and rendering of fields in an {@link Roo.form.Form}.
+ * @constructor
+ * @param {Object} config Configuration options
+ */
+
+ 
+Roo.form.Row = function(config){
+    Roo.form.Row.superclass.constructor.call(this, config);
+};
+ 
+Roo.extend(Roo.form.Row, Roo.form.Layout, {
+      /**
+     * @cfg {Number/String} width
+     * The fixed width of the column in pixels or CSS value (defaults to "auto")
+     */
+    /**
+     * @cfg {Number/String} height
+     * The fixed height of the column in pixels or CSS value (defaults to "auto")
+     */
+    defaultAutoCreate : {tag: 'div', cls: 'x-form-ct x-form-row'},
+    
+    padWidth : 20,
+    // private
+    onRender : function(ct, position){
+        //console.log('row render');
+        if(!this.rowTpl){
+            var t = new Roo.Template(
+                '<div class="x-form-item {5}" style="float:left;width:{6}px">',
+                    '<label for="{0}" style="{2}">{1}{4}</label>',
+                    '<div class="x-form-element" id="x-form-el-{0}" style="{3}">',
+                    '</div>',
+                '</div>'
+            );
+            t.disableFormats = true;
+            t.compile();
+            Roo.form.Layout.prototype.rowTpl = t;
+        }
+        this.fieldTpl = this.rowTpl;
+        
+        //console.log('lw' + this.labelWidth +', la:' + this.labelAlign);
+        var labelWidth = 100;
+        
+        if ((this.labelAlign != 'top')) {
+            if (typeof this.labelWidth == 'number') {
+                labelWidth = this.labelWidth
+            }
+            this.padWidth =  20 + labelWidth;
+            
+        }
+        
+        Roo.form.Column.superclass.onRender.call(this, ct, position);
+        if(this.width){
+            this.el.setWidth(this.width);
+        }
+        if(this.height){
+            this.el.setHeight(this.height);
+        }
+    },
+    
+    // private
+    renderField : function(f){
+        f.fieldEl = this.fieldTpl.append(this.el, [
+               f.id, f.fieldLabel,
+               f.labelStyle||this.labelStyle||'',
+               this.elementStyle||'',
+               typeof f.labelSeparator == 'undefined' ? this.labelSeparator : f.labelSeparator,
+               f.itemCls||this.itemCls||'',
+               f.width ? f.width + this.padWidth : 160 + this.padWidth
+       ],true);
+    }
+});
+ 
+
+/**
+ * @class Roo.form.FieldSet
+ * @extends Roo.form.Layout
+ * Creates a fieldset container for layout and rendering of fields in an {@link Roo.form.Form}.
+ * @constructor
+ * @param {Object} config Configuration options
+ */
+Roo.form.FieldSet = function(config){
+    Roo.form.FieldSet.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.form.FieldSet, Roo.form.Layout, {
+    /**
+     * @cfg {String} legend
+     * The text to display as the legend for the FieldSet (defaults to '')
+     */
+    /**
+     * @cfg {String/Object} autoCreate
+     * A DomHelper element spec used to autocreate the fieldset (defaults to {tag: 'fieldset', cn: {tag:'legend'}})
+     */
+
+    // private
+    defaultAutoCreate : {tag: 'fieldset', cn: {tag:'legend'}},
+
+    // private
+    onRender : function(ct, position){
+        Roo.form.FieldSet.superclass.onRender.call(this, ct, position);
+        if(this.legend){
+            this.setLegend(this.legend);
+        }
+    },
+
+    // private
+    setLegend : function(text){
+        if(this.rendered){
+            this.el.child('legend').update(text);
+        }
+    }
+});
