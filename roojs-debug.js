@@ -38537,4 +38537,1426 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     /**
      * @cfg {String} validateOnBlur @hide
      */
+});// <script type="text/javascript">
+/*
+ * Based on
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *  
+ 
+ */
+
+/**
+ * @class Roo.form.HtmlEditorToolbar1
+ * Basic Toolbar
+ * 
+ * Usage:
+ *
+ new Roo.form.HtmlEditor({
+    ....
+    toolbars : [
+        new Roo.form.HtmlEditorToolbar1({
+            disable : { fonts: 1 , format: 1, ..., ... , ...],
+            btns : [ .... ]
+        })
+    }
+     
+ * 
+ * @cfg {Object} disable List of elements to disable..
+ * @cfg {Array} btns List of additional buttons.
+ * 
+ * 
+ * NEEDS Extra CSS? 
+ * .x-html-editor-tb .x-edit-none .x-btn-text { background: none; }
+ */
+ 
+Roo.form.HtmlEditor.ToolbarStandard = function(config)
+{
+    
+    Roo.apply(this, config);
+    //Roo.form.HtmlEditorToolbar1.superclass.constructor.call(this, editor.wrap.dom.firstChild, [], config);
+    // dont call parent... till later.
+}
+
+Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
+    
+    tb: false,
+    
+    rendered: false,
+    
+    editor : false,
+    /**
+     * @cfg {Object} disable  List of toolbar elements to disable
+         
+     */
+    disable : false,
+      /**
+     * @cfg {Array} fontFamilies An array of available font families
+     */
+    fontFamilies : [
+        'Arial',
+        'Courier New',
+        'Tahoma',
+        'Times New Roman',
+        'Verdana'
+    ],
+    
+    specialChars : [
+           "&#169;",
+          "&#174;",     
+          "&#8482;",    
+          "&#163;" ,    
+         // "&#8212;",    
+          "&#8230;",    
+          "&#247;" ,    
+        //  "&#225;" ,     ?? a acute?
+           "&#8364;"    , //Euro
+       //   "&#8220;"    ,
+        //  "&#8221;"    ,
+        //  "&#8226;"    ,
+          "&#176;"  //   , // degrees
+
+         // "&#233;"     , // e ecute
+         // "&#250;"     , // u ecute?
+    ],
+    inputElements : [ 
+            "form", "input:text", "input:hidden", "input:checkbox", "input:radio", "input:password", 
+            "input:submit", "input:button", "select", "textarea", "label" ],
+    formats : [
+        ["p"] ,  
+        ["h1"],["h2"],["h3"],["h4"],["h5"],["h6"], 
+        ["pre"],[ "code"], 
+        ["abbr"],[ "acronym"],[ "address"],[ "cite"],[ "samp"],[ "var"]
+    ],
+     /**
+     * @cfg {String} defaultFont default font to use.
+     */
+    defaultFont: 'tahoma',
+   
+    fontSelect : false,
+    
+    
+    formatCombo : false,
+    
+    init : function(editor)
+    {
+        this.editor = editor;
+        
+        
+        var fid = editor.frameId;
+        var etb = this;
+        function btn(id, toggle, handler){
+            var xid = fid + '-'+ id ;
+            return {
+                id : xid,
+                cmd : id,
+                cls : 'x-btn-icon x-edit-'+id,
+                enableToggle:toggle !== false,
+                scope: editor, // was editor...
+                handler:handler||editor.relayBtnCmd,
+                clickEvent:'mousedown',
+                tooltip: etb.buttonTips[id] || undefined, ///tips ???
+                tabIndex:-1
+            };
+        }
+        
+        
+        
+        var tb = new Roo.Toolbar(editor.wrap.dom.firstChild);
+        this.tb = tb;
+         // stop form submits
+        tb.el.on('click', function(e){
+            e.preventDefault(); // what does this do?
+        });
+
+        if(!this.disable.font && !Roo.isSafari){
+            /* why no safari for fonts
+            editor.fontSelect = tb.el.createChild({
+                tag:'select',
+                tabIndex: -1,
+                cls:'x-font-select',
+                html: editor.createFontOptions()
+            });
+            editor.fontSelect.on('change', function(){
+                var font = editor.fontSelect.dom.value;
+                editor.relayCmd('fontname', font);
+                editor.deferFocus();
+            }, editor);
+            tb.add(
+                editor.fontSelect.dom,
+                '-'
+            );
+            */
+        };
+        if(!this.disable.formats){
+            this.formatCombo = new Roo.form.ComboBox({
+                store: new Roo.data.SimpleStore({
+                    id : 'tag',
+                    fields: ['tag'],
+                    data : this.formats // from states.js
+                }),
+                blockFocus : true,
+                //autoCreate : {tag: "div",  size: "20"},
+                displayField:'tag',
+                typeAhead: false,
+                mode: 'local',
+                editable : false,
+                triggerAction: 'all',
+                emptyText:'Add tag',
+                selectOnFocus:true,
+                width:135,
+                listeners : {
+                    'select': function(c, r, i) {
+                        editor.insertTag(r.get('tag'));
+                        editor.focus();
+                    }
+                }
+
+            });
+            tb.addField(this.formatCombo);
+            
+        }
+        
+        if(!this.disable.format){
+            tb.add(
+                btn('bold'),
+                btn('italic'),
+                btn('underline')
+            );
+        };
+        if(!this.disable.fontSize){
+            tb.add(
+                '-',
+                
+                
+                btn('increasefontsize', false, editor.adjustFont),
+                btn('decreasefontsize', false, editor.adjustFont)
+            );
+        };
+        
+        
+        if(this.disable.colors){
+            tb.add(
+                '-', {
+                    id:editor.frameId +'-forecolor',
+                    cls:'x-btn-icon x-edit-forecolor',
+                    clickEvent:'mousedown',
+                    tooltip: this.buttonTips['forecolor'] || undefined,
+                    tabIndex:-1,
+                    menu : new Roo.menu.ColorMenu({
+                        allowReselect: true,
+                        focus: Roo.emptyFn,
+                        value:'000000',
+                        plain:true,
+                        selectHandler: function(cp, color){
+                            editor.execCmd('forecolor', Roo.isSafari || Roo.isIE ? '#'+color : color);
+                            editor.deferFocus();
+                        },
+                        scope: editor,
+                        clickEvent:'mousedown'
+                    })
+                }, {
+                    id:editor.frameId +'backcolor',
+                    cls:'x-btn-icon x-edit-backcolor',
+                    clickEvent:'mousedown',
+                    tooltip: this.buttonTips['backcolor'] || undefined,
+                    tabIndex:-1,
+                    menu : new Roo.menu.ColorMenu({
+                        focus: Roo.emptyFn,
+                        value:'FFFFFF',
+                        plain:true,
+                        allowReselect: true,
+                        selectHandler: function(cp, color){
+                            if(Roo.isGecko){
+                                editor.execCmd('useCSS', false);
+                                editor.execCmd('hilitecolor', color);
+                                editor.execCmd('useCSS', true);
+                                editor.deferFocus();
+                            }else{
+                                editor.execCmd(Roo.isOpera ? 'hilitecolor' : 'backcolor', 
+                                    Roo.isSafari || Roo.isIE ? '#'+color : color);
+                                editor.deferFocus();
+                            }
+                        },
+                        scope:editor,
+                        clickEvent:'mousedown'
+                    })
+                }
+            );
+        };
+        // now add all the items...
+        
+
+        if(!this.disable.alignments){
+            tb.add(
+                '-',
+                btn('justifyleft'),
+                btn('justifycenter'),
+                btn('justifyright')
+            );
+        };
+
+        //if(!Roo.isSafari){
+            if(!this.disable.links){
+                tb.add(
+                    '-',
+                    btn('createlink', false, editor.createLink)    /// MOVE TO HERE?!!?!?!?!
+                );
+            };
+
+            if(!this.disable.lists){
+                tb.add(
+                    '-',
+                    btn('insertorderedlist'),
+                    btn('insertunorderedlist')
+                );
+            }
+            if(!this.disable.sourceEdit){
+                tb.add(
+                    '-',
+                    btn('sourceedit', true, function(btn){
+                        this.toggleSourceEdit(btn.pressed);
+                    })
+                );
+            }
+        //}
+        
+        var smenu = { };
+        // special menu.. - needs to be tidied up..
+        if (!this.disable.special) {
+            smenu = {
+                text: "&#169;",
+                cls: 'x-edit-none',
+                menu : {
+                    items : []
+                   }
+            };
+            for (var i =0; i < this.specialChars.length; i++) {
+                smenu.menu.items.push({
+                    
+                    text: this.specialChars[i],
+                    handler: function(a,b) {
+                        editor.insertAtCursor(String.fromCharCode(a.text.replace('&#','').replace(';', '')));
+                    },
+                    tabIndex:-1
+                });
+            }
+            
+            
+            tb.add(smenu);
+            
+            
+        }
+        if (this.btns) {
+            for(var i =0; i< this.btns.length;i++) {
+                var b = this.btns[i];
+                b.cls =  'x-edit-none';
+                b.scope = editor;
+                tb.add(b);
+            }
+        
+        }
+        
+        
+        
+        // disable everything...
+        
+        this.tb.items.each(function(item){
+           if(item.id != editor.frameId+ '-sourceedit'){
+                item.disable();
+            }
+        });
+        this.rendered = true;
+        
+        // the all the btns;
+        editor.on('editorevent', this.updateToolbar, this);
+        // other toolbars need to implement this..
+        //editor.on('editmodechange', this.updateToolbar, this);
+    },
+    
+    
+    
+    /**
+     * Protected method that will not generally be called directly. It triggers
+     * a toolbar update by reading the markup state of the current selection in the editor.
+     */
+    updateToolbar: function(){
+
+        if(!this.editor.activated){
+            this.editor.onFirstFocus();
+            return;
+        }
+
+        var btns = this.tb.items.map, 
+            doc = this.editor.doc,
+            frameId = this.editor.frameId;
+
+        if(!this.disable.font && !Roo.isSafari){
+            /*
+            var name = (doc.queryCommandValue('FontName')||this.editor.defaultFont).toLowerCase();
+            if(name != this.fontSelect.dom.value){
+                this.fontSelect.dom.value = name;
+            }
+            */
+        }
+        if(!this.disable.format){
+            btns[frameId + '-bold'].toggle(doc.queryCommandState('bold'));
+            btns[frameId + '-italic'].toggle(doc.queryCommandState('italic'));
+            btns[frameId + '-underline'].toggle(doc.queryCommandState('underline'));
+        }
+        if(!this.disable.alignments){
+            btns[frameId + '-justifyleft'].toggle(doc.queryCommandState('justifyleft'));
+            btns[frameId + '-justifycenter'].toggle(doc.queryCommandState('justifycenter'));
+            btns[frameId + '-justifyright'].toggle(doc.queryCommandState('justifyright'));
+        }
+        if(!Roo.isSafari && !this.disable.lists){
+            btns[frameId + '-insertorderedlist'].toggle(doc.queryCommandState('insertorderedlist'));
+            btns[frameId + '-insertunorderedlist'].toggle(doc.queryCommandState('insertunorderedlist'));
+        }
+        
+        var ans = this.editor.getAllAncestors();
+        if (this.formatCombo) {
+            
+            
+            var store = this.formatCombo.store;
+            this.formatCombo.setValue("");
+            for (var i =0; i < ans.length;i++) {
+                if (ans[i] && store.query('tag',ans[i].tagName.toLowerCase(), true).length) {
+                    // select it..
+                    this.formatCombo.setValue(ans[i].tagName.toLowerCase());
+                    break;
+                }
+            }
+        }
+        
+        
+        
+        // hides menus... - so this cant be on a menu...
+        Roo.menu.MenuMgr.hideAll();
+
+        //this.editorsyncValue();
+    },
+   
+    
+    createFontOptions : function(){
+        var buf = [], fs = this.fontFamilies, ff, lc;
+        for(var i = 0, len = fs.length; i< len; i++){
+            ff = fs[i];
+            lc = ff.toLowerCase();
+            buf.push(
+                '<option value="',lc,'" style="font-family:',ff,';"',
+                    (this.defaultFont == lc ? ' selected="true">' : '>'),
+                    ff,
+                '</option>'
+            );
+        }
+        return buf.join('');
+    },
+    
+    toggleSourceEdit : function(sourceEditMode){
+        if(sourceEditMode === undefined){
+            sourceEditMode = !this.sourceEditMode;
+        }
+        this.sourceEditMode = sourceEditMode === true;
+        var btn = this.tb.items.get(this.editor.frameId +'-sourceedit');
+        // just toggle the button?
+        if(btn.pressed !== this.editor.sourceEditMode){
+            btn.toggle(this.editor.sourceEditMode);
+            return;
+        }
+        
+        if(this.sourceEditMode){
+            this.tb.items.each(function(item){
+                if(item.cmd != 'sourceedit'){
+                    item.disable();
+                }
+            });
+          
+        }else{
+            if(this.initialized){
+                this.tb.items.each(function(item){
+                    item.enable();
+                });
+            }
+            
+        }
+        // tell the editor that it's been pressed..
+        this.editor.toggleSourceEdit(sourceEditMode);
+       
+    },
+     /**
+     * Object collection of toolbar tooltips for the buttons in the editor. The key
+     * is the command id associated with that button and the value is a valid QuickTips object.
+     * For example:
+<pre><code>
+{
+    bold : {
+        title: 'Bold (Ctrl+B)',
+        text: 'Make the selected text bold.',
+        cls: 'x-html-editor-tip'
+    },
+    italic : {
+        title: 'Italic (Ctrl+I)',
+        text: 'Make the selected text italic.',
+        cls: 'x-html-editor-tip'
+    },
+    ...
+</code></pre>
+    * @type Object
+     */
+    buttonTips : {
+        bold : {
+            title: 'Bold (Ctrl+B)',
+            text: 'Make the selected text bold.',
+            cls: 'x-html-editor-tip'
+        },
+        italic : {
+            title: 'Italic (Ctrl+I)',
+            text: 'Make the selected text italic.',
+            cls: 'x-html-editor-tip'
+        },
+        underline : {
+            title: 'Underline (Ctrl+U)',
+            text: 'Underline the selected text.',
+            cls: 'x-html-editor-tip'
+        },
+        increasefontsize : {
+            title: 'Grow Text',
+            text: 'Increase the font size.',
+            cls: 'x-html-editor-tip'
+        },
+        decreasefontsize : {
+            title: 'Shrink Text',
+            text: 'Decrease the font size.',
+            cls: 'x-html-editor-tip'
+        },
+        backcolor : {
+            title: 'Text Highlight Color',
+            text: 'Change the background color of the selected text.',
+            cls: 'x-html-editor-tip'
+        },
+        forecolor : {
+            title: 'Font Color',
+            text: 'Change the color of the selected text.',
+            cls: 'x-html-editor-tip'
+        },
+        justifyleft : {
+            title: 'Align Text Left',
+            text: 'Align text to the left.',
+            cls: 'x-html-editor-tip'
+        },
+        justifycenter : {
+            title: 'Center Text',
+            text: 'Center text in the editor.',
+            cls: 'x-html-editor-tip'
+        },
+        justifyright : {
+            title: 'Align Text Right',
+            text: 'Align text to the right.',
+            cls: 'x-html-editor-tip'
+        },
+        insertunorderedlist : {
+            title: 'Bullet List',
+            text: 'Start a bulleted list.',
+            cls: 'x-html-editor-tip'
+        },
+        insertorderedlist : {
+            title: 'Numbered List',
+            text: 'Start a numbered list.',
+            cls: 'x-html-editor-tip'
+        },
+        createlink : {
+            title: 'Hyperlink',
+            text: 'Make the selected text a hyperlink.',
+            cls: 'x-html-editor-tip'
+        },
+        sourceedit : {
+            title: 'Source Edit',
+            text: 'Switch to source editing mode.',
+            cls: 'x-html-editor-tip'
+        }
+    },
+    // private
+    onDestroy : function(){
+        if(this.rendered){
+            
+            this.tb.items.each(function(item){
+                if(item.menu){
+                    item.menu.removeAll();
+                    if(item.menu.el){
+                        item.menu.el.destroy();
+                    }
+                }
+                item.destroy();
+            });
+             
+        }
+    },
+    onFirstFocus: function() {
+        this.tb.items.each(function(item){
+           item.enable();
+        });
+    }
 });
+
+
+
+
+// <script type="text/javascript">
+/*
+ * Based on
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *  
+ 
+ */
+
+ 
+/**
+ * @class Roo.form.HtmlEditor.ToolbarContext
+ * Context Toolbar
+ * 
+ * Usage:
+ *
+ new Roo.form.HtmlEditor({
+    ....
+    toolbars : [
+        new Roo.form.HtmlEditor.ToolbarStandard(),
+        new Roo.form.HtmlEditor.ToolbarContext()
+        })
+    }
+     
+ * 
+ * @config : {Object} disable List of elements to disable.. (not done yet.)
+ * 
+ * 
+ */
+
+Roo.form.HtmlEditor.ToolbarContext = function(config)
+{
+    
+    Roo.apply(this, config);
+    //Roo.form.HtmlEditorToolbar1.superclass.constructor.call(this, editor.wrap.dom.firstChild, [], config);
+    // dont call parent... till later.
+}
+Roo.form.HtmlEditor.ToolbarContext.types = {
+    'IMG' : {
+        width : {
+            title: "Width",
+            width: 40
+        },
+        height:  {
+            title: "Height",
+            width: 40
+        },
+        align: {
+            title: "Align",
+            opts : [ [""],[ "left"],[ "right"],[ "center"],[ "top"]],
+            width : 80
+            
+        },
+        border: {
+            title: "Border",
+            width: 40
+        },
+        alt: {
+            title: "Alt",
+            width: 120
+        },
+        src : {
+            title: "Src",
+            width: 220
+        }
+        
+    },
+    'A' : {
+        name : {
+            title: "Name",
+            width: 50
+        },
+        href:  {
+            title: "Href",
+            width: 220
+        } // border?
+        
+    },
+    'TABLE' : {
+        rows : {
+            title: "Rows",
+            width: 20
+        },
+        cols : {
+            title: "Cols",
+            width: 20
+        },
+        width : {
+            title: "Width",
+            width: 40
+        },
+        height : {
+            title: "Height",
+            width: 40
+        },
+        border : {
+            title: "Border",
+            width: 20
+        }
+    },
+    'TD' : {
+        width : {
+            title: "Width",
+            width: 40
+        },
+        height : {
+            title: "Height",
+            width: 40
+        },   
+        align: {
+            title: "Align",
+            opts : [[""],[ "left"],[ "center"],[ "right"],[ "justify"],[ "char"]],
+            width: 40
+        },
+        valign: {
+            title: "Valign",
+            opts : [[""],[ "top"],[ "middle"],[ "bottom"],[ "baseline"]],
+            width: 40
+        },
+        colspan: {
+            title: "Colspan",
+            width: 20
+            
+        }
+    },
+    'INPUT' : {
+        name : {
+            title: "name",
+            width: 120
+        },
+        value : {
+            title: "Value",
+            width: 120
+        },
+        width : {
+            title: "Width",
+            width: 40
+        }
+    },
+    'LABEL' : {
+        'for' : {
+            title: "For",
+            width: 120
+        }
+    },
+    'TEXTAREA' : {
+          name : {
+            title: "name",
+            width: 120
+        },
+        rows : {
+            title: "Rows",
+            width: 20
+        },
+        cols : {
+            title: "Cols",
+            width: 20
+        }
+    },
+    'SELECT' : {
+        name : {
+            title: "name",
+            width: 120
+        },
+        selectoptions : {
+            title: "Options",
+            width: 200
+        }
+    },
+    'BODY' : {
+        title : {
+            title: "title",
+            width: 120,
+            disabled : true
+        }
+    }
+};
+
+
+
+Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
+    
+    tb: false,
+    
+    rendered: false,
+    
+    editor : false,
+    /**
+     * @cfg {Object} disable  List of toolbar elements to disable
+         
+     */
+    disable : false,
+    
+    
+    
+    toolbars : false,
+    
+    init : function(editor)
+    {
+        this.editor = editor;
+        
+        
+        var fid = editor.frameId;
+        var etb = this;
+        function btn(id, toggle, handler){
+            var xid = fid + '-'+ id ;
+            return {
+                id : xid,
+                cmd : id,
+                cls : 'x-btn-icon x-edit-'+id,
+                enableToggle:toggle !== false,
+                scope: editor, // was editor...
+                handler:handler||editor.relayBtnCmd,
+                clickEvent:'mousedown',
+                tooltip: etb.buttonTips[id] || undefined, ///tips ???
+                tabIndex:-1
+            };
+        }
+        // create a new element.
+        var wdiv = editor.wrap.createChild({
+                tag: 'div'
+            }, editor.wrap.dom.firstChild.nextSibling, true);
+        
+        // can we do this more than once??
+        
+         // stop form submits
+      
+ 
+        // disable everything...
+        var ty= Roo.form.HtmlEditor.ToolbarContext.types;
+        this.toolbars = {};
+           
+        for (var i in  ty) {
+            this.toolbars[i] = this.buildToolbar(ty[i],i);
+        }
+        this.tb = this.toolbars.BODY;
+        this.tb.el.show();
+        
+         
+        this.rendered = true;
+        
+        // the all the btns;
+        editor.on('editorevent', this.updateToolbar, this);
+        // other toolbars need to implement this..
+        //editor.on('editmodechange', this.updateToolbar, this);
+    },
+    
+    
+    
+    /**
+     * Protected method that will not generally be called directly. It triggers
+     * a toolbar update by reading the markup state of the current selection in the editor.
+     */
+    updateToolbar: function(){
+
+        if(!this.editor.activated){
+            this.editor.onFirstFocus();
+            return;
+        }
+
+        
+        var ans = this.editor.getAllAncestors();
+        
+        // pick
+        var ty= Roo.form.HtmlEditor.ToolbarContext.types;
+        var sel = ans.length ? (ans[0] ?  ans[0]  : ans[1]) : this.editor.doc.body;
+        sel = sel ? sel : this.editor.doc.body;
+        sel = sel.tagName.length ? sel : this.editor.doc.body;
+        var tn = sel.tagName.toUpperCase();
+        sel = typeof(ty[tn]) != 'undefined' ? sel : this.editor.doc.body;
+        tn = sel.tagName.toUpperCase();
+        if (this.tb.name  == tn) {
+            return; // no change
+        }
+        this.tb.el.hide();
+        ///console.log("show: " + tn);
+        this.tb =  this.toolbars[tn];
+        this.tb.el.show();
+        this.tb.fields.each(function(e) {
+            e.setValue(sel.getAttribute(e.name));
+        });
+        this.tb.selectedNode = sel;
+        
+        
+        Roo.menu.MenuMgr.hideAll();
+
+        //this.editorsyncValue();
+    },
+   
+       
+    // private
+    onDestroy : function(){
+        if(this.rendered){
+            
+            this.tb.items.each(function(item){
+                if(item.menu){
+                    item.menu.removeAll();
+                    if(item.menu.el){
+                        item.menu.el.destroy();
+                    }
+                }
+                item.destroy();
+            });
+             
+        }
+    },
+    onFirstFocus: function() {
+        // need to do this for all the toolbars..
+        this.tb.items.each(function(item){
+           item.enable();
+        });
+    },
+    buildToolbar: function(tlist, nm)
+    {
+        var editor = this.editor;
+         // create a new element.
+        var wdiv = editor.wrap.createChild({
+                tag: 'div'
+            }, editor.wrap.dom.firstChild.nextSibling, true);
+        
+       
+        var tb = new Roo.Toolbar(wdiv);
+        tb.add(nm+ ":&nbsp;");
+        for (var i in tlist) {
+            var item = tlist[i];
+            tb.add(item.title + ":&nbsp;");
+            if (item.opts) {
+                // fixme
+                
+              
+                tb.addField( new Roo.form.ComboBox({
+                    store: new Roo.data.SimpleStore({
+                        id : 'val',
+                        fields: ['val'],
+                        data : item.opts // from states.js
+                    }),
+                    name : i,
+                    displayField:'val',
+                    typeAhead: false,
+                    mode: 'local',
+                    editable : false,
+                    triggerAction: 'all',
+                    emptyText:'Select',
+                    selectOnFocus:true,
+                    width: item.width ? item.width  : 130,
+                    listeners : {
+                        'select': function(c, r, i) {
+                            tb.selectedNode.setAttribute(c.name, r.get('val'));
+                        }
+                    }
+
+                }));
+                continue;
+                    
+                
+                
+                
+                
+                tb.addField( new Roo.form.TextField({
+                    name: i,
+                    width: 100,
+                    //allowBlank:false,
+                    value: ''
+                }));
+                continue;
+            }
+            tb.addField( new Roo.form.TextField({
+                name: i,
+                width: item.width,
+                //allowBlank:true,
+                value: '',
+                listeners: {
+                    'change' : function(f, nv, ov) {
+                        tb.selectedNode.setAttribute(f.name, nv);
+                    }
+                }
+            }));
+             
+        }
+        tb.el.on('click', function(e){
+            e.preventDefault(); // what does this do?
+        });
+        tb.el.setVisibilityMode( Roo.Element.DISPLAY);
+        tb.el.hide();
+        tb.name = nm;
+        // dont need to disable them... as they will get hidden
+        return tb;
+         
+        
+    }
+    
+    
+    
+    
+});
+
+
+
+
+
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.form.BasicForm
+ * @extends Roo.util.Observable
+ * Supplies the functionality to do "actions" on forms and initialize Roo.form.Field types on existing markup.
+ * @constructor
+ * @param {String/HTMLElement/Roo.Element} el The form element or its id
+ * @param {Object} config Configuration options
+ */
+Roo.form.BasicForm = function(el, config){
+    Roo.apply(this, config);
+    /*
+     * The Roo.form.Field items in this form.
+     * @type MixedCollection
+     */
+    this.items = new Roo.util.MixedCollection(false, function(o){
+        return o.id || (o.id = Roo.id());
+    });
+    this.addEvents({
+        /**
+         * @event beforeaction
+         * Fires before any action is performed. Return false to cancel the action.
+         * @param {Form} this
+         * @param {Action} action The action to be performed
+         */
+        beforeaction: true,
+        /**
+         * @event actionfailed
+         * Fires when an action fails.
+         * @param {Form} this
+         * @param {Action} action The action that failed
+         */
+        actionfailed : true,
+        /**
+         * @event actioncomplete
+         * Fires when an action is completed.
+         * @param {Form} this
+         * @param {Action} action The action that completed
+         */
+        actioncomplete : true
+    });
+    if(el){
+        this.initEl(el);
+    }
+    Roo.form.BasicForm.superclass.constructor.call(this);
+};
+
+Roo.extend(Roo.form.BasicForm, Roo.util.Observable, {
+    /**
+     * @cfg {String} method
+     * The request method to use (GET or POST) for form actions if one isn't supplied in the action options.
+     */
+    /**
+     * @cfg {DataReader} reader
+     * An Roo.data.DataReader (e.g. {@link Roo.data.XmlReader}) to be used to read data when executing "load" actions.
+     * This is optional as there is built-in support for processing JSON.
+     */
+    /**
+     * @cfg {DataReader} errorReader
+     * An Roo.data.DataReader (e.g. {@link Roo.data.XmlReader}) to be used to read data when reading validation errors on "submit" actions.
+     * This is completely optional as there is built-in support for processing JSON.
+     */
+    /**
+     * @cfg {String} url
+     * The URL to use for form actions if one isn't supplied in the action options.
+     */
+    /**
+     * @cfg {Boolean} fileUpload
+     * Set to true if this form is a file upload.
+     */
+    /**
+     * @cfg {Object} baseParams
+     * Parameters to pass with all requests. e.g. baseParams: {id: '123', foo: 'bar'}.
+     */
+    /**
+     * @cfg {Number} timeout Timeout for form actions in seconds (default is 30 seconds).
+     */
+    timeout: 30,
+
+    // private
+    activeAction : null,
+
+    /**
+     * @cfg {Boolean} trackResetOnLoad If set to true, form.reset() resets to the last loaded
+     * or setValues() data instead of when the form was first created.
+     */
+    trackResetOnLoad : false,
+
+    /**
+     * By default wait messages are displayed with Roo.MessageBox.wait. You can target a specific
+     * element by passing it or its id or mask the form itself by passing in true.
+     * @type Mixed
+     */
+    waitMsgTarget : undefined,
+
+    // private
+    initEl : function(el){
+        this.el = Roo.get(el);
+        this.id = this.el.id || Roo.id();
+        this.el.on('submit', this.onSubmit, this);
+        this.el.addClass('x-form');
+    },
+
+    // private
+    onSubmit : function(e){
+        e.stopEvent();
+    },
+
+    /**
+     * Returns true if client-side validation on the form is successful.
+     * @return Boolean
+     */
+    isValid : function(){
+        var valid = true;
+        this.items.each(function(f){
+           if(!f.validate()){
+               valid = false;
+           }
+        });
+        return valid;
+    },
+
+    /**
+     * Returns true if any fields in this form have changed since their original load.
+     * @return Boolean
+     */
+    isDirty : function(){
+        var dirty = false;
+        this.items.each(function(f){
+           if(f.isDirty()){
+               dirty = true;
+               return false;
+           }
+        });
+        return dirty;
+    },
+
+    /**
+     * Performs a predefined action (submit or load) or custom actions you define on this form.
+     * @param {String} actionName The name of the action type
+     * @param {Object} options (optional) The options to pass to the action.  All of the config options listed
+     * below are supported by both the submit and load actions unless otherwise noted (custom actions could also
+     * accept other config options):
+     * <pre>
+Property          Type             Description
+----------------  ---------------  ----------------------------------------------------------------------------------
+url               String           The url for the action (defaults to the form's url)
+method            String           The form method to use (defaults to the form's method, or POST if not defined)
+params            String/Object    The params to pass (defaults to the form's baseParams, or none if not defined)
+clientValidation  Boolean          Applies to submit only.  Pass true to call form.isValid() prior to posting to
+                                   validate the form on the client (defaults to false)
+     * </pre>
+     * @return {BasicForm} this
+     */
+    doAction : function(action, options){
+        if(typeof action == 'string'){
+            action = new Roo.form.Action.ACTION_TYPES[action](this, options);
+        }
+        if(this.fireEvent('beforeaction', this, action) !== false){
+            this.beforeAction(action);
+            action.run.defer(100, action);
+        }
+        return this;
+    },
+
+    /**
+     * Shortcut to do a submit action.
+     * @param {Object} options The options to pass to the action (see {@link #doAction} for details)
+     * @return {BasicForm} this
+     */
+    submit : function(options){
+        this.doAction('submit', options);
+        return this;
+    },
+
+    /**
+     * Shortcut to do a load action.
+     * @param {Object} options The options to pass to the action (see {@link #doAction} for details)
+     * @return {BasicForm} this
+     */
+    load : function(options){
+        this.doAction('load', options);
+        return this;
+    },
+
+    /**
+     * Persists the values in this form into the passed Roo.data.Record object in a beginEdit/endEdit block.
+     * @param {Record} record The record to edit
+     * @return {BasicForm} this
+     */
+    updateRecord : function(record){
+        record.beginEdit();
+        var fs = record.fields;
+        fs.each(function(f){
+            var field = this.findField(f.name);
+            if(field){
+                record.set(f.name, field.getValue());
+            }
+        }, this);
+        record.endEdit();
+        return this;
+    },
+
+    /**
+     * Loads an Roo.data.Record into this form.
+     * @param {Record} record The record to load
+     * @return {BasicForm} this
+     */
+    loadRecord : function(record){
+        this.setValues(record.data);
+        return this;
+    },
+
+    // private
+    beforeAction : function(action){
+        var o = action.options;
+        if(o.waitMsg){
+            if(this.waitMsgTarget === true){
+                this.el.mask(o.waitMsg, 'x-mask-loading');
+            }else if(this.waitMsgTarget){
+                this.waitMsgTarget = Roo.get(this.waitMsgTarget);
+                this.waitMsgTarget.mask(o.waitMsg, 'x-mask-loading');
+            }else{
+                Roo.MessageBox.wait(o.waitMsg, o.waitTitle || this.waitTitle || 'Please Wait...');
+            }
+        }
+    },
+
+    // private
+    afterAction : function(action, success){
+        this.activeAction = null;
+        var o = action.options;
+        if(o.waitMsg){
+            if(this.waitMsgTarget === true){
+                this.el.unmask();
+            }else if(this.waitMsgTarget){
+                this.waitMsgTarget.unmask();
+            }else{
+                Roo.MessageBox.updateProgress(1);
+                Roo.MessageBox.hide();
+            }
+        }
+        if(success){
+            if(o.reset){
+                this.reset();
+            }
+            Roo.callback(o.success, o.scope, [this, action]);
+            this.fireEvent('actioncomplete', this, action);
+        }else{
+            Roo.callback(o.failure, o.scope, [this, action]);
+            this.fireEvent('actionfailed', this, action);
+        }
+    },
+
+    /**
+     * Find a Roo.form.Field in this form by id, dataIndex, name or hiddenName
+     * @param {String} id The value to search for
+     * @return Field
+     */
+    findField : function(id){
+        var field = this.items.get(id);
+        if(!field){
+            this.items.each(function(f){
+                if(f.isFormField && (f.dataIndex == id || f.id == id || f.getName() == id)){
+                    field = f;
+                    return false;
+                }
+            });
+        }
+        return field || null;
+    },
+
+
+    /**
+     * Mark fields in this form invalid in bulk.
+     * @param {Array/Object} errors Either an array in the form [{id:'fieldId', msg:'The message'},...] or an object hash of {id: msg, id2: msg2}
+     * @return {BasicForm} this
+     */
+    markInvalid : function(errors){
+        if(errors instanceof Array){
+            for(var i = 0, len = errors.length; i < len; i++){
+                var fieldError = errors[i];
+                var f = this.findField(fieldError.id);
+                if(f){
+                    f.markInvalid(fieldError.msg);
+                }
+            }
+        }else{
+            var field, id;
+            for(id in errors){
+                if(typeof errors[id] != 'function' && (field = this.findField(id))){
+                    field.markInvalid(errors[id]);
+                }
+            }
+        }
+        return this;
+    },
+
+    /**
+     * Set values for fields in this form in bulk.
+     * @param {Array/Object} values Either an array in the form [{id:'fieldId', value:'foo'},...] or an object hash of {id: value, id2: value2}
+     * @return {BasicForm} this
+     */
+    setValues : function(values){
+        if(values instanceof Array){ // array of objects
+            for(var i = 0, len = values.length; i < len; i++){
+                var v = values[i];
+                var f = this.findField(v.id);
+                if(f){
+                    f.setValue(v.value);
+                    if(this.trackResetOnLoad){
+                        f.originalValue = f.getValue();
+                    }
+                }
+            }
+        }else{ // object hash
+            var field, id;
+            for(id in values){
+                if(typeof values[id] != 'function' && (field = this.findField(id))){
+                    
+                    if (field.setFromData && 
+                        field.valueField && 
+                        field.displayField &&
+                        // combos' with local stores can 
+                        // be queried via setValue()
+                        // to set their value..
+                        (field.store && !field.store.isLocal)
+                        ) {
+                        // it's a combo
+                        var sd = { };
+                        sd[field.valueField] = typeof(values[field.hiddenName]) == 'undefined' ? '' : values[field.hiddenName];
+                        sd[field.displayField] = typeof(values[field.name]) == 'undefined' ? '' : values[field.name];
+                        field.setFromData(sd);
+                        
+                    } else {
+                        field.setValue(values[id]);
+                    }
+                    
+                    
+                    if(this.trackResetOnLoad){
+                        field.originalValue = field.getValue();
+                    }
+                }
+            }
+        }
+        return this;
+    },
+
+    /**
+     * Returns the fields in this form as an object with key/value pairs. If multiple fields exist with the same name
+     * they are returned as an array.
+     * @param {Boolean} asString
+     * @return {Object}
+     */
+    getValues : function(asString){
+        var fs = Roo.lib.Ajax.serializeForm(this.el.dom);
+        if(asString === true){
+            return fs;
+        }
+        return Roo.urlDecode(fs);
+    },
+
+    /**
+     * Clears all invalid messages in this form.
+     * @return {BasicForm} this
+     */
+    clearInvalid : function(){
+        this.items.each(function(f){
+           f.clearInvalid();
+        });
+        return this;
+    },
+
+    /**
+     * Resets this form.
+     * @return {BasicForm} this
+     */
+    reset : function(){
+        this.items.each(function(f){
+            f.reset();
+        });
+        return this;
+    },
+
+    /**
+     * Add Roo.form components to this form.
+     * @param {Field} field1
+     * @param {Field} field2 (optional)
+     * @param {Field} etc (optional)
+     * @return {BasicForm} this
+     */
+    add : function(){
+        this.items.addAll(Array.prototype.slice.call(arguments, 0));
+        return this;
+    },
+
+
+    /**
+     * Removes a field from the items collection (does NOT remove its markup).
+     * @param {Field} field
+     * @return {BasicForm} this
+     */
+    remove : function(field){
+        this.items.remove(field);
+        return this;
+    },
+
+    /**
+     * Looks at the fields in this form, checks them for an id attribute,
+     * and calls applyTo on the existing dom element with that id.
+     * @return {BasicForm} this
+     */
+    render : function(){
+        this.items.each(function(f){
+            if(f.isFormField && !f.rendered && document.getElementById(f.id)){ // if the element exists
+                f.applyTo(f.id);
+            }
+        });
+        return this;
+    },
+
+    /**
+     * Calls {@link Ext#apply} for all fields in this form with the passed object.
+     * @param {Object} values
+     * @return {BasicForm} this
+     */
+    applyToFields : function(o){
+        this.items.each(function(f){
+           Roo.apply(f, o);
+        });
+        return this;
+    },
+
+    /**
+     * Calls {@link Ext#applyIf} for all field in this form with the passed object.
+     * @param {Object} values
+     * @return {BasicForm} this
+     */
+    applyIfToFields : function(o){
+        this.items.each(function(f){
+           Roo.applyIf(f, o);
+        });
+        return this;
+    }
+});
+
+// back compat
+Roo.BasicForm = Roo.form.BasicForm;
