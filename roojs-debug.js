@@ -19504,4 +19504,1088 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
         this.modified = [];
         this.fireEvent('metachange', this, this.reader.meta);
     }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.data.SimpleStore
+ * @extends Roo.data.Store
+ * Small helper class to make creating Stores from Array data easier.
+ * @cfg {Number} id The array index of the record id. Leave blank to auto generate ids.
+ * @cfg {Array} fields An array of field definition objects, or field name strings.
+ * @cfg {Array} data The multi-dimensional array of data
+ * @constructor
+ * @param {Object} config
+ */
+Roo.data.SimpleStore = function(config){
+    Roo.data.SimpleStore.superclass.constructor.call(this, {
+        isLocal : true,
+        reader: new Roo.data.ArrayReader({
+                id: config.id
+            },
+            Roo.data.Record.create(config.fields)
+        ),
+        proxy : new Roo.data.MemoryProxy(config.data)
+    });
+    this.load();
+};
+Roo.extend(Roo.data.SimpleStore, Roo.data.Store);/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+/**
+ * @extends Roo.data.Store
+ * @class Roo.data.JsonStore
+ * Small helper class to make creating Stores for JSON data easier. <br/>
+<pre><code>
+var store = new Roo.data.JsonStore({
+    url: 'get-images.php',
+    root: 'images',
+    fields: ['name', 'url', {name:'size', type: 'float'}, {name:'lastmod', type:'date'}]
+});
+</code></pre>
+ * <b>Note: Although they are not listed, this class inherits all of the config options of Store,
+ * JsonReader and HttpProxy (unless inline data is provided).</b>
+ * @cfg {Array} fields An array of field definition objects, or field name strings.
+ * @constructor
+ * @param {Object} config
+ */
+Roo.data.JsonStore = function(c){
+    Roo.data.JsonStore.superclass.constructor.call(this, Roo.apply(c, {
+        proxy: !c.data ? new Roo.data.HttpProxy({url: c.url}) : undefined,
+        reader: new Roo.data.JsonReader(c, c.fields)
+    }));
+};
+Roo.extend(Roo.data.JsonStore, Roo.data.Store);/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+ 
+Roo.data.Field = function(config){
+    if(typeof config == "string"){
+        config = {name: config};
+    }
+    Roo.apply(this, config);
+    
+    if(!this.type){
+        this.type = "auto";
+    }
+    
+    var st = Roo.data.SortTypes;
+    // named sortTypes are supported, here we look them up
+    if(typeof this.sortType == "string"){
+        this.sortType = st[this.sortType];
+    }
+    
+    // set default sortType for strings and dates
+    if(!this.sortType){
+        switch(this.type){
+            case "string":
+                this.sortType = st.asUCString;
+                break;
+            case "date":
+                this.sortType = st.asDate;
+                break;
+            default:
+                this.sortType = st.none;
+        }
+    }
+
+    // define once
+    var stripRe = /[\$,%]/g;
+
+    // prebuilt conversion function for this field, instead of
+    // switching every time we're reading a value
+    if(!this.convert){
+        var cv, dateFormat = this.dateFormat;
+        switch(this.type){
+            case "":
+            case "auto":
+            case undefined:
+                cv = function(v){ return v; };
+                break;
+            case "string":
+                cv = function(v){ return (v === undefined || v === null) ? '' : String(v); };
+                break;
+            case "int":
+                cv = function(v){
+                    return v !== undefined && v !== null && v !== '' ?
+                           parseInt(String(v).replace(stripRe, ""), 10) : '';
+                    };
+                break;
+            case "float":
+                cv = function(v){
+                    return v !== undefined && v !== null && v !== '' ?
+                           parseFloat(String(v).replace(stripRe, ""), 10) : ''; 
+                    };
+                break;
+            case "bool":
+            case "boolean":
+                cv = function(v){ return v === true || v === "true" || v == 1; };
+                break;
+            case "date":
+                cv = function(v){
+                    if(!v){
+                        return '';
+                    }
+                    if(v instanceof Date){
+                        return v;
+                    }
+                    if(dateFormat){
+                        if(dateFormat == "timestamp"){
+                            return new Date(v*1000);
+                        }
+                        return Date.parseDate(v, dateFormat);
+                    }
+                    var parsed = Date.parse(v);
+                    return parsed ? new Date(parsed) : null;
+                };
+             break;
+            
+        }
+        this.convert = cv;
+    }
+};
+
+Roo.data.Field.prototype = {
+    dateFormat: null,
+    defaultValue: "",
+    mapping: null,
+    sortType : null,
+    sortDir : "ASC"
+};/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+// Base class for reading structured data from a data source.  This class is intended to be
+// extended (see ArrayReader, JsonReader and XmlReader) and should not be created directly.
+
+/**
+ * @class Roo.data.DataReader
+ * Base class for reading structured data from a data source.  This class is intended to be
+ * extended (see {Roo.data.ArrayReader}, {Roo.data.JsonReader} and {Roo.data.XmlReader}) and should not be created directly.
+ */
+
+Roo.data.DataReader = function(meta, recordType){
+    
+    this.meta = meta;
+    
+    this.recordType = recordType instanceof Array ? 
+        Roo.data.Record.create(recordType) : recordType;
+};
+
+Roo.data.DataReader.prototype = {
+     /**
+     * Create an empty record
+     * @param {Object} data (optional) - overlay some values
+     * @return {Roo.data.Record} record created.
+     */
+    newRow :  function(d) {
+        var da =  {};
+        this.recordType.prototype.fields.each(function(c) {
+            da[c.name] = '';
+        });
+        return new this.recordType(Roo.apply(da, d));
+    }
+    
+};/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.data.DataProxy
+ * @extends Roo.data.Observable
+ * This class is an abstract base class for implementations which provide retrieval of
+ * unformatted data objects.<br>
+ * <p>
+ * DataProxy implementations are usually used in conjunction with an implementation of Roo.data.DataReader
+ * (of the appropriate type which knows how to parse the data object) to provide a block of
+ * {@link Roo.data.Records} to an {@link Roo.data.Store}.<br>
+ * <p>
+ * Custom implementations must implement the load method as described in
+ * {@link Roo.data.HttpProxy#load}.
+ */
+Roo.data.DataProxy = function(){
+    this.addEvents({
+        /**
+         * @event beforeload
+         * Fires before a network request is made to retrieve a data object.
+         * @param {Object} This DataProxy object.
+         * @param {Object} params The params parameter to the load function.
+         */
+        beforeload : true,
+        /**
+         * @event load
+         * Fires before the load method's callback is called.
+         * @param {Object} This DataProxy object.
+         * @param {Object} o The data object.
+         * @param {Object} arg The callback argument object passed to the load function.
+         */
+        load : true,
+        /**
+         * @event loadexception
+         * Fires if an Exception occurs during data retrieval.
+         * @param {Object} This DataProxy object.
+         * @param {Object} o The data object.
+         * @param {Object} arg The callback argument object passed to the load function.
+         * @param {Object} e The Exception.
+         */
+        loadexception : true
+    });
+    Roo.data.DataProxy.superclass.constructor.call(this);
+};
+
+Roo.extend(Roo.data.DataProxy, Roo.util.Observable);
+
+    /**
+     * @cfg {void} listeners (Not available) Constructor blocks listeners from being set
+     */
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+/**
+ * @class Roo.data.MemoryProxy
+ * An implementation of Roo.data.DataProxy that simply passes the data specified in its constructor
+ * to the Reader when its load method is called.
+ * @constructor
+ * @param {Object} data The data object which the Reader uses to construct a block of Roo.data.Records.
+ */
+Roo.data.MemoryProxy = function(data){
+    if (data.data) {
+        data = data.data;
+    }
+    Roo.data.MemoryProxy.superclass.constructor.call(this);
+    this.data = data;
+};
+
+Roo.extend(Roo.data.MemoryProxy, Roo.data.DataProxy, {
+    /**
+     * Load data from the requested source (in this case an in-memory
+     * data object passed to the constructor), read the data object into
+     * a block of Roo.data.Records using the passed Roo.data.DataReader implementation, and
+     * process that block using the passed callback.
+     * @param {Object} params This parameter is not used by the MemoryProxy class.
+     * @param {Roo.data.DataReader} reader The Reader object which converts the data
+     * object into a block of Roo.data.Records.
+     * @param {Function} callback The function into which to pass the block of Roo.data.records.
+     * The function must be passed <ul>
+     * <li>The Record block object</li>
+     * <li>The "arg" argument from the load function</li>
+     * <li>A boolean success indicator</li>
+     * </ul>
+     * @param {Object} scope The scope in which to call the callback
+     * @param {Object} arg An optional argument which is passed to the callback as its second parameter.
+     */
+    load : function(params, reader, callback, scope, arg){
+        params = params || {};
+        var result;
+        try {
+            result = reader.readRecords(this.data);
+        }catch(e){
+            this.fireEvent("loadexception", this, arg, null, e);
+            callback.call(scope, null, arg, false);
+            return;
+        }
+        callback.call(scope, result, arg, true);
+    },
+    
+    // private
+    update : function(params, records){
+        
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+/**
+ * @class Roo.data.HttpProxy
+ * @extends Roo.data.DataProxy
+ * An implementation of {@link Roo.data.DataProxy} that reads a data object from an {@link Roo.data.Connection} object
+ * configured to reference a certain URL.<br><br>
+ * <p>
+ * <em>Note that this class cannot be used to retrieve data from a domain other than the domain
+ * from which the running page was served.<br><br>
+ * <p>
+ * For cross-domain access to remote data, use an {@link Roo.data.ScriptTagProxy}.</em><br><br>
+ * <p>
+ * Be aware that to enable the browser to parse an XML document, the server must set
+ * the Content-Type header in the HTTP response to "text/xml".
+ * @constructor
+ * @param {Object} conn Connection config options to add to each request (e.g. {url: 'foo.php'} or
+ * an {@link Roo.data.Connection} object.  If a Connection config is passed, the singleton {@link Roo.Ajax} object
+ * will be used to make the request.
+ */
+Roo.data.HttpProxy = function(conn){
+    Roo.data.HttpProxy.superclass.constructor.call(this);
+    // is conn a conn config or a real conn?
+    this.conn = conn;
+    this.useAjax = !conn || !conn.events;
+  
+};
+
+Roo.extend(Roo.data.HttpProxy, Roo.data.DataProxy, {
+    // thse are take from connection...
+    
+    /**
+     * @cfg {String} url (Optional) The default URL to be used for requests to the server. (defaults to undefined)
+     */
+    /**
+     * @cfg {Object} extraParams (Optional) An object containing properties which are used as
+     * extra parameters to each request made by this object. (defaults to undefined)
+     */
+    /**
+     * @cfg {Object} defaultHeaders (Optional) An object containing request headers which are added
+     *  to each request made by this object. (defaults to undefined)
+     */
+    /**
+     * @cfg {String} method (Optional) The default HTTP method to be used for requests. (defaults to undefined; if not set but parms are present will use POST, otherwise GET)
+     */
+    /**
+     * @cfg {Number} timeout (Optional) The timeout in milliseconds to be used for requests. (defaults to 30000)
+     */
+     /**
+     * @cfg {Boolean} autoAbort (Optional) Whether this request should abort any pending requests. (defaults to false)
+     * @type Boolean
+     */
+  
+
+    /**
+     * @cfg {Boolean} disableCaching (Optional) True to add a unique cache-buster param to GET requests. (defaults to true)
+     * @type Boolean
+     */
+    /**
+     * Return the {@link Roo.data.Connection} object being used by this Proxy.
+     * @return {Connection} The Connection object. This object may be used to subscribe to events on
+     * a finer-grained basis than the DataProxy events.
+     */
+    getConnection : function(){
+        return this.useAjax ? Roo.Ajax : this.conn;
+    },
+
+    /**
+     * Load data from the configured {@link Roo.data.Connection}, read the data object into
+     * a block of Roo.data.Records using the passed {@link Roo.data.DataReader} implementation, and
+     * process that block using the passed callback.
+     * @param {Object} params An object containing properties which are to be used as HTTP parameters
+     * for the request to the remote server.
+     * @param {Roo.data.DataReader} reader The Reader object which converts the data
+     * object into a block of Roo.data.Records.
+     * @param {Function} callback The function into which to pass the block of Roo.data.Records.
+     * The function must be passed <ul>
+     * <li>The Record block object</li>
+     * <li>The "arg" argument from the load function</li>
+     * <li>A boolean success indicator</li>
+     * </ul>
+     * @param {Object} scope The scope in which to call the callback
+     * @param {Object} arg An optional argument which is passed to the callback as its second parameter.
+     */
+    load : function(params, reader, callback, scope, arg){
+        if(this.fireEvent("beforeload", this, params) !== false){
+            var  o = {
+                params : params || {},
+                request: {
+                    callback : callback,
+                    scope : scope,
+                    arg : arg
+                },
+                reader: reader,
+                callback : this.loadResponse,
+                scope: this
+            };
+            if(this.useAjax){
+                Roo.applyIf(o, this.conn);
+                if(this.activeRequest){
+                    Roo.Ajax.abort(this.activeRequest);
+                }
+                this.activeRequest = Roo.Ajax.request(o);
+            }else{
+                this.conn.request(o);
+            }
+        }else{
+            callback.call(scope||this, null, arg, false);
+        }
+    },
+
+    // private
+    loadResponse : function(o, success, response){
+        delete this.activeRequest;
+        if(!success){
+            this.fireEvent("loadexception", this, o, response);
+            o.request.callback.call(o.request.scope, null, o.request.arg, false);
+            return;
+        }
+        var result;
+        try {
+            result = o.reader.read(response);
+        }catch(e){
+            this.fireEvent("loadexception", this, o, response, e);
+            o.request.callback.call(o.request.scope, null, o.request.arg, false);
+            return;
+        }
+        
+        this.fireEvent("load", this, o, o.request.arg);
+        o.request.callback.call(o.request.scope, result, o.request.arg, true);
+    },
+
+    // private
+    update : function(dataSet){
+
+    },
+
+    // private
+    updateResponse : function(dataSet){
+
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.data.ScriptTagProxy
+ * An implementation of Roo.data.DataProxy that reads a data object from a URL which may be in a domain
+ * other than the originating domain of the running page.<br><br>
+ * <p>
+ * <em>Note that if you are retrieving data from a page that is in a domain that is NOT the same as the originating domain
+ * of the running page, you must use this class, rather than DataProxy.</em><br><br>
+ * <p>
+ * The content passed back from a server resource requested by a ScriptTagProxy is executable JavaScript
+ * source code that is used as the source inside a &lt;script> tag.<br><br>
+ * <p>
+ * In order for the browser to process the returned data, the server must wrap the data object
+ * with a call to a callback function, the name of which is passed as a parameter by the ScriptTagProxy.
+ * Below is a Java example for a servlet which returns data for either a ScriptTagProxy, or an HttpProxy
+ * depending on whether the callback name was passed:
+ * <p>
+ * <pre><code>
+boolean scriptTag = false;
+String cb = request.getParameter("callback");
+if (cb != null) {
+    scriptTag = true;
+    response.setContentType("text/javascript");
+} else {
+    response.setContentType("application/x-json");
+}
+Writer out = response.getWriter();
+if (scriptTag) {
+    out.write(cb + "(");
+}
+out.print(dataBlock.toJsonString());
+if (scriptTag) {
+    out.write(");");
+}
+</pre></code>
+ *
+ * @constructor
+ * @param {Object} config A configuration object.
+ */
+Roo.data.ScriptTagProxy = function(config){
+    Roo.data.ScriptTagProxy.superclass.constructor.call(this);
+    Roo.apply(this, config);
+    this.head = document.getElementsByTagName("head")[0];
+};
+
+Roo.data.ScriptTagProxy.TRANS_ID = 1000;
+
+Roo.extend(Roo.data.ScriptTagProxy, Roo.data.DataProxy, {
+    /**
+     * @cfg {String} url The URL from which to request the data object.
+     */
+    /**
+     * @cfg {Number} timeout (Optional) The number of milliseconds to wait for a response. Defaults to 30 seconds.
+     */
+    timeout : 30000,
+    /**
+     * @cfg {String} callbackParam (Optional) The name of the parameter to pass to the server which tells
+     * the server the name of the callback function set up by the load call to process the returned data object.
+     * Defaults to "callback".<p>The server-side processing must read this parameter value, and generate
+     * javascript output which calls this named function passing the data object as its only parameter.
+     */
+    callbackParam : "callback",
+    /**
+     *  @cfg {Boolean} nocache (Optional) Defaults to true. Disable cacheing by adding a unique parameter
+     * name to the request.
+     */
+    nocache : true,
+
+    /**
+     * Load data from the configured URL, read the data object into
+     * a block of Roo.data.Records using the passed Roo.data.DataReader implementation, and
+     * process that block using the passed callback.
+     * @param {Object} params An object containing properties which are to be used as HTTP parameters
+     * for the request to the remote server.
+     * @param {Roo.data.DataReader} reader The Reader object which converts the data
+     * object into a block of Roo.data.Records.
+     * @param {Function} callback The function into which to pass the block of Roo.data.Records.
+     * The function must be passed <ul>
+     * <li>The Record block object</li>
+     * <li>The "arg" argument from the load function</li>
+     * <li>A boolean success indicator</li>
+     * </ul>
+     * @param {Object} scope The scope in which to call the callback
+     * @param {Object} arg An optional argument which is passed to the callback as its second parameter.
+     */
+    load : function(params, reader, callback, scope, arg){
+        if(this.fireEvent("beforeload", this, params) !== false){
+
+            var p = Roo.urlEncode(Roo.apply(params, this.extraParams));
+
+            var url = this.url;
+            url += (url.indexOf("?") != -1 ? "&" : "?") + p;
+            if(this.nocache){
+                url += "&_dc=" + (new Date().getTime());
+            }
+            var transId = ++Roo.data.ScriptTagProxy.TRANS_ID;
+            var trans = {
+                id : transId,
+                cb : "stcCallback"+transId,
+                scriptId : "stcScript"+transId,
+                params : params,
+                arg : arg,
+                url : url,
+                callback : callback,
+                scope : scope,
+                reader : reader
+            };
+            var conn = this;
+
+            window[trans.cb] = function(o){
+                conn.handleResponse(o, trans);
+            };
+
+            url += String.format("&{0}={1}", this.callbackParam, trans.cb);
+
+            if(this.autoAbort !== false){
+                this.abort();
+            }
+
+            trans.timeoutId = this.handleFailure.defer(this.timeout, this, [trans]);
+
+            var script = document.createElement("script");
+            script.setAttribute("src", url);
+            script.setAttribute("type", "text/javascript");
+            script.setAttribute("id", trans.scriptId);
+            this.head.appendChild(script);
+
+            this.trans = trans;
+        }else{
+            callback.call(scope||this, null, arg, false);
+        }
+    },
+
+    // private
+    isLoading : function(){
+        return this.trans ? true : false;
+    },
+
+    /**
+     * Abort the current server request.
+     */
+    abort : function(){
+        if(this.isLoading()){
+            this.destroyTrans(this.trans);
+        }
+    },
+
+    // private
+    destroyTrans : function(trans, isLoaded){
+        this.head.removeChild(document.getElementById(trans.scriptId));
+        clearTimeout(trans.timeoutId);
+        if(isLoaded){
+            window[trans.cb] = undefined;
+            try{
+                delete window[trans.cb];
+            }catch(e){}
+        }else{
+            // if hasn't been loaded, wait for load to remove it to prevent script error
+            window[trans.cb] = function(){
+                window[trans.cb] = undefined;
+                try{
+                    delete window[trans.cb];
+                }catch(e){}
+            };
+        }
+    },
+
+    // private
+    handleResponse : function(o, trans){
+        this.trans = false;
+        this.destroyTrans(trans, true);
+        var result;
+        try {
+            result = trans.reader.readRecords(o);
+        }catch(e){
+            this.fireEvent("loadexception", this, o, trans.arg, e);
+            trans.callback.call(trans.scope||window, null, trans.arg, false);
+            return;
+        }
+        this.fireEvent("load", this, o, trans.arg);
+        trans.callback.call(trans.scope||window, result, trans.arg, true);
+    },
+
+    // private
+    handleFailure : function(trans){
+        this.trans = false;
+        this.destroyTrans(trans, false);
+        this.fireEvent("loadexception", this, null, trans.arg);
+        trans.callback.call(trans.scope||window, null, trans.arg, false);
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.data.JsonReader
+ * @extends Roo.data.DataReader
+ * Data reader class to create an Array of Roo.data.Record objects from a JSON response
+ * based on mappings in a provided Roo.data.Record constructor.
+ * <p>
+ * Example code:
+ * <pre><code>
+var RecordDef = Roo.data.Record.create([
+    {name: 'name', mapping: 'name'},     // "mapping" property not needed if it's the same as "name"
+    {name: 'occupation'}                 // This field will use "occupation" as the mapping.
+]);
+var myReader = new Roo.data.JsonReader({
+    totalProperty: "results",    // The property which contains the total dataset size (optional)
+    root: "rows",                // The property which contains an Array of row objects
+    id: "id"                     // The property within each row object that provides an ID for the record (optional)
+}, RecordDef);
+</code></pre>
+ * <p>
+ * This would consume a JSON file like this:
+ * <pre><code>
+{ 'results': 2, 'rows': [
+    { 'id': 1, 'name': 'Bill', occupation: 'Gardener' },
+    { 'id': 2, 'name': 'Ben', occupation: 'Horticulturalist' } ]
+}
+</code></pre>
+ * @cfg {String} totalProperty Name of the property from which to retrieve the total number of records
+ * in the dataset. This is only needed if the whole dataset is not passed in one go, but is being
+ * paged from the remote server.
+ * @cfg {String} successProperty Name of the property from which to retrieve the success attribute used by forms.
+ * @cfg {String} root name of the property which contains the Array of row objects.
+ * @cfg {String} id Name of the property within a row object that contains a record identifier value.
+ * @constructor
+ * Create a new JsonReader
+ * @param {Object} meta Metadata configuration options
+ * @param {Object} recordType Either an Array of field definition objects,
+ * or an {@link Roo.data.Record} object created using {@link Roo.data.Record#create}.
+ */
+Roo.data.JsonReader = function(meta, recordType){
+    
+    meta = meta || {};
+    // set some defaults:
+    Roo.applyIf(meta, {
+        totalProperty: 'total',
+        successProperty : 'success',
+        root : 'data',
+        id : 'id'
+    });
+    
+    Roo.data.JsonReader.superclass.constructor.call(this, meta, recordType||meta.fields);
+};
+Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
+    /**
+     * This method is only used by a DataProxy which has retrieved data from a remote server.
+     * @param {Object} response The XHR object which contains the JSON data in its responseText.
+     * @return {Object} data A data block which is used by an Roo.data.Store object as
+     * a cache of Roo.data.Records.
+     */
+    read : function(response){
+        var json = response.responseText;
+        /* eval:var:o */
+        var o = eval("("+json+")");
+        if(!o) {
+            throw {message: "JsonReader.read: Json object not found"};
+        }
+        
+        if(o.metaData){
+            delete this.ef;
+            this.meta = o.metaData;
+            this.recordType = Roo.data.Record.create(o.metaData.fields);
+            this.onMetaChange(this.meta, this.recordType, o);
+        }
+        return this.readRecords(o);
+    },
+
+    // private function a store will implement
+    onMetaChange : function(meta, recordType, o){
+
+    },
+
+    /**
+	 * @ignore
+	 */
+    simpleAccess: function(obj, subsc) {
+    	return obj[subsc];
+    },
+
+	/**
+	 * @ignore
+	 */
+    getJsonAccessor: function(){
+        var re = /[\[\.]/;
+        return function(expr) {
+            try {
+                return(re.test(expr))
+                    ? new Function("obj", "return obj." + expr)
+                    : function(obj){
+                        return obj[expr];
+                    };
+            } catch(e){}
+            return Roo.emptyFn;
+        };
+    }(),
+
+    /**
+     * Create a data block containing Roo.data.Records from an XML document.
+     * @param {Object} o An object which contains an Array of row objects in the property specified
+     * in the config as 'root, and optionally a property, specified in the config as 'totalProperty'
+     * which contains the total size of the dataset.
+     * @return {Object} data A data block which is used by an Roo.data.Store object as
+     * a cache of Roo.data.Records.
+     */
+    readRecords : function(o){
+        /**
+         * After any data loads, the raw JSON data is available for further custom processing.
+         * @type Object
+         */
+        this.jsonData = o;
+        var s = this.meta, Record = this.recordType,
+            f = Record.prototype.fields, fi = f.items, fl = f.length;
+
+//      Generate extraction functions for the totalProperty, the root, the id, and for each field
+        if (!this.ef) {
+            if(s.totalProperty) {
+	            this.getTotal = this.getJsonAccessor(s.totalProperty);
+	        }
+	        if(s.successProperty) {
+	            this.getSuccess = this.getJsonAccessor(s.successProperty);
+	        }
+	        this.getRoot = s.root ? this.getJsonAccessor(s.root) : function(p){return p;};
+	        if (s.id) {
+	        	var g = this.getJsonAccessor(s.id);
+	        	this.getId = function(rec) {
+	        		var r = g(rec);
+		        	return (r === undefined || r === "") ? null : r;
+	        	};
+	        } else {
+	        	this.getId = function(){return null;};
+	        }
+            this.ef = [];
+            for(var i = 0; i < fl; i++){
+                f = fi[i];
+                var map = (f.mapping !== undefined && f.mapping !== null) ? f.mapping : f.name;
+                this.ef[i] = this.getJsonAccessor(map);
+            }
+        }
+
+    	var root = this.getRoot(o), c = root.length, totalRecords = c, success = true;
+    	if(s.totalProperty){
+            var v = parseInt(this.getTotal(o), 10);
+            if(!isNaN(v)){
+                totalRecords = v;
+            }
+        }
+        if(s.successProperty){
+            var v = this.getSuccess(o);
+            if(v === false || v === 'false'){
+                success = false;
+            }
+        }
+        var records = [];
+	    for(var i = 0; i < c; i++){
+		    var n = root[i];
+	        var values = {};
+	        var id = this.getId(n);
+	        for(var j = 0; j < fl; j++){
+	            f = fi[j];
+                var v = this.ef[j](n);
+                values[f.name] = f.convert((v !== undefined) ? v : f.defaultValue);
+	        }
+	        var record = new Record(values, id);
+	        record.json = n;
+	        records[i] = record;
+	    }
+	    return {
+	        success : success,
+	        records : records,
+	        totalRecords : totalRecords
+	    };
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.data.XmlReader
+ * @extends Roo.data.DataReader
+ * Data reader class to create an Array of {@link Roo.data.Record} objects from an XML document
+ * based on mappings in a provided Roo.data.Record constructor.<br><br>
+ * <p>
+ * <em>Note that in order for the browser to parse a returned XML document, the Content-Type
+ * header in the HTTP response must be set to "text/xml".</em>
+ * <p>
+ * Example code:
+ * <pre><code>
+var RecordDef = Roo.data.Record.create([
+   {name: 'name', mapping: 'name'},     // "mapping" property not needed if it's the same as "name"
+   {name: 'occupation'}                 // This field will use "occupation" as the mapping.
+]);
+var myReader = new Roo.data.XmlReader({
+   totalRecords: "results", // The element which contains the total dataset size (optional)
+   record: "row",           // The repeated element which contains row information
+   id: "id"                 // The element within the row that provides an ID for the record (optional)
+}, RecordDef);
+</code></pre>
+ * <p>
+ * This would consume an XML file like this:
+ * <pre><code>
+&lt;?xml?>
+&lt;dataset>
+ &lt;results>2&lt;/results>
+ &lt;row>
+   &lt;id>1&lt;/id>
+   &lt;name>Bill&lt;/name>
+   &lt;occupation>Gardener&lt;/occupation>
+ &lt;/row>
+ &lt;row>
+   &lt;id>2&lt;/id>
+   &lt;name>Ben&lt;/name>
+   &lt;occupation>Horticulturalist&lt;/occupation>
+ &lt;/row>
+&lt;/dataset>
+</code></pre>
+ * @cfg {String} totalRecords The DomQuery path from which to retrieve the total number of records
+ * in the dataset. This is only needed if the whole dataset is not passed in one go, but is being
+ * paged from the remote server.
+ * @cfg {String} record The DomQuery path to the repeated element which contains record information.
+ * @cfg {String} success The DomQuery path to the success attribute used by forms.
+ * @cfg {String} id The DomQuery path relative from the record element to the element that contains
+ * a record identifier value.
+ * @constructor
+ * Create a new XmlReader
+ * @param {Object} meta Metadata configuration options
+ * @param {Mixed} recordType The definition of the data record type to produce.  This can be either a valid
+ * Record subclass created with {@link Roo.data.Record#create}, or an array of objects with which to call
+ * Roo.data.Record.create.  See the {@link Roo.data.Record} class for more details.
+ */
+Roo.data.XmlReader = function(meta, recordType){
+    meta = meta || {};
+    Roo.data.XmlReader.superclass.constructor.call(this, meta, recordType||meta.fields);
+};
+Roo.extend(Roo.data.XmlReader, Roo.data.DataReader, {
+    /**
+     * This method is only used by a DataProxy which has retrieved data from a remote server.
+	 * @param {Object} response The XHR object which contains the parsed XML document.  The response is expected
+	 * to contain a method called 'responseXML' that returns an XML document object.
+     * @return {Object} records A data block which is used by an {@link Roo.data.Store} as
+     * a cache of Roo.data.Records.
+     */
+    read : function(response){
+        var doc = response.responseXML;
+        if(!doc) {
+            throw {message: "XmlReader.read: XML Document not available"};
+        }
+        return this.readRecords(doc);
+    },
+
+    /**
+     * Create a data block containing Roo.data.Records from an XML document.
+	 * @param {Object} doc A parsed XML document.
+     * @return {Object} records A data block which is used by an {@link Roo.data.Store} as
+     * a cache of Roo.data.Records.
+     */
+    readRecords : function(doc){
+        /**
+         * After any data loads/reads, the raw XML Document is available for further custom processing.
+         * @type XMLDocument
+         */
+        this.xmlData = doc;
+        var root = doc.documentElement || doc;
+    	var q = Roo.DomQuery;
+    	var recordType = this.recordType, fields = recordType.prototype.fields;
+    	var sid = this.meta.id;
+    	var totalRecords = 0, success = true;
+    	if(this.meta.totalRecords){
+    	    totalRecords = q.selectNumber(this.meta.totalRecords, root, 0);
+    	}
+        
+        if(this.meta.success){
+            var sv = q.selectValue(this.meta.success, root, true);
+            success = sv !== false && sv !== 'false';
+    	}
+    	var records = [];
+    	var ns = q.select(this.meta.record, root);
+        for(var i = 0, len = ns.length; i < len; i++) {
+	        var n = ns[i];
+	        var values = {};
+	        var id = sid ? q.selectValue(sid, n) : undefined;
+	        for(var j = 0, jlen = fields.length; j < jlen; j++){
+	            var f = fields.items[j];
+                var v = q.selectValue(f.mapping || f.name, n, f.defaultValue);
+	            v = f.convert(v);
+	            values[f.name] = v;
+	        }
+	        var record = new recordType(values, id);
+	        record.node = n;
+	        records[records.length] = record;
+	    }
+
+	    return {
+	        success : success,
+	        records : records,
+	        totalRecords : totalRecords || records.length
+	    };
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.data.ArrayReader
+ * @extends Roo.data.DataReader
+ * Data reader class to create an Array of Roo.data.Record objects from an Array.
+ * Each element of that Array represents a row of data fields. The
+ * fields are pulled into a Record object using as a subscript, the <em>mapping</em> property
+ * of the field definition if it exists, or the field's ordinal position in the definition.<br>
+ * <p>
+ * Example code:.
+ * <pre><code>
+var RecordDef = Roo.data.Record.create([
+    {name: 'name', mapping: 1},         // "mapping" only needed if an "id" field is present which
+    {name: 'occupation', mapping: 2}    // precludes using the ordinal position as the index.
+]);
+var myReader = new Roo.data.ArrayReader({
+    id: 0                     // The subscript within row Array that provides an ID for the Record (optional)
+}, RecordDef);
+</code></pre>
+ * <p>
+ * This would consume an Array like this:
+ * <pre><code>
+[ [1, 'Bill', 'Gardener'], [2, 'Ben', 'Horticulturalist'] ]
+  </code></pre>
+ * @cfg {String} id (optional) The subscript within row Array that provides an ID for the Record
+ * @constructor
+ * Create a new JsonReader
+ * @param {Object} meta Metadata configuration options.
+ * @param {Object} recordType Either an Array of field definition objects
+ * as specified to {@link Roo.data.Record#create},
+ * or an {@link Roo.data.Record} object
+ * created using {@link Roo.data.Record#create}.
+ */
+Roo.data.ArrayReader = function(meta, recordType){
+    Roo.data.ArrayReader.superclass.constructor.call(this, meta, recordType);
+};
+
+Roo.extend(Roo.data.ArrayReader, Roo.data.JsonReader, {
+    /**
+     * Create a data block containing Roo.data.Records from an XML document.
+     * @param {Object} o An Array of row objects which represents the dataset.
+     * @return {Object} data A data block which is used by an Roo.data.Store object as
+     * a cache of Roo.data.Records.
+     */
+    readRecords : function(o){
+        var sid = this.meta ? this.meta.id : null;
+    	var recordType = this.recordType, fields = recordType.prototype.fields;
+    	var records = [];
+    	var root = o;
+	    for(var i = 0; i < root.length; i++){
+		    var n = root[i];
+	        var values = {};
+	        var id = ((sid || sid === 0) && n[sid] !== undefined && n[sid] !== "" ? n[sid] : null);
+	        for(var j = 0, jlen = fields.length; j < jlen; j++){
+                var f = fields.items[j];
+                var k = f.mapping !== undefined && f.mapping !== null ? f.mapping : j;
+                var v = n[k] !== undefined ? n[k] : f.defaultValue;
+                v = f.convert(v);
+                values[f.name] = v;
+            }
+	        var record = new recordType(values, id);
+	        record.json = n;
+	        records[records.length] = record;
+	    }
+	    return {
+	        records : records,
+	        totalRecords : records.length
+	    };
+    }
 });
