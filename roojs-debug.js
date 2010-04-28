@@ -24730,4 +24730,2124 @@ Roo.extend(Roo.DatePicker, Roo.Component, {
             }
         }
     }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+/**
+ * @class Roo.TabPanel
+ * @extends Roo.util.Observable
+ * A lightweight tab container.
+ * <br><br>
+ * Usage:
+ * <pre><code>
+// basic tabs 1, built from existing content
+var tabs = new Roo.TabPanel("tabs1");
+tabs.addTab("script", "View Script");
+tabs.addTab("markup", "View Markup");
+tabs.activate("script");
+
+// more advanced tabs, built from javascript
+var jtabs = new Roo.TabPanel("jtabs");
+jtabs.addTab("jtabs-1", "Normal Tab", "My content was added during construction.");
+
+// set up the UpdateManager
+var tab2 = jtabs.addTab("jtabs-2", "Ajax Tab 1");
+var updater = tab2.getUpdateManager();
+updater.setDefaultUrl("ajax1.htm");
+tab2.on('activate', updater.refresh, updater, true);
+
+// Use setUrl for Ajax loading
+var tab3 = jtabs.addTab("jtabs-3", "Ajax Tab 2");
+tab3.setUrl("ajax2.htm", null, true);
+
+// Disabled tab
+var tab4 = jtabs.addTab("tabs1-5", "Disabled Tab", "Can't see me cause I'm disabled");
+tab4.disable();
+
+jtabs.activate("jtabs-1");
+ * </code></pre>
+ * @constructor
+ * Create a new TabPanel.
+ * @param {String/HTMLElement/Roo.Element} container The id, DOM element or Roo.Element container where this TabPanel is to be rendered.
+ * @param {Object/Boolean} config Config object to set any properties for this TabPanel, or true to render the tabs on the bottom.
+ */
+Roo.TabPanel = function(container, config){
+    /**
+    * The container element for this TabPanel.
+    * @type Roo.Element
+    */
+    this.el = Roo.get(container, true);
+    if(config){
+        if(typeof config == "boolean"){
+            this.tabPosition = config ? "bottom" : "top";
+        }else{
+            Roo.apply(this, config);
+        }
+    }
+    if(this.tabPosition == "bottom"){
+        this.bodyEl = Roo.get(this.createBody(this.el.dom));
+        this.el.addClass("x-tabs-bottom");
+    }
+    this.stripWrap = Roo.get(this.createStrip(this.el.dom), true);
+    this.stripEl = Roo.get(this.createStripList(this.stripWrap.dom), true);
+    this.stripBody = Roo.get(this.stripWrap.dom.firstChild.firstChild, true);
+    if(Roo.isIE){
+        Roo.fly(this.stripWrap.dom.firstChild).setStyle("overflow-x", "hidden");
+    }
+    if(this.tabPosition != "bottom"){
+    /** The body element that contains {@link Roo.TabPanelItem} bodies.
+     * @type Roo.Element
+     */
+      this.bodyEl = Roo.get(this.createBody(this.el.dom));
+      this.el.addClass("x-tabs-top");
+    }
+    this.items = [];
+
+    this.bodyEl.setStyle("position", "relative");
+
+    this.active = null;
+    this.activateDelegate = this.activate.createDelegate(this);
+
+    this.addEvents({
+        /**
+         * @event tabchange
+         * Fires when the active tab changes
+         * @param {Roo.TabPanel} this
+         * @param {Roo.TabPanelItem} activePanel The new active tab
+         */
+        "tabchange": true,
+        /**
+         * @event beforetabchange
+         * Fires before the active tab changes, set cancel to true on the "e" parameter to cancel the change
+         * @param {Roo.TabPanel} this
+         * @param {Object} e Set cancel to true on this object to cancel the tab change
+         * @param {Roo.TabPanelItem} tab The tab being changed to
+         */
+        "beforetabchange" : true
+    });
+
+    Roo.EventManager.onWindowResize(this.onResize, this);
+    this.cpad = this.el.getPadding("lr");
+    this.hiddenCount = 0;
+
+    Roo.TabPanel.superclass.constructor.call(this);
+};
+
+Roo.extend(Roo.TabPanel, Roo.util.Observable, {
+	/*
+	 *@cfg {String} tabPosition "top" or "bottom" (defaults to "top")
+	 */
+    tabPosition : "top",
+	/*
+	 *@cfg {Number} currentTabWidth The width of the current tab (defaults to 0)
+	 */
+    currentTabWidth : 0,
+	/*
+	 *@cfg {Number} minTabWidth The minimum width of a tab (defaults to 40) (ignored if {@link #resizeTabs} is not true)
+	 */
+    minTabWidth : 40,
+	/*
+	 *@cfg {Number} maxTabWidth The maximum width of a tab (defaults to 250) (ignored if {@link #resizeTabs} is not true)
+	 */
+    maxTabWidth : 250,
+	/*
+	 *@cfg {Number} preferredTabWidth The preferred (default) width of a tab (defaults to 175) (ignored if {@link #resizeTabs} is not true)
+	 */
+    preferredTabWidth : 175,
+	/*
+	 *@cfg {Boolean} resizeTabs True to enable dynamic tab resizing (defaults to false)
+	 */
+    resizeTabs : false,
+	/*
+	 *@cfg {Boolean} monitorResize Set this to true to turn on window resize monitoring (ignored if {@link #resizeTabs} is not true) (defaults to true)
+	 */
+    monitorResize : true,
+
+    /**
+     * Creates a new {@link Roo.TabPanelItem} by looking for an existing element with the provided id -- if it's not found it creates one.
+     * @param {String} id The id of the div to use <b>or create</b>
+     * @param {String} text The text for the tab
+     * @param {String} content (optional) Content to put in the TabPanelItem body
+     * @param {Boolean} closable (optional) True to create a close icon on the tab
+     * @return {Roo.TabPanelItem} The created TabPanelItem
+     */
+    addTab : function(id, text, content, closable){
+        var item = new Roo.TabPanelItem(this, id, text, closable);
+        this.addTabItem(item);
+        if(content){
+            item.setContent(content);
+        }
+        return item;
+    },
+
+    /**
+     * Returns the {@link Roo.TabPanelItem} with the specified id/index
+     * @param {String/Number} id The id or index of the TabPanelItem to fetch.
+     * @return {Roo.TabPanelItem}
+     */
+    getTab : function(id){
+        return this.items[id];
+    },
+
+    /**
+     * Hides the {@link Roo.TabPanelItem} with the specified id/index
+     * @param {String/Number} id The id or index of the TabPanelItem to hide.
+     */
+    hideTab : function(id){
+        var t = this.items[id];
+        if(!t.isHidden()){
+           t.setHidden(true);
+           this.hiddenCount++;
+           this.autoSizeTabs();
+        }
+    },
+
+    /**
+     * "Unhides" the {@link Roo.TabPanelItem} with the specified id/index.
+     * @param {String/Number} id The id or index of the TabPanelItem to unhide.
+     */
+    unhideTab : function(id){
+        var t = this.items[id];
+        if(t.isHidden()){
+           t.setHidden(false);
+           this.hiddenCount--;
+           this.autoSizeTabs();
+        }
+    },
+
+    /**
+     * Adds an existing {@link Roo.TabPanelItem}.
+     * @param {Roo.TabPanelItem} item The TabPanelItem to add
+     */
+    addTabItem : function(item){
+        this.items[item.id] = item;
+        this.items.push(item);
+        if(this.resizeTabs){
+           item.setWidth(this.currentTabWidth || this.preferredTabWidth);
+           this.autoSizeTabs();
+        }else{
+            item.autoSize();
+        }
+    },
+
+    /**
+     * Removes a {@link Roo.TabPanelItem}.
+     * @param {String/Number} id The id or index of the TabPanelItem to remove.
+     */
+    removeTab : function(id){
+        var items = this.items;
+        var tab = items[id];
+        if(!tab) return;
+        var index = items.indexOf(tab);
+        if(this.active == tab && items.length > 1){
+            var newTab = this.getNextAvailable(index);
+            if(newTab)newTab.activate();
+        }
+        this.stripEl.dom.removeChild(tab.pnode.dom);
+        if(tab.bodyEl.dom.parentNode == this.bodyEl.dom){ // if it was moved already prevent error
+            this.bodyEl.dom.removeChild(tab.bodyEl.dom);
+        }
+        items.splice(index, 1);
+        delete this.items[tab.id];
+        tab.fireEvent("close", tab);
+        tab.purgeListeners();
+        this.autoSizeTabs();
+    },
+
+    getNextAvailable : function(start){
+        var items = this.items;
+        var index = start;
+        // look for a next tab that will slide over to
+        // replace the one being removed
+        while(index < items.length){
+            var item = items[++index];
+            if(item && !item.isHidden()){
+                return item;
+            }
+        }
+        // if one isn't found select the previous tab (on the left)
+        index = start;
+        while(index >= 0){
+            var item = items[--index];
+            if(item && !item.isHidden()){
+                return item;
+            }
+        }
+        return null;
+    },
+
+    /**
+     * Disables a {@link Roo.TabPanelItem}. It cannot be the active tab, if it is this call is ignored.
+     * @param {String/Number} id The id or index of the TabPanelItem to disable.
+     */
+    disableTab : function(id){
+        var tab = this.items[id];
+        if(tab && this.active != tab){
+            tab.disable();
+        }
+    },
+
+    /**
+     * Enables a {@link Roo.TabPanelItem} that is disabled.
+     * @param {String/Number} id The id or index of the TabPanelItem to enable.
+     */
+    enableTab : function(id){
+        var tab = this.items[id];
+        tab.enable();
+    },
+
+    /**
+     * Activates a {@link Roo.TabPanelItem}. The currently active one will be deactivated.
+     * @param {String/Number} id The id or index of the TabPanelItem to activate.
+     * @return {Roo.TabPanelItem} The TabPanelItem.
+     */
+    activate : function(id){
+        var tab = this.items[id];
+        if(!tab){
+            return null;
+        }
+        if(tab == this.active || tab.disabled){
+            return tab;
+        }
+        var e = {};
+        this.fireEvent("beforetabchange", this, e, tab);
+        if(e.cancel !== true && !tab.disabled){
+            if(this.active){
+                this.active.hide();
+            }
+            this.active = this.items[id];
+            this.active.show();
+            this.fireEvent("tabchange", this, this.active);
+        }
+        return tab;
+    },
+
+    /**
+     * Gets the active {@link Roo.TabPanelItem}.
+     * @return {Roo.TabPanelItem} The active TabPanelItem or null if none are active.
+     */
+    getActiveTab : function(){
+        return this.active;
+    },
+
+    /**
+     * Updates the tab body element to fit the height of the container element
+     * for overflow scrolling
+     * @param {Number} targetHeight (optional) Override the starting height from the elements height
+     */
+    syncHeight : function(targetHeight){
+        var height = (targetHeight || this.el.getHeight())-this.el.getBorderWidth("tb")-this.el.getPadding("tb");
+        var bm = this.bodyEl.getMargins();
+        var newHeight = height-(this.stripWrap.getHeight()||0)-(bm.top+bm.bottom);
+        this.bodyEl.setHeight(newHeight);
+        return newHeight;
+    },
+
+    onResize : function(){
+        if(this.monitorResize){
+            this.autoSizeTabs();
+        }
+    },
+
+    /**
+     * Disables tab resizing while tabs are being added (if {@link #resizeTabs} is false this does nothing)
+     */
+    beginUpdate : function(){
+        this.updating = true;
+    },
+
+    /**
+     * Stops an update and resizes the tabs (if {@link #resizeTabs} is false this does nothing)
+     */
+    endUpdate : function(){
+        this.updating = false;
+        this.autoSizeTabs();
+    },
+
+    /**
+     * Manual call to resize the tabs (if {@link #resizeTabs} is false this does nothing)
+     */
+    autoSizeTabs : function(){
+        var count = this.items.length;
+        var vcount = count - this.hiddenCount;
+        if(!this.resizeTabs || count < 1 || vcount < 1 || this.updating) return;
+        var w = Math.max(this.el.getWidth() - this.cpad, 10);
+        var availWidth = Math.floor(w / vcount);
+        var b = this.stripBody;
+        if(b.getWidth() > w){
+            var tabs = this.items;
+            this.setTabWidth(Math.max(availWidth, this.minTabWidth)-2);
+            if(availWidth < this.minTabWidth){
+                /*if(!this.sleft){    // incomplete scrolling code
+                    this.createScrollButtons();
+                }
+                this.showScroll();
+                this.stripClip.setWidth(w - (this.sleft.getWidth()+this.sright.getWidth()));*/
+            }
+        }else{
+            if(this.currentTabWidth < this.preferredTabWidth){
+                this.setTabWidth(Math.min(availWidth, this.preferredTabWidth)-2);
+            }
+        }
+    },
+
+    /**
+     * Returns the number of tabs in this TabPanel.
+     * @return {Number}
+     */
+     getCount : function(){
+         return this.items.length;
+     },
+
+    /**
+     * Resizes all the tabs to the passed width
+     * @param {Number} The new width
+     */
+    setTabWidth : function(width){
+        this.currentTabWidth = width;
+        for(var i = 0, len = this.items.length; i < len; i++) {
+        	if(!this.items[i].isHidden())this.items[i].setWidth(width);
+        }
+    },
+
+    /**
+     * Destroys this TabPanel
+     * @param {Boolean} removeEl (optional) True to remove the element from the DOM as well (defaults to undefined)
+     */
+    destroy : function(removeEl){
+        Roo.EventManager.removeResizeListener(this.onResize, this);
+        for(var i = 0, len = this.items.length; i < len; i++){
+            this.items[i].purgeListeners();
+        }
+        if(removeEl === true){
+            this.el.update("");
+            this.el.remove();
+        }
+    }
 });
+
+/**
+ * @class Roo.TabPanelItem
+ * @extends Roo.util.Observable
+ * Represents an individual item (tab plus body) in a TabPanel.
+ * @param {Roo.TabPanel} tabPanel The {@link Roo.TabPanel} this TabPanelItem belongs to
+ * @param {String} id The id of this TabPanelItem
+ * @param {String} text The text for the tab of this TabPanelItem
+ * @param {Boolean} closable True to allow this TabPanelItem to be closable (defaults to false)
+ */
+Roo.TabPanelItem = function(tabPanel, id, text, closable){
+    /**
+     * The {@link Roo.TabPanel} this TabPanelItem belongs to
+     * @type Roo.TabPanel
+     */
+    this.tabPanel = tabPanel;
+    /**
+     * The id for this TabPanelItem
+     * @type String
+     */
+    this.id = id;
+    /** @private */
+    this.disabled = false;
+    /** @private */
+    this.text = text;
+    /** @private */
+    this.loaded = false;
+    this.closable = closable;
+
+    /**
+     * The body element for this TabPanelItem.
+     * @type Roo.Element
+     */
+    this.bodyEl = Roo.get(tabPanel.createItemBody(tabPanel.bodyEl.dom, id));
+    this.bodyEl.setVisibilityMode(Roo.Element.VISIBILITY);
+    this.bodyEl.setStyle("display", "block");
+    this.bodyEl.setStyle("zoom", "1");
+    this.hideAction();
+
+    var els = tabPanel.createStripElements(tabPanel.stripEl.dom, text, closable);
+    /** @private */
+    this.el = Roo.get(els.el, true);
+    this.inner = Roo.get(els.inner, true);
+    this.textEl = Roo.get(this.el.dom.firstChild.firstChild.firstChild, true);
+    this.pnode = Roo.get(els.el.parentNode, true);
+    this.el.on("mousedown", this.onTabMouseDown, this);
+    this.el.on("click", this.onTabClick, this);
+    /** @private */
+    if(closable){
+        var c = Roo.get(els.close, true);
+        c.dom.title = this.closeText;
+        c.addClassOnOver("close-over");
+        c.on("click", this.closeClick, this);
+     }
+
+    this.addEvents({
+         /**
+         * @event activate
+         * Fires when this tab becomes the active tab.
+         * @param {Roo.TabPanel} tabPanel The parent TabPanel
+         * @param {Roo.TabPanelItem} this
+         */
+        "activate": true,
+        /**
+         * @event beforeclose
+         * Fires before this tab is closed. To cancel the close, set cancel to true on e (e.cancel = true).
+         * @param {Roo.TabPanelItem} this
+         * @param {Object} e Set cancel to true on this object to cancel the close.
+         */
+        "beforeclose": true,
+        /**
+         * @event close
+         * Fires when this tab is closed.
+         * @param {Roo.TabPanelItem} this
+         */
+         "close": true,
+        /**
+         * @event deactivate
+         * Fires when this tab is no longer the active tab.
+         * @param {Roo.TabPanel} tabPanel The parent TabPanel
+         * @param {Roo.TabPanelItem} this
+         */
+         "deactivate" : true
+    });
+    this.hidden = false;
+
+    Roo.TabPanelItem.superclass.constructor.call(this);
+};
+
+Roo.extend(Roo.TabPanelItem, Roo.util.Observable, {
+    purgeListeners : function(){
+       Roo.util.Observable.prototype.purgeListeners.call(this);
+       this.el.removeAllListeners();
+    },
+    /**
+     * Shows this TabPanelItem -- this <b>does not</b> deactivate the currently active TabPanelItem.
+     */
+    show : function(){
+        this.pnode.addClass("on");
+        this.showAction();
+        if(Roo.isOpera){
+            this.tabPanel.stripWrap.repaint();
+        }
+        this.fireEvent("activate", this.tabPanel, this);
+    },
+
+    /**
+     * Returns true if this tab is the active tab.
+     * @return {Boolean}
+     */
+    isActive : function(){
+        return this.tabPanel.getActiveTab() == this;
+    },
+
+    /**
+     * Hides this TabPanelItem -- if you don't activate another TabPanelItem this could look odd.
+     */
+    hide : function(){
+        this.pnode.removeClass("on");
+        this.hideAction();
+        this.fireEvent("deactivate", this.tabPanel, this);
+    },
+
+    hideAction : function(){
+        this.bodyEl.hide();
+        this.bodyEl.setStyle("position", "absolute");
+        this.bodyEl.setLeft("-20000px");
+        this.bodyEl.setTop("-20000px");
+    },
+
+    showAction : function(){
+        this.bodyEl.setStyle("position", "relative");
+        this.bodyEl.setTop("");
+        this.bodyEl.setLeft("");
+        this.bodyEl.show();
+    },
+
+    /**
+     * Set the tooltip for the tab.
+     * @param {String} tooltip The tab's tooltip
+     */
+    setTooltip : function(text){
+        if(Roo.QuickTips && Roo.QuickTips.isEnabled()){
+            this.textEl.dom.qtip = text;
+            this.textEl.dom.removeAttribute('title');
+        }else{
+            this.textEl.dom.title = text;
+        }
+    },
+
+    onTabClick : function(e){
+        e.preventDefault();
+        this.tabPanel.activate(this.id);
+    },
+
+    onTabMouseDown : function(e){
+        e.preventDefault();
+        this.tabPanel.activate(this.id);
+    },
+
+    getWidth : function(){
+        return this.inner.getWidth();
+    },
+
+    setWidth : function(width){
+        var iwidth = width - this.pnode.getPadding("lr");
+        this.inner.setWidth(iwidth);
+        this.textEl.setWidth(iwidth-this.inner.getPadding("lr"));
+        this.pnode.setWidth(width);
+    },
+
+    /**
+     * Show or hide the tab
+     * @param {Boolean} hidden True to hide or false to show.
+     */
+    setHidden : function(hidden){
+        this.hidden = hidden;
+        this.pnode.setStyle("display", hidden ? "none" : "");
+    },
+
+    /**
+     * Returns true if this tab is "hidden"
+     * @return {Boolean}
+     */
+    isHidden : function(){
+        return this.hidden;
+    },
+
+    /**
+     * Returns the text for this tab
+     * @return {String}
+     */
+    getText : function(){
+        return this.text;
+    },
+
+    autoSize : function(){
+        //this.el.beginMeasure();
+        this.textEl.setWidth(1);
+        this.setWidth(this.textEl.dom.scrollWidth+this.pnode.getPadding("lr")+this.inner.getPadding("lr"));
+        //this.el.endMeasure();
+    },
+
+    /**
+     * Sets the text for the tab (Note: this also sets the tooltip text)
+     * @param {String} text The tab's text and tooltip
+     */
+    setText : function(text){
+        this.text = text;
+        this.textEl.update(text);
+        this.setTooltip(text);
+        if(!this.tabPanel.resizeTabs){
+            this.autoSize();
+        }
+    },
+    /**
+     * Activates this TabPanelItem -- this <b>does</b> deactivate the currently active TabPanelItem.
+     */
+    activate : function(){
+        this.tabPanel.activate(this.id);
+    },
+
+    /**
+     * Disables this TabPanelItem -- this does nothing if this is the active TabPanelItem.
+     */
+    disable : function(){
+        if(this.tabPanel.active != this){
+            this.disabled = true;
+            this.pnode.addClass("disabled");
+        }
+    },
+
+    /**
+     * Enables this TabPanelItem if it was previously disabled.
+     */
+    enable : function(){
+        this.disabled = false;
+        this.pnode.removeClass("disabled");
+    },
+
+    /**
+     * Sets the content for this TabPanelItem.
+     * @param {String} content The content
+     * @param {Boolean} loadScripts true to look for and load scripts
+     */
+    setContent : function(content, loadScripts){
+        this.bodyEl.update(content, loadScripts);
+    },
+
+    /**
+     * Gets the {@link Roo.UpdateManager} for the body of this TabPanelItem. Enables you to perform Ajax updates.
+     * @return {Roo.UpdateManager} The UpdateManager
+     */
+    getUpdateManager : function(){
+        return this.bodyEl.getUpdateManager();
+    },
+
+    /**
+     * Set a URL to be used to load the content for this TabPanelItem.
+     * @param {String/Function} url The URL to load the content from, or a function to call to get the URL
+     * @param {String/Object} params (optional) The string params for the update call or an object of the params. See {@link Roo.UpdateManager#update} for more details. (Defaults to null)
+     * @param {Boolean} loadOnce (optional) Whether to only load the content once. If this is false it makes the Ajax call every time this TabPanelItem is activated. (Defaults to false)
+     * @return {Roo.UpdateManager} The UpdateManager
+     */
+    setUrl : function(url, params, loadOnce){
+        if(this.refreshDelegate){
+            this.un('activate', this.refreshDelegate);
+        }
+        this.refreshDelegate = this._handleRefresh.createDelegate(this, [url, params, loadOnce]);
+        this.on("activate", this.refreshDelegate);
+        return this.bodyEl.getUpdateManager();
+    },
+
+    /** @private */
+    _handleRefresh : function(url, params, loadOnce){
+        if(!loadOnce || !this.loaded){
+            var updater = this.bodyEl.getUpdateManager();
+            updater.update(url, params, this._setLoaded.createDelegate(this));
+        }
+    },
+
+    /**
+     *   Forces a content refresh from the URL specified in the {@link #setUrl} method.
+     *   Will fail silently if the setUrl method has not been called.
+     *   This does not activate the panel, just updates its content.
+     */
+    refresh : function(){
+        if(this.refreshDelegate){
+           this.loaded = false;
+           this.refreshDelegate();
+        }
+    },
+
+    /** @private */
+    _setLoaded : function(){
+        this.loaded = true;
+    },
+
+    /** @private */
+    closeClick : function(e){
+        var o = {};
+        e.stopEvent();
+        this.fireEvent("beforeclose", this, o);
+        if(o.cancel !== true){
+            this.tabPanel.removeTab(this.id);
+        }
+    },
+    /**
+     * The text displayed in the tooltip for the close icon.
+     * @type String
+     */
+    closeText : "Close this tab"
+});
+
+/** @private */
+Roo.TabPanel.prototype.createStrip = function(container){
+    var strip = document.createElement("div");
+    strip.className = "x-tabs-wrap";
+    container.appendChild(strip);
+    return strip;
+};
+/** @private */
+Roo.TabPanel.prototype.createStripList = function(strip){
+    // div wrapper for retard IE
+    strip.innerHTML = '<div class="x-tabs-strip-wrap"><table class="x-tabs-strip" cellspacing="0" cellpadding="0" border="0"><tbody><tr></tr></tbody></table></div>';
+    return strip.firstChild.firstChild.firstChild.firstChild;
+};
+/** @private */
+Roo.TabPanel.prototype.createBody = function(container){
+    var body = document.createElement("div");
+    Roo.id(body, "tab-body");
+    Roo.fly(body).addClass("x-tabs-body");
+    container.appendChild(body);
+    return body;
+};
+/** @private */
+Roo.TabPanel.prototype.createItemBody = function(bodyEl, id){
+    var body = Roo.getDom(id);
+    if(!body){
+        body = document.createElement("div");
+        body.id = id;
+    }
+    Roo.fly(body).addClass("x-tabs-item-body");
+    bodyEl.insertBefore(body, bodyEl.firstChild);
+    return body;
+};
+/** @private */
+Roo.TabPanel.prototype.createStripElements = function(stripEl, text, closable){
+    var td = document.createElement("td");
+    stripEl.appendChild(td);
+    if(closable){
+        td.className = "x-tabs-closable";
+        if(!this.closeTpl){
+            this.closeTpl = new Roo.Template(
+               '<a href="#" class="x-tabs-right"><span class="x-tabs-left"><em class="x-tabs-inner">' +
+               '<span unselectable="on"' + (this.disableTooltips ? '' : ' title="{text}"') +' class="x-tabs-text">{text}</span>' +
+               '<div unselectable="on" class="close-icon">&#160;</div></em></span></a>'
+            );
+        }
+        var el = this.closeTpl.overwrite(td, {"text": text});
+        var close = el.getElementsByTagName("div")[0];
+        var inner = el.getElementsByTagName("em")[0];
+        return {"el": el, "close": close, "inner": inner};
+    } else {
+        if(!this.tabTpl){
+            this.tabTpl = new Roo.Template(
+               '<a href="#" class="x-tabs-right"><span class="x-tabs-left"><em class="x-tabs-inner">' +
+               '<span unselectable="on"' + (this.disableTooltips ? '' : ' title="{text}"') +' class="x-tabs-text">{text}</span></em></span></a>'
+            );
+        }
+        var el = this.tabTpl.overwrite(td, {"text": text});
+        var inner = el.getElementsByTagName("em")[0];
+        return {"el": el, "inner": inner};
+    }
+};/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.Button
+ * @extends Roo.util.Observable
+ * Simple Button class
+ * @cfg {String} text The button text
+ * @cfg {String} icon The path to an image to display in the button (the image will be set as the background-image
+ * CSS property of the button by default, so if you want a mixed icon/text button, set cls:"x-btn-text-icon")
+ * @cfg {Function} handler A function called when the button is clicked (can be used instead of click event)
+ * @cfg {Object} scope The scope of the handler
+ * @cfg {Number} minWidth The minimum width for this button (used to give a set of buttons a common width)
+ * @cfg {String/Object} tooltip The tooltip for the button - can be a string or QuickTips config object
+ * @cfg {Boolean} hidden True to start hidden (defaults to false)
+ * @cfg {Boolean} disabled True to start disabled (defaults to false)
+ * @cfg {Boolean} pressed True to start pressed (only if enableToggle = true)
+ * @cfg {String} toggleGroup The group this toggle button is a member of (only 1 per group can be pressed, only
+   applies if enableToggle = true)
+ * @cfg {String/HTMLElement/Element} renderTo The element to append the button to
+ * @cfg {Boolean/Object} repeat True to repeat fire the click event while the mouse is down. This can also be
+  an {@link Roo.util.ClickRepeater} config object (defaults to false).
+ * @constructor
+ * Create a new button
+ * @param {Object} config The config object
+ */
+Roo.Button = function(renderTo, config)
+{
+    if (!config) {
+        config = renderTo;
+        renderTo = config.renderTo || false;
+    }
+    
+    Roo.apply(this, config);
+    this.addEvents({
+        /**
+	     * @event click
+	     * Fires when this button is clicked
+	     * @param {Button} this
+	     * @param {EventObject} e The click event
+	     */
+	    "click" : true,
+        /**
+	     * @event toggle
+	     * Fires when the "pressed" state of this button changes (only if enableToggle = true)
+	     * @param {Button} this
+	     * @param {Boolean} pressed
+	     */
+	    "toggle" : true,
+        /**
+	     * @event mouseover
+	     * Fires when the mouse hovers over the button
+	     * @param {Button} this
+	     * @param {Event} e The event object
+	     */
+        'mouseover' : true,
+        /**
+	     * @event mouseout
+	     * Fires when the mouse exits the button
+	     * @param {Button} this
+	     * @param {Event} e The event object
+	     */
+        'mouseout': true,
+         /**
+	     * @event render
+	     * Fires when the button is rendered
+	     * @param {Button} this
+	     */
+        'render': true
+    });
+    if(this.menu){
+        this.menu = Roo.menu.MenuMgr.get(this.menu);
+    }
+    if(renderTo){
+        this.render(renderTo);
+    }
+    
+    Roo.util.Observable.call(this);
+};
+
+Roo.extend(Roo.Button, Roo.util.Observable, {
+    /**
+     * 
+     */
+    
+    /**
+     * Read-only. True if this button is hidden
+     * @type Boolean
+     */
+    hidden : false,
+    /**
+     * Read-only. True if this button is disabled
+     * @type Boolean
+     */
+    disabled : false,
+    /**
+     * Read-only. True if this button is pressed (only if enableToggle = true)
+     * @type Boolean
+     */
+    pressed : false,
+
+    /**
+     * @cfg {Number} tabIndex 
+     * The DOM tabIndex for this button (defaults to undefined)
+     */
+    tabIndex : undefined,
+
+    /**
+     * @cfg {Boolean} enableToggle
+     * True to enable pressed/not pressed toggling (defaults to false)
+     */
+    enableToggle: false,
+    /**
+     * @cfg {Mixed} menu
+     * Standard menu attribute consisting of a reference to a menu object, a menu id or a menu config blob (defaults to undefined).
+     */
+    menu : undefined,
+    /**
+     * @cfg {String} menuAlign
+     * The position to align the menu to (see {@link Roo.Element#alignTo} for more details, defaults to 'tl-bl?').
+     */
+    menuAlign : "tl-bl?",
+
+    /**
+     * @cfg {String} iconCls
+     * A css class which sets a background image to be used as the icon for this button (defaults to undefined).
+     */
+    iconCls : undefined,
+    /**
+     * @cfg {String} type
+     * The button's type, corresponding to the DOM input element type attribute.  Either "submit," "reset" or "button" (default).
+     */
+    type : 'button',
+
+    // private
+    menuClassTarget: 'tr',
+
+    /**
+     * @cfg {String} clickEvent
+     * The type of event to map to the button's event handler (defaults to 'click')
+     */
+    clickEvent : 'click',
+
+    /**
+     * @cfg {Boolean} handleMouseEvents
+     * False to disable visual cues on mouseover, mouseout and mousedown (defaults to true)
+     */
+    handleMouseEvents : true,
+
+    /**
+     * @cfg {String} tooltipType
+     * The type of tooltip to use. Either "qtip" (default) for QuickTips or "title" for title attribute.
+     */
+    tooltipType : 'qtip',
+
+    /**
+     * @cfg {String} cls
+     * A CSS class to apply to the button's main element.
+     */
+    
+    /**
+     * @cfg {Roo.Template} template (Optional)
+     * An {@link Roo.Template} with which to create the Button's main element. This Template must
+     * contain numeric substitution parameter 0 if it is to display the tRoo property. Changing the template could
+     * require code modifications if required elements (e.g. a button) aren't present.
+     */
+
+    // private
+    render : function(renderTo){
+        var btn;
+        if(this.hideParent){
+            this.parentEl = Roo.get(renderTo);
+        }
+        if(!this.dhconfig){
+            if(!this.template){
+                if(!Roo.Button.buttonTemplate){
+                    // hideous table template
+                    Roo.Button.buttonTemplate = new Roo.Template(
+                        '<table border="0" cellpadding="0" cellspacing="0" class="x-btn-wrap"><tbody><tr>',
+                        '<td class="x-btn-left"><i>&#160;</i></td><td class="x-btn-center"><em unselectable="on"><button class="x-btn-text" type="{1}">{0}</button></em></td><td class="x-btn-right"><i>&#160;</i></td>',
+                        "</tr></tbody></table>");
+                }
+                this.template = Roo.Button.buttonTemplate;
+            }
+            btn = this.template.append(renderTo, [this.text || '&#160;', this.type], true);
+            var btnEl = btn.child("button:first");
+            btnEl.on('focus', this.onFocus, this);
+            btnEl.on('blur', this.onBlur, this);
+            if(this.cls){
+                btn.addClass(this.cls);
+            }
+            if(this.icon){
+                btnEl.setStyle('background-image', 'url(' +this.icon +')');
+            }
+            if(this.iconCls){
+                btnEl.addClass(this.iconCls);
+                if(!this.cls){
+                    btn.addClass(this.text ? 'x-btn-text-icon' : 'x-btn-icon');
+                }
+            }
+            if(this.tabIndex !== undefined){
+                btnEl.dom.tabIndex = this.tabIndex;
+            }
+            if(this.tooltip){
+                if(typeof this.tooltip == 'object'){
+                    Roo.QuickTips.tips(Roo.apply({
+                          target: btnEl.id
+                    }, this.tooltip));
+                } else {
+                    btnEl.dom[this.tooltipType] = this.tooltip;
+                }
+            }
+        }else{
+            btn = Roo.DomHelper.append(Roo.get(renderTo).dom, this.dhconfig, true);
+        }
+        this.el = btn;
+        if(this.id){
+            this.el.dom.id = this.el.id = this.id;
+        }
+        if(this.menu){
+            this.el.child(this.menuClassTarget).addClass("x-btn-with-menu");
+            this.menu.on("show", this.onMenuShow, this);
+            this.menu.on("hide", this.onMenuHide, this);
+        }
+        btn.addClass("x-btn");
+        if(Roo.isIE && !Roo.isIE7){
+            this.autoWidth.defer(1, this);
+        }else{
+            this.autoWidth();
+        }
+        if(this.handleMouseEvents){
+            btn.on("mouseover", this.onMouseOver, this);
+            btn.on("mouseout", this.onMouseOut, this);
+            btn.on("mousedown", this.onMouseDown, this);
+        }
+        btn.on(this.clickEvent, this.onClick, this);
+        //btn.on("mouseup", this.onMouseUp, this);
+        if(this.hidden){
+            this.hide();
+        }
+        if(this.disabled){
+            this.disable();
+        }
+        Roo.ButtonToggleMgr.register(this);
+        if(this.pressed){
+            this.el.addClass("x-btn-pressed");
+        }
+        if(this.repeat){
+            var repeater = new Roo.util.ClickRepeater(btn,
+                typeof this.repeat == "object" ? this.repeat : {}
+            );
+            repeater.on("click", this.onClick,  this);
+        }
+        this.fireEvent('render', this);
+        
+    },
+    /**
+     * Returns the button's underlying element
+     * @return {Roo.Element} The element
+     */
+    getEl : function(){
+        return this.el;  
+    },
+    
+    /**
+     * Destroys this Button and removes any listeners.
+     */
+    destroy : function(){
+        Roo.ButtonToggleMgr.unregister(this);
+        this.el.removeAllListeners();
+        this.purgeListeners();
+        this.el.remove();
+    },
+
+    // private
+    autoWidth : function(){
+        if(this.el){
+            this.el.setWidth("auto");
+            if(Roo.isIE7 && Roo.isStrict){
+                var ib = this.el.child('button');
+                if(ib && ib.getWidth() > 20){
+                    ib.clip();
+                    ib.setWidth(Roo.util.TextMetrics.measure(ib, this.text).width+ib.getFrameWidth('lr'));
+                }
+            }
+            if(this.minWidth){
+                if(this.hidden){
+                    this.el.beginMeasure();
+                }
+                if(this.el.getWidth() < this.minWidth){
+                    this.el.setWidth(this.minWidth);
+                }
+                if(this.hidden){
+                    this.el.endMeasure();
+                }
+            }
+        }
+    },
+
+    /**
+     * Assigns this button's click handler
+     * @param {Function} handler The function to call when the button is clicked
+     * @param {Object} scope (optional) Scope for the function passed in
+     */
+    setHandler : function(handler, scope){
+        this.handler = handler;
+        this.scope = scope;  
+    },
+    
+    /**
+     * Sets this button's text
+     * @param {String} text The button text
+     */
+    setText : function(text){
+        this.text = text;
+        if(this.el){
+            this.el.child("td.x-btn-center button.x-btn-text").update(text);
+        }
+        this.autoWidth();
+    },
+    
+    /**
+     * Gets the text for this button
+     * @return {String} The button text
+     */
+    getText : function(){
+        return this.text;  
+    },
+    
+    /**
+     * Show this button
+     */
+    show: function(){
+        this.hidden = false;
+        if(this.el){
+            this[this.hideParent? 'parentEl' : 'el'].setStyle("display", "");
+        }
+    },
+    
+    /**
+     * Hide this button
+     */
+    hide: function(){
+        this.hidden = true;
+        if(this.el){
+            this[this.hideParent? 'parentEl' : 'el'].setStyle("display", "none");
+        }
+    },
+    
+    /**
+     * Convenience function for boolean show/hide
+     * @param {Boolean} visible True to show, false to hide
+     */
+    setVisible: function(visible){
+        if(visible) {
+            this.show();
+        }else{
+            this.hide();
+        }
+    },
+    
+    /**
+     * If a state it passed, it becomes the pressed state otherwise the current state is toggled.
+     * @param {Boolean} state (optional) Force a particular state
+     */
+    toggle : function(state){
+        state = state === undefined ? !this.pressed : state;
+        if(state != this.pressed){
+            if(state){
+                this.el.addClass("x-btn-pressed");
+                this.pressed = true;
+                this.fireEvent("toggle", this, true);
+            }else{
+                this.el.removeClass("x-btn-pressed");
+                this.pressed = false;
+                this.fireEvent("toggle", this, false);
+            }
+            if(this.toggleHandler){
+                this.toggleHandler.call(this.scope || this, this, state);
+            }
+        }
+    },
+    
+    /**
+     * Focus the button
+     */
+    focus : function(){
+        this.el.child('button:first').focus();
+    },
+    
+    /**
+     * Disable this button
+     */
+    disable : function(){
+        if(this.el){
+            this.el.addClass("x-btn-disabled");
+        }
+        this.disabled = true;
+    },
+    
+    /**
+     * Enable this button
+     */
+    enable : function(){
+        if(this.el){
+            this.el.removeClass("x-btn-disabled");
+        }
+        this.disabled = false;
+    },
+
+    /**
+     * Convenience function for boolean enable/disable
+     * @param {Boolean} enabled True to enable, false to disable
+     */
+    setDisabled : function(v){
+        this[v !== true ? "enable" : "disable"]();
+    },
+
+    // private
+    onClick : function(e){
+        if(e){
+            e.preventDefault();
+        }
+        if(e.button != 0){
+            return;
+        }
+        if(!this.disabled){
+            if(this.enableToggle){
+                this.toggle();
+            }
+            if(this.menu && !this.menu.isVisible()){
+                this.menu.show(this.el, this.menuAlign);
+            }
+            this.fireEvent("click", this, e);
+            if(this.handler){
+                this.el.removeClass("x-btn-over");
+                this.handler.call(this.scope || this, this, e);
+            }
+        }
+    },
+    // private
+    onMouseOver : function(e){
+        if(!this.disabled){
+            this.el.addClass("x-btn-over");
+            this.fireEvent('mouseover', this, e);
+        }
+    },
+    // private
+    onMouseOut : function(e){
+        if(!e.within(this.el,  true)){
+            this.el.removeClass("x-btn-over");
+            this.fireEvent('mouseout', this, e);
+        }
+    },
+    // private
+    onFocus : function(e){
+        if(!this.disabled){
+            this.el.addClass("x-btn-focus");
+        }
+    },
+    // private
+    onBlur : function(e){
+        this.el.removeClass("x-btn-focus");
+    },
+    // private
+    onMouseDown : function(e){
+        if(!this.disabled && e.button == 0){
+            this.el.addClass("x-btn-click");
+            Roo.get(document).on('mouseup', this.onMouseUp, this);
+        }
+    },
+    // private
+    onMouseUp : function(e){
+        if(e.button == 0){
+            this.el.removeClass("x-btn-click");
+            Roo.get(document).un('mouseup', this.onMouseUp, this);
+        }
+    },
+    // private
+    onMenuShow : function(e){
+        this.el.addClass("x-btn-menu-active");
+    },
+    // private
+    onMenuHide : function(e){
+        this.el.removeClass("x-btn-menu-active");
+    }   
+});
+
+// Private utility class used by Button
+Roo.ButtonToggleMgr = function(){
+   var groups = {};
+   
+   function toggleGroup(btn, state){
+       if(state){
+           var g = groups[btn.toggleGroup];
+           for(var i = 0, l = g.length; i < l; i++){
+               if(g[i] != btn){
+                   g[i].toggle(false);
+               }
+           }
+       }
+   }
+   
+   return {
+       register : function(btn){
+           if(!btn.toggleGroup){
+               return;
+           }
+           var g = groups[btn.toggleGroup];
+           if(!g){
+               g = groups[btn.toggleGroup] = [];
+           }
+           g.push(btn);
+           btn.on("toggle", toggleGroup);
+       },
+       
+       unregister : function(btn){
+           if(!btn.toggleGroup){
+               return;
+           }
+           var g = groups[btn.toggleGroup];
+           if(g){
+               g.remove(btn);
+               btn.un("toggle", toggleGroup);
+           }
+       }
+   };
+}();/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.SplitButton
+ * @extends Roo.Button
+ * A split button that provides a built-in dropdown arrow that can fire an event separately from the default
+ * click event of the button.  Typically this would be used to display a dropdown menu that provides additional
+ * options to the primary button action, but any custom handler can provide the arrowclick implementation.
+ * @cfg {Function} arrowHandler A function called when the arrow button is clicked (can be used instead of click event)
+ * @cfg {String} arrowTooltip The title attribute of the arrow
+ * @constructor
+ * Create a new menu button
+ * @param {String/HTMLElement/Element} renderTo The element to append the button to
+ * @param {Object} config The config object
+ */
+Roo.SplitButton = function(renderTo, config){
+    Roo.SplitButton.superclass.constructor.call(this, renderTo, config);
+    /**
+     * @event arrowclick
+     * Fires when this button's arrow is clicked
+     * @param {SplitButton} this
+     * @param {EventObject} e The click event
+     */
+    this.addEvents({"arrowclick":true});
+};
+
+Roo.extend(Roo.SplitButton, Roo.Button, {
+    render : function(renderTo){
+        // this is one sweet looking template!
+        var tpl = new Roo.Template(
+            '<table cellspacing="0" class="x-btn-menu-wrap x-btn"><tr><td>',
+            '<table cellspacing="0" class="x-btn-wrap x-btn-menu-text-wrap"><tbody>',
+            '<tr><td class="x-btn-left"><i>&#160;</i></td><td class="x-btn-center"><button class="x-btn-text" type="{1}">{0}</button></td></tr>',
+            "</tbody></table></td><td>",
+            '<table cellspacing="0" class="x-btn-wrap x-btn-menu-arrow-wrap"><tbody>',
+            '<tr><td class="x-btn-center"><button class="x-btn-menu-arrow-el" type="button">&#160;</button></td><td class="x-btn-right"><i>&#160;</i></td></tr>',
+            "</tbody></table></td></tr></table>"
+        );
+        var btn = tpl.append(renderTo, [this.text, this.type], true);
+        var btnEl = btn.child("button");
+        if(this.cls){
+            btn.addClass(this.cls);
+        }
+        if(this.icon){
+            btnEl.setStyle('background-image', 'url(' +this.icon +')');
+        }
+        if(this.iconCls){
+            btnEl.addClass(this.iconCls);
+            if(!this.cls){
+                btn.addClass(this.text ? 'x-btn-text-icon' : 'x-btn-icon');
+            }
+        }
+        this.el = btn;
+        if(this.handleMouseEvents){
+            btn.on("mouseover", this.onMouseOver, this);
+            btn.on("mouseout", this.onMouseOut, this);
+            btn.on("mousedown", this.onMouseDown, this);
+            btn.on("mouseup", this.onMouseUp, this);
+        }
+        btn.on(this.clickEvent, this.onClick, this);
+        if(this.tooltip){
+            if(typeof this.tooltip == 'object'){
+                Roo.QuickTips.tips(Roo.apply({
+                      target: btnEl.id
+                }, this.tooltip));
+            } else {
+                btnEl.dom[this.tooltipType] = this.tooltip;
+            }
+        }
+        if(this.arrowTooltip){
+            btn.child("button:nth(2)").dom[this.tooltipType] = this.arrowTooltip;
+        }
+        if(this.hidden){
+            this.hide();
+        }
+        if(this.disabled){
+            this.disable();
+        }
+        if(this.pressed){
+            this.el.addClass("x-btn-pressed");
+        }
+        if(Roo.isIE && !Roo.isIE7){
+            this.autoWidth.defer(1, this);
+        }else{
+            this.autoWidth();
+        }
+        if(this.menu){
+            this.menu.on("show", this.onMenuShow, this);
+            this.menu.on("hide", this.onMenuHide, this);
+        }
+        this.fireEvent('render', this);
+    },
+
+    // private
+    autoWidth : function(){
+        if(this.el){
+            var tbl = this.el.child("table:first");
+            var tbl2 = this.el.child("table:last");
+            this.el.setWidth("auto");
+            tbl.setWidth("auto");
+            if(Roo.isIE7 && Roo.isStrict){
+                var ib = this.el.child('button:first');
+                if(ib && ib.getWidth() > 20){
+                    ib.clip();
+                    ib.setWidth(Roo.util.TextMetrics.measure(ib, this.text).width+ib.getFrameWidth('lr'));
+                }
+            }
+            if(this.minWidth){
+                if(this.hidden){
+                    this.el.beginMeasure();
+                }
+                if((tbl.getWidth()+tbl2.getWidth()) < this.minWidth){
+                    tbl.setWidth(this.minWidth-tbl2.getWidth());
+                }
+                if(this.hidden){
+                    this.el.endMeasure();
+                }
+            }
+            this.el.setWidth(tbl.getWidth()+tbl2.getWidth());
+        } 
+    },
+    /**
+     * Sets this button's click handler
+     * @param {Function} handler The function to call when the button is clicked
+     * @param {Object} scope (optional) Scope for the function passed above
+     */
+    setHandler : function(handler, scope){
+        this.handler = handler;
+        this.scope = scope;  
+    },
+    
+    /**
+     * Sets this button's arrow click handler
+     * @param {Function} handler The function to call when the arrow is clicked
+     * @param {Object} scope (optional) Scope for the function passed above
+     */
+    setArrowHandler : function(handler, scope){
+        this.arrowHandler = handler;
+        this.scope = scope;  
+    },
+    
+    /**
+     * Focus the button
+     */
+    focus : function(){
+        if(this.el){
+            this.el.child("button:first").focus();
+        }
+    },
+
+    // private
+    onClick : function(e){
+        e.preventDefault();
+        if(!this.disabled){
+            if(e.getTarget(".x-btn-menu-arrow-wrap")){
+                if(this.menu && !this.menu.isVisible()){
+                    this.menu.show(this.el, this.menuAlign);
+                }
+                this.fireEvent("arrowclick", this, e);
+                if(this.arrowHandler){
+                    this.arrowHandler.call(this.scope || this, this, e);
+                }
+            }else{
+                this.fireEvent("click", this, e);
+                if(this.handler){
+                    this.handler.call(this.scope || this, this, e);
+                }
+            }
+        }
+    },
+    // private
+    onMouseDown : function(e){
+        if(!this.disabled){
+            Roo.fly(e.getTarget("table")).addClass("x-btn-click");
+        }
+    },
+    // private
+    onMouseUp : function(e){
+        Roo.fly(e.getTarget("table")).removeClass("x-btn-click");
+    }   
+});
+
+
+// backwards compat
+Roo.MenuButton = Roo.SplitButton;/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.Toolbar
+ * Basic Toolbar class.
+ * @constructor
+ * Creates a new Toolbar
+ * @param {Object} config The config object
+ */ 
+Roo.Toolbar = function(container, buttons, config)
+{
+    /// old consturctor format still supported..
+    if(container instanceof Array){ // omit the container for later rendering
+        buttons = container;
+        config = buttons;
+        container = null;
+    }
+    if (typeof(container) == 'object' && container.xtype) {
+        config = container;
+        container = config.container;
+        buttons = config.buttons; // not really - use items!!
+    }
+    var xitems = [];
+    if (config && config.items) {
+        xitems = config.items;
+        delete config.items;
+    }
+    Roo.apply(this, config);
+    this.buttons = buttons;
+    
+    if(container){
+        this.render(container);
+    }
+    Roo.each(xitems, function(b) {
+        this.add(b);
+    }, this);
+    
+};
+
+Roo.Toolbar.prototype = {
+    /**
+     * @cfg {Roo.data.Store} items
+     * array of button configs or elements to add
+     */
+    
+    /**
+     * @cfg {String/HTMLElement/Element} container
+     * The id or element that will contain the toolbar
+     */
+    // private
+    render : function(ct){
+        this.el = Roo.get(ct);
+        if(this.cls){
+            this.el.addClass(this.cls);
+        }
+        // using a table allows for vertical alignment
+        // 100% width is needed by Safari...
+        this.el.update('<div class="x-toolbar x-small-editor"><table cellspacing="0"><tr></tr></table></div>');
+        this.tr = this.el.child("tr", true);
+        var autoId = 0;
+        this.items = new Roo.util.MixedCollection(false, function(o){
+            return o.id || ("item" + (++autoId));
+        });
+        if(this.buttons){
+            this.add.apply(this, this.buttons);
+            delete this.buttons;
+        }
+    },
+
+    /**
+     * Adds element(s) to the toolbar -- this function takes a variable number of 
+     * arguments of mixed type and adds them to the toolbar.
+     * @param {Mixed} arg1 The following types of arguments are all valid:<br />
+     * <ul>
+     * <li>{@link Roo.Toolbar.Button} config: A valid button config object (equivalent to {@link #addButton})</li>
+     * <li>HtmlElement: Any standard HTML element (equivalent to {@link #addElement})</li>
+     * <li>Field: Any form field (equivalent to {@link #addField})</li>
+     * <li>Item: Any subclass of {@link Roo.Toolbar.Item} (equivalent to {@link #addItem})</li>
+     * <li>String: Any generic string (gets wrapped in a {@link Roo.Toolbar.TextItem}, equivalent to {@link #addText}).
+     * Note that there are a few special strings that are treated differently as explained nRoo.</li>
+     * <li>'separator' or '-': Creates a separator element (equivalent to {@link #addSeparator})</li>
+     * <li>' ': Creates a spacer element (equivalent to {@link #addSpacer})</li>
+     * <li>'->': Creates a fill element (equivalent to {@link #addFill})</li>
+     * </ul>
+     * @param {Mixed} arg2
+     * @param {Mixed} etc.
+     */
+    add : function(){
+        var a = arguments, l = a.length;
+        for(var i = 0; i < l; i++){
+            this._add(a[i]);
+        }
+    },
+    // private..
+    _add : function(el) {
+        
+        if (el.xtype) {
+            el = Roo.factory(el, typeof(Roo.Toolbar[el.xtype]) == 'undefined' ? Roo.form : Roo.Toolbar);
+        }
+        
+        if (el.applyTo){ // some kind of form field
+            return this.addField(el);
+        } 
+        if (el.render){ // some kind of Toolbar.Item
+            return this.addItem(el);
+        }
+        if (typeof el == "string"){ // string
+            if(el == "separator" || el == "-"){
+                return this.addSeparator();
+            }
+            if (el == " "){
+                return this.addSpacer();
+            }
+            if(el == "->"){
+                return this.addFill();
+            }
+            return this.addText(el);
+            
+        }
+        if(el.tagName){ // element
+            return this.addElement(el);
+        }
+        if(typeof el == "object"){ // must be button config?
+            return this.addButton(el);
+        }
+        // and now what?!?!
+        return false;
+        
+    },
+    
+    /**
+     * Add an Xtype element
+     * @param {Object} xtype Xtype Object
+     * @return {Object} created Object
+     */
+    addxtype : function(e){
+        return this.add(e);  
+    },
+    
+    /**
+     * Returns the Element for this toolbar.
+     * @return {Roo.Element}
+     */
+    getEl : function(){
+        return this.el;  
+    },
+    
+    /**
+     * Adds a separator
+     * @return {Roo.Toolbar.Item} The separator item
+     */
+    addSeparator : function(){
+        return this.addItem(new Roo.Toolbar.Separator());
+    },
+
+    /**
+     * Adds a spacer element
+     * @return {Roo.Toolbar.Spacer} The spacer item
+     */
+    addSpacer : function(){
+        return this.addItem(new Roo.Toolbar.Spacer());
+    },
+
+    /**
+     * Adds a fill element that forces subsequent additions to the right side of the toolbar
+     * @return {Roo.Toolbar.Fill} The fill item
+     */
+    addFill : function(){
+        return this.addItem(new Roo.Toolbar.Fill());
+    },
+
+    /**
+     * Adds any standard HTML element to the toolbar
+     * @param {String/HTMLElement/Element} el The element or id of the element to add
+     * @return {Roo.Toolbar.Item} The element's item
+     */
+    addElement : function(el){
+        return this.addItem(new Roo.Toolbar.Item(el));
+    },
+    /**
+     * Collection of items on the toolbar.. (only Toolbar Items, so use fields to retrieve fields)
+     * @type Roo.util.MixedCollection  
+     */
+    items : false,
+     
+    /**
+     * Adds any Toolbar.Item or subclass
+     * @param {Roo.Toolbar.Item} item
+     * @return {Roo.Toolbar.Item} The item
+     */
+    addItem : function(item){
+        var td = this.nextBlock();
+        item.render(td);
+        this.items.add(item);
+        return item;
+    },
+    
+    /**
+     * Adds a button (or buttons). See {@link Roo.Toolbar.Button} for more info on the config.
+     * @param {Object/Array} config A button config or array of configs
+     * @return {Roo.Toolbar.Button/Array}
+     */
+    addButton : function(config){
+        if(config instanceof Array){
+            var buttons = [];
+            for(var i = 0, len = config.length; i < len; i++) {
+                buttons.push(this.addButton(config[i]));
+            }
+            return buttons;
+        }
+        var b = config;
+        if(!(config instanceof Roo.Toolbar.Button)){
+            b = config.split ?
+                new Roo.Toolbar.SplitButton(config) :
+                new Roo.Toolbar.Button(config);
+        }
+        var td = this.nextBlock();
+        b.render(td);
+        this.items.add(b);
+        return b;
+    },
+    
+    /**
+     * Adds text to the toolbar
+     * @param {String} text The text to add
+     * @return {Roo.Toolbar.Item} The element's item
+     */
+    addText : function(text){
+        return this.addItem(new Roo.Toolbar.TextItem(text));
+    },
+    
+    /**
+     * Inserts any {@link Roo.Toolbar.Item}/{@link Roo.Toolbar.Button} at the specified index.
+     * @param {Number} index The index where the item is to be inserted
+     * @param {Object/Roo.Toolbar.Item/Roo.Toolbar.Button (may be Array)} item The button, or button config object to be inserted.
+     * @return {Roo.Toolbar.Button/Item}
+     */
+    insertButton : function(index, item){
+        if(item instanceof Array){
+            var buttons = [];
+            for(var i = 0, len = item.length; i < len; i++) {
+               buttons.push(this.insertButton(index + i, item[i]));
+            }
+            return buttons;
+        }
+        if (!(item instanceof Roo.Toolbar.Button)){
+           item = new Roo.Toolbar.Button(item);
+        }
+        var td = document.createElement("td");
+        this.tr.insertBefore(td, this.tr.childNodes[index]);
+        item.render(td);
+        this.items.insert(index, item);
+        return item;
+    },
+    
+    /**
+     * Adds a new element to the toolbar from the passed {@link Roo.DomHelper} config.
+     * @param {Object} config
+     * @return {Roo.Toolbar.Item} The element's item
+     */
+    addDom : function(config, returnEl){
+        var td = this.nextBlock();
+        Roo.DomHelper.overwrite(td, config);
+        var ti = new Roo.Toolbar.Item(td.firstChild);
+        ti.render(td);
+        this.items.add(ti);
+        return ti;
+    },
+
+    /**
+     * Collection of fields on the toolbar.. usefull for quering (value is false if there are no fields)
+     * @type Roo.util.MixedCollection  
+     */
+    fields : false,
+    
+    /**
+     * Adds a dynamically rendered Roo.form field (TextField, ComboBox, etc). Note: the field should not have
+     * been rendered yet. For a field that has already been rendered, use {@link #addElement}.
+     * @param {Roo.form.Field} field
+     * @return {Roo.ToolbarItem}
+     */
+     
+      
+    addField : function(field) {
+        if (!this.fields) {
+            var autoId = 0;
+            this.fields = new Roo.util.MixedCollection(false, function(o){
+                return o.id || ("item" + (++autoId));
+            });
+
+        }
+        
+        var td = this.nextBlock();
+        field.render(td);
+        var ti = new Roo.Toolbar.Item(td.firstChild);
+        ti.render(td);
+        this.items.add(ti);
+        this.fields.add(field);
+        return ti;
+    },
+    /**
+     * Hide the toolbar
+     * @method hide
+     */
+     
+      
+    hide : function()
+    {
+        this.el.child('div').setVisibilityMode(Roo.Element.DISPLAY);
+        this.el.child('div').hide();
+    },
+    /**
+     * Show the toolbar
+     * @method show
+     */
+    show : function()
+    {
+        this.el.child('div').show();
+    },
+      
+    // private
+    nextBlock : function(){
+        var td = document.createElement("td");
+        this.tr.appendChild(td);
+        return td;
+    },
+
+    // private
+    destroy : function(){
+        if(this.items){ // rendered?
+            Roo.destroy.apply(Roo, this.items.items);
+        }
+        if(this.fields){ // rendered?
+            Roo.destroy.apply(Roo, this.fields.items);
+        }
+        Roo.Element.uncache(this.el, this.tr);
+    }
+};
+
+/**
+ * @class Roo.Toolbar.Item
+ * The base class that other classes should extend in order to get some basic common toolbar item functionality.
+ * @constructor
+ * Creates a new Item
+ * @param {HTMLElement} el 
+ */
+Roo.Toolbar.Item = function(el){
+    this.el = Roo.getDom(el);
+    this.id = Roo.id(this.el);
+    this.hidden = false;
+};
+
+Roo.Toolbar.Item.prototype = {
+    
+    /**
+     * Get this item's HTML Element
+     * @return {HTMLElement}
+     */
+    getEl : function(){
+       return this.el;  
+    },
+
+    // private
+    render : function(td){
+        this.td = td;
+        td.appendChild(this.el);
+    },
+    
+    /**
+     * Removes and destroys this item.
+     */
+    destroy : function(){
+        this.td.parentNode.removeChild(this.td);
+    },
+    
+    /**
+     * Shows this item.
+     */
+    show: function(){
+        this.hidden = false;
+        this.td.style.display = "";
+    },
+    
+    /**
+     * Hides this item.
+     */
+    hide: function(){
+        this.hidden = true;
+        this.td.style.display = "none";
+    },
+    
+    /**
+     * Convenience function for boolean show/hide.
+     * @param {Boolean} visible true to show/false to hide
+     */
+    setVisible: function(visible){
+        if(visible) {
+            this.show();
+        }else{
+            this.hide();
+        }
+    },
+    
+    /**
+     * Try to focus this item.
+     */
+    focus : function(){
+        Roo.fly(this.el).focus();
+    },
+    
+    /**
+     * Disables this item.
+     */
+    disable : function(){
+        Roo.fly(this.td).addClass("x-item-disabled");
+        this.disabled = true;
+        this.el.disabled = true;
+    },
+    
+    /**
+     * Enables this item.
+     */
+    enable : function(){
+        Roo.fly(this.td).removeClass("x-item-disabled");
+        this.disabled = false;
+        this.el.disabled = false;
+    }
+};
+
+
+/**
+ * @class Roo.Toolbar.Separator
+ * @extends Roo.Toolbar.Item
+ * A simple toolbar separator class
+ * @constructor
+ * Creates a new Separator
+ */
+Roo.Toolbar.Separator = function(){
+    var s = document.createElement("span");
+    s.className = "ytb-sep";
+    Roo.Toolbar.Separator.superclass.constructor.call(this, s);
+};
+Roo.extend(Roo.Toolbar.Separator, Roo.Toolbar.Item, {
+    enable:Roo.emptyFn,
+    disable:Roo.emptyFn,
+    focus:Roo.emptyFn
+});
+
+/**
+ * @class Roo.Toolbar.Spacer
+ * @extends Roo.Toolbar.Item
+ * A simple element that adds extra horizontal space to a toolbar.
+ * @constructor
+ * Creates a new Spacer
+ */
+Roo.Toolbar.Spacer = function(){
+    var s = document.createElement("div");
+    s.className = "ytb-spacer";
+    Roo.Toolbar.Spacer.superclass.constructor.call(this, s);
+};
+Roo.extend(Roo.Toolbar.Spacer, Roo.Toolbar.Item, {
+    enable:Roo.emptyFn,
+    disable:Roo.emptyFn,
+    focus:Roo.emptyFn
+});
+
+/**
+ * @class Roo.Toolbar.Fill
+ * @extends Roo.Toolbar.Spacer
+ * A simple element that adds a greedy (100% width) horizontal space to a toolbar.
+ * @constructor
+ * Creates a new Spacer
+ */
+Roo.Toolbar.Fill = Roo.extend(Roo.Toolbar.Spacer, {
+    // private
+    render : function(td){
+        td.style.width = '100%';
+        Roo.Toolbar.Fill.superclass.render.call(this, td);
+    }
+});
+
+/**
+ * @class Roo.Toolbar.TextItem
+ * @extends Roo.Toolbar.Item
+ * A simple class that renders text directly into a toolbar.
+ * @constructor
+ * Creates a new TextItem
+ * @param {String} text
+ */
+Roo.Toolbar.TextItem = function(text){
+    if (typeof(text) == 'object') {
+        text = text.text;
+    }
+    var s = document.createElement("span");
+    s.className = "ytb-text";
+    s.innerHTML = text;
+    Roo.Toolbar.TextItem.superclass.constructor.call(this, s);
+};
+Roo.extend(Roo.Toolbar.TextItem, Roo.Toolbar.Item, {
+    enable:Roo.emptyFn,
+    disable:Roo.emptyFn,
+    focus:Roo.emptyFn
+});
+
+/**
+ * @class Roo.Toolbar.Button
+ * @extends Roo.Button
+ * A button that renders into a toolbar.
+ * @constructor
+ * Creates a new Button
+ * @param {Object} config A standard {@link Roo.Button} config object
+ */
+Roo.Toolbar.Button = function(config){
+    Roo.Toolbar.Button.superclass.constructor.call(this, null, config);
+};
+Roo.extend(Roo.Toolbar.Button, Roo.Button, {
+    render : function(td){
+        this.td = td;
+        Roo.Toolbar.Button.superclass.render.call(this, td);
+    },
+    
+    /**
+     * Removes and destroys this button
+     */
+    destroy : function(){
+        Roo.Toolbar.Button.superclass.destroy.call(this);
+        this.td.parentNode.removeChild(this.td);
+    },
+    
+    /**
+     * Shows this button
+     */
+    show: function(){
+        this.hidden = false;
+        this.td.style.display = "";
+    },
+    
+    /**
+     * Hides this button
+     */
+    hide: function(){
+        this.hidden = true;
+        this.td.style.display = "none";
+    },
+
+    /**
+     * Disables this item
+     */
+    disable : function(){
+        Roo.fly(this.td).addClass("x-item-disabled");
+        this.disabled = true;
+    },
+
+    /**
+     * Enables this item
+     */
+    enable : function(){
+        Roo.fly(this.td).removeClass("x-item-disabled");
+        this.disabled = false;
+    }
+});
+// backwards compat
+Roo.ToolbarButton = Roo.Toolbar.Button;
+
+/**
+ * @class Roo.Toolbar.SplitButton
+ * @extends Roo.SplitButton
+ * A menu button that renders into a toolbar.
+ * @constructor
+ * Creates a new SplitButton
+ * @param {Object} config A standard {@link Roo.SplitButton} config object
+ */
+Roo.Toolbar.SplitButton = function(config){
+    Roo.Toolbar.SplitButton.superclass.constructor.call(this, null, config);
+};
+Roo.extend(Roo.Toolbar.SplitButton, Roo.SplitButton, {
+    render : function(td){
+        this.td = td;
+        Roo.Toolbar.SplitButton.superclass.render.call(this, td);
+    },
+    
+    /**
+     * Removes and destroys this button
+     */
+    destroy : function(){
+        Roo.Toolbar.SplitButton.superclass.destroy.call(this);
+        this.td.parentNode.removeChild(this.td);
+    },
+    
+    /**
+     * Shows this button
+     */
+    show: function(){
+        this.hidden = false;
+        this.td.style.display = "";
+    },
+    
+    /**
+     * Hides this button
+     */
+    hide: function(){
+        this.hidden = true;
+        this.td.style.display = "none";
+    }
+});
+
+// backwards compat
+Roo.Toolbar.MenuButton = Roo.Toolbar.SplitButton;
