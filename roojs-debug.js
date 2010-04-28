@@ -12607,4 +12607,2787 @@ mc.add(otherEl);
  * @param {String/Number} key The key or index of the item.
  * @return {Object} The item associated with the passed key.
  */
-Roo.util.MixedCollection.prototype.get = Roo.util.MixedCollection.prototype.item;
+Roo.util.MixedCollection.prototype.get = Roo.util.MixedCollection.prototype.item;/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+/**
+ * @class Roo.util.JSON
+ * Modified version of Douglas Crockford"s json.js that doesn"t
+ * mess with the Object prototype 
+ * http://www.json.org/js.html
+ * @singleton
+ */
+Roo.util.JSON = new (function(){
+    var useHasOwn = {}.hasOwnProperty ? true : false;
+    
+    // crashes Safari in some instances
+    //var validRE = /^("(\\.|[^"\\\n\r])*?"|[,:{}\[\]0-9.\-+Eaeflnr-u \n\r\t])+?$/;
+    
+    var pad = function(n) {
+        return n < 10 ? "0" + n : n;
+    };
+    
+    var m = {
+        "\b": '\\b',
+        "\t": '\\t',
+        "\n": '\\n',
+        "\f": '\\f',
+        "\r": '\\r',
+        '"' : '\\"',
+        "\\": '\\\\'
+    };
+
+    var encodeString = function(s){
+        if (/["\\\x00-\x1f]/.test(s)) {
+            return '"' + s.replace(/([\x00-\x1f\\"])/g, function(a, b) {
+                var c = m[b];
+                if(c){
+                    return c;
+                }
+                c = b.charCodeAt();
+                return "\\u00" +
+                    Math.floor(c / 16).toString(16) +
+                    (c % 16).toString(16);
+            }) + '"';
+        }
+        return '"' + s + '"';
+    };
+    
+    var encodeArray = function(o){
+        var a = ["["], b, i, l = o.length, v;
+            for (i = 0; i < l; i += 1) {
+                v = o[i];
+                switch (typeof v) {
+                    case "undefined":
+                    case "function":
+                    case "unknown":
+                        break;
+                    default:
+                        if (b) {
+                            a.push(',');
+                        }
+                        a.push(v === null ? "null" : Roo.util.JSON.encode(v));
+                        b = true;
+                }
+            }
+            a.push("]");
+            return a.join("");
+    };
+    
+    var encodeDate = function(o){
+        return '"' + o.getFullYear() + "-" +
+                pad(o.getMonth() + 1) + "-" +
+                pad(o.getDate()) + "T" +
+                pad(o.getHours()) + ":" +
+                pad(o.getMinutes()) + ":" +
+                pad(o.getSeconds()) + '"';
+    };
+    
+    /**
+     * Encodes an Object, Array or other value
+     * @param {Mixed} o The variable to encode
+     * @return {String} The JSON string
+     */
+    this.encode = function(o){
+        if(typeof o == "undefined" || o === null){
+            return "null";
+        }else if(o instanceof Array){
+            return encodeArray(o);
+        }else if(o instanceof Date){
+            return encodeDate(o);
+        }else if(typeof o == "string"){
+            return encodeString(o);
+        }else if(typeof o == "number"){
+            return isFinite(o) ? String(o) : "null";
+        }else if(typeof o == "boolean"){
+            return String(o);
+        }else {
+            var a = ["{"], b, i, v;
+            for (i in o) {
+                if(!useHasOwn || o.hasOwnProperty(i)) {
+                    v = o[i];
+                    switch (typeof v) {
+                    case "undefined":
+                    case "function":
+                    case "unknown":
+                        break;
+                    default:
+                        if(b){
+                            a.push(',');
+                        }
+                        a.push(this.encode(i), ":",
+                                v === null ? "null" : this.encode(v));
+                        b = true;
+                    }
+                }
+            }
+            a.push("}");
+            return a.join("");
+        }
+    };
+    
+    /**
+     * Decodes (parses) a JSON string to an object. If the JSON is invalid, this function throws a SyntaxError.
+     * @param {String} json The JSON string
+     * @return {Object} The resulting object
+     */
+    this.decode = function(json){
+        /**
+         * eval:var:json
+         */
+        return eval("(" + json + ')');
+    };
+})();
+/** 
+ * Shorthand for {@link Roo.util.JSON#encode}
+ * @member Roo encode 
+ * @method */
+Roo.encode = Roo.util.JSON.encode;
+/** 
+ * Shorthand for {@link Roo.util.JSON#decode}
+ * @member Roo decode 
+ * @method */
+Roo.decode = Roo.util.JSON.decode;
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.util.Format
+ * Reusable data formatting functions
+ * @singleton
+ */
+Roo.util.Format = function(){
+    var trimRe = /^\s+|\s+$/g;
+    return {
+        /**
+         * Truncate a string and add an ellipsis ('...') to the end if it exceeds the specified length
+         * @param {String} value The string to truncate
+         * @param {Number} length The maximum length to allow before truncating
+         * @return {String} The converted text
+         */
+        ellipsis : function(value, len){
+            if(value && value.length > len){
+                return value.substr(0, len-3)+"...";
+            }
+            return value;
+        },
+
+        /**
+         * Checks a reference and converts it to empty string if it is undefined
+         * @param {Mixed} value Reference to check
+         * @return {Mixed} Empty string if converted, otherwise the original value
+         */
+        undef : function(value){
+            return typeof value != "undefined" ? value : "";
+        },
+
+        /**
+         * Convert certain characters (&, <, >, and ') to their HTML character equivalents for literal display in web pages.
+         * @param {String} value The string to encode
+         * @return {String} The encoded text
+         */
+        htmlEncode : function(value){
+            return !value ? value : String(value).replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
+        },
+
+        /**
+         * Convert certain characters (&, <, >, and ') from their HTML character equivalents.
+         * @param {String} value The string to decode
+         * @return {String} The decoded text
+         */
+        htmlDecode : function(value){
+            return !value ? value : String(value).replace(/&amp;/g, "&").replace(/&gt;/g, ">").replace(/&lt;/g, "<").replace(/&quot;/g, '"');
+        },
+
+        /**
+         * Trims any whitespace from either side of a string
+         * @param {String} value The text to trim
+         * @return {String} The trimmed text
+         */
+        trim : function(value){
+            return String(value).replace(trimRe, "");
+        },
+
+        /**
+         * Returns a substring from within an original string
+         * @param {String} value The original text
+         * @param {Number} start The start index of the substring
+         * @param {Number} length The length of the substring
+         * @return {String} The substring
+         */
+        substr : function(value, start, length){
+            return String(value).substr(start, length);
+        },
+
+        /**
+         * Converts a string to all lower case letters
+         * @param {String} value The text to convert
+         * @return {String} The converted text
+         */
+        lowercase : function(value){
+            return String(value).toLowerCase();
+        },
+
+        /**
+         * Converts a string to all upper case letters
+         * @param {String} value The text to convert
+         * @return {String} The converted text
+         */
+        uppercase : function(value){
+            return String(value).toUpperCase();
+        },
+
+        /**
+         * Converts the first character only of a string to upper case
+         * @param {String} value The text to convert
+         * @return {String} The converted text
+         */
+        capitalize : function(value){
+            return !value ? value : value.charAt(0).toUpperCase() + value.substr(1).toLowerCase();
+        },
+
+        // private
+        call : function(value, fn){
+            if(arguments.length > 2){
+                var args = Array.prototype.slice.call(arguments, 2);
+                args.unshift(value);
+                 
+                return /** eval:var:value */  eval(fn).apply(window, args);
+            }else{
+                /** eval:var:value */
+                return /** eval:var:value */ eval(fn).call(window, value);
+            }
+        },
+
+        /**
+         * Format a number as US currency
+         * @param {Number/String} value The numeric value to format
+         * @return {String} The formatted currency string
+         */
+        usMoney : function(v){
+            v = (Math.round((v-0)*100))/100;
+            v = (v == Math.floor(v)) ? v + ".00" : ((v*10 == Math.floor(v*10)) ? v + "0" : v);
+            v = String(v);
+            var ps = v.split('.');
+            var whole = ps[0];
+            var sub = ps[1] ? '.'+ ps[1] : '.00';
+            var r = /(\d+)(\d{3})/;
+            while (r.test(whole)) {
+                whole = whole.replace(r, '$1' + ',' + '$2');
+            }
+            return "$" + whole + sub ;
+        },
+
+        /**
+         * Parse a value into a formatted date using the specified format pattern.
+         * @param {Mixed} value The value to format
+         * @param {String} format (optional) Any valid date format string (defaults to 'm/d/Y')
+         * @return {String} The formatted date string
+         */
+        date : function(v, format){
+            if(!v){
+                return "";
+            }
+            if(!(v instanceof Date)){
+                v = new Date(Date.parse(v));
+            }
+            return v.dateFormat(format || "m/d/Y");
+        },
+
+        /**
+         * Returns a date rendering function that can be reused to apply a date format multiple times efficiently
+         * @param {String} format Any valid date format string
+         * @return {Function} The date formatting function
+         */
+        dateRenderer : function(format){
+            return function(v){
+                return Roo.util.Format.date(v, format);  
+            };
+        },
+
+        // private
+        stripTagsRE : /<\/?[^>]+>/gi,
+        
+        /**
+         * Strips all HTML tags
+         * @param {Mixed} value The text from which to strip tags
+         * @return {String} The stripped text
+         */
+        stripTags : function(v){
+            return !v ? v : String(v).replace(this.stripTagsRE, "");
+        }
+    };
+}();/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+
+ 
+
+/**
+ * @class Roo.MasterTemplate
+ * @extends Roo.Template
+ * Provides a template that can have child templates. The syntax is:
+<pre><code>
+var t = new Roo.MasterTemplate(
+	'&lt;select name="{name}"&gt;',
+		'&lt;tpl name="options"&gt;&lt;option value="{value:trim}"&gt;{text:ellipsis(10)}&lt;/option&gt;&lt;/tpl&gt;',
+	'&lt;/select&gt;'
+);
+t.add('options', {value: 'foo', text: 'bar'});
+// or you can add multiple child elements in one shot
+t.addAll('options', [
+    {value: 'foo', text: 'bar'},
+    {value: 'foo2', text: 'bar2'},
+    {value: 'foo3', text: 'bar3'}
+]);
+// then append, applying the master template values
+t.append('my-form', {name: 'my-select'});
+</code></pre>
+* A name attribute for the child template is not required if you have only one child
+* template or you want to refer to them by index.
+ */
+Roo.MasterTemplate = function(){
+    Roo.MasterTemplate.superclass.constructor.apply(this, arguments);
+    this.originalHtml = this.html;
+    var st = {};
+    var m, re = this.subTemplateRe;
+    re.lastIndex = 0;
+    var subIndex = 0;
+    while(m = re.exec(this.html)){
+        var name = m[1], content = m[2];
+        st[subIndex] = {
+            name: name,
+            index: subIndex,
+            buffer: [],
+            tpl : new Roo.Template(content)
+        };
+        if(name){
+            st[name] = st[subIndex];
+        }
+        st[subIndex].tpl.compile();
+        st[subIndex].tpl.call = this.call.createDelegate(this);
+        subIndex++;
+    }
+    this.subCount = subIndex;
+    this.subs = st;
+};
+Roo.extend(Roo.MasterTemplate, Roo.Template, {
+    /**
+    * The regular expression used to match sub templates
+    * @type RegExp
+    * @property
+    */
+    subTemplateRe : /<tpl(?:\sname="([\w-]+)")?>((?:.|\n)*?)<\/tpl>/gi,
+
+    /**
+     * Applies the passed values to a child template.
+     * @param {String/Number} name (optional) The name or index of the child template
+     * @param {Array/Object} values The values to be applied to the template
+     * @return {MasterTemplate} this
+     */
+     add : function(name, values){
+        if(arguments.length == 1){
+            values = arguments[0];
+            name = 0;
+        }
+        var s = this.subs[name];
+        s.buffer[s.buffer.length] = s.tpl.apply(values);
+        return this;
+    },
+
+    /**
+     * Applies all the passed values to a child template.
+     * @param {String/Number} name (optional) The name or index of the child template
+     * @param {Array} values The values to be applied to the template, this should be an array of objects.
+     * @param {Boolean} reset (optional) True to reset the template first
+     * @return {MasterTemplate} this
+     */
+    fill : function(name, values, reset){
+        var a = arguments;
+        if(a.length == 1 || (a.length == 2 && typeof a[1] == "boolean")){
+            values = a[0];
+            name = 0;
+            reset = a[1];
+        }
+        if(reset){
+            this.reset();
+        }
+        for(var i = 0, len = values.length; i < len; i++){
+            this.add(name, values[i]);
+        }
+        return this;
+    },
+
+    /**
+     * Resets the template for reuse
+     * @return {MasterTemplate} this
+     */
+     reset : function(){
+        var s = this.subs;
+        for(var i = 0; i < this.subCount; i++){
+            s[i].buffer = [];
+        }
+        return this;
+    },
+
+    applyTemplate : function(values){
+        var s = this.subs;
+        var replaceIndex = -1;
+        this.html = this.originalHtml.replace(this.subTemplateRe, function(m, name){
+            return s[++replaceIndex].buffer.join("");
+        });
+        return Roo.MasterTemplate.superclass.applyTemplate.call(this, values);
+    },
+
+    apply : function(){
+        return this.applyTemplate.apply(this, arguments);
+    },
+
+    compile : function(){return this;}
+});
+
+/**
+ * Alias for fill().
+ * @method
+ */
+Roo.MasterTemplate.prototype.addAll = Roo.MasterTemplate.prototype.fill;
+ /**
+ * Creates a template from the passed element's value (display:none textarea, preferred) or innerHTML. e.g.
+ * var tpl = Roo.MasterTemplate.from('element-id');
+ * @param {String/HTMLElement} el
+ * @param {Object} config
+ * @static
+ */
+Roo.MasterTemplate.from = function(el, config){
+    el = Roo.getDom(el);
+    return new Roo.MasterTemplate(el.value || el.innerHTML, config || '');
+};/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+ 
+/**
+ * @class Roo.util.CSS
+ * Utility class for manipulating CSS rules
+ * @singleton
+ */
+Roo.util.CSS = function(){
+	var rules = null;
+   	var doc = document;
+
+    var camelRe = /(-[a-z])/gi;
+    var camelFn = function(m, a){ return a.charAt(1).toUpperCase(); };
+
+   return {
+   /**
+    * Very simple dynamic creation of stylesheets from a text blob of rules.  The text will wrapped in a style
+    * tag and appended to the HEAD of the document.
+    * @param {String} cssText The text containing the css rules
+    * @param {String} id An id to add to the stylesheet for later removal
+    * @return {StyleSheet}
+    */
+   createStyleSheet : function(cssText, id){
+       var ss;
+       var head = doc.getElementsByTagName("head")[0];
+       var rules = doc.createElement("style");
+       rules.setAttribute("type", "text/css");
+       if(id){
+           rules.setAttribute("id", id);
+       }
+       if(Roo.isIE){
+           head.appendChild(rules);
+           ss = rules.styleSheet;
+           ss.cssText = cssText;
+       }else{
+           try{
+                rules.appendChild(doc.createTextNode(cssText));
+           }catch(e){
+               rules.cssText = cssText; 
+           }
+           head.appendChild(rules);
+           ss = rules.styleSheet ? rules.styleSheet : (rules.sheet || doc.styleSheets[doc.styleSheets.length-1]);
+       }
+       this.cacheStyleSheet(ss);
+       return ss;
+   },
+
+   /**
+    * Removes a style or link tag by id
+    * @param {String} id The id of the tag
+    */
+   removeStyleSheet : function(id){
+       var existing = doc.getElementById(id);
+       if(existing){
+           existing.parentNode.removeChild(existing);
+       }
+   },
+
+   /**
+    * Dynamically swaps an existing stylesheet reference for a new one
+    * @param {String} id The id of an existing link tag to remove
+    * @param {String} url The href of the new stylesheet to include
+    */
+   swapStyleSheet : function(id, url){
+       this.removeStyleSheet(id);
+       var ss = doc.createElement("link");
+       ss.setAttribute("rel", "stylesheet");
+       ss.setAttribute("type", "text/css");
+       ss.setAttribute("id", id);
+       ss.setAttribute("href", url);
+       doc.getElementsByTagName("head")[0].appendChild(ss);
+   },
+   
+   /**
+    * Refresh the rule cache if you have dynamically added stylesheets
+    * @return {Object} An object (hash) of rules indexed by selector
+    */
+   refreshCache : function(){
+       return this.getRules(true);
+   },
+
+   // private
+   cacheStyleSheet : function(ss){
+       if(!rules){
+           rules = {};
+       }
+       try{// try catch for cross domain access issue
+           var ssRules = ss.cssRules || ss.rules;
+           for(var j = ssRules.length-1; j >= 0; --j){
+               rules[ssRules[j].selectorText] = ssRules[j];
+           }
+       }catch(e){}
+   },
+   
+   /**
+    * Gets all css rules for the document
+    * @param {Boolean} refreshCache true to refresh the internal cache
+    * @return {Object} An object (hash) of rules indexed by selector
+    */
+   getRules : function(refreshCache){
+   		if(rules == null || refreshCache){
+   			rules = {};
+   			var ds = doc.styleSheets;
+   			for(var i =0, len = ds.length; i < len; i++){
+   			    try{
+    		        this.cacheStyleSheet(ds[i]);
+    		    }catch(e){} 
+	        }
+   		}
+   		return rules;
+   	},
+   	
+   	/**
+    * Gets an an individual CSS rule by selector(s)
+    * @param {String/Array} selector The CSS selector or an array of selectors to try. The first selector that is found is returned.
+    * @param {Boolean} refreshCache true to refresh the internal cache if you have recently updated any rules or added styles dynamically
+    * @return {CSSRule} The CSS rule or null if one is not found
+    */
+   getRule : function(selector, refreshCache){
+   		var rs = this.getRules(refreshCache);
+   		if(!(selector instanceof Array)){
+   		    return rs[selector];
+   		}
+   		for(var i = 0; i < selector.length; i++){
+			if(rs[selector[i]]){
+				return rs[selector[i]];
+			}
+		}
+		return null;
+   	},
+   	
+   	
+   	/**
+    * Updates a rule property
+    * @param {String/Array} selector If it's an array it tries each selector until it finds one. Stops immediately once one is found.
+    * @param {String} property The css property
+    * @param {String} value The new value for the property
+    * @return {Boolean} true If a rule was found and updated
+    */
+   updateRule : function(selector, property, value){
+   		if(!(selector instanceof Array)){
+   			var rule = this.getRule(selector);
+   			if(rule){
+   				rule.style[property.replace(camelRe, camelFn)] = value;
+   				return true;
+   			}
+   		}else{
+   			for(var i = 0; i < selector.length; i++){
+   				if(this.updateRule(selector[i], property, value)){
+   					return true;
+   				}
+   			}
+   		}
+   		return false;
+   	}
+   };	
+}();/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+ 
+
+/**
+ * @class Roo.util.ClickRepeater
+ * @extends Roo.util.Observable
+ * 
+ * A wrapper class which can be applied to any element. Fires a "click" event while the
+ * mouse is pressed. The interval between firings may be specified in the config but
+ * defaults to 10 milliseconds.
+ * 
+ * Optionally, a CSS class may be applied to the element during the time it is pressed.
+ * 
+ * @cfg {String/HTMLElement/Element} el The element to act as a button.
+ * @cfg {Number} delay The initial delay before the repeating event begins firing.
+ * Similar to an autorepeat key delay.
+ * @cfg {Number} interval The interval between firings of the "click" event. Default 10 ms.
+ * @cfg {String} pressClass A CSS class name to be applied to the element while pressed.
+ * @cfg {Boolean} accelerate True if autorepeating should start slowly and accelerate.
+ *           "interval" and "delay" are ignored. "immediate" is honored.
+ * @cfg {Boolean} preventDefault True to prevent the default click event
+ * @cfg {Boolean} stopDefault True to stop the default click event
+ * 
+ * @history
+ *     2007-02-02 jvs Original code contributed by Nige "Animal" White
+ *     2007-02-02 jvs Renamed to ClickRepeater
+ *   2007-02-03 jvs Modifications for FF Mac and Safari 
+ *
+ *  @constructor
+ * @param {String/HTMLElement/Element} el The element to listen on
+ * @param {Object} config
+ **/
+Roo.util.ClickRepeater = function(el, config)
+{
+    this.el = Roo.get(el);
+    this.el.unselectable();
+
+    Roo.apply(this, config);
+
+    this.addEvents({
+    /**
+     * @event mousedown
+     * Fires when the mouse button is depressed.
+     * @param {Roo.util.ClickRepeater} this
+     */
+        "mousedown" : true,
+    /**
+     * @event click
+     * Fires on a specified interval during the time the element is pressed.
+     * @param {Roo.util.ClickRepeater} this
+     */
+        "click" : true,
+    /**
+     * @event mouseup
+     * Fires when the mouse key is released.
+     * @param {Roo.util.ClickRepeater} this
+     */
+        "mouseup" : true
+    });
+
+    this.el.on("mousedown", this.handleMouseDown, this);
+    if(this.preventDefault || this.stopDefault){
+        this.el.on("click", function(e){
+            if(this.preventDefault){
+                e.preventDefault();
+            }
+            if(this.stopDefault){
+                e.stopEvent();
+            }
+        }, this);
+    }
+
+    // allow inline handler
+    if(this.handler){
+        this.on("click", this.handler,  this.scope || this);
+    }
+
+    Roo.util.ClickRepeater.superclass.constructor.call(this);
+};
+
+Roo.extend(Roo.util.ClickRepeater, Roo.util.Observable, {
+    interval : 20,
+    delay: 250,
+    preventDefault : true,
+    stopDefault : false,
+    timer : 0,
+
+    // private
+    handleMouseDown : function(){
+        clearTimeout(this.timer);
+        this.el.blur();
+        if(this.pressClass){
+            this.el.addClass(this.pressClass);
+        }
+        this.mousedownTime = new Date();
+
+        Roo.get(document).on("mouseup", this.handleMouseUp, this);
+        this.el.on("mouseout", this.handleMouseOut, this);
+
+        this.fireEvent("mousedown", this);
+        this.fireEvent("click", this);
+        
+        this.timer = this.click.defer(this.delay || this.interval, this);
+    },
+
+    // private
+    click : function(){
+        this.fireEvent("click", this);
+        this.timer = this.click.defer(this.getInterval(), this);
+    },
+
+    // private
+    getInterval: function(){
+        if(!this.accelerate){
+            return this.interval;
+        }
+        var pressTime = this.mousedownTime.getElapsed();
+        if(pressTime < 500){
+            return 400;
+        }else if(pressTime < 1700){
+            return 320;
+        }else if(pressTime < 2600){
+            return 250;
+        }else if(pressTime < 3500){
+            return 180;
+        }else if(pressTime < 4400){
+            return 140;
+        }else if(pressTime < 5300){
+            return 80;
+        }else if(pressTime < 6200){
+            return 50;
+        }else{
+            return 10;
+        }
+    },
+
+    // private
+    handleMouseOut : function(){
+        clearTimeout(this.timer);
+        if(this.pressClass){
+            this.el.removeClass(this.pressClass);
+        }
+        this.el.on("mouseover", this.handleMouseReturn, this);
+    },
+
+    // private
+    handleMouseReturn : function(){
+        this.el.un("mouseover", this.handleMouseReturn);
+        if(this.pressClass){
+            this.el.addClass(this.pressClass);
+        }
+        this.click();
+    },
+
+    // private
+    handleMouseUp : function(){
+        clearTimeout(this.timer);
+        this.el.un("mouseover", this.handleMouseReturn);
+        this.el.un("mouseout", this.handleMouseOut);
+        Roo.get(document).un("mouseup", this.handleMouseUp);
+        this.el.removeClass(this.pressClass);
+        this.fireEvent("mouseup", this);
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+ 
+/**
+ * @class Roo.KeyNav
+ * <p>Provides a convenient wrapper for normalized keyboard navigation.  KeyNav allows you to bind
+ * navigation keys to function calls that will get called when the keys are pressed, providing an easy
+ * way to implement custom navigation schemes for any UI component.</p>
+ * <p>The following are all of the possible keys that can be implemented: enter, left, right, up, down, tab, esc,
+ * pageUp, pageDown, del, home, end.  Usage:</p>
+ <pre><code>
+var nav = new Roo.KeyNav("my-element", {
+    "left" : function(e){
+        this.moveLeft(e.ctrlKey);
+    },
+    "right" : function(e){
+        this.moveRight(e.ctrlKey);
+    },
+    "enter" : function(e){
+        this.save();
+    },
+    scope : this
+});
+</code></pre>
+ * @constructor
+ * @param {String/HTMLElement/Roo.Element} el The element to bind to
+ * @param {Object} config The config
+ */
+Roo.KeyNav = function(el, config){
+    this.el = Roo.get(el);
+    Roo.apply(this, config);
+    if(!this.disabled){
+        this.disabled = true;
+        this.enable();
+    }
+};
+
+Roo.KeyNav.prototype = {
+    /**
+     * @cfg {Boolean} disabled
+     * True to disable this KeyNav instance (defaults to false)
+     */
+    disabled : false,
+    /**
+     * @cfg {String} defaultEventAction
+     * The method to call on the {@link Roo.EventObject} after this KeyNav intercepts a key.  Valid values are
+     * {@link Roo.EventObject#stopEvent}, {@link Roo.EventObject#preventDefault} and
+     * {@link Roo.EventObject#stopPropagation} (defaults to 'stopEvent')
+     */
+    defaultEventAction: "stopEvent",
+    /**
+     * @cfg {Boolean} forceKeyDown
+     * Handle the keydown event instead of keypress (defaults to false).  KeyNav automatically does this for IE since
+     * IE does not propagate special keys on keypress, but setting this to true will force other browsers to also
+     * handle keydown instead of keypress.
+     */
+    forceKeyDown : false,
+
+    // private
+    prepareEvent : function(e){
+        var k = e.getKey();
+        var h = this.keyToHandler[k];
+        //if(h && this[h]){
+        //    e.stopPropagation();
+        //}
+        if(Roo.isSafari && h && k >= 37 && k <= 40){
+            e.stopEvent();
+        }
+    },
+
+    // private
+    relay : function(e){
+        var k = e.getKey();
+        var h = this.keyToHandler[k];
+        if(h && this[h]){
+            if(this.doRelay(e, this[h], h) !== true){
+                e[this.defaultEventAction]();
+            }
+        }
+    },
+
+    // private
+    doRelay : function(e, h, hname){
+        return h.call(this.scope || this, e);
+    },
+
+    // possible handlers
+    enter : false,
+    left : false,
+    right : false,
+    up : false,
+    down : false,
+    tab : false,
+    esc : false,
+    pageUp : false,
+    pageDown : false,
+    del : false,
+    home : false,
+    end : false,
+
+    // quick lookup hash
+    keyToHandler : {
+        37 : "left",
+        39 : "right",
+        38 : "up",
+        40 : "down",
+        33 : "pageUp",
+        34 : "pageDown",
+        46 : "del",
+        36 : "home",
+        35 : "end",
+        13 : "enter",
+        27 : "esc",
+        9  : "tab"
+    },
+
+	/**
+	 * Enable this KeyNav
+	 */
+	enable: function(){
+		if(this.disabled){
+            // ie won't do special keys on keypress, no one else will repeat keys with keydown
+            // the EventObject will normalize Safari automatically
+            if(this.forceKeyDown || Roo.isIE || Roo.isAir){
+                this.el.on("keydown", this.relay,  this);
+            }else{
+                this.el.on("keydown", this.prepareEvent,  this);
+                this.el.on("keypress", this.relay,  this);
+            }
+		    this.disabled = false;
+		}
+	},
+
+	/**
+	 * Disable this KeyNav
+	 */
+	disable: function(){
+		if(!this.disabled){
+		    if(this.forceKeyDown || Roo.isIE || Roo.isAir){
+                this.el.un("keydown", this.relay);
+            }else{
+                this.el.un("keydown", this.prepareEvent);
+                this.el.un("keypress", this.relay);
+            }
+		    this.disabled = true;
+		}
+	}
+};/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+ 
+/**
+ * @class Roo.KeyMap
+ * Handles mapping keys to actions for an element. One key map can be used for multiple actions.
+ * The constructor accepts the same config object as defined by {@link #addBinding}.
+ * If you bind a callback function to a KeyMap, anytime the KeyMap handles an expected key
+ * combination it will call the function with this signature (if the match is a multi-key
+ * combination the callback will still be called only once): (String key, Roo.EventObject e)
+ * A KeyMap can also handle a string representation of keys.<br />
+ * Usage:
+ <pre><code>
+// map one key by key code
+var map = new Roo.KeyMap("my-element", {
+    key: 13, // or Roo.EventObject.ENTER
+    fn: myHandler,
+    scope: myObject
+});
+
+// map multiple keys to one action by string
+var map = new Roo.KeyMap("my-element", {
+    key: "a\r\n\t",
+    fn: myHandler,
+    scope: myObject
+});
+
+// map multiple keys to multiple actions by strings and array of codes
+var map = new Roo.KeyMap("my-element", [
+    {
+        key: [10,13],
+        fn: function(){ alert("Return was pressed"); }
+    }, {
+        key: "abc",
+        fn: function(){ alert('a, b or c was pressed'); }
+    }, {
+        key: "\t",
+        ctrl:true,
+        shift:true,
+        fn: function(){ alert('Control + shift + tab was pressed.'); }
+    }
+]);
+</code></pre>
+ * <b>Note: A KeyMap starts enabled</b>
+ * @constructor
+ * @param {String/HTMLElement/Roo.Element} el The element to bind to
+ * @param {Object} config The config (see {@link #addBinding})
+ * @param {String} eventName (optional) The event to bind to (defaults to "keydown")
+ */
+Roo.KeyMap = function(el, config, eventName){
+    this.el  = Roo.get(el);
+    this.eventName = eventName || "keydown";
+    this.bindings = [];
+    if(config){
+        this.addBinding(config);
+    }
+    this.enable();
+};
+
+Roo.KeyMap.prototype = {
+    /**
+     * True to stop the event from bubbling and prevent the default browser action if the
+     * key was handled by the KeyMap (defaults to false)
+     * @type Boolean
+     */
+    stopEvent : false,
+
+    /**
+     * Add a new binding to this KeyMap. The following config object properties are supported:
+     * <pre>
+Property    Type             Description
+----------  ---------------  ----------------------------------------------------------------------
+key         String/Array     A single keycode or an array of keycodes to handle
+shift       Boolean          True to handle key only when shift is pressed (defaults to false)
+ctrl        Boolean          True to handle key only when ctrl is pressed (defaults to false)
+alt         Boolean          True to handle key only when alt is pressed (defaults to false)
+fn          Function         The function to call when KeyMap finds the expected key combination
+scope       Object           The scope of the callback function
+</pre>
+     *
+     * Usage:
+     * <pre><code>
+// Create a KeyMap
+var map = new Roo.KeyMap(document, {
+    key: Roo.EventObject.ENTER,
+    fn: handleKey,
+    scope: this
+});
+
+//Add a new binding to the existing KeyMap later
+map.addBinding({
+    key: 'abc',
+    shift: true,
+    fn: handleKey,
+    scope: this
+});
+</code></pre>
+     * @param {Object/Array} config A single KeyMap config or an array of configs
+     */
+	addBinding : function(config){
+        if(config instanceof Array){
+            for(var i = 0, len = config.length; i < len; i++){
+                this.addBinding(config[i]);
+            }
+            return;
+        }
+        var keyCode = config.key,
+            shift = config.shift, 
+            ctrl = config.ctrl, 
+            alt = config.alt,
+            fn = config.fn,
+            scope = config.scope;
+        if(typeof keyCode == "string"){
+            var ks = [];
+            var keyString = keyCode.toUpperCase();
+            for(var j = 0, len = keyString.length; j < len; j++){
+                ks.push(keyString.charCodeAt(j));
+            }
+            keyCode = ks;
+        }
+        var keyArray = keyCode instanceof Array;
+        var handler = function(e){
+            if((!shift || e.shiftKey) && (!ctrl || e.ctrlKey) &&  (!alt || e.altKey)){
+                var k = e.getKey();
+                if(keyArray){
+                    for(var i = 0, len = keyCode.length; i < len; i++){
+                        if(keyCode[i] == k){
+                          if(this.stopEvent){
+                              e.stopEvent();
+                          }
+                          fn.call(scope || window, k, e);
+                          return;
+                        }
+                    }
+                }else{
+                    if(k == keyCode){
+                        if(this.stopEvent){
+                           e.stopEvent();
+                        }
+                        fn.call(scope || window, k, e);
+                    }
+                }
+            }
+        };
+        this.bindings.push(handler);  
+	},
+
+    /**
+     * Shorthand for adding a single key listener
+     * @param {Number/Array/Object} key Either the numeric key code, array of key codes or an object with the
+     * following options:
+     * {key: (number or array), shift: (true/false), ctrl: (true/false), alt: (true/false)}
+     * @param {Function} fn The function to call
+     * @param {Object} scope (optional) The scope of the function
+     */
+    on : function(key, fn, scope){
+        var keyCode, shift, ctrl, alt;
+        if(typeof key == "object" && !(key instanceof Array)){
+            keyCode = key.key;
+            shift = key.shift;
+            ctrl = key.ctrl;
+            alt = key.alt;
+        }else{
+            keyCode = key;
+        }
+        this.addBinding({
+            key: keyCode,
+            shift: shift,
+            ctrl: ctrl,
+            alt: alt,
+            fn: fn,
+            scope: scope
+        })
+    },
+
+    // private
+    handleKeyDown : function(e){
+	    if(this.enabled){ //just in case
+    	    var b = this.bindings;
+    	    for(var i = 0, len = b.length; i < len; i++){
+    	        b[i].call(this, e);
+    	    }
+	    }
+	},
+	
+	/**
+	 * Returns true if this KeyMap is enabled
+	 * @return {Boolean} 
+	 */
+	isEnabled : function(){
+	    return this.enabled;  
+	},
+	
+	/**
+	 * Enables this KeyMap
+	 */
+	enable: function(){
+		if(!this.enabled){
+		    this.el.on(this.eventName, this.handleKeyDown, this);
+		    this.enabled = true;
+		}
+	},
+
+	/**
+	 * Disable this KeyMap
+	 */
+	disable: function(){
+		if(this.enabled){
+		    this.el.removeListener(this.eventName, this.handleKeyDown, this);
+		    this.enabled = false;
+		}
+	}
+};/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+ 
+/**
+ * @class Roo.util.TextMetrics
+ * Provides precise pixel measurements for blocks of text so that you can determine exactly how high and
+ * wide, in pixels, a given block of text will be.
+ * @singleton
+ */
+Roo.util.TextMetrics = function(){
+    var shared;
+    return {
+        /**
+         * Measures the size of the specified text
+         * @param {String/HTMLElement} el The element, dom node or id from which to copy existing CSS styles
+         * that can affect the size of the rendered text
+         * @param {String} text The text to measure
+         * @param {Number} fixedWidth (optional) If the text will be multiline, you have to set a fixed width
+         * in order to accurately measure the text height
+         * @return {Object} An object containing the text's size {width: (width), height: (height)}
+         */
+        measure : function(el, text, fixedWidth){
+            if(!shared){
+                shared = Roo.util.TextMetrics.Instance(el, fixedWidth);
+            }
+            shared.bind(el);
+            shared.setFixedWidth(fixedWidth || 'auto');
+            return shared.getSize(text);
+        },
+
+        /**
+         * Return a unique TextMetrics instance that can be bound directly to an element and reused.  This reduces
+         * the overhead of multiple calls to initialize the style properties on each measurement.
+         * @param {String/HTMLElement} el The element, dom node or id that the instance will be bound to
+         * @param {Number} fixedWidth (optional) If the text will be multiline, you have to set a fixed width
+         * in order to accurately measure the text height
+         * @return {Roo.util.TextMetrics.Instance} instance The new instance
+         */
+        createInstance : function(el, fixedWidth){
+            return Roo.util.TextMetrics.Instance(el, fixedWidth);
+        }
+    };
+}();
+
+Roo.util.TextMetrics.Instance = function(bindTo, fixedWidth){
+    var ml = new Roo.Element(document.createElement('div'));
+    document.body.appendChild(ml.dom);
+    ml.position('absolute');
+    ml.setLeftTop(-1000, -1000);
+    ml.hide();
+
+    if(fixedWidth){
+        ml.setWidth(fixedWidth);
+    }
+
+    var instance = {
+        /**
+         * Returns the size of the specified text based on the internal element's style and width properties
+         * @param {String} text The text to measure
+         * @return {Object} An object containing the text's size {width: (width), height: (height)}
+         */
+        getSize : function(text){
+            ml.update(text);
+            var s = ml.getSize();
+            ml.update('');
+            return s;
+        },
+
+        /**
+         * Binds this TextMetrics instance to an element from which to copy existing CSS styles
+         * that can affect the size of the rendered text
+         * @param {String/HTMLElement} el The element, dom node or id
+         */
+        bind : function(el){
+            ml.setStyle(
+                Roo.fly(el).getStyles('font-size','font-style', 'font-weight', 'font-family','line-height')
+            );
+        },
+
+        /**
+         * Sets a fixed width on the internal measurement element.  If the text will be multiline, you have
+         * to set a fixed width in order to accurately measure the text height.
+         * @param {Number} width The width to set on the element
+         */
+        setFixedWidth : function(width){
+            ml.setWidth(width);
+        },
+
+        /**
+         * Returns the measured width of the specified text
+         * @param {String} text The text to measure
+         * @return {Number} width The width in pixels
+         */
+        getWidth : function(text){
+            ml.dom.style.width = 'auto';
+            return this.getSize(text).width;
+        },
+
+        /**
+         * Returns the measured height of the specified text.  For multiline text, be sure to call
+         * {@link #setFixedWidth} if necessary.
+         * @param {String} text The text to measure
+         * @return {Number} height The height in pixels
+         */
+        getHeight : function(text){
+            return this.getSize(text).height;
+        }
+    };
+
+    instance.bind(bindTo);
+
+    return instance;
+};
+
+// backwards compat
+Roo.Element.measureText = Roo.util.TextMetrics.measure;/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.state.Provider
+ * Abstract base class for state provider implementations. This class provides methods
+ * for encoding and decoding <b>typed</b> variables including dates and defines the 
+ * Provider interface.
+ */
+Roo.state.Provider = function(){
+    /**
+     * @event statechange
+     * Fires when a state change occurs.
+     * @param {Provider} this This state provider
+     * @param {String} key The state key which was changed
+     * @param {String} value The encoded value for the state
+     */
+    this.addEvents({
+        "statechange": true
+    });
+    this.state = {};
+    Roo.state.Provider.superclass.constructor.call(this);
+};
+Roo.extend(Roo.state.Provider, Roo.util.Observable, {
+    /**
+     * Returns the current value for a key
+     * @param {String} name The key name
+     * @param {Mixed} defaultValue A default value to return if the key's value is not found
+     * @return {Mixed} The state data
+     */
+    get : function(name, defaultValue){
+        return typeof this.state[name] == "undefined" ?
+            defaultValue : this.state[name];
+    },
+    
+    /**
+     * Clears a value from the state
+     * @param {String} name The key name
+     */
+    clear : function(name){
+        delete this.state[name];
+        this.fireEvent("statechange", this, name, null);
+    },
+    
+    /**
+     * Sets the value for a key
+     * @param {String} name The key name
+     * @param {Mixed} value The value to set
+     */
+    set : function(name, value){
+        this.state[name] = value;
+        this.fireEvent("statechange", this, name, value);
+    },
+    
+    /**
+     * Decodes a string previously encoded with {@link #encodeValue}.
+     * @param {String} value The value to decode
+     * @return {Mixed} The decoded value
+     */
+    decodeValue : function(cookie){
+        var re = /^(a|n|d|b|s|o)\:(.*)$/;
+        var matches = re.exec(unescape(cookie));
+        if(!matches || !matches[1]) return; // non state cookie
+        var type = matches[1];
+        var v = matches[2];
+        switch(type){
+            case "n":
+                return parseFloat(v);
+            case "d":
+                return new Date(Date.parse(v));
+            case "b":
+                return (v == "1");
+            case "a":
+                var all = [];
+                var values = v.split("^");
+                for(var i = 0, len = values.length; i < len; i++){
+                    all.push(this.decodeValue(values[i]));
+                }
+                return all;
+           case "o":
+                var all = {};
+                var values = v.split("^");
+                for(var i = 0, len = values.length; i < len; i++){
+                    var kv = values[i].split("=");
+                    all[kv[0]] = this.decodeValue(kv[1]);
+                }
+                return all;
+           default:
+                return v;
+        }
+    },
+    
+    /**
+     * Encodes a value including type information.  Decode with {@link #decodeValue}.
+     * @param {Mixed} value The value to encode
+     * @return {String} The encoded value
+     */
+    encodeValue : function(v){
+        var enc;
+        if(typeof v == "number"){
+            enc = "n:" + v;
+        }else if(typeof v == "boolean"){
+            enc = "b:" + (v ? "1" : "0");
+        }else if(v instanceof Date){
+            enc = "d:" + v.toGMTString();
+        }else if(v instanceof Array){
+            var flat = "";
+            for(var i = 0, len = v.length; i < len; i++){
+                flat += this.encodeValue(v[i]);
+                if(i != len-1) flat += "^";
+            }
+            enc = "a:" + flat;
+        }else if(typeof v == "object"){
+            var flat = "";
+            for(var key in v){
+                if(typeof v[key] != "function"){
+                    flat += key + "=" + this.encodeValue(v[key]) + "^";
+                }
+            }
+            enc = "o:" + flat.substring(0, flat.length-1);
+        }else{
+            enc = "s:" + v;
+        }
+        return escape(enc);        
+    }
+});
+
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+/**
+ * @class Roo.state.Manager
+ * This is the global state manager. By default all components that are "state aware" check this class
+ * for state information if you don't pass them a custom state provider. In order for this class
+ * to be useful, it must be initialized with a provider when your application initializes.
+ <pre><code>
+// in your initialization function
+init : function(){
+   Roo.state.Manager.setProvider(new Roo.state.CookieProvider());
+   ...
+   // supposed you have a {@link Roo.BorderLayout}
+   var layout = new Roo.BorderLayout(...);
+   layout.restoreState();
+   // or a {Roo.BasicDialog}
+   var dialog = new Roo.BasicDialog(...);
+   dialog.restoreState();
+ </code></pre>
+ * @singleton
+ */
+Roo.state.Manager = function(){
+    var provider = new Roo.state.Provider();
+    
+    return {
+        /**
+         * Configures the default state provider for your application
+         * @param {Provider} stateProvider The state provider to set
+         */
+        setProvider : function(stateProvider){
+            provider = stateProvider;
+        },
+        
+        /**
+         * Returns the current value for a key
+         * @param {String} name The key name
+         * @param {Mixed} defaultValue The default value to return if the key lookup does not match
+         * @return {Mixed} The state data
+         */
+        get : function(key, defaultValue){
+            return provider.get(key, defaultValue);
+        },
+        
+        /**
+         * Sets the value for a key
+         * @param {String} name The key name
+         * @param {Mixed} value The state data
+         */
+         set : function(key, value){
+            provider.set(key, value);
+        },
+        
+        /**
+         * Clears a value from the state
+         * @param {String} name The key name
+         */
+        clear : function(key){
+            provider.clear(key);
+        },
+        
+        /**
+         * Gets the currently configured state provider
+         * @return {Provider} The state provider
+         */
+        getProvider : function(){
+            return provider;
+        }
+    };
+}();
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+/**
+ * @class Roo.state.CookieProvider
+ * @extends Roo.state.Provider
+ * The default Provider implementation which saves state via cookies.
+ * <br />Usage:
+ <pre><code>
+   var cp = new Roo.state.CookieProvider({
+       path: "/cgi-bin/",
+       expires: new Date(new Date().getTime()+(1000*60*60*24*30)); //30 days
+       domain: "roojs.com"
+   })
+   Roo.state.Manager.setProvider(cp);
+ </code></pre>
+ * @cfg {String} path The path for which the cookie is active (defaults to root '/' which makes it active for all pages in the site)
+ * @cfg {Date} expires The cookie expiration date (defaults to 7 days from now)
+ * @cfg {String} domain The domain to save the cookie for.  Note that you cannot specify a different domain than
+ * your page is on, but you can specify a sub-domain, or simply the domain itself like 'roojs.com' to include
+ * all sub-domains if you need to access cookies across different sub-domains (defaults to null which uses the same
+ * domain the page is running on including the 'www' like 'www.roojs.com')
+ * @cfg {Boolean} secure True if the site is using SSL (defaults to false)
+ * @constructor
+ * Create a new CookieProvider
+ * @param {Object} config The configuration object
+ */
+Roo.state.CookieProvider = function(config){
+    Roo.state.CookieProvider.superclass.constructor.call(this);
+    this.path = "/";
+    this.expires = new Date(new Date().getTime()+(1000*60*60*24*7)); //7 days
+    this.domain = null;
+    this.secure = false;
+    Roo.apply(this, config);
+    this.state = this.readCookies();
+};
+
+Roo.extend(Roo.state.CookieProvider, Roo.state.Provider, {
+    // private
+    set : function(name, value){
+        if(typeof value == "undefined" || value === null){
+            this.clear(name);
+            return;
+        }
+        this.setCookie(name, value);
+        Roo.state.CookieProvider.superclass.set.call(this, name, value);
+    },
+
+    // private
+    clear : function(name){
+        this.clearCookie(name);
+        Roo.state.CookieProvider.superclass.clear.call(this, name);
+    },
+
+    // private
+    readCookies : function(){
+        var cookies = {};
+        var c = document.cookie + ";";
+        var re = /\s?(.*?)=(.*?);/g;
+    	var matches;
+    	while((matches = re.exec(c)) != null){
+            var name = matches[1];
+            var value = matches[2];
+            if(name && name.substring(0,3) == "ys-"){
+                cookies[name.substr(3)] = this.decodeValue(value);
+            }
+        }
+        return cookies;
+    },
+
+    // private
+    setCookie : function(name, value){
+        document.cookie = "ys-"+ name + "=" + this.encodeValue(value) +
+           ((this.expires == null) ? "" : ("; expires=" + this.expires.toGMTString())) +
+           ((this.path == null) ? "" : ("; path=" + this.path)) +
+           ((this.domain == null) ? "" : ("; domain=" + this.domain)) +
+           ((this.secure == true) ? "; secure" : "");
+    },
+
+    // private
+    clearCookie : function(name){
+        document.cookie = "ys-" + name + "=null; expires=Thu, 01-Jan-70 00:00:01 GMT" +
+           ((this.path == null) ? "" : ("; path=" + this.path)) +
+           ((this.domain == null) ? "" : ("; domain=" + this.domain)) +
+           ((this.secure == true) ? "; secure" : "");
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+
+
+/*
+ * These classes are derivatives of the similarly named classes in the YUI Library.
+ * The original license:
+ * Copyright (c) 2006, Yahoo! Inc. All rights reserved.
+ * Code licensed under the BSD License:
+ * http://developer.yahoo.net/yui/license.txt
+ */
+
+(function() {
+
+var Event=Roo.EventManager;
+var Dom=Roo.lib.Dom;
+
+/**
+ * @class Roo.dd.DragDrop
+ * Defines the interface and base operation of items that that can be
+ * dragged or can be drop targets.  It was designed to be extended, overriding
+ * the event handlers for startDrag, onDrag, onDragOver and onDragOut.
+ * Up to three html elements can be associated with a DragDrop instance:
+ * <ul>
+ * <li>linked element: the element that is passed into the constructor.
+ * This is the element which defines the boundaries for interaction with
+ * other DragDrop objects.</li>
+ * <li>handle element(s): The drag operation only occurs if the element that
+ * was clicked matches a handle element.  By default this is the linked
+ * element, but there are times that you will want only a portion of the
+ * linked element to initiate the drag operation, and the setHandleElId()
+ * method provides a way to define this.</li>
+ * <li>drag element: this represents the element that would be moved along
+ * with the cursor during a drag operation.  By default, this is the linked
+ * element itself as in {@link Roo.dd.DD}.  setDragElId() lets you define
+ * a separate element that would be moved, as in {@link Roo.dd.DDProxy}.
+ * </li>
+ * </ul>
+ * This class should not be instantiated until the onload event to ensure that
+ * the associated elements are available.
+ * The following would define a DragDrop obj that would interact with any
+ * other DragDrop obj in the "group1" group:
+ * <pre>
+ *  dd = new Roo.dd.DragDrop("div1", "group1");
+ * </pre>
+ * Since none of the event handlers have been implemented, nothing would
+ * actually happen if you were to run the code above.  Normally you would
+ * override this class or one of the default implementations, but you can
+ * also override the methods you want on an instance of the class...
+ * <pre>
+ *  dd.onDragDrop = function(e, id) {
+ *  &nbsp;&nbsp;alert("dd was dropped on " + id);
+ *  }
+ * </pre>
+ * @constructor
+ * @param {String} id of the element that is linked to this instance
+ * @param {String} sGroup the group of related DragDrop objects
+ * @param {object} config an object containing configurable attributes
+ *                Valid properties for DragDrop:
+ *                    padding, isTarget, maintainOffset, primaryButtonOnly
+ */
+Roo.dd.DragDrop = function(id, sGroup, config) {
+    if (id) {
+        this.init(id, sGroup, config);
+    }
+};
+
+Roo.dd.DragDrop.prototype = {
+
+    /**
+     * The id of the element associated with this object.  This is what we
+     * refer to as the "linked element" because the size and position of
+     * this element is used to determine when the drag and drop objects have
+     * interacted.
+     * @property id
+     * @type String
+     */
+    id: null,
+
+    /**
+     * Configuration attributes passed into the constructor
+     * @property config
+     * @type object
+     */
+    config: null,
+
+    /**
+     * The id of the element that will be dragged.  By default this is same
+     * as the linked element , but could be changed to another element. Ex:
+     * Roo.dd.DDProxy
+     * @property dragElId
+     * @type String
+     * @private
+     */
+    dragElId: null,
+
+    /**
+     * the id of the element that initiates the drag operation.  By default
+     * this is the linked element, but could be changed to be a child of this
+     * element.  This lets us do things like only starting the drag when the
+     * header element within the linked html element is clicked.
+     * @property handleElId
+     * @type String
+     * @private
+     */
+    handleElId: null,
+
+    /**
+     * An associative array of HTML tags that will be ignored if clicked.
+     * @property invalidHandleTypes
+     * @type {string: string}
+     */
+    invalidHandleTypes: null,
+
+    /**
+     * An associative array of ids for elements that will be ignored if clicked
+     * @property invalidHandleIds
+     * @type {string: string}
+     */
+    invalidHandleIds: null,
+
+    /**
+     * An indexted array of css class names for elements that will be ignored
+     * if clicked.
+     * @property invalidHandleClasses
+     * @type string[]
+     */
+    invalidHandleClasses: null,
+
+    /**
+     * The linked element's absolute X position at the time the drag was
+     * started
+     * @property startPageX
+     * @type int
+     * @private
+     */
+    startPageX: 0,
+
+    /**
+     * The linked element's absolute X position at the time the drag was
+     * started
+     * @property startPageY
+     * @type int
+     * @private
+     */
+    startPageY: 0,
+
+    /**
+     * The group defines a logical collection of DragDrop objects that are
+     * related.  Instances only get events when interacting with other
+     * DragDrop object in the same group.  This lets us define multiple
+     * groups using a single DragDrop subclass if we want.
+     * @property groups
+     * @type {string: string}
+     */
+    groups: null,
+
+    /**
+     * Individual drag/drop instances can be locked.  This will prevent
+     * onmousedown start drag.
+     * @property locked
+     * @type boolean
+     * @private
+     */
+    locked: false,
+
+    /**
+     * Lock this instance
+     * @method lock
+     */
+    lock: function() { this.locked = true; },
+
+    /**
+     * Unlock this instace
+     * @method unlock
+     */
+    unlock: function() { this.locked = false; },
+
+    /**
+     * By default, all insances can be a drop target.  This can be disabled by
+     * setting isTarget to false.
+     * @method isTarget
+     * @type boolean
+     */
+    isTarget: true,
+
+    /**
+     * The padding configured for this drag and drop object for calculating
+     * the drop zone intersection with this object.
+     * @method padding
+     * @type int[]
+     */
+    padding: null,
+
+    /**
+     * Cached reference to the linked element
+     * @property _domRef
+     * @private
+     */
+    _domRef: null,
+
+    /**
+     * Internal typeof flag
+     * @property __ygDragDrop
+     * @private
+     */
+    __ygDragDrop: true,
+
+    /**
+     * Set to true when horizontal contraints are applied
+     * @property constrainX
+     * @type boolean
+     * @private
+     */
+    constrainX: false,
+
+    /**
+     * Set to true when vertical contraints are applied
+     * @property constrainY
+     * @type boolean
+     * @private
+     */
+    constrainY: false,
+
+    /**
+     * The left constraint
+     * @property minX
+     * @type int
+     * @private
+     */
+    minX: 0,
+
+    /**
+     * The right constraint
+     * @property maxX
+     * @type int
+     * @private
+     */
+    maxX: 0,
+
+    /**
+     * The up constraint
+     * @property minY
+     * @type int
+     * @type int
+     * @private
+     */
+    minY: 0,
+
+    /**
+     * The down constraint
+     * @property maxY
+     * @type int
+     * @private
+     */
+    maxY: 0,
+
+    /**
+     * Maintain offsets when we resetconstraints.  Set to true when you want
+     * the position of the element relative to its parent to stay the same
+     * when the page changes
+     *
+     * @property maintainOffset
+     * @type boolean
+     */
+    maintainOffset: false,
+
+    /**
+     * Array of pixel locations the element will snap to if we specified a
+     * horizontal graduation/interval.  This array is generated automatically
+     * when you define a tick interval.
+     * @property xTicks
+     * @type int[]
+     */
+    xTicks: null,
+
+    /**
+     * Array of pixel locations the element will snap to if we specified a
+     * vertical graduation/interval.  This array is generated automatically
+     * when you define a tick interval.
+     * @property yTicks
+     * @type int[]
+     */
+    yTicks: null,
+
+    /**
+     * By default the drag and drop instance will only respond to the primary
+     * button click (left button for a right-handed mouse).  Set to true to
+     * allow drag and drop to start with any mouse click that is propogated
+     * by the browser
+     * @property primaryButtonOnly
+     * @type boolean
+     */
+    primaryButtonOnly: true,
+
+    /**
+     * The availabe property is false until the linked dom element is accessible.
+     * @property available
+     * @type boolean
+     */
+    available: false,
+
+    /**
+     * By default, drags can only be initiated if the mousedown occurs in the
+     * region the linked element is.  This is done in part to work around a
+     * bug in some browsers that mis-report the mousedown if the previous
+     * mouseup happened outside of the window.  This property is set to true
+     * if outer handles are defined.
+     *
+     * @property hasOuterHandles
+     * @type boolean
+     * @default false
+     */
+    hasOuterHandles: false,
+
+    /**
+     * Code that executes immediately before the startDrag event
+     * @method b4StartDrag
+     * @private
+     */
+    b4StartDrag: function(x, y) { },
+
+    /**
+     * Abstract method called after a drag/drop object is clicked
+     * and the drag or mousedown time thresholds have beeen met.
+     * @method startDrag
+     * @param {int} X click location
+     * @param {int} Y click location
+     */
+    startDrag: function(x, y) { /* override this */ },
+
+    /**
+     * Code that executes immediately before the onDrag event
+     * @method b4Drag
+     * @private
+     */
+    b4Drag: function(e) { },
+
+    /**
+     * Abstract method called during the onMouseMove event while dragging an
+     * object.
+     * @method onDrag
+     * @param {Event} e the mousemove event
+     */
+    onDrag: function(e) { /* override this */ },
+
+    /**
+     * Abstract method called when this element fist begins hovering over
+     * another DragDrop obj
+     * @method onDragEnter
+     * @param {Event} e the mousemove event
+     * @param {String|DragDrop[]} id In POINT mode, the element
+     * id this is hovering over.  In INTERSECT mode, an array of one or more
+     * dragdrop items being hovered over.
+     */
+    onDragEnter: function(e, id) { /* override this */ },
+
+    /**
+     * Code that executes immediately before the onDragOver event
+     * @method b4DragOver
+     * @private
+     */
+    b4DragOver: function(e) { },
+
+    /**
+     * Abstract method called when this element is hovering over another
+     * DragDrop obj
+     * @method onDragOver
+     * @param {Event} e the mousemove event
+     * @param {String|DragDrop[]} id In POINT mode, the element
+     * id this is hovering over.  In INTERSECT mode, an array of dd items
+     * being hovered over.
+     */
+    onDragOver: function(e, id) { /* override this */ },
+
+    /**
+     * Code that executes immediately before the onDragOut event
+     * @method b4DragOut
+     * @private
+     */
+    b4DragOut: function(e) { },
+
+    /**
+     * Abstract method called when we are no longer hovering over an element
+     * @method onDragOut
+     * @param {Event} e the mousemove event
+     * @param {String|DragDrop[]} id In POINT mode, the element
+     * id this was hovering over.  In INTERSECT mode, an array of dd items
+     * that the mouse is no longer over.
+     */
+    onDragOut: function(e, id) { /* override this */ },
+
+    /**
+     * Code that executes immediately before the onDragDrop event
+     * @method b4DragDrop
+     * @private
+     */
+    b4DragDrop: function(e) { },
+
+    /**
+     * Abstract method called when this item is dropped on another DragDrop
+     * obj
+     * @method onDragDrop
+     * @param {Event} e the mouseup event
+     * @param {String|DragDrop[]} id In POINT mode, the element
+     * id this was dropped on.  In INTERSECT mode, an array of dd items this
+     * was dropped on.
+     */
+    onDragDrop: function(e, id) { /* override this */ },
+
+    /**
+     * Abstract method called when this item is dropped on an area with no
+     * drop target
+     * @method onInvalidDrop
+     * @param {Event} e the mouseup event
+     */
+    onInvalidDrop: function(e) { /* override this */ },
+
+    /**
+     * Code that executes immediately before the endDrag event
+     * @method b4EndDrag
+     * @private
+     */
+    b4EndDrag: function(e) { },
+
+    /**
+     * Fired when we are done dragging the object
+     * @method endDrag
+     * @param {Event} e the mouseup event
+     */
+    endDrag: function(e) { /* override this */ },
+
+    /**
+     * Code executed immediately before the onMouseDown event
+     * @method b4MouseDown
+     * @param {Event} e the mousedown event
+     * @private
+     */
+    b4MouseDown: function(e) {  },
+
+    /**
+     * Event handler that fires when a drag/drop obj gets a mousedown
+     * @method onMouseDown
+     * @param {Event} e the mousedown event
+     */
+    onMouseDown: function(e) { /* override this */ },
+
+    /**
+     * Event handler that fires when a drag/drop obj gets a mouseup
+     * @method onMouseUp
+     * @param {Event} e the mouseup event
+     */
+    onMouseUp: function(e) { /* override this */ },
+
+    /**
+     * Override the onAvailable method to do what is needed after the initial
+     * position was determined.
+     * @method onAvailable
+     */
+    onAvailable: function () {
+    },
+
+    /*
+     * Provides default constraint padding to "constrainTo" elements (defaults to {left: 0, right:0, top:0, bottom:0}).
+     * @type Object
+     */
+    defaultPadding : {left:0, right:0, top:0, bottom:0},
+
+    /*
+     * Initializes the drag drop object's constraints to restrict movement to a certain element.
+ *
+ * Usage:
+ <pre><code>
+ var dd = new Roo.dd.DDProxy("dragDiv1", "proxytest",
+                { dragElId: "existingProxyDiv" });
+ dd.startDrag = function(){
+     this.constrainTo("parent-id");
+ };
+ </code></pre>
+ * Or you can initalize it using the {@link Roo.Element} object:
+ <pre><code>
+ Roo.get("dragDiv1").initDDProxy("proxytest", {dragElId: "existingProxyDiv"}, {
+     startDrag : function(){
+         this.constrainTo("parent-id");
+     }
+ });
+ </code></pre>
+     * @param {String/HTMLElement/Element} constrainTo The element to constrain to.
+     * @param {Object/Number} pad (optional) Pad provides a way to specify "padding" of the constraints,
+     * and can be either a number for symmetrical padding (4 would be equal to {left:4, right:4, top:4, bottom:4}) or
+     * an object containing the sides to pad. For example: {right:10, bottom:10}
+     * @param {Boolean} inContent (optional) Constrain the draggable in the content box of the element (inside padding and borders)
+     */
+    constrainTo : function(constrainTo, pad, inContent){
+        if(typeof pad == "number"){
+            pad = {left: pad, right:pad, top:pad, bottom:pad};
+        }
+        pad = pad || this.defaultPadding;
+        var b = Roo.get(this.getEl()).getBox();
+        var ce = Roo.get(constrainTo);
+        var s = ce.getScroll();
+        var c, cd = ce.dom;
+        if(cd == document.body){
+            c = { x: s.left, y: s.top, width: Roo.lib.Dom.getViewWidth(), height: Roo.lib.Dom.getViewHeight()};
+        }else{
+            xy = ce.getXY();
+            c = {x : xy[0]+s.left, y: xy[1]+s.top, width: cd.clientWidth, height: cd.clientHeight};
+        }
+
+
+        var topSpace = b.y - c.y;
+        var leftSpace = b.x - c.x;
+
+        this.resetConstraints();
+        this.setXConstraint(leftSpace - (pad.left||0), // left
+                c.width - leftSpace - b.width - (pad.right||0) //right
+        );
+        this.setYConstraint(topSpace - (pad.top||0), //top
+                c.height - topSpace - b.height - (pad.bottom||0) //bottom
+        );
+    },
+
+    /**
+     * Returns a reference to the linked element
+     * @method getEl
+     * @return {HTMLElement} the html element
+     */
+    getEl: function() {
+        if (!this._domRef) {
+            this._domRef = Roo.getDom(this.id);
+        }
+
+        return this._domRef;
+    },
+
+    /**
+     * Returns a reference to the actual element to drag.  By default this is
+     * the same as the html element, but it can be assigned to another
+     * element. An example of this can be found in Roo.dd.DDProxy
+     * @method getDragEl
+     * @return {HTMLElement} the html element
+     */
+    getDragEl: function() {
+        return Roo.getDom(this.dragElId);
+    },
+
+    /**
+     * Sets up the DragDrop object.  Must be called in the constructor of any
+     * Roo.dd.DragDrop subclass
+     * @method init
+     * @param id the id of the linked element
+     * @param {String} sGroup the group of related items
+     * @param {object} config configuration attributes
+     */
+    init: function(id, sGroup, config) {
+        this.initTarget(id, sGroup, config);
+        Event.on(this.id, "mousedown", this.handleMouseDown, this);
+        // Event.on(this.id, "selectstart", Event.preventDefault);
+    },
+
+    /**
+     * Initializes Targeting functionality only... the object does not
+     * get a mousedown handler.
+     * @method initTarget
+     * @param id the id of the linked element
+     * @param {String} sGroup the group of related items
+     * @param {object} config configuration attributes
+     */
+    initTarget: function(id, sGroup, config) {
+
+        // configuration attributes
+        this.config = config || {};
+
+        // create a local reference to the drag and drop manager
+        this.DDM = Roo.dd.DDM;
+        // initialize the groups array
+        this.groups = {};
+
+        // assume that we have an element reference instead of an id if the
+        // parameter is not a string
+        if (typeof id !== "string") {
+            id = Roo.id(id);
+        }
+
+        // set the id
+        this.id = id;
+
+        // add to an interaction group
+        this.addToGroup((sGroup) ? sGroup : "default");
+
+        // We don't want to register this as the handle with the manager
+        // so we just set the id rather than calling the setter.
+        this.handleElId = id;
+
+        // the linked element is the element that gets dragged by default
+        this.setDragElId(id);
+
+        // by default, clicked anchors will not start drag operations.
+        this.invalidHandleTypes = { A: "A" };
+        this.invalidHandleIds = {};
+        this.invalidHandleClasses = [];
+
+        this.applyConfig();
+
+        this.handleOnAvailable();
+    },
+
+    /**
+     * Applies the configuration parameters that were passed into the constructor.
+     * This is supposed to happen at each level through the inheritance chain.  So
+     * a DDProxy implentation will execute apply config on DDProxy, DD, and
+     * DragDrop in order to get all of the parameters that are available in
+     * each object.
+     * @method applyConfig
+     */
+    applyConfig: function() {
+
+        // configurable properties:
+        //    padding, isTarget, maintainOffset, primaryButtonOnly
+        this.padding           = this.config.padding || [0, 0, 0, 0];
+        this.isTarget          = (this.config.isTarget !== false);
+        this.maintainOffset    = (this.config.maintainOffset);
+        this.primaryButtonOnly = (this.config.primaryButtonOnly !== false);
+
+    },
+
+    /**
+     * Executed when the linked element is available
+     * @method handleOnAvailable
+     * @private
+     */
+    handleOnAvailable: function() {
+        this.available = true;
+        this.resetConstraints();
+        this.onAvailable();
+    },
+
+     /**
+     * Configures the padding for the target zone in px.  Effectively expands
+     * (or reduces) the virtual object size for targeting calculations.
+     * Supports css-style shorthand; if only one parameter is passed, all sides
+     * will have that padding, and if only two are passed, the top and bottom
+     * will have the first param, the left and right the second.
+     * @method setPadding
+     * @param {int} iTop    Top pad
+     * @param {int} iRight  Right pad
+     * @param {int} iBot    Bot pad
+     * @param {int} iLeft   Left pad
+     */
+    setPadding: function(iTop, iRight, iBot, iLeft) {
+        // this.padding = [iLeft, iRight, iTop, iBot];
+        if (!iRight && 0 !== iRight) {
+            this.padding = [iTop, iTop, iTop, iTop];
+        } else if (!iBot && 0 !== iBot) {
+            this.padding = [iTop, iRight, iTop, iRight];
+        } else {
+            this.padding = [iTop, iRight, iBot, iLeft];
+        }
+    },
+
+    /**
+     * Stores the initial placement of the linked element.
+     * @method setInitialPosition
+     * @param {int} diffX   the X offset, default 0
+     * @param {int} diffY   the Y offset, default 0
+     */
+    setInitPosition: function(diffX, diffY) {
+        var el = this.getEl();
+
+        if (!this.DDM.verifyEl(el)) {
+            return;
+        }
+
+        var dx = diffX || 0;
+        var dy = diffY || 0;
+
+        var p = Dom.getXY( el );
+
+        this.initPageX = p[0] - dx;
+        this.initPageY = p[1] - dy;
+
+        this.lastPageX = p[0];
+        this.lastPageY = p[1];
+
+
+        this.setStartPosition(p);
+    },
+
+    /**
+     * Sets the start position of the element.  This is set when the obj
+     * is initialized, the reset when a drag is started.
+     * @method setStartPosition
+     * @param pos current position (from previous lookup)
+     * @private
+     */
+    setStartPosition: function(pos) {
+        var p = pos || Dom.getXY( this.getEl() );
+        this.deltaSetXY = null;
+
+        this.startPageX = p[0];
+        this.startPageY = p[1];
+    },
+
+    /**
+     * Add this instance to a group of related drag/drop objects.  All
+     * instances belong to at least one group, and can belong to as many
+     * groups as needed.
+     * @method addToGroup
+     * @param sGroup {string} the name of the group
+     */
+    addToGroup: function(sGroup) {
+        this.groups[sGroup] = true;
+        this.DDM.regDragDrop(this, sGroup);
+    },
+
+    /**
+     * Remove's this instance from the supplied interaction group
+     * @method removeFromGroup
+     * @param {string}  sGroup  The group to drop
+     */
+    removeFromGroup: function(sGroup) {
+        if (this.groups[sGroup]) {
+            delete this.groups[sGroup];
+        }
+
+        this.DDM.removeDDFromGroup(this, sGroup);
+    },
+
+    /**
+     * Allows you to specify that an element other than the linked element
+     * will be moved with the cursor during a drag
+     * @method setDragElId
+     * @param id {string} the id of the element that will be used to initiate the drag
+     */
+    setDragElId: function(id) {
+        this.dragElId = id;
+    },
+
+    /**
+     * Allows you to specify a child of the linked element that should be
+     * used to initiate the drag operation.  An example of this would be if
+     * you have a content div with text and links.  Clicking anywhere in the
+     * content area would normally start the drag operation.  Use this method
+     * to specify that an element inside of the content div is the element
+     * that starts the drag operation.
+     * @method setHandleElId
+     * @param id {string} the id of the element that will be used to
+     * initiate the drag.
+     */
+    setHandleElId: function(id) {
+        if (typeof id !== "string") {
+            id = Roo.id(id);
+        }
+        this.handleElId = id;
+        this.DDM.regHandle(this.id, id);
+    },
+
+    /**
+     * Allows you to set an element outside of the linked element as a drag
+     * handle
+     * @method setOuterHandleElId
+     * @param id the id of the element that will be used to initiate the drag
+     */
+    setOuterHandleElId: function(id) {
+        if (typeof id !== "string") {
+            id = Roo.id(id);
+        }
+        Event.on(id, "mousedown",
+                this.handleMouseDown, this);
+        this.setHandleElId(id);
+
+        this.hasOuterHandles = true;
+    },
+
+    /**
+     * Remove all drag and drop hooks for this element
+     * @method unreg
+     */
+    unreg: function() {
+        Event.un(this.id, "mousedown",
+                this.handleMouseDown);
+        this._domRef = null;
+        this.DDM._remove(this);
+    },
+
+    destroy : function(){
+        this.unreg();
+    },
+
+    /**
+     * Returns true if this instance is locked, or the drag drop mgr is locked
+     * (meaning that all drag/drop is disabled on the page.)
+     * @method isLocked
+     * @return {boolean} true if this obj or all drag/drop is locked, else
+     * false
+     */
+    isLocked: function() {
+        return (this.DDM.isLocked() || this.locked);
+    },
+
+    /**
+     * Fired when this object is clicked
+     * @method handleMouseDown
+     * @param {Event} e
+     * @param {Roo.dd.DragDrop} oDD the clicked dd object (this dd obj)
+     * @private
+     */
+    handleMouseDown: function(e, oDD){
+        if (this.primaryButtonOnly && e.button != 0) {
+            return;
+        }
+
+        if (this.isLocked()) {
+            return;
+        }
+
+        this.DDM.refreshCache(this.groups);
+
+        var pt = new Roo.lib.Point(Roo.lib.Event.getPageX(e), Roo.lib.Event.getPageY(e));
+        if (!this.hasOuterHandles && !this.DDM.isOverTarget(pt, this) )  {
+        } else {
+            if (this.clickValidator(e)) {
+
+                // set the initial element position
+                this.setStartPosition();
+
+
+                this.b4MouseDown(e);
+                this.onMouseDown(e);
+
+                this.DDM.handleMouseDown(e, this);
+
+                this.DDM.stopEvent(e);
+            } else {
+
+
+            }
+        }
+    },
+
+    clickValidator: function(e) {
+        var target = e.getTarget();
+        return ( this.isValidHandleChild(target) &&
+                    (this.id == this.handleElId ||
+                        this.DDM.handleWasClicked(target, this.id)) );
+    },
+
+    /**
+     * Allows you to specify a tag name that should not start a drag operation
+     * when clicked.  This is designed to facilitate embedding links within a
+     * drag handle that do something other than start the drag.
+     * @method addInvalidHandleType
+     * @param {string} tagName the type of element to exclude
+     */
+    addInvalidHandleType: function(tagName) {
+        var type = tagName.toUpperCase();
+        this.invalidHandleTypes[type] = type;
+    },
+
+    /**
+     * Lets you to specify an element id for a child of a drag handle
+     * that should not initiate a drag
+     * @method addInvalidHandleId
+     * @param {string} id the element id of the element you wish to ignore
+     */
+    addInvalidHandleId: function(id) {
+        if (typeof id !== "string") {
+            id = Roo.id(id);
+        }
+        this.invalidHandleIds[id] = id;
+    },
+
+    /**
+     * Lets you specify a css class of elements that will not initiate a drag
+     * @method addInvalidHandleClass
+     * @param {string} cssClass the class of the elements you wish to ignore
+     */
+    addInvalidHandleClass: function(cssClass) {
+        this.invalidHandleClasses.push(cssClass);
+    },
+
+    /**
+     * Unsets an excluded tag name set by addInvalidHandleType
+     * @method removeInvalidHandleType
+     * @param {string} tagName the type of element to unexclude
+     */
+    removeInvalidHandleType: function(tagName) {
+        var type = tagName.toUpperCase();
+        // this.invalidHandleTypes[type] = null;
+        delete this.invalidHandleTypes[type];
+    },
+
+    /**
+     * Unsets an invalid handle id
+     * @method removeInvalidHandleId
+     * @param {string} id the id of the element to re-enable
+     */
+    removeInvalidHandleId: function(id) {
+        if (typeof id !== "string") {
+            id = Roo.id(id);
+        }
+        delete this.invalidHandleIds[id];
+    },
+
+    /**
+     * Unsets an invalid css class
+     * @method removeInvalidHandleClass
+     * @param {string} cssClass the class of the element(s) you wish to
+     * re-enable
+     */
+    removeInvalidHandleClass: function(cssClass) {
+        for (var i=0, len=this.invalidHandleClasses.length; i<len; ++i) {
+            if (this.invalidHandleClasses[i] == cssClass) {
+                delete this.invalidHandleClasses[i];
+            }
+        }
+    },
+
+    /**
+     * Checks the tag exclusion list to see if this click should be ignored
+     * @method isValidHandleChild
+     * @param {HTMLElement} node the HTMLElement to evaluate
+     * @return {boolean} true if this is a valid tag type, false if not
+     */
+    isValidHandleChild: function(node) {
+
+        var valid = true;
+        // var n = (node.nodeName == "#text") ? node.parentNode : node;
+        var nodeName;
+        try {
+            nodeName = node.nodeName.toUpperCase();
+        } catch(e) {
+            nodeName = node.nodeName;
+        }
+        valid = valid && !this.invalidHandleTypes[nodeName];
+        valid = valid && !this.invalidHandleIds[node.id];
+
+        for (var i=0, len=this.invalidHandleClasses.length; valid && i<len; ++i) {
+            valid = !Dom.hasClass(node, this.invalidHandleClasses[i]);
+        }
+
+
+        return valid;
+
+    },
+
+    /**
+     * Create the array of horizontal tick marks if an interval was specified
+     * in setXConstraint().
+     * @method setXTicks
+     * @private
+     */
+    setXTicks: function(iStartX, iTickSize) {
+        this.xTicks = [];
+        this.xTickSize = iTickSize;
+
+        var tickMap = {};
+
+        for (var i = this.initPageX; i >= this.minX; i = i - iTickSize) {
+            if (!tickMap[i]) {
+                this.xTicks[this.xTicks.length] = i;
+                tickMap[i] = true;
+            }
+        }
+
+        for (i = this.initPageX; i <= this.maxX; i = i + iTickSize) {
+            if (!tickMap[i]) {
+                this.xTicks[this.xTicks.length] = i;
+                tickMap[i] = true;
+            }
+        }
+
+        this.xTicks.sort(this.DDM.numericSort) ;
+    },
+
+    /**
+     * Create the array of vertical tick marks if an interval was specified in
+     * setYConstraint().
+     * @method setYTicks
+     * @private
+     */
+    setYTicks: function(iStartY, iTickSize) {
+        this.yTicks = [];
+        this.yTickSize = iTickSize;
+
+        var tickMap = {};
+
+        for (var i = this.initPageY; i >= this.minY; i = i - iTickSize) {
+            if (!tickMap[i]) {
+                this.yTicks[this.yTicks.length] = i;
+                tickMap[i] = true;
+            }
+        }
+
+        for (i = this.initPageY; i <= this.maxY; i = i + iTickSize) {
+            if (!tickMap[i]) {
+                this.yTicks[this.yTicks.length] = i;
+                tickMap[i] = true;
+            }
+        }
+
+        this.yTicks.sort(this.DDM.numericSort) ;
+    },
+
+    /**
+     * By default, the element can be dragged any place on the screen.  Use
+     * this method to limit the horizontal travel of the element.  Pass in
+     * 0,0 for the parameters if you want to lock the drag to the y axis.
+     * @method setXConstraint
+     * @param {int} iLeft the number of pixels the element can move to the left
+     * @param {int} iRight the number of pixels the element can move to the
+     * right
+     * @param {int} iTickSize optional parameter for specifying that the
+     * element
+     * should move iTickSize pixels at a time.
+     */
+    setXConstraint: function(iLeft, iRight, iTickSize) {
+        this.leftConstraint = iLeft;
+        this.rightConstraint = iRight;
+
+        this.minX = this.initPageX - iLeft;
+        this.maxX = this.initPageX + iRight;
+        if (iTickSize) { this.setXTicks(this.initPageX, iTickSize); }
+
+        this.constrainX = true;
+    },
+
+    /**
+     * Clears any constraints applied to this instance.  Also clears ticks
+     * since they can't exist independent of a constraint at this time.
+     * @method clearConstraints
+     */
+    clearConstraints: function() {
+        this.constrainX = false;
+        this.constrainY = false;
+        this.clearTicks();
+    },
+
+    /**
+     * Clears any tick interval defined for this instance
+     * @method clearTicks
+     */
+    clearTicks: function() {
+        this.xTicks = null;
+        this.yTicks = null;
+        this.xTickSize = 0;
+        this.yTickSize = 0;
+    },
+
+    /**
+     * By default, the element can be dragged any place on the screen.  Set
+     * this to limit the vertical travel of the element.  Pass in 0,0 for the
+     * parameters if you want to lock the drag to the x axis.
+     * @method setYConstraint
+     * @param {int} iUp the number of pixels the element can move up
+     * @param {int} iDown the number of pixels the element can move down
+     * @param {int} iTickSize optional parameter for specifying that the
+     * element should move iTickSize pixels at a time.
+     */
+    setYConstraint: function(iUp, iDown, iTickSize) {
+        this.topConstraint = iUp;
+        this.bottomConstraint = iDown;
+
+        this.minY = this.initPageY - iUp;
+        this.maxY = this.initPageY + iDown;
+        if (iTickSize) { this.setYTicks(this.initPageY, iTickSize); }
+
+        this.constrainY = true;
+
+    },
+
+    /**
+     * resetConstraints must be called if you manually reposition a dd element.
+     * @method resetConstraints
+     * @param {boolean} maintainOffset
+     */
+    resetConstraints: function() {
+
+
+        // Maintain offsets if necessary
+        if (this.initPageX || this.initPageX === 0) {
+            // figure out how much this thing has moved
+            var dx = (this.maintainOffset) ? this.lastPageX - this.initPageX : 0;
+            var dy = (this.maintainOffset) ? this.lastPageY - this.initPageY : 0;
+
+            this.setInitPosition(dx, dy);
+
+        // This is the first time we have detected the element's position
+        } else {
+            this.setInitPosition();
+        }
+
+        if (this.constrainX) {
+            this.setXConstraint( this.leftConstraint,
+                                 this.rightConstraint,
+                                 this.xTickSize        );
+        }
+
+        if (this.constrainY) {
+            this.setYConstraint( this.topConstraint,
+                                 this.bottomConstraint,
+                                 this.yTickSize         );
+        }
+    },
+
+    /**
+     * Normally the drag element is moved pixel by pixel, but we can specify
+     * that it move a number of pixels at a time.  This method resolves the
+     * location when we have it set up like this.
+     * @method getTick
+     * @param {int} val where we want to place the object
+     * @param {int[]} tickArray sorted array of valid points
+     * @return {int} the closest tick
+     * @private
+     */
+    getTick: function(val, tickArray) {
+
+        if (!tickArray) {
+            // If tick interval is not defined, it is effectively 1 pixel,
+            // so we return the value passed to us.
+            return val;
+        } else if (tickArray[0] >= val) {
+            // The value is lower than the first tick, so we return the first
+            // tick.
+            return tickArray[0];
+        } else {
+            for (var i=0, len=tickArray.length; i<len; ++i) {
+                var next = i + 1;
+                if (tickArray[next] && tickArray[next] >= val) {
+                    var diff1 = val - tickArray[i];
+                    var diff2 = tickArray[next] - val;
+                    return (diff2 > diff1) ? tickArray[i] : tickArray[next];
+                }
+            }
+
+            // The value is larger than the last tick, so we return the last
+            // tick.
+            return tickArray[tickArray.length - 1];
+        }
+    },
+
+    /**
+     * toString method
+     * @method toString
+     * @return {string} string representation of the dd obj
+     */
+    toString: function() {
+        return ("DragDrop " + this.id);
+    }
+
+};
+
+})();
