@@ -10575,4 +10575,776 @@ Roo.Fx.resize = Roo.Fx.scale;
 
 //When included, Roo.Fx is automatically applied to Element so that all basic
 //effects are available directly via the Element API
-Roo.apply(Roo.Element.prototype, Roo.Fx);
+Roo.apply(Roo.Element.prototype, Roo.Fx);/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+
+/**
+ * @class Roo.CompositeElement
+ * Standard composite class. Creates a Roo.Element for every element in the collection.
+ * <br><br>
+ * <b>NOTE: Although they are not listed, this class supports all of the set/update methods of Roo.Element. All Roo.Element
+ * actions will be performed on all the elements in this collection.</b>
+ * <br><br>
+ * All methods return <i>this</i> and can be chained.
+ <pre><code>
+ var els = Roo.select("#some-el div.some-class", true);
+ // or select directly from an existing element
+ var el = Roo.get('some-el');
+ el.select('div.some-class', true);
+
+ els.setWidth(100); // all elements become 100 width
+ els.hide(true); // all elements fade out and hide
+ // or
+ els.setWidth(100).hide(true);
+ </code></pre>
+ */
+Roo.CompositeElement = function(els){
+    this.elements = [];
+    this.addElements(els);
+};
+Roo.CompositeElement.prototype = {
+    isComposite: true,
+    addElements : function(els){
+        if(!els) return this;
+        if(typeof els == "string"){
+            els = Roo.Element.selectorFunction(els);
+        }
+        var yels = this.elements;
+        var index = yels.length-1;
+        for(var i = 0, len = els.length; i < len; i++) {
+        	yels[++index] = Roo.get(els[i]);
+        }
+        return this;
+    },
+
+    /**
+    * Clears this composite and adds the elements returned by the passed selector.
+    * @param {String/Array} els A string CSS selector, an array of elements or an element
+    * @return {CompositeElement} this
+    */
+    fill : function(els){
+        this.elements = [];
+        this.add(els);
+        return this;
+    },
+
+    /**
+    * Filters this composite to only elements that match the passed selector.
+    * @param {String} selector A string CSS selector
+    * @return {CompositeElement} this
+    */
+    filter : function(selector){
+        var els = [];
+        this.each(function(el){
+            if(el.is(selector)){
+                els[els.length] = el.dom;
+            }
+        });
+        this.fill(els);
+        return this;
+    },
+
+    invoke : function(fn, args){
+        var els = this.elements;
+        for(var i = 0, len = els.length; i < len; i++) {
+        	Roo.Element.prototype[fn].apply(els[i], args);
+        }
+        return this;
+    },
+    /**
+    * Adds elements to this composite.
+    * @param {String/Array} els A string CSS selector, an array of elements or an element
+    * @return {CompositeElement} this
+    */
+    add : function(els){
+        if(typeof els == "string"){
+            this.addElements(Roo.Element.selectorFunction(els));
+        }else if(els.length !== undefined){
+            this.addElements(els);
+        }else{
+            this.addElements([els]);
+        }
+        return this;
+    },
+    /**
+    * Calls the passed function passing (el, this, index) for each element in this composite.
+    * @param {Function} fn The function to call
+    * @param {Object} scope (optional) The <i>this</i> object (defaults to the element)
+    * @return {CompositeElement} this
+    */
+    each : function(fn, scope){
+        var els = this.elements;
+        for(var i = 0, len = els.length; i < len; i++){
+            if(fn.call(scope || els[i], els[i], this, i) === false) {
+                break;
+            }
+        }
+        return this;
+    },
+
+    /**
+     * Returns the Element object at the specified index
+     * @param {Number} index
+     * @return {Roo.Element}
+     */
+    item : function(index){
+        return this.elements[index] || null;
+    },
+
+    /**
+     * Returns the first Element
+     * @return {Roo.Element}
+     */
+    first : function(){
+        return this.item(0);
+    },
+
+    /**
+     * Returns the last Element
+     * @return {Roo.Element}
+     */
+    last : function(){
+        return this.item(this.elements.length-1);
+    },
+
+    /**
+     * Returns the number of elements in this composite
+     * @return Number
+     */
+    getCount : function(){
+        return this.elements.length;
+    },
+
+    /**
+     * Returns true if this composite contains the passed element
+     * @return Boolean
+     */
+    contains : function(el){
+        return this.indexOf(el) !== -1;
+    },
+
+    /**
+     * Returns true if this composite contains the passed element
+     * @return Boolean
+     */
+    indexOf : function(el){
+        return this.elements.indexOf(Roo.get(el));
+    },
+
+
+    /**
+    * Removes the specified element(s).
+    * @param {Mixed} el The id of an element, the Element itself, the index of the element in this composite
+    * or an array of any of those.
+    * @param {Boolean} removeDom (optional) True to also remove the element from the document
+    * @return {CompositeElement} this
+    */
+    removeElement : function(el, removeDom){
+        if(el instanceof Array){
+            for(var i = 0, len = el.length; i < len; i++){
+                this.removeElement(el[i]);
+            }
+            return this;
+        }
+        var index = typeof el == 'number' ? el : this.indexOf(el);
+        if(index !== -1){
+            if(removeDom){
+                var d = this.elements[index];
+                if(d.dom){
+                    d.remove();
+                }else{
+                    d.parentNode.removeChild(d);
+                }
+            }
+            this.elements.splice(index, 1);
+        }
+        return this;
+    },
+
+    /**
+    * Replaces the specified element with the passed element.
+    * @param {String/HTMLElement/Element/Number} el The id of an element, the Element itself, the index of the element in this composite
+    * to replace.
+    * @param {String/HTMLElement/Element} replacement The id of an element or the Element itself.
+    * @param {Boolean} domReplace (Optional) True to remove and replace the element in the document too.
+    * @return {CompositeElement} this
+    */
+    replaceElement : function(el, replacement, domReplace){
+        var index = typeof el == 'number' ? el : this.indexOf(el);
+        if(index !== -1){
+            if(domReplace){
+                this.elements[index].replaceWith(replacement);
+            }else{
+                this.elements.splice(index, 1, Roo.get(replacement))
+            }
+        }
+        return this;
+    },
+
+    /**
+     * Removes all elements.
+     */
+    clear : function(){
+        this.elements = [];
+    }
+};
+(function(){
+    Roo.CompositeElement.createCall = function(proto, fnName){
+        if(!proto[fnName]){
+            proto[fnName] = function(){
+                return this.invoke(fnName, arguments);
+            };
+        }
+    };
+    for(var fnName in Roo.Element.prototype){
+        if(typeof Roo.Element.prototype[fnName] == "function"){
+            Roo.CompositeElement.createCall(Roo.CompositeElement.prototype, fnName);
+        }
+    };
+})();
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.CompositeElementLite
+ * @extends Roo.CompositeElement
+ * Flyweight composite class. Reuses the same Roo.Element for element operations.
+ <pre><code>
+ var els = Roo.select("#some-el div.some-class");
+ // or select directly from an existing element
+ var el = Roo.get('some-el');
+ el.select('div.some-class');
+
+ els.setWidth(100); // all elements become 100 width
+ els.hide(true); // all elements fade out and hide
+ // or
+ els.setWidth(100).hide(true);
+ </code></pre><br><br>
+ * <b>NOTE: Although they are not listed, this class supports all of the set/update methods of Roo.Element. All Roo.Element
+ * actions will be performed on all the elements in this collection.</b>
+ */
+Roo.CompositeElementLite = function(els){
+    Roo.CompositeElementLite.superclass.constructor.call(this, els);
+    this.el = new Roo.Element.Flyweight();
+};
+Roo.extend(Roo.CompositeElementLite, Roo.CompositeElement, {
+    addElements : function(els){
+        if(els){
+            if(els instanceof Array){
+                this.elements = this.elements.concat(els);
+            }else{
+                var yels = this.elements;
+                var index = yels.length-1;
+                for(var i = 0, len = els.length; i < len; i++) {
+                    yels[++index] = els[i];
+                }
+            }
+        }
+        return this;
+    },
+    invoke : function(fn, args){
+        var els = this.elements;
+        var el = this.el;
+        for(var i = 0, len = els.length; i < len; i++) {
+            el.dom = els[i];
+        	Roo.Element.prototype[fn].apply(el, args);
+        }
+        return this;
+    },
+    /**
+     * Returns a flyweight Element of the dom element object at the specified index
+     * @param {Number} index
+     * @return {Roo.Element}
+     */
+    item : function(index){
+        if(!this.elements[index]){
+            return null;
+        }
+        this.el.dom = this.elements[index];
+        return this.el;
+    },
+
+    // fixes scope with flyweight
+    addListener : function(eventName, handler, scope, opt){
+        var els = this.elements;
+        for(var i = 0, len = els.length; i < len; i++) {
+            Roo.EventManager.on(els[i], eventName, handler, scope || els[i], opt);
+        }
+        return this;
+    },
+
+    /**
+    * Calls the passed function passing (el, this, index) for each element in this composite. <b>The element
+    * passed is the flyweight (shared) Roo.Element instance, so if you require a
+    * a reference to the dom node, use el.dom.</b>
+    * @param {Function} fn The function to call
+    * @param {Object} scope (optional) The <i>this</i> object (defaults to the element)
+    * @return {CompositeElement} this
+    */
+    each : function(fn, scope){
+        var els = this.elements;
+        var el = this.el;
+        for(var i = 0, len = els.length; i < len; i++){
+            el.dom = els[i];
+        	if(fn.call(scope || el, el, this, i) === false){
+                break;
+            }
+        }
+        return this;
+    },
+
+    indexOf : function(el){
+        return this.elements.indexOf(Roo.getDom(el));
+    },
+
+    replaceElement : function(el, replacement, domReplace){
+        var index = typeof el == 'number' ? el : this.indexOf(el);
+        if(index !== -1){
+            replacement = Roo.getDom(replacement);
+            if(domReplace){
+                var d = this.elements[index];
+                d.parentNode.insertBefore(replacement, d);
+                d.parentNode.removeChild(d);
+            }
+            this.elements.splice(index, 1, replacement);
+        }
+        return this;
+    }
+});
+Roo.CompositeElementLite.prototype.on = Roo.CompositeElementLite.prototype.addListener;
+
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+ 
+
+/**
+ * @class Roo.data.Connection
+ * @extends Roo.util.Observable
+ * The class encapsulates a connection to the page's originating domain, allowing requests to be made
+ * either to a configured URL, or to a URL specified at request time.<br><br>
+ * <p>
+ * Requests made by this class are asynchronous, and will return immediately. No data from
+ * the server will be available to the statement immediately following the {@link #request} call.
+ * To process returned data, use a callback in the request options object, or an event listener.</p><br>
+ * <p>
+ * Note: If you are doing a file upload, you will not get a normal response object sent back to
+ * your callback or event handler.  Since the upload is handled via in IFRAME, there is no XMLHttpRequest.
+ * The response object is created using the innerHTML of the IFRAME's document as the responseText
+ * property and, if present, the IFRAME's XML document as the responseXML property.</p><br>
+ * This means that a valid XML or HTML document must be returned. If JSON data is required, it is suggested
+ * that it be placed either inside a &lt;textarea> in an HTML document and retrieved from the responseText
+ * using a regex, or inside a CDATA section in an XML document and retrieved from the responseXML using
+ * standard DOM methods.
+ * @constructor
+ * @param {Object} config a configuration object.
+ */
+Roo.data.Connection = function(config){
+    Roo.apply(this, config);
+    this.addEvents({
+        /**
+         * @event beforerequest
+         * Fires before a network request is made to retrieve a data object.
+         * @param {Connection} conn This Connection object.
+         * @param {Object} options The options config object passed to the {@link #request} method.
+         */
+        "beforerequest" : true,
+        /**
+         * @event requestcomplete
+         * Fires if the request was successfully completed.
+         * @param {Connection} conn This Connection object.
+         * @param {Object} response The XHR object containing the response data.
+         * See {@link http://www.w3.org/TR/XMLHttpRequest/} for details.
+         * @param {Object} options The options config object passed to the {@link #request} method.
+         */
+        "requestcomplete" : true,
+        /**
+         * @event requestexception
+         * Fires if an error HTTP status was returned from the server.
+         * See {@link http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html} for details of HTTP status codes.
+         * @param {Connection} conn This Connection object.
+         * @param {Object} response The XHR object containing the response data.
+         * See {@link http://www.w3.org/TR/XMLHttpRequest/} for details.
+         * @param {Object} options The options config object passed to the {@link #request} method.
+         */
+        "requestexception" : true
+    });
+    Roo.data.Connection.superclass.constructor.call(this);
+};
+
+Roo.extend(Roo.data.Connection, Roo.util.Observable, {
+    /**
+     * @cfg {String} url (Optional) The default URL to be used for requests to the server. (defaults to undefined)
+     */
+    /**
+     * @cfg {Object} extraParams (Optional) An object containing properties which are used as
+     * extra parameters to each request made by this object. (defaults to undefined)
+     */
+    /**
+     * @cfg {Object} defaultHeaders (Optional) An object containing request headers which are added
+     *  to each request made by this object. (defaults to undefined)
+     */
+    /**
+     * @cfg {String} method (Optional) The default HTTP method to be used for requests. (defaults to undefined; if not set but parms are present will use POST, otherwise GET)
+     */
+    /**
+     * @cfg {Number} timeout (Optional) The timeout in milliseconds to be used for requests. (defaults to 30000)
+     */
+    timeout : 30000,
+    /**
+     * @cfg {Boolean} autoAbort (Optional) Whether this request should abort any pending requests. (defaults to false)
+     * @type Boolean
+     */
+    autoAbort:false,
+
+    /**
+     * @cfg {Boolean} disableCaching (Optional) True to add a unique cache-buster param to GET requests. (defaults to true)
+     * @type Boolean
+     */
+    disableCaching: true,
+
+    /**
+     * Sends an HTTP request to a remote server.
+     * @param {Object} options An object which may contain the following properties:<ul>
+     * <li><b>url</b> {String} (Optional) The URL to which to send the request. Defaults to configured URL</li>
+     * <li><b>params</b> {Object/String/Function} (Optional) An object containing properties which are used as parameters to the
+     * request, a url encoded string or a function to call to get either.</li>
+     * <li><b>method</b> {String} (Optional) The HTTP method to use for the request. Defaults to the configured method, or
+     * if no method was configured, "GET" if no parameters are being sent, and "POST" if parameters are being sent.</li>
+     * <li><b>callback</b> {Function} (Optional) The function to be called upon receipt of the HTTP response.
+     * The callback is called regardless of success or failure and is passed the following parameters:<ul>
+     * <li>options {Object} The parameter to the request call.</li>
+     * <li>success {Boolean} True if the request succeeded.</li>
+     * <li>response {Object} The XMLHttpRequest object containing the response data.</li>
+     * </ul></li>
+     * <li><b>success</b> {Function} (Optional) The function to be called upon success of the request.
+     * The callback is passed the following parameters:<ul>
+     * <li>response {Object} The XMLHttpRequest object containing the response data.</li>
+     * <li>options {Object} The parameter to the request call.</li>
+     * </ul></li>
+     * <li><b>failure</b> {Function} (Optional) The function to be called upon failure of the request.
+     * The callback is passed the following parameters:<ul>
+     * <li>response {Object} The XMLHttpRequest object containing the response data.</li>
+     * <li>options {Object} The parameter to the request call.</li>
+     * </ul></li>
+     * <li><b>scope</b> {Object} (Optional) The scope in which to execute the callbacks: The "this" object
+     * for the callback function. Defaults to the browser window.</li>
+     * <li><b>form</b> {Object/String} (Optional) A form object or id to pull parameters from.</li>
+     * <li><b>isUpload</b> {Boolean} (Optional) True if the form object is a file upload (will usually be automatically detected).</li>
+     * <li><b>headers</b> {Object} (Optional) Request headers to set for the request.</li>
+     * <li><b>xmlData</b> {Object} (Optional) XML document to use for the post. Note: This will be used instead of
+     * params for the post data. Any params will be appended to the URL.</li>
+     * <li><b>disableCaching</b> {Boolean} (Optional) True to add a unique cache-buster param to GET requests.</li>
+     * </ul>
+     * @return {Number} transactionId
+     */
+    request : function(o){
+        if(this.fireEvent("beforerequest", this, o) !== false){
+            var p = o.params;
+
+            if(typeof p == "function"){
+                p = p.call(o.scope||window, o);
+            }
+            if(typeof p == "object"){
+                p = Roo.urlEncode(o.params);
+            }
+            if(this.extraParams){
+                var extras = Roo.urlEncode(this.extraParams);
+                p = p ? (p + '&' + extras) : extras;
+            }
+
+            var url = o.url || this.url;
+            if(typeof url == 'function'){
+                url = url.call(o.scope||window, o);
+            }
+
+            if(o.form){
+                var form = Roo.getDom(o.form);
+                url = url || form.action;
+
+                var enctype = form.getAttribute("enctype");
+                if(o.isUpload || (enctype && enctype.toLowerCase() == 'multipart/form-data')){
+                    return this.doFormUpload(o, p, url);
+                }
+                var f = Roo.lib.Ajax.serializeForm(form);
+                p = p ? (p + '&' + f) : f;
+            }
+
+            var hs = o.headers;
+            if(this.defaultHeaders){
+                hs = Roo.apply(hs || {}, this.defaultHeaders);
+                if(!o.headers){
+                    o.headers = hs;
+                }
+            }
+
+            var cb = {
+                success: this.handleResponse,
+                failure: this.handleFailure,
+                scope: this,
+                argument: {options: o},
+                timeout : this.timeout
+            };
+
+            var method = o.method||this.method||(p ? "POST" : "GET");
+
+            if(method == 'GET' && (this.disableCaching && o.disableCaching !== false) || o.disableCaching === true){
+                url += (url.indexOf('?') != -1 ? '&' : '?') + '_dc=' + (new Date().getTime());
+            }
+
+            if(typeof o.autoAbort == 'boolean'){ // options gets top priority
+                if(o.autoAbort){
+                    this.abort();
+                }
+            }else if(this.autoAbort !== false){
+                this.abort();
+            }
+
+            if((method == 'GET' && p) || o.xmlData){
+                url += (url.indexOf('?') != -1 ? '&' : '?') + p;
+                p = '';
+            }
+            this.transId = Roo.lib.Ajax.request(method, url, cb, p, o);
+            return this.transId;
+        }else{
+            Roo.callback(o.callback, o.scope, [o, null, null]);
+            return null;
+        }
+    },
+
+    /**
+     * Determine whether this object has a request outstanding.
+     * @param {Number} transactionId (Optional) defaults to the last transaction
+     * @return {Boolean} True if there is an outstanding request.
+     */
+    isLoading : function(transId){
+        if(transId){
+            return Roo.lib.Ajax.isCallInProgress(transId);
+        }else{
+            return this.transId ? true : false;
+        }
+    },
+
+    /**
+     * Aborts any outstanding request.
+     * @param {Number} transactionId (Optional) defaults to the last transaction
+     */
+    abort : function(transId){
+        if(transId || this.isLoading()){
+            Roo.lib.Ajax.abort(transId || this.transId);
+        }
+    },
+
+    // private
+    handleResponse : function(response){
+        this.transId = false;
+        var options = response.argument.options;
+        response.argument = options ? options.argument : null;
+        this.fireEvent("requestcomplete", this, response, options);
+        Roo.callback(options.success, options.scope, [response, options]);
+        Roo.callback(options.callback, options.scope, [options, true, response]);
+    },
+
+    // private
+    handleFailure : function(response, e){
+        this.transId = false;
+        var options = response.argument.options;
+        response.argument = options ? options.argument : null;
+        this.fireEvent("requestexception", this, response, options, e);
+        Roo.callback(options.failure, options.scope, [response, options]);
+        Roo.callback(options.callback, options.scope, [options, false, response]);
+    },
+
+    // private
+    doFormUpload : function(o, ps, url){
+        var id = Roo.id();
+        var frame = document.createElement('iframe');
+        frame.id = id;
+        frame.name = id;
+        frame.className = 'x-hidden';
+        if(Roo.isIE){
+            frame.src = Roo.SSL_SECURE_URL;
+        }
+        document.body.appendChild(frame);
+
+        if(Roo.isIE){
+           document.frames[id].name = id;
+        }
+
+        var form = Roo.getDom(o.form);
+        form.target = id;
+        form.method = 'POST';
+        form.enctype = form.encoding = 'multipart/form-data';
+        if(url){
+            form.action = url;
+        }
+
+        var hiddens, hd;
+        if(ps){ // add dynamic params
+            hiddens = [];
+            ps = Roo.urlDecode(ps, false);
+            for(var k in ps){
+                if(ps.hasOwnProperty(k)){
+                    hd = document.createElement('input');
+                    hd.type = 'hidden';
+                    hd.name = k;
+                    hd.value = ps[k];
+                    form.appendChild(hd);
+                    hiddens.push(hd);
+                }
+            }
+        }
+
+        function cb(){
+            var r = {  // bogus response object
+                responseText : '',
+                responseXML : null
+            };
+
+            r.argument = o ? o.argument : null;
+
+            try { //
+                var doc;
+                if(Roo.isIE){
+                    doc = frame.contentWindow.document;
+                }else {
+                    doc = (frame.contentDocument || window.frames[id].document);
+                }
+                if(doc && doc.body){
+                    r.responseText = doc.body.innerHTML;
+                }
+                if(doc && doc.XMLDocument){
+                    r.responseXML = doc.XMLDocument;
+                }else {
+                    r.responseXML = doc;
+                }
+            }
+            catch(e) {
+                // ignore
+            }
+
+            Roo.EventManager.removeListener(frame, 'load', cb, this);
+
+            this.fireEvent("requestcomplete", this, r, o);
+            Roo.callback(o.success, o.scope, [r, o]);
+            Roo.callback(o.callback, o.scope, [o, true, r]);
+
+            setTimeout(function(){document.body.removeChild(frame);}, 100);
+        }
+
+        Roo.EventManager.on(frame, 'load', cb, this);
+        form.submit();
+
+        if(hiddens){ // remove dynamic params
+            for(var i = 0, len = hiddens.length; i < len; i++){
+                form.removeChild(hiddens[i]);
+            }
+        }
+    }
+});
+
+/**
+ * @class Roo.Ajax
+ * @extends Roo.data.Connection
+ * Global Ajax request class.
+ *
+ * @singleton
+ */
+Roo.Ajax = new Roo.data.Connection({
+    // fix up the docs
+   /**
+     * @cfg {String} url @hide
+     */
+    /**
+     * @cfg {Object} extraParams @hide
+     */
+    /**
+     * @cfg {Object} defaultHeaders @hide
+     */
+    /**
+     * @cfg {String} method (Optional) @hide
+     */
+    /**
+     * @cfg {Number} timeout (Optional) @hide
+     */
+    /**
+     * @cfg {Boolean} autoAbort (Optional) @hide
+     */
+
+    /**
+     * @cfg {Boolean} disableCaching (Optional) @hide
+     */
+
+    /**
+     * @property  disableCaching
+     * True to add a unique cache-buster param to GET requests. (defaults to true)
+     * @type Boolean
+     */
+    /**
+     * @property  url
+     * The default URL to be used for requests to the server. (defaults to undefined)
+     * @type String
+     */
+    /**
+     * @property  extraParams
+     * An object containing properties which are used as
+     * extra parameters to each request made by this object. (defaults to undefined)
+     * @type Object
+     */
+    /**
+     * @property  defaultHeaders
+     * An object containing request headers which are added to each request made by this object. (defaults to undefined)
+     * @type Object
+     */
+    /**
+     * @property  method
+     * The default HTTP method to be used for requests. (defaults to undefined; if not set but parms are present will use POST, otherwise GET)
+     * @type String
+     */
+    /**
+     * @property  timeout
+     * The timeout in milliseconds to be used for requests. (defaults to 30000)
+     * @type Number
+     */
+
+    /**
+     * @property  autoAbort
+     * Whether a new request should abort any pending requests. (defaults to false)
+     * @type Boolean
+     */
+    autoAbort : false,
+
+    /**
+     * Serialize the passed form into a url encoded string
+     * @param {String/HTMLElement} form
+     * @return {String}
+     */
+    serializeForm : function(form){
+        return Roo.lib.Ajax.serializeForm(form);
+    }
+});
