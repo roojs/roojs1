@@ -22258,4 +22258,922 @@ Roo.extend(Roo.Layer, Roo.Element, {
         }
     }
 });
-})();
+})();/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+
+/**
+ * @class Roo.Shadow
+ * Simple class that can provide a shadow effect for any element.  Note that the element MUST be absolutely positioned,
+ * and the shadow does not provide any shimming.  This should be used only in simple cases -- for more advanced
+ * functionality that can also provide the same shadow effect, see the {@link Roo.Layer} class.
+ * @constructor
+ * Create a new Shadow
+ * @param {Object} config The config object
+ */
+Roo.Shadow = function(config){
+    Roo.apply(this, config);
+    if(typeof this.mode != "string"){
+        this.mode = this.defaultMode;
+    }
+    var o = this.offset, a = {h: 0};
+    var rad = Math.floor(this.offset/2);
+    switch(this.mode.toLowerCase()){ // all this hideous nonsense calculates the various offsets for shadows
+        case "drop":
+            a.w = 0;
+            a.l = a.t = o;
+            a.t -= 1;
+            if(Roo.isIE){
+                a.l -= this.offset + rad;
+                a.t -= this.offset + rad;
+                a.w -= rad;
+                a.h -= rad;
+                a.t += 1;
+            }
+        break;
+        case "sides":
+            a.w = (o*2);
+            a.l = -o;
+            a.t = o-1;
+            if(Roo.isIE){
+                a.l -= (this.offset - rad);
+                a.t -= this.offset + rad;
+                a.l += 1;
+                a.w -= (this.offset - rad)*2;
+                a.w -= rad + 1;
+                a.h -= 1;
+            }
+        break;
+        case "frame":
+            a.w = a.h = (o*2);
+            a.l = a.t = -o;
+            a.t += 1;
+            a.h -= 2;
+            if(Roo.isIE){
+                a.l -= (this.offset - rad);
+                a.t -= (this.offset - rad);
+                a.l += 1;
+                a.w -= (this.offset + rad + 1);
+                a.h -= (this.offset + rad);
+                a.h += 1;
+            }
+        break;
+    };
+
+    this.adjusts = a;
+};
+
+Roo.Shadow.prototype = {
+    /**
+     * @cfg {String} mode
+     * The shadow display mode.  Supports the following options:<br />
+     * sides: Shadow displays on both sides and bottom only<br />
+     * frame: Shadow displays equally on all four sides<br />
+     * drop: Traditional bottom-right drop shadow (default)
+     */
+    /**
+     * @cfg {String} offset
+     * The number of pixels to offset the shadow from the element (defaults to 4)
+     */
+    offset: 4,
+
+    // private
+    defaultMode: "drop",
+
+    /**
+     * Displays the shadow under the target element
+     * @param {String/HTMLElement/Element} targetEl The id or element under which the shadow should display
+     */
+    show : function(target){
+        target = Roo.get(target);
+        if(!this.el){
+            this.el = Roo.Shadow.Pool.pull();
+            if(this.el.dom.nextSibling != target.dom){
+                this.el.insertBefore(target);
+            }
+        }
+        this.el.setStyle("z-index", this.zIndex || parseInt(target.getStyle("z-index"), 10)-1);
+        if(Roo.isIE){
+            this.el.dom.style.filter="progid:DXImageTransform.Microsoft.alpha(opacity=50) progid:DXImageTransform.Microsoft.Blur(pixelradius="+(this.offset)+")";
+        }
+        this.realign(
+            target.getLeft(true),
+            target.getTop(true),
+            target.getWidth(),
+            target.getHeight()
+        );
+        this.el.dom.style.display = "block";
+    },
+
+    /**
+     * Returns true if the shadow is visible, else false
+     */
+    isVisible : function(){
+        return this.el ? true : false;  
+    },
+
+    /**
+     * Direct alignment when values are already available. Show must be called at least once before
+     * calling this method to ensure it is initialized.
+     * @param {Number} left The target element left position
+     * @param {Number} top The target element top position
+     * @param {Number} width The target element width
+     * @param {Number} height The target element height
+     */
+    realign : function(l, t, w, h){
+        if(!this.el){
+            return;
+        }
+        var a = this.adjusts, d = this.el.dom, s = d.style;
+        var iea = 0;
+        s.left = (l+a.l)+"px";
+        s.top = (t+a.t)+"px";
+        var sw = (w+a.w), sh = (h+a.h), sws = sw +"px", shs = sh + "px";
+        if(s.width != sws || s.height != shs){
+            s.width = sws;
+            s.height = shs;
+            if(!Roo.isIE){
+                var cn = d.childNodes;
+                var sww = Math.max(0, (sw-12))+"px";
+                cn[0].childNodes[1].style.width = sww;
+                cn[1].childNodes[1].style.width = sww;
+                cn[2].childNodes[1].style.width = sww;
+                cn[1].style.height = Math.max(0, (sh-12))+"px";
+            }
+        }
+    },
+
+    /**
+     * Hides this shadow
+     */
+    hide : function(){
+        if(this.el){
+            this.el.dom.style.display = "none";
+            Roo.Shadow.Pool.push(this.el);
+            delete this.el;
+        }
+    },
+
+    /**
+     * Adjust the z-index of this shadow
+     * @param {Number} zindex The new z-index
+     */
+    setZIndex : function(z){
+        this.zIndex = z;
+        if(this.el){
+            this.el.setStyle("z-index", z);
+        }
+    }
+};
+
+// Private utility class that manages the internal Shadow cache
+Roo.Shadow.Pool = function(){
+    var p = [];
+    var markup = Roo.isIE ?
+                 '<div class="x-ie-shadow"></div>' :
+                 '<div class="x-shadow"><div class="xst"><div class="xstl"></div><div class="xstc"></div><div class="xstr"></div></div><div class="xsc"><div class="xsml"></div><div class="xsmc"></div><div class="xsmr"></div></div><div class="xsb"><div class="xsbl"></div><div class="xsbc"></div><div class="xsbr"></div></div></div>';
+    return {
+        pull : function(){
+            var sh = p.shift();
+            if(!sh){
+                sh = Roo.get(Roo.DomHelper.insertHtml("beforeBegin", document.body.firstChild, markup));
+                sh.autoBoxAdjust = false;
+            }
+            return sh;
+        },
+
+        push : function(sh){
+            p.push(sh);
+        }
+    };
+}();/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.BoxComponent
+ * @extends Roo.Component
+ * Base class for any visual {@link Roo.Component} that uses a box container.  BoxComponent provides automatic box
+ * model adjustments for sizing and positioning and will work correctly withnin the Component rendering model.  All
+ * container classes should subclass BoxComponent so that they will work consistently when nested within other Ext
+ * layout containers.
+ * @constructor
+ * @param {Roo.Element/String/Object} config The configuration options.
+ */
+Roo.BoxComponent = function(config){
+    Roo.Component.call(this, config);
+    this.addEvents({
+        /**
+         * @event resize
+         * Fires after the component is resized.
+	     * @param {Roo.Component} this
+	     * @param {Number} adjWidth The box-adjusted width that was set
+	     * @param {Number} adjHeight The box-adjusted height that was set
+	     * @param {Number} rawWidth The width that was originally specified
+	     * @param {Number} rawHeight The height that was originally specified
+	     */
+        resize : true,
+        /**
+         * @event move
+         * Fires after the component is moved.
+	     * @param {Roo.Component} this
+	     * @param {Number} x The new x position
+	     * @param {Number} y The new y position
+	     */
+        move : true
+    });
+};
+
+Roo.extend(Roo.BoxComponent, Roo.Component, {
+    // private, set in afterRender to signify that the component has been rendered
+    boxReady : false,
+    // private, used to defer height settings to subclasses
+    deferHeight: false,
+    /** @cfg {Number} width
+     * width (optional) size of component
+     */
+     /** @cfg {Number} height
+     * height (optional) size of component
+     */
+     
+    /**
+     * Sets the width and height of the component.  This method fires the resize event.  This method can accept
+     * either width and height as separate numeric arguments, or you can pass a size object like {width:10, height:20}.
+     * @param {Number/Object} width The new width to set, or a size object in the format {width, height}
+     * @param {Number} height The new height to set (not required if a size object is passed as the first arg)
+     * @return {Roo.BoxComponent} this
+     */
+    setSize : function(w, h){
+        // support for standard size objects
+        if(typeof w == 'object'){
+            h = w.height;
+            w = w.width;
+        }
+        // not rendered
+        if(!this.boxReady){
+            this.width = w;
+            this.height = h;
+            return this;
+        }
+
+        // prevent recalcs when not needed
+        if(this.lastSize && this.lastSize.width == w && this.lastSize.height == h){
+            return this;
+        }
+        this.lastSize = {width: w, height: h};
+
+        var adj = this.adjustSize(w, h);
+        var aw = adj.width, ah = adj.height;
+        if(aw !== undefined || ah !== undefined){ // this code is nasty but performs better with floaters
+            var rz = this.getResizeEl();
+            if(!this.deferHeight && aw !== undefined && ah !== undefined){
+                rz.setSize(aw, ah);
+            }else if(!this.deferHeight && ah !== undefined){
+                rz.setHeight(ah);
+            }else if(aw !== undefined){
+                rz.setWidth(aw);
+            }
+            this.onResize(aw, ah, w, h);
+            this.fireEvent('resize', this, aw, ah, w, h);
+        }
+        return this;
+    },
+
+    /**
+     * Gets the current size of the component's underlying element.
+     * @return {Object} An object containing the element's size {width: (element width), height: (element height)}
+     */
+    getSize : function(){
+        return this.el.getSize();
+    },
+
+    /**
+     * Gets the current XY position of the component's underlying element.
+     * @param {Boolean} local (optional) If true the element's left and top are returned instead of page XY (defaults to false)
+     * @return {Array} The XY position of the element (e.g., [100, 200])
+     */
+    getPosition : function(local){
+        if(local === true){
+            return [this.el.getLeft(true), this.el.getTop(true)];
+        }
+        return this.xy || this.el.getXY();
+    },
+
+    /**
+     * Gets the current box measurements of the component's underlying element.
+     * @param {Boolean} local (optional) If true the element's left and top are returned instead of page XY (defaults to false)
+     * @returns {Object} box An object in the format {x, y, width, height}
+     */
+    getBox : function(local){
+        var s = this.el.getSize();
+        if(local){
+            s.x = this.el.getLeft(true);
+            s.y = this.el.getTop(true);
+        }else{
+            var xy = this.xy || this.el.getXY();
+            s.x = xy[0];
+            s.y = xy[1];
+        }
+        return s;
+    },
+
+    /**
+     * Sets the current box measurements of the component's underlying element.
+     * @param {Object} box An object in the format {x, y, width, height}
+     * @returns {Roo.BoxComponent} this
+     */
+    updateBox : function(box){
+        this.setSize(box.width, box.height);
+        this.setPagePosition(box.x, box.y);
+        return this;
+    },
+
+    // protected
+    getResizeEl : function(){
+        return this.resizeEl || this.el;
+    },
+
+    // protected
+    getPositionEl : function(){
+        return this.positionEl || this.el;
+    },
+
+    /**
+     * Sets the left and top of the component.  To set the page XY position instead, use {@link #setPagePosition}.
+     * This method fires the move event.
+     * @param {Number} left The new left
+     * @param {Number} top The new top
+     * @returns {Roo.BoxComponent} this
+     */
+    setPosition : function(x, y){
+        this.x = x;
+        this.y = y;
+        if(!this.boxReady){
+            return this;
+        }
+        var adj = this.adjustPosition(x, y);
+        var ax = adj.x, ay = adj.y;
+
+        var el = this.getPositionEl();
+        if(ax !== undefined || ay !== undefined){
+            if(ax !== undefined && ay !== undefined){
+                el.setLeftTop(ax, ay);
+            }else if(ax !== undefined){
+                el.setLeft(ax);
+            }else if(ay !== undefined){
+                el.setTop(ay);
+            }
+            this.onPosition(ax, ay);
+            this.fireEvent('move', this, ax, ay);
+        }
+        return this;
+    },
+
+    /**
+     * Sets the page XY position of the component.  To set the left and top instead, use {@link #setPosition}.
+     * This method fires the move event.
+     * @param {Number} x The new x position
+     * @param {Number} y The new y position
+     * @returns {Roo.BoxComponent} this
+     */
+    setPagePosition : function(x, y){
+        this.pageX = x;
+        this.pageY = y;
+        if(!this.boxReady){
+            return;
+        }
+        if(x === undefined || y === undefined){ // cannot translate undefined points
+            return;
+        }
+        var p = this.el.translatePoints(x, y);
+        this.setPosition(p.left, p.top);
+        return this;
+    },
+
+    // private
+    onRender : function(ct, position){
+        Roo.BoxComponent.superclass.onRender.call(this, ct, position);
+        if(this.resizeEl){
+            this.resizeEl = Roo.get(this.resizeEl);
+        }
+        if(this.positionEl){
+            this.positionEl = Roo.get(this.positionEl);
+        }
+    },
+
+    // private
+    afterRender : function(){
+        Roo.BoxComponent.superclass.afterRender.call(this);
+        this.boxReady = true;
+        this.setSize(this.width, this.height);
+        if(this.x || this.y){
+            this.setPosition(this.x, this.y);
+        }
+        if(this.pageX || this.pageY){
+            this.setPagePosition(this.pageX, this.pageY);
+        }
+    },
+
+    /**
+     * Force the component's size to recalculate based on the underlying element's current height and width.
+     * @returns {Roo.BoxComponent} this
+     */
+    syncSize : function(){
+        delete this.lastSize;
+        this.setSize(this.el.getWidth(), this.el.getHeight());
+        return this;
+    },
+
+    /**
+     * Called after the component is resized, this method is empty by default but can be implemented by any
+     * subclass that needs to perform custom logic after a resize occurs.
+     * @param {Number} adjWidth The box-adjusted width that was set
+     * @param {Number} adjHeight The box-adjusted height that was set
+     * @param {Number} rawWidth The width that was originally specified
+     * @param {Number} rawHeight The height that was originally specified
+     */
+    onResize : function(adjWidth, adjHeight, rawWidth, rawHeight){
+
+    },
+
+    /**
+     * Called after the component is moved, this method is empty by default but can be implemented by any
+     * subclass that needs to perform custom logic after a move occurs.
+     * @param {Number} x The new x position
+     * @param {Number} y The new y position
+     */
+    onPosition : function(x, y){
+
+    },
+
+    // private
+    adjustSize : function(w, h){
+        if(this.autoWidth){
+            w = 'auto';
+        }
+        if(this.autoHeight){
+            h = 'auto';
+        }
+        return {width : w, height: h};
+    },
+
+    // private
+    adjustPosition : function(x, y){
+        return {x : x, y: y};
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+
+/**
+ * @class Roo.SplitBar
+ * @extends Roo.util.Observable
+ * Creates draggable splitter bar functionality from two elements (element to be dragged and element to be resized).
+ * <br><br>
+ * Usage:
+ * <pre><code>
+var split = new Roo.SplitBar("elementToDrag", "elementToSize",
+                   Roo.SplitBar.HORIZONTAL, Roo.SplitBar.LEFT);
+split.setAdapter(new Roo.SplitBar.AbsoluteLayoutAdapter("container"));
+split.minSize = 100;
+split.maxSize = 600;
+split.animate = true;
+split.on('moved', splitterMoved);
+</code></pre>
+ * @constructor
+ * Create a new SplitBar
+ * @param {String/HTMLElement/Roo.Element} dragElement The element to be dragged and act as the SplitBar. 
+ * @param {String/HTMLElement/Roo.Element} resizingElement The element to be resized based on where the SplitBar element is dragged 
+ * @param {Number} orientation (optional) Either Roo.SplitBar.HORIZONTAL or Roo.SplitBar.VERTICAL. (Defaults to HORIZONTAL)
+ * @param {Number} placement (optional) Either Roo.SplitBar.LEFT or Roo.SplitBar.RIGHT for horizontal or  
+                        Roo.SplitBar.TOP or Roo.SplitBar.BOTTOM for vertical. (By default, this is determined automatically by the initial
+                        position of the SplitBar).
+ */
+Roo.SplitBar = function(dragElement, resizingElement, orientation, placement, existingProxy){
+    
+    /** @private */
+    this.el = Roo.get(dragElement, true);
+    this.el.dom.unselectable = "on";
+    /** @private */
+    this.resizingEl = Roo.get(resizingElement, true);
+
+    /**
+     * @private
+     * The orientation of the split. Either Roo.SplitBar.HORIZONTAL or Roo.SplitBar.VERTICAL. (Defaults to HORIZONTAL)
+     * Note: If this is changed after creating the SplitBar, the placement property must be manually updated
+     * @type Number
+     */
+    this.orientation = orientation || Roo.SplitBar.HORIZONTAL;
+    
+    /**
+     * The minimum size of the resizing element. (Defaults to 0)
+     * @type Number
+     */
+    this.minSize = 0;
+    
+    /**
+     * The maximum size of the resizing element. (Defaults to 2000)
+     * @type Number
+     */
+    this.maxSize = 2000;
+    
+    /**
+     * Whether to animate the transition to the new size
+     * @type Boolean
+     */
+    this.animate = false;
+    
+    /**
+     * Whether to create a transparent shim that overlays the page when dragging, enables dragging across iframes.
+     * @type Boolean
+     */
+    this.useShim = false;
+    
+    /** @private */
+    this.shim = null;
+    
+    if(!existingProxy){
+        /** @private */
+        this.proxy = Roo.SplitBar.createProxy(this.orientation);
+    }else{
+        this.proxy = Roo.get(existingProxy).dom;
+    }
+    /** @private */
+    this.dd = new Roo.dd.DDProxy(this.el.dom.id, "XSplitBars", {dragElId : this.proxy.id});
+    
+    /** @private */
+    this.dd.b4StartDrag = this.onStartProxyDrag.createDelegate(this);
+    
+    /** @private */
+    this.dd.endDrag = this.onEndProxyDrag.createDelegate(this);
+    
+    /** @private */
+    this.dragSpecs = {};
+    
+    /**
+     * @private The adapter to use to positon and resize elements
+     */
+    this.adapter = new Roo.SplitBar.BasicLayoutAdapter();
+    this.adapter.init(this);
+    
+    if(this.orientation == Roo.SplitBar.HORIZONTAL){
+        /** @private */
+        this.placement = placement || (this.el.getX() > this.resizingEl.getX() ? Roo.SplitBar.LEFT : Roo.SplitBar.RIGHT);
+        this.el.addClass("x-splitbar-h");
+    }else{
+        /** @private */
+        this.placement = placement || (this.el.getY() > this.resizingEl.getY() ? Roo.SplitBar.TOP : Roo.SplitBar.BOTTOM);
+        this.el.addClass("x-splitbar-v");
+    }
+    
+    this.addEvents({
+        /**
+         * @event resize
+         * Fires when the splitter is moved (alias for {@link #event-moved})
+         * @param {Roo.SplitBar} this
+         * @param {Number} newSize the new width or height
+         */
+        "resize" : true,
+        /**
+         * @event moved
+         * Fires when the splitter is moved
+         * @param {Roo.SplitBar} this
+         * @param {Number} newSize the new width or height
+         */
+        "moved" : true,
+        /**
+         * @event beforeresize
+         * Fires before the splitter is dragged
+         * @param {Roo.SplitBar} this
+         */
+        "beforeresize" : true,
+
+        "beforeapply" : true
+    });
+
+    Roo.util.Observable.call(this);
+};
+
+Roo.extend(Roo.SplitBar, Roo.util.Observable, {
+    onStartProxyDrag : function(x, y){
+        this.fireEvent("beforeresize", this);
+        if(!this.overlay){
+            var o = Roo.DomHelper.insertFirst(document.body,  {cls: "x-drag-overlay", html: "&#160;"}, true);
+            o.unselectable();
+            o.enableDisplayMode("block");
+            // all splitbars share the same overlay
+            Roo.SplitBar.prototype.overlay = o;
+        }
+        this.overlay.setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
+        this.overlay.show();
+        Roo.get(this.proxy).setDisplayed("block");
+        var size = this.adapter.getElementSize(this);
+        this.activeMinSize = this.getMinimumSize();;
+        this.activeMaxSize = this.getMaximumSize();;
+        var c1 = size - this.activeMinSize;
+        var c2 = Math.max(this.activeMaxSize - size, 0);
+        if(this.orientation == Roo.SplitBar.HORIZONTAL){
+            this.dd.resetConstraints();
+            this.dd.setXConstraint(
+                this.placement == Roo.SplitBar.LEFT ? c1 : c2, 
+                this.placement == Roo.SplitBar.LEFT ? c2 : c1
+            );
+            this.dd.setYConstraint(0, 0);
+        }else{
+            this.dd.resetConstraints();
+            this.dd.setXConstraint(0, 0);
+            this.dd.setYConstraint(
+                this.placement == Roo.SplitBar.TOP ? c1 : c2, 
+                this.placement == Roo.SplitBar.TOP ? c2 : c1
+            );
+         }
+        this.dragSpecs.startSize = size;
+        this.dragSpecs.startPoint = [x, y];
+        Roo.dd.DDProxy.prototype.b4StartDrag.call(this.dd, x, y);
+    },
+    
+    /** 
+     * @private Called after the drag operation by the DDProxy
+     */
+    onEndProxyDrag : function(e){
+        Roo.get(this.proxy).setDisplayed(false);
+        var endPoint = Roo.lib.Event.getXY(e);
+        if(this.overlay){
+            this.overlay.hide();
+        }
+        var newSize;
+        if(this.orientation == Roo.SplitBar.HORIZONTAL){
+            newSize = this.dragSpecs.startSize + 
+                (this.placement == Roo.SplitBar.LEFT ?
+                    endPoint[0] - this.dragSpecs.startPoint[0] :
+                    this.dragSpecs.startPoint[0] - endPoint[0]
+                );
+        }else{
+            newSize = this.dragSpecs.startSize + 
+                (this.placement == Roo.SplitBar.TOP ?
+                    endPoint[1] - this.dragSpecs.startPoint[1] :
+                    this.dragSpecs.startPoint[1] - endPoint[1]
+                );
+        }
+        newSize = Math.min(Math.max(newSize, this.activeMinSize), this.activeMaxSize);
+        if(newSize != this.dragSpecs.startSize){
+            if(this.fireEvent('beforeapply', this, newSize) !== false){
+                this.adapter.setElementSize(this, newSize);
+                this.fireEvent("moved", this, newSize);
+                this.fireEvent("resize", this, newSize);
+            }
+        }
+    },
+    
+    /**
+     * Get the adapter this SplitBar uses
+     * @return The adapter object
+     */
+    getAdapter : function(){
+        return this.adapter;
+    },
+    
+    /**
+     * Set the adapter this SplitBar uses
+     * @param {Object} adapter A SplitBar adapter object
+     */
+    setAdapter : function(adapter){
+        this.adapter = adapter;
+        this.adapter.init(this);
+    },
+    
+    /**
+     * Gets the minimum size for the resizing element
+     * @return {Number} The minimum size
+     */
+    getMinimumSize : function(){
+        return this.minSize;
+    },
+    
+    /**
+     * Sets the minimum size for the resizing element
+     * @param {Number} minSize The minimum size
+     */
+    setMinimumSize : function(minSize){
+        this.minSize = minSize;
+    },
+    
+    /**
+     * Gets the maximum size for the resizing element
+     * @return {Number} The maximum size
+     */
+    getMaximumSize : function(){
+        return this.maxSize;
+    },
+    
+    /**
+     * Sets the maximum size for the resizing element
+     * @param {Number} maxSize The maximum size
+     */
+    setMaximumSize : function(maxSize){
+        this.maxSize = maxSize;
+    },
+    
+    /**
+     * Sets the initialize size for the resizing element
+     * @param {Number} size The initial size
+     */
+    setCurrentSize : function(size){
+        var oldAnimate = this.animate;
+        this.animate = false;
+        this.adapter.setElementSize(this, size);
+        this.animate = oldAnimate;
+    },
+    
+    /**
+     * Destroy this splitbar. 
+     * @param {Boolean} removeEl True to remove the element
+     */
+    destroy : function(removeEl){
+        if(this.shim){
+            this.shim.remove();
+        }
+        this.dd.unreg();
+        this.proxy.parentNode.removeChild(this.proxy);
+        if(removeEl){
+            this.el.remove();
+        }
+    }
+});
+
+/**
+ * @private static Create our own proxy element element. So it will be the same same size on all browsers, we won't use borders. Instead we use a background color.
+ */
+Roo.SplitBar.createProxy = function(dir){
+    var proxy = new Roo.Element(document.createElement("div"));
+    proxy.unselectable();
+    var cls = 'x-splitbar-proxy';
+    proxy.addClass(cls + ' ' + (dir == Roo.SplitBar.HORIZONTAL ? cls +'-h' : cls + '-v'));
+    document.body.appendChild(proxy.dom);
+    return proxy.dom;
+};
+
+/** 
+ * @class Roo.SplitBar.BasicLayoutAdapter
+ * Default Adapter. It assumes the splitter and resizing element are not positioned
+ * elements and only gets/sets the width of the element. Generally used for table based layouts.
+ */
+Roo.SplitBar.BasicLayoutAdapter = function(){
+};
+
+Roo.SplitBar.BasicLayoutAdapter.prototype = {
+    // do nothing for now
+    init : function(s){
+    
+    },
+    /**
+     * Called before drag operations to get the current size of the resizing element. 
+     * @param {Roo.SplitBar} s The SplitBar using this adapter
+     */
+     getElementSize : function(s){
+        if(s.orientation == Roo.SplitBar.HORIZONTAL){
+            return s.resizingEl.getWidth();
+        }else{
+            return s.resizingEl.getHeight();
+        }
+    },
+    
+    /**
+     * Called after drag operations to set the size of the resizing element.
+     * @param {Roo.SplitBar} s The SplitBar using this adapter
+     * @param {Number} newSize The new size to set
+     * @param {Function} onComplete A function to be invoked when resizing is complete
+     */
+    setElementSize : function(s, newSize, onComplete){
+        if(s.orientation == Roo.SplitBar.HORIZONTAL){
+            if(!s.animate){
+                s.resizingEl.setWidth(newSize);
+                if(onComplete){
+                    onComplete(s, newSize);
+                }
+            }else{
+                s.resizingEl.setWidth(newSize, true, .1, onComplete, 'easeOut');
+            }
+        }else{
+            
+            if(!s.animate){
+                s.resizingEl.setHeight(newSize);
+                if(onComplete){
+                    onComplete(s, newSize);
+                }
+            }else{
+                s.resizingEl.setHeight(newSize, true, .1, onComplete, 'easeOut');
+            }
+        }
+    }
+};
+
+/** 
+ *@class Roo.SplitBar.AbsoluteLayoutAdapter
+ * @extends Roo.SplitBar.BasicLayoutAdapter
+ * Adapter that  moves the splitter element to align with the resized sizing element. 
+ * Used with an absolute positioned SplitBar.
+ * @param {String/HTMLElement/Roo.Element} container The container that wraps around the absolute positioned content. If it's
+ * document.body, make sure you assign an id to the body element.
+ */
+Roo.SplitBar.AbsoluteLayoutAdapter = function(container){
+    this.basic = new Roo.SplitBar.BasicLayoutAdapter();
+    this.container = Roo.get(container);
+};
+
+Roo.SplitBar.AbsoluteLayoutAdapter.prototype = {
+    init : function(s){
+        this.basic.init(s);
+    },
+    
+    getElementSize : function(s){
+        return this.basic.getElementSize(s);
+    },
+    
+    setElementSize : function(s, newSize, onComplete){
+        this.basic.setElementSize(s, newSize, this.moveSplitter.createDelegate(this, [s]));
+    },
+    
+    moveSplitter : function(s){
+        var yes = Roo.SplitBar;
+        switch(s.placement){
+            case yes.LEFT:
+                s.el.setX(s.resizingEl.getRight());
+                break;
+            case yes.RIGHT:
+                s.el.setStyle("right", (this.container.getWidth() - s.resizingEl.getLeft()) + "px");
+                break;
+            case yes.TOP:
+                s.el.setY(s.resizingEl.getBottom());
+                break;
+            case yes.BOTTOM:
+                s.el.setY(s.resizingEl.getTop() - s.el.getHeight());
+                break;
+        }
+    }
+};
+
+/**
+ * Orientation constant - Create a vertical SplitBar
+ * @static
+ * @type Number
+ */
+Roo.SplitBar.VERTICAL = 1;
+
+/**
+ * Orientation constant - Create a horizontal SplitBar
+ * @static
+ * @type Number
+ */
+Roo.SplitBar.HORIZONTAL = 2;
+
+/**
+ * Placement constant - The resizing element is to the left of the splitter element
+ * @static
+ * @type Number
+ */
+Roo.SplitBar.LEFT = 1;
+
+/**
+ * Placement constant - The resizing element is to the right of the splitter element
+ * @static
+ * @type Number
+ */
+Roo.SplitBar.RIGHT = 2;
+
+/**
+ * Placement constant - The resizing element is positioned above the splitter element
+ * @static
+ * @type Number
+ */
+Roo.SplitBar.TOP = 3;
+
+/**
+ * Placement constant - The resizing element is positioned under splitter element
+ * @static
+ * @type Number
+ */
+Roo.SplitBar.BOTTOM = 4;
