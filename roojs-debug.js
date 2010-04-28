@@ -40924,4 +40924,1118 @@ Roo.extend(Roo.form.FieldSet, Roo.form.Layout, {
             this.el.child('legend').update(text);
         }
     }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+/**
+ * @class Roo.form.VTypes
+ * Overridable validation definitions. The validations provided are basic and intended to be easily customizable and extended.
+ * @singleton
+ */
+Roo.form.VTypes = function(){
+    // closure these in so they are only created once.
+    var alpha = /^[a-zA-Z_]+$/;
+    var alphanum = /^[a-zA-Z0-9_]+$/;
+    var email = /^([\w]+)(.[\w]+)*@([\w-]+\.){1,5}([A-Za-z]){2,4}$/;
+    var url = /(((https?)|(ftp)):\/\/([\-\w]+\.)+\w{2,3}(\/[%\-\w]+(\.\w{2,})?)*(([\w\-\.\?\\\/+@&#;`~=%!]*)(\.\w{2,})?)*\/?)/i;
+
+    // All these messages and functions are configurable
+    return {
+        /**
+         * The function used to validate email addresses
+         * @param {String} value The email address
+         */
+        'email' : function(v){
+            return email.test(v);
+        },
+        /**
+         * The error text to display when the email validation function returns false
+         * @type String
+         */
+        'emailText' : 'This field should be an e-mail address in the format "user@domain.com"',
+        /**
+         * The keystroke filter mask to be applied on email input
+         * @type RegExp
+         */
+        'emailMask' : /[a-z0-9_\.\-@]/i,
+
+        /**
+         * The function used to validate URLs
+         * @param {String} value The URL
+         */
+        'url' : function(v){
+            return url.test(v);
+        },
+        /**
+         * The error text to display when the url validation function returns false
+         * @type String
+         */
+        'urlText' : 'This field should be a URL in the format "http:/'+'/www.domain.com"',
+        
+        /**
+         * The function used to validate alpha values
+         * @param {String} value The value
+         */
+        'alpha' : function(v){
+            return alpha.test(v);
+        },
+        /**
+         * The error text to display when the alpha validation function returns false
+         * @type String
+         */
+        'alphaText' : 'This field should only contain letters and _',
+        /**
+         * The keystroke filter mask to be applied on alpha input
+         * @type RegExp
+         */
+        'alphaMask' : /[a-z_]/i,
+
+        /**
+         * The function used to validate alphanumeric values
+         * @param {String} value The value
+         */
+        'alphanum' : function(v){
+            return alphanum.test(v);
+        },
+        /**
+         * The error text to display when the alphanumeric validation function returns false
+         * @type String
+         */
+        'alphanumText' : 'This field should only contain letters, numbers and _',
+        /**
+         * The keystroke filter mask to be applied on alphanumeric input
+         * @type RegExp
+         */
+        'alphanumMask' : /[a-z0-9_]/i
+    };
+}();//<script type="text/javascript">
+
+/**
+ * @class Roo.form.FCKeditor
+ * @extends Roo.form.TextArea
+ * Wrapper around the FCKEditor http://www.fckeditor.net
+ * @constructor
+ * Creates a new FCKeditor
+ * @param {Object} config Configuration options
+ */
+Roo.form.FCKeditor = function(config){
+    Roo.form.FCKeditor.superclass.constructor.call(this, config);
+    this.addEvents({
+         /**
+         * @event editorinit
+         * Fired when the editor is initialized - you can add extra handlers here..
+         * @param {FCKeditor} this
+         * @param {Object} the FCK object.
+         */
+        editorinit : true
+    });
+    
+    
+};
+Roo.form.FCKeditor.editors = { };
+Roo.extend(Roo.form.FCKeditor, Roo.form.TextArea,
+{
+    //defaultAutoCreate : {
+    //    tag : "textarea",style   : "width:100px;height:60px;" ,autocomplete    : "off"
+    //},
+    // private
+    /**
+     * @cfg {Object} fck options - see fck manual for details.
+     */
+    fckconfig : false,
+    
+    /**
+     * @cfg {Object} fck toolbar set (Basic or Default)
+     */
+    toolbarSet : 'Basic',
+    /**
+     * @cfg {Object} fck BasePath
+     */ 
+    basePath : '/fckeditor/',
+    
+    
+    frame : false,
+    
+    value : '',
+    
+   
+    onRender : function(ct, position)
+    {
+        if(!this.el){
+            this.defaultAutoCreate = {
+                tag: "textarea",
+                style:"width:300px;height:60px;",
+                autocomplete: "off"
+            };
+        }
+        Roo.form.FCKeditor.superclass.onRender.call(this, ct, position);
+        /*
+        if(this.grow){
+            this.textSizeEl = Roo.DomHelper.append(document.body, {tag: "pre", cls: "x-form-grow-sizer"});
+            if(this.preventScrollbars){
+                this.el.setStyle("overflow", "hidden");
+            }
+            this.el.setHeight(this.growMin);
+        }
+        */
+        //console.log('onrender' + this.getId() );
+        Roo.form.FCKeditor.editors[this.getId()] = this;
+         
+
+        this.replaceTextarea() ;
+        
+    },
+    
+    getEditor : function() {
+        return this.fckEditor;
+    },
+    /**
+     * Sets a data value into the field and validates it.  To set the value directly without validation see {@link #setRawValue}.
+     * @param {Mixed} value The value to set
+     */
+    
+    
+    setValue : function(value)
+    {
+        //console.log('setValue: ' + value);
+        
+        if(typeof(value) == 'undefined') { // not sure why this is happending...
+            return;
+        }
+        Roo.form.FCKeditor.superclass.setValue.apply(this,[value]);
+        
+        //if(!this.el || !this.getEditor()) {
+        //    this.value = value;
+            //this.setValue.defer(100,this,[value]);    
+        //    return;
+        //} 
+        
+        if(!this.getEditor()) {
+            return;
+        }
+        
+        this.getEditor().SetData(value);
+        
+        //
+
+    },
+
+    /**
+     * Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {@link #getRawValue}.
+     * @return {Mixed} value The field value
+     */
+    getValue : function()
+    {
+        
+        if (this.frame && this.frame.dom.style.display == 'none') {
+            return Roo.form.FCKeditor.superclass.getValue.call(this);
+        }
+        
+        if(!this.el || !this.getEditor()) {
+           
+           // this.getValue.defer(100,this); 
+            return this.value;
+        }
+       
+        
+        var value=this.getEditor().GetData();
+        Roo.form.FCKeditor.superclass.setValue.apply(this,[value]);
+        return Roo.form.FCKeditor.superclass.getValue.call(this);
+        
+
+    },
+
+    /**
+     * Returns the raw data value which may or may not be a valid, defined value.  To return a normalized value see {@link #getValue}.
+     * @return {Mixed} value The field value
+     */
+    getRawValue : function()
+    {
+        if (this.frame && this.frame.dom.style.display == 'none') {
+            return Roo.form.FCKeditor.superclass.getRawValue.call(this);
+        }
+        
+        if(!this.el || !this.getEditor()) {
+            //this.getRawValue.defer(100,this); 
+            return this.value;
+            return;
+        }
+        
+        
+        
+        var value=this.getEditor().GetData();
+        Roo.form.FCKeditor.superclass.setRawValue.apply(this,[value]);
+        return Roo.form.FCKeditor.superclass.getRawValue.call(this);
+         
+    },
+    
+    setSize : function(w,h) {
+        
+        
+        
+        //if (this.frame && this.frame.dom.style.display == 'none') {
+        //    Roo.form.FCKeditor.superclass.setSize.apply(this, [w, h]);
+        //    return;
+        //}
+        //if(!this.el || !this.getEditor()) {
+        //    this.setSize.defer(100,this, [w,h]); 
+        //    return;
+        //}
+        
+        
+        
+        Roo.form.FCKeditor.superclass.setSize.apply(this, [w, h]);
+        
+        this.frame.dom.setAttribute('width', w);
+        this.frame.dom.setAttribute('height', h);
+        this.frame.setSize(w,h);
+        
+    },
+    
+    toggleSourceEdit : function(value) {
+        
+      
+         
+        this.el.dom.style.display = value ? '' : 'none';
+        this.frame.dom.style.display = value ?  'none' : '';
+        
+    },
+    
+    
+    focus: function(tag)
+    {
+        if (this.frame.dom.style.display == 'none') {
+            return Roo.form.FCKeditor.superclass.focus.call(this);
+        }
+        if(!this.el || !this.getEditor()) {
+            this.focus.defer(100,this, [tag]); 
+            return;
+        }
+        
+        
+        
+        
+        var tgs = this.getEditor().EditorDocument.getElementsByTagName(tag);
+        this.getEditor().Focus();
+        if (tgs.length) {
+            if (!this.getEditor().Selection.GetSelection()) {
+                this.focus.defer(100,this, [tag]); 
+                return;
+            }
+            
+            
+            var r = this.getEditor().EditorDocument.createRange();
+            r.setStart(tgs[0],0);
+            r.setEnd(tgs[0],0);
+            this.getEditor().Selection.GetSelection().removeAllRanges();
+            this.getEditor().Selection.GetSelection().addRange(r);
+            this.getEditor().Focus();
+        }
+        
+    },
+    
+    
+    
+    replaceTextarea : function()
+    {
+        if ( document.getElementById( this.getId() + '___Frame' ) )
+            return ;
+        //if ( !this.checkBrowser || this._isCompatibleBrowser() )
+        //{
+            // We must check the elements firstly using the Id and then the name.
+        var oTextarea = document.getElementById( this.getId() );
+        
+        var colElementsByName = document.getElementsByName( this.getId() ) ;
+         
+        oTextarea.style.display = 'none' ;
+
+        if ( oTextarea.tabIndex ) {            
+            this.TabIndex = oTextarea.tabIndex ;
+        }
+        
+        this._insertHtmlBefore( this._getConfigHtml(), oTextarea ) ;
+        this._insertHtmlBefore( this._getIFrameHtml(), oTextarea ) ;
+        this.frame = Roo.get(this.getId() + '___Frame')
+    },
+    
+    _getConfigHtml : function()
+    {
+        var sConfig = '' ;
+
+        for ( var o in this.fckconfig ) {
+            sConfig += sConfig.length > 0  ? '&amp;' : '';
+            sConfig += encodeURIComponent( o ) + '=' + encodeURIComponent( this.fckconfig[o] ) ;
+        }
+
+        return '<input type="hidden" id="' + this.getId() + '___Config" value="' + sConfig + '" style="display:none" />' ;
+    },
+    
+    
+    _getIFrameHtml : function()
+    {
+        var sFile = 'fckeditor.html' ;
+        /* no idea what this is about..
+        try
+        {
+            if ( (/fcksource=true/i).test( window.top.location.search ) )
+                sFile = 'fckeditor.original.html' ;
+        }
+        catch (e) { 
+        */
+
+        var sLink = this.basePath + 'editor/' + sFile + '?InstanceName=' + encodeURIComponent( this.getId() ) ;
+        sLink += this.toolbarSet ? ( '&amp;Toolbar=' + this.toolbarSet)  : '';
+        
+        
+        var html = '<iframe id="' + this.getId() +
+            '___Frame" src="' + sLink +
+            '" width="' + this.width +
+            '" height="' + this.height + '"' +
+            (this.tabIndex ?  ' tabindex="' + this.tabIndex + '"' :'' ) +
+            ' frameborder="0" scrolling="no"></iframe>' ;
+
+        return html ;
+    },
+    
+    _insertHtmlBefore : function( html, element )
+    {
+        if ( element.insertAdjacentHTML )	{
+            // IE
+            element.insertAdjacentHTML( 'beforeBegin', html ) ;
+        } else { // Gecko
+            var oRange = document.createRange() ;
+            oRange.setStartBefore( element ) ;
+            var oFragment = oRange.createContextualFragment( html );
+            element.parentNode.insertBefore( oFragment, element ) ;
+        }
+    }
+    
+    
+  
+    
+    
+    
+    
+
+});
+
+//Roo.reg('fckeditor', Roo.form.FCKeditor);
+
+function FCKeditor_OnComplete(editorInstance){
+    var f = Roo.form.FCKeditor.editors[editorInstance.Name];
+    f.fckEditor = editorInstance;
+    //console.log("loaded");
+    f.fireEvent('editorinit', f, editorInstance);
+} 
+  
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//<script type="text/javascript">
+/**
+ * @class Roo.form.GridField
+ * @extends Roo.form.Field
+ * Embed a grid (or editable grid into a form)
+ * STATUS ALPHA
+ * @constructor
+ * Creates a new GridField
+ * @param {Object} config Configuration options
+ */
+Roo.form.GridField = function(config){
+    Roo.form.GridField.superclass.constructor.call(this, config);
+     
+};
+
+Roo.extend(Roo.form.GridField, Roo.form.Field,  {
+    /**
+     * @cfg {Number} width  - used to restrict width of grid..
+     */
+    width : 100,
+    /**
+     * @cfg {Number} height - used to restrict height of grid..
+     */
+    height : 50,
+     /**
+     * @cfg {Object} xgrid (xtype'd description of grid) Grid or EditorGrid
+     */
+    xgrid : false, 
+    /**
+     * @cfg {String/Object} autoCreate A DomHelper element spec, or true for a default element spec (defaults to
+     * {tag: "input", type: "checkbox", autocomplete: "off"})
+     */
+   // defaultAutoCreate : { tag: 'div' },
+    defaultAutoCreate : { tag: 'input', type: 'hidden', autocomplete: 'off'},
+    /**
+     * @cfg {String} addTitle Text to include for adding a title.
+     */
+    addTitle : false,
+    //
+    onResize : function(){
+        Roo.form.Field.superclass.onResize.apply(this, arguments);
+    },
+
+    initEvents : function(){
+        // Roo.form.Checkbox.superclass.initEvents.call(this);
+        // has no events...
+       
+    },
+
+
+    getResizeEl : function(){
+        return this.wrap;
+    },
+
+    getPositionEl : function(){
+        return this.wrap;
+    },
+
+    // private
+    onRender : function(ct, position){
+        
+        this.style = this.style || 'overflow: hidden; border:1px solid #c3daf9;';
+        var style = this.style;
+        delete this.style;
+        
+        Roo.form.DisplayImage.superclass.onRender.call(this, ct, position);
+        this.wrap = this.el.wrap({cls: ''}); // not sure why ive done thsi...
+        this.viewEl = this.wrap.createChild({ tag: 'div' });
+        if (style) {
+            this.viewEl.applyStyles(style);
+        }
+        if (this.width) {
+            this.viewEl.setWidth(this.width);
+        }
+        if (this.height) {
+            this.viewEl.setHeight(this.height);
+        }
+        //if(this.inputValue !== undefined){
+        //this.setValue(this.value);
+        
+        
+        this.grid = new Roo.grid[this.xgrid.xtype](this.viewEl, this.xgrid);
+        
+        
+        this.grid.render();
+        this.grid.getDataSource().on('remove', this.refreshValue, this);
+        this.grid.getDataSource().on('update', this.refreshValue, this);
+        this.grid.on('afteredit', this.refreshValue, this);
+ 
+    },
+     
+    
+    /**
+     * Sets the value of the item. 
+     * @param {String} either an object  or a string..
+     */
+    setValue : function(v){
+        //this.value = v;
+        v = v || []; // empty set..
+        // this does not seem smart - it really only affects memoryproxy grids..
+        if (this.grid && this.grid.getDataSource() && typeof(v) != 'undefined') {
+            var ds = this.grid.getDataSource();
+            // assumes a json reader..
+            var data = {}
+            data[ds.reader.meta.root ] =  typeof(v) == 'string' ? Roo.decode(v) : v;
+            ds.loadData( data);
+        }
+        Roo.form.GridField.superclass.setValue.call(this, v);
+        this.refreshValue();
+        // should load data in the grid really....
+    },
+    
+    // private
+    refreshValue: function() {
+         var val = [];
+        this.grid.getDataSource().each(function(r) {
+            val.push(r.data);
+        });
+        this.el.dom.value = Roo.encode(val);
+    }
+    
+     
+    
+    
+});//<script type="text/javasscript">
+ 
+
+/**
+ * @class Roo.DDView
+ * A DnD enabled version of Roo.View.
+ * @param {Element/String} container The Element in which to create the View.
+ * @param {String} tpl The template string used to create the markup for each element of the View
+ * @param {Object} config The configuration properties. These include all the config options of
+ * {@link Roo.View} plus some specific to this class.<br>
+ * <p>
+ * Drag/drop is implemented by adding {@link Roo.data.Record}s to the target DDView. If copying is
+ * not being performed, the original {@link Roo.data.Record} is removed from the source DDView.<br>
+ * <p>
+ * The following extra CSS rules are needed to provide insertion point highlighting:<pre><code>
+.x-view-drag-insert-above {
+	border-top:1px dotted #3366cc;
+}
+.x-view-drag-insert-below {
+	border-bottom:1px dotted #3366cc;
+}
+</code></pre>
+ * 
+ */
+ 
+Roo.DDView = function(container, tpl, config) {
+    Roo.DDView.superclass.constructor.apply(this, arguments);
+    this.getEl().setStyle("outline", "0px none");
+    this.getEl().unselectable();
+    if (this.dragGroup) {
+		this.setDraggable(this.dragGroup.split(","));
+    }
+    if (this.dropGroup) {
+		this.setDroppable(this.dropGroup.split(","));
+    }
+    if (this.deletable) {
+    	this.setDeletable();
+    }
+    this.isDirtyFlag = false;
+	this.addEvents({
+		"drop" : true
+	});
+};
+
+Roo.extend(Roo.DDView, Roo.View, {
+/**	@cfg {String/Array} dragGroup The ddgroup name(s) for the View's DragZone. */
+/**	@cfg {String/Array} dropGroup The ddgroup name(s) for the View's DropZone. */
+/**	@cfg {Boolean} copy Causes drag operations to copy nodes rather than move. */
+/**	@cfg {Boolean} allowCopy Causes ctrl/drag operations to copy nodes rather than move. */
+
+	isFormField: true,
+
+	reset: Roo.emptyFn,
+	
+	clearInvalid: Roo.form.Field.prototype.clearInvalid,
+
+	validate: function() {
+		return true;
+	},
+	
+	destroy: function() {
+		this.purgeListeners();
+		this.getEl.removeAllListeners();
+		this.getEl().remove();
+		if (this.dragZone) {
+			if (this.dragZone.destroy) {
+				this.dragZone.destroy();
+			}
+		}
+		if (this.dropZone) {
+			if (this.dropZone.destroy) {
+				this.dropZone.destroy();
+			}
+		}
+	},
+
+/**	Allows this class to be an Roo.form.Field so it can be found using {@link Roo.form.BasicForm#findField}. */
+	getName: function() {
+		return this.name;
+	},
+
+/**	Loads the View from a JSON string representing the Records to put into the Store. */
+	setValue: function(v) {
+		if (!this.store) {
+			throw "DDView.setValue(). DDView must be constructed with a valid Store";
+		}
+		var data = {};
+		data[this.store.reader.meta.root] = v ? [].concat(v) : [];
+		this.store.proxy = new Roo.data.MemoryProxy(data);
+		this.store.load();
+	},
+
+/**	@return {String} a parenthesised list of the ids of the Records in the View. */
+	getValue: function() {
+		var result = '(';
+		this.store.each(function(rec) {
+			result += rec.id + ',';
+		});
+		return result.substr(0, result.length - 1) + ')';
+	},
+	
+	getIds: function() {
+		var i = 0, result = new Array(this.store.getCount());
+		this.store.each(function(rec) {
+			result[i++] = rec.id;
+		});
+		return result;
+	},
+	
+	isDirty: function() {
+		return this.isDirtyFlag;
+	},
+
+/**
+ *	Part of the Roo.dd.DropZone interface. If no target node is found, the
+ *	whole Element becomes the target, and this causes the drop gesture to append.
+ */
+    getTargetFromEvent : function(e) {
+		var target = e.getTarget();
+		while ((target !== null) && (target.parentNode != this.el.dom)) {
+    		target = target.parentNode;
+		}
+		if (!target) {
+			target = this.el.dom.lastChild || this.el.dom;
+		}
+		return target;
+    },
+
+/**
+ *	Create the drag data which consists of an object which has the property "ddel" as
+ *	the drag proxy element. 
+ */
+    getDragData : function(e) {
+        var target = this.findItemFromChild(e.getTarget());
+		if(target) {
+			this.handleSelection(e);
+			var selNodes = this.getSelectedNodes();
+            var dragData = {
+                source: this,
+                copy: this.copy || (this.allowCopy && e.ctrlKey),
+                nodes: selNodes,
+                records: []
+			};
+			var selectedIndices = this.getSelectedIndexes();
+			for (var i = 0; i < selectedIndices.length; i++) {
+				dragData.records.push(this.store.getAt(selectedIndices[i]));
+			}
+			if (selNodes.length == 1) {
+				dragData.ddel = target.cloneNode(true);	// the div element
+			} else {
+				var div = document.createElement('div'); // create the multi element drag "ghost"
+				div.className = 'multi-proxy';
+				for (var i = 0, len = selNodes.length; i < len; i++) {
+					div.appendChild(selNodes[i].cloneNode(true));
+				}
+				dragData.ddel = div;
+			}
+            //console.log(dragData)
+            //console.log(dragData.ddel.innerHTML)
+			return dragData;
+		}
+        //console.log('nodragData')
+		return false;
+    },
+    
+/**	Specify to which ddGroup items in this DDView may be dragged. */
+    setDraggable: function(ddGroup) {
+    	if (ddGroup instanceof Array) {
+    		Roo.each(ddGroup, this.setDraggable, this);
+    		return;
+    	}
+    	if (this.dragZone) {
+    		this.dragZone.addToGroup(ddGroup);
+    	} else {
+			this.dragZone = new Roo.dd.DragZone(this.getEl(), {
+				containerScroll: true,
+				ddGroup: ddGroup 
+
+			});
+//			Draggability implies selection. DragZone's mousedown selects the element.
+			if (!this.multiSelect) { this.singleSelect = true; }
+
+//			Wire the DragZone's handlers up to methods in *this*
+			this.dragZone.getDragData = this.getDragData.createDelegate(this);
+		}
+    },
+
+/**	Specify from which ddGroup this DDView accepts drops. */
+    setDroppable: function(ddGroup) {
+    	if (ddGroup instanceof Array) {
+    		Roo.each(ddGroup, this.setDroppable, this);
+    		return;
+    	}
+    	if (this.dropZone) {
+    		this.dropZone.addToGroup(ddGroup);
+    	} else {
+			this.dropZone = new Roo.dd.DropZone(this.getEl(), {
+				containerScroll: true,
+				ddGroup: ddGroup
+			});
+
+//			Wire the DropZone's handlers up to methods in *this*
+			this.dropZone.getTargetFromEvent = this.getTargetFromEvent.createDelegate(this);
+			this.dropZone.onNodeEnter = this.onNodeEnter.createDelegate(this);
+			this.dropZone.onNodeOver = this.onNodeOver.createDelegate(this);
+			this.dropZone.onNodeOut = this.onNodeOut.createDelegate(this);
+			this.dropZone.onNodeDrop = this.onNodeDrop.createDelegate(this);
+		}
+    },
+
+/**	Decide whether to drop above or below a View node. */
+    getDropPoint : function(e, n, dd){
+    	if (n == this.el.dom) { return "above"; }
+		var t = Roo.lib.Dom.getY(n), b = t + n.offsetHeight;
+		var c = t + (b - t) / 2;
+		var y = Roo.lib.Event.getPageY(e);
+		if(y <= c) {
+			return "above";
+		}else{
+			return "below";
+		}
+    },
+
+    onNodeEnter : function(n, dd, e, data){
+		return false;
+    },
+    
+    onNodeOver : function(n, dd, e, data){
+		var pt = this.getDropPoint(e, n, dd);
+		// set the insert point style on the target node
+		var dragElClass = this.dropNotAllowed;
+		if (pt) {
+			var targetElClass;
+			if (pt == "above"){
+				dragElClass = n.previousSibling ? "x-tree-drop-ok-between" : "x-tree-drop-ok-above";
+				targetElClass = "x-view-drag-insert-above";
+			} else {
+				dragElClass = n.nextSibling ? "x-tree-drop-ok-between" : "x-tree-drop-ok-below";
+				targetElClass = "x-view-drag-insert-below";
+			}
+			if (this.lastInsertClass != targetElClass){
+				Roo.fly(n).replaceClass(this.lastInsertClass, targetElClass);
+				this.lastInsertClass = targetElClass;
+			}
+		}
+		return dragElClass;
+	},
+
+    onNodeOut : function(n, dd, e, data){
+		this.removeDropIndicators(n);
+    },
+
+    onNodeDrop : function(n, dd, e, data){
+    	if (this.fireEvent("drop", this, n, dd, e, data) === false) {
+    		return false;
+    	}
+    	var pt = this.getDropPoint(e, n, dd);
+		var insertAt = (n == this.el.dom) ? this.nodes.length : n.nodeIndex;
+		if (pt == "below") { insertAt++; }
+		for (var i = 0; i < data.records.length; i++) {
+			var r = data.records[i];
+			var dup = this.store.getById(r.id);
+			if (dup && (dd != this.dragZone)) {
+				Roo.fly(this.getNode(this.store.indexOf(dup))).frame("red", 1);
+			} else {
+				if (data.copy) {
+					this.store.insert(insertAt++, r.copy());
+				} else {
+					data.source.isDirtyFlag = true;
+					r.store.remove(r);
+					this.store.insert(insertAt++, r);
+				}
+				this.isDirtyFlag = true;
+			}
+		}
+		this.dragZone.cachedTarget = null;
+		return true;
+    },
+
+    removeDropIndicators : function(n){
+		if(n){
+			Roo.fly(n).removeClass([
+				"x-view-drag-insert-above",
+				"x-view-drag-insert-below"]);
+			this.lastInsertClass = "_noclass";
+		}
+    },
+
+/**
+ *	Utility method. Add a delete option to the DDView's context menu.
+ *	@param {String} imageUrl The URL of the "delete" icon image.
+ */
+	setDeletable: function(imageUrl) {
+		if (!this.singleSelect && !this.multiSelect) {
+			this.singleSelect = true;
+		}
+		var c = this.getContextMenu();
+		this.contextMenu.on("itemclick", function(item) {
+			switch (item.id) {
+				case "delete":
+					this.remove(this.getSelectedIndexes());
+					break;
+			}
+		}, this);
+		this.contextMenu.add({
+			icon: imageUrl,
+			id: "delete",
+			text: 'Delete'
+		});
+	},
+	
+/**	Return the context menu for this DDView. */
+	getContextMenu: function() {
+		if (!this.contextMenu) {
+//			Create the View's context menu
+			this.contextMenu = new Roo.menu.Menu({
+				id: this.id + "-contextmenu"
+			});
+			this.el.on("contextmenu", this.showContextMenu, this);
+		}
+		return this.contextMenu;
+	},
+	
+	disableContextMenu: function() {
+		if (this.contextMenu) {
+			this.el.un("contextmenu", this.showContextMenu, this);
+		}
+	},
+
+	showContextMenu: function(e, item) {
+        item = this.findItemFromChild(e.getTarget());
+		if (item) {
+			e.stopEvent();
+			this.select(this.getNode(item), this.multiSelect && e.ctrlKey, true);
+			this.contextMenu.showAt(e.getXY());
+	    }
+    },
+
+/**
+ *	Remove {@link Roo.data.Record}s at the specified indices.
+ *	@param {Array/Number} selectedIndices The index (or Array of indices) of Records to remove.
+ */
+    remove: function(selectedIndices) {
+		selectedIndices = [].concat(selectedIndices);
+		for (var i = 0; i < selectedIndices.length; i++) {
+			var rec = this.store.getAt(selectedIndices[i]);
+			this.store.remove(rec);
+		}
+    },
+
+/**
+ *	Double click fires the event, but also, if this is draggable, and there is only one other
+ *	related DropZone, it transfers the selected node.
+ */
+    onDblClick : function(e){
+        var item = this.findItemFromChild(e.getTarget());
+        if(item){
+            if (this.fireEvent("dblclick", this, this.indexOf(item), item, e) === false) {
+            	return false;
+            }
+            if (this.dragGroup) {
+	            var targets = Roo.dd.DragDropMgr.getRelated(this.dragZone, true);
+	            while (targets.indexOf(this.dropZone) > -1) {
+		            targets.remove(this.dropZone);
+				}
+	            if (targets.length == 1) {
+					this.dragZone.cachedTarget = null;
+	            	var el = Roo.get(targets[0].getEl());
+	            	var box = el.getBox(true);
+	            	targets[0].onNodeDrop(el.dom, {
+	            		target: el.dom,
+	            		xy: [box.x, box.y + box.height - 1]
+	            	}, null, this.getDragData(e));
+	            }
+	        }
+        }
+    },
+    
+    handleSelection: function(e) {
+		this.dragZone.cachedTarget = null;
+        var item = this.findItemFromChild(e.getTarget());
+        if (!item) {
+        	this.clearSelections(true);
+        	return;
+        }
+		if (item && (this.multiSelect || this.singleSelect)){
+			if(this.multiSelect && e.shiftKey && (!e.ctrlKey) && this.lastSelection){
+				this.select(this.getNodes(this.indexOf(this.lastSelection), item.nodeIndex), false);
+			}else if (this.isSelected(this.getNode(item)) && e.ctrlKey){
+				this.unselect(item);
+			} else {
+				this.select(item, this.multiSelect && e.ctrlKey);
+				this.lastSelection = item;
+			}
+		}
+    },
+
+    onItemClick : function(item, index, e){
+		if(this.fireEvent("beforeclick", this, index, item, e) === false){
+			return false;
+		}
+		return true;
+    },
+
+    unselect : function(nodeInfo, suppressEvent){
+		var node = this.getNode(nodeInfo);
+		if(node && this.isSelected(node)){
+			if(this.fireEvent("beforeselect", this, node, this.selections) !== false){
+				Roo.fly(node).removeClass(this.selectedClass);
+				this.selections.remove(node);
+				if(!suppressEvent){
+					this.fireEvent("selectionchange", this, this.selections);
+				}
+			}
+		}
+    }
+});
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.LayoutManager
+ * @extends Roo.util.Observable
+ * Base class for layout managers.
+ */
+Roo.LayoutManager = function(container, config){
+    Roo.LayoutManager.superclass.constructor.call(this);
+    this.el = Roo.get(container);
+    // ie scrollbar fix
+    if(this.el.dom == document.body && Roo.isIE && !config.allowScroll){
+        document.body.scroll = "no";
+    }else if(this.el.dom != document.body && this.el.getStyle('position') == 'static'){
+        this.el.position('relative');
+    }
+    this.id = this.el.id;
+    this.el.addClass("x-layout-container");
+    /** false to disable window resize monitoring @type Boolean */
+    this.monitorWindowResize = true;
+    this.regions = {};
+    this.addEvents({
+        /**
+         * @event layout
+         * Fires when a layout is performed. 
+         * @param {Roo.LayoutManager} this
+         */
+        "layout" : true,
+        /**
+         * @event regionresized
+         * Fires when the user resizes a region. 
+         * @param {Roo.LayoutRegion} region The resized region
+         * @param {Number} newSize The new size (width for east/west, height for north/south)
+         */
+        "regionresized" : true,
+        /**
+         * @event regioncollapsed
+         * Fires when a region is collapsed. 
+         * @param {Roo.LayoutRegion} region The collapsed region
+         */
+        "regioncollapsed" : true,
+        /**
+         * @event regionexpanded
+         * Fires when a region is expanded.  
+         * @param {Roo.LayoutRegion} region The expanded region
+         */
+        "regionexpanded" : true
+    });
+    this.updating = false;
+    Roo.EventManager.onWindowResize(this.onWindowResize, this, true);
+};
+
+Roo.extend(Roo.LayoutManager, Roo.util.Observable, {
+    /**
+     * Returns true if this layout is currently being updated
+     * @return {Boolean}
+     */
+    isUpdating : function(){
+        return this.updating; 
+    },
+    
+    /**
+     * Suspend the LayoutManager from doing auto-layouts while
+     * making multiple add or remove calls
+     */
+    beginUpdate : function(){
+        this.updating = true;    
+    },
+    
+    /**
+     * Restore auto-layouts and optionally disable the manager from performing a layout
+     * @param {Boolean} noLayout true to disable a layout update 
+     */
+    endUpdate : function(noLayout){
+        this.updating = false;
+        if(!noLayout){
+            this.layout();
+        }    
+    },
+    
+    layout: function(){
+        
+    },
+    
+    onRegionResized : function(region, newSize){
+        this.fireEvent("regionresized", region, newSize);
+        this.layout();
+    },
+    
+    onRegionCollapsed : function(region){
+        this.fireEvent("regioncollapsed", region);
+    },
+    
+    onRegionExpanded : function(region){
+        this.fireEvent("regionexpanded", region);
+    },
+        
+    /**
+     * Returns the size of the current view. This method normalizes document.body and element embedded layouts and
+     * performs box-model adjustments.
+     * @return {Object} The size as an object {width: (the width), height: (the height)}
+     */
+    getViewSize : function(){
+        var size;
+        if(this.el.dom != document.body){
+            size = this.el.getSize();
+        }else{
+            size = {width: Roo.lib.Dom.getViewWidth(), height: Roo.lib.Dom.getViewHeight()};
+        }
+        size.width -= this.el.getBorderWidth("lr")-this.el.getPadding("lr");
+        size.height -= this.el.getBorderWidth("tb")-this.el.getPadding("tb");
+        return size;
+    },
+    
+    /**
+     * Returns the Element this layout is bound to.
+     * @return {Roo.Element}
+     */
+    getEl : function(){
+        return this.el;
+    },
+    
+    /**
+     * Returns the specified region.
+     * @param {String} target The region key ('center', 'north', 'south', 'east' or 'west')
+     * @return {Roo.LayoutRegion}
+     */
+    getRegion : function(target){
+        return this.regions[target.toLowerCase()];
+    },
+    
+    onWindowResize : function(){
+        if(this.monitorWindowResize){
+            this.layout();
+        }
+    }
 });
