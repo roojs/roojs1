@@ -35270,4 +35270,1225 @@ Roo.form.Field.msgFx = {
             msgEl.slideOut('l', {stopFx:true,useDisplay:true});
         }
     }
+};/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+
+/**
+ * @class Roo.form.TextField
+ * @extends Roo.form.Field
+ * Basic text field.  Can be used as a direct replacement for traditional text inputs, or as the base
+ * class for more sophisticated input controls (like {@link Roo.form.TextArea} and {@link Roo.form.ComboBox}).
+ * @constructor
+ * Creates a new TextField
+ * @param {Object} config Configuration options
+ */
+Roo.form.TextField = function(config){
+    Roo.form.TextField.superclass.constructor.call(this, config);
+    this.addEvents({
+        /**
+         * @event autosize
+         * Fires when the autosize function is triggered.  The field may or may not have actually changed size
+         * according to the default logic, but this event provides a hook for the developer to apply additional
+         * logic at runtime to resize the field if needed.
+	     * @param {Roo.form.Field} this This text field
+	     * @param {Number} width The new field width
+	     */
+        autosize : true
+    });
 };
+
+Roo.extend(Roo.form.TextField, Roo.form.Field,  {
+    /**
+     * @cfg {Boolean} grow True if this field should automatically grow and shrink to its content
+     */
+    grow : false,
+    /**
+     * @cfg {Number} growMin The minimum width to allow when grow = true (defaults to 30)
+     */
+    growMin : 30,
+    /**
+     * @cfg {Number} growMax The maximum width to allow when grow = true (defaults to 800)
+     */
+    growMax : 800,
+    /**
+     * @cfg {String} vtype A validation type name as defined in {@link Roo.form.VTypes} (defaults to null)
+     */
+    vtype : null,
+    /**
+     * @cfg {String} maskRe An input mask regular expression that will be used to filter keystrokes that don't match (defaults to null)
+     */
+    maskRe : null,
+    /**
+     * @cfg {Boolean} disableKeyFilter True to disable input keystroke filtering (defaults to false)
+     */
+    disableKeyFilter : false,
+    /**
+     * @cfg {Boolean} allowBlank False to validate that the value length > 0 (defaults to true)
+     */
+    allowBlank : true,
+    /**
+     * @cfg {Number} minLength Minimum input field length required (defaults to 0)
+     */
+    minLength : 0,
+    /**
+     * @cfg {Number} maxLength Maximum input field length allowed (defaults to Number.MAX_VALUE)
+     */
+    maxLength : Number.MAX_VALUE,
+    /**
+     * @cfg {String} minLengthText Error text to display if the minimum length validation fails (defaults to "The minimum length for this field is {minLength}")
+     */
+    minLengthText : "The minimum length for this field is {0}",
+    /**
+     * @cfg {String} maxLengthText Error text to display if the maximum length validation fails (defaults to "The maximum length for this field is {maxLength}")
+     */
+    maxLengthText : "The maximum length for this field is {0}",
+    /**
+     * @cfg {Boolean} selectOnFocus True to automatically select any existing field text when the field receives input focus (defaults to false)
+     */
+    selectOnFocus : false,
+    /**
+     * @cfg {String} blankText Error text to display if the allow blank validation fails (defaults to "This field is required")
+     */
+    blankText : "This field is required",
+    /**
+     * @cfg {Function} validator A custom validation function to be called during field validation (defaults to null).
+     * If available, this function will be called only after the basic validators all return true, and will be passed the
+     * current field value and expected to return boolean true if the value is valid or a string error message if invalid.
+     */
+    validator : null,
+    /**
+     * @cfg {RegExp} regex A JavaScript RegExp object to be tested against the field value during validation (defaults to null).
+     * If available, this regex will be evaluated only after the basic validators all return true, and will be passed the
+     * current field value.  If the test fails, the field will be marked invalid using {@link #regexText}.
+     */
+    regex : null,
+    /**
+     * @cfg {String} regexText The error text to display if {@link #regex} is used and the test fails during validation (defaults to "")
+     */
+    regexText : "",
+    /**
+     * @cfg {String} emptyText The default text to display in an empty field (defaults to null).
+     */
+    emptyText : null,
+    /**
+     * @cfg {String} emptyClass The CSS class to apply to an empty field to style the {@link #emptyText} (defaults to
+     * 'x-form-empty-field').  This class is automatically added and removed as needed depending on the current field value.
+     */
+    emptyClass : 'x-form-empty-field',
+
+    // private
+    initEvents : function(){
+        Roo.form.TextField.superclass.initEvents.call(this);
+        if(this.validationEvent == 'keyup'){
+            this.validationTask = new Roo.util.DelayedTask(this.validate, this);
+            this.el.on('keyup', this.filterValidation, this);
+        }
+        else if(this.validationEvent !== false){
+            this.el.on(this.validationEvent, this.validate, this, {buffer: this.validationDelay});
+        }
+        if(this.selectOnFocus || this.emptyText){
+            this.on("focus", this.preFocus, this);
+            if(this.emptyText){
+                this.on('blur', this.postBlur, this);
+                this.applyEmptyText();
+            }
+        }
+        if(this.maskRe || (this.vtype && this.disableKeyFilter !== true && (this.maskRe = Roo.form.VTypes[this.vtype+'Mask']))){
+            this.el.on("keypress", this.filterKeys, this);
+        }
+        if(this.grow){
+            this.el.on("keyup", this.onKeyUp,  this, {buffer:50});
+            this.el.on("click", this.autoSize,  this);
+        }
+    },
+
+    processValue : function(value){
+        if(this.stripCharsRe){
+            var newValue = value.replace(this.stripCharsRe, '');
+            if(newValue !== value){
+                this.setRawValue(newValue);
+                return newValue;
+            }
+        }
+        return value;
+    },
+
+    filterValidation : function(e){
+        if(!e.isNavKeyPress()){
+            this.validationTask.delay(this.validationDelay);
+        }
+    },
+
+    // private
+    onKeyUp : function(e){
+        if(!e.isNavKeyPress()){
+            this.autoSize();
+        }
+    },
+
+    /**
+     * Resets the current field value to the originally-loaded value and clears any validation messages.
+     * Also adds emptyText and emptyClass if the original value was blank.
+     */
+    reset : function(){
+        Roo.form.TextField.superclass.reset.call(this);
+        this.applyEmptyText();
+    },
+
+    applyEmptyText : function(){
+        if(this.rendered && this.emptyText && this.getRawValue().length < 1){
+            this.setRawValue(this.emptyText);
+            this.el.addClass(this.emptyClass);
+        }
+    },
+
+    // private
+    preFocus : function(){
+        if(this.emptyText){
+            if(this.el.dom.value == this.emptyText){
+                this.setRawValue('');
+            }
+            this.el.removeClass(this.emptyClass);
+        }
+        if(this.selectOnFocus){
+            this.el.dom.select();
+        }
+    },
+
+    // private
+    postBlur : function(){
+        this.applyEmptyText();
+    },
+
+    // private
+    filterKeys : function(e){
+        var k = e.getKey();
+        if(!Roo.isIE && (e.isNavKeyPress() || k == e.BACKSPACE || (k == e.DELETE && e.button == -1))){
+            return;
+        }
+        var c = e.getCharCode(), cc = String.fromCharCode(c);
+        if(Roo.isIE && (e.isSpecialKey() || !cc)){
+            return;
+        }
+        if(!this.maskRe.test(cc)){
+            e.stopEvent();
+        }
+    },
+
+    setValue : function(v){
+        if(this.emptyText && this.el && v !== undefined && v !== null && v !== ''){
+            this.el.removeClass(this.emptyClass);
+        }
+        Roo.form.TextField.superclass.setValue.apply(this, arguments);
+        this.applyEmptyText();
+        this.autoSize();
+    },
+
+    /**
+     * Validates a value according to the field's validation rules and marks the field as invalid
+     * if the validation fails
+     * @param {Mixed} value The value to validate
+     * @return {Boolean} True if the value is valid, else false
+     */
+    validateValue : function(value){
+        if(value.length < 1 || value === this.emptyText){ // if it's blank
+             if(this.allowBlank){
+                this.clearInvalid();
+                return true;
+             }else{
+                this.markInvalid(this.blankText);
+                return false;
+             }
+        }
+        if(value.length < this.minLength){
+            this.markInvalid(String.format(this.minLengthText, this.minLength));
+            return false;
+        }
+        if(value.length > this.maxLength){
+            this.markInvalid(String.format(this.maxLengthText, this.maxLength));
+            return false;
+        }
+        if(this.vtype){
+            var vt = Roo.form.VTypes;
+            if(!vt[this.vtype](value, this)){
+                this.markInvalid(this.vtypeText || vt[this.vtype +'Text']);
+                return false;
+            }
+        }
+        if(typeof this.validator == "function"){
+            var msg = this.validator(value);
+            if(msg !== true){
+                this.markInvalid(msg);
+                return false;
+            }
+        }
+        if(this.regex && !this.regex.test(value)){
+            this.markInvalid(this.regexText);
+            return false;
+        }
+        return true;
+    },
+
+    /**
+     * Selects text in this field
+     * @param {Number} start (optional) The index where the selection should start (defaults to 0)
+     * @param {Number} end (optional) The index where the selection should end (defaults to the text length)
+     */
+    selectText : function(start, end){
+        var v = this.getRawValue();
+        if(v.length > 0){
+            start = start === undefined ? 0 : start;
+            end = end === undefined ? v.length : end;
+            var d = this.el.dom;
+            if(d.setSelectionRange){
+                d.setSelectionRange(start, end);
+            }else if(d.createTextRange){
+                var range = d.createTextRange();
+                range.moveStart("character", start);
+                range.moveEnd("character", v.length-end);
+                range.select();
+            }
+        }
+    },
+
+    /**
+     * Automatically grows the field to accomodate the width of the text up to the maximum field width allowed.
+     * This only takes effect if grow = true, and fires the autosize event.
+     */
+    autoSize : function(){
+        if(!this.grow || !this.rendered){
+            return;
+        }
+        if(!this.metrics){
+            this.metrics = Roo.util.TextMetrics.createInstance(this.el);
+        }
+        var el = this.el;
+        var v = el.dom.value;
+        var d = document.createElement('div');
+        d.appendChild(document.createTextNode(v));
+        v = d.innerHTML;
+        d = null;
+        v += "&#160;";
+        var w = Math.min(this.growMax, Math.max(this.metrics.getWidth(v) + /* add extra padding */ 10, this.growMin));
+        this.el.setWidth(w);
+        this.fireEvent("autosize", this, w);
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.form.Hidden
+ * @extends Roo.form.TextField
+ * Simple Hidden element used on forms 
+ * 
+ * usage: form.add(new Roo.form.HiddenField({ 'name' : 'test1' }));
+ * 
+ * @constructor
+ * Creates a new Hidden form element.
+ * @param {Object} config Configuration options
+ */
+
+
+
+// easy hidden field...
+Roo.form.Hidden = function(config){
+    Roo.form.Hidden.superclass.constructor.call(this, config);
+};
+  
+Roo.extend(Roo.form.Hidden, Roo.form.TextField, {
+    fieldLabel:      '',
+    inputType:      'hidden',
+    width:          50,
+    allowBlank:     true,
+    labelSeparator: '',
+    hidden:         true,
+    itemCls :       'x-form-item-display-none'
+
+
+});
+
+
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.form.TriggerField
+ * @extends Roo.form.TextField
+ * Provides a convenient wrapper for TextFields that adds a clickable trigger button (looks like a combobox by default).
+ * The trigger has no default action, so you must assign a function to implement the trigger click handler by
+ * overriding {@link #onTriggerClick}. You can create a TriggerField directly, as it renders exactly like a combobox
+ * for which you can provide a custom implementation.  For example:
+ * <pre><code>
+var trigger = new Roo.form.TriggerField();
+trigger.onTriggerClick = myTriggerFn;
+trigger.applyTo('my-field');
+</code></pre>
+ *
+ * However, in general you will most likely want to use TriggerField as the base class for a reusable component.
+ * {@link Roo.form.DateField} and {@link Roo.form.ComboBox} are perfect examples of this.
+ * @cfg {String} triggerClass An additional CSS class used to style the trigger button.  The trigger will always get the
+ * class 'x-form-trigger' by default and triggerClass will be <b>appended</b> if specified.
+ * @constructor
+ * Create a new TriggerField.
+ * @param {Object} config Configuration options (valid {@Roo.form.TextField} config options will also be applied
+ * to the base TextField)
+ */
+Roo.form.TriggerField = function(config){
+    this.mimicing = false;
+    Roo.form.TriggerField.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.form.TriggerField, Roo.form.TextField,  {
+    /**
+     * @cfg {String} triggerClass A CSS class to apply to the trigger
+     */
+    /**
+     * @cfg {String/Object} autoCreate A DomHelper element spec, or true for a default element spec (defaults to
+     * {tag: "input", type: "text", size: "16", autocomplete: "off"})
+     */
+    defaultAutoCreate : {tag: "input", type: "text", size: "16", autocomplete: "off"},
+    /**
+     * @cfg {Boolean} hideTrigger True to hide the trigger element and display only the base text field (defaults to false)
+     */
+    hideTrigger:false,
+
+    /** @cfg {Boolean} grow @hide */
+    /** @cfg {Number} growMin @hide */
+    /** @cfg {Number} growMax @hide */
+
+    /**
+     * @hide 
+     * @method
+     */
+    autoSize: Roo.emptyFn,
+    // private
+    monitorTab : true,
+    // private
+    deferHeight : true,
+
+    
+    actionMode : 'wrap',
+    // private
+    onResize : function(w, h){
+        Roo.form.TriggerField.superclass.onResize.apply(this, arguments);
+        if(typeof w == 'number'){
+            this.el.setWidth(this.adjustWidth('input', w - this.trigger.getWidth()));
+        }
+    },
+
+    // private
+    adjustSize : Roo.BoxComponent.prototype.adjustSize,
+
+    // private
+    getResizeEl : function(){
+        return this.wrap;
+    },
+
+    // private
+    getPositionEl : function(){
+        return this.wrap;
+    },
+
+    // private
+    alignErrorIcon : function(){
+        this.errorIcon.alignTo(this.wrap, 'tl-tr', [2, 0]);
+    },
+
+    // private
+    onRender : function(ct, position){
+        Roo.form.TriggerField.superclass.onRender.call(this, ct, position);
+        this.wrap = this.el.wrap({cls: "x-form-field-wrap"});
+        this.trigger = this.wrap.createChild(this.triggerConfig ||
+                {tag: "img", src: Roo.BLANK_IMAGE_URL, cls: "x-form-trigger " + this.triggerClass});
+        if(this.hideTrigger){
+            this.trigger.setDisplayed(false);
+        }
+        this.initTrigger();
+        if(!this.width){
+            this.wrap.setWidth(this.el.getWidth()+this.trigger.getWidth());
+        }
+    },
+
+    // private
+    initTrigger : function(){
+        this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
+        this.trigger.addClassOnOver('x-form-trigger-over');
+        this.trigger.addClassOnClick('x-form-trigger-click');
+    },
+
+    // private
+    onDestroy : function(){
+        if(this.trigger){
+            this.trigger.removeAllListeners();
+            this.trigger.remove();
+        }
+        if(this.wrap){
+            this.wrap.remove();
+        }
+        Roo.form.TriggerField.superclass.onDestroy.call(this);
+    },
+
+    // private
+    onFocus : function(){
+        Roo.form.TriggerField.superclass.onFocus.call(this);
+        if(!this.mimicing){
+            this.wrap.addClass('x-trigger-wrap-focus');
+            this.mimicing = true;
+            Roo.get(Roo.isIE ? document.body : document).on("mousedown", this.mimicBlur, this);
+            if(this.monitorTab){
+                this.el.on("keydown", this.checkTab, this);
+            }
+        }
+    },
+
+    // private
+    checkTab : function(e){
+        if(e.getKey() == e.TAB){
+            this.triggerBlur();
+        }
+    },
+
+    // private
+    onBlur : function(){
+        // do nothing
+    },
+
+    // private
+    mimicBlur : function(e, t){
+        if(!this.wrap.contains(t) && this.validateBlur()){
+            this.triggerBlur();
+        }
+    },
+
+    // private
+    triggerBlur : function(){
+        this.mimicing = false;
+        Roo.get(Roo.isIE ? document.body : document).un("mousedown", this.mimicBlur);
+        if(this.monitorTab){
+            this.el.un("keydown", this.checkTab, this);
+        }
+        this.wrap.removeClass('x-trigger-wrap-focus');
+        Roo.form.TriggerField.superclass.onBlur.call(this);
+    },
+
+    // private
+    // This should be overriden by any subclass that needs to check whether or not the field can be blurred.
+    validateBlur : function(e, t){
+        return true;
+    },
+
+    // private
+    onDisable : function(){
+        Roo.form.TriggerField.superclass.onDisable.call(this);
+        if(this.wrap){
+            this.wrap.addClass('x-item-disabled');
+        }
+    },
+
+    // private
+    onEnable : function(){
+        Roo.form.TriggerField.superclass.onEnable.call(this);
+        if(this.wrap){
+            this.wrap.removeClass('x-item-disabled');
+        }
+    },
+
+    // private
+    onShow : function(){
+        var ae = this.getActionEl();
+        
+        if(ae){
+            ae.dom.style.display = '';
+            ae.dom.style.visibility = 'visible';
+        }
+    },
+
+    // private
+    
+    onHide : function(){
+        var ae = this.getActionEl();
+        ae.dom.style.display = 'none';
+    },
+
+    /**
+     * The function that should handle the trigger's click event.  This method does nothing by default until overridden
+     * by an implementing function.
+     * @method
+     * @param {EventObject} e
+     */
+    onTriggerClick : Roo.emptyFn
+});
+
+// TwinTriggerField is not a public class to be used directly.  It is meant as an abstract base class
+// to be extended by an implementing class.  For an example of implementing this class, see the custom
+// SearchField implementation here: http://extjs.com/deploy/ext/examples/form/custom.html
+Roo.form.TwinTriggerField = Roo.extend(Roo.form.TriggerField, {
+    initComponent : function(){
+        Roo.form.TwinTriggerField.superclass.initComponent.call(this);
+
+        this.triggerConfig = {
+            tag:'span', cls:'x-form-twin-triggers', cn:[
+            {tag: "img", src: Roo.BLANK_IMAGE_URL, cls: "x-form-trigger " + this.trigger1Class},
+            {tag: "img", src: Roo.BLANK_IMAGE_URL, cls: "x-form-trigger " + this.trigger2Class}
+        ]};
+    },
+
+    getTrigger : function(index){
+        return this.triggers[index];
+    },
+
+    initTrigger : function(){
+        var ts = this.trigger.select('.x-form-trigger', true);
+        this.wrap.setStyle('overflow', 'hidden');
+        var triggerField = this;
+        ts.each(function(t, all, index){
+            t.hide = function(){
+                var w = triggerField.wrap.getWidth();
+                this.dom.style.display = 'none';
+                triggerField.el.setWidth(w-triggerField.trigger.getWidth());
+            };
+            t.show = function(){
+                var w = triggerField.wrap.getWidth();
+                this.dom.style.display = '';
+                triggerField.el.setWidth(w-triggerField.trigger.getWidth());
+            };
+            var triggerIndex = 'Trigger'+(index+1);
+
+            if(this['hide'+triggerIndex]){
+                t.dom.style.display = 'none';
+            }
+            t.on("click", this['on'+triggerIndex+'Click'], this, {preventDefault:true});
+            t.addClassOnOver('x-form-trigger-over');
+            t.addClassOnClick('x-form-trigger-click');
+        }, this);
+        this.triggers = ts.elements;
+    },
+
+    onTrigger1Click : Roo.emptyFn,
+    onTrigger2Click : Roo.emptyFn
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.form.TextArea
+ * @extends Roo.form.TextField
+ * Multiline text field.  Can be used as a direct replacement for traditional textarea fields, plus adds
+ * support for auto-sizing.
+ * @constructor
+ * Creates a new TextArea
+ * @param {Object} config Configuration options
+ */
+Roo.form.TextArea = function(config){
+    Roo.form.TextArea.superclass.constructor.call(this, config);
+    // these are provided exchanges for backwards compat
+    // minHeight/maxHeight were replaced by growMin/growMax to be
+    // compatible with TextField growing config values
+    if(this.minHeight !== undefined){
+        this.growMin = this.minHeight;
+    }
+    if(this.maxHeight !== undefined){
+        this.growMax = this.maxHeight;
+    }
+};
+
+Roo.extend(Roo.form.TextArea, Roo.form.TextField,  {
+    /**
+     * @cfg {Number} growMin The minimum height to allow when grow = true (defaults to 60)
+     */
+    growMin : 60,
+    /**
+     * @cfg {Number} growMax The maximum height to allow when grow = true (defaults to 1000)
+     */
+    growMax: 1000,
+    /**
+     * @cfg {Boolean} preventScrollbars True to prevent scrollbars from appearing regardless of how much text is
+     * in the field (equivalent to setting overflow: hidden, defaults to false)
+     */
+    preventScrollbars: false,
+    /**
+     * @cfg {String/Object} autoCreate A DomHelper element spec, or true for a default element spec (defaults to
+     * {tag: "textarea", style: "width:300px;height:60px;", autocomplete: "off"})
+     */
+
+    // private
+    onRender : function(ct, position){
+        if(!this.el){
+            this.defaultAutoCreate = {
+                tag: "textarea",
+                style:"width:300px;height:60px;",
+                autocomplete: "off"
+            };
+        }
+        Roo.form.TextArea.superclass.onRender.call(this, ct, position);
+        if(this.grow){
+            this.textSizeEl = Roo.DomHelper.append(document.body, {
+                tag: "pre", cls: "x-form-grow-sizer"
+            });
+            if(this.preventScrollbars){
+                this.el.setStyle("overflow", "hidden");
+            }
+            this.el.setHeight(this.growMin);
+        }
+    },
+
+    onDestroy : function(){
+        if(this.textSizeEl){
+            this.textSizeEl.parentNode.removeChild(this.textSizeEl);
+        }
+        Roo.form.TextArea.superclass.onDestroy.call(this);
+    },
+
+    // private
+    onKeyUp : function(e){
+        if(!e.isNavKeyPress() || e.getKey() == e.ENTER){
+            this.autoSize();
+        }
+    },
+
+    /**
+     * Automatically grows the field to accomodate the height of the text up to the maximum field height allowed.
+     * This only takes effect if grow = true, and fires the autosize event if the height changes.
+     */
+    autoSize : function(){
+        if(!this.grow || !this.textSizeEl){
+            return;
+        }
+        var el = this.el;
+        var v = el.dom.value;
+        var ts = this.textSizeEl;
+
+        ts.innerHTML = '';
+        ts.appendChild(document.createTextNode(v));
+        v = ts.innerHTML;
+
+        Roo.fly(ts).setWidth(this.el.getWidth());
+        if(v.length < 1){
+            v = "&#160;&#160;";
+        }else{
+            if(Roo.isIE){
+                v = v.replace(/\n/g, '<p>&#160;</p>');
+            }
+            v += "&#160;\n&#160;";
+        }
+        ts.innerHTML = v;
+        var h = Math.min(this.growMax, Math.max(ts.offsetHeight, this.growMin));
+        if(h != this.lastHeight){
+            this.lastHeight = h;
+            this.el.setHeight(h);
+            this.fireEvent("autosize", this, h);
+        }
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+
+/**
+ * @class Roo.form.NumberField
+ * @extends Roo.form.TextField
+ * Numeric text field that provides automatic keystroke filtering and numeric validation.
+ * @constructor
+ * Creates a new NumberField
+ * @param {Object} config Configuration options
+ */
+Roo.form.NumberField = function(config){
+    Roo.form.NumberField.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.form.NumberField, Roo.form.TextField,  {
+    /**
+     * @cfg {String} fieldClass The default CSS class for the field (defaults to "x-form-field x-form-num-field")
+     */
+    fieldClass: "x-form-field x-form-num-field",
+    /**
+     * @cfg {Boolean} allowDecimals False to disallow decimal values (defaults to true)
+     */
+    allowDecimals : true,
+    /**
+     * @cfg {String} decimalSeparator Character(s) to allow as the decimal separator (defaults to '.')
+     */
+    decimalSeparator : ".",
+    /**
+     * @cfg {Number} decimalPrecision The maximum precision to display after the decimal separator (defaults to 2)
+     */
+    decimalPrecision : 2,
+    /**
+     * @cfg {Boolean} allowNegative False to prevent entering a negative sign (defaults to true)
+     */
+    allowNegative : true,
+    /**
+     * @cfg {Number} minValue The minimum allowed value (defaults to Number.NEGATIVE_INFINITY)
+     */
+    minValue : Number.NEGATIVE_INFINITY,
+    /**
+     * @cfg {Number} maxValue The maximum allowed value (defaults to Number.MAX_VALUE)
+     */
+    maxValue : Number.MAX_VALUE,
+    /**
+     * @cfg {String} minText Error text to display if the minimum value validation fails (defaults to "The minimum value for this field is {minValue}")
+     */
+    minText : "The minimum value for this field is {0}",
+    /**
+     * @cfg {String} maxText Error text to display if the maximum value validation fails (defaults to "The maximum value for this field is {maxValue}")
+     */
+    maxText : "The maximum value for this field is {0}",
+    /**
+     * @cfg {String} nanText Error text to display if the value is not a valid number.  For example, this can happen
+     * if a valid character like '.' or '-' is left in the field with no number (defaults to "{value} is not a valid number")
+     */
+    nanText : "{0} is not a valid number",
+
+    // private
+    initEvents : function(){
+        Roo.form.NumberField.superclass.initEvents.call(this);
+        var allowed = "0123456789";
+        if(this.allowDecimals){
+            allowed += this.decimalSeparator;
+        }
+        if(this.allowNegative){
+            allowed += "-";
+        }
+        this.stripCharsRe = new RegExp('[^'+allowed+']', 'gi');
+        var keyPress = function(e){
+            var k = e.getKey();
+            if(!Roo.isIE && (e.isSpecialKey() || k == e.BACKSPACE || k == e.DELETE)){
+                return;
+            }
+            var c = e.getCharCode();
+            if(allowed.indexOf(String.fromCharCode(c)) === -1){
+                e.stopEvent();
+            }
+        };
+        this.el.on("keypress", keyPress, this);
+    },
+
+    // private
+    validateValue : function(value){
+        if(!Roo.form.NumberField.superclass.validateValue.call(this, value)){
+            return false;
+        }
+        if(value.length < 1){ // if it's blank and textfield didn't flag it then it's valid
+             return true;
+        }
+        var num = this.parseValue(value);
+        if(isNaN(num)){
+            this.markInvalid(String.format(this.nanText, value));
+            return false;
+        }
+        if(num < this.minValue){
+            this.markInvalid(String.format(this.minText, this.minValue));
+            return false;
+        }
+        if(num > this.maxValue){
+            this.markInvalid(String.format(this.maxText, this.maxValue));
+            return false;
+        }
+        return true;
+    },
+
+    getValue : function(){
+        return this.fixPrecision(this.parseValue(Roo.form.NumberField.superclass.getValue.call(this)));
+    },
+
+    // private
+    parseValue : function(value){
+        value = parseFloat(String(value).replace(this.decimalSeparator, "."));
+        return isNaN(value) ? '' : value;
+    },
+
+    // private
+    fixPrecision : function(value){
+        var nan = isNaN(value);
+        if(!this.allowDecimals || this.decimalPrecision == -1 || nan || !value){
+            return nan ? '' : value;
+        }
+        return parseFloat(value).toFixed(this.decimalPrecision);
+    },
+
+    setValue : function(v){
+        Roo.form.NumberField.superclass.setValue.call(this, String(v).replace(".", this.decimalSeparator));
+    },
+
+    // private
+    decimalPrecisionFcn : function(v){
+        return Math.floor(v);
+    },
+
+    beforeBlur : function(){
+        var v = this.parseValue(this.getRawValue());
+        if(v){
+            this.setValue(this.fixPrecision(v));
+        }
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.form.DateField
+ * @extends Roo.form.TriggerField
+ * Provides a date input field with a {@link Roo.DatePicker} dropdown and automatic date validation.
+* @constructor
+* Create a new DateField
+* @param {Object} config
+ */
+Roo.form.DateField = function(config){
+    Roo.form.DateField.superclass.constructor.call(this, config);
+    
+      this.addEvents({
+         
+        /**
+         * @event select
+         * Fires when a date is selected
+	     * @param {Roo.form.DateField} combo This combo box
+	     * @param {Date} date The date selected
+	     */
+        'select' : true
+         
+    });
+    
+    
+    if(typeof this.minValue == "string") this.minValue = this.parseDate(this.minValue);
+    if(typeof this.maxValue == "string") this.maxValue = this.parseDate(this.maxValue);
+    this.ddMatch = null;
+    if(this.disabledDates){
+        var dd = this.disabledDates;
+        var re = "(?:";
+        for(var i = 0; i < dd.length; i++){
+            re += dd[i];
+            if(i != dd.length-1) re += "|";
+        }
+        this.ddMatch = new RegExp(re + ")");
+    }
+};
+
+Roo.extend(Roo.form.DateField, Roo.form.TriggerField,  {
+    /**
+     * @cfg {String} format
+     * The default date format string which can be overriden for localization support.  The format must be
+     * valid according to {@link Date#parseDate} (defaults to 'm/d/y').
+     */
+    format : "m/d/y",
+    /**
+     * @cfg {String} altFormats
+     * Multiple date formats separated by "|" to try when parsing a user input value and it doesn't match the defined
+     * format (defaults to 'm/d/Y|m-d-y|m-d-Y|m/d|m-d|d').
+     */
+    altFormats : "m/d/Y|m-d-y|m-d-Y|m/d|m-d|md|mdy|mdY|d",
+    /**
+     * @cfg {Array} disabledDays
+     * An array of days to disable, 0 based. For example, [0, 6] disables Sunday and Saturday (defaults to null).
+     */
+    disabledDays : null,
+    /**
+     * @cfg {String} disabledDaysText
+     * The tooltip to display when the date falls on a disabled day (defaults to 'Disabled')
+     */
+    disabledDaysText : "Disabled",
+    /**
+     * @cfg {Array} disabledDates
+     * An array of "dates" to disable, as strings. These strings will be used to build a dynamic regular
+     * expression so they are very powerful. Some examples:
+     * <ul>
+     * <li>["03/08/2003", "09/16/2003"] would disable those exact dates</li>
+     * <li>["03/08", "09/16"] would disable those days for every year</li>
+     * <li>["^03/08"] would only match the beginning (useful if you are using short years)</li>
+     * <li>["03/../2006"] would disable every day in March 2006</li>
+     * <li>["^03"] would disable every day in every March</li>
+     * </ul>
+     * In order to support regular expressions, if you are using a date format that has "." in it, you will have to
+     * escape the dot when restricting dates. For example: ["03\\.08\\.03"].
+     */
+    disabledDates : null,
+    /**
+     * @cfg {String} disabledDatesText
+     * The tooltip text to display when the date falls on a disabled date (defaults to 'Disabled')
+     */
+    disabledDatesText : "Disabled",
+    /**
+     * @cfg {Date/String} minValue
+     * The minimum allowed date. Can be either a Javascript date object or a string date in a
+     * valid format (defaults to null).
+     */
+    minValue : null,
+    /**
+     * @cfg {Date/String} maxValue
+     * The maximum allowed date. Can be either a Javascript date object or a string date in a
+     * valid format (defaults to null).
+     */
+    maxValue : null,
+    /**
+     * @cfg {String} minText
+     * The error text to display when the date in the cell is before minValue (defaults to
+     * 'The date in this field must be after {minValue}').
+     */
+    minText : "The date in this field must be equal to or after {0}",
+    /**
+     * @cfg {String} maxText
+     * The error text to display when the date in the cell is after maxValue (defaults to
+     * 'The date in this field must be before {maxValue}').
+     */
+    maxText : "The date in this field must be equal to or before {0}",
+    /**
+     * @cfg {String} invalidText
+     * The error text to display when the date in the field is invalid (defaults to
+     * '{value} is not a valid date - it must be in the format {format}').
+     */
+    invalidText : "{0} is not a valid date - it must be in the format {1}",
+    /**
+     * @cfg {String} triggerClass
+     * An additional CSS class used to style the trigger button.  The trigger will always get the
+     * class 'x-form-trigger' and triggerClass will be <b>appended</b> if specified (defaults to 'x-form-date-trigger'
+     * which displays a calendar icon).
+     */
+    triggerClass : 'x-form-date-trigger',
+    
+
+    /**
+     * @cfg {bool} useIso
+     * if enabled, then the date field will use a hidden field to store the 
+     * real value as iso formated date. default (false)
+     */ 
+    useIso : false,
+    /**
+     * @cfg {String/Object} autoCreate
+     * A DomHelper element spec, or true for a default element spec (defaults to
+     * {tag: "input", type: "text", size: "10", autocomplete: "off"})
+     */ 
+    // private
+    defaultAutoCreate : {tag: "input", type: "text", size: "10", autocomplete: "off"},
+    
+    // private
+    hiddenField: false,
+    
+    onRender : function(ct, position)
+    {
+        Roo.form.DateField.superclass.onRender.call(this, ct, position);
+        if (this.useIso) {
+            this.el.dom.removeAttribute('name'); 
+            this.hiddenField = this.el.insertSibling({ tag:'input', type:'hidden', name: this.name },
+                    'before', true);
+            this.hiddenField.value = this.formatDate(this.value, 'Y-m-d');
+            // prevent input submission
+            this.hiddenName = this.name;
+        }
+            
+            
+    },
+    
+    // private
+    validateValue : function(value)
+    {
+        value = this.formatDate(value);
+        if(!Roo.form.DateField.superclass.validateValue.call(this, value)){
+            return false;
+        }
+        if(value.length < 1){ // if it's blank and textfield didn't flag it then it's valid
+             return true;
+        }
+        var svalue = value;
+        value = this.parseDate(value);
+        if(!value){
+            this.markInvalid(String.format(this.invalidText, svalue, this.format));
+            return false;
+        }
+        var time = value.getTime();
+        if(this.minValue && time < this.minValue.getTime()){
+            this.markInvalid(String.format(this.minText, this.formatDate(this.minValue)));
+            return false;
+        }
+        if(this.maxValue && time > this.maxValue.getTime()){
+            this.markInvalid(String.format(this.maxText, this.formatDate(this.maxValue)));
+            return false;
+        }
+        if(this.disabledDays){
+            var day = value.getDay();
+            for(var i = 0; i < this.disabledDays.length; i++) {
+            	if(day === this.disabledDays[i]){
+            	    this.markInvalid(this.disabledDaysText);
+                    return false;
+            	}
+            }
+        }
+        var fvalue = this.formatDate(value);
+        if(this.ddMatch && this.ddMatch.test(fvalue)){
+            this.markInvalid(String.format(this.disabledDatesText, fvalue));
+            return false;
+        }
+        return true;
+    },
+
+    // private
+    // Provides logic to override the default TriggerField.validateBlur which just returns true
+    validateBlur : function(){
+        return !this.menu || !this.menu.isVisible();
+    },
+
+    /**
+     * Returns the current date value of the date field.
+     * @return {Date} The date value
+     */
+    getValue : function(){
+        
+        return  this.hiddenField ? this.hiddenField.value : this.parseDate(Roo.form.DateField.superclass.getValue.call(this)) || "";
+    },
+
+    /**
+     * Sets the value of the date field.  You can pass a date object or any string that can be parsed into a valid
+     * date, using DateField.format as the date format, according to the same rules as {@link Date#parseDate}
+     * (the default format used is "m/d/y").
+     * <br />Usage:
+     * <pre><code>
+//All of these calls set the same date value (May 4, 2006)
+
+//Pass a date object:
+var dt = new Date('5/4/06');
+dateField.setValue(dt);
+
+//Pass a date string (default format):
+dateField.setValue('5/4/06');
+
+//Pass a date string (custom format):
+dateField.format = 'Y-m-d';
+dateField.setValue('2006-5-4');
+</code></pre>
+     * @param {String/Date} date The date or valid date string
+     */
+    setValue : function(date){
+        if (this.hiddenField) {
+            this.hiddenField.value = this.formatDate(this.parseDate(date), 'Y-m-d');
+        }
+        Roo.form.DateField.superclass.setValue.call(this, this.formatDate(this.parseDate(date)));
+    },
+
+    // private
+    parseDate : function(value){
+        if(!value || value instanceof Date){
+            return value;
+        }
+        var v = Date.parseDate(value, this.format);
+        if(!v && this.altFormats){
+            if(!this.altFormatsArray){
+                this.altFormatsArray = this.altFormats.split("|");
+            }
+            for(var i = 0, len = this.altFormatsArray.length; i < len && !v; i++){
+                v = Date.parseDate(value, this.altFormatsArray[i]);
+            }
+        }
+        return v;
+    },
+
+    // private
+    formatDate : function(date, fmt){
+        return (!date || !(date instanceof Date)) ?
+               date : date.dateFormat(fmt || this.format);
+    },
+
+    // private
+    menuListeners : {
+        select: function(m, d){
+            this.setValue(d);
+            this.fireEvent('select', this, d);
+        },
+        show : function(){ // retain focus styling
+            this.onFocus();
+        },
+        hide : function(){
+            this.focus.defer(10, this);
+            var ml = this.menuListeners;
+            this.menu.un("select", ml.select,  this);
+            this.menu.un("show", ml.show,  this);
+            this.menu.un("hide", ml.hide,  this);
+        }
+    },
+
+    // private
+    // Implements the default empty TriggerField.onTriggerClick function to display the DatePicker
+    onTriggerClick : function(){
+        if(this.disabled){
+            return;
+        }
+        if(this.menu == null){
+            this.menu = new Roo.menu.DateMenu();
+        }
+        Roo.apply(this.menu.picker,  {
+            showClear: this.allowBlank,
+            minDate : this.minValue,
+            maxDate : this.maxValue,
+            disabledDatesRE : this.ddMatch,
+            disabledDatesText : this.disabledDatesText,
+            disabledDays : this.disabledDays,
+            disabledDaysText : this.disabledDaysText,
+            format : this.format,
+            minText : String.format(this.minText, this.formatDate(this.minValue)),
+            maxText : String.format(this.maxText, this.formatDate(this.maxValue))
+        });
+        this.menu.on(Roo.apply({}, this.menuListeners, {
+            scope:this
+        }));
+        this.menu.picker.setValue(this.getValue() || new Date());
+        this.menu.show(this.el, "tl-bl?");
+    },
+
+    beforeBlur : function(){
+        var v = this.parseDate(this.getRawValue());
+        if(v){
+            this.setValue(v);
+        }
+    }
+
+    /** @cfg {Boolean} grow @hide */
+    /** @cfg {Number} growMin @hide */
+    /** @cfg {Number} growMax @hide */
+    /**
+     * @hide
+     * @method autoSize
+     */
+});
