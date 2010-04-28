@@ -30728,4 +30728,1451 @@ Roo.extend(Roo.tree.TreePanel, Roo.data.Tree, {
         }
         return this;
     }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+
+/**
+ * @class Roo.tree.DefaultSelectionModel
+ * @extends Roo.util.Observable
+ * The default single selection for a TreePanel.
+ */
+Roo.tree.DefaultSelectionModel = function(){
+   this.selNode = null;
+   
+   this.addEvents({
+       /**
+        * @event selectionchange
+        * Fires when the selected node changes
+        * @param {DefaultSelectionModel} this
+        * @param {TreeNode} node the new selection
+        */
+       "selectionchange" : true,
+
+       /**
+        * @event beforeselect
+        * Fires before the selected node changes, return false to cancel the change
+        * @param {DefaultSelectionModel} this
+        * @param {TreeNode} node the new selection
+        * @param {TreeNode} node the old selection
+        */
+       "beforeselect" : true
+   });
+};
+
+Roo.extend(Roo.tree.DefaultSelectionModel, Roo.util.Observable, {
+    init : function(tree){
+        this.tree = tree;
+        tree.getTreeEl().on("keydown", this.onKeyDown, this);
+        tree.on("click", this.onNodeClick, this);
+    },
+    
+    onNodeClick : function(node, e){
+        if (e.ctrlKey && this.selNode == node)  {
+            this.unselect(node);
+            return;
+        }
+        this.select(node);
+    },
+    
+    /**
+     * Select a node.
+     * @param {TreeNode} node The node to select
+     * @return {TreeNode} The selected node
+     */
+    select : function(node){
+        var last = this.selNode;
+        if(last != node && this.fireEvent('beforeselect', this, node, last) !== false){
+            if(last){
+                last.ui.onSelectedChange(false);
+            }
+            this.selNode = node;
+            node.ui.onSelectedChange(true);
+            this.fireEvent("selectionchange", this, node, last);
+        }
+        return node;
+    },
+    
+    /**
+     * Deselect a node.
+     * @param {TreeNode} node The node to unselect
+     */
+    unselect : function(node){
+        if(this.selNode == node){
+            this.clearSelections();
+        }    
+    },
+    
+    /**
+     * Clear all selections
+     */
+    clearSelections : function(){
+        var n = this.selNode;
+        if(n){
+            n.ui.onSelectedChange(false);
+            this.selNode = null;
+            this.fireEvent("selectionchange", this, null);
+        }
+        return n;
+    },
+    
+    /**
+     * Get the selected node
+     * @return {TreeNode} The selected node
+     */
+    getSelectedNode : function(){
+        return this.selNode;    
+    },
+    
+    /**
+     * Returns true if the node is selected
+     * @param {TreeNode} node The node to check
+     * @return {Boolean}
+     */
+    isSelected : function(node){
+        return this.selNode == node;  
+    },
+
+    /**
+     * Selects the node above the selected node in the tree, intelligently walking the nodes
+     * @return TreeNode The new selection
+     */
+    selectPrevious : function(){
+        var s = this.selNode || this.lastSelNode;
+        if(!s){
+            return null;
+        }
+        var ps = s.previousSibling;
+        if(ps){
+            if(!ps.isExpanded() || ps.childNodes.length < 1){
+                return this.select(ps);
+            } else{
+                var lc = ps.lastChild;
+                while(lc && lc.isExpanded() && lc.childNodes.length > 0){
+                    lc = lc.lastChild;
+                }
+                return this.select(lc);
+            }
+        } else if(s.parentNode && (this.tree.rootVisible || !s.parentNode.isRoot)){
+            return this.select(s.parentNode);
+        }
+        return null;
+    },
+
+    /**
+     * Selects the node above the selected node in the tree, intelligently walking the nodes
+     * @return TreeNode The new selection
+     */
+    selectNext : function(){
+        var s = this.selNode || this.lastSelNode;
+        if(!s){
+            return null;
+        }
+        if(s.firstChild && s.isExpanded()){
+             return this.select(s.firstChild);
+         }else if(s.nextSibling){
+             return this.select(s.nextSibling);
+         }else if(s.parentNode){
+            var newS = null;
+            s.parentNode.bubble(function(){
+                if(this.nextSibling){
+                    newS = this.getOwnerTree().selModel.select(this.nextSibling);
+                    return false;
+                }
+            });
+            return newS;
+         }
+        return null;
+    },
+
+    onKeyDown : function(e){
+        var s = this.selNode || this.lastSelNode;
+        // undesirable, but required
+        var sm = this;
+        if(!s){
+            return;
+        }
+        var k = e.getKey();
+        switch(k){
+             case e.DOWN:
+                 e.stopEvent();
+                 this.selectNext();
+             break;
+             case e.UP:
+                 e.stopEvent();
+                 this.selectPrevious();
+             break;
+             case e.RIGHT:
+                 e.preventDefault();
+                 if(s.hasChildNodes()){
+                     if(!s.isExpanded()){
+                         s.expand();
+                     }else if(s.firstChild){
+                         this.select(s.firstChild, e);
+                     }
+                 }
+             break;
+             case e.LEFT:
+                 e.preventDefault();
+                 if(s.hasChildNodes() && s.isExpanded()){
+                     s.collapse();
+                 }else if(s.parentNode && (this.tree.rootVisible || s.parentNode != this.tree.getRootNode())){
+                     this.select(s.parentNode, e);
+                 }
+             break;
+        };
+    }
+});
+
+/**
+ * @class Roo.tree.MultiSelectionModel
+ * @extends Roo.util.Observable
+ * Multi selection for a TreePanel.
+ */
+Roo.tree.MultiSelectionModel = function(){
+   this.selNodes = [];
+   this.selMap = {};
+   this.addEvents({
+       /**
+        * @event selectionchange
+        * Fires when the selected nodes change
+        * @param {MultiSelectionModel} this
+        * @param {Array} nodes Array of the selected nodes
+        */
+       "selectionchange" : true
+   });
+};
+
+Roo.extend(Roo.tree.MultiSelectionModel, Roo.util.Observable, {
+    init : function(tree){
+        this.tree = tree;
+        tree.getTreeEl().on("keydown", this.onKeyDown, this);
+        tree.on("click", this.onNodeClick, this);
+    },
+    
+    onNodeClick : function(node, e){
+        this.select(node, e, e.ctrlKey);
+    },
+    
+    /**
+     * Select a node.
+     * @param {TreeNode} node The node to select
+     * @param {EventObject} e (optional) An event associated with the selection
+     * @param {Boolean} keepExisting True to retain existing selections
+     * @return {TreeNode} The selected node
+     */
+    select : function(node, e, keepExisting){
+        if(keepExisting !== true){
+            this.clearSelections(true);
+        }
+        if(this.isSelected(node)){
+            this.lastSelNode = node;
+            return node;
+        }
+        this.selNodes.push(node);
+        this.selMap[node.id] = node;
+        this.lastSelNode = node;
+        node.ui.onSelectedChange(true);
+        this.fireEvent("selectionchange", this, this.selNodes);
+        return node;
+    },
+    
+    /**
+     * Deselect a node.
+     * @param {TreeNode} node The node to unselect
+     */
+    unselect : function(node){
+        if(this.selMap[node.id]){
+            node.ui.onSelectedChange(false);
+            var sn = this.selNodes;
+            var index = -1;
+            if(sn.indexOf){
+                index = sn.indexOf(node);
+            }else{
+                for(var i = 0, len = sn.length; i < len; i++){
+                    if(sn[i] == node){
+                        index = i;
+                        break;
+                    }
+                }
+            }
+            if(index != -1){
+                this.selNodes.splice(index, 1);
+            }
+            delete this.selMap[node.id];
+            this.fireEvent("selectionchange", this, this.selNodes);
+        }
+    },
+    
+    /**
+     * Clear all selections
+     */
+    clearSelections : function(suppressEvent){
+        var sn = this.selNodes;
+        if(sn.length > 0){
+            for(var i = 0, len = sn.length; i < len; i++){
+                sn[i].ui.onSelectedChange(false);
+            }
+            this.selNodes = [];
+            this.selMap = {};
+            if(suppressEvent !== true){
+                this.fireEvent("selectionchange", this, this.selNodes);
+            }
+        }
+    },
+    
+    /**
+     * Returns true if the node is selected
+     * @param {TreeNode} node The node to check
+     * @return {Boolean}
+     */
+    isSelected : function(node){
+        return this.selMap[node.id] ? true : false;  
+    },
+    
+    /**
+     * Returns an array of the selected nodes
+     * @return {Array}
+     */
+    getSelectedNodes : function(){
+        return this.selNodes;    
+    },
+
+    onKeyDown : Roo.tree.DefaultSelectionModel.prototype.onKeyDown,
+
+    selectNext : Roo.tree.DefaultSelectionModel.prototype.selectNext,
+
+    selectPrevious : Roo.tree.DefaultSelectionModel.prototype.selectPrevious
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.tree.TreeNode
+ * @extends Roo.data.Node
+ * @cfg {String} text The text for this node
+ * @cfg {Boolean} expanded true to start the node expanded
+ * @cfg {Boolean} allowDrag false to make this node undraggable if DD is on (defaults to true)
+ * @cfg {Boolean} allowDrop false if this node cannot be drop on
+ * @cfg {Boolean} disabled true to start the node disabled
+ * @cfg {String} icon The path to an icon for the node. The preferred way to do this
+ * is to use the cls or iconCls attributes and add the icon via a CSS background image.
+ * @cfg {String} cls A css class to be added to the node
+ * @cfg {String} iconCls A css class to be added to the nodes icon element for applying css background images
+ * @cfg {String} href URL of the link used for the node (defaults to #)
+ * @cfg {String} hrefTarget target frame for the link
+ * @cfg {String} qtip An Ext QuickTip for the node
+ * @cfg {String} qtipCfg An Ext QuickTip config for the node (used instead of qtip)
+ * @cfg {Boolean} singleClickExpand True for single click expand on this node
+ * @cfg {Function} uiProvider A UI <b>class</b> to use for this node (defaults to Roo.tree.TreeNodeUI)
+ * @cfg {Boolean} checked True to render a checked checkbox for this node, false to render an unchecked checkbox
+ * (defaults to undefined with no checkbox rendered)
+ * @constructor
+ * @param {Object/String} attributes The attributes/config for the node or just a string with the text for the node
+ */
+Roo.tree.TreeNode = function(attributes){
+    attributes = attributes || {};
+    if(typeof attributes == "string"){
+        attributes = {text: attributes};
+    }
+    this.childrenRendered = false;
+    this.rendered = false;
+    Roo.tree.TreeNode.superclass.constructor.call(this, attributes);
+    this.expanded = attributes.expanded === true;
+    this.isTarget = attributes.isTarget !== false;
+    this.draggable = attributes.draggable !== false && attributes.allowDrag !== false;
+    this.allowChildren = attributes.allowChildren !== false && attributes.allowDrop !== false;
+
+    /**
+     * Read-only. The text for this node. To change it use setText().
+     * @type String
+     */
+    this.text = attributes.text;
+    /**
+     * True if this node is disabled.
+     * @type Boolean
+     */
+    this.disabled = attributes.disabled === true;
+
+    this.addEvents({
+        /**
+        * @event textchange
+        * Fires when the text for this node is changed
+        * @param {Node} this This node
+        * @param {String} text The new text
+        * @param {String} oldText The old text
+        */
+        "textchange" : true,
+        /**
+        * @event beforeexpand
+        * Fires before this node is expanded, return false to cancel.
+        * @param {Node} this This node
+        * @param {Boolean} deep
+        * @param {Boolean} anim
+        */
+        "beforeexpand" : true,
+        /**
+        * @event beforecollapse
+        * Fires before this node is collapsed, return false to cancel.
+        * @param {Node} this This node
+        * @param {Boolean} deep
+        * @param {Boolean} anim
+        */
+        "beforecollapse" : true,
+        /**
+        * @event expand
+        * Fires when this node is expanded
+        * @param {Node} this This node
+        */
+        "expand" : true,
+        /**
+        * @event disabledchange
+        * Fires when the disabled status of this node changes
+        * @param {Node} this This node
+        * @param {Boolean} disabled
+        */
+        "disabledchange" : true,
+        /**
+        * @event collapse
+        * Fires when this node is collapsed
+        * @param {Node} this This node
+        */
+        "collapse" : true,
+        /**
+        * @event beforeclick
+        * Fires before click processing. Return false to cancel the default action.
+        * @param {Node} this This node
+        * @param {Roo.EventObject} e The event object
+        */
+        "beforeclick":true,
+        /**
+        * @event checkchange
+        * Fires when a node with a checkbox's checked property changes
+        * @param {Node} this This node
+        * @param {Boolean} checked
+        */
+        "checkchange":true,
+        /**
+        * @event click
+        * Fires when this node is clicked
+        * @param {Node} this This node
+        * @param {Roo.EventObject} e The event object
+        */
+        "click":true,
+        /**
+        * @event dblclick
+        * Fires when this node is double clicked
+        * @param {Node} this This node
+        * @param {Roo.EventObject} e The event object
+        */
+        "dblclick":true,
+        /**
+        * @event contextmenu
+        * Fires when this node is right clicked
+        * @param {Node} this This node
+        * @param {Roo.EventObject} e The event object
+        */
+        "contextmenu":true,
+        /**
+        * @event beforechildrenrendered
+        * Fires right before the child nodes for this node are rendered
+        * @param {Node} this This node
+        */
+        "beforechildrenrendered":true
+    });
+
+    var uiClass = this.attributes.uiProvider || Roo.tree.TreeNodeUI;
+
+    /**
+     * Read-only. The UI for this node
+     * @type TreeNodeUI
+     */
+    this.ui = new uiClass(this);
+};
+Roo.extend(Roo.tree.TreeNode, Roo.data.Node, {
+    preventHScroll: true,
+    /**
+     * Returns true if this node is expanded
+     * @return {Boolean}
+     */
+    isExpanded : function(){
+        return this.expanded;
+    },
+
+    /**
+     * Returns the UI object for this node
+     * @return {TreeNodeUI}
+     */
+    getUI : function(){
+        return this.ui;
+    },
+
+    // private override
+    setFirstChild : function(node){
+        var of = this.firstChild;
+        Roo.tree.TreeNode.superclass.setFirstChild.call(this, node);
+        if(this.childrenRendered && of && node != of){
+            of.renderIndent(true, true);
+        }
+        if(this.rendered){
+            this.renderIndent(true, true);
+        }
+    },
+
+    // private override
+    setLastChild : function(node){
+        var ol = this.lastChild;
+        Roo.tree.TreeNode.superclass.setLastChild.call(this, node);
+        if(this.childrenRendered && ol && node != ol){
+            ol.renderIndent(true, true);
+        }
+        if(this.rendered){
+            this.renderIndent(true, true);
+        }
+    },
+
+    // these methods are overridden to provide lazy rendering support
+    // private override
+    appendChild : function(){
+        var node = Roo.tree.TreeNode.superclass.appendChild.apply(this, arguments);
+        if(node && this.childrenRendered){
+            node.render();
+        }
+        this.ui.updateExpandIcon();
+        return node;
+    },
+
+    // private override
+    removeChild : function(node){
+        this.ownerTree.getSelectionModel().unselect(node);
+        Roo.tree.TreeNode.superclass.removeChild.apply(this, arguments);
+        // if it's been rendered remove dom node
+        if(this.childrenRendered){
+            node.ui.remove();
+        }
+        if(this.childNodes.length < 1){
+            this.collapse(false, false);
+        }else{
+            this.ui.updateExpandIcon();
+        }
+        if(!this.firstChild) {
+            this.childrenRendered = false;
+        }
+        return node;
+    },
+
+    // private override
+    insertBefore : function(node, refNode){
+        var newNode = Roo.tree.TreeNode.superclass.insertBefore.apply(this, arguments);
+        if(newNode && refNode && this.childrenRendered){
+            node.render();
+        }
+        this.ui.updateExpandIcon();
+        return newNode;
+    },
+
+    /**
+     * Sets the text for this node
+     * @param {String} text
+     */
+    setText : function(text){
+        var oldText = this.text;
+        this.text = text;
+        this.attributes.text = text;
+        if(this.rendered){ // event without subscribing
+            this.ui.onTextChange(this, text, oldText);
+        }
+        this.fireEvent("textchange", this, text, oldText);
+    },
+
+    /**
+     * Triggers selection of this node
+     */
+    select : function(){
+        this.getOwnerTree().getSelectionModel().select(this);
+    },
+
+    /**
+     * Triggers deselection of this node
+     */
+    unselect : function(){
+        this.getOwnerTree().getSelectionModel().unselect(this);
+    },
+
+    /**
+     * Returns true if this node is selected
+     * @return {Boolean}
+     */
+    isSelected : function(){
+        return this.getOwnerTree().getSelectionModel().isSelected(this);
+    },
+
+    /**
+     * Expand this node.
+     * @param {Boolean} deep (optional) True to expand all children as well
+     * @param {Boolean} anim (optional) false to cancel the default animation
+     * @param {Function} callback (optional) A callback to be called when
+     * expanding this node completes (does not wait for deep expand to complete).
+     * Called with 1 parameter, this node.
+     */
+    expand : function(deep, anim, callback){
+        if(!this.expanded){
+            if(this.fireEvent("beforeexpand", this, deep, anim) === false){
+                return;
+            }
+            if(!this.childrenRendered){
+                this.renderChildren();
+            }
+            this.expanded = true;
+            if(!this.isHiddenRoot() && (this.getOwnerTree().animate && anim !== false) || anim){
+                this.ui.animExpand(function(){
+                    this.fireEvent("expand", this);
+                    if(typeof callback == "function"){
+                        callback(this);
+                    }
+                    if(deep === true){
+                        this.expandChildNodes(true);
+                    }
+                }.createDelegate(this));
+                return;
+            }else{
+                this.ui.expand();
+                this.fireEvent("expand", this);
+                if(typeof callback == "function"){
+                    callback(this);
+                }
+            }
+        }else{
+           if(typeof callback == "function"){
+               callback(this);
+           }
+        }
+        if(deep === true){
+            this.expandChildNodes(true);
+        }
+    },
+
+    isHiddenRoot : function(){
+        return this.isRoot && !this.getOwnerTree().rootVisible;
+    },
+
+    /**
+     * Collapse this node.
+     * @param {Boolean} deep (optional) True to collapse all children as well
+     * @param {Boolean} anim (optional) false to cancel the default animation
+     */
+    collapse : function(deep, anim){
+        if(this.expanded && !this.isHiddenRoot()){
+            if(this.fireEvent("beforecollapse", this, deep, anim) === false){
+                return;
+            }
+            this.expanded = false;
+            if((this.getOwnerTree().animate && anim !== false) || anim){
+                this.ui.animCollapse(function(){
+                    this.fireEvent("collapse", this);
+                    if(deep === true){
+                        this.collapseChildNodes(true);
+                    }
+                }.createDelegate(this));
+                return;
+            }else{
+                this.ui.collapse();
+                this.fireEvent("collapse", this);
+            }
+        }
+        if(deep === true){
+            var cs = this.childNodes;
+            for(var i = 0, len = cs.length; i < len; i++) {
+            	cs[i].collapse(true, false);
+            }
+        }
+    },
+
+    // private
+    delayedExpand : function(delay){
+        if(!this.expandProcId){
+            this.expandProcId = this.expand.defer(delay, this);
+        }
+    },
+
+    // private
+    cancelExpand : function(){
+        if(this.expandProcId){
+            clearTimeout(this.expandProcId);
+        }
+        this.expandProcId = false;
+    },
+
+    /**
+     * Toggles expanded/collapsed state of the node
+     */
+    toggle : function(){
+        if(this.expanded){
+            this.collapse();
+        }else{
+            this.expand();
+        }
+    },
+
+    /**
+     * Ensures all parent nodes are expanded
+     */
+    ensureVisible : function(callback){
+        var tree = this.getOwnerTree();
+        tree.expandPath(this.parentNode.getPath(), false, function(){
+            tree.getTreeEl().scrollChildIntoView(this.ui.anchor);
+            Roo.callback(callback);
+        }.createDelegate(this));
+    },
+
+    /**
+     * Expand all child nodes
+     * @param {Boolean} deep (optional) true if the child nodes should also expand their child nodes
+     */
+    expandChildNodes : function(deep){
+        var cs = this.childNodes;
+        for(var i = 0, len = cs.length; i < len; i++) {
+        	cs[i].expand(deep);
+        }
+    },
+
+    /**
+     * Collapse all child nodes
+     * @param {Boolean} deep (optional) true if the child nodes should also collapse their child nodes
+     */
+    collapseChildNodes : function(deep){
+        var cs = this.childNodes;
+        for(var i = 0, len = cs.length; i < len; i++) {
+        	cs[i].collapse(deep);
+        }
+    },
+
+    /**
+     * Disables this node
+     */
+    disable : function(){
+        this.disabled = true;
+        this.unselect();
+        if(this.rendered && this.ui.onDisableChange){ // event without subscribing
+            this.ui.onDisableChange(this, true);
+        }
+        this.fireEvent("disabledchange", this, true);
+    },
+
+    /**
+     * Enables this node
+     */
+    enable : function(){
+        this.disabled = false;
+        if(this.rendered && this.ui.onDisableChange){ // event without subscribing
+            this.ui.onDisableChange(this, false);
+        }
+        this.fireEvent("disabledchange", this, false);
+    },
+
+    // private
+    renderChildren : function(suppressEvent){
+        if(suppressEvent !== false){
+            this.fireEvent("beforechildrenrendered", this);
+        }
+        var cs = this.childNodes;
+        for(var i = 0, len = cs.length; i < len; i++){
+            cs[i].render(true);
+        }
+        this.childrenRendered = true;
+    },
+
+    // private
+    sort : function(fn, scope){
+        Roo.tree.TreeNode.superclass.sort.apply(this, arguments);
+        if(this.childrenRendered){
+            var cs = this.childNodes;
+            for(var i = 0, len = cs.length; i < len; i++){
+                cs[i].render(true);
+            }
+        }
+    },
+
+    // private
+    render : function(bulkRender){
+        this.ui.render(bulkRender);
+        if(!this.rendered){
+            this.rendered = true;
+            if(this.expanded){
+                this.expanded = false;
+                this.expand(false, false);
+            }
+        }
+    },
+
+    // private
+    renderIndent : function(deep, refresh){
+        if(refresh){
+            this.ui.childIndent = null;
+        }
+        this.ui.renderIndent();
+        if(deep === true && this.childrenRendered){
+            var cs = this.childNodes;
+            for(var i = 0, len = cs.length; i < len; i++){
+                cs[i].renderIndent(true, refresh);
+            }
+        }
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.tree.AsyncTreeNode
+ * @extends Roo.tree.TreeNode
+ * @cfg {TreeLoader} loader A TreeLoader to be used by this node (defaults to the loader defined on the tree)
+ * @constructor
+ * @param {Object/String} attributes The attributes/config for the node or just a string with the text for the node 
+ */
+ Roo.tree.AsyncTreeNode = function(config){
+    this.loaded = false;
+    this.loading = false;
+    Roo.tree.AsyncTreeNode.superclass.constructor.apply(this, arguments);
+    /**
+    * @event beforeload
+    * Fires before this node is loaded, return false to cancel
+    * @param {Node} this This node
+    */
+    this.addEvents({'beforeload':true, 'load': true});
+    /**
+    * @event load
+    * Fires when this node is loaded
+    * @param {Node} this This node
+    */
+    /**
+     * The loader used by this node (defaults to using the tree's defined loader)
+     * @type TreeLoader
+     * @property loader
+     */
+};
+Roo.extend(Roo.tree.AsyncTreeNode, Roo.tree.TreeNode, {
+    expand : function(deep, anim, callback){
+        if(this.loading){ // if an async load is already running, waiting til it's done
+            var timer;
+            var f = function(){
+                if(!this.loading){ // done loading
+                    clearInterval(timer);
+                    this.expand(deep, anim, callback);
+                }
+            }.createDelegate(this);
+            timer = setInterval(f, 200);
+            return;
+        }
+        if(!this.loaded){
+            if(this.fireEvent("beforeload", this) === false){
+                return;
+            }
+            this.loading = true;
+            this.ui.beforeLoad(this);
+            var loader = this.loader || this.attributes.loader || this.getOwnerTree().getLoader();
+            if(loader){
+                loader.load(this, this.loadComplete.createDelegate(this, [deep, anim, callback]));
+                return;
+            }
+        }
+        Roo.tree.AsyncTreeNode.superclass.expand.call(this, deep, anim, callback);
+    },
+    
+    /**
+     * Returns true if this node is currently loading
+     * @return {Boolean}
+     */
+    isLoading : function(){
+        return this.loading;  
+    },
+    
+    loadComplete : function(deep, anim, callback){
+        this.loading = false;
+        this.loaded = true;
+        this.ui.afterLoad(this);
+        this.fireEvent("load", this);
+        this.expand(deep, anim, callback);
+    },
+    
+    /**
+     * Returns true if this node has been loaded
+     * @return {Boolean}
+     */
+    isLoaded : function(){
+        return this.loaded;
+    },
+    
+    hasChildNodes : function(){
+        if(!this.isLeaf() && !this.loaded){
+            return true;
+        }else{
+            return Roo.tree.AsyncTreeNode.superclass.hasChildNodes.call(this);
+        }
+    },
+
+    /**
+     * Trigger a reload for this node
+     * @param {Function} callback
+     */
+    reload : function(callback){
+        this.collapse(false, false);
+        while(this.firstChild){
+            this.removeChild(this.firstChild);
+        }
+        this.childrenRendered = false;
+        this.loaded = false;
+        if(this.isHiddenRoot()){
+            this.expanded = false;
+        }
+        this.expand(false, false, callback);
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.tree.TreeNodeUI
+ * @constructor
+ * @param {Object} node The node to render
+ * The TreeNode UI implementation is separate from the
+ * tree implementation. Unless you are customizing the tree UI,
+ * you should never have to use this directly.
+ */
+Roo.tree.TreeNodeUI = function(node){
+    this.node = node;
+    this.rendered = false;
+    this.animating = false;
+    this.emptyIcon = Roo.BLANK_IMAGE_URL;
+};
+
+Roo.tree.TreeNodeUI.prototype = {
+    removeChild : function(node){
+        if(this.rendered){
+            this.ctNode.removeChild(node.ui.getEl());
+        }
+    },
+
+    beforeLoad : function(){
+         this.addClass("x-tree-node-loading");
+    },
+
+    afterLoad : function(){
+         this.removeClass("x-tree-node-loading");
+    },
+
+    onTextChange : function(node, text, oldText){
+        if(this.rendered){
+            this.textNode.innerHTML = text;
+        }
+    },
+
+    onDisableChange : function(node, state){
+        this.disabled = state;
+        if(state){
+            this.addClass("x-tree-node-disabled");
+        }else{
+            this.removeClass("x-tree-node-disabled");
+        }
+    },
+
+    onSelectedChange : function(state){
+        if(state){
+            this.focus();
+            this.addClass("x-tree-selected");
+        }else{
+            //this.blur();
+            this.removeClass("x-tree-selected");
+        }
+    },
+
+    onMove : function(tree, node, oldParent, newParent, index, refNode){
+        this.childIndent = null;
+        if(this.rendered){
+            var targetNode = newParent.ui.getContainer();
+            if(!targetNode){//target not rendered
+                this.holder = document.createElement("div");
+                this.holder.appendChild(this.wrap);
+                return;
+            }
+            var insertBefore = refNode ? refNode.ui.getEl() : null;
+            if(insertBefore){
+                targetNode.insertBefore(this.wrap, insertBefore);
+            }else{
+                targetNode.appendChild(this.wrap);
+            }
+            this.node.renderIndent(true);
+        }
+    },
+
+    addClass : function(cls){
+        if(this.elNode){
+            Roo.fly(this.elNode).addClass(cls);
+        }
+    },
+
+    removeClass : function(cls){
+        if(this.elNode){
+            Roo.fly(this.elNode).removeClass(cls);
+        }
+    },
+
+    remove : function(){
+        if(this.rendered){
+            this.holder = document.createElement("div");
+            this.holder.appendChild(this.wrap);
+        }
+    },
+
+    fireEvent : function(){
+        return this.node.fireEvent.apply(this.node, arguments);
+    },
+
+    initEvents : function(){
+        this.node.on("move", this.onMove, this);
+        var E = Roo.EventManager;
+        var a = this.anchor;
+
+        var el = Roo.fly(a, '_treeui');
+
+        if(Roo.isOpera){ // opera render bug ignores the CSS
+            el.setStyle("text-decoration", "none");
+        }
+
+        el.on("click", this.onClick, this);
+        el.on("dblclick", this.onDblClick, this);
+
+        if(this.checkbox){
+            Roo.EventManager.on(this.checkbox,
+                    Roo.isIE ? 'click' : 'change', this.onCheckChange, this);
+        }
+
+        el.on("contextmenu", this.onContextMenu, this);
+
+        var icon = Roo.fly(this.iconNode);
+        icon.on("click", this.onClick, this);
+        icon.on("dblclick", this.onDblClick, this);
+        icon.on("contextmenu", this.onContextMenu, this);
+        E.on(this.ecNode, "click", this.ecClick, this, true);
+
+        if(this.node.disabled){
+            this.addClass("x-tree-node-disabled");
+        }
+        if(this.node.hidden){
+            this.addClass("x-tree-node-disabled");
+        }
+        var ot = this.node.getOwnerTree();
+        var dd = ot.enableDD || ot.enableDrag || ot.enableDrop;
+        if(dd && (!this.node.isRoot || ot.rootVisible)){
+            Roo.dd.Registry.register(this.elNode, {
+                node: this.node,
+                handles: this.getDDHandles(),
+                isHandle: false
+            });
+        }
+    },
+
+    getDDHandles : function(){
+        return [this.iconNode, this.textNode];
+    },
+
+    hide : function(){
+        if(this.rendered){
+            this.wrap.style.display = "none";
+        }
+    },
+
+    show : function(){
+        if(this.rendered){
+            this.wrap.style.display = "";
+        }
+    },
+
+    onContextMenu : function(e){
+        if (this.node.hasListener("contextmenu") || this.node.getOwnerTree().hasListener("contextmenu")) {
+            e.preventDefault();
+            this.focus();
+            this.fireEvent("contextmenu", this.node, e);
+        }
+    },
+
+    onClick : function(e){
+        if(this.dropping){
+            e.stopEvent();
+            return;
+        }
+        if(this.fireEvent("beforeclick", this.node, e) !== false){
+            if(!this.disabled && this.node.attributes.href){
+                this.fireEvent("click", this.node, e);
+                return;
+            }
+            e.preventDefault();
+            if(this.disabled){
+                return;
+            }
+
+            if(this.node.attributes.singleClickExpand && !this.animating && this.node.hasChildNodes()){
+                this.node.toggle();
+            }
+
+            this.fireEvent("click", this.node, e);
+        }else{
+            e.stopEvent();
+        }
+    },
+
+    onDblClick : function(e){
+        e.preventDefault();
+        if(this.disabled){
+            return;
+        }
+        if(this.checkbox){
+            this.toggleCheck();
+        }
+        if(!this.animating && this.node.hasChildNodes()){
+            this.node.toggle();
+        }
+        this.fireEvent("dblclick", this.node, e);
+    },
+
+    onCheckChange : function(){
+        var checked = this.checkbox.checked;
+        this.node.attributes.checked = checked;
+        this.fireEvent('checkchange', this.node, checked);
+    },
+
+    ecClick : function(e){
+        if(!this.animating && this.node.hasChildNodes()){
+            this.node.toggle();
+        }
+    },
+
+    startDrop : function(){
+        this.dropping = true;
+    },
+
+    // delayed drop so the click event doesn't get fired on a drop
+    endDrop : function(){
+       setTimeout(function(){
+           this.dropping = false;
+       }.createDelegate(this), 50);
+    },
+
+    expand : function(){
+        this.updateExpandIcon();
+        this.ctNode.style.display = "";
+    },
+
+    focus : function(){
+        if(!this.node.preventHScroll){
+            try{this.anchor.focus();
+            }catch(e){}
+        }else if(!Roo.isIE){
+            try{
+                var noscroll = this.node.getOwnerTree().getTreeEl().dom;
+                var l = noscroll.scrollLeft;
+                this.anchor.focus();
+                noscroll.scrollLeft = l;
+            }catch(e){}
+        }
+    },
+
+    toggleCheck : function(value){
+        var cb = this.checkbox;
+        if(cb){
+            cb.checked = (value === undefined ? !cb.checked : value);
+        }
+    },
+
+    blur : function(){
+        try{
+            this.anchor.blur();
+        }catch(e){}
+    },
+
+    animExpand : function(callback){
+        var ct = Roo.get(this.ctNode);
+        ct.stopFx();
+        if(!this.node.hasChildNodes()){
+            this.updateExpandIcon();
+            this.ctNode.style.display = "";
+            Roo.callback(callback);
+            return;
+        }
+        this.animating = true;
+        this.updateExpandIcon();
+
+        ct.slideIn('t', {
+           callback : function(){
+               this.animating = false;
+               Roo.callback(callback);
+            },
+            scope: this,
+            duration: this.node.ownerTree.duration || .25
+        });
+    },
+
+    highlight : function(){
+        var tree = this.node.getOwnerTree();
+        Roo.fly(this.wrap).highlight(
+            tree.hlColor || "C3DAF9",
+            {endColor: tree.hlBaseColor}
+        );
+    },
+
+    collapse : function(){
+        this.updateExpandIcon();
+        this.ctNode.style.display = "none";
+    },
+
+    animCollapse : function(callback){
+        var ct = Roo.get(this.ctNode);
+        ct.enableDisplayMode('block');
+        ct.stopFx();
+
+        this.animating = true;
+        this.updateExpandIcon();
+
+        ct.slideOut('t', {
+            callback : function(){
+               this.animating = false;
+               Roo.callback(callback);
+            },
+            scope: this,
+            duration: this.node.ownerTree.duration || .25
+        });
+    },
+
+    getContainer : function(){
+        return this.ctNode;
+    },
+
+    getEl : function(){
+        return this.wrap;
+    },
+
+    appendDDGhost : function(ghostNode){
+        ghostNode.appendChild(this.elNode.cloneNode(true));
+    },
+
+    getDDRepairXY : function(){
+        return Roo.lib.Dom.getXY(this.iconNode);
+    },
+
+    onRender : function(){
+        this.render();
+    },
+
+    render : function(bulkRender){
+        var n = this.node, a = n.attributes;
+        var targetNode = n.parentNode ?
+              n.parentNode.ui.getContainer() : n.ownerTree.innerCt.dom;
+
+        if(!this.rendered){
+            this.rendered = true;
+
+            this.renderElements(n, a, targetNode, bulkRender);
+
+            if(a.qtip){
+               if(this.textNode.setAttributeNS){
+                   this.textNode.setAttributeNS("ext", "qtip", a.qtip);
+                   if(a.qtipTitle){
+                       this.textNode.setAttributeNS("ext", "qtitle", a.qtipTitle);
+                   }
+               }else{
+                   this.textNode.setAttribute("ext:qtip", a.qtip);
+                   if(a.qtipTitle){
+                       this.textNode.setAttribute("ext:qtitle", a.qtipTitle);
+                   }
+               }
+            }else if(a.qtipCfg){
+                a.qtipCfg.target = Roo.id(this.textNode);
+                Roo.QuickTips.register(a.qtipCfg);
+            }
+            this.initEvents();
+            if(!this.node.expanded){
+                this.updateExpandIcon();
+            }
+        }else{
+            if(bulkRender === true) {
+                targetNode.appendChild(this.wrap);
+            }
+        }
+    },
+
+    renderElements : function(n, a, targetNode, bulkRender){
+        // add some indent caching, this helps performance when rendering a large tree
+        this.indentMarkup = n.parentNode ? n.parentNode.ui.getChildIndent() : '';
+        var t = n.getOwnerTree();
+        var txt = t.renderer ? t.renderer(n.attributes) : Roo.util.Format.htmlEncode(n.text);
+        var tip = t.rendererTip ? t.rendererTip(n.attributes) : txt;
+        var cb = typeof a.checked == 'boolean';
+        var href = a.href ? a.href : Roo.isGecko ? "" : "#";
+        var buf = ['<li class="x-tree-node"><div class="x-tree-node-el ', a.cls,'">',
+            '<span class="x-tree-node-indent">',this.indentMarkup,"</span>",
+            '<img src="', this.emptyIcon, '" class="x-tree-ec-icon" />',
+            '<img src="', a.icon || this.emptyIcon, '" class="x-tree-node-icon',(a.icon ? " x-tree-node-inline-icon" : ""),(a.iconCls ? " "+a.iconCls : ""),'" unselectable="on" />',
+            cb ? ('<input class="x-tree-node-cb" type="checkbox" ' + (a.checked ? 'checked="checked" />' : ' />')) : '',
+            '<a hidefocus="on" href="',href,'" tabIndex="1" ',
+             a.hrefTarget ? ' target="'+a.hrefTarget+'"' : "", 
+                '><span unselectable="on" qtip="' , tip ,'">',txt,"</span></a></div>",
+            '<ul class="x-tree-node-ct" style="display:none;"></ul>',
+            "</li>"];
+
+        if(bulkRender !== true && n.nextSibling && n.nextSibling.ui.getEl()){
+            this.wrap = Roo.DomHelper.insertHtml("beforeBegin",
+                                n.nextSibling.ui.getEl(), buf.join(""));
+        }else{
+            this.wrap = Roo.DomHelper.insertHtml("beforeEnd", targetNode, buf.join(""));
+        }
+
+        this.elNode = this.wrap.childNodes[0];
+        this.ctNode = this.wrap.childNodes[1];
+        var cs = this.elNode.childNodes;
+        this.indentNode = cs[0];
+        this.ecNode = cs[1];
+        this.iconNode = cs[2];
+        var index = 3;
+        if(cb){
+            this.checkbox = cs[3];
+            index++;
+        }
+        this.anchor = cs[index];
+        this.textNode = cs[index].firstChild;
+    },
+
+    getAnchor : function(){
+        return this.anchor;
+    },
+
+    getTextEl : function(){
+        return this.textNode;
+    },
+
+    getIconEl : function(){
+        return this.iconNode;
+    },
+
+    isChecked : function(){
+        return this.checkbox ? this.checkbox.checked : false;
+    },
+
+    updateExpandIcon : function(){
+        if(this.rendered){
+            var n = this.node, c1, c2;
+            var cls = n.isLast() ? "x-tree-elbow-end" : "x-tree-elbow";
+            var hasChild = n.hasChildNodes();
+            if(hasChild){
+                if(n.expanded){
+                    cls += "-minus";
+                    c1 = "x-tree-node-collapsed";
+                    c2 = "x-tree-node-expanded";
+                }else{
+                    cls += "-plus";
+                    c1 = "x-tree-node-expanded";
+                    c2 = "x-tree-node-collapsed";
+                }
+                if(this.wasLeaf){
+                    this.removeClass("x-tree-node-leaf");
+                    this.wasLeaf = false;
+                }
+                if(this.c1 != c1 || this.c2 != c2){
+                    Roo.fly(this.elNode).replaceClass(c1, c2);
+                    this.c1 = c1; this.c2 = c2;
+                }
+            }else{
+                if(!this.wasLeaf){
+                    Roo.fly(this.elNode).replaceClass("x-tree-node-expanded", "x-tree-node-leaf");
+                    delete this.c1;
+                    delete this.c2;
+                    this.wasLeaf = true;
+                }
+            }
+            var ecc = "x-tree-ec-icon "+cls;
+            if(this.ecc != ecc){
+                this.ecNode.className = ecc;
+                this.ecc = ecc;
+            }
+        }
+    },
+
+    getChildIndent : function(){
+        if(!this.childIndent){
+            var buf = [];
+            var p = this.node;
+            while(p){
+                if(!p.isRoot || (p.isRoot && p.ownerTree.rootVisible)){
+                    if(!p.isLast()) {
+                        buf.unshift('<img src="'+this.emptyIcon+'" class="x-tree-elbow-line" />');
+                    } else {
+                        buf.unshift('<img src="'+this.emptyIcon+'" class="x-tree-icon" />');
+                    }
+                }
+                p = p.parentNode;
+            }
+            this.childIndent = buf.join("");
+        }
+        return this.childIndent;
+    },
+
+    renderIndent : function(){
+        if(this.rendered){
+            var indent = "";
+            var p = this.node.parentNode;
+            if(p){
+                indent = p.ui.getChildIndent();
+            }
+            if(this.indentMarkup != indent){ // don't rerender if not required
+                this.indentNode.innerHTML = indent;
+                this.indentMarkup = indent;
+            }
+            this.updateExpandIcon();
+        }
+    }
+};
+
+Roo.tree.RootTreeNodeUI = function(){
+    Roo.tree.RootTreeNodeUI.superclass.constructor.apply(this, arguments);
+};
+Roo.extend(Roo.tree.RootTreeNodeUI, Roo.tree.TreeNodeUI, {
+    render : function(){
+        if(!this.rendered){
+            var targetNode = this.node.ownerTree.innerCt.dom;
+            this.node.expanded = true;
+            targetNode.innerHTML = '<div class="x-tree-root-node"></div>';
+            this.wrap = this.ctNode = targetNode.firstChild;
+        }
+    },
+    collapse : function(){
+    },
+    expand : function(){
+    }
 });
