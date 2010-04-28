@@ -23177,3 +23177,1557 @@ Roo.SplitBar.TOP = 3;
  * @type Number
  */
 Roo.SplitBar.BOTTOM = 4;
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.View
+ * @extends Roo.util.Observable
+ * Create a "View" for an element based on a data model or UpdateManager and the supplied DomHelper template. 
+ * This class also supports single and multi selection modes. <br>
+ * Create a data model bound view:
+ <pre><code>
+ var store = new Roo.data.Store(...);
+
+ var view = new Roo.View("my-element",
+ '&lt;div id="{0}"&gt;{2} - {1}&lt;/div&gt;', // auto create template
+ {
+ singleSelect: true,
+ selectedClass: "ydataview-selected",
+ store: store
+ });
+
+ // listen for node click?
+ view.on("click", function(vw, index, node, e){
+ alert('Node "' + node.id + '" at index: ' + index + " was clicked.");
+ });
+
+ // load XML data
+ dataModel.load("foobar.xml");
+ </code></pre>
+ For an example of creating a JSON/UpdateManager view, see {@link Roo.JsonView}.
+ * <br><br>
+ * <b>Note: The root of your template must be a single node. Table/row implementations may work but are not supported due to
+ * IE"s limited insertion support with tables and Opera"s faulty event bubbling.</b>
+ * @constructor
+ * Create a new View
+ * @param {String/HTMLElement/Element} container The container element where the view is to be rendered.
+ * @param {String/DomHelper.Template} tpl The rendering template or a string to create a template with
+ * @param {Object} config The config object
+ */
+Roo.View = function(container, tpl, config){
+    this.el = Roo.get(container);
+    if(typeof tpl == "string"){
+        tpl = new Roo.Template(tpl);
+    }
+    tpl.compile();
+    /**
+     * The template used by this View
+     * @type {Roo.DomHelper.Template}
+     */
+    this.tpl = tpl;
+
+    Roo.apply(this, config);
+
+    /** @private */
+    this.addEvents({
+    /**
+     * @event beforeclick
+     * Fires before a click is processed. Returns false to cancel the default action.
+     * @param {Roo.View} this
+     * @param {Number} index The index of the target node
+     * @param {HTMLElement} node The target node
+     * @param {Roo.EventObject} e The raw event object
+     */
+        "beforeclick" : true,
+    /**
+     * @event click
+     * Fires when a template node is clicked.
+     * @param {Roo.View} this
+     * @param {Number} index The index of the target node
+     * @param {HTMLElement} node The target node
+     * @param {Roo.EventObject} e The raw event object
+     */
+        "click" : true,
+    /**
+     * @event dblclick
+     * Fires when a template node is double clicked.
+     * @param {Roo.View} this
+     * @param {Number} index The index of the target node
+     * @param {HTMLElement} node The target node
+     * @param {Roo.EventObject} e The raw event object
+     */
+        "dblclick" : true,
+    /**
+     * @event contextmenu
+     * Fires when a template node is right clicked.
+     * @param {Roo.View} this
+     * @param {Number} index The index of the target node
+     * @param {HTMLElement} node The target node
+     * @param {Roo.EventObject} e The raw event object
+     */
+        "contextmenu" : true,
+    /**
+     * @event selectionchange
+     * Fires when the selected nodes change.
+     * @param {Roo.View} this
+     * @param {Array} selections Array of the selected nodes
+     */
+        "selectionchange" : true,
+
+    /**
+     * @event beforeselect
+     * Fires before a selection is made. If any handlers return false, the selection is cancelled.
+     * @param {Roo.View} this
+     * @param {HTMLElement} node The node to be selected
+     * @param {Array} selections Array of currently selected nodes
+     */
+        "beforeselect" : true
+    });
+
+    this.el.on({
+        "click": this.onClick,
+        "dblclick": this.onDblClick,
+        "contextmenu": this.onContextMenu,
+        scope:this
+    });
+
+    this.selections = [];
+    this.nodes = [];
+    this.cmp = new Roo.CompositeElementLite([]);
+    if(this.store){
+        this.store = Roo.factory(this.store, Roo.data);
+        this.setStore(this.store, true);
+    }
+    Roo.View.superclass.constructor.call(this);
+};
+
+Roo.extend(Roo.View, Roo.util.Observable, {
+    /**
+     * The css class to add to selected nodes
+     * @type {Roo.DomHelper.Template}
+     */
+    selectedClass : "x-view-selected",
+    
+    emptyText : "",
+    /**
+     * Returns the element this view is bound to.
+     * @return {Roo.Element}
+     */
+    getEl : function(){
+        return this.el;
+    },
+
+    /**
+     * Refreshes the view.
+     */
+    refresh : function(){
+        var t = this.tpl;
+        this.clearSelections();
+        this.el.update("");
+        var html = [];
+        var records = this.store.getRange();
+        if(records.length < 1){
+            this.el.update(this.emptyText);
+            return;
+        }
+        for(var i = 0, len = records.length; i < len; i++){
+            var data = this.prepareData(records[i].data, i, records[i]);
+            html[html.length] = t.apply(data);
+        }
+        this.el.update(html.join(""));
+        this.nodes = this.el.dom.childNodes;
+        this.updateIndexes(0);
+    },
+
+    /**
+     * Function to override to reformat the data that is sent to
+     * the template for each node.
+     * @param {Array/Object} data The raw data (array of colData for a data model bound view or
+     * a JSON object for an UpdateManager bound view).
+     */
+    prepareData : function(data){
+        return data;
+    },
+
+    onUpdate : function(ds, record){
+        this.clearSelections();
+        var index = this.store.indexOf(record);
+        var n = this.nodes[index];
+        this.tpl.insertBefore(n, this.prepareData(record.data));
+        n.parentNode.removeChild(n);
+        this.updateIndexes(index, index);
+    },
+
+    onAdd : function(ds, records, index){
+        this.clearSelections();
+        if(this.nodes.length == 0){
+            this.refresh();
+            return;
+        }
+        var n = this.nodes[index];
+        for(var i = 0, len = records.length; i < len; i++){
+            var d = this.prepareData(records[i].data);
+            if(n){
+                this.tpl.insertBefore(n, d);
+            }else{
+                this.tpl.append(this.el, d);
+            }
+        }
+        this.updateIndexes(index);
+    },
+
+    onRemove : function(ds, record, index){
+        this.clearSelections();
+        this.el.dom.removeChild(this.nodes[index]);
+        this.updateIndexes(index);
+    },
+
+    /**
+     * Refresh an individual node.
+     * @param {Number} index
+     */
+    refreshNode : function(index){
+        this.onUpdate(this.store, this.store.getAt(index));
+    },
+
+    updateIndexes : function(startIndex, endIndex){
+        var ns = this.nodes;
+        startIndex = startIndex || 0;
+        endIndex = endIndex || ns.length - 1;
+        for(var i = startIndex; i <= endIndex; i++){
+            ns[i].nodeIndex = i;
+        }
+    },
+
+    /**
+     * Changes the data store this view uses and refresh the view.
+     * @param {Store} store
+     */
+    setStore : function(store, initial){
+        if(!initial && this.store){
+            this.store.un("datachanged", this.refresh);
+            this.store.un("add", this.onAdd);
+            this.store.un("remove", this.onRemove);
+            this.store.un("update", this.onUpdate);
+            this.store.un("clear", this.refresh);
+        }
+        if(store){
+          
+            store.on("datachanged", this.refresh, this);
+            store.on("add", this.onAdd, this);
+            store.on("remove", this.onRemove, this);
+            store.on("update", this.onUpdate, this);
+            store.on("clear", this.refresh, this);
+        }
+        
+        if(store){
+            this.refresh();
+        }
+    },
+
+    /**
+     * Returns the template node the passed child belongs to or null if it doesn't belong to one.
+     * @param {HTMLElement} node
+     * @return {HTMLElement} The template node
+     */
+    findItemFromChild : function(node){
+        var el = this.el.dom;
+        if(!node || node.parentNode == el){
+		    return node;
+	    }
+	    var p = node.parentNode;
+	    while(p && p != el){
+            if(p.parentNode == el){
+            	return p;
+            }
+            p = p.parentNode;
+        }
+	    return null;
+    },
+
+    /** @ignore */
+    onClick : function(e){
+        var item = this.findItemFromChild(e.getTarget());
+        if(item){
+            var index = this.indexOf(item);
+            if(this.onItemClick(item, index, e) !== false){
+                this.fireEvent("click", this, index, item, e);
+            }
+        }else{
+            this.clearSelections();
+        }
+    },
+
+    /** @ignore */
+    onContextMenu : function(e){
+        var item = this.findItemFromChild(e.getTarget());
+        if(item){
+            this.fireEvent("contextmenu", this, this.indexOf(item), item, e);
+        }
+    },
+
+    /** @ignore */
+    onDblClick : function(e){
+        var item = this.findItemFromChild(e.getTarget());
+        if(item){
+            this.fireEvent("dblclick", this, this.indexOf(item), item, e);
+        }
+    },
+
+    onItemClick : function(item, index, e){
+        if(this.fireEvent("beforeclick", this, index, item, e) === false){
+            return false;
+        }
+        if(this.multiSelect || this.singleSelect){
+            if(this.multiSelect && e.shiftKey && this.lastSelection){
+                this.select(this.getNodes(this.indexOf(this.lastSelection), index), false);
+            }else{
+                this.select(item, this.multiSelect && e.ctrlKey);
+                this.lastSelection = item;
+            }
+            e.preventDefault();
+        }
+        return true;
+    },
+
+    /**
+     * Get the number of selected nodes.
+     * @return {Number}
+     */
+    getSelectionCount : function(){
+        return this.selections.length;
+    },
+
+    /**
+     * Get the currently selected nodes.
+     * @return {Array} An array of HTMLElements
+     */
+    getSelectedNodes : function(){
+        return this.selections;
+    },
+
+    /**
+     * Get the indexes of the selected nodes.
+     * @return {Array}
+     */
+    getSelectedIndexes : function(){
+        var indexes = [], s = this.selections;
+        for(var i = 0, len = s.length; i < len; i++){
+            indexes.push(s[i].nodeIndex);
+        }
+        return indexes;
+    },
+
+    /**
+     * Clear all selections
+     * @param {Boolean} suppressEvent (optional) true to skip firing of the selectionchange event
+     */
+    clearSelections : function(suppressEvent){
+        if(this.nodes && (this.multiSelect || this.singleSelect) && this.selections.length > 0){
+            this.cmp.elements = this.selections;
+            this.cmp.removeClass(this.selectedClass);
+            this.selections = [];
+            if(!suppressEvent){
+                this.fireEvent("selectionchange", this, this.selections);
+            }
+        }
+    },
+
+    /**
+     * Returns true if the passed node is selected
+     * @param {HTMLElement/Number} node The node or node index
+     * @return {Boolean}
+     */
+    isSelected : function(node){
+        var s = this.selections;
+        if(s.length < 1){
+            return false;
+        }
+        node = this.getNode(node);
+        return s.indexOf(node) !== -1;
+    },
+
+    /**
+     * Selects nodes.
+     * @param {Array/HTMLElement/String/Number} nodeInfo An HTMLElement template node, index of a template node, id of a template node or an array of any of those to select
+     * @param {Boolean} keepExisting (optional) true to keep existing selections
+     * @param {Boolean} suppressEvent (optional) true to skip firing of the selectionchange vent
+     */
+    select : function(nodeInfo, keepExisting, suppressEvent){
+        if(nodeInfo instanceof Array){
+            if(!keepExisting){
+                this.clearSelections(true);
+            }
+            for(var i = 0, len = nodeInfo.length; i < len; i++){
+                this.select(nodeInfo[i], true, true);
+            }
+        } else{
+            var node = this.getNode(nodeInfo);
+            if(node && !this.isSelected(node)){
+                if(!keepExisting){
+                    this.clearSelections(true);
+                }
+                if(this.fireEvent("beforeselect", this, node, this.selections) !== false){
+                    Roo.fly(node).addClass(this.selectedClass);
+                    this.selections.push(node);
+                    if(!suppressEvent){
+                        this.fireEvent("selectionchange", this, this.selections);
+                    }
+                }
+            }
+        }
+    },
+
+    /**
+     * Gets a template node.
+     * @param {HTMLElement/String/Number} nodeInfo An HTMLElement template node, index of a template node or the id of a template node
+     * @return {HTMLElement} The node or null if it wasn't found
+     */
+    getNode : function(nodeInfo){
+        if(typeof nodeInfo == "string"){
+            return document.getElementById(nodeInfo);
+        }else if(typeof nodeInfo == "number"){
+            return this.nodes[nodeInfo];
+        }
+        return nodeInfo;
+    },
+
+    /**
+     * Gets a range template nodes.
+     * @param {Number} startIndex
+     * @param {Number} endIndex
+     * @return {Array} An array of nodes
+     */
+    getNodes : function(start, end){
+        var ns = this.nodes;
+        start = start || 0;
+        end = typeof end == "undefined" ? ns.length - 1 : end;
+        var nodes = [];
+        if(start <= end){
+            for(var i = start; i <= end; i++){
+                nodes.push(ns[i]);
+            }
+        } else{
+            for(var i = start; i >= end; i--){
+                nodes.push(ns[i]);
+            }
+        }
+        return nodes;
+    },
+
+    /**
+     * Finds the index of the passed node
+     * @param {HTMLElement/String/Number} nodeInfo An HTMLElement template node, index of a template node or the id of a template node
+     * @return {Number} The index of the node or -1
+     */
+    indexOf : function(node){
+        node = this.getNode(node);
+        if(typeof node.nodeIndex == "number"){
+            return node.nodeIndex;
+        }
+        var ns = this.nodes;
+        for(var i = 0, len = ns.length; i < len; i++){
+            if(ns[i] == node){
+                return i;
+            }
+        }
+        return -1;
+    }
+});
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.JsonView
+ * @extends Roo.View
+ * Shortcut class to create a JSON + {@link Roo.UpdateManager} template view. Usage:
+<pre><code>
+var view = new Roo.JsonView("my-element",
+    '&lt;div id="{id}"&gt;{foo} - {bar}&lt;/div&gt;', // auto create template
+    { multiSelect: true, jsonRoot: "data" }
+);
+
+// listen for node click?
+view.on("click", function(vw, index, node, e){
+    alert('Node "' + node.id + '" at index: ' + index + " was clicked.");
+});
+
+// direct load of JSON data
+view.load("foobar.php");
+
+// Example from my blog list
+var tpl = new Roo.Template(
+    '&lt;div class="entry"&gt;' +
+    '&lt;a class="entry-title" href="{link}"&gt;{title}&lt;/a&gt;' +
+    "&lt;h4&gt;{date} by {author} | {comments} Comments&lt;/h4&gt;{description}" +
+    "&lt;/div&gt;&lt;hr /&gt;"
+);
+
+var moreView = new Roo.JsonView("entry-list", tpl, {
+    jsonRoot: "posts"
+});
+moreView.on("beforerender", this.sortEntries, this);
+moreView.load({
+    url: "/blog/get-posts.php",
+    params: "allposts=true",
+    text: "Loading Blog Entries..."
+});
+</code></pre>
+ * @constructor
+ * Create a new JsonView
+ * @param {String/HTMLElement/Element} container The container element where the view is to be rendered.
+ * @param {Template} tpl The rendering template
+ * @param {Object} config The config object
+ */
+Roo.JsonView = function(container, tpl, config){
+    Roo.JsonView.superclass.constructor.call(this, container, tpl, config);
+
+    var um = this.el.getUpdateManager();
+    um.setRenderer(this);
+    um.on("update", this.onLoad, this);
+    um.on("failure", this.onLoadException, this);
+
+    /**
+     * @event beforerender
+     * Fires before rendering of the downloaded JSON data.
+     * @param {Roo.JsonView} this
+     * @param {Object} data The JSON data loaded
+     */
+    /**
+     * @event load
+     * Fires when data is loaded.
+     * @param {Roo.JsonView} this
+     * @param {Object} data The JSON data loaded
+     * @param {Object} response The raw Connect response object
+     */
+    /**
+     * @event loadexception
+     * Fires when loading fails.
+     * @param {Roo.JsonView} this
+     * @param {Object} response The raw Connect response object
+     */
+    this.addEvents({
+        'beforerender' : true,
+        'load' : true,
+        'loadexception' : true
+    });
+};
+Roo.extend(Roo.JsonView, Roo.View, {
+    /**
+     * The root property in the loaded JSON object that contains the data
+     * @type {String}
+     */
+    jsonRoot : "",
+
+    /**
+     * Refreshes the view.
+     */
+    refresh : function(){
+        this.clearSelections();
+        this.el.update("");
+        var html = [];
+        var o = this.jsonData;
+        if(o && o.length > 0){
+            for(var i = 0, len = o.length; i < len; i++){
+                var data = this.prepareData(o[i], i, o);
+                html[html.length] = this.tpl.apply(data);
+            }
+        }else{
+            html.push(this.emptyText);
+        }
+        this.el.update(html.join(""));
+        this.nodes = this.el.dom.childNodes;
+        this.updateIndexes(0);
+    },
+
+    /**
+     * Performs an async HTTP request, and loads the JSON from the response. If <i>params</i> are specified it uses POST, otherwise it uses GET.
+     * @param {Object/String/Function} url The URL for this request, or a function to call to get the URL, or a config object containing any of the following options:
+     <pre><code>
+     view.load({
+         url: "your-url.php",
+         params: {param1: "foo", param2: "bar"}, // or a URL encoded string
+         callback: yourFunction,
+         scope: yourObject, //(optional scope)
+         discardUrl: false,
+         nocache: false,
+         text: "Loading...",
+         timeout: 30,
+         scripts: false
+     });
+     </code></pre>
+     * The only required property is <i>url</i>. The optional properties <i>nocache</i>, <i>text</i> and <i>scripts</i>
+     * are respectively shorthand for <i>disableCaching</i>, <i>indicatorText</i>, and <i>loadScripts</i> and are used to set their associated property on this UpdateManager instance.
+     * @param {String/Object} params (optional) The parameters to pass, as either a URL encoded string "param1=1&amp;param2=2" or an object {param1: 1, param2: 2}
+     * @param {Function} callback (optional) Callback when transaction is complete - called with signature (oElement, bSuccess)
+     * @param {Boolean} discardUrl (optional) By default when you execute an update the defaultUrl is changed to the last used URL. If true, it will not store the URL.
+     */
+    load : function(){
+        var um = this.el.getUpdateManager();
+        um.update.apply(um, arguments);
+    },
+
+    render : function(el, response){
+        this.clearSelections();
+        this.el.update("");
+        var o;
+        try{
+            o = Roo.util.JSON.decode(response.responseText);
+            if(this.jsonRoot){
+                
+                o = /** eval:var:o */ eval("o." + this.jsonRoot);
+            }
+        } catch(e){
+        }
+        /**
+         * The current JSON data or null
+         */
+        this.jsonData = o;
+        this.beforeRender();
+        this.refresh();
+    },
+
+/**
+ * Get the number of records in the current JSON dataset
+ * @return {Number}
+ */
+    getCount : function(){
+        return this.jsonData ? this.jsonData.length : 0;
+    },
+
+/**
+ * Returns the JSON object for the specified node(s)
+ * @param {HTMLElement/Array} node The node or an array of nodes
+ * @return {Object/Array} If you pass in an array, you get an array back, otherwise
+ * you get the JSON object for the node
+ */
+    getNodeData : function(node){
+        if(node instanceof Array){
+            var data = [];
+            for(var i = 0, len = node.length; i < len; i++){
+                data.push(this.getNodeData(node[i]));
+            }
+            return data;
+        }
+        return this.jsonData[this.indexOf(node)] || null;
+    },
+
+    beforeRender : function(){
+        this.snapshot = this.jsonData;
+        if(this.sortInfo){
+            this.sort.apply(this, this.sortInfo);
+        }
+        this.fireEvent("beforerender", this, this.jsonData);
+    },
+
+    onLoad : function(el, o){
+        this.fireEvent("load", this, this.jsonData, o);
+    },
+
+    onLoadException : function(el, o){
+        this.fireEvent("loadexception", this, o);
+    },
+
+/**
+ * Filter the data by a specific property.
+ * @param {String} property A property on your JSON objects
+ * @param {String/RegExp} value Either string that the property values
+ * should start with, or a RegExp to test against the property
+ */
+    filter : function(property, value){
+        if(this.jsonData){
+            var data = [];
+            var ss = this.snapshot;
+            if(typeof value == "string"){
+                var vlen = value.length;
+                if(vlen == 0){
+                    this.clearFilter();
+                    return;
+                }
+                value = value.toLowerCase();
+                for(var i = 0, len = ss.length; i < len; i++){
+                    var o = ss[i];
+                    if(o[property].substr(0, vlen).toLowerCase() == value){
+                        data.push(o);
+                    }
+                }
+            } else if(value.exec){ // regex?
+                for(var i = 0, len = ss.length; i < len; i++){
+                    var o = ss[i];
+                    if(value.test(o[property])){
+                        data.push(o);
+                    }
+                }
+            } else{
+                return;
+            }
+            this.jsonData = data;
+            this.refresh();
+        }
+    },
+
+/**
+ * Filter by a function. The passed function will be called with each
+ * object in the current dataset. If the function returns true the value is kept,
+ * otherwise it is filtered.
+ * @param {Function} fn
+ * @param {Object} scope (optional) The scope of the function (defaults to this JsonView)
+ */
+    filterBy : function(fn, scope){
+        if(this.jsonData){
+            var data = [];
+            var ss = this.snapshot;
+            for(var i = 0, len = ss.length; i < len; i++){
+                var o = ss[i];
+                if(fn.call(scope || this, o)){
+                    data.push(o);
+                }
+            }
+            this.jsonData = data;
+            this.refresh();
+        }
+    },
+
+/**
+ * Clears the current filter.
+ */
+    clearFilter : function(){
+        if(this.snapshot && this.jsonData != this.snapshot){
+            this.jsonData = this.snapshot;
+            this.refresh();
+        }
+    },
+
+
+/**
+ * Sorts the data for this view and refreshes it.
+ * @param {String} property A property on your JSON objects to sort on
+ * @param {String} direction (optional) "desc" or "asc" (defaults to "asc")
+ * @param {Function} sortType (optional) A function to call to convert the data to a sortable value.
+ */
+    sort : function(property, dir, sortType){
+        this.sortInfo = Array.prototype.slice.call(arguments, 0);
+        if(this.jsonData){
+            var p = property;
+            var dsc = dir && dir.toLowerCase() == "desc";
+            var f = function(o1, o2){
+                var v1 = sortType ? sortType(o1[p]) : o1[p];
+                var v2 = sortType ? sortType(o2[p]) : o2[p];
+                ;
+                if(v1 < v2){
+                    return dsc ? +1 : -1;
+                } else if(v1 > v2){
+                    return dsc ? -1 : +1;
+                } else{
+                    return 0;
+                }
+            };
+            this.jsonData.sort(f);
+            this.refresh();
+            if(this.jsonData != this.snapshot){
+                this.snapshot.sort(f);
+            }
+        }
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+
+/**
+ * @class Roo.ColorPalette
+ * @extends Roo.Component
+ * Simple color palette class for choosing colors.  The palette can be rendered to any container.<br />
+ * Here's an example of typical usage:
+ * <pre><code>
+var cp = new Roo.ColorPalette({value:'993300'});  // initial selected color
+cp.render('my-div');
+
+cp.on('select', function(palette, selColor){
+    // do something with selColor
+});
+</code></pre>
+ * @constructor
+ * Create a new ColorPalette
+ * @param {Object} config The config object
+ */
+Roo.ColorPalette = function(config){
+    Roo.ColorPalette.superclass.constructor.call(this, config);
+    this.addEvents({
+        /**
+	     * @event select
+	     * Fires when a color is selected
+	     * @param {ColorPalette} this
+	     * @param {String} color The 6-digit color hex code (without the # symbol)
+	     */
+        select: true
+    });
+
+    if(this.handler){
+        this.on("select", this.handler, this.scope, true);
+    }
+};
+Roo.extend(Roo.ColorPalette, Roo.Component, {
+    /**
+     * @cfg {String} itemCls
+     * The CSS class to apply to the containing element (defaults to "x-color-palette")
+     */
+    itemCls : "x-color-palette",
+    /**
+     * @cfg {String} value
+     * The initial color to highlight (should be a valid 6-digit color hex code without the # symbol).  Note that
+     * the hex codes are case-sensitive.
+     */
+    value : null,
+    clickEvent:'click',
+    // private
+    ctype: "Roo.ColorPalette",
+
+    /**
+     * @cfg {Boolean} allowReselect If set to true then reselecting a color that is already selected fires the selection event
+     */
+    allowReselect : false,
+
+    /**
+     * <p>An array of 6-digit color hex code strings (without the # symbol).  This array can contain any number
+     * of colors, and each hex code should be unique.  The width of the palette is controlled via CSS by adjusting
+     * the width property of the 'x-color-palette' class (or assigning a custom class), so you can balance the number
+     * of colors with the width setting until the box is symmetrical.</p>
+     * <p>You can override individual colors if needed:</p>
+     * <pre><code>
+var cp = new Roo.ColorPalette();
+cp.colors[0] = "FF0000";  // change the first box to red
+</code></pre>
+
+Or you can provide a custom array of your own for complete control:
+<pre><code>
+var cp = new Roo.ColorPalette();
+cp.colors = ["000000", "993300", "333300"];
+</code></pre>
+     * @type Array
+     */
+    colors : [
+        "000000", "993300", "333300", "003300", "003366", "000080", "333399", "333333",
+        "800000", "FF6600", "808000", "008000", "008080", "0000FF", "666699", "808080",
+        "FF0000", "FF9900", "99CC00", "339966", "33CCCC", "3366FF", "800080", "969696",
+        "FF00FF", "FFCC00", "FFFF00", "00FF00", "00FFFF", "00CCFF", "993366", "C0C0C0",
+        "FF99CC", "FFCC99", "FFFF99", "CCFFCC", "CCFFFF", "99CCFF", "CC99FF", "FFFFFF"
+    ],
+
+    // private
+    onRender : function(container, position){
+        var t = new Roo.MasterTemplate(
+            '<tpl><a href="#" class="color-{0}" hidefocus="on"><em><span style="background:#{0}" unselectable="on">&#160;</span></em></a></tpl>'
+        );
+        var c = this.colors;
+        for(var i = 0, len = c.length; i < len; i++){
+            t.add([c[i]]);
+        }
+        var el = document.createElement("div");
+        el.className = this.itemCls;
+        t.overwrite(el);
+        container.dom.insertBefore(el, position);
+        this.el = Roo.get(el);
+        this.el.on(this.clickEvent, this.handleClick,  this, {delegate: "a"});
+        if(this.clickEvent != 'click'){
+            this.el.on('click', Roo.emptyFn,  this, {delegate: "a", preventDefault:true});
+        }
+    },
+
+    // private
+    afterRender : function(){
+        Roo.ColorPalette.superclass.afterRender.call(this);
+        if(this.value){
+            var s = this.value;
+            this.value = null;
+            this.select(s);
+        }
+    },
+
+    // private
+    handleClick : function(e, t){
+        e.preventDefault();
+        if(!this.disabled){
+            var c = t.className.match(/(?:^|\s)color-(.{6})(?:\s|$)/)[1];
+            this.select(c.toUpperCase());
+        }
+    },
+
+    /**
+     * Selects the specified color in the palette (fires the select event)
+     * @param {String} color A valid 6-digit color hex code (# will be stripped if included)
+     */
+    select : function(color){
+        color = color.replace("#", "");
+        if(color != this.value || this.allowReselect){
+            var el = this.el;
+            if(this.value){
+                el.child("a.color-"+this.value).removeClass("x-color-palette-sel");
+            }
+            el.child("a.color-"+color).addClass("x-color-palette-sel");
+            this.value = color;
+            this.fireEvent("select", this, color);
+        }
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.DatePicker
+ * @extends Roo.Component
+ * Simple date picker class.
+ * @constructor
+ * Create a new DatePicker
+ * @param {Object} config The config object
+ */
+Roo.DatePicker = function(config){
+    Roo.DatePicker.superclass.constructor.call(this, config);
+
+    this.value = config && config.value ?
+                 config.value.clearTime() : new Date().clearTime();
+
+    this.addEvents({
+        /**
+	     * @event select
+	     * Fires when a date is selected
+	     * @param {DatePicker} this
+	     * @param {Date} date The selected date
+	     */
+        select: true
+    });
+
+    if(this.handler){
+        this.on("select", this.handler,  this.scope || this);
+    }
+    // build the disabledDatesRE
+    if(!this.disabledDatesRE && this.disabledDates){
+        var dd = this.disabledDates;
+        var re = "(?:";
+        for(var i = 0; i < dd.length; i++){
+            re += dd[i];
+            if(i != dd.length-1) re += "|";
+        }
+        this.disabledDatesRE = new RegExp(re + ")");
+    }
+};
+
+Roo.extend(Roo.DatePicker, Roo.Component, {
+    /**
+     * @cfg {String} todayText
+     * The text to display on the button that selects the current date (defaults to "Today")
+     */
+    todayText : "Today",
+    /**
+     * @cfg {String} okText
+     * The text to display on the ok button
+     */
+    okText : "&#160;OK&#160;", // &#160; to give the user extra clicking room
+    /**
+     * @cfg {String} cancelText
+     * The text to display on the cancel button
+     */
+    cancelText : "Cancel",
+    /**
+     * @cfg {String} todayTip
+     * The tooltip to display for the button that selects the current date (defaults to "{current date} (Spacebar)")
+     */
+    todayTip : "{0} (Spacebar)",
+    /**
+     * @cfg {Date} minDate
+     * Minimum allowable date (JavaScript date object, defaults to null)
+     */
+    minDate : null,
+    /**
+     * @cfg {Date} maxDate
+     * Maximum allowable date (JavaScript date object, defaults to null)
+     */
+    maxDate : null,
+    /**
+     * @cfg {String} minText
+     * The error text to display if the minDate validation fails (defaults to "This date is before the minimum date")
+     */
+    minText : "This date is before the minimum date",
+    /**
+     * @cfg {String} maxText
+     * The error text to display if the maxDate validation fails (defaults to "This date is after the maximum date")
+     */
+    maxText : "This date is after the maximum date",
+    /**
+     * @cfg {String} format
+     * The default date format string which can be overriden for localization support.  The format must be
+     * valid according to {@link Date#parseDate} (defaults to 'm/d/y').
+     */
+    format : "m/d/y",
+    /**
+     * @cfg {Array} disabledDays
+     * An array of days to disable, 0-based. For example, [0, 6] disables Sunday and Saturday (defaults to null).
+     */
+    disabledDays : null,
+    /**
+     * @cfg {String} disabledDaysText
+     * The tooltip to display when the date falls on a disabled day (defaults to "")
+     */
+    disabledDaysText : "",
+    /**
+     * @cfg {RegExp} disabledDatesRE
+     * JavaScript regular expression used to disable a pattern of dates (defaults to null)
+     */
+    disabledDatesRE : null,
+    /**
+     * @cfg {String} disabledDatesText
+     * The tooltip text to display when the date falls on a disabled date (defaults to "")
+     */
+    disabledDatesText : "",
+    /**
+     * @cfg {Boolean} constrainToViewport
+     * True to constrain the date picker to the viewport (defaults to true)
+     */
+    constrainToViewport : true,
+    /**
+     * @cfg {Array} monthNames
+     * An array of textual month names which can be overriden for localization support (defaults to Date.monthNames)
+     */
+    monthNames : Date.monthNames,
+    /**
+     * @cfg {Array} dayNames
+     * An array of textual day names which can be overriden for localization support (defaults to Date.dayNames)
+     */
+    dayNames : Date.dayNames,
+    /**
+     * @cfg {String} nextText
+     * The next month navigation button tooltip (defaults to 'Next Month (Control+Right)')
+     */
+    nextText: 'Next Month (Control+Right)',
+    /**
+     * @cfg {String} prevText
+     * The previous month navigation button tooltip (defaults to 'Previous Month (Control+Left)')
+     */
+    prevText: 'Previous Month (Control+Left)',
+    /**
+     * @cfg {String} monthYearText
+     * The header month selector tooltip (defaults to 'Choose a month (Control+Up/Down to move years)')
+     */
+    monthYearText: 'Choose a month (Control+Up/Down to move years)',
+    /**
+     * @cfg {Number} startDay
+     * Day index at which the week should begin, 0-based (defaults to 0, which is Sunday)
+     */
+    startDay : 0,
+    /**
+     * @cfg {Bool} showClear
+     * Show a clear button (usefull for date form elements that can be blank.)
+     */
+    
+    showClear: false,
+    
+    /**
+     * Sets the value of the date field
+     * @param {Date} value The date to set
+     */
+    setValue : function(value){
+        var old = this.value;
+        this.value = value.clearTime(true);
+        if(this.el){
+            this.update(this.value);
+        }
+    },
+
+    /**
+     * Gets the current selected value of the date field
+     * @return {Date} The selected date
+     */
+    getValue : function(){
+        return this.value;
+    },
+
+    // private
+    focus : function(){
+        if(this.el){
+            this.update(this.activeDate);
+        }
+    },
+
+    // private
+    onRender : function(container, position){
+        var m = [
+             '<table cellspacing="0">',
+                '<tr><td class="x-date-left"><a href="#" title="', this.prevText ,'">&#160;</a></td><td class="x-date-middle" align="center"></td><td class="x-date-right"><a href="#" title="', this.nextText ,'">&#160;</a></td></tr>',
+                '<tr><td colspan="3"><table class="x-date-inner" cellspacing="0"><thead><tr>'];
+        var dn = this.dayNames;
+        for(var i = 0; i < 7; i++){
+            var d = this.startDay+i;
+            if(d > 6){
+                d = d-7;
+            }
+            m.push("<th><span>", dn[d].substr(0,1), "</span></th>");
+        }
+        m[m.length] = "</tr></thead><tbody><tr>";
+        for(var i = 0; i < 42; i++) {
+            if(i % 7 == 0 && i != 0){
+                m[m.length] = "</tr><tr>";
+            }
+            m[m.length] = '<td><a href="#" hidefocus="on" class="x-date-date" tabIndex="1"><em><span></span></em></a></td>';
+        }
+        m[m.length] = '</tr></tbody></table></td></tr><tr>'+
+            '<td colspan="3" class="x-date-bottom" align="center"></td></tr></table><div class="x-date-mp"></div>';
+
+        var el = document.createElement("div");
+        el.className = "x-date-picker";
+        el.innerHTML = m.join("");
+
+        container.dom.insertBefore(el, position);
+
+        this.el = Roo.get(el);
+        this.eventEl = Roo.get(el.firstChild);
+
+        new Roo.util.ClickRepeater(this.el.child("td.x-date-left a"), {
+            handler: this.showPrevMonth,
+            scope: this,
+            preventDefault:true,
+            stopDefault:true
+        });
+
+        new Roo.util.ClickRepeater(this.el.child("td.x-date-right a"), {
+            handler: this.showNextMonth,
+            scope: this,
+            preventDefault:true,
+            stopDefault:true
+        });
+
+        this.eventEl.on("mousewheel", this.handleMouseWheel,  this);
+
+        this.monthPicker = this.el.down('div.x-date-mp');
+        this.monthPicker.enableDisplayMode('block');
+        
+        var kn = new Roo.KeyNav(this.eventEl, {
+            "left" : function(e){
+                e.ctrlKey ?
+                    this.showPrevMonth() :
+                    this.update(this.activeDate.add("d", -1));
+            },
+
+            "right" : function(e){
+                e.ctrlKey ?
+                    this.showNextMonth() :
+                    this.update(this.activeDate.add("d", 1));
+            },
+
+            "up" : function(e){
+                e.ctrlKey ?
+                    this.showNextYear() :
+                    this.update(this.activeDate.add("d", -7));
+            },
+
+            "down" : function(e){
+                e.ctrlKey ?
+                    this.showPrevYear() :
+                    this.update(this.activeDate.add("d", 7));
+            },
+
+            "pageUp" : function(e){
+                this.showNextMonth();
+            },
+
+            "pageDown" : function(e){
+                this.showPrevMonth();
+            },
+
+            "enter" : function(e){
+                e.stopPropagation();
+                return true;
+            },
+
+            scope : this
+        });
+
+        this.eventEl.on("click", this.handleDateClick,  this, {delegate: "a.x-date-date"});
+
+        this.eventEl.addKeyListener(Roo.EventObject.SPACE, this.selectToday,  this);
+
+        this.el.unselectable();
+        
+        this.cells = this.el.select("table.x-date-inner tbody td");
+        this.textNodes = this.el.query("table.x-date-inner tbody span");
+
+        this.mbtn = new Roo.Button(this.el.child("td.x-date-middle", true), {
+            text: "&#160;",
+            tooltip: this.monthYearText
+        });
+
+        this.mbtn.on('click', this.showMonthPicker, this);
+        this.mbtn.el.child(this.mbtn.menuClassTarget).addClass("x-btn-with-menu");
+
+
+        var today = (new Date()).dateFormat(this.format);
+        
+        var baseTb = new Roo.Toolbar(this.el.child("td.x-date-bottom", true));
+        baseTb.add({
+            text: String.format(this.todayText, today),
+            tooltip: String.format(this.todayTip, today),
+            handler: this.selectToday,
+            scope: this
+        });
+        
+        //var todayBtn = new Roo.Button(this.el.child("td.x-date-bottom", true), {
+            
+        //});
+        if (this.showClear) {
+            
+            baseTb.add( new Roo.Toolbar.Fill());
+            baseTb.add({
+                text: '&#160;',
+                cls: 'x-btn-icon x-btn-clear',
+                handler: function() {
+                    //this.value = '';
+                    this.fireEvent("select", this, '');
+                },
+                scope: this
+            });
+        }
+        
+        
+        if(Roo.isIE){
+            this.el.repaint();
+        }
+        this.update(this.value);
+    },
+
+    createMonthPicker : function(){
+        if(!this.monthPicker.dom.firstChild){
+            var buf = ['<table border="0" cellspacing="0">'];
+            for(var i = 0; i < 6; i++){
+                buf.push(
+                    '<tr><td class="x-date-mp-month"><a href="#">', this.monthNames[i].substr(0, 3), '</a></td>',
+                    '<td class="x-date-mp-month x-date-mp-sep"><a href="#">', this.monthNames[i+6].substr(0, 3), '</a></td>',
+                    i == 0 ?
+                    '<td class="x-date-mp-ybtn" align="center"><a class="x-date-mp-prev"></a></td><td class="x-date-mp-ybtn" align="center"><a class="x-date-mp-next"></a></td></tr>' :
+                    '<td class="x-date-mp-year"><a href="#"></a></td><td class="x-date-mp-year"><a href="#"></a></td></tr>'
+                );
+            }
+            buf.push(
+                '<tr class="x-date-mp-btns"><td colspan="4"><button type="button" class="x-date-mp-ok">',
+                    this.okText,
+                    '</button><button type="button" class="x-date-mp-cancel">',
+                    this.cancelText,
+                    '</button></td></tr>',
+                '</table>'
+            );
+            this.monthPicker.update(buf.join(''));
+            this.monthPicker.on('click', this.onMonthClick, this);
+            this.monthPicker.on('dblclick', this.onMonthDblClick, this);
+
+            this.mpMonths = this.monthPicker.select('td.x-date-mp-month');
+            this.mpYears = this.monthPicker.select('td.x-date-mp-year');
+
+            this.mpMonths.each(function(m, a, i){
+                i += 1;
+                if((i%2) == 0){
+                    m.dom.xmonth = 5 + Math.round(i * .5);
+                }else{
+                    m.dom.xmonth = Math.round((i-1) * .5);
+                }
+            });
+        }
+    },
+
+    showMonthPicker : function(){
+        this.createMonthPicker();
+        var size = this.el.getSize();
+        this.monthPicker.setSize(size);
+        this.monthPicker.child('table').setSize(size);
+
+        this.mpSelMonth = (this.activeDate || this.value).getMonth();
+        this.updateMPMonth(this.mpSelMonth);
+        this.mpSelYear = (this.activeDate || this.value).getFullYear();
+        this.updateMPYear(this.mpSelYear);
+
+        this.monthPicker.slideIn('t', {duration:.2});
+    },
+
+    updateMPYear : function(y){
+        this.mpyear = y;
+        var ys = this.mpYears.elements;
+        for(var i = 1; i <= 10; i++){
+            var td = ys[i-1], y2;
+            if((i%2) == 0){
+                y2 = y + Math.round(i * .5);
+                td.firstChild.innerHTML = y2;
+                td.xyear = y2;
+            }else{
+                y2 = y - (5-Math.round(i * .5));
+                td.firstChild.innerHTML = y2;
+                td.xyear = y2;
+            }
+            this.mpYears.item(i-1)[y2 == this.mpSelYear ? 'addClass' : 'removeClass']('x-date-mp-sel');
+        }
+    },
+
+    updateMPMonth : function(sm){
+        this.mpMonths.each(function(m, a, i){
+            m[m.dom.xmonth == sm ? 'addClass' : 'removeClass']('x-date-mp-sel');
+        });
+    },
+
+    selectMPMonth: function(m){
+        
+    },
+
+    onMonthClick : function(e, t){
+        e.stopEvent();
+        var el = new Roo.Element(t), pn;
+        if(el.is('button.x-date-mp-cancel')){
+            this.hideMonthPicker();
+        }
+        else if(el.is('button.x-date-mp-ok')){
+            this.update(new Date(this.mpSelYear, this.mpSelMonth, (this.activeDate || this.value).getDate()));
+            this.hideMonthPicker();
+        }
+        else if(pn = el.up('td.x-date-mp-month', 2)){
+            this.mpMonths.removeClass('x-date-mp-sel');
+            pn.addClass('x-date-mp-sel');
+            this.mpSelMonth = pn.dom.xmonth;
+        }
+        else if(pn = el.up('td.x-date-mp-year', 2)){
+            this.mpYears.removeClass('x-date-mp-sel');
+            pn.addClass('x-date-mp-sel');
+            this.mpSelYear = pn.dom.xyear;
+        }
+        else if(el.is('a.x-date-mp-prev')){
+            this.updateMPYear(this.mpyear-10);
+        }
+        else if(el.is('a.x-date-mp-next')){
+            this.updateMPYear(this.mpyear+10);
+        }
+    },
+
+    onMonthDblClick : function(e, t){
+        e.stopEvent();
+        var el = new Roo.Element(t), pn;
+        if(pn = el.up('td.x-date-mp-month', 2)){
+            this.update(new Date(this.mpSelYear, pn.dom.xmonth, (this.activeDate || this.value).getDate()));
+            this.hideMonthPicker();
+        }
+        else if(pn = el.up('td.x-date-mp-year', 2)){
+            this.update(new Date(pn.dom.xyear, this.mpSelMonth, (this.activeDate || this.value).getDate()));
+            this.hideMonthPicker();
+        }
+    },
+
+    hideMonthPicker : function(disableAnim){
+        if(this.monthPicker){
+            if(disableAnim === true){
+                this.monthPicker.hide();
+            }else{
+                this.monthPicker.slideOut('t', {duration:.2});
+            }
+        }
+    },
+
+    // private
+    showPrevMonth : function(e){
+        this.update(this.activeDate.add("mo", -1));
+    },
+
+    // private
+    showNextMonth : function(e){
+        this.update(this.activeDate.add("mo", 1));
+    },
+
+    // private
+    showPrevYear : function(){
+        this.update(this.activeDate.add("y", -1));
+    },
+
+    // private
+    showNextYear : function(){
+        this.update(this.activeDate.add("y", 1));
+    },
+
+    // private
+    handleMouseWheel : function(e){
+        var delta = e.getWheelDelta();
+        if(delta > 0){
+            this.showPrevMonth();
+            e.stopEvent();
+        } else if(delta < 0){
+            this.showNextMonth();
+            e.stopEvent();
+        }
+    },
+
+    // private
+    handleDateClick : function(e, t){
+        e.stopEvent();
+        if(t.dateValue && !Roo.fly(t.parentNode).hasClass("x-date-disabled")){
+            this.setValue(new Date(t.dateValue));
+            this.fireEvent("select", this, this.value);
+        }
+    },
+
+    // private
+    selectToday : function(){
+        this.setValue(new Date().clearTime());
+        this.fireEvent("select", this, this.value);
+    },
+
+    // private
+    update : function(date){
+        var vd = this.activeDate;
+        this.activeDate = date;
+        if(vd && this.el){
+            var t = date.getTime();
+            if(vd.getMonth() == date.getMonth() && vd.getFullYear() == date.getFullYear()){
+                this.cells.removeClass("x-date-selected");
+                this.cells.each(function(c){
+                   if(c.dom.firstChild.dateValue == t){
+                       c.addClass("x-date-selected");
+                       setTimeout(function(){
+                            try{c.dom.firstChild.focus();}catch(e){}
+                       }, 50);
+                       return false;
+                   }
+                });
+                return;
+            }
+        }
+        var days = date.getDaysInMonth();
+        var firstOfMonth = date.getFirstDateOfMonth();
+        var startingPos = firstOfMonth.getDay()-this.startDay;
+
+        if(startingPos <= this.startDay){
+            startingPos += 7;
+        }
+
+        var pm = date.add("mo", -1);
+        var prevStart = pm.getDaysInMonth()-startingPos;
+
+        var cells = this.cells.elements;
+        var textEls = this.textNodes;
+        days += startingPos;
+
+        // convert everything to numbers so it's fast
+        var day = 86400000;
+        var d = (new Date(pm.getFullYear(), pm.getMonth(), prevStart)).clearTime();
+        var today = new Date().clearTime().getTime();
+        var sel = date.clearTime().getTime();
+        var min = this.minDate ? this.minDate.clearTime() : Number.NEGATIVE_INFINITY;
+        var max = this.maxDate ? this.maxDate.clearTime() : Number.POSITIVE_INFINITY;
+        var ddMatch = this.disabledDatesRE;
+        var ddText = this.disabledDatesText;
+        var ddays = this.disabledDays ? this.disabledDays.join("") : false;
+        var ddaysText = this.disabledDaysText;
+        var format = this.format;
+
+        var setCellClass = function(cal, cell){
+            cell.title = "";
+            var t = d.getTime();
+            cell.firstChild.dateValue = t;
+            if(t == today){
+                cell.className += " x-date-today";
+                cell.title = cal.todayText;
+            }
+            if(t == sel){
+                cell.className += " x-date-selected";
+                setTimeout(function(){
+                    try{cell.firstChild.focus();}catch(e){}
+                }, 50);
+            }
+            // disabling
+            if(t < min) {
+                cell.className = " x-date-disabled";
+                cell.title = cal.minText;
+                return;
+            }
+            if(t > max) {
+                cell.className = " x-date-disabled";
+                cell.title = cal.maxText;
+                return;
+            }
+            if(ddays){
+                if(ddays.indexOf(d.getDay()) != -1){
+                    cell.title = ddaysText;
+                    cell.className = " x-date-disabled";
+                }
+            }
+            if(ddMatch && format){
+                var fvalue = d.dateFormat(format);
+                if(ddMatch.test(fvalue)){
+                    cell.title = ddText.replace("%0", fvalue);
+                    cell.className = " x-date-disabled";
+                }
+            }
+        };
+
+        var i = 0;
+        for(; i < startingPos; i++) {
+            textEls[i].innerHTML = (++prevStart);
+            d.setDate(d.getDate()+1);
+            cells[i].className = "x-date-prevday";
+            setCellClass(this, cells[i]);
+        }
+        for(; i < days; i++){
+            intDay = i - startingPos + 1;
+            textEls[i].innerHTML = (intDay);
+            d.setDate(d.getDate()+1);
+            cells[i].className = "x-date-active";
+            setCellClass(this, cells[i]);
+        }
+        var extraDays = 0;
+        for(; i < 42; i++) {
+             textEls[i].innerHTML = (++extraDays);
+             d.setDate(d.getDate()+1);
+             cells[i].className = "x-date-nextday";
+             setCellClass(this, cells[i]);
+        }
+
+        this.mbtn.setText(this.monthNames[date.getMonth()] + " " + date.getFullYear());
+
+        if(!this.internalRender){
+            var main = this.el.dom.firstChild;
+            var w = main.offsetWidth;
+            this.el.setWidth(w + this.el.getBorderWidth("lr"));
+            Roo.fly(main).setWidth(w);
+            this.internalRender = true;
+            // opera does not respect the auto grow header center column
+            // then, after it gets a width opera refuses to recalculate
+            // without a second pass
+            if(Roo.isOpera && !this.secondPass){
+                main.rows[0].cells[1].style.width = (w - (main.rows[0].cells[0].offsetWidth+main.rows[0].cells[2].offsetWidth)) + "px";
+                this.secondPass = true;
+                this.update.defer(10, this, [date]);
+            }
+        }
+    }
+});
