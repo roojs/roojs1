@@ -408,7 +408,10 @@ layout.addxtype({
                 var el = this.el.createChild();
                 var clayout = cfg.layout;
                 delete cfg.layout;
-                
+                clayout.items   = clayout.items  || [];
+                // replace this exitems with the clayout ones..
+                xitems = clayout.items;
+                 
                 
                 if (region == 'center' && this.active && this.getRegion('center').panels.length < 1) {
                     cfg.background = false;
