@@ -386,7 +386,7 @@ Roo.GridPanel = function(grid, config){
         
         this.footer.container = this.grid.getView().getFooterPanel(true);
         this.footer.dataSource = this.grid.dataSource;
-        this.footer= Roo.factory(this.footer, Roo);
+        this.footer = Roo.factory(this.footer, Roo);
         
     }
     
