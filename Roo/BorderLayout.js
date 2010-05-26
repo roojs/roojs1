@@ -430,6 +430,7 @@ layout.addxtype({
                 
                 //var el = this.getRegion(region).el.createChild();
                 var el = this.el.createChild();
+                // create the grid first...
                 var grid = new Roo.grid[cfg.grid.xtype](el, cfg.grid);
                 delete cfg.grid;
                 if (region == 'center' && this.active ) {
