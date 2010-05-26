@@ -44514,10 +44514,7 @@ layout.addxtype({
  */
 Roo.GridPanel = function(grid, config){
     
-    if (typeof(config) == 'undefined') { // xtype construction..
-        config = grid;
-        grid = Roo.factory(config.grid, Roo.grid);
-    }
+  
     this.wrapper = Roo.DomHelper.append(document.body, // wrapper for IE7 strict & safari scroll issue
         {tag: "div", cls: "x-layout-grid-wrapper x-layout-inactive-content"}, true);
         
@@ -44997,12 +44994,16 @@ Roo.grid.Grid = function(container, config){
 
     if (this.selModel) {
         this.selModel = Roo.factory(this.selModel, Roo.grid);
+        this.sm = this.selModel;
     }
     if (typeof(this.colModel.config) == 'undefined') {
         this.colModel = new Roo.grid.ColumnModel(this.colModel);
+        this.cm = this.colModel;
     }
     if (this.dataSource) {
         this.dataSource= Roo.factory(this.dataSource, Roo.data);
+        this.ds = this.dataSource;
+        
     }
     
     
