@@ -372,11 +372,17 @@ layout.addxtype({
  * @param {String/Object} config A string to set only the panel's title, or a config object
  */
 Roo.GridPanel = function(grid, config){
+    
+    if (typeof(config) == 'undefined') { // xtype construction..
+        config = grid;
+        grid = config.grid;
+    }
     this.wrapper = Roo.DomHelper.append(document.body, // wrapper for IE7 strict & safari scroll issue
         {tag: "div", cls: "x-layout-grid-wrapper x-layout-inactive-content"}, true);
+        
     this.wrapper.dom.appendChild(grid.getGridEl().dom);
-    Roo.GridPanel.superclass.constructor.call(this, this.wrapper, config);
     
+    Roo.GridPanel.superclass.constructor.call(this, this.wrapper, config);
     
     if(this.toolbar){
         this.toolbar.el.insertBefore(this.wrapper.dom.firstChild);
