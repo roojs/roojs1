@@ -372,6 +372,8 @@ layout.addxtype({
     {
         // basically accepts a pannel...
         // can accept a layout region..!?!?
+        console.log('BorderLayout add ' + cfg.xtype)
+        
         if (!cfg.xtype.match(/Panel$/)) {
             return false;
         }
