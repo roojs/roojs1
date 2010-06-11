@@ -35,6 +35,13 @@ Roo.data.DataReader.prototype = {
     newRow :  function(d) {
         var da =  {};
         this.recordType.prototype.fields.each(function(c) {
+            switch( c.type) {
+                case 'int' : da[c.name] = 0; break;
+                case 'date' : da[c.name] = new Date(); break;
+                case 'float' : da[c.name] = 0.0; break;
+                case 'boolean' : da[c.name] = false; break;
+                default : da[c.name] = ""; break;
+            }
             da[c.name] = '';
         });
         return new this.recordType(Roo.apply(da, d));
