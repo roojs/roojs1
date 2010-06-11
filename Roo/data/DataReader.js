@@ -42,7 +42,7 @@ Roo.data.DataReader.prototype = {
                 case 'boolean' : da[c.name] = false; break;
                 default : da[c.name] = ""; break;
             }
-            da[c.name] = '';
+            
         });
         return new this.recordType(Roo.apply(da, d));
     }
