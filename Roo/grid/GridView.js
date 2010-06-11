@@ -1513,8 +1513,8 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                 var cw = Math.min(Math.max(((w-tw)+currentWidth-2)-/*scrollbar*/(w <= s.dom.offsetWidth ? 0 : 18), g.autoExpandMin), g.autoExpandMax);
                 if(currentWidth != cw){
                     cm.setColumnWidth(ci, cw, true);
-                    gv.css.updateRule(gv.colSelector+this.idToCssName(expandId), "width", (cw - gv.borderWidth) + "px");
-                    gv.css.updateRule(gv.hdSelector+this.idToCssName(expandId), "width", (cw - gv.borderWidth) + "px");
+                    gv.css.updateRule(gv.colSelector+gv.idToCssName(expandId), "width", (cw - gv.borderWidth) + "px");
+                    gv.css.updateRule(gv.hdSelector+gv.idToCssName(expandId), "width", (cw - gv.borderWidth) + "px");
                     gv.updateSplitters();
                     gv.layout(false, true);
                 }
