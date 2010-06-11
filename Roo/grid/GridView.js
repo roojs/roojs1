@@ -593,8 +593,8 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         for(var i = 0, len = cm.getColumnCount(); i < len; i++){
             //if(cm.isHidden(i)) continue;
             var w = cm.getColumnWidth(i);
-            this.css.updateRule(this.colSelector+colIds[i], "width", (w - this.borderWidth) + "px");
-            this.css.updateRule(this.hdSelector+colIds[i], "width", (w - this.borderWidth) + "px");
+            this.css.updateRule(this.colSelector+this.idToCssName(colIds[i]), "width", (w - this.borderWidth) + "px");
+            this.css.updateRule(this.hdSelector+this.idToCssName(colIds[i]), "width", (w - this.borderWidth) + "px");
         }
         this.updateSplitters();
     },
@@ -649,8 +649,8 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
 
     hideColumn : function(colIndex){
         var cid = this.getColumnId(colIndex);
-        this.css.updateRule(this.tdSelector+cid, "display", "none");
-        this.css.updateRule(this.splitSelector+cid, "display", "none");
+        this.css.updateRule(this.tdSelector+this.idToCssName(cid), "display", "none");
+        this.css.updateRule(this.splitSelector+this.idToCssName(cid), "display", "none");
         if(Roo.isSafari){
             this.updateHeaders();
         }
@@ -660,8 +660,8 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
 
     unhideColumn : function(colIndex){
         var cid = this.getColumnId(colIndex);
-        this.css.updateRule(this.tdSelector+cid, "display", "");
-        this.css.updateRule(this.splitSelector+cid, "display", "");
+        this.css.updateRule(this.tdSelector+this.idToCssName(cid), "display", "");
+        this.css.updateRule(this.splitSelector+this.idToCssName(cid), "display", "");
 
         if(Roo.isSafari){
             this.updateHeaders();
@@ -981,7 +981,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         var val = renderer(dm.getValueAt(rowIndex, dataIndex), p, rowIndex, colIndex, dm);
         if(typeof val == "undefined" || val === "") val = "&#160;";
         cellText.innerHTML = val;
-        cell.className = this.cellClass + " " + p.cellId + " " + p.css;
+        cell.className = this.cellClass + " " + this.idToCssName(p.cellId) + " " + p.css;
         this.syncRowHeights(rowIndex, rowIndex);
     },
 
@@ -1020,9 +1020,9 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
          }
         if(forceMinSize){
             var cid = this.cm.getColumnId(colIndex);
-            this.css.updateRule(this.colSelector + cid, "width", this.grid.minColumnWidth + "px");
+            this.css.updateRule(this.colSelector +this.idToCssName( cid), "width", this.grid.minColumnWidth + "px");
            if(this.grid.autoSizeHeaders){
-               this.css.updateRule(this.hdSelector + cid, "width", this.grid.minColumnWidth + "px");
+               this.css.updateRule(this.hdSelector + this.idToCssName(cid), "width", this.grid.minColumnWidth + "px");
            }
         }
         var newWidth = this.calcColumnWidth(colIndex);
@@ -1400,8 +1400,8 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         var cm = this.grid.colModel;
         cm.setColumnWidth(i, w, true);
         var cid = cm.getColumnId(i);
-        this.css.updateRule(this.colSelector + cid, "width", (w-this.borderWidth) + "px");
-        this.css.updateRule(this.hdSelector + cid, "width", (w-this.borderWidth) + "px");
+        this.css.updateRule(this.colSelector + this.idToCssName(cid), "width", (w-this.borderWidth) + "px");
+        this.css.updateRule(this.hdSelector + this.idToCssName(cid), "width", (w-this.borderWidth) + "px");
         this.updateSplitters();
         this.layout();
         this.grid.fireEvent("columnresize", i, w);
@@ -1513,8 +1513,8 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                 var cw = Math.min(Math.max(((w-tw)+currentWidth-2)-/*scrollbar*/(w <= s.dom.offsetWidth ? 0 : 18), g.autoExpandMin), g.autoExpandMax);
                 if(currentWidth != cw){
                     cm.setColumnWidth(ci, cw, true);
-                    gv.css.updateRule(gv.colSelector+expandId, "width", (cw - gv.borderWidth) + "px");
-                    gv.css.updateRule(gv.hdSelector+expandId, "width", (cw - gv.borderWidth) + "px");
+                    gv.css.updateRule(gv.colSelector+this.idToCssName(expandId), "width", (cw - gv.borderWidth) + "px");
+                    gv.css.updateRule(gv.hdSelector+this.idToCssName(expandId), "width", (cw - gv.borderWidth) + "px");
                     gv.updateSplitters();
                     gv.layout(false, true);
                 }
