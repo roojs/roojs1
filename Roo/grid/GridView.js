@@ -342,7 +342,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
     idToCssName : function(s)
     {
         return s.replace(/[^a-z0-9]+/ig, '-');
-    }
+    },
 
 	getHeaderCell : function(index){
 	    return Roo.DomQuery.select(this.headerSelector)[index];
