@@ -49347,4 +49347,254 @@ Roo.extend(Roo.grid.PropertyGrid, Roo.grid.EditorGrid, {
     getSource : function(){
         return this.store.getSource();
     }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.LoadMask
+ * A simple utility class for generically masking elements while loading data.  If the element being masked has
+ * an underlying {@link Roo.data.Store}, the masking will be automatically synchronized with the store's loading
+ * process and the mask element will be cached for reuse.  For all other elements, this mask will replace the
+ * element's UpdateManager load indicator and will be destroyed after the initial load.
+ * @constructor
+ * Create a new LoadMask
+ * @param {String/HTMLElement/Roo.Element} el The element or DOM node, or its id
+ * @param {Object} config The config object
+ */
+Roo.LoadMask = function(el, config){
+    this.el = Roo.get(el);
+    Roo.apply(this, config);
+    if(this.store){
+        this.store.on('beforeload', this.onBeforeLoad, this);
+        this.store.on('load', this.onLoad, this);
+        this.store.on('loadexception', this.onLoad, this);
+        this.removeMask = false;
+    }else{
+        var um = this.el.getUpdateManager();
+        um.showLoadIndicator = false; // disable the default indicator
+        um.on('beforeupdate', this.onBeforeLoad, this);
+        um.on('update', this.onLoad, this);
+        um.on('failure', this.onLoad, this);
+        this.removeMask = true;
+    }
+};
+
+Roo.LoadMask.prototype = {
+    /**
+     * @cfg {Boolean} removeMask
+     * True to create a single-use mask that is automatically destroyed after loading (useful for page loads),
+     * False to persist the mask element reference for multiple uses (e.g., for paged data widgets).  Defaults to false.
+     */
+    /**
+     * @cfg {String} msg
+     * The text to display in a centered loading message box (defaults to 'Loading...')
+     */
+    msg : 'Loading...',
+    /**
+     * @cfg {String} msgCls
+     * The CSS class to apply to the loading message element (defaults to "x-mask-loading")
+     */
+    msgCls : 'x-mask-loading',
+
+    /**
+     * Read-only. True if the mask is currently disabled so that it will not be displayed (defaults to false)
+     * @type Boolean
+     */
+    disabled: false,
+
+    /**
+     * Disables the mask to prevent it from being displayed
+     */
+    disable : function(){
+       this.disabled = true;
+    },
+
+    /**
+     * Enables the mask so that it can be displayed
+     */
+    enable : function(){
+        this.disabled = false;
+    },
+
+    // private
+    onLoad : function(){
+        this.el.unmask(this.removeMask);
+    },
+
+    // private
+    onBeforeLoad : function(){
+        if(!this.disabled){
+            this.el.mask(this.msg, this.msgCls);
+        }
+    },
+
+    // private
+    destroy : function(){
+        if(this.store){
+            this.store.un('beforeload', this.onBeforeLoad, this);
+            this.store.un('load', this.onLoad, this);
+            this.store.un('loadexception', this.onLoad, this);
+        }else{
+            var um = this.el.getUpdateManager();
+            um.un('beforeupdate', this.onBeforeLoad, this);
+            um.un('update', this.onLoad, this);
+            um.un('failure', this.onLoad, this);
+        }
+    }
+};/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+Roo.XTemplate = function(){
+    Roo.XTemplate.superclass.constructor.apply(this, arguments);
+    var s = this.html;
+
+    s = ['<tpl>', s, '</tpl>'].join('');
+
+    var re = /<tpl\b[^>]*>((?:(?=([^<]+))\2|<(?!tpl\b[^>]*>))*?)<\/tpl>/;
+
+    var nameRe = /^<tpl\b[^>]*?for="(.*?)"/;
+    var ifRe = /^<tpl\b[^>]*?if="(.*?)"/;
+    var execRe = /^<tpl\b[^>]*?exec="(.*?)"/;
+    var m, id = 0;
+    var tpls = [];
+
+    while(m = s.match(re)){
+       var m2 = m[0].match(nameRe);
+       var m3 = m[0].match(ifRe);
+       var m4 = m[0].match(execRe);
+       var exp = null, fn = null, exec = null;
+       var name = m2 && m2[1] ? m2[1] : '';
+       if(m3){
+           exp = m3 && m3[1] ? m3[1] : null;
+           if(exp){
+               fn = new Function('values', 'parent', 'with(values){ return '+(Roo.util.Format.htmlDecode(exp))+'; }');
+           }
+       }
+       if(m4){
+           exp = m4 && m4[1] ? m4[1] : null;
+           if(exp){
+               exec = new Function('values', 'parent', 'with(values){ '+(Roo.util.Format.htmlDecode(exp))+'; }');
+           }
+       }
+       if(name){
+           switch(name){
+               case '.': name = new Function('values', 'parent', 'with(values){ return values; }'); break;
+               case '..': name = new Function('values', 'parent', 'with(values){ return parent; }'); break;
+               default: name = new Function('values', 'parent', 'with(values){ return '+name+'; }');
+           }
+       }
+       tpls.push({
+            id: id,
+            target: name,
+            exec: exec,
+            test: fn,
+            body: m[1]||''
+        });
+       s = s.replace(m[0], '{xtpl'+ id + '}');
+       ++id;
+    }
+    for(var i = tpls.length-1; i >= 0; --i){
+        this.compileTpl(tpls[i]);
+    }
+    this.master = tpls[tpls.length-1];
+    this.tpls = tpls;
+};
+Roo.extend(Roo.XTemplate, Roo.Template, {
+
+    re : /\{([\w-\.]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?\}/g,
+
+    applySubTemplate : function(id, values, parent){
+        var t = this.tpls[id];
+        if(t.test && !t.test.call(this, values, parent)){
+            return '';
+        }
+        if(t.exec && t.exec.call(this, values, parent)){
+            return '';
+        }
+        var vs = t.target ? t.target.call(this, values, parent) : values;
+        parent = t.target ? values : parent;
+        if(t.target && vs instanceof Array){
+            var buf = [];
+            for(var i = 0, len = vs.length; i < len; i++){
+                buf[buf.length] = t.compiled.call(this, vs[i], parent);
+            }
+            return buf.join('');
+        }
+        return t.compiled.call(this, vs, parent);
+    },
+
+    compileTpl : function(tpl){
+        var fm = Roo.util.Format;
+        var useF = this.disableFormats !== true;
+        var sep = Roo.isGecko ? "+" : ",";
+        var fn = function(m, name, format, args){
+            if(name.substr(0, 4) == 'xtpl'){
+                return "'"+ sep +'this.applySubTemplate('+name.substr(4)+', values, parent)'+sep+"'";
+            }
+            var v;
+            if(name.indexOf('.') != -1){
+                v = name;
+            }else{
+                v = "values['" + name + "']";
+            }
+            if(format && useF){
+                args = args ? ',' + args : "";
+                if(format.substr(0, 5) != "this."){
+                    format = "fm." + format + '(';
+                }else{
+                    format = 'this.call("'+ format.substr(5) + '", ';
+                    args = ", values";
+                }
+            }else{
+                args= ''; format = "("+v+" === undefined ? '' : ";
+            }
+            return "'"+ sep + format + v + args + ")"+sep+"'";
+        };
+        var body;
+        // branched to use + in gecko and [].join() in others
+        if(Roo.isGecko){
+            body = "tpl.compiled = function(values, parent){ return '" +
+                   tpl.body.replace(/(\r\n|\n)/g, '\\n').replace(/'/g, "\\'").replace(this.re, fn) +
+                    "';};";
+        }else{
+            body = ["tpl.compiled = function(values, parent){ return ['"];
+            body.push(tpl.body.replace(/(\r\n|\n)/g, '\\n').replace(/'/g, "\\'").replace(this.re, fn));
+            body.push("'].join('');};");
+            body = body.join('');
+        }
+        /** eval:var:zzzzzzz */
+        eval(body);
+        return this;
+    },
+
+    applyTemplate : function(values){
+        return this.master.compiled.call(this, values, {});
+        var s = this.subs;
+    },
+
+    apply : function(){
+        return this.applyTemplate.apply(this, arguments);
+    },
+
+    compile : function(){return this;}
 });
+
+Roo.XTemplate.from = function(el){
+    el = Roo.getDom(el);
+    return new Roo.XTemplate(el.value || el.innerHTML);
+};
