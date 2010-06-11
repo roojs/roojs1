@@ -336,9 +336,13 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
 
 	    this.splitterSelector = String.format(
 	       '#{0} div.x-grid-split, #{1} div.x-grid-split',
-	       this.lockedHd.id, this.mainHd.id
+	       this.idToCssName(this.lockedHd.id), this.idToCssName(this.mainHd.id)
 	    );
     },
+    idToCssName : function(s)
+    {
+        return s.replace(/[^a-z0-9]+/ig, '-');
+    }
 
 	getHeaderCell : function(index){
 	    return Roo.DomQuery.select(this.headerSelector)[index];
@@ -596,7 +600,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
     },
 
     generateRules : function(cm){
-        var ruleBuf = [], rulesId = this.grid.id + '-cssrules';
+        var ruleBuf = [], rulesId = this.idToCssName(this.grid.id)+ '-cssrules';
         Roo.util.CSS.removeStyleSheet(rulesId);
         for(var i = 0, len = cm.getColumnCount(); i < len; i++){
             var cid = cm.getColumnId(i);
@@ -1163,7 +1167,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                 delete Roo.dd.DDM.ids['gridHeader' + this.grid.getGridEl().id];
             }
         }
-        Roo.util.CSS.removeStyleSheet(this.grid.id + '-cssrules');
+        Roo.util.CSS.removeStyleSheet(this.idToCssName(this.grid.id) + '-cssrules');
         this.bind(null, null);
         Roo.EventManager.removeResizeListener(this.onWindowResize, this);
     },
