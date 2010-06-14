@@ -392,9 +392,13 @@ layout.addxtype({
         switch(cfg.xtype) 
         {
             case 'ContentPanel':  // ContentPanel (el, cfg)
-            
-                var el = this.el.createChild();
-                ret = new Roo[cfg.xtype](el, cfg); // new panel!!!!!
+                if(cfg.autoCreate) {
+                    ret = new Roo[cfg.xtype](cfg); // new panel!!!!!
+                } else {
+                    var el = this.el.createChild();
+                    ret = new Roo[cfg.xtype](el, cfg); // new panel!!!!!
+                }
+                
                 this.add(region, ret);
                 break;
             
