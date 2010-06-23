@@ -142,7 +142,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
                 "Error getting authentication status. - try reloading"); 
             return;
         }
-        
+        opts.callCfg.again = true;
         this.check.defer(1000, this, [ opts.callCfg ]);
         return;  
     },
