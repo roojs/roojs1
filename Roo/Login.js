@@ -10,6 +10,7 @@
 *    username,password, lang = for login actions.
 *    check = 1 for periodic checking that sesion is valid.
 *    passwordRequest = email request password
+*    logout = 1 = to logout
 * 
 * Affects: (this id="????" elements)
 *   loading  (removed) (used to indicate application is loading)
