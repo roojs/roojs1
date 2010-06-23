@@ -337,6 +337,7 @@ Roo.apply(Roo.XComponent, {
                          minTabWidth: 140
                     }
                 });
+                m.items[0].region = 'center';
                 m.el = layoutbase.addxtype(  m.items[0] );
                 m.panel = this.el;
                 m.layout = m.panel.layout;    
