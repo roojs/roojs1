@@ -196,10 +196,8 @@ Roo.apply(Roo.XComponent, {
      */
     preBuild : function ()
     {
-        var modules = this.modules;
-        this.modules = false;
         
-        Roo.each(modules , function (obj)
+        Roo.each(this.modules , function (obj)
         {
             obj.parent = this.toObject(obj.parent);
             
