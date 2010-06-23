@@ -358,28 +358,16 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
     } ,
     listeners : {
         
-        rendered : function(dlg) {
+        show  : function()
+        {
             this.form = this.items[0];
             this.form.dialog = dlg;
             this.buttons[0].form = this.form;
             this.buttons[0].dialog = dlg
             this.buttons[1].form = this.form;
             this.buttons[1].dialog = dlg;
-            
-             // logoprefix comes from base config.
-            //Pman.Login.form.el.createChild({
-            //    tag: 'img', 
-            //    src: rootURL + '/Pman/'+appNameShort + '/templates/images/logo.gif',
-            //    style: 'margin-bottom: 10px;'
-            //},
-            
-    
-        
-            
-        },
-        show  : function()
-        {
-            //this.resizeToLogo.defer(1000,this);
+           
+           //this.resizeToLogo.defer(1000,this);
             // this is all related to resizing for logos..
             //var sz = Roo.get(Pman.Login.form.el.query('img')[0]).getSize();
            //// if (!sz) {
