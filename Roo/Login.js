@@ -10,10 +10,15 @@
 *    
 * 
 * Myapp.login = Roo.Login({
-    url: xxxx
-    username  : 'email',
-    password' : 'password',
+    url: xxxx,
+    params : {
+        username  : 'email',
+        password' : 'password',
+        check : 'getAuthUser'
+    }
+    
     method : 'POST',
+    
     
     * 
 })
