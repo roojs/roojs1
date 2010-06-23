@@ -280,10 +280,10 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
         if (this.intervalID) { // timer already in place...
             return false;
         }
-        
+        var _this = this;
         this.intervalID =  window.setInterval(function() {
-                  Pman.Login.check(false);
-                }, 120000); // every 120 secs = 2mins..
+              _this.check(false);
+            }, 120000); // every 120 secs = 2mins..
         
         
     },
