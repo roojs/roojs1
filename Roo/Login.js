@@ -431,7 +431,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
                         actioncomplete: function(re, act) {
                              
                             Roo.state.Manager.set(
-                                this.dialog.realm + '.' + this.dialog.params.username,  
+                                this.dialog.realm + '.username',  
                                     this.form.findField('username').getValue()
                             );
                             Roo.state.Manager.set(
