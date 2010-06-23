@@ -364,7 +364,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
                 {
                     xtype : 'Button',
                     xns : 'Roo',
-                    label : "Forgot Password",
+                    text : "Forgot Password",
                     listeners : {
                         click : function() {
                     
@@ -401,7 +401,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
                 {
                     xtype : 'Button',
                     xns : 'Roo',
-                    label : "Login",
+                    text : "Login",
                     {
                             
                         this.dialog.el.mask("Logging in");
