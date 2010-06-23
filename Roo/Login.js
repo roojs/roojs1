@@ -113,7 +113,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
                 }
                 
                 if (!res.data.id) { // id=0 == login failure.
-                    return this.show(true);
+                    return this.show();
                 }
                 
                               
