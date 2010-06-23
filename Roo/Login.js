@@ -86,7 +86,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
             Roo.get('loading').remove();
         }
         
-        this.switchLang('en'); // set the language to english..
+        //this.switchLang('en'); // set the language to english..
        
         this.check({
             success:  function(response, opts)  {  // check successfull...
@@ -560,7 +560,7 @@ Pman.Login =  new Roo.util.Observable({
         
              
       
-          /* this will not work ...
+         
     
     switchLang : function (lang) 
     {
@@ -586,7 +586,7 @@ Pman.Login =  new Roo.util.Observable({
         Roo.apply(_T, _T[lang]);
         // just need to set the text values for everything...
         var _this = this;
-   
+        /* this will not work ...
         if (this.form) { 
             
                
@@ -601,7 +601,7 @@ Pman.Login =  new Roo.util.Observable({
             this.dialog.buttons[0].setText("Forgot Password");
             this.dialog.buttons[1].setText("Login");
         }
-        
+        */
         
         
     }
