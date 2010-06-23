@@ -342,7 +342,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
     modal: true,
     width:  350,
     //height: 230,
-    height: 150,
+    height: 180,
     shadow: true,
     minWidth:200,
     minHeight:180,
