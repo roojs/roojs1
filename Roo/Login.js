@@ -31,7 +31,7 @@
  
 Roo.Login = function(cfg)
 {
-    
+    Roo.apply(cfg, this);
     Roo.each(this.items, function(e) {
         this.addxtype(e);
     }, this);
