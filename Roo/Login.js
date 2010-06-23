@@ -414,7 +414,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
             }
             
             //incomming._node = tnode;
-            this.form.reset();
+            this.dialog.form.reset();
             //this.dialog.modal = !modal;
             //this.dialog.show();
             this.dialog.el.unmask(); 
