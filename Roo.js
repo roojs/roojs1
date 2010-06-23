@@ -446,7 +446,7 @@ Roo.factory(conf, Roo.data);
         /**
         * Shorthand for {@link Roo.XComponent#get}
         * @param {String} id
-        * @return Roo.Component
+        * @return Roo.XComponent
         */
         getx : function(id){
             return Roo.XComponent.get(id);
