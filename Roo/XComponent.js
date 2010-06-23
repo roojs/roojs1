@@ -50,11 +50,11 @@ Roo.XComponent = function(cfg) {
         'buildcomplete' : true,
         
     });
-
+    
     Roo.XComponent.register(this);
     this.modules = false;
     this.el = false; // where the layout goes..
-    
+    this.setx(this.items[0]);
     
 }
 Roo.extend(Roo.XComponent, Roo.util.Observable, {
