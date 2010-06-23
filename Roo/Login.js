@@ -46,7 +46,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
     method : 'POST',
        /**
      * @cfg {String} url
-     * URL to query login data. - eg. baseURL + '/Login.js'
+     * URL to query login data. - eg. baseURL + '/Login.php'
      */
     url : '',
     
