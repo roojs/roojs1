@@ -287,7 +287,7 @@ Roo.apply(Roo.XComponent, {
         
         this.preBuild();
         var mods = this.buildOrder();
-        
+        throw "testing";
         //this.allmods = mods;
         //console.log(mods);
         //return;
