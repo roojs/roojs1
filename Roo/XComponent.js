@@ -315,8 +315,8 @@ Roo.apply(Roo.XComponent, {
             
          
             
-            var disabled = (typeof(m.module.disabled) == 'function') ?
-                m.module.disabled.call(m.module.disabled) : m.module.disabled;    
+            var disabled = (typeof(m.disabled) == 'function') ?
+                m.disabled.call(m.module.disabled) : m.module.disabled;    
             
             
             if (disabled) {
