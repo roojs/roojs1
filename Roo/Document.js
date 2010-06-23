@@ -97,7 +97,8 @@ Roo.extend(Roo.Document, Roo.util.Observable, {
           order : '000001',
           module : 'Pman.Tab.projectMgr',
           region : 'center',
-          parent : 'Pman.layout'
+          parent : 'Pman.layout',
+          disabled : false,  
         })
      * 
      */
@@ -205,8 +206,8 @@ Roo.extend(Roo.Document, Roo.util.Observable, {
             return;
         }
         // flash it up as modal - so we store the mask!?
-        Ext.MessageBox.show({ title: 'loading' });
-        Ext.MessageBox.show({
+        Roo.MessageBox.show({ title: 'loading' });
+        Roo.MessageBox.show({
            title: "Please wait...",
            msg: "Building Interface...",
            width:450,
@@ -221,16 +222,14 @@ Roo.extend(Roo.Document, Roo.util.Observable, {
             var m = mods[n];
             
             
-            Ext.MessageBox.updateProgress(
+            Roo.MessageBox.updateProgress(
                 (n+1)/mods.length,  "Building Interface " + (n+1) + 
                     " of " + mods.length + 
                     (m.name ? (' - ' + m.name) : '')
                     );
             
-            
-            
             if (typeof(m) == 'function') {
-                m();
+                m.call(this);
                 
             } else {
                 if (m.parent.layout && !m.module.disabled) {
