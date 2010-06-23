@@ -147,7 +147,7 @@ Roo.extend(Roo.Document, Roo.util.Observable, {
             obj.parent = toObject(obj.parent);
              
             if (!obj.parent.modules) {
-                obj.parent.modules = new Roo.util.MixedCollection(false, function(o) { return o.order });
+                obj.parent.modules = new Roo.util.MixedCollection(false, function(o) { return o.order + '' });
             }
             
             obj.parent.modules.add(obj);
