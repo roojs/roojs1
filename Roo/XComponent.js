@@ -54,7 +54,7 @@ Roo.XComponent = function(cfg) {
     Roo.XComponent.register(this);
     this.modules = false;
     this.el = false; // where the layout goes..
-    this.setx(this.items[0]);
+    this.setX(this.items[0]);
     
 }
 Roo.extend(Roo.XComponent, Roo.util.Observable, {
@@ -108,6 +108,24 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
      * It's done this way to stay compatible with the Xtype system...
      */
     items : false,
+    
+    /**
+     * setx 
+     * Set's the xowner value on all the children
+     * basically var _this= this.xmodule; can be used in any component..
+     * to refer to it's own xmodule
+     * @param xtype element.
+     */
+    setX : function(obj)
+    {
+        obj.xmodule = this;
+        if (!obj.items) return;
+        Roo.each(obj.items, function (o) {
+            this.setX(o);
+        }, this);
+    }
+     
+    
 });
 
 Roo.apply(Roo.XComponent, {
