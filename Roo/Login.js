@@ -103,8 +103,8 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
                     }); 
                 return;
             }
-            
-            _this.check.defer(10000, _this, [ again: true ]); // check in 10 secs.
+            cfg.again = true;
+            _this.check.defer(10000, _this, [ cfg ]); // check in 10 secs.
             return;
         }
         this.sending = true;
