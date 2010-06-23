@@ -184,7 +184,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
         //Pman.Tab.FaxTab.setTitle(au.faxNumPending);
         
         //this.switchLang(Roo.state.Manager.get('Pman.Login.lang', 'en'));
-        Roo.state.Manager.set('Pman.Login.lang.'+appNameShort, au.lang);
+        Roo.state.Manager.set( this.realm + 'lang' , au.lang);
         this.switchLang(au.lang);
         
      
