@@ -241,10 +241,11 @@ Roo.apply(Roo.XComponent, {
            // console.log(m.modKey);
             
             mods.push(m);
-            if (m.module.modules) {
-                m.module.modules.keySort('ASC',  cmp );
-                m.module.modules.each(addMod);
+            if (m.modules) {
+                m.modules.keySort('ASC',  cmp );
+                m.modules.each(addMod);
             }
+            // not sure if this is used any more..
             if (m.finalize) {
                 m.finalize.name = m.name + " (clean up) ";
                 mods.push(m.finalize);
