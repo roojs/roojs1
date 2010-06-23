@@ -241,7 +241,21 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
             this.buttons[0].dialog = dlg
             this.buttons[1].form = this.form;
             this.buttons[1].dialog = dlg
-        }
+        },
+        show  : function()
+        {
+            //var sz = Roo.get(Pman.Login.form.el.query('img')[0]).getSize();
+           //// if (!sz) {
+             //   this.resizeToLogo.defer(1000,this);
+             //   return;
+           // }
+            var w = Ext.lib.Dom.getViewWidth() - 100;
+            var h = Ext.lib.Dom.getViewHeight() - 100;
+            this.resizeTo(Math.max(350, Math.min(sz.width + 30, w)),Math.min(sz.height+200, h));
+            this.center();
+    },
+    
+           }
     },
     items : [
          {
@@ -412,6 +426,8 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
                     }
                 }
             ]
+        }
+    ]
 })
 
 Pman.Login =  new Roo.util.Observable({
@@ -472,19 +488,7 @@ Pman.Login =  new Roo.util.Observable({
         
         
     },
-    resizeToLogo : function()
-    {
-        var sz = Roo.get(Pman.Login.form.el.query('img')[0]).getSize();
-        if (!sz) {
-            this.resizeToLogo.defer(1000,this);
-            return;
-        }
-        var w = Ext.lib.Dom.getViewWidth() - 100;
-        var h = Ext.lib.Dom.getViewHeight() - 100;
-        Pman.Login.dialog.resizeTo(Math.max(350, Math.min(sz.width + 30, w)),Math.min(sz.height+200, h));
-        Pman.Login.dialog.center();
-    },
-    
+  
      
     
     show: function (modal) 
