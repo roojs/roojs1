@@ -15,7 +15,9 @@
         username  : 'email',
         password' : 'password',
         check : 'getAuthUser'
-    }
+    },
+    realm : 'Myapp', 
+    
     
     method : 'POST',
     
@@ -130,6 +132,25 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
         });  
     }, 
     
+    
+    success : function(response, opts)  // check successfull...
+    {  
+        this.sending = false;
+        var res = Pman.processResponse(response);
+        if (!res.success) {
+            return this.failure(response, opts);
+        }
+        if (!res.data || !res.data.id) {
+            return this.failure(response,opts);
+        }
+        //console.log(res);
+        this.fillAuth(res.data);
+        
+        this.checkFails =0;
+        Pman.onload();
+    },
+    
+    
     failure : function (response, opts) // called if login 'check' fails.. (causes re-check)
     {
         this.authUser = -1;
@@ -148,51 +169,6 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
     },
     
     
-    
-    items : [
-    
-    
-    ]
-    
-}
-
-Pman.Login =  new Roo.util.Observable({
-    
-    events : {
-        
-        'render' : true
-    },
-    disabled : false,
-    
-    dialog : false,
-    form: false,
-    haslogo : false,
-    
-    authUserId: 0,
-    authUser: { id : false },
-       
-    checkFails : 0,
-    versionWarn: false,
-    sending : false,
-    
-    
-    
-    success : function(response, opts)  // check successfull...
-    {  
-        this.sending = false;
-        var res = Pman.processResponse(response);
-        if (!res.success) {
-            return this.failure(response, opts);
-        }
-        if (!res.data || !res.data.id) {
-            return this.failure(response,opts);
-        }
-        //console.log(res);
-        this.fillAuth(res.data);
-        
-        this.checkFails =0;
-        Pman.onload();
-    },
     
     fillAuth: function(au) {
         this.startAuthCheck();
@@ -219,11 +195,6 @@ Pman.Login =  new Roo.util.Observable({
              
     },
     
-    
-    intervalID : false,   /// the login refresher...
-    
-    lastChecked : false,
-    
     startAuthCheck : function() // starter for timeout checking..
     {
         if (Pman.Login.intervalID) { // timer already in place...
@@ -236,6 +207,110 @@ Pman.Login =  new Roo.util.Observable({
         
         
     },
+    autoCreated: true,
+    title: "Login",
+    modal: true,
+    width:  350,
+    height: 230,
+    shadow: true,
+    minWidth:200,
+    minHeight:180,
+    //proxyDrag: true,
+    closable: false,
+    draggable: false,
+    collapsible: false,
+    resizable: false,
+    center: {
+        autoScroll:false,
+        titlebar: false,
+       // tabPosition: 'top',
+        hideTabs: true,
+        closeOnTab: true,
+        alwaysShowTabs: false
+    } ,
+    listeners : 
+        rendered : function(dlg) {
+            this.items[0].dialog = dlg;
+        }
+    },
+    items : [
+    
+            xtype : 'Form',
+            xns : Roo.form,
+            labelWidth: 100,
+            
+            listeners : {
+                actionfailed : function(f, act) {
+                    // form can return { errors: .... }
+                        
+                    //act.result.errors // invalid form element list...
+                    //act.result.errorMsg// invalid form element list...
+                    
+                    this.dialog.el.unmask();
+                    Roo.MessageBox.alert("Error", act.result.errorMsg ? act.result.errorMsg : 
+                                "Login failed - communication error - try again.");
+                              
+                },
+                actioncomplete: function(re, act) {
+                     
+                    Roo.state.Manager.set(
+                        this.dialog.realm + '.' + this.dialog.params.username,  
+                            this.form.findField(this.dialog.params.username).getValue() 
+                    );
+                    Roo.state.Manager.set(
+                        this.dialog.realm + '.lang',  
+                        Pman.Login.form.findField('lang').getValue() 
+                    );
+                    
+                    this.dialog.fillAuth(act.result.data);
+                      
+                    this.dialog.hide();
+                    
+                    if (Roo.get('loading-mask')) {
+                        Roo.get('loading-mask').show();
+                    }
+                    Roo.XComponent.build();
+                    
+                     
+                    
+                }
+            }
+        
+            
+            
+             
+        });
+    ]
+    
+}
+
+Pman.Login =  new Roo.util.Observable({
+    
+    events : {
+        
+        'render' : true
+    },
+    disabled : false,
+    
+    dialog : false,
+    form: false,
+    haslogo : false,
+    
+    authUserId: 0,
+    authUser: { id : false },
+       
+    checkFails : 0,
+    versionWarn: false,
+    sending : false,
+    
+    
+     
+    
+    
+    intervalID : false,   /// the login refresher...
+    
+    lastChecked : false,
+    
     
     
     create : function()
