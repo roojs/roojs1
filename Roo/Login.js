@@ -48,7 +48,7 @@ Roo.Login = function(cfg)
     Roo.each(this.items, function(e) {
         this.addxtype(e);
     }, this);
-    Roo.Document.on('ready', function() {
+    Roo.onReady(function() {
         this.onLoad();
     }, this);
     // call parent..
