@@ -41,6 +41,8 @@ Roo.Login = function(cfg)
     // call parent..
     Roo.Login.superclass.constructor.call(this);
 }
+
+
 Roo.extend(Roo.Login, Roo.LayoutDialog, {
     
     /**
