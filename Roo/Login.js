@@ -410,7 +410,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
             xtype : 'ContentPanel',
             xns : Roo,
             region: 'center',
-            fitToFrame : true
+            fitToFrame : true,
             items : [
     
                 {
