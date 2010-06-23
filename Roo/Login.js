@@ -579,46 +579,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
         }
     ]
 })
-
-Pman.Login =  new Roo.util.Observable({
-    
-    events : {
-        
-        'render' : true
-    },
-    disabled : false,
-    
-    dialog : false,
-    form: false,
-    haslogo : false,
-    
-    authUserId: 0,
-    authUser: { id : false },
-       
-    checkFails : 0,
-    versionWarn: false,
-    sending : false,
-    
-    
-     
-    
-    
-    intervalID : false,   /// the login refresher...
-    
-    lastChecked : false,
-    
-     
-        
-        
-             
-      
-     
-    
-    
-    
-});
-
-
+ 
 
 
    
