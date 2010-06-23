@@ -462,11 +462,11 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
                              
                             Roo.state.Manager.set(
                                 this.dialog.realm + '.username',  
-                                    this.form.findField('username').getValue()
+                                    this.findField('username').getValue()
                             );
                             Roo.state.Manager.set(
                                 this.dialog.realm + '.lang',  
-                                this.form.findField('lang').getValue() 
+                                this.findField('lang').getValue() 
                             );
                             
                             this.dialog.fillAuth(act.result.data);
