@@ -151,6 +151,36 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
     }, 
     
     
+    logout: function()
+    {
+        window.onbeforeunload = function() { }; // false does not work for IE..
+        this.user = false;
+        
+        Roo.Ajax.request({  
+            url: this.url,
+            params: {
+                logout: 1
+            },  
+            method: 'GET',
+            failure : function() {
+                Roo.MessageBox.alert("Error", "Error logging out. - continuing anyway.", function() {
+                    document.location = baseURL + '?ts=' + Math.random();
+                });
+                
+            },
+            success : function() {
+                Pman.Login.authUserId = -1;
+                Pman.Login.checkFails =0;
+                // remove the 
+                document.location = baseURL + '?ts=' + Math.random();
+            }
+              
+              
+        }); 
+    },
+    
+    
+    
     success : function(response, opts)  // check successfull...
     {  
         this.sending = false;
@@ -254,7 +284,18 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
             this.buttons[0].form = this.form;
             this.buttons[0].dialog = dlg
             this.buttons[1].form = this.form;
-            this.buttons[1].dialog = dlg
+            this.buttons[1].dialog = dlg;
+            
+             // logoprefix comes from base config.
+            //Pman.Login.form.el.createChild({
+            //    tag: 'img', 
+            //    src: rootURL + '/Pman/'+appNameShort + '/templates/images/logo.gif',
+            //    style: 'margin-bottom: 10px;'
+            //},
+            
+        );
+        
+            
         },
         show  : function()
         {
@@ -516,62 +557,9 @@ Pman.Login =  new Roo.util.Observable({
         
         
              
-         // logoprefix comes from base config.
-        Pman.Login.form.el.createChild({
-                tag: 'img', 
-                src: rootURL + '/Pman/'+appNameShort + '/templates/images/logo.gif',
-                style: 'margin-bottom: 10px;'
-            },
-            Pman.Login.form.el.dom.firstChild 
-        );
-       
-        var vp = this.dialog.getLayout().add('center', new Roo.ContentPanel(ef, {
-            autoCreate : true,
-            //title: 'Org Details',
-            //toolbar: this.tb,
-            width: 250,
-            maxWidth: 250,
-            fitToFrame:true
-        }));
-        
-        this.layout.endUpdate();
-        
-        this.fireEvent('render', this);
-        
-        
-        
-        
-        
-    },
-  
       
      
-    logout: function()
-    {
-        window.onbeforeunload = function() { }; // false does not work for IE..
-        Pman.Login.authUserId = -1;
-        Roo.Ajax.request({  
-            url: baseURL + '/Login.html',  
-            params: {
-                logout: 1
-            },  
-            method: 'GET',
-            failure : function() {
-                Roo.MessageBox.alert("Error", "Error logging out. - continuing anyway.", function() {
-                    document.location = baseURL + '?ts=' + Math.random();
-                });
-                
-            },
-            success : function() {
-                Pman.Login.authUserId = -1;
-                Pman.Login.checkFails =0;
-                // remove the 
-                document.location = baseURL + '?ts=' + Math.random();
-            }
-              
-              
-        }); 
-    },
+    
     switchLang : function (lang) {
         if (!lang.length) {
             return;
