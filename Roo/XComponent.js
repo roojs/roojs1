@@ -339,7 +339,7 @@ Roo.apply(Roo.XComponent, {
                 });
                 m.items[0].region = 'center';
                 m.el = layoutbase.addxtype(  m.items[0] );
-                m.panel = this.el;
+                m.panel = m.el;
                 m.layout = m.panel.layout;    
                 return progressRun.defer(10, _this);
             }
@@ -347,7 +347,7 @@ Roo.apply(Roo.XComponent, {
             
             m.el = m.parent.el.addxtype(m.items[0]);
             m.fireEvent('built', m);
-            m.panel = this.el;
+            m.panel = m.el;
             m.layout = m.panel.layout;    
             progressRun.defer(10, _this); 
             
