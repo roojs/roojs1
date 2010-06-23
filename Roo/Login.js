@@ -343,13 +343,45 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
                 }
             ]
         },
-        buttons : [
+          
         
+    ],
+    buttons : [
+        {
+            xtype : 'Button',
+            xns : 'Roo',
+            label : "Forgot Password",
+            listeners : {
+                click : function() {
             
-            
-        
-    ]
-    
+                    var n = _this.form.findField('username').getValue();
+                    if (!n.length) {
+                        Roo.MessageBox.alert("Error", "Fill in your email address");
+                        return;
+                    }
+                    Roo.Ajax.request({
+                        url: baseURL + '/Login.js',  
+                        params: {
+                            passwordRequest: n
+                        },
+                        method: 'POST',  
+                        success:  function(response, opts)  {  // check successfull...
+                        
+                            var res = Pman.processResponse(response);
+                            if (!res.success) { // error!
+                               Roo.MessageBox.alert("Error" , res.errorMsg ? res.errorMsg  : "Problem Requesting Password Reset");
+                               return;
+                            }
+                            Roo.MessageBox.alert("Notice" , "Please check you email for the Password Reset message");
+                        },
+                        failure : function() {
+                            Roo.MessageBox.alert("Error" , "Problem Requesting Password Reset");
+                        }
+                        
+                    });
+                });
+            }
+         
 }
 
 Pman.Login =  new Roo.util.Observable({
