@@ -294,11 +294,12 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
     switchLang : function (lang) 
     {
         _T = typeof(_T) == 'undefined' ? false : _T;
-        if (!_T && lang != 'en') {
-            Roo.MessageBox.alert("Sorry", "Language not available yet (" + lang +')');
+          if (!_T && !lang.length) {
             return;
         }
-        if (!_T || !lang.length) {
+        
+        if (!_T && lang != 'en') {
+            Roo.MessageBox.alert("Sorry", "Language not available yet (" + lang +')');
             return;
         }
         
