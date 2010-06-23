@@ -10,6 +10,12 @@
 *    username,password, lang = for login actions.
 *    check = 1 for periodic checking that sesion is valid.
 *    passwordRequest = email request password
+* 
+* Affects: (this id="????" elements)
+*   loading  (removed) (used to indicate application is loading)
+*   loading-mask (hides) (used to hide application when it's building loading)
+*   
+* 
 * Usage: 
 *    
 * 
@@ -57,11 +63,19 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
      */
     
     method : 'POST',
-       /**
+    /**
      * @cfg {String} url
      * URL to query login data. - eg. baseURL + '/Login.php'
      */
     url : '',
+    
+    /**
+     * @property user
+     * The user data - if user.id < 0 then login will be bypassed. (used for inital setup situation.
+     * @type {Object} 
+     */
+    user : false,
+    
     
     onLoad : function() // called on page load...
     {
@@ -244,6 +258,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
         },
         show  : function()
         {
+            //this.resizeToLogo.defer(1000,this);
             //var sz = Roo.get(Pman.Login.form.el.query('img')[0]).getSize();
            //// if (!sz) {
              //   this.resizeToLogo.defer(1000,this);
@@ -253,9 +268,49 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
             var h = Ext.lib.Dom.getViewHeight() - 100;
             this.resizeTo(Math.max(350, Math.min(sz.width + 30, w)),Math.min(sz.height+200, h));
             this.center();
-    },
+            if (this.disabled) {
+                this.hide();
+                return;
+            }
+            
+            if (this.user.id < 0) { // used for inital setup situations.
+                return;
+            }
+            
+            if (this.intervalID) {
+                // remove the timer
+                window.clearInterval(this.intervalID);
+                this.intervalID = false;
+            }
+            
+            
+            if (Roo.get('loading')) {
+                Roo.get('loading').remove();
+            }
+            if (Roo.get('loading-mask')) {
+                Roo.get('loading-mask').hide();
+            }
+            
+            //incomming._node = tnode;
+            this.form.reset();
+            //this.dialog.modal = !modal;
+            //this.dialog.show();
+            this.dialog.el.unmask(); 
+            
+            
+            this.form.setValues({
+                'username' : Roo.state.Manager.get(this.realm + '.username', ''),
+                'lang' : Roo.state.Manager.get(this.realm + '.lang', 'en')
+            });
+            
+            Pman.Login.switchLang(Roo.state.Manager.get(this.realm + '.lang', ''));
+            if (this.form.findField('username').getValue().length > 0 ){
+                this.form.findField('password').focus();
+            } else {
+               this.form.findField('username').focus();
+            }
     
-           }
+        }
     },
     items : [
          {
@@ -489,58 +544,7 @@ Pman.Login =  new Roo.util.Observable({
         
     },
   
-     
-    
-    show: function (modal) 
-    {
-        if (this.disabled) {
-            return;
-        }
-        modal = modal || false;
-        if (Pman.Login.authUserId < 0) { // logout!?
-            return;
-        }
-        
-        if (Pman.Login.intervalID) {
-            // remove the timer
-            window.clearInterval(Pman.Login.intervalID);
-            Pman.Login.intervalID = false;
-        }
-        
-        this.create();
-        
-        
-        
-        if (Roo.get('loading')) {
-            Roo.get('loading').remove();
-        }
-        if (Roo.get('loading-mask')) {
-            Roo.get('loading-mask').hide();
-        }
-        
-        //incomming._node = tnode;
-        this.form.reset();
-        this.dialog.modal = !modal;
-        this.dialog.show();
-        this.dialog.el.unmask(); 
-        this.resizeToLogo.defer(1000,this);
-        
-         
-        this.form.setValues({
-            'username' : Roo.state.Manager.get('Pman.Login.username.'+appNameShort, ''),
-            'lang' : Roo.state.Manager.get('Pman.Login.lang.'+appNameShort, 'en')
-        });
-        Pman.Login.switchLang(Roo.state.Manager.get('Pman.Login.lang.'+appNameShort, ''));
-        if (this.form.findField('username').getValue().length > 0 ){
-            this.form.findField('password').focus();
-        } else {
-           this.form.findField('username').focus();
-        }
-        
-        
-    },
- 
-    
+      
      
     logout: function()
     {
