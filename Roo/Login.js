@@ -535,7 +535,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
                                 return;
                             }
                             Roo.Ajax.request({
-                                url: this.dialog.url
+                                url: this.dialog.url,
                                 params: {
                                     passwordRequest: n
                                 },
