@@ -66,14 +66,17 @@ Roo.grid.Grid = function(container, config){
     if (this.selModel) {
         this.selModel = Roo.factory(this.selModel, Roo.grid);
         this.sm = this.selModel;
+        this.sm.xmodule = this.xmodule || false;
     }
     if (typeof(this.colModel.config) == 'undefined') {
         this.colModel = new Roo.grid.ColumnModel(this.colModel);
         this.cm = this.colModel;
+        this.cm.xmodule = this.xmodule || false;
     }
     if (this.dataSource) {
         this.dataSource= Roo.factory(this.dataSource, Roo.data);
         this.ds = this.dataSource;
+        this.ds.xmodule = this.xmodule || false;
         
     }
     
