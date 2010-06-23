@@ -325,9 +325,19 @@ Roo.apply(Roo.XComponent, {
             
             if (!m.parent) {
                 // it's a top level one..
-                
-                
-                
+                var layoutbase = new Ext.BorderLayout(document.body, {
+               
+                    center: {
+                         titlebar: false,
+                         autoScroll:false,
+                         closeOnTab: true,
+                         tabPosition: 'top',
+                         //resizeTabs: true,
+                         alwaysShowTabs: true,
+                         minTabWidth: 140
+                    }
+                });
+                layoutbase.addxtype(  m.items[0] );
             }
             
             
