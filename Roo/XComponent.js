@@ -111,7 +111,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
     
     /**
      * setx 
-     * Set's the xowner value on all the children
+     * Set's the xowner value on all the children and some special properties..
      * basically var _this= this.xmodule; can be used in any component..
      * to refer to it's own xmodule
      * @param xtype element.
