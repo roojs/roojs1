@@ -52,7 +52,7 @@ Roo.XComponent = function(cfg) {
     });
 
     Roo.XComponent.register(this);
-    this.modules = [];
+    this.modules = false;
     this.el = false; // where the layout goes..
     
     
