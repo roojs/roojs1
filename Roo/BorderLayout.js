@@ -438,6 +438,7 @@ layout.addxtype({
                 var el = this.el.createChild();
                 // create the grid first...
                 var grid = new Roo.grid[cfg.grid.xtype](el, cfg.grid);
+                grid.xmodule = this.xmodule || false;
                 delete cfg.grid;
                 if (region == 'center' && this.active ) {
                     cfg.background = false;
