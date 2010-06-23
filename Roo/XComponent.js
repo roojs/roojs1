@@ -128,7 +128,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
         }, this);
         Roo.each(oprops, function (p) {
             if (obj[p]) {
-                this.setX(o);
+                this.setX(obj[p]);
             }
         },this);
         
