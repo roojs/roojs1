@@ -215,7 +215,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
         this.fillAuth(res.data);
         
         this.checkFails =0;
-        Pman.onload();
+        
     },
     
     
