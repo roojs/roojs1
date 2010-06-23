@@ -10,7 +10,8 @@
  * Document and interface builder class..
  * 
  * MyApp = new Roo.Document({
- *     loadingIndicator : 'loading' 
+ *     loadingIndicator : 'loading',
+ *     listeners :  Roo.Login.onLoad();
  * });
  * 
  * MyApp.on('beforeload', function() {
@@ -53,65 +54,27 @@ Roo.extend(Roo.Document, Roo.util.Observable, {
      */
     loadingIndicator : false,
     
-    
-    
-    onReady : 
-    listeners : {
-        'ready' : function()
-        {
-            // kludge to fix firebug debugger
-            if (typeof(console) == 'undefined') {
-                console = { log : function() {  } };
-            }
-            
-            // remove loader..
-            if (Roo.get('loading')) {
-                Roo.get('loading').remove();
-            }
-            
-            Ext.state.Manager.setProvider(new Ext.state.CookieProvider());
-            
-            // link errors...
-            
-            if (AppLinkError.length) {
-                Ext.MessageBox.alert("Error", AppLinkError, function() {
-                    Pman.Login.onLoad();
-                });
-                return;
-            }
-            
-            
-            // reset password!!!!
-            if (showNewPass.length) {
-                Pman.PasswordChange.show(  { passwordReset : showNewPass },
-                    function(data) {
-                        // fail and success we do  a load...
-                        Pman.Login.onLoad();
-                    }
-                );
-                return;
-            }
-             
-            Pman.Login.onLoad();
-            
-        },
-        'load' : function()
-        {
-            if (Roo.get('loading-logo-tile')) {
-                Roo.get('loading-logo-tile').remove();
-            }
-            if (Roo.get('loading-logo-tile-top')) {
-                Roo.get('loading-logo-tile-top').remove();
-            }
-            if (Roo.get('loading-logo-bottom')) {
-                Roo.get('loading-logo-bottom').remove();
-            }
-            if (Roo.get('loading-logo-center')) {
-                Roo.get('loading-logo-center').remove();
-            }
-        }   
+      
+    // protected - on Ready handler.
+    onReady :   function()
+    {
+        // kludge to fix firebug debugger
+        if (typeof(console) == 'undefined') {
+            console = { log : function() {  } };
+        }
         
+    
+        // init cookies..
+        Ext.state.Manager.setProvider(new Ext.state.CookieProvider());
+            
+        // link errors...
+        
+      
+       
+            
     },
+     
+},
    
     
     
