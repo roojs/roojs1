@@ -37,10 +37,24 @@
  */
 Roo.XComponent = function(cfg) {
     Roo.apply(this, cfg);
+    this.addEvents({ 
+        /**
+	     * @event built
+	     * Fires when this the componnt is built
+	     * @param {Button} this
+	     * @param {EventObject} e The click event
+	     */
+        'built' : true
+    });
+
     Roo.XComponent.register(this);
     
 }
-Roo.extend(Roo.XComponent, Roo.util.Observable);
+Roo.extend(Roo.XComponent, Roo.util.Observable {
+    panel : false,
+    layout : false,
+    
+});
 
 Roo.apply(Roo.XComponent, 
     /**
@@ -125,18 +139,19 @@ Roo.apply(Roo.XComponent,
         var modules = this.modules;
         this.modules = false;
         
-     
         Roo.each(modules , function (obj)
         {
-            
+            if (!obj.parent) {
+                this.topModule = obj;
+                return;
+            }
             obj.parent = toObject(obj.parent);
-             
             if (!obj.parent.modules) {
                 obj.parent.modules = new Roo.util.MixedCollection(false, function(o) { return o.order + '' });
             }
             
             obj.parent.modules.add(obj);
-        }
+        }, this);
     }
     
     
@@ -147,7 +162,7 @@ Roo.apply(Roo.XComponent,
      * 
      */ 
    
-    build : function(parent, onCompleteFn) 
+    build : function(onCompleteFn) 
     {
         var onComplete = function () {
             if (onCompleteFn) {
