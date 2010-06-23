@@ -120,14 +120,14 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
     {
         obj.xmodule = this;
         var aprops = [ 'items', 'buttons' , 'colModel']];
-        var oprops = [ 'grid', 'dataSource' ];
+        var oprops = [ 'grid', 'dataSource', 'proxy',  ];
         Roo.each(aprops, function (p) {
             Roo.each(obj[p] || [], function (o) {
                 this.setX(o);
             }, this);
         }, this);
         Roo.each(oprops, function (p) {
-            if (obj[p]) {
+            if (typeof(obj[p]) == 'object') {
                 this.setX(obj[p]);
             }
         },this);
