@@ -233,7 +233,7 @@ Roo.apply(Roo.XComponent, {
         }
        
         // make a flat list in order of modules to build.
-        var ds = [ this.topModule ];
+        var mods = [ this.topModule ];
         
         
         // add modules to their parents..
