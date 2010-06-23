@@ -360,7 +360,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
         
         show  : function(dlg)
         {
-            console.log(this);
+            //console.log(this);
             this.form = this.layout.getRegion('center').activePanel.form;
             this.form.dialog = dlg;
             this.buttons[0].form = this.form;
@@ -549,7 +549,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
             text : "Forgot Password",
             listeners : {
                 click : function() {
-                    console.log(this);
+                    //console.log(this);
                     var n = this.form.findField('username').getValue();
                     if (!n.length) {
                         Roo.MessageBox.alert("Error", "Fill in your email address");
