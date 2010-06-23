@@ -89,7 +89,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
     
     check: function(cfg) // called every so often to refresh cookie etc..
     {
-        if (again) { // could be undefined..
+        if (cfg.again) { // could be undefined..
             this.checkFails++;
         } else {
             this.checkFails = 0;
@@ -104,7 +104,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
                 return;
             }
             
-            _this.check.defer(10000, _this, [ true ]); // check in 10 secs.
+            _this.check.defer(10000, _this, [ again: true ]); // check in 10 secs.
             return;
         }
         this.sending = true;
