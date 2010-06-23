@@ -606,7 +606,7 @@ Pman.Login =  new Roo.util.Observable({
         
     }
     
-    */
+   
     /**
      * Depreciated = use Pman.I18n
      */
