@@ -601,7 +601,7 @@ Pman.Login =  new Roo.util.Observable({
             this.dialog.buttons[0].setText("Forgot Password");
             this.dialog.buttons[1].setText("Login");
         }
-        */
+        
         
         
     }
