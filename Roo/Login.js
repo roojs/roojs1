@@ -560,7 +560,7 @@ Pman.Login =  new Roo.util.Observable({
         
              
       
-     
+          /* this will not work ...
     
     switchLang : function (lang) 
     {
@@ -586,7 +586,7 @@ Pman.Login =  new Roo.util.Observable({
         Roo.apply(_T, _T[lang]);
         // just need to set the text values for everything...
         var _this = this;
-        /* this will not work ...
+   
         if (this.form) { 
             
                
@@ -606,7 +606,7 @@ Pman.Login =  new Roo.util.Observable({
         
     }
     
-    
+    */
     /**
      * Depreciated = use Pman.I18n
      */
