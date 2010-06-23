@@ -360,6 +360,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
         
         show  : function(dlg)
         {
+            console.log(this);
             this.form = this.items[0].form;
             this.form.dialog = dlg;
             this.buttons[0].form = this.form;
