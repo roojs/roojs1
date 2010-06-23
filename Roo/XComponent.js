@@ -255,7 +255,7 @@ Roo.apply(Roo.XComponent, {
         }
         this.topModule.modules.keySort('ASC',  cmp );
         this.topModule.modules.each(addMod);
-    }
+    },
     
      /**
      * Build the registered modules.
