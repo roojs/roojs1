@@ -173,7 +173,7 @@ Roo.apply(Roo.XComponent, {
         }
         var ar = str.split('.');
         var rt, o;
-        rt = ar.unshift();
+        rt = ar.shift();
             /** eval:var:o */
         eval('if (typeof ' + rt + ' == "undefined"){ o = false;} o = ' + rt + ';');
         if (o === false) {
@@ -298,7 +298,7 @@ Roo.apply(Roo.XComponent, {
                 return;    
             }
             
-            var m = mods.unshift();
+            var m = mods.shift();
             
             if (typeof(m) == 'function') { // not sure if this is supported any more..
                 m.call(this);
