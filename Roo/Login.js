@@ -83,6 +83,12 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
      * @type {Number} 
      */
     checkFails : 0,
+      /**
+     * @property intervalID
+     * The window interval that does the constant login checking.
+     * @type {Number} 
+     */
+    intervalID 
     
     
     onLoad : function() // called on page load...
@@ -271,11 +277,11 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
     
     startAuthCheck : function() // starter for timeout checking..
     {
-        if (Pman.Login.intervalID) { // timer already in place...
+        if (this.intervalID) { // timer already in place...
             return false;
         }
         
-        Pman.Login.intervalID =  window.setInterval(function() {
+        this.intervalID =  window.setInterval(function() {
                   Pman.Login.check(false);
                 }, 120000); // every 120 secs = 2mins..
         
