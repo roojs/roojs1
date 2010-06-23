@@ -65,6 +65,14 @@ Roo.apply(Roo.XComponent,
     buildCompleted : false,
      
     /**
+     * @property  topModule
+     * the upper most module - uses document.element as it's constructor.
+     * @type Array
+     */
+     
+    topModule  : false,
+      
+    /**
      * @property  modules
      * array of modules to be created by registration system.
      * @type Array
@@ -72,8 +80,6 @@ Roo.apply(Roo.XComponent,
     
     modules : [],
       
-   
-    
     
     /**
      * Register components to be built later.
@@ -141,6 +147,8 @@ Roo.apply(Roo.XComponent,
         
         Roo.each(modules , function (obj)
         {
+            obj.parent = this.toObject(obj.parent);
+            
             if (!obj.parent) {
                 this.topModule = obj;
                 return;
