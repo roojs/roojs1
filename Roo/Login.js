@@ -124,10 +124,28 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
             method: this.method,
             success:  cfg.success || this.success,
             failure : cfg.failure || this.failure,
-            scope : this
+            scope : this,
+            callCfg : cfg
               
         });  
     }, 
+    
+    failure : function (response, opts) // called if login 'check' fails.. (causes re-check)
+    {
+        this.authUser = -1;
+        this.sending = false;
+        var res = Pman.processResponse(response);
+        //console.log(res);
+        if ( Pman.Login.checkFails > 2) {
+            Pman.Preview.disable();
+            Roo.MessageBox.alert("Error", res.errorMsg ? res.errorMsg : 
+                "Error getting authentication status. - try reloading"); 
+            return;
+        }
+        
+        this.check.defer(1000, this, [ opts.callCfg ]);
+        return;  
+    },
     
     
     
@@ -157,23 +175,6 @@ Pman.Login =  new Roo.util.Observable({
     versionWarn: false,
     sending : false,
     
-    
-    failure : function (response, opts) // called if login 'check' fails.. (causes re-check)
-    {
-        this.authUser = -1;
-        this.sending = false;
-        var res = Pman.processResponse(response);
-        //console.log(res);
-        if ( Pman.Login.checkFails > 2) {
-            Pman.Preview.disable();
-            Roo.MessageBox.alert("Error", res.errorMsg ? res.errorMsg : 
-                "Error getting authentication status. - try reloading"); 
-            return;
-        }
-            
-        Pman.Login.check.defer(1000, Pman.Login, [ true ]);
-        return;  
-    },
     
     
     success : function(response, opts)  // check successfull...
