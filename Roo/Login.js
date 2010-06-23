@@ -156,6 +156,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
     {
         window.onbeforeunload = function() { }; // false does not work for IE..
         this.user = false;
+        var _this = this;
         
         Roo.Ajax.request({  
             url: this.url,
@@ -170,10 +171,10 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
                 
             },
             success : function() {
-                Pman.Login.authUserId = -1;
-                Pman.Login.checkFails =0;
-                // remove the 
-                document.location = baseURL + '?ts=' + Math.random();
+                _this.user = false;
+                this.checkFails =0;
+                // fixme..
+                document.location = document.location.toString() + '?ts=' + Math.random();
             }
               
               
