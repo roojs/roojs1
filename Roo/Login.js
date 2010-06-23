@@ -562,10 +562,16 @@ Pman.Login =  new Roo.util.Observable({
       
      
     
-    switchLang : function (lang) {
-        if (!lang.length) {
+    switchLang : function (lang) 
+    {
+        if (!_T && lang != 'en') {
+            Roo.MessageBox.alert("Sorry", "Language not available yet (" + lang +')');
             return;
         }
+        if (!_T || !lang.length) {
+            return;
+        }
+        
         if (typeof(_T.en) == 'undefined') {
             _T.en = {};
             Roo.apply(_T.en, _T);
@@ -603,33 +609,13 @@ Pman.Login =  new Roo.util.Observable({
         }
         
         
-    },
+    }
     
-    inGroup : function(g)
-    {
-        return this.authUser && this.authUser.groups && 
-            this.authUser.groups.indexOf(g) > -1;
-    },
-    isOwner : function()
-    {
-        return this.authUser && this.authUser.company_id_comptype && 
-            this.authUser.company_id_comptype == 'OWNER';
-    },
     
     /**
      * Depreciated = use Pman.I18n
      */
     
-    i18nList: function (type, codes)
-    {
-        
-        return Pman.I18n.listToNames(type, codes);
-    },
-    i18n: function(type, code) 
-    {
-        return Pman.I18n.toName(type, code);
-        
-    }
     
     
 });
