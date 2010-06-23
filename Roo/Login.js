@@ -260,10 +260,10 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
         this.fireEvent('refreshed', au);
         //Pman.Tab.FaxQueue.newMaxId(au.faxMax);
         //Pman.Tab.FaxTab.setTitle(au.faxNumPending);
-        
+        au.lang = au.lang || 'en';
         //this.switchLang(Roo.state.Manager.get('Pman.Login.lang', 'en'));
         Roo.state.Manager.set( this.realm + 'lang' , au.lang);
-        this.switchLang(au.lang || 'en');
+        this.switchLang(au.lang );
         
      
         // open system... - -on setyp..
