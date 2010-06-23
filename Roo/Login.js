@@ -88,7 +88,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
      * The window interval that does the constant login checking.
      * @type {Number} 
      */
-    intervalID 
+    intervalID : 0,
     
     
     onLoad : function() // called on page load...
