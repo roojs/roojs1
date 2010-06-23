@@ -345,6 +345,7 @@ Roo.apply(Roo.XComponent, {
             }
             
             
+            m.items[0].region = m.items[0].region || m.region;
             m.el = m.parent.el.addxtype(m.items[0]);
             m.fireEvent('built', m);
             m.panel = m.el;
