@@ -294,7 +294,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
     switchLang : function (lang) 
     {
         _T = typeof(_T) == 'undefined' ? false : _T;
-          if (!_T && !lang.length) {
+          if (!_T || !lang.length) {
             return;
         }
         
