@@ -316,9 +316,9 @@ Roo.apply(Roo.XComponent,
                 return progressRun(); // we do not update the display!
             }
             
-            this.el = m.parent.el.addxtype(m.items[0]);
-            this.panel = this.el;
-                 
+            m.el = m.parent.el.addxtype(m.items[0]);
+            m.panel = this.el;
+            m.layout = m.panel.layout;    
              
             
         }
