@@ -12,7 +12,7 @@
 /**
  * @class Roo.Component
  * @extends Roo.util.Observable
- * Base class for all major Ext components.  All subclasses of Component can automatically participate in the standard
+ * Base class for all major Roo components.  All subclasses of Component can automatically participate in the standard
  * Ext component lifecycle of creation, rendering and destruction.  They also have automatic support for basic hide/show
  * and enable/disable behavior.  Component allows any subclass to be lazy-rendered into any {@link Roo.Container} and
  * to be automatically registered with the {@link Roo.ComponentMgr} so that it can be referenced at any time via {@link Roo.getCmp}.
