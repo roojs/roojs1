@@ -48,7 +48,10 @@ Roo.XComponent = function(cfg) {
     });
 
     Roo.XComponent.register(this);
-    this.modules = [],
+    this.modules = [];
+     
+    
+    
 }
 Roo.extend(Roo.XComponent, Roo.util.Observable {
     panel : false,
@@ -172,12 +175,12 @@ Roo.apply(Roo.XComponent,
     build : function(onCompleteFn) 
     {
         
-        
+        this.preBuild();
         var onComplete = function () {
             if (onCompleteFn) {
                 onCompleteFn.call(this);
             }
-            Roo.MessageBox.hide();
+            
             
         
             
@@ -234,6 +237,7 @@ Roo.apply(Roo.XComponent,
         var progressRun = function() {
             n++;
             if (n >= mods.length) {
+                Roo.MessageBox.hide();
                 _this.topModule.fireEvent('built', _this.topModule);
                 return;
             }
