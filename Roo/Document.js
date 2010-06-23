@@ -62,7 +62,12 @@ Roo.extend(Roo.XComponent, Roo.util.Observable {
 
     el  : false,
     
-    
+    /**
+     * @property el
+     * for BC  - use el in new code
+     * @type {Roo.Layout}
+     */
+
     panel : false,
     
     /**
