@@ -211,7 +211,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
         
         
     },
-    autoCreated: true,
+     
     title: "Login",
     modal: true,
     width:  350,
@@ -224,7 +224,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
     draggable: false,
     collapsible: false,
     resizable: false,
-    center: {
+    center: {  // needed??
         autoScroll:false,
         titlebar: false,
        // tabPosition: 'top',
@@ -244,165 +244,174 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
         }
     },
     items : [
-        {
+         {
        
-            xtype : 'Form',
-            xns : Roo.form,
-            labelWidth: 100,
-            
-            listeners : {
-                actionfailed : function(f, act) {
-                    // form can return { errors: .... }
-                        
-                    //act.result.errors // invalid form element list...
-                    //act.result.errorMsg// invalid form element list...
-                    
-                    this.dialog.el.unmask();
-                    Roo.MessageBox.alert("Error", act.result.errorMsg ? act.result.errorMsg : 
-                                "Login failed - communication error - try again.");
-                              
-                },
-                actioncomplete: function(re, act) {
-                     
-                    Roo.state.Manager.set(
-                        this.dialog.realm + '.' + this.dialog.params.username,  
-                            this.form.findField(this.dialog.params.username).getValue() 
-                    );
-                    Roo.state.Manager.set(
-                        this.dialog.realm + '.lang',  
-                        Pman.Login.form.findField('lang').getValue() 
-                    );
-                    
-                    this.dialog.fillAuth(act.result.data);
-                      
-                    this.dialog.hide();
-                    
-                    if (Roo.get('loading-mask')) {
-                        Roo.get('loading-mask').show();
-                    }
-                    Roo.XComponent.build();
-                    
-                     
-                    
-                }
-            },
+            xtype : 'ContentPanel',
+            xns : Roo,
+            region: 'center',
+            fitToFrame : true
             items : [
+    
                 {
-                    xtype : 'TextField',
+               
+                    xtype : 'Form',
                     xns : Roo.form,
-                    fieldLabel: "Email Address",
-                    name: 'username',
-                    width:200,
-                    autoCreate : {tag: "input", type: "text", size: "20"}
-                },
-                {
-                    xtype : 'TextField',
-                    xns : Roo.form,
-                    fieldLabel: "Password",
-                    inputType: 'password',
-                    name: 'password',
-                    width:200,
-                    autoCreate : {tag: "input", type: "text", size: "20"},
+                    labelWidth: 100,
+                    style : 'margin : 10px;',
                     listeners : {
-                        specialkey : function(e,ev) {
-                            if (ev.keyCode == 13) {
-                                this.form.dialog.el.mask("Logging in");
-                                this.form.doAction('submit', {
-                                    url: this.form.dialog.url,
-                                    method: this.form.dialog.method,
-                                });
+                        actionfailed : function(f, act) {
+                            // form can return { errors: .... }
+                                
+                            //act.result.errors // invalid form element list...
+                            //act.result.errorMsg// invalid form element list...
+                            
+                            this.dialog.el.unmask();
+                            Roo.MessageBox.alert("Error", act.result.errorMsg ? act.result.errorMsg : 
+                                        "Login failed - communication error - try again.");
+                                      
+                        },
+                        actioncomplete: function(re, act) {
+                             
+                            Roo.state.Manager.set(
+                                this.dialog.realm + '.' + this.dialog.params.username,  
+                                    this.form.findField(this.dialog.params.username).getValue() 
+                            );
+                            Roo.state.Manager.set(
+                                this.dialog.realm + '.lang',  
+                                Pman.Login.form.findField('lang').getValue() 
+                            );
+                            
+                            this.dialog.fillAuth(act.result.data);
+                              
+                            this.dialog.hide();
+                            
+                            if (Roo.get('loading-mask')) {
+                                Roo.get('loading-mask').show();
                             }
+                            Roo.XComponent.build();
+                            
+                             
+                            
                         }
-                    }  
-                },
-                {
-                    xtype : 'ComboBox',
-                    xns : Roo.form,
-                    fieldLabel: "Language",
-                    name : 'langdisp',
-                    store: {
-                        xtype : 'SimpleStore',
-                        fields: ['lang', 'ldisp'],
-                        data : [
-                            [ 'en', 'English' ],
-                            [ 'zh_HK' , '\u7E41\u4E2D' ],
-                            [ 'zh_CN', '\u7C21\u4E2D' ]
-                        ]
                     },
-                    
-                    valueField : 'lang',
-                    hiddenName:  'lang',
-                    width: 200,
-                    displayField:'ldisp',
-                    typeAhead: false,
-                    editable: false,
-                    mode: 'local',
-                    triggerAction: 'all',
-                    emptyText:'Select a Language...',
-                    selectOnFocus:true,
+                    items : [
+                        {
+                            xtype : 'TextField',
+                            xns : Roo.form,
+                            fieldLabel: "Email Address",
+                            name: 'username',
+                            width:200,
+                            autoCreate : {tag: "input", type: "text", size: "20"}
+                        },
+                        {
+                            xtype : 'TextField',
+                            xns : Roo.form,
+                            fieldLabel: "Password",
+                            inputType: 'password',
+                            name: 'password',
+                            width:200,
+                            autoCreate : {tag: "input", type: "text", size: "20"},
+                            listeners : {
+                                specialkey : function(e,ev) {
+                                    if (ev.keyCode == 13) {
+                                        this.form.dialog.el.mask("Logging in");
+                                        this.form.doAction('submit', {
+                                            url: this.form.dialog.url,
+                                            method: this.form.dialog.method,
+                                        });
+                                    }
+                                }
+                            }  
+                        },
+                        {
+                            xtype : 'ComboBox',
+                            xns : Roo.form,
+                            fieldLabel: "Language",
+                            name : 'langdisp',
+                            store: {
+                                xtype : 'SimpleStore',
+                                fields: ['lang', 'ldisp'],
+                                data : [
+                                    [ 'en', 'English' ],
+                                    [ 'zh_HK' , '\u7E41\u4E2D' ],
+                                    [ 'zh_CN', '\u7C21\u4E2D' ]
+                                ]
+                            },
+                            
+                            valueField : 'lang',
+                            hiddenName:  'lang',
+                            width: 200,
+                            displayField:'ldisp',
+                            typeAhead: false,
+                            editable: false,
+                            mode: 'local',
+                            triggerAction: 'all',
+                            emptyText:'Select a Language...',
+                            selectOnFocus:true,
+                            listeners : {
+                                select :  function(cb, rec, ix) {
+                                    this.form.switchLang(rec.data.lang);
+                                }
+                            }
+                        
+                        }
+                    ]
+                },
+                  
+                
+            ],
+            buttons : [
+                {
+                    xtype : 'Button',
+                    xns : 'Roo',
+                    label : "Forgot Password",
                     listeners : {
-                        select :  function(cb, rec, ix) {
-                            this.form.switchLang(rec.data.lang);
+                        click : function() {
+                    
+                            var n = this.form.findField('username').getValue();
+                            if (!n.length) {
+                                Roo.MessageBox.alert("Error", "Fill in your email address");
+                                return;
+                            }
+                            Roo.Ajax.request({
+                                url: this.dialog.url
+                                params: {
+                                    passwordRequest: n
+                                },
+                                method: this.dialog.method,
+                                success:  function(response, opts)  {  // check successfull...
+                                
+                                    var res = Pman.processResponse(response);
+                                    if (!res.success) { // error!
+                                       Roo.MessageBox.alert("Error" ,
+                                            res.errorMsg ? res.errorMsg  : "Problem Requesting Password Reset");
+                                       return;
+                                    }
+                                    Roo.MessageBox.alert("Notice" ,
+                                        "Please check you email for the Password Reset message");
+                                },
+                                failure : function() {
+                                    Roo.MessageBox.alert("Error" , "Problem Requesting Password Reset");
+                                }
+                                
+                            });
                         }
                     }
-                
+                },
+                {
+                    xtype : 'Button',
+                    xns : 'Roo',
+                    label : "Login",
+                    {
+                            
+                        this.dialog.el.mask("Logging in");
+                        this.form.doAction('submit', {
+                                url: this.dialog.url
+                                method: this.dialog.method
+                        });
+                    }
                 }
             ]
-        },
-          
-        
-    ],
-    buttons : [
-        {
-            xtype : 'Button',
-            xns : 'Roo',
-            label : "Forgot Password",
-            listeners : {
-                click : function() {
-            
-                    var n = this.form.findField('username').getValue();
-                    if (!n.length) {
-                        Roo.MessageBox.alert("Error", "Fill in your email address");
-                        return;
-                    }
-                    Roo.Ajax.request({
-                        url: this.dialog.url
-                        params: {
-                            passwordRequest: n
-                        },
-                        method: this.dialog.method,
-                        success:  function(response, opts)  {  // check successfull...
-                        
-                            var res = Pman.processResponse(response);
-                            if (!res.success) { // error!
-                               Roo.MessageBox.alert("Error" ,
-                                    res.errorMsg ? res.errorMsg  : "Problem Requesting Password Reset");
-                               return;
-                            }
-                            Roo.MessageBox.alert("Notice" ,
-                                "Please check you email for the Password Reset message");
-                        },
-                        failure : function() {
-                            Roo.MessageBox.alert("Error" , "Problem Requesting Password Reset");
-                        }
-                        
-                    });
-                });
-            }
-        },
-        {
-            xtype : 'Button',
-            xns : 'Roo',
-            label : "Login",
-            {
-                    
-                this.dialog.el.mask("Logging in");
-                this.form.doAction('submit', {
-                        url: this.dialog.url
-                        method: this.dialog.method
-                });
-        });
-    ]
 })
 
 Pman.Login =  new Roo.util.Observable({
@@ -435,102 +444,7 @@ Pman.Login =  new Roo.util.Observable({
      
         
         
-        
-        this.dialog.addButton("Forgot Password", function()
-        {
-            
-            var n = _this.form.findField('username').getValue();
-            if (!n.length) {
-                Roo.MessageBox.alert("Error", "Fill in your email address");
-                return;
-            }
-            Roo.Ajax.request({
-                url: baseURL + '/Login.js',  
-                params: {
-                    passwordRequest: n
-                },
-                method: 'POST',  
-                success:  function(response, opts)  {  // check successfull...
-                
-                    var res = Pman.processResponse(response);
-                    if (!res.success) { // error!
-                       Roo.MessageBox.alert("Error" , res.errorMsg ? res.errorMsg  : "Problem Requesting Password Reset");
-                       return;
-                    }
-                    Roo.MessageBox.alert("Notice" , "Please check you email for the Password Reset message");
-                },
-                failure : function() {
-                    Roo.MessageBox.alert("Error" , "Problem Requesting Password Reset");
-                }
-                
-            });
-        });
-        
-        this.dialog.addButton("Login", function()
-        {
-            Pman.Login.dialog.el.mask("Logging in");
-            Pman.Login.form.doAction('submit', {
-                    url: baseURL + '/Login',
-                    method: 'POST'
-            });
-        });
-        this.layout = this.dialog.getLayout();
-        this.layout.beginUpdate();
-        
-        //layout.add('center', new Roo.ContentPanel('center', {title: 'The First Tab'}));
-        // generate some other tabs
-        this.form = new Roo.form.Form({
-            labelWidth: 100 ,
-            
-            listeners : {
-                actionfailed : function(f, act) {
-                    // form can return { errors: .... }
-                        
-                    //act.result.errors // invalid form element list...
-                    //act.result.errorMsg// invalid form element list...
-                    
-                    Pman.Login.dialog.el.unmask();
-                    Roo.MessageBox.alert("Error", act.result.errorMsg ? act.result.errorMsg : 
-                                "Login failed - communication error - try again.");
-                              
-                },
-                actioncomplete: function(re, act) {
-                     
-                    Roo.state.Manager.set('Pman.Login.username.'+appNameShort,  Pman.Login.form.findField('username').getValue() );
-                    Roo.state.Manager.set('Pman.Login.lang.'+appNameShort,  Pman.Login.form.findField('lang').getValue() );
-                    Pman.Login.fillAuth(act.result.data);
-                      
-                    Pman.Login.dialog.hide();
-                    if (Roo.get('loading-mask')) {
-                        //Roo.get('loading').show();
-                        Roo.get('loading-mask').show();
-                    }
-                   
-                    Pman.onload();
-                    
-                     
-                    
-                }
-            }
-        
-            
-            
              
-        });
-          
-        
-        
-        this.form.add( 
-       
-           
-
-        );
-         
-        
-        var ef = this.dialog.getLayout().getEl().createChild({tag: 'div'});
-        ef.dom.style.margin = 10;
-          
-        this.form.render(ef.dom);
          // logoprefix comes from base config.
         Pman.Login.form.el.createChild({
                 tag: 'img', 
