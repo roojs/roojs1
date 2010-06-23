@@ -6,16 +6,16 @@
 *
 * Fires XComponent builder on success...
 * 
+* Sends 
+*    username,password, lang = for login actions.
+*    check = for periodic checking that sesion is valid.
+* 
 * Usage: 
 *    
 * 
 * Myapp.login = Roo.Login({
     url: xxxx,
-    params : {
-        username  : 'email',
-        password' : 'password',
-        check : 'getAuthUser'
-    },
+  
     realm : 'Myapp', 
     
     
