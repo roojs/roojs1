@@ -358,7 +358,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
     } ,
     listeners : {
         
-        show  : function()
+        show  : function(dlg)
         {
             this.form = this.items[0];
             this.form.dialog = dlg;
