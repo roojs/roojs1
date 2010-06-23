@@ -317,7 +317,7 @@ Roo.apply(Roo.XComponent, {
             
             var disabled = (typeof(m.module.disabled) == 'function') ?
                 m.module.disabled.call(m.module.disabled) : m.module.disabled;    
-            }
+            
             
             if (disabled) {
                 return progressRun(); // we do not update the display!
