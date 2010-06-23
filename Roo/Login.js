@@ -38,10 +38,16 @@ Roo.Login = function(cfg)
 }
 Roo.extend(Roo.Login, Roo.LayoutDialog, {
     
+    /**
+     * @cfg {String} method
+     * Method used to query for login details.
+     */
     
-    method : 'GET',
-    
-    
+    method : 'POST',
+       /**
+     * @cfg {String} url
+     * URL to query login data. - eg. baseURL + '/Login.js'
+     */
     url : '',
     
     onLoad : function() // called on page load...
