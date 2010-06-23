@@ -233,7 +233,7 @@ Roo.apply(Roo.XComponent, {
         }
        
         // make a flat list in order of modules to build.
-        var mods = [ this.topModule ];
+        var ds = [ this.topModule ];
         
         
         // add modules to their parents..
@@ -290,7 +290,7 @@ Roo.apply(Roo.XComponent, {
            modal: false
           
         });
-        var total = mods.length();
+        var total = mods.length;
         
         var _this = this;
         var progressRun = function() {
