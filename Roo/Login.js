@@ -33,6 +33,10 @@
  
 Roo.Login = function(cfg)
 {
+    this.addEvents({
+        'refreshed' : true,
+    });
+    
     Roo.apply(this,cfg);
     Roo.each(this.items, function(e) {
         this.addxtype(e);
@@ -175,7 +179,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
         this.authUserId = au.id;
         this.authUser = au;
         this.lastChecked = new Date();
-        Pman.fireEvent('authrefreshed', au);
+        this.fireEvent('refreshed', au);
         //Pman.Tab.FaxQueue.newMaxId(au.faxMax);
         //Pman.Tab.FaxTab.setTitle(au.faxNumPending);
         
