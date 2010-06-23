@@ -540,7 +540,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
                 
             ]
         }
-    ]
+    ],
     buttons : [
         {
             xtype : 'Button',
