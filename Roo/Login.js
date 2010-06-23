@@ -585,19 +585,13 @@ Pman.Login =  new Roo.util.Observable({
         
         Roo.apply(_T, _T[lang]);
         // just need to set the text values for everything...
-        if (this.form) {
+        var _this = this;
+        /* this will not work ...
+        if (this.form) { 
             
                
             function formLabel(name, val) {
-                
-                var lbl = Pman.Login.form.findField( name ).el.dom.parentNode.parentNode;
-                if (lbl.getElementsByTagName('label').length) {
-                    lbl = lbl.getElementsByTagName('label')[0];
-                } else  {
-                    lbl = lbl.parentNode.getElementsByTagName('label')[0];
-                }
-                   
-                lbl.innerHTML = val;
+                _this.form.findField(name).fieldEl.child('label').dom.innerHTML  = val;
             }
             
             formLabel('password', "Password"+':');
@@ -607,6 +601,7 @@ Pman.Login =  new Roo.util.Observable({
             this.dialog.buttons[0].setText("Forgot Password");
             this.dialog.buttons[1].setText("Login");
         }
+        */
         
         
     }
