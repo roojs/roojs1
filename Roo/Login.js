@@ -432,6 +432,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
             xns : Roo,
             region: 'center',
             fitToFrame : true,
+            style : 'margin : 10px;',
             items : [
     
                 {
@@ -439,7 +440,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
                     xtype : 'Form',
                     xns : Roo.form,
                     labelWidth: 100,
-                    style : 'margin : 10px;',
+                   
                     listeners : {
                         actionfailed : function(f, act) {
                             // form can return { errors: .... }
