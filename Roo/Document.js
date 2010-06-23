@@ -291,7 +291,7 @@ Roo.apply(Roo.XComponent,
         var progressRun = function() {
             if (mods.length) {
                 Roo.MessageBox.hide();
-                _this.topModule.fireEvent('built', _this.topModule);
+                _this.topModule.fireEvent('buildcomplete', _this.topModule);
                 return;    
             }
             
