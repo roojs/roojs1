@@ -50,7 +50,11 @@ Roo.Login = function(cfg)
         this.onLoad();
     }, this);
     // call parent..
-    
+    cfg = {
+        items : this.item;
+    };
+    this.items = [];
+       
     Roo.Login.superclass.constructor.call(this);
     //this.addxtype(this.items[0]);
     
