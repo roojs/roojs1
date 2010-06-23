@@ -234,7 +234,11 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
     } ,
     listeners : 
         rendered : function(dlg) {
-            this.items[0].dialog = dlg;
+            this.form = this.items[0];
+            this.form.dialog = dlg;
+            this.buttons[0].form = this.form
+            this.buttons[1].form = this.form
+            
         }
     },
     items : [
