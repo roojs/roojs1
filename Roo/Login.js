@@ -38,6 +38,12 @@ Roo.Login = function(cfg)
 }
 Roo.extend(Roo.Login, Roo.LayoutDialog, {
     
+    
+    method : 'GET',
+    
+    
+    url : '',
+    
     onLoad : function() // called on page load...
     {
         // load 
@@ -75,7 +81,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
     }, 
     
     
-    check: function(again) // called every so often to refresh cookie etc..
+    check: function(cfg) // called every so often to refresh cookie etc..
     {
         if (again) { // could be undefined..
             this.checkFails++;
@@ -98,13 +104,13 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
         this.sending = true;
         
         Roo.Ajax.request({  
-            url: baseURL + '/Login.js',  
+            url: this.url,
             params: {
                 getAuthUser: true
             },  
-            method: 'GET',  
-            success:  success,
-            failure : failure,
+            method: this.method,
+            success:  cfg.success || this.success,
+            failure : cfg.failure || this.failure,
             scope : this
               
         });  
