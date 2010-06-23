@@ -187,7 +187,7 @@ Roo.apply(Roo.XComponent, {
         });
         return o;
         
-    }
+    },
     
     
     /**
