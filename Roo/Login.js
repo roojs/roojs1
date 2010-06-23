@@ -440,7 +440,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
                     xtype : 'Form',
                     xns : Roo.form,
                     labelWidth: 100,
-                   
+                    style : 'margin : 10px;',
                     listeners : {
                         actionfailed : function(f, act) {
                             // form can return { errors: .... }
