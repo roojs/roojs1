@@ -4,6 +4,31 @@
  */
  
 /**
+ * 
+ * This needs some more thought..
+ * 
+ * compontent is taken..
+ * 
+ * Mypart.xyx = new Roo.XComponent({
+
+    parent : 'Mypart.xyz',
+    order : '001',
+    name : 'xxxx'
+    region : 'xxxx'
+    disabled : function() {} 
+     
+    items : [  // technically only one component..
+        {
+            xtype : 'NestedLayoutPanel',
+            // technicall
+        }
+     ]
+ *})
+ * 
+ * 
+ * 
+ * 
+ * 
  * @class Roo.Documents
  * @extends Roo.data.Observable
  * 
@@ -163,9 +188,17 @@ Roo.extend(Roo.Document, Roo.util.Observable, {
      * 
      */ 
    
-    build : function(parent, onComplete) 
+    build : function(parent, onCompleteFn) 
     {
-        onComplete = onComplete || Roo.emptyFn;
+        var onComplete = function () {
+            if (onCompleteFn) {
+                onCompleteFn.call(this);
+            }
+            Roo.MessageBox.hide();
+            
+        
+            
+        }
         var _this = this;
         var cmp = function(a,b) {   
             return String(a).toUpperCase() > String(b).toUpperCase() ? 1 : -1;
