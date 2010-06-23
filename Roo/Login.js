@@ -257,7 +257,53 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
         
         
     },
-     
+         
+    
+    switchLang : function (lang) 
+    {
+        if (!_T && lang != 'en') {
+            Roo.MessageBox.alert("Sorry", "Language not available yet (" + lang +')');
+            return;
+        }
+        if (!_T || !lang.length) {
+            return;
+        }
+        
+        if (typeof(_T.en) == 'undefined') {
+            _T.en = {};
+            Roo.apply(_T.en, _T);
+        }
+        
+        if (typeof(_T[lang]) == 'undefined') {
+            Roo.MessageBox.alert("Sorry", "Language not available yet (" + lang +')');
+            return;
+        }
+        
+        
+        Roo.apply(_T, _T[lang]);
+        // just need to set the text values for everything...
+        var _this = this;
+        /* this will not work ...
+        if (this.form) { 
+            
+               
+            function formLabel(name, val) {
+                _this.form.findField(name).fieldEl.child('label').dom.innerHTML  = val;
+            }
+            
+            formLabel('password', "Password"+':');
+            formLabel('username', "Email Address"+':');
+            formLabel('lang', "Language"+':');
+            this.dialog.setTitle("Login");
+            this.dialog.buttons[0].setText("Forgot Password");
+            this.dialog.buttons[1].setText("Login");
+        }
+        */
+        
+        
+    },
+    
+    
     title: "Login",
     modal: true,
     width:  350,
@@ -560,56 +606,7 @@ Pman.Login =  new Roo.util.Observable({
         
              
       
-         
-    
-    switchLang : function (lang) 
-    {
-        if (!_T && lang != 'en') {
-            Roo.MessageBox.alert("Sorry", "Language not available yet (" + lang +')');
-            return;
-        }
-        if (!_T || !lang.length) {
-            return;
-        }
-        
-        if (typeof(_T.en) == 'undefined') {
-            _T.en = {};
-            Roo.apply(_T.en, _T);
-        }
-        
-        if (typeof(_T[lang]) == 'undefined') {
-            Roo.MessageBox.alert("Sorry", "Language not available yet (" + lang +')');
-            return;
-        }
-        
-        
-        Roo.apply(_T, _T[lang]);
-        // just need to set the text values for everything...
-        var _this = this;
-        /* this will not work ...
-        if (this.form) { 
-            
-               
-            function formLabel(name, val) {
-                _this.form.findField(name).fieldEl.child('label').dom.innerHTML  = val;
-            }
-            
-            formLabel('password', "Password"+':');
-            formLabel('username', "Email Address"+':');
-            formLabel('lang', "Language"+':');
-            this.dialog.setTitle("Login");
-            this.dialog.buttons[0].setText("Forgot Password");
-            this.dialog.buttons[1].setText("Login");
-        }
-        */
-        
-        
-    }
-    
-   
-    /**
-     * Depreciated = use Pman.I18n
-     */
+     
     
     
     
