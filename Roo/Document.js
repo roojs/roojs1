@@ -313,7 +313,9 @@ Roo.apply(Roo.XComponent,
                 m.module.disabled.call(m.module.disabled) : m.module.disabled;
                 
             }
-            
+            if (disabled) {
+                return progressRun.defer(10, _this);
+            }
             if (m.parent.layout && !disabled) {
                 // modules have to support a  'add method'
                 // should we just move that code into here..
