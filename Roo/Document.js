@@ -9,9 +9,20 @@
  * 
  * compontent is taken..
  * 
+ *
+ 
+ * 
+ * 
+ * 
+ * 
+ * @class Roo.XComponent
+ * @extends Roo.data.Observable
+ * 
+ * A delayed Element creator...
+ * 
  * Mypart.xyx = new Roo.XComponent({
 
-    parent : 'Mypart.xyz',
+    parent : 'Mypart.xyz', // empty == document.element.!!
     order : '001',
     name : 'xxxx'
     region : 'xxxx'
@@ -27,83 +38,31 @@
  * 
  * 
  * 
- * 
- * 
- * @class Roo.Documents
- * @extends Roo.data.Observable
- * 
- * Document and interface builder class..
- * 
- * MyApp = new Roo.Document({
- *     loadingIndicator : 'loading',
- *     listeners :  Roo.Login.onLoad();
- * });
- * 
- * MyApp.on('beforeload', function() {
- *      MyApp.register()
- 
- * 
- * 
- * 
  */
-Roo.Document = function(cfg) {
-     
-    this.addEvents({ 
-        'ready' : true,
-        'beforeload' : true, // fired after page ready, before module building.
-        'load' : true, // fired after module building
-        'authrefreshed' : true // fire on auth updated?? - should be on Login?!?!?
-        
-    });
-    this.modules = [];
-    Roo.util.Observable.call(this,cfg);
-    var _this = this;
-    Roo.onReady(function() {
-        _this.fireEvent('ready');
-    },null,false);
-    
-    this.on('ready', onReady, this);
-    this.on('load', onLoad, this);  
-    
+Roo.XComponent = function(cfg) {
+    Roo.apply(this, cfg);
+    Roo.XComponent.register(this);
     
 }
-Roo.extend(Roo.Document, Roo.util.Observable, {
+Roo.extend(Roo.XComponent, Roo.util.Observable);
+
+Roo.apply(Roo.XComponent, 
     /**
      * @property  buildCompleted
      * True when the builder has completed building the interface.
      * @type Boolean
      */
     buildCompleted : false,
-     /**
-     * @property  loadingIndicator
-     * ID of loading indictor element.
-     * @type String
-     */
-    loadingIndicator : false,
+     
     /**
      * @property  modules
      * array of modules to be created by registration system.
      * @type Array
      */
     
-    modules : false,
+    modules : [],
       
-    // protected - on Ready handler.
-    onReady :   function()
-    {
-        // kludge to fix firebug debugger
-        if (typeof(console) == 'undefined') {
-            console = { log : function() {  } };
-        }
-         
-        // init cookies..
-        Ext.state.Manager.setProvider(new Ext.state.CookieProvider());
-            
-        // link errors...
-         
-            
-    },
-     
+   
     
     
     /**
@@ -132,7 +91,33 @@ Roo.extend(Roo.Document, Roo.util.Observable, {
         
         
     },
+    /**
+     * convert a string to an object..
+     * 
+     */
     
+    toObject : function(str)
+    {
+        if (typeof(str) == 'object') {
+            return str;
+        }
+        var ar = str.split('.');
+        var rt, o;
+        rt = ar.unshift();
+            /** eval:var:o */
+        eval('if (typeof ' + rt + ' == "undefined"){ o = false;} o = ' + rt + ';');
+        if (o === false) {
+            throw "Module not found : " + str;
+        }
+        Roo.each(ar, function(e) {
+            if (typeof(o[e]) == 'undefined') {
+                throw "Module not found : " + str;
+            }
+            o = o[e];
+        });
+        return o;
+        
+    }
     
     
     /**
@@ -144,29 +129,7 @@ Roo.extend(Roo.Document, Roo.util.Observable, {
         var modules = this.modules;
         this.modules = false;
         
-        function toObject(str)
-        {
-            if (typeof(str) == 'object') {
-                return str;
-            }
-            var ar = str.split('.');
-            var rt, o;
-            rt = ar.unshift();
-                /** eval:var:o */
-            eval('if (typeof ' + rt + ' == "undefined"){ o = false;} o = ' + rt + ';');
-            if (o === false) {
-                throw "Module not found : " + str;
-            }
-            Roo.each(ar, function(e) {
-                if (typeof(o[e]) == 'undefined') {
-                    throw "Module not found : " + str;
-                }
-                o = o[e];
-            });
-            return o;
-            
-        }
-        
+     
         Roo.each(modules , function (obj)
         {
             
