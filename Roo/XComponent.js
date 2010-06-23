@@ -205,7 +205,7 @@ Roo.apply(Roo.XComponent, {
                 this.topModule = obj;
                 return;
             }
-            obj.parent = this.toObject(obj.parent);
+            
             if (!obj.parent.modules) {
                 obj.parent.modules = new Roo.util.MixedCollection(false, 
                     function(o) { return o.order + '' }
