@@ -238,7 +238,8 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
         }
     },
     items : [
-    
+        {
+       
             xtype : 'Form',
             xns : Roo.form,
             labelWidth: 100,
@@ -340,7 +341,11 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
                     }
                 
                 }
+            ]
+        },
+        buttons : [
         
+            
             
         
     ]
@@ -374,40 +379,7 @@ Pman.Login =  new Roo.util.Observable({
     
     lastChecked : false,
     
-    
-    
-    create : function()
-    {
-        if (this.dialog) {
-            return;
-        }
-        var _this = this;
-        
-        this.dialog = new Roo.LayoutDialog(Roo.get(document.body).createChild({tag:'div'}),
-        { // the real end set is here...
-            autoCreated: true,
-            title: "Login",
-            modal: true,
-            width:  350,
-            height: 230,
-            shadow:true,
-            minWidth:200,
-            minHeight:180,
-            //proxyDrag: true,
-            closable: false,
-            draggable: false,
-            collapsible: false,
-            resizable: false,
-            center: {
-                autoScroll:false,
-                titlebar: false,
-               // tabPosition: 'top',
-                hideTabs: true,
-                closeOnTab: true,
-                alwaysShowTabs: false
-            }  
-            
-        });
+     
         
         
         
