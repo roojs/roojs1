@@ -51,7 +51,7 @@ Roo.Login = function(cfg)
     }, this);
     // call parent..
     cfg = {
-        items : this.items;
+        items : this.items
     };
     this.items = [];
        
