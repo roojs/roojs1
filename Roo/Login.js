@@ -36,9 +36,7 @@ Roo.Login = function(cfg)
     // call parent..
     Roo.Login.superclass.constructor.call(this);
 }
-Roo.extend(Roo.Login, Roo.LayoutDialog
-    
-    
+Roo.extend(Roo.Login, Roo.LayoutDialog, {
     
     onLoad : function() // called on page load...
     {
@@ -58,8 +56,9 @@ Roo.extend(Roo.Login, Roo.LayoutDialog
                 if (!res.success) { // error!
                     this.checkFails = 5;
                     //console.log('call failure');
-                    return Pman.Login.failure(response,opts);
+                    return this.failure(response,opts);
                 }
+                
                 if (!res.data.id) { // id=0 == login failure.
                     return this.show(true);
                 }
@@ -68,7 +67,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog
                         //console.log(success);
                 this.fillAuth(res.data);   
                 this.checkFails =0;
-                Pman.onload();
+                Roo.XComponent.build();
             },
             failure : this.show
         });
