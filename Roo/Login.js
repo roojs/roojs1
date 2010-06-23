@@ -137,7 +137,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
         var res = Pman.processResponse(response);
         //console.log(res);
         if ( Pman.Login.checkFails > 2) {
-            Pman.Preview.disable();
+        
             Roo.MessageBox.alert("Error", res.errorMsg ? res.errorMsg : 
                 "Error getting authentication status. - try reloading"); 
             return;
