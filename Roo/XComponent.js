@@ -323,6 +323,14 @@ Roo.apply(Roo.XComponent, {
                 return progressRun(); // we do not update the display!
             }
             
+            if (!m.parent) {
+                // it's a top level one..
+                
+                
+                
+            }
+            
+            
             m.el = m.parent.el.addxtype(m.items[0]);
             m.fireEvent('built', m);
             m.panel = this.el;
