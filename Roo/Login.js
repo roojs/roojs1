@@ -263,7 +263,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
         
         //this.switchLang(Roo.state.Manager.get('Pman.Login.lang', 'en'));
         Roo.state.Manager.set( this.realm + 'lang' , au.lang);
-        this.switchLang(au.lang);
+        this.switchLang(au.lang || 'en');
         
      
         // open system... - -on setyp..
@@ -417,7 +417,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
                 'lang' : Roo.state.Manager.get(this.realm + '.lang', 'en')
             });
             
-            this.switchLang(Roo.state.Manager.get(this.realm + '.lang', ''));
+            this.switchLang(Roo.state.Manager.get(this.realm + '.lang', 'en'));
             if (this.form.findField('username').getValue().length > 0 ){
                 this.form.findField('password').focus();
             } else {
