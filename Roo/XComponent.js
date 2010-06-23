@@ -216,7 +216,7 @@ Roo.apply(Roo.XComponent, {
             
             obj.parent.modules.add(obj);
         }, this);
-    }
+    },
     
      /**
      * make a list of modules to build.
