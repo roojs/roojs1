@@ -232,7 +232,8 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
         closeOnTab: true,
         alwaysShowTabs: false
     } ,
-    listeners : 
+    listeners : {
+        
         rendered : function(dlg) {
             this.form = this.items[0];
             this.form.dialog = dlg;
@@ -401,8 +402,8 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
                         method: this.dialog.method
                 });
         });
-         
-}
+    ]
+})
 
 Pman.Login =  new Roo.util.Observable({
     
