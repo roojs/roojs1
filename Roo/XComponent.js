@@ -57,7 +57,7 @@ Roo.XComponent = function(cfg) {
     
     
 }
-Roo.extend(Roo.XComponent, Roo.util.Observable {
+Roo.extend(Roo.XComponent, Roo.util.Observable, {
     /**
      * @property el
      * The created element (with Roo.factory())
