@@ -173,7 +173,8 @@ Roo.extend(Roo.Document, Roo.util.Observable, {
         if (!parent.modules) {
             return;
         }
-        parent.modules.keySort('ASC',  cmp );
+       
+        // make a flat list in order of modules to build.
         var mods = [];
         
         
@@ -192,13 +193,15 @@ Roo.extend(Roo.Document, Roo.util.Observable, {
             }
             
         }
- 
+        parent.modules.keySort('ASC',  cmp );
         parent.modules.each(addMod);
         //this.allmods = mods;
         //console.log(mods);
         //return;
         if (!mods.length) {
-            if (onComplete) onComplete();
+            if (onComplete) {
+                onComplete.call(this);
+            }
             return;
         }
         // flash it up as modal - so we store the mask!?
