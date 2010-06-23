@@ -8,8 +8,8 @@
 * 
 * Sends 
 *    username,password, lang = for login actions.
-*    check = for periodic checking that sesion is valid.
-* 
+*    check = 1 for periodic checking that sesion is valid.
+*    passwordRequest = email request password
 * Usage: 
 *    
 * 
@@ -236,9 +236,10 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
         rendered : function(dlg) {
             this.form = this.items[0];
             this.form.dialog = dlg;
-            this.buttons[0].form = this.form
-            this.buttons[1].form = this.form
-            
+            this.buttons[0].form = this.form;
+            this.buttons[0].dialog = dlg
+            this.buttons[1].form = this.form;
+            this.buttons[1].dialog = dlg
         }
     },
     items : [
@@ -358,25 +359,27 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
             listeners : {
                 click : function() {
             
-                    var n = _this.form.findField('username').getValue();
+                    var n = this.form.findField('username').getValue();
                     if (!n.length) {
                         Roo.MessageBox.alert("Error", "Fill in your email address");
                         return;
                     }
                     Roo.Ajax.request({
-                        url: baseURL + '/Login.js',  
+                        url: this.dialog.url
                         params: {
                             passwordRequest: n
                         },
-                        method: 'POST',  
+                        method: this.dialog.method,
                         success:  function(response, opts)  {  // check successfull...
                         
                             var res = Pman.processResponse(response);
                             if (!res.success) { // error!
-                               Roo.MessageBox.alert("Error" , res.errorMsg ? res.errorMsg  : "Problem Requesting Password Reset");
+                               Roo.MessageBox.alert("Error" ,
+                                    res.errorMsg ? res.errorMsg  : "Problem Requesting Password Reset");
                                return;
                             }
-                            Roo.MessageBox.alert("Notice" , "Please check you email for the Password Reset message");
+                            Roo.MessageBox.alert("Notice" ,
+                                "Please check you email for the Password Reset message");
                         },
                         failure : function() {
                             Roo.MessageBox.alert("Error" , "Problem Requesting Password Reset");
@@ -385,6 +388,19 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
                     });
                 });
             }
+        },
+        {
+            xtype : 'Button',
+            xns : 'Roo',
+            label : "Login",
+            {
+                    
+                this.dialog.el.mask("Logging in");
+                this.form.doAction('submit', {
+                        url: this.dialog.url
+                        method: this.dialog.method
+                });
+        });
          
 }
 
