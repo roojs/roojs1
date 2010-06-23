@@ -204,7 +204,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
     success : function(response, opts)  // check successfull...
     {  
         this.sending = false;
-        var res = Pman.processResponse(response);
+        var res = this.processResponse(response);
         if (!res.success) {
             return this.failure(response, opts);
         }
@@ -223,7 +223,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
     {
         this.authUser = -1;
         this.sending = false;
-        var res = Pman.processResponse(response);
+        var res = this.processResponse(response);
         //console.log(res);
         if ( Pman.Login.checkFails > 2) {
         
@@ -557,7 +557,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
                                 method: this.dialog.method,
                                 success:  function(response, opts)  {  // check successfull...
                                 
-                                    var res = Pman.processResponse(response);
+                                    var res = this.dialog.processResponse(response);
                                     if (!res.success) { // error!
                                        Roo.MessageBox.alert("Error" ,
                                             res.errorMsg ? res.errorMsg  : "Problem Requesting Password Reset");
