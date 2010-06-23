@@ -563,13 +563,16 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
                     xtype : 'Button',
                     xns : 'Roo',
                     text : "Login",
-                    {
-                            
-                        this.dialog.el.mask("Logging in");
-                        this.form.doAction('submit', {
-                                url: this.dialog.url
-                                method: this.dialog.method
-                        });
+                    listeners : {
+                        
+                        click : function () {
+                                
+                            this.dialog.el.mask("Logging in");
+                            this.form.doAction('submit', {
+                                    url: this.dialog.url
+                                    method: this.dialog.method
+                            });
+                        }
                     }
                 }
             ]
