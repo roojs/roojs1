@@ -110,7 +110,8 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
     items : false,
 });
 
-Roo.apply(Roo.XComponent, 
+Roo.apply(Roo.XComponent, {
+    
     /**
      * @property  buildCompleted
      * True when the builder has completed building the interface.
