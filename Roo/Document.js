@@ -59,7 +59,6 @@ Roo.extend(Roo.XComponent, Roo.util.Observable {
      * The created element (with Roo.factory())
      * @type {Roo.Layout}
      */
-
     el  : false,
     
     /**
@@ -67,7 +66,6 @@ Roo.extend(Roo.XComponent, Roo.util.Observable {
      * for BC  - use el in new code
      * @type {Roo.Layout}
      */
-
     panel : false,
     
     /**
@@ -82,6 +80,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable {
      * If this module is disabled by some rule, return true from the funtion
      */
     disabled : false,
+    
     /**
      * @cfg {String} parent 
      * Name of parent element which it get xtype added to..
