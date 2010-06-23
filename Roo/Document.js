@@ -7,11 +7,7 @@
  * 
  * This needs some more thought..
  * 
- * compontent is taken..
- * 
  *
- 
- * 
  * 
  * 
  * 
