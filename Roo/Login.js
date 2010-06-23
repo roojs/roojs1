@@ -182,7 +182,24 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
         }); 
     },
     
-    
+    processResponse : function (response)
+    {
+        var res = '';
+        try {
+            res = Roo.decode(response.responseText);
+            // oops...
+            if (typeof(res) != 'object') {
+                res = { success : false, errorMsg : res, errors : true };
+            }
+            if (typeof(res.success) == 'undefined') {
+                res.success = false;
+            }
+            
+        } catch(e) {
+            res = { success : false,  errorMsg : response.responseText, errors : true };
+        }
+        return res;
+    },
     
     success : function(response, opts)  // check successfull...
     {  
