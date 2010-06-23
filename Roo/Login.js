@@ -432,7 +432,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
                              
                             Roo.state.Manager.set(
                                 this.dialog.realm + '.' + this.dialog.params.username,  
-                                    this.form.findField(this.dialog.params.username).getValue() 
+                                    this.form.findField('username').getValue()
                             );
                             Roo.state.Manager.set(
                                 this.dialog.realm + '.lang',  
