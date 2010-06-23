@@ -54,12 +54,31 @@ Roo.XComponent = function(cfg) {
     
 }
 Roo.extend(Roo.XComponent, Roo.util.Observable {
+    el  : false,
     panel : false,
     layout : false,
-    disabled : false,
-    parent: false,
-    order : false,
     
+     /**
+     * @cfg {Function|boolean} disabled
+     * If this module is disabled by some rule, return true from the funtion
+     */
+    disabled : false,
+    /**
+     * @cfg {String} parent 
+     * Name of parent element which it get xtype added to..
+     */
+    parent: false,
+    /**
+     * @cfg {String} order
+     * Used to set the order in which elements are created (usefull for multiple tabs)
+     */
+    
+    order : false,
+    /**
+     * @cfg {String} name
+     * String to display while loading.
+     */
+    name : false,
 });
 
 Roo.apply(Roo.XComponent, 
