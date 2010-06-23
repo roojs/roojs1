@@ -48,7 +48,7 @@ Roo.XComponent = function(cfg) {
     });
 
     Roo.XComponent.register(this);
-    
+    this.modules = [],
 }
 Roo.extend(Roo.XComponent, Roo.util.Observable {
     panel : false,
@@ -67,7 +67,7 @@ Roo.apply(Roo.XComponent,
     /**
      * @property  topModule
      * the upper most module - uses document.element as it's constructor.
-     * @type Array
+     * @type Object
      */
      
     topModule  : false,
@@ -75,7 +75,7 @@ Roo.apply(Roo.XComponent,
     /**
      * @property  modules
      * array of modules to be created by registration system.
-     * @type Array
+     * @type Roo.XComponent
      */
     
     modules : [],
