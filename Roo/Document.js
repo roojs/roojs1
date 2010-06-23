@@ -104,8 +104,7 @@ Roo.apply(Roo.XComponent,
      */
     register : function(obj) {
         this.modules.push(obj);
-        
-        
+         
     },
     /**
      * convert a string to an object..
@@ -172,6 +171,8 @@ Roo.apply(Roo.XComponent,
    
     build : function(onCompleteFn) 
     {
+        
+        
         var onComplete = function () {
             if (onCompleteFn) {
                 onCompleteFn.call(this);
@@ -214,8 +215,8 @@ Roo.apply(Roo.XComponent,
         //this.allmods = mods;
         //console.log(mods);
         //return;
-        if (!mods.length) {
-            return onComplete.call(this);
+        if (!mods.length) { // should not happen
+            throw "NO modules!!!";
         }
         // flash it up as modal - so we store the mask!?
         Roo.MessageBox.show({ title: 'loading' });
@@ -233,7 +234,8 @@ Roo.apply(Roo.XComponent,
         var progressRun = function() {
             n++;
             if (n >= mods.length) {
-                return onComplete.call(this);
+                _this.topModule.fireEvent('built', _this.topModule);
+                return;
             }
             
             var m = mods[n];
