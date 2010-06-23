@@ -422,7 +422,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
                 'lang' : Roo.state.Manager.get(this.realm + '.lang', 'en')
             });
             
-            Pman.Login.switchLang(Roo.state.Manager.get(this.realm + '.lang', ''));
+            this.switchLang(Roo.state.Manager.get(this.realm + '.lang', ''));
             if (this.form.findField('username').getValue().length > 0 ){
                 this.form.findField('password').focus();
             } else {
@@ -466,7 +466,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
                             );
                             Roo.state.Manager.set(
                                 this.dialog.realm + '.lang',  
-                                Pman.Login.form.findField('lang').getValue() 
+                                this.form.findField('lang').getValue() 
                             );
                             
                             this.dialog.fillAuth(act.result.data);
