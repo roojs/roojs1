@@ -378,15 +378,16 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
         show  : function()
         {
             //this.resizeToLogo.defer(1000,this);
+            // this is all related to resizing for logos..
             //var sz = Roo.get(Pman.Login.form.el.query('img')[0]).getSize();
            //// if (!sz) {
              //   this.resizeToLogo.defer(1000,this);
              //   return;
            // }
-            var w = Ext.lib.Dom.getViewWidth() - 100;
-            var h = Ext.lib.Dom.getViewHeight() - 100;
-            this.resizeTo(Math.max(350, Math.min(sz.width + 30, w)),Math.min(sz.height+200, h));
-            this.center();
+            //var w = Ext.lib.Dom.getViewWidth() - 100;
+            //var h = Ext.lib.Dom.getViewHeight() - 100;
+            //this.resizeTo(Math.max(350, Math.min(sz.width + 30, w)),Math.min(sz.height+200, h));
+            //this.center();
             if (this.disabled) {
                 this.hide();
                 return;
