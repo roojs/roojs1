@@ -157,37 +157,33 @@ Roo.apply(Roo.XComponent,
             }
             obj.parent = toObject(obj.parent);
             if (!obj.parent.modules) {
-                obj.parent.modules = new Roo.util.MixedCollection(false, function(o) { return o.order + '' });
+                obj.parent.modules = new Roo.util.MixedCollection(false, 
+                    function(o) { return o.order + '' }
+                );
             }
             
             obj.parent.modules.add(obj);
         }, this);
     }
     
-    
      /**
-     * Build the registered modules.
-     * @param {Object} parent element.
-     * @param {Function} optional method to call after module has been added.
-     * 
+     * make a list of modules to build.
+     * @return {Array} list of modules. 
      */ 
-   
-    build : function() 
+    
+    buildOrder : function()
     {
-        
-        this.preBuild();
-        
         var _this = this;
         var cmp = function(a,b) {   
             return String(a).toUpperCase() > String(b).toUpperCase() ? 1 : -1;
         };
         
-        if (!parent.modules) {
-            return;
+        if (!this.topModule || !this.topModule.modules) {
+            throw "No top level modules to build";
         }
        
         // make a flat list in order of modules to build.
-        var mods = [];
+        var mods = [ this.topModule ];
         
         
         // add modules to their parents..
@@ -205,8 +201,23 @@ Roo.apply(Roo.XComponent,
             }
             
         }
-        parent.modules.keySort('ASC',  cmp );
-        parent.modules.each(addMod);
+        this.topModule.modules.keySort('ASC',  cmp );
+        this.topModule.modules.each(addMod);
+    }
+    
+     /**
+     * Build the registered modules.
+     * @param {Object} parent element.
+     * @param {Function} optional method to call after module has been added.
+     * 
+     */ 
+   
+    build : function() 
+    {
+        
+        this.preBuild();
+        
+        
         //this.allmods = mods;
         //console.log(mods);
         //return;
