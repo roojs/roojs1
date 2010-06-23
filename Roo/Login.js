@@ -77,6 +77,12 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
      * @type {Object} 
      */
     user : false,
+    /**
+     * @property checkFails
+     * Number of times we have attempted to get authentication check, and failed.
+     * @type {Number} 
+     */
+    checkFails : 0,
     
     
     onLoad : function() // called on page load...
@@ -225,7 +231,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
         this.sending = false;
         var res = this.processResponse(response);
         //console.log(res);
-        if ( Pman.Login.checkFails > 2) {
+        if ( this.checkFails > 2) {
         
             Roo.MessageBox.alert("Error", res.errorMsg ? res.errorMsg : 
                 "Error getting authentication status. - try reloading"); 
