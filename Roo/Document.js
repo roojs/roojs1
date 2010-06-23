@@ -54,8 +54,22 @@ Roo.XComponent = function(cfg) {
     
 }
 Roo.extend(Roo.XComponent, Roo.util.Observable {
+    /**
+     * @property el
+     * The created element (with Roo.factory())
+     * @type {Roo.Layout}
+     */
+
     el  : false,
+    
+    
     panel : false,
+    
+    /**
+     * @property layout
+     * for BC  - use el in new code
+     * @type {Roo.Layout}
+     */
     layout : false,
     
      /**
@@ -79,6 +93,12 @@ Roo.extend(Roo.XComponent, Roo.util.Observable {
      * String to display while loading.
      */
     name : false,
+    /**
+     * @cfg {Array} items
+     * A single item array - the first element is the root of the tree..
+     * It's done this way to stay compatible with the Xtype system...
+     */
+    items : false,
 });
 
 Roo.apply(Roo.XComponent, 
