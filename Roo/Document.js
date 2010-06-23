@@ -216,7 +216,7 @@ Roo.apply(Roo.XComponent,
     {
         
         this.preBuild();
-        mods = this.buildOrder();
+        var mods = this.buildOrder();
         
         //this.allmods = mods;
         //console.log(mods);
@@ -224,6 +224,9 @@ Roo.apply(Roo.XComponent,
         if (!mods.length) { // should not happen
             throw "NO modules!!!";
         }
+        
+        
+        
         // flash it up as modal - so we store the mask!?
         Roo.MessageBox.show({ title: 'loading' });
         Roo.MessageBox.show({
