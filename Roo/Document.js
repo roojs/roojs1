@@ -98,7 +98,7 @@ Roo.extend(Roo.Document, Roo.util.Observable, {
           module : 'Pman.Tab.projectMgr',
           region : 'center',
           parent : 'Pman.layout',
-          disabled : false,  
+          disabled : false,  // or use a function..
         })
      * 
      */
@@ -216,8 +216,16 @@ Roo.extend(Roo.Document, Roo.util.Observable, {
            modal: false
           
         });
-        var n = 0;
+        var n = -1;
+        var _this = this;
         var progressRun = function() {
+            n++;
+            if (n >= mods.length) {
+                if (onComplete) {
+                    onComplete.call(this);
+                }
+                return;
+            }
             
             var m = mods[n];
             
@@ -230,25 +238,22 @@ Roo.extend(Roo.Document, Roo.util.Observable, {
             
             if (typeof(m) == 'function') {
                 m.call(this);
-                
-            } else {
-                if (m.parent.layout && !m.module.disabled) {
-                    m.module.add(m.parent.layout, m.region);    
-                }
-                
-            }
-            
-            
-            n++;
-            if (n >= mods.length) {
-                onComplete();  
+                progressRun.defer(10, _this);    
                 return;
-            }
+            } 
+            var disabled = (typeof(m.module.disabled) == 'function') ?
+                m.module.disabled.call(m.module.disabled) : m.module.disabled;
                 
+            }
             
-            progressRun.defer(10, Pman);    
+            if (m.parent.layout && !disabled) {
+                m.module.add(m.parent.layout, m.region);    
+            }
+                 
+             
+            
         }
-        progressRun.defer(1, Pman);
+        progressRun.defer(1, _this);
      
         
         
