@@ -45,14 +45,17 @@ Roo.Login = function(cfg)
     });
     
     Roo.apply(this,cfg);
-    Roo.each(this.items, function(e) {
-        this.addxtype(e);
-    }, this);
+    
     Roo.onReady(function() {
         this.onLoad();
     }, this);
     // call parent..
-    Roo.Login.superclass.constructor.call(this);
+    Roo.Login.superclass.constructor.call(this, {});
+    Roo.each(this.items, function(e) {
+        this.addxtype(e);
+    }, this);
+    
+    
 }
 
 
