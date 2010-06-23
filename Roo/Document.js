@@ -259,9 +259,8 @@ Roo.extend(Roo.Document, Roo.util.Observable, {
      
         
         
-    },
-    
-},
+    }
+     
    
     
     
