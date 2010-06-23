@@ -168,7 +168,7 @@ Roo.apply(Roo.XComponent, {
     
     toObject : function(str)
     {
-        if (typeof(str) == 'object') {
+        if (!str || typeof(str) == 'object') {
             return str;
         }
         var ar = str.split('.');
