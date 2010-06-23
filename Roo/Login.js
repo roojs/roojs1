@@ -293,7 +293,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
     
     switchLang : function (lang) 
     {
-        _T = _T || false;
+        _T = typeof(_T) == 'undefined' ? false : _T;
         if (!_T && lang != 'en') {
             Roo.MessageBox.alert("Sorry", "Language not available yet (" + lang +')');
             return;
