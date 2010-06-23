@@ -172,19 +172,11 @@ Roo.apply(Roo.XComponent,
      * 
      */ 
    
-    build : function(onCompleteFn) 
+    build : function() 
     {
         
         this.preBuild();
-        var onComplete = function () {
-            if (onCompleteFn) {
-                onCompleteFn.call(this);
-            }
-            
-            
         
-            
-        }
         var _this = this;
         var cmp = function(a,b) {   
             return String(a).toUpperCase() > String(b).toUpperCase() ? 1 : -1;
