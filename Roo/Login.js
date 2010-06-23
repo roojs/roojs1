@@ -548,7 +548,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
             text : "Forgot Password",
             listeners : {
                 click : function() {
-            
+                    console.log(this);
                     var n = this.form.findField('username').getValue();
                     if (!n.length) {
                         Roo.MessageBox.alert("Error", "Fill in your email address");
