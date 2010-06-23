@@ -247,6 +247,8 @@ Roo.extend(Roo.Document, Roo.util.Observable, {
             }
             
             if (m.parent.layout && !disabled) {
+                // modules have to support a  'add method'
+                // should we just move that code into here..
                 m.module.add(m.parent.layout, m.region);    
             }
                  
