@@ -86,6 +86,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable {
      * Name of parent element which it get xtype added to..
      */
     parent: false,
+    
     /**
      * @cfg {String} order
      * Used to set the order in which elements are created (usefull for multiple tabs)
