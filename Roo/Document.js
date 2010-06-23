@@ -67,9 +67,7 @@ Roo.extend(Roo.Document, Roo.util.Observable, {
         Ext.state.Manager.setProvider(new Ext.state.CookieProvider());
             
         // link errors...
-        
-      
-       
+         
             
     },
      
