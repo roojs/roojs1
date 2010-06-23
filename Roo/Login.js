@@ -92,7 +92,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
         this.check({
             success:  function(response, opts)  {  // check successfull...
             
-                var res = Pman.processResponse(response);
+                var res = this.processResponse(response);
                 this.checkFails =0;
                 if (!res.success) { // error!
                     this.checkFails = 5;
