@@ -432,7 +432,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
             xns : Roo,
             region: 'center',
             fitToFrame : true,
-            style : 'margin : 10px;',
+            
             items : [
     
                 {
