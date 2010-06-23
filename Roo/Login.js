@@ -274,12 +274,71 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
                      
                     
                 }
-            }
+            },
+            items : [
+                {
+                    xtype : 'TextField',
+                    xns : Roo.form,
+                    fieldLabel: "Email Address",
+                    name: 'username',
+                    width:200,
+                    autoCreate : {tag: "input", type: "text", size: "20"}
+                },
+                {
+                    xtype : 'TextField',
+                    xns : Roo.form,
+                    fieldLabel: "Password",
+                    inputType: 'password',
+                    name: 'password',
+                    width:200,
+                    autoCreate : {tag: "input", type: "text", size: "20"},
+                    listeners : {
+                        specialkey : function(e,ev) {
+                            if (ev.keyCode == 13) {
+                                this.form.dialog.el.mask("Logging in");
+                                this.form.doAction('submit', {
+                                    url: this.form.dialog.url,
+                                    method: this.form.dialog.method,
+                                });
+                            }
+                        }
+                    }  
+                },
+                {
+                    xtype : 'ComboBox',
+                    xns : Roo.form,
+                    fieldLabel: "Language",
+                    name : 'langdisp',
+                    store: {
+                        xtype : 'SimpleStore',
+                        fields: ['lang', 'ldisp'],
+                        data : [
+                            [ 'en', 'English' ],
+                            [ 'zh_HK' , '\u7E41\u4E2D' ],
+                            [ 'zh_CN', '\u7C21\u4E2D' ]
+                        ]
+                    },
+                    
+                    valueField : 'lang',
+                    hiddenName:  'lang',
+                    width: 200,
+                    displayField:'ldisp',
+                    typeAhead: false,
+                    editable: false,
+                    mode: 'local',
+                    triggerAction: 'all',
+                    emptyText:'Select a Language...',
+                    selectOnFocus:true,
+                    listeners : {
+                        select :  function(cb, rec, ix) {
+                            this.form.switchLang(rec.data.lang);
+                        }
+                    }
+                
+                }
         
             
-            
-             
-        });
+        
     ]
     
 }
@@ -434,64 +493,7 @@ Pman.Login =  new Roo.util.Observable({
         
         this.form.add( 
        
-            new Roo.form.TextField({
-                fieldLabel: "Email Address",
-                name: 'username',
-                width:200,
-                autoCreate : {tag: "input", type: "text", size: "20"}
-            }),
-
-            new Roo.form.TextField({
-                fieldLabel: "Password",
-                inputType: 'password',
-                name: 'password',
-                width:200,
-                autoCreate : {tag: "input", type: "text", size: "20"},
-                listeners : {
-                    specialkey : function(e,ev) {
-                        if (ev.keyCode == 13) {
-                            Pman.Login.dialog.el.mask("Logging in");
-                            Pman.Login.form.doAction('submit', {
-                                    url: baseURL + '/Login.json',
-                                    method: 'POST'
-                            });
-                        }
-                    }
-                }  
-            }) ,
-            new Roo.form.ComboBox({
-                fieldLabel: "Language",
-                name : 'langdisp',
-                store: {
-                    xtype : 'SimpleStore',
-                    fields: ['lang', 'ldisp'],
-                    data : [
-                        [ 'en', 'English' ],
-                        [ 'zh_HK' , '\u7E41\u4E2D' ],
-                        [ 'zh_CN', '\u7C21\u4E2D' ]
-                    ]
-                },
-                
-                valueField : 'lang',
-                hiddenName:  'lang',
-                width: 200,
-                displayField:'ldisp',
-                typeAhead: false,
-                editable: false,
-                mode: 'local',
-                triggerAction: 'all',
-                emptyText:'Select a Language...',
-                selectOnFocus:true,
-                listeners : {
-                    select :  function(cb, rec, ix) {
-                        
-                        
-                        Pman.Login.switchLang(rec.data.lang);
-                        
-                    }
-                }
-            
-            })
+           
 
         );
          
