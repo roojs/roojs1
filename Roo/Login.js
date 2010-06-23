@@ -344,7 +344,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
             //    style: 'margin-bottom: 10px;'
             //},
             
-        );
+    
         
             
         },
