@@ -62,8 +62,7 @@ Roo.extend(Roo.Document, Roo.util.Observable, {
         if (typeof(console) == 'undefined') {
             console = { log : function() {  } };
         }
-        
-    
+         
         // init cookies..
         Ext.state.Manager.setProvider(new Ext.state.CookieProvider());
             
