@@ -301,7 +301,7 @@ Roo.apply(Roo.XComponent, {
             }
             
             var m = mods.shift();
-            
+            console.log(m);
             if (typeof(m) == 'function') { // not sure if this is supported any more..
                 m.call(this);
                 return progressRun.defer(10, _this);
