@@ -538,65 +538,65 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
                 },
                   
                 
-            ],
-            buttons : [
-                {
-                    xtype : 'Button',
-                    xns : 'Roo',
-                    text : "Forgot Password",
-                    listeners : {
-                        click : function() {
-                    
-                            var n = this.form.findField('username').getValue();
-                            if (!n.length) {
-                                Roo.MessageBox.alert("Error", "Fill in your email address");
-                                return;
-                            }
-                            Roo.Ajax.request({
-                                url: this.dialog.url,
-                                params: {
-                                    passwordRequest: n
-                                },
-                                method: this.dialog.method,
-                                success:  function(response, opts)  {  // check successfull...
-                                
-                                    var res = this.dialog.processResponse(response);
-                                    if (!res.success) { // error!
-                                       Roo.MessageBox.alert("Error" ,
-                                            res.errorMsg ? res.errorMsg  : "Problem Requesting Password Reset");
-                                       return;
-                                    }
-                                    Roo.MessageBox.alert("Notice" ,
-                                        "Please check you email for the Password Reset message");
-                                },
-                                failure : function() {
-                                    Roo.MessageBox.alert("Error" , "Problem Requesting Password Reset");
-                                }
-                                
-                            });
-                        }
-                    }
-                },
-                {
-                    xtype : 'Button',
-                    xns : 'Roo',
-                    text : "Login",
-                    listeners : {
-                        
-                        click : function () {
-                                
-                            this.dialog.el.mask("Logging in");
-                            this.form.doAction('submit', {
-                                    url: this.dialog.url,
-                                    method: this.dialog.method
-                            });
-                        }
-                    }
-                }
             ]
         }
     ]
-})
+    buttons : [
+        {
+            xtype : 'Button',
+            xns : 'Roo',
+            text : "Forgot Password",
+            listeners : {
+                click : function() {
+            
+                    var n = this.form.findField('username').getValue();
+                    if (!n.length) {
+                        Roo.MessageBox.alert("Error", "Fill in your email address");
+                        return;
+                    }
+                    Roo.Ajax.request({
+                        url: this.dialog.url,
+                        params: {
+                            passwordRequest: n
+                        },
+                        method: this.dialog.method,
+                        success:  function(response, opts)  {  // check successfull...
+                        
+                            var res = this.dialog.processResponse(response);
+                            if (!res.success) { // error!
+                               Roo.MessageBox.alert("Error" ,
+                                    res.errorMsg ? res.errorMsg  : "Problem Requesting Password Reset");
+                               return;
+                            }
+                            Roo.MessageBox.alert("Notice" ,
+                                "Please check you email for the Password Reset message");
+                        },
+                        failure : function() {
+                            Roo.MessageBox.alert("Error" , "Problem Requesting Password Reset");
+                        }
+                        
+                    });
+                }
+            }
+        },
+        {
+            xtype : 'Button',
+            xns : 'Roo',
+            text : "Login",
+            listeners : {
+                
+                click : function () {
+                        
+                    this.dialog.el.mask("Logging in");
+                    this.form.doAction('submit', {
+                            url: this.dialog.url,
+                            method: this.dialog.method
+                    });
+                }
+            }
+        }
+    ]
+    
  
 
 
