@@ -50,6 +50,7 @@ Roo.data.Store = function(config){
     
     if(this.reader){ // reader passed
         this.reader = Roo.factory(this.reader, Roo.data);
+        this.reader.xmodule = this.xmodule || false;
         if(!this.recordType){
             this.recordType = this.reader.recordType;
         }
@@ -145,6 +146,7 @@ Roo.data.Store = function(config){
     
     if(this.proxy){
         this.proxy = Roo.factory(this.proxy, Roo.data);
+        this.proxy.xmodule = this.xmodule || false;
         this.relayEvents(this.proxy,  ["loadexception"]);
     }
     this.sortToggle = {};
