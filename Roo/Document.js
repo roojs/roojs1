@@ -165,7 +165,7 @@ Roo.extend(Roo.Document, Roo.util.Observable, {
    
     build : function(parent, onComplete) 
     {
-        
+        onComplete = onComplete || Roo.emptyFn;
         var _this = this;
         var cmp = function(a,b) {   
             return String(a).toUpperCase() > String(b).toUpperCase() ? 1 : -1;
@@ -200,10 +200,7 @@ Roo.extend(Roo.Document, Roo.util.Observable, {
         //console.log(mods);
         //return;
         if (!mods.length) {
-            if (onComplete) {
-                onComplete.call(this);
-            }
-            return;
+            return onComplete.call(this);
         }
         // flash it up as modal - so we store the mask!?
         Roo.MessageBox.show({ title: 'loading' });
@@ -221,10 +218,7 @@ Roo.extend(Roo.Document, Roo.util.Observable, {
         var progressRun = function() {
             n++;
             if (n >= mods.length) {
-                if (onComplete) {
-                    onComplete.call(this);
-                }
-                return;
+                return onComplete.call(this);
             }
             
             var m = mods[n];
