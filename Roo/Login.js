@@ -55,7 +55,7 @@ Roo.Login = function(cfg)
     };
     this.items = [];
        
-    Roo.Login.superclass.constructor.call(this, dcfg);
+    Roo.Login.superclass.constructor.call(this, this);
     //this.addxtype(this.items[0]);
     
     
