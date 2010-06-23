@@ -306,21 +306,18 @@ Roo.apply(Roo.XComponent,
             
             if (typeof(m) == 'function') {
                 m.call(this);
-                progressRun.defer(10, _this);    
-                return;
+                return progressRun.defer(10, _this);    
+
             } 
             var disabled = (typeof(m.module.disabled) == 'function') ?
-                m.module.disabled.call(m.module.disabled) : m.module.disabled;
-                
+                m.module.disabled.call(m.module.disabled) : m.module.disabled;    
             }
             if (disabled) {
-                return progressRun.defer(10, _this);
+                return progressRun(); // we do not update the display!
             }
-            if (m.parent.layout && !disabled) {
-                // modules have to support a  'add method'
-                // should we just move that code into here..
-                m.module.add(m.parent.layout, m.region);    
-            }
+            
+            this.el = m.parent.el.addxtype(m.items[0]);
+            this.panel = this.el;
                  
              
             
