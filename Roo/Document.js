@@ -41,10 +41,16 @@ Roo.XComponent = function(cfg) {
         /**
 	     * @event built
 	     * Fires when this the componnt is built
-	     * @param {Button} this
-	     * @param {EventObject} e The click event
+	     * @param {Roo.XComponent} c the component
 	     */
-        'built' : true
+        'built' : true,
+        /**
+	     * @event buildcomplete
+	     * Fires on the top level element when all elements have been built
+	     * @param {Roo.XComponent} c the top level component.
+         */
+        'buildcomplete' : true,
+        
     });
 
     Roo.XComponent.register(this);
