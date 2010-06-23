@@ -7,8 +7,6 @@
  * 
  * This needs some more thought..
  * 
- *
- * 
  * 
  * 
  * @class Roo.XComponent
