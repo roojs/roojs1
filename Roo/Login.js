@@ -166,7 +166,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
             method: 'GET',
             failure : function() {
                 Roo.MessageBox.alert("Error", "Error logging out. - continuing anyway.", function() {
-                     document.location = document.location.toString() + '?ts=' + Math.random();
+                    document.location = document.location.toString() + '?ts=' + Math.random();
                 });
                 
             },
