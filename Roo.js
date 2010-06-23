@@ -443,6 +443,14 @@ Roo.factory(conf, Roo.data);
         getCmp : function(id){
             return Roo.ComponentMgr.get(id);
         },
+        /**
+        * Shorthand for {@link Roo.XComponent#get}
+        * @param {String} id
+        * @return Roo.Component
+        */
+        getx : function(id){
+            return Roo.XComponent.get(id);
+        },
 
         num : function(v, defaultValue){
             if(typeof v != 'number'){
