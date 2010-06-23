@@ -56,6 +56,9 @@ Roo.XComponent = function(cfg) {
 Roo.extend(Roo.XComponent, Roo.util.Observable {
     panel : false,
     layout : false,
+    disabled : false,
+    parent: false,
+    order : false,
     
 });
 
