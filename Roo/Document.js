@@ -285,33 +285,35 @@ Roo.apply(Roo.XComponent,
            modal: false
           
         });
-        var n = -1;
+        var total = mods.length();
+        
         var _this = this;
         var progressRun = function() {
-            n++;
-            if (n >= mods.length) {
+            if (mods.length) {
                 Roo.MessageBox.hide();
                 _this.topModule.fireEvent('built', _this.topModule);
-                return;
+                return;    
             }
             
-            var m = mods[n];
-            
-            
-            Roo.MessageBox.updateProgress(
-                (n+1)/mods.length,  "Building Interface " + (n+1) + 
-                    " of " + mods.length + 
-                    (m.name ? (' - ' + m.name) : '')
-                    );
+            var m = mods.unshift();
             
             if (typeof(m) == 'function') {
                 m.call(this);
-                return progressRun.defer(10, _this);    
-
+                return progressRun.defer(10, _this);
             } 
+            
+            Roo.MessageBox.updateProgress(
+                (total  - mods.length)/total,  "Building Interface " + (total  - mods.length) + 
+                    " of " + total + 
+                    (m.name ? (' - ' + m.name) : '')
+                    );
+            
+         
+            
             var disabled = (typeof(m.module.disabled) == 'function') ?
                 m.module.disabled.call(m.module.disabled) : m.module.disabled;    
             }
+            
             if (disabled) {
                 return progressRun(); // we do not update the display!
             }
