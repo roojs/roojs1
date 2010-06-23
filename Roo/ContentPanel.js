@@ -355,7 +355,9 @@ layout.addxtype({
             return false;
         }
         var el = this.el.createChild();
+
         this.form = new  Roo.form.Form(cfg);
+        
         
         if ( this.form.allItems.length) this.form.render(el.dom);
         return this.form;
