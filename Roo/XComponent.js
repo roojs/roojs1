@@ -22,7 +22,7 @@
     region : 'xxxx'
     disabled : function() {} 
      
-    items : function() {
+    tree : function() {
         var MODULE = this;
         return 
         {
@@ -343,17 +343,17 @@ Roo.apply(Roo.XComponent, {
                          minTabWidth: 140
                     }
                 });
-                
-                m.items[0].region = 'center';
-                m.el = layoutbase.addxtype(  m.tree() );
+                var tree = m.tree();
+                tree.region = 'center';
+                m.el = layoutbase.addxtype(tree);
                 m.panel = m.el;
                 m.layout = m.panel.layout;    
                 return progressRun.defer(10, _this);
             }
             
-            
-            m.items[0].region = m.items[0].region || m.region;
-            m.el = m.parent.el.addxtype(m.tree());
+            var tree = m.tree();
+            tree.region = tree.region || m.region;
+            m.el = m.parent.el.addxtype(tree);
             m.fireEvent('built', m);
             m.panel = m.el;
             m.layout = m.panel.layout;    
