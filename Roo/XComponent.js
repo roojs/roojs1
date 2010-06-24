@@ -22,7 +22,9 @@
     region : 'xxxx'
     disabled : function() {} 
      
-    items : [  // technically only one component..
+    items : function() {
+        var MODULE = this;
+        return 
         {
             xtype : 'NestedLayoutPanel',
             // technicall
@@ -54,7 +56,7 @@ Roo.XComponent = function(cfg) {
     Roo.XComponent.register(this);
     this.modules = false;
     this.el = false; // where the layout goes..
-    this.setX(this.items[0]);
+    
     
 }
 Roo.extend(Roo.XComponent, Roo.util.Observable, {
@@ -108,31 +110,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
      * It's done this way to stay compatible with the Xtype system...
      */
     items : false,
-    
-    /**
-     * setx 
-     * Set's the xowner value on all the children and some special properties..
-     * basically var _this= this.xmodule; can be used in any component..
-     * to refer to it's own xmodule
-     * @param xtype element.
-     */
-    setX : function(obj)
-    {
-        obj.xmodule = this;
-        var aprops = [ 'items', 'buttons' , 'colModel'];
-        var oprops = [ 'grid', 'dataSource', 'proxy', 'reader',  'toolbar', 'footer'];
-        Roo.each(aprops, function (p) {
-            Roo.each(obj[p] || [], function (o) {
-                this.setX(o);
-            }, this);
-        }, this);
-        Roo.each(oprops, function (p) {
-            if (typeof(obj[p]) == 'object') {
-                this.setX(obj[p]);
-            }
-        },this);
-        
-    }
+     
      
     
 });
@@ -365,8 +343,9 @@ Roo.apply(Roo.XComponent, {
                          minTabWidth: 140
                     }
                 });
+                
                 m.items[0].region = 'center';
-                m.el = layoutbase.addxtype(  m.items[0] );
+                m.el = layoutbase.addxtype(  m.tree() );
                 m.panel = m.el;
                 m.layout = m.panel.layout;    
                 return progressRun.defer(10, _this);
@@ -374,7 +353,7 @@ Roo.apply(Roo.XComponent, {
             
             
             m.items[0].region = m.items[0].region || m.region;
-            m.el = m.parent.el.addxtype(m.items[0]);
+            m.el = m.parent.el.addxtype(m.tree());
             m.fireEvent('built', m);
             m.panel = m.el;
             m.layout = m.panel.layout;    
