@@ -1,6 +1,8 @@
 //<script type="text/javascript">
 
 /**
+ * Will be depreciated = replaced with seed...
+ * 
  * @version $Id: main.js 570 2008-04-07 23:54:50Z micmath $
  * 
  * 
