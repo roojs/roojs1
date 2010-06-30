@@ -12,6 +12,7 @@
 		"Roo/state",
 		"Roo/tree",
 		"Roo/util"
-		]
+		],
+	"template" : "buildSDK/doc_templates"
 		
 }
