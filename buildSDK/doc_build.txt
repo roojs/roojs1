@@ -1,7 +1,8 @@
 
 new one...
 
-seed introspection-doc-generator/jsdocbuild.js --baseDir /path/to/parent --target /path/to/docs
+seed introspection-doc-generator/jsdocbuild.js --baseDir /path/to/roojs1 --target /path/to/docs \
+	--conf /path/to/roojs1/buildSDK/jsdoc.cfg.json
 
 
 #// in top level directory..
