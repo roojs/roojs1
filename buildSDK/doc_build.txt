@@ -5,6 +5,9 @@ seed introspection-doc-generator/jsdocbuild.js --baseDir /path/to/roojs1 --targe
 	--conf /path/to/roojs1/buildSDK/jsdoc.cfg.json
 
 
+seed introspection-doc-generator/jsdocbuild.js --baseDir ~/gitlive/roojs1 --target /tmp/roodocs \
+	--conf ~/gitlive/roojs1/buildSDK/jsdoc.cfg.json	
+	
 #// in top level directory..
 
 mjslite buildSDK/bundle_build.js -L/usr/src/gtkDS/examples/jstoolkit2/ -- buildSDK/dependancy_order.txt
