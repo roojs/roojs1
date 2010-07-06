@@ -13,6 +13,11 @@
 		"Roo/tree",
 		"Roo/util"
 		],
+	"exclude-src" : [
+		"roojs-all.js',
+		"roojs-debug.js'
+	],
+		
 	"template" : "buildSDK/doc_templates"
 		
 }
