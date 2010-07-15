@@ -250,19 +250,23 @@ Roo.QuickTips = function(){
         * @cfg {String} title
         * Title text to display (defaults to '').  This can be any valid HTML markup.
         */
+        title: '',
        /**
         * @cfg {String} text
         * Body text to display (defaults to '').  This can be any valid HTML markup.
         */
+        text : '',
        /**
         * @cfg {String} cls
         * A CSS class to apply to the base quick tip element (defaults to '').
         */
+        cls : '',
        /**
         * @cfg {Number} width
         * Width in pixels of the quick tip (defaults to auto).  Width will be ignored if it exceeds the bounds of
         * minWidth or maxWidth.
         */
+        width : null,
 
     /**
      * Initialize and enable QuickTips for first use.  This should be called once before the first attempt to access
