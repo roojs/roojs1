@@ -65,7 +65,14 @@ Roo.tree.TreeLoader = function(config){
          * @param {Object} node The {@link Roo.tree.TreeNode} object being loaded.
          * @param {Object} response The response object containing the data from the server.
          */
-        "loadexception" : true
+        "loadexception" : true,
+          /**
+         * @event create
+         * Fires before a node is created, enabling you to return custom Node types 
+         * @param {Object} This TreeLoader object.
+         * @param {Object} attr - the data returned from the AJAX call (modify it to suit)
+         */
+        "create" : true
     });
 
     Roo.tree.TreeLoader.superclass.constructor.call(this);
@@ -88,6 +95,8 @@ Roo.extend(Roo.tree.TreeLoader, Roo.util.Observable, {
     */
     /**
     * @cfg {Object} uiProviders (optional) An object containing properties which
+    * 
+    * DEPRECIATED - use 'create' event handler to modify attributes - which affect creation.
     * specify custom {@link Roo.tree.TreeNodeUI} implementations. If the optional
     * <i>uiProvider</i> attribute of a returned child node is a string rather
     * than a reference to a TreeNodeUI implementation, this that string value
@@ -197,14 +206,18 @@ Roo.extend(Roo.tree.TreeLoader, Roo.util.Observable, {
         if(this.applyLoader !== false){
             attr.loader = this;
         }
+        // uiProvider = depreciated..
+        
         if(typeof(attr.uiProvider) == 'string'){
-            
            attr.uiProvider = this.uiProviders[attr.uiProvider] || 
                 /**  eval:var:attr */ eval(attr.uiProvider);
         }
         if(typeof(this.uiProviders['default']) != 'undefined') {
             attr.uiProvider = this.uiProviders['default'];
         }
+        
+        this.fireEvent('create', this, attr);
+        
         attr.leaf  = typeof(attr.leaf) == 'string' ? attr.leaf * 1 : attr.leaf;
         return(attr.leaf ?
                         new Roo.tree.TreeNode(attr) :
