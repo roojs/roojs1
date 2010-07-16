@@ -1,0 +1,17 @@
+{
+  "props": [
+    {
+      "name": "autoCreate",
+      "type": "String/Object",
+      "desc": "A DomHelper element spec used to autocreate the column (defaults to {tag: 'div', cls: 'x-form-ct x-form-column'})",
+      "memberOf": ""
+    },
+    {
+      "name": "width",
+      "type": "Number/String",
+      "desc": "The fixed width of the column in pixels or CSS value (defaults to \"auto\")",
+      "memberOf": ""
+    }
+  ],
+  "events": []
+}
