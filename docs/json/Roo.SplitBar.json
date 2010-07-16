@@ -1,0 +1,23 @@
+{
+  "props": [],
+  "events": [
+    {
+      "name": "beforeresize",
+      "sig": "function (_self)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires before the splitter is dragged"
+    },
+    {
+      "name": "moved",
+      "sig": "function (_self, newSize)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when the splitter is moved"
+    },
+    {
+      "name": "resize",
+      "sig": "function (_self, newSize)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when the splitter is moved (alias for {@link #event-moved})"
+    }
+  ]
+}
