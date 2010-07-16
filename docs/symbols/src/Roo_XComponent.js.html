@@ -4,15 +4,7 @@
  */
  
 /**
- * 
- * This needs some more thought..
- * 
- * 
- * 
  * @class Roo.XComponent
- * @extends Roo.util.Observable
- * 
- * 
  * A delayed Element creator...
  * 
  * Mypart.xyx = new Roo.XComponent({
@@ -23,7 +15,7 @@
     region : 'xxxx'
     disabled : function() {} 
      
-    tree : function() {
+    tree : function() { // return an tree of xtype declared components
         var MODULE = this;
         return 
         {
@@ -34,7 +26,7 @@
  *})
  * 
  * 
- * 
+ * @extends Roo.util.Observable
  */
 </span><span class="jsdoc-var">Roo.XComponent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">) {
     </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
