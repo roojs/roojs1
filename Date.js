@@ -255,8 +255,9 @@ Date.parseDate = function(input, format) {
     var func = Date.parseFunctions[format];
     return Date[func](input);
 };
-
-// private
+/**
+ * @private
+ */
 Date.createParser = function(format) {
     var funcName = "parse" + Date.parseFunctions.count++;
     var regexNum = Date.parseRegexes.length;
