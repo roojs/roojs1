@@ -1,0 +1,11 @@
+{
+  "props": [
+    {
+      "name": "fields",
+      "type": "Array",
+      "desc": "An array of field definition objects, or field name strings.",
+      "memberOf": ""
+    }
+  ],
+  "events": []
+}
