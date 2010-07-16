@@ -36,8 +36,6 @@
  * 
  * 
  * 
- * Ext.apply(_T, _T[lang]);
- * 
  **/
  
 Roo.Login = function(cfg)
