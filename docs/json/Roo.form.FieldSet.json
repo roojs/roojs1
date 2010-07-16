@@ -1,0 +1,17 @@
+{
+  "props": [
+    {
+      "name": "autoCreate",
+      "type": "String/Object",
+      "desc": "A DomHelper element spec used to autocreate the fieldset (defaults to {tag: 'fieldset', cn: {tag:'legend'}})",
+      "memberOf": ""
+    },
+    {
+      "name": "legend",
+      "type": "String",
+      "desc": "The text to display as the legend for the FieldSet (defaults to '')",
+      "memberOf": ""
+    }
+  ],
+  "events": []
+}
