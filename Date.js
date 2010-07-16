@@ -313,7 +313,7 @@ Date.createParser = function(format) {
         + ";}";
 
     Date.parseRegexes[regexNum] = new RegExp("^" + regex + "$");
-     /** eval:var:zzzzzzzzzzzzz */
+    /* eval:var:zzzzzzzzzzzzz */
     eval(code);
 };
 
