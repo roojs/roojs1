@@ -1,0 +1,1969 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=undefined" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		
+		<title>JsDoc Reference - Roo.form.Field</title>
+		
+		
+	<link rel="stylesheet" type="text/css" href="../../css/roojs.css" />		
+	<link rel="stylesheet" type="text/css" href="../default.css" />
+	
+	
+	<script type="text/javascript" src="../page.js">
+	
+	</script>
+	 
+		
+	</head>
+
+	<body onload="RooDocsPage.onload();">
+	 
+	
+<div class="body-wrap">
+
+    <!-- ============================== links to methods. ================================= -->	
+
+    <div class="top-tools">
+    <!--
+        <a class="inner-link" href="#Roo.form.Field-props"><img src="resources/s.gif" class="item-icon icon-prop">Properties</a>
+        <a class="inner-link" href="#Roo.form.Field-methods"><img src="resources/s.gif" class="item-icon icon-method">Methods</a>
+        <a class="inner-link" href="#Roo.form.Field-events"><img src="resources/s.gif" class="item-icon icon-event">Events</a>
+        <a class="inner-link" href="#Roo.form.Field-configs"><img src="resources/s.gif" class="item-icon icon-config">Config Options</a>
+        <a class="bookmark" href="NEED_TO_CREATE_DIRECT_LINK_HREF"><img src="resources/s.gif" class="item-icon icon-fav">Direct Link</a>
+	-->
+    </div>
+
+    
+<!-- ============================== inheritance Block. ================================= -->	
+	
+		<div class="inheritance res-block">
+		   <pre class="res-block-inner"><a href="./Roo.BoxComponent.html#constructor" roo:cls="Roo.BoxComponent.html#constructor">Roo.BoxComponent</a>
+<img src="../../images/default/s.gif" height="1"  width="20"/><img class="elbow" src="../../images/default/tree/elbow-end.gif"/>Roo.form.Field 
+
+		   </pre>
+		</div>
+       
+<!-- ============================== class title / details ============================ -->
+    
+    
+    <h1 class="classTitle">
+				
+				Class Roo.form.Field
+			</h1>
+			
+    <table cellspacing="0" class="class-summary-table">
+	
+		<tr><td class="label">Package:</td><td class="hd-info">Roo.form</td></tr>
+	
+        <tr><td class="label">Defined In:</td><td class="hd-info">
+			
+					<a href="./src/Roo_form_Field.js.html">Roo/form/Field.js</a>.
+			
+	</td></tr>
+        <tr><td class="label">Class:</td><td class="hd-info">Field</td></tr>
+	
+	
+	
+	
+		<tr><td class="label">Extends:</td><td class="hd-info">
+			<a href="./Roo.BoxComponent.html#constructor" roo:cls="Roo.BoxComponent.html#constructor">Roo.BoxComponent</a>
+	
+		</td></tr>    
+	
+	
+    </table>
+
+    
+<!-- ============================== class summary ========================== -->			
+    <div class="description">
+	Base class for form fields that provides default event handling, sizing, value handling and other functionality.
+    </div>
+
+	
+<!-- ============================== Class comment block... ========================== -->					
+
+<div class="comments">
+	<b>Class Comments / Notes</B> =>  
+	<u onclick="parent.CommentDialog.showCommentId = 'Roo.form.Field';">[Add Your comment/notes about this class]</u>
+	<br/>
+	<iframe frameborder="0"  id="comments-Roo.form" style="border: none;width:100%;" 
+		src="/blog.php/GtkDjsComments/Roo.form.Field.html"></iframe>
+</div>
+	
+
+		
+<!-- ============================== config options ========================== -->						
+		 
+    
+    
+		
+    <div class="hr"></div>
+    <a id="Roo.form.Field-configs"></a>
+		
+    
+     
+    
+	
+      <table cellspacing="0" class="member-table">   
+      <caption>Config Options (Usually are also Properties)</caption>
+    
+	
+        <tr>
+            <th class="sig-header" colspan="2">Options</th>
+	    
+            <th class="msource-header">Defined By</th>
+        </tr>
+	
+	
+	
+	
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.form.Field-cfg-autoCreate" name=".autoCreate"></a>
+			<div class="fixedFont">
+				<b  class="itemname">autoCreate</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/Object
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">A DomHelper element spec, or true for a default element spec (defaults to<br/>{tag: "input", type: "text", size: "20", autocomplete: "off"})</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">A DomHelper element spec, or true for a default element spec (defaults to<br/>{tag: "input", type: "text", size: "20", autocomplete: "off"})</div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.form.Field
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt1 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.form.Field-cfg-cls" name=".cls"></a>
+			<div class="fixedFont">
+				<b  class="itemname">cls</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">A CSS class to apply to the field's underlying element.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">A CSS class to apply to the field's underlying element.</div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.form.Field
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.form.Field-cfg-disabled" name=".disabled"></a>
+			<div class="fixedFont">
+				<b  class="itemname">disabled</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">True to disable the field (defaults to false).</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">True to disable the field (defaults to false).</div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.form.Field
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt1 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.form.Field-cfg-fieldClass" name=".fieldClass"></a>
+			<div class="fixedFont">
+				<b  class="itemname">fieldClass</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">The default CSS class for the field (defaults to "x-form-field")</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">The default CSS class for the field (defaults to "x-form-field")</div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.form.Field
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.form.Field-cfg-fieldLabel" name=".fieldLabel"></a>
+			<div class="fixedFont">
+				<b  class="itemname">fieldLabel</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">Label to use when rendering a form.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">Label to use when rendering a form.</div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.form.Field
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt1 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.form.Field-cfg-focusClass" name=".focusClass"></a>
+			<div class="fixedFont">
+				<b  class="itemname">focusClass</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">The CSS class to use when the field receives focus (defaults to "x-form-focus")</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">The CSS class to use when the field receives focus (defaults to "x-form-focus")</div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.form.Field
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.form.Field-cfg-inputType" name=".inputType"></a>
+			<div class="fixedFont">
+				<b  class="itemname">inputType</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">The type attribute for input fields -- e.g.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">The type attribute for input fields -- e.g. radio, text, password (defaults to "text").</div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.form.Field
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt1 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.form.Field-cfg-invalidClass" name=".invalidClass"></a>
+			<div class="fixedFont">
+				<b  class="itemname">invalidClass</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">The CSS class to use when marking a field invalid (defaults to "x-form-invalid")</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">The CSS class to use when marking a field invalid (defaults to "x-form-invalid")</div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.form.Field
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.form.Field-cfg-invalidText" name=".invalidText"></a>
+			<div class="fixedFont">
+				<b  class="itemname">invalidText</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">The error text to use when marking a field invalid and no message is provided (defaults to "The value in this field is invalid")</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">The error text to use when marking a field invalid and no message is provided (defaults to "The value in this field is invalid")</div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.form.Field
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt1 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.form.Field-cfg-msgFx" name=".msgFx"></a>
+			<div class="fixedFont">
+				<b  class="itemname">msgFx</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short"><b>Experimental</b> The effect used when displaying a validation message under the field (defaults to 'normal').</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long"><b>Experimental</b> The effect used when displaying a validation message under the field (defaults to 'normal').</div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.form.Field
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.form.Field-cfg-msgTarget" name=".msgTarget"></a>
+			<div class="fixedFont">
+				<b  class="itemname">msgTarget</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">The location where error text should display.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">The location where error text should display.  Should be one of the following values (defaults to 'qtip'):<br/><pre><br/>Value         Description<br/>-----------   ----------------------------------------------------------------------<br/>qtip          Display a quick tip when the user hovers over the field<br/>title         Display a default browser title attribute popup<br/>under         Add a block div beneath the field containing the error text<br/>side          Add an error icon to the right of the field with a popup on hover<br/>[element id]  Add the error text directly to the innerHTML of the specified element<br/></pre></div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.form.Field
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt1 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.form.Field-cfg-name" name=".name"></a>
+			<div class="fixedFont">
+				<b  class="itemname">name</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">The field's HTML name attribute.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">The field's HTML name attribute.</div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.form.Field
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.form.Field-cfg-qtip" name=".qtip"></a>
+			<div class="fixedFont">
+				<b  class="itemname">qtip</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">Mouse over tip</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">Mouse over tip</div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.form.Field
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt1 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.form.Field-cfg-readOnly" name=".readOnly"></a>
+			<div class="fixedFont">
+				<b  class="itemname">readOnly</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">True to mark the field as readOnly in HTML (defaults to false) -- Note: this only sets the element's readOnly DOM attribute.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">True to mark the field as readOnly in HTML (defaults to false) -- Note: this only sets the element's readOnly DOM attribute.</div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.form.Field
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.form.Field-cfg-tabIndex" name=".tabIndex"></a>
+			<div class="fixedFont">
+				<b  class="itemname">tabIndex</b> : <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">The tabIndex for this field.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">The tabIndex for this field. Note this only applies to fields that are rendered, not those which are built via applyTo (defaults to undefined).</div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.form.Field
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt1 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.form.Field-cfg-validateOnBlur" name=".validateOnBlur"></a>
+			<div class="fixedFont">
+				<b  class="itemname">validateOnBlur</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">Whether the field should validate when it loses focus (defaults to true).</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">Whether the field should validate when it loses focus (defaults to true).</div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.form.Field
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.form.Field-cfg-validationDelay" name=".validationDelay"></a>
+			<div class="fixedFont">
+				<b  class="itemname">validationDelay</b> : <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">The length of time in milliseconds after user input begins until validation is initiated (defaults to 250)</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">The length of time in milliseconds after user input begins until validation is initiated (defaults to 250)</div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.form.Field
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt1 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.form.Field-cfg-validationEvent" name=".validationEvent"></a>
+			<div class="fixedFont">
+				<b  class="itemname">validationEvent</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/Boolean
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">The event that should initiate field validation.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">The event that should initiate field validation. Set to false to disable<br/>      automatic validation (defaults to "keyup").</div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.form.Field
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.form.Field-cfg-value" name=".value"></a>
+			<div class="fixedFont">
+				<b  class="itemname">value</b> : Mixed
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">A value to initialize this field with.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">A value to initialize this field with.</div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.form.Field
+				
+		    </td>
+		</tr>
+        
+        
+    </table>
+  		
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- ============================== public properties ==================== -->	
+  
+  
+  
+    <a id="Roo.form.Field-props"></a>      
+    
+    
+
+    
+    
+     <table cellspacing="0" class="member-table">
+      <caption class="Empty">Public Properties - Has None</caption>
+     </table>
+    
+    
+     
+    
+  <!-- ============================== methods summary / details ======================== -->
+  
+  
+  <a id="Roo.form.Field-methods"></a>
+	<!-- constructor?? -->
+  	
+	<!-- static's first 
+	
+	
+	-->
+	
+	<!-- then dynamics first -->
+	
+  
+  
+    
+    
+    
+      <table cellspacing="0" class="member-table">
+      <caption>Public Methods</caption>
+        <tr>
+            <th class="sig-header" colspan="2">Method</th>            
+            <th class="msource-header">Defined By</th>
+
+        </tr>
+        
+	
+	
+	 
+	
+        
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.form-method-Field"   name=".Field"></a>
+		<div class="fixedFont">
+			<span class="attributes">new <B>Roo.form.</B></span><b class="itemname">Field</b>
+				
+				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>config</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+		 
+			<div class="short">Create a new Roo.form.Field</div> 
+		 
+		 
+                    <div class="long">
+			
+			
+			
+				Create a new Roo.form.Field
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>config</b>
+						
+					</dt>
+					<dd>Configuration options</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.form.Field-method-applyTo"   name=".applyTo"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">applyTo</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement/Element <B><i>el</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="./Roo.form.Field.html#constructor" roo:cls="Roo.form.Field.html#constructor">Roo.form.Field</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Apply the behaviors of this component to an existing element.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Apply the behaviors of this component to an existing element. <b>This is used instead of render().</b>
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement/Element</span>  <b>el</b>
+						
+					</dt>
+					<dd>The id of the node, a DOM node or an existing Element</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Roo.form.Field.html#constructor" roo:cls="Roo.form.Field.html#constructor">Roo.form.Field</a></span>  this</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.form.Field
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.form.Field-method-clearInvalid"   name=".clearInvalid"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">clearInvalid</b>
+				
+				 () 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Clear any invalid styles/messages for this field</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Clear any invalid styles/messages for this field
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.form.Field
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.form.Field-method-getName"   name=".getName"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">getName</b>
+				
+				 () 
+			
+				
+					 : 
+					
+						
+						<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Returns the name attribute of the field if available</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Returns the name attribute of the field if available
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  name The field name</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.form.Field
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.form.Field-method-getRawValue"   name=".getRawValue"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">getRawValue</b>
+				
+				 () 
+			
+				
+					 : 
+					
+						
+						Mixed
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Returns the raw data value which may or may not be a valid, defined value.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Returns the raw data value which may or may not be a valid, defined value.  To return a normalized value see {<b>link</b> <b>getValue</b>}.
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont">Mixed</span>  value The field value</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.form.Field
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.form.Field-method-getValue"   name=".getValue"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">getValue</b>
+				
+				 () 
+			
+				
+					 : 
+					
+						
+						Mixed
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Returns the normalized data value (undefined or emptyText will be returned as '').</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {<b>link</b> <b>getRawValue</b>}.
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont">Mixed</span>  value The field value</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.form.Field
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.form.Field-method-isDirty"   name=".isDirty"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">isDirty</b>
+				
+				 () 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Returns true if this field has been changed since it was originally loaded and is not disabled.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Returns true if this field has been changed since it was originally loaded and is not disabled.
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.form.Field
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.form.Field-method-isValid"   name=".isValid"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">isValid</b>
+				
+				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a> <B><i>preventMark</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Returns whether or not the field value is currently valid</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Returns whether or not the field value is currently valid
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a></span>  <b>preventMark</b>
+						
+					</dt>
+					<dd>True to disable marking the field invalid</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a></span>  True if the value is valid, else false</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.form.Field
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.form.Field-method-markInvalid"   name=".markInvalid"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">markInvalid</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>msg</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Mark this field as invalid</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Mark this field as invalid
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>msg</b>
+						
+					</dt>
+					<dd>The validation message</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.form.Field
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.form.Field-method-reset"   name=".reset"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">reset</b>
+				
+				 () 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Resets the current field value to the originally loaded value and clears any validation messages</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Resets the current field value to the originally loaded value and clears any validation messages
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.form.Field
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.form.Field-method-setRawValue"   name=".setRawValue"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">setRawValue</b>
+				
+				 (Mixed <B><i>value</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Sets the underlying DOM field's value directly, bypassing validation.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Sets the underlying DOM field's value directly, bypassing validation.  To set the value with validation see {<b>link</b> <b>setValue</b>}.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Mixed</span>  <b>value</b>
+						
+					</dt>
+					<dd>The value to set</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.form.Field
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.form.Field-method-setValue"   name=".setValue"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">setValue</b>
+				
+				 (Mixed <B><i>value</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Sets a data value into the field and validates it.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Sets a data value into the field and validates it.  To set the value directly without validation see {<b>link</b> <b>setRawValue</b>}.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Mixed</span>  <b>value</b>
+						
+					</dt>
+					<dd>The value to set</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.form.Field
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.form.Field-method-validate"   name=".validate"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">validate</b>
+				
+				 () 
+			
+				
+					 : 
+					
+						
+						<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Validates the field value</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Validates the field value
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a></span>  True if the value is valid, else false</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.form.Field
+		&nbsp;
+            </td>
+        </tr>
+	
+	                                               
+    </table>
+
+  
+  <!-- ============================== events summary / details ======================== -->
+  
+  
+  <a id="Roo.form.Field-events"></a>
+    
+  
+  	
+   
+  
+    
+    
+    
+      <table cellspacing="0" class="member-table">
+		<caption>Events</caption>
+	      <thead>
+		<tr>
+		    <th class="sig-header" colspan="2">Event</th>            
+		    <th class="msource-header">Defined By</th>
+
+		</tr>
+	      </thead>  
+	
+	
+	 
+	
+        
+          <tr class="method-row expandable config-row-alt0 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.form.Field-event-*blur"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">blur</b> (<a href="./Roo.form.Field.html#constructor" roo:cls="Roo.form.Field.html#constructor">Roo.form.Field</a> <B><i>this</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires when this field loses input focus.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires when this field loses input focus.
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.form.Field.html#constructor" roo:cls="Roo.form.Field.html#constructor">Roo.form.Field</a></span> <b>this</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.form.Field
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt1 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.form.Field-event-*change"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">change</b> (<a href="./Roo.form.Field.html#constructor" roo:cls="Roo.form.Field.html#constructor">Roo.form.Field</a> <B><i>this</i></B>, Mixed <B><i>newValue</i></B>, Mixed <B><i>oldValue</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires just before the field blurs if the field value has changed.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires just before the field blurs if the field value has changed.
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.form.Field.html#constructor" roo:cls="Roo.form.Field.html#constructor">Roo.form.Field</a></span> <b>this</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont">Mixed</span> <b>newValue</b>
+						
+					</dt>
+					<dd>The new value</dd>
+				
+					<dt>
+						<span class="fixedFont">Mixed</span> <b>oldValue</b>
+						
+					</dt>
+					<dd>The original value</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.form.Field
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt0 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.form.Field-event-*focus"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">focus</b> (<a href="./Roo.form.Field.html#constructor" roo:cls="Roo.form.Field.html#constructor">Roo.form.Field</a> <B><i>this</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires when this field receives input focus.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires when this field receives input focus.
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.form.Field.html#constructor" roo:cls="Roo.form.Field.html#constructor">Roo.form.Field</a></span> <b>this</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.form.Field
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt1 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.form.Field-event-*invalid"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">invalid</b> (<a href="./Roo.form.Field.html#constructor" roo:cls="Roo.form.Field.html#constructor">Roo.form.Field</a> <B><i>this</i></B>, <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>msg</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires after the field has been marked as invalid.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires after the field has been marked as invalid.
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.form.Field.html#constructor" roo:cls="Roo.form.Field.html#constructor">Roo.form.Field</a></span> <b>this</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span> <b>msg</b>
+						
+					</dt>
+					<dd>The validation message</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.form.Field
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt0 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.form.Field-event-*specialkey"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">specialkey</b> (<a href="./Roo.form.Field.html#constructor" roo:cls="Roo.form.Field.html#constructor">Roo.form.Field</a> <B><i>this</i></B>, <a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a> <B><i>e</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires when any key related to navigation (arrows, tab, enter, esc, etc.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires when any key related to navigation (arrows, tab, enter, esc, etc.) is pressed.  You can check<br/>{<b>link</b> Roo.EventObject<b>getKey</b>} to determine which key was pressed.
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.form.Field.html#constructor" roo:cls="Roo.form.Field.html#constructor">Roo.form.Field</a></span> <b>this</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a></span> <b>e</b>
+						
+					</dt>
+					<dd>The event object</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.form.Field
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt1 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.form.Field-event-*valid"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">valid</b> (<a href="./Roo.form.Field.html#constructor" roo:cls="Roo.form.Field.html#constructor">Roo.form.Field</a> <B><i>this</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires after the field has been validated with no errors.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires after the field has been validated with no errors.
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.form.Field.html#constructor" roo:cls="Roo.form.Field.html#constructor">Roo.form.Field</a></span> <b>this</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.form.Field
+            </td>
+        </tr>
+	
+	                                               
+    </table>
+
+  
+  
+  
+ 
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Fri Jul 16 2010 15:55:27 GMT+0800 (HKT)
+			Based on 
+			<a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a>  
+		</div>
+	</body>
+</html>
