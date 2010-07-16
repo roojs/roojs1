@@ -1,0 +1,479 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=undefined" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		
+		<title>JsDoc Reference - Roo.form.TriggerField</title>
+		
+		
+	<link rel="stylesheet" type="text/css" href="../../css/roojs.css" />		
+	<link rel="stylesheet" type="text/css" href="../default.css" />
+	
+	
+	<script type="text/javascript" src="../page.js">
+	
+	</script>
+	 
+		
+	</head>
+
+	<body onload="RooDocsPage.onload();">
+	 
+	
+<div class="body-wrap">
+
+    <!-- ============================== links to methods. ================================= -->	
+
+    <div class="top-tools">
+    <!--
+        <a class="inner-link" href="#Roo.form.TriggerField-props"><img src="resources/s.gif" class="item-icon icon-prop">Properties</a>
+        <a class="inner-link" href="#Roo.form.TriggerField-methods"><img src="resources/s.gif" class="item-icon icon-method">Methods</a>
+        <a class="inner-link" href="#Roo.form.TriggerField-events"><img src="resources/s.gif" class="item-icon icon-event">Events</a>
+        <a class="inner-link" href="#Roo.form.TriggerField-configs"><img src="resources/s.gif" class="item-icon icon-config">Config Options</a>
+        <a class="bookmark" href="NEED_TO_CREATE_DIRECT_LINK_HREF"><img src="resources/s.gif" class="item-icon icon-fav">Direct Link</a>
+	-->
+    </div>
+
+    
+<!-- ============================== inheritance Block. ================================= -->	
+	
+		<div class="inheritance res-block">
+		   <pre class="res-block-inner"><a href="./Roo.form.TextField.html#constructor" roo:cls="Roo.form.TextField.html#constructor">Roo.form.TextField</a>
+<img src="../../images/default/s.gif" height="1"  width="20"/><img class="elbow" src="../../images/default/tree/elbow-end.gif"/>Roo.form.TriggerField 
+
+		   </pre>
+		</div>
+       
+<!-- ============================== class title / details ============================ -->
+    
+    
+    <h1 class="classTitle">
+				
+				Class Roo.form.TriggerField
+			</h1>
+			
+    <table cellspacing="0" class="class-summary-table">
+	
+		<tr><td class="label">Package:</td><td class="hd-info">Roo.form</td></tr>
+	
+        <tr><td class="label">Defined In:</td><td class="hd-info">
+			
+					<a href="./src/Roo_form_TriggerField.js.html">Roo/form/TriggerField.js</a>.
+			
+	</td></tr>
+        <tr><td class="label">Class:</td><td class="hd-info">TriggerField</td></tr>
+	
+	
+	
+	
+		<tr><td class="label">Extends:</td><td class="hd-info">
+			<a href="./Roo.form.TextField.html#constructor" roo:cls="Roo.form.TextField.html#constructor">Roo.form.TextField</a>
+	
+		</td></tr>    
+	
+	
+    </table>
+
+    
+<!-- ============================== class summary ========================== -->			
+    <div class="description">
+	Provides a convenient wrapper for TextFields that adds a clickable trigger button (looks like a combobox by default).<br/>The trigger has no default action, so you must assign a function to implement the trigger click handler by<br/>overriding {<b>link</b> <b>onTriggerClick</b>}. You can create a TriggerField directly, as it renders exactly like a combobox<br/>for which you can provide a custom implementation.  For example:<br/><pre><code><br/>var trigger = new Roo.form.TriggerField();<br/>trigger.onTriggerClick = myTriggerFn;<br/>trigger.applyTo('my-field');<br/></code></pre><br/><br/>However, in general you will most likely want to use TriggerField as the base class for a reusable component.<br/>{<b>link</b> Roo.form.DateField} and {<b>link</b> Roo.form.ComboBox} are perfect examples of this.
+    </div>
+
+	
+<!-- ============================== Class comment block... ========================== -->					
+
+<div class="comments">
+	<b>Class Comments / Notes</B> =>  
+	<u onclick="parent.CommentDialog.showCommentId = 'Roo.form.TriggerField';">[Add Your comment/notes about this class]</u>
+	<br/>
+	<iframe frameborder="0"  id="comments-Roo.form" style="border: none;width:100%;" 
+		src="/blog.php/GtkDjsComments/Roo.form.TriggerField.html"></iframe>
+</div>
+	
+
+		
+<!-- ============================== config options ========================== -->						
+		 
+    
+    
+		
+    <div class="hr"></div>
+    <a id="Roo.form.TriggerField-configs"></a>
+		
+    
+     
+    
+	
+      <table cellspacing="0" class="member-table">   
+      <caption>Config Options (Usually are also Properties)</caption>
+    
+	
+        <tr>
+            <th class="sig-header" colspan="2">Options</th>
+	    
+            <th class="msource-header">Defined By</th>
+        </tr>
+	
+	
+	
+	
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.form.TriggerField-cfg-autoCreate" name=".autoCreate"></a>
+			<div class="fixedFont">
+				<b  class="itemname">autoCreate</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/Object
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">A DomHelper element spec, or true for a default element spec (defaults to<br/>{tag: "input", type: "text", size: "16", autocomplete: "off"})</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">A DomHelper element spec, or true for a default element spec (defaults to<br/>{tag: "input", type: "text", size: "16", autocomplete: "off"})</div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.form.TriggerField
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt1 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.form.TriggerField-cfg-hideTrigger" name=".hideTrigger"></a>
+			<div class="fixedFont">
+				<b  class="itemname">hideTrigger</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">True to hide the trigger element and display only the base text field (defaults to false)</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">True to hide the trigger element and display only the base text field (defaults to false)</div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.form.TriggerField
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.form.TriggerField-cfg-triggerClass" name=".triggerClass"></a>
+			<div class="fixedFont">
+				<b  class="itemname">triggerClass</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">An additional CSS class used to style the trigger button.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">An additional CSS class used to style the trigger button.  The trigger will always get the<br/>class 'x-form-trigger' by default and triggerClass will be <b>appended</b> if specified.</div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.form.TriggerField
+				
+		    </td>
+		</tr>
+        
+        
+    </table>
+  		
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- ============================== public properties ==================== -->	
+  
+  
+  
+    <a id="Roo.form.TriggerField-props"></a>      
+    
+    
+
+    
+    
+     <table cellspacing="0" class="member-table">
+      <caption class="Empty">Public Properties - Has None</caption>
+     </table>
+    
+    
+     
+    
+  <!-- ============================== methods summary / details ======================== -->
+  
+  
+  <a id="Roo.form.TriggerField-methods"></a>
+	<!-- constructor?? -->
+  	
+	<!-- static's first 
+	
+	
+	-->
+	
+	<!-- then dynamics first -->
+	
+  
+  
+    
+    
+    
+      <table cellspacing="0" class="member-table">
+      <caption>Public Methods</caption>
+        <tr>
+            <th class="sig-header" colspan="2">Method</th>            
+            <th class="msource-header">Defined By</th>
+
+        </tr>
+        
+	
+	
+	 
+	
+        
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.form-method-TriggerField"   name=".TriggerField"></a>
+		<div class="fixedFont">
+			<span class="attributes">new <B>Roo.form.</B></span><b class="itemname">TriggerField</b>
+				
+				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>config</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+		 
+			<div class="short">Create a new Roo.form.TriggerField</div> 
+		 
+		 
+                    <div class="long">
+			
+			
+			
+				Create a new Roo.form.TriggerField
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>config</b>
+						
+					</dt>
+					<dd>Configuration options (valid {<b>Roo</b>.form.TextField} config options will also be applied<br/>to the base TextField)</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.form.TriggerField-method-autoSize"   name=".autoSize"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">autoSize</b>
+				
+				 () 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short"></div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.form.TriggerField
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.form.TriggerField-method-onTriggerClick"   name=".onTriggerClick"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">onTriggerClick</b>
+				
+				 (EventObject <B><i>e</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">The function that should handle the trigger's click event.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				The function that should handle the trigger's click event.  This method does nothing by default until overridden<br/>by an implementing function.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">EventObject</span>  <b>e</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.form.TriggerField
+		&nbsp;
+            </td>
+        </tr>
+	
+	                                               
+    </table>
+
+  
+  <!-- ============================== events summary / details ======================== -->
+  
+  
+  <a id="Roo.form.TriggerField-events"></a>
+    
+  
+  	
+   
+    
+     <table cellspacing="0" class="member-table">
+      <caption class="Empty">Events - Has None</caption>
+     </table>
+    
+    
+  
+    
+    
+  
+  
+  
+ 
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Fri Jul 16 2010 15:55:27 GMT+0800 (HKT)
+			Based on 
+			<a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a>  
+		</div>
+	</body>
+</html>
