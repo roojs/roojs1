@@ -49,7 +49,7 @@ Roo.tree.TreeLoader = function(config){
          * @param {Object} node The {@link Roo.tree.TreeNode} object being loaded.
          * @param {Object} callback The callback function specified in the {@link #load} call.
          */
-        "beforeload" : true,
+        beforeload : true,
         /**
          * @event load
          * Fires when the node has been successfuly loaded.
@@ -57,7 +57,7 @@ Roo.tree.TreeLoader = function(config){
          * @param {Object} node The {@link Roo.tree.TreeNode} object being loaded.
          * @param {Object} response The response object containing the data from the server.
          */
-        "load" : true,
+        load : true,
         /**
          * @event loadexception
          * Fires if the network request failed.
@@ -65,7 +65,7 @@ Roo.tree.TreeLoader = function(config){
          * @param {Object} node The {@link Roo.tree.TreeNode} object being loaded.
          * @param {Object} response The response object containing the data from the server.
          */
-        "loadexception" : true,
+        loadexception : true,
         /**
          * @event create
          * Fires before a node is created, enabling you to return custom Node types 
