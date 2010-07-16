@@ -1,0 +1,17 @@
+{
+  "props": [],
+  "events": [
+    {
+      "name": "beforeselect",
+      "sig": "function (_self, node, node)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires before the selected node changes, return false to cancel the change"
+    },
+    {
+      "name": "selectionchange",
+      "sig": "function (_self, node)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when the selected node changes"
+    }
+  ]
+}
