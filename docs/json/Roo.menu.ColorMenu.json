@@ -1,0 +1,11 @@
+{
+  "props": [],
+  "events": [
+    {
+      "name": "select",
+      "sig": "function (palette, color)\n{\n\n}",
+      "type": "function",
+      "desc": ""
+    }
+  ]
+}
