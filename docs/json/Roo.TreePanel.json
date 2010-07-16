@@ -1,0 +1,11 @@
+{
+  "props": [
+    {
+      "name": "tree",
+      "type": "Roo.tree.TreePanel",
+      "desc": "The tree TreePanel, with config etc.",
+      "memberOf": "Roo"
+    }
+  ],
+  "events": []
+}
