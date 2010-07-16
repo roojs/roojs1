@@ -49,7 +49,7 @@
          * @param {Object} node The {@link Roo.tree.TreeNode} object being loaded.
          * @param {Object} callback The callback function specified in the {@link #load} call.
          */
-        </span><span class="jsdoc-string">&quot;beforeload&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">beforeload </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/**
          * @event load
          * Fires when the node has been successfuly loaded.
@@ -57,7 +57,7 @@
          * @param {Object} node The {@link Roo.tree.TreeNode} object being loaded.
          * @param {Object} response The response object containing the data from the server.
          */
-        </span><span class="jsdoc-string">&quot;load&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">load </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/**
          * @event loadexception
          * Fires if the network request failed.
@@ -65,14 +65,14 @@
          * @param {Object} node The {@link Roo.tree.TreeNode} object being loaded.
          * @param {Object} response The response object containing the data from the server.
          */
-        </span><span class="jsdoc-string">&quot;loadexception&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-          </span><span class="jsdoc-comment">/**
+        </span><span class="jsdoc-var">loadexception </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
          * @event create
          * Fires before a node is created, enabling you to return custom Node types 
          * @param {Object} This TreeLoader object.
          * @param {Object} attr - the data returned from the AJAX call (modify it to suit)
          */
-        </span><span class="jsdoc-string">&quot;create&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-var">create </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
     </span><span class="jsdoc-syntax">});
 
     </span><span class="jsdoc-var">Roo.tree.TreeLoader.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
@@ -195,9 +195,7 @@
         }
     },
 
-    </span><span class="jsdoc-comment">/**
-    * Override this function for custom TreeNode node implementation
-    */
+    </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">createNode </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-comment">// apply baseAttrs, nice idea Corey!
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.baseAttrs</span><span class="jsdoc-syntax">){
