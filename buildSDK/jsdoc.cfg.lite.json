@@ -1,0 +1,13 @@
+{
+	"src" : [ 
+		"" , 
+		"Roo"
+		],
+	"exclude-src" : [
+		"roojs-all.js",
+		"roojs-debug.js"
+	],
+		
+	"templateDir" : "buildSDK/doc_templates"
+		
+}
