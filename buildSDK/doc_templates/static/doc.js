@@ -48,7 +48,7 @@ MainBody = {
                     'font-size:16px;'  +
                     'font-family:Arial,Verdana,\'Bitstream Vera Sans\',Helvetica,sans-serif;', 
                 html: '<img src="../images/roojs_logo.jpg" height="25" align="right"/>' + 
-                    '<div style="margin-left:10px;margin-top:3px;">Roo Version 1.1.1 - Documentation</div>'
+                    '<div style="margin-left:10px;margin-top:3px;">Roo Version 1.1.2 - Documentation</div>'
         });
         layout.add('north', new Roo.ContentPanel(hd, {fitToFrame:true, closable:false }));
          
