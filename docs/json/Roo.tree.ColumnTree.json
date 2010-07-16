@@ -1,0 +1,24 @@
+{
+  "props": [
+    {
+      "name": "borderWidth",
+      "type": "int",
+      "desc": "compined right/left border allowance",
+      "memberOf": ""
+    },
+    {
+      "name": "columns",
+      "type": "Object",
+      "desc": "Including width, header, renderer, cls, dataIndex",
+      "memberOf": ""
+    }
+  ],
+  "events": [
+    {
+      "name": "resize",
+      "sig": "function (w, h)\n{\n\n}",
+      "type": "function",
+      "desc": "Fire this event on a container when it resizes"
+    }
+  ]
+}
