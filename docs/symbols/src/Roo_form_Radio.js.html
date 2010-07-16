@@ -1,0 +1,34 @@
+<html><head><title>/home/alan/gitlive/roojs1/Roo/form/Radio.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+ 
+/**
+ * @class Roo.form.Radio
+ * @extends Roo.form.Checkbox
+ * Single radio field.  Same as Checkbox, but provided as a convenience for automatically setting the input type.
+ * Radio grouping is handled automatically by the browser if you give each radio in a group the same name.
+ * @constructor
+ * Creates a new Radio
+ * @param {Object} config Configuration options
+ */
+</span><span class="jsdoc-var">Roo.form.Radio </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+    </span><span class="jsdoc-var">Roo.form.Radio.superclass.constructor.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">);
+};
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.form.Radio</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.form.Checkbox</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-var">inputType</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'radio'</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * If this radio is part of a group, it will return the selected value
+     * @return {String}
+     */
+    </span><span class="jsdoc-var">getGroupValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.up</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'form'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'input[name='</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.el.dom.name</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">']:checked'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.value</span><span class="jsdoc-syntax">;
+    }
+});</span></code></body></html>
