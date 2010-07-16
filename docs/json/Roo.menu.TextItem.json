@@ -1,0 +1,17 @@
+{
+  "props": [
+    {
+      "name": "hideOnClick",
+      "type": "Boolean",
+      "desc": "True to hide the containing menu after this item is clicked (defaults to false)",
+      "memberOf": ""
+    },
+    {
+      "name": "itemCls",
+      "type": "String",
+      "desc": "The default CSS class to use for text items (defaults to \"x-menu-text\")",
+      "memberOf": ""
+    }
+  ],
+  "events": []
+}
