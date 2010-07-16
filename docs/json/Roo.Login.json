@@ -1,0 +1,17 @@
+{
+  "props": [
+    {
+      "name": "method",
+      "type": "String",
+      "desc": "Method used to query for login details.",
+      "memberOf": ""
+    },
+    {
+      "name": "url",
+      "type": "String",
+      "desc": "URL to query login data. - eg. baseURL + '/Login.php'",
+      "memberOf": ""
+    }
+  ],
+  "events": []
+}
