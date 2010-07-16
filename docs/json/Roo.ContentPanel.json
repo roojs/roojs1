@@ -1,0 +1,102 @@
+{
+  "props": [
+    {
+      "name": "adjustments",
+      "type": "Array",
+      "desc": "Values to <b>add</b> to the width/height when doing a {@link #fitToFrame} (default is [0, 0])",
+      "memberOf": ""
+    },
+    {
+      "name": "autoCreate",
+      "type": "Boolean/Object",
+      "desc": "True to auto generate the DOM element for this panel, or a {@link Roo.DomHelper} config of the element to create",
+      "memberOf": ""
+    },
+    {
+      "name": "autoScroll",
+      "type": "Boolean",
+      "desc": "True to scroll overflow in this panel (use with {@link #fitToFrame})",
+      "memberOf": ""
+    },
+    {
+      "name": "background",
+      "type": "Boolean",
+      "desc": "True if the panel should not be activated when it is added (defaults to false)",
+      "memberOf": ""
+    },
+    {
+      "name": "closable",
+      "type": "Boolean",
+      "desc": "True if the panel can be closed/removed",
+      "memberOf": ""
+    },
+    {
+      "name": "fitContainer",
+      "type": "Boolean",
+      "desc": "When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)",
+      "memberOf": ""
+    },
+    {
+      "name": "fitToFrame",
+      "type": "Boolean",
+      "desc": "True for this panel to adjust its size to fit when the region resizes  (defaults to false)",
+      "memberOf": ""
+    },
+    {
+      "name": "loadOnce",
+      "type": "Boolean",
+      "desc": "When used with {@link #url}, calls {@link #setUrl} with this value",
+      "memberOf": ""
+    },
+    {
+      "name": "params",
+      "type": "String/Object",
+      "desc": "When used with {@link #url}, calls {@link #setUrl} with this value",
+      "memberOf": ""
+    },
+    {
+      "name": "resizeEl",
+      "type": "String/HTMLElement/Element",
+      "desc": "An element to resize if {@link #fitToFrame} is true (instead of this panel's element)",
+      "memberOf": ""
+    },
+    {
+      "name": "title",
+      "type": "String",
+      "desc": "The title for this panel",
+      "memberOf": ""
+    },
+    {
+      "name": "toolbar",
+      "type": "Toolbar",
+      "desc": "A toolbar for this panel",
+      "memberOf": ""
+    },
+    {
+      "name": "url",
+      "type": "String",
+      "desc": "Calls {@link #setUrl} with this value",
+      "memberOf": ""
+    }
+  ],
+  "events": [
+    {
+      "name": "activate",
+      "sig": "function (_self)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when this panel is activated."
+    },
+    {
+      "name": "deactivate",
+      "sig": "function (_self)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when this panel is activated."
+    },
+    {
+      "name": "resize",
+      "sig": "function (_self, width, height)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when this panel is resized if fitToFrame is true."
+    }
+  ]
+}
