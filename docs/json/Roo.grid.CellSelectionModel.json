@@ -1,0 +1,23 @@
+{
+  "props": [],
+  "events": [
+    {
+      "name": "beforerowselect",
+      "sig": "function (_self, rowIndex, colIndex)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires before a cell is selected."
+    },
+    {
+      "name": "cellselect",
+      "sig": "function (_self, rowIndex, colIndex)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when a cell is selected."
+    },
+    {
+      "name": "selectionchange",
+      "sig": "function (_self, selection)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when the active selection changes."
+    }
+  ]
+}
