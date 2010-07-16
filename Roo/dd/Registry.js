@@ -36,7 +36,7 @@ Roo.dd.Registry = function(){
     return {
     /**
      * Register a drag drop element
-     * @param {String/HTMLElement) element The id or DOM node to register
+     * @param {String|HTMLElement) element The id or DOM node to register
      * @param {Object} data (optional) A custom data object that will be passed between the elements that are involved
      * in drag drop operations.  You can populate this object with any arbitrary properties that your own code
      * knows how to interpret, plus there are some specific properties known to the Registry that should be
@@ -70,7 +70,7 @@ isHandle   True if the element passed in triggers<br />
 
     /**
      * Unregister a drag drop element
-     * @param {String/HTMLElement) element The id or DOM node to unregister
+     * @param {String|HTMLElement) element The id or DOM node to unregister
      */
         unregister : function(el){
             var id = getId(el, false);
@@ -88,7 +88,7 @@ isHandle   True if the element passed in triggers<br />
 
     /**
      * Returns the handle registered for a DOM Node by id
-     * @param {String/HTMLElement} id The DOM node or id to look up
+     * @param {String|HTMLElement} id The DOM node or id to look up
      * @return {Object} handle The custom handle data
      */
         getHandle : function(id){
@@ -110,7 +110,7 @@ isHandle   True if the element passed in triggers<br />
 
     /**
      * Returns a custom data object that is registered for a DOM node by id
-     * @param {String/HTMLElement} id The DOM node or id to look up
+     * @param {String|HTMLElement} id The DOM node or id to look up
      * @return {Object} data The custom data
      */
         getTarget : function(id){
