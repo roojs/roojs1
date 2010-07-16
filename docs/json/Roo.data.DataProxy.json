@@ -1,0 +1,23 @@
+{
+  "props": [],
+  "events": [
+    {
+      "name": "beforeload",
+      "sig": "function (This, params)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires before a network request is made to retrieve a data object."
+    },
+    {
+      "name": "load",
+      "sig": "function (This, o, arg)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires before the load method's callback is called."
+    },
+    {
+      "name": "loadexception",
+      "sig": "function (This, o, arg, e)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires if an Exception occurs during data retrieval."
+    }
+  ]
+}
