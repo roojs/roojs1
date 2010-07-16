@@ -1,0 +1,23 @@
+{
+  "props": [
+    {
+      "name": "autoCreate",
+      "type": "String/Object",
+      "desc": "A DomHelper element spec, or true for a default element spec (defaults to\n{tag: \"input\", type: \"text\", size: \"16\", autocomplete: \"off\"})",
+      "memberOf": ""
+    },
+    {
+      "name": "hideTrigger",
+      "type": "Boolean",
+      "desc": "True to hide the trigger element and display only the base text field (defaults to false)",
+      "memberOf": ""
+    },
+    {
+      "name": "triggerClass",
+      "type": "String",
+      "desc": "An additional CSS class used to style the trigger button.  The trigger will always get the\nclass 'x-form-trigger' by default and triggerClass will be <b>appended</b> if specified.",
+      "memberOf": ""
+    }
+  ],
+  "events": []
+}
