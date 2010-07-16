@@ -1,0 +1,60 @@
+{
+  "props": [
+    {
+      "name": "buttonAlign",
+      "type": "String",
+      "desc": "Valid values are \"left,\" \"center\" and \"right\" (defaults to \"center\")",
+      "memberOf": ""
+    },
+    {
+      "name": "itemCls",
+      "type": "String",
+      "desc": "A css class to apply to the x-form-item of fields. This property cascades to child containers.",
+      "memberOf": ""
+    },
+    {
+      "name": "labelAlign",
+      "type": "String",
+      "desc": "Valid values are \"left,\" \"top\" and \"right\" (defaults to \"left\").\nThis property cascades to child containers if not set.",
+      "memberOf": ""
+    },
+    {
+      "name": "labelWidth",
+      "type": "Number",
+      "desc": "The width of labels. This property cascades to child containers.",
+      "memberOf": ""
+    },
+    {
+      "name": "minButtonWidth",
+      "type": "Number",
+      "desc": "Minimum width of all buttons in pixels (defaults to 75)",
+      "memberOf": ""
+    },
+    {
+      "name": "monitorPoll",
+      "type": "Number",
+      "desc": "The milliseconds to poll valid state, ignored if monitorValid is not true (defaults to 200)",
+      "memberOf": ""
+    },
+    {
+      "name": "monitorValid",
+      "type": "Boolean",
+      "desc": "If true the form monitors its valid state <b>client-side</b> and\nfires a looping event with that state. This is required to bind buttons to the valid\nstate using the config value formBind:true on the button.",
+      "memberOf": ""
+    }
+  ],
+  "events": [
+    {
+      "name": "clientvalidation",
+      "sig": "function (_self, valid)\n{\n\n}",
+      "type": "function",
+      "desc": "If the monitorValid config option is true, this event fires repetitively to notify of valid state"
+    },
+    {
+      "name": "rendered",
+      "sig": "function (form)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when the form is rendered"
+    }
+  ]
+}
