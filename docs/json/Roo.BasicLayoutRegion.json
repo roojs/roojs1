@@ -1,0 +1,71 @@
+{
+  "props": [],
+  "events": [
+    {
+      "name": "beforeremove",
+      "sig": "function (_self, panel, e)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires before a panel is removed (or closed). To cancel the removal set \"e.cancel = true\" on the event argument."
+    },
+    {
+      "name": "collapsed",
+      "sig": "function (_self)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when this region is collapsed."
+    },
+    {
+      "name": "expanded",
+      "sig": "function (_self)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when this region is expanded."
+    },
+    {
+      "name": "invalidated",
+      "sig": "function (_self)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when the layout for this region is changed."
+    },
+    {
+      "name": "panelactivated",
+      "sig": "function (_self, panel)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when a panel is activated."
+    },
+    {
+      "name": "paneladded",
+      "sig": "function (_self, panel)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when a panel is added."
+    },
+    {
+      "name": "panelremoved",
+      "sig": "function (_self, panel)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when a panel is removed."
+    },
+    {
+      "name": "resized",
+      "sig": "function (_self, newSize)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when the user resizes this region."
+    },
+    {
+      "name": "slidehide",
+      "sig": "function (_self)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when this region slides out of view."
+    },
+    {
+      "name": "slideshow",
+      "sig": "function (_self)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when this region is slid into view."
+    },
+    {
+      "name": "visibilitychange",
+      "sig": "function (_self, visibility)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when this region is shown or hidden"
+    }
+  ]
+}
