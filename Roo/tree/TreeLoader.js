@@ -72,7 +72,7 @@ Roo.tree.TreeLoader = function(config){
          * @param {Object} This TreeLoader object.
          * @param {Object} attr - the data returned from the AJAX call (modify it to suit)
          */
-        "create" : true
+        create : true
     });
 
     Roo.tree.TreeLoader.superclass.constructor.call(this);
