@@ -1,0 +1,17 @@
+{
+  "props": [
+    {
+      "name": "dropAllowed",
+      "type": "String",
+      "desc": "The CSS class returned to the drag source when drop is allowed (defaults to \"x-dd-drop-ok\").",
+      "memberOf": ""
+    },
+    {
+      "name": "dropNotAllowed",
+      "type": "String",
+      "desc": "The CSS class returned to the drag source when drop is not allowed (defaults to \"x-dd-drop-nodrop\").",
+      "memberOf": ""
+    }
+  ],
+  "events": []
+}
