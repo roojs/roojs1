@@ -195,9 +195,7 @@ Roo.extend(Roo.tree.TreeLoader, Roo.util.Observable, {
         }
     },
 
-    /**
-    * Override this function for custom TreeNode node implementation
-    */
+    // private
     createNode : function(attr){
         // apply baseAttrs, nice idea Corey!
         if(this.baseAttrs){
