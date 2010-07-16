@@ -1,0 +1,72 @@
+{
+  "props": [
+    {
+      "name": "baseAttrs",
+      "type": "Object",
+      "desc": "(optional) An object containing attributes to be added to all nodes\ncreated by this loader. If the attributes sent by the server have an attribute in this object,\nthey take priority.",
+      "memberOf": ""
+    },
+    {
+      "name": "baseParams",
+      "type": "Object",
+      "desc": "(optional) An object containing properties which\nspecify HTTP parameters to be passed to each request for child nodes.",
+      "memberOf": ""
+    },
+    {
+      "name": "clearOnLoad",
+      "type": "Boolean",
+      "desc": "(optional) Default to true. Remove previously existing\nchild nodes before loading.",
+      "memberOf": ""
+    },
+    {
+      "name": "dataUrl",
+      "type": "String",
+      "desc": "The URL from which to request a Json string which\nspecifies an array of node definition object representing the child nodes\nto be loaded.",
+      "memberOf": ""
+    },
+    {
+      "name": "queryParam",
+      "type": "String",
+      "desc": "(optional) \nName of the query as it will be passed on the querystring (defaults to 'node')\neg. the request will be ?node=[id]",
+      "memberOf": ""
+    },
+    {
+      "name": "root",
+      "type": "String",
+      "desc": "(optional) Default to false. Use this to read data from an object \nproperty on loading, rather than expecting an array. (eg. more compatible to a standard\nGrid query { data : [ .....] }",
+      "memberOf": ""
+    },
+    {
+      "name": "uiProviders",
+      "type": "Object",
+      "desc": "(optional) An object containing properties which\n\nDEPRECIATED - use 'create' event handler to modify attributes - which affect creation.\nspecify custom {@link Roo.tree.TreeNodeUI} implementations. If the optional\n<i>uiProvider</i> attribute of a returned child node is a string rather\nthan a reference to a TreeNodeUI implementation, this that string value\nis used as a property name in the uiProviders object. You can define the provider named\n'default' , and this will be used for all nodes (if no uiProvider is delivered by the node data)",
+      "memberOf": ""
+    }
+  ],
+  "events": [
+    {
+      "name": "beforeload",
+      "sig": "function (This, node, callback)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires before a network request is made to retrieve the Json text which specifies a node's children."
+    },
+    {
+      "name": "create",
+      "sig": "function (This, attr)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires before a node is created, enabling you to return custom Node types"
+    },
+    {
+      "name": "load",
+      "sig": "function (This, node, response)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when the node has been successfuly loaded."
+    },
+    {
+      "name": "loadexception",
+      "sig": "function (This, node, response)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires if the network request failed."
+    }
+  ]
+}
