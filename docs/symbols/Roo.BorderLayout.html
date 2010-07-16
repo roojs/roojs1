@@ -1,0 +1,979 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=undefined" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		
+		<title>JsDoc Reference - Roo.BorderLayout</title>
+		
+		
+	<link rel="stylesheet" type="text/css" href="../../css/roojs.css" />		
+	<link rel="stylesheet" type="text/css" href="../default.css" />
+	
+	
+	<script type="text/javascript" src="../page.js">
+	
+	</script>
+	 
+		
+	</head>
+
+	<body onload="RooDocsPage.onload();">
+	 
+	
+<div class="body-wrap">
+
+    <!-- ============================== links to methods. ================================= -->	
+
+    <div class="top-tools">
+    <!--
+        <a class="inner-link" href="#Roo.BorderLayout-props"><img src="resources/s.gif" class="item-icon icon-prop">Properties</a>
+        <a class="inner-link" href="#Roo.BorderLayout-methods"><img src="resources/s.gif" class="item-icon icon-method">Methods</a>
+        <a class="inner-link" href="#Roo.BorderLayout-events"><img src="resources/s.gif" class="item-icon icon-event">Events</a>
+        <a class="inner-link" href="#Roo.BorderLayout-configs"><img src="resources/s.gif" class="item-icon icon-config">Config Options</a>
+        <a class="bookmark" href="NEED_TO_CREATE_DIRECT_LINK_HREF"><img src="resources/s.gif" class="item-icon icon-fav">Direct Link</a>
+	-->
+    </div>
+
+    
+<!-- ============================== inheritance Block. ================================= -->	
+	
+		<div class="inheritance res-block">
+		   <pre class="res-block-inner"><a href="./Roo.LayoutManager.html#constructor" roo:cls="Roo.LayoutManager.html#constructor">Roo.LayoutManager</a>
+<img src="../../images/default/s.gif" height="1"  width="20"/><img class="elbow" src="../../images/default/tree/elbow-end.gif"/>Roo.BorderLayout 
+
+		   </pre>
+		</div>
+       
+<!-- ============================== class title / details ============================ -->
+    
+    
+    <h1 class="classTitle">
+				
+				Class Roo.BorderLayout
+			</h1>
+			
+    <table cellspacing="0" class="class-summary-table">
+	
+		<tr><td class="label">Package:</td><td class="hd-info">Roo</td></tr>
+	
+        <tr><td class="label">Defined In:</td><td class="hd-info">
+			
+					<a href="./src/Roo_BorderLayout.js.html">Roo/BorderLayout.js</a>.
+			
+	</td></tr>
+        <tr><td class="label">Class:</td><td class="hd-info">BorderLayout</td></tr>
+	
+	
+	
+	
+		<tr><td class="label">Extends:</td><td class="hd-info">
+			<a href="./Roo.LayoutManager.html#constructor" roo:cls="Roo.LayoutManager.html#constructor">Roo.LayoutManager</a>
+	
+		</td></tr>    
+	
+	
+    </table>
+
+    
+<!-- ============================== class summary ========================== -->			
+    <div class="description">
+	This class represents a common layout manager used in desktop applications. For screenshots and more details,<br/>please see: <br><br><br/><a href="http://www.jackslocum.com/yui/2006/10/19/cross-browser-web-20-layouts-with-yahoo-ui/">Cross Browser Layouts - Part 1</a><br><br/><a href="http://www.jackslocum.com/yui/2006/10/28/cross-browser-web-20-layouts-part-2-ajax-feed-viewer-20/">Cross Browser Layouts - Part 2</a><br><br><br/>Example:<br/> <pre><code><br/> var layout = new Roo.BorderLayout(document.body, {<br/>    north: {<br/>        initialSize: 25,<br/>        titlebar: false<br/>    },<br/>    west: {<br/>        split:true,<br/>        initialSize: 200,<br/>        minSize: 175,<br/>        maxSize: 400,<br/>        titlebar: true,<br/>        collapsible: true<br/>    },<br/>    east: {<br/>        split:true,<br/>        initialSize: 202,<br/>        minSize: 175,<br/>        maxSize: 400,<br/>        titlebar: true,<br/>        collapsible: true<br/>    },<br/>    south: {<br/>        split:true,<br/>        initialSize: 100,<br/>        minSize: 100,<br/>        maxSize: 200,<br/>        titlebar: true,<br/>        collapsible: true<br/>    },<br/>    center: {<br/>        titlebar: true,<br/>        autoScroll:true,<br/>        resizeTabs: true,<br/>        minTabWidth: 50,<br/>        preferredTabWidth: 150<br/>    }<br/>});<br/><br/>// shorthand<br/>var CP = Roo.ContentPanel;<br/><br/>layout.beginUpdate();<br/>layout.add("north", new CP("north", "North"));<br/>layout.add("south", new CP("south", {title: "South", closable: true}));<br/>layout.add("west", new CP("west", {title: "West"}));<br/>layout.add("east", new CP("autoTabs", {title: "Auto Tabs", closable: true}));<br/>layout.add("center", new CP("center1", {title: "Close Me", closable: true}));<br/>layout.add("center", new CP("center2", {title: "Center Panel", closable: false}));<br/>layout.getRegion("center").showPanel("center1");<br/>layout.endUpdate();<br/></code></pre><br/><br/><b>The container the layout is rendered into can be either the body element or any other element.<br/>If it is not the body element, the container needs to either be an absolute positioned element,<br/>or you will need to add "position:relative" to the css of the container.  You will also need to specify<br/>the container size if it is not the body element.</b>
+    </div>
+
+	
+<!-- ============================== Class comment block... ========================== -->					
+
+<div class="comments">
+	<b>Class Comments / Notes</B> =>  
+	<u onclick="parent.CommentDialog.showCommentId = 'Roo.BorderLayout';">[Add Your comment/notes about this class]</u>
+	<br/>
+	<iframe frameborder="0"  id="comments-Roo" style="border: none;width:100%;" 
+		src="/blog.php/GtkDjsComments/Roo.BorderLayout.html"></iframe>
+</div>
+	
+
+		
+<!-- ============================== config options ========================== -->						
+		 
+    
+    
+		
+    <div class="hr"></div>
+    <a id="Roo.BorderLayout-configs"></a>
+		
+    
+    
+     <table cellspacing="0" class="member-table">
+      <caption class="Empty">Config Options - Has None</caption>
+     </table>
+    
+    
+     
+    		
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- ============================== public properties ==================== -->	
+  
+  
+  
+    <a id="Roo.BorderLayout-props"></a>      
+    
+    
+
+    
+    
+     <table cellspacing="0" class="member-table">
+      <caption class="Empty">Public Properties - Has None</caption>
+     </table>
+    
+    
+     
+    
+  <!-- ============================== methods summary / details ======================== -->
+  
+  
+  <a id="Roo.BorderLayout-methods"></a>
+	<!-- constructor?? -->
+  	
+	<!-- static's first 
+	
+	
+	-->
+	
+	<!-- then dynamics first -->
+	
+  
+  
+    
+    
+    
+      <table cellspacing="0" class="member-table">
+      <caption>Public Methods</caption>
+        <tr>
+            <th class="sig-header" colspan="2">Method</th>            
+            <th class="msource-header">Defined By</th>
+
+        </tr>
+        
+	
+	
+	 
+	
+        
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo-method-BorderLayout"   name=".BorderLayout"></a>
+		<div class="fixedFont">
+			<span class="attributes">new <B>Roo.</B></span><b class="itemname">BorderLayout</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement/Element <B><i>container</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>config</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+		 
+			<div class="short">Create a new Roo.BorderLayout</div> 
+		 
+		 
+                    <div class="long">
+			
+			
+			
+				Create a new Roo.BorderLayout
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement/Element</span>  <b>container</b>
+						
+					</dt>
+					<dd>The container this layout is bound to</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>config</b>
+						
+					</dt>
+					<dd>Configuration options</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.BorderLayout-method-create"   name=".create"></a>
+		<div class="fixedFont">
+			<span class="attributes">Roo.BorderLayout.</span><b class="itemname">create</b>
+				
+				 (<B><i>config</i></B>, <B><i>targetEl</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Shortcut for creating a new BorderLayout object and adding one or more ContentPanels to it in a single step, handling<br/>the beginUpdate and endUpdate calls internally.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Shortcut for creating a new BorderLayout object and adding one or more ContentPanels to it in a single step, handling<br/>the beginUpdate and endUpdate calls internally.  The key to this method is the <b>panels</b> property that can be<br/>provided with each region config, which allows you to add ContentPanel configs in addition to the region configs<br/>during creation.  The following code is equivalent to the constructor-based example at the beginning of this class:<br/><pre><code><br/>// shorthand<br/>var CP = Roo.ContentPanel;<br/><br/>var layout = Roo.BorderLayout.create({<br/>    north: {<br/>        initialSize: 25,<br/>        titlebar: false,<br/>        panels: [new CP("north", "North")]<br/>    },<br/>    west: {<br/>        split:true,<br/>        initialSize: 200,<br/>        minSize: 175,<br/>        maxSize: 400,<br/>        titlebar: true,<br/>        collapsible: true,<br/>        panels: [new CP("west", {title: "West"})]<br/>    },<br/>    east: {<br/>        split:true,<br/>        initialSize: 202,<br/>        minSize: 175,<br/>        maxSize: 400,<br/>        titlebar: true,<br/>        collapsible: true,<br/>        panels: [new CP("autoTabs", {title: "Auto Tabs", closable: true})]<br/>    },<br/>    south: {<br/>        split:true,<br/>        initialSize: 100,<br/>        minSize: 100,<br/>        maxSize: 200,<br/>        titlebar: true,<br/>        collapsible: true,<br/>        panels: [new CP("south", {title: "South", closable: true})]<br/>    },<br/>    center: {<br/>        titlebar: true,<br/>        autoScroll:true,<br/>        resizeTabs: true,<br/>        minTabWidth: 50,<br/>        preferredTabWidth: 150,<br/>        panels: [<br/>            new CP("center1", {title: "Close Me", closable: true}),<br/>            new CP("center2", {title: "Center Panel", closable: false})<br/>        ]<br/>    }<br/>}, document.body);<br/><br/>layout.getRegion("center").showPanel("center1");<br/></code></pre>
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						 <b>config</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						 <b>targetEl</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.BorderLayout
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.BorderLayout-method-add"   name=".add"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">add</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>target</i></B>, <a href="./Roo.ContentPanel.html#constructor" roo:cls="Roo.ContentPanel.html#constructor">Roo.ContentPanel</a> <B><i>panel</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="./Roo.ContentPanel.html#constructor" roo:cls="Roo.ContentPanel.html#constructor">Roo.ContentPanel</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Adds a ContentPanel (or subclass) to this layout.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Adds a ContentPanel (or subclass) to this layout.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>target</b>
+						
+					</dt>
+					<dd>The target region key (north, south, east, west or center).</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.ContentPanel.html#constructor" roo:cls="Roo.ContentPanel.html#constructor">Roo.ContentPanel</a></span>  <b>panel</b>
+						
+					</dt>
+					<dd>The panel to add</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Roo.ContentPanel.html#constructor" roo:cls="Roo.ContentPanel.html#constructor">Roo.ContentPanel</a></span>  The added panel</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.BorderLayout
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.BorderLayout-method-addRegion"   name=".addRegion"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">addRegion</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>target</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>config</i></B>) 
+			
+				
+					 : 
+					
+						
+						BorderLayoutRegion
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Creates and adds a new region if it doesn't already exist.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Creates and adds a new region if it doesn't already exist.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>target</b>
+						
+					</dt>
+					<dd>The target region key (north, south, east, west or center).</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>config</b>
+						
+					</dt>
+					<dd>The regions config object</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont">BorderLayoutRegion</span>  The new region</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.BorderLayout
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.BorderLayout-method-addxtype"   name=".addxtype"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">addxtype</b>
+				
+				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>cfg</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Adds a xtype elements to the layout.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Adds a xtype elements to the layout.<br/><pre><code><br/><br/>layout.addxtype({<br/>       xtype : 'ContentPanel',<br/>       region: 'west',<br/>       items: [ .... ]<br/>   }<br/>);<br/><br/>layout.addxtype({<br/>        xtype : 'NestedLayoutPanel',<br/>        region: 'west',<br/>        layout: {<br/>           center: { },<br/>           west: { }   <br/>        },<br/>        items : [ ... list of content panels or nested layout panels.. ]<br/>   }<br/>);<br/></code></pre>
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>cfg</b>
+						
+					</dt>
+					<dd>Xtype definition of item to add.</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.BorderLayout
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.BorderLayout-method-batchAdd"   name=".batchAdd"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">batchAdd</b>
+				
+				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>regions</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Adds a batch of multiple ContentPanels dynamically by passing a special regions config object.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Adds a batch of multiple ContentPanels dynamically by passing a special regions config object.  This config<br/>object should contain properties for each region to add ContentPanels to, and each property's value should be<br/>a valid ContentPanel config object.  Example:<br/><pre><code><br/>// Create the main layout<br/>var layout = new Roo.BorderLayout('main-ct', {<br/>    west: {<br/>        split:true,<br/>        minSize: 175,<br/>        titlebar: true<br/>    },<br/>    center: {<br/>        title:'Components'<br/>    }<br/>}, 'main-ct');<br/><br/>// Create and add multiple ContentPanels at once via configs<br/>layout.batchAdd({<br/>   west: {<br/>       id: 'source-files',<br/>       autoCreate:true,<br/>       title:'Ext Source Files',<br/>       autoScroll:true,<br/>       fitToFrame:true<br/>   },<br/>   center : {<br/>       el: cview,<br/>       autoScroll:true,<br/>       fitToFrame:true,<br/>       toolbar: tb,<br/>       resizeEl:'cbody'<br/>   }<br/>});<br/></code></pre>
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>regions</b>
+						
+					</dt>
+					<dd>An object containing ContentPanel configs by region name</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.BorderLayout
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.BorderLayout-method-findPanel"   name=".findPanel"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">findPanel</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>panelId</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="./Roo.ContentPanel.html#constructor" roo:cls="Roo.ContentPanel.html#constructor">Roo.ContentPanel</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Searches all regions for a panel with the specified id</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Searches all regions for a panel with the specified id
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>panelId</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Roo.ContentPanel.html#constructor" roo:cls="Roo.ContentPanel.html#constructor">Roo.ContentPanel</a></span>  The panel or null if it wasn't found</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.BorderLayout
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.BorderLayout-method-layout"   name=".layout"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">layout</b>
+				
+				 () 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Performs a layout update.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Performs a layout update.
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.BorderLayout
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.BorderLayout-method-remove"   name=".remove"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">remove</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>target</i></B>, <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a>/String/Roo.ContentPanel <B><i>panel</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="./Roo.ContentPanel.html#constructor" roo:cls="Roo.ContentPanel.html#constructor">Roo.ContentPanel</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Remove a ContentPanel (or subclass) to this layout.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Remove a ContentPanel (or subclass) to this layout.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>target</b>
+						
+					</dt>
+					<dd>The target region key (north, south, east, west or center).</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a>/String/Roo.ContentPanel</span>  <b>panel</b>
+						
+					</dt>
+					<dd>The index, id or panel to remove</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Roo.ContentPanel.html#constructor" roo:cls="Roo.ContentPanel.html#constructor">Roo.ContentPanel</a></span>  The removed panel</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.BorderLayout
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.BorderLayout-method-restoreState"   name=".restoreState"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">restoreState</b>
+				
+				 (<a href="./Roo.state.Provider.html#constructor" roo:cls="Roo.state.Provider.html#constructor">Roo.state.Provider</a> <B><i>provider</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Restores this layout's state using Roo.state.Manager or the state provided by the passed provider.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Restores this layout's state using Roo.state.Manager or the state provided by the passed provider.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.state.Provider.html#constructor" roo:cls="Roo.state.Provider.html#constructor">Roo.state.Provider</a></span>  <b>provider</b>
+						
+					</dt>
+					<dd>(optional) An alternate state provider</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.BorderLayout
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.BorderLayout-method-showPanel"   name=".showPanel"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">showPanel</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/ContentPanel <B><i>panelId</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="./Roo.ContentPanel.html#constructor" roo:cls="Roo.ContentPanel.html#constructor">Roo.ContentPanel</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Searches all regions for a panel with the specified id and activates (shows) it.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Searches all regions for a panel with the specified id and activates (shows) it.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/ContentPanel</span>  <b>panelId</b>
+						
+					</dt>
+					<dd>The panels id or the panel itself</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Roo.ContentPanel.html#constructor" roo:cls="Roo.ContentPanel.html#constructor">Roo.ContentPanel</a></span>  The shown panel or null</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.BorderLayout
+		&nbsp;
+            </td>
+        </tr>
+	
+	                                               
+    </table>
+
+  
+  <!-- ============================== events summary / details ======================== -->
+  
+  
+  <a id="Roo.BorderLayout-events"></a>
+    
+  
+  	
+   
+    
+     <table cellspacing="0" class="member-table">
+      <caption class="Empty">Events - Has None</caption>
+     </table>
+    
+    
+  
+    
+    
+  
+  
+  
+ 
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Fri Jul 16 2010 15:55:21 GMT+0800 (HKT)
+			Based on 
+			<a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a>  
+		</div>
+	</body>
+</html>
