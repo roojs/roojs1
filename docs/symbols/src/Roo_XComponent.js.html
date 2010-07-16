@@ -10,7 +10,8 @@
  * 
  * 
  * @class Roo.XComponent
- * @extends Roo.data.Observable
+ * @extends Roo.util.Observable
+ * 
  * 
  * A delayed Element creator...
  * 
