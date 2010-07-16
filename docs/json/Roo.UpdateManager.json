@@ -1,0 +1,23 @@
+{
+  "props": [],
+  "events": [
+    {
+      "name": "beforeupdate",
+      "sig": "function (el, url, params)\n{\n\n}",
+      "type": "function",
+      "desc": "Fired before an update is made, return false from your handler and the update is cancelled."
+    },
+    {
+      "name": "failure",
+      "sig": "function (el, oResponseObject)\n{\n\n}",
+      "type": "function",
+      "desc": "Fired on update failure."
+    },
+    {
+      "name": "update",
+      "sig": "function (el, oResponseObject)\n{\n\n}",
+      "type": "function",
+      "desc": "Fired after successful update is made."
+    }
+  ]
+}
