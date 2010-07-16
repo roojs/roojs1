@@ -1,0 +1,11 @@
+{
+  "props": [],
+  "events": [
+    {
+      "name": "selectionchange",
+      "sig": "function (_self, nodes)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when the selected nodes change"
+    }
+  ]
+}
