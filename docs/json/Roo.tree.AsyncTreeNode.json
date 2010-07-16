@@ -1,0 +1,24 @@
+{
+  "props": [
+    {
+      "name": "loader",
+      "type": "TreeLoader",
+      "desc": "A TreeLoader to be used by this node (defaults to the loader defined on the tree)",
+      "memberOf": ""
+    }
+  ],
+  "events": [
+    {
+      "name": "beforeload",
+      "sig": "function (_self)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires before this node is loaded, return false to cancel"
+    },
+    {
+      "name": "load",
+      "sig": "function (_self)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when this node is loaded"
+    }
+  ]
+}
