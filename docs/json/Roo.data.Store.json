@@ -1,0 +1,108 @@
+{
+  "props": [
+    {
+      "name": "baseParams",
+      "type": "Object",
+      "desc": "An object containing properties which are to be sent as parameters\non any HTTP request",
+      "memberOf": ""
+    },
+    {
+      "name": "data",
+      "type": "Array",
+      "desc": "Inline data to be loaded when the store is initialized.",
+      "memberOf": ""
+    },
+    {
+      "name": "isLocal",
+      "type": "boolean",
+      "desc": "flag if data is locally available (and can be always looked up\nwithout a remote query - used by combo/forms at present.",
+      "memberOf": ""
+    },
+    {
+      "name": "proxy",
+      "type": "Roo.data.DataProxy",
+      "desc": "The Proxy object which provides access to a data object.",
+      "memberOf": ""
+    },
+    {
+      "name": "pruneModifiedRecords",
+      "type": "boolean",
+      "desc": "True to clear all modified record information each time the store is\nloaded or when a record is removed. (defaults to false).",
+      "memberOf": ""
+    },
+    {
+      "name": "reader",
+      "type": "Roo.data.Reader",
+      "desc": "The Reader object which processes the data object and returns\nan Array of Roo.data.record objects which are cached keyed by their <em>id</em> property.",
+      "memberOf": ""
+    },
+    {
+      "name": "remoteSort",
+      "type": "boolean",
+      "desc": "True if sorting is to be handled by requesting the Proxy to provide a refreshed\nversion of the data object in sorted order, as opposed to sorting the Record cache in place (defaults to false).",
+      "memberOf": ""
+    },
+    {
+      "name": "sortInfo",
+      "type": "Object",
+      "desc": "A config object in the format: {field: \"fieldName\", direction: \"ASC|DESC\"}",
+      "memberOf": ""
+    }
+  ],
+  "events": [
+    {
+      "name": "add",
+      "sig": "function (_self, records, index)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when Records have been added to the Store"
+    },
+    {
+      "name": "beforeload",
+      "sig": "function (_self, options)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires before a request is made for a new data object.  If the beforeload handler returns false\nthe load action will be canceled."
+    },
+    {
+      "name": "clear",
+      "sig": "function (_self)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when the data cache has been cleared."
+    },
+    {
+      "name": "datachanged",
+      "sig": "function (_self)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when the data cache has changed, and a widget which is using this Store\nas a Record cache should refresh its view."
+    },
+    {
+      "name": "load",
+      "sig": "function (_self, records, options)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires after a new set of Records has been loaded."
+    },
+    {
+      "name": "loadexception",
+      "sig": "function (, return, load, jsonData)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires if an exception occurs in the Proxy during loading.\nCalled with the signature of the Proxy's \"loadexception\" event.\nIf you return Json { data: [] , success: false, .... } then this will be thrown with the following args"
+    },
+    {
+      "name": "metachange",
+      "sig": "function (_self, meta)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when this store's reader provides new metadata (fields). This is currently only support for JsonReaders."
+    },
+    {
+      "name": "remove",
+      "sig": "function (_self, record, index)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when a Record has been removed from the Store"
+    },
+    {
+      "name": "update",
+      "sig": "function (_self, record, operation)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when a Record has been updated"
+    }
+  ]
+}
