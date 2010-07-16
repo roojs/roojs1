@@ -1,0 +1,29 @@
+{
+  "props": [],
+  "events": [
+    {
+      "name": "add",
+      "sig": "function (index, o, key)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when an item is added to the collection."
+    },
+    {
+      "name": "clear",
+      "sig": "function ()\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when the collection is cleared."
+    },
+    {
+      "name": "remove",
+      "sig": "function (o, key)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when an item is removed from the collection."
+    },
+    {
+      "name": "replace",
+      "sig": "function (key, old, new)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when an item is replaced in the collection."
+    }
+  ]
+}
