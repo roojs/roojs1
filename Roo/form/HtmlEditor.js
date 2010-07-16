@@ -8,7 +8,7 @@
  * http://www.extjs.com/license
  */
  
- /**
+ /*
   * 
   * Known bugs:
   * Default CSS appears to render it as fixed text by default (should really be Sans-Serif)
