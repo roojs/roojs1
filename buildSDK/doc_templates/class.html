@@ -96,7 +96,7 @@
         <tr><td class="label">Defined In:</td><td class="hd-info">
 			<if test="data.srcFile.length">{# isn't defined in any file #}
 					{+new Link({ 
-                        url : './symbol/src/' + Link.srcFileFlatName(data.srcFile),
+                        url : './src/' + Link.srcFileFlatName(data.srcFile),
                         text : Link.srcFileRelName(data.srcFile)
                     })+}.
 			</if>
