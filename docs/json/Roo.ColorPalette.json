@@ -1,0 +1,30 @@
+{
+  "props": [
+    {
+      "name": "allowReselect",
+      "type": "Boolean",
+      "desc": "If set to true then reselecting a color that is already selected fires the selection event",
+      "memberOf": ""
+    },
+    {
+      "name": "itemCls",
+      "type": "String",
+      "desc": "The CSS class to apply to the containing element (defaults to \"x-color-palette\")",
+      "memberOf": ""
+    },
+    {
+      "name": "value",
+      "type": "String",
+      "desc": "The initial color to highlight (should be a valid 6-digit color hex code without the # symbol).  Note that\nthe hex codes are case-sensitive.",
+      "memberOf": ""
+    }
+  ],
+  "events": [
+    {
+      "name": "select",
+      "sig": "function (_self, color)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when a color is selected"
+    }
+  ]
+}
