@@ -1,0 +1,18 @@
+{
+  "props": [
+    {
+      "name": "fck",
+      "type": "Object",
+      "desc": "options - see fck manual for details.",
+      "memberOf": ""
+    }
+  ],
+  "events": [
+    {
+      "name": "editorinit",
+      "sig": "function (_self, the)\n{\n\n}",
+      "type": "function",
+      "desc": "Fired when the editor is initialized - you can add extra handlers here.."
+    }
+  ]
+}
