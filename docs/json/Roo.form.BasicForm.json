@@ -1,0 +1,72 @@
+{
+  "props": [
+    {
+      "name": "baseParams",
+      "type": "Object",
+      "desc": "Parameters to pass with all requests. e.g. baseParams: {id: '123', foo: 'bar'}.",
+      "memberOf": ""
+    },
+    {
+      "name": "errorReader",
+      "type": "DataReader",
+      "desc": "An Roo.data.DataReader (e.g. {@link Roo.data.XmlReader}) to be used to read data when reading validation errors on \"submit\" actions.\nThis is completely optional as there is built-in support for processing JSON.",
+      "memberOf": ""
+    },
+    {
+      "name": "fileUpload",
+      "type": "Boolean",
+      "desc": "Set to true if this form is a file upload.",
+      "memberOf": ""
+    },
+    {
+      "name": "method",
+      "type": "String",
+      "desc": "The request method to use (GET or POST) for form actions if one isn't supplied in the action options.",
+      "memberOf": ""
+    },
+    {
+      "name": "reader",
+      "type": "DataReader",
+      "desc": "An Roo.data.DataReader (e.g. {@link Roo.data.XmlReader}) to be used to read data when executing \"load\" actions.\nThis is optional as there is built-in support for processing JSON.",
+      "memberOf": ""
+    },
+    {
+      "name": "timeout",
+      "type": "Number",
+      "desc": "Timeout for form actions in seconds (default is 30 seconds).",
+      "memberOf": ""
+    },
+    {
+      "name": "trackResetOnLoad",
+      "type": "Boolean",
+      "desc": "If set to true, form.reset() resets to the last loaded\nor setValues() data instead of when the form was first created.",
+      "memberOf": ""
+    },
+    {
+      "name": "url",
+      "type": "String",
+      "desc": "The URL to use for form actions if one isn't supplied in the action options.",
+      "memberOf": ""
+    }
+  ],
+  "events": [
+    {
+      "name": "actioncomplete",
+      "sig": "function (_self, action)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when an action is completed."
+    },
+    {
+      "name": "actionfailed",
+      "sig": "function (_self, action)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when an action fails."
+    },
+    {
+      "name": "beforeaction",
+      "sig": "function (_self, action)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires before any action is performed. Return false to cancel the action."
+    }
+  ]
+}
