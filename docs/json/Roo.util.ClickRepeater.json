@@ -1,0 +1,66 @@
+{
+  "props": [
+    {
+      "name": "accelerate",
+      "type": "Boolean",
+      "desc": "True if autorepeating should start slowly and accelerate.\n          \"interval\" and \"delay\" are ignored. \"immediate\" is honored.",
+      "memberOf": ""
+    },
+    {
+      "name": "delay",
+      "type": "Number",
+      "desc": "The initial delay before the repeating event begins firing.\nSimilar to an autorepeat key delay.",
+      "memberOf": ""
+    },
+    {
+      "name": "el",
+      "type": "String/HTMLElement/Element",
+      "desc": "The element to act as a button.",
+      "memberOf": ""
+    },
+    {
+      "name": "interval",
+      "type": "Number",
+      "desc": "The interval between firings of the \"click\" event. Default 10 ms.",
+      "memberOf": ""
+    },
+    {
+      "name": "pressClass",
+      "type": "String",
+      "desc": "A CSS class name to be applied to the element while pressed.",
+      "memberOf": ""
+    },
+    {
+      "name": "preventDefault",
+      "type": "Boolean",
+      "desc": "True to prevent the default click event",
+      "memberOf": ""
+    },
+    {
+      "name": "stopDefault",
+      "type": "Boolean",
+      "desc": "True to stop the default click event",
+      "memberOf": ""
+    }
+  ],
+  "events": [
+    {
+      "name": "click",
+      "sig": "function (_self)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires on a specified interval during the time the element is pressed."
+    },
+    {
+      "name": "mousedown",
+      "sig": "function (_self)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when the mouse button is depressed."
+    },
+    {
+      "name": "mouseup",
+      "sig": "function (_self)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when the mouse key is released."
+    }
+  ]
+}
