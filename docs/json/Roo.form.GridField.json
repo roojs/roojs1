@@ -1,0 +1,35 @@
+{
+  "props": [
+    {
+      "name": "addTitle",
+      "type": "String",
+      "desc": "Text to include for adding a title.",
+      "memberOf": ""
+    },
+    {
+      "name": "autoCreate",
+      "type": "String/Object",
+      "desc": "A DomHelper element spec, or true for a default element spec (defaults to\n{tag: \"input\", type: \"checkbox\", autocomplete: \"off\"})",
+      "memberOf": ""
+    },
+    {
+      "name": "height",
+      "type": "Number",
+      "desc": "- used to restrict height of grid..",
+      "memberOf": ""
+    },
+    {
+      "name": "width",
+      "type": "Number",
+      "desc": "- used to restrict width of grid..",
+      "memberOf": ""
+    },
+    {
+      "name": "xgrid",
+      "type": "Object",
+      "desc": "(xtype'd description of grid) Grid or EditorGrid",
+      "memberOf": ""
+    }
+  ],
+  "events": []
+}
