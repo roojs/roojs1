@@ -42,6 +42,7 @@ Roo.tree.TreeLoader = function(config){
     Roo.apply(this, config);
 
     this.addEvents({
+    
         /**
          * @event beforeload
          * Fires before a network request is made to retrieve the Json text which specifies a node's children.
