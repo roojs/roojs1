@@ -2,41 +2,43 @@
 
 
 /**
-* A generic Login Dialog..... - only one needed in theory!?!?
-*
-* Fires XComponent builder on success...
-* 
-* Sends 
-*    username,password, lang = for login actions.
-*    check = 1 for periodic checking that sesion is valid.
-*    passwordRequest = email request password
-*    logout = 1 = to logout
-* 
-* Affects: (this id="????" elements)
-*   loading  (removed) (used to indicate application is loading)
-*   loading-mask (hides) (used to hide application when it's building loading)
-*   
-* 
-* Usage: 
-*    
-* 
-* Myapp.login = Roo.Login({
-    url: xxxx,
-  
-    realm : 'Myapp', 
-    
-    
-    method : 'POST',
-    
-    
-    * 
-})
-* 
-* 
-* 
-* Ext.apply(_T, _T[lang]);
-* 
-**/
+ * @class Roo.Login
+ * @extends Roo.LayoutDialog
+ * A generic Login Dialog..... - only one needed in theory!?!?
+ *
+ * Fires XComponent builder on success...
+ * 
+ * Sends 
+ *    username,password, lang = for login actions.
+ *    check = 1 for periodic checking that sesion is valid.
+ *    passwordRequest = email request password
+ *    logout = 1 = to logout
+ * 
+ * Affects: (this id="????" elements)
+ *   loading  (removed) (used to indicate application is loading)
+ *   loading-mask (hides) (used to hide application when it's building loading)
+ *   
+ * 
+ * Usage: 
+ *    
+ * 
+ * Myapp.login = Roo.Login({
+     url: xxxx,
+   
+     realm : 'Myapp', 
+     
+     
+     method : 'POST',
+     
+     
+     * 
+ })
+ * 
+ * 
+ * 
+ * Ext.apply(_T, _T[lang]);
+ * 
+ **/
  
 Roo.Login = function(cfg)
 {
