@@ -66,7 +66,7 @@ Roo.tree.TreeLoader = function(config){
          * @param {Object} response The response object containing the data from the server.
          */
         "loadexception" : true,
-          /**
+        /**
          * @event create
          * Fires before a node is created, enabling you to return custom Node types 
          * @param {Object} This TreeLoader object.
