@@ -1,0 +1,11 @@
+{
+  "props": [
+    {
+      "name": "field",
+      "type": "Roo.form.Field",
+      "desc": "Field to wrap (or xtyped)",
+      "memberOf": ""
+    }
+  ],
+  "events": []
+}
