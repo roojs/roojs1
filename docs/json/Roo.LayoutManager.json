@@ -1,0 +1,29 @@
+{
+  "props": [],
+  "events": [
+    {
+      "name": "layout",
+      "sig": "function (_self)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when a layout is performed."
+    },
+    {
+      "name": "regioncollapsed",
+      "sig": "function (region)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when a region is collapsed."
+    },
+    {
+      "name": "regionexpanded",
+      "sig": "function (region)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when a region is expanded."
+    },
+    {
+      "name": "regionresized",
+      "sig": "function (region, newSize)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when the user resizes a region."
+    }
+  ]
+}
