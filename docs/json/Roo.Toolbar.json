@@ -1,0 +1,17 @@
+{
+  "props": [
+    {
+      "name": "container",
+      "type": "String/HTMLElement/Element",
+      "desc": "The id or element that will contain the toolbar",
+      "memberOf": ""
+    },
+    {
+      "name": "items",
+      "type": "Roo.data.Store",
+      "desc": "array of button configs or elements to add",
+      "memberOf": "Roo"
+    }
+  ],
+  "events": []
+}
