@@ -1,0 +1,72 @@
+{
+  "props": [
+    {
+      "name": "createLinkText",
+      "type": "String",
+      "desc": "The default text for the create link prompt",
+      "memberOf": ""
+    },
+    {
+      "name": "defaultLinkValue",
+      "type": "String",
+      "desc": "The default value for the create link prompt (defaults to http:/ /)",
+      "memberOf": ""
+    },
+    {
+      "name": "toolbars",
+      "type": "Array",
+      "desc": "Array of toolbars. - defaults to just the Standard one",
+      "memberOf": ""
+    }
+  ],
+  "events": [
+    {
+      "name": "activate",
+      "sig": "function (_self)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when the editor is first receives the focus. Any insertion must wait\nuntil after this event."
+    },
+    {
+      "name": "beforepush",
+      "sig": "function (_self, html)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires before the iframe editor is updated with content from the textarea. Return false\nto cancel the push."
+    },
+    {
+      "name": "beforesync",
+      "sig": "function (_self, html)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires before the textarea is updated with content from the editor iframe. Return false\nto cancel the sync."
+    },
+    {
+      "name": "editmodechange",
+      "sig": "function (_self, sourceEdit)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when the editor switches edit modes"
+    },
+    {
+      "name": "editorevent",
+      "sig": "function (_self)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when on any editor (mouse up/down cursor movement etc.) - used for toolbar hooks."
+    },
+    {
+      "name": "initialize",
+      "sig": "function (_self)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when the editor is fully initialized (including the iframe)"
+    },
+    {
+      "name": "push",
+      "sig": "function (_self, html)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when the iframe editor is updated with content from the textarea."
+    },
+    {
+      "name": "sync",
+      "sig": "function (_self, html)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when the textarea is updated with content from the editor iframe."
+    }
+  ]
+}
