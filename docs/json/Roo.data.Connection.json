@@ -1,0 +1,66 @@
+{
+  "props": [
+    {
+      "name": "autoAbort",
+      "type": "Boolean",
+      "desc": "(Optional) Whether this request should abort any pending requests. (defaults to false)",
+      "memberOf": ""
+    },
+    {
+      "name": "defaultHeaders",
+      "type": "Object",
+      "desc": "(Optional) An object containing request headers which are added\n to each request made by this object. (defaults to undefined)",
+      "memberOf": ""
+    },
+    {
+      "name": "disableCaching",
+      "type": "Boolean",
+      "desc": "(Optional) True to add a unique cache-buster param to GET requests. (defaults to true)",
+      "memberOf": ""
+    },
+    {
+      "name": "extraParams",
+      "type": "Object",
+      "desc": "(Optional) An object containing properties which are used as\nextra parameters to each request made by this object. (defaults to undefined)",
+      "memberOf": ""
+    },
+    {
+      "name": "method",
+      "type": "String",
+      "desc": "(Optional) The default HTTP method to be used for requests. (defaults to undefined; if not set but parms are present will use POST, otherwise GET)",
+      "memberOf": ""
+    },
+    {
+      "name": "timeout",
+      "type": "Number",
+      "desc": "(Optional) The timeout in milliseconds to be used for requests. (defaults to 30000)",
+      "memberOf": ""
+    },
+    {
+      "name": "url",
+      "type": "String",
+      "desc": "(Optional) The default URL to be used for requests to the server. (defaults to undefined)",
+      "memberOf": ""
+    }
+  ],
+  "events": [
+    {
+      "name": "beforerequest",
+      "sig": "function (conn, options)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires before a network request is made to retrieve a data object."
+    },
+    {
+      "name": "requestcomplete",
+      "sig": "function (conn, response, options)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires if the request was successfully completed."
+    },
+    {
+      "name": "requestexception",
+      "sig": "function (conn, response, options)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires if an error HTTP status was returned from the server.\nSee {@link http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html} for details of HTTP status codes."
+    }
+  ]
+}
