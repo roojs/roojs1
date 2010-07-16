@@ -1,0 +1,246 @@
+{
+  "props": [
+    {
+      "name": "animate",
+      "type": "Boolean",
+      "desc": "true to enable animated expand/collapse (defaults to the value of Roo.enableFx)",
+      "memberOf": ""
+    },
+    {
+      "name": "containerScroll",
+      "type": "Boolean",
+      "desc": "true to register this container with ScrollManager",
+      "memberOf": ""
+    },
+    {
+      "name": "ddAppendOnly",
+      "type": "String",
+      "desc": "True if the tree should only allow append drops (use for trees which are sorted)",
+      "memberOf": ""
+    },
+    {
+      "name": "ddGroup",
+      "type": "String",
+      "desc": "The DD group this TreePanel belongs to",
+      "memberOf": ""
+    },
+    {
+      "name": "ddScroll",
+      "type": "Boolean",
+      "desc": "true to enable YUI body scrolling",
+      "memberOf": ""
+    },
+    {
+      "name": "dragConfig",
+      "type": "Object",
+      "desc": "Custom config to pass to the {@link Roo.tree.TreeDragZone} instance",
+      "memberOf": ""
+    },
+    {
+      "name": "dropConfig",
+      "type": "Object",
+      "desc": "Custom config to pass to the {@link Roo.tree.TreeDropZone} instance",
+      "memberOf": ""
+    },
+    {
+      "name": "enableDD",
+      "type": "Boolean",
+      "desc": "true to enable drag and drop",
+      "memberOf": ""
+    },
+    {
+      "name": "enableDrag",
+      "type": "Boolean",
+      "desc": "true to enable just drag",
+      "memberOf": ""
+    },
+    {
+      "name": "enableDrop",
+      "type": "Boolean",
+      "desc": "true to enable just drop",
+      "memberOf": ""
+    },
+    {
+      "name": "hlColor",
+      "type": "String",
+      "desc": "The color of the node highlight (defaults to C3DAF9)",
+      "memberOf": ""
+    },
+    {
+      "name": "hlDrop",
+      "type": "Boolean",
+      "desc": "false to disable node highlight on drop (defaults to the value of Roo.enableFx)",
+      "memberOf": ""
+    },
+    {
+      "name": "lines",
+      "type": "Boolean",
+      "desc": "false to disable tree lines (defaults to true)",
+      "memberOf": ""
+    },
+    {
+      "name": "loader",
+      "type": "Boolean",
+      "desc": "A TreeLoader for use with this TreePanel",
+      "memberOf": ""
+    },
+    {
+      "name": "pathSeparator",
+      "type": "String",
+      "desc": "The token used to separate sub-paths in path strings (defaults to '/')",
+      "memberOf": ""
+    },
+    {
+      "name": "renderer",
+      "type": "Function",
+      "desc": "Sets the rendering (formatting) function for the nodes. to return HTML markup for the tree view. The render function is called with  the following parameters:<ul><li>The {Object} The data for the node.</li></ul>",
+      "memberOf": ""
+    },
+    {
+      "name": "rendererTip",
+      "type": "Function",
+      "desc": "Sets the rendering (formatting) function for the nodes hovertip to return HTML markup for the tree view. The render function is called with  the following parameters:<ul><li>The {Object} The data for the node.</li></ul>",
+      "memberOf": ""
+    },
+    {
+      "name": "rootVisible",
+      "type": "Boolean",
+      "desc": "false to hide the root node (defaults to true)",
+      "memberOf": ""
+    },
+    {
+      "name": "selModel",
+      "type": "Boolean",
+      "desc": "A tree selection model to use with this TreePanel (defaults to a {@link Roo.tree.DefaultSelectionModel})",
+      "memberOf": ""
+    },
+    {
+      "name": "singleExpand",
+      "type": "Boolean",
+      "desc": "true if only 1 node per branch may be expanded",
+      "memberOf": ""
+    }
+  ],
+  "events": [
+    {
+      "name": "beforechildrenrendered",
+      "sig": "function (node)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires right before the child nodes for a node are rendered"
+    },
+    {
+      "name": "beforeclick",
+      "sig": "function (node, e)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires before click processing on a node. Return false to cancel the default action."
+    },
+    {
+      "name": "beforecollapse",
+      "sig": "function (node, deep, anim)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires before a node is collapsed, return false to cancel."
+    },
+    {
+      "name": "beforeexpand",
+      "sig": "function (node, deep, anim)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires before a node is expanded, return false to cancel."
+    },
+    {
+      "name": "beforeload",
+      "sig": "function (node)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires before a node is loaded, return false to cancel"
+    },
+    {
+      "name": "beforenodedrop",
+      "sig": "function (dropEvent)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when a DD object is dropped on a node in this tree for preprocessing. Return false to cancel the drop. The dropEvent\npassed to handlers has the following properties:<br />\n<ul style=\"padding:5px;padding-left:16px;\">\n<li>tree - The TreePanel</li>\n<li>target - The node being targeted for the drop</li>\n<li>data - The drag data from the drag source</li>\n<li>point - The point of the drop - append, above or below</li>\n<li>source - The drag source</li>\n<li>rawEvent - Raw mouse event</li>\n<li>dropNode - Drop node(s) provided by the source <b>OR</b> you can supply node(s)\nto be inserted by setting them on this object.</li>\n<li>cancel - Set this to true to cancel the drop.</li>\n</ul>"
+    },
+    {
+      "name": "checkchange",
+      "sig": "function (_self, checked)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when a node with a checkbox's checked property changes"
+    },
+    {
+      "name": "click",
+      "sig": "function (node, e)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when a node is clicked"
+    },
+    {
+      "name": "collapse",
+      "sig": "function (node)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when a node is collapsed"
+    },
+    {
+      "name": "contextmenu",
+      "sig": "function (node, e)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when a node is right clicked"
+    },
+    {
+      "name": "dblclick",
+      "sig": "function (node, e)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when a node is double clicked"
+    },
+    {
+      "name": "disabledchange",
+      "sig": "function (node, disabled)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when the disabled status of a node changes"
+    },
+    {
+      "name": "dragdrop",
+      "sig": "function (_self, node, dd, e)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when a dragged node is dropped on a valid DD target"
+    },
+    {
+      "name": "enddrag",
+      "sig": "function (_self, node, e)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when a drag operation is complete"
+    },
+    {
+      "name": "expand",
+      "sig": "function (node)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when a node is expanded"
+    },
+    {
+      "name": "load",
+      "sig": "function (node)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when a node is loaded"
+    },
+    {
+      "name": "nodedragover",
+      "sig": "function (dragOverEvent)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when a tree node is being targeted for a drag drop, return false to signal drop not allowed. The dragOverEvent\npassed to handlers has the following properties:<br />\n<ul style=\"padding:5px;padding-left:16px;\">\n<li>tree - The TreePanel</li>\n<li>target - The node being targeted for the drop</li>\n<li>data - The drag data from the drag source</li>\n<li>point - The point of the drop - append, above or below</li>\n<li>source - The drag source</li>\n<li>rawEvent - Raw mouse event</li>\n<li>dropNode - Drop node(s) provided by the source.</li>\n<li>cancel - Set this to true to signal drop not allowed.</li>\n</ul>"
+    },
+    {
+      "name": "nodedrop",
+      "sig": "function (dropEvent)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires after a DD object is dropped on a node in this tree. The dropEvent\npassed to handlers has the following properties:<br />\n<ul style=\"padding:5px;padding-left:16px;\">\n<li>tree - The TreePanel</li>\n<li>target - The node being targeted for the drop</li>\n<li>data - The drag data from the drag source</li>\n<li>point - The point of the drop - append, above or below</li>\n<li>source - The drag source</li>\n<li>rawEvent - Raw mouse event</li>\n<li>dropNode - Dropped node(s).</li>\n</ul>"
+    },
+    {
+      "name": "startdrag",
+      "sig": "function (_self, node, e)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when a node starts being dragged"
+    },
+    {
+      "name": "textchange",
+      "sig": "function (node, text, oldText)\n{\n\n}",
+      "type": "function",
+      "desc": "Fires when the text for a node is changed"
+    }
+  ]
+}
