@@ -1,0 +1,11 @@
+{
+  "props": [
+    {
+      "name": "disable",
+      "type": "Object",
+      "desc": "List of toolbar elements to disable",
+      "memberOf": ""
+    }
+  ],
+  "events": []
+}
