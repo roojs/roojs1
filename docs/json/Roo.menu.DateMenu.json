@@ -1,0 +1,11 @@
+{
+  "props": [],
+  "events": [
+    {
+      "name": "select",
+      "sig": "function (picker, date)\n{\n\n}",
+      "type": "function",
+      "desc": ""
+    }
+  ]
+}
