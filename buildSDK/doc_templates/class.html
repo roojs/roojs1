@@ -96,8 +96,9 @@
         <tr><td class="label">Defined In:</td><td class="hd-info">
 			<if test="data.srcFile.length">{# isn't defined in any file #}
 					{+ 
-                        new Link().toSrc(data.srcFile.replace( 
-                        Options.baseDir, '/symbols')+'.html' )
+                        new Link().toSrc(
+                            './symbols/src/' + Link.symbolToSrcFileName(data.srcFile)
+                        );
                     +}
 			</if>
 	</td></tr>
