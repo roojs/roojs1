@@ -640,6 +640,11 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         
         
     },
+    reset : function(){
+        this.setValue(this.originalValue);
+        this.clearInvalid();
+        this.lastData = false;
+    },
     // private
     findRecord : function(prop, value){
         var record;
