@@ -153,12 +153,14 @@ Roo.extend(Roo.grid.EditorGrid, Roo.grid.Grid, {
             if(this.fireEvent("beforeedit", e) !== false && !e.cancel){
                 this.editing = true;
                 var ed = this.colModel.getCellEditor(col, row);
+                
                 if (!ed) {
                     return;
                 }
                 if(!ed.rendered){
                     ed.render(ed.parentEl || document.body);
                 }
+                ed.field.reset();
                 (function(){ // complex but required for focus issues in safari, ie and opera
                     ed.row = row;
                     ed.col = col;
