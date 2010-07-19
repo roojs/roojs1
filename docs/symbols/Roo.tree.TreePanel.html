@@ -43,8 +43,9 @@
 <!-- ============================== inheritance Block. ================================= -->	
 	
 		<div class="inheritance res-block">
-		   <pre class="res-block-inner"><a href="./Roo.data.Tree.html#constructor" roo:cls="Roo.data.Tree.html#constructor">Roo.data.Tree</a>
-<img src="../../images/default/s.gif" height="1"  width="20"/><img class="elbow" src="../../images/default/tree/elbow-end.gif"/>Roo.tree.TreePanel 
+		   <pre class="res-block-inner"><a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+<img src="../../images/default/s.gif" height="1" width="20"/><img src="../../images/default/tree/elbow-end.gif" class="elbow"/><a href="./Roo.data.Tree.html#constructor" roo:cls="Roo.data.Tree.html#constructor">Roo.data.Tree</a>
+<img src="../../images/default/s.gif" height="1"  width="40"/><img class="elbow" src="../../images/default/tree/elbow-end.gif"/>Roo.tree.TreePanel 
 
 		   </pre>
 		</div>
@@ -514,7 +515,37 @@
 		</tr>
         
 	
-		<tr class="config-row expandable config-row-alt1 notInherited">
+		<tr class="config-row expandable config-row-alt1">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.util.Observable-cfg-listeners" name=".listeners"></a>
+			<div class="fixedFont">
+				<b  class="itemname">listeners</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">list of events and functions to call for this object, <br/>For example :<br/><pre><code><br/>    listeners :  { <br/>       'click' : function(e) {<br/>           .</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">list of events and functions to call for this object, <br/>For example :<br/><pre><code><br/>    listeners :  { <br/>       'click' : function(e) {<br/>           ..... <br/>        } ,<br/>        .... <br/>    } <br/>  </code></pre></div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
@@ -544,7 +575,7 @@
 		</tr>
         
 	
-		<tr class="config-row expandable config-row-alt0 notInherited">
+		<tr class="config-row expandable config-row-alt1 notInherited">
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
@@ -574,7 +605,7 @@
 		</tr>
         
 	
-		<tr class="config-row expandable config-row-alt1 notInherited">
+		<tr class="config-row expandable config-row-alt0 notInherited">
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
@@ -604,7 +635,7 @@
 		</tr>
         
 	
-		<tr class="config-row expandable config-row-alt0 notInherited">
+		<tr class="config-row expandable config-row-alt1 notInherited">
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
@@ -634,7 +665,7 @@
 		</tr>
         
 	
-		<tr class="config-row expandable config-row-alt1 notInherited">
+		<tr class="config-row expandable config-row-alt0 notInherited">
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
@@ -664,7 +695,7 @@
 		</tr>
         
 	
-		<tr class="config-row expandable config-row-alt0 notInherited">
+		<tr class="config-row expandable config-row-alt1 notInherited">
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
@@ -694,7 +725,7 @@
 		</tr>
         
 	
-		<tr class="config-row expandable config-row-alt1 notInherited">
+		<tr class="config-row expandable config-row-alt0 notInherited">
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
@@ -842,6 +873,148 @@
 
             </td>
             <td class="msource">
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-addEvents"   name=".addEvents"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">addEvents</b>
+				
+				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>object</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Used to define events on this Observable</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Used to define events on this Observable
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>object</b>
+						
+					</dt>
+					<dd>The object with the events defined</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-addListener"   name=".addListener"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">addListener</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>, <a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>handler</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>options</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Appends an event handler to this component</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Appends an event handler to this component
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd>The type of event to listen for</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>handler</b>
+						
+					</dt>
+					<dd>The method the event invokes</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>(optional) The scope in which to execute the handler<br/>function. The handler function's "this" context.</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>options</b>
+						
+					</dt>
+					<dd>(optional) An object containing handler configuration<br/>properties. This may contain any of the following properties:<ul><br/><li>scope {Object} The scope in which to execute the handler function. The handler function's "this" context.</li><br/><li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li><br/><li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li><br/><li>buffer {Number} Causes the handler to be scheduled to run in an {<b>link</b> Roo.util.DelayedTask} delayed<br/>by the specified number of milliseconds. If the event fires again within that time, the original<br/>handler is <em>not</em> invoked, but the new handler is scheduled in its place.</li><br/></ul><br><br/><p><br/><b>Combining Options</b><br><br/>Using the options argument, it is possible to combine different types of listeners:<br><br/><br><br/>A normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)<br/>		<pre><code><br/>		el.on('click', this.onClick, this, {<br/> 			single: true,<br/>    		delay: 100,<br/>    		forumId: 4<br/>		});<br/>		</code></pre><br/><p><br/><b>Attaching multiple handlers in 1 call</b><br><br/>The method also allows for a single argument to be passed which is a config object containing properties<br/>which specify multiple handlers.<br/><pre><code><br/>		el.on({<br/>			'click': {<br/>        		fn: this.onClick,<br/>        		scope: this,<br/>        		delay: 100<br/>    		}, <br/>    		'mouseover': {<br/>        		fn: this.onMouseOver,<br/>        		scope: this<br/>    		},<br/>    		'mouseout': {<br/>        		fn: this.onMouseOut,<br/>        		scope: this<br/>    		}<br/>		});<br/>		</code></pre><br/><p><br/>Or a shorthand syntax which passes the same scope object to all handlers:<br/>     	<pre><code><br/>		el.on({<br/>			'click': this.onClick,<br/>    		'mouseover': this.onMouseOver,<br/>    		'mouseout': this.onMouseOut,<br/>    		scope: this<br/>		});<br/>		</code></pre></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
 		&nbsp;
             </td>
         </tr>
@@ -1023,7 +1196,90 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt0 expandable notInherited">
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-fireEvent"   name=".fireEvent"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">fireEvent</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object...</a> <B><i>args</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Fires the specified event with the passed parameters (minus the event name).</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Fires the specified event with the passed parameters (minus the event name).
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object...</a></span>  <b>args</b>
+						
+					</dt>
+					<dd>Variable number of parameters are passed to handlers</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a></span>  returns false if any of the handlers return false otherwise it returns true</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -1106,7 +1362,7 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt1 expandable notInherited">
+          <tr class="method-row config-row-alt0 expandable notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -1157,7 +1413,7 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt0 expandable notInherited">
+          <tr class="method-row config-row-alt1 expandable notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -1208,7 +1464,150 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt1 expandable notInherited">
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.data.Tree-method-getNodeById"   name=".getNodeById"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">getNodeById</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>id</i></B>) 
+			
+				
+					 : 
+					
+						
+						Node
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Gets a node in this tree by its id.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Gets a node in this tree by its id.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>id</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont">Node</span>  </dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.data.Tree.html#constructor" roo:cls="Roo.data.Tree.html#constructor">Roo.data.Tree</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.data.Tree-method-getRootNode"   name=".getRootNode"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">getRootNode</b>
+				
+				 () 
+			
+				
+					 : 
+					
+						
+						Node
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Returns the root node for this tree.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Returns the root node for this tree.
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont">Node</span>  </dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.data.Tree.html#constructor" roo:cls="Roo.data.Tree.html#constructor">Roo.data.Tree</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -1259,7 +1658,289 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt0 expandable notInherited">
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-hasListener"   name=".hasListener"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">hasListener</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Checks to see if this object has any listeners for a specified event</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Checks to see if this object has any listeners for a specified event
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd>The name of the event to check for</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a></span>  True if the event is being listened for, else false</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-on"   name=".on"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">on</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>, <a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>handler</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>options</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Appends an event handler to this element (shorthand for addListener)</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Appends an event handler to this element (shorthand for addListener)
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd>The type of event to listen for</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>handler</b>
+						
+					</dt>
+					<dd>The method the event invokes</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>(optional) The scope in which to execute the handler<br/>function. The handler function's "this" context.</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>options</b>
+						
+					</dt>
+					<dd>(optional)</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-purgeListeners"   name=".purgeListeners"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">purgeListeners</b>
+				
+				 () 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Removes all listeners for this object</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Removes all listeners for this object
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-removeListener"   name=".removeListener"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">removeListener</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>, <a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>handler</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Removes a listener</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Removes a listener
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd>The type of event to listen for</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>handler</b>
+						
+					</dt>
+					<dd>The handler to remove</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>(optional) The scope (this object) for the handler</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -1310,7 +1991,7 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt1 expandable notInherited">
+          <tr class="method-row config-row-alt0 expandable notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -1383,6 +2064,157 @@
             </td>
         </tr>
 	
+	  
+          <tr class="method-row config-row-alt1 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.data.Tree-method-setRootNode"   name=".setRootNode"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">setRootNode</b>
+				
+				 (Node <B><i>node</i></B>) 
+			
+				
+					 : 
+					
+						
+						Node
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Sets the root node for this tree.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Sets the root node for this tree.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Node</span>  <b>node</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont">Node</span>  </dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.data.Tree.html#constructor" roo:cls="Roo.data.Tree.html#constructor">Roo.data.Tree</a>
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-un"   name=".un"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">un</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>, <a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>handler</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Removes a listener (shorthand for removeListener)</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Removes a listener (shorthand for removeListener)
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd>The type of event to listen for</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>handler</b>
+						
+					</dt>
+					<dd>The handler to remove</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>(optional) The scope (this object) for the handler</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			<a href="./Roo.util.Observable.html#constructor" roo:cls="Roo.util.Observable.html#constructor">Roo.util.Observable</a>
+		&nbsp;
+            </td>
+        </tr>
+	
 	                                               
     </table>
 
@@ -1413,6 +2245,146 @@
 	 
 	
         
+          <tr class="method-row expandable config-row-alt0">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.data.Tree-event-*append"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">append</b> (Tree <B><i>tree</i></B>, Node <B><i>parent</i></B>, Node <B><i>node</i></B>, <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>index</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires when a new child node is appended to a node in this tree.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires when a new child node is appended to a node in this tree.
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Tree</span> <b>tree</b>
+						
+					</dt>
+					<dd>The owner tree</dd>
+				
+					<dt>
+						<span class="fixedFont">Node</span> <b>parent</b>
+						
+					</dt>
+					<dd>The parent node</dd>
+				
+					<dt>
+						<span class="fixedFont">Node</span> <b>node</b>
+						
+					</dt>
+					<dd>The newly appended node</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span> <b>index</b>
+						
+					</dt>
+					<dd>The index of the newly appended node</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                <a href="./Roo.data.Tree.html#constructor" roo:cls="Roo.data.Tree.html#constructor">Roo.data.Tree</a>
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt1">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.data.Tree-event-*beforeappend"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">beforeappend</b> (Tree <B><i>tree</i></B>, Node <B><i>parent</i></B>, Node <B><i>node</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires before a new child is appended to a node in this tree, return false to cancel the append.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires before a new child is appended to a node in this tree, return false to cancel the append.
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Tree</span> <b>tree</b>
+						
+					</dt>
+					<dd>The owner tree</dd>
+				
+					<dt>
+						<span class="fixedFont">Node</span> <b>parent</b>
+						
+					</dt>
+					<dd>The parent node</dd>
+				
+					<dt>
+						<span class="fixedFont">Node</span> <b>node</b>
+						
+					</dt>
+					<dd>The child node to be appended</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                <a href="./Roo.data.Tree.html#constructor" roo:cls="Roo.data.Tree.html#constructor">Roo.data.Tree</a>
+            </td>
+        </tr>
+	
           <tr class="method-row expandable config-row-alt0 notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	    
@@ -1663,7 +2635,80 @@
             </td>
         </tr>
 	
-          <tr class="method-row expandable config-row-alt0 notInherited">
+          <tr class="method-row expandable config-row-alt0">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.data.Tree-event-*beforeinsert"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">beforeinsert</b> (Tree <B><i>tree</i></B>, Node <B><i>parent</i></B>, Node <B><i>node</i></B>, Node <B><i>refNode</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires before a new child is inserted in a node in this tree, return false to cancel the insert.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires before a new child is inserted in a node in this tree, return false to cancel the insert.
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Tree</span> <b>tree</b>
+						
+					</dt>
+					<dd>The owner tree</dd>
+				
+					<dt>
+						<span class="fixedFont">Node</span> <b>parent</b>
+						
+					</dt>
+					<dd>The parent node</dd>
+				
+					<dt>
+						<span class="fixedFont">Node</span> <b>node</b>
+						
+					</dt>
+					<dd>The child node to be inserted</dd>
+				
+					<dt>
+						<span class="fixedFont">Node</span> <b>refNode</b>
+						
+					</dt>
+					<dd>The child node the node is being inserted before</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                <a href="./Roo.data.Tree.html#constructor" roo:cls="Roo.data.Tree.html#constructor">Roo.data.Tree</a>
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt1 notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	    
             <td class="sig">
@@ -1715,6 +2760,85 @@
             </td>
             <td class="msource">
                 Roo.tree.TreePanel
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt0">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.data.Tree-event-*beforemove"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">beforemove</b> (Tree <B><i>tree</i></B>, Node <B><i>node</i></B>, Node <B><i>oldParent</i></B>, Node <B><i>newParent</i></B>, <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>index</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires before a node is moved to a new location in the tree.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires before a node is moved to a new location in the tree. Return false to cancel the move.
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Tree</span> <b>tree</b>
+						
+					</dt>
+					<dd>The owner tree</dd>
+				
+					<dt>
+						<span class="fixedFont">Node</span> <b>node</b>
+						
+					</dt>
+					<dd>The node being moved</dd>
+				
+					<dt>
+						<span class="fixedFont">Node</span> <b>oldParent</b>
+						
+					</dt>
+					<dd>The parent of the node</dd>
+				
+					<dt>
+						<span class="fixedFont">Node</span> <b>newParent</b>
+						
+					</dt>
+					<dd>The new parent the node is moving to</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span> <b>index</b>
+						
+					</dt>
+					<dd>The index it is being moved to</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                <a href="./Roo.data.Tree.html#constructor" roo:cls="Roo.data.Tree.html#constructor">Roo.data.Tree</a>
             </td>
         </tr>
 	
@@ -1773,7 +2897,74 @@
             </td>
         </tr>
 	
-          <tr class="method-row expandable config-row-alt0 notInherited">
+          <tr class="method-row expandable config-row-alt0">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.data.Tree-event-*beforeremove"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">beforeremove</b> (Tree <B><i>tree</i></B>, Node <B><i>parent</i></B>, Node <B><i>node</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires before a child is removed from a node in this tree, return false to cancel the remove.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires before a child is removed from a node in this tree, return false to cancel the remove.
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Tree</span> <b>tree</b>
+						
+					</dt>
+					<dd>The owner tree</dd>
+				
+					<dt>
+						<span class="fixedFont">Node</span> <b>parent</b>
+						
+					</dt>
+					<dd>The parent node</dd>
+				
+					<dt>
+						<span class="fixedFont">Node</span> <b>node</b>
+						
+					</dt>
+					<dd>The child node to be removed</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                <a href="./Roo.data.Tree.html#constructor" roo:cls="Roo.data.Tree.html#constructor">Roo.data.Tree</a>
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt1 notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	    
             <td class="sig">
@@ -1834,7 +3025,7 @@
             </td>
         </tr>
 	
-          <tr class="method-row expandable config-row-alt1 notInherited">
+          <tr class="method-row expandable config-row-alt0 notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	    
             <td class="sig">
@@ -1895,7 +3086,7 @@
             </td>
         </tr>
 	
-          <tr class="method-row expandable config-row-alt0 notInherited">
+          <tr class="method-row expandable config-row-alt1 notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	    
             <td class="sig">
@@ -1950,7 +3141,7 @@
             </td>
         </tr>
 	
-          <tr class="method-row expandable config-row-alt1 notInherited">
+          <tr class="method-row expandable config-row-alt0 notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	    
             <td class="sig">
@@ -2011,7 +3202,7 @@
             </td>
         </tr>
 	
-          <tr class="method-row expandable config-row-alt0 notInherited">
+          <tr class="method-row expandable config-row-alt1 notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	    
             <td class="sig">
@@ -2072,7 +3263,7 @@
             </td>
         </tr>
 	
-          <tr class="method-row expandable config-row-alt1 notInherited">
+          <tr class="method-row expandable config-row-alt0 notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	    
             <td class="sig">
@@ -2133,7 +3324,7 @@
             </td>
         </tr>
 	
-          <tr class="method-row expandable config-row-alt0 notInherited">
+          <tr class="method-row expandable config-row-alt1 notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	    
             <td class="sig">
@@ -2206,7 +3397,7 @@
             </td>
         </tr>
 	
-          <tr class="method-row expandable config-row-alt1 notInherited">
+          <tr class="method-row expandable config-row-alt0 notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	    
             <td class="sig">
@@ -2273,7 +3464,7 @@
             </td>
         </tr>
 	
-          <tr class="method-row expandable config-row-alt0 notInherited">
+          <tr class="method-row expandable config-row-alt1 notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	    
             <td class="sig">
@@ -2325,6 +3516,79 @@
             </td>
             <td class="msource">
                 Roo.tree.TreePanel
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt0">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.data.Tree-event-*insert"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">insert</b> (Tree <B><i>tree</i></B>, Node <B><i>parent</i></B>, Node <B><i>node</i></B>, Node <B><i>refNode</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires when a new child node is inserted in a node in this tree.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires when a new child node is inserted in a node in this tree.
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Tree</span> <b>tree</b>
+						
+					</dt>
+					<dd>The owner tree</dd>
+				
+					<dt>
+						<span class="fixedFont">Node</span> <b>parent</b>
+						
+					</dt>
+					<dd>The parent node</dd>
+				
+					<dt>
+						<span class="fixedFont">Node</span> <b>node</b>
+						
+					</dt>
+					<dd>The child node inserted</dd>
+				
+					<dt>
+						<span class="fixedFont">Node</span> <b>refNode</b>
+						
+					</dt>
+					<dd>The child node the node was inserted before</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                <a href="./Roo.data.Tree.html#constructor" roo:cls="Roo.data.Tree.html#constructor">Roo.data.Tree</a>
             </td>
         </tr>
 	
@@ -2383,7 +3647,86 @@
             </td>
         </tr>
 	
-          <tr class="method-row expandable config-row-alt0 notInherited">
+          <tr class="method-row expandable config-row-alt0">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.data.Tree-event-*move"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">move</b> (Tree <B><i>tree</i></B>, Node <B><i>node</i></B>, Node <B><i>oldParent</i></B>, Node <B><i>newParent</i></B>, <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>index</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires when a node is moved to a new location in the tree
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires when a node is moved to a new location in the tree
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Tree</span> <b>tree</b>
+						
+					</dt>
+					<dd>The owner tree</dd>
+				
+					<dt>
+						<span class="fixedFont">Node</span> <b>node</b>
+						
+					</dt>
+					<dd>The node moved</dd>
+				
+					<dt>
+						<span class="fixedFont">Node</span> <b>oldParent</b>
+						
+					</dt>
+					<dd>The old parent of this node</dd>
+				
+					<dt>
+						<span class="fixedFont">Node</span> <b>newParent</b>
+						
+					</dt>
+					<dd>The new parent of this node</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span> <b>index</b>
+						
+					</dt>
+					<dd>The index it was moved to</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                <a href="./Roo.data.Tree.html#constructor" roo:cls="Roo.data.Tree.html#constructor">Roo.data.Tree</a>
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt1 notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	    
             <td class="sig">
@@ -2438,7 +3781,7 @@
             </td>
         </tr>
 	
-          <tr class="method-row expandable config-row-alt1 notInherited">
+          <tr class="method-row expandable config-row-alt0 notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	    
             <td class="sig">
@@ -2490,6 +3833,73 @@
             </td>
             <td class="msource">
                 Roo.tree.TreePanel
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt1">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.data.Tree-event-*remove"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">remove</b> (Tree <B><i>tree</i></B>, Node <B><i>parent</i></B>, Node <B><i>node</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires when a child node is removed from a node in this tree.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires when a child node is removed from a node in this tree.
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Tree</span> <b>tree</b>
+						
+					</dt>
+					<dd>The owner tree</dd>
+				
+					<dt>
+						<span class="fixedFont">Node</span> <b>parent</b>
+						
+					</dt>
+					<dd>The parent node</dd>
+				
+					<dt>
+						<span class="fixedFont">Node</span> <b>node</b>
+						
+					</dt>
+					<dd>The child node removed</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                <a href="./Roo.data.Tree.html#constructor" roo:cls="Roo.data.Tree.html#constructor">Roo.data.Tree</a>
             </td>
         </tr>
 	
@@ -2637,7 +4047,7 @@
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Fri Jul 16 2010 19:32:58 GMT+0800 (HKT)
+			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Mon Jul 19 2010 11:50:48 GMT+0800 (HKT)
 			Based on 
 			<a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a>  
 		</div>
