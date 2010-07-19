@@ -297,7 +297,7 @@ Roo.factory(conf, Roo.data);
                 return c;
             }
             if (ns[c.xtype]) {
-                console.log("Roo.Factory(" + c.xtype + ")");
+                if (Roo.debug) console.log("Roo.Factory(" + c.xtype + ")");
                 var ret = new ns[c.xtype](c);
                 ret.xns = false;
                 return ret;
