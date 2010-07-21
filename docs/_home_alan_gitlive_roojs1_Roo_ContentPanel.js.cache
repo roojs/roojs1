@@ -1,0 +1,2622 @@
+{
+  "*object": "SymbolSet",
+  "_index": {
+    "Roo.ContentPanel": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/HTMLElement/Roo.Element",
+          "name": "el",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The container element for this panel"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/Object",
+          "name": "config",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "A string to set only the title or a config object"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "content",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) Set the HTML content for this panel"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "region",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) Used by xtype constructors to add to regions. (values center,east,west,south,north)"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "CONSTRUCTOR",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/HTMLElement/Roo.Element",
+          "name": "el",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The container element for this panel"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/Object",
+          "name": "config",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "A string to set only the title or a config object"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "content",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) Set the HTML content for this panel"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "region",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) Used by xtype constructors to add to regions. (values center,east,west,south,north)"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ContentPanel.js",
+      "cfgs": {
+        "fitToFrame": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Boolean",
+          "name": "fitToFrame",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "True for this panel to adjust its size to fit when the region resizes  (defaults to false)",
+          "memberOf": "Roo.ContentPanel"
+        },
+        "fitContainer": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Boolean",
+          "name": "fitContainer",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)",
+          "memberOf": "Roo.ContentPanel"
+        },
+        "autoCreate": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Boolean/Object",
+          "name": "autoCreate",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "True to auto generate the DOM element for this panel, or a {@link Roo.DomHelper} config of the element to create",
+          "memberOf": "Roo.ContentPanel"
+        },
+        "closable": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Boolean",
+          "name": "closable",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "True if the panel can be closed/removed",
+          "memberOf": "Roo.ContentPanel"
+        },
+        "background": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Boolean",
+          "name": "background",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "True if the panel should not be activated when it is added (defaults to false)",
+          "memberOf": "Roo.ContentPanel"
+        },
+        "resizeEl": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "String/HTMLElement/Element",
+          "name": "resizeEl",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "An element to resize if {@link #fitToFrame} is true (instead of this panel's element)",
+          "memberOf": "Roo.ContentPanel"
+        },
+        "toolbar": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Toolbar",
+          "name": "toolbar",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "A toolbar for this panel",
+          "memberOf": "Roo.ContentPanel"
+        },
+        "autoScroll": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Boolean",
+          "name": "autoScroll",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "True to scroll overflow in this panel (use with {@link #fitToFrame})",
+          "memberOf": "Roo.ContentPanel"
+        },
+        "title": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "String",
+          "name": "title",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The title for this panel",
+          "memberOf": "Roo.ContentPanel"
+        },
+        "adjustments": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Array",
+          "name": "adjustments",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Values to <b>add</b> to the width/height when doing a {@link #fitToFrame} (default is [0, 0])",
+          "memberOf": "Roo.ContentPanel"
+        },
+        "url": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "String",
+          "name": "url",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Calls {@link #setUrl} with this value",
+          "memberOf": "Roo.ContentPanel"
+        },
+        "params": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "String/Object",
+          "name": "params",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "When used with {@link #url}, calls {@link #setUrl} with this value",
+          "memberOf": "Roo.ContentPanel"
+        },
+        "loadOnce": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Boolean",
+          "name": "loadOnce",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "When used with {@link #url}, calls {@link #setUrl} with this value",
+          "memberOf": "Roo.ContentPanel"
+        }
+      },
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@class Roo.ContentPanel\n@extends Roo.util.Observable\n@desc A basic ContentPanel element.\n@cfg {Boolean} fitToFrame True for this panel to adjust its size to fit when the region resizes  (defaults to false)\n@cfg {Boolean} fitContainer When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)\n@cfg {Boolean/Object} autoCreate True to auto generate the DOM element for this panel, or a {@link Roo.DomHelper} config of the element to create\n@cfg {Boolean} closable True if the panel can be closed/removed\n@cfg {Boolean} background True if the panel should not be activated when it is added (defaults to false)\n@cfg {String/HTMLElement/Element} resizeEl An element to resize if {@link #fitToFrame} is true (instead of this panel's element)\n@cfg {Toolbar} toolbar A toolbar for this panel\n@cfg {Boolean} autoScroll True to scroll overflow in this panel (use with {@link #fitToFrame})\n@cfg {String} title The title for this panel\n@cfg {Array} adjustments Values to <b>add</b> to the width/height when doing a {@link #fitToFrame} (default is [0, 0])\n@cfg {String} url Calls {@link #setUrl} with this value\n@cfg {String/Object} params When used with {@link #url}, calls {@link #setUrl} with this value\n@cfg {Boolean} loadOnce When used with {@link #url}, calls {@link #setUrl} with this value\n@constructor\nCreate a new ContentPanel.\n@param {String/HTMLElement/Roo.Element} el The container element for this panel\n@param {String/Object} config A string to set only the title or a config object\n@param {String} content (optional) Set the HTML content for this panel\n@param {String} region (optional) Used by xtype constructors to add to regions. (values center,east,west,south,north)\n \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "class",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Roo.ContentPanel"
+          },
+          {
+            "*object": "DocTag",
+            "title": "extends",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Roo.util.Observable"
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "A basic ContentPanel element."
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Boolean",
+            "name": "fitToFrame",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "True for this panel to adjust its size to fit when the region resizes  (defaults to false)",
+            "memberOf": "Roo.ContentPanel"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Boolean",
+            "name": "fitContainer",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)",
+            "memberOf": "Roo.ContentPanel"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Boolean/Object",
+            "name": "autoCreate",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "True to auto generate the DOM element for this panel, or a {@link Roo.DomHelper} config of the element to create",
+            "memberOf": "Roo.ContentPanel"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Boolean",
+            "name": "closable",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "True if the panel can be closed/removed",
+            "memberOf": "Roo.ContentPanel"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Boolean",
+            "name": "background",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "True if the panel should not be activated when it is added (defaults to false)",
+            "memberOf": "Roo.ContentPanel"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "String/HTMLElement/Element",
+            "name": "resizeEl",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "An element to resize if {@link #fitToFrame} is true (instead of this panel's element)",
+            "memberOf": "Roo.ContentPanel"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Toolbar",
+            "name": "toolbar",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "A toolbar for this panel",
+            "memberOf": "Roo.ContentPanel"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Boolean",
+            "name": "autoScroll",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "True to scroll overflow in this panel (use with {@link #fitToFrame})",
+            "memberOf": "Roo.ContentPanel"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "String",
+            "name": "title",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The title for this panel",
+            "memberOf": "Roo.ContentPanel"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Array",
+            "name": "adjustments",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Values to <b>add</b> to the width/height when doing a {@link #fitToFrame} (default is [0, 0])",
+            "memberOf": "Roo.ContentPanel"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "String",
+            "name": "url",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Calls {@link #setUrl} with this value",
+            "memberOf": "Roo.ContentPanel"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "String/Object",
+            "name": "params",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "When used with {@link #url}, calls {@link #setUrl} with this value",
+            "memberOf": "Roo.ContentPanel"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Boolean",
+            "name": "loadOnce",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "When used with {@link #url}, calls {@link #setUrl} with this value",
+            "memberOf": "Roo.ContentPanel"
+          },
+          {
+            "*object": "DocTag",
+            "title": "constructor",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Create a new ContentPanel."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String/HTMLElement/Roo.Element",
+            "name": "el",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The container element for this panel"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String/Object",
+            "name": "config",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "A string to set only the title or a config object"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String",
+            "name": "content",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "(optional) Set the HTML content for this panel"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String",
+            "name": "region",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "(optional) Used by xtype constructors to add to regions. (values center,east,west,south,north)"
+          }
+        ]
+      },
+      "_name": "Roo.ContentPanel",
+      "name": "Roo.ContentPanel",
+      "alias": "Roo.ContentPanel",
+      "desc": "A basic ContentPanel element.",
+      "classDesc": "Roo.ContentPanel",
+      "augments": [
+        {
+          "*object": "DocTag",
+          "title": "extends",
+          "type": "",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Roo.util.Observable"
+        }
+      ],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.ContentPanel#*activate": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.ContentPanel",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.ContentPanel",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ContentPanel.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@event activate\n@desc Fires when this panel is activated. \n@param {Roo.ContentPanel} this\n         \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "event",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "activate"
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Fires when this panel is activated."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Roo.ContentPanel",
+            "name": "this",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.ContentPanel#*activate",
+      "name": "Roo.ContentPanel#*activate",
+      "alias": "Roo.ContentPanel#*activate",
+      "desc": "Fires when this panel is activated.",
+      "isEvent": true,
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.ContentPanel#*deactivate": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.ContentPanel",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.ContentPanel",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ContentPanel.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@event deactivate\n@desc Fires when this panel is activated. \n@param {Roo.ContentPanel} this\n         \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "event",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "deactivate"
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Fires when this panel is activated."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Roo.ContentPanel",
+            "name": "this",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.ContentPanel#*deactivate",
+      "name": "Roo.ContentPanel#*deactivate",
+      "alias": "Roo.ContentPanel#*deactivate",
+      "desc": "Fires when this panel is activated.",
+      "isEvent": true,
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.ContentPanel#*resize": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.ContentPanel",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "width",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The width after any component adjustments"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "height",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The height after any component adjustments"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.ContentPanel",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "width",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The width after any component adjustments"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "height",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The height after any component adjustments"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ContentPanel.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@event resize\n@desc Fires when this panel is resized if fitToFrame is true.\n@param {Roo.ContentPanel} this\n@param {Number} width The width after any component adjustments\n@param {Number} height The height after any component adjustments\n         \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "event",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "resize"
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Fires when this panel is resized if fitToFrame is true."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Roo.ContentPanel",
+            "name": "this",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Number",
+            "name": "width",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The width after any component adjustments"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Number",
+            "name": "height",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The height after any component adjustments"
+          }
+        ]
+      },
+      "_name": "Roo.ContentPanel#*resize",
+      "name": "Roo.ContentPanel#*resize",
+      "alias": "Roo.ContentPanel#*resize",
+      "desc": "Fires when this panel is resized if fitToFrame is true.",
+      "isEvent": true,
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.ContentPanel#getToolbar": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.Toolbar",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ContentPanel.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Returns the toolbar for this Panel if one was configured. \n@return {Roo.Toolbar} \n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Returns the toolbar for this Panel if one was configured."
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.Toolbar",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.ContentPanel#getToolbar",
+      "name": "Roo.ContentPanel#getToolbar",
+      "alias": "Roo.ContentPanel#getToolbar",
+      "desc": "Returns the toolbar for this Panel if one was configured.",
+      "type": "Roo.Toolbar",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.ContentPanel#setContent": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "content",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new content"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Boolean",
+          "name": "loadScripts",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) true to look for and process scripts"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "content",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new content"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Boolean",
+          "name": "loadScripts",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) true to look for and process scripts"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ContentPanel.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Updates this panel's element\n@param {String} content The new content\n@param {Boolean} loadScripts (optional) true to look for and process scripts\n    ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Updates this panel's element"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String",
+            "name": "content",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The new content"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Boolean",
+            "name": "loadScripts",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "(optional) true to look for and process scripts"
+          }
+        ]
+      },
+      "_name": "Roo.ContentPanel#setContent",
+      "name": "Roo.ContentPanel#setContent",
+      "alias": "Roo.ContentPanel#setContent",
+      "desc": "Updates this panel's element",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.ContentPanel#getUpdateManager": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.UpdateManager",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The UpdateManager"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ContentPanel.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Get the {@link Roo.UpdateManager} for this panel. Enables you to perform Ajax updates.\n@return {Roo.UpdateManager} The UpdateManager\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Get the {@link Roo.UpdateManager} for this panel. Enables you to perform Ajax updates."
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.UpdateManager",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The UpdateManager"
+          }
+        ]
+      },
+      "_name": "Roo.ContentPanel#getUpdateManager",
+      "name": "Roo.ContentPanel#getUpdateManager",
+      "alias": "Roo.ContentPanel#getUpdateManager",
+      "desc": "Get the {@link Roo.UpdateManager} for this panel. Enables you to perform Ajax updates.",
+      "type": "Roo.UpdateManager",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.ContentPanel#load": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object/String/Function",
+          "name": "url",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The url for this request or a function to call to get the url or a config object containing any of the following options:\n<pre><code>\npanel.load({\n    url: \"your-url.php\",\n    params: {param1: \"foo\", param2: \"bar\"}, // or a URL encoded string\n    callback: yourFunction,\n    scope: yourObject, //(optional scope)\n    discardUrl: false,\n    nocache: false,\n    text: \"Loading...\",\n    timeout: 30,\n    scripts: false\n});\n</code></pre>\nThe only required property is <i>url</i>. The optional properties <i>nocache</i>, <i>text</i> and <i>scripts</i>\nare shorthand for <i>disableCaching</i>, <i>indicatorText</i> and <i>loadScripts</i> and are used to set their associated property on this panel UpdateManager instance."
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/Object",
+          "name": "params",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) The parameters to pass as either a URL encoded string \"param1=1&amp;param2=2\" or an object {param1: 1, param2: 2}"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Function",
+          "name": "callback",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) Callback when transaction is complete -- called with signature (oElement, bSuccess, oResponse)"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Boolean",
+          "name": "discardUrl",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) By default when you execute an update the defaultUrl is changed to the last used URL. If true, it will not store the URL."
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object/String/Function",
+          "name": "url",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The url for this request or a function to call to get the url or a config object containing any of the following options:\n<pre><code>\npanel.load({\n    url: \"your-url.php\",\n    params: {param1: \"foo\", param2: \"bar\"}, // or a URL encoded string\n    callback: yourFunction,\n    scope: yourObject, //(optional scope)\n    discardUrl: false,\n    nocache: false,\n    text: \"Loading...\",\n    timeout: 30,\n    scripts: false\n});\n</code></pre>\nThe only required property is <i>url</i>. The optional properties <i>nocache</i>, <i>text</i> and <i>scripts</i>\nare shorthand for <i>disableCaching</i>, <i>indicatorText</i> and <i>loadScripts</i> and are used to set their associated property on this panel UpdateManager instance."
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/Object",
+          "name": "params",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) The parameters to pass as either a URL encoded string \"param1=1&amp;param2=2\" or an object {param1: 1, param2: 2}"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Function",
+          "name": "callback",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) Callback when transaction is complete -- called with signature (oElement, bSuccess, oResponse)"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Boolean",
+          "name": "discardUrl",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) By default when you execute an update the defaultUrl is changed to the last used URL. If true, it will not store the URL."
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.ContentPanel",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "this"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ContentPanel.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Loads this content panel immediately with content from XHR. Note: to delay loading until the panel is activated, use {@link #setUrl}.\n@param {Object/String/Function} url The url for this request or a function to call to get the url or a config object containing any of the following options:\n<pre><code>\npanel.load({\n    url: \"your-url.php\",\n    params: {param1: \"foo\", param2: \"bar\"}, // or a URL encoded string\n    callback: yourFunction,\n    scope: yourObject, //(optional scope)\n    discardUrl: false,\n    nocache: false,\n    text: \"Loading...\",\n    timeout: 30,\n    scripts: false\n});\n</code></pre>\nThe only required property is <i>url</i>. The optional properties <i>nocache</i>, <i>text</i> and <i>scripts</i>\nare shorthand for <i>disableCaching</i>, <i>indicatorText</i> and <i>loadScripts</i> and are used to set their associated property on this panel UpdateManager instance.\n@param {String/Object} params (optional) The parameters to pass as either a URL encoded string \"param1=1&amp;param2=2\" or an object {param1: 1, param2: 2}\n@param {Function} callback (optional) Callback when transaction is complete -- called with signature (oElement, bSuccess, oResponse)\n@param {Boolean} discardUrl (optional) By default when you execute an update the defaultUrl is changed to the last used URL. If true, it will not store the URL.\n@return {Roo.ContentPanel} this\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Loads this content panel immediately with content from XHR. Note: to delay loading until the panel is activated, use {@link #setUrl}."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Object/String/Function",
+            "name": "url",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The url for this request or a function to call to get the url or a config object containing any of the following options:\n<pre><code>\npanel.load({\n    url: \"your-url.php\",\n    params: {param1: \"foo\", param2: \"bar\"}, // or a URL encoded string\n    callback: yourFunction,\n    scope: yourObject, //(optional scope)\n    discardUrl: false,\n    nocache: false,\n    text: \"Loading...\",\n    timeout: 30,\n    scripts: false\n});\n</code></pre>\nThe only required property is <i>url</i>. The optional properties <i>nocache</i>, <i>text</i> and <i>scripts</i>\nare shorthand for <i>disableCaching</i>, <i>indicatorText</i> and <i>loadScripts</i> and are used to set their associated property on this panel UpdateManager instance."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String/Object",
+            "name": "params",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "(optional) The parameters to pass as either a URL encoded string \"param1=1&amp;param2=2\" or an object {param1: 1, param2: 2}"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Function",
+            "name": "callback",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "(optional) Callback when transaction is complete -- called with signature (oElement, bSuccess, oResponse)"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Boolean",
+            "name": "discardUrl",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "(optional) By default when you execute an update the defaultUrl is changed to the last used URL. If true, it will not store the URL."
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.ContentPanel",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "this"
+          }
+        ]
+      },
+      "_name": "Roo.ContentPanel#load",
+      "name": "Roo.ContentPanel#load",
+      "alias": "Roo.ContentPanel#load",
+      "desc": "Loads this content panel immediately with content from XHR. Note: to delay loading until the panel is activated, use {@link #setUrl}.",
+      "type": "Roo.ContentPanel",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.ContentPanel#setUrl": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/Function",
+          "name": "url",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The URL to load the content from or a function to call to get the URL"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/Object",
+          "name": "params",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) The string params for the update call or an object of the params. See {@link Roo.UpdateManager#update} for more details. (Defaults to null)"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Boolean",
+          "name": "loadOnce",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) Whether to only load the content once. If this is false it makes the Ajax call every time this panel is activated. (Defaults to false)"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/Function",
+          "name": "url",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The URL to load the content from or a function to call to get the URL"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/Object",
+          "name": "params",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) The string params for the update call or an object of the params. See {@link Roo.UpdateManager#update} for more details. (Defaults to null)"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Boolean",
+          "name": "loadOnce",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) Whether to only load the content once. If this is false it makes the Ajax call every time this panel is activated. (Defaults to false)"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.UpdateManager",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The UpdateManager"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ContentPanel.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Set a URL to be used to load the content for this panel. When this panel is activated, the content will be loaded from that URL.\n@param {String/Function} url The URL to load the content from or a function to call to get the URL\n@param {String/Object} params (optional) The string params for the update call or an object of the params. See {@link Roo.UpdateManager#update} for more details. (Defaults to null)\n@param {Boolean} loadOnce (optional) Whether to only load the content once. If this is false it makes the Ajax call every time this panel is activated. (Defaults to false)\n@return {Roo.UpdateManager} The UpdateManager\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Set a URL to be used to load the content for this panel. When this panel is activated, the content will be loaded from that URL."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String/Function",
+            "name": "url",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The URL to load the content from or a function to call to get the URL"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String/Object",
+            "name": "params",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "(optional) The string params for the update call or an object of the params. See {@link Roo.UpdateManager#update} for more details. (Defaults to null)"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Boolean",
+            "name": "loadOnce",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "(optional) Whether to only load the content once. If this is false it makes the Ajax call every time this panel is activated. (Defaults to false)"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.UpdateManager",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The UpdateManager"
+          }
+        ]
+      },
+      "_name": "Roo.ContentPanel#setUrl",
+      "name": "Roo.ContentPanel#setUrl",
+      "alias": "Roo.ContentPanel#setUrl",
+      "desc": "Set a URL to be used to load the content for this panel. When this panel is activated, the content will be loaded from that URL.",
+      "type": "Roo.UpdateManager",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.ContentPanel#getId": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "String",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ContentPanel.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Returns this panel's id\n@return {String} \n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Returns this panel's id"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "String",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.ContentPanel#getId",
+      "name": "Roo.ContentPanel#getId",
+      "alias": "Roo.ContentPanel#getId",
+      "desc": "Returns this panel's id",
+      "type": "String",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.ContentPanel#getEl": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.Element",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ContentPanel.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Returns this panel's element - used by regiosn to add.\n@return {Roo.Element} \n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Returns this panel's element - used by regiosn to add."
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.Element",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.ContentPanel#getEl",
+      "name": "Roo.ContentPanel#getEl",
+      "alias": "Roo.ContentPanel#getEl",
+      "desc": "Returns this panel's element - used by regiosn to add.",
+      "type": "Roo.Element",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.ContentPanel#getTitle": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "String",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ContentPanel.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Returns this panel's title\n@return {String} \n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Returns this panel's title"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "String",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.ContentPanel#getTitle",
+      "name": "Roo.ContentPanel#getTitle",
+      "alias": "Roo.ContentPanel#getTitle",
+      "desc": "Returns this panel's title",
+      "type": "String",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.ContentPanel#setTitle": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "title",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "title",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ContentPanel.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Set this panel's title\n@param {String} title\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Set this panel's title"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String",
+            "name": "title",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.ContentPanel#setTitle",
+      "name": "Roo.ContentPanel#setTitle",
+      "alias": "Roo.ContentPanel#setTitle",
+      "desc": "Set this panel's title",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.ContentPanel#isClosable": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Boolean",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ContentPanel.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Returns true is this panel was configured to be closable\n@return {Boolean} \n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Returns true is this panel was configured to be closable"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Boolean",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.ContentPanel#isClosable",
+      "name": "Roo.ContentPanel#isClosable",
+      "alias": "Roo.ContentPanel#isClosable",
+      "desc": "Returns true is this panel was configured to be closable",
+      "type": "Boolean",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.ContentPanel#refresh": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ContentPanel.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": false,
+        "src": "\n@desc   Force a content refresh from the URL specified in the {@link #setUrl} method.\n  Will fail silently if the {@link #setUrl} method has not been called.\n  This does not activate the panel, just updates its content.\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Force a content refresh from the URL specified in the {@link #setUrl} method.\n  Will fail silently if the {@link #setUrl} method has not been called.\n  This does not activate the panel, just updates its content."
+          }
+        ]
+      },
+      "_name": "Roo.ContentPanel#refresh",
+      "name": "Roo.ContentPanel#refresh",
+      "alias": "Roo.ContentPanel#refresh",
+      "desc": "Force a content refresh from the URL specified in the {@link #setUrl} method.\n  Will fail silently if the {@link #setUrl} method has not been called.\n  This does not activate the panel, just updates its content.",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.ContentPanel#destroy": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ContentPanel.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": false,
+        "src": "\n@desc Destroys this panel\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Destroys this panel"
+          }
+        ]
+      },
+      "_name": "Roo.ContentPanel#destroy",
+      "name": "Roo.ContentPanel#destroy",
+      "alias": "Roo.ContentPanel#destroy",
+      "desc": "Destroys this panel",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.ContentPanel#addxtype": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "cfg",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Xtype definition of item to add."
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "cfg",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Xtype definition of item to add."
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ContentPanel.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Adds a xtype elements to the panel - currently only supports Forms.\n<pre><code>\n\nlayout.addxtype({\n       xtype : 'Form',\n       items: [ .... ]\n   }\n);\n\n</code></pre>\n@param {Object} cfg Xtype definition of item to add.\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Adds a xtype elements to the panel - currently only supports Forms.\n<pre><code>\n\nlayout.addxtype({\n       xtype : 'Form',\n       items: [ .... ]\n   }\n);\n\n</code></pre>"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Object",
+            "name": "cfg",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Xtype definition of item to add."
+          }
+        ]
+      },
+      "_name": "Roo.ContentPanel#addxtype",
+      "name": "Roo.ContentPanel#addxtype",
+      "alias": "Roo.ContentPanel#addxtype",
+      "desc": "Adds a xtype elements to the panel - currently only supports Forms.\n<pre><code>\n\nlayout.addxtype({\n       xtype : 'Form',\n       items: [ .... ]\n   }\n);\n\n</code></pre>",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.GridPanel": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.grid.Grid",
+          "name": "grid",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The grid for this panel"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/Object",
+          "name": "config",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "A string to set only the panel's title, or a config object"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "CONSTRUCTOR",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.grid.Grid",
+          "name": "grid",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The grid for this panel"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/Object",
+          "name": "config",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "A string to set only the panel's title, or a config object"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ContentPanel.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@class Roo.GridPanel\n@extends Roo.ContentPanel\n@constructor\n@desc Create a new GridPanel.\n@param {Roo.grid.Grid} grid The grid for this panel\n@param {String/Object} config A string to set only the panel's title, or a config object\n \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "class",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Roo.GridPanel"
+          },
+          {
+            "*object": "DocTag",
+            "title": "extends",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Roo.ContentPanel"
+          },
+          {
+            "*object": "DocTag",
+            "title": "constructor",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Create a new GridPanel."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Roo.grid.Grid",
+            "name": "grid",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The grid for this panel"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String/Object",
+            "name": "config",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "A string to set only the panel's title, or a config object"
+          }
+        ]
+      },
+      "_name": "Roo.GridPanel",
+      "name": "Roo.GridPanel",
+      "alias": "Roo.GridPanel",
+      "desc": "Create a new GridPanel.",
+      "classDesc": "Roo.GridPanel",
+      "augments": [
+        {
+          "*object": "DocTag",
+          "title": "extends",
+          "type": "",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Roo.ContentPanel"
+        }
+      ],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.GridPanel#getGrid": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.grid.Grid",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ContentPanel.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Returns the grid for this panel\n@return {Roo.grid.Grid} \n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Returns the grid for this panel"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.grid.Grid",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.GridPanel#getGrid",
+      "name": "Roo.GridPanel#getGrid",
+      "alias": "Roo.GridPanel#getGrid",
+      "desc": "Returns the grid for this panel",
+      "type": "Roo.grid.Grid",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.NestedLayoutPanel": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.BorderLayout",
+          "name": "layout",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The layout for this panel"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/Object",
+          "name": "config",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "A string to set only the title or a config object"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "CONSTRUCTOR",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.BorderLayout",
+          "name": "layout",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The layout for this panel"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/Object",
+          "name": "config",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "A string to set only the title or a config object"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ContentPanel.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@class Roo.NestedLayoutPanel\n@extends Roo.ContentPanel\n@constructor\n@desc Create a new NestedLayoutPanel.\n\n\n@param {Roo.BorderLayout} layout The layout for this panel\n@param {String/Object} config A string to set only the title or a config object\n \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "class",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Roo.NestedLayoutPanel"
+          },
+          {
+            "*object": "DocTag",
+            "title": "extends",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Roo.ContentPanel"
+          },
+          {
+            "*object": "DocTag",
+            "title": "constructor",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Create a new NestedLayoutPanel."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Roo.BorderLayout",
+            "name": "layout",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The layout for this panel"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String/Object",
+            "name": "config",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "A string to set only the title or a config object"
+          }
+        ]
+      },
+      "_name": "Roo.NestedLayoutPanel",
+      "name": "Roo.NestedLayoutPanel",
+      "alias": "Roo.NestedLayoutPanel",
+      "desc": "Create a new NestedLayoutPanel.",
+      "classDesc": "Roo.NestedLayoutPanel",
+      "augments": [
+        {
+          "*object": "DocTag",
+          "title": "extends",
+          "type": "",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Roo.ContentPanel"
+        }
+      ],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.NestedLayoutPanel#getLayout": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.BorderLayout",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ContentPanel.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Returns the nested BorderLayout for this panel\n@return {Roo.BorderLayout} \n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Returns the nested BorderLayout for this panel"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.BorderLayout",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.NestedLayoutPanel#getLayout",
+      "name": "Roo.NestedLayoutPanel#getLayout",
+      "alias": "Roo.NestedLayoutPanel#getLayout",
+      "desc": "Returns the nested BorderLayout for this panel",
+      "type": "Roo.BorderLayout",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.NestedLayoutPanel#addxtype": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "cfg",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Xtype definition of item to add."
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "cfg",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Xtype definition of item to add."
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ContentPanel.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Adds a xtype elements to the layout of the nested panel\n<pre><code>\n\npanel.addxtype({\n       xtype : 'ContentPanel',\n       region: 'west',\n       items: [ .... ]\n   }\n);\n\npanel.addxtype({\n        xtype : 'NestedLayoutPanel',\n        region: 'west',\n        layout: {\n           center: { },\n           west: { }   \n        },\n        items : [ ... list of content panels or nested layout panels.. ]\n   }\n);\n</code></pre>\n@param {Object} cfg Xtype definition of item to add.\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Adds a xtype elements to the layout of the nested panel\n<pre><code>\n\npanel.addxtype({\n       xtype : 'ContentPanel',\n       region: 'west',\n       items: [ .... ]\n   }\n);\n\npanel.addxtype({\n        xtype : 'NestedLayoutPanel',\n        region: 'west',\n        layout: {\n           center: { },\n           west: { }   \n        },\n        items : [ ... list of content panels or nested layout panels.. ]\n   }\n);\n</code></pre>"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Object",
+            "name": "cfg",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Xtype definition of item to add."
+          }
+        ]
+      },
+      "_name": "Roo.NestedLayoutPanel#addxtype",
+      "name": "Roo.NestedLayoutPanel#addxtype",
+      "alias": "Roo.NestedLayoutPanel#addxtype",
+      "desc": "Adds a xtype elements to the layout of the nested panel\n<pre><code>\n\npanel.addxtype({\n       xtype : 'ContentPanel',\n       region: 'west',\n       items: [ .... ]\n   }\n);\n\npanel.addxtype({\n        xtype : 'NestedLayoutPanel',\n        region: 'west',\n        layout: {\n           center: { },\n           west: { }   \n        },\n        items : [ ... list of content panels or nested layout panels.. ]\n   }\n);\n</code></pre>",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.TreePanel": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/Object",
+          "name": "config",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "A string to set only the panel's title, or a config object"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "CONSTRUCTOR",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/Object",
+          "name": "config",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "A string to set only the panel's title, or a config object"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ContentPanel.js",
+      "cfgs": {
+        "tree": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Roo.tree.TreePanel",
+          "name": "tree",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The tree TreePanel, with config etc.",
+          "memberOf": "Roo.TreePanel"
+        }
+      },
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@class Roo.TreePanel\n@extends Roo.ContentPanel\n@constructor\n@desc Create a new TreePanel.\n@param {String/Object} config A string to set only the panel's title, or a config object\n@cfg {Roo.tree.TreePanel} tree The tree TreePanel, with config etc.\n \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "class",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Roo.TreePanel"
+          },
+          {
+            "*object": "DocTag",
+            "title": "extends",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Roo.ContentPanel"
+          },
+          {
+            "*object": "DocTag",
+            "title": "constructor",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Create a new TreePanel."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String/Object",
+            "name": "config",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "A string to set only the panel's title, or a config object"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Roo.tree.TreePanel",
+            "name": "tree",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The tree TreePanel, with config etc.",
+            "memberOf": "Roo.TreePanel"
+          }
+        ]
+      },
+      "_name": "Roo.TreePanel",
+      "name": "Roo.TreePanel",
+      "alias": "Roo.TreePanel",
+      "desc": "Create a new TreePanel.",
+      "classDesc": "Roo.TreePanel",
+      "augments": [
+        {
+          "*object": "DocTag",
+          "title": "extends",
+          "type": "",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Roo.ContentPanel"
+        }
+      ],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    }
+  }
+}
