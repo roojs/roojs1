@@ -24,9 +24,10 @@
         }
      ]
  *})
- * 
- * 
  * @extends Roo.util.Observable
+ * @constructor
+ * @param cfg {Object} configuration of component
+ * 
  */
 Roo.XComponent = function(cfg) {
     Roo.apply(this, cfg);
