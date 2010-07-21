@@ -1,6 +1,6 @@
 {
 	"src" : [ 
-		""  
+		"Roo/tree"  
 		],
 	"exclude-src" : [
 		"roojs-all.js",
