@@ -1,0 +1,1390 @@
+{
+  "*object": "SymbolSet",
+  "_index": {
+    "Roo.DomHelper": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "CONSTRUCTOR",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/DomHelper.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@class Roo.DomHelper\n@desc Utility class for working with DOM and/or Templates. It transparently supports using HTML fragments or DOM.\nFor more information see <a href=\"http://www.jackslocum.com/yui/2006/10/06/domhelper-create-elements-using-dom-html-fragments-or-templates/\">this blog post with examples</a>.\n@singleton\n \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "class",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Roo.DomHelper"
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Utility class for working with DOM and/or Templates. It transparently supports using HTML fragments or DOM.\nFor more information see <a href=\"http://www.jackslocum.com/yui/2006/10/06/domhelper-create-elements-using-dom-html-fragments-or-templates/\">this blog post with examples</a>."
+          },
+          {
+            "*object": "DocTag",
+            "title": "singleton",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.DomHelper",
+      "name": "Roo.DomHelper",
+      "alias": "Roo.DomHelper",
+      "desc": "Utility class for working with DOM and/or Templates. It transparently supports using HTML fragments or DOM.\nFor more information see <a href=\"http://www.jackslocum.com/yui/2006/10/06/domhelper-create-elements-using-dom-html-fragments-or-templates/\">this blog post with examples</a>.",
+      "classDesc": "Roo.DomHelper",
+      "isStatic": true,
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.DomHelper#useDom": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "OBJECT",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/DomHelper.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": false,
+        "src": "\n@desc  True to force the use of DOM instead of html fragments \n@type Boolean ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "True to force the use of DOM instead of html fragments"
+          },
+          {
+            "*object": "DocTag",
+            "title": "type",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Boolean"
+          }
+        ]
+      },
+      "_name": "Roo.DomHelper#useDom",
+      "name": "Roo.DomHelper#useDom",
+      "alias": "Roo.DomHelper#useDom",
+      "desc": "True to force the use of DOM instead of html fragments",
+      "type": "Boolean",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.DomHelper#markup": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "o",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The Dom object spec (and children)"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "o",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The Dom object spec (and children)"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "String",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/DomHelper.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Returns the markup for the passed Element(s) config\n@param {Object} o The Dom object spec (and children)\n@return {String}\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Returns the markup for the passed Element(s) config"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Object",
+            "name": "o",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The Dom object spec (and children)"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "String",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.DomHelper#markup",
+      "name": "Roo.DomHelper#markup",
+      "alias": "Roo.DomHelper#markup",
+      "desc": "Returns the markup for the passed Element(s) config",
+      "type": "String",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.DomHelper#applyStyles": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/HTMLElement",
+          "name": "el",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The element to apply styles to"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/Object/Function",
+          "name": "styles",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "A style specification string eg \"width:100px\", or object in the form {width:\"100px\"}, or\na function which returns such a specification."
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/HTMLElement",
+          "name": "el",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The element to apply styles to"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/Object/Function",
+          "name": "styles",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "A style specification string eg \"width:100px\", or object in the form {width:\"100px\"}, or\na function which returns such a specification."
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/DomHelper.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Applies a style specification to an element\n@param {String/HTMLElement} el The element to apply styles to\n@param {String/Object/Function} styles A style specification string eg \"width:100px\", or object in the form {width:\"100px\"}, or\na function which returns such a specification.\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Applies a style specification to an element"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String/HTMLElement",
+            "name": "el",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The element to apply styles to"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String/Object/Function",
+            "name": "styles",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "A style specification string eg \"width:100px\", or object in the form {width:\"100px\"}, or\na function which returns such a specification."
+          }
+        ]
+      },
+      "_name": "Roo.DomHelper#applyStyles",
+      "name": "Roo.DomHelper#applyStyles",
+      "alias": "Roo.DomHelper#applyStyles",
+      "desc": "Applies a style specification to an element",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.DomHelper#insertHtml": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "where",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Where to insert the html in relation to el - beforeBegin, afterBegin, beforeEnd, afterEnd."
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "HTMLElement",
+          "name": "el",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The context element"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "html",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The HTML fragmenet"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "where",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Where to insert the html in relation to el - beforeBegin, afterBegin, beforeEnd, afterEnd."
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "HTMLElement",
+          "name": "el",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The context element"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "html",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The HTML fragmenet"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "HTMLElement",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new node"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/DomHelper.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Inserts an HTML fragment into the Dom\n@param {String} where Where to insert the html in relation to el - beforeBegin, afterBegin, beforeEnd, afterEnd.\n@param {HTMLElement} el The context element\n@param {String} html The HTML fragmenet\n@return {HTMLElement} The new node\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Inserts an HTML fragment into the Dom"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String",
+            "name": "where",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Where to insert the html in relation to el - beforeBegin, afterBegin, beforeEnd, afterEnd."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "HTMLElement",
+            "name": "el",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The context element"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String",
+            "name": "html",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The HTML fragmenet"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "HTMLElement",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The new node"
+          }
+        ]
+      },
+      "_name": "Roo.DomHelper#insertHtml",
+      "name": "Roo.DomHelper#insertHtml",
+      "alias": "Roo.DomHelper#insertHtml",
+      "desc": "Inserts an HTML fragment into the Dom",
+      "type": "HTMLElement",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.DomHelper#insertBefore": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/HTMLElement/Element",
+          "name": "el",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The context element"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object/String",
+          "name": "o",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The Dom object spec (and children) or raw HTML blob"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Boolean",
+          "name": "returnElement",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) true to return a Roo.Element"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/HTMLElement/Element",
+          "name": "el",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The context element"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object/String",
+          "name": "o",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The Dom object spec (and children) or raw HTML blob"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Boolean",
+          "name": "returnElement",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) true to return a Roo.Element"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "HTMLElement/Roo.Element",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new node"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/DomHelper.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Creates new Dom element(s) and inserts them before el\n@param {String/HTMLElement/Element} el The context element\n@param {Object/String} o The Dom object spec (and children) or raw HTML blob\n@param {Boolean} returnElement (optional) true to return a Roo.Element\n@return {HTMLElement/Roo.Element} The new node\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Creates new Dom element(s) and inserts them before el"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String/HTMLElement/Element",
+            "name": "el",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The context element"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Object/String",
+            "name": "o",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The Dom object spec (and children) or raw HTML blob"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Boolean",
+            "name": "returnElement",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "(optional) true to return a Roo.Element"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "HTMLElement/Roo.Element",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The new node"
+          }
+        ]
+      },
+      "_name": "Roo.DomHelper#insertBefore",
+      "name": "Roo.DomHelper#insertBefore",
+      "alias": "Roo.DomHelper#insertBefore",
+      "desc": "Creates new Dom element(s) and inserts them before el",
+      "type": "HTMLElement/Roo.Element",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.DomHelper#insertAfter": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/HTMLElement/Element",
+          "name": "el",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The context element"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "o",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The Dom object spec (and children)"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Boolean",
+          "name": "returnElement",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) true to return a Roo.Element"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/HTMLElement/Element",
+          "name": "el",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The context element"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "o",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The Dom object spec (and children)"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Boolean",
+          "name": "returnElement",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) true to return a Roo.Element"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "HTMLElement/Roo.Element",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new node"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/DomHelper.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Creates new Dom element(s) and inserts them after el\n@param {String/HTMLElement/Element} el The context element\n@param {Object} o The Dom object spec (and children)\n@param {Boolean} returnElement (optional) true to return a Roo.Element\n@return {HTMLElement/Roo.Element} The new node\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Creates new Dom element(s) and inserts them after el"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String/HTMLElement/Element",
+            "name": "el",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The context element"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Object",
+            "name": "o",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The Dom object spec (and children)"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Boolean",
+            "name": "returnElement",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "(optional) true to return a Roo.Element"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "HTMLElement/Roo.Element",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The new node"
+          }
+        ]
+      },
+      "_name": "Roo.DomHelper#insertAfter",
+      "name": "Roo.DomHelper#insertAfter",
+      "alias": "Roo.DomHelper#insertAfter",
+      "desc": "Creates new Dom element(s) and inserts them after el",
+      "type": "HTMLElement/Roo.Element",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.DomHelper#insertFirst": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/HTMLElement/Element",
+          "name": "el",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The context element"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object/String",
+          "name": "o",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The Dom object spec (and children) or raw HTML blob"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Boolean",
+          "name": "returnElement",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) true to return a Roo.Element"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/HTMLElement/Element",
+          "name": "el",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The context element"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object/String",
+          "name": "o",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The Dom object spec (and children) or raw HTML blob"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Boolean",
+          "name": "returnElement",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) true to return a Roo.Element"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "HTMLElement/Roo.Element",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new node"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/DomHelper.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Creates new Dom element(s) and inserts them as the first child of el\n@param {String/HTMLElement/Element} el The context element\n@param {Object/String} o The Dom object spec (and children) or raw HTML blob\n@param {Boolean} returnElement (optional) true to return a Roo.Element\n@return {HTMLElement/Roo.Element} The new node\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Creates new Dom element(s) and inserts them as the first child of el"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String/HTMLElement/Element",
+            "name": "el",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The context element"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Object/String",
+            "name": "o",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The Dom object spec (and children) or raw HTML blob"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Boolean",
+            "name": "returnElement",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "(optional) true to return a Roo.Element"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "HTMLElement/Roo.Element",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The new node"
+          }
+        ]
+      },
+      "_name": "Roo.DomHelper#insertFirst",
+      "name": "Roo.DomHelper#insertFirst",
+      "alias": "Roo.DomHelper#insertFirst",
+      "desc": "Creates new Dom element(s) and inserts them as the first child of el",
+      "type": "HTMLElement/Roo.Element",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.DomHelper#append": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/HTMLElement/Element",
+          "name": "el",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The context element"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object/String",
+          "name": "o",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The Dom object spec (and children) or raw HTML blob"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Boolean",
+          "name": "returnElement",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) true to return a Roo.Element"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/HTMLElement/Element",
+          "name": "el",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The context element"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object/String",
+          "name": "o",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The Dom object spec (and children) or raw HTML blob"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Boolean",
+          "name": "returnElement",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) true to return a Roo.Element"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "HTMLElement/Roo.Element",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new node"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/DomHelper.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Creates new Dom element(s) and appends them to el\n@param {String/HTMLElement/Element} el The context element\n@param {Object/String} o The Dom object spec (and children) or raw HTML blob\n@param {Boolean} returnElement (optional) true to return a Roo.Element\n@return {HTMLElement/Roo.Element} The new node\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Creates new Dom element(s) and appends them to el"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String/HTMLElement/Element",
+            "name": "el",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The context element"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Object/String",
+            "name": "o",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The Dom object spec (and children) or raw HTML blob"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Boolean",
+            "name": "returnElement",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "(optional) true to return a Roo.Element"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "HTMLElement/Roo.Element",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The new node"
+          }
+        ]
+      },
+      "_name": "Roo.DomHelper#append",
+      "name": "Roo.DomHelper#append",
+      "alias": "Roo.DomHelper#append",
+      "desc": "Creates new Dom element(s) and appends them to el",
+      "type": "HTMLElement/Roo.Element",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.DomHelper#overwrite": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/HTMLElement/Element",
+          "name": "el",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The context element"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object/String",
+          "name": "o",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The Dom object spec (and children) or raw HTML blob"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Boolean",
+          "name": "returnElement",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) true to return a Roo.Element"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/HTMLElement/Element",
+          "name": "el",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The context element"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object/String",
+          "name": "o",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The Dom object spec (and children) or raw HTML blob"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Boolean",
+          "name": "returnElement",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) true to return a Roo.Element"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "HTMLElement/Roo.Element",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new node"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/DomHelper.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Creates new Dom element(s) and overwrites the contents of el with them\n@param {String/HTMLElement/Element} el The context element\n@param {Object/String} o The Dom object spec (and children) or raw HTML blob\n@param {Boolean} returnElement (optional) true to return a Roo.Element\n@return {HTMLElement/Roo.Element} The new node\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Creates new Dom element(s) and overwrites the contents of el with them"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String/HTMLElement/Element",
+            "name": "el",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The context element"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Object/String",
+            "name": "o",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The Dom object spec (and children) or raw HTML blob"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Boolean",
+            "name": "returnElement",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "(optional) true to return a Roo.Element"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "HTMLElement/Roo.Element",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The new node"
+          }
+        ]
+      },
+      "_name": "Roo.DomHelper#overwrite",
+      "name": "Roo.DomHelper#overwrite",
+      "alias": "Roo.DomHelper#overwrite",
+      "desc": "Creates new Dom element(s) and overwrites the contents of el with them",
+      "type": "HTMLElement/Roo.Element",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.DomHelper#createTemplate": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "o",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The Dom object spec (and children)"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "o",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The Dom object spec (and children)"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.DomHelper.Template",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new template"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/DomHelper.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Creates a new Roo.DomHelper.Template from the Dom object spec\n@param {Object} o The Dom object spec (and children)\n@return {Roo.DomHelper.Template} The new template\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Creates a new Roo.DomHelper.Template from the Dom object spec"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Object",
+            "name": "o",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The Dom object spec (and children)"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.DomHelper.Template",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The new template"
+          }
+        ]
+      },
+      "_name": "Roo.DomHelper#createTemplate",
+      "name": "Roo.DomHelper#createTemplate",
+      "alias": "Roo.DomHelper#createTemplate",
+      "desc": "Creates a new Roo.DomHelper.Template from the Dom object spec",
+      "type": "Roo.DomHelper.Template",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    }
+  }
+}
