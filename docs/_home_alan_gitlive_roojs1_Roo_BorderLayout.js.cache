@@ -1,0 +1,1156 @@
+{
+  "*object": "SymbolSet",
+  "_index": {
+    "Roo.BorderLayout": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/HTMLElement/Element",
+          "name": "container",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The container this layout is bound to"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "config",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Configuration options"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "CONSTRUCTOR",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/HTMLElement/Element",
+          "name": "container",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The container this layout is bound to"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "config",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Configuration options"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BorderLayout.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@class Roo.BorderLayout\n@extends Roo.LayoutManager\n@desc This class represents a common layout manager used in desktop applications. For screenshots and more details,\nplease see: <br><br>\n<a href=\"http://www.jackslocum.com/yui/2006/10/19/cross-browser-web-20-layouts-with-yahoo-ui/\">Cross Browser Layouts - Part 1</a><br>\n<a href=\"http://www.jackslocum.com/yui/2006/10/28/cross-browser-web-20-layouts-part-2-ajax-feed-viewer-20/\">Cross Browser Layouts - Part 2</a><br><br>\nExample:\n <pre><code>\n var layout = new Roo.BorderLayout(document.body, {\n    north: {\n        initialSize: 25,\n        titlebar: false\n    },\n    west: {\n        split:true,\n        initialSize: 200,\n        minSize: 175,\n        maxSize: 400,\n        titlebar: true,\n        collapsible: true\n    },\n    east: {\n        split:true,\n        initialSize: 202,\n        minSize: 175,\n        maxSize: 400,\n        titlebar: true,\n        collapsible: true\n    },\n    south: {\n        split:true,\n        initialSize: 100,\n        minSize: 100,\n        maxSize: 200,\n        titlebar: true,\n        collapsible: true\n    },\n    center: {\n        titlebar: true,\n        autoScroll:true,\n        resizeTabs: true,\n        minTabWidth: 50,\n        preferredTabWidth: 150\n    }\n});\n\n// shorthand\nvar CP = Roo.ContentPanel;\n\nlayout.beginUpdate();\nlayout.add(\"north\", new CP(\"north\", \"North\"));\nlayout.add(\"south\", new CP(\"south\", {title: \"South\", closable: true}));\nlayout.add(\"west\", new CP(\"west\", {title: \"West\"}));\nlayout.add(\"east\", new CP(\"autoTabs\", {title: \"Auto Tabs\", closable: true}));\nlayout.add(\"center\", new CP(\"center1\", {title: \"Close Me\", closable: true}));\nlayout.add(\"center\", new CP(\"center2\", {title: \"Center Panel\", closable: false}));\nlayout.getRegion(\"center\").showPanel(\"center1\");\nlayout.endUpdate();\n</code></pre>\n\n<b>The container the layout is rendered into can be either the body element or any other element.\nIf it is not the body element, the container needs to either be an absolute positioned element,\nor you will need to add \"position:relative\" to the css of the container.  You will also need to specify\nthe container size if it is not the body element.</b>\n@constructor\nCreate a new BorderLayout\n@param {String/HTMLElement/Element} container The container this layout is bound to\n@param {Object} config Configuration options\n \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "class",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Roo.BorderLayout"
+          },
+          {
+            "*object": "DocTag",
+            "title": "extends",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Roo.LayoutManager"
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "This class represents a common layout manager used in desktop applications. For screenshots and more details,\nplease see: <br><br>\n<a href=\"http://www.jackslocum.com/yui/2006/10/19/cross-browser-web-20-layouts-with-yahoo-ui/\">Cross Browser Layouts - Part 1</a><br>\n<a href=\"http://www.jackslocum.com/yui/2006/10/28/cross-browser-web-20-layouts-part-2-ajax-feed-viewer-20/\">Cross Browser Layouts - Part 2</a><br><br>\nExample:\n <pre><code>\n var layout = new Roo.BorderLayout(document.body, {\n    north: {\n        initialSize: 25,\n        titlebar: false\n    },\n    west: {\n        split:true,\n        initialSize: 200,\n        minSize: 175,\n        maxSize: 400,\n        titlebar: true,\n        collapsible: true\n    },\n    east: {\n        split:true,\n        initialSize: 202,\n        minSize: 175,\n        maxSize: 400,\n        titlebar: true,\n        collapsible: true\n    },\n    south: {\n        split:true,\n        initialSize: 100,\n        minSize: 100,\n        maxSize: 200,\n        titlebar: true,\n        collapsible: true\n    },\n    center: {\n        titlebar: true,\n        autoScroll:true,\n        resizeTabs: true,\n        minTabWidth: 50,\n        preferredTabWidth: 150\n    }\n});\n\n// shorthand\nvar CP = Roo.ContentPanel;\n\nlayout.beginUpdate();\nlayout.add(\"north\", new CP(\"north\", \"North\"));\nlayout.add(\"south\", new CP(\"south\", {title: \"South\", closable: true}));\nlayout.add(\"west\", new CP(\"west\", {title: \"West\"}));\nlayout.add(\"east\", new CP(\"autoTabs\", {title: \"Auto Tabs\", closable: true}));\nlayout.add(\"center\", new CP(\"center1\", {title: \"Close Me\", closable: true}));\nlayout.add(\"center\", new CP(\"center2\", {title: \"Center Panel\", closable: false}));\nlayout.getRegion(\"center\").showPanel(\"center1\");\nlayout.endUpdate();\n</code></pre>\n\n<b>The container the layout is rendered into can be either the body element or any other element.\nIf it is not the body element, the container needs to either be an absolute positioned element,\nor you will need to add \"position:relative\" to the css of the container.  You will also need to specify\nthe container size if it is not the body element.</b>"
+          },
+          {
+            "*object": "DocTag",
+            "title": "constructor",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Create a new BorderLayout"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String/HTMLElement/Element",
+            "name": "container",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The container this layout is bound to"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Object",
+            "name": "config",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Configuration options"
+          }
+        ]
+      },
+      "_name": "Roo.BorderLayout",
+      "name": "Roo.BorderLayout",
+      "alias": "Roo.BorderLayout",
+      "desc": "This class represents a common layout manager used in desktop applications. For screenshots and more details,\nplease see: <br><br>\n<a href=\"http://www.jackslocum.com/yui/2006/10/19/cross-browser-web-20-layouts-with-yahoo-ui/\">Cross Browser Layouts - Part 1</a><br>\n<a href=\"http://www.jackslocum.com/yui/2006/10/28/cross-browser-web-20-layouts-part-2-ajax-feed-viewer-20/\">Cross Browser Layouts - Part 2</a><br><br>\nExample:\n <pre><code>\n var layout = new Roo.BorderLayout(document.body, {\n    north: {\n        initialSize: 25,\n        titlebar: false\n    },\n    west: {\n        split:true,\n        initialSize: 200,\n        minSize: 175,\n        maxSize: 400,\n        titlebar: true,\n        collapsible: true\n    },\n    east: {\n        split:true,\n        initialSize: 202,\n        minSize: 175,\n        maxSize: 400,\n        titlebar: true,\n        collapsible: true\n    },\n    south: {\n        split:true,\n        initialSize: 100,\n        minSize: 100,\n        maxSize: 200,\n        titlebar: true,\n        collapsible: true\n    },\n    center: {\n        titlebar: true,\n        autoScroll:true,\n        resizeTabs: true,\n        minTabWidth: 50,\n        preferredTabWidth: 150\n    }\n});\n\n// shorthand\nvar CP = Roo.ContentPanel;\n\nlayout.beginUpdate();\nlayout.add(\"north\", new CP(\"north\", \"North\"));\nlayout.add(\"south\", new CP(\"south\", {title: \"South\", closable: true}));\nlayout.add(\"west\", new CP(\"west\", {title: \"West\"}));\nlayout.add(\"east\", new CP(\"autoTabs\", {title: \"Auto Tabs\", closable: true}));\nlayout.add(\"center\", new CP(\"center1\", {title: \"Close Me\", closable: true}));\nlayout.add(\"center\", new CP(\"center2\", {title: \"Center Panel\", closable: false}));\nlayout.getRegion(\"center\").showPanel(\"center1\");\nlayout.endUpdate();\n</code></pre>\n\n<b>The container the layout is rendered into can be either the body element or any other element.\nIf it is not the body element, the container needs to either be an absolute positioned element,\nor you will need to add \"position:relative\" to the css of the container.  You will also need to specify\nthe container size if it is not the body element.</b>",
+      "classDesc": "Roo.BorderLayout",
+      "augments": [
+        {
+          "*object": "DocTag",
+          "title": "extends",
+          "type": "",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Roo.LayoutManager"
+        }
+      ],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.BorderLayout#addRegion": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "target",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The target region key (north, south, east, west or center)."
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "config",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The regions config object"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "target",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The target region key (north, south, east, west or center)."
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "config",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The regions config object"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "BorderLayoutRegion",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new region"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BorderLayout.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Creates and adds a new region if it doesn't already exist.\n@param {String} target The target region key (north, south, east, west or center).\n@param {Object} config The regions config object\n@return {BorderLayoutRegion} The new region\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Creates and adds a new region if it doesn't already exist."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String",
+            "name": "target",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The target region key (north, south, east, west or center)."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Object",
+            "name": "config",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The regions config object"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "BorderLayoutRegion",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The new region"
+          }
+        ]
+      },
+      "_name": "Roo.BorderLayout#addRegion",
+      "name": "Roo.BorderLayout#addRegion",
+      "alias": "Roo.BorderLayout#addRegion",
+      "desc": "Creates and adds a new region if it doesn't already exist.",
+      "type": "BorderLayoutRegion",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.BorderLayout#layout": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BorderLayout.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": false,
+        "src": "\n@desc Performs a layout update.\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Performs a layout update."
+          }
+        ]
+      },
+      "_name": "Roo.BorderLayout#layout",
+      "name": "Roo.BorderLayout#layout",
+      "alias": "Roo.BorderLayout#layout",
+      "desc": "Performs a layout update.",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.BorderLayout#add": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "target",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The target region key (north, south, east, west or center)."
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.ContentPanel",
+          "name": "panel",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The panel to add"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "target",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The target region key (north, south, east, west or center)."
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.ContentPanel",
+          "name": "panel",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The panel to add"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.ContentPanel",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The added panel"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BorderLayout.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Adds a ContentPanel (or subclass) to this layout.\n@param {String} target The target region key (north, south, east, west or center).\n@param {Roo.ContentPanel} panel The panel to add\n@return {Roo.ContentPanel} The added panel\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Adds a ContentPanel (or subclass) to this layout."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String",
+            "name": "target",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The target region key (north, south, east, west or center)."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Roo.ContentPanel",
+            "name": "panel",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The panel to add"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.ContentPanel",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The added panel"
+          }
+        ]
+      },
+      "_name": "Roo.BorderLayout#add",
+      "name": "Roo.BorderLayout#add",
+      "alias": "Roo.BorderLayout#add",
+      "desc": "Adds a ContentPanel (or subclass) to this layout.",
+      "type": "Roo.ContentPanel",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.BorderLayout#remove": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "target",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The target region key (north, south, east, west or center)."
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number/String/Roo.ContentPanel",
+          "name": "panel",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The index, id or panel to remove"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "target",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The target region key (north, south, east, west or center)."
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number/String/Roo.ContentPanel",
+          "name": "panel",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The index, id or panel to remove"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.ContentPanel",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The removed panel"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BorderLayout.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Remove a ContentPanel (or subclass) to this layout.\n@param {String} target The target region key (north, south, east, west or center).\n@param {Number/String/Roo.ContentPanel} panel The index, id or panel to remove\n@return {Roo.ContentPanel} The removed panel\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Remove a ContentPanel (or subclass) to this layout."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String",
+            "name": "target",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The target region key (north, south, east, west or center)."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Number/String/Roo.ContentPanel",
+            "name": "panel",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The index, id or panel to remove"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.ContentPanel",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The removed panel"
+          }
+        ]
+      },
+      "_name": "Roo.BorderLayout#remove",
+      "name": "Roo.BorderLayout#remove",
+      "alias": "Roo.BorderLayout#remove",
+      "desc": "Remove a ContentPanel (or subclass) to this layout.",
+      "type": "Roo.ContentPanel",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.BorderLayout#findPanel": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "panelId",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "panelId",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.ContentPanel",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The panel or null if it wasn't found"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BorderLayout.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Searches all regions for a panel with the specified id\n@param {String} panelId\n@return {Roo.ContentPanel} The panel or null if it wasn't found\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Searches all regions for a panel with the specified id"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String",
+            "name": "panelId",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.ContentPanel",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The panel or null if it wasn't found"
+          }
+        ]
+      },
+      "_name": "Roo.BorderLayout#findPanel",
+      "name": "Roo.BorderLayout#findPanel",
+      "alias": "Roo.BorderLayout#findPanel",
+      "desc": "Searches all regions for a panel with the specified id",
+      "type": "Roo.ContentPanel",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.BorderLayout#showPanel": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/ContentPanel",
+          "name": "panelId",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The panels id or the panel itself"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/ContentPanel",
+          "name": "panelId",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The panels id or the panel itself"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.ContentPanel",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The shown panel or null"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BorderLayout.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Searches all regions for a panel with the specified id and activates (shows) it.\n@param {String/ContentPanel} panelId The panels id or the panel itself\n@return {Roo.ContentPanel} The shown panel or null\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Searches all regions for a panel with the specified id and activates (shows) it."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String/ContentPanel",
+            "name": "panelId",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The panels id or the panel itself"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.ContentPanel",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The shown panel or null"
+          }
+        ]
+      },
+      "_name": "Roo.BorderLayout#showPanel",
+      "name": "Roo.BorderLayout#showPanel",
+      "alias": "Roo.BorderLayout#showPanel",
+      "desc": "Searches all regions for a panel with the specified id and activates (shows) it.",
+      "type": "Roo.ContentPanel",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.BorderLayout#restoreState": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.state.Provider",
+          "name": "provider",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) An alternate state provider"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.state.Provider",
+          "name": "provider",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) An alternate state provider"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BorderLayout.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Restores this layout's state using Roo.state.Manager or the state provided by the passed provider.\n@param {Roo.state.Provider} provider (optional) An alternate state provider\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Restores this layout's state using Roo.state.Manager or the state provided by the passed provider."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Roo.state.Provider",
+            "name": "provider",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "(optional) An alternate state provider"
+          }
+        ]
+      },
+      "_name": "Roo.BorderLayout#restoreState",
+      "name": "Roo.BorderLayout#restoreState",
+      "alias": "Roo.BorderLayout#restoreState",
+      "desc": "Restores this layout's state using Roo.state.Manager or the state provided by the passed provider.",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.BorderLayout#batchAdd": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "regions",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "An object containing ContentPanel configs by region name"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "regions",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "An object containing ContentPanel configs by region name"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BorderLayout.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Adds a batch of multiple ContentPanels dynamically by passing a special regions config object.  This config\nobject should contain properties for each region to add ContentPanels to, and each property's value should be\na valid ContentPanel config object.  Example:\n<pre><code>\n// Create the main layout\nvar layout = new Roo.BorderLayout('main-ct', {\n    west: {\n        split:true,\n        minSize: 175,\n        titlebar: true\n    },\n    center: {\n        title:'Components'\n    }\n}, 'main-ct');\n\n// Create and add multiple ContentPanels at once via configs\nlayout.batchAdd({\n   west: {\n       id: 'source-files',\n       autoCreate:true,\n       title:'Ext Source Files',\n       autoScroll:true,\n       fitToFrame:true\n   },\n   center : {\n       el: cview,\n       autoScroll:true,\n       fitToFrame:true,\n       toolbar: tb,\n       resizeEl:'cbody'\n   }\n});\n</code></pre>\n@param {Object} regions An object containing ContentPanel configs by region name\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Adds a batch of multiple ContentPanels dynamically by passing a special regions config object.  This config\nobject should contain properties for each region to add ContentPanels to, and each property's value should be\na valid ContentPanel config object.  Example:\n<pre><code>\n// Create the main layout\nvar layout = new Roo.BorderLayout('main-ct', {\n    west: {\n        split:true,\n        minSize: 175,\n        titlebar: true\n    },\n    center: {\n        title:'Components'\n    }\n}, 'main-ct');\n\n// Create and add multiple ContentPanels at once via configs\nlayout.batchAdd({\n   west: {\n       id: 'source-files',\n       autoCreate:true,\n       title:'Ext Source Files',\n       autoScroll:true,\n       fitToFrame:true\n   },\n   center : {\n       el: cview,\n       autoScroll:true,\n       fitToFrame:true,\n       toolbar: tb,\n       resizeEl:'cbody'\n   }\n});\n</code></pre>"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Object",
+            "name": "regions",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "An object containing ContentPanel configs by region name"
+          }
+        ]
+      },
+      "_name": "Roo.BorderLayout#batchAdd",
+      "name": "Roo.BorderLayout#batchAdd",
+      "alias": "Roo.BorderLayout#batchAdd",
+      "desc": "Adds a batch of multiple ContentPanels dynamically by passing a special regions config object.  This config\nobject should contain properties for each region to add ContentPanels to, and each property's value should be\na valid ContentPanel config object.  Example:\n<pre><code>\n// Create the main layout\nvar layout = new Roo.BorderLayout('main-ct', {\n    west: {\n        split:true,\n        minSize: 175,\n        titlebar: true\n    },\n    center: {\n        title:'Components'\n    }\n}, 'main-ct');\n\n// Create and add multiple ContentPanels at once via configs\nlayout.batchAdd({\n   west: {\n       id: 'source-files',\n       autoCreate:true,\n       title:'Ext Source Files',\n       autoScroll:true,\n       fitToFrame:true\n   },\n   center : {\n       el: cview,\n       autoScroll:true,\n       fitToFrame:true,\n       toolbar: tb,\n       resizeEl:'cbody'\n   }\n});\n</code></pre>",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.BorderLayout#addxtype": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "cfg",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Xtype definition of item to add."
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "cfg",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Xtype definition of item to add."
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BorderLayout.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Adds a xtype elements to the layout.\n<pre><code>\n\nlayout.addxtype({\n       xtype : 'ContentPanel',\n       region: 'west',\n       items: [ .... ]\n   }\n);\n\nlayout.addxtype({\n        xtype : 'NestedLayoutPanel',\n        region: 'west',\n        layout: {\n           center: { },\n           west: { }   \n        },\n        items : [ ... list of content panels or nested layout panels.. ]\n   }\n);\n</code></pre>\n@param {Object} cfg Xtype definition of item to add.\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Adds a xtype elements to the layout.\n<pre><code>\n\nlayout.addxtype({\n       xtype : 'ContentPanel',\n       region: 'west',\n       items: [ .... ]\n   }\n);\n\nlayout.addxtype({\n        xtype : 'NestedLayoutPanel',\n        region: 'west',\n        layout: {\n           center: { },\n           west: { }   \n        },\n        items : [ ... list of content panels or nested layout panels.. ]\n   }\n);\n</code></pre>"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Object",
+            "name": "cfg",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Xtype definition of item to add."
+          }
+        ]
+      },
+      "_name": "Roo.BorderLayout#addxtype",
+      "name": "Roo.BorderLayout#addxtype",
+      "alias": "Roo.BorderLayout#addxtype",
+      "desc": "Adds a xtype elements to the layout.\n<pre><code>\n\nlayout.addxtype({\n       xtype : 'ContentPanel',\n       region: 'west',\n       items: [ .... ]\n   }\n);\n\nlayout.addxtype({\n        xtype : 'NestedLayoutPanel',\n        region: 'west',\n        layout: {\n           center: { },\n           west: { }   \n        },\n        items : [ ... list of content panels or nested layout panels.. ]\n   }\n);\n</code></pre>",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.BorderLayout.create": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "",
+          "name": "config",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "",
+          "name": "targetEl",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "",
+          "name": "config",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "",
+          "name": "targetEl",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BorderLayout.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Shortcut for creating a new BorderLayout object and adding one or more ContentPanels to it in a single step, handling\nthe beginUpdate and endUpdate calls internally.  The key to this method is the <b>panels</b> property that can be\nprovided with each region config, which allows you to add ContentPanel configs in addition to the region configs\nduring creation.  The following code is equivalent to the constructor-based example at the beginning of this class:\n<pre><code>\n// shorthand\nvar CP = Roo.ContentPanel;\n\nvar layout = Roo.BorderLayout.create({\n    north: {\n        initialSize: 25,\n        titlebar: false,\n        panels: [new CP(\"north\", \"North\")]\n    },\n    west: {\n        split:true,\n        initialSize: 200,\n        minSize: 175,\n        maxSize: 400,\n        titlebar: true,\n        collapsible: true,\n        panels: [new CP(\"west\", {title: \"West\"})]\n    },\n    east: {\n        split:true,\n        initialSize: 202,\n        minSize: 175,\n        maxSize: 400,\n        titlebar: true,\n        collapsible: true,\n        panels: [new CP(\"autoTabs\", {title: \"Auto Tabs\", closable: true})]\n    },\n    south: {\n        split:true,\n        initialSize: 100,\n        minSize: 100,\n        maxSize: 200,\n        titlebar: true,\n        collapsible: true,\n        panels: [new CP(\"south\", {title: \"South\", closable: true})]\n    },\n    center: {\n        titlebar: true,\n        autoScroll:true,\n        resizeTabs: true,\n        minTabWidth: 50,\n        preferredTabWidth: 150,\n        panels: [\n            new CP(\"center1\", {title: \"Close Me\", closable: true}),\n            new CP(\"center2\", {title: \"Center Panel\", closable: false})\n        ]\n    }\n}, document.body);\n\nlayout.getRegion(\"center\").showPanel(\"center1\");\n</code></pre>\n@param config\n@param targetEl\n ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Shortcut for creating a new BorderLayout object and adding one or more ContentPanels to it in a single step, handling\nthe beginUpdate and endUpdate calls internally.  The key to this method is the <b>panels</b> property that can be\nprovided with each region config, which allows you to add ContentPanel configs in addition to the region configs\nduring creation.  The following code is equivalent to the constructor-based example at the beginning of this class:\n<pre><code>\n// shorthand\nvar CP = Roo.ContentPanel;\n\nvar layout = Roo.BorderLayout.create({\n    north: {\n        initialSize: 25,\n        titlebar: false,\n        panels: [new CP(\"north\", \"North\")]\n    },\n    west: {\n        split:true,\n        initialSize: 200,\n        minSize: 175,\n        maxSize: 400,\n        titlebar: true,\n        collapsible: true,\n        panels: [new CP(\"west\", {title: \"West\"})]\n    },\n    east: {\n        split:true,\n        initialSize: 202,\n        minSize: 175,\n        maxSize: 400,\n        titlebar: true,\n        collapsible: true,\n        panels: [new CP(\"autoTabs\", {title: \"Auto Tabs\", closable: true})]\n    },\n    south: {\n        split:true,\n        initialSize: 100,\n        minSize: 100,\n        maxSize: 200,\n        titlebar: true,\n        collapsible: true,\n        panels: [new CP(\"south\", {title: \"South\", closable: true})]\n    },\n    center: {\n        titlebar: true,\n        autoScroll:true,\n        resizeTabs: true,\n        minTabWidth: 50,\n        preferredTabWidth: 150,\n        panels: [\n            new CP(\"center1\", {title: \"Close Me\", closable: true}),\n            new CP(\"center2\", {title: \"Center Panel\", closable: false})\n        ]\n    }\n}, document.body);\n\nlayout.getRegion(\"center\").showPanel(\"center1\");\n</code></pre>"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "",
+            "name": "config",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "",
+            "name": "targetEl",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.BorderLayout.create",
+      "name": "Roo.BorderLayout.create",
+      "alias": "Roo.BorderLayout.create",
+      "desc": "Shortcut for creating a new BorderLayout object and adding one or more ContentPanels to it in a single step, handling\nthe beginUpdate and endUpdate calls internally.  The key to this method is the <b>panels</b> property that can be\nprovided with each region config, which allows you to add ContentPanel configs in addition to the region configs\nduring creation.  The following code is equivalent to the constructor-based example at the beginning of this class:\n<pre><code>\n// shorthand\nvar CP = Roo.ContentPanel;\n\nvar layout = Roo.BorderLayout.create({\n    north: {\n        initialSize: 25,\n        titlebar: false,\n        panels: [new CP(\"north\", \"North\")]\n    },\n    west: {\n        split:true,\n        initialSize: 200,\n        minSize: 175,\n        maxSize: 400,\n        titlebar: true,\n        collapsible: true,\n        panels: [new CP(\"west\", {title: \"West\"})]\n    },\n    east: {\n        split:true,\n        initialSize: 202,\n        minSize: 175,\n        maxSize: 400,\n        titlebar: true,\n        collapsible: true,\n        panels: [new CP(\"autoTabs\", {title: \"Auto Tabs\", closable: true})]\n    },\n    south: {\n        split:true,\n        initialSize: 100,\n        minSize: 100,\n        maxSize: 200,\n        titlebar: true,\n        collapsible: true,\n        panels: [new CP(\"south\", {title: \"South\", closable: true})]\n    },\n    center: {\n        titlebar: true,\n        autoScroll:true,\n        resizeTabs: true,\n        minTabWidth: 50,\n        preferredTabWidth: 150,\n        panels: [\n            new CP(\"center1\", {title: \"Close Me\", closable: true}),\n            new CP(\"center2\", {title: \"Center Panel\", closable: false})\n        ]\n    }\n}, document.body);\n\nlayout.getRegion(\"center\").showPanel(\"center1\");\n</code></pre>",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    }
+  }
+}
