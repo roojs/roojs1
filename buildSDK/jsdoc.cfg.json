@@ -15,9 +15,9 @@
 		],
 	"exclude-src" : [
 		"roojs-all.js",
-		"roojs-debug.js"
+		"roojs-debug.js",
 		"roojs-core.js",
-		"roojs-core-debug.js"
+		"roojs-core-debug.js",
 		"roojs-ui.js",
 		"roojs-ui-debug.js"
 		
