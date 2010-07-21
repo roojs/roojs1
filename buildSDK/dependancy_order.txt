@@ -217,8 +217,9 @@ Roo.LoadMask
 //		*** Can be Optional ***
 Roo.XTemplate
 
-
-
+// extras..
+Roo.XComponent
+Roo.Login
 
 
 
