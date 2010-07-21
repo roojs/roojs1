@@ -50,11 +50,7 @@ Roo.util.TextMetrics = function(){
         }
     };
 }();
-/**
- * @class Roo.util.TextMetrics.Instance
- * Provides precise pixel measurements for blocks of text so that you can determine exactly how high and
- * wide, in pixels, a given block of text will be.
- */
+
  
 
 Roo.util.TextMetrics.Instance = function(bindTo, fixedWidth){
@@ -67,7 +63,11 @@ Roo.util.TextMetrics.Instance = function(bindTo, fixedWidth){
     if(fixedWidth){
         ml.setWidth(fixedWidth);
     }
-
+    /**
+     * @class Roo.util.TextMetrics.Instance
+     * Provides precise pixel measurements for blocks of text so that you can determine exactly how high and
+     * wide, in pixels, a given block of text will be.
+     */
     var instance = {
         /**
          * Returns the size of the specified text based on the internal element's style and width properties
