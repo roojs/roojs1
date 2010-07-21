@@ -136,7 +136,6 @@ Roo.apply(Roo.XComponent, {
     
     /**
      * Register components to be built later.
-     * @param {Object} details about module
      *
      * This solves the following issues
      * - Building is not done on page load, but after an authentication process has occured.
@@ -153,7 +152,8 @@ Roo.apply(Roo.XComponent, {
           parent : 'Pman.layout',
           disabled : false,  // or use a function..
         })
-     * 
+     
+     * * @param {Object} details about module
      */
     register : function(obj) {
         this.modules.push(obj);

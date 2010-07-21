@@ -153,12 +153,14 @@
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforeedit&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">e.cancel</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">this.editing </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ed </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.colModel.getCellEditor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">);
+                
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">ed</span><span class="jsdoc-syntax">) {
                     </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
                 }
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">ed.rendered</span><span class="jsdoc-syntax">){
                     </span><span class="jsdoc-var">ed.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ed.parentEl </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">);
                 }
+                </span><span class="jsdoc-var">ed.field.reset</span><span class="jsdoc-syntax">();
                 (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){ </span><span class="jsdoc-comment">// complex but required for focus issues in safari, ie and opera
                     </span><span class="jsdoc-var">ed.row </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">;
                     </span><span class="jsdoc-var">ed.col </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">;

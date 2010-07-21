@@ -136,7 +136,6 @@
     
     </span><span class="jsdoc-comment">/**
      * Register components to be built later.
-     * @param {Object} details about module
      *
      * This solves the following issues
      * - Building is not done on page load, but after an authentication process has occured.
@@ -153,7 +152,8 @@
           parent : 'Pman.layout',
           disabled : false,  // or use a function..
         })
-     * 
+     
+     * * @param {Object} details about module
      */
     </span><span class="jsdoc-var">register </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">obj</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-var">this.modules.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">obj</span><span class="jsdoc-syntax">);
