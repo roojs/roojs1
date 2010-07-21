@@ -1,0 +1,575 @@
+{
+  "*object": "SymbolSet",
+  "_index": {
+    "String.escape": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "string",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The string to escape"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "string",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The string to escape"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "String",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The escaped string"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/String.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Escapes the passed string for ' and \\\n@param {String} string The string to escape\n@return {String} The escaped string\n@static\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Escapes the passed string for ' and \\"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String",
+            "name": "string",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The string to escape"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "String",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The escaped string"
+          },
+          {
+            "*object": "DocTag",
+            "title": "static",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "String.escape",
+      "name": "String.escape",
+      "alias": "String.escape",
+      "desc": "Escapes the passed string for ' and \\",
+      "isStatic": true,
+      "type": "String",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "String.leftPad": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "string",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The original string"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "size",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The total length of the output string"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "char",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) The character with which to pad the original string (defaults to empty string \" \")"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "string",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The original string"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "size",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The total length of the output string"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "char",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) The character with which to pad the original string (defaults to empty string \" \")"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "String",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The padded string"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/String.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Pads the left side of a string with a specified character.  This is especially useful\nfor normalizing number and date strings.  Example usage:\n<pre><code>\nvar s = String.leftPad('123', 5, '0');\n// s now contains the string: '00123'\n</code></pre>\n@param {String} string The original string\n@param {Number} size The total length of the output string\n@param {String} char (optional) The character with which to pad the original string (defaults to empty string \" \")\n@return {String} The padded string\n@static\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Pads the left side of a string with a specified character.  This is especially useful\nfor normalizing number and date strings.  Example usage:\n<pre><code>\nvar s = String.leftPad('123', 5, '0');\n// s now contains the string: '00123'\n</code></pre>"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String",
+            "name": "string",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The original string"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Number",
+            "name": "size",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The total length of the output string"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String",
+            "name": "char",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "(optional) The character with which to pad the original string (defaults to empty string \" \")"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "String",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The padded string"
+          },
+          {
+            "*object": "DocTag",
+            "title": "static",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "String.leftPad",
+      "name": "String.leftPad",
+      "alias": "String.leftPad",
+      "desc": "Pads the left side of a string with a specified character.  This is especially useful\nfor normalizing number and date strings.  Example usage:\n<pre><code>\nvar s = String.leftPad('123', 5, '0');\n// s now contains the string: '00123'\n</code></pre>",
+      "isStatic": true,
+      "type": "String",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "String.format": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "string",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The tokenized string to be formatted"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "value1",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The value to replace token {0}"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "value2",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Etc..."
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "string",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The tokenized string to be formatted"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "value1",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The value to replace token {0}"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "value2",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Etc..."
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "String",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The formatted string"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/String.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Allows you to define a tokenized string and pass an arbitrary number of arguments to replace the tokens.  Each\ntoken must be unique, and must increment in the format {0}, {1}, etc.  Example usage:\n<pre><code>\nvar cls = 'my-class', text = 'Some text';\nvar s = String.format('<div class=\"{0}\">{1}</div>', cls, text);\n// s now contains the string: '<div class=\"my-class\">Some text</div>'\n</code></pre>\n@param {String} string The tokenized string to be formatted\n@param {String} value1 The value to replace token {0}\n@param {String} value2 Etc...\n@return {String} The formatted string\n@static\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Allows you to define a tokenized string and pass an arbitrary number of arguments to replace the tokens.  Each\ntoken must be unique, and must increment in the format {0}, {1}, etc.  Example usage:\n<pre><code>\nvar cls = 'my-class', text = 'Some text';\nvar s = String.format('<div class=\"{0}\">{1}</div>', cls, text);\n// s now contains the string: '<div class=\"my-class\">Some text</div>'\n</code></pre>"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String",
+            "name": "string",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The tokenized string to be formatted"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String",
+            "name": "value1",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The value to replace token {0}"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String",
+            "name": "value2",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Etc..."
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "String",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The formatted string"
+          },
+          {
+            "*object": "DocTag",
+            "title": "static",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "String.format",
+      "name": "String.format",
+      "alias": "String.format",
+      "desc": "Allows you to define a tokenized string and pass an arbitrary number of arguments to replace the tokens.  Each\ntoken must be unique, and must increment in the format {0}, {1}, etc.  Example usage:\n<pre><code>\nvar cls = 'my-class', text = 'Some text';\nvar s = String.format('<div class=\"{0}\">{1}</div>', cls, text);\n// s now contains the string: '<div class=\"my-class\">Some text</div>'\n</code></pre>",
+      "isStatic": true,
+      "type": "String",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "String#toggle": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "value",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The value to compare to the current string"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "other",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new value to use if the string already equals the first value passed in"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "value",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The value to compare to the current string"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "other",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new value to use if the string already equals the first value passed in"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "String",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new value"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/String.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Utility function that allows you to easily switch a string between two alternating values.  The passed value\nis compared to the current string, and if they are equal, the other value that was passed in is returned.  If\nthey are already different, the first value passed in is returned.  Note that this method returns the new value\nbut does not change the current string.\n<pre><code>\n// alternate sort directions\nsort = sort.toggle('ASC', 'DESC');\n\n// instead of conditional logic:\nsort = (sort == 'ASC' ? 'DESC' : 'ASC');\n</code></pre>\n@param {String} value The value to compare to the current string\n@param {String} other The new value to use if the string already equals the first value passed in\n@return {String} The new value\n ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Utility function that allows you to easily switch a string between two alternating values.  The passed value\nis compared to the current string, and if they are equal, the other value that was passed in is returned.  If\nthey are already different, the first value passed in is returned.  Note that this method returns the new value\nbut does not change the current string.\n<pre><code>\n// alternate sort directions\nsort = sort.toggle('ASC', 'DESC');\n\n// instead of conditional logic:\nsort = (sort == 'ASC' ? 'DESC' : 'ASC');\n</code></pre>"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String",
+            "name": "value",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The value to compare to the current string"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String",
+            "name": "other",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The new value to use if the string already equals the first value passed in"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "String",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The new value"
+          }
+        ]
+      },
+      "_name": "String#toggle",
+      "name": "String#toggle",
+      "alias": "String#toggle",
+      "desc": "Utility function that allows you to easily switch a string between two alternating values.  The passed value\nis compared to the current string, and if they are equal, the other value that was passed in is returned.  If\nthey are already different, the first value passed in is returned.  Note that this method returns the new value\nbut does not change the current string.\n<pre><code>\n// alternate sort directions\nsort = sort.toggle('ASC', 'DESC');\n\n// instead of conditional logic:\nsort = (sort == 'ASC' ? 'DESC' : 'ASC');\n</code></pre>",
+      "type": "String",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    }
+  }
+}
