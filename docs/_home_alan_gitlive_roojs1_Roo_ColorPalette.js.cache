@@ -1,0 +1,588 @@
+{
+  "*object": "SymbolSet",
+  "_index": {
+    "Roo.ColorPalette": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "config",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The config object"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "CONSTRUCTOR",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "config",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The config object"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ColorPalette.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@class Roo.ColorPalette\n@extends Roo.Component\n@desc Simple color palette class for choosing colors.  The palette can be rendered to any container.<br />\nHere's an example of typical usage:\n<pre><code>\nvar cp = new Roo.ColorPalette({value:'993300'});  // initial selected color\ncp.render('my-div');\n\ncp.on('select', function(palette, selColor){\n    // do something with selColor\n});\n</code></pre>\n@constructor\nCreate a new ColorPalette\n@param {Object} config The config object\n \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "class",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Roo.ColorPalette"
+          },
+          {
+            "*object": "DocTag",
+            "title": "extends",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Roo.Component"
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Simple color palette class for choosing colors.  The palette can be rendered to any container.<br />\nHere's an example of typical usage:\n<pre><code>\nvar cp = new Roo.ColorPalette({value:'993300'});  // initial selected color\ncp.render('my-div');\n\ncp.on('select', function(palette, selColor){\n    // do something with selColor\n});\n</code></pre>"
+          },
+          {
+            "*object": "DocTag",
+            "title": "constructor",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Create a new ColorPalette"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Object",
+            "name": "config",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The config object"
+          }
+        ]
+      },
+      "_name": "Roo.ColorPalette",
+      "name": "Roo.ColorPalette",
+      "alias": "Roo.ColorPalette",
+      "desc": "Simple color palette class for choosing colors.  The palette can be rendered to any container.<br />\nHere's an example of typical usage:\n<pre><code>\nvar cp = new Roo.ColorPalette({value:'993300'});  // initial selected color\ncp.render('my-div');\n\ncp.on('select', function(palette, selColor){\n    // do something with selColor\n});\n</code></pre>",
+      "classDesc": "Roo.ColorPalette",
+      "augments": [
+        {
+          "*object": "DocTag",
+          "title": "extends",
+          "type": "",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Roo.Component"
+        }
+      ],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.ColorPalette#*select": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "ColorPalette",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "color",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The 6-digit color hex code (without the # symbol)"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "ColorPalette",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "color",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The 6-digit color hex code (without the # symbol)"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ColorPalette.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@event select\n@desc Fires when a color is selected\n@param {ColorPalette} this\n@param {String} color The 6-digit color hex code (without the # symbol)\n\t     \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "event",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "select"
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Fires when a color is selected"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "ColorPalette",
+            "name": "this",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String",
+            "name": "color",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The 6-digit color hex code (without the # symbol)"
+          }
+        ]
+      },
+      "_name": "Roo.ColorPalette#*select",
+      "name": "Roo.ColorPalette#*select",
+      "alias": "Roo.ColorPalette#*select",
+      "desc": "Fires when a color is selected",
+      "isEvent": true,
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.ColorPalette#itemCls": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "OBJECT",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ColorPalette.js",
+      "cfgs": {
+        "itemCls": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "String",
+          "name": "itemCls",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The CSS class to apply to the containing element (defaults to \"x-color-palette\")",
+          "memberOf": "Roo.ColorPalette#itemCls"
+        }
+      },
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@cfg {String} itemCls\nThe CSS class to apply to the containing element (defaults to \"x-color-palette\")\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "String",
+            "name": "itemCls",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The CSS class to apply to the containing element (defaults to \"x-color-palette\")",
+            "memberOf": "Roo.ColorPalette#itemCls"
+          }
+        ]
+      },
+      "_name": "Roo.ColorPalette#itemCls",
+      "name": "Roo.ColorPalette#itemCls",
+      "alias": "Roo.ColorPalette#itemCls",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "desc": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.ColorPalette#value": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "OBJECT",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ColorPalette.js",
+      "cfgs": {
+        "value": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "String",
+          "name": "value",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The initial color to highlight (should be a valid 6-digit color hex code without the # symbol).  Note that\nthe hex codes are case-sensitive.",
+          "memberOf": "Roo.ColorPalette#value"
+        }
+      },
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@cfg {String} value\nThe initial color to highlight (should be a valid 6-digit color hex code without the # symbol).  Note that\nthe hex codes are case-sensitive.\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "String",
+            "name": "value",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The initial color to highlight (should be a valid 6-digit color hex code without the # symbol).  Note that\nthe hex codes are case-sensitive.",
+            "memberOf": "Roo.ColorPalette#value"
+          }
+        ]
+      },
+      "_name": "Roo.ColorPalette#value",
+      "name": "Roo.ColorPalette#value",
+      "alias": "Roo.ColorPalette#value",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "desc": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.ColorPalette#allowReselect": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "OBJECT",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ColorPalette.js",
+      "cfgs": {
+        "allowReselect": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Boolean",
+          "name": "allowReselect",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "If set to true then reselecting a color that is already selected fires the selection event",
+          "memberOf": "Roo.ColorPalette#allowReselect"
+        }
+      },
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@cfg {Boolean} allowReselect If set to true then reselecting a color that is already selected fires the selection event\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Boolean",
+            "name": "allowReselect",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "If set to true then reselecting a color that is already selected fires the selection event",
+            "memberOf": "Roo.ColorPalette#allowReselect"
+          }
+        ]
+      },
+      "_name": "Roo.ColorPalette#allowReselect",
+      "name": "Roo.ColorPalette#allowReselect",
+      "alias": "Roo.ColorPalette#allowReselect",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "desc": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.ColorPalette#colors": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "OBJECT",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ColorPalette.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc <p>An array of 6-digit color hex code strings (without the # symbol).  This array can contain any number\nof colors, and each hex code should be unique.  The width of the palette is controlled via CSS by adjusting\nthe width property of the 'x-color-palette' class (or assigning a custom class), so you can balance the number\nof colors with the width setting until the box is symmetrical.</p>\n<p>You can override individual colors if needed:</p>\n<pre><code>\nvar cp = new Roo.ColorPalette();\ncp.colors[0] = \"FF0000\";  // change the first box to red\n</code></pre>\n\nOr you can provide a custom array of your own for complete control:\n<pre><code>\nvar cp = new Roo.ColorPalette();\ncp.colors = [\"000000\", \"993300\", \"333300\"];\n</code></pre>\n\n@type Array\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "<p>An array of 6-digit color hex code strings (without the # symbol).  This array can contain any number\nof colors, and each hex code should be unique.  The width of the palette is controlled via CSS by adjusting\nthe width property of the 'x-color-palette' class (or assigning a custom class), so you can balance the number\nof colors with the width setting until the box is symmetrical.</p>\n<p>You can override individual colors if needed:</p>\n<pre><code>\nvar cp = new Roo.ColorPalette();\ncp.colors[0] = \"FF0000\";  // change the first box to red\n</code></pre>\n\nOr you can provide a custom array of your own for complete control:\n<pre><code>\nvar cp = new Roo.ColorPalette();\ncp.colors = [\"000000\", \"993300\", \"333300\"];\n</code></pre>"
+          },
+          {
+            "*object": "DocTag",
+            "title": "type",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Array"
+          }
+        ]
+      },
+      "_name": "Roo.ColorPalette#colors",
+      "name": "Roo.ColorPalette#colors",
+      "alias": "Roo.ColorPalette#colors",
+      "desc": "<p>An array of 6-digit color hex code strings (without the # symbol).  This array can contain any number\nof colors, and each hex code should be unique.  The width of the palette is controlled via CSS by adjusting\nthe width property of the 'x-color-palette' class (or assigning a custom class), so you can balance the number\nof colors with the width setting until the box is symmetrical.</p>\n<p>You can override individual colors if needed:</p>\n<pre><code>\nvar cp = new Roo.ColorPalette();\ncp.colors[0] = \"FF0000\";  // change the first box to red\n</code></pre>\n\nOr you can provide a custom array of your own for complete control:\n<pre><code>\nvar cp = new Roo.ColorPalette();\ncp.colors = [\"000000\", \"993300\", \"333300\"];\n</code></pre>",
+      "type": "Array",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.ColorPalette#select": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "color",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "A valid 6-digit color hex code (# will be stripped if included)"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "color",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "A valid 6-digit color hex code (# will be stripped if included)"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ColorPalette.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Selects the specified color in the palette (fires the select event)\n@param {String} color A valid 6-digit color hex code (# will be stripped if included)\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Selects the specified color in the palette (fires the select event)"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String",
+            "name": "color",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "A valid 6-digit color hex code (# will be stripped if included)"
+          }
+        ]
+      },
+      "_name": "Roo.ColorPalette#select",
+      "name": "Roo.ColorPalette#select",
+      "alias": "Roo.ColorPalette#select",
+      "desc": "Selects the specified color in the palette (fires the select event)",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    }
+  }
+}
