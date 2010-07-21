@@ -50,6 +50,12 @@ Roo.util.TextMetrics = function(){
         }
     };
 }();
+/**
+ * @class Roo.util.TextMetrics.Instance
+ * Provides precise pixel measurements for blocks of text so that you can determine exactly how high and
+ * wide, in pixels, a given block of text will be.
+ */
+ 
 
 Roo.util.TextMetrics.Instance = function(bindTo, fixedWidth){
     var ml = new Roo.Element(document.createElement('div'));
