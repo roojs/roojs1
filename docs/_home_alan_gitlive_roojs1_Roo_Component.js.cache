@@ -1,0 +1,2523 @@
+{
+  "*object": "SymbolSet",
+  "_index": {
+    "Roo.Component": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.Element/String/Object",
+          "name": "config",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The configuration options.  If an element is passed, it is set as the internal\nelement and its id used as the component id.  If a string is passed, it is assumed to be the id of an existing element\nand is used as the component id.  Otherwise, it is assumed to be a standard config object and is applied to the component."
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "CONSTRUCTOR",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.Element/String/Object",
+          "name": "config",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The configuration options.  If an element is passed, it is set as the internal\nelement and its id used as the component id.  If a string is passed, it is assumed to be the id of an existing element\nand is used as the component id.  Otherwise, it is assumed to be a standard config object and is applied to the component."
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/Component.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@class Roo.Component\n@extends Roo.util.Observable\n@desc Base class for all major Roo components.  All subclasses of Component can automatically participate in the standard\nRoo component lifecycle of creation, rendering and destruction.  They also have automatic support for basic hide/show\nand enable/disable behavior.  Component allows any subclass to be lazy-rendered into any {@link Roo.Container} and\nto be automatically registered with the {@link Roo.ComponentMgr} so that it can be referenced at any time via {@link Roo.getCmp}.\nAll visual components (widgets) that require rendering into a layout should subclass Component.\n@constructor\n@param {Roo.Element/String/Object} config The configuration options.  If an element is passed, it is set as the internal\nelement and its id used as the component id.  If a string is passed, it is assumed to be the id of an existing element\nand is used as the component id.  Otherwise, it is assumed to be a standard config object and is applied to the component.\n \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "class",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Roo.Component"
+          },
+          {
+            "*object": "DocTag",
+            "title": "extends",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Roo.util.Observable"
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Base class for all major Roo components.  All subclasses of Component can automatically participate in the standard\nRoo component lifecycle of creation, rendering and destruction.  They also have automatic support for basic hide/show\nand enable/disable behavior.  Component allows any subclass to be lazy-rendered into any {@link Roo.Container} and\nto be automatically registered with the {@link Roo.ComponentMgr} so that it can be referenced at any time via {@link Roo.getCmp}.\nAll visual components (widgets) that require rendering into a layout should subclass Component."
+          },
+          {
+            "*object": "DocTag",
+            "title": "constructor",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Roo.Element/String/Object",
+            "name": "config",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The configuration options.  If an element is passed, it is set as the internal\nelement and its id used as the component id.  If a string is passed, it is assumed to be the id of an existing element\nand is used as the component id.  Otherwise, it is assumed to be a standard config object and is applied to the component."
+          }
+        ]
+      },
+      "_name": "Roo.Component",
+      "name": "Roo.Component",
+      "alias": "Roo.Component",
+      "desc": "Base class for all major Roo components.  All subclasses of Component can automatically participate in the standard\nRoo component lifecycle of creation, rendering and destruction.  They also have automatic support for basic hide/show\nand enable/disable behavior.  Component allows any subclass to be lazy-rendered into any {@link Roo.Container} and\nto be automatically registered with the {@link Roo.ComponentMgr} so that it can be referenced at any time via {@link Roo.getCmp}.\nAll visual components (widgets) that require rendering into a layout should subclass Component.",
+      "classDesc": "Roo.Component",
+      "augments": [
+        {
+          "*object": "DocTag",
+          "title": "extends",
+          "type": "",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Roo.util.Observable"
+        }
+      ],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.Component#*disable": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.Component",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.Component",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/Component.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@event disable\n@desc Fires after the component is disabled.\n@param {Roo.Component} this\n\t     \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "event",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "disable"
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Fires after the component is disabled."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Roo.Component",
+            "name": "this",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.Component#*disable",
+      "name": "Roo.Component#*disable",
+      "alias": "Roo.Component#*disable",
+      "desc": "Fires after the component is disabled.",
+      "isEvent": true,
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.Component#*enable": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.Component",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.Component",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/Component.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@event enable\n@desc Fires after the component is enabled.\n@param {Roo.Component} this\n\t     \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "event",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "enable"
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Fires after the component is enabled."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Roo.Component",
+            "name": "this",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.Component#*enable",
+      "name": "Roo.Component#*enable",
+      "alias": "Roo.Component#*enable",
+      "desc": "Fires after the component is enabled.",
+      "isEvent": true,
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.Component#*beforeshow": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.Component",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.Component",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/Component.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@event beforeshow\n@desc Fires before the component is shown.  Return false to stop the show.\n@param {Roo.Component} this\n\t     \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "event",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "beforeshow"
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Fires before the component is shown.  Return false to stop the show."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Roo.Component",
+            "name": "this",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.Component#*beforeshow",
+      "name": "Roo.Component#*beforeshow",
+      "alias": "Roo.Component#*beforeshow",
+      "desc": "Fires before the component is shown.  Return false to stop the show.",
+      "isEvent": true,
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.Component#*show": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.Component",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.Component",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/Component.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@event show\n@desc Fires after the component is shown.\n@param {Roo.Component} this\n\t     \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "event",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "show"
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Fires after the component is shown."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Roo.Component",
+            "name": "this",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.Component#*show",
+      "name": "Roo.Component#*show",
+      "alias": "Roo.Component#*show",
+      "desc": "Fires after the component is shown.",
+      "isEvent": true,
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.Component#*beforehide": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.Component",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.Component",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/Component.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@event beforehide\n@desc Fires before the component is hidden. Return false to stop the hide.\n@param {Roo.Component} this\n\t     \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "event",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "beforehide"
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Fires before the component is hidden. Return false to stop the hide."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Roo.Component",
+            "name": "this",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.Component#*beforehide",
+      "name": "Roo.Component#*beforehide",
+      "alias": "Roo.Component#*beforehide",
+      "desc": "Fires before the component is hidden. Return false to stop the hide.",
+      "isEvent": true,
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.Component#*hide": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.Component",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.Component",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/Component.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@event hide\n@desc Fires after the component is hidden.\n@param {Roo.Component} this\n\t     \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "event",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "hide"
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Fires after the component is hidden."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Roo.Component",
+            "name": "this",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.Component#*hide",
+      "name": "Roo.Component#*hide",
+      "alias": "Roo.Component#*hide",
+      "desc": "Fires after the component is hidden.",
+      "isEvent": true,
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.Component#*beforerender": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.Component",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.Component",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/Component.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@event beforerender\n@desc Fires before the component is rendered. Return false to stop the render.\n@param {Roo.Component} this\n\t     \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "event",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "beforerender"
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Fires before the component is rendered. Return false to stop the render."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Roo.Component",
+            "name": "this",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.Component#*beforerender",
+      "name": "Roo.Component#*beforerender",
+      "alias": "Roo.Component#*beforerender",
+      "desc": "Fires before the component is rendered. Return false to stop the render.",
+      "isEvent": true,
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.Component#*render": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.Component",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.Component",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/Component.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@event render\n@desc Fires after the component is rendered.\n@param {Roo.Component} this\n\t     \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "event",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "render"
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Fires after the component is rendered."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Roo.Component",
+            "name": "this",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.Component#*render",
+      "name": "Roo.Component#*render",
+      "alias": "Roo.Component#*render",
+      "desc": "Fires after the component is rendered.",
+      "isEvent": true,
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.Component#*beforedestroy": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.Component",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.Component",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/Component.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@event beforedestroy\n@desc Fires before the component is destroyed. Return false to stop the destroy.\n@param {Roo.Component} this\n\t     \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "event",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "beforedestroy"
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Fires before the component is destroyed. Return false to stop the destroy."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Roo.Component",
+            "name": "this",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.Component#*beforedestroy",
+      "name": "Roo.Component#*beforedestroy",
+      "alias": "Roo.Component#*beforedestroy",
+      "desc": "Fires before the component is destroyed. Return false to stop the destroy.",
+      "isEvent": true,
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.Component#*destroy": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.Component",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.Component",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/Component.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@event destroy\n@desc Fires after the component is destroyed.\n@param {Roo.Component} this\n\t     \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "event",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "destroy"
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Fires after the component is destroyed."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Roo.Component",
+            "name": "this",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.Component#*destroy",
+      "name": "Roo.Component#*destroy",
+      "alias": "Roo.Component#*destroy",
+      "desc": "Fires after the component is destroyed.",
+      "isEvent": true,
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.Component#hidden#hidden": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "OBJECT",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/Component.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n\n@name hidden\n@memberOf Roo.Component#hidden#",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "name",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "hidden"
+          },
+          {
+            "*object": "DocTag",
+            "title": "memberOf",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Roo.Component#hidden#"
+          }
+        ]
+      },
+      "_name": "Roo.Component#hidden#hidden",
+      "name": "hidden",
+      "alias": "Roo.Component#hidden#hidden",
+      "augments": [],
+      "memberOf": "Roo.Component#hidden",
+      "type": "Boolean",
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "desc": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "since": "",
+      "version": ""
+    },
+    "Roo.Component#hidden": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "OBJECT",
+      "methods": [],
+      "_params": [],
+      "properties": [
+        {
+          "*object": "Symbol",
+          "params": [],
+          "exceptions": [],
+          "inherits": [],
+          "isa": "OBJECT",
+          "methods": [],
+          "_params": [],
+          "properties": [],
+          "requires": [],
+          "returns": [],
+          "see": [],
+          "srcFile": "/home/alan/gitlive/roojs1/Roo/Component.js",
+          "cfgs": {},
+          "comment": {
+            "*object": "DocComment",
+            "isUserComment": true,
+            "src": "\n\n@name hidden\n@memberOf Roo.Component#hidden#",
+            "meta": "",
+            "tags": [
+              {
+                "*object": "DocTag",
+                "title": "name",
+                "type": "",
+                "name": "",
+                "isOptional": false,
+                "defaultValue": "",
+                "desc": "hidden"
+              },
+              {
+                "*object": "DocTag",
+                "title": "memberOf",
+                "type": "",
+                "name": "",
+                "isOptional": false,
+                "defaultValue": "",
+                "desc": "Roo.Component#hidden#"
+              }
+            ]
+          },
+          "_name": "Roo.Component#hidden#hidden",
+          "name": "hidden",
+          "alias": "Roo.Component#hidden#hidden",
+          "augments": [],
+          "memberOf": "Roo.Component#hidden",
+          "type": "Boolean",
+          "defaultValue": "",
+          "addOn": "",
+          "author": "",
+          "classDesc": "",
+          "deprecated": "",
+          "desc": "",
+          "example": "",
+          "isEvent": false,
+          "isConstant": false,
+          "isIgnored": false,
+          "isInner": false,
+          "isNamespace": false,
+          "isPrivate": false,
+          "isStatic": false,
+          "since": "",
+          "version": ""
+        }
+      ],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/Component.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@property {Boolean} hidden\n@desc true if this component is hidden. Read-only.\n     \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "property",
+            "type": "Boolean",
+            "name": "hidden",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "true if this component is hidden. Read-only."
+          }
+        ]
+      },
+      "_name": "Roo.Component#hidden",
+      "name": "Roo.Component#hidden",
+      "alias": "Roo.Component#hidden",
+      "desc": "true if this component is hidden. Read-only.",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.Component#disabled": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "OBJECT",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/Component.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": false,
+        "src": "\n@desc true if this component is disabled. Read-only.\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "true if this component is disabled. Read-only."
+          }
+        ]
+      },
+      "_name": "Roo.Component#disabled",
+      "name": "Roo.Component#disabled",
+      "alias": "Roo.Component#disabled",
+      "desc": "true if this component is disabled. Read-only.",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.Component#rendered": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "OBJECT",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/Component.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": false,
+        "src": "\n@desc true if this component has been rendered. Read-only.\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "true if this component has been rendered. Read-only."
+          }
+        ]
+      },
+      "_name": "Roo.Component#rendered",
+      "name": "Roo.Component#rendered",
+      "alias": "Roo.Component#rendered",
+      "desc": "true if this component has been rendered. Read-only.",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.Component#disabledClass": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "OBJECT",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/Component.js",
+      "cfgs": {
+        "disableClass": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "String",
+          "name": "disableClass",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
+          "memberOf": "Roo.Component#disabledClass"
+        }
+      },
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n @cfg {String} disableClass\nCSS class added to the component when it is disabled (defaults to \"x-item-disabled\").\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "String",
+            "name": "disableClass",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
+            "memberOf": "Roo.Component#disabledClass"
+          }
+        ]
+      },
+      "_name": "Roo.Component#disabledClass",
+      "name": "Roo.Component#disabledClass",
+      "alias": "Roo.Component#disabledClass",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "desc": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.Component#allowDomMove": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "OBJECT",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/Component.js",
+      "cfgs": {
+        "allowDomMove": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Boolean",
+          "name": "allowDomMove",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Whether the component can move the Dom node when rendering (defaults to true).",
+          "memberOf": "Roo.Component#allowDomMove"
+        }
+      },
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n @cfg {Boolean} allowDomMove\nWhether the component can move the Dom node when rendering (defaults to true).\n\t ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Boolean",
+            "name": "allowDomMove",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Whether the component can move the Dom node when rendering (defaults to true).",
+            "memberOf": "Roo.Component#allowDomMove"
+          }
+        ]
+      },
+      "_name": "Roo.Component#allowDomMove",
+      "name": "Roo.Component#allowDomMove",
+      "alias": "Roo.Component#allowDomMove",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "desc": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.Component#hideMode": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "OBJECT",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/Component.js",
+      "cfgs": {
+        "hideMode": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "String",
+          "name": "hideMode",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+          "memberOf": "Roo.Component#hideMode"
+        }
+      },
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n @cfg {String} hideMode\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "String",
+            "name": "hideMode",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+            "memberOf": "Roo.Component#hideMode"
+          }
+        ]
+      },
+      "_name": "Roo.Component#hideMode",
+      "name": "Roo.Component#hideMode",
+      "alias": "Roo.Component#hideMode",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "desc": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.Component#actionMode": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "OBJECT",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/Component.js",
+      "cfgs": {
+        "actionMode": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "String",
+          "name": "actionMode",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el'",
+          "memberOf": "Roo.Component#actionMode"
+        }
+      },
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n @cfg {String} actionMode \nwhich property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' \n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "String",
+            "name": "actionMode",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el'",
+            "memberOf": "Roo.Component#actionMode"
+          }
+        ]
+      },
+      "_name": "Roo.Component#actionMode",
+      "name": "Roo.Component#actionMode",
+      "alias": "Roo.Component#actionMode",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "desc": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.Component#render": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/HTMLElement/Element",
+          "name": "container",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) The element this component should be rendered into. If it is being applied to existing markup, this should be left off."
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/HTMLElement/Element",
+          "name": "container",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) The element this component should be rendered into. If it is being applied to existing markup, this should be left off."
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/Component.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc If this is a lazy rendering component, render it to its container element.\n@param {String/HTMLElement/Element} container (optional) The element this component should be rendered into. If it is being applied to existing markup, this should be left off.\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "If this is a lazy rendering component, render it to its container element."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String/HTMLElement/Element",
+            "name": "container",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "(optional) The element this component should be rendered into. If it is being applied to existing markup, this should be left off."
+          }
+        ]
+      },
+      "_name": "Roo.Component#render",
+      "name": "Roo.Component#render",
+      "alias": "Roo.Component#render",
+      "desc": "If this is a lazy rendering component, render it to its container element.",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.Component#destroy": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/Component.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": false,
+        "src": "\n@desc Destroys this component by purging any event listeners, removing the component's element from the DOM,\nremoving the component from its {@link Roo.Container} (if applicable) and unregistering it from {@link Roo.ComponentMgr}.\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Destroys this component by purging any event listeners, removing the component's element from the DOM,\nremoving the component from its {@link Roo.Container} (if applicable) and unregistering it from {@link Roo.ComponentMgr}."
+          }
+        ]
+      },
+      "_name": "Roo.Component#destroy",
+      "name": "Roo.Component#destroy",
+      "alias": "Roo.Component#destroy",
+      "desc": "Destroys this component by purging any event listeners, removing the component's element from the DOM,\nremoving the component from its {@link Roo.Container} (if applicable) and unregistering it from {@link Roo.ComponentMgr}.",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.Component#getEl": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.Element",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The element"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/Component.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Returns the underlying {@link Roo.Element}.\n@return {Roo.Element} The element\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Returns the underlying {@link Roo.Element}."
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.Element",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The element"
+          }
+        ]
+      },
+      "_name": "Roo.Component#getEl",
+      "name": "Roo.Component#getEl",
+      "alias": "Roo.Component#getEl",
+      "desc": "Returns the underlying {@link Roo.Element}.",
+      "type": "Roo.Element",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.Component#getId": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "String",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/Component.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Returns the id of this component.\n@return {String}\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Returns the id of this component."
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "String",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.Component#getId",
+      "name": "Roo.Component#getId",
+      "alias": "Roo.Component#getId",
+      "desc": "Returns the id of this component.",
+      "type": "String",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.Component#focus": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Boolean",
+          "name": "selectText",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "True to also select the text in this component (if applicable)"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Boolean",
+          "name": "selectText",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "True to also select the text in this component (if applicable)"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.Component",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "this"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/Component.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Try to focus this component.\n@param {Boolean} selectText True to also select the text in this component (if applicable)\n@return {Roo.Component} this\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Try to focus this component."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Boolean",
+            "name": "selectText",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "True to also select the text in this component (if applicable)"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.Component",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "this"
+          }
+        ]
+      },
+      "_name": "Roo.Component#focus",
+      "name": "Roo.Component#focus",
+      "alias": "Roo.Component#focus",
+      "desc": "Try to focus this component.",
+      "type": "Roo.Component",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.Component#disable": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.Component",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "this"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/Component.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Disable this component.\n@return {Roo.Component} this\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Disable this component."
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.Component",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "this"
+          }
+        ]
+      },
+      "_name": "Roo.Component#disable",
+      "name": "Roo.Component#disable",
+      "alias": "Roo.Component#disable",
+      "desc": "Disable this component.",
+      "type": "Roo.Component",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.Component#enable": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.Component",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "this"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/Component.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Enable this component.\n@return {Roo.Component} this\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Enable this component."
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.Component",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "this"
+          }
+        ]
+      },
+      "_name": "Roo.Component#enable",
+      "name": "Roo.Component#enable",
+      "alias": "Roo.Component#enable",
+      "desc": "Enable this component.",
+      "type": "Roo.Component",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.Component#setDisabled": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Boolean",
+          "name": "disabled",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Boolean",
+          "name": "disabled",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/Component.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Convenience function for setting disabled/enabled by boolean.\n@param {Boolean} disabled\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Convenience function for setting disabled/enabled by boolean."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Boolean",
+            "name": "disabled",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.Component#setDisabled",
+      "name": "Roo.Component#setDisabled",
+      "alias": "Roo.Component#setDisabled",
+      "desc": "Convenience function for setting disabled/enabled by boolean.",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.Component#show": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.Component",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "this"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/Component.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Show this component.\n@return {Roo.Component} this\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Show this component."
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.Component",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "this"
+          }
+        ]
+      },
+      "_name": "Roo.Component#show",
+      "name": "Roo.Component#show",
+      "alias": "Roo.Component#show",
+      "desc": "Show this component.",
+      "type": "Roo.Component",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.Component#hide": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.Component",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "this"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/Component.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Hide this component.\n@return {Roo.Component} this\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Hide this component."
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.Component",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "this"
+          }
+        ]
+      },
+      "_name": "Roo.Component#hide",
+      "name": "Roo.Component#hide",
+      "alias": "Roo.Component#hide",
+      "desc": "Hide this component.",
+      "type": "Roo.Component",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.Component#setVisible": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Boolean",
+          "name": "visible",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "True to show, false to hide"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Boolean",
+          "name": "visible",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "True to show, false to hide"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.Component",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "this"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/Component.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Convenience function to hide or show this component by boolean.\n@param {Boolean} visible True to show, false to hide\n@return {Roo.Component} this\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Convenience function to hide or show this component by boolean."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Boolean",
+            "name": "visible",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "True to show, false to hide"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.Component",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "this"
+          }
+        ]
+      },
+      "_name": "Roo.Component#setVisible",
+      "name": "Roo.Component#setVisible",
+      "alias": "Roo.Component#setVisible",
+      "desc": "Convenience function to hide or show this component by boolean.",
+      "type": "Roo.Component",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.Component#isVisible": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/Component.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": false,
+        "src": "\n@desc Returns true if this component is visible.\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Returns true if this component is visible."
+          }
+        ]
+      },
+      "_name": "Roo.Component#isVisible",
+      "name": "Roo.Component#isVisible",
+      "alias": "Roo.Component#isVisible",
+      "desc": "Returns true if this component is visible.",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    }
+  }
+}
