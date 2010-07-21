@@ -1,0 +1,1575 @@
+{
+  "*object": "SymbolSet",
+  "_index": {
+    "Roo.BoxComponent": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.Element/String/Object",
+          "name": "config",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The configuration options."
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "CONSTRUCTOR",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.Element/String/Object",
+          "name": "config",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The configuration options."
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BoxComponent.js",
+      "cfgs": {
+        "width": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Number",
+          "name": "width",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "width (optional) size of component",
+          "memberOf": "Roo.BoxComponent"
+        },
+        "height": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Number",
+          "name": "height",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "height (optional) size of component",
+          "memberOf": "Roo.BoxComponent"
+        }
+      },
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@class Roo.BoxComponent\n@extends Roo.Component\n@desc Base class for any visual {@link Roo.Component} that uses a box container.  BoxComponent provides automatic box\nmodel adjustments for sizing and positioning and will work correctly withnin the Component rendering model.  All\ncontainer classes should subclass BoxComponent so that they will work consistently when nested within other Ext\nlayout containers.\n@constructor\n@param {Roo.Element/String/Object} config The configuration options.\n \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "class",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Roo.BoxComponent"
+          },
+          {
+            "*object": "DocTag",
+            "title": "extends",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Roo.Component"
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Base class for any visual {@link Roo.Component} that uses a box container.  BoxComponent provides automatic box\nmodel adjustments for sizing and positioning and will work correctly withnin the Component rendering model.  All\ncontainer classes should subclass BoxComponent so that they will work consistently when nested within other Ext\nlayout containers."
+          },
+          {
+            "*object": "DocTag",
+            "title": "constructor",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Roo.Element/String/Object",
+            "name": "config",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The configuration options."
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Number",
+            "name": "width",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "width (optional) size of component",
+            "memberOf": "Roo.BoxComponent"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Number",
+            "name": "height",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "height (optional) size of component",
+            "memberOf": "Roo.BoxComponent"
+          }
+        ]
+      },
+      "_name": "Roo.BoxComponent",
+      "name": "Roo.BoxComponent",
+      "alias": "Roo.BoxComponent",
+      "desc": "Base class for any visual {@link Roo.Component} that uses a box container.  BoxComponent provides automatic box\nmodel adjustments for sizing and positioning and will work correctly withnin the Component rendering model.  All\ncontainer classes should subclass BoxComponent so that they will work consistently when nested within other Ext\nlayout containers.",
+      "classDesc": "Roo.BoxComponent",
+      "augments": [
+        {
+          "*object": "DocTag",
+          "title": "extends",
+          "type": "",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Roo.Component"
+        }
+      ],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.BoxComponent#*resize": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.Component",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "adjWidth",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The box-adjusted width that was set"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "adjHeight",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The box-adjusted height that was set"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "rawWidth",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The width that was originally specified"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "rawHeight",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The height that was originally specified"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.Component",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "adjWidth",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The box-adjusted width that was set"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "adjHeight",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The box-adjusted height that was set"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "rawWidth",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The width that was originally specified"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "rawHeight",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The height that was originally specified"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BoxComponent.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@event resize\n@desc Fires after the component is resized.\n@param {Roo.Component} this\n@param {Number} adjWidth The box-adjusted width that was set\n@param {Number} adjHeight The box-adjusted height that was set\n@param {Number} rawWidth The width that was originally specified\n@param {Number} rawHeight The height that was originally specified\n\t     \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "event",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "resize"
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Fires after the component is resized."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Roo.Component",
+            "name": "this",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Number",
+            "name": "adjWidth",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The box-adjusted width that was set"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Number",
+            "name": "adjHeight",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The box-adjusted height that was set"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Number",
+            "name": "rawWidth",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The width that was originally specified"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Number",
+            "name": "rawHeight",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The height that was originally specified"
+          }
+        ]
+      },
+      "_name": "Roo.BoxComponent#*resize",
+      "name": "Roo.BoxComponent#*resize",
+      "alias": "Roo.BoxComponent#*resize",
+      "desc": "Fires after the component is resized.",
+      "isEvent": true,
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.BoxComponent#*move": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.Component",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "x",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new x position"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "y",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new y position"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.Component",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "x",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new x position"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "y",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new y position"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BoxComponent.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@event move\n@desc Fires after the component is moved.\n@param {Roo.Component} this\n@param {Number} x The new x position\n@param {Number} y The new y position\n\t     \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "event",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "move"
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Fires after the component is moved."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Roo.Component",
+            "name": "this",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Number",
+            "name": "x",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The new x position"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Number",
+            "name": "y",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The new y position"
+          }
+        ]
+      },
+      "_name": "Roo.BoxComponent#*move",
+      "name": "Roo.BoxComponent#*move",
+      "alias": "Roo.BoxComponent#*move",
+      "desc": "Fires after the component is moved.",
+      "isEvent": true,
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.BoxComponent#setSize": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number/Object",
+          "name": "width",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new width to set, or a size object in the format {width, height}"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "height",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new height to set (not required if a size object is passed as the first arg)"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number/Object",
+          "name": "width",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new width to set, or a size object in the format {width, height}"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "height",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new height to set (not required if a size object is passed as the first arg)"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.BoxComponent",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "this"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BoxComponent.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Sets the width and height of the component.  This method fires the resize event.  This method can accept\neither width and height as separate numeric arguments, or you can pass a size object like {width:10, height:20}.\n@param {Number/Object} width The new width to set, or a size object in the format {width, height}\n@param {Number} height The new height to set (not required if a size object is passed as the first arg)\n@return {Roo.BoxComponent} this\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Sets the width and height of the component.  This method fires the resize event.  This method can accept\neither width and height as separate numeric arguments, or you can pass a size object like {width:10, height:20}."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Number/Object",
+            "name": "width",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The new width to set, or a size object in the format {width, height}"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Number",
+            "name": "height",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The new height to set (not required if a size object is passed as the first arg)"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.BoxComponent",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "this"
+          }
+        ]
+      },
+      "_name": "Roo.BoxComponent#setSize",
+      "name": "Roo.BoxComponent#setSize",
+      "alias": "Roo.BoxComponent#setSize",
+      "desc": "Sets the width and height of the component.  This method fires the resize event.  This method can accept\neither width and height as separate numeric arguments, or you can pass a size object like {width:10, height:20}.",
+      "type": "Roo.BoxComponent",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.BoxComponent#getSize": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Object",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "An object containing the element's size {width: (element width), height: (element height)}"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BoxComponent.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Gets the current size of the component's underlying element.\n@return {Object} An object containing the element's size {width: (element width), height: (element height)}\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Gets the current size of the component's underlying element."
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Object",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "An object containing the element's size {width: (element width), height: (element height)}"
+          }
+        ]
+      },
+      "_name": "Roo.BoxComponent#getSize",
+      "name": "Roo.BoxComponent#getSize",
+      "alias": "Roo.BoxComponent#getSize",
+      "desc": "Gets the current size of the component's underlying element.",
+      "type": "Object",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.BoxComponent#getPosition": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Boolean",
+          "name": "local",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) If true the element's left and top are returned instead of page XY (defaults to false)"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Boolean",
+          "name": "local",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) If true the element's left and top are returned instead of page XY (defaults to false)"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Array",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The XY position of the element (e.g., [100, 200])"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BoxComponent.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Gets the current XY position of the component's underlying element.\n@param {Boolean} local (optional) If true the element's left and top are returned instead of page XY (defaults to false)\n@return {Array} The XY position of the element (e.g., [100, 200])\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Gets the current XY position of the component's underlying element."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Boolean",
+            "name": "local",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "(optional) If true the element's left and top are returned instead of page XY (defaults to false)"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Array",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The XY position of the element (e.g., [100, 200])"
+          }
+        ]
+      },
+      "_name": "Roo.BoxComponent#getPosition",
+      "name": "Roo.BoxComponent#getPosition",
+      "alias": "Roo.BoxComponent#getPosition",
+      "desc": "Gets the current XY position of the component's underlying element.",
+      "type": "Array",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.BoxComponent#getBox": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Boolean",
+          "name": "local",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) If true the element's left and top are returned instead of page XY (defaults to false)"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Boolean",
+          "name": "local",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) If true the element's left and top are returned instead of page XY (defaults to false)"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BoxComponent.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Gets the current box measurements of the component's underlying element.\n@param {Boolean} local (optional) If true the element's left and top are returned instead of page XY (defaults to false)\n@returns {Object} box An object in the format {x, y, width, height}\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Gets the current box measurements of the component's underlying element."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Boolean",
+            "name": "local",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "(optional) If true the element's left and top are returned instead of page XY (defaults to false)"
+          },
+          {
+            "*object": "DocTag",
+            "title": "returns",
+            "type": "Object",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "box An object in the format {x, y, width, height}"
+          }
+        ]
+      },
+      "_name": "Roo.BoxComponent#getBox",
+      "name": "Roo.BoxComponent#getBox",
+      "alias": "Roo.BoxComponent#getBox",
+      "desc": "Gets the current box measurements of the component's underlying element.",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.BoxComponent#updateBox": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "box",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "An object in the format {x, y, width, height}"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "box",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "An object in the format {x, y, width, height}"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BoxComponent.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Sets the current box measurements of the component's underlying element.\n@param {Object} box An object in the format {x, y, width, height}\n@returns {Roo.BoxComponent} this\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Sets the current box measurements of the component's underlying element."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Object",
+            "name": "box",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "An object in the format {x, y, width, height}"
+          },
+          {
+            "*object": "DocTag",
+            "title": "returns",
+            "type": "Roo.BoxComponent",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "this"
+          }
+        ]
+      },
+      "_name": "Roo.BoxComponent#updateBox",
+      "name": "Roo.BoxComponent#updateBox",
+      "alias": "Roo.BoxComponent#updateBox",
+      "desc": "Sets the current box measurements of the component's underlying element.",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.BoxComponent#setPosition": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "left",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new left"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "top",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new top"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "left",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new left"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "top",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new top"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BoxComponent.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Sets the left and top of the component.  To set the page XY position instead, use {@link #setPagePosition}.\nThis method fires the move event.\n@param {Number} left The new left\n@param {Number} top The new top\n@returns {Roo.BoxComponent} this\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Sets the left and top of the component.  To set the page XY position instead, use {@link #setPagePosition}.\nThis method fires the move event."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Number",
+            "name": "left",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The new left"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Number",
+            "name": "top",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The new top"
+          },
+          {
+            "*object": "DocTag",
+            "title": "returns",
+            "type": "Roo.BoxComponent",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "this"
+          }
+        ]
+      },
+      "_name": "Roo.BoxComponent#setPosition",
+      "name": "Roo.BoxComponent#setPosition",
+      "alias": "Roo.BoxComponent#setPosition",
+      "desc": "Sets the left and top of the component.  To set the page XY position instead, use {@link #setPagePosition}.\nThis method fires the move event.",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.BoxComponent#setPagePosition": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "x",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new x position"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "y",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new y position"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "x",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new x position"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "y",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new y position"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BoxComponent.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Sets the page XY position of the component.  To set the left and top instead, use {@link #setPosition}.\nThis method fires the move event.\n@param {Number} x The new x position\n@param {Number} y The new y position\n@returns {Roo.BoxComponent} this\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Sets the page XY position of the component.  To set the left and top instead, use {@link #setPosition}.\nThis method fires the move event."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Number",
+            "name": "x",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The new x position"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Number",
+            "name": "y",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The new y position"
+          },
+          {
+            "*object": "DocTag",
+            "title": "returns",
+            "type": "Roo.BoxComponent",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "this"
+          }
+        ]
+      },
+      "_name": "Roo.BoxComponent#setPagePosition",
+      "name": "Roo.BoxComponent#setPagePosition",
+      "alias": "Roo.BoxComponent#setPagePosition",
+      "desc": "Sets the page XY position of the component.  To set the left and top instead, use {@link #setPosition}.\nThis method fires the move event.",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.BoxComponent#syncSize": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BoxComponent.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Force the component's size to recalculate based on the underlying element's current height and width.\n@returns {Roo.BoxComponent} this\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Force the component's size to recalculate based on the underlying element's current height and width."
+          },
+          {
+            "*object": "DocTag",
+            "title": "returns",
+            "type": "Roo.BoxComponent",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "this"
+          }
+        ]
+      },
+      "_name": "Roo.BoxComponent#syncSize",
+      "name": "Roo.BoxComponent#syncSize",
+      "alias": "Roo.BoxComponent#syncSize",
+      "desc": "Force the component's size to recalculate based on the underlying element's current height and width.",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.BoxComponent#onResize": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "adjWidth",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The box-adjusted width that was set"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "adjHeight",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The box-adjusted height that was set"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "rawWidth",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The width that was originally specified"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "rawHeight",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The height that was originally specified"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "adjWidth",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The box-adjusted width that was set"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "adjHeight",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The box-adjusted height that was set"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "rawWidth",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The width that was originally specified"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "rawHeight",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The height that was originally specified"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BoxComponent.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Called after the component is resized, this method is empty by default but can be implemented by any\nsubclass that needs to perform custom logic after a resize occurs.\n@param {Number} adjWidth The box-adjusted width that was set\n@param {Number} adjHeight The box-adjusted height that was set\n@param {Number} rawWidth The width that was originally specified\n@param {Number} rawHeight The height that was originally specified\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Called after the component is resized, this method is empty by default but can be implemented by any\nsubclass that needs to perform custom logic after a resize occurs."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Number",
+            "name": "adjWidth",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The box-adjusted width that was set"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Number",
+            "name": "adjHeight",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The box-adjusted height that was set"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Number",
+            "name": "rawWidth",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The width that was originally specified"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Number",
+            "name": "rawHeight",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The height that was originally specified"
+          }
+        ]
+      },
+      "_name": "Roo.BoxComponent#onResize",
+      "name": "Roo.BoxComponent#onResize",
+      "alias": "Roo.BoxComponent#onResize",
+      "desc": "Called after the component is resized, this method is empty by default but can be implemented by any\nsubclass that needs to perform custom logic after a resize occurs.",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.BoxComponent#onPosition": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "x",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new x position"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "y",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new y position"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "x",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new x position"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "y",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new y position"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BoxComponent.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Called after the component is moved, this method is empty by default but can be implemented by any\nsubclass that needs to perform custom logic after a move occurs.\n@param {Number} x The new x position\n@param {Number} y The new y position\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Called after the component is moved, this method is empty by default but can be implemented by any\nsubclass that needs to perform custom logic after a move occurs."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Number",
+            "name": "x",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The new x position"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Number",
+            "name": "y",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The new y position"
+          }
+        ]
+      },
+      "_name": "Roo.BoxComponent#onPosition",
+      "name": "Roo.BoxComponent#onPosition",
+      "alias": "Roo.BoxComponent#onPosition",
+      "desc": "Called after the component is moved, this method is empty by default but can be implemented by any\nsubclass that needs to perform custom logic after a move occurs.",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    }
+  }
+}
