@@ -1,0 +1,100 @@
+
+// list of files to be build in order.. 
+// -- to make your own.. 
+//   - just copy this file, and add // infront of the files 
+//     that you dont think you need.!!!
+
+Roo 
+Function
+String
+Number
+Array
+Date
+    
+//not sure how many of these are requ..
+//was adapter/...
+Roo.lib.Dom
+Roo.lib.Event
+Roo.lib.Ajax
+Roo.lib.Region
+//Roo.DomHelper - in twice -- should it be here???
+Roo.lib.Point
+Roo.lib.Anim
+Roo.lib.AnimBase
+Roo.lib.AnimMgr
+Roo.lib.Beizer
+Roo.lib.ColorAnim
+Roo.lib.Easing
+Roo.lib.Motion
+Roo.lib.Scroll
+
+// --- end if base ---
+
+
+Roo.DomHelper
+Roo.Template
+Roo.DomQuery
+Roo.util.Observable
+Roo.EventManager
+Roo.Element
+Roo.Fx
+Roo.CompositeElement
+Roo.CompositeElementLite
+Roo.data.Connection
+Roo.Ajax
+Roo.UpdateManager
+
+
+// -- these two have bits in and out of core...
+
+
+// probably outside of core..
+Roo.util.DelayedTask
+// TaskRunner includes Roo.TaskMgr
+Roo.util.TaskRunner
+Roo.util.MixedCollection
+Roo.util.JSON
+Roo.util.Format
+Roo.MasterTemplate
+Roo.util.CSS
+Roo.util.ClickRepeater
+Roo.KeyNav
+Roo.KeyMap
+Roo.util.TextMetrics
+Roo.state.Provider
+Roo.state.Manager
+Roo.state.CookieProvider
+
+//		*** ALL can be Optional (need drag /drop ?) - although windows/split  bar/grid etc. uses them..
+Roo.dd.DragDrop
+Roo.dd.DragDropMgr
+Roo.dd.DD
+Roo.dd.DDProxy
+Roo.dd.DDTarget
+Roo.dd.ScrollManager
+Roo.dd.Registry
+Roo.dd.StatusProxy
+Roo.dd.DragSource
+Roo.dd.DropTarget
+Roo.dd.DragZone
+Roo.dd.DropZone
+
+Roo.data.SortTypes
+Roo.data.Record
+Roo.data.Store
+Roo.data.SimpleStore
+Roo.data.JsonStore
+Roo.data.Field
+Roo.data.DataReader
+Roo.data.DataProxy
+//		*** Can be Optional (if needed?)
+Roo.data.MemoryProxy
+Roo.data.HttpProxy
+//		*** Can be Optional (external scripts?)
+Roo.data.ScriptTagProxy
+Roo.data.JsonReader
+//		*** Can be Optional ***
+Roo.data.XmlReader
+//		*** Can be Optional (needed for Tree?)
+Roo.data.ArrayReader
+Roo.data.Tree
