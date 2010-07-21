@@ -1,0 +1,463 @@
+{
+  "*object": "SymbolSet",
+  "_index": {
+    "Roo.ComponentMgr": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "CONSTRUCTOR",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ComponentMgr.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@class Roo.ComponentMgr\n@desc Provides a common registry of all components on a page so that they can be easily accessed by component id (see {@link Roo.getCmp}).\n@singleton\n \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "class",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Roo.ComponentMgr"
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Provides a common registry of all components on a page so that they can be easily accessed by component id (see {@link Roo.getCmp})."
+          },
+          {
+            "*object": "DocTag",
+            "title": "singleton",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.ComponentMgr",
+      "name": "Roo.ComponentMgr",
+      "alias": "Roo.ComponentMgr",
+      "desc": "Provides a common registry of all components on a page so that they can be easily accessed by component id (see {@link Roo.getCmp}).",
+      "classDesc": "Roo.ComponentMgr",
+      "isStatic": true,
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.ComponentMgr#register": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.Component",
+          "name": "c",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The component"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.Component",
+          "name": "c",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The component"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ComponentMgr.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Registers a component.\n@param {Roo.Component} c The component\n         ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Registers a component."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Roo.Component",
+            "name": "c",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The component"
+          }
+        ]
+      },
+      "_name": "Roo.ComponentMgr#register",
+      "name": "Roo.ComponentMgr#register",
+      "alias": "Roo.ComponentMgr#register",
+      "desc": "Registers a component.",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.ComponentMgr#unregister": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.Component",
+          "name": "c",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The component"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.Component",
+          "name": "c",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The component"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ComponentMgr.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Unregisters a component.\n@param {Roo.Component} c The component\n         ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Unregisters a component."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Roo.Component",
+            "name": "c",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The component"
+          }
+        ]
+      },
+      "_name": "Roo.ComponentMgr#unregister",
+      "name": "Roo.ComponentMgr#unregister",
+      "alias": "Roo.ComponentMgr#unregister",
+      "desc": "Unregisters a component.",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.ComponentMgr#get": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "id",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The component id"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "id",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The component id"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ComponentMgr.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Returns a component by id\n@param {String} id The component id\n         ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Returns a component by id"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String",
+            "name": "id",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The component id"
+          }
+        ]
+      },
+      "_name": "Roo.ComponentMgr#get",
+      "name": "Roo.ComponentMgr#get",
+      "alias": "Roo.ComponentMgr#get",
+      "desc": "Returns a component by id",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.ComponentMgr#onAvailable": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "id",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The component id"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Funtction",
+          "name": "fn",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The callback function"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "scope",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The scope of the callback"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "id",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The component id"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Funtction",
+          "name": "fn",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The callback function"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "scope",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The scope of the callback"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/ComponentMgr.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Registers a function that will be called when a specified component is added to ComponentMgr\n@param {String} id The component id\n@param {Funtction} fn The callback function\n@param {Object} scope The scope of the callback\n         ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Registers a function that will be called when a specified component is added to ComponentMgr"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String",
+            "name": "id",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The component id"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Funtction",
+            "name": "fn",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The callback function"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Object",
+            "name": "scope",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The scope of the callback"
+          }
+        ]
+      },
+      "_name": "Roo.ComponentMgr#onAvailable",
+      "name": "Roo.ComponentMgr#onAvailable",
+      "alias": "Roo.ComponentMgr#onAvailable",
+      "desc": "Registers a function that will be called when a specified component is added to ComponentMgr",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    }
+  }
+}
