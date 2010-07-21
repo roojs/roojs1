@@ -67,7 +67,7 @@ Roo.util.TextMetrics.Instance = function(bindTo, fixedWidth){
     var instance = {
         /**
          * Returns the size of the specified text based on the internal element's style and width properties
-         * @memberOf Roo.util.TextMetrics.Instance
+         * @memberOf Roo.util.TextMetrics.Instance.prototype
          * @param {String} text The text to measure
          * @return {Object} An object containing the text's size {width: (width), height: (height)}
          */
@@ -81,7 +81,7 @@ Roo.util.TextMetrics.Instance = function(bindTo, fixedWidth){
         /**
          * Binds this TextMetrics instance to an element from which to copy existing CSS styles
          * that can affect the size of the rendered text
-         * @memberOf Roo.util.TextMetrics.Instance
+         * @memberOf Roo.util.TextMetrics.Instance.prototype
          * @param {String/HTMLElement} el The element, dom node or id
          */
         bind : function(el){
@@ -93,7 +93,7 @@ Roo.util.TextMetrics.Instance = function(bindTo, fixedWidth){
         /**
          * Sets a fixed width on the internal measurement element.  If the text will be multiline, you have
          * to set a fixed width in order to accurately measure the text height.
-         * @memberOf Roo.util.TextMetrics.Instance
+         * @memberOf Roo.util.TextMetrics.Instance.prototype
          * @param {Number} width The width to set on the element
          */
         setFixedWidth : function(width){
@@ -102,7 +102,7 @@ Roo.util.TextMetrics.Instance = function(bindTo, fixedWidth){
 
         /**
          * Returns the measured width of the specified text
-         * @memberOf Roo.util.TextMetrics.Instance
+         * @memberOf Roo.util.TextMetrics.Instance.prototype
          * @param {String} text The text to measure
          * @return {Number} width The width in pixels
          */
@@ -114,7 +114,7 @@ Roo.util.TextMetrics.Instance = function(bindTo, fixedWidth){
         /**
          * Returns the measured height of the specified text.  For multiline text, be sure to call
          * {@link #setFixedWidth} if necessary.
-         * @memberOf Roo.util.TextMetrics.Instance
+         * @memberOf Roo.util.TextMetrics.Instance.prototype
          * @param {String} text The text to measure
          * @return {Number} height The height in pixels
          */
