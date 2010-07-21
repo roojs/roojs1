@@ -1,0 +1,123 @@
+
+Roo.ComponentMgr
+Roo.Component
+Roo.Layer
+Roo.Shadow
+Roo.BoxComponent
+Roo.SplitBar
+Roo.View
+
+//		*** Can be Optional -- check deps..***
+Roo.JsonView
+//		*** Can be Optional ***
+Roo.ColorPalette
+//		*** Can be Optional ***
+Roo.DatePicker
+
+Roo.TabPanel
+Roo.Button
+Roo.SplitButton
+
+Roo.Toolbar
+Roo.PagingToolbar
+Roo.Resizable
+Roo.Editor
+Roo.BasicDialog
+Roo.MessageBox
+Roo.QuickTips
+
+Roo.tree.TreePanel
+Roo.tree.TreeSelectionModel
+Roo.tree.TreeNode
+Roo.tree.AsyncTreeNode
+Roo.tree.TreeNodeUI
+Roo.tree.TreeLoader
+//		*** Can be Optional - only if you used it..***
+Roo.tree.TreeFilter
+Roo.tree.TreeSorter
+Roo.tree.TreeDropZone
+Roo.tree.TreeDragZone
+Roo.tree.TreeEditor
+// 		our extended version.
+Roo.tree.ColumnNodeUI
+Roo.tree.ColumnTree
+
+
+
+Roo.menu.Menu
+Roo.menu.MenuMgr
+Roo.menu.BaseItem
+Roo.menu.Adapter
+Roo.menu.TextItem
+Roo.menu.Separator
+Roo.menu.Item
+Roo.menu.CheckItem
+Roo.menu.DateItem
+Roo.menu.ColorItem
+Roo.menu.DateMenu
+Roo.menu.ColorMenu
+
+Roo.form.Field
+Roo.form.TextField
+Roo.form.Hidden
+Roo.form.TriggerField
+Roo.form.TextArea
+Roo.form.NumberField
+Roo.form.DateField
+Roo.form.ComboBox
+Roo.form.Checkbox
+Roo.form.Radio
+Roo.form.HtmlEditor
+Roo.form.HtmlEditor.ToolbarStandard
+Roo.form.HtmlEditor.ToolbarContext
+Roo.form.BasicForm
+Roo.form.Form
+Roo.form.Action
+Roo.form.Layout
+Roo.form.VTypes
+Roo.form.FCKeditor
+Roo.form.GridField
+
+// Must be after view and form.field as it uses both.
+Roo.DDView
+
+Roo.LayoutManager
+Roo.BorderLayout
+Roo.BasicLayoutRegion
+Roo.LayoutRegion
+Roo.SplitLayoutRegion
+Roo.CenterLayoutRegion
+Roo.LayoutStateManager
+Roo.ContentPanel
+//		*** Can be Optional *** - only if you use it..
+Roo.ReaderLayout
+
+Roo.grid.Grid
+Roo.grid.AbstractGridView
+
+Roo.grid.HeaderDragZone
+Roo.grid.HeaderDropZone
+Roo.grid.GridView
+Roo.grid.SplitDragZone
+Roo.grid.GridDragZone
+Roo.grid.ColumnModel
+Roo.grid.AbstractSelectionModel
+Roo.grid.RowSelectionModel
+//		*** Can be Optional (if you do not have editable or cell selection grids.)***
+Roo.grid.CellSelectionModel
+//		*** Can be Optional (if you do not have editable grids.)***
+Roo.grid.EditorGrid
+Roo.grid.GridEditor
+//		*** Can be Optional ***
+Roo.grid.PropertyGrid
+
+
+
+Roo.LoadMask
+//		*** Can be Optional ***
+Roo.XTemplate
+
+// extras..
+Roo.XComponent
+Roo.Login
+
