@@ -1,0 +1,244 @@
+{
+  "*object": "SymbolSet",
+  "_index": {
+    "Array": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "CONSTRUCTOR",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Array.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@class Array\n \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "class",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Array"
+          }
+        ]
+      },
+      "_name": "Array",
+      "name": "Array",
+      "alias": "Array",
+      "classDesc": "Array",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "deprecated": "",
+      "desc": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Array#indexOf": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "o",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The object to check for"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "o",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The object to check for"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Number",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The index of o in the array (or -1 if it is not found)"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Array.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Checks whether or not the specified object exists in the array.\n@param {Object} o The object to check for\n@return {Number} The index of o in the array (or -1 if it is not found)\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Checks whether or not the specified object exists in the array."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Object",
+            "name": "o",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The object to check for"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Number",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The index of o in the array (or -1 if it is not found)"
+          }
+        ]
+      },
+      "_name": "Array#indexOf",
+      "name": "Array#indexOf",
+      "alias": "Array#indexOf",
+      "desc": "Checks whether or not the specified object exists in the array.",
+      "type": "Number",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Array#remove": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "o",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The object to remove"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "o",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The object to remove"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Array.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Removes the specified object from the array.  If the object is not found nothing happens.\n@param {Object} o The object to remove\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Removes the specified object from the array.  If the object is not found nothing happens."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Object",
+            "name": "o",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The object to remove"
+          }
+        ]
+      },
+      "_name": "Array#remove",
+      "name": "Array#remove",
+      "alias": "Array#remove",
+      "desc": "Removes the specified object from the array.  If the object is not found nothing happens.",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    }
+  }
+}
