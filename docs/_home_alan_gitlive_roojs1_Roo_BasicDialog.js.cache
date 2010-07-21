@@ -1,0 +1,4924 @@
+{
+  "*object": "SymbolSet",
+  "_index": {
+    "Roo.BasicDialog": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/HTMLElement/Roo.Element",
+          "name": "el",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The container element or DOM node, or its id"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "config",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Configuration options"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "CONSTRUCTOR",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/HTMLElement/Roo.Element",
+          "name": "el",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The container element or DOM node, or its id"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "config",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Configuration options"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {
+        "autoCreate": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Boolean/DomHelper",
+          "name": "autoCreate",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "True to auto create from scratch, or using a DomHelper Object (defaults to false)",
+          "memberOf": "Roo.BasicDialog"
+        },
+        "title": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "String",
+          "name": "title",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Default text to display in the title bar (defaults to null)",
+          "memberOf": "Roo.BasicDialog"
+        },
+        "width": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Number",
+          "name": "width",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Width of the dialog in pixels (can also be set via CSS).  Determined by browser if unspecified.",
+          "memberOf": "Roo.BasicDialog"
+        },
+        "height": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Number",
+          "name": "height",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Height of the dialog in pixels (can also be set via CSS).  Determined by browser if unspecified.",
+          "memberOf": "Roo.BasicDialog"
+        },
+        "x": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Number",
+          "name": "x",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The default left page coordinate of the dialog (defaults to center screen)",
+          "memberOf": "Roo.BasicDialog"
+        },
+        "y": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Number",
+          "name": "y",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The default top page coordinate of the dialog (defaults to center screen)",
+          "memberOf": "Roo.BasicDialog"
+        },
+        "animateTarget": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "String/Element",
+          "name": "animateTarget",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Id or element from which the dialog should animate while opening\n(defaults to null with no animation)",
+          "memberOf": "Roo.BasicDialog"
+        },
+        "resizable": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Boolean",
+          "name": "resizable",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "False to disable manual dialog resizing (defaults to true)",
+          "memberOf": "Roo.BasicDialog"
+        },
+        "resizeHandles": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "String",
+          "name": "resizeHandles",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Which resize handles to display - see the {@link Roo.Resizable} handles config\nproperty for valid values (defaults to 'all')",
+          "memberOf": "Roo.BasicDialog"
+        },
+        "minHeight": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Number",
+          "name": "minHeight",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The minimum allowable height for a resizable dialog (defaults to 80)",
+          "memberOf": "Roo.BasicDialog"
+        },
+        "minWidth": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Number",
+          "name": "minWidth",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The minimum allowable width for a resizable dialog (defaults to 200)",
+          "memberOf": "Roo.BasicDialog"
+        },
+        "modal": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Boolean",
+          "name": "modal",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "True to show the dialog modally, preventing user interaction with the rest of the page (defaults to false)",
+          "memberOf": "Roo.BasicDialog"
+        },
+        "autoScroll": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Boolean",
+          "name": "autoScroll",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "True to allow the dialog body contents to overflow and display scrollbars (defaults to false)",
+          "memberOf": "Roo.BasicDialog"
+        },
+        "closable": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Boolean",
+          "name": "closable",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "False to remove the built-in top-right corner close button (defaults to true)",
+          "memberOf": "Roo.BasicDialog"
+        },
+        "collapsible": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Boolean",
+          "name": "collapsible",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "False to remove the built-in top-right corner collapse button (defaults to true)",
+          "memberOf": "Roo.BasicDialog"
+        },
+        "constraintoviewport": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Boolean",
+          "name": "constraintoviewport",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "True to keep the dialog constrained within the visible viewport boundaries (defaults to true)",
+          "memberOf": "Roo.BasicDialog"
+        },
+        "syncHeightBeforeShow": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Boolean",
+          "name": "syncHeightBeforeShow",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "True to cause the dimensions to be recalculated before the dialog is shown (defaults to false)",
+          "memberOf": "Roo.BasicDialog"
+        },
+        "draggable": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Boolean",
+          "name": "draggable",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "False to disable dragging of the dialog within the viewport (defaults to true)",
+          "memberOf": "Roo.BasicDialog"
+        },
+        "autoTabs": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Boolean",
+          "name": "autoTabs",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "If true, all elements with class 'x-dlg-tab' will get automatically converted to tabs (defaults to false)",
+          "memberOf": "Roo.BasicDialog"
+        },
+        "tabTag": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "String",
+          "name": "tabTag",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The tag name of tab elements, used when autoTabs = true (defaults to 'div')",
+          "memberOf": "Roo.BasicDialog"
+        },
+        "proxyDrag": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Boolean",
+          "name": "proxyDrag",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "True to drag a lightweight proxy element rather than the dialog itself, used when\ndraggable = true (defaults to false)",
+          "memberOf": "Roo.BasicDialog"
+        },
+        "fixedcenter": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Boolean",
+          "name": "fixedcenter",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "True to ensure that anytime the dialog is shown or resized it gets centered (defaults to false)",
+          "memberOf": "Roo.BasicDialog"
+        },
+        "shadow": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Boolean/String",
+          "name": "shadow",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "True or \"sides\" for the default effect, \"frame\" for 4-way shadow, and \"drop\" for bottom-right\nshadow (defaults to false)",
+          "memberOf": "Roo.BasicDialog"
+        },
+        "shadowOffset": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Number",
+          "name": "shadowOffset",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The number of pixels to offset the shadow if displayed (defaults to 5)",
+          "memberOf": "Roo.BasicDialog"
+        },
+        "buttonAlign": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "String",
+          "name": "buttonAlign",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Valid values are \"left,\" \"center\" and \"right\" (defaults to \"right\")",
+          "memberOf": "Roo.BasicDialog"
+        },
+        "minButtonWidth": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Number",
+          "name": "minButtonWidth",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Minimum width of all dialog buttons (defaults to 75)",
+          "memberOf": "Roo.BasicDialog"
+        },
+        "buttons": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Array",
+          "name": "buttons",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Array of buttons",
+          "memberOf": "Roo.BasicDialog"
+        },
+        "shim": {
+          "*object": "DocTag",
+          "title": "cfg",
+          "type": "Boolean",
+          "name": "shim",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "True to create an iframe shim that prevents selects from showing through (defaults to false)",
+          "memberOf": "Roo.BasicDialog"
+        }
+      },
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@class Roo.BasicDialog\n@extends Roo.util.Observable\n@desc Lightweight Dialog Class.  The code below shows the creation of a typical dialog using existing HTML markup:\n<pre><code>\nvar dlg = new Roo.BasicDialog(\"my-dlg\", {\n    height: 200,\n    width: 300,\n    minHeight: 100,\n    minWidth: 150,\n    modal: true,\n    proxyDrag: true,\n    shadow: true\n});\ndlg.addKeyListener(27, dlg.hide, dlg); // ESC can also close the dialog\ndlg.addButton('OK', dlg.hide, dlg);    // Could call a save function instead of hiding\ndlg.addButton('Cancel', dlg.hide, dlg);\ndlg.show();\n</code></pre>\n  <b>A Dialog should always be a direct child of the body element.</b>\n@cfg {Boolean/DomHelper} autoCreate True to auto create from scratch, or using a DomHelper Object (defaults to false)\n@cfg {String} title Default text to display in the title bar (defaults to null)\n@cfg {Number} width Width of the dialog in pixels (can also be set via CSS).  Determined by browser if unspecified.\n@cfg {Number} height Height of the dialog in pixels (can also be set via CSS).  Determined by browser if unspecified.\n@cfg {Number} x The default left page coordinate of the dialog (defaults to center screen)\n@cfg {Number} y The default top page coordinate of the dialog (defaults to center screen)\n@cfg {String/Element} animateTarget Id or element from which the dialog should animate while opening\n(defaults to null with no animation)\n@cfg {Boolean} resizable False to disable manual dialog resizing (defaults to true)\n@cfg {String} resizeHandles Which resize handles to display - see the {@link Roo.Resizable} handles config\nproperty for valid values (defaults to 'all')\n@cfg {Number} minHeight The minimum allowable height for a resizable dialog (defaults to 80)\n@cfg {Number} minWidth The minimum allowable width for a resizable dialog (defaults to 200)\n@cfg {Boolean} modal True to show the dialog modally, preventing user interaction with the rest of the page (defaults to false)\n@cfg {Boolean} autoScroll True to allow the dialog body contents to overflow and display scrollbars (defaults to false)\n@cfg {Boolean} closable False to remove the built-in top-right corner close button (defaults to true)\n@cfg {Boolean} collapsible False to remove the built-in top-right corner collapse button (defaults to true)\n@cfg {Boolean} constraintoviewport True to keep the dialog constrained within the visible viewport boundaries (defaults to true)\n@cfg {Boolean} syncHeightBeforeShow True to cause the dimensions to be recalculated before the dialog is shown (defaults to false)\n@cfg {Boolean} draggable False to disable dragging of the dialog within the viewport (defaults to true)\n@cfg {Boolean} autoTabs If true, all elements with class 'x-dlg-tab' will get automatically converted to tabs (defaults to false)\n@cfg {String} tabTag The tag name of tab elements, used when autoTabs = true (defaults to 'div')\n@cfg {Boolean} proxyDrag True to drag a lightweight proxy element rather than the dialog itself, used when\ndraggable = true (defaults to false)\n@cfg {Boolean} fixedcenter True to ensure that anytime the dialog is shown or resized it gets centered (defaults to false)\n@cfg {Boolean/String} shadow True or \"sides\" for the default effect, \"frame\" for 4-way shadow, and \"drop\" for bottom-right\nshadow (defaults to false)\n@cfg {Number} shadowOffset The number of pixels to offset the shadow if displayed (defaults to 5)\n@cfg {String} buttonAlign Valid values are \"left,\" \"center\" and \"right\" (defaults to \"right\")\n@cfg {Number} minButtonWidth Minimum width of all dialog buttons (defaults to 75)\n@cfg {Array} buttons Array of buttons\n@cfg {Boolean} shim True to create an iframe shim that prevents selects from showing through (defaults to false)\n@constructor\nCreate a new BasicDialog.\n@param {String/HTMLElement/Roo.Element} el The container element or DOM node, or its id\n@param {Object} config Configuration options\n \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "class",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Roo.BasicDialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "extends",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Roo.util.Observable"
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Lightweight Dialog Class.  The code below shows the creation of a typical dialog using existing HTML markup:\n<pre><code>\nvar dlg = new Roo.BasicDialog(\"my-dlg\", {\n    height: 200,\n    width: 300,\n    minHeight: 100,\n    minWidth: 150,\n    modal: true,\n    proxyDrag: true,\n    shadow: true\n});\ndlg.addKeyListener(27, dlg.hide, dlg); // ESC can also close the dialog\ndlg.addButton('OK', dlg.hide, dlg);    // Could call a save function instead of hiding\ndlg.addButton('Cancel', dlg.hide, dlg);\ndlg.show();\n</code></pre>\n  <b>A Dialog should always be a direct child of the body element.</b>"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Boolean/DomHelper",
+            "name": "autoCreate",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "True to auto create from scratch, or using a DomHelper Object (defaults to false)",
+            "memberOf": "Roo.BasicDialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "String",
+            "name": "title",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Default text to display in the title bar (defaults to null)",
+            "memberOf": "Roo.BasicDialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Number",
+            "name": "width",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Width of the dialog in pixels (can also be set via CSS).  Determined by browser if unspecified.",
+            "memberOf": "Roo.BasicDialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Number",
+            "name": "height",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Height of the dialog in pixels (can also be set via CSS).  Determined by browser if unspecified.",
+            "memberOf": "Roo.BasicDialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Number",
+            "name": "x",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The default left page coordinate of the dialog (defaults to center screen)",
+            "memberOf": "Roo.BasicDialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Number",
+            "name": "y",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The default top page coordinate of the dialog (defaults to center screen)",
+            "memberOf": "Roo.BasicDialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "String/Element",
+            "name": "animateTarget",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Id or element from which the dialog should animate while opening\n(defaults to null with no animation)",
+            "memberOf": "Roo.BasicDialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Boolean",
+            "name": "resizable",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "False to disable manual dialog resizing (defaults to true)",
+            "memberOf": "Roo.BasicDialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "String",
+            "name": "resizeHandles",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Which resize handles to display - see the {@link Roo.Resizable} handles config\nproperty for valid values (defaults to 'all')",
+            "memberOf": "Roo.BasicDialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Number",
+            "name": "minHeight",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The minimum allowable height for a resizable dialog (defaults to 80)",
+            "memberOf": "Roo.BasicDialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Number",
+            "name": "minWidth",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The minimum allowable width for a resizable dialog (defaults to 200)",
+            "memberOf": "Roo.BasicDialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Boolean",
+            "name": "modal",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "True to show the dialog modally, preventing user interaction with the rest of the page (defaults to false)",
+            "memberOf": "Roo.BasicDialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Boolean",
+            "name": "autoScroll",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "True to allow the dialog body contents to overflow and display scrollbars (defaults to false)",
+            "memberOf": "Roo.BasicDialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Boolean",
+            "name": "closable",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "False to remove the built-in top-right corner close button (defaults to true)",
+            "memberOf": "Roo.BasicDialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Boolean",
+            "name": "collapsible",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "False to remove the built-in top-right corner collapse button (defaults to true)",
+            "memberOf": "Roo.BasicDialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Boolean",
+            "name": "constraintoviewport",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "True to keep the dialog constrained within the visible viewport boundaries (defaults to true)",
+            "memberOf": "Roo.BasicDialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Boolean",
+            "name": "syncHeightBeforeShow",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "True to cause the dimensions to be recalculated before the dialog is shown (defaults to false)",
+            "memberOf": "Roo.BasicDialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Boolean",
+            "name": "draggable",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "False to disable dragging of the dialog within the viewport (defaults to true)",
+            "memberOf": "Roo.BasicDialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Boolean",
+            "name": "autoTabs",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "If true, all elements with class 'x-dlg-tab' will get automatically converted to tabs (defaults to false)",
+            "memberOf": "Roo.BasicDialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "String",
+            "name": "tabTag",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The tag name of tab elements, used when autoTabs = true (defaults to 'div')",
+            "memberOf": "Roo.BasicDialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Boolean",
+            "name": "proxyDrag",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "True to drag a lightweight proxy element rather than the dialog itself, used when\ndraggable = true (defaults to false)",
+            "memberOf": "Roo.BasicDialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Boolean",
+            "name": "fixedcenter",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "True to ensure that anytime the dialog is shown or resized it gets centered (defaults to false)",
+            "memberOf": "Roo.BasicDialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Boolean/String",
+            "name": "shadow",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "True or \"sides\" for the default effect, \"frame\" for 4-way shadow, and \"drop\" for bottom-right\nshadow (defaults to false)",
+            "memberOf": "Roo.BasicDialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Number",
+            "name": "shadowOffset",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The number of pixels to offset the shadow if displayed (defaults to 5)",
+            "memberOf": "Roo.BasicDialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "String",
+            "name": "buttonAlign",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Valid values are \"left,\" \"center\" and \"right\" (defaults to \"right\")",
+            "memberOf": "Roo.BasicDialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Number",
+            "name": "minButtonWidth",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Minimum width of all dialog buttons (defaults to 75)",
+            "memberOf": "Roo.BasicDialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Array",
+            "name": "buttons",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Array of buttons",
+            "memberOf": "Roo.BasicDialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "cfg",
+            "type": "Boolean",
+            "name": "shim",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "True to create an iframe shim that prevents selects from showing through (defaults to false)",
+            "memberOf": "Roo.BasicDialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "constructor",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Create a new BasicDialog."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String/HTMLElement/Roo.Element",
+            "name": "el",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The container element or DOM node, or its id"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Object",
+            "name": "config",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Configuration options"
+          }
+        ]
+      },
+      "_name": "Roo.BasicDialog",
+      "name": "Roo.BasicDialog",
+      "alias": "Roo.BasicDialog",
+      "desc": "Lightweight Dialog Class.  The code below shows the creation of a typical dialog using existing HTML markup:\n<pre><code>\nvar dlg = new Roo.BasicDialog(\"my-dlg\", {\n    height: 200,\n    width: 300,\n    minHeight: 100,\n    minWidth: 150,\n    modal: true,\n    proxyDrag: true,\n    shadow: true\n});\ndlg.addKeyListener(27, dlg.hide, dlg); // ESC can also close the dialog\ndlg.addButton('OK', dlg.hide, dlg);    // Could call a save function instead of hiding\ndlg.addButton('Cancel', dlg.hide, dlg);\ndlg.show();\n</code></pre>\n  <b>A Dialog should always be a direct child of the body element.</b>",
+      "classDesc": "Roo.BasicDialog",
+      "augments": [
+        {
+          "*object": "DocTag",
+          "title": "extends",
+          "type": "",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Roo.util.Observable"
+        }
+      ],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "this.header": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "OBJECT",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": false,
+        "src": "\n@desc  The header element \n@type Roo.Element ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The header element"
+          },
+          {
+            "*object": "DocTag",
+            "title": "type",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Roo.Element"
+          }
+        ]
+      },
+      "_name": "this.header",
+      "name": "this.header",
+      "alias": "this.header",
+      "desc": "The header element",
+      "type": "Roo.Element",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "this.body": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "OBJECT",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": false,
+        "src": "\n@desc  The body element \n@type Roo.Element ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The body element"
+          },
+          {
+            "*object": "DocTag",
+            "title": "type",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Roo.Element"
+          }
+        ]
+      },
+      "_name": "this.body",
+      "name": "this.body",
+      "alias": "this.body",
+      "desc": "The body element",
+      "type": "Roo.Element",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "this.footer": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "OBJECT",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": false,
+        "src": "\n@desc  The footer element \n@type Roo.Element ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The footer element"
+          },
+          {
+            "*object": "DocTag",
+            "title": "type",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Roo.Element"
+          }
+        ]
+      },
+      "_name": "this.footer",
+      "name": "this.footer",
+      "alias": "this.footer",
+      "desc": "The footer element",
+      "type": "Roo.Element",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.BasicDialog#*keydown": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.BasicDialog",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.EventObject",
+          "name": "e",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.BasicDialog",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.EventObject",
+          "name": "e",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@event keydown\n@desc Fires when a key is pressed\n@param {Roo.BasicDialog} this\n@param {Roo.EventObject} e\n         \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "event",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "keydown"
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Fires when a key is pressed"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Roo.BasicDialog",
+            "name": "this",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Roo.EventObject",
+            "name": "e",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.BasicDialog#*keydown",
+      "name": "Roo.BasicDialog#*keydown",
+      "alias": "Roo.BasicDialog#*keydown",
+      "desc": "Fires when a key is pressed",
+      "isEvent": true,
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.BasicDialog#*move": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.BasicDialog",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "x",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new page X"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "y",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new page Y"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.BasicDialog",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "x",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new page X"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "y",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new page Y"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@event move\n@desc Fires when this dialog is moved by the user.\n@param {Roo.BasicDialog} this\n@param {Number} x The new page X\n@param {Number} y The new page Y\n         \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "event",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "move"
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Fires when this dialog is moved by the user."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Roo.BasicDialog",
+            "name": "this",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Number",
+            "name": "x",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The new page X"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Number",
+            "name": "y",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The new page Y"
+          }
+        ]
+      },
+      "_name": "Roo.BasicDialog#*move",
+      "name": "Roo.BasicDialog#*move",
+      "alias": "Roo.BasicDialog#*move",
+      "desc": "Fires when this dialog is moved by the user.",
+      "isEvent": true,
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.BasicDialog#*resize": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.BasicDialog",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "width",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new width"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "height",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new height"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.BasicDialog",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "width",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new width"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "height",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new height"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@event resize\n@desc Fires when this dialog is resized by the user.\n@param {Roo.BasicDialog} this\n@param {Number} width The new width\n@param {Number} height The new height\n         \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "event",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "resize"
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Fires when this dialog is resized by the user."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Roo.BasicDialog",
+            "name": "this",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Number",
+            "name": "width",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The new width"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Number",
+            "name": "height",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The new height"
+          }
+        ]
+      },
+      "_name": "Roo.BasicDialog#*resize",
+      "name": "Roo.BasicDialog#*resize",
+      "alias": "Roo.BasicDialog#*resize",
+      "desc": "Fires when this dialog is resized by the user.",
+      "isEvent": true,
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.BasicDialog#*beforehide": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.BasicDialog",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.BasicDialog",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@event beforehide\n@desc Fires before this dialog is hidden.\n@param {Roo.BasicDialog} this\n         \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "event",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "beforehide"
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Fires before this dialog is hidden."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Roo.BasicDialog",
+            "name": "this",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.BasicDialog#*beforehide",
+      "name": "Roo.BasicDialog#*beforehide",
+      "alias": "Roo.BasicDialog#*beforehide",
+      "desc": "Fires before this dialog is hidden.",
+      "isEvent": true,
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.BasicDialog#*hide": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.BasicDialog",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.BasicDialog",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@event hide\n@desc Fires when this dialog is hidden.\n@param {Roo.BasicDialog} this\n         \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "event",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "hide"
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Fires when this dialog is hidden."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Roo.BasicDialog",
+            "name": "this",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.BasicDialog#*hide",
+      "name": "Roo.BasicDialog#*hide",
+      "alias": "Roo.BasicDialog#*hide",
+      "desc": "Fires when this dialog is hidden.",
+      "isEvent": true,
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.BasicDialog#*beforeshow": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.BasicDialog",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.BasicDialog",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@event beforeshow\n@desc Fires before this dialog is shown.\n@param {Roo.BasicDialog} this\n         \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "event",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "beforeshow"
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Fires before this dialog is shown."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Roo.BasicDialog",
+            "name": "this",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.BasicDialog#*beforeshow",
+      "name": "Roo.BasicDialog#*beforeshow",
+      "alias": "Roo.BasicDialog#*beforeshow",
+      "desc": "Fires before this dialog is shown.",
+      "isEvent": true,
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.BasicDialog#*show": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.BasicDialog",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.BasicDialog",
+          "name": "this",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@event show\n@desc Fires when this dialog is shown.\n@param {Roo.BasicDialog} this\n         \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "event",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "show"
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Fires when this dialog is shown."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Roo.BasicDialog",
+            "name": "this",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.BasicDialog#*show",
+      "name": "Roo.BasicDialog#*show",
+      "alias": "Roo.BasicDialog#*show",
+      "desc": "Fires when this dialog is shown.",
+      "isEvent": true,
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.BasicDialog#setTitle": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "text",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The title text to display"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "text",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The title text to display"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.BasicDialog",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "this"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Sets the dialog title text\n@param {String} text The title text to display\n@return {Roo.BasicDialog} this\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Sets the dialog title text"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String",
+            "name": "text",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The title text to display"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.BasicDialog",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "this"
+          }
+        ]
+      },
+      "_name": "Roo.BasicDialog#setTitle",
+      "name": "Roo.BasicDialog#setTitle",
+      "alias": "Roo.BasicDialog#setTitle",
+      "desc": "Sets the dialog title text",
+      "type": "Roo.BasicDialog",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.BasicDialog#collapse": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": false,
+        "src": "\n@desc Collapses the dialog to its minimized state (only the title bar is visible).\nEquivalent to the user clicking the collapse dialog button.\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Collapses the dialog to its minimized state (only the title bar is visible).\nEquivalent to the user clicking the collapse dialog button."
+          }
+        ]
+      },
+      "_name": "Roo.BasicDialog#collapse",
+      "name": "Roo.BasicDialog#collapse",
+      "alias": "Roo.BasicDialog#collapse",
+      "desc": "Collapses the dialog to its minimized state (only the title bar is visible).\nEquivalent to the user clicking the collapse dialog button.",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.BasicDialog#expand": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": false,
+        "src": "\n@desc Expands a collapsed dialog back to its normal state.  Equivalent to the user\nclicking the expand dialog button.\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Expands a collapsed dialog back to its normal state.  Equivalent to the user\nclicking the expand dialog button."
+          }
+        ]
+      },
+      "_name": "Roo.BasicDialog#expand",
+      "name": "Roo.BasicDialog#expand",
+      "alias": "Roo.BasicDialog#expand",
+      "desc": "Expands a collapsed dialog back to its normal state.  Equivalent to the user\nclicking the expand dialog button.",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.BasicDialog#initTabs": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.TabPanel",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The tabs component"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Reinitializes the tabs component, clearing out old tabs and finding new ones.\n@return {Roo.TabPanel} The tabs component\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Reinitializes the tabs component, clearing out old tabs and finding new ones."
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.TabPanel",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The tabs component"
+          }
+        ]
+      },
+      "_name": "Roo.BasicDialog#initTabs",
+      "name": "Roo.BasicDialog#initTabs",
+      "alias": "Roo.BasicDialog#initTabs",
+      "desc": "Reinitializes the tabs component, clearing out old tabs and finding new ones.",
+      "type": "Roo.TabPanel",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.BasicDialog#resizeTo": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "width",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "height",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "width",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "height",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.BasicDialog",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "this"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Resizes the dialog.\n@param {Number} width\n@param {Number} height\n@return {Roo.BasicDialog} this\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Resizes the dialog."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Number",
+            "name": "width",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Number",
+            "name": "height",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.BasicDialog",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "this"
+          }
+        ]
+      },
+      "_name": "Roo.BasicDialog#resizeTo",
+      "name": "Roo.BasicDialog#resizeTo",
+      "alias": "Roo.BasicDialog#resizeTo",
+      "desc": "Resizes the dialog.",
+      "type": "Roo.BasicDialog",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.BasicDialog#setContentSize": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "width",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "height",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "width",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "height",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.BasicDialog",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "this"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Resizes the dialog to fit the specified content size.\n@param {Number} width\n@param {Number} height\n@return {Roo.BasicDialog} this\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Resizes the dialog to fit the specified content size."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Number",
+            "name": "width",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Number",
+            "name": "height",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.BasicDialog",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "this"
+          }
+        ]
+      },
+      "_name": "Roo.BasicDialog#setContentSize",
+      "name": "Roo.BasicDialog#setContentSize",
+      "alias": "Roo.BasicDialog#setContentSize",
+      "desc": "Resizes the dialog to fit the specified content size.",
+      "type": "Roo.BasicDialog",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.BasicDialog#addKeyListener": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number/Array/Object",
+          "name": "key",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Either the numeric key code, array of key codes or an object with the following options:\n                                 {key: (number or array), shift: (true/false), ctrl: (true/false), alt: (true/false)}"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Function",
+          "name": "fn",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The function to call"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "scope",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) The scope of the function"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number/Array/Object",
+          "name": "key",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Either the numeric key code, array of key codes or an object with the following options:\n                                 {key: (number or array), shift: (true/false), ctrl: (true/false), alt: (true/false)}"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Function",
+          "name": "fn",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The function to call"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "scope",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) The scope of the function"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.BasicDialog",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "this"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Adds a key listener for when this dialog is displayed.  This allows you to hook in a function that will be\nexecuted in response to a particular key being pressed while the dialog is active.\n@param {Number/Array/Object} key Either the numeric key code, array of key codes or an object with the following options:\n                                 {key: (number or array), shift: (true/false), ctrl: (true/false), alt: (true/false)}\n@param {Function} fn The function to call\n@param {Object} scope (optional) The scope of the function\n@return {Roo.BasicDialog} this\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Adds a key listener for when this dialog is displayed.  This allows you to hook in a function that will be\nexecuted in response to a particular key being pressed while the dialog is active."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Number/Array/Object",
+            "name": "key",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Either the numeric key code, array of key codes or an object with the following options:\n                                 {key: (number or array), shift: (true/false), ctrl: (true/false), alt: (true/false)}"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Function",
+            "name": "fn",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The function to call"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Object",
+            "name": "scope",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "(optional) The scope of the function"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.BasicDialog",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "this"
+          }
+        ]
+      },
+      "_name": "Roo.BasicDialog#addKeyListener",
+      "name": "Roo.BasicDialog#addKeyListener",
+      "alias": "Roo.BasicDialog#addKeyListener",
+      "desc": "Adds a key listener for when this dialog is displayed.  This allows you to hook in a function that will be\nexecuted in response to a particular key being pressed while the dialog is active.",
+      "type": "Roo.BasicDialog",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.BasicDialog#getTabs": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.TabPanel",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The tabs component"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Returns the TabPanel component (creates it if it doesn't exist).\nNote: If you wish to simply check for the existence of tabs without creating them,\ncheck for a null 'tabs' property.\n@return {Roo.TabPanel} The tabs component\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Returns the TabPanel component (creates it if it doesn't exist).\nNote: If you wish to simply check for the existence of tabs without creating them,\ncheck for a null 'tabs' property."
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.TabPanel",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The tabs component"
+          }
+        ]
+      },
+      "_name": "Roo.BasicDialog#getTabs",
+      "name": "Roo.BasicDialog#getTabs",
+      "alias": "Roo.BasicDialog#getTabs",
+      "desc": "Returns the TabPanel component (creates it if it doesn't exist).\nNote: If you wish to simply check for the existence of tabs without creating them,\ncheck for a null 'tabs' property.",
+      "type": "Roo.TabPanel",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.BasicDialog#addButton": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/Object",
+          "name": "config",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "A string becomes the button text, an object can either be a Button config\nobject or a valid Roo.DomHelper element config"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Function",
+          "name": "handler",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The function called when the button is clicked"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "scope",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) The scope of the handler function (accepts position as a property)"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/Object",
+          "name": "config",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "A string becomes the button text, an object can either be a Button config\nobject or a valid Roo.DomHelper element config"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Function",
+          "name": "handler",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The function called when the button is clicked"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "scope",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) The scope of the handler function (accepts position as a property)"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.Button",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The new button"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Adds a button to the footer section of the dialog.\n@param {String/Object} config A string becomes the button text, an object can either be a Button config\nobject or a valid Roo.DomHelper element config\n@param {Function} handler The function called when the button is clicked\n@param {Object} scope (optional) The scope of the handler function (accepts position as a property)\n@return {Roo.Button} The new button\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Adds a button to the footer section of the dialog."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String/Object",
+            "name": "config",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "A string becomes the button text, an object can either be a Button config\nobject or a valid Roo.DomHelper element config"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Function",
+            "name": "handler",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The function called when the button is clicked"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Object",
+            "name": "scope",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "(optional) The scope of the handler function (accepts position as a property)"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.Button",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The new button"
+          }
+        ]
+      },
+      "_name": "Roo.BasicDialog#addButton",
+      "name": "Roo.BasicDialog#addButton",
+      "alias": "Roo.BasicDialog#addButton",
+      "desc": "Adds a button to the footer section of the dialog.",
+      "type": "Roo.Button",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "this.buttons": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "OBJECT",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Array of all the buttons that have been added to this dialog via addButton\n\n@type Array\n             ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Array of all the buttons that have been added to this dialog via addButton"
+          },
+          {
+            "*object": "DocTag",
+            "title": "type",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Array"
+          }
+        ]
+      },
+      "_name": "this.buttons",
+      "name": "this.buttons",
+      "alias": "this.buttons",
+      "desc": "Array of all the buttons that have been added to this dialog via addButton",
+      "type": "Array",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.BasicDialog#setDefaultButton": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.BasicDialog.Button",
+          "name": "btn",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The button object returned by {@link #addButton}"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Roo.BasicDialog.Button",
+          "name": "btn",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The button object returned by {@link #addButton}"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.BasicDialog",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "this"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Sets the default button to be focused when the dialog is displayed.\n@param {Roo.BasicDialog.Button} btn The button object returned by {@link #addButton}\n@return {Roo.BasicDialog} this\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Sets the default button to be focused when the dialog is displayed."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Roo.BasicDialog.Button",
+            "name": "btn",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The button object returned by {@link #addButton}"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.BasicDialog",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "this"
+          }
+        ]
+      },
+      "_name": "Roo.BasicDialog#setDefaultButton",
+      "name": "Roo.BasicDialog#setDefaultButton",
+      "alias": "Roo.BasicDialog#setDefaultButton",
+      "desc": "Sets the default button to be focused when the dialog is displayed.",
+      "type": "Roo.BasicDialog",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.BasicDialog#restoreState": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.BasicDialog",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "this"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Restores the previous state of the dialog if Roo.state is configured.\n@return {Roo.BasicDialog} this\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Restores the previous state of the dialog if Roo.state is configured."
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.BasicDialog",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "this"
+          }
+        ]
+      },
+      "_name": "Roo.BasicDialog#restoreState",
+      "name": "Roo.BasicDialog#restoreState",
+      "alias": "Roo.BasicDialog#restoreState",
+      "desc": "Restores the previous state of the dialog if Roo.state is configured.",
+      "type": "Roo.BasicDialog",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.BasicDialog#show": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/HTMLElement/Roo.Element",
+          "name": "animateTarget",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) Reset the animation target"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/HTMLElement/Roo.Element",
+          "name": "animateTarget",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) Reset the animation target"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.BasicDialog",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "this"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Shows the dialog.\n@param {String/HTMLElement/Roo.Element} animateTarget (optional) Reset the animation target\n@return {Roo.BasicDialog} this\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Shows the dialog."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String/HTMLElement/Roo.Element",
+            "name": "animateTarget",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "(optional) Reset the animation target"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.BasicDialog",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "this"
+          }
+        ]
+      },
+      "_name": "Roo.BasicDialog#show",
+      "name": "Roo.BasicDialog#show",
+      "alias": "Roo.BasicDialog#show",
+      "desc": "Shows the dialog.",
+      "type": "Roo.BasicDialog",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.BasicDialog#focus": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": false,
+        "src": "\n@desc Focuses the dialog.  If a defaultButton is set, it will receive focus, otherwise the\ndialog itself will receive focus.\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Focuses the dialog.  If a defaultButton is set, it will receive focus, otherwise the\ndialog itself will receive focus."
+          }
+        ]
+      },
+      "_name": "Roo.BasicDialog#focus",
+      "name": "Roo.BasicDialog#focus",
+      "alias": "Roo.BasicDialog#focus",
+      "desc": "Focuses the dialog.  If a defaultButton is set, it will receive focus, otherwise the\ndialog itself will receive focus.",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.BasicDialog#destroy": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Boolean",
+          "name": "removeEl",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) true to remove the element from the DOM"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Boolean",
+          "name": "removeEl",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) true to remove the element from the DOM"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Destroys this dialog and all its supporting elements (including any tabs, shim,\nshadow, proxy, mask, etc.)  Also removes all event listeners.\n@param {Boolean} removeEl (optional) true to remove the element from the DOM\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Destroys this dialog and all its supporting elements (including any tabs, shim,\nshadow, proxy, mask, etc.)  Also removes all event listeners."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Boolean",
+            "name": "removeEl",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "(optional) true to remove the element from the DOM"
+          }
+        ]
+      },
+      "_name": "Roo.BasicDialog#destroy",
+      "name": "Roo.BasicDialog#destroy",
+      "alias": "Roo.BasicDialog#destroy",
+      "desc": "Destroys this dialog and all its supporting elements (including any tabs, shim,\nshadow, proxy, mask, etc.)  Also removes all event listeners.",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.BasicDialog#toFront": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.BasicDialog",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "this"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Brings this dialog to the front of any other visible dialogs\n@return {Roo.BasicDialog} this\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Brings this dialog to the front of any other visible dialogs"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.BasicDialog",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "this"
+          }
+        ]
+      },
+      "_name": "Roo.BasicDialog#toFront",
+      "name": "Roo.BasicDialog#toFront",
+      "alias": "Roo.BasicDialog#toFront",
+      "desc": "Brings this dialog to the front of any other visible dialogs",
+      "type": "Roo.BasicDialog",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.BasicDialog#toBack": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.BasicDialog",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "this"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Sends this dialog to the back (under) of any other visible dialogs\n@return {Roo.BasicDialog} this\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Sends this dialog to the back (under) of any other visible dialogs"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.BasicDialog",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "this"
+          }
+        ]
+      },
+      "_name": "Roo.BasicDialog#toBack",
+      "name": "Roo.BasicDialog#toBack",
+      "alias": "Roo.BasicDialog#toBack",
+      "desc": "Sends this dialog to the back (under) of any other visible dialogs",
+      "type": "Roo.BasicDialog",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.BasicDialog#center": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.BasicDialog",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "this"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Centers this dialog in the viewport\n@return {Roo.BasicDialog} this\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Centers this dialog in the viewport"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.BasicDialog",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "this"
+          }
+        ]
+      },
+      "_name": "Roo.BasicDialog#center",
+      "name": "Roo.BasicDialog#center",
+      "alias": "Roo.BasicDialog#center",
+      "desc": "Centers this dialog in the viewport",
+      "type": "Roo.BasicDialog",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.BasicDialog#moveTo": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "x",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "y",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "x",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Number",
+          "name": "y",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.BasicDialog",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "this"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Moves the dialog's top-left corner to the specified point\n@param {Number} x\n@param {Number} y\n@return {Roo.BasicDialog} this\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Moves the dialog's top-left corner to the specified point"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Number",
+            "name": "x",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Number",
+            "name": "y",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.BasicDialog",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "this"
+          }
+        ]
+      },
+      "_name": "Roo.BasicDialog#moveTo",
+      "name": "Roo.BasicDialog#moveTo",
+      "alias": "Roo.BasicDialog#moveTo",
+      "desc": "Moves the dialog's top-left corner to the specified point",
+      "type": "Roo.BasicDialog",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.BasicDialog#alignTo": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/HTMLElement/Roo.Element",
+          "name": "element",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The element to align to."
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "position",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The position to align to (see {@link Roo.Element#alignTo} for more details)."
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Array",
+          "name": "offsets",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) Offset the positioning by [x, y]"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/HTMLElement/Roo.Element",
+          "name": "element",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The element to align to."
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "position",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The position to align to (see {@link Roo.Element#alignTo} for more details)."
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Array",
+          "name": "offsets",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) Offset the positioning by [x, y]"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.BasicDialog",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "this"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Aligns the dialog to the specified element\n@param {String/HTMLElement/Roo.Element} element The element to align to.\n@param {String} position The position to align to (see {@link Roo.Element#alignTo} for more details).\n@param {Array} offsets (optional) Offset the positioning by [x, y]\n@return {Roo.BasicDialog} this\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Aligns the dialog to the specified element"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String/HTMLElement/Roo.Element",
+            "name": "element",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The element to align to."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String",
+            "name": "position",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The position to align to (see {@link Roo.Element#alignTo} for more details)."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Array",
+            "name": "offsets",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "(optional) Offset the positioning by [x, y]"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.BasicDialog",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "this"
+          }
+        ]
+      },
+      "_name": "Roo.BasicDialog#alignTo",
+      "name": "Roo.BasicDialog#alignTo",
+      "alias": "Roo.BasicDialog#alignTo",
+      "desc": "Aligns the dialog to the specified element",
+      "type": "Roo.BasicDialog",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.BasicDialog#anchorTo": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/HTMLElement/Roo.Element",
+          "name": "element",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The element to align to."
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "position",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The position to align to (see {@link Roo.Element#alignTo} for more details)"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Array",
+          "name": "offsets",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) Offset the positioning by [x, y]"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Boolean/Number",
+          "name": "monitorScroll",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) true to monitor body scroll and reposition. If this parameter\nis a number, it is used as the buffer delay (defaults to 50ms)."
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/HTMLElement/Roo.Element",
+          "name": "element",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The element to align to."
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String",
+          "name": "position",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The position to align to (see {@link Roo.Element#alignTo} for more details)"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Array",
+          "name": "offsets",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) Offset the positioning by [x, y]"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Boolean/Number",
+          "name": "monitorScroll",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) true to monitor body scroll and reposition. If this parameter\nis a number, it is used as the buffer delay (defaults to 50ms)."
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.BasicDialog",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "this"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Anchors an element to another element and realigns it when the window is resized.\n@param {String/HTMLElement/Roo.Element} element The element to align to.\n@param {String} position The position to align to (see {@link Roo.Element#alignTo} for more details)\n@param {Array} offsets (optional) Offset the positioning by [x, y]\n@param {Boolean/Number} monitorScroll (optional) true to monitor body scroll and reposition. If this parameter\nis a number, it is used as the buffer delay (defaults to 50ms).\n@return {Roo.BasicDialog} this\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Anchors an element to another element and realigns it when the window is resized."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String/HTMLElement/Roo.Element",
+            "name": "element",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The element to align to."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String",
+            "name": "position",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The position to align to (see {@link Roo.Element#alignTo} for more details)"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Array",
+            "name": "offsets",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "(optional) Offset the positioning by [x, y]"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Boolean/Number",
+            "name": "monitorScroll",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "(optional) true to monitor body scroll and reposition. If this parameter\nis a number, it is used as the buffer delay (defaults to 50ms)."
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.BasicDialog",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "this"
+          }
+        ]
+      },
+      "_name": "Roo.BasicDialog#anchorTo",
+      "name": "Roo.BasicDialog#anchorTo",
+      "alias": "Roo.BasicDialog#anchorTo",
+      "desc": "Anchors an element to another element and realigns it when the window is resized.",
+      "type": "Roo.BasicDialog",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.BasicDialog#isVisible": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Boolean",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Returns true if the dialog is visible\n@return {Boolean}\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Returns true if the dialog is visible"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Boolean",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.BasicDialog#isVisible",
+      "name": "Roo.BasicDialog#isVisible",
+      "alias": "Roo.BasicDialog#isVisible",
+      "desc": "Returns true if the dialog is visible",
+      "type": "Boolean",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.BasicDialog#hide": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Function",
+          "name": "callback",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) Function to call when the dialog is hidden"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Function",
+          "name": "callback",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "(optional) Function to call when the dialog is hidden"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.BasicDialog",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "this"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Hides the dialog.\n@param {Function} callback (optional) Function to call when the dialog is hidden\n@return {Roo.BasicDialog} this\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Hides the dialog."
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Function",
+            "name": "callback",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "(optional) Function to call when the dialog is hidden"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.BasicDialog",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "this"
+          }
+        ]
+      },
+      "_name": "Roo.BasicDialog#hide",
+      "name": "Roo.BasicDialog#hide",
+      "alias": "Roo.BasicDialog#hide",
+      "desc": "Hides the dialog.",
+      "type": "Roo.BasicDialog",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.BasicDialog#getEl": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.Element",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The underlying dialog Element"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Returns the element for this dialog\n@return {Roo.Element} The underlying dialog Element\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Returns the element for this dialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.Element",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The underlying dialog Element"
+          }
+        ]
+      },
+      "_name": "Roo.BasicDialog#getEl",
+      "name": "Roo.BasicDialog#getEl",
+      "alias": "Roo.BasicDialog#getEl",
+      "desc": "Returns the element for this dialog",
+      "type": "Roo.Element",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.DialogManager": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "CONSTRUCTOR",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@class Roo.DialogManager\n@desc Provides global access to BasicDialogs that have been created and\nsupport for z-indexing (layering) multiple open dialogs.\n \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "class",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Roo.DialogManager"
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Provides global access to BasicDialogs that have been created and\nsupport for z-indexing (layering) multiple open dialogs."
+          }
+        ]
+      },
+      "_name": "Roo.DialogManager",
+      "name": "Roo.DialogManager",
+      "alias": "Roo.DialogManager",
+      "desc": "Provides global access to BasicDialogs that have been created and\nsupport for z-indexing (layering) multiple open dialogs.",
+      "classDesc": "Roo.DialogManager",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.DialogManager#zseed": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "OBJECT",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc The starting z-index for BasicDialogs (defaults to 9000)\n\n@type Number The z-index value\n         ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The starting z-index for BasicDialogs (defaults to 9000)"
+          },
+          {
+            "*object": "DocTag",
+            "title": "type",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Number The z-index value"
+          }
+        ]
+      },
+      "_name": "Roo.DialogManager#zseed",
+      "name": "Roo.DialogManager#zseed",
+      "alias": "Roo.DialogManager#zseed",
+      "desc": "The starting z-index for BasicDialogs (defaults to 9000)",
+      "type": "Number The z-index value",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.DialogManager#get": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/Object",
+          "name": "id",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The id of the dialog or a dialog"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/Object",
+          "name": "id",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The id of the dialog or a dialog"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.BasicDialog",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "this"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Gets a registered dialog by id\n@param {String/Object} id The id of the dialog or a dialog\n@return {Roo.BasicDialog} this\n         ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Gets a registered dialog by id"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String/Object",
+            "name": "id",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The id of the dialog or a dialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.BasicDialog",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "this"
+          }
+        ]
+      },
+      "_name": "Roo.DialogManager#get",
+      "name": "Roo.DialogManager#get",
+      "alias": "Roo.DialogManager#get",
+      "desc": "Gets a registered dialog by id",
+      "type": "Roo.BasicDialog",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.DialogManager#bringToFront": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/Object",
+          "name": "dlg",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The id of the dialog or a dialog"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/Object",
+          "name": "dlg",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The id of the dialog or a dialog"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.BasicDialog",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "this"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Brings the specified dialog to the front\n@param {String/Object} dlg The id of the dialog or a dialog\n@return {Roo.BasicDialog} this\n         ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Brings the specified dialog to the front"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String/Object",
+            "name": "dlg",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The id of the dialog or a dialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.BasicDialog",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "this"
+          }
+        ]
+      },
+      "_name": "Roo.DialogManager#bringToFront",
+      "name": "Roo.DialogManager#bringToFront",
+      "alias": "Roo.DialogManager#bringToFront",
+      "desc": "Brings the specified dialog to the front",
+      "type": "Roo.BasicDialog",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.DialogManager#sendToBack": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/Object",
+          "name": "dlg",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The id of the dialog or a dialog"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/Object",
+          "name": "dlg",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The id of the dialog or a dialog"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.BasicDialog",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "this"
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Sends the specified dialog to the back\n@param {String/Object} dlg The id of the dialog or a dialog\n@return {Roo.BasicDialog} this\n         ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Sends the specified dialog to the back"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String/Object",
+            "name": "dlg",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The id of the dialog or a dialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.BasicDialog",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "this"
+          }
+        ]
+      },
+      "_name": "Roo.DialogManager#sendToBack",
+      "name": "Roo.DialogManager#sendToBack",
+      "alias": "Roo.DialogManager#sendToBack",
+      "desc": "Sends the specified dialog to the back",
+      "type": "Roo.BasicDialog",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.DialogManager#hideAll": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": false,
+        "src": "\n@desc Hides all dialogs\n         ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Hides all dialogs"
+          }
+        ]
+      },
+      "_name": "Roo.DialogManager#hideAll",
+      "name": "Roo.DialogManager#hideAll",
+      "alias": "Roo.DialogManager#hideAll",
+      "desc": "Hides all dialogs",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.LayoutDialog": {
+      "*object": "Symbol",
+      "params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/HTMLElement/Roo.Element",
+          "name": "el",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The id of or container element, or config"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "config",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "configuration options"
+        }
+      ],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "CONSTRUCTOR",
+      "methods": [],
+      "_params": [
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "String/HTMLElement/Roo.Element",
+          "name": "el",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "The id of or container element, or config"
+        },
+        {
+          "*object": "DocTag",
+          "title": "param",
+          "type": "Object",
+          "name": "config",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "configuration options"
+        }
+      ],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@class Roo.LayoutDialog\n@extends Roo.BasicDialog\n@desc Dialog which provides adjustments for working with a layout in a Dialog.\nAdd your necessary layout config options to the dialog's config.<br>\nExample usage (including a nested layout):\n<pre><code>\nif(!dialog){\n    dialog = new Roo.LayoutDialog(\"download-dlg\", {\n        modal: true,\n        width:600,\n        height:450,\n        shadow:true,\n        minWidth:500,\n        minHeight:350,\n        autoTabs:true,\n        proxyDrag:true,\n        // layout config merges with the dialog config\n        center:{\n            tabPosition: \"top\",\n            alwaysShowTabs: true\n        }\n    });\n    dialog.addKeyListener(27, dialog.hide, dialog);\n    dialog.setDefaultButton(dialog.addButton(\"Close\", dialog.hide, dialog));\n    dialog.addButton(\"Build It!\", this.getDownload, this);\n\n    // we can even add nested layouts\n    var innerLayout = new Roo.BorderLayout(\"dl-inner\", {\n        east: {\n            initialSize: 200,\n            autoScroll:true,\n            split:true\n        },\n        center: {\n            autoScroll:true\n        }\n    });\n    innerLayout.beginUpdate();\n    innerLayout.add(\"east\", new Roo.ContentPanel(\"dl-details\"));\n    innerLayout.add(\"center\", new Roo.ContentPanel(\"selection-panel\"));\n    innerLayout.endUpdate(true);\n\n    var layout = dialog.getLayout();\n    layout.beginUpdate();\n    layout.add(\"center\", new Roo.ContentPanel(\"standard-panel\",\n                        {title: \"Download the Source\", fitToFrame:true}));\n    layout.add(\"center\", new Roo.NestedLayoutPanel(innerLayout,\n               {title: \"Build your own roo.js\"}));\n    layout.getRegion(\"center\").showPanel(sp);\n    layout.endUpdate();\n}\n</code></pre>\n@constructor\n@param {String/HTMLElement/Roo.Element} el The id of or container element, or config\n@param {Object} config configuration options\n  \n",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "class",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Roo.LayoutDialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "extends",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Roo.BasicDialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Dialog which provides adjustments for working with a layout in a Dialog.\nAdd your necessary layout config options to the dialog's config.<br>\nExample usage (including a nested layout):\n<pre><code>\nif(!dialog){\n    dialog = new Roo.LayoutDialog(\"download-dlg\", {\n        modal: true,\n        width:600,\n        height:450,\n        shadow:true,\n        minWidth:500,\n        minHeight:350,\n        autoTabs:true,\n        proxyDrag:true,\n        // layout config merges with the dialog config\n        center:{\n            tabPosition: \"top\",\n            alwaysShowTabs: true\n        }\n    });\n    dialog.addKeyListener(27, dialog.hide, dialog);\n    dialog.setDefaultButton(dialog.addButton(\"Close\", dialog.hide, dialog));\n    dialog.addButton(\"Build It!\", this.getDownload, this);\n\n    // we can even add nested layouts\n    var innerLayout = new Roo.BorderLayout(\"dl-inner\", {\n        east: {\n            initialSize: 200,\n            autoScroll:true,\n            split:true\n        },\n        center: {\n            autoScroll:true\n        }\n    });\n    innerLayout.beginUpdate();\n    innerLayout.add(\"east\", new Roo.ContentPanel(\"dl-details\"));\n    innerLayout.add(\"center\", new Roo.ContentPanel(\"selection-panel\"));\n    innerLayout.endUpdate(true);\n\n    var layout = dialog.getLayout();\n    layout.beginUpdate();\n    layout.add(\"center\", new Roo.ContentPanel(\"standard-panel\",\n                        {title: \"Download the Source\", fitToFrame:true}));\n    layout.add(\"center\", new Roo.NestedLayoutPanel(innerLayout,\n               {title: \"Build your own roo.js\"}));\n    layout.getRegion(\"center\").showPanel(sp);\n    layout.endUpdate();\n}\n</code></pre>"
+          },
+          {
+            "*object": "DocTag",
+            "title": "constructor",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "String/HTMLElement/Roo.Element",
+            "name": "el",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "The id of or container element, or config"
+          },
+          {
+            "*object": "DocTag",
+            "title": "param",
+            "type": "Object",
+            "name": "config",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "configuration options"
+          }
+        ]
+      },
+      "_name": "Roo.LayoutDialog",
+      "name": "Roo.LayoutDialog",
+      "alias": "Roo.LayoutDialog",
+      "desc": "Dialog which provides adjustments for working with a layout in a Dialog.\nAdd your necessary layout config options to the dialog's config.<br>\nExample usage (including a nested layout):\n<pre><code>\nif(!dialog){\n    dialog = new Roo.LayoutDialog(\"download-dlg\", {\n        modal: true,\n        width:600,\n        height:450,\n        shadow:true,\n        minWidth:500,\n        minHeight:350,\n        autoTabs:true,\n        proxyDrag:true,\n        // layout config merges with the dialog config\n        center:{\n            tabPosition: \"top\",\n            alwaysShowTabs: true\n        }\n    });\n    dialog.addKeyListener(27, dialog.hide, dialog);\n    dialog.setDefaultButton(dialog.addButton(\"Close\", dialog.hide, dialog));\n    dialog.addButton(\"Build It!\", this.getDownload, this);\n\n    // we can even add nested layouts\n    var innerLayout = new Roo.BorderLayout(\"dl-inner\", {\n        east: {\n            initialSize: 200,\n            autoScroll:true,\n            split:true\n        },\n        center: {\n            autoScroll:true\n        }\n    });\n    innerLayout.beginUpdate();\n    innerLayout.add(\"east\", new Roo.ContentPanel(\"dl-details\"));\n    innerLayout.add(\"center\", new Roo.ContentPanel(\"selection-panel\"));\n    innerLayout.endUpdate(true);\n\n    var layout = dialog.getLayout();\n    layout.beginUpdate();\n    layout.add(\"center\", new Roo.ContentPanel(\"standard-panel\",\n                        {title: \"Download the Source\", fitToFrame:true}));\n    layout.add(\"center\", new Roo.NestedLayoutPanel(innerLayout,\n               {title: \"Build your own roo.js\"}));\n    layout.getRegion(\"center\").showPanel(sp);\n    layout.endUpdate();\n}\n</code></pre>",
+      "classDesc": "Roo.LayoutDialog",
+      "augments": [
+        {
+          "*object": "DocTag",
+          "title": "extends",
+          "type": "",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "Roo.BasicDialog"
+        }
+      ],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.LayoutDialog#endUpdate": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Ends update of the layout <strike>and resets display to none</strike>. Use standard beginUpdate/endUpdate on the layout.\n@deprecated\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Ends update of the layout <strike>and resets display to none</strike>. Use standard beginUpdate/endUpdate on the layout."
+          },
+          {
+            "*object": "DocTag",
+            "title": "deprecated",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.LayoutDialog#endUpdate",
+      "name": "Roo.LayoutDialog#endUpdate",
+      "alias": "Roo.LayoutDialog#endUpdate",
+      "desc": "Ends update of the layout <strike>and resets display to none</strike>. Use standard beginUpdate/endUpdate on the layout.",
+      "deprecated": "",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.LayoutDialog#beginUpdate": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Begins an update of the layout <strike>and sets display to block and visibility to hidden</strike>. Use standard beginUpdate/endUpdate on the layout.\n @deprecated\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Begins an update of the layout <strike>and sets display to block and visibility to hidden</strike>. Use standard beginUpdate/endUpdate on the layout."
+          },
+          {
+            "*object": "DocTag",
+            "title": "deprecated",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.LayoutDialog#beginUpdate",
+      "name": "Roo.LayoutDialog#beginUpdate",
+      "alias": "Roo.LayoutDialog#beginUpdate",
+      "desc": "Begins an update of the layout <strike>and sets display to block and visibility to hidden</strike>. Use standard beginUpdate/endUpdate on the layout.",
+      "deprecated": "",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "type": "",
+      "version": ""
+    },
+    "Roo.LayoutDialog#getLayout": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Roo.BorderLayout",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": ""
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Get the BorderLayout for this dialog\n@return {Roo.BorderLayout}\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Get the BorderLayout for this dialog"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Roo.BorderLayout",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": ""
+          }
+        ]
+      },
+      "_name": "Roo.LayoutDialog#getLayout",
+      "name": "Roo.LayoutDialog#getLayout",
+      "alias": "Roo.LayoutDialog#getLayout",
+      "desc": "Get the BorderLayout for this dialog",
+      "type": "Roo.BorderLayout",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    },
+    "Roo.LayoutDialog#addxtype": {
+      "*object": "Symbol",
+      "params": [],
+      "exceptions": [],
+      "inherits": [],
+      "isa": "FUNCTION",
+      "methods": [],
+      "_params": [],
+      "properties": [],
+      "requires": [],
+      "returns": [
+        {
+          "*object": "DocTag",
+          "title": "return",
+          "type": "Object",
+          "name": "",
+          "isOptional": false,
+          "defaultValue": "",
+          "desc": "xdata xtype object data."
+        }
+      ],
+      "see": [],
+      "srcFile": "/home/alan/gitlive/roojs1/Roo/BasicDialog.js",
+      "cfgs": {},
+      "comment": {
+        "*object": "DocComment",
+        "isUserComment": true,
+        "src": "\n@desc Add an xtype element (actually adds to the layout.)\n@return {Object} xdata xtype object data.\n     ",
+        "meta": "",
+        "tags": [
+          {
+            "*object": "DocTag",
+            "title": "desc",
+            "type": "",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "Add an xtype element (actually adds to the layout.)"
+          },
+          {
+            "*object": "DocTag",
+            "title": "return",
+            "type": "Object",
+            "name": "",
+            "isOptional": false,
+            "defaultValue": "",
+            "desc": "xdata xtype object data."
+          }
+        ]
+      },
+      "_name": "Roo.LayoutDialog#addxtype",
+      "name": "Roo.LayoutDialog#addxtype",
+      "alias": "Roo.LayoutDialog#addxtype",
+      "desc": "Add an xtype element (actually adds to the layout.)",
+      "type": "Object",
+      "augments": [],
+      "defaultValue": "",
+      "addOn": "",
+      "author": "",
+      "classDesc": "",
+      "deprecated": "",
+      "example": "",
+      "isEvent": false,
+      "isConstant": false,
+      "isIgnored": false,
+      "isInner": false,
+      "isNamespace": false,
+      "isPrivate": false,
+      "isStatic": false,
+      "memberOf": "",
+      "since": "",
+      "version": ""
+    }
+  }
+}
