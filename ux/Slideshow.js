@@ -32,8 +32,8 @@ Roo.ux.Slideshow = function(cfg )
         }
     }
     if (this.slides.length == 1) {
-        this.slide[0].setVisibilityMode(Roo.Element.DISPLAY);
-        this.slide[0].show();
+        this.slides[0].setVisibilityMode(Roo.Element.DISPLAY);
+        this.slides[0].show();
         return;
         
     }
