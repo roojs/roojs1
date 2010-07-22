@@ -43,7 +43,7 @@ Roo.apply(Roo.ux.Slideshow.prototype, {
     
     wait 			: 4000,
 	start 			: 0,
-	duration		: 0.5,
+	duration		: 10,
 	autostart		: true ,
      /**
      * @cfg {Array} of slides
