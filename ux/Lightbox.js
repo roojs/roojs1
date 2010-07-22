@@ -291,7 +291,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
             zIndex : this._mask.getStyle('zIndex') * 1.1
         })
         this.lightbox.show();
-        this.lightbox.setStyle( {
+        
         
         
         this.changeImage(imageNum);
