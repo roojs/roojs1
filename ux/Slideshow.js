@@ -8,7 +8,7 @@
 Roo.onReady( function() 
 {
    // use a dom selector to define slides..
-    var slides = Roo.DomQuery.select('.category-slide');
+    var slides = Roo.DomQuery.select('.category-slide', true);
    
     oMySlides = new Roo.ux.Slideshow({
         slides 		: slides,
