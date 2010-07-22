@@ -210,6 +210,9 @@ Roo.apply(Roo.ux.Lightbox.prototype,
                 function(id){ 
                     
                     th[id] = Roo.get(id); 
+                    if (!th[id]) {
+                        return;
+                       }
                     th[id].setVisibilityMode(Element.DISPLAY);
                 });
         }).defer(100);
