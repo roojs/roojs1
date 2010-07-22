@@ -309,6 +309,9 @@ Roo.apply(Roo.ux.Lightbox.prototype,
 
         // hide elements during transition
         if (this.animate) {
+            this.loading.setStyle({
+                zIndex : this._mask.getStyle('zIndex') * 1.2
+            })
             this.loading.show();
         }
         this.lightboxImage.hide();
