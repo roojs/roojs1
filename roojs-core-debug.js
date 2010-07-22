@@ -4368,3 +4368,2266 @@ Roo.DomHelper = function(){
     }
     };
 }();
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+* @class Roo.Template
+* Represents an HTML fragment template. Templates can be precompiled for greater performance.
+* For a list of available format functions, see {@link Roo.util.Format}.<br />
+* Usage:
+<pre><code>
+var t = new Roo.Template(
+    '&lt;div name="{id}"&gt;',
+        '&lt;span class="{cls}"&gt;{name:trim} {value:ellipsis(10)}&lt;/span&gt;',
+    '&lt;/div&gt;'
+);
+t.append('some-element', {id: 'myid', cls: 'myclass', name: 'foo', value: 'bar'});
+</code></pre>
+* For more information see this blog post with examples: <a href="http://www.jackslocum.com/yui/2006/10/06/domhelper-create-elements-using-dom-html-fragments-or-templates/">DomHelper - Create Elements using DOM, HTML fragments and Templates</a>. 
+* @constructor
+* @param {String/Array} html The HTML fragment or an array of fragments to join("") or multiple arguments to join("")
+*/
+Roo.Template = function(html){
+    if(html instanceof Array){
+        html = html.join("");
+    }else if(arguments.length > 1){
+        html = Array.prototype.join.call(arguments, "");
+    }
+    /**@private*/
+    this.html = html;
+    
+};
+Roo.Template.prototype = {
+    /**
+     * Returns an HTML fragment of this template with the specified values applied.
+     * @param {Object} values The template values. Can be an array if your params are numeric (i.e. {0}) or an object (i.e. {foo: 'bar'})
+     * @return {String} The HTML fragment
+     */
+    applyTemplate : function(values){
+        if(this.compiled){
+            return this.compiled(values);
+        }
+        var useF = this.disableFormats !== true;
+        var fm = Roo.util.Format, tpl = this;
+        var fn = function(m, name, format, args){
+            if(format && useF){
+                if(format.substr(0, 5) == "this."){
+                    return tpl.call(format.substr(5), values[name], values);
+                }else{
+                    if(args){
+                        // quoted values are required for strings in compiled templates, 
+                        // but for non compiled we need to strip them
+                        // quoted reversed for jsmin
+                        var re = /^\s*['"](.*)["']\s*$/;
+                        args = args.split(',');
+                        for(var i = 0, len = args.length; i < len; i++){
+                            args[i] = args[i].replace(re, "$1");
+                        }
+                        args = [values[name]].concat(args);
+                    }else{
+                        args = [values[name]];
+                    }
+                    return fm[format].apply(fm, args);
+                }
+            }else{
+                return values[name] !== undefined ? values[name] : "";
+            }
+        };
+        return this.html.replace(this.re, fn);
+    },
+    
+    /**
+     * Sets the HTML used as the template and optionally compiles it.
+     * @param {String} html
+     * @param {Boolean} compile (optional) True to compile the template (defaults to undefined)
+     * @return {Roo.Template} this
+     */
+    set : function(html, compile){
+        this.html = html;
+        this.compiled = null;
+        if(compile){
+            this.compile();
+        }
+        return this;
+    },
+    
+    /**
+     * True to disable format functions (defaults to false)
+     * @type Boolean
+     */
+    disableFormats : false,
+    
+    /**
+    * The regular expression used to match template variables 
+    * @type RegExp
+    * @property 
+    */
+    re : /\{([\w-]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?\}/g,
+    
+    /**
+     * Compiles the template into an internal function, eliminating the RegEx overhead.
+     * @return {Roo.Template} this
+     */
+    compile : function(){
+        var fm = Roo.util.Format;
+        var useF = this.disableFormats !== true;
+        var sep = Roo.isGecko ? "+" : ",";
+        var fn = function(m, name, format, args){
+            if(format && useF){
+                args = args ? ',' + args : "";
+                if(format.substr(0, 5) != "this."){
+                    format = "fm." + format + '(';
+                }else{
+                    format = 'this.call("'+ format.substr(5) + '", ';
+                    args = ", values";
+                }
+            }else{
+                args= ''; format = "(values['" + name + "'] == undefined ? '' : ";
+            }
+            return "'"+ sep + format + "values['" + name + "']" + args + ")"+sep+"'";
+        };
+        var body;
+        // branched to use + in gecko and [].join() in others
+        if(Roo.isGecko){
+            body = "this.compiled = function(values){ return '" +
+                   this.html.replace(/\\/g, '\\\\').replace(/(\r\n|\n)/g, '\\n').replace(/'/g, "\\'").replace(this.re, fn) +
+                    "';};";
+        }else{
+            body = ["this.compiled = function(values){ return ['"];
+            body.push(this.html.replace(/\\/g, '\\\\').replace(/(\r\n|\n)/g, '\\n').replace(/'/g, "\\'").replace(this.re, fn));
+            body.push("'].join('');};");
+            body = body.join('');
+        }
+        /**
+         * eval:var:values
+         * eval:var:fm
+         */
+        eval(body);
+        return this;
+    },
+    
+    // private function used to call members
+    call : function(fnName, value, allValues){
+        return this[fnName](value, allValues);
+    },
+    
+    /**
+     * Applies the supplied values to the template and inserts the new node(s) as the first child of el.
+     * @param {String/HTMLElement/Roo.Element} el The context element
+     * @param {Object} values The template values. Can be an array if your params are numeric (i.e. {0}) or an object (i.e. {foo: 'bar'})
+     * @param {Boolean} returnElement (optional) true to return a Roo.Element (defaults to undefined)
+     * @return {HTMLElement/Roo.Element} The new node or Element
+     */
+    insertFirst: function(el, values, returnElement){
+        return this.doInsert('afterBegin', el, values, returnElement);
+    },
+
+    /**
+     * Applies the supplied values to the template and inserts the new node(s) before el.
+     * @param {String/HTMLElement/Roo.Element} el The context element
+     * @param {Object} values The template values. Can be an array if your params are numeric (i.e. {0}) or an object (i.e. {foo: 'bar'})
+     * @param {Boolean} returnElement (optional) true to return a Roo.Element (defaults to undefined)
+     * @return {HTMLElement/Roo.Element} The new node or Element
+     */
+    insertBefore: function(el, values, returnElement){
+        return this.doInsert('beforeBegin', el, values, returnElement);
+    },
+
+    /**
+     * Applies the supplied values to the template and inserts the new node(s) after el.
+     * @param {String/HTMLElement/Roo.Element} el The context element
+     * @param {Object} values The template values. Can be an array if your params are numeric (i.e. {0}) or an object (i.e. {foo: 'bar'})
+     * @param {Boolean} returnElement (optional) true to return a Roo.Element (defaults to undefined)
+     * @return {HTMLElement/Roo.Element} The new node or Element
+     */
+    insertAfter : function(el, values, returnElement){
+        return this.doInsert('afterEnd', el, values, returnElement);
+    },
+    
+    /**
+     * Applies the supplied values to the template and appends the new node(s) to el.
+     * @param {String/HTMLElement/Roo.Element} el The context element
+     * @param {Object} values The template values. Can be an array if your params are numeric (i.e. {0}) or an object (i.e. {foo: 'bar'})
+     * @param {Boolean} returnElement (optional) true to return a Roo.Element (defaults to undefined)
+     * @return {HTMLElement/Roo.Element} The new node or Element
+     */
+    append : function(el, values, returnElement){
+        return this.doInsert('beforeEnd', el, values, returnElement);
+    },
+
+    doInsert : function(where, el, values, returnEl){
+        el = Roo.getDom(el);
+        var newNode = Roo.DomHelper.insertHtml(where, el, this.applyTemplate(values));
+        return returnEl ? Roo.get(newNode, true) : newNode;
+    },
+
+    /**
+     * Applies the supplied values to the template and overwrites the content of el with the new node(s).
+     * @param {String/HTMLElement/Roo.Element} el The context element
+     * @param {Object} values The template values. Can be an array if your params are numeric (i.e. {0}) or an object (i.e. {foo: 'bar'})
+     * @param {Boolean} returnElement (optional) true to return a Roo.Element (defaults to undefined)
+     * @return {HTMLElement/Roo.Element} The new node or Element
+     */
+    overwrite : function(el, values, returnElement){
+        el = Roo.getDom(el);
+        el.innerHTML = this.applyTemplate(values);
+        return returnElement ? Roo.get(el.firstChild, true) : el.firstChild;
+    }
+};
+/**
+ * Alias for {@link #applyTemplate}
+ * @method
+ */
+Roo.Template.prototype.apply = Roo.Template.prototype.applyTemplate;
+
+// backwards compat
+Roo.DomHelper.Template = Roo.Template;
+
+/**
+ * Creates a template from the passed element's value (<i>display:none</i> textarea, preferred) or innerHTML.
+ * @param {String/HTMLElement} el A DOM element or its id
+ * @returns {Roo.Template} The created template
+ * @static
+ */
+Roo.Template.from = function(el){
+    el = Roo.getDom(el);
+    return new Roo.Template(el.value || el.innerHTML);
+};/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+
+/*
+ * This is code is also distributed under MIT license for use
+ * with jQuery and prototype JavaScript libraries.
+ */
+/**
+ * @class Roo.DomQuery
+Provides high performance selector/xpath processing by compiling queries into reusable functions. New pseudo classes and matchers can be plugged. It works on HTML and XML documents (if a content node is passed in).
+<p>
+DomQuery supports most of the <a href="http://www.w3.org/TR/2005/WD-css3-selectors-20051215/">CSS3 selectors spec</a>, along with some custom selectors and basic XPath.</p>
+
+<p>
+All selectors, attribute filters and pseudos below can be combined infinitely in any order. For example "div.foo:nth-child(odd)[@foo=bar].bar:first" would be a perfectly valid selector. Node filters are processed in the order in which they appear, which allows you to optimize your queries for your document structure.
+</p>
+<h4>Element Selectors:</h4>
+<ul class="list">
+    <li> <b>*</b> any element</li>
+    <li> <b>E</b> an element with the tag E</li>
+    <li> <b>E F</b> All descendent elements of E that have the tag F</li>
+    <li> <b>E > F</b> or <b>E/F</b> all direct children elements of E that have the tag F</li>
+    <li> <b>E + F</b> all elements with the tag F that are immediately preceded by an element with the tag E</li>
+    <li> <b>E ~ F</b> all elements with the tag F that are preceded by a sibling element with the tag E</li>
+</ul>
+<h4>Attribute Selectors:</h4>
+<p>The use of @ and quotes are optional. For example, div[@foo='bar'] is also a valid attribute selector.</p>
+<ul class="list">
+    <li> <b>E[foo]</b> has an attribute "foo"</li>
+    <li> <b>E[foo=bar]</b> has an attribute "foo" that equals "bar"</li>
+    <li> <b>E[foo^=bar]</b> has an attribute "foo" that starts with "bar"</li>
+    <li> <b>E[foo$=bar]</b> has an attribute "foo" that ends with "bar"</li>
+    <li> <b>E[foo*=bar]</b> has an attribute "foo" that contains the substring "bar"</li>
+    <li> <b>E[foo%=2]</b> has an attribute "foo" that is evenly divisible by 2</li>
+    <li> <b>E[foo!=bar]</b> has an attribute "foo" that does not equal "bar"</li>
+</ul>
+<h4>Pseudo Classes:</h4>
+<ul class="list">
+    <li> <b>E:first-child</b> E is the first child of its parent</li>
+    <li> <b>E:last-child</b> E is the last child of its parent</li>
+    <li> <b>E:nth-child(<i>n</i>)</b> E is the <i>n</i>th child of its parent (1 based as per the spec)</li>
+    <li> <b>E:nth-child(odd)</b> E is an odd child of its parent</li>
+    <li> <b>E:nth-child(even)</b> E is an even child of its parent</li>
+    <li> <b>E:only-child</b> E is the only child of its parent</li>
+    <li> <b>E:checked</b> E is an element that is has a checked attribute that is true (e.g. a radio or checkbox) </li>
+    <li> <b>E:first</b> the first E in the resultset</li>
+    <li> <b>E:last</b> the last E in the resultset</li>
+    <li> <b>E:nth(<i>n</i>)</b> the <i>n</i>th E in the resultset (1 based)</li>
+    <li> <b>E:odd</b> shortcut for :nth-child(odd)</li>
+    <li> <b>E:even</b> shortcut for :nth-child(even)</li>
+    <li> <b>E:contains(foo)</b> E's innerHTML contains the substring "foo"</li>
+    <li> <b>E:nodeValue(foo)</b> E contains a textNode with a nodeValue that equals "foo"</li>
+    <li> <b>E:not(S)</b> an E element that does not match simple selector S</li>
+    <li> <b>E:has(S)</b> an E element that has a descendent that matches simple selector S</li>
+    <li> <b>E:next(S)</b> an E element whose next sibling matches simple selector S</li>
+    <li> <b>E:prev(S)</b> an E element whose previous sibling matches simple selector S</li>
+</ul>
+<h4>CSS Value Selectors:</h4>
+<ul class="list">
+    <li> <b>E{display=none}</b> css value "display" that equals "none"</li>
+    <li> <b>E{display^=none}</b> css value "display" that starts with "none"</li>
+    <li> <b>E{display$=none}</b> css value "display" that ends with "none"</li>
+    <li> <b>E{display*=none}</b> css value "display" that contains the substring "none"</li>
+    <li> <b>E{display%=2}</b> css value "display" that is evenly divisible by 2</li>
+    <li> <b>E{display!=none}</b> css value "display" that does not equal "none"</li>
+</ul>
+ * @singleton
+ */
+Roo.DomQuery = function(){
+    var cache = {}, simpleCache = {}, valueCache = {};
+    var nonSpace = /\S/;
+    var trimRe = /^\s+|\s+$/g;
+    var tplRe = /\{(\d+)\}/g;
+    var modeRe = /^(\s?[\/>+~]\s?|\s|$)/;
+    var tagTokenRe = /^(#)?([\w-\*]+)/;
+    var nthRe = /(\d*)n\+?(\d*)/, nthRe2 = /\D/;
+
+    function child(p, index){
+        var i = 0;
+        var n = p.firstChild;
+        while(n){
+            if(n.nodeType == 1){
+               if(++i == index){
+                   return n;
+               }
+            }
+            n = n.nextSibling;
+        }
+        return null;
+    };
+
+    function next(n){
+        while((n = n.nextSibling) && n.nodeType != 1);
+        return n;
+    };
+
+    function prev(n){
+        while((n = n.previousSibling) && n.nodeType != 1);
+        return n;
+    };
+
+    function children(d){
+        var n = d.firstChild, ni = -1;
+ 	    while(n){
+ 	        var nx = n.nextSibling;
+ 	        if(n.nodeType == 3 && !nonSpace.test(n.nodeValue)){
+ 	            d.removeChild(n);
+ 	        }else{
+ 	            n.nodeIndex = ++ni;
+ 	        }
+ 	        n = nx;
+ 	    }
+ 	    return this;
+ 	};
+
+    function byClassName(c, a, v){
+        if(!v){
+            return c;
+        }
+        var r = [], ri = -1, cn;
+        for(var i = 0, ci; ci = c[i]; i++){
+            if((' '+ci.className+' ').indexOf(v) != -1){
+                r[++ri] = ci;
+            }
+        }
+        return r;
+    };
+
+    function attrValue(n, attr){
+        if(!n.tagName && typeof n.length != "undefined"){
+            n = n[0];
+        }
+        if(!n){
+            return null;
+        }
+        if(attr == "for"){
+            return n.htmlFor;
+        }
+        if(attr == "class" || attr == "className"){
+            return n.className;
+        }
+        return n.getAttribute(attr) || n[attr];
+
+    };
+
+    function getNodes(ns, mode, tagName){
+        var result = [], ri = -1, cs;
+        if(!ns){
+            return result;
+        }
+        tagName = tagName || "*";
+        if(typeof ns.getElementsByTagName != "undefined"){
+            ns = [ns];
+        }
+        if(!mode){
+            for(var i = 0, ni; ni = ns[i]; i++){
+                cs = ni.getElementsByTagName(tagName);
+                for(var j = 0, ci; ci = cs[j]; j++){
+                    result[++ri] = ci;
+                }
+            }
+        }else if(mode == "/" || mode == ">"){
+            var utag = tagName.toUpperCase();
+            for(var i = 0, ni, cn; ni = ns[i]; i++){
+                cn = ni.children || ni.childNodes;
+                for(var j = 0, cj; cj = cn[j]; j++){
+                    if(cj.nodeName == utag || cj.nodeName == tagName  || tagName == '*'){
+                        result[++ri] = cj;
+                    }
+                }
+            }
+        }else if(mode == "+"){
+            var utag = tagName.toUpperCase();
+            for(var i = 0, n; n = ns[i]; i++){
+                while((n = n.nextSibling) && n.nodeType != 1);
+                if(n && (n.nodeName == utag || n.nodeName == tagName || tagName == '*')){
+                    result[++ri] = n;
+                }
+            }
+        }else if(mode == "~"){
+            for(var i = 0, n; n = ns[i]; i++){
+                while((n = n.nextSibling) && (n.nodeType != 1 || (tagName == '*' || n.tagName.toLowerCase()!=tagName)));
+                if(n){
+                    result[++ri] = n;
+                }
+            }
+        }
+        return result;
+    };
+
+    function concat(a, b){
+        if(b.slice){
+            return a.concat(b);
+        }
+        for(var i = 0, l = b.length; i < l; i++){
+            a[a.length] = b[i];
+        }
+        return a;
+    }
+
+    function byTag(cs, tagName){
+        if(cs.tagName || cs == document){
+            cs = [cs];
+        }
+        if(!tagName){
+            return cs;
+        }
+        var r = [], ri = -1;
+        tagName = tagName.toLowerCase();
+        for(var i = 0, ci; ci = cs[i]; i++){
+            if(ci.nodeType == 1 && ci.tagName.toLowerCase()==tagName){
+                r[++ri] = ci;
+            }
+        }
+        return r;
+    };
+
+    function byId(cs, attr, id){
+        if(cs.tagName || cs == document){
+            cs = [cs];
+        }
+        if(!id){
+            return cs;
+        }
+        var r = [], ri = -1;
+        for(var i = 0,ci; ci = cs[i]; i++){
+            if(ci && ci.id == id){
+                r[++ri] = ci;
+                return r;
+            }
+        }
+        return r;
+    };
+
+    function byAttribute(cs, attr, value, op, custom){
+        var r = [], ri = -1, st = custom=="{";
+        var f = Roo.DomQuery.operators[op];
+        for(var i = 0, ci; ci = cs[i]; i++){
+            var a;
+            if(st){
+                a = Roo.DomQuery.getStyle(ci, attr);
+            }
+            else if(attr == "class" || attr == "className"){
+                a = ci.className;
+            }else if(attr == "for"){
+                a = ci.htmlFor;
+            }else if(attr == "href"){
+                a = ci.getAttribute("href", 2);
+            }else{
+                a = ci.getAttribute(attr);
+            }
+            if((f && f(a, value)) || (!f && a)){
+                r[++ri] = ci;
+            }
+        }
+        return r;
+    };
+
+    function byPseudo(cs, name, value){
+        return Roo.DomQuery.pseudos[name](cs, value);
+    };
+
+    // This is for IE MSXML which does not support expandos.
+    // IE runs the same speed using setAttribute, however FF slows way down
+    // and Safari completely fails so they need to continue to use expandos.
+    var isIE = window.ActiveXObject ? true : false;
+
+    // this eval is stop the compressor from
+    // renaming the variable to something shorter
+    
+    /** eval:var:batch */
+    var batch = 30803; 
+
+    var key = 30803;
+
+    function nodupIEXml(cs){
+        var d = ++key;
+        cs[0].setAttribute("_nodup", d);
+        var r = [cs[0]];
+        for(var i = 1, len = cs.length; i < len; i++){
+            var c = cs[i];
+            if(!c.getAttribute("_nodup") != d){
+                c.setAttribute("_nodup", d);
+                r[r.length] = c;
+            }
+        }
+        for(var i = 0, len = cs.length; i < len; i++){
+            cs[i].removeAttribute("_nodup");
+        }
+        return r;
+    }
+
+    function nodup(cs){
+        if(!cs){
+            return [];
+        }
+        var len = cs.length, c, i, r = cs, cj, ri = -1;
+        if(!len || typeof cs.nodeType != "undefined" || len == 1){
+            return cs;
+        }
+        if(isIE && typeof cs[0].selectSingleNode != "undefined"){
+            return nodupIEXml(cs);
+        }
+        var d = ++key;
+        cs[0]._nodup = d;
+        for(i = 1; c = cs[i]; i++){
+            if(c._nodup != d){
+                c._nodup = d;
+            }else{
+                r = [];
+                for(var j = 0; j < i; j++){
+                    r[++ri] = cs[j];
+                }
+                for(j = i+1; cj = cs[j]; j++){
+                    if(cj._nodup != d){
+                        cj._nodup = d;
+                        r[++ri] = cj;
+                    }
+                }
+                return r;
+            }
+        }
+        return r;
+    }
+
+    function quickDiffIEXml(c1, c2){
+        var d = ++key;
+        for(var i = 0, len = c1.length; i < len; i++){
+            c1[i].setAttribute("_qdiff", d);
+        }
+        var r = [];
+        for(var i = 0, len = c2.length; i < len; i++){
+            if(c2[i].getAttribute("_qdiff") != d){
+                r[r.length] = c2[i];
+            }
+        }
+        for(var i = 0, len = c1.length; i < len; i++){
+           c1[i].removeAttribute("_qdiff");
+        }
+        return r;
+    }
+
+    function quickDiff(c1, c2){
+        var len1 = c1.length;
+        if(!len1){
+            return c2;
+        }
+        if(isIE && c1[0].selectSingleNode){
+            return quickDiffIEXml(c1, c2);
+        }
+        var d = ++key;
+        for(var i = 0; i < len1; i++){
+            c1[i]._qdiff = d;
+        }
+        var r = [];
+        for(var i = 0, len = c2.length; i < len; i++){
+            if(c2[i]._qdiff != d){
+                r[r.length] = c2[i];
+            }
+        }
+        return r;
+    }
+
+    function quickId(ns, mode, root, id){
+        if(ns == root){
+           var d = root.ownerDocument || root;
+           return d.getElementById(id);
+        }
+        ns = getNodes(ns, mode, "*");
+        return byId(ns, null, id);
+    }
+
+    return {
+        getStyle : function(el, name){
+            return Roo.fly(el).getStyle(name);
+        },
+        /**
+         * Compiles a selector/xpath query into a reusable function. The returned function
+         * takes one parameter "root" (optional), which is the context node from where the query should start.
+         * @param {String} selector The selector/xpath query
+         * @param {String} type (optional) Either "select" (the default) or "simple" for a simple selector match
+         * @return {Function}
+         */
+        compile : function(path, type){
+            type = type || "select";
+            
+            var fn = ["var f = function(root){\n var mode; ++batch; var n = root || document;\n"];
+            var q = path, mode, lq;
+            var tk = Roo.DomQuery.matchers;
+            var tklen = tk.length;
+            var mm;
+
+            // accept leading mode switch
+            var lmode = q.match(modeRe);
+            if(lmode && lmode[1]){
+                fn[fn.length] = 'mode="'+lmode[1].replace(trimRe, "")+'";';
+                q = q.replace(lmode[1], "");
+            }
+            // strip leading slashes
+            while(path.substr(0, 1)=="/"){
+                path = path.substr(1);
+            }
+
+            while(q && lq != q){
+                lq = q;
+                var tm = q.match(tagTokenRe);
+                if(type == "select"){
+                    if(tm){
+                        if(tm[1] == "#"){
+                            fn[fn.length] = 'n = quickId(n, mode, root, "'+tm[2]+'");';
+                        }else{
+                            fn[fn.length] = 'n = getNodes(n, mode, "'+tm[2]+'");';
+                        }
+                        q = q.replace(tm[0], "");
+                    }else if(q.substr(0, 1) != '@'){
+                        fn[fn.length] = 'n = getNodes(n, mode, "*");';
+                    }
+                }else{
+                    if(tm){
+                        if(tm[1] == "#"){
+                            fn[fn.length] = 'n = byId(n, null, "'+tm[2]+'");';
+                        }else{
+                            fn[fn.length] = 'n = byTag(n, "'+tm[2]+'");';
+                        }
+                        q = q.replace(tm[0], "");
+                    }
+                }
+                while(!(mm = q.match(modeRe))){
+                    var matched = false;
+                    for(var j = 0; j < tklen; j++){
+                        var t = tk[j];
+                        var m = q.match(t.re);
+                        if(m){
+                            fn[fn.length] = t.select.replace(tplRe, function(x, i){
+                                                    return m[i];
+                                                });
+                            q = q.replace(m[0], "");
+                            matched = true;
+                            break;
+                        }
+                    }
+                    // prevent infinite loop on bad selector
+                    if(!matched){
+                        throw 'Error parsing selector, parsing failed at "' + q + '"';
+                    }
+                }
+                if(mm[1]){
+                    fn[fn.length] = 'mode="'+mm[1].replace(trimRe, "")+'";';
+                    q = q.replace(mm[1], "");
+                }
+            }
+            fn[fn.length] = "return nodup(n);\n}";
+            
+             /** 
+              * list of variables that need from compression as they are used by eval.
+             *  eval:var:batch 
+             *  eval:var:nodup
+             *  eval:var:byTag
+             *  eval:var:ById
+             *  eval:var:getNodes
+             *  eval:var:quickId
+             *  eval:var:mode
+             *  eval:var:root
+             *  eval:var:n
+             *  eval:var:byClassName
+             *  eval:var:byPseudo
+             *  eval:var:byAttribute
+             *  eval:var:attrValue
+             * 
+             **/ 
+            eval(fn.join(""));
+            return f;
+        },
+
+        /**
+         * Selects a group of elements.
+         * @param {String} selector The selector/xpath query (can be a comma separated list of selectors)
+         * @param {Node} root (optional) The start of the query (defaults to document).
+         * @return {Array}
+         */
+        select : function(path, root, type){
+            if(!root || root == document){
+                root = document;
+            }
+            if(typeof root == "string"){
+                root = document.getElementById(root);
+            }
+            var paths = path.split(",");
+            var results = [];
+            for(var i = 0, len = paths.length; i < len; i++){
+                var p = paths[i].replace(trimRe, "");
+                if(!cache[p]){
+                    cache[p] = Roo.DomQuery.compile(p);
+                    if(!cache[p]){
+                        throw p + " is not a valid selector";
+                    }
+                }
+                var result = cache[p](root);
+                if(result && result != document){
+                    results = results.concat(result);
+                }
+            }
+            if(paths.length > 1){
+                return nodup(results);
+            }
+            return results;
+        },
+
+        /**
+         * Selects a single element.
+         * @param {String} selector The selector/xpath query
+         * @param {Node} root (optional) The start of the query (defaults to document).
+         * @return {Element}
+         */
+        selectNode : function(path, root){
+            return Roo.DomQuery.select(path, root)[0];
+        },
+
+        /**
+         * Selects the value of a node, optionally replacing null with the defaultValue.
+         * @param {String} selector The selector/xpath query
+         * @param {Node} root (optional) The start of the query (defaults to document).
+         * @param {String} defaultValue
+         */
+        selectValue : function(path, root, defaultValue){
+            path = path.replace(trimRe, "");
+            if(!valueCache[path]){
+                valueCache[path] = Roo.DomQuery.compile(path, "select");
+            }
+            var n = valueCache[path](root);
+            n = n[0] ? n[0] : n;
+            var v = (n && n.firstChild ? n.firstChild.nodeValue : null);
+            return ((v === null||v === undefined||v==='') ? defaultValue : v);
+        },
+
+        /**
+         * Selects the value of a node, parsing integers and floats.
+         * @param {String} selector The selector/xpath query
+         * @param {Node} root (optional) The start of the query (defaults to document).
+         * @param {Number} defaultValue
+         * @return {Number}
+         */
+        selectNumber : function(path, root, defaultValue){
+            var v = Roo.DomQuery.selectValue(path, root, defaultValue || 0);
+            return parseFloat(v);
+        },
+
+        /**
+         * Returns true if the passed element(s) match the passed simple selector (e.g. div.some-class or span:first-child)
+         * @param {String/HTMLElement/Array} el An element id, element or array of elements
+         * @param {String} selector The simple selector to test
+         * @return {Boolean}
+         */
+        is : function(el, ss){
+            if(typeof el == "string"){
+                el = document.getElementById(el);
+            }
+            var isArray = (el instanceof Array);
+            var result = Roo.DomQuery.filter(isArray ? el : [el], ss);
+            return isArray ? (result.length == el.length) : (result.length > 0);
+        },
+
+        /**
+         * Filters an array of elements to only include matches of a simple selector (e.g. div.some-class or span:first-child)
+         * @param {Array} el An array of elements to filter
+         * @param {String} selector The simple selector to test
+         * @param {Boolean} nonMatches If true, it returns the elements that DON'T match
+         * the selector instead of the ones that match
+         * @return {Array}
+         */
+        filter : function(els, ss, nonMatches){
+            ss = ss.replace(trimRe, "");
+            if(!simpleCache[ss]){
+                simpleCache[ss] = Roo.DomQuery.compile(ss, "simple");
+            }
+            var result = simpleCache[ss](els);
+            return nonMatches ? quickDiff(result, els) : result;
+        },
+
+        /**
+         * Collection of matching regular expressions and code snippets.
+         */
+        matchers : [{
+                re: /^\.([\w-]+)/,
+                select: 'n = byClassName(n, null, " {1} ");'
+            }, {
+                re: /^\:([\w-]+)(?:\(((?:[^\s>\/]*|.*?))\))?/,
+                select: 'n = byPseudo(n, "{1}", "{2}");'
+            },{
+                re: /^(?:([\[\{])(?:@)?([\w-]+)\s?(?:(=|.=)\s?['"]?(.*?)["']?)?[\]\}])/,
+                select: 'n = byAttribute(n, "{2}", "{4}", "{3}", "{1}");'
+            }, {
+                re: /^#([\w-]+)/,
+                select: 'n = byId(n, null, "{1}");'
+            },{
+                re: /^@([\w-]+)/,
+                select: 'return {firstChild:{nodeValue:attrValue(n, "{1}")}};'
+            }
+        ],
+
+        /**
+         * Collection of operator comparison functions. The default operators are =, !=, ^=, $=, *=, %=, |= and ~=.
+         * New operators can be added as long as the match the format <i>c</i>= where <i>c</i> is any character other than space, &gt; &lt;.
+         */
+        operators : {
+            "=" : function(a, v){
+                return a == v;
+            },
+            "!=" : function(a, v){
+                return a != v;
+            },
+            "^=" : function(a, v){
+                return a && a.substr(0, v.length) == v;
+            },
+            "$=" : function(a, v){
+                return a && a.substr(a.length-v.length) == v;
+            },
+            "*=" : function(a, v){
+                return a && a.indexOf(v) !== -1;
+            },
+            "%=" : function(a, v){
+                return (a % v) == 0;
+            },
+            "|=" : function(a, v){
+                return a && (a == v || a.substr(0, v.length+1) == v+'-');
+            },
+            "~=" : function(a, v){
+                return a && (' '+a+' ').indexOf(' '+v+' ') != -1;
+            }
+        },
+
+        /**
+         * Collection of "pseudo class" processors. Each processor is passed the current nodeset (array)
+         * and the argument (if any) supplied in the selector.
+         */
+        pseudos : {
+            "first-child" : function(c){
+                var r = [], ri = -1, n;
+                for(var i = 0, ci; ci = n = c[i]; i++){
+                    while((n = n.previousSibling) && n.nodeType != 1);
+                    if(!n){
+                        r[++ri] = ci;
+                    }
+                }
+                return r;
+            },
+
+            "last-child" : function(c){
+                var r = [], ri = -1, n;
+                for(var i = 0, ci; ci = n = c[i]; i++){
+                    while((n = n.nextSibling) && n.nodeType != 1);
+                    if(!n){
+                        r[++ri] = ci;
+                    }
+                }
+                return r;
+            },
+
+            "nth-child" : function(c, a) {
+                var r = [], ri = -1;
+                var m = nthRe.exec(a == "even" && "2n" || a == "odd" && "2n+1" || !nthRe2.test(a) && "n+" + a || a);
+                var f = (m[1] || 1) - 0, l = m[2] - 0;
+                for(var i = 0, n; n = c[i]; i++){
+                    var pn = n.parentNode;
+                    if (batch != pn._batch) {
+                        var j = 0;
+                        for(var cn = pn.firstChild; cn; cn = cn.nextSibling){
+                            if(cn.nodeType == 1){
+                               cn.nodeIndex = ++j;
+                            }
+                        }
+                        pn._batch = batch;
+                    }
+                    if (f == 1) {
+                        if (l == 0 || n.nodeIndex == l){
+                            r[++ri] = n;
+                        }
+                    } else if ((n.nodeIndex + l) % f == 0){
+                        r[++ri] = n;
+                    }
+                }
+
+                return r;
+            },
+
+            "only-child" : function(c){
+                var r = [], ri = -1;;
+                for(var i = 0, ci; ci = c[i]; i++){
+                    if(!prev(ci) && !next(ci)){
+                        r[++ri] = ci;
+                    }
+                }
+                return r;
+            },
+
+            "empty" : function(c){
+                var r = [], ri = -1;
+                for(var i = 0, ci; ci = c[i]; i++){
+                    var cns = ci.childNodes, j = 0, cn, empty = true;
+                    while(cn = cns[j]){
+                        ++j;
+                        if(cn.nodeType == 1 || cn.nodeType == 3){
+                            empty = false;
+                            break;
+                        }
+                    }
+                    if(empty){
+                        r[++ri] = ci;
+                    }
+                }
+                return r;
+            },
+
+            "contains" : function(c, v){
+                var r = [], ri = -1;
+                for(var i = 0, ci; ci = c[i]; i++){
+                    if((ci.textContent||ci.innerText||'').indexOf(v) != -1){
+                        r[++ri] = ci;
+                    }
+                }
+                return r;
+            },
+
+            "nodeValue" : function(c, v){
+                var r = [], ri = -1;
+                for(var i = 0, ci; ci = c[i]; i++){
+                    if(ci.firstChild && ci.firstChild.nodeValue == v){
+                        r[++ri] = ci;
+                    }
+                }
+                return r;
+            },
+
+            "checked" : function(c){
+                var r = [], ri = -1;
+                for(var i = 0, ci; ci = c[i]; i++){
+                    if(ci.checked == true){
+                        r[++ri] = ci;
+                    }
+                }
+                return r;
+            },
+
+            "not" : function(c, ss){
+                return Roo.DomQuery.filter(c, ss, true);
+            },
+
+            "odd" : function(c){
+                return this["nth-child"](c, "odd");
+            },
+
+            "even" : function(c){
+                return this["nth-child"](c, "even");
+            },
+
+            "nth" : function(c, a){
+                return c[a-1] || [];
+            },
+
+            "first" : function(c){
+                return c[0] || [];
+            },
+
+            "last" : function(c){
+                return c[c.length-1] || [];
+            },
+
+            "has" : function(c, ss){
+                var s = Roo.DomQuery.select;
+                var r = [], ri = -1;
+                for(var i = 0, ci; ci = c[i]; i++){
+                    if(s(ss, ci).length > 0){
+                        r[++ri] = ci;
+                    }
+                }
+                return r;
+            },
+
+            "next" : function(c, ss){
+                var is = Roo.DomQuery.is;
+                var r = [], ri = -1;
+                for(var i = 0, ci; ci = c[i]; i++){
+                    var n = next(ci);
+                    if(n && is(n, ss)){
+                        r[++ri] = ci;
+                    }
+                }
+                return r;
+            },
+
+            "prev" : function(c, ss){
+                var is = Roo.DomQuery.is;
+                var r = [], ri = -1;
+                for(var i = 0, ci; ci = c[i]; i++){
+                    var n = prev(ci);
+                    if(n && is(n, ss)){
+                        r[++ri] = ci;
+                    }
+                }
+                return r;
+            }
+        }
+    };
+}();
+
+/**
+ * Selects an array of DOM nodes by CSS/XPath selector. Shorthand of {@link Roo.DomQuery#select}
+ * @param {String} path The selector/xpath query
+ * @param {Node} root (optional) The start of the query (defaults to document).
+ * @return {Array}
+ * @member Roo
+ * @method query
+ */
+Roo.query = Roo.DomQuery.select;
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.util.Observable
+ * Base class that provides a common interface for publishing events. Subclasses are expected to
+ * to have a property "events" with all the events defined.<br>
+ * For example:
+ * <pre><code>
+ Employee = function(name){
+    this.name = name;
+    this.addEvents({
+        "fired" : true,
+        "quit" : true
+    });
+ }
+ Roo.extend(Employee, Roo.util.Observable);
+</code></pre>
+ * @param {Object} config properties to use (incuding events / listeners)
+ */
+
+Roo.util.Observable = function(cfg){
+    
+    cfg = cfg|| {};
+    this.addEvents(cfg.events || {});
+    if (cfg.events) {
+        delete cfg.events; // make sure
+    }
+     
+    Roo.apply(this, cfg);
+    
+    if(this.listeners){
+        this.on(this.listeners);
+        delete this.listeners;
+    }
+};
+Roo.util.Observable.prototype = {
+    /** 
+ * @cfg {Object} listeners  list of events and functions to call for this object, 
+ * For example :
+ * <pre><code>
+    listeners :  { 
+       'click' : function(e) {
+           ..... 
+        } ,
+        .... 
+    } 
+  </code></pre>
+ */
+    
+    
+    /**
+     * Fires the specified event with the passed parameters (minus the event name).
+     * @param {String} eventName
+     * @param {Object...} args Variable number of parameters are passed to handlers
+     * @return {Boolean} returns false if any of the handlers return false otherwise it returns true
+     */
+    fireEvent : function(){
+        var ce = this.events[arguments[0].toLowerCase()];
+        if(typeof ce == "object"){
+            return ce.fire.apply(ce, Array.prototype.slice.call(arguments, 1));
+        }else{
+            return true;
+        }
+    },
+
+    // private
+    filterOptRe : /^(?:scope|delay|buffer|single)$/,
+
+    /**
+     * Appends an event handler to this component
+     * @param {String}   eventName The type of event to listen for
+     * @param {Function} handler The method the event invokes
+     * @param {Object}   scope (optional) The scope in which to execute the handler
+     * function. The handler function's "this" context.
+     * @param {Object}   options (optional) An object containing handler configuration
+     * properties. This may contain any of the following properties:<ul>
+     * <li>scope {Object} The scope in which to execute the handler function. The handler function's "this" context.</li>
+     * <li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li>
+     * <li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li>
+     * <li>buffer {Number} Causes the handler to be scheduled to run in an {@link Roo.util.DelayedTask} delayed
+     * by the specified number of milliseconds. If the event fires again within that time, the original
+     * handler is <em>not</em> invoked, but the new handler is scheduled in its place.</li>
+     * </ul><br>
+     * <p>
+     * <b>Combining Options</b><br>
+     * Using the options argument, it is possible to combine different types of listeners:<br>
+     * <br>
+     * A normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)
+		<pre><code>
+		el.on('click', this.onClick, this, {
+ 			single: true,
+    		delay: 100,
+    		forumId: 4
+		});
+		</code></pre>
+     * <p>
+     * <b>Attaching multiple handlers in 1 call</b><br>
+     * The method also allows for a single argument to be passed which is a config object containing properties
+     * which specify multiple handlers.
+     * <pre><code>
+		el.on({
+			'click': {
+        		fn: this.onClick,
+        		scope: this,
+        		delay: 100
+    		}, 
+    		'mouseover': {
+        		fn: this.onMouseOver,
+        		scope: this
+    		},
+    		'mouseout': {
+        		fn: this.onMouseOut,
+        		scope: this
+    		}
+		});
+		</code></pre>
+     * <p>
+     * Or a shorthand syntax which passes the same scope object to all handlers:
+     	<pre><code>
+		el.on({
+			'click': this.onClick,
+    		'mouseover': this.onMouseOver,
+    		'mouseout': this.onMouseOut,
+    		scope: this
+		});
+		</code></pre>
+     */
+    addListener : function(eventName, fn, scope, o){
+        if(typeof eventName == "object"){
+            o = eventName;
+            for(var e in o){
+                if(this.filterOptRe.test(e)){
+                    continue;
+                }
+                if(typeof o[e] == "function"){
+                    // shared options
+                    this.addListener(e, o[e], o.scope,  o);
+                }else{
+                    // individual options
+                    this.addListener(e, o[e].fn, o[e].scope, o[e]);
+                }
+            }
+            return;
+        }
+        o = (!o || typeof o == "boolean") ? {} : o;
+        eventName = eventName.toLowerCase();
+        var ce = this.events[eventName] || true;
+        if(typeof ce == "boolean"){
+            ce = new Roo.util.Event(this, eventName);
+            this.events[eventName] = ce;
+        }
+        ce.addListener(fn, scope, o);
+    },
+
+    /**
+     * Removes a listener
+     * @param {String}   eventName     The type of event to listen for
+     * @param {Function} handler        The handler to remove
+     * @param {Object}   scope  (optional) The scope (this object) for the handler
+     */
+    removeListener : function(eventName, fn, scope){
+        var ce = this.events[eventName.toLowerCase()];
+        if(typeof ce == "object"){
+            ce.removeListener(fn, scope);
+        }
+    },
+
+    /**
+     * Removes all listeners for this object
+     */
+    purgeListeners : function(){
+        for(var evt in this.events){
+            if(typeof this.events[evt] == "object"){
+                 this.events[evt].clearListeners();
+            }
+        }
+    },
+
+    relayEvents : function(o, events){
+        var createHandler = function(ename){
+            return function(){
+                return this.fireEvent.apply(this, Roo.combine(ename, Array.prototype.slice.call(arguments, 0)));
+            };
+        };
+        for(var i = 0, len = events.length; i < len; i++){
+            var ename = events[i];
+            if(!this.events[ename]){ this.events[ename] = true; };
+            o.on(ename, createHandler(ename), this);
+        }
+    },
+
+    /**
+     * Used to define events on this Observable
+     * @param {Object} object The object with the events defined
+     */
+    addEvents : function(o){
+        if(!this.events){
+            this.events = {};
+        }
+        Roo.applyIf(this.events, o);
+    },
+
+    /**
+     * Checks to see if this object has any listeners for a specified event
+     * @param {String} eventName The name of the event to check for
+     * @return {Boolean} True if the event is being listened for, else false
+     */
+    hasListener : function(eventName){
+        var e = this.events[eventName];
+        return typeof e == "object" && e.listeners.length > 0;
+    }
+};
+/**
+ * Appends an event handler to this element (shorthand for addListener)
+ * @param {String}   eventName     The type of event to listen for
+ * @param {Function} handler        The method the event invokes
+ * @param {Object}   scope (optional) The scope in which to execute the handler
+ * function. The handler function's "this" context.
+ * @param {Object}   options  (optional)
+ * @method
+ */
+Roo.util.Observable.prototype.on = Roo.util.Observable.prototype.addListener;
+/**
+ * Removes a listener (shorthand for removeListener)
+ * @param {String}   eventName     The type of event to listen for
+ * @param {Function} handler        The handler to remove
+ * @param {Object}   scope  (optional) The scope (this object) for the handler
+ * @method
+ */
+Roo.util.Observable.prototype.un = Roo.util.Observable.prototype.removeListener;
+
+/**
+ * Starts capture on the specified Observable. All events will be passed
+ * to the supplied function with the event name + standard signature of the event
+ * <b>before</b> the event is fired. If the supplied function returns false,
+ * the event will not fire.
+ * @param {Observable} o The Observable to capture
+ * @param {Function} fn The function to call
+ * @param {Object} scope (optional) The scope (this object) for the fn
+ * @static
+ */
+Roo.util.Observable.capture = function(o, fn, scope){
+    o.fireEvent = o.fireEvent.createInterceptor(fn, scope);
+};
+
+/**
+ * Removes <b>all</b> added captures from the Observable.
+ * @param {Observable} o The Observable to release
+ * @static
+ */
+Roo.util.Observable.releaseCapture = function(o){
+    o.fireEvent = Roo.util.Observable.prototype.fireEvent;
+};
+
+(function(){
+
+    var createBuffered = function(h, o, scope){
+        var task = new Roo.util.DelayedTask();
+        return function(){
+            task.delay(o.buffer, h, scope, Array.prototype.slice.call(arguments, 0));
+        };
+    };
+
+    var createSingle = function(h, e, fn, scope){
+        return function(){
+            e.removeListener(fn, scope);
+            return h.apply(scope, arguments);
+        };
+    };
+
+    var createDelayed = function(h, o, scope){
+        return function(){
+            var args = Array.prototype.slice.call(arguments, 0);
+            setTimeout(function(){
+                h.apply(scope, args);
+            }, o.delay || 10);
+        };
+    };
+
+    Roo.util.Event = function(obj, name){
+        this.name = name;
+        this.obj = obj;
+        this.listeners = [];
+    };
+
+    Roo.util.Event.prototype = {
+        addListener : function(fn, scope, options){
+            var o = options || {};
+            scope = scope || this.obj;
+            if(!this.isListening(fn, scope)){
+                var l = {fn: fn, scope: scope, options: o};
+                var h = fn;
+                if(o.delay){
+                    h = createDelayed(h, o, scope);
+                }
+                if(o.single){
+                    h = createSingle(h, this, fn, scope);
+                }
+                if(o.buffer){
+                    h = createBuffered(h, o, scope);
+                }
+                l.fireFn = h;
+                if(!this.firing){ // if we are currently firing this event, don't disturb the listener loop
+                    this.listeners.push(l);
+                }else{
+                    this.listeners = this.listeners.slice(0);
+                    this.listeners.push(l);
+                }
+            }
+        },
+
+        findListener : function(fn, scope){
+            scope = scope || this.obj;
+            var ls = this.listeners;
+            for(var i = 0, len = ls.length; i < len; i++){
+                var l = ls[i];
+                if(l.fn == fn && l.scope == scope){
+                    return i;
+                }
+            }
+            return -1;
+        },
+
+        isListening : function(fn, scope){
+            return this.findListener(fn, scope) != -1;
+        },
+
+        removeListener : function(fn, scope){
+            var index;
+            if((index = this.findListener(fn, scope)) != -1){
+                if(!this.firing){
+                    this.listeners.splice(index, 1);
+                }else{
+                    this.listeners = this.listeners.slice(0);
+                    this.listeners.splice(index, 1);
+                }
+                return true;
+            }
+            return false;
+        },
+
+        clearListeners : function(){
+            this.listeners = [];
+        },
+
+        fire : function(){
+            var ls = this.listeners, scope, len = ls.length;
+            if(len > 0){
+                this.firing = true;
+                var args = Array.prototype.slice.call(arguments, 0);
+                for(var i = 0; i < len; i++){
+                    var l = ls[i];
+                    if(l.fireFn.apply(l.scope||this.obj||window, arguments) === false){
+                        this.firing = false;
+                        return false;
+                    }
+                }
+                this.firing = false;
+            }
+            return true;
+        }
+    };
+})();/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.EventManager
+ * Registers event handlers that want to receive a normalized EventObject instead of the standard browser event and provides 
+ * several useful events directly.
+ * See {@link Roo.EventObject} for more details on normalized event objects.
+ * @singleton
+ */
+Roo.EventManager = function(){
+    var docReadyEvent, docReadyProcId, docReadyState = false;
+    var resizeEvent, resizeTask, textEvent, textSize;
+    var E = Roo.lib.Event;
+    var D = Roo.lib.Dom;
+
+
+    var fireDocReady = function(){
+        if(!docReadyState){
+            docReadyState = true;
+            Roo.isReady = true;
+            if(docReadyProcId){
+                clearInterval(docReadyProcId);
+            }
+            if(Roo.isGecko || Roo.isOpera) {
+                document.removeEventListener("DOMContentLoaded", fireDocReady, false);
+            }
+            if(Roo.isIE){
+                var defer = document.getElementById("ie-deferred-loader");
+                if(defer){
+                    defer.onreadystatechange = null;
+                    defer.parentNode.removeChild(defer);
+                }
+            }
+            if(docReadyEvent){
+                docReadyEvent.fire();
+                docReadyEvent.clearListeners();
+            }
+        }
+    };
+    
+    var initDocReady = function(){
+        docReadyEvent = new Roo.util.Event();
+        if(Roo.isGecko || Roo.isOpera) {
+            document.addEventListener("DOMContentLoaded", fireDocReady, false);
+        }else if(Roo.isIE){
+            document.write("<s"+'cript id="ie-deferred-loader" defer="defer" src="/'+'/:"></s'+"cript>");
+            var defer = document.getElementById("ie-deferred-loader");
+            defer.onreadystatechange = function(){
+                if(this.readyState == "complete"){
+                    fireDocReady();
+                }
+            };
+        }else if(Roo.isSafari){ 
+            docReadyProcId = setInterval(function(){
+                var rs = document.readyState;
+                if(rs == "complete") {
+                    fireDocReady();     
+                 }
+            }, 10);
+        }
+        // no matter what, make sure it fires on load
+        E.on(window, "load", fireDocReady);
+    };
+
+    var createBuffered = function(h, o){
+        var task = new Roo.util.DelayedTask(h);
+        return function(e){
+            // create new event object impl so new events don't wipe out properties
+            e = new Roo.EventObjectImpl(e);
+            task.delay(o.buffer, h, null, [e]);
+        };
+    };
+
+    var createSingle = function(h, el, ename, fn){
+        return function(e){
+            Roo.EventManager.removeListener(el, ename, fn);
+            h(e);
+        };
+    };
+
+    var createDelayed = function(h, o){
+        return function(e){
+            // create new event object impl so new events don't wipe out properties
+            e = new Roo.EventObjectImpl(e);
+            setTimeout(function(){
+                h(e);
+            }, o.delay || 10);
+        };
+    };
+
+    var listen = function(element, ename, opt, fn, scope){
+        var o = (!opt || typeof opt == "boolean") ? {} : opt;
+        fn = fn || o.fn; scope = scope || o.scope;
+        var el = Roo.getDom(element);
+        if(!el){
+            throw "Error listening for \"" + ename + '\". Element "' + element + '" doesn\'t exist.';
+        }
+        var h = function(e){
+            e = Roo.EventObject.setEvent(e);
+            var t;
+            if(o.delegate){
+                t = e.getTarget(o.delegate, el);
+                if(!t){
+                    return;
+                }
+            }else{
+                t = e.target;
+            }
+            if(o.stopEvent === true){
+                e.stopEvent();
+            }
+            if(o.preventDefault === true){
+               e.preventDefault();
+            }
+            if(o.stopPropagation === true){
+                e.stopPropagation();
+            }
+
+            if(o.normalized === false){
+                e = e.browserEvent;
+            }
+
+            fn.call(scope || el, e, t, o);
+        };
+        if(o.delay){
+            h = createDelayed(h, o);
+        }
+        if(o.single){
+            h = createSingle(h, el, ename, fn);
+        }
+        if(o.buffer){
+            h = createBuffered(h, o);
+        }
+        fn._handlers = fn._handlers || [];
+        fn._handlers.push([Roo.id(el), ename, h]);
+
+        E.on(el, ename, h);
+        if(ename == "mousewheel" && el.addEventListener){ // workaround for jQuery
+            el.addEventListener("DOMMouseScroll", h, false);
+            E.on(window, 'unload', function(){
+                el.removeEventListener("DOMMouseScroll", h, false);
+            });
+        }
+        if(ename == "mousedown" && el == document){ // fix stopped mousedowns on the document
+            Roo.EventManager.stoppedMouseDownEvent.addListener(h);
+        }
+        return h;
+    };
+
+    var stopListening = function(el, ename, fn){
+        var id = Roo.id(el), hds = fn._handlers, hd = fn;
+        if(hds){
+            for(var i = 0, len = hds.length; i < len; i++){
+                var h = hds[i];
+                if(h[0] == id && h[1] == ename){
+                    hd = h[2];
+                    hds.splice(i, 1);
+                    break;
+                }
+            }
+        }
+        E.un(el, ename, hd);
+        el = Roo.getDom(el);
+        if(ename == "mousewheel" && el.addEventListener){
+            el.removeEventListener("DOMMouseScroll", hd, false);
+        }
+        if(ename == "mousedown" && el == document){ // fix stopped mousedowns on the document
+            Roo.EventManager.stoppedMouseDownEvent.removeListener(hd);
+        }
+    };
+
+    var propRe = /^(?:scope|delay|buffer|single|stopEvent|preventDefault|stopPropagation|normalized|args|delegate)$/;
+    
+    var pub = {
+        
+        
+        /** 
+         * Fix for doc tools
+         * @scope Roo.EventManager
+         */
+        
+        
+        /** 
+         * This is no longer needed and is deprecated. Places a simple wrapper around an event handler to override the browser event
+         * object with a Roo.EventObject
+         * @param {Function} fn        The method the event invokes
+         * @param {Object}   scope    An object that becomes the scope of the handler
+         * @param {boolean}  override If true, the obj passed in becomes
+         *                             the execution scope of the listener
+         * @return {Function} The wrapped function
+         * @deprecated
+         */
+        wrap : function(fn, scope, override){
+            return function(e){
+                Roo.EventObject.setEvent(e);
+                fn.call(override ? scope || window : window, Roo.EventObject, scope);
+            };
+        },
+        
+        /**
+     * Appends an event handler to an element (shorthand for addListener)
+     * @param {String/HTMLElement}   element        The html element or id to assign the
+     * @param {String}   eventName The type of event to listen for
+     * @param {Function} handler The method the event invokes
+     * @param {Object}   scope (optional) The scope in which to execute the handler
+     * function. The handler function's "this" context.
+     * @param {Object}   options (optional) An object containing handler configuration
+     * properties. This may contain any of the following properties:<ul>
+     * <li>scope {Object} The scope in which to execute the handler function. The handler function's "this" context.</li>
+     * <li>delegate {String} A simple selector to filter the target or look for a descendant of the target</li>
+     * <li>stopEvent {Boolean} True to stop the event. That is stop propagation, and prevent the default action.</li>
+     * <li>preventDefault {Boolean} True to prevent the default action</li>
+     * <li>stopPropagation {Boolean} True to prevent event propagation</li>
+     * <li>normalized {Boolean} False to pass a browser event to the handler function instead of an Roo.EventObject</li>
+     * <li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li>
+     * <li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li>
+     * <li>buffer {Number} Causes the handler to be scheduled to run in an {@link Roo.util.DelayedTask} delayed
+     * by the specified number of milliseconds. If the event fires again within that time, the original
+     * handler is <em>not</em> invoked, but the new handler is scheduled in its place.</li>
+     * </ul><br>
+     * <p>
+     * <b>Combining Options</b><br>
+     * Using the options argument, it is possible to combine different types of listeners:<br>
+     * <br>
+     * A normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)<div style="margin: 5px 20px 20px;">
+     * Code:<pre><code>
+el.on('click', this.onClick, this, {
+    single: true,
+    delay: 100,
+    stopEvent : true,
+    forumId: 4
+});</code></pre>
+     * <p>
+     * <b>Attaching multiple handlers in 1 call</b><br>
+      * The method also allows for a single argument to be passed which is a config object containing properties
+     * which specify multiple handlers.
+     * <p>
+     * Code:<pre><code>
+el.on({
+    'click' : {
+        fn: this.onClick
+        scope: this,
+        delay: 100
+    },
+    'mouseover' : {
+        fn: this.onMouseOver
+        scope: this
+    },
+    'mouseout' : {
+        fn: this.onMouseOut
+        scope: this
+    }
+});</code></pre>
+     * <p>
+     * Or a shorthand syntax:<br>
+     * Code:<pre><code>
+el.on({
+    'click' : this.onClick,
+    'mouseover' : this.onMouseOver,
+    'mouseout' : this.onMouseOut
+    scope: this
+});</code></pre>
+     */
+        addListener : function(element, eventName, fn, scope, options){
+            if(typeof eventName == "object"){
+                var o = eventName;
+                for(var e in o){
+                    if(propRe.test(e)){
+                        continue;
+                    }
+                    if(typeof o[e] == "function"){
+                        // shared options
+                        listen(element, e, o, o[e], o.scope);
+                    }else{
+                        // individual options
+                        listen(element, e, o[e]);
+                    }
+                }
+                return;
+            }
+            return listen(element, eventName, options, fn, scope);
+        },
+        
+        /**
+         * Removes an event handler
+         *
+         * @param {String/HTMLElement}   element        The id or html element to remove the 
+         *                             event from
+         * @param {String}   eventName     The type of event
+         * @param {Function} fn
+         * @return {Boolean} True if a listener was actually removed
+         */
+        removeListener : function(element, eventName, fn){
+            return stopListening(element, eventName, fn);
+        },
+        
+        /**
+         * Fires when the document is ready (before onload and before images are loaded). Can be 
+         * accessed shorthanded Roo.onReady().
+         * @param {Function} fn        The method the event invokes
+         * @param {Object}   scope    An  object that becomes the scope of the handler
+         * @param {boolean}  options
+         */
+        onDocumentReady : function(fn, scope, options){
+            if(docReadyState){ // if it already fired
+                docReadyEvent.addListener(fn, scope, options);
+                docReadyEvent.fire();
+                docReadyEvent.clearListeners();
+                return;
+            }
+            if(!docReadyEvent){
+                initDocReady();
+            }
+            docReadyEvent.addListener(fn, scope, options);
+        },
+        
+        /**
+         * Fires when the window is resized and provides resize event buffering (50 milliseconds), passes new viewport width and height to handlers.
+         * @param {Function} fn        The method the event invokes
+         * @param {Object}   scope    An object that becomes the scope of the handler
+         * @param {boolean}  options
+         */
+        onWindowResize : function(fn, scope, options){
+            if(!resizeEvent){
+                resizeEvent = new Roo.util.Event();
+                resizeTask = new Roo.util.DelayedTask(function(){
+                    resizeEvent.fire(D.getViewWidth(), D.getViewHeight());
+                });
+                E.on(window, "resize", function(){
+                    if(Roo.isIE){
+                        resizeTask.delay(50);
+                    }else{
+                        resizeEvent.fire(D.getViewWidth(), D.getViewHeight());
+                    }
+                });
+            }
+            resizeEvent.addListener(fn, scope, options);
+        },
+
+        /**
+         * Fires when the user changes the active text size. Handler gets called with 2 params, the old size and the new size.
+         * @param {Function} fn        The method the event invokes
+         * @param {Object}   scope    An object that becomes the scope of the handler
+         * @param {boolean}  options
+         */
+        onTextResize : function(fn, scope, options){
+            if(!textEvent){
+                textEvent = new Roo.util.Event();
+                var textEl = new Roo.Element(document.createElement('div'));
+                textEl.dom.className = 'x-text-resize';
+                textEl.dom.innerHTML = 'X';
+                textEl.appendTo(document.body);
+                textSize = textEl.dom.offsetHeight;
+                setInterval(function(){
+                    if(textEl.dom.offsetHeight != textSize){
+                        textEvent.fire(textSize, textSize = textEl.dom.offsetHeight);
+                    }
+                }, this.textResizeInterval);
+            }
+            textEvent.addListener(fn, scope, options);
+        },
+
+        /**
+         * Removes the passed window resize listener.
+         * @param {Function} fn        The method the event invokes
+         * @param {Object}   scope    The scope of handler
+         */
+        removeResizeListener : function(fn, scope){
+            if(resizeEvent){
+                resizeEvent.removeListener(fn, scope);
+            }
+        },
+
+        // private
+        fireResize : function(){
+            if(resizeEvent){
+                resizeEvent.fire(D.getViewWidth(), D.getViewHeight());
+            }   
+        },
+        /**
+         * Url used for onDocumentReady with using SSL (defaults to Roo.SSL_SECURE_URL)
+         */
+        ieDeferSrc : false,
+        /**
+         * The frequency, in milliseconds, to check for text resize events (defaults to 50)
+         */
+        textResizeInterval : 50
+    };
+    
+    /**
+     * Fix for doc tools
+     * @scopeAlias pub=Roo.EventManager
+     */
+    
+     /**
+     * Appends an event handler to an element (shorthand for addListener)
+     * @param {String/HTMLElement}   element        The html element or id to assign the
+     * @param {String}   eventName The type of event to listen for
+     * @param {Function} handler The method the event invokes
+     * @param {Object}   scope (optional) The scope in which to execute the handler
+     * function. The handler function's "this" context.
+     * @param {Object}   options (optional) An object containing handler configuration
+     * properties. This may contain any of the following properties:<ul>
+     * <li>scope {Object} The scope in which to execute the handler function. The handler function's "this" context.</li>
+     * <li>delegate {String} A simple selector to filter the target or look for a descendant of the target</li>
+     * <li>stopEvent {Boolean} True to stop the event. That is stop propagation, and prevent the default action.</li>
+     * <li>preventDefault {Boolean} True to prevent the default action</li>
+     * <li>stopPropagation {Boolean} True to prevent event propagation</li>
+     * <li>normalized {Boolean} False to pass a browser event to the handler function instead of an Roo.EventObject</li>
+     * <li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li>
+     * <li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li>
+     * <li>buffer {Number} Causes the handler to be scheduled to run in an {@link Roo.util.DelayedTask} delayed
+     * by the specified number of milliseconds. If the event fires again within that time, the original
+     * handler is <em>not</em> invoked, but the new handler is scheduled in its place.</li>
+     * </ul><br>
+     * <p>
+     * <b>Combining Options</b><br>
+     * Using the options argument, it is possible to combine different types of listeners:<br>
+     * <br>
+     * A normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)<div style="margin: 5px 20px 20px;">
+     * Code:<pre><code>
+el.on('click', this.onClick, this, {
+    single: true,
+    delay: 100,
+    stopEvent : true,
+    forumId: 4
+});</code></pre>
+     * <p>
+     * <b>Attaching multiple handlers in 1 call</b><br>
+      * The method also allows for a single argument to be passed which is a config object containing properties
+     * which specify multiple handlers.
+     * <p>
+     * Code:<pre><code>
+el.on({
+    'click' : {
+        fn: this.onClick
+        scope: this,
+        delay: 100
+    },
+    'mouseover' : {
+        fn: this.onMouseOver
+        scope: this
+    },
+    'mouseout' : {
+        fn: this.onMouseOut
+        scope: this
+    }
+});</code></pre>
+     * <p>
+     * Or a shorthand syntax:<br>
+     * Code:<pre><code>
+el.on({
+    'click' : this.onClick,
+    'mouseover' : this.onMouseOver,
+    'mouseout' : this.onMouseOut
+    scope: this
+});</code></pre>
+     */
+    pub.on = pub.addListener;
+    pub.un = pub.removeListener;
+
+    pub.stoppedMouseDownEvent = new Roo.util.Event();
+    return pub;
+}();
+/**
+  * Fires when the document is ready (before onload and before images are loaded).  Shorthand of {@link Roo.EventManager#onDocumentReady}.
+  * @param {Function} fn        The method the event invokes
+  * @param {Object}   scope    An  object that becomes the scope of the handler
+  * @param {boolean}  override If true, the obj passed in becomes
+  *                             the execution scope of the listener
+  * @member Roo
+  * @method onReady
+ */
+Roo.onReady = Roo.EventManager.onDocumentReady;
+
+Roo.onReady(function(){
+    var bd = Roo.get(document.body);
+    if(!bd){ return; }
+
+    var cls = [
+            Roo.isIE ? "roo-ie"
+            : Roo.isGecko ? "roo-gecko"
+            : Roo.isOpera ? "roo-opera"
+            : Roo.isSafari ? "roo-safari" : ""];
+
+    if(Roo.isMac){
+        cls.push("roo-mac");
+    }
+    if(Roo.isLinux){
+        cls.push("roo-linux");
+    }
+    if(Roo.isBorderBox){
+        cls.push('roo-border-box');
+    }
+    if(Roo.isStrict){ // add to the parent to allow for selectors like ".ext-strict .ext-ie"
+        var p = bd.dom.parentNode;
+        if(p){
+            p.className += ' roo-strict';
+        }
+    }
+    bd.addClass(cls.join(' '));
+});
+
+/**
+ * @class Roo.EventObject
+ * EventObject exposes the Yahoo! UI Event functionality directly on the object
+ * passed to your event handler. It exists mostly for convenience. It also fixes the annoying null checks automatically to cleanup your code 
+ * Example:
+ * <pre><code>
+ function handleClick(e){ // e is not a standard event object, it is a Roo.EventObject
+    e.preventDefault();
+    var target = e.getTarget();
+    ...
+ }
+ var myDiv = Roo.get("myDiv");
+ myDiv.on("click", handleClick);
+ //or
+ Roo.EventManager.on("myDiv", 'click', handleClick);
+ Roo.EventManager.addListener("myDiv", 'click', handleClick);
+ </code></pre>
+ * @singleton
+ */
+Roo.EventObject = function(){
+    
+    var E = Roo.lib.Event;
+    
+    // safari keypress events for special keys return bad keycodes
+    var safariKeys = {
+        63234 : 37, // left
+        63235 : 39, // right
+        63232 : 38, // up
+        63233 : 40, // down
+        63276 : 33, // page up
+        63277 : 34, // page down
+        63272 : 46, // delete
+        63273 : 36, // home
+        63275 : 35  // end
+    };
+
+    // normalize button clicks
+    var btnMap = Roo.isIE ? {1:0,4:1,2:2} :
+                (Roo.isSafari ? {1:0,2:1,3:2} : {0:0,1:1,2:2});
+
+    Roo.EventObjectImpl = function(e){
+        if(e){
+            this.setEvent(e.browserEvent || e);
+        }
+    };
+    Roo.EventObjectImpl.prototype = {
+        /**
+         * Used to fix doc tools.
+         * @scope Roo.EventObject.prototype
+         */
+            
+
+        
+        
+        /** The normal browser event */
+        browserEvent : null,
+        /** The button pressed in a mouse event */
+        button : -1,
+        /** True if the shift key was down during the event */
+        shiftKey : false,
+        /** True if the control key was down during the event */
+        ctrlKey : false,
+        /** True if the alt key was down during the event */
+        altKey : false,
+
+        /** Key constant 
+        * @type Number */
+        BACKSPACE : 8,
+        /** Key constant 
+        * @type Number */
+        TAB : 9,
+        /** Key constant 
+        * @type Number */
+        RETURN : 13,
+        /** Key constant 
+        * @type Number */
+        ENTER : 13,
+        /** Key constant 
+        * @type Number */
+        SHIFT : 16,
+        /** Key constant 
+        * @type Number */
+        CONTROL : 17,
+        /** Key constant 
+        * @type Number */
+        ESC : 27,
+        /** Key constant 
+        * @type Number */
+        SPACE : 32,
+        /** Key constant 
+        * @type Number */
+        PAGEUP : 33,
+        /** Key constant 
+        * @type Number */
+        PAGEDOWN : 34,
+        /** Key constant 
+        * @type Number */
+        END : 35,
+        /** Key constant 
+        * @type Number */
+        HOME : 36,
+        /** Key constant 
+        * @type Number */
+        LEFT : 37,
+        /** Key constant 
+        * @type Number */
+        UP : 38,
+        /** Key constant 
+        * @type Number */
+        RIGHT : 39,
+        /** Key constant 
+        * @type Number */
+        DOWN : 40,
+        /** Key constant 
+        * @type Number */
+        DELETE : 46,
+        /** Key constant 
+        * @type Number */
+        F5 : 116,
+
+           /** @private */
+        setEvent : function(e){
+            if(e == this || (e && e.browserEvent)){ // already wrapped
+                return e;
+            }
+            this.browserEvent = e;
+            if(e){
+                // normalize buttons
+                this.button = e.button ? btnMap[e.button] : (e.which ? e.which-1 : -1);
+                if(e.type == 'click' && this.button == -1){
+                    this.button = 0;
+                }
+                this.type = e.type;
+                this.shiftKey = e.shiftKey;
+                // mac metaKey behaves like ctrlKey
+                this.ctrlKey = e.ctrlKey || e.metaKey;
+                this.altKey = e.altKey;
+                // in getKey these will be normalized for the mac
+                this.keyCode = e.keyCode;
+                // keyup warnings on firefox.
+                this.charCode = (e.type == 'keyup' || e.type == 'keydown') ? 0 : e.charCode;
+                // cache the target for the delayed and or buffered events
+                this.target = E.getTarget(e);
+                // same for XY
+                this.xy = E.getXY(e);
+            }else{
+                this.button = -1;
+                this.shiftKey = false;
+                this.ctrlKey = false;
+                this.altKey = false;
+                this.keyCode = 0;
+                this.charCode =0;
+                this.target = null;
+                this.xy = [0, 0];
+            }
+            return this;
+        },
+
+        /**
+         * Stop the event (preventDefault and stopPropagation)
+         */
+        stopEvent : function(){
+            if(this.browserEvent){
+                if(this.browserEvent.type == 'mousedown'){
+                    Roo.EventManager.stoppedMouseDownEvent.fire(this);
+                }
+                E.stopEvent(this.browserEvent);
+            }
+        },
+
+        /**
+         * Prevents the browsers default handling of the event.
+         */
+        preventDefault : function(){
+            if(this.browserEvent){
+                E.preventDefault(this.browserEvent);
+            }
+        },
+
+        /** @private */
+        isNavKeyPress : function(){
+            var k = this.keyCode;
+            k = Roo.isSafari ? (safariKeys[k] || k) : k;
+            return (k >= 33 && k <= 40) || k == this.RETURN || k == this.TAB || k == this.ESC;
+        },
+
+        isSpecialKey : function(){
+            var k = this.keyCode;
+            return (this.type == 'keypress' && this.ctrlKey) || k == 9 || k == 13  || k == 40 || k == 27 ||
+            (k == 16) || (k == 17) ||
+            (k >= 18 && k <= 20) ||
+            (k >= 33 && k <= 35) ||
+            (k >= 36 && k <= 39) ||
+            (k >= 44 && k <= 45);
+        },
+        /**
+         * Cancels bubbling of the event.
+         */
+        stopPropagation : function(){
+            if(this.browserEvent){
+                if(this.type == 'mousedown'){
+                    Roo.EventManager.stoppedMouseDownEvent.fire(this);
+                }
+                E.stopPropagation(this.browserEvent);
+            }
+        },
+
+        /**
+         * Gets the key code for the event.
+         * @return {Number}
+         */
+        getCharCode : function(){
+            return this.charCode || this.keyCode;
+        },
+
+        /**
+         * Returns a normalized keyCode for the event.
+         * @return {Number} The key code
+         */
+        getKey : function(){
+            var k = this.keyCode || this.charCode;
+            return Roo.isSafari ? (safariKeys[k] || k) : k;
+        },
+
+        /**
+         * Gets the x coordinate of the event.
+         * @return {Number}
+         */
+        getPageX : function(){
+            return this.xy[0];
+        },
+
+        /**
+         * Gets the y coordinate of the event.
+         * @return {Number}
+         */
+        getPageY : function(){
+            return this.xy[1];
+        },
+
+        /**
+         * Gets the time of the event.
+         * @return {Number}
+         */
+        getTime : function(){
+            if(this.browserEvent){
+                return E.getTime(this.browserEvent);
+            }
+            return null;
+        },
+
+        /**
+         * Gets the page coordinates of the event.
+         * @return {Array} The xy values like [x, y]
+         */
+        getXY : function(){
+            return this.xy;
+        },
+
+        /**
+         * Gets the target for the event.
+         * @param {String} selector (optional) A simple selector to filter the target or look for an ancestor of the target
+         * @param {Number/String/HTMLElement/Element} maxDepth (optional) The max depth to
+                search as a number or element (defaults to 10 || document.body)
+         * @param {Boolean} returnEl (optional) True to return a Roo.Element object instead of DOM node
+         * @return {HTMLelement}
+         */
+        getTarget : function(selector, maxDepth, returnEl){
+            return selector ? Roo.fly(this.target).findParent(selector, maxDepth, returnEl) : this.target;
+        },
+        /**
+         * Gets the related target.
+         * @return {HTMLElement}
+         */
+        getRelatedTarget : function(){
+            if(this.browserEvent){
+                return E.getRelatedTarget(this.browserEvent);
+            }
+            return null;
+        },
+
+        /**
+         * Normalizes mouse wheel delta across browsers
+         * @return {Number} The delta
+         */
+        getWheelDelta : function(){
+            var e = this.browserEvent;
+            var delta = 0;
+            if(e.wheelDelta){ /* IE/Opera. */
+                delta = e.wheelDelta/120;
+            }else if(e.detail){ /* Mozilla case. */
+                delta = -e.detail/3;
+            }
+            return delta;
+        },
+
+        /**
+         * Returns true if the control, meta, shift or alt key was pressed during this event.
+         * @return {Boolean}
+         */
+        hasModifier : function(){
+            return !!((this.ctrlKey || this.altKey) || this.shiftKey);
+        },
+
+        /**
+         * Returns true if the target of this event equals el or is a child of el
+         * @param {String/HTMLElement/Element} el
+         * @param {Boolean} related (optional) true to test if the related target is within el instead of the target
+         * @return {Boolean}
+         */
+        within : function(el, related){
+            var t = this[related ? "getRelatedTarget" : "getTarget"]();
+            return t && Roo.fly(el).contains(t);
+        },
+
+        getPoint : function(){
+            return new Roo.lib.Point(this.xy[0], this.xy[1]);
+        }
+    };
+
+    return new Roo.EventObjectImpl();
+}();
+            
+    
