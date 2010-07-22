@@ -86,14 +86,12 @@ Roo.apply(Roo.ux.Slideshow.prototype, {
 	// the onload event handler that starts the fading.
 	startSlideShow: function () {
         var _t  = this;
-        
-        this.play.defer(this.wait, this);
-        
+        this.running = true;
 		this.playButton && this.playButton.hide();
 		this.pauseButton && this.pauseButton.show();
      
 		this.updatecounter();
-									
+		this.play();							
 	},
 	
 	play: function () {
@@ -114,11 +112,14 @@ Roo.apply(Roo.ux.Slideshow.prototype, {
 		
 		this.textIn = this.iImageId+1 + ' of ' + this.numOfImages;
 		this.updatecounter();
-        this.play.defer(this.wait, this);
+        if (this.running) {
+            this.play.defer(this.wait, this);
+        }
+        
 	},
 	
 	stop: function  () {
-		clearInterval(this.play);				
+		this.running = false; 	
 		this.playButton && this.playButton.appear({ duration: 0});
 		this.pauseButton && this.pauseButton.hide();
 	},
