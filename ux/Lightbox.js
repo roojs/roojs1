@@ -208,7 +208,9 @@ Roo.apply(Roo.ux.Lightbox.prototype,
                 
             Roo.each(ids.split(' '), 
                 function(id){ 
+                    
                     th[id] = Roo.get(id); 
+                    th[id].setVisibilityMode(Element.DISPLAY);
                 });
         }).defer(100);
     },
