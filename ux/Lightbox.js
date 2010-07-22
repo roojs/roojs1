@@ -116,16 +116,16 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         this.updateImageList();
         
         // TBD this.keyboardAction = this.keyboardAction.bindAsEventListener(this);
-        LightboxOptions.resizeSpeed  = Math.min(LightboxOptions.resizeSpeed, 10);
-        LightboxOptions.resizeSpeed  = Math.max(LightboxOptions.resizeSpeed, 1);
+        this.resizeSpeed  = Math.min(this.resizeSpeed, 10);
+        this.resizeSpeed  = Math.max(this.resizeSpeed, 1);
         
-	    this.resizeDuration = LightboxOptions.animate ? ((11 - LightboxOptions.resizeSpeed) * 0.15) : 0;
-	    this.overlayDuration = LightboxOptions.animate ? 0.2 : 0;  // shadow fade in/out duration
+	    this.resizeDuration = this.animate ? ((11 - this.resizeSpeed) * 0.15) : 0;
+	    this.overlayDuration = this.animate ? 0.2 : 0;  // shadow fade in/out duration
 
         // When Lightbox starts it will resize itself from 250 by 250 to the current image dimension.
         // If animations are turned off, it will be hidden as to prevent a flicker of a
         // white 250 by 250 box.
-        var size = (LightboxOptions.animate ? 250 : 1) + 'px';
+        var size = (this.animate ? 250 : 1) + 'px';
         var dh = Roo.DomHelper;
         this.el = dh.append(document.body, {
                 html: 
@@ -259,7 +259,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         }
         
         //new Effect.Appear(this.overlay,
-        //    { duration: this.overlayDuration, from: 0.0, to: LightboxOptions.overlayOpacity });
+        //    { duration: this.overlayDuration, from: 0.0, to: this.overlayOpacity });
 
         //this.imageArray = [];
         var imageNum = 0;       
