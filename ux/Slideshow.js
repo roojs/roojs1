@@ -66,7 +66,7 @@ Roo.apply(Roo.ux.Slideshow.prototype, {
      */
 	pauseButton	    : false, 
 	iImageId		: 0, 
-    running : false;
+    running         : false,
     
 	// The Fade Function
 	swapImage: function (x,y) {
