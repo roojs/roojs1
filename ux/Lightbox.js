@@ -176,7 +176,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         
 		Roo.get('prevLink').on('click', 
             function(event) { 
-                event.stop(); 
+                event.stopEvent(); 
                 this.changeImage(this.activeImage - 1); 
             }, this);
             
