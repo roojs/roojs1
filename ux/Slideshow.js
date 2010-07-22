@@ -186,7 +186,7 @@ Roo.apply(Roo.ux.Slideshow.prototype, {
         if (!this.counter) {
             return;
         }
-		var textIn = this.iImageId+1 + ' of ' + this.this.slides.length;
+		var textIn = this.iImageId+1 + ' of ' + this.slides.length;
 		this.counter.update( textIn );
         var oNewCaption = this.slides[this.iImageId].select('.image-caption', true);
 		if ( this.caption &&  oNewCaption.length ) {
