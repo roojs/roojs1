@@ -97,8 +97,9 @@ Roo.apply(Lightbox.prototype,
     
     /**
      * Current image.
-     * **/
+     * 
      */
+     
     activeImage: undefined,
     
     /**
