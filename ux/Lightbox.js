@@ -334,10 +334,10 @@ Roo.apply(Roo.ux.Lightbox.prototype,
 
 
         imgPreloader.on('load', function() {
-            this.lightboxImage.src = this.imageArray[this.activeImage].dom.href;
+            this.lightboxImage.dom.src = this.imageArray[this.activeImage].dom.href;
             this.resizeImageContainer(imgPreloader.getWidth(), imgPreloader.getHeight());
         }, this);
-        imgPreloader.src = this.imageArray[this.activeImage].dom.href;
+        imgPreloader.dom.src = this.imageArray[this.activeImage].dom.href;
     },
 
     //
@@ -542,11 +542,11 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         var preloadNextImage, preloadPrevImage;
         if (this.imageArray.length > this.activeImage + 1){
             preloadNextImage = Roo.DomHelper.append(document.body, { tag: 'img' } , true);
-            preloadNextImage.src = this.imageArray[this.activeImage + 1].dom.href;
+            preloadNextImage.dom.src = this.imageArray[this.activeImage + 1].dom.href;
         }
         if (this.activeImage > 0){
             preloadPrevImage = Roo.DomHelper.append(document.body, { tag: 'img' } , true);
-            preloadPrevImage.src = this.imageArray[this.activeImage - 1].dom.href;
+            preloadPrevImage.dom.src = this.imageArray[this.activeImage - 1].dom.href;
         }
     
     },
