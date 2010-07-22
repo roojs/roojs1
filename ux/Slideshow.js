@@ -186,6 +186,6 @@ Roo.apply(Roo.ux.Slideshow.prototype, {
 			this.caption.update( oNewCaption[0].innerHTML);
 		}
 	}
-}
+});
   
   
