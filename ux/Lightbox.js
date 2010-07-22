@@ -159,7 +159,24 @@ Roo.apply(Roo.ux.Lightbox.prototype,
          
          
         
-
+        var th = this;
+        (function(){
+            var ids = 
+                'lightbox outerImageContainer imageContainer ' + 
+                'lightboxImage hoverNav prevLink nextLink loading loadingLink ' + 
+                'imageDataContainer imageData imageDetails caption numberDisplay '
+                'bottomNav bottomNavClose';   
+                
+            Roo.each(ids.split(' '), 
+                function(id){ 
+                    
+                    th[id] = Roo.get(id); 
+                    if (!th[id]) {
+                        return;
+                       }
+                    th[id].setVisibilityMode(Roo.Element.DISPLAY);
+                });
+        });
 
 		//Roo.get('overlay').hide();
         //Roo.get('overlay').on('click', this.end, this);
@@ -196,24 +213,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
                 this.end(); 
             }, this);
 
-        var th = this;
-        (function(){
-            var ids = 
-                'lightbox outerImageContainer imageContainer ' + 
-                'lightboxImage hoverNav prevLink nextLink loading loadingLink ' + 
-                'imageDataContainer imageData imageDetails caption numberDisplay '
-                'bottomNav bottomNavClose';   
-                
-            Roo.each(ids.split(' '), 
-                function(id){ 
-                    
-                    th[id] = Roo.get(id); 
-                    if (!th[id]) {
-                        return;
-                       }
-                    th[id].setVisibilityMode(Roo.Element.DISPLAY);
-                });
-        }).defer(100);
+       .defer(100);
     },
 
     /**
@@ -546,6 +546,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
     //
     end: function() {
         this.disableKeyboardNav();
+        console.log('lightbox hide');
         this.lightbox.hide();
         this.loading.hide();
         Roo.get(document.body).unmask();
