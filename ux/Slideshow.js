@@ -118,7 +118,7 @@ Roo.apply(Roo.ux.Slideshow.prototype, {
 		this.updatecounter();
         if (this.images.length == 1) {
             return;
-           }
+        }
         if (this.running) {
             this.play.defer(this.wait, this);
         }
