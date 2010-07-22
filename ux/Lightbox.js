@@ -316,7 +316,8 @@ Roo.apply(Roo.ux.Lightbox.prototype,
                 zIndex : this._mask.getStyle('zIndex') * 1.2
             });
             this.loading.show();
-            this.loading.setX( (Roo.lib.Dom.getViewWidth() / 2) - 16);
+            this.loadingLink.setX( (Roo.lib.Dom.getViewWidth() / 2) - 16);
+            this.loadingLink.show();
             // center the loading?
             
         }
