@@ -283,6 +283,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
             left: lightboxLeft + 'px' ,
             zIndex : Roo.get(document.body)._mask.getStyle('zIndex') * 1.1
         })
+        console.log("show lightbox");
         this.lightbox.show();
         
         
