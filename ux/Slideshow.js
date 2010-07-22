@@ -61,7 +61,7 @@ Roo.apply(Roo.ux.Slideshow.prototype, {
     
     
 	// The Fade Function
-	swapImage: function (x,y) {		
+	swapImage: function (x,y) { 
 		$(this.slides[x]) && $(this.slides[x]).appear({ duration: this.duration });
 		$(this.slides[y]) && $(this.slides[y]).fade({duration: this.duration });
 	},
