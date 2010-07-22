@@ -139,9 +139,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
                   '               <a href="#" id="nextLink"></a>' +
                   '           </div>' +
                   '           <div id="loading">' +
-                  '               <a href="#" id="loadingLink">' +
-                  '                   <img src="images/loading.gif">' +
-                  '               </a>' +
+                  '               <a href="#" id="loadingLink">&nbsp;</a>' +
                   '           </div>' +
                   '       </div>' +
                   '   </div>' +
