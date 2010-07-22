@@ -230,7 +230,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
             Roo.get(e).on('click', (function(event, tg) {
                 event.stopEvent();
                 this.start(tg);
-            }).createDelegate(this, e, true);
+            }).createDelegate(this, e, true));
         }, this)
         
     },
