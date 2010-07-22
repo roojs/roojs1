@@ -250,8 +250,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         // stretch overlay to fill page and fade in
         //var arrayPageSize = this.getPageSize();
         Roo.get(document.body).mask(false);
-        
-        
+        Roo.get(document.body)._mask.setHeight(Roo.lib.Dom.getDocumentHeight())        
         //new Effect.Appear(this.overlay,
         //    { duration: this.overlayDuration, from: 0.0, to: this.overlayOpacity });
 
