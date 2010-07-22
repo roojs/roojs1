@@ -24,12 +24,17 @@ Roo.namespace('Roo.ux');
 Roo.ux.Slideshow = function(cfg ) 
 {
     Roo.apply(this, cfg);
-    if ( this.slides ) {
+    if ( !this.slides) {
+        
         this.numOfImages	= this.slides.length;
         if ( !this.numOfImages ) {
-            alert('No slides?');
+         //   alert('No slides?');
         }
     }
+    if (this.slides.length == 1) {
+            
+        }
+    
     this.playButton = Roo.get(this.playButton);
     this.pauseButton = Roo.get(this.pauseButton);
     this.counter = Roo.get(this.counter);
