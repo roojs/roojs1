@@ -182,19 +182,19 @@ Roo.apply(Roo.ux.Lightbox.prototype,
             
 		Roo.get('nextLink').on('click', 
             function(event) { 
-                event.stop(); 
+                event.stopEvent(); 
                 this.changeImage(this.activeImage + 1); 
             },this);
             
 		Roo.get('loadingLink').on('click', 
             function(event) { 
-                event.stop(); 
+                event.stopEvent(); 
                 this.end(); 
             }, this);
             
 		Roo.get('bottomNavClose').on('click',  
             function(event) { 
-                event.stop(); 
+                event.stopEvent(); 
                 this.end(); 
             }, this);
 
