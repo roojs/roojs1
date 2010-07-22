@@ -317,7 +317,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
             });
             this.loading.show();
             this.loadingLink.setX( (Roo.lib.Dom.getViewWidth() / 2) - 16);
-            this.loadingLink.show();
+            //this.loadingLink.show();
             // center the loading?
             
         }
@@ -423,8 +423,9 @@ Roo.apply(Roo.ux.Lightbox.prototype,
     //  Display image and begin preloading neighbors.
     //
     showImage: function(){
+        
         this.loading.hide();
-        this.loadingLink.hide();
+        //this.loadingLink.hide();
         var _this=  this;
         this.lightboxImage.animate( 
             {
