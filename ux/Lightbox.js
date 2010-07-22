@@ -311,6 +311,8 @@ Roo.apply(Roo.ux.Lightbox.prototype,
                 zIndex : this._mask.getStyle('zIndex') * 1.2
             });
             this.loading.show();
+            // center the loading?
+            
         }
         this.lightboxImage.hide();
         
@@ -415,6 +417,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
     //
     showImage: function(){
         this.loading.hide();
+        this.loadingLink.hide();
         var _this=  this;
         this.lightboxImage.animate( 
             {
