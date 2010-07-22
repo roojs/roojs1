@@ -224,7 +224,8 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         
         Roo.each(Roo.DomQuery.select('a[rel^=lightbox]'), function(e) {
             this.imageArray.push(Roo.get(e));
-            Roo.get(e).on('click', function() {
+            Roo.get(e).on('click', function(event) {
+
                 event.stopPropagation();
                 this.start(target);
             }, this);
