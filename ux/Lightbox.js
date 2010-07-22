@@ -150,7 +150,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
                   '               <span id="numberDisplay"></span>' +
                   '           </div>' +
                   '           <div id="bottomNav">' +
-                  '               <a href="#" id="bottomNavClose">&nbsp;</a>' +
+                  '               <div href="#" id="bottomNavClose">&nbsp;</div>' +
                   '           </div>' +
                   '       </div>' +
                   '   </div>' +
