@@ -38,7 +38,7 @@ Roo.applyIf(Array.prototype, {
      * Map (JS 1.6 compatibility)
      * @param {Function} function  to call
      */
-    map : function(fun /*, thisp*/)
+    map : function(fun )
     {
         var len = this.length >>> 0;
         if (typeof fun != "function")
@@ -58,8 +58,4 @@ Roo.applyIf(Array.prototype, {
 });
 
 
-
-if (!Array.prototype.map)
-{
-  Array.prototype.
-}
+ 
