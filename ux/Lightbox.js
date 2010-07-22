@@ -553,7 +553,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         if (this.activeImage > 0){
             preloadPrevImage = Roo.DomHelper.append(document.body, { tag: 'img' } , true);
             preloadPrevImage.on('load', function() { preloadPrevImage.remove() });
-            
+            preloadPrevImage.dom.src = this.imageArray[this.activeImage - 1].dom.href;
         }
     
     },
