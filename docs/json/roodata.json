@@ -9,10 +9,6 @@
    "props": [],
    "events": []
   },
-  "El": {
-   "props": [],
-   "events": []
-  },
   "Function": {
    "props": [],
    "events": []
@@ -2310,7 +2306,7 @@
      "name": "removeMask",
      "type": "Boolean",
      "desc": "True to create a single-use mask that is automatically destroyed after loading (useful for page loads),\nFalse to persist the mask element reference for multiple uses (e.g., for paged data widgets).  Defaults to false.",
-     "memberOf": "Roo"
+     "memberOf": ""
     },
     {
      "name": "msg",
@@ -3922,7 +3918,7 @@
      "name": "tree",
      "type": "Roo.tree.TreePanel",
      "desc": "The tree TreePanel, with config etc.",
-     "memberOf": "Roo"
+     "memberOf": ""
     },
     {
      "name": "fitToFrame",
@@ -14926,10 +14922,6 @@
      "memberOf": ""
     }
    ],
-   "events": []
-  },
-  "ep": {
-   "props": [],
    "events": []
   },
   "this": {
