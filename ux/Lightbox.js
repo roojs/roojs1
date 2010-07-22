@@ -323,12 +323,12 @@ Roo.apply(Roo.ux.Lightbox.prototype,
 
         imgPreloader.setStyle({ 
                 position: 'absolute',
-                top : -1, 
-                left : -1,
-                width: 1,
-                height: 1,
+                top : '-1px', 
+                left :'-1px',
+                width: '1px',
+                height: '1px'
                 
-            })
+        });
         imgPreloader.on('load', function() {
             this.lightboxImage.dom.src = this.imageArray[this.activeImage].dom.href;
             
