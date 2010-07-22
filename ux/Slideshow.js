@@ -20,7 +20,8 @@ Roo.onReady( function()
  * @class Roo.ux.Slideshow
  */
 
-Roo.ux.Slideshow = function(cfg ) {
+Roo.ux.Slideshow = function(cfg ) 
+{
     Roo.apply(this, cfg);
     if ( this.slides ) {
         this.numOfImages	= this.slides.length;
@@ -30,20 +31,31 @@ Roo.ux.Slideshow = function(cfg ) {
     }
     this.playButton = Roo.get(this.playButton);
     this.pauseButton = Roo.get(this.pauseButton);
+    this.counter = Roo.get(this.counter);
     if ( this.autostart ) {
         this.startSlideShow();
     }
 }
+
 Roo.apply(Roo.ux.Slideshow.prototype, {
     
     wait 			: 4000
 	start 			: 0
 	duration		: 0.5,
 	autostart		: true ,
-	slides 		    : false
-	counter		    : 0,
+	slides 		    : false,
+    /**
+     * @config id/dom element counter to show the 
+     */
+	counter		    : false,
 	caption		    : '',
+     /**
+     * @config id/dom element for play button
+     */
 	playButton		: false, 
+    /**
+     * @config id/dom element of the pause button
+     */
 	pauseButton	    : false, 
 	iImageId		: 0, 
     
@@ -139,6 +151,7 @@ Roo.apply(Roo.ux.Slideshow.prototype, {
 	},
 	
 	updatecounter: function () {
+        
 		var textIn = this.iImageId+1 + ' of ' + this.numOfImages;
 		$(this.counter) && ( $(this.counter).innerHTML = textIn );
 		if ( $(this.caption) && ( oNewCaption = $(this.slides[this.iImageId]).down('.image-caption') ) ) {
