@@ -322,7 +322,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
             
         }
         this.lightboxImage.hide();
-        
+        this.loading.hide();
         this.hoverNav.hide();
         this.prevLink.hide();
         this.nextLink.hide();
@@ -558,6 +558,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
     end: function() {
         this.disableKeyboardNav();
         this.lightbox.hide();
+        this.loading.hide();
         this._mask.setDisplayed(false);
         // show all the objects that cause problems..
         //$$('select', 'object', 'embed').each(function(node){ node.style.visibility = 'visible' });
