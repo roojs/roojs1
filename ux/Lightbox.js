@@ -42,7 +42,7 @@
     - document.observe()
    
 */
- 
+Roo.namespace('Roo.ux'); 
  
 Roo.ux.Lightbox = function(cfg) {
     Roo.apply(this,cfg);
