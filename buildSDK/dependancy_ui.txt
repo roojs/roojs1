@@ -1,4 +1,36 @@
+//		*** ALL can be Optional (need drag /drop ?) - although windows/split  bar/grid etc. uses them..
+Roo.dd.DragDrop
+Roo.dd.DragDropMgr
+Roo.dd.DD
+Roo.dd.DDProxy
+Roo.dd.DDTarget
+Roo.dd.ScrollManager
+Roo.dd.Registry
+Roo.dd.StatusProxy
+Roo.dd.DragSource
+Roo.dd.DropTarget
+Roo.dd.DragZone
+Roo.dd.DropZone
 
+Roo.data.SortTypes
+Roo.data.Record
+Roo.data.Store
+Roo.data.SimpleStore
+Roo.data.JsonStore
+Roo.data.Field
+Roo.data.DataReader
+Roo.data.DataProxy
+//		*** Can be Optional (if needed?)
+Roo.data.MemoryProxy
+Roo.data.HttpProxy
+//		*** Can be Optional (external scripts?)
+Roo.data.ScriptTagProxy
+Roo.data.JsonReader
+//		*** Can be Optional ***
+Roo.data.XmlReader
+//		*** Can be Optional (needed for Tree?)
+Roo.data.ArrayReader
+Roo.data.Tree
 Roo.ComponentMgr
 Roo.Component
 Roo.Layer
