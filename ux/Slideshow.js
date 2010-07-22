@@ -183,7 +183,7 @@ Roo.apply(Roo.ux.Slideshow.prototype, {
 		this.counter.update( textIn );
         var oNewCaption = this.slides[this.iImageId].select('.image-caption', true);
 		if ( this.caption &&  oNewCaption.length ) {
-			this.caption.update( oNewCaption[0].innerHTML;
+			this.caption.update( oNewCaption[0].innerHTML);
 		}
 	}
 }
