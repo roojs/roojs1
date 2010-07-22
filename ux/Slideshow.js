@@ -123,10 +123,10 @@ Roo.apply(Roo.ux.Slideshow.prototype, {
 	
 	stop: function  () {
 		this.running = false; 	
-		this.playButton && this.playButton.appear({ duration: 0});
+		this.playButton && this.playButton.show();
 		this.pauseButton && this.pauseButton.hide();
 	},
-	
+	/*
 	goNext: function () {
 		clearInterval(this.play);
 		$(this.playButton).appear({ duration: 0});
@@ -173,7 +173,7 @@ Roo.apply(Roo.ux.Slideshow.prototype, {
 		
 		this.updatecounter();
 	},
-	
+	*/
 	updatecounter: function () {
         if (!this.counter) {
             return;
