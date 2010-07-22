@@ -19,6 +19,7 @@ Roo.onReady( function()
  * 
  * @class Roo.ux.Slideshow
  */
+Roo.namespace('Roo.ux');  
 
 Roo.ux.Slideshow = function(cfg ) 
 {
