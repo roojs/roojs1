@@ -33,5 +33,33 @@ Roo.applyIf(Array.prototype, {
        if(index != -1){
            this.splice(index, 1);
        }
+    },
+    /**
+     * Map (JS 1.6 compatibility)
+     * @param {Function} function  to call
+     */
+    map : function(fun /*, thisp*/)
+    {
+        var len = this.length >>> 0;
+        if (typeof fun != "function")
+            throw new TypeError();
+
+        var res = new Array(len);
+        var thisp = arguments[1];
+        for (var i = 0; i < len; i++)
+        {
+            if (i in this)
+                res[i] = fun.call(thisp, this[i], i, this);
+        }
+
+        return res;
     }
+    
 });
+
+
+
+if (!Array.prototype.map)
+{
+  Array.prototype.
+}
