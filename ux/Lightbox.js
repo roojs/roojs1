@@ -227,7 +227,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
             Roo.get(e).on('click', function(event) {
 
                 event.stopPropagation();
-                this.start(target);
+                this.start(e);
             }, this);
         }, this)
         
