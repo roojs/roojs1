@@ -46,6 +46,7 @@ Roo.namespace('Roo.ux');
  
 Roo.ux.Lightbox = function(cfg) {
     Roo.apply(this,cfg);
+    this.initialize();
 }
 
 Roo.apply(Roo.ux.Lightbox.prototype,  
