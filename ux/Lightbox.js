@@ -232,7 +232,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
                 console.log(tga);
                 event.stopEvent();
                 this.start(tg);
-            }).createDelegate(this, e, true));
+            }).createDelegate(this, [e], true));
         }, this)
         
     },
