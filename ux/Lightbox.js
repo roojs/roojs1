@@ -534,27 +534,13 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         var preloadNextImage, preloadPrevImage;
         if (this.imageArray.length > this.activeImage + 1){
             preloadNextImage = Roo.DomHelper.append(document.body, { tag: 'img' } , true);
-            preloadNextImage.setStyle({ 
-                position: 'absolute',
-                top : -1, 
-                left : -1,
-                width: 1,
-                height: 1,
-                
-            })
+            preloadNextImage.on('load', function() { preloadNextImage.remove() });
             preloadNextImage.dom.src = this.imageArray[this.activeImage + 1].dom.href;
         }
         if (this.activeImage > 0){
             preloadPrevImage = Roo.DomHelper.append(document.body, { tag: 'img' } , true);
-            preloadNextImage.setStyle({ 
-                position: 'absolute',
-                top : -1, 
-                left : -1,
-                width: 1,
-                height: 1,
-                
-            })
-            preloadPrevImage.dom.src = this.imageArray[this.activeImage - 1].dom.href;
+            preloadNextImage.on('load', function() { preloadNextImage.remove() });
+            
         }
     
     },
