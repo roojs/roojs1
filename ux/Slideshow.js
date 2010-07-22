@@ -124,7 +124,7 @@ Roo.apply(Roo.ux.Slideshow.prototype, {
 		
 		this.textIn = this.iImageId+1 + ' of ' + this.numOfImages;
 		this.updatecounter();
-        if (this.images.length == 1) {
+        if (this.slides.length == 1) {
             return;
         }
         if (this.running) {
