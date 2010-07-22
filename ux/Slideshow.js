@@ -103,6 +103,8 @@ Roo.apply(Roo.ux.Slideshow.prototype, {
 		this.pauseButton && this.pauseButton.show();
      
 		this.updatecounter();
+        this.slides[0].setStyle({ opacity : 1.0 });
+        this.slides[0].show();
 	    this.play.defer(this.wait, this);				
 	},
 	
