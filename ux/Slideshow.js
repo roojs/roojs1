@@ -32,6 +32,7 @@ Roo.ux.Slideshow = function(cfg )
     this.playButton = Roo.get(this.playButton);
     this.pauseButton = Roo.get(this.pauseButton);
     this.counter = Roo.get(this.counter);
+    this.caption = Roo.get(this.caption);
     if ( this.autostart ) {
         this.startSlideShow();
     }
@@ -48,7 +49,10 @@ Roo.apply(Roo.ux.Slideshow.prototype, {
      * @config id/dom element counter to show the 
      */
 	counter		    : false,
-	caption		    : '',
+     /**
+     * @config id/dom element of the caption.
+     */
+	caption		    : false,
      /**
      * @config id/dom element for play button
      */
@@ -165,10 +169,12 @@ Roo.apply(Roo.ux.Slideshow.prototype, {
 	},
 	
 	updatecounter: function () {
-        
+        if (!this.counter) {
+            return;
+        }
 		var textIn = this.iImageId+1 + ' of ' + this.numOfImages;
-		$(this.counter) && ( $(this.counter).innerHTML = textIn );
-		if ( $(this.caption) && ( oNewCaption = $(this.slides[this.iImageId]).down('.image-caption') ) ) {
+		this.counter.update( textIn );
+		if ( this.caption) && ( oNewCaption = $(this.slides[this.iImageId]).down('.image-caption') ) ) {
 			$(this.caption).innerHTML = oNewCaption.innerHTML;
 		}
 	}
