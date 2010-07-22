@@ -32,6 +32,7 @@ Roo.ux.Slideshow = function(cfg )
         }
     }
     if (this.slides.length == 1) {
+        this.slide[0].setVisibilityMode(Roo.Element.DISPLAY);
         this.slide[0].show();
         return;
         
