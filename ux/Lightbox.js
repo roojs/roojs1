@@ -428,10 +428,11 @@ Roo.apply(Roo.ux.Lightbox.prototype,
             {
                 opacity : {  to: 1.0 }
             },
+            this.resizeDuration,
             function(){ 
                 _this.updateDetails(); 
-            },
-            this.resizeDuration
+            }
+            
         );
         this.preloadNeighborImages();
     },
