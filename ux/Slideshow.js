@@ -32,8 +32,10 @@ Roo.ux.Slideshow = function(cfg )
         }
     }
     if (this.slides.length == 1) {
-            
-        }
+        this.slide[0].show();
+        return;
+        
+    }
     
     this.playButton = Roo.get(this.playButton);
     this.pauseButton = Roo.get(this.pauseButton);
