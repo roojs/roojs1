@@ -44,25 +44,28 @@ Roo.apply(Roo.ux.Slideshow.prototype, {
 	start 			: 0
 	duration		: 0.5,
 	autostart		: true ,
+     /**
+     * @cfg {Array} of slides
+     */
 	slides 		    : false,
     /**
-     * @config id/dom element counter to show the 
+     * @cfg id/dom element counter to show the 
      */
 	counter		    : false,
      /**
-     * @config id/dom element of the caption.
+     * @cfg id/dom element of the caption.
      */
 	caption		    : false,
      /**
-     * @config id/dom element for play button
+     * @cfg id/dom element for play button
      */
 	playButton		: false, 
     /**
-     * @config id/dom element of the pause button
+     * @cfg id/dom element of the pause button
      */
 	pauseButton	    : false, 
 	iImageId		: 0, 
-    
+    running : false;
     
 	// The Fade Function
 	swapImage: function (x,y) {
