@@ -285,8 +285,14 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         // weird.. why / 10?
         var lightboxTop = s.top + (Roo.lib.Dom.getViewHeight() / 10);
         var lightboxLeft = s.left
-        this.lightbox.setStyle({ top: lightboxTop + 'px', left: lightboxLeft + 'px' })
+        this.lightbox.setStyle({ 
+            top: lightboxTop + 'px', 
+            left: lightboxLeft + 'px' ,
+            zIndex : this._mask.getStyle('zIndex') * 1.1
+        })
         this.lightbox.show();
+        this.lightbox.setStyle( {
+        
         
         this.changeImage(imageNum);
     },
