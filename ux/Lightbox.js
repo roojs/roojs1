@@ -441,7 +441,7 @@ Roo.apply(Lightbox.prototype,
                 //slide down ?: , from: 0.0, to: 1.0 
                 opacity :  { from : 0.0 , to: 1.0 }
             },
-            this.resizeDuration
+            this.resizeDuration,
             function() {
 	                // update overlay size and update nav
 	                //var arrayPageSize = this.getPageSize();
