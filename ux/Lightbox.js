@@ -249,17 +249,8 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         */
         // stretch overlay to fill page and fade in
         //var arrayPageSize = this.getPageSize();
+        Roo.get(document.body).mask(false);
         
-        if(!this._mask){
-            this._mask = Roo.DomHelper.append(document.body, {cls:"roo-el-mask"}, true);
-            this._mask.on('click', this.end, this);
-        }
-        this._mask.setDisplayed(true); // no animation..
-        
-        // ie will not expand full height automatically
-        if(Roo.isIE && !(Roo.isIE7 && Roo.isStrict) && this.getStyle('height') == 'auto'){ 
-            this._mask.setHeight( Roo.lib.Dom.getViewHeight());
-        }
         
         //new Effect.Appear(this.overlay,
         //    { duration: this.overlayDuration, from: 0.0, to: this.overlayOpacity });
@@ -291,7 +282,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         this.lightbox.setStyle({ 
             top: lightboxTop + 'px', 
             left: lightboxLeft + 'px' ,
-            zIndex : this._mask.getStyle('zIndex') * 1.1
+            zIndex : Roo.get(document.body)._mask.getStyle('zIndex') * 1.1
         })
         this.lightbox.show();
         
@@ -311,7 +302,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         // hide elements during transition
         if (this.animate) {
             this.loading.setStyle({
-                zIndex : this._mask.getStyle('zIndex') * 1.2
+                zIndex : Roo.get(document.body)._mask.getStyle('zIndex') * 1.2
             });
             this.loading.show();
             this.loadingLink.setX( (Roo.lib.Dom.getViewWidth() / 2) - 16);
@@ -557,7 +548,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         this.disableKeyboardNav();
         this.lightbox.hide();
         this.loading.hide();
-        this._mask.setDisplayed(false);
+        Roo.get(document.body).unmask();
         // show all the objects that cause problems..
         //$$('select', 'object', 'embed').each(function(node){ node.style.visibility = 'visible' });
     }
