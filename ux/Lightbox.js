@@ -321,8 +321,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
             // center the loading?
             
         }
-        this.lightboxImage.hide();
-        this.loading.hide();
+        
         this.hoverNav.hide();
         this.prevLink.hide();
         this.nextLink.hide();
