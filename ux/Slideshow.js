@@ -41,8 +41,8 @@ Roo.ux.Slideshow = function(cfg )
 
 Roo.apply(Roo.ux.Slideshow.prototype, {
     
-    wait 			: 4000
-	start 			: 0
+    wait 			: 4000,
+	start 			: 0,
 	duration		: 0.5,
 	autostart		: true ,
      /**
