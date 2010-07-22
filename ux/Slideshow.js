@@ -174,8 +174,9 @@ Roo.apply(Roo.ux.Slideshow.prototype, {
         }
 		var textIn = this.iImageId+1 + ' of ' + this.numOfImages;
 		this.counter.update( textIn );
-		if ( this.caption) && ( oNewCaption = $(this.slides[this.iImageId]).down('.image-caption') ) ) {
-			$(this.caption).innerHTML = oNewCaption.innerHTML;
+        var oNewCaption = this.slides[this.iImageId]).select('.image-caption', true)
+		if ( this.caption &&  oNewCaption.length ) {
+			this.caption.update( oNewCaption[0].innerHTML;
 		}
 	}
 }
