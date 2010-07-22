@@ -255,7 +255,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         
         // ie will not expand full height automatically
         if(Roo.isIE && !(Roo.isIE7 && Roo.isStrict) && this.getStyle('height') == 'auto'){ 
-            this._mask.setHeight( Ext.lib.Dom.getViewHeight());
+            this._mask.setHeight( Roo.lib.Dom.getViewHeight());
         }
         
         //new Effect.Appear(this.overlay,
@@ -283,7 +283,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         
         // calculate top and left offset for the lightbox 
         // weird.. why / 10?
-        var lightboxTop = s.top + (Ext.lib.Dom.getViewHeight() / 10);
+        var lightboxTop = s.top + (Roo.lib.Dom.getViewHeight() / 10);
         var lightboxLeft = s.left
         this.lightbox.setStyle({ top: lightboxTop + 'px', left: lightboxLeft + 'px' })
         this.lightbox.show();
