@@ -458,7 +458,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         this.imageDataContainer.animate(
             {
                 //slide down ?: , from: 0.0, to: 1.0 
-                opacity :  { from : 0.0 , to: 1.0 }
+                opacity :  {  to: 1.0 }
             },
             this.resizeDuration,
             function() {
