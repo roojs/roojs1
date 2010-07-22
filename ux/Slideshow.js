@@ -83,9 +83,10 @@ Roo.apply(Roo.ux.Slideshow.prototype, {
 	startSlideShow: function () {
         var _t  = this;
 		window.setInterval(function () {
-            _t.play() },this.wait);
+            _t.play() }, this.wait);
+            
 		this.playButton && this.playButton.hide();
-		this.pauseButton && this.pauseButton.appear({ duration: 0});
+		this.pauseButton && this.pauseButton.show();
      
 		this.updatecounter();
 									
