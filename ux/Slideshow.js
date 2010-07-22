@@ -3,6 +3,21 @@
  * Slideshow  - based on a prototype one..
  *
  *
+ * usage:
+ * 
+Roo.onReady( function() 
+{
+   // use a dom selector to define slides..
+    var slides = Roo.DomQuery.select('.category-slide');
+   
+    oMySlides = new Roo.ux.Slideshow({
+        slides 		: slides,
+    });
+             
+});
+ * 
+ * 
+ * @class Roo.ux.Slideshow
  */
 
 Roo.ux.Slideshow = function(cfg ) {
@@ -131,26 +146,5 @@ Roo.apply(Roo.ux.Slideshow.prototype, {
 		}
 	}
 }
-Event.observe(window, 'load', function(){
-        if ($$('.category-slide').length < 2) {
-            if (!$$('.category-slide').length) {
-                return;
-            }
-            $$('.category-slide')[0].appear( { duration : 1 });
-            return;
-        }
-        oMySlides = new iSlideShow({
- 				autostart 	: true,		// optional, boolean (default:true)
-				start		: 0,	 	// optional, slides[start] (default:0) 
-				wait 		: 4000, 	// optional, milliseconds (default:4s)
-				slides 		: $$('.category-slide'),
-				counter		: 'counter-div-id', // optional...
-				caption 	: 'caption-div-id', // optional... 
-				playButton	: 'PlayButton', 	// optional (default:playButton)
-				pauseButton	: 'PauseButton', 	// optional (default:PauseButton)
-			});
-             $$('.category-slide')[0].appear( { duration : 1 });
-			// oMySlides.startSlideShow();
-});
   
   
