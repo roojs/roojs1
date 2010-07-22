@@ -261,9 +261,9 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         
         if (imageLink) {
             imageLink = Roo.get(imageLink);
-            console.log(imageLink.id);
+            //console.log(imageLink.id);
             Roo.each(this.imageArray, function (e, i) {
-                console.log(e.id);
+              //  console.log(e.id);
                 if (e.id == imageLink.id) {
                     imageNum = i;
                 }
