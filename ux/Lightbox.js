@@ -538,7 +538,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
     end: function() {
         this.disableKeyboardNav();
         this.lightbox.hide();
-        this._mask.hide();
+        this._mask.setDisplayed(false);
         // show all the objects that cause problems..
         //$$('select', 'object', 'embed').each(function(node){ node.style.visibility = 'visible' });
     }
