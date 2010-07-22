@@ -374,7 +374,7 @@ Roo.apply(Lightbox.prototype,
         
          
         this.outerImageContainer.animate(
-            { width: {to: widthNew}, height: {to: heightNew},
+            { width: {to: widthNew}, height: {to: heightNew} },
             duration,
             null, // on complete
             'easeOut', // easing
