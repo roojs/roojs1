@@ -263,7 +263,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
                 if (e.id == imageLink.id) {
                     imageNum = i;
                 }
-            }
+            })
         }
         
         // let's assume the constructor sorts out the list of images..
