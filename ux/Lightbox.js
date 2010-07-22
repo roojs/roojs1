@@ -400,7 +400,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         (function(){
             this.prevLink.setStyle({ height: imgHeight + 'px' });
             this.nextLink.setStyle({ height: imgHeight + 'px' });
-            this.imageDataContainer.setStyle({ width: widthNew + 'px',  width: heightNew + 'px', });
+            this.imageDataContainer.setStyle({ width: widthNew + 'px',}); // the text area..
             this.showImage();
         }).defer(timeout / 1000, this);
     },
