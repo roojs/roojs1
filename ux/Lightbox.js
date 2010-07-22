@@ -321,18 +321,12 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         var imgPreloader =  Roo.DomHelper.append(document.body, { tag: 'img' } , true);
         // once image is preloaded, resize image container
 
-        imgPreloader.setStyle({ 
-                position: 'absolute',
-                top : '-1px', 
-                left :'-1px',
-                width: '1px',
-                height: '1px'
-                
-        });
+        
         imgPreloader.on('load', function() {
             this.lightboxImage.dom.src = this.imageArray[this.activeImage].dom.href;
             
             this.resizeImageContainer(imgPreloader.getWidth(), imgPreloader.getHeight());
+            imgPreloader.remove();
         }, this);
         imgPreloader.dom.src = this.imageArray[this.activeImage].dom.href;
     },
