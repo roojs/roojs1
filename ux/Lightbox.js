@@ -85,7 +85,7 @@ Roo.apply(Lightbox.prototype,
 	/**
      * @cfg labelOf {string}  When grouping images this is used to write: Image # of #.
      */
-    labelOf: "of"
+    labelOf: "of",
     
     
     
