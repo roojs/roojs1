@@ -393,7 +393,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
          
         this.outerImageContainer.animate(
             { width: {to: widthNew}, height: {to: heightNew} },
-            duration,
+            this.resizeDuration,
             null, // on complete
             'easeOut', // easing
             'run' // effect
@@ -433,7 +433,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
             function(){ 
                 _this.updateDetails(); 
             },
-            duration
+            this.resizeDuration
         );
         this.preloadNeighborImages();
     },
