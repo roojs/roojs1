@@ -223,7 +223,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         this.updateImageList = Roo.emptyFn;
         
         Roo.each(Roo.DomQuery.select('a[rel^=lightbox]'), function(e) {
-            this.imageList.push(Roo.get(e));
+            this.imageArray.push(Roo.get(e));
             Roo.get(e).on('click', function() {
                 //event.stopPropagation();
                 this.start(target);
@@ -261,7 +261,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         //new Effect.Appear(this.overlay,
         //    { duration: this.overlayDuration, from: 0.0, to: LightboxOptions.overlayOpacity });
 
-        this.imageArray = [];
+        //this.imageArray = [];
         var imageNum = 0;       
 
         // let's assume the constructor sorts out the list of images..
@@ -317,10 +317,10 @@ Roo.apply(Roo.ux.Lightbox.prototype,
 
 
         imgPreloader.on('load', function() {
-            this.lightboxImage.src = this.imageArray[this.activeImage][0];
+            this.lightboxImage.src = this.imageArray[this.activeImage].dom.href;
             this.resizeImageContainer(imgPreloader.getWidth(), imgPreloader.getHeight());
         }, this);
-        imgPreloader.src = this.imageArray[this.activeImage][0];
+        imgPreloader.src = this.imageArray[this.activeImage].dom.href;
     },
 
     //
@@ -426,8 +426,9 @@ Roo.apply(Roo.ux.Lightbox.prototype,
     updateDetails: function() {
     
         // if caption is not null
-        if (this.imageArray[this.activeImage][1] != ""){
-            this.caption.update(this.imageArray[this.activeImage][1]).show();
+        if (this.imageArray[this.activeImage].dom.title  != ""){
+            this.caption.update(this.imageArray[this.activeImage].dom.title);
+            this.caption.show();
         }
         
         // if image is part of set display 'Image x of x' 
@@ -522,11 +523,11 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         var preloadNextImage, preloadPrevImage;
         if (this.imageArray.length > this.activeImage + 1){
             preloadNextImage = Roo.DomHelper.append(document.body, { tag: 'img' } , true);
-            preloadNextImage.src = this.imageArray[this.activeImage + 1][0];
+            preloadNextImage.src = this.imageArray[this.activeImage + 1].dom.href;
         }
         if (this.activeImage > 0){
             preloadPrevImage = Roo.DomHelper.append(document.body, { tag: 'img' } , true);
-            preloadPrevImage.src = this.imageArray[this.activeImage - 1][0];
+            preloadPrevImage.src = this.imageArray[this.activeImage - 1].dom.href;
         }
     
     },
