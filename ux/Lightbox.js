@@ -169,7 +169,9 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         //Roo.get('overlay').on('click', this.end, this);
 		Roo.get('lightbox').hide();
         Roo.get('lightbox').on('click',  function(event) { 
-                if (event.element().id == 'lightbox') this.end(); 
+                if (event.getTarget().id == 'lightbox') {
+                    this.end(); 
+                }
             }, this);
             
 		Roo.get('outerImageContainer').setStyle({ width: size, height: size });
