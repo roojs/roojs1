@@ -281,7 +281,7 @@ Roo.apply(Lightbox.prototype,
         var s = Roo.get(document).getScroll();
         
         // calculate top and left offset for the lightbox 
-         weird..
+        // weird.. why / 10?
         var lightboxTop = s.top + (Ext.lib.Dom.getViewHeight() / 10);
         var lightboxLeft = s.left
         this.lightbox.setStyle({ top: lightboxTop + 'px', left: lightboxLeft + 'px' })
