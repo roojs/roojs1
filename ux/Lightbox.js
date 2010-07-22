@@ -44,7 +44,7 @@
 */
  
  
-var Lightbox = function(cfg) {
+Roo.ux.Lightbox = function(cfg) {
     Roo.apply(this,cfg);
 }
 
