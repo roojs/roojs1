@@ -1,35 +1,38 @@
+//<script type="text/javascript">
 /**
- * 
+ * Slideshow  - based on a prototype one..
  *
  *
  */
 
-// slideshow..  
-var iSlideShow = new Class.create();
-iSlideShow.prototype = {
-	
-	initialize : function (oArgs){
-		this.wait 			= oArgs.wait ? oArgs.wait : 4000;
-		this.start 			= oArgs.start ? oArgs.start : 0;
-		this.duration		= oArgs.duration ? oArgs.duration : 0.5;
-		this.autostart		= (typeof(oArgs.autostart)=='undefined') ? true : oArgs.autostart;
-		this.slides 		= oArgs.slides;
-		this.counter		= oArgs.counter;
-		this.caption		= oArgs.caption;
-		this.playButton		= $(oArgs.playButton ? oArgs.playButton : 'PlayButton');
-		this.pauseButton	= $(oArgs.pauseButton ? oArgs.pauseButton : 'PauseButton');
-		this.iImageId		= this.start;
-		if ( this.slides ) {
-			this.numOfImages	= this.slides.length;
-			if ( !this.numOfImages ) {
-				alert('No slides?');
-			}
-		}
-		if ( this.autostart ) {
-			this.startSlideShow();
-		}
-	},
-	
+Roo.ux.Slideshow = function(cfg ) {
+    Roo.apply(this, cfg);
+    if ( this.slides ) {
+        this.numOfImages	= this.slides.length;
+        if ( !this.numOfImages ) {
+            alert('No slides?');
+        }
+    }
+    this.playButton = Roo.get(this.playButton);
+    this.pauseButton = Roo.get(this.pauseButton);
+    if ( this.autostart ) {
+        this.startSlideShow();
+    }
+}
+Roo.apply(Roo.ux.Slideshow.prototype, {
+    
+    wait 			: 4000
+	start 			: 0
+	duration		: 0.5,
+	autostart		: true ,
+	slides 		    : false
+	counter		    : 0,
+	caption		    : '',
+	playButton		: false, 
+	pauseButton	    : false, 
+	iImageId		: 0, 
+    
+    
 	// The Fade Function
 	swapImage: function (x,y) {		
 		$(this.slides[x]) && $(this.slides[x]).appear({ duration: this.duration });
