@@ -86,9 +86,9 @@ Roo.apply(Roo.ux.Slideshow.prototype, {
 	// the onload event handler that starts the fading.
 	startSlideShow: function () {
         var _t  = this;
-		window.setInterval(function () {
-            _t.play() }, this.wait);
-            
+        
+        this.play.defer(this.wait, this);
+        
 		this.playButton && this.playButton.hide();
 		this.pauseButton && this.pauseButton.show();
      
@@ -104,7 +104,8 @@ Roo.apply(Roo.ux.Slideshow.prototype, {
 		imageHide = this.iImageId;
 		
 		if (imageShow == this.numOfImages) {
-			this.swapImage(0,imageHide);	
+			this.swapImage(0,imageHide);
+            
 			this.iImageId = 0;					
 		} else {
 			this.swapImage(imageShow,imageHide);			
@@ -113,6 +114,7 @@ Roo.apply(Roo.ux.Slideshow.prototype, {
 		
 		this.textIn = this.iImageId+1 + ' of ' + this.numOfImages;
 		this.updatecounter();
+        this.play.defer(this.wait, this);
 	},
 	
 	stop: function  () {
