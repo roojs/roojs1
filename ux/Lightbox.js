@@ -229,7 +229,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
             this.imageArray.push(Roo.get(e));
             Roo.get(e).on('click', function(event) {
                 event.stopEvent();
-                this.start(e);
+                this.start(event.getTarget());
             }, this);
         }, this)
         
