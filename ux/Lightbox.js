@@ -48,7 +48,7 @@ Roo.ux.Lightbox = function(cfg) {
     Roo.apply(this,cfg);
 }
 
-Roo.apply(Lightbox.prototype,  
+Roo.apply(Roo.ux.Lightbox.prototype,  
 {
     // optiosn..
     /**
