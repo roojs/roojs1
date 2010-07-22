@@ -24,12 +24,8 @@ Roo.namespace('Roo.ux');
 Roo.ux.Slideshow = function(cfg ) 
 {
     Roo.apply(this, cfg);
-    if ( !this.slides) {
-        
-        this.numOfImages	= this.slides.length;
-        if ( !this.numOfImages ) {
-         //   alert('No slides?');
-        }
+    if ( !this.slides || !this.slides.length) {
+        return;
     }
     if (this.slides.length == 1) {
         this.slides[0].setVisibilityMode(Roo.Element.DISPLAY);
@@ -124,7 +120,7 @@ Roo.apply(Roo.ux.Slideshow.prototype, {
 			this.iImageId++;
 		}
 		
-		this.textIn = this.iImageId+1 + ' of ' + this.numOfImages;
+		this.textIn = this.iImageId+1 + ' of ' + this.slides.length;
 		this.updatecounter();
         
         if (this.running) {
@@ -190,7 +186,7 @@ Roo.apply(Roo.ux.Slideshow.prototype, {
         if (!this.counter) {
             return;
         }
-		var textIn = this.iImageId+1 + ' of ' + this.numOfImages;
+		var textIn = this.iImageId+1 + ' of ' + this.this.slides.length;
 		this.counter.update( textIn );
         var oNewCaption = this.slides[this.iImageId].select('.image-caption', true);
 		if ( this.caption &&  oNewCaption.length ) {
