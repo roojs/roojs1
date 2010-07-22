@@ -426,7 +426,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         var _this=  this;
         this.lightboxImage.animate( 
             {
-                opacity : { from : 0.0 , to: 1.0 }
+                opacity : {  to: 1.0 }
             },
             function(){ 
                 _this.updateDetails(); 
