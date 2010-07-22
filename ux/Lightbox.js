@@ -213,7 +213,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
                 this.end(); 
             }, this);
 
-       .defer(100);
+       
     },
 
     /**
