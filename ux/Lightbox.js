@@ -283,7 +283,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
             left: lightboxLeft + 'px' ,
             zIndex : Roo.get(document.body)._mask.getStyle('zIndex') * 1.1
         })
-        console.log("show lightbox");
+        //console.log("show lightbox");
         this.lightbox.show();
         
         
@@ -546,7 +546,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
     //
     end: function() {
         this.disableKeyboardNav();
-        console.log('lightbox hide');
+        //console.log('lightbox hide');
         this.lightbox.hide();
         this.loading.hide();
         Roo.get(document.body).unmask();
