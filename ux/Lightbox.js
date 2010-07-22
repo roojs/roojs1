@@ -211,7 +211,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
                     if (!th[id]) {
                         return;
                        }
-                    th[id].setVisibilityMode(Element.DISPLAY);
+                    th[id].setVisibilityMode(Roo.Element.DISPLAY);
                 });
         }).defer(100);
     },
