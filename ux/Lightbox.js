@@ -256,7 +256,16 @@ Roo.apply(Roo.ux.Lightbox.prototype,
 
         //this.imageArray = [];
         var imageNum = 0;       
-
+        
+        if (imageLink) {
+            imageLink = Roo.get(imageLink);
+            Roo.each(this.imageArray, function (e, i) {
+                if (e.id == imageLink.id) {
+                    imageNum = i;
+                }
+            }
+        }
+        
         // let's assume the constructor sorts out the list of images..
         /*
         if ((imageLink.rel == 'lightbox')){
