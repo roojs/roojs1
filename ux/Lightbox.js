@@ -539,8 +539,8 @@ Roo.apply(Lightbox.prototype,
         this._mask.hide();
         // show all the objects that cause problems..
         //$$('select', 'object', 'embed').each(function(node){ node.style.visibility = 'visible' });
-    },
+    }
 
      
-}
+});
  
