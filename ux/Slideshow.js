@@ -113,7 +113,7 @@ Roo.apply(Roo.ux.Slideshow.prototype, {
 		imageShow = this.iImageId+1;
 		imageHide = this.iImageId;
 		
-		if (imageShow == this.numOfImages) {
+		if (imageShow+1  > this.slides.length) {
 			this.swapImage(0,imageHide);
             
 			this.iImageId = 0;					
