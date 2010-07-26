@@ -216,6 +216,7 @@ Roo.extend(Roo.form.Form, Roo.form.BasicForm, {
      * Used to provide tabbed forms. One form is primary, with hidden values 
      * which mirror the elements from the other forms.
      * 
+     * @param {Roo.form.Form} form to add.
      * 
      */
     
