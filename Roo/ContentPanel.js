@@ -365,7 +365,7 @@ layout.addxtype({
             cfg.el = this.el;
             // factory?
             var ret = new Roo[cfg.xtype](cfg);
-            ret.render(false, '');
+            ret.render(false, ''); // render blank..
             return ret;
             
         }
