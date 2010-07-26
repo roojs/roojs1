@@ -52,6 +52,14 @@ moreView.load({
  * @param {Object} config The config object
  */
 Roo.JsonView = function(container, tpl, config){
+    
+    if (typeof(tpl) == 'undefined') {
+        // universal constructor..
+        
+        
+    }
+    
+    
     Roo.JsonView.superclass.constructor.call(this, container, tpl, config);
 
     var um = this.el.getUpdateManager();
