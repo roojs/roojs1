@@ -1677,9 +1677,21 @@
      "memberOf": ""
     },
     {
-     "name": "Data",
+     "name": "store",
      "type": "Roo.data.Store",
-     "desc": "store to load data from.",
+     "desc": "Data store to load data from.",
+     "memberOf": "Roo.View"
+    },
+    {
+     "name": "el",
+     "type": "String|Roo.Element",
+     "desc": "The container element.",
+     "memberOf": "Roo.View"
+    },
+    {
+     "name": "tpl",
+     "type": "String|Roo.DomHelper.Template",
+     "desc": "The template used by this View",
      "memberOf": "Roo.View"
     },
     {
@@ -4079,15 +4091,27 @@
   "Roo.View": {
    "props": [
     {
-     "name": "Data",
+     "name": "store",
      "type": "Roo.data.Store",
-     "desc": "store to load data from.",
+     "desc": "Data store to load data from.",
+     "memberOf": ""
+    },
+    {
+     "name": "el",
+     "type": "String|Roo.Element",
+     "desc": "The container element.",
+     "memberOf": ""
+    },
+    {
+     "name": "tpl",
+     "type": "String|Roo.DomHelper.Template",
+     "desc": "The template used by this View",
      "memberOf": ""
     },
     {
      "name": "The",
-     "type": "String|Roo.Element",
-     "desc": "container element.",
+     "type": "Roo.DomHelper.Template",
+     "desc": "css class to add to selected nodes",
      "memberOf": ""
     },
     {
