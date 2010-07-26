@@ -50,7 +50,7 @@
 Roo.View = function(config, depreciated_tpl, depreciated_config){
     
     if (typeof(depreciated_tpl) == 'undefined') {
-        // new way..
+        // new way.. - universal constructor.
         Roo.apply(this, config);
         this.el  = Roo.get(this.el);
     } else {
