@@ -12633,4 +12633,647 @@ mc.add(otherEl);
  * @param {String/Number} key The key or index of the item.
  * @return {Object} The item associated with the passed key.
  */
-Roo.util.MixedCollection.prototype.get = Roo.util.MixedCollection.prototype.item;
+Roo.util.MixedCollection.prototype.get = Roo.util.MixedCollection.prototype.item;/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+/**
+ * @class Roo.util.JSON
+ * Modified version of Douglas Crockford"s json.js that doesn"t
+ * mess with the Object prototype 
+ * http://www.json.org/js.html
+ * @singleton
+ */
+Roo.util.JSON = new (function(){
+    var useHasOwn = {}.hasOwnProperty ? true : false;
+    
+    // crashes Safari in some instances
+    //var validRE = /^("(\\.|[^"\\\n\r])*?"|[,:{}\[\]0-9.\-+Eaeflnr-u \n\r\t])+?$/;
+    
+    var pad = function(n) {
+        return n < 10 ? "0" + n : n;
+    };
+    
+    var m = {
+        "\b": '\\b',
+        "\t": '\\t',
+        "\n": '\\n',
+        "\f": '\\f',
+        "\r": '\\r',
+        '"' : '\\"',
+        "\\": '\\\\'
+    };
+
+    var encodeString = function(s){
+        if (/["\\\x00-\x1f]/.test(s)) {
+            return '"' + s.replace(/([\x00-\x1f\\"])/g, function(a, b) {
+                var c = m[b];
+                if(c){
+                    return c;
+                }
+                c = b.charCodeAt();
+                return "\\u00" +
+                    Math.floor(c / 16).toString(16) +
+                    (c % 16).toString(16);
+            }) + '"';
+        }
+        return '"' + s + '"';
+    };
+    
+    var encodeArray = function(o){
+        var a = ["["], b, i, l = o.length, v;
+            for (i = 0; i < l; i += 1) {
+                v = o[i];
+                switch (typeof v) {
+                    case "undefined":
+                    case "function":
+                    case "unknown":
+                        break;
+                    default:
+                        if (b) {
+                            a.push(',');
+                        }
+                        a.push(v === null ? "null" : Roo.util.JSON.encode(v));
+                        b = true;
+                }
+            }
+            a.push("]");
+            return a.join("");
+    };
+    
+    var encodeDate = function(o){
+        return '"' + o.getFullYear() + "-" +
+                pad(o.getMonth() + 1) + "-" +
+                pad(o.getDate()) + "T" +
+                pad(o.getHours()) + ":" +
+                pad(o.getMinutes()) + ":" +
+                pad(o.getSeconds()) + '"';
+    };
+    
+    /**
+     * Encodes an Object, Array or other value
+     * @param {Mixed} o The variable to encode
+     * @return {String} The JSON string
+     */
+    this.encode = function(o){
+        if(typeof o == "undefined" || o === null){
+            return "null";
+        }else if(o instanceof Array){
+            return encodeArray(o);
+        }else if(o instanceof Date){
+            return encodeDate(o);
+        }else if(typeof o == "string"){
+            return encodeString(o);
+        }else if(typeof o == "number"){
+            return isFinite(o) ? String(o) : "null";
+        }else if(typeof o == "boolean"){
+            return String(o);
+        }else {
+            var a = ["{"], b, i, v;
+            for (i in o) {
+                if(!useHasOwn || o.hasOwnProperty(i)) {
+                    v = o[i];
+                    switch (typeof v) {
+                    case "undefined":
+                    case "function":
+                    case "unknown":
+                        break;
+                    default:
+                        if(b){
+                            a.push(',');
+                        }
+                        a.push(this.encode(i), ":",
+                                v === null ? "null" : this.encode(v));
+                        b = true;
+                    }
+                }
+            }
+            a.push("}");
+            return a.join("");
+        }
+    };
+    
+    /**
+     * Decodes (parses) a JSON string to an object. If the JSON is invalid, this function throws a SyntaxError.
+     * @param {String} json The JSON string
+     * @return {Object} The resulting object
+     */
+    this.decode = function(json){
+        /**
+         * eval:var:json
+         */
+        return eval("(" + json + ')');
+    };
+})();
+/** 
+ * Shorthand for {@link Roo.util.JSON#encode}
+ * @member Roo encode 
+ * @method */
+Roo.encode = Roo.util.JSON.encode;
+/** 
+ * Shorthand for {@link Roo.util.JSON#decode}
+ * @member Roo decode 
+ * @method */
+Roo.decode = Roo.util.JSON.decode;
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.util.Format
+ * Reusable data formatting functions
+ * @singleton
+ */
+Roo.util.Format = function(){
+    var trimRe = /^\s+|\s+$/g;
+    return {
+        /**
+         * Truncate a string and add an ellipsis ('...') to the end if it exceeds the specified length
+         * @param {String} value The string to truncate
+         * @param {Number} length The maximum length to allow before truncating
+         * @return {String} The converted text
+         */
+        ellipsis : function(value, len){
+            if(value && value.length > len){
+                return value.substr(0, len-3)+"...";
+            }
+            return value;
+        },
+
+        /**
+         * Checks a reference and converts it to empty string if it is undefined
+         * @param {Mixed} value Reference to check
+         * @return {Mixed} Empty string if converted, otherwise the original value
+         */
+        undef : function(value){
+            return typeof value != "undefined" ? value : "";
+        },
+
+        /**
+         * Convert certain characters (&, <, >, and ') to their HTML character equivalents for literal display in web pages.
+         * @param {String} value The string to encode
+         * @return {String} The encoded text
+         */
+        htmlEncode : function(value){
+            return !value ? value : String(value).replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
+        },
+
+        /**
+         * Convert certain characters (&, <, >, and ') from their HTML character equivalents.
+         * @param {String} value The string to decode
+         * @return {String} The decoded text
+         */
+        htmlDecode : function(value){
+            return !value ? value : String(value).replace(/&amp;/g, "&").replace(/&gt;/g, ">").replace(/&lt;/g, "<").replace(/&quot;/g, '"');
+        },
+
+        /**
+         * Trims any whitespace from either side of a string
+         * @param {String} value The text to trim
+         * @return {String} The trimmed text
+         */
+        trim : function(value){
+            return String(value).replace(trimRe, "");
+        },
+
+        /**
+         * Returns a substring from within an original string
+         * @param {String} value The original text
+         * @param {Number} start The start index of the substring
+         * @param {Number} length The length of the substring
+         * @return {String} The substring
+         */
+        substr : function(value, start, length){
+            return String(value).substr(start, length);
+        },
+
+        /**
+         * Converts a string to all lower case letters
+         * @param {String} value The text to convert
+         * @return {String} The converted text
+         */
+        lowercase : function(value){
+            return String(value).toLowerCase();
+        },
+
+        /**
+         * Converts a string to all upper case letters
+         * @param {String} value The text to convert
+         * @return {String} The converted text
+         */
+        uppercase : function(value){
+            return String(value).toUpperCase();
+        },
+
+        /**
+         * Converts the first character only of a string to upper case
+         * @param {String} value The text to convert
+         * @return {String} The converted text
+         */
+        capitalize : function(value){
+            return !value ? value : value.charAt(0).toUpperCase() + value.substr(1).toLowerCase();
+        },
+
+        // private
+        call : function(value, fn){
+            if(arguments.length > 2){
+                var args = Array.prototype.slice.call(arguments, 2);
+                args.unshift(value);
+                 
+                return /** eval:var:value */  eval(fn).apply(window, args);
+            }else{
+                /** eval:var:value */
+                return /** eval:var:value */ eval(fn).call(window, value);
+            }
+        },
+
+        /**
+         * Format a number as US currency
+         * @param {Number/String} value The numeric value to format
+         * @return {String} The formatted currency string
+         */
+        usMoney : function(v){
+            v = (Math.round((v-0)*100))/100;
+            v = (v == Math.floor(v)) ? v + ".00" : ((v*10 == Math.floor(v*10)) ? v + "0" : v);
+            v = String(v);
+            var ps = v.split('.');
+            var whole = ps[0];
+            var sub = ps[1] ? '.'+ ps[1] : '.00';
+            var r = /(\d+)(\d{3})/;
+            while (r.test(whole)) {
+                whole = whole.replace(r, '$1' + ',' + '$2');
+            }
+            return "$" + whole + sub ;
+        },
+
+        /**
+         * Parse a value into a formatted date using the specified format pattern.
+         * @param {Mixed} value The value to format
+         * @param {String} format (optional) Any valid date format string (defaults to 'm/d/Y')
+         * @return {String} The formatted date string
+         */
+        date : function(v, format){
+            if(!v){
+                return "";
+            }
+            if(!(v instanceof Date)){
+                v = new Date(Date.parse(v));
+            }
+            return v.dateFormat(format || "m/d/Y");
+        },
+
+        /**
+         * Returns a date rendering function that can be reused to apply a date format multiple times efficiently
+         * @param {String} format Any valid date format string
+         * @return {Function} The date formatting function
+         */
+        dateRenderer : function(format){
+            return function(v){
+                return Roo.util.Format.date(v, format);  
+            };
+        },
+
+        // private
+        stripTagsRE : /<\/?[^>]+>/gi,
+        
+        /**
+         * Strips all HTML tags
+         * @param {Mixed} value The text from which to strip tags
+         * @return {String} The stripped text
+         */
+        stripTags : function(v){
+            return !v ? v : String(v).replace(this.stripTagsRE, "");
+        }
+    };
+}();/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+
+ 
+
+/**
+ * @class Roo.MasterTemplate
+ * @extends Roo.Template
+ * Provides a template that can have child templates. The syntax is:
+<pre><code>
+var t = new Roo.MasterTemplate(
+	'&lt;select name="{name}"&gt;',
+		'&lt;tpl name="options"&gt;&lt;option value="{value:trim}"&gt;{text:ellipsis(10)}&lt;/option&gt;&lt;/tpl&gt;',
+	'&lt;/select&gt;'
+);
+t.add('options', {value: 'foo', text: 'bar'});
+// or you can add multiple child elements in one shot
+t.addAll('options', [
+    {value: 'foo', text: 'bar'},
+    {value: 'foo2', text: 'bar2'},
+    {value: 'foo3', text: 'bar3'}
+]);
+// then append, applying the master template values
+t.append('my-form', {name: 'my-select'});
+</code></pre>
+* A name attribute for the child template is not required if you have only one child
+* template or you want to refer to them by index.
+ */
+Roo.MasterTemplate = function(){
+    Roo.MasterTemplate.superclass.constructor.apply(this, arguments);
+    this.originalHtml = this.html;
+    var st = {};
+    var m, re = this.subTemplateRe;
+    re.lastIndex = 0;
+    var subIndex = 0;
+    while(m = re.exec(this.html)){
+        var name = m[1], content = m[2];
+        st[subIndex] = {
+            name: name,
+            index: subIndex,
+            buffer: [],
+            tpl : new Roo.Template(content)
+        };
+        if(name){
+            st[name] = st[subIndex];
+        }
+        st[subIndex].tpl.compile();
+        st[subIndex].tpl.call = this.call.createDelegate(this);
+        subIndex++;
+    }
+    this.subCount = subIndex;
+    this.subs = st;
+};
+Roo.extend(Roo.MasterTemplate, Roo.Template, {
+    /**
+    * The regular expression used to match sub templates
+    * @type RegExp
+    * @property
+    */
+    subTemplateRe : /<tpl(?:\sname="([\w-]+)")?>((?:.|\n)*?)<\/tpl>/gi,
+
+    /**
+     * Applies the passed values to a child template.
+     * @param {String/Number} name (optional) The name or index of the child template
+     * @param {Array/Object} values The values to be applied to the template
+     * @return {MasterTemplate} this
+     */
+     add : function(name, values){
+        if(arguments.length == 1){
+            values = arguments[0];
+            name = 0;
+        }
+        var s = this.subs[name];
+        s.buffer[s.buffer.length] = s.tpl.apply(values);
+        return this;
+    },
+
+    /**
+     * Applies all the passed values to a child template.
+     * @param {String/Number} name (optional) The name or index of the child template
+     * @param {Array} values The values to be applied to the template, this should be an array of objects.
+     * @param {Boolean} reset (optional) True to reset the template first
+     * @return {MasterTemplate} this
+     */
+    fill : function(name, values, reset){
+        var a = arguments;
+        if(a.length == 1 || (a.length == 2 && typeof a[1] == "boolean")){
+            values = a[0];
+            name = 0;
+            reset = a[1];
+        }
+        if(reset){
+            this.reset();
+        }
+        for(var i = 0, len = values.length; i < len; i++){
+            this.add(name, values[i]);
+        }
+        return this;
+    },
+
+    /**
+     * Resets the template for reuse
+     * @return {MasterTemplate} this
+     */
+     reset : function(){
+        var s = this.subs;
+        for(var i = 0; i < this.subCount; i++){
+            s[i].buffer = [];
+        }
+        return this;
+    },
+
+    applyTemplate : function(values){
+        var s = this.subs;
+        var replaceIndex = -1;
+        this.html = this.originalHtml.replace(this.subTemplateRe, function(m, name){
+            return s[++replaceIndex].buffer.join("");
+        });
+        return Roo.MasterTemplate.superclass.applyTemplate.call(this, values);
+    },
+
+    apply : function(){
+        return this.applyTemplate.apply(this, arguments);
+    },
+
+    compile : function(){return this;}
+});
+
+/**
+ * Alias for fill().
+ * @method
+ */
+Roo.MasterTemplate.prototype.addAll = Roo.MasterTemplate.prototype.fill;
+ /**
+ * Creates a template from the passed element's value (display:none textarea, preferred) or innerHTML. e.g.
+ * var tpl = Roo.MasterTemplate.from('element-id');
+ * @param {String/HTMLElement} el
+ * @param {Object} config
+ * @static
+ */
+Roo.MasterTemplate.from = function(el, config){
+    el = Roo.getDom(el);
+    return new Roo.MasterTemplate(el.value || el.innerHTML, config || '');
+};/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+ 
+/**
+ * @class Roo.util.CSS
+ * Utility class for manipulating CSS rules
+ * @singleton
+ */
+Roo.util.CSS = function(){
+	var rules = null;
+   	var doc = document;
+
+    var camelRe = /(-[a-z])/gi;
+    var camelFn = function(m, a){ return a.charAt(1).toUpperCase(); };
+
+   return {
+   /**
+    * Very simple dynamic creation of stylesheets from a text blob of rules.  The text will wrapped in a style
+    * tag and appended to the HEAD of the document.
+    * @param {String} cssText The text containing the css rules
+    * @param {String} id An id to add to the stylesheet for later removal
+    * @return {StyleSheet}
+    */
+   createStyleSheet : function(cssText, id){
+       var ss;
+       var head = doc.getElementsByTagName("head")[0];
+       var rules = doc.createElement("style");
+       rules.setAttribute("type", "text/css");
+       if(id){
+           rules.setAttribute("id", id);
+       }
+       if(Roo.isIE){
+           head.appendChild(rules);
+           ss = rules.styleSheet;
+           ss.cssText = cssText;
+       }else{
+           try{
+                rules.appendChild(doc.createTextNode(cssText));
+           }catch(e){
+               rules.cssText = cssText; 
+           }
+           head.appendChild(rules);
+           ss = rules.styleSheet ? rules.styleSheet : (rules.sheet || doc.styleSheets[doc.styleSheets.length-1]);
+       }
+       this.cacheStyleSheet(ss);
+       return ss;
+   },
+
+   /**
+    * Removes a style or link tag by id
+    * @param {String} id The id of the tag
+    */
+   removeStyleSheet : function(id){
+       var existing = doc.getElementById(id);
+       if(existing){
+           existing.parentNode.removeChild(existing);
+       }
+   },
+
+   /**
+    * Dynamically swaps an existing stylesheet reference for a new one
+    * @param {String} id The id of an existing link tag to remove
+    * @param {String} url The href of the new stylesheet to include
+    */
+   swapStyleSheet : function(id, url){
+       this.removeStyleSheet(id);
+       var ss = doc.createElement("link");
+       ss.setAttribute("rel", "stylesheet");
+       ss.setAttribute("type", "text/css");
+       ss.setAttribute("id", id);
+       ss.setAttribute("href", url);
+       doc.getElementsByTagName("head")[0].appendChild(ss);
+   },
+   
+   /**
+    * Refresh the rule cache if you have dynamically added stylesheets
+    * @return {Object} An object (hash) of rules indexed by selector
+    */
+   refreshCache : function(){
+       return this.getRules(true);
+   },
+
+   // private
+   cacheStyleSheet : function(ss){
+       if(!rules){
+           rules = {};
+       }
+       try{// try catch for cross domain access issue
+           var ssRules = ss.cssRules || ss.rules;
+           for(var j = ssRules.length-1; j >= 0; --j){
+               rules[ssRules[j].selectorText] = ssRules[j];
+           }
+       }catch(e){}
+   },
+   
+   /**
+    * Gets all css rules for the document
+    * @param {Boolean} refreshCache true to refresh the internal cache
+    * @return {Object} An object (hash) of rules indexed by selector
+    */
+   getRules : function(refreshCache){
+   		if(rules == null || refreshCache){
+   			rules = {};
+   			var ds = doc.styleSheets;
+   			for(var i =0, len = ds.length; i < len; i++){
+   			    try{
+    		        this.cacheStyleSheet(ds[i]);
+    		    }catch(e){} 
+	        }
+   		}
+   		return rules;
+   	},
+   	
+   	/**
+    * Gets an an individual CSS rule by selector(s)
+    * @param {String/Array} selector The CSS selector or an array of selectors to try. The first selector that is found is returned.
+    * @param {Boolean} refreshCache true to refresh the internal cache if you have recently updated any rules or added styles dynamically
+    * @return {CSSRule} The CSS rule or null if one is not found
+    */
+   getRule : function(selector, refreshCache){
+   		var rs = this.getRules(refreshCache);
+   		if(!(selector instanceof Array)){
+   		    return rs[selector];
+   		}
+   		for(var i = 0; i < selector.length; i++){
+			if(rs[selector[i]]){
+				return rs[selector[i]];
+			}
+		}
+		return null;
+   	},
+   	
+   	
+   	/**
+    * Updates a rule property
+    * @param {String/Array} selector If it's an array it tries each selector until it finds one. Stops immediately once one is found.
+    * @param {String} property The css property
+    * @param {String} value The new value for the property
+    * @return {Boolean} true If a rule was found and updated
+    */
+   updateRule : function(selector, property, value){
+   		if(!(selector instanceof Array)){
+   			var rule = this.getRule(selector);
+   			if(rule){
+   				rule.style[property.replace(camelRe, camelFn)] = value;
+   				return true;
+   			}
+   		}else{
+   			for(var i = 0; i < selector.length; i++){
+   				if(this.updateRule(selector[i], property, value)){
+   					return true;
+   				}
+   			}
+   		}
+   		return false;
+   	}
+   };	
+}();
