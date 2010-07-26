@@ -378,6 +378,13 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
     getValues : function(asString){
         if (this.childForms) {
             Roo.each(this.childForms, function (f) {
+                if (f.allFields) {
+                    Roo.each(f.allFields, function (e) {
+                        if (e.name && e.getValue && this.findField(e.name)) {
+                            this.findField(e.name).setValue(e.getValue());
+                        }
+                    });
+                
                 f.setValues(values);
             }, this);
         }
