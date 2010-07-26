@@ -95,12 +95,7 @@ Roo.extend(Roo.form.Form, Roo.form.BasicForm, {
      */
     monitorPoll : 200,
 
-    /**
-     * childForms - used for multi-tab forms
-     * @type {Array}
-     */
-    
-    childForms : false,
+  
     /**
      * Opens a new {@link Roo.form.Column} container in the layout stack. If fields are passed after the config, the
      * fields are added and the column is closed. If no fields are passed the column remains open
