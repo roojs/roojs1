@@ -145,6 +145,11 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
 
 Roo.extend(Roo.View, Roo.util.Observable, {
     
+     /**
+     * @cfg {Roo.data.Store} Data store to load data from.
+     */
+    el : false,
+    
     /**
      * @cfg {String|Roo.Element} The container element.
      */
