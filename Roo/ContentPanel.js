@@ -336,7 +336,7 @@ panel.load({
     },
     
       /**
-     * Adds a xtype elements to the panel - currently only supports Forms, Views.
+     * Adds a xtype elements to the panel - currently only supports Forms, View, JsonView.
      * <pre><code>
 
 layout.addxtype({
