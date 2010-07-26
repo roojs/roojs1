@@ -9115,7 +9115,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     /**
      * @cfg {String|Roo.DomHelper.Template} The template used by this View 
      */
-    this.tpl : false,
+    tpl : false,
     
     /**
      * @cfg {Roo.DomHelper.Template} The css class to add to selected nodes
