@@ -67,14 +67,9 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
     
     
     this.tpl.compile();
-    /**
-     * The template used by this View
-     * @type {Roo.DomHelper.Template}
-     */
-    //this.tpl = tpl;
+   
 
-    Roo.apply(this, config);
-
+     
     /** @private */
     this.addEvents({
     /**
