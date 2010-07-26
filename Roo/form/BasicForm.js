@@ -308,7 +308,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
     addForm : function(form){
        
         this.childForms.push(form);
-        form.allItems.each(function (fe) {
+        Roo.each(form.allItems, function (fe) {
             
             if (this.findField(fe.name)) { // already added..
                 return;
