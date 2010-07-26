@@ -95,7 +95,13 @@ Roo.extend(Roo.form.BasicForm, Roo.util.Observable, {
      * or setValues() data instead of when the form was first created.
      */
     trackResetOnLoad : false,
-
+    
+    
+    /**
+     * childForms - used for multi-tab forms
+     * @type {Array}
+     */
+    childForms : false,
     
     /**
      * allFields - full list of fields.
