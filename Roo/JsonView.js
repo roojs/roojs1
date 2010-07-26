@@ -59,10 +59,10 @@ moreView.load({
  * @param {Object} config The config object
  * 
  */
-Roo.JsonView = function(container, tpl, config){
+Roo.JsonView = function(config, depreciated_tpl, depreciated_config){
     
     
-    Roo.JsonView.superclass.constructor.call(this, container, tpl, config);
+    Roo.JsonView.superclass.constructor.call(this, config, depreciated_tpl, depreciated_config);
 
     var um = this.el.getUpdateManager();
     um.setRenderer(this);
