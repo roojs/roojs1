@@ -230,8 +230,7 @@ Roo.extend(Roo.form.Form, Roo.form.BasicForm, {
                 return;
             }
             this.add( new Roo.form.Hidden({
-                name : fe.name,
-                
+                name : fe.name
             })
             
         }, this);
