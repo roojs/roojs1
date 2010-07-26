@@ -351,16 +351,20 @@ layout.addxtype({
     
     addxtype : function(cfg) {
         // add form..
-        if (!cfg.xtype.match(/^Form$/)) {
-            return false;
-        }
-        var el = this.el.createChild();
+        if (cfg.xtype.match(/^Form$/)) {
+            var el = this.el.createChild();
 
-        this.form = new  Roo.form.Form(cfg);
+            this.form = new  Roo.form.Form(cfg);
+            
+            
+            if ( this.form.allItems.length) this.form.render(el.dom);
+            return this.form;
+        }
+        if (['View', 'JsonView'].indexOf('xtype') > -1) {
+            // views..
+            
+        }
         
-        
-        if ( this.form.allItems.length) this.form.render(el.dom);
-        return this.form;
         
     }
 });
