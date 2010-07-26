@@ -83,7 +83,7 @@
     
 <!-- ============================== class summary ========================== -->			
     <div class="description">
-	Shortcut class to create a JSON + {<b>link</b> Roo.UpdateManager} template view. Usage:<br/><pre><code><br/>var view = new Roo.JsonView("my-element",<br/>    '&lt;div id="{id}"&gt;{foo} - {bar}&lt;/div&gt;', // auto create template<br/>    { multiSelect: true, jsonRoot: "data" }<br/>);<br/><br/>// listen for node click?<br/>view.on("click", function(vw, index, node, e){<br/>    alert('Node "' + node.id + '" at index: ' + index + " was clicked.");<br/>});<br/><br/>// direct load of JSON data<br/>view.load("foobar.php");<br/><br/>// Example from my blog list<br/>var tpl = new Roo.Template(<br/>    '&lt;div class="entry"&gt;' +<br/>    '&lt;a class="entry-title" href="{link}"&gt;{title}&lt;/a&gt;' +<br/>    "&lt;h4&gt;{date} by {author} | {comments} Comments&lt;/h4&gt;{description}" +<br/>    "&lt;/div&gt;&lt;hr /&gt;"<br/>);<br/><br/>var moreView = new Roo.JsonView("entry-list", tpl, {<br/>    jsonRoot: "posts"<br/>});<br/>moreView.on("beforerender", this.sortEntries, this);<br/>moreView.load({<br/>    url: "/blog/get-posts.php",<br/>    params: "allposts=true",<br/>    text: "Loading Blog Entries..."<br/>});<br/></code></pre>
+	Shortcut class to create a JSON + {<b>link</b> Roo.UpdateManager} template view. Usage:<br/><pre><code><br/>var view = new Roo.JsonView({<br/>    container: "my-element",<br/>    template: '&lt;div id="{id}"&gt;{foo} - {bar}&lt;/div&gt;', // auto create template<br/>    multiSelect: true, <br/>    jsonRoot: "data" <br/>});<br/><br/>// listen for node click?<br/>view.on("click", function(vw, index, node, e){<br/>    alert('Node "' + node.id + '" at index: ' + index + " was clicked.");<br/>});<br/><br/>// direct load of JSON data<br/>view.load("foobar.php");<br/><br/>// Example from my blog list<br/>var tpl = new Roo.Template(<br/>    '&lt;div class="entry"&gt;' +<br/>    '&lt;a class="entry-title" href="{link}"&gt;{title}&lt;/a&gt;' +<br/>    "&lt;h4&gt;{date} by {author} | {comments} Comments&lt;/h4&gt;{description}" +<br/>    "&lt;/div&gt;&lt;hr /&gt;"<br/>);<br/><br/>var moreView = new Roo.JsonView({<br/>    container :  "entry-list", <br/>    template : tpl,<br/>    jsonRoot: "posts"<br/>});<br/>moreView.on("beforerender", this.sortEntries, this);<br/>moreView.load({<br/>    url: "/blog/get-posts.php",<br/>    params: "allposts=true",<br/>    text: "Loading Blog Entries..."<br/>});<br/></code></pre><br/><br/>Note: old code is supported with arguments : (container, template, config)
     </div>
 
 	
@@ -124,6 +124,66 @@
 	
 	
 	
+	
+		<tr class="config-row expandable config-row-alt0">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.View-cfg-Data" name=".Data"></a>
+			<div class="fixedFont">
+				<b  class="itemname">Data</b> : <a href="./Roo.data.Store.html#constructor" roo:cls="Roo.data.Store.html#constructor">Roo.data.Store</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">store to load data from.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">store to load data from.</div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			<a href="./Roo.View.html#constructor" roo:cls="Roo.View.html#constructor">Roo.View</a>
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt1 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.JsonView-cfg-The" name=".The"></a>
+			<div class="fixedFont">
+				<b  class="itemname">The</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">root property in the loaded JSON object that contains the data</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">root property in the loaded JSON object that contains the data</div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.JsonView
+				
+		    </td>
+		</tr>
+        
 	
 		<tr class="config-row expandable config-row-alt0">
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
@@ -223,7 +283,7 @@
 		<div class="fixedFont">
 			<span class="attributes">new <B>Roo.</B></span><b class="itemname">JsonView</b>
 				
-				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement/Element <B><i>container</i></B>, Template <B><i>tpl</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>config</i></B>) 
+				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>config</i></B>) 
 			
 				
 			
@@ -243,18 +303,6 @@
 			
 				<dl class="detailList">
 				<dt class="heading">Parameters:</dt>
-				
-					<dt>
-						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement/Element</span>  <b>container</b>
-						
-					</dt>
-					<dd>The container element where the view is to be rendered.</dd>
-				
-					<dt>
-						<span class="fixedFont">Template</span>  <b>tpl</b>
-						
-					</dt>
-					<dd>The rendering template</dd>
 				
 					<dt>
 						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>config</b>
@@ -3025,7 +3073,7 @@
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Thu Jul 22 2010 17:23:51 GMT+0800 (HKT)
+			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Mon Jul 26 2010 14:42:33 GMT+0800 (HKT)
 			Based on 
 			<a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a>  
 		</div>
