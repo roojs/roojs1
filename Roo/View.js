@@ -132,6 +132,12 @@ Roo.View = function(container, tpl, config){
 };
 
 Roo.extend(Roo.View, Roo.util.Observable, {
+    
+    /**
+     * The template used by this View
+     * @cfg {String|Roo.DomHelper.Template}
+     */
+    
     /**
      * The css class to add to selected nodes
      * @type {Roo.DomHelper.Template}
