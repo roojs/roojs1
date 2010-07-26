@@ -377,7 +377,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
      */
     getValues : function(asString){
         if (this.childForms) {
-            // copy values from the child froms
+            // copy values from the child forms
             Roo.each(this.childForms, function (f) {
                 if (f.allFields) {
                     Roo.each(f.allFields, function (e) {
