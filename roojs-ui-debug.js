@@ -9103,26 +9103,26 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
 Roo.extend(Roo.View, Roo.util.Observable, {
     
      /**
-     * @cfg {Roo.data.Store} Data store to load data from.
+     * @cfg {Roo.data.Store} store Data store to load data from.
      */
     store : false,
     
     /**
-     * @cfg {String|Roo.Element} The container element.
+     * @cfg {String|Roo.Element} el The container element.
      */
     el : '',
     
     /**
-     * @cfg {String|Roo.DomHelper.Template} The template used by this View 
+     * @cfg {String|Roo.Template} tpl The template used by this View 
      */
     tpl : false,
     
     /**
-     * @cfg {Roo.DomHelper.Template} The css class to add to selected nodes
+     * @cfg {String} selectedClass The css class to add to selected nodes
      */
     selectedClass : "x-view-selected",
      /**
-     * @cfg {String} The empty text to show when nothing is loaded.
+     * @cfg {String} emptyText The empty text to show when nothing is loaded.
      */
     emptyText : "",
     /**
@@ -25448,7 +25448,20 @@ Roo.extend(Roo.form.BasicForm, Roo.util.Observable, {
      * or setValues() data instead of when the form was first created.
      */
     trackResetOnLoad : false,
-
+    
+    
+    /**
+     * childForms - used for multi-tab forms
+     * @type {Array}
+     */
+    childForms : false,
+    
+    /**
+     * allFields - full list of fields.
+     * @type {Array}
+     */
+    allFields : false,
+    
     /**
      * By default wait messages are displayed with Roo.MessageBox.wait. You can target a specific
      * element by passing it or its id or mask the form itself by passing in true.
@@ -25633,7 +25646,28 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         return field || null;
     },
 
-
+    /**
+     * Add a secondary form to this one, 
+     * Used to provide tabbed forms. One form is primary, with hidden values 
+     * which mirror the elements from the other forms.
+     * 
+     * @param {Roo.form.Form} form to add.
+     * 
+     */
+    addForm : function(form){
+       
+        this.childForms.push(form);
+        form.allItems.each(function (fe) {
+            
+            if (this.findField(fe.name)) { // already added..
+                return;
+            }
+            this.add( new Roo.form.Hidden({
+                name : fe.name
+            }));
+        }, this);
+        
+    },
     /**
      * Mark fields in this form invalid in bulk.
      * @param {Array/Object} errors Either an array in the form [{id:'fieldId', msg:'The message'},...] or an object hash of {id: msg, id2: msg2}
@@ -25656,6 +25690,10 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 }
             }
         }
+        Roo.each(this.childForms || [], function (f) {
+            f.markInvalid(errors);
+        });
+        
         return this;
     },
 
@@ -25706,6 +25744,11 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 }
             }
         }
+         
+        Roo.each(this.childForms || [], function (f) {
+            f.setValues(values);
+        });
+                
         return this;
     },
 
@@ -25716,6 +25759,21 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
      * @return {Object}
      */
     getValues : function(asString){
+        if (this.childForms) {
+            // copy values from the child forms
+            Roo.each(this.childForms, function (f) {
+                if (f.allFields) {
+                    Roo.each(f.allFields, function (e) {
+                        if (e.name && e.getValue && this.findField(e.name)) {
+                            this.findField(e.name).setValue(e.getValue());
+                        }
+                    });
+                }
+            }, this);
+        }
+        
+        
+        
         var fs = Roo.lib.Ajax.serializeForm(this.el.dom);
         if(asString === true){
             return fs;
@@ -25731,6 +25789,12 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         this.items.each(function(f){
            f.clearInvalid();
         });
+        
+        Roo.each(this.childForms || [], function (f) {
+            f.clearInvalid();
+        });
+        
+        
         return this;
     },
 
@@ -25742,6 +25806,12 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         this.items.each(function(f){
             f.reset();
         });
+        
+        Roo.each(this.childForms || [], function (f) {
+            f.reset();
+        });
+       
+        
         return this;
     },
 
@@ -25832,7 +25902,7 @@ Roo.form.Form = function(config){
         xitems = config.items;
         delete config.items;
     }
-    
+    this.childForms = [];
     
     Roo.form.Form.superclass.constructor.call(this, null, config);
     this.url = this.url || this.action;
@@ -25905,6 +25975,7 @@ Roo.extend(Roo.form.Form, Roo.form.BasicForm, {
      */
     monitorPoll : 200,
 
+  
     /**
      * Opens a new {@link Roo.form.Column} container in the layout stack. If fields are passed after the config, the
      * fields are added and the column is closed. If no fields are passed the column remains open
@@ -26014,6 +26085,11 @@ Roo.extend(Roo.form.Form, Roo.form.BasicForm, {
         }
         return this;
     },
+    
+
+    
+    
+    
      /**
      * Find any element that has been added to a form, using it's ID or name
      * This can include framesets, columns etc. along with regular fields..
