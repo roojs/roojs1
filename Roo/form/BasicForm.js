@@ -293,7 +293,28 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         return field || null;
     },
 
-
+    /**
+     * Add a secondary form to this one, 
+     * Used to provide tabbed forms. One form is primary, with hidden values 
+     * which mirror the elements from the other forms.
+     * 
+     * @param {Roo.form.Form} form to add.
+     * 
+     */
+    addForm : function(form){
+       
+        this.childForms.push(form);
+        form.allItems.each(function (fe) {
+            
+            if (this.findField(fe.name)) { // already added..
+                return;
+            }
+            this.add( new Roo.form.Hidden({
+                name : fe.name
+            }));
+        }, this);
+        
+    },
     /**
      * Mark fields in this form invalid in bulk.
      * @param {Array/Object} errors Either an array in the form [{id:'fieldId', msg:'The message'},...] or an object hash of {id: msg, id2: msg2}
