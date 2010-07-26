@@ -406,11 +406,11 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         this.items.each(function(f){
            f.clearInvalid();
         });
-        if (this.childForms) {
-            Roo.each(this.childForms, function (f) {
-                f.clearInvalid();
-            });
-        }
+        
+        Roo.each(this.childForms || [], function (f) {
+            f.clearInvalid();
+        });
+        
         
         return this;
     },
@@ -423,10 +423,10 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         this.items.each(function(f){
             f.reset();
         });
-        if (this.childForms) {
-            Roo.each(this.childForms, function (f) {
-                f.reset();
-            });
+        
+        Roo.each(this.childForms || [], function (f) {
+            f.reset();
+        });
         }
         
         return this;
