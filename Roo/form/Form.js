@@ -22,7 +22,7 @@ Roo.form.Form = function(config){
         xitems = config.items;
         delete config.items;
     }
-    
+    this.childForms = [];
     
     Roo.form.Form.superclass.constructor.call(this, null, config);
     this.url = this.url || this.action;
@@ -216,7 +216,7 @@ Roo.extend(Roo.form.Form, Roo.form.BasicForm, {
     
     addForm : function(form){
        
-        this.forms.push(form);
+        this.childForms.push(form);
         form.allItems.each(function (fe) {
             
             if (this.findField(fe.name)) { // already added..
