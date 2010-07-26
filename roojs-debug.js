@@ -7373,10 +7373,17 @@ if(opt.anim.isAnimated()){
          */
         setStyle : function(prop, value){
             if(typeof prop == "string"){
+                
+                if (prop == 'float') {
+                    this.setStyle(Roo.isIE ? 'styleFloat'  : 'cssFloat', value);
+                    return this;
+                }
+                
                 var camel;
                 if(!(camel = propCache[prop])){
                     camel = propCache[prop] = prop.replace(camelRe, camelFn);
                 }
+                
                 if(camel == 'opacity') {
                     this.setOpacity(value);
                 }else{

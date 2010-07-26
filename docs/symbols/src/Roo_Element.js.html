@@ -745,10 +745,17 @@ if(opt.anim.isAnimated()){
          */
         </span><span class="jsdoc-var">setStyle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">prop</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">prop </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;string&quot;</span><span class="jsdoc-syntax">){
+                
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">prop </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'float'</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">this.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isIE </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'styleFloat'  </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'cssFloat'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+                }
+                
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">camel</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!(</span><span class="jsdoc-var">camel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">propCache</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">prop</span><span class="jsdoc-syntax">])){
                     </span><span class="jsdoc-var">camel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">propCache</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">prop</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">prop.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">camelRe</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">camelFn</span><span class="jsdoc-syntax">);
                 }
+                
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">camel </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'opacity'</span><span class="jsdoc-syntax">) {
                     </span><span class="jsdoc-var">this.setOpacity</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
                 }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
