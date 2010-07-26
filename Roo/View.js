@@ -38,24 +38,27 @@
  * <br><br>
  * <b>Note: The root of your template must be a single node. Table/row implementations may work but are not supported due to
  * IE"s limited insertion support with tables and Opera"s faulty event bubbling.</b>
+ * 
+ * Note: old style constructor is still suported (container, template, config)
+ * 
  * @constructor
  * Create a new View
- * @param {String/HTMLElement/Element} container The container element where the view is to be rendered.
- * @param {String/DomHelper.Template} tpl The rendering template or a string to create a template with
  * @param {Object} config The config object
+ * 
  */
 Roo.View = function(config, depreciated_tpl, depreciated_config){
     
     if (typeof(depreciated_tpl) == 'undefined') {
         config = depreciated_container;
-        depreciated_container = config.container;
         depreciated_tpl = = config.template;
-    } 
+    } else {
+        this.el  = Roo.get(config);
+        this.template = depreciated_tpl;
+    }
     
-    this.container = depreciated_container;
-    this.template = depreciated_tpl;
     
-    this.el = Roo.get(this.container);
+    
+    
     if(typeof(this.template) == "string"){
         this.tpl = new Roo.Template(this.template);
     } else {
