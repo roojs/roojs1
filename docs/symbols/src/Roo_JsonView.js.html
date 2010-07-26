@@ -1,4 +1,4 @@
-<html><head><title>/home/alan/gitlive/roojs1/Roo/JsonView.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+<html><head><title>../roojs1/Roo/JsonView.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -14,10 +14,12 @@
  * @extends Roo.View
  * Shortcut class to create a JSON + {@link Roo.UpdateManager} template view. Usage:
 &lt;pre&gt;&lt;code&gt;
-var view = new Roo.JsonView(&quot;my-element&quot;,
-    '&amp;lt;div id=&quot;{id}&quot;&amp;gt;{foo} - {bar}&amp;lt;/div&amp;gt;', // auto create template
-    { multiSelect: true, jsonRoot: &quot;data&quot; }
-);
+var view = new Roo.JsonView({
+    container: &quot;my-element&quot;,
+    template: '&amp;lt;div id=&quot;{id}&quot;&amp;gt;{foo} - {bar}&amp;lt;/div&amp;gt;', // auto create template
+    multiSelect: true, 
+    jsonRoot: &quot;data&quot; 
+});
 
 // listen for node click?
 view.on(&quot;click&quot;, function(vw, index, node, e){
@@ -35,7 +37,9 @@ var tpl = new Roo.Template(
     &quot;&amp;lt;/div&amp;gt;&amp;lt;hr /&amp;gt;&quot;
 );
 
-var moreView = new Roo.JsonView(&quot;entry-list&quot;, tpl, {
+var moreView = new Roo.JsonView({
+    container :  &quot;entry-list&quot;, 
+    template : tpl,
     jsonRoot: &quot;posts&quot;
 });
 moreView.on(&quot;beforerender&quot;, this.sortEntries, this);
@@ -45,14 +49,20 @@ moreView.load({
     text: &quot;Loading Blog Entries...&quot;
 });
 &lt;/code&gt;&lt;/pre&gt;
+* 
+* Note: old code is supported with arguments : (container, template, config)
+* 
+* 
  * @constructor
  * Create a new JsonView
- * @param {String/HTMLElement/Element} container The container element where the view is to be rendered.
- * @param {Template} tpl The rendering template
+ * 
  * @param {Object} config The config object
+ * 
  */
-</span><span class="jsdoc-var">Roo.JsonView </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tpl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
-    </span><span class="jsdoc-var">Roo.JsonView.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tpl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+</span><span class="jsdoc-var">Roo.JsonView </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">depreciated_tpl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">depreciated_config</span><span class="jsdoc-syntax">){
+    
+    
+    </span><span class="jsdoc-var">Roo.JsonView.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">depreciated_tpl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">depreciated_config</span><span class="jsdoc-syntax">);
 
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">um </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getUpdateManager</span><span class="jsdoc-syntax">();
     </span><span class="jsdoc-var">um.setRenderer</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
@@ -86,8 +96,8 @@ moreView.load({
 };
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.JsonView</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.View</span><span class="jsdoc-syntax">, {
     </span><span class="jsdoc-comment">/**
-     * The root property in the loaded JSON object that contains the data
-     * @type {String}
+     * 
+     * @cfg {String} The root property in the loaded JSON object that contains the data
      */
     </span><span class="jsdoc-var">jsonRoot </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">,
 
