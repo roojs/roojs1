@@ -44,27 +44,29 @@
  * @param {String/DomHelper.Template} tpl The rendering template or a string to create a template with
  * @param {Object} config The config object
  */
-Roo.View = function(container, tpl, config){
+Roo.View = function(config, depreciated_tpl, depreciated_config){
     
-    if (typeof(tpl) == 'undefined') {
-        config = container;
-        container = config.container;
-        tpl = = config.template;
+    if (typeof(depreciated_tpl) == 'undefined') {
+        config = depreciated_container;
+        depreciated_container = config.container;
+        depreciated_tpl = = config.template;
     } 
     
-    this.container = container;
-    this.template = tpl;
+    this.container = depreciated_container;
+    this.template = depreciated_tpl;
     
-    this.el = Roo.get(container);
-    if(typeof tpl == "string"){
-        tpl = new Roo.Template(tpl);
+    this.el = Roo.get(this.container);
+    if(typeof(this.template) == "string"){
+        this.tpl = new Roo.Template(this.template);
+    } else {
+        this.tpl = this.template;
     }
-    tpl.compile();
+    this.tpl.compile();
     /**
      * The template used by this View
      * @type {Roo.DomHelper.Template}
      */
-    this.tpl = tpl;
+    //this.tpl = tpl;
 
     Roo.apply(this, config);
 
