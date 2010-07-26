@@ -750,7 +750,7 @@ if(opt.anim.isAnimated()){
                 if(!(camel = propCache[prop])){
                     camel = propCache[prop] = prop.replace(camelRe, camelFn);
                 }
-                if(camel == 'float'){ // not sure why this is not here..
+                if (camel == 'float'){ // not sure why this is not here..
                     camel = "cssFloat";
                 }
                 if(camel == 'opacity') {
