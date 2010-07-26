@@ -53,6 +53,7 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
         config = depreciated_container;
         depreciated_tpl = config.template;
     } else {
+        // old format..
         this.el  = Roo.get(config);
         this.tpl = depreciated_tpl;
         Roo.apply(this, depreciated_config);
