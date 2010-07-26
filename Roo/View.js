@@ -22,9 +22,9 @@
     el : "my-element",
     template : '&lt;div id="{0}"&gt;{2} - {1}&lt;/div&gt;', // auto create template
  
-     singleSelect: true,
-     selectedClass: "ydataview-selected",
-     store: store
+    singleSelect: true,
+    selectedClass: "ydataview-selected",
+    store: store
  });
 
  // listen for node click?
