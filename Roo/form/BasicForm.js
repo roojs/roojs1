@@ -108,10 +108,10 @@ Roo.extend(Roo.form.BasicForm, Roo.util.Observable, {
     childForms : false,
     
     /**
-     * allFields - full list of fields.
+     * allItems - full list of fields.
      * @type {Array}
      */
-    allFields : false,
+    allItems : false,
     
     /**
      * By default wait messages are displayed with Roo.MessageBox.wait. You can target a specific

@@ -18,11 +18,15 @@
  * @param {Object} config Configuration options
  */
 </span><span class="jsdoc-var">Roo.form.BasicForm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">this.allItems </span><span class="jsdoc-syntax">= [];
+    </span><span class="jsdoc-var">this.childForms </span><span class="jsdoc-syntax">= [];
     </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
     </span><span class="jsdoc-comment">/*
      * The Roo.form.Field items in this form.
      * @type MixedCollection
      */
+     
+     
     </span><span class="jsdoc-var">this.items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.util.MixedCollection</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">o.id </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-var">o.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">());
     });
@@ -104,10 +108,10 @@
     </span><span class="jsdoc-var">childForms </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-comment">/**
-     * allFields - full list of fields.
+     * allItems - full list of fields.
      * @type {Array}
      */
-    </span><span class="jsdoc-var">allFields </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">allItems </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-comment">/**
      * By default wait messages are displayed with Roo.MessageBox.wait. You can target a specific
@@ -304,7 +308,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
     </span><span class="jsdoc-var">addForm </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">form</span><span class="jsdoc-syntax">){
        
         </span><span class="jsdoc-var">this.childForms.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">form</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">form.allItems.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fe</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">form.allItems</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fe</span><span class="jsdoc-syntax">) {
             
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.findField</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fe.name</span><span class="jsdoc-syntax">)) { </span><span class="jsdoc-comment">// already added..
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;

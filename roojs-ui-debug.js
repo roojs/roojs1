@@ -25370,11 +25370,15 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
  * @param {Object} config Configuration options
  */
 Roo.form.BasicForm = function(el, config){
+    this.allItems = [];
+    this.childForms = [];
     Roo.apply(this, config);
     /*
      * The Roo.form.Field items in this form.
      * @type MixedCollection
      */
+     
+     
     this.items = new Roo.util.MixedCollection(false, function(o){
         return o.id || (o.id = Roo.id());
     });
@@ -25456,10 +25460,10 @@ Roo.extend(Roo.form.BasicForm, Roo.util.Observable, {
     childForms : false,
     
     /**
-     * allFields - full list of fields.
+     * allItems - full list of fields.
      * @type {Array}
      */
-    allFields : false,
+    allItems : false,
     
     /**
      * By default wait messages are displayed with Roo.MessageBox.wait. You can target a specific
@@ -25656,7 +25660,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
     addForm : function(form){
        
         this.childForms.push(form);
-        form.allItems.each(function (fe) {
+        Roo.each(form.allItems, function (fe) {
             
             if (this.findField(fe.name)) { // already added..
                 return;
@@ -25901,7 +25905,7 @@ Roo.form.Form = function(config){
         xitems = config.items;
         delete config.items;
     }
-    this.childForms = [];
+   
     
     Roo.form.Form.superclass.constructor.call(this, null, config);
     this.url = this.url || this.action;
