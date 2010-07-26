@@ -18,12 +18,13 @@
  <pre><code>
  var store = new Roo.data.Store(...);
 
- var view = new Roo.View("my-element",
- '&lt;div id="{0}"&gt;{2} - {1}&lt;/div&gt;', // auto create template
- {
- singleSelect: true,
- selectedClass: "ydataview-selected",
- store: store
+ var view = new Roo.View({
+    el : "my-element",
+    template : '&lt;div id="{0}"&gt;{2} - {1}&lt;/div&gt;', // auto create template
+ 
+     singleSelect: true,
+     selectedClass: "ydataview-selected",
+     store: store
  });
 
  // listen for node click?
