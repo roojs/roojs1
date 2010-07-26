@@ -384,8 +384,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                             this.findField(e.name).setValue(e.getValue());
                         }
                     });
-                
-                f.setValues(values);
+                }
             }, this);
         }
         
