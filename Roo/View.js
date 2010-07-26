@@ -152,7 +152,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     el : '',
     
     /**
-     * The template used by this View (after contruction)
+     * The template used by this View 
      * @type {String|Roo.DomHelper.Template}
      */
     this.tpl : false,
