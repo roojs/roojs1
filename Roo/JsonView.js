@@ -14,10 +14,12 @@
  * @extends Roo.View
  * Shortcut class to create a JSON + {@link Roo.UpdateManager} template view. Usage:
 <pre><code>
-var view = new Roo.JsonView("my-element",
-    '&lt;div id="{id}"&gt;{foo} - {bar}&lt;/div&gt;', // auto create template
-    { multiSelect: true, jsonRoot: "data" }
-);
+var view = new Roo.JsonView({
+    container: "my-element",
+    template: '&lt;div id="{id}"&gt;{foo} - {bar}&lt;/div&gt;', // auto create template
+    multiSelect: true, 
+    jsonRoot: "data" 
+});
 
 // listen for node click?
 view.on("click", function(vw, index, node, e){
