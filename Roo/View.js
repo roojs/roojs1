@@ -50,8 +50,9 @@
 Roo.View = function(config, depreciated_tpl, depreciated_config){
     
     if (typeof(depreciated_tpl) == 'undefined') {
-        config = depreciated_container;
-        depreciated_tpl = config.template;
+        // new way..
+        Roo.apply(this, config);
+        this.el  = Roo.get(this.el);
     } else {
         // old format..
         this.el  = Roo.get(config);
