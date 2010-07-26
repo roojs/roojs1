@@ -1690,13 +1690,13 @@
     },
     {
      "name": "tpl",
-     "type": "String|Roo.DomHelper.Template",
+     "type": "String|Roo.Template",
      "desc": "The template used by this View",
      "memberOf": "Roo.View"
     },
     {
      "name": "selectedClass",
-     "type": "Roo.DomHelper.Template",
+     "type": "String",
      "desc": "The css class to add to selected nodes",
      "memberOf": "Roo.View"
     },
@@ -4116,13 +4116,13 @@
     },
     {
      "name": "tpl",
-     "type": "String|Roo.DomHelper.Template",
+     "type": "String|Roo.Template",
      "desc": "The template used by this View",
      "memberOf": ""
     },
     {
      "name": "selectedClass",
-     "type": "Roo.DomHelper.Template",
+     "type": "String",
      "desc": "The css class to add to selected nodes",
      "memberOf": ""
     },
