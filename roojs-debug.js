@@ -23369,7 +23369,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      /**
      * @cfg {Roo.data.Store} Data store to load data from.
      */
-    el : false,
+    store : false,
     
     /**
      * @cfg {String|Roo.Element} The container element.
