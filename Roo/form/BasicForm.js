@@ -96,6 +96,13 @@ Roo.extend(Roo.form.BasicForm, Roo.util.Observable, {
      */
     trackResetOnLoad : false,
 
+    
+    /**
+     * allFields - full list of fields.
+     * @type {Array}
+     */
+    allFields : false,
+    
     /**
      * By default wait messages are displayed with Roo.MessageBox.wait. You can target a specific
      * element by passing it or its id or mask the form itself by passing in true.
@@ -369,6 +376,14 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
      * @return {Object}
      */
     getValues : function(asString){
+        if (this.childForms) {
+            Roo.each(this.childForms, function (f) {
+                f.setValues(values);
+            }, this);
+        }
+        
+        
+        
         var fs = Roo.lib.Ajax.serializeForm(this.el.dom);
         if(asString === true){
             return fs;
