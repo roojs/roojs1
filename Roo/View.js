@@ -159,7 +159,9 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      * @cfg {Roo.DomHelper.Template} The css class to add to selected nodes
      */
     selectedClass : "x-view-selected",
-    
+     /**
+     * @cfg {String} The empty text to show when nothing is loaded.
+     */
     emptyText : "",
     /**
      * Returns the element this view is bound to.
