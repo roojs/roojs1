@@ -96,8 +96,8 @@ Roo.JsonView = function(config, depreciated_tpl, depreciated_config){
 };
 Roo.extend(Roo.JsonView, Roo.View, {
     /**
-     * The root property in the loaded JSON object that contains the data
-     * @type {String}
+     * 
+     * @cfg {String} The root property in the loaded JSON object that contains the data
      */
     jsonRoot : "",
 
