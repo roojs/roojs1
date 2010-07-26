@@ -156,8 +156,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     this.tpl : false,
     
     /**
-     * The css class to add to selected nodes
-     * @type {Roo.DomHelper.Template}
+     * @cfg {Roo.DomHelper.Template} The css class to add to selected nodes
      */
     selectedClass : "x-view-selected",
     
