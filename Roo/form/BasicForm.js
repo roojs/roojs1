@@ -19,6 +19,7 @@
  */
 Roo.form.BasicForm = function(el, config){
     this.allItems = [];
+    this.childForms = [];
     Roo.apply(this, config);
     /*
      * The Roo.form.Field items in this form.
