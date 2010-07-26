@@ -1695,6 +1695,18 @@
      "memberOf": "Roo.View"
     },
     {
+     "name": "selectedClass",
+     "type": "Roo.DomHelper.Template",
+     "desc": "The css class to add to selected nodes",
+     "memberOf": "Roo.View"
+    },
+    {
+     "name": "emptyText",
+     "type": "String",
+     "desc": "The empty text to show when nothing is loaded.",
+     "memberOf": "Roo.View"
+    },
+    {
      "name": "listeners",
      "type": "Object",
      "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
@@ -4109,9 +4121,15 @@
      "memberOf": ""
     },
     {
-     "name": "The",
+     "name": "selectedClass",
      "type": "Roo.DomHelper.Template",
-     "desc": "css class to add to selected nodes",
+     "desc": "The css class to add to selected nodes",
+     "memberOf": ""
+    },
+    {
+     "name": "emptyText",
+     "type": "String",
+     "desc": "The empty text to show when nothing is loaded.",
      "memberOf": ""
     },
     {
