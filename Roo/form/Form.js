@@ -216,27 +216,19 @@ Roo.extend(Roo.form.Form, Roo.form.BasicForm, {
     
     addForm : function(form){
        
+        this.forms.push(form);
         form.allItems.each(function (fe) {
+            
             if (this.findField(fe.name)) { // already added..
                 return;
             }
             this.add( new Roo.form.Hidden({
                 name : fe.name,
                 
-               }
-            );
+            })
             
         }, this);
-        var r = [];
-        for(var i = 0, a = arguments, len = a.length; i < len; i++) {
-            if(a[i].isFormField){
-                r.push(a[i]);
-            }
-        }
-        if(r.length > 0){
-            Roo.form.Form.superclass.add.apply(this, r);
-        }
-        return this;
+        
     },
     
     
