@@ -206,30 +206,7 @@ Roo.extend(Roo.form.Form, Roo.form.BasicForm, {
         return this;
     },
     
-    /**
-     * Add a secondary form to this one, 
-     * Used to provide tabbed forms. One form is primary, with hidden values 
-     * which mirror the elements from the other forms.
-     * 
-     * @param {Roo.form.Form} form to add.
-     * 
-     */
-    
-    
-    addForm : function(form){
-       
-        this.childForms.push(form);
-        form.allItems.each(function (fe) {
-            
-            if (this.findField(fe.name)) { // already added..
-                return;
-            }
-            this.add( new Roo.form.Hidden({
-                name : fe.name
-            }));
-        }, this);
-        
-    },
+
     
     
     
