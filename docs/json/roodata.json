@@ -1671,12 +1671,6 @@
   "Roo.JsonView": {
    "props": [
     {
-     "name": "The",
-     "type": "String",
-     "desc": "root property in the loaded JSON object that contains the data",
-     "memberOf": ""
-    },
-    {
      "name": "store",
      "type": "Roo.data.Store",
      "desc": "Data store to load data from.",
