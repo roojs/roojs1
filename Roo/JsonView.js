@@ -35,7 +35,9 @@ var tpl = new Roo.Template(
     "&lt;/div&gt;&lt;hr /&gt;"
 );
 
-var moreView = new Roo.JsonView("entry-list", tpl, {
+var moreView = new Roo.JsonView({
+    container :  "entry-list", 
+    template : tpl,
     jsonRoot: "posts"
 });
 moreView.on("beforerender", this.sortEntries, this);
@@ -45,11 +47,14 @@ moreView.load({
     text: "Loading Blog Entries..."
 });
 </code></pre>
+* 
+* 
+* 
  * @constructor
  * Create a new JsonView
- * @param {String/HTMLElement/Element} container The container element where the view is to be rendered.
- * @param {Template} tpl The rendering template
+ * 
  * @param {Object} config The config object
+ * 
  */
 Roo.JsonView = function(container, tpl, config){
     
