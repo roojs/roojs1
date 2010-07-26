@@ -155,6 +155,13 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      * @cfg {String|Roo.DomHelper.Template}
      */
     template : '',
+    
+    /**
+     * The template used by this View (after contruction)
+     * @type {Roo.DomHelper.Template}
+     */
+    this.tpl : false,
+    
     /**
      * The css class to add to selected nodes
      * @type {Roo.DomHelper.Template}
