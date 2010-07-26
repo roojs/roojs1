@@ -204,6 +204,43 @@ Roo.extend(Roo.form.Form, Roo.form.BasicForm, {
         }
         return this;
     },
+    
+    /**
+     * Add a secondary form to this one, 
+     * Used to provide tabbed forms. One form is primary, with hidden values 
+     * which mirror the elements from the other forms.
+     * 
+     * 
+     */
+    
+    
+    addForm : function(form){
+       
+        form.allItems.each(function (fe) {
+            if (this.findField(fe.name)) { // already added..
+                return;
+            }
+            this.add( new Roo.form.Hidden({
+                name : fe.name,
+                
+               }
+            );
+            
+        }, this);
+        var r = [];
+        for(var i = 0, a = arguments, len = a.length; i < len; i++) {
+            if(a[i].isFormField){
+                r.push(a[i]);
+            }
+        }
+        if(r.length > 0){
+            Roo.form.Form.superclass.add.apply(this, r);
+        }
+        return this;
+    },
+    
+    
+    
      /**
      * Find any element that has been added to a form, using it's ID or name
      * This can include framesets, columns etc. along with regular fields..
