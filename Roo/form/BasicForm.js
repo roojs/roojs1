@@ -353,6 +353,12 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 }
             }
         }
+        if (this.childForms) {
+            Roo.each(this.childForms, function (f) {
+                f.setValues(values);
+            });
+        }
+        
         return this;
     },
 
