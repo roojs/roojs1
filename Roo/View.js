@@ -146,14 +146,12 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
 Roo.extend(Roo.View, Roo.util.Observable, {
     
     /**
-     * The container element.
-     * @cfg {String|Roo.Element}
+     * @cfg {String|Roo.Element} The container element.
      */
     el : '',
     
     /**
-     * The template used by this View 
-     * @type {String|Roo.DomHelper.Template}
+     * @cfg {String|Roo.DomHelper.Template} The template used by this View 
      */
     this.tpl : false,
     
