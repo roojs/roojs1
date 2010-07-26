@@ -156,12 +156,12 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     el : '',
     
     /**
-     * @cfg {String|Roo.DomHelper.Template} tpl The template used by this View 
+     * @cfg {String|Roo.Template} tpl The template used by this View 
      */
     tpl : false,
     
     /**
-     * @cfg {Roo.DomHelper.Template} selectedClass The css class to add to selected nodes
+     * @cfg {String} selectedClass The css class to add to selected nodes
      */
     selectedClass : "x-view-selected",
      /**
