@@ -149,16 +149,11 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      * The container element.
      * @cfg {String|Roo.Element}
      */
-    container : '',
-    /**
-     * The template used by this View
-     * @cfg {String|Roo.DomHelper.Template}
-     */
-    template : '',
+    el : '',
     
     /**
      * The template used by this View (after contruction)
-     * @type {Roo.DomHelper.Template}
+     * @type {String|Roo.DomHelper.Template}
      */
     this.tpl : false,
     
