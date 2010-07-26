@@ -56,9 +56,7 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
         this.el  = Roo.get(config);
         this.template = depreciated_tpl;
     }
-    
-    
-    
+     
     
     if(typeof(this.template) == "string"){
         this.tpl = new Roo.Template(this.template);
