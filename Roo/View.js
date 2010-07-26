@@ -45,6 +45,16 @@
  * @param {Object} config The config object
  */
 Roo.View = function(container, tpl, config){
+    
+    if (typeof(tpl) == 'undefined') {
+        config = container;
+        container = config.container;
+        tpl = = config.template;
+    } 
+    
+    this.container = container;
+    this.template = tpl;
+    
     this.el = Roo.get(container);
     if(typeof tpl == "string"){
         tpl = new Roo.Template(tpl);
