@@ -337,6 +337,10 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 }
             }
         }
+        Roo.each(this.childForms || [], function (f) {
+            f.markInvalid(errors);
+        });
+        
         return this;
     },
 
@@ -387,12 +391,11 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 }
             }
         }
-        if (this.childForms) {
-            Roo.each(this.childForms, function (f) {
-                f.setValues(values);
-            });
-        }
-        
+         
+        Roo.each(this.childForms || [], function (f) {
+            f.setValues(values);
+        });
+                
         return this;
     },
 
