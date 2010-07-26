@@ -50,6 +50,7 @@ moreView.load({
 });
 </code></pre>
 * 
+* Note: old code is supported with arguments, (container, template, config)
 * 
 * 
  * @constructor
