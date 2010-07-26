@@ -89,7 +89,7 @@
     
 <!-- ============================== class summary ========================== -->			
     <div class="description">
-	Create a "View" for an element based on a data model or UpdateManager and the supplied DomHelper template. <br/>This class also supports single and multi selection modes. <br><br/>Create a data model bound view:<br/> <pre><code><br/> var store = new Roo.data.Store(...);<br/><br/> var view = new Roo.View("my-element",<br/> '&lt;div id="{0}"&gt;{2} - {1}&lt;/div&gt;', // auto create template<br/> {<br/> singleSelect: true,<br/> selectedClass: "ydataview-selected",<br/> store: store<br/> });<br/><br/> // listen for node click?<br/> view.on("click", function(vw, index, node, e){<br/> alert('Node "' + node.id + '" at index: ' + index + " was clicked.");<br/> });<br/><br/> // load XML data<br/> dataModel.load("foobar.xml");<br/> </code></pre><br/> For an example of creating a JSON/UpdateManager view, see {<b>link</b> Roo.JsonView}.<br/><br><br><br/><b>Note: The root of your template must be a single node. Table/row implementations may work but are not supported due to<br/>IE"s limited insertion support with tables and Opera"s faulty event bubbling.</b>
+	Create a "View" for an element based on a data model or UpdateManager and the supplied DomHelper template. <br/>This class also supports single and multi selection modes. <br><br/>Create a data model bound view:<br/> <pre><code><br/> var store = new Roo.data.Store(...);<br/><br/> var view = new Roo.View({<br/>    el : "my-element",<br/>    template : '&lt;div id="{0}"&gt;{2} - {1}&lt;/div&gt;', // auto create template<br/> <br/>    singleSelect: true,<br/>    selectedClass: "ydataview-selected",<br/>    store: store<br/> });<br/><br/> // listen for node click?<br/> view.on("click", function(vw, index, node, e){<br/> alert('Node "' + node.id + '" at index: ' + index + " was clicked.");<br/> });<br/><br/> // load XML data<br/> dataModel.load("foobar.xml");<br/> </code></pre><br/> For an example of creating a JSON/UpdateManager view, see {<b>link</b> Roo.JsonView}.<br/><br><br><br/><b>Note: The root of your template must be a single node. Table/row implementations may work but are not supported due to<br/>IE"s limited insertion support with tables and Opera"s faulty event bubbling.</b><br/><br/>Note: old style constructor is still suported (container, template, config)
     </div>
 
 	
@@ -130,6 +130,66 @@
 	
 	
 	
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.View-cfg-Data" name=".Data"></a>
+			<div class="fixedFont">
+				<b  class="itemname">Data</b> : <a href="./Roo.data.Store.html#constructor" roo:cls="Roo.data.Store.html#constructor">Roo.data.Store</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">store to load data from.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">store to load data from.</div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.View
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt1 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.View-cfg-The" name=".The"></a>
+			<div class="fixedFont">
+				<b  class="itemname">The</b> : Roo.DomHelper.Template
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">css class to add to selected nodes</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">css class to add to selected nodes</div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.View
+				
+		    </td>
+		</tr>
+        
 	
 		<tr class="config-row expandable config-row-alt0">
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
@@ -229,7 +289,7 @@
 		<div class="fixedFont">
 			<span class="attributes">new <B>Roo.</B></span><b class="itemname">View</b>
 				
-				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement/Element <B><i>container</i></B>, <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/DomHelper.Template <B><i>tpl</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>config</i></B>) 
+				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>config</i></B>) 
 			
 				
 			
@@ -249,18 +309,6 @@
 			
 				<dl class="detailList">
 				<dt class="heading">Parameters:</dt>
-				
-					<dt>
-						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement/Element</span>  <b>container</b>
-						
-					</dt>
-					<dd>The container element where the view is to be rendered.</dd>
-				
-					<dt>
-						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/DomHelper.Template</span>  <b>tpl</b>
-						
-					</dt>
-					<dd>The rendering template or a string to create a template with</dd>
 				
 					<dt>
 						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>config</b>
@@ -2358,7 +2406,7 @@
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Thu Jul 22 2010 17:23:52 GMT+0800 (HKT)
+			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Mon Jul 26 2010 14:59:32 GMT+0800 (HKT)
 			Based on 
 			<a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a>  
 		</div>

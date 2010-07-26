@@ -7,10 +7,12 @@ seed ../gnome.introspection-doc-generator/pack.js \
 seed ../gnome.introspection-doc-generator/pack.js \
      -f buildSDK/dependancy_ui.txt -o roojs-ui.js -O roojs-ui-debug.js
  
-seed ../gnome.introspection-doc-generator/pack.js \
-    -f buildSDK/dependancy_core.txt \
-     -f buildSDK/dependancy_ui.txt -o roojs-all.js -O roojs-debug.js
- 
+cat      roojs-core.js  roojs-ui.js >  roojs-all.js 
+cat roojs-core-debug.js  roojs-ui-debug.js > roojs-debug.js
+     
+#seed ../gnome.introspection-doc-generator/pack.js \
+#    -f buildSDK/dependancy_core.txt \
+#    
 #docs.. 
 seed ../gnome.introspection-doc-generator/jsdocbuild.js --baseDir ../roojs1 \
    --target ../roojs1/docs --conf ../roojs1/buildSDK/jsdoc.cfg.json \

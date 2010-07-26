@@ -9009,7 +9009,7 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
     if (typeof(depreciated_tpl) == 'undefined') {
         // new way.. - universal constructor.
         Roo.apply(this, config);
-        this.el = Roo.get(this.el);
+        this.el  = Roo.get(this.el);
     } else {
         // old format..
         this.el  = Roo.get(config);
@@ -9018,7 +9018,7 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
     }
      
     
-    if (typeof(this.tpl) == "string") {
+    if(typeof(this.tpl) == "string"){
         this.tpl = new Roo.Template(this.tpl);
     } 
     
@@ -9115,7 +9115,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     /**
      * @cfg {String|Roo.DomHelper.Template} The template used by this View 
      */
-    tpl : false,
+    this.tpl : false,
     
     /**
      * @cfg {Roo.DomHelper.Template} The css class to add to selected nodes

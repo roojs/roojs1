@@ -1671,6 +1671,18 @@
   "Roo.JsonView": {
    "props": [
     {
+     "name": "The",
+     "type": "String",
+     "desc": "root property in the loaded JSON object that contains the data",
+     "memberOf": ""
+    },
+    {
+     "name": "Data",
+     "type": "Roo.data.Store",
+     "desc": "store to load data from.",
+     "memberOf": "Roo.View"
+    },
+    {
      "name": "listeners",
      "type": "Object",
      "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
@@ -2306,7 +2318,7 @@
      "name": "removeMask",
      "type": "Boolean",
      "desc": "True to create a single-use mask that is automatically destroyed after loading (useful for page loads),\nFalse to persist the mask element reference for multiple uses (e.g., for paged data widgets).  Defaults to false.",
-     "memberOf": ""
+     "memberOf": "Roo"
     },
     {
      "name": "msg",
@@ -3918,7 +3930,7 @@
      "name": "tree",
      "type": "Roo.tree.TreePanel",
      "desc": "The tree TreePanel, with config etc.",
-     "memberOf": ""
+     "memberOf": "Roo"
     },
     {
      "name": "fitToFrame",
@@ -4066,6 +4078,18 @@
   },
   "Roo.View": {
    "props": [
+    {
+     "name": "Data",
+     "type": "Roo.data.Store",
+     "desc": "store to load data from.",
+     "memberOf": ""
+    },
+    {
+     "name": "The",
+     "type": "Roo.DomHelper.Template",
+     "desc": "css class to add to selected nodes",
+     "memberOf": ""
+    },
     {
      "name": "listeners",
      "type": "Object",
