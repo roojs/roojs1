@@ -1,4 +1,4 @@
-<html><head><title>/home/alan/gitlive/roojs1/Roo/View.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+<html><head><title>../roojs1/Roo/View.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -18,12 +18,13 @@
  &lt;pre&gt;&lt;code&gt;
  var store = new Roo.data.Store(...);
 
- var view = new Roo.View(&quot;my-element&quot;,
- '&amp;lt;div id=&quot;{0}&quot;&amp;gt;{2} - {1}&amp;lt;/div&amp;gt;', // auto create template
- {
- singleSelect: true,
- selectedClass: &quot;ydataview-selected&quot;,
- store: store
+ var view = new Roo.View({
+    el : &quot;my-element&quot;,
+    template : '&amp;lt;div id=&quot;{0}&quot;&amp;gt;{2} - {1}&amp;lt;/div&amp;gt;', // auto create template
+ 
+    singleSelect: true,
+    selectedClass: &quot;ydataview-selected&quot;,
+    store: store
  });
 
  // listen for node click?
@@ -38,26 +39,37 @@
  * &lt;br&gt;&lt;br&gt;
  * &lt;b&gt;Note: The root of your template must be a single node. Table/row implementations may work but are not supported due to
  * IE&quot;s limited insertion support with tables and Opera&quot;s faulty event bubbling.&lt;/b&gt;
+ * 
+ * Note: old style constructor is still suported (container, template, config)
+ * 
  * @constructor
  * Create a new View
- * @param {String/HTMLElement/Element} container The container element where the view is to be rendered.
- * @param {String/DomHelper.Template} tpl The rendering template or a string to create a template with
  * @param {Object} config The config object
+ * 
  */
-</span><span class="jsdoc-var">Roo.View </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tpl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
-    </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">);
-    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">tpl </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;string&quot;</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-var">tpl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tpl</span><span class="jsdoc-syntax">);
+</span><span class="jsdoc-var">Roo.View </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">depreciated_tpl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">depreciated_config</span><span class="jsdoc-syntax">){
+    
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">depreciated_tpl</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-comment">// new way.. - universal constructor.
+        </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.el  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">);
+    } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-comment">// old format..
+        </span><span class="jsdoc-var">this.el  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.tpl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">depreciated_tpl</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">depreciated_config</span><span class="jsdoc-syntax">);
     }
-    </span><span class="jsdoc-var">tpl.compile</span><span class="jsdoc-syntax">();
-    </span><span class="jsdoc-comment">/**
-     * The template used by this View
-     * @type {Roo.DomHelper.Template}
-     */
-    </span><span class="jsdoc-var">this.tpl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tpl</span><span class="jsdoc-syntax">;
+     
+    
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tpl</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">&quot;string&quot;</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.tpl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tpl</span><span class="jsdoc-syntax">);
+    } 
+    
+    
+    </span><span class="jsdoc-var">this.tpl.compile</span><span class="jsdoc-syntax">();
+   
 
-    </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
-
+     
     </span><span class="jsdoc-comment">/** @private */
     </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
     </span><span class="jsdoc-comment">/**
@@ -132,12 +144,29 @@
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.View</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.util.Observable</span><span class="jsdoc-syntax">, {
+    
+     </span><span class="jsdoc-comment">/**
+     * @cfg {Roo.data.Store} Data store to load data from.
+     */
+    </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
     </span><span class="jsdoc-comment">/**
-     * The css class to add to selected nodes
-     * @type {Roo.DomHelper.Template}
+     * @cfg {String|Roo.Element} The container element.
+     */
+    </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String|Roo.DomHelper.Template} The template used by this View 
+     */
+    </span><span class="jsdoc-var">this.tpl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Roo.DomHelper.Template} The css class to add to selected nodes
      */
     </span><span class="jsdoc-var">selectedClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-view-selected&quot;</span><span class="jsdoc-syntax">,
-    
+     </span><span class="jsdoc-comment">/**
+     * @cfg {String} The empty text to show when nothing is loaded.
+     */
     </span><span class="jsdoc-var">emptyText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-comment">/**
      * Returns the element this view is bound to.
