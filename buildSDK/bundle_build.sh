@@ -13,4 +13,5 @@ seed ../gnome.introspection-doc-generator/pack.js \
  
 #docs.. 
 seed ../gnome.introspection-doc-generator/jsdocbuild.js --baseDir ../roojs1 \
-   --target ../roojs/docs --conf ../roojs1/buildSDK/jsdoc.cfg.json --cacheDirectory /tmp/roocache/
+   --target ../roojs1/docs --conf ../roojs1/buildSDK/jsdoc.cfg.json \
+   --cacheDirectory /tmp/roocache/
