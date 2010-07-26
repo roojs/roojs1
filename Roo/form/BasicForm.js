@@ -18,11 +18,14 @@
  * @param {Object} config Configuration options
  */
 Roo.form.BasicForm = function(el, config){
+    this.allItems = [];
     Roo.apply(this, config);
     /*
      * The Roo.form.Field items in this form.
      * @type MixedCollection
      */
+     
+     
     this.items = new Roo.util.MixedCollection(false, function(o){
         return o.id || (o.id = Roo.id());
     });
