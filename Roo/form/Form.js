@@ -232,7 +232,6 @@ Roo.extend(Roo.form.Form, Roo.form.BasicForm, {
             this.add( new Roo.form.Hidden({
                 name : fe.name
             }));
-            
         }, this);
         
     },
