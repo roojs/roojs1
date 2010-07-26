@@ -30441,7 +30441,9 @@ layout.addxtype({
             // views..
             cfg.el = this.el;
             // factory?
-            return new Roo[cfg.xtype](cfg);
+            var ret = new Roo[cfg.xtype](cfg);
+            ret.render(false, ''); // render blank..
+            return ret;
             
         }
         return false;
