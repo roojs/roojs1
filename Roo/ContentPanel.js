@@ -367,7 +367,7 @@ layout.addxtype({
             return new Roo[cfg.xtype](cfg);
             
         }
-        
+        return false;
         
     }
 });
