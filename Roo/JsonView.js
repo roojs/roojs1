@@ -53,12 +53,6 @@ moreView.load({
  */
 Roo.JsonView = function(container, tpl, config){
     
-    if (typeof(tpl) == 'undefined') {
-        // universal constructor..
-        
-        
-    }
-    
     
     Roo.JsonView.superclass.constructor.call(this, container, tpl, config);
 
