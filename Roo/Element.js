@@ -746,11 +746,12 @@ if(opt.anim.isAnimated()){
         setStyle : function(prop, value){
             if(typeof prop == "string"){
                 var camel;
-                if(prop == 'float'){ // not sure why this is not here..
-                    prop = "cssFloat";
-                }
+                
                 if(!(camel = propCache[prop])){
                     camel = propCache[prop] = prop.replace(camelRe, camelFn);
+                }
+                if(prop == 'float'){ // not sure why this is not here..
+                    prop = "cssFloat";
                 }
                 if(camel == 'opacity') {
                     this.setOpacity(value);
