@@ -1,4 +1,4 @@
-<html><head><title>/home/alan/gitlive/roojs1/Roo/ContentPanel.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+<html><head><title>../roojs1/Roo/ContentPanel.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -336,7 +336,7 @@ panel.load({
     },
     
       </span><span class="jsdoc-comment">/**
-     * Adds a xtype elements to the panel - currently only supports Forms.
+     * Adds a xtype elements to the panel - currently only supports Forms, View, JsonView.
      * &lt;pre&gt;&lt;code&gt;
 
 layout.addxtype({
@@ -351,16 +351,23 @@ layout.addxtype({
     
     </span><span class="jsdoc-var">addxtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-comment">// add form..
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">cfg.xtype.match</span><span class="jsdoc-syntax">(/^Form$/)) {
-            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
-        }
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.createChild</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.xtype.match</span><span class="jsdoc-syntax">(/^Form$/)) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.createChild</span><span class="jsdoc-syntax">();
 
-        </span><span class="jsdoc-var">this.form </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new  </span><span class="jsdoc-var">Roo.form.Form</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
-        
-        
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.form.allItems.length</span><span class="jsdoc-syntax">) </span><span class="jsdoc-var">this.form.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.dom</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.form</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.form </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new  </span><span class="jsdoc-var">Roo.form.Form</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+            
+            
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.form.allItems.length</span><span class="jsdoc-syntax">) </span><span class="jsdoc-var">this.form.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.dom</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.form</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'View'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'JsonView'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.xtype</span><span class="jsdoc-syntax">) &gt; -1) {
+            </span><span class="jsdoc-comment">// views..
+            </span><span class="jsdoc-var">cfg.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-comment">// factory?
+            </span><span class="jsdoc-keyword">return new </span><span class="jsdoc-var">Roo</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cfg.xtype</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+            
+        }
+        </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
         
     }
 });
