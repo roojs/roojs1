@@ -54,15 +54,16 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
         depreciated_tpl = config.template;
     } else {
         this.el  = Roo.get(config);
-        this.template = depreciated_tpl;
+        this.tpl = depreciated_tpl;
+        Roo.apply(this, depreciated_config);
     }
      
     
-    if(typeof(this.template) == "string"){
-        this.tpl = new Roo.Template(this.template);
-    } else {
-        this.tpl = this.template;
-    }
+    if(typeof(this.tpl) == "string"){
+        this.tpl = new Roo.Template(this.tpl);
+    } 
+    
+    
     this.tpl.compile();
     /**
      * The template used by this View
