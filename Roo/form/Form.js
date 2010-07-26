@@ -22,7 +22,7 @@ Roo.form.Form = function(config){
         xitems = config.items;
         delete config.items;
     }
-    this.childForms = [];
+   
     
     Roo.form.Form.superclass.constructor.call(this, null, config);
     this.url = this.url || this.action;
