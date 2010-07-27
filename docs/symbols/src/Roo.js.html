@@ -85,6 +85,12 @@
          * @type Boolean
          */
         </span><span class="jsdoc-var">isReady </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * Turn on debugging output (currently only the factory uses this)
+         * @type Boolean
+         */
+        
+        </span><span class="jsdoc-var">debug</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
         </span><span class="jsdoc-comment">/**
          * True to automatically uncache orphaned Roo.Elements periodically (defaults to true)
@@ -297,7 +303,7 @@ Roo.factory(conf, Roo.data);
                 </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
             }
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">c.xtype</span><span class="jsdoc-syntax">]) {
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.debug</span><span class="jsdoc-syntax">) </span><span class="jsdoc-var">console.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Roo.Factory(&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">c.xtype </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;)&quot;</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.debug</span><span class="jsdoc-syntax">) </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Roo.Factory(&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">c.xtype </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;)&quot;</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">c.xtype</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">ret.xns </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
@@ -305,7 +311,20 @@ Roo.factory(conf, Roo.data);
             </span><span class="jsdoc-var">c.xns </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// prevent recursion..
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
         },
-         
+         </span><span class="jsdoc-comment">/**
+         * Logs to console if it can.
+         *
+         * @param {String|Object} string
+         * @method log
+         */
+        </span><span class="jsdoc-var">log </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">)
+        {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">((</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">console</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">console.log</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">)) {
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// alerT?
+            </span><span class="jsdoc-syntax">}
+            </span><span class="jsdoc-var">console.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">);
+            
+        }
         </span><span class="jsdoc-comment">/**
          * Takes an object and converts it to an encoded URL. e.g. Roo.urlEncode({foo: 1, bar: 2}); would return &quot;foo=1&amp;bar=2&quot;.  Optionally, property values can be arrays, instead of keys and the resulting string that's returned will contain a name/value pair for each array value.
          * @param {Object} o

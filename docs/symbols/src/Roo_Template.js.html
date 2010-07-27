@@ -43,36 +43,42 @@ t.append('some-element', {id: 'myid', cls: 'myclass', name: 'foo', value: 'bar'}
      * @return {String} The HTML fragment
      */
     </span><span class="jsdoc-var">applyTemplate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.compiled</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.compiled</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">);
-        }
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">useF </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.disableFormats </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.util.Format</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tpl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">format</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">useF</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">format.substr</span><span class="jsdoc-syntax">(0, 5) == </span><span class="jsdoc-string">&quot;this.&quot;</span><span class="jsdoc-syntax">){
-                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">tpl.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">format.substr</span><span class="jsdoc-syntax">(5), </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">);
-                }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
-                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">){
-                        </span><span class="jsdoc-comment">// quoted values are required for strings in compiled templates, 
-                        // but for non compiled we need to strip them
-                        // quoted reversed for jsmin
-                        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">re </span><span class="jsdoc-syntax">= /^\s*['&quot;](.*)[&quot;']\s*$/;
-                        </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">args.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">','</span><span class="jsdoc-syntax">);
-                        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">args.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
-                            </span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">re</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;$1&quot;</span><span class="jsdoc-syntax">);
-                        }
-                        </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">]]</span><span class="jsdoc-var">.concat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">);
-                    }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
-                        </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">]];
-                    }
-                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">fm</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">format</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fm</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">);
-                }
-            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
-                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">] !== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">] : </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.compiled</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.compiled</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">);
             }
-        };
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.html.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.re</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">useF </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.disableFormats </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.util.Format</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tpl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">format</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">useF</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">format.substr</span><span class="jsdoc-syntax">(0, 5) == </span><span class="jsdoc-string">&quot;this.&quot;</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">tpl.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">format.substr</span><span class="jsdoc-syntax">(5), </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">);
+                    }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">){
+                            </span><span class="jsdoc-comment">// quoted values are required for strings in compiled templates, 
+                            // but for non compiled we need to strip them
+                            // quoted reversed for jsmin
+                            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">re </span><span class="jsdoc-syntax">= /^\s*['&quot;](.*)[&quot;']\s*$/;
+                            </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">args.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">','</span><span class="jsdoc-syntax">);
+                            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">args.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+                                </span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">re</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;$1&quot;</span><span class="jsdoc-syntax">);
+                            }
+                            </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">]]</span><span class="jsdoc-var">.concat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">);
+                        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                            </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">]];
+                        }
+                        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">fm</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">format</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fm</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">);
+                    }
+                }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">] !== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">] : </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
+                }
+            };
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.html.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.re</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">);
+        } </span><span class="jsdoc-keyword">catch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
     },
     
     </span><span class="jsdoc-comment">/**

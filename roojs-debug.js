@@ -85,6 +85,12 @@ Roo.apply = function(o, c, defaults){
          * @type Boolean
          */
         isReady : false,
+        /**
+         * Turn on debugging output (currently only the factory uses this)
+         * @type Boolean
+         */
+        
+        debug: false,
 
         /**
          * True to automatically uncache orphaned Roo.Elements periodically (defaults to true)
@@ -297,7 +303,7 @@ Roo.factory(conf, Roo.data);
                 return c;
             }
             if (ns[c.xtype]) {
-                if (Roo.debug) console.log("Roo.Factory(" + c.xtype + ")");
+                if (Roo.debug) Roo.log("Roo.Factory(" + c.xtype + ")");
                 var ret = new ns[c.xtype](c);
                 ret.xns = false;
                 return ret;
@@ -305,7 +311,20 @@ Roo.factory(conf, Roo.data);
             c.xns = false; // prevent recursion..
             return c;
         },
-         
+         /**
+         * Logs to console if it can.
+         *
+         * @param {String|Object} string
+         * @method log
+         */
+        log : function(s)
+        {
+            if ((typeof(console) == 'undefined') || typeof(console.log) == 'undefined')) {
+                return; // alerT?
+            }
+            console.log(s);
+            
+        }
         /**
          * Takes an object and converts it to an encoded URL. e.g. Roo.urlEncode({foo: 1, bar: 2}); would return "foo=1&bar=2".  Optionally, property values can be arrays, instead of keys and the resulting string that's returned will contain a name/value pair for each array value.
          * @param {Object} o
@@ -4409,36 +4428,42 @@ Roo.Template.prototype = {
      * @return {String} The HTML fragment
      */
     applyTemplate : function(values){
-        if(this.compiled){
-            return this.compiled(values);
-        }
-        var useF = this.disableFormats !== true;
-        var fm = Roo.util.Format, tpl = this;
-        var fn = function(m, name, format, args){
-            if(format && useF){
-                if(format.substr(0, 5) == "this."){
-                    return tpl.call(format.substr(5), values[name], values);
-                }else{
-                    if(args){
-                        // quoted values are required for strings in compiled templates, 
-                        // but for non compiled we need to strip them
-                        // quoted reversed for jsmin
-                        var re = /^\s*['"](.*)["']\s*$/;
-                        args = args.split(',');
-                        for(var i = 0, len = args.length; i < len; i++){
-                            args[i] = args[i].replace(re, "$1");
-                        }
-                        args = [values[name]].concat(args);
-                    }else{
-                        args = [values[name]];
-                    }
-                    return fm[format].apply(fm, args);
-                }
-            }else{
-                return values[name] !== undefined ? values[name] : "";
+        try {
+            
+            if(this.compiled){
+                return this.compiled(values);
             }
-        };
-        return this.html.replace(this.re, fn);
+            var useF = this.disableFormats !== true;
+            var fm = Roo.util.Format, tpl = this;
+            var fn = function(m, name, format, args){
+                if(format && useF){
+                    if(format.substr(0, 5) == "this."){
+                        return tpl.call(format.substr(5), values[name], values);
+                    }else{
+                        if(args){
+                            // quoted values are required for strings in compiled templates, 
+                            // but for non compiled we need to strip them
+                            // quoted reversed for jsmin
+                            var re = /^\s*['"](.*)["']\s*$/;
+                            args = args.split(',');
+                            for(var i = 0, len = args.length; i < len; i++){
+                                args[i] = args[i].replace(re, "$1");
+                            }
+                            args = [values[name]].concat(args);
+                        }else{
+                            args = [values[name]];
+                        }
+                        return fm[format].apply(fm, args);
+                    }
+                }else{
+                    return values[name] !== undefined ? values[name] : "";
+                }
+            };
+            return this.html.replace(this.re, fn);
+        } catch (e) {
+            Roo.log(e);
+        }
+        return '';
     },
     
     /**
