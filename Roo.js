@@ -305,7 +305,20 @@ Roo.factory(conf, Roo.data);
             c.xns = false; // prevent recursion..
             return c;
         },
-         
+         /**
+         * Logs to console if it can.
+         *
+         * @param {String|Object} string
+         * @method log
+         */
+        log : function(s)
+        {
+            if ((typeof(console) == 'undefined') || typeof(console.log) == 'undefined')) {
+                return; // alerT?
+            }
+            console.log(s);
+            
+        }
         /**
          * Takes an object and converts it to an encoded URL. e.g. Roo.urlEncode({foo: 1, bar: 2}); would return "foo=1&bar=2".  Optionally, property values can be arrays, instead of keys and the resulting string that's returned will contain a name/value pair for each array value.
          * @param {Object} o
