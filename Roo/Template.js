@@ -76,7 +76,7 @@ Roo.Template.prototype = {
             };
             return this.html.replace(this.re, fn);
         } catch (e) {
-            console && console.log && console.log(e.toString());
+            Roo.log(e.toString());
         }
         return '';
     },
