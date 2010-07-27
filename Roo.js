@@ -85,6 +85,12 @@ Roo.apply = function(o, c, defaults){
          * @type Boolean
          */
         isReady : false,
+        /**
+         * Turn on debugging output (currently only the factory uses this)
+         * @type Boolean
+         */
+        
+        debug: false,
 
         /**
          * True to automatically uncache orphaned Roo.Elements periodically (defaults to true)
@@ -297,7 +303,7 @@ Roo.factory(conf, Roo.data);
                 return c;
             }
             if (ns[c.xtype]) {
-                if (Roo.debug) console.log("Roo.Factory(" + c.xtype + ")");
+                if (Roo.debug) Roo.log("Roo.Factory(" + c.xtype + ")");
                 var ret = new ns[c.xtype](c);
                 ret.xns = false;
                 return ret;
