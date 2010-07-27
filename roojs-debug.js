@@ -324,7 +324,7 @@ Roo.factory(conf, Roo.data);
             }
             console.log(s);
             
-        }
+        },
         /**
          * Takes an object and converts it to an encoded URL. e.g. Roo.urlEncode({foo: 1, bar: 2}); would return "foo=1&bar=2".  Optionally, property values can be arrays, instead of keys and the resulting string that's returned will contain a name/value pair for each array value.
          * @param {Object} o
@@ -4462,8 +4462,9 @@ Roo.Template.prototype = {
             return this.html.replace(this.re, fn);
         } catch (e) {
             Roo.log(e);
+            throw e;
         }
-        return '';
+         
     },
     
     /**

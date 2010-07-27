@@ -77,8 +77,9 @@ t.append('some-element', {id: 'myid', cls: 'myclass', name: 'foo', value: 'bar'}
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.html.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.re</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">);
         } </span><span class="jsdoc-keyword">catch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">throw </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+         
     },
     
     </span><span class="jsdoc-comment">/**

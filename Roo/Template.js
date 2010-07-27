@@ -77,8 +77,9 @@ Roo.Template.prototype = {
             return this.html.replace(this.re, fn);
         } catch (e) {
             Roo.log(e);
+            throw e;
         }
-        return '';
+         
     },
     
     /**
