@@ -319,7 +319,7 @@ Roo.factory(conf, Roo.data);
          */
         log : function(s)
         {
-            if ((typeof(console) == 'undefined') || typeof(console.log) == 'undefined')) {
+            if ((typeof(console) == 'undefined') || (typeof(console.log) == 'undefined')) {
                 return; // alerT?
             }
             console.log(s);
