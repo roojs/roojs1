@@ -362,7 +362,7 @@ layout.addxtype({
         }
         if (['View', 'JsonView'].indexOf(cfg.xtype) > -1) {
             // views..
-            cfg.el = this.el;
+            cfg.el = this.el.appendChild(document.createElement("div"));
             // factory?
             var ret = new Roo[cfg.xtype](cfg);
             ret.render(false, ''); // render blank..
