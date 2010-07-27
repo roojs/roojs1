@@ -43,36 +43,42 @@ Roo.Template.prototype = {
      * @return {String} The HTML fragment
      */
     applyTemplate : function(values){
-        if(this.compiled){
-            return this.compiled(values);
-        }
-        var useF = this.disableFormats !== true;
-        var fm = Roo.util.Format, tpl = this;
-        var fn = function(m, name, format, args){
-            if(format && useF){
-                if(format.substr(0, 5) == "this."){
-                    return tpl.call(format.substr(5), values[name], values);
-                }else{
-                    if(args){
-                        // quoted values are required for strings in compiled templates, 
-                        // but for non compiled we need to strip them
-                        // quoted reversed for jsmin
-                        var re = /^\s*['"](.*)["']\s*$/;
-                        args = args.split(',');
-                        for(var i = 0, len = args.length; i < len; i++){
-                            args[i] = args[i].replace(re, "$1");
-                        }
-                        args = [values[name]].concat(args);
-                    }else{
-                        args = [values[name]];
-                    }
-                    return fm[format].apply(fm, args);
-                }
-            }else{
-                return values[name] !== undefined ? values[name] : "";
+        try {
+            
+            if(this.compiled){
+                return this.compiled(values);
             }
-        };
-        return this.html.replace(this.re, fn);
+            var useF = this.disableFormats !== true;
+            var fm = Roo.util.Format, tpl = this;
+            var fn = function(m, name, format, args){
+                if(format && useF){
+                    if(format.substr(0, 5) == "this."){
+                        return tpl.call(format.substr(5), values[name], values);
+                    }else{
+                        if(args){
+                            // quoted values are required for strings in compiled templates, 
+                            // but for non compiled we need to strip them
+                            // quoted reversed for jsmin
+                            var re = /^\s*['"](.*)["']\s*$/;
+                            args = args.split(',');
+                            for(var i = 0, len = args.length; i < len; i++){
+                                args[i] = args[i].replace(re, "$1");
+                            }
+                            args = [values[name]].concat(args);
+                        }else{
+                            args = [values[name]];
+                        }
+                        return fm[format].apply(fm, args);
+                    }
+                }else{
+                    return values[name] !== undefined ? values[name] : "";
+                }
+            };
+            return this.html.replace(this.re, fn);
+        } catch (e) {
+            console && console.log && console.log(e.toString());
+        }
+        return '';
     },
     
     /**
