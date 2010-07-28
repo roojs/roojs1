@@ -40,6 +40,9 @@ Roo.util.CSS = function(){
         }
         if (!typeof(cssText) == 'string') {
             // support object maps..
+            // not sure if this a good idea.. 
+            // perhaps it should be merged with the general css handling
+            // and handle js style props.
             var cssTextNew = [];
             for(var n in cssText) {
                 var citems = [];
