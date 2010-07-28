@@ -29,16 +29,18 @@ t.append('some-element', {id: 'myid', cls: 'myclass', name: 'foo', value: 'bar'}
 * @param {String/Array} html 
 */
 Roo.Template = function(cfg){
+    // BC!
     if(cfg instanceof Array){
         cfg = cfg.join("");
     }else if(arguments.length > 1){
         cfg = Array.prototype.join.call(arguments, "");
     }
     
-    /**@private*/
+    
     if (typeof(cfg) == 'object') {
         Roo.apply(this,cfg)
     } else {
+        // bc
         this.html = cfg;
     }
     
