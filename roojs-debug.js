@@ -23290,7 +23290,7 @@ Roo.SplitBar.BOTTOM = 4;
 
  var view = new Roo.View({
     el : "my-element",
-    template : '&lt;div id="{0}"&gt;{2} - {1}&lt;/div&gt;', // auto create template
+    tpl : '&lt;div id="{0}"&gt;{2} - {1}&lt;/div&gt;', // auto create template
  
     singleSelect: true,
     selectedClass: "ydataview-selected",
@@ -23333,7 +23333,10 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
     
     if(typeof(this.tpl) == "string"){
         this.tpl = new Roo.Template(this.tpl);
-    } 
+    } else {
+        // support xtype ctors..
+        this.tpl = new Roo.Factory(this.tpl, Roo);
+    }
     
     
     this.tpl.compile();
@@ -23781,7 +23784,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
 <pre><code>
 var view = new Roo.JsonView({
     container: "my-element",
-    template: '&lt;div id="{id}"&gt;{foo} - {bar}&lt;/div&gt;', // auto create template
+    tpl: '&lt;div id="{id}"&gt;{foo} - {bar}&lt;/div&gt;', // auto create template
     multiSelect: true, 
     jsonRoot: "data" 
 });
