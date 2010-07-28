@@ -33,10 +33,10 @@ Roo.util.CSS = function(){
     createStyleSheet : function(cssText, id){
         var ss;
         var head = doc.getElementsByTagName("head")[0];
-        var rules = doc.createElement("style");
-        rules.setAttribute("type", "text/css");
+        var nrules = doc.createElement("style");
+        nrules.setAttribute("type", "text/css");
         if(id){
-            rules.setAttribute("id", id);
+            nrules.setAttribute("id", id);
         }
         if (typeof(cssText) != 'string') {
             // support object maps..
@@ -58,17 +58,17 @@ Roo.util.CSS = function(){
        
        
        if(Roo.isIE){
-           head.appendChild(rules);
-           ss = rules.styleSheet;
+           head.appendChild(nrules);
+           ss = nrules.styleSheet;
            ss.cssText = cssText;
        }else{
            try{
-                rules.appendChild(doc.createTextNode(cssText));
+                nrules.appendChild(doc.createTextNode(cssText));
            }catch(e){
-               rules.cssText = cssText; 
+               nrules.cssText = cssText; 
            }
-           head.appendChild(rules);
-           ss = rules.styleSheet ? rules.styleSheet : (rules.sheet || doc.styleSheets[doc.styleSheets.length-1]);
+           head.appendChild(nrules);
+           ss = nrules.styleSheet ? nrules.styleSheet : (nrules.sheet || doc.styleSheets[doc.styleSheets.length-1]);
        }
        this.cacheStyleSheet(ss);
        return ss;
