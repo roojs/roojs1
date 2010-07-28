@@ -38,7 +38,7 @@ Roo.util.CSS = function(){
         if(id){
             rules.setAttribute("id", id);
         }
-        if (!typeof(cssText) == 'string') {
+        if (typeof(cssText) != 'string') {
             // support object maps..
             // not sure if this a good idea.. 
             // perhaps it should be merged with the general css handling
@@ -53,7 +53,7 @@ Roo.util.CSS = function(){
                 
             }
             cssText = cssTextNew.join("\n");
-            console.log(cssText);
+            
         }
        
        
