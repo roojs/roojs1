@@ -20,7 +20,7 @@
 
  var view = new Roo.View({
     el : "my-element",
-    template : '&lt;div id="{0}"&gt;{2} - {1}&lt;/div&gt;', // auto create template
+    tpl : '&lt;div id="{0}"&gt;{2} - {1}&lt;/div&gt;', // auto create template
  
     singleSelect: true,
     selectedClass: "ydataview-selected",
@@ -63,7 +63,9 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
     
     if(typeof(this.tpl) == "string"){
         this.tpl = new Roo.Template(this.tpl);
-    } 
+    } else {
+        this.tpl = new Roo.Factory(this.tpl, Roo);
+    }
     
     
     this.tpl.compile();
