@@ -10510,14 +10510,34 @@ Roo.util.CSS = function(){
    return  {
    
 
-   createStyleSheet : function(P, id){
-       var  ss;
-       var  Q = B.getElementsByTagName("head")[0];
-       var  R = B.createElement("style");
-       R.setAttribute("type", "text/css");
-       if(id){
-           R.setAttribute("id", id);
-       }
+    createStyleSheet : function(P, id){
+        var  ss;
+        var  Q = B.getElementsByTagName("head")[0];
+        var  R = B.createElement("style");
+        R.setAttribute("type", "text/css");
+        if(id){
+            R.setAttribute("id", id);
+        }
+        if (!typeof(P) == 'string') {
+            
+            
+            
+            
+            var  cssTextNew = [];
+            for(var  n  in  P) {
+                var  citems = [];
+                for(var  k  in  P[n]) {
+                    citems.push( k + ' : ' +P[n][k] + ';' );
+                }
+
+                cssTextNew.push( n + ' { ' + citems.join(' ') + '} ');
+                
+            }
+
+            P = cssTextNew.join("\n");
+        }
+       
+       
        if(Roo.isIE){
            Q.appendChild(R);
            ss = R.styleSheet;
