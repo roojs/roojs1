@@ -10587,13 +10587,13 @@ Roo.util.CSS = function(){
 
    
    cacheStyleSheet : function(V){
-       if(!S){
-           S = {};
+       if(!A){
+           A = {};
        }
        try{
            var  ssRules = V.cssRules || V.rules;
            for(var  j = ssRules.length-1; j >= 0; --j){
-               S[ssRules[j].selectorText] = ssRules[j];
+               A[ssRules[j].selectorText] = ssRules[j];
            }
        }catch(e){}
    },
@@ -10601,8 +10601,8 @@ Roo.util.CSS = function(){
    
 
    getRules : function(W){
-   		if(S == null || W){
-   			S = {};
+   		if(A == null || W){
+   			A = {};
    			var  ds = B.styleSheets;
    			for(var  i =0, len = ds.length; i < len; i++){
    			    try{
@@ -10610,7 +10610,7 @@ Roo.util.CSS = function(){
     		    }catch(e){} 
 	        }
    		}
-   		return  S;
+   		return  A;
    	},
    	
    	
