@@ -4400,28 +4400,44 @@ Roo.DomHelper = function(){
 * For a list of available format functions, see {@link Roo.util.Format}.<br />
 * Usage:
 <pre><code>
-var t = new Roo.Template(
-    '&lt;div name="{id}"&gt;',
-        '&lt;span class="{cls}"&gt;{name:trim} {value:ellipsis(10)}&lt;/span&gt;',
-    '&lt;/div&gt;'
-);
+var t = new Roo.Template({
+    html :  '&lt;div name="{id}"&gt;' + 
+        '&lt;span class="{cls}"&gt;{name:trim} {someval:this.myformat}{value:ellipsis(10)}&lt;/span&gt;' +
+        '&lt;/div&gt;',
+    myformat: function (value, allValues) {
+        return 'XX' + value;
+    }
+});
 t.append('some-element', {id: 'myid', cls: 'myclass', name: 'foo', value: 'bar'});
 </code></pre>
 * For more information see this blog post with examples: <a href="http://www.jackslocum.com/yui/2006/10/06/domhelper-create-elements-using-dom-html-fragments-or-templates/">DomHelper - Create Elements using DOM, HTML fragments and Templates</a>. 
 * @constructor
-* @param {String/Array} html The HTML fragment or an array of fragments to join("") or multiple arguments to join("")
+* @param {Object} cfg - Configuration object.
 */
-Roo.Template = function(html){
-    if(html instanceof Array){
-        html = html.join("");
+Roo.Template = function(cfg){
+    // BC!
+    if(cfg instanceof Array){
+        cfg = cfg.join("");
     }else if(arguments.length > 1){
-        html = Array.prototype.join.call(arguments, "");
+        cfg = Array.prototype.join.call(arguments, "");
     }
-    /**@private*/
-    this.html = html;
+    
+    
+    if (typeof(cfg) == 'object') {
+        Roo.apply(this,cfg)
+    } else {
+        // bc
+        this.html = cfg;
+    }
+    
     
 };
 Roo.Template.prototype = {
+    
+    /**
+     * @cfg {String} html  The HTML fragment or an array of fragments to join("") or multiple arguments to join("")
+     */
+    html : '',
     /**
      * Returns an HTML fragment of this template with the specified values applied.
      * @param {Object} values The template values. Can be an array if your params are numeric (i.e. {0}) or an object (i.e. {foo: 'bar'})

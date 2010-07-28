@@ -15,28 +15,44 @@
 * For a list of available format functions, see {@link Roo.util.Format}.&lt;br /&gt;
 * Usage:
 &lt;pre&gt;&lt;code&gt;
-var t = new Roo.Template(
-    '&amp;lt;div name=&quot;{id}&quot;&amp;gt;',
-        '&amp;lt;span class=&quot;{cls}&quot;&amp;gt;{name:trim} {value:ellipsis(10)}&amp;lt;/span&amp;gt;',
-    '&amp;lt;/div&amp;gt;'
-);
+var t = new Roo.Template({
+    html :  '&amp;lt;div name=&quot;{id}&quot;&amp;gt;' + 
+        '&amp;lt;span class=&quot;{cls}&quot;&amp;gt;{name:trim} {someval:this.myformat}{value:ellipsis(10)}&amp;lt;/span&amp;gt;' +
+        '&amp;lt;/div&amp;gt;',
+    myformat: function (value, allValues) {
+        return 'XX' + value;
+    }
+});
 t.append('some-element', {id: 'myid', cls: 'myclass', name: 'foo', value: 'bar'});
 &lt;/code&gt;&lt;/pre&gt;
 * For more information see this blog post with examples: &lt;a href=&quot;http://www.jackslocum.com/yui/2006/10/06/domhelper-create-elements-using-dom-html-fragments-or-templates/&quot;&gt;DomHelper - Create Elements using DOM, HTML fragments and Templates&lt;/a&gt;. 
 * @constructor
-* @param {String/Array} html The HTML fragment or an array of fragments to join(&quot;&quot;) or multiple arguments to join(&quot;&quot;)
+* @param {Object} cfg - Configuration object.
 */
-</span><span class="jsdoc-var">Roo.Template </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">){
-    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Array</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">html.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+</span><span class="jsdoc-var">Roo.Template </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-comment">// BC!
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Array</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
     }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">arguments.length </span><span class="jsdoc-syntax">&gt; 1){
-        </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Array.prototype.join.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Array.prototype.join.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
     }
-    </span><span class="jsdoc-comment">/**@private*/
-    </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">;
+    
+    
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'object'</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">)
+    } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-comment">// bc
+        </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    }
+    
     
 };
 </span><span class="jsdoc-var">Roo.Template.prototype </span><span class="jsdoc-syntax">= {
+    
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} html  The HTML fragment or an array of fragments to join(&quot;&quot;) or multiple arguments to join(&quot;&quot;)
+     */
+    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-comment">/**
      * Returns an HTML fragment of this template with the specified values applied.
      * @param {Object} values The template values. Can be an array if your params are numeric (i.e. {0}) or an object (i.e. {foo: 'bar'})

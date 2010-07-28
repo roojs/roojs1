@@ -2588,7 +2588,14 @@
    ]
   },
   "Roo.MasterTemplate": {
-   "props": [],
+   "props": [
+    {
+     "name": "html",
+     "type": "String",
+     "desc": "The HTML fragment or an array of fragments to join(\"\") or multiple arguments to join(\"\")",
+     "memberOf": "Roo.Template"
+    }
+   ],
    "events": []
   },
   "Roo.MessageBox": {
@@ -3524,7 +3531,14 @@
    ]
   },
   "Roo.Template": {
-   "props": [],
+   "props": [
+    {
+     "name": "html",
+     "type": "String",
+     "desc": "The HTML fragment or an array of fragments to join(\"\") or multiple arguments to join(\"\")",
+     "memberOf": ""
+    }
+   ],
    "events": []
   },
   "Roo.Toolbar": {
@@ -3948,7 +3962,7 @@
      "name": "tree",
      "type": "Roo.tree.TreePanel",
      "desc": "The tree TreePanel, with config etc.",
-     "memberOf": "Roo"
+     "memberOf": ""
     },
     {
      "name": "fitToFrame",
