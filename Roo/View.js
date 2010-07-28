@@ -172,6 +172,16 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      */
     emptyText : "",
     /**
+     * @cfg {Boolean} multiSelect Allow multiple selection
+     */
+    
+    multiSelect : false,
+    /**
+     * @cfg {Boolean} singleSelect Allow single selection
+     */
+    singleSelect:  false,
+    
+    /**
      * Returns the element this view is bound to.
      * @return {Roo.Element}
      */
