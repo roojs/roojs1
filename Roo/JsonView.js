@@ -16,7 +16,7 @@
 <pre><code>
 var view = new Roo.JsonView({
     container: "my-element",
-    template: '&lt;div id="{id}"&gt;{foo} - {bar}&lt;/div&gt;', // auto create template
+    tpl: '&lt;div id="{id}"&gt;{foo} - {bar}&lt;/div&gt;', // auto create template
     multiSelect: true, 
     jsonRoot: "data" 
 });
