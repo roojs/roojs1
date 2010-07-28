@@ -6412,7 +6412,7 @@ Roo.View = function(A, B, C){
         this.tpl = new  Roo.Template(this.tpl);
     } else  {
         
-        this.tpl = new  Roo.Factory(this.tpl, Roo);
+        this.tpl = new  Roo.factory(this.tpl, Roo);
     }
 
     

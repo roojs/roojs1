@@ -9022,7 +9022,7 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
         this.tpl = new Roo.Template(this.tpl);
     } else {
         // support xtype ctors..
-        this.tpl = new Roo.Factory(this.tpl, Roo);
+        this.tpl = new Roo.factory(this.tpl, Roo);
     }
     
     
