@@ -64,6 +64,7 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
     if(typeof(this.tpl) == "string"){
         this.tpl = new Roo.Template(this.tpl);
     } else {
+        // support xtype ctors..
         this.tpl = new Roo.Factory(this.tpl, Roo);
     }
     
