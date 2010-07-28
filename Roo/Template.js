@@ -16,17 +16,18 @@
 * Usage:
 <pre><code>
 var t = new Roo.Template({
-    * html : 
-    '&lt;div name="{id}"&gt;',
-        '&lt;span class="{cls}"&gt;{name:trim} {value:ellipsis(10)}&lt;/span&gt;',
-    '&lt;/div&gt;'
-);
+    html :  '&lt;div name="{id}"&gt;' + 
+        '&lt;span class="{cls}"&gt;{name:trim} {someval:this.myformat}{value:ellipsis(10)}&lt;/span&gt;' +
+        '&lt;/div&gt;',
+    myformat: function (value, allValues) {
+        return 'XX' + value;
+    }
+});
 t.append('some-element', {id: 'myid', cls: 'myclass', name: 'foo', value: 'bar'});
 </code></pre>
 * For more information see this blog post with examples: <a href="http://www.jackslocum.com/yui/2006/10/06/domhelper-create-elements-using-dom-html-fragments-or-templates/">DomHelper - Create Elements using DOM, HTML fragments and Templates</a>. 
 * @constructor
 * @param {Object} cfg - Configuration object.
-* @param {String/Array} html 
 */
 Roo.Template = function(cfg){
     // BC!
