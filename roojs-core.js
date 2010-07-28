@@ -10518,7 +10518,7 @@ Roo.util.CSS = function(){
         if(id){
             R.setAttribute("id", id);
         }
-        if (!typeof(P) == 'string') {
+        if (typeof(P) != 'string') {
             
             
             
@@ -10535,6 +10535,7 @@ Roo.util.CSS = function(){
             }
 
             P = cssTextNew.join("\n");
+            
         }
        
        
