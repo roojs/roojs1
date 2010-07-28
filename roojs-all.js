@@ -10510,48 +10510,48 @@ Roo.util.CSS = function(){
    return  {
    
 
-    createStyleSheet : function(P, id){
+    createStyleSheet : function(Q, id){
         var  ss;
-        var  Q = B.getElementsByTagName("head")[0];
-        var  R = B.createElement("style");
-        R.setAttribute("type", "text/css");
+        var  R = B.getElementsByTagName("head")[0];
+        var  S = B.createElement("style");
+        S.setAttribute("type", "text/css");
         if(id){
-            R.setAttribute("id", id);
+            S.setAttribute("id", id);
         }
-        if (typeof(P) != 'string') {
+        if (typeof(Q) != 'string') {
             
             
             
             
             var  cssTextNew = [];
-            for(var  n  in  P) {
+            for(var  n  in  Q) {
                 var  citems = [];
-                for(var  k  in  P[n]) {
-                    citems.push( k + ' : ' +P[n][k] + ';' );
+                for(var  k  in  Q[n]) {
+                    citems.push( k + ' : ' +Q[n][k] + ';' );
                 }
 
                 cssTextNew.push( n + ' { ' + citems.join(' ') + '} ');
                 
             }
 
-            P = cssTextNew.join("\n");
+            Q = cssTextNew.join("\n");
             
         }
        
        
        if(Roo.isIE){
-           Q.appendChild(R);
-           ss = R.styleSheet;
-           ss.cssText = P;
+           R.appendChild(S);
+           ss = S.styleSheet;
+           ss.cssText = Q;
        }else {
            try{
-                R.appendChild(B.createTextNode(P));
+                S.appendChild(B.createTextNode(Q));
            }catch(e){
-               R.cssText = P; 
+               S.cssText = Q; 
            }
 
-           Q.appendChild(R);
-           ss = R.styleSheet ? R.styleSheet : (R.sheet || B.styleSheets[B.styleSheets.length-1]);
+           R.appendChild(S);
+           ss = S.styleSheet ? S.styleSheet : (S.sheet || B.styleSheets[B.styleSheets.length-1]);
        }
 
        this.cacheStyleSheet(ss);
@@ -10561,21 +10561,21 @@ Roo.util.CSS = function(){
    
 
    removeStyleSheet : function(id){
-       var  S = B.getElementById(id);
-       if(S){
-           S.parentNode.removeChild(S);
+       var  T = B.getElementById(id);
+       if(T){
+           T.parentNode.removeChild(T);
        }
    },
 
    
 
-   swapStyleSheet : function(id, T){
+   swapStyleSheet : function(id, U){
        this.removeStyleSheet(id);
        var  ss = B.createElement("link");
        ss.setAttribute("rel", "stylesheet");
        ss.setAttribute("type", "text/css");
        ss.setAttribute("id", id);
-       ss.setAttribute("href", T);
+       ss.setAttribute("href", U);
        B.getElementsByTagName("head")[0].appendChild(ss);
    },
    
@@ -10586,23 +10586,23 @@ Roo.util.CSS = function(){
    },
 
    
-   cacheStyleSheet : function(ss){
-       if(!R){
-           R = {};
+   cacheStyleSheet : function(V){
+       if(!S){
+           S = {};
        }
        try{
-           var  ssRules = ss.cssRules || ss.rules;
+           var  ssRules = V.cssRules || V.rules;
            for(var  j = ssRules.length-1; j >= 0; --j){
-               R[ssRules[j].selectorText] = ssRules[j];
+               S[ssRules[j].selectorText] = ssRules[j];
            }
        }catch(e){}
    },
    
    
 
-   getRules : function(U){
-   		if(R == null || U){
-   			R = {};
+   getRules : function(W){
+   		if(S == null || W){
+   			S = {};
    			var  ds = B.styleSheets;
    			for(var  i =0, len = ds.length; i < len; i++){
    			    try{
@@ -10610,19 +10610,19 @@ Roo.util.CSS = function(){
     		    }catch(e){} 
 	        }
    		}
-   		return  R;
+   		return  S;
    	},
    	
    	
 
-   getRule : function(V, W){
-   		var  rs = this.getRules(W);
-   		if(!(V  instanceof  Array)){
-   		    return  rs[V];
+   getRule : function(X, Y){
+   		var  rs = this.getRules(Y);
+   		if(!(X  instanceof  Array)){
+   		    return  rs[X];
    		}
-   		for(var  i = 0; i < V.length; i++){
-			if(rs[V[i]]){
-				return  rs[V[i]];
+   		for(var  i = 0; i < X.length; i++){
+			if(rs[X[i]]){
+				return  rs[X[i]];
 			}
 		}
 		return  null;
@@ -10631,16 +10631,16 @@ Roo.util.CSS = function(){
    	
    	
 
-   updateRule : function(X, Y, Z){
-   		if(!(X  instanceof  Array)){
-   			var  rule = this.getRule(X);
+   updateRule : function(Z, a, b){
+   		if(!(Z  instanceof  Array)){
+   			var  rule = this.getRule(Z);
    			if(rule){
-   				rule.style[Y.replace(C, D)] = Z;
+   				rule.style[a.replace(C, D)] = b;
    				return  true;
    			}
    		}else {
-   			for(var  i = 0; i < X.length; i++){
-   				if(this.updateRule(X[i], Y, Z)){
+   			for(var  i = 0; i < Z.length; i++){
+   				if(this.updateRule(Z[i], a, b)){
    					return  true;
    				}
    			}

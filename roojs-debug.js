@@ -13270,12 +13270,12 @@ Roo.util.CSS = function(){
    },
 
    // private
-   cacheStyleSheet : function(ss){
+   cacheStyleSheet : function(stylesheet){
        if(!rules){
            rules = {};
        }
        try{// try catch for cross domain access issue
-           var ssRules = ss.cssRules || ss.rules;
+           var ssRules = stylesheet.cssRules || stylesheet.rules;
            for(var j = ssRules.length-1; j >= 0; --j){
                rules[ssRules[j].selectorText] = ssRules[j];
            }
