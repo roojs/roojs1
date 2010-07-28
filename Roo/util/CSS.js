@@ -26,18 +26,33 @@ Roo.util.CSS = function(){
    /**
     * Very simple dynamic creation of stylesheets from a text blob of rules.  The text will wrapped in a style
     * tag and appended to the HEAD of the document.
-    * @param {String} cssText The text containing the css rules
+    * @param {String|Object} cssText The text containing the css rules
     * @param {String} id An id to add to the stylesheet for later removal
     * @return {StyleSheet}
     */
-   createStyleSheet : function(cssText, id){
-       var ss;
-       var head = doc.getElementsByTagName("head")[0];
-       var rules = doc.createElement("style");
-       rules.setAttribute("type", "text/css");
-       if(id){
-           rules.setAttribute("id", id);
-       }
+    createStyleSheet : function(cssText, id){
+        var ss;
+        var head = doc.getElementsByTagName("head")[0];
+        var rules = doc.createElement("style");
+        rules.setAttribute("type", "text/css");
+        if(id){
+            rules.setAttribute("id", id);
+        }
+        if (!typeof(cssText) == 'string') {
+            // support object maps..
+            var cssTextNew = [];
+            for(var n in cssText) {
+                var citems = [];
+                for(var k in cssText[n]) {
+                    citems.push( k + ' : ' +cssText[n][k] + ';' );
+                }
+                cssTextNew.push( n + ' { ' + citems.join(' ') + '} ');
+                
+            }
+            cssText = cssTextNew.join("\n");
+        }
+       
+       
        if(Roo.isIE){
            head.appendChild(rules);
            ss = rules.styleSheet;
