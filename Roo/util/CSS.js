@@ -53,6 +53,7 @@ Roo.util.CSS = function(){
                 
             }
             cssText = cssTextNew.join("\n");
+            console.log(cssText);
         }
        
        
