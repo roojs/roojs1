@@ -318,9 +318,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             });
             add.render(this.el);
             
-            this.add( new Roo.form.Hidden({
-                name : fe.name
-            }));
+            this.add( add );
         }, this);
         
     },
