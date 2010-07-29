@@ -155,7 +155,8 @@ Roo.extend(Roo.form.Checkbox, Roo.form.Field,  {
 
     /**
      * Sets the checked state of the checkbox.
-     * @param {Boolean/String} checked True, 'true', '1', or 'on' to check the checkbox, any other value will uncheck it.
+     * On is always based on a string comparison between inputValue and the param.
+     * @param {Boolean/String} checked 
      */
     setValue : function(v,suppressEvent){
         
