@@ -23461,6 +23461,16 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      */
     emptyText : "",
     /**
+     * @cfg {Boolean} multiSelect Allow multiple selection
+     */
+    
+    multiSelect : false,
+    /**
+     * @cfg {Boolean} singleSelect Allow single selection
+     */
+    singleSelect:  false,
+    
+    /**
      * Returns the element this view is bound to.
      * @return {Roo.Element}
      */
@@ -40000,9 +40010,12 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             if (this.findField(fe.name)) { // already added..
                 return;
             }
-            this.add( new Roo.form.Hidden({
+            var add = new Roo.form.Hidden({
                 name : fe.name
-            }));
+            });
+            add.render(this.el);
+            
+            this.add( add );
         }, this);
         
     },
@@ -44435,6 +44448,7 @@ Roo.LayoutStateManager.prototype = {
  * @cfg {String} title The title for this panel
  * @cfg {Array} adjustments Values to <b>add</b> to the width/height when doing a {@link #fitToFrame} (default is [0, 0])
  * @cfg {String} url Calls {@link #setUrl} with this value
+ * @cfg {String} region (center|north|south|east|west) which region to put this panel on (when used with xtype constructors)
  * @cfg {String/Object} params When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {Boolean} loadOnce When used with {@link #url}, calls {@link #setUrl} with this value
  * @constructor
