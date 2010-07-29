@@ -156,7 +156,8 @@ Roo.extend(Roo.form.Checkbox, Roo.form.Field,  {
     /**
      * Sets the checked state of the checkbox.
      * On is always based on a string comparison between inputValue and the param.
-     * @param {Boolean/String} checked 
+     * @param {Boolean/String} value - the value to set 
+     * @param {Boolean/String} suppressEvent - whether to suppress the checkchange event.
      */
     setValue : function(v,suppressEvent){
         
@@ -166,7 +167,7 @@ Roo.extend(Roo.form.Checkbox, Roo.form.Field,  {
         //    this.el.dom.checked = this.checked;
         //    this.el.dom.defaultChecked = this.checked;
         //}
-        this.setChecked(String(v) === String(this.inputValue));
+        this.setChecked(String(v) === String(this.inputValue), suppressEvent);
         //this.fireEvent("check", this, this.checked);
     },
     // private..
