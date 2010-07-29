@@ -158,12 +158,14 @@ Roo.extend(Roo.form.Checkbox, Roo.form.Field,  {
      * @param {Boolean/String} checked True, 'true', '1', or 'on' to check the checkbox, any other value will uncheck it.
      */
     setValue : function(v,suppressEvent){
+        
+        
         //this.checked = (v === true || v === 'true' || v == '1' || String(v).toLowerCase() == 'on');
         //if(this.el && this.el.dom){
         //    this.el.dom.checked = this.checked;
         //    this.el.dom.defaultChecked = this.checked;
         //}
-        this.setChecked(v === this.inputValue);
+        this.setChecked(String(v) === String(this.inputValue));
         //this.fireEvent("check", this, this.checked);
     },
     // private..
