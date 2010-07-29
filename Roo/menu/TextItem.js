@@ -19,11 +19,11 @@
  * Creates a new TextItem
  * @param {Object} cfg Configuration
  */
-Roo.menu.TextItem = function(text){
-    if (typeof(text) == 'string') {
-        this.text = text;
+Roo.menu.TextItem = function(cfg){
+    if (typeof(cfg) == 'string') {
+        this.text = cfg;
     } else {
-        Roo.apply(this,text);
+        Roo.apply(this,cfg);
     }
     
     Roo.menu.TextItem.superclass.constructor.call(this);
