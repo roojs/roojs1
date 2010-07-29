@@ -450,7 +450,7 @@ var item = menu.add(
      * @return {Roo.menu.Item} The menu item that was added
      */
     addText : function(text){
-        return this.addItem(new Roo.menu.TextItem(text));
+        return this.addItem(new Roo.menu.TextItem({ text : text }));
     },
 
     /**
