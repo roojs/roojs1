@@ -362,6 +362,10 @@ var item = menu.add(
         var a = arguments, l = a.length, item;
         for(var i = 0; i < l; i++){
             var el = a[i];
+            if (typeof el == "object" && el.xtype) {
+                el = Roo.factory(el, Roo.menu);
+            }
+            
             if(el.render){ // some kind of Item
                 item = this.addItem(el);
             }else if(typeof el == "string"){ // string
