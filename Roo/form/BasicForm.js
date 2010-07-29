@@ -305,8 +305,12 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
      * @param {Roo.form.Form} form to add.
      * 
      */
-    addForm : function(form){
+    addForm : function(form)
+    {
        
+        if (this.childForms.indexOf(form) > -1) {
+            return;
+        }
         this.childForms.push(form);
         Roo.each(form.allItems, function (fe) {
             
