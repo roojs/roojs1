@@ -309,6 +309,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
     {
        
         if (this.childForms.indexOf(form) > -1) {
+            // already added..
             return;
         }
         this.childForms.push(form);
