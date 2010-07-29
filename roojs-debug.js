@@ -50136,7 +50136,7 @@ Roo.apply(Roo.XComponent, {
         
         // add modules to their parents..
         var addMod = function(m) {
-           // console.log(m.modKey);
+           // Roo.debug && Roo.log(m.modKey);
             
             mods.push(m);
             if (m.modules) {
@@ -50169,7 +50169,7 @@ Roo.apply(Roo.XComponent, {
         var mods = this.buildOrder();
       
         //this.allmods = mods;
-        //console.log(mods);
+        //Roo.debug && Roo.log(mods);
         //return;
         if (!mods.length) { // should not happen
             throw "NO modules!!!";
@@ -50193,14 +50193,14 @@ Roo.apply(Roo.XComponent, {
         var _this = this;
         var progressRun = function() {
             if (!mods.length) {
-                console.log('hide?');
+                Roo.debug && Roo.log('hide?');
                 Roo.MessageBox.hide();
                 _this.topModule.fireEvent('buildcomplete', _this.topModule);
                 return;    
             }
             
             var m = mods.shift();
-            console.log(m);
+            Roo.debug && Roo.log(m);
             if (typeof(m) == 'function') { // not sure if this is supported any more..
                 m.call(this);
                 return progressRun.defer(10, _this);
