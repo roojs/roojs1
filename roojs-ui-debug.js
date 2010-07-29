@@ -19517,7 +19517,7 @@ var item = menu.add(
         var a = arguments, l = a.length, item;
         for(var i = 0; i < l; i++){
             var el = a[i];
-            if (typeof el == "object" && el.xtype) {
+            if ((typeof(el) == "object") && el.xtype && el.xns) {
                 el = Roo.factory(el, Roo.menu);
             }
             
@@ -19605,7 +19605,7 @@ var item = menu.add(
      * @return {Roo.menu.Item} The menu item that was added
      */
     addText : function(text){
-        return this.addItem(new Roo.menu.TextItem(text));
+        return this.addItem(new Roo.menu.TextItem({ text : text }));
     },
 
     /**
