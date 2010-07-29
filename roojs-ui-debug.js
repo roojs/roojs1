@@ -25670,8 +25670,13 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
      * @param {Roo.form.Form} form to add.
      * 
      */
-    addForm : function(form){
+    addForm : function(form)
+    {
        
+        if (this.childForms.indexOf(form) > -1) {
+            // already added..
+            return;
+        }
         this.childForms.push(form);
         Roo.each(form.allItems, function (fe) {
             
@@ -25781,13 +25786,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         if (this.childForms) {
             // copy values from the child forms
             Roo.each(this.childForms, function (f) {
-                if (f.allFields) {
-                    Roo.each(f.allFields, function (e) {
-                        if (e.name && e.getValue && this.findField(e.name)) {
-                            this.findField(e.name).setValue(e.getValue());
-                        }
-                    }, this);
-                }
+                this.setValues(f.getValues());
             }, this);
         }
         
