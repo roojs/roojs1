@@ -20098,16 +20098,28 @@ Roo.extend(Roo.menu.Adapter, Roo.menu.BaseItem, {
  * @class Roo.menu.TextItem
  * @extends Roo.menu.BaseItem
  * Adds a static text string to a menu, usually used as either a heading or group separator.
+ * Note: old style constructor with text is still supported.
+ * 
  * @constructor
  * Creates a new TextItem
- * @param {String} text The text to display
+ * @param {Object} cfg Configuration
  */
-Roo.menu.TextItem = function(text){
-    this.text = text;
+Roo.menu.TextItem = function(cfg){
+    if (typeof(cfg) == 'string') {
+        this.text = cfg;
+    } else {
+        Roo.apply(this,cfg);
+    }
+    
     Roo.menu.TextItem.superclass.constructor.call(this);
 };
 
 Roo.extend(Roo.menu.TextItem, Roo.menu.BaseItem, {
+    /**
+     * @cfg {Boolean} text Text to show on item.
+     */
+    text : '',
+    
     /**
      * @cfg {Boolean} hideOnClick True to hide the containing menu after this item is clicked (defaults to false)
      */
