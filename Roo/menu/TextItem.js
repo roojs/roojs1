@@ -23,7 +23,7 @@ Roo.menu.TextItem = function(text){
     if (typeof(text) == 'string') {
         this.text = text;
     } else {
-        Roo.apply(this,text
+        Roo.apply(this,text);
     }
     
     Roo.menu.TextItem.superclass.constructor.call(this);
