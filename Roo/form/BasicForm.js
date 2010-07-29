@@ -313,6 +313,10 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             if (this.findField(fe.name)) { // already added..
                 return;
             }
+            var add = new Roo.form.Hidden({
+                name : fe.name
+            });
+            add.render();
             this.add( new Roo.form.Hidden({
                 name : fe.name
             }));
