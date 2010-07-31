@@ -977,6 +977,12 @@
      "memberOf": ""
     },
     {
+     "name": "region",
+     "type": "String",
+     "desc": "(center|north|south|east|west) which region to put this panel on (when used with xtype constructors)",
+     "memberOf": ""
+    },
+    {
      "name": "params",
      "type": "String/Object",
      "desc": "When used with {@link #url}, calls {@link #setUrl} with this value",
@@ -1629,6 +1635,12 @@
      "memberOf": "Roo.ContentPanel"
     },
     {
+     "name": "region",
+     "type": "String",
+     "desc": "(center|north|south|east|west) which region to put this panel on (when used with xtype constructors)",
+     "memberOf": "Roo.ContentPanel"
+    },
+    {
      "name": "params",
      "type": "String/Object",
      "desc": "When used with {@link #url}, calls {@link #setUrl} with this value",
@@ -1698,6 +1710,18 @@
      "name": "emptyText",
      "type": "String",
      "desc": "The empty text to show when nothing is loaded.",
+     "memberOf": "Roo.View"
+    },
+    {
+     "name": "multiSelect",
+     "type": "Boolean",
+     "desc": "Allow multiple selection",
+     "memberOf": "Roo.View"
+    },
+    {
+     "name": "singleSelect",
+     "type": "Boolean",
+     "desc": "Allow single selection",
      "memberOf": "Roo.View"
     },
     {
@@ -2336,7 +2360,7 @@
      "name": "removeMask",
      "type": "Boolean",
      "desc": "True to create a single-use mask that is automatically destroyed after loading (useful for page loads),\nFalse to persist the mask element reference for multiple uses (e.g., for paged data widgets).  Defaults to false.",
-     "memberOf": ""
+     "memberOf": "Roo"
     },
     {
      "name": "msg",
@@ -2671,6 +2695,12 @@
      "memberOf": "Roo.ContentPanel"
     },
     {
+     "name": "region",
+     "type": "String",
+     "desc": "(center|north|south|east|west) which region to put this panel on (when used with xtype constructors)",
+     "memberOf": "Roo.ContentPanel"
+    },
+    {
      "name": "params",
      "type": "String/Object",
      "desc": "When used with {@link #url}, calls {@link #setUrl} with this value",
@@ -2752,7 +2782,7 @@
      "name": "items",
      "type": "Roo.data.Store",
      "desc": "array of button configs or elements to add",
-     "memberOf": "Roo.Toolbar"
+     "memberOf": "Roo"
     }
    ],
    "events": []
@@ -2989,7 +3019,7 @@
      "name": "mode",
      "type": "String",
      "desc": "The shadow display mode.  Supports the following options:<br />\nsides: Shadow displays on both sides and bottom only<br />\nframe: Shadow displays equally on all four sides<br />\ndrop: Traditional bottom-right drop shadow (default)",
-     "memberOf": ""
+     "memberOf": "Roo"
     },
     {
      "name": "offset",
@@ -3547,7 +3577,7 @@
      "name": "items",
      "type": "Roo.data.Store",
      "desc": "array of button configs or elements to add",
-     "memberOf": ""
+     "memberOf": "Roo"
     },
     {
      "name": "container",
@@ -3962,7 +3992,7 @@
      "name": "tree",
      "type": "Roo.tree.TreePanel",
      "desc": "The tree TreePanel, with config etc.",
-     "memberOf": ""
+     "memberOf": "Roo"
     },
     {
      "name": "fitToFrame",
@@ -4028,6 +4058,12 @@
      "name": "url",
      "type": "String",
      "desc": "Calls {@link #setUrl} with this value",
+     "memberOf": "Roo.ContentPanel"
+    },
+    {
+     "name": "region",
+     "type": "String",
+     "desc": "(center|north|south|east|west) which region to put this panel on (when used with xtype constructors)",
      "memberOf": "Roo.ContentPanel"
     },
     {
@@ -4138,6 +4174,18 @@
      "name": "emptyText",
      "type": "String",
      "desc": "The empty text to show when nothing is loaded.",
+     "memberOf": ""
+    },
+    {
+     "name": "multiSelect",
+     "type": "Boolean",
+     "desc": "Allow multiple selection",
+     "memberOf": ""
+    },
+    {
+     "name": "singleSelect",
+     "type": "Boolean",
+     "desc": "Allow single selection",
      "memberOf": ""
     },
     {
@@ -13416,6 +13464,12 @@
   },
   "Roo.menu.TextItem": {
    "props": [
+    {
+     "name": "text",
+     "type": "Boolean",
+     "desc": "Text to show on item.",
+     "memberOf": ""
+    },
     {
      "name": "hideOnClick",
      "type": "Boolean",

@@ -20,7 +20,7 @@
 
  var view = new Roo.View({
     el : &quot;my-element&quot;,
-    template : '&amp;lt;div id=&quot;{0}&quot;&amp;gt;{2} - {1}&amp;lt;/div&amp;gt;', // auto create template
+    tpl : '&amp;lt;div id=&quot;{0}&quot;&amp;gt;{2} - {1}&amp;lt;/div&amp;gt;', // auto create template
  
     singleSelect: true,
     selectedClass: &quot;ydataview-selected&quot;,
@@ -63,7 +63,10 @@
     
     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tpl</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">&quot;string&quot;</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.tpl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tpl</span><span class="jsdoc-syntax">);
-    } 
+    } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-comment">// support xtype ctors..
+        </span><span class="jsdoc-var">this.tpl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tpl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo</span><span class="jsdoc-syntax">);
+    }
     
     
     </span><span class="jsdoc-var">this.tpl.compile</span><span class="jsdoc-syntax">();
@@ -168,6 +171,16 @@
      * @cfg {String} emptyText The empty text to show when nothing is loaded.
      */
     </span><span class="jsdoc-var">emptyText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} multiSelect Allow multiple selection
+     */
+    
+    </span><span class="jsdoc-var">multiSelect </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} singleSelect Allow single selection
+     */
+    </span><span class="jsdoc-var">singleSelect</span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
     </span><span class="jsdoc-comment">/**
      * Returns the element this view is bound to.
      * @return {Roo.Element}

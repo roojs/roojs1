@@ -237,7 +237,7 @@
         
         </span><span class="jsdoc-comment">// add modules to their parents..
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">addMod </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">) {
-           </span><span class="jsdoc-comment">// console.log(m.modKey);
+           </span><span class="jsdoc-comment">// Roo.debug &amp;&amp; Roo.log(m.modKey);
             
             </span><span class="jsdoc-var">mods.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m.modules</span><span class="jsdoc-syntax">) {
@@ -270,7 +270,7 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">mods </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.buildOrder</span><span class="jsdoc-syntax">();
       
         </span><span class="jsdoc-comment">//this.allmods = mods;
-        //console.log(mods);
+        //Roo.debug &amp;&amp; Roo.log(mods);
         //return;
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">mods.length</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// should not happen
             </span><span class="jsdoc-keyword">throw </span><span class="jsdoc-string">&quot;NO modules!!!&quot;</span><span class="jsdoc-syntax">;
@@ -294,14 +294,14 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">progressRun </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">mods.length</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">console.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'hide?'</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">Roo.debug </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'hide?'</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">Roo.MessageBox.hide</span><span class="jsdoc-syntax">();
                 </span><span class="jsdoc-var">_this.topModule.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'buildcomplete'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this.topModule</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;    
             }
             
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">m </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">mods.shift</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-var">console.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">Roo.debug </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'function'</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// not sure if this is supported any more..
                 </span><span class="jsdoc-var">m.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">progressRun.defer</span><span class="jsdoc-syntax">(10, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">);

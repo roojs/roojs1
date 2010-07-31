@@ -305,17 +305,25 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
      * @param {Roo.form.Form} form to add.
      * 
      */
-    </span><span class="jsdoc-var">addForm </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">form</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">addForm </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">form</span><span class="jsdoc-syntax">)
+    {
        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.childForms.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">form</span><span class="jsdoc-syntax">) &gt; -1) {
+            </span><span class="jsdoc-comment">// already added..
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
         </span><span class="jsdoc-var">this.childForms.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">form</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">form.allItems</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fe</span><span class="jsdoc-syntax">) {
             
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.findField</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fe.name</span><span class="jsdoc-syntax">)) { </span><span class="jsdoc-comment">// already added..
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
-            </span><span class="jsdoc-var">this.add</span><span class="jsdoc-syntax">( </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.form.Hidden</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">add </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.form.Hidden</span><span class="jsdoc-syntax">({
                 </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">fe.name
-            </span><span class="jsdoc-syntax">}));
+            </span><span class="jsdoc-syntax">});
+            </span><span class="jsdoc-var">add.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-var">this.add</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">add </span><span class="jsdoc-syntax">);
         }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
     },
@@ -413,13 +421,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.childForms</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-comment">// copy values from the child forms
             </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.childForms</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.allFields</span><span class="jsdoc-syntax">) {
-                    </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.allFields</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
-                        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.name </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">e.getValue </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.findField</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.name</span><span class="jsdoc-syntax">)) {
-                            </span><span class="jsdoc-var">this.findField</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.name</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.getValue</span><span class="jsdoc-syntax">());
-                        }
-                    });
-                }
+                </span><span class="jsdoc-var">this.setValues</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.getValues</span><span class="jsdoc-syntax">());
             }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
         

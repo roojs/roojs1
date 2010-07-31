@@ -13,16 +13,28 @@
  * @class Roo.menu.TextItem
  * @extends Roo.menu.BaseItem
  * Adds a static text string to a menu, usually used as either a heading or group separator.
+ * Note: old style constructor with text is still supported.
+ * 
  * @constructor
  * Creates a new TextItem
- * @param {String} text The text to display
+ * @param {Object} cfg Configuration
  */
-</span><span class="jsdoc-var">Roo.menu.TextItem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">){
-    </span><span class="jsdoc-var">this.text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">;
+</span><span class="jsdoc-var">Roo.menu.TextItem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+    }
+    
     </span><span class="jsdoc-var">Roo.menu.TextItem.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.menu.TextItem</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.menu.BaseItem</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} text Text to show on item.
+     */
+    </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    
     </span><span class="jsdoc-comment">/**
      * @cfg {Boolean} hideOnClick True to hide the containing menu after this item is clicked (defaults to false)
      */
