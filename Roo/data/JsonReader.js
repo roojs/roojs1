@@ -70,7 +70,7 @@ Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
     read : function(response){
         var json = response.responseText;
        
-        var o =   /* eval:var:o */ eval("("+json+")");
+        var o = /* eval:var:o */ eval("("+json+")");
         if(!o) {
             throw {message: "JsonReader.read: Json object not found"};
         }
