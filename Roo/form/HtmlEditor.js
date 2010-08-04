@@ -201,8 +201,6 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 this.assignDocWin();
                 if(this.doc.body || this.doc.readyState == 'complete'){
                     try {
-                        
-                       
                         this.doc.designMode="on";
                     } catch (e) {
                         return;
@@ -401,6 +399,9 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             this.doc = iframe.contentWindow.document;
             this.win = iframe.contentWindow;
         } else {
+            if (!Roo.get(this.frameId)) {
+                return;
+            }
             this.doc = (iframe.contentDocument || Roo.get(this.frameId).dom.document);
             this.win = Roo.get(this.frameId).dom.contentWindow;
         }
