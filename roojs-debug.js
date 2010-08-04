@@ -48095,6 +48095,17 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
         return this.lookup[id];
     },
 
+    
+    /**
+     * Returns the column for a specified dataIndex.
+     * @param {String} dataIndex The column dataIndex
+     * @return {Object|Boolean} the column or false if not found
+     */
+    getIndexByDataIndex: function(dataIndex){
+        var index = this.findColumnIndex(dataIndex);
+        return ci > -1 ? this.his.config[index] : false;
+    },
+    
     /**
      * Returns the index for a specified column id.
      * @param {String} id The column id
@@ -48108,6 +48119,7 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
         }
         return -1;
     },
+    
     /**
      * Returns the index for a specified column dataIndex.
      * @param {String} dataIndex The column dataIndex
