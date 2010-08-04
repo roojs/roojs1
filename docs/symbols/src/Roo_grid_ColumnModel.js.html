@@ -180,6 +180,17 @@
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.lookup</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">];
     },
 
+    
+    </span><span class="jsdoc-comment">/**
+     * Returns the column for a specified dataIndex.
+     * @param {String} dataIndex The column dataIndex
+     * @return {Object|Boolean} the column or false if not found
+     */
+    </span><span class="jsdoc-var">getIndexByDataIndex</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataIndex</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.findColumnIndex</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataIndex</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ci </span><span class="jsdoc-syntax">&gt; -1 ? </span><span class="jsdoc-var">this.his.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">] : </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    },
+    
     </span><span class="jsdoc-comment">/**
      * Returns the index for a specified column id.
      * @param {String} id The column id
@@ -193,6 +204,7 @@
         }
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">-1;
     },
+    
     </span><span class="jsdoc-comment">/**
      * Returns the index for a specified column dataIndex.
      * @param {String} dataIndex The column dataIndex
