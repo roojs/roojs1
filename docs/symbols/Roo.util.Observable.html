@@ -1,0 +1,1017 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=undefined" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		
+		<title>JsDoc Reference - Roo.util.Observable</title>
+		
+		
+	<link rel="stylesheet" type="text/css" href="../../css/roojs.css" />		
+	<link rel="stylesheet" type="text/css" href="../default.css" />
+	
+	
+	<script type="text/javascript" src="../page.js">
+	
+	</script>
+	 
+		
+	</head>
+
+	<body onload="RooDocsPage.onload();">
+	 
+	
+<div class="body-wrap">
+
+    <!-- ============================== links to methods. ================================= -->	
+
+    <div class="top-tools">
+    <!--
+        <a class="inner-link" href="#Roo.util.Observable-props"><img src="resources/s.gif" class="item-icon icon-prop">Properties</a>
+        <a class="inner-link" href="#Roo.util.Observable-methods"><img src="resources/s.gif" class="item-icon icon-method">Methods</a>
+        <a class="inner-link" href="#Roo.util.Observable-events"><img src="resources/s.gif" class="item-icon icon-event">Events</a>
+        <a class="inner-link" href="#Roo.util.Observable-configs"><img src="resources/s.gif" class="item-icon icon-config">Config Options</a>
+        <a class="bookmark" href="NEED_TO_CREATE_DIRECT_LINK_HREF"><img src="resources/s.gif" class="item-icon icon-fav">Direct Link</a>
+	-->
+    </div>
+
+    
+<!-- ============================== inheritance Block. ================================= -->	
+	
+<!-- ============================== class title / details ============================ -->
+    
+    
+    <h1 class="classTitle">
+				
+				Class Roo.util.Observable
+			</h1>
+			
+    <table cellspacing="0" class="class-summary-table">
+	
+		<tr><td class="label">Package:</td><td class="hd-info">Roo.util</td></tr>
+	
+        <tr><td class="label">Defined In:</td><td class="hd-info">
+			
+					<a href="./src/Roo_util_Observable.js.html">Roo/util/Observable.js</a>.
+			
+	</td></tr>
+        <tr><td class="label">Class:</td><td class="hd-info">Observable</td></tr>
+	
+	
+        <tr><td class="label">Subclasses:</td><td class="hd-info">
+		<a href="./Roo.Ajax.html#constructor" roo:cls="Roo.Ajax.html#constructor">Roo.Ajax</a>, <a href="./Roo.BasicDialog.html#constructor" roo:cls="Roo.BasicDialog.html#constructor">Roo.BasicDialog</a>, <a href="./Roo.BasicLayoutRegion.html#constructor" roo:cls="Roo.BasicLayoutRegion.html#constructor">Roo.BasicLayoutRegion</a>, <a href="./Roo.BorderLayout.html#constructor" roo:cls="Roo.BorderLayout.html#constructor">Roo.BorderLayout</a>, <a href="./Roo.BoxComponent.html#constructor" roo:cls="Roo.BoxComponent.html#constructor">Roo.BoxComponent</a>, <a href="./Roo.Button.html#constructor" roo:cls="Roo.Button.html#constructor">Roo.Button</a>, <a href="./Roo.ColorPalette.html#constructor" roo:cls="Roo.ColorPalette.html#constructor">Roo.ColorPalette</a>, <a href="./Roo.Component.html#constructor" roo:cls="Roo.Component.html#constructor">Roo.Component</a>, <a href="./Roo.ContentPanel.html#constructor" roo:cls="Roo.ContentPanel.html#constructor">Roo.ContentPanel</a>, <a href="./Roo.DatePicker.html#constructor" roo:cls="Roo.DatePicker.html#constructor">Roo.DatePicker</a>, <a href="./Roo.Editor.html#constructor" roo:cls="Roo.Editor.html#constructor">Roo.Editor</a>, <a href="./Roo.GridPanel.html#constructor" roo:cls="Roo.GridPanel.html#constructor">Roo.GridPanel</a>, <a href="./Roo.JsonView.html#constructor" roo:cls="Roo.JsonView.html#constructor">Roo.JsonView</a>, <a href="./Roo.LayoutDialog.html#constructor" roo:cls="Roo.LayoutDialog.html#constructor">Roo.LayoutDialog</a>, <a href="./Roo.LayoutManager.html#constructor" roo:cls="Roo.LayoutManager.html#constructor">Roo.LayoutManager</a>, <a href="./Roo.LayoutRegion.html#constructor" roo:cls="Roo.LayoutRegion.html#constructor">Roo.LayoutRegion</a>, <a href="./Roo.Login.html#constructor" roo:cls="Roo.Login.html#constructor">Roo.Login</a>, <a href="./Roo.NestedLayoutPanel.html#constructor" roo:cls="Roo.NestedLayoutPanel.html#constructor">Roo.NestedLayoutPanel</a>, <a href="./Roo.ReaderLayout.html#constructor" roo:cls="Roo.ReaderLayout.html#constructor">Roo.ReaderLayout</a>, <a href="./Roo.Resizable.html#constructor" roo:cls="Roo.Resizable.html#constructor">Roo.Resizable</a>, <a href="./Roo.SplitBar.html#constructor" roo:cls="Roo.SplitBar.html#constructor">Roo.SplitBar</a>, <a href="./Roo.SplitButton.html#constructor" roo:cls="Roo.SplitButton.html#constructor">Roo.SplitButton</a>, <a href="./Roo.SplitLayoutRegion.html#constructor" roo:cls="Roo.SplitLayoutRegion.html#constructor">Roo.SplitLayoutRegion</a>, <a href="./Roo.TabPanel.html#constructor" roo:cls="Roo.TabPanel.html#constructor">Roo.TabPanel</a>, <a href="./Roo.TabPanelItem.html#constructor" roo:cls="Roo.TabPanelItem.html#constructor">Roo.TabPanelItem</a>, <a href="./Roo.Toolbar.Button.html#constructor" roo:cls="Roo.Toolbar.Button.html#constructor">Roo.Toolbar.Button</a>, <a href="./Roo.Toolbar.SplitButton.html#constructor" roo:cls="Roo.Toolbar.SplitButton.html#constructor">Roo.Toolbar.SplitButton</a>, <a href="./Roo.TreePanel.html#constructor" roo:cls="Roo.TreePanel.html#constructor">Roo.TreePanel</a>, <a href="./Roo.UpdateManager.html#constructor" roo:cls="Roo.UpdateManager.html#constructor">Roo.UpdateManager</a>, <a href="./Roo.View.html#constructor" roo:cls="Roo.View.html#constructor">Roo.View</a>, <a href="./Roo.XComponent.html#constructor" roo:cls="Roo.XComponent.html#constructor">Roo.XComponent</a>, <a href="./Roo.data.Connection.html#constructor" roo:cls="Roo.data.Connection.html#constructor">Roo.data.Connection</a>, <a href="./Roo.data.JsonStore.html#constructor" roo:cls="Roo.data.JsonStore.html#constructor">Roo.data.JsonStore</a>, <a href="./Roo.data.Node.html#constructor" roo:cls="Roo.data.Node.html#constructor">Roo.data.Node</a>, <a href="./Roo.data.SimpleStore.html#constructor" roo:cls="Roo.data.SimpleStore.html#constructor">Roo.data.SimpleStore</a>, <a href="./Roo.data.Store.html#constructor" roo:cls="Roo.data.Store.html#constructor">Roo.data.Store</a>, <a href="./Roo.data.Tree.html#constructor" roo:cls="Roo.data.Tree.html#constructor">Roo.data.Tree</a>, <a href="./Roo.form.BasicForm.html#constructor" roo:cls="Roo.form.BasicForm.html#constructor">Roo.form.BasicForm</a>, <a href="./Roo.form.Checkbox.html#constructor" roo:cls="Roo.form.Checkbox.html#constructor">Roo.form.Checkbox</a>, <a href="./Roo.form.Column.html#constructor" roo:cls="Roo.form.Column.html#constructor">Roo.form.Column</a>, <a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>, <a href="./Roo.form.DateField.html#constructor" roo:cls="Roo.form.DateField.html#constructor">Roo.form.DateField</a>, <a href="./Roo.form.FCKeditor.html#constructor" roo:cls="Roo.form.FCKeditor.html#constructor">Roo.form.FCKeditor</a>, <a href="./Roo.form.Field.html#constructor" roo:cls="Roo.form.Field.html#constructor">Roo.form.Field</a>, <a href="./Roo.form.FieldSet.html#constructor" roo:cls="Roo.form.FieldSet.html#constructor">Roo.form.FieldSet</a>, <a href="./Roo.form.Form.html#constructor" roo:cls="Roo.form.Form.html#constructor">Roo.form.Form</a>, <a href="./Roo.form.GridField.html#constructor" roo:cls="Roo.form.GridField.html#constructor">Roo.form.GridField</a>, <a href="./Roo.form.Hidden.html#constructor" roo:cls="Roo.form.Hidden.html#constructor">Roo.form.Hidden</a>, <a href="./Roo.form.Layout.html#constructor" roo:cls="Roo.form.Layout.html#constructor">Roo.form.Layout</a>, <a href="./Roo.form.NumberField.html#constructor" roo:cls="Roo.form.NumberField.html#constructor">Roo.form.NumberField</a>, <a href="./Roo.form.Radio.html#constructor" roo:cls="Roo.form.Radio.html#constructor">Roo.form.Radio</a>, <a href="./Roo.form.Row.html#constructor" roo:cls="Roo.form.Row.html#constructor">Roo.form.Row</a>, <a href="./Roo.form.TextArea.html#constructor" roo:cls="Roo.form.TextArea.html#constructor">Roo.form.TextArea</a>, <a href="./Roo.form.TextField.html#constructor" roo:cls="Roo.form.TextField.html#constructor">Roo.form.TextField</a>, <a href="./Roo.form.TriggerField.html#constructor" roo:cls="Roo.form.TriggerField.html#constructor">Roo.form.TriggerField</a>, <a href="./Roo.grid.AbstractSelectionModel.html#constructor" roo:cls="Roo.grid.AbstractSelectionModel.html#constructor">Roo.grid.AbstractSelectionModel</a>, <a href="./Roo.grid.CellSelectionModel.html#constructor" roo:cls="Roo.grid.CellSelectionModel.html#constructor">Roo.grid.CellSelectionModel</a>, <a href="./Roo.grid.ColumnModel.html#constructor" roo:cls="Roo.grid.ColumnModel.html#constructor">Roo.grid.ColumnModel</a>, <a href="./Roo.grid.EditorGrid.html#constructor" roo:cls="Roo.grid.EditorGrid.html#constructor">Roo.grid.EditorGrid</a>, <a href="./Roo.grid.Grid.html#constructor" roo:cls="Roo.grid.Grid.html#constructor">Roo.grid.Grid</a>, <a href="./Roo.grid.GridEditor.html#constructor" roo:cls="Roo.grid.GridEditor.html#constructor">Roo.grid.GridEditor</a>, <a href="./Roo.grid.GridView.html#constructor" roo:cls="Roo.grid.GridView.html#constructor">Roo.grid.GridView</a>, <a href="./Roo.grid.PropertyGrid.html#constructor" roo:cls="Roo.grid.PropertyGrid.html#constructor">Roo.grid.PropertyGrid</a>, <a href="./Roo.grid.RowSelectionModel.html#constructor" roo:cls="Roo.grid.RowSelectionModel.html#constructor">Roo.grid.RowSelectionModel</a>, <a href="./Roo.menu.Adapter.html#constructor" roo:cls="Roo.menu.Adapter.html#constructor">Roo.menu.Adapter</a>, <a href="./Roo.menu.BaseItem.html#constructor" roo:cls="Roo.menu.BaseItem.html#constructor">Roo.menu.BaseItem</a>, <a href="./Roo.menu.CheckItem.html#constructor" roo:cls="Roo.menu.CheckItem.html#constructor">Roo.menu.CheckItem</a>, <a href="./Roo.menu.ColorItem.html#constructor" roo:cls="Roo.menu.ColorItem.html#constructor">Roo.menu.ColorItem</a>, <a href="./Roo.menu.ColorMenu.html#constructor" roo:cls="Roo.menu.ColorMenu.html#constructor">Roo.menu.ColorMenu</a>, <a href="./Roo.menu.DateItem.html#constructor" roo:cls="Roo.menu.DateItem.html#constructor">Roo.menu.DateItem</a>, <a href="./Roo.menu.DateMenu.html#constructor" roo:cls="Roo.menu.DateMenu.html#constructor">Roo.menu.DateMenu</a>, <a href="./Roo.menu.Item.html#constructor" roo:cls="Roo.menu.Item.html#constructor">Roo.menu.Item</a>, <a href="./Roo.menu.Menu.html#constructor" roo:cls="Roo.menu.Menu.html#constructor">Roo.menu.Menu</a>, <a href="./Roo.menu.Separator.html#constructor" roo:cls="Roo.menu.Separator.html#constructor">Roo.menu.Separator</a>, <a href="./Roo.menu.TextItem.html#constructor" roo:cls="Roo.menu.TextItem.html#constructor">Roo.menu.TextItem</a>, <a href="./Roo.tree.AsyncTreeNode.html#constructor" roo:cls="Roo.tree.AsyncTreeNode.html#constructor">Roo.tree.AsyncTreeNode</a>, <a href="./Roo.tree.DefaultSelectionModel.html#constructor" roo:cls="Roo.tree.DefaultSelectionModel.html#constructor">Roo.tree.DefaultSelectionModel</a>, <a href="./Roo.tree.MultiSelectionModel.html#constructor" roo:cls="Roo.tree.MultiSelectionModel.html#constructor">Roo.tree.MultiSelectionModel</a>, <a href="./Roo.tree.TreeEditor.html#constructor" roo:cls="Roo.tree.TreeEditor.html#constructor">Roo.tree.TreeEditor</a>, <a href="./Roo.tree.TreeLoader.html#constructor" roo:cls="Roo.tree.TreeLoader.html#constructor">Roo.tree.TreeLoader</a>, <a href="./Roo.tree.TreeNode.html#constructor" roo:cls="Roo.tree.TreeNode.html#constructor">Roo.tree.TreeNode</a>, <a href="./Roo.tree.TreePanel.html#constructor" roo:cls="Roo.tree.TreePanel.html#constructor">Roo.tree.TreePanel</a>, <a href="./Roo.util.ClickRepeater.html#constructor" roo:cls="Roo.util.ClickRepeater.html#constructor">Roo.util.ClickRepeater</a>, <a href="./Roo.util.MixedCollection.html#constructor" roo:cls="Roo.util.MixedCollection.html#constructor">Roo.util.MixedCollection</a>
+
+	
+	
+	</td></tr>
+	
+	
+	
+    </table>
+
+    
+<!-- ============================== class summary ========================== -->			
+    <div class="description">
+	Base class that provides a common interface for publishing events. Subclasses are expected to<br/>to have a property "events" with all the events defined.<br><br/>For example:<br/><pre><code><br/> Employee = function(name){<br/>    this.name = name;<br/>    this.addEvents({<br/>        "fired" : true,<br/>        "quit" : true<br/>    });<br/> }<br/> Roo.extend(Employee, Roo.util.Observable);<br/></code></pre>
+    </div>
+
+	
+<!-- ============================== Class comment block... ========================== -->					
+
+<div class="comments">
+	<b>Class Comments / Notes</B> =>  
+	<u onclick="parent.CommentDialog.showCommentId = 'Roo.util.Observable';">[Add Your comment/notes about this class]</u>
+	<br/>
+	<iframe frameborder="0"  id="comments-Roo.util" style="border: none;width:100%;" 
+		src="/blog.php/GtkDjsComments/Roo.util.Observable.html"></iframe>
+</div>
+	
+
+		
+<!-- ============================== config options ========================== -->						
+		 
+    
+    
+		
+    <div class="hr"></div>
+    <a id="Roo.util.Observable-configs"></a>
+		
+    
+     
+    
+	
+      <table cellspacing="0" class="member-table">   
+      <caption>Config Options (Usually are also Properties)</caption>
+    
+	
+        <tr>
+            <th class="sig-header" colspan="2">Options</th>
+	    
+            <th class="msource-header">Defined By</th>
+        </tr>
+	
+	
+	
+	
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.util.Observable-cfg-listeners" name=".listeners"></a>
+			<div class="fixedFont">
+				<b  class="itemname">listeners</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">list of events and functions to call for this object, <br/>For example :<br/><pre><code><br/>    listeners :  { <br/>       'click' : function(e) {<br/>           .</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">list of events and functions to call for this object, <br/>For example :<br/><pre><code><br/>    listeners :  { <br/>       'click' : function(e) {<br/>           ..... <br/>        } ,<br/>        .... <br/>    } <br/>  </code></pre></div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.util.Observable
+				
+		    </td>
+		</tr>
+        
+        
+    </table>
+  		
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- ============================== public properties ==================== -->	
+  
+  
+  
+    <a id="Roo.util.Observable-props"></a>      
+    
+    
+
+    
+    
+     <table cellspacing="0" class="member-table">
+      <caption class="Empty">Public Properties - Has None</caption>
+     </table>
+    
+    
+     
+    
+  <!-- ============================== methods summary / details ======================== -->
+  
+  
+  <a id="Roo.util.Observable-methods"></a>
+	<!-- constructor?? -->
+  	
+	<!-- static's first 
+	
+	
+	-->
+	
+	<!-- then dynamics first -->
+	
+  
+  
+    
+    
+    
+      <table cellspacing="0" class="member-table">
+      <caption>Public Methods</caption>
+        <tr>
+            <th class="sig-header" colspan="2">Method</th>            
+            <th class="msource-header">Defined By</th>
+
+        </tr>
+        
+	
+	
+	 
+	
+        
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util-method-Observable"   name=".Observable"></a>
+		<div class="fixedFont">
+			<span class="attributes">new <B>Roo.util.</B></span><b class="itemname">Observable</b>
+				
+				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>config</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+		 
+			<div class="short">Create a new Roo.util.Observable</div> 
+		 
+		 
+                    <div class="long">
+			
+			
+			
+				Create a new Roo.util.Observable
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>config</b>
+						
+					</dt>
+					<dd>properties to use (incuding events / listeners)</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-capture"   name=".capture"></a>
+		<div class="fixedFont">
+			<span class="attributes">Roo.util.Observable.</span><b class="itemname">capture</b>
+				
+				 (Observable <B><i>o</i></B>, <a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>fn</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Starts capture on the specified Observable.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Starts capture on the specified Observable. All events will be passed<br/>to the supplied function with the event name + standard signature of the event<br/><b>before</b> the event is fired. If the supplied function returns false,<br/>the event will not fire.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Observable</span>  <b>o</b>
+						
+					</dt>
+					<dd>The Observable to capture</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>fn</b>
+						
+					</dt>
+					<dd>The function to call</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>(optional) The scope (this object) for the fn</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.util.Observable
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-releaseCapture"   name=".releaseCapture"></a>
+		<div class="fixedFont">
+			<span class="attributes">Roo.util.Observable.</span><b class="itemname">releaseCapture</b>
+				
+				 (Observable <B><i>o</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Removes <b>all</b> added captures from the Observable.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Removes <b>all</b> added captures from the Observable.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont">Observable</span>  <b>o</b>
+						
+					</dt>
+					<dd>The Observable to release</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.util.Observable
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-addEvents"   name=".addEvents"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">addEvents</b>
+				
+				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>object</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Used to define events on this Observable</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Used to define events on this Observable
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>object</b>
+						
+					</dt>
+					<dd>The object with the events defined</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.util.Observable
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-addListener"   name=".addListener"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">addListener</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>, <a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>handler</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>options</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Appends an event handler to this component</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Appends an event handler to this component
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd>The type of event to listen for</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>handler</b>
+						
+					</dt>
+					<dd>The method the event invokes</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>(optional) The scope in which to execute the handler<br/>function. The handler function's "this" context.</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>options</b>
+						
+					</dt>
+					<dd>(optional) An object containing handler configuration<br/>properties. This may contain any of the following properties:<ul><br/><li>scope {Object} The scope in which to execute the handler function. The handler function's "this" context.</li><br/><li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li><br/><li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li><br/><li>buffer {Number} Causes the handler to be scheduled to run in an {<b>link</b> Roo.util.DelayedTask} delayed<br/>by the specified number of milliseconds. If the event fires again within that time, the original<br/>handler is <em>not</em> invoked, but the new handler is scheduled in its place.</li><br/></ul><br><br/><p><br/><b>Combining Options</b><br><br/>Using the options argument, it is possible to combine different types of listeners:<br><br/><br><br/>A normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)<br/>		<pre><code><br/>		el.on('click', this.onClick, this, {<br/> 			single: true,<br/>    		delay: 100,<br/>    		forumId: 4<br/>		});<br/>		</code></pre><br/><p><br/><b>Attaching multiple handlers in 1 call</b><br><br/>The method also allows for a single argument to be passed which is a config object containing properties<br/>which specify multiple handlers.<br/><pre><code><br/>		el.on({<br/>			'click': {<br/>        		fn: this.onClick,<br/>        		scope: this,<br/>        		delay: 100<br/>    		}, <br/>    		'mouseover': {<br/>        		fn: this.onMouseOver,<br/>        		scope: this<br/>    		},<br/>    		'mouseout': {<br/>        		fn: this.onMouseOut,<br/>        		scope: this<br/>    		}<br/>		});<br/>		</code></pre><br/><p><br/>Or a shorthand syntax which passes the same scope object to all handlers:<br/>     	<pre><code><br/>		el.on({<br/>			'click': this.onClick,<br/>    		'mouseover': this.onMouseOver,<br/>    		'mouseout': this.onMouseOut,<br/>    		scope: this<br/>		});<br/>		</code></pre></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.util.Observable
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-fireEvent"   name=".fireEvent"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">fireEvent</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object...</a> <B><i>args</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Fires the specified event with the passed parameters (minus the event name).</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Fires the specified event with the passed parameters (minus the event name).
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object...</a></span>  <b>args</b>
+						
+					</dt>
+					<dd>Variable number of parameters are passed to handlers</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a></span>  returns false if any of the handlers return false otherwise it returns true</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.util.Observable
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-hasListener"   name=".hasListener"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">hasListener</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Checks to see if this object has any listeners for a specified event</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Checks to see if this object has any listeners for a specified event
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd>The name of the event to check for</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a></span>  True if the event is being listened for, else false</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.util.Observable
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-on"   name=".on"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">on</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>, <a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>handler</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>options</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Appends an event handler to this element (shorthand for addListener)</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Appends an event handler to this element (shorthand for addListener)
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd>The type of event to listen for</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>handler</b>
+						
+					</dt>
+					<dd>The method the event invokes</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>(optional) The scope in which to execute the handler<br/>function. The handler function's "this" context.</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>options</b>
+						
+					</dt>
+					<dd>(optional)</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.util.Observable
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-purgeListeners"   name=".purgeListeners"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">purgeListeners</b>
+				
+				 () 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Removes all listeners for this object</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Removes all listeners for this object
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.util.Observable
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-removeListener"   name=".removeListener"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">removeListener</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>, <a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>handler</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Removes a listener</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Removes a listener
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd>The type of event to listen for</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>handler</b>
+						
+					</dt>
+					<dd>The handler to remove</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>(optional) The scope (this object) for the handler</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.util.Observable
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.Observable-method-un"   name=".un"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">un</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>, <a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>handler</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Removes a listener (shorthand for removeListener)</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Removes a listener (shorthand for removeListener)
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd>The type of event to listen for</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>handler</b>
+						
+					</dt>
+					<dd>The handler to remove</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>(optional) The scope (this object) for the handler</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.util.Observable
+		&nbsp;
+            </td>
+        </tr>
+	
+	                                               
+    </table>
+
+  
+  <!-- ============================== events summary / details ======================== -->
+  
+  
+  <a id="Roo.util.Observable-events"></a>
+    
+  
+  	
+   
+    
+     <table cellspacing="0" class="member-table">
+      <caption class="Empty">Events - Has None</caption>
+     </table>
+    
+    
+  
+    
+    
+  
+  
+  
+ 
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Wed Aug 04 2010 08:37:38 GMT+0800 (HKT)
+			Based on 
+			<a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a>  
+		</div>
+	</body>
+</html>
