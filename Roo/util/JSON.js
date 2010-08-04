@@ -130,10 +130,8 @@ Roo.util.JSON = new (function(){
      * @return {Object} The resulting object
      */
     this.decode = function(json){
-        /**
-         * eval:var:json
-         */
-        return eval("(" + json + ')');
+        
+        return /** eval:var:json */ eval("(" + json + ')');
     };
 })();
 /** 

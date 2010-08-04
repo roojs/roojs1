@@ -6035,8 +6035,8 @@ Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
      */
     read : function(response){
         var json = response.responseText;
-        /* eval:var:o */
-        var o = eval("("+json+")");
+       
+        var o = /* eval:var:o */ eval("("+json+")");
         if(!o) {
             throw {message: "JsonReader.read: Json object not found"};
         }
@@ -6115,23 +6115,23 @@ Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
 	        	this.getId = function(){return null;};
 	        }
             this.ef = [];
-            for(var i = 0; i < fl; i++){
-                f = fi[i];
+            for(var jj = 0; jj < fl; jj++){
+                f = fi[jj];
                 var map = (f.mapping !== undefined && f.mapping !== null) ? f.mapping : f.name;
-                this.ef[i] = this.getJsonAccessor(map);
+                this.ef[jj] = this.getJsonAccessor(map);
             }
         }
 
     	var root = this.getRoot(o), c = root.length, totalRecords = c, success = true;
     	if(s.totalProperty){
-            var v = parseInt(this.getTotal(o), 10);
-            if(!isNaN(v)){
-                totalRecords = v;
+            var vt = parseInt(this.getTotal(o), 10);
+            if(!isNaN(vt)){
+                totalRecords = vt;
             }
         }
         if(s.successProperty){
-            var v = this.getSuccess(o);
-            if(v === false || v === 'false'){
+            var vs = this.getSuccess(o);
+            if(vs === false || vs === 'false'){
                 success = false;
             }
         }
@@ -33771,7 +33771,7 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
      */
     getColumnByDataIndex: function(dataIndex){
         var index = this.findColumnIndex(dataIndex);
-        return ci > -1 ? this.his.config[index] : false;
+        return index > -1 ? this.his.config[index] : false;
     },
     
     /**

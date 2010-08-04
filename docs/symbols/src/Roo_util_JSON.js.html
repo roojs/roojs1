@@ -130,10 +130,8 @@
      * @return {Object} The resulting object
      */
     </span><span class="jsdoc-var">this.decode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">json</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-comment">/**
-         * eval:var:json
-         */
-        </span><span class="jsdoc-keyword">return eval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;(&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">json </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">')'</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-comment">/** eval:var:json */ </span><span class="jsdoc-keyword">eval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;(&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">json </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">')'</span><span class="jsdoc-syntax">);
     };
 })();
 </span><span class="jsdoc-comment">/** 
