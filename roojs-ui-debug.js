@@ -33769,7 +33769,7 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
      * @param {String} dataIndex The column dataIndex
      * @return {Object|Boolean} the column or false if not found
      */
-    getIndexByDataIndex: function(dataIndex){
+    getColumnByDataIndex: function(dataIndex){
         var index = this.findColumnIndex(dataIndex);
         return ci > -1 ? this.his.config[index] : false;
     },
