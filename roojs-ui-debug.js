@@ -33771,7 +33771,7 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
      */
     getColumnByDataIndex: function(dataIndex){
         var index = this.findColumnIndex(dataIndex);
-        return index > -1 ? this.his.config[index] : false;
+        return index > -1 ? this.config[index] : false;
     },
     
     /**
