@@ -687,12 +687,10 @@ Roo.TreePanel = function(config){
     
 };
 
-Roo.extend(Roo.TreePanel, Roo.ContentPanel,
+Roo.extend(Roo.TreePanel, Roo.ContentPanel, {   
     fitToFrame : true,
     autoScroll : true
-
-
-);
+});
 
 
 
