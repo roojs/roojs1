@@ -661,6 +661,7 @@ Roo.TreePanel = function(config){
     
     var treeEl = el.createChild();
     this.resizeEl = treeEl;
+    
     Roo.TreePanel.superclass.constructor.call(this, el, config);
  
  
