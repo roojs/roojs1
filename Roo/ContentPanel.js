@@ -656,6 +656,10 @@ Roo.TreePanel = function(config){
     delete config.tree; 
     delete config.el; // hopefull!
     Roo.TreePanel.superclass.constructor.call(this, el, config);
+    if(this.toolbar){
+        this.toolbar.el.insertBefore(this.wrapper.dom.firstChild);
+    }
+    
     var treeEl = el.createChild();
     this.tree = new Roo.tree.TreePanel(treeEl , tree);
     //console.log(tree);
