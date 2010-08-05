@@ -34536,10 +34536,17 @@ Roo.menu.Item = function(config){
     }
 };
 Roo.extend(Roo.menu.Item, Roo.menu.BaseItem, {
+    
+    /**
+     * @cfg {String} text
+     * The text to show on the menu item.
+     */
+    text: '',
     /**
      * @cfg {String} icon
      * The path to an icon to display in this menu item (defaults to Roo.BLANK_IMAGE_URL)
      */
+    icon: undefined,
     /**
      * @cfg {String} itemCls The default CSS class to use for menu items (defaults to "x-menu-item")
      */
@@ -45102,8 +45109,15 @@ Roo.TreePanel = function(config){
     var tree = config.tree;
     delete config.tree; 
     delete config.el; // hopefull!
-    Roo.TreePanel.superclass.constructor.call(this, el, config);
+    
+    // wrapper for IE7 strict & safari scroll issue
+    
+    
     var treeEl = el.createChild();
+    this.resizeEl = treeEl;
+    Roo.TreePanel.superclass.constructor.call(this, el, config);
+ 
+ 
     this.tree = new Roo.tree.TreePanel(treeEl , tree);
     //console.log(tree);
     this.on('activate', function()
