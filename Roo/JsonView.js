@@ -156,7 +156,7 @@ Roo.extend(Roo.JsonView, Roo.View, {
             o = Roo.util.JSON.decode(response.responseText);
             if(this.jsonRoot){
                 
-                o = /** eval:var:o */ eval("o." + this.jsonRoot);
+                o = o[this.jsonRoot];
             }
         } catch(e){
         }
