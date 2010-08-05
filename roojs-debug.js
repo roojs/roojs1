@@ -32878,7 +32878,10 @@ Roo.extend(Roo.tree.TreeDropZone, Roo.dd.DropZone, {
         var dragEl = n.ddel;
         var t = Roo.lib.Dom.getY(dragEl), b = t + dragEl.offsetHeight;
         var y = Roo.lib.Event.getPageY(e);
-        var noAppend = tn.allowChildren === false || tn.isLeaf();
+        //var noAppend = tn.allowChildren === false || tn.isLeaf();
+        
+        // we may drop nodes anywhere, as long as allowChildren has not been set to false..
+        var noAppend = tn.allowChildren === false;
         if(this.appendOnly || tn.parentNode.allowChildren === false){
             return noAppend ? false : "append";
         }
@@ -33038,7 +33041,8 @@ Roo.extend(Roo.tree.TreeDropZone, Roo.dd.DropZone, {
     }    
 });
 
-}/*
+}
+/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -45100,7 +45104,7 @@ Roo.extend(Roo.ScrollPanel, Roo.ContentPanel, {
  * @class Roo.TreePanel
  * @extends Roo.ContentPanel
  * @constructor
- * Create a new TreePanel.
+ * Create a new TreePanel. - defaults to fit/scoll contents.
  * @param {String/Object} config A string to set only the panel's title, or a config object
  * @cfg {Roo.tree.TreePanel} tree The tree TreePanel, with config etc.
  */
@@ -45112,11 +45116,10 @@ Roo.TreePanel = function(config){
     
     // wrapper for IE7 strict & safari scroll issue
     
-    console.log('tp el');
-    console.log(el);
-    
     var treeEl = el.createChild();
     config.resizeEl = treeEl;
+    
+    
     
     Roo.TreePanel.superclass.constructor.call(this, el, config);
  
@@ -45142,7 +45145,10 @@ Roo.TreePanel = function(config){
     
 };
 
-Roo.extend(Roo.TreePanel, Roo.ContentPanel);
+Roo.extend(Roo.TreePanel, Roo.ContentPanel, {   
+    fitToFrame : true,
+    autoScroll : true
+});
 
 
 
@@ -45572,6 +45578,11 @@ Roo.grid.Grid = function(container, config){
     Roo.grid.Grid.superclass.constructor.call(this);
 };
 Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
+    
+    /**
+     * @cfg {String} ddGroup - drag drop group.
+	 */
+    
     /**
      * @cfg {Number} minColumnWidth The minimum width a column can be resized to. Default is 25.
 	 */
@@ -45605,6 +45616,10 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
 	 */
 	trackMouseOver : true,
 
+    /**
+	 * @cfg {Boolean} enableDrag  True to enable drag of rows. Default is false. (double check if this is needed?)
+	 */
+    
 	/**
 	 * @cfg {Boolean} enableDragDrop True to enable drag and drop of rows. Default is false.
 	 */
