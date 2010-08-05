@@ -655,11 +655,12 @@ Roo.TreePanel = function(config){
     var tree = config.tree;
     delete config.tree; 
     delete config.el; // hopefull!
-    Roo.TreePanel.superclass.constructor.call(this, el, config);
-    if(this.toolbar){
-        this.toolbar.el.insertBefore(this.wrapper.dom.firstChild);
-    }
     
+    // wrapper for IE7 strict & safari scroll issue
+    
+    
+    Roo.TreePanel.superclass.constructor.call(this, el, config);
+ 
     var treeEl = el.createChild();
     this.tree = new Roo.tree.TreePanel(treeEl , tree);
     //console.log(tree);
