@@ -25,10 +25,17 @@ Roo.menu.Item = function(config){
     }
 };
 Roo.extend(Roo.menu.Item, Roo.menu.BaseItem, {
+    
+    /**
+     * @cfg {String} text
+     * The text to show on the menu item.
+     */
+    icon: undefined,
     /**
      * @cfg {String} icon
      * The path to an icon to display in this menu item (defaults to Roo.BLANK_IMAGE_URL)
      */
+    icon: undefined,
     /**
      * @cfg {String} itemCls The default CSS class to use for menu items (defaults to "x-menu-item")
      */
