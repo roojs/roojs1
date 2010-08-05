@@ -40798,7 +40798,11 @@ Roo.form.Action.Submit = function(form, options){
 Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
     type : 'submit',
 
-    run : function(){
+    run : function()
+    {
+        // run get Values on the form, so it syncs any secondary forms.
+        this.form.getValues();
+        
         var o = this.options;
         var method = this.getMethod();
         var isPost = method == 'POST';
