@@ -82,7 +82,10 @@ Roo.extend(Roo.tree.TreeDropZone, Roo.dd.DropZone, {
         var dragEl = n.ddel;
         var t = Roo.lib.Dom.getY(dragEl), b = t + dragEl.offsetHeight;
         var y = Roo.lib.Event.getPageY(e);
-        var noAppend = tn.allowChildren === false || tn.isLeaf();
+        //var noAppend = tn.allowChildren === false || tn.isLeaf();
+        
+        // we may drop nodes anywhere, as long as allowChildren has not been set to false..
+        var noAppend = tn.allowChildren === false;
         if(this.appendOnly || tn.parentNode.allowChildren === false){
             return noAppend ? false : "append";
         }
