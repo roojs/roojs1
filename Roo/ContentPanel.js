@@ -658,10 +658,12 @@ Roo.TreePanel = function(config){
     
     // wrapper for IE7 strict & safari scroll issue
     
-    this.resizeEl = el;
+    
+    var treeEl = el.createChild();
+    this.resizeEl = treeEl;
     Roo.TreePanel.superclass.constructor.call(this, el, config);
  
-    var treeEl = el.createChild();
+ 
     this.tree = new Roo.tree.TreePanel(treeEl , tree);
     //console.log(tree);
     this.on('activate', function()
