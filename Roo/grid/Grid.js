@@ -346,6 +346,10 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
 	 */
 	trackMouseOver : true,
 
+    /**
+	 * @cfg {Boolean} enableDrag  True to enable drag of rows. Default is false.
+	 */
+    
 	/**
 	 * @cfg {Boolean} enableDragDrop True to enable drag and drop of rows. Default is false.
 	 */
