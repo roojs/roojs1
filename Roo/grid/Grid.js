@@ -308,6 +308,11 @@ Roo.grid.Grid = function(container, config){
     Roo.grid.Grid.superclass.constructor.call(this);
 };
 Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
+    
+    /**
+     * @cfg {String} ddGroup - drag drop group.
+	 */
+    
     /**
      * @cfg {Number} minColumnWidth The minimum width a column can be resized to. Default is 25.
 	 */
