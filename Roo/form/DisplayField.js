@@ -16,36 +16,40 @@
  * Creates a new Display Field item.
  * @param {Object} config Configuration options
  */
- 
- 
- Roo.form.DisplayText = function(config){
-    Roo.form.DisplayText.superclass.constructor.call(this, config);
+Roo.form.DisplayField = function(config){
+    Roo.form.DisplayField.superclass.constructor.call(this, config);
+    
 };
-  
-Roo.extend(Roo.form.DisplayText, Roo.form.TextField, {
+
+Roo.extend(Roo.form.DisplayField, Roo.form.TextField,  {
     fieldLabel:      '',
     inputType:      'hidden',
     width:          50,
     allowBlank:     true,
     labelSeparator: '',
     hidden:         true,
-    itemCls :       'x-form-item-display-none'
-
-
-}); 
     
+ 
+    /**
+     * @cfg {String} focusClass The CSS class to use when the checkbox receives focus (defaults to undefined)
+     */
+    focusClass : undefined,
+    /**
+     * @cfg {String} fieldClass The default CSS class for the checkbox (defaults to "x-form-field")
+     */
+    fieldClass: 'x-form-field',
     
      /**
      * @cfg {Function} valueRenderer The renderer for the field (so you can reformat output). should return raw HTML
      */
-   // valueRenderer: false,
+    valueRenderer: undefined,
     
-  //  width: 100,
+    width: 100,
     /**
      * @cfg {String/Object} autoCreate A DomHelper element spec, or true for a default element spec (defaults to
      * {tag: "input", type: "checkbox", autocomplete: "off"})
      */
-   /*  
+     
     defaultAutoCreate : { tag: 'input', type: 'hidden', autocomplete: 'off'},
 
     onResize : function(){
@@ -85,7 +89,6 @@ Roo.extend(Roo.form.DisplayText, Roo.form.TextField, {
         this.setValue(this.value);
         
     },
-    */
 /*
     // private
     initValue : Roo.emptyFn,
@@ -93,16 +96,14 @@ Roo.extend(Roo.form.DisplayText, Roo.form.TextField, {
   */
 
 	// private
-    
-   // onClick : function(){
-    //    
-    //},
+    onClick : function(){
+        
+    },
 
     /**
      * Sets the checked state of the checkbox.
      * @param {Boolean/String} checked True, 'true', '1', or 'on' to check the checkbox, any other value will uncheck it.
      */
-     /*
     setValue : function(v){
         this.value = v;
         var html = this.valueRenderer ?  this.valueRenderer(v) : String.format('{0}', v);
@@ -110,5 +111,4 @@ Roo.extend(Roo.form.DisplayText, Roo.form.TextField, {
         Roo.form.DisplayField.superclass.setValue.call(this, v);
 
     }
-    */
-//});
+});
