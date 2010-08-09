@@ -36,7 +36,7 @@ Roo.extend(Roo.form.DisplayText, Roo.form.TextField,  {
      /**
      * @cfg {Function} valueRenderer The renderer for the field (so you can reformat output). should return raw HTML
      */
-    valueRenderer: false,
+   // valueRenderer: false,
     
   //  width: 100,
     /**
