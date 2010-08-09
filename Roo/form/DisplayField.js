@@ -71,13 +71,11 @@ Roo.extend(Roo.form.DisplayField, Roo.form.TextField,  {
 
     // private
     onRender : function(ct, position){
-        console.log('DisplayField onRender');
+        
         Roo.form.DisplayField.superclass.onRender.call(this, ct, position);
         //if(this.inputValue !== undefined){
-        
-        
         this.wrap = this.el.wrap();
-        console.log(this.wrap);
+        
         this.viewEl = this.wrap.createChild({ tag: 'div'});
         
         if (this.bodyStyle) {
