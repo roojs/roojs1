@@ -301,7 +301,7 @@ Roo.onReady(function(){
     
    form5 = new Roo.form.Form({
         labelAlign: 'right',
-        labelWidth: 75,
+        labelWidth: 120,
         items : [
             {
             
@@ -316,7 +316,7 @@ Roo.onReady(function(){
                 xtype : 'DisplayField',
                 xns : Roo.form,
                 name:'textex',
-                fieldLabel: 'Example DisplayField',
+                fieldLabel: 'Simple',
                 value : 'example text'
             }
         
