@@ -80,6 +80,7 @@ Roo.extend(Roo.form.DisplayField, Roo.form.TextField,  {
         
         
         this.wrap = this.el.wrap();
+        console.log(this.wrap);
         this.viewEl = this.wrap.createChild({ tag: 'div'});
         
         if (this.bodyStyle) {
