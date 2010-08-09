@@ -315,7 +315,7 @@ Roo.onReady(function(){
             {
                 xtype : 'DisplayField',
                 xns : Roo.form,
-                  name:'textex',
+                name:'textex',
                 fieldLabel: 'Example DisplayField',
                 value : 'example text'
             }
