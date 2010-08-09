@@ -21,7 +21,7 @@ Roo.form.DisplayText = function(config){
     
 };
 
-Roo.extend(Roo.form.DisplayText, Roo.form.Field,  {
+Roo.extend(Roo.form.DisplayText, Roo.form.TextField,  {
     /**
      * @cfg {String} focusClass The CSS class to use when the checkbox receives focus (defaults to undefined)
      */
@@ -45,7 +45,7 @@ Roo.extend(Roo.form.DisplayText, Roo.form.Field,  {
     defaultAutoCreate : { tag: 'input', type: 'hidden', autocomplete: 'off'},
 
     onResize : function(){
-        Roo.form.Field.superclass.onResize.apply(this, arguments);
+        Roo.form.DisplayField.superclass.onResize.apply(this, arguments);
         
     },
 
@@ -66,7 +66,7 @@ Roo.extend(Roo.form.DisplayText, Roo.form.Field,  {
 
     // private
     onRender : function(ct, position){
-        Roo.form.DisplayText.superclass.onRender.call(this, ct, position);
+        Roo.form.DisplayField.superclass.onRender.call(this, ct, position);
         //if(this.inputValue !== undefined){
         
         
@@ -100,7 +100,7 @@ Roo.extend(Roo.form.DisplayText, Roo.form.Field,  {
         this.value = v;
         var html = this.renderer ?  this.renderer(v) : String.format('{0}', v);
         this.viewEl.dom.innerHTML = html;
-        Roo.form.DisplayText.superclass.setValue.call(this, v);
+        Roo.form.DisplayField.superclass.setValue.call(this, v);
 
     }
 });
