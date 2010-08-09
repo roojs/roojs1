@@ -16,21 +16,23 @@
  * Creates a new Display Field item.
  * @param {Object} config Configuration options
  */
-Roo.form.DisplayText = function(config){
+ 
+ 
+ Roo.form.DisplayText = function(config){
     Roo.form.DisplayText.superclass.constructor.call(this, config);
-    
 };
-
-Roo.extend(Roo.form.DisplayText, Roo.form.TextField,  {
+  
+Roo.extend(Roo.form.DisplayText, Roo.form.TextField, {
     fieldLabel:      '',
     inputType:      'hidden',
-   // width:          50,
+    width:          50,
     allowBlank:     true,
     labelSeparator: '',
     hidden:         true,
-    
- 
-     
+    itemCls :       'x-form-item-display-none'
+
+
+}); 
     
     
      /**
@@ -109,4 +111,4 @@ Roo.extend(Roo.form.DisplayText, Roo.form.TextField,  {
 
     }
     */
-});
+//});
