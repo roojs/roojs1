@@ -303,6 +303,12 @@ Roo.onReady(function(){
         labelAlign: 'right',
         labelWidth: 75,
         items : [
+            xtype: 'Checkbox',
+            xns : Roo.form,
+            boxLabel:'RooJS v1.1.1',
+            name:'extuser',
+            width:'auto'
+            },
             {
                 xtype : 'DisplayField',
                 xns : Roo.form,
