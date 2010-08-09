@@ -24,7 +24,7 @@ Roo.form.DisplayText = function(config){
 Roo.extend(Roo.form.DisplayText, Roo.form.TextField,  {
     fieldLabel:      '',
     inputType:      'hidden',
-    width:          50,
+   // width:          50,
     allowBlank:     true,
     labelSeparator: '',
     hidden:         true,
