@@ -109,6 +109,9 @@ Roo.extend(Roo.form.DisplayField, Roo.form.TextField,  {
     setValue : function(v){
         this.value = v;
         var html = this.valueRenderer ?  this.valueRenderer(v) : String.format('{0}', v);
+        if (!this.viewEl) {
+            return;
+        }
         this.viewEl.dom.innerHTML = html;
         Roo.form.DisplayField.superclass.setValue.call(this, v);
 
