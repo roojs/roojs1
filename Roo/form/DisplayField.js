@@ -81,11 +81,11 @@ Roo.extend(Roo.form.DisplayText, Roo.form.TextField,  {
         this.setValue(this.value);
         
     },
-
+/*
     // private
     initValue : Roo.emptyFn,
 
-  
+  */
 
 	// private
     onClick : function(){
