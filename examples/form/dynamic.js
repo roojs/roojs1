@@ -307,7 +307,7 @@ Roo.onReady(function(){
             
                 xtype: 'Checkbox',
                 xns : Roo.form,
-              fieldLabel: 'A checkbox',
+               fieldLabel: 'A checkbox',
                 boxLabel:'RooJS v1.1.1',
                 name:'extuser',
                 width:'auto'
