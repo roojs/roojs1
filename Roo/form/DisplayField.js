@@ -22,7 +22,6 @@ Roo.form.DisplayField = function(config){
 };
 
 Roo.extend(Roo.form.DisplayField, Roo.form.TextField,  {
-    fieldLabel:      '',
     inputType:      'hidden',
     allowBlank:     true,
     readOnly:         true,
