@@ -50,7 +50,7 @@ Roo.extend(Roo.form.DisplayField, Roo.form.TextField,  {
      * {tag: "input", type: "checkbox", autocomplete: "off"})
      */
      
-    defaultAutoCreate : { tag: 'input', type: 'hidden', autocomplete: 'off'},
+ //   defaultAutoCreate : { tag: 'input', type: 'hidden', autocomplete: 'off'},
 
     onResize : function(){
         Roo.form.DisplayField.superclass.onResize.apply(this, arguments);
