@@ -298,4 +298,25 @@ Roo.onReady(function(){
     new Roo.Button(c, {
         text: 'Change Photo'
     });
+    
+   var form = new Roo.form.Form({
+        el : Roo.get('form-ct5')
+        labelAlign: 'right',
+        labelWidth: 75,
+        items : [
+            {
+                xtype : 'DisplayField',
+                xns : Roo.form,
+                value : 'example text'
+            }
+        
+        ]
+    });
+    
+    
+ 
+    
+    
+    
+    
 });
