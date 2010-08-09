@@ -299,7 +299,7 @@ Roo.onReady(function(){
         text: 'Change Photo'
     });
     
-   var form = new Roo.form.Form({
+   form5 = new Roo.form.Form({
         labelAlign: 'right',
         labelWidth: 75,
         items : [
@@ -312,7 +312,7 @@ Roo.onReady(function(){
         ]
     });
     
-    form.render('form-ct5');
+    form5.render('form-ct5');
  
     
     
