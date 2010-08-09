@@ -29,7 +29,7 @@ Roo.extend(Roo.form.DisplayText, Roo.form.TextField,  {
     allowBlank:     true,
     labelSeparator: '',
     hidden:         true,
-    itemCls :       'x-form-item-display-none'
+    itemCls :       'x-form-item-display-none',
     
     
     /**
