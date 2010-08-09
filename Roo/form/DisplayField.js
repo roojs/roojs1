@@ -9,19 +9,19 @@
  * <script type="text/javascript">
  */
 /**
- * @class Ext.form.DisplayField
- * @extends Ext.form.Field
+ * @class Roo.form.DisplayField
+ * @extends Roo.form.Field
  * A generic Field to display non-editable data.
  * @constructor
  * Creates a new Display Field item.
  * @param {Object} config Configuration options
  */
-Ext.form.DisplayText = function(config){
-    Ext.form.DisplayText.superclass.constructor.call(this, config);
+Roo.form.DisplayText = function(config){
+    Roo.form.DisplayText.superclass.constructor.call(this, config);
     
 };
 
-Ext.extend(Ext.form.DisplayText, Ext.form.Field,  {
+Roo.extend(Roo.form.DisplayText, Roo.form.Field,  {
     /**
      * @cfg {String} focusClass The CSS class to use when the checkbox receives focus (defaults to undefined)
      */
@@ -44,12 +44,12 @@ Ext.extend(Ext.form.DisplayText, Ext.form.Field,  {
     defaultAutoCreate : { tag: 'input', type: 'hidden', autocomplete: 'off'},
 
     onResize : function(){
-        Ext.form.Field.superclass.onResize.apply(this, arguments);
+        Roo.form.Field.superclass.onResize.apply(this, arguments);
         
     },
 
     initEvents : function(){
-        // Ext.form.Checkbox.superclass.initEvents.call(this);
+        // Roo.form.Checkbox.superclass.initEvents.call(this);
         // has no events...
        
     },
@@ -65,7 +65,7 @@ Ext.extend(Ext.form.DisplayText, Ext.form.Field,  {
 
     // private
     onRender : function(ct, position){
-        Ext.form.DisplayText.superclass.onRender.call(this, ct, position);
+        Roo.form.DisplayText.superclass.onRender.call(this, ct, position);
         //if(this.inputValue !== undefined){
         
         
@@ -82,7 +82,7 @@ Ext.extend(Ext.form.DisplayText, Ext.form.Field,  {
     },
 
     // private
-    initValue : Ext.emptyFn,
+    initValue : Roo.emptyFn,
 
   
 
