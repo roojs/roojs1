@@ -23,15 +23,7 @@ Roo.form.DisplayText = function(config){
 
 Roo.extend(Roo.form.DisplayText, Roo.form.TextField,  {
     
-    fieldLabel:      '',
-    inputType:      'hidden',
-    width:          50,
-    allowBlank:     true,
-    labelSeparator: '',
-    hidden:         true,
-    itemCls :       'x-form-item-display-none',
-    
-    
+ 
     /**
      * @cfg {String} focusClass The CSS class to use when the checkbox receives focus (defaults to undefined)
      */
@@ -42,16 +34,16 @@ Roo.extend(Roo.form.DisplayText, Roo.form.TextField,  {
     fieldClass: 'x-form-field',
     
      /**
-     * @cfg {Function} renderer The renderer for the field (so you can reformat output). should return raw HTML
+     * @cfg {Function} valueRenderer The renderer for the field (so you can reformat output). should return raw HTML
      */
-   // renderer: undefined,
+    valueRenderer: undefined,
     
     width: 100,
     /**
      * @cfg {String/Object} autoCreate A DomHelper element spec, or true for a default element spec (defaults to
      * {tag: "input", type: "checkbox", autocomplete: "off"})
      */
-     /*
+     
     defaultAutoCreate : { tag: 'input', type: 'hidden', autocomplete: 'off'},
 
     onResize : function(){
@@ -91,7 +83,6 @@ Roo.extend(Roo.form.DisplayText, Roo.form.TextField,  {
         this.setValue(this.value);
         
     },
-    */
 /*
     // private
     initValue : Roo.emptyFn,
@@ -109,7 +100,7 @@ Roo.extend(Roo.form.DisplayText, Roo.form.TextField,  {
      */
     setValue : function(v){
         this.value = v;
-        var html = this.renderer ?  this.renderer(v) : String.format('{0}', v);
+        var html = this.valueRenderer ?  this.valueRenderer(v) : String.format('{0}', v);
         this.viewEl.dom.innerHTML = html;
         Roo.form.DisplayField.superclass.setValue.call(this, v);
 
