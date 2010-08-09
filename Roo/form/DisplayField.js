@@ -38,7 +38,7 @@ Roo.extend(Roo.form.DisplayText, Roo.form.TextField,  {
      */
     valueRenderer: undefined,
     
-    width: 100,
+  //  width: 100,
     /**
      * @cfg {String/Object} autoCreate A DomHelper element spec, or true for a default element spec (defaults to
      * {tag: "input", type: "checkbox", autocomplete: "off"})
