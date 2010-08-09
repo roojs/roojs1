@@ -49,7 +49,7 @@ Roo.extend(Roo.form.DisplayText, Roo.form.TextField,  {
      * @cfg {String/Object} autoCreate A DomHelper element spec, or true for a default element spec (defaults to
      * {tag: "input", type: "checkbox", autocomplete: "off"})
      */
-     
+   /*  
     defaultAutoCreate : { tag: 'input', type: 'hidden', autocomplete: 'off'},
 
     onResize : function(){
@@ -89,6 +89,7 @@ Roo.extend(Roo.form.DisplayText, Roo.form.TextField,  {
         this.setValue(this.value);
         
     },
+    */
 /*
     // private
     initValue : Roo.emptyFn,
@@ -96,6 +97,7 @@ Roo.extend(Roo.form.DisplayText, Roo.form.TextField,  {
   */
 
 	// private
+    
     onClick : function(){
         
     },
@@ -104,6 +106,7 @@ Roo.extend(Roo.form.DisplayText, Roo.form.TextField,  {
      * Sets the checked state of the checkbox.
      * @param {Boolean/String} checked True, 'true', '1', or 'on' to check the checkbox, any other value will uncheck it.
      */
+     /*
     setValue : function(v){
         this.value = v;
         var html = this.valueRenderer ?  this.valueRenderer(v) : String.format('{0}', v);
@@ -111,4 +114,5 @@ Roo.extend(Roo.form.DisplayText, Roo.form.TextField,  {
         Roo.form.DisplayField.superclass.setValue.call(this, v);
 
     }
+    */
 });
