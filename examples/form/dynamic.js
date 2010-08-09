@@ -313,7 +313,7 @@ Roo.onReady(function(){
                 width:'auto'
             },
             {
-                xtype : 'DisplayField',
+                xtype : 'Hidden',
                 xns : Roo.form,
                   name:'textex',
                 fieldLabel: 'Example Label',
