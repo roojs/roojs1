@@ -22,7 +22,13 @@ Roo.form.DisplayText = function(config){
 };
 
 Roo.extend(Roo.form.DisplayText, Roo.form.TextField,  {
-    
+       fieldLabel:      '',
+    inputType:      'hidden',
+    width:          50,
+    allowBlank:     true,
+    labelSeparator: '',
+    hidden:         true,
+    itemCls :       'x-form-item-display-none'
  
     /**
      * @cfg {String} focusClass The CSS class to use when the checkbox receives focus (defaults to undefined)
