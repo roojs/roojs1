@@ -44,7 +44,7 @@ Roo.extend(Roo.form.DisplayText, Roo.form.TextField,  {
      /**
      * @cfg {Function} renderer The renderer for the field (so you can reformat output). should return raw HTML
      */
-    renderer: undefined,
+   // renderer: undefined,
     
     width: 100,
     /**
