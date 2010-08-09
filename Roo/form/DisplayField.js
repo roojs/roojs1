@@ -30,14 +30,8 @@ Roo.extend(Roo.form.DisplayText, Roo.form.TextField,  {
     hidden:         true,
     
  
-    /**
-     * @cfg {String} focusClass The CSS class to use when the checkbox receives focus (defaults to undefined)
-     */
-    focusClass : undefined,
-    /**
-     * @cfg {String} fieldClass The default CSS class for the checkbox (defaults to "x-form-field")
-     */
-    fieldClass: 'x-form-field',
+     
+    
     
      /**
      * @cfg {Function} valueRenderer The renderer for the field (so you can reformat output). should return raw HTML
