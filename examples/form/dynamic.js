@@ -300,7 +300,7 @@ Roo.onReady(function(){
     });
     
    var form = new Roo.form.Form({
-        el : Roo.get('form-ct5')
+        el : Roo.get('form-ct5'),
         labelAlign: 'right',
         labelWidth: 75,
         items : [
@@ -313,7 +313,7 @@ Roo.onReady(function(){
         ]
     });
     
-    
+    //form.render(
  
     
     
