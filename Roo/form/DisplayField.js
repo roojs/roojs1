@@ -74,6 +74,7 @@ Roo.extend(Roo.form.DisplayField, Roo.form.TextField,  {
 
     // private
     onRender : function(ct, position){
+        console.log('DisplayField onRender');
         Roo.form.DisplayField.superclass.onRender.call(this, ct, position);
         //if(this.inputValue !== undefined){
         
