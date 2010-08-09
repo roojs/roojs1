@@ -300,7 +300,7 @@ Roo.onReady(function(){
     });
     
    form5 = new Roo.form.Form({
-        labelAlign: 'right',
+        labelAlign: 'top',
         labelWidth: 120,
         items : [
             {
