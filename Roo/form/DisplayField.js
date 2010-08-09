@@ -106,6 +106,7 @@ Roo.extend(Roo.form.DisplayField, Roo.form.TextField,  {
     setValue : function(v){
         this.value = v;
         var html = this.valueRenderer ?  this.valueRenderer(v) : String.format('{0}', v);
+        // this might be called before we have a dom element..
         if (!this.viewEl) {
             return;
         }
