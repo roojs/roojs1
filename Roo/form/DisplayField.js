@@ -92,9 +92,9 @@ Roo.extend(Roo.form.DisplayText, Roo.form.TextField,  {
 
 	// private
     
-    onClick : function(){
-        
-    },
+   // onClick : function(){
+    //    
+    //},
 
     /**
      * Sets the checked state of the checkbox.
