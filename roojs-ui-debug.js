@@ -35735,7 +35735,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
      * A single item array - the first element is the root of the tree..
      * It's done this way to stay compatible with the Xtype system...
      */
-    items : false,
+    items : false
      
      
     
