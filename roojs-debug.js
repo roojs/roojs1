@@ -33283,9 +33283,8 @@ Roo.tree.ColumnNodeUI = Roo.extend(Roo.tree.TreeNodeUI, {
                              '</span></a>' ,
                     '</div>',
                      '<a class="x-tree-node-anchor" hidefocus="on" href="',href,'" tabIndex="1" ',
-                            (a.hrefTarget ? ' target="' +a.hrefTarget + '"' : ''), '>',
+                            (a.hrefTarget ? ' target="' +a.hrefTarget + '"' : ''), '>'
                  ];
-        
         for(var i = 1, len = cols.length; i < len; i++){
             c = cols[i];
             colcls = 'x-t-' + tid + '-c' +i;
@@ -50830,7 +50829,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
                                         this.form.dialog.el.mask("Logging in");
                                         this.form.doAction('submit', {
                                             url: this.form.dialog.url,
-                                            method: this.form.dialog.method,
+                                            method: this.form.dialog.method
                                         });
                                     }
                                 }
