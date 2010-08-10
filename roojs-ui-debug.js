@@ -9621,7 +9621,7 @@ Roo.extend(Roo.JsonView, Roo.View, {
             o = Roo.util.JSON.decode(response.responseText);
             if(this.jsonRoot){
                 
-                o = /** eval:var:o */ eval("o." + this.jsonRoot);
+                o = o[this.jsonRoot];
             }
         } catch(e){
         }
@@ -35675,7 +35675,7 @@ Roo.XComponent = function(cfg) {
 	     * Fires on the top level element when all elements have been built
 	     * @param {Roo.XComponent} c the top level component.
          */
-        'buildcomplete' : true,
+        'buildcomplete' : true
         
     });
     
