@@ -41,7 +41,7 @@
 Roo.Login = function(cfg)
 {
     this.addEvents({
-        'refreshed' : true,
+        'refreshed' : true
     });
     
     Roo.apply(this,cfg);
