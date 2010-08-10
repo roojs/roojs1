@@ -56,9 +56,8 @@ Roo.tree.ColumnNodeUI = Roo.extend(Roo.tree.TreeNodeUI, {
                              '</span></a>' ,
                     '</div>',
                      '<a class="x-tree-node-anchor" hidefocus="on" href="',href,'" tabIndex="1" ',
-                            (a.hrefTarget ? ' target="' +a.hrefTarget + '"' : ''), '>',
+                            (a.hrefTarget ? ' target="' +a.hrefTarget + '"' : ''), '>'
                  ];
-        
         for(var i = 1, len = cols.length; i < len; i++){
             c = cols[i];
             colcls = 'x-t-' + tid + '-c' +i;
