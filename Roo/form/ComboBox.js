@@ -402,10 +402,12 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         }
         if (typeof(this.events.edit.listeners) != 'undefined') {
             
-            this.addicon = this.wrap.createChild(
+            this.editicon = this.wrap.createChild(
                 {tag: 'img', src: Roo.BLANK_IMAGE_URL, cls: 'x-form-combo-edit' });  
-       
-            this.addicon.on('click', function(e) {
+            if (this.addicon) {
+                this.editicon.setStyle('margin-left', 0);
+            }
+            this.editicon.on('click', function(e) {
                 if (this.lastData) {
                     // should we fire if nothing is selected..
                     this.fireEvent('edit', this, this.lastData );
