@@ -72,7 +72,7 @@ Roo.extend(Roo.form.TriggerField, Roo.form.TextField,  {
         if(typeof w == 'number'){
             var x = w - this.trigger.getWidth();
             this.el.setWidth(this.adjustWidth('input', x));
-            this.trigger.setX(x);
+            this.trigger.setStyle('left', x+'px');
         }
     },
 
