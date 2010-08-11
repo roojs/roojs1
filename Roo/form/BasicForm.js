@@ -313,13 +313,15 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             return;
         }
         this.childForms.push(form);
+        var n = '';
         Roo.each(form.allItems, function (fe) {
             
-            if (this.findField(fe.getName())) { // already added..
+            n = typeof(fe.getName) == 'undefined' ? fe.name : fe.getName();
+            if (this.findField(n)) { // already added..
                 return;
             }
             var add = new Roo.form.Hidden({
-                name : fe.getName()
+                name : n
             });
             add.render(this.el);
             
