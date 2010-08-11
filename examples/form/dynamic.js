@@ -320,30 +320,30 @@ Roo.onReady(function(){
                 value : 'example text'
             } ,
             {
-            xtype: 'ComboBox',
-            xns : Roo.form,
-            fieldLabel: 'State',
-            hiddenName:'state',
-            store: {
-                xtype: 'SimpleStore',
-                xns : Roo.data,
-                fields: ['abbr', 'state'],
-                data : Roo.exampledata.states // from states.js
-            },
-            displayField:'state',
-            typeAhead: true,
-            mode: 'local',
-            triggerAction: 'all',
-            emptyText:'Select a state...',
-            selectOnFocus:true,
-            width:190,
-            listeners : {
-                add : function()
-                {
-                    Roo.messageBox.alert("Alert", "Add Pressed");
+                xtype: 'ComboBox',
+                xns : Roo.form,
+                fieldLabel: 'State',
+                hiddenName:'state',
+                store: {
+                    xtype: 'SimpleStore',
+                    xns : Roo.data,
+                    fields: ['abbr', 'state'],
+                    data : Roo.exampledata.states // from states.js
+                },
+                displayField:'state',
+                typeAhead: true,
+                mode: 'local',
+                triggerAction: 'all',
+                emptyText:'Select a state...',
+                selectOnFocus:true,
+                width:190,
+                listeners : {
+                    add : function()
+                    {
+                        Roo.messageBox.alert("Alert", "Add Pressed");
+                    }
                 }
-            }
-        }),
+            },
         
         ]
     });
