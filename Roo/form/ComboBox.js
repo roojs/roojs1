@@ -522,7 +522,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
             tw += this.editicon ? this.editicon.getWidth() : 0;
             this.el.setWidth(
                 this.adjustWidth('input', 
-                    w - tw;
+                    w - tw
                 )
             );
         }
