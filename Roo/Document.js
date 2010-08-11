@@ -47,7 +47,7 @@ Roo.XComponent = function(cfg) {
 	     * Fires on the top level element when all elements have been built
 	     * @param {Roo.XComponent} c the top level component.
          */
-        'buildcomplete' : true,
+        'buildcomplete' : true
         
     });
 
