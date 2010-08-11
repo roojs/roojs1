@@ -388,7 +388,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         if(!this.editable){
             this.editable = true;
             this.setEditable(false);
-        } 
+        }  
         
         
         if (typeof(this.events.add.listeners) != 'undefined') {
