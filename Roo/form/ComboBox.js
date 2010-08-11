@@ -70,7 +70,7 @@ Roo.form.ComboBox = function(config){
          * @event add
          * Fires when the 'edit' icon is pressed (add a listener to enable add button)
 	     * @param {Roo.form.ComboBox} combo This combo box
-	     * @param {Roo.data.Record} record The data record returned from the underlying store (or false on clear)
+	     * @param {Roo.data.Record|false} record The data record returned from the underlying store (or false on nothing selected)
 	     */
         'edit' : true
         
@@ -413,10 +413,10 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
                 this.editicon.setStyle('margin-left', '40px');
             }
             this.editicon.on('click', function(e) {
-                if (this.lastData) {
-                    // should we fire if nothing is selected..
-                    this.fireEvent('edit', this, this.lastData );
-                }
+                
+                // we fire even  if inothing is selected..
+                this.fireEvent('edit', this, this.lastData );
+                
             }, this);
         }
         
