@@ -397,7 +397,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
                 {tag: 'img', src: Roo.BLANK_IMAGE_URL, cls: 'x-form-combo-add' });  
        
             this.addicon.on('click', function(e) {
-                this.fireEvent('add', this, e);
+                this.fireEvent('add', this);
             }, this);
         }
         if (typeof(this.events.edit.listeners) != 'undefined') {
@@ -406,7 +406,10 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
                 {tag: 'img', src: Roo.BLANK_IMAGE_URL, cls: 'x-form-combo-edit' });  
        
             this.addicon.on('click', function(e) {
-                this.fireEvent('edit', this, e);
+                if (this.lastData) {
+                    
+                   }
+                this.fireEvent('edit', this, this.lastData );
             }, this);
         }
         
