@@ -35902,7 +35902,9 @@ Roo.extend(Roo.form.TriggerField, Roo.form.TextField,  {
     onResize : function(w, h){
         Roo.form.TriggerField.superclass.onResize.apply(this, arguments);
         if(typeof w == 'number'){
-            this.el.setWidth(this.adjustWidth('input', w - this.trigger.getWidth()));
+            var x = w - this.trigger.getWidth();
+            this.el.setWidth(this.adjustWidth('input', x));
+            this.trigger.setStyle('left', x+'px');
         }
     },
 
@@ -36757,7 +36759,22 @@ Roo.form.ComboBox = function(config){
 	     * @param {Boolean} cancel true to cancel the query
 	     * @param {Object} e The query event object
 	     */
-        'beforequery': true
+        'beforequery': true,
+         /**
+         * @event add
+         * Fires when the 'add' icon is pressed (add a listener to enable add button)
+	     * @param {Roo.form.ComboBox} combo This combo box
+	     */
+        'add' : true,
+        /**
+         * @event add
+         * Fires when the 'edit' icon is pressed (add a listener to enable add button)
+	     * @param {Roo.form.ComboBox} combo This combo box
+	     * @param {Roo.data.Record|false} record The data record returned from the underlying store (or false on nothing selected)
+	     */
+        'edit' : true
+        
+        
     });
     if(this.transform){
         this.allowDomMove = false;
@@ -36974,6 +36991,11 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
      */
     disableClear : false,
     
+    //private
+    addicon : false,
+    editicon: false,
+    
+    
     // private
     onRender : function(ct, position){
         Roo.form.ComboBox.superclass.onRender.call(this, ct, position);
@@ -37071,7 +37093,35 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         if(!this.editable){
             this.editable = true;
             this.setEditable(false);
+        }  
+        
+        
+        if (typeof(this.events.add.listeners) != 'undefined') {
+            
+            this.addicon = this.wrap.createChild(
+                {tag: 'img', src: Roo.BLANK_IMAGE_URL, cls: 'x-form-combo-add' });  
+       
+            this.addicon.on('click', function(e) {
+                this.fireEvent('add', this);
+            }, this);
         }
+        if (typeof(this.events.edit.listeners) != 'undefined') {
+            
+            this.editicon = this.wrap.createChild(
+                {tag: 'img', src: Roo.BLANK_IMAGE_URL, cls: 'x-form-combo-edit' });  
+            if (this.addicon) {
+                this.editicon.setStyle('margin-left', '40px');
+            }
+            this.editicon.on('click', function(e) {
+                
+                // we fire even  if inothing is selected..
+                this.fireEvent('edit', this, this.lastData );
+                
+            }, this);
+        }
+        
+        
+        
     },
 
     // private
@@ -37160,11 +37210,27 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
     // private
     onResize: function(w, h){
         Roo.form.ComboBox.superclass.onResize.apply(this, arguments);
+        
+        if(typeof w != 'number'){
+            // we do not handle it!?!?
+            return;
+        }
+        var tw = this.trigger.getWidth();
+        tw += this.addicon ? this.addicon.getWidth() : 0;
+        tw += this.editicon ? this.editicon.getWidth() : 0;
+        var x = w - tw;
+        this.el.setWidth( this.adjustWidth('input', x));
+            
+        this.trigger.setStyle('left', x+'px');
+        
         if(this.list && this.listWidth === undefined){
-            var lw = Math.max(w, this.minListWidth);
+            var lw = Math.max(x + this.trigger.getWidth(), this.minListWidth);
             this.list.setWidth(lw);
             this.innerList.setWidth(lw - this.list.getFrameWidth('lr'));
         }
+        
+    
+        
     },
 
     /**
