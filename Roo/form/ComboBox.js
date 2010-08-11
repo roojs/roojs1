@@ -291,6 +291,11 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
      */
     disableClear : false,
     
+    //private
+    addicon : false,
+    editicon: false,
+    
+    
     // private
     onRender : function(ct, position){
         Roo.form.ComboBox.superclass.onRender.call(this, ct, position);
@@ -510,6 +515,19 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
             this.list.setWidth(lw);
             this.innerList.setWidth(lw - this.list.getFrameWidth('lr'));
         }
+        
+        if(typeof w == 'number'){
+            var tw = this.trigger.getWidth();
+            tw += this.addicon ? this.addicon.getWidth() : 0;
+            tw += this.editicon ? this.editicon.getWidth() : 0;
+            this.el.setWidth(
+                this.adjustWidth('input', 
+                    w - tw;
+                )
+            );
+        }
+    
+        
     },
 
     /**
