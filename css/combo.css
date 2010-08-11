@@ -72,8 +72,17 @@
     height: 18px;
 }
 
-
-
+.x-form .x-form-combo-add 
+{
+    background:transparent url(../images/default/dd/drop-add.gif) no-repeat scroll 0 0;
+    border-style:none none solid;
+    cursor:pointer;
+    height:21px;
+    position:absolute;
+    top:2;
+    width:17px;
+    margin-left: 20px;
+} 
 
 
 
