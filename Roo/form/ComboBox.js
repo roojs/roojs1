@@ -407,9 +407,9 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
        
             this.addicon.on('click', function(e) {
                 if (this.lastData) {
+                    // should we fire if nothing is selected..
                     this.fireEvent('edit', this, this.lastData );
                 }
-                
             }, this);
         }
         
