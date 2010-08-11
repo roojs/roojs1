@@ -510,21 +510,25 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
     // private
     onResize: function(w, h){
         Roo.form.ComboBox.superclass.onResize.apply(this, arguments);
+        
+        if(typeof w != 'number'){
+            // we do not handle it!?!?
+            return;
+        }
+        var tw = this.trigger.getWidth();
+        tw += this.addicon ? this.addicon.getWidth() : 0;
+        tw += this.editicon ? this.editicon.getWidth() : 0;
+        var x = w - tw;
+        this.el.setWidth( this.adjustWidth('input', x));
+            
+        this.trigger.setStyle('left', x+'px');
+        
         if(this.list && this.listWidth === undefined){
-            var lw = Math.max(w, this.minListWidth);
+            var lw = Math.max(x + this.trigger.getWidth(), this.minListWidth);
             this.list.setWidth(lw);
             this.innerList.setWidth(lw - this.list.getFrameWidth('lr'));
         }
         
-        if(typeof w == 'number'){
-            var tw = this.trigger.getWidth();
-            tw += this.addicon ? this.addicon.getWidth() : 0;
-            tw += this.editicon ? this.editicon.getWidth() : 0;
-            var x = w - tw;
-            this.el.setWidth( this.adjustWidth('input', x));
-            
-            this.trigger.setStyle('left', x+'px');
-        }
     
         
     },
