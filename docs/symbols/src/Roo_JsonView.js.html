@@ -156,7 +156,7 @@ moreView.load({
             </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.util.JSON.decode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response.responseText</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.jsonRoot</span><span class="jsdoc-syntax">){
                 
-                </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-comment">/** eval:var:o */ </span><span class="jsdoc-keyword">eval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;o.&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.jsonRoot</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.jsonRoot</span><span class="jsdoc-syntax">];
             }
         } </span><span class="jsdoc-keyword">catch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
         }
