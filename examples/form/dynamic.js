@@ -319,8 +319,7 @@ Roo.onReady(function(){
                 fieldLabel: 'Simple',
                 value : 'example text'
             } ,
-
-        new Roo.form.{
+            {
             xtype: 'ComboBox',
             xns : Roo.form,
             fieldLabel: 'State',
