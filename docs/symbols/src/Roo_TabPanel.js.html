@@ -212,11 +212,13 @@ jtabs.activate(&quot;jtabs-1&quot;);
     </span><span class="jsdoc-var">removeTab </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tab </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">];
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">tab</span><span class="jsdoc-syntax">) </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">tab</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">; }
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">items.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tab</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.active </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">tab </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">items.length </span><span class="jsdoc-syntax">&gt; 1){
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">newTab </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getNextAvailable</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newTab</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">newTab.activate</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newTab</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">newTab.activate</span><span class="jsdoc-syntax">();
+            }
         }
         </span><span class="jsdoc-var">this.stripEl.dom.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tab.pnode.dom</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tab.bodyEl.dom.parentNode </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">this.bodyEl.dom</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// if it was moved already prevent error
