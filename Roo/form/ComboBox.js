@@ -397,10 +397,18 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
                 {tag: 'img', src: Roo.BLANK_IMAGE_URL, cls: 'x-form-combo-add' });  
        
             this.addicon.on('click', function(e) {
-                this.fireEvent('adderclick', this, e);
+                this.fireEvent('add', this, e);
             }, this);
         }
-        
+        if (typeof(this.events.edit.listeners) != 'undefined') {
+            
+            this.addicon = this.wrap.createChild(
+                {tag: 'img', src: Roo.BLANK_IMAGE_URL, cls: 'x-form-combo-edit' });  
+       
+            this.addicon.on('click', function(e) {
+                this.fireEvent('edit', this, e);
+            }, this);
+        }
         
         
         
