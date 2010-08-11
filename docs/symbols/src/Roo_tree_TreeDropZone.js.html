@@ -82,7 +82,10 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dragEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">n.ddel</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Dom.getY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dragEl</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">dragEl.offsetHeight</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Event.getPageY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">noAppend </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tn.allowChildren </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">tn.isLeaf</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-comment">//var noAppend = tn.allowChildren === false || tn.isLeaf();
+        
+        // we may drop nodes anywhere, as long as allowChildren has not been set to false..
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">noAppend </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tn.allowChildren </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.appendOnly </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">tn.parentNode.allowChildren </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">noAppend </span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;append&quot;</span><span class="jsdoc-syntax">;
         }
@@ -242,4 +245,5 @@
     }    
 });
 
-}</span></code></body></html>
+}
+</span></code></body></html>
