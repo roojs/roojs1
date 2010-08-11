@@ -36767,7 +36767,7 @@ Roo.form.ComboBox = function(config){
 	     */
         'add' : true,
         /**
-         * @event add
+         * @event edit
          * Fires when the 'edit' icon is pressed (add a listener to enable add button)
 	     * @param {Roo.form.ComboBox} combo This combo box
 	     * @param {Roo.data.Record|false} record The data record returned from the underlying store (or false on nothing selected)
@@ -40111,11 +40111,11 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         this.childForms.push(form);
         Roo.each(form.allItems, function (fe) {
             
-            if (this.findField(fe.name)) { // already added..
+            if (this.findField(fe.getName())) { // already added..
                 return;
             }
             var add = new Roo.form.Hidden({
-                name : fe.name
+                name : fe.getName()
             });
             add.render(this.el);
             
