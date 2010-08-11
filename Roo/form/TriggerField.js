@@ -70,7 +70,9 @@ Roo.extend(Roo.form.TriggerField, Roo.form.TextField,  {
     onResize : function(w, h){
         Roo.form.TriggerField.superclass.onResize.apply(this, arguments);
         if(typeof w == 'number'){
-            this.el.setWidth(this.adjustWidth('input', w - this.trigger.getWidth()));
+            var x = w - this.trigger.getWidth();
+            this.el.setWidth(this.adjustWidth('input', x));
+            this.trigger.setX(x);
         }
     },
 
