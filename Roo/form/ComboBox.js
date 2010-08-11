@@ -405,7 +405,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
             this.editicon = this.wrap.createChild(
                 {tag: 'img', src: Roo.BLANK_IMAGE_URL, cls: 'x-form-combo-edit' });  
             if (this.addicon) {
-                this.editicon.setStyle('margin-left', 0);
+                this.editicon.setStyle('margin-left', '40px');
             }
             this.editicon.on('click', function(e) {
                 if (this.lastData) {
