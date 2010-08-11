@@ -59,7 +59,22 @@ Roo.form.ComboBox = function(config){
 	     * @param {Boolean} cancel true to cancel the query
 	     * @param {Object} e The query event object
 	     */
-        'beforequery': true
+        'beforequery': true,
+         /**
+         * @event add
+         * Fires when the 'add' icon is pressed (add a listener to enable add button)
+	     * @param {Roo.form.ComboBox} combo This combo box
+	     */
+        'add' : true,
+        /**
+         * @event add
+         * Fires when the 'edit' icon is pressed (add a listener to enable add button)
+	     * @param {Roo.form.ComboBox} combo This combo box
+	     * @param {Roo.data.Record} record The data record returned from the underlying store (or false on clear)
+	     */
+        'edit' : true
+        
+        
     });
     if(this.transform){
         this.allowDomMove = false;
@@ -374,6 +389,20 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
             this.editable = true;
             this.setEditable(false);
         }
+        
+        
+        
+        this.addicon = this.wrap.createChild(
+            {tag: 'img', src: Ext.BLANK_IMAGE_URL, cls: 'x-form-combo-add' });  
+        var _t = this;
+        this.adder.on('click', function(e) {
+            this.fireEvent('adderclick', this, e);
+        }, this);
+        
+        
+        
+        
+        
     },
 
     // private
