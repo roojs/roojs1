@@ -340,8 +340,13 @@ Roo.onReady(function(){
                 listeners : {
                     add : function()
                     {
-                        Roo.messageBox.alert("Alert", "Add Pressed");
+                        Roo.msgBox.alert("Alert", "Add Pressed");
+                    },
+                    edit : function()
+                    {
+                        Roo.msgBox.alert("Alert", "Edit Pressed");
                     }
+                    
                 }
             },
         
