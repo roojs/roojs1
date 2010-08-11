@@ -130,7 +130,11 @@
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.form.Action.Submit</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.form.Action</span><span class="jsdoc-syntax">, {
     </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'submit'</span><span class="jsdoc-syntax">,
 
-    </span><span class="jsdoc-var">run </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+    </span><span class="jsdoc-var">run </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-comment">// run get Values on the form, so it syncs any secondary forms.
+        </span><span class="jsdoc-var">this.form.getValues</span><span class="jsdoc-syntax">();
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.options</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">method </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getMethod</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">isPost </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">method </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'POST'</span><span class="jsdoc-syntax">;
