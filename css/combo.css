@@ -72,7 +72,13 @@
     height: 18px;
 }
 
-.x-form .x-form-combo-add 
+
+/* Roo.form.Combobox */
+
+
+.x-form .x-form-combo-add,
+.x-form .x-form-combo-edit
+
 {
     background:transparent url(../images/default/dd/drop-add.gif) no-repeat scroll 0 0;
     border-style:none none solid;
@@ -84,6 +90,7 @@
     margin-left: 20px;
 } 
 
-
-
-
+.x-form .x-form-combo-edit
+{
+    background:transparent url(../images/default/tree/leaf.gif) no-repeat scroll 0 0;
+} 
