@@ -407,9 +407,9 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
        
             this.addicon.on('click', function(e) {
                 if (this.lastData) {
-                    
-                   }
-                this.fireEvent('edit', this, this.lastData );
+                    this.fireEvent('edit', this, this.lastData );
+                }
+                
             }, this);
         }
         
