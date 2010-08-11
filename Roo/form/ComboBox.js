@@ -520,13 +520,11 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
             var tw = this.trigger.getWidth();
             tw += this.addicon ? this.addicon.getWidth() : 0;
             tw += this.editicon ? this.editicon.getWidth() : 0;
-            this.el.setWidth(
-                this.adjustWidth('input', 
-                    w - tw
-                )
+            var x = w - tw;
+            this.el.setWidth( this.adjustWidth('input', x))
             );
             
-            this.trigger.setX(w);
+            this.trigger.setX(x);
         }
     
         
