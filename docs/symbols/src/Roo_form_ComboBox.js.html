@@ -59,7 +59,22 @@
 	     * @param {Boolean} cancel true to cancel the query
 	     * @param {Object} e The query event object
 	     */
-        </span><span class="jsdoc-string">'beforequery'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-string">'beforequery'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+         </span><span class="jsdoc-comment">/**
+         * @event add
+         * Fires when the 'add' icon is pressed (add a listener to enable add button)
+	     * @param {Roo.form.ComboBox} combo This combo box
+	     */
+        </span><span class="jsdoc-string">'add' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event add
+         * Fires when the 'edit' icon is pressed (add a listener to enable add button)
+	     * @param {Roo.form.ComboBox} combo This combo box
+	     * @param {Roo.data.Record|false} record The data record returned from the underlying store (or false on nothing selected)
+	     */
+        </span><span class="jsdoc-string">'edit' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        
+        
     </span><span class="jsdoc-syntax">});
     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.transform</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.allowDomMove </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
@@ -276,6 +291,11 @@
      */
     </span><span class="jsdoc-var">disableClear </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
+    </span><span class="jsdoc-comment">//private
+    </span><span class="jsdoc-var">addicon </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">editicon</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">Roo.form.ComboBox.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
@@ -373,7 +393,35 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.editable</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.editable </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">this.setEditable</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+        }  
+        
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.events.add.listeners</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+            
+            </span><span class="jsdoc-var">this.addicon </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.wrap.createChild</span><span class="jsdoc-syntax">(
+                {</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">src</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.BLANK_IMAGE_URL</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-form-combo-add' </span><span class="jsdoc-syntax">});  
+       
+            </span><span class="jsdoc-var">this.addicon.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'add'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.events.edit.listeners</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+            
+            </span><span class="jsdoc-var">this.editicon </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.wrap.createChild</span><span class="jsdoc-syntax">(
+                {</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">src</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.BLANK_IMAGE_URL</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-form-combo-edit' </span><span class="jsdoc-syntax">});  
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.addicon</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.editicon.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'margin-left'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'40px'</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-var">this.editicon.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+                
+                </span><span class="jsdoc-comment">// we fire even  if inothing is selected..
+                </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'edit'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.lastData </span><span class="jsdoc-syntax">);
+                
+            }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+        
+        
+        
     },
 
     </span><span class="jsdoc-comment">// private
@@ -462,11 +510,27 @@
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">onResize</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">Roo.form.ComboBox.superclass.onResize.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'number'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-comment">// we do not handle it!?!?
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.trigger.getWidth</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">tw </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.addicon </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.addicon.getWidth</span><span class="jsdoc-syntax">() : 0;
+        </span><span class="jsdoc-var">tw </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.editicon </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.editicon.getWidth</span><span class="jsdoc-syntax">() : 0;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">tw</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.el.setWidth</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.adjustWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">));
+            
+        </span><span class="jsdoc-var">this.trigger.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'px'</span><span class="jsdoc-syntax">);
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.list </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.listWidth </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.minListWidth</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.trigger.getWidth</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">this.minListWidth</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.list.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lw</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.innerList.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lw </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.list.getFrameWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'lr'</span><span class="jsdoc-syntax">));
         }
+        
+    
+        
     },
 
     </span><span class="jsdoc-comment">/**
