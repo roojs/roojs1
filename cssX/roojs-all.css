@@ -174,7 +174,8 @@ q:before,q:after{content:'';}
 .x-form-invalid-icon{width:16px;height:18px;visibility:hidden;position:absolute;left:0;top:0;display:block;background:transparent url(../images/default/form/exclamation.gif) no-repeat 0 2px;}
 .roo-ie td .x-form-text{position:relative;top:-1px;}
 
-.x-form .x-form-combo-add 
+.x-form .x-form-combo-add,
+.x-form .x-form-combo-edit
 {
     background:transparent url(../images/default/dd/drop-add.gif) no-repeat scroll 0 0;
     border-style:none none solid;
@@ -184,6 +185,11 @@ q:before,q:after{content:'';}
     top:2;
     width:17px;
     margin-left: 20px;
+} 
+
+.x-form .x-form-combo-edit
+{
+    background:transparent url(../images/default/tree/leaf.gif) no-repeat scroll 0 0;
 } 
 
 
