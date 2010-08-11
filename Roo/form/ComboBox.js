@@ -396,7 +396,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
             this.addicon = this.wrap.createChild(
                 {tag: 'img', src: Roo.BLANK_IMAGE_URL, cls: 'x-form-combo-add' });  
        
-            this.adder.on('click', function(e) {
+            this.addicon.on('click', function(e) {
                 this.fireEvent('adderclick', this, e);
             }, this);
         }
