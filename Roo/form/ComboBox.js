@@ -526,7 +526,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
                 )
             );
             
-            this.trigger.setX(w-tw);
+            this.trigger.setX(w);
         }
     
         
