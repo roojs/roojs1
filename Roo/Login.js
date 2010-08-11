@@ -502,7 +502,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
                                         this.form.dialog.el.mask("Logging in");
                                         this.form.doAction('submit', {
                                             url: this.form.dialog.url,
-                                            method: this.form.dialog.method,
+                                            method: this.form.dialog.method
                                         });
                                     }
                                 }

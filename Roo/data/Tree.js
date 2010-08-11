@@ -185,7 +185,9 @@ Roo.data.Node = function(attributes){
     if(!this.childNodes.indexOf){ // indexOf is a must
         this.childNodes.indexOf = function(o){
             for(var i = 0, len = this.length; i < len; i++){
-                if(this[i] == o) return i;
+                if(this[i] == o) {
+                    return i;
+                }
             }
             return -1;
         };

@@ -212,11 +212,13 @@ Roo.extend(Roo.TabPanel, Roo.util.Observable, {
     removeTab : function(id){
         var items = this.items;
         var tab = items[id];
-        if(!tab) return;
+        if(!tab) { return; }
         var index = items.indexOf(tab);
         if(this.active == tab && items.length > 1){
             var newTab = this.getNextAvailable(index);
-            if(newTab)newTab.activate();
+            if(newTab) {
+                newTab.activate();
+            }
         }
         this.stripEl.dom.removeChild(tab.pnode.dom);
         if(tab.bodyEl.dom.parentNode == this.bodyEl.dom){ // if it was moved already prevent error
