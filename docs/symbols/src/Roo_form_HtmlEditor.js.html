@@ -201,8 +201,6 @@
                 </span><span class="jsdoc-var">this.assignDocWin</span><span class="jsdoc-syntax">();
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.doc.body </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.doc.readyState </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'complete'</span><span class="jsdoc-syntax">){
                     </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
-                        
-                       
                         </span><span class="jsdoc-var">this.doc.designMode</span><span class="jsdoc-syntax">=</span><span class="jsdoc-string">&quot;on&quot;</span><span class="jsdoc-syntax">;
                     } </span><span class="jsdoc-keyword">catch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
                         </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
@@ -401,6 +399,9 @@
             </span><span class="jsdoc-var">this.doc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">iframe.contentWindow.document</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">this.win </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">iframe.contentWindow</span><span class="jsdoc-syntax">;
         } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.frameId</span><span class="jsdoc-syntax">)) {
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
             </span><span class="jsdoc-var">this.doc </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">iframe.contentDocument </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.frameId</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.dom.document</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.win </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.frameId</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.dom.contentWindow</span><span class="jsdoc-syntax">;
         }
