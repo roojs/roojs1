@@ -63,6 +63,7 @@
 {
     height:18px;  
 }
+/* chrome does not appear to need this..
 .roo-safari .x-form-arrow-trigger,
 .roo-safari .x-form-date-trigger
 {
@@ -72,6 +73,7 @@
     height: 18px;
 }
 
+*/
 
 /* Roo.form.Combobox */
 
