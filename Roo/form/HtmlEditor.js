@@ -687,7 +687,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                     this.deferFocus();
                     return;
                 }
-                if (k == 'v') { // paste
+                if (k.toLowerCase() == 'v'.charCodeAt(0)) { // paste
                     this.cleanUpPaste.defer(100, this);
                     return;
                 }
