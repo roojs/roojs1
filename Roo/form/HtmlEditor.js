@@ -860,7 +860,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             return 2;
 
         return 3;
-    }
+    },
 
     
     cleanUpPaste :  function()
