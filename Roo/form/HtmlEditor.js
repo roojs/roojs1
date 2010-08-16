@@ -878,13 +878,20 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         }
         Roo.each(n.children, this.cleanUpChild, this);
     },
+    
+    
+        
+    
     cleanUpChild : function (node)
     {
         console.log(node);
+        
+        
         this.cleanUpChildren(node);
     },
     
-    
+    cleanUpWhite : [
+        'BR', 
     // hide stuff that is not compatible
     /**
      * @event blur
@@ -927,3 +934,27 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
      * @cfg {String} validateOnBlur @hide
      */
 });
+
+Roo.form.HtmlEditor.white = [
+        'area', 'br', 'img', 'input', 'hr', 'wbr',
+        
+       'address', 'blockquote', 'center', 'dd',      'dir',       'div', 
+       'dl',      'dt',         'h1',     'h2',      'h3',        'h4', 
+       'h5',      'h6',         'hr',     'isindex', 'listing',   'marquee', 
+       'menu',    'multicol',   'ol',     'p',       'plaintext', 'pre', 
+       'table',   'ul',         'xmp', 
+       
+       'caption', 'col', 'colgroup', 'tbody', 'td', 'tfoot', 'th', 
+      'thead',   'tr', 
+     
+      'dir', 'menu', 'ol', 'ul', 'dl',
+       
+]
+Roo.form.HtmlEditor.black = [
+        'embed',  'object', // eventually enable for flash?
+        'applet', // 
+        'base',   'basefont', 'bgsound', 'blink',  'body', 
+        'frame',  'frameset', 'head',    'html',   'ilayer', 
+        'iframe', 'layer',  'link',     'meta',    'object', 'style', 
+        'title',  'script'
+]
