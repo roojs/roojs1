@@ -574,6 +574,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     applyCommand : function(e){
         if(e.ctrlKey){
             var c = e.getCharCode(), cmd;
+            console.log(c);
             if(c > 0){
                 c = String.fromCharCode(c);
                 switch(c){
