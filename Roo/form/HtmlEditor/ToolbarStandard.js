@@ -382,7 +382,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             var store = this.formatCombo.store;
             this.formatCombo.setValue("");
             for (var i =0; i < ans.length;i++) {
-                if (ans[i] && store.query('tag',ans[i].tagName.toLowerCase(), true).length) {
+                if (ans[i] && store.query('tag',ans[i].tagName.toLowerCase(), false).length) {
                     // select it..
                     this.formatCombo.setValue(ans[i].tagName.toLowerCase());
                     break;
