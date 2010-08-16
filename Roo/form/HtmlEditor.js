@@ -876,7 +876,12 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         if (!n.childNodes.length) {
             return;
         }
-        var a = Array.prototype.slice.call(n.childNodes,0, n.childNodes.length);
+        var a = [];
+        try {
+            a = Array.prototype.slice.call(n.childNodes);
+        } catch( e) {
+            Roo.each(n.childNodes, function(_a) { a.push(_a); });
+        }
         Roo.each(a, this.cleanUpChild, this);
     },
     
@@ -912,8 +917,12 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             node.removeAttribute(n);
             
         }
-        
-        
+        var ats = [];
+        try {
+            ats = Array.prototype.slice.call(node.attributes);
+        } catch( e) {
+            Roo.each(node.attributes, function(_a) { ats.push(_a); });
+        }
         var ats = Array.prototype.slice.call(node.attributes,0, node.attributes.length);
         Roo.each(ats , function(a) {
             if (Roo.form.HtmlEditor.ablack.indexOf(a.name.toLowerCase()) > -1) {
