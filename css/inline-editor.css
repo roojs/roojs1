@@ -64,7 +64,7 @@
 .x-html-editor-tb .x-edit-sourceedit .x-btn-text        { background-position: 0 -192px; } 
 .x-html-editor-tb .x-edit-createlink .x-btn-text        { background-position: 0 -208px; } 
 
-
+.x-html-editor-tb .x-edit-none           { background: transparent none 0 0; } 
 .x-html-editor-tb .x-toolbar .x-btn {
     margin-left:0px;
     margin-right:0px;
