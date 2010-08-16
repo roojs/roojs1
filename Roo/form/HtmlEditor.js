@@ -901,8 +901,15 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             return;
         }
         
-        function cleanAttr(n)
+        function cleanAttr(n,v)
         {
+            if (v.match(/^\./) || v.match(/^\//)) {
+                return;
+            }
+            if (v.match(/^(http|https):\/\//) || v.match(/^mailto:/)) {
+                return;
+            }
+            
             
         }
         
@@ -914,10 +921,11 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 return;
             }
             if (Roo.form.HtmlEditor.aclean.indexOf(a.name.toLowerCase()) > -1) {
-                
                 node.removeAttribute(a.name); // fixme..
                 return;
             }
+            // style cleanup!?
+            
         }, this);
         
         
