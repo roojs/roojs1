@@ -70,7 +70,7 @@ Roo.extend(Roo.menu.Item, Roo.menu.BaseItem, {
         }
         el.className = this.itemCls + (this.menu ?  " x-menu-item-arrow" : "") + (this.cls ?  " " + this.cls : "");
         
-        var html = this.html.length ? this.html  : String.format(this.text);
+        var html = this.html.length ? this.html  : String.format('{0}',this.text);
         
         el.innerHTML = String.format(
                 '<img src="{0}" class="x-menu-item-icon {1}" />' + html,
@@ -92,7 +92,7 @@ Roo.extend(Roo.menu.Item, Roo.menu.BaseItem, {
             this.html = '';
         }
         if(this.rendered){
-            var html = this.html.length ? this.html  : String.format(this.text);
+            var html = this.html.length ? this.html  : String.format('{0}',this.text);
      
             this.el.update(String.format(
                 '<img src="{0}" class="x-menu-item-icon {2}">' + html,
