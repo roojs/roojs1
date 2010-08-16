@@ -897,6 +897,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             
         }
         
+        
         this.cleanUpChildren(node);
         
         
@@ -967,8 +968,9 @@ Roo.form.HtmlEditor.black = [
         'applet', // 
         'base',   'basefont', 'bgsound', 'blink',  'body', 
         'frame',  'frameset', 'head',    'html',   'ilayer', 
-        'iframe', 'layer',  'link',     'meta',    'object', 'style', 
-        'title',  'script'
+        'iframe', 'layer',  'link',     'meta',    'object', 
+        
+        'script', 'style' ,'title',  'xml' // clean later..
 ];
 Roo.form.HtmlEditor.clean = [
     'script', 'style', 'title', 'xml'
