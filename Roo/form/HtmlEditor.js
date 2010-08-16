@@ -876,7 +876,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         if (!n.childNodes.length) {
             return;
         }
-        var a = Array.prototype.splice.call(n.childNodes);
+        var a = Array.prototype.slice.call(n.childNodes);
         Roo.each(a, this.cleanUpChild, this);
     },
     
