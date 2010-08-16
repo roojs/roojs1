@@ -923,7 +923,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         } catch( e) {
             Roo.each(node.attributes, function(_a) { ats.push(_a); });
         }
-        var ats = Array.prototype.slice.call(node.attributes,0, node.attributes.length);
+        
         Roo.each(ats , function(a) {
             if (Roo.form.HtmlEditor.ablack.indexOf(a.name.toLowerCase()) > -1) {
                 node.removeAttribute(a.name);
