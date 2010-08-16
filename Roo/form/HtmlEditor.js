@@ -889,7 +889,12 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             // clean up silly Windows -- stuff?
             return; 
         }
-        
+        if (Roo.form.HtmlEditor.black.indexOf(node.tagName.toLowerCase()) > -1) {
+            // remove node.
+            node.parentNode.removeChild(node);
+            return;
+            
+        }
         
         this.cleanUpChildren(node);
         
