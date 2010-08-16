@@ -901,7 +901,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             return;
             
         }
-        if (!node.attributes.length) {
+        if (!node.attributes || node.attributes.length) {
             this.cleanUpChildren(node);
             return;
         }
