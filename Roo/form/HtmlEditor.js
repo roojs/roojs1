@@ -914,7 +914,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         })
         
         
-        
+           this.cleanUpChildren(node);
         
         
     }
