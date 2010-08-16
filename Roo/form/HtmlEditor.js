@@ -885,7 +885,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     cleanUpChild : function (node)
     {
         console.log(node);
-        if (node.nodeName == "#Text") {
+        if (node.tagName == "#Text") {
             // clean up silly Windows -- stuff?
             return; 
         }
