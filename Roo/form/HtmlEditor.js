@@ -615,13 +615,9 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 this.syncValue();
                 this.deferFocus();
             }
-        }else if(Roo.isGecko || Roo.isOpera){
+        }else if(Roo.isGecko || Roo.isOpera || Roo.isSafari){
             this.win.focus();
             this.execCmd('InsertHTML', text);
-            this.deferFocus();
-        }else if(Roo.isSafari){
-            this.win.focus();
-            this.execCmd('InsertText', text);
             this.deferFocus();
         }
     },
