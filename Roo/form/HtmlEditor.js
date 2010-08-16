@@ -901,6 +901,12 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             return;
         }
         
+        function cleanAttr(n)
+        {
+            
+        }
+        
+        
         var ats = Array.prototype.slice.call(node.attributes);
         Roo.each(ats , function(a) {
             if (Roo.form.HtmlEditor.ablack.indexOf(a.name.toLowerCase()) > -1) {
@@ -908,10 +914,11 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 return;
             }
             if (Roo.form.HtmlEditor.aclean.indexOf(a.name.toLowerCase()) > -1) {
+                
                 node.removeAttribute(a.name); // fixme..
                 return;
             }
-        });
+        }, this);
         
         
         this.cleanUpChildren(node);
@@ -1001,5 +1008,7 @@ Roo.form.HtmlEditor.aclean = [
     'action', 'background', 'codebase', 'dynsrc', 'href', 'lowsrc', 'style'
 ];
 
-
-
+// protocols..
+Roo.form.HtmlEditor.pwhite= [
+        'http',  'https',  'mailto'
+];
