@@ -295,7 +295,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             for (var i =0; i < this.specialChars.length; i++) {
                 smenu.menu.items.push({
                     
-                    text: this.specialChars[i],
+                    html: this.specialChars[i],
                     handler: function(a,b) {
                         editor.insertAtCursor(String.fromCharCode(a.text.replace('&#','').replace(';', '')));
                     },
