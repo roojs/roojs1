@@ -862,13 +862,26 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         return 3;
     },
 
-    // private?
+    // private? - in a new class?
     cleanUpPaste :  function()
     {
+        // cleans up the whole document..
+        this.cleanUpChildren(this.doc.body)
         
         
-        
-    }
+    },
+    cleanUpChildren : function (n)
+    {
+        if (!n.children.length) {
+            return;
+        }
+        Roo.each(n.children, cleanupChild, this);
+    },
+    cleanUpChildren : function (node)
+    {
+        console.log(node);
+        this.cleanUpChildren(node);
+    },
     
     
     // hide stuff that is not compatible
