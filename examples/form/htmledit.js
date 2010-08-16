@@ -27,7 +27,7 @@ Roo.onReady(function(){
                 toolbars : [    
                     {
                         xtype : 'ToolbarStandard',
-                        xns : Roo.form.HtmlEditor,
+                        xns : Roo.form.HtmlEditor
                     }
                     
                 ],
@@ -40,12 +40,12 @@ Roo.onReady(function(){
             {
                 xtype : 'Button',
                 xns: Roo.form,
-                text: 'Save',
+                text: 'Save'
             },
             {
                 xtype : 'Button',
                 xns: Roo.form,
-                text: 'Cancel',
+                text: 'Cancel'
             }
             
         ]
