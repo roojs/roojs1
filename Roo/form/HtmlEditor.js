@@ -866,6 +866,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     cleanUpPaste :  function()
     {
         // cleans up the whole document..
+        console.log('cleanuppaste');
         this.cleanUpChildren(this.doc.body)
         
         
