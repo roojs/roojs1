@@ -82,8 +82,9 @@ Roo.extend(Roo.menu.Item, Roo.menu.BaseItem, {
     /**
      * Sets the text to display in this menu item
      * @param {String} text The text to display
+     * @param {Boolean} isHTML true to indicate text is pure html.
      */
-    setText : function(text){
+    setText : function(text, isHTML){
         this.text = text;
         if(this.rendered){
             this.el.update(String.format(
