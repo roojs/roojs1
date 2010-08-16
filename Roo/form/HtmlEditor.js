@@ -876,7 +876,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         if (!n.childNodes.length) {
             return;
         }
-        for (var i = n.childNodes.length-1; i > -1 ; i++) {
+        for (var i = n.childNodes.length-1; i > -1 ; i--) {
            this.cleanUpChild(n.childNodes[i]);
         }
     },
@@ -886,7 +886,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     
     cleanUpChild : function (node)
     {
-        console.log(node);
+        //console.log(node);
         if (node.nodeName == "#text") {
             // clean up silly Windows -- stuff?
             return; 
@@ -914,7 +914,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             
         }
         
-        for (var i = node.attributes.length-1; i > -1 ; i++) {
+        for (var i = node.attributes.length-1; i > -1 ; i--) {
            var a = node.attributes[i];
             if (Roo.form.HtmlEditor.ablack.indexOf(a.name.toLowerCase()) > -1) {
                 node.removeAttribute(a.name);
