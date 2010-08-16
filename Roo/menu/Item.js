@@ -85,10 +85,17 @@ Roo.extend(Roo.menu.Item, Roo.menu.BaseItem, {
      * @param {Boolean} isHTML true to indicate text is pure html.
      */
     setText : function(text, isHTML){
-        this.text = text;
+        if (isHTML) {
+            this.html = text;
+        } else {
+            this.text = text;
+            this.html = '';
+        }
         if(this.rendered){
+            var html = this.html.length ? this.html  : String.format(this.text);
+     
             this.el.update(String.format(
-                '<img src="{0}" class="x-menu-item-icon {2}">{1}',
+                '<img src="{0}" class="x-menu-item-icon {2}">' + html,
                 this.icon || Roo.BLANK_IMAGE_URL, this.text, this.iconCls || ''));
             this.parentMenu.autoWidth();
         }
