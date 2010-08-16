@@ -904,7 +904,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         
         function cleanAttr(n,v)
         {
-            Roo.log(node.tagName +'.' + n + '=' + v);
+            
             if (v.match(/^\./) || v.match(/^\//)) {
                 return;
             }
@@ -925,8 +925,9 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             var parts = v.split(/;/);
             Roo.each(parts, function(p) {
                 var l = p.split(':').shift().replace(/\W+/g,'');
-                Roo.log(l);
+                
                 if (Roo.form.HtmlEditor.cwhite.indexOf(l) < 0) {
+                    Roo.log('(REMOVE)' + node.tagName +'.' + n + ':'+l + '=' + v);
                     node.removeAttribute(n);
                     return false;
                 }
