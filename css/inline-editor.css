@@ -65,7 +65,7 @@
 .x-html-editor-tb .x-edit-createlink .x-btn-text        { background-position: 0 -208px; } 
 
 /** extra buttons */
-.x-html-editor-tb .x-edit-none           { background: transparent none 0 0; } 
+.x-html-editor-tb .x-edit-none  .x-btn-text          { background: transparent none 0 0; } 
 
 
 .x-html-editor-tb .x-toolbar .x-btn {
