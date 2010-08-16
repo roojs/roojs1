@@ -25,7 +25,11 @@ Roo.onReady(function(){
                 xtype : 'HtmlEditor',
                 xns: Roo.form,
                 toolbars : [    
-                    new Roo.form.HtmlEditor.ToolbarStandard()
+                    {
+                        xtype : 'ToolbarStandard',
+                        xns : Roo.form.HtmlEditor,
+                    }
+                    
                 ],
                 id:'bio',
                 name : 'bio',
