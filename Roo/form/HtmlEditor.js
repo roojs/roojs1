@@ -863,6 +863,13 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     }
 
     
+    cleanUpPaste :  function()
+    {
+        
+        
+        
+    }
+    
     
     // hide stuff that is not compatible
     /**
