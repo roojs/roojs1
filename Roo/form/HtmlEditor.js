@@ -911,10 +911,10 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 node.setAttribute(a.name, ''); // fixme..
                 return;
             }
-        })
+        });
         
         
-           this.cleanUpChildren(node);
+        this.cleanUpChildren(node);
         
         
     }
