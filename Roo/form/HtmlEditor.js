@@ -601,7 +601,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             var c = e.getCharCode(), cmd;
           
             if(c > 0){
-                c = String.fromCharCode(c);
+                c = String.fromCharCode(c).toLowerCase();
                 switch(c){
                     case 'b':
                         cmd = 'bold';
