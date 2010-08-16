@@ -937,7 +937,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         
         for (var i = node.attributes.length-1; i > -1 ; i--) {
             var a = node.attributes[i];
-            console.log(a);
+            //console.log(a);
             if (Roo.form.HtmlEditor.ablack.indexOf(a.name.toLowerCase()) > -1) {
                 node.removeAttribute(a.name);
                 return;
