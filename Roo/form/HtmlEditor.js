@@ -862,7 +862,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         return 3;
     },
 
-    
+    // private?
     cleanUpPaste :  function()
     {
         
