@@ -1024,3 +1024,9 @@ Roo.form.HtmlEditor.aclean = [
 Roo.form.HtmlEditor.pwhite= [
         'http',  'https',  'mailto'
 ];
+
+Roo.form.HtmlEditor.cwhite= [
+        'text-align',
+        'font-size'
+];
+
