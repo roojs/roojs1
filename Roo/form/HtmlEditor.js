@@ -918,7 +918,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         
         function cleanStyle(n,v)
         {
-            if (v.match(/expression/) { //XSS?? should we even bother..
+            if (v.match(/expression/)) { //XSS?? should we even bother..
                 node.removeAttribute(n);
                 return;
             }
