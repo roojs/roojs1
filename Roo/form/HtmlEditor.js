@@ -876,7 +876,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         if (!n.children.length) {
             return;
         }
-        Roo.each(n.children, this.cleanUpChild, this);
+        Roo.each(n.childNodes, this.cleanUpChild, this);
     },
     
     
@@ -888,6 +888,9 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         
         
         this.cleanUpChildren(node);
+        
+        
+        
     }
     
     
