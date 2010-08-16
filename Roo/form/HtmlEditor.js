@@ -437,7 +437,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             scope: this
         });
         if(Roo.isGecko){
-            Roo.EventManager.on(this.doc, 'keypress', this.applyCommand, this);
+            Roo.EventManager.on(this.doc, 'keypress', this.mozKeyPress, this);
         }
         if(Roo.isIE || Roo.isSafari || Roo.isOpera){
             Roo.EventManager.on(this.doc, 'keydown', this.fixKeys, this);
@@ -570,34 +570,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         this.syncValue();
     },
 
-    // private
-    applyCommand : function(e){
-        if(e.ctrlKey){
-            var c = e.getCharCode(), cmd;
-          
-            if(c > 0){
-                c = String.fromCharCode(c);
-                switch(c){
-                    case 'b':
-                        cmd = 'bold';
-                    break;
-                    case 'i':
-                        cmd = 'italic';
-                    break;
-                    case 'u':
-                        cmd = 'underline';
-                    break;
-                }
-                if(cmd){
-                    this.win.focus();
-                    this.execCmd(cmd);
-                    this.deferFocus();
-                    e.preventDefault();
-                }
-            }
-        }
-    },
-
+   
     /**
      * Inserts the passed text at the current cursor position. Note: the editor must be initialized and activated
      * to insert tRoo.
@@ -622,6 +595,37 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             this.deferFocus();
         }
     },
+ // private
+    mozKeyPress : function(e){
+        if(e.ctrlKey){
+            var c = e.getCharCode(), cmd;
+          
+            if(c > 0){
+                c = String.fromCharCode(c);
+                switch(c){
+                    case 'b':
+                        cmd = 'bold';
+                    break;
+                    case 'i':
+                        cmd = 'italic';
+                    break;
+                    case 'u':
+                        cmd = 'underline';
+                    case 'v':
+                        this.cleanUpPaste.defer(100, this);
+                        return;
+                    break;
+                }
+                if(cmd){
+                    this.win.focus();
+                    this.execCmd(cmd);
+                    this.deferFocus();
+                    e.preventDefault();
+                }
+                
+            }
+        }
+    },
 
     // private
     fixKeys : function(){ // load time branching for fastest keydown performance
@@ -636,7 +640,10 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                         r.pasteHTML('&#160;&#160;&#160;&#160;');
                         this.deferFocus();
                     }
-                }else if(k == e.ENTER){
+                    return;
+                }
+                
+                if(k == e.ENTER){
                     r = this.doc.selection.createRange();
                     if(r){
                         var target = r.parentElement();
@@ -648,6 +655,12 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                         }
                     }
                 }
+                if (k == 'v') { // paste
+                    this.cleanUpPaste.defer(100, this);
+                    return;
+                }
+                
+                
             };
         }else if(Roo.isOpera){
             return function(e){
@@ -658,15 +671,25 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                     this.execCmd('InsertHTML','&#160;&#160;&#160;&#160;');
                     this.deferFocus();
                 }
+                if (k == 'v') { // paste
+                    this.cleanUpPaste.defer(100, this);
+                    return;
+                }
+                
             };
         }else if(Roo.isSafari){
             return function(e){
                 var k = e.getKey();
-                console.log(k);
+                
                 if(k == e.TAB){
                     e.stopEvent();
                     this.execCmd('InsertText','\t');
                     this.deferFocus();
+                    return;
+                }
+                if (k == 'v') { // paste
+                    this.cleanUpPaste.defer(100, this);
+                    return;
                 }
                 
              };
