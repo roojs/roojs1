@@ -909,7 +909,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             if (v.match(/^(http|https):\/\//) || v.match(/^mailto:/)) {
                 return;
             }
-            
+            node.removeAttribute(n);
             
         }
         
@@ -921,7 +921,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 return;
             }
             if (Roo.form.HtmlEditor.aclean.indexOf(a.name.toLowerCase()) > -1) {
-                node.removeAttribute(a.name); // fixme..
+                cleanAttr(a.name,a.value); // fixme..
                 return;
             }
             // style cleanup!?
