@@ -949,7 +949,7 @@ Roo.form.HtmlEditor.white = [
      
       'dir', 'menu', 'ol', 'ul', 'dl',
        
-]
+];
 Roo.form.HtmlEditor.black = [
         'embed',  'object', // eventually enable for flash?
         'applet', // 
@@ -957,4 +957,7 @@ Roo.form.HtmlEditor.black = [
         'frame',  'frameset', 'head',    'html',   'ilayer', 
         'iframe', 'layer',  'link',     'meta',    'object', 'style', 
         'title',  'script'
-]
+];
+Roo.form.HtmlEditor.clean = [
+    'script', 'style', 'title', 'xml'
+];
