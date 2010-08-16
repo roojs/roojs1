@@ -916,6 +916,25 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             
         }
         
+        function cleanStyle(n,v)
+        {
+            if (v.match(/expression/) { //XSS?? should we even bother..
+                node.removeAttribute(n);
+                return;
+            }
+            var parts = v.split(/;/);
+            Roo.each(parts, function(p)) {
+                var l = p.split(':').shift().replace(/\W+/g,'');
+                if (Roo.form.HtmlEditor.cwhite.indexOf(l) < -1) {
+                    node.removeAttribute(n);
+                    return false;
+                }
+            });
+            
+            
+        }
+        
+        
         for (var i = node.attributes.length-1; i > -1 ; i--) {
             var a = node.attributes[i];
             console.log(a);
@@ -927,6 +946,11 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 cleanAttr(a.name,a.value); // fixme..
                 return;
             }
+            if (a.name == 'style') {
+                cleanStyle(a.name,a.value);
+            }
+            
+            
             // style cleanup!?
             // class cleanup?
             
