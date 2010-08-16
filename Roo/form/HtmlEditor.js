@@ -926,7 +926,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             Roo.each(parts, function(p) {
                 p = p.replace(/\s+/g,'');
                 if (!p.length) {
-                    continue;
+                    return;
                 }
                 var l = p.split(':').shift().replace(/\s+/g,'');
                 
