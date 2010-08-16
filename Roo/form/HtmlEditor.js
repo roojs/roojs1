@@ -655,7 +655,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                         }
                     }
                 }
-                if (k == 'v') { // paste
+                if (String.fromCharCode(k).toLowerCase() == 'v') { // paste
                     this.cleanUpPaste.defer(100, this);
                     return;
                 }
@@ -671,7 +671,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                     this.execCmd('InsertHTML','&#160;&#160;&#160;&#160;');
                     this.deferFocus();
                 }
-                if (k == 'v') { // paste
+                if (String.fromCharCode(k).toLowerCase() == 'v') { // paste
                     this.cleanUpPaste.defer(100, this);
                     return;
                 }
@@ -687,7 +687,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                     this.deferFocus();
                     return;
                 }
-                if (k.toLowerCase() == 'v'.charCodeAt(0)) { // paste
+               if (String.fromCharCode(k).toLowerCase() == 'v') { // paste
                     this.cleanUpPaste.defer(100, this);
                     return;
                 }
