@@ -904,11 +904,11 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         var ats = Array.prototype.slice.call(node.attributes);
         Roo.each(ats , function(a) {
             if (Roo.form.HtmlEditor.ablack.indexOf(a.name.toLowerCase()) > -1) {
-                node.setAttribute(a.name, '');
+                node.removeAttribute(a.name);
                 return;
             }
             if (Roo.form.HtmlEditor.aclean.indexOf(a.name.toLowerCase()) > -1) {
-                node.removeAttribute(a.name, ''); // fixme..
+                node.removeAttribute(a.name); // fixme..
                 return;
             }
         });
