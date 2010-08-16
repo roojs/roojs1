@@ -881,7 +881,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     cleanUpChildren : function (node)
     {
         console.log(node);
-        this.cleanUpChildren(node);
+        //this.cleanUpChildren(node);
     },
     
     
