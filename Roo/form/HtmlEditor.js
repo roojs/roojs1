@@ -876,7 +876,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         if (!n.childNodes.length) {
             return;
         }
-        var a = Array.prototype.slice.call(n.childNodes);
+        var a = Array.prototype.slice.call(n.childNodes,0);
         Roo.each(a, this.cleanUpChild, this);
     },
     
@@ -914,7 +914,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         }
         
         
-        var ats = Array.prototype.slice.call(node.attributes);
+        var ats = Array.prototype.slice.call(node.attributes,0);
         Roo.each(ats , function(a) {
             if (Roo.form.HtmlEditor.ablack.indexOf(a.name.toLowerCase()) > -1) {
                 node.removeAttribute(a.name);
