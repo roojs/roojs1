@@ -904,6 +904,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         
         function cleanAttr(n,v)
         {
+            Roo.log(node.tagName +'.' + n + '=' + v);
             if (v.match(/^\./) || v.match(/^\//)) {
                 return;
             }
