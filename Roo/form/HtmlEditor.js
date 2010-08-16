@@ -901,7 +901,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             return;
         }
         
-        var ats = Array.prototype.slice.call(n.attributes);
+        var ats = Array.prototype.slice.call(node.attributes);
         Roo.each(ats , function(a) {
             if (Roo.form.HtmlEditor.ablack.indexOf(a.name.toLowerCase()) > -1) {
                 node.setAttribute(a.name, '');
