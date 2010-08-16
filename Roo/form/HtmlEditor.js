@@ -925,7 +925,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             var parts = v.split(/;/);
             Roo.each(parts, function(p) {
                 var l = p.split(':').shift().replace(/\W+/g,'');
-                if (Roo.form.HtmlEditor.cwhite.indexOf(l) < -1) {
+                if (Roo.form.HtmlEditor.cwhite.indexOf(l) < 0) {
                     node.removeAttribute(n);
                     return false;
                 }
