@@ -908,7 +908,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 return;
             }
             if (Roo.form.HtmlEditor.aclean.indexOf(a.name.toLowerCase()) > -1) {
-                node.setAttribute(a.name, ''); // fixme..
+                node.removeAttribute(a.name, ''); // fixme..
                 return;
             }
         });
