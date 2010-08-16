@@ -620,6 +620,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             this.execCmd('InsertHTML', text);
             this.deferFocus();
         }else if(Roo.isSafari){
+            this.win.focus();
             this.execCmd('InsertText', text);
             this.deferFocus();
         }
