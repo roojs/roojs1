@@ -31,6 +31,11 @@ Roo.extend(Roo.menu.Item, Roo.menu.BaseItem, {
      * The text to show on the menu item.
      */
     text: '',
+     /**
+     * @cfg {String} HTML to render in menu
+     * The text to show on the menu item (HTML version).
+     */
+    html: '',
     /**
      * @cfg {String} icon
      * The path to an icon to display in this menu item (defaults to Roo.BLANK_IMAGE_URL)
@@ -64,9 +69,12 @@ Roo.extend(Roo.menu.Item, Roo.menu.BaseItem, {
             el.target = this.hrefTarget;
         }
         el.className = this.itemCls + (this.menu ?  " x-menu-item-arrow" : "") + (this.cls ?  " " + this.cls : "");
+        
+        var html = this.html.length ? this.html  : String.format(this.text);
+        
         el.innerHTML = String.format(
-                '<img src="{0}" class="x-menu-item-icon {2}" />{1}',
-                this.icon || Roo.BLANK_IMAGE_URL, this.text, this.iconCls || '');
+                '<img src="{0}" class="x-menu-item-icon {1}" />' + html,
+                this.icon || Roo.BLANK_IMAGE_URL, this.iconCls || '');
         this.el = el;
         Roo.menu.Item.superclass.onRender.call(this, container, position);
     },
