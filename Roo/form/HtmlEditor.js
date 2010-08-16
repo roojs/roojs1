@@ -896,9 +896,24 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             return;
             
         }
+        if (!node.attributes.length) {
+            this.cleanUpChildren(node);
+            return;
+        }
+        
+        var ats = Array.prototype.slice.call(n.attributes);
+        Roo.each(ats , function(a) {
+            if (Roo.form.HtmlEditor.ablack.indexOf(a.name.toLowerCase()) > -1) {
+                node.setAttribute(a.name, '');
+                return;
+            }
+            if (Roo.form.HtmlEditor.aclean.indexOf(a.name.toLowerCase()) > -1) {
+                node.setAttribute(a.name, ''); // fixme..
+                return;
+            }
+        })
         
         
-        this.cleanUpChildren(node);
         
         
         
