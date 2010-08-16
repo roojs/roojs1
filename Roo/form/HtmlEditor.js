@@ -574,7 +574,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     applyCommand : function(e){
         if(e.ctrlKey){
             var c = e.getCharCode(), cmd;
-            console.log(c);
+          
             if(c > 0){
                 c = String.fromCharCode(c);
                 switch(c){
@@ -662,11 +662,13 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         }else if(Roo.isSafari){
             return function(e){
                 var k = e.getKey();
+                console.log(k);
                 if(k == e.TAB){
                     e.stopEvent();
                     this.execCmd('InsertText','\t');
                     this.deferFocus();
                 }
+                
              };
         }
     }(),
