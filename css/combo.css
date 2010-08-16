@@ -46,7 +46,7 @@
 .x-form-date-trigger,
 .x-form-arrow-trigger 
 {
-     border: 1px solid black;
+   /*   border: 1px solid black; */
      width:18px;  
      height:20px;  
      background:url(../images/default/combo/arrow.gif); /* arrow image, 15x15px */
