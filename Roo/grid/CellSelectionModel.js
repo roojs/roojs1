@@ -230,11 +230,12 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
         }else if(k == e.ENTER && !e.ctrlKey){
             ed.completeEdit();
             e.stopEvent();
+            newCell = g.walkCells(ed.row, ed.col+1, 1, this.acceptsNav, this);
         }else if(k == e.ESC){
             ed.cancelEdit();
         }
         if(newCell){
-            g.startEditing(newCell[0], newCell[1]);
+            g.startEditing.defer(100, g, [newCell[0], newCell[1]]);
         }
     }
 });
