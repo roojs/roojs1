@@ -248,6 +248,7 @@ side          Add an error icon to the right of the field with a popup on hover
 
     // private
     fireKey : function(e){
+        Roo.log('field ' + e.getKey());
         if(e.isNavKeyPress()){
             this.fireEvent("specialkey", this, e);
         }
