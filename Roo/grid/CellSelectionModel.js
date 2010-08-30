@@ -234,6 +234,8 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
         }else if(k == e.ESC){
             ed.cancelEdit();
         }
+        
+        
         if(newCell){
             g.startEditing.defer(100, g, [newCell[0], newCell[1]]);
         }
