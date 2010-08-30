@@ -264,7 +264,7 @@ side          Add an error icon to the right of the field with a popup on hover
 
     // private
     initEvents : function(){
-        this.el.on(Roo.isIE ? "keydown" : "keypress", this.fireKey,  this);
+        this.el.on(Roo.isIE ? "keydown" : "keyup", this.fireKey,  this);
         this.el.on("focus", this.onFocus,  this);
         this.el.on("blur", this.onBlur,  this);
 
