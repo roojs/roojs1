@@ -1024,9 +1024,11 @@ Roo.form.HtmlEditor.white = [
        'caption', 'col', 'colgroup', 'tbody', 'td', 'tfoot', 'th', 
       'thead',   'tr', 
      
-      'dir', 'menu', 'ol', 'ul', 'dl',
+      'dir', 'menu', 'ol', 'ul', 'dl'
        
 ];
+
+
 Roo.form.HtmlEditor.black = [
         'embed',  'object', // eventually enable for flash?
         'applet', // 
@@ -1047,7 +1049,7 @@ Roo.form.HtmlEditor.ablack = [
 ]
     
 Roo.form.HtmlEditor.aclean = [ 
-    'action', 'background', 'codebase', 'dynsrc', 'href', 'lowsrc', 
+    'action', 'background', 'codebase', 'dynsrc', 'href', 'lowsrc'
 ];
 
 // protocols..
