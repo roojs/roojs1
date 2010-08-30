@@ -181,12 +181,16 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
         var newCell;
 
         switch(k){
-             case e.TAB:
-                 if(e.shiftKey){
+            case e.TAB:
+                // handled by onEditorKey
+                if (g.isEditor && g.editing) {
+                    return;
+                }
+                if(e.shiftKey){
                      newCell = walk(r, c-1, -1);
-                 }else{
+                }else{
                      newCell = walk(r, c+1, 1);
-                 }
+                }
              break;
              case e.DOWN:
                  newCell = walk(r+1, c, 1);
