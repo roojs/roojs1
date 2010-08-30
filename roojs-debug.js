@@ -35202,7 +35202,7 @@ side          Add an error icon to the right of the field with a popup on hover
 
     // private
     fireKey : function(e){
-        Roo.log('field ' + e.getKey());
+        //Roo.log('field ' + e.getKey());
         if(e.isNavKeyPress()){
             this.fireEvent("specialkey", this, e);
         }
@@ -49579,7 +49579,7 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
     onEditorKey : function(field, e){
         
         var k = e.getKey(), newCell, g = this.grid, ed = g.activeEditor;
-        Roo.log('onEditorKey' + k);
+        ///Roo.log('onEditorKey' + k);
         
         if(k == e.TAB){
             if(e.shiftKey){
@@ -49598,7 +49598,7 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
         
         
         if(newCell){
-            Roo.log('next cell after edit');
+            //Roo.log('next cell after edit');
             g.startEditing.defer(100, g, [newCell[0], newCell[1]]);
         }
     }
