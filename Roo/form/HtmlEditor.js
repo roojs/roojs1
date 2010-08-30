@@ -1046,7 +1046,7 @@ Roo.form.HtmlEditor.clean = [
 
 Roo.form.HtmlEditor.ablack = [
     'on'
-]
+];
     
 Roo.form.HtmlEditor.aclean = [ 
     'action', 'background', 'codebase', 'dynsrc', 'href', 'lowsrc'
