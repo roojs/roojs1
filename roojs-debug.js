@@ -28098,6 +28098,7 @@ Roo.extend(Roo.Editor, Roo.Component, {
     },
 
     onSpecialKey : function(field, e){
+        //Roo.log('editor onSpecialKey');
         if(this.completeOnEnter && e.getKey() == e.ENTER){
             e.stopEvent();
             this.completeEdit();
@@ -35201,6 +35202,7 @@ side          Add an error icon to the right of the field with a popup on hover
 
     // private
     fireKey : function(e){
+        Roo.log('field ' + e.getKey());
         if(e.isNavKeyPress()){
             this.fireEvent("specialkey", this, e);
         }
@@ -35216,7 +35218,8 @@ side          Add an error icon to the right of the field with a popup on hover
 
     // private
     initEvents : function(){
-        this.el.on(Roo.isIE ? "keydown" : "keypress", this.fireKey,  this);
+        // safari killled keypress - so keydown is now used..
+        this.el.on("keydown" , this.fireKey,  this);
         this.el.on("focus", this.onFocus,  this);
         this.el.on("blur", this.onBlur,  this);
 
@@ -49511,6 +49514,7 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
 
     /** @ignore */
     handleKeyDown : function(e){
+        Roo.log('Cell Sel Model handleKeyDown');
         if(!e.isNavKeyPress()){
             return;
         }
@@ -49531,12 +49535,16 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
         var newCell;
 
         switch(k){
-             case e.TAB:
-                 if(e.shiftKey){
+            case e.TAB:
+                // handled by onEditorKey
+                if (g.isEditor && g.editing) {
+                    return;
+                }
+                if(e.shiftKey){
                      newCell = walk(r, c-1, -1);
-                 }else{
+                }else{
                      newCell = walk(r, c+1, 1);
-                 }
+                }
              break;
              case e.DOWN:
                  newCell = walk(r+1, c, 1);
@@ -49569,7 +49577,10 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
     },
 
     onEditorKey : function(field, e){
+        
         var k = e.getKey(), newCell, g = this.grid, ed = g.activeEditor;
+        Roo.log('onEditorKey' + k);
+        
         if(k == e.TAB){
             if(e.shiftKey){
                 newCell = g.walkCells(ed.row, ed.col-1, -1, this.acceptsNav, this);
@@ -49587,6 +49598,7 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
         
         
         if(newCell){
+            Roo.log('next cell after edit');
             g.startEditing.defer(100, g, [newCell[0], newCell[1]]);
         }
     }
