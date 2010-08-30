@@ -161,6 +161,7 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
 
     /** @ignore */
     handleKeyDown : function(e){
+        Roo.log('Cell Sel Model handleKeyDown');
         if(!e.isNavKeyPress()){
             return;
         }
