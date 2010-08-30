@@ -264,6 +264,7 @@ side          Add an error icon to the right of the field with a popup on hover
 
     // private
     initEvents : function(){
+        // safari killled keypress - so keydown is now used..
         this.el.on("keydown" , this.fireKey,  this);
         this.el.on("focus", this.onFocus,  this);
         this.el.on("blur", this.onBlur,  this);
