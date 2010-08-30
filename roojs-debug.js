@@ -34549,6 +34549,11 @@ Roo.extend(Roo.menu.Item, Roo.menu.BaseItem, {
      * The text to show on the menu item.
      */
     text: '',
+     /**
+     * @cfg {String} HTML to render in menu
+     * The text to show on the menu item (HTML version).
+     */
+    html: '',
     /**
      * @cfg {String} icon
      * The path to an icon to display in this menu item (defaults to Roo.BLANK_IMAGE_URL)
@@ -34582,9 +34587,12 @@ Roo.extend(Roo.menu.Item, Roo.menu.BaseItem, {
             el.target = this.hrefTarget;
         }
         el.className = this.itemCls + (this.menu ?  " x-menu-item-arrow" : "") + (this.cls ?  " " + this.cls : "");
+        
+        var html = this.html.length ? this.html  : String.format('{0}',this.text);
+        
         el.innerHTML = String.format(
-                '<img src="{0}" class="x-menu-item-icon {2}" />{1}',
-                this.icon || Roo.BLANK_IMAGE_URL, this.text, this.iconCls || '');
+                '<img src="{0}" class="x-menu-item-icon {1}" />' + html,
+                this.icon || Roo.BLANK_IMAGE_URL, this.iconCls || '');
         this.el = el;
         Roo.menu.Item.superclass.onRender.call(this, container, position);
     },
@@ -34592,12 +34600,20 @@ Roo.extend(Roo.menu.Item, Roo.menu.BaseItem, {
     /**
      * Sets the text to display in this menu item
      * @param {String} text The text to display
+     * @param {Boolean} isHTML true to indicate text is pure html.
      */
-    setText : function(text){
-        this.text = text;
+    setText : function(text, isHTML){
+        if (isHTML) {
+            this.html = text;
+        } else {
+            this.text = text;
+            this.html = '';
+        }
         if(this.rendered){
+            var html = this.html.length ? this.html  : String.format('{0}',this.text);
+     
             this.el.update(String.format(
-                '<img src="{0}" class="x-menu-item-icon {2}">{1}',
+                '<img src="{0}" class="x-menu-item-icon {2}">' + html,
                 this.icon || Roo.BLANK_IMAGE_URL, this.text, this.iconCls || ''));
             this.parentMenu.autoWidth();
         }
@@ -38085,6 +38101,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         }
         
         for (var i =0 ; i < editor.toolbars.length;i++) {
+            editor.toolbars[i] = Roo.factory(editor.toolbars[i], Roo.form.HtmlEditor);
             editor.toolbars[i].init(editor);
         }
          
@@ -38384,7 +38401,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             scope: this
         });
         if(Roo.isGecko){
-            Roo.EventManager.on(this.doc, 'keypress', this.applyCommand, this);
+            Roo.EventManager.on(this.doc, 'keypress', this.mozKeyPress, this);
         }
         if(Roo.isIE || Roo.isSafari || Roo.isOpera){
             Roo.EventManager.on(this.doc, 'keydown', this.fixKeys, this);
@@ -38517,33 +38534,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         this.syncValue();
     },
 
-    // private
-    applyCommand : function(e){
-        if(e.ctrlKey){
-            var c = e.getCharCode(), cmd;
-            if(c > 0){
-                c = String.fromCharCode(c);
-                switch(c){
-                    case 'b':
-                        cmd = 'bold';
-                    break;
-                    case 'i':
-                        cmd = 'italic';
-                    break;
-                    case 'u':
-                        cmd = 'underline';
-                    break;
-                }
-                if(cmd){
-                    this.win.focus();
-                    this.execCmd(cmd);
-                    this.deferFocus();
-                    e.preventDefault();
-                }
-            }
-        }
-    },
-
+   
     /**
      * Inserts the passed text at the current cursor position. Note: the editor must be initialized and activated
      * to insert tRoo.
@@ -38562,13 +38553,41 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 this.syncValue();
                 this.deferFocus();
             }
-        }else if(Roo.isGecko || Roo.isOpera){
+        }else if(Roo.isGecko || Roo.isOpera || Roo.isSafari){
             this.win.focus();
             this.execCmd('InsertHTML', text);
             this.deferFocus();
-        }else if(Roo.isSafari){
-            this.execCmd('InsertText', text);
-            this.deferFocus();
+        }
+    },
+ // private
+    mozKeyPress : function(e){
+        if(e.ctrlKey){
+            var c = e.getCharCode(), cmd;
+          
+            if(c > 0){
+                c = String.fromCharCode(c).toLowerCase();
+                switch(c){
+                    case 'b':
+                        cmd = 'bold';
+                    break;
+                    case 'i':
+                        cmd = 'italic';
+                    break;
+                    case 'u':
+                        cmd = 'underline';
+                    case 'v':
+                        this.cleanUpPaste.defer(100, this);
+                        return;
+                    break;
+                }
+                if(cmd){
+                    this.win.focus();
+                    this.execCmd(cmd);
+                    this.deferFocus();
+                    e.preventDefault();
+                }
+                
+            }
         }
     },
 
@@ -38585,7 +38604,10 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                         r.pasteHTML('&#160;&#160;&#160;&#160;');
                         this.deferFocus();
                     }
-                }else if(k == e.ENTER){
+                    return;
+                }
+                
+                if(k == e.ENTER){
                     r = this.doc.selection.createRange();
                     if(r){
                         var target = r.parentElement();
@@ -38597,6 +38619,12 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                         }
                     }
                 }
+                if (String.fromCharCode(k).toLowerCase() == 'v') { // paste
+                    this.cleanUpPaste.defer(100, this);
+                    return;
+                }
+                
+                
             };
         }else if(Roo.isOpera){
             return function(e){
@@ -38607,15 +38635,27 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                     this.execCmd('InsertHTML','&#160;&#160;&#160;&#160;');
                     this.deferFocus();
                 }
+                if (String.fromCharCode(k).toLowerCase() == 'v') { // paste
+                    this.cleanUpPaste.defer(100, this);
+                    return;
+                }
+                
             };
         }else if(Roo.isSafari){
             return function(e){
                 var k = e.getKey();
+                
                 if(k == e.TAB){
                     e.stopEvent();
                     this.execCmd('InsertText','\t');
                     this.deferFocus();
+                    return;
                 }
+               if (String.fromCharCode(k).toLowerCase() == 'v') { // paste
+                    this.cleanUpPaste.defer(100, this);
+                    return;
+                }
+                
              };
         }
     }(),
@@ -38784,8 +38824,113 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             return 2;
 
         return 3;
-    }
+    },
 
+    // private? - in a new class?
+    cleanUpPaste :  function()
+    {
+        // cleans up the whole document..
+      //  console.log('cleanuppaste');
+        this.cleanUpChildren(this.doc.body)
+        
+        
+    },
+    cleanUpChildren : function (n)
+    {
+        if (!n.childNodes.length) {
+            return;
+        }
+        for (var i = n.childNodes.length-1; i > -1 ; i--) {
+           this.cleanUpChild(n.childNodes[i]);
+        }
+    },
+    
+    
+        
+    
+    cleanUpChild : function (node)
+    {
+        //console.log(node);
+        if (node.nodeName == "#text") {
+            // clean up silly Windows -- stuff?
+            return; 
+        }
+        if (Roo.form.HtmlEditor.black.indexOf(node.tagName.toLowerCase()) > -1) {
+            // remove node.
+            node.parentNode.removeChild(node);
+            return;
+            
+        }
+        if (!node.attributes || !node.attributes.length) {
+            this.cleanUpChildren(node);
+            return;
+        }
+        
+        function cleanAttr(n,v)
+        {
+            
+            if (v.match(/^\./) || v.match(/^\//)) {
+                return;
+            }
+            if (v.match(/^(http|https):\/\//) || v.match(/^mailto:/)) {
+                return;
+            }
+            Roo.log("(REMOVE)"+ node.tagName +'.' + n + '=' + v);
+            node.removeAttribute(n);
+            
+        }
+        
+        function cleanStyle(n,v)
+        {
+            if (v.match(/expression/)) { //XSS?? should we even bother..
+                node.removeAttribute(n);
+                return;
+            }
+            var parts = v.split(/;/);
+            Roo.each(parts, function(p) {
+                p = p.replace(/\s+/g,'');
+                if (!p.length) {
+                    return;
+                }
+                var l = p.split(':').shift().replace(/\s+/g,'');
+                
+                if (Roo.form.HtmlEditor.cwhite.indexOf(l) < 0) {
+                    Roo.log('(REMOVE)' + node.tagName +'.' + n + ':'+l + '=' + v);
+                    node.removeAttribute(n);
+                    return false;
+                }
+            });
+            
+            
+        }
+        
+        
+        for (var i = node.attributes.length-1; i > -1 ; i--) {
+            var a = node.attributes[i];
+            //console.log(a);
+            if (Roo.form.HtmlEditor.ablack.indexOf(a.name.toLowerCase()) > -1) {
+                node.removeAttribute(a.name);
+                return;
+            }
+            if (Roo.form.HtmlEditor.aclean.indexOf(a.name.toLowerCase()) > -1) {
+                cleanAttr(a.name,a.value); // fixme..
+                return;
+            }
+            if (a.name == 'style') {
+                cleanStyle(a.name,a.value);
+            }
+            
+            
+            // style cleanup!?
+            // class cleanup?
+            
+        }
+        
+        
+        this.cleanUpChildren(node);
+        
+        
+    }
     
     
     // hide stuff that is not compatible
@@ -38829,7 +38974,59 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     /**
      * @cfg {String} validateOnBlur @hide
      */
-});// <script type="text/javascript">
+});
+
+Roo.form.HtmlEditor.white = [
+        'area', 'br', 'img', 'input', 'hr', 'wbr',
+        
+       'address', 'blockquote', 'center', 'dd',      'dir',       'div', 
+       'dl',      'dt',         'h1',     'h2',      'h3',        'h4', 
+       'h5',      'h6',         'hr',     'isindex', 'listing',   'marquee', 
+       'menu',    'multicol',   'ol',     'p',       'plaintext', 'pre', 
+       'table',   'ul',         'xmp', 
+       
+       'caption', 'col', 'colgroup', 'tbody', 'td', 'tfoot', 'th', 
+      'thead',   'tr', 
+     
+      'dir', 'menu', 'ol', 'ul', 'dl'
+       
+];
+
+
+Roo.form.HtmlEditor.black = [
+        'embed',  'object', // eventually enable for flash?
+        'applet', // 
+        'base',   'basefont', 'bgsound', 'blink',  'body', 
+        'frame',  'frameset', 'head',    'html',   'ilayer', 
+        'iframe', 'layer',  'link',     'meta',    'object', 
+        
+        'script', 'style' ,'title',  'xml' // clean later..
+];
+Roo.form.HtmlEditor.clean = [
+    'script', 'style', 'title', 'xml'
+];
+
+// attributes..
+
+Roo.form.HtmlEditor.ablack = [
+    'on'
+]
+    
+Roo.form.HtmlEditor.aclean = [ 
+    'action', 'background', 'codebase', 'dynsrc', 'href', 'lowsrc'
+];
+
+// protocols..
+Roo.form.HtmlEditor.pwhite= [
+        'http',  'https',  'mailto'
+];
+
+Roo.form.HtmlEditor.cwhite= [
+        'text-align',
+        'font-size'
+];
+
+// <script type="text/javascript">
 /*
  * Based on
  * Ext JS Library 1.1.1
@@ -39126,9 +39323,10 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             for (var i =0; i < this.specialChars.length; i++) {
                 smenu.menu.items.push({
                     
-                    text: this.specialChars[i],
+                    html: this.specialChars[i],
                     handler: function(a,b) {
-                        editor.insertAtCursor(String.fromCharCode(a.text.replace('&#','').replace(';', '')));
+                        editor.insertAtCursor(String.fromCharCode(a.html.replace('&#','').replace(';', '')));
+                        
                     },
                     tabIndex:-1
                 });
@@ -39213,7 +39411,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             var store = this.formatCombo.store;
             this.formatCombo.setValue("");
             for (var i =0; i < ans.length;i++) {
-                if (ans[i] && store.query('tag',ans[i].tagName.toLowerCase(), true).length) {
+                if (ans[i] && store.query('tag',ans[i].tagName.toLowerCase(), false).length) {
                     // select it..
                     this.formatCombo.setValue(ans[i].tagName.toLowerCase());
                     break;
@@ -49382,11 +49580,12 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
         }else if(k == e.ENTER && !e.ctrlKey){
             ed.completeEdit();
             e.stopEvent();
+            newCell = g.walkCells(ed.row, ed.col+1, 1, this.acceptsNav, this);
         }else if(k == e.ESC){
             ed.cancelEdit();
         }
         if(newCell){
-            g.startEditing(newCell[0], newCell[1]);
+            g.startEditing.defer(100, g, [newCell[0], newCell[1]]);
         }
     }
 });/*
