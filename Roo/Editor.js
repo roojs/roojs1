@@ -152,7 +152,7 @@ Roo.extend(Roo.Editor, Roo.Component, {
     },
 
     onSpecialKey : function(field, e){
-        Roo.log('editor onSpecialKey');
+        //Roo.log('editor onSpecialKey');
         if(this.completeOnEnter && e.getKey() == e.ENTER){
             e.stopEvent();
             this.completeEdit();
