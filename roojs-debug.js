@@ -20490,6 +20490,11 @@ Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
 	        for(var j = 0; j < fl; j++){
 	            f = fi[j];
                 var v = this.ef[j](n);
+                if (!f.convert) {
+                    Roo.log('missing convert for ' + f.name);
+                    Roo.log(f);
+                    continue;
+                }
                 values[f.name] = f.convert((v !== undefined) ? v : f.defaultValue);
 	        }
 	        var record = new Record(values, id);
