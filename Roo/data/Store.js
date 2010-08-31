@@ -677,7 +677,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
         this.recordType = rtype;
         this.fields = rtype.prototype.fields;
         delete this.snapshot;
-        this.sortInfo = meta.sortInfo;
+        this.sortInfo = meta.sortInfo || this.sortInfo;
         this.modified = [];
         this.fireEvent('metachange', this, this.reader.meta);
     }
