@@ -15,7 +15,7 @@
  * Data reader class to create an Array of Roo.data.Record objects from a JSON response
  * based on mappings in a provided Roo.data.Record constructor.
  * 
- * The default behaviour of a store is to send _requestMeta, unless the class has recieved 'metaData' property
+ * The default behaviour of a store is to send ?_requestMeta=1, unless the class has recieved 'metaData' property
  * in the reply previously. 
  * 
  * <p>
