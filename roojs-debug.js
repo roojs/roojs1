@@ -19605,7 +19605,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
         this.recordType = rtype;
         this.fields = rtype.prototype.fields;
         delete this.snapshot;
-        this.sortInfo = meta.sortInfo;
+        this.sortInfo = meta.sortInfo || this.sortInfo;
         this.modified = [];
         this.fireEvent('metachange', this, this.reader.meta);
     }
@@ -20314,6 +20314,10 @@ Roo.extend(Roo.data.ScriptTagProxy, Roo.data.DataProxy, {
  * @extends Roo.data.DataReader
  * Data reader class to create an Array of Roo.data.Record objects from a JSON response
  * based on mappings in a provided Roo.data.Record constructor.
+ * 
+ * The default behaviour of a store is to send ?_requestMeta=1, unless the class has recieved 'metaData' property
+ * in the reply previously. 
+ * 
  * <p>
  * Example code:
  * <pre><code>
