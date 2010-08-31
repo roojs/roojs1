@@ -51093,7 +51093,7 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
             this.form = this.layout.getRegion('center').activePanel.form;
             this.form.dialog = dlg;
             this.buttons[0].form = this.form;
-            this.buttons[0].dialog = dlg
+            this.buttons[0].dialog = dlg;
             this.buttons[1].form = this.form;
             this.buttons[1].dialog = dlg;
            
