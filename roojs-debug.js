@@ -19257,6 +19257,10 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
         if(this.fireEvent("beforeload", this, options) !== false){
             this.storeOptions(options);
             var p = Roo.apply(options.params || {}, this.baseParams);
+            // if meta was not loaded from remote source.. try requesting it.
+            if (!this.reader.metaFromRemote) {
+                p._requestMeta = 1;
+            }
             if(this.sortInfo && this.remoteSort){
                 var pn = this.paramNames;
                 p[pn["sort"]] = this.sortInfo.field;
@@ -20357,6 +20361,13 @@ Roo.data.JsonReader = function(meta, recordType){
     Roo.data.JsonReader.superclass.constructor.call(this, meta, recordType||meta.fields);
 };
 Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
+    
+    /**
+     * @prop {Boolean} metaFromRemote  - if the meta data was loaded from the remote source.
+     * Used by Store query builder to append _requestMeta to params.
+     * 
+     */
+    metaFromRemote : false,
     /**
      * This method is only used by a DataProxy which has retrieved data from a remote server.
      * @param {Object} response The XHR object which contains the JSON data in its responseText.
@@ -20372,7 +20383,9 @@ Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
         }
         
         if(o.metaData){
+            
             delete this.ef;
+            this.metaFromRemote = true;
             this.meta = o.metaData;
             this.recordType = Roo.data.Record.create(o.metaData.fields);
             this.onMetaChange(this.meta, this.recordType, o);
