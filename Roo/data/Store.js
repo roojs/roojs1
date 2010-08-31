@@ -329,6 +329,10 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
         if(this.fireEvent("beforeload", this, options) !== false){
             this.storeOptions(options);
             var p = Roo.apply(options.params || {}, this.baseParams);
+            // if meta was not loaded from remote source.. try requesting it.
+            if (!this.reader.metaFromRemote) {
+                p._requestMeta = 1;
+            }
             if(this.sortInfo && this.remoteSort){
                 var pn = this.paramNames;
                 p[pn["sort"]] = this.sortInfo.field;
