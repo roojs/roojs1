@@ -131,7 +131,8 @@
 /* -------------------------- BUTTON ELEMENT -------------------------- */ 
 .x-btn button {
     font-size: 11px;
-    background: none;
+    background-image: none;
+    none no-repeat scroll 0 0 transparent
     cursor:pointer;
     margin: 0px;
     outline: none;
