@@ -226,6 +226,18 @@
  
 
 
+.x-tabs-strip .on .x-tabs-right {
+	 background: url(../images/slate/tabs/tab-sprite.gif) no-repeat right 0;
+}
+.x-tabs-strip .on .x-tabs-left {
+	 background: url(../images/slate/tabs/tab-sprite.gif) no-repeat 0 -100px;
+}
+.x-tabs-strip .x-tabs-right {
+	 background: url(../images/slate/tabs/tab-sprite.gif) no-repeat right -50px;
+}
+.x-tabs-strip .x-tabs-left {
+	 background: url(../images/slate/tabs/tab-sprite.gif) no-repeat 0 -150px;
+}
 
 
 /**
