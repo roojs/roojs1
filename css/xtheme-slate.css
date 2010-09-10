@@ -222,13 +222,16 @@
 	border-color:#abc;
 }
 
-ul.x-tab-strip-top{
+/** -- removed ul -- **/
+
+
+x-tab-strip-top {
 	background:#dbdbdb url(../images/slate/tabs/tab-strip-bg.gif) repeat-x left top;
 	border-color:#4c647e;
     padding-top: 2px;
 }
 
-ul.x-tab-strip-bottom{
+x-tab-strip-bottom{
 	background-image:url(../images/slate/tabs/tab-strip-btm-bg.gif);
 	border-color:#566c82;
 }
