@@ -42,8 +42,8 @@
 .x-toolbar .x-btn-right,
 .x-toolbar .x-btn-center
 {
-    /* not sure if blanking background looks that good - it confuses end users   */
-    background: none;
+
+ /*   background: none; */
    
 }
 .x-toolbar .x-btn-center
