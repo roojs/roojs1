@@ -75,7 +75,7 @@
 
 */
 
-/* Roo.form.Combobox */
+/* ------------------ Roo.form.Combobox ---------------------*/
 
 
 .x-form .x-form-combo-add,
@@ -96,3 +96,9 @@
 {
     background:transparent url(../images/default/tree/leaf.gif) no-repeat scroll 0 0;
 } 
+/** combo items **/
+.x-combo-list-inner .x-btn
+{
+    text-align-left;
+    font: 12px 9px arial,tahoma,verdana,helvetica;
+}
