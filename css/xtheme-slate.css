@@ -223,32 +223,7 @@
 }
 
 /** worked out from our version.. */
-.x-tabs-strip td,
-.x-tabs-strip .on .x-tabs-right,
-.x-tabs-strip .x-tabs-right,
-.x-tabs-strip .on .x-tabs-left,
-.x-tabs-strip .x-tabs-left
-{
-    background-image: url("../images/slate/tabs/tabs-sprite.gif");
-    
-}
-.x-tabs-strip td {
-    background-repeat: no-repeat;
-    
-}
-.x-tabs-strip .x-tabs-right {
-    background-position: 0 0;
-}
-.x-tabs-strip ..on x-tabs-right {
-    background-position: 0 0;
-}
-.x-tabs-strip .x-tabs-left {
-    background-position: 0 0;
-}
-.x-tabs-strip .on .x-tabs-left {
-    background-position: 0 0;
-}
-
+ 
 
 
 
