@@ -14,7 +14,7 @@
 }
 .x-tabs-strip td{
 	padding:0;
-	padding-left:2px;
+	/* padding-left:2px; */
 }
 .x-tabs-strip a, .x-tabs-strip span, .x-tabs-strip em {
 	display:block;
