@@ -64,7 +64,7 @@
 .x-toolbar .ytb-text
 {
     padding: 2px;
-   }
+}
 
 /* ------------ TOOLBAR OVER / CLICK / CENTER-----------------------*/
 
@@ -129,6 +129,15 @@
     background-position:  0 -84px;
  
 } 
+
+/* ------------ COMBOS/ FIELDS-----------------------*/
+.x-toolbar .x-form-text 
+{
+    height:16px;
+}
+
+
+
 /* ------------ MENUS -----------------------*/
 
 .x-menu 
@@ -223,6 +232,8 @@
 
 
 
+
+
 /* ------------ CHECKBOX ITEM-----------------------*/
 
 
@@ -234,6 +245,10 @@
     cursor: default !important;
     
 }
+
+
+
+
 
 
 
