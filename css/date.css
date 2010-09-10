@@ -194,7 +194,10 @@ table.x-date-inner {
 .x-date-picker td.x-date-middle td.x-btn-center button {
     color: white;
 }
-
+.x-date-bottom .ytb-spacer 
+{
+    display:none;
+   }
 
 
 /* ------------------- COLOR PICKER --------------------- */
