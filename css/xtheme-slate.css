@@ -234,7 +234,20 @@
 .x-tabs-strip td {
     background-repeat: no-repeat;
 }
- 
+.x-tabs-strip .x-tabs-right {
+    background-position: 0 0;
+}
+.x-tabs-strip ..on x-tabs-right {
+    background-position: 0 0;
+}
+.x-tabs-strip .x-tabs-left {
+    background-position: 0 0;
+}
+.x-tabs-strip .on .x-tabs-left {
+    background-position: 0 0;
+}
+
+
 
 
 
