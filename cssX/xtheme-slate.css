@@ -1,3 +1,4 @@
+@import(../css/slate.css);
 
 /** tools buttons on new extjs are merged.. using x-tool.. 
 * we should move towards that!
