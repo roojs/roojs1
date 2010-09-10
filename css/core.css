@@ -17,7 +17,7 @@
 .x-body-masked select,.ext-masked object,.ext-masked embed{
 	 visibility:hidden;
 }
-
+/*
 .x-shadow
 {
 	background:#cccccc;
@@ -30,7 +30,9 @@
    top: 0px;
    display: none;
 }
+*/
 /** --- top/bottom left / right shadow */
+/*
 .x-shadow .xstl,
 .x-shadow .xstr,
 .x-shadow .xsbl
@@ -41,8 +43,9 @@
     float: left;
 }
 
-
+*/
 /** --- middle left / right shadow */
+/*
 .x-shadow .xsml,
 .x-shadow .xsmr
 {
@@ -50,15 +53,17 @@
     width: 7px;
     float: left;
 }
-
+*/
 /** --- top center / bottom center ? shadow */
+/*
 .x-shadow .xstc,
 .x-shadow .xsbc
 {
     height: 7px;
     float: left;
 }
-
+*/
+/*
 .x-shadow * 
 {
     overflow: hidden;
@@ -68,6 +73,7 @@
    -moz-opacity:.3;
     filter: alpha(opacity=30);
 }
+*/
 /** silly kludge for IE with select's under divs */
 .roo-ie .roo-shim {
     filter: alpha(opacity=0);
