@@ -230,7 +230,7 @@
 	 background: url(../images/slate/tabs/tab-sprite.gif) no-repeat right -100px;
 }
 .x-tabs-strip .on .x-tabs-left {
-	 background: url(../images/slate/tabs/tab-sprite.gif) no-repeat 0 0px;
+	 background: url(../images/slate/tabs/tab-sprite.gif) no-repeat 0 -150px;
 }
 .x-tabs-strip .x-tabs-right {
 	 background: url(../images/slate/tabs/tab-sprite.gif) no-repeat right -150px;
