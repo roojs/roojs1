@@ -240,11 +240,11 @@
 }
 
 .x-tabs-strip .on .x-tabs-text {
-    color:#333;
+    color:#fff;
  
 }
 .x-tabs-strip .x-tabs-text {
-    color:#fff;
+    color:#333;
 }
 /**
  * 
