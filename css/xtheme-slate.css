@@ -153,7 +153,7 @@
     background:#f0f4f5 url(../images/slate/toolbar/bg.gif) repeat-x top left;
 }
 .x-toolbar button {
-    color:#f4f4f4;
+    color:#000;
 }
 .x-toolbar .ytb-text {
 	color:white;
