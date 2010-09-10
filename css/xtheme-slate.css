@@ -231,7 +231,9 @@
 {
     background-image: url("../images/slate/tabs/tabs-sprite.gif");
 }
-
+.x-tabs-strip td {
+    background-repeat: no-repeat;
+}
  
 
 
