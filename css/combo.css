@@ -99,6 +99,6 @@
 /** combo items **/
 .x-combo-list-inner .x-btn
 {
-    text-align-left;
+    text-align: left;
     font: 12px 9px arial,tahoma,verdana,helvetica;
 }
