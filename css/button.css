@@ -81,6 +81,14 @@
     padding:0 5px;
     
 }
+
+.x-btn-clear .x-btn-center .x-btn-text  {
+        width:16px;
+        height:16px;
+        background:url(../images/default/basic-dialog/btn-clear.gif) no-repeat 0 0;
+}
+
+
 /* -------------------------- BUTTON OVER -------------------------- */
 .x-btn-over .x-btn-left
 {
