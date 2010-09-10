@@ -140,6 +140,13 @@
     width: auto;
     border: 0px none;
 }
+.x-btn-left i,
+.x-btn-right i
+{
+    display: block;
+    width: 3px;
+}
+
 .roo-gecko .x-btn button
 {
     padding-left: 0px;
