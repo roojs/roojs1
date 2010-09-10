@@ -222,6 +222,24 @@
 	border-color:#abc;
 }
 
+/** worked out from our version.. */
+.x-tabs-strip .x-tabs-left {
+    background:url("../images/slate/tabs/tabs-sprite.gif") no-repeat scroll 0 -150px transparent;
+}
+
+
+
+
+
+/**
+ * 
+ * OLD STUFF
+ * 
+ * 
+ * 
+ */
+
+
  
 
 ul.x-tab-strip-top {
