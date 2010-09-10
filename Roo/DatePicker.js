@@ -298,6 +298,9 @@ Roo.extend(Roo.DatePicker, Roo.Component, {
         var today = (new Date()).dateFormat(this.format);
         
         var baseTb = new Roo.Toolbar(this.el.child("td.x-date-bottom", true));
+        if (this.showClear) {
+            baseTb.add( new Roo.Toolbar.Fill());
+        }
         baseTb.add({
             text: String.format(this.todayText, today),
             tooltip: String.format(this.todayTip, today),
