@@ -51,7 +51,8 @@ var HelloWorld = {
             proxyDrag: true,
             listeners :{
                 show : function() {
-                
+                    var p = this.layout.getRegion('center').getPanel(0);
+                    p.update("Hello World");
                 }
             },
             center : {
