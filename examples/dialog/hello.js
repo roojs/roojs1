@@ -87,8 +87,8 @@ var HelloWorld = {
 // using onDocumentReady instead of window.onload initializes the application
 // when the DOM is ready, without waiting for images and other resources to load
 Roo.onReady(function() {
-    var showBtn = Roo.get('show-dialog-btn');
-    showBtn.on('click',function () {
+    
+    Roo.get('show-dialog-btn').on('click',function () {
         HelloWorld.show({ _el : this});
     });
 });
