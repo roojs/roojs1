@@ -41,7 +41,7 @@ var HelloWorld = {
         var _this = this;
         this.dialog = Roo.factory({
             xns : Roo,
-            xtype : 'BasicDialog',
+            xtype : 'LayoutDialog',
             autoTabs:true,
             width:500,
             height:300,
@@ -49,6 +49,18 @@ var HelloWorld = {
             minWidth:300,
             minHeight:250,
             proxyDrag: true,
+            center : {
+                xtype: 'LayoutRegion',
+                xns: Roo
+            },
+            items : [
+                {
+                    xtype: 'ContentPanel',
+                    xns: Roo,
+                    region : "center",
+                    
+                }
+            ],
             buttons : [
                 {
                     xtype : 'Button',
