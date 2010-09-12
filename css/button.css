@@ -15,9 +15,6 @@
     vertical-align: middle;
     text-align:center;
     border: 0px none;
-    .x-btn button {
-    background:none repeat scroll 0 0 transparent;
-
 }
 /* override em (which is what the <button> is wrapped in) */
 .x-btn em
