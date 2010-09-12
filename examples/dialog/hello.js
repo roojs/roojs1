@@ -82,7 +82,7 @@ HelloWorld = {
         });
             
     }
-}                
+};                
 
 
 // create the HelloWorld application (single instance)
@@ -122,4 +122,9 @@ var HelloWorld = function(){
 
 // using onDocumentReady instead of window.onload initializes the application
 // when the DOM is ready, without waiting for images and other resources to load
-Roo.onReady(HelloWorld.init, HelloWorld, true);
+Roo.onReady(function() {
+    var showBtn = Roo.get('show-dialog-btn');
+    showBtn.on('click',function () {
+        HelloWorld.show({ _el, this});
+    });
+});
