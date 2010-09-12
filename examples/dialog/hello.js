@@ -49,10 +49,10 @@ var HelloWorld = {
             minWidth:300,
             minHeight:250,
             proxyDrag: true,
-            listeners :{
+            listeners : {
                 show : function() {
                     var p = this.layout.getRegion('center').getPanel(0);
-                    p.update("Hello World");
+                    p.setContent("Hello World");
                 }
             },
             center : {
