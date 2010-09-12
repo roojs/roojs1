@@ -51,9 +51,13 @@ var HelloWorld = {
             proxyDrag: true,
             listeners : {
                 show : function() {
-                    Roo.log('show');
                     var p = this.layout.getRegion('center').getPanel(0);
                     p.setContent("Hello World");
+                    
+                },
+                keydown : function(dlg, e) {
+                    var k = e.getKey(); 
+                    if(k == 27){ _this.dialog.hide(); }  
                 }
             },
             center : {
@@ -89,13 +93,7 @@ var HelloWorld = {
                         }   
                     }
                 }
-            ],
-            listeners : {
-                keydown : function(dlg, e) {
-                    var k = e.getKey(); 
-                    if(k == 27){ _this.dialog.hide(); }  
-                }
-            }
+            ]
             
         });
             
