@@ -13,7 +13,7 @@ Roo.BLANK_IMAGE_URL  = "../../images/default/s.gif";
 
 
 
-HelloWorld = {
+var HelloWorld = {
 
     dialog : false,
     callback:  false,
