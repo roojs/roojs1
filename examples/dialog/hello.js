@@ -89,6 +89,6 @@ var HelloWorld = {
 Roo.onReady(function() {
     var showBtn = Roo.get('show-dialog-btn');
     showBtn.on('click',function () {
-        HelloWorld.show({ _el, this});
+        HelloWorld.show({ _el : this});
     });
 });
