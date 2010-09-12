@@ -51,6 +51,7 @@ var HelloWorld = {
             proxyDrag: true,
             listeners : {
                 show : function() {
+                    Roo.log('show');
                     var p = this.layout.getRegion('center').getPanel(0);
                     p.setContent("Hello World");
                 }
