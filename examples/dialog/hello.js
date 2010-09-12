@@ -49,6 +49,11 @@ var HelloWorld = {
             minWidth:300,
             minHeight:250,
             proxyDrag: true,
+            listeners :{
+                show : function() {
+                
+                }
+            },
             center : {
                 xtype: 'LayoutRegion',
                 xns: Roo
@@ -57,7 +62,7 @@ var HelloWorld = {
                 {
                     xtype: 'ContentPanel',
                     xns: Roo,
-                    region : "center",
+                    region : "center"
                     
                 }
             ],
