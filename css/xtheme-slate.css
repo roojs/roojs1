@@ -150,8 +150,10 @@
 
 .x-toolbar{
 	border-color:#abc;
-    background:#f0f4f5 url(../images/slate/toolbar/bg.gif) repeat-x top left;
+    background :#f0f4f5 url(../images/slate/toolbar/bg.gif) repeat-x top left;
 }
+
+
 .x-toolbar button {
     color:#000;
 }
@@ -212,6 +214,10 @@
 	background: #6b869f;
 	border-color:#4f657b;
 }
+.x-layout-panel .x-tabs-wrap {
+    background:url("../images/slate/toolbar/bg.gif") repeat-x scroll left top #F0F4F5;
+}
+
 
 
 .x-tab-panel-header {
