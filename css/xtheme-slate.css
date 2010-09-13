@@ -381,6 +381,7 @@ ul.x-tab-strip-bottom{
     background: url("../images/slate/window/top-bottom.png") repeat-x scroll 0 0 #e4e8ec;
     color:#fafafa;
     border-color:#abc;
+    padding:3px 5px 4px;
 }
 
 
