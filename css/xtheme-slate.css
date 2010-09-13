@@ -227,7 +227,7 @@
 
 
 .x-tabs-strip .on .x-tabs-right {
-	 background: url(../images/slate/tabs/tab-sprite.gif) no-repeat right 0px;
+	 background: url(../images/slate/tabs/tab-sprite.gif) no-repeat right 0px transparent;
 }
 .x-tabs-strip .on .x-tabs-left {
 	 background: url(../images/slate/tabs/tab-sprite.gif) no-repeat 0 -50px;
