@@ -1,5 +1,9 @@
 /* Form CSS - based on details in form_design.svg  */
 
+.x-form 
+{
+    margin: 5px;
+}
 
 /* ---------------------- LABELS --------------------- */
 .x-form-item label
