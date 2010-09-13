@@ -87,7 +87,7 @@
         height:16px;
         background:url(../images/default/basic-dialog/btn-clear.gif) no-repeat 0 0;
 }
-
+/** - button with icon only **/
 .x-btn-icon .x-btn-text {
     width: 16px;
 }
