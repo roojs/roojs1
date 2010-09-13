@@ -398,7 +398,7 @@ select.x-grid-editor{
 .x-grid-row td,
 .x-grid-hd-row td
 {
-	font: normal 8pt arial;
+	font: normal 8pt 8pt tahoma,arial,helvetica;
 	border-bottom: 1px solid #f1efe2;
 	overflow: visible;
 	white-space: nowrap;
