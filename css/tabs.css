@@ -53,6 +53,7 @@
 }
 .x-tabs-strip .x-tabs-right {
 	 background: url(../images/default/tabs/tab-sprite.gif) no-repeat right -50px;
+     padding-right:1px;
 }
 .x-tabs-strip .x-tabs-left {
 	 background: url(../images/default/tabs/tab-sprite.gif) no-repeat 0 -150px;
@@ -60,14 +61,17 @@
 
 .x-tabs-strip  a {
 	position:relative;
-	top:1px; left:0;
+	top:1px; 
+    left:0;
 }
 .x-tabs-strip .on a {
 	position:relative;
 }
+/*
 .x-tabs-strip .on .x-tabs-inner {
-	padding-bottom:5px;
+	padding-bottom:5px; 
 }
+*/
 /** closable tabs */
 .x-tabs-strip .x-tabs-closable .x-tabs-inner{
 	padding-right:22px;
