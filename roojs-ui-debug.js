@@ -12824,7 +12824,7 @@ Roo.extend(Roo.PagingToolbar, Roo.Toolbar, {
             disabled: true,
             handler: this.onClick.createDelegate(this, ["prev"])
         });
-        this.addSeparator();
+        //this.addSeparator();
         this.add(this.beforePageText);
         this.field = Roo.get(this.addDom({
            tag: "input",
@@ -12837,7 +12837,7 @@ Roo.extend(Roo.PagingToolbar, Roo.Toolbar, {
         this.field.on("focus", function(){this.dom.select();});
         this.afterTextEl = this.addText(String.format(this.afterPageText, 1));
         this.field.setHeight(18);
-        this.addSeparator();
+        //this.addSeparator();
         this.next = this.addButton({
             tooltip: this.nextText,
             cls: "x-btn-icon x-grid-page-next",
@@ -12850,7 +12850,7 @@ Roo.extend(Roo.PagingToolbar, Roo.Toolbar, {
             disabled: true,
             handler: this.onClick.createDelegate(this, ["last"])
         });
-        this.addSeparator();
+        //this.addSeparator();
         this.loading = this.addButton({
             tooltip: this.refreshText,
             cls: "x-btn-icon x-grid-loading",
