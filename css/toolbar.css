@@ -136,7 +136,9 @@
 {
     height:14px;
 }
-
+.roo-gecko x-toolbar .x-form-text {
+    height:16px;
+}
 
 
 /* ------------ MENUS -----------------------*/
