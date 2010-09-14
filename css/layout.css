@@ -207,7 +207,9 @@
         z-index:40009
         visibility:hidden;
         position:absolute;
-        background:#ccc;
+        background:#666;
+        border-top: 1px solid #000;
+        border-bottom: 1px solid #000;
         overflow:hidden;
 }
 .x-splitbar-h,.x-splitbar-proxy-h{
