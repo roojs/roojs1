@@ -201,3 +201,21 @@
 	-khtml-user-select: none;
 	cursor:default;
 }
+
+/** --- split bar dragging ---*/
+.x-splitbar-proxy{
+        z-index:40009
+        visibility:hidden;
+        position:absolute;
+        background:#ccc;
+        overflow:hidden;
+}
+.x-splitbar-h,.x-splitbar-proxy-h{
+    cursor:col-resize;
+}
+.x-splitbar-v,.x-splitbar-proxy-v{
+    cursor:row-resize;
+}
+
+
+
