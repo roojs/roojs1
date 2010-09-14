@@ -17,7 +17,12 @@
 .x-body-masked select,.ext-masked object,.ext-masked embed{
 	 visibility:hidden;
 }
-/*
+
+
+
+
+
+/* --- we do not have any shadow images ....
 .x-shadow
 {
 	background:#cccccc;
