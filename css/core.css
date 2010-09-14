@@ -11,11 +11,18 @@
 	height:100%;
 	zoom:1;
 }
-.roo-el-mask-msg div {
-    font: bold 13px "sans serif", tahoma, verdana, helvetica;
+.roo-el-mask-msg 
+{
+    position: absolute;
+    z-index:20000;
     border: 1px solid #ccc;
     background-color: #fff;
+}
+
+.roo-el-mask-msg div {
+    font: bold 13px "sans serif", tahoma, verdana, helvetica;
     
+    z-index:20001;
     
     
     
