@@ -202,7 +202,9 @@ body.masked .x-dlg select {
 	margin-top:4px;
 	width:95%;
 }
-#x-msg-box .roo-mb-textarea {
+#x-msg-box .roo-mb-textarea, 
+#x-msg-box .roo-mb-text 
+{
 	margin-top:4px;
 	font:normal 13px verdana,tahoma,sans-serif;
 }
