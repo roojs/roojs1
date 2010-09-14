@@ -204,7 +204,7 @@
 
 /** --- split bar dragging ---*/
 .x-splitbar-proxy{
-        z-index:40009
+        z-index:40009;
         visibility:hidden;
         position:absolute;
         background:#666;
