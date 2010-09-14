@@ -11,6 +11,12 @@
 	height:100%;
 	zoom:1;
 }
+.roo-el-mask div {
+
+    
+    
+}
+
 .x-body-masked {
 	overflow:hidden !important;
 }
