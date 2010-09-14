@@ -221,7 +221,7 @@ textarea.x-form-invalid
      
      position: absolute;
      
-     top: -1px;
+    /*  top: -1px; */
      background:url(../images/default/combo/arrow.gif); /* arrow image, 15x15px */
      background-repeat:no-repeat;
      background-position:center; /* centers image in div, creating 1px white border effect */
