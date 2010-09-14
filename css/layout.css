@@ -138,6 +138,7 @@
 .x-layout-split-h{
     background-image:url(../images/default/sizer/e-handle.gif);
     background-position: left;
+    cursor:col-resize;
 }
 .x-layout-split-v{
     background-image:url(../images/default/sizer/s-handle.gif);
