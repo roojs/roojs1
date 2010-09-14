@@ -392,6 +392,7 @@ layout.addxtype({
         switch(cfg.xtype) 
         {
             case 'ContentPanel':  // ContentPanel (el, cfg)
+            case 'ScrollPanel':  // ContentPanel (el, cfg)
                 if(cfg.autoCreate) {
                     ret = new Roo[cfg.xtype](cfg); // new panel!!!!!
                 } else {
