@@ -142,6 +142,7 @@
 .x-layout-split-v{
     background-image:url(../images/default/sizer/s-handle.gif);
     background-position: top;
+    cursor:row-resize;
 }
 .x-layout-panel .x-tabs-wrap{
     background:url(../images/default/layout/gradient-bg.gif);
