@@ -24576,6 +24576,9 @@ Roo.extend(Roo.DatePicker, Roo.Component, {
         var today = (new Date()).dateFormat(this.format);
         
         var baseTb = new Roo.Toolbar(this.el.child("td.x-date-bottom", true));
+        if (this.showClear) {
+            baseTb.add( new Roo.Toolbar.Fill());
+        }
         baseTb.add({
             text: String.format(this.todayText, today),
             tooltip: String.format(this.todayTip, today),
@@ -43149,6 +43152,7 @@ layout.addxtype({
         switch(cfg.xtype) 
         {
             case 'ContentPanel':  // ContentPanel (el, cfg)
+            case 'ScrollPanel':  // ContentPanel (el, cfg)
                 if(cfg.autoCreate) {
                     ret = new Roo[cfg.xtype](cfg); // new panel!!!!!
                 } else {
