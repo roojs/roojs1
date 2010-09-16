@@ -325,7 +325,7 @@ Roo.onReady(function(){
                 boxLabel:'RooJS v1.1.1',
                 name:'extuser',
                 inputValue : '1',
-                
+                value : 1,
                 width:'auto'
             },
             {
