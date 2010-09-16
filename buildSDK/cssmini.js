@@ -12,7 +12,7 @@
  */ 
 
 var pa = GLib.get_current_dir();
-File = imports[pa +'buildSDK/File.js']; 
+File = imports[pa +'/buildSDK/File.js']; 
 GLib = imports.gi.GLib;  
 // let's see if this works..
 // should be run from top level..
