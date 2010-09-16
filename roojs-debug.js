@@ -38883,6 +38883,12 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             // clean up silly Windows -- stuff?
             return; 
         }
+        if (node.nodeName == "#comment") {
+            node.parentNode.removeChild(node);
+            // clean up silly Windows -- stuff?
+            return; 
+        }
+        
         if (Roo.form.HtmlEditor.black.indexOf(node.tagName.toLowerCase()) > -1) {
             // remove node.
             node.parentNode.removeChild(node);
@@ -38914,6 +38920,8 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 node.removeAttribute(n);
                 return;
             }
+            
+            
             var parts = v.split(/;/);
             Roo.each(parts, function(p) {
                 p = p.replace(/\s+/g,'');
@@ -38947,7 +38955,12 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             if (a.name == 'style') {
                 cleanStyle(a.name,a.value);
             }
-            
+            /// clean up MS crap..
+            if (a.name == 'class') {
+                if (a.value.match(/^Mso/)) {
+                    node.className = '';
+                }
+            }
             
             // style cleanup!?
             // class cleanup?
@@ -39016,18 +39029,18 @@ Roo.form.HtmlEditor.white = [
        'caption', 'col', 'colgroup', 'tbody', 'td', 'tfoot', 'th', 
       'thead',   'tr', 
      
-      'dir', 'menu', 'ol', 'ul', 'dl'
+      'dir', 'menu', 'ol', 'ul', 'dl',
        
+      'embed',  'object'
 ];
 
 
 Roo.form.HtmlEditor.black = [
-        'embed',  'object', // eventually enable for flash?
+    //    'embed',  'object', // enable - backend responsiblity to clean thiese
         'applet', // 
         'base',   'basefont', 'bgsound', 'blink',  'body', 
         'frame',  'frameset', 'head',    'html',   'ilayer', 
-        'iframe', 'layer',  'link',     'meta',    'object', 
-        
+        'iframe', 'layer',  'link',     'meta',    'object',   
         'script', 'style' ,'title',  'xml' // clean later..
 ];
 Roo.form.HtmlEditor.clean = [
