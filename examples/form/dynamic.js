@@ -120,21 +120,13 @@ Roo.onReady(function(){
                     }
                 ]
             }
-        ],
-        buttons : [
-            {
-                xtype : 'Button',
-                text : 'Save'
-                
-            },
-            {
-                xtype : 'Button',
-                text : 'Cancel'
-                
-            }
-        ]
+        ] 
+       
     });
+  mform.addButton('Save');
+    mform.addButton('Cancel');
 
+   
     mform.render('form-ct2');
 
     /*
