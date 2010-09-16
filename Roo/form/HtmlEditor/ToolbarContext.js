@@ -231,6 +231,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         this.toolbars = {};
            
         for (var i in  ty) {
+            if (i != 'BODY' ) continue;
             this.toolbars[i] = this.buildToolbar(ty[i],i);
         }
         this.tb = this.toolbars.BODY;
