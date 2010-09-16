@@ -12,7 +12,7 @@
  */ 
 
 var pa = GLib.get_current_dir();
-pring(pa +'/buildSDK/File.js')
+print(pa +'/buildSDK/File.js')
 File = imports[pa +'/buildSDK/File.js']; 
 GLib = imports.gi.GLib;  
 // let's see if this works..
