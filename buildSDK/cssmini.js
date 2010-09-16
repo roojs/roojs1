@@ -11,7 +11,7 @@
  * Usage: seed buildSDK/cssmini.js
  */ 
 
-File = imports.File; 
+File = imports['./File.js']; 
 GLib = imports.gi.GLib;  
 // let's see if this works..
 // should be run from top level..
