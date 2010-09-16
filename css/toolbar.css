@@ -262,7 +262,7 @@
     width: 16px;
     height: 16px;
 }
-.x-menu-item-checked .x-menu-check-item  .x-menu-item-icon
+.x-menu-item-checked    .x-menu-item-icon
 {
     background-position: 0 -16px;
     width: 16px;
