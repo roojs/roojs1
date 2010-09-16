@@ -88,7 +88,7 @@ Roo.onReady(function(){
                 xtype : 'Column', 
                 width:272, 
                 style:'margin-left:10px', 
-                clear:true
+                clear:true,
                 items : [
                     {
                         xtype : 'TextField',
