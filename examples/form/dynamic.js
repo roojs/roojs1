@@ -324,6 +324,8 @@ Roo.onReady(function(){
                fieldLabel: 'A checkbox',
                 boxLabel:'RooJS v1.1.1',
                 name:'extuser',
+                inputValue : '1',
+                
                 width:'auto'
             },
             {
