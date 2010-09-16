@@ -11,12 +11,14 @@
  * Usage: seed buildSDK/cssmini.js
  */ 
 
-var pa = GLib.get_current_dir();
-print(pa +'/buildSDK/File.js')
-File = imports[pa +'/buildSDK/File.js']; 
+
+
+File = imports.File.File;
 GLib = imports.gi.GLib;  
 // let's see if this works..
 // should be run from top level..
+var pa = GLib.get_current_dir();
+
 
 print(pa);
 //println(pack(File.read(pa+'/css/basic-dialog.css')));
