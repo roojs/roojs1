@@ -928,6 +928,8 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 node.removeAttribute(n);
                 return;
             }
+            
+            
             var parts = v.split(/;/);
             Roo.each(parts, function(p) {
                 p = p.replace(/\s+/g,'');
@@ -961,7 +963,12 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             if (a.name == 'style') {
                 cleanStyle(a.name,a.value);
             }
-            
+            /// clean up MS crap..
+            if (a.name == 'class') {
+                if (a.value.match(/^Mso/)) {
+                    node.className = '';
+                }
+            }
             
             // style cleanup!?
             // class cleanup?
