@@ -38,7 +38,8 @@
 /* --- move to a more generic place... ---*/
 .x-form-item,
 .x-form-text,
-.x-combo-list
+.x-combo-list,
+.x-form fieldset legend
 {
     font: normal 11px tahoma, verdana, helvetica;
 }
@@ -199,7 +200,10 @@ textarea.x-form-invalid
     
 }
 
-
+.x-form fieldset legend {
+    font-weight: bold;
+    
+}
 /* ---------------------- FORM CHECKBOXES --------------------- */
 
 .x-form-cb-label
