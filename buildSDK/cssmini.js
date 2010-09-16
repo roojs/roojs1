@@ -11,11 +11,11 @@
  */ 
 
 File = imports.File; 
-  
+GLib = imports.gi.GLib;  
 // let's see if this works..
 // should be run from top level..
 
-var pa = File.getcwd();
+var pa = GLib.get_current_dir();
 //println(pack(File.read(pa+'/css/basic-dialog.css')));
  
 File.write(pa+'/css/roojs.css',
