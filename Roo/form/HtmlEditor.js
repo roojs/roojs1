@@ -1024,8 +1024,9 @@ Roo.form.HtmlEditor.white = [
        'caption', 'col', 'colgroup', 'tbody', 'td', 'tfoot', 'th', 
       'thead',   'tr', 
      
-      'dir', 'menu', 'ol', 'ul', 'dl'
+      'dir', 'menu', 'ol', 'ul', 'dl',
        
+      'embed',  'object'
 ];
 
 
