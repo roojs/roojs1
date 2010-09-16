@@ -49,7 +49,7 @@ File.write(pa+'/css/roojs.css',
     
     
 );
-println("written css/roojs.css");
+print("written css/roojs.css");
 // and the themese...
 //ytheme-aero.css
 //ytheme-gray.css
