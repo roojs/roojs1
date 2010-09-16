@@ -190,7 +190,7 @@
 
 .x-menu-item
 {
-    pointer: cursor;
+    /*pointer: cursor; */
     color: #333;
     display: block;
     line-height: 15px;
