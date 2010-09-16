@@ -2,7 +2,7 @@
 GLib = imports.gi.GLib;
 Gio = imports.gi.Gio;
 
-String  = imports.String.String; 
+//String  = imports.String.String; 
 /**
 * @namespace File
 * 
