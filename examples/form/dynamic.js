@@ -67,7 +67,7 @@ Roo.onReady(function(){
             {
                 
                 xtype : 'Column', 
-                width: 600, // precise column sizes or percentages or straight CSS
+                width: 272, // precise column sizes or percentages or straight CSS
                 items : [
                     {
                         xtype : 'TextField',
