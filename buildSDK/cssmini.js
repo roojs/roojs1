@@ -9,7 +9,8 @@
  
  <script type="text/javascript">
  */ 
-  
+
+File = imports.File; 
   
 // let's see if this works..
 // should be run from top level..
