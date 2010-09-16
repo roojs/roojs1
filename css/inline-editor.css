@@ -40,7 +40,9 @@
 }
 
 /*-------- all the buttons -------*/
-
+.x-html-editor-tb {
+    height: 20px;
+}
 .x-html-editor-tb .x-btn-text {
     background:transparent url(../images/default/form/htmleditor.gif) no-repeat scroll 0% 0%;
 }
