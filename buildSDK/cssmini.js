@@ -17,6 +17,7 @@ GLib = imports.gi.GLib;
 // should be run from top level..
 
 var pa = GLib.get_current_dir();
+print(pa);
 //println(pack(File.read(pa+'/css/basic-dialog.css')));
  
 File.write(pa+'/css/roojs.css',
