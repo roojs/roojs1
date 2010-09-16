@@ -98,9 +98,7 @@ Roo.onReady(function(){
 
     mform.container({},
         new Roo.form.HtmlEditor({
-            toolbars : [    
-                new Roo.form.HtmlEditor.ToolbarStandard() //,   new Roo.form.HtmlEditor.ToolbarContext() 
-            ],
+           
             id:'bio',
             name : 'bio',
             fieldLabel:'Biography',
