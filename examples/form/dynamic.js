@@ -70,13 +70,13 @@ Roo.onReady(function(){
                 width: 600, // precise column sizes or percentages or straight CSS
                 items : [
                     {
-                        xtype : 'TextField'
+                        xtype : 'TextField',
                         fieldLabel: 'First Name',
                         name: 'first',
                         width:225
                     },
                     {
-                        xtype : 'TextField'
+                        xtype : 'TextField',
                         fieldLabel: 'Company',
                         name: 'company',
                         width:225
@@ -91,13 +91,13 @@ Roo.onReady(function(){
                 clear:true
                 items : [
                     {
-                        xtype : 'TextField'
+                        xtype : 'TextField',
                         fieldLabel: 'Last Name',
                         name: 'last',
                         width:225
                     },
                     {
-                        xtype : 'TextField'
+                        xtype : 'TextField',
                         fieldLabel: 'Email',
                         name: 'email',
                         vtype:'email',
@@ -112,7 +112,7 @@ Roo.onReady(function(){
                 labelAlign: 'top'
                 items : [
                     {
-                        xtype : 'HtmlEditor'
+                        xtype : 'HtmlEditor',
                         name : 'bio',
                         fieldLabel:'Biography',
                         width:550,
