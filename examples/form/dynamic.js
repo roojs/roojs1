@@ -62,53 +62,78 @@ Roo.onReady(function(){
      * ================  Form 2  =======================
      */
     mform = new Roo.form.Form({
-        labelAlign: 'top'
+        labelAlign: 'top',
+        items : [
+            {
+                
+                xtype : 'Column', 
+                width: 600, // precise column sizes or percentages or straight CSS
+                items : [
+                    {
+                        xtype : 'TextField'
+                        fieldLabel: 'First Name',
+                        name: 'first',
+                        width:225
+                    },
+                    {
+                        xtype : 'TextField'
+                        fieldLabel: 'Company',
+                        name: 'company',
+                        width:225
+                    }
+                ],
+            },
+    
+            {
+                xtype : 'Column', 
+                width:272, 
+                style:'margin-left:10px', 
+                clear:true
+                items : [
+                    {
+                        xtype : 'TextField'
+                        fieldLabel: 'Last Name',
+                        name: 'last',
+                        width:225
+                    },
+                    {
+                        xtype : 'TextField'
+                        fieldLabel: 'Email',
+                        name: 'email',
+                        vtype:'email',
+                        width:225
+                    }
+                ]
+            },  
+            {
+                  
+                xtype : 'Column', 
+                width:600, 
+                labelAlign: 'top'
+                items : [
+                    {
+                        xtype : 'HtmlEditor'
+                        name : 'bio',
+                        fieldLabel:'Biography',
+                        width:550,
+                        height:400
+                    }
+                ]
+            }
+        ],
+        buttons : [
+            {
+                xtype : 'Button',
+                text : 'Save'
+                
+            },
+            {
+                xtype : 'Button',
+                text : 'Cancel'
+                
+            }
+        ]
     });
-
-    mform.column(
-        {width:282}, // precise column sizes or percentages or straight CSS
-        new Roo.form.TextField({
-            fieldLabel: 'First Name',
-            name: 'first',
-            width:225
-        }),
-
-        new Roo.form.TextField({
-            fieldLabel: 'Company',
-            name: 'company',
-            width:225
-        })
-    );
-
-    mform.column(
-        {width:272, style:'margin-left:10px', clear:true}, // apply custom css, clear:true means it is the last column
-        new Roo.form.TextField({
-            fieldLabel: 'Last Name',
-            name: 'last',
-            width:225
-        }),
-
-        new Roo.form.TextField({
-            fieldLabel: 'Email',
-            name: 'email',
-            vtype:'email',
-            width:225
-        })
-    );
-
-    mform.container({},
-        new Roo.form.HtmlEditor({
-           
-            id:'bio',
-            name : 'bio',
-            fieldLabel:'Biography',
-            width:550,
-            height:400
-        })
-    );
-
-    mform.addButton('Save');
-    mform.addButton('Cancel');
 
     mform.render('form-ct2');
 
