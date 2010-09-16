@@ -1030,12 +1030,11 @@ Roo.form.HtmlEditor.white = [
 
 
 Roo.form.HtmlEditor.black = [
-        'embed',  'object', // eventually enable for flash?
+    //    'embed',  'object', // enable - backend responsiblity to clean thiese
         'applet', // 
         'base',   'basefont', 'bgsound', 'blink',  'body', 
         'frame',  'frameset', 'head',    'html',   'ilayer', 
-        'iframe', 'layer',  'link',     'meta',    'object', 
-        
+        'iframe', 'layer',  'link',     'meta',    'object',   
         'script', 'style' ,'title',  'xml' // clean later..
 ];
 Roo.form.HtmlEditor.clean = [
