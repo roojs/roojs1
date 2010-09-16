@@ -105,7 +105,7 @@ Roo.onReady(function(){
             name : 'bio',
             fieldLabel:'Biography',
             width:550,
-            height:200
+            height:400
         })
     );
 
