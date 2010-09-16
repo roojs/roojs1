@@ -1,3 +1,4 @@
+//<script type="text/javascript">
 /**
  * YUI Compressor
  * Author: Julien Lecomte <jlecomte@yahoo-inc.com>
@@ -6,8 +7,8 @@
  *     http://developer.yahoo.net/yui/license.txt
  *
  * This code is a port of Isaac Schlueter's cssmin utility.
- 
- <script type="text/javascript">
+ *
+ * Usage: seed cssmini.js
  */ 
 
 File = imports.File; 
