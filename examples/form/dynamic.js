@@ -109,7 +109,7 @@ Roo.onReady(function(){
                   
                 xtype : 'Column', 
                 width:600, 
-                labelAlign: 'top'
+                labelAlign: 'top',
                 items : [
                     {
                         xtype : 'HtmlEditor',
