@@ -46,6 +46,9 @@
 .x-html-editor-tb .x-toolbar {
     height: 24px;
 }
+.x-html-editor-tb .x-toolbar > table {
+    position:absolute;
+}
 
 .x-html-editor-tb .x-btn-text {
     background:transparent url(../images/default/form/htmleditor.gif) no-repeat scroll 0% 0%;
