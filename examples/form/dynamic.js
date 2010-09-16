@@ -100,7 +100,7 @@ Roo.onReady(function(){
         new Roo.form.HtmlEditor({
             toolbars : [    
                 new Roo.form.HtmlEditor.ToolbarStandard(), 
-                new Roo.form.HtmlEditor.ToolbarContext() 
+            //    new Roo.form.HtmlEditor.ToolbarContext() 
             ],
             id:'bio',
             name : 'bio',
