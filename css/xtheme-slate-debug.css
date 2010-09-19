@@ -97,4 +97,97 @@
 .x-grid-panel .x-panel-mc .x-panel-body {
     border:1px solid #abc;
 }
- 
+
+/* Buttons */
+
+.x-btn-left{
+	background-image:url(../images/slate/button/btn-sprite.gif);
+}
+.x-btn-right{
+	background-image:url(../images/slate/button/btn-sprite.gif);
+}
+.x-btn-center{
+	background-image:url(../images/slate/button/btn-sprite.gif);
+}
+.x-btn-over button{
+	color:#fff;
+}
+.x-btn-focus button{
+	color:#fff;
+}
+.x-btn-text-icon .x-btn-with-menu .x-btn-center em {
+	background:transparent url(../images/slate/toolbar/btn-arrow.gif) no-repeat scroll right 3px;
+}
+.x-btn-with-menu .x-btn-center em {
+	background:transparent url(../images/slate/toolbar/btn-arrow.gif) no-repeat scroll right 0pt;
+}
+.x-btn-menu-arrow-wrap .x-btn-center button{
+	background:transparent url(../images/slate/button/btn-arrow.gif) no-repeat left 3px;
+}
+
+
+/* Layout classes */
+
+.x-border-layout-ct {
+    background:#f0f0f0;
+}
+
+.x-accordion-hd {
+	background-image:url(../images/slate/panel/light-hd.gif);
+}
+
+.x-layout-collapsed{
+    background-color:#567;
+    border-color:#e0e0e0;
+}
+.x-layout-collapsed-over{
+	 background-color:#789;
+}
+
+
+
+/* Toolbars */
+
+.x-toolbar{
+	border-color:#abc;
+    background :#f0f4f5 url(../images/slate/toolbar/bg.gif) repeat-x top left;
+}
+
+
+.x-toolbar button {
+    color:#000;
+}
+.x-toolbar .ytb-text {
+	color:white;
+}
+.x-toolbar .x-btn-menu-arrow-wrap .x-btn-center button {
+    background-image:url(../images/slate/toolbar/btn-arrow.gif);
+}
+.x-toolbar .x-btn-text-icon .x-btn-menu-arrow-wrap .x-btn-center button {
+    background-image:url(../images/slate/toolbar/btn-arrow.gif);
+}
+.x-toolbar .x-btn-over .x-btn-left{
+	background-image:url(../images/slate/toolbar/tb-btn-sprite.gif);
+}
+.x-toolbar .x-btn-over .x-btn-right{
+	background-image:url(../images/slate/toolbar/tb-btn-sprite.gif);
+}
+.x-toolbar .x-btn-over .x-btn-center{
+	background-image:url(../images/slate/toolbar/tb-btn-sprite.gif);
+}
+.x-toolbar .x-btn-over button {
+    color:#fff;
+}
+.x-toolbar .x-btn-click .x-btn-left, .x-toolbar .x-btn-pressed .x-btn-left, .x-toolbar .x-btn-menu-active .x-btn-left{
+	background-image:url(../images/slate/toolbar/tb-btn-sprite.gif);
+}
+.x-toolbar .x-btn-click .x-btn-right, .x-toolbar .x-btn-pressed .x-btn-right, .x-toolbar .x-btn-menu-active .x-btn-right{
+	background-image:url(../images/slate/toolbar/tb-btn-sprite.gif);
+}
+
+.x-toolbar .x-btn-click .x-btn-center, .x-toolbar .x-btn-pressed .x-btn-center, .x-toolbar .x-btn-menu-active .x-btn-center{
+	background-image:url(../images/slate/toolbar/tb-btn-sprite.gif);
+}
+.x-toolbar .ytb-sep {
+	background-image: url(../images/slate/grid/grid-split.gif);
+}
