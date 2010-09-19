@@ -97,6 +97,33 @@
 .x-grid-panel .x-panel-mc .x-panel-body {
     border:1px solid #abc;
 }
+
+/* Buttons */
+
+.x-btn-left{
+	background-image:url(../images/slate/button/btn-sprite.gif);
+}
+.x-btn-right{
+	background-image:url(../images/slate/button/btn-sprite.gif);
+}
+.x-btn-center{
+	background-image:url(../images/slate/button/btn-sprite.gif);
+}
+.x-btn-over button{
+	color:#fff;
+}
+.x-btn-focus button{
+	color:#fff;
+}
+.x-btn-text-icon .x-btn-with-menu .x-btn-center em {
+	background:transparent url(../images/slate/toolbar/btn-arrow.gif) no-repeat scroll right 3px;
+}
+.x-btn-with-menu .x-btn-center em {
+	background:transparent url(../images/slate/toolbar/btn-arrow.gif) no-repeat scroll right 0pt;
+}
+.x-btn-menu-arrow-wrap .x-btn-center button{
+	background:transparent url(../images/slate/button/btn-arrow.gif) no-repeat left 3px;
+}
  
  
 
