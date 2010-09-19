@@ -99,6 +99,16 @@
 }
 
 /* Buttons */
+.x-btn-left,
+.x-btn-center,
+.x-btn-right
+{
+    background-image :url(../images/slate/button/btn-sprite.gif);
+    background-repeat: no-repeat;
+    /* might have height, and padding / margin zero'd */
+    height:21px;
+}
+ 
 
  
  
