@@ -148,7 +148,6 @@
 
 /* Toolbars */
 
-/*
 .x-toolbar{
 	border-color:#abc;
     background :#f0f4f5 url(../images/slate/toolbar/bg.gif) repeat-x top left;
@@ -161,8 +160,6 @@
 .x-toolbar .ytb-text {
 	color:white;
 }
-
-
 .x-toolbar .x-btn-menu-arrow-wrap .x-btn-center button {
     background-image:url(../images/slate/toolbar/btn-arrow.gif);
 }
@@ -194,7 +191,7 @@
 .x-toolbar .ytb-sep {
 	background-image: url(../images/slate/grid/grid-split.gif);
 }
-*/
+
 /* Menus */
 
 .x-menu{
@@ -437,7 +434,11 @@ body.x-body-masked .x-window-mc, body.x-body-masked .x-window-plain .x-window-mc
 .x-html-editor-wrap {
     border-color:#abc;
 }
- 
+/* FIXME
+.x-html-editor-tb .x-btn-text {
+	background:transparent url(../images/slate/editor/tb-sprite.gif) no-repeat scroll 0%;
+}
+*/
 
 
 /* Borders go last for specificity */
