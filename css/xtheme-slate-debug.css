@@ -125,24 +125,6 @@
 	background:transparent url(../images/slate/button/btn-arrow.gif) no-repeat left 3px;
 }
 
-
-/* Layout classes */
-
-.x-border-layout-ct {
-    background:#f0f0f0;
-}
-
-.x-accordion-hd {
-	background-image:url(../images/slate/panel/light-hd.gif);
-}
-
-.x-layout-collapsed{
-    background-color:#567;
-    border-color:#e0e0e0;
-}
-.x-layout-collapsed-over{
-	 background-color:#789;
-}
-
+ 
 
  
