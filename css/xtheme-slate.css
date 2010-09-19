@@ -160,6 +160,9 @@
 .x-toolbar .ytb-text {
 	color:white;
 }
+
+
+/*
 .x-toolbar .x-btn-menu-arrow-wrap .x-btn-center button {
     background-image:url(../images/slate/toolbar/btn-arrow.gif);
 }
@@ -434,11 +437,7 @@ body.x-body-masked .x-window-mc, body.x-body-masked .x-window-plain .x-window-mc
 .x-html-editor-wrap {
     border-color:#abc;
 }
-/* FIXME
-.x-html-editor-tb .x-btn-text {
-	background:transparent url(../images/slate/editor/tb-sprite.gif) no-repeat scroll 0%;
-}
-*/
+ 
 
 
 /* Borders go last for specificity */
