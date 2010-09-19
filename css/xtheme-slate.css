@@ -148,6 +148,7 @@
 
 /* Toolbars */
 
+/*
 .x-toolbar{
 	border-color:#abc;
     background :#f0f4f5 url(../images/slate/toolbar/bg.gif) repeat-x top left;
@@ -162,7 +163,6 @@
 }
 
 
-/*
 .x-toolbar .x-btn-menu-arrow-wrap .x-btn-center button {
     background-image:url(../images/slate/toolbar/btn-arrow.gif);
 }
