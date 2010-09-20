@@ -22529,7 +22529,7 @@ Roo.Shadow.prototype = {
         s.left = (l+a.l)+"px";
         s.top = (t+a.t)+"px";
         var sw = (w+a.w), sh = (h+a.h), sws = sw +"px", shs = sh + "px";
-         
+ 
         if(s.width != sws || s.height != shs){
             s.width = sws;
             s.height = shs;
@@ -29478,7 +29478,7 @@ Roo.LayoutDialog = function(el, cfg){
     var config=  cfg;
     if (typeof(cfg) == 'undefined') {
         config = Roo.apply({}, el);
-        el = Roo.get( document.documentElement || document.body).createChild();
+        el = Roo.get( document.body || document.documentElement).createChild();
         //config.autoCreate = true;
     }
     
