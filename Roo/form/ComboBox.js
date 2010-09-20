@@ -993,6 +993,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
     listKeyPress : function(e)
     {
         //Roo.log('listkeypress');
+        // scroll to first matching element based on key pres..
         if (e.isSpecialKey()) {
             return;
         }
@@ -1005,6 +1006,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
                 return false;
             }
         }, this);
+        
         if (match === false) {
             return true; // no more action?
         }
