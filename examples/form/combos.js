@@ -17,6 +17,7 @@ Roo.onReady(function(){
     });
     var combo = new Roo.form.ComboBox({
         store: store,
+        editable : false,
         displayField:'state',
         typeAhead: true,
         mode: 'local',
