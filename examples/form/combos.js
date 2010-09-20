@@ -9,13 +9,14 @@
  * <script type="text/javascript">
  */
 
+var combo = false;
 Roo.onReady(function(){
     // simple array store
     var store = new Roo.data.SimpleStore({
         fields: ['abbr', 'state'],
         data : Roo.exampledata.states // from states.js
     });
-    var combo = new Roo.form.ComboBox({
+    combo = new Roo.form.ComboBox({
         store: store,
         editable : false,
         displayField:'state',
