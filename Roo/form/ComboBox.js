@@ -1010,7 +1010,8 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         }
         // scroll to?
         this.view.select(match);
-        
+        var sn = Roo.get(combo.view.getSelectedNodes()[0])
+        sn.scrollIntoView(sn.dom.parentNode, false);
     }
 
     /** 
