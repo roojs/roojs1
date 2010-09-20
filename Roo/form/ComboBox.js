@@ -996,6 +996,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         if (e.isSpecialKey()) {
             return;
         }
+        
         Roo.log(String.fromCharCode(e.getKey()));
     }
 
