@@ -960,7 +960,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         Roo.get(document).on('mousedown', this.collapseIf, this);
         Roo.get(document).on('mousewheel', this.collapseIf, this);
         if (!this.editable) {
-            Roo.get(document).on('keypress', this.listKeyPress, this);
+            Roo.get(document).on('keydown', this.listKeyPress, this);
         }
         
         this.fireEvent('expand', this);
