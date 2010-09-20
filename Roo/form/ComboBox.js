@@ -1006,7 +1006,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
             }
         });
         if (r === false) {
-            return;
+            return false;;
         }
         Roo.log(match);
         
