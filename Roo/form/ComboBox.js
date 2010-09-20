@@ -999,12 +999,12 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         var k = String.fromCharCode(e.getKey()).toUpperCase();
         Roo.log(k);
         var match  = false
-        this.store.each(function(v,r) { 
+        this.store.each(function(v) { 
             if (v.get(combo.displayField).substring(0,1).toUpperCase() == k) {
-                match = r;
+                match = this.store.indexOf(v);
                 return false;
             }
-        });
+        }, this);
         if (r === false) {
             return true; // no more action?
         }
