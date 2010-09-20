@@ -993,7 +993,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
     listKeyPress : function(e)
     {
         Roo.log('listkeypress');
-        Roo.log(e);
+        Roo.log(Roo.encode(e));
     }
 
     /** 
