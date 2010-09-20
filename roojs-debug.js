@@ -22529,8 +22529,10 @@ Roo.Shadow.prototype = {
         s.left = (l+a.l)+"px";
         s.top = (t+a.t)+"px";
         var sw = (w+a.w), sh = (h+a.h), sws = sw +"px", shs = sh + "px";
-        if(s.width != sws || s.height != shs){
-            s.width = sws;
+        if(s.width != sws || s.height != shs) {
+alert(shs); alert(s); 
+
+    s.width = sws;
             s.height = shs;
             if(!Roo.isIE){
                 var cn = d.childNodes;
