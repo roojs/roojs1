@@ -990,9 +990,9 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
             }
         }
     },
-    listKeyPress : function()
+    listKeyPress : function(e)
     {
-        
+        Roo.log(e.key);
     }
 
     /** 
