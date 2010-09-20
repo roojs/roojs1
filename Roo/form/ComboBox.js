@@ -992,12 +992,12 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
     },
     listKeyPress : function(e)
     {
-        Roo.log('listkeypress');
+        //Roo.log('listkeypress');
         if (e.isSpecialKey()) {
             return;
         }
         var k = String.fromCharCode(e.getKey()).toUpperCase();
-        Roo.log(k);
+        //Roo.log(k);
         var match  = false
         this.store.each(function(v) { 
             if (v.get(combo.displayField).substring(0,1).toUpperCase() == k) {
