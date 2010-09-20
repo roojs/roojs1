@@ -999,10 +999,12 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         var match  = false
         this.store.each(function(v) { 
             if (v.get(combo.displayField).substring(0,1)) {
-                //
+                match = v.id;
+                return false;
             }
-        })
-        Roo.log(String.fromCharCode(e.getKey()));
+        });
+        Roo.log(match);
+        
     }
 
     /** 
