@@ -1173,7 +1173,7 @@ Roo.LayoutDialog = function(el, cfg){
     var config=  cfg;
     if (typeof(cfg) == 'undefined') {
         config = Roo.apply({}, el);
-        el = Roo.get( document.documentElement || document.body).createChild();
+        el = Roo.get( document.body || document.documentElement).createChild();
         //config.autoCreate = true;
     }
     
