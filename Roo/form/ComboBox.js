@@ -996,11 +996,11 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         if (e.isSpecialKey()) {
             return;
         }
-        var k = String.fromCharCode(e.getKey());
+        var k = String.fromCharCode(e.getKey()).toUpperCase();
         Roo.log(k);
         var match  = false
         this.store.each(function(v) { 
-            if (v.get(combo.displayField).substring(0,1) == k) {
+            if (v.get(combo.displayField).substring(0,1).toUpperCase() == k) {
                 match = v.id;
                 return false;
             }
