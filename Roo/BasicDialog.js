@@ -1173,6 +1173,8 @@ Roo.LayoutDialog = function(el, cfg){
     var config=  cfg;
     if (typeof(cfg) == 'undefined') {
         config = Roo.apply({}, el);
+        // not sure why we use documentElement here.. - it should always be body.
+        // IE7 borks horribly if we use documentElement.
         el = Roo.get( document.body || document.documentElement).createChild();
         //config.autoCreate = true;
     }
