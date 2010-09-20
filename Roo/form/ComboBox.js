@@ -995,7 +995,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         //Roo.log('listkeypress');
         // scroll to first matching element based on key pres..
         if (e.isSpecialKey()) {
-            return;
+            return false;
         }
         var k = String.fromCharCode(e.getKey()).toUpperCase();
         //Roo.log(k);
