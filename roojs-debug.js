@@ -22529,10 +22529,11 @@ Roo.Shadow.prototype = {
         s.left = (l+a.l)+"px";
         s.top = (t+a.t)+"px";
         var sw = (w+a.w), sh = (h+a.h), sws = sw +"px", shs = sh + "px";
-        if(s.width != sws || s.height != shs) {
-alert(shs); alert(s); 
-
-    s.width = sws;
+        if (sh < 0) { // borks in IE7
+            return;
+        }
+        if(s.width != sws || s.height != shs){
+            s.width = sws;
             s.height = shs;
             if(!Roo.isIE){
                 var cn = d.childNodes;
@@ -39868,6 +39869,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         this.toolbars = {};
            
         for (var i in  ty) {
+          
             this.toolbars[i] = this.buildToolbar(ty[i],i);
         }
         this.tb = this.toolbars.BODY;
