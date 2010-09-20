@@ -137,7 +137,7 @@ Roo.Shadow.prototype = {
         s.left = (l+a.l)+"px";
         s.top = (t+a.t)+"px";
         var sw = (w+a.w), sh = (h+a.h), sws = sw +"px", shs = sh + "px";
-         www.
+ 
         if(s.width != sws || s.height != shs){
             s.width = sws;
             s.height = shs;
