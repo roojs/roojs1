@@ -1005,7 +1005,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
                 return false;
             }
         }, this);
-        if (r === false) {
+        if (match === false) {
             return true; // no more action?
         }
         // scroll to?
