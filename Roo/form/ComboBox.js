@@ -935,6 +935,9 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         this.list.hide();
         Roo.get(document).un('mousedown', this.collapseIf, this);
         Roo.get(document).un('mousewheel', this.collapseIf, this);
+        if (!this.editable) {
+            Roo.get(document).un('keypress', this.listKeyPress, this);
+        }
         this.fireEvent('collapse', this);
     },
 
@@ -956,6 +959,10 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         this.list.show();
         Roo.get(document).on('mousedown', this.collapseIf, this);
         Roo.get(document).on('mousewheel', this.collapseIf, this);
+        if (!this.editable) {
+            Roo.get(document).on('keypress', this.listKeyPress, this);
+        }
+        
         this.fireEvent('expand', this);
     },
 
