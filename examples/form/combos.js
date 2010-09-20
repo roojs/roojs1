@@ -19,7 +19,7 @@ Roo.onReady(function(){
         store: store,
         editable : false,
         displayField:'state',
-        typeAhead: true,
+        typeAhead: false,
         mode: 'local',
         triggerAction: 'all',
         emptyText:'Select a state...',
