@@ -996,7 +996,12 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         if (e.isSpecialKey()) {
             return;
         }
-        
+        var match  = false
+        this.store.each(function(v) { 
+            if (v.get(combo.displayField).substring(0,1)) {
+                //
+            }
+        })
         Roo.log(String.fromCharCode(e.getKey()));
     }
 
