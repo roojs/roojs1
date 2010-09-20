@@ -993,6 +993,9 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
     listKeyPress : function(e)
     {
         Roo.log('listkeypress');
+        if (e.isSpecialKey()) {
+            return;
+        }
         Roo.log(String.fromCharCode(e.getKey()));
     }
 
