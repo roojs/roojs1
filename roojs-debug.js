@@ -29478,7 +29478,9 @@ Roo.LayoutDialog = function(el, cfg){
     var config=  cfg;
     if (typeof(cfg) == 'undefined') {
         config = Roo.apply({}, el);
-        el = Roo.get( document.body || document.documentElement).createChild();
+        // not sure why we use documentElement here.. - it should always be body.
+        // IE7 borks horribly if we use documentElement.
+        el = Roo.get( Roo.isIE ? (document.body || document.documentElement) : (document.documentElement || document.body) ).createChild();
         //config.autoCreate = true;
     }
     
@@ -37680,6 +37682,9 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         this.list.hide();
         Roo.get(document).un('mousedown', this.collapseIf, this);
         Roo.get(document).un('mousewheel', this.collapseIf, this);
+        if (!this.editable) {
+            Roo.get(document).un('keydown', this.listKeyPress, this);
+        }
         this.fireEvent('collapse', this);
     },
 
@@ -37701,6 +37706,10 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         this.list.show();
         Roo.get(document).on('mousedown', this.collapseIf, this);
         Roo.get(document).on('mousewheel', this.collapseIf, this);
+        if (!this.editable) {
+            Roo.get(document).on('keydown', this.listKeyPress, this);
+        }
+        
         this.fireEvent('expand', this);
     },
 
@@ -37727,6 +37736,31 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
                 this.el.focus();
             }
         }
+    },
+    listKeyPress : function(e)
+    {
+        //Roo.log('listkeypress');
+        // scroll to first matching element based on key pres..
+        if (e.isSpecialKey()) {
+            return false;
+        }
+        var k = String.fromCharCode(e.getKey()).toUpperCase();
+        //Roo.log(k);
+        var match  = false
+        this.store.each(function(v) { 
+            if (v.get(combo.displayField).substring(0,1).toUpperCase() == k) {
+                match = this.store.indexOf(v);
+                return false;
+            }
+        }, this);
+        
+        if (match === false) {
+            return true; // no more action?
+        }
+        // scroll to?
+        this.view.select(match);
+        var sn = Roo.get(combo.view.getSelectedNodes()[0])
+        sn.scrollIntoView(sn.dom.parentNode, false);
     }
 
     /** 
