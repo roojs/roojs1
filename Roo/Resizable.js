@@ -522,7 +522,7 @@ Roo.extend(Roo.Resizable, Roo.util.Observable, {
                         h = Math.min(Math.max(mh, h), mxh);
                         w = ow * (h/oh);
                         y += th - h;
-                         x += tw - w;
+                        x += tw - w;
                        break;
 
                 }
