@@ -83,7 +83,7 @@ var ResizableExample = {
             pinned:true,
             width:250,
             height:100,
-            minX = 0,
+            minX : 0,
             handles: 'e w hd',
             widthIncrement:50,
             minWidth: 50,
