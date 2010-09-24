@@ -27414,7 +27414,8 @@ resizer.on("resize", myHandler);
  * @param {String/HTMLElement/Roo.Element} el The id or element to resize
  * @param {Object} config configuration options
   */
-Roo.Resizable = function(el, config){
+Roo.Resizable = function(el, config)
+{
     this.el = Roo.get(el);
 
     if(config && config.wrap){
@@ -27467,8 +27468,9 @@ Roo.Resizable = function(el, config){
     }
     // legacy
     this.corner = this.southeast;
-
-    if(this.handles.indexOf("n") != -1 || this.handles.indexOf("w") != -1){
+    
+    // updateBox = the box can move..
+    if(this.handles.indexOf("n") != -1 || this.handles.indexOf("w") != -1 || this.handles.indexOf("hd") != -1) {
         this.updateBox = true;
     }
 
@@ -27481,7 +27483,7 @@ Roo.Resizable = function(el, config){
             this.resizeChild = Roo.get(this.resizeChild, true);
         }
     }
-
+    
     if(this.adjustments == "auto"){
         var rc = this.resizeChild;
         var hw = this.west, he = this.east, hn = this.north, hs = this.south;
@@ -27737,6 +27739,7 @@ Roo.extend(Roo.Resizable, Roo.util.Observable, {
                     w += diffX;
                     w = Math.min(Math.max(mw, w), mxw);
                     break;
+             
                 case "south":
                     h += diffY;
                     h = Math.min(Math.max(mh, h), mxh);
@@ -27751,6 +27754,21 @@ Roo.extend(Roo.Resizable, Roo.util.Observable, {
                     diffY = this.constrain(h, diffY, mh, mxh);
                     y += diffY;
                     h -= diffY;
+                    break;
+                case "hdrag":
+                    
+                    if (wi) {
+                        var adiffX = Math.abs(diffX);
+                        var sub = (adiffX % wi); // how much 
+                        if (sub > (wi/2)) { // far enough to snap
+                            diffX = (diffX > 0) ? diffX-sub + wi : diffX+sub - wi;
+                        } else {
+                            // remove difference.. 
+                            diffX = (diffX > 0) ? diffX-sub : diffX+sub;
+                        }
+                    }
+                    x += diffX
+                    x = Math.max(this.minX, x);
                     break;
                 case "west":
                     diffX = this.constrain(w, diffX, mw, mxw);
@@ -27854,10 +27872,13 @@ Roo.extend(Roo.Resizable, Roo.util.Observable, {
                         h = Math.min(Math.max(mh, h), mxh);
                         w = ow * (h/oh);
                         y += th - h;
-                         x += tw - w;
+                        x += tw - w;
                        break;
 
                 }
+            }
+            if (pos == 'hdrag') {
+                w = ow;
             }
             this.proxy.setBounds(x, y, w, h);
             if(this.dynamic){
@@ -27926,7 +27947,8 @@ Roo.extend(Roo.Resizable, Roo.util.Observable, {
 // private
 // hash to map config positions to true positions
 Roo.Resizable.positions = {
-    n: "north", s: "south", e: "east", w: "west", se: "southeast", sw: "southwest", nw: "northwest", ne: "northeast"
+    n: "north", s: "south", e: "east", w: "west", se: "southeast", sw: "southwest", nw: "northwest", ne: "northeast", 
+    hd: "hdrag"
 };
 
 // private
@@ -27941,7 +27963,13 @@ Roo.Resizable.Handle = function(rz, pos, disableTrackOver, transparent){
     }
     this.position = pos;
     this.rz = rz;
-    this.el = this.tpl.append(rz.el.dom, [this.position], true);
+    // show north drag fro topdra
+    var handlepos = pos == 'hdrag' ? 'north' : pos;
+    
+    this.el = this.tpl.append(rz.el.dom, [handlepos], true);
+    if (pos == 'hdrag') {
+        this.el.setStyle('cursor', 'pointer');
+    }
     this.el.unselectable();
     if(transparent){
         this.el.setOpacity(0);
