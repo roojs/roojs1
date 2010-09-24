@@ -419,7 +419,7 @@ Roo.extend(Roo.Resizable, Roo.util.Observable, {
                     h -= diffY;
                     break;
                 case "hdrag":
-                    diffX = this.constrain(w, diffX, mw+diffX, mxw);
+                    diffX = this.constrain(w, diffX, mw-diffX, mxw);
                     x += diffX;
                     w -= diffX;
                     break;
