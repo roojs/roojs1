@@ -419,7 +419,7 @@ Roo.extend(Roo.Resizable, Roo.util.Observable, {
                     h -= diffY;
                     break;
                 case "hdrag":
-                    x += diffX;
+                    x += Math.max(this.minX,diffX);
                     w -= diffX;
                     break;
                 case "west":
