@@ -1,4 +1,4 @@
-
+/* <script type="text/javascript"> */
 /** unknown styles from new grid **/
 
 /*
@@ -421,7 +421,8 @@ select.x-grid-editor{
 	background-color: #f1f1f1;
 	color: black;
 }
-.x-grid-row-selected{
+.x-grid-cell-selected,
+.x-grid-row-selected {
 	background-color: #316ac5 !important;
 	color: white;
 }
