@@ -419,7 +419,18 @@ Roo.extend(Roo.Resizable, Roo.util.Observable, {
                     h -= diffY;
                     break;
                 case "hdrag":
-                    x += this.snap(diffX, wi, x + diffX);
+                    
+                    if (wi) {
+                        var adiffX = Math.abs(diffX);
+                        var sub = (adiffX % wi); // how much 
+                        if (sub > (wi/2)) { // far enough to snap
+                            diffX = (diffX > 0) ? diffX-sub + wi : diffX+sub - wi;
+                        } else {
+                            // remove difference.. 
+                            diffX = (diffX > 0) ? diffX-sub : diffX+sub;
+                        }
+                    }
+                    x += diffX
                     x = Math.max(this.minX, x);
                     break;
                 case "west":
