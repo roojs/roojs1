@@ -613,8 +613,12 @@ Roo.Resizable.Handle = function(rz, pos, disableTrackOver, transparent){
     this.position = pos;
     this.rz = rz;
     // show north drag fro topdra
-    var handlepos = pos == 'hdrag' ? 'north' : pos;;
+    var handlepos = pos == 'hdrag' ? 'north' : pos;
+    
     this.el = this.tpl.append(rz.el.dom, [handlepos], true);
+    if (pos == 'hdrag') {
+        this.el.setStyle('cursor', 'pointer');
+    }
     this.el.unselectable();
     if(transparent){
         this.el.setOpacity(0);
