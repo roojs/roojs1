@@ -418,13 +418,11 @@ Roo.extend(Roo.Resizable, Roo.util.Observable, {
                     y += diffY;
                     h -= diffY;
                     break;
+                case "hdrag":
                 case "west":
                     diffX = this.constrain(w, diffX, mw, mxw);
                     x += diffX;
                     w -= diffX;
-                    break;
-                case "hdrag":
-                    x += diffX;
                     break;
                 case "northeast":
                     w += diffX;
@@ -528,6 +526,9 @@ Roo.extend(Roo.Resizable, Roo.util.Observable, {
                        break;
 
                 }
+            }
+            if (pos == 'hdrag') {
+                w = ow;
             }
             this.proxy.setBounds(x, y, w, h);
             if(this.dynamic){
