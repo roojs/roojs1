@@ -419,9 +419,8 @@ Roo.extend(Roo.Resizable, Roo.util.Observable, {
                     h -= diffY;
                     break;
                 case "hdrag":
-                    x += diffX;
+                    x += this.snap(diffX, wi, x + diffX);
                     x = Math.max(this.minX, x);
-                    w += diffX;
                     break;
                 case "west":
                     diffX = this.constrain(w, diffX, mw, mxw);
@@ -465,7 +464,6 @@ Roo.extend(Roo.Resizable, Roo.util.Observable, {
                     case "southwest":
                         x -= sw - w;
                     break;
-                    case "hdrag":
                     case "west":
                         x -= sw - w;
                         break;
