@@ -28,6 +28,7 @@ Value   Description
  'sw'    southwest
  'se'    southeast
  'ne'    northeast
+ 'hd'    horizontal drag
  'all'   all
 </pre>
  * <p>Here's an example showing the creation of a typical Resizable:</p>
@@ -430,7 +431,7 @@ Roo.extend(Roo.Resizable, Roo.util.Observable, {
                             diffX = (diffX > 0) ? diffX-sub : diffX+sub;
                         }
                     }
-                    x += diffX
+                    x += diffX;
                     x = Math.max(this.minX, x);
                     break;
                 case "west":
