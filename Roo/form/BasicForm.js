@@ -453,7 +453,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         var ret = {};
         this.items.each(function(f){
             if (!f.getName()) {
-                continue;
+                return;
             }
             ret[f.getName()] = f.getValue();
         });
