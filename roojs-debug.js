@@ -40555,7 +40555,11 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             if (!f.getName()) {
                 return;
             }
-            ret[f.getName()] = f.getRawValue  ? f.getRawValue() : f.getValue();
+            var v = f.getValue();
+            if ((typeof(v) == 'object') && f.getRawValue) {
+                v = f.getRawValue() ; // dates..
+            }
+            ret[f.getName()] = v;
         });
         
         return ret;
