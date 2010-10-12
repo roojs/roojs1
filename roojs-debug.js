@@ -40549,7 +40549,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             }, this);
         }
         
-        var ret = [];
+        var ret = {};
         this.items.each(function(f){
             if (!f.getName()) {
                 continue;
