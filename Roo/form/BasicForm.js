@@ -455,7 +455,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             if (!f.getName()) {
                 return;
             }
-            ret[f.getName()] = f.getValue();
+            ret[f.getName()] = f.getRawValue  ? f.getRawValue() : f.getValue();
         });
         
         return ret;
