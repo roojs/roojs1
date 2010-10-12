@@ -435,6 +435,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         }
         return Roo.urlDecode(fs);
     },
+    
     /**
      * Returns the fields in this form as an object with key/value pairs. 
      * This differs from getValues as it calls getValue on each child item, rather than using dom data.
@@ -449,7 +450,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             }, this);
         }
         
-        var ret = [];
+        var ret = {};
         this.items.each(function(f){
             if (!f.getName()) {
                 continue;
