@@ -129,6 +129,10 @@ asdffff
     padding-bottom: 0px;
 }
 
+.x-form-empty-field {
+    color : #666;
+}
+
 /* ---------------------- FORM INVALID --------------------- */
 
 .x-form-invalid-icon 

@@ -37775,9 +37775,10 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         }
         var k = String.fromCharCode(e.getKey()).toUpperCase();
         //Roo.log(k);
-        var match  = false
+        var match  = false;
+        
         this.store.each(function(v) { 
-            if (v.get(combo.displayField).substring(0,1).toUpperCase() == k) {
+            if (v.get(this.displayField) && v.get(this.displayField).substring(0,1).toUpperCase() == k) {
                 match = this.store.indexOf(v);
                 return false;
             }
@@ -37788,7 +37789,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         }
         // scroll to?
         this.view.select(match);
-        var sn = Roo.get(combo.view.getSelectedNodes()[0])
+        var sn = Roo.get(this.view.getSelectedNodes()[0])
         sn.scrollIntoView(sn.dom.parentNode, false);
     }
 
@@ -51467,5 +51468,4 @@ Roo.extend(Roo.Login, Roo.LayoutDialog, {
  
 
 
-    
- 
+   
