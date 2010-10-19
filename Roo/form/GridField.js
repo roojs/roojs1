@@ -4,6 +4,12 @@
  * @extends Roo.form.Field
  * Embed a grid (or editable grid into a form)
  * STATUS ALPHA
+ * 
+ * This embeds a grid in a form, the value of the field should be the json encoded array of rows
+ * it needs 
+ * xgrid.store = Roo.data.Store
+ * xgrid.store.proxy = Roo.data.MemoryProxy (data = [] )
+ * xgrid.store.reader = Roo.data.JsonReader (
  * @constructor
  * Creates a new GridField
  * @param {Object} config Configuration options
