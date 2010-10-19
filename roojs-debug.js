@@ -29268,7 +29268,9 @@ Roo.extend(Roo.BasicDialog, Roo.util.Observable, {
         if(this.shim) {
           this.shim.hide();
         }
-        if(this.animateTarget){
+        // sometimes animateTarget seems to get set.. causing problems...
+        // this just double checks..
+        if(this.animateTarget && Roo.get(this.animateTarget)) {
            this.animHide(callback);
         }else{
             this.el.hide();
