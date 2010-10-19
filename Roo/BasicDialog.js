@@ -630,7 +630,7 @@ Roo.extend(Roo.BasicDialog, Roo.util.Observable, {
         this.animateTarget = animateTarget || this.animateTarget;
         if(!this.el.isVisible()){
             this.beforeShow();
-            if(this.animateTarget){
+            if(this.animateTarget && Roo.get(this.animateTarget)){
                 this.animShow();
             }else{
                 this.showEl();
