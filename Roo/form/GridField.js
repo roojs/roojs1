@@ -9,7 +9,9 @@
  * it needs 
  * xgrid.store = Roo.data.Store
  * xgrid.store.proxy = Roo.data.MemoryProxy (data = [] )
- * xgrid.store.reader = Roo.data.JsonReader (
+ * xgrid.store.reader = Roo.data.JsonReader 
+ * 
+ * 
  * @constructor
  * Creates a new GridField
  * @param {Object} config Configuration options
