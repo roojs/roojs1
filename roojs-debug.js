@@ -41274,7 +41274,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         } catch (e) {
             ret = {
                 success: false,
-                errorMsg: "Failed to read server message: " + response.responseText,
+                errorMsg: "Failed to read server message: " + (response ? response.responseText : ' - no message'),
                 errors : []
             };
         }
