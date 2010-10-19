@@ -23,7 +23,9 @@ Roo.extend(Roo.form.GridField, Roo.form.Field,  {
      */
     height : 50,
      /**
-     * @cfg {Object} xgrid (xtype'd description of grid) Grid or EditorGrid
+     * @cfg {Object} xgrid (xtype'd description of grid) { xtype : 'Grid', dataSource: .... }
+         * 
+         *}
      */
     xgrid : false, 
     /**
