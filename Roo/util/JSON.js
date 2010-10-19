@@ -86,7 +86,13 @@ Roo.util.JSON = new (function(){
      * @param {Mixed} o The variable to encode
      * @return {String} The JSON string
      */
-    this.encode = function(o){
+    this.encode = function(o)
+    {
+        // should this be extended to fully wrap stringify..
+        if (JSON && JSON.stringify) {
+            return JSON.stringify(o);
+        }
+        
         if(typeof o == "undefined" || o === null){
             return "null";
         }else if(o instanceof Array){
