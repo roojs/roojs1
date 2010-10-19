@@ -604,7 +604,7 @@ Roo.extend(Roo.BasicDialog, Roo.util.Observable, {
 
     // private
     animShow : function(){
-        var b = Roo.get(this.animateTarget, true).getBox();
+        var b = Roo.get(this.animateTarget).getBox();
         this.proxy.setSize(b.width, b.height);
         this.proxy.setLocation(b.x, b.y);
         this.proxy.show();
