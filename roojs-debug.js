@@ -42091,7 +42091,9 @@ Roo.extend(Roo.form.GridField, Roo.form.Field,  {
      */
     height : 50,
      /**
-     * @cfg {Object} xgrid (xtype'd description of grid) Grid or EditorGrid
+     * @cfg {Object} xgrid (xtype'd description of grid) { xtype : 'Grid', dataSource: .... }
+         * 
+         *}
      */
     xgrid : false, 
     /**
@@ -42131,7 +42133,7 @@ Roo.extend(Roo.form.GridField, Roo.form.Field,  {
         var style = this.style;
         delete this.style;
         
-        Roo.form.DisplayImage.superclass.onRender.call(this, ct, position);
+        Roo.form.GridField.superclass.onRender.call(this, ct, position);
         this.wrap = this.el.wrap({cls: ''}); // not sure why ive done thsi...
         this.viewEl = this.wrap.createChild({ tag: 'div' });
         if (style) {
