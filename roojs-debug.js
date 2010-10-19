@@ -28938,7 +28938,7 @@ Roo.extend(Roo.BasicDialog, Roo.util.Observable, {
 
     // private
     animShow : function(){
-        var b = Roo.get(this.animateTarget, true).getBox();
+        var b = Roo.get(this.animateTarget).getBox();
         this.proxy.setSize(b.width, b.height);
         this.proxy.setLocation(b.x, b.y);
         this.proxy.show();
@@ -28964,7 +28964,7 @@ Roo.extend(Roo.BasicDialog, Roo.util.Observable, {
         this.animateTarget = animateTarget || this.animateTarget;
         if(!this.el.isVisible()){
             this.beforeShow();
-            if(this.animateTarget){
+            if(this.animateTarget && Roo.get(this.animateTarget)){
                 this.animShow();
             }else{
                 this.showEl();
@@ -42074,6 +42074,14 @@ function FCKeditor_OnComplete(editorInstance){
  * @extends Roo.form.Field
  * Embed a grid (or editable grid into a form)
  * STATUS ALPHA
+ * 
+ * This embeds a grid in a form, the value of the field should be the json encoded array of rows
+ * it needs 
+ * xgrid.store = Roo.data.Store
+ * xgrid.store.proxy = Roo.data.MemoryProxy (data = [] )
+ * xgrid.store.reader = Roo.data.JsonReader 
+ * 
+ * 
  * @constructor
  * Creates a new GridField
  * @param {Object} config Configuration options
