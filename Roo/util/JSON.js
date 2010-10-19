@@ -89,9 +89,6 @@ Roo.util.JSON = new (function(){
     this.encode = function(o)
     {
         // should this be extended to fully wrap stringify..
-        if (JSON && JSON.stringify) {
-            return JSON.stringify(o);
-        }
         
         if(typeof o == "undefined" || o === null){
             return "null";
@@ -137,16 +134,16 @@ Roo.util.JSON = new (function(){
      */
     this.decode = function(json){
         
-        return JSON && JSON.parse ? JSON.parse(json) : /** eval:var:json */ eval("(" + json + ')');
+        return  /** eval:var:json */ eval("(" + json + ')');
     };
 })();
 /** 
  * Shorthand for {@link Roo.util.JSON#encode}
  * @member Roo encode 
  * @method */
-Roo.encode = Roo.util.JSON.encode;
+Roo.encode = JSON && JSON.stringify ? JSON.stringify : Roo.util.JSON.encode;
 /** 
  * Shorthand for {@link Roo.util.JSON#decode}
  * @member Roo decode 
  * @method */
-Roo.decode = Roo.util.JSON.decode;
+Roo.decode = JSON && JSON.parse ? JSON.parse : Roo.util.JSON.decode;
