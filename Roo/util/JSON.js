@@ -131,7 +131,7 @@ Roo.util.JSON = new (function(){
      */
     this.decode = function(json){
         
-        return /** eval:var:json */ eval("(" + json + ')');
+        return JSON && JSON.parse ? JSON.parse(json) : /** eval:var:json */ eval("(" + json + ')');
     };
 })();
 /** 
