@@ -12770,7 +12770,10 @@ Roo.util.JSON = new (function(){
      * @param {Mixed} o The variable to encode
      * @return {String} The JSON string
      */
-    this.encode = function(o){
+    this.encode = function(o)
+    {
+        // should this be extended to fully wrap stringify..
+        
         if(typeof o == "undefined" || o === null){
             return "null";
         }else if(o instanceof Array){
@@ -12815,19 +12818,19 @@ Roo.util.JSON = new (function(){
      */
     this.decode = function(json){
         
-        return /** eval:var:json */ eval("(" + json + ')');
+        return  /** eval:var:json */ eval("(" + json + ')');
     };
 })();
 /** 
  * Shorthand for {@link Roo.util.JSON#encode}
  * @member Roo encode 
  * @method */
-Roo.encode = Roo.util.JSON.encode;
+Roo.encode = JSON && JSON.stringify ? JSON.stringify : Roo.util.JSON.encode;
 /** 
  * Shorthand for {@link Roo.util.JSON#decode}
  * @member Roo decode 
  * @method */
-Roo.decode = Roo.util.JSON.decode;
+Roo.decode = JSON && JSON.parse ? JSON.parse : Roo.util.JSON.decode;
 /*
  * Based on:
  * Ext JS Library 1.1.1
@@ -12947,25 +12950,45 @@ Roo.util.Format = function(){
             }
         },
 
+       
         /**
-         * Format a number as US currency
+         * safer version of Math.toFixed..??/
          * @param {Number/String} value The numeric value to format
+         * @param {Number/String} value Decimal places 
          * @return {String} The formatted currency string
          */
-        usMoney : function(v){
-            v = (Math.round((v-0)*100))/100;
-            v = (v == Math.floor(v)) ? v + ".00" : ((v*10 == Math.floor(v*10)) ? v + "0" : v);
-            v = String(v);
-            var ps = v.split('.');
-            var whole = ps[0];
-            var sub = ps[1] ? '.'+ ps[1] : '.00';
-            var r = /(\d+)(\d{3})/;
-            while (r.test(whole)) {
-                whole = whole.replace(r, '$1' + ',' + '$2');
+        toFixed : function(v, n)
+        {
+            // why not use to fixed - precision is buggered???
+            if (!n) {
+                return Math.round(v-0);
             }
-            return "$" + whole + sub ;
+            var fact = Math.pow(10,n+1);
+            v = (Math.round((v-0)*fact))/fact;
+            var z = (''+fact).substring(2);
+            if (v == Math.floor(v)) {
+                return Math.floor(v) + '.' + z;
+            }
+            
+            // now just padd decimals..
+            var ps = String(v).split('.');
+            var fd = (ps[1] + z);
+            var r = fd.substring(0,n); 
+            var rm = fd.substring(n); 
+            if (rm < 5) {
+                return ps[0] + '.' + r;
+            }
+            r*=1; // turn it into a number;
+            r++;
+            if (String(r).length != n) {
+                ps[0]*=1;
+                ps[0]++;
+                r = String(r).substring(1); // chop the end off.
+            }
+            
+            return ps[0] + '.' + r;
+             
         },
-
         /**
          * Parse a value into a formatted date using the specified format pattern.
          * @param {Mixed} value The value to format
