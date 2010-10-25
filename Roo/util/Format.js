@@ -119,7 +119,7 @@ Roo.util.Format = function(){
 
        
         /**
-         * safer version of toFixed..
+         * safer version of Math.toFixed..??/
          * @param {Number/String} value The numeric value to format
          * @param {Number/String} value Decimal places 
          * @return {String} The formatted currency string
@@ -130,18 +130,14 @@ Roo.util.Format = function(){
             var fact = Math.pow(10,n);
             v = (Math.round((v-0)*fact))/fact;
             var z = (''+fact).substring(1);
-            
-            
-            v = (v == Math.floor(v)) ? v + '.' + z00" : ((v*10 == Math.floor(v*10)) ? v + "0" : v);
-            v = String(v);
-            var ps = v.split('.');
-            var whole = ps[0];
-            var sub = ps[1] ? '.'+ ps[1] : '.00';
-            var r = /(\d+)(\d{3})/;
-            while (r.test(whole)) {
-                whole = whole.replace(r, '$1' + ',' + '$2');
+            if (v == Math.floor(v)) {
+                return Math.floor(v) + '.' + z;
             }
-            return "$" + whole + sub ;
+            // now just padd decimals..
+            var ps = String(v).split('.');
+            var r = (ps[1] + z).substring(0,z.length);
+            return ps[0] + '.' + r;
+             
         },
         /**
          * Parse a value into a formatted date using the specified format pattern.
