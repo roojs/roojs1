@@ -117,14 +117,22 @@ Roo.util.Format = function(){
             }
         },
 
+       
         /**
-         * Format a number as US currency
+         * safer version of toFixed..
          * @param {Number/String} value The numeric value to format
+         * @param {Number/String} value Decimal places 
          * @return {String} The formatted currency string
          */
-        usMoney : function(v){
-            v = (Math.round((v-0)*100))/100;
-            v = (v == Math.floor(v)) ? v + ".00" : ((v*10 == Math.floor(v*10)) ? v + "0" : v);
+        toFixed : function(v, n)
+        {
+            // why not use to fixed - precision is buggered???
+            var fact = Math.pow(10,n);
+            v = (Math.round((v-0)*fact))/fact;
+            var z = (''+fact).substring(1);
+            
+            
+            v = (v == Math.floor(v)) ? v + '.' + z00" : ((v*10 == Math.floor(v*10)) ? v + "0" : v);
             v = String(v);
             var ps = v.split('.');
             var whole = ps[0];
@@ -135,7 +143,6 @@ Roo.util.Format = function(){
             }
             return "$" + whole + sub ;
         },
-
         /**
          * Parse a value into a formatted date using the specified format pattern.
          * @param {Mixed} value The value to format
