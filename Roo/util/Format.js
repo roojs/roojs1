@@ -156,6 +156,26 @@ Roo.util.Format = function(){
             return ps[0] + '.' + r;
              
         },
+        
+        /**
+         * Format a number as US currency
+         * @param {Number/String} value The numeric value to format
+         * @return {String} The formatted currency string
+         */
+        usMoney : function(v){
+            v = (Math.round((v-0)*100))/100;
+            v = (v == Math.floor(v)) ? v + ".00" : ((v*10 == Math.floor(v*10)) ? v + "0" : v);
+            v = String(v);
+            var ps = v.split('.');
+            var whole = ps[0];
+            var sub = ps[1] ? '.'+ ps[1] : '.00';
+            var r = /(\d+)(\d{3})/;
+            while (r.test(whole)) {
+                whole = whole.replace(r, '$1' + ',' + '$2');
+            }
+            return "$" + whole + sub ;
+        },
+        
         /**
          * Parse a value into a formatted date using the specified format pattern.
          * @param {Mixed} value The value to format
