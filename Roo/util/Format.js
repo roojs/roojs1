@@ -128,7 +128,7 @@ Roo.util.Format = function(){
         {
             // why not use to fixed - precision is buggered???
             if (!n) {
-                return Math.round((v-0);
+                return Math.round(v-0);
             }
             var fact = Math.pow(10,n);
             v = (Math.round((v-0)*fact))/fact;
@@ -139,7 +139,11 @@ Roo.util.Format = function(){
             
             // now just padd decimals..
             var ps = String(v).split('.');
-            var r = (ps[1] + z).substring(0,z.length);
+            var fd = (ps[1] + z);
+            var r = fd.substring(0,z.length);
+            
+            
+            
             return ps[0] + '.' + r;
              
         },
