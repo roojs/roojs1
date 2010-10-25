@@ -130,9 +130,9 @@ Roo.util.Format = function(){
             if (!n) {
                 return Math.round(v-0);
             }
-            var fact = Math.pow(10,n);
+            var fact = Math.pow(10,n+1);
             v = (Math.round((v-0)*fact))/fact;
-            var z = (''+fact).substring(1);
+            var z = (''+fact).substring(2);
             if (v == Math.floor(v)) {
                 return Math.floor(v) + '.' + z;
             }
