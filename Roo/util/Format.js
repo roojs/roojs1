@@ -140,9 +140,18 @@ Roo.util.Format = function(){
             // now just padd decimals..
             var ps = String(v).split('.');
             var fd = (ps[1] + z);
-            var r = fd.substring(0,z.length);
-            
-            
+            var r = fd.substring(0,n); 
+            var rm = fd.substring(n); 
+            if (rm < 5) {
+                return ps[0] + '.' + r;
+            }
+            r*=1; // turn it into a number;
+            r++;
+            if (String(r).length != n) {
+                ps[0]*=1;
+                ps[0]++;
+                r = String(r).substring(1); // chop the end off.
+            }
             
             return ps[0] + '.' + r;
              
