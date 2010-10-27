@@ -1304,6 +1304,9 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         this.grid.getGridEl().dom.innerHTML = html;
 
         this.initElements();
+        this.lockedWrap.on("scroll", function() {
+            this.lockedWrap.dom.scrollTop=0; // hopefully not recursive..
+           },this);
 
         this.scroller.on("scroll", this.handleScroll, this);
         this.lockedBody.on("mousewheel", this.handleWheel, this);
