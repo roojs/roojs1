@@ -48128,9 +48128,10 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         this.grid.getGridEl().dom.innerHTML = html;
 
         this.initElements();
+        
         // a kludge to fix the random scolling effect in webkit
-        this.lockedWrap.on("scroll", function() {
-            this.lockedWrap.dom.scrollTop=0; // hopefully not recursive..
+        this.el.on("scroll", function() {
+            this.el.dom.scrollTop=0; // hopefully not recursive..
         },this);
 
         this.scroller.on("scroll", this.handleScroll, this);
