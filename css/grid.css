@@ -499,6 +499,9 @@ select.x-grid-editor{
 {
     line-height: 0px; 
     display: none;
+    position: relative;
+    height: 24px;
+    top: 0;
     
 }
 /* --- checkbox wrapping hides background -- */
