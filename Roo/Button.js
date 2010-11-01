@@ -261,7 +261,7 @@ Roo.extend(Roo.Button, Roo.util.Observable, {
             );
             repeater.on("click", this.onClick,  this);
         }
-        Roo.log("FIRING RENDER EVENT");
+        
         this.fireEvent('render', this);
         
     },
