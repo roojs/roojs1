@@ -79,6 +79,7 @@ Roo.Button = function(renderTo, config)
     if(this.menu){
         this.menu = Roo.menu.MenuMgr.get(this.menu);
     }
+    // register listeners first!!1 - so render can be captured..
     Roo.util.Observable.call(this);
     if(renderTo){
         this.render(renderTo);
