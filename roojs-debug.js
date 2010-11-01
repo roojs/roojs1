@@ -25819,11 +25819,13 @@ Roo.Button = function(renderTo, config)
     if(this.menu){
         this.menu = Roo.menu.MenuMgr.get(this.menu);
     }
+    // register listeners first!!1 - so render can be captured..
+    Roo.util.Observable.call(this);
     if(renderTo){
         this.render(renderTo);
     }
     
-    Roo.util.Observable.call(this);
+  
 };
 
 Roo.extend(Roo.Button, Roo.util.Observable, {
@@ -25999,6 +26001,7 @@ Roo.extend(Roo.Button, Roo.util.Observable, {
             );
             repeater.on("click", this.onClick,  this);
         }
+        
         this.fireEvent('render', this);
         
     },
