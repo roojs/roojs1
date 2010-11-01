@@ -79,11 +79,12 @@ Roo.Button = function(renderTo, config)
     if(this.menu){
         this.menu = Roo.menu.MenuMgr.get(this.menu);
     }
+    Roo.util.Observable.call(this);
     if(renderTo){
         this.render(renderTo);
     }
     
-    Roo.util.Observable.call(this);
+  
 };
 
 Roo.extend(Roo.Button, Roo.util.Observable, {
