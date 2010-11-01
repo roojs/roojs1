@@ -25819,7 +25819,7 @@ Roo.Button = function(renderTo, config)
     if(this.menu){
         this.menu = Roo.menu.MenuMgr.get(this.menu);
     }
-    // register listeners first!!1 - so render can be captured..
+    // register listeners first!!  - so render can be captured..
     Roo.util.Observable.call(this);
     if(renderTo){
         this.render(renderTo);
@@ -38043,7 +38043,7 @@ Roo.extend(Roo.form.Checkbox, Roo.form.Field,  {
         }
         this.checked = state;
         if(suppressEvent !== true){
-            this.fireEvent('checkchange', this, state);
+            this.fireEvent('check', this, state);
         }
         this.inSetChecked = true;
         this.el.dom.value = state ? this.inputValue : this.valueOff;
