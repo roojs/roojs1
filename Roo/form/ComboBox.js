@@ -1010,11 +1010,15 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         }
         
         this.store.each(function(v) { 
-            if (v.get(this.displayField) && v.get(this.displayField).substring(0,1).toUpperCase() == k) {
-                if (cselitem && cselitem.id == v.id) {
-                    // if it's the currently selected ignore..
-                    return;
+            if (cselitem) {
+                // start at existing selection.
+                if (cselitem.id == v.id) {
+                    cselitem = false;
                 }
+                return;
+            }
+                
+            if (v.get(this.displayField) && v.get(this.displayField).substring(0,1).toUpperCase() == k) {
                 match = this.store.indexOf(v);
                 return false;
             }
