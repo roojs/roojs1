@@ -37828,14 +37828,14 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         var cselitem = false;
         if (csel.length) {
             var ix = this.view.indexOf(csel[0]);
-            var cselitem  = this.store.getAt(ix);
+            cselitem  = this.store.getAt(ix);
             
             
         }
         
         this.store.each(function(v) { 
             if (v.get(this.displayField) && v.get(this.displayField).substring(0,1).toUpperCase() == k) {
-                if (cselitem && cselitem.id = v.id) {
+                if (cselitem && cselitem.id == v.id) {
                     // if it's the currently selected ignore..
                     return;
                 }
