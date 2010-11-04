@@ -1005,7 +1005,9 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         if (csel.length) {
             var ix = this.view.indexOf(csel[0]);
             cselitem  = this.store.getAt(ix);
-            
+            if (!cselitem.get(this.displayField) || cselitem.get(this.displayField).substring(0,1).toUpperCase() != k) {
+                cselitem = false;
+            }
             
         }
         
