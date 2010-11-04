@@ -1011,7 +1011,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         
         this.store.each(function(v) { 
             if (v.get(this.displayField) && v.get(this.displayField).substring(0,1).toUpperCase() == k) {
-                if (cselitem && cselitem.id = v.id) {
+                if (cselitem && cselitem.id == v.id) {
                     // if it's the currently selected ignore..
                     return;
                 }
