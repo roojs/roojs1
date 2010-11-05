@@ -121,11 +121,12 @@ Roo.extend(Roo.grid.EditorGrid, Roo.grid.Grid, {
             
             if(this.fireEvent("validateedit", e) !== false && !e.cancel){
                 r.set(field, e.value);
+                
                 delete e.cancel; //?? why!!!
                 this.fireEvent("afteredit", e);
             }
         } else {
-            this.fireEvent("afteredit", e); // always fir it!
+            this.fireEvent("afteredit", e); // always fire it!
         }
         this.view.focusCell(ed.row, ed.col);
     },
