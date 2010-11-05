@@ -14,6 +14,10 @@
  * @extends Roo.data.DataReader
  * Data reader class to create an Array of Roo.data.Record objects from a JSON response
  * based on mappings in a provided Roo.data.Record constructor.
+ * 
+ * The default behaviour of a store is to send ?_requestMeta=1, unless the class has recieved 'metaData' property
+ * in the reply previously. 
+ * 
  * &lt;p&gt;
  * Example code:
  * &lt;pre&gt;&lt;code&gt;
@@ -61,6 +65,13 @@ var myReader = new Roo.data.JsonReader({
     </span><span class="jsdoc-var">Roo.data.JsonReader.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">meta</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">recordType</span><span class="jsdoc-syntax">||</span><span class="jsdoc-var">meta.fields</span><span class="jsdoc-syntax">);
 };
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.data.JsonReader</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.data.DataReader</span><span class="jsdoc-syntax">, {
+    
+    </span><span class="jsdoc-comment">/**
+     * @prop {Boolean} metaFromRemote  - if the meta data was loaded from the remote source.
+     * Used by Store query builder to append _requestMeta to params.
+     * 
+     */
+    </span><span class="jsdoc-var">metaFromRemote </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-comment">/**
      * This method is only used by a DataProxy which has retrieved data from a remote server.
      * @param {Object} response The XHR object which contains the JSON data in its responseText.
@@ -76,7 +87,9 @@ var myReader = new Roo.data.JsonReader({
         }
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.metaData</span><span class="jsdoc-syntax">){
+            
             </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">this.ef</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.metaFromRemote </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">this.meta </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o.metaData</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">this.recordType </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.data.Record.create</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.metaData.fields</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.onMetaChange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.meta</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.recordType</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
@@ -177,6 +190,11 @@ var myReader = new Roo.data.JsonReader({
 	        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">fl</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">++){
 	            </span><span class="jsdoc-var">f </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">fi</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">];
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.ef</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">f.convert</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'missing convert for ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">f.name</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+                }
                 </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">f.name</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">f.convert</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">f.defaultValue</span><span class="jsdoc-syntax">);
 	        }
 	        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">record </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Record</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
