@@ -28,6 +28,7 @@ Value   Description
  'sw'    southwest
  'se'    southeast
  'ne'    northeast
+ 'hd'    horizontal drag
  'all'   all
 &lt;/pre&gt;
  * &lt;p&gt;Here's an example showing the creation of a typical Resizable:&lt;/p&gt;
@@ -77,7 +78,8 @@ resizer.on(&quot;resize&quot;, myHandler);
  * @param {String/HTMLElement/Roo.Element} el The id or element to resize
  * @param {Object} config configuration options
   */
-</span><span class="jsdoc-var">Roo.Resizable </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+</span><span class="jsdoc-var">Roo.Resizable </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">)
+{
     </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
 
     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">config.wrap</span><span class="jsdoc-syntax">){
@@ -130,8 +132,9 @@ resizer.on(&quot;resize&quot;, myHandler);
     }
     </span><span class="jsdoc-comment">// legacy
     </span><span class="jsdoc-var">this.corner </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.southeast</span><span class="jsdoc-syntax">;
-
-    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.handles.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;n&quot;</span><span class="jsdoc-syntax">) != -1 || </span><span class="jsdoc-var">this.handles.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;w&quot;</span><span class="jsdoc-syntax">) != -1){
+    
+    </span><span class="jsdoc-comment">// updateBox = the box can move..
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.handles.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;n&quot;</span><span class="jsdoc-syntax">) != -1 || </span><span class="jsdoc-var">this.handles.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;w&quot;</span><span class="jsdoc-syntax">) != -1 || </span><span class="jsdoc-var">this.handles.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;hd&quot;</span><span class="jsdoc-syntax">) != -1) {
         </span><span class="jsdoc-var">this.updateBox </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
     }
 
@@ -144,7 +147,7 @@ resizer.on(&quot;resize&quot;, myHandler);
             </span><span class="jsdoc-var">this.resizeChild </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resizeChild</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
         }
     }
-
+    
     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.adjustments </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;auto&quot;</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.resizeChild</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.west</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">he </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.east</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.north</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.south</span><span class="jsdoc-syntax">;
@@ -400,6 +403,7 @@ resizer.on(&quot;resize&quot;, myHandler);
                     </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">diffX</span><span class="jsdoc-syntax">;
                     </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mw</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">mxw</span><span class="jsdoc-syntax">);
                     </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+             
                 </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;south&quot;</span><span class="jsdoc-syntax">:
                     </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">diffY</span><span class="jsdoc-syntax">;
                     </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mh</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">mxh</span><span class="jsdoc-syntax">);
@@ -414,6 +418,21 @@ resizer.on(&quot;resize&quot;, myHandler);
                     </span><span class="jsdoc-var">diffY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.constrain</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">diffY</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mh</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mxh</span><span class="jsdoc-syntax">);
                     </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">diffY</span><span class="jsdoc-syntax">;
                     </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">diffY</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;hdrag&quot;</span><span class="jsdoc-syntax">:
+                    
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">wi</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">adiffX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.abs</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">diffX</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sub </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">adiffX </span><span class="jsdoc-syntax">% </span><span class="jsdoc-var">wi</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// how much 
+                        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sub </span><span class="jsdoc-syntax">&gt; (</span><span class="jsdoc-var">wi</span><span class="jsdoc-syntax">/2)) { </span><span class="jsdoc-comment">// far enough to snap
+                            </span><span class="jsdoc-var">diffX </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">diffX </span><span class="jsdoc-syntax">&gt; 0) ? </span><span class="jsdoc-var">diffX</span><span class="jsdoc-syntax">-</span><span class="jsdoc-var">sub </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">wi </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">diffX</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">sub </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">wi</span><span class="jsdoc-syntax">;
+                        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                            </span><span class="jsdoc-comment">// remove difference.. 
+                            </span><span class="jsdoc-var">diffX </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">diffX </span><span class="jsdoc-syntax">&gt; 0) ? </span><span class="jsdoc-var">diffX</span><span class="jsdoc-syntax">-</span><span class="jsdoc-var">sub </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">diffX</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">sub</span><span class="jsdoc-syntax">;
+                        }
+                    }
+                    </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">diffX</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.minX</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">);
                     </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;west&quot;</span><span class="jsdoc-syntax">:
                     </span><span class="jsdoc-var">diffX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.constrain</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">diffX</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mw</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mxw</span><span class="jsdoc-syntax">);
@@ -517,10 +536,13 @@ resizer.on(&quot;resize&quot;, myHandler);
                         </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mh</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">mxh</span><span class="jsdoc-syntax">);
                         </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ow </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">/</span><span class="jsdoc-var">oh</span><span class="jsdoc-syntax">);
                         </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">th </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">;
-                         </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">tw </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">tw </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">;
                        </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
 
                 }
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'hdrag'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ow</span><span class="jsdoc-syntax">;
             }
             </span><span class="jsdoc-var">this.proxy.setBounds</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dynamic</span><span class="jsdoc-syntax">){
@@ -589,7 +611,8 @@ resizer.on(&quot;resize&quot;, myHandler);
 </span><span class="jsdoc-comment">// private
 // hash to map config positions to true positions
 </span><span class="jsdoc-var">Roo.Resizable.positions </span><span class="jsdoc-syntax">= {
-    </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;north&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;south&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;east&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;west&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">se</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;southeast&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sw</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;southwest&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">nw</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;northwest&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ne</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;northeast&quot;
+    </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;north&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;south&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;east&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;west&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">se</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;southeast&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sw</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;southwest&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">nw</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;northwest&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ne</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;northeast&quot;</span><span class="jsdoc-syntax">, 
+    </span><span class="jsdoc-var">hd</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;hdrag&quot;
 </span><span class="jsdoc-syntax">};
 
 </span><span class="jsdoc-comment">// private
@@ -604,7 +627,13 @@ resizer.on(&quot;resize&quot;, myHandler);
     }
     </span><span class="jsdoc-var">this.position </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-var">this.rz </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">rz</span><span class="jsdoc-syntax">;
-    </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tpl.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rz.el.dom</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">], </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-comment">// show north drag fro topdra
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">handlepos </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'hdrag' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'north' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">;
+    
+    </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tpl.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rz.el.dom</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-var">handlepos</span><span class="jsdoc-syntax">], </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'hdrag'</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'cursor'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'pointer'</span><span class="jsdoc-syntax">);
+    }
     </span><span class="jsdoc-var">this.el.unselectable</span><span class="jsdoc-syntax">();
     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">transparent</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.el.setOpacity</span><span class="jsdoc-syntax">(0);
