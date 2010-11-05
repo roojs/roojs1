@@ -329,6 +329,10 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforeload&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.storeOptions</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">options.params </span><span class="jsdoc-syntax">|| {}, </span><span class="jsdoc-var">this.baseParams</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-comment">// if meta was not loaded from remote source.. try requesting it.
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.reader.metaFromRemote</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">p._requestMeta </span><span class="jsdoc-syntax">= 1;
+            }
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.sortInfo </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.remoteSort</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.paramNames</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">pn</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">&quot;sort&quot;</span><span class="jsdoc-syntax">]] = </span><span class="jsdoc-var">this.sortInfo.field</span><span class="jsdoc-syntax">;
@@ -673,7 +677,7 @@
         </span><span class="jsdoc-var">this.recordType </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">rtype</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.fields </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">rtype.prototype.fields</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">this.snapshot</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">this.sortInfo </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">meta.sortInfo</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.sortInfo </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">meta.sortInfo </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.sortInfo</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.modified </span><span class="jsdoc-syntax">= [];
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'metachange'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.reader.meta</span><span class="jsdoc-syntax">);
     }
