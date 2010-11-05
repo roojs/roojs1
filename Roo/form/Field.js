@@ -249,7 +249,6 @@ side          Add an error icon to the right of the field with a popup on hover
     // private
     fireKey : function(e){
         //Roo.log('field ' + e.getKey());
-        this.fireEvent("keydown", this, e);
         if(e.isNavKeyPress()){
             this.fireEvent("specialkey", this, e);
         }
@@ -269,6 +268,7 @@ side          Add an error icon to the right of the field with a popup on hover
         this.el.on("keydown" , this.fireKey,  this);
         this.el.on("focus", this.onFocus,  this);
         this.el.on("blur", this.onBlur,  this);
+
 
         // reference to original value for reset
         this.originalValue = this.getValue();
