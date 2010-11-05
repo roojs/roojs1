@@ -1304,6 +1304,11 @@
         </span><span class="jsdoc-var">this.grid.getGridEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">;
 
         </span><span class="jsdoc-var">this.initElements</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-comment">// a kludge to fix the random scolling effect in webkit
+        </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;scroll&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+            </span><span class="jsdoc-var">this.el.dom.scrollTop</span><span class="jsdoc-syntax">=0; </span><span class="jsdoc-comment">// hopefully not recursive..
+        </span><span class="jsdoc-syntax">},</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-var">this.scroller.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;scroll&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.handleScroll</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.lockedBody.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mousewheel&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.handleWheel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
