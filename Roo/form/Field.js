@@ -167,6 +167,13 @@ side          Add an error icon to the right of the field with a popup on hover
              * @param {Roo.form.Field} this
              */
             valid : true
+             /**
+             * @event keyup
+             * Fires after the key up
+             * @param {Roo.form.Field} this
+             * @param {Roo.EventObject}  e The event Object
+             */
+            keyup : true
         });
     },
 
