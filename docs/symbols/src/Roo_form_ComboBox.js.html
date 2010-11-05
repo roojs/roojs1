@@ -935,6 +935,9 @@
         </span><span class="jsdoc-var">this.list.hide</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mousedown'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.collapseIf</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mousewheel'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.collapseIf</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.editable</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'keydown'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.listKeyPress</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'collapse'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     },
 
@@ -956,6 +959,10 @@
         </span><span class="jsdoc-var">this.list.show</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mousedown'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.collapseIf</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mousewheel'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.collapseIf</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.editable</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'keydown'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.listKeyPress</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+        
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'expand'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     },
 
@@ -982,6 +989,50 @@
                 </span><span class="jsdoc-var">this.el.focus</span><span class="jsdoc-syntax">();
             }
         }
+    },
+    </span><span class="jsdoc-var">listKeyPress </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-comment">//Roo.log('listkeypress');
+        // scroll to first matching element based on key pres..
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.isSpecialKey</span><span class="jsdoc-syntax">()) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">String.fromCharCode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.getKey</span><span class="jsdoc-syntax">())</span><span class="jsdoc-var">.toUpperCase</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-comment">//Roo.log(k);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">match  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">csel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.view.getSelectedNodes</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cselitem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">csel.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ix </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.view.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">csel</span><span class="jsdoc-syntax">[0]);
+            </span><span class="jsdoc-var">cselitem  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.store.getAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ix</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">cselitem.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.displayField</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-var">cselitem.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.displayField</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.substring</span><span class="jsdoc-syntax">(0,1)</span><span class="jsdoc-var">.toUpperCase</span><span class="jsdoc-syntax">() != </span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">cselitem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            }
+            
+        }
+        
+        </span><span class="jsdoc-var">this.store.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) { 
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cselitem</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-comment">// start at existing selection.
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cselitem.id </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">v.id</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">cselitem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+                
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.displayField</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">v.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.displayField</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.substring</span><span class="jsdoc-syntax">(0,1)</span><span class="jsdoc-var">.toUpperCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">match </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.store.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+            }
+        }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">match </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// no more action?
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-comment">// scroll to?
+        </span><span class="jsdoc-var">this.view.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">match</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.view.getSelectedNodes</span><span class="jsdoc-syntax">()[0])
+        </span><span class="jsdoc-var">sn.scrollIntoView</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn.dom.parentNode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
     }
 
     </span><span class="jsdoc-comment">/** 
