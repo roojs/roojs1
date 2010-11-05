@@ -540,11 +540,11 @@ body.x-body-masked .x-window-mc, body.x-body-masked .x-window-plain .x-window-mc
 
 /* Grid */
 
-.x-grid3-row-selected {
+.x-grid-row-selected {
 	background:#fbf0d2;
 	border:1px dotted #ccc;
 }
-.x-grid3-hd-btn{
+.x-grid-hd-btn{
 	background:#f2daa9 url(../images/slate/grid/grid3-hd-btn.gif) no-repeat left center;
 }
 .x-grid-header{
