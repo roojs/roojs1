@@ -550,32 +550,32 @@ body.x-body-masked .x-window-mc, body.x-body-masked .x-window-plain .x-window-mc
 .x-grid-header{
 	background:#f9f9f9 url(../images/slate/grid/grid3-hrow.gif) repeat-x 0 bottom;
 }
-td.x-grid3-hd-over .x-grid3-hd-inner,td.sort-desc .x-grid3-hd-inner,td.sort-asc .x-grid3-hd-inner,td.x-grid3-hd-menu-open .x-grid3-hd-inner{
+td.x-grid-hd-over .x-grid-hd-inner,td.sort-desc .x-grid-hd-inner,td.sort-asc .x-grid-hd-inner,td.x-grid-hd-menu-open .x-grid-hd-inner{
 	background:#ebf3fd url(../images/slate/grid/grid3-hrow-over.gif) repeat-x left bottom;
 }
-.sort-asc .x-grid3-sort-icon{
+.sort-asc .x-grid-sort-icon{
 	background-image:url(../images/slate/grid/sort_asc.gif);
 }
-.sort-desc .x-grid3-sort-icon{
+.sort-desc .x-grid-sort-icon{
 	background-image:url(../images/slate/grid/sort_desc.gif);
 }
-td.x-grid3-hd-over, td.sort-desc, td.sort-asc, td.x-grid3-hd-menu-open {
+td.x-grid-hd-over, td.sort-desc, td.sort-asc, td.x-grid-hd-menu-open {
 	border-left:1px solid #fff;
 	border-right:1px solid #ccc;
 }
-.x-grid3-cell-selected{
+.x-grid-cell-selected{
 	background-color:#e0eaee!important;
 }
-.x-grid3-body .x-grid3-td-expander{
+.x-grid-body .x-grid-td-expander{
 	background:transparent url(../images/slate/grid/grid3-special-col-bg.gif) repeat-y right;
 }
-.x-grid3-body .x-grid3-td-checker{
+.x-grid-body .x-grid-td-checker{
 	background:transparent url(../images/slate/grid/grid3-special-col-bg.gif) repeat-y right;
 }
-.x-grid3-body .x-grid3-td-numberer{
+.x-grid-body .x-grid-td-numberer{
 	background:transparent url(../images/slate/grid/grid3-special-col-bg.gif) repeat-y right;
 }
-.x-grid3-body .x-grid3-row-selected .x-grid3-td-numberer,.x-grid3-body .x-grid3-row-selected .x-grid3-td-checker,.x-grid3-body .x-grid3-row-selected .x-grid3-td-expander{
+.x-grid-body .x-grid-row-selected .x-grid-td-numberer,.x-grid-body .x-grid-row-selected .x-grid-td-checker,.x-grid-body .x-grid-row-selected .x-grid-td-expander{
 	background:transparent url(../images/slate/grid/grid3-special-col-sel-bg.gif) repeat-y right;
 }
 .x-grid-group-hd {
@@ -584,7 +584,7 @@ td.x-grid3-hd-over, td.sort-desc, td.sort-asc, td.x-grid3-hd-menu-open {
 .x-grid-group-hd div {
 	color: #456;
 }
-.x-dd-drag-proxy .x-grid3-hd-inner{
+.x-dd-drag-proxy .x-grid-hd-inner{
 	background:#ebf3fd url(../images/slate/grid/grid3-hrow-over.gif) repeat-x left bottom;
 	border:1px solid #abc;
 }
