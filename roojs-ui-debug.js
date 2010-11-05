@@ -20852,7 +20852,14 @@ side          Add an error icon to the right of the field with a popup on hover
              * Fires after the field has been validated with no errors.
              * @param {Roo.form.Field} this
              */
-            valid : true
+            valid : true,
+             /**
+             * @event keyup
+             * Fires after the key up
+             * @param {Roo.form.Field} this
+             * @param {Roo.EventObject}  e The event Object
+             */
+            keyup : true
         });
     },
 
@@ -20954,6 +20961,7 @@ side          Add an error icon to the right of the field with a popup on hover
         this.el.on("keydown" , this.fireKey,  this);
         this.el.on("focus", this.onFocus,  this);
         this.el.on("blur", this.onBlur,  this);
+        this.el.relayEvent('keyup', this);
 
         // reference to original value for reset
         this.originalValue = this.getValue();
