@@ -114,7 +114,7 @@
             </span><span class="jsdoc-var">disabled</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onClick.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-string">&quot;prev&quot;</span><span class="jsdoc-syntax">])
         });
-        </span><span class="jsdoc-var">this.addSeparator</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-comment">//this.addSeparator();
         </span><span class="jsdoc-var">this.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.beforePageText</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.field </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.addDom</span><span class="jsdoc-syntax">({
            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;input&quot;</span><span class="jsdoc-syntax">,
@@ -127,7 +127,7 @@
         </span><span class="jsdoc-var">this.field.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;focus&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){</span><span class="jsdoc-var">this.dom.select</span><span class="jsdoc-syntax">();});
         </span><span class="jsdoc-var">this.afterTextEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.addText</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.afterPageText</span><span class="jsdoc-syntax">, 1));
         </span><span class="jsdoc-var">this.field.setHeight</span><span class="jsdoc-syntax">(18);
-        </span><span class="jsdoc-var">this.addSeparator</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-comment">//this.addSeparator();
         </span><span class="jsdoc-var">this.next </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.addButton</span><span class="jsdoc-syntax">({
             </span><span class="jsdoc-var">tooltip</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.nextText</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-btn-icon x-grid-page-next&quot;</span><span class="jsdoc-syntax">,
@@ -140,7 +140,7 @@
             </span><span class="jsdoc-var">disabled</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onClick.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-string">&quot;last&quot;</span><span class="jsdoc-syntax">])
         });
-        </span><span class="jsdoc-var">this.addSeparator</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-comment">//this.addSeparator();
         </span><span class="jsdoc-var">this.loading </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.addButton</span><span class="jsdoc-syntax">({
             </span><span class="jsdoc-var">tooltip</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.refreshText</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-btn-icon x-grid-loading&quot;</span><span class="jsdoc-syntax">,
