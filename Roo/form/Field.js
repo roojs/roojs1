@@ -268,7 +268,7 @@ side          Add an error icon to the right of the field with a popup on hover
         this.el.on("keydown" , this.fireKey,  this);
         this.el.on("focus", this.onFocus,  this);
         this.el.on("blur", this.onBlur,  this);
-
+        this.el.relayEvent('keyup', this);
 
         // reference to original value for reset
         this.originalValue = this.getValue();
