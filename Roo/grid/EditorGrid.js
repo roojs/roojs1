@@ -176,6 +176,11 @@ Roo.extend(Roo.grid.EditorGrid, Roo.grid.Grid, {
                     this.activeEditor = ed;
                     var v = r.data[field];
                     ed.startEdit(this.view.getCell(row, col), v);
+                    if (ed.field.displayField && ed.field.name) {
+                        ed.field.el.dom.value = r.data[ed.field.name];
+                    }
+                    
+                    
                 }).defer(50, this);
             }
         }
