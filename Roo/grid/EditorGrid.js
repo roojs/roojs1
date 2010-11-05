@@ -121,6 +121,11 @@ Roo.extend(Roo.grid.EditorGrid, Roo.grid.Grid, {
             
             if(this.fireEvent("validateedit", e) !== false && !e.cancel){
                 r.set(field, e.value);
+                // if we are dealing with a combo box..
+                // then we also set the 'name' colum to be the displayField
+                if (ed.field.displayField && ed.field.name) {
+                    r.set(ed.field.name, ed.field.el.dom.value);
+                }
                 
                 delete e.cancel; //?? why!!!
                 this.fireEvent("afteredit", e);
