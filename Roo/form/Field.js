@@ -166,7 +166,7 @@ side          Add an error icon to the right of the field with a popup on hover
              * Fires after the field has been validated with no errors.
              * @param {Roo.form.Field} this
              */
-            valid : true
+            valid : true,
              /**
              * @event keyup
              * Fires after the key up
