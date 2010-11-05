@@ -604,7 +604,7 @@ dlg.show();
 
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">animShow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.animateTarget</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.getBox</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.animateTarget</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.getBox</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.proxy.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">b.height</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.proxy.setLocation</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b.x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">b.y</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.proxy.show</span><span class="jsdoc-syntax">();
@@ -630,7 +630,7 @@ dlg.show();
         </span><span class="jsdoc-var">this.animateTarget </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">animateTarget </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.animateTarget</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el.isVisible</span><span class="jsdoc-syntax">()){
             </span><span class="jsdoc-var">this.beforeShow</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.animateTarget</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.animateTarget </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.animateTarget</span><span class="jsdoc-syntax">)){
                 </span><span class="jsdoc-var">this.animShow</span><span class="jsdoc-syntax">();
             }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
                 </span><span class="jsdoc-var">this.showEl</span><span class="jsdoc-syntax">();
@@ -934,7 +934,9 @@ dlg.show();
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.shim</span><span class="jsdoc-syntax">) {
           </span><span class="jsdoc-var">this.shim.hide</span><span class="jsdoc-syntax">();
         }
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.animateTarget</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-comment">// sometimes animateTarget seems to get set.. causing problems...
+        // this just double checks..
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.animateTarget </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.animateTarget</span><span class="jsdoc-syntax">)) {
            </span><span class="jsdoc-var">this.animHide</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">);
         }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
             </span><span class="jsdoc-var">this.el.hide</span><span class="jsdoc-syntax">();
@@ -1173,7 +1175,9 @@ if(!dialog){
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">document.documentElement </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.createChild</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-comment">// not sure why we use documentElement here.. - it should always be body.
+        // IE7 borks horribly if we use documentElement.
+        </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">Roo.isIE </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-var">document.body </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">document.documentElement</span><span class="jsdoc-syntax">) : (</span><span class="jsdoc-var">document.documentElement </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">) )</span><span class="jsdoc-var">.createChild</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-comment">//config.autoCreate = true;
     </span><span class="jsdoc-syntax">}
     
