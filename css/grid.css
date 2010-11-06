@@ -426,9 +426,13 @@ select.x-grid-editor{
 	background-color: #316ac5 !important;
 	color: white;
 }
-.x-grid-row-selected span{
+*/.x-grid-row-selected span{
 	color: white !important;
-} 
+}
+*/
+
+
+
 /* 
   To have the scrollbars overlap the header, change .x-grid-wrap top style to 0 and 
   and ygrid-wrap-body top to 22px
