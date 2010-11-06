@@ -426,7 +426,7 @@ select.x-grid-editor{
 	background-color: #316ac5 !important;
 	color: white;
 }
-*/.x-grid-row-selected span{
+/*.x-grid-row-selected span{
 	color: white !important;
 }
 */
