@@ -532,7 +532,7 @@ body.x-body-masked .x-dlg select{visibility:visible;}
 #x-msg-box .x-dlg-ft .x-btn{float:none;clear:none;margin:0 3px;}
 #x-msg-box .x-dlg-bd{padding:5px;overflow:hidden!important;font:normal 13px verdana,tahoma,sans-serif;}
 #x-msg-box .roo-mb-input{margin-top:4px;width:95%;}
-#x-msg-box .roo-mb-textarea{margin-top:4px;font:normal 13px verdana,tahoma,sans-serif;}
+#x-msg-box .roo-mb-textarea{margin-top:4px;font:normal 13px verdana,tahoma,sans-serif;display:inline;}
 #x-msg-box .roo-mb-progress-wrap{margin-top:4px;border:1px solid #6593cf;}
 #x-msg-box .roo-mb-progress{height:18px;background:#e0e8f3 url(../images/default/qtip/bg.gif) repeat-x;}
 #x-msg-box .roo-mb-progress-bar{height:18px;overflow:hidden;width:0;background:#8BB8F3;border-top:1px solid #B2D0F7;border-bottom:1px solid #65A1EF;border-right:1px solid #65A1EF;}
