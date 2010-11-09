@@ -21,7 +21,7 @@
 
 .x-form-label-right label
 {
-    align: right;
+    text-align: right;
 }
 
 .x-form-label-top .x-form-item label
