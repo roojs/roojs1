@@ -130,6 +130,60 @@
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.form.Action.Submit</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.form.Action</span><span class="jsdoc-syntax">, {
     </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'submit'</span><span class="jsdoc-syntax">,
 
+    </span><span class="jsdoc-var">haveProgress </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">uploadComplete </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-comment">// uploadProgress indicator.
+    </span><span class="jsdoc-var">uploadProgress </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.form.progressUrl</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.haveProgress</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.MessageBox.progress</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Uploading&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Uploading&quot;</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.uploadComplete</span><span class="jsdoc-syntax">) {
+           </span><span class="jsdoc-var">Roo.MessageBox.hide</span><span class="jsdoc-syntax">();
+           </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.haveProgress </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+   
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">uid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.form.findField</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'UPLOAD_IDENTIFIER'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.getValue</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.data.Connection</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">c.request</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">url </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.form.progressUrl</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">params</span><span class="jsdoc-syntax">: {
+                </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">uid
+            </span><span class="jsdoc-syntax">},
+            </span><span class="jsdoc-var">method</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'GET'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">success </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">){
+               </span><span class="jsdoc-comment">//console.log(data);
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.uploadComplete</span><span class="jsdoc-syntax">) {
+                   </span><span class="jsdoc-var">Roo.MessageBox.hide</span><span class="jsdoc-syntax">();
+                   </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }
+                   
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">Roo.MessageBox.updateProgress</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data.bytes_uploaded</span><span class="jsdoc-syntax">/</span><span class="jsdoc-var">data.bytes_total</span><span class="jsdoc-syntax">,
+                       </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">data.bytes_total </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">data.bytes_uploaded</span><span class="jsdoc-syntax">)/1000) + </span><span class="jsdoc-string">'k remaining'
+                    </span><span class="jsdoc-syntax">);
+                }
+                </span><span class="jsdoc-var">this.uploadProgress.defer</span><span class="jsdoc-syntax">(2000,</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            },
+       
+            </span><span class="jsdoc-var">failure</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'progress url failed '</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">);
+            },
+            </span><span class="jsdoc-var">scope </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this
+        </span><span class="jsdoc-syntax">});
+           
+    },
+    
+    
     </span><span class="jsdoc-var">run </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-comment">// run get Values on the form, so it syncs any secondary forms.
@@ -139,6 +193,13 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">method </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getMethod</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">isPost </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">method </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'POST'</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.clientValidation </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.form.isValid</span><span class="jsdoc-syntax">()){
+            
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.form.progressUrl</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.findField</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'UPLOAD_IDENTIFIER'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.setValue</span><span class="jsdoc-syntax">(
+                    (</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">() * 1) + </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">Math.random</span><span class="jsdoc-syntax">());
+                    
+            } 
+            
             </span><span class="jsdoc-var">Roo.Ajax.request</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.createCallback</span><span class="jsdoc-syntax">(), {
                 </span><span class="jsdoc-var">form</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">this.form.el.dom</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">this.getUrl</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">isPost</span><span class="jsdoc-syntax">),
@@ -146,6 +207,8 @@
                 </span><span class="jsdoc-var">params</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">isPost </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.getParams</span><span class="jsdoc-syntax">() : </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">isUpload</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.form.fileUpload
             </span><span class="jsdoc-syntax">}));
+            
+            </span><span class="jsdoc-var">this.uploadProgress</span><span class="jsdoc-syntax">();
 
         }</span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.clientValidation </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// client validation failed
             </span><span class="jsdoc-var">this.failureType </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.form.Action.CLIENT_INVALID</span><span class="jsdoc-syntax">;
@@ -153,7 +216,13 @@
         }
     },
 
-    </span><span class="jsdoc-var">success </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">success </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.uploadComplete</span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.haveProgress</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.MessageBox.hide</span><span class="jsdoc-syntax">();
+        }
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">result </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.processResponse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">result </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">result.success</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.form.afterAction</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
@@ -165,7 +234,18 @@
         }
         </span><span class="jsdoc-var">this.form.afterAction</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
     },
-
+    </span><span class="jsdoc-var">failure </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.uploadComplete</span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.haveProgress</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.MessageBox.hide</span><span class="jsdoc-syntax">();
+        }
+        
+        </span><span class="jsdoc-var">this.response </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.failureType </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.form.Action.CONNECT_FAILURE</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.form.afterAction</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+    },
+    
     </span><span class="jsdoc-var">handleResponse </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.form.errorReader</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.form.errorReader.read</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">);
