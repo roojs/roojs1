@@ -12261,35 +12261,7 @@ Roo.extend(Roo.util.MixedCollection, Roo.util.Observable, {
         this.fireEvent("add", this.length-1, o, key);
         return o;
     },
-      
-/**
- * Adds an item to the collection.
- * @param {String} key The key to associate with the item
- * @param {Object} o The item to add.
- * @return {Object} The item added.
- */
-    unshift : function(key, o){
-        if(arguments.length == 1){
-            o = arguments[0];
-            key = this.getKey(o);
-        }
-        if(typeof key == "undefined" || key === null){
-            this.length++;
-            this.items.unshift(o);
-            this.keys.unshift(null);
-        }else{
-            var old = this.map[key];
-            if(old){
-                return this.replace(key, o);
-            }
-            this.length++;
-            this.items.unshift(o);
-            this.map[key] = o;
-            this.keys.unshift(key);
-        }
-        this.fireEvent("add", 0, o, key);
-        return o;
-    },
+       
 /**
   * MixedCollection has a generic way to fetch keys if you implement getKey.
 <pre><code>
@@ -40825,6 +40797,16 @@ Roo.form.Form = function(config){
         rendered : true
     });
     
+    if (this.progressUrl) {
+            // push a hidden field onto the list of fields..
+            this.items.addxtype( {
+                    xns: Roo.form, 
+                    xtype : 'Hidden', 
+                    name : 'UPLOAD_IDENTIFIER' 
+            });
+        }
+        
+    
     Roo.each(xitems, this.addxtype, this);
     
     
@@ -41015,7 +40997,11 @@ Roo.extend(Roo.form.Form, Roo.form.BasicForm, {
      * @param {String/HTMLElement/Element} container The element this component should be rendered into
      * @return {Form} this
      */
-    render : function(ct){
+    render : function(ct)
+    {
+        
+        
+        
         ct = Roo.get(ct);
         var o = this.autoCreate || {
             tag: 'form',
@@ -41026,14 +41012,7 @@ Roo.extend(Roo.form.Form, Roo.form.BasicForm, {
 
         this.root.render(this.el);
         
-        if (this.progressUrl && !this.findField( 'UPLOAD_IDENTIFIER')) {
-            // push a hidden field onto the list of fields..
-            this.items.unshift( Roo.factory( {
-                    xns: Roo.form, 
-                    xtype : 'Hidden', 
-                    name : 'UPLOAD_IDENTIFIER' 
-            }));
-        }
+       
              
         this.items.each(function(f){
             f.render('x-form-el-'+f.id);
