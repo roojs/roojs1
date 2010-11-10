@@ -139,6 +139,12 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         var method = this.getMethod();
         var isPost = method == 'POST';
         if(o.clientValidation === false || this.form.isValid()){
+            if (this.form.findField( 'UPLOAD_IDENTIFIER')) {
+                // use upload progress bar..
+            }
+            
+            
+            
             Roo.Ajax.request(Roo.apply(this.createCallback(), {
                 form:this.form.el.dom,
                 url:this.getUrl(!isPost),
