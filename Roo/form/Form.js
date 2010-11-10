@@ -94,7 +94,12 @@ Roo.extend(Roo.form.Form, Roo.form.BasicForm, {
      * @cfg {Number} monitorPoll The milliseconds to poll valid state, ignored if monitorValid is not true (defaults to 200)
      */
     monitorPoll : 200,
-
+    
+    /**
+     * @cfg {String} progressURL - Url to return progress data 
+     */
+    
+    progressUrl : false,
   
     /**
      * Opens a new {@link Roo.form.Column} container in the layout stack. If fields are passed after the config, the
