@@ -159,8 +159,23 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                 id : uid
             },
             method: 'GET',
-            success : function(data){
+            success : function(req){
                //console.log(data);
+                var rdata = false;
+                var edata;
+                try  {
+                   rdata = Roo.decode(req.responseText)
+                } catch (e) {
+                    Roo.log("Invalid data from server..")
+                    Roo.log(edata)
+                    return;
+                }
+                if (!rdata || !rdata.success) {
+                    Roo.log(rdata);
+                    return;
+                }
+                var data = rdata.data;
+                
                 if (this.uploadComplete) {
                    Roo.MessageBox.hide();
                    return;
