@@ -5956,19 +5956,19 @@
     },
     {
      "name": "blockFocus",
-     "type": "bool",
+     "type": "Boolean",
      "desc": "Prevents all focus calls, so it can work with things like HTML edtor bar",
      "memberOf": ""
     },
     {
      "name": "disableClear",
-     "type": "bool",
+     "type": "Boolean",
      "desc": "Disable showing of clear button.",
      "memberOf": ""
     },
     {
      "name": "alwaysQuery",
-     "type": "bool",
+     "type": "Boolean",
      "desc": "Disable caching of results, and always send query",
      "memberOf": ""
     },
@@ -7986,6 +7986,12 @@
      "name": "monitorPoll",
      "type": "Number",
      "desc": "The milliseconds to poll valid state, ignored if monitorValid is not true (defaults to 200)",
+     "memberOf": ""
+    },
+    {
+     "name": "progressUrl",
+     "type": "String",
+     "desc": "- Url to return progress data",
      "memberOf": ""
     },
     {
