@@ -151,12 +151,12 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         
         var c = new Roo.Connection();
         c.request({
-           url : this.form.progressUrl,
-           params: {
-               id : uid
-           },
-           method: 'GET',
-           success : function(data){
+            url : this.form.progressUrl,
+            params: {
+                id : uid
+            },
+            method: 'GET',
+            success : function(data){
                //console.log(data);
                if (this.uploadComplete) {
                    Roo.MessageBox.hide();
@@ -175,7 +175,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
              //  console.log('fail');
             //   console.log(data);
            }
-       })
+        });
            
     },
     
