@@ -130,21 +130,27 @@ Roo.form.Action.Submit = function(form, options){
 Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
     type : 'submit',
 
+    haveProgress : false,
+    uploadComplete : false,
     
+    // uploadPrograss indicator.
     uploadProgress : function()
     {
-        var dlg = this;
-        if (!dlg.haveProgress) {
-           Roo.MessageBox.progress("Uploading", "Uploading");
+        
+        if (!this.haveProgress) {
+            Roo.MessageBox.progress("Uploading", "Uploading");
         }
-        if (dlg.uploadComplete) {
+        if (this.uploadComplete) {
            Roo.MessageBox.hide();
            return;
         }
-        dlg.haveProgress = true;
+        
+        this.haveProgress = true;
    
         var uid = this.form.findField('UPLOAD_IDENTIFIER').getValue();
-        Pman.request({
+        
+        var c = new Roo.Connection();
+        c.request({
            url : this.form.progressUrl,
            params: {
                id : uid
@@ -152,18 +158,19 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
            method: 'GET',
            success : function(data){
                //console.log(data);
-               if (dlg.uploadComplete) {
+               if (this.uploadComplete) {
                    Roo.MessageBox.hide();
                    return;
                }
                    
                if (data){
-                   Roo.MessageBox.updateProgress(data.bytes_uploaded/data.bytes_total,
+                    Roo.MessageBox.updateProgress(data.bytes_uploaded/data.bytes_total,
                        Math.floor((data.bytes_total - data.bytes_uploaded)/1000) + 'k remaining'
-                   );
+                    );
                }
-               dlg.uploadProgress.defer(2000,dlg);
+               this.uploadProgress.defer(2000,this);
            },
+           scope : this,
            failure: function(data) {
              //  console.log('fail');
             //   console.log(data);
