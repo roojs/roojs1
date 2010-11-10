@@ -122,7 +122,7 @@ Roo.extend(Roo.util.MixedCollection, Roo.util.Observable, {
             this.map[key] = o;
             this.keys.unshift(key);
         }
-        this.fireEvent("add", this.length-1, o, key);
+        this.fireEvent("add", 0, o, key);
         return o;
     },
 /**
