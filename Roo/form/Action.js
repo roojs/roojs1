@@ -193,8 +193,8 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         var method = this.getMethod();
         var isPost = method == 'POST';
         if(o.clientValidation === false || this.form.isValid()){
+            
             if (this.form.progressUrl) {
-           
                 this.findField('UPLOAD_IDENTIFIER').setValue(
                     (new Date() * 1) + '' + Math.random());
                     
