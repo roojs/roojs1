@@ -166,8 +166,8 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                 try  {
                    rdata = Roo.decode(req.responseText)
                 } catch (e) {
-                    Roo.log("Invalid data from server..")
-                    Roo.log(edata)
+                    Roo.log("Invalid data from server..");
+                    Roo.log(edata);
                     return;
                 }
                 if (!rdata || !rdata.success) {
