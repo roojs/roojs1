@@ -54,6 +54,16 @@
         </span><span class="jsdoc-var">rendered </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
     </span><span class="jsdoc-syntax">});
     
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.progressUrl</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">// push a hidden field onto the list of fields..
+            </span><span class="jsdoc-var">this.items.addxtype</span><span class="jsdoc-syntax">( {
+                    </span><span class="jsdoc-var">xns</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.form</span><span class="jsdoc-syntax">, 
+                    </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Hidden'</span><span class="jsdoc-syntax">, 
+                    </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'UPLOAD_IDENTIFIER' 
+            </span><span class="jsdoc-syntax">});
+        }
+        
+    
     </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xitems</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.addxtype</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     
     
@@ -244,7 +254,11 @@
      * @param {String/HTMLElement/Element} container The element this component should be rendered into
      * @return {Form} this
      */
-    </span><span class="jsdoc-var">render </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">render </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">)
+    {
+        
+        
+        
         </span><span class="jsdoc-var">ct </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.autoCreate </span><span class="jsdoc-syntax">|| {
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'form'</span><span class="jsdoc-syntax">,
@@ -255,14 +269,7 @@
 
         </span><span class="jsdoc-var">this.root.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.progressUrl </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.form.findField</span><span class="jsdoc-syntax">( </span><span class="jsdoc-string">'UPLOAD_IDENTIFIER'</span><span class="jsdoc-syntax">)) {
-            </span><span class="jsdoc-comment">// push a hidden field onto the list of fields..
-            </span><span class="jsdoc-var">this.items.unshift</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">( {
-                    </span><span class="jsdoc-var">xns</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.form</span><span class="jsdoc-syntax">, 
-                    </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Hidden'</span><span class="jsdoc-syntax">, 
-                    </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'UPLOAD_IDENTIFIER' 
-            </span><span class="jsdoc-syntax">}));
-        }
+       
              
         </span><span class="jsdoc-var">this.items.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">f.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'x-form-el-'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">f.id</span><span class="jsdoc-syntax">);
