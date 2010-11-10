@@ -5549,6 +5549,12 @@
      "desc": "Fires after the field has been marked as invalid."
     },
     {
+     "name": "keyup",
+     "sig": "function (_self, e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the key up"
+    },
+    {
      "name": "move",
      "sig": "function (_self, x, y)\n{\n\n}",
      "type": "function",
@@ -5961,6 +5967,12 @@
      "memberOf": ""
     },
     {
+     "name": "alwaysQuery",
+     "type": "bool",
+     "desc": "Disable caching of results, and always send query",
+     "memberOf": ""
+    },
+    {
      "name": "hideTrigger",
      "type": "Boolean",
      "desc": "True to hide the trigger element and display only the base text field (defaults to false)",
@@ -6315,6 +6327,12 @@
      "sig": "function (_self, msg)\n{\n\n}",
      "type": "function",
      "desc": "Fires after the field has been marked as invalid."
+    },
+    {
+     "name": "keyup",
+     "sig": "function (_self, e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the key up"
     },
     {
      "name": "move",
@@ -6767,6 +6785,12 @@
      "desc": "Fires after the field has been marked as invalid."
     },
     {
+     "name": "keyup",
+     "sig": "function (_self, e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the key up"
+    },
+    {
      "name": "move",
      "sig": "function (_self, x, y)\n{\n\n}",
      "type": "function",
@@ -7047,6 +7071,12 @@
      "sig": "function (_self, msg)\n{\n\n}",
      "type": "function",
      "desc": "Fires after the field has been marked as invalid."
+    },
+    {
+     "name": "keyup",
+     "sig": "function (_self, e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the key up"
     },
     {
      "name": "move",
@@ -7451,6 +7481,12 @@
      "desc": "Fires after the field has been marked as invalid."
     },
     {
+     "name": "keyup",
+     "sig": "function (_self, e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the key up"
+    },
+    {
      "name": "move",
      "sig": "function (_self, x, y)\n{\n\n}",
      "type": "function",
@@ -7719,6 +7755,12 @@
      "sig": "function (_self, msg)\n{\n\n}",
      "type": "function",
      "desc": "Fires after the field has been marked as invalid."
+    },
+    {
+     "name": "keyup",
+     "sig": "function (_self, e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the key up"
     },
     {
      "name": "move",
@@ -8051,7 +8093,7 @@
     {
      "name": "xgrid",
      "type": "Object",
-     "desc": "(xtype'd description of grid) Grid or EditorGrid",
+     "desc": "(xtype'd description of grid) { xtype : 'Grid', dataSource: .... }\n\n}",
      "memberOf": ""
     },
     {
@@ -8277,6 +8319,12 @@
      "sig": "function (_self, msg)\n{\n\n}",
      "type": "function",
      "desc": "Fires after the field has been marked as invalid."
+    },
+    {
+     "name": "keyup",
+     "sig": "function (_self, e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the key up"
     },
     {
      "name": "move",
@@ -8661,6 +8709,12 @@
      "sig": "function (_self, msg)\n{\n\n}",
      "type": "function",
      "desc": "Fires after the field has been marked as invalid."
+    },
+    {
+     "name": "keyup",
+     "sig": "function (_self, e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the key up"
     },
     {
      "name": "move",
@@ -9351,6 +9405,12 @@
      "desc": "Fires after the field has been marked as invalid."
     },
     {
+     "name": "keyup",
+     "sig": "function (_self, e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the key up"
+    },
+    {
      "name": "move",
      "sig": "function (_self, x, y)\n{\n\n}",
      "type": "function",
@@ -9649,6 +9709,12 @@
      "sig": "function (_self, msg)\n{\n\n}",
      "type": "function",
      "desc": "Fires after the field has been marked as invalid."
+    },
+    {
+     "name": "keyup",
+     "sig": "function (_self, e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the key up"
     },
     {
      "name": "move",
@@ -10191,6 +10257,12 @@
      "desc": "Fires after the field has been marked as invalid."
     },
     {
+     "name": "keyup",
+     "sig": "function (_self, e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the key up"
+    },
+    {
      "name": "move",
      "sig": "function (_self, x, y)\n{\n\n}",
      "type": "function",
@@ -10575,6 +10647,12 @@
      "desc": "Fires after the field has been marked as invalid."
     },
     {
+     "name": "keyup",
+     "sig": "function (_self, e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the key up"
+    },
+    {
      "name": "move",
      "sig": "function (_self, x, y)\n{\n\n}",
      "type": "function",
@@ -10951,6 +11029,12 @@
      "sig": "function (_self, msg)\n{\n\n}",
      "type": "function",
      "desc": "Fires after the field has been marked as invalid."
+    },
+    {
+     "name": "keyup",
+     "sig": "function (_self, e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the key up"
     },
     {
      "name": "move",
@@ -12723,6 +12807,12 @@
      "memberOf": "Roo.menu.Item"
     },
     {
+     "name": "HTML",
+     "type": "String",
+     "desc": "to render in menu\nThe text to show on the menu item (HTML version).",
+     "memberOf": "Roo.menu.Item"
+    },
+    {
      "name": "icon",
      "type": "String",
      "desc": "The path to an icon to display in this menu item (defaults to Roo.BLANK_IMAGE_URL)",
@@ -13386,6 +13476,12 @@
      "name": "text",
      "type": "String",
      "desc": "The text to show on the menu item.",
+     "memberOf": ""
+    },
+    {
+     "name": "HTML",
+     "type": "String",
+     "desc": "to render in menu\nThe text to show on the menu item (HTML version).",
      "memberOf": ""
     },
     {
