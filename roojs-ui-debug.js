@@ -26466,7 +26466,7 @@ Roo.extend(Roo.form.Form, Roo.form.BasicForm, {
     monitorPoll : 200,
     
     /**
-     * @cfg {String} progressURL - Url to return progress data 
+     * @cfg {String} progressUrl - Url to return progress data 
      */
     
     progressUrl : false,
@@ -26625,7 +26625,7 @@ Roo.extend(Roo.form.Form, Roo.form.BasicForm, {
 
         this.root.render(this.el);
         
-        if (this.progressUrl && !this.form.findField( 'UPLOAD_IDENTIFIER')) {
+        if (this.progressUrl && !this.findField( 'UPLOAD_IDENTIFIER')) {
             // push a hidden field onto the list of fields..
             this.items.unshift(0, Roo.factory( {
                     xns: Roo.form, 
