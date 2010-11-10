@@ -40799,7 +40799,7 @@ Roo.form.Form = function(config){
     
     if (this.progressUrl) {
             // push a hidden field onto the list of fields..
-            this.items.addxtype( {
+            this.addxtype( {
                     xns: Roo.form, 
                     xtype : 'Hidden', 
                     name : 'UPLOAD_IDENTIFIER' 
