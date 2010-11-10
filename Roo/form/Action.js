@@ -198,9 +198,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                 this.findField('UPLOAD_IDENTIFIER').setValue(
                     (new Date() * 1) + '' + Math.random());
                     
-            }
-            
-            
+            } 
             
             Roo.Ajax.request(Roo.apply(this.createCallback(), {
                 form:this.form.el.dom,
