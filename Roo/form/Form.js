@@ -252,7 +252,11 @@ Roo.extend(Roo.form.Form, Roo.form.BasicForm, {
         
         if (this.progressUrl && !this.form.findField( 'UPLOAD_IDENTIFIER')) {
             // push a hidden field onto the list of fileds..
-            
+            this.items.unshift(0, Roo.factory( {
+                    xns: Roo.form, 
+                    xtype : 'Hidden', 
+                    name : 'UPLOAD_IDENTIFIER' 
+            }));
         }
             
         
