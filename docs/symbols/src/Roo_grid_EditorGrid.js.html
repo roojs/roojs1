@@ -121,11 +121,17 @@
             
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;validateedit&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">e.cancel</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">r.set</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">field</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e.value</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-comment">// if we are dealing with a combo box..
+                // then we also set the 'name' colum to be the displayField
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ed.field.displayField </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">ed.field.name</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">r.set</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ed.field.name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ed.field.el.dom.value</span><span class="jsdoc-syntax">);
+                }
+                
                 </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">e.cancel</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">//?? why!!!
                 </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;afteredit&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
             }
         } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
-            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;afteredit&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// always fir it!
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;afteredit&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// always fire it!
         </span><span class="jsdoc-syntax">}
         </span><span class="jsdoc-var">this.view.focusCell</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ed.row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ed.col</span><span class="jsdoc-syntax">);
     },
@@ -170,6 +176,12 @@
                     </span><span class="jsdoc-var">this.activeEditor </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ed</span><span class="jsdoc-syntax">;
                     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">r.data</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">field</span><span class="jsdoc-syntax">];
                     </span><span class="jsdoc-var">ed.startEdit</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.view.getCell</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-comment">// combo's with 'displayField and name set
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ed.field.displayField </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">ed.field.name</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-var">ed.field.el.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">r.data</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">ed.field.name</span><span class="jsdoc-syntax">];
+                    }
+                    
+                    
                 })</span><span class="jsdoc-var">.defer</span><span class="jsdoc-syntax">(50, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
             }
         }
