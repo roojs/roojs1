@@ -249,7 +249,14 @@ Roo.extend(Roo.form.Form, Roo.form.BasicForm, {
         this.initEl(ct.createChild(o));
 
         this.root.render(this.el);
-
+        
+        if (this.progressUrl && !this.form.findField( 'UPLOAD_IDENTIFIER')) {
+            // push a hidden field onto the list of fileds..
+            
+        }
+            
+        
+        
         this.items.each(function(f){
             f.render('x-form-el-'+f.id);
         });
