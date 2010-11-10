@@ -96,7 +96,7 @@ Roo.extend(Roo.form.Form, Roo.form.BasicForm, {
     monitorPoll : 200,
     
     /**
-     * @cfg {String} progressURL - Url to return progress data 
+     * @cfg {String} progressUrl - Url to return progress data 
      */
     
     progressUrl : false,
