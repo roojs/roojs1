@@ -12261,35 +12261,7 @@ Roo.extend(Roo.util.MixedCollection, Roo.util.Observable, {
         this.fireEvent("add", this.length-1, o, key);
         return o;
     },
-      
-/**
- * Adds an item to the collection.
- * @param {String} key The key to associate with the item
- * @param {Object} o The item to add.
- * @return {Object} The item added.
- */
-    unshift : function(key, o){
-        if(arguments.length == 1){
-            o = arguments[0];
-            key = this.getKey(o);
-        }
-        if(typeof key == "undefined" || key === null){
-            this.length++;
-            this.items.unshift(o);
-            this.keys.unshift(null);
-        }else{
-            var old = this.map[key];
-            if(old){
-                return this.replace(key, o);
-            }
-            this.length++;
-            this.items.unshift(o);
-            this.map[key] = o;
-            this.keys.unshift(key);
-        }
-        this.fireEvent("add", 0, o, key);
-        return o;
-    },
+       
 /**
   * MixedCollection has a generic way to fetch keys if you implement getKey.
 <pre><code>
