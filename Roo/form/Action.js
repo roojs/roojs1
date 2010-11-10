@@ -158,22 +158,22 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
             method: 'GET',
             success : function(data){
                //console.log(data);
-               if (this.uploadComplete) {
+                if (this.uploadComplete) {
                    Roo.MessageBox.hide();
                    return;
-               }
+                }
                    
-               if (data){
+                if (data){
                     Roo.MessageBox.updateProgress(data.bytes_uploaded/data.bytes_total,
                        Math.floor((data.bytes_total - data.bytes_uploaded)/1000) + 'k remaining'
                     );
-               }
-               this.uploadProgress.defer(2000,this);
-           },
-           scope : this,
+                }
+                this.uploadProgress.defer(2000,this);
+            },
+            scope : this,
            failure: function(data) {
-             //  console.log('fail');
-            //   console.log(data);
+                Roo.log('progress url failed ');
+                Roo.log(data);
            }
         });
            
