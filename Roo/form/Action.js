@@ -216,6 +216,10 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
     success : function(response)
     {
         this.uploadComplete= true;
+        if (this.haveProgress) {
+            Roo.MessageBox.hide();
+        }
+        
         var result = this.processResponse(response);
         if(result === true || result.success){
             this.form.afterAction(this, true);
