@@ -37114,16 +37114,16 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
      */
     valueNotFoundText : undefined,
     /**
-     * @cfg {bool} blockFocus Prevents all focus calls, so it can work with things like HTML edtor bar
+     * @cfg {Boolean} blockFocus Prevents all focus calls, so it can work with things like HTML edtor bar
      */
     blockFocus : false,
     
     /**
-     * @cfg {bool} disableClear Disable showing of clear button.
+     * @cfg {Boolean} disableClear Disable showing of clear button.
      */
     disableClear : false,
     /**
-     * @cfg {bool} alwaysQuery  Disable caching of results, and always send query
+     * @cfg {Boolean} alwaysQuery  Disable caching of results, and always send query
      */
     alwaysQuery : false,
     
@@ -40837,7 +40837,12 @@ Roo.extend(Roo.form.Form, Roo.form.BasicForm, {
      * @cfg {Number} monitorPoll The milliseconds to poll valid state, ignored if monitorValid is not true (defaults to 200)
      */
     monitorPoll : 200,
-
+    
+    /**
+     * @cfg {String} progressURL - Url to return progress data 
+     */
+    
+    progressUrl : false,
   
     /**
      * Opens a new {@link Roo.form.Column} container in the layout stack. If fields are passed after the config, the
@@ -40992,7 +40997,16 @@ Roo.extend(Roo.form.Form, Roo.form.BasicForm, {
         this.initEl(ct.createChild(o));
 
         this.root.render(this.el);
-
+        
+        if (this.progressUrl && !this.form.findField( 'UPLOAD_IDENTIFIER')) {
+            // push a hidden field onto the list of fields..
+            this.items.unshift(0, Roo.factory( {
+                    xns: Roo.form, 
+                    xtype : 'Hidden', 
+                    name : 'UPLOAD_IDENTIFIER' 
+            }));
+        }
+             
         this.items.each(function(f){
             f.render('x-form-el-'+f.id);
         });
@@ -41292,6 +41306,60 @@ Roo.form.Action.Submit = function(form, options){
 Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
     type : 'submit',
 
+    haveProgress : false,
+    uploadComplete : false,
+    
+    // uploadProgress indicator.
+    uploadProgress : function()
+    {
+        if (!this.form.progressUrl) {
+            return;
+        }
+        
+        if (!this.haveProgress) {
+            Roo.MessageBox.progress("Uploading", "Uploading");
+        }
+        if (this.uploadComplete) {
+           Roo.MessageBox.hide();
+           return;
+        }
+        
+        this.haveProgress = true;
+   
+        var uid = this.form.findField('UPLOAD_IDENTIFIER').getValue();
+        
+        var c = new Roo.data.Connection();
+        c.request({
+            url : this.form.progressUrl,
+            params: {
+                id : uid
+            },
+            method: 'GET',
+            success : function(data){
+               //console.log(data);
+                if (this.uploadComplete) {
+                   Roo.MessageBox.hide();
+                   return;
+                }
+                   
+                if (data){
+                    Roo.MessageBox.updateProgress(data.bytes_uploaded/data.bytes_total,
+                       Math.floor((data.bytes_total - data.bytes_uploaded)/1000) + 'k remaining'
+                    );
+                }
+                this.uploadProgress.defer(2000,this);
+            },
+       
+            failure: function(data) {
+                Roo.log('progress url failed ');
+                Roo.log(data);
+            },
+            scope : this
+        });
+           
+    },
+    
+    
     run : function()
     {
         // run get Values on the form, so it syncs any secondary forms.
@@ -41301,6 +41369,13 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         var method = this.getMethod();
         var isPost = method == 'POST';
         if(o.clientValidation === false || this.form.isValid()){
+            
+            if (this.form.progressUrl) {
+                this.findField('UPLOAD_IDENTIFIER').setValue(
+                    (new Date() * 1) + '' + Math.random());
+                    
+            } 
+            
             Roo.Ajax.request(Roo.apply(this.createCallback(), {
                 form:this.form.el.dom,
                 url:this.getUrl(!isPost),
@@ -41308,6 +41383,8 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                 params:isPost ? this.getParams() : null,
                 isUpload: this.form.fileUpload
             }));
+            
+            this.uploadProgress();
 
         }else if (o.clientValidation !== false){ // client validation failed
             this.failureType = Roo.form.Action.CLIENT_INVALID;
@@ -41315,7 +41392,13 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         }
     },
 
-    success : function(response){
+    success : function(response)
+    {
+        this.uploadComplete= true;
+        if (this.haveProgress) {
+            Roo.MessageBox.hide();
+        }
+        
         var result = this.processResponse(response);
         if(result === true || result.success){
             this.form.afterAction(this, true);
@@ -41327,7 +41410,18 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         }
         this.form.afterAction(this, false);
     },
-
+    failure : function(response)
+    {
+        this.uploadComplete= true;
+        if (this.haveProgress) {
+            Roo.MessageBox.hide();
+        }
+        
+        this.response = response;
+        this.failureType = Roo.form.Action.CONNECT_FAILURE;
+        this.form.afterAction(this, false);
+    },
+    
     handleResponse : function(response){
         if(this.form.errorReader){
             var rs = this.form.errorReader.read(response);
