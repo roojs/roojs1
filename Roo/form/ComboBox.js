@@ -282,16 +282,16 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
      */
     valueNotFoundText : undefined,
     /**
-     * @cfg {bool} blockFocus Prevents all focus calls, so it can work with things like HTML edtor bar
+     * @cfg {Boolean} blockFocus Prevents all focus calls, so it can work with things like HTML edtor bar
      */
     blockFocus : false,
     
     /**
-     * @cfg {bool} disableClear Disable showing of clear button.
+     * @cfg {Boolean} disableClear Disable showing of clear button.
      */
     disableClear : false,
     /**
-     * @cfg {bool} alwaysQuery  Disable caching of results, and always send query
+     * @cfg {Boolean} alwaysQuery  Disable caching of results, and always send query
      */
     alwaysQuery : false,
     
