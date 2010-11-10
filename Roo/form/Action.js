@@ -173,11 +173,12 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                 }
                 this.uploadProgress.defer(2000,this);
             },
-            scope : this,
-           failure: function(data) {
+       
+            failure: function(data) {
                 Roo.log('progress url failed ');
                 Roo.log(data);
-           }
+            },
+            scope : this
         });
            
     },
