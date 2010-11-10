@@ -94,7 +94,12 @@
      * @cfg {Number} monitorPoll The milliseconds to poll valid state, ignored if monitorValid is not true (defaults to 200)
      */
     </span><span class="jsdoc-var">monitorPoll </span><span class="jsdoc-syntax">: 200,
-
+    
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} progressURL - Url to return progress data 
+     */
+    
+    </span><span class="jsdoc-var">progressUrl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
   
     </span><span class="jsdoc-comment">/**
      * Opens a new {@link Roo.form.Column} container in the layout stack. If fields are passed after the config, the
@@ -249,7 +254,16 @@
         </span><span class="jsdoc-var">this.initEl</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct.createChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">));
 
         </span><span class="jsdoc-var">this.root.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">);
-
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.progressUrl </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.form.findField</span><span class="jsdoc-syntax">( </span><span class="jsdoc-string">'UPLOAD_IDENTIFIER'</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-comment">// push a hidden field onto the list of fields..
+            </span><span class="jsdoc-var">this.items.unshift</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">( {
+                    </span><span class="jsdoc-var">xns</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.form</span><span class="jsdoc-syntax">, 
+                    </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Hidden'</span><span class="jsdoc-syntax">, 
+                    </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'UPLOAD_IDENTIFIER' 
+            </span><span class="jsdoc-syntax">}));
+        }
+             
         </span><span class="jsdoc-var">this.items.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">f.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'x-form-el-'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">f.id</span><span class="jsdoc-syntax">);
         });
