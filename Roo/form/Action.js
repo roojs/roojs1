@@ -149,7 +149,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
    
         var uid = this.form.findField('UPLOAD_IDENTIFIER').getValue();
         
-        var c = new Roo.Connection();
+        var c = new Roo.data.Connection();
         c.request({
             url : this.form.progressUrl,
             params: {
