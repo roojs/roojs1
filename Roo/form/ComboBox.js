@@ -290,6 +290,10 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
      * @cfg {bool} disableClear Disable showing of clear button.
      */
     disableClear : false,
+    /**
+     * @cfg {bool} alwaysQuery  Disable caching of results, and always send query
+     */
+    alwaysQuery : false,
     
     //private
     addicon : false,
@@ -890,7 +894,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         q = qe.query;
         forceAll = qe.forceAll;
         if(forceAll === true || (q.length >= this.minChars)){
-            if(this.lastQuery != q){
+            if(this.lastQuery != q || this.alwaysQuery){
                 this.lastQuery = q;
                 if(this.mode == 'local'){
                     this.selectedIndex = -1;
