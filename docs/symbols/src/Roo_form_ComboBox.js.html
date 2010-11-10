@@ -290,6 +290,10 @@
      * @cfg {bool} disableClear Disable showing of clear button.
      */
     </span><span class="jsdoc-var">disableClear </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {bool} alwaysQuery  Disable caching of results, and always send query
+     */
+    </span><span class="jsdoc-var">alwaysQuery </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-comment">//private
     </span><span class="jsdoc-var">addicon </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
@@ -890,7 +894,7 @@
         </span><span class="jsdoc-var">q </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">qe.query</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">forceAll </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">qe.forceAll</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">forceAll </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-var">q.length </span><span class="jsdoc-syntax">&gt;= </span><span class="jsdoc-var">this.minChars</span><span class="jsdoc-syntax">)){
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.lastQuery </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">q</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.lastQuery </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">q </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.alwaysQuery</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">this.lastQuery </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">q</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.mode </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'local'</span><span class="jsdoc-syntax">){
                     </span><span class="jsdoc-var">this.selectedIndex </span><span class="jsdoc-syntax">= -1;
