@@ -233,6 +233,10 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
     },
     failure : function(response){
         this.uploadComplete= true;
+        if (this.haveProgress) {
+            Roo.MessageBox.hide();
+        }
+        
         this.response = response;
         this.failureType = Roo.form.Action.CONNECT_FAILURE;
         this.form.afterAction(this, false);
