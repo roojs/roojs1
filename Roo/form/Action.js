@@ -190,9 +190,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         var isPost = method == 'POST';
         if(o.clientValidation === false || this.form.isValid()){
             if (this.form.progressUrl) {
-                
-                
-                // use upload progress bar..
+           
                 this.findField('UPLOAD_IDENTIFIER').setValue(
                     (new Date() * 1) + '' + Math.random());
                     
