@@ -263,9 +263,7 @@ Roo.extend(Roo.form.Form, Roo.form.BasicForm, {
                     name : 'UPLOAD_IDENTIFIER' 
             }));
         }
-            
-        
-        
+             
         this.items.each(function(f){
             f.render('x-form-el-'+f.id);
         });
