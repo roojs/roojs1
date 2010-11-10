@@ -130,6 +130,49 @@ Roo.form.Action.Submit = function(form, options){
 Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
     type : 'submit',
 
+    
+    uploadProgress : function()
+    {
+        var dlg = this;
+        if (!dlg.haveProgress) {
+           Roo.MessageBox.progress("Uploading", "Uploading");
+        }
+        if (dlg.uploadComplete) {
+           Roo.MessageBox.hide();
+           return;
+        }
+        dlg.haveProgress = true;
+   
+        var uid = this.form.findField('UPLOAD_IDENTIFIER').getValue();
+        Pman.request({
+           url : this.form.progressUrl,
+           params: {
+               id : uid
+           },
+           method: 'GET',
+           success : function(data){
+               //console.log(data);
+               if (dlg.uploadComplete) {
+                   Roo.MessageBox.hide();
+                   return;
+               }
+                   
+               if (data){
+                   Roo.MessageBox.updateProgress(data.bytes_uploaded/data.bytes_total,
+                       Math.floor((data.bytes_total - data.bytes_uploaded)/1000) + 'k remaining'
+                   );
+               }
+               dlg.uploadProgress.defer(2000,dlg);
+           },
+           failure: function(data) {
+             //  console.log('fail');
+            //   console.log(data);
+           }
+       })
+           
+    },
+    
+    
     run : function()
     {
         // run get Values on the form, so it syncs any secondary forms.
@@ -139,8 +182,12 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         var method = this.getMethod();
         var isPost = method == 'POST';
         if(o.clientValidation === false || this.form.isValid()){
-            if (this.form.findField( 'UPLOAD_IDENTIFIER')) {
+            if (this.form.progressUrl && this.form.findField( 'UPLOAD_IDENTIFIER')) {
                 // use upload progress bar..
+                this.findField('UPLOAD_IDENTIFIER').setValue(
+                    (new Date() * 1) + '' + Math.random());
+                    
+                    
             }
             
             
