@@ -205,6 +205,8 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                 params:isPost ? this.getParams() : null,
                 isUpload: this.form.fileUpload
             }));
+            
+            this.uploadProgress();
 
         }else if (o.clientValidation !== false){ // client validation failed
             this.failureType = Roo.form.Action.CLIENT_INVALID;
