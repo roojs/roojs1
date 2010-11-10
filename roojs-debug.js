@@ -41378,7 +41378,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         if(o.clientValidation === false || this.form.isValid()){
             
             if (this.form.progressUrl) {
-                this.findField('UPLOAD_IDENTIFIER').setValue(
+                this.form.findField('UPLOAD_IDENTIFIER').setValue(
                     (new Date() * 1) + '' + Math.random());
                     
             } 
