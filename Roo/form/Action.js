@@ -136,6 +136,9 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
     // uploadPrograss indicator.
     uploadProgress : function()
     {
+        if (!this.form.progressUrl) {
+            return;
+        }
         
         if (!this.haveProgress) {
             Roo.MessageBox.progress("Uploading", "Uploading");
