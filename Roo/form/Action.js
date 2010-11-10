@@ -231,7 +231,8 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         }
         this.form.afterAction(this, false);
     },
-    failure : function(response){
+    failure : function(response)
+    {
         this.uploadComplete= true;
         if (this.haveProgress) {
             Roo.MessageBox.hide();
@@ -241,6 +242,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         this.failureType = Roo.form.Action.CONNECT_FAILURE;
         this.form.afterAction(this, false);
     },
+    
     handleResponse : function(response){
         if(this.form.errorReader){
             var rs = this.form.errorReader.read(response);
