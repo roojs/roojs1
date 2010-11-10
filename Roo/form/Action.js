@@ -213,7 +213,9 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         }
     },
 
-    success : function(response){
+    success : function(response)
+    {
+        this.uploadComplete= true;
         var result = this.processResponse(response);
         if(result === true || result.success){
             this.form.afterAction(this, true);
@@ -225,7 +227,12 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         }
         this.form.afterAction(this, false);
     },
-
+    failure : function(response){
+        this.uploadComplete= true;
+        this.response = response;
+        this.failureType = Roo.form.Action.CONNECT_FAILURE;
+        this.form.afterAction(this, false);
+    },
     handleResponse : function(response){
         if(this.form.errorReader){
             var rs = this.form.errorReader.read(response);
