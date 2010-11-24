@@ -41,6 +41,7 @@ Roo.extend(Roo.mobile.Mobile, Roo.util.Observable, {
         Roo.get(document.head).createChild(
             '<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>'
         );
+        //?? add the css?
         //setTimeout(preloadImages, 0);
         if (typeof window.onorientationchange == "object")
         {
