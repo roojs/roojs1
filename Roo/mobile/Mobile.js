@@ -49,6 +49,16 @@ Roo.extend(Roo.mobile.Mobile, Roo.util.Observable, {
         this.checkOrientAndLocation.defer(0, this);
         this.checkTimer = setInterval(checkOrientAndLocation, 300);
     }
+    function orientChangeHandler()
+    {
+        if (window.orientation == 90 || window.orientation = -90) {
+            this.setOrientation("landscape");
+            return;
+        }
+        this.setOrientation("portrait");
+        
+    }
+
 });
 
 
