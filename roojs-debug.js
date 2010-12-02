@@ -12825,12 +12825,12 @@ Roo.util.JSON = new (function(){
  * Shorthand for {@link Roo.util.JSON#encode}
  * @member Roo encode 
  * @method */
-Roo.encode = JSON && JSON.stringify ? JSON.stringify : Roo.util.JSON.encode;
+Roo.encode = typeof(JSON) != 'undefined' && JSON.stringify ? JSON.stringify : Roo.util.JSON.encode;
 /** 
  * Shorthand for {@link Roo.util.JSON#decode}
  * @member Roo decode 
  * @method */
-Roo.decode = JSON && JSON.parse ? JSON.parse : Roo.util.JSON.decode;
+Roo.decode = typeof(JSON) != 'undefined' && JSON.parse ? JSON.parse : Roo.util.JSON.decode;
 /*
  * Based on:
  * Ext JS Library 1.1.1
