@@ -61,7 +61,7 @@
 }
 .x-form-text 
 {
-    height: 14px; /* needs 20px in one of the non-roo projects..? */
+    height: 18px; /* needs 20px in one of the non-roo projects..? */
     line-height: 18px;
     vertical-align: middle;
     background: url(../images/default/form/bg.gif) repeat-x 0 0;  
