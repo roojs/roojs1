@@ -149,8 +149,8 @@
 /* Toolbars */
 
 .x-toolbar{
-	border-color:#abc;
-    background :#f0f4f5 url(../images/slate/toolbar/bg.gif) repeat-x top left;
+	border-color:#666;
+    background :#666 url(../images/slate/toolbar/bg.gif) repeat-x top left;
 }
 
 
