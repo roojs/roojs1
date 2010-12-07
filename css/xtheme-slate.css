@@ -253,6 +253,9 @@
 .x-tabs-strip .x-tabs-text {
     color:#ddd;
 }
+.x-tabs-wrap {    
+    border-bottom: 1px solid #68563f;
+}
  
 /**
  * 
