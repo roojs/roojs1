@@ -71,6 +71,12 @@
     padding-top: 2px;
     padding-bottom: 2px;
 }
+
+.x-form-item .x-form-text 
+{
+     height: 14px; /* need to determine when this should be larger or smaller.. ? */
+}
+
 /* -- border around text elements */
 .x-form-text,
 .x-form-textarea,
