@@ -544,7 +544,7 @@ body.x-body-masked .x-window-mc, body.x-body-masked .x-window-plain .x-window-mc
 /* Grid */
 
 .x-grid-row-selected {
-	background:#fbf0d2 !important;
+	background:#ffe1a6 !important;
 	border:1px dotted  #ccc;
     color : #000;
 }
