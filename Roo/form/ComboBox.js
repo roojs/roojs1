@@ -686,7 +686,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
             dv = !o || typeof(o[this.displayField]) == 'undefined' ? '' : o[this.displayField];
         } else {
             // this is an error condition!!!
-            Roo.log('no value field set for '+ this.name);
+            Roo.log('no  displayField value set for '+ this.name);
         }
         
         if(this.valueField){
