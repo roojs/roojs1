@@ -23,8 +23,16 @@ var pa = GLib.get_current_dir();
 print(pa);
 //println(pack(File.read(pa+'/css/basic-dialog.css')));
 
-var lines = File.read(pa + '/css/roojs-debug.css');
-
+var lines = File.read(pa + '/css/roojs-debug.css').split(/\n/);
+//@import url("reset-min.css");
+var out = '';
+lines.forEach(function(l) {
+    if (!l.match(/^@import/)) {
+        continue;
+    }
+    l = l.replace(/^[^"]+"([^"]+)"/, '$1');
+    out+=pack(File.read(pa+'/css/' + l))+"\n"+
+)
 
 File.write(pa+'/css/roojs.css',
     
