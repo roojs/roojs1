@@ -31,8 +31,8 @@ lines.forEach(function(l) {
         continue;
     }
     l = l.replace(/^[^"]+"([^"]+)"/, '$1');
-    out+=pack(File.read(pa+'/css/' + l))+"\n"+
-)
+    out+=pack(File.read(pa+'/css/' + l))+"\n";
+);
 
 File.write(pa+'/css/roojs.css',
     
