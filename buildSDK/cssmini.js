@@ -28,7 +28,7 @@ var lines = File.read(pa + '/css/roojs-debug.css').split(/\n/);
 var out = '';
 lines.forEach(function(l) {
     if (!l.match(/^@import/)) {
-        continue;
+        return;
     }
     l = l.replace(/^[^"]+"([^"]+)"/, '$1');
     print("pack " + l + "\n");
