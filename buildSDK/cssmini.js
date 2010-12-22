@@ -22,7 +22,10 @@ var pa = GLib.get_current_dir();
 
 print(pa);
 //println(pack(File.read(pa+'/css/basic-dialog.css')));
- 
+
+var lines = File.read(pa + '/css/roojs-debug.css');
+
+
 File.write(pa+'/css/roojs.css',
     
     pack(File.read(pa+'/css/reset-min.css'))+"\n"+
