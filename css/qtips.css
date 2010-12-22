@@ -37,7 +37,7 @@
 	display: block;
 	padding-right: 3px;
 }
-/* was y\:qtip ??? some kind of ie hac?*/
+/* was y\:qtip ??? some kind of ie hack? */
 x\:qtip, qtip{
 	display: none;
 }
