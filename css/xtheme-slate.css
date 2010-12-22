@@ -570,6 +570,11 @@ td.x-grid-hd-over, td.sort-desc, td.sort-asc, td.x-grid-hd-menu-open {
 .x-grid-cell-selected{
 	background-color:#ffe1a6 !important;
 }
+.x-grid-cell-selected, .x-grid-row-selected {
+    color: black;
+}
+
+
 .x-grid-body .x-grid-td-expander{
 	background:transparent url(../images/slate/grid/grid3-special-col-bg.gif) repeat-y right;
 }
