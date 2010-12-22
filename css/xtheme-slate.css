@@ -571,7 +571,7 @@ td.x-grid-hd-over, td.sort-desc, td.sort-asc, td.x-grid-hd-menu-open {
 	background-color:#ffe1a6 !important;
 }
 .x-grid-cell-selected, .x-grid-row-selected {
-    color: black;
+    color: #000;
 }
 
 
