@@ -84,6 +84,7 @@
 {    
  border: solid 1px black;
 }
+
 .x-form-field-wrap
 {
     position: relative;
@@ -93,7 +94,6 @@
  
 /* gecko specific fix */
 
-}
 .roo-ie .roo-strict .x-form-text,
 .roo-ie .x-form-text
 {
