@@ -34,32 +34,9 @@ lines.forEach(function(l) {
     out+=pack(File.read(pa+'/css/' + l))+"\n";
 );
 
-File.write(pa+'/css/roojs.css',
+File.write(pa+'/css/roojs.css', out); 
     
-    pack(File.read(pa+'/css/reset-min.css'))+"\n"+
-    pack(File.read(pa+'/css/core.css'))+"\n"+
-    pack(File.read(pa+'/css/tabs.css'))+"\n"+
-    pack(File.read(pa+'/css/form.css'))+"\n"+
-    pack(File.read(pa+'/css/button.css')) +"\n"+
-    pack(File.read(pa+'/css/toolbar.css'))+"\n"+
-    pack(File.read(pa+'/css/resizable.css'))+"\n"+
-    pack(File.read(pa+'/css/grid.css'))+"\n"+
-    pack(File.read(pa+'/css/layout.css'))+"\n"+
-    pack(File.read(pa+'/css/basic-dialog.css'))+"\n"+
-    pack(File.read(pa+'/css/dd.css'))+"\n"+
-    pack(File.read(pa+'/css/tree.css'))+"\n" +
-    pack(File.read(pa+'/css/qtips.css'))+"\n"+
-    pack(File.read(pa+'/css/date.css')) +"\n"+
-    //pack(File.read(pa+'/css/menu.css')) +"\n"+
-    //pack(File.read(pa+'/css/box.css')) +"\n"+
-    pack(File.read(pa+'/css/combo.css')) +"\n"+
-    
-    pack(File.read(pa+'/css/inline-editor.css'))+"\n"
-    
-  
-    
-    
-);
+     
 print("written css/roojs.css");
 // and the themese...
 //ytheme-aero.css
