@@ -545,9 +545,11 @@ body.x-body-masked .x-window-mc, body.x-body-masked .x-window-plain .x-window-mc
 .x-grid-cell-text {
     color: #666;
 }
-.x-grid-row-selected .x-grid-cell-text {
-    color : #000;
+.x-grid-cell-selected  .x-grid-cell-text, 
+.x-grid-row-selected  .x-grid-cell-text {
+    color: #000;
 }
+ 
 .x-grid-row-selected {
 	background:#ffe1a6 !important;
 	border:1px dotted  #ccc;
@@ -575,9 +577,7 @@ td.x-grid-hd-over, td.sort-desc, td.sort-asc, td.x-grid-hd-menu-open {
 .x-grid-cell-selected{
 	background-color:#ffe1a6 !important;
 }
-.x-grid-cell-selected, .x-grid-row-selected {
-    color: #000;
-}
+
 
 
 .x-grid-body .x-grid-td-expander{
