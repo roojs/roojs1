@@ -30,7 +30,7 @@ lines.forEach(function(l) {
     if (!l.match(/^@import/)) {
         return;
     }
-    l = l.replace(/^[^"]+"([^"]+)"/, '$1');
+    l = l.replace(/^[^"]+"([^"]+)".*/, '$1');
     print("pack " + l + "\n");
     out+=pack(File.read(pa+'/css/' + l))+"\n";
 });
