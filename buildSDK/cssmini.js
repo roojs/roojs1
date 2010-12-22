@@ -31,6 +31,7 @@ lines.forEach(function(l) {
         continue;
     }
     l = l.replace(/^[^"]+"([^"]+)"/, '$1');
+    print("pack " + l + "\n";
     out+=pack(File.read(pa+'/css/' + l))+"\n";
 );
 
