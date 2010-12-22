@@ -404,6 +404,7 @@ select.x-grid-editor{
 {
 	font: normal 8pt tahoma,arial,helvetica;
 	border-bottom: 1px solid #f1efe2;
+    border-left: 1px solid #f1efe2;
 	overflow: visible;
 	white-space: nowrap;
 	/* height:21px; */
