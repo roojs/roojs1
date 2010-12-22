@@ -142,7 +142,7 @@ button.x-btn-menu-arrow-el{display:block;background:url(../images/default/grid/s
 .x-menu-item-checked .x-menu-item-icon{background-position:0 -16px;width:16px;height:16px;}
 .x-toolbar .x-tb-button-disabled .x-tb-button-inner{color:gray;cursor:default;}
 .x-toolbar .ytb-sep{background-image:url(../images/default/grid/grid-split.gif);background-position:center center;background-repeat:no-repeat;border:0 none;cursor:default;display:block;font-size:1px;height:16px;margin:0 2px;overflow:hidden;width:4px;}
-*/
+
 .x-resizable-handle{position:absolute;z-index:100;font-size:1px;line-height:6px;overflow:hidden;background:white;filter:alpha(opacity=0);opacity:0;zoom:1;}
 .x-resizable-handle-east{width:6px;cursor:e-resize;right:0;top:0;height:100%;margin-right:-1px;}
 .x-resizable-handle-south{width:100%;cursor:s-resize;left:0;bottom:0;height:6px;margin-bottom:-1px;}
