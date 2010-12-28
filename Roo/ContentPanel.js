@@ -109,6 +109,8 @@ Roo.ContentPanel = function(el, config, content){
     });
     if(this.autoScroll){
         this.resizeEl.setStyle("overflow", "auto");
+    } else {
+        this.el.on('scroll', this.el.scrollTop);
     }
     content = content || this.content;
     if(content){
@@ -475,11 +477,13 @@ Roo.NestedLayoutPanel = function(layout, config)
     }
     */
     
+    
     Roo.NestedLayoutPanel.superclass.constructor.call(this, layout.getEl(), config);
     
     layout.monitorWindowResize = false; // turn off autosizing
     this.layout = layout;
     this.layout.getEl().addClass("x-layout-nested-layout");
+    
     
     
     
