@@ -110,7 +110,10 @@ Roo.ContentPanel = function(el, config, content){
     if(this.autoScroll){
         this.resizeEl.setStyle("overflow", "auto");
     } else {
-        this.el.on('scroll', this.el.scrollTop);
+        // fix randome scrolling
+        this.el.on('scroll', function() {
+            this.el.scrollTo('top',0); 
+        });
     }
     content = content || this.content;
     if(content){
