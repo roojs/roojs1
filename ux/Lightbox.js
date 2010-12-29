@@ -230,49 +230,65 @@ Roo.apply(Roo.ux.Lightbox.prototype,
                 'line-height': 0,
             },
             '.roo-lightbox a img' : { border: 'none'  },
-            '.roo-lightbox .outerImageContainer' : {
+            '.roo-lightbox .outer-image-container' : {
                 position: 'relative'; 
                 'background-color': '#fff'; 
                 width: '250px',
                 height: '250px',
                 margin: '0 auto'
+            },
+            
+            '.roo-lightbox image-container'  :{ padding: '10px'  }
+
+            '.roo-lightbox .loading' { 
+            position:'absolute; 
+                top:'40%',
+                left:'0%',
+                height:'25%',
+                width:'100%',
+                text-align:'center',
+                line-height:'0'
+            
             }
-        #imageContainer{ padding: 10px; }
+            '.roo-lightbox loading a' : { 
+                background:'url(../images/loading.gif) 0 0 no-repeat; 
+                display:'block',
+                width:'32px',
+                height:'32px',
+                cursor:'pointer'
+            }
+            '.roo-lightbox bottom-nav-close' : {
+                background:'url(../images/close.gif) 0 0 no-repeat', 
+                height:'26px',
+                width:'26px',
+                cursor:'pointer'
+            }
+            '.roo-lightbox .hoverNav' :{ 
+                position:'absolute', 
+                top:'0', 
+                left:'0', 
+                height:'100%', 
+                width:'100%', 
+                'z-index':'10'
+            }
+            '.roo-lightbox .image-container>.hover-nav' :{ left:'0' }
+            '.roo-lightbox .hoverNav a' :{ outline:'none'}
 
-        #loading{ 
-            position: absolute; 
-            top: 40%; 
-            left: 0%; 
-            height: 25%; 
-            width: 100%; 
-            text-align: 
-            center; 
-            line-height: 0; 
-        }
-        #loading a { 
-            background: url(../images/loading.gif) 0 0 no-repeat; 
-            display: block;
-            width: 32px;
-            height: 32px;
-             cursor: pointer;
-        }
-        #bottomNavClose {
-            background: url(../images/close.gif) 0 0 no-repeat; 
-            height:26px;
-            width:26px;
-            cursor: pointer;
-        }
-        #hoverNav{ position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 10; }
-        #imageContainer>#hoverNav{ left: 0;}
-        #hoverNav a{ outline: none;}
+            '.roo-lightbox .prevLink, .roo-lightbox .nextLink' :{ width:'49%', height:'100%', background-image:'url(data:image/gif;base64,AAAA)', display:'block', }
+            '.roo-lightbox .prevLink' : { left:'0; float:'left;}
+            '.roo-lightbox .nextLink' : { right:'0; float:'right;}
+            '.roo-lightbox .prevLink:hover, .roo-lightbox .prevLink:visited:hover ' :{ background:'url(../images/prevlabel.gif) left 15% no-repeat; }
+            '.roo-lightbox .nextLink:hover, .roo-lightbox .nextLink:visited:hover ' :{ background:'url(../images/nextlabel.gif) right 15% no-repeat; }
 
-        #prevLink, #nextLink{ width: 49%; height: 100%; background-image: url(data:image/gif;base64,AAAA); /* Trick IE into showing hover */ display: block; }
-        #prevLink { left: 0; float: left;}
-        #nextLink { right: 0; float: right;}
-        #prevLink:hover, #prevLink:visited:hover { background: url(../images/prevlabel.gif) left 15% no-repeat; }
-        #nextLink:hover, #nextLink:visited:hover { background: url(../images/nextlabel.gif) right 15% no-repeat; }
+         #imageDataContainer{ font: 10px Verdana, Helvetica, sans-serif; background-color: #fff; margin: 0 auto; line-height: 1.4em; overflow: auto; width: 100% ; }
 
-        #i
+        #imageData{ padding:0 10px; color: #666; }
+        #imageData #imageDetails{ width: 70%; float: left; text-align: left; }  
+        #imageData #caption{ font-weight: bold; }
+        #imageData #numberDisplay{ display: block; clear: left; padding-bottom: 1.0em;  }           
+        #imageData #bottomNavClose{  float: right;  padding-bottom: 0.7em; outline: none;}      
+
+
     
     /**
      * updateImageList()
