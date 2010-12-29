@@ -180,7 +180,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
             });
         this.lightbox = this.roolightbox;
 
-        this.overlay = Roo.DomHelper.append(document.body, { html : '<div class="lightbox-overlay"></div>' });
+        this.overlay = Roo.DomHelper.append(document.body, { html : '<div class="lightbox-overlay"></div>' }, true);
         this.overlay.setVisibilityMode(Roo.Element.DISPLAY);
 		this.overlay.hide();
         this.overlay.on('click', this.end, this);
@@ -349,8 +349,8 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         */
         // stretch overlay to fill page and fade in
         //var arrayPageSize = this.getPageSize();
-        Roo.get(document.body).mask(false);
-        Roo.get(document.body)._mask.setHeight(Roo.lib.Dom.getDocumentHeight())        
+        
+        this.overlay.setHeight(Roo.lib.Dom.getDocumentHeight())        
         //new Effect.Appear(this.overlay,
         //    { duration: this.overlayDuration, from: 0.0, to: this.overlayOpacity });
 
