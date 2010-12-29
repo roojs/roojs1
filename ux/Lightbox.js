@@ -296,7 +296,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
                 margin: '0 auto',
                 'line-height': '1.4em', 
                 overflow: 'auto', 
-                width: '100%', 
+                width: '100%'
             },
 
             '.roo-lightbox .image-data' : { padding:'0 10px', color: '#666' },
