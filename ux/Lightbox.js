@@ -671,6 +671,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         //console.log('lightbox hide');
         this.lightbox.hide();
         this.loading.hide();
+        this.overlay.hide();
         Roo.get(document.body).unmask();
         // show all the objects that cause problems..
         //$$('select', 'object', 'embed').each(function(node){ node.style.visibility = 'visible' });
