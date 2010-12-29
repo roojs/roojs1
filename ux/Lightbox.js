@@ -226,14 +226,17 @@ Roo.apply(Roo.ux.Lightbox.prototype,
                 position: 'absolute',
                 left: 0,
                 width: '100%',
-                text-align: 'center',
-                line-height: 0,
+                'text-align': 'center',
+                'line-height': 0,
             },
-            
-        /* #lightbox img{ width: auto; height: auto;} */
-        #lightbox a img{ border: none; }
-
-        #outerImageContainer{ position: relative; background-color: #fff; width: 250px; height: 250px; margin: 0 auto; }
+            '.roo-lightbox a img' : { border: 'none'  },
+            '.roo-lightbox .outerImageContainer' : {
+                position: 'relative'; 
+                'background-color': '#fff'; 
+                width: '250px',
+                height: '250px',
+                margin: '0 auto'
+            }
         #imageContainer{ padding: 10px; }
 
         #loading{ 
