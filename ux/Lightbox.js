@@ -130,7 +130,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         var dh = Roo.DomHelper;
         this.el = Roo.DomHelper.append(document.body, {
                 html: 
-               //   '<div id="overlay"></div>' +
+                  '<div class="roo-lightbox-overlay"></div>' +
                   '<div class="roo-lightbox">' +
                   '   <div class="outer-image-container">' +
                   '       <div class="image-container">' +
@@ -165,7 +165,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         var ids = 'roo-lightbox outer-image-container image-container ' + 
             'lightbox-image hover-nav prev-link next-link loading loading-link ' + 
             'image-data-container image-data image-details caption number-display ' +
-            'bottom-nav bottom-nav-close';   
+            'bottom-nav bottom-nav-close roo-lightbox-overlay';   
             
         Roo.each(ids.split(' '), 
             function(id){ 
@@ -180,9 +180,8 @@ Roo.apply(Roo.ux.Lightbox.prototype,
             });
         this.lightbox = this.roolightbox;
 
-        this.overlay = Roo.DomHelper.append(document.body, { html : '<div class="roo-lightbox-overlay"></div>' }, true);
-        this.overlay.setVisibilityMode(Roo.Element.DISPLAY);
-		this.overlay.hide();
+        this.overlay = this.roolightboxoverlay;
+        this.overlay.hide();
         this.overlay.on('click', this.end, this);
         
 		this.lightbox.hide();
