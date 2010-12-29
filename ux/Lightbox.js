@@ -128,7 +128,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         // white 250 by 250 box.
         var size = (this.animate ? 250 : 1) + 'px';
         var dh = Roo.DomHelper;
-        this.el = dh.append(document.body, {
+        this.el = Roo.DomHelper.append(document.body, {
                 html: 
                //   '<div id="overlay"></div>' +
                   '<div class="lightbox">' +
