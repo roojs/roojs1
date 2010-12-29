@@ -131,7 +131,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         this.el = Roo.DomHelper.append(document.body, {
                 html: 
                //   '<div id="overlay"></div>' +
-                  '<div class="lightbox">' +
+                  '<div class="roo-lightbox">' +
                   '   <div class="outer-image-container">' +
                   '       <div class="image-container">' +
                   '           <img class="lightbox-image">' +
