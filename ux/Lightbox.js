@@ -250,20 +250,20 @@ Roo.apply(Roo.ux.Lightbox.prototype,
                 'text-align':'center',
                 'line-height':'0'
             
-            }
+            },
             '.roo-lightbox loading a' : { 
                 background:'url(../images/loading.gif) 0 0 no-repeat', 
                 display:'block',
                 width:'32px',
                 height:'32px',
                 cursor:'pointer'
-            }
+            },
             '.roo-lightbox bottom-nav-close' : {
                 background:'url(../images/close.gif) 0 0 no-repeat', 
                 height:'26px',
                 width:'26px',
                 cursor:'pointer'
-            }
+            },
             '.roo-lightbox .hoverNav' :{ 
                 position:'absolute', 
                 top:'0', 
@@ -271,7 +271,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
                 height:'100%', 
                 width:'100%', 
                 'z-index':'10'
-            }
+            },
             '.roo-lightbox .image-container>.hover-nav' :{ left:'0' },
             '.roo-lightbox .hover-nav a' :{ outline:'none'},
 
