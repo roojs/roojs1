@@ -252,14 +252,14 @@ Roo.apply(Roo.ux.Lightbox.prototype,
                 'line-height':'0'
             
             },
-            '.roo-lightbox loading a' : { 
+            '.roo-lightbox .loading a' : { 
                 background:'url('+ rootURL  + '/ux/lightbox/loading.gif) 0 0 no-repeat', 
                 display:'block',
                 width:'32px',
                 height:'32px',
                 cursor:'pointer'
             },
-            '.roo-lightbox bottom-nav-close' : {
+            '.roo-lightbox .bottom-nav-close' : {
                 background:'url('+ rootURL  + '/ux/lightbox/close.gif) 0 0 no-repeat', 
                 height:'26px',
                 width:'26px',
