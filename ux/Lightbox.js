@@ -45,6 +45,7 @@
 Roo.namespace('Roo.ux'); 
  
 Roo.ux.Lightbox = function(cfg) {
+    this.imageArray = [];
     Roo.apply(this,cfg);
     this.initialize();
 }
@@ -224,7 +225,9 @@ Roo.apply(Roo.ux.Lightbox.prototype,
      */
     updateImageList: function() {   
         this.updateImageList = Roo.emptyFn;
-        
+        if (this.imageArray.length) {
+            return;
+        }
         Roo.each(Roo.DomQuery.select('a[rel^=lightbox]'), function(e) {
             this.imageArray.push(Roo.get(e));
             Roo.get(e).on('click', (function(event, tg, tga,tgb) {
