@@ -272,7 +272,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
                 width:'26px',
                 cursor:'pointer'
             },
-            '.roo-lightbox .hoverNav' :{ 
+            '.roo-lightbox .hover-nav' :{ 
                 position:'absolute', 
                 top:'0', 
                 left:'0', 
