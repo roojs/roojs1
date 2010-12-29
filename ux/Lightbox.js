@@ -162,8 +162,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         
         var th = this;
         
-        var ids = 
-            'roo-lightbox outer-image-container image-container ' + 
+        var ids = 'roo-lightbox outer-image-container image-container ' + 
             'lightbox-image hover-nav prev-link next-link loading loading-link ' + 
             'image-data-container image-data image-details caption number-display ' +
             'bottom-nav bottom-nav-close';   
