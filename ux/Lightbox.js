@@ -417,7 +417,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         // hide elements during transition
         if (this.animate) {
             this.loading.setStyle({
-                zIndex : Roo.get(document.body)._mask.getStyle('zIndex') * 1.2
+                zIndex :1200
             });
             this.loading.show();
             this.loadinglink.setX( (Roo.lib.Dom.getViewWidth() / 2) - 16);
