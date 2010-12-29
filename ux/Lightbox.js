@@ -163,52 +163,53 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         var th = this;
         
         var ids = 
-            'lightbox outerImageContainer imageContainer ' + 
-            'lightboxImage hoverNav prevLink nextLink loading loadingLink ' + 
-            'imageDataContainer imageData imageDetails caption numberDisplay '
-            'bottomNav bottomNavClose';   
+            'lightbox outer-image-container image-container ' + 
+            'lightbox-image hover-nav prev-link next-link loading loading-link ' + 
+            'image-data-container image-data image-details caption number-display '
+            'bottom-nav bottom-nav-close';   
             
         Roo.each(ids.split(' '), 
             function(id){ 
-                
-                th[id] = Roo.get(id); 
-                if (!th[id]) {
+                var vid = id.replace(/\-/g,'');
+                th[vid] = this.el.child('.'+id); 
+                if (!th[vid]) {
                     return;
-                   }
-                th[id].setVisibilityMode(Roo.Element.DISPLAY);
+                }
+                
+                th[vid].setVisibilityMode(Roo.Element.DISPLAY);
             });
    
 
 		//Roo.get('overlay').hide();
         //Roo.get('overlay').on('click', this.end, this);
-		Roo.get('lightbox').hide();
-        Roo.get('lightbox').on('click',  function(event) { 
-                if (event.getTarget().id == 'lightbox') {
+		this.lightbox.hide();
+        this.lightbox.on('click',  function(event) { 
+                if (Roo.get(event.getTarget()).hasClass('lightbox')) {
                     this.end(); 
                 }
             }, this);
             
-		Roo.get('outerImageContainer').setStyle({ width: size, height: size });
+		this.outerimagecontainer.setStyle({ width: size, height: size });
         
-		Roo.get('prevLink').on('click', 
+		this.prevlink.on('click', 
             function(event) { 
                 event.stopEvent(); 
                 this.changeImage(this.activeImage - 1); 
             }, this);
             
-		Roo.get('nextLink').on('click', 
+		this.nextlink.on('click', 
             function(event) { 
                 event.stopEvent(); 
                 this.changeImage(this.activeImage + 1); 
             },this);
             
-		Roo.get('loadingLink').on('click', 
+		this.loadinglink.on('click', 
             function(event) { 
                 event.stopEvent(); 
                 this.end(); 
             }, this);
             
-		Roo.get('bottomNavClose').on('click',  
+		this.bottomnavclose.on('click',  
             function(event) { 
                 event.stopEvent(); 
                 this.end(); 
@@ -412,18 +413,18 @@ Roo.apply(Roo.ux.Lightbox.prototype,
                 zIndex : Roo.get(document.body)._mask.getStyle('zIndex') * 1.2
             });
             this.loading.show();
-            this.loadingLink.setX( (Roo.lib.Dom.getViewWidth() / 2) - 16);
+            this.loadinglink.setX( (Roo.lib.Dom.getViewWidth() / 2) - 16);
             //this.loadingLink.show();
             // center the loading?
             
         }
         
-        this.hoverNav.hide();
-        this.prevLink.hide();
-        this.nextLink.hide();
+        this.hovernav.hide();
+        this.prevlink.hide();
+        this.nextlink.hide();
 		// HACK: Opera9 does not currently support scriptaculous opacity and appear fx
-        this.imageDataContainer.setStyle({opacity: .0001});
-        this.numberDisplay.hide();
+        this.imagedatacontainer.setStyle({opacity: .0001});
+        this.numberdisplay.hide();
         
         var imgPreloader =  Roo.DomHelper.append(document.body, { tag: 'img' } , true);
         // once image is preloaded, resize image container
@@ -431,9 +432,9 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         
         imgPreloader.on('load', function() {
             
-            this.lightboxImage.dom.src = this.imageArray[this.activeImage].dom.href;
+            this.lightboximage.dom.src = this.imageArray[this.activeImage].dom.href;
             
-            this.resizeImageContainer(imgPreloader.getWidth(), imgPreloader.getHeight());
+            this.resizeimagecontainer(imgPreloader.getWidth(), imgPreloader.getHeight());
             imgPreloader.remove();
         }, this);
         imgPreloader.dom.src = this.imageArray[this.activeImage].dom.href;
@@ -449,8 +450,8 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         imgHeight = Math.max(50, imgHeight);
         
         // get current width and height
-        var widthCurrent  = this.outerImageContainer.getWidth();
-        var heightCurrent = this.outerImageContainer.getHeight();
+        var widthCurrent  = this.outerimagecontainer.getWidth();
+        var heightCurrent = this.outerimagecontainer.getHeight();
         
         //fixme need better calcs.
         var w = window;
@@ -478,7 +479,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
             
         }
         
-        this.lightboxImage.set( { width : imgWidth, height : imgHeight });
+        this.lightboximage.set( { width : imgWidth, height : imgHeight });
         
         
         // scalars based on change from old to new
@@ -490,7 +491,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         var hDiff = heightCurrent - heightNew;
         
          
-        this.outerImageContainer.animate(
+        this.outerimagecontainer.animate(
             { width: {to: widthNew}, height: {to: heightNew} },
             this.resizeDuration,
             null, // on complete
@@ -509,9 +510,9 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         }
 
         (function(){
-            this.prevLink.setStyle({ height: imgHeight + 'px' });
-            this.nextLink.setStyle({ height: imgHeight + 'px' });
-            this.imageDataContainer.setStyle({ width: widthNew + 'px'}); // the text area..
+            this.prevlink.setStyle({ height: imgHeight + 'px' });
+            this.nextlink.setStyle({ height: imgHeight + 'px' });
+            this.imagedatacontainer.setStyle({ width: widthNew + 'px'}); // the text area..
             this.showImage();
         }).defer(timeout / 1000, this);
     },
@@ -525,7 +526,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         this.loading.hide();
         //this.loadingLink.hide();
         var _this=  this;
-        this.lightboxImage.animate( 
+        this.lightboximage.animate( 
             {
                 opacity : {  to: 1.0 }
             },
@@ -552,12 +553,12 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         
         // if image is part of set display 'Image x of x' 
         if (this.imageArray.length > 1){
-            this.numberDisplay.update(
+            this.numberdisplay.update(
                 this.labelImage + ' ' + (this.activeImage + 1) + ' ' + this.labelOf + '  ' + this.imageArray.length)
             this.numberDisplay.show();
         }
         var _this = this;
-        this.imageDataContainer.animate(
+        this.imagedatacontainer.animate(
             {
                 //slide down ?: , from: 0.0, to: 1.0 
                 opacity :  {  to: 1.0 }
@@ -579,13 +580,13 @@ Roo.apply(Roo.ux.Lightbox.prototype,
     //
     updateNav: function() {
 
-        this.hoverNav.show();               
+        this.hovernav.show();               
 
         // if not first image in set, display prev image button
-        if (this.activeImage > 0) this.prevLink.show();
+        if (this.activeImage > 0) this.prevlink.show();
 
         // if not last image in set, display next image button
-        if (this.activeImage < (this.imageArray.length - 1)) this.nextLink.show();
+        if (this.activeImage < (this.imageArray.length - 1)) this.nextlink.show();
         
         this.enableKeyboardNav();
     },
@@ -607,7 +608,8 @@ Roo.apply(Roo.ux.Lightbox.prototype,
     //
     //  keyboardAction()
     //
-    keyboardAction: function(event) {
+    keyboardAction: function(event)
+    {
         var keycode = event.keyCode;
 
         var escapeKey;
