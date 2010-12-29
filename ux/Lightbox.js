@@ -131,27 +131,27 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         this.el = dh.append(document.body, {
                 html: 
                //   '<div id="overlay"></div>' +
-                  '<div id="lightbox">' +
-                  '   <div id="outerImageContainer">' +
-                  '       <div id="imageContainer">' +
-                  '           <img id="lightboxImage">' +
-                  '           <div style="" id="hoverNav">' +
-                  '               <a href="#" id="prevLink"></a>' +
-                  '               <a href="#" id="nextLink"></a>' +
+                  '<div class="lightbox">' +
+                  '   <div class="outer-image-container">' +
+                  '       <div class="imageContainer">' +
+                  '           <img class="lightboxImage">' +
+                  '           <div style="" class="hoverNav">' +
+                  '               <a href="#" class="prevLink"></a>' +
+                  '               <a href="#" class="nextLink"></a>' +
                   '           </div>' +
-                  '           <div id="loading">' +
-                  '               <a href="#" id="loadingLink">&nbsp;</a>' +
+                  '           <div class="loading">' +
+                  '               <a href="#" class="loadingLink">&nbsp;</a>' +
                   '           </div>' +
                   '       </div>' +
                   '   </div>' +
-                  '   <div id="imageDataContainer">' +
-                  '       <div id="imageData">' +
-                  '           <div id="imageDetails">' +
-                  '               <span id="caption"></span>' +
-                  '               <span id="numberDisplay"></span>' +
+                  '   <div class="imageDataContainer">' +
+                  '       <div class="imageData">' +
+                  '           <div class="imageDetails">' +
+                  '               <span class="caption"></span>' +
+                  '               <span class="numberDisplay"></span>' +
                   '           </div>' +
-                  '           <div id="bottomNav">' +
-                  '               <div href="#" id="bottomNavClose"></div>' +
+                  '           <div class="bottomNav">' +
+                  '               <div href="#" class="bottomNavClose"></div>' +
                   '           </div>' +
                   '       </div>' +
                   '   </div>' +
