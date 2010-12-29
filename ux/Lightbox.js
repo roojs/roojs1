@@ -232,8 +232,8 @@ Roo.apply(Roo.ux.Lightbox.prototype,
             },
             '.roo-lightbox a img' : { border: 'none'  },
             '.roo-lightbox .outer-image-container' : {
-                position: 'relative'; 
-                'background-color': '#fff'; 
+                position: 'relative',
+                'background-color': '#fff',
                 width: '250px',
                 height: '250px',
                 margin: '0 auto'
@@ -242,7 +242,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
             '.roo-lightbox image-container'  :{ padding: '10px'  }
 
             '.roo-lightbox .loading' { 
-            position:'absolute; 
+            position:'absolute', 
                 top:'40%',
                 left:'0%',
                 height:'25%',
@@ -252,7 +252,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
             
             }
             '.roo-lightbox loading a' : { 
-                background:'url(../images/loading.gif) 0 0 no-repeat; 
+                background:'url(../images/loading.gif) 0 0 no-repeat', 
                 display:'block',
                 width:'32px',
                 height:'32px',
@@ -292,11 +292,11 @@ Roo.apply(Roo.ux.Lightbox.prototype,
 
             '.roo-lightbox .image-data-container' : { 
                 font: '10px Verdana, Helvetica, sans-serif',
-                background-color: #fff; 
-                margin: 0 auto; 
-                line-height: 1.4em; 
-                overflow: auto; 
-                width: 100% ; 
+                background-color: '#fff',
+                margin: '0 auto',
+                'line-height': '1.4em', 
+                overflow: 'auto', 
+                width: '100%', 
             },
 
             '.roo-lightbox .image-data' : { padding:'0 10px', color: '#666' },
