@@ -557,7 +557,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         if (this.imageArray.length > 1){
             this.numberdisplay.update(
                 this.labelImage + ' ' + (this.activeImage + 1) + ' ' + this.labelOf + '  ' + this.imageArray.length)
-            this.numberDisplay.show();
+            this.numberdisplay.show();
         }
         var _this = this;
         this.imagedatacontainer.animate(
