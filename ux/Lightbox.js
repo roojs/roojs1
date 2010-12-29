@@ -532,8 +532,8 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         }
 
         (function(){
-            this.prevlink.setStyle({ height: imgHeight + 'px' });
-            this.nextlink.setStyle({ height: imgHeight + 'px' });
+            this.prevlink.setStyle({ top: imgHeight + 'px' });
+            this.nextlink.setStyle({ top: imgHeight + 'px' });
             this.imagedatacontainer.setStyle({ width: widthNew + 'px'}); // the text area..
             this.showImage();
         }).defer(timeout / 1000, this);
