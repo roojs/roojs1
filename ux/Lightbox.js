@@ -247,8 +247,8 @@ Roo.apply(Roo.ux.Lightbox.prototype,
                 left:'0%',
                 height:'25%',
                 width:'100%',
-                text-align:'center',
-                line-height:'0'
+                'text-align':'center',
+                'line-height':'0'
             
             }
             '.roo-lightbox loading a' : { 
@@ -292,7 +292,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
 
             '.roo-lightbox .image-data-container' : { 
                 font: '10px Verdana, Helvetica, sans-serif',
-                background-color: '#fff',
+                'background-color': '#fff',
                 margin: '0 auto',
                 'line-height': '1.4em', 
                 overflow: 'auto', 
