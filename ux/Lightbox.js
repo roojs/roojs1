@@ -185,6 +185,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
          
 		this.lightbox.hide();
         this.lightbox.on('click',  function(event) { 
+        Roo.log(Roo.get(event.getTarget()).hasClass('roo-lightbox') ? 1 : 0);
                 if (Roo.get(event.getTarget()).hasClass('roo-lightbox')) {
                     this.end(); 
                 }
