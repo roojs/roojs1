@@ -94,7 +94,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
     /**
      * List of images
      */
-    imageArray: [],
+    imageArray: false,
     
     /**
      * Current image.
