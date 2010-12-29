@@ -440,6 +440,8 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         imgPreloader.dom.src = this.imageArray[this.activeImage].dom.href;
     },
 
+    
+    
     //
     //  resizeImageContainer()
     //
