@@ -304,6 +304,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
             '.roo-lightbox .image-data .numberDisplay' : { 'display': 'block', clear: 'left', 'padding-bottom': '1.0em'  } ,   
             '.roo-lightbox .image-data .bottomNavClose' : {  'float': 'right',  'padding-bottom': '0.7em','outline': 'none'}  
         });
+    },
 
 
     
