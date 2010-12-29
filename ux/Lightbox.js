@@ -133,25 +133,25 @@ Roo.apply(Roo.ux.Lightbox.prototype,
                //   '<div id="overlay"></div>' +
                   '<div class="lightbox">' +
                   '   <div class="outer-image-container">' +
-                  '       <div class="imageContainer">' +
-                  '           <img class="lightboxImage">' +
-                  '           <div style="" class="hoverNav">' +
-                  '               <a href="#" class="prevLink"></a>' +
-                  '               <a href="#" class="nextLink"></a>' +
+                  '       <div class="image-container">' +
+                  '           <img class="lightbox-image">' +
+                  '           <div style="" class="hover-nav">' +
+                  '               <a href="#" class="prev-link"></a>' +
+                  '               <a href="#" class="next-link"></a>' +
                   '           </div>' +
                   '           <div class="loading">' +
-                  '               <a href="#" class="loadingLink">&nbsp;</a>' +
+                  '               <a href="#" class="loading-link">&nbsp;</a>' +
                   '           </div>' +
                   '       </div>' +
                   '   </div>' +
-                  '   <div class="imageDataContainer">' +
-                  '       <div class="imageData">' +
-                  '           <div class="imageDetails">' +
+                  '   <div class="image-data-container">' +
+                  '       <div class="image-data">' +
+                  '           <div class="image-details">' +
                   '               <span class="caption"></span>' +
-                  '               <span class="numberDisplay"></span>' +
+                  '               <span class="number-display"></span>' +
                   '           </div>' +
-                  '           <div class="bottomNav">' +
-                  '               <div href="#" class="bottomNavClose"></div>' +
+                  '           <div class="bottom-nav">' +
+                  '               <div href="#" class="bottom-nav-close"></div>' +
                   '           </div>' +
                   '       </div>' +
                   '   </div>' +
