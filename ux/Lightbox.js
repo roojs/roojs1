@@ -239,7 +239,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
                 margin: '0 auto'
             },
             
-            '.roo-lightbox image-container'  :{ padding: '10px'  }
+            '.roo-lightbox image-container'  :{ padding: '10px'  },
 
             '.roo-lightbox .loading' : { 
                 position:'absolute', 
