@@ -217,6 +217,60 @@ Roo.apply(Roo.ux.Lightbox.prototype,
        
     },
 
+    initializeCSS: function() {    
+        if (typeof(Roo.ux.Lightbox.css) != 'undefined') {
+            return;
+        }
+        Roo.ux.Lightbox.css = Roo.util.CSS.createStyleSheet( {
+            '.roo-lightbox' : {
+                position: 'absolute',
+                left: 0,
+                width: '100%',
+                text-align: 'center',
+                line-height: 0,
+            },
+            
+        /* #lightbox img{ width: auto; height: auto;} */
+        #lightbox a img{ border: none; }
+
+        #outerImageContainer{ position: relative; background-color: #fff; width: 250px; height: 250px; margin: 0 auto; }
+        #imageContainer{ padding: 10px; }
+
+        #loading{ 
+            position: absolute; 
+            top: 40%; 
+            left: 0%; 
+            height: 25%; 
+            width: 100%; 
+            text-align: 
+            center; 
+            line-height: 0; 
+        }
+        #loading a { 
+            background: url(../images/loading.gif) 0 0 no-repeat; 
+            display: block;
+            width: 32px;
+            height: 32px;
+             cursor: pointer;
+        }
+        #bottomNavClose {
+            background: url(../images/close.gif) 0 0 no-repeat; 
+            height:26px;
+            width:26px;
+            cursor: pointer;
+        }
+        #hoverNav{ position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 10; }
+        #imageContainer>#hoverNav{ left: 0;}
+        #hoverNav a{ outline: none;}
+
+        #prevLink, #nextLink{ width: 49%; height: 100%; background-image: url(data:image/gif;base64,AAAA); /* Trick IE into showing hover */ display: block; }
+        #prevLink { left: 0; float: left;}
+        #nextLink { right: 0; float: right;}
+        #prevLink:hover, #prevLink:visited:hover { background: url(../images/prevlabel.gif) left 15% no-repeat; }
+        #nextLink:hover, #nextLink:visited:hover { background: url(../images/nextlabel.gif) right 15% no-repeat; }
+
+        #i
+    
     /**
      * updateImageList()
      * Loops through anchor tags looking for 'lightbox' references and applies onclick
@@ -339,6 +393,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
 
         
         imgPreloader.on('load', function() {
+            
             this.lightboxImage.dom.src = this.imageArray[this.activeImage].dom.href;
             
             this.resizeImageContainer(imgPreloader.getWidth(), imgPreloader.getHeight());
