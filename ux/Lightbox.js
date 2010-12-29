@@ -115,7 +115,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
     initialize: function() {    
         
         this.updateImageList();
-        
+        this.initializeCSS();
         // TBD this.keyboardAction = this.keyboardAction.bindAsEventListener(this);
         this.resizeSpeed  = Math.min(this.resizeSpeed, 10);
         this.resizeSpeed  = Math.max(this.resizeSpeed, 1);
