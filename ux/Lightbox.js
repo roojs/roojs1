@@ -217,7 +217,12 @@ Roo.apply(Roo.ux.Lightbox.prototype,
                 this.end(); 
             }, this);
 
-       
+        this.overlay.on('click',  
+            function(event) { 
+                event.stopEvent(); 
+                this.end(); 
+            }, this);
+
     },
 
     initializeCSS: function() {    
