@@ -271,14 +271,23 @@ Roo.apply(Roo.ux.Lightbox.prototype,
                 width:'100%', 
                 'z-index':'10'
             }
-            '.roo-lightbox .image-container>.hover-nav' :{ left:'0' }
-            '.roo-lightbox .hoverNav a' :{ outline:'none'}
+            '.roo-lightbox .image-container>.hover-nav' :{ left:'0' },
+            '.roo-lightbox .hover-nav a' :{ outline:'none'},
 
-            '.roo-lightbox .prevLink, .roo-lightbox .nextLink' :{ width:'49%', height:'100%', background-image:'url(data:image/gif;base64,AAAA)', display:'block', }
-            '.roo-lightbox .prevLink' : { left:'0; float:'left;}
-            '.roo-lightbox .nextLink' : { right:'0; float:'right;}
-            '.roo-lightbox .prevLink:hover, .roo-lightbox .prevLink:visited:hover ' :{ background:'url(../images/prevlabel.gif) left 15% no-repeat; }
-            '.roo-lightbox .nextLink:hover, .roo-lightbox .nextLink:visited:hover ' :{ background:'url(../images/nextlabel.gif) right 15% no-repeat; }
+            '.roo-lightbox .prev-link, .roo-lightbox .next-link' : { 
+                width:'49%', 
+                height:'100%', 
+                'background-image':'url(data:image/gif;base64,AAAA)', 
+                display:'block' 
+            },
+            '.roo-lightbox .prev-link' : { left:'0','float':'left'},
+            '.roo-lightbox .next-link' : { right:'0','float':'right'},
+            '.roo-lightbox .prev-link:hover, .roo-lightbox .prev-link:visited:hover ' :{ 
+                    background:'url(../images/prevlabel.gif) left 15% no-repeat'
+            },
+            '.roo-lightbox .next-link:hover, .roo-lightbox .next-link:visited:hover ' :{ 
+                background:'url(../images/nextlabel.gif) right 15% no-repeat'
+            },
 
          #imageDataContainer{ font: 10px Verdana, Helvetica, sans-serif; background-color: #fff; margin: 0 auto; line-height: 1.4em; overflow: auto; width: 100% ; }
 
