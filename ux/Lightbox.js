@@ -171,6 +171,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         Roo.each(ids.split(' '), 
             function(id){ 
                 var vid = id.replace(/\-/g,'');
+                Roo.log(id);
                 th[vid] = th.el.child('.'+id); 
                 if (!th[vid]) {
                     return;
