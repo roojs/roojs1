@@ -53,20 +53,13 @@ Roo.ux.Lightbox = function(cfg) {
 Roo.apply(Roo.ux.Lightbox.prototype,  
 {
     // optiosn..
-    /**
-     * @cfg fileLoadingImage {string} loading image
-     */
-    fileLoadingImage:        '/lightbox/images/loading.gif',     
-    /**
-     * @cfg fileBottomNavCloseImage {string} close image
-     */
-    fileBottomNavCloseImage: '/lightbox/images/closelabel.gif',
+     
     /**
      * @cfg overlayOpacity {number} controls transparency of shadow overlay
      */
     overlayOpacity: 0.8,   
     /**
-     * @cfg fileLoadingImage {boolean} toggles resizing animations
+     * @cfg animate {boolean} toggles resizing animations
      */
     animate: true,          
     /**
