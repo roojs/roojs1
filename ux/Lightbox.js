@@ -180,6 +180,8 @@ Roo.apply(Roo.ux.Lightbox.prototype,
             });
         this.lightbox = this.roolightbox;
 
+        this.overlay = Roo.DomHelper.append(document.body, { html : '<div class="lightbox-overlay"></div>' });
+        
 		//Roo.get('overlay').hide();
         //Roo.get('overlay').on('click', this.end, this);
 		this.lightbox.hide();
