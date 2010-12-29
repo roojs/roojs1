@@ -306,7 +306,16 @@ Roo.apply(Roo.ux.Lightbox.prototype,
             '.roo-lightbox .image-data .image-details ' : { width: '70%', 'float': 'left', 'text-align': 'left'}  ,
             '.roo-lightbox .image-data .caption' : { 'font-weight': 'bold' },
             '.roo-lightbox .image-data .numberDisplay' : { 'display': 'block', clear: 'left', 'padding-bottom': '1.0em'  } ,   
-            '.roo-lightbox .image-data .bottomNavClose' : {  'float': 'right',  'padding-bottom': '0.7em','outline': 'none'}  
+            '.roo-lightbox .image-data .bottomNavClose' : {  'float': 'right',  'padding-bottom': '0.7em','outline': 'none'} ,
+            '.roo-lightbox-overlay' : {
+                'background-color': black,
+                height: '500px',
+                left: '0px',
+                position: 'absolute',
+                top: '0px',
+                width: '100%',
+                'z-index': '90'
+            }
         });
     },
 
