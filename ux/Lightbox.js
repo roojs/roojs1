@@ -165,7 +165,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         var ids = 
             'lightbox outer-image-container image-container ' + 
             'lightbox-image hover-nav prev-link next-link loading loading-link ' + 
-            'image-data-container image-data image-details caption number-display '
+            'image-data-container image-data image-details caption number-display ' +
             'bottom-nav bottom-nav-close';   
             
         Roo.each(ids.split(' '), 
