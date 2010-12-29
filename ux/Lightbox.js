@@ -289,13 +289,20 @@ Roo.apply(Roo.ux.Lightbox.prototype,
                 background:'url(../images/nextlabel.gif) right 15% no-repeat'
             },
 
-         #imageDataContainer{ font: 10px Verdana, Helvetica, sans-serif; background-color: #fff; margin: 0 auto; line-height: 1.4em; overflow: auto; width: 100% ; }
+            '.roo-lightbox .image-data-container' : { 
+                font: '10px Verdana, Helvetica, sans-serif',
+                background-color: #fff; 
+                margin: 0 auto; 
+                line-height: 1.4em; 
+                overflow: auto; 
+                width: 100% ; 
+            }
 
-        #imageData{ padding:0 10px; color: #666; }
-        #imageData #imageDetails{ width: 70%; float: left; text-align: left; }  
-        #imageData #caption{ font-weight: bold; }
-        #imageData #numberDisplay{ display: block; clear: left; padding-bottom: 1.0em;  }           
-        #imageData #bottomNavClose{  float: right;  padding-bottom: 0.7em; outline: none;}      
+            '.roo-lightbox .image-data' : { padding:'0 10px', color: '#666' }
+            '.roo-lightbox .image-data .image-details ' : { width: '70%', 'float': 'left', 'text-align': 'left'}  
+            '.roo-lightbox .image-data .caption' : { 'font-weight': 'bold' }
+            '.roo-lightbox .image-data .numberDisplay' : { 'display': 'block', clear: 'left', 'padding-bottom': '1.0em'  }           
+            '.roo-lightbox .image-data .bottomNavClose' : {  'float': 'right',  'padding-bottom': '0.7em','outline': none'}      
 
 
     
