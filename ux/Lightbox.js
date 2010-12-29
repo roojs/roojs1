@@ -228,6 +228,8 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         if (typeof(Roo.ux.Lightbox.css) != 'undefined') {
             return;
         }
+        var rootURL = Roo.BLANK_IMAGE_URL.replace(/\/gray\/s\.gif$/, '');
+        
         Roo.ux.Lightbox.css = Roo.util.CSS.createStyleSheet( {
             '.roo-lightbox' : {
                 position: 'absolute',
@@ -258,14 +260,14 @@ Roo.apply(Roo.ux.Lightbox.prototype,
             
             },
             '.roo-lightbox loading a' : { 
-                background:'url(../images/loading.gif) 0 0 no-repeat', 
+                background:'url('+ rootURL  + '/ux/lightbox/loading.gif) 0 0 no-repeat', 
                 display:'block',
                 width:'32px',
                 height:'32px',
                 cursor:'pointer'
             },
             '.roo-lightbox bottom-nav-close' : {
-                background:'url(../images/close.gif) 0 0 no-repeat', 
+                background:'url('+ rootURL  + '/ux/lightbox/close.gif) 0 0 no-repeat', 
                 height:'26px',
                 width:'26px',
                 cursor:'pointer'
@@ -290,10 +292,10 @@ Roo.apply(Roo.ux.Lightbox.prototype,
             '.roo-lightbox .prev-link' : { left:'0','float':'left'},
             '.roo-lightbox .next-link' : { right:'0','float':'right'},
             '.roo-lightbox .prev-link:hover, .roo-lightbox .prev-link:visited:hover ' :{ 
-                    background:'url(../images/prevlabel.gif) left 15% no-repeat'
+                    background:'url('+ rootURL  + '/ux/lightbox/prevlabel.gif) left 15% no-repeat'
             },
             '.roo-lightbox .next-link:hover, .roo-lightbox .next-link:visited:hover ' :{ 
-                background:'url(../images/nextlabel.gif) right 15% no-repeat'
+                background:'url('+ rootURL  + '/ux/lightbox/nextlabel.gif) right 15% no-repeat'
             },
 
             '.roo-lightbox .image-data-container' : { 
