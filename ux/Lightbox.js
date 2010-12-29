@@ -429,7 +429,6 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         var imgPreloader =  Roo.DomHelper.append(document.body, { tag: 'img' } , true);
         // once image is preloaded, resize image container
 
-        
         imgPreloader.on('load', function() {
             
             this.lightboximage.dom.src = this.imageArray[this.activeImage].dom.href;
