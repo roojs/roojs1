@@ -182,8 +182,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
 
         this.overlay = this.roolightboxoverlay;
         this.overlay.hide();
-        this.overlay.on('click', this.end, this);
-        
+         
 		this.lightbox.hide();
         this.lightbox.on('click',  function(event) { 
                 if (Roo.get(event.getTarget()).hasClass('lightbox')) {
