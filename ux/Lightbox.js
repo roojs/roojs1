@@ -229,7 +229,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
                 left: 0,
                 width: '100%',
                 'text-align': 'center',
-                'line-height': 0,
+                'line-height': 0
             },
             '.roo-lightbox a img' : { border: 'none'  },
             '.roo-lightbox .outer-image-container' : {
