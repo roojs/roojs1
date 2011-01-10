@@ -444,12 +444,14 @@ Roo.apply(Roo.ux.Lightbox.prototype,
 
         imgPreloader.on('load', function() {
             
-            this.lightboximage.dom.src = this.imageArray[this.activeImage].dom.href || this.imageArray[this.activeImage].dom.src;
+            this.lightboximage.dom.src = this.imageArray[this.activeImage].href || 
+                this.imageArray[this.activeImage].dom.href || this.imageArray[this.activeImage].dom.src;
             
             this.resizeImageContainer(imgPreloader.getWidth(), imgPreloader.getHeight());
             imgPreloader.remove();
         }, this);
-        imgPreloader.dom.src = this.imageArray[this.activeImage].dom.href || this.imageArray[this.activeImage].dom.src;
+        imgPreloader.dom.src = this.imageArray[this.activeImage].href || 
+            this.imageArray[this.activeImage].dom.href ||  this.imageArray[this.activeImage].dom.src;
     },
 
     
@@ -659,12 +661,14 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         if (this.imageArray.length > this.activeImage + 1){
             preloadNextImage = Roo.DomHelper.append(document.body, { tag: 'img' } , true);
             preloadNextImage.on('load', function() { preloadNextImage.remove() });
-            preloadNextImage.dom.src = this.imageArray[this.activeImage + 1].dom.href || this.imageArray[this.activeImage + 1 ].dom.src;;
+            preloadNextImage.dom.src = this.imageArray[this.activeImage + 1].href ||
+                    this.imageArray[this.activeImage + 1].dom.href || this.imageArray[this.activeImage + 1 ].dom.src;;
         }
         if (this.activeImage > 0){
             preloadPrevImage = Roo.DomHelper.append(document.body, { tag: 'img' } , true);
             preloadPrevImage.on('load', function() { preloadPrevImage.remove() });
-            preloadPrevImage.dom.src = this.imageArray[this.activeImage - 1].dom.href || this.imageArray[this.activeImage - 1].dom.src;
+            preloadPrevImage.dom.src = this.imageArray[this.activeImage - 1].href || 
+                   this.imageArray[this.activeImage - 1].dom.href || this.imageArray[this.activeImage - 1].dom.src;
         }
     
     },
