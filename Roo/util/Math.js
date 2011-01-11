@@ -95,7 +95,7 @@ Roo.util.Math.prototype = {
 		if((n = new Roo.util.Math(n, this.precision, this.roundType)) == "0")
 			throw new Error("Division by 0");
 		else if(this == "0")
-			return new Roo.util.Math(0,, this.precision, this.roundType);
+			return new Roo.util.Math(0, this.precision, this.roundType);
 		var o = new Roo.util.Math(this), a = o._d, b = n._d, la = a.length - o._f,
 		lb = b.length - n._f, r = new Roo.util.Math(0, this.precision, this.roundType), i = 0, j, s, l, f = 1, c = 0, e = 0;
 		r._s = o._s != n._s, r.precision = Math.max(o.precision, n.precision),
