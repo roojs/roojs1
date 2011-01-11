@@ -175,4 +175,4 @@ Roo.Math.prototype = {
 		}
 		return delete this._rounding, this;
 	}
-}) 
+};
