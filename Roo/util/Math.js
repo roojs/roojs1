@@ -37,11 +37,13 @@ BigNumber.prototype = {
     _f : 0
     roundType : 0,
     precision : 0,
-    add : function(n)
+    add : function(num)
     {
-		if(this._s != (n = new BigNumber(n))._s)
-			return n._s ^= 1, this.subtract(n);
-		var o = new BigNumber(this), a = o._d, b = n._d, la = o._f,
+		num = new BigNumber(num, this.precision, this.roundType);
+        if (this._s != num._s) { //netagive...
+            return num._s ^= 1, this.subtract(num);
+		}
+        var o = new BigNumber(this), a = o._d, b = n._d, la = o._f,
 		lb = n._f, n = Math.max(la, lb), i, r;
 		la != lb && ((lb = la - lb) > 0 ? o._zeroes(b, lb, 1) : o._zeroes(a, -lb, 1));
 		i = (la = a.length) == (lb = b.length) ? a.length : ((lb = la - lb) > 0 ? o._zeroes(b, lb) : o._zeroes(a, -lb)).length;
