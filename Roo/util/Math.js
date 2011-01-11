@@ -193,8 +193,10 @@ Roo.util.Math.prototype = {
             b.pop());
             
 		x = (this._s ? "-" : "") + (p - d ? "0." + this._zeroes([], p - d - 1).join("") : "") + 1;
+        
+        
 		if(b.length > p){
-            print("rounding");
+            console.log("rounding");
 			n && (r == Roo.util.Math.DOWN ? false : r == Roo.util.Math.UP ? true : r == Roo.util.Math.CEIL ? !this._s
 			: r == Roo.util.Math.FLOOR ? this._s : r == Roo.util.Math.HALF_UP ? n >= 5 : r == Roo.util.Math.HALF_DOWN ? n > 5
 			: r == Roo.util.Math.HALF_EVEN ? n >= 5 && b[p - 1] & 1 : false) && this.add(x);
