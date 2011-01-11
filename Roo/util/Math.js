@@ -44,7 +44,7 @@ Roo.util.Math.prototype = {
 		num = new Roo.util.Math(num, this.precision, this.roundType);
         
         if (this._s != num._s) { //netagive...
-            return num._s ^= 1, this.subtract(num, this.precision, this.roundType);
+            return num._s ^= 1, this.subtract(num);
 		}
         
         var o = new Roo.util.Math(this), 
@@ -71,7 +71,7 @@ Roo.util.Math.prototype = {
 		return 
 	},
 	subtract : function(n){
-		if(this._s != (n = new Roo.util.Math(n))._s)
+		if(this._s != (n = new Roo.util.Math(n, this.precision, this.roundType))._s)
 			return n._s ^= 1, this.add(n);
 		var o = new Roo.util.Math(this), c = o.abs().compare(n.abs()) + 1, a = c ? o : n, b = c ? n : o, la = a._f, lb = b._f, d = la, i, j;
 		a = a._d, b = b._d, la != lb && ((lb = la - lb) > 0 ? o._zeroes(b, lb, 1) : o._zeroes(a, -lb, 1));
@@ -85,23 +85,23 @@ Roo.util.Math.prototype = {
 		return c || (o._s ^= 1), o._f = d, o._d = b, o.round();
 	},
 	multiply : function(n){
-		var o = new Roo.util.Math(this), r = o._d.length >= (n = new Roo.util.Math(n))._d.length, a = (r ? o : n)._d,
-		b = (r ? n : o)._d, la = a.length, lb = b.length, x = new Roo.util.Math, i, j, s;
-		for(i = lb; i; r && s.unshift(r), x.set(x.add(new Roo.util.Math(s.join("")))))
+		var o = new Roo.util.Math(this), r = o._d.length >= (n = new Roo.util.Math(n, this.precision, this.roundType))._d.length, a = (r ? o : n)._d,
+		b = (r ? n : o)._d, la = a.length, lb = b.length, x = new Roo.util.Math(0,this.precision, this.roundType), i, j, s;
+		for(i = lb; i; r && s.unshift(r), x.set(x.add(new Roo.util.Math(s.join(""), this.precision, this.roundType))))
 			for(s = (new Array(lb - --i)).join("0").split(""), r = 0, j = la; j; r += a[--j] * b[i], s.unshift(r % 10), r = (r / 10) >>> 0);
 		return o._s = o._s != n._s, o._f = ((r = la + lb - o._f - n._f) >= (j = (o._d = x._d).length) ? this._zeroes(o._d, r - j + 1, 1).length : j) - r, o.round();
 	},
 	divide : function(n){
-		if((n = new Roo.util.Math(n)) == "0")
+		if((n = new Roo.util.Math(n, this.precision, this.roundType)) == "0")
 			throw new Error("Division by 0");
 		else if(this == "0")
-			return new Roo.util.Math;
+			return new Roo.util.Math(0,, this.precision, this.roundType);
 		var o = new Roo.util.Math(this), a = o._d, b = n._d, la = a.length - o._f,
-		lb = b.length - n._f, r = new Roo.util.Math, i = 0, j, s, l, f = 1, c = 0, e = 0;
+		lb = b.length - n._f, r = new Roo.util.Math(0, this.precision, this.roundType), i = 0, j, s, l, f = 1, c = 0, e = 0;
 		r._s = o._s != n._s, r.precision = Math.max(o.precision, n.precision),
 		r._f = +r._d.pop(), la != lb && o._zeroes(la > lb ? b : a, Math.abs(la - lb));
 		n._f = b.length, b = n, b._s = false, b = b.round();
-		for(n = new Roo.util.Math; a[0] == "0"; a.shift());
+		for(n = new Roo.util.Math(0, this.precision, this.roundType); a[0] == "0"; a.shift());
 		out:
 		do{
 			for(l = c = 0, n == "0" && (n._d = [], n._f = 0); i < a.length && n.compare(b) == -1; ++i){
@@ -115,7 +115,7 @@ Roo.util.Math.prototype = {
 			}
 			if(f = 0, n.compare(b) == -1 && !(l = 0))
 				while(l ? r._d.push(0) : l = 1, n._d.push(0), ++n._f, n.compare(b) == -1);
-			for(s = new Roo.util.Math, j = 0; n.compare(y = s.add(b)) + 1 && ++j; s.set(y));
+			for(s = new Roo.util.Math(0, this.precision, this.roundType), j = 0; n.compare(y = s.add(b)) + 1 && ++j; s.set(y));
 			n.set(n.subtract(s)), !l && r._f == r._d.length && ++r._f, r._d.push(j);
 		}
 		while((i < a.length || n != "0") && (r._d.length - r._f) <= r.precision);
@@ -126,15 +126,15 @@ Roo.util.Math.prototype = {
 	},
 	pow : function(n){
 		var o = new Roo.util.Math(this), i;
-		if((n = (new Roo.util.Math(n)).intPart()) == 0) return o.set(1);
+		if((n = (new Roo.util.Math(n, this.precision, this.roundType)).intPart()) == 0) return o.set(1);
 		for(i = Math.abs(n); --i; o.set(o.multiply(this)));
-		return n < 0 ? o.set((new Roo.util.Math(1)).divide(o)) : o;
+		return n < 0 ? o.set((new Roo.util.Math(1, this.precision, this.roundType)).divide(o)) : o;
 	},
 	set : function(n){
 		return this.constructor(n), this;
 	},
 	compare : function(n){
-		var a = this, la = this._f, b = new Roo.util.Math(n), lb = b._f, r = [-1, 1], i, l;
+		var a = this, la = this._f, b = new Roo.util.Math(n, this.precision, this.roundType), lb = b._f, r = [-1, 1], i, l;
 		if(a._s != b._s)
 			return a._s ? -1 : 1;
 		if(la != lb)
@@ -151,7 +151,7 @@ Roo.util.Math.prototype = {
 		var n = new Roo.util.Math(this); return n._s = 0, n;
 	},
 	intPart : function(){
-		return new Roo.util.Math((this._s ? "-" : "") + (this._d.slice(0, this._f).join("") || "0"));
+		return new Roo.util.Math((this._s ? "-" : "", this.precision, this.roundType) + (this._d.slice(0, this._f).join("") || "0"));
 	},
     valueOf : function() {
         return this.toString();
