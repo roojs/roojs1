@@ -176,7 +176,7 @@ Roo.util.Math.prototype = {
     {
         var m = Roo.util.Math;
 		
-        if(typeof(m._rounding) != 'undefined') return this; // stop recursion..
+        if (typeof(m._rounding) != 'undefined') return this; // stop recursion..
         m._rounding = true;
 		
         var   r = this.roundType,
