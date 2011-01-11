@@ -33,6 +33,10 @@ BigNumber.defaultRoundType = BigNumber.ROUND_HALF_UP;
 
     
 BigNumber.prototype = {
+    _s : 0,
+    _f : 0
+    roundType : 0,
+    precision : 0,
     add : function(n)
     {
 		if(this._s != (n = new BigNumber(n))._s)
