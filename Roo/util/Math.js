@@ -3,18 +3,19 @@
 //+ based on.. Jonas Raoni Soares Silva
 //@ http://jsfromhell.com/classes/bignumber [rev. #4]
 **/
+Roo= Roo || {}
+   
 
-
-BigNumber = function(num, precision, roundType){
+Roo.Math = function(num, precision, roundType){
 	var i;
-	if(num instanceof BigNumber){
+	if(num instanceof Roo.Math){
 		for(i in {precision: 0, roundType: 0, _s: 0, _f: 0}) o[i] = num[i];
 		this._d = num._d.slice();
 		return;
 	}
     
-	this.precision = isNaN(precision = Math.abs(precision)) ? BigNumber.defaultPrecision : precision;
-	this.roundType = isNaN(r = Math.abs(roundType)) ? BigNumber.defaultRoundType : roundType;
+	this.precision = isNaN(precision = Math.abs(precision)) ? Roo.Math.defaultPrecision : precision;
+	this.roundType = isNaN(r = Math.abs(roundType)) ? Roo.Math.defaultRoundType : roundType;
     
 	this._s = (num += "").charAt(0) == "-";
 	this._f = (
@@ -24,28 +25,28 @@ BigNumber = function(num, precision, roundType){
 	this.round();
 };
 
-BigNumber.ROUND_HALF_EVEN = (BigNumber.ROUND_HALF_DOWN = (BigNumber.ROUND_HALF_UP =
-    (BigNumber.ROUND_FLOOR = (BigNumber.ROUND_CEIL = (BigNumber.ROUND_DOWN 
-    = (BigNumber.ROUND_UP = 0) + 1) + 1) + 1) + 1) + 1) + 1;
+Roo.Math.ROUND_HALF_EVEN = (Roo.Math.ROUND_HALF_DOWN = (Roo.Math.ROUND_HALF_UP =
+    (Roo.Math.ROUND_FLOOR = (Roo.Math.ROUND_CEIL = (Roo.Math.ROUND_DOWN 
+    = (Roo.Math.ROUND_UP = 0) + 1) + 1) + 1) + 1) + 1) + 1;
     
-BigNumber.defaultPrecision = 40;
-BigNumber.defaultRoundType = BigNumber.ROUND_HALF_UP;
+Roo.Math.defaultPrecision = 40;
+Roo.Math.defaultRoundType = Roo.Math.ROUND_HALF_UP;
 
     
-BigNumber.prototype = {
+Roo.Math.prototype = {
     _s : 0,
     _f : 0
     roundType : 0,
     precision : 0,
     add : function(num)
     {
-		num = new BigNumber(num, this.precision, this.roundType);
+		num = new Roo.Math(num, this.precision, this.roundType);
         
         if (this._s != num._s) { //netagive...
             return num._s ^= 1, this.subtract(num);
 		}
         
-        var o = new BigNumber(this), 
+        var o = new Roo.Math(this), 
             a = o._d, 
             b = num._d, 
             la = o._f,
@@ -66,9 +67,9 @@ BigNumber.prototype = {
 		return r && ++num && a.unshift(r), o._f = num, o.round();
 	},
 	subtract : function(n){
-		if(this._s != (n = new BigNumber(n))._s)
+		if(this._s != (n = new Roo.Math(n))._s)
 			return n._s ^= 1, this.add(n);
-		var o = new BigNumber(this), c = o.abs().compare(n.abs()) + 1, a = c ? o : n, b = c ? n : o, la = a._f, lb = b._f, d = la, i, j;
+		var o = new Roo.Math(this), c = o.abs().compare(n.abs()) + 1, a = c ? o : n, b = c ? n : o, la = a._f, lb = b._f, d = la, i, j;
 		a = a._d, b = b._d, la != lb && ((lb = la - lb) > 0 ? o._zeroes(b, lb, 1) : o._zeroes(a, -lb, 1));
 		for(i = (la = a.length) == (lb = b.length) ? a.length : ((lb = la - lb) > 0 ? o._zeroes(b, lb) : o._zeroes(a, -lb)).length; i;){
 			if(a[--i] < b[i]){
@@ -80,23 +81,23 @@ BigNumber.prototype = {
 		return c || (o._s ^= 1), o._f = d, o._d = b, o.round();
 	},
 	multiply : function(n){
-		var o = new BigNumber(this), r = o._d.length >= (n = new BigNumber(n))._d.length, a = (r ? o : n)._d,
-		b = (r ? n : o)._d, la = a.length, lb = b.length, x = new BigNumber, i, j, s;
-		for(i = lb; i; r && s.unshift(r), x.set(x.add(new BigNumber(s.join("")))))
+		var o = new Roo.Math(this), r = o._d.length >= (n = new Roo.Math(n))._d.length, a = (r ? o : n)._d,
+		b = (r ? n : o)._d, la = a.length, lb = b.length, x = new Roo.Math, i, j, s;
+		for(i = lb; i; r && s.unshift(r), x.set(x.add(new Roo.Math(s.join("")))))
 			for(s = (new Array(lb - --i)).join("0").split(""), r = 0, j = la; j; r += a[--j] * b[i], s.unshift(r % 10), r = (r / 10) >>> 0);
 		return o._s = o._s != n._s, o._f = ((r = la + lb - o._f - n._f) >= (j = (o._d = x._d).length) ? this._zeroes(o._d, r - j + 1, 1).length : j) - r, o.round();
 	},
 	divide : function(n){
-		if((n = new BigNumber(n)) == "0")
+		if((n = new Roo.Math(n)) == "0")
 			throw new Error("Division by 0");
 		else if(this == "0")
-			return new BigNumber;
-		var o = new BigNumber(this), a = o._d, b = n._d, la = a.length - o._f,
-		lb = b.length - n._f, r = new BigNumber, i = 0, j, s, l, f = 1, c = 0, e = 0;
+			return new Roo.Math;
+		var o = new Roo.Math(this), a = o._d, b = n._d, la = a.length - o._f,
+		lb = b.length - n._f, r = new Roo.Math, i = 0, j, s, l, f = 1, c = 0, e = 0;
 		r._s = o._s != n._s, r.precision = Math.max(o.precision, n.precision),
 		r._f = +r._d.pop(), la != lb && o._zeroes(la > lb ? b : a, Math.abs(la - lb));
 		n._f = b.length, b = n, b._s = false, b = b.round();
-		for(n = new BigNumber; a[0] == "0"; a.shift());
+		for(n = new Roo.Math; a[0] == "0"; a.shift());
 		out:
 		do{
 			for(l = c = 0, n == "0" && (n._d = [], n._f = 0); i < a.length && n.compare(b) == -1; ++i){
@@ -110,7 +111,7 @@ BigNumber.prototype = {
 			}
 			if(f = 0, n.compare(b) == -1 && !(l = 0))
 				while(l ? r._d.push(0) : l = 1, n._d.push(0), ++n._f, n.compare(b) == -1);
-			for(s = new BigNumber, j = 0; n.compare(y = s.add(b)) + 1 && ++j; s.set(y));
+			for(s = new Roo.Math, j = 0; n.compare(y = s.add(b)) + 1 && ++j; s.set(y));
 			n.set(n.subtract(s)), !l && r._f == r._d.length && ++r._f, r._d.push(j);
 		}
 		while((i < a.length || n != "0") && (r._d.length - r._f) <= r.precision);
@@ -120,16 +121,16 @@ BigNumber.prototype = {
 		return this.subtract(this.divide(n).intPart().multiply(n));
 	},
 	pow : function(n){
-		var o = new BigNumber(this), i;
-		if((n = (new BigNumber(n)).intPart()) == 0) return o.set(1);
+		var o = new Roo.Math(this), i;
+		if((n = (new Roo.Math(n)).intPart()) == 0) return o.set(1);
 		for(i = Math.abs(n); --i; o.set(o.multiply(this)));
-		return n < 0 ? o.set((new BigNumber(1)).divide(o)) : o;
+		return n < 0 ? o.set((new Roo.Math(1)).divide(o)) : o;
 	},
 	set : function(n){
 		return this.constructor(n), this;
 	},
 	compare : function(n){
-		var a = this, la = this._f, b = new BigNumber(n), lb = b._f, r = [-1, 1], i, l;
+		var a = this, la = this._f, b = new Roo.Math(n), lb = b._f, r = [-1, 1], i, l;
 		if(a._s != b._s)
 			return a._s ? -1 : 1;
 		if(la != lb)
@@ -140,13 +141,13 @@ BigNumber.prototype = {
 		return la != lb ? r[(la > lb) ^ a._s] : 0;
 	},
 	negate : function(){
-		var n = new BigNumber(this); return n._s ^= 1, n;
+		var n = new Roo.Math(this); return n._s ^= 1, n;
 	},
 	abs : function(){
-		var n = new BigNumber(this); return n._s = 0, n;
+		var n = new Roo.Math(this); return n._s = 0, n;
 	},
 	intPart : function(){
-		return new BigNumber((this._s ? "-" : "") + (this._d.slice(0, this._f).join("") || "0"));
+		return new Roo.Math((this._s ? "-" : "") + (this._d.slice(0, this._f).join("") || "0"));
 	},
     valueOf : function() {
         return this.toString();
@@ -162,14 +163,14 @@ BigNumber.prototype = {
 	},
 	round : function(){
 		if("_rounding" in this) return this;
-		var BigNumber = BigNumber, r = this.roundType, b = this._d, d, p, n, x;
+		var Roo.Math = Roo.Math, r = this.roundType, b = this._d, d, p, n, x;
 		for(this._rounding = true; this._f > 1 && !b[0]; --this._f, b.shift());
 		for(d = this._f, p = this.precision + d, n = b[p]; b.length > d && !b[b.length -1]; b.pop());
 		x = (this._s ? "-" : "") + (p - d ? "0." + this._zeroes([], p - d - 1).join("") : "") + 1;
 		if(b.length > p){
-			n && (r == BigNumber.DOWN ? false : r == BigNumber.UP ? true : r == BigNumber.CEIL ? !this._s
-			: r == BigNumber.FLOOR ? this._s : r == BigNumber.HALF_UP ? n >= 5 : r == BigNumber.HALF_DOWN ? n > 5
-			: r == BigNumber.HALF_EVEN ? n >= 5 && b[p - 1] & 1 : false) && this.add(x);
+			n && (r == Roo.Math.DOWN ? false : r == Roo.Math.UP ? true : r == Roo.Math.CEIL ? !this._s
+			: r == Roo.Math.FLOOR ? this._s : r == Roo.Math.HALF_UP ? n >= 5 : r == Roo.Math.HALF_DOWN ? n > 5
+			: r == Roo.Math.HALF_EVEN ? n >= 5 && b[p - 1] & 1 : false) && this.add(x);
 			b.splice(p, b.length - p);
 		}
 		return delete this._rounding, this;
