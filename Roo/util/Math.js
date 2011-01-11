@@ -202,7 +202,7 @@ Roo.util.Math.prototype = {
 		if(b.length > p && n){
             console.log("rounding" +n + " Method? " + r);
 			if (
-                r == m.UP ||
+                (r == m.UP) ||
                 (r == m.CEIL && !this._s) ||
                 (r == m.FLOOR &&  this._s) ||
                 (r == m.HALF_UP &&   n >= 5) ||
