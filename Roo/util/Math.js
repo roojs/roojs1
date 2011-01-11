@@ -165,7 +165,7 @@ Roo.util.Math.prototype = {
     toFixed : function(x) {
         var n = new Roo.util.Math(this);
         n.precision = x;
-        return n.round().toString(;
+        return n.round().toString();
         
 
     }
