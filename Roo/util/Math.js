@@ -44,7 +44,7 @@ Roo.util.Math.prototype = {
 		num = new Roo.util.Math(num, this.precision, this.roundType);
         
         if (this._s != num._s) { //netagive...
-            return num._s ^= 1, this.subtract(num);
+            return num._s ^= 1, this.subtract(num, this.precision, this.roundType);
 		}
         
         var o = new Roo.util.Math(this), 
@@ -67,7 +67,8 @@ Roo.util.Math.prototype = {
         );
         r && ++num && a.unshift(r);
         o._f = num;
-		return o.round();
+        o.round();
+		return 
 	},
 	subtract : function(n){
 		if(this._s != (n = new Roo.util.Math(n))._s)
