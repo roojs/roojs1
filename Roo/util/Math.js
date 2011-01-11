@@ -177,9 +177,16 @@ Roo.util.Math.prototype = {
         
 		if("_rounding" in this) return this; // stop recursion..
         
-		var   r = this.roundType, b = this._d, d, p, n, x;
-		for(this._rounding = true; this._f > 1 && !b[0]; --this._f, b.shift());
-		for(d = this._f, p = this.precision + d, n = b[p]; b.length > d && !b[b.length -1]; b.pop());
+		var   r = this.roundType,
+            b = this._d, 
+            d, p, n, x;
+            
+		for(this._rounding = true; 
+            this._f > 1 && !b[0]; 
+            --this._f, b.shift()
+        );
+		console.log(b);
+        for(d = this._f, p = this.precision + d, n = b[p]; b.length > d && !b[b.length -1]; b.pop());
 		x = (this._s ? "-" : "") + (p - d ? "0." + this._zeroes([], p - d - 1).join("") : "") + 1;
 		if(b.length > p){
 			n && (r == Roo.util.Math.DOWN ? false : r == Roo.util.Math.UP ? true : r == Roo.util.Math.CEIL ? !this._s
