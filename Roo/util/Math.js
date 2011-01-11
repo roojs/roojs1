@@ -35,7 +35,7 @@ Roo.util.Math.defaultRoundType = Roo.util.Math.ROUND_HALF_UP;
     
 Roo.util.Math.prototype = {
     _s : 0,
-    _f : 0
+    _f : 0,
     roundType : 0,
     precision : 0,
     add : function(num)
