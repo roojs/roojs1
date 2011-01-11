@@ -211,10 +211,11 @@ Roo.util.Math.prototype = {
                ) {
                 console.log("add" +x);
                // this.precision++;
-                var ret =  this.add(x);
-                b = ret._d
-                console.log(b.join(','));    
+                //var ret =  this.add(x);
+                //b = ret._d
+                //console.log(b.join(','));    
                 //this.precision--;
+                this.add(x);
             }
             
             
