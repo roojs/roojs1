@@ -20,7 +20,7 @@ BigNumber = function(num, precision, roundType){
 	this._f = (
             (num = num.replace(/[^\d.]/g, "").split(".", 2))[0] = num[0].replace(/^0+/, "") || "0"
         ).length;
-	for(i = (n = this._d = (n.join("") || "0").split("")).length; i; n[--i] = +n[i]);
+	for(i = (num = this._d = (num.join("") || "0").split("")).length; i; num[--i] = +num[i]);
 	this.round();
 };
 
