@@ -175,7 +175,7 @@ Roo.util.Math.prototype = {
 	round : function()
     {
         
-		if("_rounding" in this) return this; // stop recursion..
+		if(typeof(this._rounding != 'undefined') return this; // stop recursion..
         
 		var   r = this.roundType,
             b = this._d, 
