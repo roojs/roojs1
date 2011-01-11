@@ -216,7 +216,7 @@ Roo.util.Math.prototype = {
                // this.precision++;
                 ret =  this.add(x);
                 //this.precision--;
-             }
+            }
 
 			b.splice(p, b.length - p);
 		}
