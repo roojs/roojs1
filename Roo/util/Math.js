@@ -183,9 +183,10 @@ Roo.util.Math.prototype = {
             b = this._d, 
             d, p, n, x;
         console.log(b.join(','));    
-		for( this._f > 1 && !b[0]; 
-            --this._f, b.shift()
-        );
+		while( this._f > 1 && !b[0]) {
+            --this._f;
+            b.shift();
+        }
 		console.log(b.join(','));    
         for(d = this._f, 
             p = this.precision + d, 
