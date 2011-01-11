@@ -65,7 +65,9 @@ Roo.util.Math.prototype = {
             r = (a[--i] = a[i] + b[i] + r) / 10 >>> 0, 
             a[i] %= 10
         );
-		return r && ++num && a.unshift(r), o._f = num, o.round();
+        r && ++num && a.unshift(r);
+        o._f = num;
+		return o.round();
 	},
 	subtract : function(n){
 		if(this._s != (n = new Roo.util.Math(n))._s)
