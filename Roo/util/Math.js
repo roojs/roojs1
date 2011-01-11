@@ -9,7 +9,7 @@ Roo = Roo || { util : { }};
 Roo.util.Math = function(num, precision, roundType){
 	var i;
 	if(num instanceof Roo.util.Math){
-		for(i in {precision: 0, roundType: 0, _s: 0, _f: 0}) o[i] = num[i];
+		for(i in {precision: 0, roundType: 0, _s: 0, _f: 0}) this[i] = num[i];
 		this._d = num._d.slice();
 		return;
 	}
