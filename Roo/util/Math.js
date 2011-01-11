@@ -47,7 +47,7 @@ BigNumber.prototype = {
             a = o._d, 
             b = num._d, 
             la = o._f,
-            lb = n._f, 
+            lb = num._f, 
             num = Math.max(la, lb), 
             i, r;
 		
@@ -56,6 +56,7 @@ BigNumber.prototype = {
                 a.length : (
                     (lb = la - lb) > 0 ? o._zeroes(b, lb) : o._zeroes(a, -lb)
                 ).length;
+                
 		for(r = 0; i; r = (a[--i] = a[i] + b[i] + r) / 10 >>> 0, a[i] %= 10);
 		return r && ++num && a.unshift(r), o._f = num, o.round();
 	},
