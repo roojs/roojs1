@@ -3,8 +3,8 @@
 //+ based on.. Jonas Raoni Soares Silva
 //@ http://jsfromhell.com/classes/bignumber [rev. #4]
 **/
-Roo= Roo || {};
-   
+if (!Roo)  Roo=  { util : { }};
+    
 
 Roo.Math = function(num, precision, roundType){
 	var i;
