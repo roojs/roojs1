@@ -67,8 +67,8 @@ Roo.util.Math.prototype = {
         );
         r && ++num && a.unshift(r);
         o._f = num;
-        o.round();
-		return 
+        return o.round();
+		 
 	},
 	subtract : function(n){
 		if(this._s != (n = new Roo.util.Math(n, this.precision, this.roundType))._s)
