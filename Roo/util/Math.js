@@ -3,7 +3,7 @@
 //+ based on.. Jonas Raoni Soares Silva
 //@ http://jsfromhell.com/classes/bignumber [rev. #4]
 **/
-if (!Roo)  Roo=  { util : { }};
+Roo = Roo || { util : { }};
     
 
 Roo.Math = function(num, precision, roundType){
