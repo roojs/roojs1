@@ -174,15 +174,14 @@ Roo.util.Math.prototype = {
 	},
 	round : function()
     {
-        
-		if("_rounding" in this) return this; // stop recursion..
-        
+         var m = Roo.util.Math;
+		if(typeof(m._rounding) != 'undefined') return this; // stop recursion..
+        var m._rounding = true;
 		var   r = this.roundType,
             b = this._d, 
             d, p, n, x;
         console.log(b.join(','));    
-		for(this._rounding = true; 
-            this._f > 1 && !b[0]; 
+		for( this._f > 1 && !b[0]; 
             --this._f, b.shift()
         );
 		console.log(b.join(','));    
@@ -197,7 +196,7 @@ Roo.util.Math.prototype = {
             
 		x = (this._s ? "-" : "") + (p - d ? "0." + this._zeroes([], p - d - 1).join("") : "") + 1;
         
-        var m = Roo.util.Math;
+       
 
 		if(b.length > p){
             console.log("rounding" +n + " Method? " + r);
@@ -206,6 +205,6 @@ Roo.util.Math.prototype = {
 			: r == m.ROUND_HALF_EVEN ? n >= 5 && b[p - 1] & 1 : false) && this.add(x);
 			b.splice(p, b.length - p);
 		}
-		return delete this._rounding, this;
+		return delete m._rounding, this;
 	}
 };
