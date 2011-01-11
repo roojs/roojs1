@@ -210,9 +210,9 @@ Roo.util.Math.prototype = {
                 (r == m.ROUND_HALF_EVEN && n >= 5 && (b[p - 1] & 1))
                ) {
                 console.log("add" +x);
-                this.precision++;
+               // this.precision++;
                 this.add(x);
-                this.precision--;
+                //this.precision--;
              }
             
             
