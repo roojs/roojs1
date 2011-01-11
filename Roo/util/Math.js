@@ -5,34 +5,36 @@
 **/
 
 
-BigNumber = function(n, precision, roundType){
-	var o = this, i;
-	if(n instanceof BigNumber){
-		for(i in {precision: 0, roundType: 0, _s: 0, _f: 0}) o[i] = n[i];
-		o._d = n._d.slice();
+BigNumber = function(num, precision, roundType){
+	var i;
+	if(num instanceof BigNumber){
+		for(i in {precision: 0, roundType: 0, _s: 0, _f: 0}) o[i] = num[i];
+		this._d = num._d.slice();
 		return;
 	}
     
-	o.precision = isNaN(precision = Math.abs(precision)) ? BigNumber.defaultPrecision : precision;
-	o.roundType = isNaN(r = Math.abs(roundType)) ? BigNumber.defaultRoundType : roundType;
+	this.precision = isNaN(precision = Math.abs(precision)) ? BigNumber.defaultPrecision : precision;
+	this.roundType = isNaN(r = Math.abs(roundType)) ? BigNumber.defaultRoundType : roundType;
     
-	o._s = (n += "").charAt(0) == "-";
-	o._f = ((n = n.replace(/[^\d.]/g, "").split(".", 2))[0] = n[0].replace(/^0+/, "") || "0").length;
-	for(i = (n = o._d = (n.join("") || "0").split("")).length; i; n[--i] = +n[i]);
-	o.round();
+	this._s = (num += "").charAt(0) == "-";
+	this._f = (
+            (num = num.replace(/[^\d.]/g, "").split(".", 2))[0] = num[0].replace(/^0+/, "") || "0"
+        ).length;
+	for(i = (n = this._d = (n.join("") || "0").split("")).length; i; n[--i] = +n[i]);
+	this.round();
 };
 
-
-
-
-with({$: BigNumber, o: BigNumber.prototype}){
-	BigNumber.ROUND_HALF_EVEN = (BigNumber.ROUND_HALF_DOWN = (BigNumber.ROUND_HALF_UP = (BigNumber.ROUND_FLOOR = (BigNumber.ROUND_CEIL = (BigNumber.ROUND_DOWN = (BigNumber.ROUND_UP = 0) + 1) + 1) + 1) + 1) + 1) + 1;
-	BigNumber.defaultPrecision = 40;
-	BigNumber.defaultRoundType = BigNumber.ROUND_HALF_UP;
+BigNumber.ROUND_HALF_EVEN = (BigNumber.ROUND_HALF_DOWN = (BigNumber.ROUND_HALF_UP =
+    (BigNumber.ROUND_FLOOR = (BigNumber.ROUND_CEIL = (BigNumber.ROUND_DOWN 
+    = (BigNumber.ROUND_UP = 0) + 1) + 1) + 1) + 1) + 1) + 1;
     
+BigNumber.defaultPrecision = 40;
+BigNumber.defaultRoundType = BigNumber.ROUND_HALF_UP;
+
     
 BigNumber.prototype = {
-    add = function(n){
+    add : function(n)
+    {
 		if(this._s != (n = new BigNumber(n))._s)
 			return n._s ^= 1, this.subtract(n);
 		var o = new BigNumber(this), a = o._d, b = n._d, la = o._f,
@@ -42,7 +44,7 @@ BigNumber.prototype = {
 		for(r = 0; i; r = (a[--i] = a[i] + b[i] + r) / 10 >>> 0, a[i] %= 10);
 		return r && ++n && a.unshift(r), o._f = n, o.round();
 	};
-	o.subtract = function(n){
+	subtract : function(n){
 		if(this._s != (n = new BigNumber(n))._s)
 			return n._s ^= 1, this.add(n);
 		var o = new BigNumber(this), c = o.abs().compare(n.abs()) + 1, a = c ? o : n, b = c ? n : o, la = a._f, lb = b._f, d = la, i, j;
@@ -56,14 +58,14 @@ BigNumber.prototype = {
 		}
 		return c || (o._s ^= 1), o._f = d, o._d = b, o.round();
 	};
-	o.multiply = function(n){
+	multiply : function(n){
 		var o = new BigNumber(this), r = o._d.length >= (n = new BigNumber(n))._d.length, a = (r ? o : n)._d,
 		b = (r ? n : o)._d, la = a.length, lb = b.length, x = new BigNumber, i, j, s;
 		for(i = lb; i; r && s.unshift(r), x.set(x.add(new BigNumber(s.join("")))))
 			for(s = (new Array(lb - --i)).join("0").split(""), r = 0, j = la; j; r += a[--j] * b[i], s.unshift(r % 10), r = (r / 10) >>> 0);
 		return o._s = o._s != n._s, o._f = ((r = la + lb - o._f - n._f) >= (j = (o._d = x._d).length) ? this._zeroes(o._d, r - j + 1, 1).length : j) - r, o.round();
 	};
-	o.divide = function(n){
+	divide : function(n){
 		if((n = new BigNumber(n)) == "0")
 			throw new Error("Division by 0");
 		else if(this == "0")
@@ -93,19 +95,19 @@ BigNumber.prototype = {
 		while((i < a.length || n != "0") && (r._d.length - r._f) <= r.precision);
 		return r.round();
 	};
-	o.mod = function(n){
+	mod : function(n){
 		return this.subtract(this.divide(n).intPart().multiply(n));
 	};
-	o.pow = function(n){
+	pow : function(n){
 		var o = new BigNumber(this), i;
 		if((n = (new BigNumber(n)).intPart()) == 0) return o.set(1);
 		for(i = Math.abs(n); --i; o.set(o.multiply(this)));
 		return n < 0 ? o.set((new BigNumber(1)).divide(o)) : o;
 	};
-	o.set = function(n){
+	set : function(n){
 		return this.constructor(n), this;
 	};
-	o.compare = function(n){
+	compare : function(n){
 		var a = this, la = this._f, b = new BigNumber(n), lb = b._f, r = [-1, 1], i, l;
 		if(a._s != b._s)
 			return a._s ? -1 : 1;
@@ -116,25 +118,28 @@ BigNumber.prototype = {
 				return r[(a[i] > b[i]) ^ a._s];
 		return la != lb ? r[(la > lb) ^ a._s] : 0;
 	};
-	o.negate = function(){
+	negate : function(){
 		var n = new BigNumber(this); return n._s ^= 1, n;
 	};
-	o.abs = function(){
+	abs : function(){
 		var n = new BigNumber(this); return n._s = 0, n;
 	};
-	o.intPart = function(){
+	intPart : function(){
 		return new BigNumber((this._s ? "-" : "") + (this._d.slice(0, this._f).join("") || "0"));
 	};
-	o.valueOf = o.toString = function(){
+    valueOf : function() {
+        return this.toString();
+    }
+	toString : function(){
 		var o = this;
 		return (o._s ? "-" : "") + (o._d.slice(0, o._f).join("") || "0") + (o._f != o._d.length ? "." + o._d.slice(o._f).join("") : "");
-	};
-	o._zeroes = function(n, l, t){
+	}
+	_zeroes : function(n, l, t){
 		var s = ["push", "unshift"][t || 0];
 		for(++l; --l;  n[s](0));
 		return n;
 	};
-	o.round = function(){
+	round : function(){
 		if("_rounding" in this) return this;
 		var BigNumber = BigNumber, r = this.roundType, b = this._d, d, p, n, x;
 		for(this._rounding = true; this._f > 1 && !b[0]; --this._f, b.shift());
