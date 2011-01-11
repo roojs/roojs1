@@ -43,12 +43,21 @@ BigNumber.prototype = {
         if (this._s != num._s) { //netagive...
             return num._s ^= 1, this.subtract(num);
 		}
-        var o = new BigNumber(this), a = o._d, b = n._d, la = o._f,
-		lb = n._f, n = Math.max(la, lb), i, r;
-		la != lb && ((lb = la - lb) > 0 ? o._zeroes(b, lb, 1) : o._zeroes(a, -lb, 1));
-		i = (la = a.length) == (lb = b.length) ? a.length : ((lb = la - lb) > 0 ? o._zeroes(b, lb) : o._zeroes(a, -lb)).length;
+        var o = new BigNumber(this), 
+            a = o._d, 
+            b = num._d, 
+            la = o._f,
+            lb = n._f, 
+            num = Math.max(la, lb), 
+            i, r;
+		
+        la != lb && ((lb = la - lb) > 0 ? o._zeroes(b, lb, 1) : o._zeroes(a, -lb, 1));
+		i = (la = a.length) == (lb = b.length) ?
+                a.length : (
+                    (lb = la - lb) > 0 ? o._zeroes(b, lb) : o._zeroes(a, -lb)
+                ).length;
 		for(r = 0; i; r = (a[--i] = a[i] + b[i] + r) / 10 >>> 0, a[i] %= 10);
-		return r && ++n && a.unshift(r), o._f = n, o.round();
+		return r && ++n && a.unshift(r), o._f = num, o.round();
 	};
 	subtract : function(n){
 		if(this._s != (n = new BigNumber(n))._s)
