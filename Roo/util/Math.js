@@ -175,7 +175,7 @@ Roo.util.Math.prototype = {
 	round : function()
     {
         
-		if(typeof(this._rounding) != 'undefined') return this; // stop recursion..
+		if("_rounding" in this) return this; // stop recursion..
         
 		var   r = this.roundType,
             b = this._d, 
@@ -198,28 +198,12 @@ Roo.util.Math.prototype = {
 		x = (this._s ? "-" : "") + (p - d ? "0." + this._zeroes([], p - d - 1).join("") : "") + 1;
         
         var m = Roo.util.Math;
-        
-		if(b.length > p && n){
+
+		if(b.length > p){
             console.log("rounding" +n + " Method? " + r);
-			if (
-                (r == m.ROUND_UP) ||
-                (r == m.ROUND_CEIL && !this._s) ||
-                (r == m.ROUND_FLOOR &&  this._s) ||
-                (r == m.ROUND_HALF_UP &&   n >= 5) ||
-                (r == m.ROUND_HALF_DOWN &&  n > 5)  ||
-                (r == m.ROUND_HALF_EVEN && n >= 5 && (b[p - 1] & 1))
-               ) {
-                   
-                console.log("add" +x);
-               // this.precision++;
-                //var ret =  this.add(x);
-                //b = ret._d
-                //console.log(b.join(','));    
-                //this.precision--;
-                 this.add(x);
-            }
-            
-            
+			n && (r == Roo.util.Math.DOWN ? false : r == Roo.util.Math.UP ? true : r == Roo.util.Math.CEIL ? !this._s
+			: r == Roo.util.Math.FLOOR ? this._s : r == Roo.util.Math.HALF_UP ? n >= 5 : r == Roo.util.Math.HALF_DOWN ? n > 5
+			: r == Roo.util.Math.HALF_EVEN ? n >= 5 && b[p - 1] & 1 : false) && this.add(x);
 			b.splice(p, b.length - p);
 		}
 		return delete this._rounding, this;
