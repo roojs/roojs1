@@ -207,7 +207,8 @@ Roo.util.Math.prototype = {
                 (r == m.FLOOR &&  this._s) ||
                 (r == m.HALF_UP &&   n >= 5) ||
                 (r == m.HALF_DOWN &&  n > 5)  ||
-                (r == m.HALF_EVEN && n >= 5 && (b[p - 1] & 1)) {
+                (r == m.HALF_EVEN && n >= 5 && (b[p - 1] & 1))
+               ) {
                 console.log("add" +x);
                 this.precision++;
                 this.add(x);
