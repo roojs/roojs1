@@ -174,10 +174,12 @@ Roo.util.Math.prototype = {
 	},
 	round : function()
     {
-         var m = Roo.util.Math;
-		if(typeof(m._rounding) != 'undefined') return this; // stop recursion..
-        var m._rounding = true;
-		var   r = this.roundType,
+        var m = Roo.util.Math;
+		
+        if(typeof(m._rounding) != 'undefined') return this; // stop recursion..
+        m._rounding = true;
+		
+        var   r = this.roundType,
             b = this._d, 
             d, p, n, x;
         console.log(b.join(','));    
