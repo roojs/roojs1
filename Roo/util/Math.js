@@ -180,7 +180,7 @@ Roo.util.Math.prototype = {
 		var   r = this.roundType,
             b = this._d, 
             d, p, n, x;
-            
+        console.log(b);    
 		for(this._rounding = true; 
             this._f > 1 && !b[0]; 
             --this._f, b.shift()
