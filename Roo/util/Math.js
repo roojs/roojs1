@@ -199,7 +199,7 @@ Roo.util.Math.prototype = {
         
         
 		if(b.length > p){
-            console.log("rounding");
+            console.log("rounding" +n);
 			n && (r == Roo.util.Math.DOWN ? false : r == Roo.util.Math.UP ? true : r == Roo.util.Math.CEIL ? !this._s
 			: r == Roo.util.Math.FLOOR ? this._s : r == Roo.util.Math.HALF_UP ? n >= 5 : r == Roo.util.Math.HALF_DOWN ? n > 5
 			: r == Roo.util.Math.HALF_EVEN ? n >= 5 && b[p - 1] & 1 : false) && this.add(x);
