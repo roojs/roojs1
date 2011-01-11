@@ -202,12 +202,12 @@ Roo.util.Math.prototype = {
 		if(b.length > p && n){
             console.log("rounding" +n + " Method? " + r);
 			if (
-                (r == m.UP) ||
-                (r == m.CEIL && !this._s) ||
-                (r == m.FLOOR &&  this._s) ||
-                (r == m.HALF_UP &&   n >= 5) ||
-                (r == m.HALF_DOWN &&  n > 5)  ||
-                (r == m.HALF_EVEN && n >= 5 && (b[p - 1] & 1))
+                (r == m.ROUND_UP) ||
+                (r == m.ROUND_CEIL && !this._s) ||
+                (r == m.ROUND_FLOOR &&  this._s) ||
+                (r == m.ROUND_HALF_UP &&   n >= 5) ||
+                (r == m.ROUND_HALF_DOWN &&  n > 5)  ||
+                (r == m.ROUND_HALF_EVEN && n >= 5 && (b[p - 1] & 1))
                ) {
                 console.log("add" +x);
                 this.precision++;
