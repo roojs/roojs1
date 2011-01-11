@@ -3,7 +3,7 @@
 //+ based on.. Jonas Raoni Soares Silva
 //@ http://jsfromhell.com/classes/bignumber [rev. #4]
 **/
-Roo= Roo || {}
+Roo= Roo || {};
    
 
 Roo.Math = function(num, precision, roundType){
@@ -151,11 +151,11 @@ Roo.Math.prototype = {
 	},
     valueOf : function() {
         return this.toString();
-    }
+    },
 	toString : function(){
 		var o = this;
 		return (o._s ? "-" : "") + (o._d.slice(0, o._f).join("") || "0") + (o._f != o._d.length ? "." + o._d.slice(o._f).join("") : "");
-	}
+	},
 	_zeroes : function(n, l, t){
 		var s = ["push", "unshift"][t || 0];
 		for(++l; --l;  n[s](0));
