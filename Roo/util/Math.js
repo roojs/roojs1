@@ -40,9 +40,11 @@ BigNumber.prototype = {
     add : function(num)
     {
 		num = new BigNumber(num, this.precision, this.roundType);
+        
         if (this._s != num._s) { //netagive...
             return num._s ^= 1, this.subtract(num);
 		}
+        
         var o = new BigNumber(this), 
             a = o._d, 
             b = num._d, 
@@ -57,7 +59,10 @@ BigNumber.prototype = {
                     (lb = la - lb) > 0 ? o._zeroes(b, lb) : o._zeroes(a, -lb)
                 ).length;
                 
-		for(r = 0; i; r = (a[--i] = a[i] + b[i] + r) / 10 >>> 0, a[i] %= 10);
+		for(r = 0; i; 
+            r = (a[--i] = a[i] + b[i] + r) / 10 >>> 0, 
+            a[i] %= 10
+        );
 		return r && ++num && a.unshift(r), o._f = num, o.round();
 	},
 	subtract : function(n){
