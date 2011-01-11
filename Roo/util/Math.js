@@ -214,7 +214,8 @@ Roo.util.Math.prototype = {
                ) {
                 console.log("add" +x);
                // this.precision++;
-                ret =  this.add(x);
+                return this.add(x);
+                
                 //this.precision--;
             }
 
