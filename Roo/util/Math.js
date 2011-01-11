@@ -166,9 +166,7 @@ Roo.util.Math.prototype = {
         var n = new Roo.util.Math(this);
         n.precision = x;
         return n.round().toString();
-        
-
-    }
+    },
 	_zeroes : function(n, l, t){
 		var s = ["push", "unshift"][t || 0];
 		for(++l; --l;  n[s](0));
