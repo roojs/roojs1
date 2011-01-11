@@ -189,8 +189,11 @@ Roo.util.Math.prototype = {
         for(d = this._f, 
             p = this.precision + d, 
             n = b[p];
-            b.length > d && !b[b.length -1]; 
-            b.pop());
+            
+            b.length > d && !b[b.length -1]; // condition... 
+         
+            b.pop()
+        );
             
 		x = (this._s ? "-" : "") + (p - d ? "0." + this._zeroes([], p - d - 1).join("") : "") + 1;
         
