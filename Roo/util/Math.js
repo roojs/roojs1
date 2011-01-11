@@ -182,12 +182,12 @@ Roo.util.Math.prototype = {
         var   r = this.roundType,
             b = this._d, 
             d, p, n, x;
-        console.log(b.join(','));    
+        //console.log(b.join(','));    
 		while( this._f > 1 && !b[0]) {
             --this._f;
             b.shift();
         }
-		console.log(b.join(','));    
+		//console.log(b.join(','));    
         for(d = this._f, 
             p = this.precision + d, 
             n = b[p];
@@ -203,7 +203,7 @@ Roo.util.Math.prototype = {
 
   
         if(b.length > p && n){
-            console.log("rounding" +n + " Method? " + r);
+            //console.log("rounding" +n + " Method? " + r);
 			if (
                 (r == m.ROUND_UP) ||
                 (r == m.ROUND_CEIL && !this._s) ||
