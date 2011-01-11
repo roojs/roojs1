@@ -145,10 +145,12 @@ Roo.util.Math.prototype = {
 		return la != lb ? r[(la > lb) ^ a._s] : 0;
 	},
 	negate : function(){
-		var n = new Roo.util.Math(this); return n._s ^= 1, n;
+		var n = new Roo.util.Math(this); 
+        return n._s ^= 1, n;
 	},
 	abs : function(){
-		var n = new Roo.util.Math(this); return n._s = 0, n;
+		var n = new Roo.util.Math(this);
+        return n._s = 0, n;
 	},
 	intPart : function(){
 		return new Roo.util.Math((this._s ? "-" : "", this.precision, this.roundType) + (this._d.slice(0, this._f).join("") || "0"));
@@ -160,6 +162,13 @@ Roo.util.Math.prototype = {
 		var o = this;
 		return (o._s ? "-" : "") + (o._d.slice(0, o._f).join("") || "0") + (o._f != o._d.length ? "." + o._d.slice(o._f).join("") : "");
 	},
+    toFixed : function(x) {
+        var n = new Roo.util.Math(this);
+        n.precision = x;
+        return n.round().toString(;
+        
+
+    }
 	_zeroes : function(n, l, t){
 		var s = ["push", "unshift"][t || 0];
 		for(++l; --l;  n[s](0));
