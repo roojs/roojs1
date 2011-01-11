@@ -57,8 +57,8 @@ BigNumber.prototype = {
                     (lb = la - lb) > 0 ? o._zeroes(b, lb) : o._zeroes(a, -lb)
                 ).length;
 		for(r = 0; i; r = (a[--i] = a[i] + b[i] + r) / 10 >>> 0, a[i] %= 10);
-		return r && ++n && a.unshift(r), o._f = num, o.round();
-	};
+		return r && ++num && a.unshift(r), o._f = num, o.round();
+	},
 	subtract : function(n){
 		if(this._s != (n = new BigNumber(n))._s)
 			return n._s ^= 1, this.add(n);
@@ -72,14 +72,14 @@ BigNumber.prototype = {
 			b[i] = a[i] - b[i];
 		}
 		return c || (o._s ^= 1), o._f = d, o._d = b, o.round();
-	};
+	},
 	multiply : function(n){
 		var o = new BigNumber(this), r = o._d.length >= (n = new BigNumber(n))._d.length, a = (r ? o : n)._d,
 		b = (r ? n : o)._d, la = a.length, lb = b.length, x = new BigNumber, i, j, s;
 		for(i = lb; i; r && s.unshift(r), x.set(x.add(new BigNumber(s.join("")))))
 			for(s = (new Array(lb - --i)).join("0").split(""), r = 0, j = la; j; r += a[--j] * b[i], s.unshift(r % 10), r = (r / 10) >>> 0);
 		return o._s = o._s != n._s, o._f = ((r = la + lb - o._f - n._f) >= (j = (o._d = x._d).length) ? this._zeroes(o._d, r - j + 1, 1).length : j) - r, o.round();
-	};
+	},
 	divide : function(n){
 		if((n = new BigNumber(n)) == "0")
 			throw new Error("Division by 0");
@@ -109,19 +109,19 @@ BigNumber.prototype = {
 		}
 		while((i < a.length || n != "0") && (r._d.length - r._f) <= r.precision);
 		return r.round();
-	};
+	},
 	mod : function(n){
 		return this.subtract(this.divide(n).intPart().multiply(n));
-	};
+	},
 	pow : function(n){
 		var o = new BigNumber(this), i;
 		if((n = (new BigNumber(n)).intPart()) == 0) return o.set(1);
 		for(i = Math.abs(n); --i; o.set(o.multiply(this)));
 		return n < 0 ? o.set((new BigNumber(1)).divide(o)) : o;
-	};
+	},
 	set : function(n){
 		return this.constructor(n), this;
-	};
+	},
 	compare : function(n){
 		var a = this, la = this._f, b = new BigNumber(n), lb = b._f, r = [-1, 1], i, l;
 		if(a._s != b._s)
@@ -132,16 +132,16 @@ BigNumber.prototype = {
 			if(a[i] != b[i])
 				return r[(a[i] > b[i]) ^ a._s];
 		return la != lb ? r[(la > lb) ^ a._s] : 0;
-	};
+	},
 	negate : function(){
 		var n = new BigNumber(this); return n._s ^= 1, n;
-	};
+	},
 	abs : function(){
 		var n = new BigNumber(this); return n._s = 0, n;
-	};
+	},
 	intPart : function(){
 		return new BigNumber((this._s ? "-" : "") + (this._d.slice(0, this._f).join("") || "0"));
-	};
+	},
     valueOf : function() {
         return this.toString();
     }
@@ -153,7 +153,7 @@ BigNumber.prototype = {
 		var s = ["push", "unshift"][t || 0];
 		for(++l; --l;  n[s](0));
 		return n;
-	};
+	},
 	round : function(){
 		if("_rounding" in this) return this;
 		var BigNumber = BigNumber, r = this.roundType, b = this._d, d, p, n, x;
@@ -167,5 +167,5 @@ BigNumber.prototype = {
 			b.splice(p, b.length - p);
 		}
 		return delete this._rounding, this;
-	};
+	}
 }) 
