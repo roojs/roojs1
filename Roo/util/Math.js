@@ -180,12 +180,12 @@ Roo.util.Math.prototype = {
 		var   r = this.roundType,
             b = this._d, 
             d, p, n, x;
-        console.log(b);    
+        console.log(b.join(','));    
 		for(this._rounding = true; 
             this._f > 1 && !b[0]; 
             --this._f, b.shift()
         );
-		console.log(b);
+		console.log(b.join(','));    
         for(d = this._f, p = this.precision + d, n = b[p]; b.length > d && !b[b.length -1]; b.pop());
 		x = (this._s ? "-" : "") + (p - d ? "0." + this._zeroes([], p - d - 1).join("") : "") + 1;
 		if(b.length > p){
