@@ -95,22 +95,21 @@ Roo.util.Math.prototype = {
             x = new Roo.util.Math(0,this.precision, this.roundType), 
             i, j, s;
             
-		for(i = lb; 
-            i; 
+		for(i = lb;   i; 
                 r && s.unshift(r), 
                 x.set(x.add(new Roo.util.Math(s.join(""), this.precision, this.roundType)))
         ) {
-            for(
-                s = (new Array(lb - --i)).join("0").split(""), 
-                r = 0, 
-                j = la; 
-                
-                j; 
-                
-                r += a[--j] * b[i], s.unshift(r % 10), 
+            
+            s = (new Array(lb - --i)).join("0").split("");
+            j = la;
+            for( r = 0 ; j ; r += a[--j] * b[i]) {
+                s.unshift(r % 10);
                 r = (r / 10) >>> 0);
+            }
         }
+        
         console.log(o);
+        
 		o._s = o._s != n._s;
         o._f = (
                     (r = la + lb - o._f - n._f) >= (j = (o._d = x._d).length) ? 
@@ -160,8 +159,10 @@ Roo.util.Math.prototype = {
 		for(i = Math.abs(n); --i; o.set(o.multiply(this)));
 		return n < 0 ? o.set((new Roo.util.Math(1, this.precision, this.roundType)).divide(o)) : o;
 	},
-	set : function(n){
-		return this.constructor(n), this;
+	set : function(n)
+    {
+		this.constructor(n)
+        return this;
 	},
 	compare : function(n){
 		var a = this, la = this._f, b = new Roo.util.Math(n, this.precision, this.roundType), lb = b._f, r = [-1, 1], i, l;
