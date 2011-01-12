@@ -84,12 +84,39 @@ Roo.util.Math.prototype = {
 		}
 		return c || (o._s ^= 1), o._f = d, o._d = b, o.round();
 	},
-	multiply : function(n){
-		var o = new Roo.util.Math(this), r = o._d.length >= (n = new Roo.util.Math(n, this.precision, this.roundType))._d.length, a = (r ? o : n)._d,
-		b = (r ? n : o)._d, la = a.length, lb = b.length, x = new Roo.util.Math(0,this.precision, this.roundType), i, j, s;
-		for(i = lb; i; r && s.unshift(r), x.set(x.add(new Roo.util.Math(s.join(""), this.precision, this.roundType))))
-			for(s = (new Array(lb - --i)).join("0").split(""), r = 0, j = la; j; r += a[--j] * b[i], s.unshift(r % 10), r = (r / 10) >>> 0);
-		return o._s = o._s != n._s, o._f = ((r = la + lb - o._f - n._f) >= (j = (o._d = x._d).length) ? this._zeroes(o._d, r - j + 1, 1).length : j) - r, o.round();
+	multiply : function(n)
+    {
+		var o = new Roo.util.Math(this), 
+            r = o._d.length >= (n = new Roo.util.Math(n, this.precision, this.roundType))._d.length,
+            a = (r ? o : n)._d,
+            b = (r ? n : o)._d, 
+            la = a.length, 
+            lb = b.length, 
+            x = new Roo.util.Math(0,this.precision, this.roundType), 
+            i, 
+            j, 
+            s;
+		for(i = lb; 
+            i; 
+                r && s.unshift(r), 
+                x.set(x.add(new Roo.util.Math(s.join(""), this.precision, this.roundType)))
+        ) {
+            for(
+                s = (new Array(lb - --i)).join("0").split(""), 
+                r = 0, 
+                j = la; 
+                
+                j; 
+                
+                r += a[--j] * b[i], s.unshift(r % 10), 
+                r = (r / 10) >>> 0);
+		return o._s = o._s != n._s,
+                o._f = (
+                    (r = la + lb - o._f - n._f) >= (j = (o._d = x._d).length) ? 
+                        this._zeroes(o._d, r - j + 1, 1).length : 
+                        j
+                ) - r, 
+                o.round();
 	},
 	divide : function(n){
 		if((n = new Roo.util.Math(n, this.precision, this.roundType)) == "0")
