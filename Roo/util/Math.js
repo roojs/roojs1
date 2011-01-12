@@ -110,10 +110,10 @@ Roo.util.Math.prototype = {
             j = la;
             for( r = 0 ; j ; r += a[--j] * b[i], s.unshift(r % 10), r = (r / 10) >>> 0);
             
-            console.log(s);
+          //  console.log(s);
         }
         
-        console.log(o);
+       // console.log(o);
         
 		o._s = o._s != n._s;
         o._f = (
