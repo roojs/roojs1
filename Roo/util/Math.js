@@ -118,6 +118,7 @@ Roo.util.Math.prototype = {
                 ) - r, 
                 o.round();
 	},
+    
 	divide : function(n){
 		if((n = new Roo.util.Math(n, this.precision, this.roundType)) == "0")
 			throw new Error("Division by 0");
