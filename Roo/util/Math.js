@@ -161,7 +161,7 @@ Roo.util.Math.prototype = {
 	},
 	set : function(n)
     {
-		this.constructor(n)
+		this._constructor(n)
         return this;
 	},
 	compare : function(n){
