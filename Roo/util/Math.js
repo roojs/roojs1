@@ -93,9 +93,8 @@ Roo.util.Math.prototype = {
             la = a.length, 
             lb = b.length, 
             x = new Roo.util.Math(0,this.precision, this.roundType), 
-            i, 
-            j, 
-            s;
+            i, j, s;
+            
 		for(i = lb; 
             i; 
                 r && s.unshift(r), 
@@ -110,13 +109,16 @@ Roo.util.Math.prototype = {
                 
                 r += a[--j] * b[i], s.unshift(r % 10), 
                 r = (r / 10) >>> 0);
-		return o._s = o._s != n._s,
-                o._f = (
+        }
+        console.log(o);
+		o._s = o._s != n._s;
+        o._f = (
                     (r = la + lb - o._f - n._f) >= (j = (o._d = x._d).length) ? 
                         this._zeroes(o._d, r - j + 1, 1).length : 
                         j
-                ) - r, 
-                o.round();
+            ) - r; 
+            
+        return  o.round();
 	},
     
 	divide : function(n){
