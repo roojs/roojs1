@@ -3,7 +3,7 @@
 //+ based on.. Jonas Raoni Soares Silva
 //@ http://jsfromhell.com/classes/bignumber [rev. #4]
 **/
-Roo = Roo || { util : { }};
+Roo = typeof(Roo) != 'undefined' ? Roo :  { util : { }};
     
 
 Roo.util.Math = function(num, precision, roundType){
