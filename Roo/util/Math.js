@@ -110,7 +110,7 @@ Roo.util.Math.prototype = {
             j = la;
             for( r = 0 ; j ; r += a[--j] * b[i]) {
                 s.unshift(r % 10);
-                r = (r / 10) >>> 0);
+                r = (r / 10) >>> 0;
             }
         }
         
