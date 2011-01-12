@@ -201,7 +201,18 @@ Roo.util.Math.prototype = {
     toFixed : function(x) {
         var n = new Roo.util.Math(this);
         n.precision = x;
-        return n.round().toString();
+        var ret= n.round().toString();
+        var lr =ret.split('.');
+        var l = lr.shift();
+        if (!x) {
+            return l;
+        }
+        var r = lr.length ? lr[0] : '';
+        for (var i = r.length; i < x; i++) {
+            r+= '0';
+        }
+        return l+'.'+r;
+        
     },
 	_zeroes : function(n, l, t){
 		var s = ["push", "unshift"][t || 0];
