@@ -25,7 +25,7 @@ Roo.util.Math.prototype = {
     precision : 0,
     
     
-    _constructor : function (num, precision, roundType){
+    _constructor : function (num, precision, roundType) {
         var i;
         if(num instanceof Roo.util.Math){
             var o = this;
