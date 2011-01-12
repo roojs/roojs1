@@ -39,6 +39,28 @@ Roo.util.Math.prototype = {
     _f : 0,
     roundType : 0,
     precision : 0,
+    
+    
+    _constructor : function (num, precision, roundType){
+        var i;
+        if(num instanceof Roo.util.Math){
+            var o = this;
+            for(i in {precision: 0, roundType: 0, _s: 0, _f: 0}) o[i] = num[i];
+            this._d = num._d.slice();
+            return;
+        }
+        
+        this.precision = isNaN(precision = Math.abs(precision)) ? Roo.util.Math.defaultPrecision : precision;
+        this.roundType = isNaN(r = Math.abs(roundType)) ? Roo.util.Math.defaultRoundType : roundType;
+        
+        this._s = (num += "").charAt(0) == "-";
+        this._f = (
+                (num = num.replace(/[^\d.]/g, "").split(".", 2))[0] = num[0].replace(/^0+/, "") || "0"
+            ).length;
+        for(i = (num = this._d = (num.join("") || "0").split("")).length; i; num[--i] = +num[i]);
+        this.round();
+    },
+    
     add : function(num)
     {
 		num = new Roo.util.Math(num, this.precision, this.roundType);
