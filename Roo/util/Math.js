@@ -108,10 +108,8 @@ Roo.util.Math.prototype = {
             
             s = (new Array(lb - --i)).join("0").split(""); // pads 000...
             j = la;
-            for( r = 0 ; j ; r += a[--j] * b[i]) {
-                s.unshift(r % 10);
-                r = (r / 10) >>> 0;
-            }
+            for( r = 0 ; j ; r += a[--j] * b[i], s.unshift(r % 10), r = (r / 10) >>> 0);
+            
             console.log(s);
         }
         
