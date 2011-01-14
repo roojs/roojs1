@@ -92,8 +92,8 @@ Roo.util.Math.prototype = {
 	},
     
 /**
- * Add number
- * @param {Object|Number} value to add
+ * Subtract number
+ * @param {Object|Number} value to subtract
  * @return {Object} The result
  */
     
@@ -111,6 +111,13 @@ Roo.util.Math.prototype = {
 		}
 		return c || (o._s ^= 1), o._f = d, o._d = b, o.round();
 	},
+    
+    
+/**
+ * Mulitply number
+ * @param {Object|Number} value to mutiply
+ * @return {Object} The result
+ */    
 	multiply : function(n)
     {
 		var o = new Roo.util.Math(this), 
@@ -176,20 +183,45 @@ Roo.util.Math.prototype = {
 		while((i < a.length || n != "0") && (r._d.length - r._f) <= r.precision);
 		return r.round();
 	},
+        
+/**
+ * Modulus number
+ * @param {Object|Number} value to modulus by
+ * @return {Object} The result
+ */    
+    
 	mod : function(n){
 		return this.subtract(this.divide(n).intPart().multiply(n));
 	},
+    
+/**
+ * To Power number
+ * @param {Object|Number} value to power by
+ * @return {Object} The result
+ */        
 	pow : function(n){
 		var o = new Roo.util.Math(this), i;
 		if((n = (new Roo.util.Math(n, this.precision, this.roundType)).intPart()) == 0) return o.set(1);
 		for(i = Math.abs(n); --i; o.set(o.multiply(this)));
 		return n < 0 ? o.set((new Roo.util.Math(1, this.precision, this.roundType)).divide(o)) : o;
 	},
+    /**
+ * Set number
+ * @param {Object|Number} value to set object to
+ * @return {Object} This
+ */    
+    
 	set : function(n)
     {
 		this._constructor(n)
         return this;
 	},
+/**
+ * Compare number
+ * @param {Object|Number} value to compare to
+ * @return {boolean} true if the same
+ */        
+    
 	compare : function(n){
 		var a = this, la = this._f, b = new Roo.util.Math(n, this.precision, this.roundType), lb = b._f, r = [-1, 1], i, l;
 		if(a._s != b._s)
@@ -201,24 +233,48 @@ Roo.util.Math.prototype = {
 				return r[(a[i] > b[i]) ^ a._s];
 		return la != lb ? r[(la > lb) ^ a._s] : 0;
 	},
+/**
+ * negate number 
+ * @return {Object} the result
+ */            
 	negate : function(){
 		var n = new Roo.util.Math(this); 
         return n._s ^= 1, n;
 	},
+/**
+ * abs number 
+ * @return {Object} the result
+ */                
 	abs : function(){
 		var n = new Roo.util.Math(this);
         return n._s = 0, n;
 	},
+/**
+ * integer part of number
+ * @return {Object} the result
+ */        
 	intPart : function(){
 		return new Roo.util.Math((this._s ? "-" : "", this.precision, this.roundType) + (this._d.slice(0, this._f).join("") || "0"));
 	},
+/**
+ * value of thenumber
+ * @return {String} the result
+ */        
     valueOf : function() {
         return this.toString();
     },
+/**
+ * value of the number
+ * @return {String} the result
+ */            
 	toString : function(){
 		var o = this;
 		return (o._s ? "-" : "") + (o._d.slice(0, o._f).join("") || "0") + (o._f != o._d.length ? "." + o._d.slice(o._f).join("") : "");
 	},
+/**
+ * value of the number at a fixed precission
+ * @return {String} the result
+ */                
     toFixed : function(x) {
         var n = new Roo.util.Math(this);
         n.precision = x;
@@ -235,11 +291,13 @@ Roo.util.Math.prototype = {
         return l+'.'+r;
         
     },
+    //private
 	_zeroes : function(n, l, t){
 		var s = ["push", "unshift"][t || 0];
 		for(++l; --l;  n[s](0));
 		return n;
 	},
+    //private    
 	round : function()
     {
         var m = Roo.util.Math;
