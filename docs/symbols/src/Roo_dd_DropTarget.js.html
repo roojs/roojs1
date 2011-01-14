@@ -105,6 +105,11 @@
      * @cfg {String} overClass
      * The CSS class applied to the drop target element while the drag source is over it (defaults to &quot;&quot;).
      */
+     /**
+     * @cfg {String} ddGroup
+     * The drag drop group to handle drop events for
+     */
+     
     /**
      * @cfg {String} dropAllowed
      * The CSS class returned to the drag source when drop is allowed (defaults to &quot;x-dd-drop-ok&quot;).
@@ -131,8 +136,9 @@
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">isNotifyTarget </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     
-    </span><span class="jsdoc-comment">// private
-
+    </span><span class="jsdoc-comment">/**
+     * @hide
+     */
     </span><span class="jsdoc-var">notifyEnter </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.valid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'enter'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">);
@@ -142,15 +148,18 @@
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.valid </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.dropAllowed </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.dropNotAllowed</span><span class="jsdoc-syntax">;
     },
 
-    </span><span class="jsdoc-comment">// private
-
+    </span><span class="jsdoc-comment">/**
+     * @hide
+     */
     </span><span class="jsdoc-var">notifyOver </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.valid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'over'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.valid </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.dropAllowed </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.dropNotAllowed</span><span class="jsdoc-syntax">;
     },
 
-    
+    </span><span class="jsdoc-comment">/**
+     * @hide
+     */
     </span><span class="jsdoc-var">notifyOut </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'out'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.overClass</span><span class="jsdoc-syntax">){
@@ -158,7 +167,9 @@
         }
     },
 
-    
+    </span><span class="jsdoc-comment">/**
+     * @hide
+     */
     </span><span class="jsdoc-var">notifyDrop </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.success </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'drop'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">);
