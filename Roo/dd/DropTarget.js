@@ -75,12 +75,6 @@ Roo.dd.DropTarget = function(el, config){
                 
                  /**
                  * @event over
-                 * The function a {@link Roo.dd.DragSource} calls once to notify this drop target that the source is now over the
-                 * target.  This default implementation adds the CSS class specified by overClass (if any) to the drop element
-                 * and returns the dropAllowed config value.  This method should be overridden if drop validation is required.
-                 * 
-                 * 
-                /**
                  * The function a {@link Roo.dd.DragSource} calls continuously while it is being dragged over the target.
                  * This method will be called on every mouse movement while the drag source is over the drop target.
                  * This default implementation simply returns the dropAllowed config value.
