@@ -406,9 +406,9 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
 	 */
 	loadMask : false,
     /**
-     * @cfg {Roo.dd.DragTarget} dragTarget An {@link Roo.dd.DragTarget} config
+     * @cfg {Roo.dd.DropTarget} dragTarget An {@link Roo.dd.DragTarget} config
 	 */
-	loadMask : false,
+	dropTarget: false,
     // private
     rendered : false,
 
@@ -458,9 +458,10 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
             this.footer.container = this.getView().getFooterPanel(true);
             this.footer = Roo.factory(this.footer, Roo);
         }
-        if (this.dragTarget && this.dragTarget.xtype) {
-            delete this.dragTarget.xtype;
-            this.dragTarget =  new Ext.dd.DropTarget(this.getView().mainBody, this.dragTarget);
+        if (this.dropTarget && this.dropTarget.xtype) {
+            
+            delete this.dropTarget.xtype;
+            this.dropTarget =  new Ext.dd.DropTarget(this.getView().mainBody, this.dropTarget);
         }
         
         
