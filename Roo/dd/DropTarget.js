@@ -117,7 +117,7 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
     dropNotAllowed : "x-dd-drop-nodrop",
     /**
      * @cfg {boolean} success
-     * set this after drop listener..
+     * set this after drop listener.. 
      */
     success : false,
     /**
@@ -134,18 +134,20 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
     // private
 
     notifyEnter : function(dd, e, data){
+        this.valid = true;
         this.fireEvent('enter', this, dd, e, data);
         if(this.overClass){
             this.el.addClass(this.overClass);
         }
-        return this.dropAllowed;
+        return this.valid ? this.dropAllowed : this.dropNotAllowed;
     },
 
     // private
 
     notifyOver : function(dd, e, data){
+        this.valid = true;
         this.fireEvent('over', this, dd, e, data);
-        return this.dropAllowed;
+        return this.valid ? this.dropAllowed : this.dropNotAllowed;
     },
 
     
