@@ -93,7 +93,7 @@ Roo.dd.DropTarget = function(el, config){
         this.ddGroup || this.group,
         {
             isTarget: true,
-            listeners : config.listeners || {} ,
+            listeners : config.listeners || {} 
            
         
         }
