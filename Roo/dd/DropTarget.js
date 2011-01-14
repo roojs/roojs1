@@ -119,7 +119,7 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
      * @cfg {boolean} success
      * set this after drop listener..
      */
-
+    success : false,
     // private
     isTarget : true,
 
@@ -153,7 +153,8 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
 
     
     notifyDrop : function(dd, e, data){
+        this.success = false;
         this.fireEvent('drop', this, dd, e, data);
-        return false;
+        return this.success;
     }
 });
