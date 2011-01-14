@@ -27115,7 +27115,7 @@ Roo.PagingToolbar = function(el, ds, config)
     }
     var items = [];
     if (config.items) {
-        items = this.items;
+        items = config.items;
         config.items = [];
     }
     
@@ -27126,10 +27126,10 @@ Roo.PagingToolbar = function(el, ds, config)
     this.bind(ds);
     
     // supprot items array.
-    var _this = this;
+   
     Roo.each(items, function(e) {
-        _this.add(Roo.factory(e));
-    });
+        this.add(Roo.factory(e));
+    },this);
     
 };
 
