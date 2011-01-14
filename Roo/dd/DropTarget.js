@@ -120,6 +120,11 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
      * set this after drop listener..
      */
     success : false,
+    /**
+     * @cfg {boolean} valid
+     * if the drop point is valid for over/enter..
+     */
+    valid : false,
     // private
     isTarget : true,
 
