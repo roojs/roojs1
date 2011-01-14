@@ -17,7 +17,7 @@ Roo = typeof(Roo) != 'undefined' ? Roo :  { util : { }};
  */
 
 Roo.util.Math = function(num, precision, roundType){
-	this._constructor(num,precision, roundType);
+	this.ctor(num,precision, roundType);
 };
 
 Roo.util.Math.ROUND_HALF_EVEN = (Roo.util.Math.ROUND_HALF_DOWN = (Roo.util.Math.ROUND_HALF_UP =
@@ -35,7 +35,7 @@ Roo.util.Math.prototype = {
     precision : 0,
     
     //private
-    _constructor : function (num, precision, roundType) {
+    ctor : function (num, precision, roundType) {
         var i;
         if(num instanceof Roo.util.Math){
             var o = this;
@@ -213,7 +213,7 @@ Roo.util.Math.prototype = {
     
 	set : function(n)
     {
-		this._constructor(n)
+		this.ctor(n)
         return this;
 	},
 /**
