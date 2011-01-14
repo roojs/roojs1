@@ -22,6 +22,10 @@
 Roo.dd.DropTarget = function(el, config){
     this.el = Roo.get(el);
     
+    var listeners = config.listeners;
+    if (listeners) {
+        delete config.listeners;
+    }
     Roo.apply(this, config);
     
     if(this.containerScroll){
@@ -93,7 +97,7 @@ Roo.dd.DropTarget = function(el, config){
         this.ddGroup || this.group,
         {
             isTarget: true,
-            listeners : config.listeners || {} 
+            listeners : listeners || {} 
            
         
         }
