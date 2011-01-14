@@ -30267,4 +30267,7149 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
         btn.addClassOnOver("x-layout-tools-button-over");
         return btn;
     }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+
+
+/**
+ * @class Roo.SplitLayoutRegion
+ * @extends Roo.LayoutRegion
+ * Adds a splitbar and other (private) useful functionality to a {@link Roo.LayoutRegion}.
+ */
+Roo.SplitLayoutRegion = function(mgr, config, pos, cursor){
+    this.cursor = cursor;
+    Roo.SplitLayoutRegion.superclass.constructor.call(this, mgr, config, pos);
+};
+
+Roo.extend(Roo.SplitLayoutRegion, Roo.LayoutRegion, {
+    splitTip : "Drag to resize.",
+    collapsibleSplitTip : "Drag to resize. Double click to hide.",
+    useSplitTips : false,
+
+    applyConfig : function(config){
+        Roo.SplitLayoutRegion.superclass.applyConfig.call(this, config);
+        if(config.split){
+            if(!this.split){
+                var splitEl = Roo.DomHelper.append(this.mgr.el.dom, 
+                        {tag: "div", id: this.el.id + "-split", cls: "x-layout-split x-layout-split-"+this.position, html: "&#160;"});
+                /** The SplitBar for this region 
+                * @type Roo.SplitBar */
+                this.split = new Roo.SplitBar(splitEl, this.el, this.orientation);
+                this.split.on("moved", this.onSplitMove, this);
+                this.split.useShim = config.useShim === true;
+                this.split.getMaximumSize = this[this.position == 'north' || this.position == 'south' ? 'getVMaxSize' : 'getHMaxSize'].createDelegate(this);
+                if(this.useSplitTips){
+                    this.split.el.dom.title = config.collapsible ? this.collapsibleSplitTip : this.splitTip;
+                }
+                if(config.collapsible){
+                    this.split.el.on("dblclick", this.collapse,  this);
+                }
+            }
+            if(typeof config.minSize != "undefined"){
+                this.split.minSize = config.minSize;
+            }
+            if(typeof config.maxSize != "undefined"){
+                this.split.maxSize = config.maxSize;
+            }
+            if(config.hideWhenEmpty || config.hidden || config.collapsed){
+                this.hideSplitter();
+            }
+        }
+    },
+
+    getHMaxSize : function(){
+         var cmax = this.config.maxSize || 10000;
+         var center = this.mgr.getRegion("center");
+         return Math.min(cmax, (this.el.getWidth()+center.getEl().getWidth())-center.getMinWidth());
+    },
+
+    getVMaxSize : function(){
+         var cmax = this.config.maxSize || 10000;
+         var center = this.mgr.getRegion("center");
+         return Math.min(cmax, (this.el.getHeight()+center.getEl().getHeight())-center.getMinHeight());
+    },
+
+    onSplitMove : function(split, newSize){
+        this.fireEvent("resized", this, newSize);
+    },
+    
+    /** 
+     * Returns the {@link Roo.SplitBar} for this region.
+     * @return {Roo.SplitBar}
+     */
+    getSplitBar : function(){
+        return this.split;
+    },
+    
+    hide : function(){
+        this.hideSplitter();
+        Roo.SplitLayoutRegion.superclass.hide.call(this);
+    },
+
+    hideSplitter : function(){
+        if(this.split){
+            this.split.el.setLocation(-2000,-2000);
+            this.split.el.hide();
+        }
+    },
+
+    show : function(){
+        if(this.split){
+            this.split.el.show();
+        }
+        Roo.SplitLayoutRegion.superclass.show.call(this);
+    },
+    
+    beforeSlide: function(){
+        if(Roo.isGecko){// firefox overflow auto bug workaround
+            this.bodyEl.clip();
+            if(this.tabs) this.tabs.bodyEl.clip();
+            if(this.activePanel){
+                this.activePanel.getEl().clip();
+                
+                if(this.activePanel.beforeSlide){
+                    this.activePanel.beforeSlide();
+                }
+            }
+        }
+    },
+    
+    afterSlide : function(){
+        if(Roo.isGecko){// firefox overflow auto bug workaround
+            this.bodyEl.unclip();
+            if(this.tabs) this.tabs.bodyEl.unclip();
+            if(this.activePanel){
+                this.activePanel.getEl().unclip();
+                if(this.activePanel.afterSlide){
+                    this.activePanel.afterSlide();
+                }
+            }
+        }
+    },
+
+    initAutoHide : function(){
+        if(this.autoHide !== false){
+            if(!this.autoHideHd){
+                var st = new Roo.util.DelayedTask(this.slideIn, this);
+                this.autoHideHd = {
+                    "mouseout": function(e){
+                        if(!e.within(this.el, true)){
+                            st.delay(500);
+                        }
+                    },
+                    "mouseover" : function(e){
+                        st.cancel();
+                    },
+                    scope : this
+                };
+            }
+            this.el.on(this.autoHideHd);
+        }
+    },
+
+    clearAutoHide : function(){
+        if(this.autoHide !== false){
+            this.el.un("mouseout", this.autoHideHd.mouseout);
+            this.el.un("mouseover", this.autoHideHd.mouseover);
+        }
+    },
+
+    clearMonitor : function(){
+        Roo.get(document).un("click", this.slideInIf, this);
+    },
+
+    // these names are backwards but not changed for compat
+    slideOut : function(){
+        if(this.isSlid || this.el.hasActiveFx()){
+            return;
+        }
+        this.isSlid = true;
+        if(this.collapseBtn){
+            this.collapseBtn.hide();
+        }
+        this.closeBtnState = this.closeBtn.getStyle('display');
+        this.closeBtn.hide();
+        if(this.stickBtn){
+            this.stickBtn.show();
+        }
+        this.el.show();
+        this.el.alignTo(this.collapsedEl, this.getCollapseAnchor());
+        this.beforeSlide();
+        this.el.setStyle("z-index", 10001);
+        this.el.slideIn(this.getSlideAnchor(), {
+            callback: function(){
+                this.afterSlide();
+                this.initAutoHide();
+                Roo.get(document).on("click", this.slideInIf, this);
+                this.fireEvent("slideshow", this);
+            },
+            scope: this,
+            block: true
+        });
+    },
+
+    afterSlideIn : function(){
+        this.clearAutoHide();
+        this.isSlid = false;
+        this.clearMonitor();
+        this.el.setStyle("z-index", "");
+        if(this.collapseBtn){
+            this.collapseBtn.show();
+        }
+        this.closeBtn.setStyle('display', this.closeBtnState);
+        if(this.stickBtn){
+            this.stickBtn.hide();
+        }
+        this.fireEvent("slidehide", this);
+    },
+
+    slideIn : function(cb){
+        if(!this.isSlid || this.el.hasActiveFx()){
+            Roo.callback(cb);
+            return;
+        }
+        this.isSlid = false;
+        this.beforeSlide();
+        this.el.slideOut(this.getSlideAnchor(), {
+            callback: function(){
+                this.el.setLeftTop(-10000, -10000);
+                this.afterSlide();
+                this.afterSlideIn();
+                Roo.callback(cb);
+            },
+            scope: this,
+            block: true
+        });
+    },
+    
+    slideInIf : function(e){
+        if(!e.within(this.el)){
+            this.slideIn();
+        }
+    },
+
+    animateCollapse : function(){
+        this.beforeSlide();
+        this.el.setStyle("z-index", 20000);
+        var anchor = this.getSlideAnchor();
+        this.el.slideOut(anchor, {
+            callback : function(){
+                this.el.setStyle("z-index", "");
+                this.collapsedEl.slideIn(anchor, {duration:.3});
+                this.afterSlide();
+                this.el.setLocation(-10000,-10000);
+                this.el.hide();
+                this.fireEvent("collapsed", this);
+            },
+            scope: this,
+            block: true
+        });
+    },
+
+    animateExpand : function(){
+        this.beforeSlide();
+        this.el.alignTo(this.collapsedEl, this.getCollapseAnchor(), this.getExpandAdj());
+        this.el.setStyle("z-index", 20000);
+        this.collapsedEl.hide({
+            duration:.1
+        });
+        this.el.slideIn(this.getSlideAnchor(), {
+            callback : function(){
+                this.el.setStyle("z-index", "");
+                this.afterSlide();
+                if(this.split){
+                    this.split.el.show();
+                }
+                this.fireEvent("invalidated", this);
+                this.fireEvent("expanded", this);
+            },
+            scope: this,
+            block: true
+        });
+    },
+
+    anchors : {
+        "west" : "left",
+        "east" : "right",
+        "north" : "top",
+        "south" : "bottom"
+    },
+
+    sanchors : {
+        "west" : "l",
+        "east" : "r",
+        "north" : "t",
+        "south" : "b"
+    },
+
+    canchors : {
+        "west" : "tl-tr",
+        "east" : "tr-tl",
+        "north" : "tl-bl",
+        "south" : "bl-tl"
+    },
+
+    getAnchor : function(){
+        return this.anchors[this.position];
+    },
+
+    getCollapseAnchor : function(){
+        return this.canchors[this.position];
+    },
+
+    getSlideAnchor : function(){
+        return this.sanchors[this.position];
+    },
+
+    getAlignAdj : function(){
+        var cm = this.cmargins;
+        switch(this.position){
+            case "west":
+                return [0, 0];
+            break;
+            case "east":
+                return [0, 0];
+            break;
+            case "north":
+                return [0, 0];
+            break;
+            case "south":
+                return [0, 0];
+            break;
+        }
+    },
+
+    getExpandAdj : function(){
+        var c = this.collapsedEl, cm = this.cmargins;
+        switch(this.position){
+            case "west":
+                return [-(cm.right+c.getWidth()+cm.left), 0];
+            break;
+            case "east":
+                return [cm.right+c.getWidth()+cm.left, 0];
+            break;
+            case "north":
+                return [0, -(cm.top+cm.bottom+c.getHeight())];
+            break;
+            case "south":
+                return [0, cm.top+cm.bottom+c.getHeight()];
+            break;
+        }
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+/*
+ * These classes are private internal classes
+ */
+Roo.CenterLayoutRegion = function(mgr, config){
+    Roo.LayoutRegion.call(this, mgr, config, "center");
+    this.visible = true;
+    this.minWidth = config.minWidth || 20;
+    this.minHeight = config.minHeight || 20;
+};
+
+Roo.extend(Roo.CenterLayoutRegion, Roo.LayoutRegion, {
+    hide : function(){
+        // center panel can't be hidden
+    },
+    
+    show : function(){
+        // center panel can't be hidden
+    },
+    
+    getMinWidth: function(){
+        return this.minWidth;
+    },
+    
+    getMinHeight: function(){
+        return this.minHeight;
+    }
 });
+
+
+Roo.NorthLayoutRegion = function(mgr, config){
+    Roo.LayoutRegion.call(this, mgr, config, "north", "n-resize");
+    if(this.split){
+        this.split.placement = Roo.SplitBar.TOP;
+        this.split.orientation = Roo.SplitBar.VERTICAL;
+        this.split.el.addClass("x-layout-split-v");
+    }
+    var size = config.initialSize || config.height;
+    if(typeof size != "undefined"){
+        this.el.setHeight(size);
+    }
+};
+Roo.extend(Roo.NorthLayoutRegion, Roo.SplitLayoutRegion, {
+    orientation: Roo.SplitBar.VERTICAL,
+    getBox : function(){
+        if(this.collapsed){
+            return this.collapsedEl.getBox();
+        }
+        var box = this.el.getBox();
+        if(this.split){
+            box.height += this.split.el.getHeight();
+        }
+        return box;
+    },
+    
+    updateBox : function(box){
+        if(this.split && !this.collapsed){
+            box.height -= this.split.el.getHeight();
+            this.split.el.setLeft(box.x);
+            this.split.el.setTop(box.y+box.height);
+            this.split.el.setWidth(box.width);
+        }
+        if(this.collapsed){
+            this.updateBody(box.width, null);
+        }
+        Roo.LayoutRegion.prototype.updateBox.call(this, box);
+    }
+});
+
+Roo.SouthLayoutRegion = function(mgr, config){
+    Roo.SplitLayoutRegion.call(this, mgr, config, "south", "s-resize");
+    if(this.split){
+        this.split.placement = Roo.SplitBar.BOTTOM;
+        this.split.orientation = Roo.SplitBar.VERTICAL;
+        this.split.el.addClass("x-layout-split-v");
+    }
+    var size = config.initialSize || config.height;
+    if(typeof size != "undefined"){
+        this.el.setHeight(size);
+    }
+};
+Roo.extend(Roo.SouthLayoutRegion, Roo.SplitLayoutRegion, {
+    orientation: Roo.SplitBar.VERTICAL,
+    getBox : function(){
+        if(this.collapsed){
+            return this.collapsedEl.getBox();
+        }
+        var box = this.el.getBox();
+        if(this.split){
+            var sh = this.split.el.getHeight();
+            box.height += sh;
+            box.y -= sh;
+        }
+        return box;
+    },
+    
+    updateBox : function(box){
+        if(this.split && !this.collapsed){
+            var sh = this.split.el.getHeight();
+            box.height -= sh;
+            box.y += sh;
+            this.split.el.setLeft(box.x);
+            this.split.el.setTop(box.y-sh);
+            this.split.el.setWidth(box.width);
+        }
+        if(this.collapsed){
+            this.updateBody(box.width, null);
+        }
+        Roo.LayoutRegion.prototype.updateBox.call(this, box);
+    }
+});
+
+Roo.EastLayoutRegion = function(mgr, config){
+    Roo.SplitLayoutRegion.call(this, mgr, config, "east", "e-resize");
+    if(this.split){
+        this.split.placement = Roo.SplitBar.RIGHT;
+        this.split.orientation = Roo.SplitBar.HORIZONTAL;
+        this.split.el.addClass("x-layout-split-h");
+    }
+    var size = config.initialSize || config.width;
+    if(typeof size != "undefined"){
+        this.el.setWidth(size);
+    }
+};
+Roo.extend(Roo.EastLayoutRegion, Roo.SplitLayoutRegion, {
+    orientation: Roo.SplitBar.HORIZONTAL,
+    getBox : function(){
+        if(this.collapsed){
+            return this.collapsedEl.getBox();
+        }
+        var box = this.el.getBox();
+        if(this.split){
+            var sw = this.split.el.getWidth();
+            box.width += sw;
+            box.x -= sw;
+        }
+        return box;
+    },
+
+    updateBox : function(box){
+        if(this.split && !this.collapsed){
+            var sw = this.split.el.getWidth();
+            box.width -= sw;
+            this.split.el.setLeft(box.x);
+            this.split.el.setTop(box.y);
+            this.split.el.setHeight(box.height);
+            box.x += sw;
+        }
+        if(this.collapsed){
+            this.updateBody(null, box.height);
+        }
+        Roo.LayoutRegion.prototype.updateBox.call(this, box);
+    }
+});
+
+Roo.WestLayoutRegion = function(mgr, config){
+    Roo.SplitLayoutRegion.call(this, mgr, config, "west", "w-resize");
+    if(this.split){
+        this.split.placement = Roo.SplitBar.LEFT;
+        this.split.orientation = Roo.SplitBar.HORIZONTAL;
+        this.split.el.addClass("x-layout-split-h");
+    }
+    var size = config.initialSize || config.width;
+    if(typeof size != "undefined"){
+        this.el.setWidth(size);
+    }
+};
+Roo.extend(Roo.WestLayoutRegion, Roo.SplitLayoutRegion, {
+    orientation: Roo.SplitBar.HORIZONTAL,
+    getBox : function(){
+        if(this.collapsed){
+            return this.collapsedEl.getBox();
+        }
+        var box = this.el.getBox();
+        if(this.split){
+            box.width += this.split.el.getWidth();
+        }
+        return box;
+    },
+    
+    updateBox : function(box){
+        if(this.split && !this.collapsed){
+            var sw = this.split.el.getWidth();
+            box.width -= sw;
+            this.split.el.setLeft(box.x+box.width);
+            this.split.el.setTop(box.y);
+            this.split.el.setHeight(box.height);
+        }
+        if(this.collapsed){
+            this.updateBody(null, box.height);
+        }
+        Roo.LayoutRegion.prototype.updateBox.call(this, box);
+    }
+});
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+ 
+/*
+ * Private internal class for reading and applying state
+ */
+Roo.LayoutStateManager = function(layout){
+     // default empty state
+     this.state = {
+        north: {},
+        south: {},
+        east: {},
+        west: {}       
+    };
+};
+
+Roo.LayoutStateManager.prototype = {
+    init : function(layout, provider){
+        this.provider = provider;
+        var state = provider.get(layout.id+"-layout-state");
+        if(state){
+            var wasUpdating = layout.isUpdating();
+            if(!wasUpdating){
+                layout.beginUpdate();
+            }
+            for(var key in state){
+                if(typeof state[key] != "function"){
+                    var rstate = state[key];
+                    var r = layout.getRegion(key);
+                    if(r && rstate){
+                        if(rstate.size){
+                            r.resizeTo(rstate.size);
+                        }
+                        if(rstate.collapsed == true){
+                            r.collapse(true);
+                        }else{
+                            r.expand(null, true);
+                        }
+                    }
+                }
+            }
+            if(!wasUpdating){
+                layout.endUpdate();
+            }
+            this.state = state; 
+        }
+        this.layout = layout;
+        layout.on("regionresized", this.onRegionResized, this);
+        layout.on("regioncollapsed", this.onRegionCollapsed, this);
+        layout.on("regionexpanded", this.onRegionExpanded, this);
+    },
+    
+    storeState : function(){
+        this.provider.set(this.layout.id+"-layout-state", this.state);
+    },
+    
+    onRegionResized : function(region, newSize){
+        this.state[region.getPosition()].size = newSize;
+        this.storeState();
+    },
+    
+    onRegionCollapsed : function(region){
+        this.state[region.getPosition()].collapsed = true;
+        this.storeState();
+    },
+    
+    onRegionExpanded : function(region){
+        this.state[region.getPosition()].collapsed = false;
+        this.storeState();
+    }
+};/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+/**
+ * @class Roo.ContentPanel
+ * @extends Roo.util.Observable
+ * A basic ContentPanel element.
+ * @cfg {Boolean} fitToFrame True for this panel to adjust its size to fit when the region resizes  (defaults to false)
+ * @cfg {Boolean} fitContainer When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)
+ * @cfg {Boolean/Object} autoCreate True to auto generate the DOM element for this panel, or a {@link Roo.DomHelper} config of the element to create
+ * @cfg {Boolean} closable True if the panel can be closed/removed
+ * @cfg {Boolean} background True if the panel should not be activated when it is added (defaults to false)
+ * @cfg {String/HTMLElement/Element} resizeEl An element to resize if {@link #fitToFrame} is true (instead of this panel's element)
+ * @cfg {Toolbar} toolbar A toolbar for this panel
+ * @cfg {Boolean} autoScroll True to scroll overflow in this panel (use with {@link #fitToFrame})
+ * @cfg {String} title The title for this panel
+ * @cfg {Array} adjustments Values to <b>add</b> to the width/height when doing a {@link #fitToFrame} (default is [0, 0])
+ * @cfg {String} url Calls {@link #setUrl} with this value
+ * @cfg {String} region (center|north|south|east|west) which region to put this panel on (when used with xtype constructors)
+ * @cfg {String/Object} params When used with {@link #url}, calls {@link #setUrl} with this value
+ * @cfg {Boolean} loadOnce When used with {@link #url}, calls {@link #setUrl} with this value
+ * @constructor
+ * Create a new ContentPanel.
+ * @param {String/HTMLElement/Roo.Element} el The container element for this panel
+ * @param {String/Object} config A string to set only the title or a config object
+ * @param {String} content (optional) Set the HTML content for this panel
+ * @param {String} region (optional) Used by xtype constructors to add to regions. (values center,east,west,south,north)
+ */
+Roo.ContentPanel = function(el, config, content){
+    
+     
+    /*
+    if(el.autoCreate || el.xtype){ // xtype is available if this is called from factory
+        config = el;
+        el = Roo.id();
+    }
+    if (config && config.parentLayout) { 
+        el = config.parentLayout.el.createChild(); 
+    }
+    */
+    if(el.autoCreate){ // xtype is available if this is called from factory
+        config = el;
+        el = Roo.id();
+    }
+    this.el = Roo.get(el);
+    if(!this.el && config && config.autoCreate){
+        if(typeof config.autoCreate == "object"){
+            if(!config.autoCreate.id){
+                config.autoCreate.id = config.id||el;
+            }
+            this.el = Roo.DomHelper.append(document.body,
+                        config.autoCreate, true);
+        }else{
+            this.el = Roo.DomHelper.append(document.body,
+                        {tag: "div", cls: "x-layout-inactive-content", id: config.id||el}, true);
+        }
+    }
+    this.closable = false;
+    this.loaded = false;
+    this.active = false;
+    if(typeof config == "string"){
+        this.title = config;
+    }else{
+        Roo.apply(this, config);
+    }
+    
+    if (this.toolbar && !this.toolbar.el && this.toolbar.xtype) {
+        this.wrapEl = this.el.wrap();    
+        this.toolbar = new Roo.Toolbar(this.el.insertSibling(false, 'before'), [] , this.toolbar);
+        
+    }
+    
+    
+    
+    if(this.resizeEl){
+        this.resizeEl = Roo.get(this.resizeEl, true);
+    }else{
+        this.resizeEl = this.el;
+    }
+    this.addEvents({
+        /**
+         * @event activate
+         * Fires when this panel is activated. 
+         * @param {Roo.ContentPanel} this
+         */
+        "activate" : true,
+        /**
+         * @event deactivate
+         * Fires when this panel is activated. 
+         * @param {Roo.ContentPanel} this
+         */
+        "deactivate" : true,
+
+        /**
+         * @event resize
+         * Fires when this panel is resized if fitToFrame is true.
+         * @param {Roo.ContentPanel} this
+         * @param {Number} width The width after any component adjustments
+         * @param {Number} height The height after any component adjustments
+         */
+        "resize" : true
+    });
+    if(this.autoScroll){
+        this.resizeEl.setStyle("overflow", "auto");
+    } else {
+        // fix randome scrolling
+        this.el.on('scroll', function() {
+            this.scrollTo('top',0); 
+        });
+    }
+    content = content || this.content;
+    if(content){
+        this.setContent(content);
+    }
+    if(config && config.url){
+        this.setUrl(this.url, this.params, this.loadOnce);
+    }
+    
+    
+    
+    Roo.ContentPanel.superclass.constructor.call(this);
+};
+
+Roo.extend(Roo.ContentPanel, Roo.util.Observable, {
+    tabTip:'',
+    setRegion : function(region){
+        this.region = region;
+        if(region){
+           this.el.replaceClass("x-layout-inactive-content", "x-layout-active-content");
+        }else{
+           this.el.replaceClass("x-layout-active-content", "x-layout-inactive-content");
+        } 
+    },
+    
+    /**
+     * Returns the toolbar for this Panel if one was configured. 
+     * @return {Roo.Toolbar} 
+     */
+    getToolbar : function(){
+        return this.toolbar;
+    },
+    
+    setActiveState : function(active){
+        this.active = active;
+        if(!active){
+            this.fireEvent("deactivate", this);
+        }else{
+            this.fireEvent("activate", this);
+        }
+    },
+    /**
+     * Updates this panel's element
+     * @param {String} content The new content
+     * @param {Boolean} loadScripts (optional) true to look for and process scripts
+    */
+    setContent : function(content, loadScripts){
+        this.el.update(content, loadScripts);
+    },
+
+    ignoreResize : function(w, h){
+        if(this.lastSize && this.lastSize.width == w && this.lastSize.height == h){
+            return true;
+        }else{
+            this.lastSize = {width: w, height: h};
+            return false;
+        }
+    },
+    /**
+     * Get the {@link Roo.UpdateManager} for this panel. Enables you to perform Ajax updates.
+     * @return {Roo.UpdateManager} The UpdateManager
+     */
+    getUpdateManager : function(){
+        return this.el.getUpdateManager();
+    },
+     /**
+     * Loads this content panel immediately with content from XHR. Note: to delay loading until the panel is activated, use {@link #setUrl}.
+     * @param {Object/String/Function} url The url for this request or a function to call to get the url or a config object containing any of the following options:
+<pre><code>
+panel.load({
+    url: "your-url.php",
+    params: {param1: "foo", param2: "bar"}, // or a URL encoded string
+    callback: yourFunction,
+    scope: yourObject, //(optional scope)
+    discardUrl: false,
+    nocache: false,
+    text: "Loading...",
+    timeout: 30,
+    scripts: false
+});
+</code></pre>
+     * The only required property is <i>url</i>. The optional properties <i>nocache</i>, <i>text</i> and <i>scripts</i>
+     * are shorthand for <i>disableCaching</i>, <i>indicatorText</i> and <i>loadScripts</i> and are used to set their associated property on this panel UpdateManager instance.
+     * @param {String/Object} params (optional) The parameters to pass as either a URL encoded string "param1=1&amp;param2=2" or an object {param1: 1, param2: 2}
+     * @param {Function} callback (optional) Callback when transaction is complete -- called with signature (oElement, bSuccess, oResponse)
+     * @param {Boolean} discardUrl (optional) By default when you execute an update the defaultUrl is changed to the last used URL. If true, it will not store the URL.
+     * @return {Roo.ContentPanel} this
+     */
+    load : function(){
+        var um = this.el.getUpdateManager();
+        um.update.apply(um, arguments);
+        return this;
+    },
+
+
+    /**
+     * Set a URL to be used to load the content for this panel. When this panel is activated, the content will be loaded from that URL.
+     * @param {String/Function} url The URL to load the content from or a function to call to get the URL
+     * @param {String/Object} params (optional) The string params for the update call or an object of the params. See {@link Roo.UpdateManager#update} for more details. (Defaults to null)
+     * @param {Boolean} loadOnce (optional) Whether to only load the content once. If this is false it makes the Ajax call every time this panel is activated. (Defaults to false)
+     * @return {Roo.UpdateManager} The UpdateManager
+     */
+    setUrl : function(url, params, loadOnce){
+        if(this.refreshDelegate){
+            this.removeListener("activate", this.refreshDelegate);
+        }
+        this.refreshDelegate = this._handleRefresh.createDelegate(this, [url, params, loadOnce]);
+        this.on("activate", this.refreshDelegate);
+        return this.el.getUpdateManager();
+    },
+    
+    _handleRefresh : function(url, params, loadOnce){
+        if(!loadOnce || !this.loaded){
+            var updater = this.el.getUpdateManager();
+            updater.update(url, params, this._setLoaded.createDelegate(this));
+        }
+    },
+    
+    _setLoaded : function(){
+        this.loaded = true;
+    }, 
+    
+    /**
+     * Returns this panel's id
+     * @return {String} 
+     */
+    getId : function(){
+        return this.el.id;
+    },
+    
+    /** 
+     * Returns this panel's element - used by regiosn to add.
+     * @return {Roo.Element} 
+     */
+    getEl : function(){
+        return this.wrapEl || this.el;
+    },
+    
+    adjustForComponents : function(width, height){
+        if(this.resizeEl != this.el){
+            width -= this.el.getFrameWidth('lr');
+            height -= this.el.getFrameWidth('tb');
+        }
+        if(this.toolbar){
+            var te = this.toolbar.getEl();
+            height -= te.getHeight();
+            te.setWidth(width);
+        }
+        if(this.adjustments){
+            width += this.adjustments[0];
+            height += this.adjustments[1];
+        }
+        return {"width": width, "height": height};
+    },
+    
+    setSize : function(width, height){
+        if(this.fitToFrame && !this.ignoreResize(width, height)){
+            if(this.fitContainer && this.resizeEl != this.el){
+                this.el.setSize(width, height);
+            }
+            var size = this.adjustForComponents(width, height);
+            this.resizeEl.setSize(this.autoWidth ? "auto" : size.width, this.autoHeight ? "auto" : size.height);
+            this.fireEvent('resize', this, size.width, size.height);
+        }
+    },
+    
+    /**
+     * Returns this panel's title
+     * @return {String} 
+     */
+    getTitle : function(){
+        return this.title;
+    },
+    
+    /**
+     * Set this panel's title
+     * @param {String} title
+     */
+    setTitle : function(title){
+        this.title = title;
+        if(this.region){
+            this.region.updatePanelTitle(this, title);
+        }
+    },
+    
+    /**
+     * Returns true is this panel was configured to be closable
+     * @return {Boolean} 
+     */
+    isClosable : function(){
+        return this.closable;
+    },
+    
+    beforeSlide : function(){
+        this.el.clip();
+        this.resizeEl.clip();
+    },
+    
+    afterSlide : function(){
+        this.el.unclip();
+        this.resizeEl.unclip();
+    },
+    
+    /**
+     *   Force a content refresh from the URL specified in the {@link #setUrl} method.
+     *   Will fail silently if the {@link #setUrl} method has not been called.
+     *   This does not activate the panel, just updates its content.
+     */
+    refresh : function(){
+        if(this.refreshDelegate){
+           this.loaded = false;
+           this.refreshDelegate();
+        }
+    },
+    
+    /**
+     * Destroys this panel
+     */
+    destroy : function(){
+        this.el.removeAllListeners();
+        var tempEl = document.createElement("span");
+        tempEl.appendChild(this.el.dom);
+        tempEl.innerHTML = "";
+        this.el.remove();
+        this.el = null;
+    },
+    
+      /**
+     * Adds a xtype elements to the panel - currently only supports Forms, View, JsonView.
+     * <pre><code>
+
+layout.addxtype({
+       xtype : 'Form',
+       items: [ .... ]
+   }
+);
+
+</code></pre>
+     * @param {Object} cfg Xtype definition of item to add.
+     */
+    
+    addxtype : function(cfg) {
+        // add form..
+        if (cfg.xtype.match(/^Form$/)) {
+            var el = this.el.createChild();
+
+            this.form = new  Roo.form.Form(cfg);
+            
+            
+            if ( this.form.allItems.length) this.form.render(el.dom);
+            return this.form;
+        }
+        if (['View', 'JsonView'].indexOf(cfg.xtype) > -1) {
+            // views..
+            cfg.el = this.el.appendChild(document.createElement("div"));
+            // factory?
+            var ret = new Roo[cfg.xtype](cfg);
+            ret.render(false, ''); // render blank..
+            return ret;
+            
+        }
+        return false;
+        
+    }
+});
+
+/**
+ * @class Roo.GridPanel
+ * @extends Roo.ContentPanel
+ * @constructor
+ * Create a new GridPanel.
+ * @param {Roo.grid.Grid} grid The grid for this panel
+ * @param {String/Object} config A string to set only the panel's title, or a config object
+ */
+Roo.GridPanel = function(grid, config){
+    
+  
+    this.wrapper = Roo.DomHelper.append(document.body, // wrapper for IE7 strict & safari scroll issue
+        {tag: "div", cls: "x-layout-grid-wrapper x-layout-inactive-content"}, true);
+        
+    this.wrapper.dom.appendChild(grid.getGridEl().dom);
+    
+    Roo.GridPanel.superclass.constructor.call(this, this.wrapper, config);
+    
+    if(this.toolbar){
+        this.toolbar.el.insertBefore(this.wrapper.dom.firstChild);
+    }
+    // xtype created footer. - not sure if will work as we normally have to render first..
+    if (this.footer && !this.footer.el && this.footer.xtype) {
+        
+        this.footer.container = this.grid.getView().getFooterPanel(true);
+        this.footer.dataSource = this.grid.dataSource;
+        this.footer = Roo.factory(this.footer, Roo);
+        
+    }
+    
+    grid.monitorWindowResize = false; // turn off autosizing
+    grid.autoHeight = false;
+    grid.autoWidth = false;
+    this.grid = grid;
+    this.grid.getGridEl().replaceClass("x-layout-inactive-content", "x-layout-component-panel");
+};
+
+Roo.extend(Roo.GridPanel, Roo.ContentPanel, {
+    getId : function(){
+        return this.grid.id;
+    },
+    
+    /**
+     * Returns the grid for this panel
+     * @return {Roo.grid.Grid} 
+     */
+    getGrid : function(){
+        return this.grid;    
+    },
+    
+    setSize : function(width, height){
+        if(!this.ignoreResize(width, height)){
+            var grid = this.grid;
+            var size = this.adjustForComponents(width, height);
+            grid.getGridEl().setSize(size.width, size.height);
+            grid.autoSize();
+        }
+    },
+    
+    beforeSlide : function(){
+        this.grid.getView().scroller.clip();
+    },
+    
+    afterSlide : function(){
+        this.grid.getView().scroller.unclip();
+    },
+    
+    destroy : function(){
+        this.grid.destroy();
+        delete this.grid;
+        Roo.GridPanel.superclass.destroy.call(this); 
+    }
+});
+
+
+/**
+ * @class Roo.NestedLayoutPanel
+ * @extends Roo.ContentPanel
+ * @constructor
+ * Create a new NestedLayoutPanel.
+ * 
+ * 
+ * @param {Roo.BorderLayout} layout The layout for this panel
+ * @param {String/Object} config A string to set only the title or a config object
+ */
+Roo.NestedLayoutPanel = function(layout, config)
+{
+    // construct with only one argument..
+    /* FIXME - implement nicer consturctors
+    if (layout.layout) {
+        config = layout;
+        layout = config.layout;
+        delete config.layout;
+    }
+    if (layout.xtype && !layout.getEl) {
+        // then layout needs constructing..
+        layout = Roo.factory(layout, Roo);
+    }
+    */
+    
+    
+    Roo.NestedLayoutPanel.superclass.constructor.call(this, layout.getEl(), config);
+    
+    layout.monitorWindowResize = false; // turn off autosizing
+    this.layout = layout;
+    this.layout.getEl().addClass("x-layout-nested-layout");
+    
+    
+    
+    
+};
+
+Roo.extend(Roo.NestedLayoutPanel, Roo.ContentPanel, {
+
+    setSize : function(width, height){
+        if(!this.ignoreResize(width, height)){
+            var size = this.adjustForComponents(width, height);
+            var el = this.layout.getEl();
+            el.setSize(size.width, size.height);
+            var touch = el.dom.offsetWidth;
+            this.layout.layout();
+            // ie requires a double layout on the first pass
+            if(Roo.isIE && !this.initialized){
+                this.initialized = true;
+                this.layout.layout();
+            }
+        }
+    },
+    
+    // activate all subpanels if not currently active..
+    
+    setActiveState : function(active){
+        this.active = active;
+        if(!active){
+            this.fireEvent("deactivate", this);
+            return;
+        }
+        
+        this.fireEvent("activate", this);
+        // not sure if this should happen before or after..
+        if (!this.layout) {
+            return; // should not happen..
+        }
+        var reg = false;
+        for (var r in this.layout.regions) {
+            reg = this.layout.getRegion(r);
+            if (reg.getActivePanel()) {
+                //reg.showPanel(reg.getActivePanel()); // force it to activate.. 
+                reg.setActivePanel(reg.getActivePanel());
+                continue;
+            }
+            if (!reg.panels.length) {
+                continue;
+            }
+            reg.showPanel(reg.getPanel(0));
+        }
+        
+        
+        
+        
+    },
+    
+    /**
+     * Returns the nested BorderLayout for this panel
+     * @return {Roo.BorderLayout} 
+     */
+    getLayout : function(){
+        return this.layout;
+    },
+    
+     /**
+     * Adds a xtype elements to the layout of the nested panel
+     * <pre><code>
+
+panel.addxtype({
+       xtype : 'ContentPanel',
+       region: 'west',
+       items: [ .... ]
+   }
+);
+
+panel.addxtype({
+        xtype : 'NestedLayoutPanel',
+        region: 'west',
+        layout: {
+           center: { },
+           west: { }   
+        },
+        items : [ ... list of content panels or nested layout panels.. ]
+   }
+);
+</code></pre>
+     * @param {Object} cfg Xtype definition of item to add.
+     */
+    addxtype : function(cfg) {
+        return this.layout.addxtype(cfg);
+    
+    }
+});
+
+Roo.ScrollPanel = function(el, config, content){
+    config = config || {};
+    config.fitToFrame = true;
+    Roo.ScrollPanel.superclass.constructor.call(this, el, config, content);
+    
+    this.el.dom.style.overflow = "hidden";
+    var wrap = this.el.wrap({cls: "x-scroller x-layout-inactive-content"});
+    this.el.removeClass("x-layout-inactive-content");
+    this.el.on("mousewheel", this.onWheel, this);
+
+    var up = wrap.createChild({cls: "x-scroller-up", html: "&#160;"}, this.el.dom);
+    var down = wrap.createChild({cls: "x-scroller-down", html: "&#160;"});
+    up.unselectable(); down.unselectable();
+    up.on("click", this.scrollUp, this);
+    down.on("click", this.scrollDown, this);
+    up.addClassOnOver("x-scroller-btn-over");
+    down.addClassOnOver("x-scroller-btn-over");
+    up.addClassOnClick("x-scroller-btn-click");
+    down.addClassOnClick("x-scroller-btn-click");
+    this.adjustments = [0, -(up.getHeight() + down.getHeight())];
+
+    this.resizeEl = this.el;
+    this.el = wrap; this.up = up; this.down = down;
+};
+
+Roo.extend(Roo.ScrollPanel, Roo.ContentPanel, {
+    increment : 100,
+    wheelIncrement : 5,
+    scrollUp : function(){
+        this.resizeEl.scroll("up", this.increment, {callback: this.afterScroll, scope: this});
+    },
+
+    scrollDown : function(){
+        this.resizeEl.scroll("down", this.increment, {callback: this.afterScroll, scope: this});
+    },
+
+    afterScroll : function(){
+        var el = this.resizeEl;
+        var t = el.dom.scrollTop, h = el.dom.scrollHeight, ch = el.dom.clientHeight;
+        this.up[t == 0 ? "addClass" : "removeClass"]("x-scroller-btn-disabled");
+        this.down[h - t <= ch ? "addClass" : "removeClass"]("x-scroller-btn-disabled");
+    },
+
+    setSize : function(){
+        Roo.ScrollPanel.superclass.setSize.apply(this, arguments);
+        this.afterScroll();
+    },
+
+    onWheel : function(e){
+        var d = e.getWheelDelta();
+        this.resizeEl.dom.scrollTop -= (d*this.wheelIncrement);
+        this.afterScroll();
+        e.stopEvent();
+    },
+
+    setContent : function(content, loadScripts){
+        this.resizeEl.update(content, loadScripts);
+    }
+
+});
+
+
+
+
+
+
+
+
+
+/**
+ * @class Roo.TreePanel
+ * @extends Roo.ContentPanel
+ * @constructor
+ * Create a new TreePanel. - defaults to fit/scoll contents.
+ * @param {String/Object} config A string to set only the panel's title, or a config object
+ * @cfg {Roo.tree.TreePanel} tree The tree TreePanel, with config etc.
+ */
+Roo.TreePanel = function(config){
+    var el = config.el;
+    var tree = config.tree;
+    delete config.tree; 
+    delete config.el; // hopefull!
+    
+    // wrapper for IE7 strict & safari scroll issue
+    
+    var treeEl = el.createChild();
+    config.resizeEl = treeEl;
+    
+    
+    
+    Roo.TreePanel.superclass.constructor.call(this, el, config);
+ 
+ 
+    this.tree = new Roo.tree.TreePanel(treeEl , tree);
+    //console.log(tree);
+    this.on('activate', function()
+    {
+        if (this.tree.rendered) {
+            return;
+        }
+        //console.log('render tree');
+        this.tree.render();
+    });
+    
+    this.on('resize',  function (cp, w, h) {
+            this.tree.innerCt.setWidth(w);
+            this.tree.innerCt.setHeight(h);
+            this.tree.innerCt.setStyle('overflow-y', 'auto');
+    });
+
+        
+    
+};
+
+Roo.extend(Roo.TreePanel, Roo.ContentPanel, {   
+    fitToFrame : true,
+    autoScroll : true
+});
+
+
+
+
+
+
+
+
+
+
+
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+
+/**
+ * @class Roo.ReaderLayout
+ * @extends Roo.BorderLayout
+ * This is a pre-built layout that represents a classic, 5-pane application.  It consists of a header, a primary
+ * center region containing two nested regions (a top one for a list view and one for item preview below),
+ * and regions on either side that can be used for navigation, application commands, informational displays, etc.
+ * The setup and configuration work exactly the same as it does for a {@link Roo.BorderLayout} - this class simply
+ * expedites the setup of the overall layout and regions for this common application style.
+ * Example:
+ <pre><code>
+var reader = new Roo.ReaderLayout();
+var CP = Roo.ContentPanel;  // shortcut for adding
+
+reader.beginUpdate();
+reader.add("north", new CP("north", "North"));
+reader.add("west", new CP("west", {title: "West"}));
+reader.add("east", new CP("east", {title: "East"}));
+
+reader.regions.listView.add(new CP("listView", "List"));
+reader.regions.preview.add(new CP("preview", "Preview"));
+reader.endUpdate();
+</code></pre>
+* @constructor
+* Create a new ReaderLayout
+* @param {Object} config Configuration options
+* @param {String/HTMLElement/Element} container (optional) The container this layout is bound to (defaults to
+* document.body if omitted)
+*/
+Roo.ReaderLayout = function(config, renderTo){
+    var c = config || {size:{}};
+    Roo.ReaderLayout.superclass.constructor.call(this, renderTo || document.body, {
+        north: c.north !== false ? Roo.apply({
+            split:false,
+            initialSize: 32,
+            titlebar: false
+        }, c.north) : false,
+        west: c.west !== false ? Roo.apply({
+            split:true,
+            initialSize: 200,
+            minSize: 175,
+            maxSize: 400,
+            titlebar: true,
+            collapsible: true,
+            animate: true,
+            margins:{left:5,right:0,bottom:5,top:5},
+            cmargins:{left:5,right:5,bottom:5,top:5}
+        }, c.west) : false,
+        east: c.east !== false ? Roo.apply({
+            split:true,
+            initialSize: 200,
+            minSize: 175,
+            maxSize: 400,
+            titlebar: true,
+            collapsible: true,
+            animate: true,
+            margins:{left:0,right:5,bottom:5,top:5},
+            cmargins:{left:5,right:5,bottom:5,top:5}
+        }, c.east) : false,
+        center: Roo.apply({
+            tabPosition: 'top',
+            autoScroll:false,
+            closeOnTab: true,
+            titlebar:false,
+            margins:{left:c.west!==false ? 0 : 5,right:c.east!==false ? 0 : 5,bottom:5,top:2}
+        }, c.center)
+    });
+
+    this.el.addClass('x-reader');
+
+    this.beginUpdate();
+
+    var inner = new Roo.BorderLayout(Roo.get(document.body).createChild(), {
+        south: c.preview !== false ? Roo.apply({
+            split:true,
+            initialSize: 200,
+            minSize: 100,
+            autoScroll:true,
+            collapsible:true,
+            titlebar: true,
+            cmargins:{top:5,left:0, right:0, bottom:0}
+        }, c.preview) : false,
+        center: Roo.apply({
+            autoScroll:false,
+            titlebar:false,
+            minHeight:200
+        }, c.listView)
+    });
+    this.add('center', new Roo.NestedLayoutPanel(inner,
+            Roo.apply({title: c.mainTitle || '',tabTip:''},c.innerPanelCfg)));
+
+    this.endUpdate();
+
+    this.regions.preview = inner.getRegion('south');
+    this.regions.listView = inner.getRegion('center');
+};
+
+Roo.extend(Roo.ReaderLayout, Roo.BorderLayout);/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.grid.Grid
+ * @extends Roo.util.Observable
+ * This class represents the primary interface of a component based grid control.
+ * <br><br>Usage:<pre><code>
+ var grid = new Roo.grid.Grid("my-container-id", {
+     ds: myDataStore,
+     cm: myColModel,
+     selModel: mySelectionModel,
+     autoSizeColumns: true,
+     monitorWindowResize: false,
+     trackMouseOver: true
+ });
+ // set any options
+ grid.render();
+ * </code></pre>
+ * <b>Common Problems:</b><br/>
+ * - Grid does not resize properly when going smaller: Setting overflow hidden on the container
+ * element will correct this<br/>
+ * - If you get el.style[camel]= NaNpx or -2px or something related, be certain you have given your container element
+ * dimensions. The grid adapts to your container's size, if your container has no size defined then the results
+ * are unpredictable.<br/>
+ * - Do not render the grid into an element with display:none. Try using visibility:hidden. Otherwise there is no way for the
+ * grid to calculate dimensions/offsets.<br/>
+  * @constructor
+ * @param {String/HTMLElement/Roo.Element} container The element into which this grid will be rendered -
+ * The container MUST have some type of size defined for the grid to fill. The container will be
+ * automatically set to position relative if it isn't already.
+ * @param {Object} config A config object that sets properties on this grid.
+ */
+Roo.grid.Grid = function(container, config){
+	// initialize the container
+	this.container = Roo.get(container);
+	this.container.update("");
+	this.container.setStyle("overflow", "hidden");
+    this.container.addClass('x-grid-container');
+
+    this.id = this.container.id;
+
+    Roo.apply(this, config);
+    // check and correct shorthanded configs
+    if(this.ds){
+        this.dataSource = this.ds;
+        delete this.ds;
+    }
+    if(this.cm){
+        this.colModel = this.cm;
+        delete this.cm;
+    }
+    if(this.sm){
+        this.selModel = this.sm;
+        delete this.sm;
+    }
+
+    if (this.selModel) {
+        this.selModel = Roo.factory(this.selModel, Roo.grid);
+        this.sm = this.selModel;
+        this.sm.xmodule = this.xmodule || false;
+    }
+    if (typeof(this.colModel.config) == 'undefined') {
+        this.colModel = new Roo.grid.ColumnModel(this.colModel);
+        this.cm = this.colModel;
+        this.cm.xmodule = this.xmodule || false;
+    }
+    if (this.dataSource) {
+        this.dataSource= Roo.factory(this.dataSource, Roo.data);
+        this.ds = this.dataSource;
+        this.ds.xmodule = this.xmodule || false;
+        
+    }
+    
+    
+    
+    if(this.width){
+        this.container.setWidth(this.width);
+    }
+
+    if(this.height){
+        this.container.setHeight(this.height);
+    }
+    /** @private */
+	this.addEvents({
+	    // raw events
+	    /**
+	     * @event click
+	     * The raw click event for the entire grid.
+	     * @param {Roo.EventObject} e
+	     */
+	    "click" : true,
+	    /**
+	     * @event dblclick
+	     * The raw dblclick event for the entire grid.
+	     * @param {Roo.EventObject} e
+	     */
+	    "dblclick" : true,
+	    /**
+	     * @event contextmenu
+	     * The raw contextmenu event for the entire grid.
+	     * @param {Roo.EventObject} e
+	     */
+	    "contextmenu" : true,
+	    /**
+	     * @event mousedown
+	     * The raw mousedown event for the entire grid.
+	     * @param {Roo.EventObject} e
+	     */
+	    "mousedown" : true,
+	    /**
+	     * @event mouseup
+	     * The raw mouseup event for the entire grid.
+	     * @param {Roo.EventObject} e
+	     */
+	    "mouseup" : true,
+	    /**
+	     * @event mouseover
+	     * The raw mouseover event for the entire grid.
+	     * @param {Roo.EventObject} e
+	     */
+	    "mouseover" : true,
+	    /**
+	     * @event mouseout
+	     * The raw mouseout event for the entire grid.
+	     * @param {Roo.EventObject} e
+	     */
+	    "mouseout" : true,
+	    /**
+	     * @event keypress
+	     * The raw keypress event for the entire grid.
+	     * @param {Roo.EventObject} e
+	     */
+	    "keypress" : true,
+	    /**
+	     * @event keydown
+	     * The raw keydown event for the entire grid.
+	     * @param {Roo.EventObject} e
+	     */
+	    "keydown" : true,
+
+	    // custom events
+
+	    /**
+	     * @event cellclick
+	     * Fires when a cell is clicked
+	     * @param {Grid} this
+	     * @param {Number} rowIndex
+	     * @param {Number} columnIndex
+	     * @param {Roo.EventObject} e
+	     */
+	    "cellclick" : true,
+	    /**
+	     * @event celldblclick
+	     * Fires when a cell is double clicked
+	     * @param {Grid} this
+	     * @param {Number} rowIndex
+	     * @param {Number} columnIndex
+	     * @param {Roo.EventObject} e
+	     */
+	    "celldblclick" : true,
+	    /**
+	     * @event rowclick
+	     * Fires when a row is clicked
+	     * @param {Grid} this
+	     * @param {Number} rowIndex
+	     * @param {Roo.EventObject} e
+	     */
+	    "rowclick" : true,
+	    /**
+	     * @event rowdblclick
+	     * Fires when a row is double clicked
+	     * @param {Grid} this
+	     * @param {Number} rowIndex
+	     * @param {Roo.EventObject} e
+	     */
+	    "rowdblclick" : true,
+	    /**
+	     * @event headerclick
+	     * Fires when a header is clicked
+	     * @param {Grid} this
+	     * @param {Number} columnIndex
+	     * @param {Roo.EventObject} e
+	     */
+	    "headerclick" : true,
+	    /**
+	     * @event headerdblclick
+	     * Fires when a header cell is double clicked
+	     * @param {Grid} this
+	     * @param {Number} columnIndex
+	     * @param {Roo.EventObject} e
+	     */
+	    "headerdblclick" : true,
+	    /**
+	     * @event rowcontextmenu
+	     * Fires when a row is right clicked
+	     * @param {Grid} this
+	     * @param {Number} rowIndex
+	     * @param {Roo.EventObject} e
+	     */
+	    "rowcontextmenu" : true,
+	    /**
+         * @event cellcontextmenu
+         * Fires when a cell is right clicked
+         * @param {Grid} this
+         * @param {Number} rowIndex
+         * @param {Number} cellIndex
+         * @param {Roo.EventObject} e
+         */
+         "cellcontextmenu" : true,
+	    /**
+	     * @event headercontextmenu
+	     * Fires when a header is right clicked
+	     * @param {Grid} this
+	     * @param {Number} columnIndex
+	     * @param {Roo.EventObject} e
+	     */
+	    "headercontextmenu" : true,
+	    /**
+	     * @event bodyscroll
+	     * Fires when the body element is scrolled
+	     * @param {Number} scrollLeft
+	     * @param {Number} scrollTop
+	     */
+	    "bodyscroll" : true,
+	    /**
+	     * @event columnresize
+	     * Fires when the user resizes a column
+	     * @param {Number} columnIndex
+	     * @param {Number} newSize
+	     */
+	    "columnresize" : true,
+	    /**
+	     * @event columnmove
+	     * Fires when the user moves a column
+	     * @param {Number} oldIndex
+	     * @param {Number} newIndex
+	     */
+	    "columnmove" : true,
+	    /**
+	     * @event startdrag
+	     * Fires when row(s) start being dragged
+	     * @param {Grid} this
+	     * @param {Roo.GridDD} dd The drag drop object
+	     * @param {event} e The raw browser event
+	     */
+	    "startdrag" : true,
+	    /**
+	     * @event enddrag
+	     * Fires when a drag operation is complete
+	     * @param {Grid} this
+	     * @param {Roo.GridDD} dd The drag drop object
+	     * @param {event} e The raw browser event
+	     */
+	    "enddrag" : true,
+	    /**
+	     * @event dragdrop
+	     * Fires when dragged row(s) are dropped on a valid DD target
+	     * @param {Grid} this
+	     * @param {Roo.GridDD} dd The drag drop object
+	     * @param {String} targetId The target drag drop object
+	     * @param {event} e The raw browser event
+	     */
+	    "dragdrop" : true,
+	    /**
+	     * @event dragover
+	     * Fires while row(s) are being dragged. "targetId" is the id of the Yahoo.util.DD object the selected rows are being dragged over.
+	     * @param {Grid} this
+	     * @param {Roo.GridDD} dd The drag drop object
+	     * @param {String} targetId The target drag drop object
+	     * @param {event} e The raw browser event
+	     */
+	    "dragover" : true,
+	    /**
+	     * @event dragenter
+	     *  Fires when the dragged row(s) first cross another DD target while being dragged
+	     * @param {Grid} this
+	     * @param {Roo.GridDD} dd The drag drop object
+	     * @param {String} targetId The target drag drop object
+	     * @param {event} e The raw browser event
+	     */
+	    "dragenter" : true,
+	    /**
+	     * @event dragout
+	     * Fires when the dragged row(s) leave another DD target while being dragged
+	     * @param {Grid} this
+	     * @param {Roo.GridDD} dd The drag drop object
+	     * @param {String} targetId The target drag drop object
+	     * @param {event} e The raw browser event
+	     */
+	    "dragout" : true,
+        /**
+         * @event render
+         * Fires when the grid is rendered
+         * @param {Grid} grid
+         */
+        render : true
+    });
+
+    Roo.grid.Grid.superclass.constructor.call(this);
+};
+Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
+    
+    /**
+     * @cfg {String} ddGroup - drag drop group.
+	 */
+    
+    /**
+     * @cfg {Number} minColumnWidth The minimum width a column can be resized to. Default is 25.
+	 */
+	minColumnWidth : 25,
+
+    /**
+	 * @cfg {Boolean} autoSizeColumns True to automatically resize the columns to fit their content
+	 * <b>on initial render.</b> It is more efficient to explicitly size the columns
+	 * through the ColumnModel's {@link Roo.grid.ColumnModel#width} config option.  Default is false.
+	 */
+	autoSizeColumns : false,
+
+	/**
+	 * @cfg {Boolean} autoSizeHeaders True to measure headers with column data when auto sizing columns. Default is true.
+	 */
+	autoSizeHeaders : true,
+
+	/**
+	 * @cfg {Boolean} monitorWindowResize True to autoSize the grid when the window resizes. Default is true.
+	 */
+	monitorWindowResize : true,
+
+	/**
+	 * @cfg {Boolean} maxRowsToMeasure If autoSizeColumns is on, maxRowsToMeasure can be used to limit the number of
+	 * rows measured to get a columns size. Default is 0 (all rows).
+	 */
+	maxRowsToMeasure : 0,
+
+	/**
+	 * @cfg {Boolean} trackMouseOver True to highlight rows when the mouse is over. Default is true.
+	 */
+	trackMouseOver : true,
+
+    /**
+	 * @cfg {Boolean} enableDrag  True to enable drag of rows. Default is false. (double check if this is needed?)
+	 */
+    
+	/**
+	 * @cfg {Boolean} enableDragDrop True to enable drag and drop of rows. Default is false.
+	 */
+	enableDragDrop : false,
+
+	/**
+	 * @cfg {Boolean} enableColumnMove True to enable drag and drop reorder of columns. Default is true.
+	 */
+	enableColumnMove : true,
+
+	/**
+	 * @cfg {Boolean} enableColumnHide True to enable hiding of columns with the header context menu. Default is true.
+	 */
+	enableColumnHide : true,
+
+	/**
+	 * @cfg {Boolean} enableRowHeightSync True to manually sync row heights across locked and not locked rows. Default is false.
+	 */
+	enableRowHeightSync : false,
+
+	/**
+	 * @cfg {Boolean} stripeRows True to stripe the rows.  Default is true.
+	 */
+	stripeRows : true,
+
+	/**
+	 * @cfg {Boolean} autoHeight True to fit the height of the grid container to the height of the data. Default is false.
+	 */
+	autoHeight : false,
+
+    /**
+     * @cfg {String} autoExpandColumn The id (or dataIndex) of a column in this grid that should expand to fill unused space. This id can not be 0. Default is false.
+     */
+    autoExpandColumn : false,
+
+    /**
+    * @cfg {Number} autoExpandMin The minimum width the autoExpandColumn can have (if enabled).
+    * Default is 50.
+    */
+    autoExpandMin : 50,
+
+    /**
+    * @cfg {Number} autoExpandMax The maximum width the autoExpandColumn can have (if enabled). Default is 1000.
+    */
+    autoExpandMax : 1000,
+
+    /**
+	 * @cfg {Object} view The {@link Roo.grid.GridView} used by the grid. This can be set before a call to render().
+	 */
+	view : null,
+
+	/**
+     * @cfg {Object} loadMask An {@link Roo.LoadMask} config or true to mask the grid while loading. Default is false.
+	 */
+	loadMask : false,
+    /**
+     * @cfg {Roo.dd.DropTarget} dragTarget An {@link Roo.dd.DragTarget} config
+	 */
+	dropTarget: false,
+    // private
+    rendered : false,
+
+    /**
+    * @cfg {Boolean} autoWidth True to set the grid's width to the default total width of the grid's columns instead
+    * of a fixed width. Default is false.
+    */
+    /**
+    * @cfg {Number} maxHeight Sets the maximum height of the grid - ignored if autoHeight is not on.
+    */
+    /**
+     * Called once after all setup has been completed and the grid is ready to be rendered.
+     * @return {Roo.grid.Grid} this
+     */
+    render : function(){
+        var c = this.container;
+        // try to detect autoHeight/width mode
+        if((!c.dom.offsetHeight || c.dom.offsetHeight < 20) || c.getStyle("height") == "auto"){
+    	    this.autoHeight = true;
+    	}
+    	var view = this.getView();
+        view.init(this);
+
+        c.on("click", this.onClick, this);
+        c.on("dblclick", this.onDblClick, this);
+        c.on("contextmenu", this.onContextMenu, this);
+        c.on("keydown", this.onKeyDown, this);
+
+        this.relayEvents(c, ["mousedown","mouseup","mouseover","mouseout","keypress"]);
+
+        this.getSelectionModel().init(this);
+
+        view.render();
+
+        if(this.loadMask){
+            this.loadMask = new Roo.LoadMask(this.container,
+                    Roo.apply({store:this.dataSource}, this.loadMask));
+        }
+        
+        
+        if (this.toolbar && this.toolbar.xtype) {
+            this.toolbar.container = this.getView().getHeaderPanel(true);
+            this.toolbar = new Ext.Toolbar(this.toolbar);
+        }
+        if (this.footer && this.footer.xtype) {
+            this.footer.dataSource = this.getDataSource();
+            this.footer.container = this.getView().getFooterPanel(true);
+            this.footer = Roo.factory(this.footer, Roo);
+        }
+        if (this.dropTarget && this.dropTarget.xtype) {
+            delete this.dropTarget.xtype;
+            this.dropTarget =  new Ext.dd.DropTarget(this.getView().mainBody, this.dropTarget);
+        }
+        
+        
+        this.rendered = true;
+        this.fireEvent('render', this);
+        return this;
+    },
+
+	/**
+	 * Reconfigures the grid to use a different Store and Column Model.
+	 * The View will be bound to the new objects and refreshed.
+	 * @param {Roo.data.Store} dataSource The new {@link Roo.data.Store} object
+	 * @param {Roo.grid.ColumnModel} The new {@link Roo.grid.ColumnModel} object
+	 */
+    reconfigure : function(dataSource, colModel){
+        if(this.loadMask){
+            this.loadMask.destroy();
+            this.loadMask = new Roo.LoadMask(this.container,
+                    Roo.apply({store:dataSource}, this.loadMask));
+        }
+        this.view.bind(dataSource, colModel);
+        this.dataSource = dataSource;
+        this.colModel = colModel;
+        this.view.refresh(true);
+    },
+
+    // private
+    onKeyDown : function(e){
+        this.fireEvent("keydown", e);
+    },
+
+    /**
+     * Destroy this grid.
+     * @param {Boolean} removeEl True to remove the element
+     */
+    destroy : function(removeEl, keepListeners){
+        if(this.loadMask){
+            this.loadMask.destroy();
+        }
+        var c = this.container;
+        c.removeAllListeners();
+        this.view.destroy();
+        this.colModel.purgeListeners();
+        if(!keepListeners){
+            this.purgeListeners();
+        }
+        c.update("");
+        if(removeEl === true){
+            c.remove();
+        }
+    },
+
+    // private
+    processEvent : function(name, e){
+        this.fireEvent(name, e);
+        var t = e.getTarget();
+        var v = this.view;
+        var header = v.findHeaderIndex(t);
+        if(header !== false){
+            this.fireEvent("header" + name, this, header, e);
+        }else{
+            var row = v.findRowIndex(t);
+            var cell = v.findCellIndex(t);
+            if(row !== false){
+                this.fireEvent("row" + name, this, row, e);
+                if(cell !== false){
+                    this.fireEvent("cell" + name, this, row, cell, e);
+                }
+            }
+        }
+    },
+
+    // private
+    onClick : function(e){
+        this.processEvent("click", e);
+    },
+
+    // private
+    onContextMenu : function(e, t){
+        this.processEvent("contextmenu", e);
+    },
+
+    // private
+    onDblClick : function(e){
+        this.processEvent("dblclick", e);
+    },
+
+    // private
+    walkCells : function(row, col, step, fn, scope){
+        var cm = this.colModel, clen = cm.getColumnCount();
+        var ds = this.dataSource, rlen = ds.getCount(), first = true;
+        if(step < 0){
+            if(col < 0){
+                row--;
+                first = false;
+            }
+            while(row >= 0){
+                if(!first){
+                    col = clen-1;
+                }
+                first = false;
+                while(col >= 0){
+                    if(fn.call(scope || this, row, col, cm) === true){
+                        return [row, col];
+                    }
+                    col--;
+                }
+                row--;
+            }
+        } else {
+            if(col >= clen){
+                row++;
+                first = false;
+            }
+            while(row < rlen){
+                if(!first){
+                    col = 0;
+                }
+                first = false;
+                while(col < clen){
+                    if(fn.call(scope || this, row, col, cm) === true){
+                        return [row, col];
+                    }
+                    col++;
+                }
+                row++;
+            }
+        }
+        return null;
+    },
+
+    // private
+    getSelections : function(){
+        return this.selModel.getSelections();
+    },
+
+    /**
+     * Causes the grid to manually recalculate its dimensions. Generally this is done automatically,
+     * but if manual update is required this method will initiate it.
+     */
+    autoSize : function(){
+        if(this.rendered){
+            this.view.layout();
+            if(this.view.adjustForScroll){
+                this.view.adjustForScroll();
+            }
+        }
+    },
+
+    /**
+     * Returns the grid's underlying element.
+     * @return {Element} The element
+     */
+    getGridEl : function(){
+        return this.container;
+    },
+
+    // private for compatibility, overridden by editor grid
+    stopEditing : function(){},
+
+    /**
+     * Returns the grid's SelectionModel.
+     * @return {SelectionModel}
+     */
+    getSelectionModel : function(){
+        if(!this.selModel){
+            this.selModel = new Roo.grid.RowSelectionModel();
+        }
+        return this.selModel;
+    },
+
+    /**
+     * Returns the grid's DataSource.
+     * @return {DataSource}
+     */
+    getDataSource : function(){
+        return this.dataSource;
+    },
+
+    /**
+     * Returns the grid's ColumnModel.
+     * @return {ColumnModel}
+     */
+    getColumnModel : function(){
+        return this.colModel;
+    },
+
+    /**
+     * Returns the grid's GridView object.
+     * @return {GridView}
+     */
+    getView : function(){
+        if(!this.view){
+            this.view = new Roo.grid.GridView(this.viewConfig);
+        }
+        return this.view;
+    },
+    /**
+     * Called to get grid's drag proxy text, by default returns this.ddText.
+     * @return {String}
+     */
+    getDragDropText : function(){
+        var count = this.selModel.getCount();
+        return String.format(this.ddText, count, count == 1 ? '' : 's');
+    }
+});
+/**
+ * Configures the text is the drag proxy (defaults to "%0 selected row(s)").
+ * %0 is replaced with the number of selected rows.
+ * @type String
+ */
+Roo.grid.Grid.prototype.ddText = "{0} selected row{1}";/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+Roo.grid.AbstractGridView = function(){
+	this.grid = null;
+	
+	this.events = {
+	    "beforerowremoved" : true,
+	    "beforerowsinserted" : true,
+	    "beforerefresh" : true,
+	    "rowremoved" : true,
+	    "rowsinserted" : true,
+	    "rowupdated" : true,
+	    "refresh" : true
+	};
+    Roo.grid.AbstractGridView.superclass.constructor.call(this);
+};
+
+Roo.extend(Roo.grid.AbstractGridView, Roo.util.Observable, {
+    rowClass : "x-grid-row",
+    cellClass : "x-grid-cell",
+    tdClass : "x-grid-td",
+    hdClass : "x-grid-hd",
+    splitClass : "x-grid-hd-split",
+    
+	init: function(grid){
+        this.grid = grid;
+		var cid = this.grid.getGridEl().id;
+        this.colSelector = "#" + cid + " ." + this.cellClass + "-";
+        this.tdSelector = "#" + cid + " ." + this.tdClass + "-";
+        this.hdSelector = "#" + cid + " ." + this.hdClass + "-";
+        this.splitSelector = "#" + cid + " ." + this.splitClass + "-";
+	},
+	
+	getColumnRenderers : function(){
+    	var renderers = [];
+    	var cm = this.grid.colModel;
+        var colCount = cm.getColumnCount();
+        for(var i = 0; i < colCount; i++){
+            renderers[i] = cm.getRenderer(i);
+        }
+        return renderers;
+    },
+    
+    getColumnIds : function(){
+    	var ids = [];
+    	var cm = this.grid.colModel;
+        var colCount = cm.getColumnCount();
+        for(var i = 0; i < colCount; i++){
+            ids[i] = cm.getColumnId(i);
+        }
+        return ids;
+    },
+    
+    getDataIndexes : function(){
+    	if(!this.indexMap){
+            this.indexMap = this.buildIndexMap();
+        }
+        return this.indexMap.colToData;
+    },
+    
+    getColumnIndexByDataIndex : function(dataIndex){
+        if(!this.indexMap){
+            this.indexMap = this.buildIndexMap();
+        }
+    	return this.indexMap.dataToCol[dataIndex];
+    },
+    
+    /**
+     * Set a css style for a column dynamically. 
+     * @param {Number} colIndex The index of the column
+     * @param {String} name The css property name
+     * @param {String} value The css value
+     */
+    setCSSStyle : function(colIndex, name, value){
+        var selector = "#" + this.grid.id + " .x-grid-col-" + colIndex;
+        Roo.util.CSS.updateRule(selector, name, value);
+    },
+    
+    generateRules : function(cm){
+        var ruleBuf = [], rulesId = this.grid.id + '-cssrules';
+        Roo.util.CSS.removeStyleSheet(rulesId);
+        for(var i = 0, len = cm.getColumnCount(); i < len; i++){
+            var cid = cm.getColumnId(i);
+            ruleBuf.push(this.colSelector, cid, " {\n", cm.config[i].css, "}\n",
+                         this.tdSelector, cid, " {\n}\n",
+                         this.hdSelector, cid, " {\n}\n",
+                         this.splitSelector, cid, " {\n}\n");
+        }
+        return Roo.util.CSS.createStyleSheet(ruleBuf.join(""), rulesId);
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+// private
+// This is a support class used internally by the Grid components
+Roo.grid.HeaderDragZone = function(grid, hd, hd2){
+    this.grid = grid;
+    this.view = grid.getView();
+    this.ddGroup = "gridHeader" + this.grid.getGridEl().id;
+    Roo.grid.HeaderDragZone.superclass.constructor.call(this, hd);
+    if(hd2){
+        this.setHandleElId(Roo.id(hd));
+        this.setOuterHandleElId(Roo.id(hd2));
+    }
+    this.scroll = false;
+};
+Roo.extend(Roo.grid.HeaderDragZone, Roo.dd.DragZone, {
+    maxDragWidth: 120,
+    getDragData : function(e){
+        var t = Roo.lib.Event.getTarget(e);
+        var h = this.view.findHeaderCell(t);
+        if(h){
+            return {ddel: h.firstChild, header:h};
+        }
+        return false;
+    },
+
+    onInitDrag : function(e){
+        this.view.headersDisabled = true;
+        var clone = this.dragData.ddel.cloneNode(true);
+        clone.id = Roo.id();
+        clone.style.width = Math.min(this.dragData.header.offsetWidth,this.maxDragWidth) + "px";
+        this.proxy.update(clone);
+        return true;
+    },
+
+    afterValidDrop : function(){
+        var v = this.view;
+        setTimeout(function(){
+            v.headersDisabled = false;
+        }, 50);
+    },
+
+    afterInvalidDrop : function(){
+        var v = this.view;
+        setTimeout(function(){
+            v.headersDisabled = false;
+        }, 50);
+    }
+});
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+// private
+// This is a support class used internally by the Grid components
+Roo.grid.HeaderDropZone = function(grid, hd, hd2){
+    this.grid = grid;
+    this.view = grid.getView();
+    // split the proxies so they don't interfere with mouse events
+    this.proxyTop = Roo.DomHelper.append(document.body, {
+        cls:"col-move-top", html:"&#160;"
+    }, true);
+    this.proxyBottom = Roo.DomHelper.append(document.body, {
+        cls:"col-move-bottom", html:"&#160;"
+    }, true);
+    this.proxyTop.hide = this.proxyBottom.hide = function(){
+        this.setLeftTop(-100,-100);
+        this.setStyle("visibility", "hidden");
+    };
+    this.ddGroup = "gridHeader" + this.grid.getGridEl().id;
+    // temporarily disabled
+    //Roo.dd.ScrollManager.register(this.view.scroller.dom);
+    Roo.grid.HeaderDropZone.superclass.constructor.call(this, grid.getGridEl().dom);
+};
+Roo.extend(Roo.grid.HeaderDropZone, Roo.dd.DropZone, {
+    proxyOffsets : [-4, -9],
+    fly: Roo.Element.fly,
+
+    getTargetFromEvent : function(e){
+        var t = Roo.lib.Event.getTarget(e);
+        var cindex = this.view.findCellIndex(t);
+        if(cindex !== false){
+            return this.view.getHeaderCell(cindex);
+        }
+    },
+
+    nextVisible : function(h){
+        var v = this.view, cm = this.grid.colModel;
+        h = h.nextSibling;
+        while(h){
+            if(!cm.isHidden(v.getCellIndex(h))){
+                return h;
+            }
+            h = h.nextSibling;
+        }
+        return null;
+    },
+
+    prevVisible : function(h){
+        var v = this.view, cm = this.grid.colModel;
+        h = h.prevSibling;
+        while(h){
+            if(!cm.isHidden(v.getCellIndex(h))){
+                return h;
+            }
+            h = h.prevSibling;
+        }
+        return null;
+    },
+
+    positionIndicator : function(h, n, e){
+        var x = Roo.lib.Event.getPageX(e);
+        var r = Roo.lib.Dom.getRegion(n.firstChild);
+        var px, pt, py = r.top + this.proxyOffsets[1];
+        if((r.right - x) <= (r.right-r.left)/2){
+            px = r.right+this.view.borderWidth;
+            pt = "after";
+        }else{
+            px = r.left;
+            pt = "before";
+        }
+        var oldIndex = this.view.getCellIndex(h);
+        var newIndex = this.view.getCellIndex(n);
+
+        if(this.grid.colModel.isFixed(newIndex)){
+            return false;
+        }
+
+        var locked = this.grid.colModel.isLocked(newIndex);
+
+        if(pt == "after"){
+            newIndex++;
+        }
+        if(oldIndex < newIndex){
+            newIndex--;
+        }
+        if(oldIndex == newIndex && (locked == this.grid.colModel.isLocked(oldIndex))){
+            return false;
+        }
+        px +=  this.proxyOffsets[0];
+        this.proxyTop.setLeftTop(px, py);
+        this.proxyTop.show();
+        if(!this.bottomOffset){
+            this.bottomOffset = this.view.mainHd.getHeight();
+        }
+        this.proxyBottom.setLeftTop(px, py+this.proxyTop.dom.offsetHeight+this.bottomOffset);
+        this.proxyBottom.show();
+        return pt;
+    },
+
+    onNodeEnter : function(n, dd, e, data){
+        if(data.header != n){
+            this.positionIndicator(data.header, n, e);
+        }
+    },
+
+    onNodeOver : function(n, dd, e, data){
+        var result = false;
+        if(data.header != n){
+            result = this.positionIndicator(data.header, n, e);
+        }
+        if(!result){
+            this.proxyTop.hide();
+            this.proxyBottom.hide();
+        }
+        return result ? this.dropAllowed : this.dropNotAllowed;
+    },
+
+    onNodeOut : function(n, dd, e, data){
+        this.proxyTop.hide();
+        this.proxyBottom.hide();
+    },
+
+    onNodeDrop : function(n, dd, e, data){
+        var h = data.header;
+        if(h != n){
+            var cm = this.grid.colModel;
+            var x = Roo.lib.Event.getPageX(e);
+            var r = Roo.lib.Dom.getRegion(n.firstChild);
+            var pt = (r.right - x) <= ((r.right-r.left)/2) ? "after" : "before";
+            var oldIndex = this.view.getCellIndex(h);
+            var newIndex = this.view.getCellIndex(n);
+            var locked = cm.isLocked(newIndex);
+            if(pt == "after"){
+                newIndex++;
+            }
+            if(oldIndex < newIndex){
+                newIndex--;
+            }
+            if(oldIndex == newIndex && (locked == cm.isLocked(oldIndex))){
+                return false;
+            }
+            cm.setLocked(oldIndex, locked, true);
+            cm.moveColumn(oldIndex, newIndex);
+            this.grid.fireEvent("columnmove", oldIndex, newIndex);
+            return true;
+        }
+        return false;
+    }
+});
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+  
+/**
+ * @class Roo.grid.GridView
+ * @extends Roo.util.Observable
+ *
+ * @constructor
+ * @param {Object} config
+ */
+Roo.grid.GridView = function(config){
+    Roo.grid.GridView.superclass.constructor.call(this);
+    this.el = null;
+
+    Roo.apply(this, config);
+};
+
+Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
+
+    /**
+     * Override this function to apply custom css classes to rows during rendering
+     * @param {Record} record The record
+     * @param {Number} index
+     * @method getRowClass
+     */
+    rowClass : "x-grid-row",
+
+    cellClass : "x-grid-col",
+
+    tdClass : "x-grid-td",
+
+    hdClass : "x-grid-hd",
+
+    splitClass : "x-grid-split",
+
+    sortClasses : ["sort-asc", "sort-desc"],
+
+    enableMoveAnim : false,
+
+    hlColor: "C3DAF9",
+
+    dh : Roo.DomHelper,
+
+    fly : Roo.Element.fly,
+
+    css : Roo.util.CSS,
+
+    borderWidth: 1,
+
+    splitOffset: 3,
+
+    scrollIncrement : 22,
+
+    cellRE: /(?:.*?)x-grid-(?:hd|cell|csplit)-(?:[\d]+)-([\d]+)(?:.*?)/,
+
+    findRE: /\s?(?:x-grid-hd|x-grid-col|x-grid-csplit)\s/,
+
+    bind : function(ds, cm){
+        if(this.ds){
+            this.ds.un("load", this.onLoad, this);
+            this.ds.un("datachanged", this.onDataChange, this);
+            this.ds.un("add", this.onAdd, this);
+            this.ds.un("remove", this.onRemove, this);
+            this.ds.un("update", this.onUpdate, this);
+            this.ds.un("clear", this.onClear, this);
+        }
+        if(ds){
+            ds.on("load", this.onLoad, this);
+            ds.on("datachanged", this.onDataChange, this);
+            ds.on("add", this.onAdd, this);
+            ds.on("remove", this.onRemove, this);
+            ds.on("update", this.onUpdate, this);
+            ds.on("clear", this.onClear, this);
+        }
+        this.ds = ds;
+
+        if(this.cm){
+            this.cm.un("widthchange", this.onColWidthChange, this);
+            this.cm.un("headerchange", this.onHeaderChange, this);
+            this.cm.un("hiddenchange", this.onHiddenChange, this);
+            this.cm.un("columnmoved", this.onColumnMove, this);
+            this.cm.un("columnlockchange", this.onColumnLock, this);
+        }
+        if(cm){
+            this.generateRules(cm);
+            cm.on("widthchange", this.onColWidthChange, this);
+            cm.on("headerchange", this.onHeaderChange, this);
+            cm.on("hiddenchange", this.onHiddenChange, this);
+            cm.on("columnmoved", this.onColumnMove, this);
+            cm.on("columnlockchange", this.onColumnLock, this);
+        }
+        this.cm = cm;
+    },
+
+    init: function(grid){
+		Roo.grid.GridView.superclass.init.call(this, grid);
+
+		this.bind(grid.dataSource, grid.colModel);
+
+	    grid.on("headerclick", this.handleHeaderClick, this);
+
+        if(grid.trackMouseOver){
+            grid.on("mouseover", this.onRowOver, this);
+	        grid.on("mouseout", this.onRowOut, this);
+	    }
+	    grid.cancelTextSelection = function(){};
+		this.gridId = grid.id;
+
+		var tpls = this.templates || {};
+
+		if(!tpls.master){
+		    tpls.master = new Roo.Template(
+		       '<div class="x-grid" hidefocus="true">',
+		          '<div class="x-grid-topbar"></div>',
+		          '<div class="x-grid-scroller"><div></div></div>',
+		          '<div class="x-grid-locked">',
+		              '<div class="x-grid-header">{lockedHeader}</div>',
+		              '<div class="x-grid-body">{lockedBody}</div>',
+		          "</div>",
+		          '<div class="x-grid-viewport">',
+		              '<div class="x-grid-header">{header}</div>',
+		              '<div class="x-grid-body">{body}</div>',
+		          "</div>",
+		          '<div class="x-grid-bottombar"></div>',
+		          '<a href="#" class="x-grid-focus" tabIndex="-1"></a>',
+		          '<div class="x-grid-resize-proxy">&#160;</div>',
+		       "</div>"
+		    );
+		    tpls.master.disableformats = true;
+		}
+
+		if(!tpls.header){
+		    tpls.header = new Roo.Template(
+		       '<table border="0" cellspacing="0" cellpadding="0">',
+		       '<tbody><tr class="x-grid-hd-row">{cells}</tr></tbody>',
+		       "</table>{splits}"
+		    );
+		    tpls.header.disableformats = true;
+		}
+		tpls.header.compile();
+
+		if(!tpls.hcell){
+		    tpls.hcell = new Roo.Template(
+		        '<td class="x-grid-hd x-grid-td-{id} {cellId}"><div title="{title}" class="x-grid-hd-inner x-grid-hd-{id}">',
+		        '<div class="x-grid-hd-text" unselectable="on">{value}<img class="x-grid-sort-icon" src="', Roo.BLANK_IMAGE_URL, '" /></div>',
+		        "</div></td>"
+		     );
+		     tpls.hcell.disableFormats = true;
+		}
+		tpls.hcell.compile();
+
+		if(!tpls.hsplit){
+		    tpls.hsplit = new Roo.Template('<div class="x-grid-split {splitId} x-grid-split-{id}" style="{style}" unselectable="on">&#160;</div>');
+		    tpls.hsplit.disableFormats = true;
+		}
+		tpls.hsplit.compile();
+
+		if(!tpls.body){
+		    tpls.body = new Roo.Template(
+		       '<table border="0" cellspacing="0" cellpadding="0">',
+		       "<tbody>{rows}</tbody>",
+		       "</table>"
+		    );
+		    tpls.body.disableFormats = true;
+		}
+		tpls.body.compile();
+
+		if(!tpls.row){
+		    tpls.row = new Roo.Template('<tr class="x-grid-row {alt}">{cells}</tr>');
+		    tpls.row.disableFormats = true;
+		}
+		tpls.row.compile();
+
+		if(!tpls.cell){
+		    tpls.cell = new Roo.Template(
+		        '<td class="x-grid-col x-grid-td-{id} {cellId} {css}" tabIndex="0">',
+		        '<div class="x-grid-col-{id} x-grid-cell-inner"><div class="x-grid-cell-text" unselectable="on" {attr}>{value}</div></div>',
+		        "</td>"
+		    );
+            tpls.cell.disableFormats = true;
+        }
+		tpls.cell.compile();
+
+		this.templates = tpls;
+	},
+
+	// remap these for backwards compat
+    onColWidthChange : function(){
+        this.updateColumns.apply(this, arguments);
+    },
+    onHeaderChange : function(){
+        this.updateHeaders.apply(this, arguments);
+    }, 
+    onHiddenChange : function(){
+        this.handleHiddenChange.apply(this, arguments);
+    },
+    onColumnMove : function(){
+        this.handleColumnMove.apply(this, arguments);
+    },
+    onColumnLock : function(){
+        this.handleLockChange.apply(this, arguments);
+    },
+
+    onDataChange : function(){
+        this.refresh();
+        this.updateHeaderSortState();
+    },
+
+	onClear : function(){
+        this.refresh();
+    },
+
+	onUpdate : function(ds, record){
+        this.refreshRow(record);
+    },
+
+    refreshRow : function(record){
+        var ds = this.ds, index;
+        if(typeof record == 'number'){
+            index = record;
+            record = ds.getAt(index);
+        }else{
+            index = ds.indexOf(record);
+        }
+        this.insertRows(ds, index, index, true);
+        this.onRemove(ds, record, index+1, true);
+        this.syncRowHeights(index, index);
+        this.layout();
+        this.fireEvent("rowupdated", this, index, record);
+    },
+
+    onAdd : function(ds, records, index){
+        this.insertRows(ds, index, index + (records.length-1));
+    },
+
+    onRemove : function(ds, record, index, isUpdate){
+        if(isUpdate !== true){
+            this.fireEvent("beforerowremoved", this, index, record);
+        }
+        var bt = this.getBodyTable(), lt = this.getLockedTable();
+        if(bt.rows[index]){
+            bt.firstChild.removeChild(bt.rows[index]);
+        }
+        if(lt.rows[index]){
+            lt.firstChild.removeChild(lt.rows[index]);
+        }
+        if(isUpdate !== true){
+            this.stripeRows(index);
+            this.syncRowHeights(index, index);
+            this.layout();
+            this.fireEvent("rowremoved", this, index, record);
+        }
+    },
+
+    onLoad : function(){
+        this.scrollToTop();
+    },
+
+    /**
+     * Scrolls the grid to the top
+     */
+    scrollToTop : function(){
+        if(this.scroller){
+            this.scroller.dom.scrollTop = 0;
+            this.syncScroll();
+        }
+    },
+
+    /**
+     * Gets a panel in the header of the grid that can be used for toolbars etc.
+     * After modifying the contents of this panel a call to grid.autoSize() may be
+     * required to register any changes in size.
+     * @param {Boolean} doShow By default the header is hidden. Pass true to show the panel
+     * @return Roo.Element
+     */
+    getHeaderPanel : function(doShow){
+        if(doShow){
+            this.headerPanel.show();
+        }
+        return this.headerPanel;
+	},
+
+	/**
+     * Gets a panel in the footer of the grid that can be used for toolbars etc.
+     * After modifying the contents of this panel a call to grid.autoSize() may be
+     * required to register any changes in size.
+     * @param {Boolean} doShow By default the footer is hidden. Pass true to show the panel
+     * @return Roo.Element
+     */
+    getFooterPanel : function(doShow){
+        if(doShow){
+            this.footerPanel.show();
+        }
+        return this.footerPanel;
+	},
+
+	initElements : function(){
+	    var E = Roo.Element;
+	    var el = this.grid.getGridEl().dom.firstChild;
+	    var cs = el.childNodes;
+
+	    this.el = new E(el);
+	    this.headerPanel = new E(el.firstChild);
+	    this.headerPanel.enableDisplayMode("block");
+
+        this.scroller = new E(cs[1]);
+	    this.scrollSizer = new E(this.scroller.dom.firstChild);
+
+	    this.lockedWrap = new E(cs[2]);
+	    this.lockedHd = new E(this.lockedWrap.dom.firstChild);
+	    this.lockedBody = new E(this.lockedWrap.dom.childNodes[1]);
+
+	    this.mainWrap = new E(cs[3]);
+	    this.mainHd = new E(this.mainWrap.dom.firstChild);
+	    this.mainBody = new E(this.mainWrap.dom.childNodes[1]);
+
+	    this.footerPanel = new E(cs[4]);
+	    this.footerPanel.enableDisplayMode("block");
+
+        this.focusEl = new E(cs[5]);
+        this.focusEl.swallowEvent("click", true);
+        this.resizeProxy = new E(cs[6]);
+
+	    this.headerSelector = String.format(
+	       '#{0} td.x-grid-hd, #{1} td.x-grid-hd',
+	       this.lockedHd.id, this.mainHd.id
+	    );
+
+	    this.splitterSelector = String.format(
+	       '#{0} div.x-grid-split, #{1} div.x-grid-split',
+	       this.idToCssName(this.lockedHd.id), this.idToCssName(this.mainHd.id)
+	    );
+    },
+    idToCssName : function(s)
+    {
+        return s.replace(/[^a-z0-9]+/ig, '-');
+    },
+
+	getHeaderCell : function(index){
+	    return Roo.DomQuery.select(this.headerSelector)[index];
+	},
+
+	getHeaderCellMeasure : function(index){
+	    return this.getHeaderCell(index).firstChild;
+	},
+
+	getHeaderCellText : function(index){
+	    return this.getHeaderCell(index).firstChild.firstChild;
+	},
+
+	getLockedTable : function(){
+	    return this.lockedBody.dom.firstChild;
+	},
+
+	getBodyTable : function(){
+	    return this.mainBody.dom.firstChild;
+	},
+
+	getLockedRow : function(index){
+	    return this.getLockedTable().rows[index];
+	},
+
+	getRow : function(index){
+	    return this.getBodyTable().rows[index];
+	},
+
+	getRowComposite : function(index){
+	    if(!this.rowEl){
+	        this.rowEl = new Roo.CompositeElementLite();
+	    }
+        var els = [], lrow, mrow;
+        if(lrow = this.getLockedRow(index)){
+            els.push(lrow);
+        }
+        if(mrow = this.getRow(index)){
+            els.push(mrow);
+        }
+        this.rowEl.elements = els;
+	    return this.rowEl;
+	},
+
+	getCell : function(rowIndex, colIndex){
+	    var locked = this.cm.getLockedCount();
+	    var source;
+	    if(colIndex < locked){
+	        source = this.lockedBody.dom.firstChild;
+	    }else{
+	        source = this.mainBody.dom.firstChild;
+	        colIndex -= locked;
+	    }
+        return source.rows[rowIndex].childNodes[colIndex];
+	},
+
+	getCellText : function(rowIndex, colIndex){
+	    return this.getCell(rowIndex, colIndex).firstChild.firstChild;
+	},
+
+	getCellBox : function(cell){
+	    var b = this.fly(cell).getBox();
+        if(Roo.isOpera){ // opera fails to report the Y
+            b.y = cell.offsetTop + this.mainBody.getY();
+        }
+        return b;
+    },
+
+    getCellIndex : function(cell){
+        var id = String(cell.className).match(this.cellRE);
+        if(id){
+            return parseInt(id[1], 10);
+        }
+        return 0;
+    },
+
+    findHeaderIndex : function(n){
+        var r = Roo.fly(n).findParent("td." + this.hdClass, 6);
+        return r ? this.getCellIndex(r) : false;
+    },
+
+    findHeaderCell : function(n){
+        var r = Roo.fly(n).findParent("td." + this.hdClass, 6);
+        return r ? r : false;
+    },
+
+    findRowIndex : function(n){
+        if(!n){
+            return false;
+        }
+        var r = Roo.fly(n).findParent("tr." + this.rowClass, 6);
+        return r ? r.rowIndex : false;
+    },
+
+    findCellIndex : function(node){
+        var stop = this.el.dom;
+        while(node && node != stop){
+            if(this.findRE.test(node.className)){
+                return this.getCellIndex(node);
+            }
+            node = node.parentNode;
+        }
+        return false;
+    },
+
+    getColumnId : function(index){
+	    return this.cm.getColumnId(index);
+	},
+
+	getSplitters : function(){
+	    if(this.splitterSelector){
+	       return Roo.DomQuery.select(this.splitterSelector);
+	    }else{
+	        return null;
+	    }
+	},
+
+	getSplitter : function(index){
+	    return this.getSplitters()[index];
+	},
+
+    onRowOver : function(e, t){
+        var row;
+        if((row = this.findRowIndex(t)) !== false){
+            this.getRowComposite(row).addClass("x-grid-row-over");
+        }
+    },
+
+    onRowOut : function(e, t){
+        var row;
+        if((row = this.findRowIndex(t)) !== false && row !== this.findRowIndex(e.getRelatedTarget())){
+            this.getRowComposite(row).removeClass("x-grid-row-over");
+        }
+    },
+
+    renderHeaders : function(){
+	    var cm = this.cm;
+        var ct = this.templates.hcell, ht = this.templates.header, st = this.templates.hsplit;
+        var cb = [], lb = [], sb = [], lsb = [], p = {};
+        for(var i = 0, len = cm.getColumnCount(); i < len; i++){
+            p.cellId = "x-grid-hd-0-" + i;
+            p.splitId = "x-grid-csplit-0-" + i;
+            p.id = cm.getColumnId(i);
+            p.title = cm.getColumnTooltip(i) || "";
+            p.value = cm.getColumnHeader(i) || "";
+            p.style = (this.grid.enableColumnResize === false || !cm.isResizable(i) || cm.isFixed(i)) ? 'cursor:default' : '';
+            if(!cm.isLocked(i)){
+                cb[cb.length] = ct.apply(p);
+                sb[sb.length] = st.apply(p);
+            }else{
+                lb[lb.length] = ct.apply(p);
+                lsb[lsb.length] = st.apply(p);
+            }
+        }
+        return [ht.apply({cells: lb.join(""), splits:lsb.join("")}),
+                ht.apply({cells: cb.join(""), splits:sb.join("")})];
+	},
+
+	updateHeaders : function(){
+        var html = this.renderHeaders();
+        this.lockedHd.update(html[0]);
+        this.mainHd.update(html[1]);
+    },
+
+    /**
+     * Focuses the specified row.
+     * @param {Number} row The row index
+     */
+    focusRow : function(row){
+        var x = this.scroller.dom.scrollLeft;
+        this.focusCell(row, 0, false);
+        this.scroller.dom.scrollLeft = x;
+    },
+
+    /**
+     * Focuses the specified cell.
+     * @param {Number} row The row index
+     * @param {Number} col The column index
+     * @param {Boolean} hscroll false to disable horizontal scrolling
+     */
+    focusCell : function(row, col, hscroll){
+        var el = this.ensureVisible(row, col, hscroll);
+        this.focusEl.alignTo(el, "tl-tl");
+        if(Roo.isGecko){
+            this.focusEl.focus();
+        }else{
+            this.focusEl.focus.defer(1, this.focusEl);
+        }
+    },
+
+    /**
+     * Scrolls the specified cell into view
+     * @param {Number} row The row index
+     * @param {Number} col The column index
+     * @param {Boolean} hscroll false to disable horizontal scrolling
+     */
+    ensureVisible : function(row, col, hscroll){
+        if(typeof row != "number"){
+            row = row.rowIndex;
+        }
+        if(row < 0 && row >= this.ds.getCount()){
+            return;
+        }
+        col = (col !== undefined ? col : 0);
+        var cm = this.grid.colModel;
+        while(cm.isHidden(col)){
+            col++;
+        }
+
+        var el = this.getCell(row, col);
+        if(!el){
+            return;
+        }
+        var c = this.scroller.dom;
+
+        var ctop = parseInt(el.offsetTop, 10);
+        var cleft = parseInt(el.offsetLeft, 10);
+        var cbot = ctop + el.offsetHeight;
+        var cright = cleft + el.offsetWidth;
+
+        var ch = c.clientHeight - this.mainHd.dom.offsetHeight;
+        var stop = parseInt(c.scrollTop, 10);
+        var sleft = parseInt(c.scrollLeft, 10);
+        var sbot = stop + ch;
+        var sright = sleft + c.clientWidth;
+
+        if(ctop < stop){
+        	c.scrollTop = ctop;
+        }else if(cbot > sbot){
+            c.scrollTop = cbot-ch;
+        }
+
+        if(hscroll !== false){
+            if(cleft < sleft){
+                c.scrollLeft = cleft;
+            }else if(cright > sright){
+                c.scrollLeft = cright-c.clientWidth;
+            }
+        }
+        return el;
+    },
+
+    updateColumns : function(){
+        this.grid.stopEditing();
+        var cm = this.grid.colModel, colIds = this.getColumnIds();
+        //var totalWidth = cm.getTotalWidth();
+        var pos = 0;
+        for(var i = 0, len = cm.getColumnCount(); i < len; i++){
+            //if(cm.isHidden(i)) continue;
+            var w = cm.getColumnWidth(i);
+            this.css.updateRule(this.colSelector+this.idToCssName(colIds[i]), "width", (w - this.borderWidth) + "px");
+            this.css.updateRule(this.hdSelector+this.idToCssName(colIds[i]), "width", (w - this.borderWidth) + "px");
+        }
+        this.updateSplitters();
+    },
+
+    generateRules : function(cm){
+        var ruleBuf = [], rulesId = this.idToCssName(this.grid.id)+ '-cssrules';
+        Roo.util.CSS.removeStyleSheet(rulesId);
+        for(var i = 0, len = cm.getColumnCount(); i < len; i++){
+            var cid = cm.getColumnId(i);
+            var align = '';
+            if(cm.config[i].align){
+                align = 'text-align:'+cm.config[i].align+';';
+            }
+            var hidden = '';
+            if(cm.isHidden(i)){
+                hidden = 'display:none;';
+            }
+            var width = "width:" + (cm.getColumnWidth(i) - this.borderWidth) + "px;";
+            ruleBuf.push(
+                    this.colSelector, cid, " {\n", cm.config[i].css, align, width, "\n}\n",
+                    this.hdSelector, cid, " {\n", align, width, "}\n",
+                    this.tdSelector, cid, " {\n",hidden,"\n}\n",
+                    this.splitSelector, cid, " {\n", hidden , "\n}\n");
+        }
+        return Roo.util.CSS.createStyleSheet(ruleBuf.join(""), rulesId);
+    },
+
+    updateSplitters : function(){
+        var cm = this.cm, s = this.getSplitters();
+        if(s){ // splitters not created yet
+            var pos = 0, locked = true;
+            for(var i = 0, len = cm.getColumnCount(); i < len; i++){
+                if(cm.isHidden(i)) continue;
+                var w = cm.getColumnWidth(i);
+                if(!cm.isLocked(i) && locked){
+                    pos = 0;
+                    locked = false;
+                }
+                pos += w;
+                s[i].style.left = (pos-this.splitOffset) + "px";
+            }
+        }
+    },
+
+    handleHiddenChange : function(colModel, colIndex, hidden){
+        if(hidden){
+            this.hideColumn(colIndex);
+        }else{
+            this.unhideColumn(colIndex);
+        }
+    },
+
+    hideColumn : function(colIndex){
+        var cid = this.getColumnId(colIndex);
+        this.css.updateRule(this.tdSelector+this.idToCssName(cid), "display", "none");
+        this.css.updateRule(this.splitSelector+this.idToCssName(cid), "display", "none");
+        if(Roo.isSafari){
+            this.updateHeaders();
+        }
+        this.updateSplitters();
+        this.layout();
+    },
+
+    unhideColumn : function(colIndex){
+        var cid = this.getColumnId(colIndex);
+        this.css.updateRule(this.tdSelector+this.idToCssName(cid), "display", "");
+        this.css.updateRule(this.splitSelector+this.idToCssName(cid), "display", "");
+
+        if(Roo.isSafari){
+            this.updateHeaders();
+        }
+        this.updateSplitters();
+        this.layout();
+    },
+
+    insertRows : function(dm, firstRow, lastRow, isUpdate){
+        if(firstRow == 0 && lastRow == dm.getCount()-1){
+            this.refresh();
+        }else{
+            if(!isUpdate){
+                this.fireEvent("beforerowsinserted", this, firstRow, lastRow);
+            }
+            var s = this.getScrollState();
+            var markup = this.renderRows(firstRow, lastRow);
+            this.bufferRows(markup[0], this.getLockedTable(), firstRow);
+            this.bufferRows(markup[1], this.getBodyTable(), firstRow);
+            this.restoreScroll(s);
+            if(!isUpdate){
+                this.fireEvent("rowsinserted", this, firstRow, lastRow);
+                this.syncRowHeights(firstRow, lastRow);
+                this.stripeRows(firstRow);
+                this.layout();
+            }
+        }
+    },
+
+    bufferRows : function(markup, target, index){
+        var before = null, trows = target.rows, tbody = target.tBodies[0];
+        if(index < trows.length){
+            before = trows[index];
+        }
+        var b = document.createElement("div");
+        b.innerHTML = "<table><tbody>"+markup+"</tbody></table>";
+        var rows = b.firstChild.rows;
+        for(var i = 0, len = rows.length; i < len; i++){
+            if(before){
+                tbody.insertBefore(rows[0], before);
+            }else{
+                tbody.appendChild(rows[0]);
+            }
+        }
+        b.innerHTML = "";
+        b = null;
+    },
+
+    deleteRows : function(dm, firstRow, lastRow){
+        if(dm.getRowCount()<1){
+            this.fireEvent("beforerefresh", this);
+            this.mainBody.update("");
+            this.lockedBody.update("");
+            this.fireEvent("refresh", this);
+        }else{
+            this.fireEvent("beforerowsdeleted", this, firstRow, lastRow);
+            var bt = this.getBodyTable();
+            var tbody = bt.firstChild;
+            var rows = bt.rows;
+            for(var rowIndex = firstRow; rowIndex <= lastRow; rowIndex++){
+                tbody.removeChild(rows[firstRow]);
+            }
+            this.stripeRows(firstRow);
+            this.fireEvent("rowsdeleted", this, firstRow, lastRow);
+        }
+    },
+
+    updateRows : function(dataSource, firstRow, lastRow){
+        var s = this.getScrollState();
+        this.refresh();
+        this.restoreScroll(s);
+    },
+
+    handleSort : function(dataSource, sortColumnIndex, sortDir, noRefresh){
+        if(!noRefresh){
+           this.refresh();
+        }
+        this.updateHeaderSortState();
+    },
+
+    getScrollState : function(){
+        var sb = this.scroller.dom;
+        return {left: sb.scrollLeft, top: sb.scrollTop};
+    },
+
+    stripeRows : function(startRow){
+        if(!this.grid.stripeRows || this.ds.getCount() < 1){
+            return;
+        }
+        startRow = startRow || 0;
+        var rows = this.getBodyTable().rows;
+        var lrows = this.getLockedTable().rows;
+        var cls = ' x-grid-row-alt ';
+        for(var i = startRow, len = rows.length; i < len; i++){
+            var row = rows[i], lrow = lrows[i];
+            var isAlt = ((i+1) % 2 == 0);
+            var hasAlt = (' '+row.className + ' ').indexOf(cls) != -1;
+            if(isAlt == hasAlt){
+                continue;
+            }
+            if(isAlt){
+                row.className += " x-grid-row-alt";
+            }else{
+                row.className = row.className.replace("x-grid-row-alt", "");
+            }
+            if(lrow){
+                lrow.className = row.className;
+            }
+        }
+    },
+
+    restoreScroll : function(state){
+        var sb = this.scroller.dom;
+        sb.scrollLeft = state.left;
+        sb.scrollTop = state.top;
+        this.syncScroll();
+    },
+
+    syncScroll : function(){
+        var sb = this.scroller.dom;
+        var sh = this.mainHd.dom;
+        var bs = this.mainBody.dom;
+        var lv = this.lockedBody.dom;
+        sh.scrollLeft = bs.scrollLeft = sb.scrollLeft;
+        lv.scrollTop = bs.scrollTop = sb.scrollTop;
+    },
+
+    handleScroll : function(e){
+        this.syncScroll();
+        var sb = this.scroller.dom;
+        this.grid.fireEvent("bodyscroll", sb.scrollLeft, sb.scrollTop);
+        e.stopEvent();
+    },
+
+    handleWheel : function(e){
+        var d = e.getWheelDelta();
+        this.scroller.dom.scrollTop -= d*22;
+        // set this here to prevent jumpy scrolling on large tables
+        this.lockedBody.dom.scrollTop = this.mainBody.dom.scrollTop = this.scroller.dom.scrollTop;
+        e.stopEvent();
+    },
+
+    renderRows : function(startRow, endRow){
+        // pull in all the crap needed to render rows
+        var g = this.grid, cm = g.colModel, ds = g.dataSource, stripe = g.stripeRows;
+        var colCount = cm.getColumnCount();
+
+        if(ds.getCount() < 1){
+            return ["", ""];
+        }
+
+        // build a map for all the columns
+        var cs = [];
+        for(var i = 0; i < colCount; i++){
+            var name = cm.getDataIndex(i);
+            cs[i] = {
+                name : typeof name == 'undefined' ? ds.fields.get(i).name : name,
+                renderer : cm.getRenderer(i),
+                id : cm.getColumnId(i),
+                locked : cm.isLocked(i)
+            };
+        }
+
+        startRow = startRow || 0;
+        endRow = typeof endRow == "undefined"? ds.getCount()-1 : endRow;
+
+        // records to render
+        var rs = ds.getRange(startRow, endRow);
+
+        return this.doRender(cs, rs, ds, startRow, colCount, stripe);
+    },
+
+    // As much as I hate to duplicate code, this was branched because FireFox really hates
+    // [].join("") on strings. The performance difference was substantial enough to
+    // branch this function
+    doRender : Roo.isGecko ?
+            function(cs, rs, ds, startRow, colCount, stripe){
+                var ts = this.templates, ct = ts.cell, rt = ts.row;
+                // buffers
+                var buf = "", lbuf = "", cb, lcb, c, p = {}, rp = {}, r, rowIndex;
+                for(var j = 0, len = rs.length; j < len; j++){
+                    r = rs[j]; cb = ""; lcb = ""; rowIndex = (j+startRow);
+                    for(var i = 0; i < colCount; i++){
+                        c = cs[i];
+                        p.cellId = "x-grid-cell-" + rowIndex + "-" + i;
+                        p.id = c.id;
+                        p.css = p.attr = "";
+                        p.value = c.renderer(r.data[c.name], p, r, rowIndex, i, ds);
+                        if(p.value == undefined || p.value === "") p.value = "&#160;";
+                        if(r.dirty && typeof r.modified[c.name] !== 'undefined'){
+                            p.css += p.css ? ' x-grid-dirty-cell' : 'x-grid-dirty-cell';
+                        }
+                        var markup = ct.apply(p);
+                        if(!c.locked){
+                            cb+= markup;
+                        }else{
+                            lcb+= markup;
+                        }
+                    }
+                    var alt = [];
+                    if(stripe && ((rowIndex+1) % 2 == 0)){
+                        alt[0] = "x-grid-row-alt";
+                    }
+                    if(r.dirty){
+                        alt[1] = " x-grid-dirty-row";
+                    }
+                    rp.cells = lcb;
+                    if(this.getRowClass){
+                        alt[2] = this.getRowClass(r, rowIndex);
+                    }
+                    rp.alt = alt.join(" ");
+                    lbuf+= rt.apply(rp);
+                    rp.cells = cb;
+                    buf+=  rt.apply(rp);
+                }
+                return [lbuf, buf];
+            } :
+            function(cs, rs, ds, startRow, colCount, stripe){
+                var ts = this.templates, ct = ts.cell, rt = ts.row;
+                // buffers
+                var buf = [], lbuf = [], cb, lcb, c, p = {}, rp = {}, r, rowIndex;
+                for(var j = 0, len = rs.length; j < len; j++){
+                    r = rs[j]; cb = []; lcb = []; rowIndex = (j+startRow);
+                    for(var i = 0; i < colCount; i++){
+                        c = cs[i];
+                        p.cellId = "x-grid-cell-" + rowIndex + "-" + i;
+                        p.id = c.id;
+                        p.css = p.attr = "";
+                        p.value = c.renderer(r.data[c.name], p, r, rowIndex, i, ds);
+                        if(p.value == undefined || p.value === "") p.value = "&#160;";
+                        if(r.dirty && typeof r.modified[c.name] !== 'undefined'){
+                            p.css += p.css ? ' x-grid-dirty-cell' : 'x-grid-dirty-cell';
+                        }
+                        var markup = ct.apply(p);
+                        if(!c.locked){
+                            cb[cb.length] = markup;
+                        }else{
+                            lcb[lcb.length] = markup;
+                        }
+                    }
+                    var alt = [];
+                    if(stripe && ((rowIndex+1) % 2 == 0)){
+                        alt[0] = "x-grid-row-alt";
+                    }
+                    if(r.dirty){
+                        alt[1] = " x-grid-dirty-row";
+                    }
+                    rp.cells = lcb;
+                    if(this.getRowClass){
+                        alt[2] = this.getRowClass(r, rowIndex);
+                    }
+                    rp.alt = alt.join(" ");
+                    rp.cells = lcb.join("");
+                    lbuf[lbuf.length] = rt.apply(rp);
+                    rp.cells = cb.join("");
+                    buf[buf.length] =  rt.apply(rp);
+                }
+                return [lbuf.join(""), buf.join("")];
+            },
+
+    renderBody : function(){
+        var markup = this.renderRows();
+        var bt = this.templates.body;
+        return [bt.apply({rows: markup[0]}), bt.apply({rows: markup[1]})];
+    },
+
+    /**
+     * Refreshes the grid
+     * @param {Boolean} headersToo
+     */
+    refresh : function(headersToo){
+        this.fireEvent("beforerefresh", this);
+        this.grid.stopEditing();
+        var result = this.renderBody();
+        this.lockedBody.update(result[0]);
+        this.mainBody.update(result[1]);
+        if(headersToo === true){
+            this.updateHeaders();
+            this.updateColumns();
+            this.updateSplitters();
+            this.updateHeaderSortState();
+        }
+        this.syncRowHeights();
+        this.layout();
+        this.fireEvent("refresh", this);
+    },
+
+    handleColumnMove : function(cm, oldIndex, newIndex){
+        this.indexMap = null;
+        var s = this.getScrollState();
+        this.refresh(true);
+        this.restoreScroll(s);
+        this.afterMove(newIndex);
+    },
+
+    afterMove : function(colIndex){
+        if(this.enableMoveAnim && Roo.enableFx){
+            this.fly(this.getHeaderCell(colIndex).firstChild).highlight(this.hlColor);
+        }
+    },
+
+    updateCell : function(dm, rowIndex, dataIndex){
+        var colIndex = this.getColumnIndexByDataIndex(dataIndex);
+        if(typeof colIndex == "undefined"){ // not present in grid
+            return;
+        }
+        var cm = this.grid.colModel;
+        var cell = this.getCell(rowIndex, colIndex);
+        var cellText = this.getCellText(rowIndex, colIndex);
+
+        var p = {
+            cellId : "x-grid-cell-" + rowIndex + "-" + colIndex,
+            id : cm.getColumnId(colIndex),
+            css: colIndex == cm.getColumnCount()-1 ? "x-grid-col-last" : ""
+        };
+        var renderer = cm.getRenderer(colIndex);
+        var val = renderer(dm.getValueAt(rowIndex, dataIndex), p, rowIndex, colIndex, dm);
+        if(typeof val == "undefined" || val === "") val = "&#160;";
+        cellText.innerHTML = val;
+        cell.className = this.cellClass + " " + this.idToCssName(p.cellId) + " " + p.css;
+        this.syncRowHeights(rowIndex, rowIndex);
+    },
+
+    calcColumnWidth : function(colIndex, maxRowsToMeasure){
+        var maxWidth = 0;
+        if(this.grid.autoSizeHeaders){
+            var h = this.getHeaderCellMeasure(colIndex);
+            maxWidth = Math.max(maxWidth, h.scrollWidth);
+        }
+        var tb, index;
+        if(this.cm.isLocked(colIndex)){
+            tb = this.getLockedTable();
+            index = colIndex;
+        }else{
+            tb = this.getBodyTable();
+            index = colIndex - this.cm.getLockedCount();
+        }
+        if(tb && tb.rows){
+            var rows = tb.rows;
+            var stopIndex = Math.min(maxRowsToMeasure || rows.length, rows.length);
+            for(var i = 0; i < stopIndex; i++){
+                var cell = rows[i].childNodes[index].firstChild;
+                maxWidth = Math.max(maxWidth, cell.scrollWidth);
+            }
+        }
+        return maxWidth + /*margin for error in IE*/ 5;
+    },
+    /**
+     * Autofit a column to its content.
+     * @param {Number} colIndex
+     * @param {Boolean} forceMinSize true to force the column to go smaller if possible
+     */
+     autoSizeColumn : function(colIndex, forceMinSize, suppressEvent){
+         if(this.cm.isHidden(colIndex)){
+             return; // can't calc a hidden column
+         }
+        if(forceMinSize){
+            var cid = this.cm.getColumnId(colIndex);
+            this.css.updateRule(this.colSelector +this.idToCssName( cid), "width", this.grid.minColumnWidth + "px");
+           if(this.grid.autoSizeHeaders){
+               this.css.updateRule(this.hdSelector + this.idToCssName(cid), "width", this.grid.minColumnWidth + "px");
+           }
+        }
+        var newWidth = this.calcColumnWidth(colIndex);
+        this.cm.setColumnWidth(colIndex,
+            Math.max(this.grid.minColumnWidth, newWidth), suppressEvent);
+        if(!suppressEvent){
+            this.grid.fireEvent("columnresize", colIndex, newWidth);
+        }
+    },
+
+    /**
+     * Autofits all columns to their content and then expands to fit any extra space in the grid
+     */
+     autoSizeColumns : function(){
+        var cm = this.grid.colModel;
+        var colCount = cm.getColumnCount();
+        for(var i = 0; i < colCount; i++){
+            this.autoSizeColumn(i, true, true);
+        }
+        if(cm.getTotalWidth() < this.scroller.dom.clientWidth){
+            this.fitColumns();
+        }else{
+            this.updateColumns();
+            this.layout();
+        }
+    },
+
+    /**
+     * Autofits all columns to the grid's width proportionate with their current size
+     * @param {Boolean} reserveScrollSpace Reserve space for a scrollbar
+     */
+    fitColumns : function(reserveScrollSpace){
+        var cm = this.grid.colModel;
+        var colCount = cm.getColumnCount();
+        var cols = [];
+        var width = 0;
+        var i, w;
+        for (i = 0; i < colCount; i++){
+            if(!cm.isHidden(i) && !cm.isFixed(i)){
+                w = cm.getColumnWidth(i);
+                cols.push(i);
+                cols.push(w);
+                width += w;
+            }
+        }
+        var avail = Math.min(this.scroller.dom.clientWidth, this.el.getWidth());
+        if(reserveScrollSpace){
+            avail -= 17;
+        }
+        var frac = (avail - cm.getTotalWidth())/width;
+        while (cols.length){
+            w = cols.pop();
+            i = cols.pop();
+            cm.setColumnWidth(i, Math.floor(w + w*frac), true);
+        }
+        this.updateColumns();
+        this.layout();
+    },
+
+    onRowSelect : function(rowIndex){
+        var row = this.getRowComposite(rowIndex);
+        row.addClass("x-grid-row-selected");
+    },
+
+    onRowDeselect : function(rowIndex){
+        var row = this.getRowComposite(rowIndex);
+        row.removeClass("x-grid-row-selected");
+    },
+
+    onCellSelect : function(row, col){
+        var cell = this.getCell(row, col);
+        if(cell){
+            Roo.fly(cell).addClass("x-grid-cell-selected");
+        }
+    },
+
+    onCellDeselect : function(row, col){
+        var cell = this.getCell(row, col);
+        if(cell){
+            Roo.fly(cell).removeClass("x-grid-cell-selected");
+        }
+    },
+
+    updateHeaderSortState : function(){
+        var state = this.ds.getSortState();
+        if(!state){
+            return;
+        }
+        this.sortState = state;
+        var sortColumn = this.cm.findColumnIndex(state.field);
+        if(sortColumn != -1){
+            var sortDir = state.direction;
+            var sc = this.sortClasses;
+            var hds = this.el.select(this.headerSelector).removeClass(sc);
+            hds.item(sortColumn).addClass(sc[sortDir == "DESC" ? 1 : 0]);
+        }
+    },
+
+    handleHeaderClick : function(g, index){
+        if(this.headersDisabled){
+            return;
+        }
+        var dm = g.dataSource, cm = g.colModel;
+	    if(!cm.isSortable(index)){
+            return;
+        }
+	    g.stopEditing();
+        dm.sort(cm.getDataIndex(index));
+    },
+
+
+    destroy : function(){
+        if(this.colMenu){
+            this.colMenu.removeAll();
+            Roo.menu.MenuMgr.unregister(this.colMenu);
+            this.colMenu.getEl().remove();
+            delete this.colMenu;
+        }
+        if(this.hmenu){
+            this.hmenu.removeAll();
+            Roo.menu.MenuMgr.unregister(this.hmenu);
+            this.hmenu.getEl().remove();
+            delete this.hmenu;
+        }
+        if(this.grid.enableColumnMove){
+            var dds = Roo.dd.DDM.ids['gridHeader' + this.grid.getGridEl().id];
+            if(dds){
+                for(var dd in dds){
+                    if(!dds[dd].config.isTarget && dds[dd].dragElId){
+                        var elid = dds[dd].dragElId;
+                        dds[dd].unreg();
+                        Roo.get(elid).remove();
+                    } else if(dds[dd].config.isTarget){
+                        dds[dd].proxyTop.remove();
+                        dds[dd].proxyBottom.remove();
+                        dds[dd].unreg();
+                    }
+                    if(Roo.dd.DDM.locationCache[dd]){
+                        delete Roo.dd.DDM.locationCache[dd];
+                    }
+                }
+                delete Roo.dd.DDM.ids['gridHeader' + this.grid.getGridEl().id];
+            }
+        }
+        Roo.util.CSS.removeStyleSheet(this.idToCssName(this.grid.id) + '-cssrules');
+        this.bind(null, null);
+        Roo.EventManager.removeResizeListener(this.onWindowResize, this);
+    },
+
+    handleLockChange : function(){
+        this.refresh(true);
+    },
+
+    onDenyColumnLock : function(){
+
+    },
+
+    onDenyColumnHide : function(){
+
+    },
+
+    handleHdMenuClick : function(item){
+        var index = this.hdCtxIndex;
+        var cm = this.cm, ds = this.ds;
+        switch(item.id){
+            case "asc":
+                ds.sort(cm.getDataIndex(index), "ASC");
+                break;
+            case "desc":
+                ds.sort(cm.getDataIndex(index), "DESC");
+                break;
+            case "lock":
+                var lc = cm.getLockedCount();
+                if(cm.getColumnCount(true) <= lc+1){
+                    this.onDenyColumnLock();
+                    return;
+                }
+                if(lc != index){
+                    cm.setLocked(index, true, true);
+                    cm.moveColumn(index, lc);
+                    this.grid.fireEvent("columnmove", index, lc);
+                }else{
+                    cm.setLocked(index, true);
+                }
+            break;
+            case "unlock":
+                var lc = cm.getLockedCount();
+                if((lc-1) != index){
+                    cm.setLocked(index, false, true);
+                    cm.moveColumn(index, lc-1);
+                    this.grid.fireEvent("columnmove", index, lc-1);
+                }else{
+                    cm.setLocked(index, false);
+                }
+            break;
+            default:
+                index = cm.getIndexById(item.id.substr(4));
+                if(index != -1){
+                    if(item.checked && cm.getColumnCount(true) <= 1){
+                        this.onDenyColumnHide();
+                        return false;
+                    }
+                    cm.setHidden(index, item.checked);
+                }
+        }
+        return true;
+    },
+
+    beforeColMenuShow : function(){
+        var cm = this.cm,  colCount = cm.getColumnCount();
+        this.colMenu.removeAll();
+        for(var i = 0; i < colCount; i++){
+            this.colMenu.add(new Roo.menu.CheckItem({
+                id: "col-"+cm.getColumnId(i),
+                text: cm.getColumnHeader(i),
+                checked: !cm.isHidden(i),
+                hideOnClick:false
+            }));
+        }
+    },
+
+    handleHdCtx : function(g, index, e){
+        e.stopEvent();
+        var hd = this.getHeaderCell(index);
+        this.hdCtxIndex = index;
+        var ms = this.hmenu.items, cm = this.cm;
+        ms.get("asc").setDisabled(!cm.isSortable(index));
+        ms.get("desc").setDisabled(!cm.isSortable(index));
+        if(this.grid.enableColLock !== false){
+            ms.get("lock").setDisabled(cm.isLocked(index));
+            ms.get("unlock").setDisabled(!cm.isLocked(index));
+        }
+        this.hmenu.show(hd, "tl-bl");
+    },
+
+    handleHdOver : function(e){
+        var hd = this.findHeaderCell(e.getTarget());
+        if(hd && !this.headersDisabled){
+            if(this.grid.colModel.isSortable(this.getCellIndex(hd))){
+               this.fly(hd).addClass("x-grid-hd-over");
+            }
+        }
+    },
+
+    handleHdOut : function(e){
+        var hd = this.findHeaderCell(e.getTarget());
+        if(hd){
+            this.fly(hd).removeClass("x-grid-hd-over");
+        }
+    },
+
+    handleSplitDblClick : function(e, t){
+        var i = this.getCellIndex(t);
+        if(this.grid.enableColumnResize !== false && this.cm.isResizable(i) && !this.cm.isFixed(i)){
+            this.autoSizeColumn(i, true);
+            this.layout();
+        }
+    },
+
+    render : function(){
+
+        var cm = this.cm;
+        var colCount = cm.getColumnCount();
+
+        if(this.grid.monitorWindowResize === true){
+            Roo.EventManager.onWindowResize(this.onWindowResize, this, true);
+        }
+        var header = this.renderHeaders();
+        var body = this.templates.body.apply({rows:""});
+        var html = this.templates.master.apply({
+            lockedBody: body,
+            body: body,
+            lockedHeader: header[0],
+            header: header[1]
+        });
+
+        //this.updateColumns();
+
+        this.grid.getGridEl().dom.innerHTML = html;
+
+        this.initElements();
+        
+        // a kludge to fix the random scolling effect in webkit
+        this.el.on("scroll", function() {
+            this.el.dom.scrollTop=0; // hopefully not recursive..
+        },this);
+
+        this.scroller.on("scroll", this.handleScroll, this);
+        this.lockedBody.on("mousewheel", this.handleWheel, this);
+        this.mainBody.on("mousewheel", this.handleWheel, this);
+
+        this.mainHd.on("mouseover", this.handleHdOver, this);
+        this.mainHd.on("mouseout", this.handleHdOut, this);
+        this.mainHd.on("dblclick", this.handleSplitDblClick, this,
+                {delegate: "."+this.splitClass});
+
+        this.lockedHd.on("mouseover", this.handleHdOver, this);
+        this.lockedHd.on("mouseout", this.handleHdOut, this);
+        this.lockedHd.on("dblclick", this.handleSplitDblClick, this,
+                {delegate: "."+this.splitClass});
+
+        if(this.grid.enableColumnResize !== false && Roo.grid.SplitDragZone){
+            new Roo.grid.SplitDragZone(this.grid, this.lockedHd.dom, this.mainHd.dom);
+        }
+
+        this.updateSplitters();
+
+        if(this.grid.enableColumnMove && Roo.grid.HeaderDragZone){
+            new Roo.grid.HeaderDragZone(this.grid, this.lockedHd.dom, this.mainHd.dom);
+            new Roo.grid.HeaderDropZone(this.grid, this.lockedHd.dom, this.mainHd.dom);
+        }
+
+        if(this.grid.enableCtxMenu !== false && Roo.menu.Menu){
+            this.hmenu = new Roo.menu.Menu({id: this.grid.id + "-hctx"});
+            this.hmenu.add(
+                {id:"asc", text: this.sortAscText, cls: "xg-hmenu-sort-asc"},
+                {id:"desc", text: this.sortDescText, cls: "xg-hmenu-sort-desc"}
+            );
+            if(this.grid.enableColLock !== false){
+                this.hmenu.add('-',
+                    {id:"lock", text: this.lockText, cls: "xg-hmenu-lock"},
+                    {id:"unlock", text: this.unlockText, cls: "xg-hmenu-unlock"}
+                );
+            }
+            if(this.grid.enableColumnHide !== false){
+
+                this.colMenu = new Roo.menu.Menu({id:this.grid.id + "-hcols-menu"});
+                this.colMenu.on("beforeshow", this.beforeColMenuShow, this);
+                this.colMenu.on("itemclick", this.handleHdMenuClick, this);
+
+                this.hmenu.add('-',
+                    {id:"columns", text: this.columnsText, menu: this.colMenu}
+                );
+            }
+            this.hmenu.on("itemclick", this.handleHdMenuClick, this);
+
+            this.grid.on("headercontextmenu", this.handleHdCtx, this);
+        }
+
+        if((this.grid.enableDragDrop || this.grid.enableDrag) && Roo.grid.GridDragZone){
+            this.dd = new Roo.grid.GridDragZone(this.grid, {
+                ddGroup : this.grid.ddGroup || 'GridDD'
+            });
+        }
+
+        /*
+        for(var i = 0; i < colCount; i++){
+            if(cm.isHidden(i)){
+                this.hideColumn(i);
+            }
+            if(cm.config[i].align){
+                this.css.updateRule(this.colSelector + i, "textAlign", cm.config[i].align);
+                this.css.updateRule(this.hdSelector + i, "textAlign", cm.config[i].align);
+            }
+        }*/
+        
+        this.updateHeaderSortState();
+
+        this.beforeInitialResize();
+        this.layout(true);
+
+        // two part rendering gives faster view to the user
+        this.renderPhase2.defer(1, this);
+    },
+
+    renderPhase2 : function(){
+        // render the rows now
+        this.refresh();
+        if(this.grid.autoSizeColumns){
+            this.autoSizeColumns();
+        }
+    },
+
+    beforeInitialResize : function(){
+
+    },
+
+    onColumnSplitterMoved : function(i, w){
+        this.userResized = true;
+        var cm = this.grid.colModel;
+        cm.setColumnWidth(i, w, true);
+        var cid = cm.getColumnId(i);
+        this.css.updateRule(this.colSelector + this.idToCssName(cid), "width", (w-this.borderWidth) + "px");
+        this.css.updateRule(this.hdSelector + this.idToCssName(cid), "width", (w-this.borderWidth) + "px");
+        this.updateSplitters();
+        this.layout();
+        this.grid.fireEvent("columnresize", i, w);
+    },
+
+    syncRowHeights : function(startIndex, endIndex){
+        if(this.grid.enableRowHeightSync === true && this.cm.getLockedCount() > 0){
+            startIndex = startIndex || 0;
+            var mrows = this.getBodyTable().rows;
+            var lrows = this.getLockedTable().rows;
+            var len = mrows.length-1;
+            endIndex = Math.min(endIndex || len, len);
+            for(var i = startIndex; i <= endIndex; i++){
+                var m = mrows[i], l = lrows[i];
+                var h = Math.max(m.offsetHeight, l.offsetHeight);
+                m.style.height = l.style.height = h + "px";
+            }
+        }
+    },
+
+    layout : function(initialRender, is2ndPass){
+        var g = this.grid;
+        var auto = g.autoHeight;
+        var scrollOffset = 16;
+        var c = g.getGridEl(), cm = this.cm,
+                expandCol = g.autoExpandColumn,
+                gv = this;
+        //c.beginMeasure();
+
+        if(!c.dom.offsetWidth){ // display:none?
+            if(initialRender){
+                this.lockedWrap.show();
+                this.mainWrap.show();
+            }
+            return;
+        }
+
+        var hasLock = this.cm.isLocked(0);
+
+        var tbh = this.headerPanel.getHeight();
+        var bbh = this.footerPanel.getHeight();
+
+        if(auto){
+            var ch = this.getBodyTable().offsetHeight + tbh + bbh + this.mainHd.getHeight();
+            var newHeight = ch + c.getBorderWidth("tb");
+            if(g.maxHeight){
+                newHeight = Math.min(g.maxHeight, newHeight);
+            }
+            c.setHeight(newHeight);
+        }
+
+        if(g.autoWidth){
+            c.setWidth(cm.getTotalWidth()+c.getBorderWidth('lr'));
+        }
+
+        var s = this.scroller;
+
+        var csize = c.getSize(true);
+
+        this.el.setSize(csize.width, csize.height);
+
+        this.headerPanel.setWidth(csize.width);
+        this.footerPanel.setWidth(csize.width);
+
+        var hdHeight = this.mainHd.getHeight();
+        var vw = csize.width;
+        var vh = csize.height - (tbh + bbh);
+
+        s.setSize(vw, vh);
+
+        var bt = this.getBodyTable();
+        var ltWidth = hasLock ?
+                      Math.max(this.getLockedTable().offsetWidth, this.lockedHd.dom.firstChild.offsetWidth) : 0;
+
+        var scrollHeight = bt.offsetHeight;
+        var scrollWidth = ltWidth + bt.offsetWidth;
+        var vscroll = false, hscroll = false;
+
+        this.scrollSizer.setSize(scrollWidth, scrollHeight+hdHeight);
+
+        var lw = this.lockedWrap, mw = this.mainWrap;
+        var lb = this.lockedBody, mb = this.mainBody;
+
+        setTimeout(function(){
+            var t = s.dom.offsetTop;
+            var w = s.dom.clientWidth,
+                h = s.dom.clientHeight;
+
+            lw.setTop(t);
+            lw.setSize(ltWidth, h);
+
+            mw.setLeftTop(ltWidth, t);
+            mw.setSize(w-ltWidth, h);
+
+            lb.setHeight(h-hdHeight);
+            mb.setHeight(h-hdHeight);
+
+            if(is2ndPass !== true && !gv.userResized && expandCol){
+                // high speed resize without full column calculation
+                
+                var ci = cm.getIndexById(expandCol);
+                if (ci < 0) {
+                    ci = cm.findColumnIndex(expandCol);
+                }
+                ci = Math.max(0, ci); // make sure it's got at least the first col.
+                var expandId = cm.getColumnId(ci);
+                var  tw = cm.getTotalWidth(false);
+                var currentWidth = cm.getColumnWidth(ci);
+                var cw = Math.min(Math.max(((w-tw)+currentWidth-2)-/*scrollbar*/(w <= s.dom.offsetWidth ? 0 : 18), g.autoExpandMin), g.autoExpandMax);
+                if(currentWidth != cw){
+                    cm.setColumnWidth(ci, cw, true);
+                    gv.css.updateRule(gv.colSelector+gv.idToCssName(expandId), "width", (cw - gv.borderWidth) + "px");
+                    gv.css.updateRule(gv.hdSelector+gv.idToCssName(expandId), "width", (cw - gv.borderWidth) + "px");
+                    gv.updateSplitters();
+                    gv.layout(false, true);
+                }
+            }
+
+            if(initialRender){
+                lw.show();
+                mw.show();
+            }
+            //c.endMeasure();
+        }, 10);
+    },
+
+    onWindowResize : function(){
+        if(!this.grid.monitorWindowResize || this.grid.autoHeight){
+            return;
+        }
+        this.layout();
+    },
+
+    appendFooter : function(parentEl){
+        return null;
+    },
+
+    sortAscText : "Sort Ascending",
+    sortDescText : "Sort Descending",
+    lockText : "Lock Column",
+    unlockText : "Unlock Column",
+    columnsText : "Columns"
+});
+
+
+Roo.grid.GridView.ColumnDragZone = function(grid, hd){
+    Roo.grid.GridView.ColumnDragZone.superclass.constructor.call(this, grid, hd, null);
+    this.proxy.el.addClass('x-grid3-col-dd');
+};
+
+Roo.extend(Roo.grid.GridView.ColumnDragZone, Roo.grid.HeaderDragZone, {
+    handleMouseDown : function(e){
+
+    },
+
+    callHandleMouseDown : function(e){
+        Roo.grid.GridView.ColumnDragZone.superclass.handleMouseDown.call(this, e);
+    }
+});
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+// private
+// This is a support class used internally by the Grid components
+Roo.grid.SplitDragZone = function(grid, hd, hd2){
+    this.grid = grid;
+    this.view = grid.getView();
+    this.proxy = this.view.resizeProxy;
+    Roo.grid.SplitDragZone.superclass.constructor.call(this, hd,
+        "gridSplitters" + this.grid.getGridEl().id, {
+        dragElId : Roo.id(this.proxy.dom), resizeFrame:false
+    });
+    this.setHandleElId(Roo.id(hd));
+    this.setOuterHandleElId(Roo.id(hd2));
+    this.scroll = false;
+};
+Roo.extend(Roo.grid.SplitDragZone, Roo.dd.DDProxy, {
+    fly: Roo.Element.fly,
+
+    b4StartDrag : function(x, y){
+        this.view.headersDisabled = true;
+        this.proxy.setHeight(this.view.mainWrap.getHeight());
+        var w = this.cm.getColumnWidth(this.cellIndex);
+        var minw = Math.max(w-this.grid.minColumnWidth, 0);
+        this.resetConstraints();
+        this.setXConstraint(minw, 1000);
+        this.setYConstraint(0, 0);
+        this.minX = x - minw;
+        this.maxX = x + 1000;
+        this.startPos = x;
+        Roo.dd.DDProxy.prototype.b4StartDrag.call(this, x, y);
+    },
+
+
+    handleMouseDown : function(e){
+        ev = Roo.EventObject.setEvent(e);
+        var t = this.fly(ev.getTarget());
+        if(t.hasClass("x-grid-split")){
+            this.cellIndex = this.view.getCellIndex(t.dom);
+            this.split = t.dom;
+            this.cm = this.grid.colModel;
+            if(this.cm.isResizable(this.cellIndex) && !this.cm.isFixed(this.cellIndex)){
+                Roo.grid.SplitDragZone.superclass.handleMouseDown.apply(this, arguments);
+            }
+        }
+    },
+
+    endDrag : function(e){
+        this.view.headersDisabled = false;
+        var endX = Math.max(this.minX, Roo.lib.Event.getPageX(e));
+        var diff = endX - this.startPos;
+        this.view.onColumnSplitterMoved(this.cellIndex, this.cm.getColumnWidth(this.cellIndex)+diff);
+    },
+
+    autoOffset : function(){
+        this.setDelta(0,0);
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+// private
+// This is a support class used internally by the Grid components
+Roo.grid.GridDragZone = function(grid, config){
+    this.view = grid.getView();
+    Roo.grid.GridDragZone.superclass.constructor.call(this, this.view.mainBody.dom, config);
+    if(this.view.lockedBody){
+        this.setHandleElId(Roo.id(this.view.mainBody.dom));
+        this.setOuterHandleElId(Roo.id(this.view.lockedBody.dom));
+    }
+    this.scroll = false;
+    this.grid = grid;
+    this.ddel = document.createElement('div');
+    this.ddel.className = 'x-grid-dd-wrap';
+};
+
+Roo.extend(Roo.grid.GridDragZone, Roo.dd.DragZone, {
+    ddGroup : "GridDD",
+
+    getDragData : function(e){
+        var t = Roo.lib.Event.getTarget(e);
+        var rowIndex = this.view.findRowIndex(t);
+        if(rowIndex !== false){
+            var sm = this.grid.selModel;
+            //if(!sm.isSelected(rowIndex) || e.hasModifier()){
+              //  sm.mouseDown(e, t);
+            //}
+            if (e.hasModifier()){
+                sm.handleMouseDown(e, t); // non modifier buttons are handled by row select.
+            }
+            return {grid: this.grid, ddel: this.ddel, rowIndex: rowIndex, selections:sm.getSelections()};
+        }
+        return false;
+    },
+
+    onInitDrag : function(e){
+        var data = this.dragData;
+        this.ddel.innerHTML = this.grid.getDragDropText();
+        this.proxy.update(this.ddel);
+        // fire start drag?
+    },
+
+    afterRepair : function(){
+        this.dragging = false;
+    },
+
+    getRepairXY : function(e, data){
+        return false;
+    },
+
+    onEndDrag : function(data, e){
+        // fire end drag?
+    },
+
+    onValidDrop : function(dd, e, id){
+        // fire drag drop?
+        this.hideProxy();
+    },
+
+    beforeInvalidDrop : function(e, id){
+
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+
+/**
+ * @class Roo.grid.ColumnModel
+ * @extends Roo.util.Observable
+ * This is the default implementation of a ColumnModel used by the Grid. It defines
+ * the columns in the grid.
+ * <br>Usage:<br>
+ <pre><code>
+ var colModel = new Roo.grid.ColumnModel([
+	{header: "Ticker", width: 60, sortable: true, locked: true},
+	{header: "Company Name", width: 150, sortable: true},
+	{header: "Market Cap.", width: 100, sortable: true},
+	{header: "$ Sales", width: 100, sortable: true, renderer: money},
+	{header: "Employees", width: 100, sortable: true, resizable: false}
+ ]);
+ </code></pre>
+ * <p>
+ 
+ * The config options listed for this class are options which may appear in each
+ * individual column definition.
+ * <br/>RooJS Fix - column id's are not sequential but use Roo.id() - fixes bugs with layouts.
+ * @constructor
+ * @param {Object} config An Array of column config objects. See this class's
+ * config objects for details.
+*/
+Roo.grid.ColumnModel = function(config){
+	/**
+     * The config passed into the constructor
+     */
+    this.config = config;
+    this.lookup = {};
+
+    // if no id, create one
+    // if the column does not have a dataIndex mapping,
+    // map it to the order it is in the config
+    for(var i = 0, len = config.length; i < len; i++){
+        var c = config[i];
+        if(typeof c.dataIndex == "undefined"){
+            c.dataIndex = i;
+        }
+        if(typeof c.renderer == "string"){
+            c.renderer = Roo.util.Format[c.renderer];
+        }
+        if(typeof c.id == "undefined"){
+            c.id = Roo.id();
+        }
+        if(c.editor && c.editor.xtype){
+            c.editor  = Roo.factory(c.editor, Roo.grid);
+        }
+        if(c.editor && c.editor.isFormField){
+            c.editor = new Roo.grid.GridEditor(c.editor);
+        }
+        this.lookup[c.id] = c;
+    }
+
+    /**
+     * The width of columns which have no width specified (defaults to 100)
+     * @type Number
+     */
+    this.defaultWidth = 100;
+
+    /**
+     * Default sortable of columns which have no sortable specified (defaults to false)
+     * @type Boolean
+     */
+    this.defaultSortable = false;
+
+    this.addEvents({
+        /**
+	     * @event widthchange
+	     * Fires when the width of a column changes.
+	     * @param {ColumnModel} this
+	     * @param {Number} columnIndex The column index
+	     * @param {Number} newWidth The new width
+	     */
+	    "widthchange": true,
+        /**
+	     * @event headerchange
+	     * Fires when the text of a header changes.
+	     * @param {ColumnModel} this
+	     * @param {Number} columnIndex The column index
+	     * @param {Number} newText The new header text
+	     */
+	    "headerchange": true,
+        /**
+	     * @event hiddenchange
+	     * Fires when a column is hidden or "unhidden".
+	     * @param {ColumnModel} this
+	     * @param {Number} columnIndex The column index
+	     * @param {Boolean} hidden true if hidden, false otherwise
+	     */
+	    "hiddenchange": true,
+	    /**
+         * @event columnmoved
+         * Fires when a column is moved.
+         * @param {ColumnModel} this
+         * @param {Number} oldIndex
+         * @param {Number} newIndex
+         */
+        "columnmoved" : true,
+        /**
+         * @event columlockchange
+         * Fires when a column's locked state is changed
+         * @param {ColumnModel} this
+         * @param {Number} colIndex
+         * @param {Boolean} locked true if locked
+         */
+        "columnlockchange" : true
+    });
+    Roo.grid.ColumnModel.superclass.constructor.call(this);
+};
+Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
+    /**
+     * @cfg {String} header The header text to display in the Grid view.
+     */
+    /**
+     * @cfg {String} dataIndex (Optional) The name of the field in the grid's {@link Roo.data.Store}'s
+     * {@link Roo.data.Record} definition from which to draw the column's value. If not
+     * specified, the column's index is used as an index into the Record's data Array.
+     */
+    /**
+     * @cfg {Number} width (Optional) The initial width in pixels of the column. Using this
+     * instead of {@link Roo.grid.Grid#autoSizeColumns} is more efficient.
+     */
+    /**
+     * @cfg {Boolean} sortable (Optional) True if sorting is to be allowed on this column.
+     * Defaults to the value of the {@link #defaultSortable} property.
+     * Whether local/remote sorting is used is specified in {@link Roo.data.Store#remoteSort}.
+     */
+    /**
+     * @cfg {Boolean} locked (Optional) True to lock the column in place while scrolling the Grid.  Defaults to false.
+     */
+    /**
+     * @cfg {Boolean} fixed (Optional) True if the column width cannot be changed.  Defaults to false.
+     */
+    /**
+     * @cfg {Boolean} resizable (Optional) False to disable column resizing. Defaults to true.
+     */
+    /**
+     * @cfg {Boolean} hidden (Optional) True to hide the column. Defaults to false.
+     */
+    /**
+     * @cfg {Function} renderer (Optional) A function used to generate HTML markup for a cell
+     * given the cell's data value. See {@link #setRenderer}. If not specified, the
+     * default renderer uses the raw data value.
+     */
+       /**
+     * @cfg {Roo.grid.GridEditor} editor (Optional) For grid editors - returns the grid editor 
+     */
+    /**
+     * @cfg {String} align (Optional) Set the CSS text-align property of the column.  Defaults to undefined.
+     */
+
+    /**
+     * Returns the id of the column at the specified index.
+     * @param {Number} index The column index
+     * @return {String} the id
+     */
+    getColumnId : function(index){
+        return this.config[index].id;
+    },
+
+    /**
+     * Returns the column for a specified id.
+     * @param {String} id The column id
+     * @return {Object} the column
+     */
+    getColumnById : function(id){
+        return this.lookup[id];
+    },
+
+    
+    /**
+     * Returns the column for a specified dataIndex.
+     * @param {String} dataIndex The column dataIndex
+     * @return {Object|Boolean} the column or false if not found
+     */
+    getColumnByDataIndex: function(dataIndex){
+        var index = this.findColumnIndex(dataIndex);
+        return index > -1 ? this.config[index] : false;
+    },
+    
+    /**
+     * Returns the index for a specified column id.
+     * @param {String} id The column id
+     * @return {Number} the index, or -1 if not found
+     */
+    getIndexById : function(id){
+        for(var i = 0, len = this.config.length; i < len; i++){
+            if(this.config[i].id == id){
+                return i;
+            }
+        }
+        return -1;
+    },
+    
+    /**
+     * Returns the index for a specified column dataIndex.
+     * @param {String} dataIndex The column dataIndex
+     * @return {Number} the index, or -1 if not found
+     */
+    
+    findColumnIndex : function(dataIndex){
+        for(var i = 0, len = this.config.length; i < len; i++){
+            if(this.config[i].dataIndex == dataIndex){
+                return i;
+            }
+        }
+        return -1;
+    },
+    
+    
+    moveColumn : function(oldIndex, newIndex){
+        var c = this.config[oldIndex];
+        this.config.splice(oldIndex, 1);
+        this.config.splice(newIndex, 0, c);
+        this.dataMap = null;
+        this.fireEvent("columnmoved", this, oldIndex, newIndex);
+    },
+
+    isLocked : function(colIndex){
+        return this.config[colIndex].locked === true;
+    },
+
+    setLocked : function(colIndex, value, suppressEvent){
+        if(this.isLocked(colIndex) == value){
+            return;
+        }
+        this.config[colIndex].locked = value;
+        if(!suppressEvent){
+            this.fireEvent("columnlockchange", this, colIndex, value);
+        }
+    },
+
+    getTotalLockedWidth : function(){
+        var totalWidth = 0;
+        for(var i = 0; i < this.config.length; i++){
+            if(this.isLocked(i) && !this.isHidden(i)){
+                this.totalWidth += this.getColumnWidth(i);
+            }
+        }
+        return totalWidth;
+    },
+
+    getLockedCount : function(){
+        for(var i = 0, len = this.config.length; i < len; i++){
+            if(!this.isLocked(i)){
+                return i;
+            }
+        }
+    },
+
+    /**
+     * Returns the number of columns.
+     * @return {Number}
+     */
+    getColumnCount : function(visibleOnly){
+        if(visibleOnly === true){
+            var c = 0;
+            for(var i = 0, len = this.config.length; i < len; i++){
+                if(!this.isHidden(i)){
+                    c++;
+                }
+            }
+            return c;
+        }
+        return this.config.length;
+    },
+
+    /**
+     * Returns the column configs that return true by the passed function that is called with (columnConfig, index)
+     * @param {Function} fn
+     * @param {Object} scope (optional)
+     * @return {Array} result
+     */
+    getColumnsBy : function(fn, scope){
+        var r = [];
+        for(var i = 0, len = this.config.length; i < len; i++){
+            var c = this.config[i];
+            if(fn.call(scope||this, c, i) === true){
+                r[r.length] = c;
+            }
+        }
+        return r;
+    },
+
+    /**
+     * Returns true if the specified column is sortable.
+     * @param {Number} col The column index
+     * @return {Boolean}
+     */
+    isSortable : function(col){
+        if(typeof this.config[col].sortable == "undefined"){
+            return this.defaultSortable;
+        }
+        return this.config[col].sortable;
+    },
+
+    /**
+     * Returns the rendering (formatting) function defined for the column.
+     * @param {Number} col The column index.
+     * @return {Function} The function used to render the cell. See {@link #setRenderer}.
+     */
+    getRenderer : function(col){
+        if(!this.config[col].renderer){
+            return Roo.grid.ColumnModel.defaultRenderer;
+        }
+        return this.config[col].renderer;
+    },
+
+    /**
+     * Sets the rendering (formatting) function for a column.
+     * @param {Number} col The column index
+     * @param {Function} fn The function to use to process the cell's raw data
+     * to return HTML markup for the grid view. The render function is called with
+     * the following parameters:<ul>
+     * <li>Data value.</li>
+     * <li>Cell metadata. An object in which you may set the following attributes:<ul>
+     * <li>css A CSS style string to apply to the table cell.</li>
+     * <li>attr An HTML attribute definition string to apply to the data container element <i>within</i> the table cell.</li></ul>
+     * <li>The {@link Roo.data.Record} from which the data was extracted.</li>
+     * <li>Row index</li>
+     * <li>Column index</li>
+     * <li>The {@link Roo.data.Store} object from which the Record was extracted</li></ul>
+     */
+    setRenderer : function(col, fn){
+        this.config[col].renderer = fn;
+    },
+
+    /**
+     * Returns the width for the specified column.
+     * @param {Number} col The column index
+     * @return {Number}
+     */
+    getColumnWidth : function(col){
+        return this.config[col].width || this.defaultWidth;
+    },
+
+    /**
+     * Sets the width for a column.
+     * @param {Number} col The column index
+     * @param {Number} width The new width
+     */
+    setColumnWidth : function(col, width, suppressEvent){
+        this.config[col].width = width;
+        this.totalWidth = null;
+        if(!suppressEvent){
+             this.fireEvent("widthchange", this, col, width);
+        }
+    },
+
+    /**
+     * Returns the total width of all columns.
+     * @param {Boolean} includeHidden True to include hidden column widths
+     * @return {Number}
+     */
+    getTotalWidth : function(includeHidden){
+        if(!this.totalWidth){
+            this.totalWidth = 0;
+            for(var i = 0, len = this.config.length; i < len; i++){
+                if(includeHidden || !this.isHidden(i)){
+                    this.totalWidth += this.getColumnWidth(i);
+                }
+            }
+        }
+        return this.totalWidth;
+    },
+
+    /**
+     * Returns the header for the specified column.
+     * @param {Number} col The column index
+     * @return {String}
+     */
+    getColumnHeader : function(col){
+        return this.config[col].header;
+    },
+
+    /**
+     * Sets the header for a column.
+     * @param {Number} col The column index
+     * @param {String} header The new header
+     */
+    setColumnHeader : function(col, header){
+        this.config[col].header = header;
+        this.fireEvent("headerchange", this, col, header);
+    },
+
+    /**
+     * Returns the tooltip for the specified column.
+     * @param {Number} col The column index
+     * @return {String}
+     */
+    getColumnTooltip : function(col){
+            return this.config[col].tooltip;
+    },
+    /**
+     * Sets the tooltip for a column.
+     * @param {Number} col The column index
+     * @param {String} tooltip The new tooltip
+     */
+    setColumnTooltip : function(col, tooltip){
+            this.config[col].tooltip = tooltip;
+    },
+
+    /**
+     * Returns the dataIndex for the specified column.
+     * @param {Number} col The column index
+     * @return {Number}
+     */
+    getDataIndex : function(col){
+        return this.config[col].dataIndex;
+    },
+
+    /**
+     * Sets the dataIndex for a column.
+     * @param {Number} col The column index
+     * @param {Number} dataIndex The new dataIndex
+     */
+    setDataIndex : function(col, dataIndex){
+        this.config[col].dataIndex = dataIndex;
+    },
+
+    
+    
+    /**
+     * Returns true if the cell is editable.
+     * @param {Number} colIndex The column index
+     * @param {Number} rowIndex The row index
+     * @return {Boolean}
+     */
+    isCellEditable : function(colIndex, rowIndex){
+        return (this.config[colIndex].editable || (typeof this.config[colIndex].editable == "undefined" && this.config[colIndex].editor)) ? true : false;
+    },
+
+    /**
+     * Returns the editor defined for the cell/column.
+     * return false or null to disable editing.
+     * @param {Number} colIndex The column index
+     * @param {Number} rowIndex The row index
+     * @return {Object}
+     */
+    getCellEditor : function(colIndex, rowIndex){
+        return this.config[colIndex].editor;
+    },
+
+    /**
+     * Sets if a column is editable.
+     * @param {Number} col The column index
+     * @param {Boolean} editable True if the column is editable
+     */
+    setEditable : function(col, editable){
+        this.config[col].editable = editable;
+    },
+
+
+    /**
+     * Returns true if the column is hidden.
+     * @param {Number} colIndex The column index
+     * @return {Boolean}
+     */
+    isHidden : function(colIndex){
+        return this.config[colIndex].hidden;
+    },
+
+
+    /**
+     * Returns true if the column width cannot be changed
+     */
+    isFixed : function(colIndex){
+        return this.config[colIndex].fixed;
+    },
+
+    /**
+     * Returns true if the column can be resized
+     * @return {Boolean}
+     */
+    isResizable : function(colIndex){
+        return colIndex >= 0 && this.config[colIndex].resizable !== false && this.config[colIndex].fixed !== true;
+    },
+    /**
+     * Sets if a column is hidden.
+     * @param {Number} colIndex The column index
+     * @param {Boolean} hidden True if the column is hidden
+     */
+    setHidden : function(colIndex, hidden){
+        this.config[colIndex].hidden = hidden;
+        this.totalWidth = null;
+        this.fireEvent("hiddenchange", this, colIndex, hidden);
+    },
+
+    /**
+     * Sets the editor for a column.
+     * @param {Number} col The column index
+     * @param {Object} editor The editor object
+     */
+    setEditor : function(col, editor){
+        this.config[col].editor = editor;
+    }
+});
+
+Roo.grid.ColumnModel.defaultRenderer = function(value){
+	if(typeof value == "string" && value.length < 1){
+	    return "&#160;";
+	}
+	return value;
+};
+
+// Alias for backwards compatibility
+Roo.grid.DefaultColumnModel = Roo.grid.ColumnModel;
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.grid.AbstractSelectionModel
+ * @extends Roo.util.Observable
+ * Abstract base class for grid SelectionModels.  It provides the interface that should be
+ * implemented by descendant classes.  This class should not be directly instantiated.
+ * @constructor
+ */
+Roo.grid.AbstractSelectionModel = function(){
+    this.locked = false;
+    Roo.grid.AbstractSelectionModel.superclass.constructor.call(this);
+};
+
+Roo.extend(Roo.grid.AbstractSelectionModel, Roo.util.Observable,  {
+    /** @ignore Called by the grid automatically. Do not call directly. */
+    init : function(grid){
+        this.grid = grid;
+        this.initEvents();
+    },
+
+    /**
+     * Locks the selections.
+     */
+    lock : function(){
+        this.locked = true;
+    },
+
+    /**
+     * Unlocks the selections.
+     */
+    unlock : function(){
+        this.locked = false;
+    },
+
+    /**
+     * Returns true if the selections are locked.
+     * @return {Boolean}
+     */
+    isLocked : function(){
+        return this.locked;
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+/**
+ * @extends Roo.grid.AbstractSelectionModel
+ * @class Roo.grid.RowSelectionModel
+ * The default SelectionModel used by {@link Roo.grid.Grid}.
+ * It supports multiple selections and keyboard selection/navigation. 
+ * @constructor
+ * @param {Object} config
+ */
+Roo.grid.RowSelectionModel = function(config){
+    Roo.apply(this, config);
+    this.selections = new Roo.util.MixedCollection(false, function(o){
+        return o.id;
+    });
+
+    this.last = false;
+    this.lastActive = false;
+
+    this.addEvents({
+        /**
+	     * @event selectionchange
+	     * Fires when the selection changes
+	     * @param {SelectionModel} this
+	     */
+	    "selectionchange" : true,
+        /**
+	     * @event afterselectionchange
+	     * Fires after the selection changes (eg. by key press or clicking)
+	     * @param {SelectionModel} this
+	     */
+	    "afterselectionchange" : true,
+        /**
+	     * @event beforerowselect
+	     * Fires when a row is selected being selected, return false to cancel.
+	     * @param {SelectionModel} this
+	     * @param {Number} rowIndex The selected index
+	     * @param {Boolean} keepExisting False if other selections will be cleared
+	     */
+	    "beforerowselect" : true,
+        /**
+	     * @event rowselect
+	     * Fires when a row is selected.
+	     * @param {SelectionModel} this
+	     * @param {Number} rowIndex The selected index
+	     * @param {Roo.data.Record} r The record
+	     */
+	    "rowselect" : true,
+        /**
+	     * @event rowdeselect
+	     * Fires when a row is deselected.
+	     * @param {SelectionModel} this
+	     * @param {Number} rowIndex The selected index
+	     */
+        "rowdeselect" : true
+    });
+    Roo.grid.RowSelectionModel.superclass.constructor.call(this);
+    this.locked = false;
+};
+
+Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
+    /**
+     * @cfg {Boolean} singleSelect
+     * True to allow selection of only one row at a time (defaults to false)
+     */
+    singleSelect : false,
+
+    // private
+    initEvents : function(){
+
+        if(!this.grid.enableDragDrop && !this.grid.enableDrag){
+            this.grid.on("mousedown", this.handleMouseDown, this);
+        }else{ // allow click to work like normal
+            this.grid.on("rowclick", this.handleDragableRowClick, this);
+        }
+
+        this.rowNav = new Roo.KeyNav(this.grid.getGridEl(), {
+            "up" : function(e){
+                if(!e.shiftKey){
+                    this.selectPrevious(e.shiftKey);
+                }else if(this.last !== false && this.lastActive !== false){
+                    var last = this.last;
+                    this.selectRange(this.last,  this.lastActive-1);
+                    this.grid.getView().focusRow(this.lastActive);
+                    if(last !== false){
+                        this.last = last;
+                    }
+                }else{
+                    this.selectFirstRow();
+                }
+                this.fireEvent("afterselectionchange", this);
+            },
+            "down" : function(e){
+                if(!e.shiftKey){
+                    this.selectNext(e.shiftKey);
+                }else if(this.last !== false && this.lastActive !== false){
+                    var last = this.last;
+                    this.selectRange(this.last,  this.lastActive+1);
+                    this.grid.getView().focusRow(this.lastActive);
+                    if(last !== false){
+                        this.last = last;
+                    }
+                }else{
+                    this.selectFirstRow();
+                }
+                this.fireEvent("afterselectionchange", this);
+            },
+            scope: this
+        });
+
+        var view = this.grid.view;
+        view.on("refresh", this.onRefresh, this);
+        view.on("rowupdated", this.onRowUpdated, this);
+        view.on("rowremoved", this.onRemove, this);
+    },
+
+    // private
+    onRefresh : function(){
+        var ds = this.grid.dataSource, i, v = this.grid.view;
+        var s = this.selections;
+        s.each(function(r){
+            if((i = ds.indexOfId(r.id)) != -1){
+                v.onRowSelect(i);
+            }else{
+                s.remove(r);
+            }
+        });
+    },
+
+    // private
+    onRemove : function(v, index, r){
+        this.selections.remove(r);
+    },
+
+    // private
+    onRowUpdated : function(v, index, r){
+        if(this.isSelected(r)){
+            v.onRowSelect(index);
+        }
+    },
+
+    /**
+     * Select records.
+     * @param {Array} records The records to select
+     * @param {Boolean} keepExisting (optional) True to keep existing selections
+     */
+    selectRecords : function(records, keepExisting){
+        if(!keepExisting){
+            this.clearSelections();
+        }
+        var ds = this.grid.dataSource;
+        for(var i = 0, len = records.length; i < len; i++){
+            this.selectRow(ds.indexOf(records[i]), true);
+        }
+    },
+
+    /**
+     * Gets the number of selected rows.
+     * @return {Number}
+     */
+    getCount : function(){
+        return this.selections.length;
+    },
+
+    /**
+     * Selects the first row in the grid.
+     */
+    selectFirstRow : function(){
+        this.selectRow(0);
+    },
+
+    /**
+     * Select the last row.
+     * @param {Boolean} keepExisting (optional) True to keep existing selections
+     */
+    selectLastRow : function(keepExisting){
+        this.selectRow(this.grid.dataSource.getCount() - 1, keepExisting);
+    },
+
+    /**
+     * Selects the row immediately following the last selected row.
+     * @param {Boolean} keepExisting (optional) True to keep existing selections
+     */
+    selectNext : function(keepExisting){
+        if(this.last !== false && (this.last+1) < this.grid.dataSource.getCount()){
+            this.selectRow(this.last+1, keepExisting);
+            this.grid.getView().focusRow(this.last);
+        }
+    },
+
+    /**
+     * Selects the row that precedes the last selected row.
+     * @param {Boolean} keepExisting (optional) True to keep existing selections
+     */
+    selectPrevious : function(keepExisting){
+        if(this.last){
+            this.selectRow(this.last-1, keepExisting);
+            this.grid.getView().focusRow(this.last);
+        }
+    },
+
+    /**
+     * Returns the selected records
+     * @return {Array} Array of selected records
+     */
+    getSelections : function(){
+        return [].concat(this.selections.items);
+    },
+
+    /**
+     * Returns the first selected record.
+     * @return {Record}
+     */
+    getSelected : function(){
+        return this.selections.itemAt(0);
+    },
+
+
+    /**
+     * Clears all selections.
+     */
+    clearSelections : function(fast){
+        if(this.locked) return;
+        if(fast !== true){
+            var ds = this.grid.dataSource;
+            var s = this.selections;
+            s.each(function(r){
+                this.deselectRow(ds.indexOfId(r.id));
+            }, this);
+            s.clear();
+        }else{
+            this.selections.clear();
+        }
+        this.last = false;
+    },
+
+
+    /**
+     * Selects all rows.
+     */
+    selectAll : function(){
+        if(this.locked) return;
+        this.selections.clear();
+        for(var i = 0, len = this.grid.dataSource.getCount(); i < len; i++){
+            this.selectRow(i, true);
+        }
+    },
+
+    /**
+     * Returns True if there is a selection.
+     * @return {Boolean}
+     */
+    hasSelection : function(){
+        return this.selections.length > 0;
+    },
+
+    /**
+     * Returns True if the specified row is selected.
+     * @param {Number/Record} record The record or index of the record to check
+     * @return {Boolean}
+     */
+    isSelected : function(index){
+        var r = typeof index == "number" ? this.grid.dataSource.getAt(index) : index;
+        return (r && this.selections.key(r.id) ? true : false);
+    },
+
+    /**
+     * Returns True if the specified record id is selected.
+     * @param {String} id The id of record to check
+     * @return {Boolean}
+     */
+    isIdSelected : function(id){
+        return (this.selections.key(id) ? true : false);
+    },
+
+    // private
+    handleMouseDown : function(e, t){
+        var view = this.grid.getView(), rowIndex;
+        if(this.isLocked() || (rowIndex = view.findRowIndex(t)) === false){
+            return;
+        };
+        if(e.shiftKey && this.last !== false){
+            var last = this.last;
+            this.selectRange(last, rowIndex, e.ctrlKey);
+            this.last = last; // reset the last
+            view.focusRow(rowIndex);
+        }else{
+            var isSelected = this.isSelected(rowIndex);
+            if(e.button !== 0 && isSelected){
+                view.focusRow(rowIndex);
+            }else if(e.ctrlKey && isSelected){
+                this.deselectRow(rowIndex);
+            }else if(!isSelected){
+                this.selectRow(rowIndex, e.button === 0 && (e.ctrlKey || e.shiftKey));
+                view.focusRow(rowIndex);
+            }
+        }
+        this.fireEvent("afterselectionchange", this);
+    },
+    // private
+    handleDragableRowClick :  function(grid, rowIndex, e) 
+    {
+        if(e.button === 0 && !e.shiftKey && !e.ctrlKey) {
+            this.selectRow(rowIndex, false);
+            grid.view.focusRow(rowIndex);
+             this.fireEvent("afterselectionchange", this);
+        }
+    },
+    
+    /**
+     * Selects multiple rows.
+     * @param {Array} rows Array of the indexes of the row to select
+     * @param {Boolean} keepExisting (optional) True to keep existing selections
+     */
+    selectRows : function(rows, keepExisting){
+        if(!keepExisting){
+            this.clearSelections();
+        }
+        for(var i = 0, len = rows.length; i < len; i++){
+            this.selectRow(rows[i], true);
+        }
+    },
+
+    /**
+     * Selects a range of rows. All rows in between startRow and endRow are also selected.
+     * @param {Number} startRow The index of the first row in the range
+     * @param {Number} endRow The index of the last row in the range
+     * @param {Boolean} keepExisting (optional) True to retain existing selections
+     */
+    selectRange : function(startRow, endRow, keepExisting){
+        if(this.locked) return;
+        if(!keepExisting){
+            this.clearSelections();
+        }
+        if(startRow <= endRow){
+            for(var i = startRow; i <= endRow; i++){
+                this.selectRow(i, true);
+            }
+        }else{
+            for(var i = startRow; i >= endRow; i--){
+                this.selectRow(i, true);
+            }
+        }
+    },
+
+    /**
+     * Deselects a range of rows. All rows in between startRow and endRow are also deselected.
+     * @param {Number} startRow The index of the first row in the range
+     * @param {Number} endRow The index of the last row in the range
+     */
+    deselectRange : function(startRow, endRow, preventViewNotify){
+        if(this.locked) return;
+        for(var i = startRow; i <= endRow; i++){
+            this.deselectRow(i, preventViewNotify);
+        }
+    },
+
+    /**
+     * Selects a row.
+     * @param {Number} row The index of the row to select
+     * @param {Boolean} keepExisting (optional) True to keep existing selections
+     */
+    selectRow : function(index, keepExisting, preventViewNotify){
+        if(this.locked || (index < 0 || index >= this.grid.dataSource.getCount())) return;
+        if(this.fireEvent("beforerowselect", this, index, keepExisting) !== false){
+            if(!keepExisting || this.singleSelect){
+                this.clearSelections();
+            }
+            var r = this.grid.dataSource.getAt(index);
+            this.selections.add(r);
+            this.last = this.lastActive = index;
+            if(!preventViewNotify){
+                this.grid.getView().onRowSelect(index);
+            }
+            this.fireEvent("rowselect", this, index, r);
+            this.fireEvent("selectionchange", this);
+        }
+    },
+
+    /**
+     * Deselects a row.
+     * @param {Number} row The index of the row to deselect
+     */
+    deselectRow : function(index, preventViewNotify){
+        if(this.locked) return;
+        if(this.last == index){
+            this.last = false;
+        }
+        if(this.lastActive == index){
+            this.lastActive = false;
+        }
+        var r = this.grid.dataSource.getAt(index);
+        this.selections.remove(r);
+        if(!preventViewNotify){
+            this.grid.getView().onRowDeselect(index);
+        }
+        this.fireEvent("rowdeselect", this, index);
+        this.fireEvent("selectionchange", this);
+    },
+
+    // private
+    restoreLast : function(){
+        if(this._last){
+            this.last = this._last;
+        }
+    },
+
+    // private
+    acceptsNav : function(row, col, cm){
+        return !cm.isHidden(col) && cm.isCellEditable(col, row);
+    },
+
+    // private
+    onEditorKey : function(field, e){
+        var k = e.getKey(), newCell, g = this.grid, ed = g.activeEditor;
+        if(k == e.TAB){
+            e.stopEvent();
+            ed.completeEdit();
+            if(e.shiftKey){
+                newCell = g.walkCells(ed.row, ed.col-1, -1, this.acceptsNav, this);
+            }else{
+                newCell = g.walkCells(ed.row, ed.col+1, 1, this.acceptsNav, this);
+            }
+        }else if(k == e.ENTER && !e.ctrlKey){
+            e.stopEvent();
+            ed.completeEdit();
+            if(e.shiftKey){
+                newCell = g.walkCells(ed.row-1, ed.col, -1, this.acceptsNav, this);
+            }else{
+                newCell = g.walkCells(ed.row+1, ed.col, 1, this.acceptsNav, this);
+            }
+        }else if(k == e.ESC){
+            ed.cancelEdit();
+        }
+        if(newCell){
+            g.startEditing(newCell[0], newCell[1]);
+        }
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+/**
+ * @class Roo.grid.CellSelectionModel
+ * @extends Roo.grid.AbstractSelectionModel
+ * This class provides the basic implementation for cell selection in a grid.
+ * @constructor
+ * @param {Object} config The object containing the configuration of this model.
+ */
+Roo.grid.CellSelectionModel = function(config){
+    Roo.apply(this, config);
+
+    this.selection = null;
+
+    this.addEvents({
+        /**
+	     * @event beforerowselect
+	     * Fires before a cell is selected.
+	     * @param {SelectionModel} this
+	     * @param {Number} rowIndex The selected row index
+	     * @param {Number} colIndex The selected cell index
+	     */
+	    "beforecellselect" : true,
+        /**
+	     * @event cellselect
+	     * Fires when a cell is selected.
+	     * @param {SelectionModel} this
+	     * @param {Number} rowIndex The selected row index
+	     * @param {Number} colIndex The selected cell index
+	     */
+	    "cellselect" : true,
+        /**
+	     * @event selectionchange
+	     * Fires when the active selection changes.
+	     * @param {SelectionModel} this
+	     * @param {Object} selection null for no selection or an object (o) with two properties
+	        <ul>
+	        <li>o.record: the record object for the row the selection is in</li>
+	        <li>o.cell: An array of [rowIndex, columnIndex]</li>
+	        </ul>
+	     */
+	    "selectionchange" : true
+    });
+    Roo.grid.CellSelectionModel.superclass.constructor.call(this);
+};
+
+Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
+
+    /** @ignore */
+    initEvents : function(){
+        this.grid.on("mousedown", this.handleMouseDown, this);
+        this.grid.getGridEl().on(Roo.isIE ? "keydown" : "keypress", this.handleKeyDown, this);
+        var view = this.grid.view;
+        view.on("refresh", this.onViewChange, this);
+        view.on("rowupdated", this.onRowUpdated, this);
+        view.on("beforerowremoved", this.clearSelections, this);
+        view.on("beforerowsinserted", this.clearSelections, this);
+        if(this.grid.isEditor){
+            this.grid.on("beforeedit", this.beforeEdit,  this);
+        }
+    },
+
+	//private
+    beforeEdit : function(e){
+        this.select(e.row, e.column, false, true, e.record);
+    },
+
+	//private
+    onRowUpdated : function(v, index, r){
+        if(this.selection && this.selection.record == r){
+            v.onCellSelect(index, this.selection.cell[1]);
+        }
+    },
+
+	//private
+    onViewChange : function(){
+        this.clearSelections(true);
+    },
+
+	/**
+	 * Returns the currently selected cell,.
+	 * @return {Array} The selected cell (row, column) or null if none selected.
+	 */
+    getSelectedCell : function(){
+        return this.selection ? this.selection.cell : null;
+    },
+
+    /**
+     * Clears all selections.
+     * @param {Boolean} true to prevent the gridview from being notified about the change.
+     */
+    clearSelections : function(preventNotify){
+        var s = this.selection;
+        if(s){
+            if(preventNotify !== true){
+                this.grid.view.onCellDeselect(s.cell[0], s.cell[1]);
+            }
+            this.selection = null;
+            this.fireEvent("selectionchange", this, null);
+        }
+    },
+
+    /**
+     * Returns true if there is a selection.
+     * @return {Boolean}
+     */
+    hasSelection : function(){
+        return this.selection ? true : false;
+    },
+
+    /** @ignore */
+    handleMouseDown : function(e, t){
+        var v = this.grid.getView();
+        if(this.isLocked()){
+            return;
+        };
+        var row = v.findRowIndex(t);
+        var cell = v.findCellIndex(t);
+        if(row !== false && cell !== false){
+            this.select(row, cell);
+        }
+    },
+
+    /**
+     * Selects a cell.
+     * @param {Number} rowIndex
+     * @param {Number} collIndex
+     */
+    select : function(rowIndex, colIndex, preventViewNotify, preventFocus, /*internal*/ r){
+        if(this.fireEvent("beforecellselect", this, rowIndex, colIndex) !== false){
+            this.clearSelections();
+            r = r || this.grid.dataSource.getAt(rowIndex);
+            this.selection = {
+                record : r,
+                cell : [rowIndex, colIndex]
+            };
+            if(!preventViewNotify){
+                var v = this.grid.getView();
+                v.onCellSelect(rowIndex, colIndex);
+                if(preventFocus !== true){
+                    v.focusCell(rowIndex, colIndex);
+                }
+            }
+            this.fireEvent("cellselect", this, rowIndex, colIndex);
+            this.fireEvent("selectionchange", this, this.selection);
+        }
+    },
+
+	//private
+    isSelectable : function(rowIndex, colIndex, cm){
+        return !cm.isHidden(colIndex);
+    },
+
+    /** @ignore */
+    handleKeyDown : function(e){
+        Roo.log('Cell Sel Model handleKeyDown');
+        if(!e.isNavKeyPress()){
+            return;
+        }
+        var g = this.grid, s = this.selection;
+        if(!s){
+            e.stopEvent();
+            var cell = g.walkCells(0, 0, 1, this.isSelectable,  this);
+            if(cell){
+                this.select(cell[0], cell[1]);
+            }
+            return;
+        }
+        var sm = this;
+        var walk = function(row, col, step){
+            return g.walkCells(row, col, step, sm.isSelectable,  sm);
+        };
+        var k = e.getKey(), r = s.cell[0], c = s.cell[1];
+        var newCell;
+
+        switch(k){
+            case e.TAB:
+                // handled by onEditorKey
+                if (g.isEditor && g.editing) {
+                    return;
+                }
+                if(e.shiftKey){
+                     newCell = walk(r, c-1, -1);
+                }else{
+                     newCell = walk(r, c+1, 1);
+                }
+             break;
+             case e.DOWN:
+                 newCell = walk(r+1, c, 1);
+             break;
+             case e.UP:
+                 newCell = walk(r-1, c, -1);
+             break;
+             case e.RIGHT:
+                 newCell = walk(r, c+1, 1);
+             break;
+             case e.LEFT:
+                 newCell = walk(r, c-1, -1);
+             break;
+             case e.ENTER:
+                 if(g.isEditor && !g.editing){
+                    g.startEditing(r, c);
+                    e.stopEvent();
+                    return;
+                }
+             break;
+        };
+        if(newCell){
+            this.select(newCell[0], newCell[1]);
+            e.stopEvent();
+        }
+    },
+
+    acceptsNav : function(row, col, cm){
+        return !cm.isHidden(col) && cm.isCellEditable(col, row);
+    },
+
+    onEditorKey : function(field, e){
+        
+        var k = e.getKey(), newCell, g = this.grid, ed = g.activeEditor;
+        ///Roo.log('onEditorKey' + k);
+        
+        if(k == e.TAB){
+            if(e.shiftKey){
+                newCell = g.walkCells(ed.row, ed.col-1, -1, this.acceptsNav, this);
+            }else{
+                newCell = g.walkCells(ed.row, ed.col+1, 1, this.acceptsNav, this);
+            }
+            e.stopEvent();
+        }else if(k == e.ENTER && !e.ctrlKey){
+            ed.completeEdit();
+            e.stopEvent();
+            newCell = g.walkCells(ed.row, ed.col+1, 1, this.acceptsNav, this);
+        }else if(k == e.ESC){
+            ed.cancelEdit();
+        }
+        
+        
+        if(newCell){
+            //Roo.log('next cell after edit');
+            g.startEditing.defer(100, g, [newCell[0], newCell[1]]);
+        }
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.grid.EditorGrid
+ * @extends Roo.grid.Grid
+ * Class for creating and editable grid.
+ * @param {String/HTMLElement/Roo.Element} container The element into which this grid will be rendered - 
+ * The container MUST have some type of size defined for the grid to fill. The container will be 
+ * automatically set to position relative if it isn't already.
+ * @param {Object} dataSource The data model to bind to
+ * @param {Object} colModel The column model with info about this grid's columns
+ */
+Roo.grid.EditorGrid = function(container, config){
+    Roo.grid.EditorGrid.superclass.constructor.call(this, container, config);
+    this.getGridEl().addClass("xedit-grid");
+
+    if(!this.selModel){
+        this.selModel = new Roo.grid.CellSelectionModel();
+    }
+
+    this.activeEditor = null;
+
+	this.addEvents({
+	    /**
+	     * @event beforeedit
+	     * Fires before cell editing is triggered. The edit event object has the following properties <br />
+	     * <ul style="padding:5px;padding-left:16px;">
+	     * <li>grid - This grid</li>
+	     * <li>record - The record being edited</li>
+	     * <li>field - The field name being edited</li>
+	     * <li>value - The value for the field being edited.</li>
+	     * <li>row - The grid row index</li>
+	     * <li>column - The grid column index</li>
+	     * <li>cancel - Set this to true to cancel the edit or return false from your handler.</li>
+	     * </ul>
+	     * @param {Object} e An edit event (see above for description)
+	     */
+	    "beforeedit" : true,
+	    /**
+	     * @event afteredit
+	     * Fires after a cell is edited. <br />
+	     * <ul style="padding:5px;padding-left:16px;">
+	     * <li>grid - This grid</li>
+	     * <li>record - The record being edited</li>
+	     * <li>field - The field name being edited</li>
+	     * <li>value - The value being set</li>
+	     * <li>originalValue - The original value for the field, before the edit.</li>
+	     * <li>row - The grid row index</li>
+	     * <li>column - The grid column index</li>
+	     * </ul>
+	     * @param {Object} e An edit event (see above for description)
+	     */
+	    "afteredit" : true,
+	    /**
+	     * @event validateedit
+	     * Fires after a cell is edited, but before the value is set in the record. 
+         * You can use this to modify the value being set in the field, Return false
+	     * to cancel the change. The edit event object has the following properties <br />
+	     * <ul style="padding:5px;padding-left:16px;">
+         * <li>editor - This editor</li>
+	     * <li>grid - This grid</li>
+	     * <li>record - The record being edited</li>
+	     * <li>field - The field name being edited</li>
+	     * <li>value - The value being set</li>
+	     * <li>originalValue - The original value for the field, before the edit.</li>
+	     * <li>row - The grid row index</li>
+	     * <li>column - The grid column index</li>
+	     * <li>cancel - Set this to true to cancel the edit or return false from your handler.</li>
+	     * </ul>
+	     * @param {Object} e An edit event (see above for description)
+	     */
+	    "validateedit" : true
+	});
+    this.on("bodyscroll", this.stopEditing,  this);
+    this.on(this.clicksToEdit == 1 ? "cellclick" : "celldblclick", this.onCellDblClick,  this);
+};
+
+Roo.extend(Roo.grid.EditorGrid, Roo.grid.Grid, {
+    /**
+     * @cfg {Number} clicksToEdit
+     * The number of clicks on a cell required to display the cell's editor (defaults to 2)
+     */
+    clicksToEdit: 2,
+
+    // private
+    isEditor : true,
+    // private
+    trackMouseOver: false, // causes very odd FF errors
+
+    onCellDblClick : function(g, row, col){
+        this.startEditing(row, col);
+    },
+
+    onEditComplete : function(ed, value, startValue){
+        this.editing = false;
+        this.activeEditor = null;
+        ed.un("specialkey", this.selModel.onEditorKey, this.selModel);
+        var r = ed.record;
+        var field = this.colModel.getDataIndex(ed.col);
+        var e = {
+            grid: this,
+            record: r,
+            field: field,
+            originalValue: startValue,
+            value: value,
+            row: ed.row,
+            column: ed.col,
+            cancel:false,
+            editor: ed
+        };
+        if(String(value) !== String(startValue)){
+            
+            if(this.fireEvent("validateedit", e) !== false && !e.cancel){
+                r.set(field, e.value);
+                // if we are dealing with a combo box..
+                // then we also set the 'name' colum to be the displayField
+                if (ed.field.displayField && ed.field.name) {
+                    r.set(ed.field.name, ed.field.el.dom.value);
+                }
+                
+                delete e.cancel; //?? why!!!
+                this.fireEvent("afteredit", e);
+            }
+        } else {
+            this.fireEvent("afteredit", e); // always fire it!
+        }
+        this.view.focusCell(ed.row, ed.col);
+    },
+
+    /**
+     * Starts editing the specified for the specified row/column
+     * @param {Number} rowIndex
+     * @param {Number} colIndex
+     */
+    startEditing : function(row, col){
+        this.stopEditing();
+        if(this.colModel.isCellEditable(col, row)){
+            this.view.ensureVisible(row, col, true);
+            var r = this.dataSource.getAt(row);
+            var field = this.colModel.getDataIndex(col);
+            var e = {
+                grid: this,
+                record: r,
+                field: field,
+                value: r.data[field],
+                row: row,
+                column: col,
+                cancel:false
+            };
+            if(this.fireEvent("beforeedit", e) !== false && !e.cancel){
+                this.editing = true;
+                var ed = this.colModel.getCellEditor(col, row);
+                
+                if (!ed) {
+                    return;
+                }
+                if(!ed.rendered){
+                    ed.render(ed.parentEl || document.body);
+                }
+                ed.field.reset();
+                (function(){ // complex but required for focus issues in safari, ie and opera
+                    ed.row = row;
+                    ed.col = col;
+                    ed.record = r;
+                    ed.on("complete", this.onEditComplete, this, {single: true});
+                    ed.on("specialkey", this.selModel.onEditorKey, this.selModel);
+                    this.activeEditor = ed;
+                    var v = r.data[field];
+                    ed.startEdit(this.view.getCell(row, col), v);
+                    // combo's with 'displayField and name set
+                    if (ed.field.displayField && ed.field.name) {
+                        ed.field.el.dom.value = r.data[ed.field.name];
+                    }
+                    
+                    
+                }).defer(50, this);
+            }
+        }
+    },
+        
+    /**
+     * Stops any active editing
+     */
+    stopEditing : function(){
+        if(this.activeEditor){
+            this.activeEditor.completeEdit();
+        }
+        this.activeEditor = null;
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+// private - not really -- you end up using it !
+// This is a support class used internally by the Grid components
+
+/**
+ * @class Roo.grid.GridEditor
+ * @extends Roo.Editor
+ * Class for creating and editable grid elements.
+ * @param {Object} config any settings (must include field)
+ */
+Roo.grid.GridEditor = function(field, config){
+    if (!config && field.field) {
+        config = field;
+        field = Roo.factory(config.field, Roo.form);
+    }
+    Roo.grid.GridEditor.superclass.constructor.call(this, field, config);
+    field.monitorTab = false;
+};
+
+Roo.extend(Roo.grid.GridEditor, Roo.Editor, {
+    
+    /**
+     * @cfg {Roo.form.Field} field Field to wrap (or xtyped)
+     */
+    
+    alignment: "tl-tl",
+    autoSize: "width",
+    hideEl : false,
+    cls: "x-small-editor x-grid-editor",
+    shim:false,
+    shadow:"frame"
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+  
+
+  
+Roo.grid.PropertyRecord = Roo.data.Record.create([
+    {name:'name',type:'string'},  'value'
+]);
+
+
+Roo.grid.PropertyStore = function(grid, source){
+    this.grid = grid;
+    this.store = new Roo.data.Store({
+        recordType : Roo.grid.PropertyRecord
+    });
+    this.store.on('update', this.onUpdate,  this);
+    if(source){
+        this.setSource(source);
+    }
+    Roo.grid.PropertyStore.superclass.constructor.call(this);
+};
+
+
+
+Roo.extend(Roo.grid.PropertyStore, Roo.util.Observable, {
+    setSource : function(o){
+        this.source = o;
+        this.store.removeAll();
+        var data = [];
+        for(var k in o){
+            if(this.isEditableValue(o[k])){
+                data.push(new Roo.grid.PropertyRecord({name: k, value: o[k]}, k));
+            }
+        }
+        this.store.loadRecords({records: data}, {}, true);
+    },
+
+    onUpdate : function(ds, record, type){
+        if(type == Roo.data.Record.EDIT){
+            var v = record.data['value'];
+            var oldValue = record.modified['value'];
+            if(this.grid.fireEvent('beforepropertychange', this.source, record.id, v, oldValue) !== false){
+                this.source[record.id] = v;
+                record.commit();
+                this.grid.fireEvent('propertychange', this.source, record.id, v, oldValue);
+            }else{
+                record.reject();
+            }
+        }
+    },
+
+    getProperty : function(row){
+       return this.store.getAt(row);
+    },
+
+    isEditableValue: function(val){
+        if(val && val instanceof Date){
+            return true;
+        }else if(typeof val == 'object' || typeof val == 'function'){
+            return false;
+        }
+        return true;
+    },
+
+    setValue : function(prop, value){
+        this.source[prop] = value;
+        this.store.getById(prop).set('value', value);
+    },
+
+    getSource : function(){
+        return this.source;
+    }
+});
+
+Roo.grid.PropertyColumnModel = function(grid, store){
+    this.grid = grid;
+    var g = Roo.grid;
+    g.PropertyColumnModel.superclass.constructor.call(this, [
+        {header: this.nameText, sortable: true, dataIndex:'name', id: 'name'},
+        {header: this.valueText, resizable:false, dataIndex: 'value', id: 'value'}
+    ]);
+    this.store = store;
+    this.bselect = Roo.DomHelper.append(document.body, {
+        tag: 'select', style:'display:none', cls: 'x-grid-editor', children: [
+            {tag: 'option', value: 'true', html: 'true'},
+            {tag: 'option', value: 'false', html: 'false'}
+        ]
+    });
+    Roo.id(this.bselect);
+    var f = Roo.form;
+    this.editors = {
+        'date' : new g.GridEditor(new f.DateField({selectOnFocus:true})),
+        'string' : new g.GridEditor(new f.TextField({selectOnFocus:true})),
+        'number' : new g.GridEditor(new f.NumberField({selectOnFocus:true, style:'text-align:left;'})),
+        'int' : new g.GridEditor(new f.NumberField({selectOnFocus:true, allowDecimals:false, style:'text-align:left;'})),
+        'boolean' : new g.GridEditor(new f.Field({el:this.bselect,selectOnFocus:true}))
+    };
+    this.renderCellDelegate = this.renderCell.createDelegate(this);
+    this.renderPropDelegate = this.renderProp.createDelegate(this);
+};
+
+Roo.extend(Roo.grid.PropertyColumnModel, Roo.grid.ColumnModel, {
+    
+    
+    nameText : 'Name',
+    valueText : 'Value',
+    
+    dateFormat : 'm/j/Y',
+    
+    
+    renderDate : function(dateVal){
+        return dateVal.dateFormat(this.dateFormat);
+    },
+
+    renderBool : function(bVal){
+        return bVal ? 'true' : 'false';
+    },
+
+    isCellEditable : function(colIndex, rowIndex){
+        return colIndex == 1;
+    },
+
+    getRenderer : function(col){
+        return col == 1 ?
+            this.renderCellDelegate : this.renderPropDelegate;
+    },
+
+    renderProp : function(v){
+        return this.getPropertyName(v);
+    },
+
+    renderCell : function(val){
+        var rv = val;
+        if(val instanceof Date){
+            rv = this.renderDate(val);
+        }else if(typeof val == 'boolean'){
+            rv = this.renderBool(val);
+        }
+        return Roo.util.Format.htmlEncode(rv);
+    },
+
+    getPropertyName : function(name){
+        var pn = this.grid.propertyNames;
+        return pn && pn[name] ? pn[name] : name;
+    },
+
+    getCellEditor : function(colIndex, rowIndex){
+        var p = this.store.getProperty(rowIndex);
+        var n = p.data['name'], val = p.data['value'];
+        
+        if(typeof(this.grid.customEditors[n]) == 'string'){
+            return this.editors[this.grid.customEditors[n]];
+        }
+        if(typeof(this.grid.customEditors[n]) != 'undefined'){
+            return this.grid.customEditors[n];
+        }
+        if(val instanceof Date){
+            return this.editors['date'];
+        }else if(typeof val == 'number'){
+            return this.editors['number'];
+        }else if(typeof val == 'boolean'){
+            return this.editors['boolean'];
+        }else{
+            return this.editors['string'];
+        }
+    }
+});
+
+/**
+ * @class Roo.grid.PropertyGrid
+ * @extends Roo.grid.EditorGrid
+ * This class represents the  interface of a component based property grid control.
+ * <br><br>Usage:<pre><code>
+ var grid = new Roo.grid.PropertyGrid("my-container-id", {
+      
+ });
+ // set any options
+ grid.render();
+ * </code></pre>
+  
+ * @constructor
+ * @param {String/HTMLElement/Roo.Element} container The element into which this grid will be rendered -
+ * The container MUST have some type of size defined for the grid to fill. The container will be
+ * automatically set to position relative if it isn't already.
+ * @param {Object} config A config object that sets properties on this grid.
+ */
+Roo.grid.PropertyGrid = function(container, config){
+    config = config || {};
+    var store = new Roo.grid.PropertyStore(this);
+    this.store = store;
+    var cm = new Roo.grid.PropertyColumnModel(this, store);
+    store.store.sort('name', 'ASC');
+    Roo.grid.PropertyGrid.superclass.constructor.call(this, container, Roo.apply({
+        ds: store.store,
+        cm: cm,
+        enableColLock:false,
+        enableColumnMove:false,
+        stripeRows:false,
+        trackMouseOver: false,
+        clicksToEdit:1
+    }, config));
+    this.getGridEl().addClass('x-props-grid');
+    this.lastEditRow = null;
+    this.on('columnresize', this.onColumnResize, this);
+    this.addEvents({
+         /**
+	     * @event beforepropertychange
+	     * Fires before a property changes (return false to stop?)
+	     * @param {Roo.grid.PropertyGrid} grid property grid? (check could be store)
+	     * @param {String} id Record Id
+	     * @param {String} newval New Value
+         * @param {String} oldval Old Value
+	     */
+        "beforepropertychange": true,
+        /**
+	     * @event propertychange
+	     * Fires after a property changes
+	     * @param {Roo.grid.PropertyGrid} grid property grid? (check could be store)
+	     * @param {String} id Record Id
+	     * @param {String} newval New Value
+         * @param {String} oldval Old Value
+	     */
+        "propertychange": true
+    });
+    this.customEditors = this.customEditors || {};
+};
+Roo.extend(Roo.grid.PropertyGrid, Roo.grid.EditorGrid, {
+    
+     /**
+     * @cfg {Object} customEditors map of colnames=> custom editors.
+     * the custom editor can be one of the standard ones (date|string|number|int|boolean), or a
+     * grid editor eg. Roo.grid.GridEditor(new Roo.form.TextArea({selectOnFocus:true})),
+     * false disables editing of the field.
+	 */
+    
+      /**
+     * @cfg {Object} propertyNames map of property Names to their displayed value
+	 */
+    
+    render : function(){
+        Roo.grid.PropertyGrid.superclass.render.call(this);
+        this.autoSize.defer(100, this);
+    },
+
+    autoSize : function(){
+        Roo.grid.PropertyGrid.superclass.autoSize.call(this);
+        if(this.view){
+            this.view.fitColumns();
+        }
+    },
+
+    onColumnResize : function(){
+        this.colModel.setColumnWidth(1, this.container.getWidth(true)-this.colModel.getColumnWidth(0));
+        this.autoSize();
+    },
+    /**
+     * Sets the data for the Grid
+     * accepts a Key => Value object of all the elements avaiable.
+     * @param {Object} data  to appear in grid.
+     */
+    setSource : function(source){
+        this.store.setSource(source);
+        //this.autoSize();
+    },
+    /**
+     * Gets all the data from the grid.
+     * @return {Object} data  data stored in grid
+     */
+    getSource : function(){
+        return this.store.getSource();
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.LoadMask
+ * A simple utility class for generically masking elements while loading data.  If the element being masked has
+ * an underlying {@link Roo.data.Store}, the masking will be automatically synchronized with the store's loading
+ * process and the mask element will be cached for reuse.  For all other elements, this mask will replace the
+ * element's UpdateManager load indicator and will be destroyed after the initial load.
+ * @constructor
+ * Create a new LoadMask
+ * @param {String/HTMLElement/Roo.Element} el The element or DOM node, or its id
+ * @param {Object} config The config object
+ */
+Roo.LoadMask = function(el, config){
+    this.el = Roo.get(el);
+    Roo.apply(this, config);
+    if(this.store){
+        this.store.on('beforeload', this.onBeforeLoad, this);
+        this.store.on('load', this.onLoad, this);
+        this.store.on('loadexception', this.onLoad, this);
+        this.removeMask = false;
+    }else{
+        var um = this.el.getUpdateManager();
+        um.showLoadIndicator = false; // disable the default indicator
+        um.on('beforeupdate', this.onBeforeLoad, this);
+        um.on('update', this.onLoad, this);
+        um.on('failure', this.onLoad, this);
+        this.removeMask = true;
+    }
+};
+
+Roo.LoadMask.prototype = {
+    /**
+     * @cfg {Boolean} removeMask
+     * True to create a single-use mask that is automatically destroyed after loading (useful for page loads),
+     * False to persist the mask element reference for multiple uses (e.g., for paged data widgets).  Defaults to false.
+     */
+    /**
+     * @cfg {String} msg
+     * The text to display in a centered loading message box (defaults to 'Loading...')
+     */
+    msg : 'Loading...',
+    /**
+     * @cfg {String} msgCls
+     * The CSS class to apply to the loading message element (defaults to "x-mask-loading")
+     */
+    msgCls : 'x-mask-loading',
+
+    /**
+     * Read-only. True if the mask is currently disabled so that it will not be displayed (defaults to false)
+     * @type Boolean
+     */
+    disabled: false,
+
+    /**
+     * Disables the mask to prevent it from being displayed
+     */
+    disable : function(){
+       this.disabled = true;
+    },
+
+    /**
+     * Enables the mask so that it can be displayed
+     */
+    enable : function(){
+        this.disabled = false;
+    },
+
+    // private
+    onLoad : function(){
+        this.el.unmask(this.removeMask);
+    },
+
+    // private
+    onBeforeLoad : function(){
+        if(!this.disabled){
+            this.el.mask(this.msg, this.msgCls);
+        }
+    },
+
+    // private
+    destroy : function(){
+        if(this.store){
+            this.store.un('beforeload', this.onBeforeLoad, this);
+            this.store.un('load', this.onLoad, this);
+            this.store.un('loadexception', this.onLoad, this);
+        }else{
+            var um = this.el.getUpdateManager();
+            um.un('beforeupdate', this.onBeforeLoad, this);
+            um.un('update', this.onLoad, this);
+            um.un('failure', this.onLoad, this);
+        }
+    }
+};/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+Roo.XTemplate = function(){
+    Roo.XTemplate.superclass.constructor.apply(this, arguments);
+    var s = this.html;
+
+    s = ['<tpl>', s, '</tpl>'].join('');
+
+    var re = /<tpl\b[^>]*>((?:(?=([^<]+))\2|<(?!tpl\b[^>]*>))*?)<\/tpl>/;
+
+    var nameRe = /^<tpl\b[^>]*?for="(.*?)"/;
+    var ifRe = /^<tpl\b[^>]*?if="(.*?)"/;
+    var execRe = /^<tpl\b[^>]*?exec="(.*?)"/;
+    var m, id = 0;
+    var tpls = [];
+
+    while(m = s.match(re)){
+       var m2 = m[0].match(nameRe);
+       var m3 = m[0].match(ifRe);
+       var m4 = m[0].match(execRe);
+       var exp = null, fn = null, exec = null;
+       var name = m2 && m2[1] ? m2[1] : '';
+       if(m3){
+           exp = m3 && m3[1] ? m3[1] : null;
+           if(exp){
+               fn = new Function('values', 'parent', 'with(values){ return '+(Roo.util.Format.htmlDecode(exp))+'; }');
+           }
+       }
+       if(m4){
+           exp = m4 && m4[1] ? m4[1] : null;
+           if(exp){
+               exec = new Function('values', 'parent', 'with(values){ '+(Roo.util.Format.htmlDecode(exp))+'; }');
+           }
+       }
+       if(name){
+           switch(name){
+               case '.': name = new Function('values', 'parent', 'with(values){ return values; }'); break;
+               case '..': name = new Function('values', 'parent', 'with(values){ return parent; }'); break;
+               default: name = new Function('values', 'parent', 'with(values){ return '+name+'; }');
+           }
+       }
+       tpls.push({
+            id: id,
+            target: name,
+            exec: exec,
+            test: fn,
+            body: m[1]||''
+        });
+       s = s.replace(m[0], '{xtpl'+ id + '}');
+       ++id;
+    }
+    for(var i = tpls.length-1; i >= 0; --i){
+        this.compileTpl(tpls[i]);
+    }
+    this.master = tpls[tpls.length-1];
+    this.tpls = tpls;
+};
+Roo.extend(Roo.XTemplate, Roo.Template, {
+
+    re : /\{([\w-\.]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?\}/g,
+
+    applySubTemplate : function(id, values, parent){
+        var t = this.tpls[id];
+        if(t.test && !t.test.call(this, values, parent)){
+            return '';
+        }
+        if(t.exec && t.exec.call(this, values, parent)){
+            return '';
+        }
+        var vs = t.target ? t.target.call(this, values, parent) : values;
+        parent = t.target ? values : parent;
+        if(t.target && vs instanceof Array){
+            var buf = [];
+            for(var i = 0, len = vs.length; i < len; i++){
+                buf[buf.length] = t.compiled.call(this, vs[i], parent);
+            }
+            return buf.join('');
+        }
+        return t.compiled.call(this, vs, parent);
+    },
+
+    compileTpl : function(tpl){
+        var fm = Roo.util.Format;
+        var useF = this.disableFormats !== true;
+        var sep = Roo.isGecko ? "+" : ",";
+        var fn = function(m, name, format, args){
+            if(name.substr(0, 4) == 'xtpl'){
+                return "'"+ sep +'this.applySubTemplate('+name.substr(4)+', values, parent)'+sep+"'";
+            }
+            var v;
+            if(name.indexOf('.') != -1){
+                v = name;
+            }else{
+                v = "values['" + name + "']";
+            }
+            if(format && useF){
+                args = args ? ',' + args : "";
+                if(format.substr(0, 5) != "this."){
+                    format = "fm." + format + '(';
+                }else{
+                    format = 'this.call("'+ format.substr(5) + '", ';
+                    args = ", values";
+                }
+            }else{
+                args= ''; format = "("+v+" === undefined ? '' : ";
+            }
+            return "'"+ sep + format + v + args + ")"+sep+"'";
+        };
+        var body;
+        // branched to use + in gecko and [].join() in others
+        if(Roo.isGecko){
+            body = "tpl.compiled = function(values, parent){ return '" +
+                   tpl.body.replace(/(\r\n|\n)/g, '\\n').replace(/'/g, "\\'").replace(this.re, fn) +
+                    "';};";
+        }else{
+            body = ["tpl.compiled = function(values, parent){ return ['"];
+            body.push(tpl.body.replace(/(\r\n|\n)/g, '\\n').replace(/'/g, "\\'").replace(this.re, fn));
+            body.push("'].join('');};");
+            body = body.join('');
+        }
+        /** eval:var:zzzzzzz */
+        eval(body);
+        return this;
+    },
+
+    applyTemplate : function(values){
+        return this.master.compiled.call(this, values, {});
+        var s = this.subs;
+    },
+
+    apply : function(){
+        return this.applyTemplate.apply(this, arguments);
+    },
+
+    compile : function(){return this;}
+});
+
+Roo.XTemplate.from = function(el){
+    el = Roo.getDom(el);
+    return new Roo.XTemplate(el.value || el.innerHTML);
+};/*
+ * Original code for Roojs - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.XComponent
+ * A delayed Element creator...
+ * 
+ * Mypart.xyx = new Roo.XComponent({
+
+    parent : 'Mypart.xyz', // empty == document.element.!!
+    order : '001',
+    name : 'xxxx'
+    region : 'xxxx'
+    disabled : function() {} 
+     
+    tree : function() { // return an tree of xtype declared components
+        var MODULE = this;
+        return 
+        {
+            xtype : 'NestedLayoutPanel',
+            // technicall
+        }
+     ]
+ *})
+ * @extends Roo.util.Observable
+ * @constructor
+ * @param cfg {Object} configuration of component
+ * 
+ */
+Roo.XComponent = function(cfg) {
+    Roo.apply(this, cfg);
+    this.addEvents({ 
+        /**
+	     * @event built
+	     * Fires when this the componnt is built
+	     * @param {Roo.XComponent} c the component
+	     */
+        'built' : true,
+        /**
+	     * @event buildcomplete
+	     * Fires on the top level element when all elements have been built
+	     * @param {Roo.XComponent} c the top level component.
+         */
+        'buildcomplete' : true
+        
+    });
+    
+    Roo.XComponent.register(this);
+    this.modules = false;
+    this.el = false; // where the layout goes..
+    
+    
+}
+Roo.extend(Roo.XComponent, Roo.util.Observable, {
+    /**
+     * @property el
+     * The created element (with Roo.factory())
+     * @type {Roo.Layout}
+     */
+    el  : false,
+    
+    /**
+     * @property el
+     * for BC  - use el in new code
+     * @type {Roo.Layout}
+     */
+    panel : false,
+    
+    /**
+     * @property layout
+     * for BC  - use el in new code
+     * @type {Roo.Layout}
+     */
+    layout : false,
+    
+     /**
+     * @cfg {Function|boolean} disabled
+     * If this module is disabled by some rule, return true from the funtion
+     */
+    disabled : false,
+    
+    /**
+     * @cfg {String} parent 
+     * Name of parent element which it get xtype added to..
+     */
+    parent: false,
+    
+    /**
+     * @cfg {String} order
+     * Used to set the order in which elements are created (usefull for multiple tabs)
+     */
+    
+    order : false,
+    /**
+     * @cfg {String} name
+     * String to display while loading.
+     */
+    name : false,
+    /**
+     * @cfg {Array} items
+     * A single item array - the first element is the root of the tree..
+     * It's done this way to stay compatible with the Xtype system...
+     */
+    items : false
+     
+     
+    
+});
+
+Roo.apply(Roo.XComponent, {
+    
+    /**
+     * @property  buildCompleted
+     * True when the builder has completed building the interface.
+     * @type Boolean
+     */
+    buildCompleted : false,
+     
+    /**
+     * @property  topModule
+     * the upper most module - uses document.element as it's constructor.
+     * @type Object
+     */
+     
+    topModule  : false,
+      
+    /**
+     * @property  modules
+     * array of modules to be created by registration system.
+     * @type Roo.XComponent
+     */
+    
+    modules : [],
+      
+    
+    /**
+     * Register components to be built later.
+     *
+     * This solves the following issues
+     * - Building is not done on page load, but after an authentication process has occured.
+     * - Interface elements are registered on page load
+     * - Parent Interface elements may not be loaded before child, so this handles that..
+     * 
+     *
+     * example:
+     * 
+     * MyApp.register({
+          order : '000001',
+          module : 'Pman.Tab.projectMgr',
+          region : 'center',
+          parent : 'Pman.layout',
+          disabled : false,  // or use a function..
+        })
+     
+     * * @param {Object} details about module
+     */
+    register : function(obj) {
+        this.modules.push(obj);
+         
+    },
+    /**
+     * convert a string to an object..
+     * 
+     */
+    
+    toObject : function(str)
+    {
+        if (!str || typeof(str) == 'object') {
+            return str;
+        }
+        var ar = str.split('.');
+        var rt, o;
+        rt = ar.shift();
+            /** eval:var:o */
+        eval('if (typeof ' + rt + ' == "undefined"){ o = false;} o = ' + rt + ';');
+        if (o === false) {
+            throw "Module not found : " + str;
+        }
+        Roo.each(ar, function(e) {
+            if (typeof(o[e]) == 'undefined') {
+                throw "Module not found : " + str;
+            }
+            o = o[e];
+        });
+        return o;
+        
+    },
+    
+    
+    /**
+     * move modules into their correct place in the tree..
+     * 
+     */
+    preBuild : function ()
+    {
+        
+        Roo.each(this.modules , function (obj)
+        {
+            obj.parent = this.toObject(obj.parent);
+            
+            if (!obj.parent) {
+                this.topModule = obj;
+                return;
+            }
+            
+            if (!obj.parent.modules) {
+                obj.parent.modules = new Roo.util.MixedCollection(false, 
+                    function(o) { return o.order + '' }
+                );
+            }
+            
+            obj.parent.modules.add(obj);
+        }, this);
+    },
+    
+     /**
+     * make a list of modules to build.
+     * @return {Array} list of modules. 
+     */ 
+    
+    buildOrder : function()
+    {
+        var _this = this;
+        var cmp = function(a,b) {   
+            return String(a).toUpperCase() > String(b).toUpperCase() ? 1 : -1;
+        };
+        
+        if (!this.topModule || !this.topModule.modules) {
+            throw "No top level modules to build";
+        }
+       
+        // make a flat list in order of modules to build.
+        var mods = [ this.topModule ];
+        
+        
+        // add modules to their parents..
+        var addMod = function(m) {
+           // Roo.debug && Roo.log(m.modKey);
+            
+            mods.push(m);
+            if (m.modules) {
+                m.modules.keySort('ASC',  cmp );
+                m.modules.each(addMod);
+            }
+            // not sure if this is used any more..
+            if (m.finalize) {
+                m.finalize.name = m.name + " (clean up) ";
+                mods.push(m.finalize);
+            }
+            
+        }
+        this.topModule.modules.keySort('ASC',  cmp );
+        this.topModule.modules.each(addMod);
+        return mods;
+    },
+    
+     /**
+     * Build the registered modules.
+     * @param {Object} parent element.
+     * @param {Function} optional method to call after module has been added.
+     * 
+     */ 
+   
+    build : function() 
+    {
+        
+        this.preBuild();
+        var mods = this.buildOrder();
+      
+        //this.allmods = mods;
+        //Roo.debug && Roo.log(mods);
+        //return;
+        if (!mods.length) { // should not happen
+            throw "NO modules!!!";
+        }
+        
+        
+        
+        // flash it up as modal - so we store the mask!?
+        Roo.MessageBox.show({ title: 'loading' });
+        Roo.MessageBox.show({
+           title: "Please wait...",
+           msg: "Building Interface...",
+           width:450,
+           progress:true,
+           closable:false,
+           modal: false
+          
+        });
+        var total = mods.length;
+        
+        var _this = this;
+        var progressRun = function() {
+            if (!mods.length) {
+                Roo.debug && Roo.log('hide?');
+                Roo.MessageBox.hide();
+                _this.topModule.fireEvent('buildcomplete', _this.topModule);
+                return;    
+            }
+            
+            var m = mods.shift();
+            Roo.debug && Roo.log(m);
+            if (typeof(m) == 'function') { // not sure if this is supported any more..
+                m.call(this);
+                return progressRun.defer(10, _this);
+            } 
+            
+            Roo.MessageBox.updateProgress(
+                (total  - mods.length)/total,  "Building Interface " + (total  - mods.length) + 
+                    " of " + total + 
+                    (m.name ? (' - ' + m.name) : '')
+                    );
+            
+         
+            
+            var disabled = (typeof(m.disabled) == 'function') ?
+                m.disabled.call(m.module.disabled) : m.disabled;    
+            
+            
+            if (disabled) {
+                return progressRun(); // we do not update the display!
+            }
+            
+            if (!m.parent) {
+                // it's a top level one..
+                var layoutbase = new Ext.BorderLayout(document.body, {
+               
+                    center: {
+                         titlebar: false,
+                         autoScroll:false,
+                         closeOnTab: true,
+                         tabPosition: 'top',
+                         //resizeTabs: true,
+                         alwaysShowTabs: true,
+                         minTabWidth: 140
+                    }
+                });
+                var tree = m.tree();
+                tree.region = 'center';
+                m.el = layoutbase.addxtype(tree);
+                m.panel = m.el;
+                m.layout = m.panel.layout;    
+                return progressRun.defer(10, _this);
+            }
+            
+            var tree = m.tree();
+            tree.region = tree.region || m.region;
+            m.el = m.parent.el.addxtype(tree);
+            m.fireEvent('built', m);
+            m.panel = m.el;
+            m.layout = m.panel.layout;    
+            progressRun.defer(10, _this); 
+            
+        }
+        progressRun.defer(1, _this);
+     
+        
+        
+    }
+     
+   
+    
+    
+});
+ //<script type="text/javascript">
+
+
+/**
+ * @class Roo.Login
+ * @extends Roo.LayoutDialog
+ * A generic Login Dialog..... - only one needed in theory!?!?
+ *
+ * Fires XComponent builder on success...
+ * 
+ * Sends 
+ *    username,password, lang = for login actions.
+ *    check = 1 for periodic checking that sesion is valid.
+ *    passwordRequest = email request password
+ *    logout = 1 = to logout
+ * 
+ * Affects: (this id="????" elements)
+ *   loading  (removed) (used to indicate application is loading)
+ *   loading-mask (hides) (used to hide application when it's building loading)
+ *   
+ * 
+ * Usage: 
+ *    
+ * 
+ * Myapp.login = Roo.Login({
+     url: xxxx,
+   
+     realm : 'Myapp', 
+     
+     
+     method : 'POST',
+     
+     
+     * 
+ })
+ * 
+ * 
+ * 
+ **/
+ 
+Roo.Login = function(cfg)
+{
+    this.addEvents({
+        'refreshed' : true
+    });
+    
+    Roo.apply(this,cfg);
+    
+    Roo.onReady(function() {
+        this.onLoad();
+    }, this);
+    // call parent..
+    
+   
+    Roo.Login.superclass.constructor.call(this, this);
+    //this.addxtype(this.items[0]);
+    
+    
+}
+
+
+Roo.extend(Roo.Login, Roo.LayoutDialog, {
+    
+    /**
+     * @cfg {String} method
+     * Method used to query for login details.
+     */
+    
+    method : 'POST',
+    /**
+     * @cfg {String} url
+     * URL to query login data. - eg. baseURL + '/Login.php'
+     */
+    url : '',
+    
+    /**
+     * @property user
+     * The user data - if user.id < 0 then login will be bypassed. (used for inital setup situation.
+     * @type {Object} 
+     */
+    user : false,
+    /**
+     * @property checkFails
+     * Number of times we have attempted to get authentication check, and failed.
+     * @type {Number} 
+     */
+    checkFails : 0,
+      /**
+     * @property intervalID
+     * The window interval that does the constant login checking.
+     * @type {Number} 
+     */
+    intervalID : 0,
+    
+    
+    onLoad : function() // called on page load...
+    {
+        // load 
+         
+        if (Roo.get('loading')) { // clear any loading indicator..
+            Roo.get('loading').remove();
+        }
+        
+        //this.switchLang('en'); // set the language to english..
+       
+        this.check({
+            success:  function(response, opts)  {  // check successfull...
+            
+                var res = this.processResponse(response);
+                this.checkFails =0;
+                if (!res.success) { // error!
+                    this.checkFails = 5;
+                    //console.log('call failure');
+                    return this.failure(response,opts);
+                }
+                
+                if (!res.data.id) { // id=0 == login failure.
+                    return this.show();
+                }
+                
+                              
+                        //console.log(success);
+                this.fillAuth(res.data);   
+                this.checkFails =0;
+                Roo.XComponent.build();
+            },
+            failure : this.show
+        });
+        
+    }, 
+    
+    
+    check: function(cfg) // called every so often to refresh cookie etc..
+    {
+        if (cfg.again) { // could be undefined..
+            this.checkFails++;
+        } else {
+            this.checkFails = 0;
+        }
+        var _this = this;
+        if (this.sending) {
+            if ( this.checkFails > 4) {
+                Roo.MessageBox.alert("Error",  
+                    "Error getting authentication status. - try reloading, or wait a while", function() {
+                        _this.sending = false;
+                    }); 
+                return;
+            }
+            cfg.again = true;
+            _this.check.defer(10000, _this, [ cfg ]); // check in 10 secs.
+            return;
+        }
+        this.sending = true;
+        
+        Roo.Ajax.request({  
+            url: this.url,
+            params: {
+                getAuthUser: true
+            },  
+            method: this.method,
+            success:  cfg.success || this.success,
+            failure : cfg.failure || this.failure,
+            scope : this,
+            callCfg : cfg
+              
+        });  
+    }, 
+    
+    
+    logout: function()
+    {
+        window.onbeforeunload = function() { }; // false does not work for IE..
+        this.user = false;
+        var _this = this;
+        
+        Roo.Ajax.request({  
+            url: this.url,
+            params: {
+                logout: 1
+            },  
+            method: 'GET',
+            failure : function() {
+                Roo.MessageBox.alert("Error", "Error logging out. - continuing anyway.", function() {
+                    document.location = document.location.toString() + '?ts=' + Math.random();
+                });
+                
+            },
+            success : function() {
+                _this.user = false;
+                this.checkFails =0;
+                // fixme..
+                document.location = document.location.toString() + '?ts=' + Math.random();
+            }
+              
+              
+        }); 
+    },
+    
+    processResponse : function (response)
+    {
+        var res = '';
+        try {
+            res = Roo.decode(response.responseText);
+            // oops...
+            if (typeof(res) != 'object') {
+                res = { success : false, errorMsg : res, errors : true };
+            }
+            if (typeof(res.success) == 'undefined') {
+                res.success = false;
+            }
+            
+        } catch(e) {
+            res = { success : false,  errorMsg : response.responseText, errors : true };
+        }
+        return res;
+    },
+    
+    success : function(response, opts)  // check successfull...
+    {  
+        this.sending = false;
+        var res = this.processResponse(response);
+        if (!res.success) {
+            return this.failure(response, opts);
+        }
+        if (!res.data || !res.data.id) {
+            return this.failure(response,opts);
+        }
+        //console.log(res);
+        this.fillAuth(res.data);
+        
+        this.checkFails =0;
+        
+    },
+    
+    
+    failure : function (response, opts) // called if login 'check' fails.. (causes re-check)
+    {
+        this.authUser = -1;
+        this.sending = false;
+        var res = this.processResponse(response);
+        //console.log(res);
+        if ( this.checkFails > 2) {
+        
+            Roo.MessageBox.alert("Error", res.errorMsg ? res.errorMsg : 
+                "Error getting authentication status. - try reloading"); 
+            return;
+        }
+        opts.callCfg.again = true;
+        this.check.defer(1000, this, [ opts.callCfg ]);
+        return;  
+    },
+    
+    
+    
+    fillAuth: function(au) {
+        this.startAuthCheck();
+        this.authUserId = au.id;
+        this.authUser = au;
+        this.lastChecked = new Date();
+        this.fireEvent('refreshed', au);
+        //Pman.Tab.FaxQueue.newMaxId(au.faxMax);
+        //Pman.Tab.FaxTab.setTitle(au.faxNumPending);
+        au.lang = au.lang || 'en';
+        //this.switchLang(Roo.state.Manager.get('Pman.Login.lang', 'en'));
+        Roo.state.Manager.set( this.realm + 'lang' , au.lang);
+        this.switchLang(au.lang );
+        
+     
+        // open system... - -on setyp..
+        if (this.authUserId  < 0) {
+            Roo.MessageBox.alert("Warning", 
+                "This is an open system - please set up a admin user with a password.");  
+        }
+         
+        //Pman.onload(); // which should do nothing if it's a re-auth result...
+        
+             
+    },
+    
+    startAuthCheck : function() // starter for timeout checking..
+    {
+        if (this.intervalID) { // timer already in place...
+            return false;
+        }
+        var _this = this;
+        this.intervalID =  window.setInterval(function() {
+              _this.check(false);
+            }, 120000); // every 120 secs = 2mins..
+        
+        
+    },
+         
+    
+    switchLang : function (lang) 
+    {
+        _T = typeof(_T) == 'undefined' ? false : _T;
+          if (!_T || !lang.length) {
+            return;
+        }
+        
+        if (!_T && lang != 'en') {
+            Roo.MessageBox.alert("Sorry", "Language not available yet (" + lang +')');
+            return;
+        }
+        
+        if (typeof(_T.en) == 'undefined') {
+            _T.en = {};
+            Roo.apply(_T.en, _T);
+        }
+        
+        if (typeof(_T[lang]) == 'undefined') {
+            Roo.MessageBox.alert("Sorry", "Language not available yet (" + lang +')');
+            return;
+        }
+        
+        
+        Roo.apply(_T, _T[lang]);
+        // just need to set the text values for everything...
+        var _this = this;
+        /* this will not work ...
+        if (this.form) { 
+            
+               
+            function formLabel(name, val) {
+                _this.form.findField(name).fieldEl.child('label').dom.innerHTML  = val;
+            }
+            
+            formLabel('password', "Password"+':');
+            formLabel('username', "Email Address"+':');
+            formLabel('lang', "Language"+':');
+            this.dialog.setTitle("Login");
+            this.dialog.buttons[0].setText("Forgot Password");
+            this.dialog.buttons[1].setText("Login");
+        }
+        */
+        
+        
+    },
+    
+    
+    title: "Login",
+    modal: true,
+    width:  350,
+    //height: 230,
+    height: 180,
+    shadow: true,
+    minWidth:200,
+    minHeight:180,
+    //proxyDrag: true,
+    closable: false,
+    draggable: false,
+    collapsible: false,
+    resizable: false,
+    center: {  // needed??
+        autoScroll:false,
+        titlebar: false,
+       // tabPosition: 'top',
+        hideTabs: true,
+        closeOnTab: true,
+        alwaysShowTabs: false
+    } ,
+    listeners : {
+        
+        show  : function(dlg)
+        {
+            //console.log(this);
+            this.form = this.layout.getRegion('center').activePanel.form;
+            this.form.dialog = dlg;
+            this.buttons[0].form = this.form;
+            this.buttons[0].dialog = dlg;
+            this.buttons[1].form = this.form;
+            this.buttons[1].dialog = dlg;
+           
+           //this.resizeToLogo.defer(1000,this);
+            // this is all related to resizing for logos..
+            //var sz = Roo.get(Pman.Login.form.el.query('img')[0]).getSize();
+           //// if (!sz) {
+             //   this.resizeToLogo.defer(1000,this);
+             //   return;
+           // }
+            //var w = Ext.lib.Dom.getViewWidth() - 100;
+            //var h = Ext.lib.Dom.getViewHeight() - 100;
+            //this.resizeTo(Math.max(350, Math.min(sz.width + 30, w)),Math.min(sz.height+200, h));
+            //this.center();
+            if (this.disabled) {
+                this.hide();
+                return;
+            }
+            
+            if (this.user.id < 0) { // used for inital setup situations.
+                return;
+            }
+            
+            if (this.intervalID) {
+                // remove the timer
+                window.clearInterval(this.intervalID);
+                this.intervalID = false;
+            }
+            
+            
+            if (Roo.get('loading')) {
+                Roo.get('loading').remove();
+            }
+            if (Roo.get('loading-mask')) {
+                Roo.get('loading-mask').hide();
+            }
+            
+            //incomming._node = tnode;
+            this.form.reset();
+            //this.dialog.modal = !modal;
+            //this.dialog.show();
+            this.el.unmask(); 
+            
+            
+            this.form.setValues({
+                'username' : Roo.state.Manager.get(this.realm + '.username', ''),
+                'lang' : Roo.state.Manager.get(this.realm + '.lang', 'en')
+            });
+            
+            this.switchLang(Roo.state.Manager.get(this.realm + '.lang', 'en'));
+            if (this.form.findField('username').getValue().length > 0 ){
+                this.form.findField('password').focus();
+            } else {
+               this.form.findField('username').focus();
+            }
+    
+        }
+    },
+    items : [
+         {
+       
+            xtype : 'ContentPanel',
+            xns : Roo,
+            region: 'center',
+            fitToFrame : true,
+            
+            items : [
+    
+                {
+               
+                    xtype : 'Form',
+                    xns : Roo.form,
+                    labelWidth: 100,
+                    style : 'margin: 10px;',
+                    
+                    listeners : {
+                        actionfailed : function(f, act) {
+                            // form can return { errors: .... }
+                                
+                            //act.result.errors // invalid form element list...
+                            //act.result.errorMsg// invalid form element list...
+                            
+                            this.dialog.el.unmask();
+                            Roo.MessageBox.alert("Error", act.result.errorMsg ? act.result.errorMsg : 
+                                        "Login failed - communication error - try again.");
+                                      
+                        },
+                        actioncomplete: function(re, act) {
+                             
+                            Roo.state.Manager.set(
+                                this.dialog.realm + '.username',  
+                                    this.findField('username').getValue()
+                            );
+                            Roo.state.Manager.set(
+                                this.dialog.realm + '.lang',  
+                                this.findField('lang').getValue() 
+                            );
+                            
+                            this.dialog.fillAuth(act.result.data);
+                              
+                            this.dialog.hide();
+                            
+                            if (Roo.get('loading-mask')) {
+                                Roo.get('loading-mask').show();
+                            }
+                            Roo.XComponent.build();
+                            
+                             
+                            
+                        }
+                    },
+                    items : [
+                        {
+                            xtype : 'TextField',
+                            xns : Roo.form,
+                            fieldLabel: "Email Address",
+                            name: 'username',
+                            width:200,
+                            autoCreate : {tag: "input", type: "text", size: "20"}
+                        },
+                        {
+                            xtype : 'TextField',
+                            xns : Roo.form,
+                            fieldLabel: "Password",
+                            inputType: 'password',
+                            name: 'password',
+                            width:200,
+                            autoCreate : {tag: "input", type: "text", size: "20"},
+                            listeners : {
+                                specialkey : function(e,ev) {
+                                    if (ev.keyCode == 13) {
+                                        this.form.dialog.el.mask("Logging in");
+                                        this.form.doAction('submit', {
+                                            url: this.form.dialog.url,
+                                            method: this.form.dialog.method
+                                        });
+                                    }
+                                }
+                            }  
+                        },
+                        {
+                            xtype : 'ComboBox',
+                            xns : Roo.form,
+                            fieldLabel: "Language",
+                            name : 'langdisp',
+                            store: {
+                                xtype : 'SimpleStore',
+                                fields: ['lang', 'ldisp'],
+                                data : [
+                                    [ 'en', 'English' ],
+                                    [ 'zh_HK' , '\u7E41\u4E2D' ],
+                                    [ 'zh_CN', '\u7C21\u4E2D' ]
+                                ]
+                            },
+                            
+                            valueField : 'lang',
+                            hiddenName:  'lang',
+                            width: 200,
+                            displayField:'ldisp',
+                            typeAhead: false,
+                            editable: false,
+                            mode: 'local',
+                            triggerAction: 'all',
+                            emptyText:'Select a Language...',
+                            selectOnFocus:true,
+                            listeners : {
+                                select :  function(cb, rec, ix) {
+                                    this.form.switchLang(rec.data.lang);
+                                }
+                            }
+                        
+                        }
+                    ]
+                }
+                  
+                
+            ]
+        }
+    ],
+    buttons : [
+        {
+            xtype : 'Button',
+            xns : 'Roo',
+            text : "Forgot Password",
+            listeners : {
+                click : function() {
+                    //console.log(this);
+                    var n = this.form.findField('username').getValue();
+                    if (!n.length) {
+                        Roo.MessageBox.alert("Error", "Fill in your email address");
+                        return;
+                    }
+                    Roo.Ajax.request({
+                        url: this.dialog.url,
+                        params: {
+                            passwordRequest: n
+                        },
+                        method: this.dialog.method,
+                        success:  function(response, opts)  {  // check successfull...
+                        
+                            var res = this.dialog.processResponse(response);
+                            if (!res.success) { // error!
+                               Roo.MessageBox.alert("Error" ,
+                                    res.errorMsg ? res.errorMsg  : "Problem Requesting Password Reset");
+                               return;
+                            }
+                            Roo.MessageBox.alert("Notice" ,
+                                "Please check you email for the Password Reset message");
+                        },
+                        failure : function() {
+                            Roo.MessageBox.alert("Error" , "Problem Requesting Password Reset");
+                        }
+                        
+                    });
+                }
+            }
+        },
+        {
+            xtype : 'Button',
+            xns : 'Roo',
+            text : "Login",
+            listeners : {
+                
+                click : function () {
+                        
+                    this.dialog.el.mask("Logging in");
+                    this.form.doAction('submit', {
+                            url: this.dialog.url,
+                            method: this.dialog.method
+                    });
+                }
+            }
+        }
+    ]
+  
+  
+})
+ 
+
+
+   
