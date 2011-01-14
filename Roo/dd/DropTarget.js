@@ -23,7 +23,7 @@ Roo.dd.DropTarget = function(el, config){
     this.el = Roo.get(el);
     
     var listeners = false; ;
-    if (config & config.listeners) {
+    if (config && config.listeners) {
         listeners= config.listeners;
         delete config.listeners;
     }
