@@ -72,12 +72,7 @@ Roo.dd.DragDrop = function(id, sGroup, config) {
     if (id) {
         this.init(id, sGroup, config);
     }
-    if (config.listeners || config.events) { 
-        Roo.BasicLayoutRegion.superclass.constructor.call(this,  { 
-            listeners : config.listeners || {}, 
-            events : config.events || {} 
-        });    
-    }
+    
 };
 
 Roo.extend(Roo.dd.DragDrop, Roo.util.Observable , {
