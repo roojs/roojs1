@@ -213,7 +213,7 @@ Roo.util.Math.prototype = {
     
 	set : function(n)
     {
-		this.ctor(n)
+		this.ctor(n);
         return this;
 	},
 /**
