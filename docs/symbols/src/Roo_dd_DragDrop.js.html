@@ -72,9 +72,15 @@
     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-var">this.init</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sGroup</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
     }
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.listeners </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">config.events</span><span class="jsdoc-syntax">) { 
+        </span><span class="jsdoc-var">Roo.BasicLayoutRegion.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,  { 
+            </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">config.listeners </span><span class="jsdoc-syntax">|| {}, 
+            </span><span class="jsdoc-var">events </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">config.events </span><span class="jsdoc-syntax">|| {} 
+        });    
+    }
 };
 
-</span><span class="jsdoc-var">Roo.dd.DragDrop.prototype </span><span class="jsdoc-syntax">= {
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.dd.DragDrop</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.util.Observable </span><span class="jsdoc-syntax">, {
 
     </span><span class="jsdoc-comment">/**
      * The id of the element associated with this object.  This is what we
@@ -1157,7 +1163,7 @@
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;DragDrop &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">);
     }
 
-};
+});
 
 })();
 </span></code></body></html>
