@@ -27,9 +27,9 @@ Roo.PagingToolbar = function(el, ds, config)
         el = config.container;
     }
     var items = [];
-    if (this.items) {
+    if (config.items) {
         items = this.items;
-        this.items = [];
+        config.items = [];
     }
     
     Roo.PagingToolbar.superclass.constructor.call(this, el, null, config);
