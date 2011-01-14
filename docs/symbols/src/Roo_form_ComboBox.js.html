@@ -686,7 +686,7 @@
             </span><span class="jsdoc-var">dv </span><span class="jsdoc-syntax">= !</span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.displayField</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.displayField</span><span class="jsdoc-syntax">];
         } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
             </span><span class="jsdoc-comment">// this is an error condition!!!
-            </span><span class="jsdoc-var">console.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'no value field set for '</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'no  displayField value set for '</span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.name </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">));
         }
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.valueField</span><span class="jsdoc-syntax">){
