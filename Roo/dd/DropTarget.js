@@ -97,6 +97,22 @@ Roo.dd.DropTarget = function(el, config){
                  * @param {Object} data An object containing arbitrary data supplied by the drag source
                  */
                  "out" : true,
+                 
+                /**
+                 * @event drop
+                 * The function a {@link Roo.dd.DragSource} calls once to notify this drop target that the dragged item has
+                 * been dropped on it.  This method has no default implementation and returns false, so you must provide an
+                 * implementation that does something to process the drop event and returns true so that the drag source's
+                 * repair action does not run.
+                 * 
+                 * IMPORTANT : it should set this.success
+                 * 
+                 * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
+                 * @param {Event} e The event
+                 * @param {Object} data An object containing arbitrary data supplied by the drag source
+                 * @return {Boolean} True if the drop was valid, else false
+                 */
+                 "drop" : true
             }
                 
         
@@ -149,16 +165,7 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
         }
     },
 
-    /**
-     * The function a {@link Roo.dd.DragSource} calls once to notify this drop target that the dragged item has
-     * been dropped on it.  This method has no default implementation and returns false, so you must provide an
-     * implementation that does something to process the drop event and returns true so that the drag source's
-     * repair action does not run.
-     * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
-     * @param {Event} e The event
-     * @param {Object} data An object containing arbitrary data supplied by the drag source
-     * @return {Boolean} True if the drop was valid, else false
-     */
+    
     notifyDrop : function(dd, e, data){
         return false;
     }
