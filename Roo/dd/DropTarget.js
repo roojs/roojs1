@@ -65,7 +65,7 @@ Roo.dd.DropTarget = function(el, config){
                  * target.  This default implementation adds the CSS class specified by overClass (if any) to the drop element
                  * and returns the dropAllowed config value.  This method should be overridden if drop validation is required.
                  * 
-                 * IMPORTANT : it should set this.overClass and this.dropAllowed;
+                 * IMPORTANT : it should set this.overClass and this.dropAllowed
                  * 
                  * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
                  * @param {Event} e The event
@@ -85,7 +85,7 @@ Roo.dd.DropTarget = function(el, config){
                  * This method will be called on every mouse movement while the drag source is over the drop target.
                  * This default implementation simply returns the dropAllowed config value.
                  * 
-                 * IMPORTANT : it should set this.dropAllowed;
+                 * IMPORTANT : it should set this.dropAllowed
                  * 
                  * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
                  * @param {Event} e The event
