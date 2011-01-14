@@ -51,7 +51,7 @@ Roo.dd.DropTarget = function(el, config){
     }
     Roo.dd.DropTarget.superclass.constructor.call(  this, 
         this.el.dom, 
-        this.ddGroup || this.group, 
+        this.ddGroup || this.group,
         {
             isTarget: true,
             events : {
@@ -149,6 +149,7 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
     // private
 
     notifyEnter : function(dd, e, data){
+        this.fireEvent('enter', this, dd, e, data);
         if(this.overClass){
             this.el.addClass(this.overClass);
         }
@@ -158,11 +159,13 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
     // private
 
     notifyOver : function(dd, e, data){
+        this.fireEvent('over', this, dd, e, data);
         return this.dropAllowed;
     },
 
     
     notifyOut : function(dd, e, data){
+        this.fireEvent('out', this, dd, e, data);
         if(this.overClass){
             this.el.removeClass(this.overClass);
         }
@@ -170,6 +173,7 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
 
     
     notifyDrop : function(dd, e, data){
+        this.fireEvent('drop', this, dd, e, data);
         return false;
     }
 });
