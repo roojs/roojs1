@@ -110,8 +110,7 @@ Roo.dd.DropTarget = function(el, config){
                  * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
                  * @param {Event} e The event
                  * @param {Object} data An object containing arbitrary data supplied by the drag source
-                 * @return {Boolean} True if the drop was valid, else false
-                 */
+                */
                  "drop" : true
             }
                 
