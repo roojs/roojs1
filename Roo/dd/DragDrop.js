@@ -74,7 +74,7 @@ Roo.dd.DragDrop = function(id, sGroup, config) {
     }
 };
 
-Roo.dd.DragDrop.prototype = {
+Roo.extend(Roo.dd.DragDrop, Roo.util.Observable , {
 
     /**
      * The id of the element associated with this object.  This is what we
