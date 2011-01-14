@@ -18346,6 +18346,11 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
      * @cfg {String} overClass
      * The CSS class applied to the drop target element while the drag source is over it (defaults to "").
      */
+     /**
+     * @cfg {String} ddGroup
+     * The drag drop group to handle drop events for
+     */
+     
     /**
      * @cfg {String} dropAllowed
      * The CSS class returned to the drag source when drop is allowed (defaults to "x-dd-drop-ok").
@@ -18372,8 +18377,9 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
     // private
     isNotifyTarget : true,
     
-    // private
-
+    /**
+     * @hide
+     */
     notifyEnter : function(dd, e, data){
         this.valid = true;
         this.fireEvent('enter', this, dd, e, data);
@@ -18383,15 +18389,18 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
         return this.valid ? this.dropAllowed : this.dropNotAllowed;
     },
 
-    // private
-
+    /**
+     * @hide
+     */
     notifyOver : function(dd, e, data){
         this.valid = true;
         this.fireEvent('over', this, dd, e, data);
         return this.valid ? this.dropAllowed : this.dropNotAllowed;
     },
 
-    
+    /**
+     * @hide
+     */
     notifyOut : function(dd, e, data){
         this.fireEvent('out', this, dd, e, data);
         if(this.overClass){
@@ -18399,7 +18408,9 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
         }
     },
 
-    
+    /**
+     * @hide
+     */
     notifyDrop : function(dd, e, data){
         this.success = false;
         this.fireEvent('drop', this, dd, e, data);
@@ -46474,7 +46485,10 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
      * @cfg {Object} loadMask An {@link Roo.LoadMask} config or true to mask the grid while loading. Default is false.
 	 */
 	loadMask : false,
-
+    /**
+     * @cfg {Roo.dd.DropTarget} dragTarget An {@link Roo.dd.DragTarget} config
+	 */
+	dropTarget: false,
     // private
     rendered : false,
 
@@ -46524,9 +46538,9 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
             this.footer.container = this.getView().getFooterPanel(true);
             this.footer = Roo.factory(this.footer, Roo);
         }
-        if (this.dragTarget && this.dragTarget) {
-            delete this.dragTarget.xtype;
-            this.dragTarget =  new Ext.dd.DropTarget(this.getView().mainBody, this.dragTarget);
+        if (this.dropTarget && this.dropTarget.xtype) {
+            delete this.dropTarget.xtype;
+            this.dropTarget =  new Ext.dd.DropTarget(this.getView().mainBody, this.dropTarget);
         }
         
         
