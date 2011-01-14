@@ -27113,13 +27113,22 @@ Roo.PagingToolbar = function(el, ds, config)
         ds = el.dataSource;
         el = config.container;
     }
-    
+    var items = [];
+    if (this.items) {
+        items = this.items;
+        this.items = [];
+    }
     
     Roo.PagingToolbar.superclass.constructor.call(this, el, null, config);
     this.ds = ds;
     this.cursor = 0;
     this.renderButtons(this.el);
     this.bind(ds);
+    var _this = this;
+    Roo.each(items, function(e) {
+        _this.add(Roo.factory(e));
+    });
+    
 };
 
 Roo.extend(Roo.PagingToolbar, Roo.Toolbar, {
@@ -37518,7 +37527,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
             dv = !o || typeof(o[this.displayField]) == 'undefined' ? '' : o[this.displayField];
         } else {
             // this is an error condition!!!
-            console.log('no value field set for '+ this.name);
+            Roo.log('no  displayField value set for '+ (this.name ? this.name : this.id));
         }
         
         if(this.valueField){
@@ -45291,6 +45300,11 @@ Roo.ContentPanel = function(el, config, content){
     });
     if(this.autoScroll){
         this.resizeEl.setStyle("overflow", "auto");
+    } else {
+        // fix randome scrolling
+        this.el.on('scroll', function() {
+            this.scrollTo('top',0); 
+        });
     }
     content = content || this.content;
     if(content){
@@ -45657,11 +45671,13 @@ Roo.NestedLayoutPanel = function(layout, config)
     }
     */
     
+    
     Roo.NestedLayoutPanel.superclass.constructor.call(this, layout.getEl(), config);
     
     layout.monitorWindowResize = false; // turn off autosizing
     this.layout = layout;
     this.layout.getEl().addClass("x-layout-nested-layout");
+    
     
     
     
