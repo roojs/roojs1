@@ -131,8 +131,9 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
     // private
     isNotifyTarget : true,
     
-    // private
-
+    /**
+     * @hide
+     */
     notifyEnter : function(dd, e, data){
         this.valid = true;
         this.fireEvent('enter', this, dd, e, data);
@@ -142,15 +143,18 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
         return this.valid ? this.dropAllowed : this.dropNotAllowed;
     },
 
-    // private
-
+    /**
+     * @hide
+     */
     notifyOver : function(dd, e, data){
         this.valid = true;
         this.fireEvent('over', this, dd, e, data);
         return this.valid ? this.dropAllowed : this.dropNotAllowed;
     },
 
-    
+    /**
+     * @hide
+     */
     notifyOut : function(dd, e, data){
         this.fireEvent('out', this, dd, e, data);
         if(this.overClass){
@@ -158,7 +162,9 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
         }
     },
 
-    
+    /**
+     * @hide
+     */
     notifyDrop : function(dd, e, data){
         this.success = false;
         this.fireEvent('drop', this, dd, e, data);
