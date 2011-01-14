@@ -27,7 +27,7 @@ Roo.dd.DropTarget = function(el, config){
     if(this.containerScroll){
         Roo.dd.ScrollManager.register(this.el);
     }
-    this.events : {
+    this.events = {
          /**
          * @scope Roo.dd.DropTarget
          */
