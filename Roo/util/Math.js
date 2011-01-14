@@ -4,13 +4,17 @@
 //@ http://jsfromhell.com/classes/bignumber [rev. #4]
 **/
 
+Roo = typeof(Roo) != 'undefined' ? Roo :  { util : { }};
+
 /**
  * @class Roo.util.Math
  *  based on.. Jonas Raoni Soares Silva
- * http://jsfromhell.com/classes/bignumber [rev. #4]
+ *  http://jsfromhell.com/classes/bignumber [rev. #4]
+ * @constructor
+ * @param {Object|Number} number to wrap
+ * @param {number} precision to use when doing calculations
+ * @param {number} rounding type.
  */
-Roo = typeof(Roo) != 'undefined' ? Roo :  { util : { }};
-    
 
 Roo.util.Math = function(num, precision, roundType){
 	this._constructor(num,precision, roundType);
@@ -30,7 +34,7 @@ Roo.util.Math.prototype = {
     roundType : 0,
     precision : 0,
     
-    
+    //private
     _constructor : function (num, precision, roundType) {
         var i;
         if(num instanceof Roo.util.Math){
@@ -50,7 +54,11 @@ Roo.util.Math.prototype = {
         for(i = (num = this._d = (num.join("") || "0").split("")).length; i; num[--i] = +num[i]);
         this.round();
     },
-    
+/**
+ * Add number
+ * @param {Object|Number} value to add
+ * @return {Object} The result
+ */
     add : function(num)
     {
 		num = new Roo.util.Math(num, this.precision, this.roundType);
@@ -82,6 +90,13 @@ Roo.util.Math.prototype = {
         return o.round();
 		 
 	},
+    
+/**
+ * Add number
+ * @param {Object|Number} value to add
+ * @return {Object} The result
+ */
+    
 	subtract : function(n){
 		if(this._s != (n = new Roo.util.Math(n, this.precision, this.roundType))._s)
 			return n._s ^= 1, this.add(n);
