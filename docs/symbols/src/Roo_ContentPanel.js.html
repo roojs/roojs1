@@ -109,6 +109,11 @@
     </span><span class="jsdoc-syntax">});
     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autoScroll</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.resizeEl.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;overflow&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;auto&quot;</span><span class="jsdoc-syntax">);
+    } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-comment">// fix randome scrolling
+        </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'scroll'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+            </span><span class="jsdoc-var">this.scrollTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">,0); 
+        });
     }
     </span><span class="jsdoc-var">content </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">content </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.content</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">content</span><span class="jsdoc-syntax">){
@@ -475,11 +480,13 @@ layout.addxtype({
     }
     */
     
+    
     </span><span class="jsdoc-var">Roo.NestedLayoutPanel.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">layout.getEl</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
     
     </span><span class="jsdoc-var">layout.monitorWindowResize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// turn off autosizing
     </span><span class="jsdoc-var">this.layout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">layout</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-var">this.layout.getEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-layout-nested-layout&quot;</span><span class="jsdoc-syntax">);
+    
     
     
     
