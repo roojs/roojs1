@@ -29,7 +29,7 @@ Roo.dd.DDTarget = function(id, sGroup, config) {
         this.initTarget(id, sGroup, config);
     }
     if (config.listeners || config.events) { 
-        Roo.BasicLayoutRegion.superclass.constructor.call(this,  { 
+        Roo.dd.DDTarget.superclass.constructor.call(this,  { 
             listeners : config.listeners || {}, 
             events : config.events || {} 
         });    
