@@ -136,6 +136,10 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
      * The CSS class returned to the drag source when drop is not allowed (defaults to "x-dd-drop-nodrop").
      */
     dropNotAllowed : "x-dd-drop-nodrop",
+    /**
+     * @cfg {boolean} success
+     * set this after drop listener..
+     */
 
     // private
     isTarget : true,
