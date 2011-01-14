@@ -60,7 +60,7 @@ Roo.dd.DropTarget = function(el, config){
                  */
                  
                  /**
-                 * @event notifyenter
+                 * @event enter
                  * The function a {@link Roo.dd.DragSource} calls once to notify this drop target that the source is now over the
                  * target.  This default implementation adds the CSS class specified by overClass (if any) to the drop element
                  * and returns the dropAllowed config value.  This method should be overridden if drop validation is required.
@@ -73,8 +73,22 @@ Roo.dd.DropTarget = function(el, config){
                  * @return {String} status The CSS class that communicates the drop status back to the source so that the
                  * underlying {@link Roo.dd.StatusProxy} can be updated
                  */
-                "notifyenter" : true,
-                
+                "enter" : true,
+                 /**
+                 * @event over
+                 * The function a {@link Roo.dd.DragSource} calls once to notify this drop target that the source is now over the
+                 * target.  This default implementation adds the CSS class specified by overClass (if any) to the drop element
+                 * and returns the dropAllowed config value.  This method should be overridden if drop validation is required.
+                 * 
+                 * IMPORTANT : it should set this.overClass and this.dropAllowed;
+                 * 
+                 * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
+                 * @param {Event} e The event
+                 * @param {Object} data An object containing arbitrary data supplied by the drag source
+                 * @return {String} status The CSS class that communicates the drop status back to the source so that the
+                 * underlying {@link Roo.dd.StatusProxy} can be updated
+                 */
+                "over" : true,
                 
             }
                 
