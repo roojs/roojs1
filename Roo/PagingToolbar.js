@@ -26,13 +26,22 @@ Roo.PagingToolbar = function(el, ds, config)
         ds = el.dataSource;
         el = config.container;
     }
-    
+    var items = [];
+    if (this.items) {
+        items = this.items;
+        this.items = [];
+    }
     
     Roo.PagingToolbar.superclass.constructor.call(this, el, null, config);
     this.ds = ds;
     this.cursor = 0;
     this.renderButtons(this.el);
     this.bind(ds);
+    var _this = this;
+    Roo.each(items, function(e) {
+        _this.add(Roo.factory(e));
+    });
+    
 };
 
 Roo.extend(Roo.PagingToolbar, Roo.Toolbar, {
