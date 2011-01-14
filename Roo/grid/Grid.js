@@ -405,7 +405,10 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
      * @cfg {Object} loadMask An {@link Roo.LoadMask} config or true to mask the grid while loading. Default is false.
 	 */
 	loadMask : false,
-
+    /**
+     * @cfg {Roo.dd.DragTarget} dragTarget An {@link Roo.dd.DragTarget} config
+	 */
+	loadMask : false,
     // private
     rendered : false,
 
@@ -455,7 +458,7 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
             this.footer.container = this.getView().getFooterPanel(true);
             this.footer = Roo.factory(this.footer, Roo);
         }
-        if (this.dragTarget && this.dragTarget) {
+        if (this.dragTarget && this.dragTarget.xtype) {
             delete this.dragTarget.xtype;
             this.dragTarget =  new Ext.dd.DropTarget(this.getView().mainBody, this.dragTarget);
         }
