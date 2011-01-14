@@ -27,7 +27,66 @@ Roo.dd.DropTarget = function(el, config){
     if(this.containerScroll){
         Roo.dd.ScrollManager.register(this.el);
     }
-    
+    this.events : {
+             /**
+             * @scope Roo.dd.DropTarget
+             */
+             
+             /**
+             * @event enter
+             * The function a {@link Roo.dd.DragSource} calls once to notify this drop target that the source is now over the
+             * target.  This default implementation adds the CSS class specified by overClass (if any) to the drop element
+             * and returns the dropAllowed config value.  This method should be overridden if drop validation is required.
+             * 
+             * IMPORTANT : it should set this.overClass and this.dropAllowed
+             * 
+             * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
+             * @param {Event} e The event
+             * @param {Object} data An object containing arbitrary data supplied by the drag source
+             */
+            "enter" : true,
+            
+             /**
+             * @event over
+             * The function a {@link Roo.dd.DragSource} calls continuously while it is being dragged over the target.
+             * This method will be called on every mouse movement while the drag source is over the drop target.
+             * This default implementation simply returns the dropAllowed config value.
+             * 
+             * IMPORTANT : it should set this.dropAllowed
+             * 
+             * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
+             * @param {Event} e The event
+             * @param {Object} data An object containing arbitrary data supplied by the drag source
+             
+             */
+            "over" : true,
+            /**
+             * @event out
+             * The function a {@link Roo.dd.DragSource} calls once to notify this drop target that the source has been dragged
+             * out of the target without dropping.  This default implementation simply removes the CSS class specified by
+             * overClass (if any) from the drop element.
+             * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
+             * @param {Event} e The event
+             * @param {Object} data An object containing arbitrary data supplied by the drag source
+             */
+             "out" : true,
+             
+            /**
+             * @event drop
+             * The function a {@link Roo.dd.DragSource} calls once to notify this drop target that the dragged item has
+             * been dropped on it.  This method has no default implementation and returns false, so you must provide an
+             * implementation that does something to process the drop event and returns true so that the drag source's
+             * repair action does not run.
+             * 
+             * IMPORTANT : it should set this.success
+             * 
+             * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
+             * @param {Event} e The event
+             * @param {Object} data An object containing arbitrary data supplied by the drag source
+            */
+             "drop" : true
+        }
+            
      
     Roo.dd.DropTarget.superclass.constructor.call(  this, 
         this.el.dom, 
@@ -35,66 +94,7 @@ Roo.dd.DropTarget = function(el, config){
         {
             isTarget: true,
             listeners : config.listeners || {} ,
-            events : {
-                 /**
-                 * @scope Roo.dd.DropTarget
-                 */
-                 
-                 /**
-                 * @event enter
-                 * The function a {@link Roo.dd.DragSource} calls once to notify this drop target that the source is now over the
-                 * target.  This default implementation adds the CSS class specified by overClass (if any) to the drop element
-                 * and returns the dropAllowed config value.  This method should be overridden if drop validation is required.
-                 * 
-                 * IMPORTANT : it should set this.overClass and this.dropAllowed
-                 * 
-                 * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
-                 * @param {Event} e The event
-                 * @param {Object} data An object containing arbitrary data supplied by the drag source
-                 */
-                "enter" : true,
-                
-                 /**
-                 * @event over
-                 * The function a {@link Roo.dd.DragSource} calls continuously while it is being dragged over the target.
-                 * This method will be called on every mouse movement while the drag source is over the drop target.
-                 * This default implementation simply returns the dropAllowed config value.
-                 * 
-                 * IMPORTANT : it should set this.dropAllowed
-                 * 
-                 * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
-                 * @param {Event} e The event
-                 * @param {Object} data An object containing arbitrary data supplied by the drag source
-                 
-                 */
-                "over" : true,
-                /**
-                 * @event out
-                 * The function a {@link Roo.dd.DragSource} calls once to notify this drop target that the source has been dragged
-                 * out of the target without dropping.  This default implementation simply removes the CSS class specified by
-                 * overClass (if any) from the drop element.
-                 * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
-                 * @param {Event} e The event
-                 * @param {Object} data An object containing arbitrary data supplied by the drag source
-                 */
-                 "out" : true,
-                 
-                /**
-                 * @event drop
-                 * The function a {@link Roo.dd.DragSource} calls once to notify this drop target that the dragged item has
-                 * been dropped on it.  This method has no default implementation and returns false, so you must provide an
-                 * implementation that does something to process the drop event and returns true so that the drag source's
-                 * repair action does not run.
-                 * 
-                 * IMPORTANT : it should set this.success
-                 * 
-                 * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
-                 * @param {Event} e The event
-                 * @param {Object} data An object containing arbitrary data supplied by the drag source
-                */
-                 "drop" : true
-            }
-                
+           
         
         }
     );
