@@ -34,6 +34,7 @@ Roo.dd.DropTarget = function(el, config){
         this.ddGroup || this.group,
         {
             isTarget: true,
+            listeners : config.listeners || false,
             events : {
                  /**
                  * @scope Roo.dd.DropTarget
