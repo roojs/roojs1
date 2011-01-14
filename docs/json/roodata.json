@@ -5138,6 +5138,12 @@
      "memberOf": ""
     },
     {
+     "name": "ddGroup",
+     "type": "String",
+     "desc": "The drag drop group to handle drop events for",
+     "memberOf": ""
+    },
+    {
      "name": "dropAllowed",
      "type": "String",
      "desc": "The CSS class returned to the drag source when drop is allowed (defaults to \"x-dd-drop-ok\").",
@@ -5195,6 +5201,12 @@
      "name": "overClass",
      "type": "String",
      "desc": "The CSS class applied to the drop target element while the drag source is over it (defaults to \"\").",
+     "memberOf": "Roo.dd.DropTarget"
+    },
+    {
+     "name": "ddGroup",
+     "type": "String",
+     "desc": "The drag drop group to handle drop events for",
      "memberOf": "Roo.dd.DropTarget"
     },
     {
@@ -11450,6 +11462,12 @@
      "memberOf": "Roo.grid.Grid"
     },
     {
+     "name": "dragTarget",
+     "type": "Roo.dd.DropTarget",
+     "desc": "An {@link Roo.dd.DragTarget} config",
+     "memberOf": "Roo.grid.Grid"
+    },
+    {
      "name": "listeners",
      "type": "Object",
      "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
@@ -11771,6 +11789,12 @@
      "name": "loadMask",
      "type": "Object",
      "desc": "An {@link Roo.LoadMask} config or true to mask the grid while loading. Default is false.",
+     "memberOf": ""
+    },
+    {
+     "name": "dragTarget",
+     "type": "Roo.dd.DropTarget",
+     "desc": "An {@link Roo.dd.DragTarget} config",
      "memberOf": ""
     },
     {
@@ -12304,6 +12328,12 @@
      "name": "loadMask",
      "type": "Object",
      "desc": "An {@link Roo.LoadMask} config or true to mask the grid while loading. Default is false.",
+     "memberOf": "Roo.grid.Grid"
+    },
+    {
+     "name": "dragTarget",
+     "type": "Roo.dd.DropTarget",
+     "desc": "An {@link Roo.dd.DragTarget} config",
      "memberOf": "Roo.grid.Grid"
     },
     {
