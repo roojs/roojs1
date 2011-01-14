@@ -37,6 +37,8 @@ Roo.PagingToolbar = function(el, ds, config)
     this.cursor = 0;
     this.renderButtons(this.el);
     this.bind(ds);
+    
+    // supprot items array.
     var _this = this;
     Roo.each(items, function(e) {
         _this.add(Roo.factory(e));
