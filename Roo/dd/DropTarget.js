@@ -105,6 +105,11 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
      * @cfg {String} overClass
      * The CSS class applied to the drop target element while the drag source is over it (defaults to "").
      */
+     /**
+     * @cfg {String} ddGroup
+     * The CSS class applied to the drop target element while the drag source is over it (defaults to "").
+     */
+     
     /**
      * @cfg {String} dropAllowed
      * The CSS class returned to the drag source when drop is allowed (defaults to "x-dd-drop-ok").
