@@ -1163,6 +1163,6 @@ Roo.extend(Roo.dd.DragDrop, Roo.util.Observable , {
         return ("DragDrop " + this.id);
     }
 
-};
+});
 
 })();
