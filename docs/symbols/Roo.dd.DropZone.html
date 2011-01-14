@@ -215,6 +215,66 @@
 		    </td>
 		</tr>
         
+	
+		<tr class="config-row expandable config-row-alt1">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.dd.DropTarget-cfg-success" name=".success"></a>
+			<div class="fixedFont">
+				<b  class="itemname">success</b> : boolean
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">set this after drop listener.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">set this after drop listener..</div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			<a href="./Roo.dd.DropTarget.html#constructor" roo:cls="Roo.dd.DropTarget.html#constructor">Roo.dd.DropTarget</a>
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt0">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.dd.DropTarget-cfg-valid" name=".valid"></a>
+			<div class="fixedFont">
+				<b  class="itemname">valid</b> : boolean
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">if the drop point is valid for over/enter.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">if the drop point is valid for over/enter..</div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			<a href="./Roo.dd.DropTarget.html#constructor" roo:cls="Roo.dd.DropTarget.html#constructor">Roo.dd.DropTarget</a>
+				
+		    </td>
+		</tr>
+        
         
     </table>
   		
@@ -3940,15 +4000,295 @@
   
   	
    
-    
-     <table cellspacing="0" class="member-table">
-      <caption class="Empty">Events - Has None</caption>
-     </table>
-    
-    
   
     
     
+    
+      <table cellspacing="0" class="member-table">
+		<caption>Events</caption>
+	      <thead>
+		<tr>
+		    <th class="sig-header" colspan="2">Event</th>            
+		    <th class="msource-header">Defined By</th>
+
+		</tr>
+	      </thead>  
+	
+	
+	 
+	
+        
+          <tr class="method-row expandable config-row-alt0">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.dd.DropTarget-event-*drop"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">drop</b> (<a href="./Roo.dd.DragSource.html#constructor" roo:cls="Roo.dd.DragSource.html#constructor">Roo.dd.DragSource</a> <B><i>source</i></B>, Event <B><i>e</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>data</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">The function a {<b>link</b> Roo.dd.DragSource} calls once to notify this drop target that the dragged item has<br/>been dropped on it.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			The function a {<b>link</b> Roo.dd.DragSource} calls once to notify this drop target that the dragged item has<br/>been dropped on it.  This method has no default implementation and returns false, so you must provide an<br/>implementation that does something to process the drop event and returns true so that the drag source's<br/>repair action does not run.<br/><br/>IMPORTANT : it should set this.success
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.dd.DragSource.html#constructor" roo:cls="Roo.dd.DragSource.html#constructor">Roo.dd.DragSource</a></span> <b>source</b>
+						
+					</dt>
+					<dd>The drag source that was dragged over this drop target</dd>
+				
+					<dt>
+						<span class="fixedFont">Event</span> <b>e</b>
+						
+					</dt>
+					<dd>The event</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span> <b>data</b>
+						
+					</dt>
+					<dd>An object containing arbitrary data supplied by the drag source</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                <a href="./Roo.dd.DropTarget.html#constructor" roo:cls="Roo.dd.DropTarget.html#constructor">Roo.dd.DropTarget</a>
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt1">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.dd.DropTarget-event-*enter"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">enter</b> (<a href="./Roo.dd.DragSource.html#constructor" roo:cls="Roo.dd.DragSource.html#constructor">Roo.dd.DragSource</a> <B><i>source</i></B>, Event <B><i>e</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>data</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">The function a {<b>link</b> Roo.dd.DragSource} calls once to notify this drop target that the source is now over the<br/>target.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			The function a {<b>link</b> Roo.dd.DragSource} calls once to notify this drop target that the source is now over the<br/>target.  This default implementation adds the CSS class specified by overClass (if any) to the drop element<br/>and returns the dropAllowed config value.  This method should be overridden if drop validation is required.<br/><br/>IMPORTANT : it should set this.overClass and this.dropAllowed
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.dd.DragSource.html#constructor" roo:cls="Roo.dd.DragSource.html#constructor">Roo.dd.DragSource</a></span> <b>source</b>
+						
+					</dt>
+					<dd>The drag source that was dragged over this drop target</dd>
+				
+					<dt>
+						<span class="fixedFont">Event</span> <b>e</b>
+						
+					</dt>
+					<dd>The event</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span> <b>data</b>
+						
+					</dt>
+					<dd>An object containing arbitrary data supplied by the drag source</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                <a href="./Roo.dd.DropTarget.html#constructor" roo:cls="Roo.dd.DropTarget.html#constructor">Roo.dd.DropTarget</a>
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt0">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.dd.DropTarget-event-*out"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">out</b> (<a href="./Roo.dd.DragSource.html#constructor" roo:cls="Roo.dd.DragSource.html#constructor">Roo.dd.DragSource</a> <B><i>source</i></B>, Event <B><i>e</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>data</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">The function a {<b>link</b> Roo.dd.DragSource} calls once to notify this drop target that the source has been dragged<br/>out of the target without dropping.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			The function a {<b>link</b> Roo.dd.DragSource} calls once to notify this drop target that the source has been dragged<br/>out of the target without dropping.  This default implementation simply removes the CSS class specified by<br/>overClass (if any) from the drop element.
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.dd.DragSource.html#constructor" roo:cls="Roo.dd.DragSource.html#constructor">Roo.dd.DragSource</a></span> <b>source</b>
+						
+					</dt>
+					<dd>The drag source that was dragged over this drop target</dd>
+				
+					<dt>
+						<span class="fixedFont">Event</span> <b>e</b>
+						
+					</dt>
+					<dd>The event</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span> <b>data</b>
+						
+					</dt>
+					<dd>An object containing arbitrary data supplied by the drag source</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                <a href="./Roo.dd.DropTarget.html#constructor" roo:cls="Roo.dd.DropTarget.html#constructor">Roo.dd.DropTarget</a>
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt1">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.dd.DropTarget-event-*over"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">over</b> (<a href="./Roo.dd.DragSource.html#constructor" roo:cls="Roo.dd.DragSource.html#constructor">Roo.dd.DragSource</a> <B><i>source</i></B>, Event <B><i>e</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>data</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">The function a {<b>link</b> Roo.dd.DragSource} calls continuously while it is being dragged over the target.
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			The function a {<b>link</b> Roo.dd.DragSource} calls continuously while it is being dragged over the target.<br/>This method will be called on every mouse movement while the drag source is over the drop target.<br/>This default implementation simply returns the dropAllowed config value.<br/><br/>IMPORTANT : it should set this.dropAllowed
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.dd.DragSource.html#constructor" roo:cls="Roo.dd.DragSource.html#constructor">Roo.dd.DragSource</a></span> <b>source</b>
+						
+					</dt>
+					<dd>The drag source that was dragged over this drop target</dd>
+				
+					<dt>
+						<span class="fixedFont">Event</span> <b>e</b>
+						
+					</dt>
+					<dd>The event</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span> <b>data</b>
+						
+					</dt>
+					<dd>An object containing arbitrary data supplied by the drag source</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                <a href="./Roo.dd.DropTarget.html#constructor" roo:cls="Roo.dd.DropTarget.html#constructor">Roo.dd.DropTarget</a>
+            </td>
+        </tr>
+	
+	                                               
+    </table>
+
   
   
   
@@ -3956,7 +4296,7 @@
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Wed Nov 10 2010 15:19:21 GMT+0800 (HKT)
+			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Fri Jan 14 2011 16:48:30 GMT+0800 (HKT)
 			Based on 
 			<a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a>  
 		</div>
