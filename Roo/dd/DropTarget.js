@@ -28,27 +28,7 @@ Roo.dd.DropTarget = function(el, config){
         Roo.dd.ScrollManager.register(this.el);
     }
     
-    
-    this.events = {  
-        /**
-         * @scope Roo.BasicLayoutRegion
-         */
-        
-        /
-        /**
-         * @event invalidated
-         * Fires when the layout for this region is changed.
-         * @param {Roo.LayoutRegion} this
-         */
-        "invalidated" : true,
-        /**
-         * @event visibilitychange
-         * Fires when this region is shown or hidden 
-         * @param {Roo.LayoutRegion} this
-         * @param {Boolean} visibility true or false
-         */
-        "visibilitychange" : true,
-    }
+     
     Roo.dd.DropTarget.superclass.constructor.call(  this, 
         this.el.dom, 
         this.ddGroup || this.group,
