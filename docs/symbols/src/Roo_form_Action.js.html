@@ -159,8 +159,23 @@
                 </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">uid
             </span><span class="jsdoc-syntax">},
             </span><span class="jsdoc-var">method</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'GET'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">success </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">success </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">req</span><span class="jsdoc-syntax">){
                </span><span class="jsdoc-comment">//console.log(data);
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rdata </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">edata</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">try  </span><span class="jsdoc-syntax">{
+                   </span><span class="jsdoc-var">rdata </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.decode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">req.responseText</span><span class="jsdoc-syntax">)
+                } </span><span class="jsdoc-keyword">catch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Invalid data from server..&quot;</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">edata</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">rdata </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">rdata.success</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rdata</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">rdata.data</span><span class="jsdoc-syntax">;
+                
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.uploadComplete</span><span class="jsdoc-syntax">) {
                    </span><span class="jsdoc-var">Roo.MessageBox.hide</span><span class="jsdoc-syntax">();
                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
@@ -195,7 +210,7 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.clientValidation </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.form.isValid</span><span class="jsdoc-syntax">()){
             
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.form.progressUrl</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">this.findField</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'UPLOAD_IDENTIFIER'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.setValue</span><span class="jsdoc-syntax">(
+                </span><span class="jsdoc-var">this.form.findField</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'UPLOAD_IDENTIFIER'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.setValue</span><span class="jsdoc-syntax">(
                     (</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">() * 1) + </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">Math.random</span><span class="jsdoc-syntax">());
                     
             } 
