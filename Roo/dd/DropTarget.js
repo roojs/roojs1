@@ -27,7 +27,7 @@ Roo.dd.DropTarget = function(el, config){
     if(this.containerScroll){
         Roo.dd.ScrollManager.register(this.el);
     }
-    this.events = {
+    this.addEvents( {
          /**
          * @scope Roo.dd.DropTarget
          */
@@ -85,7 +85,7 @@ Roo.dd.DropTarget = function(el, config){
          * @param {Object} data An object containing arbitrary data supplied by the drag source
         */
          "drop" : true
-    }
+    });
             
      
     Roo.dd.DropTarget.superclass.constructor.call(  this, 
