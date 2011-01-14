@@ -27114,9 +27114,9 @@ Roo.PagingToolbar = function(el, ds, config)
         el = config.container;
     }
     var items = [];
-    if (this.items) {
+    if (config.items) {
         items = this.items;
-        this.items = [];
+        config.items = [];
     }
     
     Roo.PagingToolbar.superclass.constructor.call(this, el, null, config);
@@ -27124,6 +27124,8 @@ Roo.PagingToolbar = function(el, ds, config)
     this.cursor = 0;
     this.renderButtons(this.el);
     this.bind(ds);
+    
+    // supprot items array.
     var _this = this;
     Roo.each(items, function(e) {
         _this.add(Roo.factory(e));
