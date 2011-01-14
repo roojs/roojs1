@@ -18264,8 +18264,9 @@ Roo.extend(Roo.dd.DragSource, Roo.dd.DDProxy, {
 Roo.dd.DropTarget = function(el, config){
     this.el = Roo.get(el);
     
-    var listeners = config.listeners;
-    if (listeners) {
+    var listeners = false; ;
+    if (config & config.listeners) {
+        listeners= config.listeners;
         delete config.listeners;
     }
     Roo.apply(this, config);
