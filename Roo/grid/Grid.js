@@ -457,7 +457,7 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
         }
         if (this.dragTarget && this.dragTarget) {
             delete this.dragTarget.xtype;
-            this.dragTarget =  new Ext.dd.DropTarget(this.getView().mainBody, this.dragTarget)
+            this.dragTarget =  new Ext.dd.DropTarget(this.getView().mainBody, this.dragTarget);
         }
         
         
