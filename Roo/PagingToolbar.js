@@ -28,7 +28,7 @@ Roo.PagingToolbar = function(el, ds, config)
     }
     var items = [];
     if (config.items) {
-        items = this.items;
+        items = config.items;
         config.items = [];
     }
     
