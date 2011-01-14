@@ -87,7 +87,16 @@ Roo.dd.DropTarget = function(el, config){
                  
                  */
                 "over" : true,
-                
+                /**
+                 * @event out
+                 * The function a {@link Roo.dd.DragSource} calls once to notify this drop target that the source has been dragged
+                 * out of the target without dropping.  This default implementation simply removes the CSS class specified by
+                 * overClass (if any) from the drop element.
+                 * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
+                 * @param {Event} e The event
+                 * @param {Object} data An object containing arbitrary data supplied by the drag source
+                 */
+                 "out" : true,
             }
                 
         
@@ -117,17 +126,9 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
 
     // private
     isNotifyTarget : true,
+    
+    // private
 
-    /**
-     * The function a {@link Roo.dd.DragSource} calls once to notify this drop target that the source is now over the
-     * target.  This default implementation adds the CSS class specified by overClass (if any) to the drop element
-     * and returns the dropAllowed config value.  This method should be overridden if drop validation is required.
-     * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
-     * @param {Event} e The event
-     * @param {Object} data An object containing arbitrary data supplied by the drag source
-     * @return {String} status The CSS class that communicates the drop status back to the source so that the
-     * underlying {@link Roo.dd.StatusProxy} can be updated
-     */
     notifyEnter : function(dd, e, data){
         if(this.overClass){
             this.el.addClass(this.overClass);
@@ -135,28 +136,13 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
         return this.dropAllowed;
     },
 
-    /**
-     * The function a {@link Roo.dd.DragSource} calls continuously while it is being dragged over the target.
-     * This method will be called on every mouse movement while the drag source is over the drop target.
-     * This default implementation simply returns the dropAllowed config value.
-     * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
-     * @param {Event} e The event
-     * @param {Object} data An object containing arbitrary data supplied by the drag source
-     * @return {String} status The CSS class that communicates the drop status back to the source so that the
-     * underlying {@link Roo.dd.StatusProxy} can be updated
-     */
+    // private
+
     notifyOver : function(dd, e, data){
         return this.dropAllowed;
     },
 
-    /**
-     * The function a {@link Roo.dd.DragSource} calls once to notify this drop target that the source has been dragged
-     * out of the target without dropping.  This default implementation simply removes the CSS class specified by
-     * overClass (if any) from the drop element.
-     * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
-     * @param {Event} e The event
-     * @param {Object} data An object containing arbitrary data supplied by the drag source
-     */
+    
     notifyOut : function(dd, e, data){
         if(this.overClass){
             this.el.removeClass(this.overClass);
