@@ -51,3 +51,6 @@
 .x-dd-drop-ok-add .x-dd-drop-icon{
   background-image: url(../images/default/dd/drop-add.gif);
 }
+.x-dd-drop-ok-sub .x-dd-drop-icon{
+  background-image: url(../images/default/dd/drop-sub.gif);
+}
