@@ -14399,6 +14399,7 @@ var Dom=Roo.lib.Dom;
 
 /**
  * @class Roo.dd.DragDrop
+ * @extends Roo.util.Observable
  * Defines the interface and base operation of items that that can be
  * dragged or can be drop targets.  It was designed to be extended, overriding
  * the event handlers for startDrag, onDrag, onDragOver and onDragOut.
@@ -18389,7 +18390,7 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
      */
     notifyEnter : function(dd, e, data){
         this.valid = true;
-        this.fireEvent('enter', this, dd, e, data);
+        this.fireEvent('enter', dd, e, data);
         if(this.overClass){
             this.el.addClass(this.overClass);
         }
@@ -18403,7 +18404,7 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
      */
     notifyOver : function(dd, e, data){
         this.valid = true;
-        this.fireEvent('over', this, dd, e, data);
+        this.fireEvent('over', dd, e, data);
         return typeof(this.valid) == 'string' ? 'x-dd-drop-' + this.valid : (
             this.valid ? this.dropAllowed : this.dropNotAllowed
         );
@@ -18413,7 +18414,7 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
      * @hide
      */
     notifyOut : function(dd, e, data){
-        this.fireEvent('out', this, dd, e, data);
+        this.fireEvent('out', dd, e, data);
         if(this.overClass){
             this.el.removeClass(this.overClass);
         }
@@ -18424,7 +18425,7 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
      */
     notifyDrop : function(dd, e, data){
         this.success = false;
-        this.fireEvent('drop', this, dd, e, data);
+        this.fireEvent('drop', dd, e, data);
         return this.success;
     }
 });/*
