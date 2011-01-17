@@ -26,6 +26,7 @@ var Dom=Roo.lib.Dom;
 
 /**
  * @class Roo.dd.DragDrop
+ * @extends Roo.util.Observable
  * Defines the interface and base operation of items that that can be
  * dragged or can be drop targets.  It was designed to be extended, overriding
  * the event handlers for startDrag, onDrag, onDragOver and onDragOut.
