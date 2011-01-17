@@ -18374,7 +18374,7 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
      */
     success : false,
     /**
-     * @cfg {boolean} valid
+     * @cfg {boolean|String} valid true/false or string (add/sub/ok/nodrop)
      * if the drop point is valid for over/enter..
      */
     valid : false,
@@ -18393,7 +18393,9 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
         if(this.overClass){
             this.el.addClass(this.overClass);
         }
-        return this.valid ? this.dropAllowed : this.dropNotAllowed;
+        return typeof(this.valid) == 'string' ? 'x-dd-drop-' + this.valid : (
+            this.valid ? this.dropAllowed : this.dropNotAllowed
+        );
     },
 
     /**
@@ -18402,7 +18404,9 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
     notifyOver : function(dd, e, data){
         this.valid = true;
         this.fireEvent('over', this, dd, e, data);
-        return this.valid ? this.dropAllowed : this.dropNotAllowed;
+        return typeof(this.valid) == 'string' ? 'x-dd-drop-' + this.valid : (
+            this.valid ? this.dropAllowed : this.dropNotAllowed
+        );
     },
 
     /**
