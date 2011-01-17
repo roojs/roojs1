@@ -145,7 +145,8 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
     /**
      * @hide
      */
-    notifyEnter : function(dd, e, data){
+    notifyEnter : function(dd, e, data)
+    {
         this.valid = true;
         this.fireEvent('enter', dd, e, data);
         if(this.overClass){
@@ -159,7 +160,8 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
     /**
      * @hide
      */
-    notifyOver : function(dd, e, data){
+    notifyOver : function(dd, e, data)
+    {
         this.valid = true;
         this.fireEvent('over', dd, e, data);
         return typeof(this.valid) == 'string' ? 'x-dd-drop-' + this.valid : (
@@ -170,7 +172,8 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
     /**
      * @hide
      */
-    notifyOut : function(dd, e, data){
+    notifyOut : function(dd, e, data)
+    {
         this.fireEvent('out', dd, e, data);
         if(this.overClass){
             this.el.removeClass(this.overClass);
@@ -180,7 +183,8 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
     /**
      * @hide
      */
-    notifyDrop : function(dd, e, data){
+    notifyDrop : function(dd, e, data)
+    {
         this.success = false;
         this.fireEvent('drop', dd, e, data);
         return this.success;
