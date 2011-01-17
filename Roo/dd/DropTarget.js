@@ -183,7 +183,6 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
     notifyDrop : function(dd, e, data){
         this.success = false;
         this.fireEvent('drop', this, dd, e, data);
-        return typeof(this.valid) == 'string' ? this.valid=='ok' :  this.valid;
-        );
+        return this.success;
     }
 });
