@@ -132,7 +132,7 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
      */
     success : false,
     /**
-     * @cfg {boolean|String} valid true/false or string (add/sub/ok/nodrop)
+     * @cfg {boolean|String} valid true/false or string (ok-add/ok-sub/ok/nodrop)
      * if the drop point is valid for over/enter..
      */
     valid : false,
