@@ -127,7 +127,7 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
      */
     dropNotAllowed : "x-dd-drop-nodrop",
     /**
-     * @cfg {boolean} success
+     * @cfg {boolean|String} success true/false or string (add/sub/ok/nodrop)
      * set this after drop listener.. 
      */
     success : false,
@@ -151,7 +151,9 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
         if(this.overClass){
             this.el.addClass(this.overClass);
         }
-        return this.valid ? this.dropAllowed : this.dropNotAllowed;
+        return typeof(this.valid) == 'string' ? 'x-dd-drop-' + this.valid : (
+            this.valid ? this.dropAllowed : this.dropNotAllowed
+        );
     },
 
     /**
@@ -160,7 +162,9 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
     notifyOver : function(dd, e, data){
         this.valid = true;
         this.fireEvent('over', this, dd, e, data);
-        return this.valid ? this.dropAllowed : this.dropNotAllowed;
+        return typeof(this.valid) == 'string' ? 'x-dd-drop-' + this.valid : (
+            this.valid ? this.dropAllowed : this.dropNotAllowed
+        );
     },
 
     /**
@@ -179,6 +183,7 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
     notifyDrop : function(dd, e, data){
         this.success = false;
         this.fireEvent('drop', this, dd, e, data);
-        return this.success;
+        return typeof(this.valid) == 'string' ? this.valid=='ok' :  this.valid;
+        );
     }
 });
