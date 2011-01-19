@@ -156,11 +156,17 @@ Roo.extend(Roo.Editor, Roo.Component, {
         if(this.completeOnEnter && e.getKey() == e.ENTER){
             e.stopEvent();
             this.completeEdit();
-        }else if(this.cancelOnEsc && e.getKey() == e.ESC){
-            this.cancelEdit();
-        }else{
-            this.fireEvent('specialkey', field, e);
+            return;
         }
+        if(e.getKey() == e.ENTER){    
+            return;
+        }
+        if(this.cancelOnEsc && e.getKey() == e.ESC){
+            this.cancelEdit();
+            return;
+        } 
+        this.fireEvent('specialkey', field, e);
+    
     },
 
     /**
