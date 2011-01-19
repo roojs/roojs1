@@ -159,6 +159,7 @@ Roo.extend(Roo.Editor, Roo.Component, {
             this.completeEdit();
             return;
         }
+        // do not fire special key otherwise it might hide close the editor...
         if(e.getKey() == e.ENTER){    
             return;
         }
