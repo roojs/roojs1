@@ -581,7 +581,7 @@ Roo.factory(conf, Roo.data);
         selectNode : function(selector, root) 
         {
             var node = Roo.DomQuery.selectNode(selector,root);
-            return node ? Roo.get(node) : false;
+            return node ? Roo.get(node) : new Roo.Element(false);
         }
         
     });
