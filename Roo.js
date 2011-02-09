@@ -573,6 +573,7 @@ Roo.factory(conf, Roo.data);
                 
         /**
          * Selects a single element as a Roo Element
+         * This is about as close as you can get to jQuery's $('do crazy stuff')
          * @param {String} selector The selector/xpath query
          * @param {Node} root (optional) The start of the query (defaults to document).
          * @return {Roo.Element}
