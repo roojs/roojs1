@@ -567,7 +567,22 @@ Roo.factory(conf, Roo.data);
          * you may want to set this to true.
          * @type Boolean
          */
-        useShims : ((isIE && !isIE7) || (isGecko && isMac))
+        useShims : ((isIE && !isIE7) || (isGecko && isMac)),
+        
+        
+                
+        /**
+         * Selects a single element as a Roo Element
+         * @param {String} selector The selector/xpath query
+         * @param {Node} root (optional) The start of the query (defaults to document).
+         * @return {Roo.Element}
+         */
+        selectNode : element(selector, root) 
+        {
+            var node = Roo.DomQuery.selectNode(selector,root);
+            return node ? Roo.get(node) : false;
+        }
+        
     });
 
 
