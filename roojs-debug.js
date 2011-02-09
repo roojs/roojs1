@@ -578,7 +578,7 @@ Roo.factory(conf, Roo.data);
          * @param {Node} root (optional) The start of the query (defaults to document).
          * @return {Roo.Element}
          */
-        selectNode : element(selector, root) 
+        selectNode : function(selector, root) 
         {
             var node = Roo.DomQuery.selectNode(selector,root);
             return node ? Roo.get(node) : false;
