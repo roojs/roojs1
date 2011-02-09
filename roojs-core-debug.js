@@ -13403,4 +13403,990 @@ Roo.util.CSS = function(){
    		return false;
    	}
    };	
+}();/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+ 
+
+/**
+ * @class Roo.util.ClickRepeater
+ * @extends Roo.util.Observable
+ * 
+ * A wrapper class which can be applied to any element. Fires a "click" event while the
+ * mouse is pressed. The interval between firings may be specified in the config but
+ * defaults to 10 milliseconds.
+ * 
+ * Optionally, a CSS class may be applied to the element during the time it is pressed.
+ * 
+ * @cfg {String/HTMLElement/Element} el The element to act as a button.
+ * @cfg {Number} delay The initial delay before the repeating event begins firing.
+ * Similar to an autorepeat key delay.
+ * @cfg {Number} interval The interval between firings of the "click" event. Default 10 ms.
+ * @cfg {String} pressClass A CSS class name to be applied to the element while pressed.
+ * @cfg {Boolean} accelerate True if autorepeating should start slowly and accelerate.
+ *           "interval" and "delay" are ignored. "immediate" is honored.
+ * @cfg {Boolean} preventDefault True to prevent the default click event
+ * @cfg {Boolean} stopDefault True to stop the default click event
+ * 
+ * @history
+ *     2007-02-02 jvs Original code contributed by Nige "Animal" White
+ *     2007-02-02 jvs Renamed to ClickRepeater
+ *   2007-02-03 jvs Modifications for FF Mac and Safari 
+ *
+ *  @constructor
+ * @param {String/HTMLElement/Element} el The element to listen on
+ * @param {Object} config
+ **/
+Roo.util.ClickRepeater = function(el, config)
+{
+    this.el = Roo.get(el);
+    this.el.unselectable();
+
+    Roo.apply(this, config);
+
+    this.addEvents({
+    /**
+     * @event mousedown
+     * Fires when the mouse button is depressed.
+     * @param {Roo.util.ClickRepeater} this
+     */
+        "mousedown" : true,
+    /**
+     * @event click
+     * Fires on a specified interval during the time the element is pressed.
+     * @param {Roo.util.ClickRepeater} this
+     */
+        "click" : true,
+    /**
+     * @event mouseup
+     * Fires when the mouse key is released.
+     * @param {Roo.util.ClickRepeater} this
+     */
+        "mouseup" : true
+    });
+
+    this.el.on("mousedown", this.handleMouseDown, this);
+    if(this.preventDefault || this.stopDefault){
+        this.el.on("click", function(e){
+            if(this.preventDefault){
+                e.preventDefault();
+            }
+            if(this.stopDefault){
+                e.stopEvent();
+            }
+        }, this);
+    }
+
+    // allow inline handler
+    if(this.handler){
+        this.on("click", this.handler,  this.scope || this);
+    }
+
+    Roo.util.ClickRepeater.superclass.constructor.call(this);
+};
+
+Roo.extend(Roo.util.ClickRepeater, Roo.util.Observable, {
+    interval : 20,
+    delay: 250,
+    preventDefault : true,
+    stopDefault : false,
+    timer : 0,
+
+    // private
+    handleMouseDown : function(){
+        clearTimeout(this.timer);
+        this.el.blur();
+        if(this.pressClass){
+            this.el.addClass(this.pressClass);
+        }
+        this.mousedownTime = new Date();
+
+        Roo.get(document).on("mouseup", this.handleMouseUp, this);
+        this.el.on("mouseout", this.handleMouseOut, this);
+
+        this.fireEvent("mousedown", this);
+        this.fireEvent("click", this);
+        
+        this.timer = this.click.defer(this.delay || this.interval, this);
+    },
+
+    // private
+    click : function(){
+        this.fireEvent("click", this);
+        this.timer = this.click.defer(this.getInterval(), this);
+    },
+
+    // private
+    getInterval: function(){
+        if(!this.accelerate){
+            return this.interval;
+        }
+        var pressTime = this.mousedownTime.getElapsed();
+        if(pressTime < 500){
+            return 400;
+        }else if(pressTime < 1700){
+            return 320;
+        }else if(pressTime < 2600){
+            return 250;
+        }else if(pressTime < 3500){
+            return 180;
+        }else if(pressTime < 4400){
+            return 140;
+        }else if(pressTime < 5300){
+            return 80;
+        }else if(pressTime < 6200){
+            return 50;
+        }else{
+            return 10;
+        }
+    },
+
+    // private
+    handleMouseOut : function(){
+        clearTimeout(this.timer);
+        if(this.pressClass){
+            this.el.removeClass(this.pressClass);
+        }
+        this.el.on("mouseover", this.handleMouseReturn, this);
+    },
+
+    // private
+    handleMouseReturn : function(){
+        this.el.un("mouseover", this.handleMouseReturn);
+        if(this.pressClass){
+            this.el.addClass(this.pressClass);
+        }
+        this.click();
+    },
+
+    // private
+    handleMouseUp : function(){
+        clearTimeout(this.timer);
+        this.el.un("mouseover", this.handleMouseReturn);
+        this.el.un("mouseout", this.handleMouseOut);
+        Roo.get(document).un("mouseup", this.handleMouseUp);
+        this.el.removeClass(this.pressClass);
+        this.fireEvent("mouseup", this);
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+ 
+/**
+ * @class Roo.KeyNav
+ * <p>Provides a convenient wrapper for normalized keyboard navigation.  KeyNav allows you to bind
+ * navigation keys to function calls that will get called when the keys are pressed, providing an easy
+ * way to implement custom navigation schemes for any UI component.</p>
+ * <p>The following are all of the possible keys that can be implemented: enter, left, right, up, down, tab, esc,
+ * pageUp, pageDown, del, home, end.  Usage:</p>
+ <pre><code>
+var nav = new Roo.KeyNav("my-element", {
+    "left" : function(e){
+        this.moveLeft(e.ctrlKey);
+    },
+    "right" : function(e){
+        this.moveRight(e.ctrlKey);
+    },
+    "enter" : function(e){
+        this.save();
+    },
+    scope : this
+});
+</code></pre>
+ * @constructor
+ * @param {String/HTMLElement/Roo.Element} el The element to bind to
+ * @param {Object} config The config
+ */
+Roo.KeyNav = function(el, config){
+    this.el = Roo.get(el);
+    Roo.apply(this, config);
+    if(!this.disabled){
+        this.disabled = true;
+        this.enable();
+    }
+};
+
+Roo.KeyNav.prototype = {
+    /**
+     * @cfg {Boolean} disabled
+     * True to disable this KeyNav instance (defaults to false)
+     */
+    disabled : false,
+    /**
+     * @cfg {String} defaultEventAction
+     * The method to call on the {@link Roo.EventObject} after this KeyNav intercepts a key.  Valid values are
+     * {@link Roo.EventObject#stopEvent}, {@link Roo.EventObject#preventDefault} and
+     * {@link Roo.EventObject#stopPropagation} (defaults to 'stopEvent')
+     */
+    defaultEventAction: "stopEvent",
+    /**
+     * @cfg {Boolean} forceKeyDown
+     * Handle the keydown event instead of keypress (defaults to false).  KeyNav automatically does this for IE since
+     * IE does not propagate special keys on keypress, but setting this to true will force other browsers to also
+     * handle keydown instead of keypress.
+     */
+    forceKeyDown : false,
+
+    // private
+    prepareEvent : function(e){
+        var k = e.getKey();
+        var h = this.keyToHandler[k];
+        //if(h && this[h]){
+        //    e.stopPropagation();
+        //}
+        if(Roo.isSafari && h && k >= 37 && k <= 40){
+            e.stopEvent();
+        }
+    },
+
+    // private
+    relay : function(e){
+        var k = e.getKey();
+        var h = this.keyToHandler[k];
+        if(h && this[h]){
+            if(this.doRelay(e, this[h], h) !== true){
+                e[this.defaultEventAction]();
+            }
+        }
+    },
+
+    // private
+    doRelay : function(e, h, hname){
+        return h.call(this.scope || this, e);
+    },
+
+    // possible handlers
+    enter : false,
+    left : false,
+    right : false,
+    up : false,
+    down : false,
+    tab : false,
+    esc : false,
+    pageUp : false,
+    pageDown : false,
+    del : false,
+    home : false,
+    end : false,
+
+    // quick lookup hash
+    keyToHandler : {
+        37 : "left",
+        39 : "right",
+        38 : "up",
+        40 : "down",
+        33 : "pageUp",
+        34 : "pageDown",
+        46 : "del",
+        36 : "home",
+        35 : "end",
+        13 : "enter",
+        27 : "esc",
+        9  : "tab"
+    },
+
+	/**
+	 * Enable this KeyNav
+	 */
+	enable: function(){
+		if(this.disabled){
+            // ie won't do special keys on keypress, no one else will repeat keys with keydown
+            // the EventObject will normalize Safari automatically
+            if(this.forceKeyDown || Roo.isIE || Roo.isAir){
+                this.el.on("keydown", this.relay,  this);
+            }else{
+                this.el.on("keydown", this.prepareEvent,  this);
+                this.el.on("keypress", this.relay,  this);
+            }
+		    this.disabled = false;
+		}
+	},
+
+	/**
+	 * Disable this KeyNav
+	 */
+	disable: function(){
+		if(!this.disabled){
+		    if(this.forceKeyDown || Roo.isIE || Roo.isAir){
+                this.el.un("keydown", this.relay);
+            }else{
+                this.el.un("keydown", this.prepareEvent);
+                this.el.un("keypress", this.relay);
+            }
+		    this.disabled = true;
+		}
+	}
+};/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+ 
+/**
+ * @class Roo.KeyMap
+ * Handles mapping keys to actions for an element. One key map can be used for multiple actions.
+ * The constructor accepts the same config object as defined by {@link #addBinding}.
+ * If you bind a callback function to a KeyMap, anytime the KeyMap handles an expected key
+ * combination it will call the function with this signature (if the match is a multi-key
+ * combination the callback will still be called only once): (String key, Roo.EventObject e)
+ * A KeyMap can also handle a string representation of keys.<br />
+ * Usage:
+ <pre><code>
+// map one key by key code
+var map = new Roo.KeyMap("my-element", {
+    key: 13, // or Roo.EventObject.ENTER
+    fn: myHandler,
+    scope: myObject
+});
+
+// map multiple keys to one action by string
+var map = new Roo.KeyMap("my-element", {
+    key: "a\r\n\t",
+    fn: myHandler,
+    scope: myObject
+});
+
+// map multiple keys to multiple actions by strings and array of codes
+var map = new Roo.KeyMap("my-element", [
+    {
+        key: [10,13],
+        fn: function(){ alert("Return was pressed"); }
+    }, {
+        key: "abc",
+        fn: function(){ alert('a, b or c was pressed'); }
+    }, {
+        key: "\t",
+        ctrl:true,
+        shift:true,
+        fn: function(){ alert('Control + shift + tab was pressed.'); }
+    }
+]);
+</code></pre>
+ * <b>Note: A KeyMap starts enabled</b>
+ * @constructor
+ * @param {String/HTMLElement/Roo.Element} el The element to bind to
+ * @param {Object} config The config (see {@link #addBinding})
+ * @param {String} eventName (optional) The event to bind to (defaults to "keydown")
+ */
+Roo.KeyMap = function(el, config, eventName){
+    this.el  = Roo.get(el);
+    this.eventName = eventName || "keydown";
+    this.bindings = [];
+    if(config){
+        this.addBinding(config);
+    }
+    this.enable();
+};
+
+Roo.KeyMap.prototype = {
+    /**
+     * True to stop the event from bubbling and prevent the default browser action if the
+     * key was handled by the KeyMap (defaults to false)
+     * @type Boolean
+     */
+    stopEvent : false,
+
+    /**
+     * Add a new binding to this KeyMap. The following config object properties are supported:
+     * <pre>
+Property    Type             Description
+----------  ---------------  ----------------------------------------------------------------------
+key         String/Array     A single keycode or an array of keycodes to handle
+shift       Boolean          True to handle key only when shift is pressed (defaults to false)
+ctrl        Boolean          True to handle key only when ctrl is pressed (defaults to false)
+alt         Boolean          True to handle key only when alt is pressed (defaults to false)
+fn          Function         The function to call when KeyMap finds the expected key combination
+scope       Object           The scope of the callback function
+</pre>
+     *
+     * Usage:
+     * <pre><code>
+// Create a KeyMap
+var map = new Roo.KeyMap(document, {
+    key: Roo.EventObject.ENTER,
+    fn: handleKey,
+    scope: this
+});
+
+//Add a new binding to the existing KeyMap later
+map.addBinding({
+    key: 'abc',
+    shift: true,
+    fn: handleKey,
+    scope: this
+});
+</code></pre>
+     * @param {Object/Array} config A single KeyMap config or an array of configs
+     */
+	addBinding : function(config){
+        if(config instanceof Array){
+            for(var i = 0, len = config.length; i < len; i++){
+                this.addBinding(config[i]);
+            }
+            return;
+        }
+        var keyCode = config.key,
+            shift = config.shift, 
+            ctrl = config.ctrl, 
+            alt = config.alt,
+            fn = config.fn,
+            scope = config.scope;
+        if(typeof keyCode == "string"){
+            var ks = [];
+            var keyString = keyCode.toUpperCase();
+            for(var j = 0, len = keyString.length; j < len; j++){
+                ks.push(keyString.charCodeAt(j));
+            }
+            keyCode = ks;
+        }
+        var keyArray = keyCode instanceof Array;
+        var handler = function(e){
+            if((!shift || e.shiftKey) && (!ctrl || e.ctrlKey) &&  (!alt || e.altKey)){
+                var k = e.getKey();
+                if(keyArray){
+                    for(var i = 0, len = keyCode.length; i < len; i++){
+                        if(keyCode[i] == k){
+                          if(this.stopEvent){
+                              e.stopEvent();
+                          }
+                          fn.call(scope || window, k, e);
+                          return;
+                        }
+                    }
+                }else{
+                    if(k == keyCode){
+                        if(this.stopEvent){
+                           e.stopEvent();
+                        }
+                        fn.call(scope || window, k, e);
+                    }
+                }
+            }
+        };
+        this.bindings.push(handler);  
+	},
+
+    /**
+     * Shorthand for adding a single key listener
+     * @param {Number/Array/Object} key Either the numeric key code, array of key codes or an object with the
+     * following options:
+     * {key: (number or array), shift: (true/false), ctrl: (true/false), alt: (true/false)}
+     * @param {Function} fn The function to call
+     * @param {Object} scope (optional) The scope of the function
+     */
+    on : function(key, fn, scope){
+        var keyCode, shift, ctrl, alt;
+        if(typeof key == "object" && !(key instanceof Array)){
+            keyCode = key.key;
+            shift = key.shift;
+            ctrl = key.ctrl;
+            alt = key.alt;
+        }else{
+            keyCode = key;
+        }
+        this.addBinding({
+            key: keyCode,
+            shift: shift,
+            ctrl: ctrl,
+            alt: alt,
+            fn: fn,
+            scope: scope
+        })
+    },
+
+    // private
+    handleKeyDown : function(e){
+	    if(this.enabled){ //just in case
+    	    var b = this.bindings;
+    	    for(var i = 0, len = b.length; i < len; i++){
+    	        b[i].call(this, e);
+    	    }
+	    }
+	},
+	
+	/**
+	 * Returns true if this KeyMap is enabled
+	 * @return {Boolean} 
+	 */
+	isEnabled : function(){
+	    return this.enabled;  
+	},
+	
+	/**
+	 * Enables this KeyMap
+	 */
+	enable: function(){
+		if(!this.enabled){
+		    this.el.on(this.eventName, this.handleKeyDown, this);
+		    this.enabled = true;
+		}
+	},
+
+	/**
+	 * Disable this KeyMap
+	 */
+	disable: function(){
+		if(this.enabled){
+		    this.el.removeListener(this.eventName, this.handleKeyDown, this);
+		    this.enabled = false;
+		}
+	}
+};/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+ 
+/**
+ * @class Roo.util.TextMetrics
+ * Provides precise pixel measurements for blocks of text so that you can determine exactly how high and
+ * wide, in pixels, a given block of text will be.
+ * @singleton
+ */
+Roo.util.TextMetrics = function(){
+    var shared;
+    return {
+        /**
+         * Measures the size of the specified text
+         * @param {String/HTMLElement} el The element, dom node or id from which to copy existing CSS styles
+         * that can affect the size of the rendered text
+         * @param {String} text The text to measure
+         * @param {Number} fixedWidth (optional) If the text will be multiline, you have to set a fixed width
+         * in order to accurately measure the text height
+         * @return {Object} An object containing the text's size {width: (width), height: (height)}
+         */
+        measure : function(el, text, fixedWidth){
+            if(!shared){
+                shared = Roo.util.TextMetrics.Instance(el, fixedWidth);
+            }
+            shared.bind(el);
+            shared.setFixedWidth(fixedWidth || 'auto');
+            return shared.getSize(text);
+        },
+
+        /**
+         * Return a unique TextMetrics instance that can be bound directly to an element and reused.  This reduces
+         * the overhead of multiple calls to initialize the style properties on each measurement.
+         * @param {String/HTMLElement} el The element, dom node or id that the instance will be bound to
+         * @param {Number} fixedWidth (optional) If the text will be multiline, you have to set a fixed width
+         * in order to accurately measure the text height
+         * @return {Roo.util.TextMetrics.Instance} instance The new instance
+         */
+        createInstance : function(el, fixedWidth){
+            return Roo.util.TextMetrics.Instance(el, fixedWidth);
+        }
+    };
 }();
+
+ 
+
+Roo.util.TextMetrics.Instance = function(bindTo, fixedWidth){
+    var ml = new Roo.Element(document.createElement('div'));
+    document.body.appendChild(ml.dom);
+    ml.position('absolute');
+    ml.setLeftTop(-1000, -1000);
+    ml.hide();
+
+    if(fixedWidth){
+        ml.setWidth(fixedWidth);
+    }
+     
+    var instance = {
+        /**
+         * Returns the size of the specified text based on the internal element's style and width properties
+         * @memberOf Roo.util.TextMetrics.Instance#
+         * @param {String} text The text to measure
+         * @return {Object} An object containing the text's size {width: (width), height: (height)}
+         */
+        getSize : function(text){
+            ml.update(text);
+            var s = ml.getSize();
+            ml.update('');
+            return s;
+        },
+
+        /**
+         * Binds this TextMetrics instance to an element from which to copy existing CSS styles
+         * that can affect the size of the rendered text
+         * @memberOf Roo.util.TextMetrics.Instance#
+         * @param {String/HTMLElement} el The element, dom node or id
+         */
+        bind : function(el){
+            ml.setStyle(
+                Roo.fly(el).getStyles('font-size','font-style', 'font-weight', 'font-family','line-height')
+            );
+        },
+
+        /**
+         * Sets a fixed width on the internal measurement element.  If the text will be multiline, you have
+         * to set a fixed width in order to accurately measure the text height.
+         * @memberOf Roo.util.TextMetrics.Instance#
+         * @param {Number} width The width to set on the element
+         */
+        setFixedWidth : function(width){
+            ml.setWidth(width);
+        },
+
+        /**
+         * Returns the measured width of the specified text
+         * @memberOf Roo.util.TextMetrics.Instance#
+         * @param {String} text The text to measure
+         * @return {Number} width The width in pixels
+         */
+        getWidth : function(text){
+            ml.dom.style.width = 'auto';
+            return this.getSize(text).width;
+        },
+
+        /**
+         * Returns the measured height of the specified text.  For multiline text, be sure to call
+         * {@link #setFixedWidth} if necessary.
+         * @memberOf Roo.util.TextMetrics.Instance#
+         * @param {String} text The text to measure
+         * @return {Number} height The height in pixels
+         */
+        getHeight : function(text){
+            return this.getSize(text).height;
+        }
+    };
+
+    instance.bind(bindTo);
+
+    return instance;
+};
+
+// backwards compat
+Roo.Element.measureText = Roo.util.TextMetrics.measure;/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.state.Provider
+ * Abstract base class for state provider implementations. This class provides methods
+ * for encoding and decoding <b>typed</b> variables including dates and defines the 
+ * Provider interface.
+ */
+Roo.state.Provider = function(){
+    /**
+     * @event statechange
+     * Fires when a state change occurs.
+     * @param {Provider} this This state provider
+     * @param {String} key The state key which was changed
+     * @param {String} value The encoded value for the state
+     */
+    this.addEvents({
+        "statechange": true
+    });
+    this.state = {};
+    Roo.state.Provider.superclass.constructor.call(this);
+};
+Roo.extend(Roo.state.Provider, Roo.util.Observable, {
+    /**
+     * Returns the current value for a key
+     * @param {String} name The key name
+     * @param {Mixed} defaultValue A default value to return if the key's value is not found
+     * @return {Mixed} The state data
+     */
+    get : function(name, defaultValue){
+        return typeof this.state[name] == "undefined" ?
+            defaultValue : this.state[name];
+    },
+    
+    /**
+     * Clears a value from the state
+     * @param {String} name The key name
+     */
+    clear : function(name){
+        delete this.state[name];
+        this.fireEvent("statechange", this, name, null);
+    },
+    
+    /**
+     * Sets the value for a key
+     * @param {String} name The key name
+     * @param {Mixed} value The value to set
+     */
+    set : function(name, value){
+        this.state[name] = value;
+        this.fireEvent("statechange", this, name, value);
+    },
+    
+    /**
+     * Decodes a string previously encoded with {@link #encodeValue}.
+     * @param {String} value The value to decode
+     * @return {Mixed} The decoded value
+     */
+    decodeValue : function(cookie){
+        var re = /^(a|n|d|b|s|o)\:(.*)$/;
+        var matches = re.exec(unescape(cookie));
+        if(!matches || !matches[1]) return; // non state cookie
+        var type = matches[1];
+        var v = matches[2];
+        switch(type){
+            case "n":
+                return parseFloat(v);
+            case "d":
+                return new Date(Date.parse(v));
+            case "b":
+                return (v == "1");
+            case "a":
+                var all = [];
+                var values = v.split("^");
+                for(var i = 0, len = values.length; i < len; i++){
+                    all.push(this.decodeValue(values[i]));
+                }
+                return all;
+           case "o":
+                var all = {};
+                var values = v.split("^");
+                for(var i = 0, len = values.length; i < len; i++){
+                    var kv = values[i].split("=");
+                    all[kv[0]] = this.decodeValue(kv[1]);
+                }
+                return all;
+           default:
+                return v;
+        }
+    },
+    
+    /**
+     * Encodes a value including type information.  Decode with {@link #decodeValue}.
+     * @param {Mixed} value The value to encode
+     * @return {String} The encoded value
+     */
+    encodeValue : function(v){
+        var enc;
+        if(typeof v == "number"){
+            enc = "n:" + v;
+        }else if(typeof v == "boolean"){
+            enc = "b:" + (v ? "1" : "0");
+        }else if(v instanceof Date){
+            enc = "d:" + v.toGMTString();
+        }else if(v instanceof Array){
+            var flat = "";
+            for(var i = 0, len = v.length; i < len; i++){
+                flat += this.encodeValue(v[i]);
+                if(i != len-1) flat += "^";
+            }
+            enc = "a:" + flat;
+        }else if(typeof v == "object"){
+            var flat = "";
+            for(var key in v){
+                if(typeof v[key] != "function"){
+                    flat += key + "=" + this.encodeValue(v[key]) + "^";
+                }
+            }
+            enc = "o:" + flat.substring(0, flat.length-1);
+        }else{
+            enc = "s:" + v;
+        }
+        return escape(enc);        
+    }
+});
+
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+/**
+ * @class Roo.state.Manager
+ * This is the global state manager. By default all components that are "state aware" check this class
+ * for state information if you don't pass them a custom state provider. In order for this class
+ * to be useful, it must be initialized with a provider when your application initializes.
+ <pre><code>
+// in your initialization function
+init : function(){
+   Roo.state.Manager.setProvider(new Roo.state.CookieProvider());
+   ...
+   // supposed you have a {@link Roo.BorderLayout}
+   var layout = new Roo.BorderLayout(...);
+   layout.restoreState();
+   // or a {Roo.BasicDialog}
+   var dialog = new Roo.BasicDialog(...);
+   dialog.restoreState();
+ </code></pre>
+ * @singleton
+ */
+Roo.state.Manager = function(){
+    var provider = new Roo.state.Provider();
+    
+    return {
+        /**
+         * Configures the default state provider for your application
+         * @param {Provider} stateProvider The state provider to set
+         */
+        setProvider : function(stateProvider){
+            provider = stateProvider;
+        },
+        
+        /**
+         * Returns the current value for a key
+         * @param {String} name The key name
+         * @param {Mixed} defaultValue The default value to return if the key lookup does not match
+         * @return {Mixed} The state data
+         */
+        get : function(key, defaultValue){
+            return provider.get(key, defaultValue);
+        },
+        
+        /**
+         * Sets the value for a key
+         * @param {String} name The key name
+         * @param {Mixed} value The state data
+         */
+         set : function(key, value){
+            provider.set(key, value);
+        },
+        
+        /**
+         * Clears a value from the state
+         * @param {String} name The key name
+         */
+        clear : function(key){
+            provider.clear(key);
+        },
+        
+        /**
+         * Gets the currently configured state provider
+         * @return {Provider} The state provider
+         */
+        getProvider : function(){
+            return provider;
+        }
+    };
+}();
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+/**
+ * @class Roo.state.CookieProvider
+ * @extends Roo.state.Provider
+ * The default Provider implementation which saves state via cookies.
+ * <br />Usage:
+ <pre><code>
+   var cp = new Roo.state.CookieProvider({
+       path: "/cgi-bin/",
+       expires: new Date(new Date().getTime()+(1000*60*60*24*30)); //30 days
+       domain: "roojs.com"
+   })
+   Roo.state.Manager.setProvider(cp);
+ </code></pre>
+ * @cfg {String} path The path for which the cookie is active (defaults to root '/' which makes it active for all pages in the site)
+ * @cfg {Date} expires The cookie expiration date (defaults to 7 days from now)
+ * @cfg {String} domain The domain to save the cookie for.  Note that you cannot specify a different domain than
+ * your page is on, but you can specify a sub-domain, or simply the domain itself like 'roojs.com' to include
+ * all sub-domains if you need to access cookies across different sub-domains (defaults to null which uses the same
+ * domain the page is running on including the 'www' like 'www.roojs.com')
+ * @cfg {Boolean} secure True if the site is using SSL (defaults to false)
+ * @constructor
+ * Create a new CookieProvider
+ * @param {Object} config The configuration object
+ */
+Roo.state.CookieProvider = function(config){
+    Roo.state.CookieProvider.superclass.constructor.call(this);
+    this.path = "/";
+    this.expires = new Date(new Date().getTime()+(1000*60*60*24*7)); //7 days
+    this.domain = null;
+    this.secure = false;
+    Roo.apply(this, config);
+    this.state = this.readCookies();
+};
+
+Roo.extend(Roo.state.CookieProvider, Roo.state.Provider, {
+    // private
+    set : function(name, value){
+        if(typeof value == "undefined" || value === null){
+            this.clear(name);
+            return;
+        }
+        this.setCookie(name, value);
+        Roo.state.CookieProvider.superclass.set.call(this, name, value);
+    },
+
+    // private
+    clear : function(name){
+        this.clearCookie(name);
+        Roo.state.CookieProvider.superclass.clear.call(this, name);
+    },
+
+    // private
+    readCookies : function(){
+        var cookies = {};
+        var c = document.cookie + ";";
+        var re = /\s?(.*?)=(.*?);/g;
+    	var matches;
+    	while((matches = re.exec(c)) != null){
+            var name = matches[1];
+            var value = matches[2];
+            if(name && name.substring(0,3) == "ys-"){
+                cookies[name.substr(3)] = this.decodeValue(value);
+            }
+        }
+        return cookies;
+    },
+
+    // private
+    setCookie : function(name, value){
+        document.cookie = "ys-"+ name + "=" + this.encodeValue(value) +
+           ((this.expires == null) ? "" : ("; expires=" + this.expires.toGMTString())) +
+           ((this.path == null) ? "" : ("; path=" + this.path)) +
+           ((this.domain == null) ? "" : ("; domain=" + this.domain)) +
+           ((this.secure == true) ? "; secure" : "");
+    },
+
+    // private
+    clearCookie : function(name){
+        document.cookie = "ys-" + name + "=null; expires=Thu, 01-Jan-70 00:00:01 GMT" +
+           ((this.path == null) ? "" : ("; path=" + this.path)) +
+           ((this.domain == null) ? "" : ("; domain=" + this.domain)) +
+           ((this.secure == true) ? "; secure" : "");
+    }
+});
