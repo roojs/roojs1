@@ -1135,7 +1135,9 @@ if(opt.anim.isAnimated()){
          * @param {Object}   options   (optional)An object with standard {@link Roo.EventManager#addListener} options
          */
         addListener : function(eventName, fn, scope, options){
-            Roo.EventManager.on(this.dom,  eventName, fn, scope || this, options);
+            if (this.dom) {
+                Roo.EventManager.on(this.dom,  eventName, fn, scope || this, options);
+            }
         },
 
         /**
