@@ -581,7 +581,7 @@ Roo.factory(conf, Roo.data);
         selectNode : function(selector, root) 
         {
             var node = Roo.DomQuery.selectNode(selector,root);
-            return node ? Roo.get(node) : false;
+            return node ? Roo.get(node) : new Roo.Element(false);
         }
         
     });
@@ -7821,7 +7821,9 @@ if(opt.anim.isAnimated()){
          * @param {Object}   options   (optional)An object with standard {@link Roo.EventManager#addListener} options
          */
         addListener : function(eventName, fn, scope, options){
-            Roo.EventManager.on(this.dom,  eventName, fn, scope || this, options);
+            if (this.dom) {
+                Roo.EventManager.on(this.dom,  eventName, fn, scope || this, options);
+            }
         },
 
         /**
