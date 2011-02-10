@@ -273,9 +273,19 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             }
             Roo.callback(o.success, o.scope, [this, action]);
             this.fireEvent('actioncomplete', this, action);
+            
         }else{
             Roo.callback(o.failure, o.scope, [this, action]);
+            
+            if (!this.hasListener('actionfailed')) {
+               
+                Roo.MessageBox.alert("Error", "Saving Failed, please check your entries");
+            }
+            
             this.fireEvent('actionfailed', this, action);
+        }
+        if (this.maskEl) {
+            this.maskEl.unmask();
         }
     },
 
