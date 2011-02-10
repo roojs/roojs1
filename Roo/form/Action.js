@@ -214,6 +214,9 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                     (new Date() * 1) + '' + Math.random());
                     
             } 
+            if (this.form.maskEl) {
+                this.form.maskEl.mask("Saving");
+            }
             
             Roo.Ajax.request(Roo.apply(this.createCallback(), {
                 form:this.form.el.dom,
@@ -237,6 +240,9 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         if (this.haveProgress) {
             Roo.MessageBox.hide();
         }
+        if (this.form.maskEl) {
+            this.form.maskEl.unmask();
+        }
         
         var result = this.processResponse(response);
         if(result === true || result.success){
@@ -254,6 +260,9 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         this.uploadComplete= true;
         if (this.haveProgress) {
             Roo.MessageBox.hide();
+        }
+        if (this.form.maskEl) {
+            this.form.maskEl.unmask();
         }
         
         this.response = response;
