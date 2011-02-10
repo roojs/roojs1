@@ -46437,11 +46437,19 @@ Roo.grid.Grid = function(container, config){
 	     */
 	    "dragout" : true,
         /**
+	     * @event rowclass
+	     * Fires when the dragged row(s) leave another DD target while being dragged
+	     * @param {GridView} gridview The grid view
+	     * @param {Object} rowcfg, contains record, rowIndex and rowClass - set rowClass to add a style.
+	     */
+        'rowclass' : true,
+        
+        /**
          * @event render
          * Fires when the grid is rendered
          * @param {Grid} grid
          */
-        render : true
+        'render' : true
     });
 
     Roo.grid.Grid.superclass.constructor.call(this);
@@ -47969,6 +47977,9 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                 var ts = this.templates, ct = ts.cell, rt = ts.row;
                 // buffers
                 var buf = "", lbuf = "", cb, lcb, c, p = {}, rp = {}, r, rowIndex;
+                
+                var hasListener = this.grid.hasListener('rowclass');
+                var rowcfg = {};
                 for(var j = 0, len = rs.length; j < len; j++){
                     r = rs[j]; cb = ""; lcb = ""; rowIndex = (j+startRow);
                     for(var i = 0; i < colCount; i++){
@@ -47990,14 +48001,24 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                     }
                     var alt = [];
                     if(stripe && ((rowIndex+1) % 2 == 0)){
-                        alt[0] = "x-grid-row-alt";
+                        alt.push("x-grid-row-alt")
                     }
                     if(r.dirty){
-                        alt[1] = " x-grid-dirty-row";
+                        alt.push(  " x-grid-dirty-row");
                     }
                     rp.cells = lcb;
                     if(this.getRowClass){
-                        alt[2] = this.getRowClass(r, rowIndex);
+                        alt.push(this.getRowClass(r, rowIndex));
+                    }
+                    if (hasListener) {
+                        rowcfg = {
+                             
+                            record: r,
+                            rowIndex : rowIndex,
+                            rowClass : '';
+                        }
+                        this.grid.fireEvent('rowclass', this, rowcfg);
+                        alt.push(rowcfg.rowClass);
                     }
                     rp.alt = alt.join(" ");
                     lbuf+= rt.apply(rp);
@@ -48010,6 +48031,8 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                 var ts = this.templates, ct = ts.cell, rt = ts.row;
                 // buffers
                 var buf = [], lbuf = [], cb, lcb, c, p = {}, rp = {}, r, rowIndex;
+                var hasListener = this.grid.hasListener('rowclass');
+                var rowcfg = {};
                 for(var j = 0, len = rs.length; j < len; j++){
                     r = rs[j]; cb = []; lcb = []; rowIndex = (j+startRow);
                     for(var i = 0; i < colCount; i++){
@@ -48031,14 +48054,24 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                     }
                     var alt = [];
                     if(stripe && ((rowIndex+1) % 2 == 0)){
-                        alt[0] = "x-grid-row-alt";
+                        alt.push( "x-grid-row-alt");
                     }
                     if(r.dirty){
-                        alt[1] = " x-grid-dirty-row";
+                        alt.push(" x-grid-dirty-row");
                     }
                     rp.cells = lcb;
                     if(this.getRowClass){
-                        alt[2] = this.getRowClass(r, rowIndex);
+                        alt.push( this.getRowClass(r, rowIndex));
+                    }
+                    if (hasListener) {
+                        rowcfg = {
+                             
+                            record: r,
+                            rowIndex : rowIndex,
+                            rowClass : '';
+                        }
+                        this.grid.fireEvent('rowclass', this, rowcfg);
+                        alt.push(rowcfg.rowClass);
                     }
                     rp.alt = alt.join(" ");
                     rp.cells = lcb.join("");
