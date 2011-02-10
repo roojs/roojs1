@@ -22,78 +22,84 @@
 </span><span class="jsdoc-var">Roo.dd.DropTarget </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
     
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">; ;
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">config.listeners</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">listeners</span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.listeners</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">config.listeners</span><span class="jsdoc-syntax">;
+    }
     </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
     
     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.containerScroll</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">Roo.dd.ScrollManager.register</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">);
     }
-    
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">( {
+         </span><span class="jsdoc-comment">/**
+         * @scope Roo.dd.DropTarget
+         */
+         
+         /**
+         * @event enter
+         * The function a {@link Roo.dd.DragSource} calls once to notify this drop target that the source is now over the
+         * target.  This default implementation adds the CSS class specified by overClass (if any) to the drop element
+         * and returns the dropAllowed config value.  This method should be overridden if drop validation is required.
+         * 
+         * IMPORTANT : it should set this.overClass and this.dropAllowed
+         * 
+         * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
+         * @param {Event} e The event
+         * @param {Object} data An object containing arbitrary data supplied by the drag source
+         */
+        </span><span class="jsdoc-string">&quot;enter&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        
+         </span><span class="jsdoc-comment">/**
+         * @event over
+         * The function a {@link Roo.dd.DragSource} calls continuously while it is being dragged over the target.
+         * This method will be called on every mouse movement while the drag source is over the drop target.
+         * This default implementation simply returns the dropAllowed config value.
+         * 
+         * IMPORTANT : it should set this.dropAllowed
+         * 
+         * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
+         * @param {Event} e The event
+         * @param {Object} data An object containing arbitrary data supplied by the drag source
+         
+         */
+        </span><span class="jsdoc-string">&quot;over&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event out
+         * The function a {@link Roo.dd.DragSource} calls once to notify this drop target that the source has been dragged
+         * out of the target without dropping.  This default implementation simply removes the CSS class specified by
+         * overClass (if any) from the drop element.
+         * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
+         * @param {Event} e The event
+         * @param {Object} data An object containing arbitrary data supplied by the drag source
+         */
+         </span><span class="jsdoc-string">&quot;out&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+         
+        </span><span class="jsdoc-comment">/**
+         * @event drop
+         * The function a {@link Roo.dd.DragSource} calls once to notify this drop target that the dragged item has
+         * been dropped on it.  This method has no default implementation and returns false, so you must provide an
+         * implementation that does something to process the drop event and returns true so that the drag source's
+         * repair action does not run.
+         * 
+         * IMPORTANT : it should set this.success
+         * 
+         * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
+         * @param {Event} e The event
+         * @param {Object} data An object containing arbitrary data supplied by the drag source
+        */
+         </span><span class="jsdoc-string">&quot;drop&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+            
      
     </span><span class="jsdoc-var">Roo.dd.DropTarget.superclass.constructor.call</span><span class="jsdoc-syntax">(  </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, 
         </span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">, 
         </span><span class="jsdoc-var">this.ddGroup </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.group</span><span class="jsdoc-syntax">,
         {
             </span><span class="jsdoc-var">isTarget</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">events </span><span class="jsdoc-syntax">: {
-                 </span><span class="jsdoc-comment">/**
-                 * @scope Roo.dd.DropTarget
-                 */
-                 
-                 /**
-                 * @event enter
-                 * The function a {@link Roo.dd.DragSource} calls once to notify this drop target that the source is now over the
-                 * target.  This default implementation adds the CSS class specified by overClass (if any) to the drop element
-                 * and returns the dropAllowed config value.  This method should be overridden if drop validation is required.
-                 * 
-                 * IMPORTANT : it should set this.overClass and this.dropAllowed
-                 * 
-                 * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
-                 * @param {Event} e The event
-                 * @param {Object} data An object containing arbitrary data supplied by the drag source
-                 */
-                </span><span class="jsdoc-string">&quot;enter&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-                
-                 </span><span class="jsdoc-comment">/**
-                 * @event over
-                 * The function a {@link Roo.dd.DragSource} calls continuously while it is being dragged over the target.
-                 * This method will be called on every mouse movement while the drag source is over the drop target.
-                 * This default implementation simply returns the dropAllowed config value.
-                 * 
-                 * IMPORTANT : it should set this.dropAllowed
-                 * 
-                 * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
-                 * @param {Event} e The event
-                 * @param {Object} data An object containing arbitrary data supplied by the drag source
-                 
-                 */
-                </span><span class="jsdoc-string">&quot;over&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-comment">/**
-                 * @event out
-                 * The function a {@link Roo.dd.DragSource} calls once to notify this drop target that the source has been dragged
-                 * out of the target without dropping.  This default implementation simply removes the CSS class specified by
-                 * overClass (if any) from the drop element.
-                 * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
-                 * @param {Event} e The event
-                 * @param {Object} data An object containing arbitrary data supplied by the drag source
-                 */
-                 </span><span class="jsdoc-string">&quot;out&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-                 
-                </span><span class="jsdoc-comment">/**
-                 * @event drop
-                 * The function a {@link Roo.dd.DragSource} calls once to notify this drop target that the dragged item has
-                 * been dropped on it.  This method has no default implementation and returns false, so you must provide an
-                 * implementation that does something to process the drop event and returns true so that the drag source's
-                 * repair action does not run.
-                 * 
-                 * IMPORTANT : it should set this.success
-                 * 
-                 * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
-                 * @param {Event} e The event
-                 * @param {Object} data An object containing arbitrary data supplied by the drag source
-                */
-                 </span><span class="jsdoc-string">&quot;drop&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
-            </span><span class="jsdoc-syntax">}
-                
+            </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">|| {} 
+           
         
         }
     );
@@ -126,7 +132,7 @@
      */
     </span><span class="jsdoc-var">success </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-comment">/**
-     * @cfg {boolean} valid
+     * @cfg {boolean|String} valid true/false or string (ok-add/ok-sub/ok/nodrop)
      * if the drop point is valid for over/enter..
      */
     </span><span class="jsdoc-var">valid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
@@ -139,29 +145,36 @@
     </span><span class="jsdoc-comment">/**
      * @hide
      */
-    </span><span class="jsdoc-var">notifyEnter </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">notifyEnter </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">)
+    {
         </span><span class="jsdoc-var">this.valid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'enter'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'enter'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.overClass</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.overClass</span><span class="jsdoc-syntax">);
         }
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.valid </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.dropAllowed </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.dropNotAllowed</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">return typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.valid</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'x-dd-drop-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.valid </span><span class="jsdoc-syntax">: (
+            </span><span class="jsdoc-var">this.valid </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.dropAllowed </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.dropNotAllowed
+        </span><span class="jsdoc-syntax">);
     },
 
     </span><span class="jsdoc-comment">/**
      * @hide
      */
-    </span><span class="jsdoc-var">notifyOver </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">notifyOver </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">)
+    {
         </span><span class="jsdoc-var">this.valid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'over'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.valid </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.dropAllowed </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.dropNotAllowed</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'over'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.valid</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'x-dd-drop-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.valid </span><span class="jsdoc-syntax">: (
+            </span><span class="jsdoc-var">this.valid </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.dropAllowed </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.dropNotAllowed
+        </span><span class="jsdoc-syntax">);
     },
 
     </span><span class="jsdoc-comment">/**
      * @hide
      */
-    </span><span class="jsdoc-var">notifyOut </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'out'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">notifyOut </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'out'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.overClass</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.overClass</span><span class="jsdoc-syntax">);
         }
@@ -170,9 +183,10 @@
     </span><span class="jsdoc-comment">/**
      * @hide
      */
-    </span><span class="jsdoc-var">notifyDrop </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">notifyDrop </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">)
+    {
         </span><span class="jsdoc-var">this.success </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'drop'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'drop'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.success</span><span class="jsdoc-syntax">;
     }
 });</span></code></body></html>
