@@ -88,7 +88,7 @@ Roo.extend(Roo.form.BasicForm, Roo.util.Observable, {
      */
      /**
      * @cfg {Roo.Element} maskEl
-     * Element to mask when loading or saving
+     * Element to mask when loading or saving (used by Roo.form.Action*)
      */
     /**
      * @cfg {Number} timeout Timeout for form actions in seconds (default is 30 seconds).
