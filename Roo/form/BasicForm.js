@@ -288,9 +288,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             
             this.fireEvent('actionfailed', this, action);
         }
-        if (this.maskEl) {
-            this.maskEl.unmask();
-        }
+        
     },
 
     /**
