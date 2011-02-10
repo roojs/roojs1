@@ -298,11 +298,19 @@
 	     */
 	    </span><span class="jsdoc-string">&quot;dragout&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/**
+	     * @event rowclass
+	     * Fires when the dragged row(s) leave another DD target while being dragged
+	     * @param {GridView} gridview The grid view
+	     * @param {Object} rowcfg, contains record, rowIndex and rowClass - set rowClass to add a style.
+	     */
+        </span><span class="jsdoc-string">'rowclass' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        
+        </span><span class="jsdoc-comment">/**
          * @event render
          * Fires when the grid is rendered
          * @param {Grid} grid
          */
-        </span><span class="jsdoc-var">render </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-string">'render' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
     </span><span class="jsdoc-syntax">});
 
     </span><span class="jsdoc-var">Roo.grid.Grid.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
