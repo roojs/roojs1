@@ -86,6 +86,10 @@ Roo.extend(Roo.form.BasicForm, Roo.util.Observable, {
      * @cfg {Object} baseParams
      * Parameters to pass with all requests. e.g. baseParams: {id: '123', foo: 'bar'}.
      */
+     /**
+     * @cfg {Roo.Element} maskEl
+     * Element to mask when loading or savling
+     */
     /**
      * @cfg {Number} timeout Timeout for form actions in seconds (default is 30 seconds).
      */
