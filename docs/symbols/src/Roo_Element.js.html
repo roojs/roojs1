@@ -1135,7 +1135,9 @@ if(opt.anim.isAnimated()){
          * @param {Object}   options   (optional)An object with standard {@link Roo.EventManager#addListener} options
          */
         </span><span class="jsdoc-var">addListener </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">Roo.EventManager.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dom</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dom</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">Roo.EventManager.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dom</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">);
+            }
         },
 
         </span><span class="jsdoc-comment">/**
