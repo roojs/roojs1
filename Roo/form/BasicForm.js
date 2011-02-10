@@ -243,6 +243,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
     // private
     beforeAction : function(action){
         var o = action.options;
+        
         if (this.dialog) {
             o.waitMsg = true;
             o.waitMsgTarget = this.dialog.el;
