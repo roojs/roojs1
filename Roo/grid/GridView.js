@@ -876,7 +876,8 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                         alt.push(this.getRowClass(r, rowIndex));
                     }
                     if (hasListener) {
-                        rowcfg = 
+                        rowcfg = {
+                             
                             record: r,
                             rowIndex : rowIndex,
                             rowClass : '';
