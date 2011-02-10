@@ -82,10 +82,7 @@ Roo.extend(Roo.form.BasicForm, Roo.util.Observable, {
      * @cfg {Boolean} fileUpload
      * Set to true if this form is a file upload.
      */
-     /**
-     * @cfg {Roo.form.LayoutDialog} dialog
-     * If you set this to a Roo.form.Dialog, it will get masked when saving..
-     */
+     
     /**
      * @cfg {Object} baseParams
      * Parameters to pass with all requests. e.g. baseParams: {id: '123', foo: 'bar'}.
@@ -248,20 +245,17 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
     beforeAction : function(action){
         var o = action.options;
         
-        if (this.dialog) {
-            o.waitMsg = o.waitMsg || true;
-            o.waitMsgTarget = this.dialog.el;
+        if(typeof(this.waitMsgTarget) == 'undefined'){
+            Roo.get(document.documentElement).mask(o.waitMsg || "Sending", 'x-mask-loading');
+        if(this.waitMsgTarget === true){
+            this.el.mask(o.waitMsg || "Sending", 'x-mask-loading');
+        }else if(this.waitMsgTarget){
+            this.waitMsgTarget = Roo.get(this.waitMsgTarget);
+            this.waitMsgTarget.mask(o.waitMsg || "Sending", 'x-mask-loading');
+        }else {
+            Roo.MessageBox.wait(o.waitMsg || "Sending", o.waitTitle || this.waitTitle || 'Please Wait...');
         }
-        if(o.waitMsg){
-            if(this.waitMsgTarget === true){
-                this.el.mask(o.waitMsg, 'x-mask-loading');
-            }else if(this.waitMsgTarget){
-                this.waitMsgTarget = Roo.get(this.waitMsgTarget);
-                this.waitMsgTarget.mask(o.waitMsg, 'x-mask-loading');
-            }else{
-                Roo.MessageBox.wait(o.waitMsg, o.waitTitle || this.waitTitle || 'Please Wait...');
-            }
-        }
+         
     },
 
     // private
