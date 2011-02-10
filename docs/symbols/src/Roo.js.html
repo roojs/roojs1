@@ -567,7 +567,23 @@ Roo.factory(conf, Roo.data);
          * you may want to set this to true.
          * @type Boolean
          */
-        </span><span class="jsdoc-var">useShims </span><span class="jsdoc-syntax">: ((</span><span class="jsdoc-var">isIE </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">isIE7</span><span class="jsdoc-syntax">) || (</span><span class="jsdoc-var">isGecko </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">isMac</span><span class="jsdoc-syntax">))
+        </span><span class="jsdoc-var">useShims </span><span class="jsdoc-syntax">: ((</span><span class="jsdoc-var">isIE </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">isIE7</span><span class="jsdoc-syntax">) || (</span><span class="jsdoc-var">isGecko </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">isMac</span><span class="jsdoc-syntax">)),
+        
+        
+                
+        </span><span class="jsdoc-comment">/**
+         * Selects a single element as a Roo Element
+         * This is about as close as you can get to jQuery's $('do crazy stuff')
+         * @param {String} selector The selector/xpath query
+         * @param {Node} root (optional) The start of the query (defaults to document).
+         * @return {Roo.Element}
+         */
+        </span><span class="jsdoc-var">selectNode </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">selector</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">) 
+        {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomQuery.selectNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">selector</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Element</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+        }
+        
     });
 
 
