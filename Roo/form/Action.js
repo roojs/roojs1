@@ -67,6 +67,9 @@ Roo.form.Action.prototype = {
 
     // default connection failure
     failure : function(response){
+        if (this.form.maskEl) {
+            this.form.maskEl.unmask();
+        }
         this.response = response;
         this.failureType = Roo.form.Action.CONNECT_FAILURE;
         this.form.afterAction(this, false);
