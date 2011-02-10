@@ -82,6 +82,10 @@ Roo.extend(Roo.form.BasicForm, Roo.util.Observable, {
      * @cfg {Boolean} fileUpload
      * Set to true if this form is a file upload.
      */
+     /**
+     * @cfg {Roo.form.LayoutDialog} dialog
+     * If you set this to a Roo.form.Dialog, it will get masked when saving..
+     */
     /**
      * @cfg {Object} baseParams
      * Parameters to pass with all requests. e.g. baseParams: {id: '123', foo: 'bar'}.
