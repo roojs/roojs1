@@ -298,11 +298,19 @@ Roo.grid.Grid = function(container, config){
 	     */
 	    "dragout" : true,
         /**
+	     * @event rowclass
+	     * Fires when the dragged row(s) leave another DD target while being dragged
+	     * @param {GridView} gridview The grid view
+	     * @param {Object} rowcfg, contains record, rowIndex and rowClass - set rowClass to add a style.
+	     */
+        'rowclass' : true,
+        
+        /**
          * @event render
          * Fires when the grid is rendered
          * @param {Grid} grid
          */
-        render : true
+        'render' : true
     });
 
     Roo.grid.Grid.superclass.constructor.call(this);
