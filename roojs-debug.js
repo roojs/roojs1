@@ -18393,7 +18393,7 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
      */
     success : false,
     /**
-     * @cfg {boolean|String} valid true/false or string (add/sub/ok/nodrop)
+     * @cfg {boolean|String} valid true/false or string (ok-add/ok-sub/ok/nodrop)
      * if the drop point is valid for over/enter..
      */
     valid : false,
@@ -18406,7 +18406,8 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
     /**
      * @hide
      */
-    notifyEnter : function(dd, e, data){
+    notifyEnter : function(dd, e, data)
+    {
         this.valid = true;
         this.fireEvent('enter', dd, e, data);
         if(this.overClass){
@@ -18420,7 +18421,8 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
     /**
      * @hide
      */
-    notifyOver : function(dd, e, data){
+    notifyOver : function(dd, e, data)
+    {
         this.valid = true;
         this.fireEvent('over', dd, e, data);
         return typeof(this.valid) == 'string' ? 'x-dd-drop-' + this.valid : (
@@ -18431,7 +18433,8 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
     /**
      * @hide
      */
-    notifyOut : function(dd, e, data){
+    notifyOut : function(dd, e, data)
+    {
         this.fireEvent('out', dd, e, data);
         if(this.overClass){
             this.el.removeClass(this.overClass);
@@ -18441,7 +18444,8 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
     /**
      * @hide
      */
-    notifyDrop : function(dd, e, data){
+    notifyDrop : function(dd, e, data)
+    {
         this.success = false;
         this.fireEvent('drop', dd, e, data);
         return this.success;
@@ -28307,16 +28311,24 @@ Roo.extend(Roo.Editor, Roo.Component, {
         }
     },
 
-    onSpecialKey : function(field, e){
+    onSpecialKey : function(field, e)
+    {
         //Roo.log('editor onSpecialKey');
         if(this.completeOnEnter && e.getKey() == e.ENTER){
             e.stopEvent();
             this.completeEdit();
-        }else if(this.cancelOnEsc && e.getKey() == e.ESC){
-            this.cancelEdit();
-        }else{
-            this.fireEvent('specialkey', field, e);
+            return;
         }
+        // do not fire special key otherwise it might hide close the editor...
+        if(e.getKey() == e.ENTER){    
+            return;
+        }
+        if(this.cancelOnEsc && e.getKey() == e.ESC){
+            this.cancelEdit();
+            return;
+        } 
+        this.fireEvent('specialkey', field, e);
+    
     },
 
     /**
@@ -40370,10 +40382,16 @@ Roo.extend(Roo.form.BasicForm, Roo.util.Observable, {
      * @cfg {Boolean} fileUpload
      * Set to true if this form is a file upload.
      */
+     /**
+     * @cfg {Roo.form.LayoutDialog} dialog
+     * If you set this to a Roo.form.Dialog, it will get masked when saving..
+     */
     /**
      * @cfg {Object} baseParams
      * Parameters to pass with all requests. e.g. baseParams: {id: '123', foo: 'bar'}.
      */
+     /**
+     
     /**
      * @cfg {Number} timeout Timeout for form actions in seconds (default is 30 seconds).
      */
@@ -40529,6 +40547,11 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
     // private
     beforeAction : function(action){
         var o = action.options;
+        
+        if (this.dialog) {
+            o.waitMsg = o.waitMsg || true;
+            o.waitMsgTarget = this.dialog.el;
+        }
         if(o.waitMsg){
             if(this.waitMsgTarget === true){
                 this.el.mask(o.waitMsg, 'x-mask-loading');
@@ -40561,10 +40584,17 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             }
             Roo.callback(o.success, o.scope, [this, action]);
             this.fireEvent('actioncomplete', this, action);
+            
         }else{
             Roo.callback(o.failure, o.scope, [this, action]);
+            // show an error message if no failed handler is set..
+            if (!this.hasListener('actionfailed')) {
+                Roo.MessageBox.alert("Error", "Saving Failed, please check your entries");
+            }
+            
             this.fireEvent('actionfailed', this, action);
         }
+        
     },
 
     /**
@@ -41359,6 +41389,7 @@ Roo.form.Action.prototype = {
 
     // default connection failure
     failure : function(response){
+        
         this.response = response;
         this.failureType = Roo.form.Action.CONNECT_FAILURE;
         this.form.afterAction(this, false);
@@ -41507,6 +41538,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                     
             } 
             
+            
             Roo.Ajax.request(Roo.apply(this.createCallback(), {
                 form:this.form.el.dom,
                 url:this.getUrl(!isPost),
@@ -41530,6 +41562,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
             Roo.MessageBox.hide();
         }
         
+        
         var result = this.processResponse(response);
         if(result === true || result.success){
             this.form.afterAction(this, true);
@@ -41547,6 +41580,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         if (this.haveProgress) {
             Roo.MessageBox.hide();
         }
+        
         
         this.response = response;
         this.failureType = Roo.form.Action.CONNECT_FAILURE;
@@ -41596,6 +41630,7 @@ Roo.extend(Roo.form.Action.Load, Roo.form.Action, {
     type : 'load',
 
     run : function(){
+        
         Roo.Ajax.request(Roo.apply(
                 this.createCallback(), {
                     method:this.getMethod(),
@@ -41605,6 +41640,7 @@ Roo.extend(Roo.form.Action.Load, Roo.form.Action, {
     },
 
     success : function(response){
+        
         var result = this.processResponse(response);
         if(result === true || !result.success || !result.data){
             this.failureType = Roo.form.Action.LOAD_FAILURE;
