@@ -394,7 +394,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         }
         */
         var s = Roo.get(document).getScroll();
-        
+        var pt = document.body.scrollTop;
         // calculate top and left offset for the lightbox 
         // weird.. why / 10?
         var lightboxTop = s.top + (Roo.lib.Dom.getViewHeight() / 10);
@@ -406,7 +406,8 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         })
         //console.log("show lightbox");
         this.lightbox.show();
-        
+        // reset it... as we add crap, which messes up scolling..
+        var document.body.scrollTop = pt;
         
         
         this.changeImage(imageNum);
