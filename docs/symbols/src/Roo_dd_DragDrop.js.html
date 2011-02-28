@@ -26,6 +26,7 @@
 
 </span><span class="jsdoc-comment">/**
  * @class Roo.dd.DragDrop
+ * @extends Roo.util.Observable
  * Defines the interface and base operation of items that that can be
  * dragged or can be drop targets.  It was designed to be extended, overriding
  * the event handlers for startDrag, onDrag, onDragOver and onDragOut.
@@ -72,12 +73,7 @@
     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-var">this.init</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sGroup</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
     }
-    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.listeners </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">config.events</span><span class="jsdoc-syntax">) { 
-        </span><span class="jsdoc-var">Roo.BasicLayoutRegion.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,  { 
-            </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">config.listeners </span><span class="jsdoc-syntax">|| {}, 
-            </span><span class="jsdoc-var">events </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">config.events </span><span class="jsdoc-syntax">|| {} 
-        });    
-    }
+    
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.dd.DragDrop</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.util.Observable </span><span class="jsdoc-syntax">, {

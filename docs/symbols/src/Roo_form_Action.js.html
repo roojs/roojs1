@@ -67,6 +67,7 @@
 
     </span><span class="jsdoc-comment">// default connection failure
     </span><span class="jsdoc-var">failure </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">){
+        
         </span><span class="jsdoc-var">this.response </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.failureType </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.form.Action.CONNECT_FAILURE</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.form.afterAction</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
@@ -215,6 +216,7 @@
                     
             } 
             
+            
             </span><span class="jsdoc-var">Roo.Ajax.request</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.createCallback</span><span class="jsdoc-syntax">(), {
                 </span><span class="jsdoc-var">form</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">this.form.el.dom</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">this.getUrl</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">isPost</span><span class="jsdoc-syntax">),
@@ -238,6 +240,7 @@
             </span><span class="jsdoc-var">Roo.MessageBox.hide</span><span class="jsdoc-syntax">();
         }
         
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">result </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.processResponse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">result </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">result.success</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.form.afterAction</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
@@ -255,6 +258,7 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.haveProgress</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">Roo.MessageBox.hide</span><span class="jsdoc-syntax">();
         }
+        
         
         </span><span class="jsdoc-var">this.response </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.failureType </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.form.Action.CONNECT_FAILURE</span><span class="jsdoc-syntax">;
@@ -304,6 +308,7 @@
     </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'load'</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-var">run </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        
         </span><span class="jsdoc-var">Roo.Ajax.request</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(
                 </span><span class="jsdoc-var">this.createCallback</span><span class="jsdoc-syntax">(), {
                     </span><span class="jsdoc-var">method</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">this.getMethod</span><span class="jsdoc-syntax">(),
@@ -313,6 +318,7 @@
     },
 
     </span><span class="jsdoc-var">success </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">){
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">result </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.processResponse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">result </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">result.success </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">result.data</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.failureType </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.form.Action.LOAD_FAILURE</span><span class="jsdoc-syntax">;

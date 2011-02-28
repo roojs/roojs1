@@ -17,10 +17,6 @@
    "props": [],
    "events": []
   },
-  "Roo": {
-   "props": [],
-   "events": []
-  },
   "Roo.Ajax": {
    "props": [],
    "events": [
@@ -5064,19 +5060,47 @@
    "events": []
   },
   "Roo.dd.DD": {
-   "props": [],
+   "props": [
+    {
+     "name": "listeners",
+     "type": "Object",
+     "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+     "memberOf": "Roo.util.Observable"
+    }
+   ],
    "events": []
   },
   "Roo.dd.DDProxy": {
-   "props": [],
+   "props": [
+    {
+     "name": "listeners",
+     "type": "Object",
+     "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+     "memberOf": "Roo.util.Observable"
+    }
+   ],
    "events": []
   },
   "Roo.dd.DDTarget": {
-   "props": [],
+   "props": [
+    {
+     "name": "listeners",
+     "type": "Object",
+     "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+     "memberOf": "Roo.util.Observable"
+    }
+   ],
    "events": []
   },
   "Roo.dd.DragDrop": {
-   "props": [],
+   "props": [
+    {
+     "name": "listeners",
+     "type": "Object",
+     "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+     "memberOf": "Roo.util.Observable"
+    }
+   ],
    "events": []
   },
   "Roo.dd.DragDropMgr": {
@@ -5096,6 +5120,12 @@
      "type": "String",
      "desc": "The CSS class returned to the drag source when drop is not allowed (defaults to \"x-dd-drop-nodrop\").",
      "memberOf": ""
+    },
+    {
+     "name": "listeners",
+     "type": "Object",
+     "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+     "memberOf": "Roo.util.Observable"
     }
    ],
    "events": []
@@ -5125,6 +5155,12 @@
      "type": "String",
      "desc": "The CSS class returned to the drag source when drop is not allowed (defaults to \"x-dd-drop-nodrop\").",
      "memberOf": "Roo.dd.DragSource"
+    },
+    {
+     "name": "listeners",
+     "type": "Object",
+     "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+     "memberOf": "Roo.util.Observable"
     }
    ],
    "events": []
@@ -5163,9 +5199,15 @@
     },
     {
      "name": "valid",
-     "type": "boolean",
-     "desc": "if the drop point is valid for over/enter..",
+     "type": "boolean|String",
+     "desc": "true/false or string (ok-add/ok-sub/ok/nodrop)\nif the drop point is valid for over/enter..",
      "memberOf": ""
+    },
+    {
+     "name": "listeners",
+     "type": "Object",
+     "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+     "memberOf": "Roo.util.Observable"
     }
    ],
    "events": [
@@ -5229,9 +5271,15 @@
     },
     {
      "name": "valid",
-     "type": "boolean",
-     "desc": "if the drop point is valid for over/enter..",
+     "type": "boolean|String",
+     "desc": "true/false or string (ok-add/ok-sub/ok/nodrop)\nif the drop point is valid for over/enter..",
      "memberOf": "Roo.dd.DropTarget"
+    },
+    {
+     "name": "listeners",
+     "type": "Object",
+     "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+     "memberOf": "Roo.util.Observable"
     }
    ],
    "events": [
@@ -11632,6 +11680,12 @@
      "desc": "Fires when the grid is rendered"
     },
     {
+     "name": "rowclass",
+     "sig": "function (gridview, rowcfg,)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when a row is rendered, so you can change add a style to it."
+    },
+    {
      "name": "rowclick",
      "sig": "function (_self, rowIndex, e)\n{\n\n}",
      "type": "function",
@@ -11948,6 +12002,12 @@
      "sig": "function (grid)\n{\n\n}",
      "type": "function",
      "desc": "Fires when the grid is rendered"
+    },
+    {
+     "name": "rowclass",
+     "sig": "function (gridview, rowcfg,)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when a row is rendered, so you can change add a style to it."
     },
     {
      "name": "rowclick",
@@ -12511,6 +12571,12 @@
      "sig": "function (grid)\n{\n\n}",
      "type": "function",
      "desc": "Fires when the grid is rendered"
+    },
+    {
+     "name": "rowclass",
+     "sig": "function (gridview, rowcfg,)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when a row is rendered, so you can change add a style to it."
     },
     {
      "name": "rowclick",
@@ -15560,6 +15626,10 @@
    "events": []
   },
   "String": {
+   "props": [],
+   "events": []
+  },
+  "_global_": {
    "props": [],
    "events": []
   },

@@ -28,6 +28,12 @@
     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-var">this.initTarget</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sGroup</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
     }
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.listeners </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">config.events</span><span class="jsdoc-syntax">) { 
+       </span><span class="jsdoc-var">Roo.dd.DragDrop.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,  { 
+            </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">config.listeners </span><span class="jsdoc-syntax">|| {}, 
+            </span><span class="jsdoc-var">events </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">config.events </span><span class="jsdoc-syntax">|| {} 
+        });    
+    }
 };
 
 </span><span class="jsdoc-comment">// Roo.dd.DDTarget.prototype = new Roo.dd.DragDrop();

@@ -67,6 +67,7 @@ Roo.form.Action.prototype = {
 
     // default connection failure
     failure : function(response){
+        
         this.response = response;
         this.failureType = Roo.form.Action.CONNECT_FAILURE;
         this.form.afterAction(this, false);
@@ -215,6 +216,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                     
             } 
             
+            
             Roo.Ajax.request(Roo.apply(this.createCallback(), {
                 form:this.form.el.dom,
                 url:this.getUrl(!isPost),
@@ -238,6 +240,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
             Roo.MessageBox.hide();
         }
         
+        
         var result = this.processResponse(response);
         if(result === true || result.success){
             this.form.afterAction(this, true);
@@ -255,6 +258,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         if (this.haveProgress) {
             Roo.MessageBox.hide();
         }
+        
         
         this.response = response;
         this.failureType = Roo.form.Action.CONNECT_FAILURE;
@@ -304,6 +308,7 @@ Roo.extend(Roo.form.Action.Load, Roo.form.Action, {
     type : 'load',
 
     run : function(){
+        
         Roo.Ajax.request(Roo.apply(
                 this.createCallback(), {
                     method:this.getMethod(),
@@ -313,6 +318,7 @@ Roo.extend(Roo.form.Action.Load, Roo.form.Action, {
     },
 
     success : function(response){
+        
         var result = this.processResponse(response);
         if(result === true || !result.success || !result.data){
             this.failureType = Roo.form.Action.LOAD_FAILURE;

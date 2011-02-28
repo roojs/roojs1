@@ -82,10 +82,13 @@ Roo.extend(Roo.form.BasicForm, Roo.util.Observable, {
      * @cfg {Boolean} fileUpload
      * Set to true if this form is a file upload.
      */
+     
     /**
      * @cfg {Object} baseParams
      * Parameters to pass with all requests. e.g. baseParams: {id: '123', foo: 'bar'}.
      */
+     /**
+     
     /**
      * @cfg {Number} timeout Timeout for form actions in seconds (default is 30 seconds).
      */
@@ -118,7 +121,7 @@ Roo.extend(Roo.form.BasicForm, Roo.util.Observable, {
      * element by passing it or its id or mask the form itself by passing in true.
      * @type Mixed
      */
-    waitMsgTarget : undefined,
+    waitMsgTarget : false,
 
     // private
     initEl : function(el){
@@ -241,42 +244,50 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
     // private
     beforeAction : function(action){
         var o = action.options;
-        if(o.waitMsg){
-            if(this.waitMsgTarget === true){
-                this.el.mask(o.waitMsg, 'x-mask-loading');
-            }else if(this.waitMsgTarget){
-                this.waitMsgTarget = Roo.get(this.waitMsgTarget);
-                this.waitMsgTarget.mask(o.waitMsg, 'x-mask-loading');
-            }else{
-                Roo.MessageBox.wait(o.waitMsg, o.waitTitle || this.waitTitle || 'Please Wait...');
-            }
+        
+       
+        if(this.waitMsgTarget === true){
+            this.el.mask(o.waitMsg || "Sending", 'x-mask-loading');
+        }else if(this.waitMsgTarget){
+            this.waitMsgTarget = Roo.get(this.waitMsgTarget);
+            this.waitMsgTarget.mask(o.waitMsg || "Sending", 'x-mask-loading');
+        }else {
+            Roo.MessageBox.wait(o.waitMsg || "Sending", o.waitTitle || this.waitTitle || 'Please Wait...');
         }
+         
     },
 
     // private
     afterAction : function(action, success){
         this.activeAction = null;
         var o = action.options;
-        if(o.waitMsg){
-            if(this.waitMsgTarget === true){
-                this.el.unmask();
-            }else if(this.waitMsgTarget){
-                this.waitMsgTarget.unmask();
-            }else{
-                Roo.MessageBox.updateProgress(1);
-                Roo.MessageBox.hide();
-            }
+        
+        if(this.waitMsgTarget === true){
+            this.el.unmask();
+        }else if(this.waitMsgTarget){
+            this.waitMsgTarget.unmask();
+        }else{
+            Roo.MessageBox.updateProgress(1);
+            Roo.MessageBox.hide();
         }
+         
         if(success){
             if(o.reset){
                 this.reset();
             }
             Roo.callback(o.success, o.scope, [this, action]);
             this.fireEvent('actioncomplete', this, action);
+            
         }else{
             Roo.callback(o.failure, o.scope, [this, action]);
+            // show an error message if no failed handler is set..
+            if (!this.hasListener('actionfailed')) {
+                Roo.MessageBox.alert("Error", "Saving Failed, please check your entries");
+            }
+            
             this.fireEvent('actionfailed', this, action);
         }
+        
     },
 
     /**

@@ -394,8 +394,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         }
         */
         var s = Roo.get(document).getScroll();
-        
-        // calculate top and left offset for the lightbox 
+         // calculate top and left offset for the lightbox 
         // weird.. why / 10?
         var lightboxTop = s.top + (Roo.lib.Dom.getViewHeight() / 10);
         var lightboxLeft = s.left
@@ -406,7 +405,6 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         })
         //console.log("show lightbox");
         this.lightbox.show();
-        
         
         
         this.changeImage(imageNum);

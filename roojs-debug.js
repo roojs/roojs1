@@ -567,7 +567,23 @@ Roo.factory(conf, Roo.data);
          * you may want to set this to true.
          * @type Boolean
          */
-        useShims : ((isIE && !isIE7) || (isGecko && isMac))
+        useShims : ((isIE && !isIE7) || (isGecko && isMac)),
+        
+        
+                
+        /**
+         * Selects a single element as a Roo Element
+         * This is about as close as you can get to jQuery's $('do crazy stuff')
+         * @param {String} selector The selector/xpath query
+         * @param {Node} root (optional) The start of the query (defaults to document).
+         * @return {Roo.Element}
+         */
+        selectNode : function(selector, root) 
+        {
+            var node = Roo.DomQuery.selectNode(selector,root);
+            return node ? Roo.get(node) : new Roo.Element(false);
+        }
+        
     });
 
 
@@ -7805,7 +7821,9 @@ if(opt.anim.isAnimated()){
          * @param {Object}   options   (optional)An object with standard {@link Roo.EventManager#addListener} options
          */
         addListener : function(eventName, fn, scope, options){
-            Roo.EventManager.on(this.dom,  eventName, fn, scope || this, options);
+            if (this.dom) {
+                Roo.EventManager.on(this.dom,  eventName, fn, scope || this, options);
+            }
         },
 
         /**
@@ -18375,7 +18393,7 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
      */
     success : false,
     /**
-     * @cfg {boolean|String} valid true/false or string (add/sub/ok/nodrop)
+     * @cfg {boolean|String} valid true/false or string (ok-add/ok-sub/ok/nodrop)
      * if the drop point is valid for over/enter..
      */
     valid : false,
@@ -18388,7 +18406,8 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
     /**
      * @hide
      */
-    notifyEnter : function(dd, e, data){
+    notifyEnter : function(dd, e, data)
+    {
         this.valid = true;
         this.fireEvent('enter', dd, e, data);
         if(this.overClass){
@@ -18402,7 +18421,8 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
     /**
      * @hide
      */
-    notifyOver : function(dd, e, data){
+    notifyOver : function(dd, e, data)
+    {
         this.valid = true;
         this.fireEvent('over', dd, e, data);
         return typeof(this.valid) == 'string' ? 'x-dd-drop-' + this.valid : (
@@ -18413,7 +18433,8 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
     /**
      * @hide
      */
-    notifyOut : function(dd, e, data){
+    notifyOut : function(dd, e, data)
+    {
         this.fireEvent('out', dd, e, data);
         if(this.overClass){
             this.el.removeClass(this.overClass);
@@ -18423,7 +18444,8 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
     /**
      * @hide
      */
-    notifyDrop : function(dd, e, data){
+    notifyDrop : function(dd, e, data)
+    {
         this.success = false;
         this.fireEvent('drop', dd, e, data);
         return this.success;
@@ -28289,16 +28311,24 @@ Roo.extend(Roo.Editor, Roo.Component, {
         }
     },
 
-    onSpecialKey : function(field, e){
+    onSpecialKey : function(field, e)
+    {
         //Roo.log('editor onSpecialKey');
         if(this.completeOnEnter && e.getKey() == e.ENTER){
             e.stopEvent();
             this.completeEdit();
-        }else if(this.cancelOnEsc && e.getKey() == e.ESC){
-            this.cancelEdit();
-        }else{
-            this.fireEvent('specialkey', field, e);
+            return;
         }
+        // do not fire special key otherwise it might hide close the editor...
+        if(e.getKey() == e.ENTER){    
+            return;
+        }
+        if(this.cancelOnEsc && e.getKey() == e.ESC){
+            this.cancelEdit();
+            return;
+        } 
+        this.fireEvent('specialkey', field, e);
+    
     },
 
     /**
@@ -29648,7 +29678,8 @@ Roo.LayoutDialog = function(el, cfg){
         config = Roo.apply({}, el);
         // not sure why we use documentElement here.. - it should always be body.
         // IE7 borks horribly if we use documentElement.
-        el = Roo.get( Roo.isIE ? (document.body || document.documentElement) : (document.documentElement || document.body) ).createChild();
+        // webkit also does not like documentElement - it creates a body element...
+        el = Roo.get( document.body || document.documentElement ).createChild();
         //config.autoCreate = true;
     }
     
@@ -40352,10 +40383,13 @@ Roo.extend(Roo.form.BasicForm, Roo.util.Observable, {
      * @cfg {Boolean} fileUpload
      * Set to true if this form is a file upload.
      */
+     
     /**
      * @cfg {Object} baseParams
      * Parameters to pass with all requests. e.g. baseParams: {id: '123', foo: 'bar'}.
      */
+     /**
+     
     /**
      * @cfg {Number} timeout Timeout for form actions in seconds (default is 30 seconds).
      */
@@ -40388,7 +40422,7 @@ Roo.extend(Roo.form.BasicForm, Roo.util.Observable, {
      * element by passing it or its id or mask the form itself by passing in true.
      * @type Mixed
      */
-    waitMsgTarget : undefined,
+    waitMsgTarget : false,
 
     // private
     initEl : function(el){
@@ -40511,42 +40545,50 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
     // private
     beforeAction : function(action){
         var o = action.options;
-        if(o.waitMsg){
-            if(this.waitMsgTarget === true){
-                this.el.mask(o.waitMsg, 'x-mask-loading');
-            }else if(this.waitMsgTarget){
-                this.waitMsgTarget = Roo.get(this.waitMsgTarget);
-                this.waitMsgTarget.mask(o.waitMsg, 'x-mask-loading');
-            }else{
-                Roo.MessageBox.wait(o.waitMsg, o.waitTitle || this.waitTitle || 'Please Wait...');
-            }
+        
+       
+        if(this.waitMsgTarget === true){
+            this.el.mask(o.waitMsg || "Sending", 'x-mask-loading');
+        }else if(this.waitMsgTarget){
+            this.waitMsgTarget = Roo.get(this.waitMsgTarget);
+            this.waitMsgTarget.mask(o.waitMsg || "Sending", 'x-mask-loading');
+        }else {
+            Roo.MessageBox.wait(o.waitMsg || "Sending", o.waitTitle || this.waitTitle || 'Please Wait...');
         }
+         
     },
 
     // private
     afterAction : function(action, success){
         this.activeAction = null;
         var o = action.options;
-        if(o.waitMsg){
-            if(this.waitMsgTarget === true){
-                this.el.unmask();
-            }else if(this.waitMsgTarget){
-                this.waitMsgTarget.unmask();
-            }else{
-                Roo.MessageBox.updateProgress(1);
-                Roo.MessageBox.hide();
-            }
+        
+        if(this.waitMsgTarget === true){
+            this.el.unmask();
+        }else if(this.waitMsgTarget){
+            this.waitMsgTarget.unmask();
+        }else{
+            Roo.MessageBox.updateProgress(1);
+            Roo.MessageBox.hide();
         }
+         
         if(success){
             if(o.reset){
                 this.reset();
             }
             Roo.callback(o.success, o.scope, [this, action]);
             this.fireEvent('actioncomplete', this, action);
+            
         }else{
             Roo.callback(o.failure, o.scope, [this, action]);
+            // show an error message if no failed handler is set..
+            if (!this.hasListener('actionfailed')) {
+                Roo.MessageBox.alert("Error", "Saving Failed, please check your entries");
+            }
+            
             this.fireEvent('actionfailed', this, action);
         }
+        
     },
 
     /**
@@ -41341,6 +41383,7 @@ Roo.form.Action.prototype = {
 
     // default connection failure
     failure : function(response){
+        
         this.response = response;
         this.failureType = Roo.form.Action.CONNECT_FAILURE;
         this.form.afterAction(this, false);
@@ -41489,6 +41532,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                     
             } 
             
+            
             Roo.Ajax.request(Roo.apply(this.createCallback(), {
                 form:this.form.el.dom,
                 url:this.getUrl(!isPost),
@@ -41512,6 +41556,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
             Roo.MessageBox.hide();
         }
         
+        
         var result = this.processResponse(response);
         if(result === true || result.success){
             this.form.afterAction(this, true);
@@ -41529,6 +41574,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         if (this.haveProgress) {
             Roo.MessageBox.hide();
         }
+        
         
         this.response = response;
         this.failureType = Roo.form.Action.CONNECT_FAILURE;
@@ -41578,6 +41624,7 @@ Roo.extend(Roo.form.Action.Load, Roo.form.Action, {
     type : 'load',
 
     run : function(){
+        
         Roo.Ajax.request(Roo.apply(
                 this.createCallback(), {
                     method:this.getMethod(),
@@ -41587,6 +41634,7 @@ Roo.extend(Roo.form.Action.Load, Roo.form.Action, {
     },
 
     success : function(response){
+        
         var result = this.processResponse(response);
         if(result === true || !result.success || !result.data){
             this.failureType = Roo.form.Action.LOAD_FAILURE;
@@ -46183,123 +46231,123 @@ Roo.grid.Grid = function(container, config){
     }
     /** @private */
 	this.addEvents({
-	    // raw events
-	    /**
-	     * @event click
-	     * The raw click event for the entire grid.
-	     * @param {Roo.EventObject} e
-	     */
-	    "click" : true,
-	    /**
-	     * @event dblclick
-	     * The raw dblclick event for the entire grid.
-	     * @param {Roo.EventObject} e
-	     */
-	    "dblclick" : true,
-	    /**
-	     * @event contextmenu
-	     * The raw contextmenu event for the entire grid.
-	     * @param {Roo.EventObject} e
-	     */
-	    "contextmenu" : true,
-	    /**
-	     * @event mousedown
-	     * The raw mousedown event for the entire grid.
-	     * @param {Roo.EventObject} e
-	     */
-	    "mousedown" : true,
-	    /**
-	     * @event mouseup
-	     * The raw mouseup event for the entire grid.
-	     * @param {Roo.EventObject} e
-	     */
-	    "mouseup" : true,
-	    /**
-	     * @event mouseover
-	     * The raw mouseover event for the entire grid.
-	     * @param {Roo.EventObject} e
-	     */
-	    "mouseover" : true,
-	    /**
-	     * @event mouseout
-	     * The raw mouseout event for the entire grid.
-	     * @param {Roo.EventObject} e
-	     */
-	    "mouseout" : true,
-	    /**
-	     * @event keypress
-	     * The raw keypress event for the entire grid.
-	     * @param {Roo.EventObject} e
-	     */
-	    "keypress" : true,
-	    /**
-	     * @event keydown
-	     * The raw keydown event for the entire grid.
-	     * @param {Roo.EventObject} e
-	     */
-	    "keydown" : true,
+        // raw events
+        /**
+         * @event click
+         * The raw click event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "click" : true,
+        /**
+         * @event dblclick
+         * The raw dblclick event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "dblclick" : true,
+        /**
+         * @event contextmenu
+         * The raw contextmenu event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "contextmenu" : true,
+        /**
+         * @event mousedown
+         * The raw mousedown event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "mousedown" : true,
+        /**
+         * @event mouseup
+         * The raw mouseup event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "mouseup" : true,
+        /**
+         * @event mouseover
+         * The raw mouseover event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "mouseover" : true,
+        /**
+         * @event mouseout
+         * The raw mouseout event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "mouseout" : true,
+        /**
+         * @event keypress
+         * The raw keypress event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "keypress" : true,
+        /**
+         * @event keydown
+         * The raw keydown event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "keydown" : true,
 
-	    // custom events
+        // custom events
 
-	    /**
-	     * @event cellclick
-	     * Fires when a cell is clicked
-	     * @param {Grid} this
-	     * @param {Number} rowIndex
-	     * @param {Number} columnIndex
-	     * @param {Roo.EventObject} e
-	     */
-	    "cellclick" : true,
-	    /**
-	     * @event celldblclick
-	     * Fires when a cell is double clicked
-	     * @param {Grid} this
-	     * @param {Number} rowIndex
-	     * @param {Number} columnIndex
-	     * @param {Roo.EventObject} e
-	     */
-	    "celldblclick" : true,
-	    /**
-	     * @event rowclick
-	     * Fires when a row is clicked
-	     * @param {Grid} this
-	     * @param {Number} rowIndex
-	     * @param {Roo.EventObject} e
-	     */
-	    "rowclick" : true,
-	    /**
-	     * @event rowdblclick
-	     * Fires when a row is double clicked
-	     * @param {Grid} this
-	     * @param {Number} rowIndex
-	     * @param {Roo.EventObject} e
-	     */
-	    "rowdblclick" : true,
-	    /**
-	     * @event headerclick
-	     * Fires when a header is clicked
-	     * @param {Grid} this
-	     * @param {Number} columnIndex
-	     * @param {Roo.EventObject} e
-	     */
-	    "headerclick" : true,
-	    /**
-	     * @event headerdblclick
-	     * Fires when a header cell is double clicked
-	     * @param {Grid} this
-	     * @param {Number} columnIndex
-	     * @param {Roo.EventObject} e
-	     */
-	    "headerdblclick" : true,
-	    /**
-	     * @event rowcontextmenu
-	     * Fires when a row is right clicked
-	     * @param {Grid} this
-	     * @param {Number} rowIndex
-	     * @param {Roo.EventObject} e
-	     */
-	    "rowcontextmenu" : true,
-	    /**
+        /**
+         * @event cellclick
+         * Fires when a cell is clicked
+         * @param {Grid} this
+         * @param {Number} rowIndex
+         * @param {Number} columnIndex
+         * @param {Roo.EventObject} e
+         */
+        "cellclick" : true,
+        /**
+         * @event celldblclick
+         * Fires when a cell is double clicked
+         * @param {Grid} this
+         * @param {Number} rowIndex
+         * @param {Number} columnIndex
+         * @param {Roo.EventObject} e
+         */
+        "celldblclick" : true,
+        /**
+         * @event rowclick
+         * Fires when a row is clicked
+         * @param {Grid} this
+         * @param {Number} rowIndex
+         * @param {Roo.EventObject} e
+         */
+        "rowclick" : true,
+        /**
+         * @event rowdblclick
+         * Fires when a row is double clicked
+         * @param {Grid} this
+         * @param {Number} rowIndex
+         * @param {Roo.EventObject} e
+         */
+        "rowdblclick" : true,
+        /**
+         * @event headerclick
+         * Fires when a header is clicked
+         * @param {Grid} this
+         * @param {Number} columnIndex
+         * @param {Roo.EventObject} e
+         */
+        "headerclick" : true,
+        /**
+         * @event headerdblclick
+         * Fires when a header cell is double clicked
+         * @param {Grid} this
+         * @param {Number} columnIndex
+         * @param {Roo.EventObject} e
+         */
+        "headerdblclick" : true,
+        /**
+         * @event rowcontextmenu
+         * Fires when a row is right clicked
+         * @param {Grid} this
+         * @param {Number} rowIndex
+         * @param {Roo.EventObject} e
+         */
+        "rowcontextmenu" : true,
+        /**
          * @event cellcontextmenu
          * Fires when a cell is right clicked
          * @param {Grid} this
@@ -46308,93 +46356,101 @@ Roo.grid.Grid = function(container, config){
          * @param {Roo.EventObject} e
          */
          "cellcontextmenu" : true,
-	    /**
-	     * @event headercontextmenu
-	     * Fires when a header is right clicked
-	     * @param {Grid} this
-	     * @param {Number} columnIndex
-	     * @param {Roo.EventObject} e
-	     */
-	    "headercontextmenu" : true,
-	    /**
-	     * @event bodyscroll
-	     * Fires when the body element is scrolled
-	     * @param {Number} scrollLeft
-	     * @param {Number} scrollTop
-	     */
-	    "bodyscroll" : true,
-	    /**
-	     * @event columnresize
-	     * Fires when the user resizes a column
-	     * @param {Number} columnIndex
-	     * @param {Number} newSize
-	     */
-	    "columnresize" : true,
-	    /**
-	     * @event columnmove
-	     * Fires when the user moves a column
-	     * @param {Number} oldIndex
-	     * @param {Number} newIndex
-	     */
-	    "columnmove" : true,
-	    /**
-	     * @event startdrag
-	     * Fires when row(s) start being dragged
-	     * @param {Grid} this
-	     * @param {Roo.GridDD} dd The drag drop object
-	     * @param {event} e The raw browser event
-	     */
-	    "startdrag" : true,
-	    /**
-	     * @event enddrag
-	     * Fires when a drag operation is complete
-	     * @param {Grid} this
-	     * @param {Roo.GridDD} dd The drag drop object
-	     * @param {event} e The raw browser event
-	     */
-	    "enddrag" : true,
-	    /**
-	     * @event dragdrop
-	     * Fires when dragged row(s) are dropped on a valid DD target
-	     * @param {Grid} this
-	     * @param {Roo.GridDD} dd The drag drop object
-	     * @param {String} targetId The target drag drop object
-	     * @param {event} e The raw browser event
-	     */
-	    "dragdrop" : true,
-	    /**
-	     * @event dragover
-	     * Fires while row(s) are being dragged. "targetId" is the id of the Yahoo.util.DD object the selected rows are being dragged over.
-	     * @param {Grid} this
-	     * @param {Roo.GridDD} dd The drag drop object
-	     * @param {String} targetId The target drag drop object
-	     * @param {event} e The raw browser event
-	     */
-	    "dragover" : true,
-	    /**
-	     * @event dragenter
-	     *  Fires when the dragged row(s) first cross another DD target while being dragged
-	     * @param {Grid} this
-	     * @param {Roo.GridDD} dd The drag drop object
-	     * @param {String} targetId The target drag drop object
-	     * @param {event} e The raw browser event
-	     */
-	    "dragenter" : true,
-	    /**
-	     * @event dragout
-	     * Fires when the dragged row(s) leave another DD target while being dragged
-	     * @param {Grid} this
-	     * @param {Roo.GridDD} dd The drag drop object
-	     * @param {String} targetId The target drag drop object
-	     * @param {event} e The raw browser event
-	     */
-	    "dragout" : true,
+        /**
+         * @event headercontextmenu
+         * Fires when a header is right clicked
+         * @param {Grid} this
+         * @param {Number} columnIndex
+         * @param {Roo.EventObject} e
+         */
+        "headercontextmenu" : true,
+        /**
+         * @event bodyscroll
+         * Fires when the body element is scrolled
+         * @param {Number} scrollLeft
+         * @param {Number} scrollTop
+         */
+        "bodyscroll" : true,
+        /**
+         * @event columnresize
+         * Fires when the user resizes a column
+         * @param {Number} columnIndex
+         * @param {Number} newSize
+         */
+        "columnresize" : true,
+        /**
+         * @event columnmove
+         * Fires when the user moves a column
+         * @param {Number} oldIndex
+         * @param {Number} newIndex
+         */
+        "columnmove" : true,
+        /**
+         * @event startdrag
+         * Fires when row(s) start being dragged
+         * @param {Grid} this
+         * @param {Roo.GridDD} dd The drag drop object
+         * @param {event} e The raw browser event
+         */
+        "startdrag" : true,
+        /**
+         * @event enddrag
+         * Fires when a drag operation is complete
+         * @param {Grid} this
+         * @param {Roo.GridDD} dd The drag drop object
+         * @param {event} e The raw browser event
+         */
+        "enddrag" : true,
+        /**
+         * @event dragdrop
+         * Fires when dragged row(s) are dropped on a valid DD target
+         * @param {Grid} this
+         * @param {Roo.GridDD} dd The drag drop object
+         * @param {String} targetId The target drag drop object
+         * @param {event} e The raw browser event
+         */
+        "dragdrop" : true,
+        /**
+         * @event dragover
+         * Fires while row(s) are being dragged. "targetId" is the id of the Yahoo.util.DD object the selected rows are being dragged over.
+         * @param {Grid} this
+         * @param {Roo.GridDD} dd The drag drop object
+         * @param {String} targetId The target drag drop object
+         * @param {event} e The raw browser event
+         */
+        "dragover" : true,
+        /**
+         * @event dragenter
+         *  Fires when the dragged row(s) first cross another DD target while being dragged
+         * @param {Grid} this
+         * @param {Roo.GridDD} dd The drag drop object
+         * @param {String} targetId The target drag drop object
+         * @param {event} e The raw browser event
+         */
+        "dragenter" : true,
+        /**
+         * @event dragout
+         * Fires when the dragged row(s) leave another DD target while being dragged
+         * @param {Grid} this
+         * @param {Roo.GridDD} dd The drag drop object
+         * @param {String} targetId The target drag drop object
+         * @param {event} e The raw browser event
+         */
+        "dragout" : true,
+        /**
+         * @event rowclass
+         * Fires when a row is rendered, so you can change add a style to it.
+         * @param {GridView} gridview The grid view
+         * @param {Object} rowcfg contains record, rowIndex and rowClass - set rowClass to add a style.
+         */
+        'rowclass' : true,
+
         /**
          * @event render
          * Fires when the grid is rendered
          * @param {Grid} grid
          */
-        render : true
+        'render' : true
     });
 
     Roo.grid.Grid.superclass.constructor.call(this);
@@ -47922,6 +47978,9 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                 var ts = this.templates, ct = ts.cell, rt = ts.row;
                 // buffers
                 var buf = "", lbuf = "", cb, lcb, c, p = {}, rp = {}, r, rowIndex;
+                
+                var hasListener = this.grid.hasListener('rowclass');
+                var rowcfg = {};
                 for(var j = 0, len = rs.length; j < len; j++){
                     r = rs[j]; cb = ""; lcb = ""; rowIndex = (j+startRow);
                     for(var i = 0; i < colCount; i++){
@@ -47943,14 +48002,24 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                     }
                     var alt = [];
                     if(stripe && ((rowIndex+1) % 2 == 0)){
-                        alt[0] = "x-grid-row-alt";
+                        alt.push("x-grid-row-alt")
                     }
                     if(r.dirty){
-                        alt[1] = " x-grid-dirty-row";
+                        alt.push(  " x-grid-dirty-row");
                     }
                     rp.cells = lcb;
                     if(this.getRowClass){
-                        alt[2] = this.getRowClass(r, rowIndex);
+                        alt.push(this.getRowClass(r, rowIndex));
+                    }
+                    if (hasListener) {
+                        rowcfg = {
+                             
+                            record: r,
+                            rowIndex : rowIndex,
+                            rowClass : ''
+                        }
+                        this.grid.fireEvent('rowclass', this, rowcfg);
+                        alt.push(rowcfg.rowClass);
                     }
                     rp.alt = alt.join(" ");
                     lbuf+= rt.apply(rp);
@@ -47963,6 +48032,8 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                 var ts = this.templates, ct = ts.cell, rt = ts.row;
                 // buffers
                 var buf = [], lbuf = [], cb, lcb, c, p = {}, rp = {}, r, rowIndex;
+                var hasListener = this.grid.hasListener('rowclass');
+                var rowcfg = {};
                 for(var j = 0, len = rs.length; j < len; j++){
                     r = rs[j]; cb = []; lcb = []; rowIndex = (j+startRow);
                     for(var i = 0; i < colCount; i++){
@@ -47984,14 +48055,24 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                     }
                     var alt = [];
                     if(stripe && ((rowIndex+1) % 2 == 0)){
-                        alt[0] = "x-grid-row-alt";
+                        alt.push( "x-grid-row-alt");
                     }
                     if(r.dirty){
-                        alt[1] = " x-grid-dirty-row";
+                        alt.push(" x-grid-dirty-row");
                     }
                     rp.cells = lcb;
                     if(this.getRowClass){
-                        alt[2] = this.getRowClass(r, rowIndex);
+                        alt.push( this.getRowClass(r, rowIndex));
+                    }
+                    if (hasListener) {
+                        rowcfg = {
+                             
+                            record: r,
+                            rowIndex : rowIndex,
+                            rowClass : ''
+                        }
+                        this.grid.fireEvent('rowclass', this, rowcfg);
+                        alt.push(rowcfg.rowClass);
                     }
                     rp.alt = alt.join(" ");
                     rp.cells = lcb.join("");
