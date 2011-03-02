@@ -453,11 +453,11 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
     },
 
     getSplitters : function(){
-    if(this.splitterSelector){
-       return Roo.DomQuery.select(this.splitterSelector);
-    }else{
-        return null;
-    }
+        if(this.splitterSelector){
+           return Roo.DomQuery.select(this.splitterSelector);
+        }else{
+            return null;
+      }
     },
 
     getSplitter : function(index){
