@@ -629,7 +629,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
             var pos = 0, locked = true;
             for(var i = 0, len = cm.getColumnCount(); i < len; i++){
                 if(cm.isHidden(i)) continue;
-                var w = cm.getColumnWidth(i)*1; // make sure it's a number
+                var w = cm.getColumnWidth(i); // make sure it's a number
                 if(!cm.isLocked(i) && locked){
                     pos = 0;
                     locked = false;
