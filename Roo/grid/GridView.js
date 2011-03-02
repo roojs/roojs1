@@ -101,98 +101,98 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
     },
 
     init: function(grid){
-		Roo.grid.GridView.superclass.init.call(this, grid);
+        Roo.grid.GridView.superclass.init.call(this, grid);
 
-		this.bind(grid.dataSource, grid.colModel);
+        this.bind(grid.dataSource, grid.colModel);
 
-	    grid.on("headerclick", this.handleHeaderClick, this);
+        grid.on("headerclick", this.handleHeaderClick, this);
 
         if(grid.trackMouseOver){
             grid.on("mouseover", this.onRowOver, this);
-	        grid.on("mouseout", this.onRowOut, this);
-	    }
-	    grid.cancelTextSelection = function(){};
-		this.gridId = grid.id;
+            grid.on("mouseout", this.onRowOut, this);
+        }
+        grid.cancelTextSelection = function(){};
+        this.gridId = grid.id;
 
-		var tpls = this.templates || {};
+        var tpls = this.templates || {};
 
-		if(!tpls.master){
-		    tpls.master = new Roo.Template(
-		       '<div class="x-grid" hidefocus="true">',
-		          '<div class="x-grid-topbar"></div>',
-		          '<div class="x-grid-scroller"><div></div></div>',
-		          '<div class="x-grid-locked">',
-		              '<div class="x-grid-header">{lockedHeader}</div>',
-		              '<div class="x-grid-body">{lockedBody}</div>',
-		          "</div>",
-		          '<div class="x-grid-viewport">',
-		              '<div class="x-grid-header">{header}</div>',
-		              '<div class="x-grid-body">{body}</div>',
-		          "</div>",
-		          '<div class="x-grid-bottombar"></div>',
-		          '<a href="#" class="x-grid-focus" tabIndex="-1"></a>',
-		          '<div class="x-grid-resize-proxy">&#160;</div>',
-		       "</div>"
-		    );
-		    tpls.master.disableformats = true;
-		}
+        if(!tpls.master){
+            tpls.master = new Roo.Template(
+               '<div class="x-grid" hidefocus="true">',
+                  '<div class="x-grid-topbar"></div>',
+                  '<div class="x-grid-scroller"><div></div></div>',
+                  '<div class="x-grid-locked">',
+                      '<div class="x-grid-header">{lockedHeader}</div>',
+                      '<div class="x-grid-body">{lockedBody}</div>',
+                  "</div>",
+                  '<div class="x-grid-viewport">',
+                      '<div class="x-grid-header">{header}</div>',
+                      '<div class="x-grid-body">{body}</div>',
+                  "</div>",
+                  '<div class="x-grid-bottombar"></div>',
+                  '<a href="#" class="x-grid-focus" tabIndex="-1"></a>',
+                  '<div class="x-grid-resize-proxy">&#160;</div>',
+               "</div>"
+            );
+            tpls.master.disableformats = true;
+        }
 
-		if(!tpls.header){
-		    tpls.header = new Roo.Template(
-		       '<table border="0" cellspacing="0" cellpadding="0">',
-		       '<tbody><tr class="x-grid-hd-row">{cells}</tr></tbody>',
-		       "</table>{splits}"
-		    );
-		    tpls.header.disableformats = true;
-		}
-		tpls.header.compile();
+        if(!tpls.header){
+            tpls.header = new Roo.Template(
+               '<table border="0" cellspacing="0" cellpadding="0">',
+               '<tbody><tr class="x-grid-hd-row">{cells}</tr></tbody>',
+               "</table>{splits}"
+            );
+            tpls.header.disableformats = true;
+        }
+        tpls.header.compile();
 
-		if(!tpls.hcell){
-		    tpls.hcell = new Roo.Template(
-		        '<td class="x-grid-hd x-grid-td-{id} {cellId}"><div title="{title}" class="x-grid-hd-inner x-grid-hd-{id}">',
-		        '<div class="x-grid-hd-text" unselectable="on">{value}<img class="x-grid-sort-icon" src="', Roo.BLANK_IMAGE_URL, '" /></div>',
-		        "</div></td>"
-		     );
-		     tpls.hcell.disableFormats = true;
-		}
-		tpls.hcell.compile();
+        if(!tpls.hcell){
+            tpls.hcell = new Roo.Template(
+                '<td class="x-grid-hd x-grid-td-{id} {cellId}"><div title="{title}" class="x-grid-hd-inner x-grid-hd-{id}">',
+                '<div class="x-grid-hd-text" unselectable="on">{value}<img class="x-grid-sort-icon" src="', Roo.BLANK_IMAGE_URL, '" /></div>',
+                "</div></td>"
+             );
+             tpls.hcell.disableFormats = true;
+        }
+        tpls.hcell.compile();
 
-		if(!tpls.hsplit){
-		    tpls.hsplit = new Roo.Template('<div class="x-grid-split {splitId} x-grid-split-{id}" style="{style}" unselectable="on">&#160;</div>');
-		    tpls.hsplit.disableFormats = true;
-		}
-		tpls.hsplit.compile();
+        if(!tpls.hsplit){
+            tpls.hsplit = new Roo.Template('<div class="x-grid-split {splitId} x-grid-split-{id}" style="{style}" unselectable="on">&#160;</div>');
+            tpls.hsplit.disableFormats = true;
+        }
+        tpls.hsplit.compile();
 
-		if(!tpls.body){
-		    tpls.body = new Roo.Template(
-		       '<table border="0" cellspacing="0" cellpadding="0">',
-		       "<tbody>{rows}</tbody>",
-		       "</table>"
-		    );
-		    tpls.body.disableFormats = true;
-		}
-		tpls.body.compile();
+        if(!tpls.body){
+            tpls.body = new Roo.Template(
+               '<table border="0" cellspacing="0" cellpadding="0">',
+               "<tbody>{rows}</tbody>",
+               "</table>"
+            );
+            tpls.body.disableFormats = true;
+        }
+        tpls.body.compile();
 
-		if(!tpls.row){
-		    tpls.row = new Roo.Template('<tr class="x-grid-row {alt}">{cells}</tr>');
-		    tpls.row.disableFormats = true;
-		}
-		tpls.row.compile();
+        if(!tpls.row){
+            tpls.row = new Roo.Template('<tr class="x-grid-row {alt}">{cells}</tr>');
+            tpls.row.disableFormats = true;
+        }
+        tpls.row.compile();
 
-		if(!tpls.cell){
-		    tpls.cell = new Roo.Template(
-		        '<td class="x-grid-col x-grid-td-{id} {cellId} {css}" tabIndex="0">',
-		        '<div class="x-grid-col-{id} x-grid-cell-inner"><div class="x-grid-cell-text" unselectable="on" {attr}>{value}</div></div>',
-		        "</td>"
-		    );
+        if(!tpls.cell){
+            tpls.cell = new Roo.Template(
+                '<td class="x-grid-col x-grid-td-{id} {cellId} {css}" tabIndex="0">',
+                '<div class="x-grid-col-{id} x-grid-cell-inner"><div class="x-grid-cell-text" unselectable="on" {attr}>{value}</div></div>',
+                "</td>"
+            );
             tpls.cell.disableFormats = true;
         }
-		tpls.cell.compile();
+        tpls.cell.compile();
 
-		this.templates = tpls;
-	},
+        this.templates = tpls;
+    },
 
-	// remap these for backwards compat
+    // remap these for backwards compat
     onColWidthChange : function(){
         this.updateColumns.apply(this, arguments);
     },
@@ -214,11 +214,11 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         this.updateHeaderSortState();
     },
 
-	onClear : function(){
+    onClear : function(){
         this.refresh();
     },
 
-	onUpdate : function(ds, record){
+    onUpdate : function(ds, record){
         this.refreshRow(record);
     },
 
@@ -286,9 +286,9 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
             this.headerPanel.show();
         }
         return this.headerPanel;
-	},
+    },
 
-	/**
+    /**
      * Gets a panel in the footer of the grid that can be used for toolbars etc.
      * After modifying the contents of this panel a call to grid.autoSize() may be
      * required to register any changes in size.
@@ -300,82 +300,82 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
             this.footerPanel.show();
         }
         return this.footerPanel;
-	},
+    },
 
-	initElements : function(){
-	    var E = Roo.Element;
-	    var el = this.grid.getGridEl().dom.firstChild;
-	    var cs = el.childNodes;
+    initElements : function(){
+        var E = Roo.Element;
+        var el = this.grid.getGridEl().dom.firstChild;
+        var cs = el.childNodes;
 
-	    this.el = new E(el);
-	    this.headerPanel = new E(el.firstChild);
-	    this.headerPanel.enableDisplayMode("block");
+        this.el = new E(el);
+        this.headerPanel = new E(el.firstChild);
+        this.headerPanel.enableDisplayMode("block");
 
         this.scroller = new E(cs[1]);
-	    this.scrollSizer = new E(this.scroller.dom.firstChild);
+        this.scrollSizer = new E(this.scroller.dom.firstChild);
 
-	    this.lockedWrap = new E(cs[2]);
-	    this.lockedHd = new E(this.lockedWrap.dom.firstChild);
-	    this.lockedBody = new E(this.lockedWrap.dom.childNodes[1]);
+        this.lockedWrap = new E(cs[2]);
+        this.lockedHd = new E(this.lockedWrap.dom.firstChild);
+        this.lockedBody = new E(this.lockedWrap.dom.childNodes[1]);
 
-	    this.mainWrap = new E(cs[3]);
-	    this.mainHd = new E(this.mainWrap.dom.firstChild);
-	    this.mainBody = new E(this.mainWrap.dom.childNodes[1]);
+        this.mainWrap = new E(cs[3]);
+        this.mainHd = new E(this.mainWrap.dom.firstChild);
+        this.mainBody = new E(this.mainWrap.dom.childNodes[1]);
 
-	    this.footerPanel = new E(cs[4]);
-	    this.footerPanel.enableDisplayMode("block");
+        this.footerPanel = new E(cs[4]);
+        this.footerPanel.enableDisplayMode("block");
 
         this.focusEl = new E(cs[5]);
         this.focusEl.swallowEvent("click", true);
         this.resizeProxy = new E(cs[6]);
 
-	    this.headerSelector = String.format(
-	       '#{0} td.x-grid-hd, #{1} td.x-grid-hd',
-	       this.lockedHd.id, this.mainHd.id
-	    );
+        this.headerSelector = String.format(
+           '#{0} td.x-grid-hd, #{1} td.x-grid-hd',
+           this.lockedHd.id, this.mainHd.id
+        );
 
-	    this.splitterSelector = String.format(
-	       '#{0} div.x-grid-split, #{1} div.x-grid-split',
-	       this.idToCssName(this.lockedHd.id), this.idToCssName(this.mainHd.id)
-	    );
+        this.splitterSelector = String.format(
+           '#{0} div.x-grid-split, #{1} div.x-grid-split',
+           this.idToCssName(this.lockedHd.id), this.idToCssName(this.mainHd.id)
+        );
     },
     idToCssName : function(s)
     {
         return s.replace(/[^a-z0-9]+/ig, '-');
     },
 
-	getHeaderCell : function(index){
-	    return Roo.DomQuery.select(this.headerSelector)[index];
-	},
+    getHeaderCell : function(index){
+        return Roo.DomQuery.select(this.headerSelector)[index];
+    },
 
-	getHeaderCellMeasure : function(index){
-	    return this.getHeaderCell(index).firstChild;
-	},
+    getHeaderCellMeasure : function(index){
+        return this.getHeaderCell(index).firstChild;
+    },
 
-	getHeaderCellText : function(index){
-	    return this.getHeaderCell(index).firstChild.firstChild;
-	},
+    getHeaderCellText : function(index){
+        return this.getHeaderCell(index).firstChild.firstChild;
+    },
 
-	getLockedTable : function(){
-	    return this.lockedBody.dom.firstChild;
-	},
+    getLockedTable : function(){
+        return this.lockedBody.dom.firstChild;
+    },
 
-	getBodyTable : function(){
-	    return this.mainBody.dom.firstChild;
-	},
+    getBodyTable : function(){
+        return this.mainBody.dom.firstChild;
+    },
 
-	getLockedRow : function(index){
-	    return this.getLockedTable().rows[index];
-	},
+    getLockedRow : function(index){
+        return this.getLockedTable().rows[index];
+    },
 
-	getRow : function(index){
-	    return this.getBodyTable().rows[index];
-	},
+    getRow : function(index){
+        return this.getBodyTable().rows[index];
+    },
 
-	getRowComposite : function(index){
-	    if(!this.rowEl){
-	        this.rowEl = new Roo.CompositeElementLite();
-	    }
+    getRowComposite : function(index){
+        if(!this.rowEl){
+            this.rowEl = new Roo.CompositeElementLite();
+        }
         var els = [], lrow, mrow;
         if(lrow = this.getLockedRow(index)){
             els.push(lrow);
@@ -384,27 +384,27 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
             els.push(mrow);
         }
         this.rowEl.elements = els;
-	    return this.rowEl;
-	},
+        return this.rowEl;
+    },
 
-	getCell : function(rowIndex, colIndex){
-	    var locked = this.cm.getLockedCount();
-	    var source;
-	    if(colIndex < locked){
-	        source = this.lockedBody.dom.firstChild;
-	    }else{
-	        source = this.mainBody.dom.firstChild;
-	        colIndex -= locked;
-	    }
+    getCell : function(rowIndex, colIndex){
+        var locked = this.cm.getLockedCount();
+        var source;
+        if(colIndex < locked){
+            source = this.lockedBody.dom.firstChild;
+        }else{
+            source = this.mainBody.dom.firstChild;
+            colIndex -= locked;
+        }
         return source.rows[rowIndex].childNodes[colIndex];
-	},
+    },
 
-	getCellText : function(rowIndex, colIndex){
-	    return this.getCell(rowIndex, colIndex).firstChild.firstChild;
-	},
+    getCellText : function(rowIndex, colIndex){
+        return this.getCell(rowIndex, colIndex).firstChild.firstChild;
+    },
 
-	getCellBox : function(cell){
-	    var b = this.fly(cell).getBox();
+    getCellBox : function(cell){
+        var b = this.fly(cell).getBox();
         if(Roo.isOpera){ // opera fails to report the Y
             b.y = cell.offsetTop + this.mainBody.getY();
         }
@@ -449,20 +449,21 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
     },
 
     getColumnId : function(index){
-	    return this.cm.getColumnId(index);
-	},
+        return this.cm.getColumnId(index);
+    },
 
-	getSplitters : function(){
-	    if(this.splitterSelector){
-	       return Roo.DomQuery.select(this.splitterSelector);
-	    }else{
-	        return null;
-	    }
-	},
+    getSplitters : function()
+    {
+        if(this.splitterSelector){
+           return Roo.DomQuery.select(this.splitterSelector);
+        }else{
+            return null;
+      }
+    },
 
-	getSplitter : function(index){
-	    return this.getSplitters()[index];
-	},
+    getSplitter : function(index){
+        return this.getSplitters()[index];
+    },
 
     onRowOver : function(e, t){
         var row;
@@ -479,7 +480,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
     },
 
     renderHeaders : function(){
-	    var cm = this.cm;
+        var cm = this.cm;
         var ct = this.templates.hcell, ht = this.templates.header, st = this.templates.hsplit;
         var cb = [], lb = [], sb = [], lsb = [], p = {};
         for(var i = 0, len = cm.getColumnCount(); i < len; i++){
@@ -499,9 +500,9 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         }
         return [ht.apply({cells: lb.join(""), splits:lsb.join("")}),
                 ht.apply({cells: cb.join(""), splits:sb.join("")})];
-	},
+    },
 
-	updateHeaders : function(){
+    updateHeaders : function(){
         var html = this.renderHeaders();
         this.lockedHd.update(html[0]);
         this.mainHd.update(html[1]);
@@ -570,7 +571,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         var sright = sleft + c.clientWidth;
 
         if(ctop < stop){
-        	c.scrollTop = ctop;
+            c.scrollTop = ctop;
         }else if(cbot > sbot){
             c.scrollTop = cbot-ch;
         }
@@ -628,7 +629,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
             var pos = 0, locked = true;
             for(var i = 0, len = cm.getColumnCount(); i < len; i++){
                 if(cm.isHidden(i)) continue;
-                var w = cm.getColumnWidth(i);
+                var w = cm.getColumnWidth(i); // make sure it's a number
                 if(!cm.isLocked(i) && locked){
                     pos = 0;
                     locked = false;
@@ -1151,10 +1152,10 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
             return;
         }
         var dm = g.dataSource, cm = g.colModel;
-	    if(!cm.isSortable(index)){
+        if(!cm.isSortable(index)){
             return;
         }
-	    g.stopEditing();
+        g.stopEditing();
         dm.sort(cm.getDataIndex(index));
     },
 
