@@ -452,7 +452,8 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         return this.cm.getColumnId(index);
     },
 
-    getSplitters : function(){
+    getSplitters : function()
+    {
         if(this.splitterSelector){
            return Roo.DomQuery.select(this.splitterSelector);
         }else{
