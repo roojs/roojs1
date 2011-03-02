@@ -462,7 +462,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
     },
 
     getSplitter : function(index){
-    return this.getSplitters()[index];
+        return this.getSplitters()[index];
     },
 
     onRowOver : function(e, t){
