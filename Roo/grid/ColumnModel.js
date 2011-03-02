@@ -344,7 +344,7 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
      * @return {Number}
      */
     getColumnWidth : function(col){
-        return this.config[col].width || this.defaultWidth;
+        return this.config[col].width * 1 || this.defaultWidth;
     },
 
     /**
