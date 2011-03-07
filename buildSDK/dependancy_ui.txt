@@ -158,4 +158,4 @@ Roo.XTemplate
 // extras..
 Roo.XComponent
 Roo.Login
-
+Roo.Document
