@@ -33197,7 +33197,8 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
 	    return this.cm.getColumnId(index);
 	},
 
-	getSplitters : function(){
+    getSplitters : function()
+    {
 	    if(this.splitterSelector){
 	       return Roo.DomQuery.select(this.splitterSelector);
 	    }else{
@@ -33373,7 +33374,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
             var pos = 0, locked = true;
             for(var i = 0, len = cm.getColumnCount(); i < len; i++){
                 if(cm.isHidden(i)) continue;
-                var w = cm.getColumnWidth(i);
+                var w = cm.getColumnWidth(i); // make sure it's a number
                 if(!cm.isLocked(i) && locked){
                     pos = 0;
                     locked = false;
@@ -34820,7 +34821,7 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
      * @return {Number}
      */
     getColumnWidth : function(col){
-        return this.config[col].width || this.defaultWidth;
+        return this.config[col].width * 1 || this.defaultWidth;
     },
 
     /**
