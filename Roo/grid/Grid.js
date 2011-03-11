@@ -432,7 +432,8 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
      * Called once after all setup has been completed and the grid is ready to be rendered.
      * @return {Roo.grid.Grid} this
      */
-    render : function(){
+    render : function()
+    {
         var c = this.container;
         // try to detect autoHeight/width mode
         if((!c.dom.offsetHeight || c.dom.offsetHeight < 20) || c.getStyle("height") == "auto"){
