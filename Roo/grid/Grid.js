@@ -300,7 +300,7 @@ Roo.grid.Grid = function(container, config){
         /**
          * @event rowclass
          * Fires when a row is rendered, so you can change add a style to it.
-         * @param {GridView} gridview The grid view
+         * @param {GridView} gridview   The grid view
          * @param {Object} rowcfg   contains record  rowIndex and rowClass - set rowClass to add a style.
          */
         'rowclass' : true,
