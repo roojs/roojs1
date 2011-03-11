@@ -321,12 +321,12 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
      * @cfg {String} ddGroup - drag drop group.
 	 */
     
-    /**
-     * @cfg {Number} minColumnWidth The minimum width a column can be resized to. Default is 25.
+        /**
+         * @cfg {Number} minColumnWidth The minimum width a column can be resized to. Default is 25.
 	 */
 	minColumnWidth : 25,
 
-    /**
+        /**
 	 * @cfg {Boolean} autoSizeColumns True to automatically resize the columns to fit their content
 	 * <b>on initial render.</b> It is more efficient to explicitly size the columns
 	 * through the ColumnModel's {@link Roo.grid.ColumnModel#width} config option.  Default is false.
