@@ -414,9 +414,10 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
     */
     loadMask : false,
     /**
-     * @cfg {Roo.dd.DropTarget} dragTarget An {@link Roo.dd.DragTarget} config
-	 */
-	dropTarget: false,
+    * @cfg {Roo.dd.DropTarget} dragTarget An {@link Roo.dd.DragTarget} config
+    */
+    dropTarget: false,
+    
     // private
     rendered : false,
 
