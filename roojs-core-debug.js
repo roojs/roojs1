@@ -336,16 +336,16 @@ Roo.factory(conf, Roo.data);
             }
             var buf = [];
             for(var key in o){
-                var ov = o[key], k = encodeURIComponent(key);
+                var ov = o[key], k = Roo.encodeURIComponent(key);
                 var type = typeof ov;
                 if(type == 'undefined'){
                     buf.push(k, "=&");
                 }else if(type != "function" && type != "object"){
-                    buf.push(k, "=", encodeURIComponent(ov), "&");
+                    buf.push(k, "=", Roo.encodeURIComponent(ov), "&");
                 }else if(ov instanceof Array){
                     if (ov.length) {
 	                    for(var i = 0, len = ov.length; i < len; i++) {
-	                        buf.push(k, "=", encodeURIComponent(ov[i] === undefined ? '' : ov[i]), "&");
+	                        buf.push(k, "=", Roo.encodeURIComponent(ov[i] === undefined ? '' : ov[i]), "&");
 	                    }
 	                } else {
 	                    buf.push(k, "=&");
@@ -354,6 +354,60 @@ Roo.factory(conf, Roo.data);
             }
             buf.pop();
             return buf.join("");
+        },
+         /**
+         * Safe version of encodeURIComponent
+         * @param {String} data 
+         * @return {String} 
+         */
+        
+        encodeURIComponent : function (data)
+        {
+            try {
+                return encodeURIComponent(data);
+            } catch(e) {} // should be an uri encode error.
+            
+            if (data == '' || data == null){
+               return '';
+            }
+            // http://stackoverflow.com/questions/2596483/unicode-and-uri-encoding-decoding-and-escaping-in-javascript
+            function nibble_to_hex(nibble){
+                var chars = '0123456789ABCDEF';
+                return chars.charAt(nibble);
+            }
+            data = data.toString();
+            var buffer = '';
+            for(var i=0; i<data.length; i++){
+                var c = data.charCodeAt(i);
+                var bs = new Array();
+                if (c > 0x10000){
+                        // 4 bytes
+                    bs[0] = 0xF0 | ((c & 0x1C0000) >>> 18);
+                    bs[1] = 0x80 | ((c & 0x3F000) >>> 12);
+                    bs[2] = 0x80 | ((c & 0xFC0) >>> 6);
+                    bs[3] = 0x80 | (c & 0x3F);
+                }else if (c > 0x800){
+                         // 3 bytes
+                    bs[0] = 0xE0 | ((c & 0xF000) >>> 12);
+                    bs[1] = 0x80 | ((c & 0xFC0) >>> 6);
+                    bs[2] = 0x80 | (c & 0x3F);
+                }else if (c > 0x80){
+                       // 2 bytes
+                    bs[0] = 0xC0 | ((c & 0x7C0) >>> 6);
+                    bs[1] = 0x80 | (c & 0x3F);
+                }else{
+                        // 1 byte
+                    bs[0] = c;
+                }
+                for(var j=0; j<bs.length; j++){
+                    var b = bs[j];
+                    var hex = nibble_to_hex((b & 0xF0) >>> 4) 
+                            + nibble_to_hex(b &0x0F);
+                    buffer += '%'+hex;
+               }
+            }
+            return buffer;    
+             
         },
 
         /**
@@ -2432,10 +2486,10 @@ Roo.lib.Event = function() {
                             for (var j = 0; j < el.options.length; j++) {
                                 if (el.options[j].selected) {
                                     if (Roo.isIE) {
-                                        data += encodeURIComponent(name) + '=' + encodeURIComponent(el.options[j].attributes['value'].specified ? el.options[j].value : el.options[j].text) + '&';
+                                        data += Roo.encodeURIComponent(name) + '=' + Roo.encodeURIComponent(el.options[j].attributes['value'].specified ? el.options[j].value : el.options[j].text) + '&';
                                     }
                                     else {
-                                        data += encodeURIComponent(name) + '=' + encodeURIComponent(el.options[j].hasAttribute('value') ? el.options[j].value : el.options[j].text) + '&';
+                                        data += Roo.encodeURIComponent(name) + '=' + Roo.encodeURIComponent(el.options[j].hasAttribute('value') ? el.options[j].value : el.options[j].text) + '&';
                                     }
                                 }
                             }
@@ -2443,7 +2497,7 @@ Roo.lib.Event = function() {
                         case 'radio':
                         case 'checkbox':
                             if (el.checked) {
-                                data += encodeURIComponent(name) + '=' + encodeURIComponent(val) + '&';
+                                data += Roo.encodeURIComponent(name) + '=' + Roo.encodeURIComponent(val) + '&';
                             }
                             break;
                         case 'file':
@@ -2457,12 +2511,12 @@ Roo.lib.Event = function() {
                             break;
                         case 'submit':
                             if(hasSubmit == false) {
-                                data += encodeURIComponent(name) + '=' + encodeURIComponent(val) + '&';
+                                data += Roo.encodeURIComponent(name) + '=' + Roo.encodeURIComponent(val) + '&';
                                 hasSubmit = true;
                             }
                             break;
                         default:
-                            data += encodeURIComponent(name) + '=' + encodeURIComponent(val) + '&';
+                            data += Roo.encodeURIComponent(name) + '=' + Roo.encodeURIComponent(val) + '&';
                             break;
                     }
                 }

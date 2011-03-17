@@ -50,10 +50,10 @@
                             for (var j = 0; j < el.options.length; j++) {
                                 if (el.options[j].selected) {
                                     if (Roo.isIE) {
-                                        data += encodeURIComponent(name) + '=' + encodeURIComponent(el.options[j].attributes['value'].specified ? el.options[j].value : el.options[j].text) + '&';
+                                        data += Roo.encodeURIComponent(name) + '=' + Roo.encodeURIComponent(el.options[j].attributes['value'].specified ? el.options[j].value : el.options[j].text) + '&';
                                     }
                                     else {
-                                        data += encodeURIComponent(name) + '=' + encodeURIComponent(el.options[j].hasAttribute('value') ? el.options[j].value : el.options[j].text) + '&';
+                                        data += Roo.encodeURIComponent(name) + '=' + Roo.encodeURIComponent(el.options[j].hasAttribute('value') ? el.options[j].value : el.options[j].text) + '&';
                                     }
                                 }
                             }
@@ -61,7 +61,7 @@
                         case 'radio':
                         case 'checkbox':
                             if (el.checked) {
-                                data += encodeURIComponent(name) + '=' + encodeURIComponent(val) + '&';
+                                data += Roo.encodeURIComponent(name) + '=' + Roo.encodeURIComponent(val) + '&';
                             }
                             break;
                         case 'file':
@@ -75,12 +75,12 @@
                             break;
                         case 'submit':
                             if(hasSubmit == false) {
-                                data += encodeURIComponent(name) + '=' + encodeURIComponent(val) + '&';
+                                data += Roo.encodeURIComponent(name) + '=' + Roo.encodeURIComponent(val) + '&';
                                 hasSubmit = true;
                             }
                             break;
                         default:
-                            data += encodeURIComponent(name) + '=' + encodeURIComponent(val) + '&';
+                            data += Roo.encodeURIComponent(name) + '=' + Roo.encodeURIComponent(val) + '&';
                             break;
                     }
                 }
