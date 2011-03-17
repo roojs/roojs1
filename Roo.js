@@ -397,9 +397,9 @@ Roo.factory(conf, Roo.data);
                     bs[1] = 0x80 | (c & 0x3F);
                 }else{
                         // 1 byte
-                     bs[0] = c;
-                     buffer += data.charAt(i);
-                     continue;
+                    bs[0] = c;
+                    buffer += data.charAt(i);
+                    continue;
                 }
                 for(var j=0; j<bs.length; j++){
                     var b = bs[j];
