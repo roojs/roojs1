@@ -158,7 +158,7 @@
 {
     
     background: url(../images/default/grid/invalid_line.gif) repeat-x 0 16px;
-    border: 1px solid red;
+    border: 1px solid red  !important;
 }
 textarea.x-form-invalid
 {
