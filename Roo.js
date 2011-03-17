@@ -355,6 +355,23 @@ Roo.factory(conf, Roo.data);
             buf.pop();
             return buf.join("");
         },
+         /**
+         * Safe version of encodeURIComponent
+         * @param {String} str
+         * @return {String} 
+         */
+        
+        encodeURIComponent : function (str)
+        {
+            try {
+                return encodeURIComponent(str);
+            } catch(e) {} // should be an uri encode error.
+            
+            
+                
+            
+            
+        },
 
         /**
          * Takes an encoded URL and and converts it to an object. e.g. Roo.urlDecode("foo=1&bar=2"); would return {foo: 1, bar: 2} or Roo.urlDecode("foo=1&bar=2&bar=3&bar=4", true); would return {foo: 1, bar: [2, 3, 4]}.
