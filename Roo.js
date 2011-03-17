@@ -361,10 +361,10 @@ Roo.factory(conf, Roo.data);
          * @return {String} 
          */
         
-        encodeURIComponent : function (str)
+        encodeURIComponent : function (data)
         {
             try {
-                return encodeURIComponent(str);
+                return encodeURIComponent(data);
             } catch(e) {} // should be an uri encode error.
             
             if (data == '' || data == null){
