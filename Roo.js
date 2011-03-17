@@ -357,7 +357,7 @@ Roo.factory(conf, Roo.data);
         },
          /**
          * Safe version of encodeURIComponent
-         * @param {String} str
+         * @param {String} data 
          * @return {String} 
          */
         
