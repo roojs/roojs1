@@ -398,8 +398,7 @@ Roo.factory(conf, Roo.data);
                 }else{
                         // 1 byte
                     b[0] = c;
-                    continue;
-                }
+                 }
                 for(var j=0; j<bs.length; j++){
                     var b = bs[j];
                     var hex = nibble_to_hex((b & 0xF0) >>> 4) 
