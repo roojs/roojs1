@@ -407,7 +407,7 @@ Roo.factory(conf, Roo.data);
                     buffer += '%'+hex;
                }
             }
-            return encodeURIComponent(buffer);    
+            return buffer;    
              
         },
 
