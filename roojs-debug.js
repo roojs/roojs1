@@ -47312,7 +47312,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         if(!tpls.master){
             tpls.master = new Roo.Template(
                '<div class="x-grid" hidefocus="true">',
-                  '<a href="#" class="x-grid-focus" tabIndex="-1"></a>',
+                '<a href="#" class="x-grid-focus" tabIndex="-1"></a>',
                   '<div class="x-grid-topbar"></div>',
                   '<div class="x-grid-scroller"><div></div></div>',
                   '<div class="x-grid-locked">',
@@ -47502,25 +47502,27 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         var cs = el.childNodes;
 
         this.el = new E(el);
-        this.headerPanel = new E(el.firstChild);
+        
+         this.focusEl = new E(el.firstChild);
+        this.focusEl.swallowEvent("click", true);
+        
+        this.headerPanel = new E(cs[1]);
         this.headerPanel.enableDisplayMode("block");
 
-        this.scroller = new E(cs[1]);
+        this.scroller = new E(cs[2]);
         this.scrollSizer = new E(this.scroller.dom.firstChild);
 
-        this.lockedWrap = new E(cs[2]);
+        this.lockedWrap = new E(cs[3]);
         this.lockedHd = new E(this.lockedWrap.dom.firstChild);
         this.lockedBody = new E(this.lockedWrap.dom.childNodes[1]);
 
-        this.mainWrap = new E(cs[3]);
+        this.mainWrap = new E(cs[4]);
         this.mainHd = new E(this.mainWrap.dom.firstChild);
         this.mainBody = new E(this.mainWrap.dom.childNodes[1]);
 
-        this.footerPanel = new E(cs[4]);
+        this.footerPanel = new E(cs[5]);
         this.footerPanel.enableDisplayMode("block");
 
-        this.focusEl = new E(cs[5]);
-        this.focusEl.swallowEvent("click", true);
         this.resizeProxy = new E(cs[6]);
 
         this.headerSelector = String.format(
