@@ -119,7 +119,6 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         if(!tpls.master){
             tpls.master = new Roo.Template(
                '<div class="x-grid" hidefocus="true">',
-                  '<a href="#" class="x-grid-focus" tabIndex="-1"></a>',
                   '<div class="x-grid-topbar"></div>',
                   '<div class="x-grid-scroller"><div></div></div>',
                   '<div class="x-grid-locked">',
@@ -131,7 +130,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                       '<div class="x-grid-body">{body}</div>',
                   "</div>",
                   '<div class="x-grid-bottombar"></div>',
-                 
+                  '<a href="#" class="x-grid-focus" tabIndex="-1"></a>',
                   '<div class="x-grid-resize-proxy">&#160;</div>',
                "</div>"
             );
