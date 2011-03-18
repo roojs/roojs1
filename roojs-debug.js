@@ -47779,7 +47779,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                 ' ch' + ch  
                 );
         
-        if(ctop < stop){
+        if(ctop <= stop){
             c.scrollTop = ctop;
         }else if(cbot > sbot){
             c.scrollTop = cbot-ch;
