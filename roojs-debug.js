@@ -45487,6 +45487,7 @@ Roo.ContentPanel = function(el, config, content){
     } else {
         // fix randome scrolling
         this.el.on('scroll', function() {
+            Roo.log('fix random scolling');
             this.scrollTo('top',0); 
         });
     }
@@ -46494,8 +46495,8 @@ Roo.grid.Grid = function(container, config){
         /**
          * @event rowclass
          * Fires when a row is rendered, so you can change add a style to it.
-         * @param {GridView} gridview The grid view
-         * @param {Object} rowcfg contains record, rowIndex and rowClass - set rowClass to add a style.
+         * @param {GridView} gridview   The grid view
+         * @param {Object} rowcfg   contains record  rowIndex and rowClass - set rowClass to add a style.
          */
         'rowclass' : true,
 
@@ -46513,74 +46514,74 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
     
     /**
      * @cfg {String} ddGroup - drag drop group.
-	 */
-    
+     */
+
     /**
      * @cfg {Number} minColumnWidth The minimum width a column can be resized to. Default is 25.
-	 */
-	minColumnWidth : 25,
+     */
+    minColumnWidth : 25,
 
     /**
-	 * @cfg {Boolean} autoSizeColumns True to automatically resize the columns to fit their content
-	 * <b>on initial render.</b> It is more efficient to explicitly size the columns
-	 * through the ColumnModel's {@link Roo.grid.ColumnModel#width} config option.  Default is false.
-	 */
-	autoSizeColumns : false,
-
-	/**
-	 * @cfg {Boolean} autoSizeHeaders True to measure headers with column data when auto sizing columns. Default is true.
-	 */
-	autoSizeHeaders : true,
-
-	/**
-	 * @cfg {Boolean} monitorWindowResize True to autoSize the grid when the window resizes. Default is true.
-	 */
-	monitorWindowResize : true,
-
-	/**
-	 * @cfg {Boolean} maxRowsToMeasure If autoSizeColumns is on, maxRowsToMeasure can be used to limit the number of
-	 * rows measured to get a columns size. Default is 0 (all rows).
-	 */
-	maxRowsToMeasure : 0,
-
-	/**
-	 * @cfg {Boolean} trackMouseOver True to highlight rows when the mouse is over. Default is true.
-	 */
-	trackMouseOver : true,
+     * @cfg {Boolean} autoSizeColumns True to automatically resize the columns to fit their content
+     * <b>on initial render.</b> It is more efficient to explicitly size the columns
+     * through the ColumnModel's {@link Roo.grid.ColumnModel#width} config option.  Default is false.
+     */
+    autoSizeColumns : false,
 
     /**
-	 * @cfg {Boolean} enableDrag  True to enable drag of rows. Default is false. (double check if this is needed?)
-	 */
+     * @cfg {Boolean} autoSizeHeaders True to measure headers with column data when auto sizing columns. Default is true.
+     */
+    autoSizeHeaders : true,
+
+    /**
+     * @cfg {Boolean} monitorWindowResize True to autoSize the grid when the window resizes. Default is true.
+     */
+    monitorWindowResize : true,
+
+    /**
+     * @cfg {Boolean} maxRowsToMeasure If autoSizeColumns is on, maxRowsToMeasure can be used to limit the number of
+     * rows measured to get a columns size. Default is 0 (all rows).
+     */
+    maxRowsToMeasure : 0,
+
+    /**
+     * @cfg {Boolean} trackMouseOver True to highlight rows when the mouse is over. Default is true.
+     */
+    trackMouseOver : true,
+
+    /**
+    * @cfg {Boolean} enableDrag  True to enable drag of rows. Default is false. (double check if this is needed?)
+    */
     
-	/**
-	 * @cfg {Boolean} enableDragDrop True to enable drag and drop of rows. Default is false.
-	 */
-	enableDragDrop : false,
-
-	/**
-	 * @cfg {Boolean} enableColumnMove True to enable drag and drop reorder of columns. Default is true.
-	 */
-	enableColumnMove : true,
-
-	/**
-	 * @cfg {Boolean} enableColumnHide True to enable hiding of columns with the header context menu. Default is true.
-	 */
-	enableColumnHide : true,
-
-	/**
-	 * @cfg {Boolean} enableRowHeightSync True to manually sync row heights across locked and not locked rows. Default is false.
-	 */
-	enableRowHeightSync : false,
-
-	/**
-	 * @cfg {Boolean} stripeRows True to stripe the rows.  Default is true.
-	 */
-	stripeRows : true,
-
-	/**
-	 * @cfg {Boolean} autoHeight True to fit the height of the grid container to the height of the data. Default is false.
-	 */
-	autoHeight : false,
+    /**
+    * @cfg {Boolean} enableDragDrop True to enable drag and drop of rows. Default is false.
+    */
+    enableDragDrop : false,
+    
+    /**
+    * @cfg {Boolean} enableColumnMove True to enable drag and drop reorder of columns. Default is true.
+    */
+    enableColumnMove : true,
+    
+    /**
+    * @cfg {Boolean} enableColumnHide True to enable hiding of columns with the header context menu. Default is true.
+    */
+    enableColumnHide : true,
+    
+    /**
+    * @cfg {Boolean} enableRowHeightSync True to manually sync row heights across locked and not locked rows. Default is false.
+    */
+    enableRowHeightSync : false,
+    
+    /**
+    * @cfg {Boolean} stripeRows True to stripe the rows.  Default is true.
+    */
+    stripeRows : true,
+    
+    /**
+    * @cfg {Boolean} autoHeight True to fit the height of the grid container to the height of the data. Default is false.
+    */
+    autoHeight : false,
 
     /**
      * @cfg {String} autoExpandColumn The id (or dataIndex) of a column in this grid that should expand to fill unused space. This id can not be 0. Default is false.
@@ -46599,18 +46600,19 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
     autoExpandMax : 1000,
 
     /**
-	 * @cfg {Object} view The {@link Roo.grid.GridView} used by the grid. This can be set before a call to render().
-	 */
-	view : null,
+    * @cfg {Object} view The {@link Roo.grid.GridView} used by the grid. This can be set before a call to render().
+    */
+    view : null,
 
-	/**
-     * @cfg {Object} loadMask An {@link Roo.LoadMask} config or true to mask the grid while loading. Default is false.
-	 */
-	loadMask : false,
     /**
-     * @cfg {Roo.dd.DropTarget} dragTarget An {@link Roo.dd.DragTarget} config
-	 */
-	dropTarget: false,
+    * @cfg {Object} loadMask An {@link Roo.LoadMask} config or true to mask the grid while loading. Default is false.
+    */
+    loadMask : false,
+    /**
+    * @cfg {Roo.dd.DropTarget} dragTarget An {@link Roo.dd.DragTarget} config
+    */
+    dropTarget: false,
+    
     // private
     rendered : false,
 
@@ -46625,7 +46627,8 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
      * Called once after all setup has been completed and the grid is ready to be rendered.
      * @return {Roo.grid.Grid} this
      */
-    render : function(){
+    render : function()
+    {
         var c = this.container;
         // try to detect autoHeight/width mode
         if((!c.dom.offsetHeight || c.dom.offsetHeight < 20) || c.getStyle("height") == "auto"){
@@ -47309,6 +47312,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         if(!tpls.master){
             tpls.master = new Roo.Template(
                '<div class="x-grid" hidefocus="true">',
+                '<a href="#" class="x-grid-focus" tabIndex="-1"></a>',
                   '<div class="x-grid-topbar"></div>',
                   '<div class="x-grid-scroller"><div></div></div>',
                   '<div class="x-grid-locked">',
@@ -47320,7 +47324,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                       '<div class="x-grid-body">{body}</div>',
                   "</div>",
                   '<div class="x-grid-bottombar"></div>',
-                  '<a href="#" class="x-grid-focus" tabIndex="-1"></a>',
+                 
                   '<div class="x-grid-resize-proxy">&#160;</div>',
                "</div>"
             );
@@ -47498,25 +47502,27 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         var cs = el.childNodes;
 
         this.el = new E(el);
-        this.headerPanel = new E(el.firstChild);
+        
+         this.focusEl = new E(el.firstChild);
+        this.focusEl.swallowEvent("click", true);
+        
+        this.headerPanel = new E(cs[1]);
         this.headerPanel.enableDisplayMode("block");
 
-        this.scroller = new E(cs[1]);
+        this.scroller = new E(cs[2]);
         this.scrollSizer = new E(this.scroller.dom.firstChild);
 
-        this.lockedWrap = new E(cs[2]);
+        this.lockedWrap = new E(cs[3]);
         this.lockedHd = new E(this.lockedWrap.dom.firstChild);
         this.lockedBody = new E(this.lockedWrap.dom.childNodes[1]);
 
-        this.mainWrap = new E(cs[3]);
+        this.mainWrap = new E(cs[4]);
         this.mainHd = new E(this.mainWrap.dom.firstChild);
         this.mainBody = new E(this.mainWrap.dom.childNodes[1]);
 
-        this.footerPanel = new E(cs[4]);
+        this.footerPanel = new E(cs[5]);
         this.footerPanel.enableDisplayMode("block");
 
-        this.focusEl = new E(cs[5]);
-        this.focusEl.swallowEvent("click", true);
         this.resizeProxy = new E(cs[6]);
 
         this.headerSelector = String.format(
@@ -47702,7 +47708,9 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
      * Focuses the specified row.
      * @param {Number} row The row index
      */
-    focusRow : function(row){
+    focusRow : function(row)
+    {
+        //Roo.log('GridView.focusRow');
         var x = this.scroller.dom.scrollLeft;
         this.focusCell(row, 0, false);
         this.scroller.dom.scrollLeft = x;
@@ -47714,7 +47722,9 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
      * @param {Number} col The column index
      * @param {Boolean} hscroll false to disable horizontal scrolling
      */
-    focusCell : function(row, col, hscroll){
+    focusCell : function(row, col, hscroll)
+    {
+        //Roo.log('GridView.focusCell');
         var el = this.ensureVisible(row, col, hscroll);
         this.focusEl.alignTo(el, "tl-tl");
         if(Roo.isGecko){
@@ -47730,12 +47740,15 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
      * @param {Number} col The column index
      * @param {Boolean} hscroll false to disable horizontal scrolling
      */
-    ensureVisible : function(row, col, hscroll){
+    ensureVisible : function(row, col, hscroll)
+    {
+        //Roo.log('GridView.ensureVisible,' + row + ',' + col);
+        //return null; //disable for testing.
         if(typeof row != "number"){
             row = row.rowIndex;
         }
         if(row < 0 && row >= this.ds.getCount()){
-            return;
+            return  null;
         }
         col = (col !== undefined ? col : 0);
         var cm = this.grid.colModel;
@@ -47745,7 +47758,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
 
         var el = this.getCell(row, col);
         if(!el){
-            return;
+            return null;
         }
         var c = this.scroller.dom;
 
@@ -47753,19 +47766,31 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         var cleft = parseInt(el.offsetLeft, 10);
         var cbot = ctop + el.offsetHeight;
         var cright = cleft + el.offsetWidth;
-
+        
         var ch = c.clientHeight - this.mainHd.dom.offsetHeight;
         var stop = parseInt(c.scrollTop, 10);
         var sleft = parseInt(c.scrollLeft, 10);
         var sbot = stop + ch;
         var sright = sleft + c.clientWidth;
-
+        /*
+        Roo.log('GridView.ensureVisible:' +
+                ' ctop:' + ctop +
+                ' c.clientHeight:' + c.clientHeight +
+                ' this.mainHd.dom.offsetHeight:' + this.mainHd.dom.offsetHeight +
+                ' stop:' + stop +
+                ' cbot:' + cbot +
+                ' sbot:' + sbot +
+                ' ch:' + ch  
+                );
+        */
         if(ctop < stop){
-            c.scrollTop = ctop;
+             c.scrollTop = ctop;
+            //Roo.log("set scrolltop to ctop DISABLE?");
         }else if(cbot > sbot){
+            //Roo.log("set scrolltop to cbot-ch");
             c.scrollTop = cbot-ch;
         }
-
+        
         if(hscroll !== false){
             if(cleft < sleft){
                 c.scrollLeft = cleft;
@@ -47773,6 +47798,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                 c.scrollLeft = cright-c.clientWidth;
             }
         }
+         
         return el;
     },
 
@@ -47934,6 +47960,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
     },
 
     getScrollState : function(){
+        
         var sb = this.scroller.dom;
         return {left: sb.scrollLeft, top: sb.scrollTop};
     },
@@ -47965,6 +47992,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
     },
 
     restoreScroll : function(state){
+        //Roo.log('GridView.restoreScroll');
         var sb = this.scroller.dom;
         sb.scrollLeft = state.left;
         sb.scrollTop = state.top;
@@ -47972,6 +48000,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
     },
 
     syncScroll : function(){
+        //Roo.log('GridView.syncScroll');
         var sb = this.scroller.dom;
         var sh = this.mainHd.dom;
         var bs = this.mainBody.dom;
