@@ -578,13 +578,13 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         var sright = sleft + c.clientWidth;
         
         Roo.log('GridView.ensureVisible:' +
-                ' ctop' + ctop +
-                ' c.clientHeight' + c.clientHeight +
-                ' this.mainHd.dom.offsetHeight' + this.mainHd.dom.offsetHeight +
-                ' stop' + stop +
-                ' cbot' + cbot +
-                ' sbot' + sbot +
-                ' ch' + ch  
+                ' ctop:' + ctop +
+                ' c.clientHeight:' + c.clientHeight +
+                ' this.mainHd.dom.offsetHeight:' + this.mainHd.dom.offsetHeight +
+                ' stop:' + stop +
+                ' cbot:' + cbot +
+                ' sbot:' + sbot +
+                ' ch:' + ch  
                 );
         
         if(ctop <= stop){
