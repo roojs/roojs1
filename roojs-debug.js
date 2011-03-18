@@ -47771,17 +47771,20 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         var sright = sleft + c.clientWidth;
         
         Roo.log('GridView.ensureVisible:' +
-                ' ctop' + ctop +
-                ' c.clientHeight' + c.clientHeight +
-                ' this.mainHd.dom.offsetHeight' + this.mainHd.dom.offsetHeight +
-                ' stop' + stop +
-                ' cbot' + cbot +
-                ' ch' + ch  
+                ' ctop:' + ctop +
+                ' c.clientHeight:' + c.clientHeight +
+                ' this.mainHd.dom.offsetHeight:' + this.mainHd.dom.offsetHeight +
+                ' stop:' + stop +
+                ' cbot:' + cbot +
+                ' sbot:' + sbot +
+                ' ch:' + ch  
                 );
         
         if(ctop <= stop){
             c.scrollTop = ctop;
+            Roo.log("set scrolltop to ctop");
         }else if(cbot > sbot){
+            Roo.log("set scrolltop to cbot-ch");
             c.scrollTop = cbot-ch;
         }
 
