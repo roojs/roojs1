@@ -112,6 +112,7 @@ Roo.ContentPanel = function(el, config, content){
     } else {
         // fix randome scrolling
         this.el.on('scroll', function() {
+            Roo.log('fix random scolling');
             this.scrollTo('top',0); 
         });
     }
