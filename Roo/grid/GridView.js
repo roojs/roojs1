@@ -583,6 +583,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                 ' this.mainHd.dom.offsetHeight' + this.mainHd.dom.offsetHeight +
                 ' stop' + stop +
                 ' cbot' + cbot +
+                ' sbot' + sbot +
                 ' ch' + ch  
                 );
         
