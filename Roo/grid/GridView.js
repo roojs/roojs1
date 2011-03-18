@@ -750,6 +750,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
     },
 
     getScrollState : function(){
+        
         var sb = this.scroller.dom;
         return {left: sb.scrollLeft, top: sb.scrollTop};
     },
@@ -781,6 +782,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
     },
 
     restoreScroll : function(state){
+        Roo.log('GridView.restoreScroll');
         var sb = this.scroller.dom;
         sb.scrollLeft = state.left;
         sb.scrollTop = state.top;
@@ -788,6 +790,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
     },
 
     syncScroll : function(){
+        Roo.log('GridView.syncScroll');
         var sb = this.scroller.dom;
         var sh = this.mainHd.dom;
         var bs = this.mainBody.dom;
