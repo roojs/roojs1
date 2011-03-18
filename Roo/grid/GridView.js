@@ -547,7 +547,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
     ensureVisible : function(row, col, hscroll)
     {
         Roo.log('GridView.ensureVisible,' + row + ',' + col);
-        return; //disable for testing.
+        return null; //disable for testing.
         if(typeof row != "number"){
             row = row.rowIndex;
         }
