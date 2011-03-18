@@ -35521,4 +35521,1999 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
             g.startEditing(newCell[0], newCell[1]);
         }
     }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+/**
+ * @class Roo.grid.CellSelectionModel
+ * @extends Roo.grid.AbstractSelectionModel
+ * This class provides the basic implementation for cell selection in a grid.
+ * @constructor
+ * @param {Object} config The object containing the configuration of this model.
+ */
+Roo.grid.CellSelectionModel = function(config){
+    Roo.apply(this, config);
+
+    this.selection = null;
+
+    this.addEvents({
+        /**
+	     * @event beforerowselect
+	     * Fires before a cell is selected.
+	     * @param {SelectionModel} this
+	     * @param {Number} rowIndex The selected row index
+	     * @param {Number} colIndex The selected cell index
+	     */
+	    "beforecellselect" : true,
+        /**
+	     * @event cellselect
+	     * Fires when a cell is selected.
+	     * @param {SelectionModel} this
+	     * @param {Number} rowIndex The selected row index
+	     * @param {Number} colIndex The selected cell index
+	     */
+	    "cellselect" : true,
+        /**
+	     * @event selectionchange
+	     * Fires when the active selection changes.
+	     * @param {SelectionModel} this
+	     * @param {Object} selection null for no selection or an object (o) with two properties
+	        <ul>
+	        <li>o.record: the record object for the row the selection is in</li>
+	        <li>o.cell: An array of [rowIndex, columnIndex]</li>
+	        </ul>
+	     */
+	    "selectionchange" : true
+    });
+    Roo.grid.CellSelectionModel.superclass.constructor.call(this);
+};
+
+Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
+
+    /** @ignore */
+    initEvents : function(){
+        this.grid.on("mousedown", this.handleMouseDown, this);
+        this.grid.getGridEl().on(Roo.isIE ? "keydown" : "keypress", this.handleKeyDown, this);
+        var view = this.grid.view;
+        view.on("refresh", this.onViewChange, this);
+        view.on("rowupdated", this.onRowUpdated, this);
+        view.on("beforerowremoved", this.clearSelections, this);
+        view.on("beforerowsinserted", this.clearSelections, this);
+        if(this.grid.isEditor){
+            this.grid.on("beforeedit", this.beforeEdit,  this);
+        }
+    },
+
+	//private
+    beforeEdit : function(e){
+        this.select(e.row, e.column, false, true, e.record);
+    },
+
+	//private
+    onRowUpdated : function(v, index, r){
+        if(this.selection && this.selection.record == r){
+            v.onCellSelect(index, this.selection.cell[1]);
+        }
+    },
+
+	//private
+    onViewChange : function(){
+        this.clearSelections(true);
+    },
+
+	/**
+	 * Returns the currently selected cell,.
+	 * @return {Array} The selected cell (row, column) or null if none selected.
+	 */
+    getSelectedCell : function(){
+        return this.selection ? this.selection.cell : null;
+    },
+
+    /**
+     * Clears all selections.
+     * @param {Boolean} true to prevent the gridview from being notified about the change.
+     */
+    clearSelections : function(preventNotify){
+        var s = this.selection;
+        if(s){
+            if(preventNotify !== true){
+                this.grid.view.onCellDeselect(s.cell[0], s.cell[1]);
+            }
+            this.selection = null;
+            this.fireEvent("selectionchange", this, null);
+        }
+    },
+
+    /**
+     * Returns true if there is a selection.
+     * @return {Boolean}
+     */
+    hasSelection : function(){
+        return this.selection ? true : false;
+    },
+
+    /** @ignore */
+    handleMouseDown : function(e, t){
+        var v = this.grid.getView();
+        if(this.isLocked()){
+            return;
+        };
+        var row = v.findRowIndex(t);
+        var cell = v.findCellIndex(t);
+        if(row !== false && cell !== false){
+            this.select(row, cell);
+        }
+    },
+
+    /**
+     * Selects a cell.
+     * @param {Number} rowIndex
+     * @param {Number} collIndex
+     */
+    select : function(rowIndex, colIndex, preventViewNotify, preventFocus, /*internal*/ r){
+        if(this.fireEvent("beforecellselect", this, rowIndex, colIndex) !== false){
+            this.clearSelections();
+            r = r || this.grid.dataSource.getAt(rowIndex);
+            this.selection = {
+                record : r,
+                cell : [rowIndex, colIndex]
+            };
+            if(!preventViewNotify){
+                var v = this.grid.getView();
+                v.onCellSelect(rowIndex, colIndex);
+                if(preventFocus !== true){
+                    v.focusCell(rowIndex, colIndex);
+                }
+            }
+            this.fireEvent("cellselect", this, rowIndex, colIndex);
+            this.fireEvent("selectionchange", this, this.selection);
+        }
+    },
+
+	//private
+    isSelectable : function(rowIndex, colIndex, cm){
+        return !cm.isHidden(colIndex);
+    },
+
+    /** @ignore */
+    handleKeyDown : function(e){
+        Roo.log('Cell Sel Model handleKeyDown');
+        if(!e.isNavKeyPress()){
+            return;
+        }
+        var g = this.grid, s = this.selection;
+        if(!s){
+            e.stopEvent();
+            var cell = g.walkCells(0, 0, 1, this.isSelectable,  this);
+            if(cell){
+                this.select(cell[0], cell[1]);
+            }
+            return;
+        }
+        var sm = this;
+        var walk = function(row, col, step){
+            return g.walkCells(row, col, step, sm.isSelectable,  sm);
+        };
+        var k = e.getKey(), r = s.cell[0], c = s.cell[1];
+        var newCell;
+
+        switch(k){
+            case e.TAB:
+                // handled by onEditorKey
+                if (g.isEditor && g.editing) {
+                    return;
+                }
+                if(e.shiftKey){
+                     newCell = walk(r, c-1, -1);
+                }else{
+                     newCell = walk(r, c+1, 1);
+                }
+             break;
+             case e.DOWN:
+                 newCell = walk(r+1, c, 1);
+             break;
+             case e.UP:
+                 newCell = walk(r-1, c, -1);
+             break;
+             case e.RIGHT:
+                 newCell = walk(r, c+1, 1);
+             break;
+             case e.LEFT:
+                 newCell = walk(r, c-1, -1);
+             break;
+             case e.ENTER:
+                 if(g.isEditor && !g.editing){
+                    g.startEditing(r, c);
+                    e.stopEvent();
+                    return;
+                }
+             break;
+        };
+        if(newCell){
+            this.select(newCell[0], newCell[1]);
+            e.stopEvent();
+        }
+    },
+
+    acceptsNav : function(row, col, cm){
+        return !cm.isHidden(col) && cm.isCellEditable(col, row);
+    },
+
+    onEditorKey : function(field, e){
+        
+        var k = e.getKey(), newCell, g = this.grid, ed = g.activeEditor;
+        ///Roo.log('onEditorKey' + k);
+        
+        if(k == e.TAB){
+            if(e.shiftKey){
+                newCell = g.walkCells(ed.row, ed.col-1, -1, this.acceptsNav, this);
+            }else{
+                newCell = g.walkCells(ed.row, ed.col+1, 1, this.acceptsNav, this);
+            }
+            e.stopEvent();
+        }else if(k == e.ENTER && !e.ctrlKey){
+            ed.completeEdit();
+            e.stopEvent();
+            newCell = g.walkCells(ed.row, ed.col+1, 1, this.acceptsNav, this);
+        }else if(k == e.ESC){
+            ed.cancelEdit();
+        }
+        
+        
+        if(newCell){
+            //Roo.log('next cell after edit');
+            g.startEditing.defer(100, g, [newCell[0], newCell[1]]);
+        }
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.grid.EditorGrid
+ * @extends Roo.grid.Grid
+ * Class for creating and editable grid.
+ * @param {String/HTMLElement/Roo.Element} container The element into which this grid will be rendered - 
+ * The container MUST have some type of size defined for the grid to fill. The container will be 
+ * automatically set to position relative if it isn't already.
+ * @param {Object} dataSource The data model to bind to
+ * @param {Object} colModel The column model with info about this grid's columns
+ */
+Roo.grid.EditorGrid = function(container, config){
+    Roo.grid.EditorGrid.superclass.constructor.call(this, container, config);
+    this.getGridEl().addClass("xedit-grid");
+
+    if(!this.selModel){
+        this.selModel = new Roo.grid.CellSelectionModel();
+    }
+
+    this.activeEditor = null;
+
+	this.addEvents({
+	    /**
+	     * @event beforeedit
+	     * Fires before cell editing is triggered. The edit event object has the following properties <br />
+	     * <ul style="padding:5px;padding-left:16px;">
+	     * <li>grid - This grid</li>
+	     * <li>record - The record being edited</li>
+	     * <li>field - The field name being edited</li>
+	     * <li>value - The value for the field being edited.</li>
+	     * <li>row - The grid row index</li>
+	     * <li>column - The grid column index</li>
+	     * <li>cancel - Set this to true to cancel the edit or return false from your handler.</li>
+	     * </ul>
+	     * @param {Object} e An edit event (see above for description)
+	     */
+	    "beforeedit" : true,
+	    /**
+	     * @event afteredit
+	     * Fires after a cell is edited. <br />
+	     * <ul style="padding:5px;padding-left:16px;">
+	     * <li>grid - This grid</li>
+	     * <li>record - The record being edited</li>
+	     * <li>field - The field name being edited</li>
+	     * <li>value - The value being set</li>
+	     * <li>originalValue - The original value for the field, before the edit.</li>
+	     * <li>row - The grid row index</li>
+	     * <li>column - The grid column index</li>
+	     * </ul>
+	     * @param {Object} e An edit event (see above for description)
+	     */
+	    "afteredit" : true,
+	    /**
+	     * @event validateedit
+	     * Fires after a cell is edited, but before the value is set in the record. 
+         * You can use this to modify the value being set in the field, Return false
+	     * to cancel the change. The edit event object has the following properties <br />
+	     * <ul style="padding:5px;padding-left:16px;">
+         * <li>editor - This editor</li>
+	     * <li>grid - This grid</li>
+	     * <li>record - The record being edited</li>
+	     * <li>field - The field name being edited</li>
+	     * <li>value - The value being set</li>
+	     * <li>originalValue - The original value for the field, before the edit.</li>
+	     * <li>row - The grid row index</li>
+	     * <li>column - The grid column index</li>
+	     * <li>cancel - Set this to true to cancel the edit or return false from your handler.</li>
+	     * </ul>
+	     * @param {Object} e An edit event (see above for description)
+	     */
+	    "validateedit" : true
+	});
+    this.on("bodyscroll", this.stopEditing,  this);
+    this.on(this.clicksToEdit == 1 ? "cellclick" : "celldblclick", this.onCellDblClick,  this);
+};
+
+Roo.extend(Roo.grid.EditorGrid, Roo.grid.Grid, {
+    /**
+     * @cfg {Number} clicksToEdit
+     * The number of clicks on a cell required to display the cell's editor (defaults to 2)
+     */
+    clicksToEdit: 2,
+
+    // private
+    isEditor : true,
+    // private
+    trackMouseOver: false, // causes very odd FF errors
+
+    onCellDblClick : function(g, row, col){
+        this.startEditing(row, col);
+    },
+
+    onEditComplete : function(ed, value, startValue){
+        this.editing = false;
+        this.activeEditor = null;
+        ed.un("specialkey", this.selModel.onEditorKey, this.selModel);
+        var r = ed.record;
+        var field = this.colModel.getDataIndex(ed.col);
+        var e = {
+            grid: this,
+            record: r,
+            field: field,
+            originalValue: startValue,
+            value: value,
+            row: ed.row,
+            column: ed.col,
+            cancel:false,
+            editor: ed
+        };
+        if(String(value) !== String(startValue)){
+            
+            if(this.fireEvent("validateedit", e) !== false && !e.cancel){
+                r.set(field, e.value);
+                // if we are dealing with a combo box..
+                // then we also set the 'name' colum to be the displayField
+                if (ed.field.displayField && ed.field.name) {
+                    r.set(ed.field.name, ed.field.el.dom.value);
+                }
+                
+                delete e.cancel; //?? why!!!
+                this.fireEvent("afteredit", e);
+            }
+        } else {
+            this.fireEvent("afteredit", e); // always fire it!
+        }
+        this.view.focusCell(ed.row, ed.col);
+    },
+
+    /**
+     * Starts editing the specified for the specified row/column
+     * @param {Number} rowIndex
+     * @param {Number} colIndex
+     */
+    startEditing : function(row, col){
+        this.stopEditing();
+        if(this.colModel.isCellEditable(col, row)){
+            this.view.ensureVisible(row, col, true);
+            var r = this.dataSource.getAt(row);
+            var field = this.colModel.getDataIndex(col);
+            var e = {
+                grid: this,
+                record: r,
+                field: field,
+                value: r.data[field],
+                row: row,
+                column: col,
+                cancel:false
+            };
+            if(this.fireEvent("beforeedit", e) !== false && !e.cancel){
+                this.editing = true;
+                var ed = this.colModel.getCellEditor(col, row);
+                
+                if (!ed) {
+                    return;
+                }
+                if(!ed.rendered){
+                    ed.render(ed.parentEl || document.body);
+                }
+                ed.field.reset();
+                (function(){ // complex but required for focus issues in safari, ie and opera
+                    ed.row = row;
+                    ed.col = col;
+                    ed.record = r;
+                    ed.on("complete", this.onEditComplete, this, {single: true});
+                    ed.on("specialkey", this.selModel.onEditorKey, this.selModel);
+                    this.activeEditor = ed;
+                    var v = r.data[field];
+                    ed.startEdit(this.view.getCell(row, col), v);
+                    // combo's with 'displayField and name set
+                    if (ed.field.displayField && ed.field.name) {
+                        ed.field.el.dom.value = r.data[ed.field.name];
+                    }
+                    
+                    
+                }).defer(50, this);
+            }
+        }
+    },
+        
+    /**
+     * Stops any active editing
+     */
+    stopEditing : function(){
+        if(this.activeEditor){
+            this.activeEditor.completeEdit();
+        }
+        this.activeEditor = null;
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+// private - not really -- you end up using it !
+// This is a support class used internally by the Grid components
+
+/**
+ * @class Roo.grid.GridEditor
+ * @extends Roo.Editor
+ * Class for creating and editable grid elements.
+ * @param {Object} config any settings (must include field)
+ */
+Roo.grid.GridEditor = function(field, config){
+    if (!config && field.field) {
+        config = field;
+        field = Roo.factory(config.field, Roo.form);
+    }
+    Roo.grid.GridEditor.superclass.constructor.call(this, field, config);
+    field.monitorTab = false;
+};
+
+Roo.extend(Roo.grid.GridEditor, Roo.Editor, {
+    
+    /**
+     * @cfg {Roo.form.Field} field Field to wrap (or xtyped)
+     */
+    
+    alignment: "tl-tl",
+    autoSize: "width",
+    hideEl : false,
+    cls: "x-small-editor x-grid-editor",
+    shim:false,
+    shadow:"frame"
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+  
+
+  
+Roo.grid.PropertyRecord = Roo.data.Record.create([
+    {name:'name',type:'string'},  'value'
+]);
+
+
+Roo.grid.PropertyStore = function(grid, source){
+    this.grid = grid;
+    this.store = new Roo.data.Store({
+        recordType : Roo.grid.PropertyRecord
+    });
+    this.store.on('update', this.onUpdate,  this);
+    if(source){
+        this.setSource(source);
+    }
+    Roo.grid.PropertyStore.superclass.constructor.call(this);
+};
+
+
+
+Roo.extend(Roo.grid.PropertyStore, Roo.util.Observable, {
+    setSource : function(o){
+        this.source = o;
+        this.store.removeAll();
+        var data = [];
+        for(var k in o){
+            if(this.isEditableValue(o[k])){
+                data.push(new Roo.grid.PropertyRecord({name: k, value: o[k]}, k));
+            }
+        }
+        this.store.loadRecords({records: data}, {}, true);
+    },
+
+    onUpdate : function(ds, record, type){
+        if(type == Roo.data.Record.EDIT){
+            var v = record.data['value'];
+            var oldValue = record.modified['value'];
+            if(this.grid.fireEvent('beforepropertychange', this.source, record.id, v, oldValue) !== false){
+                this.source[record.id] = v;
+                record.commit();
+                this.grid.fireEvent('propertychange', this.source, record.id, v, oldValue);
+            }else{
+                record.reject();
+            }
+        }
+    },
+
+    getProperty : function(row){
+       return this.store.getAt(row);
+    },
+
+    isEditableValue: function(val){
+        if(val && val instanceof Date){
+            return true;
+        }else if(typeof val == 'object' || typeof val == 'function'){
+            return false;
+        }
+        return true;
+    },
+
+    setValue : function(prop, value){
+        this.source[prop] = value;
+        this.store.getById(prop).set('value', value);
+    },
+
+    getSource : function(){
+        return this.source;
+    }
 });
+
+Roo.grid.PropertyColumnModel = function(grid, store){
+    this.grid = grid;
+    var g = Roo.grid;
+    g.PropertyColumnModel.superclass.constructor.call(this, [
+        {header: this.nameText, sortable: true, dataIndex:'name', id: 'name'},
+        {header: this.valueText, resizable:false, dataIndex: 'value', id: 'value'}
+    ]);
+    this.store = store;
+    this.bselect = Roo.DomHelper.append(document.body, {
+        tag: 'select', style:'display:none', cls: 'x-grid-editor', children: [
+            {tag: 'option', value: 'true', html: 'true'},
+            {tag: 'option', value: 'false', html: 'false'}
+        ]
+    });
+    Roo.id(this.bselect);
+    var f = Roo.form;
+    this.editors = {
+        'date' : new g.GridEditor(new f.DateField({selectOnFocus:true})),
+        'string' : new g.GridEditor(new f.TextField({selectOnFocus:true})),
+        'number' : new g.GridEditor(new f.NumberField({selectOnFocus:true, style:'text-align:left;'})),
+        'int' : new g.GridEditor(new f.NumberField({selectOnFocus:true, allowDecimals:false, style:'text-align:left;'})),
+        'boolean' : new g.GridEditor(new f.Field({el:this.bselect,selectOnFocus:true}))
+    };
+    this.renderCellDelegate = this.renderCell.createDelegate(this);
+    this.renderPropDelegate = this.renderProp.createDelegate(this);
+};
+
+Roo.extend(Roo.grid.PropertyColumnModel, Roo.grid.ColumnModel, {
+    
+    
+    nameText : 'Name',
+    valueText : 'Value',
+    
+    dateFormat : 'm/j/Y',
+    
+    
+    renderDate : function(dateVal){
+        return dateVal.dateFormat(this.dateFormat);
+    },
+
+    renderBool : function(bVal){
+        return bVal ? 'true' : 'false';
+    },
+
+    isCellEditable : function(colIndex, rowIndex){
+        return colIndex == 1;
+    },
+
+    getRenderer : function(col){
+        return col == 1 ?
+            this.renderCellDelegate : this.renderPropDelegate;
+    },
+
+    renderProp : function(v){
+        return this.getPropertyName(v);
+    },
+
+    renderCell : function(val){
+        var rv = val;
+        if(val instanceof Date){
+            rv = this.renderDate(val);
+        }else if(typeof val == 'boolean'){
+            rv = this.renderBool(val);
+        }
+        return Roo.util.Format.htmlEncode(rv);
+    },
+
+    getPropertyName : function(name){
+        var pn = this.grid.propertyNames;
+        return pn && pn[name] ? pn[name] : name;
+    },
+
+    getCellEditor : function(colIndex, rowIndex){
+        var p = this.store.getProperty(rowIndex);
+        var n = p.data['name'], val = p.data['value'];
+        
+        if(typeof(this.grid.customEditors[n]) == 'string'){
+            return this.editors[this.grid.customEditors[n]];
+        }
+        if(typeof(this.grid.customEditors[n]) != 'undefined'){
+            return this.grid.customEditors[n];
+        }
+        if(val instanceof Date){
+            return this.editors['date'];
+        }else if(typeof val == 'number'){
+            return this.editors['number'];
+        }else if(typeof val == 'boolean'){
+            return this.editors['boolean'];
+        }else{
+            return this.editors['string'];
+        }
+    }
+});
+
+/**
+ * @class Roo.grid.PropertyGrid
+ * @extends Roo.grid.EditorGrid
+ * This class represents the  interface of a component based property grid control.
+ * <br><br>Usage:<pre><code>
+ var grid = new Roo.grid.PropertyGrid("my-container-id", {
+      
+ });
+ // set any options
+ grid.render();
+ * </code></pre>
+  
+ * @constructor
+ * @param {String/HTMLElement/Roo.Element} container The element into which this grid will be rendered -
+ * The container MUST have some type of size defined for the grid to fill. The container will be
+ * automatically set to position relative if it isn't already.
+ * @param {Object} config A config object that sets properties on this grid.
+ */
+Roo.grid.PropertyGrid = function(container, config){
+    config = config || {};
+    var store = new Roo.grid.PropertyStore(this);
+    this.store = store;
+    var cm = new Roo.grid.PropertyColumnModel(this, store);
+    store.store.sort('name', 'ASC');
+    Roo.grid.PropertyGrid.superclass.constructor.call(this, container, Roo.apply({
+        ds: store.store,
+        cm: cm,
+        enableColLock:false,
+        enableColumnMove:false,
+        stripeRows:false,
+        trackMouseOver: false,
+        clicksToEdit:1
+    }, config));
+    this.getGridEl().addClass('x-props-grid');
+    this.lastEditRow = null;
+    this.on('columnresize', this.onColumnResize, this);
+    this.addEvents({
+         /**
+	     * @event beforepropertychange
+	     * Fires before a property changes (return false to stop?)
+	     * @param {Roo.grid.PropertyGrid} grid property grid? (check could be store)
+	     * @param {String} id Record Id
+	     * @param {String} newval New Value
+         * @param {String} oldval Old Value
+	     */
+        "beforepropertychange": true,
+        /**
+	     * @event propertychange
+	     * Fires after a property changes
+	     * @param {Roo.grid.PropertyGrid} grid property grid? (check could be store)
+	     * @param {String} id Record Id
+	     * @param {String} newval New Value
+         * @param {String} oldval Old Value
+	     */
+        "propertychange": true
+    });
+    this.customEditors = this.customEditors || {};
+};
+Roo.extend(Roo.grid.PropertyGrid, Roo.grid.EditorGrid, {
+    
+     /**
+     * @cfg {Object} customEditors map of colnames=> custom editors.
+     * the custom editor can be one of the standard ones (date|string|number|int|boolean), or a
+     * grid editor eg. Roo.grid.GridEditor(new Roo.form.TextArea({selectOnFocus:true})),
+     * false disables editing of the field.
+	 */
+    
+      /**
+     * @cfg {Object} propertyNames map of property Names to their displayed value
+	 */
+    
+    render : function(){
+        Roo.grid.PropertyGrid.superclass.render.call(this);
+        this.autoSize.defer(100, this);
+    },
+
+    autoSize : function(){
+        Roo.grid.PropertyGrid.superclass.autoSize.call(this);
+        if(this.view){
+            this.view.fitColumns();
+        }
+    },
+
+    onColumnResize : function(){
+        this.colModel.setColumnWidth(1, this.container.getWidth(true)-this.colModel.getColumnWidth(0));
+        this.autoSize();
+    },
+    /**
+     * Sets the data for the Grid
+     * accepts a Key => Value object of all the elements avaiable.
+     * @param {Object} data  to appear in grid.
+     */
+    setSource : function(source){
+        this.store.setSource(source);
+        //this.autoSize();
+    },
+    /**
+     * Gets all the data from the grid.
+     * @return {Object} data  data stored in grid
+     */
+    getSource : function(){
+        return this.store.getSource();
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.LoadMask
+ * A simple utility class for generically masking elements while loading data.  If the element being masked has
+ * an underlying {@link Roo.data.Store}, the masking will be automatically synchronized with the store's loading
+ * process and the mask element will be cached for reuse.  For all other elements, this mask will replace the
+ * element's UpdateManager load indicator and will be destroyed after the initial load.
+ * @constructor
+ * Create a new LoadMask
+ * @param {String/HTMLElement/Roo.Element} el The element or DOM node, or its id
+ * @param {Object} config The config object
+ */
+Roo.LoadMask = function(el, config){
+    this.el = Roo.get(el);
+    Roo.apply(this, config);
+    if(this.store){
+        this.store.on('beforeload', this.onBeforeLoad, this);
+        this.store.on('load', this.onLoad, this);
+        this.store.on('loadexception', this.onLoad, this);
+        this.removeMask = false;
+    }else{
+        var um = this.el.getUpdateManager();
+        um.showLoadIndicator = false; // disable the default indicator
+        um.on('beforeupdate', this.onBeforeLoad, this);
+        um.on('update', this.onLoad, this);
+        um.on('failure', this.onLoad, this);
+        this.removeMask = true;
+    }
+};
+
+Roo.LoadMask.prototype = {
+    /**
+     * @cfg {Boolean} removeMask
+     * True to create a single-use mask that is automatically destroyed after loading (useful for page loads),
+     * False to persist the mask element reference for multiple uses (e.g., for paged data widgets).  Defaults to false.
+     */
+    /**
+     * @cfg {String} msg
+     * The text to display in a centered loading message box (defaults to 'Loading...')
+     */
+    msg : 'Loading...',
+    /**
+     * @cfg {String} msgCls
+     * The CSS class to apply to the loading message element (defaults to "x-mask-loading")
+     */
+    msgCls : 'x-mask-loading',
+
+    /**
+     * Read-only. True if the mask is currently disabled so that it will not be displayed (defaults to false)
+     * @type Boolean
+     */
+    disabled: false,
+
+    /**
+     * Disables the mask to prevent it from being displayed
+     */
+    disable : function(){
+       this.disabled = true;
+    },
+
+    /**
+     * Enables the mask so that it can be displayed
+     */
+    enable : function(){
+        this.disabled = false;
+    },
+
+    // private
+    onLoad : function(){
+        this.el.unmask(this.removeMask);
+    },
+
+    // private
+    onBeforeLoad : function(){
+        if(!this.disabled){
+            this.el.mask(this.msg, this.msgCls);
+        }
+    },
+
+    // private
+    destroy : function(){
+        if(this.store){
+            this.store.un('beforeload', this.onBeforeLoad, this);
+            this.store.un('load', this.onLoad, this);
+            this.store.un('loadexception', this.onLoad, this);
+        }else{
+            var um = this.el.getUpdateManager();
+            um.un('beforeupdate', this.onBeforeLoad, this);
+            um.un('update', this.onLoad, this);
+            um.un('failure', this.onLoad, this);
+        }
+    }
+};/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+Roo.XTemplate = function(){
+    Roo.XTemplate.superclass.constructor.apply(this, arguments);
+    var s = this.html;
+
+    s = ['<tpl>', s, '</tpl>'].join('');
+
+    var re = /<tpl\b[^>]*>((?:(?=([^<]+))\2|<(?!tpl\b[^>]*>))*?)<\/tpl>/;
+
+    var nameRe = /^<tpl\b[^>]*?for="(.*?)"/;
+    var ifRe = /^<tpl\b[^>]*?if="(.*?)"/;
+    var execRe = /^<tpl\b[^>]*?exec="(.*?)"/;
+    var m, id = 0;
+    var tpls = [];
+
+    while(m = s.match(re)){
+       var m2 = m[0].match(nameRe);
+       var m3 = m[0].match(ifRe);
+       var m4 = m[0].match(execRe);
+       var exp = null, fn = null, exec = null;
+       var name = m2 && m2[1] ? m2[1] : '';
+       if(m3){
+           exp = m3 && m3[1] ? m3[1] : null;
+           if(exp){
+               fn = new Function('values', 'parent', 'with(values){ return '+(Roo.util.Format.htmlDecode(exp))+'; }');
+           }
+       }
+       if(m4){
+           exp = m4 && m4[1] ? m4[1] : null;
+           if(exp){
+               exec = new Function('values', 'parent', 'with(values){ '+(Roo.util.Format.htmlDecode(exp))+'; }');
+           }
+       }
+       if(name){
+           switch(name){
+               case '.': name = new Function('values', 'parent', 'with(values){ return values; }'); break;
+               case '..': name = new Function('values', 'parent', 'with(values){ return parent; }'); break;
+               default: name = new Function('values', 'parent', 'with(values){ return '+name+'; }');
+           }
+       }
+       tpls.push({
+            id: id,
+            target: name,
+            exec: exec,
+            test: fn,
+            body: m[1]||''
+        });
+       s = s.replace(m[0], '{xtpl'+ id + '}');
+       ++id;
+    }
+    for(var i = tpls.length-1; i >= 0; --i){
+        this.compileTpl(tpls[i]);
+    }
+    this.master = tpls[tpls.length-1];
+    this.tpls = tpls;
+};
+Roo.extend(Roo.XTemplate, Roo.Template, {
+
+    re : /\{([\w-\.]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?\}/g,
+
+    applySubTemplate : function(id, values, parent){
+        var t = this.tpls[id];
+        if(t.test && !t.test.call(this, values, parent)){
+            return '';
+        }
+        if(t.exec && t.exec.call(this, values, parent)){
+            return '';
+        }
+        var vs = t.target ? t.target.call(this, values, parent) : values;
+        parent = t.target ? values : parent;
+        if(t.target && vs instanceof Array){
+            var buf = [];
+            for(var i = 0, len = vs.length; i < len; i++){
+                buf[buf.length] = t.compiled.call(this, vs[i], parent);
+            }
+            return buf.join('');
+        }
+        return t.compiled.call(this, vs, parent);
+    },
+
+    compileTpl : function(tpl){
+        var fm = Roo.util.Format;
+        var useF = this.disableFormats !== true;
+        var sep = Roo.isGecko ? "+" : ",";
+        var fn = function(m, name, format, args){
+            if(name.substr(0, 4) == 'xtpl'){
+                return "'"+ sep +'this.applySubTemplate('+name.substr(4)+', values, parent)'+sep+"'";
+            }
+            var v;
+            if(name.indexOf('.') != -1){
+                v = name;
+            }else{
+                v = "values['" + name + "']";
+            }
+            if(format && useF){
+                args = args ? ',' + args : "";
+                if(format.substr(0, 5) != "this."){
+                    format = "fm." + format + '(';
+                }else{
+                    format = 'this.call("'+ format.substr(5) + '", ';
+                    args = ", values";
+                }
+            }else{
+                args= ''; format = "("+v+" === undefined ? '' : ";
+            }
+            return "'"+ sep + format + v + args + ")"+sep+"'";
+        };
+        var body;
+        // branched to use + in gecko and [].join() in others
+        if(Roo.isGecko){
+            body = "tpl.compiled = function(values, parent){ return '" +
+                   tpl.body.replace(/(\r\n|\n)/g, '\\n').replace(/'/g, "\\'").replace(this.re, fn) +
+                    "';};";
+        }else{
+            body = ["tpl.compiled = function(values, parent){ return ['"];
+            body.push(tpl.body.replace(/(\r\n|\n)/g, '\\n').replace(/'/g, "\\'").replace(this.re, fn));
+            body.push("'].join('');};");
+            body = body.join('');
+        }
+        /** eval:var:zzzzzzz */
+        eval(body);
+        return this;
+    },
+
+    applyTemplate : function(values){
+        return this.master.compiled.call(this, values, {});
+        var s = this.subs;
+    },
+
+    apply : function(){
+        return this.applyTemplate.apply(this, arguments);
+    },
+
+    compile : function(){return this;}
+});
+
+Roo.XTemplate.from = function(el){
+    el = Roo.getDom(el);
+    return new Roo.XTemplate(el.value || el.innerHTML);
+};/*
+ * Original code for Roojs - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.XComponent
+ * A delayed Element creator...
+ * 
+ * Mypart.xyx = new Roo.XComponent({
+
+    parent : 'Mypart.xyz', // empty == document.element.!!
+    order : '001',
+    name : 'xxxx'
+    region : 'xxxx'
+    disabled : function() {} 
+     
+    tree : function() { // return an tree of xtype declared components
+        var MODULE = this;
+        return 
+        {
+            xtype : 'NestedLayoutPanel',
+            // technicall
+        }
+     ]
+ *})
+ * @extends Roo.util.Observable
+ * @constructor
+ * @param cfg {Object} configuration of component
+ * 
+ */
+Roo.XComponent = function(cfg) {
+    Roo.apply(this, cfg);
+    this.addEvents({ 
+        /**
+	     * @event built
+	     * Fires when this the componnt is built
+	     * @param {Roo.XComponent} c the component
+	     */
+        'built' : true,
+        /**
+	     * @event buildcomplete
+	     * Fires on the top level element when all elements have been built
+	     * @param {Roo.XComponent} c the top level component.
+         */
+        'buildcomplete' : true
+        
+    });
+    
+    Roo.XComponent.register(this);
+    this.modules = false;
+    this.el = false; // where the layout goes..
+    
+    
+}
+Roo.extend(Roo.XComponent, Roo.util.Observable, {
+    /**
+     * @property el
+     * The created element (with Roo.factory())
+     * @type {Roo.Layout}
+     */
+    el  : false,
+    
+    /**
+     * @property el
+     * for BC  - use el in new code
+     * @type {Roo.Layout}
+     */
+    panel : false,
+    
+    /**
+     * @property layout
+     * for BC  - use el in new code
+     * @type {Roo.Layout}
+     */
+    layout : false,
+    
+     /**
+     * @cfg {Function|boolean} disabled
+     * If this module is disabled by some rule, return true from the funtion
+     */
+    disabled : false,
+    
+    /**
+     * @cfg {String} parent 
+     * Name of parent element which it get xtype added to..
+     */
+    parent: false,
+    
+    /**
+     * @cfg {String} order
+     * Used to set the order in which elements are created (usefull for multiple tabs)
+     */
+    
+    order : false,
+    /**
+     * @cfg {String} name
+     * String to display while loading.
+     */
+    name : false,
+    /**
+     * @cfg {Array} items
+     * A single item array - the first element is the root of the tree..
+     * It's done this way to stay compatible with the Xtype system...
+     */
+    items : false
+     
+     
+    
+});
+
+Roo.apply(Roo.XComponent, {
+    
+    /**
+     * @property  buildCompleted
+     * True when the builder has completed building the interface.
+     * @type Boolean
+     */
+    buildCompleted : false,
+     
+    /**
+     * @property  topModule
+     * the upper most module - uses document.element as it's constructor.
+     * @type Object
+     */
+     
+    topModule  : false,
+      
+    /**
+     * @property  modules
+     * array of modules to be created by registration system.
+     * @type Roo.XComponent
+     */
+    
+    modules : [],
+      
+    
+    /**
+     * Register components to be built later.
+     *
+     * This solves the following issues
+     * - Building is not done on page load, but after an authentication process has occured.
+     * - Interface elements are registered on page load
+     * - Parent Interface elements may not be loaded before child, so this handles that..
+     * 
+     *
+     * example:
+     * 
+     * MyApp.register({
+          order : '000001',
+          module : 'Pman.Tab.projectMgr',
+          region : 'center',
+          parent : 'Pman.layout',
+          disabled : false,  // or use a function..
+        })
+     
+     * * @param {Object} details about module
+     */
+    register : function(obj) {
+        this.modules.push(obj);
+         
+    },
+    /**
+     * convert a string to an object..
+     * 
+     */
+    
+    toObject : function(str)
+    {
+        if (!str || typeof(str) == 'object') {
+            return str;
+        }
+        var ar = str.split('.');
+        var rt, o;
+        rt = ar.shift();
+            /** eval:var:o */
+        eval('if (typeof ' + rt + ' == "undefined"){ o = false;} o = ' + rt + ';');
+        if (o === false) {
+            throw "Module not found : " + str;
+        }
+        Roo.each(ar, function(e) {
+            if (typeof(o[e]) == 'undefined') {
+                throw "Module not found : " + str;
+            }
+            o = o[e];
+        });
+        return o;
+        
+    },
+    
+    
+    /**
+     * move modules into their correct place in the tree..
+     * 
+     */
+    preBuild : function ()
+    {
+        
+        Roo.each(this.modules , function (obj)
+        {
+            obj.parent = this.toObject(obj.parent);
+            
+            if (!obj.parent) {
+                this.topModule = obj;
+                return;
+            }
+            
+            if (!obj.parent.modules) {
+                obj.parent.modules = new Roo.util.MixedCollection(false, 
+                    function(o) { return o.order + '' }
+                );
+            }
+            
+            obj.parent.modules.add(obj);
+        }, this);
+    },
+    
+     /**
+     * make a list of modules to build.
+     * @return {Array} list of modules. 
+     */ 
+    
+    buildOrder : function()
+    {
+        var _this = this;
+        var cmp = function(a,b) {   
+            return String(a).toUpperCase() > String(b).toUpperCase() ? 1 : -1;
+        };
+        
+        if (!this.topModule || !this.topModule.modules) {
+            throw "No top level modules to build";
+        }
+       
+        // make a flat list in order of modules to build.
+        var mods = [ this.topModule ];
+        
+        
+        // add modules to their parents..
+        var addMod = function(m) {
+           // Roo.debug && Roo.log(m.modKey);
+            
+            mods.push(m);
+            if (m.modules) {
+                m.modules.keySort('ASC',  cmp );
+                m.modules.each(addMod);
+            }
+            // not sure if this is used any more..
+            if (m.finalize) {
+                m.finalize.name = m.name + " (clean up) ";
+                mods.push(m.finalize);
+            }
+            
+        }
+        this.topModule.modules.keySort('ASC',  cmp );
+        this.topModule.modules.each(addMod);
+        return mods;
+    },
+    
+     /**
+     * Build the registered modules.
+     * @param {Object} parent element.
+     * @param {Function} optional method to call after module has been added.
+     * 
+     */ 
+   
+    build : function() 
+    {
+        
+        this.preBuild();
+        var mods = this.buildOrder();
+      
+        //this.allmods = mods;
+        //Roo.debug && Roo.log(mods);
+        //return;
+        if (!mods.length) { // should not happen
+            throw "NO modules!!!";
+        }
+        
+        
+        
+        // flash it up as modal - so we store the mask!?
+        Roo.MessageBox.show({ title: 'loading' });
+        Roo.MessageBox.show({
+           title: "Please wait...",
+           msg: "Building Interface...",
+           width:450,
+           progress:true,
+           closable:false,
+           modal: false
+          
+        });
+        var total = mods.length;
+        
+        var _this = this;
+        var progressRun = function() {
+            if (!mods.length) {
+                Roo.debug && Roo.log('hide?');
+                Roo.MessageBox.hide();
+                _this.topModule.fireEvent('buildcomplete', _this.topModule);
+                return;    
+            }
+            
+            var m = mods.shift();
+            Roo.debug && Roo.log(m);
+            if (typeof(m) == 'function') { // not sure if this is supported any more..
+                m.call(this);
+                return progressRun.defer(10, _this);
+            } 
+            
+            Roo.MessageBox.updateProgress(
+                (total  - mods.length)/total,  "Building Interface " + (total  - mods.length) + 
+                    " of " + total + 
+                    (m.name ? (' - ' + m.name) : '')
+                    );
+            
+         
+            
+            var disabled = (typeof(m.disabled) == 'function') ?
+                m.disabled.call(m.module.disabled) : m.disabled;    
+            
+            
+            if (disabled) {
+                return progressRun(); // we do not update the display!
+            }
+            
+            if (!m.parent) {
+                // it's a top level one..
+                var layoutbase = new Ext.BorderLayout(document.body, {
+               
+                    center: {
+                         titlebar: false,
+                         autoScroll:false,
+                         closeOnTab: true,
+                         tabPosition: 'top',
+                         //resizeTabs: true,
+                         alwaysShowTabs: true,
+                         minTabWidth: 140
+                    }
+                });
+                var tree = m.tree();
+                tree.region = 'center';
+                m.el = layoutbase.addxtype(tree);
+                m.panel = m.el;
+                m.layout = m.panel.layout;    
+                return progressRun.defer(10, _this);
+            }
+            
+            var tree = m.tree();
+            tree.region = tree.region || m.region;
+            m.el = m.parent.el.addxtype(tree);
+            m.fireEvent('built', m);
+            m.panel = m.el;
+            m.layout = m.panel.layout;    
+            progressRun.defer(10, _this); 
+            
+        }
+        progressRun.defer(1, _this);
+     
+        
+        
+    }
+     
+   
+    
+    
+});
+ //<script type="text/javascript">
+
+
+/**
+ * @class Roo.Login
+ * @extends Roo.LayoutDialog
+ * A generic Login Dialog..... - only one needed in theory!?!?
+ *
+ * Fires XComponent builder on success...
+ * 
+ * Sends 
+ *    username,password, lang = for login actions.
+ *    check = 1 for periodic checking that sesion is valid.
+ *    passwordRequest = email request password
+ *    logout = 1 = to logout
+ * 
+ * Affects: (this id="????" elements)
+ *   loading  (removed) (used to indicate application is loading)
+ *   loading-mask (hides) (used to hide application when it's building loading)
+ *   
+ * 
+ * Usage: 
+ *    
+ * 
+ * Myapp.login = Roo.Login({
+     url: xxxx,
+   
+     realm : 'Myapp', 
+     
+     
+     method : 'POST',
+     
+     
+     * 
+ })
+ * 
+ * 
+ * 
+ **/
+ 
+Roo.Login = function(cfg)
+{
+    this.addEvents({
+        'refreshed' : true
+    });
+    
+    Roo.apply(this,cfg);
+    
+    Roo.onReady(function() {
+        this.onLoad();
+    }, this);
+    // call parent..
+    
+   
+    Roo.Login.superclass.constructor.call(this, this);
+    //this.addxtype(this.items[0]);
+    
+    
+}
+
+
+Roo.extend(Roo.Login, Roo.LayoutDialog, {
+    
+    /**
+     * @cfg {String} method
+     * Method used to query for login details.
+     */
+    
+    method : 'POST',
+    /**
+     * @cfg {String} url
+     * URL to query login data. - eg. baseURL + '/Login.php'
+     */
+    url : '',
+    
+    /**
+     * @property user
+     * The user data - if user.id < 0 then login will be bypassed. (used for inital setup situation.
+     * @type {Object} 
+     */
+    user : false,
+    /**
+     * @property checkFails
+     * Number of times we have attempted to get authentication check, and failed.
+     * @type {Number} 
+     */
+    checkFails : 0,
+      /**
+     * @property intervalID
+     * The window interval that does the constant login checking.
+     * @type {Number} 
+     */
+    intervalID : 0,
+    
+    
+    onLoad : function() // called on page load...
+    {
+        // load 
+         
+        if (Roo.get('loading')) { // clear any loading indicator..
+            Roo.get('loading').remove();
+        }
+        
+        //this.switchLang('en'); // set the language to english..
+       
+        this.check({
+            success:  function(response, opts)  {  // check successfull...
+            
+                var res = this.processResponse(response);
+                this.checkFails =0;
+                if (!res.success) { // error!
+                    this.checkFails = 5;
+                    //console.log('call failure');
+                    return this.failure(response,opts);
+                }
+                
+                if (!res.data.id) { // id=0 == login failure.
+                    return this.show();
+                }
+                
+                              
+                        //console.log(success);
+                this.fillAuth(res.data);   
+                this.checkFails =0;
+                Roo.XComponent.build();
+            },
+            failure : this.show
+        });
+        
+    }, 
+    
+    
+    check: function(cfg) // called every so often to refresh cookie etc..
+    {
+        if (cfg.again) { // could be undefined..
+            this.checkFails++;
+        } else {
+            this.checkFails = 0;
+        }
+        var _this = this;
+        if (this.sending) {
+            if ( this.checkFails > 4) {
+                Roo.MessageBox.alert("Error",  
+                    "Error getting authentication status. - try reloading, or wait a while", function() {
+                        _this.sending = false;
+                    }); 
+                return;
+            }
+            cfg.again = true;
+            _this.check.defer(10000, _this, [ cfg ]); // check in 10 secs.
+            return;
+        }
+        this.sending = true;
+        
+        Roo.Ajax.request({  
+            url: this.url,
+            params: {
+                getAuthUser: true
+            },  
+            method: this.method,
+            success:  cfg.success || this.success,
+            failure : cfg.failure || this.failure,
+            scope : this,
+            callCfg : cfg
+              
+        });  
+    }, 
+    
+    
+    logout: function()
+    {
+        window.onbeforeunload = function() { }; // false does not work for IE..
+        this.user = false;
+        var _this = this;
+        
+        Roo.Ajax.request({  
+            url: this.url,
+            params: {
+                logout: 1
+            },  
+            method: 'GET',
+            failure : function() {
+                Roo.MessageBox.alert("Error", "Error logging out. - continuing anyway.", function() {
+                    document.location = document.location.toString() + '?ts=' + Math.random();
+                });
+                
+            },
+            success : function() {
+                _this.user = false;
+                this.checkFails =0;
+                // fixme..
+                document.location = document.location.toString() + '?ts=' + Math.random();
+            }
+              
+              
+        }); 
+    },
+    
+    processResponse : function (response)
+    {
+        var res = '';
+        try {
+            res = Roo.decode(response.responseText);
+            // oops...
+            if (typeof(res) != 'object') {
+                res = { success : false, errorMsg : res, errors : true };
+            }
+            if (typeof(res.success) == 'undefined') {
+                res.success = false;
+            }
+            
+        } catch(e) {
+            res = { success : false,  errorMsg : response.responseText, errors : true };
+        }
+        return res;
+    },
+    
+    success : function(response, opts)  // check successfull...
+    {  
+        this.sending = false;
+        var res = this.processResponse(response);
+        if (!res.success) {
+            return this.failure(response, opts);
+        }
+        if (!res.data || !res.data.id) {
+            return this.failure(response,opts);
+        }
+        //console.log(res);
+        this.fillAuth(res.data);
+        
+        this.checkFails =0;
+        
+    },
+    
+    
+    failure : function (response, opts) // called if login 'check' fails.. (causes re-check)
+    {
+        this.authUser = -1;
+        this.sending = false;
+        var res = this.processResponse(response);
+        //console.log(res);
+        if ( this.checkFails > 2) {
+        
+            Roo.MessageBox.alert("Error", res.errorMsg ? res.errorMsg : 
+                "Error getting authentication status. - try reloading"); 
+            return;
+        }
+        opts.callCfg.again = true;
+        this.check.defer(1000, this, [ opts.callCfg ]);
+        return;  
+    },
+    
+    
+    
+    fillAuth: function(au) {
+        this.startAuthCheck();
+        this.authUserId = au.id;
+        this.authUser = au;
+        this.lastChecked = new Date();
+        this.fireEvent('refreshed', au);
+        //Pman.Tab.FaxQueue.newMaxId(au.faxMax);
+        //Pman.Tab.FaxTab.setTitle(au.faxNumPending);
+        au.lang = au.lang || 'en';
+        //this.switchLang(Roo.state.Manager.get('Pman.Login.lang', 'en'));
+        Roo.state.Manager.set( this.realm + 'lang' , au.lang);
+        this.switchLang(au.lang );
+        
+     
+        // open system... - -on setyp..
+        if (this.authUserId  < 0) {
+            Roo.MessageBox.alert("Warning", 
+                "This is an open system - please set up a admin user with a password.");  
+        }
+         
+        //Pman.onload(); // which should do nothing if it's a re-auth result...
+        
+             
+    },
+    
+    startAuthCheck : function() // starter for timeout checking..
+    {
+        if (this.intervalID) { // timer already in place...
+            return false;
+        }
+        var _this = this;
+        this.intervalID =  window.setInterval(function() {
+              _this.check(false);
+            }, 120000); // every 120 secs = 2mins..
+        
+        
+    },
+         
+    
+    switchLang : function (lang) 
+    {
+        _T = typeof(_T) == 'undefined' ? false : _T;
+          if (!_T || !lang.length) {
+            return;
+        }
+        
+        if (!_T && lang != 'en') {
+            Roo.MessageBox.alert("Sorry", "Language not available yet (" + lang +')');
+            return;
+        }
+        
+        if (typeof(_T.en) == 'undefined') {
+            _T.en = {};
+            Roo.apply(_T.en, _T);
+        }
+        
+        if (typeof(_T[lang]) == 'undefined') {
+            Roo.MessageBox.alert("Sorry", "Language not available yet (" + lang +')');
+            return;
+        }
+        
+        
+        Roo.apply(_T, _T[lang]);
+        // just need to set the text values for everything...
+        var _this = this;
+        /* this will not work ...
+        if (this.form) { 
+            
+               
+            function formLabel(name, val) {
+                _this.form.findField(name).fieldEl.child('label').dom.innerHTML  = val;
+            }
+            
+            formLabel('password', "Password"+':');
+            formLabel('username', "Email Address"+':');
+            formLabel('lang', "Language"+':');
+            this.dialog.setTitle("Login");
+            this.dialog.buttons[0].setText("Forgot Password");
+            this.dialog.buttons[1].setText("Login");
+        }
+        */
+        
+        
+    },
+    
+    
+    title: "Login",
+    modal: true,
+    width:  350,
+    //height: 230,
+    height: 180,
+    shadow: true,
+    minWidth:200,
+    minHeight:180,
+    //proxyDrag: true,
+    closable: false,
+    draggable: false,
+    collapsible: false,
+    resizable: false,
+    center: {  // needed??
+        autoScroll:false,
+        titlebar: false,
+       // tabPosition: 'top',
+        hideTabs: true,
+        closeOnTab: true,
+        alwaysShowTabs: false
+    } ,
+    listeners : {
+        
+        show  : function(dlg)
+        {
+            //console.log(this);
+            this.form = this.layout.getRegion('center').activePanel.form;
+            this.form.dialog = dlg;
+            this.buttons[0].form = this.form;
+            this.buttons[0].dialog = dlg;
+            this.buttons[1].form = this.form;
+            this.buttons[1].dialog = dlg;
+           
+           //this.resizeToLogo.defer(1000,this);
+            // this is all related to resizing for logos..
+            //var sz = Roo.get(Pman.Login.form.el.query('img')[0]).getSize();
+           //// if (!sz) {
+             //   this.resizeToLogo.defer(1000,this);
+             //   return;
+           // }
+            //var w = Ext.lib.Dom.getViewWidth() - 100;
+            //var h = Ext.lib.Dom.getViewHeight() - 100;
+            //this.resizeTo(Math.max(350, Math.min(sz.width + 30, w)),Math.min(sz.height+200, h));
+            //this.center();
+            if (this.disabled) {
+                this.hide();
+                return;
+            }
+            
+            if (this.user.id < 0) { // used for inital setup situations.
+                return;
+            }
+            
+            if (this.intervalID) {
+                // remove the timer
+                window.clearInterval(this.intervalID);
+                this.intervalID = false;
+            }
+            
+            
+            if (Roo.get('loading')) {
+                Roo.get('loading').remove();
+            }
+            if (Roo.get('loading-mask')) {
+                Roo.get('loading-mask').hide();
+            }
+            
+            //incomming._node = tnode;
+            this.form.reset();
+            //this.dialog.modal = !modal;
+            //this.dialog.show();
+            this.el.unmask(); 
+            
+            
+            this.form.setValues({
+                'username' : Roo.state.Manager.get(this.realm + '.username', ''),
+                'lang' : Roo.state.Manager.get(this.realm + '.lang', 'en')
+            });
+            
+            this.switchLang(Roo.state.Manager.get(this.realm + '.lang', 'en'));
+            if (this.form.findField('username').getValue().length > 0 ){
+                this.form.findField('password').focus();
+            } else {
+               this.form.findField('username').focus();
+            }
+    
+        }
+    },
+    items : [
+         {
+       
+            xtype : 'ContentPanel',
+            xns : Roo,
+            region: 'center',
+            fitToFrame : true,
+            
+            items : [
+    
+                {
+               
+                    xtype : 'Form',
+                    xns : Roo.form,
+                    labelWidth: 100,
+                    style : 'margin: 10px;',
+                    
+                    listeners : {
+                        actionfailed : function(f, act) {
+                            // form can return { errors: .... }
+                                
+                            //act.result.errors // invalid form element list...
+                            //act.result.errorMsg// invalid form element list...
+                            
+                            this.dialog.el.unmask();
+                            Roo.MessageBox.alert("Error", act.result.errorMsg ? act.result.errorMsg : 
+                                        "Login failed - communication error - try again.");
+                                      
+                        },
+                        actioncomplete: function(re, act) {
+                             
+                            Roo.state.Manager.set(
+                                this.dialog.realm + '.username',  
+                                    this.findField('username').getValue()
+                            );
+                            Roo.state.Manager.set(
+                                this.dialog.realm + '.lang',  
+                                this.findField('lang').getValue() 
+                            );
+                            
+                            this.dialog.fillAuth(act.result.data);
+                              
+                            this.dialog.hide();
+                            
+                            if (Roo.get('loading-mask')) {
+                                Roo.get('loading-mask').show();
+                            }
+                            Roo.XComponent.build();
+                            
+                             
+                            
+                        }
+                    },
+                    items : [
+                        {
+                            xtype : 'TextField',
+                            xns : Roo.form,
+                            fieldLabel: "Email Address",
+                            name: 'username',
+                            width:200,
+                            autoCreate : {tag: "input", type: "text", size: "20"}
+                        },
+                        {
+                            xtype : 'TextField',
+                            xns : Roo.form,
+                            fieldLabel: "Password",
+                            inputType: 'password',
+                            name: 'password',
+                            width:200,
+                            autoCreate : {tag: "input", type: "text", size: "20"},
+                            listeners : {
+                                specialkey : function(e,ev) {
+                                    if (ev.keyCode == 13) {
+                                        this.form.dialog.el.mask("Logging in");
+                                        this.form.doAction('submit', {
+                                            url: this.form.dialog.url,
+                                            method: this.form.dialog.method
+                                        });
+                                    }
+                                }
+                            }  
+                        },
+                        {
+                            xtype : 'ComboBox',
+                            xns : Roo.form,
+                            fieldLabel: "Language",
+                            name : 'langdisp',
+                            store: {
+                                xtype : 'SimpleStore',
+                                fields: ['lang', 'ldisp'],
+                                data : [
+                                    [ 'en', 'English' ],
+                                    [ 'zh_HK' , '\u7E41\u4E2D' ],
+                                    [ 'zh_CN', '\u7C21\u4E2D' ]
+                                ]
+                            },
+                            
+                            valueField : 'lang',
+                            hiddenName:  'lang',
+                            width: 200,
+                            displayField:'ldisp',
+                            typeAhead: false,
+                            editable: false,
+                            mode: 'local',
+                            triggerAction: 'all',
+                            emptyText:'Select a Language...',
+                            selectOnFocus:true,
+                            listeners : {
+                                select :  function(cb, rec, ix) {
+                                    this.form.switchLang(rec.data.lang);
+                                }
+                            }
+                        
+                        }
+                    ]
+                }
+                  
+                
+            ]
+        }
+    ],
+    buttons : [
+        {
+            xtype : 'Button',
+            xns : 'Roo',
+            text : "Forgot Password",
+            listeners : {
+                click : function() {
+                    //console.log(this);
+                    var n = this.form.findField('username').getValue();
+                    if (!n.length) {
+                        Roo.MessageBox.alert("Error", "Fill in your email address");
+                        return;
+                    }
+                    Roo.Ajax.request({
+                        url: this.dialog.url,
+                        params: {
+                            passwordRequest: n
+                        },
+                        method: this.dialog.method,
+                        success:  function(response, opts)  {  // check successfull...
+                        
+                            var res = this.dialog.processResponse(response);
+                            if (!res.success) { // error!
+                               Roo.MessageBox.alert("Error" ,
+                                    res.errorMsg ? res.errorMsg  : "Problem Requesting Password Reset");
+                               return;
+                            }
+                            Roo.MessageBox.alert("Notice" ,
+                                "Please check you email for the Password Reset message");
+                        },
+                        failure : function() {
+                            Roo.MessageBox.alert("Error" , "Problem Requesting Password Reset");
+                        }
+                        
+                    });
+                }
+            }
+        },
+        {
+            xtype : 'Button',
+            xns : 'Roo',
+            text : "Login",
+            listeners : {
+                
+                click : function () {
+                        
+                    this.dialog.el.mask("Logging in");
+                    this.form.doAction('submit', {
+                            url: this.dialog.url,
+                            method: this.dialog.method
+                    });
+                }
+            }
+        }
+    ]
+  
+  
+})
+ 
+
+
+   
