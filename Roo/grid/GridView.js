@@ -547,7 +547,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
     ensureVisible : function(row, col, hscroll)
     {
         Roo.log('GridView.ensureVisible,' + row + ',' + col);
-        return null; //disable for testing.
+        //return null; //disable for testing.
         if(typeof row != "number"){
             row = row.rowIndex;
         }
@@ -570,13 +570,22 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         var cleft = parseInt(el.offsetLeft, 10);
         var cbot = ctop + el.offsetHeight;
         var cright = cleft + el.offsetWidth;
-
+        
         var ch = c.clientHeight - this.mainHd.dom.offsetHeight;
         var stop = parseInt(c.scrollTop, 10);
         var sleft = parseInt(c.scrollLeft, 10);
         var sbot = stop + ch;
         var sright = sleft + c.clientWidth;
-
+        
+        Roo.log('GridView.ensureVisible:' +
+                ' ctop' + ctop +
+                ' c.clientHeight' + c.clientHeight +
+                ' this.mainHd.dom.offsetHeight' + this.mainHd.dom.offsetHeight +
+                ' stop' + stop +
+                ' cbot' + cbot +
+                ' ch' + ch  
+                );
+        
         if(ctop < stop){
             c.scrollTop = ctop;
         }else if(cbot > sbot){
