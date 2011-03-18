@@ -47781,8 +47781,8 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                 );
         
         if(ctop <= stop){
-            c.scrollTop = ctop;
-            Roo.log("set scrolltop to ctop");
+          //  c.scrollTop = ctop;
+            Roo.log("set scrolltop to ctop DISABLE?");
         }else if(cbot > sbot){
             Roo.log("set scrolltop to cbot-ch");
             c.scrollTop = cbot-ch;
