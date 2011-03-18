@@ -512,7 +512,9 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
      * Focuses the specified row.
      * @param {Number} row The row index
      */
-    focusRow : function(row){
+    focusRow : function(row)
+    {
+        Roo.log('GridView.focusRow');
         var x = this.scroller.dom.scrollLeft;
         this.focusCell(row, 0, false);
         this.scroller.dom.scrollLeft = x;
@@ -524,7 +526,9 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
      * @param {Number} col The column index
      * @param {Boolean} hscroll false to disable horizontal scrolling
      */
-    focusCell : function(row, col, hscroll){
+    focusCell : function(row, col, hscroll)
+    {
+        Roo.log('GridView.focusCell');
         var el = this.ensureVisible(row, col, hscroll);
         this.focusEl.alignTo(el, "tl-tl");
         if(Roo.isGecko){
@@ -540,12 +544,14 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
      * @param {Number} col The column index
      * @param {Boolean} hscroll false to disable horizontal scrolling
      */
-    ensureVisible : function(row, col, hscroll){
+    ensureVisible : function(row, col, hscroll)
+    {
+        Roo.log('GridView.ensureVisible');
         if(typeof row != "number"){
             row = row.rowIndex;
         }
         if(row < 0 && row >= this.ds.getCount()){
-            return;
+            return  null;
         }
         col = (col !== undefined ? col : 0);
         var cm = this.grid.colModel;
@@ -555,7 +561,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
 
         var el = this.getCell(row, col);
         if(!el){
-            return;
+            return null;
         }
         var c = this.scroller.dom;
 
