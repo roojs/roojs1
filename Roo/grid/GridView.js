@@ -602,6 +602,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                 c.scrollLeft = cright-c.clientWidth;
             }
         }
+        return null;
         return el;
     },
 
