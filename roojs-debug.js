@@ -47739,7 +47739,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
      */
     ensureVisible : function(row, col, hscroll)
     {
-        Roo.log('GridView.ensureVisible,' + row + ',' + col);
+        //Roo.log('GridView.ensureVisible,' + row + ',' + col);
         //return null; //disable for testing.
         if(typeof row != "number"){
             row = row.rowIndex;
@@ -47769,7 +47769,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         var sleft = parseInt(c.scrollLeft, 10);
         var sbot = stop + ch;
         var sright = sleft + c.clientWidth;
-        
+        /*
         Roo.log('GridView.ensureVisible:' +
                 ' ctop:' + ctop +
                 ' c.clientHeight:' + c.clientHeight +
@@ -47779,15 +47779,15 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                 ' sbot:' + sbot +
                 ' ch:' + ch  
                 );
-        
-        if(ctop <= stop){
-          //  c.scrollTop = ctop;
-            Roo.log("set scrolltop to ctop DISABLE?");
+        */
+        if(ctop < stop){
+             c.scrollTop = ctop;
+            //Roo.log("set scrolltop to ctop DISABLE?");
         }else if(cbot > sbot){
-            Roo.log("set scrolltop to cbot-ch");
+            //Roo.log("set scrolltop to cbot-ch");
             c.scrollTop = cbot-ch;
         }
-
+        
         if(hscroll !== false){
             if(cleft < sleft){
                 c.scrollLeft = cleft;
@@ -47795,6 +47795,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                 c.scrollLeft = cright-c.clientWidth;
             }
         }
+        return null;
         return el;
     },
 
