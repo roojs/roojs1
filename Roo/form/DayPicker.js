@@ -104,7 +104,7 @@ Roo.extend(Roo.form.DayPicker, Roo.form.Field,  {
      * @return {Boolean} True if checked, else false
      */
     getValue : function(){
-        return '';
+        return this.el.dom.value;
         
     },
 
