@@ -49,6 +49,11 @@ Roo.onReady(function(){
             name: 'email',
             vtype:'email',
             width:175
+        }),
+         new Roo.form.DayPicker({
+            fieldLabel: 'Pick a day',
+            name: 'daypick',
+            width:175
         })
     );
 
