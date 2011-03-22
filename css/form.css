@@ -77,7 +77,7 @@ on our demo's this is far to small
 */
 .x-form-item .x-form-text 
 {
-     height: 14px; /* need to determine when this should be larger or smaller.. ? */
+    /* height: 14px;  need to determine when this should be larger or smaller.. ? */
 }
 
 /* -- border around text elements */
