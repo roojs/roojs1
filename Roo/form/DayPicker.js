@@ -138,10 +138,25 @@ Roo.extend(Roo.form.DayPicker, Roo.form.Field,  {
         if (!this.el.dom.value) {
             return;
         }
+        var old = this.el.dom.value ;
         this.el.dom.value = v;
         if (suppressEvent) {
             return ;
         }
+        // update display..
+        this.viewEl.select('img',true).each(function(e,i,n)  {
+            
+            var on = e.is(".x-menu-item-checked");
+            var newv = v.substring(n,1) == n;
+            if (on != newv) {
+                e.toggleClass('x-menu-item-checked');
+            }
+            
+        });
+        
+        
+        this.fireEvent('change', this, v, old);
+        
         
     },
    
