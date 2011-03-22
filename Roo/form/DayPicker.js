@@ -144,7 +144,7 @@ Roo.extend(Roo.form.DayPicker, Roo.form.Field,  {
             return ;
         }
         var cur = {};
-        for (var i =0; i < v.length) {
+        for (var i =0; i < v.length;i++) {
             cur[v.substring(i,i+1)] = 1 ;
         }
         // update display..
