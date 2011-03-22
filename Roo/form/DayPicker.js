@@ -76,7 +76,7 @@ Roo.extend(Roo.form.DayPicker, Roo.form.Field,  {
         this.wrap = this.el.wrap({cls: 'x-form-daypick-item '});
         
         var r1 = '<table><tr>'
-        var r2 = '<tr class="x-form-daypick-icons>';
+        var r2 = '<tr class="x-form-daypick-icons">';
         for (var i=0; i < 7; i++) {
             r1+= '<td>' + Date.dayNames[i].substring(0,3) + '</td>';
             r2+= '<td><img class="x-menu-item-icon" src="' + Roo.BLANK_IMAGE_URL  +'"></td>';
