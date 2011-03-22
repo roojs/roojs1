@@ -123,9 +123,7 @@ Roo.extend(Roo.form.DayPicker, Roo.form.Field,  {
     {
         var val = '';
         this.viewEl.select('img',true).each(function(e,i,n)  {
-           Roo.log(e);
-           Roo.log(i);
-           Roo.log(n);
+            val += e.is(".x-menu-item-checked") ? String(n) : ' ';
         });
     },
 
