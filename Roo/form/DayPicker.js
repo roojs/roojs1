@@ -83,10 +83,10 @@ Roo.extend(Roo.form.DayPicker, Roo.form.Field,  {
         }
         
         var viewEl = this.wrap.createChild( r1 + '</tr>' + r2 + '</tr></table>');
-        
+        viewEl.select('img').on('click', this.onClick, this);
         this.viewEl = viewEl;   
         
-        this.wrap.on('click', this.onClick,  this); 
+        
         
         this.el.on('DOMAttrModified', this.setFromHidden,  this); //ff
         this.el.on('propertychange', this.setFromHidden,  this);  //ie
