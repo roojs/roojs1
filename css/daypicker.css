@@ -2,7 +2,8 @@
 
 
 .x-form-daypick-item td {
-    
+    width: 35px;
+    text-align: center;
 }
 
 .x-form-daypick-icons td img {
