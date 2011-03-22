@@ -126,7 +126,7 @@ Roo.extend(Roo.form.DayPicker, Roo.form.Field,  {
            Roo.log(e);
            Roo.log(i);
         });
-    }
+    },
 
     /**
      * Sets the checked state of the checkbox.
