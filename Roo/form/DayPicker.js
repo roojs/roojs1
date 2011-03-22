@@ -135,7 +135,7 @@ Roo.extend(Roo.form.DayPicker, Roo.form.Field,  {
      * @param {Boolean/String} suppressEvent - whether to suppress the checkchange event.
      */
     setValue : function(v,suppressEvent){
-        if (!this.el.dom.value) {
+        if (!this.el.dom) {
             return;
         }
         var old = this.el.dom.value ;
