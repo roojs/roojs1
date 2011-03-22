@@ -125,6 +125,7 @@ Roo.extend(Roo.form.DayPicker, Roo.form.Field,  {
         this.viewEl.select('img',true).each(function(e,i,n)  {
             val += e.is(".x-menu-item-checked") ? String(n) : ' ';
         });
+        this.setValue(val, true);
     },
 
     /**
@@ -134,8 +135,14 @@ Roo.extend(Roo.form.DayPicker, Roo.form.Field,  {
      * @param {Boolean/String} suppressEvent - whether to suppress the checkchange event.
      */
     setValue : function(v,suppressEvent){
+        if (!this.el.dom.value) {
+            return;
+        }
+        this.el.dom.value = v;
+        if (suppressEvent) {
+            return ;
+        }
         
-       
     },
    
     // handle setting of hidden value by some other method!!?!?
