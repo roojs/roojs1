@@ -82,7 +82,7 @@ Roo.extend(Roo.form.DayPicker, Roo.form.Field,  {
             r2+= '<td><img class="x-menu-item-icon" src="' + Roo.BLANK_IMAGE_URL  +'"></td>';
         }
         
-        var viewEl = this.wrap.createChild( r1 + '</tr>' + r2 + '</tr></table>';);
+        var viewEl = this.wrap.createChild( r1 + '</tr>' + r2 + '</tr></table>');
         
         this.viewEl = viewEl;   
         
