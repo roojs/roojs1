@@ -87,7 +87,7 @@ Roo.extend(Roo.form.DayPicker, Roo.form.Field,  {
         this.viewEl = viewEl;   
         
         
-        
+        // this will not work on Chrome!!!
         this.el.on('DOMAttrModified', this.setFromHidden,  this); //ff
         this.el.on('propertychange', this.setFromHidden,  this);  //ie
         
