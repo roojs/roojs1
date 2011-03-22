@@ -122,9 +122,10 @@ Roo.extend(Roo.form.DayPicker, Roo.form.Field,  {
     refreshValue : function()
     {
         var val = '';
-        this.viewEl.select('img').each(function(e,i)  {
+        this.viewEl.select('img').each(function(e,i,n)  {
            Roo.log(e);
            Roo.log(i);
+           Roo.log(n);
         });
     },
 
