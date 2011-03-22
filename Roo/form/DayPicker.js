@@ -112,10 +112,21 @@ Roo.extend(Roo.form.DayPicker, Roo.form.Field,  {
     onClick : function(e){ 
         //this.setChecked(!this.checked);
         Roo.get(e.target).toggleClass('x-menu-item-checked');
+        this.refreshValue();
         //if(this.el.dom.checked != this.checked){
         //    this.setValue(this.el.dom.checked);
        // }
     },
+    
+    // private
+    refreshValue : function()
+    {
+        var val = '';
+        viewEl.select('img').each(function(e,i)) {
+           Roo.log(e);
+           Roo.log(e);
+        });
+    }
 
     /**
      * Sets the checked state of the checkbox.
