@@ -124,7 +124,7 @@ Roo.extend(Roo.form.DayPicker, Roo.form.Field,  {
         var val = '';
         viewEl.select('img').each(function(e,i)) {
            Roo.log(e);
-           Roo.log(e);
+           Roo.log(i);
         });
     }
 
