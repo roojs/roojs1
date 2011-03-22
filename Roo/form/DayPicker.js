@@ -109,9 +109,9 @@ Roo.extend(Roo.form.DayPicker, Roo.form.Field,  {
     },
 
 	// private
-    onClick : function(){ 
+    onClick : function(e){ 
         //this.setChecked(!this.checked);
-
+        Roo.log(e);
         //if(this.el.dom.checked != this.checked){
         //    this.setValue(this.el.dom.checked);
        // }
