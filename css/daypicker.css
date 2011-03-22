@@ -1,0 +1,19 @@
+
+
+
+.x-form-daypick-item td div {
+    width: 30px;
+    text-align: center;
+}
+
+.x-form-daypick-icons td img {
+    background: url(../images/default/menu/chk-sprite.gif) no-repeat 0 0;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    margin-left: 5px;
+    
+}
+.x-form-daypick-icons td img.x-menu-item-checked {
+    background-position: 0 -16px;
+}

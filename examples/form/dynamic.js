@@ -10,6 +10,7 @@
  */
  
 var mform;
+var simple
 Roo.onReady(function(){
 
     Roo.QuickTips.init();
@@ -20,7 +21,7 @@ Roo.onReady(function(){
     /*
      * ================  Simple form  =======================
      */
-    var simple = new Roo.form.Form({
+    simple = new Roo.form.Form({
         labelWidth: 75, // label settings here cascade unless overridden
         url:'save-form.php'
     });
@@ -48,6 +49,11 @@ Roo.onReady(function(){
             fieldLabel: 'Email',
             name: 'email',
             vtype:'email',
+            width:175
+        }),
+         new Roo.form.DayPicker({
+            fieldLabel: 'Pick a day',
+            name: 'daypick',
             width:175
         })
     );
