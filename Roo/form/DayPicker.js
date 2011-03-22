@@ -111,7 +111,7 @@ Roo.extend(Roo.form.DayPicker, Roo.form.Field,  {
 	// private
     onClick : function(e){ 
         //this.setChecked(!this.checked);
-        Roo.log(e);
+        Roo.get(e.target).toggleClass('x-menu-item-checked');
         //if(this.el.dom.checked != this.checked){
         //    this.setValue(this.el.dom.checked);
        // }
