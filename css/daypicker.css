@@ -12,6 +12,7 @@
     height: 16px;
     margin: 0;
     margin-left: 5px;
+    cursor: pointer;
     
 }
 .x-form-daypick-icons td img.x-menu-item-checked {
