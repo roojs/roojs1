@@ -143,15 +143,12 @@ Roo.extend(Roo.form.DayPicker, Roo.form.Field,  {
         if (suppressEvent) {
             return ;
         }
-        var cur = {};
-        for (var i =0; i < v.length;i++) {
-            cur[v.substring(i,i+1)] = 1 ;
-        }
+         
         // update display..
         this.viewEl.select('img',true).each(function(e,i,n)  {
             
             var on = e.is(".x-menu-item-checked");
-            var newv = typeof(cur[n]) != 'undefined';
+            var newv = v.indexOf(String(n)) > -1;
             if (on != newv) {
                 e.toggleClass('x-menu-item-checked');
             }
