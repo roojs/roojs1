@@ -1,0 +1,184 @@
+<html><head><title>../roojs1/Roo/form/DayPicker.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * 
+ * Licence- LGPL
+ * 
+ */
+
+/**
+ * @class Roo.form.DayPicker
+ * @extends Roo.form.Field
+ * A Day picker show [M] [T] [W] ....
+ * @constructor
+ * Creates a new Day Picker
+ * @param {Object} config Configuration options
+ */
+</span><span class="jsdoc-var">Roo.form.DayPicker</span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.form.DayPicker.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+     
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.form.DayPicker</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.form.Field</span><span class="jsdoc-syntax">,  {
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} focusClass The CSS class to use when the checkbox receives focus (defaults to undefined)
+     */
+    </span><span class="jsdoc-var">focusClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} fieldClass The default CSS class for the checkbox (defaults to &quot;x-form-field&quot;)
+     */
+    </span><span class="jsdoc-var">fieldClass</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-form-field&quot;</span><span class="jsdoc-syntax">,
+   
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String/Object} autoCreate A DomHelper element spec, or true for a default element spec (defaults to
+     * {tag: &quot;input&quot;, type: &quot;checkbox&quot;, autocomplete: &quot;off&quot;})
+     */
+    </span><span class="jsdoc-var">defaultAutoCreate </span><span class="jsdoc-syntax">: { </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;input&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'hidden'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">autocomplete</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;off&quot;</span><span class="jsdoc-syntax">},
+    
+   
+    </span><span class="jsdoc-var">actionMode </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'viewEl'</span><span class="jsdoc-syntax">, 
+    </span><span class="jsdoc-comment">//
+    // private
+ 
+    </span><span class="jsdoc-var">inputType </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'hidden'</span><span class="jsdoc-syntax">,
+    
+     
+    </span><span class="jsdoc-var">inputElement</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// real input element?
+    </span><span class="jsdoc-var">basedOn</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// ????
+    
+    </span><span class="jsdoc-var">isFormField</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// not sure where this is needed!!!!
+
+    </span><span class="jsdoc-var">onResize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">Roo.form.Checkbox.superclass.onResize.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.boxLabel</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.alignTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.wrap</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'c-c'</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">Roo.form.Checkbox.superclass.initEvents.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;change&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+
+
+    </span><span class="jsdoc-var">getResizeEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.wrap</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">getPositionEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.wrap</span><span class="jsdoc-syntax">;
+    },
+
+    
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">Roo.form.Checkbox.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
+       
+        </span><span class="jsdoc-var">this.wrap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.wrap</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-form-daypick-item '</span><span class="jsdoc-syntax">});
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r1 </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;table&gt;&lt;tr&gt;'
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r2 </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;tr class=&quot;x-form-daypick-icons&quot;&gt;'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">=0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; 7; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-var">r1</span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">'&lt;td&gt;&lt;div&gt;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">Date.dayNames</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.substring</span><span class="jsdoc-syntax">(0,3) + </span><span class="jsdoc-string">'&lt;/div&gt;&lt;/td&gt;'</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">r2</span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">'&lt;td&gt;&lt;img class=&quot;x-menu-item-icon&quot; src=&quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">Roo.BLANK_IMAGE_URL  </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'&quot;&gt;&lt;/td&gt;'</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">viewEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.wrap.createChild</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">r1 </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&lt;/tr&gt;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">r2 </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&lt;/tr&gt;&lt;/table&gt;'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">viewEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.viewEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">viewEl</span><span class="jsdoc-syntax">;   
+        
+        
+        </span><span class="jsdoc-comment">// this will not work on Chrome!!!
+        </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'DOMAttrModified'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.setFromHidden</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">//ff
+        </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'propertychange'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.setFromHidden</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);  </span><span class="jsdoc-comment">//ie
+        
+        
+          
+
+    </span><span class="jsdoc-syntax">},
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">initValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.emptyFn</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the checked state of the checkbox.
+     * @return {Boolean} True if checked, else false
+     */
+    </span><span class="jsdoc-var">getValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.dom.value</span><span class="jsdoc-syntax">;
+        
+    },
+
+	</span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){ 
+        </span><span class="jsdoc-comment">//this.setChecked(!this.checked);
+        </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.target</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.toggleClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'x-menu-item-checked'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.refreshValue</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-comment">//if(this.el.dom.checked != this.checked){
+        //    this.setValue(this.el.dom.checked);
+       // }
+    </span><span class="jsdoc-syntax">},
+    
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">refreshValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">val </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.viewEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">)  {
+            </span><span class="jsdoc-var">val </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">e.is</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;.x-menu-item-checked&quot;</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        });
+        </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Sets the checked state of the checkbox.
+     * On is always based on a string comparison between inputValue and the param.
+     * @param {Boolean/String} value - the value to set 
+     * @param {Boolean/String} suppressEvent - whether to suppress the checkchange event.
+     */
+    </span><span class="jsdoc-var">setValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">suppressEvent</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">old </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.dom.value </span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.el.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">suppressEvent</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">;
+        }
+         
+        </span><span class="jsdoc-comment">// update display..
+        </span><span class="jsdoc-var">this.viewEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">)  {
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">on </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.is</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;.x-menu-item-checked&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">newv </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">)) &gt; -1;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">on </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">newv</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">e.toggleClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'x-menu-item-checked'</span><span class="jsdoc-syntax">);
+            }
+            
+        });
+        
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'change'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">old</span><span class="jsdoc-syntax">);
+        
+        
+    },
+   
+    </span><span class="jsdoc-comment">// handle setting of hidden value by some other method!!?!?
+    </span><span class="jsdoc-var">setFromHidden</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-comment">//console.log(&quot;SET FROM HIDDEN&quot;);
+        //alert('setFrom hidden');
+        </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom.value</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">onDestroy </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.viewEl</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.viewEl</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.remove</span><span class="jsdoc-syntax">();
+        }
+         
+        </span><span class="jsdoc-var">Roo.form.DayPicker.superclass.onDestroy.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    }
+
+});</span></code></body></html>
