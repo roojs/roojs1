@@ -75,7 +75,11 @@ Roo.extend(Roo.form.DayPicker, Roo.form.Field,  {
        
         this.wrap = this.el.wrap({cls: 'x-form-daypick-item '});
         
+<<<<<<< HEAD
         var r1 = '<table><tr>'
+=======
+        var r1 = '<table><tr>';
+>>>>>>> bb63e2e529c47fb77152cfc02100d5ff9fdca211
         var r2 = '<tr class="x-form-daypick-icons">';
         for (var i=0; i < 7; i++) {
             r1+= '<td><div>' + Date.dayNames[i].substring(0,3) + '</div></td>';
@@ -143,15 +147,23 @@ Roo.extend(Roo.form.DayPicker, Roo.form.Field,  {
         if (suppressEvent) {
             return ;
         }
+<<<<<<< HEAD
         var cur = {};
         for (var i =0; i < v.length;i++) {
             cur[v.substring(i,i+1)] = 1 ;
         }
+=======
+         
+>>>>>>> bb63e2e529c47fb77152cfc02100d5ff9fdca211
         // update display..
         this.viewEl.select('img',true).each(function(e,i,n)  {
             
             var on = e.is(".x-menu-item-checked");
+<<<<<<< HEAD
             var newv = typeof(cur[n]) != 'undefined';
+=======
+            var newv = v.indexOf(String(n)) > -1;
+>>>>>>> bb63e2e529c47fb77152cfc02100d5ff9fdca211
             if (on != newv) {
                 e.toggleClass('x-menu-item-checked');
             }

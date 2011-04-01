@@ -1,19 +1,40 @@
 
 
 
+<<<<<<< HEAD
 .x-form-daypick-item td div {
+=======
+.x-form-daypick-item td div
+{
+>>>>>>> bb63e2e529c47fb77152cfc02100d5ff9fdca211
     width: 30px;
     text-align: center;
 }
 
+<<<<<<< HEAD
 .x-form-daypick-icons td img {
+=======
+.x-form-daypick-icons td img
+{
+>>>>>>> bb63e2e529c47fb77152cfc02100d5ff9fdca211
     background: url(../images/default/menu/chk-sprite.gif) no-repeat 0 0;
     width: 16px;
     height: 16px;
     margin: 0;
     margin-left: 5px;
+<<<<<<< HEAD
     
 }
 .x-form-daypick-icons td img.x-menu-item-checked {
     background-position: 0 -16px;
 }
+=======
+    cursor: pointer;
+    
+}
+
+.x-form-daypick-icons td img.x-menu-item-checked
+{
+    background-position: 0 -16px;
+}
+>>>>>>> bb63e2e529c47fb77152cfc02100d5ff9fdca211

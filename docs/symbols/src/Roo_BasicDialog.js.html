@@ -1177,7 +1177,8 @@ if(!dialog){
         </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-comment">// not sure why we use documentElement here.. - it should always be body.
         // IE7 borks horribly if we use documentElement.
-        </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">Roo.isIE </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-var">document.body </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">document.documentElement</span><span class="jsdoc-syntax">) : (</span><span class="jsdoc-var">document.documentElement </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">) )</span><span class="jsdoc-var">.createChild</span><span class="jsdoc-syntax">();
+        // webkit also does not like documentElement - it creates a body element...
+        </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">document.body </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">document.documentElement </span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.createChild</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-comment">//config.autoCreate = true;
     </span><span class="jsdoc-syntax">}
     

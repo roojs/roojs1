@@ -336,16 +336,16 @@ Roo.factory(conf, Roo.data);
             }
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">buf </span><span class="jsdoc-syntax">= [];
             </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">key </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ov </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">encodeURIComponent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ov </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.encodeURIComponent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">ov</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
                     </span><span class="jsdoc-var">buf.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;=&amp;&quot;</span><span class="jsdoc-syntax">);
                 }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;function&quot; </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;object&quot;</span><span class="jsdoc-syntax">){
-                    </span><span class="jsdoc-var">buf.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;=&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">encodeURIComponent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ov</span><span class="jsdoc-syntax">), </span><span class="jsdoc-string">&quot;&amp;&quot;</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">buf.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;=&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.encodeURIComponent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ov</span><span class="jsdoc-syntax">), </span><span class="jsdoc-string">&quot;&amp;&quot;</span><span class="jsdoc-syntax">);
                 }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ov </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Array</span><span class="jsdoc-syntax">){
                     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ov.length</span><span class="jsdoc-syntax">) {
 	                    </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ov.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
-	                        </span><span class="jsdoc-var">buf.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;=&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">encodeURIComponent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ov</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] === </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">ov</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]), </span><span class="jsdoc-string">&quot;&amp;&quot;</span><span class="jsdoc-syntax">);
+	                        </span><span class="jsdoc-var">buf.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;=&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.encodeURIComponent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ov</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] === </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">ov</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]), </span><span class="jsdoc-string">&quot;&amp;&quot;</span><span class="jsdoc-syntax">);
 	                    }
 	                } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
 	                    </span><span class="jsdoc-var">buf.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;=&amp;&quot;</span><span class="jsdoc-syntax">);
@@ -354,6 +354,60 @@ Roo.factory(conf, Roo.data);
             }
             </span><span class="jsdoc-var">buf.pop</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">buf.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+        },
+         </span><span class="jsdoc-comment">/**
+         * Safe version of encodeURIComponent
+         * @param {String} data 
+         * @return {String} 
+         */
+        
+        </span><span class="jsdoc-var">encodeURIComponent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">)
+        {
+            </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">encodeURIComponent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">);
+            } </span><span class="jsdoc-keyword">catch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {} </span><span class="jsdoc-comment">// should be an uri encode error.
+            
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">){
+               </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-comment">// http://stackoverflow.com/questions/2596483/unicode-and-uri-encoding-decoding-and-escaping-in-javascript
+            </span><span class="jsdoc-keyword">function </span><span class="jsdoc-var">nibble_to_hex</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nibble</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">chars </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'0123456789ABCDEF'</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">chars.charAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nibble</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">data.toString</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">buffer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">=0; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">&lt;</span><span class="jsdoc-var">data.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">data.charCodeAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Array</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">&gt; 0x10000){
+                        </span><span class="jsdoc-comment">// 4 bytes
+                    </span><span class="jsdoc-var">bs</span><span class="jsdoc-syntax">[0] = 0xF0 | ((</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">&amp; 0x1C0000) &gt;&gt;&gt; 18);
+                    </span><span class="jsdoc-var">bs</span><span class="jsdoc-syntax">[1] = 0x80 | ((</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">&amp; 0x3F000) &gt;&gt;&gt; 12);
+                    </span><span class="jsdoc-var">bs</span><span class="jsdoc-syntax">[2] = 0x80 | ((</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">&amp; 0xFC0) &gt;&gt;&gt; 6);
+                    </span><span class="jsdoc-var">bs</span><span class="jsdoc-syntax">[3] = 0x80 | (</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">&amp; 0x3F);
+                }</span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">&gt; 0x800){
+                         </span><span class="jsdoc-comment">// 3 bytes
+                    </span><span class="jsdoc-var">bs</span><span class="jsdoc-syntax">[0] = 0xE0 | ((</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">&amp; 0xF000) &gt;&gt;&gt; 12);
+                    </span><span class="jsdoc-var">bs</span><span class="jsdoc-syntax">[1] = 0x80 | ((</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">&amp; 0xFC0) &gt;&gt;&gt; 6);
+                    </span><span class="jsdoc-var">bs</span><span class="jsdoc-syntax">[2] = 0x80 | (</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">&amp; 0x3F);
+                }</span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">&gt; 0x80){
+                       </span><span class="jsdoc-comment">// 2 bytes
+                    </span><span class="jsdoc-var">bs</span><span class="jsdoc-syntax">[0] = 0xC0 | ((</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">&amp; 0x7C0) &gt;&gt;&gt; 6);
+                    </span><span class="jsdoc-var">bs</span><span class="jsdoc-syntax">[1] = 0x80 | (</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">&amp; 0x3F);
+                }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                        </span><span class="jsdoc-comment">// 1 byte
+                    </span><span class="jsdoc-var">bs</span><span class="jsdoc-syntax">[0] = </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">=0; </span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">&lt;</span><span class="jsdoc-var">bs.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">++){
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">bs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">];
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nibble_to_hex</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">&amp; 0xF0) &gt;&gt;&gt; 4) 
+                            + </span><span class="jsdoc-var">nibble_to_hex</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">&amp;0x0F);
+                    </span><span class="jsdoc-var">buffer </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">'%'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">hex</span><span class="jsdoc-syntax">;
+               }
+            }
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">buffer</span><span class="jsdoc-syntax">;    
+             
         },
 
         </span><span class="jsdoc-comment">/**
