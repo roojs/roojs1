@@ -101,98 +101,99 @@
     },
 
     </span><span class="jsdoc-var">init</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">grid</span><span class="jsdoc-syntax">){
-		</span><span class="jsdoc-var">Roo.grid.GridView.superclass.init.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">grid</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Roo.grid.GridView.superclass.init.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">grid</span><span class="jsdoc-syntax">);
 
-		</span><span class="jsdoc-var">this.bind</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">grid.dataSource</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">grid.colModel</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.bind</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">grid.dataSource</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">grid.colModel</span><span class="jsdoc-syntax">);
 
-	    </span><span class="jsdoc-var">grid.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;headerclick&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.handleHeaderClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">grid.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;headerclick&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.handleHeaderClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">grid.trackMouseOver</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">grid.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mouseover&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onRowOver</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-	        </span><span class="jsdoc-var">grid.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mouseout&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onRowOut</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-	    }
-	    </span><span class="jsdoc-var">grid.cancelTextSelection </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){};
-		</span><span class="jsdoc-var">this.gridId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">grid.id</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">grid.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mouseout&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onRowOut</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">grid.cancelTextSelection </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){};
+        </span><span class="jsdoc-var">this.gridId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">grid.id</span><span class="jsdoc-syntax">;
 
-		</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tpls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.templates </span><span class="jsdoc-syntax">|| {};
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tpls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.templates </span><span class="jsdoc-syntax">|| {};
 
-		</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">tpls.master</span><span class="jsdoc-syntax">){
-		    </span><span class="jsdoc-var">tpls.master </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">(
-		       </span><span class="jsdoc-string">'&lt;div class=&quot;x-grid&quot; hidefocus=&quot;true&quot;&gt;'</span><span class="jsdoc-syntax">,
-		          </span><span class="jsdoc-string">'&lt;div class=&quot;x-grid-topbar&quot;&gt;&lt;/div&gt;'</span><span class="jsdoc-syntax">,
-		          </span><span class="jsdoc-string">'&lt;div class=&quot;x-grid-scroller&quot;&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;'</span><span class="jsdoc-syntax">,
-		          </span><span class="jsdoc-string">'&lt;div class=&quot;x-grid-locked&quot;&gt;'</span><span class="jsdoc-syntax">,
-		              </span><span class="jsdoc-string">'&lt;div class=&quot;x-grid-header&quot;&gt;{lockedHeader}&lt;/div&gt;'</span><span class="jsdoc-syntax">,
-		              </span><span class="jsdoc-string">'&lt;div class=&quot;x-grid-body&quot;&gt;{lockedBody}&lt;/div&gt;'</span><span class="jsdoc-syntax">,
-		          </span><span class="jsdoc-string">&quot;&lt;/div&gt;&quot;</span><span class="jsdoc-syntax">,
-		          </span><span class="jsdoc-string">'&lt;div class=&quot;x-grid-viewport&quot;&gt;'</span><span class="jsdoc-syntax">,
-		              </span><span class="jsdoc-string">'&lt;div class=&quot;x-grid-header&quot;&gt;{header}&lt;/div&gt;'</span><span class="jsdoc-syntax">,
-		              </span><span class="jsdoc-string">'&lt;div class=&quot;x-grid-body&quot;&gt;{body}&lt;/div&gt;'</span><span class="jsdoc-syntax">,
-		          </span><span class="jsdoc-string">&quot;&lt;/div&gt;&quot;</span><span class="jsdoc-syntax">,
-		          </span><span class="jsdoc-string">'&lt;div class=&quot;x-grid-bottombar&quot;&gt;&lt;/div&gt;'</span><span class="jsdoc-syntax">,
-		          </span><span class="jsdoc-string">'&lt;a href=&quot;#&quot; class=&quot;x-grid-focus&quot; tabIndex=&quot;-1&quot;&gt;&lt;/a&gt;'</span><span class="jsdoc-syntax">,
-		          </span><span class="jsdoc-string">'&lt;div class=&quot;x-grid-resize-proxy&quot;&gt;&amp;#160;&lt;/div&gt;'</span><span class="jsdoc-syntax">,
-		       </span><span class="jsdoc-string">&quot;&lt;/div&gt;&quot;
-		    </span><span class="jsdoc-syntax">);
-		    </span><span class="jsdoc-var">tpls.master.disableformats </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
-		}
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">tpls.master</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">tpls.master </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">(
+               </span><span class="jsdoc-string">'&lt;div class=&quot;x-grid&quot; hidefocus=&quot;true&quot;&gt;'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-string">'&lt;a href=&quot;#&quot; class=&quot;x-grid-focus&quot; tabIndex=&quot;-1&quot;&gt;&lt;/a&gt;'</span><span class="jsdoc-syntax">,
+                  </span><span class="jsdoc-string">'&lt;div class=&quot;x-grid-topbar&quot;&gt;&lt;/div&gt;'</span><span class="jsdoc-syntax">,
+                  </span><span class="jsdoc-string">'&lt;div class=&quot;x-grid-scroller&quot;&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;'</span><span class="jsdoc-syntax">,
+                  </span><span class="jsdoc-string">'&lt;div class=&quot;x-grid-locked&quot;&gt;'</span><span class="jsdoc-syntax">,
+                      </span><span class="jsdoc-string">'&lt;div class=&quot;x-grid-header&quot;&gt;{lockedHeader}&lt;/div&gt;'</span><span class="jsdoc-syntax">,
+                      </span><span class="jsdoc-string">'&lt;div class=&quot;x-grid-body&quot;&gt;{lockedBody}&lt;/div&gt;'</span><span class="jsdoc-syntax">,
+                  </span><span class="jsdoc-string">&quot;&lt;/div&gt;&quot;</span><span class="jsdoc-syntax">,
+                  </span><span class="jsdoc-string">'&lt;div class=&quot;x-grid-viewport&quot;&gt;'</span><span class="jsdoc-syntax">,
+                      </span><span class="jsdoc-string">'&lt;div class=&quot;x-grid-header&quot;&gt;{header}&lt;/div&gt;'</span><span class="jsdoc-syntax">,
+                      </span><span class="jsdoc-string">'&lt;div class=&quot;x-grid-body&quot;&gt;{body}&lt;/div&gt;'</span><span class="jsdoc-syntax">,
+                  </span><span class="jsdoc-string">&quot;&lt;/div&gt;&quot;</span><span class="jsdoc-syntax">,
+                  </span><span class="jsdoc-string">'&lt;div class=&quot;x-grid-bottombar&quot;&gt;&lt;/div&gt;'</span><span class="jsdoc-syntax">,
+                 
+                  </span><span class="jsdoc-string">'&lt;div class=&quot;x-grid-resize-proxy&quot;&gt;&amp;#160;&lt;/div&gt;'</span><span class="jsdoc-syntax">,
+               </span><span class="jsdoc-string">&quot;&lt;/div&gt;&quot;
+            </span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">tpls.master.disableformats </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        }
 
-		</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">tpls.header</span><span class="jsdoc-syntax">){
-		    </span><span class="jsdoc-var">tpls.header </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">(
-		       </span><span class="jsdoc-string">'&lt;table border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;'</span><span class="jsdoc-syntax">,
-		       </span><span class="jsdoc-string">'&lt;tbody&gt;&lt;tr class=&quot;x-grid-hd-row&quot;&gt;{cells}&lt;/tr&gt;&lt;/tbody&gt;'</span><span class="jsdoc-syntax">,
-		       </span><span class="jsdoc-string">&quot;&lt;/table&gt;{splits}&quot;
-		    </span><span class="jsdoc-syntax">);
-		    </span><span class="jsdoc-var">tpls.header.disableformats </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
-		}
-		</span><span class="jsdoc-var">tpls.header.compile</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">tpls.header</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">tpls.header </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">(
+               </span><span class="jsdoc-string">'&lt;table border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;'</span><span class="jsdoc-syntax">,
+               </span><span class="jsdoc-string">'&lt;tbody&gt;&lt;tr class=&quot;x-grid-hd-row&quot;&gt;{cells}&lt;/tr&gt;&lt;/tbody&gt;'</span><span class="jsdoc-syntax">,
+               </span><span class="jsdoc-string">&quot;&lt;/table&gt;{splits}&quot;
+            </span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">tpls.header.disableformats </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">tpls.header.compile</span><span class="jsdoc-syntax">();
 
-		</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">tpls.hcell</span><span class="jsdoc-syntax">){
-		    </span><span class="jsdoc-var">tpls.hcell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">(
-		        </span><span class="jsdoc-string">'&lt;td class=&quot;x-grid-hd x-grid-td-{id} {cellId}&quot;&gt;&lt;div title=&quot;{title}&quot; class=&quot;x-grid-hd-inner x-grid-hd-{id}&quot;&gt;'</span><span class="jsdoc-syntax">,
-		        </span><span class="jsdoc-string">'&lt;div class=&quot;x-grid-hd-text&quot; unselectable=&quot;on&quot;&gt;{value}&lt;img class=&quot;x-grid-sort-icon&quot; src=&quot;'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.BLANK_IMAGE_URL</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'&quot; /&gt;&lt;/div&gt;'</span><span class="jsdoc-syntax">,
-		        </span><span class="jsdoc-string">&quot;&lt;/div&gt;&lt;/td&gt;&quot;
-		     </span><span class="jsdoc-syntax">);
-		     </span><span class="jsdoc-var">tpls.hcell.disableFormats </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
-		}
-		</span><span class="jsdoc-var">tpls.hcell.compile</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">tpls.hcell</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">tpls.hcell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">(
+                </span><span class="jsdoc-string">'&lt;td class=&quot;x-grid-hd x-grid-td-{id} {cellId}&quot;&gt;&lt;div title=&quot;{title}&quot; class=&quot;x-grid-hd-inner x-grid-hd-{id}&quot;&gt;'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-string">'&lt;div class=&quot;x-grid-hd-text&quot; unselectable=&quot;on&quot;&gt;{value}&lt;img class=&quot;x-grid-sort-icon&quot; src=&quot;'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.BLANK_IMAGE_URL</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'&quot; /&gt;&lt;/div&gt;'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-string">&quot;&lt;/div&gt;&lt;/td&gt;&quot;
+             </span><span class="jsdoc-syntax">);
+             </span><span class="jsdoc-var">tpls.hcell.disableFormats </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">tpls.hcell.compile</span><span class="jsdoc-syntax">();
 
-		</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">tpls.hsplit</span><span class="jsdoc-syntax">){
-		    </span><span class="jsdoc-var">tpls.hsplit </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&lt;div class=&quot;x-grid-split {splitId} x-grid-split-{id}&quot; style=&quot;{style}&quot; unselectable=&quot;on&quot;&gt;&amp;#160;&lt;/div&gt;'</span><span class="jsdoc-syntax">);
-		    </span><span class="jsdoc-var">tpls.hsplit.disableFormats </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
-		}
-		</span><span class="jsdoc-var">tpls.hsplit.compile</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">tpls.hsplit</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">tpls.hsplit </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&lt;div class=&quot;x-grid-split {splitId} x-grid-split-{id}&quot; style=&quot;{style}&quot; unselectable=&quot;on&quot;&gt;&amp;#160;&lt;/div&gt;'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">tpls.hsplit.disableFormats </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">tpls.hsplit.compile</span><span class="jsdoc-syntax">();
 
-		</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">tpls.body</span><span class="jsdoc-syntax">){
-		    </span><span class="jsdoc-var">tpls.body </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">(
-		       </span><span class="jsdoc-string">'&lt;table border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;'</span><span class="jsdoc-syntax">,
-		       </span><span class="jsdoc-string">&quot;&lt;tbody&gt;{rows}&lt;/tbody&gt;&quot;</span><span class="jsdoc-syntax">,
-		       </span><span class="jsdoc-string">&quot;&lt;/table&gt;&quot;
-		    </span><span class="jsdoc-syntax">);
-		    </span><span class="jsdoc-var">tpls.body.disableFormats </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
-		}
-		</span><span class="jsdoc-var">tpls.body.compile</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">tpls.body</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">tpls.body </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">(
+               </span><span class="jsdoc-string">'&lt;table border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;'</span><span class="jsdoc-syntax">,
+               </span><span class="jsdoc-string">&quot;&lt;tbody&gt;{rows}&lt;/tbody&gt;&quot;</span><span class="jsdoc-syntax">,
+               </span><span class="jsdoc-string">&quot;&lt;/table&gt;&quot;
+            </span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">tpls.body.disableFormats </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">tpls.body.compile</span><span class="jsdoc-syntax">();
 
-		</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">tpls.row</span><span class="jsdoc-syntax">){
-		    </span><span class="jsdoc-var">tpls.row </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&lt;tr class=&quot;x-grid-row {alt}&quot;&gt;{cells}&lt;/tr&gt;'</span><span class="jsdoc-syntax">);
-		    </span><span class="jsdoc-var">tpls.row.disableFormats </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
-		}
-		</span><span class="jsdoc-var">tpls.row.compile</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">tpls.row</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">tpls.row </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&lt;tr class=&quot;x-grid-row {alt}&quot;&gt;{cells}&lt;/tr&gt;'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">tpls.row.disableFormats </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">tpls.row.compile</span><span class="jsdoc-syntax">();
 
-		</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">tpls.cell</span><span class="jsdoc-syntax">){
-		    </span><span class="jsdoc-var">tpls.cell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">(
-		        </span><span class="jsdoc-string">'&lt;td class=&quot;x-grid-col x-grid-td-{id} {cellId} {css}&quot; tabIndex=&quot;0&quot;&gt;'</span><span class="jsdoc-syntax">,
-		        </span><span class="jsdoc-string">'&lt;div class=&quot;x-grid-col-{id} x-grid-cell-inner&quot;&gt;&lt;div class=&quot;x-grid-cell-text&quot; unselectable=&quot;on&quot; {attr}&gt;{value}&lt;/div&gt;&lt;/div&gt;'</span><span class="jsdoc-syntax">,
-		        </span><span class="jsdoc-string">&quot;&lt;/td&gt;&quot;
-		    </span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">tpls.cell</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">tpls.cell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">(
+                </span><span class="jsdoc-string">'&lt;td class=&quot;x-grid-col x-grid-td-{id} {cellId} {css}&quot; tabIndex=&quot;0&quot;&gt;'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-string">'&lt;div class=&quot;x-grid-col-{id} x-grid-cell-inner&quot;&gt;&lt;div class=&quot;x-grid-cell-text&quot; unselectable=&quot;on&quot; {attr}&gt;{value}&lt;/div&gt;&lt;/div&gt;'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-string">&quot;&lt;/td&gt;&quot;
+            </span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">tpls.cell.disableFormats </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
         }
-		</span><span class="jsdoc-var">tpls.cell.compile</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">tpls.cell.compile</span><span class="jsdoc-syntax">();
 
-		</span><span class="jsdoc-var">this.templates </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tpls</span><span class="jsdoc-syntax">;
-	},
+        </span><span class="jsdoc-var">this.templates </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tpls</span><span class="jsdoc-syntax">;
+    },
 
-	</span><span class="jsdoc-comment">// remap these for backwards compat
+    </span><span class="jsdoc-comment">// remap these for backwards compat
     </span><span class="jsdoc-var">onColWidthChange </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-var">this.updateColumns.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">);
     },
@@ -214,11 +215,11 @@
         </span><span class="jsdoc-var">this.updateHeaderSortState</span><span class="jsdoc-syntax">();
     },
 
-	</span><span class="jsdoc-var">onClear </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+    </span><span class="jsdoc-var">onClear </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-var">this.refresh</span><span class="jsdoc-syntax">();
     },
 
-	</span><span class="jsdoc-var">onUpdate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">onUpdate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.refreshRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">);
     },
 
@@ -286,9 +287,9 @@
             </span><span class="jsdoc-var">this.headerPanel.show</span><span class="jsdoc-syntax">();
         }
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.headerPanel</span><span class="jsdoc-syntax">;
-	},
+    },
 
-	</span><span class="jsdoc-comment">/**
+    </span><span class="jsdoc-comment">/**
      * Gets a panel in the footer of the grid that can be used for toolbars etc.
      * After modifying the contents of this panel a call to grid.autoSize() may be
      * required to register any changes in size.
@@ -300,82 +301,84 @@
             </span><span class="jsdoc-var">this.footerPanel.show</span><span class="jsdoc-syntax">();
         }
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.footerPanel</span><span class="jsdoc-syntax">;
-	},
+    },
 
-	</span><span class="jsdoc-var">initElements </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-	    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">E </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.Element</span><span class="jsdoc-syntax">;
-	    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.getGridEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.firstChild</span><span class="jsdoc-syntax">;
-	    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.childNodes</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">initElements </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">E </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.Element</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.getGridEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.firstChild</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.childNodes</span><span class="jsdoc-syntax">;
 
-	    </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">E</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
-	    </span><span class="jsdoc-var">this.headerPanel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">E</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.firstChild</span><span class="jsdoc-syntax">);
-	    </span><span class="jsdoc-var">this.headerPanel.enableDisplayMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;block&quot;</span><span class="jsdoc-syntax">);
-
-        </span><span class="jsdoc-var">this.scroller </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">E</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[1]);
-	    </span><span class="jsdoc-var">this.scrollSizer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">E</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.scroller.dom.firstChild</span><span class="jsdoc-syntax">);
-
-	    </span><span class="jsdoc-var">this.lockedWrap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">E</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[2]);
-	    </span><span class="jsdoc-var">this.lockedHd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">E</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.lockedWrap.dom.firstChild</span><span class="jsdoc-syntax">);
-	    </span><span class="jsdoc-var">this.lockedBody </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">E</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.lockedWrap.dom.childNodes</span><span class="jsdoc-syntax">[1]);
-
-	    </span><span class="jsdoc-var">this.mainWrap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">E</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[3]);
-	    </span><span class="jsdoc-var">this.mainHd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">E</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.mainWrap.dom.firstChild</span><span class="jsdoc-syntax">);
-	    </span><span class="jsdoc-var">this.mainBody </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">E</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.mainWrap.dom.childNodes</span><span class="jsdoc-syntax">[1]);
-
-	    </span><span class="jsdoc-var">this.footerPanel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">E</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[4]);
-	    </span><span class="jsdoc-var">this.footerPanel.enableDisplayMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;block&quot;</span><span class="jsdoc-syntax">);
-
-        </span><span class="jsdoc-var">this.focusEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">E</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[5]);
+        </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">E</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+        
+         </span><span class="jsdoc-var">this.focusEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">E</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.firstChild</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.focusEl.swallowEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.headerPanel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">E</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[1]);
+        </span><span class="jsdoc-var">this.headerPanel.enableDisplayMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;block&quot;</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">this.scroller </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">E</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[2]);
+        </span><span class="jsdoc-var">this.scrollSizer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">E</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.scroller.dom.firstChild</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">this.lockedWrap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">E</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[3]);
+        </span><span class="jsdoc-var">this.lockedHd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">E</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.lockedWrap.dom.firstChild</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.lockedBody </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">E</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.lockedWrap.dom.childNodes</span><span class="jsdoc-syntax">[1]);
+
+        </span><span class="jsdoc-var">this.mainWrap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">E</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[4]);
+        </span><span class="jsdoc-var">this.mainHd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">E</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.mainWrap.dom.firstChild</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.mainBody </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">E</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.mainWrap.dom.childNodes</span><span class="jsdoc-syntax">[1]);
+
+        </span><span class="jsdoc-var">this.footerPanel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">E</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[5]);
+        </span><span class="jsdoc-var">this.footerPanel.enableDisplayMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;block&quot;</span><span class="jsdoc-syntax">);
+
         </span><span class="jsdoc-var">this.resizeProxy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">E</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[6]);
 
-	    </span><span class="jsdoc-var">this.headerSelector </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(
-	       </span><span class="jsdoc-string">'#{0} td.x-grid-hd, #{1} td.x-grid-hd'</span><span class="jsdoc-syntax">,
-	       </span><span class="jsdoc-var">this.lockedHd.id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.mainHd.id
-	    </span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.headerSelector </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(
+           </span><span class="jsdoc-string">'#{0} td.x-grid-hd, #{1} td.x-grid-hd'</span><span class="jsdoc-syntax">,
+           </span><span class="jsdoc-var">this.lockedHd.id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.mainHd.id
+        </span><span class="jsdoc-syntax">);
 
-	    </span><span class="jsdoc-var">this.splitterSelector </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(
-	       </span><span class="jsdoc-string">'#{0} div.x-grid-split, #{1} div.x-grid-split'</span><span class="jsdoc-syntax">,
-	       </span><span class="jsdoc-var">this.idToCssName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.lockedHd.id</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">this.idToCssName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.mainHd.id</span><span class="jsdoc-syntax">)
-	    );
+        </span><span class="jsdoc-var">this.splitterSelector </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(
+           </span><span class="jsdoc-string">'#{0} div.x-grid-split, #{1} div.x-grid-split'</span><span class="jsdoc-syntax">,
+           </span><span class="jsdoc-var">this.idToCssName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.lockedHd.id</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">this.idToCssName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.mainHd.id</span><span class="jsdoc-syntax">)
+        );
     },
     </span><span class="jsdoc-var">idToCssName </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">s.replace</span><span class="jsdoc-syntax">(/[^a-z0-9]+/ig, </span><span class="jsdoc-string">'-'</span><span class="jsdoc-syntax">);
     },
 
-	</span><span class="jsdoc-var">getHeaderCell </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
-	    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.DomQuery.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.headerSelector</span><span class="jsdoc-syntax">)[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">];
-	},
+    </span><span class="jsdoc-var">getHeaderCell </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.DomQuery.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.headerSelector</span><span class="jsdoc-syntax">)[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">];
+    },
 
-	</span><span class="jsdoc-var">getHeaderCellMeasure </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
-	    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.getHeaderCell</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.firstChild</span><span class="jsdoc-syntax">;
-	},
+    </span><span class="jsdoc-var">getHeaderCellMeasure </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.getHeaderCell</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.firstChild</span><span class="jsdoc-syntax">;
+    },
 
-	</span><span class="jsdoc-var">getHeaderCellText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
-	    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.getHeaderCell</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.firstChild.firstChild</span><span class="jsdoc-syntax">;
-	},
+    </span><span class="jsdoc-var">getHeaderCellText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.getHeaderCell</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.firstChild.firstChild</span><span class="jsdoc-syntax">;
+    },
 
-	</span><span class="jsdoc-var">getLockedTable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-	    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.lockedBody.dom.firstChild</span><span class="jsdoc-syntax">;
-	},
+    </span><span class="jsdoc-var">getLockedTable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.lockedBody.dom.firstChild</span><span class="jsdoc-syntax">;
+    },
 
-	</span><span class="jsdoc-var">getBodyTable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-	    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.mainBody.dom.firstChild</span><span class="jsdoc-syntax">;
-	},
+    </span><span class="jsdoc-var">getBodyTable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.mainBody.dom.firstChild</span><span class="jsdoc-syntax">;
+    },
 
-	</span><span class="jsdoc-var">getLockedRow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
-	    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.getLockedTable</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.rows</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">];
-	},
+    </span><span class="jsdoc-var">getLockedRow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.getLockedTable</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.rows</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">];
+    },
 
-	</span><span class="jsdoc-var">getRow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
-	    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.getBodyTable</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.rows</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">];
-	},
+    </span><span class="jsdoc-var">getRow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.getBodyTable</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.rows</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">];
+    },
 
-	</span><span class="jsdoc-var">getRowComposite </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
-	    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.rowEl</span><span class="jsdoc-syntax">){
-	        </span><span class="jsdoc-var">this.rowEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.CompositeElementLite</span><span class="jsdoc-syntax">();
-	    }
+    </span><span class="jsdoc-var">getRowComposite </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.rowEl</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.rowEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.CompositeElementLite</span><span class="jsdoc-syntax">();
+        }
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">els </span><span class="jsdoc-syntax">= [], </span><span class="jsdoc-var">lrow</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mrow</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lrow </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getLockedRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">)){
             </span><span class="jsdoc-var">els.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lrow</span><span class="jsdoc-syntax">);
@@ -384,27 +387,27 @@
             </span><span class="jsdoc-var">els.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mrow</span><span class="jsdoc-syntax">);
         }
         </span><span class="jsdoc-var">this.rowEl.elements </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">els</span><span class="jsdoc-syntax">;
-	    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.rowEl</span><span class="jsdoc-syntax">;
-	},
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.rowEl</span><span class="jsdoc-syntax">;
+    },
 
-	</span><span class="jsdoc-var">getCell </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">){
-	    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">locked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cm.getLockedCount</span><span class="jsdoc-syntax">();
-	    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">source</span><span class="jsdoc-syntax">;
-	    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">colIndex </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">locked</span><span class="jsdoc-syntax">){
-	        </span><span class="jsdoc-var">source </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.lockedBody.dom.firstChild</span><span class="jsdoc-syntax">;
-	    }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
-	        </span><span class="jsdoc-var">source </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.mainBody.dom.firstChild</span><span class="jsdoc-syntax">;
-	        </span><span class="jsdoc-var">colIndex </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">locked</span><span class="jsdoc-syntax">;
-	    }
+    </span><span class="jsdoc-var">getCell </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">locked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cm.getLockedCount</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">source</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">colIndex </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">locked</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">source </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.lockedBody.dom.firstChild</span><span class="jsdoc-syntax">;
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">source </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.mainBody.dom.firstChild</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">colIndex </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">locked</span><span class="jsdoc-syntax">;
+        }
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">source.rows</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.childNodes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">];
-	},
+    },
 
-	</span><span class="jsdoc-var">getCellText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">){
-	    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.getCell</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.firstChild.firstChild</span><span class="jsdoc-syntax">;
-	},
+    </span><span class="jsdoc-var">getCellText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.getCell</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.firstChild.firstChild</span><span class="jsdoc-syntax">;
+    },
 
-	</span><span class="jsdoc-var">getCellBox </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cell</span><span class="jsdoc-syntax">){
-	    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cell</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.getBox</span><span class="jsdoc-syntax">();
+    </span><span class="jsdoc-var">getCellBox </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cell</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cell</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.getBox</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isOpera</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// opera fails to report the Y
             </span><span class="jsdoc-var">b.y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cell.offsetTop </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.mainBody.getY</span><span class="jsdoc-syntax">();
         }
@@ -449,20 +452,21 @@
     },
 
     </span><span class="jsdoc-var">getColumnId </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
-	    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.cm.getColumnId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">);
-	},
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.cm.getColumnId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">);
+    },
 
-	</span><span class="jsdoc-var">getSplitters </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-	    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.splitterSelector</span><span class="jsdoc-syntax">){
-	       </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.DomQuery.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.splitterSelector</span><span class="jsdoc-syntax">);
-	    }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
-	        </span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
-	    }
-	},
+    </span><span class="jsdoc-var">getSplitters </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.splitterSelector</span><span class="jsdoc-syntax">){
+           </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.DomQuery.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.splitterSelector</span><span class="jsdoc-syntax">);
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
+      }
+    },
 
-	</span><span class="jsdoc-var">getSplitter </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
-	    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.getSplitters</span><span class="jsdoc-syntax">()[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">];
-	},
+    </span><span class="jsdoc-var">getSplitter </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.getSplitters</span><span class="jsdoc-syntax">()[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">];
+    },
 
     </span><span class="jsdoc-var">onRowOver </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">;
@@ -479,7 +483,7 @@
     },
 
     </span><span class="jsdoc-var">renderHeaders </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-	    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cm</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cm</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ct </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.templates.hcell</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ht </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.templates.header</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">st </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.templates.hsplit</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cb </span><span class="jsdoc-syntax">= [], </span><span class="jsdoc-var">lb </span><span class="jsdoc-syntax">= [], </span><span class="jsdoc-var">sb </span><span class="jsdoc-syntax">= [], </span><span class="jsdoc-var">lsb </span><span class="jsdoc-syntax">= [], </span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">= {};
         </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cm.getColumnCount</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
@@ -499,9 +503,9 @@
         }
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">ht.apply</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">lb.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">splits</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">lsb.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">)}),
                 </span><span class="jsdoc-var">ht.apply</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cb.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">splits</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">sb.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">)})];
-	},
+    },
 
-	</span><span class="jsdoc-var">updateHeaders </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+    </span><span class="jsdoc-var">updateHeaders </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.renderHeaders</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.lockedHd.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">[0]);
         </span><span class="jsdoc-var">this.mainHd.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">[1]);
@@ -511,7 +515,9 @@
      * Focuses the specified row.
      * @param {Number} row The row index
      */
-    </span><span class="jsdoc-var">focusRow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">focusRow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-comment">//Roo.log('GridView.focusRow');
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.scroller.dom.scrollLeft</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.focusCell</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">, 0, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.scroller.dom.scrollLeft </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">;
@@ -523,7 +529,9 @@
      * @param {Number} col The column index
      * @param {Boolean} hscroll false to disable horizontal scrolling
      */
-    </span><span class="jsdoc-var">focusCell </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hscroll</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">focusCell </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hscroll</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-comment">//Roo.log('GridView.focusCell');
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.ensureVisible</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hscroll</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.focusEl.alignTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;tl-tl&quot;</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isGecko</span><span class="jsdoc-syntax">){
@@ -539,12 +547,15 @@
      * @param {Number} col The column index
      * @param {Boolean} hscroll false to disable horizontal scrolling
      */
-    </span><span class="jsdoc-var">ensureVisible </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hscroll</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">ensureVisible </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hscroll</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-comment">//Roo.log('GridView.ensureVisible,' + row + ',' + col);
+        //return null; //disable for testing.
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;number&quot;</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">row.rowIndex</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">&lt; 0 &amp;&amp; </span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">&gt;= </span><span class="jsdoc-var">this.ds.getCount</span><span class="jsdoc-syntax">()){
-            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return  null</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-var">col </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">col </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">col </span><span class="jsdoc-syntax">: 0);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.colModel</span><span class="jsdoc-syntax">;
@@ -554,7 +565,7 @@
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getCell</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.scroller.dom</span><span class="jsdoc-syntax">;
 
@@ -562,19 +573,31 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cleft </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.offsetLeft</span><span class="jsdoc-syntax">, 10);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cbot </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ctop </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">el.offsetHeight</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cright </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cleft </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">el.offsetWidth</span><span class="jsdoc-syntax">;
-
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ch </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">c.clientHeight </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.mainHd.dom.offsetHeight</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">stop </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.scrollTop</span><span class="jsdoc-syntax">, 10);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sleft </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.scrollLeft</span><span class="jsdoc-syntax">, 10);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sbot </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">stop </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">ch</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sright </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sleft </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">c.clientWidth</span><span class="jsdoc-syntax">;
-
+        </span><span class="jsdoc-comment">/*
+        Roo.log('GridView.ensureVisible:' +
+                ' ctop:' + ctop +
+                ' c.clientHeight:' + c.clientHeight +
+                ' this.mainHd.dom.offsetHeight:' + this.mainHd.dom.offsetHeight +
+                ' stop:' + stop +
+                ' cbot:' + cbot +
+                ' sbot:' + sbot +
+                ' ch:' + ch  
+                );
+        */
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ctop </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">stop</span><span class="jsdoc-syntax">){
-        	</span><span class="jsdoc-var">c.scrollTop </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ctop</span><span class="jsdoc-syntax">;
-        }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cbot </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">sbot</span><span class="jsdoc-syntax">){
+             </span><span class="jsdoc-var">c.scrollTop </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ctop</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-comment">//Roo.log(&quot;set scrolltop to ctop DISABLE?&quot;);
+        </span><span class="jsdoc-syntax">}</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cbot </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">sbot</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-comment">//Roo.log(&quot;set scrolltop to cbot-ch&quot;);
             </span><span class="jsdoc-var">c.scrollTop </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cbot</span><span class="jsdoc-syntax">-</span><span class="jsdoc-var">ch</span><span class="jsdoc-syntax">;
         }
-
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hscroll </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cleft </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">sleft</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">c.scrollLeft </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cleft</span><span class="jsdoc-syntax">;
@@ -582,6 +605,7 @@
                 </span><span class="jsdoc-var">c.scrollLeft </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cright</span><span class="jsdoc-syntax">-</span><span class="jsdoc-var">c.clientWidth</span><span class="jsdoc-syntax">;
             }
         }
+         
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">;
     },
 
@@ -628,7 +652,7 @@
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">locked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cm.getColumnCount</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cm.isHidden</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)) </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cm.getColumnWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cm.getColumnWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// make sure it's a number
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">cm.isLocked</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">locked</span><span class="jsdoc-syntax">){
                     </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">= 0;
                     </span><span class="jsdoc-var">locked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
@@ -743,6 +767,7 @@
     },
 
     </span><span class="jsdoc-var">getScrollState </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sb </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.scroller.dom</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{</span><span class="jsdoc-var">left</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">sb.scrollLeft</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">top</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">sb.scrollTop</span><span class="jsdoc-syntax">};
     },
@@ -774,6 +799,7 @@
     },
 
     </span><span class="jsdoc-var">restoreScroll </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-comment">//Roo.log('GridView.restoreScroll');
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sb </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.scroller.dom</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">sb.scrollLeft </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state.left</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">sb.scrollTop </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state.top</span><span class="jsdoc-syntax">;
@@ -781,6 +807,7 @@
     },
 
     </span><span class="jsdoc-var">syncScroll </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-comment">//Roo.log('GridView.syncScroll');
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sb </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.scroller.dom</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sh </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.mainHd.dom</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.mainBody.dom</span><span class="jsdoc-syntax">;
@@ -880,8 +907,8 @@
                              
                             </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">,
                             </span><span class="jsdoc-var">rowIndex </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">,
-                            </span><span class="jsdoc-var">rowClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
-                        }
+                            </span><span class="jsdoc-var">rowClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''
+                        </span><span class="jsdoc-syntax">}
                         </span><span class="jsdoc-var">this.grid.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'rowclass'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">rowcfg</span><span class="jsdoc-syntax">);
                         </span><span class="jsdoc-var">alt.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowcfg.rowClass</span><span class="jsdoc-syntax">);
                     }
@@ -933,8 +960,8 @@
                              
                             </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">,
                             </span><span class="jsdoc-var">rowIndex </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">,
-                            </span><span class="jsdoc-var">rowClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
-                        }
+                            </span><span class="jsdoc-var">rowClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''
+                        </span><span class="jsdoc-syntax">}
                         </span><span class="jsdoc-var">this.grid.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'rowclass'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">rowcfg</span><span class="jsdoc-syntax">);
                         </span><span class="jsdoc-var">alt.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowcfg.rowClass</span><span class="jsdoc-syntax">);
                     }
@@ -1151,10 +1178,10 @@
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">g.dataSource</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">g.colModel</span><span class="jsdoc-syntax">;
-	    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">cm.isSortable</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">)){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">cm.isSortable</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">)){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
-	    </span><span class="jsdoc-var">g.stopEditing</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">g.stopEditing</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">dm.sort</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cm.getDataIndex</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">));
     },
 
