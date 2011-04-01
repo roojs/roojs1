@@ -2,7 +2,12 @@
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 .x-form-daypick-item td div {
+=======
+.x-form-daypick-item td div
+{
+>>>>>>> bb63e2e529c47fb77152cfc02100d5ff9fdca211
 =======
 .x-form-daypick-item td div
 {
@@ -12,7 +17,12 @@
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 .x-form-daypick-icons td img {
+=======
+.x-form-daypick-icons td img
+{
+>>>>>>> bb63e2e529c47fb77152cfc02100d5ff9fdca211
 =======
 .x-form-daypick-icons td img
 {
@@ -23,12 +33,15 @@
     margin: 0;
     margin-left: 5px;
 <<<<<<< HEAD
+<<<<<<< HEAD
     
 }
 .x-form-daypick-icons td img.x-menu-item-checked {
     background-position: 0 -16px;
 }
 =======
+=======
+>>>>>>> bb63e2e529c47fb77152cfc02100d5ff9fdca211
     cursor: pointer;
     
 }
@@ -37,4 +50,7 @@
 {
     background-position: 0 -16px;
 }
+<<<<<<< HEAD
+>>>>>>> bb63e2e529c47fb77152cfc02100d5ff9fdca211
+=======
 >>>>>>> bb63e2e529c47fb77152cfc02100d5ff9fdca211

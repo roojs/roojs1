@@ -76,7 +76,11 @@ Roo.extend(Roo.form.DayPicker, Roo.form.Field,  {
         this.wrap = this.el.wrap({cls: 'x-form-daypick-item '});
         
 <<<<<<< HEAD
+<<<<<<< HEAD
         var r1 = '<table><tr>'
+=======
+        var r1 = '<table><tr>';
+>>>>>>> bb63e2e529c47fb77152cfc02100d5ff9fdca211
 =======
         var r1 = '<table><tr>';
 >>>>>>> bb63e2e529c47fb77152cfc02100d5ff9fdca211
@@ -148,10 +152,14 @@ Roo.extend(Roo.form.DayPicker, Roo.form.Field,  {
             return ;
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
         var cur = {};
         for (var i =0; i < v.length;i++) {
             cur[v.substring(i,i+1)] = 1 ;
         }
+=======
+         
+>>>>>>> bb63e2e529c47fb77152cfc02100d5ff9fdca211
 =======
          
 >>>>>>> bb63e2e529c47fb77152cfc02100d5ff9fdca211
@@ -160,7 +168,11 @@ Roo.extend(Roo.form.DayPicker, Roo.form.Field,  {
             
             var on = e.is(".x-menu-item-checked");
 <<<<<<< HEAD
+<<<<<<< HEAD
             var newv = typeof(cur[n]) != 'undefined';
+=======
+            var newv = v.indexOf(String(n)) > -1;
+>>>>>>> bb63e2e529c47fb77152cfc02100d5ff9fdca211
 =======
             var newv = v.indexOf(String(n)) > -1;
 >>>>>>> bb63e2e529c47fb77152cfc02100d5ff9fdca211
