@@ -115,7 +115,7 @@ Roo.form.VTypes
 Roo.form.FCKeditor
 Roo.form.GridField
 Roo.form.DisplayField
-
+Roo.form.DayPicker
 // Must be after view and form.field as it uses both.
 Roo.DDView
 
