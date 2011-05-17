@@ -160,7 +160,7 @@ on our demo's this is far to small
 .x-form-invalid
 {
     
-    background: url(../images/default/grid/invalid_line.gif) repeat-x 0 16px;
+    background: #ff0 url(../images/default/grid/invalid_line.gif) repeat-x 0 16px;
     border: 1px solid red  !important;
 }
 textarea.x-form-invalid
