@@ -24211,6 +24211,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     syncValue : function(){
         if(this.initialized){
             var bd = (this.doc.body || this.doc.documentElement);
+            this.cleanUpPaste();
             var html = bd.innerHTML;
             if(Roo.isSafari){
                 var bs = bd.getAttribute('style'); // Safari puts text-align styles on the body element!
@@ -24237,8 +24238,12 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             if(v.length < 1){
                 v = '&#160;';
             }
+            
             if(this.fireEvent('beforepush', this, v) !== false){
-                (this.doc.body || this.doc.documentElement).innerHTML = v;
+                var d = (this.doc.body || this.doc.documentElement);
+                d.innerHTML = v;
+                this.cleanUpPaste();
+                this.el.dom.value = d.innerHTML;
                 this.fireEvent('push', this, v);
             }
         }
@@ -24733,7 +24738,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     {
         // cleans up the whole document..
       //  console.log('cleanuppaste');
-        this.cleanUpChildren(this.doc.body)
+        this.cleanUpChildren(this.doc.body);
         
         
     },
