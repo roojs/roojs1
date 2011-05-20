@@ -38685,6 +38685,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             }
             if(this.fireEvent('beforepush', this, v) !== false){
                 (this.doc.body || this.doc.documentElement).innerHTML = v;
+                this.cleanUpPaste();
                 this.fireEvent('push', this, v);
             }
         }
