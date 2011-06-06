@@ -461,7 +461,7 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
         
         if (this.toolbar && this.toolbar.xtype) {
             this.toolbar.container = this.getView().getHeaderPanel(true);
-            this.toolbar = new Ext.Toolbar(this.toolbar);
+            this.toolbar = new Roo.Toolbar(this.toolbar);
         }
         if (this.footer && this.footer.xtype) {
             this.footer.dataSource = this.getDataSource();
