@@ -338,7 +338,7 @@ Roo.apply(Roo.XComponent, {
                 var ctr = m.parent ? Roo.get(m.parent.substr(1)) : document.body;
                 if (!ctr) {
                     Roo.log("not rendering module " + m.name + " " + m.parent + " no found");
-                    return false;
+                     return progressRun.defer(10, _this);
                     
                 }
                 
