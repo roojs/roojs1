@@ -297,7 +297,7 @@ Roo.apply(Roo.XComponent, {
                 Roo.debug && Roo.log('hide?');
                 Roo.MessageBox.hide();
                 _this.topModule.fireEvent('buildcomplete', _this.topModule);
-                return;    
+                return false;    
             }
             
             var m = mods.shift();
@@ -352,7 +352,7 @@ Roo.apply(Roo.XComponent, {
             m.panel = m.el;
             m.layout = m.panel.layout;    
             progressRun.defer(10, _this); 
-            return false;
+            
         }
         progressRun.defer(1, _this);
      
