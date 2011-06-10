@@ -307,6 +307,7 @@ Roo.apply(Roo.XComponent, {
                 Roo.debug && Roo.log('hide?');
                 Roo.MessageBox.hide();
                 _this.topModule.fireEvent('buildcomplete', _this.topModule);
+                // THE END...
                 return false;    
             }
             
@@ -370,7 +371,7 @@ Roo.apply(Roo.XComponent, {
             m.fireEvent('built', m);
             m.panel = m.el;
             m.layout = m.panel.layout;    
-           return progressRun.defer(10, _this); 
+            return progressRun.defer(10, _this); 
              
         }
         progressRun.defer(1, _this);
