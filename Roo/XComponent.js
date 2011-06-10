@@ -337,7 +337,7 @@ Roo.apply(Roo.XComponent, {
                 // it's a top level one..
                 var ctr = m.parent ? Roo.get(m.parent.substr(1)) : document.body;
                 if (!ctr) {
-                    Roo.log("not rendering module " + m.name + " " + m.parent " no found");
+                    Roo.log("not rendering module " + m.name + " " + m.parent + " no found");
                     return;
                     
                 }
