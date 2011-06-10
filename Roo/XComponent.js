@@ -216,9 +216,12 @@ Roo.apply(Roo.XComponent, {
         {
             obj.parent = this.toObject(obj.parent);
             
-            if (!obj.parent || typeof(obj.parent) == 'string') {
+            if (!obj.parent) {
                 this.topModule = obj;
                 return;
+            }
+            if (typeof(obj.parent) == 'string') {
+                this.elmodules.push(obj)
             }
             
             if (!obj.parent.modules) {
