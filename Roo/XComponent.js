@@ -24,6 +24,11 @@
         }
      ]
  *})
+ *
+ * Roo.onReady(function() {
+    Roo.XComponent.build();
+ })
+ *
  * @extends Roo.util.Observable
  * @constructor
  * @param cfg {Object} configuration of component
@@ -105,8 +110,6 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
      */
     items : false
      
-     
-    
 });
 
 Roo.apply(Roo.XComponent, {
@@ -129,12 +132,18 @@ Roo.apply(Roo.XComponent, {
     /**
      * @property  modules
      * array of modules to be created by registration system.
-     * @type Roo.XComponent
+     * @type {Array} of Roo.XComponent
      */
     
     modules : [],
       
+     /**
+     * @property  elmodules
+     * array of modules to be created by which use #ID 
+     * @type {Array} of Roo.XComponent
+     */
     
+    elmodules : [],
     /**
      * Register components to be built later.
      *
@@ -162,6 +171,7 @@ Roo.apply(Roo.XComponent, {
     },
     /**
      * convert a string to an object..
+     * eg. 'AAA.BBB' -> finds AAA.BBB
      * 
      */
     
@@ -170,12 +180,18 @@ Roo.apply(Roo.XComponent, {
         if (!str || typeof(str) == 'object') {
             return str;
         }
+        if (str[0]=='#') {
+            return str;
+        }
         var ar = str.split('.');
         var rt, o;
         rt = ar.shift();
             /** eval:var:o */
         eval('if (typeof ' + rt + ' == "undefined"){ o = false;} o = ' + rt + ';');
         if (o === false) {
+             
+            
+            
             throw "Module not found : " + str;
         }
         Roo.each(ar, function(e) {
@@ -204,6 +220,10 @@ Roo.apply(Roo.XComponent, {
                 this.topModule = obj;
                 return;
             }
+            if (typeof(obj.parent) == 'string') {
+                this.elmodules.push(obj);
+                return;
+            }
             
             if (!obj.parent.modules) {
                 obj.parent.modules = new Roo.util.MixedCollection(false, 
@@ -227,12 +247,13 @@ Roo.apply(Roo.XComponent, {
             return String(a).toUpperCase() > String(b).toUpperCase() ? 1 : -1;
         };
         
-        if (!this.topModule || !this.topModule.modules) {
+        if ((!this.topModule || !this.topModule.modules) && !this.elmodules.length) {
             throw "No top level modules to build";
         }
-       
+        
         // make a flat list in order of modules to build.
-        var mods = [ this.topModule ];
+        var mods = this.topModule ? [ this.topModule ] : [];
+        Roo.each(this.elmodules,function(e) { mods.push(e) });
         
         
         // add modules to their parents..
@@ -251,8 +272,10 @@ Roo.apply(Roo.XComponent, {
             }
             
         }
-        this.topModule.modules.keySort('ASC',  cmp );
-        this.topModule.modules.each(addMod);
+        if (this.topModule) { 
+            this.topModule.modules.keySort('ASC',  cmp );
+            this.topModule.modules.each(addMod);
+        }
         return mods;
     },
     
@@ -296,8 +319,11 @@ Roo.apply(Roo.XComponent, {
             if (!mods.length) {
                 Roo.debug && Roo.log('hide?');
                 Roo.MessageBox.hide();
-                _this.topModule.fireEvent('buildcomplete', _this.topModule);
-                return;    
+                if (_this.topModule) { 
+                    _this.topModule.fireEvent('buildcomplete', _this.topModule);
+                }
+                // THE END...
+                return false;    
             }
             
             var m = mods.shift();
@@ -323,19 +349,29 @@ Roo.apply(Roo.XComponent, {
                 return progressRun(); // we do not update the display!
             }
             
-            if (!m.parent) {
+            if (!m.parent || (typeof(m.parent) == 'string' && m.parent[0] == '#')) {
                 // it's a top level one..
-                var layoutbase = new Ext.BorderLayout(document.body, {
-               
-                    center: {
-                         titlebar: false,
-                         autoScroll:false,
-                         closeOnTab: true,
-                         tabPosition: 'top',
-                         //resizeTabs: true,
-                         alwaysShowTabs: true,
-                         minTabWidth: 140
-                    }
+                var ctr = m.parent ? Roo.get(m.parent.substr(1)) : document.body;
+                if (!ctr) {
+                    Roo.log("not rendering module " + m.name + " " + m.parent + " no found");
+                     return progressRun.defer(10, _this);
+                    
+                }
+                
+                
+                var layoutbase = new Ext.BorderLayout(
+                    m.parent ? Roo.get(m.parent.substr(1)) : document.body,
+                    {
+                        center: {
+                             titlebar: false,
+                             autoScroll:false,
+                             closeOnTab: true,
+                             tabPosition: 'top',
+                             //resizeTabs: true,
+                             alwaysShowTabs: m.parent ? false : true,
+                             hideTabs : m.parent ? true : false,
+                             minTabWidth: 140
+                        }
                 });
                 var tree = m.tree();
                 tree.region = 'center';
@@ -351,8 +387,8 @@ Roo.apply(Roo.XComponent, {
             m.fireEvent('built', m);
             m.panel = m.el;
             m.layout = m.panel.layout;    
-            progressRun.defer(10, _this); 
-            
+            return progressRun.defer(10, _this); 
+             
         }
         progressRun.defer(1, _this);
      
