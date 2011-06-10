@@ -221,7 +221,8 @@ Roo.apply(Roo.XComponent, {
                 return;
             }
             if (typeof(obj.parent) == 'string') {
-                this.elmodules.push(obj)
+                this.elmodules.push(obj);
+                return;
             }
             
             if (!obj.parent.modules) {
