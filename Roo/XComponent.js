@@ -103,7 +103,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
      * A single item array - the first element is the root of the tree..
      * It's done this way to stay compatible with the Xtype system...
      */
-    items : false,
+    items : false
      
 });
 
@@ -330,6 +330,13 @@ Roo.apply(Roo.XComponent, {
             
             if (!m.parent || (typeof(m.parent) == 'string' && m.parent[0] == '#')) {
                 // it's a top level one..
+                var ctr = m.parent ? Roo.get(m.parent.substr(1)) : document.body;
+                if (!ctr) {
+                    Roo.log("not rendering module " + m.name + " " + m.parent " no found");
+                    return;
+                    
+                }
+                
                 
                 var layoutbase = new Ext.BorderLayout(
                     m.parent ? Roo.get(m.parent.substr(1)) : document.body,
