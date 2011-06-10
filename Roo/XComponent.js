@@ -319,7 +319,9 @@ Roo.apply(Roo.XComponent, {
             if (!mods.length) {
                 Roo.debug && Roo.log('hide?');
                 Roo.MessageBox.hide();
-                _this.topModule.fireEvent('buildcomplete', _this.topModule);
+                if (_this.topModule) { 
+                    _this.topModule.fireEvent('buildcomplete', _this.topModule);
+                }
                 // THE END...
                 return false;    
             }
