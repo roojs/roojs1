@@ -369,6 +369,7 @@ Roo.apply(Roo.XComponent, {
                              tabPosition: 'top',
                              //resizeTabs: true,
                              alwaysShowTabs: m.parent ? true : false,
+                             hideTabs : m.parent ? false : true,
                              minTabWidth: 140
                         }
                 });
