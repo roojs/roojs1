@@ -370,8 +370,8 @@ Roo.apply(Roo.XComponent, {
             m.fireEvent('built', m);
             m.panel = m.el;
             m.layout = m.panel.layout;    
-            progressRun.defer(10, _this); 
-            return false;
+           return progressRun.defer(10, _this); 
+             
         }
         progressRun.defer(1, _this);
      
