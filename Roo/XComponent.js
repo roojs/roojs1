@@ -328,19 +328,21 @@ Roo.apply(Roo.XComponent, {
                 return progressRun(); // we do not update the display!
             }
             
-            if (!m.parent) {
+            if (!m.parent || (typeof(m.parent) == 'string' && m.parent[0] == '#')) {
                 // it's a top level one..
-                var layoutbase = new Ext.BorderLayout(document.body, {
-               
-                    center: {
-                         titlebar: false,
-                         autoScroll:false,
-                         closeOnTab: true,
-                         tabPosition: 'top',
-                         //resizeTabs: true,
-                         alwaysShowTabs: true,
-                         minTabWidth: 140
-                    }
+                
+                var layoutbase = new Ext.BorderLayout(
+                    m.parent ? Roo.get(m.parent.substr(1)) : document.body,
+                    {
+                        center: {
+                             titlebar: false,
+                             autoScroll:false,
+                             closeOnTab: true,
+                             tabPosition: 'top',
+                             //resizeTabs: true,
+                             alwaysShowTabs: true,
+                             minTabWidth: 140
+                        }
                 });
                 var tree = m.tree();
                 tree.region = 'center';
