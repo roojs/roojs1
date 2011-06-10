@@ -132,12 +132,18 @@ Roo.apply(Roo.XComponent, {
     /**
      * @property  modules
      * array of modules to be created by registration system.
-     * @type Roo.XComponent
+     * @type {Array} of Roo.XComponent
      */
     
     modules : [],
       
+     /**
+     * @property  elmodules
+     * array of modules to be created by which use #ID 
+     * @type {Array} of Roo.XComponent
+     */
     
+    modules : [],
     /**
      * Register components to be built later.
      *
