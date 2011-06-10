@@ -253,7 +253,7 @@ Roo.apply(Roo.XComponent, {
         
         // make a flat list in order of modules to build.
         var mods = this.topModule ? [ this.topModule ] : [];
-        Roo.each(this.elmodules,function() { mods.push(e) });
+        Roo.each(this.elmodules,function(e) { mods.push(e) });
         
         
         // add modules to their parents..
