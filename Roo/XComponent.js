@@ -24,6 +24,11 @@
         }
      ]
  *})
+ *
+ * Roo.onReady(function() {
+    Roo.XComponent.build();
+ })
+ *
  * @extends Roo.util.Observable
  * @constructor
  * @param cfg {Object} configuration of component
