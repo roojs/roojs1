@@ -268,8 +268,10 @@ Roo.apply(Roo.XComponent, {
             }
             
         }
-        this.topModule.modules.keySort('ASC',  cmp );
-        this.topModule.modules.each(addMod);
+        if (this.topModule) { 
+            this.topModule.modules.keySort('ASC',  cmp );
+            this.topModule.modules.each(addMod);
+        }
         return mods;
     },
     
