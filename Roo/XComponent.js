@@ -104,37 +104,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
      * It's done this way to stay compatible with the Xtype system...
      */
     items : false,
-    /**
-     * Render a component onto an object.
-     * 
-     * @param {String|Roo.Element} el - id or element to render to
-     *
-     */
      
-    renderTo : function(el) {
-        
-        
-        var layoutbase = new Ext.BorderLayout(el, {
-        
-             center: {
-                  titlebar: false,
-                  autoScroll:false,
-                  closeOnTab: true,
-                  tabPosition: 'top',
-                  //resizeTabs: true,
-                  alwaysShowTabs: true,
-                  minTabWidth: 140
-             }
-         });
-         var tree = m.tree();
-         tree.region = 'center';
-         m.el = layoutbase.addxtype(tree);
-         m.panel = m.el;
-         m.layout = m.panel.layout;    
-         
-        
-        
-    }
 });
 
 Roo.apply(Roo.XComponent, {
@@ -199,12 +169,18 @@ Roo.apply(Roo.XComponent, {
         if (!str || typeof(str) == 'object') {
             return str;
         }
+        if (!str[0]=='#') {
+            return str;
+        }
         var ar = str.split('.');
         var rt, o;
         rt = ar.shift();
             /** eval:var:o */
         eval('if (typeof ' + rt + ' == "undefined"){ o = false;} o = ' + rt + ';');
         if (o === false) {
+             
+            
+            
             throw "Module not found : " + str;
         }
         Roo.each(ar, function(e) {
