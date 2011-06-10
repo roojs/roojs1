@@ -210,7 +210,7 @@ Roo.apply(Roo.XComponent, {
         {
             obj.parent = this.toObject(obj.parent);
             
-            if (!obj.parent) {
+            if (!obj.parent || typeof(obj.parent) == 'string') {
                 this.topModule = obj;
                 return;
             }
