@@ -143,7 +143,7 @@ Roo.apply(Roo.XComponent, {
      * @type {Array} of Roo.XComponent
      */
     
-    modules : [],
+    elmodules : [],
     /**
      * Register components to be built later.
      *
@@ -243,12 +243,13 @@ Roo.apply(Roo.XComponent, {
             return String(a).toUpperCase() > String(b).toUpperCase() ? 1 : -1;
         };
         
-        if (!this.topModule || !this.topModule.modules) {
+        if ((!this.topModule || !this.topModule.modules) && !this.elmodules.length) {
             throw "No top level modules to build";
         }
-       
+        
         // make a flat list in order of modules to build.
-        var mods = [ this.topModule ];
+        var mods = this.topModule ? [ this.topModule ] : [];
+        Roo.each(this.elmodules,function() { mods.push(e) });
         
         
         // add modules to their parents..
