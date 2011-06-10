@@ -103,10 +103,38 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
      * A single item array - the first element is the root of the tree..
      * It's done this way to stay compatible with the Xtype system...
      */
-    items : false
+    items : false,
+    /**
+     * Render a component onto an object.
+     * 
+     * @param {String|Roo.Element} el - id or element to render to
+     *
+     */
      
-     
-    
+    renderTo : function(el) {
+        
+        
+        var layoutbase = new Ext.BorderLayout(el, {
+        
+             center: {
+                  titlebar: false,
+                  autoScroll:false,
+                  closeOnTab: true,
+                  tabPosition: 'top',
+                  //resizeTabs: true,
+                  alwaysShowTabs: true,
+                  minTabWidth: 140
+             }
+         });
+         var tree = m.tree();
+         tree.region = 'center';
+         m.el = layoutbase.addxtype(tree);
+         m.panel = m.el;
+         m.layout = m.panel.layout;    
+         
+        
+        
+    }
 });
 
 Roo.apply(Roo.XComponent, {
@@ -162,6 +190,7 @@ Roo.apply(Roo.XComponent, {
     },
     /**
      * convert a string to an object..
+     * eg. 'AAA.BBB' -> finds AAA.BBB
      * 
      */
     
