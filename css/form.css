@@ -18,7 +18,9 @@
     position: relative;
     z-index: 2;
 }
-
+.x-form-displayfield { 
+    padding-top: 3px;
+}
 .x-form-label-right label
 {
     text-align: right;
