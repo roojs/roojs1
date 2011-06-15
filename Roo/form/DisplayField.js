@@ -76,7 +76,7 @@ Roo.extend(Roo.form.DisplayField, Roo.form.TextField,  {
         //if(this.inputValue !== undefined){
         this.wrap = this.el.wrap();
         
-        this.viewEl = this.wrap.createChild({ tag: 'div'});
+        this.viewEl = this.wrap.createChild({ tag: 'div', cls: 'x-form-displayfield'});
         
         if (this.bodyStyle) {
             this.viewEl.applyStyles(this.bodyStyle);
