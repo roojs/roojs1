@@ -1013,6 +1013,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         if(this.enableMoveAnim && Roo.enableFx){
             this.fly(this.getHeaderCell(colIndex).firstChild).highlight(this.hlColor);
         }
+        // if multisort - fix sortOrder, and reload..
         if (this.grid.dataSource.multiSort) {
             // the we can call sort again..
             var dm = this.grid.dataSource;
