@@ -345,7 +345,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             }
             if (this.multiSort) {
                 var pn = this.paramNames;
-                p[pn["multisort"]] = Roo.encode(this.sortToggle);
+                p[pn["multisort"]] = Roo.encode( { sort : this.sortToggle, order: this.sortOrder });
             }
             
             this.proxy.load(p, this.reader, this.loadRecords, this, options);
