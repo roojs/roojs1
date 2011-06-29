@@ -77,8 +77,7 @@ Roo.grid.Grid = function(container, config){
         this.dataSource= Roo.factory(this.dataSource, Roo.data);
         this.ds = this.dataSource;
         this.ds.xmodule = this.xmodule || false;
-        this.ds.multiSort = this.multiSort || false;
-        
+        this.ds.multiSort = this.multiSort || false;   
     }
     
     
