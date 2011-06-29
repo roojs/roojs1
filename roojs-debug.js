@@ -19278,6 +19278,7 @@ Roo.data.Store = function(config){
         this.relayEvents(this.proxy,  ["loadexception"]);
     }
     this.sortToggle = {};
+    this.sortOrder = []; // array of order of sorting - updated by grid if multisort is enabled.
 
     Roo.data.Store.superclass.constructor.call(this);
 
@@ -19472,7 +19473,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             }
             if (this.multiSort) {
                 var pn = this.paramNames;
-                p[pn["multisort"]] = Roo.encode(this.sortToggle);
+                p[pn["multisort"]] = Roo.encode( { sort : this.sortToggle, order: this.sortOrder });
             }
             
             this.proxy.load(p, this.reader, this.loadRecords, this, options);
@@ -48588,6 +48589,9 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                 hds.item(sortColumn).addClass(sc[sortDir == "DESC" ? 1 : 0]);
             }
         }
+        
+         
+        
     },
 
     handleHeaderClick : function(g, index){
@@ -48599,6 +48603,20 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
             return;
         }
         g.stopEditing();
+        
+        if (this.multiSort) {
+            // update the sortOrder
+            var so = [];
+            Roo.each(cm.config, function(c,i) {
+                if ((typeof(dm.sortToggle[c.dataIndex]) == 'undefined') && (index != i)) {
+                    return; // dont' bother, it's not in sort list or being set.
+                }
+                so.push(c.dataIndex);
+            });
+            dm.sortOrder = so;
+        }
+        
+        
         dm.sort(cm.getDataIndex(index));
     },
 
