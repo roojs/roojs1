@@ -47281,6 +47281,7 @@ Roo.extend(Roo.grid.HeaderDropZone, Roo.dd.DropZone, {
         if(cindex !== false){
             return this.view.getHeaderCell(cindex);
         }
+        return null;
     },
 
     nextVisible : function(h){
@@ -48412,6 +48413,25 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         if(this.enableMoveAnim && Roo.enableFx){
             this.fly(this.getHeaderCell(colIndex).firstChild).highlight(this.hlColor);
         }
+        if (this.grid.dataSource.multiSort) {
+            // the we can call sort again..
+            var dm = this.grid.dataSource;
+            var cm = this.grid.colModel;
+            var so = [];
+            for(var i = 0; i < cm.config.length; i++ ) {
+                
+                if ((typeof(dm.sortToggle[cm.config[i].dataIndex]) == 'undefined')) {
+                    continue; // dont' bother, it's not in sort list or being set.
+                }
+                
+                so.push(cm.config[i].dataIndex);
+            };
+            dm.sortOrder = so;
+            dm.load(dm.lastOptions);
+            
+            
+        }
+        
     },
 
     updateCell : function(dm, rowIndex, dataIndex){
