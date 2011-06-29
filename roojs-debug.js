@@ -19311,7 +19311,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
     * @cfg {Object} sortInfo A config object in the format: {field: "fieldName", direction: "ASC|DESC"}
     */
     /**
-    * @cfg {Boolean} multiSort enable multi column sorting (sort is based on the order of columns)
+    * @cfg {Boolean} multiSort enable multi column sorting (sort is based on the order of columns, remote only at present)
     */
     multiSort: false,
     /**
@@ -46473,7 +46473,7 @@ Roo.grid.Grid = function(container, config){
         this.dataSource= Roo.factory(this.dataSource, Roo.data);
         this.ds = this.dataSource;
         this.ds.xmodule = this.xmodule || false;
-        this.ds.multiSort = this.multiSort || false;   
+         
     }
     
     
@@ -46814,10 +46814,7 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
     */
     dropTarget: false,
     
-    /**
-    * @cfg {Boolean} multiSort enable multi column sorting (sort is based on the order of columns)
-    */
-    multiSort: false,
+   
     
     // private
     rendered : false,
@@ -48413,6 +48410,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         if(this.enableMoveAnim && Roo.enableFx){
             this.fly(this.getHeaderCell(colIndex).firstChild).highlight(this.hlColor);
         }
+        // if multisort - fix sortOrder, and reload..
         if (this.grid.dataSource.multiSort) {
             // the we can call sort again..
             var dm = this.grid.dataSource;
