@@ -182,8 +182,9 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
     * @cfg {Object} sortInfo A config object in the format: {field: "fieldName", direction: "ASC|DESC"}
     */
     /**
-    * @cfg {Boolean} multipleSort enable multiple sort. (BETA)
+    * @cfg {Boolean} multiSort enable multi column sorting (sort is based on the order of columns)
     */
+    multiSort: false,
     /**
     * @cfg {boolean} remoteSort True if sorting is to be handled by requesting the Proxy to provide a refreshed
     * version of the data object in sorted order, as opposed to sorting the Record cache in place (defaults to false).
@@ -341,6 +342,12 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
                 p[pn["sort"]] = this.sortInfo.field;
                 p[pn["dir"]] = this.sortInfo.direction;
             }
+            if (this.multiSort) {
+                var pn = this.paramNames;
+                p[pn["multisort"]] = Roo.encode(this.sortToggle);
+                
+            }
+            
             this.proxy.load(p, this.reader, this.loadRecords, this, options);
         }
     },
