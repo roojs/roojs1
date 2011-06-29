@@ -19613,7 +19613,9 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
     sort : function(fieldName, dir){
         var f = this.fields.get(fieldName);
         if(!dir){
-            if(this.sortInfo && this.sortInfo.field == f.name){ // toggle sort dir
+            this.sortToggle[f.name] = this.sortToggle[f.name] || f.sortDir;
+            
+            if(this.multiSort || (this.sortInfo && this.sortInfo.field == f.name) ){ // toggle sort dir
                 dir = (this.sortToggle[f.name] || "ASC").toggle("ASC", "DESC");
             }else{
                 dir = f.sortDir;
