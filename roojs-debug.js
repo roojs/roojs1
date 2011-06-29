@@ -19165,7 +19165,8 @@ Roo.data.Store = function(config){
         "start" : "start",
         "limit" : "limit",
         "sort" : "sort",
-        "dir" : "dir"
+        "dir" : "dir",
+        "multisort" : "_multisort"
     };
 
     if(config && config.data){
@@ -19308,6 +19309,10 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
     /**
     * @cfg {Object} sortInfo A config object in the format: {field: "fieldName", direction: "ASC|DESC"}
     */
+    /**
+    * @cfg {Boolean} multiSort enable multi column sorting (sort is based on the order of columns)
+    */
+    multiSort: false,
     /**
     * @cfg {boolean} remoteSort True if sorting is to be handled by requesting the Proxy to provide a refreshed
     * version of the data object in sorted order, as opposed to sorting the Record cache in place (defaults to false).
@@ -19465,6 +19470,11 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
                 p[pn["sort"]] = this.sortInfo.field;
                 p[pn["dir"]] = this.sortInfo.direction;
             }
+            if (this.multiSort) {
+                var pn = this.paramNames;
+                p[pn["multisort"]] = Roo.encode(this.sortToggle);
+            }
+            
             this.proxy.load(p, this.reader, this.loadRecords, this, options);
         }
     },
@@ -46460,7 +46470,7 @@ Roo.grid.Grid = function(container, config){
         this.dataSource= Roo.factory(this.dataSource, Roo.data);
         this.ds = this.dataSource;
         this.ds.xmodule = this.xmodule || false;
-        
+        this.ds.multiSort = this.multiSort || false;   
     }
     
     
@@ -46800,6 +46810,11 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
     * @cfg {Roo.dd.DropTarget} dragTarget An {@link Roo.dd.DragTarget} config
     */
     dropTarget: false,
+    
+    /**
+    * @cfg {Boolean} multiSort enable multi column sorting (sort is based on the order of columns)
+    */
+    multiSort: false,
     
     // private
     rendered : false,
@@ -48540,17 +48555,36 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
     },
 
     updateHeaderSortState : function(){
-        var state = this.ds.getSortState();
-        if(!state){
-            return;
+        
+        // sort state can be single { field: xxx, direction : yyy}
+        // or   { xxx=>ASC , yyy : DESC ..... }
+        
+        var mstate = {};
+        if (!this.ds.multiSort) { 
+            var state = this.ds.getSortState();
+            if(!state){
+                return;
+            }
+            mstate[state.field] = state.direction;
+            // FIXME... - this is not used here.. but might be elsewhere..
+            this.sortState = state;
+            
+        } else {
+            mstate = this.ds.sortToggle;
         }
-        this.sortState = state;
-        var sortColumn = this.cm.findColumnIndex(state.field);
-        if(sortColumn != -1){
-            var sortDir = state.direction;
-            var sc = this.sortClasses;
-            var hds = this.el.select(this.headerSelector).removeClass(sc);
-            hds.item(sortColumn).addClass(sc[sortDir == "DESC" ? 1 : 0]);
+        //remove existing sort classes..
+        
+        var sc = this.sortClasses;
+        var hds = this.el.select(this.headerSelector).removeClass(sc);
+        
+        for(var f in mstate) {
+        
+            var sortColumn = this.cm.findColumnIndex(f);
+            
+            if(sortColumn != -1){
+                var sortDir = mstate[f];        
+                hds.item(sortColumn).addClass(sc[sortDir == "DESC" ? 1 : 0]);
+            }
         }
     },
 
