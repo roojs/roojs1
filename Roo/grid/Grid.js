@@ -77,7 +77,7 @@ Roo.grid.Grid = function(container, config){
         this.dataSource= Roo.factory(this.dataSource, Roo.data);
         this.ds = this.dataSource;
         this.ds.xmodule = this.xmodule || false;
-        this.ds.multiSort = this.multiSort || false;   
+         
     }
     
     
@@ -418,10 +418,7 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
     */
     dropTarget: false,
     
-    /**
-    * @cfg {Boolean} multiSort enable multi column sorting (sort is based on the order of columns)
-    */
-    multiSort: false,
+   
     
     // private
     rendered : false,
