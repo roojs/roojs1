@@ -1206,7 +1206,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         }
         g.stopEditing();
         
-        if (this.multiSort) {
+        if (dm.multiSort) {
             // update the sortOrder
             var so = [];
             for(var i = 0; i < cm.config.length; i++ ) {
