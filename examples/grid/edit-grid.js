@@ -10,7 +10,9 @@
  */
 
 Roo.BLANK_IMAGE_URL  = "../../images/default/s.gif";
- 
+
+var grid = false;
+
 Roo.onReady(function(){
     Roo.QuickTips.init();
     function formatBoolean(value){
@@ -103,7 +105,7 @@ Roo.onReady(function(){
     });
 
     // create the editor grid
-    var grid = new Roo.grid.EditorGrid('editor-grid', {
+    grid = new Roo.grid.EditorGrid('editor-grid', {
         ds: ds,
         cm: cm,
         enableColLock:false,
