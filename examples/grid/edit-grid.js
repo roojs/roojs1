@@ -10,7 +10,9 @@
  */
 
 Roo.BLANK_IMAGE_URL  = "../../images/default/s.gif";
- 
+
+var grid = false;
+
 Roo.onReady(function(){
     Roo.QuickTips.init();
     function formatBoolean(value){
@@ -93,7 +95,8 @@ Roo.onReady(function(){
     var ds = new Roo.data.Store({
         // load using HTTP
         proxy: new Roo.data.HttpProxy({url: 'plants.xml'}),
-
+        remoteSort : true,
+        
         // the return will be XML, so lets set up a reader
         reader: new Roo.data.XmlReader({
                // records will have a "plant" tag
@@ -102,10 +105,11 @@ Roo.onReady(function(){
     });
 
     // create the editor grid
-    var grid = new Roo.grid.EditorGrid('editor-grid', {
+    grid = new Roo.grid.EditorGrid('editor-grid', {
         ds: ds,
         cm: cm,
-        enableColLock:false
+        enableColLock:false,
+        multiSort : true
     });
 
     var layout = Roo.BorderLayout.create({

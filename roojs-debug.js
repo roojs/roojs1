@@ -19165,7 +19165,8 @@ Roo.data.Store = function(config){
         "start" : "start",
         "limit" : "limit",
         "sort" : "sort",
-        "dir" : "dir"
+        "dir" : "dir",
+        "multisort" : "_multisort"
     };
 
     if(config && config.data){
@@ -19277,6 +19278,7 @@ Roo.data.Store = function(config){
         this.relayEvents(this.proxy,  ["loadexception"]);
     }
     this.sortToggle = {};
+    this.sortOrder = []; // array of order of sorting - updated by grid if multisort is enabled.
 
     Roo.data.Store.superclass.constructor.call(this);
 
@@ -19308,6 +19310,10 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
     /**
     * @cfg {Object} sortInfo A config object in the format: {field: "fieldName", direction: "ASC|DESC"}
     */
+    /**
+    * @cfg {Boolean} multiSort enable multi column sorting (sort is based on the order of columns, remote only at present)
+    */
+    multiSort: false,
     /**
     * @cfg {boolean} remoteSort True if sorting is to be handled by requesting the Proxy to provide a refreshed
     * version of the data object in sorted order, as opposed to sorting the Record cache in place (defaults to false).
@@ -19465,6 +19471,11 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
                 p[pn["sort"]] = this.sortInfo.field;
                 p[pn["dir"]] = this.sortInfo.direction;
             }
+            if (this.multiSort) {
+                var pn = this.paramNames;
+                p[pn["multisort"]] = Roo.encode( { sort : this.sortToggle, order: this.sortOrder });
+            }
+            
             this.proxy.load(p, this.reader, this.loadRecords, this, options);
         }
     },
@@ -19603,7 +19614,9 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
     sort : function(fieldName, dir){
         var f = this.fields.get(fieldName);
         if(!dir){
-            if(this.sortInfo && this.sortInfo.field == f.name){ // toggle sort dir
+            this.sortToggle[f.name] = this.sortToggle[f.name] || f.sortDir;
+            
+            if(this.multiSort || (this.sortInfo && this.sortInfo.field == f.name) ){ // toggle sort dir
                 dir = (this.sortToggle[f.name] || "ASC").toggle("ASC", "DESC");
             }else{
                 dir = f.sortDir;
@@ -46460,7 +46473,7 @@ Roo.grid.Grid = function(container, config){
         this.dataSource= Roo.factory(this.dataSource, Roo.data);
         this.ds = this.dataSource;
         this.ds.xmodule = this.xmodule || false;
-        
+         
     }
     
     
@@ -46800,6 +46813,8 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
     * @cfg {Roo.dd.DropTarget} dragTarget An {@link Roo.dd.DragTarget} config
     */
     dropTarget: false,
+    
+   
     
     // private
     rendered : false,
@@ -47263,6 +47278,7 @@ Roo.extend(Roo.grid.HeaderDropZone, Roo.dd.DropZone, {
         if(cindex !== false){
             return this.view.getHeaderCell(cindex);
         }
+        return null;
     },
 
     nextVisible : function(h){
@@ -48394,6 +48410,26 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         if(this.enableMoveAnim && Roo.enableFx){
             this.fly(this.getHeaderCell(colIndex).firstChild).highlight(this.hlColor);
         }
+        // if multisort - fix sortOrder, and reload..
+        if (this.grid.dataSource.multiSort) {
+            // the we can call sort again..
+            var dm = this.grid.dataSource;
+            var cm = this.grid.colModel;
+            var so = [];
+            for(var i = 0; i < cm.config.length; i++ ) {
+                
+                if ((typeof(dm.sortToggle[cm.config[i].dataIndex]) == 'undefined')) {
+                    continue; // dont' bother, it's not in sort list or being set.
+                }
+                
+                so.push(cm.config[i].dataIndex);
+            };
+            dm.sortOrder = so;
+            dm.load(dm.lastOptions);
+            
+            
+        }
+        
     },
 
     updateCell : function(dm, rowIndex, dataIndex){
@@ -48540,19 +48576,42 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
     },
 
     updateHeaderSortState : function(){
-        var state = this.ds.getSortState();
-        if(!state){
-            return;
+        
+        // sort state can be single { field: xxx, direction : yyy}
+        // or   { xxx=>ASC , yyy : DESC ..... }
+        
+        var mstate = {};
+        if (!this.ds.multiSort) { 
+            var state = this.ds.getSortState();
+            if(!state){
+                return;
+            }
+            mstate[state.field] = state.direction;
+            // FIXME... - this is not used here.. but might be elsewhere..
+            this.sortState = state;
+            
+        } else {
+            mstate = this.ds.sortToggle;
         }
-        this.sortState = state;
-        var sortColumn = this.cm.findColumnIndex(state.field);
-        if(sortColumn != -1){
-            var sortDir = state.direction;
-            var sc = this.sortClasses;
-            var hds = this.el.select(this.headerSelector).removeClass(sc);
-            hds.item(sortColumn).addClass(sc[sortDir == "DESC" ? 1 : 0]);
+        //remove existing sort classes..
+        
+        var sc = this.sortClasses;
+        var hds = this.el.select(this.headerSelector).removeClass(sc);
+        
+        for(var f in mstate) {
+        
+            var sortColumn = this.cm.findColumnIndex(f);
+            
+            if(sortColumn != -1){
+                var sortDir = mstate[f];        
+                hds.item(sortColumn).addClass(sc[sortDir == "DESC" ? 1 : 0]);
+            }
         }
+        
+         
+        
     },
+
 
     handleHeaderClick : function(g, index){
         if(this.headersDisabled){
@@ -48563,6 +48622,22 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
             return;
         }
         g.stopEditing();
+        
+        if (dm.multiSort) {
+            // update the sortOrder
+            var so = [];
+            for(var i = 0; i < cm.config.length; i++ ) {
+                
+                if ((typeof(dm.sortToggle[cm.config[i].dataIndex]) == 'undefined') && (index != i)) {
+                    continue; // dont' bother, it's not in sort list or being set.
+                }
+                
+                so.push(cm.config[i].dataIndex);
+            };
+            dm.sortOrder = so;
+        }
+        
+        
         dm.sort(cm.getDataIndex(index));
     },
 

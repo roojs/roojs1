@@ -38,7 +38,8 @@ Roo.data.Store = function(config){
         "start" : "start",
         "limit" : "limit",
         "sort" : "sort",
-        "dir" : "dir"
+        "dir" : "dir",
+        "multisort" : "_multisort"
     };
 
     if(config && config.data){
@@ -150,6 +151,7 @@ Roo.data.Store = function(config){
         this.relayEvents(this.proxy,  ["loadexception"]);
     }
     this.sortToggle = {};
+    this.sortOrder = []; // array of order of sorting - updated by grid if multisort is enabled.
 
     Roo.data.Store.superclass.constructor.call(this);
 
@@ -181,6 +183,10 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
     /**
     * @cfg {Object} sortInfo A config object in the format: {field: "fieldName", direction: "ASC|DESC"}
     */
+    /**
+    * @cfg {Boolean} multiSort enable multi column sorting (sort is based on the order of columns, remote only at present)
+    */
+    multiSort: false,
     /**
     * @cfg {boolean} remoteSort True if sorting is to be handled by requesting the Proxy to provide a refreshed
     * version of the data object in sorted order, as opposed to sorting the Record cache in place (defaults to false).
@@ -338,6 +344,11 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
                 p[pn["sort"]] = this.sortInfo.field;
                 p[pn["dir"]] = this.sortInfo.direction;
             }
+            if (this.multiSort) {
+                var pn = this.paramNames;
+                p[pn["multisort"]] = Roo.encode( { sort : this.sortToggle, order: this.sortOrder });
+            }
+            
             this.proxy.load(p, this.reader, this.loadRecords, this, options);
         }
     },
@@ -476,7 +487,9 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
     sort : function(fieldName, dir){
         var f = this.fields.get(fieldName);
         if(!dir){
-            if(this.sortInfo && this.sortInfo.field == f.name){ // toggle sort dir
+            this.sortToggle[f.name] = this.sortToggle[f.name] || f.sortDir;
+            
+            if(this.multiSort || (this.sortInfo && this.sortInfo.field == f.name) ){ // toggle sort dir
                 dir = (this.sortToggle[f.name] || "ASC").toggle("ASC", "DESC");
             }else{
                 dir = f.sortDir;

@@ -39,6 +39,7 @@ Roo.extend(Roo.grid.HeaderDropZone, Roo.dd.DropZone, {
         if(cindex !== false){
             return this.view.getHeaderCell(cindex);
         }
+        return null;
     },
 
     nextVisible : function(h){

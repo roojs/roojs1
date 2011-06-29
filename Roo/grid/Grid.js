@@ -77,7 +77,7 @@ Roo.grid.Grid = function(container, config){
         this.dataSource= Roo.factory(this.dataSource, Roo.data);
         this.ds = this.dataSource;
         this.ds.xmodule = this.xmodule || false;
-        
+         
     }
     
     
@@ -417,6 +417,8 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
     * @cfg {Roo.dd.DropTarget} dragTarget An {@link Roo.dd.DragTarget} config
     */
     dropTarget: false,
+    
+   
     
     // private
     rendered : false,
