@@ -151,6 +151,7 @@ Roo.data.Store = function(config){
         this.relayEvents(this.proxy,  ["loadexception"]);
     }
     this.sortToggle = {};
+    this.sortOrder = []; // array of order of sorting
 
     Roo.data.Store.superclass.constructor.call(this);
 
