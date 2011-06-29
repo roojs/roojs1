@@ -38,7 +38,8 @@ Roo.data.Store = function(config){
         "start" : "start",
         "limit" : "limit",
         "sort" : "sort",
-        "dir" : "dir"
+        "dir" : "dir",
+        "multisort" : "_multisort"
     };
 
     if(config && config.data){
@@ -345,7 +346,6 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             if (this.multiSort) {
                 var pn = this.paramNames;
                 p[pn["multisort"]] = Roo.encode(this.sortToggle);
-                
             }
             
             this.proxy.load(p, this.reader, this.loadRecords, this, options);
