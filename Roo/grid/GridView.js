@@ -1170,7 +1170,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                 return;
             }
             mstate[state.field] = state.direction;
-            // FIXME...
+            // FIXME... - this is not used here.. but might be elsewhere..
             this.sortState = state;
             
         } else {
