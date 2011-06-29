@@ -1211,11 +1211,12 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
             for(var i = 0; i < cm.config.length; i++ ) {
                 
                 if ((typeof(dm.sortToggle[cm.config[i].dataIndex]) == 'undefined') && (index != i)) {
-                    return; // dont' bother, it's not in sort list or being set.
+                    continue; // dont' bother, it's not in sort list or being set.
                 }
                 
                 so.push(cm.config[i].dataIndex);
-            });
+            };
+            Roo.log(so);
             dm.sortOrder = so;
         }
         
