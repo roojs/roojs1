@@ -1159,17 +1159,36 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
     },
 
     updateHeaderSortState : function(){
-        var state = this.ds.getSortState();
-        if(!state){
-            return;
+        
+        // sort state can be single { field: xxx, direction : yyy}
+        // or   { xxx=>ASC , yyy : DESC ..... }
+        
+        var mstate = {};
+        if (!this.ds.multiSort) { 
+            var state = this.ds.getSortState();
+            if(!state){
+                return;
+            }
+            mstate[state.field] = state.direction;
+            // FIXME...
+            this.sortState = state;
+            
+        } else {
+            mstate = this.ds.sortToggle;
         }
-        this.sortState = state;
-        var sortColumn = this.cm.findColumnIndex(state.field);
-        if(sortColumn != -1){
-            var sortDir = state.direction;
-            var sc = this.sortClasses;
-            var hds = this.el.select(this.headerSelector).removeClass(sc);
-            hds.item(sortColumn).addClass(sc[sortDir == "DESC" ? 1 : 0]);
+        //remove existing sort classes..
+        
+        var sc = this.sortClasses;
+        var hds = this.el.select(this.headerSelector).removeClass(sc);
+        
+        for(var f in mstate) {
+        
+            var sortColumn = this.cm.findColumnIndex(f);
+            
+            if(sortColumn != -1){
+                var sortDir = mstate[f];        
+                hds.item(sortColumn).addClass(sc[sortDir == "DESC" ? 1 : 0]);
+            }
         }
     },
 
