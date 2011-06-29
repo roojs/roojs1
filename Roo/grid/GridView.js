@@ -1195,6 +1195,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         
     },
 
+
     handleHeaderClick : function(g, index){
         if(this.headersDisabled){
             return;
