@@ -184,7 +184,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
     * @cfg {Object} sortInfo A config object in the format: {field: "fieldName", direction: "ASC|DESC"}
     */
     /**
-    * @cfg {Boolean} multiSort enable multi column sorting (sort is based on the order of columns)
+    * @cfg {Boolean} multiSort enable multi column sorting (sort is based on the order of columns, remote only at present)
     */
     multiSort: false,
     /**
