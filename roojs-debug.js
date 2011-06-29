@@ -48594,6 +48594,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         
     },
 
+
     handleHeaderClick : function(g, index){
         if(this.headersDisabled){
             return;
@@ -48604,7 +48605,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         }
         g.stopEditing();
         
-        if (this.multiSort) {
+        if (dm.multiSort) {
             // update the sortOrder
             var so = [];
             for(var i = 0; i < cm.config.length; i++ ) {
@@ -48615,7 +48616,6 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                 
                 so.push(cm.config[i].dataIndex);
             };
-            Roo.log(so);
             dm.sortOrder = so;
         }
         
