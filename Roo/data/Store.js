@@ -182,7 +182,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
     * @cfg {Object} sortInfo A config object in the format: {field: "fieldName", direction: "ASC|DESC"}
     */
     /**
-    * @cfg {Boolean} multipleSort enable multiple sort.
+    * @cfg {Boolean} multipleSort enable multiple sort. (BETA)
     */
     /**
     * @cfg {boolean} remoteSort True if sorting is to be handled by requesting the Proxy to provide a refreshed
