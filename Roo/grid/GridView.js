@@ -1015,7 +1015,19 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         }
         if (this.grid.dataSource.multiSort) {
             // the we can call sort again..
-            
+            var dm = this.grid.dataSource;
+            var cm = this.grid.colModel;
+            var so = [];
+            for(var i = 0; i < cm.config.length; i++ ) {
+                
+                if ((typeof(dm.sortToggle[cm.config[i].dataIndex]) == 'undefined')) {
+                    continue; // dont' bother, it's not in sort list or being set.
+                }
+                
+                so.push(cm.config[i].dataIndex);
+            };
+            dm.sortOrder = so;
+            dm.load(dm.lastOptions);
             
             
         }
