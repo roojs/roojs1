@@ -1214,7 +1214,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                 }
                 so.push(c.dataIndex);
             });
-            
+            dm.sortOrder = so;
         }
         
         
