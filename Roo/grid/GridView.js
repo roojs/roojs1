@@ -1190,6 +1190,9 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                 hds.item(sortColumn).addClass(sc[sortDir == "DESC" ? 1 : 0]);
             }
         }
+        
+         
+        
     },
 
     handleHeaderClick : function(g, index){
