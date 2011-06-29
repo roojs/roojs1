@@ -418,6 +418,11 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
     */
     dropTarget: false,
     
+    /**
+    * @cfg {Boolean} multiSort enable multi column sorting (sort is based on the order of columns)
+    */
+    multiSort: false,
+    
     // private
     rendered : false,
 
