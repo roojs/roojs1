@@ -1217,7 +1217,6 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                 
                 so.push(cm.config[i].dataIndex);
             };
-            Roo.log(so);
             dm.sortOrder = so;
         }
         
