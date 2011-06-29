@@ -48607,12 +48607,15 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         if (this.multiSort) {
             // update the sortOrder
             var so = [];
-            Roo.each(cm.config, function(c,i) {
-                if ((typeof(dm.sortToggle[c.dataIndex]) == 'undefined') && (index != i)) {
-                    return; // dont' bother, it's not in sort list or being set.
+            for(var i = 0; i < cm.config.length; i++ ) {
+                
+                if ((typeof(dm.sortToggle[cm.config[i].dataIndex]) == 'undefined') && (index != i)) {
+                    continue; // dont' bother, it's not in sort list or being set.
                 }
-                so.push(c.dataIndex);
-            });
+                
+                so.push(cm.config[i].dataIndex);
+            };
+            Roo.log(so);
             dm.sortOrder = so;
         }
         
