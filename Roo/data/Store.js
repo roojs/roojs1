@@ -151,7 +151,7 @@ Roo.data.Store = function(config){
         this.relayEvents(this.proxy,  ["loadexception"]);
     }
     this.sortToggle = {};
-    this.sortOrder = []; // array of order of sorting
+    this.sortOrder = []; // array of order of sorting - updated by grid if multisort is enabled.
 
     Roo.data.Store.superclass.constructor.call(this);
 
