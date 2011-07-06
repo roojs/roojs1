@@ -114,8 +114,45 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
     
     renderTo : function(el)
     {
-        el = Roo.get(el);
         
+        if (!this.parent) {
+            
+            el = el ? Roo.get(el) : false;
+            
+            
+            // it's a top level one..
+            var layoutbase = new Ext.BorderLayout(el || document.body, {
+           
+                center: {
+                    titlebar: false,
+                    autoScroll:false,
+                    closeOnTab: true,
+                    tabPosition: 'top',
+                     //resizeTabs: true,
+                    alwaysShowTabs: el ? false :  true,
+                    minTabWidth: 140
+                }
+            });
+            
+            var tree = this.tree();
+            tree.region = 'center';
+            
+            // set up component properties..
+            this.el = layoutbase.addxtype(tree);
+            this.panel = this.el;
+            this.layout = this.panel.layout;
+            
+            return progressRun.defer(10, _this);
+        }
+        
+        var tree = m.tree();
+        tree.region = tree.region || m.region;
+        m.el = m.parent.el.addxtype(tree);
+        m.fireEvent('built', m);
+        m.panel = m.el;
+        m.layout = m.panel.layout;    
+        progressRun.defer(10, _this); 
+        return false;
         
         
         
@@ -322,11 +359,16 @@ Roo.apply(Roo.XComponent, {
             }
             
             var m = mods.shift();
+            
+            
             Roo.debug && Roo.log(m);
-            if (typeof(m) == 'function') { // not sure if this is supported any more..
+            // not sure if this is supported any more.. - modules that are are just function
+            if (typeof(m) == 'function') { 
                 m.call(this);
                 return progressRun.defer(10, _this);
             } 
+            
+            
             
             Roo.MessageBox.updateProgress(
                 (total  - mods.length)/total,  "Building Interface " + (total  - mods.length) + 
@@ -335,7 +377,7 @@ Roo.apply(Roo.XComponent, {
                     );
             
          
-            
+            // is the module disabled?
             var disabled = (typeof(m.disabled) == 'function') ?
                 m.disabled.call(m.module.disabled) : m.disabled;    
             
@@ -343,6 +385,11 @@ Roo.apply(Roo.XComponent, {
             if (disabled) {
                 return progressRun(); // we do not update the display!
             }
+            
+            // now build 
+            
+            m.renderTo()
+            
             
             if (!m.parent) {
                 // it's a top level one..
