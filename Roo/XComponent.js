@@ -137,19 +137,21 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
             var tree = this.tree();
             tree.region = 'center';
             
+            this.fireEvent('built', this);
             // set up component properties..
             this.el = layoutbase.addxtype(tree);
             this.panel = this.el;
             this.layout = this.panel.layout;
             
-            return progressRun.defer(10, _this);
+            return;
         }
         
-        var tree = m.tree();
-        tree.region = tree.region || m.region;
-        m.el = m.parent.el.addxtype(tree);
-        m.fireEvent('built', m);
-        m.panel = m.el;
+        var tree = this.tree();
+        tree.region = tree.region || this.region;
+        this.el = this.parent.el.addxtype(tree);
+        this.fireEvent('built', this);
+        
+        this.panel = this.el;
         m.layout = m.panel.layout;    
         progressRun.defer(10, _this); 
         return false;
