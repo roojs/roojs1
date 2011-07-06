@@ -141,7 +141,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
             
             // it's a top level one..
             this.parent =  {
-                el : new Ext.BorderLayout(el || document.body, {
+                el : new Roo.BorderLayout(el || document.body, {
                 
                      center: {
                          titlebar: false,
