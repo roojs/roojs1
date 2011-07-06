@@ -359,7 +359,7 @@ Roo.apply(Roo.XComponent, {
             m.panel = m.el;
             m.layout = m.panel.layout;    
             progressRun.defer(10, _this); 
-            
+            return false;
         }
         progressRun.defer(1, _this);
      
