@@ -6,6 +6,7 @@
 /**
  * @class Roo.XComponent
  * A delayed Element creator...
+ * Or a way to group chunks of interface together.
  * 
  * Mypart.xyx = new Roo.XComponent({
 
