@@ -106,6 +106,12 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
      */
     name : false,
     /**
+     * @cfg {String} region
+     * Region to render component to (defaults to center)
+     */
+    region : 'center',
+    
+    /**
      * @cfg {Array} items
      * A single item array - the first element is the root of the tree..
      * It's done this way to stay compatible with the Xtype system...
@@ -121,40 +127,31 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
             
             
             // it's a top level one..
-            var layoutbase = new Ext.BorderLayout(el || document.body, {
-           
-                center: {
-                    titlebar: false,
-                    autoScroll:false,
-                    closeOnTab: true,
-                    tabPosition: 'top',
-                     //resizeTabs: true,
-                    alwaysShowTabs: el ? false :  true,
-                    minTabWidth: 140
-                }
-            });
-            
-            var tree = this.tree();
-            tree.region = 'center';
-            
-            this.fireEvent('built', this);
-            // set up component properties..
-            this.el = layoutbase.addxtype(tree);
-            this.panel = this.el;
-            this.layout = this.panel.layout;
-            
-            return;
+            this.parent =  {
+                el : new Ext.BorderLayout(el || document.body, {
+                
+                     center: {
+                         titlebar: false,
+                         autoScroll:false,
+                         closeOnTab: true,
+                         tabPosition: 'top',
+                          //resizeTabs: true,
+                         alwaysShowTabs: el ? false :  true,
+                         minTabWidth: 140
+                     }
+                 })
+            }
         }
-        
+            
         var tree = this.tree();
         tree.region = tree.region || this.region;
         this.el = this.parent.el.addxtype(tree);
         this.fireEvent('built', this);
         
         this.panel = this.el;
-        m.layout = m.panel.layout;    
-        progressRun.defer(10, _this); 
-        return false;
+        this.layout = this.panel.layout;    
+        
+        return
         
         
         
