@@ -150,13 +150,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
         
         this.panel = this.el;
         this.layout = this.panel.layout;    
-        
-        return
-        
-        
-        
-        
-        
+         
         
         
     }
