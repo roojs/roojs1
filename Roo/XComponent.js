@@ -27,11 +27,10 @@
  *})
  *
  *
- * It can be used to build a big heiracy,
- * or you can use
+ * It can be used to build a big heiracy, with parent etc.
+ * or you can just use this to render a single compoent to a dom element
  * MYPART.render(Roo.Element | String(id) | dom_element )
  * 
- *
  * @extends Roo.util.Observable
  * @constructor
  * @param cfg {Object} configuration of component
