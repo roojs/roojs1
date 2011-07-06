@@ -238,7 +238,7 @@ Roo.extend(Roo.form.Form, Roo.form.BasicForm, {
         if (!id) {
             return ret;
         }
-        Ext.each(this.allItems, function(f){
+        Roo.each(this.allItems, function(f){
             if (f.id == id || f.name == id ){
                 ret = f;
                 return false;
