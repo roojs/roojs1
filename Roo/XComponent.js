@@ -24,6 +24,13 @@
         }
      ]
  *})
+ *
+ *
+ * It can be used to build a big heiracy,
+ * or you can use
+ * MYPART.renderTo(Roo.Element | String(id) | dom_element )
+ * 
+ *
  * @extends Roo.util.Observable
  * @constructor
  * @param cfg {Object} configuration of component
@@ -297,7 +304,7 @@ Roo.apply(Roo.XComponent, {
                 Roo.debug && Roo.log('hide?');
                 Roo.MessageBox.hide();
                 _this.topModule.fireEvent('buildcomplete', _this.topModule);
-                return;    
+                return flase;    
             }
             
             var m = mods.shift();
