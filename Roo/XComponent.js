@@ -29,7 +29,7 @@
  *
  * It can be used to build a big heiracy,
  * or you can use
- * MYPART.renderTo(Roo.Element | String(id) | dom_element )
+ * MYPART.render(Roo.Element | String(id) | dom_element )
  * 
  *
  * @extends Roo.util.Observable
