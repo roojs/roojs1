@@ -13780,4 +13780,4416 @@ Roo.Resizable.Handle.prototype = {
     onMouseOut : function(e){
         this.rz.handleOut(this, e);
     }
+};/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.Editor
+ * @extends Roo.Component
+ * A base editor field that handles displaying/hiding on demand and has some built-in sizing and event handling logic.
+ * @constructor
+ * Create a new Editor
+ * @param {Roo.form.Field} field The Field object (or descendant)
+ * @param {Object} config The config object
+ */
+Roo.Editor = function(field, config){
+    Roo.Editor.superclass.constructor.call(this, config);
+    this.field = field;
+    this.addEvents({
+        /**
+	     * @event beforestartedit
+	     * Fires when editing is initiated, but before the value changes.  Editing can be canceled by returning
+	     * false from the handler of this event.
+	     * @param {Editor} this
+	     * @param {Roo.Element} boundEl The underlying element bound to this editor
+	     * @param {Mixed} value The field value being set
+	     */
+        "beforestartedit" : true,
+        /**
+	     * @event startedit
+	     * Fires when this editor is displayed
+	     * @param {Roo.Element} boundEl The underlying element bound to this editor
+	     * @param {Mixed} value The starting field value
+	     */
+        "startedit" : true,
+        /**
+	     * @event beforecomplete
+	     * Fires after a change has been made to the field, but before the change is reflected in the underlying
+	     * field.  Saving the change to the field can be canceled by returning false from the handler of this event.
+	     * Note that if the value has not changed and ignoreNoChange = true, the editing will still end but this
+	     * event will not fire since no edit actually occurred.
+	     * @param {Editor} this
+	     * @param {Mixed} value The current field value
+	     * @param {Mixed} startValue The original field value
+	     */
+        "beforecomplete" : true,
+        /**
+	     * @event complete
+	     * Fires after editing is complete and any changed value has been written to the underlying field.
+	     * @param {Editor} this
+	     * @param {Mixed} value The current field value
+	     * @param {Mixed} startValue The original field value
+	     */
+        "complete" : true,
+        /**
+         * @event specialkey
+         * Fires when any key related to navigation (arrows, tab, enter, esc, etc.) is pressed.  You can check
+         * {@link Roo.EventObject#getKey} to determine which key was pressed.
+         * @param {Roo.form.Field} this
+         * @param {Roo.EventObject} e The event object
+         */
+        "specialkey" : true
+    });
 };
+
+Roo.extend(Roo.Editor, Roo.Component, {
+    /**
+     * @cfg {Boolean/String} autosize
+     * True for the editor to automatically adopt the size of the underlying field, "width" to adopt the width only,
+     * or "height" to adopt the height only (defaults to false)
+     */
+    /**
+     * @cfg {Boolean} revertInvalid
+     * True to automatically revert the field value and cancel the edit when the user completes an edit and the field
+     * validation fails (defaults to true)
+     */
+    /**
+     * @cfg {Boolean} ignoreNoChange
+     * True to skip the the edit completion process (no save, no events fired) if the user completes an edit and
+     * the value has not changed (defaults to false).  Applies only to string values - edits for other data types
+     * will never be ignored.
+     */
+    /**
+     * @cfg {Boolean} hideEl
+     * False to keep the bound element visible while the editor is displayed (defaults to true)
+     */
+    /**
+     * @cfg {Mixed} value
+     * The data value of the underlying field (defaults to "")
+     */
+    value : "",
+    /**
+     * @cfg {String} alignment
+     * The position to align to (see {@link Roo.Element#alignTo} for more details, defaults to "c-c?").
+     */
+    alignment: "c-c?",
+    /**
+     * @cfg {Boolean/String} shadow "sides" for sides/bottom only, "frame" for 4-way shadow, and "drop"
+     * for bottom-right shadow (defaults to "frame")
+     */
+    shadow : "frame",
+    /**
+     * @cfg {Boolean} constrain True to constrain the editor to the viewport
+     */
+    constrain : false,
+    /**
+     * @cfg {Boolean} completeOnEnter True to complete the edit when the enter key is pressed (defaults to false)
+     */
+    completeOnEnter : false,
+    /**
+     * @cfg {Boolean} cancelOnEsc True to cancel the edit when the escape key is pressed (defaults to false)
+     */
+    cancelOnEsc : false,
+    /**
+     * @cfg {Boolean} updateEl True to update the innerHTML of the bound element when the update completes (defaults to false)
+     */
+    updateEl : false,
+
+    // private
+    onRender : function(ct, position){
+        this.el = new Roo.Layer({
+            shadow: this.shadow,
+            cls: "x-editor",
+            parentEl : ct,
+            shim : this.shim,
+            shadowOffset:4,
+            id: this.id,
+            constrain: this.constrain
+        });
+        this.el.setStyle("overflow", Roo.isGecko ? "auto" : "hidden");
+        if(this.field.msgTarget != 'title'){
+            this.field.msgTarget = 'qtip';
+        }
+        this.field.render(this.el);
+        if(Roo.isGecko){
+            this.field.el.dom.setAttribute('autocomplete', 'off');
+        }
+        this.field.on("specialkey", this.onSpecialKey, this);
+        if(this.swallowKeys){
+            this.field.el.swallowEvent(['keydown','keypress']);
+        }
+        this.field.show();
+        this.field.on("blur", this.onBlur, this);
+        if(this.field.grow){
+            this.field.on("autosize", this.el.sync,  this.el, {delay:1});
+        }
+    },
+
+    onSpecialKey : function(field, e)
+    {
+        //Roo.log('editor onSpecialKey');
+        if(this.completeOnEnter && e.getKey() == e.ENTER){
+            e.stopEvent();
+            this.completeEdit();
+            return;
+        }
+        // do not fire special key otherwise it might hide close the editor...
+        if(e.getKey() == e.ENTER){    
+            return;
+        }
+        if(this.cancelOnEsc && e.getKey() == e.ESC){
+            this.cancelEdit();
+            return;
+        } 
+        this.fireEvent('specialkey', field, e);
+    
+    },
+
+    /**
+     * Starts the editing process and shows the editor.
+     * @param {String/HTMLElement/Element} el The element to edit
+     * @param {String} value (optional) A value to initialize the editor with. If a value is not provided, it defaults
+      * to the innerHTML of el.
+     */
+    startEdit : function(el, value){
+        if(this.editing){
+            this.completeEdit();
+        }
+        this.boundEl = Roo.get(el);
+        var v = value !== undefined ? value : this.boundEl.dom.innerHTML;
+        if(!this.rendered){
+            this.render(this.parentEl || document.body);
+        }
+        if(this.fireEvent("beforestartedit", this, this.boundEl, v) === false){
+            return;
+        }
+        this.startValue = v;
+        this.field.setValue(v);
+        if(this.autoSize){
+            var sz = this.boundEl.getSize();
+            switch(this.autoSize){
+                case "width":
+                this.setSize(sz.width,  "");
+                break;
+                case "height":
+                this.setSize("",  sz.height);
+                break;
+                default:
+                this.setSize(sz.width,  sz.height);
+            }
+        }
+        this.el.alignTo(this.boundEl, this.alignment);
+        this.editing = true;
+        if(Roo.QuickTips){
+            Roo.QuickTips.disable();
+        }
+        this.show();
+    },
+
+    /**
+     * Sets the height and width of this editor.
+     * @param {Number} width The new width
+     * @param {Number} height The new height
+     */
+    setSize : function(w, h){
+        this.field.setSize(w, h);
+        if(this.el){
+            this.el.sync();
+        }
+    },
+
+    /**
+     * Realigns the editor to the bound field based on the current alignment config value.
+     */
+    realign : function(){
+        this.el.alignTo(this.boundEl, this.alignment);
+    },
+
+    /**
+     * Ends the editing process, persists the changed value to the underlying field, and hides the editor.
+     * @param {Boolean} remainVisible Override the default behavior and keep the editor visible after edit (defaults to false)
+     */
+    completeEdit : function(remainVisible){
+        if(!this.editing){
+            return;
+        }
+        var v = this.getValue();
+        if(this.revertInvalid !== false && !this.field.isValid()){
+            v = this.startValue;
+            this.cancelEdit(true);
+        }
+        if(String(v) === String(this.startValue) && this.ignoreNoChange){
+            this.editing = false;
+            this.hide();
+            return;
+        }
+        if(this.fireEvent("beforecomplete", this, v, this.startValue) !== false){
+            this.editing = false;
+            if(this.updateEl && this.boundEl){
+                this.boundEl.update(v);
+            }
+            if(remainVisible !== true){
+                this.hide();
+            }
+            this.fireEvent("complete", this, v, this.startValue);
+        }
+    },
+
+    // private
+    onShow : function(){
+        this.el.show();
+        if(this.hideEl !== false){
+            this.boundEl.hide();
+        }
+        this.field.show();
+        if(Roo.isIE && !this.fixIEFocus){ // IE has problems with focusing the first time
+            this.fixIEFocus = true;
+            this.deferredFocus.defer(50, this);
+        }else{
+            this.field.focus();
+        }
+        this.fireEvent("startedit", this.boundEl, this.startValue);
+    },
+
+    deferredFocus : function(){
+        if(this.editing){
+            this.field.focus();
+        }
+    },
+
+    /**
+     * Cancels the editing process and hides the editor without persisting any changes.  The field value will be
+     * reverted to the original starting value.
+     * @param {Boolean} remainVisible Override the default behavior and keep the editor visible after
+     * cancel (defaults to false)
+     */
+    cancelEdit : function(remainVisible){
+        if(this.editing){
+            this.setValue(this.startValue);
+            if(remainVisible !== true){
+                this.hide();
+            }
+        }
+    },
+
+    // private
+    onBlur : function(){
+        if(this.allowBlur !== true && this.editing){
+            this.completeEdit();
+        }
+    },
+
+    // private
+    onHide : function(){
+        if(this.editing){
+            this.completeEdit();
+            return;
+        }
+        this.field.blur();
+        if(this.field.collapse){
+            this.field.collapse();
+        }
+        this.el.hide();
+        if(this.hideEl !== false){
+            this.boundEl.show();
+        }
+        if(Roo.QuickTips){
+            Roo.QuickTips.enable();
+        }
+    },
+
+    /**
+     * Sets the data value of the editor
+     * @param {Mixed} value Any valid value supported by the underlying field
+     */
+    setValue : function(v){
+        this.field.setValue(v);
+    },
+
+    /**
+     * Gets the data value of the editor
+     * @return {Mixed} The data value
+     */
+    getValue : function(){
+        return this.field.getValue();
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.BasicDialog
+ * @extends Roo.util.Observable
+ * Lightweight Dialog Class.  The code below shows the creation of a typical dialog using existing HTML markup:
+ * <pre><code>
+var dlg = new Roo.BasicDialog("my-dlg", {
+    height: 200,
+    width: 300,
+    minHeight: 100,
+    minWidth: 150,
+    modal: true,
+    proxyDrag: true,
+    shadow: true
+});
+dlg.addKeyListener(27, dlg.hide, dlg); // ESC can also close the dialog
+dlg.addButton('OK', dlg.hide, dlg);    // Could call a save function instead of hiding
+dlg.addButton('Cancel', dlg.hide, dlg);
+dlg.show();
+</code></pre>
+  <b>A Dialog should always be a direct child of the body element.</b>
+ * @cfg {Boolean/DomHelper} autoCreate True to auto create from scratch, or using a DomHelper Object (defaults to false)
+ * @cfg {String} title Default text to display in the title bar (defaults to null)
+ * @cfg {Number} width Width of the dialog in pixels (can also be set via CSS).  Determined by browser if unspecified.
+ * @cfg {Number} height Height of the dialog in pixels (can also be set via CSS).  Determined by browser if unspecified.
+ * @cfg {Number} x The default left page coordinate of the dialog (defaults to center screen)
+ * @cfg {Number} y The default top page coordinate of the dialog (defaults to center screen)
+ * @cfg {String/Element} animateTarget Id or element from which the dialog should animate while opening
+ * (defaults to null with no animation)
+ * @cfg {Boolean} resizable False to disable manual dialog resizing (defaults to true)
+ * @cfg {String} resizeHandles Which resize handles to display - see the {@link Roo.Resizable} handles config
+ * property for valid values (defaults to 'all')
+ * @cfg {Number} minHeight The minimum allowable height for a resizable dialog (defaults to 80)
+ * @cfg {Number} minWidth The minimum allowable width for a resizable dialog (defaults to 200)
+ * @cfg {Boolean} modal True to show the dialog modally, preventing user interaction with the rest of the page (defaults to false)
+ * @cfg {Boolean} autoScroll True to allow the dialog body contents to overflow and display scrollbars (defaults to false)
+ * @cfg {Boolean} closable False to remove the built-in top-right corner close button (defaults to true)
+ * @cfg {Boolean} collapsible False to remove the built-in top-right corner collapse button (defaults to true)
+ * @cfg {Boolean} constraintoviewport True to keep the dialog constrained within the visible viewport boundaries (defaults to true)
+ * @cfg {Boolean} syncHeightBeforeShow True to cause the dimensions to be recalculated before the dialog is shown (defaults to false)
+ * @cfg {Boolean} draggable False to disable dragging of the dialog within the viewport (defaults to true)
+ * @cfg {Boolean} autoTabs If true, all elements with class 'x-dlg-tab' will get automatically converted to tabs (defaults to false)
+ * @cfg {String} tabTag The tag name of tab elements, used when autoTabs = true (defaults to 'div')
+ * @cfg {Boolean} proxyDrag True to drag a lightweight proxy element rather than the dialog itself, used when
+ * draggable = true (defaults to false)
+ * @cfg {Boolean} fixedcenter True to ensure that anytime the dialog is shown or resized it gets centered (defaults to false)
+ * @cfg {Boolean/String} shadow True or "sides" for the default effect, "frame" for 4-way shadow, and "drop" for bottom-right
+ * shadow (defaults to false)
+ * @cfg {Number} shadowOffset The number of pixels to offset the shadow if displayed (defaults to 5)
+ * @cfg {String} buttonAlign Valid values are "left," "center" and "right" (defaults to "right")
+ * @cfg {Number} minButtonWidth Minimum width of all dialog buttons (defaults to 75)
+ * @cfg {Array} buttons Array of buttons
+ * @cfg {Boolean} shim True to create an iframe shim that prevents selects from showing through (defaults to false)
+ * @constructor
+ * Create a new BasicDialog.
+ * @param {String/HTMLElement/Roo.Element} el The container element or DOM node, or its id
+ * @param {Object} config Configuration options
+ */
+Roo.BasicDialog = function(el, config){
+    this.el = Roo.get(el);
+    var dh = Roo.DomHelper;
+    if(!this.el && config && config.autoCreate){
+        if(typeof config.autoCreate == "object"){
+            if(!config.autoCreate.id){
+                config.autoCreate.id = el;
+            }
+            this.el = dh.append(document.body,
+                        config.autoCreate, true);
+        }else{
+            this.el = dh.append(document.body,
+                        {tag: "div", id: el, style:'visibility:hidden;'}, true);
+        }
+    }
+    el = this.el;
+    el.setDisplayed(true);
+    el.hide = this.hideAction;
+    this.id = el.id;
+    el.addClass("x-dlg");
+
+    Roo.apply(this, config);
+
+    this.proxy = el.createProxy("x-dlg-proxy");
+    this.proxy.hide = this.hideAction;
+    this.proxy.setOpacity(.5);
+    this.proxy.hide();
+
+    if(config.width){
+        el.setWidth(config.width);
+    }
+    if(config.height){
+        el.setHeight(config.height);
+    }
+    this.size = el.getSize();
+    if(typeof config.x != "undefined" && typeof config.y != "undefined"){
+        this.xy = [config.x,config.y];
+    }else{
+        this.xy = el.getCenterXY(true);
+    }
+    /** The header element @type Roo.Element */
+    this.header = el.child("> .x-dlg-hd");
+    /** The body element @type Roo.Element */
+    this.body = el.child("> .x-dlg-bd");
+    /** The footer element @type Roo.Element */
+    this.footer = el.child("> .x-dlg-ft");
+
+    if(!this.header){
+        this.header = el.createChild({tag: "div", cls:"x-dlg-hd", html: "&#160;"}, this.body ? this.body.dom : null);
+    }
+    if(!this.body){
+        this.body = el.createChild({tag: "div", cls:"x-dlg-bd"});
+    }
+
+    this.header.unselectable();
+    if(this.title){
+        this.header.update(this.title);
+    }
+    // this element allows the dialog to be focused for keyboard event
+    this.focusEl = el.createChild({tag: "a", href:"#", cls:"x-dlg-focus", tabIndex:"-1"});
+    this.focusEl.swallowEvent("click", true);
+
+    this.header.wrap({cls:"x-dlg-hd-right"}).wrap({cls:"x-dlg-hd-left"}, true);
+
+    // wrap the body and footer for special rendering
+    this.bwrap = this.body.wrap({tag: "div", cls:"x-dlg-dlg-body"});
+    if(this.footer){
+        this.bwrap.dom.appendChild(this.footer.dom);
+    }
+
+    this.bg = this.el.createChild({
+        tag: "div", cls:"x-dlg-bg",
+        html: '<div class="x-dlg-bg-left"><div class="x-dlg-bg-right"><div class="x-dlg-bg-center">&#160;</div></div></div>'
+    });
+    this.centerBg = this.bg.child("div.x-dlg-bg-center");
+
+
+    if(this.autoScroll !== false && !this.autoTabs){
+        this.body.setStyle("overflow", "auto");
+    }
+
+    this.toolbox = this.el.createChild({cls: "x-dlg-toolbox"});
+
+    if(this.closable !== false){
+        this.el.addClass("x-dlg-closable");
+        this.close = this.toolbox.createChild({cls:"x-dlg-close"});
+        this.close.on("click", this.closeClick, this);
+        this.close.addClassOnOver("x-dlg-close-over");
+    }
+    if(this.collapsible !== false){
+        this.collapseBtn = this.toolbox.createChild({cls:"x-dlg-collapse"});
+        this.collapseBtn.on("click", this.collapseClick, this);
+        this.collapseBtn.addClassOnOver("x-dlg-collapse-over");
+        this.header.on("dblclick", this.collapseClick, this);
+    }
+    if(this.resizable !== false){
+        this.el.addClass("x-dlg-resizable");
+        this.resizer = new Roo.Resizable(el, {
+            minWidth: this.minWidth || 80,
+            minHeight:this.minHeight || 80,
+            handles: this.resizeHandles || "all",
+            pinned: true
+        });
+        this.resizer.on("beforeresize", this.beforeResize, this);
+        this.resizer.on("resize", this.onResize, this);
+    }
+    if(this.draggable !== false){
+        el.addClass("x-dlg-draggable");
+        if (!this.proxyDrag) {
+            var dd = new Roo.dd.DD(el.dom.id, "WindowDrag");
+        }
+        else {
+            var dd = new Roo.dd.DDProxy(el.dom.id, "WindowDrag", {dragElId: this.proxy.id});
+        }
+        dd.setHandleElId(this.header.id);
+        dd.endDrag = this.endMove.createDelegate(this);
+        dd.startDrag = this.startMove.createDelegate(this);
+        dd.onDrag = this.onDrag.createDelegate(this);
+        dd.scroll = false;
+        this.dd = dd;
+    }
+    if(this.modal){
+        this.mask = dh.append(document.body, {tag: "div", cls:"x-dlg-mask"}, true);
+        this.mask.enableDisplayMode("block");
+        this.mask.hide();
+        this.el.addClass("x-dlg-modal");
+    }
+    if(this.shadow){
+        this.shadow = new Roo.Shadow({
+            mode : typeof this.shadow == "string" ? this.shadow : "sides",
+            offset : this.shadowOffset
+        });
+    }else{
+        this.shadowOffset = 0;
+    }
+    if(Roo.useShims && this.shim !== false){
+        this.shim = this.el.createShim();
+        this.shim.hide = this.hideAction;
+        this.shim.hide();
+    }else{
+        this.shim = false;
+    }
+    if(this.autoTabs){
+        this.initTabs();
+    }
+    if (this.buttons) { 
+        var bts= this.buttons;
+        this.buttons = [];
+        Roo.each(bts, function(b) {
+            this.addButton(b);
+        }, this);
+    }
+    
+    
+    this.addEvents({
+        /**
+         * @event keydown
+         * Fires when a key is pressed
+         * @param {Roo.BasicDialog} this
+         * @param {Roo.EventObject} e
+         */
+        "keydown" : true,
+        /**
+         * @event move
+         * Fires when this dialog is moved by the user.
+         * @param {Roo.BasicDialog} this
+         * @param {Number} x The new page X
+         * @param {Number} y The new page Y
+         */
+        "move" : true,
+        /**
+         * @event resize
+         * Fires when this dialog is resized by the user.
+         * @param {Roo.BasicDialog} this
+         * @param {Number} width The new width
+         * @param {Number} height The new height
+         */
+        "resize" : true,
+        /**
+         * @event beforehide
+         * Fires before this dialog is hidden.
+         * @param {Roo.BasicDialog} this
+         */
+        "beforehide" : true,
+        /**
+         * @event hide
+         * Fires when this dialog is hidden.
+         * @param {Roo.BasicDialog} this
+         */
+        "hide" : true,
+        /**
+         * @event beforeshow
+         * Fires before this dialog is shown.
+         * @param {Roo.BasicDialog} this
+         */
+        "beforeshow" : true,
+        /**
+         * @event show
+         * Fires when this dialog is shown.
+         * @param {Roo.BasicDialog} this
+         */
+        "show" : true
+    });
+    el.on("keydown", this.onKeyDown, this);
+    el.on("mousedown", this.toFront, this);
+    Roo.EventManager.onWindowResize(this.adjustViewport, this, true);
+    this.el.hide();
+    Roo.DialogManager.register(this);
+    Roo.BasicDialog.superclass.constructor.call(this);
+};
+
+Roo.extend(Roo.BasicDialog, Roo.util.Observable, {
+    shadowOffset: Roo.isIE ? 6 : 5,
+    minHeight: 80,
+    minWidth: 200,
+    minButtonWidth: 75,
+    defaultButton: null,
+    buttonAlign: "right",
+    tabTag: 'div',
+    firstShow: true,
+
+    /**
+     * Sets the dialog title text
+     * @param {String} text The title text to display
+     * @return {Roo.BasicDialog} this
+     */
+    setTitle : function(text){
+        this.header.update(text);
+        return this;
+    },
+
+    // private
+    closeClick : function(){
+        this.hide();
+    },
+
+    // private
+    collapseClick : function(){
+        this[this.collapsed ? "expand" : "collapse"]();
+    },
+
+    /**
+     * Collapses the dialog to its minimized state (only the title bar is visible).
+     * Equivalent to the user clicking the collapse dialog button.
+     */
+    collapse : function(){
+        if(!this.collapsed){
+            this.collapsed = true;
+            this.el.addClass("x-dlg-collapsed");
+            this.restoreHeight = this.el.getHeight();
+            this.resizeTo(this.el.getWidth(), this.header.getHeight());
+        }
+    },
+
+    /**
+     * Expands a collapsed dialog back to its normal state.  Equivalent to the user
+     * clicking the expand dialog button.
+     */
+    expand : function(){
+        if(this.collapsed){
+            this.collapsed = false;
+            this.el.removeClass("x-dlg-collapsed");
+            this.resizeTo(this.el.getWidth(), this.restoreHeight);
+        }
+    },
+
+    /**
+     * Reinitializes the tabs component, clearing out old tabs and finding new ones.
+     * @return {Roo.TabPanel} The tabs component
+     */
+    initTabs : function(){
+        var tabs = this.getTabs();
+        while(tabs.getTab(0)){
+            tabs.removeTab(0);
+        }
+        this.el.select(this.tabTag+'.x-dlg-tab').each(function(el){
+            var dom = el.dom;
+            tabs.addTab(Roo.id(dom), dom.title);
+            dom.title = "";
+        });
+        tabs.activate(0);
+        return tabs;
+    },
+
+    // private
+    beforeResize : function(){
+        this.resizer.minHeight = Math.max(this.minHeight, this.getHeaderFooterHeight(true)+40);
+    },
+
+    // private
+    onResize : function(){
+        this.refreshSize();
+        this.syncBodyHeight();
+        this.adjustAssets();
+        this.focus();
+        this.fireEvent("resize", this, this.size.width, this.size.height);
+    },
+
+    // private
+    onKeyDown : function(e){
+        if(this.isVisible()){
+            this.fireEvent("keydown", this, e);
+        }
+    },
+
+    /**
+     * Resizes the dialog.
+     * @param {Number} width
+     * @param {Number} height
+     * @return {Roo.BasicDialog} this
+     */
+    resizeTo : function(width, height){
+        this.el.setSize(width, height);
+        this.size = {width: width, height: height};
+        this.syncBodyHeight();
+        if(this.fixedcenter){
+            this.center();
+        }
+        if(this.isVisible()){
+            this.constrainXY();
+            this.adjustAssets();
+        }
+        this.fireEvent("resize", this, width, height);
+        return this;
+    },
+
+
+    /**
+     * Resizes the dialog to fit the specified content size.
+     * @param {Number} width
+     * @param {Number} height
+     * @return {Roo.BasicDialog} this
+     */
+    setContentSize : function(w, h){
+        h += this.getHeaderFooterHeight() + this.body.getMargins("tb");
+        w += this.body.getMargins("lr") + this.bwrap.getMargins("lr") + this.centerBg.getPadding("lr");
+        //if(!this.el.isBorderBox()){
+            h +=  this.body.getPadding("tb") + this.bwrap.getBorderWidth("tb") + this.body.getBorderWidth("tb") + this.el.getBorderWidth("tb");
+            w += this.body.getPadding("lr") + this.bwrap.getBorderWidth("lr") + this.body.getBorderWidth("lr") + this.bwrap.getPadding("lr") + this.el.getBorderWidth("lr");
+        //}
+        if(this.tabs){
+            h += this.tabs.stripWrap.getHeight() + this.tabs.bodyEl.getMargins("tb") + this.tabs.bodyEl.getPadding("tb");
+            w += this.tabs.bodyEl.getMargins("lr") + this.tabs.bodyEl.getPadding("lr");
+        }
+        this.resizeTo(w, h);
+        return this;
+    },
+
+    /**
+     * Adds a key listener for when this dialog is displayed.  This allows you to hook in a function that will be
+     * executed in response to a particular key being pressed while the dialog is active.
+     * @param {Number/Array/Object} key Either the numeric key code, array of key codes or an object with the following options:
+     *                                  {key: (number or array), shift: (true/false), ctrl: (true/false), alt: (true/false)}
+     * @param {Function} fn The function to call
+     * @param {Object} scope (optional) The scope of the function
+     * @return {Roo.BasicDialog} this
+     */
+    addKeyListener : function(key, fn, scope){
+        var keyCode, shift, ctrl, alt;
+        if(typeof key == "object" && !(key instanceof Array)){
+            keyCode = key["key"];
+            shift = key["shift"];
+            ctrl = key["ctrl"];
+            alt = key["alt"];
+        }else{
+            keyCode = key;
+        }
+        var handler = function(dlg, e){
+            if((!shift || e.shiftKey) && (!ctrl || e.ctrlKey) &&  (!alt || e.altKey)){
+                var k = e.getKey();
+                if(keyCode instanceof Array){
+                    for(var i = 0, len = keyCode.length; i < len; i++){
+                        if(keyCode[i] == k){
+                          fn.call(scope || window, dlg, k, e);
+                          return;
+                        }
+                    }
+                }else{
+                    if(k == keyCode){
+                        fn.call(scope || window, dlg, k, e);
+                    }
+                }
+            }
+        };
+        this.on("keydown", handler);
+        return this;
+    },
+
+    /**
+     * Returns the TabPanel component (creates it if it doesn't exist).
+     * Note: If you wish to simply check for the existence of tabs without creating them,
+     * check for a null 'tabs' property.
+     * @return {Roo.TabPanel} The tabs component
+     */
+    getTabs : function(){
+        if(!this.tabs){
+            this.el.addClass("x-dlg-auto-tabs");
+            this.body.addClass(this.tabPosition == "bottom" ? "x-tabs-bottom" : "x-tabs-top");
+            this.tabs = new Roo.TabPanel(this.body.dom, this.tabPosition == "bottom");
+        }
+        return this.tabs;
+    },
+
+    /**
+     * Adds a button to the footer section of the dialog.
+     * @param {String/Object} config A string becomes the button text, an object can either be a Button config
+     * object or a valid Roo.DomHelper element config
+     * @param {Function} handler The function called when the button is clicked
+     * @param {Object} scope (optional) The scope of the handler function (accepts position as a property)
+     * @return {Roo.Button} The new button
+     */
+    addButton : function(config, handler, scope){
+        var dh = Roo.DomHelper;
+        if(!this.footer){
+            this.footer = dh.append(this.bwrap, {tag: "div", cls:"x-dlg-ft"}, true);
+        }
+        if(!this.btnContainer){
+            var tb = this.footer.createChild({
+
+                cls:"x-dlg-btns x-dlg-btns-"+this.buttonAlign,
+                html:'<table cellspacing="0"><tbody><tr></tr></tbody></table><div class="x-clear"></div>'
+            }, null, true);
+            this.btnContainer = tb.firstChild.firstChild.firstChild;
+        }
+        var bconfig = {
+            handler: handler,
+            scope: scope,
+            minWidth: this.minButtonWidth,
+            hideParent:true
+        };
+        if(typeof config == "string"){
+            bconfig.text = config;
+        }else{
+            if(config.tag){
+                bconfig.dhconfig = config;
+            }else{
+                Roo.apply(bconfig, config);
+            }
+        }
+        var fc = false;
+        if ((typeof(bconfig.position) != 'undefined') && bconfig.position < this.btnContainer.childNodes.length-1) {
+            bconfig.position = Math.max(0, bconfig.position);
+            fc = this.btnContainer.childNodes[bconfig.position];
+        }
+         
+        var btn = new Roo.Button(
+            fc ? 
+                this.btnContainer.insertBefore(document.createElement("td"),fc)
+                : this.btnContainer.appendChild(document.createElement("td")),
+            //Roo.get(this.btnContainer).createChild( { tag: 'td'},  fc ),
+            bconfig
+        );
+        this.syncBodyHeight();
+        if(!this.buttons){
+            /**
+             * Array of all the buttons that have been added to this dialog via addButton
+             * @type Array
+             */
+            this.buttons = [];
+        }
+        this.buttons.push(btn);
+        return btn;
+    },
+
+    /**
+     * Sets the default button to be focused when the dialog is displayed.
+     * @param {Roo.BasicDialog.Button} btn The button object returned by {@link #addButton}
+     * @return {Roo.BasicDialog} this
+     */
+    setDefaultButton : function(btn){
+        this.defaultButton = btn;
+        return this;
+    },
+
+    // private
+    getHeaderFooterHeight : function(safe){
+        var height = 0;
+        if(this.header){
+           height += this.header.getHeight();
+        }
+        if(this.footer){
+           var fm = this.footer.getMargins();
+            height += (this.footer.getHeight()+fm.top+fm.bottom);
+        }
+        height += this.bwrap.getPadding("tb")+this.bwrap.getBorderWidth("tb");
+        height += this.centerBg.getPadding("tb");
+        return height;
+    },
+
+    // private
+    syncBodyHeight : function(){
+        var bd = this.body, cb = this.centerBg, bw = this.bwrap;
+        var height = this.size.height - this.getHeaderFooterHeight(false);
+        bd.setHeight(height-bd.getMargins("tb"));
+        var hh = this.header.getHeight();
+        var h = this.size.height-hh;
+        cb.setHeight(h);
+        bw.setLeftTop(cb.getPadding("l"), hh+cb.getPadding("t"));
+        bw.setHeight(h-cb.getPadding("tb"));
+        bw.setWidth(this.el.getWidth(true)-cb.getPadding("lr"));
+        bd.setWidth(bw.getWidth(true));
+        if(this.tabs){
+            this.tabs.syncHeight();
+            if(Roo.isIE){
+                this.tabs.el.repaint();
+            }
+        }
+    },
+
+    /**
+     * Restores the previous state of the dialog if Roo.state is configured.
+     * @return {Roo.BasicDialog} this
+     */
+    restoreState : function(){
+        var box = Roo.state.Manager.get(this.stateId || (this.el.id + "-state"));
+        if(box && box.width){
+            this.xy = [box.x, box.y];
+            this.resizeTo(box.width, box.height);
+        }
+        return this;
+    },
+
+    // private
+    beforeShow : function(){
+        this.expand();
+        if(this.fixedcenter){
+            this.xy = this.el.getCenterXY(true);
+        }
+        if(this.modal){
+            Roo.get(document.body).addClass("x-body-masked");
+            this.mask.setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
+            this.mask.show();
+        }
+        this.constrainXY();
+    },
+
+    // private
+    animShow : function(){
+        var b = Roo.get(this.animateTarget).getBox();
+        this.proxy.setSize(b.width, b.height);
+        this.proxy.setLocation(b.x, b.y);
+        this.proxy.show();
+        this.proxy.setBounds(this.xy[0], this.xy[1], this.size.width, this.size.height,
+                    true, .35, this.showEl.createDelegate(this));
+    },
+
+    /**
+     * Shows the dialog.
+     * @param {String/HTMLElement/Roo.Element} animateTarget (optional) Reset the animation target
+     * @return {Roo.BasicDialog} this
+     */
+    show : function(animateTarget){
+        if (this.fireEvent("beforeshow", this) === false){
+            return;
+        }
+        if(this.syncHeightBeforeShow){
+            this.syncBodyHeight();
+        }else if(this.firstShow){
+            this.firstShow = false;
+            this.syncBodyHeight(); // sync the height on the first show instead of in the constructor
+        }
+        this.animateTarget = animateTarget || this.animateTarget;
+        if(!this.el.isVisible()){
+            this.beforeShow();
+            if(this.animateTarget && Roo.get(this.animateTarget)){
+                this.animShow();
+            }else{
+                this.showEl();
+            }
+        }
+        return this;
+    },
+
+    // private
+    showEl : function(){
+        this.proxy.hide();
+        this.el.setXY(this.xy);
+        this.el.show();
+        this.adjustAssets(true);
+        this.toFront();
+        this.focus();
+        // IE peekaboo bug - fix found by Dave Fenwick
+        if(Roo.isIE){
+            this.el.repaint();
+        }
+        this.fireEvent("show", this);
+    },
+
+    /**
+     * Focuses the dialog.  If a defaultButton is set, it will receive focus, otherwise the
+     * dialog itself will receive focus.
+     */
+    focus : function(){
+        if(this.defaultButton){
+            this.defaultButton.focus();
+        }else{
+            this.focusEl.focus();
+        }
+    },
+
+    // private
+    constrainXY : function(){
+        if(this.constraintoviewport !== false){
+            if(!this.viewSize){
+                if(this.container){
+                    var s = this.container.getSize();
+                    this.viewSize = [s.width, s.height];
+                }else{
+                    this.viewSize = [Roo.lib.Dom.getViewWidth(),Roo.lib.Dom.getViewHeight()];
+                }
+            }
+            var s = Roo.get(this.container||document).getScroll();
+
+            var x = this.xy[0], y = this.xy[1];
+            var w = this.size.width, h = this.size.height;
+            var vw = this.viewSize[0], vh = this.viewSize[1];
+            // only move it if it needs it
+            var moved = false;
+            // first validate right/bottom
+            if(x + w > vw+s.left){
+                x = vw - w;
+                moved = true;
+            }
+            if(y + h > vh+s.top){
+                y = vh - h;
+                moved = true;
+            }
+            // then make sure top/left isn't negative
+            if(x < s.left){
+                x = s.left;
+                moved = true;
+            }
+            if(y < s.top){
+                y = s.top;
+                moved = true;
+            }
+            if(moved){
+                // cache xy
+                this.xy = [x, y];
+                if(this.isVisible()){
+                    this.el.setLocation(x, y);
+                    this.adjustAssets();
+                }
+            }
+        }
+    },
+
+    // private
+    onDrag : function(){
+        if(!this.proxyDrag){
+            this.xy = this.el.getXY();
+            this.adjustAssets();
+        }
+    },
+
+    // private
+    adjustAssets : function(doShow){
+        var x = this.xy[0], y = this.xy[1];
+        var w = this.size.width, h = this.size.height;
+        if(doShow === true){
+            if(this.shadow){
+                this.shadow.show(this.el);
+            }
+            if(this.shim){
+                this.shim.show();
+            }
+        }
+        if(this.shadow && this.shadow.isVisible()){
+            this.shadow.show(this.el);
+        }
+        if(this.shim && this.shim.isVisible()){
+            this.shim.setBounds(x, y, w, h);
+        }
+    },
+
+    // private
+    adjustViewport : function(w, h){
+        if(!w || !h){
+            w = Roo.lib.Dom.getViewWidth();
+            h = Roo.lib.Dom.getViewHeight();
+        }
+        // cache the size
+        this.viewSize = [w, h];
+        if(this.modal && this.mask.isVisible()){
+            this.mask.setSize(w, h); // first make sure the mask isn't causing overflow
+            this.mask.setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
+        }
+        if(this.isVisible()){
+            this.constrainXY();
+        }
+    },
+
+    /**
+     * Destroys this dialog and all its supporting elements (including any tabs, shim,
+     * shadow, proxy, mask, etc.)  Also removes all event listeners.
+     * @param {Boolean} removeEl (optional) true to remove the element from the DOM
+     */
+    destroy : function(removeEl){
+        if(this.isVisible()){
+            this.animateTarget = null;
+            this.hide();
+        }
+        Roo.EventManager.removeResizeListener(this.adjustViewport, this);
+        if(this.tabs){
+            this.tabs.destroy(removeEl);
+        }
+        Roo.destroy(
+             this.shim,
+             this.proxy,
+             this.resizer,
+             this.close,
+             this.mask
+        );
+        if(this.dd){
+            this.dd.unreg();
+        }
+        if(this.buttons){
+           for(var i = 0, len = this.buttons.length; i < len; i++){
+               this.buttons[i].destroy();
+           }
+        }
+        this.el.removeAllListeners();
+        if(removeEl === true){
+            this.el.update("");
+            this.el.remove();
+        }
+        Roo.DialogManager.unregister(this);
+    },
+
+    // private
+    startMove : function(){
+        if(this.proxyDrag){
+            this.proxy.show();
+        }
+        if(this.constraintoviewport !== false){
+            this.dd.constrainTo(document.body, {right: this.shadowOffset, bottom: this.shadowOffset});
+        }
+    },
+
+    // private
+    endMove : function(){
+        if(!this.proxyDrag){
+            Roo.dd.DD.prototype.endDrag.apply(this.dd, arguments);
+        }else{
+            Roo.dd.DDProxy.prototype.endDrag.apply(this.dd, arguments);
+            this.proxy.hide();
+        }
+        this.refreshSize();
+        this.adjustAssets();
+        this.focus();
+        this.fireEvent("move", this, this.xy[0], this.xy[1]);
+    },
+
+    /**
+     * Brings this dialog to the front of any other visible dialogs
+     * @return {Roo.BasicDialog} this
+     */
+    toFront : function(){
+        Roo.DialogManager.bringToFront(this);
+        return this;
+    },
+
+    /**
+     * Sends this dialog to the back (under) of any other visible dialogs
+     * @return {Roo.BasicDialog} this
+     */
+    toBack : function(){
+        Roo.DialogManager.sendToBack(this);
+        return this;
+    },
+
+    /**
+     * Centers this dialog in the viewport
+     * @return {Roo.BasicDialog} this
+     */
+    center : function(){
+        var xy = this.el.getCenterXY(true);
+        this.moveTo(xy[0], xy[1]);
+        return this;
+    },
+
+    /**
+     * Moves the dialog's top-left corner to the specified point
+     * @param {Number} x
+     * @param {Number} y
+     * @return {Roo.BasicDialog} this
+     */
+    moveTo : function(x, y){
+        this.xy = [x,y];
+        if(this.isVisible()){
+            this.el.setXY(this.xy);
+            this.adjustAssets();
+        }
+        return this;
+    },
+
+    /**
+     * Aligns the dialog to the specified element
+     * @param {String/HTMLElement/Roo.Element} element The element to align to.
+     * @param {String} position The position to align to (see {@link Roo.Element#alignTo} for more details).
+     * @param {Array} offsets (optional) Offset the positioning by [x, y]
+     * @return {Roo.BasicDialog} this
+     */
+    alignTo : function(element, position, offsets){
+        this.xy = this.el.getAlignToXY(element, position, offsets);
+        if(this.isVisible()){
+            this.el.setXY(this.xy);
+            this.adjustAssets();
+        }
+        return this;
+    },
+
+    /**
+     * Anchors an element to another element and realigns it when the window is resized.
+     * @param {String/HTMLElement/Roo.Element} element The element to align to.
+     * @param {String} position The position to align to (see {@link Roo.Element#alignTo} for more details)
+     * @param {Array} offsets (optional) Offset the positioning by [x, y]
+     * @param {Boolean/Number} monitorScroll (optional) true to monitor body scroll and reposition. If this parameter
+     * is a number, it is used as the buffer delay (defaults to 50ms).
+     * @return {Roo.BasicDialog} this
+     */
+    anchorTo : function(el, alignment, offsets, monitorScroll){
+        var action = function(){
+            this.alignTo(el, alignment, offsets);
+        };
+        Roo.EventManager.onWindowResize(action, this);
+        var tm = typeof monitorScroll;
+        if(tm != 'undefined'){
+            Roo.EventManager.on(window, 'scroll', action, this,
+                {buffer: tm == 'number' ? monitorScroll : 50});
+        }
+        action.call(this);
+        return this;
+    },
+
+    /**
+     * Returns true if the dialog is visible
+     * @return {Boolean}
+     */
+    isVisible : function(){
+        return this.el.isVisible();
+    },
+
+    // private
+    animHide : function(callback){
+        var b = Roo.get(this.animateTarget).getBox();
+        this.proxy.show();
+        this.proxy.setBounds(this.xy[0], this.xy[1], this.size.width, this.size.height);
+        this.el.hide();
+        this.proxy.setBounds(b.x, b.y, b.width, b.height, true, .35,
+                    this.hideEl.createDelegate(this, [callback]));
+    },
+
+    /**
+     * Hides the dialog.
+     * @param {Function} callback (optional) Function to call when the dialog is hidden
+     * @return {Roo.BasicDialog} this
+     */
+    hide : function(callback){
+        if (this.fireEvent("beforehide", this) === false){
+            return;
+        }
+        if(this.shadow){
+            this.shadow.hide();
+        }
+        if(this.shim) {
+          this.shim.hide();
+        }
+        // sometimes animateTarget seems to get set.. causing problems...
+        // this just double checks..
+        if(this.animateTarget && Roo.get(this.animateTarget)) {
+           this.animHide(callback);
+        }else{
+            this.el.hide();
+            this.hideEl(callback);
+        }
+        return this;
+    },
+
+    // private
+    hideEl : function(callback){
+        this.proxy.hide();
+        if(this.modal){
+            this.mask.hide();
+            Roo.get(document.body).removeClass("x-body-masked");
+        }
+        this.fireEvent("hide", this);
+        if(typeof callback == "function"){
+            callback();
+        }
+    },
+
+    // private
+    hideAction : function(){
+        this.setLeft("-10000px");
+        this.setTop("-10000px");
+        this.setStyle("visibility", "hidden");
+    },
+
+    // private
+    refreshSize : function(){
+        this.size = this.el.getSize();
+        this.xy = this.el.getXY();
+        Roo.state.Manager.set(this.stateId || this.el.id + "-state", this.el.getBox());
+    },
+
+    // private
+    // z-index is managed by the DialogManager and may be overwritten at any time
+    setZIndex : function(index){
+        if(this.modal){
+            this.mask.setStyle("z-index", index);
+        }
+        if(this.shim){
+            this.shim.setStyle("z-index", ++index);
+        }
+        if(this.shadow){
+            this.shadow.setZIndex(++index);
+        }
+        this.el.setStyle("z-index", ++index);
+        if(this.proxy){
+            this.proxy.setStyle("z-index", ++index);
+        }
+        if(this.resizer){
+            this.resizer.proxy.setStyle("z-index", ++index);
+        }
+
+        this.lastZIndex = index;
+    },
+
+    /**
+     * Returns the element for this dialog
+     * @return {Roo.Element} The underlying dialog Element
+     */
+    getEl : function(){
+        return this.el;
+    }
+});
+
+/**
+ * @class Roo.DialogManager
+ * Provides global access to BasicDialogs that have been created and
+ * support for z-indexing (layering) multiple open dialogs.
+ */
+Roo.DialogManager = function(){
+    var list = {};
+    var accessList = [];
+    var front = null;
+
+    // private
+    var sortDialogs = function(d1, d2){
+        return (!d1._lastAccess || d1._lastAccess < d2._lastAccess) ? -1 : 1;
+    };
+
+    // private
+    var orderDialogs = function(){
+        accessList.sort(sortDialogs);
+        var seed = Roo.DialogManager.zseed;
+        for(var i = 0, len = accessList.length; i < len; i++){
+            var dlg = accessList[i];
+            if(dlg){
+                dlg.setZIndex(seed + (i*10));
+            }
+        }
+    };
+
+    return {
+        /**
+         * The starting z-index for BasicDialogs (defaults to 9000)
+         * @type Number The z-index value
+         */
+        zseed : 9000,
+
+        // private
+        register : function(dlg){
+            list[dlg.id] = dlg;
+            accessList.push(dlg);
+        },
+
+        // private
+        unregister : function(dlg){
+            delete list[dlg.id];
+            var i=0;
+            var len=0;
+            if(!accessList.indexOf){
+                for(  i = 0, len = accessList.length; i < len; i++){
+                    if(accessList[i] == dlg){
+                        accessList.splice(i, 1);
+                        return;
+                    }
+                }
+            }else{
+                 i = accessList.indexOf(dlg);
+                if(i != -1){
+                    accessList.splice(i, 1);
+                }
+            }
+        },
+
+        /**
+         * Gets a registered dialog by id
+         * @param {String/Object} id The id of the dialog or a dialog
+         * @return {Roo.BasicDialog} this
+         */
+        get : function(id){
+            return typeof id == "object" ? id : list[id];
+        },
+
+        /**
+         * Brings the specified dialog to the front
+         * @param {String/Object} dlg The id of the dialog or a dialog
+         * @return {Roo.BasicDialog} this
+         */
+        bringToFront : function(dlg){
+            dlg = this.get(dlg);
+            if(dlg != front){
+                front = dlg;
+                dlg._lastAccess = new Date().getTime();
+                orderDialogs();
+            }
+            return dlg;
+        },
+
+        /**
+         * Sends the specified dialog to the back
+         * @param {String/Object} dlg The id of the dialog or a dialog
+         * @return {Roo.BasicDialog} this
+         */
+        sendToBack : function(dlg){
+            dlg = this.get(dlg);
+            dlg._lastAccess = -(new Date().getTime());
+            orderDialogs();
+            return dlg;
+        },
+
+        /**
+         * Hides all dialogs
+         */
+        hideAll : function(){
+            for(var id in list){
+                if(list[id] && typeof list[id] != "function" && list[id].isVisible()){
+                    list[id].hide();
+                }
+            }
+        }
+    };
+}();
+
+/**
+ * @class Roo.LayoutDialog
+ * @extends Roo.BasicDialog
+ * Dialog which provides adjustments for working with a layout in a Dialog.
+ * Add your necessary layout config options to the dialog's config.<br>
+ * Example usage (including a nested layout):
+ * <pre><code>
+if(!dialog){
+    dialog = new Roo.LayoutDialog("download-dlg", {
+        modal: true,
+        width:600,
+        height:450,
+        shadow:true,
+        minWidth:500,
+        minHeight:350,
+        autoTabs:true,
+        proxyDrag:true,
+        // layout config merges with the dialog config
+        center:{
+            tabPosition: "top",
+            alwaysShowTabs: true
+        }
+    });
+    dialog.addKeyListener(27, dialog.hide, dialog);
+    dialog.setDefaultButton(dialog.addButton("Close", dialog.hide, dialog));
+    dialog.addButton("Build It!", this.getDownload, this);
+
+    // we can even add nested layouts
+    var innerLayout = new Roo.BorderLayout("dl-inner", {
+        east: {
+            initialSize: 200,
+            autoScroll:true,
+            split:true
+        },
+        center: {
+            autoScroll:true
+        }
+    });
+    innerLayout.beginUpdate();
+    innerLayout.add("east", new Roo.ContentPanel("dl-details"));
+    innerLayout.add("center", new Roo.ContentPanel("selection-panel"));
+    innerLayout.endUpdate(true);
+
+    var layout = dialog.getLayout();
+    layout.beginUpdate();
+    layout.add("center", new Roo.ContentPanel("standard-panel",
+                        {title: "Download the Source", fitToFrame:true}));
+    layout.add("center", new Roo.NestedLayoutPanel(innerLayout,
+               {title: "Build your own roo.js"}));
+    layout.getRegion("center").showPanel(sp);
+    layout.endUpdate();
+}
+</code></pre>
+    * @constructor
+    * @param {String/HTMLElement/Roo.Element} el The id of or container element, or config
+    * @param {Object} config configuration options
+  */
+Roo.LayoutDialog = function(el, cfg){
+    
+    var config=  cfg;
+    if (typeof(cfg) == 'undefined') {
+        config = Roo.apply({}, el);
+        // not sure why we use documentElement here.. - it should always be body.
+        // IE7 borks horribly if we use documentElement.
+        // webkit also does not like documentElement - it creates a body element...
+        el = Roo.get( document.body || document.documentElement ).createChild();
+        //config.autoCreate = true;
+    }
+    
+    
+    config.autoTabs = false;
+    Roo.LayoutDialog.superclass.constructor.call(this, el, config);
+    this.body.setStyle({overflow:"hidden", position:"relative"});
+    this.layout = new Roo.BorderLayout(this.body.dom, config);
+    this.layout.monitorWindowResize = false;
+    this.el.addClass("x-dlg-auto-layout");
+    // fix case when center region overwrites center function
+    this.center = Roo.BasicDialog.prototype.center;
+    this.on("show", this.layout.layout, this.layout, true);
+    if (config.items) {
+        var xitems = config.items;
+        delete config.items;
+        Roo.each(xitems, this.addxtype, this);
+    }
+    
+    
+};
+Roo.extend(Roo.LayoutDialog, Roo.BasicDialog, {
+    /**
+     * Ends update of the layout <strike>and resets display to none</strike>. Use standard beginUpdate/endUpdate on the layout.
+     * @deprecated
+     */
+    endUpdate : function(){
+        this.layout.endUpdate();
+    },
+
+    /**
+     * Begins an update of the layout <strike>and sets display to block and visibility to hidden</strike>. Use standard beginUpdate/endUpdate on the layout.
+     *  @deprecated
+     */
+    beginUpdate : function(){
+        this.layout.beginUpdate();
+    },
+
+    /**
+     * Get the BorderLayout for this dialog
+     * @return {Roo.BorderLayout}
+     */
+    getLayout : function(){
+        return this.layout;
+    },
+
+    showEl : function(){
+        Roo.LayoutDialog.superclass.showEl.apply(this, arguments);
+        if(Roo.isIE7){
+            this.layout.layout();
+        }
+    },
+
+    // private
+    // Use the syncHeightBeforeShow config option to control this automatically
+    syncBodyHeight : function(){
+        Roo.LayoutDialog.superclass.syncBodyHeight.call(this);
+        if(this.layout){this.layout.layout();}
+    },
+    
+      /**
+     * Add an xtype element (actually adds to the layout.)
+     * @return {Object} xdata xtype object data.
+     */
+    
+    addxtype : function(c) {
+        return this.layout.addxtype(c);
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.MessageBox
+ * Utility class for generating different styles of message boxes.  The alias Roo.Msg can also be used.
+ * Example usage:
+ *<pre><code>
+// Basic alert:
+Roo.Msg.alert('Status', 'Changes saved successfully.');
+
+// Prompt for user data:
+Roo.Msg.prompt('Name', 'Please enter your name:', function(btn, text){
+    if (btn == 'ok'){
+        // process text value...
+    }
+});
+
+// Show a dialog using config options:
+Roo.Msg.show({
+   title:'Save Changes?',
+   msg: 'Your are closing a tab that has unsaved changes. Would you like to save your changes?',
+   buttons: Roo.Msg.YESNOCANCEL,
+   fn: processResult,
+   animEl: 'elId'
+});
+</code></pre>
+ * @singleton
+ */
+Roo.MessageBox = function(){
+    var dlg, opt, mask, waitTimer;
+    var bodyEl, msgEl, textboxEl, textareaEl, progressEl, pp;
+    var buttons, activeTextEl, bwidth;
+
+    // private
+    var handleButton = function(button){
+        dlg.hide();
+        Roo.callback(opt.fn, opt.scope||window, [button, activeTextEl.dom.value], 1);
+    };
+
+    // private
+    var handleHide = function(){
+        if(opt && opt.cls){
+            dlg.el.removeClass(opt.cls);
+        }
+        if(waitTimer){
+            Roo.TaskMgr.stop(waitTimer);
+            waitTimer = null;
+        }
+    };
+
+    // private
+    var updateButtons = function(b){
+        var width = 0;
+        if(!b){
+            buttons["ok"].hide();
+            buttons["cancel"].hide();
+            buttons["yes"].hide();
+            buttons["no"].hide();
+            dlg.footer.dom.style.display = 'none';
+            return width;
+        }
+        dlg.footer.dom.style.display = '';
+        for(var k in buttons){
+            if(typeof buttons[k] != "function"){
+                if(b[k]){
+                    buttons[k].show();
+                    buttons[k].setText(typeof b[k] == "string" ? b[k] : Roo.MessageBox.buttonText[k]);
+                    width += buttons[k].el.getWidth()+15;
+                }else{
+                    buttons[k].hide();
+                }
+            }
+        }
+        return width;
+    };
+
+    // private
+    var handleEsc = function(d, k, e){
+        if(opt && opt.closable !== false){
+            dlg.hide();
+        }
+        if(e){
+            e.stopEvent();
+        }
+    };
+
+    return {
+        /**
+         * Returns a reference to the underlying {@link Roo.BasicDialog} element
+         * @return {Roo.BasicDialog} The BasicDialog element
+         */
+        getDialog : function(){
+           if(!dlg){
+                dlg = new Roo.BasicDialog("x-msg-box", {
+                    autoCreate : true,
+                    shadow: true,
+                    draggable: true,
+                    resizable:false,
+                    constraintoviewport:false,
+                    fixedcenter:true,
+                    collapsible : false,
+                    shim:true,
+                    modal: true,
+                    width:400, height:100,
+                    buttonAlign:"center",
+                    closeClick : function(){
+                        if(opt && opt.buttons && opt.buttons.no && !opt.buttons.cancel){
+                            handleButton("no");
+                        }else{
+                            handleButton("cancel");
+                        }
+                    }
+                });
+                dlg.on("hide", handleHide);
+                mask = dlg.mask;
+                dlg.addKeyListener(27, handleEsc);
+                buttons = {};
+                var bt = this.buttonText;
+                buttons["ok"] = dlg.addButton(bt["ok"], handleButton.createCallback("ok"));
+                buttons["yes"] = dlg.addButton(bt["yes"], handleButton.createCallback("yes"));
+                buttons["no"] = dlg.addButton(bt["no"], handleButton.createCallback("no"));
+                buttons["cancel"] = dlg.addButton(bt["cancel"], handleButton.createCallback("cancel"));
+                bodyEl = dlg.body.createChild({
+
+                    html:'<span class="roo-mb-text"></span><br /><input type="text" class="roo-mb-input" /><textarea class="roo-mb-textarea"></textarea><div class="roo-mb-progress-wrap"><div class="roo-mb-progress"><div class="roo-mb-progress-bar">&#160;</div></div></div>'
+                });
+                msgEl = bodyEl.dom.firstChild;
+                textboxEl = Roo.get(bodyEl.dom.childNodes[2]);
+                textboxEl.enableDisplayMode();
+                textboxEl.addKeyListener([10,13], function(){
+                    if(dlg.isVisible() && opt && opt.buttons){
+                        if(opt.buttons.ok){
+                            handleButton("ok");
+                        }else if(opt.buttons.yes){
+                            handleButton("yes");
+                        }
+                    }
+                });
+                textareaEl = Roo.get(bodyEl.dom.childNodes[3]);
+                textareaEl.enableDisplayMode();
+                progressEl = Roo.get(bodyEl.dom.childNodes[4]);
+                progressEl.enableDisplayMode();
+                var pf = progressEl.dom.firstChild;
+                if (pf) {
+                    pp = Roo.get(pf.firstChild);
+                    pp.setHeight(pf.offsetHeight);
+                }
+                
+            }
+            return dlg;
+        },
+
+        /**
+         * Updates the message box body text
+         * @param {String} text (optional) Replaces the message box element's innerHTML with the specified string (defaults to
+         * the XHTML-compliant non-breaking space character '&amp;#160;')
+         * @return {Roo.MessageBox} This message box
+         */
+        updateText : function(text){
+            if(!dlg.isVisible() && !opt.width){
+                dlg.resizeTo(this.maxWidth, 100); // resize first so content is never clipped from previous shows
+            }
+            msgEl.innerHTML = text || '&#160;';
+            var w = Math.max(Math.min(opt.width || msgEl.offsetWidth, this.maxWidth), 
+                        Math.max(opt.minWidth || this.minWidth, bwidth));
+            if(opt.prompt){
+                activeTextEl.setWidth(w);
+            }
+            if(dlg.isVisible()){
+                dlg.fixedcenter = false;
+            }
+            dlg.setContentSize(w, bodyEl.getHeight());
+            if(dlg.isVisible()){
+                dlg.fixedcenter = true;
+            }
+            return this;
+        },
+
+        /**
+         * Updates a progress-style message box's text and progress bar.  Only relevant on message boxes
+         * initiated via {@link Roo.MessageBox#progress} or by calling {@link Roo.MessageBox#show} with progress: true.
+         * @param {Number} value Any number between 0 and 1 (e.g., .5)
+         * @param {String} text (optional) If defined, the message box's body text is replaced with the specified string (defaults to undefined)
+         * @return {Roo.MessageBox} This message box
+         */
+        updateProgress : function(value, text){
+            if(text){
+                this.updateText(text);
+            }
+            if (pp) { // weird bug on my firefox - for some reason this is not defined
+                pp.setWidth(Math.floor(value*progressEl.dom.firstChild.offsetWidth));
+            }
+            return this;
+        },        
+
+        /**
+         * Returns true if the message box is currently displayed
+         * @return {Boolean} True if the message box is visible, else false
+         */
+        isVisible : function(){
+            return dlg && dlg.isVisible();  
+        },
+
+        /**
+         * Hides the message box if it is displayed
+         */
+        hide : function(){
+            if(this.isVisible()){
+                dlg.hide();
+            }  
+        },
+
+        /**
+         * Displays a new message box, or reinitializes an existing message box, based on the config options
+         * passed in. All functions (e.g. prompt, alert, etc) on MessageBox call this function internally.
+         * The following config object properties are supported:
+         * <pre>
+Property    Type             Description
+----------  ---------------  ------------------------------------------------------------------------------------
+animEl            String/Element   An id or Element from which the message box should animate as it opens and
+                                   closes (defaults to undefined)
+buttons           Object/Boolean   A button config object (e.g., Roo.MessageBox.OKCANCEL or {ok:'Foo',
+                                   cancel:'Bar'}), or false to not show any buttons (defaults to false)
+closable          Boolean          False to hide the top-right close button (defaults to true).  Note that
+                                   progress and wait dialogs will ignore this property and always hide the
+                                   close button as they can only be closed programmatically.
+cls               String           A custom CSS class to apply to the message box element
+defaultTextHeight Number           The default height in pixels of the message box's multiline textarea if
+                                   displayed (defaults to 75)
+fn                Function         A callback function to execute after closing the dialog.  The arguments to the
+                                   function will be btn (the name of the button that was clicked, if applicable,
+                                   e.g. "ok"), and text (the value of the active text field, if applicable).
+                                   Progress and wait dialogs will ignore this option since they do not respond to
+                                   user actions and can only be closed programmatically, so any required function
+                                   should be called by the same code after it closes the dialog.
+icon              String           A CSS class that provides a background image to be used as an icon for
+                                   the dialog (e.g., Roo.MessageBox.WARNING or 'custom-class', defaults to '')
+maxWidth          Number           The maximum width in pixels of the message box (defaults to 600)
+minWidth          Number           The minimum width in pixels of the message box (defaults to 100)
+modal             Boolean          False to allow user interaction with the page while the message box is
+                                   displayed (defaults to true)
+msg               String           A string that will replace the existing message box body text (defaults
+                                   to the XHTML-compliant non-breaking space character '&#160;')
+multiline         Boolean          True to prompt the user to enter multi-line text (defaults to false)
+progress          Boolean          True to display a progress bar (defaults to false)
+progressText      String           The text to display inside the progress bar if progress = true (defaults to '')
+prompt            Boolean          True to prompt the user to enter single-line text (defaults to false)
+proxyDrag         Boolean          True to display a lightweight proxy while dragging (defaults to false)
+title             String           The title text
+value             String           The string value to set into the active textbox element if displayed
+wait              Boolean          True to display a progress bar (defaults to false)
+width             Number           The width of the dialog in pixels
+</pre>
+         *
+         * Example usage:
+         * <pre><code>
+Roo.Msg.show({
+   title: 'Address',
+   msg: 'Please enter your address:',
+   width: 300,
+   buttons: Roo.MessageBox.OKCANCEL,
+   multiline: true,
+   fn: saveAddress,
+   animEl: 'addAddressBtn'
+});
+</code></pre>
+         * @param {Object} config Configuration options
+         * @return {Roo.MessageBox} This message box
+         */
+        show : function(options){
+            if(this.isVisible()){
+                this.hide();
+            }
+            var d = this.getDialog();
+            opt = options;
+            d.setTitle(opt.title || "&#160;");
+            d.close.setDisplayed(opt.closable !== false);
+            activeTextEl = textboxEl;
+            opt.prompt = opt.prompt || (opt.multiline ? true : false);
+            if(opt.prompt){
+                if(opt.multiline){
+                    textboxEl.hide();
+                    textareaEl.show();
+                    textareaEl.setHeight(typeof opt.multiline == "number" ?
+                        opt.multiline : this.defaultTextHeight);
+                    activeTextEl = textareaEl;
+                }else{
+                    textboxEl.show();
+                    textareaEl.hide();
+                }
+            }else{
+                textboxEl.hide();
+                textareaEl.hide();
+            }
+            progressEl.setDisplayed(opt.progress === true);
+            this.updateProgress(0);
+            activeTextEl.dom.value = opt.value || "";
+            if(opt.prompt){
+                dlg.setDefaultButton(activeTextEl);
+            }else{
+                var bs = opt.buttons;
+                var db = null;
+                if(bs && bs.ok){
+                    db = buttons["ok"];
+                }else if(bs && bs.yes){
+                    db = buttons["yes"];
+                }
+                dlg.setDefaultButton(db);
+            }
+            bwidth = updateButtons(opt.buttons);
+            this.updateText(opt.msg);
+            if(opt.cls){
+                d.el.addClass(opt.cls);
+            }
+            d.proxyDrag = opt.proxyDrag === true;
+            d.modal = opt.modal !== false;
+            d.mask = opt.modal !== false ? mask : false;
+            if(!d.isVisible()){
+                // force it to the end of the z-index stack so it gets a cursor in FF
+                document.body.appendChild(dlg.el.dom);
+                d.animateTarget = null;
+                d.show(options.animEl);
+            }
+            return this;
+        },
+
+        /**
+         * Displays a message box with a progress bar.  This message box has no buttons and is not closeable by
+         * the user.  You are responsible for updating the progress bar as needed via {@link Roo.MessageBox#updateProgress}
+         * and closing the message box when the process is complete.
+         * @param {String} title The title bar text
+         * @param {String} msg The message box body text
+         * @return {Roo.MessageBox} This message box
+         */
+        progress : function(title, msg){
+            this.show({
+                title : title,
+                msg : msg,
+                buttons: false,
+                progress:true,
+                closable:false,
+                minWidth: this.minProgressWidth,
+                modal : true
+            });
+            return this;
+        },
+
+        /**
+         * Displays a standard read-only message box with an OK button (comparable to the basic JavaScript Window.alert).
+         * If a callback function is passed it will be called after the user clicks the button, and the
+         * id of the button that was clicked will be passed as the only parameter to the callback
+         * (could also be the top-right close button).
+         * @param {String} title The title bar text
+         * @param {String} msg The message box body text
+         * @param {Function} fn (optional) The callback function invoked after the message box is closed
+         * @param {Object} scope (optional) The scope of the callback function
+         * @return {Roo.MessageBox} This message box
+         */
+        alert : function(title, msg, fn, scope){
+            this.show({
+                title : title,
+                msg : msg,
+                buttons: this.OK,
+                fn: fn,
+                scope : scope,
+                modal : true
+            });
+            return this;
+        },
+
+        /**
+         * Displays a message box with an infinitely auto-updating progress bar.  This can be used to block user
+         * interaction while waiting for a long-running process to complete that does not have defined intervals.
+         * You are responsible for closing the message box when the process is complete.
+         * @param {String} msg The message box body text
+         * @param {String} title (optional) The title bar text
+         * @return {Roo.MessageBox} This message box
+         */
+        wait : function(msg, title){
+            this.show({
+                title : title,
+                msg : msg,
+                buttons: false,
+                closable:false,
+                progress:true,
+                modal:true,
+                width:300,
+                wait:true
+            });
+            waitTimer = Roo.TaskMgr.start({
+                run: function(i){
+                    Roo.MessageBox.updateProgress(((((i+20)%20)+1)*5)*.01);
+                },
+                interval: 1000
+            });
+            return this;
+        },
+
+        /**
+         * Displays a confirmation message box with Yes and No buttons (comparable to JavaScript's Window.confirm).
+         * If a callback function is passed it will be called after the user clicks either button, and the id of the
+         * button that was clicked will be passed as the only parameter to the callback (could also be the top-right close button).
+         * @param {String} title The title bar text
+         * @param {String} msg The message box body text
+         * @param {Function} fn (optional) The callback function invoked after the message box is closed
+         * @param {Object} scope (optional) The scope of the callback function
+         * @return {Roo.MessageBox} This message box
+         */
+        confirm : function(title, msg, fn, scope){
+            this.show({
+                title : title,
+                msg : msg,
+                buttons: this.YESNO,
+                fn: fn,
+                scope : scope,
+                modal : true
+            });
+            return this;
+        },
+
+        /**
+         * Displays a message box with OK and Cancel buttons prompting the user to enter some text (comparable to
+         * JavaScript's Window.prompt).  The prompt can be a single-line or multi-line textbox.  If a callback function
+         * is passed it will be called after the user clicks either button, and the id of the button that was clicked
+         * (could also be the top-right close button) and the text that was entered will be passed as the two
+         * parameters to the callback.
+         * @param {String} title The title bar text
+         * @param {String} msg The message box body text
+         * @param {Function} fn (optional) The callback function invoked after the message box is closed
+         * @param {Object} scope (optional) The scope of the callback function
+         * @param {Boolean/Number} multiline (optional) True to create a multiline textbox using the defaultTextHeight
+         * property, or the height in pixels to create the textbox (defaults to false / single-line)
+         * @return {Roo.MessageBox} This message box
+         */
+        prompt : function(title, msg, fn, scope, multiline){
+            this.show({
+                title : title,
+                msg : msg,
+                buttons: this.OKCANCEL,
+                fn: fn,
+                minWidth:250,
+                scope : scope,
+                prompt:true,
+                multiline: multiline,
+                modal : true
+            });
+            return this;
+        },
+
+        /**
+         * Button config that displays a single OK button
+         * @type Object
+         */
+        OK : {ok:true},
+        /**
+         * Button config that displays Yes and No buttons
+         * @type Object
+         */
+        YESNO : {yes:true, no:true},
+        /**
+         * Button config that displays OK and Cancel buttons
+         * @type Object
+         */
+        OKCANCEL : {ok:true, cancel:true},
+        /**
+         * Button config that displays Yes, No and Cancel buttons
+         * @type Object
+         */
+        YESNOCANCEL : {yes:true, no:true, cancel:true},
+
+        /**
+         * The default height in pixels of the message box's multiline textarea if displayed (defaults to 75)
+         * @type Number
+         */
+        defaultTextHeight : 75,
+        /**
+         * The maximum width in pixels of the message box (defaults to 600)
+         * @type Number
+         */
+        maxWidth : 600,
+        /**
+         * The minimum width in pixels of the message box (defaults to 100)
+         * @type Number
+         */
+        minWidth : 100,
+        /**
+         * The minimum width in pixels of the message box if it is a progress-style dialog.  This is useful
+         * for setting a different minimum width than text-only dialogs may need (defaults to 250)
+         * @type Number
+         */
+        minProgressWidth : 250,
+        /**
+         * An object containing the default button text strings that can be overriden for localized language support.
+         * Supported properties are: ok, cancel, yes and no.
+         * Customize the default text like so: Roo.MessageBox.buttonText.yes = "S?";
+         * @type Object
+         */
+        buttonText : {
+            ok : "OK",
+            cancel : "Cancel",
+            yes : "Yes",
+            no : "No"
+        }
+    };
+}();
+
+/**
+ * Shorthand for {@link Roo.MessageBox}
+ */
+Roo.Msg = Roo.MessageBox;/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+/**
+ * @class Roo.QuickTips
+ * Provides attractive and customizable tooltips for any element.
+ * @singleton
+ */
+Roo.QuickTips = function(){
+    var el, tipBody, tipBodyText, tipTitle, tm, cfg, close, tagEls = {}, esc, removeCls = null, bdLeft, bdRight;
+    var ce, bd, xy, dd;
+    var visible = false, disabled = true, inited = false;
+    var showProc = 1, hideProc = 1, dismissProc = 1, locks = [];
+    
+    var onOver = function(e){
+        if(disabled){
+            return;
+        }
+        var t = e.getTarget();
+        if(!t || t.nodeType !== 1 || t == document || t == document.body){
+            return;
+        }
+        if(ce && t == ce.el){
+            clearTimeout(hideProc);
+            return;
+        }
+        if(t && tagEls[t.id]){
+            tagEls[t.id].el = t;
+            showProc = show.defer(tm.showDelay, tm, [tagEls[t.id]]);
+            return;
+        }
+        var ttp, et = Roo.fly(t);
+        var ns = cfg.namespace;
+        if(tm.interceptTitles && t.title){
+            ttp = t.title;
+            t.qtip = ttp;
+            t.removeAttribute("title");
+            e.preventDefault();
+        }else{
+            ttp = t.qtip || et.getAttributeNS(ns, cfg.attribute);
+        }
+        if(ttp){
+            showProc = show.defer(tm.showDelay, tm, [{
+                el: t, 
+                text: ttp, 
+                width: et.getAttributeNS(ns, cfg.width),
+                autoHide: et.getAttributeNS(ns, cfg.hide) != "user",
+                title: et.getAttributeNS(ns, cfg.title),
+           	    cls: et.getAttributeNS(ns, cfg.cls)
+            }]);
+        }
+    };
+    
+    var onOut = function(e){
+        clearTimeout(showProc);
+        var t = e.getTarget();
+        if(t && ce && ce.el == t && (tm.autoHide && ce.autoHide !== false)){
+            hideProc = setTimeout(hide, tm.hideDelay);
+        }
+    };
+    
+    var onMove = function(e){
+        if(disabled){
+            return;
+        }
+        xy = e.getXY();
+        xy[1] += 18;
+        if(tm.trackMouse && ce){
+            el.setXY(xy);
+        }
+    };
+    
+    var onDown = function(e){
+        clearTimeout(showProc);
+        clearTimeout(hideProc);
+        if(!e.within(el)){
+            if(tm.hideOnClick){
+                hide();
+                tm.disable();
+                tm.enable.defer(100, tm);
+            }
+        }
+    };
+    
+    var getPad = function(){
+        return 2;//bdLeft.getPadding('l')+bdRight.getPadding('r');
+    };
+
+    var show = function(o){
+        if(disabled){
+            return;
+        }
+        clearTimeout(dismissProc);
+        ce = o;
+        if(removeCls){ // in case manually hidden
+            el.removeClass(removeCls);
+            removeCls = null;
+        }
+        if(ce.cls){
+            el.addClass(ce.cls);
+            removeCls = ce.cls;
+        }
+        if(ce.title){
+            tipTitle.update(ce.title);
+            tipTitle.show();
+        }else{
+            tipTitle.update('');
+            tipTitle.hide();
+        }
+        el.dom.style.width  = tm.maxWidth+'px';
+        //tipBody.dom.style.width = '';
+        tipBodyText.update(o.text);
+        var p = getPad(), w = ce.width;
+        if(!w){
+            var td = tipBodyText.dom;
+            var aw = Math.max(td.offsetWidth, td.clientWidth, td.scrollWidth);
+            if(aw > tm.maxWidth){
+                w = tm.maxWidth;
+            }else if(aw < tm.minWidth){
+                w = tm.minWidth;
+            }else{
+                w = aw;
+            }
+        }
+        //tipBody.setWidth(w);
+        el.setWidth(parseInt(w, 10) + p);
+        if(ce.autoHide === false){
+            close.setDisplayed(true);
+            if(dd){
+                dd.unlock();
+            }
+        }else{
+            close.setDisplayed(false);
+            if(dd){
+                dd.lock();
+            }
+        }
+        if(xy){
+            el.avoidY = xy[1]-18;
+            el.setXY(xy);
+        }
+        if(tm.animate){
+            el.setOpacity(.1);
+            el.setStyle("visibility", "visible");
+            el.fadeIn({callback: afterShow});
+        }else{
+            afterShow();
+        }
+    };
+    
+    var afterShow = function(){
+        if(ce){
+            el.show();
+            esc.enable();
+            if(tm.autoDismiss && ce.autoHide !== false){
+                dismissProc = setTimeout(hide, tm.autoDismissDelay);
+            }
+        }
+    };
+    
+    var hide = function(noanim){
+        clearTimeout(dismissProc);
+        clearTimeout(hideProc);
+        ce = null;
+        if(el.isVisible()){
+            esc.disable();
+            if(noanim !== true && tm.animate){
+                el.fadeOut({callback: afterHide});
+            }else{
+                afterHide();
+            } 
+        }
+    };
+    
+    var afterHide = function(){
+        el.hide();
+        if(removeCls){
+            el.removeClass(removeCls);
+            removeCls = null;
+        }
+    };
+    
+    return {
+        /**
+        * @cfg {Number} minWidth
+        * The minimum width of the quick tip (defaults to 40)
+        */
+       minWidth : 40,
+        /**
+        * @cfg {Number} maxWidth
+        * The maximum width of the quick tip (defaults to 300)
+        */
+       maxWidth : 300,
+        /**
+        * @cfg {Boolean} interceptTitles
+        * True to automatically use the element's DOM title value if available (defaults to false)
+        */
+       interceptTitles : false,
+        /**
+        * @cfg {Boolean} trackMouse
+        * True to have the quick tip follow the mouse as it moves over the target element (defaults to false)
+        */
+       trackMouse : false,
+        /**
+        * @cfg {Boolean} hideOnClick
+        * True to hide the quick tip if the user clicks anywhere in the document (defaults to true)
+        */
+       hideOnClick : true,
+        /**
+        * @cfg {Number} showDelay
+        * Delay in milliseconds before the quick tip displays after the mouse enters the target element (defaults to 500)
+        */
+       showDelay : 500,
+        /**
+        * @cfg {Number} hideDelay
+        * Delay in milliseconds before the quick tip hides when autoHide = true (defaults to 200)
+        */
+       hideDelay : 200,
+        /**
+        * @cfg {Boolean} autoHide
+        * True to automatically hide the quick tip after the mouse exits the target element (defaults to true).
+        * Used in conjunction with hideDelay.
+        */
+       autoHide : true,
+        /**
+        * @cfg {Boolean}
+        * True to automatically hide the quick tip after a set period of time, regardless of the user's actions
+        * (defaults to true).  Used in conjunction with autoDismissDelay.
+        */
+       autoDismiss : true,
+        /**
+        * @cfg {Number}
+        * Delay in milliseconds before the quick tip hides when autoDismiss = true (defaults to 5000)
+        */
+       autoDismissDelay : 5000,
+       /**
+        * @cfg {Boolean} animate
+        * True to turn on fade animation. Defaults to false (ClearType/scrollbar flicker issues in IE7).
+        */
+       animate : false,
+
+       /**
+        * @cfg {String} title
+        * Title text to display (defaults to '').  This can be any valid HTML markup.
+        */
+        title: '',
+       /**
+        * @cfg {String} text
+        * Body text to display (defaults to '').  This can be any valid HTML markup.
+        */
+        text : '',
+       /**
+        * @cfg {String} cls
+        * A CSS class to apply to the base quick tip element (defaults to '').
+        */
+        cls : '',
+       /**
+        * @cfg {Number} width
+        * Width in pixels of the quick tip (defaults to auto).  Width will be ignored if it exceeds the bounds of
+        * minWidth or maxWidth.
+        */
+        width : null,
+
+    /**
+     * Initialize and enable QuickTips for first use.  This should be called once before the first attempt to access
+     * or display QuickTips in a page.
+     */
+       init : function(){
+          tm = Roo.QuickTips;
+          cfg = tm.tagConfig;
+          if(!inited){
+              if(!Roo.isReady){ // allow calling of init() before onReady
+                  Roo.onReady(Roo.QuickTips.init, Roo.QuickTips);
+                  return;
+              }
+              el = new Roo.Layer({cls:"x-tip", shadow:"drop", shim: true, constrain:true, shadowOffset:4});
+              el.fxDefaults = {stopFx: true};
+              // maximum custom styling
+              //el.update('<div class="x-tip-top-left"><div class="x-tip-top-right"><div class="x-tip-top"></div></div></div><div class="x-tip-bd-left"><div class="x-tip-bd-right"><div class="x-tip-bd"><div class="x-tip-close"></div><h3></h3><div class="x-tip-bd-inner"></div><div class="x-clear"></div></div></div></div><div class="x-tip-ft-left"><div class="x-tip-ft-right"><div class="x-tip-ft"></div></div></div>');
+              el.update('<div class="x-tip-bd"><div class="x-tip-close"></div><h3></h3><div class="x-tip-bd-inner"></div><div class="x-clear"></div></div>');              
+              tipTitle = el.child('h3');
+              tipTitle.enableDisplayMode("block");
+              tipBody = el.child('div.x-tip-bd');
+              tipBodyText = el.child('div.x-tip-bd-inner');
+              //bdLeft = el.child('div.x-tip-bd-left');
+              //bdRight = el.child('div.x-tip-bd-right');
+              close = el.child('div.x-tip-close');
+              close.enableDisplayMode("block");
+              close.on("click", hide);
+              var d = Roo.get(document);
+              d.on("mousedown", onDown);
+              d.on("mouseover", onOver);
+              d.on("mouseout", onOut);
+              d.on("mousemove", onMove);
+              esc = d.addKeyListener(27, hide);
+              esc.disable();
+              if(Roo.dd.DD){
+                  dd = el.initDD("default", null, {
+                      onDrag : function(){
+                          el.sync();  
+                      }
+                  });
+                  dd.setHandleElId(tipTitle.id);
+                  dd.lock();
+              }
+              inited = true;
+          }
+          this.enable(); 
+       },
+
+    /**
+     * Configures a new quick tip instance and assigns it to a target element.  The following config options
+     * are supported:
+     * <pre>
+Property    Type                   Description
+----------  ---------------------  ------------------------------------------------------------------------
+target      Element/String/Array   An Element, id or array of ids that this quick tip should be tied to
+     * </ul>
+     * @param {Object} config The config object
+     */
+       register : function(config){
+           var cs = config instanceof Array ? config : arguments;
+           for(var i = 0, len = cs.length; i < len; i++) {
+               var c = cs[i];
+               var target = c.target;
+               if(target){
+                   if(target instanceof Array){
+                       for(var j = 0, jlen = target.length; j < jlen; j++){
+                           tagEls[target[j]] = c;
+                       }
+                   }else{
+                       tagEls[typeof target == 'string' ? target : Roo.id(target)] = c;
+                   }
+               }
+           }
+       },
+
+    /**
+     * Removes this quick tip from its element and destroys it.
+     * @param {String/HTMLElement/Element} el The element from which the quick tip is to be removed.
+     */
+       unregister : function(el){
+           delete tagEls[Roo.id(el)];
+       },
+
+    /**
+     * Enable this quick tip.
+     */
+       enable : function(){
+           if(inited && disabled){
+               locks.pop();
+               if(locks.length < 1){
+                   disabled = false;
+               }
+           }
+       },
+
+    /**
+     * Disable this quick tip.
+     */
+       disable : function(){
+          disabled = true;
+          clearTimeout(showProc);
+          clearTimeout(hideProc);
+          clearTimeout(dismissProc);
+          if(ce){
+              hide(true);
+          }
+          locks.push(1);
+       },
+
+    /**
+     * Returns true if the quick tip is enabled, else false.
+     */
+       isEnabled : function(){
+            return !disabled;
+       },
+
+        // private
+       tagConfig : {
+           namespace : "ext",
+           attribute : "qtip",
+           width : "width",
+           target : "target",
+           title : "qtitle",
+           hide : "hide",
+           cls : "qclass"
+       }
+   };
+}();
+
+// backwards compat
+Roo.QuickTips.tips = Roo.QuickTips.register;/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+
+/**
+ * @class Roo.tree.TreePanel
+ * @extends Roo.data.Tree
+
+ * @cfg {Boolean} rootVisible false to hide the root node (defaults to true)
+ * @cfg {Boolean} lines false to disable tree lines (defaults to true)
+ * @cfg {Boolean} enableDD true to enable drag and drop
+ * @cfg {Boolean} enableDrag true to enable just drag
+ * @cfg {Boolean} enableDrop true to enable just drop
+ * @cfg {Object} dragConfig Custom config to pass to the {@link Roo.tree.TreeDragZone} instance
+ * @cfg {Object} dropConfig Custom config to pass to the {@link Roo.tree.TreeDropZone} instance
+ * @cfg {String} ddGroup The DD group this TreePanel belongs to
+ * @cfg {String} ddAppendOnly True if the tree should only allow append drops (use for trees which are sorted)
+ * @cfg {Boolean} ddScroll true to enable YUI body scrolling
+ * @cfg {Boolean} containerScroll true to register this container with ScrollManager
+ * @cfg {Boolean} hlDrop false to disable node highlight on drop (defaults to the value of Roo.enableFx)
+ * @cfg {String} hlColor The color of the node highlight (defaults to C3DAF9)
+ * @cfg {Boolean} animate true to enable animated expand/collapse (defaults to the value of Roo.enableFx)
+ * @cfg {Boolean} singleExpand true if only 1 node per branch may be expanded
+ * @cfg {Boolean} selModel A tree selection model to use with this TreePanel (defaults to a {@link Roo.tree.DefaultSelectionModel})
+ * @cfg {Boolean} loader A TreeLoader for use with this TreePanel
+ * @cfg {String} pathSeparator The token used to separate sub-paths in path strings (defaults to '/')
+ * @cfg {Function} renderer Sets the rendering (formatting) function for the nodes. to return HTML markup for the tree view. The render function is called with  the following parameters:<ul><li>The {Object} The data for the node.</li></ul>
+ * @cfg {Function} rendererTip Sets the rendering (formatting) function for the nodes hovertip to return HTML markup for the tree view. The render function is called with  the following parameters:<ul><li>The {Object} The data for the node.</li></ul>
+ * 
+ * @constructor
+ * @param {String/HTMLElement/Element} el The container element
+ * @param {Object} config
+ */
+Roo.tree.TreePanel = function(el, config){
+    var root = false;
+    var loader = false;
+    if (config.root) {
+        root = config.root;
+        delete config.root;
+    }
+    if (config.loader) {
+        loader = config.loader;
+        delete config.loader;
+    }
+    
+    Roo.apply(this, config);
+    Roo.tree.TreePanel.superclass.constructor.call(this);
+    this.el = Roo.get(el);
+    this.el.addClass('x-tree');
+    //console.log(root);
+    if (root) {
+        this.setRootNode( Roo.factory(root, Roo.tree));
+    }
+    if (loader) {
+        this.loader = Roo.factory(loader, Roo.tree);
+    }
+   /**
+    * Read-only. The id of the container element becomes this TreePanel's id.
+    */
+   this.id = this.el.id;
+   this.addEvents({
+        /**
+        * @event beforeload
+        * Fires before a node is loaded, return false to cancel
+        * @param {Node} node The node being loaded
+        */
+        "beforeload" : true,
+        /**
+        * @event load
+        * Fires when a node is loaded
+        * @param {Node} node The node that was loaded
+        */
+        "load" : true,
+        /**
+        * @event textchange
+        * Fires when the text for a node is changed
+        * @param {Node} node The node
+        * @param {String} text The new text
+        * @param {String} oldText The old text
+        */
+        "textchange" : true,
+        /**
+        * @event beforeexpand
+        * Fires before a node is expanded, return false to cancel.
+        * @param {Node} node The node
+        * @param {Boolean} deep
+        * @param {Boolean} anim
+        */
+        "beforeexpand" : true,
+        /**
+        * @event beforecollapse
+        * Fires before a node is collapsed, return false to cancel.
+        * @param {Node} node The node
+        * @param {Boolean} deep
+        * @param {Boolean} anim
+        */
+        "beforecollapse" : true,
+        /**
+        * @event expand
+        * Fires when a node is expanded
+        * @param {Node} node The node
+        */
+        "expand" : true,
+        /**
+        * @event disabledchange
+        * Fires when the disabled status of a node changes
+        * @param {Node} node The node
+        * @param {Boolean} disabled
+        */
+        "disabledchange" : true,
+        /**
+        * @event collapse
+        * Fires when a node is collapsed
+        * @param {Node} node The node
+        */
+        "collapse" : true,
+        /**
+        * @event beforeclick
+        * Fires before click processing on a node. Return false to cancel the default action.
+        * @param {Node} node The node
+        * @param {Roo.EventObject} e The event object
+        */
+        "beforeclick":true,
+        /**
+        * @event checkchange
+        * Fires when a node with a checkbox's checked property changes
+        * @param {Node} this This node
+        * @param {Boolean} checked
+        */
+        "checkchange":true,
+        /**
+        * @event click
+        * Fires when a node is clicked
+        * @param {Node} node The node
+        * @param {Roo.EventObject} e The event object
+        */
+        "click":true,
+        /**
+        * @event dblclick
+        * Fires when a node is double clicked
+        * @param {Node} node The node
+        * @param {Roo.EventObject} e The event object
+        */
+        "dblclick":true,
+        /**
+        * @event contextmenu
+        * Fires when a node is right clicked
+        * @param {Node} node The node
+        * @param {Roo.EventObject} e The event object
+        */
+        "contextmenu":true,
+        /**
+        * @event beforechildrenrendered
+        * Fires right before the child nodes for a node are rendered
+        * @param {Node} node The node
+        */
+        "beforechildrenrendered":true,
+       /**
+	     * @event startdrag
+	     * Fires when a node starts being dragged
+	     * @param {Roo.tree.TreePanel} this
+	     * @param {Roo.tree.TreeNode} node
+	     * @param {event} e The raw browser event
+	     */ 
+	    "startdrag" : true,
+	    /**
+	     * @event enddrag
+	     * Fires when a drag operation is complete
+	     * @param {Roo.tree.TreePanel} this
+	     * @param {Roo.tree.TreeNode} node
+	     * @param {event} e The raw browser event
+	     */
+	    "enddrag" : true,
+	    /**
+	     * @event dragdrop
+	     * Fires when a dragged node is dropped on a valid DD target
+	     * @param {Roo.tree.TreePanel} this
+	     * @param {Roo.tree.TreeNode} node
+	     * @param {DD} dd The dd it was dropped on
+	     * @param {event} e The raw browser event
+	     */
+	    "dragdrop" : true,
+	    /**
+	     * @event beforenodedrop
+	     * Fires when a DD object is dropped on a node in this tree for preprocessing. Return false to cancel the drop. The dropEvent
+	     * passed to handlers has the following properties:<br />
+	     * <ul style="padding:5px;padding-left:16px;">
+	     * <li>tree - The TreePanel</li>
+	     * <li>target - The node being targeted for the drop</li>
+	     * <li>data - The drag data from the drag source</li>
+	     * <li>point - The point of the drop - append, above or below</li>
+	     * <li>source - The drag source</li>
+	     * <li>rawEvent - Raw mouse event</li>
+	     * <li>dropNode - Drop node(s) provided by the source <b>OR</b> you can supply node(s)
+	     * to be inserted by setting them on this object.</li>
+	     * <li>cancel - Set this to true to cancel the drop.</li>
+	     * </ul>
+	     * @param {Object} dropEvent
+	     */
+	    "beforenodedrop" : true,
+	    /**
+	     * @event nodedrop
+	     * Fires after a DD object is dropped on a node in this tree. The dropEvent
+	     * passed to handlers has the following properties:<br />
+	     * <ul style="padding:5px;padding-left:16px;">
+	     * <li>tree - The TreePanel</li>
+	     * <li>target - The node being targeted for the drop</li>
+	     * <li>data - The drag data from the drag source</li>
+	     * <li>point - The point of the drop - append, above or below</li>
+	     * <li>source - The drag source</li>
+	     * <li>rawEvent - Raw mouse event</li>
+	     * <li>dropNode - Dropped node(s).</li>
+	     * </ul>
+	     * @param {Object} dropEvent
+	     */
+	    "nodedrop" : true,
+	     /**
+	     * @event nodedragover
+	     * Fires when a tree node is being targeted for a drag drop, return false to signal drop not allowed. The dragOverEvent
+	     * passed to handlers has the following properties:<br />
+	     * <ul style="padding:5px;padding-left:16px;">
+	     * <li>tree - The TreePanel</li>
+	     * <li>target - The node being targeted for the drop</li>
+	     * <li>data - The drag data from the drag source</li>
+	     * <li>point - The point of the drop - append, above or below</li>
+	     * <li>source - The drag source</li>
+	     * <li>rawEvent - Raw mouse event</li>
+	     * <li>dropNode - Drop node(s) provided by the source.</li>
+	     * <li>cancel - Set this to true to signal drop not allowed.</li>
+	     * </ul>
+	     * @param {Object} dragOverEvent
+	     */
+	    "nodedragover" : true
+        
+   });
+   if(this.singleExpand){
+       this.on("beforeexpand", this.restrictExpand, this);
+   }
+};
+Roo.extend(Roo.tree.TreePanel, Roo.data.Tree, {
+    rootVisible : true,
+    animate: Roo.enableFx,
+    lines : true,
+    enableDD : false,
+    hlDrop : Roo.enableFx,
+  
+    renderer: false,
+    
+    rendererTip: false,
+    // private
+    restrictExpand : function(node){
+        var p = node.parentNode;
+        if(p){
+            if(p.expandedChild && p.expandedChild.parentNode == p){
+                p.expandedChild.collapse();
+            }
+            p.expandedChild = node;
+        }
+    },
+
+    // private override
+    setRootNode : function(node){
+        Roo.tree.TreePanel.superclass.setRootNode.call(this, node);
+        if(!this.rootVisible){
+            node.ui = new Roo.tree.RootTreeNodeUI(node);
+        }
+        return node;
+    },
+
+    /**
+     * Returns the container element for this TreePanel
+     */
+    getEl : function(){
+        return this.el;
+    },
+
+    /**
+     * Returns the default TreeLoader for this TreePanel
+     */
+    getLoader : function(){
+        return this.loader;
+    },
+
+    /**
+     * Expand all nodes
+     */
+    expandAll : function(){
+        this.root.expand(true);
+    },
+
+    /**
+     * Collapse all nodes
+     */
+    collapseAll : function(){
+        this.root.collapse(true);
+    },
+
+    /**
+     * Returns the selection model used by this TreePanel
+     */
+    getSelectionModel : function(){
+        if(!this.selModel){
+            this.selModel = new Roo.tree.DefaultSelectionModel();
+        }
+        return this.selModel;
+    },
+
+    /**
+     * Retrieve an array of checked nodes, or an array of a specific attribute of checked nodes (e.g. "id")
+     * @param {String} attribute (optional) Defaults to null (return the actual nodes)
+     * @param {TreeNode} startNode (optional) The node to start from, defaults to the root
+     * @return {Array}
+     */
+    getChecked : function(a, startNode){
+        startNode = startNode || this.root;
+        var r = [];
+        var f = function(){
+            if(this.attributes.checked){
+                r.push(!a ? this : (a == 'id' ? this.id : this.attributes[a]));
+            }
+        }
+        startNode.cascade(f);
+        return r;
+    },
+
+    /**
+     * Expands a specified path in this TreePanel. A path can be retrieved from a node with {@link Roo.data.Node#getPath}
+     * @param {String} path
+     * @param {String} attr (optional) The attribute used in the path (see {@link Roo.data.Node#getPath} for more info)
+     * @param {Function} callback (optional) The callback to call when the expand is complete. The callback will be called with
+     * (bSuccess, oLastNode) where bSuccess is if the expand was successful and oLastNode is the last node that was expanded.
+     */
+    expandPath : function(path, attr, callback){
+        attr = attr || "id";
+        var keys = path.split(this.pathSeparator);
+        var curNode = this.root;
+        if(curNode.attributes[attr] != keys[1]){ // invalid root
+            if(callback){
+                callback(false, null);
+            }
+            return;
+        }
+        var index = 1;
+        var f = function(){
+            if(++index == keys.length){
+                if(callback){
+                    callback(true, curNode);
+                }
+                return;
+            }
+            var c = curNode.findChild(attr, keys[index]);
+            if(!c){
+                if(callback){
+                    callback(false, curNode);
+                }
+                return;
+            }
+            curNode = c;
+            c.expand(false, false, f);
+        };
+        curNode.expand(false, false, f);
+    },
+
+    /**
+     * Selects the node in this tree at the specified path. A path can be retrieved from a node with {@link Roo.data.Node#getPath}
+     * @param {String} path
+     * @param {String} attr (optional) The attribute used in the path (see {@link Roo.data.Node#getPath} for more info)
+     * @param {Function} callback (optional) The callback to call when the selection is complete. The callback will be called with
+     * (bSuccess, oSelNode) where bSuccess is if the selection was successful and oSelNode is the selected node.
+     */
+    selectPath : function(path, attr, callback){
+        attr = attr || "id";
+        var keys = path.split(this.pathSeparator);
+        var v = keys.pop();
+        if(keys.length > 0){
+            var f = function(success, node){
+                if(success && node){
+                    var n = node.findChild(attr, v);
+                    if(n){
+                        n.select();
+                        if(callback){
+                            callback(true, n);
+                        }
+                    }else if(callback){
+                        callback(false, n);
+                    }
+                }else{
+                    if(callback){
+                        callback(false, n);
+                    }
+                }
+            };
+            this.expandPath(keys.join(this.pathSeparator), attr, f);
+        }else{
+            this.root.select();
+            if(callback){
+                callback(true, this.root);
+            }
+        }
+    },
+
+    getTreeEl : function(){
+        return this.el;
+    },
+
+    /**
+     * Trigger rendering of this TreePanel
+     */
+    render : function(){
+        if (this.innerCt) {
+            return this; // stop it rendering more than once!!
+        }
+        
+        this.innerCt = this.el.createChild({tag:"ul",
+               cls:"x-tree-root-ct " +
+               (this.lines ? "x-tree-lines" : "x-tree-no-lines")});
+
+        if(this.containerScroll){
+            Roo.dd.ScrollManager.register(this.el);
+        }
+        if((this.enableDD || this.enableDrop) && !this.dropZone){
+           /**
+            * The dropZone used by this tree if drop is enabled
+            * @type Roo.tree.TreeDropZone
+            */
+             this.dropZone = new Roo.tree.TreeDropZone(this, this.dropConfig || {
+               ddGroup: this.ddGroup || "TreeDD", appendOnly: this.ddAppendOnly === true
+           });
+        }
+        if((this.enableDD || this.enableDrag) && !this.dragZone){
+           /**
+            * The dragZone used by this tree if drag is enabled
+            * @type Roo.tree.TreeDragZone
+            */
+            this.dragZone = new Roo.tree.TreeDragZone(this, this.dragConfig || {
+               ddGroup: this.ddGroup || "TreeDD",
+               scroll: this.ddScroll
+           });
+        }
+        this.getSelectionModel().init(this);
+        if (!this.root) {
+            console.log("ROOT not set in tree");
+            return;
+        }
+        this.root.render();
+        if(!this.rootVisible){
+            this.root.renderChildren();
+        }
+        return this;
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+
+/**
+ * @class Roo.tree.DefaultSelectionModel
+ * @extends Roo.util.Observable
+ * The default single selection for a TreePanel.
+ */
+Roo.tree.DefaultSelectionModel = function(){
+   this.selNode = null;
+   
+   this.addEvents({
+       /**
+        * @event selectionchange
+        * Fires when the selected node changes
+        * @param {DefaultSelectionModel} this
+        * @param {TreeNode} node the new selection
+        */
+       "selectionchange" : true,
+
+       /**
+        * @event beforeselect
+        * Fires before the selected node changes, return false to cancel the change
+        * @param {DefaultSelectionModel} this
+        * @param {TreeNode} node the new selection
+        * @param {TreeNode} node the old selection
+        */
+       "beforeselect" : true
+   });
+};
+
+Roo.extend(Roo.tree.DefaultSelectionModel, Roo.util.Observable, {
+    init : function(tree){
+        this.tree = tree;
+        tree.getTreeEl().on("keydown", this.onKeyDown, this);
+        tree.on("click", this.onNodeClick, this);
+    },
+    
+    onNodeClick : function(node, e){
+        if (e.ctrlKey && this.selNode == node)  {
+            this.unselect(node);
+            return;
+        }
+        this.select(node);
+    },
+    
+    /**
+     * Select a node.
+     * @param {TreeNode} node The node to select
+     * @return {TreeNode} The selected node
+     */
+    select : function(node){
+        var last = this.selNode;
+        if(last != node && this.fireEvent('beforeselect', this, node, last) !== false){
+            if(last){
+                last.ui.onSelectedChange(false);
+            }
+            this.selNode = node;
+            node.ui.onSelectedChange(true);
+            this.fireEvent("selectionchange", this, node, last);
+        }
+        return node;
+    },
+    
+    /**
+     * Deselect a node.
+     * @param {TreeNode} node The node to unselect
+     */
+    unselect : function(node){
+        if(this.selNode == node){
+            this.clearSelections();
+        }    
+    },
+    
+    /**
+     * Clear all selections
+     */
+    clearSelections : function(){
+        var n = this.selNode;
+        if(n){
+            n.ui.onSelectedChange(false);
+            this.selNode = null;
+            this.fireEvent("selectionchange", this, null);
+        }
+        return n;
+    },
+    
+    /**
+     * Get the selected node
+     * @return {TreeNode} The selected node
+     */
+    getSelectedNode : function(){
+        return this.selNode;    
+    },
+    
+    /**
+     * Returns true if the node is selected
+     * @param {TreeNode} node The node to check
+     * @return {Boolean}
+     */
+    isSelected : function(node){
+        return this.selNode == node;  
+    },
+
+    /**
+     * Selects the node above the selected node in the tree, intelligently walking the nodes
+     * @return TreeNode The new selection
+     */
+    selectPrevious : function(){
+        var s = this.selNode || this.lastSelNode;
+        if(!s){
+            return null;
+        }
+        var ps = s.previousSibling;
+        if(ps){
+            if(!ps.isExpanded() || ps.childNodes.length < 1){
+                return this.select(ps);
+            } else{
+                var lc = ps.lastChild;
+                while(lc && lc.isExpanded() && lc.childNodes.length > 0){
+                    lc = lc.lastChild;
+                }
+                return this.select(lc);
+            }
+        } else if(s.parentNode && (this.tree.rootVisible || !s.parentNode.isRoot)){
+            return this.select(s.parentNode);
+        }
+        return null;
+    },
+
+    /**
+     * Selects the node above the selected node in the tree, intelligently walking the nodes
+     * @return TreeNode The new selection
+     */
+    selectNext : function(){
+        var s = this.selNode || this.lastSelNode;
+        if(!s){
+            return null;
+        }
+        if(s.firstChild && s.isExpanded()){
+             return this.select(s.firstChild);
+         }else if(s.nextSibling){
+             return this.select(s.nextSibling);
+         }else if(s.parentNode){
+            var newS = null;
+            s.parentNode.bubble(function(){
+                if(this.nextSibling){
+                    newS = this.getOwnerTree().selModel.select(this.nextSibling);
+                    return false;
+                }
+            });
+            return newS;
+         }
+        return null;
+    },
+
+    onKeyDown : function(e){
+        var s = this.selNode || this.lastSelNode;
+        // undesirable, but required
+        var sm = this;
+        if(!s){
+            return;
+        }
+        var k = e.getKey();
+        switch(k){
+             case e.DOWN:
+                 e.stopEvent();
+                 this.selectNext();
+             break;
+             case e.UP:
+                 e.stopEvent();
+                 this.selectPrevious();
+             break;
+             case e.RIGHT:
+                 e.preventDefault();
+                 if(s.hasChildNodes()){
+                     if(!s.isExpanded()){
+                         s.expand();
+                     }else if(s.firstChild){
+                         this.select(s.firstChild, e);
+                     }
+                 }
+             break;
+             case e.LEFT:
+                 e.preventDefault();
+                 if(s.hasChildNodes() && s.isExpanded()){
+                     s.collapse();
+                 }else if(s.parentNode && (this.tree.rootVisible || s.parentNode != this.tree.getRootNode())){
+                     this.select(s.parentNode, e);
+                 }
+             break;
+        };
+    }
+});
+
+/**
+ * @class Roo.tree.MultiSelectionModel
+ * @extends Roo.util.Observable
+ * Multi selection for a TreePanel.
+ */
+Roo.tree.MultiSelectionModel = function(){
+   this.selNodes = [];
+   this.selMap = {};
+   this.addEvents({
+       /**
+        * @event selectionchange
+        * Fires when the selected nodes change
+        * @param {MultiSelectionModel} this
+        * @param {Array} nodes Array of the selected nodes
+        */
+       "selectionchange" : true
+   });
+};
+
+Roo.extend(Roo.tree.MultiSelectionModel, Roo.util.Observable, {
+    init : function(tree){
+        this.tree = tree;
+        tree.getTreeEl().on("keydown", this.onKeyDown, this);
+        tree.on("click", this.onNodeClick, this);
+    },
+    
+    onNodeClick : function(node, e){
+        this.select(node, e, e.ctrlKey);
+    },
+    
+    /**
+     * Select a node.
+     * @param {TreeNode} node The node to select
+     * @param {EventObject} e (optional) An event associated with the selection
+     * @param {Boolean} keepExisting True to retain existing selections
+     * @return {TreeNode} The selected node
+     */
+    select : function(node, e, keepExisting){
+        if(keepExisting !== true){
+            this.clearSelections(true);
+        }
+        if(this.isSelected(node)){
+            this.lastSelNode = node;
+            return node;
+        }
+        this.selNodes.push(node);
+        this.selMap[node.id] = node;
+        this.lastSelNode = node;
+        node.ui.onSelectedChange(true);
+        this.fireEvent("selectionchange", this, this.selNodes);
+        return node;
+    },
+    
+    /**
+     * Deselect a node.
+     * @param {TreeNode} node The node to unselect
+     */
+    unselect : function(node){
+        if(this.selMap[node.id]){
+            node.ui.onSelectedChange(false);
+            var sn = this.selNodes;
+            var index = -1;
+            if(sn.indexOf){
+                index = sn.indexOf(node);
+            }else{
+                for(var i = 0, len = sn.length; i < len; i++){
+                    if(sn[i] == node){
+                        index = i;
+                        break;
+                    }
+                }
+            }
+            if(index != -1){
+                this.selNodes.splice(index, 1);
+            }
+            delete this.selMap[node.id];
+            this.fireEvent("selectionchange", this, this.selNodes);
+        }
+    },
+    
+    /**
+     * Clear all selections
+     */
+    clearSelections : function(suppressEvent){
+        var sn = this.selNodes;
+        if(sn.length > 0){
+            for(var i = 0, len = sn.length; i < len; i++){
+                sn[i].ui.onSelectedChange(false);
+            }
+            this.selNodes = [];
+            this.selMap = {};
+            if(suppressEvent !== true){
+                this.fireEvent("selectionchange", this, this.selNodes);
+            }
+        }
+    },
+    
+    /**
+     * Returns true if the node is selected
+     * @param {TreeNode} node The node to check
+     * @return {Boolean}
+     */
+    isSelected : function(node){
+        return this.selMap[node.id] ? true : false;  
+    },
+    
+    /**
+     * Returns an array of the selected nodes
+     * @return {Array}
+     */
+    getSelectedNodes : function(){
+        return this.selNodes;    
+    },
+
+    onKeyDown : Roo.tree.DefaultSelectionModel.prototype.onKeyDown,
+
+    selectNext : Roo.tree.DefaultSelectionModel.prototype.selectNext,
+
+    selectPrevious : Roo.tree.DefaultSelectionModel.prototype.selectPrevious
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.tree.TreeNode
+ * @extends Roo.data.Node
+ * @cfg {String} text The text for this node
+ * @cfg {Boolean} expanded true to start the node expanded
+ * @cfg {Boolean} allowDrag false to make this node undraggable if DD is on (defaults to true)
+ * @cfg {Boolean} allowDrop false if this node cannot be drop on
+ * @cfg {Boolean} disabled true to start the node disabled
+ * @cfg {String} icon The path to an icon for the node. The preferred way to do this
+ * is to use the cls or iconCls attributes and add the icon via a CSS background image.
+ * @cfg {String} cls A css class to be added to the node
+ * @cfg {String} iconCls A css class to be added to the nodes icon element for applying css background images
+ * @cfg {String} href URL of the link used for the node (defaults to #)
+ * @cfg {String} hrefTarget target frame for the link
+ * @cfg {String} qtip An Ext QuickTip for the node
+ * @cfg {String} qtipCfg An Ext QuickTip config for the node (used instead of qtip)
+ * @cfg {Boolean} singleClickExpand True for single click expand on this node
+ * @cfg {Function} uiProvider A UI <b>class</b> to use for this node (defaults to Roo.tree.TreeNodeUI)
+ * @cfg {Boolean} checked True to render a checked checkbox for this node, false to render an unchecked checkbox
+ * (defaults to undefined with no checkbox rendered)
+ * @constructor
+ * @param {Object/String} attributes The attributes/config for the node or just a string with the text for the node
+ */
+Roo.tree.TreeNode = function(attributes){
+    attributes = attributes || {};
+    if(typeof attributes == "string"){
+        attributes = {text: attributes};
+    }
+    this.childrenRendered = false;
+    this.rendered = false;
+    Roo.tree.TreeNode.superclass.constructor.call(this, attributes);
+    this.expanded = attributes.expanded === true;
+    this.isTarget = attributes.isTarget !== false;
+    this.draggable = attributes.draggable !== false && attributes.allowDrag !== false;
+    this.allowChildren = attributes.allowChildren !== false && attributes.allowDrop !== false;
+
+    /**
+     * Read-only. The text for this node. To change it use setText().
+     * @type String
+     */
+    this.text = attributes.text;
+    /**
+     * True if this node is disabled.
+     * @type Boolean
+     */
+    this.disabled = attributes.disabled === true;
+
+    this.addEvents({
+        /**
+        * @event textchange
+        * Fires when the text for this node is changed
+        * @param {Node} this This node
+        * @param {String} text The new text
+        * @param {String} oldText The old text
+        */
+        "textchange" : true,
+        /**
+        * @event beforeexpand
+        * Fires before this node is expanded, return false to cancel.
+        * @param {Node} this This node
+        * @param {Boolean} deep
+        * @param {Boolean} anim
+        */
+        "beforeexpand" : true,
+        /**
+        * @event beforecollapse
+        * Fires before this node is collapsed, return false to cancel.
+        * @param {Node} this This node
+        * @param {Boolean} deep
+        * @param {Boolean} anim
+        */
+        "beforecollapse" : true,
+        /**
+        * @event expand
+        * Fires when this node is expanded
+        * @param {Node} this This node
+        */
+        "expand" : true,
+        /**
+        * @event disabledchange
+        * Fires when the disabled status of this node changes
+        * @param {Node} this This node
+        * @param {Boolean} disabled
+        */
+        "disabledchange" : true,
+        /**
+        * @event collapse
+        * Fires when this node is collapsed
+        * @param {Node} this This node
+        */
+        "collapse" : true,
+        /**
+        * @event beforeclick
+        * Fires before click processing. Return false to cancel the default action.
+        * @param {Node} this This node
+        * @param {Roo.EventObject} e The event object
+        */
+        "beforeclick":true,
+        /**
+        * @event checkchange
+        * Fires when a node with a checkbox's checked property changes
+        * @param {Node} this This node
+        * @param {Boolean} checked
+        */
+        "checkchange":true,
+        /**
+        * @event click
+        * Fires when this node is clicked
+        * @param {Node} this This node
+        * @param {Roo.EventObject} e The event object
+        */
+        "click":true,
+        /**
+        * @event dblclick
+        * Fires when this node is double clicked
+        * @param {Node} this This node
+        * @param {Roo.EventObject} e The event object
+        */
+        "dblclick":true,
+        /**
+        * @event contextmenu
+        * Fires when this node is right clicked
+        * @param {Node} this This node
+        * @param {Roo.EventObject} e The event object
+        */
+        "contextmenu":true,
+        /**
+        * @event beforechildrenrendered
+        * Fires right before the child nodes for this node are rendered
+        * @param {Node} this This node
+        */
+        "beforechildrenrendered":true
+    });
+
+    var uiClass = this.attributes.uiProvider || Roo.tree.TreeNodeUI;
+
+    /**
+     * Read-only. The UI for this node
+     * @type TreeNodeUI
+     */
+    this.ui = new uiClass(this);
+};
+Roo.extend(Roo.tree.TreeNode, Roo.data.Node, {
+    preventHScroll: true,
+    /**
+     * Returns true if this node is expanded
+     * @return {Boolean}
+     */
+    isExpanded : function(){
+        return this.expanded;
+    },
+
+    /**
+     * Returns the UI object for this node
+     * @return {TreeNodeUI}
+     */
+    getUI : function(){
+        return this.ui;
+    },
+
+    // private override
+    setFirstChild : function(node){
+        var of = this.firstChild;
+        Roo.tree.TreeNode.superclass.setFirstChild.call(this, node);
+        if(this.childrenRendered && of && node != of){
+            of.renderIndent(true, true);
+        }
+        if(this.rendered){
+            this.renderIndent(true, true);
+        }
+    },
+
+    // private override
+    setLastChild : function(node){
+        var ol = this.lastChild;
+        Roo.tree.TreeNode.superclass.setLastChild.call(this, node);
+        if(this.childrenRendered && ol && node != ol){
+            ol.renderIndent(true, true);
+        }
+        if(this.rendered){
+            this.renderIndent(true, true);
+        }
+    },
+
+    // these methods are overridden to provide lazy rendering support
+    // private override
+    appendChild : function(){
+        var node = Roo.tree.TreeNode.superclass.appendChild.apply(this, arguments);
+        if(node && this.childrenRendered){
+            node.render();
+        }
+        this.ui.updateExpandIcon();
+        return node;
+    },
+
+    // private override
+    removeChild : function(node){
+        this.ownerTree.getSelectionModel().unselect(node);
+        Roo.tree.TreeNode.superclass.removeChild.apply(this, arguments);
+        // if it's been rendered remove dom node
+        if(this.childrenRendered){
+            node.ui.remove();
+        }
+        if(this.childNodes.length < 1){
+            this.collapse(false, false);
+        }else{
+            this.ui.updateExpandIcon();
+        }
+        if(!this.firstChild) {
+            this.childrenRendered = false;
+        }
+        return node;
+    },
+
+    // private override
+    insertBefore : function(node, refNode){
+        var newNode = Roo.tree.TreeNode.superclass.insertBefore.apply(this, arguments);
+        if(newNode && refNode && this.childrenRendered){
+            node.render();
+        }
+        this.ui.updateExpandIcon();
+        return newNode;
+    },
+
+    /**
+     * Sets the text for this node
+     * @param {String} text
+     */
+    setText : function(text){
+        var oldText = this.text;
+        this.text = text;
+        this.attributes.text = text;
+        if(this.rendered){ // event without subscribing
+            this.ui.onTextChange(this, text, oldText);
+        }
+        this.fireEvent("textchange", this, text, oldText);
+    },
+
+    /**
+     * Triggers selection of this node
+     */
+    select : function(){
+        this.getOwnerTree().getSelectionModel().select(this);
+    },
+
+    /**
+     * Triggers deselection of this node
+     */
+    unselect : function(){
+        this.getOwnerTree().getSelectionModel().unselect(this);
+    },
+
+    /**
+     * Returns true if this node is selected
+     * @return {Boolean}
+     */
+    isSelected : function(){
+        return this.getOwnerTree().getSelectionModel().isSelected(this);
+    },
+
+    /**
+     * Expand this node.
+     * @param {Boolean} deep (optional) True to expand all children as well
+     * @param {Boolean} anim (optional) false to cancel the default animation
+     * @param {Function} callback (optional) A callback to be called when
+     * expanding this node completes (does not wait for deep expand to complete).
+     * Called with 1 parameter, this node.
+     */
+    expand : function(deep, anim, callback){
+        if(!this.expanded){
+            if(this.fireEvent("beforeexpand", this, deep, anim) === false){
+                return;
+            }
+            if(!this.childrenRendered){
+                this.renderChildren();
+            }
+            this.expanded = true;
+            if(!this.isHiddenRoot() && (this.getOwnerTree().animate && anim !== false) || anim){
+                this.ui.animExpand(function(){
+                    this.fireEvent("expand", this);
+                    if(typeof callback == "function"){
+                        callback(this);
+                    }
+                    if(deep === true){
+                        this.expandChildNodes(true);
+                    }
+                }.createDelegate(this));
+                return;
+            }else{
+                this.ui.expand();
+                this.fireEvent("expand", this);
+                if(typeof callback == "function"){
+                    callback(this);
+                }
+            }
+        }else{
+           if(typeof callback == "function"){
+               callback(this);
+           }
+        }
+        if(deep === true){
+            this.expandChildNodes(true);
+        }
+    },
+
+    isHiddenRoot : function(){
+        return this.isRoot && !this.getOwnerTree().rootVisible;
+    },
+
+    /**
+     * Collapse this node.
+     * @param {Boolean} deep (optional) True to collapse all children as well
+     * @param {Boolean} anim (optional) false to cancel the default animation
+     */
+    collapse : function(deep, anim){
+        if(this.expanded && !this.isHiddenRoot()){
+            if(this.fireEvent("beforecollapse", this, deep, anim) === false){
+                return;
+            }
+            this.expanded = false;
+            if((this.getOwnerTree().animate && anim !== false) || anim){
+                this.ui.animCollapse(function(){
+                    this.fireEvent("collapse", this);
+                    if(deep === true){
+                        this.collapseChildNodes(true);
+                    }
+                }.createDelegate(this));
+                return;
+            }else{
+                this.ui.collapse();
+                this.fireEvent("collapse", this);
+            }
+        }
+        if(deep === true){
+            var cs = this.childNodes;
+            for(var i = 0, len = cs.length; i < len; i++) {
+            	cs[i].collapse(true, false);
+            }
+        }
+    },
+
+    // private
+    delayedExpand : function(delay){
+        if(!this.expandProcId){
+            this.expandProcId = this.expand.defer(delay, this);
+        }
+    },
+
+    // private
+    cancelExpand : function(){
+        if(this.expandProcId){
+            clearTimeout(this.expandProcId);
+        }
+        this.expandProcId = false;
+    },
+
+    /**
+     * Toggles expanded/collapsed state of the node
+     */
+    toggle : function(){
+        if(this.expanded){
+            this.collapse();
+        }else{
+            this.expand();
+        }
+    },
+
+    /**
+     * Ensures all parent nodes are expanded
+     */
+    ensureVisible : function(callback){
+        var tree = this.getOwnerTree();
+        tree.expandPath(this.parentNode.getPath(), false, function(){
+            tree.getTreeEl().scrollChildIntoView(this.ui.anchor);
+            Roo.callback(callback);
+        }.createDelegate(this));
+    },
+
+    /**
+     * Expand all child nodes
+     * @param {Boolean} deep (optional) true if the child nodes should also expand their child nodes
+     */
+    expandChildNodes : function(deep){
+        var cs = this.childNodes;
+        for(var i = 0, len = cs.length; i < len; i++) {
+        	cs[i].expand(deep);
+        }
+    },
+
+    /**
+     * Collapse all child nodes
+     * @param {Boolean} deep (optional) true if the child nodes should also collapse their child nodes
+     */
+    collapseChildNodes : function(deep){
+        var cs = this.childNodes;
+        for(var i = 0, len = cs.length; i < len; i++) {
+        	cs[i].collapse(deep);
+        }
+    },
+
+    /**
+     * Disables this node
+     */
+    disable : function(){
+        this.disabled = true;
+        this.unselect();
+        if(this.rendered && this.ui.onDisableChange){ // event without subscribing
+            this.ui.onDisableChange(this, true);
+        }
+        this.fireEvent("disabledchange", this, true);
+    },
+
+    /**
+     * Enables this node
+     */
+    enable : function(){
+        this.disabled = false;
+        if(this.rendered && this.ui.onDisableChange){ // event without subscribing
+            this.ui.onDisableChange(this, false);
+        }
+        this.fireEvent("disabledchange", this, false);
+    },
+
+    // private
+    renderChildren : function(suppressEvent){
+        if(suppressEvent !== false){
+            this.fireEvent("beforechildrenrendered", this);
+        }
+        var cs = this.childNodes;
+        for(var i = 0, len = cs.length; i < len; i++){
+            cs[i].render(true);
+        }
+        this.childrenRendered = true;
+    },
+
+    // private
+    sort : function(fn, scope){
+        Roo.tree.TreeNode.superclass.sort.apply(this, arguments);
+        if(this.childrenRendered){
+            var cs = this.childNodes;
+            for(var i = 0, len = cs.length; i < len; i++){
+                cs[i].render(true);
+            }
+        }
+    },
+
+    // private
+    render : function(bulkRender){
+        this.ui.render(bulkRender);
+        if(!this.rendered){
+            this.rendered = true;
+            if(this.expanded){
+                this.expanded = false;
+                this.expand(false, false);
+            }
+        }
+    },
+
+    // private
+    renderIndent : function(deep, refresh){
+        if(refresh){
+            this.ui.childIndent = null;
+        }
+        this.ui.renderIndent();
+        if(deep === true && this.childrenRendered){
+            var cs = this.childNodes;
+            for(var i = 0, len = cs.length; i < len; i++){
+                cs[i].renderIndent(true, refresh);
+            }
+        }
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.tree.AsyncTreeNode
+ * @extends Roo.tree.TreeNode
+ * @cfg {TreeLoader} loader A TreeLoader to be used by this node (defaults to the loader defined on the tree)
+ * @constructor
+ * @param {Object/String} attributes The attributes/config for the node or just a string with the text for the node 
+ */
+ Roo.tree.AsyncTreeNode = function(config){
+    this.loaded = false;
+    this.loading = false;
+    Roo.tree.AsyncTreeNode.superclass.constructor.apply(this, arguments);
+    /**
+    * @event beforeload
+    * Fires before this node is loaded, return false to cancel
+    * @param {Node} this This node
+    */
+    this.addEvents({'beforeload':true, 'load': true});
+    /**
+    * @event load
+    * Fires when this node is loaded
+    * @param {Node} this This node
+    */
+    /**
+     * The loader used by this node (defaults to using the tree's defined loader)
+     * @type TreeLoader
+     * @property loader
+     */
+};
+Roo.extend(Roo.tree.AsyncTreeNode, Roo.tree.TreeNode, {
+    expand : function(deep, anim, callback){
+        if(this.loading){ // if an async load is already running, waiting til it's done
+            var timer;
+            var f = function(){
+                if(!this.loading){ // done loading
+                    clearInterval(timer);
+                    this.expand(deep, anim, callback);
+                }
+            }.createDelegate(this);
+            timer = setInterval(f, 200);
+            return;
+        }
+        if(!this.loaded){
+            if(this.fireEvent("beforeload", this) === false){
+                return;
+            }
+            this.loading = true;
+            this.ui.beforeLoad(this);
+            var loader = this.loader || this.attributes.loader || this.getOwnerTree().getLoader();
+            if(loader){
+                loader.load(this, this.loadComplete.createDelegate(this, [deep, anim, callback]));
+                return;
+            }
+        }
+        Roo.tree.AsyncTreeNode.superclass.expand.call(this, deep, anim, callback);
+    },
+    
+    /**
+     * Returns true if this node is currently loading
+     * @return {Boolean}
+     */
+    isLoading : function(){
+        return this.loading;  
+    },
+    
+    loadComplete : function(deep, anim, callback){
+        this.loading = false;
+        this.loaded = true;
+        this.ui.afterLoad(this);
+        this.fireEvent("load", this);
+        this.expand(deep, anim, callback);
+    },
+    
+    /**
+     * Returns true if this node has been loaded
+     * @return {Boolean}
+     */
+    isLoaded : function(){
+        return this.loaded;
+    },
+    
+    hasChildNodes : function(){
+        if(!this.isLeaf() && !this.loaded){
+            return true;
+        }else{
+            return Roo.tree.AsyncTreeNode.superclass.hasChildNodes.call(this);
+        }
+    },
+
+    /**
+     * Trigger a reload for this node
+     * @param {Function} callback
+     */
+    reload : function(callback){
+        this.collapse(false, false);
+        while(this.firstChild){
+            this.removeChild(this.firstChild);
+        }
+        this.childrenRendered = false;
+        this.loaded = false;
+        if(this.isHiddenRoot()){
+            this.expanded = false;
+        }
+        this.expand(false, false, callback);
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.tree.TreeNodeUI
+ * @constructor
+ * @param {Object} node The node to render
+ * The TreeNode UI implementation is separate from the
+ * tree implementation. Unless you are customizing the tree UI,
+ * you should never have to use this directly.
+ */
+Roo.tree.TreeNodeUI = function(node){
+    this.node = node;
+    this.rendered = false;
+    this.animating = false;
+    this.emptyIcon = Roo.BLANK_IMAGE_URL;
+};
+
+Roo.tree.TreeNodeUI.prototype = {
+    removeChild : function(node){
+        if(this.rendered){
+            this.ctNode.removeChild(node.ui.getEl());
+        }
+    },
+
+    beforeLoad : function(){
+         this.addClass("x-tree-node-loading");
+    },
+
+    afterLoad : function(){
+         this.removeClass("x-tree-node-loading");
+    },
+
+    onTextChange : function(node, text, oldText){
+        if(this.rendered){
+            this.textNode.innerHTML = text;
+        }
+    },
+
+    onDisableChange : function(node, state){
+        this.disabled = state;
+        if(state){
+            this.addClass("x-tree-node-disabled");
+        }else{
+            this.removeClass("x-tree-node-disabled");
+        }
+    },
+
+    onSelectedChange : function(state){
+        if(state){
+            this.focus();
+            this.addClass("x-tree-selected");
+        }else{
+            //this.blur();
+            this.removeClass("x-tree-selected");
+        }
+    },
+
+    onMove : function(tree, node, oldParent, newParent, index, refNode){
+        this.childIndent = null;
+        if(this.rendered){
+            var targetNode = newParent.ui.getContainer();
+            if(!targetNode){//target not rendered
+                this.holder = document.createElement("div");
+                this.holder.appendChild(this.wrap);
+                return;
+            }
+            var insertBefore = refNode ? refNode.ui.getEl() : null;
+            if(insertBefore){
+                targetNode.insertBefore(this.wrap, insertBefore);
+            }else{
+                targetNode.appendChild(this.wrap);
+            }
+            this.node.renderIndent(true);
+        }
+    },
+
+    addClass : function(cls){
+        if(this.elNode){
+            Roo.fly(this.elNode).addClass(cls);
+        }
+    },
+
+    removeClass : function(cls){
+        if(this.elNode){
+            Roo.fly(this.elNode).removeClass(cls);
+        }
+    },
+
+    remove : function(){
+        if(this.rendered){
+            this.holder = document.createElement("div");
+            this.holder.appendChild(this.wrap);
+        }
+    },
+
+    fireEvent : function(){
+        return this.node.fireEvent.apply(this.node, arguments);
+    },
+
+    initEvents : function(){
+        this.node.on("move", this.onMove, this);
+        var E = Roo.EventManager;
+        var a = this.anchor;
+
+        var el = Roo.fly(a, '_treeui');
+
+        if(Roo.isOpera){ // opera render bug ignores the CSS
+            el.setStyle("text-decoration", "none");
+        }
+
+        el.on("click", this.onClick, this);
+        el.on("dblclick", this.onDblClick, this);
+
+        if(this.checkbox){
+            Roo.EventManager.on(this.checkbox,
+                    Roo.isIE ? 'click' : 'change', this.onCheckChange, this);
+        }
+
+        el.on("contextmenu", this.onContextMenu, this);
+
+        var icon = Roo.fly(this.iconNode);
+        icon.on("click", this.onClick, this);
+        icon.on("dblclick", this.onDblClick, this);
+        icon.on("contextmenu", this.onContextMenu, this);
+        E.on(this.ecNode, "click", this.ecClick, this, true);
+
+        if(this.node.disabled){
+            this.addClass("x-tree-node-disabled");
+        }
+        if(this.node.hidden){
+            this.addClass("x-tree-node-disabled");
+        }
+        var ot = this.node.getOwnerTree();
+        var dd = ot.enableDD || ot.enableDrag || ot.enableDrop;
+        if(dd && (!this.node.isRoot || ot.rootVisible)){
+            Roo.dd.Registry.register(this.elNode, {
+                node: this.node,
+                handles: this.getDDHandles(),
+                isHandle: false
+            });
+        }
+    },
+
+    getDDHandles : function(){
+        return [this.iconNode, this.textNode];
+    },
+
+    hide : function(){
+        if(this.rendered){
+            this.wrap.style.display = "none";
+        }
+    },
+
+    show : function(){
+        if(this.rendered){
+            this.wrap.style.display = "";
+        }
+    },
+
+    onContextMenu : function(e){
+        if (this.node.hasListener("contextmenu") || this.node.getOwnerTree().hasListener("contextmenu")) {
+            e.preventDefault();
+            this.focus();
+            this.fireEvent("contextmenu", this.node, e);
+        }
+    },
+
+    onClick : function(e){
+        if(this.dropping){
+            e.stopEvent();
+            return;
+        }
+        if(this.fireEvent("beforeclick", this.node, e) !== false){
+            if(!this.disabled && this.node.attributes.href){
+                this.fireEvent("click", this.node, e);
+                return;
+            }
+            e.preventDefault();
+            if(this.disabled){
+                return;
+            }
+
+            if(this.node.attributes.singleClickExpand && !this.animating && this.node.hasChildNodes()){
+                this.node.toggle();
+            }
+
+            this.fireEvent("click", this.node, e);
+        }else{
+            e.stopEvent();
+        }
+    },
+
+    onDblClick : function(e){
+        e.preventDefault();
+        if(this.disabled){
+            return;
+        }
+        if(this.checkbox){
+            this.toggleCheck();
+        }
+        if(!this.animating && this.node.hasChildNodes()){
+            this.node.toggle();
+        }
+        this.fireEvent("dblclick", this.node, e);
+    },
+
+    onCheckChange : function(){
+        var checked = this.checkbox.checked;
+        this.node.attributes.checked = checked;
+        this.fireEvent('checkchange', this.node, checked);
+    },
+
+    ecClick : function(e){
+        if(!this.animating && this.node.hasChildNodes()){
+            this.node.toggle();
+        }
+    },
+
+    startDrop : function(){
+        this.dropping = true;
+    },
+
+    // delayed drop so the click event doesn't get fired on a drop
+    endDrop : function(){
+       setTimeout(function(){
+           this.dropping = false;
+       }.createDelegate(this), 50);
+    },
+
+    expand : function(){
+        this.updateExpandIcon();
+        this.ctNode.style.display = "";
+    },
+
+    focus : function(){
+        if(!this.node.preventHScroll){
+            try{this.anchor.focus();
+            }catch(e){}
+        }else if(!Roo.isIE){
+            try{
+                var noscroll = this.node.getOwnerTree().getTreeEl().dom;
+                var l = noscroll.scrollLeft;
+                this.anchor.focus();
+                noscroll.scrollLeft = l;
+            }catch(e){}
+        }
+    },
+
+    toggleCheck : function(value){
+        var cb = this.checkbox;
+        if(cb){
+            cb.checked = (value === undefined ? !cb.checked : value);
+        }
+    },
+
+    blur : function(){
+        try{
+            this.anchor.blur();
+        }catch(e){}
+    },
+
+    animExpand : function(callback){
+        var ct = Roo.get(this.ctNode);
+        ct.stopFx();
+        if(!this.node.hasChildNodes()){
+            this.updateExpandIcon();
+            this.ctNode.style.display = "";
+            Roo.callback(callback);
+            return;
+        }
+        this.animating = true;
+        this.updateExpandIcon();
+
+        ct.slideIn('t', {
+           callback : function(){
+               this.animating = false;
+               Roo.callback(callback);
+            },
+            scope: this,
+            duration: this.node.ownerTree.duration || .25
+        });
+    },
+
+    highlight : function(){
+        var tree = this.node.getOwnerTree();
+        Roo.fly(this.wrap).highlight(
+            tree.hlColor || "C3DAF9",
+            {endColor: tree.hlBaseColor}
+        );
+    },
+
+    collapse : function(){
+        this.updateExpandIcon();
+        this.ctNode.style.display = "none";
+    },
+
+    animCollapse : function(callback){
+        var ct = Roo.get(this.ctNode);
+        ct.enableDisplayMode('block');
+        ct.stopFx();
+
+        this.animating = true;
+        this.updateExpandIcon();
+
+        ct.slideOut('t', {
+            callback : function(){
+               this.animating = false;
+               Roo.callback(callback);
+            },
+            scope: this,
+            duration: this.node.ownerTree.duration || .25
+        });
+    },
+
+    getContainer : function(){
+        return this.ctNode;
+    },
+
+    getEl : function(){
+        return this.wrap;
+    },
+
+    appendDDGhost : function(ghostNode){
+        ghostNode.appendChild(this.elNode.cloneNode(true));
+    },
+
+    getDDRepairXY : function(){
+        return Roo.lib.Dom.getXY(this.iconNode);
+    },
+
+    onRender : function(){
+        this.render();
+    },
+
+    render : function(bulkRender){
+        var n = this.node, a = n.attributes;
+        var targetNode = n.parentNode ?
+              n.parentNode.ui.getContainer() : n.ownerTree.innerCt.dom;
+
+        if(!this.rendered){
+            this.rendered = true;
+
+            this.renderElements(n, a, targetNode, bulkRender);
+
+            if(a.qtip){
+               if(this.textNode.setAttributeNS){
+                   this.textNode.setAttributeNS("ext", "qtip", a.qtip);
+                   if(a.qtipTitle){
+                       this.textNode.setAttributeNS("ext", "qtitle", a.qtipTitle);
+                   }
+               }else{
+                   this.textNode.setAttribute("ext:qtip", a.qtip);
+                   if(a.qtipTitle){
+                       this.textNode.setAttribute("ext:qtitle", a.qtipTitle);
+                   }
+               }
+            }else if(a.qtipCfg){
+                a.qtipCfg.target = Roo.id(this.textNode);
+                Roo.QuickTips.register(a.qtipCfg);
+            }
+            this.initEvents();
+            if(!this.node.expanded){
+                this.updateExpandIcon();
+            }
+        }else{
+            if(bulkRender === true) {
+                targetNode.appendChild(this.wrap);
+            }
+        }
+    },
+
+    renderElements : function(n, a, targetNode, bulkRender){
+        // add some indent caching, this helps performance when rendering a large tree
+        this.indentMarkup = n.parentNode ? n.parentNode.ui.getChildIndent() : '';
+        var t = n.getOwnerTree();
+        var txt = t.renderer ? t.renderer(n.attributes) : Roo.util.Format.htmlEncode(n.text);
+        var tip = t.rendererTip ? t.rendererTip(n.attributes) : txt;
+        var cb = typeof a.checked == 'boolean';
+        var href = a.href ? a.href : Roo.isGecko ? "" : "#";
+        var buf = ['<li class="x-tree-node"><div class="x-tree-node-el ', a.cls,'">',
+            '<span class="x-tree-node-indent">',this.indentMarkup,"</span>",
+            '<img src="', this.emptyIcon, '" class="x-tree-ec-icon" />',
+            '<img src="', a.icon || this.emptyIcon, '" class="x-tree-node-icon',(a.icon ? " x-tree-node-inline-icon" : ""),(a.iconCls ? " "+a.iconCls : ""),'" unselectable="on" />',
+            cb ? ('<input class="x-tree-node-cb" type="checkbox" ' + (a.checked ? 'checked="checked" />' : ' />')) : '',
+            '<a hidefocus="on" href="',href,'" tabIndex="1" ',
+             a.hrefTarget ? ' target="'+a.hrefTarget+'"' : "", 
+                '><span unselectable="on" qtip="' , tip ,'">',txt,"</span></a></div>",
+            '<ul class="x-tree-node-ct" style="display:none;"></ul>',
+            "</li>"];
+
+        if(bulkRender !== true && n.nextSibling && n.nextSibling.ui.getEl()){
+            this.wrap = Roo.DomHelper.insertHtml("beforeBegin",
+                                n.nextSibling.ui.getEl(), buf.join(""));
+        }else{
+            this.wrap = Roo.DomHelper.insertHtml("beforeEnd", targetNode, buf.join(""));
+        }
+
+        this.elNode = this.wrap.childNodes[0];
+        this.ctNode = this.wrap.childNodes[1];
+        var cs = this.elNode.childNodes;
+        this.indentNode = cs[0];
+        this.ecNode = cs[1];
+        this.iconNode = cs[2];
+        var index = 3;
+        if(cb){
+            this.checkbox = cs[3];
+            index++;
+        }
+        this.anchor = cs[index];
+        this.textNode = cs[index].firstChild;
+    },
+
+    getAnchor : function(){
+        return this.anchor;
+    },
+
+    getTextEl : function(){
+        return this.textNode;
+    },
+
+    getIconEl : function(){
+        return this.iconNode;
+    },
+
+    isChecked : function(){
+        return this.checkbox ? this.checkbox.checked : false;
+    },
+
+    updateExpandIcon : function(){
+        if(this.rendered){
+            var n = this.node, c1, c2;
+            var cls = n.isLast() ? "x-tree-elbow-end" : "x-tree-elbow";
+            var hasChild = n.hasChildNodes();
+            if(hasChild){
+                if(n.expanded){
+                    cls += "-minus";
+                    c1 = "x-tree-node-collapsed";
+                    c2 = "x-tree-node-expanded";
+                }else{
+                    cls += "-plus";
+                    c1 = "x-tree-node-expanded";
+                    c2 = "x-tree-node-collapsed";
+                }
+                if(this.wasLeaf){
+                    this.removeClass("x-tree-node-leaf");
+                    this.wasLeaf = false;
+                }
+                if(this.c1 != c1 || this.c2 != c2){
+                    Roo.fly(this.elNode).replaceClass(c1, c2);
+                    this.c1 = c1; this.c2 = c2;
+                }
+            }else{
+                if(!this.wasLeaf){
+                    Roo.fly(this.elNode).replaceClass("x-tree-node-expanded", "x-tree-node-leaf");
+                    delete this.c1;
+                    delete this.c2;
+                    this.wasLeaf = true;
+                }
+            }
+            var ecc = "x-tree-ec-icon "+cls;
+            if(this.ecc != ecc){
+                this.ecNode.className = ecc;
+                this.ecc = ecc;
+            }
+        }
+    },
+
+    getChildIndent : function(){
+        if(!this.childIndent){
+            var buf = [];
+            var p = this.node;
+            while(p){
+                if(!p.isRoot || (p.isRoot && p.ownerTree.rootVisible)){
+                    if(!p.isLast()) {
+                        buf.unshift('<img src="'+this.emptyIcon+'" class="x-tree-elbow-line" />');
+                    } else {
+                        buf.unshift('<img src="'+this.emptyIcon+'" class="x-tree-icon" />');
+                    }
+                }
+                p = p.parentNode;
+            }
+            this.childIndent = buf.join("");
+        }
+        return this.childIndent;
+    },
+
+    renderIndent : function(){
+        if(this.rendered){
+            var indent = "";
+            var p = this.node.parentNode;
+            if(p){
+                indent = p.ui.getChildIndent();
+            }
+            if(this.indentMarkup != indent){ // don't rerender if not required
+                this.indentNode.innerHTML = indent;
+                this.indentMarkup = indent;
+            }
+            this.updateExpandIcon();
+        }
+    }
+};
+
+Roo.tree.RootTreeNodeUI = function(){
+    Roo.tree.RootTreeNodeUI.superclass.constructor.apply(this, arguments);
+};
+Roo.extend(Roo.tree.RootTreeNodeUI, Roo.tree.TreeNodeUI, {
+    render : function(){
+        if(!this.rendered){
+            var targetNode = this.node.ownerTree.innerCt.dom;
+            this.node.expanded = true;
+            targetNode.innerHTML = '<div class="x-tree-root-node"></div>';
+            this.wrap = this.ctNode = targetNode.firstChild;
+        }
+    },
+    collapse : function(){
+    },
+    expand : function(){
+    }
+});
