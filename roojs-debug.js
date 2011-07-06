@@ -41186,7 +41186,7 @@ Roo.extend(Roo.form.Form, Roo.form.BasicForm, {
         if (!id) {
             return ret;
         }
-        Ext.each(this.allItems, function(f){
+        Roo.each(this.allItems, function(f){
             if (f.id == id || f.name == id ){
                 ret = f;
                 return false;
@@ -51256,6 +51256,7 @@ Roo.XTemplate.from = function(el){
 /**
  * @class Roo.XComponent
  * A delayed Element creator...
+ * Or a way to group chunks of interface together.
  * 
  * Mypart.xyx = new Roo.XComponent({
 
@@ -51275,10 +51276,11 @@ Roo.XTemplate.from = function(el){
      ]
  *})
  *
- * Roo.onReady(function() {
-    Roo.XComponent.build();
- })
  *
+ * It can be used to build a big heiracy, with parent etc.
+ * or you can just use this to render a single compoent to a dom element
+ * MYPART.render(Roo.Element | String(id) | dom_element )
+ * 
  * @extends Roo.util.Observable
  * @constructor
  * @param cfg {Object} configuration of component
@@ -51354,12 +51356,67 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
      */
     name : false,
     /**
+     * @cfg {String} region
+     * Region to render component to (defaults to center)
+     */
+    region : 'center',
+    
+    /**
      * @cfg {Array} items
      * A single item array - the first element is the root of the tree..
      * It's done this way to stay compatible with the Xtype system...
      */
-    items : false
-     
+    items : false,
+    
+    
+     /**
+     * render
+     * render element to dom or tree
+     * @param {Roo.Element|String|DomElement} optional render to if parent is not set.
+     */
+    
+    render : function(el)
+    {
+        
+        el = el || false;
+        
+        if (!el && typeof(m.parent) == 'string' && m.parent[0] == '#') {
+            // if parent is a '#.....' string, then let's use that..
+            this.parent = false;
+            el = Roo.get(m.substr(1));
+        }
+        if (!this.parent) {
+            
+            el = el ? Roo.get(el) : false;
+            
+            // it's a top level one..
+            this.parent =  {
+                el : new Roo.BorderLayout(el || document.body, {
+                
+                     center: {
+                         titlebar: false,
+                         autoScroll:false,
+                         closeOnTab: true,
+                         tabPosition: 'top',
+                          //resizeTabs: true,
+                         alwaysShowTabs: el ? false :  true,
+                         hideTabs: el ? true :  false,
+                         minTabWidth: 140
+                     }
+                 })
+            }
+        }
+            
+        var tree = this.tree();
+        tree.region = tree.region || this.region;
+        this.el = this.parent.el.addxtype(tree);
+        this.fireEvent('built', this);
+        
+        this.panel = this.el;
+        this.layout = this.panel.layout;    
+         
+    }
+    
 });
 
 Roo.apply(Roo.XComponent, {
@@ -51386,14 +51443,15 @@ Roo.apply(Roo.XComponent, {
      */
     
     modules : [],
-      
-     /**
+    /**
      * @property  elmodules
      * array of modules to be created by which use #ID 
      * @type {Array} of Roo.XComponent
      */
-    
+     
     elmodules : [],
+
+    
     /**
      * Register components to be built later.
      *
@@ -51422,7 +51480,7 @@ Roo.apply(Roo.XComponent, {
     /**
      * convert a string to an object..
      * eg. 'AAA.BBB' -> finds AAA.BBB
-     * 
+
      */
     
     toObject : function(str)
@@ -51433,15 +51491,13 @@ Roo.apply(Roo.XComponent, {
         if (str[0]=='#') {
             return str;
         }
+
         var ar = str.split('.');
         var rt, o;
         rt = ar.shift();
             /** eval:var:o */
         eval('if (typeof ' + rt + ' == "undefined"){ o = false;} o = ' + rt + ';');
         if (o === false) {
-             
-            
-            
             throw "Module not found : " + str;
         }
         Roo.each(ar, function(e) {
@@ -51496,7 +51552,6 @@ Roo.apply(Roo.XComponent, {
         var cmp = function(a,b) {   
             return String(a).toUpperCase() > String(b).toUpperCase() ? 1 : -1;
         };
-        
         if ((!this.topModule || !this.topModule.modules) && !this.elmodules.length) {
             throw "No top level modules to build";
         }
@@ -51504,7 +51559,7 @@ Roo.apply(Roo.XComponent, {
         // make a flat list in order of modules to build.
         var mods = this.topModule ? [ this.topModule ] : [];
         Roo.each(this.elmodules,function(e) { mods.push(e) });
-        
+
         
         // add modules to their parents..
         var addMod = function(m) {
@@ -51573,15 +51628,20 @@ Roo.apply(Roo.XComponent, {
                     _this.topModule.fireEvent('buildcomplete', _this.topModule);
                 }
                 // THE END...
-                return false;    
+                return false;   
             }
             
             var m = mods.shift();
+            
+            
             Roo.debug && Roo.log(m);
-            if (typeof(m) == 'function') { // not sure if this is supported any more..
+            // not sure if this is supported any more.. - modules that are are just function
+            if (typeof(m) == 'function') { 
                 m.call(this);
                 return progressRun.defer(10, _this);
             } 
+            
+            
             
             Roo.MessageBox.updateProgress(
                 (total  - mods.length)/total,  "Building Interface " + (total  - mods.length) + 
@@ -51590,7 +51650,7 @@ Roo.apply(Roo.XComponent, {
                     );
             
          
-            
+            // is the module disabled?
             var disabled = (typeof(m.disabled) == 'function') ?
                 m.disabled.call(m.module.disabled) : m.disabled;    
             
@@ -51599,45 +51659,11 @@ Roo.apply(Roo.XComponent, {
                 return progressRun(); // we do not update the display!
             }
             
-            if (!m.parent || (typeof(m.parent) == 'string' && m.parent[0] == '#')) {
-                // it's a top level one..
-                var ctr = m.parent ? Roo.get(m.parent.substr(1)) : document.body;
-                if (!ctr) {
-                    Roo.log("not rendering module " + m.name + " " + m.parent + " no found");
-                     return progressRun.defer(10, _this);
-                    
-                }
-                
-                
-                var layoutbase = new Ext.BorderLayout(
-                    m.parent ? Roo.get(m.parent.substr(1)) : document.body,
-                    {
-                        center: {
-                             titlebar: false,
-                             autoScroll:false,
-                             closeOnTab: true,
-                             tabPosition: 'top',
-                             //resizeTabs: true,
-                             alwaysShowTabs: m.parent ? false : true,
-                             hideTabs : m.parent ? true : false,
-                             minTabWidth: 140
-                        }
-                });
-                var tree = m.tree();
-                tree.region = 'center';
-                m.el = layoutbase.addxtype(tree);
-                m.panel = m.el;
-                m.layout = m.panel.layout;    
-                return progressRun.defer(10, _this);
-            }
+            // now build 
             
-            var tree = m.tree();
-            tree.region = tree.region || m.region;
-            m.el = m.parent.el.addxtype(tree);
-            m.fireEvent('built', m);
-            m.panel = m.el;
-            m.layout = m.panel.layout;    
-            return progressRun.defer(10, _this); 
+            m.render();
+            // it's 10 on top level, and 1 on others??? why...
+            return progressRun.defer(10, _this);
              
         }
         progressRun.defer(1, _this);
@@ -51645,6 +51671,7 @@ Roo.apply(Roo.XComponent, {
         
         
     }
+    
      
    
     
