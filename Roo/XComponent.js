@@ -118,7 +118,14 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
      */
     items : false,
     
-    renderTo : function(el)
+    
+     /**
+     * render
+     * render element to dom or tree
+     * @param {Roo.Element|String|DomElement} optional render to if parent is not set.
+     */
+    
+    render : function(el)
     {
         
         if (!this.parent) {
@@ -379,39 +386,10 @@ Roo.apply(Roo.XComponent, {
             
             // now build 
             
-            m.renderTo()
-            
-            
-            if (!m.parent) {
-                // it's a top level one..
-                var layoutbase = new Ext.BorderLayout(document.body, {
-               
-                    center: {
-                         titlebar: false,
-                         autoScroll:false,
-                         closeOnTab: true,
-                         tabPosition: 'top',
-                         //resizeTabs: true,
-                         alwaysShowTabs: true,
-                         minTabWidth: 140
-                    }
-                });
-                var tree = m.tree();
-                tree.region = 'center';
-                m.el = layoutbase.addxtype(tree);
-                m.panel = m.el;
-                m.layout = m.panel.layout;    
-                return progressRun.defer(10, _this);
-            }
-            
-            var tree = m.tree();
-            tree.region = tree.region || m.region;
-            m.el = m.parent.el.addxtype(tree);
-            m.fireEvent('built', m);
-            m.panel = m.el;
-            m.layout = m.panel.layout;    
-            progressRun.defer(10, _this); 
-            return false;
+            m.render();
+            // it's 10 on top level, and 1 on others??? why...
+            return progressRun.defer(10, _this);
+             
         }
         progressRun.defer(1, _this);
      
