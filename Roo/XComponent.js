@@ -167,8 +167,6 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
          
     }
     
-     
-    
 });
 
 Roo.apply(Roo.XComponent, {
