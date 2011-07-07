@@ -132,8 +132,13 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
         
         if (!el && typeof(this.parent) == 'string' && this.parent[0] == '#') {
             // if parent is a '#.....' string, then let's use that..
+            var ename = this.parent.substr(1)
             this.parent = false;
-            el = Roo.get(m.substr(1));
+            el = Roo.get(ename);
+            if (!el) {
+                Roo.log("Warning - element can not be found :#" + ename );
+                return;
+            }
         }
         if (!this.parent) {
             
@@ -156,6 +161,8 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                  })
             }
         }
+        
+        
             
         var tree = this.tree();
         tree.region = tree.region || this.region;
