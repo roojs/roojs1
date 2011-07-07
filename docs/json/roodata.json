@@ -4257,6 +4257,12 @@
      "memberOf": ""
     },
     {
+     "name": "region",
+     "type": "String",
+     "desc": "Region to render component to (defaults to center)",
+     "memberOf": ""
+    },
+    {
      "name": "items",
      "type": "Array",
      "desc": "A single item array - the first element is the root of the tree..\nIt's done this way to stay compatible with the Xtype system...",
@@ -4538,6 +4544,12 @@
      "memberOf": "Roo.data.Store"
     },
     {
+     "name": "multiSort",
+     "type": "Boolean",
+     "desc": "enable multi column sorting (sort is based on the order of columns, remote only at present)",
+     "memberOf": "Roo.data.Store"
+    },
+    {
      "name": "remoteSort",
      "type": "boolean",
      "desc": "True if sorting is to be handled by requesting the Proxy to provide a refreshed\nversion of the data object in sorted order, as opposed to sorting the Record cache in place (defaults to false).",
@@ -4773,6 +4785,12 @@
      "memberOf": "Roo.data.Store"
     },
     {
+     "name": "multiSort",
+     "type": "Boolean",
+     "desc": "enable multi column sorting (sort is based on the order of columns, remote only at present)",
+     "memberOf": "Roo.data.Store"
+    },
+    {
      "name": "remoteSort",
      "type": "boolean",
      "desc": "True if sorting is to be handled by requesting the Proxy to provide a refreshed\nversion of the data object in sorted order, as opposed to sorting the Record cache in place (defaults to false).",
@@ -4888,6 +4906,12 @@
      "name": "sortInfo",
      "type": "Object",
      "desc": "A config object in the format: {field: \"fieldName\", direction: \"ASC|DESC\"}",
+     "memberOf": ""
+    },
+    {
+     "name": "multiSort",
+     "type": "Boolean",
+     "desc": "enable multi column sorting (sort is based on the order of columns, remote only at present)",
      "memberOf": ""
     },
     {
