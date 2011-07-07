@@ -53,7 +53,7 @@ Roo.XComponent = function(cfg) {
         'buildcomplete' : true
         
     });
-    
+    this.region = this.region || 'center'; // default..
     Roo.XComponent.register(this);
     this.modules = false;
     this.el = false; // where the layout goes..
@@ -130,10 +130,15 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
         
         el = el || false;
         
-        if (!el && typeof(m.parent) == 'string' && m.parent[0] == '#') {
+        if (!el && typeof(this.parent) == 'string' && this.parent[0] == '#') {
             // if parent is a '#.....' string, then let's use that..
+            var ename = this.parent.substr(1)
             this.parent = false;
-            el = Roo.get(m.substr(1));
+            el = Roo.get(ename);
+            if (!el) {
+                Roo.log("Warning - element can not be found :#" + ename );
+                return;
+            }
         }
         if (!this.parent) {
             
@@ -156,6 +161,8 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                  })
             }
         }
+        
+        
             
         var tree = this.tree();
         tree.region = tree.region || this.region;
