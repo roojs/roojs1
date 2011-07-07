@@ -53,7 +53,7 @@ Roo.XComponent = function(cfg) {
         'buildcomplete' : true
         
     });
-    
+    this.region = this.region || 'center'; // default..
     Roo.XComponent.register(this);
     this.modules = false;
     this.el = false; // where the layout goes..
