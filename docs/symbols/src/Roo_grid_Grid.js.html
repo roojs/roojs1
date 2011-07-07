@@ -77,7 +77,7 @@
         </span><span class="jsdoc-var">this.dataSource</span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dataSource</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.data</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.ds </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dataSource</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.ds.xmodule </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.xmodule </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
-        
+         
     }
     
     
@@ -418,6 +418,8 @@
     */
     </span><span class="jsdoc-var">dropTarget</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
+   
+    
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">rendered </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
@@ -461,7 +463,7 @@
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbar </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.toolbar.xtype</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.toolbar.container </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getView</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getHeaderPanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">this.toolbar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Ext.Toolbar</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbar</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.toolbar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Toolbar</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbar</span><span class="jsdoc-syntax">);
         }
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.footer </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.footer.xtype</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.footer.dataSource </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getDataSource</span><span class="jsdoc-syntax">();

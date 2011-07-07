@@ -38,7 +38,8 @@
         </span><span class="jsdoc-string">&quot;start&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;start&quot;</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-string">&quot;limit&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;limit&quot;</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-string">&quot;sort&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;sort&quot;</span><span class="jsdoc-syntax">,
-        </span><span class="jsdoc-string">&quot;dir&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;dir&quot;
+        </span><span class="jsdoc-string">&quot;dir&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;dir&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;multisort&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;_multisort&quot;
     </span><span class="jsdoc-syntax">};
 
     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">config.data</span><span class="jsdoc-syntax">){
@@ -150,6 +151,7 @@
         </span><span class="jsdoc-var">this.relayEvents</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.proxy</span><span class="jsdoc-syntax">,  [</span><span class="jsdoc-string">&quot;loadexception&quot;</span><span class="jsdoc-syntax">]);
     }
     </span><span class="jsdoc-var">this.sortToggle </span><span class="jsdoc-syntax">= {};
+    </span><span class="jsdoc-var">this.sortOrder </span><span class="jsdoc-syntax">= []; </span><span class="jsdoc-comment">// array of order of sorting - updated by grid if multisort is enabled.
 
     </span><span class="jsdoc-var">Roo.data.Store.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 
@@ -182,6 +184,10 @@
     * @cfg {Object} sortInfo A config object in the format: {field: &quot;fieldName&quot;, direction: &quot;ASC|DESC&quot;}
     */
     /**
+    * @cfg {Boolean} multiSort enable multi column sorting (sort is based on the order of columns, remote only at present)
+    */
+    </span><span class="jsdoc-var">multiSort</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
     * @cfg {boolean} remoteSort True if sorting is to be handled by requesting the Proxy to provide a refreshed
     * version of the data object in sorted order, as opposed to sorting the Record cache in place (defaults to false).
     */
@@ -338,6 +344,11 @@
                 </span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">pn</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">&quot;sort&quot;</span><span class="jsdoc-syntax">]] = </span><span class="jsdoc-var">this.sortInfo.field</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">pn</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">&quot;dir&quot;</span><span class="jsdoc-syntax">]] = </span><span class="jsdoc-var">this.sortInfo.direction</span><span class="jsdoc-syntax">;
             }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.multiSort</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.paramNames</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">pn</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">&quot;multisort&quot;</span><span class="jsdoc-syntax">]] = </span><span class="jsdoc-var">Roo.encode</span><span class="jsdoc-syntax">( { </span><span class="jsdoc-var">sort </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.sortToggle</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">order</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.sortOrder </span><span class="jsdoc-syntax">});
+            }
+            
             </span><span class="jsdoc-var">this.proxy.load</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.reader</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.loadRecords</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">);
         }
     },
@@ -476,7 +487,9 @@
     </span><span class="jsdoc-var">sort </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fieldName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dir</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">f </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.fields.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fieldName</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">dir</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.sortInfo </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.sortInfo.field </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">f.name</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// toggle sort dir
+            </span><span class="jsdoc-var">this.sortToggle</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">f.name</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">this.sortToggle</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">f.name</span><span class="jsdoc-syntax">] || </span><span class="jsdoc-var">f.sortDir</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.multiSort </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-var">this.sortInfo </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.sortInfo.field </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">f.name</span><span class="jsdoc-syntax">) ){ </span><span class="jsdoc-comment">// toggle sort dir
                 </span><span class="jsdoc-var">dir </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.sortToggle</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">f.name</span><span class="jsdoc-syntax">] || </span><span class="jsdoc-string">&quot;ASC&quot;</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.toggle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;ASC&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;DESC&quot;</span><span class="jsdoc-syntax">);
             }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
                 </span><span class="jsdoc-var">dir </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">f.sortDir</span><span class="jsdoc-syntax">;

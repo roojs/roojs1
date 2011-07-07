@@ -82,7 +82,7 @@
     
 <!-- ============================== class summary ========================== -->			
     <div class="description">
-	A delayed Element creator...<br/><br/>Mypart.xyx = new Roo.XComponent({<br/><br/>    parent : 'Mypart.xyz', // empty == document.element.!!<br/>    order : '001',<br/>    name : 'xxxx'<br/>    region : 'xxxx'<br/>    disabled : function() {} <br/>     <br/>    tree : function() { // return an tree of xtype declared components<br/>        var MODULE = this;<br/>        return <br/>        {<br/>            xtype : 'NestedLayoutPanel',<br/>            // technicall<br/>        }<br/>     ]<br/>})
+	A delayed Element creator...<br/>Or a way to group chunks of interface together.<br/><br/>Mypart.xyx = new Roo.XComponent({<br/><br/>    parent : 'Mypart.xyz', // empty == document.element.!!<br/>    order : '001',<br/>    name : 'xxxx'<br/>    region : 'xxxx'<br/>    disabled : function() {} <br/>     <br/>    tree : function() { // return an tree of xtype declared components<br/>        var MODULE = this;<br/>        return <br/>        {<br/>            xtype : 'NestedLayoutPanel',<br/>            // technicall<br/>        }<br/>     ]<br/>})<br/><br/><br/>It can be used to build a big heiracy, with parent etc.<br/>or you can just use this to render a single compoent to a dom element<br/>MYPART.render(Roo.Element | String(id) | dom_element )
     </div>
 
 	
@@ -303,6 +303,36 @@
 		    </td>
 		</tr>
         
+	
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.XComponent-cfg-region" name=".region"></a>
+			<div class="fixedFont">
+				<b  class="itemname">region</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">Region to render component to (defaults to center)</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">Region to render component to (defaults to center)</div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.XComponent
+				
+		    </td>
+		</tr>
+        
         
     </table>
   		
@@ -385,10 +415,49 @@
                 <a class="exi" href="#expand">&nbsp;</a>
             </td>
             <td class="sig">
+               <a id="Roo.XComponent-prop-elmodules" name=".elmodules"></a>
+	       <div class="fixedFont">
+		    <span class="attributes">Roo.XComponent.</span><b  class="itemname">elmodules</b> :
+		     <span type="etype">of Roo.XComponent</span>
+		     </div>
+	    </td>
+	    <td class="sig">
+		<div class="mdesc">
+
+
+		   <div class="short">
+			array of modules to be created by which use <b>ID</b>
+		   
+		   
+		   
+		   </div> 
+		    
+                    <div class="long">
+		    
+			array of modules to be created by which use <b>ID</b>                        
+		 
+                </div>
+                </div>
+            </td>
+	    
+            <td class="msource">  
+	    Roo.XComponent
+	    </td>             
+                
+          </tr>
+        	 
+	 
+	
+	
+          <tr class="property-row config-row-alt0 notInherited">
+            <td class="micon">
+                <a class="exi" href="#expand">&nbsp;</a>
+            </td>
+            <td class="sig">
                <a id="Roo.XComponent-prop-modules" name=".modules"></a>
 	       <div class="fixedFont">
 		    <span class="attributes">Roo.XComponent.</span><b  class="itemname">modules</b> :
-		     <span type="etype"><a href="./Roo.XComponent.html#constructor" roo:cls="Roo.XComponent.html#constructor">Roo.XComponent</a></span>
+		     <span type="etype">of Roo.XComponent</span>
 		     </div>
 	    </td>
 	    <td class="sig">
@@ -419,7 +488,7 @@
 	 
 	
 	
-          <tr class="property-row config-row-alt0 notInherited">
+          <tr class="property-row config-row-alt1 notInherited">
             <td class="micon">
                 <a class="exi" href="#expand">&nbsp;</a>
             </td>
@@ -815,7 +884,7 @@
 		 
                     <div class="long">
 			
-				convert a string to an object..
+				convert a string to an object..<br/>eg. 'AAA.BBB' -> finds AAA.BBB
 		    
 				
 			
@@ -1351,7 +1420,69 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt1 expandable">
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.XComponent-method-render"   name=".render"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">render</b>
+				
+				 (<a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a>|<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>|DomElement <B><i>optional</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">render<br/>render element to dom or tree</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				render<br/>render element to dom or tree
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.Element.html#constructor" roo:cls="Roo.Element.html#constructor">Roo.Element</a>|<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>|DomElement</span>  <b>optional</b>
+						
+					</dt>
+					<dd>render to if parent is not set.</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.XComponent
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -1574,7 +1705,7 @@
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Fri Apr 01 2011 15:12:57 GMT+0800 (HKT)
+			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Thu Jul 07 2011 12:39:35 GMT+0800 (HKT)
 			Based on 
 			<a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a>  
 		</div>

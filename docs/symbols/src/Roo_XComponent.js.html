@@ -6,6 +6,7 @@
 /**
  * @class Roo.XComponent
  * A delayed Element creator...
+ * Or a way to group chunks of interface together.
  * 
  * Mypart.xyx = new Roo.XComponent({
 
@@ -24,6 +25,12 @@
         }
      ]
  *})
+ *
+ *
+ * It can be used to build a big heiracy, with parent etc.
+ * or you can just use this to render a single compoent to a dom element
+ * MYPART.render(Roo.Element | String(id) | dom_element )
+ * 
  * @extends Roo.util.Observable
  * @constructor
  * @param cfg {Object} configuration of component
@@ -46,7 +53,7 @@
         </span><span class="jsdoc-string">'buildcomplete' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
         
     </span><span class="jsdoc-syntax">});
-    
+    </span><span class="jsdoc-var">this.region </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.region </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'center'</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// default..
     </span><span class="jsdoc-var">Roo.XComponent.register</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     </span><span class="jsdoc-var">this.modules </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// where the layout goes..
@@ -99,15 +106,75 @@
      */
     </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-comment">/**
+     * @cfg {String} region
+     * Region to render component to (defaults to center)
+     */
+    </span><span class="jsdoc-var">region </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'center'</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-comment">/**
      * @cfg {Array} items
      * A single item array - the first element is the root of the tree..
      * It's done this way to stay compatible with the Xtype system...
      */
-    </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false
-     
-     
+    </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
-</span><span class="jsdoc-syntax">});
+    
+     </span><span class="jsdoc-comment">/**
+     * render
+     * render element to dom or tree
+     * @param {Roo.Element|String|DomElement} optional render to if parent is not set.
+     */
+    
+    </span><span class="jsdoc-var">render </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)
+    {
+        
+        </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">[0] == </span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">// if parent is a '#.....' string, then let's use that..
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ename </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parent.substr</span><span class="jsdoc-syntax">(1)
+            </span><span class="jsdoc-var">this.parent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ename</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Warning - element can not be found :#&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">ename </span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">) {
+            
+            </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-comment">// it's a top level one..
+            </span><span class="jsdoc-var">this.parent </span><span class="jsdoc-syntax">=  {
+                </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.BorderLayout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">, {
+                
+                     </span><span class="jsdoc-var">center</span><span class="jsdoc-syntax">: {
+                         </span><span class="jsdoc-var">titlebar</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+                         </span><span class="jsdoc-var">autoScroll</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+                         </span><span class="jsdoc-var">closeOnTab</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                         </span><span class="jsdoc-var">tabPosition</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">,
+                          </span><span class="jsdoc-comment">//resizeTabs: true,
+                         </span><span class="jsdoc-var">alwaysShowTabs</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                         </span><span class="jsdoc-var">hideTabs</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+                         </span><span class="jsdoc-var">minTabWidth</span><span class="jsdoc-syntax">: 140
+                     }
+                 })
+            }
+        }
+        
+        
+            
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tree </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tree</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">tree.region </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tree.region </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.region</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parent.el.addxtype</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'built'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.panel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.layout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.panel.layout</span><span class="jsdoc-syntax">;    
+         
+    }
+    
+});
 
 </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.XComponent</span><span class="jsdoc-syntax">, {
     
@@ -129,11 +196,18 @@
     </span><span class="jsdoc-comment">/**
      * @property  modules
      * array of modules to be created by registration system.
-     * @type Roo.XComponent
+     * @type {Array} of Roo.XComponent
      */
     
     </span><span class="jsdoc-var">modules </span><span class="jsdoc-syntax">: [],
-      
+    </span><span class="jsdoc-comment">/**
+     * @property  elmodules
+     * array of modules to be created by which use #ID 
+     * @type {Array} of Roo.XComponent
+     */
+     
+    </span><span class="jsdoc-var">elmodules </span><span class="jsdoc-syntax">: [],
+
     
     </span><span class="jsdoc-comment">/**
      * Register components to be built later.
@@ -162,7 +236,8 @@
     },
     </span><span class="jsdoc-comment">/**
      * convert a string to an object..
-     * 
+     * eg. 'AAA.BBB' -&gt; finds AAA.BBB
+
      */
     
     </span><span class="jsdoc-var">toObject </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">)
@@ -170,6 +245,10 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">str </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'object'</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">;
         }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">[0]==</span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">;
+        }
+
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">str.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rt</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">rt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ar.shift</span><span class="jsdoc-syntax">();
@@ -204,6 +283,10 @@
                 </span><span class="jsdoc-var">this.topModule </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">obj</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">obj.parent</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.elmodules.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">obj</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
             
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">obj.parent.modules</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">obj.parent.modules </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.util.MixedCollection</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, 
@@ -226,14 +309,14 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cmp </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">) {   
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.toUpperCase</span><span class="jsdoc-syntax">() &gt; </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.toUpperCase</span><span class="jsdoc-syntax">() ? 1 : -1;
         };
-        
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.topModule </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.topModule.modules</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">((!</span><span class="jsdoc-var">this.topModule </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.topModule.modules</span><span class="jsdoc-syntax">) &amp;&amp; !</span><span class="jsdoc-var">this.elmodules.length</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">throw </span><span class="jsdoc-string">&quot;No top level modules to build&quot;</span><span class="jsdoc-syntax">;
         }
-       
-        </span><span class="jsdoc-comment">// make a flat list in order of modules to build.
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">mods </span><span class="jsdoc-syntax">= [ </span><span class="jsdoc-var">this.topModule </span><span class="jsdoc-syntax">];
         
+        </span><span class="jsdoc-comment">// make a flat list in order of modules to build.
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">mods </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.topModule </span><span class="jsdoc-syntax">? [ </span><span class="jsdoc-var">this.topModule </span><span class="jsdoc-syntax">] : [];
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.elmodules</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-var">mods.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) });
+
         
         </span><span class="jsdoc-comment">// add modules to their parents..
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">addMod </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">) {
@@ -251,8 +334,10 @@
             }
             
         }
-        </span><span class="jsdoc-var">this.topModule.modules.keySort</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'ASC'</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">cmp </span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.topModule.modules.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">addMod</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.topModule</span><span class="jsdoc-syntax">) { 
+            </span><span class="jsdoc-var">this.topModule.modules.keySort</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'ASC'</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">cmp </span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.topModule.modules.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">addMod</span><span class="jsdoc-syntax">);
+        }
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">mods</span><span class="jsdoc-syntax">;
     },
     
@@ -296,16 +381,24 @@
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">mods.length</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">Roo.debug </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'hide?'</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">Roo.MessageBox.hide</span><span class="jsdoc-syntax">();
-                </span><span class="jsdoc-var">_this.topModule.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'buildcomplete'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this.topModule</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;    
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.topModule</span><span class="jsdoc-syntax">) { 
+                    </span><span class="jsdoc-var">_this.topModule.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'buildcomplete'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this.topModule</span><span class="jsdoc-syntax">);
+                }
+                </span><span class="jsdoc-comment">// THE END...
+                </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;   
             }
             
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">m </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">mods.shift</span><span class="jsdoc-syntax">();
+            
+            
             </span><span class="jsdoc-var">Roo.debug </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'function'</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// not sure if this is supported any more..
+            </span><span class="jsdoc-comment">// not sure if this is supported any more.. - modules that are are just function
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'function'</span><span class="jsdoc-syntax">) { 
                 </span><span class="jsdoc-var">m.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">progressRun.defer</span><span class="jsdoc-syntax">(10, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">);
             } 
+            
+            
             
             </span><span class="jsdoc-var">Roo.MessageBox.updateProgress</span><span class="jsdoc-syntax">(
                 (</span><span class="jsdoc-var">total  </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">mods.length</span><span class="jsdoc-syntax">)/</span><span class="jsdoc-var">total</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-string">&quot;Building Interface &quot; </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">total  </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">mods.length</span><span class="jsdoc-syntax">) + 
@@ -314,7 +407,7 @@
                     );
             
          
-            
+            </span><span class="jsdoc-comment">// is the module disabled?
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">disabled </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m.disabled</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'function'</span><span class="jsdoc-syntax">) ?
                 </span><span class="jsdoc-var">m.disabled.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m.module.disabled</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">m.disabled</span><span class="jsdoc-syntax">;    
             
@@ -323,42 +416,19 @@
                 </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">progressRun</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-comment">// we do not update the display!
             </span><span class="jsdoc-syntax">}
             
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">m.parent</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-comment">// it's a top level one..
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">layoutbase </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Ext.BorderLayout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">, {
-               
-                    </span><span class="jsdoc-var">center</span><span class="jsdoc-syntax">: {
-                         </span><span class="jsdoc-var">titlebar</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-                         </span><span class="jsdoc-var">autoScroll</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-                         </span><span class="jsdoc-var">closeOnTab</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-                         </span><span class="jsdoc-var">tabPosition</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">,
-                         </span><span class="jsdoc-comment">//resizeTabs: true,
-                         </span><span class="jsdoc-var">alwaysShowTabs</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-                         </span><span class="jsdoc-var">minTabWidth</span><span class="jsdoc-syntax">: 140
-                    }
-                });
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tree </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">m.tree</span><span class="jsdoc-syntax">();
-                </span><span class="jsdoc-var">tree.region </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'center'</span><span class="jsdoc-syntax">;
-                </span><span class="jsdoc-var">m.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">layoutbase.addxtype</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">m.panel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">m.el</span><span class="jsdoc-syntax">;
-                </span><span class="jsdoc-var">m.layout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">m.panel.layout</span><span class="jsdoc-syntax">;    
-                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">progressRun.defer</span><span class="jsdoc-syntax">(10, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">);
-            }
+            </span><span class="jsdoc-comment">// now build 
             
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tree </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">m.tree</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-var">tree.region </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tree.region </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">m.region</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-var">m.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">m.parent.el.addxtype</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">m.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'built'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">m.panel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">m.el</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-var">m.layout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">m.panel.layout</span><span class="jsdoc-syntax">;    
-            </span><span class="jsdoc-var">progressRun.defer</span><span class="jsdoc-syntax">(10, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">); 
-            
+            </span><span class="jsdoc-var">m.render</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-comment">// it's 10 on top level, and 1 on others??? why...
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">progressRun.defer</span><span class="jsdoc-syntax">(10, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">);
+             
         }
         </span><span class="jsdoc-var">progressRun.defer</span><span class="jsdoc-syntax">(1, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">);
      
         
         
     }
+    
      
    
     
