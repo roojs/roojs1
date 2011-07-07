@@ -51303,7 +51303,7 @@ Roo.XComponent = function(cfg) {
         'buildcomplete' : true
         
     });
-    
+    this.region = this.region || 'center'; // default..
     Roo.XComponent.register(this);
     this.modules = false;
     this.el = false; // where the layout goes..
@@ -51411,6 +51411,8 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                  })
             }
         }
+        
+        
             
         var tree = this.tree();
         tree.region = tree.region || this.region;
