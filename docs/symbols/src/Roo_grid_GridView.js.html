@@ -1013,6 +1013,26 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.enableMoveAnim </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.enableFx</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getHeaderCell</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.firstChild</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.highlight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hlColor</span><span class="jsdoc-syntax">);
         }
+        </span><span class="jsdoc-comment">// if multisort - fix sortOrder, and reload..
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.grid.dataSource.multiSort</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">// the we can call sort again..
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.dataSource</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.colModel</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">so </span><span class="jsdoc-syntax">= [];
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">cm.config.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++ ) {
+                
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">((</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dm.sortToggle</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cm.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.dataIndex</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">)) {
+                    </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// dont' bother, it's not in sort list or being set.
+                </span><span class="jsdoc-syntax">}
+                
+                </span><span class="jsdoc-var">so.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cm.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.dataIndex</span><span class="jsdoc-syntax">);
+            };
+            </span><span class="jsdoc-var">dm.sortOrder </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">so</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">dm.load</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dm.lastOptions</span><span class="jsdoc-syntax">);
+            
+            
+        }
+        
     },
 
     </span><span class="jsdoc-var">updateCell </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dm</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dataIndex</span><span class="jsdoc-syntax">){
@@ -1159,19 +1179,42 @@
     },
 
     </span><span class="jsdoc-var">updateHeaderSortState </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">state </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.ds.getSortState</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-comment">// sort state can be single { field: xxx, direction : yyy}
+        // or   { xxx=&gt;ASC , yyy : DESC ..... }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">mstate </span><span class="jsdoc-syntax">= {};
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.ds.multiSort</span><span class="jsdoc-syntax">) { 
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">state </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.ds.getSortState</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">mstate</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">state.field</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">state.direction</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-comment">// FIXME... - this is not used here.. but might be elsewhere..
+            </span><span class="jsdoc-var">this.sortState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">;
+            
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">mstate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.ds.sortToggle</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-var">this.sortState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sortColumn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cm.findColumnIndex</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state.field</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sortColumn </span><span class="jsdoc-syntax">!= -1){
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sortDir </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state.direction</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.sortClasses</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hds </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.headerSelector</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sc</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">hds.item</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sortColumn</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sc</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">sortDir </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;DESC&quot; </span><span class="jsdoc-syntax">? 1 : 0]);
+        </span><span class="jsdoc-comment">//remove existing sort classes..
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.sortClasses</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hds </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.headerSelector</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sc</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">f </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">mstate</span><span class="jsdoc-syntax">) {
+        
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sortColumn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cm.findColumnIndex</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sortColumn </span><span class="jsdoc-syntax">!= -1){
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sortDir </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">mstate</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">];        
+                </span><span class="jsdoc-var">hds.item</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sortColumn</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sc</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">sortDir </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;DESC&quot; </span><span class="jsdoc-syntax">? 1 : 0]);
+            }
         }
+        
+         
+        
     },
+
 
     </span><span class="jsdoc-var">handleHeaderClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">g</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.headersDisabled</span><span class="jsdoc-syntax">){
@@ -1182,6 +1225,22 @@
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-var">g.stopEditing</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dm.multiSort</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">// update the sortOrder
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">so </span><span class="jsdoc-syntax">= [];
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">cm.config.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++ ) {
+                
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">((</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dm.sortToggle</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cm.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.dataIndex</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) &amp;&amp; (</span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)) {
+                    </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// dont' bother, it's not in sort list or being set.
+                </span><span class="jsdoc-syntax">}
+                
+                </span><span class="jsdoc-var">so.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cm.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.dataIndex</span><span class="jsdoc-syntax">);
+            };
+            </span><span class="jsdoc-var">dm.sortOrder </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">so</span><span class="jsdoc-syntax">;
+        }
+        
+        
         </span><span class="jsdoc-var">dm.sort</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cm.getDataIndex</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">));
     },
 
