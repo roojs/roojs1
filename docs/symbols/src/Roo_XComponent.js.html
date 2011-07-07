@@ -53,7 +53,7 @@
         </span><span class="jsdoc-string">'buildcomplete' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
         
     </span><span class="jsdoc-syntax">});
-    
+    </span><span class="jsdoc-var">this.region </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.region </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'center'</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// default..
     </span><span class="jsdoc-var">Roo.XComponent.register</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     </span><span class="jsdoc-var">this.modules </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// where the layout goes..
@@ -132,8 +132,13 @@
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">[0] == </span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-comment">// if parent is a '#.....' string, then let's use that..
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ename </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parent.substr</span><span class="jsdoc-syntax">(1)
             </span><span class="jsdoc-var">this.parent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m.substr</span><span class="jsdoc-syntax">(1));
+            </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ename</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Warning - element can not be found :#&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">ename </span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
         }
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">) {
             
@@ -156,6 +161,8 @@
                  })
             }
         }
+        
+        
             
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tree </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tree</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">tree.region </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tree.region </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.region</span><span class="jsdoc-syntax">;
