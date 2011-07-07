@@ -4025,7 +4025,22 @@ Roo.lib.Easing = {
  * Fork - LGPL
  * <script type="text/javascript">
  */
- 
+
+
+// nasty IE9 hack - what a pile of crap that is..
+
+ if (typeof Range.prototype.createContextualFragment == "undefined") {
+    Range.prototype.createContextualFragment = function (html) {
+        var doc = window.document;
+        var container = doc.createElement("div");
+        container.innerHTML = html;
+        var frag = doc.createDocumentFragment(), n;
+        while ((n = container.firstChild)) {
+            frag.appendChild(n);
+        }
+        return frag;
+    };
+}
 
 /**
  * @class Roo.DomHelper
