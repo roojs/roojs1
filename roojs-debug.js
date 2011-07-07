@@ -51380,7 +51380,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
         
         el = el || false;
         
-        if (!el && typeof(m.parent) == 'string' && m.parent[0] == '#') {
+        if (!el && typeof(this.parent) == 'string' && this.parent[0] == '#') {
             // if parent is a '#.....' string, then let's use that..
             this.parent = false;
             el = Roo.get(m.substr(1));
