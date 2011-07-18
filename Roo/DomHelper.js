@@ -12,7 +12,7 @@
 
 // nasty IE9 hack - what a pile of crap that is..
 
- if (typeof Range.prototype.createContextualFragment == "undefined") {
+ if (typeof Range != "undefined" && typeof Range.prototype.createContextualFragment == "undefined") {
     Range.prototype.createContextualFragment = function (html) {
         var doc = window.document;
         var container = doc.createElement("div");
