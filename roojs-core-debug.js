@@ -4029,11 +4029,7 @@ Roo.lib.Easing = {
 
 // nasty IE9 hack - what a pile of crap that is..
 
-<<<<<<< HEAD
- if (typeof Range.prototype.createContextualFragment == "undefined") {
-=======
  if (typeof Range != "undefined" && typeof Range.prototype.createContextualFragment == "undefined") {
->>>>>>> cba88e023db3bc6c12affc2e25a149cdac04fd17
     Range.prototype.createContextualFragment = function (html) {
         var doc = window.document;
         var container = doc.createElement("div");
