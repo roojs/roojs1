@@ -8,7 +8,7 @@
  *
  * This code is a port of Isaac Schlueter's cssmin utility.
  *
- * Usage: seed buildSDK/cssmini.js
+ * Usage: seed buildSDK/cssmini.js {OUTPUT} {files........}
  */ 
 
 
