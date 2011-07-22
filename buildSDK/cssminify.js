@@ -28,7 +28,7 @@ var outname = args.shift();
 
 //@import url("reset-min.css");
 var out = '';
-output.forEach(function(l) {
+args.forEach(function(l) {
     
     //out += pack(File.read(pa+'/css/' + l)).replace(/\}/g, "}\n")+"\n";
     out += pack(File.read(l)) + "\n";
