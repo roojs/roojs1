@@ -181,7 +181,7 @@ Roo.ux.Showdown.converter = function() {
                               /gm,
                               function(){...});
             */
-            var text = text.replace(/^[ ]{0,3}\[(.+)\]:[ \t]*\n?[ \t]*<?(\S+?)>?[ \t]*\n?[ \t]*(?:(\n*)["(](.+?)[")][ \t]*)?(?:\n+|\Z)/gm,
+            text = text.replace(/^[ ]{0,3}\[(.+)\]:[ \t]*\n?[ \t]*<?(\S+?)>?[ \t]*\n?[ \t]*(?:(\n*)["(](.+?)[")][ \t]*)?(?:\n+|\Z)/gm,
                     function (wholeMatch,m1,m2,m3,m4) {
                             m1 = m1.toLowerCase();
                             g_urls[m1] = _EncodeAmpsAndAngles(m2);  // Link IDs are case-insensitive
