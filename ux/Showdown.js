@@ -66,7 +66,10 @@
 //
 Roo.namespace('Roo.ux'); 
 Roo.ux.Showdown = {};
-
+Roo.ux.Showdown.makeHTML = function(text) {
+    var c = new Roo.ux.Showdown.converter();
+    return c.makeHtml(text);
+};
 //
 // converter
 //
