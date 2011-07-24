@@ -49,7 +49,7 @@
 //
 // Showdown usage:
 // 
-//   alert( Roo.ux.Showdown.makeHtml("Markdown *rocks*.") );
+//   alert( Roo.ux.Showdown.toHtml("Markdown *rocks*.") );
 // 
 // Note: move the sample code to the bottom of this
 // file before uncommenting it.
@@ -61,7 +61,7 @@
 //
 Roo.namespace('Roo.ux'); 
 Roo.ux.Showdown = {};
-Roo.ux.Showdown.makeHtml = function(text) {
+Roo.ux.Showdown.toHtml = function(text) {
     var c = new Roo.ux.Showdown.converter();
     return c.makeHtml(text);
 };
