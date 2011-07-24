@@ -48,13 +48,9 @@
 
 //
 // Showdown usage:
-//
-//   var text = "Markdown *rocks*.";
-//
-//   var html = Roo.ux.Showdown.makeHtml(text);
-//
-//   alert(html);
-//
+// 
+//   alert( Roo.ux.Showdown.makeHtml("Markdown *rocks*.") );
+// 
 // Note: move the sample code to the bottom of this
 // file before uncommenting it.
 //
