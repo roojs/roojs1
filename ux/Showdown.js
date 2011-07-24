@@ -64,7 +64,8 @@
 //
 // Showdown namespace
 //
-Roo.ui.Showdown = {};
+Roo.namespace('Roo.ux'); 
+Roo.ux.Showdown = {};
 
 //
 // converter
@@ -72,7 +73,7 @@ Roo.ui.Showdown = {};
 // Wraps all "globals" so that the only thing
 // exposed is makeHtml().
 //
-Roo.ui.Showdown.converter = function() {
+Roo.ux.Showdown.converter = function() {
     
     //
     // Globals:
