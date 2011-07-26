@@ -94,7 +94,7 @@ Roo.ux.Showdown.converter = function() {
     // _EscapeSpecialCharsWithinTagAttributes(), so that any *'s or _'s in the <a>
     // and <img> tags get encoded.
     //v
-            var text = _text;
+            var text = '' + _text;
             // Clear the global hashes. If we don't clear these, you get conflicts
             // from other articles when generating a page which contains more than
             // one article (e.g. an index page that shows the N most recent
