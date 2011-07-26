@@ -87,14 +87,14 @@ Roo.ux.Showdown.converter = function() {
     var g_list_level = 0;
     
     
-    this.makeHtml = function(text) {
+    this.makeHtml = function(_text) {
     //
     // Main function. The order in which other subs are called here is
     // essential. Link and image substitutions need to happen before
     // _EscapeSpecialCharsWithinTagAttributes(), so that any *'s or _'s in the <a>
     // and <img> tags get encoded.
-    //
-    
+    //v
+            var text = '' + _text;
             // Clear the global hashes. If we don't clear these, you get conflicts
             // from other articles when generating a page which contains more than
             // one article (e.g. an index page that shows the N most recent
