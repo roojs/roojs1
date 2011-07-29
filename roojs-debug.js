@@ -45958,7 +45958,8 @@ layout.addxtype({
             if ( this.form.allItems.length) this.form.render(el.dom);
             return this.form;
         }
-        if (['View', 'JsonView'].indexOf(cfg.xtype) > -1) {
+        
+        if (['View', 'JsonView', 'DatePicker'].indexOf(cfg.xtype) > -1) {
             // views..
             cfg.el = this.el.appendChild(document.createElement("div"));
             // factory?
