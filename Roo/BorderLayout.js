@@ -463,7 +463,7 @@ layout.addxtype({
                 
             default: 
                 alert("Can not add '" + cfg.xtype + "' to BorderLayout");
-                return;
+                return null;
              // GridPanel (grid, cfg)
             
         }
