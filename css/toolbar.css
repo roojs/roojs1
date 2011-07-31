@@ -398,5 +398,5 @@
 
 /** ---- Toolbar ontop of tab bar ---------- **/
 .x-tabs-strip-wrap .x-toolbar {
-    background: none;
+    background: none !important;
 }
