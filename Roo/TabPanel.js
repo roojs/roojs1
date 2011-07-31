@@ -728,8 +728,8 @@ Roo.TabPanel.prototype.createStripList = function(strip){
     // div wrapper for retard IE
     // returns the "tr" element.
     strip.innerHTML = '<div class="x-tabs-strip-wrap">'+
-        '<table class="x-tabs-strip" cellspacing="0" cellpadding="0" border="0"><tbody><tr><'+
-        '/tr></tbody></table></div>';
+        '<table class="x-tabs-strip" cellspacing="0" cellpadding="0" border="0"><tbody><tr>'+
+        '<td class="x-tab-toolbar"></td></tr></tbody></table></div>';
     return strip.firstChild.firstChild.firstChild.firstChild;
 };
 /** @private */
@@ -754,7 +754,8 @@ Roo.TabPanel.prototype.createItemBody = function(bodyEl, id){
 /** @private */
 Roo.TabPanel.prototype.createStripElements = function(stripEl, text, closable){
     var td = document.createElement("td");
-    stripEl.appendChild(td);
+    Roo.get(td).insertBefore(stripEl.childNodes[stripEl.childNodes.length-1]);
+    //stripEl.appendChild(td);
     if(closable){
         td.className = "x-tabs-closable";
         if(!this.closeTpl){
