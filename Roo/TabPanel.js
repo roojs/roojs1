@@ -111,6 +111,11 @@ Roo.TabPanel = function(container, config){
         var tcfg = this.toolbar;
         tcfg.container = this.stripEl.child('td.x-tab-strip-toolbar');  
         this.toolbar = new Roo.Toolbar(tcfg);
+        if (Roo.isSafari) {
+            var tbl = tcfg.container.child('table', true);
+            tbl.setAttribute('width', '100%');
+        }
+        
     }
    
 
