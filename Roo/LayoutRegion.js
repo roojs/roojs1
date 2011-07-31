@@ -40,6 +40,7 @@
  * @cfg {Number}    width           For East/West panels
  * @cfg {Number}    height          For North/South panels
  * @cfg {Boolean}   split           To show the splitter
+ * @cfg {Boolean}   toolbar         xtype configuration for a toolbar - shows on right of tabbar
  */
 Roo.LayoutRegion = function(mgr, config, pos){
     Roo.LayoutRegion.superclass.constructor.call(this, mgr, config, pos, true);
