@@ -25144,7 +25144,7 @@ Roo.extend(Roo.DatePicker, Roo.Component, {
             }
         }
     }
-});/*
+});        /*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -25216,11 +25216,11 @@ Roo.TabPanel = function(container, config){
         Roo.fly(this.stripWrap.dom.firstChild).setStyle("overflow-x", "hidden");
     }
     if(this.tabPosition != "bottom"){
-    /** The body element that contains {@link Roo.TabPanelItem} bodies.
-     * @type Roo.Element
-     */
-      this.bodyEl = Roo.get(this.createBody(this.el.dom));
-      this.el.addClass("x-tabs-top");
+        /** The body element that contains {@link Roo.TabPanelItem} bodies. +
+         * @type Roo.Element
+         */
+        this.bodyEl = Roo.get(this.createBody(this.el.dom));
+        this.el.addClass("x-tabs-top");
     }
     this.items = [];
 
@@ -25251,38 +25251,57 @@ Roo.TabPanel = function(container, config){
     this.cpad = this.el.getPadding("lr");
     this.hiddenCount = 0;
 
+
+    // toolbar on the tabbar support...
+    if (this.toolbar) {
+        var tcfg = this.toolbar;
+        tcfg.container = this.stripEl.child('td.x-tab-strip-toolbar');  
+        this.toolbar = new Roo.Toolbar(tcfg);
+        if (Roo.isSafari) {
+            var tbl = tcfg.container.child('table', true);
+            tbl.setAttribute('width', '100%');
+        }
+        
+    }
+   
+
+
     Roo.TabPanel.superclass.constructor.call(this);
 };
 
 Roo.extend(Roo.TabPanel, Roo.util.Observable, {
-	/*
-	 *@cfg {String} tabPosition "top" or "bottom" (defaults to "top")
-	 */
+    /*
+     *@cfg {String} tabPosition "top" or "bottom" (defaults to "top")
+     */
     tabPosition : "top",
-	/*
-	 *@cfg {Number} currentTabWidth The width of the current tab (defaults to 0)
-	 */
+    /*
+     *@cfg {Number} currentTabWidth The width of the current tab (defaults to 0)
+     */
     currentTabWidth : 0,
-	/*
-	 *@cfg {Number} minTabWidth The minimum width of a tab (defaults to 40) (ignored if {@link #resizeTabs} is not true)
-	 */
+    /*
+     *@cfg {Number} minTabWidth The minimum width of a tab (defaults to 40) (ignored if {@link #resizeTabs} is not true)
+     */
     minTabWidth : 40,
-	/*
-	 *@cfg {Number} maxTabWidth The maximum width of a tab (defaults to 250) (ignored if {@link #resizeTabs} is not true)
-	 */
+    /*
+     *@cfg {Number} maxTabWidth The maximum width of a tab (defaults to 250) (ignored if {@link #resizeTabs} is not true)
+     */
     maxTabWidth : 250,
-	/*
-	 *@cfg {Number} preferredTabWidth The preferred (default) width of a tab (defaults to 175) (ignored if {@link #resizeTabs} is not true)
-	 */
+    /*
+     *@cfg {Number} preferredTabWidth The preferred (default) width of a tab (defaults to 175) (ignored if {@link #resizeTabs} is not true)
+     */
     preferredTabWidth : 175,
-	/*
-	 *@cfg {Boolean} resizeTabs True to enable dynamic tab resizing (defaults to false)
-	 */
+    /*
+     *@cfg {Boolean} resizeTabs True to enable dynamic tab resizing (defaults to false)
+     */
     resizeTabs : false,
-	/*
-	 *@cfg {Boolean} monitorResize Set this to true to turn on window resize monitoring (ignored if {@link #resizeTabs} is not true) (defaults to true)
-	 */
+    /*
+     *@cfg {Boolean} monitorResize Set this to true to turn on window resize monitoring (ignored if {@link #resizeTabs} is not true) (defaults to true)
+     */
     monitorResize : true,
+    /*
+     *@cfg {Object} toolbar xtype description of toolbar to show at the right of the tab bar. 
+     */
+    toolbar : false,
 
     /**
      * Creates a new {@link Roo.TabPanelItem} by looking for an existing element with the provided id -- if it's not found it creates one.
@@ -25872,7 +25891,10 @@ Roo.TabPanel.prototype.createStrip = function(container){
 /** @private */
 Roo.TabPanel.prototype.createStripList = function(strip){
     // div wrapper for retard IE
-    strip.innerHTML = '<div class="x-tabs-strip-wrap"><table class="x-tabs-strip" cellspacing="0" cellpadding="0" border="0"><tbody><tr></tr></tbody></table></div>';
+    // returns the "tr" element.
+    strip.innerHTML = '<div class="x-tabs-strip-wrap">'+
+        '<table class="x-tabs-strip" cellspacing="0" cellpadding="0" border="0"><tbody><tr>'+
+        '<td class="x-tab-strip-toolbar"></td></tr></tbody></table></div>';
     return strip.firstChild.firstChild.firstChild.firstChild;
 };
 /** @private */
@@ -25897,7 +25919,8 @@ Roo.TabPanel.prototype.createItemBody = function(bodyEl, id){
 /** @private */
 Roo.TabPanel.prototype.createStripElements = function(stripEl, text, closable){
     var td = document.createElement("td");
-    stripEl.appendChild(td);
+    stripEl.insertBefore(td, stripEl.childNodes[stripEl.childNodes.length-1]);
+    //stripEl.appendChild(td);
     if(closable){
         td.className = "x-tabs-closable";
         if(!this.closeTpl){
@@ -43944,7 +43967,7 @@ layout.addxtype({
                 
             default: 
                 alert("Can not add '" + cfg.xtype + "' to BorderLayout");
-                return;
+                return null;
              // GridPanel (grid, cfg)
             
         }
@@ -44383,33 +44406,34 @@ Roo.extend(Roo.BasicLayoutRegion, Roo.util.Observable, {
  * @class Roo.LayoutRegion
  * @extends Roo.BasicLayoutRegion
  * This class represents a region in a layout manager.
- * @cfg {Boolean} collapsible False to disable collapsing (defaults to true)
- * @cfg {Boolean} collapsed True to set the initial display to collapsed (defaults to false)
- * @cfg {Boolean} floatable False to disable floating (defaults to true)
- * @cfg {Object} margins Margins for the element (defaults to {top: 0, left: 0, right:0, bottom: 0})
- * @cfg {Object} cmargins Margins for the element when collapsed (defaults to: north/south {top: 2, left: 0, right:0, bottom: 2} or east/west {top: 0, left: 2, right:2, bottom: 0})
- * @cfg {String} tabPosition "top" or "bottom" (defaults to "bottom")
- * @cfg {String} collapsedTitle Optional string message to display in the collapsed block of a north or south region
- * @cfg {Boolean} alwaysShowTabs True to always display tabs even when there is only 1 panel (defaults to false)
- * @cfg {Boolean} autoScroll True to enable overflow scrolling (defaults to false)
- * @cfg {Boolean} titlebar True to display a title bar (defaults to true)
- * @cfg {String} title The title for the region (overrides panel titles)
- * @cfg {Boolean} animate True to animate expand/collapse (defaults to false)
- * @cfg {Boolean} autoHide False to disable auto hiding when the mouse leaves the "floated" region (defaults to true)
- * @cfg {Boolean} preservePanels True to preserve removed panels so they can be readded later (defaults to false)
- * @cfg {Boolean} closeOnTab True to place the close icon on the tabs instead of the region titlebar (defaults to false)
- * @cfg {Boolean} hideTabs True to hide the tab strip (defaults to false)
- * @cfg {Boolean} resizeTabs True to enable automatic tab resizing. This will resize the tabs so they are all the same size and fit within
- * the space available, similar to FireFox 1.5 tabs (defaults to false)
- * @cfg {Number} minTabWidth The minimum tab width (defaults to 40)
- * @cfg {Number} preferredTabWidth The preferred tab width (defaults to 150)
- * @cfg {Boolean} showPin True to show a pin button
-* @cfg {Boolean} hidden True to start the region hidden (defaults to false)
-* @cfg {Boolean} hideWhenEmpty True to hide the region when it has no panels
-* @cfg {Boolean} disableTabTips True to disable tab tooltips
-* @cfg {Number} width  For East/West panels
-* @cfg {Number} height For North/South panels
-* @cfg {Boolean} split To show the splitter
+ * @cfg {Boolean}   collapsible     False to disable collapsing (defaults to true)
+ * @cfg {Boolean}   collapsed       True to set the initial display to collapsed (defaults to false)
+ * @cfg {Boolean}   floatable       False to disable floating (defaults to true)
+ * @cfg {Object}    margins         Margins for the element (defaults to {top: 0, left: 0, right:0, bottom: 0})
+ * @cfg {Object}    cmargins        Margins for the element when collapsed (defaults to: north/south {top: 2, left: 0, right:0, bottom: 2} or east/west {top: 0, left: 2, right:2, bottom: 0})
+ * @cfg {String}    tabPosition     "top" or "bottom" (defaults to "bottom")
+ * @cfg {String}    collapsedTitle  Optional string message to display in the collapsed block of a north or south region
+ * @cfg {Boolean}   alwaysShowTabs  True to always display tabs even when there is only 1 panel (defaults to false)
+ * @cfg {Boolean}   autoScroll      True to enable overflow scrolling (defaults to false)
+ * @cfg {Boolean}   titlebar        True to display a title bar (defaults to true)
+ * @cfg {String}    title           The title for the region (overrides panel titles)
+ * @cfg {Boolean}   animate         True to animate expand/collapse (defaults to false)
+ * @cfg {Boolean}   autoHide        False to disable auto hiding when the mouse leaves the "floated" region (defaults to true)
+ * @cfg {Boolean}   preservePanels  True to preserve removed panels so they can be readded later (defaults to false)
+ * @cfg {Boolean}   closeOnTab      True to place the close icon on the tabs instead of the region titlebar (defaults to false)
+ * @cfg {Boolean}   hideTabs        True to hide the tab strip (defaults to false)
+ * @cfg {Boolean}   resizeTabs      True to enable automatic tab resizing. This will resize the tabs so they are all the same size and fit within
+ *                      the space available, similar to FireFox 1.5 tabs (defaults to false)
+ * @cfg {Number}    minTabWidth     The minimum tab width (defaults to 40)
+ * @cfg {Number}    preferredTabWidth The preferred tab width (defaults to 150)
+ * @cfg {Boolean}   showPin         True to show a pin button
+ * @cfg {Boolean}   hidden          True to start the region hidden (defaults to false)
+ * @cfg {Boolean}   hideWhenEmpty   True to hide the region when it has no panels
+ * @cfg {Boolean}   disableTabTips  True to disable tab tooltips
+ * @cfg {Number}    width           For East/West panels
+ * @cfg {Number}    height          For North/South panels
+ * @cfg {Boolean}   split           To show the splitter
+ * @cfg {Boolean}   toolbar         xtype configuration for a toolbar - shows on right of tabbar
  */
 Roo.LayoutRegion = function(mgr, config, pos){
     Roo.LayoutRegion.superclass.constructor.call(this, mgr, config, pos, true);
@@ -44724,12 +44748,17 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
         // overridden
     },
 
-    initTabs : function(){
+    initTabs : function()
+    {
         this.bodyEl.setStyle("overflow", "hidden");
-        var ts = new Roo.TabPanel(this.bodyEl.dom, {
-            tabPosition: this.bottomTabs ? 'bottom' : 'top',
-            disableTooltips: this.config.disableTabTips
-        });
+        var ts = new Roo.TabPanel(
+                this.bodyEl.dom,
+                {
+                    tabPosition: this.bottomTabs ? 'bottom' : 'top',
+                    disableTooltips: this.config.disableTabTips,
+                    toolbar : this.config.toolbar
+                }
+        );
         if(this.config.hideTabs){
             ts.stripWrap.setDisplayed(false);
         }
@@ -45603,20 +45632,22 @@ Roo.LayoutStateManager.prototype = {
  * @class Roo.ContentPanel
  * @extends Roo.util.Observable
  * A basic ContentPanel element.
- * @cfg {Boolean} fitToFrame True for this panel to adjust its size to fit when the region resizes  (defaults to false)
- * @cfg {Boolean} fitContainer When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)
+ * @cfg {Boolean} fitToFrame    True for this panel to adjust its size to fit when the region resizes  (defaults to false)
+ * @cfg {Boolean} fitContainer   When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)
  * @cfg {Boolean/Object} autoCreate True to auto generate the DOM element for this panel, or a {@link Roo.DomHelper} config of the element to create
- * @cfg {Boolean} closable True if the panel can be closed/removed
- * @cfg {Boolean} background True if the panel should not be activated when it is added (defaults to false)
+ * @cfg {Boolean} closable      True if the panel can be closed/removed
+ * @cfg {Boolean} background    True if the panel should not be activated when it is added (defaults to false)
  * @cfg {String/HTMLElement/Element} resizeEl An element to resize if {@link #fitToFrame} is true (instead of this panel's element)
- * @cfg {Toolbar} toolbar A toolbar for this panel
- * @cfg {Boolean} autoScroll True to scroll overflow in this panel (use with {@link #fitToFrame})
- * @cfg {String} title The title for this panel
- * @cfg {Array} adjustments Values to <b>add</b> to the width/height when doing a {@link #fitToFrame} (default is [0, 0])
- * @cfg {String} url Calls {@link #setUrl} with this value
- * @cfg {String} region (center|north|south|east|west) which region to put this panel on (when used with xtype constructors)
- * @cfg {String/Object} params When used with {@link #url}, calls {@link #setUrl} with this value
- * @cfg {Boolean} loadOnce When used with {@link #url}, calls {@link #setUrl} with this value
+ * @cfg {Toolbar} toolbar       A toolbar for this panel
+ * @cfg {Boolean} autoScroll    True to scroll overflow in this panel (use with {@link #fitToFrame})
+ * @cfg {String} title          The title for this panel
+ * @cfg {Array} adjustments     Values to <b>add</b> to the width/height when doing a {@link #fitToFrame} (default is [0, 0])
+ * @cfg {String} url            Calls {@link #setUrl} with this value
+ * @cfg {String} region         (center|north|south|east|west) which region to put this panel on (when used with xtype constructors)
+ * @cfg {String/Object} params  When used with {@link #url}, calls {@link #setUrl} with this value
+ * @cfg {Boolean} loadOnce      When used with {@link #url}, calls {@link #setUrl} with this value
+ * @cfg {String} content        Raw content to fill content panel with (uses setContent on construction.)
+
  * @constructor
  * Create a new ContentPanel.
  * @param {String/HTMLElement/Roo.Element} el The container element for this panel
@@ -51395,6 +51426,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
     {
         
         el = el || false;
+        var hp = this.parent ? 1 : 0;
         
         if (!el && typeof(this.parent) == 'string' && this.parent[0] == '#') {
             // if parent is a '#.....' string, then let's use that..
@@ -51406,6 +51438,8 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                 return;
             }
         }
+        
+        
         if (!this.parent) {
             
             el = el ? Roo.get(el) : false;
@@ -51420,8 +51454,8 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                          closeOnTab: true,
                          tabPosition: 'top',
                           //resizeTabs: true,
-                         alwaysShowTabs: el ? false :  true,
-                         hideTabs: el ? true :  false,
+                         alwaysShowTabs: el && hp? false :  true,
+                         hideTabs: el || !hp ? true :  false,
                          minTabWidth: 140
                      }
                  })
@@ -51529,6 +51563,7 @@ Roo.apply(Roo.XComponent, {
             }
             o = o[e];
         });
+        
         return o;
         
     },
@@ -51540,10 +51575,11 @@ Roo.apply(Roo.XComponent, {
      */
     preBuild : function ()
     {
-        
+        var _t = this;
         Roo.each(this.modules , function (obj)
         {
-            obj.parent = this.toObject(obj.parent);
+            var opar = obj.parent;
+            obj.parent = this.toObject(opar);
             
             if (!obj.parent) {
                 this.topModule = obj;
@@ -51553,7 +51589,9 @@ Roo.apply(Roo.XComponent, {
                 this.elmodules.push(obj);
                 return;
             }
-            
+            if (obj.parent.constructor != Roo.XComponent) {
+                Roo.log("Object Parent is not instance of XComponent:" + obj.name)
+            }
             if (!obj.parent.modules) {
                 obj.parent.modules = new Roo.util.MixedCollection(false, 
                     function(o) { return o.order + '' }
