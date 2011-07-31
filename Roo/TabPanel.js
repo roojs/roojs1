@@ -105,6 +105,18 @@ Roo.TabPanel = function(container, config){
     this.cpad = this.el.getPadding("lr");
     this.hiddenCount = 0;
 
+
+    // toolbar on the tabbar support...
+    if (this.toolbar) { 
+        var se = this.stripEl;
+        var tbh = se.child('td.x-tab-strip-toolbar'); //createChild(  { tag: 'td', style: 'width:100%;'  });
+    
+    
+        var lotb = new Roo.Toolbar(tbh);
+    }
+   
+
+
     Roo.TabPanel.superclass.constructor.call(this);
 };
 
