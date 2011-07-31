@@ -278,14 +278,14 @@ Roo.apply(Roo.XComponent, {
         var _t = this;
         Roo.each(this.modules , function (obj)
         {
-            obj.parent = _t.toObject(obj.parent);
+            obj.parent = this.toObject(obj.parent);
             
             if (!obj.parent) {
-                _t.topModule = obj;
+                this.topModule = obj;
                 return;
             }
             if (typeof(obj.parent) == 'string') {
-                _t.elmodules.push(obj);
+                this.elmodules.push(obj);
                 return;
             }
             
