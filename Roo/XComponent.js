@@ -129,6 +129,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
     {
         
         el = el || false;
+        var hp = this.parent ? 1 : 0;
         
         if (!el && typeof(this.parent) == 'string' && this.parent[0] == '#') {
             // if parent is a '#.....' string, then let's use that..
@@ -156,8 +157,8 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                          closeOnTab: true,
                          tabPosition: 'top',
                           //resizeTabs: true,
-                         alwaysShowTabs: el ? false :  true,
-                         hideTabs: el ? true :  false,
+                         alwaysShowTabs: el && hp? false :  true,
+                         hideTabs: el || !hp ? true :  false,
                          minTabWidth: 140
                      }
                  })
