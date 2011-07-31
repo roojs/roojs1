@@ -25216,7 +25216,7 @@ Roo.TabPanel = function(container, config){
         Roo.fly(this.stripWrap.dom.firstChild).setStyle("overflow-x", "hidden");
     }
     if(this.tabPosition != "bottom"){
-    /** The body element that contains {@link Roo.TabPanelItem} bodies.
+    /** The body element that contains {@link Roo.TabPanelItem} bodies. +
      * @type Roo.Element
      */
       this.bodyEl = Roo.get(this.createBody(this.el.dom));
@@ -25872,7 +25872,10 @@ Roo.TabPanel.prototype.createStrip = function(container){
 /** @private */
 Roo.TabPanel.prototype.createStripList = function(strip){
     // div wrapper for retard IE
-    strip.innerHTML = '<div class="x-tabs-strip-wrap"><table class="x-tabs-strip" cellspacing="0" cellpadding="0" border="0"><tbody><tr></tr></tbody></table></div>';
+    // returns the "tr" element.
+    strip.innerHTML = '<div class="x-tabs-strip-wrap">'+
+        '<table class="x-tabs-strip" cellspacing="0" cellpadding="0" border="0"><tbody><tr>'+
+        '<td class="x-tab-strip-toolbar"></td></tr></tbody></table></div>';
     return strip.firstChild.firstChild.firstChild.firstChild;
 };
 /** @private */
@@ -25897,7 +25900,8 @@ Roo.TabPanel.prototype.createItemBody = function(bodyEl, id){
 /** @private */
 Roo.TabPanel.prototype.createStripElements = function(stripEl, text, closable){
     var td = document.createElement("td");
-    stripEl.appendChild(td);
+    stripEl.insertBefore(td, stripEl.childNodes[stripEl.childNodes.length-1]);
+    //stripEl.appendChild(td);
     if(closable){
         td.className = "x-tabs-closable";
         if(!this.closeTpl){
@@ -43944,7 +43948,7 @@ layout.addxtype({
                 
             default: 
                 alert("Can not add '" + cfg.xtype + "' to BorderLayout");
-                return;
+                return null;
              // GridPanel (grid, cfg)
             
         }
@@ -45603,20 +45607,22 @@ Roo.LayoutStateManager.prototype = {
  * @class Roo.ContentPanel
  * @extends Roo.util.Observable
  * A basic ContentPanel element.
- * @cfg {Boolean} fitToFrame True for this panel to adjust its size to fit when the region resizes  (defaults to false)
- * @cfg {Boolean} fitContainer When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)
+ * @cfg {Boolean} fitToFrame    True for this panel to adjust its size to fit when the region resizes  (defaults to false)
+ * @cfg {Boolean} fitContainer   When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)
  * @cfg {Boolean/Object} autoCreate True to auto generate the DOM element for this panel, or a {@link Roo.DomHelper} config of the element to create
- * @cfg {Boolean} closable True if the panel can be closed/removed
- * @cfg {Boolean} background True if the panel should not be activated when it is added (defaults to false)
+ * @cfg {Boolean} closable      True if the panel can be closed/removed
+ * @cfg {Boolean} background    True if the panel should not be activated when it is added (defaults to false)
  * @cfg {String/HTMLElement/Element} resizeEl An element to resize if {@link #fitToFrame} is true (instead of this panel's element)
- * @cfg {Toolbar} toolbar A toolbar for this panel
- * @cfg {Boolean} autoScroll True to scroll overflow in this panel (use with {@link #fitToFrame})
- * @cfg {String} title The title for this panel
- * @cfg {Array} adjustments Values to <b>add</b> to the width/height when doing a {@link #fitToFrame} (default is [0, 0])
- * @cfg {String} url Calls {@link #setUrl} with this value
- * @cfg {String} region (center|north|south|east|west) which region to put this panel on (when used with xtype constructors)
- * @cfg {String/Object} params When used with {@link #url}, calls {@link #setUrl} with this value
- * @cfg {Boolean} loadOnce When used with {@link #url}, calls {@link #setUrl} with this value
+ * @cfg {Toolbar} toolbar       A toolbar for this panel
+ * @cfg {Boolean} autoScroll    True to scroll overflow in this panel (use with {@link #fitToFrame})
+ * @cfg {String} title          The title for this panel
+ * @cfg {Array} adjustments     Values to <b>add</b> to the width/height when doing a {@link #fitToFrame} (default is [0, 0])
+ * @cfg {String} url            Calls {@link #setUrl} with this value
+ * @cfg {String} region         (center|north|south|east|west) which region to put this panel on (when used with xtype constructors)
+ * @cfg {String/Object} params  When used with {@link #url}, calls {@link #setUrl} with this value
+ * @cfg {Boolean} loadOnce      When used with {@link #url}, calls {@link #setUrl} with this value
+ * @cfg {String} content        Raw content to fill content panel with (uses setContent on construction.)
+
  * @constructor
  * Create a new ContentPanel.
  * @param {String/HTMLElement/Roo.Element} el The container element for this panel
