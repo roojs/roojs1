@@ -107,12 +107,10 @@ Roo.TabPanel = function(container, config){
 
 
     // toolbar on the tabbar support...
-    if (this.toolbar) { 
-        var se = this.stripEl;
-        var tbh = se.child('td.x-tab-strip-toolbar'); //createChild(  { tag: 'td', style: 'width:100%;'  });
-    
-    
-        var lotb = new Roo.Toolbar(tbh);
+    if (this.toolbar) {
+        var tcfg = this.toolbar;
+        tcfg.container = this.stripEl.child('td.x-tab-strip-toolbar'); //createChild(  { tag: 'td', style: 'width:100%;'  });
+        this.toolbar = new Roo.Toolbar(tcfg);
     }
    
 
