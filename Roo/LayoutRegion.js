@@ -354,12 +354,17 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
         // overridden
     },
 
-    initTabs : function(){
+    initTabs : function()
+    {
         this.bodyEl.setStyle("overflow", "hidden");
-        var ts = new Roo.TabPanel(this.bodyEl.dom, {
-            tabPosition: this.bottomTabs ? 'bottom' : 'top',
-            disableTooltips: this.config.disableTabTips
-        });
+        var ts = new Roo.TabPanel(
+                this.bodyEl.dom,
+                {
+                    tabPosition: this.bottomTabs ? 'bottom' : 'top',
+                    disableTooltips: this.config.disableTabTips,
+                    toolbar : this.config.toolbar
+                }
+        );
         if(this.config.hideTabs){
             ts.stripWrap.setDisplayed(false);
         }
