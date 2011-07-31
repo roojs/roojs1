@@ -129,6 +129,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
     {
         
         el = el || false;
+        var hp = this.parent ? 1 : 0;
         
         if (!el && typeof(this.parent) == 'string' && this.parent[0] == '#') {
             // if parent is a '#.....' string, then let's use that..
@@ -140,6 +141,8 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                 return;
             }
         }
+        
+        
         if (!this.parent) {
             
             el = el ? Roo.get(el) : false;
@@ -154,8 +157,8 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                          closeOnTab: true,
                          tabPosition: 'top',
                           //resizeTabs: true,
-                         alwaysShowTabs: el ? false :  true,
-                         hideTabs: el ? true :  false,
+                         alwaysShowTabs: el && hp? false :  true,
+                         hideTabs: el || !hp ? true :  false,
                          minTabWidth: 140
                      }
                  })
@@ -263,6 +266,7 @@ Roo.apply(Roo.XComponent, {
             }
             o = o[e];
         });
+        
         return o;
         
     },
@@ -274,10 +278,11 @@ Roo.apply(Roo.XComponent, {
      */
     preBuild : function ()
     {
-        
+        var _t = this;
         Roo.each(this.modules , function (obj)
         {
-            obj.parent = this.toObject(obj.parent);
+            var opar = obj.parent;
+            obj.parent = this.toObject(opar);
             
             if (!obj.parent) {
                 this.topModule = obj;
@@ -287,7 +292,9 @@ Roo.apply(Roo.XComponent, {
                 this.elmodules.push(obj);
                 return;
             }
-            
+            if (obj.parent.constructor != Roo.XComponent) {
+                Roo.log("Object Parent is not instance of XComponent:" + obj.name)
+            }
             if (!obj.parent.modules) {
                 obj.parent.modules = new Roo.util.MixedCollection(false, 
                     function(o) { return o.order + '' }
