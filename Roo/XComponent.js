@@ -140,6 +140,8 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                 return;
             }
         }
+        
+        
         if (!this.parent) {
             
             el = el ? Roo.get(el) : false;
