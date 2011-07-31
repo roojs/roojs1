@@ -13,33 +13,34 @@
  * @class Roo.LayoutRegion
  * @extends Roo.BasicLayoutRegion
  * This class represents a region in a layout manager.
- * @cfg {Boolean} collapsible False to disable collapsing (defaults to true)
- * @cfg {Boolean} collapsed True to set the initial display to collapsed (defaults to false)
- * @cfg {Boolean} floatable False to disable floating (defaults to true)
- * @cfg {Object} margins Margins for the element (defaults to {top: 0, left: 0, right:0, bottom: 0})
- * @cfg {Object} cmargins Margins for the element when collapsed (defaults to: north/south {top: 2, left: 0, right:0, bottom: 2} or east/west {top: 0, left: 2, right:2, bottom: 0})
- * @cfg {String} tabPosition "top" or "bottom" (defaults to "bottom")
- * @cfg {String} collapsedTitle Optional string message to display in the collapsed block of a north or south region
- * @cfg {Boolean} alwaysShowTabs True to always display tabs even when there is only 1 panel (defaults to false)
- * @cfg {Boolean} autoScroll True to enable overflow scrolling (defaults to false)
- * @cfg {Boolean} titlebar True to display a title bar (defaults to true)
- * @cfg {String} title The title for the region (overrides panel titles)
- * @cfg {Boolean} animate True to animate expand/collapse (defaults to false)
- * @cfg {Boolean} autoHide False to disable auto hiding when the mouse leaves the "floated" region (defaults to true)
- * @cfg {Boolean} preservePanels True to preserve removed panels so they can be readded later (defaults to false)
- * @cfg {Boolean} closeOnTab True to place the close icon on the tabs instead of the region titlebar (defaults to false)
- * @cfg {Boolean} hideTabs True to hide the tab strip (defaults to false)
- * @cfg {Boolean} resizeTabs True to enable automatic tab resizing. This will resize the tabs so they are all the same size and fit within
- * the space available, similar to FireFox 1.5 tabs (defaults to false)
- * @cfg {Number} minTabWidth The minimum tab width (defaults to 40)
- * @cfg {Number} preferredTabWidth The preferred tab width (defaults to 150)
- * @cfg {Boolean} showPin True to show a pin button
-* @cfg {Boolean} hidden True to start the region hidden (defaults to false)
-* @cfg {Boolean} hideWhenEmpty True to hide the region when it has no panels
-* @cfg {Boolean} disableTabTips True to disable tab tooltips
-* @cfg {Number} width  For East/West panels
-* @cfg {Number} height For North/South panels
-* @cfg {Boolean} split To show the splitter
+ * @cfg {Boolean}   collapsible     False to disable collapsing (defaults to true)
+ * @cfg {Boolean}   collapsed       True to set the initial display to collapsed (defaults to false)
+ * @cfg {Boolean}   floatable       False to disable floating (defaults to true)
+ * @cfg {Object}    margins         Margins for the element (defaults to {top: 0, left: 0, right:0, bottom: 0})
+ * @cfg {Object}    cmargins        Margins for the element when collapsed (defaults to: north/south {top: 2, left: 0, right:0, bottom: 2} or east/west {top: 0, left: 2, right:2, bottom: 0})
+ * @cfg {String}    tabPosition     "top" or "bottom" (defaults to "bottom")
+ * @cfg {String}    collapsedTitle  Optional string message to display in the collapsed block of a north or south region
+ * @cfg {Boolean}   alwaysShowTabs  True to always display tabs even when there is only 1 panel (defaults to false)
+ * @cfg {Boolean}   autoScroll      True to enable overflow scrolling (defaults to false)
+ * @cfg {Boolean}   titlebar        True to display a title bar (defaults to true)
+ * @cfg {String}    title           The title for the region (overrides panel titles)
+ * @cfg {Boolean}   animate         True to animate expand/collapse (defaults to false)
+ * @cfg {Boolean}   autoHide        False to disable auto hiding when the mouse leaves the "floated" region (defaults to true)
+ * @cfg {Boolean}   preservePanels  True to preserve removed panels so they can be readded later (defaults to false)
+ * @cfg {Boolean}   closeOnTab      True to place the close icon on the tabs instead of the region titlebar (defaults to false)
+ * @cfg {Boolean}   hideTabs        True to hide the tab strip (defaults to false)
+ * @cfg {Boolean}   resizeTabs      True to enable automatic tab resizing. This will resize the tabs so they are all the same size and fit within
+ *                      the space available, similar to FireFox 1.5 tabs (defaults to false)
+ * @cfg {Number}    minTabWidth     The minimum tab width (defaults to 40)
+ * @cfg {Number}    preferredTabWidth The preferred tab width (defaults to 150)
+ * @cfg {Boolean}   showPin         True to show a pin button
+ * @cfg {Boolean}   hidden          True to start the region hidden (defaults to false)
+ * @cfg {Boolean}   hideWhenEmpty   True to hide the region when it has no panels
+ * @cfg {Boolean}   disableTabTips  True to disable tab tooltips
+ * @cfg {Number}    width           For East/West panels
+ * @cfg {Number}    height          For North/South panels
+ * @cfg {Boolean}   split           To show the splitter
+ * @cfg {Boolean}   toolbar         xtype configuration for a toolbar - shows on right of tabbar
  */
 Roo.LayoutRegion = function(mgr, config, pos){
     Roo.LayoutRegion.superclass.constructor.call(this, mgr, config, pos, true);
@@ -354,12 +355,17 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
         // overridden
     },
 
-    initTabs : function(){
+    initTabs : function()
+    {
         this.bodyEl.setStyle("overflow", "hidden");
-        var ts = new Roo.TabPanel(this.bodyEl.dom, {
-            tabPosition: this.bottomTabs ? 'bottom' : 'top',
-            disableTooltips: this.config.disableTabTips
-        });
+        var ts = new Roo.TabPanel(
+                this.bodyEl.dom,
+                {
+                    tabPosition: this.bottomTabs ? 'bottom' : 'top',
+                    disableTooltips: this.config.disableTabTips,
+                    toolbar : this.config.toolbar
+                }
+        );
         if(this.config.hideTabs){
             ts.stripWrap.setDisplayed(false);
         }

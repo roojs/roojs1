@@ -1,4 +1,4 @@
-/*
+        /*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -70,11 +70,11 @@ Roo.TabPanel = function(container, config){
         Roo.fly(this.stripWrap.dom.firstChild).setStyle("overflow-x", "hidden");
     }
     if(this.tabPosition != "bottom"){
-    /** The body element that contains {@link Roo.TabPanelItem} bodies.
-     * @type Roo.Element
-     */
-      this.bodyEl = Roo.get(this.createBody(this.el.dom));
-      this.el.addClass("x-tabs-top");
+        /** The body element that contains {@link Roo.TabPanelItem} bodies. +
+         * @type Roo.Element
+         */
+        this.bodyEl = Roo.get(this.createBody(this.el.dom));
+        this.el.addClass("x-tabs-top");
     }
     this.items = [];
 
@@ -105,38 +105,57 @@ Roo.TabPanel = function(container, config){
     this.cpad = this.el.getPadding("lr");
     this.hiddenCount = 0;
 
+
+    // toolbar on the tabbar support...
+    if (this.toolbar) {
+        var tcfg = this.toolbar;
+        tcfg.container = this.stripEl.child('td.x-tab-strip-toolbar');  
+        this.toolbar = new Roo.Toolbar(tcfg);
+        if (Roo.isSafari) {
+            var tbl = tcfg.container.child('table', true);
+            tbl.setAttribute('width', '100%');
+        }
+        
+    }
+   
+
+
     Roo.TabPanel.superclass.constructor.call(this);
 };
 
 Roo.extend(Roo.TabPanel, Roo.util.Observable, {
-	/*
-	 *@cfg {String} tabPosition "top" or "bottom" (defaults to "top")
-	 */
+    /*
+     *@cfg {String} tabPosition "top" or "bottom" (defaults to "top")
+     */
     tabPosition : "top",
-	/*
-	 *@cfg {Number} currentTabWidth The width of the current tab (defaults to 0)
-	 */
+    /*
+     *@cfg {Number} currentTabWidth The width of the current tab (defaults to 0)
+     */
     currentTabWidth : 0,
-	/*
-	 *@cfg {Number} minTabWidth The minimum width of a tab (defaults to 40) (ignored if {@link #resizeTabs} is not true)
-	 */
+    /*
+     *@cfg {Number} minTabWidth The minimum width of a tab (defaults to 40) (ignored if {@link #resizeTabs} is not true)
+     */
     minTabWidth : 40,
-	/*
-	 *@cfg {Number} maxTabWidth The maximum width of a tab (defaults to 250) (ignored if {@link #resizeTabs} is not true)
-	 */
+    /*
+     *@cfg {Number} maxTabWidth The maximum width of a tab (defaults to 250) (ignored if {@link #resizeTabs} is not true)
+     */
     maxTabWidth : 250,
-	/*
-	 *@cfg {Number} preferredTabWidth The preferred (default) width of a tab (defaults to 175) (ignored if {@link #resizeTabs} is not true)
-	 */
+    /*
+     *@cfg {Number} preferredTabWidth The preferred (default) width of a tab (defaults to 175) (ignored if {@link #resizeTabs} is not true)
+     */
     preferredTabWidth : 175,
-	/*
-	 *@cfg {Boolean} resizeTabs True to enable dynamic tab resizing (defaults to false)
-	 */
+    /*
+     *@cfg {Boolean} resizeTabs True to enable dynamic tab resizing (defaults to false)
+     */
     resizeTabs : false,
-	/*
-	 *@cfg {Boolean} monitorResize Set this to true to turn on window resize monitoring (ignored if {@link #resizeTabs} is not true) (defaults to true)
-	 */
+    /*
+     *@cfg {Boolean} monitorResize Set this to true to turn on window resize monitoring (ignored if {@link #resizeTabs} is not true) (defaults to true)
+     */
     monitorResize : true,
+    /*
+     *@cfg {Object} toolbar xtype description of toolbar to show at the right of the tab bar. 
+     */
+    toolbar : false,
 
     /**
      * Creates a new {@link Roo.TabPanelItem} by looking for an existing element with the provided id -- if it's not found it creates one.
@@ -726,7 +745,10 @@ Roo.TabPanel.prototype.createStrip = function(container){
 /** @private */
 Roo.TabPanel.prototype.createStripList = function(strip){
     // div wrapper for retard IE
-    strip.innerHTML = '<div class="x-tabs-strip-wrap"><table class="x-tabs-strip" cellspacing="0" cellpadding="0" border="0"><tbody><tr></tr></tbody></table></div>';
+    // returns the "tr" element.
+    strip.innerHTML = '<div class="x-tabs-strip-wrap">'+
+        '<table class="x-tabs-strip" cellspacing="0" cellpadding="0" border="0"><tbody><tr>'+
+        '<td class="x-tab-strip-toolbar"></td></tr></tbody></table></div>';
     return strip.firstChild.firstChild.firstChild.firstChild;
 };
 /** @private */
@@ -751,7 +773,8 @@ Roo.TabPanel.prototype.createItemBody = function(bodyEl, id){
 /** @private */
 Roo.TabPanel.prototype.createStripElements = function(stripEl, text, closable){
     var td = document.createElement("td");
-    stripEl.appendChild(td);
+    stripEl.insertBefore(td, stripEl.childNodes[stripEl.childNodes.length-1]);
+    //stripEl.appendChild(td);
     if(closable){
         td.className = "x-tabs-closable";
         if(!this.closeTpl){
