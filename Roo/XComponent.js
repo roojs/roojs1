@@ -275,17 +275,17 @@ Roo.apply(Roo.XComponent, {
      */
     preBuild : function ()
     {
-        
+        var _t = this;
         Roo.each(this.modules , function (obj)
         {
-            obj.parent = this.toObject(obj.parent);
+            obj.parent = _t.toObject(obj.parent);
             
             if (!obj.parent) {
-                this.topModule = obj;
+                _t.topModule = obj;
                 return;
             }
             if (typeof(obj.parent) == 'string') {
-                this.elmodules.push(obj);
+                _t.elmodules.push(obj);
                 return;
             }
             
