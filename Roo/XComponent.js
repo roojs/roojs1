@@ -279,7 +279,7 @@ Roo.apply(Roo.XComponent, {
         Roo.each(this.modules , function (obj)
         {
             var opar = obj.parent;
-            obj.parent = this.toObject(obj.parent);
+            obj.parent = this.toObject(opar);
             
             if (!obj.parent) {
                 this.topModule = obj;
@@ -290,7 +290,7 @@ Roo.apply(Roo.XComponent, {
                 return;
             }
             if (obj.parent.constructor != Roo.XComponent) {
-                Roo.log("")
+                Roo.log("Object Parent is not instance of XComponent:" + opar)
             }
             if (!obj.parent.modules) {
                 obj.parent.modules = new Roo.util.MixedCollection(false, 
