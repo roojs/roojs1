@@ -263,6 +263,7 @@ Roo.apply(Roo.XComponent, {
             }
             o = o[e];
         });
+        
         return o;
         
     },
