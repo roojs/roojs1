@@ -729,7 +729,7 @@ Roo.TabPanel.prototype.createStripList = function(strip){
     // returns the "tr" element.
     strip.innerHTML = '<div class="x-tabs-strip-wrap">'+
         '<table class="x-tabs-strip" cellspacing="0" cellpadding="0" border="0"><tbody><tr>'+
-        '<td class="x-tab-toolbar"></td></tr></tbody></table></div>';
+        '<td class="x-tab-strip-toolbar"></td></tr></tbody></table></div>';
     return strip.firstChild.firstChild.firstChild.firstChild;
 };
 /** @private */
