@@ -400,3 +400,6 @@
 .x-tabs-strip-wrap .x-toolbar {
     background: none !important;
 }
+.x-tab-strip-toolbar {
+    width: 100%;
+}
