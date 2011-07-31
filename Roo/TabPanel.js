@@ -140,7 +140,7 @@ Roo.extend(Roo.TabPanel, Roo.util.Observable, {
     /*
      *@cfg {Object} toolbar xtype description of toolbar to show at the right of the tab bar. 
      */
-    monitorResize : true,
+    toolbar : false,
 
     /**
      * Creates a new {@link Roo.TabPanelItem} by looking for an existing element with the provided id -- if it's not found it creates one.
