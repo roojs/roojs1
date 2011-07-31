@@ -70,11 +70,11 @@ Roo.TabPanel = function(container, config){
         Roo.fly(this.stripWrap.dom.firstChild).setStyle("overflow-x", "hidden");
     }
     if(this.tabPosition != "bottom"){
-    /** The body element that contains {@link Roo.TabPanelItem} bodies. +
-     * @type Roo.Element
-     */
-      this.bodyEl = Roo.get(this.createBody(this.el.dom));
-      this.el.addClass("x-tabs-top");
+        /** The body element that contains {@link Roo.TabPanelItem} bodies. +
+         * @type Roo.Element
+         */
+        this.bodyEl = Roo.get(this.createBody(this.el.dom));
+        this.el.addClass("x-tabs-top");
     }
     this.items = [];
 
