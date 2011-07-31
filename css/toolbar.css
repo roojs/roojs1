@@ -1,11 +1,11 @@
 /* ------- MAIN TOOLBAR ---------------- */
 
 .x-toolbar {
-	background: url(../images/default/toolbar/gray-bg.gif) repeat-x 0 0;
-	border-top: 1px solid #cbc7b8;
-    border-bottom: 1px solid #cbc7b8;
-	display: block;
-    position: relative;
+        background: url(../images/default/toolbar/gray-bg.gif) repeat-x 0 0;
+        border-top: 1px solid #cbc7b8;
+        border-bottom: 1px solid #cbc7b8;
+        display: block;
+        position: relative;
 	padding: 1px;
 }
 /*
@@ -394,3 +394,9 @@
 }
 
 */
+
+
+/** ---- Toolbar ontop of tab bar ---------- **/
+.x-tabs-strip-wrap .x-toolbar {
+    background: none;
+}
