@@ -754,7 +754,7 @@ Roo.TabPanel.prototype.createItemBody = function(bodyEl, id){
 /** @private */
 Roo.TabPanel.prototype.createStripElements = function(stripEl, text, closable){
     var td = document.createElement("td");
-    stripEl.insertBefore(stripEl.childNodes[stripEl.childNodes.length-1], td);
+    stripEl.insertBefore(td, stripEl.childNodes[stripEl.childNodes.length-1]);
     //stripEl.appendChild(td);
     if(closable){
         td.className = "x-tabs-closable";
