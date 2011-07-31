@@ -726,7 +726,10 @@ Roo.TabPanel.prototype.createStrip = function(container){
 /** @private */
 Roo.TabPanel.prototype.createStripList = function(strip){
     // div wrapper for retard IE
-    strip.innerHTML = '<div class="x-tabs-strip-wrap"><table class="x-tabs-strip" cellspacing="0" cellpadding="0" border="0"><tbody><tr></tr></tbody></table></div>';
+    // returns the "tr" element.
+    strip.innerHTML = '<div class="x-tabs-strip-wrap">'+
+        '<table class="x-tabs-strip" cellspacing="0" cellpadding="0" border="0"><tbody><tr><'+
+        '/tr></tbody></table></div>';
     return strip.firstChild.firstChild.firstChild.firstChild;
 };
 /** @private */
