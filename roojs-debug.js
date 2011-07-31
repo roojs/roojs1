@@ -51587,7 +51587,7 @@ Roo.apply(Roo.XComponent, {
                 return;
             }
             if (obj.parent.constructor != Roo.XComponent) {
-                Roo.log("Object Parent is not instance of XComponent:" + o.name)
+                Roo.log("Object Parent is not instance of XComponent:" + obj.name)
             }
             if (!obj.parent.modules) {
                 obj.parent.modules = new Roo.util.MixedCollection(false, 
