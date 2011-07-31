@@ -278,6 +278,7 @@ Roo.apply(Roo.XComponent, {
         var _t = this;
         Roo.each(this.modules , function (obj)
         {
+            var opar = obj.parent;
             obj.parent = this.toObject(obj.parent);
             
             if (!obj.parent) {
@@ -288,7 +289,9 @@ Roo.apply(Roo.XComponent, {
                 this.elmodules.push(obj);
                 return;
             }
-            
+            if (obj.parent.constructor != Roo.XComponent) {
+                Roo.log("")
+            }
             if (!obj.parent.modules) {
                 obj.parent.modules = new Roo.util.MixedCollection(false, 
                     function(o) { return o.order + '' }
