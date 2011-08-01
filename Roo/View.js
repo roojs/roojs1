@@ -126,7 +126,13 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
      * @param {HTMLElement} node The node to be selected
      * @param {Array} selections Array of currently selected nodes
      */
-        "beforeselect" : true
+        "beforeselect" : true,
+    /**
+     * @event handledata
+     * Fires on every row to render, to allow you to change the data.
+     * @param {Roo.View} this
+     * @param {Object} data to be rendered
+     */
     });
 
     this.el.on({
