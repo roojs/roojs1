@@ -45995,7 +45995,7 @@ layout.addxtype({
             cfg.el = this.el.appendChild(document.createElement("div"));
             // factory?
             var ret = new Roo[cfg.xtype](cfg);
-            ret.render(false, ''); // render blank..
+            ret.render && ret.render(false, ''); // render blank..
             return ret;
             
         }
