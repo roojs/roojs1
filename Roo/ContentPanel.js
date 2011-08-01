@@ -12,13 +12,13 @@
  * @class Roo.ContentPanel
  * @extends Roo.util.Observable
  * A basic ContentPanel element.
- * @cfg {Boolean} fitToFrame    True for this panel to adjust its size to fit when the region resizes  (defaults to false)
- * @cfg {Boolean} fitContainer   When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)
+ * @cfg {Boolean}   fitToFrame    True for this panel to adjust its size to fit when the region resizes  (defaults to false)
+ * @cfg {Boolean}   fitContainer   When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)
  * @cfg {Boolean/Object} autoCreate True to auto generate the DOM element for this panel, or a {@link Roo.DomHelper} config of the element to create
- * @cfg {Boolean} closable      True if the panel can be closed/removed
- * @cfg {Boolean} background    True if the panel should not be activated when it is added (defaults to false)
+ * @cfg {Boolean}   closable      True if the panel can be closed/removed
+ * @cfg {Boolean}   background    True if the panel should not be activated when it is added (defaults to false)
  * @cfg {String/HTMLElement/Element} resizeEl An element to resize if {@link #fitToFrame} is true (instead of this panel's element)
- * @cfg {Toolbar} toolbar       A toolbar for this panel
+ * @cfg {Toolbar}   toolbar       A toolbar for this panel
  * @cfg {Boolean} autoScroll    True to scroll overflow in this panel (use with {@link #fitToFrame})
  * @cfg {String} title          The title for this panel
  * @cfg {Array} adjustments     Values to <b>add</b> to the width/height when doing a {@link #fitToFrame} (default is [0, 0])
@@ -344,6 +344,18 @@ panel.load({
         this.el = null;
     },
     
+    /**
+     * form - if the content panel contains a form - this is a reference to it.
+     * @type {Roo.form.Form}
+     */
+    form : false,
+    /**
+     * view - if the content panel contains a view (Roo.DatePicker / Roo.View / Roo.JsonView)
+     *    This contains a reference to it.
+     * @type {Roo.View}
+     */
+    view : false,
+    
       /**
      * Adds a xtype elements to the panel - currently only supports Forms, View, JsonView.
      * <pre><code>
@@ -369,18 +381,17 @@ layout.addxtype({
             if ( this.form.allItems.length) this.form.render(el.dom);
             return this.form;
         }
-        
+        // should only have one of theses..
         if (['View', 'JsonView', 'DatePicker'].indexOf(cfg.xtype) > -1) {
             // views..
             cfg.el = this.el.appendChild(document.createElement("div"));
             // factory?
             var ret = new Roo[cfg.xtype](cfg);
-            ret.render(false, ''); // render blank..
+            ret.render && ret.render(false, ''); // render blank..
+            this.view = ret;
             return ret;
-            
         }
         return false;
-        
     }
 });
 
