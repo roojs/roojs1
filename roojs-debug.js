@@ -23614,59 +23614,66 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
      
     /** @private */
     this.addEvents({
-    /**
-     * @event beforeclick
-     * Fires before a click is processed. Returns false to cancel the default action.
-     * @param {Roo.View} this
-     * @param {Number} index The index of the target node
-     * @param {HTMLElement} node The target node
-     * @param {Roo.EventObject} e The raw event object
-     */
-        "beforeclick" : true,
-    /**
-     * @event click
-     * Fires when a template node is clicked.
-     * @param {Roo.View} this
-     * @param {Number} index The index of the target node
-     * @param {HTMLElement} node The target node
-     * @param {Roo.EventObject} e The raw event object
-     */
-        "click" : true,
-    /**
-     * @event dblclick
-     * Fires when a template node is double clicked.
-     * @param {Roo.View} this
-     * @param {Number} index The index of the target node
-     * @param {HTMLElement} node The target node
-     * @param {Roo.EventObject} e The raw event object
-     */
-        "dblclick" : true,
-    /**
-     * @event contextmenu
-     * Fires when a template node is right clicked.
-     * @param {Roo.View} this
-     * @param {Number} index The index of the target node
-     * @param {HTMLElement} node The target node
-     * @param {Roo.EventObject} e The raw event object
-     */
-        "contextmenu" : true,
-    /**
-     * @event selectionchange
-     * Fires when the selected nodes change.
-     * @param {Roo.View} this
-     * @param {Array} selections Array of the selected nodes
-     */
-        "selectionchange" : true,
-
-    /**
-     * @event beforeselect
-     * Fires before a selection is made. If any handlers return false, the selection is cancelled.
-     * @param {Roo.View} this
-     * @param {HTMLElement} node The node to be selected
-     * @param {Array} selections Array of currently selected nodes
-     */
-        "beforeselect" : true
-    });
+        /**
+         * @event beforeclick
+         * Fires before a click is processed. Returns false to cancel the default action.
+         * @param {Roo.View} this
+         * @param {Number} index The index of the target node
+         * @param {HTMLElement} node The target node
+         * @param {Roo.EventObject} e The raw event object
+         */
+            "beforeclick" : true,
+        /**
+         * @event click
+         * Fires when a template node is clicked.
+         * @param {Roo.View} this
+         * @param {Number} index The index of the target node
+         * @param {HTMLElement} node The target node
+         * @param {Roo.EventObject} e The raw event object
+         */
+            "click" : true,
+        /**
+         * @event dblclick
+         * Fires when a template node is double clicked.
+         * @param {Roo.View} this
+         * @param {Number} index The index of the target node
+         * @param {HTMLElement} node The target node
+         * @param {Roo.EventObject} e The raw event object
+         */
+            "dblclick" : true,
+        /**
+         * @event contextmenu
+         * Fires when a template node is right clicked.
+         * @param {Roo.View} this
+         * @param {Number} index The index of the target node
+         * @param {HTMLElement} node The target node
+         * @param {Roo.EventObject} e The raw event object
+         */
+            "contextmenu" : true,
+        /**
+         * @event selectionchange
+         * Fires when the selected nodes change.
+         * @param {Roo.View} this
+         * @param {Array} selections Array of the selected nodes
+         */
+            "selectionchange" : true,
+    
+        /**
+         * @event beforeselect
+         * Fires before a selection is made. If any handlers return false, the selection is cancelled.
+         * @param {Roo.View} this
+         * @param {HTMLElement} node The node to be selected
+         * @param {Array} selections Array of currently selected nodes
+         */
+            "beforeselect" : true,
+        /**
+         * @event preparedata
+         * Fires on every row to render, to allow you to change the data.
+         * @param {Roo.View} this
+         * @param {Object} data to be rendered (change this)
+         */
+          "preparedata" : true
+        });
 
     this.el.on({
         "click": this.onClick,
@@ -23743,6 +23750,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         }
         for(var i = 0, len = records.length; i < len; i++){
             var data = this.prepareData(records[i].data, i, records[i]);
+            this.fireEvent("preparedata", this, data, i, records[i]);
             html[html.length] = t.apply(data);
         }
         this.el.update(html.join(""));
@@ -46010,10 +46018,8 @@ layout.addxtype({
             ret.render && ret.render(false, ''); // render blank..
             this.view = ret;
             return ret;
-            
         }
         return false;
-        
     }
 });
 
