@@ -129,6 +129,7 @@
     {
         
         </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hp </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parent </span><span class="jsdoc-syntax">? 1 : 0;
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">[0] == </span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-comment">// if parent is a '#.....' string, then let's use that..
@@ -140,6 +141,8 @@
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
         }
+        
+        
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">) {
             
             </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
@@ -154,8 +157,8 @@
                          </span><span class="jsdoc-var">closeOnTab</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
                          </span><span class="jsdoc-var">tabPosition</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">,
                           </span><span class="jsdoc-comment">//resizeTabs: true,
-                         </span><span class="jsdoc-var">alwaysShowTabs</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-                         </span><span class="jsdoc-var">hideTabs</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+                         </span><span class="jsdoc-var">alwaysShowTabs</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">hp</span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                         </span><span class="jsdoc-var">hideTabs</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">hp </span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
                          </span><span class="jsdoc-var">minTabWidth</span><span class="jsdoc-syntax">: 140
                      }
                  })
@@ -263,6 +266,7 @@
             }
             </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">];
         });
+        
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">;
         
     },
@@ -274,10 +278,11 @@
      */
     </span><span class="jsdoc-var">preBuild </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">()
     {
-        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.modules </span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">obj</span><span class="jsdoc-syntax">)
         {
-            </span><span class="jsdoc-var">obj.parent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.toObject</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">obj.parent</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">opar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">obj.parent</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">obj.parent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.toObject</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">opar</span><span class="jsdoc-syntax">);
             
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">obj.parent</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">this.topModule </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">obj</span><span class="jsdoc-syntax">;
@@ -287,7 +292,9 @@
                 </span><span class="jsdoc-var">this.elmodules.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">obj</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
-            
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">obj.parent.constructor </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">Roo.XComponent</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Object Parent is not instance of XComponent:&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">obj.name</span><span class="jsdoc-syntax">)
+            }
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">obj.parent.modules</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">obj.parent.modules </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.util.MixedCollection</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, 
                     </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">o.order </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">}
