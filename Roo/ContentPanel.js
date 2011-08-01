@@ -392,7 +392,6 @@ layout.addxtype({
             return ret;
         }
         return false;
-        
     }
 });
 
