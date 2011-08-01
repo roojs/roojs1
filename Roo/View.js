@@ -128,11 +128,12 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
      */
         "beforeselect" : true,
     /**
-     * @event handledata
+     * @event preparedata
      * Fires on every row to render, to allow you to change the data.
      * @param {Roo.View} this
      * @param {Object} data to be rendered (change this)
      */
+      "preparedata" : true,
     });
 
     this.el.on({
