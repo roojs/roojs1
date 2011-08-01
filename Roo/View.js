@@ -133,7 +133,7 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
      * @param {Roo.View} this
      * @param {Object} data to be rendered (change this)
      */
-      "preparedata" : true,
+      "preparedata" : true
     });
 
     this.el.on({
