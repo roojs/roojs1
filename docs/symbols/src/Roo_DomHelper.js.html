@@ -8,9 +8,24 @@
  * Fork - LGPL
  * &lt;script type=&quot;text/javascript&quot;&gt;
  */
- 
 
-/**
+
+// nasty IE9 hack - what a pile of crap that is..
+
+ </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">Range </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;undefined&quot; </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">Range.prototype.createContextualFragment </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;undefined&quot;</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-var">Range.prototype.createContextualFragment </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">doc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">window.document</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">container </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">container.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">frag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.createDocumentFragment</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">container.firstChild</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-var">frag.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">frag</span><span class="jsdoc-syntax">;
+    };
+}
+
+</span><span class="jsdoc-comment">/**
  * @class Roo.DomHelper
  * Utility class for working with DOM and/or Templates. It transparently supports using HTML fragments or DOM.
  * For more information see &lt;a href=&quot;http://www.jackslocum.com/yui/2006/10/06/domhelper-create-elements-using-dom-html-fragments-or-templates/&quot;&gt;this blog post with examples&lt;/a&gt;.
