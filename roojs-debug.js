@@ -23614,59 +23614,66 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
      
     /** @private */
     this.addEvents({
-    /**
-     * @event beforeclick
-     * Fires before a click is processed. Returns false to cancel the default action.
-     * @param {Roo.View} this
-     * @param {Number} index The index of the target node
-     * @param {HTMLElement} node The target node
-     * @param {Roo.EventObject} e The raw event object
-     */
-        "beforeclick" : true,
-    /**
-     * @event click
-     * Fires when a template node is clicked.
-     * @param {Roo.View} this
-     * @param {Number} index The index of the target node
-     * @param {HTMLElement} node The target node
-     * @param {Roo.EventObject} e The raw event object
-     */
-        "click" : true,
-    /**
-     * @event dblclick
-     * Fires when a template node is double clicked.
-     * @param {Roo.View} this
-     * @param {Number} index The index of the target node
-     * @param {HTMLElement} node The target node
-     * @param {Roo.EventObject} e The raw event object
-     */
-        "dblclick" : true,
-    /**
-     * @event contextmenu
-     * Fires when a template node is right clicked.
-     * @param {Roo.View} this
-     * @param {Number} index The index of the target node
-     * @param {HTMLElement} node The target node
-     * @param {Roo.EventObject} e The raw event object
-     */
-        "contextmenu" : true,
-    /**
-     * @event selectionchange
-     * Fires when the selected nodes change.
-     * @param {Roo.View} this
-     * @param {Array} selections Array of the selected nodes
-     */
-        "selectionchange" : true,
-
-    /**
-     * @event beforeselect
-     * Fires before a selection is made. If any handlers return false, the selection is cancelled.
-     * @param {Roo.View} this
-     * @param {HTMLElement} node The node to be selected
-     * @param {Array} selections Array of currently selected nodes
-     */
-        "beforeselect" : true
-    });
+        /**
+         * @event beforeclick
+         * Fires before a click is processed. Returns false to cancel the default action.
+         * @param {Roo.View} this
+         * @param {Number} index The index of the target node
+         * @param {HTMLElement} node The target node
+         * @param {Roo.EventObject} e The raw event object
+         */
+            "beforeclick" : true,
+        /**
+         * @event click
+         * Fires when a template node is clicked.
+         * @param {Roo.View} this
+         * @param {Number} index The index of the target node
+         * @param {HTMLElement} node The target node
+         * @param {Roo.EventObject} e The raw event object
+         */
+            "click" : true,
+        /**
+         * @event dblclick
+         * Fires when a template node is double clicked.
+         * @param {Roo.View} this
+         * @param {Number} index The index of the target node
+         * @param {HTMLElement} node The target node
+         * @param {Roo.EventObject} e The raw event object
+         */
+            "dblclick" : true,
+        /**
+         * @event contextmenu
+         * Fires when a template node is right clicked.
+         * @param {Roo.View} this
+         * @param {Number} index The index of the target node
+         * @param {HTMLElement} node The target node
+         * @param {Roo.EventObject} e The raw event object
+         */
+            "contextmenu" : true,
+        /**
+         * @event selectionchange
+         * Fires when the selected nodes change.
+         * @param {Roo.View} this
+         * @param {Array} selections Array of the selected nodes
+         */
+            "selectionchange" : true,
+    
+        /**
+         * @event beforeselect
+         * Fires before a selection is made. If any handlers return false, the selection is cancelled.
+         * @param {Roo.View} this
+         * @param {HTMLElement} node The node to be selected
+         * @param {Array} selections Array of currently selected nodes
+         */
+            "beforeselect" : true,
+        /**
+         * @event preparedata
+         * Fires on every row to render, to allow you to change the data.
+         * @param {Roo.View} this
+         * @param {Object} data to be rendered (change this)
+         */
+          "preparedata" : true
+        });
 
     this.el.on({
         "click": this.onClick,
@@ -23743,6 +23750,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         }
         for(var i = 0, len = records.length; i < len; i++){
             var data = this.prepareData(records[i].data, i, records[i]);
+            this.fireEvent("preparedata", this, data, i, records[i]);
             html[html.length] = t.apply(data);
         }
         this.el.update(html.join(""));
@@ -45632,13 +45640,13 @@ Roo.LayoutStateManager.prototype = {
  * @class Roo.ContentPanel
  * @extends Roo.util.Observable
  * A basic ContentPanel element.
- * @cfg {Boolean} fitToFrame    True for this panel to adjust its size to fit when the region resizes  (defaults to false)
- * @cfg {Boolean} fitContainer   When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)
+ * @cfg {Boolean}   fitToFrame    True for this panel to adjust its size to fit when the region resizes  (defaults to false)
+ * @cfg {Boolean}   fitContainer   When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)
  * @cfg {Boolean/Object} autoCreate True to auto generate the DOM element for this panel, or a {@link Roo.DomHelper} config of the element to create
- * @cfg {Boolean} closable      True if the panel can be closed/removed
- * @cfg {Boolean} background    True if the panel should not be activated when it is added (defaults to false)
+ * @cfg {Boolean}   closable      True if the panel can be closed/removed
+ * @cfg {Boolean}   background    True if the panel should not be activated when it is added (defaults to false)
  * @cfg {String/HTMLElement/Element} resizeEl An element to resize if {@link #fitToFrame} is true (instead of this panel's element)
- * @cfg {Toolbar} toolbar       A toolbar for this panel
+ * @cfg {Toolbar}   toolbar       A toolbar for this panel
  * @cfg {Boolean} autoScroll    True to scroll overflow in this panel (use with {@link #fitToFrame})
  * @cfg {String} title          The title for this panel
  * @cfg {Array} adjustments     Values to <b>add</b> to the width/height when doing a {@link #fitToFrame} (default is [0, 0])
@@ -45964,6 +45972,18 @@ panel.load({
         this.el = null;
     },
     
+    /**
+     * form - if the content panel contains a form - this is a reference to it.
+     * @type {Roo.form.Form}
+     */
+    form : false,
+    /**
+     * view - if the content panel contains a view (Roo.DatePicker / Roo.View / Roo.JsonView)
+     *    This contains a reference to it.
+     * @type {Roo.View}
+     */
+    view : false,
+    
       /**
      * Adds a xtype elements to the panel - currently only supports Forms, View, JsonView.
      * <pre><code>
@@ -45989,18 +46009,17 @@ layout.addxtype({
             if ( this.form.allItems.length) this.form.render(el.dom);
             return this.form;
         }
-        
+        // should only have one of theses..
         if (['View', 'JsonView', 'DatePicker'].indexOf(cfg.xtype) > -1) {
             // views..
             cfg.el = this.el.appendChild(document.createElement("div"));
             // factory?
             var ret = new Roo[cfg.xtype](cfg);
-            ret.render(false, ''); // render blank..
+            ret.render && ret.render(false, ''); // render blank..
+            this.view = ret;
             return ret;
-            
         }
         return false;
-        
     }
 });
 

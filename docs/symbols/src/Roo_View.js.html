@@ -75,59 +75,68 @@
      
     </span><span class="jsdoc-comment">/** @private */
     </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
-    </span><span class="jsdoc-comment">/**
-     * @event beforeclick
-     * Fires before a click is processed. Returns false to cancel the default action.
-     * @param {Roo.View} this
-     * @param {Number} index The index of the target node
-     * @param {HTMLElement} node The target node
-     * @param {Roo.EventObject} e The raw event object
-     */
-        </span><span class="jsdoc-string">&quot;beforeclick&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-comment">/**
-     * @event click
-     * Fires when a template node is clicked.
-     * @param {Roo.View} this
-     * @param {Number} index The index of the target node
-     * @param {HTMLElement} node The target node
-     * @param {Roo.EventObject} e The raw event object
-     */
-        </span><span class="jsdoc-string">&quot;click&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-comment">/**
-     * @event dblclick
-     * Fires when a template node is double clicked.
-     * @param {Roo.View} this
-     * @param {Number} index The index of the target node
-     * @param {HTMLElement} node The target node
-     * @param {Roo.EventObject} e The raw event object
-     */
-        </span><span class="jsdoc-string">&quot;dblclick&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-comment">/**
-     * @event contextmenu
-     * Fires when a template node is right clicked.
-     * @param {Roo.View} this
-     * @param {Number} index The index of the target node
-     * @param {HTMLElement} node The target node
-     * @param {Roo.EventObject} e The raw event object
-     */
-        </span><span class="jsdoc-string">&quot;contextmenu&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-comment">/**
-     * @event selectionchange
-     * Fires when the selected nodes change.
-     * @param {Roo.View} this
-     * @param {Array} selections Array of the selected nodes
-     */
-        </span><span class="jsdoc-string">&quot;selectionchange&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-
-    </span><span class="jsdoc-comment">/**
-     * @event beforeselect
-     * Fires before a selection is made. If any handlers return false, the selection is cancelled.
-     * @param {Roo.View} this
-     * @param {HTMLElement} node The node to be selected
-     * @param {Array} selections Array of currently selected nodes
-     */
-        </span><span class="jsdoc-string">&quot;beforeselect&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
-    </span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-comment">/**
+         * @event beforeclick
+         * Fires before a click is processed. Returns false to cancel the default action.
+         * @param {Roo.View} this
+         * @param {Number} index The index of the target node
+         * @param {HTMLElement} node The target node
+         * @param {Roo.EventObject} e The raw event object
+         */
+            </span><span class="jsdoc-string">&quot;beforeclick&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event click
+         * Fires when a template node is clicked.
+         * @param {Roo.View} this
+         * @param {Number} index The index of the target node
+         * @param {HTMLElement} node The target node
+         * @param {Roo.EventObject} e The raw event object
+         */
+            </span><span class="jsdoc-string">&quot;click&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event dblclick
+         * Fires when a template node is double clicked.
+         * @param {Roo.View} this
+         * @param {Number} index The index of the target node
+         * @param {HTMLElement} node The target node
+         * @param {Roo.EventObject} e The raw event object
+         */
+            </span><span class="jsdoc-string">&quot;dblclick&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event contextmenu
+         * Fires when a template node is right clicked.
+         * @param {Roo.View} this
+         * @param {Number} index The index of the target node
+         * @param {HTMLElement} node The target node
+         * @param {Roo.EventObject} e The raw event object
+         */
+            </span><span class="jsdoc-string">&quot;contextmenu&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event selectionchange
+         * Fires when the selected nodes change.
+         * @param {Roo.View} this
+         * @param {Array} selections Array of the selected nodes
+         */
+            </span><span class="jsdoc-string">&quot;selectionchange&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    
+        </span><span class="jsdoc-comment">/**
+         * @event beforeselect
+         * Fires before a selection is made. If any handlers return false, the selection is cancelled.
+         * @param {Roo.View} this
+         * @param {HTMLElement} node The node to be selected
+         * @param {Array} selections Array of currently selected nodes
+         */
+            </span><span class="jsdoc-string">&quot;beforeselect&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event preparedata
+         * Fires on every row to render, to allow you to change the data.
+         * @param {Roo.View} this
+         * @param {Object} data to be rendered (change this)
+         * @param {Number} row being rendered
+         * @param {Roo.data.Record} record being rendered.
+         */
+          </span><span class="jsdoc-string">&quot;preparedata&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-syntax">});
 
     </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">({
         </span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">,
@@ -204,6 +213,7 @@
         }
         </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">records.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.prepareData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">records</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">records</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;preparedata&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">records</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
             </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">html.length</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">t.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">);
         }
         </span><span class="jsdoc-var">this.el.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">));

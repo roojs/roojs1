@@ -1,4 +1,4 @@
-<html><head><title>../roojs1/Roo/TabPanel.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+<html><head><title>../roojs1/Roo/TabPanel.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty">        <span class="jsdoc-comment">/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -70,11 +70,11 @@ jtabs.activate(&quot;jtabs-1&quot;);
         </span><span class="jsdoc-var">Roo.fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.stripWrap.dom.firstChild</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;overflow-x&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;hidden&quot;</span><span class="jsdoc-syntax">);
     }
     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tabPosition </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;bottom&quot;</span><span class="jsdoc-syntax">){
-    </span><span class="jsdoc-comment">/** The body element that contains {@link Roo.TabPanelItem} bodies.
-     * @type Roo.Element
-     */
-      </span><span class="jsdoc-var">this.bodyEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.createBody</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">));
-      </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-tabs-top&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">/** The body element that contains {@link Roo.TabPanelItem} bodies. +
+         * @type Roo.Element
+         */
+        </span><span class="jsdoc-var">this.bodyEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.createBody</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-tabs-top&quot;</span><span class="jsdoc-syntax">);
     }
     </span><span class="jsdoc-var">this.items </span><span class="jsdoc-syntax">= [];
 
@@ -105,38 +105,57 @@ jtabs.activate(&quot;jtabs-1&quot;);
     </span><span class="jsdoc-var">this.cpad </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;lr&quot;</span><span class="jsdoc-syntax">);
     </span><span class="jsdoc-var">this.hiddenCount </span><span class="jsdoc-syntax">= 0;
 
+
+    </span><span class="jsdoc-comment">// toolbar on the tabbar support...
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbar</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tcfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.toolbar</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">tcfg.container </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.stripEl.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'td.x-tab-strip-toolbar'</span><span class="jsdoc-syntax">);  
+        </span><span class="jsdoc-var">this.toolbar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Toolbar</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tcfg</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isSafari</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tbl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tcfg.container.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'table'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">tbl.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'width'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'100%'</span><span class="jsdoc-syntax">);
+        }
+        
+    }
+   
+
+
     </span><span class="jsdoc-var">Roo.TabPanel.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.TabPanel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.util.Observable</span><span class="jsdoc-syntax">, {
-	</span><span class="jsdoc-comment">/*
-	 *@cfg {String} tabPosition &quot;top&quot; or &quot;bottom&quot; (defaults to &quot;top&quot;)
-	 */
+    </span><span class="jsdoc-comment">/*
+     *@cfg {String} tabPosition &quot;top&quot; or &quot;bottom&quot; (defaults to &quot;top&quot;)
+     */
     </span><span class="jsdoc-var">tabPosition </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;top&quot;</span><span class="jsdoc-syntax">,
-	</span><span class="jsdoc-comment">/*
-	 *@cfg {Number} currentTabWidth The width of the current tab (defaults to 0)
-	 */
+    </span><span class="jsdoc-comment">/*
+     *@cfg {Number} currentTabWidth The width of the current tab (defaults to 0)
+     */
     </span><span class="jsdoc-var">currentTabWidth </span><span class="jsdoc-syntax">: 0,
-	</span><span class="jsdoc-comment">/*
-	 *@cfg {Number} minTabWidth The minimum width of a tab (defaults to 40) (ignored if {@link #resizeTabs} is not true)
-	 */
+    </span><span class="jsdoc-comment">/*
+     *@cfg {Number} minTabWidth The minimum width of a tab (defaults to 40) (ignored if {@link #resizeTabs} is not true)
+     */
     </span><span class="jsdoc-var">minTabWidth </span><span class="jsdoc-syntax">: 40,
-	</span><span class="jsdoc-comment">/*
-	 *@cfg {Number} maxTabWidth The maximum width of a tab (defaults to 250) (ignored if {@link #resizeTabs} is not true)
-	 */
+    </span><span class="jsdoc-comment">/*
+     *@cfg {Number} maxTabWidth The maximum width of a tab (defaults to 250) (ignored if {@link #resizeTabs} is not true)
+     */
     </span><span class="jsdoc-var">maxTabWidth </span><span class="jsdoc-syntax">: 250,
-	</span><span class="jsdoc-comment">/*
-	 *@cfg {Number} preferredTabWidth The preferred (default) width of a tab (defaults to 175) (ignored if {@link #resizeTabs} is not true)
-	 */
+    </span><span class="jsdoc-comment">/*
+     *@cfg {Number} preferredTabWidth The preferred (default) width of a tab (defaults to 175) (ignored if {@link #resizeTabs} is not true)
+     */
     </span><span class="jsdoc-var">preferredTabWidth </span><span class="jsdoc-syntax">: 175,
-	</span><span class="jsdoc-comment">/*
-	 *@cfg {Boolean} resizeTabs True to enable dynamic tab resizing (defaults to false)
-	 */
+    </span><span class="jsdoc-comment">/*
+     *@cfg {Boolean} resizeTabs True to enable dynamic tab resizing (defaults to false)
+     */
     </span><span class="jsdoc-var">resizeTabs </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-	</span><span class="jsdoc-comment">/*
-	 *@cfg {Boolean} monitorResize Set this to true to turn on window resize monitoring (ignored if {@link #resizeTabs} is not true) (defaults to true)
-	 */
+    </span><span class="jsdoc-comment">/*
+     *@cfg {Boolean} monitorResize Set this to true to turn on window resize monitoring (ignored if {@link #resizeTabs} is not true) (defaults to true)
+     */
     </span><span class="jsdoc-var">monitorResize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/*
+     *@cfg {Object} toolbar xtype description of toolbar to show at the right of the tab bar. 
+     */
+    </span><span class="jsdoc-var">toolbar </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-comment">/**
      * Creates a new {@link Roo.TabPanelItem} by looking for an existing element with the provided id -- if it's not found it creates one.
@@ -726,7 +745,10 @@ jtabs.activate(&quot;jtabs-1&quot;);
 </span><span class="jsdoc-comment">/** @private */
 </span><span class="jsdoc-var">Roo.TabPanel.prototype.createStripList </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">strip</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-comment">// div wrapper for retard IE
-    </span><span class="jsdoc-var">strip.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;div class=&quot;x-tabs-strip-wrap&quot;&gt;&lt;table class=&quot;x-tabs-strip&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;'</span><span class="jsdoc-syntax">;
+    // returns the &quot;tr&quot; element.
+    </span><span class="jsdoc-var">strip.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;div class=&quot;x-tabs-strip-wrap&quot;&gt;'</span><span class="jsdoc-syntax">+
+        </span><span class="jsdoc-string">'&lt;table class=&quot;x-tabs-strip&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;'</span><span class="jsdoc-syntax">+
+        </span><span class="jsdoc-string">'&lt;td class=&quot;x-tab-strip-toolbar&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;'</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">strip.firstChild.firstChild.firstChild.firstChild</span><span class="jsdoc-syntax">;
 };
 </span><span class="jsdoc-comment">/** @private */
@@ -751,7 +773,8 @@ jtabs.activate(&quot;jtabs-1&quot;);
 </span><span class="jsdoc-comment">/** @private */
 </span><span class="jsdoc-var">Roo.TabPanel.prototype.createStripElements </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">stripEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">closable</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">td </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;td&quot;</span><span class="jsdoc-syntax">);
-    </span><span class="jsdoc-var">stripEl.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">stripEl.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">stripEl.childNodes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">stripEl.childNodes.length</span><span class="jsdoc-syntax">-1]);
+    </span><span class="jsdoc-comment">//stripEl.appendChild(td);
     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">closable</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">td.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;x-tabs-closable&quot;</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.closeTpl</span><span class="jsdoc-syntax">){

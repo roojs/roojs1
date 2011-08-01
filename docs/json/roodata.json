@@ -991,6 +991,12 @@
      "memberOf": ""
     },
     {
+     "name": "content",
+     "type": "String",
+     "desc": "Raw content to fill content panel with (uses setContent on construction.)",
+     "memberOf": ""
+    },
+    {
      "name": "listeners",
      "type": "Object",
      "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
@@ -1649,6 +1655,12 @@
      "memberOf": "Roo.ContentPanel"
     },
     {
+     "name": "content",
+     "type": "String",
+     "desc": "Raw content to fill content panel with (uses setContent on construction.)",
+     "memberOf": "Roo.ContentPanel"
+    },
+    {
      "name": "listeners",
      "type": "Object",
      "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
@@ -1775,6 +1787,12 @@
      "sig": "function (_self, response)\n{\n\n}",
      "type": "function",
      "desc": "Fires when loading fails."
+    },
+    {
+     "name": "preparedata",
+     "sig": "function (_self, data, row, record)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires on every row to render, to allow you to change the data."
     },
     {
      "name": "selectionchange",
@@ -2217,7 +2235,7 @@
     {
      "name": "resizeTabs",
      "type": "Boolean",
-     "desc": "True to enable automatic tab resizing. This will resize the tabs so they are all the same size and fit within\nthe space available, similar to FireFox 1.5 tabs (defaults to false)",
+     "desc": "True to enable automatic tab resizing. This will resize the tabs so they are all the same size and fit within\n                     the space available, similar to FireFox 1.5 tabs (defaults to false)",
      "memberOf": ""
     },
     {
@@ -2272,6 +2290,12 @@
      "name": "split",
      "type": "Boolean",
      "desc": "To show the splitter",
+     "memberOf": ""
+    },
+    {
+     "name": "toolbar",
+     "type": "Boolean",
+     "desc": "xtype configuration for a toolbar - shows on right of tabbar",
      "memberOf": ""
     },
     {
@@ -2706,6 +2730,12 @@
      "name": "loadOnce",
      "type": "Boolean",
      "desc": "When used with {@link #url}, calls {@link #setUrl} with this value",
+     "memberOf": "Roo.ContentPanel"
+    },
+    {
+     "name": "content",
+     "type": "String",
+     "desc": "Raw content to fill content panel with (uses setContent on construction.)",
      "memberOf": "Roo.ContentPanel"
     },
     {
@@ -3363,7 +3393,7 @@
     {
      "name": "resizeTabs",
      "type": "Boolean",
-     "desc": "True to enable automatic tab resizing. This will resize the tabs so they are all the same size and fit within\nthe space available, similar to FireFox 1.5 tabs (defaults to false)",
+     "desc": "True to enable automatic tab resizing. This will resize the tabs so they are all the same size and fit within\n                     the space available, similar to FireFox 1.5 tabs (defaults to false)",
      "memberOf": "Roo.LayoutRegion"
     },
     {
@@ -3418,6 +3448,12 @@
      "name": "split",
      "type": "Boolean",
      "desc": "To show the splitter",
+     "memberOf": "Roo.LayoutRegion"
+    },
+    {
+     "name": "toolbar",
+     "type": "Boolean",
+     "desc": "xtype configuration for a toolbar - shows on right of tabbar",
      "memberOf": "Roo.LayoutRegion"
     },
     {
@@ -4075,6 +4111,12 @@
      "memberOf": "Roo.ContentPanel"
     },
     {
+     "name": "content",
+     "type": "String",
+     "desc": "Raw content to fill content panel with (uses setContent on construction.)",
+     "memberOf": "Roo.ContentPanel"
+    },
+    {
      "name": "listeners",
      "type": "Object",
      "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
@@ -4221,6 +4263,12 @@
      "sig": "function (_self, index, node, e)\n{\n\n}",
      "type": "function",
      "desc": "Fires when a template node is double clicked."
+    },
+    {
+     "name": "preparedata",
+     "sig": "function (_self, data, row, record)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires on every row to render, to allow you to change the data."
     },
     {
      "name": "selectionchange",
