@@ -12,20 +12,22 @@
  * @class Roo.ContentPanel
  * @extends Roo.util.Observable
  * A basic ContentPanel element.
- * @cfg {Boolean} fitToFrame True for this panel to adjust its size to fit when the region resizes  (defaults to false)
- * @cfg {Boolean} fitContainer When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)
+ * @cfg {Boolean}   fitToFrame    True for this panel to adjust its size to fit when the region resizes  (defaults to false)
+ * @cfg {Boolean}   fitContainer   When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)
  * @cfg {Boolean/Object} autoCreate True to auto generate the DOM element for this panel, or a {@link Roo.DomHelper} config of the element to create
- * @cfg {Boolean} closable True if the panel can be closed/removed
- * @cfg {Boolean} background True if the panel should not be activated when it is added (defaults to false)
+ * @cfg {Boolean}   closable      True if the panel can be closed/removed
+ * @cfg {Boolean}   background    True if the panel should not be activated when it is added (defaults to false)
  * @cfg {String/HTMLElement/Element} resizeEl An element to resize if {@link #fitToFrame} is true (instead of this panel's element)
- * @cfg {Toolbar} toolbar A toolbar for this panel
- * @cfg {Boolean} autoScroll True to scroll overflow in this panel (use with {@link #fitToFrame})
- * @cfg {String} title The title for this panel
- * @cfg {Array} adjustments Values to &lt;b&gt;add&lt;/b&gt; to the width/height when doing a {@link #fitToFrame} (default is [0, 0])
- * @cfg {String} url Calls {@link #setUrl} with this value
- * @cfg {String} region (center|north|south|east|west) which region to put this panel on (when used with xtype constructors)
- * @cfg {String/Object} params When used with {@link #url}, calls {@link #setUrl} with this value
- * @cfg {Boolean} loadOnce When used with {@link #url}, calls {@link #setUrl} with this value
+ * @cfg {Toolbar}   toolbar       A toolbar for this panel
+ * @cfg {Boolean} autoScroll    True to scroll overflow in this panel (use with {@link #fitToFrame})
+ * @cfg {String} title          The title for this panel
+ * @cfg {Array} adjustments     Values to &lt;b&gt;add&lt;/b&gt; to the width/height when doing a {@link #fitToFrame} (default is [0, 0])
+ * @cfg {String} url            Calls {@link #setUrl} with this value
+ * @cfg {String} region         (center|north|south|east|west) which region to put this panel on (when used with xtype constructors)
+ * @cfg {String/Object} params  When used with {@link #url}, calls {@link #setUrl} with this value
+ * @cfg {Boolean} loadOnce      When used with {@link #url}, calls {@link #setUrl} with this value
+ * @cfg {String} content        Raw content to fill content panel with (uses setContent on construction.)
+
  * @constructor
  * Create a new ContentPanel.
  * @param {String/HTMLElement/Roo.Element} el The container element for this panel
@@ -342,6 +344,18 @@ panel.load({
         </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
     },
     
+    </span><span class="jsdoc-comment">/**
+     * form - if the content panel contains a form - this is a reference to it.
+     * @type {Roo.form.Form}
+     */
+    </span><span class="jsdoc-var">form </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * view - if the content panel contains a view (Roo.DatePicker / Roo.View / Roo.JsonView)
+     *    This contains a reference to it.
+     * @type {Roo.View}
+     */
+    </span><span class="jsdoc-var">view </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
       </span><span class="jsdoc-comment">/**
      * Adds a xtype elements to the panel - currently only supports Forms, View, JsonView.
      * &lt;pre&gt;&lt;code&gt;
@@ -367,17 +381,17 @@ layout.addxtype({
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.form.allItems.length</span><span class="jsdoc-syntax">) </span><span class="jsdoc-var">this.form.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.dom</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.form</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'View'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'JsonView'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.xtype</span><span class="jsdoc-syntax">) &gt; -1) {
+        </span><span class="jsdoc-comment">// should only have one of theses..
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'View'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'JsonView'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'DatePicker'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.xtype</span><span class="jsdoc-syntax">) &gt; -1) {
             </span><span class="jsdoc-comment">// views..
             </span><span class="jsdoc-var">cfg.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">));
             </span><span class="jsdoc-comment">// factory?
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cfg.xtype</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">ret.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// render blank..
+            </span><span class="jsdoc-var">ret.render </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">ret.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// render blank..
+            </span><span class="jsdoc-var">this.view </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
-            
         }
         </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
-        
     }
 });
 
