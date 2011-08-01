@@ -13,33 +13,34 @@
  * @class Roo.LayoutRegion
  * @extends Roo.BasicLayoutRegion
  * This class represents a region in a layout manager.
- * @cfg {Boolean} collapsible False to disable collapsing (defaults to true)
- * @cfg {Boolean} collapsed True to set the initial display to collapsed (defaults to false)
- * @cfg {Boolean} floatable False to disable floating (defaults to true)
- * @cfg {Object} margins Margins for the element (defaults to {top: 0, left: 0, right:0, bottom: 0})
- * @cfg {Object} cmargins Margins for the element when collapsed (defaults to: north/south {top: 2, left: 0, right:0, bottom: 2} or east/west {top: 0, left: 2, right:2, bottom: 0})
- * @cfg {String} tabPosition &quot;top&quot; or &quot;bottom&quot; (defaults to &quot;bottom&quot;)
- * @cfg {String} collapsedTitle Optional string message to display in the collapsed block of a north or south region
- * @cfg {Boolean} alwaysShowTabs True to always display tabs even when there is only 1 panel (defaults to false)
- * @cfg {Boolean} autoScroll True to enable overflow scrolling (defaults to false)
- * @cfg {Boolean} titlebar True to display a title bar (defaults to true)
- * @cfg {String} title The title for the region (overrides panel titles)
- * @cfg {Boolean} animate True to animate expand/collapse (defaults to false)
- * @cfg {Boolean} autoHide False to disable auto hiding when the mouse leaves the &quot;floated&quot; region (defaults to true)
- * @cfg {Boolean} preservePanels True to preserve removed panels so they can be readded later (defaults to false)
- * @cfg {Boolean} closeOnTab True to place the close icon on the tabs instead of the region titlebar (defaults to false)
- * @cfg {Boolean} hideTabs True to hide the tab strip (defaults to false)
- * @cfg {Boolean} resizeTabs True to enable automatic tab resizing. This will resize the tabs so they are all the same size and fit within
- * the space available, similar to FireFox 1.5 tabs (defaults to false)
- * @cfg {Number} minTabWidth The minimum tab width (defaults to 40)
- * @cfg {Number} preferredTabWidth The preferred tab width (defaults to 150)
- * @cfg {Boolean} showPin True to show a pin button
-* @cfg {Boolean} hidden True to start the region hidden (defaults to false)
-* @cfg {Boolean} hideWhenEmpty True to hide the region when it has no panels
-* @cfg {Boolean} disableTabTips True to disable tab tooltips
-* @cfg {Number} width  For East/West panels
-* @cfg {Number} height For North/South panels
-* @cfg {Boolean} split To show the splitter
+ * @cfg {Boolean}   collapsible     False to disable collapsing (defaults to true)
+ * @cfg {Boolean}   collapsed       True to set the initial display to collapsed (defaults to false)
+ * @cfg {Boolean}   floatable       False to disable floating (defaults to true)
+ * @cfg {Object}    margins         Margins for the element (defaults to {top: 0, left: 0, right:0, bottom: 0})
+ * @cfg {Object}    cmargins        Margins for the element when collapsed (defaults to: north/south {top: 2, left: 0, right:0, bottom: 2} or east/west {top: 0, left: 2, right:2, bottom: 0})
+ * @cfg {String}    tabPosition     &quot;top&quot; or &quot;bottom&quot; (defaults to &quot;bottom&quot;)
+ * @cfg {String}    collapsedTitle  Optional string message to display in the collapsed block of a north or south region
+ * @cfg {Boolean}   alwaysShowTabs  True to always display tabs even when there is only 1 panel (defaults to false)
+ * @cfg {Boolean}   autoScroll      True to enable overflow scrolling (defaults to false)
+ * @cfg {Boolean}   titlebar        True to display a title bar (defaults to true)
+ * @cfg {String}    title           The title for the region (overrides panel titles)
+ * @cfg {Boolean}   animate         True to animate expand/collapse (defaults to false)
+ * @cfg {Boolean}   autoHide        False to disable auto hiding when the mouse leaves the &quot;floated&quot; region (defaults to true)
+ * @cfg {Boolean}   preservePanels  True to preserve removed panels so they can be readded later (defaults to false)
+ * @cfg {Boolean}   closeOnTab      True to place the close icon on the tabs instead of the region titlebar (defaults to false)
+ * @cfg {Boolean}   hideTabs        True to hide the tab strip (defaults to false)
+ * @cfg {Boolean}   resizeTabs      True to enable automatic tab resizing. This will resize the tabs so they are all the same size and fit within
+ *                      the space available, similar to FireFox 1.5 tabs (defaults to false)
+ * @cfg {Number}    minTabWidth     The minimum tab width (defaults to 40)
+ * @cfg {Number}    preferredTabWidth The preferred tab width (defaults to 150)
+ * @cfg {Boolean}   showPin         True to show a pin button
+ * @cfg {Boolean}   hidden          True to start the region hidden (defaults to false)
+ * @cfg {Boolean}   hideWhenEmpty   True to hide the region when it has no panels
+ * @cfg {Boolean}   disableTabTips  True to disable tab tooltips
+ * @cfg {Number}    width           For East/West panels
+ * @cfg {Number}    height          For North/South panels
+ * @cfg {Boolean}   split           To show the splitter
+ * @cfg {Boolean}   toolbar         xtype configuration for a toolbar - shows on right of tabbar
  */
 </span><span class="jsdoc-var">Roo.LayoutRegion </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mgr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">Roo.LayoutRegion.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mgr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
@@ -354,12 +355,17 @@
         </span><span class="jsdoc-comment">// overridden
     </span><span class="jsdoc-syntax">},
 
-    </span><span class="jsdoc-var">initTabs </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+    </span><span class="jsdoc-var">initTabs </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
         </span><span class="jsdoc-var">this.bodyEl.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;overflow&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;hidden&quot;</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ts </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.TabPanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bodyEl.dom</span><span class="jsdoc-syntax">, {
-            </span><span class="jsdoc-var">tabPosition</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.bottomTabs </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'bottom' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">disableTooltips</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.config.disableTabTips
-        </span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ts </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.TabPanel</span><span class="jsdoc-syntax">(
+                </span><span class="jsdoc-var">this.bodyEl.dom</span><span class="jsdoc-syntax">,
+                {
+                    </span><span class="jsdoc-var">tabPosition</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.bottomTabs </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'bottom' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">disableTooltips</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.config.disableTabTips</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">toolbar </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.config.toolbar
+                </span><span class="jsdoc-syntax">}
+        );
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.config.hideTabs</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">ts.stripWrap.setDisplayed</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
         }
