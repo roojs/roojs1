@@ -101,13 +101,13 @@ Roo.ux.Iscroll.prototype = {
         var that = this;
 
         switch (e.type) {
-            case START_EVENT:
+            case Roo.ux.Iscroll.START_EVENT:
                 that.touchStart(e);
                 break;
-            case MOVE_EVENT:
+            case Roo.ux.Iscroll.MOVE_EVENT:
                 that.touchMove(e);
                 break;
-            case END_EVENT:
+            case Roo.ux.Iscroll.END_EVENT:
                 that.touchEnd(e);
                 break;
             case 'webkitTransitionEnd':
