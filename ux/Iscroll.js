@@ -11,6 +11,9 @@
  * 
  */
 
+// does not appear to work yet...
+
+
 Roo.namespace('Roo.ux'); 
 
 Roo.ux.Iscroll = function(el, options)
