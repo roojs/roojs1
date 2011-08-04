@@ -287,7 +287,12 @@ Roo.apply(Roo.XComponent, {
         Roo.each(this.modules , function (obj)
         {
             var opar = obj.parent;
-            obj.parent = this.toObject(opar);
+            try { 
+                obj.parent = this.toObject(opar);
+            } catch(e) {
+                Roo.log(e.toString());
+                return;
+            }
             
             if (!obj.parent) {
                 this.topModule = obj;
