@@ -54,6 +54,9 @@ if(!window.console){
             console.d.style.display='block';
         },
         log:function(o){
+            if (!console.d) {
+                console.init();
+            }
             console.d.innerHTML+='<br/>'+o;
             console.show();
         },
