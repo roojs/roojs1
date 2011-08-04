@@ -44,7 +44,7 @@ if(!window.console){
                 '    text-align:right;'+
                 '}'; 
             var htmDiv = document.createElement('div');
-            htmDiv.innerHTML = '<p>x</p><style>'+CSS+'</style>';
+            htmDiv.innerHTML = '<p>&nbsp;</p><style>'+CSS+'</style>';
             
           
             
