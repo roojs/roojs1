@@ -17,10 +17,7 @@ if(!window.console){
                 console.d.id=id;
             }
             console.hide();
-            var st = document.createElement('style');
-            st.type="text/css";
-            st.media="all";
-            
+         
             
             var CSS = "\n" + 
                 '﻿#fauxconsole{' +
