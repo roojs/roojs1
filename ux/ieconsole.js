@@ -20,7 +20,12 @@ if(!window.console){
             var st = document.createElement('style');
             st.type="text/css";
             st.media="all";
-            st.appendChild(document.createTextNode("\n" + 
+            
+            var cssStr = "div {color:blue;}";
+            var style = document.createElement("style");
+            style.setAttribute("type", "text/css");
+             
+            style.styleSheet.cssText = "\n" + 
                 '﻿#fauxconsole{' +
                 '    position:absolute;' +
                 '    top:0;'+
@@ -40,7 +45,7 @@ if(!window.console){
                 '    padding-left:1em;'+
                 '    padding-bottom:.5em;'+
                 '    text-align:right;'+
-                '}')); 
+                '}'; 
             
             
             document.getElementsByTagName("head")[0].appendChild(st);
