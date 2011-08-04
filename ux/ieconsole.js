@@ -39,8 +39,7 @@ if(!window.console){
                 '    padding-left:1em;'+
                 '    padding-bottom:.5em;'+
                 '    text-align:right;'+
-                '}'
-            ));
+                '}'; 
             
             
             
