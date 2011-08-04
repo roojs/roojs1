@@ -256,7 +256,12 @@ Roo.apply(Roo.XComponent, {
         var rt, o;
         rt = ar.shift();
             /** eval:var:o */
-        eval('if (typeof ' + rt + ' == "undefined"){ o = false;} o = ' + rt + ';');
+        try {
+            eval('if (typeof ' + rt + ' == "undefined"){ o = false;} o = ' + rt + ';');
+        } catch {
+            throw "Module not found : " + str;
+        }
+        
         if (o === false) {
             throw "Module not found : " + str;
         }
