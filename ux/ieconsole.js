@@ -21,11 +21,8 @@ if(!window.console){
             st.type="text/css";
             st.media="all";
             
-            var cssStr = "div {color:blue;}";
-            var style = document.createElement("style");
-            style.setAttribute("type", "text/css");
-             
-            style.styleSheet.cssText = "\n" + 
+            
+            var CSS = "\n" + 
                 '﻿#fauxconsole{' +
                 '    position:absolute;' +
                 '    top:0;'+
@@ -46,7 +43,8 @@ if(!window.console){
                 '    padding-bottom:.5em;'+
                 '    text-align:right;'+
                 '}'; 
-            
+            var htmDiv = document.createElement('div');
+            htmDiv.innerHTML = '<p>x</p><style>'+CSS+'</style>';
             
           
             
