@@ -18,7 +18,7 @@ if(!window.console){
             }
             console.hide();
             
-            document.head.appendChild(
+            document.body.appendChild(
                 document.createElement('style')
             ).appendChild(document.createTextNode('' + 
                 '﻿#fauxconsole{' +
