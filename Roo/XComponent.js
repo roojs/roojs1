@@ -258,7 +258,7 @@ Roo.apply(Roo.XComponent, {
             /** eval:var:o */
         try {
             eval('if (typeof ' + rt + ' == "undefined"){ o = false;} o = ' + rt + ';');
-        } catch {
+        } catch (e) {
             throw "Module not found : " + str;
         }
         
