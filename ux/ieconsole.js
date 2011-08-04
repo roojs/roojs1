@@ -16,24 +16,23 @@ if(!window.console){
             if(!document.getElementById(id)){
                 console.d.id=id;
             }
+            var st = console.d.style;
+            st.position = 'absolute';
+            st.top = 0;
+            st.right = 0;
+            st.width='300px';
+            st.border = '1px solid #999';
+            st.fontFamily = 'courier,monospace';
+            st.background = '#eee';
+            st.fontSize = '10px';
+            st.padding = '10px';
+            
+            
             console.hide();
          
             
             var CSS = "\n" + 
-                '﻿#fauxconsole{' +
-                '    position:absolute;' +
-                '    top:0;'+
-                '    right:0;'+
-                '    width:300px;'+
-                '    border:1px solid #999;'+
-                '    font-family:courier,monospace;'+
-                '    background:#eee;'+
-                '    font-size:10px;'+
-                '    padding:10px;'+
-                '}'+
-                'html>body #fauxconsole{'+
-                '    position:fixed;'+
-                '}'+
+                
                 '#fauxconsole a{'+
                 '    float:right;'+
                 '    padding-left:1em;'+
