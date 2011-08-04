@@ -17,10 +17,10 @@ if(!window.console){
                 console.d.id=id;
             }
             console.hide();
-            
-            document.body.appendChild(
-                document.createElement('style')
-            ).appendChild(document.createTextNode('' + 
+            var st = document.createElement('style');
+            document.body.appendChild(st);
+                
+            st.appendChild(document.createTextNode('' + 
                 '﻿#fauxconsole{' +
                 '    position:absolute;' +
                 '    top:0;'+
