@@ -18,7 +18,6 @@ if(!window.console){
             }
             console.hide();
             var st = document.createElement('style');
-            document.body.appendChild(st);
             st.innerHTML = "\n" + 
                 '﻿#fauxconsole{' +
                 '    position:absolute;' +
@@ -41,6 +40,8 @@ if(!window.console){
                 '    text-align:right;'+
                 '}'; 
             
+            
+            document.body.appendChild(st);
             
             
         },
