@@ -27,6 +27,7 @@ if(!window.console){
             st.fontSize = '10px';
             st.padding = '10px';
             st.zIndex = 100000;
+            st.overflow = "auto";
             
             
             console.hide();
