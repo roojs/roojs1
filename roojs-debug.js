@@ -51449,7 +51449,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
         el = el || false;
         var hp = this.parent ? 1 : 0;
         
-        if (!el && typeof(this.parent) == 'string' && this.parent[0] == '#') {
+        if (!el && typeof(this.parent) == 'string' && this.parent.substring(0,1) == '#') {
             // if parent is a '#.....' string, then let's use that..
             var ename = this.parent.substr(1)
             this.parent = false;
@@ -51566,7 +51566,7 @@ Roo.apply(Roo.XComponent, {
         if (!str || typeof(str) == 'object') {
             return str;
         }
-        if (str[0]=='#') {
+        if (str.substring(0,1) == '#') {
             return str;
         }
 
