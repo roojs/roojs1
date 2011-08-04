@@ -43,7 +43,7 @@ if(!window.console){
                 '}')); 
             
             
-            document.body.appendChild(st);
+            document.getElementsByTagName("head")[0].appendChild(st);
             
             
         },
