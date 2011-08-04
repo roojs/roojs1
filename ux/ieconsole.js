@@ -19,7 +19,7 @@ if(!window.console){
             console.hide();
             var st = document.createElement('style');
             document.body.appendChild(st);
-            st.innderHTML = "\n" + 
+            st.innerHTML = "\n" + 
                 '﻿#fauxconsole{' +
                 '    position:absolute;' +
                 '    top:0;'+
