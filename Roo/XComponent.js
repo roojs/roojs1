@@ -256,7 +256,12 @@ Roo.apply(Roo.XComponent, {
         var rt, o;
         rt = ar.shift();
             /** eval:var:o */
-        eval('if (typeof ' + rt + ' == "undefined"){ o = false;} o = ' + rt + ';');
+        try {
+            eval('if (typeof ' + rt + ' == "undefined"){ o = false;} o = ' + rt + ';');
+        } catch (e) {
+            throw "Module not found : " + str;
+        }
+        
         if (o === false) {
             throw "Module not found : " + str;
         }
@@ -282,7 +287,12 @@ Roo.apply(Roo.XComponent, {
         Roo.each(this.modules , function (obj)
         {
             var opar = obj.parent;
-            obj.parent = this.toObject(opar);
+            try { 
+                obj.parent = this.toObject(opar);
+            } catch(e) {
+                Roo.log(e.toString());
+                return;
+            }
             
             if (!obj.parent) {
                 this.topModule = obj;

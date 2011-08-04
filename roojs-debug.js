@@ -23671,6 +23671,8 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
          * Fires on every row to render, to allow you to change the data.
          * @param {Roo.View} this
          * @param {Object} data to be rendered (change this)
+         * @param {Number} row being rendered
+         * @param {Roo.data.Record} record being rendered.
          */
           "preparedata" : true
         });
@@ -51572,7 +51574,12 @@ Roo.apply(Roo.XComponent, {
         var rt, o;
         rt = ar.shift();
             /** eval:var:o */
-        eval('if (typeof ' + rt + ' == "undefined"){ o = false;} o = ' + rt + ';');
+        try {
+            eval('if (typeof ' + rt + ' == "undefined"){ o = false;} o = ' + rt + ';');
+        } catch (e) {
+            throw "Module not found : " + str;
+        }
+        
         if (o === false) {
             throw "Module not found : " + str;
         }
@@ -51598,7 +51605,12 @@ Roo.apply(Roo.XComponent, {
         Roo.each(this.modules , function (obj)
         {
             var opar = obj.parent;
-            obj.parent = this.toObject(opar);
+            try { 
+                obj.parent = this.toObject(opar);
+            } catch(e) {
+                Roo.log(e.toString());
+                return;
+            }
             
             if (!obj.parent) {
                 this.topModule = obj;
