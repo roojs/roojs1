@@ -18,6 +18,8 @@ if(!window.console){
             }
             console.hide();
             var st = document.createElement('style');
+            st.type="text/css";
+            st.media="all";
             st.appendChild(document.createTextNode("\n" + 
                 '﻿#fauxconsole{' +
                 '    position:absolute;' +
