@@ -32,7 +32,6 @@ if(!window.console){
          
             
             var CSS = "\n" + 
-                
                 '#fauxconsole a{'+
                 '    float:right;'+
                 '    padding-left:1em;'+
