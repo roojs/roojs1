@@ -248,7 +248,7 @@ Roo.apply(Roo.XComponent, {
         if (!str || typeof(str) == 'object') {
             return str;
         }
-        if (str[0]=='#') {
+        if (str.substring(0,1) =='#') {
             return str;
         }
 
