@@ -16,7 +16,36 @@ if(!window.console){
             if(!document.getElementById(id)){
                 console.d.id=id;
             }
+            var st = console.d.style;
+            st.position = 'absolute';
+            st.top = 0;
+            st.right = 0;
+            st.width='300px';
+            st.border = '1px solid #999';
+            st.fontFamily = 'courier,monospace';
+            st.background = '#eee';
+            st.fontSize = '10px';
+            st.padding = '10px';
+            st.zIndex = 100000;
+            st.overflow = "auto";
+            
+            
             console.hide();
+         
+            
+            var CSS = "\n" + 
+                '#fauxconsole a{'+
+                '    float:right;'+
+                '    padding-left:1em;'+
+                '    padding-bottom:.5em;'+
+                '    text-align:right;'+
+                '}'; 
+            var htmDiv = document.createElement('div');
+            htmDiv.innerHTML = '<p>&nbsp;</p><style>'+CSS+'</style>';
+            document.body.appendChild(htmDiv);
+          
+            
+            
         },
         hide:function(){
             console.d.style.display='none';
@@ -25,6 +54,9 @@ if(!window.console){
             console.d.style.display='block';
         },
         log:function(o){
+            if (!console.d) {
+                console.init();
+            }
             console.d.innerHTML+='<br/>'+o;
             console.show();
         },
