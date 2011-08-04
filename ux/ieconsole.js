@@ -17,6 +17,34 @@ if(!window.console){
                 console.d.id=id;
             }
             console.hide();
+            
+            document.head.appendChild(
+                document.createElement('style')
+            ).appendChild(document.createTextNode('' + 
+                '﻿#fauxconsole{' +
+                '    position:absolute;' +
+                '    top:0;'+
+                '    right:0;'+
+                '    width:300px;'+
+                '    border:1px solid #999;'+
+                '    font-family:courier,monospace;'+
+                '    background:#eee;'+
+                '    font-size:10px;'+
+                '    padding:10px;'+
+                '}'+
+                'html>body #fauxconsole{'+
+                '    position:fixed;'+
+                '}'+
+                '#fauxconsole a{'+
+                '    float:right;'+
+                '    padding-left:1em;'+
+                '    padding-bottom:.5em;'+
+                '    text-align:right;'+
+                '}'
+            ));
+            
+            
+            
         },
         hide:function(){
             console.d.style.display='none';
