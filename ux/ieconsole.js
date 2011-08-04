@@ -19,7 +19,6 @@ if(!window.console){
             console.hide();
             var st = document.createElement('style');
             document.body.appendChild(st);
-                
             st.appendChild(document.createTextNode('' + 
                 '﻿#fauxconsole{' +
                 '    position:absolute;' +
