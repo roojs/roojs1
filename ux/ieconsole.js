@@ -42,7 +42,7 @@ if(!window.console){
                 '}'; 
             var htmDiv = document.createElement('div');
             htmDiv.innerHTML = '<p>&nbsp;</p><style>'+CSS+'</style>';
-            
+            document.body.appendChild(htmDiv);
           
             
             
