@@ -386,7 +386,8 @@ layout.addxtype({
             // views..
             cfg.el = this.el.appendChild(document.createElement("div"));
             // factory?
-            var ret = new Roo[cfg.xtype](cfg);
+            
+            var ret = new Roo.factory(cfg);
             ret.render && ret.render(false, ''); // render blank..
             this.view = ret;
             return ret;
