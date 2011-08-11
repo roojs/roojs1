@@ -48,6 +48,7 @@ Format  Output      Description
   i      05         Minutes with leading zeros
   s      01         Seconds, with leading zeros
   O      -0600      Difference to Greenwich time (GMT) in hours
+  P      -06:00     Difference to Greenwich time (GMT) with colon between hours and minutes
   T      CST        Timezone setting of the machine running the code
   Z      -21600     Timezone offset in seconds (negative if west of UTC, positive if east)
 &lt;/pre&gt;
@@ -214,6 +215,8 @@ document.write(dt.format(Date.patterns.ShortDate));
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">&quot;String.leftPad(this.getSeconds(), 2, '0') + &quot;</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;O&quot;</span><span class="jsdoc-syntax">:
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">&quot;this.getGMTOffset() + &quot;</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;P&quot;</span><span class="jsdoc-syntax">:
+    	</span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">&quot;this.getGMTColonOffset() + &quot;</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;T&quot;</span><span class="jsdoc-syntax">:
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">&quot;this.getTimezone() + &quot;</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;Z&quot;</span><span class="jsdoc-syntax">:
@@ -426,6 +429,17 @@ dt = Date.parseDate(&quot;2006-1-15 3:20:01 PM&quot;, &quot;Y-m-d h:i:s A&quot; 
                 </span><span class="jsdoc-string">&quot;    (sn + String.leftPad(hr, 2, 0) + String.leftPad(mn, 2, 0)) : null;\n&quot;
             </span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">),
             </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;([+\-]\\d{4})&quot;</span><span class="jsdoc-syntax">};
+    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;P&quot;</span><span class="jsdoc-syntax">:
+    	</span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{</span><span class="jsdoc-var">g</span><span class="jsdoc-syntax">:1,
+    		</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">:[
+    		   </span><span class="jsdoc-string">&quot;o = results[&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">currentGroup</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;];\n&quot;</span><span class="jsdoc-syntax">,
+    		   </span><span class="jsdoc-string">&quot;var sn = o.substring(0,1);\n&quot;</span><span class="jsdoc-syntax">,
+    		   </span><span class="jsdoc-string">&quot;var hr = o.substring(1,3)*1 + Math.floor(o.substring(4,6) / 60);\n&quot;</span><span class="jsdoc-syntax">,
+    		   </span><span class="jsdoc-string">&quot;var mn = o.substring(4,6) % 60;\n&quot;</span><span class="jsdoc-syntax">,
+    		   </span><span class="jsdoc-string">&quot;o = ((-12 &lt;= (hr*60 + mn)/60) &amp;&amp; ((hr*60 + mn)/60 &lt;= 14))?\n&quot;</span><span class="jsdoc-syntax">,
+    	                </span><span class="jsdoc-string">&quot;    (sn + String.leftPad(hr, 2, 0) + String.leftPad(mn, 2, 0)) : null;\n&quot;
+            </span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">),
+            </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;([+\-]\\d{4})&quot;</span><span class="jsdoc-syntax">};
     </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;T&quot;</span><span class="jsdoc-syntax">:
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{</span><span class="jsdoc-var">g</span><span class="jsdoc-syntax">:0,
             </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
@@ -459,6 +473,18 @@ dt = Date.parseDate(&quot;2006-1-15 3:20:01 PM&quot;, &quot;Y-m-d h:i:s A&quot; 
         + </span><span class="jsdoc-var">String.leftPad</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.abs</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getTimezoneOffset</span><span class="jsdoc-syntax">() / 60)), 2, </span><span class="jsdoc-string">&quot;0&quot;</span><span class="jsdoc-syntax">)
         + </span><span class="jsdoc-var">String.leftPad</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getTimezoneOffset</span><span class="jsdoc-syntax">() % 60, 2, </span><span class="jsdoc-string">&quot;0&quot;</span><span class="jsdoc-syntax">);
 };
+
+</span><span class="jsdoc-comment">/**
+ * Get the offset from GMT of the current date (equivalent to the format specifier 'P').
+ * @return {String} 2-characters representing hours and 2-characters representing minutes
+ * seperated by a colon and prefixed with + or - (e.g. '-06:00')
+ */
+</span><span class="jsdoc-var">Date.prototype.getGMTColonOffset </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+	</span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getTimezoneOffset</span><span class="jsdoc-syntax">() &gt; 0 ? </span><span class="jsdoc-string">&quot;-&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;+&quot;</span><span class="jsdoc-syntax">)
+		+ </span><span class="jsdoc-var">String.leftPad</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.abs</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getTimezoneOffset</span><span class="jsdoc-syntax">() / 60)), 2, </span><span class="jsdoc-string">&quot;0&quot;</span><span class="jsdoc-syntax">)
+		+ </span><span class="jsdoc-string">&quot;:&quot;
+		</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">String.leftPad</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getTimezoneOffset</span><span class="jsdoc-syntax">() %60, 2, </span><span class="jsdoc-string">&quot;0&quot;</span><span class="jsdoc-syntax">);
+}
 
 </span><span class="jsdoc-comment">/**
  * Get the numeric day number of the year, adjusted for leap year.
@@ -775,4 +801,5 @@ document.write(dt3); //returns 'Fri Oct 06 2006 07:30:00'
       </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
   }
   </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">;
-};</span></code></body></html>
+};
+</span></code></body></html>

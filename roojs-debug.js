@@ -1007,6 +1007,7 @@ Format  Output      Description
   i      05         Minutes with leading zeros
   s      01         Seconds, with leading zeros
   O      -0600      Difference to Greenwich time (GMT) in hours
+  P      -06:00     Difference to Greenwich time (GMT) with colon between hours and minutes
   T      CST        Timezone setting of the machine running the code
   Z      -21600     Timezone offset in seconds (negative if west of UTC, positive if east)
 </pre>
@@ -1173,6 +1174,8 @@ Date.getFormatCode = function(character) {
         return "String.leftPad(this.getSeconds(), 2, '0') + ";
     case "O":
         return "this.getGMTOffset() + ";
+    case "P":
+    	return "this.getGMTColonOffset() + ";
     case "T":
         return "this.getTimezone() + ";
     case "Z":
@@ -1385,6 +1388,17 @@ Date.formatCodeToRegex = function(character, currentGroup) {
                 "    (sn + String.leftPad(hr, 2, 0) + String.leftPad(mn, 2, 0)) : null;\n"
             ].join(""),
             s:"([+\-]\\d{4})"};
+    case "P":
+    	return {g:1,
+    		c:[
+    		   "o = results[", currentGroup, "];\n",
+    		   "var sn = o.substring(0,1);\n",
+    		   "var hr = o.substring(1,3)*1 + Math.floor(o.substring(4,6) / 60);\n",
+    		   "var mn = o.substring(4,6) % 60;\n",
+    		   "o = ((-12 <= (hr*60 + mn)/60) && ((hr*60 + mn)/60 <= 14))?\n",
+    	                "    (sn + String.leftPad(hr, 2, 0) + String.leftPad(mn, 2, 0)) : null;\n"
+            ].join(""),
+            s:"([+\-]\\d{4})"};
     case "T":
         return {g:0,
             c:null,
@@ -1418,6 +1432,18 @@ Date.prototype.getGMTOffset = function() {
         + String.leftPad(Math.abs(Math.floor(this.getTimezoneOffset() / 60)), 2, "0")
         + String.leftPad(this.getTimezoneOffset() % 60, 2, "0");
 };
+
+/**
+ * Get the offset from GMT of the current date (equivalent to the format specifier 'P').
+ * @return {String} 2-characters representing hours and 2-characters representing minutes
+ * seperated by a colon and prefixed with + or - (e.g. '-06:00')
+ */
+Date.prototype.getGMTColonOffset = function() {
+	return (this.getTimezoneOffset() > 0 ? "-" : "+")
+		+ String.leftPad(Math.abs(Math.floor(this.getTimezoneOffset() / 60)), 2, "0")
+		+ ":"
+		+ String.leftPad(this.getTimezoneOffset() %60, 2, "0");
+}
 
 /**
  * Get the numeric day number of the year, adjusted for leap year.
@@ -1734,7 +1760,8 @@ Date.prototype.add = function(interval, value){
       break;
   }
   return d;
-};/*
+};
+/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -46016,7 +46043,8 @@ layout.addxtype({
             // views..
             cfg.el = this.el.appendChild(document.createElement("div"));
             // factory?
-            var ret = new Roo[cfg.xtype](cfg);
+            
+            var ret = new Roo.factory(cfg);
             ret.render && ret.render(false, ''); // render blank..
             this.view = ret;
             return ret;
