@@ -67,7 +67,7 @@
     
 <!-- ============================== class summary ========================== -->			
     <div class="description">
-	The date parsing and format syntax is a subset of<br/><a href="http://www.php.net/date">PHP's date() function</a>, and the formats that are<br/>supported will provide results equivalent to their PHP versions.<br/><br/>Following is the list of all currently supported formats:<br/><pre><br/>Sample date:<br/>'Wed Jan 10 2007 15:05:01 GMT-0600 (Central Standard Time)'<br/><br/>Format  Output      Description<br/>------  ----------  --------------------------------------------------------------<br/>  d      10         Day of the month, 2 digits with leading zeros<br/>  D      Wed        A textual representation of a day, three letters<br/>  j      10         Day of the month without leading zeros<br/>  l      Wednesday  A full textual representation of the day of the week<br/>  S      th         English ordinal day of month suffix, 2 chars (use with j)<br/>  w      3          Numeric representation of the day of the week<br/>  z      9          The julian date, or day of the year (0-365)<br/>  W      01         ISO-8601 2-digit week number of year, weeks starting on Monday (00-52)<br/>  F      January    A full textual representation of the month<br/>  m      01         Numeric representation of a month, with leading zeros<br/>  M      Jan        Month name abbreviation, three letters<br/>  n      1          Numeric representation of a month, without leading zeros<br/>  t      31         Number of days in the given month<br/>  L      0          Whether it's a leap year (1 if it is a leap year, else 0)<br/>  Y      2007       A full numeric representation of a year, 4 digits<br/>  y      07         A two digit representation of a year<br/>  a      pm         Lowercase Ante meridiem and Post meridiem<br/>  A      PM         Uppercase Ante meridiem and Post meridiem<br/>  g      3          12-hour format of an hour without leading zeros<br/>  G      15         24-hour format of an hour without leading zeros<br/>  h      03         12-hour format of an hour with leading zeros<br/>  H      15         24-hour format of an hour with leading zeros<br/>  i      05         Minutes with leading zeros<br/>  s      01         Seconds, with leading zeros<br/>  O      -0600      Difference to Greenwich time (GMT) in hours<br/>  T      CST        Timezone setting of the machine running the code<br/>  Z      -21600     Timezone offset in seconds (negative if west of UTC, positive if east)<br/></pre><br/><br/>Example usage (note that you must escape format specifiers with '\\' to render them as character literals):<br/><pre><code><br/>var dt = new Date('1/10/2007 03:05:01 PM GMT-0600');<br/>document.write(dt.format('Y-m-d'));                         //2007-01-10<br/>document.write(dt.format('F j, Y, g:i a'));                 //January 10, 2007, 3:05 pm<br/>document.write(dt.format('l, \\t\\he dS of F Y h:i:s A'));  //Wednesday, the 10th of January 2007 03:05:01 PM<br/> </code></pre><br/><br/>Here are some standard date/time patterns that you might find helpful.  They<br/>are not part of the source of Date.js, but to use them you can simply copy this<br/>block of code into any script that is included after Date.js and they will also become<br/>globally available on the Date object.  Feel free to add or remove patterns as needed in your code.<br/><pre><code><br/>Date.patterns = {<br/>    ISO8601Long:"Y-m-d H:i:s",<br/>    ISO8601Short:"Y-m-d",<br/>    ShortDate: "n/j/Y",<br/>    LongDate: "l, F d, Y",<br/>    FullDateTime: "l, F d, Y g:i:s A",<br/>    MonthDay: "F d",<br/>    ShortTime: "g:i A",<br/>    LongTime: "g:i:s A",<br/>    SortableDateTime: "Y-m-d\\TH:i:s",<br/>    UniversalSortableDateTime: "Y-m-d H:i:sO",<br/>    YearMonth: "F, Y"<br/>};<br/></code></pre><br/><br/>Example usage:<br/><pre><code><br/>var dt = new Date();<br/>document.write(dt.format(Date.patterns.ShortDate));<br/> </code></pre>
+	The date parsing and format syntax is a subset of<br/><a href="http://www.php.net/date">PHP's date() function</a>, and the formats that are<br/>supported will provide results equivalent to their PHP versions.<br/><br/>Following is the list of all currently supported formats:<br/><pre><br/>Sample date:<br/>'Wed Jan 10 2007 15:05:01 GMT-0600 (Central Standard Time)'<br/><br/>Format  Output      Description<br/>------  ----------  --------------------------------------------------------------<br/>  d      10         Day of the month, 2 digits with leading zeros<br/>  D      Wed        A textual representation of a day, three letters<br/>  j      10         Day of the month without leading zeros<br/>  l      Wednesday  A full textual representation of the day of the week<br/>  S      th         English ordinal day of month suffix, 2 chars (use with j)<br/>  w      3          Numeric representation of the day of the week<br/>  z      9          The julian date, or day of the year (0-365)<br/>  W      01         ISO-8601 2-digit week number of year, weeks starting on Monday (00-52)<br/>  F      January    A full textual representation of the month<br/>  m      01         Numeric representation of a month, with leading zeros<br/>  M      Jan        Month name abbreviation, three letters<br/>  n      1          Numeric representation of a month, without leading zeros<br/>  t      31         Number of days in the given month<br/>  L      0          Whether it's a leap year (1 if it is a leap year, else 0)<br/>  Y      2007       A full numeric representation of a year, 4 digits<br/>  y      07         A two digit representation of a year<br/>  a      pm         Lowercase Ante meridiem and Post meridiem<br/>  A      PM         Uppercase Ante meridiem and Post meridiem<br/>  g      3          12-hour format of an hour without leading zeros<br/>  G      15         24-hour format of an hour without leading zeros<br/>  h      03         12-hour format of an hour with leading zeros<br/>  H      15         24-hour format of an hour with leading zeros<br/>  i      05         Minutes with leading zeros<br/>  s      01         Seconds, with leading zeros<br/>  O      -0600      Difference to Greenwich time (GMT) in hours<br/>  P      -06:00     Difference to Greenwich time (GMT) with colon between hours and minutes<br/>  T      CST        Timezone setting of the machine running the code<br/>  Z      -21600     Timezone offset in seconds (negative if west of UTC, positive if east)<br/></pre><br/><br/>Example usage (note that you must escape format specifiers with '\\' to render them as character literals):<br/><pre><code><br/>var dt = new Date('1/10/2007 03:05:01 PM GMT-0600');<br/>document.write(dt.format('Y-m-d'));                         //2007-01-10<br/>document.write(dt.format('F j, Y, g:i a'));                 //January 10, 2007, 3:05 pm<br/>document.write(dt.format('l, \\t\\he dS of F Y h:i:s A'));  //Wednesday, the 10th of January 2007 03:05:01 PM<br/> </code></pre><br/><br/>Here are some standard date/time patterns that you might find helpful.  They<br/>are not part of the source of Date.js, but to use them you can simply copy this<br/>block of code into any script that is included after Date.js and they will also become<br/>globally available on the Date object.  Feel free to add or remove patterns as needed in your code.<br/><pre><code><br/>Date.patterns = {<br/>    ISO8601Long:"Y-m-d H:i:s",<br/>    ISO8601Short:"Y-m-d",<br/>    ShortDate: "n/j/Y",<br/>    LongDate: "l, F d, Y",<br/>    FullDateTime: "l, F d, Y g:i:s A",<br/>    MonthDay: "F d",<br/>    ShortTime: "g:i A",<br/>    LongTime: "g:i:s A",<br/>    SortableDateTime: "Y-m-d\\TH:i:s",<br/>    UniversalSortableDateTime: "Y-m-d H:i:sO",<br/>    YearMonth: "F, Y"<br/>};<br/></code></pre><br/><br/>Example usage:<br/><pre><code><br/>var dt = new Date();<br/>document.write(dt.format(Date.patterns.ShortDate));<br/> </code></pre>
     </div>
 
 	
@@ -1259,6 +1259,72 @@
 	   
 	   
             <td class="sig">
+                <a id="Date-method-getGMTColonOffset"   name=".getGMTColonOffset"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">getGMTColonOffset</b>
+				
+				 () 
+			
+				
+					 : 
+					
+						
+						<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Get the offset from GMT of the current date (equivalent to the format specifier 'P').</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Get the offset from GMT of the current date (equivalent to the format specifier 'P').
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  2-characters representing hours and 2-characters representing minutes<br/>seperated by a colon and prefixed with + or - (e.g. '-06:00')</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Date
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
                 <a id="Date-method-getGMTOffset"   name=".getGMTOffset"></a>
 		<div class="fixedFont">
 			<span class="attributes"></span><b class="itemname">getGMTOffset</b>
@@ -1320,7 +1386,7 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt1 expandable notInherited">
+          <tr class="method-row config-row-alt0 expandable notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -1386,7 +1452,7 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt0 expandable notInherited">
+          <tr class="method-row config-row-alt1 expandable notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -1452,7 +1518,7 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt1 expandable notInherited">
+          <tr class="method-row config-row-alt0 expandable notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -1518,7 +1584,7 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt0 expandable notInherited">
+          <tr class="method-row config-row-alt1 expandable notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -1584,7 +1650,7 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt1 expandable notInherited">
+          <tr class="method-row config-row-alt0 expandable notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -1650,7 +1716,7 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt0 expandable notInherited">
+          <tr class="method-row config-row-alt1 expandable notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -1743,7 +1809,7 @@
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Mon Aug 01 2011 18:28:36 GMT+0800 (HKT)
+			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Thu Aug 11 2011 10:08:55 GMT+0800 (HKT)
 			Based on 
 			<a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a>  
 		</div>
