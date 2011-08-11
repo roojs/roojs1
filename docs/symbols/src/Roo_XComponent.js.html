@@ -131,7 +131,7 @@
         </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hp </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parent </span><span class="jsdoc-syntax">? 1 : 0;
         
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">[0] == </span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.parent.substring</span><span class="jsdoc-syntax">(0,1) == </span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-comment">// if parent is a '#.....' string, then let's use that..
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ename </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parent.substr</span><span class="jsdoc-syntax">(1)
             </span><span class="jsdoc-var">this.parent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
@@ -248,7 +248,7 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">str </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'object'</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">[0]==</span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">str.substring</span><span class="jsdoc-syntax">(0,1) == </span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">;
         }
 
@@ -256,7 +256,12 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rt</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">rt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ar.shift</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-comment">/** eval:var:o */
-        </span><span class="jsdoc-keyword">eval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'if (typeof ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">rt </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' == &quot;undefined&quot;){ o = false;} o = ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">rt </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">';'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-keyword">eval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'if (typeof ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">rt </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' == &quot;undefined&quot;){ o = false;} o = ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">rt </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">';'</span><span class="jsdoc-syntax">);
+        } </span><span class="jsdoc-keyword">catch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">throw </span><span class="jsdoc-string">&quot;Module not found : &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">;
+        }
+        
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">throw </span><span class="jsdoc-string">&quot;Module not found : &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">;
         }
@@ -282,7 +287,12 @@
         </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.modules </span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">obj</span><span class="jsdoc-syntax">)
         {
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">opar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">obj.parent</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-var">obj.parent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.toObject</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">opar</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{ 
+                </span><span class="jsdoc-var">obj.parent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.toObject</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">opar</span><span class="jsdoc-syntax">);
+            } </span><span class="jsdoc-keyword">catch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.toString</span><span class="jsdoc-syntax">());
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
             
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">obj.parent</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">this.topModule </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">obj</span><span class="jsdoc-syntax">;
