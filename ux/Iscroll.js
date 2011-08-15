@@ -5,48 +5,48 @@
 
 namespace('Roo.ux');
 
-(function(){
-var m = Math,
-	vendor = (/webkit/i).test(navigator.appVersion) ? 'webkit' :
-		(/firefox/i).test(navigator.userAgent) ? 'Moz' :
-		'opera' in window ? 'O' : '',
-
-	// Browser capabilities
-	has3d = 'WebKitCSSMatrix' in window && 'm11' in new WebKitCSSMatrix(),
-	hasTouch = 'ontouchstart' in window,
-	hasTransform = vendor + 'Transform' in document.documentElement.style,
-	isAndroid = (/android/gi).test(navigator.appVersion),
-	isIDevice = (/iphone|ipad/gi).test(navigator.appVersion),
-	isPlaybook = (/playbook/gi).test(navigator.appVersion),
-	hasTransitionEnd = isIDevice || isPlaybook,
-	nextFrame = (function() {
-	    return window.requestAnimationFrame
-			|| window.webkitRequestAnimationFrame
-			|| window.mozRequestAnimationFrame
-			|| window.oRequestAnimationFrame
-			|| window.msRequestAnimationFrame
-			|| function(callback) { return setTimeout(callback, 1); }
-	})(),
-	cancelFrame = (function () {
-	    return window.cancelRequestAnimationFrame
-			|| window.webkitCancelRequestAnimationFrame
-			|| window.mozCancelRequestAnimationFrame
-			|| window.oCancelRequestAnimationFrame
-			|| window.msCancelRequestAnimationFrame
-			|| clearTimeout
-	})(),
-
-	// Events
-	RESIZE_EV = 'onorientationchange' in window ? 'orientationchange' : 'resize',
-	START_EV = hasTouch ? 'touchstart' : 'mousedown',
-	MOVE_EV = hasTouch ? 'touchmove' : 'mousemove',
-	END_EV = hasTouch ? 'touchend' : 'mouseup',
-	CANCEL_EV = hasTouch ? 'touchcancel' : 'mouseup',
-	WHEEL_EV = vendor == 'Moz' ? 'DOMMouseScroll' : 'mousewheel',
-
-	// Helpers
-	trnOpen = 'translate' + (has3d ? '3d(' : '('),
-	trnClose = has3d ? ',0)' : ')';
+    (function(){
+    var m = Math,
+        vendor = (/webkit/i).test(navigator.appVersion) ? 'webkit' :
+            (/firefox/i).test(navigator.userAgent) ? 'Moz' :
+            'opera' in window ? 'O' : '',
+    
+        // Browser capabilities
+        has3d = 'WebKitCSSMatrix' in window && 'm11' in new WebKitCSSMatrix(),
+        hasTouch = 'ontouchstart' in window,
+        hasTransform = vendor + 'Transform' in document.documentElement.style,
+        isAndroid = (/android/gi).test(navigator.appVersion),
+        isIDevice = (/iphone|ipad/gi).test(navigator.appVersion),
+        isPlaybook = (/playbook/gi).test(navigator.appVersion),
+        hasTransitionEnd = isIDevice || isPlaybook,
+        nextFrame = (function() {
+            return window.requestAnimationFrame
+                || window.webkitRequestAnimationFrame
+                || window.mozRequestAnimationFrame
+                || window.oRequestAnimationFrame
+                || window.msRequestAnimationFrame
+                || function(callback) { return setTimeout(callback, 1); }
+        })(),
+        cancelFrame = (function () {
+            return window.cancelRequestAnimationFrame
+                || window.webkitCancelRequestAnimationFrame
+                || window.mozCancelRequestAnimationFrame
+                || window.oCancelRequestAnimationFrame
+                || window.msCancelRequestAnimationFrame
+                || clearTimeout
+        })(),
+    
+        // Events
+        RESIZE_EV = 'onorientationchange' in window ? 'orientationchange' : 'resize',
+        START_EV = hasTouch ? 'touchstart' : 'mousedown',
+        MOVE_EV = hasTouch ? 'touchmove' : 'mousemove',
+        END_EV = hasTouch ? 'touchend' : 'mouseup',
+        CANCEL_EV = hasTouch ? 'touchcancel' : 'mouseup',
+        WHEEL_EV = vendor == 'Moz' ? 'DOMMouseScroll' : 'mousewheel',
+    
+        // Helpers
+        trnOpen = 'translate' + (has3d ? '3d(' : '('),
+        trnClose = has3d ? ',0)' : ')';
 
 	// Constructor
 	Roo.ux.iScroll = function (el, options) {
@@ -141,7 +141,7 @@ var m = Math,
 	};
 
 // Prototype
-iScroll.prototype = {
+Roo.ux.iScroll.prototype = {
 	enabled: true,
 	x: 0,
 	y: 0,
@@ -1043,7 +1043,7 @@ iScroll.prototype = {
 	}
 };
 
-if (typeof exports !== 'undefined') exports.iScroll = iScroll;
-else window.iScroll = iScroll;
+//if (typeof exports !== 'undefined') exports.iScroll = iScroll;
+//else window.iScroll = iScroll;
 
 })();
