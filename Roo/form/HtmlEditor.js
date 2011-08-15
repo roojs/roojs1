@@ -260,7 +260,9 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     },
 
     // private
-    onResize : function(w, h){
+    onResize : function(w, h)
+    {
+        Roo.log('resize: ' +w + ',' + h ;)
         Roo.form.HtmlEditor.superclass.onResize.apply(this, arguments);
         if(this.el && this.iframe){
             if(typeof w == 'number'){
