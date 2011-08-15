@@ -49,7 +49,7 @@ namespace('Roo.ux');
         trnClose = has3d ? ',0)' : ')';
 
 	// Constructor
-	Roo.ux.iScroll = function (el, options) {
+Roo.ux.iScroll = function (el, options) {
 		var that = this,
 			doc = document,
 			i;
