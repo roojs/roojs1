@@ -44,7 +44,19 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
      */
     defaultLinkValue : 'http:/'+'/',
    
-    
+     /**
+     * @cfg {String} resizable  's' or 'se' or 'e' - wrapps the element in a
+     *                        Roo.resizable.
+     */
+    resizable : false,
+     /**
+     * @cfg {Number} height (in pixels)
+     */   
+    height: 300,
+   /**
+     * @cfg {Number} width (in pixels)
+     */   
+    width: 500,
     // id of frame..
     frameId: false,
     
@@ -57,7 +69,8 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     onFocus : Roo.emptyFn,
     iframePad:3,
     hideMode:'offsets',
-    defaultAutoCreate : {
+    
+    defaultAutoCreate : { // modified by initCompnoent..
         tag: "textarea",
         style:"width:500px;height:300px;",
         autocomplete: "off"
@@ -122,7 +135,12 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
              * @param {HtmlEditor} this
              */
             editorevent: true
-        })
+        });
+        this.defaultAutoCreate =  {
+            tag: "textarea",
+            style:'width: ' + this.width + 'px;height: ' + this.height + 'px;',
+            autocomplete: "off"
+        };
     },
 
     /**
@@ -154,7 +172,9 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     },
 
     // private
-    onRender : function(ct, position){
+    onRender : function(ct, position)
+    {
+        var _t = this;
         Roo.form.HtmlEditor.superclass.onRender.call(this, ct, position);
         this.el.dom.style.border = '0 none';
         this.el.dom.setAttribute('tabIndex', -1);
@@ -165,6 +185,24 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         this.wrap = this.el.wrap({
             cls:'x-html-editor-wrap', cn:{cls:'x-html-editor-tb'}
         });
+        
+        if (this.resizable) {
+            this.resizeEl = new Roo.Resizable(this.wrap, {
+                pinned : true,
+                wrap: true,
+                dynamic : true,
+                minHeight : this.height,
+                height: this.height,
+                handles : this.resizable,
+                width: this.width,
+                listeners : {
+                    resize : function(r, w, h) {
+                        _t.onResize(w,h); // -something
+                    }
+                }
+            });
+            
+        }
 
         this.frameId = Roo.id();
         this.createToolbar(this);
@@ -217,12 +255,18 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         Roo.TaskMgr.start(task);
 
         if(!this.width){
-            this.setSize(this.el.getSize());
+            this.setSize(this.wrap.getSize());
+        }
+        if (this.resizeEl) {
+            this.resizeEl.resizeTo.defer(100, this.resizeEl,[ this.width,this.height ] );
+            // should trigger onReize..
         }
     },
 
     // private
-    onResize : function(w, h){
+    onResize : function(w, h)
+    {
+        //Roo.log('resize: ' +w + ',' + h );
         Roo.form.HtmlEditor.superclass.onResize.apply(this, arguments);
         if(this.el && this.iframe){
             if(typeof w == 'number'){
@@ -241,6 +285,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 
                 
                 var ah = h - this.wrap.getFrameWidth('tb') - tbh;// this.tb.el.getHeight();
+                ah -= 10; // knock a few pixes off for look..
                 this.el.setHeight(this.adjustWidth('textarea', ah));
                 this.iframe.style.height = ah + 'px';
                 if(this.doc){
