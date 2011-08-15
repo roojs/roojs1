@@ -257,6 +257,10 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         if(!this.width){
             this.setSize(this.wrap.getSize());
         }
+        if (this.resizeEl) {
+            this.resizeEl.resizeTo(this.width,this.height);
+            // should trigger onReize..
+        }
     },
 
     // private
