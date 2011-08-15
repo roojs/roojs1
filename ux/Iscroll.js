@@ -3,7 +3,7 @@
  * Released under MIT license, http://cubiq.org/license
  */
 
-namespace('Roo.ux');
+Roo.namespace('Roo.ux');
 
 (function(){
     var m = Math,
