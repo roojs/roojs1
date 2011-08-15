@@ -87,7 +87,7 @@ Roo.onReady(function(){
                         name: 'company',
                         width:225
                     }
-                ],
+                ]
             },
     
             {
@@ -122,14 +122,15 @@ Roo.onReady(function(){
                         name : 'bio',
                         fieldLabel:'Biography',
                         width:550,
-                        height:400
+                        height:400,
+                        resizable: 's' /// where the handles should got..
                     }
                 ]
             }
         ] 
        
     });
-  mform.addButton('Save');
+    mform.addButton('Save');
     mform.addButton('Cancel');
 
    
