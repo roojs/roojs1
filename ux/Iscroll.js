@@ -57,11 +57,11 @@ Roo.ux.iScroll = function (el, options) {
 
 		that.wrapper = typeof el == 'object' ? el : doc.getElementById(el);
         
-        var wrap = Roo.get(that.wrapper.children[0]);
+        //var wrap = Roo.get(that.wrapper.children[0]);
         
         
 		//that.wrapper.style.overflow = 'hidden';
-		that.scroller = wrap.wrap();
+		that.scroller = that.wrapper.children[0];
 
 		// Default options
 		that.options = {
