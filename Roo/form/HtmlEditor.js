@@ -53,7 +53,10 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
      * @cfg {Number} height (in pixels)
      */   
     height: 300,
-   
+   /**
+     * @cfg {Number} width (in pixels)
+     */   
+    width: 500,
     // id of frame..
     frameId: false,
     
@@ -67,7 +70,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     iframePad:3,
     hideMode:'offsets',
     
-    defaultAutoCreate : {
+    defaultAutoCreate : { // modified by initCompnoent..
         tag: "textarea",
         style:"width:500px;height:300px;",
         autocomplete: "off"
