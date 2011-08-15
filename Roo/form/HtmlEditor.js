@@ -190,7 +190,8 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 dynamic : true,
                 minHeight : this.height,
                 height: this.height,
-                handles : this.resizable
+                handles : this.resizable,
+                width: this.width
             });
             
         }
