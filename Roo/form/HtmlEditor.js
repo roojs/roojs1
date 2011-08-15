@@ -44,7 +44,12 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
      */
     defaultLinkValue : 'http:/'+'/',
    
-    
+     /**
+     * @cfg {String} resizable  's' or 'se' or 'e' - wrapps the element in a
+     *                        Roo.resizable.
+     */
+    resizable : false,
+   
     // id of frame..
     frameId: false,
     
@@ -165,6 +170,16 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         this.wrap = this.el.wrap({
             cls:'x-html-editor-wrap', cn:{cls:'x-html-editor-tb'}
         });
+        
+        if (this.resizable) {
+            this.resizeEl = new Roo.Resizable(this.wrap, {
+                wrap: true,
+                dynamic : true,
+                minHeight : this.height,
+                handles : this.resizable
+            });
+            
+        }
 
         this.frameId = Roo.id();
         this.createToolbar(this);
