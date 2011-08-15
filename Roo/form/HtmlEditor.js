@@ -49,6 +49,10 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
      *                        Roo.resizable.
      */
     resizable : false,
+     /**
+     * @cfg {Number} height (in pixels)
+     */   
+    height: 300,
    
     // id of frame..
     frameId: false,
@@ -62,6 +66,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     onFocus : Roo.emptyFn,
     iframePad:3,
     hideMode:'offsets',
+    
     defaultAutoCreate : {
         tag: "textarea",
         style:"width:500px;height:300px;",
@@ -127,7 +132,12 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
              * @param {HtmlEditor} this
              */
             editorevent: true
-        })
+        });
+        this.defaultAutoCreate =  {
+            tag: "textarea",
+            style:'width: ' + this.width + 'px;height: ' + this.height + 'px;",
+            autocomplete: "off"
+        },
     },
 
     /**
