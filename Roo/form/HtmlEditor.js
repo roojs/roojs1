@@ -172,7 +172,9 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     },
 
     // private
-    onRender : function(ct, position){
+    onRender : function(ct, position)
+    {
+        var _t = this;
         Roo.form.HtmlEditor.superclass.onRender.call(this, ct, position);
         this.el.dom.style.border = '0 none';
         this.el.dom.setAttribute('tabIndex', -1);
@@ -192,7 +194,12 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 minHeight : this.height,
                 height: this.height,
                 handles : this.resizable,
-                width: this.width
+                width: this.width,
+                listeners : {
+                    resize : function(r, w, h) {
+                        _t.iframe.style.dom.height = h + 'px'; // -something
+                    }
+                }
             });
             
         }
