@@ -135,7 +135,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         });
         this.defaultAutoCreate =  {
             tag: "textarea",
-            style:'width: ' + this.width + 'px;height: ' + this.height + 'px;",
+            style:'width: ' + this.width + 'px;height: ' + this.height + 'px;',
             autocomplete: "off"
         },
     },
