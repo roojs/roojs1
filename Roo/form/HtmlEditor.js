@@ -137,7 +137,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             tag: "textarea",
             style:'width: ' + this.width + 'px;height: ' + this.height + 'px;',
             autocomplete: "off"
-        },
+        };
     },
 
     /**
