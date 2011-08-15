@@ -186,6 +186,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         
         if (this.resizable) {
             this.resizeEl = new Roo.Resizable(this.wrap, {
+                pinned : true,
                 wrap: true,
                 dynamic : true,
                 minHeight : this.height,
