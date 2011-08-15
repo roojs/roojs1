@@ -197,7 +197,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 width: this.width,
                 listeners : {
                     resize : function(r, w, h) {
-                        _t.iframe.style.height = h + 'px'; // -something
+                        _t.onResize(w,h); // -something
                     }
                 }
             });
