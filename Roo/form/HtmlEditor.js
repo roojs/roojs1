@@ -255,7 +255,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         Roo.TaskMgr.start(task);
 
         if(!this.width){
-            this.setSize(this.el.getSize());
+            this.setSize(this.wrap.getSize());
         }
     },
 
