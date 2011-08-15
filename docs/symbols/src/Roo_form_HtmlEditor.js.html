@@ -44,7 +44,19 @@
      */
     </span><span class="jsdoc-var">defaultLinkValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'http:/'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'/'</span><span class="jsdoc-syntax">,
    
-    
+     </span><span class="jsdoc-comment">/**
+     * @cfg {String} resizable  's' or 'se' or 'e' - wrapps the element in a
+     *                        Roo.resizable.
+     */
+    </span><span class="jsdoc-var">resizable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+     </span><span class="jsdoc-comment">/**
+     * @cfg {Number} height (in pixels)
+     */   
+    </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">: 300,
+   </span><span class="jsdoc-comment">/**
+     * @cfg {Number} width (in pixels)
+     */   
+    </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: 500,
     </span><span class="jsdoc-comment">// id of frame..
     </span><span class="jsdoc-var">frameId</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
@@ -57,7 +69,8 @@
     </span><span class="jsdoc-var">onFocus </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.emptyFn</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">iframePad</span><span class="jsdoc-syntax">:3,
     </span><span class="jsdoc-var">hideMode</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'offsets'</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">defaultAutoCreate </span><span class="jsdoc-syntax">: {
+    
+    </span><span class="jsdoc-var">defaultAutoCreate </span><span class="jsdoc-syntax">: { </span><span class="jsdoc-comment">// modified by initCompnoent..
         </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;textarea&quot;</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;width:500px;height:300px;&quot;</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-var">autocomplete</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;off&quot;
@@ -122,7 +135,12 @@
              * @param {HtmlEditor} this
              */
             </span><span class="jsdoc-var">editorevent</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
-        </span><span class="jsdoc-syntax">})
+        </span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-var">this.defaultAutoCreate </span><span class="jsdoc-syntax">=  {
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;textarea&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'width: ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px;height: ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.height </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px;'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">autocomplete</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;off&quot;
+        </span><span class="jsdoc-syntax">};
     },
 
     </span><span class="jsdoc-comment">/**
@@ -154,7 +172,9 @@
     },
 
     </span><span class="jsdoc-comment">// private
-    </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">Roo.form.HtmlEditor.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.el.dom.style.border </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'0 none'</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.el.dom.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tabIndex'</span><span class="jsdoc-syntax">, -1);
@@ -165,6 +185,24 @@
         </span><span class="jsdoc-var">this.wrap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.wrap</span><span class="jsdoc-syntax">({
             </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'x-html-editor-wrap'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">:{</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'x-html-editor-tb'</span><span class="jsdoc-syntax">}
         });
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resizable</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.resizeEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Resizable</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.wrap</span><span class="jsdoc-syntax">, {
+                </span><span class="jsdoc-var">pinned </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">wrap</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">dynamic </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">minHeight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.height</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.height</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">handles </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.resizable</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
+                    </span><span class="jsdoc-var">resize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-var">_t.onResize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// -something
+                    </span><span class="jsdoc-syntax">}
+                }
+            });
+            
+        }
 
         </span><span class="jsdoc-var">this.frameId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.createToolbar</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
@@ -217,12 +255,18 @@
         </span><span class="jsdoc-var">Roo.TaskMgr.start</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">task</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.getSize</span><span class="jsdoc-syntax">());
+            </span><span class="jsdoc-var">this.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.wrap.getSize</span><span class="jsdoc-syntax">());
         }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resizeEl</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.resizeEl.resizeTo.defer</span><span class="jsdoc-syntax">(100, </span><span class="jsdoc-var">this.resizeEl</span><span class="jsdoc-syntax">,[ </span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.height </span><span class="jsdoc-syntax">] );
+            </span><span class="jsdoc-comment">// should trigger onReize..
+        </span><span class="jsdoc-syntax">}
     },
 
     </span><span class="jsdoc-comment">// private
-    </span><span class="jsdoc-var">onResize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">onResize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'resize: ' </span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">',' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">Roo.form.HtmlEditor.superclass.onResize.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.iframe</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'number'</span><span class="jsdoc-syntax">){
@@ -241,6 +285,7 @@
                 
                 
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ah </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.wrap.getFrameWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tb'</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">tbh</span><span class="jsdoc-syntax">;</span><span class="jsdoc-comment">// this.tb.el.getHeight();
+                </span><span class="jsdoc-var">ah </span><span class="jsdoc-syntax">-= 10; </span><span class="jsdoc-comment">// knock a few pixes off for look..
                 </span><span class="jsdoc-var">this.el.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.adjustWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'textarea'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ah</span><span class="jsdoc-syntax">));
                 </span><span class="jsdoc-var">this.iframe.style.height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ah </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px'</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.doc</span><span class="jsdoc-syntax">){
