@@ -46,7 +46,7 @@ var m = Math,
 
 	// Helpers
 	trnOpen = 'translate' + (has3d ? '3d(' : '('),
-	trnClose = has3d ? ',0)' : ')',
+	trnClose = has3d ? ',0)' : ')';
 
 	// Constructor
 	Roo.ux.iScroll = function (el, options) {
