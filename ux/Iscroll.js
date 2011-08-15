@@ -56,7 +56,7 @@ Roo.ux.iScroll = function (el, options) {
 			i;
 
 		that.wrapper = typeof el == 'object' ? el : doc.getElementById(el);
-		that.wrapper.style.overflow = 'hidden';
+		//that.wrapper.style.overflow = 'hidden';
 		that.scroller = that.wrapper.children[0];
 
 		// Default options
@@ -200,7 +200,10 @@ Roo.ux.iScroll.prototype = {
 			if (that.options.scrollbarClass) bar.className = that.options.scrollbarClass + dir.toUpperCase();
 			else bar.style.cssText = 'position:absolute;z-index:100;' + (dir == 'h' ? 'height:7px;bottom:1px;left:2px;right:' + (that.vScrollbar ? '7' : '2') + 'px' : 'width:7px;bottom:' + (that.hScrollbar ? '7' : '2') + 'px;top:2px;right:1px');
 
-			bar.style.cssText += ';pointer-events:none;-' + vendor + '-transition-property:opacity;-' + vendor + '-transition-duration:' + (that.options.fadeScrollbar ? '350ms' : '0') + ';overflow:hidden;opacity:' + (that.options.hideScrollbar ? '0' : '1');
+			bar.style.cssText += ';pointer-events:none;-' +
+                    vendor + '-transition-property:opacity;-' +
+                    vendor + '-transition-duration:' + (that.options.fadeScrollbar ? '350ms' : '0') +
+                    ';overflow:hidden;opacity:' + (that.options.hideScrollbar ? '0' : '1');
 
 			that.wrapper.appendChild(bar);
 			that[dir + 'ScrollbarWrapper'] = bar;
