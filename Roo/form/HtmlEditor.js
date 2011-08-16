@@ -953,6 +953,18 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             return;
             
         }
+        if (Roo.form.HtmlEditor.remove.indexOf(node.tagName.toLowerCase()) > -1) {
+            this.cleanUpChildren(node);
+            // inserts everything just before this node...
+            while (node.childNodes.length) {
+                var cn = node.childNodes[0];
+                node.removeChild(cn);
+                node.parentNode.insertBefore(cn, node);
+            }
+            node.parentNode.removeChild(node);
+            return;
+        }
+        
         if (!node.attributes || !node.attributes.length) {
             this.cleanUpChildren(node);
             return;
@@ -984,7 +996,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             Roo.each(parts, function(p) {
                 p = p.replace(/\s+/g,'');
                 if (!p.length) {
-                    return;
+                    return true;
                 }
                 var l = p.split(':').shift().replace(/\s+/g,'');
                 
@@ -993,6 +1005,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                     node.removeAttribute(n);
                     return false;
                 }
+                return true;
             });
             
             
@@ -1104,7 +1117,9 @@ Roo.form.HtmlEditor.black = [
 Roo.form.HtmlEditor.clean = [
     'script', 'style', 'title', 'xml'
 ];
-
+Roo.form.HtmlEditor.remove = [
+    'font'
+];
 // attributes..
 
 Roo.form.HtmlEditor.ablack = [
