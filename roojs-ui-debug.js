@@ -28965,3 +28965,4112 @@ Roo.extend(Roo.DDView, Roo.View, {
 		}
     }
 });
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.LayoutManager
+ * @extends Roo.util.Observable
+ * Base class for layout managers.
+ */
+Roo.LayoutManager = function(container, config){
+    Roo.LayoutManager.superclass.constructor.call(this);
+    this.el = Roo.get(container);
+    // ie scrollbar fix
+    if(this.el.dom == document.body && Roo.isIE && !config.allowScroll){
+        document.body.scroll = "no";
+    }else if(this.el.dom != document.body && this.el.getStyle('position') == 'static'){
+        this.el.position('relative');
+    }
+    this.id = this.el.id;
+    this.el.addClass("x-layout-container");
+    /** false to disable window resize monitoring @type Boolean */
+    this.monitorWindowResize = true;
+    this.regions = {};
+    this.addEvents({
+        /**
+         * @event layout
+         * Fires when a layout is performed. 
+         * @param {Roo.LayoutManager} this
+         */
+        "layout" : true,
+        /**
+         * @event regionresized
+         * Fires when the user resizes a region. 
+         * @param {Roo.LayoutRegion} region The resized region
+         * @param {Number} newSize The new size (width for east/west, height for north/south)
+         */
+        "regionresized" : true,
+        /**
+         * @event regioncollapsed
+         * Fires when a region is collapsed. 
+         * @param {Roo.LayoutRegion} region The collapsed region
+         */
+        "regioncollapsed" : true,
+        /**
+         * @event regionexpanded
+         * Fires when a region is expanded.  
+         * @param {Roo.LayoutRegion} region The expanded region
+         */
+        "regionexpanded" : true
+    });
+    this.updating = false;
+    Roo.EventManager.onWindowResize(this.onWindowResize, this, true);
+};
+
+Roo.extend(Roo.LayoutManager, Roo.util.Observable, {
+    /**
+     * Returns true if this layout is currently being updated
+     * @return {Boolean}
+     */
+    isUpdating : function(){
+        return this.updating; 
+    },
+    
+    /**
+     * Suspend the LayoutManager from doing auto-layouts while
+     * making multiple add or remove calls
+     */
+    beginUpdate : function(){
+        this.updating = true;    
+    },
+    
+    /**
+     * Restore auto-layouts and optionally disable the manager from performing a layout
+     * @param {Boolean} noLayout true to disable a layout update 
+     */
+    endUpdate : function(noLayout){
+        this.updating = false;
+        if(!noLayout){
+            this.layout();
+        }    
+    },
+    
+    layout: function(){
+        
+    },
+    
+    onRegionResized : function(region, newSize){
+        this.fireEvent("regionresized", region, newSize);
+        this.layout();
+    },
+    
+    onRegionCollapsed : function(region){
+        this.fireEvent("regioncollapsed", region);
+    },
+    
+    onRegionExpanded : function(region){
+        this.fireEvent("regionexpanded", region);
+    },
+        
+    /**
+     * Returns the size of the current view. This method normalizes document.body and element embedded layouts and
+     * performs box-model adjustments.
+     * @return {Object} The size as an object {width: (the width), height: (the height)}
+     */
+    getViewSize : function(){
+        var size;
+        if(this.el.dom != document.body){
+            size = this.el.getSize();
+        }else{
+            size = {width: Roo.lib.Dom.getViewWidth(), height: Roo.lib.Dom.getViewHeight()};
+        }
+        size.width -= this.el.getBorderWidth("lr")-this.el.getPadding("lr");
+        size.height -= this.el.getBorderWidth("tb")-this.el.getPadding("tb");
+        return size;
+    },
+    
+    /**
+     * Returns the Element this layout is bound to.
+     * @return {Roo.Element}
+     */
+    getEl : function(){
+        return this.el;
+    },
+    
+    /**
+     * Returns the specified region.
+     * @param {String} target The region key ('center', 'north', 'south', 'east' or 'west')
+     * @return {Roo.LayoutRegion}
+     */
+    getRegion : function(target){
+        return this.regions[target.toLowerCase()];
+    },
+    
+    onWindowResize : function(){
+        if(this.monitorWindowResize){
+            this.layout();
+        }
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+/**
+ * @class Roo.BorderLayout
+ * @extends Roo.LayoutManager
+ * This class represents a common layout manager used in desktop applications. For screenshots and more details,
+ * please see: <br><br>
+ * <a href="http://www.jackslocum.com/yui/2006/10/19/cross-browser-web-20-layouts-with-yahoo-ui/">Cross Browser Layouts - Part 1</a><br>
+ * <a href="http://www.jackslocum.com/yui/2006/10/28/cross-browser-web-20-layouts-part-2-ajax-feed-viewer-20/">Cross Browser Layouts - Part 2</a><br><br>
+ * Example:
+ <pre><code>
+ var layout = new Roo.BorderLayout(document.body, {
+    north: {
+        initialSize: 25,
+        titlebar: false
+    },
+    west: {
+        split:true,
+        initialSize: 200,
+        minSize: 175,
+        maxSize: 400,
+        titlebar: true,
+        collapsible: true
+    },
+    east: {
+        split:true,
+        initialSize: 202,
+        minSize: 175,
+        maxSize: 400,
+        titlebar: true,
+        collapsible: true
+    },
+    south: {
+        split:true,
+        initialSize: 100,
+        minSize: 100,
+        maxSize: 200,
+        titlebar: true,
+        collapsible: true
+    },
+    center: {
+        titlebar: true,
+        autoScroll:true,
+        resizeTabs: true,
+        minTabWidth: 50,
+        preferredTabWidth: 150
+    }
+});
+
+// shorthand
+var CP = Roo.ContentPanel;
+
+layout.beginUpdate();
+layout.add("north", new CP("north", "North"));
+layout.add("south", new CP("south", {title: "South", closable: true}));
+layout.add("west", new CP("west", {title: "West"}));
+layout.add("east", new CP("autoTabs", {title: "Auto Tabs", closable: true}));
+layout.add("center", new CP("center1", {title: "Close Me", closable: true}));
+layout.add("center", new CP("center2", {title: "Center Panel", closable: false}));
+layout.getRegion("center").showPanel("center1");
+layout.endUpdate();
+</code></pre>
+
+<b>The container the layout is rendered into can be either the body element or any other element.
+If it is not the body element, the container needs to either be an absolute positioned element,
+or you will need to add "position:relative" to the css of the container.  You will also need to specify
+the container size if it is not the body element.</b>
+
+* @constructor
+* Create a new BorderLayout
+* @param {String/HTMLElement/Element} container The container this layout is bound to
+* @param {Object} config Configuration options
+ */
+Roo.BorderLayout = function(container, config){
+    config = config || {};
+    Roo.BorderLayout.superclass.constructor.call(this, container, config);
+    this.factory = config.factory || Roo.BorderLayout.RegionFactory;
+    for(var i = 0, len = this.factory.validRegions.length; i < len; i++) {
+    	var target = this.factory.validRegions[i];
+    	if(config[target]){
+    	    this.addRegion(target, config[target]);
+    	}
+    }
+};
+
+Roo.extend(Roo.BorderLayout, Roo.LayoutManager, {
+    /**
+     * Creates and adds a new region if it doesn't already exist.
+     * @param {String} target The target region key (north, south, east, west or center).
+     * @param {Object} config The regions config object
+     * @return {BorderLayoutRegion} The new region
+     */
+    addRegion : function(target, config){
+        if(!this.regions[target]){
+            var r = this.factory.create(target, this, config);
+    	    this.bindRegion(target, r);
+        }
+        return this.regions[target];
+    },
+
+    // private (kinda)
+    bindRegion : function(name, r){
+        this.regions[name] = r;
+        r.on("visibilitychange", this.layout, this);
+        r.on("paneladded", this.layout, this);
+        r.on("panelremoved", this.layout, this);
+        r.on("invalidated", this.layout, this);
+        r.on("resized", this.onRegionResized, this);
+        r.on("collapsed", this.onRegionCollapsed, this);
+        r.on("expanded", this.onRegionExpanded, this);
+    },
+
+    /**
+     * Performs a layout update.
+     */
+    layout : function(){
+        if(this.updating) return;
+        var size = this.getViewSize();
+        var w = size.width;
+        var h = size.height;
+        var centerW = w;
+        var centerH = h;
+        var centerY = 0;
+        var centerX = 0;
+        //var x = 0, y = 0;
+
+        var rs = this.regions;
+        var north = rs["north"];
+        var south = rs["south"]; 
+        var west = rs["west"];
+        var east = rs["east"];
+        var center = rs["center"];
+        //if(this.hideOnLayout){ // not supported anymore
+            //c.el.setStyle("display", "none");
+        //}
+        if(north && north.isVisible()){
+            var b = north.getBox();
+            var m = north.getMargins();
+            b.width = w - (m.left+m.right);
+            b.x = m.left;
+            b.y = m.top;
+            centerY = b.height + b.y + m.bottom;
+            centerH -= centerY;
+            north.updateBox(this.safeBox(b));
+        }
+        if(south && south.isVisible()){
+            var b = south.getBox();
+            var m = south.getMargins();
+            b.width = w - (m.left+m.right);
+            b.x = m.left;
+            var totalHeight = (b.height + m.top + m.bottom);
+            b.y = h - totalHeight + m.top;
+            centerH -= totalHeight;
+            south.updateBox(this.safeBox(b));
+        }
+        if(west && west.isVisible()){
+            var b = west.getBox();
+            var m = west.getMargins();
+            b.height = centerH - (m.top+m.bottom);
+            b.x = m.left;
+            b.y = centerY + m.top;
+            var totalWidth = (b.width + m.left + m.right);
+            centerX += totalWidth;
+            centerW -= totalWidth;
+            west.updateBox(this.safeBox(b));
+        }
+        if(east && east.isVisible()){
+            var b = east.getBox();
+            var m = east.getMargins();
+            b.height = centerH - (m.top+m.bottom);
+            var totalWidth = (b.width + m.left + m.right);
+            b.x = w - totalWidth + m.left;
+            b.y = centerY + m.top;
+            centerW -= totalWidth;
+            east.updateBox(this.safeBox(b));
+        }
+        if(center){
+            var m = center.getMargins();
+            var centerBox = {
+                x: centerX + m.left,
+                y: centerY + m.top,
+                width: centerW - (m.left+m.right),
+                height: centerH - (m.top+m.bottom)
+            };
+            //if(this.hideOnLayout){
+                //center.el.setStyle("display", "block");
+            //}
+            center.updateBox(this.safeBox(centerBox));
+        }
+        this.el.repaint();
+        this.fireEvent("layout", this);
+    },
+
+    // private
+    safeBox : function(box){
+        box.width = Math.max(0, box.width);
+        box.height = Math.max(0, box.height);
+        return box;
+    },
+
+    /**
+     * Adds a ContentPanel (or subclass) to this layout.
+     * @param {String} target The target region key (north, south, east, west or center).
+     * @param {Roo.ContentPanel} panel The panel to add
+     * @return {Roo.ContentPanel} The added panel
+     */
+    add : function(target, panel){
+         
+        target = target.toLowerCase();
+        return this.regions[target].add(panel);
+    },
+
+    /**
+     * Remove a ContentPanel (or subclass) to this layout.
+     * @param {String} target The target region key (north, south, east, west or center).
+     * @param {Number/String/Roo.ContentPanel} panel The index, id or panel to remove
+     * @return {Roo.ContentPanel} The removed panel
+     */
+    remove : function(target, panel){
+        target = target.toLowerCase();
+        return this.regions[target].remove(panel);
+    },
+
+    /**
+     * Searches all regions for a panel with the specified id
+     * @param {String} panelId
+     * @return {Roo.ContentPanel} The panel or null if it wasn't found
+     */
+    findPanel : function(panelId){
+        var rs = this.regions;
+        for(var target in rs){
+            if(typeof rs[target] != "function"){
+                var p = rs[target].getPanel(panelId);
+                if(p){
+                    return p;
+                }
+            }
+        }
+        return null;
+    },
+
+    /**
+     * Searches all regions for a panel with the specified id and activates (shows) it.
+     * @param {String/ContentPanel} panelId The panels id or the panel itself
+     * @return {Roo.ContentPanel} The shown panel or null
+     */
+    showPanel : function(panelId) {
+      var rs = this.regions;
+      for(var target in rs){
+         var r = rs[target];
+         if(typeof r != "function"){
+            if(r.hasPanel(panelId)){
+               return r.showPanel(panelId);
+            }
+         }
+      }
+      return null;
+   },
+
+   /**
+     * Restores this layout's state using Roo.state.Manager or the state provided by the passed provider.
+     * @param {Roo.state.Provider} provider (optional) An alternate state provider
+     */
+    restoreState : function(provider){
+        if(!provider){
+            provider = Roo.state.Manager;
+        }
+        var sm = new Roo.LayoutStateManager();
+        sm.init(this, provider);
+    },
+
+    /**
+     * Adds a batch of multiple ContentPanels dynamically by passing a special regions config object.  This config
+     * object should contain properties for each region to add ContentPanels to, and each property's value should be
+     * a valid ContentPanel config object.  Example:
+     * <pre><code>
+// Create the main layout
+var layout = new Roo.BorderLayout('main-ct', {
+    west: {
+        split:true,
+        minSize: 175,
+        titlebar: true
+    },
+    center: {
+        title:'Components'
+    }
+}, 'main-ct');
+
+// Create and add multiple ContentPanels at once via configs
+layout.batchAdd({
+   west: {
+       id: 'source-files',
+       autoCreate:true,
+       title:'Ext Source Files',
+       autoScroll:true,
+       fitToFrame:true
+   },
+   center : {
+       el: cview,
+       autoScroll:true,
+       fitToFrame:true,
+       toolbar: tb,
+       resizeEl:'cbody'
+   }
+});
+</code></pre>
+     * @param {Object} regions An object containing ContentPanel configs by region name
+     */
+    batchAdd : function(regions){
+        this.beginUpdate();
+        for(var rname in regions){
+            var lr = this.regions[rname];
+            if(lr){
+                this.addTypedPanels(lr, regions[rname]);
+            }
+        }
+        this.endUpdate();
+    },
+
+    // private
+    addTypedPanels : function(lr, ps){
+        if(typeof ps == 'string'){
+            lr.add(new Roo.ContentPanel(ps));
+        }
+        else if(ps instanceof Array){
+            for(var i =0, len = ps.length; i < len; i++){
+                this.addTypedPanels(lr, ps[i]);
+            }
+        }
+        else if(!ps.events){ // raw config?
+            var el = ps.el;
+            delete ps.el; // prevent conflict
+            lr.add(new Roo.ContentPanel(el || Roo.id(), ps));
+        }
+        else {  // panel object assumed!
+            lr.add(ps);
+        }
+    },
+    /**
+     * Adds a xtype elements to the layout.
+     * <pre><code>
+
+layout.addxtype({
+       xtype : 'ContentPanel',
+       region: 'west',
+       items: [ .... ]
+   }
+);
+
+layout.addxtype({
+        xtype : 'NestedLayoutPanel',
+        region: 'west',
+        layout: {
+           center: { },
+           west: { }   
+        },
+        items : [ ... list of content panels or nested layout panels.. ]
+   }
+);
+</code></pre>
+     * @param {Object} cfg Xtype definition of item to add.
+     */
+    addxtype : function(cfg)
+    {
+        // basically accepts a pannel...
+        // can accept a layout region..!?!?
+       // console.log('BorderLayout add ' + cfg.xtype)
+        
+        if (!cfg.xtype.match(/Panel$/)) {
+            return false;
+        }
+        var ret = false;
+        var region = cfg.region;
+        delete cfg.region;
+        
+          
+        var xitems = [];
+        if (cfg.items) {
+            xitems = cfg.items;
+            delete cfg.items;
+        }
+        
+        
+        switch(cfg.xtype) 
+        {
+            case 'ContentPanel':  // ContentPanel (el, cfg)
+            case 'ScrollPanel':  // ContentPanel (el, cfg)
+                if(cfg.autoCreate) {
+                    ret = new Roo[cfg.xtype](cfg); // new panel!!!!!
+                } else {
+                    var el = this.el.createChild();
+                    ret = new Roo[cfg.xtype](el, cfg); // new panel!!!!!
+                }
+                
+                this.add(region, ret);
+                break;
+            
+            
+            case 'TreePanel': // our new panel!
+                cfg.el = this.el.createChild();
+                ret = new Roo[cfg.xtype](cfg); // new panel!!!!!
+                this.add(region, ret);
+                break;
+            
+            case 'NestedLayoutPanel': 
+                // create a new Layout (which is  a Border Layout...
+                var el = this.el.createChild();
+                var clayout = cfg.layout;
+                delete cfg.layout;
+                clayout.items   = clayout.items  || [];
+                // replace this exitems with the clayout ones..
+                xitems = clayout.items;
+                 
+                
+                if (region == 'center' && this.active && this.getRegion('center').panels.length < 1) {
+                    cfg.background = false;
+                }
+                var layout = new Roo.BorderLayout(el, clayout);
+                
+                ret = new Roo[cfg.xtype](layout, cfg); // new panel!!!!!
+                //console.log('adding nested layout panel '  + cfg.toSource());
+                this.add(region, ret);
+                
+                break;
+                
+            case 'GridPanel': 
+            
+                // needs grid and region
+                
+                //var el = this.getRegion(region).el.createChild();
+                var el = this.el.createChild();
+                // create the grid first...
+                
+                var grid = new Roo.grid[cfg.grid.xtype](el, cfg.grid);
+                delete cfg.grid;
+                if (region == 'center' && this.active ) {
+                    cfg.background = false;
+                }
+                ret = new Roo[cfg.xtype](grid, cfg); // new panel!!!!!
+                
+                this.add(region, ret);
+                if (cfg.background) {
+                    ret.on('activate', function(gp) {
+                        if (!gp.grid.rendered) {
+                            gp.grid.render();
+                        }
+                    });
+                } else {
+                    grid.render();
+                }
+                break;
+           
+               
+                
+                
+            default: 
+                alert("Can not add '" + cfg.xtype + "' to BorderLayout");
+                return null;
+             // GridPanel (grid, cfg)
+            
+        }
+        this.beginUpdate();
+        // add children..
+        Roo.each(xitems, function(i)  {
+            ret.addxtype(i);
+        });
+        this.endUpdate();
+        return ret;
+        
+    }
+});
+
+/**
+ * Shortcut for creating a new BorderLayout object and adding one or more ContentPanels to it in a single step, handling
+ * the beginUpdate and endUpdate calls internally.  The key to this method is the <b>panels</b> property that can be
+ * provided with each region config, which allows you to add ContentPanel configs in addition to the region configs
+ * during creation.  The following code is equivalent to the constructor-based example at the beginning of this class:
+ * <pre><code>
+// shorthand
+var CP = Roo.ContentPanel;
+
+var layout = Roo.BorderLayout.create({
+    north: {
+        initialSize: 25,
+        titlebar: false,
+        panels: [new CP("north", "North")]
+    },
+    west: {
+        split:true,
+        initialSize: 200,
+        minSize: 175,
+        maxSize: 400,
+        titlebar: true,
+        collapsible: true,
+        panels: [new CP("west", {title: "West"})]
+    },
+    east: {
+        split:true,
+        initialSize: 202,
+        minSize: 175,
+        maxSize: 400,
+        titlebar: true,
+        collapsible: true,
+        panels: [new CP("autoTabs", {title: "Auto Tabs", closable: true})]
+    },
+    south: {
+        split:true,
+        initialSize: 100,
+        minSize: 100,
+        maxSize: 200,
+        titlebar: true,
+        collapsible: true,
+        panels: [new CP("south", {title: "South", closable: true})]
+    },
+    center: {
+        titlebar: true,
+        autoScroll:true,
+        resizeTabs: true,
+        minTabWidth: 50,
+        preferredTabWidth: 150,
+        panels: [
+            new CP("center1", {title: "Close Me", closable: true}),
+            new CP("center2", {title: "Center Panel", closable: false})
+        ]
+    }
+}, document.body);
+
+layout.getRegion("center").showPanel("center1");
+</code></pre>
+ * @param config
+ * @param targetEl
+ */
+Roo.BorderLayout.create = function(config, targetEl){
+    var layout = new Roo.BorderLayout(targetEl || document.body, config);
+    layout.beginUpdate();
+    var regions = Roo.BorderLayout.RegionFactory.validRegions;
+    for(var j = 0, jlen = regions.length; j < jlen; j++){
+        var lr = regions[j];
+        if(layout.regions[lr] && config[lr].panels){
+            var r = layout.regions[lr];
+            var ps = config[lr].panels;
+            layout.addTypedPanels(r, ps);
+        }
+    }
+    layout.endUpdate();
+    return layout;
+};
+
+// private
+Roo.BorderLayout.RegionFactory = {
+    // private
+    validRegions : ["north","south","east","west","center"],
+
+    // private
+    create : function(target, mgr, config){
+        target = target.toLowerCase();
+        if(config.lightweight || config.basic){
+            return new Roo.BasicLayoutRegion(mgr, config, target);
+        }
+        switch(target){
+            case "north":
+                return new Roo.NorthLayoutRegion(mgr, config);
+            case "south":
+                return new Roo.SouthLayoutRegion(mgr, config);
+            case "east":
+                return new Roo.EastLayoutRegion(mgr, config);
+            case "west":
+                return new Roo.WestLayoutRegion(mgr, config);
+            case "center":
+                return new Roo.CenterLayoutRegion(mgr, config);
+        }
+        throw 'Layout region "'+target+'" not supported.';
+    }
+};/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.BasicLayoutRegion
+ * @extends Roo.util.Observable
+ * This class represents a lightweight region in a layout manager. This region does not move dom nodes
+ * and does not have a titlebar, tabs or any other features. All it does is size and position 
+ * panels. To create a BasicLayoutRegion, add lightweight:true or basic:true to your regions config.
+ */
+Roo.BasicLayoutRegion = function(mgr, config, pos, skipConfig){
+    this.mgr = mgr;
+    this.position  = pos;
+    this.events = {
+        /**
+         * @scope Roo.BasicLayoutRegion
+         */
+        
+        /**
+         * @event beforeremove
+         * Fires before a panel is removed (or closed). To cancel the removal set "e.cancel = true" on the event argument.
+         * @param {Roo.LayoutRegion} this
+         * @param {Roo.ContentPanel} panel The panel
+         * @param {Object} e The cancel event object
+         */
+        "beforeremove" : true,
+        /**
+         * @event invalidated
+         * Fires when the layout for this region is changed.
+         * @param {Roo.LayoutRegion} this
+         */
+        "invalidated" : true,
+        /**
+         * @event visibilitychange
+         * Fires when this region is shown or hidden 
+         * @param {Roo.LayoutRegion} this
+         * @param {Boolean} visibility true or false
+         */
+        "visibilitychange" : true,
+        /**
+         * @event paneladded
+         * Fires when a panel is added. 
+         * @param {Roo.LayoutRegion} this
+         * @param {Roo.ContentPanel} panel The panel
+         */
+        "paneladded" : true,
+        /**
+         * @event panelremoved
+         * Fires when a panel is removed. 
+         * @param {Roo.LayoutRegion} this
+         * @param {Roo.ContentPanel} panel The panel
+         */
+        "panelremoved" : true,
+        /**
+         * @event collapsed
+         * Fires when this region is collapsed.
+         * @param {Roo.LayoutRegion} this
+         */
+        "collapsed" : true,
+        /**
+         * @event expanded
+         * Fires when this region is expanded.
+         * @param {Roo.LayoutRegion} this
+         */
+        "expanded" : true,
+        /**
+         * @event slideshow
+         * Fires when this region is slid into view.
+         * @param {Roo.LayoutRegion} this
+         */
+        "slideshow" : true,
+        /**
+         * @event slidehide
+         * Fires when this region slides out of view. 
+         * @param {Roo.LayoutRegion} this
+         */
+        "slidehide" : true,
+        /**
+         * @event panelactivated
+         * Fires when a panel is activated. 
+         * @param {Roo.LayoutRegion} this
+         * @param {Roo.ContentPanel} panel The activated panel
+         */
+        "panelactivated" : true,
+        /**
+         * @event resized
+         * Fires when the user resizes this region. 
+         * @param {Roo.LayoutRegion} this
+         * @param {Number} newSize The new size (width for east/west, height for north/south)
+         */
+        "resized" : true
+    };
+    /** A collection of panels in this region. @type Roo.util.MixedCollection */
+    this.panels = new Roo.util.MixedCollection();
+    this.panels.getKey = this.getPanelId.createDelegate(this);
+    this.box = null;
+    this.activePanel = null;
+    // ensure listeners are added...
+    
+    if (config.listeners || config.events) {
+        Roo.BasicLayoutRegion.superclass.constructor.call(this, {
+            listeners : config.listeners || {},
+            events : config.events || {}
+        });
+    }
+    
+    if(skipConfig !== true){
+        this.applyConfig(config);
+    }
+};
+
+Roo.extend(Roo.BasicLayoutRegion, Roo.util.Observable, {
+    getPanelId : function(p){
+        return p.getId();
+    },
+    
+    applyConfig : function(config){
+        this.margins = config.margins || this.margins || {top: 0, left: 0, right:0, bottom: 0};
+        this.config = config;
+        
+    },
+    
+    /**
+     * Resizes the region to the specified size. For vertical regions (west, east) this adjusts 
+     * the width, for horizontal (north, south) the height.
+     * @param {Number} newSize The new width or height
+     */
+    resizeTo : function(newSize){
+        var el = this.el ? this.el :
+                 (this.activePanel ? this.activePanel.getEl() : null);
+        if(el){
+            switch(this.position){
+                case "east":
+                case "west":
+                    el.setWidth(newSize);
+                    this.fireEvent("resized", this, newSize);
+                break;
+                case "north":
+                case "south":
+                    el.setHeight(newSize);
+                    this.fireEvent("resized", this, newSize);
+                break;                
+            }
+        }
+    },
+    
+    getBox : function(){
+        return this.activePanel ? this.activePanel.getEl().getBox(false, true) : null;
+    },
+    
+    getMargins : function(){
+        return this.margins;
+    },
+    
+    updateBox : function(box){
+        this.box = box;
+        var el = this.activePanel.getEl();
+        el.dom.style.left = box.x + "px";
+        el.dom.style.top = box.y + "px";
+        this.activePanel.setSize(box.width, box.height);
+    },
+    
+    /**
+     * Returns the container element for this region.
+     * @return {Roo.Element}
+     */
+    getEl : function(){
+        return this.activePanel;
+    },
+    
+    /**
+     * Returns true if this region is currently visible.
+     * @return {Boolean}
+     */
+    isVisible : function(){
+        return this.activePanel ? true : false;
+    },
+    
+    setActivePanel : function(panel){
+        panel = this.getPanel(panel);
+        if(this.activePanel && this.activePanel != panel){
+            this.activePanel.setActiveState(false);
+            this.activePanel.getEl().setLeftTop(-10000,-10000);
+        }
+        this.activePanel = panel;
+        panel.setActiveState(true);
+        if(this.box){
+            panel.setSize(this.box.width, this.box.height);
+        }
+        this.fireEvent("panelactivated", this, panel);
+        this.fireEvent("invalidated");
+    },
+    
+    /**
+     * Show the specified panel.
+     * @param {Number/String/ContentPanel} panelId The panels index, id or the panel itself
+     * @return {Roo.ContentPanel} The shown panel or null
+     */
+    showPanel : function(panel){
+        if(panel = this.getPanel(panel)){
+            this.setActivePanel(panel);
+        }
+        return panel;
+    },
+    
+    /**
+     * Get the active panel for this region.
+     * @return {Roo.ContentPanel} The active panel or null
+     */
+    getActivePanel : function(){
+        return this.activePanel;
+    },
+    
+    /**
+     * Add the passed ContentPanel(s)
+     * @param {ContentPanel...} panel The ContentPanel(s) to add (you can pass more than one)
+     * @return {Roo.ContentPanel} The panel added (if only one was added)
+     */
+    add : function(panel){
+        if(arguments.length > 1){
+            for(var i = 0, len = arguments.length; i < len; i++) {
+            	this.add(arguments[i]);
+            }
+            return null;
+        }
+        if(this.hasPanel(panel)){
+            this.showPanel(panel);
+            return panel;
+        }
+        var el = panel.getEl();
+        if(el.dom.parentNode != this.mgr.el.dom){
+            this.mgr.el.dom.appendChild(el.dom);
+        }
+        if(panel.setRegion){
+            panel.setRegion(this);
+        }
+        this.panels.add(panel);
+        el.setStyle("position", "absolute");
+        if(!panel.background){
+            this.setActivePanel(panel);
+            if(this.config.initialSize && this.panels.getCount()==1){
+                this.resizeTo(this.config.initialSize);
+            }
+        }
+        this.fireEvent("paneladded", this, panel);
+        return panel;
+    },
+    
+    /**
+     * Returns true if the panel is in this region.
+     * @param {Number/String/ContentPanel} panel The panels index, id or the panel itself
+     * @return {Boolean}
+     */
+    hasPanel : function(panel){
+        if(typeof panel == "object"){ // must be panel obj
+            panel = panel.getId();
+        }
+        return this.getPanel(panel) ? true : false;
+    },
+    
+    /**
+     * Removes the specified panel. If preservePanel is not true (either here or in the config), the panel is destroyed.
+     * @param {Number/String/ContentPanel} panel The panels index, id or the panel itself
+     * @param {Boolean} preservePanel Overrides the config preservePanel option
+     * @return {Roo.ContentPanel} The panel that was removed
+     */
+    remove : function(panel, preservePanel){
+        panel = this.getPanel(panel);
+        if(!panel){
+            return null;
+        }
+        var e = {};
+        this.fireEvent("beforeremove", this, panel, e);
+        if(e.cancel === true){
+            return null;
+        }
+        var panelId = panel.getId();
+        this.panels.removeKey(panelId);
+        return panel;
+    },
+    
+    /**
+     * Returns the panel specified or null if it's not in this region.
+     * @param {Number/String/ContentPanel} panel The panels index, id or the panel itself
+     * @return {Roo.ContentPanel}
+     */
+    getPanel : function(id){
+        if(typeof id == "object"){ // must be panel obj
+            return id;
+        }
+        return this.panels.get(id);
+    },
+    
+    /**
+     * Returns this regions position (north/south/east/west/center).
+     * @return {String} 
+     */
+    getPosition: function(){
+        return this.position;    
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.LayoutRegion
+ * @extends Roo.BasicLayoutRegion
+ * This class represents a region in a layout manager.
+ * @cfg {Boolean}   collapsible     False to disable collapsing (defaults to true)
+ * @cfg {Boolean}   collapsed       True to set the initial display to collapsed (defaults to false)
+ * @cfg {Boolean}   floatable       False to disable floating (defaults to true)
+ * @cfg {Object}    margins         Margins for the element (defaults to {top: 0, left: 0, right:0, bottom: 0})
+ * @cfg {Object}    cmargins        Margins for the element when collapsed (defaults to: north/south {top: 2, left: 0, right:0, bottom: 2} or east/west {top: 0, left: 2, right:2, bottom: 0})
+ * @cfg {String}    tabPosition     "top" or "bottom" (defaults to "bottom")
+ * @cfg {String}    collapsedTitle  Optional string message to display in the collapsed block of a north or south region
+ * @cfg {Boolean}   alwaysShowTabs  True to always display tabs even when there is only 1 panel (defaults to false)
+ * @cfg {Boolean}   autoScroll      True to enable overflow scrolling (defaults to false)
+ * @cfg {Boolean}   titlebar        True to display a title bar (defaults to true)
+ * @cfg {String}    title           The title for the region (overrides panel titles)
+ * @cfg {Boolean}   animate         True to animate expand/collapse (defaults to false)
+ * @cfg {Boolean}   autoHide        False to disable auto hiding when the mouse leaves the "floated" region (defaults to true)
+ * @cfg {Boolean}   preservePanels  True to preserve removed panels so they can be readded later (defaults to false)
+ * @cfg {Boolean}   closeOnTab      True to place the close icon on the tabs instead of the region titlebar (defaults to false)
+ * @cfg {Boolean}   hideTabs        True to hide the tab strip (defaults to false)
+ * @cfg {Boolean}   resizeTabs      True to enable automatic tab resizing. This will resize the tabs so they are all the same size and fit within
+ *                      the space available, similar to FireFox 1.5 tabs (defaults to false)
+ * @cfg {Number}    minTabWidth     The minimum tab width (defaults to 40)
+ * @cfg {Number}    preferredTabWidth The preferred tab width (defaults to 150)
+ * @cfg {Boolean}   showPin         True to show a pin button
+ * @cfg {Boolean}   hidden          True to start the region hidden (defaults to false)
+ * @cfg {Boolean}   hideWhenEmpty   True to hide the region when it has no panels
+ * @cfg {Boolean}   disableTabTips  True to disable tab tooltips
+ * @cfg {Number}    width           For East/West panels
+ * @cfg {Number}    height          For North/South panels
+ * @cfg {Boolean}   split           To show the splitter
+ * @cfg {Boolean}   toolbar         xtype configuration for a toolbar - shows on right of tabbar
+ */
+Roo.LayoutRegion = function(mgr, config, pos){
+    Roo.LayoutRegion.superclass.constructor.call(this, mgr, config, pos, true);
+    var dh = Roo.DomHelper;
+    /** This region's container element 
+    * @type Roo.Element */
+    this.el = dh.append(mgr.el.dom, {tag: "div", cls: "x-layout-panel x-layout-panel-" + this.position}, true);
+    /** This region's title element 
+    * @type Roo.Element */
+
+    this.titleEl = dh.append(this.el.dom, {tag: "div", unselectable: "on", cls: "x-unselectable x-layout-panel-hd x-layout-title-"+this.position, children:[
+        {tag: "span", cls: "x-unselectable x-layout-panel-hd-text", unselectable: "on", html: "&#160;"},
+        {tag: "div", cls: "x-unselectable x-layout-panel-hd-tools", unselectable: "on"}
+    ]}, true);
+    this.titleEl.enableDisplayMode();
+    /** This region's title text element 
+    * @type HTMLElement */
+    this.titleTextEl = this.titleEl.dom.firstChild;
+    this.tools = Roo.get(this.titleEl.dom.childNodes[1], true);
+    this.closeBtn = this.createTool(this.tools.dom, "x-layout-close");
+    this.closeBtn.enableDisplayMode();
+    this.closeBtn.on("click", this.closeClicked, this);
+    this.closeBtn.hide();
+
+    this.createBody(config);
+    this.visible = true;
+    this.collapsed = false;
+
+    if(config.hideWhenEmpty){
+        this.hide();
+        this.on("paneladded", this.validateVisibility, this);
+        this.on("panelremoved", this.validateVisibility, this);
+    }
+    this.applyConfig(config);
+};
+
+Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
+
+    createBody : function(){
+        /** This region's body element 
+        * @type Roo.Element */
+        this.bodyEl = this.el.createChild({tag: "div", cls: "x-layout-panel-body"});
+    },
+
+    applyConfig : function(c){
+        if(c.collapsible && this.position != "center" && !this.collapsedEl){
+            var dh = Roo.DomHelper;
+            if(c.titlebar !== false){
+                this.collapseBtn = this.createTool(this.tools.dom, "x-layout-collapse-"+this.position);
+                this.collapseBtn.on("click", this.collapse, this);
+                this.collapseBtn.enableDisplayMode();
+
+                if(c.showPin === true || this.showPin){
+                    this.stickBtn = this.createTool(this.tools.dom, "x-layout-stick");
+                    this.stickBtn.enableDisplayMode();
+                    this.stickBtn.on("click", this.expand, this);
+                    this.stickBtn.hide();
+                }
+            }
+            /** This region's collapsed element
+            * @type Roo.Element */
+            this.collapsedEl = dh.append(this.mgr.el.dom, {cls: "x-layout-collapsed x-layout-collapsed-"+this.position, children:[
+                {cls: "x-layout-collapsed-tools", children:[{cls: "x-layout-ctools-inner"}]}
+            ]}, true);
+            if(c.floatable !== false){
+               this.collapsedEl.addClassOnOver("x-layout-collapsed-over");
+               this.collapsedEl.on("click", this.collapseClick, this);
+            }
+
+            if(c.collapsedTitle && (this.position == "north" || this.position== "south")) {
+                this.collapsedTitleTextEl = dh.append(this.collapsedEl.dom, {tag: "div", cls: "x-unselectable x-layout-panel-hd-text",
+                   id: "message", unselectable: "on", style:{"float":"left"}});
+               this.collapsedTitleTextEl.innerHTML = c.collapsedTitle;
+             }
+            this.expandBtn = this.createTool(this.collapsedEl.dom.firstChild.firstChild, "x-layout-expand-"+this.position);
+            this.expandBtn.on("click", this.expand, this);
+        }
+        if(this.collapseBtn){
+            this.collapseBtn.setVisible(c.collapsible == true);
+        }
+        this.cmargins = c.cmargins || this.cmargins ||
+                         (this.position == "west" || this.position == "east" ?
+                             {top: 0, left: 2, right:2, bottom: 0} :
+                             {top: 2, left: 0, right:0, bottom: 2});
+        this.margins = c.margins || this.margins || {top: 0, left: 0, right:0, bottom: 0};
+        this.bottomTabs = c.tabPosition != "top";
+        this.autoScroll = c.autoScroll || false;
+        if(this.autoScroll){
+            this.bodyEl.setStyle("overflow", "auto");
+        }else{
+            this.bodyEl.setStyle("overflow", "hidden");
+        }
+        //if(c.titlebar !== false){
+            if((!c.titlebar && !c.title) || c.titlebar === false){
+                this.titleEl.hide();
+            }else{
+                this.titleEl.show();
+                if(c.title){
+                    this.titleTextEl.innerHTML = c.title;
+                }
+            }
+        //}
+        this.duration = c.duration || .30;
+        this.slideDuration = c.slideDuration || .45;
+        this.config = c;
+        if(c.collapsed){
+            this.collapse(true);
+        }
+        if(c.hidden){
+            this.hide();
+        }
+    },
+    /**
+     * Returns true if this region is currently visible.
+     * @return {Boolean}
+     */
+    isVisible : function(){
+        return this.visible;
+    },
+
+    /**
+     * Updates the title for collapsed north/south regions (used with {@link #collapsedTitle} config option)
+     * @param {String} title (optional) The title text (accepts HTML markup, defaults to the numeric character reference for a non-breaking space, "&amp;#160;")
+     */
+    setCollapsedTitle : function(title){
+        title = title || "&#160;";
+        if(this.collapsedTitleTextEl){
+            this.collapsedTitleTextEl.innerHTML = title;
+        }
+    },
+
+    getBox : function(){
+        var b;
+        if(!this.collapsed){
+            b = this.el.getBox(false, true);
+        }else{
+            b = this.collapsedEl.getBox(false, true);
+        }
+        return b;
+    },
+
+    getMargins : function(){
+        return this.collapsed ? this.cmargins : this.margins;
+    },
+
+    highlight : function(){
+        this.el.addClass("x-layout-panel-dragover");
+    },
+
+    unhighlight : function(){
+        this.el.removeClass("x-layout-panel-dragover");
+    },
+
+    updateBox : function(box){
+        this.box = box;
+        if(!this.collapsed){
+            this.el.dom.style.left = box.x + "px";
+            this.el.dom.style.top = box.y + "px";
+            this.updateBody(box.width, box.height);
+        }else{
+            this.collapsedEl.dom.style.left = box.x + "px";
+            this.collapsedEl.dom.style.top = box.y + "px";
+            this.collapsedEl.setSize(box.width, box.height);
+        }
+        if(this.tabs){
+            this.tabs.autoSizeTabs();
+        }
+    },
+
+    updateBody : function(w, h){
+        if(w !== null){
+            this.el.setWidth(w);
+            w -= this.el.getBorderWidth("rl");
+            if(this.config.adjustments){
+                w += this.config.adjustments[0];
+            }
+        }
+        if(h !== null){
+            this.el.setHeight(h);
+            h = this.titleEl && this.titleEl.isDisplayed() ? h - (this.titleEl.getHeight()||0) : h;
+            h -= this.el.getBorderWidth("tb");
+            if(this.config.adjustments){
+                h += this.config.adjustments[1];
+            }
+            this.bodyEl.setHeight(h);
+            if(this.tabs){
+                h = this.tabs.syncHeight(h);
+            }
+        }
+        if(this.panelSize){
+            w = w !== null ? w : this.panelSize.width;
+            h = h !== null ? h : this.panelSize.height;
+        }
+        if(this.activePanel){
+            var el = this.activePanel.getEl();
+            w = w !== null ? w : el.getWidth();
+            h = h !== null ? h : el.getHeight();
+            this.panelSize = {width: w, height: h};
+            this.activePanel.setSize(w, h);
+        }
+        if(Roo.isIE && this.tabs){
+            this.tabs.el.repaint();
+        }
+    },
+
+    /**
+     * Returns the container element for this region.
+     * @return {Roo.Element}
+     */
+    getEl : function(){
+        return this.el;
+    },
+
+    /**
+     * Hides this region.
+     */
+    hide : function(){
+        if(!this.collapsed){
+            this.el.dom.style.left = "-2000px";
+            this.el.hide();
+        }else{
+            this.collapsedEl.dom.style.left = "-2000px";
+            this.collapsedEl.hide();
+        }
+        this.visible = false;
+        this.fireEvent("visibilitychange", this, false);
+    },
+
+    /**
+     * Shows this region if it was previously hidden.
+     */
+    show : function(){
+        if(!this.collapsed){
+            this.el.show();
+        }else{
+            this.collapsedEl.show();
+        }
+        this.visible = true;
+        this.fireEvent("visibilitychange", this, true);
+    },
+
+    closeClicked : function(){
+        if(this.activePanel){
+            this.remove(this.activePanel);
+        }
+    },
+
+    collapseClick : function(e){
+        if(this.isSlid){
+           e.stopPropagation();
+           this.slideIn();
+        }else{
+           e.stopPropagation();
+           this.slideOut();
+        }
+    },
+
+    /**
+     * Collapses this region.
+     * @param {Boolean} skipAnim (optional) true to collapse the element without animation (if animate is true)
+     */
+    collapse : function(skipAnim){
+        if(this.collapsed) return;
+        this.collapsed = true;
+        if(this.split){
+            this.split.el.hide();
+        }
+        if(this.config.animate && skipAnim !== true){
+            this.fireEvent("invalidated", this);
+            this.animateCollapse();
+        }else{
+            this.el.setLocation(-20000,-20000);
+            this.el.hide();
+            this.collapsedEl.show();
+            this.fireEvent("collapsed", this);
+            this.fireEvent("invalidated", this);
+        }
+    },
+
+    animateCollapse : function(){
+        // overridden
+    },
+
+    /**
+     * Expands this region if it was previously collapsed.
+     * @param {Roo.EventObject} e The event that triggered the expand (or null if calling manually)
+     * @param {Boolean} skipAnim (optional) true to expand the element without animation (if animate is true)
+     */
+    expand : function(e, skipAnim){
+        if(e) e.stopPropagation();
+        if(!this.collapsed || this.el.hasActiveFx()) return;
+        if(this.isSlid){
+            this.afterSlideIn();
+            skipAnim = true;
+        }
+        this.collapsed = false;
+        if(this.config.animate && skipAnim !== true){
+            this.animateExpand();
+        }else{
+            this.el.show();
+            if(this.split){
+                this.split.el.show();
+            }
+            this.collapsedEl.setLocation(-2000,-2000);
+            this.collapsedEl.hide();
+            this.fireEvent("invalidated", this);
+            this.fireEvent("expanded", this);
+        }
+    },
+
+    animateExpand : function(){
+        // overridden
+    },
+
+    initTabs : function()
+    {
+        this.bodyEl.setStyle("overflow", "hidden");
+        var ts = new Roo.TabPanel(
+                this.bodyEl.dom,
+                {
+                    tabPosition: this.bottomTabs ? 'bottom' : 'top',
+                    disableTooltips: this.config.disableTabTips,
+                    toolbar : this.config.toolbar
+                }
+        );
+        if(this.config.hideTabs){
+            ts.stripWrap.setDisplayed(false);
+        }
+        this.tabs = ts;
+        ts.resizeTabs = this.config.resizeTabs === true;
+        ts.minTabWidth = this.config.minTabWidth || 40;
+        ts.maxTabWidth = this.config.maxTabWidth || 250;
+        ts.preferredTabWidth = this.config.preferredTabWidth || 150;
+        ts.monitorResize = false;
+        ts.bodyEl.setStyle("overflow", this.config.autoScroll ? "auto" : "hidden");
+        ts.bodyEl.addClass('x-layout-tabs-body');
+        this.panels.each(this.initPanelAsTab, this);
+    },
+
+    initPanelAsTab : function(panel){
+        var ti = this.tabs.addTab(panel.getEl().id, panel.getTitle(), null,
+                    this.config.closeOnTab && panel.isClosable());
+        if(panel.tabTip !== undefined){
+            ti.setTooltip(panel.tabTip);
+        }
+        ti.on("activate", function(){
+              this.setActivePanel(panel);
+        }, this);
+        if(this.config.closeOnTab){
+            ti.on("beforeclose", function(t, e){
+                e.cancel = true;
+                this.remove(panel);
+            }, this);
+        }
+        return ti;
+    },
+
+    updatePanelTitle : function(panel, title){
+        if(this.activePanel == panel){
+            this.updateTitle(title);
+        }
+        if(this.tabs){
+            var ti = this.tabs.getTab(panel.getEl().id);
+            ti.setText(title);
+            if(panel.tabTip !== undefined){
+                ti.setTooltip(panel.tabTip);
+            }
+        }
+    },
+
+    updateTitle : function(title){
+        if(this.titleTextEl && !this.config.title){
+            this.titleTextEl.innerHTML = (typeof title != "undefined" && title.length > 0 ? title : "&#160;");
+        }
+    },
+
+    setActivePanel : function(panel){
+        panel = this.getPanel(panel);
+        if(this.activePanel && this.activePanel != panel){
+            this.activePanel.setActiveState(false);
+        }
+        this.activePanel = panel;
+        panel.setActiveState(true);
+        if(this.panelSize){
+            panel.setSize(this.panelSize.width, this.panelSize.height);
+        }
+        if(this.closeBtn){
+            this.closeBtn.setVisible(!this.config.closeOnTab && !this.isSlid && panel.isClosable());
+        }
+        this.updateTitle(panel.getTitle());
+        if(this.tabs){
+            this.fireEvent("invalidated", this);
+        }
+        this.fireEvent("panelactivated", this, panel);
+    },
+
+    /**
+     * Shows the specified panel.
+     * @param {Number/String/ContentPanel} panelId The panel's index, id or the panel itself
+     * @return {Roo.ContentPanel} The shown panel, or null if a panel could not be found from panelId
+     */
+    showPanel : function(panel){
+        if(panel = this.getPanel(panel)){
+            if(this.tabs){
+                var tab = this.tabs.getTab(panel.getEl().id);
+                if(tab.isHidden()){
+                    this.tabs.unhideTab(tab.id);
+                }
+                tab.activate();
+            }else{
+                this.setActivePanel(panel);
+            }
+        }
+        return panel;
+    },
+
+    /**
+     * Get the active panel for this region.
+     * @return {Roo.ContentPanel} The active panel or null
+     */
+    getActivePanel : function(){
+        return this.activePanel;
+    },
+
+    validateVisibility : function(){
+        if(this.panels.getCount() < 1){
+            this.updateTitle("&#160;");
+            this.closeBtn.hide();
+            this.hide();
+        }else{
+            if(!this.isVisible()){
+                this.show();
+            }
+        }
+    },
+
+    /**
+     * Adds the passed ContentPanel(s) to this region.
+     * @param {ContentPanel...} panel The ContentPanel(s) to add (you can pass more than one)
+     * @return {Roo.ContentPanel} The panel added (if only one was added; null otherwise)
+     */
+    add : function(panel){
+        if(arguments.length > 1){
+            for(var i = 0, len = arguments.length; i < len; i++) {
+                this.add(arguments[i]);
+            }
+            return null;
+        }
+        if(this.hasPanel(panel)){
+            this.showPanel(panel);
+            return panel;
+        }
+        panel.setRegion(this);
+        this.panels.add(panel);
+        if(this.panels.getCount() == 1 && !this.config.alwaysShowTabs){
+            this.bodyEl.dom.appendChild(panel.getEl().dom);
+            if(panel.background !== true){
+                this.setActivePanel(panel);
+            }
+            this.fireEvent("paneladded", this, panel);
+            return panel;
+        }
+        if(!this.tabs){
+            this.initTabs();
+        }else{
+            this.initPanelAsTab(panel);
+        }
+        if(panel.background !== true){
+            this.tabs.activate(panel.getEl().id);
+        }
+        this.fireEvent("paneladded", this, panel);
+        return panel;
+    },
+
+    /**
+     * Hides the tab for the specified panel.
+     * @param {Number/String/ContentPanel} panel The panel's index, id or the panel itself
+     */
+    hidePanel : function(panel){
+        if(this.tabs && (panel = this.getPanel(panel))){
+            this.tabs.hideTab(panel.getEl().id);
+        }
+    },
+
+    /**
+     * Unhides the tab for a previously hidden panel.
+     * @param {Number/String/ContentPanel} panel The panel's index, id or the panel itself
+     */
+    unhidePanel : function(panel){
+        if(this.tabs && (panel = this.getPanel(panel))){
+            this.tabs.unhideTab(panel.getEl().id);
+        }
+    },
+
+    clearPanels : function(){
+        while(this.panels.getCount() > 0){
+             this.remove(this.panels.first());
+        }
+    },
+
+    /**
+     * Removes the specified panel. If preservePanel is not true (either here or in the config), the panel is destroyed.
+     * @param {Number/String/ContentPanel} panel The panel's index, id or the panel itself
+     * @param {Boolean} preservePanel Overrides the config preservePanel option
+     * @return {Roo.ContentPanel} The panel that was removed
+     */
+    remove : function(panel, preservePanel){
+        panel = this.getPanel(panel);
+        if(!panel){
+            return null;
+        }
+        var e = {};
+        this.fireEvent("beforeremove", this, panel, e);
+        if(e.cancel === true){
+            return null;
+        }
+        preservePanel = (typeof preservePanel != "undefined" ? preservePanel : (this.config.preservePanels === true || panel.preserve === true));
+        var panelId = panel.getId();
+        this.panels.removeKey(panelId);
+        if(preservePanel){
+            document.body.appendChild(panel.getEl().dom);
+        }
+        if(this.tabs){
+            this.tabs.removeTab(panel.getEl().id);
+        }else if (!preservePanel){
+            this.bodyEl.dom.removeChild(panel.getEl().dom);
+        }
+        if(this.panels.getCount() == 1 && this.tabs && !this.config.alwaysShowTabs){
+            var p = this.panels.first();
+            var tempEl = document.createElement("div"); // temp holder to keep IE from deleting the node
+            tempEl.appendChild(p.getEl().dom);
+            this.bodyEl.update("");
+            this.bodyEl.dom.appendChild(p.getEl().dom);
+            tempEl = null;
+            this.updateTitle(p.getTitle());
+            this.tabs = null;
+            this.bodyEl.setStyle("overflow", this.config.autoScroll ? "auto" : "hidden");
+            this.setActivePanel(p);
+        }
+        panel.setRegion(null);
+        if(this.activePanel == panel){
+            this.activePanel = null;
+        }
+        if(this.config.autoDestroy !== false && preservePanel !== true){
+            try{panel.destroy();}catch(e){}
+        }
+        this.fireEvent("panelremoved", this, panel);
+        return panel;
+    },
+
+    /**
+     * Returns the TabPanel component used by this region
+     * @return {Roo.TabPanel}
+     */
+    getTabs : function(){
+        return this.tabs;
+    },
+
+    createTool : function(parentEl, className){
+        var btn = Roo.DomHelper.append(parentEl, {tag: "div", cls: "x-layout-tools-button",
+            children: [{tag: "div", cls: "x-layout-tools-button-inner " + className, html: "&#160;"}]}, true);
+        btn.addClassOnOver("x-layout-tools-button-over");
+        return btn;
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+
+
+/**
+ * @class Roo.SplitLayoutRegion
+ * @extends Roo.LayoutRegion
+ * Adds a splitbar and other (private) useful functionality to a {@link Roo.LayoutRegion}.
+ */
+Roo.SplitLayoutRegion = function(mgr, config, pos, cursor){
+    this.cursor = cursor;
+    Roo.SplitLayoutRegion.superclass.constructor.call(this, mgr, config, pos);
+};
+
+Roo.extend(Roo.SplitLayoutRegion, Roo.LayoutRegion, {
+    splitTip : "Drag to resize.",
+    collapsibleSplitTip : "Drag to resize. Double click to hide.",
+    useSplitTips : false,
+
+    applyConfig : function(config){
+        Roo.SplitLayoutRegion.superclass.applyConfig.call(this, config);
+        if(config.split){
+            if(!this.split){
+                var splitEl = Roo.DomHelper.append(this.mgr.el.dom, 
+                        {tag: "div", id: this.el.id + "-split", cls: "x-layout-split x-layout-split-"+this.position, html: "&#160;"});
+                /** The SplitBar for this region 
+                * @type Roo.SplitBar */
+                this.split = new Roo.SplitBar(splitEl, this.el, this.orientation);
+                this.split.on("moved", this.onSplitMove, this);
+                this.split.useShim = config.useShim === true;
+                this.split.getMaximumSize = this[this.position == 'north' || this.position == 'south' ? 'getVMaxSize' : 'getHMaxSize'].createDelegate(this);
+                if(this.useSplitTips){
+                    this.split.el.dom.title = config.collapsible ? this.collapsibleSplitTip : this.splitTip;
+                }
+                if(config.collapsible){
+                    this.split.el.on("dblclick", this.collapse,  this);
+                }
+            }
+            if(typeof config.minSize != "undefined"){
+                this.split.minSize = config.minSize;
+            }
+            if(typeof config.maxSize != "undefined"){
+                this.split.maxSize = config.maxSize;
+            }
+            if(config.hideWhenEmpty || config.hidden || config.collapsed){
+                this.hideSplitter();
+            }
+        }
+    },
+
+    getHMaxSize : function(){
+         var cmax = this.config.maxSize || 10000;
+         var center = this.mgr.getRegion("center");
+         return Math.min(cmax, (this.el.getWidth()+center.getEl().getWidth())-center.getMinWidth());
+    },
+
+    getVMaxSize : function(){
+         var cmax = this.config.maxSize || 10000;
+         var center = this.mgr.getRegion("center");
+         return Math.min(cmax, (this.el.getHeight()+center.getEl().getHeight())-center.getMinHeight());
+    },
+
+    onSplitMove : function(split, newSize){
+        this.fireEvent("resized", this, newSize);
+    },
+    
+    /** 
+     * Returns the {@link Roo.SplitBar} for this region.
+     * @return {Roo.SplitBar}
+     */
+    getSplitBar : function(){
+        return this.split;
+    },
+    
+    hide : function(){
+        this.hideSplitter();
+        Roo.SplitLayoutRegion.superclass.hide.call(this);
+    },
+
+    hideSplitter : function(){
+        if(this.split){
+            this.split.el.setLocation(-2000,-2000);
+            this.split.el.hide();
+        }
+    },
+
+    show : function(){
+        if(this.split){
+            this.split.el.show();
+        }
+        Roo.SplitLayoutRegion.superclass.show.call(this);
+    },
+    
+    beforeSlide: function(){
+        if(Roo.isGecko){// firefox overflow auto bug workaround
+            this.bodyEl.clip();
+            if(this.tabs) this.tabs.bodyEl.clip();
+            if(this.activePanel){
+                this.activePanel.getEl().clip();
+                
+                if(this.activePanel.beforeSlide){
+                    this.activePanel.beforeSlide();
+                }
+            }
+        }
+    },
+    
+    afterSlide : function(){
+        if(Roo.isGecko){// firefox overflow auto bug workaround
+            this.bodyEl.unclip();
+            if(this.tabs) this.tabs.bodyEl.unclip();
+            if(this.activePanel){
+                this.activePanel.getEl().unclip();
+                if(this.activePanel.afterSlide){
+                    this.activePanel.afterSlide();
+                }
+            }
+        }
+    },
+
+    initAutoHide : function(){
+        if(this.autoHide !== false){
+            if(!this.autoHideHd){
+                var st = new Roo.util.DelayedTask(this.slideIn, this);
+                this.autoHideHd = {
+                    "mouseout": function(e){
+                        if(!e.within(this.el, true)){
+                            st.delay(500);
+                        }
+                    },
+                    "mouseover" : function(e){
+                        st.cancel();
+                    },
+                    scope : this
+                };
+            }
+            this.el.on(this.autoHideHd);
+        }
+    },
+
+    clearAutoHide : function(){
+        if(this.autoHide !== false){
+            this.el.un("mouseout", this.autoHideHd.mouseout);
+            this.el.un("mouseover", this.autoHideHd.mouseover);
+        }
+    },
+
+    clearMonitor : function(){
+        Roo.get(document).un("click", this.slideInIf, this);
+    },
+
+    // these names are backwards but not changed for compat
+    slideOut : function(){
+        if(this.isSlid || this.el.hasActiveFx()){
+            return;
+        }
+        this.isSlid = true;
+        if(this.collapseBtn){
+            this.collapseBtn.hide();
+        }
+        this.closeBtnState = this.closeBtn.getStyle('display');
+        this.closeBtn.hide();
+        if(this.stickBtn){
+            this.stickBtn.show();
+        }
+        this.el.show();
+        this.el.alignTo(this.collapsedEl, this.getCollapseAnchor());
+        this.beforeSlide();
+        this.el.setStyle("z-index", 10001);
+        this.el.slideIn(this.getSlideAnchor(), {
+            callback: function(){
+                this.afterSlide();
+                this.initAutoHide();
+                Roo.get(document).on("click", this.slideInIf, this);
+                this.fireEvent("slideshow", this);
+            },
+            scope: this,
+            block: true
+        });
+    },
+
+    afterSlideIn : function(){
+        this.clearAutoHide();
+        this.isSlid = false;
+        this.clearMonitor();
+        this.el.setStyle("z-index", "");
+        if(this.collapseBtn){
+            this.collapseBtn.show();
+        }
+        this.closeBtn.setStyle('display', this.closeBtnState);
+        if(this.stickBtn){
+            this.stickBtn.hide();
+        }
+        this.fireEvent("slidehide", this);
+    },
+
+    slideIn : function(cb){
+        if(!this.isSlid || this.el.hasActiveFx()){
+            Roo.callback(cb);
+            return;
+        }
+        this.isSlid = false;
+        this.beforeSlide();
+        this.el.slideOut(this.getSlideAnchor(), {
+            callback: function(){
+                this.el.setLeftTop(-10000, -10000);
+                this.afterSlide();
+                this.afterSlideIn();
+                Roo.callback(cb);
+            },
+            scope: this,
+            block: true
+        });
+    },
+    
+    slideInIf : function(e){
+        if(!e.within(this.el)){
+            this.slideIn();
+        }
+    },
+
+    animateCollapse : function(){
+        this.beforeSlide();
+        this.el.setStyle("z-index", 20000);
+        var anchor = this.getSlideAnchor();
+        this.el.slideOut(anchor, {
+            callback : function(){
+                this.el.setStyle("z-index", "");
+                this.collapsedEl.slideIn(anchor, {duration:.3});
+                this.afterSlide();
+                this.el.setLocation(-10000,-10000);
+                this.el.hide();
+                this.fireEvent("collapsed", this);
+            },
+            scope: this,
+            block: true
+        });
+    },
+
+    animateExpand : function(){
+        this.beforeSlide();
+        this.el.alignTo(this.collapsedEl, this.getCollapseAnchor(), this.getExpandAdj());
+        this.el.setStyle("z-index", 20000);
+        this.collapsedEl.hide({
+            duration:.1
+        });
+        this.el.slideIn(this.getSlideAnchor(), {
+            callback : function(){
+                this.el.setStyle("z-index", "");
+                this.afterSlide();
+                if(this.split){
+                    this.split.el.show();
+                }
+                this.fireEvent("invalidated", this);
+                this.fireEvent("expanded", this);
+            },
+            scope: this,
+            block: true
+        });
+    },
+
+    anchors : {
+        "west" : "left",
+        "east" : "right",
+        "north" : "top",
+        "south" : "bottom"
+    },
+
+    sanchors : {
+        "west" : "l",
+        "east" : "r",
+        "north" : "t",
+        "south" : "b"
+    },
+
+    canchors : {
+        "west" : "tl-tr",
+        "east" : "tr-tl",
+        "north" : "tl-bl",
+        "south" : "bl-tl"
+    },
+
+    getAnchor : function(){
+        return this.anchors[this.position];
+    },
+
+    getCollapseAnchor : function(){
+        return this.canchors[this.position];
+    },
+
+    getSlideAnchor : function(){
+        return this.sanchors[this.position];
+    },
+
+    getAlignAdj : function(){
+        var cm = this.cmargins;
+        switch(this.position){
+            case "west":
+                return [0, 0];
+            break;
+            case "east":
+                return [0, 0];
+            break;
+            case "north":
+                return [0, 0];
+            break;
+            case "south":
+                return [0, 0];
+            break;
+        }
+    },
+
+    getExpandAdj : function(){
+        var c = this.collapsedEl, cm = this.cmargins;
+        switch(this.position){
+            case "west":
+                return [-(cm.right+c.getWidth()+cm.left), 0];
+            break;
+            case "east":
+                return [cm.right+c.getWidth()+cm.left, 0];
+            break;
+            case "north":
+                return [0, -(cm.top+cm.bottom+c.getHeight())];
+            break;
+            case "south":
+                return [0, cm.top+cm.bottom+c.getHeight()];
+            break;
+        }
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+/*
+ * These classes are private internal classes
+ */
+Roo.CenterLayoutRegion = function(mgr, config){
+    Roo.LayoutRegion.call(this, mgr, config, "center");
+    this.visible = true;
+    this.minWidth = config.minWidth || 20;
+    this.minHeight = config.minHeight || 20;
+};
+
+Roo.extend(Roo.CenterLayoutRegion, Roo.LayoutRegion, {
+    hide : function(){
+        // center panel can't be hidden
+    },
+    
+    show : function(){
+        // center panel can't be hidden
+    },
+    
+    getMinWidth: function(){
+        return this.minWidth;
+    },
+    
+    getMinHeight: function(){
+        return this.minHeight;
+    }
+});
+
+
+Roo.NorthLayoutRegion = function(mgr, config){
+    Roo.LayoutRegion.call(this, mgr, config, "north", "n-resize");
+    if(this.split){
+        this.split.placement = Roo.SplitBar.TOP;
+        this.split.orientation = Roo.SplitBar.VERTICAL;
+        this.split.el.addClass("x-layout-split-v");
+    }
+    var size = config.initialSize || config.height;
+    if(typeof size != "undefined"){
+        this.el.setHeight(size);
+    }
+};
+Roo.extend(Roo.NorthLayoutRegion, Roo.SplitLayoutRegion, {
+    orientation: Roo.SplitBar.VERTICAL,
+    getBox : function(){
+        if(this.collapsed){
+            return this.collapsedEl.getBox();
+        }
+        var box = this.el.getBox();
+        if(this.split){
+            box.height += this.split.el.getHeight();
+        }
+        return box;
+    },
+    
+    updateBox : function(box){
+        if(this.split && !this.collapsed){
+            box.height -= this.split.el.getHeight();
+            this.split.el.setLeft(box.x);
+            this.split.el.setTop(box.y+box.height);
+            this.split.el.setWidth(box.width);
+        }
+        if(this.collapsed){
+            this.updateBody(box.width, null);
+        }
+        Roo.LayoutRegion.prototype.updateBox.call(this, box);
+    }
+});
+
+Roo.SouthLayoutRegion = function(mgr, config){
+    Roo.SplitLayoutRegion.call(this, mgr, config, "south", "s-resize");
+    if(this.split){
+        this.split.placement = Roo.SplitBar.BOTTOM;
+        this.split.orientation = Roo.SplitBar.VERTICAL;
+        this.split.el.addClass("x-layout-split-v");
+    }
+    var size = config.initialSize || config.height;
+    if(typeof size != "undefined"){
+        this.el.setHeight(size);
+    }
+};
+Roo.extend(Roo.SouthLayoutRegion, Roo.SplitLayoutRegion, {
+    orientation: Roo.SplitBar.VERTICAL,
+    getBox : function(){
+        if(this.collapsed){
+            return this.collapsedEl.getBox();
+        }
+        var box = this.el.getBox();
+        if(this.split){
+            var sh = this.split.el.getHeight();
+            box.height += sh;
+            box.y -= sh;
+        }
+        return box;
+    },
+    
+    updateBox : function(box){
+        if(this.split && !this.collapsed){
+            var sh = this.split.el.getHeight();
+            box.height -= sh;
+            box.y += sh;
+            this.split.el.setLeft(box.x);
+            this.split.el.setTop(box.y-sh);
+            this.split.el.setWidth(box.width);
+        }
+        if(this.collapsed){
+            this.updateBody(box.width, null);
+        }
+        Roo.LayoutRegion.prototype.updateBox.call(this, box);
+    }
+});
+
+Roo.EastLayoutRegion = function(mgr, config){
+    Roo.SplitLayoutRegion.call(this, mgr, config, "east", "e-resize");
+    if(this.split){
+        this.split.placement = Roo.SplitBar.RIGHT;
+        this.split.orientation = Roo.SplitBar.HORIZONTAL;
+        this.split.el.addClass("x-layout-split-h");
+    }
+    var size = config.initialSize || config.width;
+    if(typeof size != "undefined"){
+        this.el.setWidth(size);
+    }
+};
+Roo.extend(Roo.EastLayoutRegion, Roo.SplitLayoutRegion, {
+    orientation: Roo.SplitBar.HORIZONTAL,
+    getBox : function(){
+        if(this.collapsed){
+            return this.collapsedEl.getBox();
+        }
+        var box = this.el.getBox();
+        if(this.split){
+            var sw = this.split.el.getWidth();
+            box.width += sw;
+            box.x -= sw;
+        }
+        return box;
+    },
+
+    updateBox : function(box){
+        if(this.split && !this.collapsed){
+            var sw = this.split.el.getWidth();
+            box.width -= sw;
+            this.split.el.setLeft(box.x);
+            this.split.el.setTop(box.y);
+            this.split.el.setHeight(box.height);
+            box.x += sw;
+        }
+        if(this.collapsed){
+            this.updateBody(null, box.height);
+        }
+        Roo.LayoutRegion.prototype.updateBox.call(this, box);
+    }
+});
+
+Roo.WestLayoutRegion = function(mgr, config){
+    Roo.SplitLayoutRegion.call(this, mgr, config, "west", "w-resize");
+    if(this.split){
+        this.split.placement = Roo.SplitBar.LEFT;
+        this.split.orientation = Roo.SplitBar.HORIZONTAL;
+        this.split.el.addClass("x-layout-split-h");
+    }
+    var size = config.initialSize || config.width;
+    if(typeof size != "undefined"){
+        this.el.setWidth(size);
+    }
+};
+Roo.extend(Roo.WestLayoutRegion, Roo.SplitLayoutRegion, {
+    orientation: Roo.SplitBar.HORIZONTAL,
+    getBox : function(){
+        if(this.collapsed){
+            return this.collapsedEl.getBox();
+        }
+        var box = this.el.getBox();
+        if(this.split){
+            box.width += this.split.el.getWidth();
+        }
+        return box;
+    },
+    
+    updateBox : function(box){
+        if(this.split && !this.collapsed){
+            var sw = this.split.el.getWidth();
+            box.width -= sw;
+            this.split.el.setLeft(box.x+box.width);
+            this.split.el.setTop(box.y);
+            this.split.el.setHeight(box.height);
+        }
+        if(this.collapsed){
+            this.updateBody(null, box.height);
+        }
+        Roo.LayoutRegion.prototype.updateBox.call(this, box);
+    }
+});
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+ 
+/*
+ * Private internal class for reading and applying state
+ */
+Roo.LayoutStateManager = function(layout){
+     // default empty state
+     this.state = {
+        north: {},
+        south: {},
+        east: {},
+        west: {}       
+    };
+};
+
+Roo.LayoutStateManager.prototype = {
+    init : function(layout, provider){
+        this.provider = provider;
+        var state = provider.get(layout.id+"-layout-state");
+        if(state){
+            var wasUpdating = layout.isUpdating();
+            if(!wasUpdating){
+                layout.beginUpdate();
+            }
+            for(var key in state){
+                if(typeof state[key] != "function"){
+                    var rstate = state[key];
+                    var r = layout.getRegion(key);
+                    if(r && rstate){
+                        if(rstate.size){
+                            r.resizeTo(rstate.size);
+                        }
+                        if(rstate.collapsed == true){
+                            r.collapse(true);
+                        }else{
+                            r.expand(null, true);
+                        }
+                    }
+                }
+            }
+            if(!wasUpdating){
+                layout.endUpdate();
+            }
+            this.state = state; 
+        }
+        this.layout = layout;
+        layout.on("regionresized", this.onRegionResized, this);
+        layout.on("regioncollapsed", this.onRegionCollapsed, this);
+        layout.on("regionexpanded", this.onRegionExpanded, this);
+    },
+    
+    storeState : function(){
+        this.provider.set(this.layout.id+"-layout-state", this.state);
+    },
+    
+    onRegionResized : function(region, newSize){
+        this.state[region.getPosition()].size = newSize;
+        this.storeState();
+    },
+    
+    onRegionCollapsed : function(region){
+        this.state[region.getPosition()].collapsed = true;
+        this.storeState();
+    },
+    
+    onRegionExpanded : function(region){
+        this.state[region.getPosition()].collapsed = false;
+        this.storeState();
+    }
+};/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+/**
+ * @class Roo.ContentPanel
+ * @extends Roo.util.Observable
+ * A basic ContentPanel element.
+ * @cfg {Boolean}   fitToFrame    True for this panel to adjust its size to fit when the region resizes  (defaults to false)
+ * @cfg {Boolean}   fitContainer   When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)
+ * @cfg {Boolean/Object} autoCreate True to auto generate the DOM element for this panel, or a {@link Roo.DomHelper} config of the element to create
+ * @cfg {Boolean}   closable      True if the panel can be closed/removed
+ * @cfg {Boolean}   background    True if the panel should not be activated when it is added (defaults to false)
+ * @cfg {String/HTMLElement/Element} resizeEl An element to resize if {@link #fitToFrame} is true (instead of this panel's element)
+ * @cfg {Toolbar}   toolbar       A toolbar for this panel
+ * @cfg {Boolean} autoScroll    True to scroll overflow in this panel (use with {@link #fitToFrame})
+ * @cfg {String} title          The title for this panel
+ * @cfg {Array} adjustments     Values to <b>add</b> to the width/height when doing a {@link #fitToFrame} (default is [0, 0])
+ * @cfg {String} url            Calls {@link #setUrl} with this value
+ * @cfg {String} region         (center|north|south|east|west) which region to put this panel on (when used with xtype constructors)
+ * @cfg {String/Object} params  When used with {@link #url}, calls {@link #setUrl} with this value
+ * @cfg {Boolean} loadOnce      When used with {@link #url}, calls {@link #setUrl} with this value
+ * @cfg {String} content        Raw content to fill content panel with (uses setContent on construction.)
+
+ * @constructor
+ * Create a new ContentPanel.
+ * @param {String/HTMLElement/Roo.Element} el The container element for this panel
+ * @param {String/Object} config A string to set only the title or a config object
+ * @param {String} content (optional) Set the HTML content for this panel
+ * @param {String} region (optional) Used by xtype constructors to add to regions. (values center,east,west,south,north)
+ */
+Roo.ContentPanel = function(el, config, content){
+    
+     
+    /*
+    if(el.autoCreate || el.xtype){ // xtype is available if this is called from factory
+        config = el;
+        el = Roo.id();
+    }
+    if (config && config.parentLayout) { 
+        el = config.parentLayout.el.createChild(); 
+    }
+    */
+    if(el.autoCreate){ // xtype is available if this is called from factory
+        config = el;
+        el = Roo.id();
+    }
+    this.el = Roo.get(el);
+    if(!this.el && config && config.autoCreate){
+        if(typeof config.autoCreate == "object"){
+            if(!config.autoCreate.id){
+                config.autoCreate.id = config.id||el;
+            }
+            this.el = Roo.DomHelper.append(document.body,
+                        config.autoCreate, true);
+        }else{
+            this.el = Roo.DomHelper.append(document.body,
+                        {tag: "div", cls: "x-layout-inactive-content", id: config.id||el}, true);
+        }
+    }
+    this.closable = false;
+    this.loaded = false;
+    this.active = false;
+    if(typeof config == "string"){
+        this.title = config;
+    }else{
+        Roo.apply(this, config);
+    }
+    
+    if (this.toolbar && !this.toolbar.el && this.toolbar.xtype) {
+        this.wrapEl = this.el.wrap();    
+        this.toolbar = new Roo.Toolbar(this.el.insertSibling(false, 'before'), [] , this.toolbar);
+        
+    }
+    
+    
+    
+    if(this.resizeEl){
+        this.resizeEl = Roo.get(this.resizeEl, true);
+    }else{
+        this.resizeEl = this.el;
+    }
+    this.addEvents({
+        /**
+         * @event activate
+         * Fires when this panel is activated. 
+         * @param {Roo.ContentPanel} this
+         */
+        "activate" : true,
+        /**
+         * @event deactivate
+         * Fires when this panel is activated. 
+         * @param {Roo.ContentPanel} this
+         */
+        "deactivate" : true,
+
+        /**
+         * @event resize
+         * Fires when this panel is resized if fitToFrame is true.
+         * @param {Roo.ContentPanel} this
+         * @param {Number} width The width after any component adjustments
+         * @param {Number} height The height after any component adjustments
+         */
+        "resize" : true,
+        
+         /**
+         * @event render
+         * Fires when this tab is created
+         * @param {Roo.ContentPanel} this
+         */
+        "render" : true
+        
+        
+        
+    });
+    if(this.autoScroll){
+        this.resizeEl.setStyle("overflow", "auto");
+    } else {
+        // fix randome scrolling
+        this.el.on('scroll', function() {
+            Roo.log('fix random scolling');
+            this.scrollTo('top',0); 
+        });
+    }
+    content = content || this.content;
+    if(content){
+        this.setContent(content);
+    }
+    if(config && config.url){
+        this.setUrl(this.url, this.params, this.loadOnce);
+    }
+    
+    
+    
+    Roo.ContentPanel.superclass.constructor.call(this);
+    
+    this.fireEvent('render', this);
+};
+
+Roo.extend(Roo.ContentPanel, Roo.util.Observable, {
+    tabTip:'',
+    setRegion : function(region){
+        this.region = region;
+        if(region){
+           this.el.replaceClass("x-layout-inactive-content", "x-layout-active-content");
+        }else{
+           this.el.replaceClass("x-layout-active-content", "x-layout-inactive-content");
+        } 
+    },
+    
+    /**
+     * Returns the toolbar for this Panel if one was configured. 
+     * @return {Roo.Toolbar} 
+     */
+    getToolbar : function(){
+        return this.toolbar;
+    },
+    
+    setActiveState : function(active){
+        this.active = active;
+        if(!active){
+            this.fireEvent("deactivate", this);
+        }else{
+            this.fireEvent("activate", this);
+        }
+    },
+    /**
+     * Updates this panel's element
+     * @param {String} content The new content
+     * @param {Boolean} loadScripts (optional) true to look for and process scripts
+    */
+    setContent : function(content, loadScripts){
+        this.el.update(content, loadScripts);
+    },
+
+    ignoreResize : function(w, h){
+        if(this.lastSize && this.lastSize.width == w && this.lastSize.height == h){
+            return true;
+        }else{
+            this.lastSize = {width: w, height: h};
+            return false;
+        }
+    },
+    /**
+     * Get the {@link Roo.UpdateManager} for this panel. Enables you to perform Ajax updates.
+     * @return {Roo.UpdateManager} The UpdateManager
+     */
+    getUpdateManager : function(){
+        return this.el.getUpdateManager();
+    },
+     /**
+     * Loads this content panel immediately with content from XHR. Note: to delay loading until the panel is activated, use {@link #setUrl}.
+     * @param {Object/String/Function} url The url for this request or a function to call to get the url or a config object containing any of the following options:
+<pre><code>
+panel.load({
+    url: "your-url.php",
+    params: {param1: "foo", param2: "bar"}, // or a URL encoded string
+    callback: yourFunction,
+    scope: yourObject, //(optional scope)
+    discardUrl: false,
+    nocache: false,
+    text: "Loading...",
+    timeout: 30,
+    scripts: false
+});
+</code></pre>
+     * The only required property is <i>url</i>. The optional properties <i>nocache</i>, <i>text</i> and <i>scripts</i>
+     * are shorthand for <i>disableCaching</i>, <i>indicatorText</i> and <i>loadScripts</i> and are used to set their associated property on this panel UpdateManager instance.
+     * @param {String/Object} params (optional) The parameters to pass as either a URL encoded string "param1=1&amp;param2=2" or an object {param1: 1, param2: 2}
+     * @param {Function} callback (optional) Callback when transaction is complete -- called with signature (oElement, bSuccess, oResponse)
+     * @param {Boolean} discardUrl (optional) By default when you execute an update the defaultUrl is changed to the last used URL. If true, it will not store the URL.
+     * @return {Roo.ContentPanel} this
+     */
+    load : function(){
+        var um = this.el.getUpdateManager();
+        um.update.apply(um, arguments);
+        return this;
+    },
+
+
+    /**
+     * Set a URL to be used to load the content for this panel. When this panel is activated, the content will be loaded from that URL.
+     * @param {String/Function} url The URL to load the content from or a function to call to get the URL
+     * @param {String/Object} params (optional) The string params for the update call or an object of the params. See {@link Roo.UpdateManager#update} for more details. (Defaults to null)
+     * @param {Boolean} loadOnce (optional) Whether to only load the content once. If this is false it makes the Ajax call every time this panel is activated. (Defaults to false)
+     * @return {Roo.UpdateManager} The UpdateManager
+     */
+    setUrl : function(url, params, loadOnce){
+        if(this.refreshDelegate){
+            this.removeListener("activate", this.refreshDelegate);
+        }
+        this.refreshDelegate = this._handleRefresh.createDelegate(this, [url, params, loadOnce]);
+        this.on("activate", this.refreshDelegate);
+        return this.el.getUpdateManager();
+    },
+    
+    _handleRefresh : function(url, params, loadOnce){
+        if(!loadOnce || !this.loaded){
+            var updater = this.el.getUpdateManager();
+            updater.update(url, params, this._setLoaded.createDelegate(this));
+        }
+    },
+    
+    _setLoaded : function(){
+        this.loaded = true;
+    }, 
+    
+    /**
+     * Returns this panel's id
+     * @return {String} 
+     */
+    getId : function(){
+        return this.el.id;
+    },
+    
+    /** 
+     * Returns this panel's element - used by regiosn to add.
+     * @return {Roo.Element} 
+     */
+    getEl : function(){
+        return this.wrapEl || this.el;
+    },
+    
+    adjustForComponents : function(width, height){
+        if(this.resizeEl != this.el){
+            width -= this.el.getFrameWidth('lr');
+            height -= this.el.getFrameWidth('tb');
+        }
+        if(this.toolbar){
+            var te = this.toolbar.getEl();
+            height -= te.getHeight();
+            te.setWidth(width);
+        }
+        if(this.adjustments){
+            width += this.adjustments[0];
+            height += this.adjustments[1];
+        }
+        return {"width": width, "height": height};
+    },
+    
+    setSize : function(width, height){
+        if(this.fitToFrame && !this.ignoreResize(width, height)){
+            if(this.fitContainer && this.resizeEl != this.el){
+                this.el.setSize(width, height);
+            }
+            var size = this.adjustForComponents(width, height);
+            this.resizeEl.setSize(this.autoWidth ? "auto" : size.width, this.autoHeight ? "auto" : size.height);
+            this.fireEvent('resize', this, size.width, size.height);
+        }
+    },
+    
+    /**
+     * Returns this panel's title
+     * @return {String} 
+     */
+    getTitle : function(){
+        return this.title;
+    },
+    
+    /**
+     * Set this panel's title
+     * @param {String} title
+     */
+    setTitle : function(title){
+        this.title = title;
+        if(this.region){
+            this.region.updatePanelTitle(this, title);
+        }
+    },
+    
+    /**
+     * Returns true is this panel was configured to be closable
+     * @return {Boolean} 
+     */
+    isClosable : function(){
+        return this.closable;
+    },
+    
+    beforeSlide : function(){
+        this.el.clip();
+        this.resizeEl.clip();
+    },
+    
+    afterSlide : function(){
+        this.el.unclip();
+        this.resizeEl.unclip();
+    },
+    
+    /**
+     *   Force a content refresh from the URL specified in the {@link #setUrl} method.
+     *   Will fail silently if the {@link #setUrl} method has not been called.
+     *   This does not activate the panel, just updates its content.
+     */
+    refresh : function(){
+        if(this.refreshDelegate){
+           this.loaded = false;
+           this.refreshDelegate();
+        }
+    },
+    
+    /**
+     * Destroys this panel
+     */
+    destroy : function(){
+        this.el.removeAllListeners();
+        var tempEl = document.createElement("span");
+        tempEl.appendChild(this.el.dom);
+        tempEl.innerHTML = "";
+        this.el.remove();
+        this.el = null;
+    },
+    
+    /**
+     * form - if the content panel contains a form - this is a reference to it.
+     * @type {Roo.form.Form}
+     */
+    form : false,
+    /**
+     * view - if the content panel contains a view (Roo.DatePicker / Roo.View / Roo.JsonView)
+     *    This contains a reference to it.
+     * @type {Roo.View}
+     */
+    view : false,
+    
+      /**
+     * Adds a xtype elements to the panel - currently only supports Forms, View, JsonView.
+     * <pre><code>
+
+layout.addxtype({
+       xtype : 'Form',
+       items: [ .... ]
+   }
+);
+
+</code></pre>
+     * @param {Object} cfg Xtype definition of item to add.
+     */
+    
+    addxtype : function(cfg) {
+        // add form..
+        if (cfg.xtype.match(/^Form$/)) {
+            var el = this.el.createChild();
+
+            this.form = new  Roo.form.Form(cfg);
+            
+            
+            if ( this.form.allItems.length) this.form.render(el.dom);
+            return this.form;
+        }
+        // should only have one of theses..
+        if (['View', 'JsonView', 'DatePicker'].indexOf(cfg.xtype) > -1) {
+            // views..
+            cfg.el = this.el.appendChild(document.createElement("div"));
+            // factory?
+            
+            var ret = new Roo.factory(cfg);
+            ret.render && ret.render(false, ''); // render blank..
+            this.view = ret;
+            return ret;
+        }
+        return false;
+    }
+});
+
+/**
+ * @class Roo.GridPanel
+ * @extends Roo.ContentPanel
+ * @constructor
+ * Create a new GridPanel.
+ * @param {Roo.grid.Grid} grid The grid for this panel
+ * @param {String/Object} config A string to set only the panel's title, or a config object
+ */
+Roo.GridPanel = function(grid, config){
+    
+  
+    this.wrapper = Roo.DomHelper.append(document.body, // wrapper for IE7 strict & safari scroll issue
+        {tag: "div", cls: "x-layout-grid-wrapper x-layout-inactive-content"}, true);
+        
+    this.wrapper.dom.appendChild(grid.getGridEl().dom);
+    
+    Roo.GridPanel.superclass.constructor.call(this, this.wrapper, config);
+    
+    if(this.toolbar){
+        this.toolbar.el.insertBefore(this.wrapper.dom.firstChild);
+    }
+    // xtype created footer. - not sure if will work as we normally have to render first..
+    if (this.footer && !this.footer.el && this.footer.xtype) {
+        
+        this.footer.container = this.grid.getView().getFooterPanel(true);
+        this.footer.dataSource = this.grid.dataSource;
+        this.footer = Roo.factory(this.footer, Roo);
+        
+    }
+    
+    grid.monitorWindowResize = false; // turn off autosizing
+    grid.autoHeight = false;
+    grid.autoWidth = false;
+    this.grid = grid;
+    this.grid.getGridEl().replaceClass("x-layout-inactive-content", "x-layout-component-panel");
+};
+
+Roo.extend(Roo.GridPanel, Roo.ContentPanel, {
+    getId : function(){
+        return this.grid.id;
+    },
+    
+    /**
+     * Returns the grid for this panel
+     * @return {Roo.grid.Grid} 
+     */
+    getGrid : function(){
+        return this.grid;    
+    },
+    
+    setSize : function(width, height){
+        if(!this.ignoreResize(width, height)){
+            var grid = this.grid;
+            var size = this.adjustForComponents(width, height);
+            grid.getGridEl().setSize(size.width, size.height);
+            grid.autoSize();
+        }
+    },
+    
+    beforeSlide : function(){
+        this.grid.getView().scroller.clip();
+    },
+    
+    afterSlide : function(){
+        this.grid.getView().scroller.unclip();
+    },
+    
+    destroy : function(){
+        this.grid.destroy();
+        delete this.grid;
+        Roo.GridPanel.superclass.destroy.call(this); 
+    }
+});
+
+
+/**
+ * @class Roo.NestedLayoutPanel
+ * @extends Roo.ContentPanel
+ * @constructor
+ * Create a new NestedLayoutPanel.
+ * 
+ * 
+ * @param {Roo.BorderLayout} layout The layout for this panel
+ * @param {String/Object} config A string to set only the title or a config object
+ */
+Roo.NestedLayoutPanel = function(layout, config)
+{
+    // construct with only one argument..
+    /* FIXME - implement nicer consturctors
+    if (layout.layout) {
+        config = layout;
+        layout = config.layout;
+        delete config.layout;
+    }
+    if (layout.xtype && !layout.getEl) {
+        // then layout needs constructing..
+        layout = Roo.factory(layout, Roo);
+    }
+    */
+    
+    
+    Roo.NestedLayoutPanel.superclass.constructor.call(this, layout.getEl(), config);
+    
+    layout.monitorWindowResize = false; // turn off autosizing
+    this.layout = layout;
+    this.layout.getEl().addClass("x-layout-nested-layout");
+    
+    
+    
+    
+};
+
+Roo.extend(Roo.NestedLayoutPanel, Roo.ContentPanel, {
+
+    setSize : function(width, height){
+        if(!this.ignoreResize(width, height)){
+            var size = this.adjustForComponents(width, height);
+            var el = this.layout.getEl();
+            el.setSize(size.width, size.height);
+            var touch = el.dom.offsetWidth;
+            this.layout.layout();
+            // ie requires a double layout on the first pass
+            if(Roo.isIE && !this.initialized){
+                this.initialized = true;
+                this.layout.layout();
+            }
+        }
+    },
+    
+    // activate all subpanels if not currently active..
+    
+    setActiveState : function(active){
+        this.active = active;
+        if(!active){
+            this.fireEvent("deactivate", this);
+            return;
+        }
+        
+        this.fireEvent("activate", this);
+        // not sure if this should happen before or after..
+        if (!this.layout) {
+            return; // should not happen..
+        }
+        var reg = false;
+        for (var r in this.layout.regions) {
+            reg = this.layout.getRegion(r);
+            if (reg.getActivePanel()) {
+                //reg.showPanel(reg.getActivePanel()); // force it to activate.. 
+                reg.setActivePanel(reg.getActivePanel());
+                continue;
+            }
+            if (!reg.panels.length) {
+                continue;
+            }
+            reg.showPanel(reg.getPanel(0));
+        }
+        
+        
+        
+        
+    },
+    
+    /**
+     * Returns the nested BorderLayout for this panel
+     * @return {Roo.BorderLayout} 
+     */
+    getLayout : function(){
+        return this.layout;
+    },
+    
+     /**
+     * Adds a xtype elements to the layout of the nested panel
+     * <pre><code>
+
+panel.addxtype({
+       xtype : 'ContentPanel',
+       region: 'west',
+       items: [ .... ]
+   }
+);
+
+panel.addxtype({
+        xtype : 'NestedLayoutPanel',
+        region: 'west',
+        layout: {
+           center: { },
+           west: { }   
+        },
+        items : [ ... list of content panels or nested layout panels.. ]
+   }
+);
+</code></pre>
+     * @param {Object} cfg Xtype definition of item to add.
+     */
+    addxtype : function(cfg) {
+        return this.layout.addxtype(cfg);
+    
+    }
+});
+
+Roo.ScrollPanel = function(el, config, content){
+    config = config || {};
+    config.fitToFrame = true;
+    Roo.ScrollPanel.superclass.constructor.call(this, el, config, content);
+    
+    this.el.dom.style.overflow = "hidden";
+    var wrap = this.el.wrap({cls: "x-scroller x-layout-inactive-content"});
+    this.el.removeClass("x-layout-inactive-content");
+    this.el.on("mousewheel", this.onWheel, this);
+
+    var up = wrap.createChild({cls: "x-scroller-up", html: "&#160;"}, this.el.dom);
+    var down = wrap.createChild({cls: "x-scroller-down", html: "&#160;"});
+    up.unselectable(); down.unselectable();
+    up.on("click", this.scrollUp, this);
+    down.on("click", this.scrollDown, this);
+    up.addClassOnOver("x-scroller-btn-over");
+    down.addClassOnOver("x-scroller-btn-over");
+    up.addClassOnClick("x-scroller-btn-click");
+    down.addClassOnClick("x-scroller-btn-click");
+    this.adjustments = [0, -(up.getHeight() + down.getHeight())];
+
+    this.resizeEl = this.el;
+    this.el = wrap; this.up = up; this.down = down;
+};
+
+Roo.extend(Roo.ScrollPanel, Roo.ContentPanel, {
+    increment : 100,
+    wheelIncrement : 5,
+    scrollUp : function(){
+        this.resizeEl.scroll("up", this.increment, {callback: this.afterScroll, scope: this});
+    },
+
+    scrollDown : function(){
+        this.resizeEl.scroll("down", this.increment, {callback: this.afterScroll, scope: this});
+    },
+
+    afterScroll : function(){
+        var el = this.resizeEl;
+        var t = el.dom.scrollTop, h = el.dom.scrollHeight, ch = el.dom.clientHeight;
+        this.up[t == 0 ? "addClass" : "removeClass"]("x-scroller-btn-disabled");
+        this.down[h - t <= ch ? "addClass" : "removeClass"]("x-scroller-btn-disabled");
+    },
+
+    setSize : function(){
+        Roo.ScrollPanel.superclass.setSize.apply(this, arguments);
+        this.afterScroll();
+    },
+
+    onWheel : function(e){
+        var d = e.getWheelDelta();
+        this.resizeEl.dom.scrollTop -= (d*this.wheelIncrement);
+        this.afterScroll();
+        e.stopEvent();
+    },
+
+    setContent : function(content, loadScripts){
+        this.resizeEl.update(content, loadScripts);
+    }
+
+});
+
+
+
+
+
+
+
+
+
+/**
+ * @class Roo.TreePanel
+ * @extends Roo.ContentPanel
+ * @constructor
+ * Create a new TreePanel. - defaults to fit/scoll contents.
+ * @param {String/Object} config A string to set only the panel's title, or a config object
+ * @cfg {Roo.tree.TreePanel} tree The tree TreePanel, with config etc.
+ */
+Roo.TreePanel = function(config){
+    var el = config.el;
+    var tree = config.tree;
+    delete config.tree; 
+    delete config.el; // hopefull!
+    
+    // wrapper for IE7 strict & safari scroll issue
+    
+    var treeEl = el.createChild();
+    config.resizeEl = treeEl;
+    
+    
+    
+    Roo.TreePanel.superclass.constructor.call(this, el, config);
+ 
+ 
+    this.tree = new Roo.tree.TreePanel(treeEl , tree);
+    //console.log(tree);
+    this.on('activate', function()
+    {
+        if (this.tree.rendered) {
+            return;
+        }
+        //console.log('render tree');
+        this.tree.render();
+    });
+    
+    this.on('resize',  function (cp, w, h) {
+            this.tree.innerCt.setWidth(w);
+            this.tree.innerCt.setHeight(h);
+            this.tree.innerCt.setStyle('overflow-y', 'auto');
+    });
+
+        
+    
+};
+
+Roo.extend(Roo.TreePanel, Roo.ContentPanel, {   
+    fitToFrame : true,
+    autoScroll : true
+});
+
+
+
+
+
+
+
+
+
+
+
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+
+/**
+ * @class Roo.ReaderLayout
+ * @extends Roo.BorderLayout
+ * This is a pre-built layout that represents a classic, 5-pane application.  It consists of a header, a primary
+ * center region containing two nested regions (a top one for a list view and one for item preview below),
+ * and regions on either side that can be used for navigation, application commands, informational displays, etc.
+ * The setup and configuration work exactly the same as it does for a {@link Roo.BorderLayout} - this class simply
+ * expedites the setup of the overall layout and regions for this common application style.
+ * Example:
+ <pre><code>
+var reader = new Roo.ReaderLayout();
+var CP = Roo.ContentPanel;  // shortcut for adding
+
+reader.beginUpdate();
+reader.add("north", new CP("north", "North"));
+reader.add("west", new CP("west", {title: "West"}));
+reader.add("east", new CP("east", {title: "East"}));
+
+reader.regions.listView.add(new CP("listView", "List"));
+reader.regions.preview.add(new CP("preview", "Preview"));
+reader.endUpdate();
+</code></pre>
+* @constructor
+* Create a new ReaderLayout
+* @param {Object} config Configuration options
+* @param {String/HTMLElement/Element} container (optional) The container this layout is bound to (defaults to
+* document.body if omitted)
+*/
+Roo.ReaderLayout = function(config, renderTo){
+    var c = config || {size:{}};
+    Roo.ReaderLayout.superclass.constructor.call(this, renderTo || document.body, {
+        north: c.north !== false ? Roo.apply({
+            split:false,
+            initialSize: 32,
+            titlebar: false
+        }, c.north) : false,
+        west: c.west !== false ? Roo.apply({
+            split:true,
+            initialSize: 200,
+            minSize: 175,
+            maxSize: 400,
+            titlebar: true,
+            collapsible: true,
+            animate: true,
+            margins:{left:5,right:0,bottom:5,top:5},
+            cmargins:{left:5,right:5,bottom:5,top:5}
+        }, c.west) : false,
+        east: c.east !== false ? Roo.apply({
+            split:true,
+            initialSize: 200,
+            minSize: 175,
+            maxSize: 400,
+            titlebar: true,
+            collapsible: true,
+            animate: true,
+            margins:{left:0,right:5,bottom:5,top:5},
+            cmargins:{left:5,right:5,bottom:5,top:5}
+        }, c.east) : false,
+        center: Roo.apply({
+            tabPosition: 'top',
+            autoScroll:false,
+            closeOnTab: true,
+            titlebar:false,
+            margins:{left:c.west!==false ? 0 : 5,right:c.east!==false ? 0 : 5,bottom:5,top:2}
+        }, c.center)
+    });
+
+    this.el.addClass('x-reader');
+
+    this.beginUpdate();
+
+    var inner = new Roo.BorderLayout(Roo.get(document.body).createChild(), {
+        south: c.preview !== false ? Roo.apply({
+            split:true,
+            initialSize: 200,
+            minSize: 100,
+            autoScroll:true,
+            collapsible:true,
+            titlebar: true,
+            cmargins:{top:5,left:0, right:0, bottom:0}
+        }, c.preview) : false,
+        center: Roo.apply({
+            autoScroll:false,
+            titlebar:false,
+            minHeight:200
+        }, c.listView)
+    });
+    this.add('center', new Roo.NestedLayoutPanel(inner,
+            Roo.apply({title: c.mainTitle || '',tabTip:''},c.innerPanelCfg)));
+
+    this.endUpdate();
+
+    this.regions.preview = inner.getRegion('south');
+    this.regions.listView = inner.getRegion('center');
+};
+
+Roo.extend(Roo.ReaderLayout, Roo.BorderLayout);/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.grid.Grid
+ * @extends Roo.util.Observable
+ * This class represents the primary interface of a component based grid control.
+ * <br><br>Usage:<pre><code>
+ var grid = new Roo.grid.Grid("my-container-id", {
+     ds: myDataStore,
+     cm: myColModel,
+     selModel: mySelectionModel,
+     autoSizeColumns: true,
+     monitorWindowResize: false,
+     trackMouseOver: true
+ });
+ // set any options
+ grid.render();
+ * </code></pre>
+ * <b>Common Problems:</b><br/>
+ * - Grid does not resize properly when going smaller: Setting overflow hidden on the container
+ * element will correct this<br/>
+ * - If you get el.style[camel]= NaNpx or -2px or something related, be certain you have given your container element
+ * dimensions. The grid adapts to your container's size, if your container has no size defined then the results
+ * are unpredictable.<br/>
+ * - Do not render the grid into an element with display:none. Try using visibility:hidden. Otherwise there is no way for the
+ * grid to calculate dimensions/offsets.<br/>
+  * @constructor
+ * @param {String/HTMLElement/Roo.Element} container The element into which this grid will be rendered -
+ * The container MUST have some type of size defined for the grid to fill. The container will be
+ * automatically set to position relative if it isn't already.
+ * @param {Object} config A config object that sets properties on this grid.
+ */
+Roo.grid.Grid = function(container, config){
+	// initialize the container
+	this.container = Roo.get(container);
+	this.container.update("");
+	this.container.setStyle("overflow", "hidden");
+    this.container.addClass('x-grid-container');
+
+    this.id = this.container.id;
+
+    Roo.apply(this, config);
+    // check and correct shorthanded configs
+    if(this.ds){
+        this.dataSource = this.ds;
+        delete this.ds;
+    }
+    if(this.cm){
+        this.colModel = this.cm;
+        delete this.cm;
+    }
+    if(this.sm){
+        this.selModel = this.sm;
+        delete this.sm;
+    }
+
+    if (this.selModel) {
+        this.selModel = Roo.factory(this.selModel, Roo.grid);
+        this.sm = this.selModel;
+        this.sm.xmodule = this.xmodule || false;
+    }
+    if (typeof(this.colModel.config) == 'undefined') {
+        this.colModel = new Roo.grid.ColumnModel(this.colModel);
+        this.cm = this.colModel;
+        this.cm.xmodule = this.xmodule || false;
+    }
+    if (this.dataSource) {
+        this.dataSource= Roo.factory(this.dataSource, Roo.data);
+        this.ds = this.dataSource;
+        this.ds.xmodule = this.xmodule || false;
+         
+    }
+    
+    
+    
+    if(this.width){
+        this.container.setWidth(this.width);
+    }
+
+    if(this.height){
+        this.container.setHeight(this.height);
+    }
+    /** @private */
+	this.addEvents({
+        // raw events
+        /**
+         * @event click
+         * The raw click event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "click" : true,
+        /**
+         * @event dblclick
+         * The raw dblclick event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "dblclick" : true,
+        /**
+         * @event contextmenu
+         * The raw contextmenu event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "contextmenu" : true,
+        /**
+         * @event mousedown
+         * The raw mousedown event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "mousedown" : true,
+        /**
+         * @event mouseup
+         * The raw mouseup event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "mouseup" : true,
+        /**
+         * @event mouseover
+         * The raw mouseover event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "mouseover" : true,
+        /**
+         * @event mouseout
+         * The raw mouseout event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "mouseout" : true,
+        /**
+         * @event keypress
+         * The raw keypress event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "keypress" : true,
+        /**
+         * @event keydown
+         * The raw keydown event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "keydown" : true,
+
+        // custom events
+
+        /**
+         * @event cellclick
+         * Fires when a cell is clicked
+         * @param {Grid} this
+         * @param {Number} rowIndex
+         * @param {Number} columnIndex
+         * @param {Roo.EventObject} e
+         */
+        "cellclick" : true,
+        /**
+         * @event celldblclick
+         * Fires when a cell is double clicked
+         * @param {Grid} this
+         * @param {Number} rowIndex
+         * @param {Number} columnIndex
+         * @param {Roo.EventObject} e
+         */
+        "celldblclick" : true,
+        /**
+         * @event rowclick
+         * Fires when a row is clicked
+         * @param {Grid} this
+         * @param {Number} rowIndex
+         * @param {Roo.EventObject} e
+         */
+        "rowclick" : true,
+        /**
+         * @event rowdblclick
+         * Fires when a row is double clicked
+         * @param {Grid} this
+         * @param {Number} rowIndex
+         * @param {Roo.EventObject} e
+         */
+        "rowdblclick" : true,
+        /**
+         * @event headerclick
+         * Fires when a header is clicked
+         * @param {Grid} this
+         * @param {Number} columnIndex
+         * @param {Roo.EventObject} e
+         */
+        "headerclick" : true,
+        /**
+         * @event headerdblclick
+         * Fires when a header cell is double clicked
+         * @param {Grid} this
+         * @param {Number} columnIndex
+         * @param {Roo.EventObject} e
+         */
+        "headerdblclick" : true,
+        /**
+         * @event rowcontextmenu
+         * Fires when a row is right clicked
+         * @param {Grid} this
+         * @param {Number} rowIndex
+         * @param {Roo.EventObject} e
+         */
+        "rowcontextmenu" : true,
+        /**
+         * @event cellcontextmenu
+         * Fires when a cell is right clicked
+         * @param {Grid} this
+         * @param {Number} rowIndex
+         * @param {Number} cellIndex
+         * @param {Roo.EventObject} e
+         */
+         "cellcontextmenu" : true,
+        /**
+         * @event headercontextmenu
+         * Fires when a header is right clicked
+         * @param {Grid} this
+         * @param {Number} columnIndex
+         * @param {Roo.EventObject} e
+         */
+        "headercontextmenu" : true,
+        /**
+         * @event bodyscroll
+         * Fires when the body element is scrolled
+         * @param {Number} scrollLeft
+         * @param {Number} scrollTop
+         */
+        "bodyscroll" : true,
+        /**
+         * @event columnresize
+         * Fires when the user resizes a column
+         * @param {Number} columnIndex
+         * @param {Number} newSize
+         */
+        "columnresize" : true,
+        /**
+         * @event columnmove
+         * Fires when the user moves a column
+         * @param {Number} oldIndex
+         * @param {Number} newIndex
+         */
+        "columnmove" : true,
+        /**
+         * @event startdrag
+         * Fires when row(s) start being dragged
+         * @param {Grid} this
+         * @param {Roo.GridDD} dd The drag drop object
+         * @param {event} e The raw browser event
+         */
+        "startdrag" : true,
+        /**
+         * @event enddrag
+         * Fires when a drag operation is complete
+         * @param {Grid} this
+         * @param {Roo.GridDD} dd The drag drop object
+         * @param {event} e The raw browser event
+         */
+        "enddrag" : true,
+        /**
+         * @event dragdrop
+         * Fires when dragged row(s) are dropped on a valid DD target
+         * @param {Grid} this
+         * @param {Roo.GridDD} dd The drag drop object
+         * @param {String} targetId The target drag drop object
+         * @param {event} e The raw browser event
+         */
+        "dragdrop" : true,
+        /**
+         * @event dragover
+         * Fires while row(s) are being dragged. "targetId" is the id of the Yahoo.util.DD object the selected rows are being dragged over.
+         * @param {Grid} this
+         * @param {Roo.GridDD} dd The drag drop object
+         * @param {String} targetId The target drag drop object
+         * @param {event} e The raw browser event
+         */
+        "dragover" : true,
+        /**
+         * @event dragenter
+         *  Fires when the dragged row(s) first cross another DD target while being dragged
+         * @param {Grid} this
+         * @param {Roo.GridDD} dd The drag drop object
+         * @param {String} targetId The target drag drop object
+         * @param {event} e The raw browser event
+         */
+        "dragenter" : true,
+        /**
+         * @event dragout
+         * Fires when the dragged row(s) leave another DD target while being dragged
+         * @param {Grid} this
+         * @param {Roo.GridDD} dd The drag drop object
+         * @param {String} targetId The target drag drop object
+         * @param {event} e The raw browser event
+         */
+        "dragout" : true,
+        /**
+         * @event rowclass
+         * Fires when a row is rendered, so you can change add a style to it.
+         * @param {GridView} gridview   The grid view
+         * @param {Object} rowcfg   contains record  rowIndex and rowClass - set rowClass to add a style.
+         */
+        'rowclass' : true,
+
+        /**
+         * @event render
+         * Fires when the grid is rendered
+         * @param {Grid} grid
+         */
+        'render' : true
+    });
+
+    Roo.grid.Grid.superclass.constructor.call(this);
+};
+Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
+    
+    /**
+     * @cfg {String} ddGroup - drag drop group.
+     */
+
+    /**
+     * @cfg {Number} minColumnWidth The minimum width a column can be resized to. Default is 25.
+     */
+    minColumnWidth : 25,
+
+    /**
+     * @cfg {Boolean} autoSizeColumns True to automatically resize the columns to fit their content
+     * <b>on initial render.</b> It is more efficient to explicitly size the columns
+     * through the ColumnModel's {@link Roo.grid.ColumnModel#width} config option.  Default is false.
+     */
+    autoSizeColumns : false,
+
+    /**
+     * @cfg {Boolean} autoSizeHeaders True to measure headers with column data when auto sizing columns. Default is true.
+     */
+    autoSizeHeaders : true,
+
+    /**
+     * @cfg {Boolean} monitorWindowResize True to autoSize the grid when the window resizes. Default is true.
+     */
+    monitorWindowResize : true,
+
+    /**
+     * @cfg {Boolean} maxRowsToMeasure If autoSizeColumns is on, maxRowsToMeasure can be used to limit the number of
+     * rows measured to get a columns size. Default is 0 (all rows).
+     */
+    maxRowsToMeasure : 0,
+
+    /**
+     * @cfg {Boolean} trackMouseOver True to highlight rows when the mouse is over. Default is true.
+     */
+    trackMouseOver : true,
+
+    /**
+    * @cfg {Boolean} enableDrag  True to enable drag of rows. Default is false. (double check if this is needed?)
+    */
+    
+    /**
+    * @cfg {Boolean} enableDragDrop True to enable drag and drop of rows. Default is false.
+    */
+    enableDragDrop : false,
+    
+    /**
+    * @cfg {Boolean} enableColumnMove True to enable drag and drop reorder of columns. Default is true.
+    */
+    enableColumnMove : true,
+    
+    /**
+    * @cfg {Boolean} enableColumnHide True to enable hiding of columns with the header context menu. Default is true.
+    */
+    enableColumnHide : true,
+    
+    /**
+    * @cfg {Boolean} enableRowHeightSync True to manually sync row heights across locked and not locked rows. Default is false.
+    */
+    enableRowHeightSync : false,
+    
+    /**
+    * @cfg {Boolean} stripeRows True to stripe the rows.  Default is true.
+    */
+    stripeRows : true,
+    
+    /**
+    * @cfg {Boolean} autoHeight True to fit the height of the grid container to the height of the data. Default is false.
+    */
+    autoHeight : false,
+
+    /**
+     * @cfg {String} autoExpandColumn The id (or dataIndex) of a column in this grid that should expand to fill unused space. This id can not be 0. Default is false.
+     */
+    autoExpandColumn : false,
+
+    /**
+    * @cfg {Number} autoExpandMin The minimum width the autoExpandColumn can have (if enabled).
+    * Default is 50.
+    */
+    autoExpandMin : 50,
+
+    /**
+    * @cfg {Number} autoExpandMax The maximum width the autoExpandColumn can have (if enabled). Default is 1000.
+    */
+    autoExpandMax : 1000,
+
+    /**
+    * @cfg {Object} view The {@link Roo.grid.GridView} used by the grid. This can be set before a call to render().
+    */
+    view : null,
+
+    /**
+    * @cfg {Object} loadMask An {@link Roo.LoadMask} config or true to mask the grid while loading. Default is false.
+    */
+    loadMask : false,
+    /**
+    * @cfg {Roo.dd.DropTarget} dragTarget An {@link Roo.dd.DragTarget} config
+    */
+    dropTarget: false,
+    
+   
+    
+    // private
+    rendered : false,
+
+    /**
+    * @cfg {Boolean} autoWidth True to set the grid's width to the default total width of the grid's columns instead
+    * of a fixed width. Default is false.
+    */
+    /**
+    * @cfg {Number} maxHeight Sets the maximum height of the grid - ignored if autoHeight is not on.
+    */
+    /**
+     * Called once after all setup has been completed and the grid is ready to be rendered.
+     * @return {Roo.grid.Grid} this
+     */
+    render : function()
+    {
+        var c = this.container;
+        // try to detect autoHeight/width mode
+        if((!c.dom.offsetHeight || c.dom.offsetHeight < 20) || c.getStyle("height") == "auto"){
+    	    this.autoHeight = true;
+    	}
+    	var view = this.getView();
+        view.init(this);
+
+        c.on("click", this.onClick, this);
+        c.on("dblclick", this.onDblClick, this);
+        c.on("contextmenu", this.onContextMenu, this);
+        c.on("keydown", this.onKeyDown, this);
+
+        this.relayEvents(c, ["mousedown","mouseup","mouseover","mouseout","keypress"]);
+
+        this.getSelectionModel().init(this);
+
+        view.render();
+
+        if(this.loadMask){
+            this.loadMask = new Roo.LoadMask(this.container,
+                    Roo.apply({store:this.dataSource}, this.loadMask));
+        }
+        
+        
+        if (this.toolbar && this.toolbar.xtype) {
+            this.toolbar.container = this.getView().getHeaderPanel(true);
+            this.toolbar = new Roo.Toolbar(this.toolbar);
+        }
+        if (this.footer && this.footer.xtype) {
+            this.footer.dataSource = this.getDataSource();
+            this.footer.container = this.getView().getFooterPanel(true);
+            this.footer = Roo.factory(this.footer, Roo);
+        }
+        if (this.dropTarget && this.dropTarget.xtype) {
+            delete this.dropTarget.xtype;
+            this.dropTarget =  new Ext.dd.DropTarget(this.getView().mainBody, this.dropTarget);
+        }
+        
+        
+        this.rendered = true;
+        this.fireEvent('render', this);
+        return this;
+    },
+
+	/**
+	 * Reconfigures the grid to use a different Store and Column Model.
+	 * The View will be bound to the new objects and refreshed.
+	 * @param {Roo.data.Store} dataSource The new {@link Roo.data.Store} object
+	 * @param {Roo.grid.ColumnModel} The new {@link Roo.grid.ColumnModel} object
+	 */
+    reconfigure : function(dataSource, colModel){
+        if(this.loadMask){
+            this.loadMask.destroy();
+            this.loadMask = new Roo.LoadMask(this.container,
+                    Roo.apply({store:dataSource}, this.loadMask));
+        }
+        this.view.bind(dataSource, colModel);
+        this.dataSource = dataSource;
+        this.colModel = colModel;
+        this.view.refresh(true);
+    },
+
+    // private
+    onKeyDown : function(e){
+        this.fireEvent("keydown", e);
+    },
+
+    /**
+     * Destroy this grid.
+     * @param {Boolean} removeEl True to remove the element
+     */
+    destroy : function(removeEl, keepListeners){
+        if(this.loadMask){
+            this.loadMask.destroy();
+        }
+        var c = this.container;
+        c.removeAllListeners();
+        this.view.destroy();
+        this.colModel.purgeListeners();
+        if(!keepListeners){
+            this.purgeListeners();
+        }
+        c.update("");
+        if(removeEl === true){
+            c.remove();
+        }
+    },
+
+    // private
+    processEvent : function(name, e){
+        this.fireEvent(name, e);
+        var t = e.getTarget();
+        var v = this.view;
+        var header = v.findHeaderIndex(t);
+        if(header !== false){
+            this.fireEvent("header" + name, this, header, e);
+        }else{
+            var row = v.findRowIndex(t);
+            var cell = v.findCellIndex(t);
+            if(row !== false){
+                this.fireEvent("row" + name, this, row, e);
+                if(cell !== false){
+                    this.fireEvent("cell" + name, this, row, cell, e);
+                }
+            }
+        }
+    },
+
+    // private
+    onClick : function(e){
+        this.processEvent("click", e);
+    },
+
+    // private
+    onContextMenu : function(e, t){
+        this.processEvent("contextmenu", e);
+    },
+
+    // private
+    onDblClick : function(e){
+        this.processEvent("dblclick", e);
+    },
+
+    // private
+    walkCells : function(row, col, step, fn, scope){
+        var cm = this.colModel, clen = cm.getColumnCount();
+        var ds = this.dataSource, rlen = ds.getCount(), first = true;
+        if(step < 0){
+            if(col < 0){
+                row--;
+                first = false;
+            }
+            while(row >= 0){
+                if(!first){
+                    col = clen-1;
+                }
+                first = false;
+                while(col >= 0){
+                    if(fn.call(scope || this, row, col, cm) === true){
+                        return [row, col];
+                    }
+                    col--;
+                }
+                row--;
+            }
+        } else {
+            if(col >= clen){
+                row++;
+                first = false;
+            }
+            while(row < rlen){
+                if(!first){
+                    col = 0;
+                }
+                first = false;
+                while(col < clen){
+                    if(fn.call(scope || this, row, col, cm) === true){
+                        return [row, col];
+                    }
+                    col++;
+                }
+                row++;
+            }
+        }
+        return null;
+    },
+
+    // private
+    getSelections : function(){
+        return this.selModel.getSelections();
+    },
+
+    /**
+     * Causes the grid to manually recalculate its dimensions. Generally this is done automatically,
+     * but if manual update is required this method will initiate it.
+     */
+    autoSize : function(){
+        if(this.rendered){
+            this.view.layout();
+            if(this.view.adjustForScroll){
+                this.view.adjustForScroll();
+            }
+        }
+    },
+
+    /**
+     * Returns the grid's underlying element.
+     * @return {Element} The element
+     */
+    getGridEl : function(){
+        return this.container;
+    },
+
+    // private for compatibility, overridden by editor grid
+    stopEditing : function(){},
+
+    /**
+     * Returns the grid's SelectionModel.
+     * @return {SelectionModel}
+     */
+    getSelectionModel : function(){
+        if(!this.selModel){
+            this.selModel = new Roo.grid.RowSelectionModel();
+        }
+        return this.selModel;
+    },
+
+    /**
+     * Returns the grid's DataSource.
+     * @return {DataSource}
+     */
+    getDataSource : function(){
+        return this.dataSource;
+    },
+
+    /**
+     * Returns the grid's ColumnModel.
+     * @return {ColumnModel}
+     */
+    getColumnModel : function(){
+        return this.colModel;
+    },
+
+    /**
+     * Returns the grid's GridView object.
+     * @return {GridView}
+     */
+    getView : function(){
+        if(!this.view){
+            this.view = new Roo.grid.GridView(this.viewConfig);
+        }
+        return this.view;
+    },
+    /**
+     * Called to get grid's drag proxy text, by default returns this.ddText.
+     * @return {String}
+     */
+    getDragDropText : function(){
+        var count = this.selModel.getCount();
+        return String.format(this.ddText, count, count == 1 ? '' : 's');
+    }
+});
+/**
+ * Configures the text is the drag proxy (defaults to "%0 selected row(s)").
+ * %0 is replaced with the number of selected rows.
+ * @type String
+ */
+Roo.grid.Grid.prototype.ddText = "{0} selected row{1}";/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+Roo.grid.AbstractGridView = function(){
+	this.grid = null;
+	
+	this.events = {
+	    "beforerowremoved" : true,
+	    "beforerowsinserted" : true,
+	    "beforerefresh" : true,
+	    "rowremoved" : true,
+	    "rowsinserted" : true,
+	    "rowupdated" : true,
+	    "refresh" : true
+	};
+    Roo.grid.AbstractGridView.superclass.constructor.call(this);
+};
+
+Roo.extend(Roo.grid.AbstractGridView, Roo.util.Observable, {
+    rowClass : "x-grid-row",
+    cellClass : "x-grid-cell",
+    tdClass : "x-grid-td",
+    hdClass : "x-grid-hd",
+    splitClass : "x-grid-hd-split",
+    
+	init: function(grid){
+        this.grid = grid;
+		var cid = this.grid.getGridEl().id;
+        this.colSelector = "#" + cid + " ." + this.cellClass + "-";
+        this.tdSelector = "#" + cid + " ." + this.tdClass + "-";
+        this.hdSelector = "#" + cid + " ." + this.hdClass + "-";
+        this.splitSelector = "#" + cid + " ." + this.splitClass + "-";
+	},
+	
+	getColumnRenderers : function(){
+    	var renderers = [];
+    	var cm = this.grid.colModel;
+        var colCount = cm.getColumnCount();
+        for(var i = 0; i < colCount; i++){
+            renderers[i] = cm.getRenderer(i);
+        }
+        return renderers;
+    },
+    
+    getColumnIds : function(){
+    	var ids = [];
+    	var cm = this.grid.colModel;
+        var colCount = cm.getColumnCount();
+        for(var i = 0; i < colCount; i++){
+            ids[i] = cm.getColumnId(i);
+        }
+        return ids;
+    },
+    
+    getDataIndexes : function(){
+    	if(!this.indexMap){
+            this.indexMap = this.buildIndexMap();
+        }
+        return this.indexMap.colToData;
+    },
+    
+    getColumnIndexByDataIndex : function(dataIndex){
+        if(!this.indexMap){
+            this.indexMap = this.buildIndexMap();
+        }
+    	return this.indexMap.dataToCol[dataIndex];
+    },
+    
+    /**
+     * Set a css style for a column dynamically. 
+     * @param {Number} colIndex The index of the column
+     * @param {String} name The css property name
+     * @param {String} value The css value
+     */
+    setCSSStyle : function(colIndex, name, value){
+        var selector = "#" + this.grid.id + " .x-grid-col-" + colIndex;
+        Roo.util.CSS.updateRule(selector, name, value);
+    },
+    
+    generateRules : function(cm){
+        var ruleBuf = [], rulesId = this.grid.id + '-cssrules';
+        Roo.util.CSS.removeStyleSheet(rulesId);
+        for(var i = 0, len = cm.getColumnCount(); i < len; i++){
+            var cid = cm.getColumnId(i);
+            ruleBuf.push(this.colSelector, cid, " {\n", cm.config[i].css, "}\n",
+                         this.tdSelector, cid, " {\n}\n",
+                         this.hdSelector, cid, " {\n}\n",
+                         this.splitSelector, cid, " {\n}\n");
+        }
+        return Roo.util.CSS.createStyleSheet(ruleBuf.join(""), rulesId);
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+// private
+// This is a support class used internally by the Grid components
+Roo.grid.HeaderDragZone = function(grid, hd, hd2){
+    this.grid = grid;
+    this.view = grid.getView();
+    this.ddGroup = "gridHeader" + this.grid.getGridEl().id;
+    Roo.grid.HeaderDragZone.superclass.constructor.call(this, hd);
+    if(hd2){
+        this.setHandleElId(Roo.id(hd));
+        this.setOuterHandleElId(Roo.id(hd2));
+    }
+    this.scroll = false;
+};
+Roo.extend(Roo.grid.HeaderDragZone, Roo.dd.DragZone, {
+    maxDragWidth: 120,
+    getDragData : function(e){
+        var t = Roo.lib.Event.getTarget(e);
+        var h = this.view.findHeaderCell(t);
+        if(h){
+            return {ddel: h.firstChild, header:h};
+        }
+        return false;
+    },
+
+    onInitDrag : function(e){
+        this.view.headersDisabled = true;
+        var clone = this.dragData.ddel.cloneNode(true);
+        clone.id = Roo.id();
+        clone.style.width = Math.min(this.dragData.header.offsetWidth,this.maxDragWidth) + "px";
+        this.proxy.update(clone);
+        return true;
+    },
+
+    afterValidDrop : function(){
+        var v = this.view;
+        setTimeout(function(){
+            v.headersDisabled = false;
+        }, 50);
+    },
+
+    afterInvalidDrop : function(){
+        var v = this.view;
+        setTimeout(function(){
+            v.headersDisabled = false;
+        }, 50);
+    }
+});
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+// private
+// This is a support class used internally by the Grid components
+Roo.grid.HeaderDropZone = function(grid, hd, hd2){
+    this.grid = grid;
+    this.view = grid.getView();
+    // split the proxies so they don't interfere with mouse events
+    this.proxyTop = Roo.DomHelper.append(document.body, {
+        cls:"col-move-top", html:"&#160;"
+    }, true);
+    this.proxyBottom = Roo.DomHelper.append(document.body, {
+        cls:"col-move-bottom", html:"&#160;"
+    }, true);
+    this.proxyTop.hide = this.proxyBottom.hide = function(){
+        this.setLeftTop(-100,-100);
+        this.setStyle("visibility", "hidden");
+    };
+    this.ddGroup = "gridHeader" + this.grid.getGridEl().id;
+    // temporarily disabled
+    //Roo.dd.ScrollManager.register(this.view.scroller.dom);
+    Roo.grid.HeaderDropZone.superclass.constructor.call(this, grid.getGridEl().dom);
+};
+Roo.extend(Roo.grid.HeaderDropZone, Roo.dd.DropZone, {
+    proxyOffsets : [-4, -9],
+    fly: Roo.Element.fly,
+
+    getTargetFromEvent : function(e){
+        var t = Roo.lib.Event.getTarget(e);
+        var cindex = this.view.findCellIndex(t);
+        if(cindex !== false){
+            return this.view.getHeaderCell(cindex);
+        }
+        return null;
+    },
+
+    nextVisible : function(h){
+        var v = this.view, cm = this.grid.colModel;
+        h = h.nextSibling;
+        while(h){
+            if(!cm.isHidden(v.getCellIndex(h))){
+                return h;
+            }
+            h = h.nextSibling;
+        }
+        return null;
+    },
+
+    prevVisible : function(h){
+        var v = this.view, cm = this.grid.colModel;
+        h = h.prevSibling;
+        while(h){
+            if(!cm.isHidden(v.getCellIndex(h))){
+                return h;
+            }
+            h = h.prevSibling;
+        }
+        return null;
+    },
+
+    positionIndicator : function(h, n, e){
+        var x = Roo.lib.Event.getPageX(e);
+        var r = Roo.lib.Dom.getRegion(n.firstChild);
+        var px, pt, py = r.top + this.proxyOffsets[1];
+        if((r.right - x) <= (r.right-r.left)/2){
+            px = r.right+this.view.borderWidth;
+            pt = "after";
+        }else{
+            px = r.left;
+            pt = "before";
+        }
+        var oldIndex = this.view.getCellIndex(h);
+        var newIndex = this.view.getCellIndex(n);
+
+        if(this.grid.colModel.isFixed(newIndex)){
+            return false;
+        }
+
+        var locked = this.grid.colModel.isLocked(newIndex);
+
+        if(pt == "after"){
+            newIndex++;
+        }
+        if(oldIndex < newIndex){
+            newIndex--;
+        }
+        if(oldIndex == newIndex && (locked == this.grid.colModel.isLocked(oldIndex))){
+            return false;
+        }
+        px +=  this.proxyOffsets[0];
+        this.proxyTop.setLeftTop(px, py);
+        this.proxyTop.show();
+        if(!this.bottomOffset){
+            this.bottomOffset = this.view.mainHd.getHeight();
+        }
+        this.proxyBottom.setLeftTop(px, py+this.proxyTop.dom.offsetHeight+this.bottomOffset);
+        this.proxyBottom.show();
+        return pt;
+    },
+
+    onNodeEnter : function(n, dd, e, data){
+        if(data.header != n){
+            this.positionIndicator(data.header, n, e);
+        }
+    },
+
+    onNodeOver : function(n, dd, e, data){
+        var result = false;
+        if(data.header != n){
+            result = this.positionIndicator(data.header, n, e);
+        }
+        if(!result){
+            this.proxyTop.hide();
+            this.proxyBottom.hide();
+        }
+        return result ? this.dropAllowed : this.dropNotAllowed;
+    },
+
+    onNodeOut : function(n, dd, e, data){
+        this.proxyTop.hide();
+        this.proxyBottom.hide();
+    },
+
+    onNodeDrop : function(n, dd, e, data){
+        var h = data.header;
+        if(h != n){
+            var cm = this.grid.colModel;
+            var x = Roo.lib.Event.getPageX(e);
+            var r = Roo.lib.Dom.getRegion(n.firstChild);
+            var pt = (r.right - x) <= ((r.right-r.left)/2) ? "after" : "before";
+            var oldIndex = this.view.getCellIndex(h);
+            var newIndex = this.view.getCellIndex(n);
+            var locked = cm.isLocked(newIndex);
+            if(pt == "after"){
+                newIndex++;
+            }
+            if(oldIndex < newIndex){
+                newIndex--;
+            }
+            if(oldIndex == newIndex && (locked == cm.isLocked(oldIndex))){
+                return false;
+            }
+            cm.setLocked(oldIndex, locked, true);
+            cm.moveColumn(oldIndex, newIndex);
+            this.grid.fireEvent("columnmove", oldIndex, newIndex);
+            return true;
+        }
+        return false;
+    }
+});
