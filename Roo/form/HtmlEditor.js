@@ -959,7 +959,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             while (node.childNodes.length) {
                 var cn = node.childNodes[0];
                 node.removeChild(cn);
-                node.parent.insertBefore(cn, node);
+                node.parentNode.insertBefore(cn, node);
             }
             node.parentNode.removeChild(node);
             return;
