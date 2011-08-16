@@ -139,6 +139,8 @@ Roo.ContentPanel = function(el, config, content){
     
     
     Roo.ContentPanel.superclass.constructor.call(this);
+    
+    this.fireEvent('render', this);
 };
 
 Roo.extend(Roo.ContentPanel, Roo.util.Observable, {
