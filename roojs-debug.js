@@ -23698,8 +23698,6 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
          * Fires on every row to render, to allow you to change the data.
          * @param {Roo.View} this
          * @param {Object} data to be rendered (change this)
-         * @param {Number} row being rendered
-         * @param {Roo.data.Record} record being rendered.
          */
           "preparedata" : true
         });
@@ -38665,7 +38663,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     // private
     onResize : function(w, h)
     {
-        Roo.log('resize: ' +w + ',' + h );
+        //Roo.log('resize: ' +w + ',' + h );
         Roo.form.HtmlEditor.superclass.onResize.apply(this, arguments);
         if(this.el && this.iframe){
             if(typeof w == 'number'){
@@ -39352,6 +39350,18 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             return;
             
         }
+        if (Roo.form.HtmlEditor.remove.indexOf(node.tagName.toLowerCase()) > -1) {
+            this.cleanUpChildren(node);
+            // inserts everything just before this node...
+            while (node.childNodes.length) {
+                var cn = node.childNodes[0];
+                node.removeChild(cn);
+                node.parentNode.insertBefore(cn, node);
+            }
+            node.parentNode.removeChild(node);
+            return;
+        }
+        
         if (!node.attributes || !node.attributes.length) {
             this.cleanUpChildren(node);
             return;
@@ -39383,7 +39393,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             Roo.each(parts, function(p) {
                 p = p.replace(/\s+/g,'');
                 if (!p.length) {
-                    return;
+                    return true;
                 }
                 var l = p.split(':').shift().replace(/\s+/g,'');
                 
@@ -39392,6 +39402,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                     node.removeAttribute(n);
                     return false;
                 }
+                return true;
             });
             
             
@@ -39503,7 +39514,9 @@ Roo.form.HtmlEditor.black = [
 Roo.form.HtmlEditor.clean = [
     'script', 'style', 'title', 'xml'
 ];
-
+Roo.form.HtmlEditor.remove = [
+    'font'
+];
 // attributes..
 
 Roo.form.HtmlEditor.ablack = [
@@ -45809,7 +45822,17 @@ Roo.ContentPanel = function(el, config, content){
          * @param {Number} width The width after any component adjustments
          * @param {Number} height The height after any component adjustments
          */
-        "resize" : true
+        "resize" : true,
+        
+         /**
+         * @event render
+         * Fires when this tab is created
+         * @param {Roo.ContentPanel} this
+         */
+        "render" : true
+        
+        
+        
     });
     if(this.autoScroll){
         this.resizeEl.setStyle("overflow", "auto");
@@ -45831,6 +45854,8 @@ Roo.ContentPanel = function(el, config, content){
     
     
     Roo.ContentPanel.superclass.constructor.call(this);
+    
+    this.fireEvent('render', this);
 };
 
 Roo.extend(Roo.ContentPanel, Roo.util.Observable, {
