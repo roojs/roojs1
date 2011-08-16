@@ -107,7 +107,17 @@
          * @param {Number} width The width after any component adjustments
          * @param {Number} height The height after any component adjustments
          */
-        </span><span class="jsdoc-string">&quot;resize&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-string">&quot;resize&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        
+         </span><span class="jsdoc-comment">/**
+         * @event render
+         * Fires when this tab is created
+         * @param {Roo.ContentPanel} this
+         */
+        </span><span class="jsdoc-string">&quot;render&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        
+        
+        
     </span><span class="jsdoc-syntax">});
     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autoScroll</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.resizeEl.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;overflow&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;auto&quot;</span><span class="jsdoc-syntax">);
@@ -129,6 +139,8 @@
     
     
     </span><span class="jsdoc-var">Roo.ContentPanel.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    
+    </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'render'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.ContentPanel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.util.Observable</span><span class="jsdoc-syntax">, {
