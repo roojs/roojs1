@@ -5376,4 +5376,2982 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
         this.modified = [];
         this.fireEvent('metachange', this, this.reader.meta);
     }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.data.SimpleStore
+ * @extends Roo.data.Store
+ * Small helper class to make creating Stores from Array data easier.
+ * @cfg {Number} id The array index of the record id. Leave blank to auto generate ids.
+ * @cfg {Array} fields An array of field definition objects, or field name strings.
+ * @cfg {Array} data The multi-dimensional array of data
+ * @constructor
+ * @param {Object} config
+ */
+Roo.data.SimpleStore = function(config){
+    Roo.data.SimpleStore.superclass.constructor.call(this, {
+        isLocal : true,
+        reader: new Roo.data.ArrayReader({
+                id: config.id
+            },
+            Roo.data.Record.create(config.fields)
+        ),
+        proxy : new Roo.data.MemoryProxy(config.data)
+    });
+    this.load();
+};
+Roo.extend(Roo.data.SimpleStore, Roo.data.Store);/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+/**
+ * @extends Roo.data.Store
+ * @class Roo.data.JsonStore
+ * Small helper class to make creating Stores for JSON data easier. <br/>
+<pre><code>
+var store = new Roo.data.JsonStore({
+    url: 'get-images.php',
+    root: 'images',
+    fields: ['name', 'url', {name:'size', type: 'float'}, {name:'lastmod', type:'date'}]
 });
+</code></pre>
+ * <b>Note: Although they are not listed, this class inherits all of the config options of Store,
+ * JsonReader and HttpProxy (unless inline data is provided).</b>
+ * @cfg {Array} fields An array of field definition objects, or field name strings.
+ * @constructor
+ * @param {Object} config
+ */
+Roo.data.JsonStore = function(c){
+    Roo.data.JsonStore.superclass.constructor.call(this, Roo.apply(c, {
+        proxy: !c.data ? new Roo.data.HttpProxy({url: c.url}) : undefined,
+        reader: new Roo.data.JsonReader(c, c.fields)
+    }));
+};
+Roo.extend(Roo.data.JsonStore, Roo.data.Store);/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+ 
+Roo.data.Field = function(config){
+    if(typeof config == "string"){
+        config = {name: config};
+    }
+    Roo.apply(this, config);
+    
+    if(!this.type){
+        this.type = "auto";
+    }
+    
+    var st = Roo.data.SortTypes;
+    // named sortTypes are supported, here we look them up
+    if(typeof this.sortType == "string"){
+        this.sortType = st[this.sortType];
+    }
+    
+    // set default sortType for strings and dates
+    if(!this.sortType){
+        switch(this.type){
+            case "string":
+                this.sortType = st.asUCString;
+                break;
+            case "date":
+                this.sortType = st.asDate;
+                break;
+            default:
+                this.sortType = st.none;
+        }
+    }
+
+    // define once
+    var stripRe = /[\$,%]/g;
+
+    // prebuilt conversion function for this field, instead of
+    // switching every time we're reading a value
+    if(!this.convert){
+        var cv, dateFormat = this.dateFormat;
+        switch(this.type){
+            case "":
+            case "auto":
+            case undefined:
+                cv = function(v){ return v; };
+                break;
+            case "string":
+                cv = function(v){ return (v === undefined || v === null) ? '' : String(v); };
+                break;
+            case "int":
+                cv = function(v){
+                    return v !== undefined && v !== null && v !== '' ?
+                           parseInt(String(v).replace(stripRe, ""), 10) : '';
+                    };
+                break;
+            case "float":
+                cv = function(v){
+                    return v !== undefined && v !== null && v !== '' ?
+                           parseFloat(String(v).replace(stripRe, ""), 10) : ''; 
+                    };
+                break;
+            case "bool":
+            case "boolean":
+                cv = function(v){ return v === true || v === "true" || v == 1; };
+                break;
+            case "date":
+                cv = function(v){
+                    if(!v){
+                        return '';
+                    }
+                    if(v instanceof Date){
+                        return v;
+                    }
+                    if(dateFormat){
+                        if(dateFormat == "timestamp"){
+                            return new Date(v*1000);
+                        }
+                        return Date.parseDate(v, dateFormat);
+                    }
+                    var parsed = Date.parse(v);
+                    return parsed ? new Date(parsed) : null;
+                };
+             break;
+            
+        }
+        this.convert = cv;
+    }
+};
+
+Roo.data.Field.prototype = {
+    dateFormat: null,
+    defaultValue: "",
+    mapping: null,
+    sortType : null,
+    sortDir : "ASC"
+};/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+// Base class for reading structured data from a data source.  This class is intended to be
+// extended (see ArrayReader, JsonReader and XmlReader) and should not be created directly.
+
+/**
+ * @class Roo.data.DataReader
+ * Base class for reading structured data from a data source.  This class is intended to be
+ * extended (see {Roo.data.ArrayReader}, {Roo.data.JsonReader} and {Roo.data.XmlReader}) and should not be created directly.
+ */
+
+Roo.data.DataReader = function(meta, recordType){
+    
+    this.meta = meta;
+    
+    this.recordType = recordType instanceof Array ? 
+        Roo.data.Record.create(recordType) : recordType;
+};
+
+Roo.data.DataReader.prototype = {
+     /**
+     * Create an empty record
+     * @param {Object} data (optional) - overlay some values
+     * @return {Roo.data.Record} record created.
+     */
+    newRow :  function(d) {
+        var da =  {};
+        this.recordType.prototype.fields.each(function(c) {
+            switch( c.type) {
+                case 'int' : da[c.name] = 0; break;
+                case 'date' : da[c.name] = new Date(); break;
+                case 'float' : da[c.name] = 0.0; break;
+                case 'boolean' : da[c.name] = false; break;
+                default : da[c.name] = ""; break;
+            }
+            
+        });
+        return new this.recordType(Roo.apply(da, d));
+    }
+    
+};/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.data.DataProxy
+ * @extends Roo.data.Observable
+ * This class is an abstract base class for implementations which provide retrieval of
+ * unformatted data objects.<br>
+ * <p>
+ * DataProxy implementations are usually used in conjunction with an implementation of Roo.data.DataReader
+ * (of the appropriate type which knows how to parse the data object) to provide a block of
+ * {@link Roo.data.Records} to an {@link Roo.data.Store}.<br>
+ * <p>
+ * Custom implementations must implement the load method as described in
+ * {@link Roo.data.HttpProxy#load}.
+ */
+Roo.data.DataProxy = function(){
+    this.addEvents({
+        /**
+         * @event beforeload
+         * Fires before a network request is made to retrieve a data object.
+         * @param {Object} This DataProxy object.
+         * @param {Object} params The params parameter to the load function.
+         */
+        beforeload : true,
+        /**
+         * @event load
+         * Fires before the load method's callback is called.
+         * @param {Object} This DataProxy object.
+         * @param {Object} o The data object.
+         * @param {Object} arg The callback argument object passed to the load function.
+         */
+        load : true,
+        /**
+         * @event loadexception
+         * Fires if an Exception occurs during data retrieval.
+         * @param {Object} This DataProxy object.
+         * @param {Object} o The data object.
+         * @param {Object} arg The callback argument object passed to the load function.
+         * @param {Object} e The Exception.
+         */
+        loadexception : true
+    });
+    Roo.data.DataProxy.superclass.constructor.call(this);
+};
+
+Roo.extend(Roo.data.DataProxy, Roo.util.Observable);
+
+    /**
+     * @cfg {void} listeners (Not available) Constructor blocks listeners from being set
+     */
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+/**
+ * @class Roo.data.MemoryProxy
+ * An implementation of Roo.data.DataProxy that simply passes the data specified in its constructor
+ * to the Reader when its load method is called.
+ * @constructor
+ * @param {Object} data The data object which the Reader uses to construct a block of Roo.data.Records.
+ */
+Roo.data.MemoryProxy = function(data){
+    if (data.data) {
+        data = data.data;
+    }
+    Roo.data.MemoryProxy.superclass.constructor.call(this);
+    this.data = data;
+};
+
+Roo.extend(Roo.data.MemoryProxy, Roo.data.DataProxy, {
+    /**
+     * Load data from the requested source (in this case an in-memory
+     * data object passed to the constructor), read the data object into
+     * a block of Roo.data.Records using the passed Roo.data.DataReader implementation, and
+     * process that block using the passed callback.
+     * @param {Object} params This parameter is not used by the MemoryProxy class.
+     * @param {Roo.data.DataReader} reader The Reader object which converts the data
+     * object into a block of Roo.data.Records.
+     * @param {Function} callback The function into which to pass the block of Roo.data.records.
+     * The function must be passed <ul>
+     * <li>The Record block object</li>
+     * <li>The "arg" argument from the load function</li>
+     * <li>A boolean success indicator</li>
+     * </ul>
+     * @param {Object} scope The scope in which to call the callback
+     * @param {Object} arg An optional argument which is passed to the callback as its second parameter.
+     */
+    load : function(params, reader, callback, scope, arg){
+        params = params || {};
+        var result;
+        try {
+            result = reader.readRecords(this.data);
+        }catch(e){
+            this.fireEvent("loadexception", this, arg, null, e);
+            callback.call(scope, null, arg, false);
+            return;
+        }
+        callback.call(scope, result, arg, true);
+    },
+    
+    // private
+    update : function(params, records){
+        
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+/**
+ * @class Roo.data.HttpProxy
+ * @extends Roo.data.DataProxy
+ * An implementation of {@link Roo.data.DataProxy} that reads a data object from an {@link Roo.data.Connection} object
+ * configured to reference a certain URL.<br><br>
+ * <p>
+ * <em>Note that this class cannot be used to retrieve data from a domain other than the domain
+ * from which the running page was served.<br><br>
+ * <p>
+ * For cross-domain access to remote data, use an {@link Roo.data.ScriptTagProxy}.</em><br><br>
+ * <p>
+ * Be aware that to enable the browser to parse an XML document, the server must set
+ * the Content-Type header in the HTTP response to "text/xml".
+ * @constructor
+ * @param {Object} conn Connection config options to add to each request (e.g. {url: 'foo.php'} or
+ * an {@link Roo.data.Connection} object.  If a Connection config is passed, the singleton {@link Roo.Ajax} object
+ * will be used to make the request.
+ */
+Roo.data.HttpProxy = function(conn){
+    Roo.data.HttpProxy.superclass.constructor.call(this);
+    // is conn a conn config or a real conn?
+    this.conn = conn;
+    this.useAjax = !conn || !conn.events;
+  
+};
+
+Roo.extend(Roo.data.HttpProxy, Roo.data.DataProxy, {
+    // thse are take from connection...
+    
+    /**
+     * @cfg {String} url (Optional) The default URL to be used for requests to the server. (defaults to undefined)
+     */
+    /**
+     * @cfg {Object} extraParams (Optional) An object containing properties which are used as
+     * extra parameters to each request made by this object. (defaults to undefined)
+     */
+    /**
+     * @cfg {Object} defaultHeaders (Optional) An object containing request headers which are added
+     *  to each request made by this object. (defaults to undefined)
+     */
+    /**
+     * @cfg {String} method (Optional) The default HTTP method to be used for requests. (defaults to undefined; if not set but parms are present will use POST, otherwise GET)
+     */
+    /**
+     * @cfg {Number} timeout (Optional) The timeout in milliseconds to be used for requests. (defaults to 30000)
+     */
+     /**
+     * @cfg {Boolean} autoAbort (Optional) Whether this request should abort any pending requests. (defaults to false)
+     * @type Boolean
+     */
+  
+
+    /**
+     * @cfg {Boolean} disableCaching (Optional) True to add a unique cache-buster param to GET requests. (defaults to true)
+     * @type Boolean
+     */
+    /**
+     * Return the {@link Roo.data.Connection} object being used by this Proxy.
+     * @return {Connection} The Connection object. This object may be used to subscribe to events on
+     * a finer-grained basis than the DataProxy events.
+     */
+    getConnection : function(){
+        return this.useAjax ? Roo.Ajax : this.conn;
+    },
+
+    /**
+     * Load data from the configured {@link Roo.data.Connection}, read the data object into
+     * a block of Roo.data.Records using the passed {@link Roo.data.DataReader} implementation, and
+     * process that block using the passed callback.
+     * @param {Object} params An object containing properties which are to be used as HTTP parameters
+     * for the request to the remote server.
+     * @param {Roo.data.DataReader} reader The Reader object which converts the data
+     * object into a block of Roo.data.Records.
+     * @param {Function} callback The function into which to pass the block of Roo.data.Records.
+     * The function must be passed <ul>
+     * <li>The Record block object</li>
+     * <li>The "arg" argument from the load function</li>
+     * <li>A boolean success indicator</li>
+     * </ul>
+     * @param {Object} scope The scope in which to call the callback
+     * @param {Object} arg An optional argument which is passed to the callback as its second parameter.
+     */
+    load : function(params, reader, callback, scope, arg){
+        if(this.fireEvent("beforeload", this, params) !== false){
+            var  o = {
+                params : params || {},
+                request: {
+                    callback : callback,
+                    scope : scope,
+                    arg : arg
+                },
+                reader: reader,
+                callback : this.loadResponse,
+                scope: this
+            };
+            if(this.useAjax){
+                Roo.applyIf(o, this.conn);
+                if(this.activeRequest){
+                    Roo.Ajax.abort(this.activeRequest);
+                }
+                this.activeRequest = Roo.Ajax.request(o);
+            }else{
+                this.conn.request(o);
+            }
+        }else{
+            callback.call(scope||this, null, arg, false);
+        }
+    },
+
+    // private
+    loadResponse : function(o, success, response){
+        delete this.activeRequest;
+        if(!success){
+            this.fireEvent("loadexception", this, o, response);
+            o.request.callback.call(o.request.scope, null, o.request.arg, false);
+            return;
+        }
+        var result;
+        try {
+            result = o.reader.read(response);
+        }catch(e){
+            this.fireEvent("loadexception", this, o, response, e);
+            o.request.callback.call(o.request.scope, null, o.request.arg, false);
+            return;
+        }
+        
+        this.fireEvent("load", this, o, o.request.arg);
+        o.request.callback.call(o.request.scope, result, o.request.arg, true);
+    },
+
+    // private
+    update : function(dataSet){
+
+    },
+
+    // private
+    updateResponse : function(dataSet){
+
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.data.ScriptTagProxy
+ * An implementation of Roo.data.DataProxy that reads a data object from a URL which may be in a domain
+ * other than the originating domain of the running page.<br><br>
+ * <p>
+ * <em>Note that if you are retrieving data from a page that is in a domain that is NOT the same as the originating domain
+ * of the running page, you must use this class, rather than DataProxy.</em><br><br>
+ * <p>
+ * The content passed back from a server resource requested by a ScriptTagProxy is executable JavaScript
+ * source code that is used as the source inside a &lt;script> tag.<br><br>
+ * <p>
+ * In order for the browser to process the returned data, the server must wrap the data object
+ * with a call to a callback function, the name of which is passed as a parameter by the ScriptTagProxy.
+ * Below is a Java example for a servlet which returns data for either a ScriptTagProxy, or an HttpProxy
+ * depending on whether the callback name was passed:
+ * <p>
+ * <pre><code>
+boolean scriptTag = false;
+String cb = request.getParameter("callback");
+if (cb != null) {
+    scriptTag = true;
+    response.setContentType("text/javascript");
+} else {
+    response.setContentType("application/x-json");
+}
+Writer out = response.getWriter();
+if (scriptTag) {
+    out.write(cb + "(");
+}
+out.print(dataBlock.toJsonString());
+if (scriptTag) {
+    out.write(");");
+}
+</pre></code>
+ *
+ * @constructor
+ * @param {Object} config A configuration object.
+ */
+Roo.data.ScriptTagProxy = function(config){
+    Roo.data.ScriptTagProxy.superclass.constructor.call(this);
+    Roo.apply(this, config);
+    this.head = document.getElementsByTagName("head")[0];
+};
+
+Roo.data.ScriptTagProxy.TRANS_ID = 1000;
+
+Roo.extend(Roo.data.ScriptTagProxy, Roo.data.DataProxy, {
+    /**
+     * @cfg {String} url The URL from which to request the data object.
+     */
+    /**
+     * @cfg {Number} timeout (Optional) The number of milliseconds to wait for a response. Defaults to 30 seconds.
+     */
+    timeout : 30000,
+    /**
+     * @cfg {String} callbackParam (Optional) The name of the parameter to pass to the server which tells
+     * the server the name of the callback function set up by the load call to process the returned data object.
+     * Defaults to "callback".<p>The server-side processing must read this parameter value, and generate
+     * javascript output which calls this named function passing the data object as its only parameter.
+     */
+    callbackParam : "callback",
+    /**
+     *  @cfg {Boolean} nocache (Optional) Defaults to true. Disable cacheing by adding a unique parameter
+     * name to the request.
+     */
+    nocache : true,
+
+    /**
+     * Load data from the configured URL, read the data object into
+     * a block of Roo.data.Records using the passed Roo.data.DataReader implementation, and
+     * process that block using the passed callback.
+     * @param {Object} params An object containing properties which are to be used as HTTP parameters
+     * for the request to the remote server.
+     * @param {Roo.data.DataReader} reader The Reader object which converts the data
+     * object into a block of Roo.data.Records.
+     * @param {Function} callback The function into which to pass the block of Roo.data.Records.
+     * The function must be passed <ul>
+     * <li>The Record block object</li>
+     * <li>The "arg" argument from the load function</li>
+     * <li>A boolean success indicator</li>
+     * </ul>
+     * @param {Object} scope The scope in which to call the callback
+     * @param {Object} arg An optional argument which is passed to the callback as its second parameter.
+     */
+    load : function(params, reader, callback, scope, arg){
+        if(this.fireEvent("beforeload", this, params) !== false){
+
+            var p = Roo.urlEncode(Roo.apply(params, this.extraParams));
+
+            var url = this.url;
+            url += (url.indexOf("?") != -1 ? "&" : "?") + p;
+            if(this.nocache){
+                url += "&_dc=" + (new Date().getTime());
+            }
+            var transId = ++Roo.data.ScriptTagProxy.TRANS_ID;
+            var trans = {
+                id : transId,
+                cb : "stcCallback"+transId,
+                scriptId : "stcScript"+transId,
+                params : params,
+                arg : arg,
+                url : url,
+                callback : callback,
+                scope : scope,
+                reader : reader
+            };
+            var conn = this;
+
+            window[trans.cb] = function(o){
+                conn.handleResponse(o, trans);
+            };
+
+            url += String.format("&{0}={1}", this.callbackParam, trans.cb);
+
+            if(this.autoAbort !== false){
+                this.abort();
+            }
+
+            trans.timeoutId = this.handleFailure.defer(this.timeout, this, [trans]);
+
+            var script = document.createElement("script");
+            script.setAttribute("src", url);
+            script.setAttribute("type", "text/javascript");
+            script.setAttribute("id", trans.scriptId);
+            this.head.appendChild(script);
+
+            this.trans = trans;
+        }else{
+            callback.call(scope||this, null, arg, false);
+        }
+    },
+
+    // private
+    isLoading : function(){
+        return this.trans ? true : false;
+    },
+
+    /**
+     * Abort the current server request.
+     */
+    abort : function(){
+        if(this.isLoading()){
+            this.destroyTrans(this.trans);
+        }
+    },
+
+    // private
+    destroyTrans : function(trans, isLoaded){
+        this.head.removeChild(document.getElementById(trans.scriptId));
+        clearTimeout(trans.timeoutId);
+        if(isLoaded){
+            window[trans.cb] = undefined;
+            try{
+                delete window[trans.cb];
+            }catch(e){}
+        }else{
+            // if hasn't been loaded, wait for load to remove it to prevent script error
+            window[trans.cb] = function(){
+                window[trans.cb] = undefined;
+                try{
+                    delete window[trans.cb];
+                }catch(e){}
+            };
+        }
+    },
+
+    // private
+    handleResponse : function(o, trans){
+        this.trans = false;
+        this.destroyTrans(trans, true);
+        var result;
+        try {
+            result = trans.reader.readRecords(o);
+        }catch(e){
+            this.fireEvent("loadexception", this, o, trans.arg, e);
+            trans.callback.call(trans.scope||window, null, trans.arg, false);
+            return;
+        }
+        this.fireEvent("load", this, o, trans.arg);
+        trans.callback.call(trans.scope||window, result, trans.arg, true);
+    },
+
+    // private
+    handleFailure : function(trans){
+        this.trans = false;
+        this.destroyTrans(trans, false);
+        this.fireEvent("loadexception", this, null, trans.arg);
+        trans.callback.call(trans.scope||window, null, trans.arg, false);
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.data.JsonReader
+ * @extends Roo.data.DataReader
+ * Data reader class to create an Array of Roo.data.Record objects from a JSON response
+ * based on mappings in a provided Roo.data.Record constructor.
+ * 
+ * The default behaviour of a store is to send ?_requestMeta=1, unless the class has recieved 'metaData' property
+ * in the reply previously. 
+ * 
+ * <p>
+ * Example code:
+ * <pre><code>
+var RecordDef = Roo.data.Record.create([
+    {name: 'name', mapping: 'name'},     // "mapping" property not needed if it's the same as "name"
+    {name: 'occupation'}                 // This field will use "occupation" as the mapping.
+]);
+var myReader = new Roo.data.JsonReader({
+    totalProperty: "results",    // The property which contains the total dataset size (optional)
+    root: "rows",                // The property which contains an Array of row objects
+    id: "id"                     // The property within each row object that provides an ID for the record (optional)
+}, RecordDef);
+</code></pre>
+ * <p>
+ * This would consume a JSON file like this:
+ * <pre><code>
+{ 'results': 2, 'rows': [
+    { 'id': 1, 'name': 'Bill', occupation: 'Gardener' },
+    { 'id': 2, 'name': 'Ben', occupation: 'Horticulturalist' } ]
+}
+</code></pre>
+ * @cfg {String} totalProperty Name of the property from which to retrieve the total number of records
+ * in the dataset. This is only needed if the whole dataset is not passed in one go, but is being
+ * paged from the remote server.
+ * @cfg {String} successProperty Name of the property from which to retrieve the success attribute used by forms.
+ * @cfg {String} root name of the property which contains the Array of row objects.
+ * @cfg {String} id Name of the property within a row object that contains a record identifier value.
+ * @constructor
+ * Create a new JsonReader
+ * @param {Object} meta Metadata configuration options
+ * @param {Object} recordType Either an Array of field definition objects,
+ * or an {@link Roo.data.Record} object created using {@link Roo.data.Record#create}.
+ */
+Roo.data.JsonReader = function(meta, recordType){
+    
+    meta = meta || {};
+    // set some defaults:
+    Roo.applyIf(meta, {
+        totalProperty: 'total',
+        successProperty : 'success',
+        root : 'data',
+        id : 'id'
+    });
+    
+    Roo.data.JsonReader.superclass.constructor.call(this, meta, recordType||meta.fields);
+};
+Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
+    
+    /**
+     * @prop {Boolean} metaFromRemote  - if the meta data was loaded from the remote source.
+     * Used by Store query builder to append _requestMeta to params.
+     * 
+     */
+    metaFromRemote : false,
+    /**
+     * This method is only used by a DataProxy which has retrieved data from a remote server.
+     * @param {Object} response The XHR object which contains the JSON data in its responseText.
+     * @return {Object} data A data block which is used by an Roo.data.Store object as
+     * a cache of Roo.data.Records.
+     */
+    read : function(response){
+        var json = response.responseText;
+       
+        var o = /* eval:var:o */ eval("("+json+")");
+        if(!o) {
+            throw {message: "JsonReader.read: Json object not found"};
+        }
+        
+        if(o.metaData){
+            
+            delete this.ef;
+            this.metaFromRemote = true;
+            this.meta = o.metaData;
+            this.recordType = Roo.data.Record.create(o.metaData.fields);
+            this.onMetaChange(this.meta, this.recordType, o);
+        }
+        return this.readRecords(o);
+    },
+
+    // private function a store will implement
+    onMetaChange : function(meta, recordType, o){
+
+    },
+
+    /**
+	 * @ignore
+	 */
+    simpleAccess: function(obj, subsc) {
+    	return obj[subsc];
+    },
+
+	/**
+	 * @ignore
+	 */
+    getJsonAccessor: function(){
+        var re = /[\[\.]/;
+        return function(expr) {
+            try {
+                return(re.test(expr))
+                    ? new Function("obj", "return obj." + expr)
+                    : function(obj){
+                        return obj[expr];
+                    };
+            } catch(e){}
+            return Roo.emptyFn;
+        };
+    }(),
+
+    /**
+     * Create a data block containing Roo.data.Records from an XML document.
+     * @param {Object} o An object which contains an Array of row objects in the property specified
+     * in the config as 'root, and optionally a property, specified in the config as 'totalProperty'
+     * which contains the total size of the dataset.
+     * @return {Object} data A data block which is used by an Roo.data.Store object as
+     * a cache of Roo.data.Records.
+     */
+    readRecords : function(o){
+        /**
+         * After any data loads, the raw JSON data is available for further custom processing.
+         * @type Object
+         */
+        this.jsonData = o;
+        var s = this.meta, Record = this.recordType,
+            f = Record.prototype.fields, fi = f.items, fl = f.length;
+
+//      Generate extraction functions for the totalProperty, the root, the id, and for each field
+        if (!this.ef) {
+            if(s.totalProperty) {
+	            this.getTotal = this.getJsonAccessor(s.totalProperty);
+	        }
+	        if(s.successProperty) {
+	            this.getSuccess = this.getJsonAccessor(s.successProperty);
+	        }
+	        this.getRoot = s.root ? this.getJsonAccessor(s.root) : function(p){return p;};
+	        if (s.id) {
+	        	var g = this.getJsonAccessor(s.id);
+	        	this.getId = function(rec) {
+	        		var r = g(rec);
+		        	return (r === undefined || r === "") ? null : r;
+	        	};
+	        } else {
+	        	this.getId = function(){return null;};
+	        }
+            this.ef = [];
+            for(var jj = 0; jj < fl; jj++){
+                f = fi[jj];
+                var map = (f.mapping !== undefined && f.mapping !== null) ? f.mapping : f.name;
+                this.ef[jj] = this.getJsonAccessor(map);
+            }
+        }
+
+    	var root = this.getRoot(o), c = root.length, totalRecords = c, success = true;
+    	if(s.totalProperty){
+            var vt = parseInt(this.getTotal(o), 10);
+            if(!isNaN(vt)){
+                totalRecords = vt;
+            }
+        }
+        if(s.successProperty){
+            var vs = this.getSuccess(o);
+            if(vs === false || vs === 'false'){
+                success = false;
+            }
+        }
+        var records = [];
+	    for(var i = 0; i < c; i++){
+		    var n = root[i];
+	        var values = {};
+	        var id = this.getId(n);
+	        for(var j = 0; j < fl; j++){
+	            f = fi[j];
+                var v = this.ef[j](n);
+                if (!f.convert) {
+                    Roo.log('missing convert for ' + f.name);
+                    Roo.log(f);
+                    continue;
+                }
+                values[f.name] = f.convert((v !== undefined) ? v : f.defaultValue);
+	        }
+	        var record = new Record(values, id);
+	        record.json = n;
+	        records[i] = record;
+	    }
+	    return {
+	        success : success,
+	        records : records,
+	        totalRecords : totalRecords
+	    };
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.data.XmlReader
+ * @extends Roo.data.DataReader
+ * Data reader class to create an Array of {@link Roo.data.Record} objects from an XML document
+ * based on mappings in a provided Roo.data.Record constructor.<br><br>
+ * <p>
+ * <em>Note that in order for the browser to parse a returned XML document, the Content-Type
+ * header in the HTTP response must be set to "text/xml".</em>
+ * <p>
+ * Example code:
+ * <pre><code>
+var RecordDef = Roo.data.Record.create([
+   {name: 'name', mapping: 'name'},     // "mapping" property not needed if it's the same as "name"
+   {name: 'occupation'}                 // This field will use "occupation" as the mapping.
+]);
+var myReader = new Roo.data.XmlReader({
+   totalRecords: "results", // The element which contains the total dataset size (optional)
+   record: "row",           // The repeated element which contains row information
+   id: "id"                 // The element within the row that provides an ID for the record (optional)
+}, RecordDef);
+</code></pre>
+ * <p>
+ * This would consume an XML file like this:
+ * <pre><code>
+&lt;?xml?>
+&lt;dataset>
+ &lt;results>2&lt;/results>
+ &lt;row>
+   &lt;id>1&lt;/id>
+   &lt;name>Bill&lt;/name>
+   &lt;occupation>Gardener&lt;/occupation>
+ &lt;/row>
+ &lt;row>
+   &lt;id>2&lt;/id>
+   &lt;name>Ben&lt;/name>
+   &lt;occupation>Horticulturalist&lt;/occupation>
+ &lt;/row>
+&lt;/dataset>
+</code></pre>
+ * @cfg {String} totalRecords The DomQuery path from which to retrieve the total number of records
+ * in the dataset. This is only needed if the whole dataset is not passed in one go, but is being
+ * paged from the remote server.
+ * @cfg {String} record The DomQuery path to the repeated element which contains record information.
+ * @cfg {String} success The DomQuery path to the success attribute used by forms.
+ * @cfg {String} id The DomQuery path relative from the record element to the element that contains
+ * a record identifier value.
+ * @constructor
+ * Create a new XmlReader
+ * @param {Object} meta Metadata configuration options
+ * @param {Mixed} recordType The definition of the data record type to produce.  This can be either a valid
+ * Record subclass created with {@link Roo.data.Record#create}, or an array of objects with which to call
+ * Roo.data.Record.create.  See the {@link Roo.data.Record} class for more details.
+ */
+Roo.data.XmlReader = function(meta, recordType){
+    meta = meta || {};
+    Roo.data.XmlReader.superclass.constructor.call(this, meta, recordType||meta.fields);
+};
+Roo.extend(Roo.data.XmlReader, Roo.data.DataReader, {
+    /**
+     * This method is only used by a DataProxy which has retrieved data from a remote server.
+	 * @param {Object} response The XHR object which contains the parsed XML document.  The response is expected
+	 * to contain a method called 'responseXML' that returns an XML document object.
+     * @return {Object} records A data block which is used by an {@link Roo.data.Store} as
+     * a cache of Roo.data.Records.
+     */
+    read : function(response){
+        var doc = response.responseXML;
+        if(!doc) {
+            throw {message: "XmlReader.read: XML Document not available"};
+        }
+        return this.readRecords(doc);
+    },
+
+    /**
+     * Create a data block containing Roo.data.Records from an XML document.
+	 * @param {Object} doc A parsed XML document.
+     * @return {Object} records A data block which is used by an {@link Roo.data.Store} as
+     * a cache of Roo.data.Records.
+     */
+    readRecords : function(doc){
+        /**
+         * After any data loads/reads, the raw XML Document is available for further custom processing.
+         * @type XMLDocument
+         */
+        this.xmlData = doc;
+        var root = doc.documentElement || doc;
+    	var q = Roo.DomQuery;
+    	var recordType = this.recordType, fields = recordType.prototype.fields;
+    	var sid = this.meta.id;
+    	var totalRecords = 0, success = true;
+    	if(this.meta.totalRecords){
+    	    totalRecords = q.selectNumber(this.meta.totalRecords, root, 0);
+    	}
+        
+        if(this.meta.success){
+            var sv = q.selectValue(this.meta.success, root, true);
+            success = sv !== false && sv !== 'false';
+    	}
+    	var records = [];
+    	var ns = q.select(this.meta.record, root);
+        for(var i = 0, len = ns.length; i < len; i++) {
+	        var n = ns[i];
+	        var values = {};
+	        var id = sid ? q.selectValue(sid, n) : undefined;
+	        for(var j = 0, jlen = fields.length; j < jlen; j++){
+	            var f = fields.items[j];
+                var v = q.selectValue(f.mapping || f.name, n, f.defaultValue);
+	            v = f.convert(v);
+	            values[f.name] = v;
+	        }
+	        var record = new recordType(values, id);
+	        record.node = n;
+	        records[records.length] = record;
+	    }
+
+	    return {
+	        success : success,
+	        records : records,
+	        totalRecords : totalRecords || records.length
+	    };
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.data.ArrayReader
+ * @extends Roo.data.DataReader
+ * Data reader class to create an Array of Roo.data.Record objects from an Array.
+ * Each element of that Array represents a row of data fields. The
+ * fields are pulled into a Record object using as a subscript, the <em>mapping</em> property
+ * of the field definition if it exists, or the field's ordinal position in the definition.<br>
+ * <p>
+ * Example code:.
+ * <pre><code>
+var RecordDef = Roo.data.Record.create([
+    {name: 'name', mapping: 1},         // "mapping" only needed if an "id" field is present which
+    {name: 'occupation', mapping: 2}    // precludes using the ordinal position as the index.
+]);
+var myReader = new Roo.data.ArrayReader({
+    id: 0                     // The subscript within row Array that provides an ID for the Record (optional)
+}, RecordDef);
+</code></pre>
+ * <p>
+ * This would consume an Array like this:
+ * <pre><code>
+[ [1, 'Bill', 'Gardener'], [2, 'Ben', 'Horticulturalist'] ]
+  </code></pre>
+ * @cfg {String} id (optional) The subscript within row Array that provides an ID for the Record
+ * @constructor
+ * Create a new JsonReader
+ * @param {Object} meta Metadata configuration options.
+ * @param {Object} recordType Either an Array of field definition objects
+ * as specified to {@link Roo.data.Record#create},
+ * or an {@link Roo.data.Record} object
+ * created using {@link Roo.data.Record#create}.
+ */
+Roo.data.ArrayReader = function(meta, recordType){
+    Roo.data.ArrayReader.superclass.constructor.call(this, meta, recordType);
+};
+
+Roo.extend(Roo.data.ArrayReader, Roo.data.JsonReader, {
+    /**
+     * Create a data block containing Roo.data.Records from an XML document.
+     * @param {Object} o An Array of row objects which represents the dataset.
+     * @return {Object} data A data block which is used by an Roo.data.Store object as
+     * a cache of Roo.data.Records.
+     */
+    readRecords : function(o){
+        var sid = this.meta ? this.meta.id : null;
+    	var recordType = this.recordType, fields = recordType.prototype.fields;
+    	var records = [];
+    	var root = o;
+	    for(var i = 0; i < root.length; i++){
+		    var n = root[i];
+	        var values = {};
+	        var id = ((sid || sid === 0) && n[sid] !== undefined && n[sid] !== "" ? n[sid] : null);
+	        for(var j = 0, jlen = fields.length; j < jlen; j++){
+                var f = fields.items[j];
+                var k = f.mapping !== undefined && f.mapping !== null ? f.mapping : j;
+                var v = n[k] !== undefined ? n[k] : f.defaultValue;
+                v = f.convert(v);
+                values[f.name] = v;
+            }
+	        var record = new recordType(values, id);
+	        record.json = n;
+	        records[records.length] = record;
+	    }
+	    return {
+	        records : records,
+	        totalRecords : records.length
+	    };
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+
+/**
+ * @class Roo.data.Tree
+ * @extends Roo.util.Observable
+ * Represents a tree data structure and bubbles all the events for its nodes. The nodes
+ * in the tree have most standard DOM functionality.
+ * @constructor
+ * @param {Node} root (optional) The root node
+ */
+Roo.data.Tree = function(root){
+   this.nodeHash = {};
+   /**
+    * The root node for this tree
+    * @type Node
+    */
+   this.root = null;
+   if(root){
+       this.setRootNode(root);
+   }
+   this.addEvents({
+       /**
+        * @event append
+        * Fires when a new child node is appended to a node in this tree.
+        * @param {Tree} tree The owner tree
+        * @param {Node} parent The parent node
+        * @param {Node} node The newly appended node
+        * @param {Number} index The index of the newly appended node
+        */
+       "append" : true,
+       /**
+        * @event remove
+        * Fires when a child node is removed from a node in this tree.
+        * @param {Tree} tree The owner tree
+        * @param {Node} parent The parent node
+        * @param {Node} node The child node removed
+        */
+       "remove" : true,
+       /**
+        * @event move
+        * Fires when a node is moved to a new location in the tree
+        * @param {Tree} tree The owner tree
+        * @param {Node} node The node moved
+        * @param {Node} oldParent The old parent of this node
+        * @param {Node} newParent The new parent of this node
+        * @param {Number} index The index it was moved to
+        */
+       "move" : true,
+       /**
+        * @event insert
+        * Fires when a new child node is inserted in a node in this tree.
+        * @param {Tree} tree The owner tree
+        * @param {Node} parent The parent node
+        * @param {Node} node The child node inserted
+        * @param {Node} refNode The child node the node was inserted before
+        */
+       "insert" : true,
+       /**
+        * @event beforeappend
+        * Fires before a new child is appended to a node in this tree, return false to cancel the append.
+        * @param {Tree} tree The owner tree
+        * @param {Node} parent The parent node
+        * @param {Node} node The child node to be appended
+        */
+       "beforeappend" : true,
+       /**
+        * @event beforeremove
+        * Fires before a child is removed from a node in this tree, return false to cancel the remove.
+        * @param {Tree} tree The owner tree
+        * @param {Node} parent The parent node
+        * @param {Node} node The child node to be removed
+        */
+       "beforeremove" : true,
+       /**
+        * @event beforemove
+        * Fires before a node is moved to a new location in the tree. Return false to cancel the move.
+        * @param {Tree} tree The owner tree
+        * @param {Node} node The node being moved
+        * @param {Node} oldParent The parent of the node
+        * @param {Node} newParent The new parent the node is moving to
+        * @param {Number} index The index it is being moved to
+        */
+       "beforemove" : true,
+       /**
+        * @event beforeinsert
+        * Fires before a new child is inserted in a node in this tree, return false to cancel the insert.
+        * @param {Tree} tree The owner tree
+        * @param {Node} parent The parent node
+        * @param {Node} node The child node to be inserted
+        * @param {Node} refNode The child node the node is being inserted before
+        */
+       "beforeinsert" : true
+   });
+
+    Roo.data.Tree.superclass.constructor.call(this);
+};
+
+Roo.extend(Roo.data.Tree, Roo.util.Observable, {
+    pathSeparator: "/",
+
+    proxyNodeEvent : function(){
+        return this.fireEvent.apply(this, arguments);
+    },
+
+    /**
+     * Returns the root node for this tree.
+     * @return {Node}
+     */
+    getRootNode : function(){
+        return this.root;
+    },
+
+    /**
+     * Sets the root node for this tree.
+     * @param {Node} node
+     * @return {Node}
+     */
+    setRootNode : function(node){
+        this.root = node;
+        node.ownerTree = this;
+        node.isRoot = true;
+        this.registerNode(node);
+        return node;
+    },
+
+    /**
+     * Gets a node in this tree by its id.
+     * @param {String} id
+     * @return {Node}
+     */
+    getNodeById : function(id){
+        return this.nodeHash[id];
+    },
+
+    registerNode : function(node){
+        this.nodeHash[node.id] = node;
+    },
+
+    unregisterNode : function(node){
+        delete this.nodeHash[node.id];
+    },
+
+    toString : function(){
+        return "[Tree"+(this.id?" "+this.id:"")+"]";
+    }
+});
+
+/**
+ * @class Roo.data.Node
+ * @extends Roo.util.Observable
+ * @cfg {Boolean} leaf true if this node is a leaf and does not have children
+ * @cfg {String} id The id for this node. If one is not specified, one is generated.
+ * @constructor
+ * @param {Object} attributes The attributes/config for the node
+ */
+Roo.data.Node = function(attributes){
+    /**
+     * The attributes supplied for the node. You can use this property to access any custom attributes you supplied.
+     * @type {Object}
+     */
+    this.attributes = attributes || {};
+    this.leaf = this.attributes.leaf;
+    /**
+     * The node id. @type String
+     */
+    this.id = this.attributes.id;
+    if(!this.id){
+        this.id = Roo.id(null, "ynode-");
+        this.attributes.id = this.id;
+    }
+    /**
+     * All child nodes of this node. @type Array
+     */
+    this.childNodes = [];
+    if(!this.childNodes.indexOf){ // indexOf is a must
+        this.childNodes.indexOf = function(o){
+            for(var i = 0, len = this.length; i < len; i++){
+                if(this[i] == o) {
+                    return i;
+                }
+            }
+            return -1;
+        };
+    }
+    /**
+     * The parent node for this node. @type Node
+     */
+    this.parentNode = null;
+    /**
+     * The first direct child node of this node, or null if this node has no child nodes. @type Node
+     */
+    this.firstChild = null;
+    /**
+     * The last direct child node of this node, or null if this node has no child nodes. @type Node
+     */
+    this.lastChild = null;
+    /**
+     * The node immediately preceding this node in the tree, or null if there is no sibling node. @type Node
+     */
+    this.previousSibling = null;
+    /**
+     * The node immediately following this node in the tree, or null if there is no sibling node. @type Node
+     */
+    this.nextSibling = null;
+
+    this.addEvents({
+       /**
+        * @event append
+        * Fires when a new child node is appended
+        * @param {Tree} tree The owner tree
+        * @param {Node} this This node
+        * @param {Node} node The newly appended node
+        * @param {Number} index The index of the newly appended node
+        */
+       "append" : true,
+       /**
+        * @event remove
+        * Fires when a child node is removed
+        * @param {Tree} tree The owner tree
+        * @param {Node} this This node
+        * @param {Node} node The removed node
+        */
+       "remove" : true,
+       /**
+        * @event move
+        * Fires when this node is moved to a new location in the tree
+        * @param {Tree} tree The owner tree
+        * @param {Node} this This node
+        * @param {Node} oldParent The old parent of this node
+        * @param {Node} newParent The new parent of this node
+        * @param {Number} index The index it was moved to
+        */
+       "move" : true,
+       /**
+        * @event insert
+        * Fires when a new child node is inserted.
+        * @param {Tree} tree The owner tree
+        * @param {Node} this This node
+        * @param {Node} node The child node inserted
+        * @param {Node} refNode The child node the node was inserted before
+        */
+       "insert" : true,
+       /**
+        * @event beforeappend
+        * Fires before a new child is appended, return false to cancel the append.
+        * @param {Tree} tree The owner tree
+        * @param {Node} this This node
+        * @param {Node} node The child node to be appended
+        */
+       "beforeappend" : true,
+       /**
+        * @event beforeremove
+        * Fires before a child is removed, return false to cancel the remove.
+        * @param {Tree} tree The owner tree
+        * @param {Node} this This node
+        * @param {Node} node The child node to be removed
+        */
+       "beforeremove" : true,
+       /**
+        * @event beforemove
+        * Fires before this node is moved to a new location in the tree. Return false to cancel the move.
+        * @param {Tree} tree The owner tree
+        * @param {Node} this This node
+        * @param {Node} oldParent The parent of this node
+        * @param {Node} newParent The new parent this node is moving to
+        * @param {Number} index The index it is being moved to
+        */
+       "beforemove" : true,
+       /**
+        * @event beforeinsert
+        * Fires before a new child is inserted, return false to cancel the insert.
+        * @param {Tree} tree The owner tree
+        * @param {Node} this This node
+        * @param {Node} node The child node to be inserted
+        * @param {Node} refNode The child node the node is being inserted before
+        */
+       "beforeinsert" : true
+   });
+    this.listeners = this.attributes.listeners;
+    Roo.data.Node.superclass.constructor.call(this);
+};
+
+Roo.extend(Roo.data.Node, Roo.util.Observable, {
+    fireEvent : function(evtName){
+        // first do standard event for this node
+        if(Roo.data.Node.superclass.fireEvent.apply(this, arguments) === false){
+            return false;
+        }
+        // then bubble it up to the tree if the event wasn't cancelled
+        var ot = this.getOwnerTree();
+        if(ot){
+            if(ot.proxyNodeEvent.apply(ot, arguments) === false){
+                return false;
+            }
+        }
+        return true;
+    },
+
+    /**
+     * Returns true if this node is a leaf
+     * @return {Boolean}
+     */
+    isLeaf : function(){
+        return this.leaf === true;
+    },
+
+    // private
+    setFirstChild : function(node){
+        this.firstChild = node;
+    },
+
+    //private
+    setLastChild : function(node){
+        this.lastChild = node;
+    },
+
+
+    /**
+     * Returns true if this node is the last child of its parent
+     * @return {Boolean}
+     */
+    isLast : function(){
+       return (!this.parentNode ? true : this.parentNode.lastChild == this);
+    },
+
+    /**
+     * Returns true if this node is the first child of its parent
+     * @return {Boolean}
+     */
+    isFirst : function(){
+       return (!this.parentNode ? true : this.parentNode.firstChild == this);
+    },
+
+    hasChildNodes : function(){
+        return !this.isLeaf() && this.childNodes.length > 0;
+    },
+
+    /**
+     * Insert node(s) as the last child node of this node.
+     * @param {Node/Array} node The node or Array of nodes to append
+     * @return {Node} The appended node if single append, or null if an array was passed
+     */
+    appendChild : function(node){
+        var multi = false;
+        if(node instanceof Array){
+            multi = node;
+        }else if(arguments.length > 1){
+            multi = arguments;
+        }
+        // if passed an array or multiple args do them one by one
+        if(multi){
+            for(var i = 0, len = multi.length; i < len; i++) {
+            	this.appendChild(multi[i]);
+            }
+        }else{
+            if(this.fireEvent("beforeappend", this.ownerTree, this, node) === false){
+                return false;
+            }
+            var index = this.childNodes.length;
+            var oldParent = node.parentNode;
+            // it's a move, make sure we move it cleanly
+            if(oldParent){
+                if(node.fireEvent("beforemove", node.getOwnerTree(), node, oldParent, this, index) === false){
+                    return false;
+                }
+                oldParent.removeChild(node);
+            }
+            index = this.childNodes.length;
+            if(index == 0){
+                this.setFirstChild(node);
+            }
+            this.childNodes.push(node);
+            node.parentNode = this;
+            var ps = this.childNodes[index-1];
+            if(ps){
+                node.previousSibling = ps;
+                ps.nextSibling = node;
+            }else{
+                node.previousSibling = null;
+            }
+            node.nextSibling = null;
+            this.setLastChild(node);
+            node.setOwnerTree(this.getOwnerTree());
+            this.fireEvent("append", this.ownerTree, this, node, index);
+            if(oldParent){
+                node.fireEvent("move", this.ownerTree, node, oldParent, this, index);
+            }
+            return node;
+        }
+    },
+
+    /**
+     * Removes a child node from this node.
+     * @param {Node} node The node to remove
+     * @return {Node} The removed node
+     */
+    removeChild : function(node){
+        var index = this.childNodes.indexOf(node);
+        if(index == -1){
+            return false;
+        }
+        if(this.fireEvent("beforeremove", this.ownerTree, this, node) === false){
+            return false;
+        }
+
+        // remove it from childNodes collection
+        this.childNodes.splice(index, 1);
+
+        // update siblings
+        if(node.previousSibling){
+            node.previousSibling.nextSibling = node.nextSibling;
+        }
+        if(node.nextSibling){
+            node.nextSibling.previousSibling = node.previousSibling;
+        }
+
+        // update child refs
+        if(this.firstChild == node){
+            this.setFirstChild(node.nextSibling);
+        }
+        if(this.lastChild == node){
+            this.setLastChild(node.previousSibling);
+        }
+
+        node.setOwnerTree(null);
+        // clear any references from the node
+        node.parentNode = null;
+        node.previousSibling = null;
+        node.nextSibling = null;
+        this.fireEvent("remove", this.ownerTree, this, node);
+        return node;
+    },
+
+    /**
+     * Inserts the first node before the second node in this nodes childNodes collection.
+     * @param {Node} node The node to insert
+     * @param {Node} refNode The node to insert before (if null the node is appended)
+     * @return {Node} The inserted node
+     */
+    insertBefore : function(node, refNode){
+        if(!refNode){ // like standard Dom, refNode can be null for append
+            return this.appendChild(node);
+        }
+        // nothing to do
+        if(node == refNode){
+            return false;
+        }
+
+        if(this.fireEvent("beforeinsert", this.ownerTree, this, node, refNode) === false){
+            return false;
+        }
+        var index = this.childNodes.indexOf(refNode);
+        var oldParent = node.parentNode;
+        var refIndex = index;
+
+        // when moving internally, indexes will change after remove
+        if(oldParent == this && this.childNodes.indexOf(node) < index){
+            refIndex--;
+        }
+
+        // it's a move, make sure we move it cleanly
+        if(oldParent){
+            if(node.fireEvent("beforemove", node.getOwnerTree(), node, oldParent, this, index, refNode) === false){
+                return false;
+            }
+            oldParent.removeChild(node);
+        }
+        if(refIndex == 0){
+            this.setFirstChild(node);
+        }
+        this.childNodes.splice(refIndex, 0, node);
+        node.parentNode = this;
+        var ps = this.childNodes[refIndex-1];
+        if(ps){
+            node.previousSibling = ps;
+            ps.nextSibling = node;
+        }else{
+            node.previousSibling = null;
+        }
+        node.nextSibling = refNode;
+        refNode.previousSibling = node;
+        node.setOwnerTree(this.getOwnerTree());
+        this.fireEvent("insert", this.ownerTree, this, node, refNode);
+        if(oldParent){
+            node.fireEvent("move", this.ownerTree, node, oldParent, this, refIndex, refNode);
+        }
+        return node;
+    },
+
+    /**
+     * Returns the child node at the specified index.
+     * @param {Number} index
+     * @return {Node}
+     */
+    item : function(index){
+        return this.childNodes[index];
+    },
+
+    /**
+     * Replaces one child node in this node with another.
+     * @param {Node} newChild The replacement node
+     * @param {Node} oldChild The node to replace
+     * @return {Node} The replaced node
+     */
+    replaceChild : function(newChild, oldChild){
+        this.insertBefore(newChild, oldChild);
+        this.removeChild(oldChild);
+        return oldChild;
+    },
+
+    /**
+     * Returns the index of a child node
+     * @param {Node} node
+     * @return {Number} The index of the node or -1 if it was not found
+     */
+    indexOf : function(child){
+        return this.childNodes.indexOf(child);
+    },
+
+    /**
+     * Returns the tree this node is in.
+     * @return {Tree}
+     */
+    getOwnerTree : function(){
+        // if it doesn't have one, look for one
+        if(!this.ownerTree){
+            var p = this;
+            while(p){
+                if(p.ownerTree){
+                    this.ownerTree = p.ownerTree;
+                    break;
+                }
+                p = p.parentNode;
+            }
+        }
+        return this.ownerTree;
+    },
+
+    /**
+     * Returns depth of this node (the root node has a depth of 0)
+     * @return {Number}
+     */
+    getDepth : function(){
+        var depth = 0;
+        var p = this;
+        while(p.parentNode){
+            ++depth;
+            p = p.parentNode;
+        }
+        return depth;
+    },
+
+    // private
+    setOwnerTree : function(tree){
+        // if it's move, we need to update everyone
+        if(tree != this.ownerTree){
+            if(this.ownerTree){
+                this.ownerTree.unregisterNode(this);
+            }
+            this.ownerTree = tree;
+            var cs = this.childNodes;
+            for(var i = 0, len = cs.length; i < len; i++) {
+            	cs[i].setOwnerTree(tree);
+            }
+            if(tree){
+                tree.registerNode(this);
+            }
+        }
+    },
+
+    /**
+     * Returns the path for this node. The path can be used to expand or select this node programmatically.
+     * @param {String} attr (optional) The attr to use for the path (defaults to the node's id)
+     * @return {String} The path
+     */
+    getPath : function(attr){
+        attr = attr || "id";
+        var p = this.parentNode;
+        var b = [this.attributes[attr]];
+        while(p){
+            b.unshift(p.attributes[attr]);
+            p = p.parentNode;
+        }
+        var sep = this.getOwnerTree().pathSeparator;
+        return sep + b.join(sep);
+    },
+
+    /**
+     * Bubbles up the tree from this node, calling the specified function with each node. The scope (<i>this</i>) of
+     * function call will be the scope provided or the current node. The arguments to the function
+     * will be the args provided or the current node. If the function returns false at any point,
+     * the bubble is stopped.
+     * @param {Function} fn The function to call
+     * @param {Object} scope (optional) The scope of the function (defaults to current node)
+     * @param {Array} args (optional) The args to call the function with (default to passing the current node)
+     */
+    bubble : function(fn, scope, args){
+        var p = this;
+        while(p){
+            if(fn.call(scope || p, args || p) === false){
+                break;
+            }
+            p = p.parentNode;
+        }
+    },
+
+    /**
+     * Cascades down the tree from this node, calling the specified function with each node. The scope (<i>this</i>) of
+     * function call will be the scope provided or the current node. The arguments to the function
+     * will be the args provided or the current node. If the function returns false at any point,
+     * the cascade is stopped on that branch.
+     * @param {Function} fn The function to call
+     * @param {Object} scope (optional) The scope of the function (defaults to current node)
+     * @param {Array} args (optional) The args to call the function with (default to passing the current node)
+     */
+    cascade : function(fn, scope, args){
+        if(fn.call(scope || this, args || this) !== false){
+            var cs = this.childNodes;
+            for(var i = 0, len = cs.length; i < len; i++) {
+            	cs[i].cascade(fn, scope, args);
+            }
+        }
+    },
+
+    /**
+     * Interates the child nodes of this node, calling the specified function with each node. The scope (<i>this</i>) of
+     * function call will be the scope provided or the current node. The arguments to the function
+     * will be the args provided or the current node. If the function returns false at any point,
+     * the iteration stops.
+     * @param {Function} fn The function to call
+     * @param {Object} scope (optional) The scope of the function (defaults to current node)
+     * @param {Array} args (optional) The args to call the function with (default to passing the current node)
+     */
+    eachChild : function(fn, scope, args){
+        var cs = this.childNodes;
+        for(var i = 0, len = cs.length; i < len; i++) {
+        	if(fn.call(scope || this, args || cs[i]) === false){
+        	    break;
+        	}
+        }
+    },
+
+    /**
+     * Finds the first child that has the attribute with the specified value.
+     * @param {String} attribute The attribute name
+     * @param {Mixed} value The value to search for
+     * @return {Node} The found child or null if none was found
+     */
+    findChild : function(attribute, value){
+        var cs = this.childNodes;
+        for(var i = 0, len = cs.length; i < len; i++) {
+        	if(cs[i].attributes[attribute] == value){
+        	    return cs[i];
+        	}
+        }
+        return null;
+    },
+
+    /**
+     * Finds the first child by a custom function. The child matches if the function passed
+     * returns true.
+     * @param {Function} fn
+     * @param {Object} scope (optional)
+     * @return {Node} The found child or null if none was found
+     */
+    findChildBy : function(fn, scope){
+        var cs = this.childNodes;
+        for(var i = 0, len = cs.length; i < len; i++) {
+        	if(fn.call(scope||cs[i], cs[i]) === true){
+        	    return cs[i];
+        	}
+        }
+        return null;
+    },
+
+    /**
+     * Sorts this nodes children using the supplied sort function
+     * @param {Function} fn
+     * @param {Object} scope (optional)
+     */
+    sort : function(fn, scope){
+        var cs = this.childNodes;
+        var len = cs.length;
+        if(len > 0){
+            var sortFn = scope ? function(){fn.apply(scope, arguments);} : fn;
+            cs.sort(sortFn);
+            for(var i = 0; i < len; i++){
+                var n = cs[i];
+                n.previousSibling = cs[i-1];
+                n.nextSibling = cs[i+1];
+                if(i == 0){
+                    this.setFirstChild(n);
+                }
+                if(i == len-1){
+                    this.setLastChild(n);
+                }
+            }
+        }
+    },
+
+    /**
+     * Returns true if this node is an ancestor (at any point) of the passed node.
+     * @param {Node} node
+     * @return {Boolean}
+     */
+    contains : function(node){
+        return node.isAncestor(this);
+    },
+
+    /**
+     * Returns true if the passed node is an ancestor (at any point) of this node.
+     * @param {Node} node
+     * @return {Boolean}
+     */
+    isAncestor : function(node){
+        var p = this.parentNode;
+        while(p){
+            if(p == node){
+                return true;
+            }
+            p = p.parentNode;
+        }
+        return false;
+    },
+
+    toString : function(){
+        return "[Node"+(this.id?" "+this.id:"")+"]";
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+
+/**
+ * @class Roo.ComponentMgr
+ * Provides a common registry of all components on a page so that they can be easily accessed by component id (see {@link Roo.getCmp}).
+ * @singleton
+ */
+Roo.ComponentMgr = function(){
+    var all = new Roo.util.MixedCollection();
+
+    return {
+        /**
+         * Registers a component.
+         * @param {Roo.Component} c The component
+         */
+        register : function(c){
+            all.add(c);
+        },
+
+        /**
+         * Unregisters a component.
+         * @param {Roo.Component} c The component
+         */
+        unregister : function(c){
+            all.remove(c);
+        },
+
+        /**
+         * Returns a component by id
+         * @param {String} id The component id
+         */
+        get : function(id){
+            return all.get(id);
+        },
+
+        /**
+         * Registers a function that will be called when a specified component is added to ComponentMgr
+         * @param {String} id The component id
+         * @param {Funtction} fn The callback function
+         * @param {Object} scope The scope of the callback
+         */
+        onAvailable : function(id, fn, scope){
+            all.on("add", function(index, o){
+                if(o.id == id){
+                    fn.call(scope || o, o);
+                    all.un("add", fn, scope);
+                }
+            });
+        }
+    };
+}();/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.Component
+ * @extends Roo.util.Observable
+ * Base class for all major Roo components.  All subclasses of Component can automatically participate in the standard
+ * Roo component lifecycle of creation, rendering and destruction.  They also have automatic support for basic hide/show
+ * and enable/disable behavior.  Component allows any subclass to be lazy-rendered into any {@link Roo.Container} and
+ * to be automatically registered with the {@link Roo.ComponentMgr} so that it can be referenced at any time via {@link Roo.getCmp}.
+ * All visual components (widgets) that require rendering into a layout should subclass Component.
+ * @constructor
+ * @param {Roo.Element/String/Object} config The configuration options.  If an element is passed, it is set as the internal
+ * element and its id used as the component id.  If a string is passed, it is assumed to be the id of an existing element
+ * and is used as the component id.  Otherwise, it is assumed to be a standard config object and is applied to the component.
+ */
+Roo.Component = function(config){
+    config = config || {};
+    if(config.tagName || config.dom || typeof config == "string"){ // element object
+        config = {el: config, id: config.id || config};
+    }
+    this.initialConfig = config;
+
+    Roo.apply(this, config);
+    this.addEvents({
+        /**
+         * @event disable
+         * Fires after the component is disabled.
+	     * @param {Roo.Component} this
+	     */
+        disable : true,
+        /**
+         * @event enable
+         * Fires after the component is enabled.
+	     * @param {Roo.Component} this
+	     */
+        enable : true,
+        /**
+         * @event beforeshow
+         * Fires before the component is shown.  Return false to stop the show.
+	     * @param {Roo.Component} this
+	     */
+        beforeshow : true,
+        /**
+         * @event show
+         * Fires after the component is shown.
+	     * @param {Roo.Component} this
+	     */
+        show : true,
+        /**
+         * @event beforehide
+         * Fires before the component is hidden. Return false to stop the hide.
+	     * @param {Roo.Component} this
+	     */
+        beforehide : true,
+        /**
+         * @event hide
+         * Fires after the component is hidden.
+	     * @param {Roo.Component} this
+	     */
+        hide : true,
+        /**
+         * @event beforerender
+         * Fires before the component is rendered. Return false to stop the render.
+	     * @param {Roo.Component} this
+	     */
+        beforerender : true,
+        /**
+         * @event render
+         * Fires after the component is rendered.
+	     * @param {Roo.Component} this
+	     */
+        render : true,
+        /**
+         * @event beforedestroy
+         * Fires before the component is destroyed. Return false to stop the destroy.
+	     * @param {Roo.Component} this
+	     */
+        beforedestroy : true,
+        /**
+         * @event destroy
+         * Fires after the component is destroyed.
+	     * @param {Roo.Component} this
+	     */
+        destroy : true
+    });
+    if(!this.id){
+        this.id = "ext-comp-" + (++Roo.Component.AUTO_ID);
+    }
+    Roo.ComponentMgr.register(this);
+    Roo.Component.superclass.constructor.call(this);
+    this.initComponent();
+    if(this.renderTo){ // not supported by all components yet. use at your own risk!
+        this.render(this.renderTo);
+        delete this.renderTo;
+    }
+};
+
+// private
+Roo.Component.AUTO_ID = 1000;
+
+Roo.extend(Roo.Component, Roo.util.Observable, {
+    /**
+     * @property {Boolean} hidden
+     * true if this component is hidden. Read-only.
+     */
+    hidden : false,
+    /**
+     * true if this component is disabled. Read-only.
+     */
+    disabled : false,
+    /**
+     * true if this component has been rendered. Read-only.
+     */
+    rendered : false,
+    
+    /** @cfg {String} disableClass
+     * CSS class added to the component when it is disabled (defaults to "x-item-disabled").
+     */
+    disabledClass : "x-item-disabled",
+	/** @cfg {Boolean} allowDomMove
+	 * Whether the component can move the Dom node when rendering (defaults to true).
+	 */
+    allowDomMove : true,
+    /** @cfg {String} hideMode
+     * How this component should hidden. Supported values are
+     * "visibility" (css visibility), "offsets" (negative offset position) and
+     * "display" (css display) - defaults to "display".
+     */
+    hideMode: 'display',
+
+    // private
+    ctype : "Roo.Component",
+
+    /** @cfg {String} actionMode 
+     * which property holds the element that used for  hide() / show() / disable() / enable()
+     * default is 'el' 
+     */
+    actionMode : "el",
+
+    // private
+    getActionEl : function(){
+        return this[this.actionMode];
+    },
+
+    initComponent : Roo.emptyFn,
+    /**
+     * If this is a lazy rendering component, render it to its container element.
+     * @param {String/HTMLElement/Element} container (optional) The element this component should be rendered into. If it is being applied to existing markup, this should be left off.
+     */
+    render : function(container, position){
+        if(!this.rendered && this.fireEvent("beforerender", this) !== false){
+            if(!container && this.el){
+                this.el = Roo.get(this.el);
+                container = this.el.dom.parentNode;
+                this.allowDomMove = false;
+            }
+            this.container = Roo.get(container);
+            this.rendered = true;
+            if(position !== undefined){
+                if(typeof position == 'number'){
+                    position = this.container.dom.childNodes[position];
+                }else{
+                    position = Roo.getDom(position);
+                }
+            }
+            this.onRender(this.container, position || null);
+            if(this.cls){
+                this.el.addClass(this.cls);
+                delete this.cls;
+            }
+            if(this.style){
+                this.el.applyStyles(this.style);
+                delete this.style;
+            }
+            this.fireEvent("render", this);
+            this.afterRender(this.container);
+            if(this.hidden){
+                this.hide();
+            }
+            if(this.disabled){
+                this.disable();
+            }
+        }
+        return this;
+    },
+
+    // private
+    // default function is not really useful
+    onRender : function(ct, position){
+        if(this.el){
+            this.el = Roo.get(this.el);
+            if(this.allowDomMove !== false){
+                ct.dom.insertBefore(this.el.dom, position);
+            }
+        }
+    },
+
+    // private
+    getAutoCreate : function(){
+        var cfg = typeof this.autoCreate == "object" ?
+                      this.autoCreate : Roo.apply({}, this.defaultAutoCreate);
+        if(this.id && !cfg.id){
+            cfg.id = this.id;
+        }
+        return cfg;
+    },
+
+    // private
+    afterRender : Roo.emptyFn,
+
+    /**
+     * Destroys this component by purging any event listeners, removing the component's element from the DOM,
+     * removing the component from its {@link Roo.Container} (if applicable) and unregistering it from {@link Roo.ComponentMgr}.
+     */
+    destroy : function(){
+        if(this.fireEvent("beforedestroy", this) !== false){
+            this.purgeListeners();
+            this.beforeDestroy();
+            if(this.rendered){
+                this.el.removeAllListeners();
+                this.el.remove();
+                if(this.actionMode == "container"){
+                    this.container.remove();
+                }
+            }
+            this.onDestroy();
+            Roo.ComponentMgr.unregister(this);
+            this.fireEvent("destroy", this);
+        }
+    },
+
+	// private
+    beforeDestroy : function(){
+
+    },
+
+	// private
+	onDestroy : function(){
+
+    },
+
+    /**
+     * Returns the underlying {@link Roo.Element}.
+     * @return {Roo.Element} The element
+     */
+    getEl : function(){
+        return this.el;
+    },
+
+    /**
+     * Returns the id of this component.
+     * @return {String}
+     */
+    getId : function(){
+        return this.id;
+    },
+
+    /**
+     * Try to focus this component.
+     * @param {Boolean} selectText True to also select the text in this component (if applicable)
+     * @return {Roo.Component} this
+     */
+    focus : function(selectText){
+        if(this.rendered){
+            this.el.focus();
+            if(selectText === true){
+                this.el.dom.select();
+            }
+        }
+        return this;
+    },
+
+    // private
+    blur : function(){
+        if(this.rendered){
+            this.el.blur();
+        }
+        return this;
+    },
+
+    /**
+     * Disable this component.
+     * @return {Roo.Component} this
+     */
+    disable : function(){
+        if(this.rendered){
+            this.onDisable();
+        }
+        this.disabled = true;
+        this.fireEvent("disable", this);
+        return this;
+    },
+
+	// private
+    onDisable : function(){
+        this.getActionEl().addClass(this.disabledClass);
+        this.el.dom.disabled = true;
+    },
+
+    /**
+     * Enable this component.
+     * @return {Roo.Component} this
+     */
+    enable : function(){
+        if(this.rendered){
+            this.onEnable();
+        }
+        this.disabled = false;
+        this.fireEvent("enable", this);
+        return this;
+    },
+
+	// private
+    onEnable : function(){
+        this.getActionEl().removeClass(this.disabledClass);
+        this.el.dom.disabled = false;
+    },
+
+    /**
+     * Convenience function for setting disabled/enabled by boolean.
+     * @param {Boolean} disabled
+     */
+    setDisabled : function(disabled){
+        this[disabled ? "disable" : "enable"]();
+    },
+
+    /**
+     * Show this component.
+     * @return {Roo.Component} this
+     */
+    show: function(){
+        if(this.fireEvent("beforeshow", this) !== false){
+            this.hidden = false;
+            if(this.rendered){
+                this.onShow();
+            }
+            this.fireEvent("show", this);
+        }
+        return this;
+    },
+
+    // private
+    onShow : function(){
+        var ae = this.getActionEl();
+        if(this.hideMode == 'visibility'){
+            ae.dom.style.visibility = "visible";
+        }else if(this.hideMode == 'offsets'){
+            ae.removeClass('x-hidden');
+        }else{
+            ae.dom.style.display = "";
+        }
+    },
+
+    /**
+     * Hide this component.
+     * @return {Roo.Component} this
+     */
+    hide: function(){
+        if(this.fireEvent("beforehide", this) !== false){
+            this.hidden = true;
+            if(this.rendered){
+                this.onHide();
+            }
+            this.fireEvent("hide", this);
+        }
+        return this;
+    },
+
+    // private
+    onHide : function(){
+        var ae = this.getActionEl();
+        if(this.hideMode == 'visibility'){
+            ae.dom.style.visibility = "hidden";
+        }else if(this.hideMode == 'offsets'){
+            ae.addClass('x-hidden');
+        }else{
+            ae.dom.style.display = "none";
+        }
+    },
+
+    /**
+     * Convenience function to hide or show this component by boolean.
+     * @param {Boolean} visible True to show, false to hide
+     * @return {Roo.Component} this
+     */
+    setVisible: function(visible){
+        if(visible) {
+            this.show();
+        }else{
+            this.hide();
+        }
+        return this;
+    },
+
+    /**
+     * Returns true if this component is visible.
+     */
+    isVisible : function(){
+        return this.getActionEl().isVisible();
+    },
+
+    cloneConfig : function(overrides){
+        overrides = overrides || {};
+        var id = overrides.id || Roo.id();
+        var cfg = Roo.applyIf(overrides, this.initialConfig);
+        cfg.id = id; // prevent dup id
+        return new this.constructor(cfg);
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ (function(){ 
+/**
+ * @class Roo.Layer
+ * @extends Roo.Element
+ * An extended {@link Roo.Element} object that supports a shadow and shim, constrain to viewport and
+ * automatic maintaining of shadow/shim positions.
+ * @cfg {Boolean} shim False to disable the iframe shim in browsers which need one (defaults to true)
+ * @cfg {String/Boolean} shadow True to create a shadow element with default class "x-layer-shadow", or
+ * you can pass a string with a CSS class name. False turns off the shadow.
+ * @cfg {Object} dh DomHelper object config to create element with (defaults to {tag: "div", cls: "x-layer"}).
+ * @cfg {Boolean} constrain False to disable constrain to viewport (defaults to true)
+ * @cfg {String} cls CSS class to add to the element
+ * @cfg {Number} zindex Starting z-index (defaults to 11000)
+ * @cfg {Number} shadowOffset Number of pixels to offset the shadow (defaults to 3)
+ * @constructor
+ * @param {Object} config An object with config options.
+ * @param {String/HTMLElement} existingEl (optional) Uses an existing DOM element. If the element is not found it creates it.
+ */
+
+Roo.Layer = function(config, existingEl){
+    config = config || {};
+    var dh = Roo.DomHelper;
+    var cp = config.parentEl, pel = cp ? Roo.getDom(cp) : document.body;
+    if(existingEl){
+        this.dom = Roo.getDom(existingEl);
+    }
+    if(!this.dom){
+        var o = config.dh || {tag: "div", cls: "x-layer"};
+        this.dom = dh.append(pel, o);
+    }
+    if(config.cls){
+        this.addClass(config.cls);
+    }
+    this.constrain = config.constrain !== false;
+    this.visibilityMode = Roo.Element.VISIBILITY;
+    if(config.id){
+        this.id = this.dom.id = config.id;
+    }else{
+        this.id = Roo.id(this.dom);
+    }
+    this.zindex = config.zindex || this.getZIndex();
+    this.position("absolute", this.zindex);
+    if(config.shadow){
+        this.shadowOffset = config.shadowOffset || 4;
+        this.shadow = new Roo.Shadow({
+            offset : this.shadowOffset,
+            mode : config.shadow
+        });
+    }else{
+        this.shadowOffset = 0;
+    }
+    this.useShim = config.shim !== false && Roo.useShims;
+    this.useDisplay = config.useDisplay;
+    this.hide();
+};
+
+var supr = Roo.Element.prototype;
+
+// shims are shared among layer to keep from having 100 iframes
+var shims = [];
+
+Roo.extend(Roo.Layer, Roo.Element, {
+
+    getZIndex : function(){
+        return this.zindex || parseInt(this.getStyle("z-index"), 10) || 11000;
+    },
+
+    getShim : function(){
+        if(!this.useShim){
+            return null;
+        }
+        if(this.shim){
+            return this.shim;
+        }
+        var shim = shims.shift();
+        if(!shim){
+            shim = this.createShim();
+            shim.enableDisplayMode('block');
+            shim.dom.style.display = 'none';
+            shim.dom.style.visibility = 'visible';
+        }
+        var pn = this.dom.parentNode;
+        if(shim.dom.parentNode != pn){
+            pn.insertBefore(shim.dom, this.dom);
+        }
+        shim.setStyle('z-index', this.getZIndex()-2);
+        this.shim = shim;
+        return shim;
+    },
+
+    hideShim : function(){
+        if(this.shim){
+            this.shim.setDisplayed(false);
+            shims.push(this.shim);
+            delete this.shim;
+        }
+    },
+
+    disableShadow : function(){
+        if(this.shadow){
+            this.shadowDisabled = true;
+            this.shadow.hide();
+            this.lastShadowOffset = this.shadowOffset;
+            this.shadowOffset = 0;
+        }
+    },
+
+    enableShadow : function(show){
+        if(this.shadow){
+            this.shadowDisabled = false;
+            this.shadowOffset = this.lastShadowOffset;
+            delete this.lastShadowOffset;
+            if(show){
+                this.sync(true);
+            }
+        }
+    },
+
+    // private
+    // this code can execute repeatedly in milliseconds (i.e. during a drag) so
+    // code size was sacrificed for effeciency (e.g. no getBox/setBox, no XY calls)
+    sync : function(doShow){
+        var sw = this.shadow;
+        if(!this.updating && this.isVisible() && (sw || this.useShim)){
+            var sh = this.getShim();
+
+            var w = this.getWidth(),
+                h = this.getHeight();
+
+            var l = this.getLeft(true),
+                t = this.getTop(true);
+
+            if(sw && !this.shadowDisabled){
+                if(doShow && !sw.isVisible()){
+                    sw.show(this);
+                }else{
+                    sw.realign(l, t, w, h);
+                }
+                if(sh){
+                    if(doShow){
+                       sh.show();
+                    }
+                    // fit the shim behind the shadow, so it is shimmed too
+                    var a = sw.adjusts, s = sh.dom.style;
+                    s.left = (Math.min(l, l+a.l))+"px";
+                    s.top = (Math.min(t, t+a.t))+"px";
+                    s.width = (w+a.w)+"px";
+                    s.height = (h+a.h)+"px";
+                }
+            }else if(sh){
+                if(doShow){
+                   sh.show();
+                }
+                sh.setSize(w, h);
+                sh.setLeftTop(l, t);
+            }
+            
+        }
+    },
+
+    // private
+    destroy : function(){
+        this.hideShim();
+        if(this.shadow){
+            this.shadow.hide();
+        }
+        this.removeAllListeners();
+        var pn = this.dom.parentNode;
+        if(pn){
+            pn.removeChild(this.dom);
+        }
+        Roo.Element.uncache(this.id);
+    },
+
+    remove : function(){
+        this.destroy();
+    },
+
+    // private
+    beginUpdate : function(){
+        this.updating = true;
+    },
+
+    // private
+    endUpdate : function(){
+        this.updating = false;
+        this.sync(true);
+    },
+
+    // private
+    hideUnders : function(negOffset){
+        if(this.shadow){
+            this.shadow.hide();
+        }
+        this.hideShim();
+    },
+
+    // private
+    constrainXY : function(){
+        if(this.constrain){
+            var vw = Roo.lib.Dom.getViewWidth(),
+                vh = Roo.lib.Dom.getViewHeight();
+            var s = Roo.get(document).getScroll();
+
+            var xy = this.getXY();
+            var x = xy[0], y = xy[1];   
+            var w = this.dom.offsetWidth+this.shadowOffset, h = this.dom.offsetHeight+this.shadowOffset;
+            // only move it if it needs it
+            var moved = false;
+            // first validate right/bottom
+            if((x + w) > vw+s.left){
+                x = vw - w - this.shadowOffset;
+                moved = true;
+            }
+            if((y + h) > vh+s.top){
+                y = vh - h - this.shadowOffset;
+                moved = true;
+            }
+            // then make sure top/left isn't negative
+            if(x < s.left){
+                x = s.left;
+                moved = true;
+            }
+            if(y < s.top){
+                y = s.top;
+                moved = true;
+            }
+            if(moved){
+                if(this.avoidY){
+                    var ay = this.avoidY;
+                    if(y <= ay && (y+h) >= ay){
+                        y = ay-h-5;   
+                    }
+                }
+                xy = [x, y];
+                this.storeXY(xy);
+                supr.setXY.call(this, xy);
+                this.sync();
+            }
+        }
+    },
+
+    isVisible : function(){
+        return this.visible;    
+    },
+
+    // private
+    showAction : function(){
+        this.visible = true; // track visibility to prevent getStyle calls
+        if(this.useDisplay === true){
+            this.setDisplayed("");
+        }else if(this.lastXY){
+            supr.setXY.call(this, this.lastXY);
+        }else if(this.lastLT){
+            supr.setLeftTop.call(this, this.lastLT[0], this.lastLT[1]);
+        }
+    },
+
+    // private
+    hideAction : function(){
+        this.visible = false;
+        if(this.useDisplay === true){
+            this.setDisplayed(false);
+        }else{
+            this.setLeftTop(-10000,-10000);
+        }
+    },
+
+    // overridden Element method
+    setVisible : function(v, a, d, c, e){
+        if(v){
+            this.showAction();
+        }
+        if(a && v){
+            var cb = function(){
+                this.sync(true);
+                if(c){
+                    c();
+                }
+            }.createDelegate(this);
+            supr.setVisible.call(this, true, true, d, cb, e);
+        }else{
+            if(!v){
+                this.hideUnders(true);
+            }
+            var cb = c;
+            if(a){
+                cb = function(){
+                    this.hideAction();
+                    if(c){
+                        c();
+                    }
+                }.createDelegate(this);
+            }
+            supr.setVisible.call(this, v, a, d, cb, e);
+            if(v){
+                this.sync(true);
+            }else if(!a){
+                this.hideAction();
+            }
+        }
+    },
+
+    storeXY : function(xy){
+        delete this.lastLT;
+        this.lastXY = xy;
+    },
+
+    storeLeftTop : function(left, top){
+        delete this.lastXY;
+        this.lastLT = [left, top];
+    },
+
+    // private
+    beforeFx : function(){
+        this.beforeAction();
+        return Roo.Layer.superclass.beforeFx.apply(this, arguments);
+    },
+
+    // private
+    afterFx : function(){
+        Roo.Layer.superclass.afterFx.apply(this, arguments);
+        this.sync(this.isVisible());
+    },
+
+    // private
+    beforeAction : function(){
+        if(!this.updating && this.shadow){
+            this.shadow.hide();
+        }
+    },
+
+    // overridden Element method
+    setLeft : function(left){
+        this.storeLeftTop(left, this.getTop(true));
+        supr.setLeft.apply(this, arguments);
+        this.sync();
+    },
+
+    setTop : function(top){
+        this.storeLeftTop(this.getLeft(true), top);
+        supr.setTop.apply(this, arguments);
+        this.sync();
+    },
+
+    setLeftTop : function(left, top){
+        this.storeLeftTop(left, top);
+        supr.setLeftTop.apply(this, arguments);
+        this.sync();
+    },
+
+    setXY : function(xy, a, d, c, e){
+        this.fixDisplay();
+        this.beforeAction();
+        this.storeXY(xy);
+        var cb = this.createCB(c);
+        supr.setXY.call(this, xy, a, d, cb, e);
+        if(!a){
+            cb();
+        }
+    },
+
+    // private
+    createCB : function(c){
+        var el = this;
+        return function(){
+            el.constrainXY();
+            el.sync(true);
+            if(c){
+                c();
+            }
+        };
+    },
+
+    // overridden Element method
+    setX : function(x, a, d, c, e){
+        this.setXY([x, this.getY()], a, d, c, e);
+    },
+
+    // overridden Element method
+    setY : function(y, a, d, c, e){
+        this.setXY([this.getX(), y], a, d, c, e);
+    },
+
+    // overridden Element method
+    setSize : function(w, h, a, d, c, e){
+        this.beforeAction();
+        var cb = this.createCB(c);
+        supr.setSize.call(this, w, h, a, d, cb, e);
+        if(!a){
+            cb();
+        }
+    },
+
+    // overridden Element method
+    setWidth : function(w, a, d, c, e){
+        this.beforeAction();
+        var cb = this.createCB(c);
+        supr.setWidth.call(this, w, a, d, cb, e);
+        if(!a){
+            cb();
+        }
+    },
+
+    // overridden Element method
+    setHeight : function(h, a, d, c, e){
+        this.beforeAction();
+        var cb = this.createCB(c);
+        supr.setHeight.call(this, h, a, d, cb, e);
+        if(!a){
+            cb();
+        }
+    },
+
+    // overridden Element method
+    setBounds : function(x, y, w, h, a, d, c, e){
+        this.beforeAction();
+        var cb = this.createCB(c);
+        if(!a){
+            this.storeXY([x, y]);
+            supr.setXY.call(this, [x, y]);
+            supr.setSize.call(this, w, h, a, d, cb, e);
+            cb();
+        }else{
+            supr.setBounds.call(this, x, y, w, h, a, d, cb, e);
+        }
+        return this;
+    },
+    
+    /**
+     * Sets the z-index of this layer and adjusts any shadow and shim z-indexes. The layer z-index is automatically
+     * incremented by two more than the value passed in so that it always shows above any shadow or shim (the shadow
+     * element, if any, will be assigned z-index + 1, and the shim element, if any, will be assigned the unmodified z-index).
+     * @param {Number} zindex The new z-index to set
+     * @return {this} The Layer
+     */
+    setZIndex : function(zindex){
+        this.zindex = zindex;
+        this.setStyle("z-index", zindex + 2);
+        if(this.shadow){
+            this.shadow.setZIndex(zindex + 1);
+        }
+        if(this.shim){
+            this.shim.setStyle("z-index", zindex);
+        }
+    }
+});
+})();/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+
+/**
+ * @class Roo.Shadow
+ * Simple class that can provide a shadow effect for any element.  Note that the element MUST be absolutely positioned,
+ * and the shadow does not provide any shimming.  This should be used only in simple cases -- for more advanced
+ * functionality that can also provide the same shadow effect, see the {@link Roo.Layer} class.
+ * @constructor
+ * Create a new Shadow
+ * @param {Object} config The config object
+ */
+Roo.Shadow = function(config){
+    Roo.apply(this, config);
+    if(typeof this.mode != "string"){
+        this.mode = this.defaultMode;
+    }
+    var o = this.offset, a = {h: 0};
+    var rad = Math.floor(this.offset/2);
+    switch(this.mode.toLowerCase()){ // all this hideous nonsense calculates the various offsets for shadows
+        case "drop":
+            a.w = 0;
+            a.l = a.t = o;
+            a.t -= 1;
+            if(Roo.isIE){
+                a.l -= this.offset + rad;
+                a.t -= this.offset + rad;
+                a.w -= rad;
+                a.h -= rad;
+                a.t += 1;
+            }
+        break;
+        case "sides":
+            a.w = (o*2);
+            a.l = -o;
+            a.t = o-1;
+            if(Roo.isIE){
+                a.l -= (this.offset - rad);
+                a.t -= this.offset + rad;
+                a.l += 1;
+                a.w -= (this.offset - rad)*2;
+                a.w -= rad + 1;
+                a.h -= 1;
+            }
+        break;
+        case "frame":
+            a.w = a.h = (o*2);
+            a.l = a.t = -o;
+            a.t += 1;
+            a.h -= 2;
+            if(Roo.isIE){
+                a.l -= (this.offset - rad);
+                a.t -= (this.offset - rad);
+                a.l += 1;
+                a.w -= (this.offset + rad + 1);
+                a.h -= (this.offset + rad);
+                a.h += 1;
+            }
+        break;
+    };
+
+    this.adjusts = a;
+};
+
+Roo.Shadow.prototype = {
+    /**
+     * @cfg {String} mode
+     * The shadow display mode.  Supports the following options:<br />
+     * sides: Shadow displays on both sides and bottom only<br />
+     * frame: Shadow displays equally on all four sides<br />
+     * drop: Traditional bottom-right drop shadow (default)
+     */
+    /**
+     * @cfg {String} offset
+     * The number of pixels to offset the shadow from the element (defaults to 4)
+     */
+    offset: 4,
+
+    // private
+    defaultMode: "drop",
+
+    /**
+     * Displays the shadow under the target element
+     * @param {String/HTMLElement/Element} targetEl The id or element under which the shadow should display
+     */
+    show : function(target){
+        target = Roo.get(target);
+        if(!this.el){
+            this.el = Roo.Shadow.Pool.pull();
+            if(this.el.dom.nextSibling != target.dom){
+                this.el.insertBefore(target);
+            }
+        }
+        this.el.setStyle("z-index", this.zIndex || parseInt(target.getStyle("z-index"), 10)-1);
+        if(Roo.isIE){
+            this.el.dom.style.filter="progid:DXImageTransform.Microsoft.alpha(opacity=50) progid:DXImageTransform.Microsoft.Blur(pixelradius="+(this.offset)+")";
+        }
+        this.realign(
+            target.getLeft(true),
+            target.getTop(true),
+            target.getWidth(),
+            target.getHeight()
+        );
+        this.el.dom.style.display = "block";
+    },
+
+    /**
+     * Returns true if the shadow is visible, else false
+     */
+    isVisible : function(){
+        return this.el ? true : false;  
+    },
+
+    /**
+     * Direct alignment when values are already available. Show must be called at least once before
+     * calling this method to ensure it is initialized.
+     * @param {Number} left The target element left position
+     * @param {Number} top The target element top position
+     * @param {Number} width The target element width
+     * @param {Number} height The target element height
+     */
+    realign : function(l, t, w, h){
+        if(!this.el){
+            return;
+        }
+        var a = this.adjusts, d = this.el.dom, s = d.style;
+        var iea = 0;
+        s.left = (l+a.l)+"px";
+        s.top = (t+a.t)+"px";
+        var sw = (w+a.w), sh = (h+a.h), sws = sw +"px", shs = sh + "px";
+ 
+        if(s.width != sws || s.height != shs){
+            s.width = sws;
+            s.height = shs;
+            if(!Roo.isIE){
+                var cn = d.childNodes;
+                var sww = Math.max(0, (sw-12))+"px";
+                cn[0].childNodes[1].style.width = sww;
+                cn[1].childNodes[1].style.width = sww;
+                cn[2].childNodes[1].style.width = sww;
+                cn[1].style.height = Math.max(0, (sh-12))+"px";
+            }
+        }
+    },
+
+    /**
+     * Hides this shadow
+     */
+    hide : function(){
+        if(this.el){
+            this.el.dom.style.display = "none";
+            Roo.Shadow.Pool.push(this.el);
+            delete this.el;
+        }
+    },
+
+    /**
+     * Adjust the z-index of this shadow
+     * @param {Number} zindex The new z-index
+     */
+    setZIndex : function(z){
+        this.zIndex = z;
+        if(this.el){
+            this.el.setStyle("z-index", z);
+        }
+    }
+};
+
+// Private utility class that manages the internal Shadow cache
+Roo.Shadow.Pool = function(){
+    var p = [];
+    var markup = Roo.isIE ?
+                 '<div class="x-ie-shadow"></div>' :
+                 '<div class="x-shadow"><div class="xst"><div class="xstl"></div><div class="xstc"></div><div class="xstr"></div></div><div class="xsc"><div class="xsml"></div><div class="xsmc"></div><div class="xsmr"></div></div><div class="xsb"><div class="xsbl"></div><div class="xsbc"></div><div class="xsbr"></div></div></div>';
+    return {
+        pull : function(){
+            var sh = p.shift();
+            if(!sh){
+                sh = Roo.get(Roo.DomHelper.insertHtml("beforeBegin", document.body.firstChild, markup));
+                sh.autoBoxAdjust = false;
+            }
+            return sh;
+        },
+
+        push : function(sh){
+            p.push(sh);
+        }
+    };
+}();
