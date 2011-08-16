@@ -15401,4 +15401,2184 @@ Roo.extend(Roo.LayoutDialog, Roo.BasicDialog, {
     addxtype : function(c) {
         return this.layout.addxtype(c);
     }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.MessageBox
+ * Utility class for generating different styles of message boxes.  The alias Roo.Msg can also be used.
+ * Example usage:
+ *<pre><code>
+// Basic alert:
+Roo.Msg.alert('Status', 'Changes saved successfully.');
+
+// Prompt for user data:
+Roo.Msg.prompt('Name', 'Please enter your name:', function(btn, text){
+    if (btn == 'ok'){
+        // process text value...
+    }
+});
+
+// Show a dialog using config options:
+Roo.Msg.show({
+   title:'Save Changes?',
+   msg: 'Your are closing a tab that has unsaved changes. Would you like to save your changes?',
+   buttons: Roo.Msg.YESNOCANCEL,
+   fn: processResult,
+   animEl: 'elId'
+});
+</code></pre>
+ * @singleton
+ */
+Roo.MessageBox = function(){
+    var dlg, opt, mask, waitTimer;
+    var bodyEl, msgEl, textboxEl, textareaEl, progressEl, pp;
+    var buttons, activeTextEl, bwidth;
+
+    // private
+    var handleButton = function(button){
+        dlg.hide();
+        Roo.callback(opt.fn, opt.scope||window, [button, activeTextEl.dom.value], 1);
+    };
+
+    // private
+    var handleHide = function(){
+        if(opt && opt.cls){
+            dlg.el.removeClass(opt.cls);
+        }
+        if(waitTimer){
+            Roo.TaskMgr.stop(waitTimer);
+            waitTimer = null;
+        }
+    };
+
+    // private
+    var updateButtons = function(b){
+        var width = 0;
+        if(!b){
+            buttons["ok"].hide();
+            buttons["cancel"].hide();
+            buttons["yes"].hide();
+            buttons["no"].hide();
+            dlg.footer.dom.style.display = 'none';
+            return width;
+        }
+        dlg.footer.dom.style.display = '';
+        for(var k in buttons){
+            if(typeof buttons[k] != "function"){
+                if(b[k]){
+                    buttons[k].show();
+                    buttons[k].setText(typeof b[k] == "string" ? b[k] : Roo.MessageBox.buttonText[k]);
+                    width += buttons[k].el.getWidth()+15;
+                }else{
+                    buttons[k].hide();
+                }
+            }
+        }
+        return width;
+    };
+
+    // private
+    var handleEsc = function(d, k, e){
+        if(opt && opt.closable !== false){
+            dlg.hide();
+        }
+        if(e){
+            e.stopEvent();
+        }
+    };
+
+    return {
+        /**
+         * Returns a reference to the underlying {@link Roo.BasicDialog} element
+         * @return {Roo.BasicDialog} The BasicDialog element
+         */
+        getDialog : function(){
+           if(!dlg){
+                dlg = new Roo.BasicDialog("x-msg-box", {
+                    autoCreate : true,
+                    shadow: true,
+                    draggable: true,
+                    resizable:false,
+                    constraintoviewport:false,
+                    fixedcenter:true,
+                    collapsible : false,
+                    shim:true,
+                    modal: true,
+                    width:400, height:100,
+                    buttonAlign:"center",
+                    closeClick : function(){
+                        if(opt && opt.buttons && opt.buttons.no && !opt.buttons.cancel){
+                            handleButton("no");
+                        }else{
+                            handleButton("cancel");
+                        }
+                    }
+                });
+                dlg.on("hide", handleHide);
+                mask = dlg.mask;
+                dlg.addKeyListener(27, handleEsc);
+                buttons = {};
+                var bt = this.buttonText;
+                buttons["ok"] = dlg.addButton(bt["ok"], handleButton.createCallback("ok"));
+                buttons["yes"] = dlg.addButton(bt["yes"], handleButton.createCallback("yes"));
+                buttons["no"] = dlg.addButton(bt["no"], handleButton.createCallback("no"));
+                buttons["cancel"] = dlg.addButton(bt["cancel"], handleButton.createCallback("cancel"));
+                bodyEl = dlg.body.createChild({
+
+                    html:'<span class="roo-mb-text"></span><br /><input type="text" class="roo-mb-input" /><textarea class="roo-mb-textarea"></textarea><div class="roo-mb-progress-wrap"><div class="roo-mb-progress"><div class="roo-mb-progress-bar">&#160;</div></div></div>'
+                });
+                msgEl = bodyEl.dom.firstChild;
+                textboxEl = Roo.get(bodyEl.dom.childNodes[2]);
+                textboxEl.enableDisplayMode();
+                textboxEl.addKeyListener([10,13], function(){
+                    if(dlg.isVisible() && opt && opt.buttons){
+                        if(opt.buttons.ok){
+                            handleButton("ok");
+                        }else if(opt.buttons.yes){
+                            handleButton("yes");
+                        }
+                    }
+                });
+                textareaEl = Roo.get(bodyEl.dom.childNodes[3]);
+                textareaEl.enableDisplayMode();
+                progressEl = Roo.get(bodyEl.dom.childNodes[4]);
+                progressEl.enableDisplayMode();
+                var pf = progressEl.dom.firstChild;
+                if (pf) {
+                    pp = Roo.get(pf.firstChild);
+                    pp.setHeight(pf.offsetHeight);
+                }
+                
+            }
+            return dlg;
+        },
+
+        /**
+         * Updates the message box body text
+         * @param {String} text (optional) Replaces the message box element's innerHTML with the specified string (defaults to
+         * the XHTML-compliant non-breaking space character '&amp;#160;')
+         * @return {Roo.MessageBox} This message box
+         */
+        updateText : function(text){
+            if(!dlg.isVisible() && !opt.width){
+                dlg.resizeTo(this.maxWidth, 100); // resize first so content is never clipped from previous shows
+            }
+            msgEl.innerHTML = text || '&#160;';
+            var w = Math.max(Math.min(opt.width || msgEl.offsetWidth, this.maxWidth), 
+                        Math.max(opt.minWidth || this.minWidth, bwidth));
+            if(opt.prompt){
+                activeTextEl.setWidth(w);
+            }
+            if(dlg.isVisible()){
+                dlg.fixedcenter = false;
+            }
+            dlg.setContentSize(w, bodyEl.getHeight());
+            if(dlg.isVisible()){
+                dlg.fixedcenter = true;
+            }
+            return this;
+        },
+
+        /**
+         * Updates a progress-style message box's text and progress bar.  Only relevant on message boxes
+         * initiated via {@link Roo.MessageBox#progress} or by calling {@link Roo.MessageBox#show} with progress: true.
+         * @param {Number} value Any number between 0 and 1 (e.g., .5)
+         * @param {String} text (optional) If defined, the message box's body text is replaced with the specified string (defaults to undefined)
+         * @return {Roo.MessageBox} This message box
+         */
+        updateProgress : function(value, text){
+            if(text){
+                this.updateText(text);
+            }
+            if (pp) { // weird bug on my firefox - for some reason this is not defined
+                pp.setWidth(Math.floor(value*progressEl.dom.firstChild.offsetWidth));
+            }
+            return this;
+        },        
+
+        /**
+         * Returns true if the message box is currently displayed
+         * @return {Boolean} True if the message box is visible, else false
+         */
+        isVisible : function(){
+            return dlg && dlg.isVisible();  
+        },
+
+        /**
+         * Hides the message box if it is displayed
+         */
+        hide : function(){
+            if(this.isVisible()){
+                dlg.hide();
+            }  
+        },
+
+        /**
+         * Displays a new message box, or reinitializes an existing message box, based on the config options
+         * passed in. All functions (e.g. prompt, alert, etc) on MessageBox call this function internally.
+         * The following config object properties are supported:
+         * <pre>
+Property    Type             Description
+----------  ---------------  ------------------------------------------------------------------------------------
+animEl            String/Element   An id or Element from which the message box should animate as it opens and
+                                   closes (defaults to undefined)
+buttons           Object/Boolean   A button config object (e.g., Roo.MessageBox.OKCANCEL or {ok:'Foo',
+                                   cancel:'Bar'}), or false to not show any buttons (defaults to false)
+closable          Boolean          False to hide the top-right close button (defaults to true).  Note that
+                                   progress and wait dialogs will ignore this property and always hide the
+                                   close button as they can only be closed programmatically.
+cls               String           A custom CSS class to apply to the message box element
+defaultTextHeight Number           The default height in pixels of the message box's multiline textarea if
+                                   displayed (defaults to 75)
+fn                Function         A callback function to execute after closing the dialog.  The arguments to the
+                                   function will be btn (the name of the button that was clicked, if applicable,
+                                   e.g. "ok"), and text (the value of the active text field, if applicable).
+                                   Progress and wait dialogs will ignore this option since they do not respond to
+                                   user actions and can only be closed programmatically, so any required function
+                                   should be called by the same code after it closes the dialog.
+icon              String           A CSS class that provides a background image to be used as an icon for
+                                   the dialog (e.g., Roo.MessageBox.WARNING or 'custom-class', defaults to '')
+maxWidth          Number           The maximum width in pixels of the message box (defaults to 600)
+minWidth          Number           The minimum width in pixels of the message box (defaults to 100)
+modal             Boolean          False to allow user interaction with the page while the message box is
+                                   displayed (defaults to true)
+msg               String           A string that will replace the existing message box body text (defaults
+                                   to the XHTML-compliant non-breaking space character '&#160;')
+multiline         Boolean          True to prompt the user to enter multi-line text (defaults to false)
+progress          Boolean          True to display a progress bar (defaults to false)
+progressText      String           The text to display inside the progress bar if progress = true (defaults to '')
+prompt            Boolean          True to prompt the user to enter single-line text (defaults to false)
+proxyDrag         Boolean          True to display a lightweight proxy while dragging (defaults to false)
+title             String           The title text
+value             String           The string value to set into the active textbox element if displayed
+wait              Boolean          True to display a progress bar (defaults to false)
+width             Number           The width of the dialog in pixels
+</pre>
+         *
+         * Example usage:
+         * <pre><code>
+Roo.Msg.show({
+   title: 'Address',
+   msg: 'Please enter your address:',
+   width: 300,
+   buttons: Roo.MessageBox.OKCANCEL,
+   multiline: true,
+   fn: saveAddress,
+   animEl: 'addAddressBtn'
+});
+</code></pre>
+         * @param {Object} config Configuration options
+         * @return {Roo.MessageBox} This message box
+         */
+        show : function(options){
+            if(this.isVisible()){
+                this.hide();
+            }
+            var d = this.getDialog();
+            opt = options;
+            d.setTitle(opt.title || "&#160;");
+            d.close.setDisplayed(opt.closable !== false);
+            activeTextEl = textboxEl;
+            opt.prompt = opt.prompt || (opt.multiline ? true : false);
+            if(opt.prompt){
+                if(opt.multiline){
+                    textboxEl.hide();
+                    textareaEl.show();
+                    textareaEl.setHeight(typeof opt.multiline == "number" ?
+                        opt.multiline : this.defaultTextHeight);
+                    activeTextEl = textareaEl;
+                }else{
+                    textboxEl.show();
+                    textareaEl.hide();
+                }
+            }else{
+                textboxEl.hide();
+                textareaEl.hide();
+            }
+            progressEl.setDisplayed(opt.progress === true);
+            this.updateProgress(0);
+            activeTextEl.dom.value = opt.value || "";
+            if(opt.prompt){
+                dlg.setDefaultButton(activeTextEl);
+            }else{
+                var bs = opt.buttons;
+                var db = null;
+                if(bs && bs.ok){
+                    db = buttons["ok"];
+                }else if(bs && bs.yes){
+                    db = buttons["yes"];
+                }
+                dlg.setDefaultButton(db);
+            }
+            bwidth = updateButtons(opt.buttons);
+            this.updateText(opt.msg);
+            if(opt.cls){
+                d.el.addClass(opt.cls);
+            }
+            d.proxyDrag = opt.proxyDrag === true;
+            d.modal = opt.modal !== false;
+            d.mask = opt.modal !== false ? mask : false;
+            if(!d.isVisible()){
+                // force it to the end of the z-index stack so it gets a cursor in FF
+                document.body.appendChild(dlg.el.dom);
+                d.animateTarget = null;
+                d.show(options.animEl);
+            }
+            return this;
+        },
+
+        /**
+         * Displays a message box with a progress bar.  This message box has no buttons and is not closeable by
+         * the user.  You are responsible for updating the progress bar as needed via {@link Roo.MessageBox#updateProgress}
+         * and closing the message box when the process is complete.
+         * @param {String} title The title bar text
+         * @param {String} msg The message box body text
+         * @return {Roo.MessageBox} This message box
+         */
+        progress : function(title, msg){
+            this.show({
+                title : title,
+                msg : msg,
+                buttons: false,
+                progress:true,
+                closable:false,
+                minWidth: this.minProgressWidth,
+                modal : true
+            });
+            return this;
+        },
+
+        /**
+         * Displays a standard read-only message box with an OK button (comparable to the basic JavaScript Window.alert).
+         * If a callback function is passed it will be called after the user clicks the button, and the
+         * id of the button that was clicked will be passed as the only parameter to the callback
+         * (could also be the top-right close button).
+         * @param {String} title The title bar text
+         * @param {String} msg The message box body text
+         * @param {Function} fn (optional) The callback function invoked after the message box is closed
+         * @param {Object} scope (optional) The scope of the callback function
+         * @return {Roo.MessageBox} This message box
+         */
+        alert : function(title, msg, fn, scope){
+            this.show({
+                title : title,
+                msg : msg,
+                buttons: this.OK,
+                fn: fn,
+                scope : scope,
+                modal : true
+            });
+            return this;
+        },
+
+        /**
+         * Displays a message box with an infinitely auto-updating progress bar.  This can be used to block user
+         * interaction while waiting for a long-running process to complete that does not have defined intervals.
+         * You are responsible for closing the message box when the process is complete.
+         * @param {String} msg The message box body text
+         * @param {String} title (optional) The title bar text
+         * @return {Roo.MessageBox} This message box
+         */
+        wait : function(msg, title){
+            this.show({
+                title : title,
+                msg : msg,
+                buttons: false,
+                closable:false,
+                progress:true,
+                modal:true,
+                width:300,
+                wait:true
+            });
+            waitTimer = Roo.TaskMgr.start({
+                run: function(i){
+                    Roo.MessageBox.updateProgress(((((i+20)%20)+1)*5)*.01);
+                },
+                interval: 1000
+            });
+            return this;
+        },
+
+        /**
+         * Displays a confirmation message box with Yes and No buttons (comparable to JavaScript's Window.confirm).
+         * If a callback function is passed it will be called after the user clicks either button, and the id of the
+         * button that was clicked will be passed as the only parameter to the callback (could also be the top-right close button).
+         * @param {String} title The title bar text
+         * @param {String} msg The message box body text
+         * @param {Function} fn (optional) The callback function invoked after the message box is closed
+         * @param {Object} scope (optional) The scope of the callback function
+         * @return {Roo.MessageBox} This message box
+         */
+        confirm : function(title, msg, fn, scope){
+            this.show({
+                title : title,
+                msg : msg,
+                buttons: this.YESNO,
+                fn: fn,
+                scope : scope,
+                modal : true
+            });
+            return this;
+        },
+
+        /**
+         * Displays a message box with OK and Cancel buttons prompting the user to enter some text (comparable to
+         * JavaScript's Window.prompt).  The prompt can be a single-line or multi-line textbox.  If a callback function
+         * is passed it will be called after the user clicks either button, and the id of the button that was clicked
+         * (could also be the top-right close button) and the text that was entered will be passed as the two
+         * parameters to the callback.
+         * @param {String} title The title bar text
+         * @param {String} msg The message box body text
+         * @param {Function} fn (optional) The callback function invoked after the message box is closed
+         * @param {Object} scope (optional) The scope of the callback function
+         * @param {Boolean/Number} multiline (optional) True to create a multiline textbox using the defaultTextHeight
+         * property, or the height in pixels to create the textbox (defaults to false / single-line)
+         * @return {Roo.MessageBox} This message box
+         */
+        prompt : function(title, msg, fn, scope, multiline){
+            this.show({
+                title : title,
+                msg : msg,
+                buttons: this.OKCANCEL,
+                fn: fn,
+                minWidth:250,
+                scope : scope,
+                prompt:true,
+                multiline: multiline,
+                modal : true
+            });
+            return this;
+        },
+
+        /**
+         * Button config that displays a single OK button
+         * @type Object
+         */
+        OK : {ok:true},
+        /**
+         * Button config that displays Yes and No buttons
+         * @type Object
+         */
+        YESNO : {yes:true, no:true},
+        /**
+         * Button config that displays OK and Cancel buttons
+         * @type Object
+         */
+        OKCANCEL : {ok:true, cancel:true},
+        /**
+         * Button config that displays Yes, No and Cancel buttons
+         * @type Object
+         */
+        YESNOCANCEL : {yes:true, no:true, cancel:true},
+
+        /**
+         * The default height in pixels of the message box's multiline textarea if displayed (defaults to 75)
+         * @type Number
+         */
+        defaultTextHeight : 75,
+        /**
+         * The maximum width in pixels of the message box (defaults to 600)
+         * @type Number
+         */
+        maxWidth : 600,
+        /**
+         * The minimum width in pixels of the message box (defaults to 100)
+         * @type Number
+         */
+        minWidth : 100,
+        /**
+         * The minimum width in pixels of the message box if it is a progress-style dialog.  This is useful
+         * for setting a different minimum width than text-only dialogs may need (defaults to 250)
+         * @type Number
+         */
+        minProgressWidth : 250,
+        /**
+         * An object containing the default button text strings that can be overriden for localized language support.
+         * Supported properties are: ok, cancel, yes and no.
+         * Customize the default text like so: Roo.MessageBox.buttonText.yes = "S?";
+         * @type Object
+         */
+        buttonText : {
+            ok : "OK",
+            cancel : "Cancel",
+            yes : "Yes",
+            no : "No"
+        }
+    };
+}();
+
+/**
+ * Shorthand for {@link Roo.MessageBox}
+ */
+Roo.Msg = Roo.MessageBox;/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+/**
+ * @class Roo.QuickTips
+ * Provides attractive and customizable tooltips for any element.
+ * @singleton
+ */
+Roo.QuickTips = function(){
+    var el, tipBody, tipBodyText, tipTitle, tm, cfg, close, tagEls = {}, esc, removeCls = null, bdLeft, bdRight;
+    var ce, bd, xy, dd;
+    var visible = false, disabled = true, inited = false;
+    var showProc = 1, hideProc = 1, dismissProc = 1, locks = [];
+    
+    var onOver = function(e){
+        if(disabled){
+            return;
+        }
+        var t = e.getTarget();
+        if(!t || t.nodeType !== 1 || t == document || t == document.body){
+            return;
+        }
+        if(ce && t == ce.el){
+            clearTimeout(hideProc);
+            return;
+        }
+        if(t && tagEls[t.id]){
+            tagEls[t.id].el = t;
+            showProc = show.defer(tm.showDelay, tm, [tagEls[t.id]]);
+            return;
+        }
+        var ttp, et = Roo.fly(t);
+        var ns = cfg.namespace;
+        if(tm.interceptTitles && t.title){
+            ttp = t.title;
+            t.qtip = ttp;
+            t.removeAttribute("title");
+            e.preventDefault();
+        }else{
+            ttp = t.qtip || et.getAttributeNS(ns, cfg.attribute);
+        }
+        if(ttp){
+            showProc = show.defer(tm.showDelay, tm, [{
+                el: t, 
+                text: ttp, 
+                width: et.getAttributeNS(ns, cfg.width),
+                autoHide: et.getAttributeNS(ns, cfg.hide) != "user",
+                title: et.getAttributeNS(ns, cfg.title),
+           	    cls: et.getAttributeNS(ns, cfg.cls)
+            }]);
+        }
+    };
+    
+    var onOut = function(e){
+        clearTimeout(showProc);
+        var t = e.getTarget();
+        if(t && ce && ce.el == t && (tm.autoHide && ce.autoHide !== false)){
+            hideProc = setTimeout(hide, tm.hideDelay);
+        }
+    };
+    
+    var onMove = function(e){
+        if(disabled){
+            return;
+        }
+        xy = e.getXY();
+        xy[1] += 18;
+        if(tm.trackMouse && ce){
+            el.setXY(xy);
+        }
+    };
+    
+    var onDown = function(e){
+        clearTimeout(showProc);
+        clearTimeout(hideProc);
+        if(!e.within(el)){
+            if(tm.hideOnClick){
+                hide();
+                tm.disable();
+                tm.enable.defer(100, tm);
+            }
+        }
+    };
+    
+    var getPad = function(){
+        return 2;//bdLeft.getPadding('l')+bdRight.getPadding('r');
+    };
+
+    var show = function(o){
+        if(disabled){
+            return;
+        }
+        clearTimeout(dismissProc);
+        ce = o;
+        if(removeCls){ // in case manually hidden
+            el.removeClass(removeCls);
+            removeCls = null;
+        }
+        if(ce.cls){
+            el.addClass(ce.cls);
+            removeCls = ce.cls;
+        }
+        if(ce.title){
+            tipTitle.update(ce.title);
+            tipTitle.show();
+        }else{
+            tipTitle.update('');
+            tipTitle.hide();
+        }
+        el.dom.style.width  = tm.maxWidth+'px';
+        //tipBody.dom.style.width = '';
+        tipBodyText.update(o.text);
+        var p = getPad(), w = ce.width;
+        if(!w){
+            var td = tipBodyText.dom;
+            var aw = Math.max(td.offsetWidth, td.clientWidth, td.scrollWidth);
+            if(aw > tm.maxWidth){
+                w = tm.maxWidth;
+            }else if(aw < tm.minWidth){
+                w = tm.minWidth;
+            }else{
+                w = aw;
+            }
+        }
+        //tipBody.setWidth(w);
+        el.setWidth(parseInt(w, 10) + p);
+        if(ce.autoHide === false){
+            close.setDisplayed(true);
+            if(dd){
+                dd.unlock();
+            }
+        }else{
+            close.setDisplayed(false);
+            if(dd){
+                dd.lock();
+            }
+        }
+        if(xy){
+            el.avoidY = xy[1]-18;
+            el.setXY(xy);
+        }
+        if(tm.animate){
+            el.setOpacity(.1);
+            el.setStyle("visibility", "visible");
+            el.fadeIn({callback: afterShow});
+        }else{
+            afterShow();
+        }
+    };
+    
+    var afterShow = function(){
+        if(ce){
+            el.show();
+            esc.enable();
+            if(tm.autoDismiss && ce.autoHide !== false){
+                dismissProc = setTimeout(hide, tm.autoDismissDelay);
+            }
+        }
+    };
+    
+    var hide = function(noanim){
+        clearTimeout(dismissProc);
+        clearTimeout(hideProc);
+        ce = null;
+        if(el.isVisible()){
+            esc.disable();
+            if(noanim !== true && tm.animate){
+                el.fadeOut({callback: afterHide});
+            }else{
+                afterHide();
+            } 
+        }
+    };
+    
+    var afterHide = function(){
+        el.hide();
+        if(removeCls){
+            el.removeClass(removeCls);
+            removeCls = null;
+        }
+    };
+    
+    return {
+        /**
+        * @cfg {Number} minWidth
+        * The minimum width of the quick tip (defaults to 40)
+        */
+       minWidth : 40,
+        /**
+        * @cfg {Number} maxWidth
+        * The maximum width of the quick tip (defaults to 300)
+        */
+       maxWidth : 300,
+        /**
+        * @cfg {Boolean} interceptTitles
+        * True to automatically use the element's DOM title value if available (defaults to false)
+        */
+       interceptTitles : false,
+        /**
+        * @cfg {Boolean} trackMouse
+        * True to have the quick tip follow the mouse as it moves over the target element (defaults to false)
+        */
+       trackMouse : false,
+        /**
+        * @cfg {Boolean} hideOnClick
+        * True to hide the quick tip if the user clicks anywhere in the document (defaults to true)
+        */
+       hideOnClick : true,
+        /**
+        * @cfg {Number} showDelay
+        * Delay in milliseconds before the quick tip displays after the mouse enters the target element (defaults to 500)
+        */
+       showDelay : 500,
+        /**
+        * @cfg {Number} hideDelay
+        * Delay in milliseconds before the quick tip hides when autoHide = true (defaults to 200)
+        */
+       hideDelay : 200,
+        /**
+        * @cfg {Boolean} autoHide
+        * True to automatically hide the quick tip after the mouse exits the target element (defaults to true).
+        * Used in conjunction with hideDelay.
+        */
+       autoHide : true,
+        /**
+        * @cfg {Boolean}
+        * True to automatically hide the quick tip after a set period of time, regardless of the user's actions
+        * (defaults to true).  Used in conjunction with autoDismissDelay.
+        */
+       autoDismiss : true,
+        /**
+        * @cfg {Number}
+        * Delay in milliseconds before the quick tip hides when autoDismiss = true (defaults to 5000)
+        */
+       autoDismissDelay : 5000,
+       /**
+        * @cfg {Boolean} animate
+        * True to turn on fade animation. Defaults to false (ClearType/scrollbar flicker issues in IE7).
+        */
+       animate : false,
+
+       /**
+        * @cfg {String} title
+        * Title text to display (defaults to '').  This can be any valid HTML markup.
+        */
+        title: '',
+       /**
+        * @cfg {String} text
+        * Body text to display (defaults to '').  This can be any valid HTML markup.
+        */
+        text : '',
+       /**
+        * @cfg {String} cls
+        * A CSS class to apply to the base quick tip element (defaults to '').
+        */
+        cls : '',
+       /**
+        * @cfg {Number} width
+        * Width in pixels of the quick tip (defaults to auto).  Width will be ignored if it exceeds the bounds of
+        * minWidth or maxWidth.
+        */
+        width : null,
+
+    /**
+     * Initialize and enable QuickTips for first use.  This should be called once before the first attempt to access
+     * or display QuickTips in a page.
+     */
+       init : function(){
+          tm = Roo.QuickTips;
+          cfg = tm.tagConfig;
+          if(!inited){
+              if(!Roo.isReady){ // allow calling of init() before onReady
+                  Roo.onReady(Roo.QuickTips.init, Roo.QuickTips);
+                  return;
+              }
+              el = new Roo.Layer({cls:"x-tip", shadow:"drop", shim: true, constrain:true, shadowOffset:4});
+              el.fxDefaults = {stopFx: true};
+              // maximum custom styling
+              //el.update('<div class="x-tip-top-left"><div class="x-tip-top-right"><div class="x-tip-top"></div></div></div><div class="x-tip-bd-left"><div class="x-tip-bd-right"><div class="x-tip-bd"><div class="x-tip-close"></div><h3></h3><div class="x-tip-bd-inner"></div><div class="x-clear"></div></div></div></div><div class="x-tip-ft-left"><div class="x-tip-ft-right"><div class="x-tip-ft"></div></div></div>');
+              el.update('<div class="x-tip-bd"><div class="x-tip-close"></div><h3></h3><div class="x-tip-bd-inner"></div><div class="x-clear"></div></div>');              
+              tipTitle = el.child('h3');
+              tipTitle.enableDisplayMode("block");
+              tipBody = el.child('div.x-tip-bd');
+              tipBodyText = el.child('div.x-tip-bd-inner');
+              //bdLeft = el.child('div.x-tip-bd-left');
+              //bdRight = el.child('div.x-tip-bd-right');
+              close = el.child('div.x-tip-close');
+              close.enableDisplayMode("block");
+              close.on("click", hide);
+              var d = Roo.get(document);
+              d.on("mousedown", onDown);
+              d.on("mouseover", onOver);
+              d.on("mouseout", onOut);
+              d.on("mousemove", onMove);
+              esc = d.addKeyListener(27, hide);
+              esc.disable();
+              if(Roo.dd.DD){
+                  dd = el.initDD("default", null, {
+                      onDrag : function(){
+                          el.sync();  
+                      }
+                  });
+                  dd.setHandleElId(tipTitle.id);
+                  dd.lock();
+              }
+              inited = true;
+          }
+          this.enable(); 
+       },
+
+    /**
+     * Configures a new quick tip instance and assigns it to a target element.  The following config options
+     * are supported:
+     * <pre>
+Property    Type                   Description
+----------  ---------------------  ------------------------------------------------------------------------
+target      Element/String/Array   An Element, id or array of ids that this quick tip should be tied to
+     * </ul>
+     * @param {Object} config The config object
+     */
+       register : function(config){
+           var cs = config instanceof Array ? config : arguments;
+           for(var i = 0, len = cs.length; i < len; i++) {
+               var c = cs[i];
+               var target = c.target;
+               if(target){
+                   if(target instanceof Array){
+                       for(var j = 0, jlen = target.length; j < jlen; j++){
+                           tagEls[target[j]] = c;
+                       }
+                   }else{
+                       tagEls[typeof target == 'string' ? target : Roo.id(target)] = c;
+                   }
+               }
+           }
+       },
+
+    /**
+     * Removes this quick tip from its element and destroys it.
+     * @param {String/HTMLElement/Element} el The element from which the quick tip is to be removed.
+     */
+       unregister : function(el){
+           delete tagEls[Roo.id(el)];
+       },
+
+    /**
+     * Enable this quick tip.
+     */
+       enable : function(){
+           if(inited && disabled){
+               locks.pop();
+               if(locks.length < 1){
+                   disabled = false;
+               }
+           }
+       },
+
+    /**
+     * Disable this quick tip.
+     */
+       disable : function(){
+          disabled = true;
+          clearTimeout(showProc);
+          clearTimeout(hideProc);
+          clearTimeout(dismissProc);
+          if(ce){
+              hide(true);
+          }
+          locks.push(1);
+       },
+
+    /**
+     * Returns true if the quick tip is enabled, else false.
+     */
+       isEnabled : function(){
+            return !disabled;
+       },
+
+        // private
+       tagConfig : {
+           namespace : "ext",
+           attribute : "qtip",
+           width : "width",
+           target : "target",
+           title : "qtitle",
+           hide : "hide",
+           cls : "qclass"
+       }
+   };
+}();
+
+// backwards compat
+Roo.QuickTips.tips = Roo.QuickTips.register;/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+
+/**
+ * @class Roo.tree.TreePanel
+ * @extends Roo.data.Tree
+
+ * @cfg {Boolean} rootVisible false to hide the root node (defaults to true)
+ * @cfg {Boolean} lines false to disable tree lines (defaults to true)
+ * @cfg {Boolean} enableDD true to enable drag and drop
+ * @cfg {Boolean} enableDrag true to enable just drag
+ * @cfg {Boolean} enableDrop true to enable just drop
+ * @cfg {Object} dragConfig Custom config to pass to the {@link Roo.tree.TreeDragZone} instance
+ * @cfg {Object} dropConfig Custom config to pass to the {@link Roo.tree.TreeDropZone} instance
+ * @cfg {String} ddGroup The DD group this TreePanel belongs to
+ * @cfg {String} ddAppendOnly True if the tree should only allow append drops (use for trees which are sorted)
+ * @cfg {Boolean} ddScroll true to enable YUI body scrolling
+ * @cfg {Boolean} containerScroll true to register this container with ScrollManager
+ * @cfg {Boolean} hlDrop false to disable node highlight on drop (defaults to the value of Roo.enableFx)
+ * @cfg {String} hlColor The color of the node highlight (defaults to C3DAF9)
+ * @cfg {Boolean} animate true to enable animated expand/collapse (defaults to the value of Roo.enableFx)
+ * @cfg {Boolean} singleExpand true if only 1 node per branch may be expanded
+ * @cfg {Boolean} selModel A tree selection model to use with this TreePanel (defaults to a {@link Roo.tree.DefaultSelectionModel})
+ * @cfg {Boolean} loader A TreeLoader for use with this TreePanel
+ * @cfg {String} pathSeparator The token used to separate sub-paths in path strings (defaults to '/')
+ * @cfg {Function} renderer Sets the rendering (formatting) function for the nodes. to return HTML markup for the tree view. The render function is called with  the following parameters:<ul><li>The {Object} The data for the node.</li></ul>
+ * @cfg {Function} rendererTip Sets the rendering (formatting) function for the nodes hovertip to return HTML markup for the tree view. The render function is called with  the following parameters:<ul><li>The {Object} The data for the node.</li></ul>
+ * 
+ * @constructor
+ * @param {String/HTMLElement/Element} el The container element
+ * @param {Object} config
+ */
+Roo.tree.TreePanel = function(el, config){
+    var root = false;
+    var loader = false;
+    if (config.root) {
+        root = config.root;
+        delete config.root;
+    }
+    if (config.loader) {
+        loader = config.loader;
+        delete config.loader;
+    }
+    
+    Roo.apply(this, config);
+    Roo.tree.TreePanel.superclass.constructor.call(this);
+    this.el = Roo.get(el);
+    this.el.addClass('x-tree');
+    //console.log(root);
+    if (root) {
+        this.setRootNode( Roo.factory(root, Roo.tree));
+    }
+    if (loader) {
+        this.loader = Roo.factory(loader, Roo.tree);
+    }
+   /**
+    * Read-only. The id of the container element becomes this TreePanel's id.
+    */
+   this.id = this.el.id;
+   this.addEvents({
+        /**
+        * @event beforeload
+        * Fires before a node is loaded, return false to cancel
+        * @param {Node} node The node being loaded
+        */
+        "beforeload" : true,
+        /**
+        * @event load
+        * Fires when a node is loaded
+        * @param {Node} node The node that was loaded
+        */
+        "load" : true,
+        /**
+        * @event textchange
+        * Fires when the text for a node is changed
+        * @param {Node} node The node
+        * @param {String} text The new text
+        * @param {String} oldText The old text
+        */
+        "textchange" : true,
+        /**
+        * @event beforeexpand
+        * Fires before a node is expanded, return false to cancel.
+        * @param {Node} node The node
+        * @param {Boolean} deep
+        * @param {Boolean} anim
+        */
+        "beforeexpand" : true,
+        /**
+        * @event beforecollapse
+        * Fires before a node is collapsed, return false to cancel.
+        * @param {Node} node The node
+        * @param {Boolean} deep
+        * @param {Boolean} anim
+        */
+        "beforecollapse" : true,
+        /**
+        * @event expand
+        * Fires when a node is expanded
+        * @param {Node} node The node
+        */
+        "expand" : true,
+        /**
+        * @event disabledchange
+        * Fires when the disabled status of a node changes
+        * @param {Node} node The node
+        * @param {Boolean} disabled
+        */
+        "disabledchange" : true,
+        /**
+        * @event collapse
+        * Fires when a node is collapsed
+        * @param {Node} node The node
+        */
+        "collapse" : true,
+        /**
+        * @event beforeclick
+        * Fires before click processing on a node. Return false to cancel the default action.
+        * @param {Node} node The node
+        * @param {Roo.EventObject} e The event object
+        */
+        "beforeclick":true,
+        /**
+        * @event checkchange
+        * Fires when a node with a checkbox's checked property changes
+        * @param {Node} this This node
+        * @param {Boolean} checked
+        */
+        "checkchange":true,
+        /**
+        * @event click
+        * Fires when a node is clicked
+        * @param {Node} node The node
+        * @param {Roo.EventObject} e The event object
+        */
+        "click":true,
+        /**
+        * @event dblclick
+        * Fires when a node is double clicked
+        * @param {Node} node The node
+        * @param {Roo.EventObject} e The event object
+        */
+        "dblclick":true,
+        /**
+        * @event contextmenu
+        * Fires when a node is right clicked
+        * @param {Node} node The node
+        * @param {Roo.EventObject} e The event object
+        */
+        "contextmenu":true,
+        /**
+        * @event beforechildrenrendered
+        * Fires right before the child nodes for a node are rendered
+        * @param {Node} node The node
+        */
+        "beforechildrenrendered":true,
+       /**
+	     * @event startdrag
+	     * Fires when a node starts being dragged
+	     * @param {Roo.tree.TreePanel} this
+	     * @param {Roo.tree.TreeNode} node
+	     * @param {event} e The raw browser event
+	     */ 
+	    "startdrag" : true,
+	    /**
+	     * @event enddrag
+	     * Fires when a drag operation is complete
+	     * @param {Roo.tree.TreePanel} this
+	     * @param {Roo.tree.TreeNode} node
+	     * @param {event} e The raw browser event
+	     */
+	    "enddrag" : true,
+	    /**
+	     * @event dragdrop
+	     * Fires when a dragged node is dropped on a valid DD target
+	     * @param {Roo.tree.TreePanel} this
+	     * @param {Roo.tree.TreeNode} node
+	     * @param {DD} dd The dd it was dropped on
+	     * @param {event} e The raw browser event
+	     */
+	    "dragdrop" : true,
+	    /**
+	     * @event beforenodedrop
+	     * Fires when a DD object is dropped on a node in this tree for preprocessing. Return false to cancel the drop. The dropEvent
+	     * passed to handlers has the following properties:<br />
+	     * <ul style="padding:5px;padding-left:16px;">
+	     * <li>tree - The TreePanel</li>
+	     * <li>target - The node being targeted for the drop</li>
+	     * <li>data - The drag data from the drag source</li>
+	     * <li>point - The point of the drop - append, above or below</li>
+	     * <li>source - The drag source</li>
+	     * <li>rawEvent - Raw mouse event</li>
+	     * <li>dropNode - Drop node(s) provided by the source <b>OR</b> you can supply node(s)
+	     * to be inserted by setting them on this object.</li>
+	     * <li>cancel - Set this to true to cancel the drop.</li>
+	     * </ul>
+	     * @param {Object} dropEvent
+	     */
+	    "beforenodedrop" : true,
+	    /**
+	     * @event nodedrop
+	     * Fires after a DD object is dropped on a node in this tree. The dropEvent
+	     * passed to handlers has the following properties:<br />
+	     * <ul style="padding:5px;padding-left:16px;">
+	     * <li>tree - The TreePanel</li>
+	     * <li>target - The node being targeted for the drop</li>
+	     * <li>data - The drag data from the drag source</li>
+	     * <li>point - The point of the drop - append, above or below</li>
+	     * <li>source - The drag source</li>
+	     * <li>rawEvent - Raw mouse event</li>
+	     * <li>dropNode - Dropped node(s).</li>
+	     * </ul>
+	     * @param {Object} dropEvent
+	     */
+	    "nodedrop" : true,
+	     /**
+	     * @event nodedragover
+	     * Fires when a tree node is being targeted for a drag drop, return false to signal drop not allowed. The dragOverEvent
+	     * passed to handlers has the following properties:<br />
+	     * <ul style="padding:5px;padding-left:16px;">
+	     * <li>tree - The TreePanel</li>
+	     * <li>target - The node being targeted for the drop</li>
+	     * <li>data - The drag data from the drag source</li>
+	     * <li>point - The point of the drop - append, above or below</li>
+	     * <li>source - The drag source</li>
+	     * <li>rawEvent - Raw mouse event</li>
+	     * <li>dropNode - Drop node(s) provided by the source.</li>
+	     * <li>cancel - Set this to true to signal drop not allowed.</li>
+	     * </ul>
+	     * @param {Object} dragOverEvent
+	     */
+	    "nodedragover" : true
+        
+   });
+   if(this.singleExpand){
+       this.on("beforeexpand", this.restrictExpand, this);
+   }
+};
+Roo.extend(Roo.tree.TreePanel, Roo.data.Tree, {
+    rootVisible : true,
+    animate: Roo.enableFx,
+    lines : true,
+    enableDD : false,
+    hlDrop : Roo.enableFx,
+  
+    renderer: false,
+    
+    rendererTip: false,
+    // private
+    restrictExpand : function(node){
+        var p = node.parentNode;
+        if(p){
+            if(p.expandedChild && p.expandedChild.parentNode == p){
+                p.expandedChild.collapse();
+            }
+            p.expandedChild = node;
+        }
+    },
+
+    // private override
+    setRootNode : function(node){
+        Roo.tree.TreePanel.superclass.setRootNode.call(this, node);
+        if(!this.rootVisible){
+            node.ui = new Roo.tree.RootTreeNodeUI(node);
+        }
+        return node;
+    },
+
+    /**
+     * Returns the container element for this TreePanel
+     */
+    getEl : function(){
+        return this.el;
+    },
+
+    /**
+     * Returns the default TreeLoader for this TreePanel
+     */
+    getLoader : function(){
+        return this.loader;
+    },
+
+    /**
+     * Expand all nodes
+     */
+    expandAll : function(){
+        this.root.expand(true);
+    },
+
+    /**
+     * Collapse all nodes
+     */
+    collapseAll : function(){
+        this.root.collapse(true);
+    },
+
+    /**
+     * Returns the selection model used by this TreePanel
+     */
+    getSelectionModel : function(){
+        if(!this.selModel){
+            this.selModel = new Roo.tree.DefaultSelectionModel();
+        }
+        return this.selModel;
+    },
+
+    /**
+     * Retrieve an array of checked nodes, or an array of a specific attribute of checked nodes (e.g. "id")
+     * @param {String} attribute (optional) Defaults to null (return the actual nodes)
+     * @param {TreeNode} startNode (optional) The node to start from, defaults to the root
+     * @return {Array}
+     */
+    getChecked : function(a, startNode){
+        startNode = startNode || this.root;
+        var r = [];
+        var f = function(){
+            if(this.attributes.checked){
+                r.push(!a ? this : (a == 'id' ? this.id : this.attributes[a]));
+            }
+        }
+        startNode.cascade(f);
+        return r;
+    },
+
+    /**
+     * Expands a specified path in this TreePanel. A path can be retrieved from a node with {@link Roo.data.Node#getPath}
+     * @param {String} path
+     * @param {String} attr (optional) The attribute used in the path (see {@link Roo.data.Node#getPath} for more info)
+     * @param {Function} callback (optional) The callback to call when the expand is complete. The callback will be called with
+     * (bSuccess, oLastNode) where bSuccess is if the expand was successful and oLastNode is the last node that was expanded.
+     */
+    expandPath : function(path, attr, callback){
+        attr = attr || "id";
+        var keys = path.split(this.pathSeparator);
+        var curNode = this.root;
+        if(curNode.attributes[attr] != keys[1]){ // invalid root
+            if(callback){
+                callback(false, null);
+            }
+            return;
+        }
+        var index = 1;
+        var f = function(){
+            if(++index == keys.length){
+                if(callback){
+                    callback(true, curNode);
+                }
+                return;
+            }
+            var c = curNode.findChild(attr, keys[index]);
+            if(!c){
+                if(callback){
+                    callback(false, curNode);
+                }
+                return;
+            }
+            curNode = c;
+            c.expand(false, false, f);
+        };
+        curNode.expand(false, false, f);
+    },
+
+    /**
+     * Selects the node in this tree at the specified path. A path can be retrieved from a node with {@link Roo.data.Node#getPath}
+     * @param {String} path
+     * @param {String} attr (optional) The attribute used in the path (see {@link Roo.data.Node#getPath} for more info)
+     * @param {Function} callback (optional) The callback to call when the selection is complete. The callback will be called with
+     * (bSuccess, oSelNode) where bSuccess is if the selection was successful and oSelNode is the selected node.
+     */
+    selectPath : function(path, attr, callback){
+        attr = attr || "id";
+        var keys = path.split(this.pathSeparator);
+        var v = keys.pop();
+        if(keys.length > 0){
+            var f = function(success, node){
+                if(success && node){
+                    var n = node.findChild(attr, v);
+                    if(n){
+                        n.select();
+                        if(callback){
+                            callback(true, n);
+                        }
+                    }else if(callback){
+                        callback(false, n);
+                    }
+                }else{
+                    if(callback){
+                        callback(false, n);
+                    }
+                }
+            };
+            this.expandPath(keys.join(this.pathSeparator), attr, f);
+        }else{
+            this.root.select();
+            if(callback){
+                callback(true, this.root);
+            }
+        }
+    },
+
+    getTreeEl : function(){
+        return this.el;
+    },
+
+    /**
+     * Trigger rendering of this TreePanel
+     */
+    render : function(){
+        if (this.innerCt) {
+            return this; // stop it rendering more than once!!
+        }
+        
+        this.innerCt = this.el.createChild({tag:"ul",
+               cls:"x-tree-root-ct " +
+               (this.lines ? "x-tree-lines" : "x-tree-no-lines")});
+
+        if(this.containerScroll){
+            Roo.dd.ScrollManager.register(this.el);
+        }
+        if((this.enableDD || this.enableDrop) && !this.dropZone){
+           /**
+            * The dropZone used by this tree if drop is enabled
+            * @type Roo.tree.TreeDropZone
+            */
+             this.dropZone = new Roo.tree.TreeDropZone(this, this.dropConfig || {
+               ddGroup: this.ddGroup || "TreeDD", appendOnly: this.ddAppendOnly === true
+           });
+        }
+        if((this.enableDD || this.enableDrag) && !this.dragZone){
+           /**
+            * The dragZone used by this tree if drag is enabled
+            * @type Roo.tree.TreeDragZone
+            */
+            this.dragZone = new Roo.tree.TreeDragZone(this, this.dragConfig || {
+               ddGroup: this.ddGroup || "TreeDD",
+               scroll: this.ddScroll
+           });
+        }
+        this.getSelectionModel().init(this);
+        if (!this.root) {
+            console.log("ROOT not set in tree");
+            return;
+        }
+        this.root.render();
+        if(!this.rootVisible){
+            this.root.renderChildren();
+        }
+        return this;
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+
+/**
+ * @class Roo.tree.DefaultSelectionModel
+ * @extends Roo.util.Observable
+ * The default single selection for a TreePanel.
+ */
+Roo.tree.DefaultSelectionModel = function(){
+   this.selNode = null;
+   
+   this.addEvents({
+       /**
+        * @event selectionchange
+        * Fires when the selected node changes
+        * @param {DefaultSelectionModel} this
+        * @param {TreeNode} node the new selection
+        */
+       "selectionchange" : true,
+
+       /**
+        * @event beforeselect
+        * Fires before the selected node changes, return false to cancel the change
+        * @param {DefaultSelectionModel} this
+        * @param {TreeNode} node the new selection
+        * @param {TreeNode} node the old selection
+        */
+       "beforeselect" : true
+   });
+};
+
+Roo.extend(Roo.tree.DefaultSelectionModel, Roo.util.Observable, {
+    init : function(tree){
+        this.tree = tree;
+        tree.getTreeEl().on("keydown", this.onKeyDown, this);
+        tree.on("click", this.onNodeClick, this);
+    },
+    
+    onNodeClick : function(node, e){
+        if (e.ctrlKey && this.selNode == node)  {
+            this.unselect(node);
+            return;
+        }
+        this.select(node);
+    },
+    
+    /**
+     * Select a node.
+     * @param {TreeNode} node The node to select
+     * @return {TreeNode} The selected node
+     */
+    select : function(node){
+        var last = this.selNode;
+        if(last != node && this.fireEvent('beforeselect', this, node, last) !== false){
+            if(last){
+                last.ui.onSelectedChange(false);
+            }
+            this.selNode = node;
+            node.ui.onSelectedChange(true);
+            this.fireEvent("selectionchange", this, node, last);
+        }
+        return node;
+    },
+    
+    /**
+     * Deselect a node.
+     * @param {TreeNode} node The node to unselect
+     */
+    unselect : function(node){
+        if(this.selNode == node){
+            this.clearSelections();
+        }    
+    },
+    
+    /**
+     * Clear all selections
+     */
+    clearSelections : function(){
+        var n = this.selNode;
+        if(n){
+            n.ui.onSelectedChange(false);
+            this.selNode = null;
+            this.fireEvent("selectionchange", this, null);
+        }
+        return n;
+    },
+    
+    /**
+     * Get the selected node
+     * @return {TreeNode} The selected node
+     */
+    getSelectedNode : function(){
+        return this.selNode;    
+    },
+    
+    /**
+     * Returns true if the node is selected
+     * @param {TreeNode} node The node to check
+     * @return {Boolean}
+     */
+    isSelected : function(node){
+        return this.selNode == node;  
+    },
+
+    /**
+     * Selects the node above the selected node in the tree, intelligently walking the nodes
+     * @return TreeNode The new selection
+     */
+    selectPrevious : function(){
+        var s = this.selNode || this.lastSelNode;
+        if(!s){
+            return null;
+        }
+        var ps = s.previousSibling;
+        if(ps){
+            if(!ps.isExpanded() || ps.childNodes.length < 1){
+                return this.select(ps);
+            } else{
+                var lc = ps.lastChild;
+                while(lc && lc.isExpanded() && lc.childNodes.length > 0){
+                    lc = lc.lastChild;
+                }
+                return this.select(lc);
+            }
+        } else if(s.parentNode && (this.tree.rootVisible || !s.parentNode.isRoot)){
+            return this.select(s.parentNode);
+        }
+        return null;
+    },
+
+    /**
+     * Selects the node above the selected node in the tree, intelligently walking the nodes
+     * @return TreeNode The new selection
+     */
+    selectNext : function(){
+        var s = this.selNode || this.lastSelNode;
+        if(!s){
+            return null;
+        }
+        if(s.firstChild && s.isExpanded()){
+             return this.select(s.firstChild);
+         }else if(s.nextSibling){
+             return this.select(s.nextSibling);
+         }else if(s.parentNode){
+            var newS = null;
+            s.parentNode.bubble(function(){
+                if(this.nextSibling){
+                    newS = this.getOwnerTree().selModel.select(this.nextSibling);
+                    return false;
+                }
+            });
+            return newS;
+         }
+        return null;
+    },
+
+    onKeyDown : function(e){
+        var s = this.selNode || this.lastSelNode;
+        // undesirable, but required
+        var sm = this;
+        if(!s){
+            return;
+        }
+        var k = e.getKey();
+        switch(k){
+             case e.DOWN:
+                 e.stopEvent();
+                 this.selectNext();
+             break;
+             case e.UP:
+                 e.stopEvent();
+                 this.selectPrevious();
+             break;
+             case e.RIGHT:
+                 e.preventDefault();
+                 if(s.hasChildNodes()){
+                     if(!s.isExpanded()){
+                         s.expand();
+                     }else if(s.firstChild){
+                         this.select(s.firstChild, e);
+                     }
+                 }
+             break;
+             case e.LEFT:
+                 e.preventDefault();
+                 if(s.hasChildNodes() && s.isExpanded()){
+                     s.collapse();
+                 }else if(s.parentNode && (this.tree.rootVisible || s.parentNode != this.tree.getRootNode())){
+                     this.select(s.parentNode, e);
+                 }
+             break;
+        };
+    }
+});
+
+/**
+ * @class Roo.tree.MultiSelectionModel
+ * @extends Roo.util.Observable
+ * Multi selection for a TreePanel.
+ */
+Roo.tree.MultiSelectionModel = function(){
+   this.selNodes = [];
+   this.selMap = {};
+   this.addEvents({
+       /**
+        * @event selectionchange
+        * Fires when the selected nodes change
+        * @param {MultiSelectionModel} this
+        * @param {Array} nodes Array of the selected nodes
+        */
+       "selectionchange" : true
+   });
+};
+
+Roo.extend(Roo.tree.MultiSelectionModel, Roo.util.Observable, {
+    init : function(tree){
+        this.tree = tree;
+        tree.getTreeEl().on("keydown", this.onKeyDown, this);
+        tree.on("click", this.onNodeClick, this);
+    },
+    
+    onNodeClick : function(node, e){
+        this.select(node, e, e.ctrlKey);
+    },
+    
+    /**
+     * Select a node.
+     * @param {TreeNode} node The node to select
+     * @param {EventObject} e (optional) An event associated with the selection
+     * @param {Boolean} keepExisting True to retain existing selections
+     * @return {TreeNode} The selected node
+     */
+    select : function(node, e, keepExisting){
+        if(keepExisting !== true){
+            this.clearSelections(true);
+        }
+        if(this.isSelected(node)){
+            this.lastSelNode = node;
+            return node;
+        }
+        this.selNodes.push(node);
+        this.selMap[node.id] = node;
+        this.lastSelNode = node;
+        node.ui.onSelectedChange(true);
+        this.fireEvent("selectionchange", this, this.selNodes);
+        return node;
+    },
+    
+    /**
+     * Deselect a node.
+     * @param {TreeNode} node The node to unselect
+     */
+    unselect : function(node){
+        if(this.selMap[node.id]){
+            node.ui.onSelectedChange(false);
+            var sn = this.selNodes;
+            var index = -1;
+            if(sn.indexOf){
+                index = sn.indexOf(node);
+            }else{
+                for(var i = 0, len = sn.length; i < len; i++){
+                    if(sn[i] == node){
+                        index = i;
+                        break;
+                    }
+                }
+            }
+            if(index != -1){
+                this.selNodes.splice(index, 1);
+            }
+            delete this.selMap[node.id];
+            this.fireEvent("selectionchange", this, this.selNodes);
+        }
+    },
+    
+    /**
+     * Clear all selections
+     */
+    clearSelections : function(suppressEvent){
+        var sn = this.selNodes;
+        if(sn.length > 0){
+            for(var i = 0, len = sn.length; i < len; i++){
+                sn[i].ui.onSelectedChange(false);
+            }
+            this.selNodes = [];
+            this.selMap = {};
+            if(suppressEvent !== true){
+                this.fireEvent("selectionchange", this, this.selNodes);
+            }
+        }
+    },
+    
+    /**
+     * Returns true if the node is selected
+     * @param {TreeNode} node The node to check
+     * @return {Boolean}
+     */
+    isSelected : function(node){
+        return this.selMap[node.id] ? true : false;  
+    },
+    
+    /**
+     * Returns an array of the selected nodes
+     * @return {Array}
+     */
+    getSelectedNodes : function(){
+        return this.selNodes;    
+    },
+
+    onKeyDown : Roo.tree.DefaultSelectionModel.prototype.onKeyDown,
+
+    selectNext : Roo.tree.DefaultSelectionModel.prototype.selectNext,
+
+    selectPrevious : Roo.tree.DefaultSelectionModel.prototype.selectPrevious
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.tree.TreeNode
+ * @extends Roo.data.Node
+ * @cfg {String} text The text for this node
+ * @cfg {Boolean} expanded true to start the node expanded
+ * @cfg {Boolean} allowDrag false to make this node undraggable if DD is on (defaults to true)
+ * @cfg {Boolean} allowDrop false if this node cannot be drop on
+ * @cfg {Boolean} disabled true to start the node disabled
+ * @cfg {String} icon The path to an icon for the node. The preferred way to do this
+ * is to use the cls or iconCls attributes and add the icon via a CSS background image.
+ * @cfg {String} cls A css class to be added to the node
+ * @cfg {String} iconCls A css class to be added to the nodes icon element for applying css background images
+ * @cfg {String} href URL of the link used for the node (defaults to #)
+ * @cfg {String} hrefTarget target frame for the link
+ * @cfg {String} qtip An Ext QuickTip for the node
+ * @cfg {String} qtipCfg An Ext QuickTip config for the node (used instead of qtip)
+ * @cfg {Boolean} singleClickExpand True for single click expand on this node
+ * @cfg {Function} uiProvider A UI <b>class</b> to use for this node (defaults to Roo.tree.TreeNodeUI)
+ * @cfg {Boolean} checked True to render a checked checkbox for this node, false to render an unchecked checkbox
+ * (defaults to undefined with no checkbox rendered)
+ * @constructor
+ * @param {Object/String} attributes The attributes/config for the node or just a string with the text for the node
+ */
+Roo.tree.TreeNode = function(attributes){
+    attributes = attributes || {};
+    if(typeof attributes == "string"){
+        attributes = {text: attributes};
+    }
+    this.childrenRendered = false;
+    this.rendered = false;
+    Roo.tree.TreeNode.superclass.constructor.call(this, attributes);
+    this.expanded = attributes.expanded === true;
+    this.isTarget = attributes.isTarget !== false;
+    this.draggable = attributes.draggable !== false && attributes.allowDrag !== false;
+    this.allowChildren = attributes.allowChildren !== false && attributes.allowDrop !== false;
+
+    /**
+     * Read-only. The text for this node. To change it use setText().
+     * @type String
+     */
+    this.text = attributes.text;
+    /**
+     * True if this node is disabled.
+     * @type Boolean
+     */
+    this.disabled = attributes.disabled === true;
+
+    this.addEvents({
+        /**
+        * @event textchange
+        * Fires when the text for this node is changed
+        * @param {Node} this This node
+        * @param {String} text The new text
+        * @param {String} oldText The old text
+        */
+        "textchange" : true,
+        /**
+        * @event beforeexpand
+        * Fires before this node is expanded, return false to cancel.
+        * @param {Node} this This node
+        * @param {Boolean} deep
+        * @param {Boolean} anim
+        */
+        "beforeexpand" : true,
+        /**
+        * @event beforecollapse
+        * Fires before this node is collapsed, return false to cancel.
+        * @param {Node} this This node
+        * @param {Boolean} deep
+        * @param {Boolean} anim
+        */
+        "beforecollapse" : true,
+        /**
+        * @event expand
+        * Fires when this node is expanded
+        * @param {Node} this This node
+        */
+        "expand" : true,
+        /**
+        * @event disabledchange
+        * Fires when the disabled status of this node changes
+        * @param {Node} this This node
+        * @param {Boolean} disabled
+        */
+        "disabledchange" : true,
+        /**
+        * @event collapse
+        * Fires when this node is collapsed
+        * @param {Node} this This node
+        */
+        "collapse" : true,
+        /**
+        * @event beforeclick
+        * Fires before click processing. Return false to cancel the default action.
+        * @param {Node} this This node
+        * @param {Roo.EventObject} e The event object
+        */
+        "beforeclick":true,
+        /**
+        * @event checkchange
+        * Fires when a node with a checkbox's checked property changes
+        * @param {Node} this This node
+        * @param {Boolean} checked
+        */
+        "checkchange":true,
+        /**
+        * @event click
+        * Fires when this node is clicked
+        * @param {Node} this This node
+        * @param {Roo.EventObject} e The event object
+        */
+        "click":true,
+        /**
+        * @event dblclick
+        * Fires when this node is double clicked
+        * @param {Node} this This node
+        * @param {Roo.EventObject} e The event object
+        */
+        "dblclick":true,
+        /**
+        * @event contextmenu
+        * Fires when this node is right clicked
+        * @param {Node} this This node
+        * @param {Roo.EventObject} e The event object
+        */
+        "contextmenu":true,
+        /**
+        * @event beforechildrenrendered
+        * Fires right before the child nodes for this node are rendered
+        * @param {Node} this This node
+        */
+        "beforechildrenrendered":true
+    });
+
+    var uiClass = this.attributes.uiProvider || Roo.tree.TreeNodeUI;
+
+    /**
+     * Read-only. The UI for this node
+     * @type TreeNodeUI
+     */
+    this.ui = new uiClass(this);
+};
+Roo.extend(Roo.tree.TreeNode, Roo.data.Node, {
+    preventHScroll: true,
+    /**
+     * Returns true if this node is expanded
+     * @return {Boolean}
+     */
+    isExpanded : function(){
+        return this.expanded;
+    },
+
+    /**
+     * Returns the UI object for this node
+     * @return {TreeNodeUI}
+     */
+    getUI : function(){
+        return this.ui;
+    },
+
+    // private override
+    setFirstChild : function(node){
+        var of = this.firstChild;
+        Roo.tree.TreeNode.superclass.setFirstChild.call(this, node);
+        if(this.childrenRendered && of && node != of){
+            of.renderIndent(true, true);
+        }
+        if(this.rendered){
+            this.renderIndent(true, true);
+        }
+    },
+
+    // private override
+    setLastChild : function(node){
+        var ol = this.lastChild;
+        Roo.tree.TreeNode.superclass.setLastChild.call(this, node);
+        if(this.childrenRendered && ol && node != ol){
+            ol.renderIndent(true, true);
+        }
+        if(this.rendered){
+            this.renderIndent(true, true);
+        }
+    },
+
+    // these methods are overridden to provide lazy rendering support
+    // private override
+    appendChild : function(){
+        var node = Roo.tree.TreeNode.superclass.appendChild.apply(this, arguments);
+        if(node && this.childrenRendered){
+            node.render();
+        }
+        this.ui.updateExpandIcon();
+        return node;
+    },
+
+    // private override
+    removeChild : function(node){
+        this.ownerTree.getSelectionModel().unselect(node);
+        Roo.tree.TreeNode.superclass.removeChild.apply(this, arguments);
+        // if it's been rendered remove dom node
+        if(this.childrenRendered){
+            node.ui.remove();
+        }
+        if(this.childNodes.length < 1){
+            this.collapse(false, false);
+        }else{
+            this.ui.updateExpandIcon();
+        }
+        if(!this.firstChild) {
+            this.childrenRendered = false;
+        }
+        return node;
+    },
+
+    // private override
+    insertBefore : function(node, refNode){
+        var newNode = Roo.tree.TreeNode.superclass.insertBefore.apply(this, arguments);
+        if(newNode && refNode && this.childrenRendered){
+            node.render();
+        }
+        this.ui.updateExpandIcon();
+        return newNode;
+    },
+
+    /**
+     * Sets the text for this node
+     * @param {String} text
+     */
+    setText : function(text){
+        var oldText = this.text;
+        this.text = text;
+        this.attributes.text = text;
+        if(this.rendered){ // event without subscribing
+            this.ui.onTextChange(this, text, oldText);
+        }
+        this.fireEvent("textchange", this, text, oldText);
+    },
+
+    /**
+     * Triggers selection of this node
+     */
+    select : function(){
+        this.getOwnerTree().getSelectionModel().select(this);
+    },
+
+    /**
+     * Triggers deselection of this node
+     */
+    unselect : function(){
+        this.getOwnerTree().getSelectionModel().unselect(this);
+    },
+
+    /**
+     * Returns true if this node is selected
+     * @return {Boolean}
+     */
+    isSelected : function(){
+        return this.getOwnerTree().getSelectionModel().isSelected(this);
+    },
+
+    /**
+     * Expand this node.
+     * @param {Boolean} deep (optional) True to expand all children as well
+     * @param {Boolean} anim (optional) false to cancel the default animation
+     * @param {Function} callback (optional) A callback to be called when
+     * expanding this node completes (does not wait for deep expand to complete).
+     * Called with 1 parameter, this node.
+     */
+    expand : function(deep, anim, callback){
+        if(!this.expanded){
+            if(this.fireEvent("beforeexpand", this, deep, anim) === false){
+                return;
+            }
+            if(!this.childrenRendered){
+                this.renderChildren();
+            }
+            this.expanded = true;
+            if(!this.isHiddenRoot() && (this.getOwnerTree().animate && anim !== false) || anim){
+                this.ui.animExpand(function(){
+                    this.fireEvent("expand", this);
+                    if(typeof callback == "function"){
+                        callback(this);
+                    }
+                    if(deep === true){
+                        this.expandChildNodes(true);
+                    }
+                }.createDelegate(this));
+                return;
+            }else{
+                this.ui.expand();
+                this.fireEvent("expand", this);
+                if(typeof callback == "function"){
+                    callback(this);
+                }
+            }
+        }else{
+           if(typeof callback == "function"){
+               callback(this);
+           }
+        }
+        if(deep === true){
+            this.expandChildNodes(true);
+        }
+    },
+
+    isHiddenRoot : function(){
+        return this.isRoot && !this.getOwnerTree().rootVisible;
+    },
+
+    /**
+     * Collapse this node.
+     * @param {Boolean} deep (optional) True to collapse all children as well
+     * @param {Boolean} anim (optional) false to cancel the default animation
+     */
+    collapse : function(deep, anim){
+        if(this.expanded && !this.isHiddenRoot()){
+            if(this.fireEvent("beforecollapse", this, deep, anim) === false){
+                return;
+            }
+            this.expanded = false;
+            if((this.getOwnerTree().animate && anim !== false) || anim){
+                this.ui.animCollapse(function(){
+                    this.fireEvent("collapse", this);
+                    if(deep === true){
+                        this.collapseChildNodes(true);
+                    }
+                }.createDelegate(this));
+                return;
+            }else{
+                this.ui.collapse();
+                this.fireEvent("collapse", this);
+            }
+        }
+        if(deep === true){
+            var cs = this.childNodes;
+            for(var i = 0, len = cs.length; i < len; i++) {
+            	cs[i].collapse(true, false);
+            }
+        }
+    },
+
+    // private
+    delayedExpand : function(delay){
+        if(!this.expandProcId){
+            this.expandProcId = this.expand.defer(delay, this);
+        }
+    },
+
+    // private
+    cancelExpand : function(){
+        if(this.expandProcId){
+            clearTimeout(this.expandProcId);
+        }
+        this.expandProcId = false;
+    },
+
+    /**
+     * Toggles expanded/collapsed state of the node
+     */
+    toggle : function(){
+        if(this.expanded){
+            this.collapse();
+        }else{
+            this.expand();
+        }
+    },
+
+    /**
+     * Ensures all parent nodes are expanded
+     */
+    ensureVisible : function(callback){
+        var tree = this.getOwnerTree();
+        tree.expandPath(this.parentNode.getPath(), false, function(){
+            tree.getTreeEl().scrollChildIntoView(this.ui.anchor);
+            Roo.callback(callback);
+        }.createDelegate(this));
+    },
+
+    /**
+     * Expand all child nodes
+     * @param {Boolean} deep (optional) true if the child nodes should also expand their child nodes
+     */
+    expandChildNodes : function(deep){
+        var cs = this.childNodes;
+        for(var i = 0, len = cs.length; i < len; i++) {
+        	cs[i].expand(deep);
+        }
+    },
+
+    /**
+     * Collapse all child nodes
+     * @param {Boolean} deep (optional) true if the child nodes should also collapse their child nodes
+     */
+    collapseChildNodes : function(deep){
+        var cs = this.childNodes;
+        for(var i = 0, len = cs.length; i < len; i++) {
+        	cs[i].collapse(deep);
+        }
+    },
+
+    /**
+     * Disables this node
+     */
+    disable : function(){
+        this.disabled = true;
+        this.unselect();
+        if(this.rendered && this.ui.onDisableChange){ // event without subscribing
+            this.ui.onDisableChange(this, true);
+        }
+        this.fireEvent("disabledchange", this, true);
+    },
+
+    /**
+     * Enables this node
+     */
+    enable : function(){
+        this.disabled = false;
+        if(this.rendered && this.ui.onDisableChange){ // event without subscribing
+            this.ui.onDisableChange(this, false);
+        }
+        this.fireEvent("disabledchange", this, false);
+    },
+
+    // private
+    renderChildren : function(suppressEvent){
+        if(suppressEvent !== false){
+            this.fireEvent("beforechildrenrendered", this);
+        }
+        var cs = this.childNodes;
+        for(var i = 0, len = cs.length; i < len; i++){
+            cs[i].render(true);
+        }
+        this.childrenRendered = true;
+    },
+
+    // private
+    sort : function(fn, scope){
+        Roo.tree.TreeNode.superclass.sort.apply(this, arguments);
+        if(this.childrenRendered){
+            var cs = this.childNodes;
+            for(var i = 0, len = cs.length; i < len; i++){
+                cs[i].render(true);
+            }
+        }
+    },
+
+    // private
+    render : function(bulkRender){
+        this.ui.render(bulkRender);
+        if(!this.rendered){
+            this.rendered = true;
+            if(this.expanded){
+                this.expanded = false;
+                this.expand(false, false);
+            }
+        }
+    },
+
+    // private
+    renderIndent : function(deep, refresh){
+        if(refresh){
+            this.ui.childIndent = null;
+        }
+        this.ui.renderIndent();
+        if(deep === true && this.childrenRendered){
+            var cs = this.childNodes;
+            for(var i = 0, len = cs.length; i < len; i++){
+                cs[i].renderIndent(true, refresh);
+            }
+        }
+    }
 });
