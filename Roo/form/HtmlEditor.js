@@ -953,6 +953,18 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             return;
             
         }
+        if (Roo.form.HtmlEditor.remove.indexOf(node.tagName.toLowerCase()) > -1) {
+            this.cleanUpChildren(node);
+            // inserts everything just before this node...
+            while (node.childNodes.length) {
+                var cn = node.childNodes[0];
+                node.removeChild(cn);
+                node.parent.insertBefore(cn, node);
+            }
+            node.parentNode.removeChild(node);
+            return;
+        }
+        
         if (!node.attributes || !node.attributes.length) {
             this.cleanUpChildren(node);
             return;
@@ -1103,9 +1115,11 @@ Roo.form.HtmlEditor.black = [
         'script', 'style' ,'title',  'xml' // clean later..
 ];
 Roo.form.HtmlEditor.clean = [
-    'script', 'style', 'title', 'xml', 'font'
+    'script', 'style', 'title', 'xml'
 ];
-
+Roo.form.HtmlEditor.remove = [
+    'font'
+];
 // attributes..
 
 Roo.form.HtmlEditor.ablack = [
