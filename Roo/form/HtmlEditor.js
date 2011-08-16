@@ -984,7 +984,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             Roo.each(parts, function(p) {
                 p = p.replace(/\s+/g,'');
                 if (!p.length) {
-                    return;
+                    return true;
                 }
                 var l = p.split(':').shift().replace(/\s+/g,'');
                 
@@ -993,6 +993,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                     node.removeAttribute(n);
                     return false;
                 }
+                return true;
             });
             
             
