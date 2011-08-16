@@ -107,7 +107,17 @@ Roo.ContentPanel = function(el, config, content){
          * @param {Number} width The width after any component adjustments
          * @param {Number} height The height after any component adjustments
          */
-        "resize" : true
+        "resize" : true,
+        
+         /**
+         * @event render
+         * Fires when this tab is created
+         * @param {Roo.ContentPanel} this
+         */
+        "render" : true
+        
+        
+        
     });
     if(this.autoScroll){
         this.resizeEl.setStyle("overflow", "auto");
@@ -129,6 +139,8 @@ Roo.ContentPanel = function(el, config, content){
     
     
     Roo.ContentPanel.superclass.constructor.call(this);
+    
+    this.fireEvent('render', this);
 };
 
 Roo.extend(Roo.ContentPanel, Roo.util.Observable, {
