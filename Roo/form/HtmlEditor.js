@@ -1100,7 +1100,7 @@ Roo.form.HtmlEditor.black = [
         'base',   'basefont', 'bgsound', 'blink',  'body', 
         'frame',  'frameset', 'head',    'html',   'ilayer', 
         'iframe', 'layer',  'link',     'meta',    'object',   
-        'script', 'style' ,'title',  'xml' // clean later..
+        'script', 'style' ,'title',  'xml' , 'font' // clean later..
 ];
 Roo.form.HtmlEditor.clean = [
     'script', 'style', 'title', 'xml'
