@@ -1017,6 +1017,12 @@
      "desc": "Fires when this panel is activated."
     },
     {
+     "name": "render",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when this tab is created"
+    },
+    {
      "name": "resize",
      "sig": "function (_self, width, height)\n{\n\n}",
      "type": "function",
@@ -1681,6 +1687,12 @@
      "desc": "Fires when this panel is activated."
     },
     {
+     "name": "render",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when this tab is created"
+    },
+    {
      "name": "resize",
      "sig": "function (_self, width, height)\n{\n\n}",
      "type": "function",
@@ -1790,7 +1802,7 @@
     },
     {
      "name": "preparedata",
-     "sig": "function (_self, data, row, record)\n{\n\n}",
+     "sig": "function (_self, data)\n{\n\n}",
      "type": "function",
      "desc": "Fires on every row to render, to allow you to change the data."
     },
@@ -2380,7 +2392,7 @@
      "name": "removeMask",
      "type": "Boolean",
      "desc": "True to create a single-use mask that is automatically destroyed after loading (useful for page loads),\nFalse to persist the mask element reference for multiple uses (e.g., for paged data widgets).  Defaults to false.",
-     "memberOf": "Roo"
+     "memberOf": ""
     },
     {
      "name": "msg",
@@ -2759,6 +2771,12 @@
      "desc": "Fires when this panel is activated."
     },
     {
+     "name": "render",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when this tab is created"
+    },
+    {
      "name": "resize",
      "sig": "function (_self, width, height)\n{\n\n}",
      "type": "function",
@@ -2808,7 +2826,7 @@
      "name": "items",
      "type": "Roo.data.Store",
      "desc": "array of button configs or elements to add",
-     "memberOf": "Roo"
+     "memberOf": "Roo.Toolbar"
     }
    ],
    "events": []
@@ -3045,7 +3063,7 @@
      "name": "mode",
      "type": "String",
      "desc": "The shadow display mode.  Supports the following options:<br />\nsides: Shadow displays on both sides and bottom only<br />\nframe: Shadow displays equally on all four sides<br />\ndrop: Traditional bottom-right drop shadow (default)",
-     "memberOf": "Roo"
+     "memberOf": ""
     },
     {
      "name": "offset",
@@ -3609,7 +3627,7 @@
      "name": "items",
      "type": "Roo.data.Store",
      "desc": "array of button configs or elements to add",
-     "memberOf": "Roo"
+     "memberOf": ""
     },
     {
      "name": "container",
@@ -4024,7 +4042,7 @@
      "name": "tree",
      "type": "Roo.tree.TreePanel",
      "desc": "The tree TreePanel, with config etc.",
-     "memberOf": "Roo"
+     "memberOf": ""
     },
     {
      "name": "fitToFrame",
@@ -4135,6 +4153,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires when this panel is activated."
+    },
+    {
+     "name": "render",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when this tab is created"
     },
     {
      "name": "resize",
@@ -4266,7 +4290,7 @@
     },
     {
      "name": "preparedata",
-     "sig": "function (_self, data, row, record)\n{\n\n}",
+     "sig": "function (_self, data)\n{\n\n}",
      "type": "function",
      "desc": "Fires on every row to render, to allow you to change the data."
     },
@@ -9260,6 +9284,24 @@
      "name": "defaultLinkValue",
      "type": "String",
      "desc": "The default value for the create link prompt (defaults to http:/ /)",
+     "memberOf": ""
+    },
+    {
+     "name": "resizable",
+     "type": "String",
+     "desc": "'s' or 'se' or 'e' - wrapps the element in a\n                       Roo.resizable.",
+     "memberOf": ""
+    },
+    {
+     "name": "height",
+     "type": "Number",
+     "desc": "(in pixels)",
+     "memberOf": ""
+    },
+    {
+     "name": "width",
+     "type": "Number",
+     "desc": "(in pixels)",
      "memberOf": ""
     }
    ],
