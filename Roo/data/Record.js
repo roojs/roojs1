@@ -140,7 +140,7 @@ Roo.data.Record.prototype = {
             this.modified[name] = this.data[name];
         }
         this.data[name] = value;
-        if(!this.editing){
+        if(!this.editing && this.store){
             this.store.afterEdit(this);
         }       
     },
