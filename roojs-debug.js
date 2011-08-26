@@ -26727,7 +26727,7 @@ Roo.MenuButton = Roo.SplitButton;/*
  * Basic Toolbar class.
  * @constructor
  * Creates a new Toolbar
- * @param {Object} config The config object
+ * @param {Object} container The config object
  */ 
 Roo.Toolbar = function(container, buttons, config)
 {
@@ -26740,7 +26740,7 @@ Roo.Toolbar = function(container, buttons, config)
     if (typeof(container) == 'object' && container.xtype) {
         config = container;
         container = config.container;
-        buttons = config.buttons; // not really - use items!!
+        buttons = config.buttons || []; // not really - use items!!
     }
     var xitems = [];
     if (config && config.items) {
@@ -26753,6 +26753,7 @@ Roo.Toolbar = function(container, buttons, config)
     if(container){
         this.render(container);
     }
+    this.xitems = xitems;
     Roo.each(xitems, function(b) {
         this.add(b);
     }, this);
@@ -26761,8 +26762,8 @@ Roo.Toolbar = function(container, buttons, config)
 
 Roo.Toolbar.prototype = {
     /**
-     * @cfg {Roo.data.Store} items
-     * array of button configs or elements to add
+     * @cfg {Array} items
+     * array of button configs or elements to add (will be converted to a MixedCollection)
      */
     
     /**
@@ -45741,7 +45742,7 @@ Roo.LayoutStateManager.prototype = {
  * @cfg {String} region         (center|north|south|east|west) which region to put this panel on (when used with xtype constructors)
  * @cfg {String/Object} params  When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {Boolean} loadOnce      When used with {@link #url}, calls {@link #setUrl} with this value
- * @cfg {String} content        Raw content to fill content panel with (uses setContent on construction.)
+ * @cfg {String}    content        Raw content to fill content panel with (uses setContent on construction.)
 
  * @constructor
  * Create a new ContentPanel.
@@ -45789,9 +45790,9 @@ Roo.ContentPanel = function(el, config, content){
     }
     
     if (this.toolbar && !this.toolbar.el && this.toolbar.xtype) {
-        this.wrapEl = this.el.wrap();    
-        this.toolbar = new Roo.Toolbar(this.el.insertSibling(false, 'before'), [] , this.toolbar);
-        
+        this.wrapEl = this.el.wrap();
+        this.toolbar.container = this.el.insertSibling(false, 'before');
+        this.toolbar = new Roo.Toolbar(this.toolbar);
     }
     
     
