@@ -74,8 +74,9 @@ Roo.ContentPanel = function(el, config, content){
     }
     
     if (this.toolbar && !this.toolbar.el && this.toolbar.xtype) {
-        this.wrapEl = this.el.wrap();    
-        this.toolbar = new Roo.Toolbar(this.el.insertSibling(false, 'before'), [] , this.toolbar);
+        this.wrapEl = this.el.wrap();
+        this.toolbar.container = this.el.insertSibling(false, 'before');
+        this.toolbar = new Roo.Toolbar(this.toolbar);
         
     }
     
