@@ -14,7 +14,7 @@
  * Basic Toolbar class.
  * @constructor
  * Creates a new Toolbar
- * @param {Object} config The config object
+ * @param {Object} container The config object
  */ 
 Roo.Toolbar = function(container, buttons, config)
 {
