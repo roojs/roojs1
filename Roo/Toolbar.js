@@ -48,8 +48,8 @@ Roo.Toolbar = function(container, buttons, config)
 
 Roo.Toolbar.prototype = {
     /**
-     * @cfg {Roo.data.Store} items
-     * array of button configs or elements to add
+     * @cfg {Array} items
+     * array of button configs or elements to add (will be converted to a MixedCollection)
      */
     
     /**
