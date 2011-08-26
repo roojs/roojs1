@@ -40,6 +40,7 @@ Roo.Toolbar = function(container, buttons, config)
     if(container){
         this.render(container);
     }
+    this.xitems = xitems;
     Roo.each(xitems, function(b) {
         this.add(b);
     }, this);
