@@ -26,7 +26,7 @@
  * @cfg {String} region         (center|north|south|east|west) which region to put this panel on (when used with xtype constructors)
  * @cfg {String/Object} params  When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {Boolean} loadOnce      When used with {@link #url}, calls {@link #setUrl} with this value
- * @cfg {String} content        Raw content to fill content panel with (uses setContent on construction.)
+ * @cfg {String}    content        Raw content to fill content panel with (uses setContent on construction.)
 
  * @constructor
  * Create a new ContentPanel.
