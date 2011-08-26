@@ -27,7 +27,7 @@ Roo.Toolbar = function(container, buttons, config)
     if (typeof(container) == 'object' && container.xtype) {
         config = container;
         container = config.container;
-        buttons = config.buttons; // not really - use items!!
+        buttons = config.buttons || []; // not really - use items!!
     }
     var xitems = [];
     if (config && config.items) {
