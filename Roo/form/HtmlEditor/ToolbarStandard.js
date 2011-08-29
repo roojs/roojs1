@@ -339,7 +339,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             
             
         }
-        /*
+         
         if (!this.disable.specialElements) {
             var semenu = {
                 text: "Other;",
@@ -353,7 +353,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             
             
         }
-        */
+         
         
         if (this.btns) {
             for(var i =0; i< this.btns.length;i++) {
