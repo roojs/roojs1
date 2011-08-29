@@ -450,6 +450,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
     {
          
         var  cn = dom.className;
+        Roo.log(cn);
         if (!cn.match(/x-ed-loc-/)) {
             return;
         }
