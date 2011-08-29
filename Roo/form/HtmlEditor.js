@@ -482,6 +482,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         Roo.DomHelper.applyStyles(dbody, ss);
         Roo.EventManager.on(this.doc, {
             'mousedown': this.onEditorEvent,
+            'mouseup': this.onEditorEvent,
             'dblclick': this.onEditorEvent,
             'click': this.onEditorEvent,
             'keyup': this.onEditorEvent,
