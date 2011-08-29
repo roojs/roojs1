@@ -456,7 +456,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         var n = cn.split('/-').pop();
         var ans = this.editor.getAllAncestors();
         var sel = ans[n];
-        
+        Roo.log(sel);
         // pick
         var range = this.editor.createRange();
         
