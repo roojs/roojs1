@@ -446,9 +446,11 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         
     },
-    onContextClick : function ()
+    onContextClick : function (o,ev)
     {
+        Roo.log(o);
         
+        Roo.log(ev);
         
         
     }
