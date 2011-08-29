@@ -294,8 +294,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             if (!a) { return; }
             html += html.length? ' &gt; '  :  '';
             
-            var tn = a ? a.tagName : 'BODY';
-            html += '<span class="x-ed-loc-' + i + '">' + tn + '</span>';
+            html += '<span class="x-ed-loc-' + i + '">' + a.tagName + '</span>';
             
         });
         Roo.log(html);
