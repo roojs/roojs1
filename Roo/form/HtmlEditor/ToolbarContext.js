@@ -406,7 +406,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 }
             }
         );
-        this.footer.add( this.fillEl );
+        this.footer.add( this.footDisp );
         this.footer.add( 
             {
                 txt : '>',
