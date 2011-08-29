@@ -205,14 +205,12 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         }
 
         this.frameId = Roo.id();
+        
         this.createToolbar(this);
-        
-        
-        
         
       
         
-        var iframe = this.wrap.createChild({
+        var iframe = this.el.insertAfter({
             tag: 'iframe',
             id: this.frameId,
             name: this.frameId,
