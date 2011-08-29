@@ -290,7 +290,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         // update the footer
         //
         var html = '';
-        Roo.each(ans.reverse, function(a,i) {
+        Roo.each(ans.reverse(), function(a,i) {
             if (!a) { return; }
             html += html.length? ' &gt; '  :  '';
             
