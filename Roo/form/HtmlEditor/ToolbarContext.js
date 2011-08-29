@@ -299,7 +299,9 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         // 
         var sz = this.footDisp.up('td').getSize();
-        this.footDisp.dom.style.width = sz.width + 'px';
+        this.footDisp.dom.style.width = (sz.width -10) + 'px';
+        this.footDisp.dom.style.marginLeft = '5px';
+        
         this.footDisp.dom.style.overflow = 'hidden';
         
         this.footDisp.dom.innerHTML = html;
