@@ -892,7 +892,8 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         return range.compareBoundaryPoints(Range.END_TO_START, nodeRange) == -1 &&
                  range.compareBoundaryPoints(Range.START_TO_END, nodeRange) == 1;
     },
-    rangeCompareNode : function(range, node) {
+    rangeCompareNode : function(range, node)
+    {
         var nodeRange = node.ownerDocument.createRange();
         try {
             nodeRange.selectNode(node);
