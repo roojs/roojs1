@@ -457,8 +457,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         var n = cn.split('-').pop();
         var ans = this.editor.getAllAncestors().reverse();
         var sel = ans[n];
-        Roo.log(sel);
-        // pick
+         // pick
         var range = this.editor.createRange();
         
         range.selectNode(sel);
