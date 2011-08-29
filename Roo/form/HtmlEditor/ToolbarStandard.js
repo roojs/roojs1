@@ -337,9 +337,19 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                 text: "Other;",
                 cls: 'x-edit-none',
                 menu : {
-                    items : this.specialElements
+                    items : []
                 }
             };
+            for (var i =0; i < this.specialElements.length; i++) {
+                semenu.menu.items.push(
+                    Roo.apply({ 
+                        handler: function(a,b) {
+                            editor.insertAtCursor(this.ihtml);
+                        }
+                    }, this.specialElements[i])
+                );
+                    
+            }
             
             tb.add(semenu);
             
