@@ -286,6 +286,19 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         Roo.menu.MenuMgr.hideAll();
 
+
+        // update the footer
+        //
+        var html = '';
+        Roo.each(ans, function(a,i) {
+            html += html.length? ' &gt; '  :  '';
+            var tn = a ? a.tagname : 'BODY';
+            html += '<span class="x-ed-loc-' + i + '">' + tn + '</span>';
+            
+        });
+        
+        this.footDisp.el.innerHTML = html;
+
         //this.editorsyncValue();
     },
    
