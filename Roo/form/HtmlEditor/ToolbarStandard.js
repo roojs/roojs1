@@ -92,12 +92,12 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                 
         },
         {    
-            text: "Insert Table",
+            text: "Insert Image",
             handler: function(a,b) {
                 // should we show a dialog.?
-                editor.insertAtCursor('<table><<tr><td></td></tr></table>');
+                editor.insertAtCursor('<img src="about:blank"/>');
                         
-            },
+            }
             
         }
         
