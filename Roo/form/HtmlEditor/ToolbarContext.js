@@ -430,7 +430,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             }
         );
         
-         this.footDisp.style.overflow = 'hidden';
+         this.footDisp.el.style.overflow = 'hidden';
         
         
     }
