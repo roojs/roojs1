@@ -287,7 +287,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 
                 
                 var ah = h - this.wrap.getFrameWidth('tb') - tbh;// this.tb.el.getHeight();
-                ah -= 10; // knock a few pixes off for look..
+                ah -= 5; // knock a few pixes off for look..
                 this.el.setHeight(this.adjustWidth('textarea', ah));
                 this.iframe.style.height = ah + 'px';
                 if(this.doc){
