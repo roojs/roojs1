@@ -88,3 +88,6 @@
 .x-html-editor-wrap   .x-editor-context span {
     cursor: pointer;
 }
+.x-html-editor-wrap   .x-editor-context span:hover {
+    text-decoration: underline;
+}
