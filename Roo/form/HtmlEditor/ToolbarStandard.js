@@ -80,6 +80,31 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
          // "&#233;"     , // e ecute
          // "&#250;"     , // u ecute?
     ],
+    
+    specialElements : [
+        {
+            text: "Insert Table",
+            handler: function(a,b) {
+                // should we show a dialog.?
+                editor.insertAtCursor('<table><<tr><td></td></tr></table>');
+                        
+            }
+                
+        },
+        {    
+            text: "Insert Table",
+            handler: function(a,b) {
+                // should we show a dialog.?
+                editor.insertAtCursor('<table><<tr><td></td></tr></table>');
+                        
+            },
+            
+        }
+        
+         
+    ],
+    
+    
     inputElements : [ 
             "form", "input:text", "input:hidden", "input:checkbox", "input:radio", "input:password", 
             "input:submit", "input:button", "select", "textarea", "label" ],
