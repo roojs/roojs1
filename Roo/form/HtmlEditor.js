@@ -883,22 +883,22 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
      *  '1' = after.
      *   [ -- selected range --- ]
      *                 [node]
-     *    (ss) sel.START before (or hits) node.START
+     *    (ss) sel.START before> (or hits) node.START
      *       and
-     *   (ee) sel.END  after (or hits) node.END
+     *   (ee) sel.END  after> (or hits) node.END
      *
      *
      *   [ -- selected range --- ]
      * [node]
-     *    (ss) sel.START  after node.START
+     *    (ss) sel.START  after> node.START
      *       and
-     *   (ee) sel.END  after node.END
+     *   (ee) sel.END  after> node.END
      *    
      *   [ -- selected range --- ]
      *                        [node]
-     *    (ss) sel.START  before  (or hits) node.START
+     *    (ss) sel.START  before< (or hits) node.START
      *       and
-     *   (ee) sel.END  before (or hits) node.END
+     *   (ee) sel.END  before< (or hits) node.END
      *    
      **/
     
@@ -918,7 +918,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         var ss = range.compareBoundaryPoints(Range.START_TO_START, nodeRange) ;
         var ee = range.compareBoundaryPoints(Range.END_TO_END, nodeRange) ;
         
-        return (ss == < 1 && ee > -1) ||  (ss > -1 && ee > -1) || (ss < 1 && ee < 1);
+        return (ss  < 1 && ee > -1) ||  (ss > -1 && ee > -1) || (ss < 1 && ee < 1);
         
         
          
