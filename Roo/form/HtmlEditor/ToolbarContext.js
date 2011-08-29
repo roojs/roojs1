@@ -306,7 +306,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         this.footDisp.dom.style.overflow = 'hidden';
         
         this.footDisp.dom.innerHTML = html;
-
+            
         //this.editorsyncValue();
     },
    
@@ -455,7 +455,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             return;
         }
         var n = cn.split('-').pop();
-        var ans = this.editor.getAllAncestors();
+        var ans = this.editor.getAllAncestors().reverse();
         var sel = ans[n];
         Roo.log(sel);
         // pick
