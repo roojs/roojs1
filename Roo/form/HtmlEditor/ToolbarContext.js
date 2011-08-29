@@ -399,7 +399,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         this.footDisp= new Roo.Toolbar.Fill();
         this.footer.add(
             {
-                txt : '<',
+                txt : '&lt;',
                 xtype: 'Button',
                 handler : function() {
                     
@@ -409,7 +409,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         this.footer.add( this.footDisp );
         this.footer.add( 
             {
-                txt : '>',
+                txt : '&gt;',
                 xtype: 'Button',
                 handler : function() {
                     
