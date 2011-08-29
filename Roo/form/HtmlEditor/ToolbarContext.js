@@ -466,7 +466,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         selection.addRange(range);
         
         
-        this.updateToolbar();
+        this.updateToolbar.defer(100,this);
         
         
     }
