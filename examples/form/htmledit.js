@@ -41,7 +41,8 @@ Roo.onReady(function(){
                 fieldLabel:'Biography',
                 width:550,
                 height:200,
-                expandable : true
+                resizable: 's' /// where the handles should got..
+
             },
             {
                 xtype : 'Button',
