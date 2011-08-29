@@ -84,6 +84,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
     specialElements : [
         {
             text: "Insert Table",
+            xtype: 'MenuItem',
+            xns : Roo.Menu,
             handler: function(a,b) {
                 // should we show a dialog.?
                 editor.insertAtCursor('<table><<tr><td></td></tr></table>');
@@ -93,6 +95,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         },
         {    
             text: "Insert Image",
+            xtype: 'MenuItem',
+            xns : Roo.Menu,
             handler: function(a,b) {
                 // should we show a dialog.?
                 editor.insertAtCursor('<img src="about:blank"/>');
@@ -315,7 +319,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                 cls: 'x-edit-none',
                 menu : {
                     items : []
-                   }
+                  }
             };
             for (var i =0; i < this.specialChars.length; i++) {
                 smenu.menu.items.push({
