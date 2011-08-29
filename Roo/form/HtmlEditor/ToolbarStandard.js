@@ -346,10 +346,10 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                 cls: 'x-edit-none',
                 menu : {
                     items : this.specialElements
-               }
+                }
             };
             
-            tb.add(smenu);
+            //tb.add(smenu);
             
             
         }
