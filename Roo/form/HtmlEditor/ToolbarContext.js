@@ -297,6 +297,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             
         });
         
+        
+        
         this.footDisp.el.innerHTML = html;
 
         //this.editorsyncValue();
@@ -409,7 +411,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         var fel = this.editor.wrap.createChild();
         this.footer = new Roo.Toolbar(fel);
         // toolbar has scrolly on left / right?
-        this.footDisp= new Roo.Toolbar.Fill();
+        var footDisp= new Roo.Toolbar.Fill();
         this.footer.add(
             {
                 text : '&lt;',
@@ -429,8 +431,9 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 }
             }
         );
+        var fel = Roo.get(footDisp.el);
+        var this.footDisp = fel.appendChild('div');
         
-         this.footDisp.el.style.overflow = 'hidden';
         
         
     }
