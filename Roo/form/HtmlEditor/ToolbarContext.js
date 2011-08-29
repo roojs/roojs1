@@ -437,6 +437,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             }
         );
         var fel = Roo.get(footDisp.el);
+        fel.addClass('x-editor-context');
         this.footDispWrap = fel; 
         this.footDispWrap.overflow  = 'hidden';
         this.footDisp = fel.createChild();
