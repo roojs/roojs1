@@ -388,6 +388,32 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         return tb;
          
         
+    },
+    buildFooter : function()
+    {
+        
+        var fel = this.editor.wrap.createChild();
+        var tb = new Roo.Toolbar(fel);
+        // toolbar has scrolly on left / right?
+        this.fillEl = new Roo.Toolbar.Fill();
+        tb.add(
+            {
+                txt : '<',
+                handler : function() {
+                    
+                }
+            },
+            this.fillEl,
+            {
+                txt : '>',
+                handler : function() {
+                    
+                }
+            }
+        );
+         
+        
+        
     }
     
     
