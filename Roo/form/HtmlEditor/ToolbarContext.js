@@ -236,7 +236,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         }
         this.tb = this.toolbars.BODY;
         this.tb.el.show();
-        
+        this.buildFooter();
+        this.footer.show();
          
         this.rendered = true;
         
