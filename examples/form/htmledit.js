@@ -10,6 +10,7 @@
  */
  
 var mform;
+var editor
 Roo.onReady(function(){
 
     Roo.QuickTips.init();
@@ -60,5 +61,5 @@ Roo.onReady(function(){
     });
 
     mform.render('form-ct5');
- 
+    editor = mform.findField('bio');
 });
