@@ -435,6 +435,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             }
         );
         var fel = Roo.get(footDisp.el);
+        this.footDispWrap = fel; 
         this.footDisp = fel.createChild();
         
         
