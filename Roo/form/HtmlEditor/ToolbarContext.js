@@ -273,28 +273,27 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         var tn = sel.tagName.toUpperCase();
         sel = typeof(ty[tn]) != 'undefined' ? sel : this.editor.doc.body;
         tn = sel.tagName.toUpperCase();
-        if (this.tb.name  == tn) {
-            return; // no change
+        if (this.tb.name != tn) {
+                
+           this.tb.el.hide();
+           ///console.log("show: " + tn);
+           this.tb =  this.toolbars[tn];
+           this.tb.el.show();
+           this.tb.fields.each(function(e) {
+               e.setValue(sel.getAttribute(e.name));
+           });
+           this.tb.selectedNode = sel;
+           
+           
+           Roo.menu.MenuMgr.hideAll();
+
         }
-        this.tb.el.hide();
-        ///console.log("show: " + tn);
-        this.tb =  this.toolbars[tn];
-        this.tb.el.show();
-        this.tb.fields.each(function(e) {
-            e.setValue(sel.getAttribute(e.name));
-        });
-        this.tb.selectedNode = sel;
-        
-        
-        Roo.menu.MenuMgr.hideAll();
-
-
         // update the footer
         //
         var html = '';
         Roo.each(ans.reverse(), function(a,i) {
             if (!a) { return; }
-            html += html.length? ' &gt; '  :  '';
+            html += html.length ? ' &gt; '  :  '';
             
             html += '<span class="x-ed-loc-' + i + '">' + a.tagName + '</span>';
             
