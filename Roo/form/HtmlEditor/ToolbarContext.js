@@ -292,7 +292,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         var html = '';
         Roo.each(ans, function(a,i) {
             html += html.length? ' &gt; '  :  '';
-            var tn = a ? a.tagnNme : 'BODY';
+            var tn = a ? a.tagName : 'BODY';
             html += '<span class="x-ed-loc-' + i + '">' + tn + '</span>';
             
         });
