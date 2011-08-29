@@ -436,7 +436,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         );
         var fel = Roo.get(footDisp.el);
         this.footDispWrap = fel; 
-        this.footDispWrap.overflow  = hidden;
+        this.footDispWrap.overflow  = 'hidden';
         this.footDisp = fel.createChild();
         
         
