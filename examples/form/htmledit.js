@@ -28,7 +28,12 @@ Roo.onReady(function(){
                     {
                         xtype : 'ToolbarStandard',
                         xns : Roo.form.HtmlEditor
-                    }
+                    },
+                      {
+                        xtype : 'ToolbarContext',
+                        xns : Roo.form.HtmlEditor
+                    },
+                    
                     
                 ],
                 id:'bio',
