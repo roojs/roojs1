@@ -393,10 +393,10 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
     {
         
         var fel = this.editor.wrap.createChild();
-        var tb = new Roo.Toolbar(fel);
+        this.footer = new Roo.Toolbar(fel);
         // toolbar has scrolly on left / right?
-        this.fillEl = new Roo.Toolbar.Fill();
-        tb.add(
+        this.footDisp= new Roo.Toolbar.Fill();
+        this.footer .add(
             {
                 txt : '<',
                 handler : function() {
