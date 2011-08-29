@@ -299,7 +299,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         
         
-        this.footDisp.el.innerHTML = html;
+        this.footDisp.dom.innerHTML = html;
 
         //this.editorsyncValue();
     },
