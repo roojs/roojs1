@@ -316,7 +316,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         if (!this.disable.special) {
             smenu = {
                 text: "&#169;",
-                cls: 'x-edit-none',
+                
                 menu : {
                     items : []
                   }
