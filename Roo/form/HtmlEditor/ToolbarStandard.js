@@ -93,7 +93,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             text: "Insert Image",
             xtype: 'MenuItem',
             xns : Roo.Menu,
-            ihtml : '<img src="about:blank"/>', 
+            ihtml : '<img src="about:blank"/>'
             
         }
         
