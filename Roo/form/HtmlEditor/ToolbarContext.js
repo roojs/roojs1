@@ -255,7 +255,9 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
      */
     updateToolbar: function(){
 
+        Roo.log("updateToolbar (context)?")
         if(!this.editor.activated){
+            Roo.log("updateToolbar - not activated?")
             this.editor.onFirstFocus();
             return;
         }
