@@ -210,13 +210,14 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         
       
         
-        var iframe = this.el.insertAfter({
+        var iframe = this.wrap.createChild({
             tag: 'iframe',
             id: this.frameId,
             name: this.frameId,
             frameBorder : 'no',
             'src' : Roo.SSL_SECURE_URL ? Roo.SSL_SECURE_URL  :  "javascript:false"
-        });
+        }, this.el
+        );
         
        // console.log(iframe);
         //this.wrap.dom.appendChild(iframe);
