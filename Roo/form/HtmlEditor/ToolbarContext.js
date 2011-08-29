@@ -446,11 +446,17 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         
     },
-    onContextClick : function (o,ev)
+    onContextClick : function (o,dom)
     {
-        Roo.log(o);
-        
-        Roo.log(ev);
+         
+        var  cn = dom.className;
+        if (!cn.match(/x-ed-loc-/)) {
+            return;
+        }
+        var n = cn.split('/-').pop();
+        var ans = this.editor.getAllAncestors();
+        var sel = ans[n];
+        // pick
         
         
     }
