@@ -453,7 +453,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         if (!cn.match(/x-ed-loc-/)) {
             return;
         }
-        var n = cn.split('/-').pop();
+        var n = cn.split('-').pop();
         var ans = this.editor.getAllAncestors();
         var sel = ans[n];
         Roo.log(sel);
