@@ -86,7 +86,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             text: "Insert Table",
             xtype: 'MenuItem',
             xns : Roo.Menu,
-            ihtml :  '<table><<tr><td></td></tr></table>' 
+            ihtml :  '<table><tr><td>Cell</td></tr></table>' 
                 
         },
         {    
