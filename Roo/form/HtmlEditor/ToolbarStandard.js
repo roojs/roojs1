@@ -86,22 +86,14 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             text: "Insert Table",
             xtype: 'MenuItem',
             xns : Roo.Menu,
-            handler: function(a,b) {
-                // should we show a dialog.?
-                editor.insertAtCursor('<table><<tr><td></td></tr></table>');
-                        
-            }
+            ihtml :  '<table><<tr><td></td></tr></table>' 
                 
         },
         {    
             text: "Insert Image",
             xtype: 'MenuItem',
             xns : Roo.Menu,
-            handler: function(a,b) {
-                // should we show a dialog.?
-                editor.insertAtCursor('<img src="about:blank"/>');
-                        
-            }
+            ihtml : '<img src="about:blank"/>', 
             
         }
         
