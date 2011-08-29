@@ -461,6 +461,11 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         var range = this.editor.createRange();
         
         range.selectNode(sel);
+        var selection = this.editor.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        
+        
         this.updateToolbar();
         
         
