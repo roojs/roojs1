@@ -875,7 +875,32 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         }
     
     },
-    
+    /***
+     *
+     * Range intersection.. the hard stuff...
+     *  '-1' = before
+     *  '0' = hits..
+     *  '1' = after.
+     *   [ -- selected range --- ]
+     *                 [node]
+     *    (ss) sel.START before (or hits) node.START
+     *       and
+     *   (ee) sel.END  after (or hits) node.END
+     *
+     *
+     *   [ -- selected range --- ]
+     * [node]
+     *    (ss) sel.START  after node.START
+     *       and
+     *   (ee) sel.END  after node.END
+     *    
+     *   [ -- selected range --- ]
+     *                        [node]
+     *    (ss) sel.START  before  (or hits) node.START
+     *       and
+     *   (ee) sel.END  before (or hits) node.END
+     *    
+     **/
     
     
     // BC Hacks - cause I cant work out what i was trying to do..
@@ -888,9 +913,15 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         catch (e) {
             nodeRange.selectNodeContents(node);
         }
-
-        return range.compareBoundaryPoints(Range.END_TO_START, nodeRange) == 1 ||
-                 range.compareBoundaryPoints(Range.START_TO_END, nodeRange) == 1;
+        // [ -- selected range --- ]
+        //                 [node]
+        var ss = range.compareBoundaryPoints(Range.START_TO_START, nodeRange) ;
+        var ee = range.compareBoundaryPoints(Range.END_TO_END, nodeRange) ;
+        
+        return (ss == < 1 && ee > -1) ||  (ss > -1 && ee > -1) || (ss < 1 && ee < 1);
+        
+        
+         
     },
     rangeCompareNode : function(range, node)
     {
