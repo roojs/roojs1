@@ -85,4 +85,6 @@
   
 /** status bar **/  
   
-.x-html-editor-tb   
+.x-html-editor-tb   .x-editor-context span {
+    cursor: pointer;
+}
