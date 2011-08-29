@@ -334,6 +334,21 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             
             
         }
+        
+        if (!this.disable.specialElements) {
+            smenu = {
+                text: "Other;",
+                cls: 'x-edit-none',
+                menu : {
+                    items : this.specialElements
+               }
+            };
+            
+            tb.add(smenu);
+            
+            
+        }
+        
         if (this.btns) {
             for(var i =0; i< this.btns.length;i++) {
                 var b = this.btns[i];
