@@ -421,7 +421,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 }
             }
         );
-        this.footer.add( this.footDisp );
+        this.footer.add( footDisp );
         this.footer.add( 
             {
                 text : '&gt;',
