@@ -297,7 +297,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             html += '<span class="x-ed-loc-' + i + '">' + a.tagName + '</span>';
             
         });
-        Roo.log(html);
+       
         // 
         var sz = this.footDisp.up('td').getSize();
         this.footDisp.dom.style.width = (sz.width -10) + 'px';
