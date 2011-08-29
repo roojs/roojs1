@@ -804,11 +804,8 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         }
         
         
-        var ar = range.endContainer.childNodes;
-        if (!ar.length) {
-            ar = range.commonAncestorContainer.childNodes;
-            //alert(ar.length);
-        }
+        var ar = range.commonAncestorContainer.childNodes;
+         
         var nodes = [];
         var other_nodes = [];
         var has_other_nodes = false;
