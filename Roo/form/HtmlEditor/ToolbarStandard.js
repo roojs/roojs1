@@ -320,7 +320,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                 
                 menu : {
                     items : []
-                  }
+                }
             };
             for (var i =0; i < this.specialChars.length; i++) {
                 smenu.menu.items.push({
