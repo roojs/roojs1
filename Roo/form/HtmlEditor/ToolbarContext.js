@@ -400,6 +400,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         this.footer .add(
             {
                 txt : '<',
+                xtype: 'Button',
                 handler : function() {
                     
                 }
@@ -407,6 +408,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             this.fillEl,
             {
                 txt : '>',
+                xtype: 'Button',
                 handler : function() {
                     
                 }
