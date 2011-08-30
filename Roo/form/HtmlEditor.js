@@ -934,9 +934,9 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         }
         
         
-        range.collapse(false);
+        range.collapse(true);
     
-         nodeRange.collapse(true);
+        nodeRange.collapse(true);
      
         var ss = range.compareBoundaryPoints( Range.START_TO_START, nodeRange);
         var ee = range.compareBoundaryPoints(  Range.END_TO_END, nodeRange);
