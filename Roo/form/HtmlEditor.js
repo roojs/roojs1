@@ -825,6 +825,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 other_nodes.push(ar[i]);
                 continue;
             }
+            // outer..
             if (!this.rangeIntersectsNode(range,ar[i])|| (this.rangeCompareNode(range,ar[i]) == 0))  {
                 continue;
             }
