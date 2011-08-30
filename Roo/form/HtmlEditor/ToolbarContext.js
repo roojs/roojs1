@@ -434,7 +434,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 text : '&gt;',
                 xtype: 'Button',
                 handler : function() {
-                    _t.footDisp.select('span').last().scrollIntoView(_t.footDisp,true)
+                    _t.footDisp.select('span').last().scrollIntoView(_t.footDisp,true);
                 }
             }
         );
