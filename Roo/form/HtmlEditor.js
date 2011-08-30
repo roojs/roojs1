@@ -908,8 +908,8 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         //                 [node]
         // node start inside?
      
-        var es = range.compareBoundaryPoints(Range.END_TO_START, nodeRange) ;
-        var se = range.compareBoundaryPoints(Range.START_TO_END, nodeRange) ;
+        var es = nodeRange.compareBoundaryPoints(Range.END_TO_START, range) ;
+        var se = nodeRange.compareBoundaryPoints(Range.START_TO_END, range) ;
         // good = es=-1, se = 1
         
         Roo.log(node.tagName + ':es=' + es + ', se=' + se);
