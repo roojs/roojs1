@@ -418,12 +418,13 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         this.footer = new Roo.Toolbar(fel);
         // toolbar has scrolly on left / right?
         var footDisp= new Roo.Toolbar.Fill();
+        var _t = this;
         this.footer.add(
             {
                 text : '&lt;',
                 xtype: 'Button',
                 handler : function() {
-                    
+                    _t.footDisp.scrollTo('left',0,true)
                 }
             }
         );
@@ -433,7 +434,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 text : '&gt;',
                 xtype: 'Button',
                 handler : function() {
-                    
+                     _t.footDisp.scrollTo('left',100,true)
                 }
             }
         );
