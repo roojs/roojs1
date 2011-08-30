@@ -894,7 +894,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
      **/
     
     
-    // BC Hacks - cause I cant work out what i was trying to do..
+    // @see http://www.thismuchiknow.co.uk/?p=64.
     rangeIntersectsNode : function(range, node)
     {
         var nodeRange = node.ownerDocument.createRange();
