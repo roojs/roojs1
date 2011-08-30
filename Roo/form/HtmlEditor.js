@@ -950,12 +950,12 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         var nodeIsAfter = rangeEndRange.compareBoundaryPoints(Range.END_TO_END, nodeStartRange) == -1;
 
         if (nodeIsBefore && !nodeIsAfter)
-            return 0;
+            return 0;  // left trailed.
         if (!nodeIsBefore && nodeIsAfter)
-            return 1;
+            return 1; //right trailed.
         if (nodeIsBefore && nodeIsAfter)
-            return 2;
-
+            return 2; // outer
+        // fully contined.
         return 3;
     },
 
