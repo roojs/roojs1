@@ -931,8 +931,23 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         } catch (e) {
             nodeRange.selectNodeContents(node);
         }
-        var nodeIsBefore = range.compareBoundaryPoints(Range.START_TO_START, nodeRange) == 1;
-        var nodeIsAfter = range.compareBoundaryPoints(Range.END_TO_END, nodeRange) == -1;
+        
+        
+        var rangeStartRange = range.cloneRange();
+        rangeStartRange.collapse(true);
+    
+        var rangeEndRange = range.cloneRange();
+        rangeEndRange.collapse(false);
+    
+        var nodeStartRange = nodeRange.cloneRange();
+        nodeStartRange.collapse(true);
+    
+        var nodeEndRange = nodeRange.cloneRange();
+        nodeEndRange.collapse(false);
+    
+        
+        var nodeIsBefore = rangeStartRange.compareBoundaryPoints(Range.START_TO_START, nodeEndRange) == 1;
+        var nodeIsAfter = rangeEndRange.compareBoundaryPoints(Range.END_TO_END, nodeStartRange) == -1;
 
         if (nodeIsBefore && !nodeIsAfter)
             return 0;
