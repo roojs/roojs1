@@ -910,8 +910,8 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
      
         var es = range.compareBoundaryPoints(Range.END_TO_START, nodeRange) ;
         var se = range.compareBoundaryPoints(Range.START_TO_END, nodeRange) ;
-        
-        return !(es < 1 && se > -1);     
+        // good = es=-1, se = 1
+        return   es = -1 & se =1 ;  
         
          
     },
