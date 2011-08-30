@@ -897,7 +897,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     // BC Hacks - cause I cant work out what i was trying to do..
     rangeIntersectsNode : function(range, node)
     {
-        var nodeRange = this.createRange(node);
+        var nodeRange = this.createRange();
         try {
             nodeRange.selectNode(node);
         }
@@ -911,6 +911,8 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         var es = range.compareBoundaryPoints(Range.END_TO_START, nodeRange) ;
         var se = range.compareBoundaryPoints(Range.START_TO_END, nodeRange) ;
         // good = es=-1, se = 1
+        
+        Roo.log(node.tagName + ':es=' + es + ', se=' + se);
         return   es == -1 & se == 1 ;   
         
          
