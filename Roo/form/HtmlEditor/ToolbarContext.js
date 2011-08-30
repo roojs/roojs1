@@ -442,7 +442,9 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         fel.addClass('x-editor-context');
         this.footDispWrap = fel; 
         this.footDispWrap.overflow  = 'hidden';
-        this.footDisp = fel.createChild();
+        this.footDispCtr = fel.createChild();
+        
+        this.footDisp = this.footDispCtr.createChild();
         this.footDispWrap.on('click', this.onContextClick, this)
         
         
