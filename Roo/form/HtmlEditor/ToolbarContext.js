@@ -300,10 +300,10 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
        
         // 
         var sz = this.footDisp.up('td').getSize();
-        this.footDispCtr.dom.style.width = (sz.width -10) + 'px';
-        this.footDispCtr.dom.style.marginLeft = '5px';
+        this.footDisp.dom.style.width = (sz.width -10) + 'px';
+        this.footDisp.dom.style.marginLeft = '5px';
         
-        this.footDispCtr.dom.style.overflow = 'hidden';
+        this.footDisp.dom.style.overflow = 'hidden';
         
         this.footDisp.dom.innerHTML = html;
             
@@ -442,9 +442,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         fel.addClass('x-editor-context');
         this.footDispWrap = fel; 
         this.footDispWrap.overflow  = 'hidden';
-        this.footDispCtr = fel.createChild();
         
-        this.footDisp = this.footDispCtr.createChild();
+        this.footDisp = fel.createChild();
         this.footDispWrap.on('click', this.onContextClick, this)
         
         
