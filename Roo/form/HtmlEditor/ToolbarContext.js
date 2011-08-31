@@ -299,19 +299,21 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         // if current menu does not match..
         if (this.tb.name != tn) {
                 
-           this.tb.el.hide();
-           ///console.log("show: " + tn);
-           this.tb =  typeof(ty[tn]) != 'undefined' ? this.toolbars[tn] : this.toolbars['*'];
-           this.tb.el.show();
+            this.tb.el.hide();
+            ///console.log("show: " + tn);
+            this.tb =  typeof(ty[tn]) != 'undefined' ? this.toolbars[tn] : this.toolbars['*'];
+            this.tb.el.show();
            
-           this.tb.tagName.el.innerHTML = tn + ':&nbsp;';
-           this.tb.fields.each(function(e) {
-               e.setValue(sel.getAttribute(e.name));
-           });
-           this.tb.selectedNode = sel;
+            this.tb.tagName.el.innerHTML = tn + ':&nbsp;';
+           if (this.tb.fields) {
+                this.tb.fields.each(function(e) {
+                   e.setValue(sel.getAttribute(e.name));
+                });
+            }
+            this.tb.selectedNode = sel;
            
            
-           Roo.menu.MenuMgr.hideAll();
+            Roo.menu.MenuMgr.hideAll();
 
         }
         
