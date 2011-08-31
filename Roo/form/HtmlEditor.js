@@ -173,7 +173,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         Roo.get(document.head).select('style').each(function(node) {
             st += node.outerHTML || new XMLSerializer().serializeToString(node);
         });
-        st += '</style>';
+        
         Roo.get(document.head).select('link').each(function(node) { 
             st += node.outerHTML || new XMLSerializer().serializeToString(node);
         });
