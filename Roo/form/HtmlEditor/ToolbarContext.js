@@ -310,7 +310,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             
             // update styles
             var st = this.tb.fields.item(0);
-            st.dataSource.removeAll();
+            st.store.removeAll();
             var cn = sel.className.split(/\s+/);
             var avs = [];
             if (this.styles['*']) {
@@ -324,6 +324,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     avs.push( [ v , cn.indexOf(v) > -1 ? 1 : 0 ] );         
                 });
             }
+            st.store.add(avs);
             
             // update attributes
             if (this.tb.fields) {
