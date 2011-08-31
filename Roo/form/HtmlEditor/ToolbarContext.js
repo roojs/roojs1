@@ -392,7 +392,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     fields: ['val', 'selected'],
                     data : [] 
                 }),
-                name : 'class',
+                name : 'className',
                 displayField:'val',
                 typeAhead: false,
                 mode: 'local',
