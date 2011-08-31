@@ -385,7 +385,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         // styles...
         if (this.styles) {
             
-            // this needs a multi-select checkbox.
+            // this needs a multi-select checkbox...
             tb.addField( new Roo.form.ComboBox({
                 store: new Roo.data.SimpleStore({
                     id : 'val',
