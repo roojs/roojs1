@@ -32,7 +32,11 @@ Roo.onReady(function(){
                     },
                       {
                         xtype : 'ToolbarContext',
-                        xns : Roo.form.HtmlEditor
+                        xns : Roo.form.HtmlEditor,
+                        styles : {
+                            '*' : [ 'headline' ] ,
+                            'TD' : [ 'underline', 'double-underline' ]
+                        }
                     },
                     
                     
