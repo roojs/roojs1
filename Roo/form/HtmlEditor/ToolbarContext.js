@@ -307,9 +307,23 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             this.tb.items.first().el.innerHTML = tn + ':&nbsp;';
             
             // update styles
+            var st = this.tb.fields.item(0);
+            st.removeAll();
+            var cn = sel.className.split(/\s+/);
+            var avs = [];
+            if (this.styles['*'])) {
+                
+                this.styles['*'].each(function(v) {
+                    avs.push( [ v , cn.indexOf(v) > -1 ? 1 : 0 ] );         
+                });
+            }
+            if (this.styles[tn]) { 
+                this.styles[tn].each(function(v) {
+                    avs.push( [ v , cn.indexOf(v) > -1 ? 1 : 0 ] );         
+                });
+            }
             
             // update attributes
-            
             if (this.tb.fields) {
                 this.tb.fields.each(function(e) {
                    e.setValue(sel.getAttribute(e.name));
