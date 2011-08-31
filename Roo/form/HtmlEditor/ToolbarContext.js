@@ -305,7 +305,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             this.tb.el.show();
            
             this.tb.items.first().el.innerHTML = tn + ':&nbsp;';
-           if (this.tb.fields) {
+            if (this.tb.fields) {
                 this.tb.fields.each(function(e) {
                    e.setValue(sel.getAttribute(e.name));
                 });
@@ -380,7 +380,6 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         var tb = new Roo.Toolbar(wdiv);
         // add the name..
         
-        tb.tagName = new Roo.Toolbar.TextItem(nm+":&nbsp;")
         tb.add(nm+ ":&nbsp;");
         
         // styles...
