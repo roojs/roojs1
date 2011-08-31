@@ -59,7 +59,8 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     width: 500,
     
     /**
-     * @cfg {Array} stylesheets url of stylesheets.
+     * @cfg {Array} stylesheets url of stylesheets. set to [] to disable stylesheets.
+     * 
      */
     stylesheets: false,
     
@@ -176,13 +177,28 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     getDocMarkup : function(){
         // body styles..
         var st = '';
-        Roo.get(document.head).select('style').each(function(node) {
-            st += node.dom.outerHTML || new XMLSerializer().serializeToString(node.dom);
-        });
-        
-        Roo.get(document.head).select('link').each(function(node) { 
-            st += node.dom.outerHTML || new XMLSerializer().serializeToString(node.dom);
-        });
+        if (stylesheets === false) {
+            
+            
+            Roo.get(document.head).select('style').each(function(node) {
+                st += node.dom.outerHTML || new XMLSerializer().serializeToString(node.dom);
+            });
+            
+            Roo.get(document.head).select('link').each(function(node) { 
+                st += node.dom.outerHTML || new XMLSerializer().serializeToString(node.dom);
+            });
+            
+        } else if (!stylesheet.length) {
+                // simple..
+                st = '<style type="text/css">' +
+                    'body{border:0;margin:0;padding:3px;height:98%;cursor:text;}' +
+                   '</style>';
+        } else {
+            Roo.each(stylesheets, function(s) {
+                st += '<link rel="stylesheet" type="text/css" href="' + s +'" />'
+            });
+            
+        }
         
         return '<html><head>' + st  +
             //<style type="text/css">' +
