@@ -403,7 +403,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 width: item.width ? item.width  : 130,
                 listeners : {
                     'select': function(c, r, i) {
-                        tb.selectedNode.setAttribute(c.name, r.get('val'));
+                        // initial support only for on class per el..
                     }
                 }
     
