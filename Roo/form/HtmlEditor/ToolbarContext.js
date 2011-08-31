@@ -178,7 +178,7 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
         }
     },
     '*' : {
-        
+        // empty..
     }
 };
 
