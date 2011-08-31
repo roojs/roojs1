@@ -336,7 +336,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             
             st.store.loadData(avs);
             st.collapse();
-            st.setValue()
+            st.setValue(cn);
             
             // flag our selected Node.
             this.tb.selectedNode = sel;
