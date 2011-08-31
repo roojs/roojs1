@@ -392,7 +392,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     fields: ['val'],
                     data : item.opts // from states.js
                 }),
-                name : i,
+                name : 'class',
                 displayField:'val',
                 typeAhead: false,
                 mode: 'local',
