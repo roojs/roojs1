@@ -35,6 +35,16 @@
 {
     
     </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    
+    </span><span class="jsdoc-comment">// default disabled, based on 'good practice'..
+    </span><span class="jsdoc-var">this.disable </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.disable </span><span class="jsdoc-syntax">|| {};
+    </span><span class="jsdoc-var">Roo.applyIf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disable</span><span class="jsdoc-syntax">, {
+        </span><span class="jsdoc-var">fontSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">colors </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">specialElements </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+    
+    
     </span><span class="jsdoc-comment">//Roo.form.HtmlEditorToolbar1.superclass.constructor.call(this, editor.wrap.dom.firstChild, [], config);
     // dont call parent... till later.
 </span><span class="jsdoc-syntax">}
@@ -80,6 +90,27 @@
          // &quot;&amp;#233;&quot;     , // e ecute
          // &quot;&amp;#250;&quot;     , // u ecute?
     </span><span class="jsdoc-syntax">],
+    
+    </span><span class="jsdoc-var">specialElements </span><span class="jsdoc-syntax">: [
+        {
+            </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Insert Table&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">xtype</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'MenuItem'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">xns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.Menu</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">ihtml </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-string">'&lt;table&gt;&lt;tr&gt;&lt;td&gt;Cell&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;' 
+                
+        </span><span class="jsdoc-syntax">},
+        {    
+            </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Insert Image&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">xtype</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'MenuItem'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">xns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.Menu</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">ihtml </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&lt;img src=&quot;about:blank&quot;/&gt;'
+            
+        </span><span class="jsdoc-syntax">}
+        
+         
+    ],
+    
+    
     </span><span class="jsdoc-var">inputElements </span><span class="jsdoc-syntax">: [ 
             </span><span class="jsdoc-string">&quot;form&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;input:text&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;input:hidden&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;input:checkbox&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;input:radio&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;input:password&quot;</span><span class="jsdoc-syntax">, 
             </span><span class="jsdoc-string">&quot;input:submit&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;input:button&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;select&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;textarea&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;label&quot; </span><span class="jsdoc-syntax">],
@@ -196,7 +227,7 @@
         };
         
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disable.colors</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.disable.colors</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">tb.add</span><span class="jsdoc-syntax">(
                 </span><span class="jsdoc-string">'-'</span><span class="jsdoc-syntax">, {
                     </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">editor.frameId </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'-forecolor'</span><span class="jsdoc-syntax">,
@@ -288,9 +319,10 @@
             </span><span class="jsdoc-var">smenu </span><span class="jsdoc-syntax">= {
                 </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&amp;#169;&quot;</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-edit-none'</span><span class="jsdoc-syntax">,
+                
                 </span><span class="jsdoc-var">menu </span><span class="jsdoc-syntax">: {
                     </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">: []
-                   }
+                }
             };
             </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.specialChars.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
                 </span><span class="jsdoc-var">smenu.menu.items.push</span><span class="jsdoc-syntax">({
@@ -309,6 +341,32 @@
             
             
         }
+         
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.disable.specialElements</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">semenu </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Other;&quot;</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-edit-none'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">menu </span><span class="jsdoc-syntax">: {
+                    </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">: []
+                }
+            };
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.specialElements.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                </span><span class="jsdoc-var">semenu.menu.items.push</span><span class="jsdoc-syntax">(
+                    </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({ 
+                        </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">) {
+                            </span><span class="jsdoc-var">editor.insertAtCursor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.ihtml</span><span class="jsdoc-syntax">);
+                        }
+                    }, </span><span class="jsdoc-var">this.specialElements</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">])
+                );
+                    
+            }
+            
+            </span><span class="jsdoc-var">tb.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">semenu</span><span class="jsdoc-syntax">);
+            
+            
+        }
+         
+        
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.btns</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.btns.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.btns</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
