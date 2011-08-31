@@ -169,11 +169,11 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
     },
     
     // should we really allow this??
-    
+    // should this just be 
     'BODY' : {
         title : {
             title: "title",
-            width: 120,
+            width: 200,
             disabled : true
         }
     }
