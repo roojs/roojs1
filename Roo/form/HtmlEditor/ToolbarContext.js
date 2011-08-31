@@ -312,6 +312,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             var st = this.tb.fields.item(0);
             st.store.removeAll();
             var cn = sel.className.split(/\s+/);
+            Roo.log(cn);
             var avs = [];
             if (this.styles['*']) {
                 
