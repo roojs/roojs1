@@ -367,6 +367,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
        
         var tb = new Roo.Toolbar(wdiv);
         // add the name..
+        
+        tb.tagName = new Roo.Toolbar.TextItem(nm+":&nbsp;")
         tb.add(nm+ ":&nbsp;");
         
         // styles...
