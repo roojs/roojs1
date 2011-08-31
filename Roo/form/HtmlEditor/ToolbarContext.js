@@ -313,7 +313,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             st.removeAll();
             var cn = sel.className.split(/\s+/);
             var avs = [];
-            if (this.styles['*'])) {
+            if (this.styles['*']) {
                 
                 this.styles['*'].each(function(v) {
                     avs.push( [ v , cn.indexOf(v) > -1 ? 1 : 0 ] );         
