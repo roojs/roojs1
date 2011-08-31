@@ -187,7 +187,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 st += node.dom.outerHTML || new XMLSerializer().serializeToString(node.dom);
             });
             
-        } else if (!this.stylesheet.length) {
+        } else if (!this.stylesheets.length) {
                 // simple..
                 st = '<style type="text/css">' +
                     'body{border:0;margin:0;padding:3px;height:98%;cursor:text;}' +
