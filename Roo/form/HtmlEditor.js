@@ -174,7 +174,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             st += node.dom.outerHTML || new XMLSerializer().serializeToString(node.dom);
         });
         
-        Roo.get(document.head).select('link').each(function(node.dom) { 
+        Roo.get(document.head).select('link').each(function(node) { 
             st += node.dom.outerHTML || new XMLSerializer().serializeToString(node.dom);
         });
         
