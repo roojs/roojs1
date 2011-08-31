@@ -284,8 +284,9 @@ Roo.Toolbar.prototype = {
     fields : false,
     
     /**
-     * Adds a dynamically rendered Roo.form field (TextField, ComboBox, etc). Note: the field should not have
-     * been rendered yet. For a field that has already been rendered, use {@link #addElement}.
+     * Adds a dynamically rendered Roo.form field (TextField, ComboBox, etc).
+     * Note: the field should not have been rendered yet. For a field that has already been
+     * rendered, use {@link #addElement}.
      * @param {Roo.form.Field} field
      * @return {Roo.ToolbarItem}
      */
