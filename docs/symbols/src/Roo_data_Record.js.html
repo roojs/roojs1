@@ -140,7 +140,7 @@ myStore.add(myNewRecord);
             </span><span class="jsdoc-var">this.modified</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">this.data</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">];
         }
         </span><span class="jsdoc-var">this.data</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.editing</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.editing </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.store.afterEdit</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }       
     },
