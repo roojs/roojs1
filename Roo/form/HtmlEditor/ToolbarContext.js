@@ -325,7 +325,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 });
             }
             Roo.log(avs);
-            st.store.add(avs);
+            st.store.loadData(avs);
             
             // update attributes
             if (this.tb.fields) {
