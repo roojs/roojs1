@@ -390,7 +390,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 store: new Roo.data.SimpleStore({
                     id : 'val',
                     fields: ['val'],
-                    data : [] // from states.js
+                    data : [] 
                 }),
                 name : 'class',
                 displayField:'val',
