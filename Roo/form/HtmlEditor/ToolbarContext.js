@@ -383,7 +383,33 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         tb.add(nm+ ":&nbsp;");
         
         // styles...
-        
+        if (this.styles) {
+            
+            // this needs a multi-select checkbox.
+            tb.addField( new Roo.form.ComboBox({
+                store: new Roo.data.SimpleStore({
+                    id : 'val',
+                    fields: ['val'],
+                    data : item.opts // from states.js
+                }),
+                name : i,
+                displayField:'val',
+                typeAhead: false,
+                mode: 'local',
+                editable : false,
+                triggerAction: 'all',
+                emptyText:'Select',
+                selectOnFocus:true,
+                width: item.width ? item.width  : 130,
+                listeners : {
+                    'select': function(c, r, i) {
+                        tb.selectedNode.setAttribute(c.name, r.get('val'));
+                    }
+                }
+    
+            }));
+        }
+            
         
         
         for (var i in tlist) {
