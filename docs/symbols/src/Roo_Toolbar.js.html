@@ -14,7 +14,7 @@
  * Basic Toolbar class.
  * @constructor
  * Creates a new Toolbar
- * @param {Object} config The config object
+ * @param {Object} container The config object
  */ 
 </span><span class="jsdoc-var">Roo.Toolbar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">buttons</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">)
 {
@@ -27,7 +27,7 @@
     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'object' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">container.xtype</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">container </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.container</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">buttons </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.buttons</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// not really - use items!!
+        </span><span class="jsdoc-var">buttons </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.buttons </span><span class="jsdoc-syntax">|| []; </span><span class="jsdoc-comment">// not really - use items!!
     </span><span class="jsdoc-syntax">}
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">xitems </span><span class="jsdoc-syntax">= [];
     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">config.items</span><span class="jsdoc-syntax">) {
@@ -40,6 +40,7 @@
     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">);
     }
+    </span><span class="jsdoc-var">this.xitems </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">xitems</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xitems</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-var">this.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">);
     }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
@@ -48,8 +49,8 @@
 
 </span><span class="jsdoc-var">Roo.Toolbar.prototype </span><span class="jsdoc-syntax">= {
     </span><span class="jsdoc-comment">/**
-     * @cfg {Roo.data.Store} items
-     * array of button configs or elements to add
+     * @cfg {Array} items
+     * array of button configs or elements to add (will be converted to a MixedCollection)
      */
     
     /**
@@ -283,8 +284,9 @@
     </span><span class="jsdoc-var">fields </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-comment">/**
-     * Adds a dynamically rendered Roo.form field (TextField, ComboBox, etc). Note: the field should not have
-     * been rendered yet. For a field that has already been rendered, use {@link #addElement}.
+     * Adds a dynamically rendered Roo.form field (TextField, ComboBox, etc).
+     * Note: the field should not have been rendered yet. For a field that has already been
+     * rendered, use {@link #addElement}.
      * @param {Roo.form.Field} field
      * @return {Roo.ToolbarItem}
      */
