@@ -26,7 +26,7 @@
  * @cfg {String} region         (center|north|south|east|west) which region to put this panel on (when used with xtype constructors)
  * @cfg {String/Object} params  When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {Boolean} loadOnce      When used with {@link #url}, calls {@link #setUrl} with this value
- * @cfg {String} content        Raw content to fill content panel with (uses setContent on construction.)
+ * @cfg {String}    content        Raw content to fill content panel with (uses setContent on construction.)
 
  * @constructor
  * Create a new ContentPanel.
@@ -74,9 +74,9 @@
     }
     
     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbar </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.toolbar.el </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.toolbar.xtype</span><span class="jsdoc-syntax">) {
-        </span><span class="jsdoc-var">this.wrapEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.wrap</span><span class="jsdoc-syntax">();    
-        </span><span class="jsdoc-var">this.toolbar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Toolbar</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.insertSibling</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'before'</span><span class="jsdoc-syntax">), [] , </span><span class="jsdoc-var">this.toolbar</span><span class="jsdoc-syntax">);
-        
+        </span><span class="jsdoc-var">this.wrapEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.wrap</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.toolbar.container </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.insertSibling</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'before'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.toolbar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Toolbar</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbar</span><span class="jsdoc-syntax">);
     }
     
     
