@@ -324,7 +324,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     avs.push( [ v , cn.indexOf(v) > -1 ? 1 : 0 ] );         
                 });
             }
-            Roo.log(avs);
+            
             st.store.loadData(avs);
             
             // update attributes
