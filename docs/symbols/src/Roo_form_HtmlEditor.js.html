@@ -57,6 +57,13 @@
      * @cfg {Number} width (in pixels)
      */   
     </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: 500,
+    
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Array} stylesheets url of stylesheets. set to [] to disable stylesheets.
+     * 
+     */
+    </span><span class="jsdoc-var">stylesheets</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
     </span><span class="jsdoc-comment">// id of frame..
     </span><span class="jsdoc-var">frameId</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
@@ -168,7 +175,35 @@
      * want to change the initialization markup of the iframe (e.g. to add stylesheets).
      */
     </span><span class="jsdoc-var">getDocMarkup </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">'&lt;html&gt;&lt;head&gt;&lt;style type=&quot;text/css&quot;&gt;body{border:0;margin:0;padding:3px;height:98%;cursor:text;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;/body&gt;&lt;/html&gt;'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-comment">// body styles..
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">st </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.stylesheets </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            
+            </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.head</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">st </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">node.dom.outerHTML </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">XMLSerializer</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.serializeToString</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.dom</span><span class="jsdoc-syntax">);
+            });
+            
+            </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.head</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'link'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">) { 
+                </span><span class="jsdoc-var">st </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">node.dom.outerHTML </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">XMLSerializer</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.serializeToString</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.dom</span><span class="jsdoc-syntax">);
+            });
+            
+        } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.stylesheets.length</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-comment">// simple..
+                </span><span class="jsdoc-var">st </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;style type=&quot;text/css&quot;&gt;' </span><span class="jsdoc-syntax">+
+                    </span><span class="jsdoc-string">'body{border:0;margin:0;padding:3px;height:98%;cursor:text;}' </span><span class="jsdoc-syntax">+
+                   </span><span class="jsdoc-string">'&lt;/style&gt;'</span><span class="jsdoc-syntax">;
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.stylesheets</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">st </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">'&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'&quot; /&gt;'
+            </span><span class="jsdoc-syntax">});
+            
+        }
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">'&lt;html&gt;&lt;head&gt;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">st  </span><span class="jsdoc-syntax">+
+            </span><span class="jsdoc-comment">//&lt;style type=&quot;text/css&quot;&gt;' +
+            //'body{border:0;margin:0;padding:3px;height:98%;cursor:text;}' +
+            //'&lt;/style&gt;' +
+            </span><span class="jsdoc-string">' &lt;/head&gt;&lt;body&gt;&lt;/body&gt;&lt;/html&gt;'</span><span class="jsdoc-syntax">;
     },
 
     </span><span class="jsdoc-comment">// private
@@ -205,10 +240,8 @@
         }
 
         </span><span class="jsdoc-var">this.frameId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">();
+        
         </span><span class="jsdoc-var">this.createToolbar</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-        
-        
-        
         
       
         
@@ -218,7 +251,8 @@
             </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.frameId</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">frameBorder </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'no'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-string">'src' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.SSL_SECURE_URL </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.SSL_SECURE_URL  </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-string">&quot;javascript:false&quot;
-        </span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-syntax">}, </span><span class="jsdoc-var">this.el
+        </span><span class="jsdoc-syntax">);
         
        </span><span class="jsdoc-comment">// console.log(iframe);
         //this.wrap.dom.appendChild(iframe);
@@ -279,13 +313,16 @@
                 </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.toolbars.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
                     </span><span class="jsdoc-comment">// fixme - ask toolbars for heights?
                     </span><span class="jsdoc-var">tbh </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.tb.el.getHeight</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.footer</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-var">tbh </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.footer.el.getHeight</span><span class="jsdoc-syntax">();
+                    }
                 }
                 
                 
                 
                 
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ah </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.wrap.getFrameWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tb'</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">tbh</span><span class="jsdoc-syntax">;</span><span class="jsdoc-comment">// this.tb.el.getHeight();
-                </span><span class="jsdoc-var">ah </span><span class="jsdoc-syntax">-= 10; </span><span class="jsdoc-comment">// knock a few pixes off for look..
+                </span><span class="jsdoc-var">ah </span><span class="jsdoc-syntax">-= 5; </span><span class="jsdoc-comment">// knock a few pixes off for look..
                 </span><span class="jsdoc-var">this.el.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.adjustWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'textarea'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ah</span><span class="jsdoc-syntax">));
                 </span><span class="jsdoc-var">this.iframe.style.height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ah </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px'</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.doc</span><span class="jsdoc-syntax">){
@@ -479,7 +516,8 @@
         </span><span class="jsdoc-var">dbody.bgProperties </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'fixed'</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// ie
         </span><span class="jsdoc-var">Roo.DomHelper.applyStyles</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dbody</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ss</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">Roo.EventManager.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.doc</span><span class="jsdoc-syntax">, {
-            </span><span class="jsdoc-string">'mousedown'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onEditorEvent</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-comment">//'mousedown': this.onEditorEvent,
+            </span><span class="jsdoc-string">'mouseup'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onEditorEvent</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-string">'dblclick'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onEditorEvent</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onEditorEvent</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-string">'keyup'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onEditorEvent</span><span class="jsdoc-syntax">,
@@ -800,12 +838,14 @@
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">parent</span><span class="jsdoc-syntax">;
         }
         
+        </span><span class="jsdoc-comment">// is ancestor a text element.
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ac </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">range.commonAncestorContainer</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ac.nodeType </span><span class="jsdoc-syntax">== 3) {
+            </span><span class="jsdoc-var">ac </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ac.parentNode</span><span class="jsdoc-syntax">;
+        }
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">range.endContainer.childNodes</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">ar.length</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">ar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">range.commonAncestorContainer.childNodes</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-comment">//alert(ar.length);
-        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ac.childNodes</span><span class="jsdoc-syntax">;
+         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nodes </span><span class="jsdoc-syntax">= [];
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">other_nodes </span><span class="jsdoc-syntax">= [];
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">has_other_nodes </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
@@ -825,6 +865,7 @@
                 </span><span class="jsdoc-var">other_nodes.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
                 </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
             }
+            </span><span class="jsdoc-comment">// outer..
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.rangeIntersectsNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">range</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">])|| (</span><span class="jsdoc-var">this.rangeCompareNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">range</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]) == 0))  {
                 </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
             }
@@ -875,40 +916,84 @@
         }
     
     },
+    </span><span class="jsdoc-comment">/***
+     *
+     * Range intersection.. the hard stuff...
+     *  '-1' = before
+     *  '0' = hits..
+     *  '1' = after.
+     *         [ -- selected range --- ]
+     *   [fail]                        [fail]
+     *
+     *    basically..
+     *      if end is before start or  hits it. fail.
+     *      if start is after end or hits it fail.
+     *
+     *   if either hits (but other is outside. - then it's not 
+     *   
+     *    
+     **/
     
     
-    
-    </span><span class="jsdoc-comment">// BC Hacks - cause I cant work out what i was trying to do..
+    // @see http://www.thismuchiknow.co.uk/?p=64.
     </span><span class="jsdoc-var">rangeIntersectsNode </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">range</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nodeRange </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.ownerDocument.createRange</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
-            </span><span class="jsdoc-var">nodeRange.selectNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
-        }
-        </span><span class="jsdoc-keyword">catch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">nodeRange.selectNodeContents</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
-        }
-
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">range.compareBoundaryPoints</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Range.END_TO_START</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">nodeRange</span><span class="jsdoc-syntax">) == -1 &amp;&amp;
-                 </span><span class="jsdoc-var">range.compareBoundaryPoints</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Range.START_TO_END</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">nodeRange</span><span class="jsdoc-syntax">) == 1;
-    },
-    </span><span class="jsdoc-var">rangeCompareNode </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">range</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nodeRange </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.ownerDocument.createRange</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
             </span><span class="jsdoc-var">nodeRange.selectNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
         } </span><span class="jsdoc-keyword">catch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">nodeRange.selectNodeContents</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
         }
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nodeIsBefore </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">range.compareBoundaryPoints</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Range.START_TO_START</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">nodeRange</span><span class="jsdoc-syntax">) == 1;
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nodeIsAfter </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">range.compareBoundaryPoints</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Range.END_TO_END</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">nodeRange</span><span class="jsdoc-syntax">) == -1;
-
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nodeIsBefore </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">nodeIsAfter</span><span class="jsdoc-syntax">)
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">0;
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">nodeIsBefore </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">nodeIsAfter</span><span class="jsdoc-syntax">)
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">1;
+    
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rangeStartRange </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">range.cloneRange</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">rangeStartRange.collapse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+    
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rangeEndRange </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">range.cloneRange</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">rangeEndRange.collapse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+    
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nodeStartRange </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nodeRange.cloneRange</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">nodeStartRange.collapse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+    
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nodeEndRange </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nodeRange.cloneRange</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">nodeEndRange.collapse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+    
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">rangeStartRange.compareBoundaryPoints</span><span class="jsdoc-syntax">(
+                 </span><span class="jsdoc-var">Range.START_TO_START</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">nodeEndRange</span><span class="jsdoc-syntax">) == -1 &amp;&amp;
+               </span><span class="jsdoc-var">rangeEndRange.compareBoundaryPoints</span><span class="jsdoc-syntax">(
+                 </span><span class="jsdoc-var">Range.START_TO_START</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">nodeStartRange</span><span class="jsdoc-syntax">) == 1;
+        
+         
+    },
+    </span><span class="jsdoc-var">rangeCompareNode </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">range</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nodeRange </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.ownerDocument.createRange</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">nodeRange.selectNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+        } </span><span class="jsdoc-keyword">catch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">nodeRange.selectNodeContents</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+        }
+        
+        
+        </span><span class="jsdoc-var">range.collapse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+    
+        </span><span class="jsdoc-var">nodeRange.collapse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+     
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ss </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">range.compareBoundaryPoints</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">Range.START_TO_START</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">nodeRange</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ee </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">range.compareBoundaryPoints</span><span class="jsdoc-syntax">(  </span><span class="jsdoc-var">Range.END_TO_END</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">nodeRange</span><span class="jsdoc-syntax">);
+         
+        </span><span class="jsdoc-comment">//Roo.log(node.tagName + ': ss='+ss +', ee='+ee)
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nodeIsBefore   </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">ss </span><span class="jsdoc-syntax">== 1;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nodeIsAfter    </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ee </span><span class="jsdoc-syntax">== -1;
+        
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nodeIsBefore </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">nodeIsAfter</span><span class="jsdoc-syntax">)
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">2;
-
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">0; </span><span class="jsdoc-comment">// outer
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">nodeIsBefore </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">nodeIsAfter</span><span class="jsdoc-syntax">)
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">1; </span><span class="jsdoc-comment">//right trailed.
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nodeIsBefore </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">nodeIsAfter</span><span class="jsdoc-syntax">)
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">2;  </span><span class="jsdoc-comment">// left trailed.
+        // fully contined.
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">3;
     },
 
@@ -1000,6 +1085,7 @@
                 }
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">l </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">p.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">':'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.shift</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/\s+/g,</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
                 
+                </span><span class="jsdoc-comment">// only allow 'c whitelisted system attributes'
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.form.HtmlEditor.cwhite.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">) &lt; 0) {
                     </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'(REMOVE)' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">node.tagName </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'.' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">':'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">l </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'=' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
                     </span><span class="jsdoc-var">node.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">);
@@ -1135,6 +1221,7 @@
         </span><span class="jsdoc-string">'http'</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-string">'https'</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-string">'mailto'
 </span><span class="jsdoc-syntax">];
 
+</span><span class="jsdoc-comment">// white listed style attributes.
 </span><span class="jsdoc-var">Roo.form.HtmlEditor.cwhite</span><span class="jsdoc-syntax">= [
         </span><span class="jsdoc-string">'text-align'</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-string">'font-size'
