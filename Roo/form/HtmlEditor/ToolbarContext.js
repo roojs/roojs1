@@ -176,6 +176,9 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
             width: 200,
             disabled : true
         }
+    },
+    '*' : {
+        
     }
 };
 
