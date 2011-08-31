@@ -57,6 +57,12 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
      * @cfg {Number} width (in pixels)
      */   
     width: 500,
+    
+    /**
+     * @cfg {Array} stylesheets url of stylesheets.
+     */
+    stylesheets: false,
+    
     // id of frame..
     frameId: false,
     
