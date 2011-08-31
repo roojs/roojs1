@@ -25,7 +25,7 @@
      
  * 
  * @config : {Object} disable List of elements to disable.. (not done yet.)
- * 
+ * @config : {Object} styles  Map of styles available.
  * 
  */
 
