@@ -167,6 +167,9 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
             width: 200
         }
     },
+    
+    // should we really allow this??
+    
     'BODY' : {
         title : {
             title: "title",
