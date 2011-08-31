@@ -169,9 +169,9 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
      */
     getDocMarkup : function(){
         // body styles..
-        var st = '<style type="text/css">';
-        Roo.get(document.head).select('style').each(function(e) {
-            st += "\n" + e.innerHTML;
+        var st = '';
+        Roo.get(document.head).select('style').each(function(node) {
+            st += node.outerHTML || new XMLSerializer().serializeToString(node);
         });
         st += '</style>';
         Roo.get(document.head).select('link').each(function(node) { 
