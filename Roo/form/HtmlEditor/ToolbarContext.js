@@ -398,7 +398,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 mode: 'local',
                 editable : false,
                 triggerAction: 'all',
-                emptyText:'Select',
+                emptyText:'Select Class',
                 selectOnFocus:true,
                 width: item.width ? item.width  : 130,
                 listeners : {
