@@ -282,17 +282,19 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         }
         // pick a menu that exists..
         var tn = sel.tagName.toUpperCase();
-        sel = typeof(ty[tn]) != 'undefined' ? sel : this.editor.doc.body;
+        //sel = typeof(ty[tn]) != 'undefined' ? sel : this.editor.doc.body;
         
-         tn = sel.tagName.toUpperCase();
+        tn = sel.tagName.toUpperCase();
         
         // if current menu does not match..
         if (this.tb.name != tn) {
                 
            this.tb.el.hide();
            ///console.log("show: " + tn);
-           this.tb =  this.toolbars[tn];
+           this.tb =  typeof(ty[tn]) != 'undefined' ? this.toolbars[tn] : this.toolbars['*'];
            this.tb.el.show();
+           
+           this.tb.tagName.el.dom.innerHTML = tn;
            this.tb.fields.each(function(e) {
                e.setValue(sel.getAttribute(e.name));
            });
