@@ -40550,10 +40550,12 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         tn = sel.tagName.toUpperCase();
         
+        var lastSel = this.tb.selectedNode
+        
         this.tb.selectedNode = sel;
         
         // if current menu does not match..
-        if (this.tb.name != tn) {
+        if ((this.tb.name != tn) || (lastSel != this.tb.selectedNode)) {
                 
             this.tb.el.hide();
             ///console.log("show: " + tn);
