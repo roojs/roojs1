@@ -400,7 +400,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 triggerAction: 'all',
                 emptyText:'Select Class',
                 selectOnFocus:true,
-                width: item.width ? item.width  : 130,
+                width: 130,
                 listeners : {
                     'select': function(c, r, i) {
                         // initial support only for on class per el..
