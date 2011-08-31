@@ -40,7 +40,8 @@ Roo.form.HtmlEditor.ToolbarStandard = function(config)
     this.disable = this.disable || {};
     Roo.applyIf(this.disable, {
         fontSize : true,
-        colors : true
+        colors : true,
+        specialElements : true
     });
     
     
