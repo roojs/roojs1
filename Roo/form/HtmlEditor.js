@@ -178,9 +178,11 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             st += node.outerHTML || new XMLSerializer().serializeToString(node);
         });
         
-        return '<html><head><style type="text/css">' +
-            'body{border:0;margin:0;padding:3px;height:98%;cursor:text;}' +
-            '</style></head><body></body></html>';
+        return '<html><head>' + st  +
+            //<style type="text/css">' +
+            //'body{border:0;margin:0;padding:3px;height:98%;cursor:text;}' +
+            //'</style>' +
+            ' </head><body></body></html>';
     },
 
     // private
