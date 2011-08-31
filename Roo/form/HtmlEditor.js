@@ -177,8 +177,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     getDocMarkup : function(){
         // body styles..
         var st = '';
-        if (stylesheets === false) {
-            
+        if (this.stylesheets === false) {
             
             Roo.get(document.head).select('style').each(function(node) {
                 st += node.dom.outerHTML || new XMLSerializer().serializeToString(node.dom);
@@ -188,13 +187,13 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 st += node.dom.outerHTML || new XMLSerializer().serializeToString(node.dom);
             });
             
-        } else if (!stylesheet.length) {
+        } else if (!this.stylesheet.length) {
                 // simple..
                 st = '<style type="text/css">' +
                     'body{border:0;margin:0;padding:3px;height:98%;cursor:text;}' +
                    '</style>';
         } else {
-            Roo.each(stylesheets, function(s) {
+            Roo.each(this.stylesheets, function(s) {
                 st += '<link rel="stylesheet" type="text/css" href="' + s +'" />'
             });
             
