@@ -308,6 +308,14 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             // update name
             this.tb.items.first().el.innerHTML = tn + ':&nbsp;';
             
+            
+            // update attributes
+            if (this.tb.fields) {
+                this.tb.fields.each(function(e) {
+                   e.setValue(sel.getAttribute(e.name));
+                });
+            }
+            
             // update styles
             var st = this.tb.fields.item(0);
             st.store.removeAll();
@@ -328,13 +336,9 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             
             st.store.loadData(avs);
             st.collapse();
+            st.setValue()
             
-            // update attributes
-            if (this.tb.fields) {
-                this.tb.fields.each(function(e) {
-                   e.setValue(sel.getAttribute(e.name));
-                });
-            }
+            // flag our selected Node.
             this.tb.selectedNode = sel;
            
            
