@@ -171,11 +171,11 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         // body styles..
         var st = '';
         Roo.get(document.head).select('style').each(function(node) {
-            st += node.outerHTML || new XMLSerializer().serializeToString(node);
+            st += node.dom.outerHTML || new XMLSerializer().serializeToString(node.dom);
         });
         
-        Roo.get(document.head).select('link').each(function(node) { 
-            st += node.outerHTML || new XMLSerializer().serializeToString(node);
+        Roo.get(document.head).select('link').each(function(node.dom) { 
+            st += node.dom.outerHTML || new XMLSerializer().serializeToString(node.dom);
         });
         
         return '<html><head>' + st  +
