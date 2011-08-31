@@ -303,8 +303,13 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             ///console.log("show: " + tn);
             this.tb =  typeof(ty[tn]) != 'undefined' ? this.toolbars[tn] : this.toolbars['*'];
             this.tb.el.show();
-           
+            // update name
             this.tb.items.first().el.innerHTML = tn + ':&nbsp;';
+            
+            // update styles
+            
+            // update attributes
+            
             if (this.tb.fields) {
                 this.tb.fields.each(function(e) {
                    e.setValue(sel.getAttribute(e.name));
