@@ -34,6 +34,7 @@ Roo.form.HtmlEditor.ToolbarContext = function(config)
     Roo.apply(this, config);
     //Roo.form.HtmlEditorToolbar1.superclass.constructor.call(this, editor.wrap.dom.firstChild, [], config);
     // dont call parent... till later.
+    this.styles = this.styles || {};
 }
 Roo.form.HtmlEditor.ToolbarContext.types = {
     'IMG' : {
