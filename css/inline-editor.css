@@ -81,7 +81,10 @@
     margin-left:0px;
     margin-right:0px;
 }
-  
+
+.x-html-editor-wrap .x-toolbar {
+    height: 20px;
+}
   
 /** status bar **/  
   
