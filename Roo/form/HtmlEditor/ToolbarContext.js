@@ -196,6 +196,12 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
          
      */
     disable : false,
+    /**
+     * @cfg {Object} styles List of styles 
+     *    eg. { '*' : [ 'headline' ] , 'TD' : [ 'underline', 'double-underline' ] } 
+     *   
+     */
+    styles : false,
     
     
     
