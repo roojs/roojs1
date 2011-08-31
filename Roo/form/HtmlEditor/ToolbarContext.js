@@ -315,12 +315,12 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             var avs = [];
             if (this.styles['*']) {
                 
-                this.styles['*'].each(function(v) {
+                Roo.each(this.styles['*'], function(v) {
                     avs.push( [ v , cn.indexOf(v) > -1 ? 1 : 0 ] );         
                 });
             }
             if (this.styles[tn]) { 
-                this.styles[tn].each(function(v) {
+                Roo.each(this.styles[tn], function(v) {
                     avs.push( [ v , cn.indexOf(v) > -1 ? 1 : 0 ] );         
                 });
             }
