@@ -960,7 +960,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         var ss = range.compareBoundaryPoints( Range.START_TO_START, nodeRange);
         var ee = range.compareBoundaryPoints(  Range.END_TO_END, nodeRange);
          
-        Roo.log(node.tagName + ': ss='+ss +', ee='+ee)
+        //Roo.log(node.tagName + ': ss='+ss +', ee='+ee)
         
         var nodeIsBefore   =  ss == 1;
         var nodeIsAfter    = ee == -1;
