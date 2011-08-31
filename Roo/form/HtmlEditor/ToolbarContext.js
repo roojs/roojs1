@@ -294,7 +294,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
            this.tb =  typeof(ty[tn]) != 'undefined' ? this.toolbars[tn] : this.toolbars['*'];
            this.tb.el.show();
            
-           this.tb.tagName.el.dom.innerHTML = tn =': ';
+           this.tb.tagName.el.dom.innerHTML = tn + ': ';
            this.tb.fields.each(function(e) {
                e.setValue(sel.getAttribute(e.name));
            });
