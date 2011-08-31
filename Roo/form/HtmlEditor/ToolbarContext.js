@@ -326,6 +326,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             }
             
             st.store.loadData(avs);
+            st.collapse();
             
             // update attributes
             if (this.tb.fields) {
