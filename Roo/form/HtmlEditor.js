@@ -1186,6 +1186,8 @@ Roo.form.HtmlEditor.pwhite= [
         'http',  'https',  'mailto'
 ];
 
+// white listed style attributes.
+
 Roo.form.HtmlEditor.cwhite= [
         'text-align',
         'font-size'
