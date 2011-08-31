@@ -199,7 +199,11 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
     /**
      * @cfg {Object} styles List of styles 
      *    eg. { '*' : [ 'headline' ] , 'TD' : [ 'underline', 'double-underline' ] } 
-     *   
+     *
+     * These must be defined in the page, so they get rendered correctly..
+     * .headline { }
+     * TD.underline { }
+     * 
      */
     styles : false,
     
