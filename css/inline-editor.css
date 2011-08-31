@@ -82,6 +82,7 @@
     margin-right:0px;
 }
 
+/** force height of toolbar so it's constant */
 .x-html-editor-wrap .x-toolbar {
     height: 20px;
 }
