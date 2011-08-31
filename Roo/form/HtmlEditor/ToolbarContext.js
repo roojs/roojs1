@@ -298,6 +298,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         tn = sel.tagName.toUpperCase();
         
+        this.tb.selectedNode = sel;
+        
         // if current menu does not match..
         if (this.tb.name != tn) {
                 
