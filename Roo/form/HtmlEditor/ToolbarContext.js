@@ -17,10 +17,11 @@
  new Roo.form.HtmlEditor({
     ....
     toolbars : [
-        new Roo.form.HtmlEditor.ToolbarStandard(),
-        new Roo.form.HtmlEditor.ToolbarContext()
-        })
-    }
+        { xtype: 'ToolbarStandard', styles : {} }
+        { xtype: 'ToolbarContext', disable : {} }
+    ]
+})
+
      
  * 
  * @config : {Object} disable List of elements to disable.. (not done yet.)
