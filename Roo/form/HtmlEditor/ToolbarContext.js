@@ -389,7 +389,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             tb.addField( new Roo.form.ComboBox({
                 store: new Roo.data.SimpleStore({
                     id : 'val',
-                    fields: ['val'],
+                    fields: ['val', 'selected'],
                     data : [] 
                 }),
                 name : 'class',
@@ -427,7 +427,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     store: new Roo.data.SimpleStore({
                         id : 'val',
                         fields: ['val'],
-                        data : item.opts // from states.js
+                        data : item.opts  
                     }),
                     name : i,
                     displayField:'val',
