@@ -110,12 +110,12 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
         align: {
             title: "Align",
             opts : [[""],[ "left"],[ "center"],[ "right"],[ "justify"],[ "char"]],
-            width: 40
+            width: 80
         },
         valign: {
             title: "Valign",
             opts : [[""],[ "top"],[ "middle"],[ "bottom"],[ "baseline"]],
-            width: 40
+            width: 80
         },
         colspan: {
             title: "Colspan",
@@ -253,25 +253,34 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
      * Protected method that will not generally be called directly. It triggers
      * a toolbar update by reading the markup state of the current selection in the editor.
      */
-    updateToolbar: function(){
+    updateToolbar: function(ignore_a,ignore_b,sel){
 
         
         if(!this.editor.activated){
              this.editor.onFirstFocus();
             return;
         }
-
+        var updateFooter = sel ? false : true;
+        
         
         var ans = this.editor.getAllAncestors();
         
         // pick
         var ty= Roo.form.HtmlEditor.ToolbarContext.types;
-        var sel = ans.length ? (ans[0] ?  ans[0]  : ans[1]) : this.editor.doc.body;
-        sel = sel ? sel : this.editor.doc.body;
-        sel = sel.tagName.length ? sel : this.editor.doc.body;
+        
+        if (!sel) { 
+            sel = ans.length ? (ans[0] ?  ans[0]  : ans[1]) : this.editor.doc.body;
+            sel = sel ? sel : this.editor.doc.body;
+            sel = sel.tagName.length ? sel : this.editor.doc.body;
+            
+        }
+        // pick a menu that exists..
         var tn = sel.tagName.toUpperCase();
         sel = typeof(ty[tn]) != 'undefined' ? sel : this.editor.doc.body;
-        tn = sel.tagName.toUpperCase();
+        
+         tn = sel.tagName.toUpperCase();
+        
+        // if current menu does not match..
         if (this.tb.name != tn) {
                 
            this.tb.el.hide();
@@ -287,10 +296,16 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
            Roo.menu.MenuMgr.hideAll();
 
         }
+        
+        if (!updateFooter) {
+            return;
+        }
         // update the footer
         //
         var html = '';
-        Roo.each(ans.reverse(), function(a,i) {
+        
+        this.footerEls = ans.reverse();
+        Roo.each(this.footerEls, function(a,i) {
             if (!a) { return; }
             html += html.length ? ' &gt; '  :  '';
             
@@ -343,14 +358,23 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
        
         var tb = new Roo.Toolbar(wdiv);
+        // add the name..
         tb.add(nm+ ":&nbsp;");
+        
+        // styles...
+        
+        
+        
         for (var i in tlist) {
+            
             var item = tlist[i];
             tb.add(item.title + ":&nbsp;");
+            
+            
+            
+            
             if (item.opts) {
-                // fixme
-                
-              
+                // opts == pulldown..
                 tb.addField( new Roo.form.ComboBox({
                     store: new Roo.data.SimpleStore({
                         id : 'val',
@@ -375,9 +399,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 }));
                 continue;
                     
-                
-                
-                
+                 
                 
                 tb.addField( new Roo.form.TextField({
                     name: i,
@@ -449,27 +471,32 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         
     },
-    onContextClick : function (o,dom)
+    onContextClick : function (ev,dom)
     {
-         
+        ev.preventDefault();
         var  cn = dom.className;
         Roo.log(cn);
         if (!cn.match(/x-ed-loc-/)) {
             return;
         }
         var n = cn.split('-').pop();
-        var ans = this.editor.getAllAncestors().reverse();
+        var ans = this.footerEls;
         var sel = ans[n];
+        
          // pick
         var range = this.editor.createRange();
         
-        range.selectNode(sel);
+        range.selectNodeContents(sel);
+        //range.selectNode(sel);
+        
+        
         var selection = this.editor.getSelection();
         selection.removeAllRanges();
         selection.addRange(range);
         
         
-        this.updateToolbar.defer(100,this);
+        
+        this.updateToolbar(null, null, sel);
         
         
     }

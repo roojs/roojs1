@@ -803,8 +803,13 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             return parent;
         }
         
+        // is ancestor a text element.
+        var ac =  range.commonAncestorContainer;
+        if (ac.nodeType == 3) {
+            ac = ac.parentNode;
+        }
         
-        var ar = range.commonAncestorContainer.childNodes;
+        var ar = ac.childNodes;
          
         var nodes = [];
         var other_nodes = [];

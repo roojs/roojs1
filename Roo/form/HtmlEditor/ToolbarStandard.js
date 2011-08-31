@@ -35,6 +35,15 @@ Roo.form.HtmlEditor.ToolbarStandard = function(config)
 {
     
     Roo.apply(this, config);
+    
+    // default disabled, based on 'good practice'..
+    this.disable = this.disable || {};
+    Roo.applyIf(this.disable, {
+        fontSize : true,
+        colors : true
+    });
+    
+    
     //Roo.form.HtmlEditorToolbar1.superclass.constructor.call(this, editor.wrap.dom.firstChild, [], config);
     // dont call parent... till later.
 }
@@ -217,7 +226,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         };
         
         
-        if(this.disable.colors){
+        if(!this.disable.colors){
             tb.add(
                 '-', {
                     id:editor.frameId +'-forecolor',
