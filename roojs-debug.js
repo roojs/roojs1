@@ -26997,8 +26997,9 @@ Roo.Toolbar.prototype = {
     fields : false,
     
     /**
-     * Adds a dynamically rendered Roo.form field (TextField, ComboBox, etc). Note: the field should not have
-     * been rendered yet. For a field that has already been rendered, use {@link #addElement}.
+     * Adds a dynamically rendered Roo.form field (TextField, ComboBox, etc).
+     * Note: the field should not have been rendered yet. For a field that has already been
+     * rendered, use {@link #addElement}.
      * @param {Roo.form.Field} field
      * @return {Roo.ToolbarItem}
      */
@@ -38455,6 +38456,13 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
      * @cfg {Number} width (in pixels)
      */   
     width: 500,
+    
+    /**
+     * @cfg {Array} stylesheets url of stylesheets. set to [] to disable stylesheets.
+     * 
+     */
+    stylesheets: false,
+    
     // id of frame..
     frameId: false,
     
@@ -38566,7 +38574,35 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
      * want to change the initialization markup of the iframe (e.g. to add stylesheets).
      */
     getDocMarkup : function(){
-        return '<html><head><style type="text/css">body{border:0;margin:0;padding:3px;height:98%;cursor:text;}</style></head><body></body></html>';
+        // body styles..
+        var st = '';
+        if (this.stylesheets === false) {
+            
+            Roo.get(document.head).select('style').each(function(node) {
+                st += node.dom.outerHTML || new XMLSerializer().serializeToString(node.dom);
+            });
+            
+            Roo.get(document.head).select('link').each(function(node) { 
+                st += node.dom.outerHTML || new XMLSerializer().serializeToString(node.dom);
+            });
+            
+        } else if (!this.stylesheet.length) {
+                // simple..
+                st = '<style type="text/css">' +
+                    'body{border:0;margin:0;padding:3px;height:98%;cursor:text;}' +
+                   '</style>';
+        } else {
+            Roo.each(this.stylesheets, function(s) {
+                st += '<link rel="stylesheet" type="text/css" href="' + s +'" />'
+            });
+            
+        }
+        
+        return '<html><head>' + st  +
+            //<style type="text/css">' +
+            //'body{border:0;margin:0;padding:3px;height:98%;cursor:text;}' +
+            //'</style>' +
+            ' </head><body></body></html>';
     },
 
     // private
@@ -38603,10 +38639,8 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         }
 
         this.frameId = Roo.id();
+        
         this.createToolbar(this);
-        
-        
-        
         
       
         
@@ -38616,7 +38650,8 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             name: this.frameId,
             frameBorder : 'no',
             'src' : Roo.SSL_SECURE_URL ? Roo.SSL_SECURE_URL  :  "javascript:false"
-        });
+        }, this.el
+        );
         
        // console.log(iframe);
         //this.wrap.dom.appendChild(iframe);
@@ -38677,13 +38712,16 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 for (var i =0; i < this.toolbars.length;i++) {
                     // fixme - ask toolbars for heights?
                     tbh += this.toolbars[i].tb.el.getHeight();
+                    if (this.toolbars[i].footer) {
+                        tbh += this.toolbars[i].footer.el.getHeight();
+                    }
                 }
                 
                 
                 
                 
                 var ah = h - this.wrap.getFrameWidth('tb') - tbh;// this.tb.el.getHeight();
-                ah -= 10; // knock a few pixes off for look..
+                ah -= 5; // knock a few pixes off for look..
                 this.el.setHeight(this.adjustWidth('textarea', ah));
                 this.iframe.style.height = ah + 'px';
                 if(this.doc){
@@ -38877,7 +38915,8 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         dbody.bgProperties = 'fixed'; // ie
         Roo.DomHelper.applyStyles(dbody, ss);
         Roo.EventManager.on(this.doc, {
-            'mousedown': this.onEditorEvent,
+            //'mousedown': this.onEditorEvent,
+            'mouseup': this.onEditorEvent,
             'dblclick': this.onEditorEvent,
             'click': this.onEditorEvent,
             'keyup': this.onEditorEvent,
@@ -39198,12 +39237,14 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             return parent;
         }
         
-        
-        var ar = range.endContainer.childNodes;
-        if (!ar.length) {
-            ar = range.commonAncestorContainer.childNodes;
-            //alert(ar.length);
+        // is ancestor a text element.
+        var ac =  range.commonAncestorContainer;
+        if (ac.nodeType == 3) {
+            ac = ac.parentNode;
         }
+        
+        var ar = ac.childNodes;
+         
         var nodes = [];
         var other_nodes = [];
         var has_other_nodes = false;
@@ -39223,6 +39264,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 other_nodes.push(ar[i]);
                 continue;
             }
+            // outer..
             if (!this.rangeIntersectsNode(range,ar[i])|| (this.rangeCompareNode(range,ar[i]) == 0))  {
                 continue;
             }
@@ -39273,40 +39315,84 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         }
     
     },
+    /***
+     *
+     * Range intersection.. the hard stuff...
+     *  '-1' = before
+     *  '0' = hits..
+     *  '1' = after.
+     *         [ -- selected range --- ]
+     *   [fail]                        [fail]
+     *
+     *    basically..
+     *      if end is before start or  hits it. fail.
+     *      if start is after end or hits it fail.
+     *
+     *   if either hits (but other is outside. - then it's not 
+     *   
+     *    
+     **/
     
     
-    
-    // BC Hacks - cause I cant work out what i was trying to do..
+    // @see http://www.thismuchiknow.co.uk/?p=64.
     rangeIntersectsNode : function(range, node)
     {
-        var nodeRange = node.ownerDocument.createRange();
-        try {
-            nodeRange.selectNode(node);
-        }
-        catch (e) {
-            nodeRange.selectNodeContents(node);
-        }
-
-        return range.compareBoundaryPoints(Range.END_TO_START, nodeRange) == -1 &&
-                 range.compareBoundaryPoints(Range.START_TO_END, nodeRange) == 1;
-    },
-    rangeCompareNode : function(range, node) {
         var nodeRange = node.ownerDocument.createRange();
         try {
             nodeRange.selectNode(node);
         } catch (e) {
             nodeRange.selectNodeContents(node);
         }
-        var nodeIsBefore = range.compareBoundaryPoints(Range.START_TO_START, nodeRange) == 1;
-        var nodeIsAfter = range.compareBoundaryPoints(Range.END_TO_END, nodeRange) == -1;
-
-        if (nodeIsBefore && !nodeIsAfter)
-            return 0;
-        if (!nodeIsBefore && nodeIsAfter)
-            return 1;
+    
+        var rangeStartRange = range.cloneRange();
+        rangeStartRange.collapse(true);
+    
+        var rangeEndRange = range.cloneRange();
+        rangeEndRange.collapse(false);
+    
+        var nodeStartRange = nodeRange.cloneRange();
+        nodeStartRange.collapse(true);
+    
+        var nodeEndRange = nodeRange.cloneRange();
+        nodeEndRange.collapse(false);
+    
+        return rangeStartRange.compareBoundaryPoints(
+                 Range.START_TO_START, nodeEndRange) == -1 &&
+               rangeEndRange.compareBoundaryPoints(
+                 Range.START_TO_START, nodeStartRange) == 1;
+        
+         
+    },
+    rangeCompareNode : function(range, node)
+    {
+        var nodeRange = node.ownerDocument.createRange();
+        try {
+            nodeRange.selectNode(node);
+        } catch (e) {
+            nodeRange.selectNodeContents(node);
+        }
+        
+        
+        range.collapse(true);
+    
+        nodeRange.collapse(true);
+     
+        var ss = range.compareBoundaryPoints( Range.START_TO_START, nodeRange);
+        var ee = range.compareBoundaryPoints(  Range.END_TO_END, nodeRange);
+         
+        //Roo.log(node.tagName + ': ss='+ss +', ee='+ee)
+        
+        var nodeIsBefore   =  ss == 1;
+        var nodeIsAfter    = ee == -1;
+        
         if (nodeIsBefore && nodeIsAfter)
-            return 2;
-
+            return 0; // outer
+        if (!nodeIsBefore && nodeIsAfter)
+            return 1; //right trailed.
+        
+        if (nodeIsBefore && !nodeIsAfter)
+            return 2;  // left trailed.
+        // fully contined.
         return 3;
     },
 
@@ -39398,6 +39484,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 }
                 var l = p.split(':').shift().replace(/\s+/g,'');
                 
+                // only allow 'c whitelisted system attributes'
                 if (Roo.form.HtmlEditor.cwhite.indexOf(l) < 0) {
                     Roo.log('(REMOVE)' + node.tagName +'.' + n + ':'+l + '=' + v);
                     node.removeAttribute(n);
@@ -39533,6 +39620,7 @@ Roo.form.HtmlEditor.pwhite= [
         'http',  'https',  'mailto'
 ];
 
+// white listed style attributes.
 Roo.form.HtmlEditor.cwhite= [
         'text-align',
         'font-size'
@@ -39575,6 +39663,16 @@ Roo.form.HtmlEditor.ToolbarStandard = function(config)
 {
     
     Roo.apply(this, config);
+    
+    // default disabled, based on 'good practice'..
+    this.disable = this.disable || {};
+    Roo.applyIf(this.disable, {
+        fontSize : true,
+        colors : true,
+        specialElements : true
+    });
+    
+    
     //Roo.form.HtmlEditorToolbar1.superclass.constructor.call(this, editor.wrap.dom.firstChild, [], config);
     // dont call parent... till later.
 }
@@ -39620,6 +39718,27 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
          // "&#233;"     , // e ecute
          // "&#250;"     , // u ecute?
     ],
+    
+    specialElements : [
+        {
+            text: "Insert Table",
+            xtype: 'MenuItem',
+            xns : Roo.Menu,
+            ihtml :  '<table><tr><td>Cell</td></tr></table>' 
+                
+        },
+        {    
+            text: "Insert Image",
+            xtype: 'MenuItem',
+            xns : Roo.Menu,
+            ihtml : '<img src="about:blank"/>'
+            
+        }
+        
+         
+    ],
+    
+    
     inputElements : [ 
             "form", "input:text", "input:hidden", "input:checkbox", "input:radio", "input:password", 
             "input:submit", "input:button", "select", "textarea", "label" ],
@@ -39736,7 +39855,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         };
         
         
-        if(this.disable.colors){
+        if(!this.disable.colors){
             tb.add(
                 '-', {
                     id:editor.frameId +'-forecolor',
@@ -39828,9 +39947,10 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             smenu = {
                 text: "&#169;",
                 cls: 'x-edit-none',
+                
                 menu : {
                     items : []
-                   }
+                }
             };
             for (var i =0; i < this.specialChars.length; i++) {
                 smenu.menu.items.push({
@@ -39849,6 +39969,32 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             
             
         }
+         
+        if (!this.disable.specialElements) {
+            var semenu = {
+                text: "Other;",
+                cls: 'x-edit-none',
+                menu : {
+                    items : []
+                }
+            };
+            for (var i =0; i < this.specialElements.length; i++) {
+                semenu.menu.items.push(
+                    Roo.apply({ 
+                        handler: function(a,b) {
+                            editor.insertAtCursor(this.ihtml);
+                        }
+                    }, this.specialElements[i])
+                );
+                    
+            }
+            
+            tb.add(semenu);
+            
+            
+        }
+         
+        
         if (this.btns) {
             for(var i =0; i< this.btns.length;i++) {
                 var b = this.btns[i];
@@ -40123,14 +40269,15 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
  new Roo.form.HtmlEditor({
     ....
     toolbars : [
-        new Roo.form.HtmlEditor.ToolbarStandard(),
-        new Roo.form.HtmlEditor.ToolbarContext()
-        })
-    }
+        { xtype: 'ToolbarStandard', styles : {} }
+        { xtype: 'ToolbarContext', disable : {} }
+    ]
+})
+
      
  * 
  * @config : {Object} disable List of elements to disable.. (not done yet.)
- * 
+ * @config : {Object} styles  Map of styles available.
  * 
  */
 
@@ -40140,6 +40287,7 @@ Roo.form.HtmlEditor.ToolbarContext = function(config)
     Roo.apply(this, config);
     //Roo.form.HtmlEditorToolbar1.superclass.constructor.call(this, editor.wrap.dom.firstChild, [], config);
     // dont call parent... till later.
+    this.styles = this.styles || {};
 }
 Roo.form.HtmlEditor.ToolbarContext.types = {
     'IMG' : {
@@ -40216,12 +40364,12 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
         align: {
             title: "Align",
             opts : [[""],[ "left"],[ "center"],[ "right"],[ "justify"],[ "char"]],
-            width: 40
+            width: 80
         },
         valign: {
             title: "Valign",
             opts : [[""],[ "top"],[ "middle"],[ "bottom"],[ "baseline"]],
-            width: 40
+            width: 80
         },
         colspan: {
             title: "Colspan",
@@ -40273,12 +40421,18 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
             width: 200
         }
     },
+    
+    // should we really allow this??
+    // should this just be 
     'BODY' : {
         title : {
             title: "title",
-            width: 120,
+            width: 200,
             disabled : true
         }
+    },
+    '*' : {
+        // empty..
     }
 };
 
@@ -40296,6 +40450,16 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
          
      */
     disable : false,
+    /**
+     * @cfg {Object} styles List of styles 
+     *    eg. { '*' : [ 'headline' ] , 'TD' : [ 'underline', 'double-underline' ] } 
+     *
+     * These must be defined in the page, so they get rendered correctly..
+     * .headline { }
+     * TD.underline { }
+     * 
+     */
+    styles : false,
     
     
     
@@ -40342,7 +40506,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         }
         this.tb = this.toolbars.BODY;
         this.tb.el.show();
-        
+        this.buildFooter();
+        this.footer.show();
          
         this.rendered = true;
         
@@ -40358,39 +40523,106 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
      * Protected method that will not generally be called directly. It triggers
      * a toolbar update by reading the markup state of the current selection in the editor.
      */
-    updateToolbar: function(){
+    updateToolbar: function(ignore_a,ignore_b,sel){
 
+        
         if(!this.editor.activated){
-            this.editor.onFirstFocus();
+             this.editor.onFirstFocus();
             return;
         }
-
+        var updateFooter = sel ? false : true;
+        
         
         var ans = this.editor.getAllAncestors();
         
         // pick
         var ty= Roo.form.HtmlEditor.ToolbarContext.types;
-        var sel = ans.length ? (ans[0] ?  ans[0]  : ans[1]) : this.editor.doc.body;
-        sel = sel ? sel : this.editor.doc.body;
-        sel = sel.tagName.length ? sel : this.editor.doc.body;
-        var tn = sel.tagName.toUpperCase();
-        sel = typeof(ty[tn]) != 'undefined' ? sel : this.editor.doc.body;
-        tn = sel.tagName.toUpperCase();
-        if (this.tb.name  == tn) {
-            return; // no change
+        
+        if (!sel) { 
+            sel = ans.length ? (ans[0] ?  ans[0]  : ans[1]) : this.editor.doc.body;
+            sel = sel ? sel : this.editor.doc.body;
+            sel = sel.tagName.length ? sel : this.editor.doc.body;
+            
         }
-        this.tb.el.hide();
-        ///console.log("show: " + tn);
-        this.tb =  this.toolbars[tn];
-        this.tb.el.show();
-        this.tb.fields.each(function(e) {
-            e.setValue(sel.getAttribute(e.name));
-        });
-        this.tb.selectedNode = sel;
+        // pick a menu that exists..
+        var tn = sel.tagName.toUpperCase();
+        //sel = typeof(ty[tn]) != 'undefined' ? sel : this.editor.doc.body;
         
+        tn = sel.tagName.toUpperCase();
         
-        Roo.menu.MenuMgr.hideAll();
+        // if current menu does not match..
+        if (this.tb.name != tn) {
+                
+            this.tb.el.hide();
+            ///console.log("show: " + tn);
+            this.tb =  typeof(ty[tn]) != 'undefined' ? this.toolbars[tn] : this.toolbars['*'];
+            this.tb.el.show();
+            // update name
+            this.tb.items.first().el.innerHTML = tn + ':&nbsp;';
+            
+            
+            // update attributes
+            if (this.tb.fields) {
+                this.tb.fields.each(function(e) {
+                   e.setValue(sel.getAttribute(e.name));
+                });
+            }
+            
+            // update styles
+            var st = this.tb.fields.item(0);
+            st.store.removeAll();
+            var cn = sel.className.split(/\s+/);
+            
+            var avs = [];
+            if (this.styles['*']) {
+                
+                Roo.each(this.styles['*'], function(v) {
+                    avs.push( [ v , cn.indexOf(v) > -1 ? 1 : 0 ] );         
+                });
+            }
+            if (this.styles[tn]) { 
+                Roo.each(this.styles[tn], function(v) {
+                    avs.push( [ v , cn.indexOf(v) > -1 ? 1 : 0 ] );         
+                });
+            }
+            
+            st.store.loadData(avs);
+            st.collapse();
+            st.setValue(cn);
+            
+            // flag our selected Node.
+            this.tb.selectedNode = sel;
+           
+           
+            Roo.menu.MenuMgr.hideAll();
 
+        }
+        
+        if (!updateFooter) {
+            return;
+        }
+        // update the footer
+        //
+        var html = '';
+        
+        this.footerEls = ans.reverse();
+        Roo.each(this.footerEls, function(a,i) {
+            if (!a) { return; }
+            html += html.length ? ' &gt; '  :  '';
+            
+            html += '<span class="x-ed-loc-' + i + '">' + a.tagName + '</span>';
+            
+        });
+       
+        // 
+        var sz = this.footDisp.up('td').getSize();
+        this.footDisp.dom.style.width = (sz.width -10) + 'px';
+        this.footDisp.dom.style.marginLeft = '5px';
+        
+        this.footDisp.dom.style.overflow = 'hidden';
+        
+        this.footDisp.dom.innerHTML = html;
+            
         //this.editorsyncValue();
     },
    
@@ -40427,19 +40659,56 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
        
         var tb = new Roo.Toolbar(wdiv);
+        // add the name..
+        
         tb.add(nm+ ":&nbsp;");
+        
+        // styles...
+        if (this.styles) {
+            
+            // this needs a multi-select checkbox...
+            tb.addField( new Roo.form.ComboBox({
+                store: new Roo.data.SimpleStore({
+                    id : 'val',
+                    fields: ['val', 'selected'],
+                    data : [] 
+                }),
+                name : 'className',
+                displayField:'val',
+                typeAhead: false,
+                mode: 'local',
+                editable : false,
+                triggerAction: 'all',
+                emptyText:'Select Style',
+                selectOnFocus:true,
+                width: 130,
+                listeners : {
+                    'select': function(c, r, i) {
+                        // initial support only for on class per el..
+                        tb.selectedNode.className =  r ? r.get('val') : '';
+                    }
+                }
+    
+            }));
+        }
+            
+        
+        
         for (var i in tlist) {
+            
             var item = tlist[i];
             tb.add(item.title + ":&nbsp;");
+            
+            
+            
+            
             if (item.opts) {
-                // fixme
-                
-              
+                // opts == pulldown..
                 tb.addField( new Roo.form.ComboBox({
                     store: new Roo.data.SimpleStore({
                         id : 'val',
                         fields: ['val'],
-                        data : item.opts // from states.js
+                        data : item.opts  
                     }),
                     name : i,
                     displayField:'val',
@@ -40459,9 +40728,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 }));
                 continue;
                     
-                
-                
-                
+                 
                 
                 tb.addField( new Roo.form.TextField({
                     name: i,
@@ -40494,7 +40761,75 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         return tb;
          
         
+    },
+    buildFooter : function()
+    {
+        
+        var fel = this.editor.wrap.createChild();
+        this.footer = new Roo.Toolbar(fel);
+        // toolbar has scrolly on left / right?
+        var footDisp= new Roo.Toolbar.Fill();
+        var _t = this;
+        this.footer.add(
+            {
+                text : '&lt;',
+                xtype: 'Button',
+                handler : function() {
+                    _t.footDisp.scrollTo('left',0,true)
+                }
+            }
+        );
+        this.footer.add( footDisp );
+        this.footer.add( 
+            {
+                text : '&gt;',
+                xtype: 'Button',
+                handler : function() {
+                    // no animation..
+                    _t.footDisp.select('span').last().scrollIntoView(_t.footDisp,true);
+                }
+            }
+        );
+        var fel = Roo.get(footDisp.el);
+        fel.addClass('x-editor-context');
+        this.footDispWrap = fel; 
+        this.footDispWrap.overflow  = 'hidden';
+        
+        this.footDisp = fel.createChild();
+        this.footDispWrap.on('click', this.onContextClick, this)
+        
+        
+    },
+    onContextClick : function (ev,dom)
+    {
+        ev.preventDefault();
+        var  cn = dom.className;
+        Roo.log(cn);
+        if (!cn.match(/x-ed-loc-/)) {
+            return;
+        }
+        var n = cn.split('-').pop();
+        var ans = this.footerEls;
+        var sel = ans[n];
+        
+         // pick
+        var range = this.editor.createRange();
+        
+        range.selectNodeContents(sel);
+        //range.selectNode(sel);
+        
+        
+        var selection = this.editor.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        
+        
+        
+        this.updateToolbar(null, null, sel);
+        
+        
     }
+    
     
     
     
