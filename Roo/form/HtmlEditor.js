@@ -168,6 +168,13 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
      * want to change the initialization markup of the iframe (e.g. to add stylesheets).
      */
     getDocMarkup : function(){
+        // body styles..
+        var st = 
+        Roo.get(document.head).select('style').each(function(e) {
+            st += "\n" + e.innerHTML;
+        });
+        
+        
         return '<html><head><style type="text/css">' +
             'body{border:0;margin:0;padding:3px;height:98%;cursor:text;}' +
             '</style></head><body></body></html>';
