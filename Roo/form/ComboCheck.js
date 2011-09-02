@@ -77,7 +77,7 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
     },
     select: function () {
         
-    }
+    },
     
     onSelect : function(record, index){
         if(this.fireEvent('beforeselect', this, record, index) !== false){
