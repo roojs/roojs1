@@ -114,7 +114,7 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
        // Roo.log("onselect Called");
        // this is only called by the clear button now..
        this.view.clearSelections();
-         setValue : function('[]');
+        this.setValue : function('[]');
         if (this.value != this.valueBefore) {
             this.fireEvent('change', this, this.value, this.valueBefore);
         }
