@@ -23747,12 +23747,16 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     /**
      * @cfg {Boolean} multiSelect Allow multiple selection
      */
-    
     multiSelect : false,
     /**
      * @cfg {Boolean} singleSelect Allow single selection
      */
     singleSelect:  false,
+    
+    /**
+     * @cfg {Boolean} toggleSelect - selecting 
+     */
+    toggleSelect : false,
     
     /**
      * Returns the element this view is bound to.
@@ -23920,9 +23924,17 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         }
     },
 
-    onItemClick : function(item, index, e){
+    onItemClick : function(item, index, e)
+    {
         if(this.fireEvent("beforeclick", this, index, item, e) === false){
             return false;
+        }
+        if (this.toggleSelect) {
+            var m = this.isSelected(item) ? 'unselect' : 'select';
+            Roo.log(m);
+            var _t = this;
+            _t[m](item, true, false);
+            return true;
         }
         if(this.multiSelect || this.singleSelect){
             if(this.multiSelect && e.shiftKey && this.lastSelection){
@@ -24007,21 +24019,57 @@ Roo.extend(Roo.View, Roo.util.Observable, {
             for(var i = 0, len = nodeInfo.length; i < len; i++){
                 this.select(nodeInfo[i], true, true);
             }
-        } else{
-            var node = this.getNode(nodeInfo);
-            if(node && !this.isSelected(node)){
-                if(!keepExisting){
-                    this.clearSelections(true);
-                }
-                if(this.fireEvent("beforeselect", this, node, this.selections) !== false){
-                    Roo.fly(node).addClass(this.selectedClass);
-                    this.selections.push(node);
-                    if(!suppressEvent){
-                        this.fireEvent("selectionchange", this, this.selections);
-                    }
-                }
+            return;
+        } 
+        var node = this.getNode(nodeInfo);
+        if(!node || this.isSelected(node)){
+            return; // already selected.
+        }
+        if(!keepExisting){
+            this.clearSelections(true);
+        }
+        if(this.fireEvent("beforeselect", this, node, this.selections) !== false){
+            Roo.fly(node).addClass(this.selectedClass);
+            this.selections.push(node);
+            if(!suppressEvent){
+                this.fireEvent("selectionchange", this, this.selections);
             }
         }
+        
+        
+    },
+      /**
+     * Unselects nodes.
+     * @param {Array/HTMLElement/String/Number} nodeInfo An HTMLElement template node, index of a template node, id of a template node or an array of any of those to select
+     * @param {Boolean} keepExisting (optional) true IGNORED (for campatibility with select)
+     * @param {Boolean} suppressEvent (optional) true to skip firing of the selectionchange vent
+     */
+    unselect : function(nodeInfo, keepExisting, suppressEvent)
+    {
+        if(nodeInfo instanceof Array){
+            Roo.each(this.selections, function(s) {
+                this.unselect(s, nodeInfo);
+            }, this);
+            return;
+        }
+        var node = this.getNode(nodeInfo);
+        if(!node || !this.isSelected(node)){
+            Roo.log("not selected");
+            return; // not selected.
+        }
+        // fireevent???
+        var ns = [];
+        Roo.each(this.selections, function(s) {
+            if (s == node ) {
+                Roo.fly(node).removeClass(this.selectedClass);
+
+                return;
+            }
+            ns.push(s);
+        },this);
+        
+        this.selections= ns;
+        this.fireEvent("selectionchange", this, this.selections);
     },
 
     /**
@@ -43375,6 +43423,186 @@ Roo.extend(Roo.form.DayPicker, Roo.form.Field,  {
         Roo.form.DayPicker.superclass.onDestroy.call(this);
     }
 
+});/*
+ * RooJS Library 1.1.1
+ * Copyright(c) 2008-2011  Alan Knowles
+ *
+ * License - LGPL
+ */
+ 
+
+/**
+ * @class Roo.form.ComboCheck
+ * @extends Roo.form.ComboBox
+ * A combobox for multiple select items.
+ *
+ * FIXME - could do with a reset button..
+ * 
+ * @constructor
+ * Create a new ComboCheck
+ * @param {Object} config Configuration options
+ */
+Roo.form.ComboCheck = function(config){
+    Roo.form.ComboCheck.superclass.constructor.call(this, config);
+    // should verify some data...
+    // like
+    // hiddenName = required..
+    // displayField = required
+    // valudField == required
+    var req= [ 'hiddenName', 'displayField', 'valueField' ];
+    var _t = this;
+    Roo.each(req, function(e) {
+        if ((typeof(_t[e]) == 'undefined' ) || !_t[e].length) {
+            throw "Roo.form.ComboCheck : missing value for: " + e;
+        }
+    });
+    
+    
+};
+
+Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
+     
+     
+    editable : false,
+     
+    selectedClass: 'x-menu-item-checked', 
+    
+    // private
+    onRender : function(ct, position){
+        var _t = this;
+        
+        
+        
+        if(!this.tpl){
+            var cls = 'x-combo-list';
+
+            
+            this.tpl =  new Roo.Template({
+                html :  '<div class="'+cls+'-item x-menu-check-item">' +
+                   '<img class="x-menu-item-icon" style="margin: 0px;" src="' + Roo.BLANK_IMAGE_URL + '">' + 
+                   '<span>{' + this.displayField + '}</span>' +
+                    '</div>' 
+                
+            });
+        }
+ 
+        
+        Roo.form.ComboCheck.superclass.onRender.call(this, ct, position);
+        this.view.singleSelect = false;
+        this.view.multiSelect = true;
+        this.view.toggleSelect = true;
+        this.pageTb.add(new Roo.Toolbar.Fill(), {
+            
+            text: 'Done',
+            handler: function()
+            {
+                _t.collapse();
+            }
+        });
+    },
+    
+    onViewOver : function(e, t){
+        // do nothing...
+        return;
+        
+    },
+    
+    onViewClick : function(doFocus,index){
+        return;
+        
+    },
+    select: function () {
+        Roo.log("SELECT CALLED");
+    },
+     
+    selectByValue : function(xv, scrollIntoView){
+        var ar = this.getValueArray();
+        var sels = [];
+        
+        Roo.each(ar, function(v) {
+            if(v === undefined || v === null){
+                return;
+            }
+            var r = this.findRecord(this.valueField, v);
+            if(r){
+                sels.push(this.store.indexOf(r))
+                
+            }
+        },this);
+        this.view.select(sels);
+        return false;
+    },
+    
+    
+    
+    onSelect : function(record, index){
+        Roo.log("onselect Called");
+       // this is only called by the clear button now..
+       this.view.clearSelections();
+    },
+    getValueArray : function()
+    {
+        var ar = [] ;
+        
+        try {
+            Roo.log(this.value);
+            var ar = Roo.decode(this.value);
+            return  ar instanceof Array ? ar : []; //?? valid?
+            
+        } catch(e) {
+            Roo.log(e + "\nRoo.form.ComboCheck:getValueArray  invalid data:" + this.getValue());
+            return [];
+        }
+         
+    },
+    expand : function ()
+    {
+        Roo.form.ComboCheck.superclass.expand.call(this);
+        this.valueBefore = this.value;
+        
+
+    },
+    
+    collapse : function(){
+        Roo.form.ComboCheck.superclass.collapse.call(this);
+        var sl = this.view.getSelectedIndexes();
+        var st = this.store;
+        var nv = [];
+        var tv = [];
+        var r;
+        Roo.each(sl, function(i) {
+            r = st.getAt(i);
+            nv.push(r.get(this.valueField));
+        },this);
+        this.setValue(Roo.encode(nv))
+        if (this.value != this.valueBefore) {
+
+            this.fireEvent('change', this, this.value, this.valueBefore);
+        }
+        
+    },
+    
+    setValue : function(v){
+        // Roo.log(v);
+        this.value = v;
+        
+        var vals = this.getValueArray();
+        var tv = [];
+        Roo.each(vals, function(k) {
+            var r = this.findRecord(this.valueField, k);
+            if(r){
+                tv.push(r.data[this.displayField]);
+            }else if(this.valueNotFoundText !== undefined){
+                tv.push( this.valueNotFoundText );
+            }
+        },this);
+       // Roo.log(tv);
+        
+        Roo.form.ComboBox.superclass.setValue.call(this, tv.join(', '));
+        this.hiddenField.value = v;
+        this.value = v;
+    }
+    
 });//<script type="text/javasscript">
  
 
