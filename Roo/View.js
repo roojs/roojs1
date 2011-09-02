@@ -488,12 +488,13 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         }
         var node = this.getNode(nodeInfo);
         if(!node || !this.isSelected(node)){
+            Roo.log("not selected");
             return; // not selected.
         }
         // fireevent???
         var ns = [];
         Roo.each(this.selections, function(s) {
-            if (s === node ) {
+            if (this.getNode(s) === node ) {
                 return;
             }
             ns.push(s);
