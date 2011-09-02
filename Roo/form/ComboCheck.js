@@ -10,6 +10,9 @@
  * @class Roo.form.ComboCheck
  * @extends Roo.form.ComboBox
  * A combobox for multiple select items.
+ *
+ * FIXME - could do with a reset button..
+ * 
  * @constructor
  * Create a new ComboCheck
  * @param {Object} config Configuration options
