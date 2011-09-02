@@ -32,7 +32,7 @@ Roo.onReady(function(){
                 valueField : 'abbr',
                 displayField:'state',
                 
-                value : '["CA","CO","DE","HI","FL","CT","AZ"]',
+             
                 store: {
                     xns : Roo.data,
                     xtype : 'SimpleStore',
@@ -56,4 +56,12 @@ Roo.onReady(function(){
 
     mform.render('form-ct5');
     combo = mform.findField('states');
+    mform.setValues({
+        states : '["AK","AZ"]',
+        states_list : "Alaska, Arizona"
+        
+        
+    })
+    
+    
 });
