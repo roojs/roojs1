@@ -116,13 +116,9 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
         Roo.each(sl, function(i) {
             r = st.getAt(i);
             nv.push(r.get(this.valueField));
-            tv.push(r.get(this.displayField));
         },this);
+        this.setValue(Roo.encode(nv))
         
-        this.hiddenField.value = Roo.encode(nv);
-        
-        Roo.form.ComboBox.superclass.setValue.call(this, tv.join(', '));
-        this.value = this.hiddenField.value;
     },
     
     setValue : function(v){
