@@ -80,16 +80,7 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
     },
     
     onSelect : function(record, index){
-        if(this.fireEvent('beforeselect', this, record, index) !== false){
-            
-            
-            this.setFromData(index > -1 ? record.data : false);
-            
-            
-            
-            //this.collapse();
-            this.fireEvent('select', this, record, index);
-        }
+       
     },
     getValueArray : function()
     {
