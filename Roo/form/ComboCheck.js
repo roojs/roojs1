@@ -53,7 +53,7 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
                 html :  '<div class="'+cls+'-item x-menu-check-item">' +
                    '<img class="x-menu-item-icon" style="margin: 0px;" src="' + Roo.BLANK_IMAGE_URL + '">' + 
                    '<span>{' + this.displayField + '}</span>' +
-                    '</div>',
+                    '</div>' 
                 
             });
         }
