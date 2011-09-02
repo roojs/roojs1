@@ -2392,7 +2392,7 @@
      "name": "removeMask",
      "type": "Boolean",
      "desc": "True to create a single-use mask that is automatically destroyed after loading (useful for page loads),\nFalse to persist the mask element reference for multiple uses (e.g., for paged data widgets).  Defaults to false.",
-     "memberOf": ""
+     "memberOf": "Roo"
     },
     {
      "name": "msg",
@@ -2824,9 +2824,9 @@
     },
     {
      "name": "items",
-     "type": "Roo.data.Store",
-     "desc": "array of button configs or elements to add",
-     "memberOf": "Roo.Toolbar"
+     "type": "Array",
+     "desc": "array of button configs or elements to add (will be converted to a MixedCollection)",
+     "memberOf": "Roo"
     }
    ],
    "events": []
@@ -3063,7 +3063,7 @@
      "name": "mode",
      "type": "String",
      "desc": "The shadow display mode.  Supports the following options:<br />\nsides: Shadow displays on both sides and bottom only<br />\nframe: Shadow displays equally on all four sides<br />\ndrop: Traditional bottom-right drop shadow (default)",
-     "memberOf": ""
+     "memberOf": "Roo"
     },
     {
      "name": "offset",
@@ -3625,9 +3625,9 @@
    "props": [
     {
      "name": "items",
-     "type": "Roo.data.Store",
-     "desc": "array of button configs or elements to add",
-     "memberOf": ""
+     "type": "Array",
+     "desc": "array of button configs or elements to add (will be converted to a MixedCollection)",
+     "memberOf": "Roo"
     },
     {
      "name": "container",
@@ -4042,7 +4042,7 @@
      "name": "tree",
      "type": "Roo.tree.TreePanel",
      "desc": "The tree TreePanel, with config etc.",
-     "memberOf": ""
+     "memberOf": "Roo"
     },
     {
      "name": "fitToFrame",
@@ -9303,6 +9303,12 @@
      "type": "Number",
      "desc": "(in pixels)",
      "memberOf": ""
+    },
+    {
+     "name": "stylesheets",
+     "type": "Array",
+     "desc": "url of stylesheets. set to [] to disable stylesheets.",
+     "memberOf": ""
     }
    ],
    "events": [
@@ -9362,6 +9368,12 @@
      "name": "disable",
      "type": "Object",
      "desc": "List of toolbar elements to disable",
+     "memberOf": ""
+    },
+    {
+     "name": "styles",
+     "type": "Object",
+     "desc": "List of styles \n   eg. { '*' : [ 'headline' ] , 'TD' : [ 'underline', 'double-underline' ] } \n\nThese must be defined in the page, so they get rendered correctly..\n.headline { }\nTD.underline { }",
      "memberOf": ""
     }
    ],
