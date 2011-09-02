@@ -820,7 +820,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         
         
          
-        var range = this.createRange(this.getSelection());
+        var range = this.createRange(this.getSelection()).cloneRange();
         
         if (Roo.isIE) {
             var parent = range.parentElement();
