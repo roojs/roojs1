@@ -488,7 +488,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         
         this.selections= ns;
         this.fireEvent("selectionchange", this, this.selections);
-    }
+    },
 
     /**
      * Gets a template node.
