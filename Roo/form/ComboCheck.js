@@ -109,9 +109,9 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
     */
     selectByValue : function(xv, scrollIntoView){
         var ar = this.getValueArray();
-        var sels = []
+        var sels = [];
         
-        Roo.each(ar, funciton(v) {
+        Roo.each(ar, function(v) {
             if(v !== undefined && v !== null){
                 var r = this.findRecord(this.valueField || this.displayField, v);
                 if(r){
