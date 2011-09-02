@@ -16,7 +16,7 @@ Roo.onReady(function(){
      */
     mform = Roo.factory({
         xns : Roo.form,
-        xtype : 'form',
+        xtype : 'Form',
         labelAlign: 'top',
         items : [
             {
