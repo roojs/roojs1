@@ -122,6 +122,7 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
         this.hiddenField.value = Roo.encode(nv);
         
         Roo.form.ComboBox.superclass.setValue.call(this, tv.join(', '));
+        this.value = this.hiddenField.value;
     },
     
     
