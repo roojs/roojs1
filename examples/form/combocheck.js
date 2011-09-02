@@ -60,7 +60,6 @@ Roo.onReady(function(){
         states : '["AK","AZ"]',
         states_list : "Alaska, Arizona"
         
-        
     })
     
     
