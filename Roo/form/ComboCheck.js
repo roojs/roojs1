@@ -50,14 +50,11 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
 
             
             this.tpl =  new Roo.Template({
-                html :  '<div class="'+cls+'-item x-menu-check-item{' + this.valueField + ':this.checked}">' +
+                html :  '<div class="'+cls+'-item x-menu-check-item">' +
                    '<img class="x-menu-item-icon" style="margin: 0px;" src="' + Roo.BLANK_IMAGE_URL + '">' + 
                    '<span>{' + this.displayField + '}</span>' +
                     '</div>',
-                checked: function (value, allValues) {
-                    var ar = _t.getValueArray();
-                    return ar.indexOf(value) > -1 ? ' x-menu-item-checked' : ''
-                }
+                
             });
         }
  
