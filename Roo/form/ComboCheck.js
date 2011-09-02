@@ -21,7 +21,13 @@ Roo.form.ComboCheck = function(config){
     // hiddenName = required..
     // displayField = required
     // valudField == required
-    var req= [ 'hiddenName', 'displayField', ]
+    var req= [ 'hiddenName', 'displayField', 'valueField' ];
+    var _t = this;
+    Roo.each(req, function(e) {
+        if ((typeof(_t[e]) == 'undefined' ) || !_t[e].length) {
+            throw "Roo.form.ComboCheck : missing value for: " + e;
+        }
+    })
     
    
 };
