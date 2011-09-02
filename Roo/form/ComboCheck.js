@@ -70,14 +70,7 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
     onViewOver : function(e, t){
         // do nothing...
         return;
-        if(this.inKeyMode){ // prevent key nav and mouse over conflicts
-            return;
-        }
-        var item = this.view.findItemFromChild(t);
-        if(item){
-            var index = this.view.indexOf(item);
-            this.select(index, false);
-        }
+        
     },
     
     onViewClick : function(doFocus,index){
@@ -86,7 +79,11 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
             return;
         }
         
-        this.view.select(index, false);
+        if (this.view.isSelected(index)) {
+            this.view.unselect(index);
+            return;
+        }
+        this.view.select(index, true);
         
         return;
         var index = this.view.getSelectedIndexes()[0];
