@@ -63,7 +63,7 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
  
         
         Roo.form.ComboCheck.superclass.onRender.call(this, ct, position);
-         
+        this.view.singleSelect = false;
         
     },
     onSelect : function(record, index){
