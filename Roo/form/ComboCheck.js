@@ -86,27 +86,7 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
     select: function () {
         Roo.log("SELECT CALLED");
     },
-    /*
-    onLoad: function() {
-        if(!this.hasFocus){
-            return;
-        }
-        if(!this.store.getCount()){
-            this.onEmptyResults();
-            return;
-        }
-        this.expand();
-        this.restrictHeight();
-        // 
-        
-        if(!this.selectByValue(this.value, true)){
-            this.select(0, true);
-        }
      
-        
-        
-    },
-    */
     selectByValue : function(xv, scrollIntoView){
         var ar = this.getValueArray();
         var sels = [];
@@ -145,7 +125,13 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
         }
          
     },
-    
+    expand : function ()
+    {
+        Roo.form.ComboCheck.superclass.setValue.call(this);
+        this.valueBefore = this.value;
+        
+
+    },
     
     collapse : function(){
         Roo.form.ComboCheck.superclass.collapse.call(this);
