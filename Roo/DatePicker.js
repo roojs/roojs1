@@ -30,7 +30,7 @@ Roo.DatePicker = function(config){
 	     * @param {DatePicker} this
 	     * @param {Date} date The selected date
 	     */
-        'select': true
+        'select': true,
         /**
 	     * @event monthchange
 	     * Fires when the displayed month changes 
