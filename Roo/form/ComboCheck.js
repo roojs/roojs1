@@ -64,7 +64,7 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
         
         Roo.form.ComboCheck.superclass.onRender.call(this, ct, position);
         this.view.singleSelect = false;
-        
+        this.view.multiSelect = true;
     },
     
     onViewOver : function(e, t){
