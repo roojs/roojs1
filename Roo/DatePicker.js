@@ -518,7 +518,8 @@ Roo.extend(Roo.DatePicker, Roo.Component, {
     },
 
     // private
-    update : function(date){
+    update : function(date)
+    {
         var vd = this.activeDate;
         this.activeDate = date;
         if(vd && this.el){
@@ -537,6 +538,7 @@ Roo.extend(Roo.DatePicker, Roo.Component, {
                 return;
             }
         }
+        
         var days = date.getDaysInMonth();
         var firstOfMonth = date.getFirstDateOfMonth();
         var startingPos = firstOfMonth.getDay()-this.startDay;
@@ -628,7 +630,8 @@ Roo.extend(Roo.DatePicker, Roo.Component, {
         }
 
         this.mbtn.setText(this.monthNames[date.getMonth()] + " " + date.getFullYear());
-
+        this.fireEvent('monthchange', this, date);
+        
         if(!this.internalRender){
             var main = this.el.dom.firstChild;
             var w = main.offsetWidth;
@@ -644,5 +647,7 @@ Roo.extend(Roo.DatePicker, Roo.Component, {
                 this.update.defer(10, this, [date]);
             }
         }
+        
+        
     }
 });
