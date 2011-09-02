@@ -21,7 +21,7 @@ Roo.onReady(function(){
                 xtype : 'CoComboBoxmbo',
                 xns: Roo.form,
                 
-                name : 'states_list'
+                name : 'states_list',
                 fieldLabel: 'State',
                 hiddenName:'states',
                 store: {
