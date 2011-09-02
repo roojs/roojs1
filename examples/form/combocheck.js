@@ -46,7 +46,13 @@ Roo.onReady(function(){
                 triggerAction: 'all',
                 emptyText:'Select a state...',
                 selectOnFocus:true,
-                width:190
+                width:190,
+                listeners : {
+                    changed: function() {
+                        Roo.log("changed to " + this.getValue());
+                        
+                    }
+                }
           }
 
             
