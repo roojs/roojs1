@@ -112,13 +112,16 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
         var sels = [];
         
         Roo.each(ar, function(v) {
-            if(v !== undefined && v !== null){
-                var r = this.findRecord(this.valueField || this.displayField, v);
-                if(r){
-                    sels.push(this.store.indexOf(r))
-                    
-                }
-        })
+            if(v === undefined || v === null){
+                return;
+            }
+            var r = this.findRecord(this.valueField, v);
+            if(r){
+                sels.push(this.store.indexOf(r))
+                
+            }
+        },this);
+        
         return false;
     },
     
