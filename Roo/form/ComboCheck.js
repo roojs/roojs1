@@ -74,7 +74,7 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
         
     },
     onViewClick : function(doFocus){
-        return;//
+         
         var index = this.view.getSelectedIndexes()[0];
         var r = this.store.getAt(index);
         if(r){
