@@ -441,22 +441,43 @@ Roo.extend(Roo.View, Roo.util.Observable, {
             for(var i = 0, len = nodeInfo.length; i < len; i++){
                 this.select(nodeInfo[i], true, true);
             }
-        } else{
-            var node = this.getNode(nodeInfo);
-            if(node && !this.isSelected(node)){
-                if(!keepExisting){
-                    this.clearSelections(true);
-                }
-                if(this.fireEvent("beforeselect", this, node, this.selections) !== false){
-                    Roo.fly(node).addClass(this.selectedClass);
-                    this.selections.push(node);
-                    if(!suppressEvent){
-                        this.fireEvent("selectionchange", this, this.selections);
-                    }
-                }
+            return;
+        } 
+        var node = this.getNode(nodeInfo);
+        if(!node || this.isSelected(node)){
+            return; // already selected.
+        }
+        if(!keepExisting){
+            this.clearSelections(true);
+        }
+        if(this.fireEvent("beforeselect", this, node, this.selections) !== false){
+            Roo.fly(node).addClass(this.selectedClass);
+            this.selections.push(node);
+            if(!suppressEvent){
+                this.fireEvent("selectionchange", this, this.selections);
             }
         }
+        
+        
     },
+      /**
+     * Unselects nodes.
+     * @param {Array/HTMLElement/String/Number} nodeInfo An HTMLElement template node, index of a template node, id of a template node or an array of any of those to select
+     * @param {Boolean} suppressEvent (optional) true to skip firing of the selectionchange vent
+     */
+    unselect : function(nodeInfo, suppressEvent)
+    {
+        if(nodeInfo instanceof Array){
+            Roo.each(this.selections, function(s) {
+                this.unselect(s, nodeInfo);
+            }, this);
+            return;
+        }
+        
+        
+        
+        
+    }
 
     /**
      * Gets a template node.
