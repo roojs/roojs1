@@ -35,7 +35,14 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
     onRender : function(ct, position){
         
         if(!this.tpl){
-            this.tpl = '<div class="'+cls+'-item">{' + this.displayField + '}</div>';
+            this.tpl =  new Roo.Template({
+                html :  '<div class="'+cls+'-item x-menu-check-item {' + this.valueField + ':this.checked}">' +
+                   '<img class="x-menu-item-icon" style="margin: 0px;" src="' + Roo." >'
+                  div class={' + this.displayField + '}</div>';
+                    '</div>',
+                myformat: function (value, allValues) {
+                    return 'XX' + value;
+                }'<
         }
  
         
@@ -44,21 +51,5 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
         
     },
  
-
-    /** 
-    * @cfg {Boolean} grow 
-    * @hide 
-    */
-    /** 
-    * @cfg {Number} growMin 
-    * @hide 
-    */
-    /** 
-    * @cfg {Number} growMax 
-    * @hide 
-    */
-    /**
-     * @hide
-     * @method autoSize
-     */
+ 
 });
