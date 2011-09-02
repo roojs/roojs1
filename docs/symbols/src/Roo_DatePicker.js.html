@@ -30,7 +30,14 @@
 	     * @param {DatePicker} this
 	     * @param {Date} date The selected date
 	     */
-        </span><span class="jsdoc-var">select</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-string">'select'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+	     * @event monthchange
+	     * Fires when the displayed month changes 
+	     * @param {DatePicker} this
+	     * @param {Date} date The selected month
+	     */
+        </span><span class="jsdoc-string">'monthchange'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
     </span><span class="jsdoc-syntax">});
 
     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.handler</span><span class="jsdoc-syntax">){
@@ -511,7 +518,8 @@
     },
 
     </span><span class="jsdoc-comment">// private
-    </span><span class="jsdoc-var">update </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">update </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">)
+    {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">vd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.activeDate</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.activeDate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">vd </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">){
@@ -530,6 +538,7 @@
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
         }
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">days </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">date.getDaysInMonth</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">firstOfMonth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">date.getFirstDateOfMonth</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">startingPos </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">firstOfMonth.getDay</span><span class="jsdoc-syntax">()-</span><span class="jsdoc-var">this.startDay</span><span class="jsdoc-syntax">;
@@ -621,7 +630,8 @@
         }
 
         </span><span class="jsdoc-var">this.mbtn.setText</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.monthNames</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">date.getMonth</span><span class="jsdoc-syntax">()] + </span><span class="jsdoc-string">&quot; &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">date.getFullYear</span><span class="jsdoc-syntax">());
-
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'monthchange'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">);
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.internalRender</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">main </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.dom.firstChild</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">main.offsetWidth</span><span class="jsdoc-syntax">;
@@ -637,5 +647,7 @@
                 </span><span class="jsdoc-var">this.update.defer</span><span class="jsdoc-syntax">(10, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">]);
             }
         }
+        
+        
     }
 });</span></code></body></html>
