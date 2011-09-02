@@ -48,5 +48,5 @@ Roo.onReady(function(){
     });
 
     mform.render('form-ct5');
-    combo = mform.findField('states');
+    combo = mform.findField('states_list');
 });
