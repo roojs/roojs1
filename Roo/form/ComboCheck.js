@@ -115,7 +115,9 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
     getValueArray : function()
     {
         var ar = [] ;
+        
         try {
+            Roo.log(this.value)
             var ar = Roo.decode(this.value);
             return  ar instanceof Array ? ar : []; //?? valid?
             
