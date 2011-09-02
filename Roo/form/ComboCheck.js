@@ -99,7 +99,7 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
             return  ar instanceof 'Array' ? ar : []; //?? valid?
             
         } catch(e) {
-            Roo.log("Roo.form.ComboCheck:getValueArray  invalid data:" + this.getValue());
+            Roo.log(e + "\nRoo.form.ComboCheck:getValueArray  invalid data:" + this.getValue());
             return [];
         }
          
