@@ -37,7 +37,7 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
      
     editable : false,
      
-    
+    selectedClass: 'x-menu-item-checked',
     
     // private
     onRender : function(ct, position){
