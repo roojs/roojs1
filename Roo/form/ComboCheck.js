@@ -140,6 +140,6 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
         Roo.form.ComboBox.superclass.setValue.call(this, tv.join(', '));
         this.hiddenField.value = v;
         this.value = v;
-    ,
+    }
     
 });
