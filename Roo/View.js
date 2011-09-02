@@ -484,7 +484,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
                 return;
             }
             ns.push(s);
-        }
+        });
         
         this.selections= ns;
         this.fireEvent("selectionchange", this, this.selections);
