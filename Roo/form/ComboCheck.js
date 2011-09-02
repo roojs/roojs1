@@ -69,7 +69,6 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
             handler: function()
             {
                 _t.collapse();
-                
             }
         });
     },
