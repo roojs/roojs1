@@ -86,26 +86,31 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
     select: function () {
         Roo.log("SELECT CALLED");
     },
+    /*
     onLoad: function() {
         if(!this.hasFocus){
             return;
         }
-        if(this.store.getCount() > 0){
-            this.expand();
-            this.restrictHeight();
-            
-            
-            if(!this.selectByValue(this.value, true)){
-                this.select(0, true);
-            }
-            
-        }else{
+        if(!this.store.getCount()){
             this.onEmptyResults();
+            return;
         }
-        //this.el.focus();
+        this.expand();
+        this.restrictHeight();
+        // 
+        
+        if(!this.selectByValue(this.value, true)){
+            this.select(0, true);
+        }
+     
         
         
     },
+    */
+    
+    
+    
+    
     onSelect : function(record, index){
         Roo.log("onselect Called");
        // this is only called by the clear button now..
