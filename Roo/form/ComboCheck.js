@@ -122,7 +122,7 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
     },
     
     setValue : function(v){
-        Roo.log(v);
+        // Roo.log(v);
         this.value = v;
         
         var vals = this.getValueArray();
