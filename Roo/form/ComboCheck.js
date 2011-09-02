@@ -37,8 +37,7 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
         if(!this.tpl){
             this.tpl = '<div class="'+cls+'-item">{' + this.displayField + '}</div>';
         }
-
-        
+ 
         
         Roo.form.ComboCheck.superclass.onRender.call(this, ct, position);
          
