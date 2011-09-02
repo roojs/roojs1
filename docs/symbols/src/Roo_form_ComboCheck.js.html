@@ -87,8 +87,8 @@
         
     },
     </span><span class="jsdoc-var">select</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;SELECT CALLED&quot;</span><span class="jsdoc-syntax">);
-    },
+        </span><span class="jsdoc-comment">//Roo.log(&quot;SELECT CALLED&quot;);
+    </span><span class="jsdoc-syntax">},
      
     </span><span class="jsdoc-var">selectByValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xv</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scrollIntoView</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getValueArray</span><span class="jsdoc-syntax">();
@@ -111,9 +111,13 @@
     
     
     </span><span class="jsdoc-var">onSelect </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;onselect Called&quot;</span><span class="jsdoc-syntax">);
-       </span><span class="jsdoc-comment">// this is only called by the clear button now..
-       </span><span class="jsdoc-var">this.view.clearSelections</span><span class="jsdoc-syntax">();
+       </span><span class="jsdoc-comment">// Roo.log(&quot;onselect Called&quot;);
+       // this is only called by the clear button now..
+        </span><span class="jsdoc-var">this.view.clearSelections</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'[]'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">this.valueBefore</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'change'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.valueBefore</span><span class="jsdoc-syntax">);
+        }
     },
     </span><span class="jsdoc-var">getValueArray </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
