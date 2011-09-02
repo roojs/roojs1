@@ -129,23 +129,19 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
         Roo.log(v);
         this.value = v;
         
-        
-        
-        var text = v;
-        if(this.valueField){
-            var r = this.findRecord(this.valueField, v);
+        var vals = this.getValueArray();
+        Roo.each(vals, function(k) {
+            var r = this.findRecord(this.valueField, k);
             if(r){
                 text = r.data[this.displayField];
             }else if(this.valueNotFoundText !== undefined){
                 text = this.valueNotFoundText;
             }
-        }
-        this.lastSelectionText = text;
-        if(this.hiddenField){
-            this.hiddenField.value = v;
-        }
+        },this);
+        this.hiddenField.value = v;
+        
         Roo.form.ComboBox.superclass.setValue.call(this, text);
         this.value = v;
-    },)
+    ,
     
 });
