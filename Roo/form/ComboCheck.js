@@ -95,7 +95,7 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
     {
         var ar = [] ;
         try {
-            var ret = Roo.decode(thist.getValue());
+            var ret = Roo.decode(thist.value);
             ret = typeof(ar) == 'Array' ? ar : []; //?? valid?
             return ret;
         } catch(e) {
@@ -125,5 +125,27 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
         this.value = this.hiddenField.value;
     },
     
+    setValue : function(v){
+        Roo.log(v);
+        this.value = v;
+        
+        
+        
+        var text = v;
+        if(this.valueField){
+            var r = this.findRecord(this.valueField, v);
+            if(r){
+                text = r.data[this.displayField];
+            }else if(this.valueNotFoundText !== undefined){
+                text = this.valueNotFoundText;
+            }
+        }
+        this.lastSelectionText = text;
+        if(this.hiddenField){
+            this.hiddenField.value = v;
+        }
+        Roo.form.ComboBox.superclass.setValue.call(this, text);
+        this.value = v;
+    },)
     
 });
