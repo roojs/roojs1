@@ -75,7 +75,7 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
     },
     
     onViewClick : function(doFocus,index){
-       
+        return;
         if(this.inKeyMode){ // prevent key nav and mouse over conflicts
             return;
         }
