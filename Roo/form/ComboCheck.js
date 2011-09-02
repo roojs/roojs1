@@ -27,7 +27,7 @@ Roo.form.ComboCheck = function(config){
         if ((typeof(_t[e]) == 'undefined' ) || !_t[e].length) {
             throw "Roo.form.ComboCheck : missing value for: " + e;
         }
-    })
+    });
     
     
 };
