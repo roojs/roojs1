@@ -37,8 +37,8 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
         if(!this.tpl){
             this.tpl =  new Roo.Template({
                 html :  '<div class="'+cls+'-item x-menu-check-item {' + this.valueField + ':this.checked}">' +
-                   '<img class="x-menu-item-icon" style="margin: 0px;" src="' + Roo." >'
-                  div class={' + this.displayField + '}</div>';
+                   '<img class="x-menu-item-icon" style="margin: 0px;" src="' + Roo.BLANK_IMAGE_URL + '">' + 
+                   '<span>{' + this.displayField + '}</span>';
                     '</div>',
                 myformat: function (value, allValues) {
                     return 'XX' + value;
