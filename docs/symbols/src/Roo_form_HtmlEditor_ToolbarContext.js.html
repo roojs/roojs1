@@ -298,8 +298,12 @@
         
         </span><span class="jsdoc-var">tn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel.tagName.toUpperCase</span><span class="jsdoc-syntax">();
         
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lastSel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tb.selectedNode
+        
+        this.tb.selectedNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">;
+        
         </span><span class="jsdoc-comment">// if current menu does not match..
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tb.name </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">tn</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">this.tb.name </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">tn</span><span class="jsdoc-syntax">) || (</span><span class="jsdoc-var">lastSel </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">this.tb.selectedNode</span><span class="jsdoc-syntax">)) {
                 
             </span><span class="jsdoc-var">this.tb.el.hide</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-comment">///console.log(&quot;show: &quot; + tn);
