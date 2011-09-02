@@ -14,7 +14,9 @@ Roo.onReady(function(){
     /*
      * ================  Form 2  =======================
      */
-    mform = new Roo.form.Form({
+    mform = Roo.factory({
+        xns : Roo.form,
+        xtype : 'form',
         labelAlign: 'top',
         items : [
             {
