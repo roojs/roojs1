@@ -29,7 +29,7 @@ Roo.form.ComboCheck = function(config){
         }
     })
     
-   
+    
 };
 
 Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
@@ -145,6 +145,9 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
             nv.push(r.get(this.valueField));
         },this);
         this.setValue(Roo.encode(nv))
+        if (this.value != this.valueBefore) {
+            this.fireEvent('changed', )
+        }
         
     },
     
