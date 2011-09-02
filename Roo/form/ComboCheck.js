@@ -33,16 +33,18 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
     
     // private
     onRender : function(ct, position){
-        
+        var _t = this;
         if(!this.tpl){
             this.tpl =  new Roo.Template({
-                html :  '<div class="'+cls+'-item x-menu-check-item {' + this.valueField + ':this.checked}">' +
+                html :  '<div class="'+cls+'-item x-menu-check-item{' + this.valueField + ':this.checked}">' +
                    '<img class="x-menu-item-icon" style="margin: 0px;" src="' + Roo.BLANK_IMAGE_URL + '">' + 
                    '<span>{' + this.displayField + '}</span>' +
                     '</div>',
-                myformat: function (value, allValues) {
-                    return 'XX' + value;
-                }'<
+                checked: function (value, allValues) {
+                    var ar = Roo.decode(_t.getValue()) || [];
+                    var ar = typeof(ar) == 'Array' ? ar : [];
+                    return ar.indexOf(value) ? ' x-menu-item-checked' : ''
+                }
         }
  
         
