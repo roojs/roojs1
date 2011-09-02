@@ -18,14 +18,33 @@ Roo.onReady(function(){
         labelAlign: 'top',
         items : [
             {
-                xtype : 'Combo',
+                xtype : 'CoComboBoxmbo',
                 xns: Roo.form,
                 
+                name : 'states_list'
+                fieldLabel: 'State',
+                hiddenName:'states',
+                store: {
+                    xns : Roo.data,
+                    xtype : 'SimpleStore',
+                    fields: ['abbr', 'state'],
+                    data : Roo.exampledata.states // from states.js
+                   
+                },
+                displayField:'state',
+                typeAhead: true,
+                mode: 'local',
+                triggerAction: 'all',
+                emptyText:'Select a state...',
+                selectOnFocus:true,
+                width:190
+          }
+
             
         ]
         
     });
 
     mform.render('form-ct5');
-    editor = mform.findField('bio');
+    editor = mform.findField('states');
 });
