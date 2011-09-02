@@ -149,7 +149,7 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
             r = st.getAt(i);
             nv.push(r.get(this.valueField));
         },this);
-        this.setValue(Roo.encode(nv))
+        this.setValue(Roo.encode(nv));
         if (this.value != this.valueBefore) {
 
             this.fireEvent('change', this, this.value, this.valueBefore);
