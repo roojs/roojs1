@@ -494,7 +494,8 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         // fireevent???
         var ns = [];
         Roo.each(this.selections, function(s) {
-            if (this.getNode(s) === node ) {
+            if (s == node ) {
+                Roo.log("Removing node");
                 return;
             }
             ns.push(s);
