@@ -21,6 +21,8 @@ Roo.form.ComboCheck = function(config){
     // hiddenName = required..
     // displayField = required
     // valudField == required
+    var req= [ 'hiddenName', 'displayField', ]
+    
    
 };
 
@@ -35,6 +37,8 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
     onRender : function(ct, position){
         var _t = this;
         
+        
+        
         if(!this.tpl){
             var cls = 'x-combo-list';
 
@@ -45,8 +49,13 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
                    '<span>{' + this.displayField + '}</span>' +
                     '</div>',
                 checked: function (value, allValues) {
-                    var ar = Roo.decode(_t.getValue()) || [];
-                    var ar = typeof(ar) == 'Array' ? ar : [];
+                    var ar = [] ;
+                    try {
+                        Roo.decode(_t.getValue()) || [];
+                    } catch(e) {
+                        Roo.log("Roo.form.ComboCheck:tpl checked - invalid data:" + _t.getValue());
+                    }
+                    ar = typeof(ar) == 'Array' ? ar : [];
                     return ar.indexOf(value) ? ' x-menu-item-checked' : ''
                 }
             });
