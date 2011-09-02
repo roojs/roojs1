@@ -26,6 +26,8 @@ Roo.onReady(function(){
                 name : 'states_list',
                 fieldLabel: 'State',
                 hiddenName:'states',
+                valueField : 'abbr',
+                displayField:'state',
                 store: {
                     xns : Roo.data,
                     xtype : 'SimpleStore',
@@ -33,7 +35,7 @@ Roo.onReady(function(){
                     data : Roo.exampledata.states // from states.js
                    
                 },
-                displayField:'state',
+                
                 typeAhead: true,
                 mode: 'local',
                 triggerAction: 'all',
