@@ -94,7 +94,27 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
             Roo.log("Roo.form.ComboCheck:getValueArray  invalid data:" + this.getValue());
             return [];
         }
+         
+    },
+    
+    
+    collapse : function(){
+        Roo.form.ComboCheck.superclass.collapse.call(this);
+        var sl = this.view.getSelectedIndexes();
+        var st = this.store;
+        var nv = [];
+        var tv = [];
+        var r;
+        Roo.each(sl, function(i) {
+            r = st.getAt(i);
+            nv.push(r.get(this.valueField));
+            tv.push(r.get(this.displayField));
+        },this);
         
+        this.hiddenField.value = Roo.encode(nv);
         
-    } 
+        Roo.form.ComboBox.superclass.setValue.call(this, tv.join(', '));
+    },
+    
+    
 });
