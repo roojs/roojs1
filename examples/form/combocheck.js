@@ -23,11 +23,16 @@ Roo.onReady(function(){
                 xtype : 'ComboCheck',
                 xns: Roo.form,
                 
-                name : 'states_list',
                 fieldLabel: 'State',
+                
+                name : 'states_list',
                 hiddenName:'states',
+                
+                
                 valueField : 'abbr',
                 displayField:'state',
+                
+                
                 store: {
                     xns : Roo.data,
                     xtype : 'SimpleStore',
@@ -50,5 +55,5 @@ Roo.onReady(function(){
     });
 
     mform.render('form-ct5');
-    combo = mform.findField('states_list');
+    combo = mform.findField('states');
 });
