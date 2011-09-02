@@ -34,6 +34,7 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
     // private
     onRender : function(ct, position){
         var _t = this;
+        
         if(!this.tpl){
             this.tpl =  new Roo.Template({
                 html :  '<div class="'+cls+'-item x-menu-check-item{' + this.valueField + ':this.checked}">' +
