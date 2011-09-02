@@ -365,9 +365,10 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         }
         if (this.toggleSelect) {
             var m = this.isSelected(item) ? 'unselect' : 'select';
+            Roo.log(m);
             var _t = this;
             _t[m](item, true, false);
-            return;
+            return true;
         }
         if(this.multiSelect || this.singleSelect){
             if(this.multiSelect && e.shiftKey && this.lastSelection){
