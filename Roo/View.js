@@ -495,7 +495,8 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         var ns = [];
         Roo.each(this.selections, function(s) {
             if (s == node ) {
-                Roo.log("Removing node");
+                Roo.fly(node).removeClass(this.selectedClass);
+
                 return;
             }
             ns.push(s);
