@@ -473,7 +473,10 @@ Roo.extend(Roo.View, Roo.util.Observable, {
             }, this);
             return;
         }
-        
+        var node = this.getNode(nodeInfo);
+        if(!node || !this.isSelected(node)){
+            return; // not selected.
+        }
         
         
         
