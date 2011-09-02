@@ -87,7 +87,7 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
         
     },
     select: function () {
-        Roo.log("SELECT CALLED");
+        //Roo.log("SELECT CALLED");
     },
      
     selectByValue : function(xv, scrollIntoView){
