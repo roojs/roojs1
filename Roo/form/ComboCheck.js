@@ -130,12 +130,13 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
         this.value = v;
         
         var vals = this.getValueArray();
+        var tv = [];
         Roo.each(vals, function(k) {
             var r = this.findRecord(this.valueField, k);
             if(r){
-                text = r.data[this.displayField];
+                tv.push(r.data[this.displayField]);
             }else if(this.valueNotFoundText !== undefined){
-                text = this.valueNotFoundText;
+                tv.push( this.valueNotFoundText );
             }
         },this);
         this.hiddenField.value = v;
