@@ -63,6 +63,15 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
         this.view.singleSelect = false;
         this.view.multiSelect = true;
         this.view.toggleSelect = true;
+        this.pageTb.add(new Roo.Toolbar.Fill(), {
+            
+            text: 'Done',
+            handler: function()
+            {
+                _t.collapse();
+                
+            }
+        });
     },
     
     onViewOver : function(e, t){
