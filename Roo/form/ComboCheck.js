@@ -80,18 +80,15 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
         }
     },
     
-    onViewClick : function(doFocus,t,x){
+    onViewClick : function(doFocus,index){
         Roo.log(doFocus);
         Roo.log(t);
         Roo.log(x);
         if(this.inKeyMode){ // prevent key nav and mouse over conflicts
             return;
         }
-        var item = this.view.findItemFromChild(t);
-        if(item){
-            var index = this.view.indexOf(item);
-            this.select(index, false);
-        }
+        
+        this.select(index, false);
         
         return;
         var index = this.view.getSelectedIndexes()[0];
