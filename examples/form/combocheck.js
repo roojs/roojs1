@@ -48,7 +48,7 @@ Roo.onReady(function(){
                 selectOnFocus:true,
                 width:190,
                 listeners : {
-                    changed: function() {
+                    change: function() {
                         Roo.log("changed to " + this.getValue());
                         
                     }
