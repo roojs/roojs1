@@ -86,7 +86,7 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
             
             this.setFromData(index > -1 ? record.data : false);
             
-            var = this.view.getSelectedIndexes();
+            
             
             //this.collapse();
             this.fireEvent('select', this, record, index);
