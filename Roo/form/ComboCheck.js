@@ -60,6 +60,7 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
                         Roo.decode(_t.getValue()) || [];
                     } catch(e) {
                         Roo.log("Roo.form.ComboCheck:tpl checked - invalid data:" + _t.getValue());
+                        return '';
                     }
                     ar = typeof(ar) == 'Array' ? ar : [];
                     return ar.indexOf(value) ? ' x-menu-item-checked' : ''
