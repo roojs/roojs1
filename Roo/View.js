@@ -477,9 +477,17 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         if(!node || !this.isSelected(node)){
             return; // not selected.
         }
+        // fireevent???
+        var ns = [];
+        Roo.each(this.selections, function(s) {
+            if (s === node ) {
+                return;
+            }
+            ns.push(s);
+        }
         
-        
-        
+        this.selections= ns;
+        this.fireEvent("selectionchange", this, this.selections);
     }
 
     /**
