@@ -20,7 +20,7 @@ Roo.onReady(function(){
         labelAlign: 'top',
         items : [
             {
-                xtype : 'ComboBox',
+                xtype : 'ComboCheck',
                 xns: Roo.form,
                 
                 name : 'states_list',
