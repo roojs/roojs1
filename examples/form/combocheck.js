@@ -32,7 +32,7 @@ Roo.onReady(function(){
                 valueField : 'abbr',
                 displayField:'state',
                 
-                
+                value : '["CA","CO","DE","HI","FL","CT","AZ"]',
                 store: {
                     xns : Roo.data,
                     xtype : 'SimpleStore',
