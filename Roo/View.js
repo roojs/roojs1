@@ -181,12 +181,16 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     /**
      * @cfg {Boolean} multiSelect Allow multiple selection
      */
-    
     multiSelect : false,
     /**
      * @cfg {Boolean} singleSelect Allow single selection
      */
     singleSelect:  false,
+    
+    /**
+     * @cfg {Boolean} toggleSelect - selecting 
+     */
+    toggleSelect : false,
     
     /**
      * Returns the element this view is bound to.
@@ -354,9 +358,16 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         }
     },
 
-    onItemClick : function(item, index, e){
+    onItemClick : function(item, index, e)
+    {
         if(this.fireEvent("beforeclick", this, index, item, e) === false){
             return false;
+        }
+        if (this.toggleSelect) {
+            var m = this.isSelected(item) ? 'unselect' : 'select';
+            var _t = this;
+            _t[m](item, true);
+            
         }
         if(this.multiSelect || this.singleSelect){
             if(this.multiSelect && e.shiftKey && this.lastSelection){
@@ -463,9 +474,10 @@ Roo.extend(Roo.View, Roo.util.Observable, {
       /**
      * Unselects nodes.
      * @param {Array/HTMLElement/String/Number} nodeInfo An HTMLElement template node, index of a template node, id of a template node or an array of any of those to select
+     * @param {Boolean} keepExisting (optional) true IGNORED (for campatibility with select)
      * @param {Boolean} suppressEvent (optional) true to skip firing of the selectionchange vent
      */
-    unselect : function(nodeInfo, suppressEvent)
+    unselect : function(nodeInfo, keepExisting, suppressEvent)
     {
         if(nodeInfo instanceof Array){
             Roo.each(this.selections, function(s) {
