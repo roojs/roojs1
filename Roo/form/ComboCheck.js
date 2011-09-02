@@ -36,6 +36,9 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
         var _t = this;
         
         if(!this.tpl){
+            var cls = 'x-combo-list';
+
+            
             this.tpl =  new Roo.Template({
                 html :  '<div class="'+cls+'-item x-menu-check-item{' + this.valueField + ':this.checked}">' +
                    '<img class="x-menu-item-icon" style="margin: 0px;" src="' + Roo.BLANK_IMAGE_URL + '">' + 
