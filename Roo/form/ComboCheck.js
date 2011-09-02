@@ -141,7 +141,7 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
         },this);
         this.hiddenField.value = v;
         
-        Roo.form.ComboBox.superclass.setValue.call(this, text);
+        Roo.form.ComboBox.superclass.setValue.call(this, tv.join(', '));
         this.value = v;
     ,
     
