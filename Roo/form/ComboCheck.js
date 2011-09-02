@@ -84,7 +84,7 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
         
     },
     select: function () {
-        
+        Roo.log("SELECT CALLED");
     },
     onLoad: function() {
         Roo.log("onload called FIXME");
