@@ -67,7 +67,30 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
         
     },
     
+    onViewOver : function(e, t){
+        // do nothing...
+        return;
+        if(this.inKeyMode){ // prevent key nav and mouse over conflicts
+            return;
+        }
+        var item = this.view.findItemFromChild(t);
+        if(item){
+            var index = this.view.indexOf(item);
+            this.select(index, false);
+        }
+    },
+    
     onViewClick : function(doFocus){
+        
+        if(this.inKeyMode){ // prevent key nav and mouse over conflicts
+            return;
+        }
+        var item = this.view.findItemFromChild(t);
+        if(item){
+            var index = this.view.indexOf(item);
+            this.select(index, false);
+        }
+        
         return;
         var index = this.view.getSelectedIndexes()[0];
         var r = this.store.getAt(index);
