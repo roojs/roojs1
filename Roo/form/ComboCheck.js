@@ -129,7 +129,7 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
     },
     expand : function ()
     {
-        Roo.form.ComboCheck.superclass.setValue.call(this);
+        Roo.form.ComboCheck.superclass.expand.call(this);
         this.valueBefore = this.value;
         
 
