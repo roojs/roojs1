@@ -1,0 +1,181 @@
+<html><head><title>../roojs1/Roo/form/ComboCheck.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * RooJS Library 1.1.1
+ * Copyright(c) 2008-2011  Alan Knowles
+ *
+ * License - LGPL
+ */
+ 
+
+/**
+ * @class Roo.form.ComboCheck
+ * @extends Roo.form.ComboBox
+ * A combobox for multiple select items.
+ *
+ * FIXME - could do with a reset button..
+ * 
+ * @constructor
+ * Create a new ComboCheck
+ * @param {Object} config Configuration options
+ */
+</span><span class="jsdoc-var">Roo.form.ComboCheck </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.form.ComboCheck.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-comment">// should verify some data...
+    // like
+    // hiddenName = required..
+    // displayField = required
+    // valudField == required
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">req</span><span class="jsdoc-syntax">= [ </span><span class="jsdoc-string">'hiddenName'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'displayField'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'valueField' </span><span class="jsdoc-syntax">];
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">req</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">((</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_t</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">) || !</span><span class="jsdoc-var">_t</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">throw </span><span class="jsdoc-string">&quot;Roo.form.ComboCheck : missing value for: &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">;
+        }
+    });
+    
+    
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.form.ComboCheck</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.form.ComboBox</span><span class="jsdoc-syntax">, {
+     
+     
+    </span><span class="jsdoc-var">editable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+     
+    </span><span class="jsdoc-var">selectedClass</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-menu-item-checked'</span><span class="jsdoc-syntax">, 
+    
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        
+        
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.tpl</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'x-combo-list'</span><span class="jsdoc-syntax">;
+
+            
+            </span><span class="jsdoc-var">this.tpl </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-string">'&lt;div class=&quot;'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'-item x-menu-check-item&quot;&gt;' </span><span class="jsdoc-syntax">+
+                   </span><span class="jsdoc-string">'&lt;img class=&quot;x-menu-item-icon&quot; style=&quot;margin: 0px;&quot; src=&quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">Roo.BLANK_IMAGE_URL </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&quot;&gt;' </span><span class="jsdoc-syntax">+ 
+                   </span><span class="jsdoc-string">'&lt;span&gt;{' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.displayField </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'}&lt;/span&gt;' </span><span class="jsdoc-syntax">+
+                    </span><span class="jsdoc-string">'&lt;/div&gt;' 
+                
+            </span><span class="jsdoc-syntax">});
+        }
+ 
+        
+        </span><span class="jsdoc-var">Roo.form.ComboCheck.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.view.singleSelect </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.view.multiSelect </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.view.toggleSelect </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.pageTb.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Toolbar.Fill</span><span class="jsdoc-syntax">(), {
+            
+            </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Done'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+            {
+                </span><span class="jsdoc-var">_t.collapse</span><span class="jsdoc-syntax">();
+            }
+        });
+    },
+    
+    </span><span class="jsdoc-var">onViewOver </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-comment">// do nothing...
+        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        
+    },
+    
+    </span><span class="jsdoc-var">onViewClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">doFocus</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        
+    },
+    </span><span class="jsdoc-var">select</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;SELECT CALLED&quot;</span><span class="jsdoc-syntax">);
+    },
+     
+    </span><span class="jsdoc-var">selectByValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xv</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scrollIntoView</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getValueArray</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sels </span><span class="jsdoc-syntax">= [];
+        
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.findRecord</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.valueField</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">sels.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">))
+                
+            }
+        },</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.view.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sels</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+    },
+    
+    
+    
+    </span><span class="jsdoc-var">onSelect </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;onselect Called&quot;</span><span class="jsdoc-syntax">);
+       </span><span class="jsdoc-comment">// this is only called by the clear button now..
+       </span><span class="jsdoc-var">this.view.clearSelections</span><span class="jsdoc-syntax">();
+    },
+    </span><span class="jsdoc-var">getValueArray </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ar </span><span class="jsdoc-syntax">= [] ;
+        
+        </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.decode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return  </span><span class="jsdoc-var">ar </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Array </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">ar </span><span class="jsdoc-syntax">: []; </span><span class="jsdoc-comment">//?? valid?
+            
+        </span><span class="jsdoc-syntax">} </span><span class="jsdoc-keyword">catch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;\nRoo.form.ComboCheck:getValueArray  invalid data:&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">());
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">[];
+        }
+         
+    },
+    </span><span class="jsdoc-var">expand </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">Roo.form.ComboCheck.superclass.expand.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.valueBefore </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">;
+        
+
+    },
+    
+    </span><span class="jsdoc-var">collapse </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">Roo.form.ComboCheck.superclass.collapse.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.view.getSelectedIndexes</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">st </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nv </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tv </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">st.getAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">nv.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.valueField</span><span class="jsdoc-syntax">));
+        },</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.encode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nv</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">this.valueBefore</span><span class="jsdoc-syntax">) {
+
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'change'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.valueBefore</span><span class="jsdoc-syntax">);
+        }
+        
+    },
+    
+    </span><span class="jsdoc-var">setValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-comment">// Roo.log(v);
+        </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">vals </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getValueArray</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tv </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">vals</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.findRecord</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.valueField</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">tv.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.data</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.displayField</span><span class="jsdoc-syntax">]);
+            }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.valueNotFoundText </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">tv.push</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.valueNotFoundText </span><span class="jsdoc-syntax">);
+            }
+        },</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+       </span><span class="jsdoc-comment">// Roo.log(tv);
+        
+        </span><span class="jsdoc-var">Roo.form.ComboBox.superclass.setValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tv.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">', '</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">this.hiddenField.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
+    }
+    
+});</span></code></body></html>
