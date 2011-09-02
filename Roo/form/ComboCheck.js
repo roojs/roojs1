@@ -73,27 +73,11 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
     
     onViewClick : function(doFocus,index){
         return;
-        if(this.inKeyMode){ // prevent key nav and mouse over conflicts
-            return;
-        }
         
-        if (this.view.isSelected(index)) {
-            this.view.unselect(index);
-            return;
-        }
-        this.view.select(index, true);
-        
-        return;
-        var index = this.view.getSelectedIndexes()[0];
-        var r = this.store.getAt(index);
-        if(r){
-            this.onSelect(r, index);
-        }
-        if(doFocus !== false && !this.blockFocus){
-            this.el.focus();
-        }
     },
- 
+    select: function () {
+        
+    }
     
     onSelect : function(record, index){
         if(this.fireEvent('beforeselect', this, record, index) !== false){
