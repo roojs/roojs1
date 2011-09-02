@@ -820,7 +820,7 @@
         
         
          
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.createRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getSelection</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.createRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getSelection</span><span class="jsdoc-syntax">())</span><span class="jsdoc-var">.cloneRange</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isIE</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">parent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">range.parentElement</span><span class="jsdoc-syntax">();
