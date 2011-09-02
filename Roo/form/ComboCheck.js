@@ -135,9 +135,10 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
                 tv.push( this.valueNotFoundText );
             }
         },this);
-        this.hiddenField.value = v;
+        
         
         Roo.form.ComboBox.superclass.setValue.call(this, tv.join(', '));
+        this.hiddenField.value = v;
         this.value = v;
     ,
     
