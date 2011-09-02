@@ -55,15 +55,8 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
                    '<span>{' + this.displayField + '}</span>' +
                     '</div>',
                 checked: function (value, allValues) {
-                    var ar = [] ;
-                    try {
-                        Roo.decode(_t.getValue()) || [];
-                    } catch(e) {
-                        Roo.log("Roo.form.ComboCheck:tpl checked - invalid data:" + _t.getValue());
-                        return '';
-                    }
-                    ar = typeof(ar) == 'Array' ? ar : [];
-                    return ar.indexOf(value) ? ' x-menu-item-checked' : ''
+                    var ar = _t.getValueArray();
+                    return ar.indexOf(value) > -1 ? ' x-menu-item-checked' : ''
                 }
             });
         }
@@ -73,6 +66,31 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
          
         
     },
-     
+    onSelect : function(record, index){
+        if(this.fireEvent('beforeselect', this, record, index) !== false){
+            
+            
+            this.setFromData(index > -1 ? record.data : false);
+            
+            
+            
+            //this.collapse();
+            this.fireEvent('select', this, record, index);
+        }
+    },
+    getValueArray : function()
+    {
+        var ar = [] ;
+        try {
+            var ret = Roo.decode(thist.getValue());
+            ret = typeof(ar) == 'Array' ? ar : []; //?? valid?
+            return ret;
+        } catch(e) {
+            Roo.log("Roo.form.ComboCheck:getValueArray  invalid data:" + _t.getValue());
+            return [];
+        }
+        
+        
+    }
  
 });
