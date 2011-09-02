@@ -95,7 +95,7 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
     {
         var ar = [] ;
         try {
-            var ret = Roo.decode(thist.value);
+            var ret = Roo.decode(this.value);
             ret = typeof(ar) == 'Array' ? ar : []; //?? valid?
             return ret;
         } catch(e) {
