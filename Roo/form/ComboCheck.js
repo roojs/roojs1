@@ -45,6 +45,7 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
                     var ar = typeof(ar) == 'Array' ? ar : [];
                     return ar.indexOf(value) ? ' x-menu-item-checked' : ''
                 }
+            });
         }
  
         
