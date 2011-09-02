@@ -121,7 +121,7 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
                 
             }
         },this);
-        
+        this.view.select(sels);
         return false;
     },
     
