@@ -83,7 +83,7 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
             this.view.unselect(index);
             return;
         }
-        this.view.select(index, true);
+        this.view.select(index, false);
         
         return;
         var index = this.view.getSelectedIndexes()[0];
