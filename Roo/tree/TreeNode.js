@@ -158,7 +158,6 @@ Roo.tree.TreeNode = function(attributes)
         Roo.each(attributes.children, function(c) {
             this.appendChild(new Roo.tree.TreeNode(c));
         }, this);
-        
     }
     
 };
