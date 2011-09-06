@@ -197,7 +197,8 @@ Roo.extend(Roo.tree.TreeLoader, Roo.util.Observable, {
     },
 
     // private
-    createNode : function(attr){
+    createNode : function(attr)
+    {
         // apply baseAttrs, nice idea Corey!
         if(this.baseAttrs){
             Roo.applyIf(attr, this.baseAttrs);
@@ -223,7 +224,8 @@ Roo.extend(Roo.tree.TreeLoader, Roo.util.Observable, {
                         new Roo.tree.AsyncTreeNode(attr));
     },
 
-    processResponse : function(response, node, callback){
+    processResponse : function(response, node, callback)
+    {
         var json = response.responseText;
         try {
             
