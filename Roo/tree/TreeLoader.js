@@ -233,7 +233,7 @@ Roo.extend(Roo.tree.TreeLoader, Roo.util.Observable, {
                 // it's a failure condition.
                 var a = response.argument;
                 this.fireEvent("loadexception", this, a.node, response);
-                Roo.log("Load failed - should have a handler really")
+                Roo.log("Load failed - should have a handler really");
                 
             }
             
