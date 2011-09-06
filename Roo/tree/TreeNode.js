@@ -154,12 +154,16 @@ Roo.tree.TreeNode = function(attributes)
      */
     this.ui = new uiClass(this);
      
-    
+    if (attributes.children) {
+        Roo.each(attributes.children, function(c) {
+            this.appendChild(new Roo.tree.TreeNode(c));
+        }, this);
+        
+    }
     
 };
 Roo.extend(Roo.tree.TreeNode, Roo.data.Node, {
     
-    children : false,
     
     preventHScroll: true,
     /**
