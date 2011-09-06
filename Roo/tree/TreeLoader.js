@@ -227,7 +227,7 @@ Roo.extend(Roo.tree.TreeLoader, Roo.util.Observable, {
         var json = response.responseText;
         try {
             
-            var o = /**  eval:var:zzzzzzzzzz */ eval("("+json+")");
+            var o = Roo.decode(json);
             if (this.root !== false) {
                 o = o[this.root];
             }
