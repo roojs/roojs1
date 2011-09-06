@@ -253,7 +253,9 @@ Roo.extend(Roo.tree.TreeLoader, Roo.util.Observable, {
         this.fireEvent("load", this, a.node, response);
     },
 
-    handleFailure : function(response){
+    handleFailure : function(response)
+    {
+        // should handle failure better..
         this.transId = false;
         var a = response.argument;
         this.fireEvent("loadexception", this, a.node, response);
