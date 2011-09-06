@@ -228,6 +228,15 @@ Roo.extend(Roo.tree.TreeLoader, Roo.util.Observable, {
         try {
             
             var o = Roo.decode(json);
+            
+            if (!o.success) {
+                // it's a failure condition.
+                var a = response.argument;
+                this.fireEvent("loadexception", this, a.node, response);
+                Roo.log("Load failed - should have a handler really")
+                
+            }
+            
             if (this.root !== false) {
                 o = o[this.root];
             }
