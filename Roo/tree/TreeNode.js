@@ -158,6 +158,9 @@ Roo.tree.TreeNode = function(attributes)
     
 };
 Roo.extend(Roo.tree.TreeNode, Roo.data.Node, {
+    
+    children : false,
+    
     preventHScroll: true,
     /**
      * Returns true if this node is expanded
