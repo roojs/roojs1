@@ -234,7 +234,7 @@ Roo.extend(Roo.tree.TreeLoader, Roo.util.Observable, {
                 var a = response.argument;
                 this.fireEvent("loadexception", this, a.node, response);
                 Roo.log("Load failed - should have a handler really");
-                
+                return;
             }
             
             if (this.root !== false) {
