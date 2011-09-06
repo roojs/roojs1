@@ -28,11 +28,14 @@
  * @cfg {Boolean} singleClickExpand True for single click expand on this node
  * @cfg {Function} uiProvider A UI <b>class</b> to use for this node (defaults to Roo.tree.TreeNodeUI)
  * @cfg {Boolean} checked True to render a checked checkbox for this node, false to render an unchecked checkbox
+ * @cfg {Array} children Array of Children to be added when created..
+  
  * (defaults to undefined with no checkbox rendered)
  * @constructor
  * @param {Object/String} attributes The attributes/config for the node or just a string with the text for the node
  */
-Roo.tree.TreeNode = function(attributes){
+Roo.tree.TreeNode = function(attributes)
+{
     attributes = attributes || {};
     if(typeof attributes == "string"){
         attributes = {text: attributes};
@@ -150,6 +153,9 @@ Roo.tree.TreeNode = function(attributes){
      * @type TreeNodeUI
      */
     this.ui = new uiClass(this);
+     
+    
+    
 };
 Roo.extend(Roo.tree.TreeNode, Roo.data.Node, {
     preventHScroll: true,
