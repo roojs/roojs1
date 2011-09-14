@@ -115,6 +115,9 @@ Roo.extend(Roo.form.GridField, Roo.form.Field,  {
             data[ds.reader.meta.root ] =  typeof(v) == 'string' ? Roo.decode(v) : v;
             ds.loadData( data);
         }
+        // clear selection so it does not get stale.
+        this.grid.sm.clearSelections();
+        
         Roo.form.GridField.superclass.setValue.call(this, v);
         this.refreshValue();
         // should load data in the grid really....
