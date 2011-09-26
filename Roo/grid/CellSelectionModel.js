@@ -161,7 +161,7 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
 
     /** @ignore */
     handleKeyDown : function(e){
-        Roo.log('Cell Sel Model handleKeyDown');
+        //Roo.log('Cell Sel Model handleKeyDown');
         if(!e.isNavKeyPress()){
             return;
         }
@@ -223,9 +223,9 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
         return !cm.isHidden(col) && cm.isCellEditable(col, row);
     },
 
-    onEditorKey : function(field, e){
-        Roo.log("on Editor Key");
-        var k = e.getKey(), newCell, g = this.grid, ed = g.activeEditor;
+    onEditorKey : function(field, e, fakeKey){
+        
+        var k = fakeKey || e.getKey(), newCell, g = this.grid, ed = g.activeEditor;
         ///Roo.log('onEditorKey' + k);
         
         if(k == e.TAB){
