@@ -171,8 +171,8 @@ Roo.extend(Roo.grid.EditorGrid, Roo.grid.Grid, {
                     ed.row = row;
                     ed.col = col;
                     ed.record = r;
-                    ed.on("complete", this.onEditComplete, this, {single: true});
-                    ed.on("specialkey", this.selModel.onEditorKey, this.selModel);
+                    ed.on("complete",   this.onEditComplete,        this,       {single: true});
+                    ed.on("specialkey", this.selModel.onEditorKey,  this.selModel);
                     this.activeEditor = ed;
                     var v = r.data[field];
                     ed.startEdit(this.view.getCell(row, col), v);
