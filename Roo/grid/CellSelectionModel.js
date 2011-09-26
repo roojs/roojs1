@@ -222,7 +222,7 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
     acceptsNav : function(row, col, cm){
         return !cm.isHidden(col) && cm.isCellEditable(col, row);
     },
-   /**
+    /**
      * Selects a cell.
      * @param {Number} field (not used) - as it's normally used as a listener
      * @param {Number} e - event - fake it by using
