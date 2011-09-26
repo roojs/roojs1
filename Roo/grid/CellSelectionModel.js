@@ -236,7 +236,11 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
         
         var k = e.getKey(), newCell, g = this.grid, ed = g.activeEditor;
         ///Roo.log('onEditorKey' + k);
-        
+        if (!ed) {
+            
+            
+            
+        }
         if(k == e.TAB){
             if(e.shiftKey){
                 newCell = g.walkCells(ed.row, ed.col-1, -1, this.acceptsNav, this);
