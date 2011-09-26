@@ -28650,7 +28650,9 @@ Roo.extend(Roo.form.GridField, Roo.form.Field,  {
             ds.loadData( data);
         }
         // clear selection so it does not get stale.
-        this.grid.sm.clearSelections();
+        if (this.grid.sm)) { 
+            this.grid.sm.clearSelections();
+        }
         
         Roo.form.GridField.superclass.setValue.call(this, v);
         this.refreshValue();
