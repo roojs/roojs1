@@ -156,8 +156,7 @@ Roo.extend(Roo.grid.EditorGrid, Roo.grid.Grid, {
                 value: r.data[field],
                 row: row,
                 column: col,
-                cancel:false,
-                cell : cell
+                cancel:false 
             };
             if(this.fireEvent("beforeedit", e) !== false && !e.cancel){
                 this.editing = true;
@@ -171,7 +170,7 @@ Roo.extend(Roo.grid.EditorGrid, Roo.grid.Grid, {
                 }
                 ed.field.reset();
                
-                
+                cell.hide();
                 
                 (function(){ // complex but required for focus issues in safari, ie and opera
                     ed.row = row;
