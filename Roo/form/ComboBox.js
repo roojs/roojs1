@@ -458,6 +458,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
 
             "tab" : function(e){
                 this.onViewClick(false);
+                this.fireEvent("specialkey", this, e);
                 return true;
             },
 
@@ -747,7 +748,8 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
     },
 
     // private
-    onViewClick : function(doFocus){
+    onViewClick : function(doFocus)
+    {
         var index = this.view.getSelectedIndexes()[0];
         var r = this.store.getAt(index);
         if(r){
