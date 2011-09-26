@@ -224,7 +224,7 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
     },
 
     onEditorKey : function(field, e){
-        
+        Roo.log("on Editor Key");
         var k = e.getKey(), newCell, g = this.grid, ed = g.activeEditor;
         ///Roo.log('onEditorKey' + k);
         
