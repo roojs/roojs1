@@ -36675,7 +36675,7 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
 
     /** @ignore */
     handleKeyDown : function(e){
-        Roo.log('Cell Sel Model handleKeyDown');
+        //Roo.log('Cell Sel Model handleKeyDown');
         if(!e.isNavKeyPress()){
             return;
         }
@@ -36737,19 +36737,21 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
         return !cm.isHidden(col) && cm.isCellEditable(col, row);
     },
 
-    onEditorKey : function(field, e){
-        Roo.log("on Editor Key");
-        var k = e.getKey(), newCell, g = this.grid, ed = g.activeEditor;
+    onEditorKey : function(field, e, fakeKey){
+        
+        var k = fakeKey || e.getKey(), newCell, g = this.grid, ed = g.activeEditor;
         ///Roo.log('onEditorKey' + k);
         
         if(k == e.TAB){
-            if(e.shiftKey){
+            if(e && e.shiftKey){
                 newCell = g.walkCells(ed.row, ed.col-1, -1, this.acceptsNav, this);
             }else{
                 newCell = g.walkCells(ed.row, ed.col+1, 1, this.acceptsNav, this);
             }
-            e.stopEvent();
-        }else if(k == e.ENTER && !e.ctrlKey){
+            if (e) {
+                e.stopEvent();
+            }
+        }else if(k == e.ENTER && e && !e.ctrlKey){
             ed.completeEdit();
             e.stopEvent();
             newCell = g.walkCells(ed.row, ed.col+1, 1, this.acceptsNav, this);
@@ -36936,8 +36938,8 @@ Roo.extend(Roo.grid.EditorGrid, Roo.grid.Grid, {
                     ed.row = row;
                     ed.col = col;
                     ed.record = r;
-                    ed.on("complete", this.onEditComplete, this, {single: true});
-                    ed.on("specialkey", this.selModel.onEditorKey, this.selModel);
+                    ed.on("complete",   this.onEditComplete,        this,       {single: true});
+                    ed.on("specialkey", this.selModel.onEditorKey,  this.selModel);
                     this.activeEditor = ed;
                     var v = r.data[field];
                     ed.startEdit(this.view.getCell(row, col), v);
