@@ -51223,22 +51223,31 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
     acceptsNav : function(row, col, cm){
         return !cm.isHidden(col) && cm.isCellEditable(col, row);
     },
-
-    onEditorKey : function(field, e, fakeKey){
+    /**
+     * Selects a cell.
+     * @param {Number} field (not used) - as it's normally used as a listener
+     * @param {Number} e - event - fake it by using
+     *
+     * var e = Roo.EventObjectImpl.prototype;
+     * e.keyCode = e.TAB
+     *
+     * 
+     */
+    onEditorKey : function(field, e){
         
         var k = fakeKey || e.getKey(), newCell, g = this.grid, ed = g.activeEditor;
         ///Roo.log('onEditorKey' + k);
         
         if(k == e.TAB){
-            if(e && e.shiftKey){
+            if(e.shiftKey){
                 newCell = g.walkCells(ed.row, ed.col-1, -1, this.acceptsNav, this);
             }else{
                 newCell = g.walkCells(ed.row, ed.col+1, 1, this.acceptsNav, this);
             }
-            if (e) {
-                e.stopEvent();
-            }
-        }else if(k == e.ENTER && e && !e.ctrlKey){
+            
+            e.stopEvent();
+            
+        }else if(k == e.ENTER &&  !e.ctrlKey){
             ed.completeEdit();
             e.stopEvent();
             newCell = g.walkCells(ed.row, ed.col+1, 1, this.acceptsNav, this);
