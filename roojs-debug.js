@@ -48556,7 +48556,14 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         this.rowEl.elements = els;
         return this.rowEl;
     },
-
+    /**
+     * Gets the 'td' of the cell
+     * 
+     * @param {Integer} rowIndex row to select
+     * @param {Integer} colIndex column to select
+     * 
+     * @return {Object} 
+     */
     getCell : function(rowIndex, colIndex){
         var locked = this.cm.getLockedCount();
         var source;
@@ -51237,7 +51244,11 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
         
         var k = e.getKey(), newCell, g = this.grid, ed = g.activeEditor;
         ///Roo.log('onEditorKey' + k);
-        
+        if (!ed) {
+            
+            
+            
+        }
         if(k == e.TAB){
             if(e.shiftKey){
                 newCell = g.walkCells(ed.row, ed.col-1, -1, this.acceptsNav, this);
@@ -51380,6 +51391,9 @@ Roo.extend(Roo.grid.EditorGrid, Roo.grid.Grid, {
             cancel:false,
             editor: ed
         };
+        var cell = Roo.get(this.view.getCell(row,col))
+        cell.show();
+          
         if(String(value) !== String(startValue)){
             
             if(this.fireEvent("validateedit", e) !== false && !e.cancel){
@@ -51408,8 +51422,10 @@ Roo.extend(Roo.grid.EditorGrid, Roo.grid.Grid, {
         this.stopEditing();
         if(this.colModel.isCellEditable(col, row)){
             this.view.ensureVisible(row, col, true);
+          
             var r = this.dataSource.getAt(row);
             var field = this.colModel.getDataIndex(col);
+            var cell = Roo.get(this.view.getCell(row,col))
             var e = {
                 grid: this,
                 record: r,
@@ -51417,7 +51433,7 @@ Roo.extend(Roo.grid.EditorGrid, Roo.grid.Grid, {
                 value: r.data[field],
                 row: row,
                 column: col,
-                cancel:false
+                cancel:false 
             };
             if(this.fireEvent("beforeedit", e) !== false && !e.cancel){
                 this.editing = true;
@@ -51430,6 +51446,9 @@ Roo.extend(Roo.grid.EditorGrid, Roo.grid.Grid, {
                     ed.render(ed.parentEl || document.body);
                 }
                 ed.field.reset();
+               
+                cell.hide();
+                
                 (function(){ // complex but required for focus issues in safari, ie and opera
                     ed.row = row;
                     ed.col = col;
