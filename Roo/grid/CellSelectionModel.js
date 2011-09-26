@@ -229,13 +229,15 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
         ///Roo.log('onEditorKey' + k);
         
         if(k == e.TAB){
-            if(e.shiftKey){
+            if(e && e.shiftKey){
                 newCell = g.walkCells(ed.row, ed.col-1, -1, this.acceptsNav, this);
             }else{
                 newCell = g.walkCells(ed.row, ed.col+1, 1, this.acceptsNav, this);
             }
-            e.stopEvent();
-        }else if(k == e.ENTER && !e.ctrlKey){
+            if (e) {
+                e.stopEvent();
+            }
+        }else if(k == e.ENTER && e && !e.ctrlKey){
             ed.completeEdit();
             e.stopEvent();
             newCell = g.walkCells(ed.row, ed.col+1, 1, this.acceptsNav, this);
