@@ -116,7 +116,7 @@ Roo.extend(Roo.form.GridField, Roo.form.Field,  {
             ds.loadData( data);
         }
         // clear selection so it does not get stale.
-        if (this.grid.sm)) { 
+        if (this.grid.sm) { 
             this.grid.sm.clearSelections();
         }
         
