@@ -389,7 +389,14 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         this.rowEl.elements = els;
         return this.rowEl;
     },
-
+    /**
+     * Gets the 'td' of the cell
+     * 
+     * @param {Integer} rowIndex row to select
+     * @param {Integer} colIndex column to select
+     * 
+     * @return {Object} 
+     */
     getCell : function(rowIndex, colIndex){
         var locked = this.cm.getLockedCount();
         var source;
