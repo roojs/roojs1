@@ -117,6 +117,9 @@ Roo.extend(Roo.grid.EditorGrid, Roo.grid.Grid, {
             cancel:false,
             editor: ed
         };
+        var cell = Roo.get(this.view.getCell(row,col))
+        cell.show();
+          
         if(String(value) !== String(startValue)){
             
             if(this.fireEvent("validateedit", e) !== false && !e.cancel){
