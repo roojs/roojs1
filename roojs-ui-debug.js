@@ -18484,7 +18484,8 @@ Roo.extend(Roo.tree.TreeLoader, Roo.util.Observable, {
     },
 
     // private
-    createNode : function(attr){
+    createNode : function(attr)
+    {
         // apply baseAttrs, nice idea Corey!
         if(this.baseAttrs){
             Roo.applyIf(attr, this.baseAttrs);
@@ -18510,11 +18511,21 @@ Roo.extend(Roo.tree.TreeLoader, Roo.util.Observable, {
                         new Roo.tree.AsyncTreeNode(attr));
     },
 
-    processResponse : function(response, node, callback){
+    processResponse : function(response, node, callback)
+    {
         var json = response.responseText;
         try {
             
-            var o = /**  eval:var:zzzzzzzzzz */ eval("("+json+")");
+            var o = Roo.decode(json);
+            
+            if (!o.success) {
+                // it's a failure condition.
+                var a = response.argument;
+                this.fireEvent("loadexception", this, a.node, response);
+                Roo.log("Load failed - should have a handler really");
+                return;
+            }
+            
             if (this.root !== false) {
                 o = o[this.root];
             }
@@ -18540,7 +18551,9 @@ Roo.extend(Roo.tree.TreeLoader, Roo.util.Observable, {
         this.fireEvent("load", this, a.node, response);
     },
 
-    handleFailure : function(response){
+    handleFailure : function(response)
+    {
+        // should handle failure better..
         this.transId = false;
         var a = response.argument;
         this.fireEvent("loadexception", this, a.node, response);
@@ -23127,6 +23140,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
 
             "tab" : function(e){
                 this.onViewClick(false);
+                this.fireEvent("specialkey", this, e);
                 return true;
             },
 
@@ -23416,7 +23430,8 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
     },
 
     // private
-    onViewClick : function(doFocus){
+    onViewClick : function(doFocus)
+    {
         var index = this.view.getSelectedIndexes()[0];
         var r = this.store.getAt(index);
         if(r){
@@ -28634,6 +28649,9 @@ Roo.extend(Roo.form.GridField, Roo.form.Field,  {
             data[ds.reader.meta.root ] =  typeof(v) == 'string' ? Roo.decode(v) : v;
             ds.loadData( data);
         }
+        // clear selection so it does not get stale.
+        this.grid.sm.clearSelections();
+        
         Roo.form.GridField.superclass.setValue.call(this, v);
         this.refreshValue();
         // should load data in the grid really....
