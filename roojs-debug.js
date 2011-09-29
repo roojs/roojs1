@@ -30228,9 +30228,18 @@ Roo.Msg.show({
          * @param {Object} config Configuration options
          * @return {Roo.MessageBox} This message box
          */
-        show : function(options){
+        show : function(options)
+        {
+            
+            // this causes nightmares if you show one dialog after another
+            // especially on callbacks..
+             
             if(this.isVisible()){
+                
                 this.hide();
+                this.alert("ERROR", "Multiple dialogs where displayed at the same time");
+                throw "Roo.MessageBox ERROR : Multiple dialogs where displayed at the same time";
+                
             }
             var d = this.getDialog();
             opt = options;
@@ -51425,7 +51434,7 @@ Roo.extend(Roo.grid.EditorGrid, Roo.grid.Grid, {
           
             var r = this.dataSource.getAt(row);
             var field = this.colModel.getDataIndex(col);
-            var cell = Roo.get(this.view.getCell(row,col))
+            var cell = Roo.get(this.view.getCell(row,col));
             var e = {
                 grid: this,
                 record: r,
