@@ -285,8 +285,8 @@ Roo.Msg.show({
             if(this.isVisible()){
                 
                 this.hide();
-                this.alert("ERROR", "Multiple dialogs where displayed at the same time");
-                throw "Roo.MessageBox ERROR : Multiple dialogs where displayed at the same time";
+                //this.alert("ERROR", "Multiple dialogs where displayed at the same time");
+                //throw "Roo.MessageBox ERROR : Multiple dialogs where displayed at the same time";
                 
             }
             var d = this.getDialog();
