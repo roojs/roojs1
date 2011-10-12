@@ -104,20 +104,23 @@ Roo.Component = function(config){
     }
 };
 
-// private
+/** @private */
 Roo.Component.AUTO_ID = 1000;
 
 Roo.extend(Roo.Component, Roo.util.Observable, {
     /**
-     * @property {Boolean} hidden
+     * @scope Roo.Component.prototype
+     * @type {Boolean}
      * true if this component is hidden. Read-only.
      */
     hidden : false,
     /**
+     * @type {Boolean}
      * true if this component is disabled. Read-only.
      */
     disabled : false,
     /**
+     * @type {Boolean}
      * true if this component has been rendered. Read-only.
      */
     rendered : false,
@@ -137,16 +140,17 @@ Roo.extend(Roo.Component, Roo.util.Observable, {
      */
     hideMode: 'display',
 
-    // private
+    /** @private */
     ctype : "Roo.Component",
 
-    /** @cfg {String} actionMode 
+    /**
+     * @cfg {String} actionMode 
      * which property holds the element that used for  hide() / show() / disable() / enable()
      * default is 'el' 
      */
     actionMode : "el",
 
-    // private
+    /** @private */
     getActionEl : function(){
         return this[this.actionMode];
     },
@@ -193,7 +197,7 @@ Roo.extend(Roo.Component, Roo.util.Observable, {
         return this;
     },
 
-    // private
+    /** @private */
     // default function is not really useful
     onRender : function(ct, position){
         if(this.el){
@@ -204,7 +208,7 @@ Roo.extend(Roo.Component, Roo.util.Observable, {
         }
     },
 
-    // private
+    /** @private */
     getAutoCreate : function(){
         var cfg = typeof this.autoCreate == "object" ?
                       this.autoCreate : Roo.apply({}, this.defaultAutoCreate);
@@ -214,7 +218,7 @@ Roo.extend(Roo.Component, Roo.util.Observable, {
         return cfg;
     },
 
-    // private
+    /** @private */
     afterRender : Roo.emptyFn,
 
     /**
@@ -238,12 +242,12 @@ Roo.extend(Roo.Component, Roo.util.Observable, {
         }
     },
 
-	// private
+	/** @private */
     beforeDestroy : function(){
 
     },
 
-	// private
+	/** @private */
 	onDestroy : function(){
 
     },
@@ -279,7 +283,7 @@ Roo.extend(Roo.Component, Roo.util.Observable, {
         return this;
     },
 
-    // private
+    /** @private */
     blur : function(){
         if(this.rendered){
             this.el.blur();

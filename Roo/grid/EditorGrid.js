@@ -151,7 +151,7 @@ Roo.extend(Roo.grid.EditorGrid, Roo.grid.Grid, {
           
             var r = this.dataSource.getAt(row);
             var field = this.colModel.getDataIndex(col);
-            var cell = Roo.get(this.view.getCell(row,col))
+            var cell = Roo.get(this.view.getCell(row,col));
             var e = {
                 grid: this,
                 record: r,
