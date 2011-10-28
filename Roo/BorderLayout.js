@@ -372,7 +372,7 @@ layout.addxtype({
     {
         // basically accepts a pannel...
         // can accept a layout region..!?!?
-        Roo.log('Roo.BorderLayout add ' + cfg.xtype)
+        //Roo.log('Roo.BorderLayout add ' + cfg.xtype)
         
         if (!cfg.xtype.match(/Panel$/)) {
             return false;
