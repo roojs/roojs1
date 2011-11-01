@@ -276,10 +276,20 @@ Roo.Msg.show({
          * @param {Object} config Configuration options
          * @return {Roo.MessageBox} This message box
          */
-        </span><span class="jsdoc-var">show </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">show </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">)
+        {
+            
+            </span><span class="jsdoc-comment">// this causes nightmares if you show one dialog after another
+            // especially on callbacks..
+             
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isVisible</span><span class="jsdoc-syntax">()){
+                
                 </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
-            }
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Old Dialog Message:&quot; </span><span class="jsdoc-syntax">+  </span><span class="jsdoc-var">msgEl.innerHTML </span><span class="jsdoc-syntax">)
+                </span><span class="jsdoc-comment">//this.alert(&quot;ERROR&quot;, &quot;Multiple dialogs where displayed at the same time&quot;);
+                //throw &quot;Roo.MessageBox ERROR : Multiple dialogs where displayed at the same time&quot;;
+                
+            </span><span class="jsdoc-syntax">}
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getDialog</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-var">opt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">d.setTitle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">opt.title </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">&quot;&amp;#160;&quot;</span><span class="jsdoc-syntax">);

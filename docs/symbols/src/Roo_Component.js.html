@@ -104,20 +104,23 @@
     }
 };
 
-</span><span class="jsdoc-comment">// private
+</span><span class="jsdoc-comment">/** @private */
 </span><span class="jsdoc-var">Roo.Component.AUTO_ID </span><span class="jsdoc-syntax">= 1000;
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Component</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.util.Observable</span><span class="jsdoc-syntax">, {
     </span><span class="jsdoc-comment">/**
-     * @property {Boolean} hidden
+     * @scope Roo.Component.prototype
+     * @type {Boolean}
      * true if this component is hidden. Read-only.
      */
     </span><span class="jsdoc-var">hidden </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-comment">/**
+     * @type {Boolean}
      * true if this component is disabled. Read-only.
      */
     </span><span class="jsdoc-var">disabled </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-comment">/**
+     * @type {Boolean}
      * true if this component has been rendered. Read-only.
      */
     </span><span class="jsdoc-var">rendered </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
@@ -137,16 +140,17 @@
      */
     </span><span class="jsdoc-var">hideMode</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'display'</span><span class="jsdoc-syntax">,
 
-    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-comment">/** @private */
     </span><span class="jsdoc-var">ctype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Roo.Component&quot;</span><span class="jsdoc-syntax">,
 
-    </span><span class="jsdoc-comment">/** @cfg {String} actionMode 
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} actionMode 
      * which property holds the element that used for  hide() / show() / disable() / enable()
      * default is 'el' 
      */
     </span><span class="jsdoc-var">actionMode </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;el&quot;</span><span class="jsdoc-syntax">,
 
-    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-comment">/** @private */
     </span><span class="jsdoc-var">getActionEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.actionMode</span><span class="jsdoc-syntax">];
     },
@@ -193,7 +197,7 @@
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
     },
 
-    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-comment">/** @private */
     // default function is not really useful
     </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">){
@@ -204,7 +208,7 @@
         }
     },
 
-    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-comment">/** @private */
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">this.autoCreate </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;object&quot; </span><span class="jsdoc-syntax">?
                       </span><span class="jsdoc-var">this.autoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">this.defaultAutoCreate</span><span class="jsdoc-syntax">);
@@ -214,7 +218,7 @@
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
     },
 
-    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-comment">/** @private */
     </span><span class="jsdoc-var">afterRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.emptyFn</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-comment">/**
@@ -238,12 +242,12 @@
         }
     },
 
-	</span><span class="jsdoc-comment">// private
+	</span><span class="jsdoc-comment">/** @private */
     </span><span class="jsdoc-var">beforeDestroy </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
 
     },
 
-	</span><span class="jsdoc-comment">// private
+	</span><span class="jsdoc-comment">/** @private */
 	</span><span class="jsdoc-var">onDestroy </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
 
     },
@@ -279,7 +283,7 @@
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
     },
 
-    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-comment">/** @private */
     </span><span class="jsdoc-var">blur </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.rendered</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.el.blur</span><span class="jsdoc-syntax">();
