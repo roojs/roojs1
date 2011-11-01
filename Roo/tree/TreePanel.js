@@ -163,7 +163,7 @@ Roo.tree.TreePanel = function(el, config){
         * @param {Node} node The node
         */
         "beforechildrenrendered":true,
-       /**
+        /**
         * @event startdrag
         * Fires when a node starts being dragged
         * @param {Roo.tree.TreePanel} this
