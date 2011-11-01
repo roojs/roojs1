@@ -32,8 +32,8 @@
  * @cfg {Boolean} selModel A tree selection model to use with this TreePanel (defaults to a {@link Roo.tree.DefaultSelectionModel})
  * @cfg {Boolean} loader A TreeLoader for use with this TreePanel
  * @cfg {String} pathSeparator The token used to separate sub-paths in path strings (defaults to '/')
- * @cfg {Function} renderer Sets the rendering (formatting) function for the nodes. to return HTML markup for the tree view. The render function is called with  the following parameters:&lt;ul&gt;&lt;li&gt;The {Object} The data for the node.&lt;/li&gt;&lt;/ul&gt;
- * @cfg {Function} rendererTip Sets the rendering (formatting) function for the nodes hovertip to return HTML markup for the tree view. The render function is called with  the following parameters:&lt;ul&gt;&lt;li&gt;The {Object} The data for the node.&lt;/li&gt;&lt;/ul&gt;
+ * @cfg {Function} renderer DEPRECIATED - use TreeLoader:create event / Sets the rendering (formatting) function for the nodes. to return HTML markup for the tree view. The render function is called with  the following parameters:&lt;ul&gt;&lt;li&gt;The {Object} The data for the node.&lt;/li&gt;&lt;/ul&gt;
+ * @cfg {Function} rendererTip DEPRECIATED - use TreeLoader:create event / Sets the rendering (formatting) function for the nodes hovertip to return HTML markup for the tree view. The render function is called with  the following parameters:&lt;ul&gt;&lt;li&gt;The {Object} The data for the node.&lt;/li&gt;&lt;/ul&gt;
  * 
  * @constructor
  * @param {String/HTMLElement/Element} el The container element
@@ -163,82 +163,82 @@
         * @param {Node} node The node
         */
         </span><span class="jsdoc-string">&quot;beforechildrenrendered&quot;</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+        * @event startdrag
+        * Fires when a node starts being dragged
+        * @param {Roo.tree.TreePanel} this
+        * @param {Roo.tree.TreeNode} node
+        * @param {event} e The raw browser event
+        */ 
+       </span><span class="jsdoc-string">&quot;startdrag&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
        </span><span class="jsdoc-comment">/**
-	     * @event startdrag
-	     * Fires when a node starts being dragged
-	     * @param {Roo.tree.TreePanel} this
-	     * @param {Roo.tree.TreeNode} node
-	     * @param {event} e The raw browser event
-	     */ 
-	    </span><span class="jsdoc-string">&quot;startdrag&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-	    </span><span class="jsdoc-comment">/**
-	     * @event enddrag
-	     * Fires when a drag operation is complete
-	     * @param {Roo.tree.TreePanel} this
-	     * @param {Roo.tree.TreeNode} node
-	     * @param {event} e The raw browser event
-	     */
-	    </span><span class="jsdoc-string">&quot;enddrag&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-	    </span><span class="jsdoc-comment">/**
-	     * @event dragdrop
-	     * Fires when a dragged node is dropped on a valid DD target
-	     * @param {Roo.tree.TreePanel} this
-	     * @param {Roo.tree.TreeNode} node
-	     * @param {DD} dd The dd it was dropped on
-	     * @param {event} e The raw browser event
-	     */
-	    </span><span class="jsdoc-string">&quot;dragdrop&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-	    </span><span class="jsdoc-comment">/**
-	     * @event beforenodedrop
-	     * Fires when a DD object is dropped on a node in this tree for preprocessing. Return false to cancel the drop. The dropEvent
-	     * passed to handlers has the following properties:&lt;br /&gt;
-	     * &lt;ul style=&quot;padding:5px;padding-left:16px;&quot;&gt;
-	     * &lt;li&gt;tree - The TreePanel&lt;/li&gt;
-	     * &lt;li&gt;target - The node being targeted for the drop&lt;/li&gt;
-	     * &lt;li&gt;data - The drag data from the drag source&lt;/li&gt;
-	     * &lt;li&gt;point - The point of the drop - append, above or below&lt;/li&gt;
-	     * &lt;li&gt;source - The drag source&lt;/li&gt;
-	     * &lt;li&gt;rawEvent - Raw mouse event&lt;/li&gt;
-	     * &lt;li&gt;dropNode - Drop node(s) provided by the source &lt;b&gt;OR&lt;/b&gt; you can supply node(s)
-	     * to be inserted by setting them on this object.&lt;/li&gt;
-	     * &lt;li&gt;cancel - Set this to true to cancel the drop.&lt;/li&gt;
-	     * &lt;/ul&gt;
-	     * @param {Object} dropEvent
-	     */
-	    </span><span class="jsdoc-string">&quot;beforenodedrop&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-	    </span><span class="jsdoc-comment">/**
-	     * @event nodedrop
-	     * Fires after a DD object is dropped on a node in this tree. The dropEvent
-	     * passed to handlers has the following properties:&lt;br /&gt;
-	     * &lt;ul style=&quot;padding:5px;padding-left:16px;&quot;&gt;
-	     * &lt;li&gt;tree - The TreePanel&lt;/li&gt;
-	     * &lt;li&gt;target - The node being targeted for the drop&lt;/li&gt;
-	     * &lt;li&gt;data - The drag data from the drag source&lt;/li&gt;
-	     * &lt;li&gt;point - The point of the drop - append, above or below&lt;/li&gt;
-	     * &lt;li&gt;source - The drag source&lt;/li&gt;
-	     * &lt;li&gt;rawEvent - Raw mouse event&lt;/li&gt;
-	     * &lt;li&gt;dropNode - Dropped node(s).&lt;/li&gt;
-	     * &lt;/ul&gt;
-	     * @param {Object} dropEvent
-	     */
-	    </span><span class="jsdoc-string">&quot;nodedrop&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-	     </span><span class="jsdoc-comment">/**
-	     * @event nodedragover
-	     * Fires when a tree node is being targeted for a drag drop, return false to signal drop not allowed. The dragOverEvent
-	     * passed to handlers has the following properties:&lt;br /&gt;
-	     * &lt;ul style=&quot;padding:5px;padding-left:16px;&quot;&gt;
-	     * &lt;li&gt;tree - The TreePanel&lt;/li&gt;
-	     * &lt;li&gt;target - The node being targeted for the drop&lt;/li&gt;
-	     * &lt;li&gt;data - The drag data from the drag source&lt;/li&gt;
-	     * &lt;li&gt;point - The point of the drop - append, above or below&lt;/li&gt;
-	     * &lt;li&gt;source - The drag source&lt;/li&gt;
-	     * &lt;li&gt;rawEvent - Raw mouse event&lt;/li&gt;
-	     * &lt;li&gt;dropNode - Drop node(s) provided by the source.&lt;/li&gt;
-	     * &lt;li&gt;cancel - Set this to true to signal drop not allowed.&lt;/li&gt;
-	     * &lt;/ul&gt;
-	     * @param {Object} dragOverEvent
-	     */
-	    </span><span class="jsdoc-string">&quot;nodedragover&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        * @event enddrag
+        * Fires when a drag operation is complete
+        * @param {Roo.tree.TreePanel} this
+        * @param {Roo.tree.TreeNode} node
+        * @param {event} e The raw browser event
+        */
+       </span><span class="jsdoc-string">&quot;enddrag&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+       </span><span class="jsdoc-comment">/**
+        * @event dragdrop
+        * Fires when a dragged node is dropped on a valid DD target
+        * @param {Roo.tree.TreePanel} this
+        * @param {Roo.tree.TreeNode} node
+        * @param {DD} dd The dd it was dropped on
+        * @param {event} e The raw browser event
+        */
+       </span><span class="jsdoc-string">&quot;dragdrop&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+       </span><span class="jsdoc-comment">/**
+        * @event beforenodedrop
+        * Fires when a DD object is dropped on a node in this tree for preprocessing. Return false to cancel the drop. The dropEvent
+        * passed to handlers has the following properties:&lt;br /&gt;
+        * &lt;ul style=&quot;padding:5px;padding-left:16px;&quot;&gt;
+        * &lt;li&gt;tree - The TreePanel&lt;/li&gt;
+        * &lt;li&gt;target - The node being targeted for the drop&lt;/li&gt;
+        * &lt;li&gt;data - The drag data from the drag source&lt;/li&gt;
+        * &lt;li&gt;point - The point of the drop - append, above or below&lt;/li&gt;
+        * &lt;li&gt;source - The drag source&lt;/li&gt;
+        * &lt;li&gt;rawEvent - Raw mouse event&lt;/li&gt;
+        * &lt;li&gt;dropNode - Drop node(s) provided by the source &lt;b&gt;OR&lt;/b&gt; you can supply node(s)
+        * to be inserted by setting them on this object.&lt;/li&gt;
+        * &lt;li&gt;cancel - Set this to true to cancel the drop.&lt;/li&gt;
+        * &lt;/ul&gt;
+        * @param {Object} dropEvent
+        */
+       </span><span class="jsdoc-string">&quot;beforenodedrop&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+       </span><span class="jsdoc-comment">/**
+        * @event nodedrop
+        * Fires after a DD object is dropped on a node in this tree. The dropEvent
+        * passed to handlers has the following properties:&lt;br /&gt;
+        * &lt;ul style=&quot;padding:5px;padding-left:16px;&quot;&gt;
+        * &lt;li&gt;tree - The TreePanel&lt;/li&gt;
+        * &lt;li&gt;target - The node being targeted for the drop&lt;/li&gt;
+        * &lt;li&gt;data - The drag data from the drag source&lt;/li&gt;
+        * &lt;li&gt;point - The point of the drop - append, above or below&lt;/li&gt;
+        * &lt;li&gt;source - The drag source&lt;/li&gt;
+        * &lt;li&gt;rawEvent - Raw mouse event&lt;/li&gt;
+        * &lt;li&gt;dropNode - Dropped node(s).&lt;/li&gt;
+        * &lt;/ul&gt;
+        * @param {Object} dropEvent
+        */
+       </span><span class="jsdoc-string">&quot;nodedrop&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+        * @event nodedragover
+        * Fires when a tree node is being targeted for a drag drop, return false to signal drop not allowed. The dragOverEvent
+        * passed to handlers has the following properties:&lt;br /&gt;
+        * &lt;ul style=&quot;padding:5px;padding-left:16px;&quot;&gt;
+        * &lt;li&gt;tree - The TreePanel&lt;/li&gt;
+        * &lt;li&gt;target - The node being targeted for the drop&lt;/li&gt;
+        * &lt;li&gt;data - The drag data from the drag source&lt;/li&gt;
+        * &lt;li&gt;point - The point of the drop - append, above or below&lt;/li&gt;
+        * &lt;li&gt;source - The drag source&lt;/li&gt;
+        * &lt;li&gt;rawEvent - Raw mouse event&lt;/li&gt;
+        * &lt;li&gt;dropNode - Drop node(s) provided by the source.&lt;/li&gt;
+        * &lt;li&gt;cancel - Set this to true to signal drop not allowed.&lt;/li&gt;
+        * &lt;/ul&gt;
+        * @param {Object} dragOverEvent
+        */
+       </span><span class="jsdoc-string">&quot;nodedragover&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
         
    </span><span class="jsdoc-syntax">});
    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.singleExpand</span><span class="jsdoc-syntax">){

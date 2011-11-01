@@ -115,6 +115,11 @@
             </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">ds.reader.meta.root </span><span class="jsdoc-syntax">] =  </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.decode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">ds.loadData</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">);
         }
+        </span><span class="jsdoc-comment">// clear selection so it does not get stale.
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.grid.sm</span><span class="jsdoc-syntax">) { 
+            </span><span class="jsdoc-var">this.grid.sm.clearSelections</span><span class="jsdoc-syntax">();
+        }
+        
         </span><span class="jsdoc-var">Roo.form.GridField.superclass.setValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.refreshValue</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-comment">// should load data in the grid really....

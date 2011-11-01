@@ -197,7 +197,8 @@
     },
 
     </span><span class="jsdoc-comment">// private
-    </span><span class="jsdoc-var">createNode </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">createNode </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">)
+    {
         </span><span class="jsdoc-comment">// apply baseAttrs, nice idea Corey!
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.baseAttrs</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">Roo.applyIf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.baseAttrs</span><span class="jsdoc-syntax">);
@@ -223,11 +224,21 @@
                         </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.tree.AsyncTreeNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">));
     },
 
-    </span><span class="jsdoc-var">processResponse </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">processResponse </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">)
+    {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">json </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">response.responseText</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
             
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-comment">/**  eval:var:zzzzzzzzzz */ </span><span class="jsdoc-keyword">eval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;(&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">json</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">&quot;)&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.decode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">json</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">o.success</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-comment">// it's a failure condition.
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">response.argument</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;loadexception&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">a.node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Load failed - should have a handler really&quot;</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.root </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.root</span><span class="jsdoc-syntax">];
             }
@@ -253,7 +264,9 @@
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;load&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">a.node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">);
     },
 
-    </span><span class="jsdoc-var">handleFailure </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">handleFailure </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-comment">// should handle failure better..
         </span><span class="jsdoc-var">this.transId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">response.argument</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;loadexception&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">a.node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">);
