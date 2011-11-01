@@ -383,6 +383,9 @@ Roo.tree.TreeNodeUI.prototype = {
         this.indentMarkup = n.parentNode ? n.parentNode.ui.getChildIndent() : '';
         var t = n.getOwnerTree();
         var txt = t.renderer ? t.renderer(n.attributes) : Roo.util.Format.htmlEncode(n.text);
+        if (typeof(n.attributes.html) != 'undefined') {
+            txt = n.attributes.html;
+        }
         var tip = t.rendererTip ? t.rendererTip(n.attributes) : txt;
         var cb = typeof a.checked == 'boolean';
         var href = a.href ? a.href : Roo.isGecko ? "" : "#";
