@@ -21876,20 +21876,23 @@ Roo.Component = function(config){
     }
 };
 
-// private
+/** @private */
 Roo.Component.AUTO_ID = 1000;
 
 Roo.extend(Roo.Component, Roo.util.Observable, {
     /**
-     * @property {Boolean} hidden
+     * @scope Roo.Component.prototype
+     * @type {Boolean}
      * true if this component is hidden. Read-only.
      */
     hidden : false,
     /**
+     * @type {Boolean}
      * true if this component is disabled. Read-only.
      */
     disabled : false,
     /**
+     * @type {Boolean}
      * true if this component has been rendered. Read-only.
      */
     rendered : false,
@@ -21909,16 +21912,17 @@ Roo.extend(Roo.Component, Roo.util.Observable, {
      */
     hideMode: 'display',
 
-    // private
+    /** @private */
     ctype : "Roo.Component",
 
-    /** @cfg {String} actionMode 
+    /**
+     * @cfg {String} actionMode 
      * which property holds the element that used for  hide() / show() / disable() / enable()
      * default is 'el' 
      */
     actionMode : "el",
 
-    // private
+    /** @private */
     getActionEl : function(){
         return this[this.actionMode];
     },
@@ -21965,7 +21969,7 @@ Roo.extend(Roo.Component, Roo.util.Observable, {
         return this;
     },
 
-    // private
+    /** @private */
     // default function is not really useful
     onRender : function(ct, position){
         if(this.el){
@@ -21976,7 +21980,7 @@ Roo.extend(Roo.Component, Roo.util.Observable, {
         }
     },
 
-    // private
+    /** @private */
     getAutoCreate : function(){
         var cfg = typeof this.autoCreate == "object" ?
                       this.autoCreate : Roo.apply({}, this.defaultAutoCreate);
@@ -21986,7 +21990,7 @@ Roo.extend(Roo.Component, Roo.util.Observable, {
         return cfg;
     },
 
-    // private
+    /** @private */
     afterRender : Roo.emptyFn,
 
     /**
@@ -22010,12 +22014,12 @@ Roo.extend(Roo.Component, Roo.util.Observable, {
         }
     },
 
-	// private
+	/** @private */
     beforeDestroy : function(){
 
     },
 
-	// private
+	/** @private */
 	onDestroy : function(){
 
     },
@@ -22051,7 +22055,7 @@ Roo.extend(Roo.Component, Roo.util.Observable, {
         return this;
     },
 
-    // private
+    /** @private */
     blur : function(){
         if(this.rendered){
             this.el.blur();
@@ -30911,8 +30915,8 @@ Roo.QuickTips.tips = Roo.QuickTips.register;/*
  * @cfg {Boolean} selModel A tree selection model to use with this TreePanel (defaults to a {@link Roo.tree.DefaultSelectionModel})
  * @cfg {Boolean} loader A TreeLoader for use with this TreePanel
  * @cfg {String} pathSeparator The token used to separate sub-paths in path strings (defaults to '/')
- * @cfg {Function} renderer Sets the rendering (formatting) function for the nodes. to return HTML markup for the tree view. The render function is called with  the following parameters:<ul><li>The {Object} The data for the node.</li></ul>
- * @cfg {Function} rendererTip Sets the rendering (formatting) function for the nodes hovertip to return HTML markup for the tree view. The render function is called with  the following parameters:<ul><li>The {Object} The data for the node.</li></ul>
+ * @cfg {Function} renderer DEPRECIATED - use TreeLoader:create event / Sets the rendering (formatting) function for the nodes. to return HTML markup for the tree view. The render function is called with  the following parameters:<ul><li>The {Object} The data for the node.</li></ul>
+ * @cfg {Function} rendererTip DEPRECIATED - use TreeLoader:create event / Sets the rendering (formatting) function for the nodes hovertip to return HTML markup for the tree view. The render function is called with  the following parameters:<ul><li>The {Object} The data for the node.</li></ul>
  * 
  * @constructor
  * @param {String/HTMLElement/Element} el The container element
@@ -31042,82 +31046,82 @@ Roo.tree.TreePanel = function(el, config){
         * @param {Node} node The node
         */
         "beforechildrenrendered":true,
+        /**
+        * @event startdrag
+        * Fires when a node starts being dragged
+        * @param {Roo.tree.TreePanel} this
+        * @param {Roo.tree.TreeNode} node
+        * @param {event} e The raw browser event
+        */ 
+       "startdrag" : true,
        /**
-	     * @event startdrag
-	     * Fires when a node starts being dragged
-	     * @param {Roo.tree.TreePanel} this
-	     * @param {Roo.tree.TreeNode} node
-	     * @param {event} e The raw browser event
-	     */ 
-	    "startdrag" : true,
-	    /**
-	     * @event enddrag
-	     * Fires when a drag operation is complete
-	     * @param {Roo.tree.TreePanel} this
-	     * @param {Roo.tree.TreeNode} node
-	     * @param {event} e The raw browser event
-	     */
-	    "enddrag" : true,
-	    /**
-	     * @event dragdrop
-	     * Fires when a dragged node is dropped on a valid DD target
-	     * @param {Roo.tree.TreePanel} this
-	     * @param {Roo.tree.TreeNode} node
-	     * @param {DD} dd The dd it was dropped on
-	     * @param {event} e The raw browser event
-	     */
-	    "dragdrop" : true,
-	    /**
-	     * @event beforenodedrop
-	     * Fires when a DD object is dropped on a node in this tree for preprocessing. Return false to cancel the drop. The dropEvent
-	     * passed to handlers has the following properties:<br />
-	     * <ul style="padding:5px;padding-left:16px;">
-	     * <li>tree - The TreePanel</li>
-	     * <li>target - The node being targeted for the drop</li>
-	     * <li>data - The drag data from the drag source</li>
-	     * <li>point - The point of the drop - append, above or below</li>
-	     * <li>source - The drag source</li>
-	     * <li>rawEvent - Raw mouse event</li>
-	     * <li>dropNode - Drop node(s) provided by the source <b>OR</b> you can supply node(s)
-	     * to be inserted by setting them on this object.</li>
-	     * <li>cancel - Set this to true to cancel the drop.</li>
-	     * </ul>
-	     * @param {Object} dropEvent
-	     */
-	    "beforenodedrop" : true,
-	    /**
-	     * @event nodedrop
-	     * Fires after a DD object is dropped on a node in this tree. The dropEvent
-	     * passed to handlers has the following properties:<br />
-	     * <ul style="padding:5px;padding-left:16px;">
-	     * <li>tree - The TreePanel</li>
-	     * <li>target - The node being targeted for the drop</li>
-	     * <li>data - The drag data from the drag source</li>
-	     * <li>point - The point of the drop - append, above or below</li>
-	     * <li>source - The drag source</li>
-	     * <li>rawEvent - Raw mouse event</li>
-	     * <li>dropNode - Dropped node(s).</li>
-	     * </ul>
-	     * @param {Object} dropEvent
-	     */
-	    "nodedrop" : true,
-	     /**
-	     * @event nodedragover
-	     * Fires when a tree node is being targeted for a drag drop, return false to signal drop not allowed. The dragOverEvent
-	     * passed to handlers has the following properties:<br />
-	     * <ul style="padding:5px;padding-left:16px;">
-	     * <li>tree - The TreePanel</li>
-	     * <li>target - The node being targeted for the drop</li>
-	     * <li>data - The drag data from the drag source</li>
-	     * <li>point - The point of the drop - append, above or below</li>
-	     * <li>source - The drag source</li>
-	     * <li>rawEvent - Raw mouse event</li>
-	     * <li>dropNode - Drop node(s) provided by the source.</li>
-	     * <li>cancel - Set this to true to signal drop not allowed.</li>
-	     * </ul>
-	     * @param {Object} dragOverEvent
-	     */
-	    "nodedragover" : true
+        * @event enddrag
+        * Fires when a drag operation is complete
+        * @param {Roo.tree.TreePanel} this
+        * @param {Roo.tree.TreeNode} node
+        * @param {event} e The raw browser event
+        */
+       "enddrag" : true,
+       /**
+        * @event dragdrop
+        * Fires when a dragged node is dropped on a valid DD target
+        * @param {Roo.tree.TreePanel} this
+        * @param {Roo.tree.TreeNode} node
+        * @param {DD} dd The dd it was dropped on
+        * @param {event} e The raw browser event
+        */
+       "dragdrop" : true,
+       /**
+        * @event beforenodedrop
+        * Fires when a DD object is dropped on a node in this tree for preprocessing. Return false to cancel the drop. The dropEvent
+        * passed to handlers has the following properties:<br />
+        * <ul style="padding:5px;padding-left:16px;">
+        * <li>tree - The TreePanel</li>
+        * <li>target - The node being targeted for the drop</li>
+        * <li>data - The drag data from the drag source</li>
+        * <li>point - The point of the drop - append, above or below</li>
+        * <li>source - The drag source</li>
+        * <li>rawEvent - Raw mouse event</li>
+        * <li>dropNode - Drop node(s) provided by the source <b>OR</b> you can supply node(s)
+        * to be inserted by setting them on this object.</li>
+        * <li>cancel - Set this to true to cancel the drop.</li>
+        * </ul>
+        * @param {Object} dropEvent
+        */
+       "beforenodedrop" : true,
+       /**
+        * @event nodedrop
+        * Fires after a DD object is dropped on a node in this tree. The dropEvent
+        * passed to handlers has the following properties:<br />
+        * <ul style="padding:5px;padding-left:16px;">
+        * <li>tree - The TreePanel</li>
+        * <li>target - The node being targeted for the drop</li>
+        * <li>data - The drag data from the drag source</li>
+        * <li>point - The point of the drop - append, above or below</li>
+        * <li>source - The drag source</li>
+        * <li>rawEvent - Raw mouse event</li>
+        * <li>dropNode - Dropped node(s).</li>
+        * </ul>
+        * @param {Object} dropEvent
+        */
+       "nodedrop" : true,
+        /**
+        * @event nodedragover
+        * Fires when a tree node is being targeted for a drag drop, return false to signal drop not allowed. The dragOverEvent
+        * passed to handlers has the following properties:<br />
+        * <ul style="padding:5px;padding-left:16px;">
+        * <li>tree - The TreePanel</li>
+        * <li>target - The node being targeted for the drop</li>
+        * <li>data - The drag data from the drag source</li>
+        * <li>point - The point of the drop - append, above or below</li>
+        * <li>source - The drag source</li>
+        * <li>rawEvent - Raw mouse event</li>
+        * <li>dropNode - Drop node(s) provided by the source.</li>
+        * <li>cancel - Set this to true to signal drop not allowed.</li>
+        * </ul>
+        * @param {Object} dragOverEvent
+        */
+       "nodedragover" : true
         
    });
    if(this.singleExpand){
@@ -32635,11 +32639,15 @@ Roo.tree.TreeNodeUI.prototype = {
         }
     },
 
-    renderElements : function(n, a, targetNode, bulkRender){
+    renderElements : function(n, a, targetNode, bulkRender)
+    {
         // add some indent caching, this helps performance when rendering a large tree
         this.indentMarkup = n.parentNode ? n.parentNode.ui.getChildIndent() : '';
         var t = n.getOwnerTree();
         var txt = t.renderer ? t.renderer(n.attributes) : Roo.util.Format.htmlEncode(n.text);
+        if (typeof(n.attributes.html) != 'undefined') {
+            txt = n.attributes.html;
+        }
         var tip = t.rendererTip ? t.rendererTip(n.attributes) : txt;
         var cb = typeof a.checked == 'boolean';
         var href = a.href ? a.href : Roo.isGecko ? "" : "#";
@@ -44585,7 +44593,7 @@ layout.addxtype({
     {
         // basically accepts a pannel...
         // can accept a layout region..!?!?
-       // console.log('BorderLayout add ' + cfg.xtype)
+        //Roo.log('Roo.BorderLayout add ' + cfg.xtype)
         
         if (!cfg.xtype.match(/Panel$/)) {
             return false;
