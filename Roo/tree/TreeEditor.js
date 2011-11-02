@@ -14,10 +14,19 @@
  * Provides editor functionality for inline tree node editing.  Any valid {@link Roo.form.Field} can be used
  * as the editor field.
  * @constructor
- * @param {TreePanel} tree
- * @param {Object} config Either a prebuilt {@link Roo.form.Field} instance or a Field config object
+ * @param {Object} config (used to be the tree panel.)
+ * @param {Object} oldconfig DEPRECIATED Either a prebuilt {@link Roo.form.Field} instance or a Field config object
+ * @cfg {Roo.tree.TreePanel} tree The tree to bind to.
+ 
+ * 
  */
-Roo.tree.TreeEditor = function(tree, config){
+Roo.tree.TreeEditor = function(config, oldconfig) { // was -- (tree, config){
+    var tree = config;
+    if (oldconfig) {
+        config = oldconfig || {};
+    } else {
+        tree = config.tree;
+    }
     config = config || {};
     var field = config.events ? config : new Roo.form.TextField(config);
     Roo.tree.TreeEditor.superclass.constructor.call(this, field);
