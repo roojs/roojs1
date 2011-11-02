@@ -30,13 +30,10 @@ Roo.tree.TreeEditor = function(config, oldconfig) { // was -- (tree, config){
     } else {
         // new style..
         tree = config.tree;
-        fieldcfg = config.field || {};
-        field = config.field && config.field ? config : new Roo.form.TextField(fieldcfg);
-    
-        
+        field = config.field && config.field.events ? config.field : new Roo.form.TextField(config.field);
     }
     config = config || {};
-    var field = config.events ? config : new Roo.form.TextField(fieldcfg);
+    
     
     this.addEvents({
         /**
