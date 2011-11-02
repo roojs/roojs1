@@ -33585,19 +33585,26 @@ Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
  * @constructor
  * @param {Object} config (used to be the tree panel.)
  * @param {Object} oldconfig DEPRECIATED Either a prebuilt {@link Roo.form.Field} instance or a Field config object
+ * 
  * @cfg {Roo.tree.TreePanel} tree The tree to bind to.
- 
+ * @cfg {Roo.form.TextField|Object} field The field configuration
+ *
  * 
  */
 Roo.tree.TreeEditor = function(config, oldconfig) { // was -- (tree, config){
     var tree = config;
-    if (oldconfig) {
-        config = oldconfig;
+    var field;
+    if (oldconfig) { // old style..
+        field = oldconfig.events ? oldconfig : new Roo.form.TextField(oldconfig);
     } else {
+        // new style..
         tree = config.tree;
+        config.field = config.field  || {};
+        config.field.xtype = 'TextField';
+        field = Roo.factory(config.field, Roo.form);
     }
     config = config || {};
-    var field = config.events ? config : new Roo.form.TextField(config);
+    
     
     this.addEvents({
         /**
@@ -33610,8 +33617,8 @@ Roo.tree.TreeEditor = function(config, oldconfig) { // was -- (tree, config){
         "beforenodeedit" : true
     });
     
-    
-    Roo.tree.TreeEditor.superclass.constructor.call(this, field);
+    //Roo.log(config);
+    Roo.tree.TreeEditor.superclass.constructor.call(this, field, config);
 
     this.tree = tree;
 
@@ -33669,7 +33676,7 @@ Roo.extend(Roo.tree.TreeEditor, Roo.Editor, {
                 (td.clientWidth > 20 ? td.clientWidth : td.offsetWidth) - Math.max(0, nd.offsetLeft-td.scrollLeft) - /*cushion*/5);
         this.setSize(w, '');
         
-        return this.fireEvent('beforenodedit', this, this.editNode);
+        return this.fireEvent('beforenodeedit', this, this.editNode);
         
     },
 
@@ -33694,6 +33701,7 @@ Roo.extend(Roo.tree.TreeEditor, Roo.Editor, {
             this.triggerEdit(node);
             return false;
         }
+        return true;
     },
 
     // private
