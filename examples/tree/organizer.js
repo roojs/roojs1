@@ -84,9 +84,13 @@ var TreeTest = function(){
                 editor : {
                     xtype : 'TreeEditor',
                     xns : Roo.tree,
-                    allowBlank:false,
-                    blankText:'A name is required',
-                    selectOnFocus:true,
+                    field : {
+                        xtype : 'TextField',
+                        xns : Roo.form,
+                        allowBlank:false,
+                        blankText:'A name is required',
+                        selectOnFocus:true,    
+                    }
                     listeners : {
                         beforenodeedit : function(tr, n) {
                             Roo.log(n);
