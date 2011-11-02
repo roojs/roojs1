@@ -15816,6 +15816,12 @@
      "desc": "Fires before the component is hidden. Return false to stop the hide."
     },
     {
+     "name": "beforenodeedit",
+     "sig": "function (_self, node)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when editing is initiated, but before the value changes.  Editing can be canceled by returning\nfalse from the handler of this event."
+    },
+    {
      "name": "beforerender",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",

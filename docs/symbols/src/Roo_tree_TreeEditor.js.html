@@ -29,6 +29,19 @@
     }
     </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">|| {};
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">field </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.events </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.form.TextField</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">/**
+         * @event beforenodeedit
+         * Fires when editing is initiated, but before the value changes.  Editing can be canceled by returning
+         * false from the handler of this event.
+         * @param {Editor} this
+         * @param {Roo.tree.Node} node 
+         */
+        </span><span class="jsdoc-string">&quot;beforenodeedit&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+    
+    
     </span><span class="jsdoc-var">Roo.tree.TreeEditor.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">field</span><span class="jsdoc-syntax">);
 
     </span><span class="jsdoc-var">this.tree </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">;
@@ -86,6 +99,9 @@
                 </span><span class="jsdoc-var">this.maxWidth</span><span class="jsdoc-syntax">,
                 (</span><span class="jsdoc-var">td.clientWidth </span><span class="jsdoc-syntax">&gt; 20 ? </span><span class="jsdoc-var">td.clientWidth </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">td.offsetWidth</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-var">nd.offsetLeft</span><span class="jsdoc-syntax">-</span><span class="jsdoc-var">td.scrollLeft</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-comment">/*cushion*/</span><span class="jsdoc-syntax">5);
         </span><span class="jsdoc-var">this.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforenodedit'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.editNode</span><span class="jsdoc-syntax">);
+        
     },
 
     </span><span class="jsdoc-comment">// private
