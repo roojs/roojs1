@@ -100,7 +100,7 @@ Roo.extend(Roo.tree.TreeEditor, Roo.Editor, {
                 (td.clientWidth > 20 ? td.clientWidth : td.offsetWidth) - Math.max(0, nd.offsetLeft-td.scrollLeft) - /*cushion*/5);
         this.setSize(w, '');
         
-        return this.fireEvent('beforenodedit', this, this.editNode);
+        return this.fireEvent('beforenodeedit', this, this.editNode);
         
     },
 
