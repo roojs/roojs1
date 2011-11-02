@@ -30,7 +30,10 @@ Roo.tree.TreeEditor = function(config, oldconfig) { // was -- (tree, config){
     } else {
         // new style..
         tree = config.tree;
-        field = config.field && config.field.events ? config.field : new Roo.form.TextField(config.field || {});
+        config.field = config.field  || {};
+        config.field.xtype = 'TextField';
+        
+        field = Roo.factory(config.field, Roo.form);
     }
     config = config || {};
     
