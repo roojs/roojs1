@@ -31,9 +31,10 @@
  * @cfg {Boolean} singleExpand true if only 1 node per branch may be expanded
  * @cfg {Boolean} selModel A tree selection model to use with this TreePanel (defaults to a {@link Roo.tree.DefaultSelectionModel})
  * @cfg {Boolean} loader A TreeLoader for use with this TreePanel
+ * @cfg {Object|Roo.tree.TreeEditor} editor The TreeEditor or xtype data to display when clicked.
  * @cfg {String} pathSeparator The token used to separate sub-paths in path strings (defaults to '/')
- * @cfg {Function} renderer DEPRECIATED - use TreeLoader:create event / Sets the rendering (formatting) function for the nodes. to return HTML markup for the tree view. The render function is called with  the following parameters:&lt;ul&gt;&lt;li&gt;The {Object} The data for the node.&lt;/li&gt;&lt;/ul&gt;
- * @cfg {Function} rendererTip DEPRECIATED - use TreeLoader:create event / Sets the rendering (formatting) function for the nodes hovertip to return HTML markup for the tree view. The render function is called with  the following parameters:&lt;ul&gt;&lt;li&gt;The {Object} The data for the node.&lt;/li&gt;&lt;/ul&gt;
+ * @cfg {Function} renderer DEPRECATED - use TreeLoader:create event / Sets the rendering (formatting) function for the nodes. to return HTML markup for the tree view. The render function is called with  the following parameters:&lt;ul&gt;&lt;li&gt;The {Object} The data for the node.&lt;/li&gt;&lt;/ul&gt;
+ * @cfg {Function} rendererTip DEPRECATED - use TreeLoader:create event / Sets the rendering (formatting) function for the nodes hovertip to return HTML markup for the tree view. The render function is called with  the following parameters:&lt;ul&gt;&lt;li&gt;The {Object} The data for the node.&lt;/li&gt;&lt;/ul&gt;
  * 
  * @constructor
  * @param {String/HTMLElement/Element} el The container element
@@ -65,8 +66,8 @@
    </span><span class="jsdoc-comment">/**
     * Read-only. The id of the container element becomes this TreePanel's id.
     */
-   </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.id</span><span class="jsdoc-syntax">;
-   </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+    </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.id</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
         </span><span class="jsdoc-comment">/**
         * @event beforeload
         * Fires before a node is loaded, return false to cancel
@@ -240,10 +241,15 @@
         */
        </span><span class="jsdoc-string">&quot;nodedragover&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
         
-   </span><span class="jsdoc-syntax">});
-   </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.singleExpand</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-syntax">});
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.singleExpand</span><span class="jsdoc-syntax">){
        </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforeexpand&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.restrictExpand</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-   }
+    }
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.editor</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.editor.tree </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.editor </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.editor</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.tree</span><span class="jsdoc-syntax">);
+    }
+   
 };
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.tree.TreePanel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.data.Tree</span><span class="jsdoc-syntax">, {
     </span><span class="jsdoc-var">rootVisible </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,

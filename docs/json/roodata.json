@@ -2404,7 +2404,7 @@
      "name": "removeMask",
      "type": "Boolean",
      "desc": "True to create a single-use mask that is automatically destroyed after loading (useful for page loads),\nFalse to persist the mask element reference for multiple uses (e.g., for paged data widgets).  Defaults to false.",
-     "memberOf": "Roo"
+     "memberOf": ""
     },
     {
      "name": "msg",
@@ -2838,7 +2838,7 @@
      "name": "items",
      "type": "Array",
      "desc": "array of button configs or elements to add (will be converted to a MixedCollection)",
-     "memberOf": "Roo"
+     "memberOf": "Roo.Toolbar"
     }
    ],
    "events": []
@@ -3075,7 +3075,7 @@
      "name": "mode",
      "type": "String",
      "desc": "The shadow display mode.  Supports the following options:<br />\nsides: Shadow displays on both sides and bottom only<br />\nframe: Shadow displays equally on all four sides<br />\ndrop: Traditional bottom-right drop shadow (default)",
-     "memberOf": "Roo"
+     "memberOf": ""
     },
     {
      "name": "offset",
@@ -3639,7 +3639,7 @@
      "name": "items",
      "type": "Array",
      "desc": "array of button configs or elements to add (will be converted to a MixedCollection)",
-     "memberOf": "Roo"
+     "memberOf": ""
     },
     {
      "name": "container",
@@ -4054,7 +4054,7 @@
      "name": "tree",
      "type": "Roo.tree.TreePanel",
      "desc": "The tree TreePanel, with config etc.",
-     "memberOf": "Roo"
+     "memberOf": ""
     },
     {
      "name": "fitToFrame",
@@ -15676,6 +15676,12 @@
   "Roo.tree.TreeEditor": {
    "props": [
     {
+     "name": "tree",
+     "type": "Roo.tree.TreePanel",
+     "desc": "The tree to bind to.",
+     "memberOf": ""
+    },
+    {
      "name": "alignment",
      "type": "String",
      "desc": "The position to align to (see {@link Roo.Element#alignTo} for more details, defaults to \"l-l\").",
@@ -15910,7 +15916,7 @@
     {
      "name": "uiProviders",
      "type": "Object",
-     "desc": "(optional) An object containing properties which\n\nDEPRECIATED - use 'create' event handler to modify attributes - which affect creation.\nspecify custom {@link Roo.tree.TreeNodeUI} implementations. If the optional\n<i>uiProvider</i> attribute of a returned child node is a string rather\nthan a reference to a TreeNodeUI implementation, this that string value\nis used as a property name in the uiProviders object. You can define the provider named\n'default' , and this will be used for all nodes (if no uiProvider is delivered by the node data)",
+     "desc": "(optional) An object containing properties which\n\nDEPRECATED - use 'create' event handler to modify attributes - which affect creation.\nspecify custom {@link Roo.tree.TreeNodeUI} implementations. If the optional\n<i>uiProvider</i> attribute of a returned child node is a string rather\nthan a reference to a TreeNodeUI implementation, this that string value\nis used as a property name in the uiProviders object. You can define the provider named\n'default' , and this will be used for all nodes (if no uiProvider is delivered by the node data)",
      "memberOf": ""
     },
     {
@@ -16308,6 +16314,12 @@
      "memberOf": ""
     },
     {
+     "name": "editor",
+     "type": "Object|Roo.tree.TreeEditor",
+     "desc": "The TreeEditor or xtype data to display when clicked.",
+     "memberOf": ""
+    },
+    {
      "name": "pathSeparator",
      "type": "String",
      "desc": "The token used to separate sub-paths in path strings (defaults to '/')",
@@ -16316,13 +16328,13 @@
     {
      "name": "renderer",
      "type": "Function",
-     "desc": "DEPRECIATED - use TreeLoader:create event / Sets the rendering (formatting) function for the nodes. to return HTML markup for the tree view. The render function is called with  the following parameters:<ul><li>The {Object} The data for the node.</li></ul>",
+     "desc": "DEPRECATED - use TreeLoader:create event / Sets the rendering (formatting) function for the nodes. to return HTML markup for the tree view. The render function is called with  the following parameters:<ul><li>The {Object} The data for the node.</li></ul>",
      "memberOf": ""
     },
     {
      "name": "rendererTip",
      "type": "Function",
-     "desc": "DEPRECIATED - use TreeLoader:create event / Sets the rendering (formatting) function for the nodes hovertip to return HTML markup for the tree view. The render function is called with  the following parameters:<ul><li>The {Object} The data for the node.</li></ul>",
+     "desc": "DEPRECATED - use TreeLoader:create event / Sets the rendering (formatting) function for the nodes hovertip to return HTML markup for the tree view. The render function is called with  the following parameters:<ul><li>The {Object} The data for the node.</li></ul>",
      "memberOf": ""
     },
     {
