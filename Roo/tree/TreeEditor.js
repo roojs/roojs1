@@ -23,7 +23,7 @@
 Roo.tree.TreeEditor = function(config, oldconfig) { // was -- (tree, config){
     var tree = config;
     if (oldconfig) {
-        config = oldconfig || {};
+        config = oldconfig;
     } else {
         tree = config.tree;
     }
