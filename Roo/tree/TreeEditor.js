@@ -42,7 +42,7 @@ Roo.tree.TreeEditor = function(config, oldconfig) { // was -- (tree, config){
     });
     
     
-    Roo.tree.TreeEditor.superclass.constructor.call(this, field);
+    Roo.tree.TreeEditor.superclass.constructor.call(this, field, config);
 
     this.tree = tree;
 
