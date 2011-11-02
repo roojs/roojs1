@@ -16,9 +16,10 @@
  * @constructor
  * @param {Object} config (used to be the tree panel.)
  * @param {Object} oldconfig DEPRECIATED Either a prebuilt {@link Roo.form.Field} instance or a Field config object
+ * 
  * @cfg {Roo.tree.TreePanel} tree The tree to bind to.
  * @cfg {Roo.form.TextField|Object} field The field configuration
- 
+ *
  * 
  */
 Roo.tree.TreeEditor = function(config, oldconfig) { // was -- (tree, config){
