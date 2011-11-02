@@ -17,7 +17,7 @@ Roo.tree.TreeNodeUI.prototype.initEvents.createSequence(function(){
           Roo.QuickTips.register(o);
       }
 });
-
+ var tree;
 var TreeTest = function(){
     // shorthand
     var Tree = Roo.tree;
@@ -75,7 +75,7 @@ var TreeTest = function(){
             }));
             var imgBody = images.getEl();
             
-            var tree = new Tree.TreePanel(viewEl, {
+           tree = new Tree.TreePanel(viewEl, {
                 animate:true, 
                 enableDD:true,
                 containerScroll: true,
