@@ -89,7 +89,7 @@ var TreeTest = function(){
                         xns : Roo.form,
                         allowBlank:false,
                         blankText:'A name is required',
-                        selectOnFocus:true,   
+                        selectOnFocus:true
                     },
                     listeners : {
                         beforenodeedit : function(tr, n) {
