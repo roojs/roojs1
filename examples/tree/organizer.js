@@ -90,7 +90,7 @@ var TreeTest = function(){
                         allowBlank:false,
                         blankText:'A name is required',
                         selectOnFocus:true,   
-                    }
+                    },
                     listeners : {
                         beforenodeedit : function(tr, n) {
                             Roo.log(n);
