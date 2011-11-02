@@ -46,7 +46,7 @@ Roo.tree.TreeEditor = function(config, oldconfig) { // was -- (tree, config){
         "beforenodeedit" : true
     });
     
-    Roo.log(config);
+    //Roo.log(config);
     Roo.tree.TreeEditor.superclass.constructor.call(this, field, config);
 
     this.tree = tree;
