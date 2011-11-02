@@ -51,8 +51,8 @@ var TreeTest = function(){
                     }));
                     tree.getSelectionModel().select(node);
                     setTimeout(function(){
-                        ge.editNode = node;
-                        ge.startEdit(node.ui.textNode);
+                        tree.editor.editNode = node;
+                        tree.editor.startEdit(node.ui.textNode);
                     }, 10);
                 }
             });
@@ -105,12 +105,7 @@ var TreeTest = function(){
             tree.render();
             root.expand();
             
-            // add an inline editor for the nodes
-            var ge = new Roo.tree.TreeEditor(tree, {
-                allowBlank:false,
-                blankText:'A name is required',
-                selectOnFocus:true
-            });
+            
             
             // create the required templates
         	var tpl = new Roo.Template(
