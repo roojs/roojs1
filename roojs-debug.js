@@ -30914,9 +30914,10 @@ Roo.QuickTips.tips = Roo.QuickTips.register;/*
  * @cfg {Boolean} singleExpand true if only 1 node per branch may be expanded
  * @cfg {Boolean} selModel A tree selection model to use with this TreePanel (defaults to a {@link Roo.tree.DefaultSelectionModel})
  * @cfg {Boolean} loader A TreeLoader for use with this TreePanel
+ * @cfg {Object|Roo.tree.TreeEditor} editor The TreeEditor or xtype data to display when clicked.
  * @cfg {String} pathSeparator The token used to separate sub-paths in path strings (defaults to '/')
- * @cfg {Function} renderer DEPRECIATED - use TreeLoader:create event / Sets the rendering (formatting) function for the nodes. to return HTML markup for the tree view. The render function is called with  the following parameters:<ul><li>The {Object} The data for the node.</li></ul>
- * @cfg {Function} rendererTip DEPRECIATED - use TreeLoader:create event / Sets the rendering (formatting) function for the nodes hovertip to return HTML markup for the tree view. The render function is called with  the following parameters:<ul><li>The {Object} The data for the node.</li></ul>
+ * @cfg {Function} renderer DEPRECATED - use TreeLoader:create event / Sets the rendering (formatting) function for the nodes. to return HTML markup for the tree view. The render function is called with  the following parameters:<ul><li>The {Object} The data for the node.</li></ul>
+ * @cfg {Function} rendererTip DEPRECATED - use TreeLoader:create event / Sets the rendering (formatting) function for the nodes hovertip to return HTML markup for the tree view. The render function is called with  the following parameters:<ul><li>The {Object} The data for the node.</li></ul>
  * 
  * @constructor
  * @param {String/HTMLElement/Element} el The container element
@@ -30948,8 +30949,8 @@ Roo.tree.TreePanel = function(el, config){
    /**
     * Read-only. The id of the container element becomes this TreePanel's id.
     */
-   this.id = this.el.id;
-   this.addEvents({
+    this.id = this.el.id;
+    this.addEvents({
         /**
         * @event beforeload
         * Fires before a node is loaded, return false to cancel
@@ -31123,10 +31124,15 @@ Roo.tree.TreePanel = function(el, config){
         */
        "nodedragover" : true
         
-   });
-   if(this.singleExpand){
+    });
+    if(this.singleExpand){
        this.on("beforeexpand", this.restrictExpand, this);
-   }
+    }
+    if (this.editor) {
+        this.editor.tree = this;
+        this.editor = Roo.factory(this.editor, Roo.tree);
+    }
+   
 };
 Roo.extend(Roo.tree.TreePanel, Roo.data.Tree, {
     rootVisible : true,
@@ -32889,7 +32895,7 @@ Roo.extend(Roo.tree.TreeLoader, Roo.util.Observable, {
     /**
     * @cfg {Object} uiProviders (optional) An object containing properties which
     * 
-    * DEPRECIATED - use 'create' event handler to modify attributes - which affect creation.
+    * DEPRECATED - use 'create' event handler to modify attributes - which affect creation.
     * specify custom {@link Roo.tree.TreeNodeUI} implementations. If the optional
     * <i>uiProvider</i> attribute of a returned child node is a string rather
     * than a reference to a TreeNodeUI implementation, this that string value
@@ -33577,10 +33583,19 @@ Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
  * Provides editor functionality for inline tree node editing.  Any valid {@link Roo.form.Field} can be used
  * as the editor field.
  * @constructor
- * @param {TreePanel} tree
- * @param {Object} config Either a prebuilt {@link Roo.form.Field} instance or a Field config object
+ * @param {Object} config (used to be the tree panel.)
+ * @param {Object} oldconfig DEPRECIATED Either a prebuilt {@link Roo.form.Field} instance or a Field config object
+ * @cfg {Roo.tree.TreePanel} tree The tree to bind to.
+ 
+ * 
  */
-Roo.tree.TreeEditor = function(tree, config){
+Roo.tree.TreeEditor = function(config, oldconfig) { // was -- (tree, config){
+    var tree = config;
+    if (oldconfig) {
+        config = oldconfig;
+    } else {
+        tree = config.tree;
+    }
     config = config || {};
     var field = config.events ? config : new Roo.form.TextField(config);
     Roo.tree.TreeEditor.superclass.constructor.call(this, field);
