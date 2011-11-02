@@ -463,12 +463,15 @@ Roo.tree.TreeNodeUI.prototype = {
                     this.c1 = c1; this.c2 = c2;
                 }
             }else{
-                if(!this.wasLeaf){
-                    Roo.fly(this.elNode).replaceClass("x-tree-node-expanded", "x-tree-node-leaf");
-                    delete this.c1;
-                    delete this.c2;
-                    this.wasLeaf = true;
-                }
+                // this changes non-leafs into leafs if they have no children.
+                // it's not very rational behaviour..
+                
+                //if(!this.wasLeaf){
+                //    Roo.fly(this.elNode).replaceClass("x-tree-node-expanded", "x-tree-node-leaf");
+                //    delete this.c1;
+                //    delete this.c2;
+                //    this.wasLeaf = true;
+                //}
             }
             var ecc = "x-tree-ec-icon "+cls;
             if(this.ecc != ecc){
