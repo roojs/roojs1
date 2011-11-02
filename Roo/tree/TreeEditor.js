@@ -17,18 +17,25 @@
  * @param {Object} config (used to be the tree panel.)
  * @param {Object} oldconfig DEPRECIATED Either a prebuilt {@link Roo.form.Field} instance or a Field config object
  * @cfg {Roo.tree.TreePanel} tree The tree to bind to.
+ * @cfg {Roo.form.TextField|Object} field The field configuration
  
  * 
  */
 Roo.tree.TreeEditor = function(config, oldconfig) { // was -- (tree, config){
     var tree = config;
-    if (oldconfig) {
-        config = oldconfig;
+    var field;
+    if (oldconfig) { // old style..
+        field = oldconfig.events ? oldconfig : new Roo.form.TextField(oldconfig);
     } else {
+        // new style..
         tree = config.tree;
+        fieldcfg = config.field || {};
+        field = config.field && config.field ? config : new Roo.form.TextField(fieldcfg);
+    
+        
     }
     config = config || {};
-    var field = config.events ? config : new Roo.form.TextField(config);
+    var field = config.events ? config : new Roo.form.TextField(fieldcfg);
     
     this.addEvents({
         /**
