@@ -247,7 +247,7 @@ Roo.tree.TreePanel = function(el, config){
     }
     if (this.editor) {
         this.editor.tree = this;
-        this.editor = Roo.factory(this.editor);
+        this.editor = Roo.factory(this.editor,Roo.tree);
     }
    
 };
