@@ -132,6 +132,7 @@ Roo.extend(Roo.tree.TreeEditor, Roo.Editor, {
             this.triggerEdit(node);
             return false;
         }
+        return true;
     },
 
     // private
