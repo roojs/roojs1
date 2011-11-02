@@ -97,7 +97,7 @@ Roo.extend(Roo.tree.TreeLoader, Roo.util.Observable, {
     /**
     * @cfg {Object} uiProviders (optional) An object containing properties which
     * 
-    * DEPRECIATED - use 'create' event handler to modify attributes - which affect creation.
+    * DEPRECATED - use 'create' event handler to modify attributes - which affect creation.
     * specify custom {@link Roo.tree.TreeNodeUI} implementations. If the optional
     * <i>uiProvider</i> attribute of a returned child node is a string rather
     * than a reference to a TreeNodeUI implementation, this that string value
