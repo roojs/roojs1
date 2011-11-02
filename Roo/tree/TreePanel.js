@@ -31,6 +31,7 @@
  * @cfg {Boolean} singleExpand true if only 1 node per branch may be expanded
  * @cfg {Boolean} selModel A tree selection model to use with this TreePanel (defaults to a {@link Roo.tree.DefaultSelectionModel})
  * @cfg {Boolean} loader A TreeLoader for use with this TreePanel
+ * @cfg {Roo.tree.TreeEditor} editor The TreeEditor to display when clicked.
  * @cfg {String} pathSeparator The token used to separate sub-paths in path strings (defaults to '/')
  * @cfg {Function} renderer DEPRECATED - use TreeLoader:create event / Sets the rendering (formatting) function for the nodes. to return HTML markup for the tree view. The render function is called with  the following parameters:<ul><li>The {Object} The data for the node.</li></ul>
  * @cfg {Function} rendererTip DEPRECATED - use TreeLoader:create event / Sets the rendering (formatting) function for the nodes hovertip to return HTML markup for the tree view. The render function is called with  the following parameters:<ul><li>The {Object} The data for the node.</li></ul>
