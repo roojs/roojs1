@@ -33598,6 +33598,19 @@ Roo.tree.TreeEditor = function(config, oldconfig) { // was -- (tree, config){
     }
     config = config || {};
     var field = config.events ? config : new Roo.form.TextField(config);
+    
+    this.addEvents({
+        /**
+         * @event beforenodeedit
+         * Fires when editing is initiated, but before the value changes.  Editing can be canceled by returning
+         * false from the handler of this event.
+         * @param {Editor} this
+         * @param {Roo.tree.Node} node 
+         */
+        "beforenodeedit" : true
+    });
+    
+    
     Roo.tree.TreeEditor.superclass.constructor.call(this, field);
 
     this.tree = tree;
@@ -33655,6 +33668,9 @@ Roo.extend(Roo.tree.TreeEditor, Roo.Editor, {
                 this.maxWidth,
                 (td.clientWidth > 20 ? td.clientWidth : td.offsetWidth) - Math.max(0, nd.offsetLeft-td.scrollLeft) - /*cushion*/5);
         this.setSize(w, '');
+        
+        return this.fireEvent('beforenodedit', this, this.editNode);
+        
     },
 
     // private
