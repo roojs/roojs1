@@ -16,19 +16,26 @@
  * @constructor
  * @param {Object} config (used to be the tree panel.)
  * @param {Object} oldconfig DEPRECIATED Either a prebuilt {@link Roo.form.Field} instance or a Field config object
+ * 
  * @cfg {Roo.tree.TreePanel} tree The tree to bind to.
- 
+ * @cfg {Roo.form.TextField|Object} field The field configuration
+ *
  * 
  */
 </span><span class="jsdoc-var">Roo.tree.TreeEditor </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">oldconfig</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// was -- (tree, config){
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tree </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">;
-    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">oldconfig</span><span class="jsdoc-syntax">) {
-        </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">oldconfig</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">field</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">oldconfig</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// old style..
+        </span><span class="jsdoc-var">field </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">oldconfig.events </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">oldconfig </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.form.TextField</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">oldconfig</span><span class="jsdoc-syntax">);
     } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-comment">// new style..
         </span><span class="jsdoc-var">tree </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.tree</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">config.field </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.field  </span><span class="jsdoc-syntax">|| {};
+        </span><span class="jsdoc-var">config.field.xtype </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'TextField'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">field </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.field</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.form</span><span class="jsdoc-syntax">);
     }
     </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">|| {};
-    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">field </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.events </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.form.TextField</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    
     
     </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
         </span><span class="jsdoc-comment">/**
@@ -41,8 +48,8 @@
         </span><span class="jsdoc-string">&quot;beforenodeedit&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
     </span><span class="jsdoc-syntax">});
     
-    
-    </span><span class="jsdoc-var">Roo.tree.TreeEditor.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">field</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-comment">//Roo.log(config);
+    </span><span class="jsdoc-var">Roo.tree.TreeEditor.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">field</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
 
     </span><span class="jsdoc-var">this.tree </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">;
 
@@ -100,7 +107,7 @@
                 (</span><span class="jsdoc-var">td.clientWidth </span><span class="jsdoc-syntax">&gt; 20 ? </span><span class="jsdoc-var">td.clientWidth </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">td.offsetWidth</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-var">nd.offsetLeft</span><span class="jsdoc-syntax">-</span><span class="jsdoc-var">td.scrollLeft</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-comment">/*cushion*/</span><span class="jsdoc-syntax">5);
         </span><span class="jsdoc-var">this.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforenodedit'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.editNode</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforenodeedit'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.editNode</span><span class="jsdoc-syntax">);
         
     },
 
@@ -125,6 +132,7 @@
             </span><span class="jsdoc-var">this.triggerEdit</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
         }
+        </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
     },
 
     </span><span class="jsdoc-comment">// private
