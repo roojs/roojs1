@@ -80,7 +80,14 @@ var TreeTest = function(){
                 enableDD:true,
                 containerScroll: true,
                 ddGroup: 'organizerDD',
-                rootVisible:false
+                rootVisible:false,
+                editor : {
+                    xtype : 'TreeEditor',
+                    xns : Roo.tree,
+                    allowBlank:false,
+                    blankText:'A name is required',
+                    selectOnFocus:true
+                }
             });
             var root = new Tree.TreeNode({
                 text: 'Albums', 
