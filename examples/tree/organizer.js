@@ -86,7 +86,12 @@ var TreeTest = function(){
                     xns : Roo.tree,
                     allowBlank:false,
                     blankText:'A name is required',
-                    selectOnFocus:true
+                    selectOnFocus:true,
+                    listeners : {
+                        beforenodeedit : function(tr, n) {
+                            Roo.log(n);
+                        }
+                    }
                 }
             });
             var root = new Tree.TreeNode({
