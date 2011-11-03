@@ -2471,8 +2471,14 @@ Roo.lib.Event = function() {
  */
 
 (function() {
-    
+    /**
+     * @class Roo.lib.Ajax
+     *
+     */
     Roo.lib.Ajax = {
+        /**
+         * @static 
+         */
         request : function(method, uri, cb, data, options) {
             if(options){
                 var hs = options.headers;
@@ -31132,6 +31138,10 @@ Roo.tree.TreePanel = function(el, config){
         this.editor.tree = this;
         this.editor = Roo.factory(this.editor, Roo.tree);
     }
+    
+    if (this.selModel) {
+        this.selModel = Roo.factory(this.selModel, Roo.tree);
+    }
    
 };
 Roo.extend(Roo.tree.TreePanel, Roo.data.Tree, {
@@ -31362,8 +31372,10 @@ Roo.extend(Roo.tree.TreePanel, Roo.data.Tree, {
  * @extends Roo.util.Observable
  * The default single selection for a TreePanel.
  */
-Roo.tree.DefaultSelectionModel = function(){
+Roo.tree.DefaultSelectionModel = function(cfg){
    this.selNode = null;
+   
+   
    
    this.addEvents({
        /**
@@ -31383,6 +31395,8 @@ Roo.tree.DefaultSelectionModel = function(){
         */
        "beforeselect" : true
    });
+   
+    Roo.tree.DefaultSelectionModel.superclass.constructor.call(this,cfg);
 };
 
 Roo.extend(Roo.tree.DefaultSelectionModel, Roo.util.Observable, {
@@ -31566,6 +31580,8 @@ Roo.tree.MultiSelectionModel = function(){
         */
        "selectionchange" : true
    });
+   Roo.tree.MultiSelectionModel.superclass.constructor.call(this,cfg);
+   
 };
 
 Roo.extend(Roo.tree.MultiSelectionModel, Roo.util.Observable, {
