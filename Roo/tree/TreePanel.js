@@ -252,8 +252,6 @@ Roo.tree.TreePanel = function(el, config){
     
     if (this.selModel) {
         this.selModel = Roo.factory(this.selModel, Roo.tree);
-        
-        
     }
    
 };
