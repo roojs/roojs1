@@ -15,8 +15,10 @@
  * @extends Roo.util.Observable
  * The default single selection for a TreePanel.
  */
-Roo.tree.DefaultSelectionModel = function(){
+Roo.tree.DefaultSelectionModel = function(cfg){
    this.selNode = null;
+   
+   
    
    this.addEvents({
        /**
@@ -36,6 +38,8 @@ Roo.tree.DefaultSelectionModel = function(){
         */
        "beforeselect" : true
    });
+   
+    Roo.tree.DefaultSelectionModel.superclass.constructor.call(this,cfg);
 };
 
 Roo.extend(Roo.tree.DefaultSelectionModel, Roo.util.Observable, {
