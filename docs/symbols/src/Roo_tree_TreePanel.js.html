@@ -249,6 +249,10 @@
         </span><span class="jsdoc-var">this.editor.tree </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.editor </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.editor</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.tree</span><span class="jsdoc-syntax">);
     }
+    
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.selModel</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.selModel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.selModel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.tree</span><span class="jsdoc-syntax">);
+    }
    
 };
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.tree.TreePanel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.data.Tree</span><span class="jsdoc-syntax">, {

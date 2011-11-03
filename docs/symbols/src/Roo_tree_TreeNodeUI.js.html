@@ -463,7 +463,10 @@
                     </span><span class="jsdoc-var">this.c1 </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">c1</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">this.c2 </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">c2</span><span class="jsdoc-syntax">;
                 }
             }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
-                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.wasLeaf</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-comment">// this changes non-leafs into leafs if they have no children.
+                // it's not very rational behaviour..
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.wasLeaf </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.node.leaf</span><span class="jsdoc-syntax">){
                     </span><span class="jsdoc-var">Roo.fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.elNode</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replaceClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-tree-node-expanded&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;x-tree-node-leaf&quot;</span><span class="jsdoc-syntax">);
                     </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">this.c1</span><span class="jsdoc-syntax">;
                     </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">this.c2</span><span class="jsdoc-syntax">;

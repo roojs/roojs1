@@ -14,9 +14,12 @@
  * @class Roo.tree.DefaultSelectionModel
  * @extends Roo.util.Observable
  * The default single selection for a TreePanel.
+ * @param {Object} cfg Configuration
  */
-</span><span class="jsdoc-var">Roo.tree.DefaultSelectionModel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+</span><span class="jsdoc-var">Roo.tree.DefaultSelectionModel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">){
    </span><span class="jsdoc-var">this.selNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+   
+   
    
    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
        </span><span class="jsdoc-comment">/**
@@ -36,6 +39,8 @@
         */
        </span><span class="jsdoc-string">&quot;beforeselect&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
    </span><span class="jsdoc-syntax">});
+   
+    </span><span class="jsdoc-var">Roo.tree.DefaultSelectionModel.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.tree.DefaultSelectionModel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.util.Observable</span><span class="jsdoc-syntax">, {
@@ -206,6 +211,7 @@
  * @class Roo.tree.MultiSelectionModel
  * @extends Roo.util.Observable
  * Multi selection for a TreePanel.
+ * @param {Object} cfg Configuration
  */
 </span><span class="jsdoc-var">Roo.tree.MultiSelectionModel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
    </span><span class="jsdoc-var">this.selNodes </span><span class="jsdoc-syntax">= [];
@@ -219,6 +225,8 @@
         */
        </span><span class="jsdoc-string">&quot;selectionchange&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
    </span><span class="jsdoc-syntax">});
+   </span><span class="jsdoc-var">Roo.tree.MultiSelectionModel.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+   
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.tree.MultiSelectionModel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.util.Observable</span><span class="jsdoc-syntax">, {
