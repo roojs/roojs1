@@ -223,6 +223,8 @@ Roo.tree.MultiSelectionModel = function(){
         */
        "selectionchange" : true
    });
+   Roo.tree.MultiSelectionModel.superclass.constructor.call(this,cfg);
+   
 };
 
 Roo.extend(Roo.tree.MultiSelectionModel, Roo.util.Observable, {
