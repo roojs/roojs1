@@ -211,6 +211,7 @@ Roo.extend(Roo.tree.DefaultSelectionModel, Roo.util.Observable, {
  * @class Roo.tree.MultiSelectionModel
  * @extends Roo.util.Observable
  * Multi selection for a TreePanel.
+ * @param {Object} cfg Configuration
  */
 Roo.tree.MultiSelectionModel = function(){
    this.selNodes = [];
