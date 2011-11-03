@@ -14,6 +14,7 @@
  * @class Roo.tree.DefaultSelectionModel
  * @extends Roo.util.Observable
  * The default single selection for a TreePanel.
+ * @param {Object} cfg Configuration
  */
 Roo.tree.DefaultSelectionModel = function(cfg){
    this.selNode = null;
