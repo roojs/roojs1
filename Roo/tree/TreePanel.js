@@ -249,6 +249,12 @@ Roo.tree.TreePanel = function(el, config){
         this.editor.tree = this;
         this.editor = Roo.factory(this.editor, Roo.tree);
     }
+    
+    if (this.selModel) {
+        this.selModel = Roo.factory(this.selModel, Roo.tree);
+        
+        
+    }
    
 };
 Roo.extend(Roo.tree.TreePanel, Roo.data.Tree, {
