@@ -2471,8 +2471,14 @@ Roo.lib.Event = function() {
  */
 
 (function() {
-    
+    /**
+     * @class Roo.lib.Ajax
+     *
+     */
     Roo.lib.Ajax = {
+        /**
+         * @static 
+         */
         request : function(method, uri, cb, data, options) {
             if(options){
                 var hs = options.headers;
