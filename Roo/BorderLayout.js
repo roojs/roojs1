@@ -378,6 +378,12 @@ layout.addxtype({
             return false;
         }
         var ret = false;
+        
+        if (typeof(cfg.region) == 'undefined') {
+            Roo.log("Failed to add Panel, region was not set");
+            Roo.log(cfg);
+            return false;
+        }
         var region = cfg.region;
         delete cfg.region;
         
