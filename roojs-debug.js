@@ -31371,6 +31371,7 @@ Roo.extend(Roo.tree.TreePanel, Roo.data.Tree, {
  * @class Roo.tree.DefaultSelectionModel
  * @extends Roo.util.Observable
  * The default single selection for a TreePanel.
+ * @param {Object} cfg Configuration
  */
 Roo.tree.DefaultSelectionModel = function(cfg){
    this.selNode = null;
@@ -31567,6 +31568,7 @@ Roo.extend(Roo.tree.DefaultSelectionModel, Roo.util.Observable, {
  * @class Roo.tree.MultiSelectionModel
  * @extends Roo.util.Observable
  * Multi selection for a TreePanel.
+ * @param {Object} cfg Configuration
  */
 Roo.tree.MultiSelectionModel = function(){
    this.selNodes = [];
@@ -44657,6 +44659,12 @@ layout.addxtype({
             return false;
         }
         var ret = false;
+        
+        if (typeof(cfg.region) == 'undefined') {
+            Roo.log("Failed to add Panel, region was not set");
+            Roo.log(cfg);
+            return false;
+        }
         var region = cfg.region;
         delete cfg.region;
         
