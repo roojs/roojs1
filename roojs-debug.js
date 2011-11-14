@@ -35944,9 +35944,7 @@ side          Add an error icon to the right of the field with a popup on hover
      * @param {Mixed} value The value to set
      */
     setRawValue : function(v){
-        var r =  this.el.dom.value = (v === null || v === undefined ? '' : v);
-        this.shadowNameEl ? (this.shadowNameEl.value =   (v === this.emptyText) ? '' : this.el.dom.value) : false;
-        
+        return this.el.dom.value = (v === null || v === undefined ? '' : v);
     },
 
     /**
@@ -35957,8 +35955,7 @@ side          Add an error icon to the right of the field with a popup on hover
         this.value = v;
         if(this.rendered){
             this.el.dom.value = (v === null || v === undefined ? '' : v);
-            this.shadowNameEl ? (this.shadowNameEl.value = (v === this.emptyText) ? '' : this.el.dom.value) : false;
-            this.validate();
+             this.validate();
         }
     },
 
@@ -37552,8 +37549,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
     editicon: false,
     
     // element that contains real text value.. (when hidden is used..)
-    shadowNameEl : undefined,
-    
+     
     // private
     onRender : function(ct, position){
         Roo.form.ComboBox.superclass.onRender.call(this, ct, position);
@@ -37565,12 +37561,9 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
                 this.value !== undefined ? this.value : '';
 
             // prevent input submission
-            //if (this.hiddenName == this.name) { 
             this.el.dom.removeAttribute('name');
-            this.shadowNameEl = this.el.insertSibling({tag:'input', type:'hidden', name: this.name}, 'before', true);
-            
-            
-            //}
+             
+             
         }
         if(Roo.isGecko){
             this.el.dom.setAttribute('autocomplete', 'off');
@@ -38135,7 +38128,6 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         if(this.el.dom.value.length > 0){
             this.el.dom.value =
                 this.lastSelectionText === undefined ? '' : this.lastSelectionText;
-            this.shadowNameEl ? (this.shadowNameEl.dom.value = this.el.dom.value) : false;
             this.applyEmptyText();
         }
     },
@@ -41472,10 +41464,12 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
      * This differs from getValues as it calls getValue on each child item, rather than using dom data.
      * @return {Object}
      */
-    getFieldValues : function()
+    getFieldValues : function(with_hidden)
     {
         if (this.childForms) {
             // copy values from the child forms
+            // should this call getFieldValues - probably not as we do not currently copy
+            // hidden fields when we generate..
             Roo.each(this.childForms, function (f) {
                 this.setValues(f.getValues());
             }, this);
@@ -41487,8 +41481,13 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 return;
             }
             var v = f.getValue();
+            // not sure if this supported any more..
             if ((typeof(v) == 'object') && f.getRawValue) {
                 v = f.getRawValue() ; // dates..
+            }
+            // combo boxes where name != hiddenName...
+            if (f.name != f.getName()) {
+                ret[f.name] = f.getRawValue();
             }
             ret[f.getName()] = v;
         });
