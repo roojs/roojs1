@@ -469,6 +469,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 return;
             }
             var v = f.getValue();
+            // not sure if this supported any more..
             if ((typeof(v) == 'object') && f.getRawValue) {
                 v = f.getRawValue() ; // dates..
             }
