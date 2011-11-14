@@ -23065,7 +23065,9 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
                 this.value !== undefined ? this.value : '';
 
             // prevent input submission
-            this.el.dom.removeAttribute('name');
+            if (this.hiddenName == this.name) { 
+                this.el.dom.removeAttribute('name');
+            }
         }
         if(Roo.isGecko){
             this.el.dom.setAttribute('autocomplete', 'off');
