@@ -473,6 +473,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             if ((typeof(v) == 'object') && f.getRawValue) {
                 v = f.getRawValue() ; // dates..
             }
+            // combo boxes where name != hiddenName...
             if (f.name != f.getName()) {
                 ret[f.name] = f.getRawValue();
             }
