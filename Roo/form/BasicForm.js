@@ -452,12 +452,12 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
      * This differs from getValues as it calls getValue on each child item, rather than using dom data.
      * @return {Object}
      */
-    getFieldValues : function()
+    getFieldValues : function(with_hidden)
     {
         if (this.childForms) {
             // copy values from the child forms
             Roo.each(this.childForms, function (f) {
-                this.setValues(f.getValues());
+                this.setValues(f.getFieldValues(with_hidden));
             }, this);
         }
         
