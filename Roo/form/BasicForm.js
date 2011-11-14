@@ -456,8 +456,10 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
     {
         if (this.childForms) {
             // copy values from the child forms
+            // should this call getFieldValues - probably not as we do not currently copy
+            // hidden fields when we generate..
             Roo.each(this.childForms, function (f) {
-                this.setValues(f.getFieldValues(with_hidden));
+                this.setValues(f.getValues());
             }, this);
         }
         
@@ -470,6 +472,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             if ((typeof(v) == 'object') && f.getRawValue) {
                 v = f.getRawValue() ; // dates..
             }
+            
             ret[f.getName()] = v;
         });
         
