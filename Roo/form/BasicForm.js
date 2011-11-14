@@ -472,7 +472,9 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             if ((typeof(v) == 'object') && f.getRawValue) {
                 v = f.getRawValue() ; // dates..
             }
-            
+            if (f.name != f.getName()) {
+                ret[f.name] = f.getRawValue();
+            }
             ret[f.getName()] = v;
         });
         
