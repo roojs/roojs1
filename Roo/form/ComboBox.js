@@ -727,11 +727,17 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
                     record = r;
                     return false;
                 }
+                return true;
             });
         }
         return record;
     },
-
+    
+    getName: function(){
+        if (!this.rendered) {return ''};
+        return !this.hiddenName && this.el.dom.name  ? this.el.dom.name : (this.hiddenName || '');
+        
+    }
     // private
     onViewMove : function(e, t){
         this.inKeyMode = false;
