@@ -471,7 +471,7 @@ side          Add an error icon to the right of the field with a popup on hover
      */
     setRawValue : function(v){
         var r =  this.el.dom.value = (v === null || v === undefined ? '' : v);
-        this.shadowNameEl ? (this.shadowNameEl.dom.value = this.el.dom.value) : false;
+        this.shadowNameEl ? (this.shadowNameEl.value = this.el.dom.value) : false;
         
     },
 
