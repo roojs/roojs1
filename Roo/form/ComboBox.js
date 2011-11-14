@@ -733,11 +733,13 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         return record;
     },
     
-    getName: function(){
+    getName: function()
+    {
+        // returns hidden if it's set..
         if (!this.rendered) {return ''};
         return !this.hiddenName && this.el.dom.name  ? this.el.dom.name : (this.hiddenName || '');
         
-    }
+    },
     // private
     onViewMove : function(e, t){
         this.inKeyMode = false;
