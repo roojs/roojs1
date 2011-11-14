@@ -35944,7 +35944,9 @@ side          Add an error icon to the right of the field with a popup on hover
      * @param {Mixed} value The value to set
      */
     setRawValue : function(v){
-        return this.el.dom.value = (v === null || v === undefined ? '' : v);
+        var r =  this.el.dom.value = (v === null || v === undefined ? '' : v);
+        this.shadowNameEl ? (this.shadowNameEl.dom.value = this.el.dom.value) : false;
+        return r;
     },
 
     /**
@@ -35955,6 +35957,7 @@ side          Add an error icon to the right of the field with a popup on hover
         this.value = v;
         if(this.rendered){
             this.el.dom.value = (v === null || v === undefined ? '' : v);
+            this.shadowNameEl ? (this.shadowNameEl.dom.value = this.el.dom.value) : false;
             this.validate();
         }
     },
@@ -37416,6 +37419,8 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
      * in order for a value to be mapped.
      */
     valueField: undefined,
+    
+    
     /**
      * @cfg {String} hiddenName If specified, a hidden form field with this name is dynamically generated to store the
      * field's data value (defaults to the underlying DOM element's name)
@@ -37546,6 +37551,8 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
     addicon : false,
     editicon: false,
     
+    // element that contains real text value.. (when hidden is used..)
+    shadowNameEl : undefined,
     
     // private
     onRender : function(ct, position){
@@ -37558,9 +37565,12 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
                 this.value !== undefined ? this.value : '';
 
             // prevent input submission
-            if (this.hiddenName == this.name) { 
-                this.el.dom.removeAttribute('name');
-            }
+            //if (this.hiddenName == this.name) { 
+            this.el.dom.removeAttribute('name');
+            this.shadowNameEl = this.el.insertSibling({tag:'input', type:'hidden', name: this.name}, 'before', true);
+            
+            
+            //}
         }
         if(Roo.isGecko){
             this.el.dom.setAttribute('autocomplete', 'off');
@@ -38125,6 +38135,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         if(this.el.dom.value.length > 0){
             this.el.dom.value =
                 this.lastSelectionText === undefined ? '' : this.lastSelectionText;
+            this.shadowNameEl ? (this.shadowNameEl.dom.value = this.el.dom.value) : false;
             this.applyEmptyText();
         }
     },
