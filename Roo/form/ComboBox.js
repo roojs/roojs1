@@ -311,9 +311,13 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
                 this.value !== undefined ? this.value : '';
 
             // prevent input submission
-            if (this.hiddenName == this.name) { 
-                this.el.dom.removeAttribute('name');
-            }
+            //if (this.hiddenName == this.name) { 
+            this.el.dom.removeAttribute('name');
+            this.hiddenNameField = this.el.insertSibling({tag:'input', type:'hidden', name: this.name}, 'before', true);
+            
+            
+            
+            //}
         }
         if(Roo.isGecko){
             this.el.dom.setAttribute('autocomplete', 'off');
