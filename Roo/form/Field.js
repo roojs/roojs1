@@ -483,7 +483,7 @@ side          Add an error icon to the right of the field with a popup on hover
         this.value = v;
         if(this.rendered){
             this.el.dom.value = (v === null || v === undefined ? '' : v);
-            this.shadowNameEl ? (this.shadowNameEl.value = (v === this.emptyText) ? '' : this.el.dom.value)) : false;
+            this.shadowNameEl ? (this.shadowNameEl.value = (v === this.emptyText) ? '' : this.el.dom.value) : false;
             this.validate();
         }
     },
