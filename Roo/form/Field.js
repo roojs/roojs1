@@ -470,7 +470,9 @@ side          Add an error icon to the right of the field with a popup on hover
      * @param {Mixed} value The value to set
      */
     setRawValue : function(v){
-        return this.el.dom.value = (v === null || v === undefined ? '' : v);
+        var r =  this.el.dom.value = (v === null || v === undefined ? '' : v);
+        this.shadowNameEl ? (this.shadowNameEl.dom.value = this.el.dom.value) : false;
+        return r;
     },
 
     /**
@@ -481,6 +483,7 @@ side          Add an error icon to the right of the field with a popup on hover
         this.value = v;
         if(this.rendered){
             this.el.dom.value = (v === null || v === undefined ? '' : v);
+            this.shadowNameEl ? (this.shadowNameEl.dom.value = this.el.dom.value) : false;
             this.validate();
         }
     },
