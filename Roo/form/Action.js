@@ -259,7 +259,6 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
             Roo.MessageBox.hide();
         }
         
-        
         this.response = response;
         this.failureType = Roo.form.Action.CONNECT_FAILURE;
         this.form.afterAction(this, false);
