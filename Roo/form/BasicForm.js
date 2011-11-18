@@ -282,7 +282,11 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             Roo.callback(o.failure, o.scope, [this, action]);
             // show an error message if no failed handler is set..
             if (!this.hasListener('actionfailed')) {
-                Roo.MessageBox.alert("Error", "Saving Failed, please check your entries");
+                Roo.MessageBox.alert("Error",
+                    typeof(action.result.errorMsg) != 'undefined' ?
+                        action.result.errorMsg :
+                        "Saving Failed, please check your entries"
+                );
             }
             
             this.fireEvent('actionfailed', this, action);
