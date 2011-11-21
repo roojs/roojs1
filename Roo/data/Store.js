@@ -378,10 +378,8 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
         }
         // if data returned failure - throw an exception.
         if (o.success === false) {
-             // show a message if no listener is registered.
-            if (!this.hasListener('loadexception') && typeof(this.reador.jsonData.errorMsg) != 'undefined') {
-                Roo.MessageBox.alert("Error loading",this.reader.jsonData.errorMsg);
-            }
+             
+           
             
             
             this.fireEvent("loadexception", this, o, options, this.reader.jsonData);
@@ -413,6 +411,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             options.callback.call(options.scope || this, r, options, true);
         }
     },
+
 
     /**
      * Loads data from a passed data block. A Reader which understands the format of the data
@@ -656,7 +655,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
         }
         this.fireEvent("update", this, record, Roo.data.Record.EDIT);
     },
-
+    
     // private
     afterReject : function(record){
         this.modified.remove(record);
