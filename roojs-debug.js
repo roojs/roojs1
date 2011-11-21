@@ -19553,6 +19553,12 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
         }
         // if data returned failure - throw an exception.
         if (o.success === false) {
+            // show a message if no listener is registered.
+            if (!this.hasListener('loadexception') && typeof(this.reador.jsonData.errorMsg) != 'undefined') {
+                Roo.MessageBox.alert("Error loading",this.reador.jsonData.errorMsg);
+            }
+            
+            
             this.fireEvent("loadexception", this, o, options, this.reader.jsonData);
             return;
         }
@@ -42296,7 +42302,6 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         if (this.haveProgress) {
             Roo.MessageBox.hide();
         }
-        
         
         this.response = response;
         this.failureType = Roo.form.Action.CONNECT_FAILURE;
