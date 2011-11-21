@@ -386,7 +386,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             if (!this.hasListener('loadexception') && typeof(this.reader.jsonData.errorMsg) != 'undefined') {
                     Roo.MessageBox.alert("Error loading",this.reader.jsonData.errorMsg);
             }
-       this.fireEvent("loadexception", this, o, options, this.reader.jsonData);
+            this.fireEvent("loadexception", this, o, options, this.reader.jsonData);
             return;
         }
         var r = o.records, t = o.totalRecords || r.length;
