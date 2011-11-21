@@ -178,6 +178,14 @@ Roo.MessageBox = function(){
             if(dlg.isVisible()){
                 dlg.fixedcenter = false;
             }
+            if ( bodyEl.getHeight() > (Roo.lib.Dom.getViewHeight() - 100)) {
+                bodyEl.setHeight ( Roo.lib.Dom.getViewHeight() - 100 );
+                bodyEl.el.dom.style.overflow = '';
+            } else {
+                bodyEl.el.dom.style.height = '';
+                bodyEl.el.dom.style.overflow = '';
+            }
+            
             dlg.setContentSize(w, bodyEl.getHeight());
             if(dlg.isVisible()){
                 dlg.fixedcenter = true;
