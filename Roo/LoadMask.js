@@ -26,7 +26,7 @@ Roo.LoadMask = function(el, config){
     if(this.store){
         this.store.on('beforeload', this.onBeforeLoad, this);
         this.store.on('load', this.onLoad, this);
-        this.store.on('loadexception', this.onLoad, this);
+        this.store.on('loadexception', this.onLoadException, this);
         this.removeMask = false;
     }else{
         var um = this.el.getUpdateManager();
@@ -74,9 +74,17 @@ Roo.LoadMask.prototype = {
     enable : function(){
         this.disabled = false;
     },
-
+    
+    onLoadException : function()
+    {
+        if (this.store && typeof(this.store.reader.jsonData.errorMsg) != 'undefined') {
+            Roo.MessageBox.alert("Error loading",this.store.reader.jsonData.errorMsg);
+        }
+        this.el.unmask(this.removeMask);
+    },
     // private
-    onLoad : function(){
+    onLoad : function()
+    {
         this.el.unmask(this.removeMask);
     },
 
@@ -92,7 +100,7 @@ Roo.LoadMask.prototype = {
         if(this.store){
             this.store.un('beforeload', this.onBeforeLoad, this);
             this.store.un('load', this.onLoad, this);
-            this.store.un('loadexception', this.onLoad, this);
+            this.store.un('loadexception', this.onLoadException, this);
         }else{
             var um = this.el.getUpdateManager();
             um.un('beforeupdate', this.onBeforeLoad, this);
