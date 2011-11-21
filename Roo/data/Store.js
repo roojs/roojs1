@@ -379,7 +379,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
         // if data returned failure - throw an exception.
         if (o.success === false) {
             
-            
+            // loadmask wil be hooked into this..
             this.fireEvent("loadexception", this, o, options, this.reader.jsonData);
             return;
         }
