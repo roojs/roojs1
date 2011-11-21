@@ -19553,14 +19553,11 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
         }
         // if data returned failure - throw an exception.
         if (o.success === false) {
-             Roo.log("load records failed");
-            Roo.log(o);
-            Roo.log(this);
-           Roo.log(' handle loadexception? ' + (this.hasListener('loadexception') ? 'YES' : 'NO' ));
             // show a message if no listener is registered.
             if (!this.hasListener('loadexception') && typeof(this.reader.jsonData.errorMsg) != 'undefined') {
                     Roo.MessageBox.alert("Error loading",this.reader.jsonData.errorMsg);
             }
+            // loadmask wil be hooked into this..
             this.fireEvent("loadexception", this, o, options, this.reader.jsonData);
             return;
         }
@@ -51942,7 +51939,7 @@ Roo.LoadMask = function(el, config){
     if(this.store){
         this.store.on('beforeload', this.onBeforeLoad, this);
         this.store.on('load', this.onLoad, this);
-        this.store.on('loadexception', this.onLoad, this);
+        this.store.on('loadexception', this.onLoadException, this);
         this.removeMask = false;
     }else{
         var um = this.el.getUpdateManager();
@@ -51990,9 +51987,17 @@ Roo.LoadMask.prototype = {
     enable : function(){
         this.disabled = false;
     },
-
+    
+    onLoadException : function()
+    {
+        if (this.store && typeof(this.store.reader.jsonData.errorMsg) != 'undefined') {
+            Roo.MessageBox.alert("Error loading",this.store.reader.jsonData.errorMsg);
+        }
+        this.el.unmask(this.removeMask);
+    },
     // private
-    onLoad : function(){
+    onLoad : function()
+    {
         this.el.unmask(this.removeMask);
     },
 
@@ -52008,7 +52013,7 @@ Roo.LoadMask.prototype = {
         if(this.store){
             this.store.un('beforeload', this.onBeforeLoad, this);
             this.store.un('load', this.onLoad, this);
-            this.store.un('loadexception', this.onLoad, this);
+            this.store.un('loadexception', this.onLoadException, this);
         }else{
             var um = this.el.getUpdateManager();
             um.un('beforeupdate', this.onBeforeLoad, this);
