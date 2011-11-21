@@ -19556,8 +19556,8 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
              Roo.log("load records failed");
             Roo.log(o);
             Roo.log(this);
-        
-        // show a message if no listener is registered.
+           Roo.log(' handle loadexception? ' + (this.hasListener('loadexception') ? 'YES' : 'NO' ));
+            // show a message if no listener is registered.
             if (!this.hasListener('loadexception') && typeof(this.reader.jsonData.errorMsg) != 'undefined') {
                     Roo.MessageBox.alert("Error loading",this.reader.jsonData.errorMsg);
             }
