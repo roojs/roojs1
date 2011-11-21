@@ -378,7 +378,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
         }
         // if data returned failure - throw an exception.
         if (o.success === false) {
-             
+             Roo.log("load records failed");
            
             
             
