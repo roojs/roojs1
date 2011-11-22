@@ -602,7 +602,10 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         }
         //this.el.focus();
     },
-
+    onLoadException : function(){
+        
+        
+    },
     // private
     onTypeAhead : function(){
         if(this.store.getCount() > 0){
