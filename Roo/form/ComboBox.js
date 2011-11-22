@@ -607,8 +607,6 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         Roo.MessageBox.alert("Error loading",this.store.reader.jsonData.errorMsg);
         
         
-        
-        
     },
     // private
     onTypeAhead : function(){
