@@ -602,7 +602,9 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         }
         //this.el.focus();
     },
-    onLoadException : function(){
+    // private
+    onLoadException : function()
+    {
         this.collapse();
         Roo.MessageBox.alert("Error loading",this.store.reader.jsonData.errorMsg);
         
