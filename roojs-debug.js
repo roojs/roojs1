@@ -37647,7 +37647,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
 
         this.store.on('beforeload', this.onBeforeLoad, this);
         this.store.on('load', this.onLoad, this);
-        this.store.on('loadexception', this.collapse, this);
+        this.store.on('loadexception', this.onLoadException, this);
 
         if(this.resizable){
             this.resizer = new Roo.Resizable(this.list,  {
@@ -37767,7 +37767,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         if(this.store){
             this.store.un('beforeload', this.onBeforeLoad, this);
             this.store.un('load', this.onLoad, this);
-            this.store.un('loadexception', this.collapse, this);
+            this.store.un('loadexception', this.onLoadException, this);
         }
         Roo.form.ComboBox.superclass.onDestroy.call(this);
     },
@@ -37864,7 +37864,14 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         }
         //this.el.focus();
     },
-
+    // private
+    onLoadException : function()
+    {
+        this.collapse();
+        Roo.MessageBox.alert("Error loading",this.store.reader.jsonData.errorMsg);
+        
+        
+    },
     // private
     onTypeAhead : function(){
         if(this.store.getCount() > 0){
