@@ -604,7 +604,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
     },
     onLoadException : function(){
         this.collapse();
-        
+        Roo.MessageBox.alert("Error loading",this.store.reader.jsonData.errorMsg);
         
         
         
