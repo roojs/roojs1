@@ -39628,7 +39628,16 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             return;
             
         }
-        if (Roo.form.HtmlEditor.remove.indexOf(node.tagName.toLowerCase()) > -1) {
+        
+        var remove_keep_children= Roo.form.HtmlEditor.remove.indexOf(node.tagName.toLowerCase()) > -1;
+        
+        // remove <a name=....> as rendering on yahoo mailer is bored with this.
+        
+        if (node.tagName.toLowerCase() == 'a' && !node.hasAttribute('href')) {
+            remove_keep_children = true;
+        }
+        
+        if (remove_keep_children) {
             this.cleanUpChildren(node);
             // inserts everything just before this node...
             while (node.childNodes.length) {
