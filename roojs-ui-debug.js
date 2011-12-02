@@ -29223,7 +29223,10 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
         var ar = [] ;
         
         try {
-            Roo.log(this.value);
+            //Roo.log(this.value);
+            if (typeof(this.value) == 'undefined') {
+                return [];
+            }
             var ar = Roo.decode(this.value);
             return  ar instanceof Array ? ar : []; //?? valid?
             
