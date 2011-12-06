@@ -282,7 +282,11 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             </span><span class="jsdoc-var">Roo.callback</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.failure</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o.scope</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">action</span><span class="jsdoc-syntax">]);
             </span><span class="jsdoc-comment">// show an error message if no failed handler is set..
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.hasListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'actionfailed'</span><span class="jsdoc-syntax">)) {
-                </span><span class="jsdoc-var">Roo.MessageBox.alert</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Error&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Saving Failed, please check your entries&quot;</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">Roo.MessageBox.alert</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Error&quot;</span><span class="jsdoc-syntax">,
+                    (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">action.result</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">action.result.errorMsg</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) ?
+                        </span><span class="jsdoc-var">action.result.errorMsg </span><span class="jsdoc-syntax">:
+                        </span><span class="jsdoc-string">&quot;Saving Failed, please check your entries&quot;
+                </span><span class="jsdoc-syntax">);
             }
             
             </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'actionfailed'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">action</span><span class="jsdoc-syntax">);
@@ -452,10 +456,12 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
      * This differs from getValues as it calls getValue on each child item, rather than using dom data.
      * @return {Object}
      */
-    </span><span class="jsdoc-var">getFieldValues </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    </span><span class="jsdoc-var">getFieldValues </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">with_hidden</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.childForms</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-comment">// copy values from the child forms
+            // should this call getFieldValues - probably not as we do not currently copy
+            // hidden fields when we generate..
             </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.childForms</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">this.setValues</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.getValues</span><span class="jsdoc-syntax">());
             }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
@@ -467,9 +473,14 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">f.getValue</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-comment">// not sure if this supported any more..
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">((</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'object'</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">f.getRawValue</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">f.getRawValue</span><span class="jsdoc-syntax">() ; </span><span class="jsdoc-comment">// dates..
             </span><span class="jsdoc-syntax">}
+            </span><span class="jsdoc-comment">// combo boxes where name != hiddenName...
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.name </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">f.getName</span><span class="jsdoc-syntax">()) {
+                </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">f.name</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">f.getRawValue</span><span class="jsdoc-syntax">();
+            }
             </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">f.getName</span><span class="jsdoc-syntax">()] = </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
         });
         

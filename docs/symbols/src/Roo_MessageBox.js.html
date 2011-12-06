@@ -178,6 +178,15 @@ Roo.Msg.show({
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dlg.isVisible</span><span class="jsdoc-syntax">()){
                 </span><span class="jsdoc-var">dlg.fixedcenter </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
             }
+            </span><span class="jsdoc-comment">// to big, make it scoll.
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">bodyEl.getHeight</span><span class="jsdoc-syntax">() &gt; (</span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">() - 100)) {
+                </span><span class="jsdoc-var">bodyEl.setHeight </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">() - 100 );
+                </span><span class="jsdoc-var">bodyEl.dom.style.overflowY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'auto'</span><span class="jsdoc-syntax">;
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">bodyEl.dom.style.height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">bodyEl.dom.style.overflowY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+            }
+            
             </span><span class="jsdoc-var">dlg.setContentSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">bodyEl.getHeight</span><span class="jsdoc-syntax">());
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dlg.isVisible</span><span class="jsdoc-syntax">()){
                 </span><span class="jsdoc-var">dlg.fixedcenter </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;

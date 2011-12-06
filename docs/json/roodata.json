@@ -12302,6 +12302,12 @@
   "Roo.grid.CellSelectionModel": {
    "props": [
     {
+     "name": "enter_is_tab",
+     "type": "Boolean",
+     "desc": "Enter behaves the same as tab. (eg. goes to next cell) default: false",
+     "memberOf": ""
+    },
+    {
      "name": "listeners",
      "type": "Object",
      "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
@@ -12326,6 +12332,12 @@
      "sig": "function (_self, selection)\n{\n\n}",
      "type": "function",
      "desc": "Fires when the active selection changes."
+    },
+    {
+     "name": "tabend",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the tab (or enter) was pressed on the last editable cell\nYou can use this to trigger add new row."
     }
    ]
   },

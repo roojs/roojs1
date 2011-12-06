@@ -1038,7 +1038,16 @@
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             
         }
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.form.HtmlEditor.remove.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.tagName.toLowerCase</span><span class="jsdoc-syntax">()) &gt; -1) {
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">remove_keep_children</span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.form.HtmlEditor.remove.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.tagName.toLowerCase</span><span class="jsdoc-syntax">()) &gt; -1;
+        
+        </span><span class="jsdoc-comment">// remove &lt;a name=....&gt; as rendering on yahoo mailer is bored with this.
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.tagName.toLowerCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">'a' </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">node.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'href'</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-var">remove_keep_children </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">remove_keep_children</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.cleanUpChildren</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-comment">// inserts everything just before this node...
             </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.childNodes.length</span><span class="jsdoc-syntax">) {

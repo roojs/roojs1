@@ -169,6 +169,8 @@
      * in order for a value to be mapped.
      */
     </span><span class="jsdoc-var">valueField</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">,
+    
+    
     </span><span class="jsdoc-comment">/**
      * @cfg {String} hiddenName If specified, a hidden form field with this name is dynamically generated to store the
      * field's data value (defaults to the underlying DOM element's name)
@@ -299,8 +301,9 @@
     </span><span class="jsdoc-var">addicon </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">editicon</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
-    
-    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-comment">// element that contains real text value.. (when hidden is used..)
+     
+    // private
     </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">Roo.form.ComboBox.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hiddenName</span><span class="jsdoc-syntax">){
@@ -312,6 +315,8 @@
 
             </span><span class="jsdoc-comment">// prevent input submission
             </span><span class="jsdoc-var">this.el.dom.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'name'</span><span class="jsdoc-syntax">);
+             
+             
         }
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isGecko</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.el.dom.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'autocomplete'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'off'</span><span class="jsdoc-syntax">);
@@ -380,7 +385,7 @@
 
         </span><span class="jsdoc-var">this.store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforeload'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onBeforeLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'load'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'loadexception'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.collapse</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'loadexception'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoadException</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resizable</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.resizer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Resizable</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.list</span><span class="jsdoc-syntax">,  {
@@ -500,7 +505,7 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.store.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforeload'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onBeforeLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.store.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'load'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">this.store.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'loadexception'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.collapse</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.store.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'loadexception'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoadException</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
         </span><span class="jsdoc-var">Roo.form.ComboBox.superclass.onDestroy.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     },
@@ -597,7 +602,17 @@
         }
         </span><span class="jsdoc-comment">//this.el.focus();
     </span><span class="jsdoc-syntax">},
-
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onLoadException </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.collapse</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store.reader.jsonData</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store.reader.jsonData.errorMsg</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.MessageBox.alert</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Error loading&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.store.reader.jsonData.errorMsg</span><span class="jsdoc-syntax">);
+        }
+        
+        
+    },
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">onTypeAhead </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store.getCount</span><span class="jsdoc-syntax">() &gt; 0){
@@ -725,11 +740,19 @@
                     </span><span class="jsdoc-var">record </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
                     </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
                 }
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
             });
         }
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">;
     },
-
+    
+    </span><span class="jsdoc-var">getName</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-comment">// returns hidden if it's set..
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.rendered</span><span class="jsdoc-syntax">) {</span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">};
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">!</span><span class="jsdoc-var">this.hiddenName </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.el.dom.name  </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.el.dom.name </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">this.hiddenName </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+        
+    },
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">onViewMove </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.inKeyMode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;

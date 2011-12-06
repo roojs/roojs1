@@ -26,7 +26,7 @@
     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforeload'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onBeforeLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'load'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'loadexception'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'loadexception'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoadException</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.removeMask </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
     }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">um </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getUpdateManager</span><span class="jsdoc-syntax">();
@@ -74,9 +74,17 @@
     </span><span class="jsdoc-var">enable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-var">this.disabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
     },
-
+    
+    </span><span class="jsdoc-var">onLoadException </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store.reader.jsonData.errorMsg</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.MessageBox.alert</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Error loading&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.store.reader.jsonData.errorMsg</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">this.el.unmask</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.removeMask</span><span class="jsdoc-syntax">);
+    },
     </span><span class="jsdoc-comment">// private
-    </span><span class="jsdoc-var">onLoad </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+    </span><span class="jsdoc-var">onLoad </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
         </span><span class="jsdoc-var">this.el.unmask</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.removeMask</span><span class="jsdoc-syntax">);
     },
 
@@ -92,7 +100,7 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.store.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforeload'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onBeforeLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.store.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'load'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">this.store.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'loadexception'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.store.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'loadexception'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoadException</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">um </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getUpdateManager</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-var">um.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforeupdate'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onBeforeLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);

@@ -378,6 +378,11 @@
         }
         </span><span class="jsdoc-comment">// if data returned failure - throw an exception.
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.success </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">// show a message if no listener is registered.
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.hasListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'loadexception'</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.reader.jsonData.errorMsg</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">Roo.MessageBox.alert</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Error loading&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.reader.jsonData.errorMsg</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-comment">// loadmask wil be hooked into this..
             </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;loadexception&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.reader.jsonData</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
@@ -407,6 +412,7 @@
             </span><span class="jsdoc-var">options.callback.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">options.scope </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
         }
     },
+
 
     </span><span class="jsdoc-comment">/**
      * Loads data from a passed data block. A Reader which understands the format of the data
@@ -650,7 +656,7 @@
         }
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;update&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.data.Record.EDIT</span><span class="jsdoc-syntax">);
     },
-
+    
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">afterReject </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.modified.remove</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">);
