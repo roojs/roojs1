@@ -11554,10 +11554,9 @@ Roo.Ajax = new Roo.data.Connection({
  */
  
 /**
+ * Global Ajax request class.
  * @class Roo.Ajax
  * @extends Roo.data.Connection
- * Global Ajax request class.
- *
  * @instanceOf  Roo.data.Connection
  */
 Roo.Ajax = new Roo.data.Connection({
