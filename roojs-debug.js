@@ -51340,11 +51340,9 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
             return g.walkCells(row, col, step, sm.isSelectable,  sm);
         };
         var k = e.getKey(), r = s.cell[0], c = s.cell[1];
-        var newCell, forward=false;
+        var newCell;
 
-        if (this.enter_is_tab && k == e.ENTER) {
-            k = e.TAB;
-        }
+      
 
         switch(k){
             case e.TAB:
@@ -51356,13 +51354,11 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
                     newCell = walk(r, c-1, -1);
                 } else {
                     newCell = walk(r, c+1, 1);
-                    forward = true;
                 }
                 break;
             
             case e.DOWN:
                newCell = walk(r+1, c, 1);
-                forward = true;
                 break;
             
             case e.UP:
@@ -51371,7 +51367,6 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
             
             case e.RIGHT:
                 newCell = walk(r, c+1, 1);
-                forward = true;
                 break;
             
             case e.LEFT:
@@ -51393,9 +51388,6 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
             this.select(newCell[0], newCell[1]);
             e.stopEvent();
             
-        } else if (forward) {
-            // tabbed past last
-            this.fireEvent('tabend',this);
         }
     },
 
@@ -51414,18 +51406,24 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
      */
     onEditorKey : function(field, e){
         
-        var k = e.getKey(), newCell, g = this.grid, ed = g.activeEditor;
+        var k = e.getKey(),
+            newCell,
+            g = this.grid,
+            ed = g.activeEditor,
+            forward = false;
         ///Roo.log('onEditorKey' + k);
-        if (!ed) {
-            
-            
-            
+        
+        
+        if (this.enter_is_tab && k == e.ENTER) {
+            k = e.TAB;
         }
+        
         if(k == e.TAB){
             if(e.shiftKey){
                 newCell = g.walkCells(ed.row, ed.col-1, -1, this.acceptsNav, this);
             }else{
                 newCell = g.walkCells(ed.row, ed.col+1, 1, this.acceptsNav, this);
+                forward = true;
             }
             
             e.stopEvent();
@@ -51442,6 +51440,9 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
         if(newCell){
             //Roo.log('next cell after edit');
             g.startEditing.defer(100, g, [newCell[0], newCell[1]]);
+        } else if (forward) {
+            // tabbed past last
+            this.fireEvent.defer(100, this, ['tabend',this]);
         }
     }
 });/*
