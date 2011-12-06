@@ -291,7 +291,7 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
             g.startEditing.defer(100, g, [newCell[0], newCell[1]]);
         } else if (forward) {
             // tabbed past last
-            this.fireEvent('tabend',this);
+            this.fireEvent.defer(100, this, ['tabend',this]);
         }
     }
 });
