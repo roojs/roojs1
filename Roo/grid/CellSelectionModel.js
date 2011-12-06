@@ -48,7 +48,14 @@ Roo.grid.CellSelectionModel = function(config){
 	        <li>o.cell: An array of [rowIndex, columnIndex]</li>
 	        </ul>
 	     */
-	    "selectionchange" : true
+	    "selectionchange" : true,
+        /**
+	     * @event tabend
+	     * Fires when the tab (or enter) was pressed on the last editable cell
+	     * You can use this to trigger add new row.
+	     * @param {SelectionModel} this
+	     */
+	    "tabend" : true
     });
     Roo.grid.CellSelectionModel.superclass.constructor.call(this);
 };
