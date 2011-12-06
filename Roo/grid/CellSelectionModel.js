@@ -237,7 +237,7 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
             
         } else if (forward) {
             // tabbed past last
-            g.fireEvent('tabend');
+            this.fireEvent('tabend');
             
         }
     },
