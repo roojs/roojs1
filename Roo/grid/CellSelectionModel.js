@@ -201,18 +201,22 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
             
             case e.DOWN:
                newCell = walk(r+1, c, 1);
-               break;
+                forward = true;
+                break;
             
             case e.UP:
                 newCell = walk(r-1, c, -1);
-               break;
+                break;
             
             case e.RIGHT:
                 newCell = walk(r, c+1, 1);
-               break;
+                forward = true;
+                break;
+            
             case e.LEFT:
                 newCell = walk(r, c-1, -1);
-               break;
+                break;
+            
             case e.ENTER:
                 
                 if(g.isEditor && !g.editing){
