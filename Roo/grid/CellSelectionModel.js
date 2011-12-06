@@ -179,7 +179,11 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
             return g.walkCells(row, col, step, sm.isSelectable,  sm);
         };
         var k = e.getKey(), r = s.cell[0], c = s.cell[1];
-        var newCell;
+        var newCell, forward=false;
+
+        if (this.enter_is_tab && k == e.ENTER) {
+            k = e.TAB;
+        }
 
         switch(k){
             case e.TAB:
@@ -187,35 +191,47 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
                 if (g.isEditor && g.editing) {
                     return;
                 }
-                if(e.shiftKey){
-                     newCell = walk(r, c-1, -1);
-                }else{
-                     newCell = walk(r, c+1, 1);
+                if(e.shiftKey) {
+                    newCell = walk(r, c-1, -1);
+                } else {
+                    newCell = walk(r, c+1, 1);
+                    forward = true;
                 }
-             break;
-             case e.DOWN:
-                 newCell = walk(r+1, c, 1);
-             break;
-             case e.UP:
-                 newCell = walk(r-1, c, -1);
-             break;
-             case e.RIGHT:
-                 newCell = walk(r, c+1, 1);
-             break;
-             case e.LEFT:
-                 newCell = walk(r, c-1, -1);
-             break;
-             case e.ENTER:
-                 if(g.isEditor && !g.editing){
-                    g.startEditing(r, c);
-                    e.stopEvent();
-                    return;
+                break;
+            
+            case e.DOWN:
+               newCell = walk(r+1, c, 1);
+               break;
+            
+            case e.UP:
+                newCell = walk(r-1, c, -1);
+               break;
+            
+            case e.RIGHT:
+                newCell = walk(r, c+1, 1);
+               break;
+            case e.LEFT:
+                newCell = walk(r, c-1, -1);
+               break;
+            case e.ENTER:
+                
+                if(g.isEditor && !g.editing){
+                   g.startEditing(r, c);
+                   e.stopEvent();
+                   return;
                 }
+                
+                
              break;
         };
         if(newCell){
             this.select(newCell[0], newCell[1]);
             e.stopEvent();
+            
+        } else if (forward) {
+            // tabbed past last
+            g.fireEvent('tabend');
+            
         }
     },
 
