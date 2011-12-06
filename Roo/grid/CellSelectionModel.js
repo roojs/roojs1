@@ -14,7 +14,7 @@
  * This class provides the basic implementation for cell selection in a grid.
  * @constructor
  * @param {Object} config The object containing the configuration of this model.
- * @cfg {Boolean} enter_is_tab Enter behaves the same as tab. (eg. goes to next cell)
+ * @cfg {Boolean} enter_is_tab Enter behaves the same as tab. (eg. goes to next cell) default: false
  */
 Roo.grid.CellSelectionModel = function(config){
     Roo.apply(this, config);
