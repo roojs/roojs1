@@ -54,6 +54,8 @@ Roo.grid.CellSelectionModel = function(config){
 };
 
 Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
+    
+    enter_is_tab: false,
 
     /** @ignore */
     initEvents : function(){
