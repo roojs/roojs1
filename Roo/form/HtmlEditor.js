@@ -1122,7 +1122,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 cleanStyle(a.name,a.value);
             }
             /// clean up MS crap..
-            // tecnically this should be a list of valid styles..
+            // tecnically this should be a list of valid class'es..
             
             
             if (a.name == 'class') {
