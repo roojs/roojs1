@@ -1122,8 +1122,15 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 cleanStyle(a.name,a.value);
             }
             /// clean up MS crap..
+            // tecnically this should be a list of valid styles..
+            
+            
             if (a.name == 'class') {
                 if (a.value.match(/^Mso/)) {
+                    node.className = '';
+                }
+                
+                if (a.value.match(/body/)) {
                     node.className = '';
                 }
             }
