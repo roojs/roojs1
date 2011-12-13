@@ -479,7 +479,8 @@ layout.addxtype({
         Roo.each(xitems, function(i)  {
             
             var add = ret.addxtype(i);
-            if (nb === true && !i.background  && i.region) {
+            
+            if (nb  && !add.background  && i.region) {
                 nb[i.region] = add;
             }
             
