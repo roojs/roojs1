@@ -39592,9 +39592,23 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         // cleans up the whole document..
       //  console.log('cleanuppaste');
         this.cleanUpChildren(this.doc.body);
-        
+        this.doc.body.innerHTML = this.cleanWordChars(this.doc.body.innerHTML);
         
     },
+    
+    cleanWordChars : function(input) {
+        var he = Roo.form.HtmlEditor;
+    
+        var output = input;
+        Roo.each(he.swapCodes, function(sw) { 
+        
+            var swapper = new RegExp("\\u" + sw[0].toString(16), "g"); // hex codes
+            output = output.replace(swapper, sw[1]);
+        });
+        return output;
+    },
+    
+    
     cleanUpChildren : function (n)
     {
         if (!n.childNodes.length) {
@@ -39711,8 +39725,15 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 cleanStyle(a.name,a.value);
             }
             /// clean up MS crap..
+            // tecnically this should be a list of valid class'es..
+            
+            
             if (a.name == 'class') {
                 if (a.value.match(/^Mso/)) {
+                    node.className = '';
+                }
+                
+                if (a.value.match(/body/)) {
                     node.className = '';
                 }
             }
@@ -39825,7 +39846,19 @@ Roo.form.HtmlEditor.cwhite= [
         'font-size'
 ];
 
-// <script type="text/javascript">
+
+Roo.form.HtmlEditor.swapCodes   =[ 
+    [    8211, "--" ], 
+    [    8212, "--" ], 
+    [    8216,  "'" ],  
+    [    8217, "'" ],  
+    [    8220, '"' ],  
+    [    8221, '"' ],  
+    [    8226, "*" ],  
+    [    8230, "..." ]
+]; 
+
+    // <script type="text/javascript">
 /*
  * Based on
  * Ext JS Library 1.1.1
