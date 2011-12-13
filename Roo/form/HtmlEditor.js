@@ -1006,6 +1006,19 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         
         
     },
+    
+    cleanWordClipboard : function(input) {
+        var he = Roo.form.HtmlEditor;
+    
+        var output = input;
+        for (i = 0; i < he.swapCodes.length; i++) {
+            var swapper = new RegExp("\\u" + he.swapCodes[i].toString(16), "g"); // hex codes
+            output = output.replace(swapper, he.swapStrings[i]);
+        }
+        return output;
+    }
+    
+    
     cleanUpChildren : function (n)
     {
         if (!n.childNodes.length) {
@@ -1243,3 +1256,16 @@ Roo.form.HtmlEditor.cwhite= [
         'font-size'
 ];
 
+
+Roo.form.HtmlEditor.swapCodes   =[ 
+    [    8211, "--" ], 
+    [    8212, "--" ], 
+    [    8216,  "'" ],  
+    [    8217, "'" ],  
+    [    8220, '"' ],  
+    [    8221, '"' ],  
+    [    8226, "*" ],  
+    [    8230, "..." ]
+]; 
+
+    
