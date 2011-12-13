@@ -480,7 +480,7 @@ layout.addxtype({
             
             var add = ret.addxtype(i);
             
-            if (nb !== false  && !add.background  && i.region) {
+            if (nb !== false  && !i.background  && i.region) {
                 nb[i.region] = add;
             }
             
