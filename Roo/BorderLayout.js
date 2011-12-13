@@ -476,13 +476,17 @@ layout.addxtype({
         this.beginUpdate();
         // add children..
         var region = '';
+        var abn = {};
         Roo.each(xitems, function(i)  {
-            region = nb && i.region && !i.background ? i.region : false;
+            region = nb && i.region ? i.region : false;
             
             var add = ret.addxtype(i);
            
             if (region) {
-                nb[region] = add;
+                nb[region] = nb[region] == undefined ? 0 : nb[region]+1;
+                if (!i.background) {
+                    abn[region] = nb[region] ;
+                }
             }
             
         });
