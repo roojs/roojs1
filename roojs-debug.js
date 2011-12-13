@@ -44859,7 +44859,7 @@ layout.addxtype({
             }
             
         });
-        this.endUpdate();
+  
         // make the last non-background panel active..
         //if (nb) { Roo.log(nb); }
         if (nb) {
@@ -44871,6 +44871,7 @@ layout.addxtype({
                 }
             }
         }
+        this.endUpdate();
         return ret;
         
     }
