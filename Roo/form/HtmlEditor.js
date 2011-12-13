@@ -1003,20 +1003,21 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         // cleans up the whole document..
       //  console.log('cleanuppaste');
         this.cleanUpChildren(this.doc.body);
-        
+        this.doc.body.innerHTML = this.cleanWordChars(this.doc.body.innerHTML);
         
     },
     
-    cleanWordClipboard : function(input) {
+    cleanWordChars : function(input) {
         var he = Roo.form.HtmlEditor;
     
         var output = input;
-        for (i = 0; i < he.swapCodes.length; i++) {
-            var swapper = new RegExp("\\u" + he.swapCodes[i].toString(16), "g"); // hex codes
-            output = output.replace(swapper, he.swapStrings[i]);
-        }
+        Roo.each(he.swapCodes, function(sw) { 
+        
+            var swapper = new RegExp("\\u" + sw[0].toString(16), "g"); // hex codes
+            output = output.replace(swapper, sw[1]);
+        });
         return output;
-    }
+    },
     
     
     cleanUpChildren : function (n)
