@@ -491,7 +491,7 @@ layout.addxtype({
         if (nb) { Roo.log(nb); }
         if (nb) {
             for(var r in nb) {
-               this.getRegion(r).showPanel(nb);
+               this.getRegion(r).setActivePanel(nb);
             }
         }
         return ret;
