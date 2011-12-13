@@ -44766,7 +44766,7 @@ layout.addxtype({
             xitems = cfg.items;
             delete cfg.items;
         }
-        
+        var nb = false;
         
         switch(cfg.xtype) 
         {
@@ -44807,7 +44807,7 @@ layout.addxtype({
                 ret = new Roo[cfg.xtype](layout, cfg); // new panel!!!!!
                 //console.log('adding nested layout panel '  + cfg.toSource());
                 this.add(region, ret);
-                
+                nb = {}; /// find first...
                 break;
                 
             case 'GridPanel': 
@@ -44848,10 +44848,22 @@ layout.addxtype({
         }
         this.beginUpdate();
         // add children..
+        
         Roo.each(xitems, function(i)  {
-            ret.addxtype(i);
+            
+            var add = ret.addxtype(i);
+            if (nb === true && !i.background  && i.region) {
+                nb[i.region] = add;
+            }
+            
         });
         this.endUpdate();
+        // make the last non-background panel active..
+        if (nb) {
+            for(var r in nb) {
+               this.getRegion(r).showPanel(nb);
+            }
+        }
         return ret;
         
     }
