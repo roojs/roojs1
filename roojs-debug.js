@@ -44861,10 +44861,10 @@ layout.addxtype({
         });
         this.endUpdate();
         // make the last non-background panel active..
-        if (nb) { Roo.log(nb); }
+        //if (nb) { Roo.log(nb); }
         if (nb) {
             for(var r in nb) {
-               this.getRegion(r).showPanel(nb);
+               this.getRegion(r).setActivePanel(nb[r]);
             }
         }
         return ret;
