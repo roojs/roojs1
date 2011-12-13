@@ -44869,7 +44869,7 @@ layout.addxtype({
                 region = this.getRegion(r);
                 if (region) {
                     // tried using nb[r], but it does not work..
-                    if(region.panels.getCount() > 1 ) {
+                    if(region.panels.getCount() > 0 ) {
                         region.showPanel(nb[r]);
                     }
                 }
