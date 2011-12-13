@@ -44863,9 +44863,12 @@ layout.addxtype({
         // make the last non-background panel active..
         //if (nb) { Roo.log(nb); }
         if (nb) {
+            
             for(var r in nb) {
-                if (r == undefined) continue;
-               this.getRegion(r).showPanel(nb[r]);
+                region = this.getRegion(r);
+                if (region) {
+                    showPanel(nb[r]);
+                }
             }
         }
         return ret;
