@@ -479,12 +479,13 @@ layout.addxtype({
         Roo.each(xitems, function(i)  {
             
             var add = ret.addxtype(i);
-            if (nb === true && !i.background) && i.region) {
+            if (nb === true && !i.background  && i.region) {
                 nb[i.region] = add;
             }
             
         });
         this.endUpdate();
+        // make the 
         if (nb) {
             for(var r in nb) {
                this.getRegion(r).showPanel(nb);
