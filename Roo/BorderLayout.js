@@ -496,13 +496,13 @@ layout.addxtype({
         //if (nb) { Roo.log(nb); }
         if (nb) {
             
-            for(var r in nb) {
+            for(var r in abn) {
                 region = this.getRegion(r);
                 if (region) {
                     // tried using nb[r], but it does not work..
-                    if(region.activePanel != nb[r] ) {
-                        region.showPanel(nb[r]);
-                    }
+                     
+                    region.showPanel(abn[r]);
+                   
                 }
             }
         }
