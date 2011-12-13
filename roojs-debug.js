@@ -44867,7 +44867,7 @@ layout.addxtype({
             for(var r in nb) {
                 region = this.getRegion(r);
                 if (region) {
-                    showPanel(nb[r]);
+                    region.showPanel(nb[r]);
                 }
             }
         }
