@@ -44864,6 +44864,7 @@ layout.addxtype({
         //if (nb) { Roo.log(nb); }
         if (nb) {
             for(var r in nb) {
+                if (r == undefined) continue;
                this.getRegion(r).showPanel(nb[r]);
             }
         }
