@@ -44868,7 +44868,10 @@ layout.addxtype({
             for(var r in nb) {
                 region = this.getRegion(r);
                 if (region) {
-                    region.showPanel(0);
+                    // tried using nb[r], but it does not work..
+                    if(region.panels.getCount() > 1 ) {
+                        region.showPanel(nb[r]);
+                    }
                 }
             }
         }
