@@ -393,7 +393,7 @@ layout.addxtype({
             xitems = cfg.items;
             delete cfg.items;
         }
-        
+        var nb = false;
         
         switch(cfg.xtype) 
         {
@@ -434,7 +434,7 @@ layout.addxtype({
                 ret = new Roo[cfg.xtype](layout, cfg); // new panel!!!!!
                 //console.log('adding nested layout panel '  + cfg.toSource());
                 this.add(region, ret);
-                
+                nb = true; /// find first...
                 break;
                 
             case 'GridPanel': 
@@ -475,7 +475,9 @@ layout.addxtype({
         }
         this.beginUpdate();
         // add children..
+        
         Roo.each(xitems, function(i)  {
+            
             ret.addxtype(i);
         });
         this.endUpdate();
