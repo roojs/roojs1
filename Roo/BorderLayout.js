@@ -496,7 +496,7 @@ layout.addxtype({
                 region = this.getRegion(r);
                 if (region) {
                     // tried using nb[r], but it does not work..
-                    if(region.panels.getCount() > 0 ) {
+                    if(region.activePanel != nb[r] ) {
                         region.showPanel(nb[r]);
                     }
                 }
