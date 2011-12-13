@@ -485,7 +485,7 @@ layout.addxtype({
             
         });
         this.endUpdate();
-        // make the 
+        // make the last non-background panel active..
         if (nb) {
             for(var r in nb) {
                this.getRegion(r).showPanel(nb);
