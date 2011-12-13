@@ -44852,14 +44852,15 @@ layout.addxtype({
         Roo.each(xitems, function(i)  {
             
             var add = ret.addxtype(i);
-            if (nb === true && !i.background  && i.region) {
+            
+            if (nb !== false  && !add.background  && i.region) {
                 nb[i.region] = add;
             }
             
         });
         this.endUpdate();
         // make the last non-background panel active..
-        Roo.log(nb);
+        //Roo.log(nb);
         if (nb) {
             for(var r in nb) {
                this.getRegion(r).showPanel(nb);
