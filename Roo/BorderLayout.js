@@ -494,7 +494,7 @@ layout.addxtype({
             for(var r in nb) {
                 region = this.getRegion(r);
                 if (region) {
-                    region.this.tabs.getTab(panel.getEl().id);(nb[r]);
+                    region.setActivePanel(nb[r]);
                 }
             }
         }
