@@ -475,13 +475,14 @@ layout.addxtype({
         }
         this.beginUpdate();
         // add children..
-        
+        var region = '';
         Roo.each(xitems, function(i)  {
-             if (nb) { Roo.log( JSON.stringify([i.region,i.background])); }
+            region = nb && i.region && !i.background ? i.region : false;
+            
             var add = ret.addxtype(i);
            
-            if (nb !== false  && !i.background  && i.region) {
-                nb[i.region] = add;
+            if (region) {
+                nb[region] = add;
             }
             
         });
