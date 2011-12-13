@@ -493,7 +493,7 @@ layout.addxtype({
         this.endUpdate();
 
         // make the last non-background panel active..
-         if (nb) { Roo.log(anb); }
+        if (nb) { Roo.log(anb); }
         if (nb) {
             
             for(var r in abn) {
