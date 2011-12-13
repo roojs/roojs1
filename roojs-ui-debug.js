@@ -30367,7 +30367,8 @@ layout.addxtype({
             }
             
         });
-  
+        this.endUpdate();
+
         // make the last non-background panel active..
         //if (nb) { Roo.log(nb); }
         if (nb) {
@@ -30375,11 +30376,10 @@ layout.addxtype({
             for(var r in nb) {
                 region = this.getRegion(r);
                 if (region) {
-                    region.setActivePanel(nb[r]);
+                    region.showPanel(0);
                 }
             }
         }
-        this.endUpdate();
         return ret;
         
     }
