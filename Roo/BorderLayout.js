@@ -477,14 +477,18 @@ layout.addxtype({
         // add children..
         
         Roo.each(xitems, function(i)  {
-            if (nb === true && !i.background) {
-                nb = i;
+            
+            var add = ret.addxtype(i);
+            if (nb === true && !i.background) && i.region) {
+                nb[i.region] = add;
             }
-            ret.addxtype(i);
+            
         });
         this.endUpdate();
-        if (nb && nb !== true) {
-            
+        if (nb) {
+            for(var r in nb) {
+               this.getRegion(r).showPanel(nb);
+            }
         }
         return ret;
         
