@@ -2099,7 +2099,6 @@ if(opt.anim.isAnimated()){
             }
             this_mask.setStyle('z-index', parseInt(p['z-index']) + 100);
             
-            
             return this._mask;
         },
 
