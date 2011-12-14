@@ -2082,7 +2082,9 @@ if(opt.anim.isAnimated()){
             }
             this.addClass("x-masked");
             this._mask.setDisplayed(true);
-            var p = this.getPositioning();
+            
+            var z = parseInt(this.getPositioning()['z-index']);
+            z = isNaN(z) ? 0 : z;
             if(typeof msg == 'string'){
                 if(!this._maskMsg){
                     this._maskMsg = Roo.DomHelper.append(this.dom, {cls:"roo-el-mask-msg", cn:{tag:'div'}}, true);
@@ -2092,12 +2094,12 @@ if(opt.anim.isAnimated()){
                 mm.dom.firstChild.innerHTML = msg;
                 mm.setDisplayed(true);
                 mm.center(this);
-                mm.setStyle('z-index', parseInt(p['z-index']) + 102);
+                mm.setStyle('z-index', z + 102);
             }
             if(Roo.isIE && !(Roo.isIE7 && Roo.isStrict) && this.getStyle('height') == 'auto'){ // ie will not expand full height automatically
                 this._mask.setHeight(this.getHeight());
             }
-            this._mask.setStyle('z-index', parseInt(p['z-index']) + 100);
+            this._mask.setStyle('z-index', z + 100);
             
             return this._mask;
         },
