@@ -33,7 +33,10 @@
     border:1px solid #abc;
     background-image:url(../images/slate/panel/white-top-bottom.gif);
 }
-
+.x-layout-panel-hd-text {
+    font-weight:bold;
+    color:#fff;
+}
 
 
 
