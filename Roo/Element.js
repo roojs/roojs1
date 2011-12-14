@@ -2083,8 +2083,17 @@ if(opt.anim.isAnimated()){
             this.addClass("x-masked");
             this._mask.setDisplayed(true);
             
-            var z = parseInt(this.getPositioning()['z-index']);
-            z = isNaN(z) ? 0 : z;
+            // we wander
+            var z = 0;
+            var dom = this.dom
+            while (dom) {
+                if (!isNaN(parseInt(dom.style.zIndex))) {
+                    z = Math.max(z, parseInt(dom.style.zIndex));
+                }
+                dom = dom.parentNode;
+            }
+            
+           
             if(typeof msg == 'string'){
                 if(!this._maskMsg){
                     this._maskMsg = Roo.DomHelper.append(this.dom, {cls:"roo-el-mask-msg", cn:{tag:'div'}}, true);
