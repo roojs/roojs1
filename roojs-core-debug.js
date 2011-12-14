@@ -68,7 +68,7 @@ Roo.apply = function(o, c, defaults){
             document.execCommand("BackgroundImageCache", false, true);
         }catch(e){}
     }
-
+    
     Roo.apply(Roo, {
         /**
          * True if the browser is in strict mode
@@ -8860,7 +8860,8 @@ if(opt.anim.isAnimated()){
          * @param {String} msgCls (optional) A css class to apply to the msg element
          * @return {Element} The mask  element
          */
-        mask : function(msg, msgCls){
+        mask : function(msg, msgCls)
+        {
             if(this.getStyle("position") == "static"){
                 this.setStyle("position", "relative");
             }
@@ -8869,6 +8870,7 @@ if(opt.anim.isAnimated()){
             }
             this.addClass("x-masked");
             this._mask.setDisplayed(true);
+            var p = this.getPositioning();
             if(typeof msg == 'string'){
                 if(!this._maskMsg){
                     this._maskMsg = Roo.DomHelper.append(this.dom, {cls:"roo-el-mask-msg", cn:{tag:'div'}}, true);
@@ -8878,10 +8880,13 @@ if(opt.anim.isAnimated()){
                 mm.dom.firstChild.innerHTML = msg;
                 mm.setDisplayed(true);
                 mm.center(this);
+                mm.setStyle('z-index', parseInt(p['z-index']) + 102);
             }
             if(Roo.isIE && !(Roo.isIE7 && Roo.isStrict) && this.getStyle('height') == 'auto'){ // ie will not expand full height automatically
                 this._mask.setHeight(this.getHeight());
             }
+            this_mask.setStyle('z-index', parseInt(p['z-index']) + 100);
+            
             return this._mask;
         },
 
@@ -11555,82 +11560,30 @@ Roo.Ajax = new Roo.data.Connection({
  
 /**
  * Global Ajax request class.
+ * 
  * @class Roo.Ajax
  * @extends Roo.data.Connection
- * @instanceOf  Roo.data.Connection
+ * @static
+ * 
+ * @cfg {String} url  The default URL to be used for requests to the server. (defaults to undefined)
+ * @cfg {Object} extraParams  An object containing properties which are used as extra parameters to each request made by this object. (defaults to undefined)
+ * @cfg {Object} defaultHeaders  An object containing request headers which are added to each request made by this object. (defaults to undefined)
+ * @cfg {String} method (Optional)  The default HTTP method to be used for requests. (defaults to undefined; if not set but parms are present will use POST, otherwise GET)
+ * @cfg {Number} timeout (Optional) The timeout in milliseconds to be used for requests. (defaults to 30000)
+ * @cfg {Boolean} autoAbort (Optional) Whether a new request should abort any pending requests. (defaults to false)
+ * @cfg {Boolean} disableCaching (Optional)   True to add a unique cache-buster param to GET requests. (defaults to true)
  */
 Roo.Ajax = new Roo.data.Connection({
     // fix up the docs
-    
     /**
-     * fix up scoping
      * @scope Roo.Ajax
-     */
-    
-   /**
-     * @cfg {String} url @hide
-     */
-    /**
-     * @cfg {Object} extraParams @hide
-     */
-    /**
-     * @cfg {Object} defaultHeaders @hide
-     */
-    /**
-     * @cfg {String} method (Optional) @hide
-     */
-    /**
-     * @cfg {Number} timeout (Optional) @hide
-     */
-    /**
-     * @cfg {Boolean} autoAbort (Optional) @hide
-     */
-
-    /**
-     * @cfg {Boolean} disableCaching (Optional) @hide
-     */
-
-    /**
-     * @property  disableCaching
-     * True to add a unique cache-buster param to GET requests. (defaults to true)
-     * @type Boolean
-     */
-    /**
-     * @property  url
-     * The default URL to be used for requests to the server. (defaults to undefined)
-     * @type String
-     */
-    /**
-     * @property  extraParams
-     * An object containing properties which are used as
-     * extra parameters to each request made by this object. (defaults to undefined)
-     * @type Object
-     */
-    /**
-     * @property  defaultHeaders
-     * An object containing request headers which are added to each request made by this object. (defaults to undefined)
-     * @type Object
-     */
-    /**
-     * @property  method
-     * The default HTTP method to be used for requests. (defaults to undefined; if not set but parms are present will use POST, otherwise GET)
-     * @type String
-     */
-    /**
-     * @property  timeout
-     * The timeout in milliseconds to be used for requests. (defaults to 30000)
-     * @type Number
-     */
-
-    /**
-     * @property  autoAbort
-     * Whether a new request should abort any pending requests. (defaults to false)
-     * @type Boolean
+     * @type {Boolear} 
      */
     autoAbort : false,
 
     /**
      * Serialize the passed form into a url encoded string
+     * @scope Roo.Ajax
      * @param {String/HTMLElement} form
      * @return {String}
      */
