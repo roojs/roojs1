@@ -2097,7 +2097,7 @@ if(opt.anim.isAnimated()){
             if(Roo.isIE && !(Roo.isIE7 && Roo.isStrict) && this.getStyle('height') == 'auto'){ // ie will not expand full height automatically
                 this._mask.setHeight(this.getHeight());
             }
-            this_mask.setStyle('z-index', parseInt(p['z-index']) + 100);
+            this._mask.setStyle('z-index', parseInt(p['z-index']) + 100);
             
             return this._mask;
         },
