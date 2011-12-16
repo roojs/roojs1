@@ -189,11 +189,9 @@
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">g.walkCells</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">step</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sm.isSelectable</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">sm</span><span class="jsdoc-syntax">);
         };
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getKey</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">s.cell</span><span class="jsdoc-syntax">[0], </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">s.cell</span><span class="jsdoc-syntax">[1];
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">newCell</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">forward</span><span class="jsdoc-syntax">=</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">newCell</span><span class="jsdoc-syntax">;
 
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.enter_is_tab </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.ENTER</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.TAB</span><span class="jsdoc-syntax">;
-        }
+      
 
         </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">e.TAB</span><span class="jsdoc-syntax">:
@@ -205,13 +203,11 @@
                     </span><span class="jsdoc-var">newCell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">walk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">-1, -1);
                 } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
                     </span><span class="jsdoc-var">newCell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">walk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">+1, 1);
-                    </span><span class="jsdoc-var">forward </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
                 }
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">e.DOWN</span><span class="jsdoc-syntax">:
                </span><span class="jsdoc-var">newCell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">walk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">+1, </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">, 1);
-                </span><span class="jsdoc-var">forward </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">e.UP</span><span class="jsdoc-syntax">:
@@ -220,7 +216,6 @@
             
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">e.RIGHT</span><span class="jsdoc-syntax">:
                 </span><span class="jsdoc-var">newCell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">walk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">+1, 1);
-                </span><span class="jsdoc-var">forward </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">e.LEFT</span><span class="jsdoc-syntax">:
@@ -242,9 +237,6 @@
             </span><span class="jsdoc-var">this.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newCell</span><span class="jsdoc-syntax">[0], </span><span class="jsdoc-var">newCell</span><span class="jsdoc-syntax">[1]);
             </span><span class="jsdoc-var">e.stopEvent</span><span class="jsdoc-syntax">();
             
-        } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">forward</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-comment">// tabbed past last
-            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tabend'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
     },
 
@@ -263,18 +255,24 @@
      */
     </span><span class="jsdoc-var">onEditorKey </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">field</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getKey</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">newCell</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">g </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ed </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">g.activeEditor</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getKey</span><span class="jsdoc-syntax">(),
+            </span><span class="jsdoc-var">newCell</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">g </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">ed </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">g.activeEditor</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">forward </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-comment">///Roo.log('onEditorKey' + k);
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">ed</span><span class="jsdoc-syntax">) {
-            
-            
-            
+        
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.enter_is_tab </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.ENTER</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.TAB</span><span class="jsdoc-syntax">;
         }
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.TAB</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.shiftKey</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">newCell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">g.walkCells</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ed.row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ed.col</span><span class="jsdoc-syntax">-1, -1, </span><span class="jsdoc-var">this.acceptsNav</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
             }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
                 </span><span class="jsdoc-var">newCell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">g.walkCells</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ed.row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ed.col</span><span class="jsdoc-syntax">+1, 1, </span><span class="jsdoc-var">this.acceptsNav</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">forward </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
             }
             
             </span><span class="jsdoc-var">e.stopEvent</span><span class="jsdoc-syntax">();
@@ -291,6 +289,9 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newCell</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-comment">//Roo.log('next cell after edit');
             </span><span class="jsdoc-var">g.startEditing.defer</span><span class="jsdoc-syntax">(100, </span><span class="jsdoc-var">g</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-var">newCell</span><span class="jsdoc-syntax">[0], </span><span class="jsdoc-var">newCell</span><span class="jsdoc-syntax">[1]]);
+        } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">forward</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">// tabbed past last
+            </span><span class="jsdoc-var">this.fireEvent.defer</span><span class="jsdoc-syntax">(100, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-string">'tabend'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">]);
         }
     }
 });</span></code></body></html>

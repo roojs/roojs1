@@ -24524,7 +24524,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     syncValue : function(){
         if(this.initialized){
             var bd = (this.doc.body || this.doc.documentElement);
-            this.cleanUpPaste();
+            //this.cleanUpPaste();
             var html = bd.innerHTML;
             if(Roo.isSafari){
                 var bs = bd.getAttribute('style'); // Safari puts text-align styles on the body element!
@@ -24702,7 +24702,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     onEditorEvent : function(e){
         this.fireEvent('editorevent', this, e);
       //  this.updateToolbar();
-        this.syncValue();
+        this.syncValue(); //we can not sync so often.. sync cleans, so this breaks stuff
     },
 
     insertTag : function(tg)
@@ -24796,6 +24796,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                     break;
                     case 'u':
                         cmd = 'underline';
+                        break;
                     case 'v':
                         this.cleanUpPaste.defer(100, this);
                         return;
@@ -25098,9 +25099,12 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     cleanUpPaste :  function()
     {
         // cleans up the whole document..
-      //  console.log('cleanuppaste');
+         Roo.log('cleanuppaste');
         this.cleanUpChildren(this.doc.body);
-        this.doc.body.innerHTML = this.cleanWordChars(this.doc.body.innerHTML);
+        var clean = this.cleanWordChars(this.doc.body.innerHTML);
+        if (clean != this.doc.body.innerHTML) {
+            this.doc.body.innerHTML = clean;
+        }
         
     },
     

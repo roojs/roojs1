@@ -68,7 +68,7 @@ Roo.apply = function(o, c, defaults){
             document.execCommand("BackgroundImageCache", false, true);
         }catch(e){}
     }
-
+    
     Roo.apply(Roo, {
         /**
          * True if the browser is in strict mode

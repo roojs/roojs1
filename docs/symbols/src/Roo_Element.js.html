@@ -2072,7 +2072,8 @@ if(opt.anim.isAnimated()){
          * @param {String} msgCls (optional) A css class to apply to the msg element
          * @return {Element} The mask  element
          */
-        </span><span class="jsdoc-var">mask </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">msg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">msgCls</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">mask </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">msg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">msgCls</span><span class="jsdoc-syntax">)
+        {
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;position&quot;</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">&quot;static&quot;</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">this.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;position&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;relative&quot;</span><span class="jsdoc-syntax">);
             }
@@ -2081,6 +2082,18 @@ if(opt.anim.isAnimated()){
             }
             </span><span class="jsdoc-var">this.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-masked&quot;</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this._mask.setDisplayed</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-comment">// we wander
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">z </span><span class="jsdoc-syntax">= 0;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dom </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dom
+            </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dom </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">dom.style</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">isNaN</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dom.style.zIndex</span><span class="jsdoc-syntax">))) {
+                    </span><span class="jsdoc-var">z </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">z</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dom.style.zIndex</span><span class="jsdoc-syntax">));
+                }
+                </span><span class="jsdoc-var">dom </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dom.parentNode</span><span class="jsdoc-syntax">;
+            }
+            
+           
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">msg </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this._maskMsg</span><span class="jsdoc-syntax">){
                     </span><span class="jsdoc-var">this._maskMsg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomHelper.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dom</span><span class="jsdoc-syntax">, {</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;roo-el-mask-msg&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">:{</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">}}, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
@@ -2090,10 +2103,13 @@ if(opt.anim.isAnimated()){
                 </span><span class="jsdoc-var">mm.dom.firstChild.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">msg</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">mm.setDisplayed</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">mm.center</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">mm.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'z-index'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">z </span><span class="jsdoc-syntax">+ 102);
             }
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isIE </span><span class="jsdoc-syntax">&amp;&amp; !(</span><span class="jsdoc-var">Roo.isIE7 </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.isStrict</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">this.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'height'</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'auto'</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// ie will not expand full height automatically
                 </span><span class="jsdoc-var">this._mask.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getHeight</span><span class="jsdoc-syntax">());
             }
+            </span><span class="jsdoc-var">this._mask.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'z-index'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">z </span><span class="jsdoc-syntax">+ 100);
+            
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this._mask</span><span class="jsdoc-syntax">;
         },
 

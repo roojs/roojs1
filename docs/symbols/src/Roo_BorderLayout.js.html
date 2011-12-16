@@ -393,7 +393,7 @@ layout.addxtype({
             </span><span class="jsdoc-var">xitems </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg.items</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">cfg.items</span><span class="jsdoc-syntax">;
         }
-        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nb </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.xtype</span><span class="jsdoc-syntax">) 
         {
@@ -434,7 +434,7 @@ layout.addxtype({
                 </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cfg.xtype</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">layout</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// new panel!!!!!
                 //console.log('adding nested layout panel '  + cfg.toSource());
                 </span><span class="jsdoc-var">this.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">);
-                
+                </span><span class="jsdoc-var">nb </span><span class="jsdoc-syntax">= {}; </span><span class="jsdoc-comment">/// find first...
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
                 
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'GridPanel'</span><span class="jsdoc-syntax">: 
@@ -475,10 +475,37 @@ layout.addxtype({
         </span><span class="jsdoc-syntax">}
         </span><span class="jsdoc-var">this.beginUpdate</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-comment">// add children..
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">region </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">abn </span><span class="jsdoc-syntax">= {};
         </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xitems</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)  {
-            </span><span class="jsdoc-var">ret.addxtype</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">region </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nb </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">i.region </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">i.region </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">add </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ret.addxtype</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">);
+           
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">nb</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">nb</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">] == </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">? 0 : </span><span class="jsdoc-var">nb</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">]+1;
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">i.background</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">abn</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">nb</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">] ;
+                }
+            }
+            
         });
         </span><span class="jsdoc-var">this.endUpdate</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-comment">// make the last non-background panel active..
+        //if (nb) { Roo.log(abn); }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nb</span><span class="jsdoc-syntax">) {
+            
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">abn</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">region </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getRegion</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-comment">// tried using nb[r], but it does not work..
+                     
+                    </span><span class="jsdoc-var">region.showPanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">abn</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">]);
+                   
+                }
+            }
+        }
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
         
     }

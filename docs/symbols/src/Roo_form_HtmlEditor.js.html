@@ -605,8 +605,8 @@
     </span><span class="jsdoc-var">onEditorEvent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'editorevent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
       </span><span class="jsdoc-comment">//  this.updateToolbar();
-        </span><span class="jsdoc-var">this.syncValue</span><span class="jsdoc-syntax">();
-    },
+        </span><span class="jsdoc-var">this.syncValue</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-comment">//we can not sync so often.. sync cleans, so this breaks stuff
+    </span><span class="jsdoc-syntax">},
 
     </span><span class="jsdoc-var">insertTag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tg</span><span class="jsdoc-syntax">)
     {
@@ -1001,11 +1001,28 @@
     </span><span class="jsdoc-var">cleanUpPaste </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-comment">// cleans up the whole document..
-      //  console.log('cleanuppaste');
+         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'cleanuppaste'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.cleanUpChildren</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.doc.body</span><span class="jsdoc-syntax">);
-        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">clean </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cleanWordChars</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.doc.body.innerHTML</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">clean </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">this.doc.body.innerHTML</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.doc.body.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">clean</span><span class="jsdoc-syntax">;
+        }
         
     },
+    
+    </span><span class="jsdoc-var">cleanWordChars </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">he </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.form.HtmlEditor</span><span class="jsdoc-syntax">;
+    
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">output </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">he.swapCodes</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sw</span><span class="jsdoc-syntax">) { 
+        
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">swapper </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">RegExp</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;\\u&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">sw</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.toString</span><span class="jsdoc-syntax">(16), </span><span class="jsdoc-string">&quot;g&quot;</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// hex codes
+            </span><span class="jsdoc-var">output </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">output.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">swapper</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sw</span><span class="jsdoc-syntax">[1]);
+        });
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">output</span><span class="jsdoc-syntax">;
+    },
+    
+    
     </span><span class="jsdoc-var">cleanUpChildren </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">n.childNodes.length</span><span class="jsdoc-syntax">) {
@@ -1122,8 +1139,15 @@
                 </span><span class="jsdoc-var">cleanStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.name</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">a.value</span><span class="jsdoc-syntax">);
             }
             </span><span class="jsdoc-comment">/// clean up MS crap..
+            // tecnically this should be a list of valid class'es..
+            
+            
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.name </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'class'</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.value.match</span><span class="jsdoc-syntax">(/^Mso/)) {
+                    </span><span class="jsdoc-var">node.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+                }
+                
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.value.match</span><span class="jsdoc-syntax">(/body/)) {
                     </span><span class="jsdoc-var">node.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
                 }
             }
@@ -1236,4 +1260,16 @@
         </span><span class="jsdoc-string">'font-size'
 </span><span class="jsdoc-syntax">];
 
-</span></code></body></html>
+
+</span><span class="jsdoc-var">Roo.form.HtmlEditor.swapCodes   </span><span class="jsdoc-syntax">=[ 
+    [    8211, </span><span class="jsdoc-string">&quot;--&quot; </span><span class="jsdoc-syntax">], 
+    [    8212, </span><span class="jsdoc-string">&quot;--&quot; </span><span class="jsdoc-syntax">], 
+    [    8216,  </span><span class="jsdoc-string">&quot;'&quot; </span><span class="jsdoc-syntax">],  
+    [    8217, </span><span class="jsdoc-string">&quot;'&quot; </span><span class="jsdoc-syntax">],  
+    [    8220, </span><span class="jsdoc-string">'&quot;' </span><span class="jsdoc-syntax">],  
+    [    8221, </span><span class="jsdoc-string">'&quot;' </span><span class="jsdoc-syntax">],  
+    [    8226, </span><span class="jsdoc-string">&quot;*&quot; </span><span class="jsdoc-syntax">],  
+    [    8230, </span><span class="jsdoc-string">&quot;...&quot; </span><span class="jsdoc-syntax">]
+]; 
+
+    </span></code></body></html>
