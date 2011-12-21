@@ -29,12 +29,12 @@ Roo.onReady(function(){
         id: 'mainMenu',
         items: [
             new Roo.menu.CheckItem({
-                text: 'I like Ext',
+                text: 'I like Roo',
                 checked: true,
                 checkHandler: onItemCheck
             }),
             new Roo.menu.CheckItem({
-                text: 'Ext for jQuery',
+                text: 'Roo beats jQuery',
                 checked: true,
                 checkHandler: onItemCheck
             }),
