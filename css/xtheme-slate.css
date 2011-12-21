@@ -755,21 +755,79 @@ td.x-date-mp-sel a{
 
 /* Miscellaneous */
 
-.x-item-disabled * {
+.x-item-disabled *
+{
 	color:#333 !important;
 }
 
 
-.x-box-tl{background:transparent url(../images/default/box/corners.gif) no-repeat 0 0;zoom:1;}
-.x-box-tc{height:8px;background:transparent url(../images/default/box/tb.gif) repeat-x 0 0;overflow:hidden;}
-.x-box-tr{background:transparent url(../images/default/box/corners.gif) no-repeat right -8px;}
-.x-box-ml{background:transparent url(../images/default/box/l.gif) repeat-y 0;padding-left:4px;overflow:hidden;zoom:1;}
-.x-box-mc{background:#eee url(../images/default/box/tb.gif) repeat-x 0 -16px;padding:4px 10px;font-family:"Myriad Pro","Myriad Web","Tahoma","Helvetica","Arial",sans-serif;color:#393939;font-size:12px;}
-.x-box-mc h3{font-size:14px;font-weight:bold;margin:0 0 4 0;zoom:1;}
-.x-box-mr{background:transparent url(../images/default/box/r.gif) repeat-y right;padding-right:4px;overflow:hidden;}
-.x-box-bl{background:transparent url(../images/default/box/corners.gif) no-repeat 0 -16px;zoom:1;}
-.x-box-bc{background:transparent url(../images/default/box/tb.gif) repeat-x 0 -8px;height:8px;overflow:hidden;}
-.x-box-br{background:transparent url(../images/default/box/corners.gif) no-repeat right -24px;}
-.x-box-tl,.x-box-bl{padding-left:8px;overflow:hidden;}
-.x-box-tr,.x-box-br{padding-right:8px;overflow:hidden;}
+.x-box-tl
+{
+        background:transparent url(../images/default/box/corners.gif) no-repeat 0 0;
+        zoom:1;
+}
+.x-box-tc
+{
+        height:8px;
+        background:transparent url(../images/default/box/tb.gif) repeat-x 0 0;
+        overflow:hidden;
+}
+.x-box-tr
+{
+        background:transparent url(../images/default/box/corners.gif) no-repeat right -8px;
+}
+        
+.x-box-ml
+{
+    background:transparent url(../images/default/box/l.gif) repeat-y 0;
+    padding-left:4px;
+    overflow:hidden;
+    zoom:1;
+}
+.x-box-mc
+{
+    background:#eee url(../images/default/box/tb.gif) repeat-x 0 -16px;
+    padding:4px 10px;
+    font-family:"Myriad Pro","Myriad Web","Tahoma","Helvetica","Arial",sans-serif;
+    color:#393939;
+    font-size:12px;
+}
+.x-box-mc h3
+{
+    font-size:14px;
+    font-weight:bold;
+    margin:0 0 4 0;
+    zoom:1;
+}
+.x-box-mr
+{
+    background:transparent url(../images/default/box/r.gif) repeat-y right;
+    padding-right:4px;
+    overflow:hidden;
+}
+.x-box-bl
+{
+    background:transparent url(../images/default/box/corners.gif) no-repeat 0 -16px;
+    zoom:1;
+}
+.x-box-bc
+{
+    background:transparent url(../images/default/box/tb.gif) repeat-x 0 -8px;
+    height:8px;
+    overflow:hidden;
+}
+.x-box-br
+{
+    background:transparent url(../images/default/box/corners.gif) no-repeat right -24px;
+}
+.x-box-tl,.x-box-bl
+{
+    padding-left:8px;
+    overflow:hidden;
+}
+.x-box-tr,.x-box-br
+{
+    padding-right:8px;
+    overflow:hidden;
+}
 
