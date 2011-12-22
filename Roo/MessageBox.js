@@ -171,6 +171,7 @@ Roo.MessageBox = function(){
             }
             msgEl.innerHTML = text || '&#160;';
             var cw =  Math.max(msgEl.offsetWidth, msgEl.scrollWidth);
+            Roo.log("guesed size: " + cw);
             var w = Math.max(
                     Math.min(opt.width || cw , this.maxWidth), 
                     Math.max(opt.minWidth || this.minWidth, bwidth)
