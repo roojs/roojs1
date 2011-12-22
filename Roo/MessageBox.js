@@ -171,7 +171,7 @@ Roo.MessageBox = function(){
             }
             msgEl.innerHTML = text || '&#160;';
             updateTextSize.defer(100);
-            
+            return this;
         },
         
         updateTextSize: function()
