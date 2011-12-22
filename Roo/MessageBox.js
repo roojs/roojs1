@@ -177,7 +177,7 @@ Roo.MessageBox = function(){
         updateTextSize: function()
         {
         
-            var cw =  Math.max(msgEl.offsetWidth, msgEl.scrollWidth);
+            var cw =  Math.max(msgEl.offsetWidth, bodyEl.scrollWidth);
             Roo.log("guesed size: " + cw);
             var w = Math.max(
                     Math.min(opt.width || cw , this.maxWidth), 
