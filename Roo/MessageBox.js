@@ -192,7 +192,7 @@ Roo.MessageBox = function(){
             if (cw > w) {
                 bodyEl.dom.style.overflowX = 'auto !important';
             } else {
-                bodyEl.dom.style.overflow = '';
+                bodyEl.dom.style.overflowX = '';
             }
             
             dlg.setContentSize(w, bodyEl.getHeight());
