@@ -181,7 +181,7 @@ Roo.MessageBox = function(){
             // to big, make it scoll.
             if ( bodyEl.getHeight() > (Roo.lib.Dom.getViewHeight() - 100)) {
                 bodyEl.setHeight ( Roo.lib.Dom.getViewHeight() - 100 );
-                bodyEl.dom.style.overflowY = 'auto!important';
+                bodyEl.dom.style.overflowY = 'auto !important';
             } else {
                 bodyEl.dom.style.height = '';
                 bodyEl.dom.style.overflowY = '';
