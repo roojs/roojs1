@@ -170,13 +170,7 @@ Roo.MessageBox = function(){
                 dlg.resizeTo(this.maxWidth, 100); // resize first so content is never clipped from previous shows
             }
             msgEl.innerHTML = text || '&#160;';
-            this.updateTextSize.defer(100, this);
-            return this;
-        },
-        
-        updateTextSize: function()
-        {
-        
+      
             var cw =  Math.max(msgEl.offsetWidth, bodyEl.scrollWidth);
             Roo.log("guesed size: " + cw);
             var w = Math.max(
