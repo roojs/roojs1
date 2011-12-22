@@ -30101,9 +30101,10 @@ Roo.MessageBox = function(){
                 dlg.resizeTo(this.maxWidth, 100); // resize first so content is never clipped from previous shows
             }
             msgEl.innerHTML = text || '&#160;';
-            
+            var cw =  Math.max(msgEl.offsetWidth, msgEl.scrollWidth);
+            Roo.log("guesed size: " + cw);
             var w = Math.max(
-                    Math.min(opt.width || Math.max(msgEl.offsetWidth, msgEl.scrollWidth), this.maxWidth), 
+                    Math.min(opt.width || cw , this.maxWidth), 
                     Math.max(opt.minWidth || this.minWidth, bwidth)
             );
             if(opt.prompt){
@@ -30119,6 +30120,11 @@ Roo.MessageBox = function(){
             } else {
                 bodyEl.dom.style.height = '';
                 bodyEl.dom.style.overflowY = '';
+            }
+            if (cw > w) {
+                bodyEl.dom.style.overflowX = 'auto !important';
+            } else {
+                bodyEl.dom.style.overflowX = '';
             }
             
             dlg.setContentSize(w, bodyEl.getHeight());
