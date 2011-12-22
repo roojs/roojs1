@@ -30101,8 +30101,11 @@ Roo.MessageBox = function(){
                 dlg.resizeTo(this.maxWidth, 100); // resize first so content is never clipped from previous shows
             }
             msgEl.innerHTML = text || '&#160;';
-            var w = Math.max(Math.min(opt.width || msgEl.offsetWidth, this.maxWidth), 
-                        Math.max(opt.minWidth || this.minWidth, bwidth));
+            
+            var w = Math.max(
+                    Math.min(opt.width || Math.max(msgEl.offsetWidth, msgEl.scrollWidth), this.maxWidth), 
+                    Math.max(opt.minWidth || this.minWidth, bwidth)
+            );
             if(opt.prompt){
                 activeTextEl.setWidth(w);
             }
@@ -30112,7 +30115,7 @@ Roo.MessageBox = function(){
             // to big, make it scoll.
             if ( bodyEl.getHeight() > (Roo.lib.Dom.getViewHeight() - 100)) {
                 bodyEl.setHeight ( Roo.lib.Dom.getViewHeight() - 100 );
-                bodyEl.dom.style.overflowY = 'auto';
+                bodyEl.dom.style.overflowY = 'auto !important';
             } else {
                 bodyEl.dom.style.height = '';
                 bodyEl.dom.style.overflowY = '';
