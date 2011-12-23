@@ -131,202 +131,205 @@ Roo.apply(Roo.ux.TouchScroll.prototype, {
                         return getPosition();
                 };
 
-                        // Bounce back to the bounds after momentum scrolling
-                        function reboundScroll() {
-                                if (scrollY > 0) {
-                                        scrollTo(0, o.reboundTime);
-                                } else if (scrollY < maxHeight) {
-                                        scrollTo(maxHeight, o.reboundTime);
-                                }
+                // Bounce back to the bounds after momentum scrolling
+                function reboundScroll() {
+                        if (scrollY > 0) {
+                                scrollTo(0, o.reboundTime);
+                        } else if (scrollY < maxHeight) {
+                                scrollTo(maxHeight, o.reboundTime);
+                        }
+                }
+
+                // Stop everything once the CSS transition in complete
+                function transitionEnd() {
+                        if (bouncing) {
+                                bouncing = false;
+                                reboundScroll();
                         }
 
-                        // Stop everything once the CSS transition in complete
-                        function transitionEnd() {
-                                if (bouncing) {
-                                        bouncing = false;
-                                        reboundScroll();
+                        clearTimeout(timeoutID);
+                }
+        
+                // Limit the scrolling to within the bounds
+                function clampScroll(poll) {
+                        if (!hasMatrix || bouncing) {
+                                return;
+                        }
+    
+                        var oldY = pollY;
+                        pollY = getPosition();
+                        
+                        if (pollY > 0) {
+                                if (o.elastic) {
+                                        // Slow down outside top bound
+                                        bouncing = true;
+                                        scrollY = 0;
+                                        momentumScroll(pollY - oldY, o.elasticDamp, 1, height, o.elasticTime);
+                                } else {
+                                        // Stop outside top bound
+                                        setTransitionTime(0);
+                                        setPosition(0);
                                 }
-
-                                clearTimeout(timeoutID);
+                        } else if (pollY < maxHeight) {
+                                if (o.elastic) {
+                                        // Slow down outside bottom bound
+                                        bouncing = true;
+                                        scrollY = maxHeight;
+                                        momentumScroll(pollY - oldY, o.elasticDamp, 1, height, o.elasticTime);
+                                } else {
+                                        // Stop outside bottom bound
+                                        setTransitionTime(0);
+                                        setPosition(maxHeight);
+                                }
+                        } else if (poll) {
+                                // Poll the computed position to check if element is out of bounds
+                                timeoutID = setTimeout(clampScroll, 20, true);
+                        }
+                }
+        
+        // Animate to a position using CSS
+                function scrollTo(destY, time) {
+                        if (destY === scrollY) {
+                                return;
                         }
                         
-                        // Limit the scrolling to within the bounds
-                        function clampScroll(poll) {
-                                if (!hasMatrix || bouncing) {
-                                        return;
+                        moved = true;
+                        setTransitionTime(time);
+                        setPosition(destY);
+                }
+        
+                // Perform a momentum-based scroll using CSS
+                function momentumScroll(d, k, minDist, maxDist, t) {
+                        var ad = Math.abs(d),
+                                dy = 0;
+                        
+                        // Calculate the total distance
+                        while (ad > 0.1) {
+                                ad *= k;
+                                dy += ad;
+                        }
+                        
+                        // Limit to within min and max distances
+                        if (dy > maxDist) {
+                                dy = maxDist;
+                        }
+                        if (dy > minDist) {
+                                if (d < 0) {
+                                        dy = -dy;
                                 }
-
-                                var oldY = pollY;
-                                pollY = getPosition();
                                 
-                                if (pollY > 0) {
-                                        if (o.elastic) {
-                                                // Slow down outside top bound
-                                                bouncing = true;
-                                                scrollY = 0;
-                                                momentumScroll(pollY - oldY, o.elasticDamp, 1, height, o.elasticTime);
-                                        } else {
-                                                // Stop outside top bound
-                                                setTransitionTime(0);
-                                                setPosition(0);
-                                        }
-                                } else if (pollY < maxHeight) {
-                                        if (o.elastic) {
-                                                // Slow down outside bottom bound
-                                                bouncing = true;
-                                                scrollY = maxHeight;
-                                                momentumScroll(pollY - oldY, o.elasticDamp, 1, height, o.elasticTime);
-                                        } else {
-                                                // Stop outside bottom bound
-                                                setTransitionTime(0);
-                                                setPosition(maxHeight);
-                                        }
-                                } else if (poll) {
-                                        // Poll the computed position to check if element is out of bounds
-                                        timeoutID = setTimeout(clampScroll, 20, true);
-                                }
-                        }
-                        
-                        // Animate to a position using CSS
-                        function scrollTo(destY, time) {
-                                if (destY === scrollY) {
-                                        return;
-                                }
+                                dy += scrollY;
                                 
-                                moved = true;
-                                setTransitionTime(time);
-                                setPosition(destY);
+                                // If outside the bounds, don't go too far
+                                if (height > 0) {
+                                        if (dy > height * 2) {
+                                                var ody = dy;
+                                                dy = height * 2;
+                                        } else if (dy < maxHeight - height * 2) {
+                                                dy = maxHeight - height * 2;
+                                        }
+                                }
+                        
+                                // Perform scroll
+                                scrollTo(Math.round(dy), t);
                         }
                         
-                        // Perform a momentum-based scroll using CSS
-                        function momentumScroll(d, k, minDist, maxDist, t) {
-                                var ad = Math.abs(d),
+                        clampScroll(true);
+                }
+        
+                // Get the touch points from this event
+                function getTouches(e) {
+                        if (e.originalEvent) {
+                                if (e.originalEvent.touches && e.originalEvent.touches.length) {
+                                        return e.originalEvent.touches;
+                                } else if (e.originalEvent.changedTouches && e.originalEvent.changedTouches.length) {
+                                        return e.originalEvent.changedTouches;
+                                }
+                        }
+                        return e.touches;
+                }
+                
+                // Dispatches a fake mouse event from a touch event
+                function dispatchMouseEvent(name, touch, target) {
+                        var e = document.createEvent('MouseEvent');
+                        e.initMouseEvent(name, true, true, touch.view, 1,
+                                        touch.screenX, touch.screenY,
+                                        touch.clientX, touch.clientY,
+                                        false, false, false, false, 0, null);
+                        target.dispatchEvent(e);
+                }
+        
+                // Find the root node of this target
+                function getRootNode(target) {
+                        while (target.nodeType !== 1) {
+                                target = target.parentNode;
+                        }
+                        return target;
+                }
+                
+                // Perform a touch start event
+                function touchStart(e) {
+                    // Allow certain HTML tags to receive touch events
+                    if (o.touchTags.indexOf(e.target.tagName.toLowerCase()) !== -1) {
+                            return;
+                    }
+                    
+                    // Stop the default touches
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    var touch = getTouches(e)[0];
+                    
+                    // Dispatch a fake mouse down event		
+                    dispatchMouseEvent('mousedown', touch, getRootNode(touch.target));
+                    
+                    scrolling = true;
+                    moved = false;
+                    movedY = 0;
+                    
+                    clearTimeout(timeoutID);
+                    setTransitionTime(0);
+                    
+                    // Check scroll position
+                    if (o.momentum) {
+                            var y = getPosition();
+                            if (y !== scrollY) {
+                                    setPosition(y);
+                                    moved = true;
+                            }
+                    }
+
+                    touchY = touch.pageY - scrollY;
+                }
+                        
+                // Perform a touch move event
+                function touchMove(e) {
+                        if (!scrolling) {
+                                return;
+                        }
+                        
+                        var dy = getTouches(e)[0].pageY - touchY;
+                        
+                        // Elastic-drag or stop when moving outside of boundaries
+                        if (dy > 0) {
+                                if (o.elastic) {
+                                        dy /= 2;
+                                } else {
                                         dy = 0;
-                                
-                                // Calculate the total distance
-                                while (ad > 0.1) {
-                                        ad *= k;
-                                        dy += ad;
                                 }
-                                
-                                // Limit to within min and max distances
-                                if (dy > maxDist) {
-                                        dy = maxDist;
+                        } else if (dy < maxHeight) {
+                                if (o.elastic) {
+                                        dy = (dy + maxHeight) / 2;
+                                } else {
+                                        dy = maxHeight;
                                 }
-                                if (dy > minDist) {
-                                        if (d < 0) {
-                                                dy = -dy;
-                                        }
-                                        
-                                        dy += scrollY;
-                                        
-                                        // If outside the bounds, don't go too far
-                                        if (height > 0) {
-                                                if (dy > height * 2) {
-                                                        var ody = dy;
-                                                        dy = height * 2;
-                                                } else if (dy < maxHeight - height * 2) {
-                                                        dy = maxHeight - height * 2;
-                                                }
-                                        }
-                                
-                                        // Perform scroll
-                                        scrollTo(Math.round(dy), t);
-                                }
-                                
-                                clampScroll(true);
                         }
                         
-                        // Get the touch points from this event
-                        function getTouches(e) {
-                                if (e.originalEvent) {
-                                        if (e.originalEvent.touches && e.originalEvent.touches.length) {
-                                                return e.originalEvent.touches;
-                                        } else if (e.originalEvent.changedTouches && e.originalEvent.changedTouches.length) {
-                                                return e.originalEvent.changedTouches;
-                                        }
-                                }
-                                return e.touches;
-                        }
-                        
-                        // Dispatches a fake mouse event from a touch event
-                        function dispatchMouseEvent(name, touch, target) {
-                                var e = document.createEvent('MouseEvent');
-                                e.initMouseEvent(name, true, true, touch.view, 1, touch.screenX, touch.screenY, touch.clientX, touch.clientY, false, false, false, false, 0, null);
-                                target.dispatchEvent(e);
-                        }
-                        
-                        // Find the root node of this target
-                        function getRootNode(target) {
-                                while (target.nodeType !== 1) {
-                                        target = target.parentNode;
-                                }
-                                return target;
-                        }
-                        
-                        // Perform a touch start event
-                        function touchStart(e) {
-                                // Allow certain HTML tags to receive touch events
-                                if ($.inArray(e.target.tagName.toLowerCase(), o.touchTags) !== -1) {
-                                        return;
-                                }
-                                
-                                // Stop the default touches
-                                e.preventDefault();
-                                e.stopPropagation();
-                                
-                                var touch = getTouches(e)[0];
-                                
-                                // Dispatch a fake mouse down event		
-                                dispatchMouseEvent('mousedown', touch, getRootNode(touch.target));
-                                
-                                scrolling = true;
-                                moved = false;
-                                movedY = 0;
-                                
-                                clearTimeout(timeoutID);
-                                setTransitionTime(0);
-                                
-                                // Check scroll position
-                                if (o.momentum) {
-                                        var y = getPosition();
-                                        if (y !== scrollY) {
-                                                setPosition(y);
-                                                moved = true;
-                                        }
-                                }
-
-                                touchY = touch.pageY - scrollY;
-                        }
-                        
-                        // Perform a touch move event
-                        function touchMove(e) {
-                                if (!scrolling) {
-                                        return;
-                                }
-                                
-                                var dy = getTouches(e)[0].pageY - touchY;
-                                
-                                // Elastic-drag or stop when moving outside of boundaries
-                                if (dy > 0) {
-                                        if (o.elastic) {
-                                                dy /= 2;
-                                        } else {
-                                                dy = 0;
-                                        }
-                                } else if (dy < maxHeight) {
-                                        if (o.elastic) {
-                                                dy = (dy + maxHeight) / 2;
-                                        } else {
-                                                dy = maxHeight;
-                                        }
-                                }
-                                
-                                movedY = dy - scrollY;
-                                moved = true;
-                                setPosition(dy);
-                        }
-                        
+                        movedY = dy - scrollY;
+                        moved = true;
+                        setPosition(dy);
+                }
+                
                         // Perform a touch end event
                         function touchEnd(e) {
                                 if (!scrolling) {
