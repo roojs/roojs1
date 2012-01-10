@@ -36888,6 +36888,7 @@ Roo.extend(Roo.form.NumberField, Roo.form.TextField,  {
     },
 
     setValue : function(v){
+        v = this.fixPrecision(v);
         Roo.form.NumberField.superclass.setValue.call(this, String(v).replace(".", this.decimalSeparator));
     },
 
@@ -36899,7 +36900,7 @@ Roo.extend(Roo.form.NumberField, Roo.form.TextField,  {
     beforeBlur : function(){
         var v = this.parseValue(this.getRawValue());
         if(v){
-            this.setValue(this.fixPrecision(v));
+            this.setValue(v);
         }
     }
 });/*
