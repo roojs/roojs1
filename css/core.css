@@ -26,6 +26,9 @@
     color: #557;
     
 }
+.roo-align-right {
+    align:right;
+}
 
 .x-body-masked {
 	overflow:hidden !important;
