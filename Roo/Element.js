@@ -2092,7 +2092,10 @@ if(opt.anim.isAnimated()){
                 }
                 dom = dom.parentNode;
             }
-            
+            // if we are masking the body - then it hides everything..
+            if (this.dom == document.body) {
+                z = 1000000;
+            }
            
             if(typeof msg == 'string'){
                 if(!this._maskMsg){
