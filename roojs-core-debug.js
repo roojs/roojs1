@@ -8883,6 +8883,8 @@ if(opt.anim.isAnimated()){
             // if we are masking the body - then it hides everything..
             if (this.dom == document.body) {
                 z = 1000000;
+                this._mask.setWidth(Roo.lib.Dom.getDocumentWidth());
+                this._mask.setHeight(Roo.lib.Dom.getDocumentHeight());
             }
            
             if(typeof msg == 'string'){
