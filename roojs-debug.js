@@ -30119,16 +30119,18 @@ Roo.MessageBox = function(){
             if(dlg.isVisible()){
                 dlg.fixedcenter = false;
             }
-            // to big, make it scoll.
+            // to big, make it scroll. = But as usual stupid IE does not support
+            // !important..
+            
             if ( bodyEl.getHeight() > (Roo.lib.Dom.getViewHeight() - 100)) {
                 bodyEl.setHeight ( Roo.lib.Dom.getViewHeight() - 100 );
-                bodyEl.dom.style.overflowY = 'auto !important';
+                bodyEl.dom.style.overflowY = 'auto' + ( Roo.isIE ? '' : ' !important');
             } else {
                 bodyEl.dom.style.height = '';
                 bodyEl.dom.style.overflowY = '';
             }
             if (cw > w) {
-                bodyEl.dom.style.overflowX = 'auto !important';
+                bodyEl.dom.style.get = 'auto' + ( Roo.isIE ? '' : ' !important');
             } else {
                 bodyEl.dom.style.overflowX = '';
             }
