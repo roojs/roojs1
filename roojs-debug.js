@@ -21132,6 +21132,8 @@ Roo.data.Node = function(attributes){
         this.id = Roo.id(null, "ynode-");
         this.attributes.id = this.id;
     }
+     
+    
     /**
      * All child nodes of this node. @type Array
      */
@@ -31341,8 +31343,8 @@ Roo.extend(Roo.tree.TreePanel, Roo.data.Tree, {
         }
         this.getSelectionModel().init(this);
         if (!this.root) {
-            console.log("ROOT not set in tree");
-            return;
+            Roo.log("ROOT not set in tree");
+            return this;
         }
         this.root.render();
         if(!this.rootVisible){
@@ -31833,6 +31835,18 @@ Roo.tree.TreeNode = function(attributes){
      * @type TreeNodeUI
      */
     this.ui = new uiClass(this);
+    
+    // finally support items[]
+    if (typeof(this.attributes.items) == 'undefined' || !this.attributes.items) {
+        return;
+    }
+    
+    Roo.each(this.attributes.items, function(c) {
+        this.appendChild(Roo.factory(c,Roo.Tree));
+    }, this)
+    
+    
+    
 };
 Roo.extend(Roo.tree.TreeNode, Roo.data.Node, {
     preventHScroll: true,
@@ -31878,7 +31892,8 @@ Roo.extend(Roo.tree.TreeNode, Roo.data.Node, {
 
     // these methods are overridden to provide lazy rendering support
     // private override
-    appendChild : function(){
+    appendChild : function()
+    {
         var node = Roo.tree.TreeNode.superclass.appendChild.apply(this, arguments);
         if(node && this.childrenRendered){
             node.render();
