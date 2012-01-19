@@ -150,6 +150,18 @@ Roo.tree.TreeNode = function(attributes){
      * @type TreeNodeUI
      */
     this.ui = new uiClass(this);
+    
+    // finally support items[]
+    if (typeof(this.attributes.items) == 'undefined' || !this.attributes.items) {
+        return;
+    }
+    
+    Roo.each(this.attributes.items, function(c) {
+        this.appendChild(Roo.factory(c,Roo.Tree));
+    }, this)
+    
+    
+    
 };
 Roo.extend(Roo.tree.TreeNode, Roo.data.Node, {
     preventHScroll: true,
@@ -195,7 +207,8 @@ Roo.extend(Roo.tree.TreeNode, Roo.data.Node, {
 
     // these methods are overridden to provide lazy rendering support
     // private override
-    appendChild : function(){
+    appendChild : function()
+    {
         var node = Roo.tree.TreeNode.superclass.appendChild.apply(this, arguments);
         if(node && this.childrenRendered){
             node.render();
