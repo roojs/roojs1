@@ -158,7 +158,8 @@ Roo.tree.TreeNode = function(attributes){
     
     Roo.each(this.attributes.items, function(c) {
         this.appendChild(Roo.factory(c,Roo.Tree));
-    }, this)
+    }, this);
+    delete this.attribute.items;
     
     
     
