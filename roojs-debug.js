@@ -31840,7 +31840,7 @@ Roo.tree.TreeNode = function(attributes){
     if (typeof(this.attributes.items) == 'undefined' || !this.attributes.items) {
         return;
     }
-    return;
+    
     
     Roo.each(this.attributes.items, function(c) {
         this.appendChild(Roo.factory(c,Roo.Tree));
