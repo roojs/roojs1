@@ -197,13 +197,13 @@ Roo.lib.Colour = function(){
 
   };
   // convert between formats..
-  this.toRGB()
+  this.toRGB= function()
   {
     var r = this.getIntegerRGB();
     return new Roo.lib.RGBColour(r.r,r,g,r,b,r.a);
     
   }
-  this.toHSL()
+  this.toHSL = function()
   {
      var hsl = this.getHSL();
   // return the CSS HSL colour value
@@ -211,7 +211,7 @@ Roo.lib.Colour = function(){
     
   }
   
-  this.toHSV()
+  this.toHSV= function()
   {
     var rgb = this.toRGB();
     var hsv = rgb.getHSV();
