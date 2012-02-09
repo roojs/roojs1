@@ -378,7 +378,6 @@ Roo.lib.RGBColour.prototype = new Colour();
  * a - the alpha component, clipped to the range [0,1] - this parameter is
  *     optional and defaults to 1
  */
-HSVColour.prototype = new Colour();
 function HSVColour(h, s, v, a){
 
   // store the alpha component after clipping it if necessary
@@ -515,6 +514,7 @@ function HSVColour(h, s, v, a){
   };
 
 }
+Roo.lib.HSVColour.prototype = new Colour();
 
 
 /* Creates a colour specified in the HSL colour space, with an optional alpha
