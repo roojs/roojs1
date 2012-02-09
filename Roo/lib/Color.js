@@ -203,7 +203,25 @@ Roo.lib.Colour = function(){
     return new Roo.lib.RGBColour(r.r,r,g,r,b,r.a);
     
   }
+  this.toHSL()
+  {
+     var hsl = this.getHSL();
+  // return the CSS HSL colour value
+    return new Roo.lib.HSLColour(hsl.h,  hsl.s, hsl.l ,  hsl.a );
+    
+  }
   
+  this.toHSV()
+  {
+    var rgb = this.toRGB();
+    var hsv = rgb.getHSV();
+     var hsl = this.getHSL();
+  // return the CSS HSL colour value
+    return new Roo.lib.HSVColour(hsv.h,  hsv.s, hsv.v ,  hsv.a );
+    
+  }
+  
+   
   
 
 }
