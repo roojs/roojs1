@@ -196,6 +196,15 @@ Roo.lib.Colour = function(){
     node.style.backgroundColor = this.getCSSHexadecimalRGB();
 
   };
+  
+  this.toRGB()
+  {
+    var r = this.getIntegerRGB();
+    return new Roo.lib.RGBColour(r.r,r,g,r,b,r.a);
+    
+  }
+  
+  
 
 }
 
