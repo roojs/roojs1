@@ -366,7 +366,7 @@ Roo.lib.RGBColour = function (r, g, b, a){
   };
 
 }
-Roo.lib.RGBColour.prototype = new Colour();
+Roo.lib.RGBColour.prototype = new Roo.lib.Colour();
 
 
 /* Creates a colour specified in the HSV colour space, with an optional alpha
@@ -378,7 +378,7 @@ Roo.lib.RGBColour.prototype = new Colour();
  * a - the alpha component, clipped to the range [0,1] - this parameter is
  *     optional and defaults to 1
  */
-function HSVColour(h, s, v, a){
+Roo.lib.HSVColour = function (h, s, v, a){
 
   // store the alpha component after clipping it if necessary
   var alpha = (a === undefined ? 1 : Math.max(0, Math.min(1, a)));
@@ -514,7 +514,7 @@ function HSVColour(h, s, v, a){
   };
 
 }
-Roo.lib.HSVColour.prototype = new Colour();
+Roo.lib.HSVColour.prototype = new Roo.lib.Colour();
 
 
 /* Creates a colour specified in the HSL colour space, with an optional alpha
@@ -526,8 +526,8 @@ Roo.lib.HSVColour.prototype = new Colour();
  * a - the alpha component, clipped to the range [0,1] - this parameter is
  *     optional and defaults to 1
  */
-HSLColour.prototype = new Colour();
-function HSLColour(h, s, l, a){
+
+Roo.lib.HSLColour = function(h, s, l, a){
 
   // store the alpha component after clipping it if necessary
   var alpha = (a === undefined ? 1 : Math.max(0, Math.min(1, a)));
@@ -680,3 +680,4 @@ function HSLColour(h, s, l, a){
   };
 
 }
+Roo.lib.HSLColour.prototype = new Roo.lib.Colour();
