@@ -225,7 +225,7 @@ Roo.lib.Colour = function(){
     {
         var rgb = this.toRGB();
         var hsv = rgb.getHSV();
-         return new Roo.lib.HSVColour(hsv.h,  hsv.s * v, hsv.v ,  hsv.a );
+        return new Roo.lib.HSVColour(hsv.h,  hsv.s * v, hsv.v ,  hsv.a );
         
     
     }
