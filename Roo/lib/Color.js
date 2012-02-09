@@ -215,14 +215,21 @@ Roo.lib.Colour = function(){
   {
     var rgb = this.toRGB();
     var hsv = rgb.getHSV();
-     var hsl = this.getHSL();
-  // return the CSS HSL colour value
+   // return the CSS HSL colour value
     return new Roo.lib.HSVColour(hsv.h,  hsv.s, hsv.v ,  hsv.a );
     
   }
   
-  // 
-  
+  // modify 
+    this.saturate = function(v)
+    {
+
+        var hsv = rgb.getHSV();
+        var r = this.toHSL();
+        return new Roo.lib.HSVColour(hsv.h,  hsv.s * v, hsv.v ,  hsv.a );
+        
+    
+    }
   
    
   
