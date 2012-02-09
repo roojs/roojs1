@@ -196,7 +196,7 @@ Roo.lib.Colour = function(){
     node.style.backgroundColor = this.getCSSHexadecimalRGB();
 
   };
-  
+  // convert between formats..
   this.toRGB()
   {
     var r = this.getIntegerRGB();
