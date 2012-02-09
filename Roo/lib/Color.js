@@ -220,7 +220,7 @@ Roo.lib.Colour = function(){
     
   }
   
-  // modify 
+  // modify  v = 0 ... 1 (eg. 0.5)
     this.saturate = function(v)
     {
         var rgb = this.toRGB();
