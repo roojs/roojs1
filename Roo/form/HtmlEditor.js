@@ -684,6 +684,8 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         if(Roo.isGecko || Roo.isOpera || Roo.isSafari){
             this.win.focus();
             
+            
+            // from jquery ui (MIT licenced)
             var range, node;
             var win = this.win;
             if (win.getSelection && win.getSelection().getRangeAt) {
@@ -694,14 +696,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 win.document.selection.createRange().pasteHTML(text);
             } else {
                 this.execCmd('InsertHTML', text);
-            }
-            
-            
-            
-            
-            
-            
-            
+            } 
             
             
             this.deferFocus();
