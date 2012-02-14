@@ -39250,12 +39250,17 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     /**
      * Inserts the passed text at the current cursor position. Note: the editor must be initialized and activated
      * to insert tRoo.
-     * @param {String} text
+     * @param {String} text | dom node.. 
      */
-    insertAtCursor : function(text){
+    insertAtCursor : function(text)
+    {
+        
+        
+        
         if(!this.activated){
             return;
         }
+        /*
         if(Roo.isIE){
             this.win.focus();
             var r = this.doc.selection.createRange();
@@ -39268,7 +39273,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             }
             return;
         }
-        
+        */
         if(Roo.isGecko || Roo.isOpera || Roo.isSafari){
             this.win.focus();
             
@@ -39276,16 +39281,22 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             // from jquery ui (MIT licenced)
             var range, node;
             var win = this.win;
+            
             if (win.getSelection && win.getSelection().getRangeAt) {
                 range = win.getSelection().getRangeAt(0);
-                node = range.createContextualFragment(text);
+                node = typeof(text) == 'string' ? range.createContextualFragment(text) : text;
                 range.insertNode(node);
             } else if (win.document.selection && win.document.selection.createRange) {
-                win.document.selection.createRange().pasteHTML(text);
+                // no firefox support
+                var txt = typeof(text) == 'string' ? text : text.outerHTML;
+                win.document.selection.createRange().pasteHTML(txt);
             } else {
-                this.execCmd('InsertHTML', text);
+                // no firefox support
+                var txt = typeof(text) == 'string' ? text : text.outerHTML;
+                this.execCmd('InsertHTML', txt);
             } 
             
+            this.syncValue();
             
             this.deferFocus();
         }
