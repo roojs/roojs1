@@ -39264,10 +39264,29 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 r.pasteHTML(text);
                 this.syncValue();
                 this.deferFocus();
+            
             }
-        }else if(Roo.isGecko || Roo.isOpera || Roo.isSafari){
+            return;
+        }
+        
+        if(Roo.isGecko || Roo.isOpera || Roo.isSafari){
             this.win.focus();
-            this.execCmd('InsertHTML', text);
+            
+            
+            // from jquery ui (MIT licenced)
+            var range, node;
+            var win = this.win;
+            if (win.getSelection && win.getSelection().getRangeAt) {
+                range = win.getSelection().getRangeAt(0);
+                node = range.createContextualFragment(text);
+                range.insertNode(node);
+            } else if (win.document.selection && win.document.selection.createRange) {
+                win.document.selection.createRange().pasteHTML(text);
+            } else {
+                this.execCmd('InsertHTML', text);
+            } 
+            
+            
             this.deferFocus();
         }
     },
