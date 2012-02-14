@@ -664,7 +664,11 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
      * to insert tRoo.
      * @param {String} text
      */
-    insertAtCursor : function(text){
+    insertAtCursor : function(text)
+    {
+        
+        
+        
         if(!this.activated){
             return;
         }
@@ -698,6 +702,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 this.execCmd('InsertHTML', text);
             } 
             
+            this.syncValue();
             
             this.deferFocus();
         }
