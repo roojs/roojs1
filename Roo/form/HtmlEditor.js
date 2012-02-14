@@ -662,7 +662,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     /**
      * Inserts the passed text at the current cursor position. Note: the editor must be initialized and activated
      * to insert tRoo.
-     * @param {String} text
+     * @param {String} text | dom node.. 
      */
     insertAtCursor : function(text)
     {
