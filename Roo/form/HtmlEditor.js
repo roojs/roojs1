@@ -437,6 +437,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 }
             }
             html = this.cleanHtml(html);
+            // fix up the special chars..
             html.replace(/([\x80-\uffff])/g, function (a, b) {
                 return "&#"+b.charCodeAt()+";" 
             });
