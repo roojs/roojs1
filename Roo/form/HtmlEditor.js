@@ -693,14 +693,19 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             // from jquery ui (MIT licenced)
             var range, node;
             var win = this.win;
+            
             if (win.getSelection && win.getSelection().getRangeAt) {
                 range = win.getSelection().getRangeAt(0);
                 node = typeof(text) == 'string' ? range.createContextualFragment(text) : text;
                 range.insertNode(node);
             } else if (win.document.selection && win.document.selection.createRange) {
-                win.document.selection.createRange().pasteHTML(text);
+                // no firefox support
+                var txt = typeof(text) == 'string' ? text : text.outerHTML;
+                win.document.selection.createRange().pasteHTML(txt);
             } else {
-                this.execCmd('InsertHTML', text);
+                // no firefox support
+                var txt = typeof(text) == 'string' ? text : text.outerHTML;
+                this.execCmd('InsertHTML', txt);
             } 
             
             this.syncValue();
