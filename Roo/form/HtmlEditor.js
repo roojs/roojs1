@@ -695,7 +695,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             var win = this.win;
             if (win.getSelection && win.getSelection().getRangeAt) {
                 range = win.getSelection().getRangeAt(0);
-                node = range.createContextualFragment(text);
+                node = typeof(text) == 'string' ? range.createContextualFragment(text) : text;
                 range.insertNode(node);
             } else if (win.document.selection && win.document.selection.createRange) {
                 win.document.selection.createRange().pasteHTML(text);
