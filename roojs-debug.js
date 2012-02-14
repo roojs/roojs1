@@ -40226,8 +40226,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                     
                     html: this.specialChars[i],
                     handler: function(a,b) {
-                        //editor.insertAtCursor(String.fromCharCode(a.html.replace('&#','').replace(';', '')));
-                        editor.insertAtCursor(a.html);
+                        editor.insertAtCursor(String.fromCharCode(a.html.replace('&#','').replace(';', '')));
+                        //editor.insertAtCursor(a.html);
                         
                     },
                     tabIndex:-1
