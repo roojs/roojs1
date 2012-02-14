@@ -672,6 +672,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         if(!this.activated){
             return;
         }
+        /*
         if(Roo.isIE){
             this.win.focus();
             var r = this.doc.selection.createRange();
@@ -684,7 +685,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             }
             return;
         }
-        
+        */
         if(Roo.isGecko || Roo.isOpera || Roo.isSafari){
             this.win.focus();
             
