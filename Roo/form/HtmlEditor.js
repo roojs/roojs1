@@ -437,6 +437,9 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 }
             }
             html = this.cleanHtml(html);
+            html.replace(/([\x80-\uffff])/g, function (a, b) {
+                return "&#"+b.charCodeAt()+";" 
+            })
             if(this.fireEvent('beforesync', this, html) !== false){
                 this.el.dom.value = html;
                 this.fireEvent('sync', this, html);
