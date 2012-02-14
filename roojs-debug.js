@@ -40192,7 +40192,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                     
                     html: this.specialChars[i],
                     handler: function(a,b) {
-                        editor.insertAtCursor(String.fromCharCode(a.html.replace('&#','').replace(';', '')));
+                        //editor.insertAtCursor(String.fromCharCode(a.html.replace('&#','').replace(';', '')));
+                        editor.insertAtCursor(a.html);
                         
                     },
                     tabIndex:-1
@@ -48398,12 +48399,7 @@ Roo.grid.GridView = function(config){
 
 Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
 
-    /**
-     * Override this function to apply custom css classes to rows during rendering
-     * @param {Record} record The record
-     * @param {Number} index
-     * @method getRowClass
-     */
+    
     rowClass : "x-grid-row",
 
     cellClass : "x-grid-col",
@@ -49304,6 +49300,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                 // buffers
                 var buf = [], lbuf = [], cb, lcb, c, p = {}, rp = {}, r, rowIndex;
                 var hasListener = this.grid.hasListener('rowclass');
+ 
                 var rowcfg = {};
                 for(var j = 0, len = rs.length; j < len; j++){
                     r = rs[j]; cb = []; lcb = []; rowIndex = (j+startRow);
@@ -49317,6 +49314,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                         if(r.dirty && typeof r.modified[c.name] !== 'undefined'){
                             p.css += p.css ? ' x-grid-dirty-cell' : 'x-grid-dirty-cell';
                         }
+                        
                         var markup = ct.apply(p);
                         if(!c.locked){
                             cb[cb.length] = markup;
