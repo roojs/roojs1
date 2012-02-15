@@ -6671,8 +6671,6 @@ Roo.data.Node = function(attributes){
         this.id = Roo.id(null, "ynode-");
         this.attributes.id = this.id;
     }
-     
-    
     /**
      * All child nodes of this node. @type Array
      */
@@ -15783,7 +15781,9 @@ Roo.Msg.show({
             if(this.isVisible()){
                 
                 this.hide();
-                Roo.log("Old Dialog Message:" +  msgEl.innerHTML )
+                Roo.log("[Roo.Messagebox] Show called while message displayed:" );
+                Roo.log("Old Dialog Message:" +  msgEl.innerHTML );
+                Roo.log("New Dialog Message:" +  options.msg )
                 //this.alert("ERROR", "Multiple dialogs where displayed at the same time");
                 //throw "Roo.MessageBox ERROR : Multiple dialogs where displayed at the same time";
                 
@@ -16882,8 +16882,8 @@ Roo.extend(Roo.tree.TreePanel, Roo.data.Tree, {
         }
         this.getSelectionModel().init(this);
         if (!this.root) {
-            Roo.log("ROOT not set in tree");
-            return this;
+            console.log("ROOT not set in tree");
+            return;
         }
         this.root.render();
         if(!this.rootVisible){
@@ -33937,12 +33937,7 @@ Roo.grid.GridView = function(config){
 
 Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
 
-    /**
-     * Override this function to apply custom css classes to rows during rendering
-     * @param {Record} record The record
-     * @param {Number} index
-     * @method getRowClass
-     */
+    
     rowClass : "x-grid-row",
 
     cellClass : "x-grid-col",
@@ -34843,6 +34838,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                 // buffers
                 var buf = [], lbuf = [], cb, lcb, c, p = {}, rp = {}, r, rowIndex;
                 var hasListener = this.grid.hasListener('rowclass');
+ 
                 var rowcfg = {};
                 for(var j = 0, len = rs.length; j < len; j++){
                     r = rs[j]; cb = []; lcb = []; rowIndex = (j+startRow);
@@ -34856,6 +34852,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                         if(r.dirty && typeof r.modified[c.name] !== 'undefined'){
                             p.css += p.css ? ' x-grid-dirty-cell' : 'x-grid-dirty-cell';
                         }
+                        
                         var markup = ct.apply(p);
                         if(!c.locked){
                             cb[cb.length] = markup;

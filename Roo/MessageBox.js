@@ -306,7 +306,9 @@ Roo.Msg.show({
             if(this.isVisible()){
                 
                 this.hide();
-                Roo.log("Old Dialog Message:" +  msgEl.innerHTML )
+                Roo.log("[Roo.Messagebox] Show called while message displayed:" );
+                Roo.log("Old Dialog Message:" +  msgEl.innerHTML );
+                Roo.log("New Dialog Message:" +  options.msg )
                 //this.alert("ERROR", "Multiple dialogs where displayed at the same time");
                 //throw "Roo.MessageBox ERROR : Multiple dialogs where displayed at the same time";
                 
