@@ -47,8 +47,7 @@ Format  Output      Description
   H      15         24-hour format of an hour with leading zeros
   i      05         Minutes with leading zeros
   s      01         Seconds, with leading zeros
-  O      -0600      Difference to Greenwich time (GMT) in hours
-  o      -06        Difference to Greenwich time (GMT) in hours without minutes.. (postgresql outputs this.)
+  O      -0600      Difference to Greenwich time (GMT) in hours (Allows +08, without minutes)
   P      -06:00     Difference to Greenwich time (GMT) with colon between hours and minutes
   T      CST        Timezone setting of the machine running the code
   Z      -21600     Timezone offset in seconds (negative if west of UTC, positive if east)
