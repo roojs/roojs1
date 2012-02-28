@@ -14025,4 +14025,440 @@ map.addBinding({
 		    this.enabled = false;
 		}
 	}
+};/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+ 
+/**
+ * @class Roo.util.TextMetrics
+ * Provides precise pixel measurements for blocks of text so that you can determine exactly how high and
+ * wide, in pixels, a given block of text will be.
+ * @singleton
+ */
+Roo.util.TextMetrics = function(){
+    var shared;
+    return {
+        /**
+         * Measures the size of the specified text
+         * @param {String/HTMLElement} el The element, dom node or id from which to copy existing CSS styles
+         * that can affect the size of the rendered text
+         * @param {String} text The text to measure
+         * @param {Number} fixedWidth (optional) If the text will be multiline, you have to set a fixed width
+         * in order to accurately measure the text height
+         * @return {Object} An object containing the text's size {width: (width), height: (height)}
+         */
+        measure : function(el, text, fixedWidth){
+            if(!shared){
+                shared = Roo.util.TextMetrics.Instance(el, fixedWidth);
+            }
+            shared.bind(el);
+            shared.setFixedWidth(fixedWidth || 'auto');
+            return shared.getSize(text);
+        },
+
+        /**
+         * Return a unique TextMetrics instance that can be bound directly to an element and reused.  This reduces
+         * the overhead of multiple calls to initialize the style properties on each measurement.
+         * @param {String/HTMLElement} el The element, dom node or id that the instance will be bound to
+         * @param {Number} fixedWidth (optional) If the text will be multiline, you have to set a fixed width
+         * in order to accurately measure the text height
+         * @return {Roo.util.TextMetrics.Instance} instance The new instance
+         */
+        createInstance : function(el, fixedWidth){
+            return Roo.util.TextMetrics.Instance(el, fixedWidth);
+        }
+    };
+}();
+
+ 
+
+Roo.util.TextMetrics.Instance = function(bindTo, fixedWidth){
+    var ml = new Roo.Element(document.createElement('div'));
+    document.body.appendChild(ml.dom);
+    ml.position('absolute');
+    ml.setLeftTop(-1000, -1000);
+    ml.hide();
+
+    if(fixedWidth){
+        ml.setWidth(fixedWidth);
+    }
+     
+    var instance = {
+        /**
+         * Returns the size of the specified text based on the internal element's style and width properties
+         * @memberOf Roo.util.TextMetrics.Instance#
+         * @param {String} text The text to measure
+         * @return {Object} An object containing the text's size {width: (width), height: (height)}
+         */
+        getSize : function(text){
+            ml.update(text);
+            var s = ml.getSize();
+            ml.update('');
+            return s;
+        },
+
+        /**
+         * Binds this TextMetrics instance to an element from which to copy existing CSS styles
+         * that can affect the size of the rendered text
+         * @memberOf Roo.util.TextMetrics.Instance#
+         * @param {String/HTMLElement} el The element, dom node or id
+         */
+        bind : function(el){
+            ml.setStyle(
+                Roo.fly(el).getStyles('font-size','font-style', 'font-weight', 'font-family','line-height')
+            );
+        },
+
+        /**
+         * Sets a fixed width on the internal measurement element.  If the text will be multiline, you have
+         * to set a fixed width in order to accurately measure the text height.
+         * @memberOf Roo.util.TextMetrics.Instance#
+         * @param {Number} width The width to set on the element
+         */
+        setFixedWidth : function(width){
+            ml.setWidth(width);
+        },
+
+        /**
+         * Returns the measured width of the specified text
+         * @memberOf Roo.util.TextMetrics.Instance#
+         * @param {String} text The text to measure
+         * @return {Number} width The width in pixels
+         */
+        getWidth : function(text){
+            ml.dom.style.width = 'auto';
+            return this.getSize(text).width;
+        },
+
+        /**
+         * Returns the measured height of the specified text.  For multiline text, be sure to call
+         * {@link #setFixedWidth} if necessary.
+         * @memberOf Roo.util.TextMetrics.Instance#
+         * @param {String} text The text to measure
+         * @return {Number} height The height in pixels
+         */
+        getHeight : function(text){
+            return this.getSize(text).height;
+        }
+    };
+
+    instance.bind(bindTo);
+
+    return instance;
 };
+
+// backwards compat
+Roo.Element.measureText = Roo.util.TextMetrics.measure;/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.state.Provider
+ * Abstract base class for state provider implementations. This class provides methods
+ * for encoding and decoding <b>typed</b> variables including dates and defines the 
+ * Provider interface.
+ */
+Roo.state.Provider = function(){
+    /**
+     * @event statechange
+     * Fires when a state change occurs.
+     * @param {Provider} this This state provider
+     * @param {String} key The state key which was changed
+     * @param {String} value The encoded value for the state
+     */
+    this.addEvents({
+        "statechange": true
+    });
+    this.state = {};
+    Roo.state.Provider.superclass.constructor.call(this);
+};
+Roo.extend(Roo.state.Provider, Roo.util.Observable, {
+    /**
+     * Returns the current value for a key
+     * @param {String} name The key name
+     * @param {Mixed} defaultValue A default value to return if the key's value is not found
+     * @return {Mixed} The state data
+     */
+    get : function(name, defaultValue){
+        return typeof this.state[name] == "undefined" ?
+            defaultValue : this.state[name];
+    },
+    
+    /**
+     * Clears a value from the state
+     * @param {String} name The key name
+     */
+    clear : function(name){
+        delete this.state[name];
+        this.fireEvent("statechange", this, name, null);
+    },
+    
+    /**
+     * Sets the value for a key
+     * @param {String} name The key name
+     * @param {Mixed} value The value to set
+     */
+    set : function(name, value){
+        this.state[name] = value;
+        this.fireEvent("statechange", this, name, value);
+    },
+    
+    /**
+     * Decodes a string previously encoded with {@link #encodeValue}.
+     * @param {String} value The value to decode
+     * @return {Mixed} The decoded value
+     */
+    decodeValue : function(cookie){
+        var re = /^(a|n|d|b|s|o)\:(.*)$/;
+        var matches = re.exec(unescape(cookie));
+        if(!matches || !matches[1]) return; // non state cookie
+        var type = matches[1];
+        var v = matches[2];
+        switch(type){
+            case "n":
+                return parseFloat(v);
+            case "d":
+                return new Date(Date.parse(v));
+            case "b":
+                return (v == "1");
+            case "a":
+                var all = [];
+                var values = v.split("^");
+                for(var i = 0, len = values.length; i < len; i++){
+                    all.push(this.decodeValue(values[i]));
+                }
+                return all;
+           case "o":
+                var all = {};
+                var values = v.split("^");
+                for(var i = 0, len = values.length; i < len; i++){
+                    var kv = values[i].split("=");
+                    all[kv[0]] = this.decodeValue(kv[1]);
+                }
+                return all;
+           default:
+                return v;
+        }
+    },
+    
+    /**
+     * Encodes a value including type information.  Decode with {@link #decodeValue}.
+     * @param {Mixed} value The value to encode
+     * @return {String} The encoded value
+     */
+    encodeValue : function(v){
+        var enc;
+        if(typeof v == "number"){
+            enc = "n:" + v;
+        }else if(typeof v == "boolean"){
+            enc = "b:" + (v ? "1" : "0");
+        }else if(v instanceof Date){
+            enc = "d:" + v.toGMTString();
+        }else if(v instanceof Array){
+            var flat = "";
+            for(var i = 0, len = v.length; i < len; i++){
+                flat += this.encodeValue(v[i]);
+                if(i != len-1) flat += "^";
+            }
+            enc = "a:" + flat;
+        }else if(typeof v == "object"){
+            var flat = "";
+            for(var key in v){
+                if(typeof v[key] != "function"){
+                    flat += key + "=" + this.encodeValue(v[key]) + "^";
+                }
+            }
+            enc = "o:" + flat.substring(0, flat.length-1);
+        }else{
+            enc = "s:" + v;
+        }
+        return escape(enc);        
+    }
+});
+
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+/**
+ * @class Roo.state.Manager
+ * This is the global state manager. By default all components that are "state aware" check this class
+ * for state information if you don't pass them a custom state provider. In order for this class
+ * to be useful, it must be initialized with a provider when your application initializes.
+ <pre><code>
+// in your initialization function
+init : function(){
+   Roo.state.Manager.setProvider(new Roo.state.CookieProvider());
+   ...
+   // supposed you have a {@link Roo.BorderLayout}
+   var layout = new Roo.BorderLayout(...);
+   layout.restoreState();
+   // or a {Roo.BasicDialog}
+   var dialog = new Roo.BasicDialog(...);
+   dialog.restoreState();
+ </code></pre>
+ * @singleton
+ */
+Roo.state.Manager = function(){
+    var provider = new Roo.state.Provider();
+    
+    return {
+        /**
+         * Configures the default state provider for your application
+         * @param {Provider} stateProvider The state provider to set
+         */
+        setProvider : function(stateProvider){
+            provider = stateProvider;
+        },
+        
+        /**
+         * Returns the current value for a key
+         * @param {String} name The key name
+         * @param {Mixed} defaultValue The default value to return if the key lookup does not match
+         * @return {Mixed} The state data
+         */
+        get : function(key, defaultValue){
+            return provider.get(key, defaultValue);
+        },
+        
+        /**
+         * Sets the value for a key
+         * @param {String} name The key name
+         * @param {Mixed} value The state data
+         */
+         set : function(key, value){
+            provider.set(key, value);
+        },
+        
+        /**
+         * Clears a value from the state
+         * @param {String} name The key name
+         */
+        clear : function(key){
+            provider.clear(key);
+        },
+        
+        /**
+         * Gets the currently configured state provider
+         * @return {Provider} The state provider
+         */
+        getProvider : function(){
+            return provider;
+        }
+    };
+}();
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+/**
+ * @class Roo.state.CookieProvider
+ * @extends Roo.state.Provider
+ * The default Provider implementation which saves state via cookies.
+ * <br />Usage:
+ <pre><code>
+   var cp = new Roo.state.CookieProvider({
+       path: "/cgi-bin/",
+       expires: new Date(new Date().getTime()+(1000*60*60*24*30)); //30 days
+       domain: "roojs.com"
+   })
+   Roo.state.Manager.setProvider(cp);
+ </code></pre>
+ * @cfg {String} path The path for which the cookie is active (defaults to root '/' which makes it active for all pages in the site)
+ * @cfg {Date} expires The cookie expiration date (defaults to 7 days from now)
+ * @cfg {String} domain The domain to save the cookie for.  Note that you cannot specify a different domain than
+ * your page is on, but you can specify a sub-domain, or simply the domain itself like 'roojs.com' to include
+ * all sub-domains if you need to access cookies across different sub-domains (defaults to null which uses the same
+ * domain the page is running on including the 'www' like 'www.roojs.com')
+ * @cfg {Boolean} secure True if the site is using SSL (defaults to false)
+ * @constructor
+ * Create a new CookieProvider
+ * @param {Object} config The configuration object
+ */
+Roo.state.CookieProvider = function(config){
+    Roo.state.CookieProvider.superclass.constructor.call(this);
+    this.path = "/";
+    this.expires = new Date(new Date().getTime()+(1000*60*60*24*7)); //7 days
+    this.domain = null;
+    this.secure = false;
+    Roo.apply(this, config);
+    this.state = this.readCookies();
+};
+
+Roo.extend(Roo.state.CookieProvider, Roo.state.Provider, {
+    // private
+    set : function(name, value){
+        if(typeof value == "undefined" || value === null){
+            this.clear(name);
+            return;
+        }
+        this.setCookie(name, value);
+        Roo.state.CookieProvider.superclass.set.call(this, name, value);
+    },
+
+    // private
+    clear : function(name){
+        this.clearCookie(name);
+        Roo.state.CookieProvider.superclass.clear.call(this, name);
+    },
+
+    // private
+    readCookies : function(){
+        var cookies = {};
+        var c = document.cookie + ";";
+        var re = /\s?(.*?)=(.*?);/g;
+    	var matches;
+    	while((matches = re.exec(c)) != null){
+            var name = matches[1];
+            var value = matches[2];
+            if(name && name.substring(0,3) == "ys-"){
+                cookies[name.substr(3)] = this.decodeValue(value);
+            }
+        }
+        return cookies;
+    },
+
+    // private
+    setCookie : function(name, value){
+        document.cookie = "ys-"+ name + "=" + this.encodeValue(value) +
+           ((this.expires == null) ? "" : ("; expires=" + this.expires.toGMTString())) +
+           ((this.path == null) ? "" : ("; path=" + this.path)) +
+           ((this.domain == null) ? "" : ("; domain=" + this.domain)) +
+           ((this.secure == true) ? "; secure" : "");
+    },
+
+    // private
+    clearCookie : function(name){
+        document.cookie = "ys-" + name + "=null; expires=Thu, 01-Jan-70 00:00:01 GMT" +
+           ((this.path == null) ? "" : ("; path=" + this.path)) +
+           ((this.domain == null) ? "" : ("; domain=" + this.domain)) +
+           ((this.secure == true) ? "; secure" : "");
+    }
+});

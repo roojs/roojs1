@@ -1006,7 +1006,7 @@ Format  Output      Description
   H      15         24-hour format of an hour with leading zeros
   i      05         Minutes with leading zeros
   s      01         Seconds, with leading zeros
-  O      -0600      Difference to Greenwich time (GMT) in hours
+  O      -0600      Difference to Greenwich time (GMT) in hours (Allows +08, without minutes)
   P      -06:00     Difference to Greenwich time (GMT) with colon between hours and minutes
   T      CST        Timezone setting of the machine running the code
   Z      -21600     Timezone offset in seconds (negative if west of UTC, positive if east)
@@ -1387,7 +1387,9 @@ Date.formatCodeToRegex = function(character, currentGroup) {
                 "o = ((-12 <= (hr*60 + mn)/60) && ((hr*60 + mn)/60 <= 14))?\n", // -12hrs <= GMT offset <= 14hrs
                 "    (sn + String.leftPad(hr, 2, 0) + String.leftPad(mn, 2, 0)) : null;\n"
             ].join(""),
-            s:"([+\-]\\d{4})"};
+            s:"([+\-]\\d{2,4})"};
+    
+    
     case "P":
     	return {g:1,
     		c:[
