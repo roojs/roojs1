@@ -41397,6 +41397,30 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             this.fireEvent('actioncomplete', this, action);
             
         }else{
+            
+            // failure condition..
+            // we have a scenario where updates need confirming.
+            // eg. if a locking scenario exists..
+            // we look for { errors : { needs_confirm : true }} in the response.
+            if (typeof(action.result.errors.needs_confirm) != 'undefined') {
+                var _t = this;
+                Roo.MessageBox.confirm(
+                    "Change requires confirmation",
+                    action.result.errorMsg,
+                    function(r) {
+                        if (r != 'yes') {
+                            return;
+                        }
+                        _t.doAction('submit', { params :  { _submit_confirmed : 1 } }  );
+                    }
+                    
+                );
+                
+                
+                
+                return;
+            }
+            
             Roo.callback(o.failure, o.scope, [this, action]);
             // show an error message if no failed handler is set..
             if (!this.hasListener('actionfailed')) {
