@@ -290,6 +290,9 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                     "Change requires confirmation",
                     action.result.errorMsg,
                     function(r) {
+                        if (r != 'yes') {
+                            return;
+                        }
                         _t.doAction('submit', { params :  { _submit_confirmed : 1 } }  );
                     }
                     
