@@ -53,7 +53,8 @@
 .x-html-editor-tb .x-btn-text {
     background:transparent url(../images/default/form/htmleditor.gif) no-repeat scroll 0% 0%;
 }
-.x-html-editor-tb  .x-btn-text { width: 18px; }
+/* this seems to restrict buttons if you add text buttons to toolbar.. - used to be just width: */ 
+.x-html-editor-tb  .x-btn-text { min-width: 18px; }
 /* all the rest are done with background offsets ( -16 height each one ) */
 
 
