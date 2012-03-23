@@ -663,11 +663,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         this.syncValue();
     },
  
-
-
-
-
-
+ 
    
     /**
      * Inserts the passed text at the current cursor position. Note: the editor must be initialized and activated
