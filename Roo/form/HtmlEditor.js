@@ -662,38 +662,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         this.doc.execCommand(cmd, false, value === undefined ? null : value);
         this.syncValue();
     },
-
-    // private
-    applyCommand : function(e)
-    {
-        if(!e.ctrlKey){
-            return;
-        }
-        // decide what to do with ctrl characters.
-        
-        var c = e.getCharCode(), cmd;
-        if(c > 0){
-            c = String.fromCharCode(c);
-            switch(c){
-                case 'b':
-                    cmd = 'bold';
-                break;
-                case 'i':
-                    cmd = 'italic';
-                break;
-                case 'u':
-                    cmd = 'underline';
-                break;
-            }
-            if(cmd){
-                this.win.focus();
-                this.execCmd(cmd);
-                this.deferFocus();
-                e.preventDefault();
-            }
-        }
-        
-    },
+ 
 
 
 
