@@ -428,7 +428,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     syncValue : function(){
         if(this.initialized){
             var bd = (this.doc.body || this.doc.documentElement);
-            //this.cleanUpPaste();
+            //this.cleanUpPaste(); -- this is done else where and causes havoc..
             var html = bd.innerHTML;
             if(Roo.isSafari){
                 var bs = bd.getAttribute('style'); // Safari puts text-align styles on the body element!
@@ -662,6 +662,42 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         this.doc.execCommand(cmd, false, value === undefined ? null : value);
         this.syncValue();
     },
+
+    // private
+    applyCommand : function(e)
+    {
+        if(!e.ctrlKey){
+            return;
+        }
+        // decide what to do with ctrl characters.
+        
+        var c = e.getCharCode(), cmd;
+        if(c > 0){
+            c = String.fromCharCode(c);
+            switch(c){
+                case 'b':
+                    cmd = 'bold';
+                break;
+                case 'i':
+                    cmd = 'italic';
+                break;
+                case 'u':
+                    cmd = 'underline';
+                break;
+            }
+            if(cmd){
+                this.win.focus();
+                this.execCmd(cmd);
+                this.deferFocus();
+                e.preventDefault();
+            }
+        }
+        
+    },
+
+
+
+
 
    
     /**
