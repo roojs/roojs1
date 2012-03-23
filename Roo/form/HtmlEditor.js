@@ -764,17 +764,19 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 switch(c){
                     case 'b':
                         cmd = 'bold';
-                    break;
+                        break;
                     case 'i':
                         cmd = 'italic';
-                    break;
+                        break;
+                    
                     case 'u':
                         cmd = 'underline';
                         break;
+                    
                     case 'v':
                         this.cleanUpPaste.defer(100, this);
                         return;
-                    break;
+                        
                 }
                 if(cmd){
                     this.win.focus();
