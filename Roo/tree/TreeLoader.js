@@ -14,9 +14,19 @@
  * A TreeLoader provides for lazy loading of an {@link Roo.tree.TreeNode}'s child
  * nodes from a specified URL. The response must be a javascript Array definition
  * who's elements are node definition objects. eg:
+ *
+ * new Roo.tree.Loader( {root : 'data' });
+ * is best practice now, the old expect array is still supported by default, but
+ * not recomended.
+ * 
  * <pre><code>
-   [{ 'id': 1, 'text': 'A folder Node', 'leaf': false },
-    { 'id': 2, 'text': 'A leaf Node', 'leaf': true }]
+ *
+ *   {
+ *      success : true,
+ *      {ROOTNAME} :   [
+ *          { 'id': 1, 'text': 'A folder Node', 'leaf': false },
+             { 'id': 2, 'text': 'A leaf Node', 'leaf': true }
+      ]
 </code></pre>
  * <br><br>
  * A server request is sent, and child nodes are loaded only when a node is expanded.
