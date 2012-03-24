@@ -15,10 +15,20 @@
  * nodes from a specified URL. The response must be a javascript Array definition
  * who's elements are node definition objects. eg:
  * &lt;pre&gt;&lt;code&gt;
-   [{ 'id': 1, 'text': 'A folder Node', 'leaf': false },
-    { 'id': 2, 'text': 'A leaf Node', 'leaf': true }]
+{  success : true,
+   data :      [
+   
+    { 'id': 1, 'text': 'A folder Node', 'leaf': false },
+    { 'id': 2, 'text': 'A leaf Node', 'leaf': true }
+    ]
+}
+
+
 &lt;/code&gt;&lt;/pre&gt;
  * &lt;br&gt;&lt;br&gt;
+ * The old style respose with just an array is still supported, but not recommended.
+ * &lt;br&gt;&lt;br&gt;
+ *
  * A server request is sent, and child nodes are loaded only when a node is expanded.
  * The loading node's id is passed to the server under the parameter name &quot;node&quot; to
  * enable the server to produce the correct child nodes.
@@ -231,7 +241,11 @@
             
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.decode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">json</span><span class="jsdoc-syntax">);
             
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">o.success</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.root </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.success</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.root </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'data'</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// the default behaviour for list like data..
+                </span><span class="jsdoc-syntax">}
+                
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.root </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp;  !</span><span class="jsdoc-var">o.success</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-comment">// it's a failure condition.
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">response.argument</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;loadexception&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">a.node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">);
@@ -239,8 +253,10 @@
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
             
+            
+            
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.root </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.root</span><span class="jsdoc-syntax">];
+                 </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.root</span><span class="jsdoc-syntax">];
             }
             
             </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
