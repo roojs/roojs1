@@ -15,10 +15,20 @@
  * nodes from a specified URL. The response must be a javascript Array definition
  * who's elements are node definition objects. eg:
  * <pre><code>
-   [{ 'id': 1, 'text': 'A folder Node', 'leaf': false },
-    { 'id': 2, 'text': 'A leaf Node', 'leaf': true }]
+{  success : true,
+   data :      [
+   
+    { 'id': 1, 'text': 'A folder Node', 'leaf': false },
+    { 'id': 2, 'text': 'A leaf Node', 'leaf': true }
+    ]
+}
+
+
 </code></pre>
  * <br><br>
+ * The old style respose with just an array is still supported, but not recommended.
+ * <br><br>
+ *
  * A server request is sent, and child nodes are loaded only when a node is expanded.
  * The loading node's id is passed to the server under the parameter name "node" to
  * enable the server to produce the correct child nodes.
@@ -231,7 +241,11 @@ Roo.extend(Roo.tree.TreeLoader, Roo.util.Observable, {
             
             var o = Roo.decode(json);
             
-            if (!o.success) {
+            if (this.root === false && typeof(o.success) != undefined) {
+                this.root = 'data'; // the default behaviour for list like data..
+                }
+                
+            if (this.root !== false &&  !o.success) {
                 // it's a failure condition.
                 var a = response.argument;
                 this.fireEvent("loadexception", this, a.node, response);
@@ -239,8 +253,10 @@ Roo.extend(Roo.tree.TreeLoader, Roo.util.Observable, {
                 return;
             }
             
+            
+            
             if (this.root !== false) {
-                o = o[this.root];
+                 o = o[this.root];
             }
             
             for(var i = 0, len = o.length; i < len; i++){

@@ -18385,10 +18385,20 @@ Roo.extend(Roo.tree.RootTreeNodeUI, Roo.tree.TreeNodeUI, {
  * nodes from a specified URL. The response must be a javascript Array definition
  * who's elements are node definition objects. eg:
  * <pre><code>
-   [{ 'id': 1, 'text': 'A folder Node', 'leaf': false },
-    { 'id': 2, 'text': 'A leaf Node', 'leaf': true }]
+{  success : true,
+   data :      [
+   
+    { 'id': 1, 'text': 'A folder Node', 'leaf': false },
+    { 'id': 2, 'text': 'A leaf Node', 'leaf': true }
+    ]
+}
+
+
 </code></pre>
  * <br><br>
+ * The old style respose with just an array is still supported, but not recommended.
+ * <br><br>
+ *
  * A server request is sent, and child nodes are loaded only when a node is expanded.
  * The loading node's id is passed to the server under the parameter name "node" to
  * enable the server to produce the correct child nodes.
@@ -18601,7 +18611,11 @@ Roo.extend(Roo.tree.TreeLoader, Roo.util.Observable, {
             
             var o = Roo.decode(json);
             
-            if (!o.success) {
+            if (this.root === false && typeof(o.success) != undefined) {
+                this.root = 'data'; // the default behaviour for list like data..
+                }
+                
+            if (this.root !== false &&  !o.success) {
                 // it's a failure condition.
                 var a = response.argument;
                 this.fireEvent("loadexception", this, a.node, response);
@@ -18609,8 +18623,10 @@ Roo.extend(Roo.tree.TreeLoader, Roo.util.Observable, {
                 return;
             }
             
+            
+            
             if (this.root !== false) {
-                o = o[this.root];
+                 o = o[this.root];
             }
             
             for(var i = 0, len = o.length; i < len; i++){
@@ -24150,7 +24166,8 @@ Roo.extend(Roo.form.Radio, Roo.form.Checkbox, {
  * @class Ext.form.HtmlEditor
  * @extends Ext.form.Field
  * Provides a lightweight HTML Editor component.
- * WARNING - THIS CURRENTlY ONLY WORKS ON FIREFOX - USE FCKeditor for a cross platform version
+ *
+ * This has been tested on Fireforx / Chrome.. IE may not be so great..
  * 
  * <br><br><b>Note: The focus/blur and validation marking functionality inherited from Ext.form.Field is NOT
  * supported by this editor.</b><br/><br/>
@@ -24554,7 +24571,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     syncValue : function(){
         if(this.initialized){
             var bd = (this.doc.body || this.doc.documentElement);
-            //this.cleanUpPaste();
+            //this.cleanUpPaste(); -- this is done else where and causes havoc..
             var html = bd.innerHTML;
             if(Roo.isSafari){
                 var bs = bd.getAttribute('style'); // Safari puts text-align styles on the body element!
@@ -24788,7 +24805,8 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         this.doc.execCommand(cmd, false, value === undefined ? null : value);
         this.syncValue();
     },
-
+ 
+ 
    
     /**
      * Inserts the passed text at the current cursor position. Note: the editor must be initialized and activated
@@ -24854,17 +24872,19 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 switch(c){
                     case 'b':
                         cmd = 'bold';
-                    break;
+                        break;
                     case 'i':
                         cmd = 'italic';
-                    break;
+                        break;
+                    
                     case 'u':
                         cmd = 'underline';
                         break;
+                    
                     case 'v':
                         this.cleanUpPaste.defer(100, this);
                         return;
-                    break;
+                        
                 }
                 if(cmd){
                     this.win.focus();
