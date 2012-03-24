@@ -330,8 +330,9 @@
                     </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.specialChars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">],
                     </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">) {
                         </span><span class="jsdoc-var">editor.insertAtCursor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String.fromCharCode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.html.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&amp;#'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">';'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">)));
+                        </span><span class="jsdoc-comment">//editor.insertAtCursor(a.html);
                         
-                    },
+                    </span><span class="jsdoc-syntax">},
                     </span><span class="jsdoc-var">tabIndex</span><span class="jsdoc-syntax">:-1
                 });
             }

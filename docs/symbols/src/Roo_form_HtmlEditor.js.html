@@ -23,7 +23,8 @@
  * @class Ext.form.HtmlEditor
  * @extends Ext.form.Field
  * Provides a lightweight HTML Editor component.
- * WARNING - THIS CURRENTlY ONLY WORKS ON FIREFOX - USE FCKeditor for a cross platform version
+ *
+ * This has been tested on Fireforx / Chrome.. IE may not be so great..
  * 
  * &lt;br&gt;&lt;br&gt;&lt;b&gt;Note: The focus/blur and validation marking functionality inherited from Ext.form.Field is NOT
  * supported by this editor.&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;
@@ -427,7 +428,7 @@
     </span><span class="jsdoc-var">syncValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.initialized</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bd </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.doc.body </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.doc.documentElement</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">this.cleanUpPaste</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-comment">//this.cleanUpPaste(); -- this is done else where and causes havoc..
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">bd.innerHTML</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isSafari</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">bd.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// Safari puts text-align styles on the body element!
@@ -437,6 +438,10 @@
                 }
             }
             </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cleanHtml</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-comment">// fix up the special chars..
+            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">html.replace</span><span class="jsdoc-syntax">(/([\x80-\uffff])/g, </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">&quot;&amp;#&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">b.charCodeAt</span><span class="jsdoc-syntax">()+</span><span class="jsdoc-string">&quot;;&quot; 
+            </span><span class="jsdoc-syntax">});
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforesync'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">this.el.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'sync'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">);
@@ -657,29 +662,60 @@
         </span><span class="jsdoc-var">this.doc.execCommand</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cmd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">null </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.syncValue</span><span class="jsdoc-syntax">();
     },
-
+ 
+ 
    
     </span><span class="jsdoc-comment">/**
      * Inserts the passed text at the current cursor position. Note: the editor must be initialized and activated
      * to insert tRoo.
-     * @param {String} text
+     * @param {String} text | dom node.. 
      */
-    </span><span class="jsdoc-var">insertAtCursor </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">insertAtCursor </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">)
+    {
+        
+        
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.activated</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isIE</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.win.focus</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.doc.selection.createRange</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">r.collapse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">r.pasteHTML</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">this.syncValue</span><span class="jsdoc-syntax">();
-                </span><span class="jsdoc-var">this.deferFocus</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-comment">/*
+        if(Roo.isIE){
+            this.win.focus();
+            var r = this.doc.selection.createRange();
+            if(r){
+                r.collapse(true);
+                r.pasteHTML(text);
+                this.syncValue();
+                this.deferFocus();
+            
             }
-        }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isGecko </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.isOpera </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.isSafari</span><span class="jsdoc-syntax">){
+            return;
+        }
+        */
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isGecko </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.isOpera </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.isSafari</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.win.focus</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-var">this.execCmd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'InsertHTML'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">);
+            
+            
+            </span><span class="jsdoc-comment">// from jquery ui (MIT licenced)
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">range</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">win </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.win</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">win.getSelection </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">win.getSelection</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getRangeAt</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">win.getSelection</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getRangeAt</span><span class="jsdoc-syntax">(0);
+                </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">range.createContextualFragment</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">range.insertNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+            } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">win.document.selection </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">win.document.selection.createRange</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-comment">// no firefox support
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">txt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">text.outerHTML</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">win.document.selection.createRange</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.pasteHTML</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">txt</span><span class="jsdoc-syntax">);
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-comment">// no firefox support
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">txt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">text.outerHTML</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.execCmd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'InsertHTML'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">txt</span><span class="jsdoc-syntax">);
+            } 
+            
+            </span><span class="jsdoc-var">this.syncValue</span><span class="jsdoc-syntax">();
+            
             </span><span class="jsdoc-var">this.deferFocus</span><span class="jsdoc-syntax">();
         }
     },
@@ -693,16 +729,19 @@
                 </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">){
                     </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'b'</span><span class="jsdoc-syntax">:
                         </span><span class="jsdoc-var">cmd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'bold'</span><span class="jsdoc-syntax">;
-                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
                     </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">:
                         </span><span class="jsdoc-var">cmd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'italic'</span><span class="jsdoc-syntax">;
-                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                    
                     </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'u'</span><span class="jsdoc-syntax">:
                         </span><span class="jsdoc-var">cmd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'underline'</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                    
                     </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'v'</span><span class="jsdoc-syntax">:
                         </span><span class="jsdoc-var">this.cleanUpPaste.defer</span><span class="jsdoc-syntax">(100, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
                         </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                        
                 }
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cmd</span><span class="jsdoc-syntax">){
                     </span><span class="jsdoc-var">this.win.focus</span><span class="jsdoc-syntax">();

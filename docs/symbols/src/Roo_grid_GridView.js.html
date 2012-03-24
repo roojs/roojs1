@@ -25,12 +25,7 @@
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.grid.GridView</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.grid.AbstractGridView</span><span class="jsdoc-syntax">, {
 
-    </span><span class="jsdoc-comment">/**
-     * Override this function to apply custom css classes to rows during rendering
-     * @param {Record} record The record
-     * @param {Number} index
-     * @method getRowClass
-     */
+    
     </span><span class="jsdoc-var">rowClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-grid-row&quot;</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-var">cellClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-grid-col&quot;</span><span class="jsdoc-syntax">,
@@ -931,6 +926,7 @@
                 </span><span class="jsdoc-comment">// buffers
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">buf </span><span class="jsdoc-syntax">= [], </span><span class="jsdoc-var">lbuf </span><span class="jsdoc-syntax">= [], </span><span class="jsdoc-var">cb</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">lcb</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">= {}, </span><span class="jsdoc-var">rp </span><span class="jsdoc-syntax">= {}, </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hasListener </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.hasListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'rowclass'</span><span class="jsdoc-syntax">);
+ 
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rowcfg </span><span class="jsdoc-syntax">= {};
                 </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">rs.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">++){
                     </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">rs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">]; </span><span class="jsdoc-var">cb </span><span class="jsdoc-syntax">= []; </span><span class="jsdoc-var">lcb </span><span class="jsdoc-syntax">= []; </span><span class="jsdoc-var">rowIndex </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">startRow</span><span class="jsdoc-syntax">);
@@ -944,6 +940,7 @@
                         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.dirty </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">r.modified</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">c.name</span><span class="jsdoc-syntax">] !== </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
                             </span><span class="jsdoc-var">p.css </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">p.css </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">' x-grid-dirty-cell' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-grid-dirty-cell'</span><span class="jsdoc-syntax">;
                         }
+                        
                         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">markup </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ct.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">);
                         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">c.locked</span><span class="jsdoc-syntax">){
                             </span><span class="jsdoc-var">cb</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cb.length</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">markup</span><span class="jsdoc-syntax">;
