@@ -2092,7 +2092,12 @@ if(opt.anim.isAnimated()){
                 }
                 </span><span class="jsdoc-var">dom </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dom.parentNode</span><span class="jsdoc-syntax">;
             }
-            
+            </span><span class="jsdoc-comment">// if we are masking the body - then it hides everything..
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dom </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">z </span><span class="jsdoc-syntax">= 1000000;
+                </span><span class="jsdoc-var">this._mask.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.lib.Dom.getDocumentWidth</span><span class="jsdoc-syntax">());
+                </span><span class="jsdoc-var">this._mask.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.lib.Dom.getDocumentHeight</span><span class="jsdoc-syntax">());
+            }
            
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">msg </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this._maskMsg</span><span class="jsdoc-syntax">){

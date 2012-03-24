@@ -170,21 +170,33 @@ Roo.Msg.show({
                 </span><span class="jsdoc-var">dlg.resizeTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.maxWidth</span><span class="jsdoc-syntax">, 100); </span><span class="jsdoc-comment">// resize first so content is never clipped from previous shows
             </span><span class="jsdoc-syntax">}
             </span><span class="jsdoc-var">msgEl.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'&amp;#160;'</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">opt.width </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">msgEl.offsetWidth</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.maxWidth</span><span class="jsdoc-syntax">), 
-                        </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">opt.minWidth </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.minWidth</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">bwidth</span><span class="jsdoc-syntax">));
+      
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cw </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">msgEl.offsetWidth</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">msgEl.parentNode.scrollWidth</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-comment">//Roo.log(&quot;guesed size: &quot; + JSON.stringify([cw,msgEl.offsetWidth, msgEl.parentNode.scrollWidth]));
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(
+                    </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">opt.width </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">cw </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.maxWidth</span><span class="jsdoc-syntax">), 
+                    </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">opt.minWidth </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.minWidth</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">bwidth</span><span class="jsdoc-syntax">)
+            );
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">opt.prompt</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">activeTextEl.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">);
             }
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dlg.isVisible</span><span class="jsdoc-syntax">()){
                 </span><span class="jsdoc-var">dlg.fixedcenter </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
             }
-            </span><span class="jsdoc-comment">// to big, make it scoll.
+            </span><span class="jsdoc-comment">// to big, make it scroll. = But as usual stupid IE does not support
+            // !important..
+            
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">bodyEl.getHeight</span><span class="jsdoc-syntax">() &gt; (</span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">() - 100)) {
                 </span><span class="jsdoc-var">bodyEl.setHeight </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">() - 100 );
-                </span><span class="jsdoc-var">bodyEl.dom.style.overflowY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'auto'</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">bodyEl.dom.style.overflowY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'auto' </span><span class="jsdoc-syntax">+ ( </span><span class="jsdoc-var">Roo.isIE </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">' !important'</span><span class="jsdoc-syntax">);
             } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
                 </span><span class="jsdoc-var">bodyEl.dom.style.height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">bodyEl.dom.style.overflowY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cw </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">bodyEl.dom.style.get </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'auto' </span><span class="jsdoc-syntax">+ ( </span><span class="jsdoc-var">Roo.isIE </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">' !important'</span><span class="jsdoc-syntax">);
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">bodyEl.dom.style.overflowX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
             }
             
             </span><span class="jsdoc-var">dlg.setContentSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">bodyEl.getHeight</span><span class="jsdoc-syntax">());
@@ -294,7 +306,9 @@ Roo.Msg.show({
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isVisible</span><span class="jsdoc-syntax">()){
                 
                 </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
-                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Old Dialog Message:&quot; </span><span class="jsdoc-syntax">+  </span><span class="jsdoc-var">msgEl.innerHTML </span><span class="jsdoc-syntax">)
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;[Roo.Messagebox] Show called while message displayed:&quot; </span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Old Dialog Message:&quot; </span><span class="jsdoc-syntax">+  </span><span class="jsdoc-var">msgEl.innerHTML </span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;New Dialog Message:&quot; </span><span class="jsdoc-syntax">+  </span><span class="jsdoc-var">options.msg </span><span class="jsdoc-syntax">)
                 </span><span class="jsdoc-comment">//this.alert(&quot;ERROR&quot;, &quot;Multiple dialogs where displayed at the same time&quot;);
                 //throw &quot;Roo.MessageBox ERROR : Multiple dialogs where displayed at the same time&quot;;
                 
