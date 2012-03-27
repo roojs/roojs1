@@ -286,10 +286,11 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             // they have click on an image...
             // let's see if we can change the selection...
             sel = ev.target;
+            Roo.log("SELECT IMAGE");
             
+        } else { 
+            Roo.log("NOT SELECT IMAGE");
         }
-        
-        
         
       
         var updateFooter = sel ? false : true;
