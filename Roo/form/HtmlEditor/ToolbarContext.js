@@ -285,7 +285,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         if (ev.type == 'mouseup' && ev.target && ev.target.tagName == 'IMG') {
             // they have click on an image...
             // let's see if we can change the selection...
-            sel = ev;
+            sel = ev.target;
             
         }
         
