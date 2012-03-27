@@ -271,9 +271,10 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
      * Protected method that will not generally be called directly. It triggers
      * a toolbar update by reading the markup state of the current selection in the editor.
      */
-    updateToolbar: function(ignore_a,ignore_b,sel){
+    updateToolbar: function(editor,ignore_b,sel){
 
-        Roo.log(ignore_a);
+        Roo.log(ignore_b);
+        
         if(!this.editor.activated){
              this.editor.onFirstFocus();
             return;
