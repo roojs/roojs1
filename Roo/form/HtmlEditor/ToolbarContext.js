@@ -295,10 +295,10 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 nodeRange.selectNodeContents(sel);
             }
             nodeRange.collapse(true);
-
-        } else { 
-           
-        }
+            var s = editor.win.getSelection();
+            s.removeAllRanges();
+            s.addRange(nodeRange);
+        }  
         
       
         var updateFooter = sel ? false : true;
