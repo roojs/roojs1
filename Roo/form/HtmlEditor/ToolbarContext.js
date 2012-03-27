@@ -282,11 +282,12 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         }
         
         
-        if ((ev.type == 'mouseup' || ev.type == 'click' ) && ev.target && ev.target.tagName == 'IMG') {
+        if ((ev.type == 'mouseup' || ev.type == 'click' ) &&
+            ev.target && ev.target.tagName == 'IMG') {
             // they have click on an image...
             // let's see if we can change the selection...
             sel = ev.target;
-            Roo.log("SELECT IMAGE");
+         
               var nodeRange = sel.ownerDocument.createRange();
             try {
                 nodeRange.selectNode(sel);
@@ -296,7 +297,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             nodeRange.collapse(true);
 
         } else { 
-            Roo.log("NOT SELECT IMAGE");
+           
         }
         
       
