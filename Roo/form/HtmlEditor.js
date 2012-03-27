@@ -200,10 +200,10 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             
         }
         
-        st +=   st = '<style type="text/css">' +
-                    'img { cursor: pointer } ' +
-                   '</style>';
-        
+        st +=  '<style type="text/css">' +
+            'IMG { cursor: pointer } ' +
+        '</style>';
+
         
         return '<html><head>' + st  +
             //<style type="text/css">' +
