@@ -273,7 +273,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
      */
     updateToolbar: function(ignore_a,ignore_b,sel){
 
-        
+        Roo.log(ignore_a);
         if(!this.editor.activated){
              this.editor.onFirstFocus();
             return;
