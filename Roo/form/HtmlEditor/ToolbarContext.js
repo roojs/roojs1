@@ -295,7 +295,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             } catch (e) {
                 nodeRange.selectNodeContents(sel);
             }
-            nodeRange.collapse(true);
+            //nodeRange.collapse(true);
             var s = editor.win.getSelection();
             s.removeAllRanges();
             s.addRange(nodeRange);
