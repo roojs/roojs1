@@ -287,6 +287,12 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             // let's see if we can change the selection...
             sel = ev.target;
             Roo.log("SELECT IMAGE");
+              var nodeRange = sel.ownerDocument.createRange();
+            try {
+                nodeRange.selectNode(sel);
+            } catch (e) {
+                nodeRange.selectNodeContents(sel);
+            }
             
         } else { 
             Roo.log("NOT SELECT IMAGE");
