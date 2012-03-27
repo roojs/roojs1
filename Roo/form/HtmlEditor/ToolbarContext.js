@@ -273,7 +273,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
      */
     updateToolbar: function(editor,ev,sel){
 
-        Roo.log(ev);
+        //Roo.log(ev);
         // capture mouse up - this is handy for selecting images..
         // perhaps should go somewhere else...
         if(!this.editor.activated){
