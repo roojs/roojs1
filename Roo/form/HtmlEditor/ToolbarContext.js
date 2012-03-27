@@ -440,7 +440,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         tb.add(nm+ ":&nbsp;");
         
         // styles...
-        if (this.styles) {
+        if (this.styles || Roo.encode(this.styles) != '{}') {
             
             // this needs a multi-select checkbox...
             tb.addField( new Roo.form.ComboBox({
