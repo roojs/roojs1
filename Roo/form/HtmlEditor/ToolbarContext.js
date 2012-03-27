@@ -293,7 +293,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             } catch (e) {
                 nodeRange.selectNodeContents(sel);
             }
-            
+            nodeRange.collapse(true);
+
         } else { 
             Roo.log("NOT SELECT IMAGE");
         }
