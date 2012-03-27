@@ -40990,8 +40990,13 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         tb.add(nm+ ":&nbsp;");
         
+        var styles = [];
+        for(var i in this.styles) {
+            styles.push(i);
+        }
+        
         // styles...
-        if (this.styles) {
+        if (styles && styles.length) {
             
             // this needs a multi-select checkbox...
             tb.addField( new Roo.form.ComboBox({
