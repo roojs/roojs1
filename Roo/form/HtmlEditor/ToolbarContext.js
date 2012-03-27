@@ -271,14 +271,28 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
      * Protected method that will not generally be called directly. It triggers
      * a toolbar update by reading the markup state of the current selection in the editor.
      */
-    updateToolbar: function(editor,ignore_b,sel){
+    updateToolbar: function(editor,ev,sel){
 
         Roo.log(ignore_b);
         
+        // capture mouse up - this is handy for selecting images..
+        // perhaps should go somewhere else...
         if(!this.editor.activated){
              this.editor.onFirstFocus();
             return;
         }
+        
+        
+        if (ev.type == 'mouseup' && ev.target && ev.target.tagName == 'IMG') {
+            // they have click on an image...
+            // let's see if we can change the selection...
+            sel - ev;
+            
+        }
+        
+        
+        
+      
         var updateFooter = sel ? false : true;
         
         
