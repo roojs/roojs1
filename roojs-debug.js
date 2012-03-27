@@ -21134,6 +21134,8 @@ Roo.data.Node = function(attributes){
         this.id = Roo.id(null, "ynode-");
         this.attributes.id = this.id;
     }
+     
+    
     /**
      * All child nodes of this node. @type Array
      */
@@ -31345,8 +31347,8 @@ Roo.extend(Roo.tree.TreePanel, Roo.data.Tree, {
         }
         this.getSelectionModel().init(this);
         if (!this.root) {
-            console.log("ROOT not set in tree");
-            return;
+            Roo.log("ROOT not set in tree");
+            return this;
         }
         this.root.render();
         if(!this.rootVisible){
@@ -38806,6 +38808,11 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             
         }
         
+        st +=  '<style type="text/css">' +
+            'IMG { cursor: pointer } ' +
+        '</style>';
+
+        
         return '<html><head>' + st  +
             //<style type="text/css">' +
             //'body{border:0;margin:0;padding:3px;height:98%;cursor:text;}' +
@@ -40815,13 +40822,37 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
      * Protected method that will not generally be called directly. It triggers
      * a toolbar update by reading the markup state of the current selection in the editor.
      */
-    updateToolbar: function(ignore_a,ignore_b,sel){
+    updateToolbar: function(editor,ev,sel){
 
-        
+        Roo.log(ev);
+        // capture mouse up - this is handy for selecting images..
+        // perhaps should go somewhere else...
         if(!this.editor.activated){
              this.editor.onFirstFocus();
             return;
         }
+        
+        // http://developer.yahoo.com/yui/docs/simple-editor.js.html
+        // selectNode - might want to handle IE?
+        if ((ev.type == 'mouseup' || ev.type == 'click' ) &&
+            ev.target && ev.target.tagName == 'IMG') {
+            // they have click on an image...
+            // let's see if we can change the selection...
+            sel = ev.target;
+         
+              var nodeRange = sel.ownerDocument.createRange();
+            try {
+                nodeRange.selectNode(sel);
+            } catch (e) {
+                nodeRange.selectNodeContents(sel);
+            }
+            //nodeRange.collapse(true);
+            var s = editor.win.getSelection();
+            s.removeAllRanges();
+            s.addRange(nodeRange);
+        }  
+        
+      
         var updateFooter = sel ? false : true;
         
         
