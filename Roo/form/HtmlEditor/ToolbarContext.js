@@ -283,7 +283,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         // http://developer.yahoo.com/yui/docs/simple-editor.js.html
         // selectNode - might want to handle IE?
-        if (ev.type &&
+        if (ev &&
             (ev.type == 'mouseup' || ev.type == 'click' ) &&
             ev.target && ev.target.tagName == 'IMG') {
             // they have click on an image...
