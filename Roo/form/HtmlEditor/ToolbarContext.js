@@ -467,6 +467,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     'select': function(c, r, i) {
                         // initial support only for on class per el..
                         tb.selectedNode.className =  r ? r.get('val') : '';
+                        editor.syncValue();
                     }
                 }
     
