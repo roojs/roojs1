@@ -462,7 +462,7 @@ Roo.apply(Roo.XComponent, {
 	 *
 	 *
 	 */
-    on : function() {}
+    on : false
    
     
     
