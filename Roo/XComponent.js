@@ -312,6 +312,8 @@ Roo.apply(Roo.XComponent, {
             }
             
             if (!obj.parent) {
+				Roo.log("GOT top level module");
+				Roo.log(obj);
                 this.topModule = obj;
                 return;
             }
