@@ -453,7 +453,7 @@ Roo.apply(Roo.XComponent, {
 	 *
 	 */
 	event: new Roo.Observable({
-		this.addEvents({ 
+		events : { 
 			/**
 			 * @event register
 			 * Fires when an Component is registered,
@@ -469,7 +469,7 @@ Roo.apply(Roo.XComponent, {
 			 */
 			'buildcomplete' : true
 			
-		});
+		} 
 		
 		
 	}),
