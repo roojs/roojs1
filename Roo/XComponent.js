@@ -482,6 +482,7 @@ Roo.apply(Roo.XComponent, {
     
     
 });
+
 Roo.XComponent.event = new Roo.util.Observable({
 		events : { 
 			/**
