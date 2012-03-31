@@ -234,6 +234,23 @@ Roo.apply(Roo.XComponent, {
      * * @param {Object} details about module
      */
     register : function(obj) {
+		
+		Roo.XComponent.event.fireEvent('register', obj);
+		switch(typeof(obj.disabled) ) {
+			case 'undefined':
+				break;
+			case 'function':
+				if ( obj.disabled() ) {
+					return;
+				}
+				break;
+			default:
+				if (obj.disabled) {
+					return;
+				}
+				break;
+		}
+		
         this.modules.push(obj);
          
     },
@@ -452,20 +469,7 @@ Roo.apply(Roo.XComponent, {
 	 *
 	 *
 	 */
-	event: new Roo.util.Observable({
-		events : { 
-			/**
-			 * @event register
-			 * Fires when an Component is registered,
-			 * set the disable property on the Component to stop registration.
-			 * @param {Roo.XComponent} c the component being registerd.
-			 * 
-			 */
-			'register' : true
-			
-		} 
-		 
-	}),
+	event: false, 
     /**
 	 * wrapper for event.on - aliased later..  
 	 * Typically use to register a event handler for register:
@@ -478,7 +482,19 @@ Roo.apply(Roo.XComponent, {
     
     
 });
-
+Roo.XComponent = new Roo.util.Observable({
+		events : { 
+			/**
+			 * @event register
+			 * Fires when an Component is registered,
+			 * set the disable property on the Component to stop registration.
+			 * @param {Roo.XComponent} c the component being registerd.
+			 * 
+			 */
+			'register' : true
+			
+		}
+});
 
 Roo.XComponent.on = Roo.XComponent.event.on
  
