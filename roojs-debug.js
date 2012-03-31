@@ -52890,7 +52890,7 @@ Roo.apply(Roo.XComponent, {
     
     
 });
-Roo.XComponent = new Roo.util.Observable({
+Roo.XComponent.event = new Roo.util.Observable({
 		events : { 
 			/**
 			 * @event register
