@@ -237,8 +237,10 @@ Roo.apply(Roo.XComponent, {
 		
 		Roo.XComponent.event.fireEvent('register', obj);
 		switch(typeof(obj.disabled) ) {
+			
 			case 'undefined':
 				break;
+			
 			case 'function':
 				if ( obj.disabled() ) {
 					return;
@@ -314,9 +316,13 @@ Roo.apply(Roo.XComponent, {
             if (!obj.parent) {
 				Roo.log("GOT top level module");
 				Roo.log(obj);
+				obj.modules = new Roo.util.MixedCollection(false, 
+                    function(o) { return o.order + '' }
+                );
                 this.topModule = obj;
                 return;
             }
+			// parent is a string (usually a dom element name..)
             if (typeof(obj.parent) == 'string') {
                 this.elmodules.push(obj);
                 return;
