@@ -446,16 +446,28 @@ Roo.apply(Roo.XComponent, {
         
     },
 	
+	
 	/**
 	 * Event Object.
 	 *
 	 *
 	 */
-	
-    
-     
+	event: new Roo.Observable({
+		
+		
+		
+	}),
+    /**
+	 * wrapper for event.on - aliased later..
+	 *
+	 *
+	 */
+    on : function() {}
    
     
     
 });
+
+
+Roo.XComponent.on = Roo.XComponent.event.on
  
