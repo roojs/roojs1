@@ -464,8 +464,7 @@ Roo.apply(Roo.XComponent, {
 			'register' : true
 			
 		} 
-		
-		
+		 
 	}),
     /**
 	 * wrapper for event.on - aliased later..  
