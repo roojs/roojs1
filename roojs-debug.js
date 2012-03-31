@@ -52877,20 +52877,7 @@ Roo.apply(Roo.XComponent, {
 	 *
 	 *
 	 */
-	event: new Roo.util.Observable({
-		events : { 
-			/**
-			 * @event register
-			 * Fires when an Component is registered,
-			 * set the disable property on the Component to stop registration.
-			 * @param {Roo.XComponent} c the component being registerd.
-			 * 
-			 */
-			'register' : true
-			
-		} 
-		 
-	}),
+	event: false, 
     /**
 	 * wrapper for event.on - aliased later..  
 	 * Typically use to register a event handler for register:
@@ -52903,7 +52890,19 @@ Roo.apply(Roo.XComponent, {
     
     
 });
-
+Roo.XComponent = new Roo.util.Observable({
+		events : { 
+			/**
+			 * @event register
+			 * Fires when an Component is registered,
+			 * set the disable property on the Component to stop registration.
+			 * @param {Roo.XComponent} c the component being registerd.
+			 * 
+			 */
+			'register' : true
+			
+		}
+});
 
 Roo.XComponent.on = Roo.XComponent.event.on
  //<script type="text/javascript">
