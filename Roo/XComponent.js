@@ -444,7 +444,14 @@ Roo.apply(Roo.XComponent, {
      
         
         
-    }
+    },
+	
+	/**
+	 * Event Object.
+	 *
+	 *
+	 */
+	
     
      
    
