@@ -52720,6 +52720,8 @@ Roo.apply(Roo.XComponent, {
             }
             
             if (!obj.parent) {
+				Roo.log("GOT top level module");
+				Roo.log(obj);
                 this.topModule = obj;
                 return;
             }
@@ -52728,7 +52730,7 @@ Roo.apply(Roo.XComponent, {
                 return;
             }
             if (obj.parent.constructor != Roo.XComponent) {
-                Roo.log("Object Parent is not instance of XComponent:" + obj.name)
+                Roo.log("Warning : Object Parent is not instance of XComponent:" + obj.name)
             }
             if (!obj.parent.modules) {
                 obj.parent.modules = new Roo.util.MixedCollection(false, 
@@ -52860,6 +52862,8 @@ Roo.apply(Roo.XComponent, {
             
             // now build 
             
+			
+			
             m.render();
             // it's 10 on top level, and 1 on others??? why...
             return progressRun.defer(10, _this);
@@ -52890,6 +52894,7 @@ Roo.apply(Roo.XComponent, {
     
     
 });
+
 Roo.XComponent.event = new Roo.util.Observable({
 		events : { 
 			/**
