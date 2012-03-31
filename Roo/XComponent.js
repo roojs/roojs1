@@ -452,7 +452,7 @@ Roo.apply(Roo.XComponent, {
 	 *
 	 *
 	 */
-	event: new Roo.Observable({
+	event: new Roo.util.Observable({
 		events : { 
 			/**
 			 * @event register
