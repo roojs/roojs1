@@ -21134,8 +21134,6 @@ Roo.data.Node = function(attributes){
         this.id = Roo.id(null, "ynode-");
         this.attributes.id = this.id;
     }
-     
-    
     /**
      * All child nodes of this node. @type Array
      */
@@ -31347,8 +31345,8 @@ Roo.extend(Roo.tree.TreePanel, Roo.data.Tree, {
         }
         this.getSelectionModel().init(this);
         if (!this.root) {
-            Roo.log("ROOT not set in tree");
-            return this;
+            console.log("ROOT not set in tree");
+            return;
         }
         this.root.render();
         if(!this.rootVisible){
@@ -52644,6 +52642,23 @@ Roo.apply(Roo.XComponent, {
      * * @param {Object} details about module
      */
     register : function(obj) {
+		
+		Roo.XComponent.event.fireEvent('register', obj);
+		switch(typeof(obj.disabled) ) {
+			case 'undefined':
+				break;
+			case 'function':
+				if ( obj.disabled() ) {
+					return;
+				}
+				break;
+			default:
+				if (obj.disabled) {
+					return;
+				}
+				break;
+		}
+		
         this.modules.push(obj);
          
     },
@@ -52854,13 +52869,43 @@ Roo.apply(Roo.XComponent, {
      
         
         
-    }
-    
-     
+    },
+	
+	
+	/**
+	 * Event Object.
+	 *
+	 *
+	 */
+	event: new Roo.util.Observable({
+		events : { 
+			/**
+			 * @event register
+			 * Fires when an Component is registered,
+			 * set the disable property on the Component to stop registration.
+			 * @param {Roo.XComponent} c the component being registerd.
+			 * 
+			 */
+			'register' : true
+			
+		} 
+		 
+	}),
+    /**
+	 * wrapper for event.on - aliased later..  
+	 * Typically use to register a event handler for register:
+	 *
+	 * eg. Roo.XComponent.on('register', function(comp) { comp.disable = true } );
+	 *
+	 */
+    on : false
    
     
     
 });
+
+
+Roo.XComponent.on = Roo.XComponent.event.on
  //<script type="text/javascript">
 
 
