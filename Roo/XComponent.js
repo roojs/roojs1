@@ -496,5 +496,5 @@ Roo.XComponent.event = new Roo.util.Observable({
 		}
 });
 
-Roo.XComponent.on = Roo.XComponent.event.on
+Roo.XComponent.on = Roo.XComponent.event.on.createDelegate(event), 
  
