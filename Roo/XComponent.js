@@ -453,7 +453,23 @@ Roo.apply(Roo.XComponent, {
 	 *
 	 */
 	event: new Roo.Observable({
-		
+		this.addEvents({ 
+			/**
+			 * @event register
+			 * Fires when an Component is registered,
+			 * set the disable property on the Component to stop registration.
+			 * @param {Roo.XComponent} c the component being registerd.
+			 * 
+			 */
+			'register' : true,
+			/**
+			 * @event buildcomplete
+			 * Fires on the top level element when all elements have been built
+			 * @param {Roo.XComponent} c the top level component.
+			 */
+			'buildcomplete' : true
+			
+		});
 		
 		
 	}),
