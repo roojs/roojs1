@@ -461,21 +461,17 @@ Roo.apply(Roo.XComponent, {
 			 * @param {Roo.XComponent} c the component being registerd.
 			 * 
 			 */
-			'register' : true,
-			/**
-			 * @event buildcomplete
-			 * Fires on the top level element when all elements have been built
-			 * @param {Roo.XComponent} c the top level component.
-			 */
-			'buildcomplete' : true
+			'register' : true
 			
 		} 
 		
 		
 	}),
     /**
-	 * wrapper for event.on - aliased later..
+	 * wrapper for event.on - aliased later..  
+	 * Typically use to register a event handler for register:
 	 *
+	 * eg. Roo.XComponent.on('register', function(comp) { comp.disable = true } );
 	 *
 	 */
     on : false
