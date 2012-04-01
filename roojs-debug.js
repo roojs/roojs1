@@ -52582,7 +52582,8 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
         this.fireEvent('built', this);
         
         this.panel = this.el;
-        this.layout = this.panel.layout;    
+        this.layout = this.panel.layout;
+		this.parentLayout = this.parent.layout  || false;  
          
     }
     
