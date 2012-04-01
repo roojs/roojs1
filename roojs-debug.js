@@ -52766,18 +52766,25 @@ Roo.apply(Roo.XComponent, {
         
         // make a flat list in order of modules to build.
         var mods = this.topModule ? [ this.topModule ] : [];
+		
+		// elmodules (is a list of DOM based modules )
         Roo.each(this.elmodules,function(e) { mods.push(e) });
 
         
         // add modules to their parents..
         var addMod = function(m) {
-			Roo.debug && Roo.log("build Order add: " + m.name);
+			Roo.debug && Roo.log("build Order: add: " + m.name);
             
             mods.push(m);
             if (m.modules) {
+				Roo.debug && Roo.log("build Order: " + m.modules.length + " child modules");
                 m.modules.keySort('ASC',  cmp );
+				Roo.debug && Roo.log("build Order: " + m.modules.length + " child modules (after sort)");
+
                 m.modules.each(addMod);
-            }
+            } else {
+				Roo.debug && Roo.log("build Order: no child modules");
+			}
             // not sure if this is used any more..
             if (m.finalize) {
                 m.finalize.name = m.name + " (clean up) ";
