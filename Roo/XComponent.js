@@ -506,7 +506,7 @@ Roo.XComponent.event = new Roo.util.Observable({
 			/**
 			 * @event buildcomplete
 			 * Fires on the top level element when all elements have been built
-			 * @param {Roo.XComponent} c the top level component.
+			 * @param {Roo.XComponent} the top level component.
 			 */
 			'buildcomplete' : true
 			
