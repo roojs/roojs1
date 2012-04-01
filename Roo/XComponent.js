@@ -118,6 +118,12 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
      */
     items : false,
     
+    /**
+     * @property _tree
+     * The method that retuns the tree of parts that make up this compoennt 
+     * @type {function}
+     */
+    el  : false,
     
      /**
      * render
