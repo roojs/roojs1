@@ -52452,13 +52452,7 @@ Roo.XComponent = function(cfg) {
 	     * Fires when this the componnt is built
 	     * @param {Roo.XComponent} c the component
 	     */
-        'built' : true,
-        /**
-	     * @event buildcomplete
-	     * Fires on the top level element when all elements have been built
-	     * @param {Roo.XComponent} c the top level component.
-         */
-        'buildcomplete' : true
+        'built' : true
         
     });
     this.region = this.region || 'center'; // default..
@@ -52526,6 +52520,12 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
      */
     items : false,
     
+    /**
+     * @property _tree
+     * The method that retuns the tree of parts that make up this compoennt 
+     * @type {function}
+     */
+    _tree  : false,
     
      /**
      * render
@@ -52573,9 +52573,10 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
             }
         }
         
-        
+		
+		// The 'tree' method is  '_tree now' 
             
-        var tree = this.tree();
+        var tree = this._tree ? this._tree() : this.tree();
         tree.region = tree.region || this.region;
         this.el = this.parent.el.addxtype(tree);
         this.fireEvent('built', this);
@@ -52831,9 +52832,8 @@ Roo.apply(Roo.XComponent, {
             if (!mods.length) {
                 Roo.debug && Roo.log('hide?');
                 Roo.MessageBox.hide();
-                if (_this.topModule) { 
-                    _this.topModule.fireEvent('buildcomplete', _this.topModule);
-                }
+                Roo.XComponent.event.fireEvent('buildcomplete', _this.topModule);
+                
                 // THE END...
                 return false;   
             }
@@ -52910,7 +52910,13 @@ Roo.XComponent.event = new Roo.util.Observable({
 			 * @param {Roo.XComponent} c the component being registerd.
 			 * 
 			 */
-			'register' : true
+			'register' : true,
+			/**
+			 * @event buildcomplete
+			 * Fires on the top level element when all elements have been built
+			 * @param {Roo.XComponent} the top level component.
+			 */
+			'buildcomplete' : true
 			
 		}
 });
