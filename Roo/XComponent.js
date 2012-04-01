@@ -123,7 +123,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
      * The method that retuns the tree of parts that make up this compoennt 
      * @type {function}
      */
-    el  : false,
+    _tree  : false,
     
      /**
      * render
