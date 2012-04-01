@@ -310,7 +310,7 @@ Roo.apply(Roo.XComponent, {
             try { 
                 obj.parent = this.toObject(opar);
             } catch(e) {
-                Roo.log(e.toString());
+                Roo.log("parent:toObject failed: " + e.toString());
                 return;
             }
             
