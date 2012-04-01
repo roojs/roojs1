@@ -365,13 +365,18 @@ Roo.apply(Roo.XComponent, {
         
         // add modules to their parents..
         var addMod = function(m) {
-			Roo.debug && Roo.log("build Order add: " + m.name);
+			Roo.debug && Roo.log("build Order: add: " + m.name);
             
             mods.push(m);
             if (m.modules) {
+				Roo.debug && Roo.log("build Order: " + m.modules.length + " child modules");
                 m.modules.keySort('ASC',  cmp );
+				Roo.debug && Roo.log("build Order: " + m.modules.length + " child modules (after sort)");
+
                 m.modules.each(addMod);
-            }
+            } else {
+				Roo.debug && Roo.log("build Order: no child modules");
+			}
             // not sure if this is used any more..
             if (m.finalize) {
                 m.finalize.name = m.name + " (clean up) ";
