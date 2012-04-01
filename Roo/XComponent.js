@@ -165,9 +165,10 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
             }
         }
         
-        
+		
+		// The 'tree' method is  '_tree now' 
             
-        var tree = this.tree();
+        var tree = this._tree ? this._tree() : this.tree();
         tree.region = tree.region || this.region;
         this.el = this.parent.el.addxtype(tree);
         this.fireEvent('built', this);
