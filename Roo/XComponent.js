@@ -405,12 +405,12 @@ Roo.apply(Roo.XComponent, {
         }
         
         
-        
+        var msg = "Building Interface...";
         // flash it up as modal - so we store the mask!?
         Roo.MessageBox.show({ title: 'loading' });
         Roo.MessageBox.show({
            title: "Please wait...",
-           msg: "Building Interface...",
+           msg: msg,
            width:450,
            progress:true,
            closable:false,
@@ -441,12 +441,11 @@ Roo.apply(Roo.XComponent, {
             } 
             
             
-            
-            Roo.MessageBox.updateProgress(
-                (total  - mods.length)/total,  "Building Interface " + (total  - mods.length) + 
+            msg = "Building Interface " + (total  - mods.length) + 
                     " of " + total + 
-                    (m.name ? (' - ' + m.name) : '')
-                    );
+                    (m.name ? (' - ' + m.name) : '');
+			Roo.debug && Roo.log(msg);
+            Roo.MessageBox.updateProgress(  (total  - mods.length)/total, msg  );
             
          
             // is the module disabled?
