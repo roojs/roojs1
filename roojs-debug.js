@@ -52723,8 +52723,8 @@ Roo.apply(Roo.XComponent, {
             }
             
             if (!obj.parent) {
-				Roo.log("GOT top level module");
-				Roo.log(obj);
+				Roo.debug && Roo.log("GOT top level module");
+				Roo.debug && Roo.log(obj);
 				obj.modules = new Roo.util.MixedCollection(false, 
                     function(o) { return o.order + '' }
                 );
