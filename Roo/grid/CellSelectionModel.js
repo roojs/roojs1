@@ -60,7 +60,7 @@ Roo.grid.CellSelectionModel = function(config){
 	     * @event beforeeditnext
 	     * Fires before the next editable sell is made active
 	     * You can use this to skip to another cell
-	     * @param {SelectionModel} this
+	     * @param {Array} newCell the new [ row, col ] to be selected
 	     */
 	    "beforeeditnext" : true
     });
