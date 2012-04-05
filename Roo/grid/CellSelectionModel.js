@@ -294,7 +294,7 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
         if (newCell) {
             var ecall = { cell : newCell } 
             this.fireEvent('beforeeditnext', ecall );
-            newCell = ecall.newCell;
+            newCell = ecall.cell;
         }
         if(newCell){
             // can modify new Cell
