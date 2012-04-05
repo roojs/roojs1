@@ -55,7 +55,15 @@
 	     * You can use this to trigger add new row.
 	     * @param {SelectionModel} this
 	     */
-	    </span><span class="jsdoc-string">&quot;tabend&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+	    </span><span class="jsdoc-string">&quot;tabend&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+         </span><span class="jsdoc-comment">/**
+	     * @event beforeeditnext
+	     * Fires before the next editable sell is made active
+	     * You can use this to skip to another cell or fire the tabend
+	     *    if you set cell to false
+	     * @param {Object} eventdata object : { cell : [ row, col ] } 
+	     */
+	    </span><span class="jsdoc-string">&quot;beforeeditnext&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
     </span><span class="jsdoc-syntax">});
     </span><span class="jsdoc-var">Roo.grid.CellSelectionModel.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 };
@@ -284,10 +292,16 @@
         }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.ESC</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">ed.cancelEdit</span><span class="jsdoc-syntax">();
         }
-        
-        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newCell</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ecall </span><span class="jsdoc-syntax">= { </span><span class="jsdoc-var">cell </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">newCell </span><span class="jsdoc-syntax">} 
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforeeditnext'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ecall </span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">newCell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ecall.cell</span><span class="jsdoc-syntax">;
+        }
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newCell</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-comment">//Roo.log('next cell after edit');
+            </span><span class="jsdoc-comment">// can modify new Cell
+
+            
+            //Roo.log('next cell after edit');
             </span><span class="jsdoc-var">g.startEditing.defer</span><span class="jsdoc-syntax">(100, </span><span class="jsdoc-var">g</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-var">newCell</span><span class="jsdoc-syntax">[0], </span><span class="jsdoc-var">newCell</span><span class="jsdoc-syntax">[1]]);
         } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">forward</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-comment">// tabbed past last

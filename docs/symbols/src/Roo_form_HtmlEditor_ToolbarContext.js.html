@@ -271,13 +271,38 @@
      * Protected method that will not generally be called directly. It triggers
      * a toolbar update by reading the markup state of the current selection in the editor.
      */
-    </span><span class="jsdoc-var">updateToolbar</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ignore_a</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">ignore_b</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">updateToolbar</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">){
 
-        
+        </span><span class="jsdoc-comment">//Roo.log(ev);
+        // capture mouse up - this is handy for selecting images..
+        // perhaps should go somewhere else...
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.editor.activated</span><span class="jsdoc-syntax">){
              </span><span class="jsdoc-var">this.editor.onFirstFocus</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
+        
+        </span><span class="jsdoc-comment">// http://developer.yahoo.com/yui/docs/simple-editor.js.html
+        // selectNode - might want to handle IE?
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">&amp;&amp;
+            (</span><span class="jsdoc-var">ev.type </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'mouseup' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">ev.type </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'click' </span><span class="jsdoc-syntax">) &amp;&amp;
+            </span><span class="jsdoc-var">ev.target </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">ev.target.tagName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'IMG'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">// they have click on an image...
+            // let's see if we can change the selection...
+            </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.target</span><span class="jsdoc-syntax">;
+         
+              </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nodeRange </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel.ownerDocument.createRange</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">nodeRange.selectNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">);
+            } </span><span class="jsdoc-keyword">catch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">nodeRange.selectNodeContents</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-comment">//nodeRange.collapse(true);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">editor.win.getSelection</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">s.removeAllRanges</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">s.addRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nodeRange</span><span class="jsdoc-syntax">);
+        }  
+        
+      
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">updateFooter </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
         
         
@@ -415,8 +440,13 @@
         
         </span><span class="jsdoc-var">tb.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nm</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;:&amp;nbsp;&quot;</span><span class="jsdoc-syntax">);
         
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">styles </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">this.styles</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">styles.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">);
+        }
+        
         </span><span class="jsdoc-comment">// styles...
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.styles</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">styles </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">styles.length</span><span class="jsdoc-syntax">) {
             
             </span><span class="jsdoc-comment">// this needs a multi-select checkbox...
             </span><span class="jsdoc-var">tb.addField</span><span class="jsdoc-syntax">( </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.form.ComboBox</span><span class="jsdoc-syntax">({
@@ -438,6 +468,7 @@
                     </span><span class="jsdoc-string">'select'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
                         </span><span class="jsdoc-comment">// initial support only for on class per el..
                         </span><span class="jsdoc-var">tb.selectedNode.className </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">r.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'val'</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-var">editor.syncValue</span><span class="jsdoc-syntax">();
                     }
                 }
     
