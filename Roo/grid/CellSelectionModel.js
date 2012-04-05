@@ -291,11 +291,14 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
         }else if(k == e.ESC){
             ed.cancelEdit();
         }
-        
-        
+        if (newCell) {
+            var ecall = { cell : newCell } 
+            this.fireEvent('beforeeditnext', ecall );
+            newCell = ecall.newCell;
+        }
         if(newCell){
-            
-            this.fireEvent('beforeeditnext',newCell);
+            // can modify new Cell
+
             
             //Roo.log('next cell after edit');
             g.startEditing.defer(100, g, [newCell[0], newCell[1]]);
