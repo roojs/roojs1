@@ -6671,6 +6671,8 @@ Roo.data.Node = function(attributes){
         this.id = Roo.id(null, "ynode-");
         this.attributes.id = this.id;
     }
+     
+    
     /**
      * All child nodes of this node. @type Array
      */
@@ -16882,8 +16884,8 @@ Roo.extend(Roo.tree.TreePanel, Roo.data.Tree, {
         }
         this.getSelectionModel().init(this);
         if (!this.root) {
-            console.log("ROOT not set in tree");
-            return;
+            Roo.log("ROOT not set in tree");
+            return this;
         }
         this.root.render();
         if(!this.rootVisible){
@@ -36920,7 +36922,15 @@ Roo.grid.CellSelectionModel = function(config){
 	     * You can use this to trigger add new row.
 	     * @param {SelectionModel} this
 	     */
-	    "tabend" : true
+	    "tabend" : true,
+         /**
+	     * @event beforeeditnext
+	     * Fires before the next editable sell is made active
+	     * You can use this to skip to another cell or fire the tabend
+	     *    if you set cell to false
+	     * @param {Object} eventdata object : { cell : [ row, col ] } 
+	     */
+	    "beforeeditnext" : true
     });
     Roo.grid.CellSelectionModel.superclass.constructor.call(this);
 };
@@ -37149,9 +37159,15 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
         }else if(k == e.ESC){
             ed.cancelEdit();
         }
-        
-        
+        if (newCell) {
+            var ecall = { cell : newCell } 
+            this.fireEvent('beforeeditnext', ecall );
+            newCell = ecall.cell;
+        }
         if(newCell){
+            // can modify new Cell
+
+            
             //Roo.log('next cell after edit');
             g.startEditing.defer(100, g, [newCell[0], newCell[1]]);
         } else if (forward) {
@@ -38090,7 +38106,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
         
         if (!this.parent) {
             
-            el = el ? Roo.get(el) : false;
+            el = el ? Roo.get(el) : false; 	
             
             // it's a top level one..
             this.parent =  {
