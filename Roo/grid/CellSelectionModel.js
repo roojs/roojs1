@@ -295,8 +295,7 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
         
         if(newCell){
             
-            this.fireEvent('tabend',this]);
-            
+            this.fireEvent('beforeeditnext',newCell);
             
             //Roo.log('next cell after edit');
             g.startEditing.defer(100, g, [newCell[0], newCell[1]]);
