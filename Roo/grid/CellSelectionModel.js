@@ -59,8 +59,9 @@ Roo.grid.CellSelectionModel = function(config){
          /**
 	     * @event beforeeditnext
 	     * Fires before the next editable sell is made active
-	     * You can use this to skip to another cell
-	     * @param {Array} newCell the new [ row, col ] to be selected
+	     * You can use this to skip to another cell or fire the tabend
+	     *    if you set cell to false
+	     * @param {Object} eventdata object : { cell : [ row, col ] } 
 	     */
 	    "beforeeditnext" : true
     });
