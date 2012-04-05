@@ -55,7 +55,14 @@ Roo.grid.CellSelectionModel = function(config){
 	     * You can use this to trigger add new row.
 	     * @param {SelectionModel} this
 	     */
-	    "tabend" : true
+	    "tabend" : true,
+         /**
+	     * @event beforeeditnext
+	     * Fires before the next editable sell is made active
+	     * You can use this to skip to another cell
+	     * @param {SelectionModel} this
+	     */
+	    "beforeeditnext" : true
     });
     Roo.grid.CellSelectionModel.superclass.constructor.call(this);
 };
@@ -287,6 +294,10 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
         
         
         if(newCell){
+            
+            this.fireEvent('tabend',this]);
+            
+            
             //Roo.log('next cell after edit');
             g.startEditing.defer(100, g, [newCell[0], newCell[1]]);
         } else if (forward) {
