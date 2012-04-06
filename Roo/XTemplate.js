@@ -58,6 +58,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
                }
            }
            if(name){
+                // for = 
                switch(name){
                    case '.':  name = new Function('values', 'parent', 'with(values){ return values; }'); break;
                    case '..': name = new Function('values', 'parent', 'with(values){ return parent; }'); break;
@@ -119,12 +120,13 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
             if(name.substr(0, 4) == 'xtpl'){
                 return "'"+ sep +'this.applySubTemplate('+name.substr(4)+', values, parent)'+sep+"'";
             }
+            
             var v;
-            if(name.indexOf('.') != -1){
+            //if(name.indexOf('.') != -1){
                 v = name;
-            }else{
-                v = "values['" + name + "']";
-            }
+            //}else{
+            //    v = "values['" + name + "']";
+            //}
             if(format && useF){
                 args = args ? ',' + args : "";
                 if(format.substr(0, 5) != "this."){
@@ -142,13 +144,13 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
         var body;
         // branched to use + in gecko and [].join() in others
         if(Roo.isGecko){
-            body = "tpl.compiled = function(values, parent){ return '" +
+            body = "tpl.compiled = function(values, parent){ with(values) { return '" +
                    tpl.body.replace(/(\r\n|\n)/g, '\\n').replace(/'/g, "\\'").replace(this.re, fn) +
-                    "';};";
+                    "';};};";
         }else{
-            body = ["tpl.compiled = function(values, parent){ return ['"];
+            body = ["tpl.compiled = function(values, parent){ with (values) { return ['"];
             body.push(tpl.body.replace(/(\r\n|\n)/g, '\\n').replace(/'/g, "\\'").replace(this.re, fn));
-            body.push("'].join('');};");
+            body.push("'].join('');};};");
             body = body.join('');
         }
         
