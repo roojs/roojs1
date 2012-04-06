@@ -10,7 +10,9 @@
  */
 Roo.XTemplate = function(){
     Roo.XTemplate.superclass.constructor.apply(this, arguments);
-  
+    if (this.html) {
+        this.preCompile();
+    }
 };
 
 
