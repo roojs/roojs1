@@ -37830,6 +37830,15 @@ Roo.XTemplate = function(){
 
 Roo.extend(Roo.XTemplate, Roo.Template, {
 
+    /**
+     *
+     * basic tag replacing syntax
+     * WORD:WORD()
+     *
+     * // you can fake an object call by doing this
+     *  x.t:(test,tesT) 
+     * 
+     */
     re : /\{([\w-\.]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?\}/g,
 
     
@@ -37895,7 +37904,8 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
         return this;
     },
     
-    applySubTemplate : function(id, values, parent){
+    applySubTemplate : function(id, values, parent)
+    {
         var t = this.tpls[id];
         if(t.test && !t.test.call(this, values, parent)){
             return '';
@@ -37921,8 +37931,8 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
         var useF = this.disableFormats !== true;
         var sep = Roo.isGecko ? "+" : ",";
         var fn = function(m, name, format, args){
-            
-            if (!format) {
+            //["{TEST:(a,b,c)}", "TEST", "", "a,b,c", 0, "{TEST:(a,b,c)}"]
+            if (typeof(format) == 'undefined') {
                 format= 'htmlEncode';
             }
             if (format == 'raw' ) {
@@ -37940,18 +37950,26 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
             //    v = "values['" + name + "']";
             //}
             if(format && useF){
+                
                 args = args ? ',' + args : "";
+                 
                 if(format.substr(0, 5) != "this."){
                     format = "fm." + format + '(';
                 }else{
                     format = 'this.call("'+ format.substr(5) + '", ';
                     args = ", values";
                 }
-            }else{
-                args= '';
-                format = "("+v+" === undefined ? '' : ";
+                return "'"+ sep + format + v + args + ")"+sep+"'";
             }
-            return "'"+ sep + format + v + args + ")"+sep+"'";
+             
+            if (args.length) {
+                // called with xxyx.yuu:(test,test)
+                // change to ()
+                return "'"+ sep + "("+v+" === undefined ? '' : " + v + '(' +  args + "))"+sep+"'";
+            }
+            // raw.. - :raw modifier..
+            return "'"+ sep + "("+v+" === undefined ? '' : " + v + ")"+sep+"'";
+            
         };
         var body;
         // branched to use + in gecko and [].join() in others
