@@ -147,17 +147,19 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
                     format = 'this.call("'+ format.substr(5) + '", ';
                     args = ", values";
                 }
-            }else{
-                format = "("+v+" === undefined ? '' : ";
-                if (args.length) {
-                    // called with xxyx.yuu:(test,test)
-                    // change to ()
-                    return "'"+ sep + format + v + '(' +  args + "))"+sep+"'";
-                }
-                args= '';
-                
+                return "'"+ sep + format + v + args + ")"+sep+"'";
             }
-            return "'"+ sep + format + v + args + ")"+sep+"'";
+            
+            format = "("+v+" === undefined ? '' : ";
+            if (args.length) {
+                // called with xxyx.yuu:(test,test)
+                // change to ()
+                return "'"+ sep + format + v + '(' +  args + "))"+sep+"'";
+            }
+            args= '';
+                
+            
+            
         };
         var body;
         // branched to use + in gecko and [].join() in others
