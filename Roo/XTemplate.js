@@ -151,7 +151,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
                 if (args) {
                     // called with xxyx.yuu:(test,test)
                     // change to ()
-                    return "'"+ sep + format + v +'(' +  args + "))"+sep+"'";
+                    return "'"+ sep + format + v + '(' +  args + "))"+sep+"'";
                 }
                 args= '';
                 
