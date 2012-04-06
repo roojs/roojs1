@@ -17,7 +17,7 @@ Roo.XTemplate = function(){
     var re = /<tpl\b[^>]*>((?:(?=([^<]+))\2|<(?!tpl\b[^>]*>))*?)<\/tpl>/;
 
     var nameRe = /^<tpl\b[^>]*?for="(.*?)"/;
-    var ifRe = /^<tpl\b[^>]*?if="(.*?)"/;
+    var ifRe   = /^<tpl\b[^>]*?if="(.*?)"/;
     var execRe = /^<tpl\b[^>]*?exec="(.*?)"/;
     var m, id = 0;
     var tpls = [];
@@ -63,6 +63,8 @@ Roo.XTemplate = function(){
     this.master = tpls[tpls.length-1];
     this.tpls = tpls;
 };
+
+
 Roo.extend(Roo.XTemplate, Roo.Template, {
 
     re : /\{([\w-\.]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?\}/g,
@@ -133,7 +135,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
 
     applyTemplate : function(values){
         return this.master.compiled.call(this, values, {});
-        var s = this.subs;
+        //var s = this.subs;
     },
 
     apply : function(){
