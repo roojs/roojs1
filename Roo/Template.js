@@ -44,7 +44,9 @@ Roo.Template = function(cfg){
         // bc
         this.html = cfg;
     }
-    
+    if (this.url) {
+        this.load();
+    }
     
 };
 Roo.Template.prototype = {
