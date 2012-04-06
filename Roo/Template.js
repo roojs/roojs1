@@ -106,6 +106,7 @@ Roo.Template.prototype = {
             return;
         }
         this.loading = true;
+        this.compiled = false;
         var _t = this;
         var cx = new Roo.data.Connection();
         cx.request({
