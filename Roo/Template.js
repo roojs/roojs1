@@ -128,6 +128,7 @@ Roo.Template.prototype = {
                 _t.loading = false;
                 _t.html = response.responseText;
                 _t.url = false;
+                _this.compile();
              },
             failure : function(response) {
                 Roo.log("Template failed to load from " + url);
