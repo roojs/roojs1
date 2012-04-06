@@ -131,6 +131,7 @@ Roo.Template.prototype = {
             success : function (response) {
                 _t.loading = false;
                 _t.html = response.responseText;
+                _t.url = false;
                 _t.afterLoad && _t.afterLoad();
             },
             failure : function(response) {
