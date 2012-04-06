@@ -39,15 +39,19 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
            var m2 = m[0].match(nameRe);
            var m3 = m[0].match(ifRe);
            var m4 = m[0].match(execRe);
-           var exp = null, fn = null, exec = null;
+           var exp = null,
+                fn = null,
+                exec = null;
            var name = m2 && m2[1] ? m2[1] : '';
            if(m3){
-               exp = m3 && m3[1] ? m3[1] : null;
-               if(exp){
+                // if - puts fn into test..
+                exp = m3 && m3[1] ? m3[1] : null;
+                if(exp){
                    fn = new Function('values', 'parent', 'with(values){ return '+(Roo.util.Format.htmlDecode(exp))+'; }');
-               }
+                }
            }
            if(m4){
+                // exec - calls a function... returns empty if true is  returned.
                exp = m4 && m4[1] ? m4[1] : null;
                if(exp){
                    exec = new Function('values', 'parent', 'with(values){ '+(Roo.util.Format.htmlDecode(exp))+'; }');
