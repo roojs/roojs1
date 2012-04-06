@@ -21134,8 +21134,6 @@ Roo.data.Node = function(attributes){
         this.id = Roo.id(null, "ynode-");
         this.attributes.id = this.id;
     }
-     
-    
     /**
      * All child nodes of this node. @type Array
      */
@@ -31347,8 +31345,8 @@ Roo.extend(Roo.tree.TreePanel, Roo.data.Tree, {
         }
         this.getSelectionModel().init(this);
         if (!this.root) {
-            Roo.log("ROOT not set in tree");
-            return this;
+            console.log("ROOT not set in tree");
+            return;
         }
         this.root.render();
         if(!this.rootVisible){
@@ -51615,22 +51613,23 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
             
             e.stopEvent();
             
-        }else if(k == e.ENTER &&  !e.ctrlKey){
+        } else if(k == e.ENTER &&  !e.ctrlKey){
             ed.completeEdit();
             e.stopEvent();
             newCell = g.walkCells(ed.row, ed.col+1, 1, this.acceptsNav, this);
-        }else if(k == e.ESC){
+        
+		} else if(k == e.ESC){
             ed.cancelEdit();
         }
+		
         if (newCell) {
-            var ecall = { cell : newCell } 
+            var ecall = { cell : newCell, forward : forward };
             this.fireEvent('beforeeditnext', ecall );
             newCell = ecall.cell;
+			forward = ecall.forward;
         }
+		
         if(newCell){
-            // can modify new Cell
-
-            
             //Roo.log('next cell after edit');
             g.startEditing.defer(100, g, [newCell[0], newCell[1]]);
         } else if (forward) {
