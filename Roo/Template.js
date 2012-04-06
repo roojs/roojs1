@@ -108,9 +108,7 @@ Roo.Template.prototype = {
     },
     
     loading : false,
-    
-    afterLoad : false,
-    
+      
     load : function ()
     {
          
@@ -130,8 +128,7 @@ Roo.Template.prototype = {
                 _t.loading = false;
                 _t.html = response.responseText;
                 _t.url = false;
-                _t.afterLoad && _t.afterLoad();
-            },
+             },
             failure : function(response) {
                 Roo.log("Template failed to load from " + url);
                 _t.loading = false;
