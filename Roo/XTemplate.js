@@ -137,6 +137,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
             body.push("'].join('');};");
             body = body.join('');
         }
+        
         /** eval:var:zzzzzzz */
         eval(body);
         Roo.log(body);
