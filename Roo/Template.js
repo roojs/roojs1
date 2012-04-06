@@ -54,7 +54,8 @@ Roo.Template = function(cfg){
 Roo.Template.prototype = {
     
     /**
-     * @cfg {String} url  The Url to load the template from.
+     * @cfg {String} url  The Url to load the template from. beware if you are loading from a url, the data may not be ready if you use it instantly..
+     *                    it should be fixed so that template is observable...
      */
     url : false,
     /**
