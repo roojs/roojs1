@@ -18,6 +18,15 @@
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.XTemplate</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">, {
 
+    </span><span class="jsdoc-comment">/**
+     *
+     * basic tag replacing syntax
+     * WORD:WORD()
+     *
+     * // you can fake an object call by doing this
+     *  x.t:(test,tesT) 
+     * 
+     */
     </span><span class="jsdoc-var">re </span><span class="jsdoc-syntax">: /\{([\w-\.]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?\}/g,
 
     
@@ -83,7 +92,8 @@
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
     },
     
-    </span><span class="jsdoc-var">applySubTemplate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">parent</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">applySubTemplate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">parent</span><span class="jsdoc-syntax">)
+    {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tpls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">];
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t.test </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">t.test.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">parent</span><span class="jsdoc-syntax">)){
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
@@ -109,8 +119,8 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">useF </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.disableFormats </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sep </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.isGecko </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">&quot;+&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;,&quot;</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">format</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">){
-            
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">format</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">//[&quot;{TEST:(a,b,c)}&quot;, &quot;TEST&quot;, &quot;&quot;, &quot;a,b,c&quot;, 0, &quot;{TEST:(a,b,c)}&quot;]
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">format</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">format</span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'htmlEncode'</span><span class="jsdoc-syntax">;
             }
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'raw' </span><span class="jsdoc-syntax">) {
@@ -128,18 +138,26 @@
             //    v = &quot;values['&quot; + name + &quot;']&quot;;
             //}
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">useF</span><span class="jsdoc-syntax">){
+                
                 </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">',' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
+                 
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">format.substr</span><span class="jsdoc-syntax">(0, 5) != </span><span class="jsdoc-string">&quot;this.&quot;</span><span class="jsdoc-syntax">){
                     </span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;fm.&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'('</span><span class="jsdoc-syntax">;
                 }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
                     </span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'this.call(&quot;'</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">format.substr</span><span class="jsdoc-syntax">(5) + </span><span class="jsdoc-string">'&quot;, '</span><span class="jsdoc-syntax">;
                     </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;, values&quot;</span><span class="jsdoc-syntax">;
                 }
-            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
-                </span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
-                </span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;(&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">&quot; === undefined ? '' : &quot;</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">&quot;'&quot;</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">sep </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;)&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">sep</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">&quot;'&quot;</span><span class="jsdoc-syntax">;
             }
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">&quot;'&quot;</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">sep </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;)&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">sep</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">&quot;'&quot;</span><span class="jsdoc-syntax">;
+             
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">args.length</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-comment">// called with xxyx.yuu:(test,test)
+                // change to ()
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">&quot;'&quot;</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">sep </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;(&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">&quot; === undefined ? '' : &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'(' </span><span class="jsdoc-syntax">+  </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;))&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">sep</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">&quot;'&quot;</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-comment">// raw.. - :raw modifier..
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">&quot;'&quot;</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">sep </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;(&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">&quot; === undefined ? '' : &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;)&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">sep</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">&quot;'&quot;</span><span class="jsdoc-syntax">;
+            
         };
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-comment">// branched to use + in gecko and [].join() in others

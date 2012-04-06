@@ -4394,6 +4394,10 @@
    "props": [],
    "events": []
   },
+  "Roo.XTemplate": {
+   "props": [],
+   "events": []
+  },
   "Roo.data": {
    "props": [],
    "events": []
