@@ -105,8 +105,11 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
         var sep = Roo.isGecko ? "+" : ",";
         var fn = function(m, name, format, args){
             
-            if (!format.length) {
+            if (!format) {
                 format= 'htmlEncode';
+            }
+            if (format == 'raw' ) {
+                format = false;
             }
             
             if(name.substr(0, 4) == 'xtpl'){
