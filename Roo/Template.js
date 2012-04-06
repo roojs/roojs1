@@ -25,7 +25,9 @@ var t = new Roo.Template({
 });
 t.append('some-element', {id: 'myid', cls: 'myclass', name: 'foo', value: 'bar'});
 </code></pre>
-* For more information see this blog post with examples: <a href="http://www.jackslocum.com/yui/2006/10/06/domhelper-create-elements-using-dom-html-fragments-or-templates/">DomHelper - Create Elements using DOM, HTML fragments and Templates</a>. 
+* For more information see this blog post with examples:
+*  <a href="http://www.cnitblog.com/seeyeah/archive/2011/12/30/38728.html/">DomHelper
+     - Create Elements using DOM, HTML fragments and Templates</a>. 
 * @constructor
 * @param {Object} cfg - Configuration object.
 */
