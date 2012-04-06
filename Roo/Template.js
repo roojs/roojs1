@@ -111,10 +111,9 @@ Roo.Template.prototype = {
     
     afterLoad : false,
     
-    load : function (success)
+    load : function ()
     {
-        
-        this.afterLoad = success;
+         
         if (this.loading) {
             return;
         }
@@ -124,7 +123,7 @@ Roo.Template.prototype = {
         var _t = this;
         var cx = new Roo.data.Connection();
         cx.request({
-            url : url,
+            url : this.url,
             method : 'GET',
             success : function (response) {
                 _t.loading = false;
