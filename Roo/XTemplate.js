@@ -158,7 +158,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
             }
             args= '';
                 
-            
+            return "'"+ sep + format + v + args + ")"+sep+"'";
             
         };
         var body;
