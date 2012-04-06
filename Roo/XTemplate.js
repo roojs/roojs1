@@ -18,7 +18,18 @@ Roo.XTemplate = function(){
 
 Roo.extend(Roo.XTemplate, Roo.Template, {
 
-    re : /\{([\w-\.]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?\}/g,
+    /**
+     *
+     * basic tag replacing syntax
+     * WORD:WORD()
+     * 
+     */
+    re : new RegExp(
+            '\{' +
+            '([\w-\.]+)' +
+            '(?:\:([\w\.]*)' +
+            '(?:\((.*?)?\))?)?' +
+            '\}', 'g'),
 
     
     compile: function()
