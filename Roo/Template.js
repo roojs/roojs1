@@ -98,6 +98,23 @@ Roo.Template.prototype = {
          
     },
     
+    loading : false,
+    
+    load : function (url, success)
+    {
+        if (this.loading) {
+            return false;
+        }
+        var cx = new Roo.data.Connection({
+            url : url,
+            method : 'GET',
+            success : success,
+            failure : function() {
+                Roo.log("Template failed to load from " + url);  
+            }
+        });
+    },
+
     /**
      * Sets the HTML used as the template and optionally compiles it.
      * @param {String} html
