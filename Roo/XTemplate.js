@@ -76,7 +76,8 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
         this.master = tpls[tpls.length-1];
         this.tpls = tpls;
         return this;
-    }
+    },
+    
     applySubTemplate : function(id, values, parent){
         var t = this.tpls[id];
         if(t.test && !t.test.call(this, values, parent)){
