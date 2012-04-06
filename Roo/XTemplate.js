@@ -21,7 +21,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
     re : /\{([\w-\.]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?\}/g,
 
     
-    preCompile: function()
+    compile: function()
     {
         var s = this.html;
      
@@ -75,8 +75,8 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
         }
         this.master = tpls[tpls.length-1];
         this.tpls = tpls;
-    
-    
+        return this;
+    }
     applySubTemplate : function(id, values, parent){
         var t = this.tpls[id];
         if(t.test && !t.test.call(this, values, parent)){
@@ -150,10 +150,9 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
 
     apply : function(){
         return this.applyTemplate.apply(this, arguments);
-    },
+    }
 
-    compile : function(){return this;}
-});
+ });
 
 Roo.XTemplate.from = function(el){
     el = Roo.getDom(el);
