@@ -103,7 +103,7 @@ Roo.Template.prototype = {
     load : function (url, success)
     {
         if (this.loading) {
-            return false;
+            return;
         }
         var cx = new Roo.data.Connection({
             url : url,
