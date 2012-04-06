@@ -148,7 +148,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
                 }
             }else{
                 format = "("+v+" === undefined ? '' : ";
-                if (args) {
+                if (arg.length) {
                     // called with xxyx.yuu:(test,test)
                     // change to ()
                     return "'"+ sep + format + v + '(' +  args + "))"+sep+"'";
