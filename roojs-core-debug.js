@@ -4530,7 +4530,9 @@ var t = new Roo.Template({
 });
 t.append('some-element', {id: 'myid', cls: 'myclass', name: 'foo', value: 'bar'});
 </code></pre>
-* For more information see this blog post with examples: <a href="http://www.jackslocum.com/yui/2006/10/06/domhelper-create-elements-using-dom-html-fragments-or-templates/">DomHelper - Create Elements using DOM, HTML fragments and Templates</a>. 
+* For more information see this blog post with examples:
+*  <a href="http://www.cnitblog.com/seeyeah/archive/2011/12/30/38728.html/">DomHelper
+     - Create Elements using DOM, HTML fragments and Templates</a>. 
 * @constructor
 * @param {Object} cfg - Configuration object.
 */
@@ -4549,11 +4551,18 @@ Roo.Template = function(cfg){
         // bc
         this.html = cfg;
     }
-    
+    if (this.url) {
+        this.load();
+    }
     
 };
 Roo.Template.prototype = {
     
+    /**
+     * @cfg {String} url  The Url to load the template from. beware if you are loading from a url, the data may not be ready if you use it instantly..
+     *                    it should be fixed so that template is observable...
+     */
+    url : false,
     /**
      * @cfg {String} html  The HTML fragment or an array of fragments to join("") or multiple arguments to join("")
      */
@@ -4565,7 +4574,7 @@ Roo.Template.prototype = {
      */
     applyTemplate : function(values){
         try {
-            
+           
             if(this.compiled){
                 return this.compiled(values);
             }
@@ -4603,6 +4612,36 @@ Roo.Template.prototype = {
          
     },
     
+    loading : false,
+      
+    load : function ()
+    {
+         
+        if (this.loading) {
+            return;
+        }
+        var _t = this;
+        
+        this.loading = true;
+        this.compiled = false;
+        
+        var cx = new Roo.data.Connection();
+        cx.request({
+            url : this.url,
+            method : 'GET',
+            success : function (response) {
+                _t.loading = false;
+                _t.html = response.responseText;
+                _t.url = false;
+                _this.compile();
+             },
+            failure : function(response) {
+                Roo.log("Template failed to load from " + url);
+                _t.loading = false;
+            }
+        });
+    },
+
     /**
      * Sets the HTML used as the template and optionally compiles it.
      * @param {String} html
