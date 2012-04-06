@@ -150,7 +150,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
         
         /** eval:var:zzzzzzz */
         eval(body);
-        Roo.log(body);
+        Roo.log(body.replace(/\\n/,'\n'));
         
         return this;
     },
