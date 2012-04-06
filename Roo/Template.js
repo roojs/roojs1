@@ -117,10 +117,11 @@ Roo.Template.prototype = {
         if (this.loading) {
             return;
         }
+        var _t = this;
         
         this.loading = true;
         this.compiled = false;
-        var _t = this;
+        
         var cx = new Roo.data.Connection();
         cx.request({
             url : this.url,
