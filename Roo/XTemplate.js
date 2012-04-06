@@ -150,14 +150,14 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
                 return "'"+ sep + format + v + args + ")"+sep+"'";
             }
             
-            format = "("+v+" === undefined ? '' : ";
+            format = ;
             if (args.length) {
                 // called with xxyx.yuu:(test,test)
                 // change to ()
                 return "'"+ sep + format + v + '(' +  args + "))"+sep+"'";
             }
-                 
-            return "'"+ sep + format + v + ")"+sep+"'";
+            // raw.. - :raw modifier..
+            return "'"+ sep + "("+v+" === undefined ? '' : " + v + ")"+sep+"'";
             
         };
         var body;
