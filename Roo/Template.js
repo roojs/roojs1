@@ -64,7 +64,12 @@ Roo.Template.prototype = {
      */
     applyTemplate : function(values){
         try {
-            if ()
+            _t= this;
+            if (this.url) {
+                this.afterLoad = function () { _t.applyTemplate(values); };
+                this.load();
+                return;
+            }
             if(this.compiled){
                 return this.compiled(values);
             }
@@ -106,7 +111,7 @@ Roo.Template.prototype = {
     
     afterLoad : false,
     
-    load : function (url, success)
+    load : function (success)
     {
         
         this.afterLoad = success;
