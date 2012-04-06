@@ -10,63 +10,74 @@
  */
 </span><span class="jsdoc-var">Roo.XTemplate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
     </span><span class="jsdoc-var">Roo.XTemplate.superclass.constructor.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">);
-    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.html</span><span class="jsdoc-syntax">;
-
-    </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-string">'&lt;tpl&gt;'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'&lt;/tpl&gt;'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
-
-    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">re </span><span class="jsdoc-syntax">= /&lt;tpl\b[^&gt;]*&gt;((?:(?=([^&lt;]+))\2|&lt;(?!tpl\b[^&gt;]*&gt;))*?)&lt;\/tpl&gt;/;
-
-    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nameRe </span><span class="jsdoc-syntax">= /^&lt;tpl\b[^&gt;]*?for=&quot;(.*?)&quot;/;
-    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ifRe </span><span class="jsdoc-syntax">= /^&lt;tpl\b[^&gt;]*?if=&quot;(.*?)&quot;/;
-    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">execRe </span><span class="jsdoc-syntax">= /^&lt;tpl\b[^&gt;]*?exec=&quot;(.*?)&quot;/;
-    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">= 0;
-    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tpls </span><span class="jsdoc-syntax">= [];
-
-    </span><span class="jsdoc-keyword">while</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">s.match</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">re</span><span class="jsdoc-syntax">)){
-       </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">m2 </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.match</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nameRe</span><span class="jsdoc-syntax">);
-       </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">m3 </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.match</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ifRe</span><span class="jsdoc-syntax">);
-       </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">m4 </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.match</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">execRe</span><span class="jsdoc-syntax">);
-       </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">exp </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">exec </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
-       </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">m2 </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">m2</span><span class="jsdoc-syntax">[1] ? </span><span class="jsdoc-var">m2</span><span class="jsdoc-syntax">[1] : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
-       </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m3</span><span class="jsdoc-syntax">){
-           </span><span class="jsdoc-var">exp </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">m3 </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">m3</span><span class="jsdoc-syntax">[1] ? </span><span class="jsdoc-var">m3</span><span class="jsdoc-syntax">[1] : </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
-           </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">exp</span><span class="jsdoc-syntax">){
-               </span><span class="jsdoc-var">fn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'values'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'parent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'with(values){ return '</span><span class="jsdoc-syntax">+(</span><span class="jsdoc-var">Roo.util.Format.htmlDecode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">exp</span><span class="jsdoc-syntax">))+</span><span class="jsdoc-string">'; }'</span><span class="jsdoc-syntax">);
-           }
-       }
-       </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m4</span><span class="jsdoc-syntax">){
-           </span><span class="jsdoc-var">exp </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">m4 </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">m4</span><span class="jsdoc-syntax">[1] ? </span><span class="jsdoc-var">m4</span><span class="jsdoc-syntax">[1] : </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
-           </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">exp</span><span class="jsdoc-syntax">){
-               </span><span class="jsdoc-var">exec </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'values'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'parent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'with(values){ '</span><span class="jsdoc-syntax">+(</span><span class="jsdoc-var">Roo.util.Format.htmlDecode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">exp</span><span class="jsdoc-syntax">))+</span><span class="jsdoc-string">'; }'</span><span class="jsdoc-syntax">);
-           }
-       }
-       </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">){
-           </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">){
-               </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'.'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'values'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'parent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'with(values){ return values; }'</span><span class="jsdoc-syntax">); </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
-               </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'..'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'values'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'parent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'with(values){ return parent; }'</span><span class="jsdoc-syntax">); </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
-               </span><span class="jsdoc-keyword">default</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'values'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'parent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'with(values){ return '</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'; }'</span><span class="jsdoc-syntax">);
-           }
-       }
-       </span><span class="jsdoc-var">tpls.push</span><span class="jsdoc-syntax">({
-            </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">exec</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">exec</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">test</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">[1]||</span><span class="jsdoc-string">''
-        </span><span class="jsdoc-syntax">});
-       </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">s.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">[0], </span><span class="jsdoc-string">'{xtpl'</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'}'</span><span class="jsdoc-syntax">);
-       ++</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.html</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.preCompile</span><span class="jsdoc-syntax">();
     }
-    </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tpls.length</span><span class="jsdoc-syntax">-1; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&gt;= 0; --</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-var">this.compileTpl</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tpls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
-    }
-    </span><span class="jsdoc-var">this.master </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tpls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">tpls.length</span><span class="jsdoc-syntax">-1];
-    </span><span class="jsdoc-var">this.tpls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tpls</span><span class="jsdoc-syntax">;
 };
+
+
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.XTemplate</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">, {
 
     </span><span class="jsdoc-var">re </span><span class="jsdoc-syntax">: /\{([\w-\.]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?\}/g,
 
+    
+    </span><span class="jsdoc-var">compile</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.html</span><span class="jsdoc-syntax">;
+     
+        </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-string">'&lt;tpl&gt;'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'&lt;/tpl&gt;'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+    
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">re </span><span class="jsdoc-syntax">= /&lt;tpl\b[^&gt;]*&gt;((?:(?=([^&lt;]+))\2|&lt;(?!tpl\b[^&gt;]*&gt;))*?)&lt;\/tpl&gt;/;
+    
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nameRe </span><span class="jsdoc-syntax">= /^&lt;tpl\b[^&gt;]*?for=&quot;(.*?)&quot;/;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ifRe   </span><span class="jsdoc-syntax">= /^&lt;tpl\b[^&gt;]*?if=&quot;(.*?)&quot;/;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">execRe </span><span class="jsdoc-syntax">= /^&lt;tpl\b[^&gt;]*?exec=&quot;(.*?)&quot;/;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tpls </span><span class="jsdoc-syntax">= [];
+    
+        </span><span class="jsdoc-keyword">while</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">== !!(</span><span class="jsdoc-var">m </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">s.match</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">re</span><span class="jsdoc-syntax">))){
+           </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">m2 </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.match</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nameRe</span><span class="jsdoc-syntax">);
+           </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">m3 </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.match</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ifRe</span><span class="jsdoc-syntax">);
+           </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">m4 </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.match</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">execRe</span><span class="jsdoc-syntax">);
+           </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">exp </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">exec </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+           </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">m2 </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">m2</span><span class="jsdoc-syntax">[1] ? </span><span class="jsdoc-var">m2</span><span class="jsdoc-syntax">[1] : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+           </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m3</span><span class="jsdoc-syntax">){
+               </span><span class="jsdoc-var">exp </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">m3 </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">m3</span><span class="jsdoc-syntax">[1] ? </span><span class="jsdoc-var">m3</span><span class="jsdoc-syntax">[1] : </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+               </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">exp</span><span class="jsdoc-syntax">){
+                   </span><span class="jsdoc-var">fn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'values'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'parent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'with(values){ return '</span><span class="jsdoc-syntax">+(</span><span class="jsdoc-var">Roo.util.Format.htmlDecode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">exp</span><span class="jsdoc-syntax">))+</span><span class="jsdoc-string">'; }'</span><span class="jsdoc-syntax">);
+               }
+           }
+           </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m4</span><span class="jsdoc-syntax">){
+               </span><span class="jsdoc-var">exp </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">m4 </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">m4</span><span class="jsdoc-syntax">[1] ? </span><span class="jsdoc-var">m4</span><span class="jsdoc-syntax">[1] : </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+               </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">exp</span><span class="jsdoc-syntax">){
+                   </span><span class="jsdoc-var">exec </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'values'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'parent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'with(values){ '</span><span class="jsdoc-syntax">+(</span><span class="jsdoc-var">Roo.util.Format.htmlDecode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">exp</span><span class="jsdoc-syntax">))+</span><span class="jsdoc-string">'; }'</span><span class="jsdoc-syntax">);
+               }
+           }
+           </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">){
+               </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">){
+                   </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'.'</span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'values'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'parent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'with(values){ return values; }'</span><span class="jsdoc-syntax">); </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                   </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'..'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'values'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'parent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'with(values){ return parent; }'</span><span class="jsdoc-syntax">); </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                   </span><span class="jsdoc-keyword">default</span><span class="jsdoc-syntax">:   </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'values'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'parent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'with(values){ return '</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'; }'</span><span class="jsdoc-syntax">);
+               }
+           }
+           </span><span class="jsdoc-var">tpls.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">exec</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">exec</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">test</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">[1]||</span><span class="jsdoc-string">''
+            </span><span class="jsdoc-syntax">});
+           </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">s.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">[0], </span><span class="jsdoc-string">'{xtpl'</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'}'</span><span class="jsdoc-syntax">);
+           ++</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tpls.length</span><span class="jsdoc-syntax">-1; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&gt;= 0; --</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.compileTpl</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tpls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+        }
+        </span><span class="jsdoc-var">this.master </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tpls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">tpls.length</span><span class="jsdoc-syntax">-1];
+        </span><span class="jsdoc-var">this.tpls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tpls</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+    },
+    
     </span><span class="jsdoc-var">applySubTemplate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">parent</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tpls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">];
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t.test </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">t.test.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">parent</span><span class="jsdoc-syntax">)){
@@ -126,22 +137,24 @@
             </span><span class="jsdoc-var">body.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;'].join('');};&quot;</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">body </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">body.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
         }
+        
         </span><span class="jsdoc-comment">/** eval:var:zzzzzzz */
         </span><span class="jsdoc-keyword">eval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">);
+        
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
     },
 
     </span><span class="jsdoc-var">applyTemplate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.master.compiled.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">, {});
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.subs</span><span class="jsdoc-syntax">;
-    },
+        </span><span class="jsdoc-comment">//var s = this.subs;
+    </span><span class="jsdoc-syntax">},
 
     </span><span class="jsdoc-var">apply </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.applyTemplate.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">);
-    },
+    }
 
-    </span><span class="jsdoc-var">compile </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;}
-});
+ });
 
 </span><span class="jsdoc-var">Roo.XTemplate.from </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.getDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);

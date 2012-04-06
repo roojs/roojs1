@@ -25,7 +25,9 @@ var t = new Roo.Template({
 });
 t.append('some-element', {id: 'myid', cls: 'myclass', name: 'foo', value: 'bar'});
 &lt;/code&gt;&lt;/pre&gt;
-* For more information see this blog post with examples: &lt;a href=&quot;http://www.jackslocum.com/yui/2006/10/06/domhelper-create-elements-using-dom-html-fragments-or-templates/&quot;&gt;DomHelper - Create Elements using DOM, HTML fragments and Templates&lt;/a&gt;. 
+* For more information see this blog post with examples:
+*  &lt;a href=&quot;http://www.cnitblog.com/seeyeah/archive/2011/12/30/38728.html/&quot;&gt;DomHelper
+     - Create Elements using DOM, HTML fragments and Templates&lt;/a&gt;. 
 * @constructor
 * @param {Object} cfg - Configuration object.
 */
@@ -44,11 +46,18 @@ t.append('some-element', {id: 'myid', cls: 'myclass', name: 'foo', value: 'bar'}
         </span><span class="jsdoc-comment">// bc
         </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
     }
-    
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.url</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.load</span><span class="jsdoc-syntax">();
+    }
     
 };
 </span><span class="jsdoc-var">Roo.Template.prototype </span><span class="jsdoc-syntax">= {
     
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} url  The Url to load the template from. beware if you are loading from a url, the data may not be ready if you use it instantly..
+     *                    it should be fixed so that template is observable...
+     */
+    </span><span class="jsdoc-var">url </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-comment">/**
      * @cfg {String} html  The HTML fragment or an array of fragments to join(&quot;&quot;) or multiple arguments to join(&quot;&quot;)
      */
@@ -60,7 +69,7 @@ t.append('some-element', {id: 'myid', cls: 'myclass', name: 'foo', value: 'bar'}
      */
     </span><span class="jsdoc-var">applyTemplate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
-            
+           
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.compiled</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.compiled</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">);
             }
@@ -98,6 +107,36 @@ t.append('some-element', {id: 'myid', cls: 'myclass', name: 'foo', value: 'bar'}
          
     },
     
+    </span><span class="jsdoc-var">loading </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+      
+    </span><span class="jsdoc-var">load </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">()
+    {
+         
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.loading</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">this.loading </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.compiled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cx </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.data.Connection</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">cx.request</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">url </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.url</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">method </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'GET'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">success </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">_t.loading </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">_t.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">response.responseText</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">_t.url </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">_t.compile</span><span class="jsdoc-syntax">();
+             },
+            </span><span class="jsdoc-var">failure </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Template failed to load from &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">_t.loading </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            }
+        });
+    },
+
     </span><span class="jsdoc-comment">/**
      * Sets the HTML used as the template and optionally compiles it.
      * @param {String} html
