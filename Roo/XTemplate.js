@@ -33,7 +33,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
         var m, id = 0;
         var tpls = [];
     
-        while(m = s.match(re)){
+        while(true == !!(m = s.match(re))){
            var m2 = m[0].match(nameRe);
            var m3 = m[0].match(ifRe);
            var m4 = m[0].match(execRe);
