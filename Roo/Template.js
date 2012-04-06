@@ -107,14 +107,16 @@ Roo.Template.prototype = {
         }
         this.loading = true;
         var _t = this;
-        var cx = new Roo.data.Connection({
+        var cx = new Roo.data.Connection();
+        cx.request({
             url : url,
             method : 'GET',
-            success : function () {
+            success : function (response) {
                 _t.loading = false;
+                _t.html = response.responseText;
                 success && success();
             },
-            failure : function() {
+            failure : function(response) {
                 Roo.log("Template failed to load from " + url);
                 _t.loading = false;
             }
