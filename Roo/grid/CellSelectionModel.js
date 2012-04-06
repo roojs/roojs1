@@ -295,9 +295,10 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
         }
 		
         if (newCell) {
-            var ecall = { cell : newCell };
+            var ecall = { cell : newCell, forward : forward };
             this.fireEvent('beforeeditnext', ecall );
             newCell = ecall.cell;
+			forward = ecall.forward;
         }
 		
         if(newCell){
