@@ -24,12 +24,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
      * WORD:WORD()
      * 
      */
-    re : new RegExp(
-            '\{' +
-            '([\w-\.]+)' +
-            '(?:\:([\w\.]*)' +
-            '(?:\((.*?)?\))?)?' +
-            '\}', 'g'),
+    re : /\{([\w-\.]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?\}/g,
 
     
     compile: function()
