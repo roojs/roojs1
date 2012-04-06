@@ -50,6 +50,10 @@ Roo.Template = function(cfg){
 Roo.Template.prototype = {
     
     /**
+     * @cfg {String} url  The Url to load the template from.
+     */
+    url : false,
+    /**
      * @cfg {String} html  The HTML fragment or an array of fragments to join("") or multiple arguments to join("")
      */
     html : '',
@@ -60,7 +64,7 @@ Roo.Template.prototype = {
      */
     applyTemplate : function(values){
         try {
-            
+            if ()
             if(this.compiled){
                 return this.compiled(values);
             }
