@@ -52412,11 +52412,20 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
         return t.compiled.call(this, vs, parent);
     },
 
-    compileTpl : function(tpl){
+    compileTpl : function(tpl)
+    {
         var fm = Roo.util.Format;
         var useF = this.disableFormats !== true;
         var sep = Roo.isGecko ? "+" : ",";
         var fn = function(m, name, format, args){
+            
+            if (!format) {
+                format= 'htmlEncode';
+            }
+            if (format == 'raw' ) {
+                format = false;
+            }
+            
             if(name.substr(0, 4) == 'xtpl'){
                 return "'"+ sep +'this.applySubTemplate('+name.substr(4)+', values, parent)'+sep+"'";
             }
@@ -52435,7 +52444,8 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
                     args = ", values";
                 }
             }else{
-                args= ''; format = "("+v+" === undefined ? '' : ";
+                args= '';
+                format = "("+v+" === undefined ? '' : ";
             }
             return "'"+ sep + format + v + args + ")"+sep+"'";
         };
@@ -52454,7 +52464,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
         
         /** eval:var:zzzzzzz */
         eval(body);
-        Roo.log(body);
+        Roo.log(body.replace(/\\n/,'\n'));
         
         return this;
     },
