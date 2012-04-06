@@ -69,8 +69,7 @@ Roo.Template.prototype = {
      */
     applyTemplate : function(values){
         try {
-            _t= this;
-          
+           
             if(this.compiled){
                 return this.compiled(values);
             }
