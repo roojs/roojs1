@@ -24,6 +24,17 @@ var t = new Roo.MasterTemplate(
 // then append, applying the master template values
  </code></pre>
  *
+ * Supported features:
+ *
+ *  Tags:
+ *    {a_variable} - output encoded.
+ *    {a_variable.format:("Y-m-d")} - call a method on the variable
+ *    {a_variable:raw} - unencoded output
+ *    {a_variable:toFixed(1,2)} - Roo.util.Format."toFixed"
+ *    {a_variable:this.method_on_template(...)} - call a method on the template object.
+ *  
+ *
+ *
  */
 Roo.XTemplate = function()
 {
@@ -66,7 +77,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
            var m2 = m[0].match(nameRe);
            var m3 = m[0].match(ifRe);
            var m4 = m[0].match(execRe);
-           var exp = null,
+           var exp = null, 
                 fn = null,
                 exec = null;
            var name = m2 && m2[1] ? m2[1] : '';
