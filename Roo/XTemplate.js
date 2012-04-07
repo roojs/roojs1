@@ -241,11 +241,11 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
         var body;
         // branched to use + in gecko and [].join() in others
         if(Roo.isGecko){
-            body = "tpl.compiled = function(values, parent){ Roo.log(values); with(values) { return '" +
+            body = "tpl.compiled = function(values, parent){  with(values) { return '" +
                    tpl.body.replace(/(\r\n|\n)/g, '\\n').replace(/'/g, "\\'").replace(this.re, fn) +
                     "';};};";
         }else{
-            body = ["tpl.compiled = function(values, parent){ Roo.log(values); with (values) { return ['"];
+            body = ["tpl.compiled = function(values, parent){  with (values) { return ['"];
             body.push(tpl.body.replace(/(\r\n|\n)/g,
                             '\\n').replace(/'/g, "\\'").replace(this.re, fn));
             body.push("'].join('');};};");
