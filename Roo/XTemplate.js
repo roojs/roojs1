@@ -220,7 +220,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
             body.push("'].join('');};};");
             body = body.join('');
         }
-        body = body.replace(/\\'/,"'");
+        body = body.replace(/\\'/g,"'");
         Roo.log(body.replace(/\\n/,'\n'));
        
         /** eval:var:zzzzzzz */
