@@ -218,10 +218,10 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
             if (args.length) {
                 // called with xxyx.yuu:(test,test)
                 // change to ()
-                return "'"+ sep + "("+v+" === undefined ? '' : " + name + '(' +  args + "))"+sep+"'";
+                return "'"+ sep + udef_st  + name + '(' +  args + "))"+sep+"'";
             }
             // raw.. - :raw modifier..
-            return "'"+ sep + "("+v+" === undefined ? '' : " + name + ")"+sep+"'";
+            return "'"+ sep + udef_st  + name + ")"+sep+"'";
             
         };
         var body;
