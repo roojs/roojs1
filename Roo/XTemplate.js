@@ -195,11 +195,9 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
             var lookfor = '';
             Roo.each(name.split('.'), function(st) {
                 lookfor += lookfor.length ? '.': '';
-                udef_ar.push(
-                    
-                    
-                );
-            }
+                udef_ar.push(  "(typeof(" + lookfor + ") == 'undefined')"  );
+            });
+            
             
             
             if(format && useF){
