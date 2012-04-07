@@ -170,7 +170,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
         
         var fn = function(m, name, format, args)
         {
-            Roo.log(arguments);
+            //Roo.log(arguments);
             args = args ? args.replace(/\\'/g,"'") : args;
             //["{TEST:(a,b,c)}", "TEST", "", "a,b,c", 0, "{TEST:(a,b,c)}"]
             if (typeof(format) == 'undefined') {
