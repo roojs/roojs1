@@ -198,7 +198,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
                 udef_ar.push(  "(typeof(" + lookfor + ") == 'undefined')"  );
             });
             
-            var udef_st = '((' + udef_ar.join(" || ") +") ? udef('" + name + "') : ";
+            var udef_st = '((' + udef_ar.join(" || ") +") ? udef('" + name + "') : "; // .. needs )
             
             
             if(format && useF){
