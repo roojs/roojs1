@@ -191,6 +191,15 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
             //    (function () { Roo.log("Property not found"); return ''; })() :
             //    ......
             
+            var udef_ar = [];
+            var lookfor = '';
+            Roo.each(name.split('.'), function(st) {
+                lookfor += lookfor.length ? '.': '';
+                udef_ar.push(
+                    
+                    
+                );
+            }
             
             
             if(format && useF){
