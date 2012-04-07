@@ -17,9 +17,16 @@ Roo.onReady(function() {
         
     });
     
-    tpl.append(Roo.get('body'), {
-        pa : new Date() 
-    });
+    tpl.append(Roo.get('body'),
+        [ 
+            {
+                pa : new Date() 
+            },
+            {
+                pa : new Date() 
+            }
+        ]
+    );
      
 });
      
