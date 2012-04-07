@@ -194,7 +194,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
             var udef_ar = [];
             var lookfor = '';
             Roo.each(name.split('.'), function(st) {
-                lookfor += lookfor.length ? '.': '';
+                lookfor += (lookfor.length ? '.': '') + st;
                 udef_ar.push(  "(typeof(" + lookfor + ") == 'undefined')"  );
             });
             
