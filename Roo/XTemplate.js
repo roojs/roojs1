@@ -65,13 +65,13 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
      
         s = ['<tpl>', s, '</tpl>'].join('');
     
-        var re = /<tpl\b[^>]*>((?:(?=([^<]+))\2|<(?!tpl\b[^>]*>))*?)<\/tpl>/;
-    
-        var nameRe = /^<tpl\b[^>]*?for="(.*?)"/;
-        var ifRe   = /^<tpl\b[^>]*?if="(.*?)"/;
-        var execRe = /^<tpl\b[^>]*?exec="(.*?)"/;
-        var m, id = 0;
-        var tpls = [];
+        var re     = /<tpl\b[^>]*>((?:(?=([^<]+))\2|<(?!tpl\b[^>]*>))*?)<\/tpl>/,
+            nameRe = /^<tpl\b[^>]*?for="(.*?)"/,
+            ifRe   = /^<tpl\b[^>]*?if="(.*?)"/,
+            execRe = /^<tpl\b[^>]*?exec="(.*?)"/,
+            m,
+            id     = 0,
+            tpls   = [];
     
         while(true == !!(m = s.match(re))){
            var m2 = m[0].match(nameRe);
