@@ -105,11 +105,11 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
                 }
             }
             tpls.push({
-                id: id,
+                id:     id,
                 target: name,
-                exec: exec,
-                test: fn,
-                body: m[1]||''
+                exec:   exec,
+                test:   fn,
+                body:   m[1] || ''
             });
             s = s.replace(m[0], '{xtpl'+ id + '}');
             ++id;
