@@ -150,7 +150,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
             }
             return t.compiled.call(this, vs, parent);
         } catch (e) {
-            Roo.log("Exception thrown");
+            Roo.log("Xtemplate.applySubTemplate : Exception thrown");
             Roo.log(e);
             Roo.log(t);
             return '';
