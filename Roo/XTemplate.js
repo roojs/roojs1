@@ -166,7 +166,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
         var fn = function(m, name, format, args)
         {
             Roo.log(arguments);
-            
+            args = arg.replace(/\\'/g,"'");
             //["{TEST:(a,b,c)}", "TEST", "", "a,b,c", 0, "{TEST:(a,b,c)}"]
             if (typeof(format) == 'undefined') {
                 format= 'htmlEncode';
@@ -220,7 +220,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
             body.push("'].join('');};};");
             body = body.join('');
         }
-        body = body.replace(/\\'/g,"'");
+        
         Roo.log(body.replace(/\\n/,'\n'));
        
         /** eval:var:zzzzzzz */
