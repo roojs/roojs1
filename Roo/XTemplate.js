@@ -153,6 +153,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
             Roo.log(t.exec);
             return ''
         }
+        try {
             var vs = t.target ? t.target.call(this, values, parent) : values;
             parent = t.target ? values : parent;
             if(t.target && vs instanceof Array){
