@@ -52465,6 +52465,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
             return t.compiled.call(this, vs, parent);
         } catch (e) {
             Roo.log("Xtemplate.applySubTemplate : Exception thrown");
+            Roo.log(e.toString());
             Roo.log(e);
             Roo.log(t);
             return '';
@@ -52520,11 +52521,11 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
         var body;
         // branched to use + in gecko and [].join() in others
         if(Roo.isGecko){
-            body = "tpl.compiled = function(values, parent){ with(values) { return '" +
+            body = "tpl.compiled = function(values, parent){ Roo.log(values); with(values) { return '" +
                    tpl.body.replace(/(\r\n|\n)/g, '\\n').replace(/'/g, "\\'").replace(this.re, fn) +
                     "';};};";
         }else{
-            body = ["tpl.compiled = function(values, parent){ with (values) { return ['"];
+            body = ["tpl.compiled = function(values, parent){ Roo.log(values); with (values) { return ['"];
             body.push(tpl.body.replace(/(\r\n|\n)/g, '\\n').replace(/'/g, "\\'").replace(this.re, fn));
             body.push("'].join('');};};");
             body = body.join('');
