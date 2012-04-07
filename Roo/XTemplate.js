@@ -8,6 +8,25 @@
  * Fork - LGPL
  * <script type="text/javascript">
  */
+
+
+/**
+ * @class Roo.XTemplate
+ * @extends Roo.Template
+ * Provides a template that can have nested templates for loops or conditionals. The syntax is:
+<pre><code>
+var t = new Roo.MasterTemplate(
+	'&lt;select name="{name}"&gt;',
+		'&lt;tpl for="options"&gt;&lt;option value="{value:trim}"&gt;{text:ellipsis(10)}&lt;/option&gt;&lt;/tpl&gt;',
+	'&lt;/select&gt;'
+);
+ 
+// then append, applying the master template values
+t.append('my-form', {name: 'my-select'});
+</code></pre>
+* A name attribute for the child template is not required if you have only one child
+* template or you want to refer to them by index.
+ */
 Roo.XTemplate = function(){
     Roo.XTemplate.superclass.constructor.apply(this, arguments);
     if (this.html) {
