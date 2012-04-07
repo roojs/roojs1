@@ -74,44 +74,45 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
             tpls   = [];
     
         while(true == !!(m = s.match(re))){
-           var m2 = m[0].match(nameRe);
-           var m3 = m[0].match(ifRe);
-           var m4 = m[0].match(execRe);
-           var exp = null, 
-                fn = null,
-                exec = null;
-           var name = m2 && m2[1] ? m2[1] : '';
-           if(m3){
+            var m2   = m[0].match(nameRe),
+                m3   = m[0].match(ifRe),
+                m4   = m[0].match(execRe),
+                exp  = null, 
+                fn   = null,
+                exec = null,
+                name = m2 && m2[1] ? m2[1] : '';
+                
+            if(m3){
                 // if - puts fn into test..
                 exp = m3 && m3[1] ? m3[1] : null;
                 if(exp){
                    fn = new Function('values', 'parent', 'with(values){ return '+(Roo.util.Format.htmlDecode(exp))+'; }');
                 }
-           }
-           if(m4){
+            }
+            if(m4){
                 // exec - calls a function... returns empty if true is  returned.
-               exp = m4 && m4[1] ? m4[1] : null;
-               if(exp){
+                exp = m4 && m4[1] ? m4[1] : null;
+                if(exp){
                    exec = new Function('values', 'parent', 'with(values){ '+(Roo.util.Format.htmlDecode(exp))+'; }');
-               }
-           }
-           if(name){
+                }
+            }
+            if(name){
                 // for = 
-               switch(name){
-                   case '.':  name = new Function('values', 'parent', 'with(values){ return values; }'); break;
-                   case '..': name = new Function('values', 'parent', 'with(values){ return parent; }'); break;
-                   default:   name = new Function('values', 'parent', 'with(values){ return '+name+'; }');
-               }
-           }
-           tpls.push({
+                switch(name){
+                    case '.':  name = new Function('values', 'parent', 'with(values){ return values; }'); break;
+                    case '..': name = new Function('values', 'parent', 'with(values){ return parent; }'); break;
+                    default:   name = new Function('values', 'parent', 'with(values){ return '+name+'; }');
+                }
+            }
+            tpls.push({
                 id: id,
                 target: name,
                 exec: exec,
                 test: fn,
                 body: m[1]||''
             });
-           s = s.replace(m[0], '{xtpl'+ id + '}');
-           ++id;
+            s = s.replace(m[0], '{xtpl'+ id + '}');
+            ++id;
         }
         for(var i = tpls.length-1; i >= 0; --i){
             this.compileTpl(tpls[i]);
