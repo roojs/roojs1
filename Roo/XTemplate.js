@@ -150,7 +150,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
         } catch(e) {
             Roo.log("Xtemplate.applySubTemplate 'exec': Exception thrown");
             Roo.log(e.toString());
-            Roo.log(t.test);
+            Roo.log(t.exec);
             return ''
         }
             var vs = t.target ? t.target.call(this, values, parent) : values;
