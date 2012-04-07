@@ -132,22 +132,29 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
     applySubTemplate : function(id, values, parent)
     {
         var t = this.tpls[id];
-        if(t.test && !t.test.call(this, values, parent)){
-            return '';
-        }
-        if(t.exec && t.exec.call(this, values, parent)){
-            return '';
-        }
-        var vs = t.target ? t.target.call(this, values, parent) : values;
-        parent = t.target ? values : parent;
-        if(t.target && vs instanceof Array){
-            var buf = [];
-            for(var i = 0, len = vs.length; i < len; i++){
-                buf[buf.length] = t.compiled.call(this, vs[i], parent);
+        try { 
+            if(t.test && !t.test.call(this, values, parent)){
+                return '';
             }
-            return buf.join('');
+            if(t.exec && t.exec.call(this, values, parent)){
+                return '';
+            }
+            var vs = t.target ? t.target.call(this, values, parent) : values;
+            parent = t.target ? values : parent;
+            if(t.target && vs instanceof Array){
+                var buf = [];
+                for(var i = 0, len = vs.length; i < len; i++){
+                    buf[buf.length] = t.compiled.call(this, vs[i], parent);
+                }
+                return buf.join('');
+            }
+            return t.compiled.call(this, vs, parent);
+        } catch (e) {
+            Roo.log("Exception thrown");
+            Roo.log(e);
+            Roo.log(t);
+            return '';
         }
-        return t.compiled.call(this, vs, parent);
     },
 
     compileTpl : function(tpl)
