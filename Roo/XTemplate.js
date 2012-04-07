@@ -39,7 +39,7 @@ var t = new Roo.MasterTemplate(
  *      &lt;tpl exec="some javascript"&gt;&lt;/tpl&gt;
  *
  *      &lt;tpl for="."&gt;&lt;/tpl&gt; - just iterate the property..
- *      &lt;tpl for=".."&gt;&lt;/tpl&gt; - iterates witht the parent (probably the template) 
+ *      &lt;tpl for=".."&gt;&lt;/tpl&gt; - iterates with the parent (probably the template) 
  *      
  *      
  */
