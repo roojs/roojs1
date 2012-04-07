@@ -22,10 +22,8 @@ var t = new Roo.MasterTemplate(
 );
  
 // then append, applying the master template values
-t.append('my-form', {name: 'my-select'});
-</code></pre>
-* A name attribute for the child template is not required if you have only one child
-* template or you want to refer to them by index.
+ </code></pre>
+ *
  */
 Roo.XTemplate = function(){
     Roo.XTemplate.superclass.constructor.apply(this, arguments);
