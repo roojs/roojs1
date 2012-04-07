@@ -38,6 +38,10 @@ var t = new Roo.MasterTemplate(
  *      <tpl if="a_variable or condition"></tpl>
  *      <tpl exec="some javascript"></tpl>
  *
+ *      <tpl for="."></tpl> - just iterate the property..
+ *      <tpl for=".."></tpl> - iterates witht the parent (probably the template) 
+ *      
+ *      
  */
 Roo.XTemplate = function()
 {
