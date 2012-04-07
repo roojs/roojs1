@@ -217,9 +217,10 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
             body = body.join('');
         }
         
+        Roo.log(body.replace(/\\n/,'\n'));
+       
         /** eval:var:zzzzzzz */
         eval(body);
-        Roo.log(body.replace(/\\n/,'\n'));
         
         return this;
     },
