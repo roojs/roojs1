@@ -16,7 +16,7 @@ Roo.onReady(function() {
        html : '<tpl for="parray">' + 
                 '<li>{pa.format:("Y-m-d")}</li>' +
                 
-                '<tpl if="first_of_day * 1">' +   
+                '<tpl if="typeof(first_of_day) != 'undefined' &&  first_of_day * 1">' +   
                     '<li  class="change-log-day"><a ' +
                        ' name="changedate-{changedate.format:('+
                                 "'Y-m-d'" + ')}">{changedate.format:('+
