@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../../cssX/roojs-all.css"/>
+    <link rel="stylesheet" type="text/css" href="../../cssX/xtheme-slate.css"/>
+
+    <script type="text/javascript" src="../../roojs-all.js"></script>   
+    <script type="text/javascript" src="../../Roo/XTemplate.js"></script>   
+  
+
+<script type="text/javascript">
+    
+Roo.onReady(function() {
+    
+    var tpl = new Roo.XTemplate({
+       html : '<li>{pa.format:("Y-m-d")}<li>' 
+        
+    });
+    
+    tpl.append(Roo.get('body'), {
+        pa : new Date() 
+    });
+     
+});
+     
+     
+</script>
+
+</head>
+<body>
+    <div id="body"></div> 
+</body>
+</html>
