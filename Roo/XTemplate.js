@@ -198,7 +198,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
                 udef_ar.push(  "(typeof(" + lookfor + ") == 'undefined')"  );
             });
             
-            var udef_st = '(' + udef_ar.join(" || ") +") ? udef('" + name + "') : ";
+            var udef_st = '((' + udef_ar.join(" || ") +") ? udef('" + name + "') : ";
             
             
             if(format && useF){
@@ -212,7 +212,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
                     args = ", values";
                 }
                 
-                return "'"+ sep +   udef_st      format + name + args + ")"+sep+"'";
+                return "'"+ sep +   udef_st   +    format + name + args + "))"+sep+"'";
             }
              
             if (args.length) {
