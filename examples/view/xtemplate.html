@@ -13,8 +13,15 @@
 Roo.onReady(function() {
     
     var tpl = new Roo.XTemplate({
-       html : '<tpl for="parray"><li>{pa.format:("Y-m-d")}</li></tpl>' 
-        
+       html : '<tpl for="parray">
+                '<li>{pa.format:("Y-m-d")}</li>' +
+                
+                '<tpl if="first_of_day * 1">'    
+                    '<li  class="change-log-day"><a name="changedate-{changedate.format:('Y-m-d')}">{changedate.format:('d / M / Y')}</a></li>' +
+                '</tpl>' 
+                '</tpl>';
+           
+     
     });
     
     tpl.append(Roo.get('body'),{ 
