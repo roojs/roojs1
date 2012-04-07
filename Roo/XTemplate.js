@@ -82,21 +82,21 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
                 exec = null,
                 name = m2 && m2[1] ? m2[1] : '';
                 
-            if(m3){
+            if (m3) {
                 // if - puts fn into test..
                 exp = m3 && m3[1] ? m3[1] : null;
                 if(exp){
                    fn = new Function('values', 'parent', 'with(values){ return '+(Roo.util.Format.htmlDecode(exp))+'; }');
                 }
             }
-            if(m4){
+            if (m4) {
                 // exec - calls a function... returns empty if true is  returned.
                 exp = m4 && m4[1] ? m4[1] : null;
                 if(exp){
                    exec = new Function('values', 'parent', 'with(values){ '+(Roo.util.Format.htmlDecode(exp))+'; }');
                 }
             }
-            if(name){
+            if (name) {
                 // for = 
                 switch(name){
                     case '.':  name = new Function('values', 'parent', 'with(values){ return values; }'); break;
