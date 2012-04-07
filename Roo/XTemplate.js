@@ -34,12 +34,12 @@ var t = new Roo.MasterTemplate(
  *    {a_variable:this.method_on_template(...)} - call a method on the template object.
  *  
  *  Tpl:
- *      <tpl for="a_variable or condition.."></tpl>
- *      <tpl if="a_variable or condition"></tpl>
- *      <tpl exec="some javascript"></tpl>
+ *      &lt;tpl for="a_variable or condition.."&gt;&lt;/tpl&gt;
+ *      &lt;tpl if="a_variable or condition"&gt;&lt;/tpl&gt;
+ *      &lt;tpl exec="some javascript"&gt;&lt;/tpl&gt;
  *
- *      <tpl for="."></tpl> - just iterate the property..
- *      <tpl for=".."></tpl> - iterates witht the parent (probably the template) 
+ *      &lt;tpl for="."&gt;&lt;/tpl&gt; - just iterate the property..
+ *      &lt;tpl for=".."&gt;&lt;/tpl&gt; - iterates witht the parent (probably the template) 
  *      
  *      
  */
