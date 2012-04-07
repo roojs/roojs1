@@ -13,12 +13,12 @@
 Roo.onReady(function() {
     
     var tpl = new Roo.XTemplate({
-       html : '<li>{pa.format:("Y-m-d")}</li>' 
+       html : '<tpl for="parray"><li>{pa.format:("Y-m-d")}</li></tpl>' 
         
     });
     
-    tpl.append(Roo.get('body'),
-        [ 
+    tpl.append(Roo.get('body'),{ 
+        parray : [ 
             {
                 pa : new Date() 
             },
@@ -26,7 +26,7 @@ Roo.onReady(function() {
                 pa : new Date() 
             }
         ]
-    );
+    });
      
 });
      
