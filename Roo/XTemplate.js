@@ -25,10 +25,11 @@ var t = new Roo.MasterTemplate(
  </code></pre>
  *
  */
-Roo.XTemplate = function(){
+Roo.XTemplate = function()
+{
     Roo.XTemplate.superclass.constructor.apply(this, arguments);
     if (this.html) {
-        this.preCompile();
+        this.compile();
     }
 };
 
