@@ -165,7 +165,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
         var sep = Roo.isGecko ? "+" : ",";
         var fn = function(m, name, format, args)
         {
-            Roo.log(args);
+            Roo.log(arguments);
             
             //["{TEST:(a,b,c)}", "TEST", "", "a,b,c", 0, "{TEST:(a,b,c)}"]
             if (typeof(format) == 'undefined') {
