@@ -52450,9 +52450,24 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
             if(t.test && !t.test.call(this, values, parent)){
                 return '';
             }
+        } catch(e) {
+            Roo.log("Xtemplate.applySubTemplate 'test': Exception thrown");
+            Roo.log(e.toString());
+            Roo.log(t.test);
+            return ''
+        }
+        try { 
+            
             if(t.exec && t.exec.call(this, values, parent)){
                 return '';
             }
+        } catch(e) {
+            Roo.log("Xtemplate.applySubTemplate 'exec': Exception thrown");
+            Roo.log(e.toString());
+            Roo.log(t.exec);
+            return ''
+        }
+        try {
             var vs = t.target ? t.target.call(this, values, parent) : values;
             parent = t.target ? values : parent;
             if(t.target && vs instanceof Array){
@@ -52466,8 +52481,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
         } catch (e) {
             Roo.log("Xtemplate.applySubTemplate : Exception thrown");
             Roo.log(e.toString());
-            Roo.log(e);
-            Roo.log(t);
+            Roo.log(t.compiled);
             return '';
         }
     },
@@ -52477,7 +52491,15 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
         var fm = Roo.util.Format;
         var useF = this.disableFormats !== true;
         var sep = Roo.isGecko ? "+" : ",";
-        var fn = function(m, name, format, args){
+        var undef = function(str) {
+            Roo.log("Property not found :"  + str);
+            return '';
+        };
+        
+        var fn = function(m, name, format, args)
+        {
+            //Roo.log(arguments);
+            args = args ? args.replace(/\\'/g,"'") : args;
             //["{TEST:(a,b,c)}", "TEST", "", "a,b,c", 0, "{TEST:(a,b,c)}"]
             if (typeof(format) == 'undefined') {
                 format= 'htmlEncode';
@@ -52490,12 +52512,23 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
                 return "'"+ sep +'this.applySubTemplate('+name.substr(4)+', values, parent)'+sep+"'";
             }
             
-            var v;
-            //if(name.indexOf('.') != -1){
-                v = name;
-            //}else{
-            //    v = "values['" + name + "']";
-            //}
+            // build an array of options to determine if value is undefined..
+            
+            // basically get 'xxxx.yyyy' then do
+            // (typeof(xxxx) == 'undefined' || typeof(xxx.yyyy) == 'undefined') ?
+            //    (function () { Roo.log("Property not found"); return ''; })() :
+            //    ......
+            
+            var udef_ar = [];
+            var lookfor = '';
+            Roo.each(name.split('.'), function(st) {
+                lookfor += (lookfor.length ? '.': '') + st;
+                udef_ar.push(  "(typeof(" + lookfor + ") == 'undefined')"  );
+            });
+            
+            var udef_st = '((' + udef_ar.join(" || ") +") ? udef('" + name + "') : "; // .. needs )
+            
+            
             if(format && useF){
                 
                 args = args ? ',' + args : "";
@@ -52506,34 +52539,37 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
                     format = 'this.call("'+ format.substr(5) + '", ';
                     args = ", values";
                 }
-                return "'"+ sep + format + v + args + ")"+sep+"'";
+                
+                return "'"+ sep +   udef_st   +    format + name + args + "))"+sep+"'";
             }
              
             if (args.length) {
                 // called with xxyx.yuu:(test,test)
                 // change to ()
-                return "'"+ sep + "("+v+" === undefined ? '' : " + v + '(' +  args + "))"+sep+"'";
+                return "'"+ sep + udef_st  + name + '(' +  args + "))"+sep+"'";
             }
             // raw.. - :raw modifier..
-            return "'"+ sep + "("+v+" === undefined ? '' : " + v + ")"+sep+"'";
+            return "'"+ sep + udef_st  + name + ")"+sep+"'";
             
         };
         var body;
         // branched to use + in gecko and [].join() in others
         if(Roo.isGecko){
-            body = "tpl.compiled = function(values, parent){ Roo.log(values); with(values) { return '" +
+            body = "tpl.compiled = function(values, parent){  with(values) { return '" +
                    tpl.body.replace(/(\r\n|\n)/g, '\\n').replace(/'/g, "\\'").replace(this.re, fn) +
                     "';};};";
         }else{
-            body = ["tpl.compiled = function(values, parent){ Roo.log(values); with (values) { return ['"];
-            body.push(tpl.body.replace(/(\r\n|\n)/g, '\\n').replace(/'/g, "\\'").replace(this.re, fn));
+            body = ["tpl.compiled = function(values, parent){  with (values) { return ['"];
+            body.push(tpl.body.replace(/(\r\n|\n)/g,
+                            '\\n').replace(/'/g, "\\'").replace(this.re, fn));
             body.push("'].join('');};};");
             body = body.join('');
         }
         
+        Roo.debug && Roo.log(body.replace(/\\n/,'\n'));
+       
         /** eval:var:zzzzzzz */
         eval(body);
-        Roo.log(body.replace(/\\n/,'\n'));
         
         return this;
     },
