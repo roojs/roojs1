@@ -163,7 +163,10 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
         var fm = Roo.util.Format;
         var useF = this.disableFormats !== true;
         var sep = Roo.isGecko ? "+" : ",";
-        var fn = function(m, name, format, args){
+        var fn = function(m, name, format, args)
+        {
+            Roo.log(args);
+            
             //["{TEST:(a,b,c)}", "TEST", "", "a,b,c", 0, "{TEST:(a,b,c)}"]
             if (typeof(format) == 'undefined') {
                 format= 'htmlEncode';
@@ -212,7 +215,8 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
                     "';};};";
         }else{
             body = ["tpl.compiled = function(values, parent){ Roo.log(values); with (values) { return ['"];
-            body.push(tpl.body.replace(/(\r\n|\n)/g, '\\n').replace(/'/g, "\\'").replace(this.re, fn));
+            body.push(tpl.body.replace(/(\r\n|\n)/g,
+                            '\\n').replace(/'/g, "\\'").replace(this.re, fn));
             body.push("'].join('');};};");
             body = body.join('');
         }
