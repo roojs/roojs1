@@ -179,12 +179,15 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
                 return "'"+ sep +'this.applySubTemplate('+name.substr(4)+', values, parent)'+sep+"'";
             }
             
-            var v;
-            //if(name.indexOf('.') != -1){
-                v = name;
-            //}else{
-            //    v = "values['" + name + "']";
-            //}
+            // build an array of options to determine if value is undefined..
+            
+            // basically get 'xxxx.yyyy' then do
+            // (typeof(xxxx) == 'undefined' || typeof(xxx.yyyy) == 'undefined') ?
+            //    (function () { Roo.log("Property not found"); return ''; })() :
+            //    ......
+            
+            
+            
             if(format && useF){
                 
                 args = args ? ',' + args : "";
@@ -195,16 +198,16 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
                     format = 'this.call("'+ format.substr(5) + '", ';
                     args = ", values";
                 }
-                return "'"+ sep + format + v + args + ")"+sep+"'";
+                return "'"+ sep + format + name + args + ")"+sep+"'";
             }
              
             if (args.length) {
                 // called with xxyx.yuu:(test,test)
                 // change to ()
-                return "'"+ sep + "("+v+" === undefined ? '' : " + v + '(' +  args + "))"+sep+"'";
+                return "'"+ sep + "("+v+" === undefined ? '' : " + name + '(' +  args + "))"+sep+"'";
             }
             // raw.. - :raw modifier..
-            return "'"+ sep + "("+v+" === undefined ? '' : " + v + ")"+sep+"'";
+            return "'"+ sep + "("+v+" === undefined ? '' : " + name + ")"+sep+"'";
             
         };
         var body;
