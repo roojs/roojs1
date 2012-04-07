@@ -52322,10 +52322,46 @@ Roo.LoadMask.prototype = {
  * Fork - LGPL
  * <script type="text/javascript">
  */
-Roo.XTemplate = function(){
+
+
+/**
+ * @class Roo.XTemplate
+ * @extends Roo.Template
+ * Provides a template that can have nested templates for loops or conditionals. The syntax is:
+<pre><code>
+var t = new Roo.MasterTemplate(
+	'&lt;select name="{name}"&gt;',
+		'&lt;tpl for="options"&gt;&lt;option value="{value:trim}"&gt;{text:ellipsis(10)}&lt;/option&gt;&lt;/tpl&gt;',
+	'&lt;/select&gt;'
+);
+ 
+// then append, applying the master template values
+ </code></pre>
+ *
+ * Supported features:
+ *
+ *  Tags:
+ *    {a_variable} - output encoded.
+ *    {a_variable.format:("Y-m-d")} - call a method on the variable
+ *    {a_variable:raw} - unencoded output
+ *    {a_variable:toFixed(1,2)} - Roo.util.Format."toFixed"
+ *    {a_variable:this.method_on_template(...)} - call a method on the template object.
+ *  
+ *  Tpl:
+ *      <tpl for="a_variable or condition.."></tpl>
+ *      <tpl if="a_variable or condition"></tpl>
+ *      <tpl exec="some javascript"></tpl>
+ *
+ *      <tpl for="."></tpl> - just iterate the property..
+ *      <tpl for=".."></tpl> - iterates witht the parent (probably the template) 
+ *      
+ *      
+ */
+Roo.XTemplate = function()
+{
     Roo.XTemplate.superclass.constructor.apply(this, arguments);
     if (this.html) {
-        this.preCompile();
+        this.compile();
     }
 };
 
@@ -52350,53 +52386,54 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
      
         s = ['<tpl>', s, '</tpl>'].join('');
     
-        var re = /<tpl\b[^>]*>((?:(?=([^<]+))\2|<(?!tpl\b[^>]*>))*?)<\/tpl>/;
-    
-        var nameRe = /^<tpl\b[^>]*?for="(.*?)"/;
-        var ifRe   = /^<tpl\b[^>]*?if="(.*?)"/;
-        var execRe = /^<tpl\b[^>]*?exec="(.*?)"/;
-        var m, id = 0;
-        var tpls = [];
+        var re     = /<tpl\b[^>]*>((?:(?=([^<]+))\2|<(?!tpl\b[^>]*>))*?)<\/tpl>/,
+            nameRe = /^<tpl\b[^>]*?for="(.*?)"/,
+            ifRe   = /^<tpl\b[^>]*?if="(.*?)"/,
+            execRe = /^<tpl\b[^>]*?exec="(.*?)"/,
+            m,
+            id     = 0,
+            tpls   = [];
     
         while(true == !!(m = s.match(re))){
-           var m2 = m[0].match(nameRe);
-           var m3 = m[0].match(ifRe);
-           var m4 = m[0].match(execRe);
-           var exp = null,
-                fn = null,
-                exec = null;
-           var name = m2 && m2[1] ? m2[1] : '';
-           if(m3){
+            var m2   = m[0].match(nameRe),
+                m3   = m[0].match(ifRe),
+                m4   = m[0].match(execRe),
+                exp  = null, 
+                fn   = null,
+                exec = null,
+                name = m2 && m2[1] ? m2[1] : '';
+                
+            if (m3) {
                 // if - puts fn into test..
                 exp = m3 && m3[1] ? m3[1] : null;
                 if(exp){
                    fn = new Function('values', 'parent', 'with(values){ return '+(Roo.util.Format.htmlDecode(exp))+'; }');
                 }
-           }
-           if(m4){
+            }
+            if (m4) {
                 // exec - calls a function... returns empty if true is  returned.
-               exp = m4 && m4[1] ? m4[1] : null;
-               if(exp){
+                exp = m4 && m4[1] ? m4[1] : null;
+                if(exp){
                    exec = new Function('values', 'parent', 'with(values){ '+(Roo.util.Format.htmlDecode(exp))+'; }');
-               }
-           }
-           if(name){
+                }
+            }
+            if (name) {
                 // for = 
-               switch(name){
-                   case '.':  name = new Function('values', 'parent', 'with(values){ return values; }'); break;
-                   case '..': name = new Function('values', 'parent', 'with(values){ return parent; }'); break;
-                   default:   name = new Function('values', 'parent', 'with(values){ return '+name+'; }');
-               }
-           }
-           tpls.push({
-                id: id,
+                switch(name){
+                    case '.':  name = new Function('values', 'parent', 'with(values){ return values; }'); break;
+                    case '..': name = new Function('values', 'parent', 'with(values){ return parent; }'); break;
+                    default:   name = new Function('values', 'parent', 'with(values){ return '+name+'; }');
+                }
+            }
+            tpls.push({
+                id:     id,
                 target: name,
-                exec: exec,
-                test: fn,
-                body: m[1]||''
+                exec:   exec,
+                test:   fn,
+                body:   m[1] || ''
             });
-           s = s.replace(m[0], '{xtpl'+ id + '}');
-           ++id;
+            s = s.replace(m[0], '{xtpl'+ id + '}');
+            ++id;
         }
         for(var i = tpls.length-1; i >= 0; --i){
             this.compileTpl(tpls[i]);
