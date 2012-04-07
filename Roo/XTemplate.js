@@ -33,7 +33,10 @@ var t = new Roo.MasterTemplate(
  *    {a_variable:toFixed(1,2)} - Roo.util.Format."toFixed"
  *    {a_variable:this.method_on_template(...)} - call a method on the template object.
  *  
- *
+ *  Tpl:
+ *      <tpl for="a_variable or condition.."></tpl>
+ *      <tpl if="a_variable or condition"></tpl>
+ *      <tpl exec="some javascript"></tpl>
  *
  */
 Roo.XTemplate = function()
