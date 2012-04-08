@@ -9305,7 +9305,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         for(var i = 0, len = records.length; i < len; i++){
             var data = this.prepareData(records[i].data, i, records[i]);
             this.fireEvent("preparedata", this, data, i, records[i]);
-            html[html.length] = t.apply(data);
+            html[html.length] = Roo.util.Format.trim( t.apply(data) );
         }
         this.el.update(html.join(""));
         this.nodes = this.el.dom.childNodes;
