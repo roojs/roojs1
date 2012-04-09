@@ -107,6 +107,8 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
                    exec = new Function('values', 'parent', 'with(values){ '+(Roo.util.Format.htmlDecode(exp))+'; }');
                 }
             }
+            
+            
             if (name) {
                 // for = 
                 switch(name){
@@ -115,14 +117,20 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
                     default:   name = new Function('values', 'parent', 'with(values){ return '+name+'; }');
                 }
             }
+            
+            
             tpls.push({
-                id:     id,
+                id:     namedMatch ? namedMatch[1] : id,
                 target: name,
                 exec:   exec,
                 test:   fn,
                 body:   m[1] || ''
             });
-            s = s.replace(m[0], '{xtpl'+ id + '}');
+            if (namedMatch) {
+                s = s.replace(m[0], '');
+            } else { 
+                s = s.replace(m[0], '{xtpl'+ id + '}');
+            }
             ++id;
         }
         for(var i = tpls.length-1; i >= 0; --i){
