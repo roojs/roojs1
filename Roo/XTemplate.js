@@ -65,7 +65,12 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
      */
     re : /\{([\w-\.]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?\}/g,
 
-    
+    /**
+     * compile the template
+     *
+     * This is not recursive, so I'm not sure how nested templates are really going to be handled..
+     *
+     */
     compile: function()
     {
         var s = this.html;
