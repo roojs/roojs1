@@ -52341,21 +52341,25 @@ var t = new Roo.XTemplate(
  * Supported features:
  *
  *  Tags:
- *    {a_variable} - output encoded.
- *    {a_variable.format:("Y-m-d")} - call a method on the variable
- *    {a_variable:raw} - unencoded output
- *    {a_variable:toFixed(1,2)} - Roo.util.Format."toFixed"
- *    {a_variable:this.method_on_template(...)} - call a method on the template object.
- *  
- *  Tpl:
- *      &lt;tpl for="a_variable or condition.."&gt;&lt;/tpl&gt;
- *      &lt;tpl if="a_variable or condition"&gt;&lt;/tpl&gt;
- *      &lt;tpl exec="some javascript"&gt;&lt;/tpl&gt;
- *      &lt;tpl name="named_template"&gt;&lt;/tpl&gt;
- *
- *      &lt;tpl for="."&gt;&lt;/tpl&gt; - just iterate the property..
- *      &lt;tpl for=".."&gt;&lt;/tpl&gt; - iterates with the parent (probably the template) 
- *      
+
+<pre><code>
+      {a_variable} - output encoded.
+      {a_variable.format:("Y-m-d")} - call a method on the variable
+      {a_variable:raw} - unencoded output
+      {a_variable:toFixed(1,2)} - Roo.util.Format."toFixed"
+      {a_variable:this.method_on_template(...)} - call a method on the template object.
+ 
+</code></pre>
+ *  The tpl tag:
+<pre><code>
+        &lt;tpl for="a_variable or condition.."&gt;&lt;/tpl&gt;
+        &lt;tpl if="a_variable or condition"&gt;&lt;/tpl&gt;
+        &lt;tpl exec="some javascript"&gt;&lt;/tpl&gt;
+        &lt;tpl name="named_template"&gt;&lt;/tpl&gt; (experimental)
+  
+        &lt;tpl for="."&gt;&lt;/tpl&gt; - just iterate the property..
+        &lt;tpl for=".."&gt;&lt;/tpl&gt; - iterates with the parent (probably the template) 
+</code></pre>
  *      
  */
 Roo.XTemplate = function()
