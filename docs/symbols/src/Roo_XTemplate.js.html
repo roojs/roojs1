@@ -27,21 +27,25 @@ var t = new Roo.XTemplate(
  * Supported features:
  *
  *  Tags:
- *    {a_variable} - output encoded.
- *    {a_variable.format:(&quot;Y-m-d&quot;)} - call a method on the variable
- *    {a_variable:raw} - unencoded output
- *    {a_variable:toFixed(1,2)} - Roo.util.Format.&quot;toFixed&quot;
- *    {a_variable:this.method_on_template(...)} - call a method on the template object.
- *  
- *  Tpl:
- *      &amp;lt;tpl for=&quot;a_variable or condition..&quot;&amp;gt;&amp;lt;/tpl&amp;gt;
- *      &amp;lt;tpl if=&quot;a_variable or condition&quot;&amp;gt;&amp;lt;/tpl&amp;gt;
- *      &amp;lt;tpl exec=&quot;some javascript&quot;&amp;gt;&amp;lt;/tpl&amp;gt;
- *      &amp;lt;tpl name=&quot;named_template&quot;&amp;gt;&amp;lt;/tpl&amp;gt;
- *
- *      &amp;lt;tpl for=&quot;.&quot;&amp;gt;&amp;lt;/tpl&amp;gt; - just iterate the property..
- *      &amp;lt;tpl for=&quot;..&quot;&amp;gt;&amp;lt;/tpl&amp;gt; - iterates with the parent (probably the template) 
- *      
+
+&lt;pre&gt;&lt;code&gt;
+      {a_variable} - output encoded.
+      {a_variable.format:(&quot;Y-m-d&quot;)} - call a method on the variable
+      {a_variable:raw} - unencoded output
+      {a_variable:toFixed(1,2)} - Roo.util.Format.&quot;toFixed&quot;
+      {a_variable:this.method_on_template(...)} - call a method on the template object.
+ 
+&lt;/code&gt;&lt;/pre&gt;
+ *  The tpl tag:
+&lt;pre&gt;&lt;code&gt;
+        &amp;lt;tpl for=&quot;a_variable or condition..&quot;&amp;gt;&amp;lt;/tpl&amp;gt;
+        &amp;lt;tpl if=&quot;a_variable or condition&quot;&amp;gt;&amp;lt;/tpl&amp;gt;
+        &amp;lt;tpl exec=&quot;some javascript&quot;&amp;gt;&amp;lt;/tpl&amp;gt;
+        &amp;lt;tpl name=&quot;named_template&quot;&amp;gt;&amp;lt;/tpl&amp;gt; (experimental)
+  
+        &amp;lt;tpl for=&quot;.&quot;&amp;gt;&amp;lt;/tpl&amp;gt; - just iterate the property..
+        &amp;lt;tpl for=&quot;..&quot;&amp;gt;&amp;lt;/tpl&amp;gt; - iterates with the parent (probably the template) 
+&lt;/code&gt;&lt;/pre&gt;
  *      
  */
 </span><span class="jsdoc-var">Roo.XTemplate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
