@@ -154,6 +154,11 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
     },
     /**
      * same as applyTemplate, except it's done to one of the subTemplates
+     * when using named templates, you can do:
+     *
+     * var str = pl.applySubTemplate('your-name', values);
+     *
+     * 
      * @param {Number} id of the template
      * @param {Object} values to apply to template
      * @param {Object} parent (normaly the instance of this object)
