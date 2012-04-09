@@ -122,15 +122,16 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
                     default:   name = new Function('values', 'parent', 'with(values){ return '+name+'; }');
                 }
             }
+            var uid = namedMatch ? namedMatch[1] : id;
             
             
-            tpls.push({
+            tpls[uid] = {
                 id:     namedMatch ? namedMatch[1] : id,
                 target: name,
                 exec:   exec,
                 test:   fn,
                 body:   m[1] || ''
-            });
+            };
             if (namedMatch) {
                 s = s.replace(m[0], '');
             } else { 
