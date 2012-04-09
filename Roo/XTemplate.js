@@ -41,7 +41,7 @@ var t = new Roo.XTemplate(
         &lt;tpl for="a_variable or condition.."&gt;&lt;/tpl&gt;
         &lt;tpl if="a_variable or condition"&gt;&lt;/tpl&gt;
         &lt;tpl exec="some javascript"&gt;&lt;/tpl&gt;
-        &lt;tpl name="named_template"&gt;&lt;/tpl&gt;
+        &lt;tpl name="named_template"&gt;&lt;/tpl&gt; (experimental)
   
         &lt;tpl for="."&gt;&lt;/tpl&gt; - just iterate the property..
         &lt;tpl for=".."&gt;&lt;/tpl&gt; - iterates with the parent (probably the template) 
