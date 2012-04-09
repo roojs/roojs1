@@ -145,7 +145,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
             this.tpls[tpls[i].id] = tpls[i];
         }
         this.master = tpls[tpls.length-1];
-         return this;
+        return this;
     },
     /**
      * same as applyTemplate, except it's done to one of the subTemplates
