@@ -139,12 +139,13 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
             }
             ++id;
         }
+        this.tpls = [];
         for(var i = tpls.length-1; i >= 0; --i){
             this.compileTpl(tpls[i]);
+            this.tpls[tpls[i].id] = tpls[i];
         }
         this.master = tpls[tpls.length-1];
-        this.tpls = tpls;
-        return this;
+         return this;
     },
     /**
      * same as applyTemplate, except it's done to one of the subTemplates
@@ -154,7 +155,11 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
      */
     applySubTemplate : function(id, values, parent)
     {
+        
+        
         var t = this.tpls[id];
+        
+        
         try { 
             if(t.test && !t.test.call(this, values, parent)){
                 return '';
