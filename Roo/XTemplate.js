@@ -125,13 +125,13 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
             var uid = namedMatch ? namedMatch[1] : id;
             
             
-            tpls[uid] = {
+            tpls.push({
                 id:     namedMatch ? namedMatch[1] : id,
                 target: name,
                 exec:   exec,
                 test:   fn,
                 body:   m[1] || ''
-            };
+            });
             if (namedMatch) {
                 s = s.replace(m[0], '');
             } else { 
