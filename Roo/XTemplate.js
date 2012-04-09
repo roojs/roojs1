@@ -15,7 +15,7 @@
  * @extends Roo.Template
  * Provides a template that can have nested templates for loops or conditionals. The syntax is:
 <pre><code>
-var t = new Roo.MasterTemplate(
+var t = new Roo.XTemplate(
 	'&lt;select name="{name}"&gt;',
 		'&lt;tpl for="options"&gt;&lt;option value="{value:trim}"&gt;{text:ellipsis(10)}&lt;/option&gt;&lt;/tpl&gt;',
 	'&lt;/select&gt;'
@@ -128,7 +128,12 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
         this.tpls = tpls;
         return this;
     },
-    
+    /**
+     * same as applyTemplate, except it's done to one of the subTemplates
+     * @param {Number} id of the template
+     * @param {Object} values to apply to template
+     * @param {Object} parent (normaly the instance of this object)
+     */
     applySubTemplate : function(id, values, parent)
     {
         var t = this.tpls[id];
