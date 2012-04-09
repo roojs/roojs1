@@ -82,17 +82,19 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
             tpls   = [];
     
         while(true == !!(m = s.match(re))){
-            var m2   = m[0].match(nameRe),
-                m3   = m[0].match(ifRe),
+            var forMatch   = m[0].match(nameRe),
+                ifMatch   = m[0].match(ifRe),
                 m4   = m[0].match(execRe),
+                namedMatch   = m[0].match(namedRe),
+                
                 exp  = null, 
                 fn   = null,
                 exec = null,
-                name = m2 && m2[1] ? m2[1] : '';
+                name = forMatch && forMatch[1] ? forMatch[1] : '';
                 
-            if (m3) {
+            if (ifMatch) {
                 // if - puts fn into test..
-                exp = m3 && m3[1] ? m3[1] : null;
+                exp = ifMatch && ifMatch[1] ? ifMatch[1] : null;
                 if(exp){
                    fn = new Function('values', 'parent', 'with(values){ return '+(Roo.util.Format.htmlDecode(exp))+'; }');
                 }
