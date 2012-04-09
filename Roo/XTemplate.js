@@ -277,7 +277,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
         
         Roo.debug && Roo.log(body.replace(/\\n/,'\n'));
        
-        /** eval:var:zzzzzzz */
+        /** eval:var:tpl eval:var:fm eval:var:useF eval:var:undef  */
         eval(body);
         
         return this;
