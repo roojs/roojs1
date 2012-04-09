@@ -37827,7 +37827,7 @@ Roo.LoadMask.prototype = {
  * @extends Roo.Template
  * Provides a template that can have nested templates for loops or conditionals. The syntax is:
 <pre><code>
-var t = new Roo.MasterTemplate(
+var t = new Roo.XTemplate(
 	'&lt;select name="{name}"&gt;',
 		'&lt;tpl for="options"&gt;&lt;option value="{value:trim}"&gt;{text:ellipsis(10)}&lt;/option&gt;&lt;/tpl&gt;',
 	'&lt;/select&gt;'
@@ -37849,6 +37849,7 @@ var t = new Roo.MasterTemplate(
  *      &lt;tpl for="a_variable or condition.."&gt;&lt;/tpl&gt;
  *      &lt;tpl if="a_variable or condition"&gt;&lt;/tpl&gt;
  *      &lt;tpl exec="some javascript"&gt;&lt;/tpl&gt;
+ *      &lt;tpl name="named_template"&gt;&lt;/tpl&gt;
  *
  *      &lt;tpl for="."&gt;&lt;/tpl&gt; - just iterate the property..
  *      &lt;tpl for=".."&gt;&lt;/tpl&gt; - iterates with the parent (probably the template) 
@@ -37867,6 +37868,10 @@ Roo.XTemplate = function()
 Roo.extend(Roo.XTemplate, Roo.Template, {
 
     /**
+     * The various sub templates
+     */
+    tpls : false,
+    /**
      *
      * basic tag replacing syntax
      * WORD:WORD()
@@ -37877,7 +37882,12 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
      */
     re : /\{([\w-\.]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?\}/g,
 
-    
+    /**
+     * compile the template
+     *
+     * This is not recursive, so I'm not sure how nested templates are really going to be handled..
+     *
+     */
     compile: function()
     {
         var s = this.html;
@@ -37888,33 +37898,39 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
             nameRe = /^<tpl\b[^>]*?for="(.*?)"/,
             ifRe   = /^<tpl\b[^>]*?if="(.*?)"/,
             execRe = /^<tpl\b[^>]*?exec="(.*?)"/,
+            namedRe = /^<tpl\b[^>]*?name="(\w+)"/,  // named templates..
             m,
             id     = 0,
             tpls   = [];
     
         while(true == !!(m = s.match(re))){
-            var m2   = m[0].match(nameRe),
-                m3   = m[0].match(ifRe),
-                m4   = m[0].match(execRe),
+            var forMatch   = m[0].match(nameRe),
+                ifMatch   = m[0].match(ifRe),
+                execMatch   = m[0].match(execRe),
+                namedMatch   = m[0].match(namedRe),
+                
                 exp  = null, 
                 fn   = null,
                 exec = null,
-                name = m2 && m2[1] ? m2[1] : '';
+                name = forMatch && forMatch[1] ? forMatch[1] : '';
                 
-            if (m3) {
+            if (ifMatch) {
                 // if - puts fn into test..
-                exp = m3 && m3[1] ? m3[1] : null;
+                exp = ifMatch && ifMatch[1] ? ifMatch[1] : null;
                 if(exp){
                    fn = new Function('values', 'parent', 'with(values){ return '+(Roo.util.Format.htmlDecode(exp))+'; }');
                 }
             }
-            if (m4) {
+            
+            if (execMatch) {
                 // exec - calls a function... returns empty if true is  returned.
-                exp = m4 && m4[1] ? m4[1] : null;
+                exp = execMatch && execMatch[1] ? execMatch[1] : null;
                 if(exp){
                    exec = new Function('values', 'parent', 'with(values){ '+(Roo.util.Format.htmlDecode(exp))+'; }');
                 }
             }
+            
+            
             if (name) {
                 // for = 
                 switch(name){
@@ -37923,27 +37939,49 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
                     default:   name = new Function('values', 'parent', 'with(values){ return '+name+'; }');
                 }
             }
+            var uid = namedMatch ? namedMatch[1] : id;
+            
+            
             tpls.push({
-                id:     id,
+                id:     namedMatch ? namedMatch[1] : id,
                 target: name,
                 exec:   exec,
                 test:   fn,
                 body:   m[1] || ''
             });
-            s = s.replace(m[0], '{xtpl'+ id + '}');
+            if (namedMatch) {
+                s = s.replace(m[0], '');
+            } else { 
+                s = s.replace(m[0], '{xtpl'+ id + '}');
+            }
             ++id;
         }
+        this.tpls = [];
         for(var i = tpls.length-1; i >= 0; --i){
             this.compileTpl(tpls[i]);
+            this.tpls[tpls[i].id] = tpls[i];
         }
         this.master = tpls[tpls.length-1];
-        this.tpls = tpls;
         return this;
     },
-    
+    /**
+     * same as applyTemplate, except it's done to one of the subTemplates
+     * when using named templates, you can do:
+     *
+     * var str = pl.applySubTemplate('your-name', values);
+     *
+     * 
+     * @param {Number} id of the template
+     * @param {Object} values to apply to template
+     * @param {Object} parent (normaly the instance of this object)
+     */
     applySubTemplate : function(id, values, parent)
     {
+        
+        
         var t = this.tpls[id];
+        
+        
         try { 
             if(t.test && !t.test.call(this, values, parent)){
                 return '';
@@ -38066,7 +38104,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
         
         Roo.debug && Roo.log(body.replace(/\\n/,'\n'));
        
-        /** eval:var:zzzzzzz */
+        /** eval:var:tpl eval:var:fm eval:var:useF eval:var:undef  */
         eval(body);
         
         return this;
