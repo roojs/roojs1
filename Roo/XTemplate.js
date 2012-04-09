@@ -84,7 +84,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
         while(true == !!(m = s.match(re))){
             var forMatch   = m[0].match(nameRe),
                 ifMatch   = m[0].match(ifRe),
-                m4   = m[0].match(execRe),
+                execMatch   = m[0].match(execRe),
                 namedMatch   = m[0].match(namedRe),
                 
                 exp  = null, 
@@ -99,9 +99,10 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
                    fn = new Function('values', 'parent', 'with(values){ return '+(Roo.util.Format.htmlDecode(exp))+'; }');
                 }
             }
-            if (m4) {
+            
+            if (execMatch) {
                 // exec - calls a function... returns empty if true is  returned.
-                exp = m4 && m4[1] ? m4[1] : null;
+                exp = execMatch && execMatch[1] ? execMatch[1] : null;
                 if(exp){
                    exec = new Function('values', 'parent', 'with(values){ '+(Roo.util.Format.htmlDecode(exp))+'; }');
                 }
