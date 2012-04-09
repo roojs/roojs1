@@ -76,6 +76,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
             nameRe = /^<tpl\b[^>]*?for="(.*?)"/,
             ifRe   = /^<tpl\b[^>]*?if="(.*?)"/,
             execRe = /^<tpl\b[^>]*?exec="(.*?)"/,
+            namedRe = /^<tpl\b[^>]*?name="(.*?)"/,
             m,
             id     = 0,
             tpls   = [];
