@@ -82,7 +82,7 @@
     
 <!-- ============================== class summary ========================== -->			
     <div class="description">
-	Provides a template that can have nested templates for loops or conditionals. The syntax is:<br/><pre><code><br/>var t = new Roo.MasterTemplate(<br/>	'&lt;select name="{name}"&gt;',<br/>		'&lt;tpl for="options"&gt;&lt;option value="{value:trim}"&gt;{text:ellipsis(10)}&lt;/option&gt;&lt;/tpl&gt;',<br/>	'&lt;/select&gt;'<br/>);<br/> <br/>// then append, applying the master template values<br/> </code></pre><br/><br/>Supported features:<br/><br/> Tags:<br/>   {a_variable} - output encoded.<br/>   {a_variable.format:("Y-m-d")} - call a method on the variable<br/>   {a_variable:raw} - unencoded output<br/>   {a_variable:toFixed(1,2)} - Roo.util.Format."toFixed"<br/>   {a_variable:this.method_on_template(...)} - call a method on the template object.<br/> <br/> Tpl:<br/>     &lt;tpl for="a_variable or condition.."&gt;&lt;/tpl&gt;<br/>     &lt;tpl if="a_variable or condition"&gt;&lt;/tpl&gt;<br/>     &lt;tpl exec="some javascript"&gt;&lt;/tpl&gt;<br/><br/>     &lt;tpl for="."&gt;&lt;/tpl&gt; - just iterate the property..<br/>     &lt;tpl for=".."&gt;&lt;/tpl&gt; - iterates with the parent (probably the template)
+	Provides a template that can have nested templates for loops or conditionals. The syntax is:<br/><pre><code><br/>var t = new Roo.XTemplate(<br/>	'&lt;select name="{name}"&gt;',<br/>		'&lt;tpl for="options"&gt;&lt;option value="{value:trim}"&gt;{text:ellipsis(10)}&lt;/option&gt;&lt;/tpl&gt;',<br/>	'&lt;/select&gt;'<br/>);<br/> <br/>// then append, applying the master template values<br/> </code></pre><br/><br/>Supported features:<br/><br/> Tags:<br/>   {a_variable} - output encoded.<br/>   {a_variable.format:("Y-m-d")} - call a method on the variable<br/>   {a_variable:raw} - unencoded output<br/>   {a_variable:toFixed(1,2)} - Roo.util.Format."toFixed"<br/>   {a_variable:this.method_on_template(...)} - call a method on the template object.<br/> <br/> Tpl:<br/>     &lt;tpl for="a_variable or condition.."&gt;&lt;/tpl&gt;<br/>     &lt;tpl if="a_variable or condition"&gt;&lt;/tpl&gt;<br/>     &lt;tpl exec="some javascript"&gt;&lt;/tpl&gt;<br/>     &lt;tpl name="named_template"&gt;&lt;/tpl&gt;<br/><br/>     &lt;tpl for="."&gt;&lt;/tpl&gt; - just iterate the property..<br/>     &lt;tpl for=".."&gt;&lt;/tpl&gt; - iterates with the parent (probably the template)
     </div>
 
 	
@@ -430,7 +430,81 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt1 expandable">
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.XTemplate-method-applySubTemplate"   name=".applySubTemplate"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">applySubTemplate</b>
+				
+				 (<a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>id</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>values</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>parent</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">same as applyTemplate, except it's done to one of the subTemplates<br/>when using named templates, you can do:<br/><br/>var str = pl.applySubTemplate('your-name', values);</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				same as applyTemplate, except it's done to one of the subTemplates<br/>when using named templates, you can do:<br/><br/>var str = pl.applySubTemplate('your-name', values);
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span>  <b>id</b>
+						
+					</dt>
+					<dd>of the template</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>values</b>
+						
+					</dt>
+					<dd>to apply to template</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>parent</b>
+						
+					</dt>
+					<dd>(normaly the instance of this object)</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.XTemplate
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -507,37 +581,29 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt0 expandable">
+          <tr class="method-row config-row-alt1 expandable notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
             <td class="sig">
-                <a id="Roo.Template-method-compile"   name=".compile"></a>
+                <a id="Roo.XTemplate-method-compile"   name=".compile"></a>
 		<div class="fixedFont">
 			<span class="attributes"></span><b class="itemname">compile</b>
 				
 				 () 
 			
 				
-					 : 
-					
-						
-						<a href="./Roo.Template.html#constructor" roo:cls="Roo.Template.html#constructor">Roo.Template</a>
-					
-					
-					
-				
 			
 		</div>
                 <div class="mdesc">
 		
-                   <div class="short">Compiles the template into an internal function, eliminating the RegEx overhead.</div> 
+                   <div class="short">compile the template<br/><br/>This is not recursive, so I'm not sure how nested templates are really going to be handled.</div> 
 		 
 		 
 		 
                     <div class="long">
 			
-				Compiles the template into an internal function, eliminating the RegEx overhead.
+				compile the template<br/><br/>This is not recursive, so I'm not sure how nested templates are really going to be handled..
 		    
 				
 			
@@ -547,13 +613,6 @@
 			
 			
 			
-			
-				<dl class="detailList">
-				<dt class="heading">Returns:</dt>
-				
-					<dd><span class="fixedFont"><a href="./Roo.Template.html#constructor" roo:cls="Roo.Template.html#constructor">Roo.Template</a></span>  this</dd>
-				
-				</dl>
 			
 			
 			
@@ -567,13 +626,13 @@
             </td>
             <td class="msource">
 		
-			<a href="./Roo.Template.html#constructor" roo:cls="Roo.Template.html#constructor">Roo.Template</a>
+			Roo.XTemplate
 		&nbsp;
             </td>
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt1 expandable">
+          <tr class="method-row config-row-alt0 expandable">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -662,7 +721,7 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt0 expandable">
+          <tr class="method-row config-row-alt1 expandable">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -751,7 +810,7 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt1 expandable">
+          <tr class="method-row config-row-alt0 expandable">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -840,7 +899,7 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt0 expandable">
+          <tr class="method-row config-row-alt1 expandable">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -929,7 +988,7 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt1 expandable">
+          <tr class="method-row config-row-alt0 expandable">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -1039,7 +1098,7 @@
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Mon Apr 09 2012 09:19:39 GMT+0800 (HKT)
+			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Mon Apr 09 2012 18:58:51 GMT+0800 (HKT)
 			Based on 
 			<a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a>  
 		</div>
