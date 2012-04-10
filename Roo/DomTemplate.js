@@ -35,16 +35,16 @@
 </code></pre>
  *      
  */
-Roo.XTemplate = function()
+Roo.DomTemplate = function()
 {
-    Roo.XTemplate.superclass.constructor.apply(this, arguments);
+    Roo.DomTemplate.superclass.constructor.apply(this, arguments);
     if (this.html) {
         this.compile();
     }
 };
 
 
-Roo.extend(Roo.XTemplate, Roo.Template, {
+Roo.extend(Roo.DomTemplate, Roo.Template, {
 
     /**
      * The various sub templates
