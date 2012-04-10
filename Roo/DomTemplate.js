@@ -87,7 +87,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         
         this.tpls = [];
         
-        this.iterChild(div, this.compileNode)
+        this.iterChild(div, this.compileNode, true);
         
         var tpls = this.tpls;
         
