@@ -360,7 +360,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
             }
             
             if(name.substr(0, 6) == 'domtpl'){
-                return "'"+ sep +'this.applySubTemplate('+name.substr(4)+', values, parent)'+sep+"'";
+                return "'"+ sep +'this.applySubTemplate('+name.substr(6)+', values, parent)'+sep+"'";
             }
             
             // build an array of options to determine if value is undefined..
