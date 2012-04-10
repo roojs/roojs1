@@ -37,7 +37,7 @@
  */
 Roo.DomTemplate = function()
 {
-    Roo.DomTemplate.superclass.constructor.apply(this, arguments);
+     Roo.DomTemplate.superclass.constructor.apply(this, arguments);
     if (this.html) {
         this.compile();
     }
@@ -46,6 +46,8 @@ Roo.DomTemplate = function()
 
 Roo.extend(Roo.DomTemplate, Roo.Template, {
 
+    id : 0,
+    
     /**
      * The various sub templates
      */
