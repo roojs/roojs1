@@ -65,10 +65,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
     iterNodes : function (nodeAr, method) {
         for( var i = 0; i < nodeAr.length; i++) {
             method.call(this, nodeAr[i]);
-            
         }
-        
-        
     }
     
     /**
