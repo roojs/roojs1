@@ -66,7 +66,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
         for( var i = 0; i < node.childNodes.length; i++) {
             method.call(this, node.childNodes[i]);
         }
-    }
+    },
     
     /**
      * compile the template
