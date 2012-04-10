@@ -337,7 +337,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
                 format = false;
             }
             
-            if(name.substr(0, 4) == 'xtpl'){
+            if(name.substr(0, 6) == 'domtpl'){
                 return "'"+ sep +'this.applySubTemplate('+name.substr(4)+', values, parent)'+sep+"'";
             }
             
