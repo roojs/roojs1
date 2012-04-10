@@ -132,7 +132,13 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         Roo.log("TEMPLATE : " + id);        
         Roo.log(html);        
                 
-            
+        tpls.push({
+            id:     attr == 'name' : value ? id,
+            target: name,
+            exec:   exec,
+            test:   fn,
+            body:   m[1] || ''
+        });
         
         
         
