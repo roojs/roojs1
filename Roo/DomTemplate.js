@@ -158,18 +158,18 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         switch(tpl.attr) {
             case 'for' :
                 switch (attr.value) {
-                    case '.':  attr.forCall = new Function('values', 'parent', 'with(values){ return values; }'); break;
-                    case '..': attr.forCall= new Function('values', 'parent', 'with(values){ return parent; }'); break;
-                    default:   attr.forCall= new Function('values', 'parent', 'with(values){ return '+attr.value+'; }');
+                    case '.':  tpl.forCall = new Function('values', 'parent', 'with(values){ return values; }'); break;
+                    case '..': tpl.forCall= new Function('values', 'parent', 'with(values){ return parent; }'); break;
+                    default:   tpl.forCall= new Function('values', 'parent', 'with(values){ return '+tpl.value+'; }');
                 }
                 break;
             
             case 'exec':
-                tpl.execCall = new Function('values', 'parent', 'with(values){ '+(Roo.util.Format.htmlDecode(attr.value))+'; }');
+                tpl.execCall = new Function('values', 'parent', 'with(values){ '+(Roo.util.Format.htmlDecode(tpl.value))+'; }');
                 break;
             
             case 'if':     
-                tpl.ifCall = new Function('values', 'parent', 'with(values){ return '+(Roo.util.Format.htmlDecode(attr.value))+'; }');
+                tpl.ifCall = new Function('values', 'parent', 'with(values){ return '+(Roo.util.Format.htmlDecode(tpl.value))+'; }');
                 break;
             
             case 'name':
@@ -179,14 +179,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         }
         
         
-        
-        this.tpls.push({
-            id:     attr == 'name' ? value : id,
-            target: name,
-            exec:   exec,
-            test:   fn,
-            body:   m[1] || ''
-        });
+        this.tpls.push(tpl);
         
         
         
