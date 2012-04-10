@@ -39,8 +39,8 @@ Roo.onReady(function() {
 <body>
     <div id="body">
                 
-        <div roo-if="ontable == 'mtrack_ticket'">    
-            <li  class="change-log-item">
+       
+            <li roo-if="ontable == 'mtrack_ticket'"  class="change-log-item">
                 <div class="timelineevent">  
                     <div class="timelinetext">
                         <div class="timelinereason">
@@ -96,9 +96,11 @@ Roo.onReady(function() {
                     </div>
                 </div>
             </li> 
-        </div> 
-        <div roo-if="ontable == 'mtrack_repos'">                               
-            <li class="change-log-item">
+         
+        
+        
+                                   
+            <li roo-if="ontable == 'mtrack_repos'" class="change-log-item">
             
                 <span class="change" ><span class="time">{changedate.format:('H:i:s')}</span> - {reason:ellipsis(100)}</span> 
                 <span class="change-log-rev" ><a 
@@ -125,12 +127,11 @@ Roo.onReady(function() {
                 
                 <div style="display:none;white-space: pre-wrap;">{reason}</div>             
             </li>
-        </div>
+         
         
         
-        
-        <div roo-name="somename'">                               
-            <li class="change-log-item">
+                       
+            <li  roo-name="somename'" class="change-log-item">
             
                 <span class="change" ><span class="time">{changedate.format:('H:i:s')}</span> - {reason:ellipsis(100)}</span> 
                 <span class="change-log-rev" ><a 
@@ -157,7 +158,7 @@ Roo.onReady(function() {
                 
                 <div style="display:none;white-space: pre-wrap;">{reason}</div>             
             </li>
-        </div>        
+          
         
         
     </div> 
