@@ -92,6 +92,11 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         // test for
         Roo.log(node);
         
+        // skip anything not a tag..
+        if (node.nodeType != 1) {
+            return;
+        }
+        
         var attr = false;
         switch(true) {
             case (node.hasAttribute('roo-for')): attr = 'for'; break;
