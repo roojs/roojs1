@@ -91,6 +91,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         
         var tpls = this.tpls;
         
+        // compile them...
         this.tpls = [];
         Roo.each(tpls, function(tp){
             this.compileTpl(tp);
