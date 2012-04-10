@@ -62,9 +62,9 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
     re : /\{([\w-\.]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?\}/g,
 
     
-    iterNodes : function (nodeAr, method) {
-        for( var i = 0; i < nodeAr.length; i++) {
-            method.call(this, nodeAr[i]);
+    iterChild : function (node, method) {
+        for( var i = 0; i < node.childNodes.length; i++) {
+            method.call(this, node.childNodes[i]);
         }
     }
     
@@ -83,7 +83,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
         var div = document.createElement('div');
         div.innerHTML = this.html;
         
-        div.childNodes
+        this.itdiv.childNodes
         
         
         
