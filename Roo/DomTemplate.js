@@ -90,6 +90,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         this.iterChild(div, function(n) {_t.compileNode(n, true); });
         
         var tpls = this.tpls;
+        Roo.log(div);
         
         // compile them...
         this.tpls = [];
