@@ -90,7 +90,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
     
     compileNode : function(node) {
         // test for
-        
+        Roo.log(node);
         
         var attr = false;
         switch(true) {
