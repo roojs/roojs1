@@ -146,6 +146,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         Roo.log("TEMPLATE : " + tpl.uid);        
         Roo.log(html);
         
+        tpl.id = tpl.uid;
         switch(tpl.attr) {
             case 'for' :
                 switch (attr.value) {
@@ -159,10 +160,14 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
                 tpl.execCall = new Function('values', 'parent', 'with(values){ '+(Roo.util.Format.htmlDecode(attr.value))+'; }');
                 break;
             
-            case 'if': 
-                
+            case 'if':     
                 tpl.ifCall = new Function('values', 'parent', 'with(values){ return '+(Roo.util.Format.htmlDecode(attr.value))+'; }');
-                }
+                break;
+            
+            case 'name':
+                tpl.id  = value; // replace non characters???
+                break;
+            
         }
         
         
