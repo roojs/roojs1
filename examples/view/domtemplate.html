@@ -15,7 +15,9 @@ Roo.onReady(function() {
     var html = Roo.get('body').dom.innerHTML;
     Roo.get('body').dom.innerHTML = '';
     
-    var tpl = new Roo.DomTemplate({
+    
+    // nice and global to test with..
+    tpl = new Roo.DomTemplate({
        html : html
     });
     Roo.log(tpl);
