@@ -143,9 +143,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         tpl.body = div.innerHTML;
         
         
-        Roo.log("TEMPLATE : " + tpl.uid);        
-        Roo.log(html);
-        
+         
         tpl.id = tpl.uid;
         switch(tpl.attr) {
             case 'for' :
