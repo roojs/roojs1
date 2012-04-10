@@ -90,6 +90,9 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         this.iterChild(div, function(n) {_t.compileNode(n, true); });
         
         var tpls = this.tpls;
+        
+        // create a top level template from the snippet..
+        
         Roo.log(div.innerHTML);
         
         // compile them...
