@@ -154,6 +154,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         // we should now have node body...
         var div = document.createElement('div');
         div.appendChild(node);
+        tpl.dom = node;
         tpl.body = div.innerHTML;
         
         
