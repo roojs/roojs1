@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../../cssX/roojs-all.css"/>
+    <link rel="stylesheet" type="text/css" href="../../cssX/xtheme-slate.css"/>
+
+    <script type="text/javascript" src="../../roojs-all.js"></script>   
+    <script type="text/javascript" src="../../Roo/DomTemplate.js"></script>   
+  
+
+<script type="text/javascript">
+    
+Roo.onReady(function() {
+    
+    var tpl = new Roo.DomTemplate({
+       html : Roo.get('body').dom.innerHTML
+    });
+    
+    tpl.append(Roo.get('body'),{ 
+        parray : [ 
+            {
+                pa : new Date() 
+            },
+            {
+                pa : new Date() 
+            }
+        ]
+    });
+     
+});
+     
+     
+</script>
+
+</head>
+<body>
+    <div id="body"></div> 
+</body>
+</html>
