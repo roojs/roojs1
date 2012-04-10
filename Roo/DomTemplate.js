@@ -92,7 +92,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
     
     compileNode : function(node) {
         // test for
-        Roo.log(node);
+        //Roo.log(node);
         
         // skip anything not a tag..
         if (node.nodeType != 1) {
