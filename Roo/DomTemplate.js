@@ -87,6 +87,16 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         
         this.iterChild(div, this.compileNode)
         
+        var tpls = this.tpls;
+        
+        this.tpls = [];
+        for(var i = tpls.length-1; i >= 0; --i){
+            this.compileTpl(tpls[i]);
+            this.tpls[tpls[i].id] = tpls[i];
+        }
+        this.master = tpls[0];
+        return this;
+        
         
     },
     
