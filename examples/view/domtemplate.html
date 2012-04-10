@@ -44,12 +44,12 @@ Roo.onReady(function() {
                 <div class="timelineevent">  
                     <div class="timelinetext">
                         <div class="timelinereason">
-                        <span class="time">{changedate.format:('H:i:s')}</span>        
+                            <span class="time">{changedate.format:('H:i:s')}</span>        
                                      
                     
-                         #<span class="mtrack-ticket-link">{object_id}</span> - <B>{object_summary}</B> <BR/>',
-                        
-                             <div class="bubble-wrap"> 
+                            #<span class="mtrack-ticket-link">{object_id}</span> - <B>{object_summary}</B> <BR/>',
+                            
+                            <div class="bubble-wrap"> 
                                 {reason}    
                             
                                 <p>Comment Added
@@ -67,13 +67,12 @@ Roo.onReady(function() {
                                    <div class="bubble-wrap"> 
                             
                                        {value_str}  
-                                       </div><p>  {field_str}  Changed
-                                           <span class="time">{parent.changedate.format:('H:i:s')}</span>
+                                    </div><p>  {field_str}  Changed
+                                        <span class="time">{parent.changedate.format:('H:i:s')}</span>
                                            by
                                            <span class="mtrack-person" personid="{parent.person_id}"><B>{parent.person_id_name}</B></span> 
-                                       </p></div> 
-                                   </div>                 
-                               </div>
+                                       </p><  
+                                </div>
                                     
                             
                             </div>         
@@ -93,7 +92,7 @@ Roo.onReady(function() {
                             <span class="mtrack-person" personid="{person_id}"><B>{person_id_name}</B></span>
                                     
                        </div>
-                    
+                    </div>
                 </div>
             </li> 
          
