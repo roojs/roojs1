@@ -297,9 +297,9 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
             return ''
         }
         try {
-            var vs = t.target ? t.target.call(this, values, parent) : values;
+            var vs = t.forCall ? t.forCall.call(this, values, parent) : values;
             parent = t.target ? values : parent;
-            if(t.target && vs instanceof Array){
+            if(t.forCall && vs instanceof Array){
                 var buf = [];
                 for(var i = 0, len = vs.length; i < len; i++){
                     buf[buf.length] = t.compiled.call(this, vs[i], parent);
