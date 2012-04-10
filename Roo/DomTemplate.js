@@ -129,9 +129,10 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
         
         
         
-    }
+    },
     
-    
+    oldwrapper : function ()
+    { 
         s = ['<tpl>', s, '</tpl>'].join('');
     
         var re     = /<tpl\b[^>]*>((?:(?=([^<]+))\2|<(?!tpl\b[^>]*>))*?)<\/tpl>/,
