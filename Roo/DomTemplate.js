@@ -123,6 +123,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
             forCall : false,
             execCall : false,
             dom : false,
+            istop : istop
             
             
         };
