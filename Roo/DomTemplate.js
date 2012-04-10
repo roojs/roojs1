@@ -111,7 +111,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
             case (node.hasAttribute('roo-exec')): tpl.attr = 'exec'; break;
             // no default..
         }
-        if (!attr) {
+        if (!tpl.attr) {
             // just itterate children..
             this.iterChild(node,this.compileNode)
             return;
