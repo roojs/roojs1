@@ -319,7 +319,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
     {
         var fm = Roo.util.Format;
         var useF = this.disableFormats !== true;
-        var sep = Roo.isGecko ? "+" : ",";
+        var sep = Roo.isGecko ? "+\n" : ",\n";
         var undef = function(str) {
             Roo.log("Property not found :"  + str);
             return '';
