@@ -99,12 +99,16 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
             return;
         }
         
-        var attr = false;
+        var tpl = {
+            attr : false,
+            value : false,
+            html : ''
+        };
         switch(true) {
-            case (node.hasAttribute('roo-for')): attr = 'for'; break;
-            case (node.hasAttribute('roo-if')): attr = 'if'; break;
-            case (node.hasAttribute('roo-if')): attr = 'name'; break;
-            case (node.hasAttribute('roo-exec')): attr = 'exec'; break;
+            case (node.hasAttribute('roo-for')): tpl.attr = 'for'; break;
+            case (node.hasAttribute('roo-if')): tpl.attr = 'if'; break;
+            case (node.hasAttribute('roo-if')): tpl.attr = 'name'; break;
+            case (node.hasAttribute('roo-exec')): tpl.attr = 'exec'; break;
             // no default..
         }
         if (!attr) {
@@ -130,8 +134,15 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         div.appendChild(node);
         var html = div.innerHTML;
         Roo.log("TEMPLATE : " + id);        
-        Roo.log(html);        
-                
+        Roo.log(html);
+        
+        switch(attr) {
+            
+            
+        }
+        
+        
+        
         tpls.push({
             id:     attr == 'name' ? value : id,
             target: name,
