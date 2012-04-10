@@ -92,10 +92,11 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         var tpls = this.tpls;
         
         this.tpls = [];
-        for(var i = tpls.length-1; i >= 0; --i){
-            this.compileTpl(tpls[i]);
-            this.tpls[tpls[i].id] = tpls[i];
-        }
+        Roo.each(tpls, function(tp){
+            this.compileTpl(tp);
+            this.tpls[tp.id] = tp;
+        }, this);
+        
         this.master = tpls[0];
         return this;
         
