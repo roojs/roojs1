@@ -92,26 +92,40 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
         // test for
         
         
-        
+        var attr = false;
         switch(true) {
-            case (node.hasAttribute('roo-for')) :
-            
-            case (node.hasAttribute('roo-if')) :
-                var cond = node.getAttribute('roo-if');
-                node.removeAttribute('roo-if');
-                var id = this.id++;
-                var placeholder = document.createTextNode('{domtmp' + id + '}');
-                node.parentNode.replaceChild(placeholder,  node);
-                
-                
-            
-            
-            
-            case (node.hasAttribute('roo-name')) :
-            
-            case (node.hasAttribute('roo-exec')) :
-            
+            case (node.hasAttribute('roo-for')): attr = 'for'; break;
+            case (node.hasAttribute('roo-if')): attr = 'if'; break;
+            case (node.hasAttribute('roo-if')): attr = 'name'; break;
+            case (node.hasAttribute('roo-exec')): attr = 'exec'; break;
+            // no default..
         }
+        if (!attr) {
+            // just itterate children..
+            this.iterChild(node);
+            return;
+        }
+        var id = this.id++;
+        var value = node.getAttribute('roo-' + attr);
+        node.removeAttribute('roo-'+ attr);
+        if (attr != 'name') {
+            var placeholder = document.createTextNode('{domtpl' + id + '}');
+            node.parentNode.replaceChild(placeholder,  node);
+        } else {
+            node.parentNode.removeChild(node);
+        }
+        
+        // parent now sees '{domtplXXXX}
+        this.iterChild(node);
+        
+        // we should now have node body...
+        var div = document.createElement('div');
+        div.appendChild(node);
+        var html = div.innerHTML;
+        Roo.log("TEMPLATE : " + id);        
+        Roo.log(html);        
+                
+            
         
         
         
