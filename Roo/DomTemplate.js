@@ -108,6 +108,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
             isTop : true
             
         };
+        tpls.push(tpl);
         
         
         // compile them...
