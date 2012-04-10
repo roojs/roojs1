@@ -161,7 +161,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         tpl.id = tpl.uid;
         switch(tpl.attr) {
             case 'for' :
-                switch (attr.value) {
+                switch (tpl.value) {
                     case '.':  tpl.forCall = new Function('values', 'parent', 'with(values){ return values; }'); break;
                     case '..': tpl.forCall= new Function('values', 'parent', 'with(values){ return parent; }'); break;
                     default:   tpl.forCall= new Function('values', 'parent', 'with(values){ return '+tpl.value+'; }');
