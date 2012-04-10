@@ -18,7 +18,7 @@ Roo.onReady(function() {
     var tpl = new Roo.DomTemplate({
        html : html
     });
-    
+    return;
     tpl.append(Roo.get('body'),{ 
         parray : [ 
             {
@@ -38,126 +38,126 @@ Roo.onReady(function() {
 </head>
 <body>
     <div id="body">
-        
-<div roo-if="ontable == 'mtrack_ticket'">    
-    <li  class="change-log-item">
-        <div class="timelineevent">  
-            <div class="timelinetext">
-                <div class="timelinereason">
-                <span class="time">{changedate.format:('H:i:s')}</span>        
-                             
-            
-                 #<span class="mtrack-ticket-link">{object_id}</span> - <B>{object_summary}</B> <BR/>',
                 
-                     <div class="bubble-wrap"> 
-                        {reason}    
+        <div roo-if="ontable == 'mtrack_ticket'">    
+            <li  class="change-log-item">
+                <div class="timelineevent">  
+                    <div class="timelinetext">
+                        <div class="timelinereason">
+                        <span class="time">{changedate.format:('H:i:s')}</span>        
+                                     
                     
-                        <p>Comment Added
-                                <span class="time">{changedate.format:('H:i:s')}</span>
-                                by
-                                <span class="mtrack-person" personid="{person_id}"><B>{person_id_name}</B></span> 
-                          
-                        </p>
+                         #<span class="mtrack-ticket-link">{object_id}</span> - <B>{object_summary}</B> <BR/>',
+                        
+                             <div class="bubble-wrap"> 
+                                {reason}    
+                            
+                                <p>Comment Added
+                                        <span class="time">{changedate.format:('H:i:s')}</span>
+                                        by
+                                        <span class="mtrack-person" personid="{person_id}"><B>{person_id_name}</B></span> 
+                                  
+                                </p>
+                            </div>
+                            
+                                                
+                            <div roo-for="audit">
+                              
+                               <div roo-if="action != 'changed'">
+                                   <div class="bubble-wrap"> 
+                            
+                                       {value_str}  
+                                       </div><p>  {field_str}  Changed
+                                           <span class="time">{parent.changedate.format:('H:i:s')}</span>
+                                           by
+                                           <span class="mtrack-person" personid="{parent.person_id}"><B>{parent.person_id_name}</B></span> 
+                                       </p></div> 
+                                   </div>                 
+                               </div>
+                                    
+                            
+                            </div>         
+                                    
+                                     
+                                    
+                            
+                            <span class="mtrack-audits">
+                                <div roo-for="audit_ar,a">
+                                     <div roo-if="action == 'changed'">
+                                        <span class="mtrack-audit">{a.field_str} set to: <B>{a.value_str}</B></span>
+                                     </div>
+                                </div>
+                            </span>
+                            
+                            by
+                            <span class="mtrack-person" personid="{person_id}"><B>{person_id_name}</B></span>
+                                    
+                       </div>
                     </div>
-                    
-                                        
+                </div>
+            </li> 
+        </div> 
+        <div roo-if="ontable == 'mtrack_repos'">                               
+            <li class="change-log-item">
+            
+                <span class="change" ><span class="time">{changedate.format:('H:i:s')}</span> - {reason:ellipsis(100)}</span> 
+                <span class="change-log-rev" ><a 
+                     class="changesetlink browse-link" 
+                     href="{baseURL}/Changeset/default/{object_shortname}/{rev}">{rev}</a>
+                         by
+                        <span class="mtrack-person" personid="{person_id}"><B>{person_id_name}</B></span>
+                           
+                </span>
+                <ul class="changed-files">
+                
                     <div roo-for="audit">
                       
-                       <div roo-if="action != 'changed'">
-                           <div class="bubble-wrap"> 
-                    
-                               {value_str}  
-                               </div><p>  {field_str}  Changed
-                                   <span class="time">{parent.changedate.format:('H:i:s')}</span>
-                                   by
-                                   <span class="mtrack-person" personid="{parent.person_id}"><B>{parent.person_id_name}</B></span> 
-                               </p></div> 
-                           </div>                 
-                       </div>
-                            
+                       <li class="file-change">
+                            <B >{action.substring:(action.length-1)}</B> {value}
+                        
+                        </li>
                     
                     </div>         
-                            
-                             
-                            
-                    
-                    <span class="mtrack-audits">
-                        <div roo-for="audit_ar,a">
-                             <div roo-if="action == 'changed'">
-                                <span class="mtrack-audit">{a.field_str} set to: <B>{a.value_str}</B></span>
-                             </div>
-                        </div>
-                    </span>
-                    
-                    by
-                    <span class="mtrack-person" personid="{person_id}"><B>{person_id_name}</B></span>
-                            
-               </div>
-            </div>
+                </ul>    
+            
+            
+                
+                
+                <div style="display:none;white-space: pre-wrap;">{reason}</div>             
+            </li>
         </div>
-    </li> 
-</div> 
-<div roo-if="ontable == 'mtrack_repos'">                               
-    <li class="change-log-item">
-    
-        <span class="change" ><span class="time">{changedate.format:('H:i:s')}</span> - {reason:ellipsis(100)}</span> 
-        <span class="change-log-rev" ><a 
-             class="changesetlink browse-link" 
-             href="{baseURL}/Changeset/default/{object_shortname}/{rev}">{rev}</a>
-                 by
-                <span class="mtrack-person" personid="{person_id}"><B>{person_id_name}</B></span>
-                   
-        </span>
-        <ul class="changed-files">
         
-            <div roo-for="audit">
-              
-               <li class="file-change">
-                    <B >{action.substring:(action.length-1)}</B> {value}
-                
-                </li>
+        
+        
+        <div roo-name="somename'">                               
+            <li class="change-log-item">
             
-            </div>         
-        </ul>    
-    
-    
-        
-        
-        <div style="display:none;white-space: pre-wrap;">{reason}</div>             
-    </li>
-</div>
-
-
-
-<div roo-name="somename'">                               
-    <li class="change-log-item">
-    
-        <span class="change" ><span class="time">{changedate.format:('H:i:s')}</span> - {reason:ellipsis(100)}</span> 
-        <span class="change-log-rev" ><a 
-             class="changesetlink browse-link" 
-             href="{baseURL}/Changeset/default/{object_shortname}/{rev}">{rev}</a>
-                 by
-                <span class="mtrack-person" personid="{person_id}"><B>{person_id_name}</B></span>
-                   
-        </span>
-        <ul class="changed-files">
-        
-            <div roo-for="audit">
-              
-               <li class="file-change">
-                    <B >{action.substring:(action.length-1)}</B> {value}
+                <span class="change" ><span class="time">{changedate.format:('H:i:s')}</span> - {reason:ellipsis(100)}</span> 
+                <span class="change-log-rev" ><a 
+                     class="changesetlink browse-link" 
+                     href="{baseURL}/Changeset/default/{object_shortname}/{rev}">{rev}</a>
+                         by
+                        <span class="mtrack-person" personid="{person_id}"><B>{person_id_name}</B></span>
+                           
+                </span>
+                <ul class="changed-files">
                 
-                </li>
+                    <div roo-for="audit">
+                      
+                       <li class="file-change">
+                            <B >{action.substring:(action.length-1)}</B> {value}
+                        
+                        </li>
+                    
+                    </div>         
+                </ul>    
             
-            </div>         
-        </ul>    
-    
-    
-        
-        
-        <div style="display:none;white-space: pre-wrap;">{reason}</div>             
-    </li>
-</div>        
+            
+                
+                
+                <div style="display:none;white-space: pre-wrap;">{reason}</div>             
+            </li>
+        </div>        
         
         
     </div> 
