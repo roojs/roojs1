@@ -100,6 +100,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         }
         
         var tpl = {
+            uid : false,
             id : false,
             attr : false,
             value : false,
@@ -117,11 +118,11 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
             this.iterChild(node,this.compileNode)
             return;
         }
-        var id = this.id++;
+        tpl.uid = this.id++;
         var value = node.getAttribute('roo-' +  tpl.attr);
         node.removeAttribute('roo-'+ tpl.attr);
         if (tpl.attr != 'name') {
-            var placeholder = document.createTextNode('{domtpl' + id + '}');
+            var placeholder = document.createTextNode('{domtpl' + tpl.uid + '}');
             node.parentNode.replaceChild(placeholder,  node);
         } else {
             node.parentNode.removeChild(node);
@@ -133,8 +134,8 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         // we should now have node body...
         var div = document.createElement('div');
         div.appendChild(node);
-        var html = div.innerHTML;
-        Roo.log("TEMPLATE : " + id);        
+        tpl.html = div.innerHTML;
+        Roo.log("TEMPLATE : " + tpl.uid);        
         Roo.log(html);
         
         switch(attr) {
