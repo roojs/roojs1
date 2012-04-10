@@ -61,6 +61,16 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
      */
     re : /\{([\w-\.]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?\}/g,
 
+    
+    iterNodes : function (nodeAr, method) {
+        for( var i = 0; i < nodeAr.length; i++) {
+            method.call(this, nodeAr[i]);
+            
+        }
+        
+        
+    }
+    
     /**
      * compile the template
      *
@@ -70,6 +80,16 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
     compile: function()
     {
         var s = this.html;
+        
+        // covert the html into DOM...
+        
+        var div = document.createElement('div');
+        div.innerHTML = this.html;
+        
+        div.childNodes
+        
+        
+        
      
         s = ['<tpl>', s, '</tpl>'].join('');
     
