@@ -104,7 +104,13 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
             id : false,
             attr : false,
             value : false,
-            html : ''
+            html : '',
+            
+            forCall : false,
+            execCall : false,
+            
+            
+            
         };
         switch(true) {
             case (node.hasAttribute('roo-for')): tpl.attr = 'for'; break;
@@ -135,12 +141,28 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         var div = document.createElement('div');
         div.appendChild(node);
         tpl.html = div.innerHTML;
+        
+        
         Roo.log("TEMPLATE : " + tpl.uid);        
         Roo.log(html);
         
-        switch(attr) {
+        switch(tpl.attr) {
+            case 'for' :
+                switch (attr.value) {
+                    case '.':  attr.forCall = new Function('values', 'parent', 'with(values){ return values; }'); break;
+                    case '..': attr.forCall= new Function('values', 'parent', 'with(values){ return parent; }'); break;
+                    default:   attr.forCall= new Function('values', 'parent', 'with(values){ return '+attr.value+'; }');
+                }
+                break;
             
+            case 'exec':
+                tpl.execCall = new Function('values', 'parent', 'with(values){ '+(Roo.util.Format.htmlDecode(attr.value))+'; }');
+                break;
             
+            case 'if': 
+                
+                tpl.ifCall = new Function('values', 'parent', 'with(values){ return '+(Roo.util.Format.htmlDecode(attr.value))+'; }');
+                }
         }
         
         
