@@ -100,6 +100,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         }
         
         var tpl = {
+            id : false,
             attr : false,
             value : false,
             html : ''
@@ -117,9 +118,9 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
             return;
         }
         var id = this.id++;
-        var value = node.getAttribute('roo-' + attr);
-        node.removeAttribute('roo-'+ attr);
-        if (attr != 'name') {
+        var value = node.getAttribute('roo-' +  tpl.attr);
+        node.removeAttribute('roo-'+ tpl.attr);
+        if (tpl.attr != 'name') {
             var placeholder = document.createTextNode('{domtpl' + id + '}');
             node.parentNode.replaceChild(placeholder,  node);
         } else {
