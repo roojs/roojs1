@@ -83,11 +83,41 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
         var div = document.createElement('div');
         div.innerHTML = this.html;
         
-        this.itdiv.childNodes
+        this.iterChild(div, this.compileNode)
+        
+        
+    },
+    
+    compileNode : function(node) {
+        // test for
         
         
         
-     
+        switch(true) {
+            case (node.hasAttribute('roo-for')) :
+            
+            case (node.hasAttribute('roo-if')) :
+                var cond = node.getAttribute('roo-if');
+                node.removeAttribute('roo-if');
+                var id = this.id++;
+                var placeholder = document.createTextNode('{domtmp' + id + '}');
+                node.parentNode.replaceChild(placeholder,  node);
+                
+                
+            
+            
+            
+            case (node.hasAttribute('roo-name')) :
+            
+            case (node.hasAttribute('roo-exec')) :
+            
+        }
+        
+        
+        
+    }
+    
+    
         s = ['<tpl>', s, '</tpl>'].join('');
     
         var re     = /<tpl\b[^>]*>((?:(?=([^<]+))\2|<(?!tpl\b[^>]*>))*?)<\/tpl>/,
