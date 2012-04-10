@@ -95,6 +95,21 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         
         Roo.log(div.innerHTML);
         
+        var tpl = {
+            uid : 'master',
+            id : this.id++,
+            attr : false,
+            value : false,
+            body : div.innerHTML,
+            
+            forCall : false,
+            execCall : false,
+            dom : div,
+            isTop : true
+            
+        };
+        
+        
         // compile them...
         this.tpls = [];
         Roo.each(tpls, function(tp){
