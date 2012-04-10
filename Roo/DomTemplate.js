@@ -107,7 +107,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         }
         if (!attr) {
             // just itterate children..
-            this.iterChild(node);
+            this.iterChild(node,this.compileNode)
             return;
         }
         var id = this.id++;
@@ -121,7 +121,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         }
         
         // parent now sees '{domtplXXXX}
-        this.iterChild(node);
+        this.iterChild(node,this.compileNode)
         
         // we should now have node body...
         var div = document.createElement('div');
