@@ -170,7 +170,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         
         
         
-        tpls.push({
+        this.tpls.push({
             id:     attr == 'name' ? value : id,
             target: name,
             exec:   exec,
@@ -248,13 +248,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
             }
             ++id;
         }
-        this.tpls = [];
-        for(var i = tpls.length-1; i >= 0; --i){
-            this.compileTpl(tpls[i]);
-            this.tpls[tpls[i].id] = tpls[i];
-        }
-        this.master = tpls[tpls.length-1];
-        return this;
+        
     },
     /**
      * same as applyTemplate, except it's done to one of the subTemplates
