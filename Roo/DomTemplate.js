@@ -104,7 +104,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
             id : false,
             attr : false,
             value : false,
-            html : '',
+            body : '',
             
             forCall : false,
             execCall : false,
@@ -140,7 +140,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         // we should now have node body...
         var div = document.createElement('div');
         div.appendChild(node);
-        tpl.html = div.innerHTML;
+        tpl.body = div.innerHTML;
         
         
         Roo.log("TEMPLATE : " + tpl.uid);        
