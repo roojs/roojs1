@@ -104,7 +104,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         
     },
     
-    compileNode : function(node) {
+    compileNode : function(node, istop) {
         // test for
         //Roo.log(node);
         
