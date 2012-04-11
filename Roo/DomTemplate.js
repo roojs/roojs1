@@ -263,10 +263,9 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
                 return '';
             }
         } catch(e) {
-            Roo.log('Xtemplate.applySubTemplate: Exception thrown on roo-if="' + t.value + '"');
-            Roo.log(e.toString());
-            Roo.log(t.value);
-            return ''
+            Roo.log('Xtemplate.applySubTemplate('+ id+ '): Exception thrown on roo-if="' + t.value + '" - ' + e.toString());
+          
+            return '';
         }
         try { 
             
@@ -274,10 +273,8 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
                 return '';
             }
         } catch(e) {
-             Roo.log('Xtemplate.applySubTemplate: Exception thrown on roo-exec="' + t.value + '"');
-            Roo.log(e.toString());
-            Roo.log(t.execCall);
-            return ''
+            Roo.log('Xtemplate.applySubTemplate('+ id+ '): Exception thrown on roo-for="' + t.value + '" - ' + e.toString());
+            return '';
         }
         
         try {
@@ -290,12 +287,17 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
                 }
                 return buf.join('');
             }
-            
+        } catch (e) {
+            Roo.log('Xtemplate.applySubTemplate('+ id+ '): Exception thrown on roo-for="' + t.value + '" - ' + e.toString());
+            return '';
+        }
+        try {
             return t.compiled.call(this, vs, parent);
         } catch (e) {
-            Roo.log('Xtemplate.applySubTemplate: Exception thrown on roo-for="' + t.value + '"');
-            Roo.log(e.toString());
-            Roo.log(t.compiled);
+            Roo.log('Xtemplate.applySubTemplate('+ id+ '): Exception thrown on body="' + t.value + '" - ' + e.toString());
+            Roo.log(e.body);
+            //Roo.log(t.compiled);
+            Roo.log(values);
             return '';
         }
     },
