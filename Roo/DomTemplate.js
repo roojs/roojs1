@@ -263,7 +263,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
                 return '';
             }
         } catch(e) {
-            Roo.log("Xtemplate.applySubTemplate 'test': Exception thrown");
+            Roo.log('Xtemplate.applySubTemplate: Exception thrown on roo-if="' + t.value + '"');
             Roo.log(e.toString());
             Roo.log(t.value);
             return ''
@@ -274,7 +274,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
                 return '';
             }
         } catch(e) {
-            Roo.log("Xtemplate.applySubTemplate 'exec': Exception thrown");
+             Roo.log('Xtemplate.applySubTemplate: Exception thrown on roo-exec="' + t.value + '"');
             Roo.log(e.toString());
             Roo.log(t.execCall);
             return ''
