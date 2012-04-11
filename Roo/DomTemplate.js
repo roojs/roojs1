@@ -45,13 +45,23 @@ Roo.DomTemplate = function()
 
 
 Roo.extend(Roo.DomTemplate, Roo.Template, {
-
+    /**
+     * id counter for sub templates.
+     */
     id : 0,
+    /**
+     * flag to indicate if dom parser is inside a pre,
+     * it will strip whitespace if not.
+     */
+    inPre : false,
     
     /**
      * The various sub templates
      */
     tpls : false,
+    
+    
+    
     /**
      *
      * basic tag replacing syntax
@@ -69,6 +79,8 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
             method.call(this, node.childNodes[i]);
         }
     },
+    
+    
     
     /**
      * compile the template
