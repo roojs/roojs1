@@ -238,73 +238,11 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         
         
     },
-     
     /**
-     * same as applyTemplate, except it's done to one of the subTemplates
-     * when using named templates, you can do:
-     *
-     * var str = pl.applySubTemplate('your-name', values);
-     *
+     * Compile a segment of the template into a 'sub-template'
      * 
-     * @param {Number} id of the template
-     * @param {Object} values to apply to template
-     * @param {Object} parent (normaly the instance of this object)
+     *
      */
-    applySubTemplate : function(id, values, parent)
-    {
-        
-        
-        var t = this.tpls[id];
-        
-        
-        try { 
-            if(t.ifCall && !t.ifCall.call(this, values, parent)){
-                Roo.log('if call on ' + t.value + ' return false')
-                return '';
-            }
-        } catch(e) {
-            Roo.log('Xtemplate.applySubTemplate('+ id+ '): Exception thrown on roo-if="' + t.value + '" - ' + e.toString());
-            Roo.log(values);
-          
-            return '';
-        }
-        try { 
-            
-            if(t.execCall && t.execCall.call(this, values, parent)){
-                return '';
-            }
-        } catch(e) {
-            Roo.log('Xtemplate.applySubTemplate('+ id+ '): Exception thrown on roo-for="' + t.value + '" - ' + e.toString());
-            Roo.log(values);
-            return '';
-        }
-        
-        try {
-            var vs = t.forCall ? t.forCall.call(this, values, parent) : values;
-            parent = t.target ? values : parent;
-            if(t.forCall && vs instanceof Array){
-                var buf = [];
-                for(var i = 0, len = vs.length; i < len; i++){
-                    buf[buf.length] = t.compiled.call(this, vs[i], parent);
-                }
-                return buf.join('');
-            }
-        } catch (e) {
-            Roo.log('Xtemplate.applySubTemplate('+ id+ '): Exception thrown on roo-for="' + t.value + '" - ' + e.toString());
-            Roo.log(values);
-            return '';
-        }
-        try {
-            return t.compiled.call(this, vs, parent);
-        } catch (e) {
-            Roo.log('Xtemplate.applySubTemplate('+ id+ '): Exception thrown on body="' + t.value + '" - ' + e.toString());
-            Roo.log(e.body);
-            //Roo.log(t.compiled);
-            Roo.log(values);
-            return '';
-        }
-    },
-
     compileTpl : function(tpl)
     {
         var fm = Roo.util.Format;
@@ -392,6 +330,74 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         
         return this;
     },
+     
+    /**
+     * same as applyTemplate, except it's done to one of the subTemplates
+     * when using named templates, you can do:
+     *
+     * var str = pl.applySubTemplate('your-name', values);
+     *
+     * 
+     * @param {Number} id of the template
+     * @param {Object} values to apply to template
+     * @param {Object} parent (normaly the instance of this object)
+     */
+    applySubTemplate : function(id, values, parent)
+    {
+        
+        
+        var t = this.tpls[id];
+        
+        
+        try { 
+            if(t.ifCall && !t.ifCall.call(this, values, parent)){
+                Roo.log('if call on ' + t.value + ' return false')
+                return '';
+            }
+        } catch(e) {
+            Roo.log('Xtemplate.applySubTemplate('+ id+ '): Exception thrown on roo-if="' + t.value + '" - ' + e.toString());
+            Roo.log(values);
+          
+            return '';
+        }
+        try { 
+            
+            if(t.execCall && t.execCall.call(this, values, parent)){
+                return '';
+            }
+        } catch(e) {
+            Roo.log('Xtemplate.applySubTemplate('+ id+ '): Exception thrown on roo-for="' + t.value + '" - ' + e.toString());
+            Roo.log(values);
+            return '';
+        }
+        
+        try {
+            var vs = t.forCall ? t.forCall.call(this, values, parent) : values;
+            parent = t.target ? values : parent;
+            if(t.forCall && vs instanceof Array){
+                var buf = [];
+                for(var i = 0, len = vs.length; i < len; i++){
+                    buf[buf.length] = t.compiled.call(this, vs[i], parent);
+                }
+                return buf.join('');
+            }
+        } catch (e) {
+            Roo.log('Xtemplate.applySubTemplate('+ id+ '): Exception thrown on roo-for="' + t.value + '" - ' + e.toString());
+            Roo.log(values);
+            return '';
+        }
+        try {
+            return t.compiled.call(this, vs, parent);
+        } catch (e) {
+            Roo.log('Xtemplate.applySubTemplate('+ id+ '): Exception thrown on body="' + t.value + '" - ' + e.toString());
+            Roo.log(e.body);
+            //Roo.log(t.compiled);
+            Roo.log(values);
+            return '';
+        }
+    },
+
+   
 
     applyTemplate : function(values){
         return this.master.compiled.call(this, values, {});
