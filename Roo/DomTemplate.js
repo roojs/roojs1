@@ -75,9 +75,15 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
 
     
     iterChild : function (node, method) {
+        
+        var oldPre = this.inPre;
+        if (node.tagName == 'PRE') {
+            this.inPre = true;
+        }
         for( var i = 0; i < node.childNodes.length; i++) {
             method.call(this, node.childNodes[i]);
         }
+        this.inPre = oldPre;
     },
     
     
@@ -140,6 +146,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         // test for
         //Roo.log(node);
         
+        
         // skip anything not a tag..
         if (node.nodeType != 1) {
             if (node.nodeType == 3 && !this.inPre) {
@@ -164,6 +171,8 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
             
             
         };
+        
+        
         switch(true) {
             case (node.hasAttribute('roo-for')): tpl.attr = 'for'; break;
             case (node.hasAttribute('roo-if')): tpl.attr = 'if'; break;
@@ -171,6 +180,8 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
             case (node.hasAttribute('roo-exec')): tpl.attr = 'exec'; break;
             // no default..
         }
+        
+        
         if (!tpl.attr) {
             // just itterate children..
             this.iterChild(node,this.compileNode)
