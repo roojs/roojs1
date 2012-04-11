@@ -259,12 +259,13 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         
         try { 
             if(t.ifCall && !t.ifCall.call(this, values, parent)){
+                Roo.debug('if call on ' + t.value + ' return false')
                 return '';
             }
         } catch(e) {
             Roo.log("Xtemplate.applySubTemplate 'test': Exception thrown");
             Roo.log(e.toString());
-            Roo.log(t.ifCall);
+            Roo.log(t.value);
             return ''
         }
         try { 
