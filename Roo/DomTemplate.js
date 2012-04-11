@@ -130,6 +130,11 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         
         // skip anything not a tag..
         if (node.nodeType != 1) {
+            if (node.nodeType == 3 && !this.inPre) {
+                // trim
+                node.nodeValue = Roo.util.Format.trim(node.value);
+                
+            }
             return;
         }
         
