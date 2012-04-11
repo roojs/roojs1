@@ -279,6 +279,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
             Roo.log(t.execCall);
             return ''
         }
+        
         try {
             var vs = t.forCall ? t.forCall.call(this, values, parent) : values;
             parent = t.target ? values : parent;
@@ -289,6 +290,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
                 }
                 return buf.join('');
             }
+            
             return t.compiled.call(this, vs, parent);
         } catch (e) {
             Roo.log("Xtemplate.applySubTemplate : Exception thrown");
