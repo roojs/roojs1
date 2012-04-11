@@ -227,7 +227,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
                 break;
             
             case 'name':
-                tpl.id  = value; // replace non characters???
+                tpl.id  = tpl.value; // replace non characters???
                 break;
             
         }
