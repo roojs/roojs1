@@ -150,7 +150,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         switch(true) {
             case (node.hasAttribute('roo-for')): tpl.attr = 'for'; break;
             case (node.hasAttribute('roo-if')): tpl.attr = 'if'; break;
-            case (node.hasAttribute('roo-if')): tpl.attr = 'name'; break;
+            case (node.hasAttribute('roo-name')): tpl.attr = 'name'; break;
             case (node.hasAttribute('roo-exec')): tpl.attr = 'exec'; break;
             // no default..
         }
@@ -210,75 +210,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         
         
     },
-    
-    oldwrapper : function ()
-    { 
-        s = ['<tpl>', s, '</tpl>'].join('');
-    
-        var re     = /<tpl\b[^>]*>((?:(?=([^<]+))\2|<(?!tpl\b[^>]*>))*?)<\/tpl>/,
-            nameRe = /^<tpl\b[^>]*?for="(.*?)"/,
-            ifRe   = /^<tpl\b[^>]*?if="(.*?)"/,
-            execRe = /^<tpl\b[^>]*?exec="(.*?)"/,
-            namedRe = /^<tpl\b[^>]*?name="(\w+)"/,  // named templates..
-            m,
-            id     = 0,
-            tpls   = [];
-    
-        while(true == !!(m = s.match(re))){
-            var forMatch   = m[0].match(nameRe),
-                ifMatch   = m[0].match(ifRe),
-                execMatch   = m[0].match(execRe),
-                namedMatch   = m[0].match(namedRe),
-                
-                exp  = null, 
-                fn   = null,
-                exec = null,
-                name = forMatch && forMatch[1] ? forMatch[1] : '';
-                
-            if (ifMatch) {
-                // if - puts fn into test..
-                exp = ifMatch && ifMatch[1] ? ifMatch[1] : null;
-                if(exp){
-                   fn = new Function('values', 'parent', 'with(values){ return '+(Roo.util.Format.htmlDecode(exp))+'; }');
-                }
-            }
-            
-            if (execMatch) {
-                // exec - calls a function... returns empty if true is  returned.
-                exp = execMatch && execMatch[1] ? execMatch[1] : null;
-                if(exp){
-                   exec = new Function('values', 'parent', 'with(values){ '+(Roo.util.Format.htmlDecode(exp))+'; }');
-                }
-            }
-            
-            
-            if (name) {
-                // for = 
-                switch(name){
-                    case '.':  name = new Function('values', 'parent', 'with(values){ return values; }'); break;
-                    case '..': name = new Function('values', 'parent', 'with(values){ return parent; }'); break;
-                    default:   name = new Function('values', 'parent', 'with(values){ return '+name+'; }');
-                }
-            }
-            var uid = namedMatch ? namedMatch[1] : id;
-            
-            
-            tpls.push({
-                id:     namedMatch ? namedMatch[1] : id,
-                target: name,
-                exec:   exec,
-                test:   fn,
-                body:   m[1] || ''
-            });
-            if (namedMatch) {
-                s = s.replace(m[0], '');
-            } else { 
-                s = s.replace(m[0], '{xtpl'+ id + '}');
-            }
-            ++id;
-        }
-        
-    },
+     
     /**
      * same as applyTemplate, except it's done to one of the subTemplates
      * when using named templates, you can do:
