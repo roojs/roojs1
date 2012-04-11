@@ -377,7 +377,14 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
             if(t.forCall && vs instanceof Array){
                 var buf = [];
                 for(var i = 0, len = vs.length; i < len; i++){
-                    buf[buf.length] = t.compiled.call(this, vs[i], parent);
+                    try {
+                        buf[buf.length] = t.compiled.call(this, vs[i], parent);
+                    } catch (e) {
+                        Roo.log('Xtemplate.applySubTemplate('+ id+ '): Exception thrown on body="' + t.value + '" - ' + e.toString());
+                        Roo.log(e.body);
+                        //Roo.log(t.compiled);
+                        Roo.log(vs[i]);
+                    }   
                 }
                 return buf.join('');
             }
