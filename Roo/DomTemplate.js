@@ -151,7 +151,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         if (node.nodeType != 1) {
             if (node.nodeType == 3 && !this.inPre) {
                 // trim
-                node.nodeValue = Roo.util.Format.trim(node.value);
+                node.nodeValue = Roo.util.Format.trim(node.bodeValue);
                 
             }
             return;
