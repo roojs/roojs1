@@ -264,6 +264,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
             }
         } catch(e) {
             Roo.log('Xtemplate.applySubTemplate('+ id+ '): Exception thrown on roo-if="' + t.value + '" - ' + e.toString());
+            Roo.log(values);
           
             return '';
         }
@@ -274,6 +275,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
             }
         } catch(e) {
             Roo.log('Xtemplate.applySubTemplate('+ id+ '): Exception thrown on roo-for="' + t.value + '" - ' + e.toString());
+            Roo.log(values);
             return '';
         }
         
@@ -289,6 +291,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
             }
         } catch (e) {
             Roo.log('Xtemplate.applySubTemplate('+ id+ '): Exception thrown on roo-for="' + t.value + '" - ' + e.toString());
+            Roo.log(values);
             return '';
         }
         try {
