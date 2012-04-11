@@ -293,7 +293,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
             
             return t.compiled.call(this, vs, parent);
         } catch (e) {
-            Roo.log("Xtemplate.applySubTemplate : Exception thrown");
+            Roo.log('Xtemplate.applySubTemplate: Exception thrown on roo-for="' + t.value + '"');
             Roo.log(e.toString());
             Roo.log(t.compiled);
             return '';
