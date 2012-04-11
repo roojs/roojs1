@@ -188,7 +188,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
             return;
         }
         tpl.uid = this.id++;
-        var value = node.getAttribute('roo-' +  tpl.attr);
+        tpl.value = node.getAttribute('roo-' +  tpl.attr);
         node.removeAttribute('roo-'+ tpl.attr);
         if (tpl.attr != 'name') {
             var placeholder = document.createTextNode('{domtpl' + tpl.uid + '}');
