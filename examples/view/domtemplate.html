@@ -36,8 +36,8 @@ Roo.onReady(function() {
         ];
     Roo.each(data,  function(r) { tpl.append(Roo.get('body'), r); });
     
-    Roo.get('template-show').update(Roo.util.Format.htmlDecode(html)); 
-    Roo.get('javascript-show').update(Roo.util.Format.htmlDecode(
+    Roo.get('template-show').update(Roo.util.Format.htmlEncode(html)); 
+    Roo.get('javascript-show').update(Roo.util.Format.htmlEncode(
         Roo.get('javascript-code').dom.innerHTML
     ));
     
