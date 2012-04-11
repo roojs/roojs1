@@ -21,8 +21,7 @@ Roo.onReady(function() {
        html : html
     });
     Roo.log(tpl);
-    tpl.append(Roo.get('body'),
-        [ 
+    var data =   [ 
             {
                 ontable : 'mtrack_ticket',
                 changedate : new Date() ,
@@ -34,7 +33,9 @@ Roo.onReady(function() {
                 ontable : 'mtrack_repos',
                 changedate : new Date() 
             }
-        ]
+        ];
+    Roo.each(data,  function(r) { tpl.append(Roo.get('body'), r); });
+      
     );
      
 });
