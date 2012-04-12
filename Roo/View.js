@@ -219,10 +219,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         //      roo-name="data" node?
         //      <span class='roo-tpl-{name}'></span> ?????
         
-        var el = this.el;
-        if (this.dataName) {
-            
-        }
+        
         
         this.clearSelections();
         this.el.update("");
