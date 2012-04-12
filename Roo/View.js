@@ -277,6 +277,9 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         this.updateIndexes(index, index);
     },
 
+    
+    
+// --------- FIXME     
     onAdd : function(ds, records, index){
         this.clearSelections();
         if(this.nodes.length == 0){
@@ -289,6 +292,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
             if(n){
                 this.tpl.insertBefore(n, d);
             }else{
+                
                 this.tpl.append(this.el, d);
             }
         }
@@ -297,7 +301,10 @@ Roo.extend(Roo.View, Roo.util.Observable, {
 
     onRemove : function(ds, record, index){
         this.clearSelections();
-        this.el.dom.removeChild(this.nodes[index]);
+        var el = this.dataName  ?
+            this.el.child('.roo-tpl-' + this.dataName) :
+            this.el; 
+        el.dom.removeChild(this.nodes[index]);
         this.updateIndexes(index);
     },
 
@@ -350,7 +357,10 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      * @return {HTMLElement} The template node
      */
     findItemFromChild : function(node){
-        var el = this.el.dom;
+        var el = this.dataName  ?
+            this.el.child('.roo-tpl-' + this.dataName,true) :
+            this.el.dom; 
+        
         if(!node || node.parentNode == el){
 		    return node;
 	    }
