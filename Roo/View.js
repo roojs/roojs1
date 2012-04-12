@@ -169,7 +169,10 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      * @cfg {String|Roo.Template} tpl The template used by this View 
      */
     tpl : false,
-    
+    /**
+     * @cfg {String} dataName the named area of the template to use as the data area
+     */
+    dataName: false,
     /**
      * @cfg {String} selectedClass The css class to add to selected nodes
      */
@@ -214,6 +217,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         // and the body get's added to the
         //      roo-name="data" node?
         //      <span class='roo-tpl-{name}'></span> ?????
+        
         
         
         this.clearSelections();
