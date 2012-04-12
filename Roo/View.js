@@ -274,7 +274,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         }
         var n = this.nodes[index];
         for(var i = 0, len = records.length; i < len; i++){
-            var d = this.prepareData(records[i].data);
+            var d = this.prepareData(records[i].data, i, records[i]);
             if(n){
                 this.tpl.insertBefore(n, d);
             }else{
