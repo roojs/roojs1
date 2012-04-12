@@ -251,8 +251,9 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      * @param {Array/Object} data The raw data (array of colData for a data model bound view or
      * a JSON object for an UpdateManager bound view).
      */
-    prepareData : function(data){
-        this.fireEvent("preparedata", this, data);
+    prepareData : function(data, index, record)
+    {
+        this.fireEvent("preparedata", this, data, index, record);
         return data;
     },
 
@@ -260,7 +261,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         this.clearSelections();
         var index = this.store.indexOf(record);
         var n = this.nodes[index];
-        this.tpl.insertBefore(n, this.prepareData(record.data));
+        this.tpl.insertBefore(n, this.prepareData(record.data, index, record));
         n.parentNode.removeChild(n);
         this.updateIndexes(index, index);
     },
