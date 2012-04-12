@@ -194,7 +194,11 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
             var placeholder = document.createTextNode('{domtpl' + tpl.uid + '}');
             node.parentNode.replaceChild(placeholder,  node);
         } else {
-            node.parentNode.removeChild(node);
+            
+            var placeholder = Roo.DomHelper.document.createElement('span');
+            placeholder.className = 'roo-tpl-' + value;
+            
+            node.parentNode.replaceChild(placeholder,  node);
         }
         
         // parent now sees '{domtplXXXX}
