@@ -251,7 +251,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         
         
         el.update(html.join(""));
-        this.nodes = this.el.dom.childNodes;
+        this.nodes = el.dom.childNodes;
         this.updateIndexes(0);
     },
 
