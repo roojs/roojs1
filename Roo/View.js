@@ -205,6 +205,17 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      */
     refresh : function(){
         var t = this.tpl;
+        
+        // if we are using something like 'domtemplate', then
+        // the what gets used is:
+        // t.applySubtemplate(NAME, data, wrapping data..)
+        // the outer template then get' applied with
+        //     the store 'extra data'
+        // and the body get's added to the
+        //      roo-name="data" node?
+        //      <span class='roo-tpl-{name}'></span> ?????
+        
+        
         this.clearSelections();
         this.el.update("");
         var html = [];
@@ -213,11 +224,16 @@ Roo.extend(Roo.View, Roo.util.Observable, {
             this.el.update(this.emptyText);
             return;
         }
+        
+        
         for(var i = 0, len = records.length; i < len; i++){
             var data = this.prepareData(records[i].data, i, records[i]);
             this.fireEvent("preparedata", this, data, i, records[i]);
             html[html.length] = Roo.util.Format.trim( t.apply(data) );
         }
+        
+        
+        
         this.el.update(html.join(""));
         this.nodes = this.el.dom.childNodes;
         this.updateIndexes(0);
