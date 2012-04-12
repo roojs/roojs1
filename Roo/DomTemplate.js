@@ -195,7 +195,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
             node.parentNode.replaceChild(placeholder,  node);
         } else {
             
-            var placeholder = Roo.DomHelper.document.createElement('span');
+            var placeholder =  document.createElement('span');
             placeholder.className = 'roo-tpl-' + value;
             node.parentNode.replaceChild(placeholder,  node);
         }
