@@ -219,13 +219,19 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         //      roo-name="data" node?
         //      <span class='roo-tpl-{name}'></span> ?????
         
-        
+        var el = this.el;
+        if (this.dataName) {
+            
+        }
         
         this.clearSelections();
         this.el.update("");
         var html = [];
         var records = this.store.getRange();
-        if(records.length < 1){
+        if(records.length < 1) {
+            
+            // is this valid??  = should it render a template??
+            
             this.el.update(this.emptyText);
             return;
         }
