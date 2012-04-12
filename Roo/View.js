@@ -251,6 +251,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      * a JSON object for an UpdateManager bound view).
      */
     prepareData : function(data){
+        this.fireEvent("preparedata", this, data);
         return data;
     },
 
