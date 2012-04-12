@@ -247,6 +247,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     /**
      * Function to override to reformat the data that is sent to
      * the template for each node.
+     * DEPRICATED - use the preparedata event handler.
      * @param {Array/Object} data The raw data (array of colData for a data model bound view or
      * a JSON object for an UpdateManager bound view).
      */
