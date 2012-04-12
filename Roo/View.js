@@ -171,6 +171,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     tpl : false,
     /**
      * @cfg {String} dataName the named area of the template to use as the data area
+     *                          Works with domtemplates roo-name="name"
      */
     dataName: false,
     /**
