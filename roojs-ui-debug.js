@@ -27051,7 +27051,11 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             // we have a scenario where updates need confirming.
             // eg. if a locking scenario exists..
             // we look for { errors : { needs_confirm : true }} in the response.
-            if (typeof(action.result.errors.needs_confirm) != 'undefined') {
+            if (
+                (typeof(action.result) != 'undefined') != 'undefined') &&
+                (typeof(action.result.errors) != 'undefined')  &&
+                (typeof(action.result.errors.needs_confirm) != 'undefined')
+          ){
                 var _t = this;
                 Roo.MessageBox.confirm(
                     "Change requires confirmation",
@@ -27076,7 +27080,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 Roo.MessageBox.alert("Error",
                     (typeof(action.result) != 'undefined' && typeof(action.result.errorMsg) != 'undefined') ?
                         action.result.errorMsg :
-                        "Saving Failed, please check your entries"
+                        "Saving Failed, please check your entries or try again"
                 );
             }
             
