@@ -284,7 +284,11 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             // we have a scenario where updates need confirming.
             // eg. if a locking scenario exists..
             // we look for { errors : { needs_confirm : true }} in the response.
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">action.result.errors.needs_confirm</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(
+                (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">action.result</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) &amp;&amp;
+                (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">action.result.errors</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">)  &amp;&amp;
+                (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">action.result.errors.needs_confirm</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">)
+          ){
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">Roo.MessageBox.confirm</span><span class="jsdoc-syntax">(
                     </span><span class="jsdoc-string">&quot;Change requires confirmation&quot;</span><span class="jsdoc-syntax">,
@@ -309,7 +313,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 </span><span class="jsdoc-var">Roo.MessageBox.alert</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Error&quot;</span><span class="jsdoc-syntax">,
                     (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">action.result</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">action.result.errorMsg</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) ?
                         </span><span class="jsdoc-var">action.result.errorMsg </span><span class="jsdoc-syntax">:
-                        </span><span class="jsdoc-string">&quot;Saving Failed, please check your entries&quot;
+                        </span><span class="jsdoc-string">&quot;Saving Failed, please check your entries or try again&quot;
                 </span><span class="jsdoc-syntax">);
             }
             
