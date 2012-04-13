@@ -40979,9 +40979,14 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 });
             }
             
+            var hasStyles
+            for(var i in this.styles) {
+                hasStyles = true;
+                break;
+            }
             
             // update styles
-            if (this.styles) { 
+            if (hasStyles) { 
                 var st = this.tb.fields.item(0);
                 
                 st.store.removeAll();
