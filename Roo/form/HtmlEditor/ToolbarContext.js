@@ -345,9 +345,13 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 });
             }
             
+            var styles = [];
+            for(var i in this.styles) {
+                styles.push(i);
+            }
             
             // update styles
-            if (this.styles) { 
+            if (styles.length) { 
                 var st = this.tb.fields.item(0);
                 
                 st.store.removeAll();
