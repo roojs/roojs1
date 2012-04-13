@@ -313,7 +313,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 Roo.MessageBox.alert("Error",
                     (typeof(action.result) != 'undefined' && typeof(action.result.errorMsg) != 'undefined') ?
                         action.result.errorMsg :
-                        "Saving Failed, please check your entries"
+                        "Saving Failed, please check your entries or try again"
                 );
             }
             
