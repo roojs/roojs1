@@ -345,13 +345,14 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 });
             }
             
-            var styles = [];
+            var hasStyles
             for(var i in this.styles) {
-                styles.push(i);
+                hasStyles = true;
+                break;
             }
             
             // update styles
-            if (styles.length) { 
+            if (hasStyles) { 
                 var st = this.tb.fields.item(0);
                 
                 st.store.removeAll();
