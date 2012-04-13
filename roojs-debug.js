@@ -23760,7 +23760,11 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      * @cfg {String|Roo.Template} tpl The template used by this View 
      */
     tpl : false,
-    
+    /**
+     * @cfg {String} dataName the named area of the template to use as the data area
+     *                          Works with domtemplates roo-name="name"
+     */
+    dataName: false,
     /**
      * @cfg {String} selectedClass The css class to add to selected nodes
      */
@@ -23796,31 +23800,62 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      */
     refresh : function(){
         var t = this.tpl;
+        
+        // if we are using something like 'domtemplate', then
+        // the what gets used is:
+        // t.applySubtemplate(NAME, data, wrapping data..)
+        // the outer template then get' applied with
+        //     the store 'extra data'
+        // and the body get's added to the
+        //      roo-name="data" node?
+        //      <span class='roo-tpl-{name}'></span> ?????
+        
+        
+        
         this.clearSelections();
         this.el.update("");
         var html = [];
         var records = this.store.getRange();
-        if(records.length < 1){
+        if(records.length < 1) {
+            
+            // is this valid??  = should it render a template??
+            
             this.el.update(this.emptyText);
             return;
         }
+        var el = this.el;
+        if (this.dataName) {
+            this.el.update(t.apply(this.store.meta)); //????
+            el = this.el.child('.roo-tpl-' + this.dataName);
+        }
+        
         for(var i = 0, len = records.length; i < len; i++){
             var data = this.prepareData(records[i].data, i, records[i]);
             this.fireEvent("preparedata", this, data, i, records[i]);
-            html[html.length] = Roo.util.Format.trim( t.apply(data) );
+            html[html.length] = Roo.util.Format.trim(
+                this.dataName ?
+                    t.applySubtemplate(this.dataName, data, this.store.meta) :
+                    t.apply(data)
+            );
         }
-        this.el.update(html.join(""));
-        this.nodes = this.el.dom.childNodes;
+        
+        
+        
+        el.update(html.join(""));
+        this.nodes = el.dom.childNodes;
         this.updateIndexes(0);
     },
 
     /**
      * Function to override to reformat the data that is sent to
      * the template for each node.
+     * DEPRICATED - use the preparedata event handler.
      * @param {Array/Object} data The raw data (array of colData for a data model bound view or
      * a JSON object for an UpdateManager bound view).
      */
-    prepareData : function(data){
+    prepareData : function(data, index, record)
+    {
+        this.fireEvent("preparedata", this, data, index, record);
         return data;
     },
 
@@ -23828,12 +23863,16 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         this.clearSelections();
         var index = this.store.indexOf(record);
         var n = this.nodes[index];
-        this.tpl.insertBefore(n, this.prepareData(record.data));
+        this.tpl.insertBefore(n, this.prepareData(record.data, index, record));
         n.parentNode.removeChild(n);
         this.updateIndexes(index, index);
     },
 
-    onAdd : function(ds, records, index){
+    
+    
+// --------- FIXME     
+    onAdd : function(ds, records, index)
+    {
         this.clearSelections();
         if(this.nodes.length == 0){
             this.refresh();
@@ -23841,10 +23880,11 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         }
         var n = this.nodes[index];
         for(var i = 0, len = records.length; i < len; i++){
-            var d = this.prepareData(records[i].data);
+            var d = this.prepareData(records[i].data, i, records[i]);
             if(n){
                 this.tpl.insertBefore(n, d);
             }else{
+                
                 this.tpl.append(this.el, d);
             }
         }
@@ -23853,7 +23893,10 @@ Roo.extend(Roo.View, Roo.util.Observable, {
 
     onRemove : function(ds, record, index){
         this.clearSelections();
-        this.el.dom.removeChild(this.nodes[index]);
+        var el = this.dataName  ?
+            this.el.child('.roo-tpl-' + this.dataName) :
+            this.el; 
+        el.dom.removeChild(this.nodes[index]);
         this.updateIndexes(index);
     },
 
@@ -23906,7 +23949,10 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      * @return {HTMLElement} The template node
      */
     findItemFromChild : function(node){
-        var el = this.el.dom;
+        var el = this.dataName  ?
+            this.el.child('.roo-tpl-' + this.dataName,true) :
+            this.el.dom; 
+        
         if(!node || node.parentNode == el){
 		    return node;
 	    }
@@ -40933,28 +40979,33 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 });
             }
             
+            
             // update styles
-            var st = this.tb.fields.item(0);
-            st.store.removeAll();
-            var cn = sel.className.split(/\s+/);
-            
-            var avs = [];
-            if (this.styles['*']) {
+            if (this.styles) { 
+                var st = this.tb.fields.item(0);
                 
-                Roo.each(this.styles['*'], function(v) {
-                    avs.push( [ v , cn.indexOf(v) > -1 ? 1 : 0 ] );         
-                });
+                st.store.removeAll();
+               
+                
+                var cn = sel.className.split(/\s+/);
+                
+                var avs = [];
+                if (this.styles['*']) {
+                    
+                    Roo.each(this.styles['*'], function(v) {
+                        avs.push( [ v , cn.indexOf(v) > -1 ? 1 : 0 ] );         
+                    });
+                }
+                if (this.styles[tn]) { 
+                    Roo.each(this.styles[tn], function(v) {
+                        avs.push( [ v , cn.indexOf(v) > -1 ? 1 : 0 ] );         
+                    });
+                }
+                
+                st.store.loadData(avs);
+                st.collapse();
+                st.setValue(cn);
             }
-            if (this.styles[tn]) { 
-                Roo.each(this.styles[tn], function(v) {
-                    avs.push( [ v , cn.indexOf(v) > -1 ? 1 : 0 ] );         
-                });
-            }
-            
-            st.store.loadData(avs);
-            st.collapse();
-            st.setValue(cn);
-            
             // flag our selected Node.
             this.tb.selectedNode = sel;
            
