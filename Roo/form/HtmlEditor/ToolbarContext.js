@@ -346,27 +346,31 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             }
             
             // update styles
-            var st = this.tb.fields.item(0);
-            st.store.removeAll();
-            var cn = sel.className.split(/\s+/);
-            
-            var avs = [];
-            if (this.styles['*']) {
+            if (this.styles) { 
+                var st = this.tb.fields.item(0);
+                if (st.store) {
+                    st.store.removeAll();
+                }
                 
-                Roo.each(this.styles['*'], function(v) {
-                    avs.push( [ v , cn.indexOf(v) > -1 ? 1 : 0 ] );         
-                });
+                var cn = sel.className.split(/\s+/);
+                
+                var avs = [];
+                if (this.styles['*']) {
+                    
+                    Roo.each(this.styles['*'], function(v) {
+                        avs.push( [ v , cn.indexOf(v) > -1 ? 1 : 0 ] );         
+                    });
+                }
+                if (this.styles[tn]) { 
+                    Roo.each(this.styles[tn], function(v) {
+                        avs.push( [ v , cn.indexOf(v) > -1 ? 1 : 0 ] );         
+                    });
+                }
+                
+                st.store.loadData(avs);
+                st.collapse();
+                st.setValue(cn);
             }
-            if (this.styles[tn]) { 
-                Roo.each(this.styles[tn], function(v) {
-                    avs.push( [ v , cn.indexOf(v) > -1 ? 1 : 0 ] );         
-                });
-            }
-            
-            st.store.loadData(avs);
-            st.collapse();
-            st.setValue(cn);
-            
             // flag our selected Node.
             this.tb.selectedNode = sel;
            
