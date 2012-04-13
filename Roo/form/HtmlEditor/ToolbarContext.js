@@ -345,7 +345,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 });
             }
             
-            var hasStyles = false
+            var hasStyles = false;
             for(var i in this.styles) {
                 hasStyles = true;
                 break;
