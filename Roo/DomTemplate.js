@@ -184,7 +184,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         
         if (!tpl.attr) {
             // just itterate children..
-            this.iterChild(node,this.compileNode)
+            this.iterChild(node,this.compileNode);
             return;
         }
         tpl.uid = this.id++;
