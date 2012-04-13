@@ -169,7 +169,11 @@
      * @cfg {String|Roo.Template} tpl The template used by this View 
      */
     </span><span class="jsdoc-var">tpl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} dataName the named area of the template to use as the data area
+     *                          Works with domtemplates roo-name=&quot;name&quot;
+     */
+    </span><span class="jsdoc-var">dataName</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-comment">/**
      * @cfg {String} selectedClass The css class to add to selected nodes
      */
@@ -205,31 +209,62 @@
      */
     </span><span class="jsdoc-var">refresh </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tpl</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-comment">// if we are using something like 'domtemplate', then
+        // the what gets used is:
+        // t.applySubtemplate(NAME, data, wrapping data..)
+        // the outer template then get' applied with
+        //     the store 'extra data'
+        // and the body get's added to the
+        //      roo-name=&quot;data&quot; node?
+        //      &lt;span class='roo-tpl-{name}'&gt;&lt;/span&gt; ?????
+        
+        
+        
         </span><span class="jsdoc-var">this.clearSelections</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.el.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= [];
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">records </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.store.getRange</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">records.length </span><span class="jsdoc-syntax">&lt; 1){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">records.length </span><span class="jsdoc-syntax">&lt; 1) {
+            
+            </span><span class="jsdoc-comment">// is this valid??  = should it render a template??
+            
             </span><span class="jsdoc-var">this.el.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.emptyText</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dataName</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.el.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store.meta</span><span class="jsdoc-syntax">)); </span><span class="jsdoc-comment">//????
+            </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-tpl-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.dataName</span><span class="jsdoc-syntax">);
+        }
+        
         </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">records.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.prepareData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">records</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">records</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
             </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;preparedata&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">records</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
-            </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">html.length</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">Roo.util.Format.trim</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">t.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">) );
+            </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">html.length</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">Roo.util.Format.trim</span><span class="jsdoc-syntax">(
+                </span><span class="jsdoc-var">this.dataName </span><span class="jsdoc-syntax">?
+                    </span><span class="jsdoc-var">t.applySubtemplate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dataName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.store.meta</span><span class="jsdoc-syntax">) :
+                    </span><span class="jsdoc-var">t.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">)
+            );
         }
-        </span><span class="jsdoc-var">this.el.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">));
-        </span><span class="jsdoc-var">this.nodes </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.dom.childNodes</span><span class="jsdoc-syntax">;
+        
+        
+        
+        </span><span class="jsdoc-var">el.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">this.nodes </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.dom.childNodes</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.updateIndexes</span><span class="jsdoc-syntax">(0);
     },
 
     </span><span class="jsdoc-comment">/**
      * Function to override to reformat the data that is sent to
      * the template for each node.
+     * DEPRICATED - use the preparedata event handler.
      * @param {Array/Object} data The raw data (array of colData for a data model bound view or
      * a JSON object for an UpdateManager bound view).
      */
-    </span><span class="jsdoc-var">prepareData </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">prepareData </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;preparedata&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">;
     },
 
@@ -237,12 +272,16 @@
         </span><span class="jsdoc-var">this.clearSelections</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.store.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.nodes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">];
-        </span><span class="jsdoc-var">this.tpl.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.prepareData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">record.data</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">this.tpl.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.prepareData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">record.data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">));
         </span><span class="jsdoc-var">n.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.updateIndexes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">);
     },
 
-    </span><span class="jsdoc-var">onAdd </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">records</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
+    
+    
+</span><span class="jsdoc-comment">// --------- FIXME     
+    </span><span class="jsdoc-var">onAdd </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">records</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">)
+    {
         </span><span class="jsdoc-var">this.clearSelections</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.nodes.length </span><span class="jsdoc-syntax">== 0){
             </span><span class="jsdoc-var">this.refresh</span><span class="jsdoc-syntax">();
@@ -250,10 +289,11 @@
         }
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.nodes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">];
         </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">records.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.prepareData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">records</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.data</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.prepareData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">records</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">records</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">this.tpl.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">);
             }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                
                 </span><span class="jsdoc-var">this.tpl.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">);
             }
         }
@@ -262,7 +302,10 @@
 
     </span><span class="jsdoc-var">onRemove </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.clearSelections</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-var">this.el.dom.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.nodes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">]);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dataName  </span><span class="jsdoc-syntax">?
+            </span><span class="jsdoc-var">this.el.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-tpl-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.dataName</span><span class="jsdoc-syntax">) :
+            </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">; 
+        </span><span class="jsdoc-var">el.dom.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.nodes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">]);
         </span><span class="jsdoc-var">this.updateIndexes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">);
     },
 
@@ -315,7 +358,10 @@
      * @return {HTMLElement} The template node
      */
     </span><span class="jsdoc-var">findItemFromChild </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dataName  </span><span class="jsdoc-syntax">?
+            </span><span class="jsdoc-var">this.el.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-tpl-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.dataName</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) :
+            </span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">; 
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">node.parentNode </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
 		    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">;
 	    }
