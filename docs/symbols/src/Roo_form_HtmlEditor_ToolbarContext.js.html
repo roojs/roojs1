@@ -345,28 +345,33 @@
                 });
             }
             
+            
             </span><span class="jsdoc-comment">// update styles
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">st </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tb.fields.item</span><span class="jsdoc-syntax">(0);
-            </span><span class="jsdoc-var">st.store.removeAll</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel.className.split</span><span class="jsdoc-syntax">(/\s+/);
-            
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">avs </span><span class="jsdoc-syntax">= [];
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.styles</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'*'</span><span class="jsdoc-syntax">]) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.styles</span><span class="jsdoc-syntax">) { 
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">st </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tb.fields.item</span><span class="jsdoc-syntax">(0);
                 
-                </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.styles</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'*'</span><span class="jsdoc-syntax">], </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) {
-                    </span><span class="jsdoc-var">avs.push</span><span class="jsdoc-syntax">( [ </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cn.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) &gt; -1 ? 1 : 0 ] );         
-                });
+                </span><span class="jsdoc-var">st.store.removeAll</span><span class="jsdoc-syntax">();
+               
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel.className.split</span><span class="jsdoc-syntax">(/\s+/);
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">avs </span><span class="jsdoc-syntax">= [];
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.styles</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'*'</span><span class="jsdoc-syntax">]) {
+                    
+                    </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.styles</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'*'</span><span class="jsdoc-syntax">], </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-var">avs.push</span><span class="jsdoc-syntax">( [ </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cn.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) &gt; -1 ? 1 : 0 ] );         
+                    });
+                }
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.styles</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">tn</span><span class="jsdoc-syntax">]) { 
+                    </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.styles</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">tn</span><span class="jsdoc-syntax">], </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-var">avs.push</span><span class="jsdoc-syntax">( [ </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cn.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) &gt; -1 ? 1 : 0 ] );         
+                    });
+                }
+                
+                </span><span class="jsdoc-var">st.store.loadData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">avs</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">st.collapse</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">st.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">);
             }
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.styles</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">tn</span><span class="jsdoc-syntax">]) { 
-                </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.styles</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">tn</span><span class="jsdoc-syntax">], </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) {
-                    </span><span class="jsdoc-var">avs.push</span><span class="jsdoc-syntax">( [ </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cn.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) &gt; -1 ? 1 : 0 ] );         
-                });
-            }
-            
-            </span><span class="jsdoc-var">st.store.loadData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">avs</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">st.collapse</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-var">st.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">);
-            
             </span><span class="jsdoc-comment">// flag our selected Node.
             </span><span class="jsdoc-var">this.tb.selectedNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">;
            

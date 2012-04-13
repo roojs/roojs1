@@ -8,7 +8,7 @@
 		<meta name="generator" content="JsDoc Toolkit" />
 		
 		
-		<title>JsDoc Reference - Roo.Template</title>
+		<title>JsDoc Reference - Roo.DomTemplate</title>
 		
 		
 	<link rel="stylesheet" type="text/css" href="../../css/roojs.css" />		
@@ -31,10 +31,10 @@
 
     <div class="top-tools">
     <!--
-        <a class="inner-link" href="#Roo.Template-props"><img src="resources/s.gif" class="item-icon icon-prop">Properties</a>
-        <a class="inner-link" href="#Roo.Template-methods"><img src="resources/s.gif" class="item-icon icon-method">Methods</a>
-        <a class="inner-link" href="#Roo.Template-events"><img src="resources/s.gif" class="item-icon icon-event">Events</a>
-        <a class="inner-link" href="#Roo.Template-configs"><img src="resources/s.gif" class="item-icon icon-config">Config Options</a>
+        <a class="inner-link" href="#Roo.DomTemplate-props"><img src="resources/s.gif" class="item-icon icon-prop">Properties</a>
+        <a class="inner-link" href="#Roo.DomTemplate-methods"><img src="resources/s.gif" class="item-icon icon-method">Methods</a>
+        <a class="inner-link" href="#Roo.DomTemplate-events"><img src="resources/s.gif" class="item-icon icon-event">Events</a>
+        <a class="inner-link" href="#Roo.DomTemplate-configs"><img src="resources/s.gif" class="item-icon icon-config">Config Options</a>
         <a class="bookmark" href="NEED_TO_CREATE_DIRECT_LINK_HREF"><img src="resources/s.gif" class="item-icon icon-fav">Direct Link</a>
 	-->
     </div>
@@ -42,12 +42,19 @@
     
 <!-- ============================== inheritance Block. ================================= -->	
 	
+		<div class="inheritance res-block">
+		   <pre class="res-block-inner"><a href="./Roo.Template.html#constructor" roo:cls="Roo.Template.html#constructor">Roo.Template</a>
+<img src="../../images/default/s.gif" height="1"  width="20"/><img class="elbow" src="../../images/default/tree/elbow-end.gif"/>Roo.DomTemplate 
+
+		   </pre>
+		</div>
+       
 <!-- ============================== class title / details ============================ -->
     
     
     <h1 class="classTitle">
 				
-				Class Roo.Template
+				Class Roo.DomTemplate
 			</h1>
 			
     <table cellspacing="0" class="class-summary-table">
@@ -56,19 +63,18 @@
 	
         <tr><td class="label">Defined In:</td><td class="hd-info">
 			
-					<a href="./src/Roo_Template.js.html">Roo/Template.js</a>.
+					<a href="./src/Roo_DomTemplate.js.html">Roo/DomTemplate.js</a>.
 			
 	</td></tr>
-        <tr><td class="label">Class:</td><td class="hd-info">Template</td></tr>
+        <tr><td class="label">Class:</td><td class="hd-info">DomTemplate</td></tr>
 	
 	
-        <tr><td class="label">Subclasses:</td><td class="hd-info">
-		<a href="./Roo.DomTemplate.html#constructor" roo:cls="Roo.DomTemplate.html#constructor">Roo.DomTemplate</a>, <a href="./Roo.MasterTemplate.html#constructor" roo:cls="Roo.MasterTemplate.html#constructor">Roo.MasterTemplate</a>, <a href="./Roo.XTemplate.html#constructor" roo:cls="Roo.XTemplate.html#constructor">Roo.XTemplate</a>
-
 	
 	
-	</td></tr>
+		<tr><td class="label">Extends:</td><td class="hd-info">
+			<a href="./Roo.Template.html#constructor" roo:cls="Roo.Template.html#constructor">Roo.Template</a>
 	
+		</td></tr>    
 	
 	
     </table>
@@ -76,7 +82,7 @@
     
 <!-- ============================== class summary ========================== -->			
     <div class="description">
-	Represents an HTML fragment template. Templates can be precompiled for greater performance.<br/>For a list of available format functions, see {<b>link</b> Roo.util.Format}.<br /><br/>Usage:<br/><pre><code><br/>var t = new Roo.Template({<br/>    html :  '&lt;div name="{id}"&gt;' + <br/>        '&lt;span class="{cls}"&gt;{name:trim} {someval:this.myformat}{value:ellipsis(10)}&lt;/span&gt;' +<br/>        '&lt;/div&gt;',<br/>    myformat: function (value, allValues) {<br/>        return 'XX' + value;<br/>    }<br/>});<br/>t.append('some-element', {id: 'myid', cls: 'myclass', name: 'foo', value: 'bar'});<br/></code></pre><br/>For more information see this blog post with examples:<br/> <a href="http://www.cnitblog.com/seeyeah/archive/2011/12/30/38728.html/">DomHelper<br/>     - Create Elements using DOM, HTML fragments and Templates</a>.
+	An effort at a dom based template engine..<br/><br/>Similar to XTemplate, except it uses dom parsing to create the template..<br/><br/>Supported features:<br/><br/> Tags:<br/><br/><pre><code><br/>      {a_variable} - output encoded.<br/>      {a_variable.format:("Y-m-d")} - call a method on the variable<br/>      {a_variable:raw} - unencoded output<br/>      {a_variable:toFixed(1,2)} - Roo.util.Format."toFixed"<br/>      {a_variable:this.method_on_template(...)} - call a method on the template object.<br/> <br/></code></pre><br/> The tpl tag:<br/><pre><code><br/>        &lt;div roo-for="a_variable or condition.."&gt;&lt;/tpl&gt;<br/>        &lt;tpl roo-if="a_variable or condition"&gt;&lt;/tpl&gt;<br/>        &lt;tpl roo-exec="some javascript"&gt;&lt;/tpl&gt;<br/>        &lt;tpl roo-name="named_template"&gt;&lt;/tpl&gt; <br/>  <br/></code></pre>
     </div>
 
 	
@@ -84,10 +90,10 @@
 
 <div class="comments">
 	<b>Class Comments / Notes</B> =>  
-	<u onclick="parent.CommentDialog.showCommentId = 'Roo.Template';">[Add Your comment/notes about this class]</u>
+	<u onclick="parent.CommentDialog.showCommentId = 'Roo.DomTemplate';">[Add Your comment/notes about this class]</u>
 	<br/>
 	<iframe frameborder="0"  id="comments-Roo" style="border: none;width:100%;" 
-		src="/blog.php/GtkDjsComments/Roo.Template.html"></iframe>
+		src="/blog.php/GtkDjsComments/Roo.DomTemplate.html"></iframe>
 </div>
 	
 
@@ -98,7 +104,7 @@
     
 		
     <div class="hr"></div>
-    <a id="Roo.Template-configs"></a>
+    <a id="Roo.DomTemplate-configs"></a>
 		
     
      
@@ -118,7 +124,7 @@
 	
 	
 	
-		<tr class="config-row expandable config-row-alt0 notInherited">
+		<tr class="config-row expandable config-row-alt0">
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
@@ -142,13 +148,13 @@
 		    </td>
 		    <td class="msource">
 			
-			Roo.Template
+			<a href="./Roo.Template.html#constructor" roo:cls="Roo.Template.html#constructor">Roo.Template</a>
 				
 		    </td>
 		</tr>
         
 	
-		<tr class="config-row expandable config-row-alt1 notInherited">
+		<tr class="config-row expandable config-row-alt1">
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
@@ -172,7 +178,7 @@
 		    </td>
 		    <td class="msource">
 			
-			Roo.Template
+			<a href="./Roo.Template.html#constructor" roo:cls="Roo.Template.html#constructor">Roo.Template</a>
 				
 		    </td>
 		</tr>
@@ -192,7 +198,7 @@
   
   
   
-    <a id="Roo.Template-props"></a>      
+    <a id="Roo.DomTemplate-props"></a>      
     
     
 
@@ -208,7 +214,7 @@
   <!-- ============================== methods summary / details ======================== -->
   
   
-  <a id="Roo.Template-methods"></a>
+  <a id="Roo.DomTemplate-methods"></a>
 	<!-- constructor?? -->
   	
 	<!-- static's first 
@@ -237,16 +243,16 @@
 	
         
 	  
-          <tr class="method-row config-row-alt0 expandable notInherited">
+          <tr class="method-row config-row-alt0 notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
             <td class="sig">
-                <a id="Roo-method-Template"   name=".Template"></a>
+                <a id="Roo-method-DomTemplate"   name=".DomTemplate"></a>
 		<div class="fixedFont">
-			<span class="attributes">new <B>Roo.</B></span><b class="itemname">Template</b>
+			<span class="attributes">new <B>Roo.</B></span><b class="itemname">DomTemplate</b>
 				
-				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>cfg</i></B>) 
+				 () 
 			
 				
 			
@@ -254,26 +260,15 @@
                 <div class="mdesc">
 		
 		 
-			<div class="short">Create a new Roo.Template</div> 
+			<div class="short">Create a new Roo.DomTemplate</div> 
 		 
 		 
                     <div class="long">
 			
 			
 			
-				Create a new Roo.Template
+				Create a new Roo.DomTemplate
 			
-			
-				<dl class="detailList">
-				<dt class="heading">Parameters:</dt>
-				
-					<dt>
-						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>cfg</b>
-						
-					</dt>
-					<dd>- Configuration object.</dd>
-				
-				</dl>
 			
 			
 			
@@ -295,69 +290,7 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt1 expandable notInherited">
-            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-	   
-	   
-            <td class="sig">
-                <a id="Roo.Template-method-from"   name=".from"></a>
-		<div class="fixedFont">
-			<span class="attributes">Roo.Template.</span><b class="itemname">from</b>
-				
-				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement <B><i>el</i></B>) 
-			
-				
-			
-		</div>
-                <div class="mdesc">
-		
-                   <div class="short">Creates a template from the passed element's value (<i>display:none</i> textarea, preferred) or innerHTML.</div> 
-		 
-		 
-		 
-                    <div class="long">
-			
-				Creates a template from the passed element's value (<i>display:none</i> textarea, preferred) or innerHTML.
-		    
-				
-			
-			
-			
-			
-				<dl class="detailList">
-				<dt class="heading">Parameters:</dt>
-				
-					<dt>
-						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement</span>  <b>el</b>
-						
-					</dt>
-					<dd>A DOM element or its id</dd>
-				
-				</dl>
-			
-			
-			
-			
-			
-			
-			
-
-		    
-		    
-		     
-                    </div>                    
-                </div>
-
-            </td>
-            <td class="msource">
-		
-			Roo.Template
-		&nbsp;
-            </td>
-        </tr>
-	
-	  
-          <tr class="method-row config-row-alt0 expandable notInherited">
+          <tr class="method-row config-row-alt1 expandable">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -440,13 +373,13 @@
             </td>
             <td class="msource">
 		
-			Roo.Template
+			<a href="./Roo.Template.html#constructor" roo:cls="Roo.Template.html#constructor">Roo.Template</a>
 		&nbsp;
             </td>
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt1 expandable notInherited">
+          <tr class="method-row config-row-alt0 expandable">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -491,13 +424,87 @@
             </td>
             <td class="msource">
 		
-			Roo.Template
+			<a href="./Roo.Template.html#constructor" roo:cls="Roo.Template.html#constructor">Roo.Template</a>
 		&nbsp;
             </td>
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt0 expandable notInherited">
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.DomTemplate-method-applySubTemplate"   name=".applySubTemplate"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">applySubTemplate</b>
+				
+				 (<a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>id</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>values</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>parent</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">same as applyTemplate, except it's done to one of the subTemplates<br/>when using named templates, you can do:<br/><br/>var str = pl.applySubTemplate('your-name', values);</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				same as applyTemplate, except it's done to one of the subTemplates<br/>when using named templates, you can do:<br/><br/>var str = pl.applySubTemplate('your-name', values);
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span>  <b>id</b>
+						
+					</dt>
+					<dd>of the template</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>values</b>
+						
+					</dt>
+					<dd>to apply to template</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>parent</b>
+						
+					</dt>
+					<dd>(normaly the instance of this object)</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.DomTemplate
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -568,7 +575,7 @@
             </td>
             <td class="msource">
 		
-			Roo.Template
+			<a href="./Roo.Template.html#constructor" roo:cls="Roo.Template.html#constructor">Roo.Template</a>
 		&nbsp;
             </td>
         </tr>
@@ -579,32 +586,24 @@
 	   
 	   
             <td class="sig">
-                <a id="Roo.Template-method-compile"   name=".compile"></a>
+                <a id="Roo.DomTemplate-method-compile"   name=".compile"></a>
 		<div class="fixedFont">
 			<span class="attributes"></span><b class="itemname">compile</b>
 				
 				 () 
 			
 				
-					 : 
-					
-						
-						<a href="./Roo.Template.html#constructor" roo:cls="Roo.Template.html#constructor">Roo.Template</a>
-					
-					
-					
-				
 			
 		</div>
                 <div class="mdesc">
 		
-                   <div class="short">Compiles the template into an internal function, eliminating the RegEx overhead.</div> 
+                   <div class="short">compile the template<br/><br/>This is not recursive, so I'm not sure how nested templates are really going to be handled.</div> 
 		 
 		 
 		 
                     <div class="long">
 			
-				Compiles the template into an internal function, eliminating the RegEx overhead.
+				compile the template<br/><br/>This is not recursive, so I'm not sure how nested templates are really going to be handled..
 		    
 				
 			
@@ -614,13 +613,6 @@
 			
 			
 			
-			
-				<dl class="detailList">
-				<dt class="heading">Returns:</dt>
-				
-					<dd><span class="fixedFont"><a href="./Roo.Template.html#constructor" roo:cls="Roo.Template.html#constructor">Roo.Template</a></span>  this</dd>
-				
-				</dl>
 			
 			
 			
@@ -634,13 +626,64 @@
             </td>
             <td class="msource">
 		
-			Roo.Template
+			Roo.DomTemplate
 		&nbsp;
             </td>
         </tr>
 	
 	  
           <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.DomTemplate-method-compileTpl"   name=".compileTpl"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">compileTpl</b>
+				
+				 () 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Compile a segment of the template into a 'sub-template'</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Compile a segment of the template into a 'sub-template'
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.DomTemplate
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -723,13 +766,13 @@
             </td>
             <td class="msource">
 		
-			Roo.Template
+			<a href="./Roo.Template.html#constructor" roo:cls="Roo.Template.html#constructor">Roo.Template</a>
 		&nbsp;
             </td>
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt1 expandable notInherited">
+          <tr class="method-row config-row-alt0 expandable">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -812,13 +855,13 @@
             </td>
             <td class="msource">
 		
-			Roo.Template
+			<a href="./Roo.Template.html#constructor" roo:cls="Roo.Template.html#constructor">Roo.Template</a>
 		&nbsp;
             </td>
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt0 expandable notInherited">
+          <tr class="method-row config-row-alt1 expandable">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -901,13 +944,13 @@
             </td>
             <td class="msource">
 		
-			Roo.Template
+			<a href="./Roo.Template.html#constructor" roo:cls="Roo.Template.html#constructor">Roo.Template</a>
 		&nbsp;
             </td>
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt1 expandable notInherited">
+          <tr class="method-row config-row-alt0 expandable">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -990,13 +1033,13 @@
             </td>
             <td class="msource">
 		
-			Roo.Template
+			<a href="./Roo.Template.html#constructor" roo:cls="Roo.Template.html#constructor">Roo.Template</a>
 		&nbsp;
             </td>
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt0 expandable notInherited">
+          <tr class="method-row config-row-alt1 expandable">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -1073,7 +1116,7 @@
             </td>
             <td class="msource">
 		
-			Roo.Template
+			<a href="./Roo.Template.html#constructor" roo:cls="Roo.Template.html#constructor">Roo.Template</a>
 		&nbsp;
             </td>
         </tr>
@@ -1085,7 +1128,7 @@
   <!-- ============================== events summary / details ======================== -->
   
   
-  <a id="Roo.Template-events"></a>
+  <a id="Roo.DomTemplate-events"></a>
     
   
   	
@@ -1106,7 +1149,7 @@
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Fri Apr 13 2012 15:04:34 GMT+0800 (HKT)
+			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Fri Apr 13 2012 15:04:32 GMT+0800 (HKT)
 			Based on 
 			<a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a>  
 		</div>

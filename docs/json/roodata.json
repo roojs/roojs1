@@ -17,6 +17,10 @@
    "props": [],
    "events": []
   },
+  "Roo": {
+   "props": [],
+   "events": []
+  },
   "Roo.Ajax": {
    "props": [],
    "events": [
@@ -1305,6 +1309,23 @@
    "props": [],
    "events": []
   },
+  "Roo.DomTemplate": {
+   "props": [
+    {
+     "name": "url",
+     "type": "String",
+     "desc": "The Url to load the template from. beware if you are loading from a url, the data may not be ready if you use it instantly..\n                   it should be fixed so that template is observable...",
+     "memberOf": "Roo.Template"
+    },
+    {
+     "name": "html",
+     "type": "String",
+     "desc": "The HTML fragment or an array of fragments to join(\"\") or multiple arguments to join(\"\")",
+     "memberOf": "Roo.Template"
+    }
+   ],
+   "events": []
+  },
   "Roo.Editor": {
    "props": [
     {
@@ -1724,6 +1745,12 @@
      "name": "tpl",
      "type": "String|Roo.Template",
      "desc": "The template used by this View",
+     "memberOf": "Roo.View"
+    },
+    {
+     "name": "dataName",
+     "type": "String",
+     "desc": "the named area of the template to use as the data area\n                         Works with domtemplates roo-name=\"name\"",
      "memberOf": "Roo.View"
     },
     {
@@ -4066,7 +4093,7 @@
      "name": "tree",
      "type": "Roo.tree.TreePanel",
      "desc": "The tree TreePanel, with config etc.",
-     "memberOf": "Roo"
+     "memberOf": ""
     },
     {
      "name": "fitToFrame",
@@ -4248,6 +4275,12 @@
      "name": "tpl",
      "type": "String|Roo.Template",
      "desc": "The template used by this View",
+     "memberOf": ""
+    },
+    {
+     "name": "dataName",
+     "type": "String",
+     "desc": "the named area of the template to use as the data area\n                         Works with domtemplates roo-name=\"name\"",
      "memberOf": ""
     },
     {
@@ -16769,10 +16802,6 @@
    "events": []
   },
   "String": {
-   "props": [],
-   "events": []
-  },
-  "_global_": {
    "props": [],
    "events": []
   },
