@@ -106,4 +106,9 @@
     /*giving UL's LIs generated disc markers*/
     list-style: disc outside;
 }
-     
+.roo-htmleditor-body ol,
+.roo-htmleditor-body ul,
+.roo-htmleditor-body dl {
+	/*bringing lists on to the page with breathing room */
+	margin-left:2em;
+}     
