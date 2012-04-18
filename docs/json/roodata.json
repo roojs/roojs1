@@ -17,10 +17,6 @@
    "props": [],
    "events": []
   },
-  "Roo": {
-   "props": [],
-   "events": []
-  },
   "Roo.Ajax": {
    "props": [],
    "events": [
@@ -2431,7 +2427,7 @@
      "name": "removeMask",
      "type": "Boolean",
      "desc": "True to create a single-use mask that is automatically destroyed after loading (useful for page loads),\nFalse to persist the mask element reference for multiple uses (e.g., for paged data widgets).  Defaults to false.",
-     "memberOf": ""
+     "memberOf": "Roo"
     },
     {
      "name": "msg",
@@ -2871,7 +2867,7 @@
      "name": "items",
      "type": "Array",
      "desc": "array of button configs or elements to add (will be converted to a MixedCollection)",
-     "memberOf": "Roo.Toolbar"
+     "memberOf": "Roo"
     }
    ],
    "events": []
@@ -3108,7 +3104,7 @@
      "name": "mode",
      "type": "String",
      "desc": "The shadow display mode.  Supports the following options:<br />\nsides: Shadow displays on both sides and bottom only<br />\nframe: Shadow displays equally on all four sides<br />\ndrop: Traditional bottom-right drop shadow (default)",
-     "memberOf": ""
+     "memberOf": "Roo"
     },
     {
      "name": "offset",
@@ -3678,7 +3674,7 @@
      "name": "items",
      "type": "Array",
      "desc": "array of button configs or elements to add (will be converted to a MixedCollection)",
-     "memberOf": ""
+     "memberOf": "Roo"
     },
     {
      "name": "container",
@@ -4093,7 +4089,7 @@
      "name": "tree",
      "type": "Roo.tree.TreePanel",
      "desc": "The tree TreePanel, with config etc.",
-     "memberOf": ""
+     "memberOf": "Roo"
     },
     {
      "name": "fitToFrame",
@@ -13810,6 +13806,10 @@
    "props": [],
    "events": []
   },
+  "Roo.lib.Dom": {
+   "props": [],
+   "events": []
+  },
   "Roo.menu": {
    "props": [],
    "events": []
@@ -16802,6 +16802,10 @@
    "events": []
   },
   "String": {
+   "props": [],
+   "events": []
+  },
+  "_global_": {
    "props": [],
    "events": []
   },

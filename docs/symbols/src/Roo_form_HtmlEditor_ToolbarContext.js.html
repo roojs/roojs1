@@ -256,6 +256,9 @@
         </span><span class="jsdoc-var">this.tb.el.show</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.buildFooter</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.footer.show</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">editor.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'hide'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">( ) { </span><span class="jsdoc-var">this.footer.hide</span><span class="jsdoc-syntax">() }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">editor.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'show'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">( ) { </span><span class="jsdoc-var">this.footer.show</span><span class="jsdoc-syntax">() }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
          
         </span><span class="jsdoc-var">this.rendered </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
         

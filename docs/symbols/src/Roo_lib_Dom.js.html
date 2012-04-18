@@ -9,11 +9,28 @@
  * &lt;script type=&quot;text/javascript&quot;&gt;
  */
 
+/**
+ * @class Roo.lib.Dom
+ * @static
+ * 
+ * Dom utils (from YIU afaik)
+ * 
+ **/
 </span><span class="jsdoc-var">Roo.lib.Dom </span><span class="jsdoc-syntax">= {
+    </span><span class="jsdoc-comment">/**
+     * Get the view width
+     * @param {Boolean} full True will get the full document, otherwise it's the view width
+     * @return {Number} The width
+     */
+     
     </span><span class="jsdoc-var">getViewWidth </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">full</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">full </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.getDocumentWidth</span><span class="jsdoc-syntax">() : </span><span class="jsdoc-var">this.getViewportWidth</span><span class="jsdoc-syntax">();
     },
-
+    </span><span class="jsdoc-comment">/**
+     * Get the view height
+     * @param {Boolean} full True will get the full document, otherwise it's the view height
+     * @return {Number} The height
+     */
     </span><span class="jsdoc-var">getViewHeight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">full</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">full </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.getDocumentHeight</span><span class="jsdoc-syntax">() : </span><span class="jsdoc-var">this.getViewportHeight</span><span class="jsdoc-syntax">();
     },
