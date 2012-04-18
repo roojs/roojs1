@@ -96,7 +96,7 @@
 .x-html-editor-wrap   .x-editor-context span:hover {
     text-decoration: underline;
 }
- 
+/* -- undo reset for some elements */
     
 .roo-htmleditor-body  ol li {
     /*giving OL's LIs generated numbers*/
