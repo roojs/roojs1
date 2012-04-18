@@ -256,6 +256,9 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         this.tb.el.show();
         this.buildFooter();
         this.footer.show();
+        editor.on('hide', function( ) { this.footer.hide() }, this);
+        editor.on('show', function( ) { this.footer.show() }, this);
+        
          
         this.rendered = true;
         
