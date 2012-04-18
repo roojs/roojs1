@@ -96,3 +96,14 @@
 .x-html-editor-wrap   .x-editor-context span:hover {
     text-decoration: underline;
 }
+ 
+    
+.roo-htmleditor-body  ol li {
+    /*giving OL's LIs generated numbers*/
+    list-style: decimal outside;        
+}
+.roo-htmleditor-body ul li {
+    /*giving UL's LIs generated disc markers*/
+    list-style: disc outside;
+}
+     
