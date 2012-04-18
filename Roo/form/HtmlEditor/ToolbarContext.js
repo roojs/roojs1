@@ -506,7 +506,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                         fields: ['val'],
                         data : item.opts  
                     }),
-                    name : i,
+                    name : '-roo-edit-' + i,
                     displayField:'val',
                     typeAhead: false,
                     mode: 'local',
