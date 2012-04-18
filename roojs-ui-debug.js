@@ -26478,7 +26478,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             // update attributes
             if (this.tb.fields) {
                 this.tb.fields.each(function(e) {
-                   e.setValue(sel.getAttribute(e.name));
+                   e.setValue(sel.getAttribute(e.attrname));
                 });
             }
             
@@ -26602,7 +26602,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     fields: ['val', 'selected'],
                     data : [] 
                 }),
-                name : 'className',
+                name : '-roo-edit-className',
+                attrname : 'className',
                 displayField:'val',
                 typeAhead: false,
                 mode: 'local',
@@ -26640,7 +26641,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                         fields: ['val'],
                         data : item.opts  
                     }),
-                    name : i,
+                    name : '-roo-edit-' + i,
+                    attrname : i,
                     displayField:'val',
                     typeAhead: false,
                     mode: 'local',
@@ -26651,7 +26653,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     width: item.width ? item.width  : 130,
                     listeners : {
                         'select': function(c, r, i) {
-                            tb.selectedNode.setAttribute(c.name, r.get('val'));
+                            tb.selectedNode.setAttribute(c.attrname, r.get('val'));
                         }
                     }
 
@@ -26669,13 +26671,15 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 continue;
             }
             tb.addField( new Roo.form.TextField({
-                name: i,
+                name: '-roo-edit-' + i,
+                attrname : i,
+                
                 width: item.width,
                 //allowBlank:true,
                 value: '',
                 listeners: {
                     'change' : function(f, nv, ov) {
-                        tb.selectedNode.setAttribute(f.name, nv);
+                        tb.selectedNode.setAttribute(f.attrname, nv);
                     }
                 }
             }));

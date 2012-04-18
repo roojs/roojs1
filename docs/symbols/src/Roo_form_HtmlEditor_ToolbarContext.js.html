@@ -344,7 +344,7 @@
             </span><span class="jsdoc-comment">// update attributes
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tb.fields</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">this.tb.fields.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
-                   </span><span class="jsdoc-var">e.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sel.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.name</span><span class="jsdoc-syntax">));
+                   </span><span class="jsdoc-var">e.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sel.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.attrname</span><span class="jsdoc-syntax">));
                 });
             }
             
@@ -468,7 +468,8 @@
                     </span><span class="jsdoc-var">fields</span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">'val'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'selected'</span><span class="jsdoc-syntax">],
                     </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">: [] 
                 }),
-                </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'className'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'-roo-edit-className'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">attrname </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'className'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">displayField</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'val'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">typeAhead</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'local'</span><span class="jsdoc-syntax">,
@@ -506,7 +507,8 @@
                         </span><span class="jsdoc-var">fields</span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">'val'</span><span class="jsdoc-syntax">],
                         </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">item.opts  
                     </span><span class="jsdoc-syntax">}),
-                    </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'-roo-edit-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">attrname </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">displayField</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'val'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">typeAhead</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'local'</span><span class="jsdoc-syntax">,
@@ -517,7 +519,7 @@
                     </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">item.width </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">item.width  </span><span class="jsdoc-syntax">: 130,
                     </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
                         </span><span class="jsdoc-string">'select'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
-                            </span><span class="jsdoc-var">tb.selectedNode.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">r.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'val'</span><span class="jsdoc-syntax">));
+                            </span><span class="jsdoc-var">tb.selectedNode.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.attrname</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">r.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'val'</span><span class="jsdoc-syntax">));
                         }
                     }
 
@@ -535,13 +537,15 @@
                 </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
             }
             </span><span class="jsdoc-var">tb.addField</span><span class="jsdoc-syntax">( </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.form.TextField</span><span class="jsdoc-syntax">({
-                </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'-roo-edit-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">attrname </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">,
+                
                 </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">item.width</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-comment">//allowBlank:true,
                 </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">listeners</span><span class="jsdoc-syntax">: {
                     </span><span class="jsdoc-string">'change' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">nv</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ov</span><span class="jsdoc-syntax">) {
-                        </span><span class="jsdoc-var">tb.selectedNode.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">nv</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">tb.selectedNode.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.attrname</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">nv</span><span class="jsdoc-syntax">);
                     }
                 }
             }));
