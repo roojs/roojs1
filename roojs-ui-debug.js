@@ -24400,7 +24400,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             //<style type="text/css">' +
             //'body{border:0;margin:0;padding:3px;height:98%;cursor:text;}' +
             //'</style>' +
-            ' </head><body></body></html>';
+            ' </head><body class="roo-htmleditor-body"></body></html>';
     },
 
     // private
