@@ -1774,11 +1774,28 @@ Date.prototype.add = function(interval, value){
  * <script type="text/javascript">
  */
 
+/**
+ * @class Roo.lib.Dom
+ * @static
+ * 
+ * Dom utils (from YIU afaik)
+ * 
+ **/
 Roo.lib.Dom = {
+    /**
+     * Get the view width
+     * @param {Boolean} full True will get the full document, otherwise it's the view width
+     * @return {Number} The width
+     */
+     
     getViewWidth : function(full) {
         return full ? this.getDocumentWidth() : this.getViewportWidth();
     },
-
+    /**
+     * Get the view height
+     * @param {Boolean} full True will get the full document, otherwise it's the view height
+     * @return {Number} The height
+     */
     getViewHeight : function(full) {
         return full ? this.getDocumentHeight() : this.getViewportHeight();
     },
