@@ -275,7 +275,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
             this.hiddenEl.value  = v;
             var v_ar = [];
             Roo.each(v.split(','), function(k) {
-                Roo.log("CHECK " + this.store.valueField + ',' + k));
+                Roo.log("CHECK " + this.store.valueField + ',' + k);
                 var li = this.store.query(this.store.valueField, k);
                 if (!li.length) {
                     return;
