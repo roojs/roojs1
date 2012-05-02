@@ -171,7 +171,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
     {
         // returns hidden if it's set..
         if (!this.rendered) {return ''};
-        return  this.hiddenListName;
+        return  this.hiddenName ? this.hiddenName : this.name;
         
     },
     
