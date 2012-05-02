@@ -263,10 +263,10 @@ Roo.onReady(function(){
     mform.render('form-ct2');
     mform.setValues({
         country  : 'AK,LA',
-        countryNames : 'Alaska,Louisana'
-        
-    })
-
+        countryNames : 'Alaska,Louisana',
+        country2  : 'AK,LA',
+        countryNames2 : 'Alaska,Louisana'        
+    });
     /*
      * ================  Form 3  =======================
      */
