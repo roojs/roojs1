@@ -94,9 +94,11 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField
     onRender : function(ct, position) 
     {
         
-        // give fake names to child combo;
+        // create the standard hidden element
         Roo.form.ComboBoxArray.superclass.onRender.call(this, ct, position);
         
+        
+        // give fake names to child combo;
         this.combo.hiddenName = this.hiddenName ? (this.hiddenName+'-subcombo') : this.hiddenName;
         this.combo.name = this.name? (this.name+'-subcombo') : this.name;
         
@@ -175,22 +177,23 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField
     
     
     onResize: function(w, h){
-        Roo.form.ComboBox.superclass.onResize.apply(this, arguments);
+        
+        this.combo.onResize(w,h);
         
         if(typeof w != 'number'){
             // we do not handle it!?!?
             return;
         }
-        var tw = this.trigger.getWidth();
+        var tw = this.combo.trigger.getWidth();
         tw += this.addicon ? this.addicon.getWidth() : 0;
         tw += this.editicon ? this.editicon.getWidth() : 0;
         var x = w - tw;
-        this.el.setWidth( this.adjustWidth('input', x));
+        this.combo.el.setWidth( this.combo.adjustWidth('input', x));
             
-        this.trigger.setStyle('left', '0px');
+        this.combo.trigger.setStyle('left', '0px');
         
         if(this.list && this.listWidth === undefined){
-            var lw = Math.max(x + this.trigger.getWidth(), this.minListWidth);
+            var lw = Math.max(x + this.combo.trigger.getWidth(), this.combo.minListWidth);
             this.list.setWidth(lw);
             this.innerList.setWidth(lw - this.list.getFrameWidth('lr'));
         }
@@ -228,7 +231,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField
             return;
         }
         var ar = [];
-        var idField = this.idField;
+        var idField = this.combo.valueField;
         this.items.each(function(f) {
             ar.push(f.data[idField]);
            
