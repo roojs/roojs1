@@ -1,16 +1,34 @@
-//<script type="text/javascript">
+/*
+ * Copyright(c) 2010-2012, Roo J Solutions Limited
+ *
+ * Licence LGPL
+ *
+ */
+
+/**
+ * @class Roo.form.ComboBoxArray
+ * @extends Roo.form.ComboBox
+ * A facebook style adder... for lists of email / people / countries  etc...
+ * pick multiple items from a combo box, and shows each one.
+ *
+ *  Fred [x]  Brian [x]  [Pick another |v]
+ * 
+ * @constructor
+ * Create a new ComboBoxArray.
+ * @param {Object} config Configuration options
+ */
 /**
  * 
- * A facebook style adder... for lists of email / people etc...
  * 
  * 
+ *  field :  [Selected x] [.....V]
  * 
  */
 
 
-Roo.form.ComboBoxLister = function(config){
+Roo.form.ComboBoxArray = function(config){
     
-    Roo.form.ComboBoxLister.superclass.constructor.call(this, config);
+    Roo.form.ComboBoxArray.superclass.constructor.call(this, config);
     this.items = new Roo.util.MixedCollection(false);
     this.on('select', function(cb, rec, ix) {
         this.addItem(rec.data);
@@ -23,7 +41,7 @@ Roo.form.ComboBoxLister = function(config){
     
 }
  
-Roo.extend(Roo.form.ComboBoxLister, Roo.form.ComboBox, { 
+Roo.extend(Roo.form.ComboBoxArray, Roo.form.ComboBox, { 
     lastData : false,
     items  : false,
     nameField : 'name',
@@ -42,7 +60,7 @@ Roo.extend(Roo.form.ComboBoxLister, Roo.form.ComboBox, {
     onRender : function(ct, position) 
     {
          
-        Roo.form.ComboBoxLister.superclass.onRender.call(this, ct, position); 
+        Roo.form.ComboBoxArray.superclass.onRender.call(this, ct, position); 
         this.wrap.addClass('p-cblist-grp');
         var cbwrap = this.wrap.createChild(
             {tag: 'div', cls: 'p-cblist-cb'},
@@ -118,7 +136,7 @@ Roo.extend(Roo.form.ComboBoxLister, Roo.form.ComboBox, {
             return;
         }
         
-        var x = new Roo.form.ComboBoxLister.Item({
+        var x = new Roo.form.ComboBoxArray.Item({
             //id : rec[this.idField],
             data : rec,
             nameField : this.nameField,
@@ -151,7 +169,7 @@ Roo.extend(Roo.form.ComboBoxLister, Roo.form.ComboBox, {
     
     reset : function()
     {
-        Roo.form.ComboBoxLister.superclass.reset.call(this); 
+        Roo.form.ComboBoxArray.superclass.reset.call(this); 
         this.items.each(function(f) {
            f.remove(); 
         });
@@ -176,17 +194,18 @@ Roo.extend(Roo.form.ComboBoxLister, Roo.form.ComboBox, {
         
     },
     validateValue : function(value){
-        return Roo.form.ComboBoxLister.superclass.validateValue.call(this, this.getValue());
+        return Roo.form.ComboBoxArray.superclass.validateValue.call(this, this.getValue());
         
     }
     
 });
 
-Roo.form.ComboBoxLister.Item = function(config) {
+Roo.form.ComboBoxArray.Item = function(config) {
     config.id = Roo.id();
-    Roo.form.ComboBoxLister.Item.superclass.constructor.call(this, config);
+    Roo.form.ComboBoxArray.Item.superclass.constructor.call(this, config);
 }
-Roo.extend(Roo.form.ComboBoxLister.Item, Roo.BoxComponent, {
+
+Roo.extend(Roo.form.ComboBoxArray.Item, Roo.BoxComponent, {
     data : {},
     cb: false,
     defaultAutoCreate : {tag: 'div', cls: 'p-cblist-item', cn : [ 
