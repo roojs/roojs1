@@ -266,6 +266,8 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
             return;
         }
         Roo.log(v);
+        Roo.log(this.hiddenEl.dom.value);
+        Roo.log(this.el.dom.value);
         
         var _this = this;
         Roo.each(v, function(l) {
