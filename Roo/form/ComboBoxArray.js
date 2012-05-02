@@ -123,12 +123,12 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
         this.outerWrap = this.combo.wrap;
         this.wrap = cbwrap;
         
-        this.outerWrap.setWidth(this.boxWidth);
+        this.outerWrap.setWidth(this.width);
         this.outerWrap.dom.removeChild(this.el.dom);
         
         this.wrap.dom.appendChild(this.el.dom);
-        this.outerWrap.dom.removeChild(this.trigger.dom);
-        this.combo.wrap.dom.appendChild(this.trigger.dom);
+        this.outerWrap.dom.removeChild(this.combo.trigger.dom);
+        this.combo.wrap.dom.appendChild(this.combo.trigger.dom);
         
         this.combo.trigger.setStyle('position','relative');
         this.combo.trigger.setStyle('left', '0px');
