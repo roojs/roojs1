@@ -132,7 +132,7 @@
 .x-cbarray-item img
 {
    margin-left: 5px;
-   background:transparent url(../templates/images/mailAddClose.gif) no-repeat scroll 0 0;
+   background:transparent url(../images/default/dd/drop-sub.gif) no-repeat scroll 0 0;
    cursor: pointer;
 }
 .x-cbarray-cb 
