@@ -83,7 +83,6 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
     // private - the hidden field el.
     hiddenEl : false,
     
-    boxWidth : 200, // use to set the box around the entry..
     
     //validateValue : function() { return true; }, // all values are ok!
     //onAddClick: function() { },
