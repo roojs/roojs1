@@ -81,16 +81,17 @@ Roo.onReady(function(){
                         xtype : 'ComboBoxArray',
                         xns : Roo.form,
                         fieldLabel: 'Multi select test',
-                        name: 'country',
-                        hiddenName: 'countryNames',
+                        name: 'countryNames',
+                        hiddenName: 'country',
+                        
                         width: 550,
                         combo : {
                             
                             valueField : 'abbr',
                             displayField : 'state',
                             
-                            name : 'country',
-                            hiddenName : 'countryNames',
+                            name : 'countryNames',
+                            hiddenName : 'country',
                             
                             xtype : 'ComboBox',
                             xns : Roo.form,
