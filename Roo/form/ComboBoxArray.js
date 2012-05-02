@@ -103,9 +103,9 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
         this.combo.onRender(ct, position);
         
         // assigned so form know we need to do this..
-        this.store = this.combo.store;
-        this.valueField = this.combo.valueField;
-        this.displayField = this.combo.displayField ;
+        this.store          = this.combo.store;
+        this.valueField     = this.combo.valueField;
+        this.displayField   = this.combo.displayField ;
         
         
         this.combo.wrap.addClass('x-cbarray-grp');
