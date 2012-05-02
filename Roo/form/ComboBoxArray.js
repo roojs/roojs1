@@ -95,7 +95,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField
     {
         
         // give fake names to child combo;
-        Roo.form.ComboBox.superclass.onRender.call(this, ct, position);
+        Roo.form.ComboBoxArray.superclass.onRender.call(this, ct, position);
         
         this.combo.hiddenName = this.hiddenName ? (this.hiddenName+'-subcombo') : this.hiddenName;
         this.combo.name = this.name? (this.name+'-subcombo') : this.name;
