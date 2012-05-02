@@ -70,6 +70,28 @@ Roo.onReady(function(){
     mform = new Roo.form.Form({
         labelAlign: 'top',
         items : [
+            
+            {
+                
+                xtype : 'Column', 
+                width: 500, // precise column sizes or percentages or straight CSS
+                items : [
+                    {
+                        xtype : 'ComboBoxArray',
+                        xns : Roo.form,
+                        fieldLabel: 'Multi select test',
+                        name: 'country',
+                        hiddenName: 'countryNames',
+                        width: 500,
+                        
+                        
+                        
+                        
+                    }
+                    
+                ]
+            },
+            
             {
                 
                 xtype : 'Column', 
