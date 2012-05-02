@@ -49,11 +49,7 @@ Roo.form.ComboBoxArray = function(config)
    
     
 }
- Roo.extend(Roo.form.Hidden, Roo.form.TextField, {
-   
-
-
-});
+ 
 Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField
 { 
     /**
