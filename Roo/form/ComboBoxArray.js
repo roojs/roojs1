@@ -113,6 +113,8 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.ComboBox,
         this.el.setStyle('vertical-align', 'text-bottom');
         
         //this.trigger.setStyle('vertical-align', 'top');
+        
+        // this should use the code from combo really... on('add' ....)
         if (this.adder) {
             
         
