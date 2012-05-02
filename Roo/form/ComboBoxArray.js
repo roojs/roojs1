@@ -82,7 +82,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
     items  : false,
     // private - the hidden field el.
     hiddenEl : false,
-    
+    // private - the filed el..
     el : false,
     
     //validateValue : function() { return true; }, // all values are ok!
