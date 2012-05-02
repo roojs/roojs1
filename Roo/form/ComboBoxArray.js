@@ -297,25 +297,45 @@ Roo.form.ComboBoxArray.Item = function(config) {
 Roo.extend(Roo.form.ComboBoxArray.Item, Roo.BoxComponent, {
     data : {},
     cb: false,
-    defaultAutoCreate : {tag: 'div', cls: 'x-cbarray-item', cn : [ 
+    nameField : false,
+    tipField : false,
+    
+    
+    defaultAutoCreate : {
+        tag: 'div',
+        cls: 'x-cbarray-item',
+        cn : [ 
             { tag: 'div' },
-            { tag: 'img', width:16, height : 16, src : Roo.BLANK_IMAGE_URL , align: 'center' }
+            {
+                tag: 'img',
+                width:16,
+                height : 16,
+                src : Roo.BLANK_IMAGE_URL ,
+                align: 'center'
+            }
         ]
         
     },
     
  
-    onRender : function(ct, position){
+    onRender : function(ct, position)
+    {
         Roo.form.Field.superclass.onRender.call(this, ct, position);
+        
         if(!this.el){
             var cfg = this.getAutoCreate();
             this.el = ct.createChild(cfg, position);
         }
+        
         this.el.child('img').dom.setAttribute('src', Roo.BLANK_IMAGE_URL);
         
         this.el.child('div').dom.innerHTML = this.cb.renderer ? 
-            this.cb.renderer(this.data) : String.format('{0}',this.data[this.nameField]);
-        this.el.child('div').dom.setAttribute('qtip', String.format('{0}',this.data[this.tipField]));
+            this.cb.renderer(this.data) :
+            String.format('{0}',this.data[this.nameField]);
+            
+        this.el.child('div').dom.setAttribute('qtip',
+                        String.format('{0}',this.data[this.tipField])
+        );
         
         this.el.child('img').on('click', this.remove, this);
         
