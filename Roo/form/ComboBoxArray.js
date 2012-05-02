@@ -92,7 +92,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
     {
         
         // create the standard hidden element
-        Roo.form.ComboBoxArray.superclass.onRender.call(this, ct, position);
+        //Roo.form.ComboBoxArray.superclass.onRender.call(this, ct, position);
         
         
         // give fake names to child combo;
