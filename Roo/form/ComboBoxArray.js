@@ -265,6 +265,8 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
         if (typeof(v) != 'object') {
             return;
         }
+        Roo.log(v);
+        
         var _this = this;
         Roo.each(v, function(l) {
             _this.addItem(l);
