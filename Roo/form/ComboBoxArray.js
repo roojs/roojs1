@@ -269,7 +269,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
     setValue: function(v) // not a valid action - must use addItems..
     {
          
-       this.reset();
+        this.reset();
 
         if (this.store.isLocal) {
             // then we can use the store to find the values..
