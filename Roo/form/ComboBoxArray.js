@@ -296,7 +296,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
     setFromData: function(v)
     {
         // this recieves an object, if setValues is called.
-        Roo.log(v);
+        this.reset();
         this.el.dom.value = v[this.displayField];
         this.hiddenEl.dom.value = v[this.valueField];
         
