@@ -57,14 +57,27 @@ Roo.form.ComboBoxArray = function(config)
    
     
 }
- 
-Roo.extend(Roo.form.ComboBoxArray, Roo.form.Field
+ Roo.extend(Roo.form.Hidden, Roo.form.TextField, {
+   
+
+
+});
+Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField
 { 
     /**
      * @cfg {Roo.form.Combo} combo The combo box that is wrapped
      */
     
     lastData : false,
+    
+    // behavies liek a hiddne field
+    inputType:      'hidden',
+    /**
+     * @cfg {Number} width The width of the box that displays the selected element
+     */ 
+    width:          300,
+
+    // private the array of items that are displayed..
     items  : false,
     
     
