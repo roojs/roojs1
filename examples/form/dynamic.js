@@ -101,6 +101,7 @@ Roo.onReady(function(){
                                 data : Roo.exampledata.states // from states.js    
                             },
                             width: 200,
+                            listWidth : 300,
                             editable : false,
                             
                             typeAhead: false,
