@@ -178,7 +178,9 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
     
     onResize: function(w, h){
         
-        //this.combo.onResize(w,h);
+        return;
+        // not sure if this is needed..
+        this.combo.onResize(w,h);
         
         if(typeof w != 'number'){
             // we do not handle it!?!?
