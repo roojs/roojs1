@@ -83,7 +83,7 @@ Roo.onReady(function(){
                         fieldLabel: 'Multi select test',
                         name: 'country',
                         hiddenName: 'countryNames',
-                        width: 500,
+                        width: 550,
                         combo : {
                             
                             valueField : 'abbr',
