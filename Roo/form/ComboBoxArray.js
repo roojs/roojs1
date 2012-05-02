@@ -271,6 +271,13 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
         Roo.log(v);
         if (this.store.isLocal) {
             // then we can use the store to find the values..
+            // comma seperated at present.. this needs to allow JSON based encoding..
+            this.hiddenField.setValue(v);
+            var ar = [];
+            Roo.each(v.split(','), function(v) {
+                
+                
+            });;
             
             
             
