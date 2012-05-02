@@ -71,9 +71,9 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.ComboBox,
     {
          
         Roo.form.ComboBoxArray.superclass.onRender.call(this, ct, position); 
-        this.wrap.addClass('p-cblist-grp');
+        this.wrap.addClass('x-cbarray-grp');
         var cbwrap = this.wrap.createChild(
-            {tag: 'div', cls: 'p-cblist-cb'},
+            {tag: 'div', cls: 'x-cbarray-cb'},
             this.el.dom
         );  
         if (this.hiddenListName) {
@@ -231,7 +231,7 @@ Roo.form.ComboBoxArray.Item = function(config) {
 Roo.extend(Roo.form.ComboBoxArray.Item, Roo.BoxComponent, {
     data : {},
     cb: false,
-    defaultAutoCreate : {tag: 'div', cls: 'p-cblist-item', cn : [ 
+    defaultAutoCreate : {tag: 'div', cls: 'x-cbarray-item', cn : [ 
             { tag: 'div' },
             { tag: 'img', width:16, height : 16, src : Roo.BLANK_IMAGE_URL , align: 'center' }
         ]
