@@ -114,6 +114,9 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
         this.hiddenEl = this.combo.wrap.createChild({
             tag: 'input',  type:'hidden' , name: this.hiddenName, value : ''
         });
+        this.el = this.combo.wrap.createChild({
+            tag: 'input',  type:'hidden' , name: this.name, value : ''
+        });
          //   this.el.dom.removeAttribute("name");
         
         
