@@ -57,10 +57,11 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.ComboBox,
     tipField : 'email',
     
     renderer : false,
-     /**
-     * @cfg {String} idField The field to take the hidden 'id' data from
+     
+    //hiddenName : false, // set this if you want a , sperated list of values in it for form posting..
+    /**
+     * @cfg {String} hiddenListName The field to take the array of hidden 'id' data that is selected
      */
-    hiddenName : false, // set this if you want a , sperated list of values in it for form posting..
     hiddenListName : false,
     hiddenEl : false,
     
