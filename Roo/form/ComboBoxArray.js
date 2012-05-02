@@ -262,9 +262,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
     },
     setValue: function(v) // not a valid action - must use addItems..
     {
-        if (typeof(v) != 'object') {
-            return;
-        }
+         
         Roo.log(v);
         Roo.log(this.hiddenEl.dom.value);
         Roo.log(this.el.dom.value);
