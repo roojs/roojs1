@@ -83,6 +83,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
     // private - the hidden field el.
     hiddenEl : false,
     
+    el : false,
     
     //validateValue : function() { return true; }, // all values are ok!
     //onAddClick: function() { },
