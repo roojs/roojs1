@@ -154,8 +154,9 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField
         
         this.combo.on('select', function(cb, rec, ix) {
             this.addItem(rec.data);
-            this.setValue('');
-            this.el.dom.value = '';
+            
+            cb.setValue('');
+            cb.el.dom.value = '';
             //cb.lastData = rec.data;
             // add to list
             
