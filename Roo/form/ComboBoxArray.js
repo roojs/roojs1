@@ -125,6 +125,15 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.ComboBox,
     },
     
     
+    getName: function()
+    {
+        // returns hidden if it's set..
+        if (!this.rendered) {return ''};
+        return  this.hiddenListName;
+        
+    },
+    
+    
     onResize: function(w, h){
         Roo.form.ComboBox.superclass.onResize.apply(this, arguments);
         
