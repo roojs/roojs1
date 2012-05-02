@@ -89,8 +89,8 @@ Roo.onReady(function(){
                             valueField : 'abbr',
                             displayField : 'state',
                             
-                            name : 'countryNames',
-                            hiddenName : 'country',
+                            name : 'country',
+                            hiddenName : 'countryNames',
                             
                             xtype : 'ComboBox',
                             xns : Roo.form,
