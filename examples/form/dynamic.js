@@ -119,6 +119,87 @@ Roo.onReady(function(){
                 ]
             },
             
+            
+            {
+                
+                xtype : 'Column', 
+                width: 500, // precise column sizes or percentages or straight CSS
+                items : [
+                    {
+                        xtype : 'ComboBoxArray',
+                        xns : Roo.form,
+                        fieldLabel: 'Multi select test',
+                        name: 'countryNames',
+                        hiddenName: 'country',
+                        
+                        width: 550,
+                        combo : {
+                            
+                            valueField : 'abbr',
+                            displayField : 'state',
+                            
+                            name : 'countryNames',
+                            hiddenName : 'country',
+                            
+                            xtype : 'ComboBox',
+                            xns : Roo.form,
+                            
+                            
+                            
+                             
+             
+        
+      
+         
+        
+                            
+                            store: {
+                                xtype : 'Store',
+                                xns: Roo.data,
+                                
+                                proxy: {
+                                    xns : Roo.data,
+                                    xtype : 'ScriptTagProxy',
+                                    url: 'http://www.roojs.com/forum/topics-remote.php'
+                                },
+                                reader: {
+                                    xns : Roo.data,
+                                    xtype : 'JsonReader',
+                                    root: 'topics',
+                                    totalProperty: 'totalCount',
+                                    id: 'post_id',
+                                    fields : [
+                                        {name: 'title', mapping: 'topic_title'},
+                                        {name: 'topicId', mapping: 'topic_id'},
+                                        {name: 'author', mapping: 'author'},
+                                        {name: 'lastPost', mapping: 'post_time', type: 'date', dateFormat: 'timestamp'},
+                                        {name: 'excerpt', mapping: 'post_text'}
+                                    ]
+                                }
+                            },
+                            width: 200,
+                            listWidth : 300,
+                            editable : false,
+                            
+                            typeAhead: false,
+                            mode: 'local',
+                            triggerAction: 'all',
+                            emptyText:'Select a state...',
+                            selectOnFocus:true,
+                            resizable:true
+                        }
+                        
+                        
+                    }
+                    
+                ]
+            },
+            
+           
+
+            
+            
+            
             {
                 
                 xtype : 'Column', 
