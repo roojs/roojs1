@@ -48,9 +48,7 @@
 <img src="../../images/default/s.gif" height="1" width="40"/><img src="../../images/default/tree/elbow-end.gif" class="elbow"/><a href="./Roo.BoxComponent.html#constructor" roo:cls="Roo.BoxComponent.html#constructor">Roo.BoxComponent</a>
 <img src="../../images/default/s.gif" height="1" width="60"/><img src="../../images/default/tree/elbow-end.gif" class="elbow"/><a href="./Roo.form.Field.html#constructor" roo:cls="Roo.form.Field.html#constructor">Roo.form.Field</a>
 <img src="../../images/default/s.gif" height="1" width="80"/><img src="../../images/default/tree/elbow-end.gif" class="elbow"/><a href="./Roo.form.TextField.html#constructor" roo:cls="Roo.form.TextField.html#constructor">Roo.form.TextField</a>
-<img src="../../images/default/s.gif" height="1" width="100"/><img src="../../images/default/tree/elbow-end.gif" class="elbow"/><a href="./Roo.form.TriggerField.html#constructor" roo:cls="Roo.form.TriggerField.html#constructor">Roo.form.TriggerField</a>
-<img src="../../images/default/s.gif" height="1" width="120"/><img src="../../images/default/tree/elbow-end.gif" class="elbow"/><a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-<img src="../../images/default/s.gif" height="1"  width="140"/><img class="elbow" src="../../images/default/tree/elbow-end.gif"/>Roo.form.ComboBoxArray 
+<img src="../../images/default/s.gif" height="1"  width="100"/><img class="elbow" src="../../images/default/tree/elbow-end.gif"/>Roo.form.ComboBoxArray 
 
 		   </pre>
 		</div>
@@ -78,7 +76,7 @@
 	
 	
 		<tr><td class="label">Extends:</td><td class="hd-info">
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
+			<a href="./Roo.form.TextField.html#constructor" roo:cls="Roo.form.TextField.html#constructor">Roo.form.TextField</a>
 	
 		</td></tr>    
 	
@@ -88,7 +86,7 @@
     
 <!-- ============================== class summary ========================== -->			
     <div class="description">
-	A facebook style adder... for lists of email / people / countries  etc...<br/>pick multiple items from a combo box, and shows each one.<br/><br/> Fred [x]  Brian [x]  [Pick another |v]
+	A facebook style adder... for lists of email / people / countries  etc...<br/>pick multiple items from a combo box, and shows each one.<br/><br/> Fred [x]  Brian [x]  [Pick another |v]<br/><br/><br/> For this to work: it needs various extra information<br/>   - normal combo problay has<br/>     name, hiddenName<br/>   + displayField, valueField<br/><br/>   For our purpose...<br/><br/><br/>  If we change from 'extends' to wrapping...
     </div>
 
 	
@@ -164,36 +162,6 @@
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
-			<a id="Roo.form.ComboBox-cfg-allQuery" name=".allQuery"></a>
-			<div class="fixedFont">
-				<b  class="itemname">allQuery</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">The text query to send to the server to return all records for the list with no filtering (defaults to '')</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">The text query to send to the server to return all records for the list with no filtering (defaults to '')</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-				
-		    </td>
-		</tr>
-        
-	
-		<tr class="config-row expandable config-row-alt0">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
 			<a id="Roo.form.TextField-cfg-allowBlank" name=".allowBlank"></a>
 			<div class="fixedFont">
 				<b  class="itemname">allowBlank</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
@@ -220,7 +188,7 @@
 		</tr>
         
 	
-		<tr class="config-row expandable config-row-alt1">
+		<tr class="config-row expandable config-row-alt0">
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
@@ -250,53 +218,23 @@
 		</tr>
         
 	
-		<tr class="config-row expandable config-row-alt0">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
-			<a id="Roo.form.ComboBox-cfg-alwaysQuery" name=".alwaysQuery"></a>
-			<div class="fixedFont">
-				<b  class="itemname">alwaysQuery</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">Disable caching of results, and always send query</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">Disable caching of results, and always send query</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-				
-		    </td>
-		</tr>
-        
-	
 		<tr class="config-row expandable config-row-alt1">
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
-			<a id="Roo.form.ComboBox-cfg-autoCreate" name=".autoCreate"></a>
+			<a id="Roo.form.Field-cfg-autoCreate" name=".autoCreate"></a>
 			<div class="fixedFont">
-				<b  class="itemname">autoCreate</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>/Object
+				<b  class="itemname">autoCreate</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/Object
 				
 				
 			</div>
 		  
 			<div class="mdesc">
-			    <div class="short">A DomHelper element spec, or true for a default element spec (defaults to:<br/>{tag: "input", type: "text", size: "24", autocomplete: "off"})</div> 
+			    <div class="short">A DomHelper element spec, or true for a default element spec (defaults to<br/>{tag: "input", type: "text", size: "20", autocomplete: "off"})</div> 
 			</div>
 			
 			<div class="mdesc">
-			    <div class="long">A DomHelper element spec, or true for a default element spec (defaults to:<br/>{tag: "input", type: "text", size: "24", autocomplete: "off"})</div> 
+			    <div class="long">A DomHelper element spec, or true for a default element spec (defaults to<br/>{tag: "input", type: "text", size: "20", autocomplete: "off"})</div> 
 			</div>
 			
 			
@@ -304,7 +242,7 @@
 		    </td>
 		    <td class="msource">
 			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
+			<a href="./Roo.form.Field.html#constructor" roo:cls="Roo.form.Field.html#constructor">Roo.form.Field</a>
 				
 		    </td>
 		</tr>
@@ -344,66 +282,6 @@
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
-			<a id="Roo.form.ComboBox-cfg-blockFocus" name=".blockFocus"></a>
-			<div class="fixedFont">
-				<b  class="itemname">blockFocus</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">Prevents all focus calls, so it can work with things like HTML edtor bar</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">Prevents all focus calls, so it can work with things like HTML edtor bar</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-				
-		    </td>
-		</tr>
-        
-	
-		<tr class="config-row expandable config-row-alt0 notInherited">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
-			<a id="Roo.form.ComboBoxArray-cfg-boxWidth" name=".boxWidth"></a>
-			<div class="fixedFont">
-				<b  class="itemname">boxWidth</b> : <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a>
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">The width of the box that displays the selected element</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">The width of the box that displays the selected element</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			Roo.form.ComboBoxArray
-				
-		    </td>
-		</tr>
-        
-	
-		<tr class="config-row expandable config-row-alt1">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
 			<a id="Roo.form.Field-cfg-cls" name=".cls"></a>
 			<div class="fixedFont">
 				<b  class="itemname">cls</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
@@ -430,7 +308,37 @@
 		</tr>
         
 	
-		<tr class="config-row expandable config-row-alt0">
+		<tr class="config-row expandable config-row-alt0 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.form.ComboBoxArray-cfg-combo" name=".combo"></a>
+			<div class="fixedFont">
+				<b  class="itemname">combo</b> : Roo.form.Combo
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">The combo box that is wrapped</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">The combo box that is wrapped</div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.form.ComboBoxArray
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt1">
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
@@ -455,36 +363,6 @@
 		    <td class="msource">
 			
 			<a href="./Roo.Component.html#constructor" roo:cls="Roo.Component.html#constructor">Roo.Component</a>
-				
-		    </td>
-		</tr>
-        
-	
-		<tr class="config-row expandable config-row-alt1">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
-			<a id="Roo.form.ComboBox-cfg-disableClear" name=".disableClear"></a>
-			<div class="fixedFont">
-				<b  class="itemname">disableClear</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">Disable showing of clear button.</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">Disable showing of clear button.</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
 				
 		    </td>
 		</tr>
@@ -545,66 +423,6 @@
 		    <td class="msource">
 			
 			<a href="./Roo.form.Field.html#constructor" roo:cls="Roo.form.Field.html#constructor">Roo.form.Field</a>
-				
-		    </td>
-		</tr>
-        
-	
-		<tr class="config-row expandable config-row-alt0">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
-			<a id="Roo.form.ComboBox-cfg-displayField" name=".displayField"></a>
-			<div class="fixedFont">
-				<b  class="itemname">displayField</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">The underlying data field name to bind to this CombBox (defaults to undefined if<br/>mode = 'remote' or 'text' if mode = 'local')</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">The underlying data field name to bind to this CombBox (defaults to undefined if<br/>mode = 'remote' or 'text' if mode = 'local')</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-				
-		    </td>
-		</tr>
-        
-	
-		<tr class="config-row expandable config-row-alt1">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
-			<a id="Roo.form.ComboBox-cfg-editable" name=".editable"></a>
-			<div class="fixedFont">
-				<b  class="itemname">editable</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">False to prevent the user from typing text directly into the field, just like a<br/>traditional select (defaults to true)</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">False to prevent the user from typing text directly into the field, just like a<br/>traditional select (defaults to true)</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
 				
 		    </td>
 		</tr>
@@ -764,37 +582,7 @@
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
-			<a id="Roo.form.ComboBox-cfg-forceSelection" name=".forceSelection"></a>
-			<div class="fixedFont">
-				<b  class="itemname">forceSelection</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">True to restrict the selected value to one of the values in the list, false to<br/>allow the user to set arbitrary text into the field (defaults to false)</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">True to restrict the selected value to one of the values in the list, false to<br/>allow the user to set arbitrary text into the field (defaults to false)</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-				
-		    </td>
-		</tr>
-        
-	
-		<tr class="config-row expandable config-row-alt0">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
-			<a id="Roo.form.ComboBox-cfg-grow" name=".grow"></a>
+			<a id="Roo.form.TextField-cfg-grow" name=".grow"></a>
 			<div class="fixedFont">
 				<b  class="itemname">grow</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
 				
@@ -802,11 +590,11 @@
 			</div>
 		  
 			<div class="mdesc">
-			    <div class="short"></div> 
+			    <div class="short">True if this field should automatically grow and shrink to its content</div> 
 			</div>
 			
 			<div class="mdesc">
-			    <div class="long"></div> 
+			    <div class="long">True if this field should automatically grow and shrink to its content</div> 
 			</div>
 			
 			
@@ -814,37 +602,7 @@
 		    </td>
 		    <td class="msource">
 			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-				
-		    </td>
-		</tr>
-        
-	
-		<tr class="config-row expandable config-row-alt1">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
-			<a id="Roo.form.ComboBox-cfg-growMax" name=".growMax"></a>
-			<div class="fixedFont">
-				<b  class="itemname">growMax</b> : <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a>
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short"></div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long"></div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
+			<a href="./Roo.form.TextField.html#constructor" roo:cls="Roo.form.TextField.html#constructor">Roo.form.TextField</a>
 				
 		    </td>
 		</tr>
@@ -854,19 +612,19 @@
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
-			<a id="Roo.form.ComboBox-cfg-growMin" name=".growMin"></a>
+			<a id="Roo.form.TextField-cfg-growMax" name=".growMax"></a>
 			<div class="fixedFont">
-				<b  class="itemname">growMin</b> : <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a>
+				<b  class="itemname">growMax</b> : <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a>
 				
 				
 			</div>
 		  
 			<div class="mdesc">
-			    <div class="short"></div> 
+			    <div class="short">The maximum width to allow when grow = true (defaults to 800)</div> 
 			</div>
 			
 			<div class="mdesc">
-			    <div class="long"></div> 
+			    <div class="long">The maximum width to allow when grow = true (defaults to 800)</div> 
 			</div>
 			
 			
@@ -874,7 +632,7 @@
 		    </td>
 		    <td class="msource">
 			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
+			<a href="./Roo.form.TextField.html#constructor" roo:cls="Roo.form.TextField.html#constructor">Roo.form.TextField</a>
 				
 		    </td>
 		</tr>
@@ -884,19 +642,19 @@
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
-			<a id="Roo.form.ComboBox-cfg-handleHeight" name=".handleHeight"></a>
+			<a id="Roo.form.TextField-cfg-growMin" name=".growMin"></a>
 			<div class="fixedFont">
-				<b  class="itemname">handleHeight</b> : <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a>
+				<b  class="itemname">growMin</b> : <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a>
 				
 				
 			</div>
 		  
 			<div class="mdesc">
-			    <div class="short">The height in pixels of the dropdown list resize handle if resizable = true (defaults to 8)</div> 
+			    <div class="short">The minimum width to allow when grow = true (defaults to 30)</div> 
 			</div>
 			
 			<div class="mdesc">
-			    <div class="long">The height in pixels of the dropdown list resize handle if resizable = true (defaults to 8)</div> 
+			    <div class="long">The minimum width to allow when grow = true (defaults to 30)</div> 
 			</div>
 			
 			
@@ -904,7 +662,7 @@
 		    </td>
 		    <td class="msource">
 			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
+			<a href="./Roo.form.TextField.html#constructor" roo:cls="Roo.form.TextField.html#constructor">Roo.form.TextField</a>
 				
 		    </td>
 		</tr>
@@ -944,36 +702,6 @@
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
-			<a id="Roo.form.ComboBox-cfg-hiddenName" name=".hiddenName"></a>
-			<div class="fixedFont">
-				<b  class="itemname">hiddenName</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">If specified, a hidden form field with this name is dynamically generated to store the<br/>field's data value (defaults to the underlying DOM element's name)</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">If specified, a hidden form field with this name is dynamically generated to store the<br/>field's data value (defaults to the underlying DOM element's name)</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-				
-		    </td>
-		</tr>
-        
-	
-		<tr class="config-row expandable config-row-alt0">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
 			<a id="Roo.Component-cfg-hideMode" name=".hideMode"></a>
 			<div class="fixedFont">
 				<b  class="itemname">hideMode</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
@@ -995,36 +723,6 @@
 		    <td class="msource">
 			
 			<a href="./Roo.Component.html#constructor" roo:cls="Roo.Component.html#constructor">Roo.Component</a>
-				
-		    </td>
-		</tr>
-        
-	
-		<tr class="config-row expandable config-row-alt1">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
-			<a id="Roo.form.TriggerField-cfg-hideTrigger" name=".hideTrigger"></a>
-			<div class="fixedFont">
-				<b  class="itemname">hideTrigger</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">True to hide the trigger element and display only the base text field (defaults to false)</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">True to hide the trigger element and display only the base text field (defaults to false)</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.TriggerField.html#constructor" roo:cls="Roo.form.TriggerField.html#constructor">Roo.form.TriggerField</a>
 				
 		    </td>
 		</tr>
@@ -1124,126 +822,6 @@
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
-			<a id="Roo.form.ComboBox-cfg-lazyRender" name=".lazyRender"></a>
-			<div class="fixedFont">
-				<b  class="itemname">lazyRender</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">True to prevent the ComboBox from rendering until requested (should always be used when<br/>rendering into an Roo.Editor, defaults to false)</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">True to prevent the ComboBox from rendering until requested (should always be used when<br/>rendering into an Roo.Editor, defaults to false)</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-				
-		    </td>
-		</tr>
-        
-	
-		<tr class="config-row expandable config-row-alt0">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
-			<a id="Roo.form.ComboBox-cfg-listAlign" name=".listAlign"></a>
-			<div class="fixedFont">
-				<b  class="itemname">listAlign</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">A valid anchor position value.</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">A valid anchor position value. See {<b>link</b> Roo.Element<b>alignTo</b>} for details on supported<br/>anchor positions (defaults to 'tl-bl')</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-				
-		    </td>
-		</tr>
-        
-	
-		<tr class="config-row expandable config-row-alt1">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
-			<a id="Roo.form.ComboBox-cfg-listClass" name=".listClass"></a>
-			<div class="fixedFont">
-				<b  class="itemname">listClass</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">CSS class to apply to the dropdown list element (defaults to '')</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">CSS class to apply to the dropdown list element (defaults to '')</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-				
-		    </td>
-		</tr>
-        
-	
-		<tr class="config-row expandable config-row-alt0">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
-			<a id="Roo.form.ComboBox-cfg-listWidth" name=".listWidth"></a>
-			<div class="fixedFont">
-				<b  class="itemname">listWidth</b> : <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a>
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">The width in pixels of the dropdown list (defaults to the width of the ComboBox field)</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">The width in pixels of the dropdown list (defaults to the width of the ComboBox field)</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-				
-		    </td>
-		</tr>
-        
-	
-		<tr class="config-row expandable config-row-alt1">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
 			<a id="Roo.util.Observable-cfg-listeners" name=".listeners"></a>
 			<div class="fixedFont">
 				<b  class="itemname">listeners</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a>
@@ -1274,36 +852,6 @@
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
-			<a id="Roo.form.ComboBox-cfg-loadingText" name=".loadingText"></a>
-			<div class="fixedFont">
-				<b  class="itemname">loadingText</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">The text to display in the dropdown list while data is loading.</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">The text to display in the dropdown list while data is loading.  Only applies<br/>when mode = 'remote' (defaults to 'Loading...')</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-				
-		    </td>
-		</tr>
-        
-	
-		<tr class="config-row expandable config-row-alt1">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
 			<a id="Roo.form.TextField-cfg-maskRe" name=".maskRe"></a>
 			<div class="fixedFont">
 				<b  class="itemname">maskRe</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
@@ -1325,36 +873,6 @@
 		    <td class="msource">
 			
 			<a href="./Roo.form.TextField.html#constructor" roo:cls="Roo.form.TextField.html#constructor">Roo.form.TextField</a>
-				
-		    </td>
-		</tr>
-        
-	
-		<tr class="config-row expandable config-row-alt0">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
-			<a id="Roo.form.ComboBox-cfg-maxHeight" name=".maxHeight"></a>
-			<div class="fixedFont">
-				<b  class="itemname">maxHeight</b> : <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a>
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">The maximum height in pixels of the dropdown list before scrollbars are shown (defaults to 300)</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">The maximum height in pixels of the dropdown list before scrollbars are shown (defaults to 300)</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
 				
 		    </td>
 		</tr>
@@ -1424,36 +942,6 @@
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
-			<a id="Roo.form.ComboBox-cfg-minChars" name=".minChars"></a>
-			<div class="fixedFont">
-				<b  class="itemname">minChars</b> : <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a>
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">The minimum number of characters the user must type before autocomplete and typeahead activate<br/>(defaults to 4, does not apply if editable = false)</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">The minimum number of characters the user must type before autocomplete and typeahead activate<br/>(defaults to 4, does not apply if editable = false)</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-				
-		    </td>
-		</tr>
-        
-	
-		<tr class="config-row expandable config-row-alt0">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
 			<a id="Roo.form.TextField-cfg-minLength" name=".minLength"></a>
 			<div class="fixedFont">
 				<b  class="itemname">minLength</b> : <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a>
@@ -1480,7 +968,7 @@
 		</tr>
         
 	
-		<tr class="config-row expandable config-row-alt1">
+		<tr class="config-row expandable config-row-alt0">
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
@@ -1510,67 +998,7 @@
 		</tr>
         
 	
-		<tr class="config-row expandable config-row-alt0">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
-			<a id="Roo.form.ComboBox-cfg-minListWidth" name=".minListWidth"></a>
-			<div class="fixedFont">
-				<b  class="itemname">minListWidth</b> : <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a>
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">The minimum width of the dropdown list in pixels (defaults to 70, will be ignored if<br/>listWidth has a higher value)</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">The minimum width of the dropdown list in pixels (defaults to 70, will be ignored if<br/>listWidth has a higher value)</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-				
-		    </td>
-		</tr>
-        
-	
 		<tr class="config-row expandable config-row-alt1">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
-			<a id="Roo.form.ComboBox-cfg-mode" name=".mode"></a>
-			<div class="fixedFont">
-				<b  class="itemname">mode</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">Set to 'local' if the ComboBox loads local data (defaults to 'remote' which loads from the server)</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">Set to 'local' if the ComboBox loads local data (defaults to 'remote' which loads from the server)</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-				
-		    </td>
-		</tr>
-        
-	
-		<tr class="config-row expandable config-row-alt0">
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
@@ -1600,7 +1028,7 @@
 		</tr>
         
 	
-		<tr class="config-row expandable config-row-alt1">
+		<tr class="config-row expandable config-row-alt0">
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
@@ -1630,11 +1058,11 @@
 		</tr>
         
 	
-		<tr class="config-row expandable config-row-alt0">
+		<tr class="config-row expandable config-row-alt1 notInherited">
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
-			<a id="Roo.form.Field-cfg-name" name=".name"></a>
+			<a id="Roo.form.ComboBoxArray-cfg-name" name=".name"></a>
 			<div class="fixedFont">
 				<b  class="itemname">name</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
 				
@@ -1642,11 +1070,11 @@
 			</div>
 		  
 			<div class="mdesc">
-			    <div class="short">The field's HTML name attribute.</div> 
+			    <div class="short">The name of the visable items on this form (eg.</div> 
 			</div>
 			
 			<div class="mdesc">
-			    <div class="long">The field's HTML name attribute.</div> 
+			    <div class="long">The name of the visable items on this form (eg. titles not ids)</div> 
 			</div>
 			
 			
@@ -1654,37 +1082,7 @@
 		    </td>
 		    <td class="msource">
 			
-			<a href="./Roo.form.Field.html#constructor" roo:cls="Roo.form.Field.html#constructor">Roo.form.Field</a>
-				
-		    </td>
-		</tr>
-        
-	
-		<tr class="config-row expandable config-row-alt1">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
-			<a id="Roo.form.ComboBox-cfg-pageSize" name=".pageSize"></a>
-			<div class="fixedFont">
-				<b  class="itemname">pageSize</b> : <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a>
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">If greater than 0, a paging toolbar is displayed in the footer of the dropdown list and the<br/>filter queries will execute with page start and limit parameters.</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">If greater than 0, a paging toolbar is displayed in the footer of the dropdown list and the<br/>filter queries will execute with page start and limit parameters.  Only applies when mode = 'remote' (defaults to 0)</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
+			Roo.form.ComboBoxArray
 				
 		    </td>
 		</tr>
@@ -1715,66 +1113,6 @@
 		    <td class="msource">
 			
 			<a href="./Roo.form.Field.html#constructor" roo:cls="Roo.form.Field.html#constructor">Roo.form.Field</a>
-				
-		    </td>
-		</tr>
-        
-	
-		<tr class="config-row expandable config-row-alt1">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
-			<a id="Roo.form.ComboBox-cfg-queryDelay" name=".queryDelay"></a>
-			<div class="fixedFont">
-				<b  class="itemname">queryDelay</b> : <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a>
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">The length of time in milliseconds to delay between the start of typing and sending the<br/>query to filter the dropdown list (defaults to 500 if mode = 'remote' or 10 if mode = 'local')</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">The length of time in milliseconds to delay between the start of typing and sending the<br/>query to filter the dropdown list (defaults to 500 if mode = 'remote' or 10 if mode = 'local')</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-				
-		    </td>
-		</tr>
-        
-	
-		<tr class="config-row expandable config-row-alt0">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
-			<a id="Roo.form.ComboBox-cfg-queryParam" name=".queryParam"></a>
-			<div class="fixedFont">
-				<b  class="itemname">queryParam</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">Name of the query as it will be passed on the querystring (defaults to 'query')</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">Name of the query as it will be passed on the querystring (defaults to 'query')</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
 				
 		    </td>
 		</tr>
@@ -1874,37 +1212,7 @@
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
-			<a id="Roo.form.ComboBox-cfg-resizable" name=".resizable"></a>
-			<div class="fixedFont">
-				<b  class="itemname">resizable</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">True to add a resize handle to the bottom of the dropdown list (defaults to false)</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">True to add a resize handle to the bottom of the dropdown list (defaults to false)</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-				
-		    </td>
-		</tr>
-        
-	
-		<tr class="config-row expandable config-row-alt1">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
-			<a id="Roo.form.ComboBox-cfg-selectOnFocus" name=".selectOnFocus"></a>
+			<a id="Roo.form.TextField-cfg-selectOnFocus" name=".selectOnFocus"></a>
 			<div class="fixedFont">
 				<b  class="itemname">selectOnFocus</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
 				
@@ -1912,11 +1220,11 @@
 			</div>
 		  
 			<div class="mdesc">
-			    <div class="short">True to select any existing text in the field immediately on focus.</div> 
+			    <div class="short">True to automatically select any existing field text when the field receives input focus (defaults to false)</div> 
 			</div>
 			
 			<div class="mdesc">
-			    <div class="long">True to select any existing text in the field immediately on focus.  Only applies<br/>when editable = true (defaults to false)</div> 
+			    <div class="long">True to automatically select any existing field text when the field receives input focus (defaults to false)</div> 
 			</div>
 			
 			
@@ -1924,97 +1232,7 @@
 		    </td>
 		    <td class="msource">
 			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-				
-		    </td>
-		</tr>
-        
-	
-		<tr class="config-row expandable config-row-alt0">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
-			<a id="Roo.form.ComboBox-cfg-selectedClass" name=".selectedClass"></a>
-			<div class="fixedFont">
-				<b  class="itemname">selectedClass</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">CSS class to apply to the selected item in the dropdown list (defaults to 'x-combo-selected')</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">CSS class to apply to the selected item in the dropdown list (defaults to 'x-combo-selected')</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-				
-		    </td>
-		</tr>
-        
-	
-		<tr class="config-row expandable config-row-alt1">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
-			<a id="Roo.form.ComboBox-cfg-shadow" name=".shadow"></a>
-			<div class="fixedFont">
-				<b  class="itemname">shadow</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>/String
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">True or "sides" for the default effect, "frame" for 4-way shadow, and "drop" for bottom-right</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">True or "sides" for the default effect, "frame" for 4-way shadow, and "drop" for bottom-right</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-				
-		    </td>
-		</tr>
-        
-	
-		<tr class="config-row expandable config-row-alt0">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
-			<a id="Roo.form.ComboBox-cfg-store" name=".store"></a>
-			<div class="fixedFont">
-				<b  class="itemname">store</b> : <a href="./Roo.data.Store.html#constructor" roo:cls="Roo.data.Store.html#constructor">Roo.data.Store</a>
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">The data store to which this combo is bound (defaults to undefined)</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">The data store to which this combo is bound (defaults to undefined)</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
+			<a href="./Roo.form.TextField.html#constructor" roo:cls="Roo.form.TextField.html#constructor">Roo.form.TextField</a>
 				
 		    </td>
 		</tr>
@@ -2054,216 +1272,6 @@
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
-			<a id="Roo.form.ComboBox-cfg-title" name=".title"></a>
-			<div class="fixedFont">
-				<b  class="itemname">title</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">If supplied, a header element is created containing this text and added into the top of<br/>the dropdown list (defaults to undefined, with no header element)</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">If supplied, a header element is created containing this text and added into the top of<br/>the dropdown list (defaults to undefined, with no header element)</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-				
-		    </td>
-		</tr>
-        
-	
-		<tr class="config-row expandable config-row-alt1">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
-			<a id="Roo.form.ComboBox-cfg-tpl" name=".tpl"></a>
-			<div class="fixedFont">
-				<b  class="itemname">tpl</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/Roo.Template
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">The template to use to render the output</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">The template to use to render the output</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-				
-		    </td>
-		</tr>
-        
-	
-		<tr class="config-row expandable config-row-alt0">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
-			<a id="Roo.form.ComboBox-cfg-transform" name=".transform"></a>
-			<div class="fixedFont">
-				<b  class="itemname">transform</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement/Element
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">The id, DOM node or element of an existing select to convert to a ComboBox</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">The id, DOM node or element of an existing select to convert to a ComboBox</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-				
-		    </td>
-		</tr>
-        
-	
-		<tr class="config-row expandable config-row-alt1">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
-			<a id="Roo.form.ComboBox-cfg-triggerAction" name=".triggerAction"></a>
-			<div class="fixedFont">
-				<b  class="itemname">triggerAction</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">The action to execute when the trigger field is activated.</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">The action to execute when the trigger field is activated.  Use 'all' to run the<br/>query specified by the allQuery config option (defaults to 'query')</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-				
-		    </td>
-		</tr>
-        
-	
-		<tr class="config-row expandable config-row-alt0">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
-			<a id="Roo.form.ComboBox-cfg-triggerClass" name=".triggerClass"></a>
-			<div class="fixedFont">
-				<b  class="itemname">triggerClass</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">An additional CSS class used to style the trigger button.</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">An additional CSS class used to style the trigger button.  The trigger will always get the<br/>class 'x-form-trigger' and triggerClass will be <b>appended</b> if specified (defaults to 'x-form-arrow-trigger'<br/>which displays a downward arrow icon).</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-				
-		    </td>
-		</tr>
-        
-	
-		<tr class="config-row expandable config-row-alt1">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
-			<a id="Roo.form.ComboBox-cfg-typeAhead" name=".typeAhead"></a>
-			<div class="fixedFont">
-				<b  class="itemname">typeAhead</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">True to populate and autoselect the remainder of the text being typed after a configurable<br/>delay (typeAheadDelay) if it matches a known value (defaults to false)</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">True to populate and autoselect the remainder of the text being typed after a configurable<br/>delay (typeAheadDelay) if it matches a known value (defaults to false)</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-				
-		    </td>
-		</tr>
-        
-	
-		<tr class="config-row expandable config-row-alt0">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
-			<a id="Roo.form.ComboBox-cfg-typeAheadDelay" name=".typeAheadDelay"></a>
-			<div class="fixedFont">
-				<b  class="itemname">typeAheadDelay</b> : <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a>
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">The length of time in milliseconds to wait until the typeahead text is displayed<br/>if typeAhead = true (defaults to 250)</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">The length of time in milliseconds to wait until the typeahead text is displayed<br/>if typeAhead = true (defaults to 250)</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-				
-		    </td>
-		</tr>
-        
-	
-		<tr class="config-row expandable config-row-alt1">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
 			<a id="Roo.form.Field-cfg-validateOnBlur" name=".validateOnBlur"></a>
 			<div class="fixedFont">
 				<b  class="itemname">validateOnBlur</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
@@ -2290,7 +1298,7 @@
 		</tr>
         
 	
-		<tr class="config-row expandable config-row-alt0">
+		<tr class="config-row expandable config-row-alt1">
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
@@ -2320,7 +1328,7 @@
 		</tr>
         
 	
-		<tr class="config-row expandable config-row-alt1">
+		<tr class="config-row expandable config-row-alt0">
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
@@ -2350,7 +1358,7 @@
 		</tr>
         
 	
-		<tr class="config-row expandable config-row-alt0">
+		<tr class="config-row expandable config-row-alt1">
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
@@ -2380,7 +1388,7 @@
 		</tr>
         
 	
-		<tr class="config-row expandable config-row-alt1">
+		<tr class="config-row expandable config-row-alt0">
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
@@ -2410,67 +1418,7 @@
 		</tr>
         
 	
-		<tr class="config-row expandable config-row-alt0">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
-			<a id="Roo.form.ComboBox-cfg-valueField" name=".valueField"></a>
-			<div class="fixedFont">
-				<b  class="itemname">valueField</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">The underlying data value name to bind to this CombBox (defaults to undefined if<br/>mode = 'remote' or 'value' if mode = 'local').</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">The underlying data value name to bind to this CombBox (defaults to undefined if<br/>mode = 'remote' or 'value' if mode = 'local'). <br/>Note: use of a valueField requires the user make a selection<br/>in order for a value to be mapped.</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-				
-		    </td>
-		</tr>
-        
-	
 		<tr class="config-row expandable config-row-alt1">
-		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-		    <td class="sig">
-
-			<a id="Roo.form.ComboBox-cfg-valueNotFoundText" name=".valueNotFoundText"></a>
-			<div class="fixedFont">
-				<b  class="itemname">valueNotFoundText</b> : <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
-				
-				
-			</div>
-		  
-			<div class="mdesc">
-			    <div class="short">When using a name/value combo, if the value passed to setValue is not found in<br/>the store, valueNotFoundText will be displayed as the field text if defined (defaults to undefined)</div> 
-			</div>
-			
-			<div class="mdesc">
-			    <div class="long">When using a name/value combo, if the value passed to setValue is not found in<br/>the store, valueNotFoundText will be displayed as the field text if defined (defaults to undefined)</div> 
-			</div>
-			
-			
-
-		    </td>
-		    <td class="msource">
-			
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-				
-		    </td>
-		</tr>
-        
-	
-		<tr class="config-row expandable config-row-alt0">
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
@@ -2500,11 +1448,11 @@
 		</tr>
         
 	
-		<tr class="config-row expandable config-row-alt1">
+		<tr class="config-row expandable config-row-alt0 notInherited">
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
-			<a id="Roo.BoxComponent-cfg-width" name=".width"></a>
+			<a id="Roo.form.ComboBoxArray-cfg-width" name=".width"></a>
 			<div class="fixedFont">
 				<b  class="itemname">width</b> : <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a>
 				
@@ -2512,11 +1460,11 @@
 			</div>
 		  
 			<div class="mdesc">
-			    <div class="short">width (optional) size of component</div> 
+			    <div class="short">The width of the box that displays the selected element</div> 
 			</div>
 			
 			<div class="mdesc">
-			    <div class="long">width (optional) size of component</div> 
+			    <div class="long">The width of the box that displays the selected element</div> 
 			</div>
 			
 			
@@ -2524,7 +1472,7 @@
 		    </td>
 		    <td class="msource">
 			
-			<a href="./Roo.BoxComponent.html#constructor" roo:cls="Roo.BoxComponent.html#constructor">Roo.BoxComponent</a>
+			Roo.form.ComboBoxArray
 				
 		    </td>
 		</tr>
@@ -2871,7 +1819,7 @@
 	   
 	   
             <td class="sig">
-                <a id="Roo.form.TriggerField-method-autoSize"   name=".autoSize"></a>
+                <a id="Roo.form.TextField-method-autoSize"   name=".autoSize"></a>
 		<div class="fixedFont">
 			<span class="attributes"></span><b class="itemname">autoSize</b>
 				
@@ -2882,13 +1830,13 @@
 		</div>
                 <div class="mdesc">
 		
-                   <div class="short"></div> 
+                   <div class="short">Automatically grows the field to accomodate the width of the text up to the maximum field width allowed.</div> 
 		 
 		 
 		 
                     <div class="long">
 			
-				
+				Automatically grows the field to accomodate the width of the text up to the maximum field width allowed.<br/>This only takes effect if grow = true, and fires the autosize event.
 		    
 				
 			
@@ -2911,7 +1859,7 @@
             </td>
             <td class="msource">
 		
-			<a href="./Roo.form.TriggerField.html#constructor" roo:cls="Roo.form.TriggerField.html#constructor">Roo.form.TriggerField</a>
+			<a href="./Roo.form.TextField.html#constructor" roo:cls="Roo.form.TextField.html#constructor">Roo.form.TextField</a>
 		&nbsp;
             </td>
         </tr>
@@ -2963,108 +1911,6 @@
             <td class="msource">
 		
 			<a href="./Roo.form.Field.html#constructor" roo:cls="Roo.form.Field.html#constructor">Roo.form.Field</a>
-		&nbsp;
-            </td>
-        </tr>
-	
-	  
-          <tr class="method-row config-row-alt0 expandable">
-            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-	   
-	   
-            <td class="sig">
-                <a id="Roo.form.ComboBox-method-clearValue"   name=".clearValue"></a>
-		<div class="fixedFont">
-			<span class="attributes"></span><b class="itemname">clearValue</b>
-				
-				 () 
-			
-				
-			
-		</div>
-                <div class="mdesc">
-		
-                   <div class="short">Clears any text/value currently set in the field</div> 
-		 
-		 
-		 
-                    <div class="long">
-			
-				Clears any text/value currently set in the field
-		    
-				
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-
-		    
-		    
-		     
-                    </div>                    
-                </div>
-
-            </td>
-            <td class="msource">
-		
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-		&nbsp;
-            </td>
-        </tr>
-	
-	  
-          <tr class="method-row config-row-alt1 expandable">
-            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-	   
-	   
-            <td class="sig">
-                <a id="Roo.form.ComboBox-method-collapse"   name=".collapse"></a>
-		<div class="fixedFont">
-			<span class="attributes"></span><b class="itemname">collapse</b>
-				
-				 () 
-			
-				
-			
-		</div>
-                <div class="mdesc">
-		
-                   <div class="short">Hides the dropdown list if it is currently expanded.</div> 
-		 
-		 
-		 
-                    <div class="long">
-			
-				Hides the dropdown list if it is currently expanded. Fires the 'collapse' event on completion.
-		    
-				
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-
-		    
-		    
-		     
-                    </div>                    
-                </div>
-
-            </td>
-            <td class="msource">
-		
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
 		&nbsp;
             </td>
         </tr>
@@ -3192,74 +2038,6 @@
 	   
 	   
             <td class="sig">
-                <a id="Roo.form.ComboBox-method-doQuery"   name=".doQuery"></a>
-		<div class="fixedFont">
-			<span class="attributes"></span><b class="itemname">doQuery</b>
-				
-				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>query</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a> <B><i>forceAll</i></B>) 
-			
-				
-			
-		</div>
-                <div class="mdesc">
-		
-                   <div class="short">Execute a query to filter the dropdown list.</div> 
-		 
-		 
-		 
-                    <div class="long">
-			
-				Execute a query to filter the dropdown list.  Fires the beforequery event prior to performing the<br/>query allowing the query action to be canceled if needed.
-		    
-				
-			
-			
-			
-			
-				<dl class="detailList">
-				<dt class="heading">Parameters:</dt>
-				
-					<dt>
-						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>query</b>
-						
-					</dt>
-					<dd>The SQL query to execute</dd>
-				
-					<dt>
-						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a></span>  <b>forceAll</b>
-						
-					</dt>
-					<dd>True to force the query to execute even if there are currently fewer characters<br/>in the field than the minimum specified by the minChars config option.  It also clears any filter previously<br/>saved in the current store (defaults to false)</dd>
-				
-				</dl>
-			
-			
-			
-			
-			
-			
-			
-
-		    
-		    
-		     
-                    </div>                    
-                </div>
-
-            </td>
-            <td class="msource">
-		
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-		&nbsp;
-            </td>
-        </tr>
-	
-	  
-          <tr class="method-row config-row-alt1 expandable">
-            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-	   
-	   
-            <td class="sig">
                 <a id="Roo.Component-method-enable"   name=".enable"></a>
 		<div class="fixedFont">
 			<span class="attributes"></span><b class="itemname">enable</b>
@@ -3316,57 +2094,6 @@
             <td class="msource">
 		
 			<a href="./Roo.Component.html#constructor" roo:cls="Roo.Component.html#constructor">Roo.Component</a>
-		&nbsp;
-            </td>
-        </tr>
-	
-	  
-          <tr class="method-row config-row-alt0 expandable">
-            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-	   
-	   
-            <td class="sig">
-                <a id="Roo.form.ComboBox-method-expand"   name=".expand"></a>
-		<div class="fixedFont">
-			<span class="attributes"></span><b class="itemname">expand</b>
-				
-				 () 
-			
-				
-			
-		</div>
-                <div class="mdesc">
-		
-                   <div class="short">Expands the dropdown list if it is currently hidden.</div> 
-		 
-		 
-		 
-                    <div class="long">
-			
-				Expands the dropdown list if it is currently hidden. Fires the 'expand' event on completion.
-		    
-				
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-
-		    
-		    
-		     
-                    </div>                    
-                </div>
-
-            </td>
-            <td class="msource">
-		
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
 		&nbsp;
             </td>
         </tr>
@@ -4006,7 +2733,7 @@
 	   
 	   
             <td class="sig">
-                <a id="Roo.form.ComboBox-method-getValue"   name=".getValue"></a>
+                <a id="Roo.form.Field-method-getValue"   name=".getValue"></a>
 		<div class="fixedFont">
 			<span class="attributes"></span><b class="itemname">getValue</b>
 				
@@ -4016,7 +2743,7 @@
 					 : 
 					
 						
-						<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>
+						Mixed
 					
 					
 					
@@ -4025,13 +2752,13 @@
 		</div>
                 <div class="mdesc">
 		
-                   <div class="short">Returns the currently selected field value or empty string if no value is set.</div> 
+                   <div class="short">Returns the normalized data value (undefined or emptyText will be returned as '').</div> 
 		 
 		 
 		 
                     <div class="long">
 			
-				Returns the currently selected field value or empty string if no value is set.
+				Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {<b>link</b> <b>getRawValue</b>}.
 		    
 				
 			
@@ -4045,7 +2772,7 @@
 				<dl class="detailList">
 				<dt class="heading">Returns:</dt>
 				
-					<dd><span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  value The selected value</dd>
+					<dd><span class="fixedFont">Mixed</span>  value The field value</dd>
 				
 				</dl>
 			
@@ -4061,7 +2788,7 @@
             </td>
             <td class="msource">
 		
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
+			<a href="./Roo.form.Field.html#constructor" roo:cls="Roo.form.Field.html#constructor">Roo.form.Field</a>
 		&nbsp;
             </td>
         </tr>
@@ -4266,57 +2993,6 @@
 	   
 	   
             <td class="sig">
-                <a id="Roo.form.ComboBox-method-isExpanded"   name=".isExpanded"></a>
-		<div class="fixedFont">
-			<span class="attributes"></span><b class="itemname">isExpanded</b>
-				
-				 () 
-			
-				
-			
-		</div>
-                <div class="mdesc">
-		
-                   <div class="short">Returns true if the dropdown list is expanded, else false.</div> 
-		 
-		 
-		 
-                    <div class="long">
-			
-				Returns true if the dropdown list is expanded, else false.
-		    
-				
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-
-		    
-		    
-		     
-                    </div>                    
-                </div>
-
-            </td>
-            <td class="msource">
-		
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-		&nbsp;
-            </td>
-        </tr>
-	
-	  
-          <tr class="method-row config-row-alt1 expandable">
-            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-	   
-	   
-            <td class="sig">
                 <a id="Roo.form.Field-method-isValid"   name=".isValid"></a>
 		<div class="fixedFont">
 			<span class="attributes"></span><b class="itemname">isValid</b>
@@ -4389,7 +3065,7 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt0 expandable">
+          <tr class="method-row config-row-alt1 expandable">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -4440,7 +3116,7 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt1 expandable">
+          <tr class="method-row config-row-alt0 expandable">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -4502,7 +3178,7 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt0 expandable">
+          <tr class="method-row config-row-alt1 expandable">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -4582,7 +3258,7 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt1 expandable">
+          <tr class="method-row config-row-alt0 expandable">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -4650,7 +3326,7 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt0 expandable">
+          <tr class="method-row config-row-alt1 expandable">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -4725,68 +3401,6 @@
             <td class="msource">
 		
 			<a href="./Roo.BoxComponent.html#constructor" roo:cls="Roo.BoxComponent.html#constructor">Roo.BoxComponent</a>
-		&nbsp;
-            </td>
-        </tr>
-	
-	  
-          <tr class="method-row config-row-alt1 expandable">
-            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-	   
-	   
-            <td class="sig">
-                <a id="Roo.form.TriggerField-method-onTriggerClick"   name=".onTriggerClick"></a>
-		<div class="fixedFont">
-			<span class="attributes"></span><b class="itemname">onTriggerClick</b>
-				
-				 (EventObject <B><i>e</i></B>) 
-			
-				
-			
-		</div>
-                <div class="mdesc">
-		
-                   <div class="short">The function that should handle the trigger's click event.</div> 
-		 
-		 
-		 
-                    <div class="long">
-			
-				The function that should handle the trigger's click event.  This method does nothing by default until overridden<br/>by an implementing function.
-		    
-				
-			
-			
-			
-			
-				<dl class="detailList">
-				<dt class="heading">Parameters:</dt>
-				
-					<dt>
-						<span class="fixedFont">EventObject</span>  <b>e</b>
-						
-					</dt>
-					<dd></dd>
-				
-				</dl>
-			
-			
-			
-			
-			
-			
-			
-
-		    
-		    
-		     
-                    </div>                    
-                </div>
-
-            </td>
-            <td class="msource">
-		
-			<a href="./Roo.form.TriggerField.html#constructor" roo:cls="Roo.form.TriggerField.html#constructor">Roo.form.TriggerField</a>
 		&nbsp;
             </td>
         </tr>
@@ -5035,157 +3649,6 @@
 	   
 	   
             <td class="sig">
-                <a id="Roo.form.ComboBox-method-select"   name=".select"></a>
-		<div class="fixedFont">
-			<span class="attributes"></span><b class="itemname">select</b>
-				
-				 (<a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>index</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a> <B><i>scrollIntoView</i></B>) 
-			
-				
-			
-		</div>
-                <div class="mdesc">
-		
-                   <div class="short">Select an item in the dropdown list by its numeric index in the list.</div> 
-		 
-		 
-		 
-                    <div class="long">
-			
-				Select an item in the dropdown list by its numeric index in the list. This function does NOT cause the select event to fire.<br/>The store must be loaded and the list expanded for this function to work, otherwise use setValue.
-		    
-				
-			
-			
-			
-			
-				<dl class="detailList">
-				<dt class="heading">Parameters:</dt>
-				
-					<dt>
-						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span>  <b>index</b>
-						
-					</dt>
-					<dd>The zero-based index of the list item to select</dd>
-				
-					<dt>
-						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a></span>  <b>scrollIntoView</b>
-						
-					</dt>
-					<dd>False to prevent the dropdown list from autoscrolling to display the<br/>selected item if it is not currently in view (defaults to true)</dd>
-				
-				</dl>
-			
-			
-			
-			
-			
-			
-			
-
-		    
-		    
-		     
-                    </div>                    
-                </div>
-
-            </td>
-            <td class="msource">
-		
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-		&nbsp;
-            </td>
-        </tr>
-	
-	  
-          <tr class="method-row config-row-alt1 expandable">
-            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-	   
-	   
-            <td class="sig">
-                <a id="Roo.form.ComboBox-method-selectByValue"   name=".selectByValue"></a>
-		<div class="fixedFont">
-			<span class="attributes"></span><b class="itemname">selectByValue</b>
-				
-				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>value</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a> <B><i>scrollIntoView</i></B>) 
-			
-				
-					 : 
-					
-						
-						<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
-					
-					
-					
-				
-			
-		</div>
-                <div class="mdesc">
-		
-                   <div class="short">Select an item in the dropdown list by its data value.</div> 
-		 
-		 
-		 
-                    <div class="long">
-			
-				Select an item in the dropdown list by its data value. This function does NOT cause the select event to fire.<br/>The store must be loaded and the list expanded for this function to work, otherwise use setValue.
-		    
-				
-			
-			
-			
-			
-				<dl class="detailList">
-				<dt class="heading">Parameters:</dt>
-				
-					<dt>
-						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>value</b>
-						
-					</dt>
-					<dd>The data value of the item to select</dd>
-				
-					<dt>
-						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a></span>  <b>scrollIntoView</b>
-						
-					</dt>
-					<dd>False to prevent the dropdown list from autoscrolling to display the<br/>selected item if it is not currently in view (defaults to true)</dd>
-				
-				</dl>
-			
-			
-			
-			
-			
-				<dl class="detailList">
-				<dt class="heading">Returns:</dt>
-				
-					<dd><span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a></span>  True if the value matched an item in the list, else false</dd>
-				
-				</dl>
-			
-			
-			
-
-		    
-		    
-		     
-                    </div>                    
-                </div>
-
-            </td>
-            <td class="msource">
-		
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-		&nbsp;
-            </td>
-        </tr>
-	
-	  
-          <tr class="method-row config-row-alt0 expandable">
-            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-	   
-	   
-            <td class="sig">
                 <a id="Roo.form.TextField-method-selectText"   name=".selectText"></a>
 		<div class="fixedFont">
 			<span class="attributes"></span><b class="itemname">selectText</b>
@@ -5306,130 +3769,6 @@
             <td class="msource">
 		
 			<a href="./Roo.Component.html#constructor" roo:cls="Roo.Component.html#constructor">Roo.Component</a>
-		&nbsp;
-            </td>
-        </tr>
-	
-	  
-          <tr class="method-row config-row-alt0 expandable">
-            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-	   
-	   
-            <td class="sig">
-                <a id="Roo.form.ComboBox-method-setEditable"   name=".setEditable"></a>
-		<div class="fixedFont">
-			<span class="attributes"></span><b class="itemname">setEditable</b>
-				
-				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a> <B><i>value</i></B>) 
-			
-				
-			
-		</div>
-                <div class="mdesc">
-		
-                   <div class="short">Allow or prevent the user from directly editing the field text.</div> 
-		 
-		 
-		 
-                    <div class="long">
-			
-				Allow or prevent the user from directly editing the field text.  If false is passed,<br/>the user will only be able to select from the items defined in the dropdown list.  This method<br/>is the runtime equivalent of setting the 'editable' config option at config time.
-		    
-				
-			
-			
-			
-			
-				<dl class="detailList">
-				<dt class="heading">Parameters:</dt>
-				
-					<dt>
-						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a></span>  <b>value</b>
-						
-					</dt>
-					<dd>True to allow the user to directly edit the field text</dd>
-				
-				</dl>
-			
-			
-			
-			
-			
-			
-			
-
-		    
-		    
-		     
-                    </div>                    
-                </div>
-
-            </td>
-            <td class="msource">
-		
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-		&nbsp;
-            </td>
-        </tr>
-	
-	  
-          <tr class="method-row config-row-alt1 expandable">
-            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-	   
-	   
-            <td class="sig">
-                <a id="Roo.form.ComboBox-method-setFromData"   name=".setFromData"></a>
-		<div class="fixedFont">
-			<span class="attributes"></span><b class="itemname">setFromData</b>
-				
-				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>value</i></B>) 
-			
-				
-			
-		</div>
-                <div class="mdesc">
-		
-                   <div class="short">Sets the value of the field based on a object which is related to the record format for the store.</div> 
-		 
-		 
-		 
-                    <div class="long">
-			
-				Sets the value of the field based on a object which is related to the record format for the store.
-		    
-				
-			
-			
-			
-			
-				<dl class="detailList">
-				<dt class="heading">Parameters:</dt>
-				
-					<dt>
-						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>value</b>
-						
-					</dt>
-					<dd>the value to set as. or false on reset?</dd>
-				
-				</dl>
-			
-			
-			
-			
-			
-			
-			
-
-		    
-		    
-		     
-                    </div>                    
-                </div>
-
-            </td>
-            <td class="msource">
-		
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
 		&nbsp;
             </td>
         </tr>
@@ -5721,24 +4060,24 @@
 	   
 	   
             <td class="sig">
-                <a id="Roo.form.ComboBox-method-setValue"   name=".setValue"></a>
+                <a id="Roo.form.Field-method-setValue"   name=".setValue"></a>
 		<div class="fixedFont">
 			<span class="attributes"></span><b class="itemname">setValue</b>
 				
-				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>value</i></B>) 
+				 (Mixed <B><i>value</i></B>) 
 			
 				
 			
 		</div>
                 <div class="mdesc">
 		
-                   <div class="short">Sets the specified value into the field.</div> 
+                   <div class="short">Sets a data value into the field and validates it.</div> 
 		 
 		 
 		 
                     <div class="long">
 			
-				Sets the specified value into the field.  If the value finds a match, the corresponding record text<br/>will be displayed in the field.  If the value does not match the data value of an existing item,<br/>and the valueNotFoundText config option is defined, it will be displayed as the default field text.<br/>Otherwise the field will be blank (although the value will still be set).
+				Sets a data value into the field and validates it.  To set the value directly without validation see {<b>link</b> <b>setRawValue</b>}.
 		    
 				
 			
@@ -5749,10 +4088,10 @@
 				<dt class="heading">Parameters:</dt>
 				
 					<dt>
-						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>value</b>
+						<span class="fixedFont">Mixed</span>  <b>value</b>
 						
 					</dt>
-					<dd>The value to match</dd>
+					<dd>The value to set</dd>
 				
 				</dl>
 			
@@ -5772,7 +4111,7 @@
             </td>
             <td class="msource">
 		
-			<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
+			<a href="./Roo.form.Field.html#constructor" roo:cls="Roo.form.Field.html#constructor">Roo.form.Field</a>
 		&nbsp;
             </td>
         </tr>
@@ -6284,61 +4623,6 @@
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	    
             <td class="sig">
-                <a id="Roo.form.ComboBox-event-*add"></a>
-                
-	       <div class="fixedFont">
-		<b class="itemname">add</b> (<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a> <B><i>combo</i></B>) 
-		
-		</div>
-
-                <div class="mdesc">
-
-                   <div class="short">Fires when the 'add' icon is pressed (add a listener to enable add button)
-		   
-		</div> 
-		    
-                    <div class="long">
-		    
-			Fires when the 'add' icon is pressed (add a listener to enable add button)
-		    
-			
-			
-		
-			
-				<dl class="detailList">
-				<dt class="heading">Parameters:</dt>
-				
-					<dt>
-						<span class="fixedFont"><a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a></span> <b>combo</b>
-						
-					</dt>
-					<dd>This combo box</dd>
-				
-				</dl>
-			
-			
-			
-			
-			
-			
-			
-
-		    
-		    
-		     
-                    </div>                    
-                </div>
-
-            </td>
-            <td class="msource">
-                <a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-            </td>
-        </tr>
-	
-          <tr class="method-row expandable config-row-alt1">
-            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-	    
-            <td class="sig">
                 <a id="Roo.form.TextField-event-*autosize"></a>
                 
 	       <div class="fixedFont">
@@ -6396,7 +4680,7 @@
             </td>
         </tr>
 	
-          <tr class="method-row expandable config-row-alt0">
+          <tr class="method-row expandable config-row-alt1">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	    
             <td class="sig">
@@ -6451,7 +4735,7 @@
             </td>
         </tr>
 	
-          <tr class="method-row expandable config-row-alt1">
+          <tr class="method-row expandable config-row-alt0">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	    
             <td class="sig">
@@ -6503,85 +4787,6 @@
             </td>
             <td class="msource">
                 <a href="./Roo.Component.html#constructor" roo:cls="Roo.Component.html#constructor">Roo.Component</a>
-            </td>
-        </tr>
-	
-          <tr class="method-row expandable config-row-alt0">
-            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-	    
-            <td class="sig">
-                <a id="Roo.form.ComboBox-event-*beforequery"></a>
-                
-	       <div class="fixedFont">
-		<b class="itemname">beforequery</b> (<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a> <B><i>combo</i></B>, <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>query</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a> <B><i>forceAll</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a> <B><i>cancel</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>e</i></B>) 
-		
-		</div>
-
-                <div class="mdesc">
-
-                   <div class="short">Fires before all queries are processed.
-		   
-		</div> 
-		    
-                    <div class="long">
-		    
-			Fires before all queries are processed. Return false to cancel the query or set cancel to true.<br/>The event object passed has these properties:
-		    
-			
-			
-		
-			
-				<dl class="detailList">
-				<dt class="heading">Parameters:</dt>
-				
-					<dt>
-						<span class="fixedFont"><a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a></span> <b>combo</b>
-						
-					</dt>
-					<dd>This combo box</dd>
-				
-					<dt>
-						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span> <b>query</b>
-						
-					</dt>
-					<dd>The query</dd>
-				
-					<dt>
-						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a></span> <b>forceAll</b>
-						
-					</dt>
-					<dd>true to force "all" query</dd>
-				
-					<dt>
-						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a></span> <b>cancel</b>
-						
-					</dt>
-					<dd>true to cancel the query</dd>
-				
-					<dt>
-						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span> <b>e</b>
-						
-					</dt>
-					<dd>The query event object</dd>
-				
-				</dl>
-			
-			
-			
-			
-			
-			
-			
-
-		    
-		    
-		     
-                    </div>                    
-                </div>
-
-            </td>
-            <td class="msource">
-                <a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
             </td>
         </tr>
 	
@@ -6644,73 +4849,6 @@
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	    
             <td class="sig">
-                <a id="Roo.form.ComboBox-event-*beforeselect"></a>
-                
-	       <div class="fixedFont">
-		<b class="itemname">beforeselect</b> (<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a> <B><i>combo</i></B>, <a href="./Roo.data.Record.html#constructor" roo:cls="Roo.data.Record.html#constructor">Roo.data.Record</a> <B><i>record</i></B>, <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>index</i></B>) 
-		
-		</div>
-
-                <div class="mdesc">
-
-                   <div class="short">Fires before a list item is selected.
-		   
-		</div> 
-		    
-                    <div class="long">
-		    
-			Fires before a list item is selected. Return false to cancel the selection.
-		    
-			
-			
-		
-			
-				<dl class="detailList">
-				<dt class="heading">Parameters:</dt>
-				
-					<dt>
-						<span class="fixedFont"><a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a></span> <b>combo</b>
-						
-					</dt>
-					<dd>This combo box</dd>
-				
-					<dt>
-						<span class="fixedFont"><a href="./Roo.data.Record.html#constructor" roo:cls="Roo.data.Record.html#constructor">Roo.data.Record</a></span> <b>record</b>
-						
-					</dt>
-					<dd>The data record returned from the underlying store</dd>
-				
-					<dt>
-						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span> <b>index</b>
-						
-					</dt>
-					<dd>The index of the selected item in the dropdown list</dd>
-				
-				</dl>
-			
-			
-			
-			
-			
-			
-			
-
-		    
-		    
-		     
-                    </div>                    
-                </div>
-
-            </td>
-            <td class="msource">
-                <a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-            </td>
-        </tr>
-	
-          <tr class="method-row expandable config-row-alt1">
-            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-	    
-            <td class="sig">
                 <a id="Roo.Component-event-*beforeshow"></a>
                 
 	       <div class="fixedFont">
@@ -6762,7 +4900,7 @@
             </td>
         </tr>
 	
-          <tr class="method-row expandable config-row-alt0">
+          <tr class="method-row expandable config-row-alt1">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	    
             <td class="sig">
@@ -6817,7 +4955,7 @@
             </td>
         </tr>
 	
-          <tr class="method-row expandable config-row-alt1">
+          <tr class="method-row expandable config-row-alt0">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	    
             <td class="sig">
@@ -6881,61 +5019,6 @@
             </td>
             <td class="msource">
                 <a href="./Roo.form.Field.html#constructor" roo:cls="Roo.form.Field.html#constructor">Roo.form.Field</a>
-            </td>
-        </tr>
-	
-          <tr class="method-row expandable config-row-alt0">
-            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-	    
-            <td class="sig">
-                <a id="Roo.form.ComboBox-event-*collapse"></a>
-                
-	       <div class="fixedFont">
-		<b class="itemname">collapse</b> (<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a> <B><i>combo</i></B>) 
-		
-		</div>
-
-                <div class="mdesc">
-
-                   <div class="short">Fires when the dropdown list is collapsed
-		   
-		</div> 
-		    
-                    <div class="long">
-		    
-			Fires when the dropdown list is collapsed
-		    
-			
-			
-		
-			
-				<dl class="detailList">
-				<dt class="heading">Parameters:</dt>
-				
-					<dt>
-						<span class="fixedFont"><a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a></span> <b>combo</b>
-						
-					</dt>
-					<dd>This combo box</dd>
-				
-				</dl>
-			
-			
-			
-			
-			
-			
-			
-
-		    
-		    
-		     
-                    </div>                    
-                </div>
-
-            </td>
-            <td class="msource">
-                <a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
             </td>
         </tr>
 	
@@ -7053,67 +5136,6 @@
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	    
             <td class="sig">
-                <a id="Roo.form.ComboBox-event-*edit"></a>
-                
-	       <div class="fixedFont">
-		<b class="itemname">edit</b> (<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a> <B><i>combo</i></B>, <a href="./Roo.data.Record.html#constructor" roo:cls="Roo.data.Record.html#constructor">Roo.data.Record</a>|false <B><i>record</i></B>) 
-		
-		</div>
-
-                <div class="mdesc">
-
-                   <div class="short">Fires when the 'edit' icon is pressed (add a listener to enable add button)
-		   
-		</div> 
-		    
-                    <div class="long">
-		    
-			Fires when the 'edit' icon is pressed (add a listener to enable add button)
-		    
-			
-			
-		
-			
-				<dl class="detailList">
-				<dt class="heading">Parameters:</dt>
-				
-					<dt>
-						<span class="fixedFont"><a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a></span> <b>combo</b>
-						
-					</dt>
-					<dd>This combo box</dd>
-				
-					<dt>
-						<span class="fixedFont"><a href="./Roo.data.Record.html#constructor" roo:cls="Roo.data.Record.html#constructor">Roo.data.Record</a>|false</span> <b>record</b>
-						
-					</dt>
-					<dd>The data record returned from the underlying store (or false on nothing selected)</dd>
-				
-				</dl>
-			
-			
-			
-			
-			
-			
-			
-
-		    
-		    
-		     
-                    </div>                    
-                </div>
-
-            </td>
-            <td class="msource">
-                <a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-            </td>
-        </tr>
-	
-          <tr class="method-row expandable config-row-alt0">
-            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-	    
-            <td class="sig">
                 <a id="Roo.Component-event-*enable"></a>
                 
 	       <div class="fixedFont">
@@ -7162,61 +5184,6 @@
             </td>
             <td class="msource">
                 <a href="./Roo.Component.html#constructor" roo:cls="Roo.Component.html#constructor">Roo.Component</a>
-            </td>
-        </tr>
-	
-          <tr class="method-row expandable config-row-alt1">
-            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-	    
-            <td class="sig">
-                <a id="Roo.form.ComboBox-event-*expand"></a>
-                
-	       <div class="fixedFont">
-		<b class="itemname">expand</b> (<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a> <B><i>combo</i></B>) 
-		
-		</div>
-
-                <div class="mdesc">
-
-                   <div class="short">Fires when the dropdown list is expanded
-		   
-		</div> 
-		    
-                    <div class="long">
-		    
-			Fires when the dropdown list is expanded
-		    
-			
-			
-		
-			
-				<dl class="detailList">
-				<dt class="heading">Parameters:</dt>
-				
-					<dt>
-						<span class="fixedFont"><a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a></span> <b>combo</b>
-						
-					</dt>
-					<dd>This combo box</dd>
-				
-				</dl>
-			
-			
-			
-			
-			
-			
-			
-
-		    
-		    
-		     
-                    </div>                    
-                </div>
-
-            </td>
-            <td class="msource">
-                <a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
             </td>
         </tr>
 	
@@ -7657,73 +5624,6 @@
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	    
             <td class="sig">
-                <a id="Roo.form.ComboBox-event-*select"></a>
-                
-	       <div class="fixedFont">
-		<b class="itemname">select</b> (<a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a> <B><i>combo</i></B>, <a href="./Roo.data.Record.html#constructor" roo:cls="Roo.data.Record.html#constructor">Roo.data.Record</a> <B><i>record</i></B>, <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>index</i></B>) 
-		
-		</div>
-
-                <div class="mdesc">
-
-                   <div class="short">Fires when a list item is selected
-		   
-		</div> 
-		    
-                    <div class="long">
-		    
-			Fires when a list item is selected
-		    
-			
-			
-		
-			
-				<dl class="detailList">
-				<dt class="heading">Parameters:</dt>
-				
-					<dt>
-						<span class="fixedFont"><a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a></span> <b>combo</b>
-						
-					</dt>
-					<dd>This combo box</dd>
-				
-					<dt>
-						<span class="fixedFont"><a href="./Roo.data.Record.html#constructor" roo:cls="Roo.data.Record.html#constructor">Roo.data.Record</a></span> <b>record</b>
-						
-					</dt>
-					<dd>The data record returned from the underlying store (or false on clear)</dd>
-				
-					<dt>
-						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span> <b>index</b>
-						
-					</dt>
-					<dd>The index of the selected item in the dropdown list</dd>
-				
-				</dl>
-			
-			
-			
-			
-			
-			
-			
-
-		    
-		    
-		     
-                    </div>                    
-                </div>
-
-            </td>
-            <td class="msource">
-                <a href="./Roo.form.ComboBox.html#constructor" roo:cls="Roo.form.ComboBox.html#constructor">Roo.form.ComboBox</a>
-            </td>
-        </tr>
-	
-          <tr class="method-row expandable config-row-alt0">
-            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-	    
-            <td class="sig">
                 <a id="Roo.Component-event-*show"></a>
                 
 	       <div class="fixedFont">
@@ -7775,7 +5675,7 @@
             </td>
         </tr>
 	
-          <tr class="method-row expandable config-row-alt1">
+          <tr class="method-row expandable config-row-alt0">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	    
             <td class="sig">
@@ -7836,7 +5736,7 @@
             </td>
         </tr>
 	
-          <tr class="method-row expandable config-row-alt0">
+          <tr class="method-row expandable config-row-alt1">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	    
             <td class="sig">
@@ -7901,7 +5801,7 @@
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Wed May 02 2012 11:27:38 GMT+0800 (HKT)
+			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Wed May 02 2012 14:21:09 GMT+0800 (HKT)
 			Based on 
 			<a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a>  
 		</div>
