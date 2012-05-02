@@ -7,7 +7,7 @@
 
 /**
  * @class Roo.form.ComboBoxArray
- * @extends Roo.form.ComboBox
+ * @extends Roo.form.TextField
  * A facebook style adder... for lists of email / people / countries  etc...
  * pick multiple items from a combo box, and shows each one.
  *

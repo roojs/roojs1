@@ -38474,7 +38474,22 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
  * pick multiple items from a combo box, and shows each one.
  *
  *  Fred [x]  Brian [x]  [Pick another |v]
- * 
+ *
+ *
+ *  For this to work: it needs various extra information
+ *    - normal combo problay has
+ *      name, hiddenName
+ *    + displayField, valueField
+ *
+ *    For our purpose...
+ *
+ *
+ *   If we change from 'extends' to wrapping...
+ *   
+ *  
+ *
+ 
+ 
  * @constructor
  * Create a new ComboBoxArray.
  * @param {Object} config Configuration options
@@ -38485,81 +38500,112 @@ Roo.form.ComboBoxArray = function(config)
 {
     
     Roo.form.ComboBoxArray.superclass.constructor.call(this, config);
+    
     this.items = new Roo.util.MixedCollection(false);
-    this.on('select', function(cb, rec, ix) {
-        this.addItem(rec.data);
-        this.setValue('');
-        this.el.dom.value = '';
-        //cb.lastData = rec.data;
-        // add to list
-        
-    });
+    
+    // construct the child combo...
+    
+    
+    
+    
+   
     
 }
+
  
-Roo.extend(Roo.form.ComboBoxArray, Roo.form.ComboBox,
+Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
 { 
+    /**
+     * @cfg {Roo.form.Combo} combo The combo box that is wrapped
+     */
+    
     lastData : false,
+    
+    // behavies liek a hiddne field
+    inputType:      'hidden',
+    /**
+     * @cfg {Number} width The width of the box that displays the selected element
+     */ 
+    width:          300,
+
+    
+    
+    /**
+     * @cfg {String} name    The name of the visable items on this form (eg. titles not ids)
+     */
+    name : false,
+    /**
+     * @cfg {String} name    The hidden name of the field, often contains an comma seperated list of names
+     */
+    hiddenName : false,
+    
+    
+    // private the array of items that are displayed..
     items  : false,
-    
-    
-   /**
-     * @cfg {String} nameField The field to take the 'descriptive' display name from
-     */
-    nameField : 'name',
-    /**
-     * @cfg {String} idField The field to take the hidden 'id' data from
-     */
-    idField : 'id',
-    
-    tipField : 'email',
-    
-    renderer : false,
-    
-    hiddenName : false, // set this if you want a , sperated list of values in it for form posting..
-    hiddenListName : false,
+    // private - the hidden field el.
     hiddenEl : false,
+    // private - the filed el..
+    el : false,
     
-    /**
-     * @cfg {Number} boxWidth The width of the box that displays the selected element
-     */
-    boxWidth : 200, // use to set the box around the entry..
-    allowBlank: true,
-    disableClear: true,
     //validateValue : function() { return true; }, // all values are ok!
     //onAddClick: function() { },
     
     onRender : function(ct, position) 
     {
-         
-        Roo.form.ComboBoxArray.superclass.onRender.call(this, ct, position); 
-        this.wrap.addClass('x-cbarray-grp');
-        var cbwrap = this.wrap.createChild(
-            {tag: 'div', cls: 'x-cbarray-cb'},
-            this.el.dom
-        );  
-        if (this.hiddenListName) {
-             
-            this.hiddenEl = this.wrap.createChild({
-                tag: 'input',  type:'hidden' , name: this.hiddenListName, value : ''
-            });
-         //   this.el.dom.removeAttribute("name");
-        }
         
-        this.outerWrap = this.wrap;
+        // create the standard hidden element
+        //Roo.form.ComboBoxArray.superclass.onRender.call(this, ct, position);
+        
+        
+        // give fake names to child combo;
+        this.combo.hiddenName = this.hiddenName ? (this.hiddenName+'-subcombo') : this.hiddenName;
+        this.combo.name = this.name? (this.name+'-subcombo') : this.name;
+        
+        this.combo = Roo.factory(this.combo, Roo.form);
+        this.combo.onRender(ct, position);
+        
+        // assigned so form know we need to do this..
+        this.store          = this.combo.store;
+        this.valueField     = this.combo.valueField;
+        this.displayField   = this.combo.displayField ;
+        
+        
+        this.combo.wrap.addClass('x-cbarray-grp');
+        
+        var cbwrap = this.combo.wrap.createChild(
+            {tag: 'div', cls: 'x-cbarray-cb'},
+            this.combo.el.dom
+        );
+        
+             
+        this.hiddenEl = this.combo.wrap.createChild({
+            tag: 'input',  type:'hidden' , name: this.hiddenName, value : ''
+        });
+        this.el = this.combo.wrap.createChild({
+            tag: 'input',  type:'hidden' , name: this.name, value : ''
+        });
+         //   this.el.dom.removeAttribute("name");
+        
+        
+        this.outerWrap = this.combo.wrap;
         this.wrap = cbwrap;
-        this.outerWrap.setWidth(this.boxWidth);
+        
+        this.outerWrap.setWidth(this.width);
         this.outerWrap.dom.removeChild(this.el.dom);
+        
         this.wrap.dom.appendChild(this.el.dom);
-        this.outerWrap.dom.removeChild(this.trigger.dom);
-        this.wrap.dom.appendChild(this.trigger.dom);
-         
-        this.trigger.setStyle('position','relative');
-        this.trigger.setStyle('left', '0px');
-        this.trigger.setStyle('top', '2px');
-        this.el.setStyle('vertical-align', 'text-bottom');
+        this.outerWrap.dom.removeChild(this.combo.trigger.dom);
+        this.combo.wrap.dom.appendChild(this.combo.trigger.dom);
+        
+        this.combo.trigger.setStyle('position','relative');
+        this.combo.trigger.setStyle('left', '0px');
+        this.combo.trigger.setStyle('top', '2px');
+        
+        this.combo.el.setStyle('vertical-align', 'text-bottom');
         
         //this.trigger.setStyle('vertical-align', 'top');
+        
+        // this should use the code from combo really... on('add' ....)
         if (this.adder) {
             
         
@@ -38573,26 +38619,50 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.ComboBox,
         //var _t = this;
         //this.adder.on('click', this.onAddClick, _t);
         
+        
+        this.combo.on('select', function(cb, rec, ix) {
+            this.addItem(rec.data);
+            
+            cb.setValue('');
+            cb.el.dom.value = '';
+            //cb.lastData = rec.data;
+            // add to list
+            
+        }, this);
+        
+        
+    },
+    
+    
+    getName: function()
+    {
+        // returns hidden if it's set..
+        if (!this.rendered) {return ''};
+        return  this.hiddenName ? this.hiddenName : this.name;
+        
     },
     
     
     onResize: function(w, h){
-        Roo.form.ComboBox.superclass.onResize.apply(this, arguments);
+        
+        return;
+        // not sure if this is needed..
+        this.combo.onResize(w,h);
         
         if(typeof w != 'number'){
             // we do not handle it!?!?
             return;
         }
-        var tw = this.trigger.getWidth();
+        var tw = this.combo.trigger.getWidth();
         tw += this.addicon ? this.addicon.getWidth() : 0;
         tw += this.editicon ? this.editicon.getWidth() : 0;
         var x = w - tw;
-        this.el.setWidth( this.adjustWidth('input', x));
+        this.combo.el.setWidth( this.combo.adjustWidth('input', x));
             
-        this.trigger.setStyle('left', '0px');
+        this.combo.trigger.setStyle('left', '0px');
         
         if(this.list && this.listWidth === undefined){
-            var lw = Math.max(x + this.trigger.getWidth(), this.minListWidth);
+            var lw = Math.max(x + this.combo.trigger.getWidth(), this.combo.minListWidth);
             this.list.setWidth(lw);
             this.innerList.setWidth(lw - this.list.getFrameWidth('lr'));
         }
@@ -38603,7 +38673,9 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.ComboBox,
     
     addItem: function(rec)
     {
-        if (this.items.indexOfKey(rec[this.idField]) > -1) {
+        var idField = this.combo.valueField;
+        var displayField = this.combo.displayField;
+        if (this.items.indexOfKey(rec[idField]) > -1) {
             //console.log("GOT " + rec.data.id);
             return;
         }
@@ -38611,12 +38683,12 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.ComboBox,
         var x = new Roo.form.ComboBoxArray.Item({
             //id : rec[this.idField],
             data : rec,
-            nameField : this.nameField,
-            tipField : this.tipField,
+            nameField : displayField ,
+            tipField : displayField ,
             cb : this
         });
         // use the 
-        this.items.add(rec[this.idField],x);
+        this.items.add(rec[idField],x);
         // add it before the element..
         this.updateHiddenEl();
         x.render(this.outerWrap, this.wrap.dom);
@@ -38630,7 +38702,8 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.ComboBox,
             return;
         }
         var ar = [];
-        var idField = this.idField;
+        var idField = this.combo.valueField;
+        
         this.items.each(function(f) {
             ar.push(f.data[idField]);
            
@@ -38656,15 +38729,49 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.ComboBox,
     },
     setValue: function(v) // not a valid action - must use addItems..
     {
-        if (typeof(v) != 'object') {
-            return;
+         
+        
+        if (this.store.isLocal) {
+            // then we can use the store to find the values..
+            // comma seperated at present.. this needs to allow JSON based encoding..
+            this.hiddenEl.value  = v;
+            var v_ar = [];
+            Roo.each(v.split(','), function(k) {
+                Roo.log("CHECK " + this.valueField + ',' + k);
+                var li = this.store.query(this.valueField, k);
+                if (!li.length) {
+                    return;
+                }
+                add = {};
+                add[this.valueField] = k;
+                add[this.displayField] = li.item(0).data[this.displayField];
+                
+                this.addItem(add);
+            }, this) 
+            
+                
+            
         }
-        var _this = this;
-        Roo.each(v, function(l) {
-            _this.addItem(l);
-        });
+        
         
     },
+    setFromData: function(v)
+    {
+        // this recieves an object, if setValues is called.
+        var keys = v[this.valueField].split(',');
+        var display = v[this.displayField].split(',');
+        for (var i = 0 ; i < keys.length; i++) {
+            
+            add = {};
+            add[this.valueField] = keys[i];
+            add[this.displayField] = display[i];
+            this.addItem(add);
+        }
+      
+        
+    },
+    
+    
     validateValue : function(value){
         return Roo.form.ComboBoxArray.superclass.validateValue.call(this, this.getValue());
         
@@ -38693,25 +38800,46 @@ Roo.form.ComboBoxArray.Item = function(config) {
 Roo.extend(Roo.form.ComboBoxArray.Item, Roo.BoxComponent, {
     data : {},
     cb: false,
-    defaultAutoCreate : {tag: 'div', cls: 'x-cbarray-item', cn : [ 
+    nameField : false,
+    tipField : false,
+    
+    
+    defaultAutoCreate : {
+        tag: 'div',
+        cls: 'x-cbarray-item',
+        cn : [ 
             { tag: 'div' },
-            { tag: 'img', width:16, height : 16, src : Roo.BLANK_IMAGE_URL , align: 'center' }
+            {
+                tag: 'img',
+                width:16,
+                height : 16,
+                src : Roo.BLANK_IMAGE_URL ,
+                align: 'center'
+            }
         ]
         
     },
     
  
-    onRender : function(ct, position){
+    onRender : function(ct, position)
+    {
         Roo.form.Field.superclass.onRender.call(this, ct, position);
+        
         if(!this.el){
             var cfg = this.getAutoCreate();
             this.el = ct.createChild(cfg, position);
         }
+        
         this.el.child('img').dom.setAttribute('src', Roo.BLANK_IMAGE_URL);
         
         this.el.child('div').dom.innerHTML = this.cb.renderer ? 
-            this.cb.renderer(this.data) : String.format('{0}',this.data[this.nameField]);
-        this.el.child('div').dom.setAttribute('qtip', String.format('{0}',this.data[this.tipField]));
+            this.cb.renderer(this.data) :
+            String.format('{0}',this.data[this.nameField]);
+        
+            
+        this.el.child('div').dom.setAttribute('qtip',
+                        String.format('{0}',this.data[this.tipField])
+        );
         
         this.el.child('img').on('click', this.remove, this);
         
