@@ -40,11 +40,17 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.ComboBox,
     lastData : false,
     items  : false,
     
+    
+   /**
+     * @cfg {String} nameField The field to take the 'descriptive' display name from
+     */
     nameField : 'name',
+    /**
+     * @cfg {String} idField The field to take the hidden 'id' data from
+     */
+    idField : 'id',
     
     tipField : 'email',
-    
-    idField : 'id',
     
     renderer : false,
     
