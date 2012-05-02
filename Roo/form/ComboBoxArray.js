@@ -301,7 +301,9 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
         this.reset();
         this.el.dom.value = v[this.displayField];
         this.hiddenEl.dom.value = v[this.valueField];
-        
+        if (!v[this.valueField].length) {
+            return;
+        }
         var keys = v[this.valueField].split(',');
         var display = v[this.displayField].split(',');
         for (var i = 0 ; i < keys.length; i++) {
