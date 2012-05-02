@@ -252,7 +252,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
     
     reset : function()
     {
-        Roo.form.ComboBoxArray.superclass.reset.call(this); 
+        //Roo.form.ComboBoxArray.superclass.reset.call(this); 
         this.items.each(function(f) {
            f.remove(); 
         });
@@ -268,7 +268,8 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
     setValue: function(v) // not a valid action - must use addItems..
     {
          
-        
+       this.reset();
+
         if (this.store.isLocal) {
             // then we can use the store to find the values..
             // comma seperated at present.. this needs to allow JSON based encoding..
