@@ -23950,7 +23950,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
 
 /**
  * @class Roo.form.ComboBoxArray
- * @extends Roo.form.ComboBox
+ * @extends Roo.form.TextField
  * A facebook style adder... for lists of email / people / countries  etc...
  * pick multiple items from a combo box, and shows each one.
  *
@@ -24016,7 +24016,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
      */
     name : false,
     /**
-     * @cfg {String} name    The hidden name of the field, often contains an comma seperated list of names
+     * @cfg {String} hiddenName    The hidden name of the field, often contains an comma seperated list of names
      */
     hiddenName : false,
     
@@ -24128,7 +24128,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
         
         return;
         // not sure if this is needed..
-        this.combo.onResize(w,h);
+        //this.combo.onResize(w,h);
         
         if(typeof w != 'number'){
             // we do not handle it!?!?
@@ -24154,9 +24154,9 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
     
     addItem: function(rec)
     {
-        var idField = this.combo.valueField;
+        var valueField = this.combo.valueField;
         var displayField = this.combo.displayField;
-        if (this.items.indexOfKey(rec[idField]) > -1) {
+        if (this.items.indexOfKey(rec[valueField]) > -1) {
             //console.log("GOT " + rec.data.id);
             return;
         }
@@ -24164,12 +24164,12 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
         var x = new Roo.form.ComboBoxArray.Item({
             //id : rec[this.idField],
             data : rec,
-            nameField : displayField ,
+            displayField : displayField ,
             tipField : displayField ,
             cb : this
         });
         // use the 
-        this.items.add(rec[idField],x);
+        this.items.add(rec[valueField],x);
         // add it before the element..
         this.updateHiddenEl();
         x.render(this.outerWrap, this.wrap.dom);
@@ -24239,6 +24239,10 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
     setFromData: function(v)
     {
         // this recieves an object, if setValues is called.
+        this.reset();
+        this.el.dom.value = v[this.displayField];
+        this.hiddenEl.dom.value = v[this.valueField];
+        
         var keys = v[this.valueField].split(',');
         var display = v[this.displayField].split(',');
         for (var i = 0 ; i < keys.length; i++) {
@@ -24281,7 +24285,7 @@ Roo.form.ComboBoxArray.Item = function(config) {
 Roo.extend(Roo.form.ComboBoxArray.Item, Roo.BoxComponent, {
     data : {},
     cb: false,
-    nameField : false,
+    displayField : false,
     tipField : false,
     
     
@@ -24315,7 +24319,7 @@ Roo.extend(Roo.form.ComboBoxArray.Item, Roo.BoxComponent, {
         
         this.el.child('div').dom.innerHTML = this.cb.renderer ? 
             this.cb.renderer(this.data) :
-            String.format('{0}',this.data[this.nameField]);
+            String.format('{0}',this.data[this.displayField]);
         
             
         this.el.child('div').dom.setAttribute('qtip',
