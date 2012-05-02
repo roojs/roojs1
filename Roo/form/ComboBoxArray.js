@@ -108,7 +108,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField
         
         var cbwrap = this.combo.wrap.createChild(
             {tag: 'div', cls: 'x-cbarray-cb'},
-            this.el.dom
+            this.combo.el.dom
         );
         
              
