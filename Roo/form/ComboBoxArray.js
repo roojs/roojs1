@@ -268,7 +268,13 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
     setValue: function(v) // not a valid action - must use addItems..
     {
          
-        
+        Roo.log(v);
+        if (this.store.isLocal) {
+            // then we can use the store to find the values..
+            
+            
+            
+        }
         var _this = this;
         Roo.each(v, function(l) {
             _this.addItem(l);
