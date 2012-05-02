@@ -302,7 +302,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
             
             add = {};
             add[this.valueField] = keys[i];
-            add[this.displayField] = values[i];
+            add[this.displayField] = display[i];
             this.addItem(add);
         }
       
