@@ -83,8 +83,26 @@ Roo.onReady(function(){
                         name: 'country',
                         hiddenName: 'countryNames',
                         width: 500,
-                        
-                        
+                        combo : {
+                            
+                            
+                            xtype : 'ComboBox',
+                            xns : Roo.form,
+                            store: {
+                                xtype : 'SimpleStore',
+                                xns: Roo.data,
+                                fields: ['abbr', 'state'],
+                                data : Roo.exampledata.states // from states.js    
+                            },
+                            editable : false,
+                            displayField:'state',
+                            typeAhead: false,
+                            mode: 'local',
+                            triggerAction: 'all',
+                            emptyText:'Select a state...',
+                            selectOnFocus:true,
+                            resizable:true
+                        }
                         
                         
                     }
