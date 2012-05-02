@@ -145,12 +145,7 @@ Roo.onReady(function(){
                             xns : Roo.form,
                             
                             
-                            
                              
-             
-        
-      
-         
         
                             
                             store: {
