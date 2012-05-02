@@ -90,7 +90,7 @@ Roo.onReady(function(){
                             displayField : 'state',
                             
                             name : 'countryNames',
-                            hiddenName : 'country'
+                            hiddenName : 'country',
                             
                             xtype : 'ComboBox',
                             xns : Roo.form,
