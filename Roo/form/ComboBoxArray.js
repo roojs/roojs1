@@ -73,7 +73,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
      */
     name : false,
     /**
-     * @cfg {String} name    The hidden name of the field, often contains an comma seperated list of names
+     * @cfg {String} hiddenName    The hidden name of the field, often contains an comma seperated list of names
      */
     hiddenName : false,
     
