@@ -23976,6 +23976,11 @@ Roo.form.ComboBoxArray = function(config)
         
     });
     
+    if (!this.hiddenListName && this.hiddenName) {
+        this.hiddenListName = this.hiddenName + '-list';
+    }
+    
+    
 }
  
 Roo.extend(Roo.form.ComboBoxArray, Roo.form.ComboBox,
@@ -23996,8 +24001,11 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.ComboBox,
     tipField : 'email',
     
     renderer : false,
-    
-    hiddenName : false, // set this if you want a , sperated list of values in it for form posting..
+     
+    //hiddenName : false, // set this if you want a , sperated list of values in it for form posting..
+    /**
+     * @cfg {String} hiddenListName The field to take the array of hidden 'id' data that is selected
+     */
     hiddenListName : false,
     hiddenEl : false,
     
@@ -24012,20 +24020,27 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.ComboBox,
     
     onRender : function(ct, position) 
     {
-         
+        if (!this.hiddenName) {
+            Roo.log("ERROR - ComboBox used without a hidden Name..");
+            Roo.log(this);
+        }
+        this.hiddenListName = this.hiddenName;
+        //kludge the naming for the wrapped combo..
+        this.hiddenName += '-lastselected';
+        
         Roo.form.ComboBoxArray.superclass.onRender.call(this, ct, position); 
         this.wrap.addClass('x-cbarray-grp');
         var cbwrap = this.wrap.createChild(
             {tag: 'div', cls: 'x-cbarray-cb'},
             this.el.dom
-        );  
-        if (this.hiddenListName) {
+        );
+        
              
-            this.hiddenEl = this.wrap.createChild({
-                tag: 'input',  type:'hidden' , name: this.hiddenListName, value : ''
-            });
+        this.hiddenEl = this.wrap.createChild({
+            tag: 'input',  type:'hidden' , name: this.hiddenListName, value : ''
+        });
          //   this.el.dom.removeAttribute("name");
-        }
+        
         
         this.outerWrap = this.wrap;
         this.wrap = cbwrap;
@@ -24053,6 +24068,15 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.ComboBox,
         }
         //var _t = this;
         //this.adder.on('click', this.onAddClick, _t);
+        
+    },
+    
+    
+    getName: function()
+    {
+        // returns hidden if it's set..
+        if (!this.rendered) {return ''};
+        return  this.hiddenListName;
         
     },
     
