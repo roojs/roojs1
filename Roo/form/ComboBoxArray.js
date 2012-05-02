@@ -45,14 +45,6 @@ Roo.form.ComboBoxArray = function(config)
     
     
     
-    this.on('select', function(cb, rec, ix) {
-        this.addItem(rec.data);
-        this.setValue('');
-        this.el.dom.value = '';
-        //cb.lastData = rec.data;
-        // add to list
-        
-    });
     
    
     
@@ -77,75 +69,71 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField
      */ 
     width:          300,
 
+    
+    
+    /**
+     * @cfg {String} name    The name of the visable items on this form (eg. titles not ids)
+     */
+    name : false,
+    /**
+     * @cfg {String} name    The hidden name of the field, often contains an comma seperated list of names
+     */
+    hiddenName : false,
+    
+    
     // private the array of items that are displayed..
     items  : false,
-    
-    
-    /**
-     * @cfg {String} nameField The field to take the 'descriptive' display name from
-     */
-    nameField : 'name',
-    /**
-     * @cfg {String} idField The field to take the hidden 'id' data from
-     */
-    idField : 'id',
-    
-    tipField : 'email',
-    
-    renderer : false,
-     
-    //hiddenName : false, // set this if you want a , sperated list of values in it for form posting..
-    /**
-     * @cfg {String} hiddenListName The field to take the array of hidden 'id' data that is selected
-     */
-    hiddenListName : false,
+    // private - the hidden field el.
     hiddenEl : false,
     
-    /**
-     * @cfg {Number} boxWidth The width of the box that displays the selected element
-     */
     boxWidth : 200, // use to set the box around the entry..
-    allowBlank: true,
-    disableClear: true,
+    
     //validateValue : function() { return true; }, // all values are ok!
     //onAddClick: function() { },
     
     onRender : function(ct, position) 
     {
-        if (!this.hiddenName) {
-            Roo.log("ERROR - ComboBox used without a hidden Name..");
-            Roo.log(this);
-        }
-        this.hiddenListName = this.hiddenName;
-        //kludge the naming for the wrapped combo..
-        this.hiddenName += '-lastselected';
         
-        Roo.form.ComboBoxArray.superclass.onRender.call(this, ct, position); 
-        this.wrap.addClass('x-cbarray-grp');
-        var cbwrap = this.wrap.createChild(
+        // give fake names to child combo;
+        
+        this.combo.hiddenName = this.hiddenName ? (this.hiddenName+'-subcombo') : this.hiddenName;
+        this.combo.name = this.name? (this.name+'-subcombo') : this.name;
+        
+        
+        this.combo = Roo.factory(this.combo,Roo.form);
+        
+        
+        this.combo.onRender(ct, position);
+        
+        this.combo.wrap.addClass('x-cbarray-grp');
+        
+        var cbwrap = this.combo.wrap.createChild(
             {tag: 'div', cls: 'x-cbarray-cb'},
             this.el.dom
         );
         
              
-        this.hiddenEl = this.wrap.createChild({
+        this.hiddenEl = this.combo.wrap.createChild({
             tag: 'input',  type:'hidden' , name: this.hiddenListName, value : ''
         });
          //   this.el.dom.removeAttribute("name");
         
         
-        this.outerWrap = this.wrap;
+        this.outerWrap = this.combo.wrap;
         this.wrap = cbwrap;
+        
         this.outerWrap.setWidth(this.boxWidth);
         this.outerWrap.dom.removeChild(this.el.dom);
+        
         this.wrap.dom.appendChild(this.el.dom);
         this.outerWrap.dom.removeChild(this.trigger.dom);
-        this.wrap.dom.appendChild(this.trigger.dom);
-         
-        this.trigger.setStyle('position','relative');
-        this.trigger.setStyle('left', '0px');
-        this.trigger.setStyle('top', '2px');
-        this.el.setStyle('vertical-align', 'text-bottom');
+        this.combo.wrap.dom.appendChild(this.trigger.dom);
+        
+        this.combo.trigger.setStyle('position','relative');
+        this.combo.trigger.setStyle('left', '0px');
+        this.combo.trigger.setStyle('top', '2px');
+        
+        this.combo.el.setStyle('vertical-align', 'text-bottom');
         
         //this.trigger.setStyle('vertical-align', 'top');
         
@@ -162,6 +150,17 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField
         }
         //var _t = this;
         //this.adder.on('click', this.onAddClick, _t);
+        
+        
+        this.combo.on('select', function(cb, rec, ix) {
+            this.addItem(rec.data);
+            this.setValue('');
+            this.el.dom.value = '';
+            //cb.lastData = rec.data;
+            // add to list
+            
+        }, this);
+        
         
     },
     
