@@ -32,6 +32,7 @@ Roo.form.ComboBoxArray = function(config)
         // add to list
         
     });
+    
     if (!this.hiddenListName && this.hiddenName) {
         this.hiddenListName = this.hiddenName + '-list';
     }
@@ -76,7 +77,10 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.ComboBox,
     
     onRender : function(ct, position) 
     {
-         
+        
+        this.hiddenListName = this.hiddenName;
+        this.hiddenName += '-lastselected';
+        
         Roo.form.ComboBoxArray.superclass.onRender.call(this, ct, position); 
         this.wrap.addClass('x-cbarray-grp');
         var cbwrap = this.wrap.createChild(
@@ -84,13 +88,12 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.ComboBox,
             this.el.dom
         );
         
-        if (this.hiddenListName) {
              
-            this.hiddenEl = this.wrap.createChild({
-                tag: 'input',  type:'hidden' , name: this.hiddenListName, value : ''
-            });
+        this.hiddenEl = this.wrap.createChild({
+            tag: 'input',  type:'hidden' , name: this.hiddenListName, value : ''
+        });
          //   this.el.dom.removeAttribute("name");
-        }
+        
         
         this.outerWrap = this.wrap;
         this.wrap = cbwrap;
