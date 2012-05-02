@@ -332,6 +332,7 @@ Roo.extend(Roo.form.ComboBoxArray.Item, Roo.BoxComponent, {
         this.el.child('div').dom.innerHTML = this.cb.renderer ? 
             this.cb.renderer(this.data) :
             String.format('{0}',this.data[this.nameField]);
+        
             
         this.el.child('div').dom.setAttribute('qtip',
                         String.format('{0}',this.data[this.tipField])
