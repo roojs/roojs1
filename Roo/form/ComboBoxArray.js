@@ -78,7 +78,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.ComboBox,
     onRender : function(ct, position) 
     {
         
-        this.hiddenListName = this.hiddenName || this.name;
+        this.hiddenListName = this.hiddenName;
         //kludge the naming for the wrapped combo..
         this.hiddenName += '-lastselected';
         
