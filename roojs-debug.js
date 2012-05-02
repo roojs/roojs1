@@ -38502,11 +38502,17 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.ComboBox,
     lastData : false,
     items  : false,
     
+    
+   /**
+     * @cfg {String} nameField The field to take the 'descriptive' display name from
+     */
     nameField : 'name',
+    /**
+     * @cfg {String} idField The field to take the hidden 'id' data from
+     */
+    idField : 'id',
     
     tipField : 'email',
-    
-    idField : 'id',
     
     renderer : false,
     
@@ -38527,9 +38533,9 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.ComboBox,
     {
          
         Roo.form.ComboBoxArray.superclass.onRender.call(this, ct, position); 
-        this.wrap.addClass('p-cblist-grp');
+        this.wrap.addClass('x-cbarray-grp');
         var cbwrap = this.wrap.createChild(
-            {tag: 'div', cls: 'p-cblist-cb'},
+            {tag: 'div', cls: 'x-cbarray-cb'},
             this.el.dom
         );  
         if (this.hiddenListName) {
@@ -38687,7 +38693,7 @@ Roo.form.ComboBoxArray.Item = function(config) {
 Roo.extend(Roo.form.ComboBoxArray.Item, Roo.BoxComponent, {
     data : {},
     cb: false,
-    defaultAutoCreate : {tag: 'div', cls: 'p-cblist-item', cn : [ 
+    defaultAutoCreate : {tag: 'div', cls: 'x-cbarray-item', cn : [ 
             { tag: 'div' },
             { tag: 'img', width:16, height : 16, src : Roo.BLANK_IMAGE_URL , align: 'center' }
         ]
