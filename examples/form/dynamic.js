@@ -129,8 +129,8 @@ Roo.onReady(function(){
                         xtype : 'ComboBoxArray',
                         xns : Roo.form,
                         fieldLabel: 'Multi select test',
-                        name: 'countryNames',
-                        hiddenName: 'country',
+                        name: 'countryNames2',
+                        hiddenName: 'country2',
                         
                         width: 550,
                         combo : {
@@ -138,6 +138,7 @@ Roo.onReady(function(){
                             valueField : 'abbr',
                             displayField : 'state',
                             
+                            // thes are not really needed as parent overwrites them!?
                             name : 'countryNames',
                             hiddenName : 'country',
                             
