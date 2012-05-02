@@ -211,9 +211,9 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
     
     addItem: function(rec)
     {
-        var idField = this.combo.valueField;
+        var valueField = this.combo.valueField;
         var displayField = this.combo.displayField;
-        if (this.items.indexOfKey(rec[idField]) > -1) {
+        if (this.items.indexOfKey(rec[valueField]) > -1) {
             //console.log("GOT " + rec.data.id);
             return;
         }
@@ -221,12 +221,12 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
         var x = new Roo.form.ComboBoxArray.Item({
             //id : rec[this.idField],
             data : rec,
-            nameField : displayField ,
+            displayField : displayField ,
             tipField : displayField ,
             cb : this
         });
         // use the 
-        this.items.add(rec[idField],x);
+        this.items.add(rec[valueField],x);
         // add it before the element..
         this.updateHiddenEl();
         x.render(this.outerWrap, this.wrap.dom);
@@ -338,7 +338,7 @@ Roo.form.ComboBoxArray.Item = function(config) {
 Roo.extend(Roo.form.ComboBoxArray.Item, Roo.BoxComponent, {
     data : {},
     cb: false,
-    nameField : false,
+    displayField : false,
     tipField : false,
     
     
@@ -372,7 +372,7 @@ Roo.extend(Roo.form.ComboBoxArray.Item, Roo.BoxComponent, {
         
         this.el.child('div').dom.innerHTML = this.cb.renderer ? 
             this.cb.renderer(this.data) :
-            String.format('{0}',this.data[this.nameField]);
+            String.format('{0}',this.data[this.displayField]);
         
             
         this.el.child('div').dom.setAttribute('qtip',
