@@ -268,24 +268,28 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
     setValue: function(v) // not a valid action - must use addItems..
     {
          
-        Roo.log(v);
+        
         if (this.store.isLocal) {
             // then we can use the store to find the values..
             // comma seperated at present.. this needs to allow JSON based encoding..
             this.hiddenField.setValue(v);
-            var ar = [];
-            Roo.each(v.split(','), function(v) {
+            var v_ar = [];
+            Roo.each(v.split(','), function(k) {
+                var li = this.store.query(this.store.valueField, k);
+                if (!li.length) {
+                    return;
+                }
+                add = {};
+                add[this.store.valueField] = k;
+                add[this.store.displayField] = li.item(0).data[this.store.displayField];
                 
+                this.addItem(add);
+            }, this);;
+            
                 
-            });;
-            
-            
             
         }
-        var _this = this;
-        Roo.each(v, function(l) {
-            _this.addItem(l);
-        });
+        
         
     },
     setFromData: function(v)
