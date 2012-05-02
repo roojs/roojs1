@@ -137,11 +137,11 @@ Roo.onReady(function(){
                         width: 550,
                         combo : {
                             
-                            valueField : 'abbr',
-                            displayField : 'state',
+                            valueField : 'code',
+                            displayField : 'title',
                             
                             // thes are not really needed as parent overwrites them!?
-                            name : 'countryNames',
+                            name : 'country_name',
                             hiddenName : 'country',
                             
                             xtype : 'ComboBox',
