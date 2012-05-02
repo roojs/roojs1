@@ -12,7 +12,22 @@
  * pick multiple items from a combo box, and shows each one.
  *
  *  Fred [x]  Brian [x]  [Pick another |v]
- * 
+ *
+ *
+ *  For this to work: it needs various extra information
+ *    - normal combo problay has
+ *      name, hiddenName
+ *    + displayField, valueField
+ *
+ *    For our purpose...
+ *
+ *
+ *   If we change from 'extends' to wrapping...
+ *   
+ *  
+ *
+ 
+ 
  * @constructor
  * Create a new ComboBoxArray.
  * @param {Object} config Configuration options
@@ -23,7 +38,13 @@ Roo.form.ComboBoxArray = function(config)
 {
     
     Roo.form.ComboBoxArray.superclass.constructor.call(this, config);
+    
     this.items = new Roo.util.MixedCollection(false);
+    
+    // construct the child combo...
+    
+    
+    
     this.on('select', function(cb, rec, ix) {
         this.addItem(rec.data);
         this.setValue('');
@@ -33,20 +54,21 @@ Roo.form.ComboBoxArray = function(config)
         
     });
     
-    if (!this.hiddenListName && this.hiddenName) {
-        this.hiddenListName = this.hiddenName + '-list';
-    }
-    
+   
     
 }
  
-Roo.extend(Roo.form.ComboBoxArray, Roo.form.ComboBox,
+Roo.extend(Roo.form.ComboBoxArray, Roo.form.Field
 { 
+    /**
+     * @cfg {Roo.form.Combo} combo The combo box that is wrapped
+     */
+    
     lastData : false,
     items  : false,
     
     
-   /**
+    /**
      * @cfg {String} nameField The field to take the 'descriptive' display name from
      */
     nameField : 'name',
