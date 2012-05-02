@@ -295,7 +295,16 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
     },
     setFromData: function(v)
     {
-        Roo.log(v);
+        // this recieves an object, if setValues is called.
+        var keys = v[this.valueField].split(',');
+        var display = v[this.displayField].split(',');
+        for (var i = 0 ; i < keys.length; i++) {
+            
+            add = {};
+            add[this.valueField] = keys[i];
+            add[this.displayField] = values[i];
+                
+        }
       
         
     },
