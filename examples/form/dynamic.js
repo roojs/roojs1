@@ -129,8 +129,10 @@ Roo.onReady(function(){
                         xtype : 'ComboBoxArray',
                         xns : Roo.form,
                         fieldLabel: 'Multi select test',
-                        name: 'countryNames2',
-                        hiddenName: 'country2',
+                        
+                        
+                        name: 'countrylist_names',
+                        hiddenName: 'countrylist',
                         
                         width: 550,
                         combo : {
@@ -264,8 +266,8 @@ Roo.onReady(function(){
     mform.setValues({
         country  : 'AK,LA',
         countryNames : 'Alaska,Louisana',
-        country2  : 'AK,LA',
-        countryNames2 : 'Alaska,Louisana'        
+        countrylist  : 'AG,AZ',
+        countrylist_names : 'Antigua and Barbuda,Azerbaijan'        
     });
     /*
      * ================  Form 3  =======================
