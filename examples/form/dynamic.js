@@ -102,7 +102,7 @@ Roo.onReady(function(){
                             },
                             width: 200,
                             editable : false,
-                            displayField:'state',
+                            
                             typeAhead: false,
                             mode: 'local',
                             triggerAction: 'all',
