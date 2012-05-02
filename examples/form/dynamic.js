@@ -185,8 +185,8 @@ Roo.onReady(function(){
    
     mform.render('form-ct2');
     mform.setValues({
-        country  : 'HK,SG',
-        countryNames : 'Hong Kong, Singapore'
+        country  : 'AK,LA',
+        countryNames : 'Alaska,Louisana'
         
     })
 
