@@ -266,9 +266,6 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
     setValue: function(v) // not a valid action - must use addItems..
     {
          
-        Roo.log(v);
-        Roo.log(this.hiddenEl.dom.value);
-        Roo.log(this.el.dom.value);
         
         var _this = this;
         Roo.each(v, function(l) {
@@ -276,6 +273,14 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
         });
         
     },
+    setFromData: function(v)
+    {
+        Roo.log(v);
+      
+        
+    },
+    
+    
     validateValue : function(value){
         return Roo.form.ComboBoxArray.superclass.validateValue.call(this, this.getValue());
         
