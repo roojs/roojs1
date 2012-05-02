@@ -100,11 +100,9 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField
         this.combo.hiddenName = this.hiddenName ? (this.hiddenName+'-subcombo') : this.hiddenName;
         this.combo.name = this.name? (this.name+'-subcombo') : this.name;
         
-        
-        this.combo = Roo.factory(this.combo,Roo.form);
-        
-        
+        this.combo = Roo.factory(this.combo, Roo.form);
         this.combo.onRender(ct, position);
+        
         
         this.combo.wrap.addClass('x-cbarray-grp');
         
