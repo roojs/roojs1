@@ -95,6 +95,7 @@ Roo.onReady(function(){
                                 fields: ['abbr', 'state'],
                                 data : Roo.exampledata.states // from states.js    
                             },
+                            width: 200,
                             editable : false,
                             displayField:'state',
                             typeAhead: false,
