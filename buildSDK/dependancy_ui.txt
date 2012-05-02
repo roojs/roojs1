@@ -102,6 +102,7 @@ Roo.form.TextArea
 Roo.form.NumberField
 Roo.form.DateField
 Roo.form.ComboBox
+Roo.form.ComboArray
 Roo.form.Checkbox
 Roo.form.Radio
 Roo.form.HtmlEditor
