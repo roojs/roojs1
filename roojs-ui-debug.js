@@ -6671,8 +6671,6 @@ Roo.data.Node = function(attributes){
         this.id = Roo.id(null, "ynode-");
         this.attributes.id = this.id;
     }
-     
-    
     /**
      * All child nodes of this node. @type Array
      */
@@ -16930,8 +16928,8 @@ Roo.extend(Roo.tree.TreePanel, Roo.data.Tree, {
         }
         this.getSelectionModel().init(this);
         if (!this.root) {
-            Roo.log("ROOT not set in tree");
-            return this;
+            console.log("ROOT not set in tree");
+            return;
         }
         this.root.render();
         if(!this.rootVisible){
@@ -27064,7 +27062,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 (typeof(action.result) != 'undefined')  &&
                 (typeof(action.result.errors) != 'undefined')  &&
                 (typeof(action.result.errors.needs_confirm) != 'undefined')
-          ){
+           ){
                 var _t = this;
                 Roo.MessageBox.confirm(
                     "Change requires confirmation",
