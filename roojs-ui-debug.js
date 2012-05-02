@@ -23942,6 +23942,267 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
      * @method autoSize
      */
 });/*
+ * Copyright(c) 2010-2012, Roo J Solutions Limited
+ *
+ * Licence LGPL
+ *
+ */
+
+/**
+ * @class Roo.form.ComboBoxArray
+ * @extends Roo.form.ComboBox
+ * A facebook style adder... for lists of email / people / countries  etc...
+ * pick multiple items from a combo box, and shows each one.
+ *
+ *  Fred [x]  Brian [x]  [Pick another |v]
+ * 
+ * @constructor
+ * Create a new ComboBoxArray.
+ * @param {Object} config Configuration options
+ */
+ 
+
+Roo.form.ComboBoxArray = function(config)
+{
+    
+    Roo.form.ComboBoxArray.superclass.constructor.call(this, config);
+    this.items = new Roo.util.MixedCollection(false);
+    this.on('select', function(cb, rec, ix) {
+        this.addItem(rec.data);
+        this.setValue('');
+        this.el.dom.value = '';
+        //cb.lastData = rec.data;
+        // add to list
+        
+    });
+    
+}
+ 
+Roo.extend(Roo.form.ComboBoxArray, Roo.form.ComboBox,
+{ 
+    lastData : false,
+    items  : false,
+    
+    nameField : 'name',
+    
+    tipField : 'email',
+    
+    idField : 'id',
+    
+    renderer : false,
+    
+    hiddenName : false, // set this if you want a , sperated list of values in it for form posting..
+    hiddenListName : false,
+    hiddenEl : false,
+    
+    /**
+     * @cfg {Number} boxWidth The width of the box that displays the selected element
+     */
+    boxWidth : 200, // use to set the box around the entry..
+    allowBlank: true,
+    disableClear: true,
+    //validateValue : function() { return true; }, // all values are ok!
+    //onAddClick: function() { },
+    
+    onRender : function(ct, position) 
+    {
+         
+        Roo.form.ComboBoxArray.superclass.onRender.call(this, ct, position); 
+        this.wrap.addClass('p-cblist-grp');
+        var cbwrap = this.wrap.createChild(
+            {tag: 'div', cls: 'p-cblist-cb'},
+            this.el.dom
+        );  
+        if (this.hiddenListName) {
+             
+            this.hiddenEl = this.wrap.createChild({
+                tag: 'input',  type:'hidden' , name: this.hiddenListName, value : ''
+            });
+         //   this.el.dom.removeAttribute("name");
+        }
+        
+        this.outerWrap = this.wrap;
+        this.wrap = cbwrap;
+        this.outerWrap.setWidth(this.boxWidth);
+        this.outerWrap.dom.removeChild(this.el.dom);
+        this.wrap.dom.appendChild(this.el.dom);
+        this.outerWrap.dom.removeChild(this.trigger.dom);
+        this.wrap.dom.appendChild(this.trigger.dom);
+         
+        this.trigger.setStyle('position','relative');
+        this.trigger.setStyle('left', '0px');
+        this.trigger.setStyle('top', '2px');
+        this.el.setStyle('vertical-align', 'text-bottom');
+        
+        //this.trigger.setStyle('vertical-align', 'top');
+        if (this.adder) {
+            
+        
+            this.adder = this.outerWrap.createChild(
+                {tag: 'img', src: Roo.BLANK_IMAGE_URL, cls: 'x-form-adder', style: 'margin-left:2px'});  
+            var _t = this;
+            this.adder.on('click', function(e) {
+                _t.fireEvent('adderclick', this, e);
+            }, _t);
+        }
+        //var _t = this;
+        //this.adder.on('click', this.onAddClick, _t);
+        
+    },
+    
+    
+    onResize: function(w, h){
+        Roo.form.ComboBox.superclass.onResize.apply(this, arguments);
+        
+        if(typeof w != 'number'){
+            // we do not handle it!?!?
+            return;
+        }
+        var tw = this.trigger.getWidth();
+        tw += this.addicon ? this.addicon.getWidth() : 0;
+        tw += this.editicon ? this.editicon.getWidth() : 0;
+        var x = w - tw;
+        this.el.setWidth( this.adjustWidth('input', x));
+            
+        this.trigger.setStyle('left', '0px');
+        
+        if(this.list && this.listWidth === undefined){
+            var lw = Math.max(x + this.trigger.getWidth(), this.minListWidth);
+            this.list.setWidth(lw);
+            this.innerList.setWidth(lw - this.list.getFrameWidth('lr'));
+        }
+        
+    
+        
+    },
+    
+    addItem: function(rec)
+    {
+        if (this.items.indexOfKey(rec[this.idField]) > -1) {
+            //console.log("GOT " + rec.data.id);
+            return;
+        }
+        
+        var x = new Roo.form.ComboBoxArray.Item({
+            //id : rec[this.idField],
+            data : rec,
+            nameField : this.nameField,
+            tipField : this.tipField,
+            cb : this
+        });
+        // use the 
+        this.items.add(rec[this.idField],x);
+        // add it before the element..
+        this.updateHiddenEl();
+        x.render(this.outerWrap, this.wrap.dom);
+        // add the image handler..
+    },
+    
+    updateHiddenEl : function()
+    {
+        this.validate();
+        if (!this.hiddenEl) {
+            return;
+        }
+        var ar = [];
+        var idField = this.idField;
+        this.items.each(function(f) {
+            ar.push(f.data[idField]);
+           
+        });
+        this.hiddenEl.dom.value = ar.join(',');
+        this.validate();
+    },
+    
+    reset : function()
+    {
+        Roo.form.ComboBoxArray.superclass.reset.call(this); 
+        this.items.each(function(f) {
+           f.remove(); 
+        });
+        if (this.hiddenEl) {
+            this.hiddenEl.dom.value = '';
+        }
+        
+    },
+    getValue: function()
+    {
+        return this.hiddenEl ? this.hiddenEl.dom.value : '';
+    },
+    setValue: function(v) // not a valid action - must use addItems..
+    {
+        if (typeof(v) != 'object') {
+            return;
+        }
+        var _this = this;
+        Roo.each(v, function(l) {
+            _this.addItem(l);
+        });
+        
+    },
+    validateValue : function(value){
+        return Roo.form.ComboBoxArray.superclass.validateValue.call(this, this.getValue());
+        
+    }
+    
+});
+
+
+
+/**
+ * @class Roo.form.ComboBoxArray.Item
+ * @extends Roo.BoxComponent
+ * A selected item in the list
+ *  Fred [x]  Brian [x]  [Pick another |v]
+ * 
+ * @constructor
+ * Create a new item.
+ * @param {Object} config Configuration options
+ */
+ 
+Roo.form.ComboBoxArray.Item = function(config) {
+    config.id = Roo.id();
+    Roo.form.ComboBoxArray.Item.superclass.constructor.call(this, config);
+}
+
+Roo.extend(Roo.form.ComboBoxArray.Item, Roo.BoxComponent, {
+    data : {},
+    cb: false,
+    defaultAutoCreate : {tag: 'div', cls: 'p-cblist-item', cn : [ 
+            { tag: 'div' },
+            { tag: 'img', width:16, height : 16, src : Roo.BLANK_IMAGE_URL , align: 'center' }
+        ]
+        
+    },
+    
+ 
+    onRender : function(ct, position){
+        Roo.form.Field.superclass.onRender.call(this, ct, position);
+        if(!this.el){
+            var cfg = this.getAutoCreate();
+            this.el = ct.createChild(cfg, position);
+        }
+        this.el.child('img').dom.setAttribute('src', Roo.BLANK_IMAGE_URL);
+        
+        this.el.child('div').dom.innerHTML = this.cb.renderer ? 
+            this.cb.renderer(this.data) : String.format('{0}',this.data[this.nameField]);
+        this.el.child('div').dom.setAttribute('qtip', String.format('{0}',this.data[this.tipField]));
+        
+        this.el.child('img').on('click', this.remove, this);
+        
+    },
+   
+    remove : function()
+    {
+        
+        this.cb.items.remove(this);
+        this.el.child('img').un('click', this.remove, this);
+        this.el.remove();
+        this.cb.updateHiddenEl();
+    }
+    
+    
+});/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -29346,6 +29607,193 @@ Roo.extend(Roo.form.DayPicker, Roo.form.Field,  {
         Roo.form.DayPicker.superclass.onDestroy.call(this);
     }
 
+});/*
+ * RooJS Library 1.1.1
+ * Copyright(c) 2008-2011  Alan Knowles
+ *
+ * License - LGPL
+ */
+ 
+
+/**
+ * @class Roo.form.ComboCheck
+ * @extends Roo.form.ComboBox
+ * A combobox for multiple select items.
+ *
+ * FIXME - could do with a reset button..
+ * 
+ * @constructor
+ * Create a new ComboCheck
+ * @param {Object} config Configuration options
+ */
+Roo.form.ComboCheck = function(config){
+    Roo.form.ComboCheck.superclass.constructor.call(this, config);
+    // should verify some data...
+    // like
+    // hiddenName = required..
+    // displayField = required
+    // valudField == required
+    var req= [ 'hiddenName', 'displayField', 'valueField' ];
+    var _t = this;
+    Roo.each(req, function(e) {
+        if ((typeof(_t[e]) == 'undefined' ) || !_t[e].length) {
+            throw "Roo.form.ComboCheck : missing value for: " + e;
+        }
+    });
+    
+    
+};
+
+Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
+     
+     
+    editable : false,
+     
+    selectedClass: 'x-menu-item-checked', 
+    
+    // private
+    onRender : function(ct, position){
+        var _t = this;
+        
+        
+        
+        if(!this.tpl){
+            var cls = 'x-combo-list';
+
+            
+            this.tpl =  new Roo.Template({
+                html :  '<div class="'+cls+'-item x-menu-check-item">' +
+                   '<img class="x-menu-item-icon" style="margin: 0px;" src="' + Roo.BLANK_IMAGE_URL + '">' + 
+                   '<span>{' + this.displayField + '}</span>' +
+                    '</div>' 
+                
+            });
+        }
+ 
+        
+        Roo.form.ComboCheck.superclass.onRender.call(this, ct, position);
+        this.view.singleSelect = false;
+        this.view.multiSelect = true;
+        this.view.toggleSelect = true;
+        this.pageTb.add(new Roo.Toolbar.Fill(), {
+            
+            text: 'Done',
+            handler: function()
+            {
+                _t.collapse();
+            }
+        });
+    },
+    
+    onViewOver : function(e, t){
+        // do nothing...
+        return;
+        
+    },
+    
+    onViewClick : function(doFocus,index){
+        return;
+        
+    },
+    select: function () {
+        //Roo.log("SELECT CALLED");
+    },
+     
+    selectByValue : function(xv, scrollIntoView){
+        var ar = this.getValueArray();
+        var sels = [];
+        
+        Roo.each(ar, function(v) {
+            if(v === undefined || v === null){
+                return;
+            }
+            var r = this.findRecord(this.valueField, v);
+            if(r){
+                sels.push(this.store.indexOf(r))
+                
+            }
+        },this);
+        this.view.select(sels);
+        return false;
+    },
+    
+    
+    
+    onSelect : function(record, index){
+       // Roo.log("onselect Called");
+       // this is only called by the clear button now..
+        this.view.clearSelections();
+        this.setValue('[]');
+        if (this.value != this.valueBefore) {
+            this.fireEvent('change', this, this.value, this.valueBefore);
+        }
+    },
+    getValueArray : function()
+    {
+        var ar = [] ;
+        
+        try {
+            //Roo.log(this.value);
+            if (typeof(this.value) == 'undefined') {
+                return [];
+            }
+            var ar = Roo.decode(this.value);
+            return  ar instanceof Array ? ar : []; //?? valid?
+            
+        } catch(e) {
+            Roo.log(e + "\nRoo.form.ComboCheck:getValueArray  invalid data:" + this.getValue());
+            return [];
+        }
+         
+    },
+    expand : function ()
+    {
+        Roo.form.ComboCheck.superclass.expand.call(this);
+        this.valueBefore = this.value;
+        
+
+    },
+    
+    collapse : function(){
+        Roo.form.ComboCheck.superclass.collapse.call(this);
+        var sl = this.view.getSelectedIndexes();
+        var st = this.store;
+        var nv = [];
+        var tv = [];
+        var r;
+        Roo.each(sl, function(i) {
+            r = st.getAt(i);
+            nv.push(r.get(this.valueField));
+        },this);
+        this.setValue(Roo.encode(nv));
+        if (this.value != this.valueBefore) {
+
+            this.fireEvent('change', this, this.value, this.valueBefore);
+        }
+        
+    },
+    
+    setValue : function(v){
+        // Roo.log(v);
+        this.value = v;
+        
+        var vals = this.getValueArray();
+        var tv = [];
+        Roo.each(vals, function(k) {
+            var r = this.findRecord(this.valueField, k);
+            if(r){
+                tv.push(r.data[this.displayField]);
+            }else if(this.valueNotFoundText !== undefined){
+                tv.push( this.valueNotFoundText );
+            }
+        },this);
+       // Roo.log(tv);
+        
+        Roo.form.ComboBox.superclass.setValue.call(this, tv.join(', '));
+        this.hiddenField.value = v;
+        this.value = v;
+    }
+    
 });//<script type="text/javasscript">
  
 
