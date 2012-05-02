@@ -17,16 +17,10 @@
  * Create a new ComboBoxArray.
  * @param {Object} config Configuration options
  */
-/**
- * 
- * 
- * 
- *  field :  [Selected x] [.....V]
- * 
- */
+ 
 
-
-Roo.form.ComboBoxArray = function(config){
+Roo.form.ComboBoxArray = function(config)
+{
     
     Roo.form.ComboBoxArray.superclass.constructor.call(this, config);
     this.items = new Roo.util.MixedCollection(false);
@@ -41,16 +35,26 @@ Roo.form.ComboBoxArray = function(config){
     
 }
  
-Roo.extend(Roo.form.ComboBoxArray, Roo.form.ComboBox, { 
+Roo.extend(Roo.form.ComboBoxArray, Roo.form.ComboBox,
+{ 
     lastData : false,
     items  : false,
+    
     nameField : 'name',
+    
     tipField : 'email',
+    
     idField : 'id',
+    
     renderer : false,
+    
     hiddenName : false, // set this if you want a , sperated list of values in it for form posting..
     hiddenListName : false,
     hiddenEl : false,
+    
+    /**
+     * @cfg {Number} boxWidth The width of the box that displays the selected element
+     */
     boxWidth : 200, // use to set the box around the entry..
     allowBlank: true,
     disableClear: true,
@@ -200,6 +204,19 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.ComboBox, {
     
 });
 
+
+
+/**
+ * @class Roo.form.ComboBoxArray.Item
+ * @extends Roo.BoxComponent
+ * A selected item in the list
+ *  Fred [x]  Brian [x]  [Pick another |v]
+ * 
+ * @constructor
+ * Create a new item.
+ * @param {Object} config Configuration options
+ */
+ 
 Roo.form.ComboBoxArray.Item = function(config) {
     config.id = Roo.id();
     Roo.form.ComboBoxArray.Item.superclass.constructor.call(this, config);
