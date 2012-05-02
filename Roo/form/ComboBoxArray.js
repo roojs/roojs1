@@ -256,6 +256,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
         this.items.each(function(f) {
            f.remove(); 
         });
+        this.el.dom.value = '';
         if (this.hiddenEl) {
             this.hiddenEl.dom.value = '';
         }
