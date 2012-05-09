@@ -96,6 +96,11 @@ Roo.extend(Roo.tree.TreeLoader, Roo.util.Observable, {
     * to be loaded.
     */
     /**
+    * @cfg {String} requestMethod either GET or POST
+    * defaults to POST (due to BC)
+    * to be loaded.
+    */
+    /**
     * @cfg {Object} baseParams (optional) An object containing properties which
     * specify HTTP parameters to be passed to each request for child nodes.
     */
