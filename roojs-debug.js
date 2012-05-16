@@ -33031,6 +33031,11 @@ Roo.extend(Roo.tree.TreeLoader, Roo.util.Observable, {
     * to be loaded.
     */
     /**
+    * @cfg {String} requestMethod either GET or POST
+    * defaults to POST (due to BC)
+    * to be loaded.
+    */
+    /**
     * @cfg {Object} baseParams (optional) An object containing properties which
     * specify HTTP parameters to be passed to each request for child nodes.
     */
@@ -53301,7 +53306,12 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
 });
 
 Roo.apply(Roo.XComponent, {
-    
+    /**
+     * @property  hideProgress
+     * true to disable the building progress bar.. usefull on single page renders.
+     * @type Boolean
+     */
+    hideProgress : false,
     /**
      * @property  buildCompleted
      * True when the builder has completed building the interface.
@@ -53356,23 +53366,24 @@ Roo.apply(Roo.XComponent, {
      */
     register : function(obj) {
 		
-		Roo.XComponent.event.fireEvent('register', obj);
-		switch(typeof(obj.disabled) ) {
-			
-			case 'undefined':
-				break;
-			
-			case 'function':
-				if ( obj.disabled() ) {
-					return;
-				}
-				break;
-			default:
-				if (obj.disabled) {
-					return;
-				}
-				break;
-		}
+        Roo.XComponent.event.fireEvent('register', obj);
+        switch(typeof(obj.disabled) ) {
+                
+            case 'undefined':
+                break;
+            
+            case 'function':
+                if ( obj.disabled() ) {
+                        return;
+                }
+                break;
+            
+            default:
+                if (obj.disabled) {
+                        return;
+                }
+                break;
+        }
 		
         this.modules.push(obj);
          
@@ -53435,9 +53446,9 @@ Roo.apply(Roo.XComponent, {
             }
             
             if (!obj.parent) {
-				Roo.debug && Roo.log("GOT top level module");
-				Roo.debug && Roo.log(obj);
-				obj.modules = new Roo.util.MixedCollection(false, 
+                Roo.debug && Roo.log("GOT top level module");
+                Roo.debug && Roo.log(obj);
+                obj.modules = new Roo.util.MixedCollection(false, 
                     function(o) { return o.order + '' }
                 );
                 this.topModule = obj;
@@ -53479,24 +53490,26 @@ Roo.apply(Roo.XComponent, {
         // make a flat list in order of modules to build.
         var mods = this.topModule ? [ this.topModule ] : [];
 		
-		// elmodules (is a list of DOM based modules )
-        Roo.each(this.elmodules,function(e) { mods.push(e) });
+	// elmodules (is a list of DOM based modules )
+        Roo.each(this.elmodules, function(e) {
+            mods.push(e)
+        });
 
         
         // add modules to their parents..
         var addMod = function(m) {
-			Roo.debug && Roo.log("build Order: add: " + m.name);
+	    Roo.debug && Roo.log("build Order: add: " + m.name);
             
             mods.push(m);
             if (m.modules) {
-				Roo.debug && Roo.log("build Order: " + m.modules.length + " child modules");
+                Roo.debug && Roo.log("build Order: " + m.modules.length + " child modules");
                 m.modules.keySort('ASC',  cmp );
-				Roo.debug && Roo.log("build Order: " + m.modules.length + " child modules (after sort)");
+		Roo.debug && Roo.log("build Order: " + m.modules.length + " child modules (after sort)");
 
                 m.modules.each(addMod);
             } else {
-				Roo.debug && Roo.log("build Order: no child modules");
-			}
+		Roo.debug && Roo.log("build Order: no child modules");
+	    }
             // not sure if this is used any more..
             if (m.finalize) {
                 m.finalize.name = m.name + " (clean up) ";
@@ -53534,23 +53547,27 @@ Roo.apply(Roo.XComponent, {
         
         var msg = "Building Interface...";
         // flash it up as modal - so we store the mask!?
-        Roo.MessageBox.show({ title: 'loading' });
-        Roo.MessageBox.show({
-           title: "Please wait...",
-           msg: msg,
-           width:450,
-           progress:true,
-           closable:false,
-           modal: false
-          
-        });
+        if (!this.hideProgress) {
+            Roo.MessageBox.show({ title: 'loading' });
+            Roo.MessageBox.show({
+               title: "Please wait...",
+               msg: msg,
+               width:450,
+               progress:true,
+               closable:false,
+               modal: false
+              
+            });
+        }
         var total = mods.length;
         
         var _this = this;
         var progressRun = function() {
             if (!mods.length) {
                 Roo.debug && Roo.log('hide?');
-                Roo.MessageBox.hide();
+                if (!this.hideProgress) {
+                    Roo.MessageBox.hide();
+                }
                 Roo.XComponent.event.fireEvent('buildcomplete', _this.topModule);
                 
                 // THE END...
@@ -53572,7 +53589,9 @@ Roo.apply(Roo.XComponent, {
                     " of " + total + 
                     (m.name ? (' - ' + m.name) : '');
 			Roo.debug && Roo.log(msg);
-            Roo.MessageBox.updateProgress(  (total  - mods.length)/total, msg  );
+            if (!this.hideProgress) { 
+                Roo.MessageBox.updateProgress(  (total  - mods.length)/total, msg  );
+            }
             
          
             // is the module disabled?
