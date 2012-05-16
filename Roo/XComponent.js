@@ -322,9 +322,9 @@ Roo.apply(Roo.XComponent, {
             }
             
             if (!obj.parent) {
-				Roo.debug && Roo.log("GOT top level module");
-				Roo.debug && Roo.log(obj);
-				obj.modules = new Roo.util.MixedCollection(false, 
+                Roo.debug && Roo.log("GOT top level module");
+                Roo.debug && Roo.log(obj);
+                obj.modules = new Roo.util.MixedCollection(false, 
                     function(o) { return o.order + '' }
                 );
                 this.topModule = obj;
@@ -366,24 +366,24 @@ Roo.apply(Roo.XComponent, {
         // make a flat list in order of modules to build.
         var mods = this.topModule ? [ this.topModule ] : [];
 		
-		// elmodules (is a list of DOM based modules )
+	// elmodules (is a list of DOM based modules )
         Roo.each(this.elmodules,function(e) { mods.push(e) });
 
         
         // add modules to their parents..
         var addMod = function(m) {
-			Roo.debug && Roo.log("build Order: add: " + m.name);
+	    Roo.debug && Roo.log("build Order: add: " + m.name);
             
             mods.push(m);
             if (m.modules) {
-				Roo.debug && Roo.log("build Order: " + m.modules.length + " child modules");
+                Roo.debug && Roo.log("build Order: " + m.modules.length + " child modules");
                 m.modules.keySort('ASC',  cmp );
-				Roo.debug && Roo.log("build Order: " + m.modules.length + " child modules (after sort)");
+		Roo.debug && Roo.log("build Order: " + m.modules.length + " child modules (after sort)");
 
                 m.modules.each(addMod);
             } else {
-				Roo.debug && Roo.log("build Order: no child modules");
-			}
+		Roo.debug && Roo.log("build Order: no child modules");
+	    }
             // not sure if this is used any more..
             if (m.finalize) {
                 m.finalize.name = m.name + " (clean up) ";
