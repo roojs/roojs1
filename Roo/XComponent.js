@@ -182,7 +182,12 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
 });
 
 Roo.apply(Roo.XComponent, {
-    
+    /**
+     * @property  hideProgress
+     * true to disable the building progress bar.. usefull on single page renders.
+     * @type Boolean
+     */
+    hideProgress : false,
     /**
      * @property  buildCompleted
      * True when the builder has completed building the interface.
