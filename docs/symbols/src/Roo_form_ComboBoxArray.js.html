@@ -73,7 +73,7 @@
      */
     </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-comment">/**
-     * @cfg {String} name    The hidden name of the field, often contains an comma seperated list of names
+     * @cfg {String} hiddenName    The hidden name of the field, often contains an comma seperated list of names
      */
     </span><span class="jsdoc-var">hiddenName </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
@@ -185,7 +185,7 @@
         
         </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-comment">// not sure if this is needed..
-        </span><span class="jsdoc-var">this.combo.onResize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">);
+        //this.combo.onResize(w,h);
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'number'</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-comment">// we do not handle it!?!?
@@ -211,9 +211,9 @@
     
     </span><span class="jsdoc-var">addItem</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rec</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">idField </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.combo.valueField</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">valueField </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.combo.valueField</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">displayField </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.combo.displayField</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.items.indexOfKey</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rec</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">idField</span><span class="jsdoc-syntax">]) &gt; -1) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.items.indexOfKey</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rec</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">valueField</span><span class="jsdoc-syntax">]) &gt; -1) {
             </span><span class="jsdoc-comment">//console.log(&quot;GOT &quot; + rec.data.id);
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
@@ -221,12 +221,12 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.form.ComboBoxArray.Item</span><span class="jsdoc-syntax">({
             </span><span class="jsdoc-comment">//id : rec[this.idField],
             </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rec</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">nameField </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">displayField </span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">displayField </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">displayField </span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">tipField </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">displayField </span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cb </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this
         </span><span class="jsdoc-syntax">});
         </span><span class="jsdoc-comment">// use the 
-        </span><span class="jsdoc-var">this.items.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rec</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">idField</span><span class="jsdoc-syntax">],</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.items.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rec</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">valueField</span><span class="jsdoc-syntax">],</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-comment">// add it before the element..
         </span><span class="jsdoc-var">this.updateHiddenEl</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">x.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.outerWrap</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.wrap.dom</span><span class="jsdoc-syntax">);
@@ -252,10 +252,11 @@
     
     </span><span class="jsdoc-var">reset </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-var">Roo.form.ComboBoxArray.superclass.reset.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">); 
+        </span><span class="jsdoc-comment">//Roo.form.ComboBoxArray.superclass.reset.call(this); 
         </span><span class="jsdoc-var">this.items.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">) {
            </span><span class="jsdoc-var">f.remove</span><span class="jsdoc-syntax">(); 
         });
+        </span><span class="jsdoc-var">this.el.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hiddenEl</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.hiddenEl.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
         }
@@ -268,7 +269,8 @@
     </span><span class="jsdoc-var">setValue</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) </span><span class="jsdoc-comment">// not a valid action - must use addItems..
     </span><span class="jsdoc-syntax">{
          
-        
+        </span><span class="jsdoc-var">this.reset</span><span class="jsdoc-syntax">();
+
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store.isLocal</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-comment">// then we can use the store to find the values..
             // comma seperated at present.. this needs to allow JSON based encoding..
@@ -296,6 +298,12 @@
     </span><span class="jsdoc-var">setFromData</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-comment">// this recieves an object, if setValues is called.
+        </span><span class="jsdoc-var">this.reset</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.el.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.displayField</span><span class="jsdoc-syntax">];
+        </span><span class="jsdoc-var">this.hiddenEl.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.valueField</span><span class="jsdoc-syntax">];
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.valueField</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">keys </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.valueField</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">','</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">display </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.displayField</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">','</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0 ; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">keys.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
@@ -338,7 +346,7 @@
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.form.ComboBoxArray.Item</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.BoxComponent</span><span class="jsdoc-syntax">, {
     </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">: {},
     </span><span class="jsdoc-var">cb</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">nameField </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">displayField </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">tipField </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     
@@ -372,7 +380,7 @@
         
         </span><span class="jsdoc-var">this.el.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cb.renderer </span><span class="jsdoc-syntax">? 
             </span><span class="jsdoc-var">this.cb.renderer</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.data</span><span class="jsdoc-syntax">) :
-            </span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'{0}'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.data</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.nameField</span><span class="jsdoc-syntax">]);
+            </span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'{0}'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.data</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.displayField</span><span class="jsdoc-syntax">]);
         
             
         </span><span class="jsdoc-var">this.el.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.dom.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'qtip'</span><span class="jsdoc-syntax">,
