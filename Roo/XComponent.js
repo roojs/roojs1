@@ -242,23 +242,23 @@ Roo.apply(Roo.XComponent, {
      */
     register : function(obj) {
 		
-		Roo.XComponent.event.fireEvent('register', obj);
-		switch(typeof(obj.disabled) ) {
-			
-			case 'undefined':
-				break;
-			
-			case 'function':
-				if ( obj.disabled() ) {
-					return;
-				}
-				break;
-			default:
-				if (obj.disabled) {
-					return;
-				}
-				break;
-		}
+        Roo.XComponent.event.fireEvent('register', obj);
+        switch(typeof(obj.disabled) ) {
+                
+                case 'undefined':
+                        break;
+                
+                case 'function':
+                        if ( obj.disabled() ) {
+                                return;
+                        }
+                        break;
+                default:
+                        if (obj.disabled) {
+                                return;
+                        }
+                        break;
+        }
 		
         this.modules.push(obj);
          
