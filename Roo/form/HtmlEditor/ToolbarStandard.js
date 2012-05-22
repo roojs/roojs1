@@ -370,7 +370,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         
         if (this.btns) {
             for(var i =0; i< this.btns.length;i++) {
-                var b = this.btns[i];
+                var b = Roo.factory(this.btns[i],Roo.form);
                 b.cls =  'x-edit-none';
                 b.scope = editor;
                 tb.add(b);
