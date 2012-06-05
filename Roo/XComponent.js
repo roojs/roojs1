@@ -528,7 +528,7 @@ Roo.XComponent.event = new Roo.util.Observable({
 			'register' : true,
             /**
 			 * @event beforebuild
-			 * Fires before Component is built
+			 * Fires before each Component is built
 			 * can be used to apply permissions.
 			 * @param {Roo.XComponent} c the component being registerd.
 			 * 
