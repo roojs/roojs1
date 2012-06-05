@@ -21190,6 +21190,8 @@ Roo.data.Node = function(attributes){
         this.id = Roo.id(null, "ynode-");
         this.attributes.id = this.id;
     }
+     
+    
     /**
      * All child nodes of this node. @type Array
      */
@@ -31447,8 +31449,8 @@ Roo.extend(Roo.tree.TreePanel, Roo.data.Tree, {
         }
         this.getSelectionModel().init(this);
         if (!this.root) {
-            console.log("ROOT not set in tree");
-            return;
+            Roo.log("ROOT not set in tree");
+            return this;
         }
         this.root.render();
         if(!this.rootVisible){
@@ -40804,7 +40806,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         
         if (this.btns) {
             for(var i =0; i< this.btns.length;i++) {
-                var b = this.btns[i];
+                var b = Roo.factory(this.btns[i],Roo.form);
                 b.cls =  'x-edit-none';
                 b.scope = editor;
                 tb.add(b);
@@ -41989,7 +41991,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 (typeof(action.result) != 'undefined')  &&
                 (typeof(action.result.errors) != 'undefined')  &&
                 (typeof(action.result.errors.needs_confirm) != 'undefined')
-           ){
+          ){
                 var _t = this;
                 Roo.MessageBox.confirm(
                     "Change requires confirmation",
@@ -53437,6 +53439,8 @@ Roo.apply(Roo.XComponent, {
         var _t = this;
         Roo.each(this.modules , function (obj)
         {
+            Roo.XComponent.event.fireEvent('beforebuild', obj);
+            
             var opar = obj.parent;
             try { 
                 obj.parent = this.toObject(opar);
@@ -53648,6 +53652,14 @@ Roo.XComponent.event = new Roo.util.Observable({
 			 * 
 			 */
 			'register' : true,
+            /**
+			 * @event beforebuild
+			 * Fires before each Component is built
+			 * can be used to apply permissions.
+			 * @param {Roo.XComponent} c the component being registerd.
+			 * 
+			 */
+			'beforebuild' : true,
 			/**
 			 * @event buildcomplete
 			 * Fires on the top level element when all elements have been built
