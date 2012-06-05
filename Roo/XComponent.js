@@ -313,6 +313,8 @@ Roo.apply(Roo.XComponent, {
         var _t = this;
         Roo.each(this.modules , function (obj)
         {
+            Roo.XComponent.event.fireEvent('beforebuild', obj);
+            
             var opar = obj.parent;
             try { 
                 obj.parent = this.toObject(opar);
