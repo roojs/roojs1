@@ -38952,7 +38952,9 @@ Roo.apply(Roo.XComponent, {
                     function(o) { return o.order + '' }
                 );
             }
-            
+            if (obj.parent.disabled) {
+                obj.disabled = true;
+            }
             obj.parent.modules.add(obj);
         }, this);
     },
