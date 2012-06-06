@@ -21190,8 +21190,6 @@ Roo.data.Node = function(attributes){
         this.id = Roo.id(null, "ynode-");
         this.attributes.id = this.id;
     }
-     
-    
     /**
      * All child nodes of this node. @type Array
      */
@@ -31449,8 +31447,8 @@ Roo.extend(Roo.tree.TreePanel, Roo.data.Tree, {
         }
         this.getSelectionModel().init(this);
         if (!this.root) {
-            Roo.log("ROOT not set in tree");
-            return this;
+            console.log("ROOT not set in tree");
+            return;
         }
         this.root.render();
         if(!this.rootVisible){
@@ -53291,7 +53289,11 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
             }
         }
         
-		
+		if (!this.parent.el) {
+			// probably an old style ctor, which has been disabled.
+			return;
+			
+		}
 		// The 'tree' method is  '_tree now' 
             
         var tree = this._tree ? this._tree() : this.tree();
