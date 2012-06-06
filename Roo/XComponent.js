@@ -165,7 +165,11 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
             }
         }
         
-		
+		if (!this.parent.el) {
+			// probably an old style ctor, which has been disabled.
+			return;
+			
+		}
 		// The 'tree' method is  '_tree now' 
             
         var tree = this._tree ? this._tree() : this.tree();
