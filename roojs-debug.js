@@ -21190,6 +21190,8 @@ Roo.data.Node = function(attributes){
         this.id = Roo.id(null, "ynode-");
         this.attributes.id = this.id;
     }
+     
+    
     /**
      * All child nodes of this node. @type Array
      */
@@ -31447,8 +31449,8 @@ Roo.extend(Roo.tree.TreePanel, Roo.data.Tree, {
         }
         this.getSelectionModel().init(this);
         if (!this.root) {
-            console.log("ROOT not set in tree");
-            return;
+            Roo.log("ROOT not set in tree");
+            return this;
         }
         this.root.render();
         if(!this.rootVisible){
@@ -38768,7 +38770,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
         this.reset();
         this.el.dom.value = v[this.displayField];
         this.hiddenEl.dom.value = v[this.valueField];
-        if (!v[this.valueField].length) {
+        if (typeof(v[this.valueField]) != 'string' || !v[this.valueField].length) {
             return;
         }
         var keys = v[this.valueField].split(',');
