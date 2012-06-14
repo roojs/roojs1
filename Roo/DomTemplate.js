@@ -27,10 +27,10 @@
 </code></pre>
  *  The tpl tag:
 <pre><code>
-        &lt;div roo-for="a_variable or condition.."&gt;&lt;/tpl&gt;
-        &lt;tpl roo-if="a_variable or condition"&gt;&lt;/tpl&gt;
-        &lt;tpl roo-exec="some javascript"&gt;&lt;/tpl&gt;
-        &lt;tpl roo-name="named_template"&gt;&lt;/tpl&gt; 
+        &lt;div roo-for="a_variable or condition.."&gt;&lt;/div&gt;
+        &lt;div roo-if="a_variable or condition"&gt;&lt;/div&gt;
+        &lt;div roo-exec="some javascript"&gt;&lt;/div&gt;
+        &lt;div roo-name="named_template"&gt;&lt;/div&gt; 
   
 </code></pre>
  *      
