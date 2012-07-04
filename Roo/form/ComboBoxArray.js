@@ -270,8 +270,10 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
     {
          
         this.reset();
-
-        if (this.store.isLocal) {
+        
+        
+        
+        if (this.store.isLocal) && typeof(v) == 'string') {
             // then we can use the store to find the values..
             // comma seperated at present.. this needs to allow JSON based encoding..
             this.hiddenEl.value  = v;
