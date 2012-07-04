@@ -299,8 +299,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
             Roo.each(v, function(l) {
                 this.addItem(l);
             }, this);
-            
-            
+             
         }
         
         
