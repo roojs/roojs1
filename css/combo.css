@@ -146,5 +146,9 @@
     border: 1px solid #e0ecff;
     display: inline-block;
 }
-   
+.x-cbarray-grp input.x-form-text
+{
+    float: left;
+    display: inline-block;
+}
 
