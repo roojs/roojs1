@@ -146,9 +146,9 @@
     border: 1px solid #e0ecff;
     display: inline-block;
 }
-.x-cbarray-grp input.x-form-text
+.x-cbarray-grp input.x-form-text,
+.x-cbarray-grp img.x-form-trigger
 {
     float: left;
-    display: inline-block;
 }
 
