@@ -38759,9 +38759,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
                 
                 this.addItem(add);
             }, this) 
-            
-                
-            
+             
         }
         if (typeof(v) == 'object') {
             // then let's assume it's an array of objects..
