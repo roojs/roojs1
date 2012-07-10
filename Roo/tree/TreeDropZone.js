@@ -246,16 +246,9 @@ Roo.extend(Roo.tree.TreeDropZone, Roo.dd.DropZone, {
             data.node.ui.highlight();
         }
         this.hideProxy();
-    } ,
+    }  
     
-    notifyOut :  function(dd, e, data)
-    {
-        this.fireEvent('out', dd, e, data);
-        if(this.overClass){
-            this.el.removeClass(this.overClass);
-        }
-        Roo.log("notify Out");
-    },
+     
     
 });
 
