@@ -24,6 +24,11 @@ Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
         return n && n.draggable && !n.disabled;
     },
     
+    onDragOut : function(e, id){
+    {
+        Roo.tree.TreeDragZone.superclass.prototype.onDragOut.call(this, e, id);
+    },
+    
     onInitDrag : function(e){
         var data = this.dragData;
         this.tree.getSelectionModel().select(data.node);
