@@ -18,7 +18,7 @@ Roo.tree.TreeDragZone = function(tree, config){
 
 Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
     ddGroup : "TreeDD",
-    scroller : false,
+    scroller : false, // 't' or 'b'
     
     onBeforeDrag : function(data, e){
         var n = data.node;
@@ -54,6 +54,15 @@ Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
         
         return ret;
     },
+    
+    scrollAct: function()
+    {
+        this.el.scroll(this.scroller, 5, true);
+        
+        
+        
+    }
+    
     onInitDrag : function(e){
         var data = this.dragData;
         this.tree.getSelectionModel().select(data.node);
