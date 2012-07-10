@@ -33,7 +33,15 @@ Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
         
         return ret;
     },
-    
+    onDragEnter : function(e, id) 
+    {
+        var ret = Roo.tree.TreeDragZone.superclass.constructor.prototype.onDragEnter.call(this, e, id);
+        
+        Roo.log('ondragout');
+        Roo.log(this);
+        
+        return ret;
+    },
     onInitDrag : function(e){
         var data = this.dragData;
         this.tree.getSelectionModel().select(data.node);
