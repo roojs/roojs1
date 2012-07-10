@@ -21,7 +21,8 @@ var TreeTest = function(){
                 loader: new Tree.TreeLoader({dataUrl:'get-nodes.php'}),
                 enableDD:true,
                 containerScroll: true,
-                dropConfig: {appendOnly:true}
+                dropConfig: {appendOnly:true},
+                dragConfig : { scrollContainer : true }
             });
             
             // add a tree sorter in folder mode
@@ -54,6 +55,7 @@ var TreeTest = function(){
                 containerScroll: true,
                 enableDD:true,
                 dropConfig: {appendOnly:true}
+                
             });
             
             // add a tree sorter in folder mode
