@@ -111,6 +111,7 @@ Roo.extend(Roo.tree.TreeDropZone, Roo.dd.DropZone, {
     
     onNodeOver : function(n, dd, e, data)
     {
+         Roo.log('node over');
         var pt = this.getDropPoint(e, n, dd);
         var node = n.node;
         
