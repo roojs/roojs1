@@ -23,6 +23,7 @@ Roo.tree.TreeDropZone = function(tree, config){
 
 Roo.extend(Roo.tree.TreeDropZone, Roo.dd.DropZone, {
     ddGroup : "TreeDD",
+    scroll:  true,
     
     expandDelay : 1000,
     
