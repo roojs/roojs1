@@ -20,6 +20,7 @@ Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
     ddGroup : "TreeDD",
     scroller : false, // 't' or 'b'
     scroll: true,
+    
     onBeforeDrag : function(data, e){
         var n = data.node;
         return n && n.draggable && !n.disabled;
