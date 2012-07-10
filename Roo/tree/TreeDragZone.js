@@ -38,7 +38,7 @@ Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
     {
         var ret = Roo.tree.TreeDragZone.superclass.constructor.prototype.onDragEnter.call(this, e, id);
         
-        if (this.scroller) {
+        if (this.scroller !== false) {
             window.clearTimeout(this.scroller);
             this.scroller =false;
             
