@@ -150,6 +150,7 @@ Roo.extend(Roo.tree.TreeDropZone, Roo.dd.DropZone, {
         Roo.log('node out');
         Roo.log(dd);
         Roo.log(e);
+        var dragEl = n.ddel;
         var t = Roo.lib.Dom.getY(dragEl);
         var b = t + dragEl.offsetHeight;
         var y = Roo.lib.Event.getPageY(e);
