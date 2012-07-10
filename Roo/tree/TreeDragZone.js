@@ -30,7 +30,7 @@ Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
         var ret = Roo.tree.TreeDragZone.superclass.constructor.prototype.onDragOut.call(this, e, id);
         
         // if it's gone off top and bottom, start the scroller
-        
+         Roo.log('ondragout');
         this.scrollDir = 't';
         
         if (this.scroller === false) {
@@ -40,7 +40,7 @@ Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
                 500
             );
         }
-        Roo.log('ondragout');
+        
         //Roo.log(this.el.dom);
         
         return ret;
@@ -48,7 +48,7 @@ Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
     onDragEnter : function(e, id) 
     {
         var ret = Roo.tree.TreeDragZone.superclass.constructor.prototype.onDragEnter.call(this, e, id);
-        
+        Roo.log('ondrageneter');
         if (this.scroller !== false) {
             Roo.log('clear scroller');
             window.clearInterval(this.scroller);
@@ -56,7 +56,7 @@ Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
             
         }
         
-        //Roo.log('ondrageneter');
+        //
         
         
         //Roo.log(this);
