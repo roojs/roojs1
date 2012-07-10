@@ -27,10 +27,12 @@ Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
     
     onDragOut : function(e, id) 
     {
+        
+          Roo.log('ondragout');
         var ret = Roo.tree.TreeDragZone.superclass.constructor.prototype.onDragOut.call(this, e, id);
         
         // if it's gone off top and bottom, start the scroller
-         Roo.log('ondragout');
+       
         this.scrollDir = 't';
         
         if (this.scroller === false) {
