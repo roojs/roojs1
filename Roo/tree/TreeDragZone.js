@@ -32,7 +32,7 @@ Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
         // if it's gone off top and bottom, start the scroller
         
         this.scrollDir = 't';
-        var _t = this;
+        
         this.scroller = window.setInterval(
             this.scrollAct.createDelegate(this),
             500
