@@ -26,7 +26,7 @@ Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
     
     onDragOut : function(e, id) 
     {
-        Roo.tree.TreeDragZone.superclass.prototype.onDragOut.call(this, e, id);
+        Roo.tree.TreeDragZone.superclass.constructor.prototype.onDragOut.call(this, e, id);
     },
     
     onInitDrag : function(e){
