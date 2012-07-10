@@ -59,13 +59,16 @@ Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
         
         Roo.log( [ x, y, h , w, this.scroll ] );
         Roo.log(this.el.getBox());
-        
+         Roo.log(this.el.getScroll());
         if (this.scroll) {
+            
+            var box = this.el.getBox();
+            
              // The client height
-            var clientH = Roo.lib.Dom.getViewWidth();
+            var clientH = box.height;
 
             // The client width
-            var clientW = Roo.lib.Dom.getViewHeight();
+            var clientW = box.width;
 
             // The amt scrolled down
             var st = this.DDM.getScrollTop();
