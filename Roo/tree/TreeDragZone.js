@@ -41,7 +41,7 @@ Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
             );
         }
         Roo.log('ondragout');
-        Roo.log(this.el.dom);
+        //Roo.log(this.el.dom);
         
         return ret;
     },
@@ -56,10 +56,10 @@ Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
             
         }
         
-        Roo.log('ondrageneter');
+        //Roo.log('ondrageneter');
         
         
-        Roo.log(this);
+        //Roo.log(this);
         
         return ret;
     },
