@@ -46,5 +46,5 @@ while (false !== ($f = readdir($dh))) {
 }
 closedir($dh);
 header('Content-type: text/javascript');
-echo json_encode(array('data'=>$ret));
+echo json_encode(array('success' => true, 'data'=>$ret));
 
