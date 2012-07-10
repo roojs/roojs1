@@ -22,7 +22,7 @@ var TreeTest = function(){
                 enableDD:true,
                 containerScroll: true,
                 dropConfig: {appendOnly:true},
-              //  dragConfig : { scrollContainer : true }
+                dragConfig : { scrollContainer : true }
             });
             
             // add a tree sorter in folder mode
