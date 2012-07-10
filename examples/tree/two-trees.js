@@ -13,6 +13,8 @@ var TreeTest = function(){
     // shorthand
     var Tree = Roo.tree;
     
+    
+    
     return {
         init : function(){
             // yui-ext tree
@@ -24,6 +26,8 @@ var TreeTest = function(){
                 dropConfig: {appendOnly:true},
                 dragConfig : { scrollContainer : true }
             });
+            
+            TreeTest.tree = tree;
             
             // add a tree sorter in folder mode
             new Tree.TreeSorter(tree, {folderSort:true});
