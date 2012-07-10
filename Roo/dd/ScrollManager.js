@@ -22,7 +22,7 @@ Roo.dd.ScrollManager = function(){
     var dragEl = null;
     var proc = {};
     
-    Roo.dd.ScrollManager.els = els;
+    
     
     var onStop = function(e){
         dragEl = null;
@@ -121,6 +121,7 @@ Roo.dd.ScrollManager = function(){
                 el = Roo.get(el);
                 els[el.id] = el;
             }
+            Roo.dd.ScrollManager.els = els;
         },
         
         /**
