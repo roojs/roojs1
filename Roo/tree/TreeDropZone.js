@@ -111,7 +111,7 @@ Roo.extend(Roo.tree.TreeDropZone, Roo.dd.DropZone, {
     
     onNodeOver : function(n, dd, e, data)
     {
-         Roo.log('node over');
+       
         var pt = this.getDropPoint(e, n, dd);
         var node = n.node;
         
@@ -247,9 +247,12 @@ Roo.extend(Roo.tree.TreeDropZone, Roo.dd.DropZone, {
             data.node.ui.highlight();
         }
         this.hideProxy();
-    }  
+    } ,
     
-     
+    beforeDragOut : function(target, e, id){
+        Roo.log('before drag out');
+        return true;
+    },
     
 });
 
