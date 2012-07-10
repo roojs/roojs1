@@ -53,7 +53,7 @@ Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
         var sm = this.tree.getSelectionModel();
         sm.clearSelections();
         sm.select(this.dragData.node);
-    },
+    }/*,
     autoScroll: function(x, y, h, w) {
         Roo.log("drop zone - autoscroll called");
         
@@ -125,6 +125,8 @@ Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
                 this.el.scroll('l', scrAmt);
             }
         }
+        
     }
+     */
 });
 }
