@@ -57,8 +57,10 @@ Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
     
     scrollAct: function()
     {
-        this.el.scroll(this.scroller, 5, true);
-        
+        if (this.scrollDir === false) {
+            return;
+        }
+        this.el.scroll(this.scrollDir, 5, true);
         
         
     }
