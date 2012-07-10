@@ -247,12 +247,7 @@ Roo.extend(Roo.tree.TreeDropZone, Roo.dd.DropZone, {
             data.node.ui.highlight();
         }
         this.hideProxy();
-    } ,
-    
-    beforeDragOut : function(target, e, id){
-        Roo.log('before drag out');
-        return true;
-    },
+    }  
     
 });
 
