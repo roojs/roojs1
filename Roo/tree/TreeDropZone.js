@@ -311,7 +311,7 @@ Roo.extend(Roo.tree.TreeDropZone, Roo.dd.DropZone, {
                 window.scrollTo(sl - scrAmt, st);
             }
         }
-    }, 
+    }
     
 });
 
