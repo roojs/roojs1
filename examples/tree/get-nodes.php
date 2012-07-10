@@ -39,8 +39,8 @@ while (false !== ($f = readdir($dh))) {
        
     );
     if (isset($_REQUEST['uiProvider'])) {
-            $r['uiProvider'] = 'col';
-        }
+        $r['uiProvider'] = 'col';
+    }
     $ret[] = $r;
     
 }
