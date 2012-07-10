@@ -33,7 +33,7 @@ Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
         
         this.scrollDir = 't';
         
-        if (this.scroller !== false) {
+        if (this.scroller === false) {
             Roo.log('start interval');
             this.scroller = window.setInterval(
                 this.scrollAct.createDelegate(this),
