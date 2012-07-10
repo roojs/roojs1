@@ -58,8 +58,8 @@ Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
         Roo.log("drop zone - autoscroll called");
         
         Roo.log( [ x, y, h , w, this.scroll ] );
-        Roo.log(this.el.getSize());
-        Roo.log(this.el.getXY());
+        Roo.log(this.el.getBox());
+        
         if (this.scroll) {
              // The client height
             var clientH = Roo.lib.Dom.getViewWidth();
