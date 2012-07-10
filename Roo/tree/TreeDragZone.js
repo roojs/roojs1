@@ -69,7 +69,8 @@ Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
         if (this.scrollDir === false) {
             return;
         }
-        this.el.scroll(this.scrollDir, 5, true);
+        Roo.log('scroll!');
+        this.el.scroll(this.scrollDir, 1, false);
         
         
     },
