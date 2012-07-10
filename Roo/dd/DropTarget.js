@@ -70,6 +70,7 @@ Roo.dd.DropTarget = function(el, config){
          * The function a {@link Roo.dd.DragSource} calls once to notify this drop target that the source has been dragged
          * out of the target without dropping.  This default implementation simply removes the CSS class specified by
          * overClass (if any) from the drop element.
+         * 
          * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
          * @param {Event} e The event
          * @param {Object} data An object containing arbitrary data supplied by the drag source
