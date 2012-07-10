@@ -21,7 +21,7 @@ Roo.dd.ScrollManager = function(){
     var els = {};
     var dragEl = null;
     var proc = {};
-    
+    Roo.dd.ScrollManager.els = els;
     var onStop = function(e){
         dragEl = null;
         clearProc();
