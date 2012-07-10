@@ -25,59 +25,7 @@ Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
         var n = data.node;
         return n && n.draggable && !n.disabled;
     },
-    
-    onDragOut : function(e, id) 
-    {
-        
-          Roo.log('ondragout');
-        var ret = Roo.tree.TreeDragZone.superclass.constructor.prototype.onDragOut.call(this, e, id);
-        
-        // if it's gone off top and bottom, start the scroller
-       
-        this.scrollDir = 't';
-        
-        if (this.scroller === false) {
-            Roo.log('start interval');
-            this.scroller = window.setInterval(
-                this.scrollAct.createDelegate(this),
-                500
-            );
-        }
-        
-        //Roo.log(this.el.dom);
-        
-        return ret;
-    },
-    onDragEnter : function(e, id) 
-    {
-        var ret = Roo.tree.TreeDragZone.superclass.constructor.prototype.onDragEnter.call(this, e, id);
-        Roo.log('ondrageneter');
-        if (this.scroller !== false) {
-            Roo.log('clear scroller');
-            window.clearInterval(this.scroller);
-            this.scroller =false;
-            
-        }
-        
-        //
-        
-        
-        //Roo.log(this);
-        
-        return ret;
-    },
-    
-    scrollAct: function()
-    {
-        Roo.log('scrollAct');
-        if (this.scrollDir === false) {
-            return;
-        }
-        Roo.log('scroll!');
-        this.el.scroll(this.scrollDir, 20, true);
-        
-        
-    },
+     
     
     onInitDrag : function(e){
         var data = this.dragData;
