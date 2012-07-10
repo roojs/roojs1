@@ -18,6 +18,7 @@ Roo.tree.TreeDragZone = function(tree, config){
 
 Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
     ddGroup : "TreeDD",
+    scroller : false,
     
     onBeforeDrag : function(data, e){
         var n = data.node;
@@ -37,7 +38,15 @@ Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
     {
         var ret = Roo.tree.TreeDragZone.superclass.constructor.prototype.onDragEnter.call(this, e, id);
         
-        Roo.log('ondragout');
+        if (this.scroller) {
+            window.clearTimeout(this.scroller);
+            this.scroller =false;
+            
+        }
+        
+        Roo.log('ondrageneter');
+        
+        
         Roo.log(this);
         
         return ret;
