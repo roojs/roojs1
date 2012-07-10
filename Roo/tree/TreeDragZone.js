@@ -33,10 +33,12 @@ Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
         
         this.scrollDir = 't';
         
-        this.scroller = window.setInterval(
-            this.scrollAct.createDelegate(this),
-            500
-        );
+        if (this.scroller !== false) {
+            this.scroller = window.setInterval(
+                this.scrollAct.createDelegate(this),
+                500
+            );
+        }
         Roo.log('ondragout');
         Roo.log(this.el.dom);
         
