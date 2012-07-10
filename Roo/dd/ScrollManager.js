@@ -58,6 +58,7 @@ Roo.dd.ScrollManager = function(){
     };
     
     var startProc = function(el, dir){
+         Roo.log('scroll startproc');
         clearProc();
         proc.el = el;
         proc.dir = dir;
@@ -65,7 +66,7 @@ Roo.dd.ScrollManager = function(){
     };
     
     var onFire = function(e, isDrop){
-        Roo.log('scroll onfire');
+       
         if(isDrop || !ddm.dragCurrent){ return; }
         var dds = Roo.dd.ScrollManager;
         if(!dragEl || dragEl != ddm.dragCurrent){
