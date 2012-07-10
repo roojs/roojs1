@@ -104,25 +104,25 @@ Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
             // Scroll down if we are near the bottom of the visible page and the
             // obj extends below the crease
             if ( bot > clientH && toBot < thresh ) {
-                this.el.scrollTo('d', sl, st + scrAmt);
+                this.el.scroll('d', scrAmt);
             }
 
             // Scroll up if the window is scrolled down and the top of the object
             // goes above the top border
             if ( y < st && st > 0 && y - st < thresh ) {
-                this.el.scrollTo(sl, st - scrAmt);
+                this.el.scroll('t', scrAmt);
             }
 
             // Scroll right if the obj is beyond the right border and the cursor is
             // near the border.
             if ( right > clientW && toRight < thresh ) {
-                this.el.scrollTo(sl + scrAmt, st);
+                this.el.scroll('r', scrAmt);
             }
 
             // Scroll left if the window has been scrolled to the right and the obj
             // extends past the left border
             if ( x < sl && sl > 0 && x - sl < thresh ) {
-                this.el.scrollTo(sl - scrAmt, st);
+                this.el.scroll('l', scrAmt);
             }
         }
     }
