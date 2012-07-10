@@ -74,7 +74,8 @@ Roo.extend(Roo.tree.TreeDropZone, Roo.dd.DropZone, {
         return overEvent.cancel === false && result !== false;
     },
     
-    getDropPoint : function(e, n, dd){
+    getDropPoint : function(e, n, dd)
+    {
         var tn = n.node;
         if(tn.isRoot){
             return tn.allowChildren !== false ? "append" : false; // always append for root
@@ -103,11 +104,13 @@ Roo.extend(Roo.tree.TreeDropZone, Roo.dd.DropZone, {
         }
     },
     
-    onNodeEnter : function(n, dd, e, data){
+    onNodeEnter : function(n, dd, e, data)
+    {
         this.cancelExpand();
     },
     
-    onNodeOver : function(n, dd, e, data){
+    onNodeOver : function(n, dd, e, data)
+    {
         var pt = this.getDropPoint(e, n, dd);
         var node = n.node;
         
@@ -144,6 +147,7 @@ Roo.extend(Roo.tree.TreeDropZone, Roo.dd.DropZone, {
     },
     
     onNodeOut : function(n, dd, e, data){
+        Roo.log('node out');
         this.cancelExpand();
         this.removeDropIndicators(n);
     },
