@@ -148,6 +148,7 @@ Roo.extend(Roo.tree.TreeDropZone, Roo.dd.DropZone, {
     
     onNodeOut : function(n, dd, e, data){
         Roo.log('node out');
+        Roo.log(dd);
         Roo.log(e);
         
         
