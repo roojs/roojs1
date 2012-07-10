@@ -48,6 +48,7 @@ var TreeTest = function(){
                 //rootVisible: false,
                 loader: new Roo.tree.TreeLoader({
                     dataUrl:'get-nodes.php',
+                    root : 'data',
                     baseParams: {lib:'yui'} // custom http params
                 }),
                 containerScroll: true,
