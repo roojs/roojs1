@@ -34,6 +34,7 @@ Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
         this.scrollDir = 't';
         
         if (this.scroller !== false) {
+            Roo.log
             this.scroller = window.setInterval(
                 this.scrollAct.createDelegate(this),
                 500
@@ -64,6 +65,7 @@ Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
     
     scrollAct: function()
     {
+        Roo.log('scrollAct');
         if (this.scrollDir === false) {
             return;
         }
