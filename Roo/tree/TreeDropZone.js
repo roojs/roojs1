@@ -247,6 +247,71 @@ Roo.extend(Roo.tree.TreeDropZone, Roo.dd.DropZone, {
             data.node.ui.highlight();
         }
         this.hideProxy();
+    },
+    autoScroll: function(x, y, h, w) {
+        Roo.log("drop zone - autoscroll called");
+        Roo.log([x,y,h,w]);
+        if (this.scroll) {
+            // The client height
+            var clientH = Roo.lib.Dom.getViewWidth();
+
+            // The client width
+            var clientW = Roo.lib.Dom.getViewHeight();
+
+            // The amt scrolled down
+            var st = this.DDM.getScrollTop();
+
+            // The amt scrolled right
+            var sl = this.DDM.getScrollLeft();
+
+            // Location of the bottom of the element
+            var bot = h + y;
+
+            // Location of the right of the element
+            var right = w + x;
+
+            // The distance from the cursor to the bottom of the visible area,
+            // adjusted so that we don't scroll if the cursor is beyond the
+            // element drag constraints
+            var toBot = (clientH + st - y - this.deltaY);
+
+            // The distance from the cursor to the right of the visible area
+            var toRight = (clientW + sl - x - this.deltaX);
+
+
+            // How close to the edge the cursor must be before we scroll
+            // var thresh = (document.all) ? 100 : 40;
+            var thresh = 40;
+
+            // How many pixels to scroll per autoscroll op.  This helps to reduce
+            // clunky scrolling. IE is more sensitive about this ... it needs this
+            // value to be higher.
+            var scrAmt = (document.all) ? 80 : 30;
+
+            // Scroll down if we are near the bottom of the visible page and the
+            // obj extends below the crease
+            if ( bot > clientH && toBot < thresh ) {
+                this.el.scrollTo(sl, st + scrAmt);
+            }
+
+            // Scroll up if the window is scrolled down and the top of the object
+            // goes above the top border
+            if ( y < st && st > 0 && y - st < thresh ) {
+                this.el.scrollTo(sl, st - scrAmt);
+            }
+
+            // Scroll right if the obj is beyond the right border and the cursor is
+            // near the border.
+            if ( right > clientW && toRight < thresh ) {
+                this.el.scrollTo(sl + scrAmt, st);
+            }
+
+            // Scroll left if the window has been scrolled to the right and the obj
+            // extends past the left border
+            if ( x < sl && sl > 0 && x - sl < thresh ) {
+                this.el.scrollTo(sl - scrAmt, st);
+            }
+        }
     }
     
 });
