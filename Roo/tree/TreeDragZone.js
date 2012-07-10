@@ -70,7 +70,7 @@ Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
         this.el.scroll(this.scrollDir, 5, true);
         
         
-    }
+    },
     
     onInitDrag : function(e){
         var data = this.dragData;
