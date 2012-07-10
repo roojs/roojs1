@@ -63,6 +63,7 @@ Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
         if (this.scroll) {
             
             var box = this.el.getBox();
+            var scroll = this.el.getScroll();
             
              // The client height
             var clientH = box.height;
@@ -71,10 +72,10 @@ Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
             var clientW = box.width;
 
             // The amt scrolled down
-            var st = this.DDM.getScrollTop();
+            var st = scroll.top;
 
             // The amt scrolled right
-            var sl = this.DDM.getScrollLeft();
+            var sl = scroll.left;
 
             // Location of the bottom of the element
             var bot = h + y;
