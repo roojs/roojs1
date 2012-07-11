@@ -712,6 +712,7 @@ Roo.TreePanel = function(config){
         this.tree.render();
     });
     // this should not be needed.. - it's actually the 'el' that resizes?
+    // actuall it breaks the containerScroll - dragging nodes auto scroll at top
     
     //this.on('resize',  function (cp, w, h) {
     //        this.tree.innerCt.setWidth(w);
