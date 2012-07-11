@@ -1134,6 +1134,9 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             if (v.match(/^(http|https):\/\//) || v.match(/^mailto:/)) {
                 return;
             }
+            if (v.match(/^#/)) {
+                return;
+            }
             Roo.log("(REMOVE)"+ node.tagName +'.' + n + '=' + v);
             node.removeAttribute(n);
             
