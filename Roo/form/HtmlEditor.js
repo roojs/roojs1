@@ -1195,6 +1195,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 if (a.value.match(/body/)) {
                     node.className = '';
                 }
+                continue;
             }
             
             // style cleanup!?
