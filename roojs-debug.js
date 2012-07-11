@@ -40320,14 +40320,15 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             //console.log(a);
             if (Roo.form.HtmlEditor.ablack.indexOf(a.name.toLowerCase()) > -1) {
                 node.removeAttribute(a.name);
-                return;
+                continue;
             }
             if (Roo.form.HtmlEditor.aclean.indexOf(a.name.toLowerCase()) > -1) {
                 cleanAttr(a.name,a.value); // fixme..
-                return;
+                continue;
             }
             if (a.name == 'style') {
                 cleanStyle(a.name,a.value);
+                continue;
             }
             /// clean up MS crap..
             // tecnically this should be a list of valid class'es..
@@ -40341,6 +40342,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 if (a.value.match(/body/)) {
                     node.className = '';
                 }
+                continue;
             }
             
             // style cleanup!?
@@ -47916,6 +47918,7 @@ Roo.TreePanel = function(config){
         this.tree.render();
     });
     // this should not be needed.. - it's actually the 'el' that resizes?
+    // actuall it breaks the containerScroll - dragging nodes auto scroll at top
     
     //this.on('resize',  function (cp, w, h) {
     //        this.tree.innerCt.setWidth(w);
