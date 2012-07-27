@@ -28,7 +28,7 @@
 /**
  * @class Roo.DomHelper
  * Utility class for working with DOM and/or Templates. It transparently supports using HTML fragments or DOM.
- * For more information see <a href="http://www.jackslocum.com/yui/2006/10/06/domhelper-create-elements-using-dom-html-fragments-or-templates/">this blog post with examples</a>.
+ * For more information see <a href="http://web.archive.org/web/20100316190545/http://www.jackslocum.com/blog/2006/10/06/domhelper-create-elements-using-dom-html-fragments-or-templates/">this blog post with examples</a>.
  * @singleton
  */
 Roo.DomHelper = function(){
