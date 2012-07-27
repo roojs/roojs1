@@ -22,6 +22,8 @@
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dragEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">proc </span><span class="jsdoc-syntax">= {};
     
+    
+    
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">onStop </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">dragEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">clearProc</span><span class="jsdoc-syntax">();
@@ -56,6 +58,7 @@
     };
     
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">startProc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dir</span><span class="jsdoc-syntax">){
+         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'scroll startproc'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">clearProc</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">proc.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">proc.dir </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dir</span><span class="jsdoc-syntax">;
@@ -63,6 +66,7 @@
     };
     
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">onFire </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">isDrop</span><span class="jsdoc-syntax">){
+       
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isDrop </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">ddm.dragCurrent</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">; }
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dds </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.dd.ScrollManager</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">dragEl </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">dragEl </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">ddm.dragCurrent</span><span class="jsdoc-syntax">){
@@ -119,6 +123,7 @@
                 </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">els</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">el.id</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">;
             }
+            </span><span class="jsdoc-var">Roo.dd.ScrollManager.els </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">els</span><span class="jsdoc-syntax">;
         },
         
         </span><span class="jsdoc-comment">/**

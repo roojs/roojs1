@@ -23,6 +23,7 @@
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.tree.TreeDropZone</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.dd.DropZone</span><span class="jsdoc-syntax">, {
     </span><span class="jsdoc-var">ddGroup </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;TreeDD&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">scroll</span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">expandDelay </span><span class="jsdoc-syntax">: 1000,
     
@@ -74,7 +75,8 @@
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">overEvent.cancel </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">result </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
     },
     
-    </span><span class="jsdoc-var">getDropPoint </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">getDropPoint </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">)
+    {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">n.node</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tn.isRoot</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">tn.allowChildren </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">&quot;append&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// always append for root
@@ -103,11 +105,14 @@
         }
     },
     
-    </span><span class="jsdoc-var">onNodeEnter </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">onNodeEnter </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">)
+    {
         </span><span class="jsdoc-var">this.cancelExpand</span><span class="jsdoc-syntax">();
     },
     
-    </span><span class="jsdoc-var">onNodeOver </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">onNodeOver </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">)
+    {
+       
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getDropPoint</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">n.node</span><span class="jsdoc-syntax">;
         
@@ -144,6 +149,7 @@
     },
     
     </span><span class="jsdoc-var">onNodeOut </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">){
+        
         </span><span class="jsdoc-var">this.cancelExpand</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.removeDropIndicators</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">);
     },
@@ -242,7 +248,8 @@
             </span><span class="jsdoc-var">data.node.ui.highlight</span><span class="jsdoc-syntax">();
         }
         </span><span class="jsdoc-var">this.hideProxy</span><span class="jsdoc-syntax">();
-    }    
+    } 
+    
 });
 
 }

@@ -1134,6 +1134,9 @@
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v.match</span><span class="jsdoc-syntax">(/^(http|https):\/\//) || </span><span class="jsdoc-var">v.match</span><span class="jsdoc-syntax">(/^mailto:/)) {
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v.match</span><span class="jsdoc-syntax">(/^#/)) {
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
             </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;(REMOVE)&quot;</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">node.tagName </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'.' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'=' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">node.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">);
             
@@ -1173,14 +1176,15 @@
             </span><span class="jsdoc-comment">//console.log(a);
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.form.HtmlEditor.ablack.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.name.toLowerCase</span><span class="jsdoc-syntax">()) &gt; -1) {
                 </span><span class="jsdoc-var">node.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.name</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
             }
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.form.HtmlEditor.aclean.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.name.toLowerCase</span><span class="jsdoc-syntax">()) &gt; -1) {
                 </span><span class="jsdoc-var">cleanAttr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.name</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">a.value</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// fixme..
-                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
             }
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.name </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">cleanStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.name</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">a.value</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
             }
             </span><span class="jsdoc-comment">/// clean up MS crap..
             // tecnically this should be a list of valid class'es..
@@ -1194,6 +1198,7 @@
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.value.match</span><span class="jsdoc-syntax">(/body/)) {
                     </span><span class="jsdoc-var">node.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
                 }
+                </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
             }
             
             </span><span class="jsdoc-comment">// style cleanup!?

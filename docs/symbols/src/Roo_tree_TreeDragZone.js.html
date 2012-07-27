@@ -18,11 +18,12 @@
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.tree.TreeDragZone</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.dd.DragZone</span><span class="jsdoc-syntax">, {
     </span><span class="jsdoc-var">ddGroup </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;TreeDD&quot;</span><span class="jsdoc-syntax">,
-    
+   
     </span><span class="jsdoc-var">onBeforeDrag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">data.node</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">n.draggable </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">n.disabled</span><span class="jsdoc-syntax">;
     },
+     
     
     </span><span class="jsdoc-var">onInitDrag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dragData</span><span class="jsdoc-syntax">;
@@ -38,6 +39,8 @@
     
     </span><span class="jsdoc-var">onEndDrag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.tree.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;enddrag&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.tree</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data.node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        
+        
     },
     
     </span><span class="jsdoc-var">onValidDrop </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
