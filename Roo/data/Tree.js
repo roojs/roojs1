@@ -178,6 +178,8 @@ Roo.data.Node = function(attributes){
         this.id = Roo.id(null, "ynode-");
         this.attributes.id = this.id;
     }
+     
+    
     /**
      * All child nodes of this node. @type Array
      */

@@ -457,8 +457,8 @@ Roo.extend(Roo.tree.TreePanel, Roo.data.Tree, {
         }
         this.getSelectionModel().init(this);
         if (!this.root) {
-            console.log("ROOT not set in tree");
-            return;
+            Roo.log("ROOT not set in tree");
+            return this;
         }
         this.root.render();
         if(!this.rootVisible){
