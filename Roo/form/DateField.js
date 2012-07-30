@@ -153,7 +153,7 @@ Roo.extend(Roo.form.DateField, Roo.form.TriggerField,  {
             this.el.dom.removeAttribute('name'); 
             this.hiddenField = this.el.insertSibling({ tag:'input', type:'hidden', name: this.name },
                     'before', true);
-            this.hiddenField.value = this.formatDate(this.value, 'Y-m-d');
+            this.hiddenField.value = this.value ? this.formatDate(this.value, 'Y-m-d') : '';
             // prevent input submission
             this.hiddenName = this.name;
         }
@@ -215,7 +215,9 @@ Roo.extend(Roo.form.DateField, Roo.form.TriggerField,  {
      */
     getValue : function(){
         
-        return  this.hiddenField ? this.hiddenField.value : this.parseDate(Roo.form.DateField.superclass.getValue.call(this)) || "";
+        return  this.hiddenField ?
+                this.hiddenField.value :
+                this.parseDate(Roo.form.DateField.superclass.getValue.call(this)) || "";
     },
 
     /**
