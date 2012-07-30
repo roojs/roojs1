@@ -130,7 +130,7 @@ Roo.extend(Roo.form.DateField, Roo.form.TriggerField,  {
     
 
     /**
-     * @cfg {bool} useIso
+     * @cfg {Boolean} useIso
      * if enabled, then the date field will use a hidden field to store the 
      * real value as iso formated date. default (false)
      */ 
