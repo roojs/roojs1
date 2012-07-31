@@ -163,6 +163,16 @@ Roo.util.Format = function(){
          * @return {String} The formatted currency string
          */
         usMoney : function(v){
+            return '$' + this.number(v);
+        },
+        
+        /**
+         * Format a number
+         * eventually this should probably emulate php's number_format
+         * @param {Number/String} value The numeric value to format
+         * @return {String} The formatted currency string
+         */
+        number : function(v){
             v = (Math.round((v-0)*100))/100;
             v = (v == Math.floor(v)) ? v + ".00" : ((v*10 == Math.floor(v*10)) ? v + "0" : v);
             v = String(v);
@@ -173,7 +183,7 @@ Roo.util.Format = function(){
             while (r.test(whole)) {
                 whole = whole.replace(r, '$1' + ',' + '$2');
             }
-            return "$" + whole + sub ;
+            return whole + sub ;
         },
         
         /**
