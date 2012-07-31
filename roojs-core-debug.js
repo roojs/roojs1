@@ -13149,19 +13149,37 @@ Roo.util.Format = function(){
          * Format a number
          * eventually this should probably emulate php's number_format
          * @param {Number/String} value The numeric value to format
+         * @param {Number} decimals number of decimal places
          * @return {String} The formatted currency string
          */
-        number : function(v){
-            v = (Math.round((v-0)*100))/100;
-            v = (v == Math.floor(v)) ? v + ".00" : ((v*10 == Math.floor(v*10)) ? v + "0" : v);
+        number : function(v,decimals)
+        {
+            // multiply and round.
+            decimals = typeof(decimals) == 'undefined' ? 2 : decimals
+            var mul = Math.pow(10, decimals);
+            var zero = String(mul).substring(1);
+            v = (Math.round((v-0)*mul))/mul;
+            
+            // if it's '0' number.. then
+            
+            //v = (v == Math.floor(v)) ? v + "." + zero : ((v*10 == Math.floor(v*10)) ? v + "0" : v);
             v = String(v);
             var ps = v.split('.');
             var whole = ps[0];
-            var sub = ps[1] ? '.'+ ps[1] : '.00';
+            
+            
             var r = /(\d+)(\d{3})/;
+            // add comma's
             while (r.test(whole)) {
                 whole = whole.replace(r, '$1' + ',' + '$2');
             }
+            
+            
+            var sub = ps[1] ?
+                    (decimals ?  ('.'+ zero.substring(ps[1].length) + ps[1]) : '') :
+                    (decimals ? ('.' + zero) : '');
+            
+            
             return whole + sub ;
         },
         
