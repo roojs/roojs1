@@ -4097,7 +4097,7 @@ Roo.lib.Easing = {
 /**
  * @class Roo.DomHelper
  * Utility class for working with DOM and/or Templates. It transparently supports using HTML fragments or DOM.
- * For more information see <a href="http://www.jackslocum.com/yui/2006/10/06/domhelper-create-elements-using-dom-html-fragments-or-templates/">this blog post with examples</a>.
+ * For more information see <a href="http://web.archive.org/web/20071221063734/http://www.jackslocum.com/blog/2006/10/06/domhelper-create-elements-using-dom-html-fragments-or-templates/">this blog post with examples</a>.
  * @singleton
  */
 Roo.DomHelper = function(){
@@ -13142,6 +13142,16 @@ Roo.util.Format = function(){
          * @return {String} The formatted currency string
          */
         usMoney : function(v){
+            return '$' + this.number(v);
+        },
+        
+        /**
+         * Format a number
+         * eventually this should probably emulate php's number_format
+         * @param {Number/String} value The numeric value to format
+         * @return {String} The formatted currency string
+         */
+        number : function(v){
             v = (Math.round((v-0)*100))/100;
             v = (v == Math.floor(v)) ? v + ".00" : ((v*10 == Math.floor(v*10)) ? v + "0" : v);
             v = String(v);
@@ -13152,7 +13162,7 @@ Roo.util.Format = function(){
             while (r.test(whole)) {
                 whole = whole.replace(r, '$1' + ',' + '$2');
             }
-            return "$" + whole + sub ;
+            return whole + sub ;
         },
         
         /**
@@ -37202,7 +37212,7 @@ Roo.extend(Roo.form.DateField, Roo.form.TriggerField,  {
     
 
     /**
-     * @cfg {bool} useIso
+     * @cfg {Boolean} useIso
      * if enabled, then the date field will use a hidden field to store the 
      * real value as iso formated date. default (false)
      */ 

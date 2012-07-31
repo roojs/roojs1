@@ -130,7 +130,7 @@
     
 
     </span><span class="jsdoc-comment">/**
-     * @cfg {bool} useIso
+     * @cfg {Boolean} useIso
      * if enabled, then the date field will use a hidden field to store the 
      * real value as iso formated date. default (false)
      */ 
@@ -153,7 +153,7 @@
             </span><span class="jsdoc-var">this.el.dom.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'name'</span><span class="jsdoc-syntax">); 
             </span><span class="jsdoc-var">this.hiddenField </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.insertSibling</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'hidden'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.name </span><span class="jsdoc-syntax">},
                     </span><span class="jsdoc-string">'before'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">this.hiddenField.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.formatDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'Y-m-d'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.hiddenField.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.formatDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'Y-m-d'</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-comment">// prevent input submission
             </span><span class="jsdoc-var">this.hiddenName </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">;
         }
@@ -215,7 +215,9 @@
      */
     </span><span class="jsdoc-var">getValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         
-        </span><span class="jsdoc-keyword">return  </span><span class="jsdoc-var">this.hiddenField </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.hiddenField.value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.form.DateField.superclass.getValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">)) || </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">return  </span><span class="jsdoc-var">this.hiddenField </span><span class="jsdoc-syntax">?
+                </span><span class="jsdoc-var">this.hiddenField.value </span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">this.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.form.DateField.superclass.getValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">)) || </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
     },
 
     </span><span class="jsdoc-comment">/**
