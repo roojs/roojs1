@@ -163,6 +163,16 @@
          * @return {String} The formatted currency string
          */
         </span><span class="jsdoc-var">usMoney </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">'$' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.number</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+        },
+        
+        </span><span class="jsdoc-comment">/**
+         * Format a number
+         * eventually this should probably emulate php's number_format
+         * @param {Number/String} value The numeric value to format
+         * @return {String} The formatted currency string
+         */
+        </span><span class="jsdoc-var">number </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">Math.round</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">-0)*100))/100;
             </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">)) ? </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;.00&quot; </span><span class="jsdoc-syntax">: ((</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">*10 == </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">*10)) ? </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;0&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
@@ -173,7 +183,7 @@
             </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">whole</span><span class="jsdoc-syntax">)) {
                 </span><span class="jsdoc-var">whole </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">whole.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'$1' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">',' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'$2'</span><span class="jsdoc-syntax">);
             }
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">&quot;$&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">whole </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">sub </span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">whole </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">sub </span><span class="jsdoc-syntax">;
         },
         
         </span><span class="jsdoc-comment">/**
