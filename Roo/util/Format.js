@@ -196,8 +196,8 @@ Roo.util.Format = function(){
             
             
             var sub = ps[1] ?
-                    (decimals ?  ('.'+ zero.substring(ps[1].length) + ps[1]) : '')
-                    : (decimals ? ('.' + zero) : '');
+                    (decimals ?  ('.'+ zero.substring(ps[1].length) + ps[1]) : '') :
+                    (decimals ? ('.' + zero) : '');
             
             
             return whole + sub ;
