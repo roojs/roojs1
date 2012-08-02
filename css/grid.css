@@ -515,3 +515,16 @@ select.x-grid-editor{
     padding: 2px 0px;
     
 } 
+
+.x-grid-row-selected .x-grid-check-icon-toggle,
+.x-grid-check-icon-checked {
+    background:transparent url(../../roojs1/images/default/menu/chk-sprite.gif) no-repeat scroll 0 -16px;
+    height:16px;
+    width:16px;
+}
+.x-grid-check-icon-toggle,
+.x-grid-check-icon {
+    background:transparent url(../../roojs1/images/default/menu/chk-sprite.gif) no-repeat scroll 0 0;
+    height:16px;
+    width:16px;
+}
