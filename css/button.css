@@ -61,6 +61,7 @@
     background-repeat: no-repeat;
     /* might have height, and padding / margin zero'd */
     height:21px;
+    vertical-align: middle;
     
     
 }
