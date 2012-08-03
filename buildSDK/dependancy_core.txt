@@ -43,6 +43,7 @@ Roo.CompositeElementLite
 Roo.data.Connection
 Roo.Ajax
 Roo.UpdateManager
+Roo.DomTemplate
 
 
 // -- these two have bits in and out of core...

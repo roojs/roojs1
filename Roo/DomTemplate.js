@@ -268,8 +268,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
             Roo.log("Property not found :"  + str);
             return '';
         };
-         
-        
+          
         
         var fn = function(m, lbrace, name, format, args)
         {
