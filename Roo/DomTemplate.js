@@ -71,7 +71,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
      *  x.t:(test,tesT) 
      * 
      */
-    re : /(\{|%7B])([\w-\.]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?(\}|%7D)/g,
+    re : /(\{|\%7B)([\w-\.]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?(\}|\%7D)/g,
     //re : /\{([\w-\.]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?\}/g,
     
     iterChild : function (node, method) {
@@ -111,7 +111,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         
         // create a top level template from the snippet..
         
-        Roo.log(div.innerHTML);
+        //Roo.log(div.innerHTML);
         
         var tpl = {
             uid : 'master',
@@ -269,6 +269,9 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
             return '';
         };
           
+        //Roo.log(tpl.body);
+        
+        
         
         var fn = function(m, lbrace, name, format, args)
         {
