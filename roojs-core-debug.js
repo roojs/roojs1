@@ -12351,7 +12351,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         }
         
         // parent now sees '{domtplXXXX}
-        this.iterChild(node,this.compileNode)
+        this.iterChild(node,this.compileNode);
         
         // we should now have node body...
         var div = document.createElement('div');
