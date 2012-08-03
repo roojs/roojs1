@@ -14,7 +14,7 @@ Roo.onReady(function() {
     
     var html = Roo.get('body').dom.innerHTML;
     Roo.get('body').dom.innerHTML = '';
-    
+    Roo.debug = 1;
     
     // nice and global to test with..
     tpl = new Roo.DomTemplate({
@@ -60,7 +60,7 @@ Roo.onReady(function() {
             <li roo-if="ontable == 'mtrack_ticket'"  class="change-log-item">
                 <div class="timelineevent">  
                     <div class="timelinetext">
-                        <div class="timelinereason">
+                        <div class="timelinereason" name="{changedate}">
                             <span class="time">{changedate.format:('H:i:s')}</span>        
                                      
                     

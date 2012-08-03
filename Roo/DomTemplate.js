@@ -71,8 +71,8 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
      *  x.t:(test,tesT) 
      * 
      */
-    re : /\{([\w-\.]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?\}/g,
-
+    re : /(\{|%7B])([\w-\.]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?(\}|%7D)/g,
+    //re : /\{([\w-\.]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?\}/g,
     
     iterChild : function (node, method) {
         
@@ -207,6 +207,11 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         var div = document.createElement('div');
         div.appendChild(node);
         tpl.dom = node;
+        // this has the unfortunate side effect of converting tagged attributes
+        // eg. href="{...}" into %7C...%7D
+        // this has been fixed by searching for those combo's although it's a bit hacky..
+        
+        
         tpl.body = div.innerHTML;
         
         
@@ -241,8 +246,14 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         
         
     },
+    
+    
+    
+    
     /**
      * Compile a segment of the template into a 'sub-template'
+     *
+     * 
      * 
      *
      */
@@ -250,19 +261,24 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
     {
         var fm = Roo.util.Format;
         var useF = this.disableFormats !== true;
+        
         var sep = Roo.isGecko ? "+\n" : ",\n";
+        
         var undef = function(str) {
             Roo.log("Property not found :"  + str);
             return '';
         };
+         
         
-        var fn = function(m, name, format, args)
+        
+        var fn = function(m, lbrace, name, format, args)
         {
+            //Roo.log("ARGS");
             //Roo.log(arguments);
             args = args ? args.replace(/\\'/g,"'") : args;
             //["{TEST:(a,b,c)}", "TEST", "", "a,b,c", 0, "{TEST:(a,b,c)}"]
             if (typeof(format) == 'undefined') {
-                format= 'htmlEncode';
+                format =  'htmlEncode'; 
             }
             if (format == 'raw' ) {
                 format = false;
