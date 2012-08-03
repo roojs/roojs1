@@ -435,7 +435,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
 
  });
 
-Roo.XTemplate.from = function(el){
+Roo.DomTemplate.from = function(el){
     el = Roo.getDom(el);
-    return new Roo.XTemplate(el.value || el.innerHTML);
+    return new Roo.Domtemplate(el.value || el.innerHTML);
 };
