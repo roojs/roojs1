@@ -79,7 +79,14 @@ Roo.ContentPanel = function(el, config, content){
         this.toolbar = new Roo.Toolbar(this.toolbar);
     }
     
-    
+    // xtype created footer. - not sure if will work as we normally have to render first..
+    if (this.footer && !this.footer.el && this.footer.xtype) {
+        
+        this.footer.container = this.grid.getView().getFooterPanel(true);
+        this.footer.dataSource = this.grid.dataSource;
+        this.footer = Roo.factory(this.footer, Roo);
+        
+    }
     
     if(this.resizeEl){
         this.resizeEl = Roo.get(this.resizeEl, true);
