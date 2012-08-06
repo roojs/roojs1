@@ -401,7 +401,7 @@ layout.addxtype({
             
             var el;
             if (this.footer) {
-                el = this.el.insertSibling(this.footer.container, 'before');
+                el = this.footer.container.insertSibling(false, 'before');
             } else {
                 el = this.el.createChild();
             }
