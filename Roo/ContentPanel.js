@@ -283,6 +283,13 @@ panel.load({
             height -= te.getHeight();
             te.setWidth(width);
         }
+        if(this.footer){
+            var te = this.footer.getEl();
+            height -= te.getHeight();
+            te.setWidth(width);
+        }
+        
+        
         if(this.adjustments){
             width += this.adjustments[0];
             height += this.adjustments[1];
@@ -391,7 +398,13 @@ layout.addxtype({
     addxtype : function(cfg) {
         // add form..
         if (cfg.xtype.match(/^Form$/)) {
-            var el = this.el.createChild();
+            
+            var el;
+            if (this.footer) {
+                el = this.el.insertSibling(this.footer.container, 'before');
+            } else {
+                el = this.el.createChild();
+            }
 
             this.form = new  Roo.form.Form(cfg);
             
