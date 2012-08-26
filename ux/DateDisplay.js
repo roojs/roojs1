@@ -33,7 +33,7 @@ Roo.form.DateDisplay = function(config){
     });
 
     
-    this.picker.on('select', this.onSelect, this);
+    //this.picker.on('select', this.onSelect, this);
     
 };
 
@@ -61,7 +61,7 @@ Roo.extend(Roo.form.DateDisplay , Roo.form.TextField ,  {
         
         if (this.picker.value) {
             this.setValue(this.picker.value.format('Y-m-d'));
-            this.fireEvent('select', this);
+            //this.fireEvent('select', this);
         }
          
     }
