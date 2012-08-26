@@ -130,7 +130,10 @@ Roo.extend(Roo.ux.TimePicker , Roo.form.DisplayField ,  {
         var atime = "Pick\nTime";
         var asector = false;
         
-        var tdisplay  = paper.text(pie.cx,pie.cy,atime).attr({ font: "32px  'Lucida Sans Unicode', 'Lucida Grande', sans-serif", weight: 'bold', fill: '#000' });
+        var tdisplay  = paper.text(pie.cx,pie.cy,atime).attr({
+                font: "32px  'Lucida Sans Unicode', 'Lucida Grande', sans-serif",
+                weight: 'bold', fill: '#000' });
+        
         pie.hover(
              // in?
             function() {
@@ -199,8 +202,7 @@ Roo.extend(Roo.ux.TimePicker , Roo.form.DisplayField ,  {
             
         //pie.each(function() { Roo.log(this)});
         this.setValue(this.value);
-        
-    });
+    }
     
     
 });
