@@ -111,6 +111,22 @@ Roo.extend(Roo.ux.TimePicker , Roo.form.DisplayField ,  {
         
         // fixme .. add the quater hour segments..
         
+        var pie = paper.piechart(
+            paper.height  / 2,
+            paper.height  / 2 ,
+            (paper.height / 2) - 130,
+            [ 1 , 1 ,1 , 1 ],
+            { 
+                cut: 4   ,
+                colors :  colors,
+                no_sort : true,
+                start_angle :  270
+            }
+        );
+        
+        paper.circle(pie.cx,pie.cy, (paper.height / 2) - 140).attr({fill: "#fff"})
+        
+        
         var atime = "Pick\nTime";
         var asector = false;
         
