@@ -52,8 +52,8 @@ Roo.extend(Roo.form.DateDisplay , Roo.form.TextField ,  {
     },
     onSelect : function(sel) {
         
-        if (this.datepicker.value) {
-            this.setValue(this.datepicker.value.format('Y-m-d'));
+        if (this.picker.value) {
+            this.setValue(this.picker.value.format('Y-m-d'));
             this.fireEvent('select', this);
         }
          
