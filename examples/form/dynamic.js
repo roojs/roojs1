@@ -520,8 +520,8 @@ Roo.onReady(function(){
             
                 xtype: Roo.ux.TimePicker,
                 //xns : Roo.ux,
-                fieldLabel: 'test time picker'
-                
+                fieldLabel: 'test time picker',
+                name: 'time'
             }
              
         
