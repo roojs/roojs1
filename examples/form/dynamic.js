@@ -512,6 +512,64 @@ Roo.onReady(function(){
     form5.render('form-ct5');
  
     
+    form6 = new Roo.form.Form({
+        labelAlign: 'left',
+        labelWidth: 120,
+        items : [
+            {
+            
+                xtype: 'TimePicker',
+                xns : Roo.ux,
+               fieldLabel: 'A checkbox',
+                boxLabel:'RooJS v1.1.1',
+                name:'extuser',
+                inputValue : '1',
+                value : '1',
+                width:'auto'
+            },
+            {
+                xtype : 'DisplayField',
+                xns : Roo.form,
+                name:'textex',
+                fieldLabel: 'Simple',
+                value : 'example text'
+            } ,
+            {
+                xtype: 'ComboBox',
+                xns : Roo.form,
+                fieldLabel: 'State',
+                hiddenName:'state',
+                store: {
+                    xtype: 'SimpleStore',
+                    xns : Roo.data,
+                    fields: ['abbr', 'state'],
+                    data : Roo.exampledata.states // from states.js
+                },
+                displayField:'state',
+                typeAhead: true,
+                mode: 'local',
+                triggerAction: 'all',
+                emptyText:'Select a state...',
+                selectOnFocus:true,
+                width:190,
+                listeners : {
+                    add : function()
+                    {
+                        Roo.MessageBox.alert("Alert", "Add Pressed");
+                    },
+                    edit : function()
+                    {
+                        Roo.MessageBox.alert("Alert", "Edit Pressed");
+                    }
+                    
+                }
+            },
+        
+        ]
+    });
+    
+    form5.render('form-ct5');
+ 
     
     
     
