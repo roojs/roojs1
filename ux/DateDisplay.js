@@ -7,7 +7,7 @@ Roo.form.DateDisplay = function(config){
     
     Roo.form.DateDisplay.superclass.constructor.call(this, config);
     this.picker = new Roo.DatePicker({
-        
+        config
         
     });
     
