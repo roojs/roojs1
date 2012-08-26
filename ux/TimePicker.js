@@ -93,7 +93,7 @@ Roo.extend(Roo.ux.TimePicker , Roo.form.DisplayField ,  {
         //Roo.log(JSON.stringify(colors));
         //Roo.log(colors.length);
 
-        var pie = paper.piechart(
+        var outerpie = this.outerpie = paper.piechart(
             paper.height  / 2,
             paper.height  / 2 ,
             (paper.height / 2) - 70,
@@ -111,7 +111,7 @@ Roo.extend(Roo.ux.TimePicker , Roo.form.DisplayField ,  {
         
         // fixme .. add the quater hour segments..
         
-        var pie = paper.piechart(
+        var innerpie = this.innerpie = paper.piechart(
             paper.height  / 2,
             paper.height  / 2 ,
             (paper.height / 2) - 130,
