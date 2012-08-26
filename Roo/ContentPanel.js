@@ -81,7 +81,11 @@ Roo.ContentPanel = function(el, config, content){
     
     // xtype created footer. - not sure if will work as we normally have to render first..
     if (this.footer && !this.footer.el && this.footer.xtype) {
-        this.footer.container = this.el.createChild();
+        if (!this.wrapEl) {
+            this.wrapEl = this.el.wrap();
+        }
+    
+        this.footer.container = this.el.insertSibling(false, 'after');
          
         this.footer = Roo.factory(this.footer, Roo);
         
