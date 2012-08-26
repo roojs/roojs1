@@ -71,7 +71,7 @@ Roo.extend(Roo.ux.TimePicker , Roo.form.DisplayField ,  {
                    
         var times = [ '' ];
         
-        for (var i = (open*4); i < (close*4);i++) {
+        for (var i = open; i < close ;i++) {
             data.push(1);
             
             if (!i) {
