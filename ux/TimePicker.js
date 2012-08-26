@@ -107,9 +107,9 @@ Roo.extend(Roo.ux.TimePicker , Roo.form.DisplayField ,  {
         );
         // fill in th emiddle...
         
-        
-        
         paper.circle(pie.cx,pie.cy, (paper.height / 2) - 100).attr({fill: "#fff"})
+        
+        // fixme .. add the quater hour segments..
         
         var atime = "Pick\nTime";
         var asector = false;
