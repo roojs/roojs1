@@ -82,17 +82,16 @@ Roo.extend(Roo.ux.TimePicker , Roo.form.DisplayField ,  {
                 hr = hr % 12;
                 times.push(hr  + min + tail);
             }
-            
-            
-            
+             
             colors.push(clr[i % clr.length]);
         }
         data.push((24-close) * 4);
         colors.push('#003');
-        Roo.log(data.length);
-        Roo.log(JSON.stringify(data));
-        Roo.log(JSON.stringify(colors));
-        Roo.log(colors.length);
+        
+        //Roo.log(data.length);
+        //Roo.log(JSON.stringify(data));
+        //Roo.log(JSON.stringify(colors));
+        //Roo.log(colors.length);
 
         var pie = paper.piechart(
             paper.height  / 2,
@@ -106,6 +105,7 @@ Roo.extend(Roo.ux.TimePicker , Roo.form.DisplayField ,  {
                 start_angle :  270
             }
         );
+        // fill in th emiddle...
         paper.circle(pie.cx,pie.cy, (paper.height / 2) - 100).attr({fill: "#fff"})
         
         var atime = "Pick\nTime";
