@@ -75,16 +75,12 @@ Roo.extend(Roo.ux.TimePicker , Roo.form.DisplayField ,  {
             data.push(1);
             
             if (!i) {
-                times.push( 'midnight' )
-            } else if (i == 48) {
+                times.push( 'midnight')
+            } else if (i == 12) {
                 times.push( 'noon' );
             } else {
-                var min = ( i % 4) * 15;
-                min = !min ? ':00' : (':' + min);
-                var hr = Math.floor(i/4);
-                var tail = hr < 12 ? 'am' : 'pm';
-                hr = hr % 12;
-                times.push(hr  + min + tail);
+              
+                times.push(hr );
             }
              
             colors.push(clr[i % clr.length]);
