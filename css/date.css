@@ -90,13 +90,11 @@ td.x-date-left
 }
 
 td.x-date-right a {
-    /* width:16px; */
-    background: url(../images/default/grid/arrow-right-white.gif) no-repeat right center;
-    cursor:pointer;
+	/* width:16px; */
+	background: url(../images/default/grid/arrow-right-white.gif) no-repeat right center;
+	cursor:pointer;
     text-decoration: none;
-    width:26px;
-    height:26px;
-    display: block;
+    
 }
 td.x-date-left a {
 	/* width:16px; */
@@ -120,10 +118,11 @@ table.x-date-inner {
 }
 
 
-.x-date-inner td {
+.x-date-inner td  a{
     width:26px;
     height:26px;
     border-collapse:separate;
+    display: block;
 }
 .x-date-mp a,
 .x-date-inner a 
