@@ -118,7 +118,7 @@ Roo.extend(Roo.ux.TimePicker , Roo.form.DisplayField ,  {
             [ 1 , 1 ,1 , 1 ],
             { 
                 cut: 4   ,
-                colors :  colors,
+                colors :   [ '#FEE', '#FCC' ,'#FEE', '#FCC' ] ,
                 no_sort : true,
                 start_angle :  270
             }
