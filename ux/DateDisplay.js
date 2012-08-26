@@ -7,6 +7,25 @@ Roo.form.DateDisplay = function(config){
     
     Roo.form.DateDisplay.superclass.constructor.call(this, config);
     this.picker = new Roo.DatePicker( config );
+    
+    this.addEvents({
+        /**
+	     * @event select
+	     * Fires when a date is selected
+	     * @param {DatePicker} this
+	     * @param {Date} date The selected date
+	     */
+        'select': true,
+        /**
+	     * @event monthchange
+	     * Fires when the displayed month changes 
+	     * @param {DatePicker} this
+	     * @param {Date} date The selected month
+	     */
+        'monthchange': true
+    });
+
+    
     this.picker.on('select', this.onSelect, this);
     
 };
