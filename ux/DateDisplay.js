@@ -33,7 +33,7 @@ Roo.form.DateDisplay = function(config){
     });
 
     
-    //this.picker.on('select', this.onSelect, this);
+    this.picker.on('select', this.onSelect, this);
     
 };
 
