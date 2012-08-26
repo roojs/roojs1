@@ -4,11 +4,12 @@
            
 Roo.form.DateDisplay = function(config){
     
+    var c = Roo.apply({}, config);
     
     Roo.form.DateDisplay.superclass.constructor.call(this, config);
     config.listener = config.listener  || {};
     
-    var c = Roo.apply({}, config);
+    
     Roo.log(c);
     delete c.listener;
     
