@@ -4,7 +4,7 @@
            
 Roo.ux.TimePicker = function(config){
     
-    
+    Roo.log("CTOR CALLED");
     // these are required... error out if not avail..
     var deps = true;
     if (typeof(Raphael) == 'undefined') {
