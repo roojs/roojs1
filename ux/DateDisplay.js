@@ -10,7 +10,7 @@ Roo.form.DateDisplay = function(config){
     var c = Roo.apply({}, config);
     delete c.listener;
     
-    this.picker = new Roo.DatePicker( config );
+    this.picker = new Roo.DatePicker( c );
     
     this.addEvents({
         /**
