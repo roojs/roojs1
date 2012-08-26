@@ -50,14 +50,12 @@ Roo.extend(Roo.form.TimePicker , Roo.form.DisplayField ,  {
         this.viewEl.setHeight(this.height);
         this.viewEl.setWidth(this.width);
         
-        var open = this.startHour.split(':').shift() * 1;
-        var close = this.endHour.split(':').shift() * 1;
-        
+         
         var paper = this.paper = Raphael(this.viewEl.dom);
         
         paper.setSize(this.width,this.height);
         
-        this.renderPaper(open,close);
+        this.renderPaper(this.startHour,this.endHour);
     },
     
     
