@@ -528,7 +528,7 @@ Roo.onReady(function(){
         ]
     });
     
-    form5.render('form-ct6');
+    form6.render('form-ct6');
  
     
     
