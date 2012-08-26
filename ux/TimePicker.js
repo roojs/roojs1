@@ -295,7 +295,7 @@ Roo.extend(Roo.form.TimePicker , Roo.form.DisplayField ,  {
  
             
         });
-        
+        this.setValue(this.value);
         
         
         
