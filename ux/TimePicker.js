@@ -28,7 +28,7 @@ Roo.extend(Roo.ux.TimePicker , Roo.form.DisplayField ,  {
     height: 350,
     
     startHour : '7:30',
-    closeHour : '19:15',
+    endHour : '19:15',
     
     onRender : function(ct, position){
         
@@ -58,8 +58,8 @@ Roo.extend(Roo.ux.TimePicker , Roo.form.DisplayField ,  {
         var colors = [];
         
         // say we open for 7 - 19
-        var open = 7;
-        var close = 19;
+        var open = this.startHour.split(':').shift();
+        var close = this.endHour.split(':').shift();
         
         data.push(open);
         
