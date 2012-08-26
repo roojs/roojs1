@@ -32,7 +32,7 @@ Roo.extend(Roo.form.DateDisplay , Roo.form.DateField ,  {
         
     },
     onSelect : function(sel) {
-        
+        this.fireEvent('select', this);
         
         
      
