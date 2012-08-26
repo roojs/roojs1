@@ -30,7 +30,12 @@ Roo.extend(Roo.form.DateDisplay , Roo.form.DateField ,  {
         
         this.picker.onRender(this.viewEl, position);
         
-    }
+    },
+    onSelect : function(sel) {
+        
+        
+        
      
+    }
     
 });
