@@ -7,9 +7,8 @@ Roo.form.DateDisplay = function(config){
     config.listener = config.listener  || {};
     var c = Roo.apply({}, config);
     delete c.listener;
+    
     Roo.form.DateDisplay.superclass.constructor.call(this, config);
-    
-    
     
     Roo.log(c);
     
