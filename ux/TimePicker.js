@@ -7,7 +7,7 @@ Roo.ux.TimePicker = function(config){
     
 };
 
-Roo.extend(Roo.ux.TimePicker , Roo.form.DisplayField   {
+Roo.extend(Roo.ux.TimePicker , Roo.form.DisplayField ,  {
     
     
     
