@@ -90,11 +90,11 @@ td.x-date-left
 }
 
 td.x-date-right a {
-	/* width:16px; */
-	background: url(../images/default/grid/arrow-right-white.gif) no-repeat right center;
-	cursor:pointer;
+    /* width:16px; */
+    background: url(../images/default/grid/arrow-right-white.gif) no-repeat right center;
+    cursor:pointer;
     text-decoration: none;
-      width:26px;
+    width:26px;
     height:26px;
     display: block;
 }
