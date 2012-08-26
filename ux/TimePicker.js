@@ -1,9 +1,6 @@
 
 
-
-
-Roo.extend(Roo.ux.TimePicker
-           
+ 
            
 Roo.ux.TimePicker = function(config){
     Roo.ux.TimePicker.superclass.constructor.call(this, config);
