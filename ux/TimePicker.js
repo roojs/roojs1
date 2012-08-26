@@ -85,7 +85,7 @@ Roo.extend(Roo.ux.TimePicker , Roo.form.DisplayField ,  {
              
             colors.push(clr[i % clr.length]);
         }
-        data.push((24-close) * 4);
+        data.push( 24-close );
         colors.push('#003');
         
         //Roo.log(data.length);
