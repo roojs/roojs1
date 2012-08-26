@@ -14,7 +14,6 @@ Roo.form.DateDisplay = function(config){
     
     this.picker = new Roo.DatePicker( c );
     
-    
     this.addEvents({
         /**
 	     * @event select
