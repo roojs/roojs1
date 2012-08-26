@@ -289,6 +289,8 @@ panel.load({
         }
         if(this.footer){
             var te = this.footer.getEl();
+            Roo.log("footer:" + te.getHeight());
+            
             height -= te.getHeight();
             te.setWidth(width);
         }
