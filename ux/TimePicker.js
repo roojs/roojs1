@@ -23,6 +23,7 @@ Roo.ux.TimePicker = function(config){
 
 Roo.extend(Roo.ux.TimePicker , Roo.form.DisplayField ,  {
     
+    paper : false,
     
     onRender : function(ct, position){
         
@@ -39,12 +40,11 @@ Roo.extend(Roo.ux.TimePicker , Roo.form.DisplayField ,  {
         }
         //this.viewEl.setStyle('padding', '2px');
         
-        this.setValue(this.value);
-        
+          
     
     // let's create a pie chart...
-        var ge = Roo.select('.pb-book-time',true).first();
-        var paper = Raphael(ge.dom);
+        
+        this.paper = Raphael(this.viewEl.dom);
         var sz = ge.getSize();
         paper.setSize(sz.width,sz.height);
         
@@ -175,7 +175,7 @@ Roo.extend(Roo.ux.TimePicker , Roo.form.DisplayField ,  {
         }
             
         //pie.each(function() { Roo.log(this)});
-        
+        this.setValue(this.value);
         
     });
     
