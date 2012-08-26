@@ -27,6 +27,9 @@ Roo.extend(Roo.ux.TimePicker , Roo.form.DisplayField ,  {
     width: 350,
     height: 350,
     
+    startHour : '7:30',
+    closeHour : '19:15',
+    
     onRender : function(ct, position){
         
         Roo.form.DisplayField.superclass.onRender.call(this, ct, position);
@@ -58,7 +61,7 @@ Roo.extend(Roo.ux.TimePicker , Roo.form.DisplayField ,  {
         var open = 7;
         var close = 19;
         
-        data.push(open * 4);
+        data.push(open);
         
         // colours should be configurable...
         
@@ -106,6 +109,9 @@ Roo.extend(Roo.ux.TimePicker , Roo.form.DisplayField ,  {
             }
         );
         // fill in th emiddle...
+        
+        
+        
         paper.circle(pie.cx,pie.cy, (paper.height / 2) - 100).attr({fill: "#fff"})
         
         var atime = "Pick\nTime";
