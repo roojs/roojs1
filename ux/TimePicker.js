@@ -14,7 +14,7 @@ Roo.ux.TimePicker = function(config){
         deps = false;
     }
     if (!deps) {
-        alert("Error - required components not found  - Raphael and piechart");
+        Roo.log("Error - required components not found  - Raphael and piechart"); 
         return;
     }
     
