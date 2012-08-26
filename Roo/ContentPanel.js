@@ -85,7 +85,7 @@ Roo.ContentPanel = function(el, config, content){
             this.wrapEl = this.el.wrap();
         }
     
-        this.footer.container = this.el.insertSibling(false, 'after');
+        this.footer.container = this.wrapEl.createChild();
          
         this.footer = Roo.factory(this.footer, Roo);
         
