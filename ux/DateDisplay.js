@@ -30,7 +30,7 @@ Roo.form.DateDisplay = function(config){
     
 };
 
-Roo.extend(Roo.form.DateDisplay , Roo.form.DateField ,  {
+Roo.extend(Roo.form.DateDisplay , Roo.form.TextField ,  {
     
     inputType  : 'hidden',
     
@@ -52,7 +52,7 @@ Roo.extend(Roo.form.DateDisplay , Roo.form.DateField ,  {
     },
     onSelect : function(sel) {
         this.fireEvent('select', this);
-        
+        this.setValue(this.datepicker)
         
      
     }
