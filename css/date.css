@@ -94,6 +94,9 @@ td.x-date-right a {
 	background: url(../images/default/grid/arrow-right-white.gif) no-repeat right center;
 	cursor:pointer;
     text-decoration: none;
+      width:26px;
+    height:26px;
+    display: block;
 }
 td.x-date-left a {
 	/* width:16px; */
