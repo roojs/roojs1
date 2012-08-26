@@ -286,7 +286,7 @@ panel.load({
         }
         if(this.toolbar){
             var te = this.toolbar.getEl();
-            height -= te.getHeight();
+            height -= te.getHeight() + 2;
             te.setWidth(width);
         }
         if(this.footer){
