@@ -149,7 +149,7 @@ Roo.extend(Roo.form.TimePicker , Roo.form.DisplayField ,  {
         
         for (var i = 0; i < (24/3); i++) {
             var angle = ( (360/24) * i * -3 )  -90;
-            var p = outerpie.sector(outerpie.cx, outerpie.cy, 120, angle, angle, false);
+            var p = outerpie.sector(outerpie.cx, outerpie.cy, 100, angle, angle, false);
             var innerp = outerpie.sector(outerpie.cx, outerpie.cy, 70, angle, angle, false);
 
             Roo.log([p[4],p[5], (i*3)+':00']);
