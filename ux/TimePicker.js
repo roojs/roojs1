@@ -24,6 +24,8 @@ Roo.ux.TimePicker = function(config){
 Roo.extend(Roo.ux.TimePicker , Roo.form.DisplayField ,  {
     
     paper : false,
+    width: 350,
+    height: 350,
     
     onRender : function(ct, position){
         
@@ -40,13 +42,14 @@ Roo.extend(Roo.ux.TimePicker , Roo.form.DisplayField ,  {
         }
         //this.viewEl.setStyle('padding', '2px');
         
-          
+        this.viewEl.setHeight(this.height);
+        this.viewEl.setWidth(this.width);
     
     // let's create a pie chart...
         
-        this.paper = Raphael(this.viewEl.dom);
-        var sz = ge.getSize();
-        paper.setSize(sz.width,sz.height);
+        var paper = this.paper = Raphael(this.viewEl.dom);
+        
+        paper.setSize(this.width,this.height);
         
         var data = [];
         var colors = [];
@@ -57,8 +60,9 @@ Roo.extend(Roo.ux.TimePicker , Roo.form.DisplayField ,  {
         
         data.push(open * 4);
         
-        colors.push('#003');
+        // colours should be configurable...
         
+        colors.push('#003');
         var clr = [ '#003' , '#FCC' , '#Fee', '#FCC'];
                    
         var times = [ '' ];
