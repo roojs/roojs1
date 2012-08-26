@@ -404,11 +404,11 @@ layout.addxtype({
         if (cfg.xtype.match(/^Form$/)) {
             
             var el;
-            if (this.footer) {
-                el = this.footer.container.insertSibling(false, 'before');
-            } else {
+            //if (this.footer) {
+            //    el = this.footer.container.insertSibling(false, 'before');
+            //} else {
                 el = this.el.createChild();
-            }
+            //}
 
             this.form = new  Roo.form.Form(cfg);
             
