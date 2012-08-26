@@ -65,8 +65,9 @@ Roo.extend(Roo.ux.TimePicker , Roo.form.DisplayField ,  {
         
         // colours should be configurable...
         
-        colors.push('#003');
-        var clr = [ '#003' , '#FCC' , '#Fee', '#FCC'];
+        colors.push('#003'); // off hour..
+        //var clr = [ '#003' , '#FCC' , '#FEE', '#FCC'];
+        var clr = [ '#FEE', '#FCC' ];
                    
         var times = [ '' ];
         
