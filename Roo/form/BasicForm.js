@@ -288,7 +288,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 (typeof(action.result) != 'undefined')  &&
                 (typeof(action.result.errors) != 'undefined')  &&
                 (typeof(action.result.errors.needs_confirm) != 'undefined')
-          ){
+           ){
                 var _t = this;
                 Roo.MessageBox.confirm(
                     "Change requires confirmation",

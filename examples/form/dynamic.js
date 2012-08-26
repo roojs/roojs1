@@ -519,9 +519,15 @@ Roo.onReady(function(){
             {
             
                 xtype: 'TimePicker',
-                xns : Roo.ux,
+                xns : Roo.form,
                 fieldLabel: 'test time picker',
                 name: 'time'
+            },
+            {
+                xtype: 'DateDisplay',
+                xns : Roo.form,
+                fieldLabel: 'test date picker',
+                name: 'date'
             }
              
         
