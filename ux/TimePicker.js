@@ -76,8 +76,7 @@ Roo.extend(Roo.form.TimePicker , Roo.form.DisplayField ,  {
         
         // say we open for 7 - 19
         
-        open *= 1;
-        close * =1;
+        
         Roo.log([open, close]);
         data.push(open);
         
