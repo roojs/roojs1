@@ -20,7 +20,7 @@ Roo.form.TimePicker = function(config){
     
     Roo.form.TimePicker.superclass.constructor.call(this, config);
     
-      this.addEvents({
+    this.addEvents({
         /**
 	     * @event select
 	     * Fires when a date is selected
