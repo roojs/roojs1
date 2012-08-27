@@ -292,6 +292,8 @@ Roo.extend(Roo.form.TimePicker , Roo.form.DisplayField ,  {
             var hr = ov ? _t.getValue().split(':').shift() : '12';
             var ntime = hr + ':' + min;
             _t.setValue(ntime);
+            this.fireEvent('select', ntime);
+            
             //tdisplay.attr( { text : _t.formatTime(ntime) });
             
             //var ov = _t.getValue();
