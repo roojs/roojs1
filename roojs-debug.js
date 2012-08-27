@@ -42498,7 +42498,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 (typeof(action.result) != 'undefined')  &&
                 (typeof(action.result.errors) != 'undefined')  &&
                 (typeof(action.result.errors.needs_confirm) != 'undefined')
-          ){
+           ){
                 var _t = this;
                 Roo.MessageBox.confirm(
                     "Change requires confirmation",
@@ -47761,7 +47761,17 @@ Roo.ContentPanel = function(el, config, content){
         this.toolbar = new Roo.Toolbar(this.toolbar);
     }
     
+    // xtype created footer. - not sure if will work as we normally have to render first..
+    if (this.footer && !this.footer.el && this.footer.xtype) {
+        if (!this.wrapEl) {
+            this.wrapEl = this.el.wrap();
+        }
     
+        this.footer.container = this.wrapEl.createChild();
+         
+        this.footer = Roo.factory(this.footer, Roo);
+        
+    }
     
     if(this.resizeEl){
         this.resizeEl = Roo.get(this.resizeEl, true);
@@ -47949,7 +47959,9 @@ panel.load({
         return this.wrapEl || this.el;
     },
     
-    adjustForComponents : function(width, height){
+    adjustForComponents : function(width, height)
+    {
+        Roo.log('adjustForComponents ');
         if(this.resizeEl != this.el){
             width -= this.el.getFrameWidth('lr');
             height -= this.el.getFrameWidth('tb');
@@ -47959,6 +47971,15 @@ panel.load({
             height -= te.getHeight();
             te.setWidth(width);
         }
+        if(this.footer){
+            var te = this.footer.getEl();
+            Roo.log("footer:" + te.getHeight());
+            
+            height -= te.getHeight();
+            te.setWidth(width);
+        }
+        
+        
         if(this.adjustments){
             width += this.adjustments[0];
             height += this.adjustments[1];
@@ -48067,7 +48088,13 @@ layout.addxtype({
     addxtype : function(cfg) {
         // add form..
         if (cfg.xtype.match(/^Form$/)) {
-            var el = this.el.createChild();
+            
+            var el;
+            //if (this.footer) {
+            //    el = this.footer.container.insertSibling(false, 'before');
+            //} else {
+                el = this.el.createChild();
+            //}
 
             this.form = new  Roo.form.Form(cfg);
             
