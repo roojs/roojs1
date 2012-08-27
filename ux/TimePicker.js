@@ -229,7 +229,7 @@ Roo.extend(Roo.form.TimePicker , Roo.form.DisplayField ,  {
             var min = ov ? _t.getValue().split(':').pop() : '00';
             var ntime = times[this.j] + ':' + min;
             _t.setValue(ntime);
-            this.fireEvent('select', ntime);
+            _t.fireEvent('select', ntime);
             
             if (asector) {
                 // reset 
@@ -292,7 +292,7 @@ Roo.extend(Roo.form.TimePicker , Roo.form.DisplayField ,  {
             var hr = ov ? _t.getValue().split(':').shift() : '12';
             var ntime = hr + ':' + min;
             _t.setValue(ntime);
-            this.fireEvent('select', ntime);
+            _t.fireEvent('select', ntime);
             
             //tdisplay.attr( { text : _t.formatTime(ntime) });
             
