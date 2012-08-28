@@ -13585,7 +13585,7 @@ Roo.util.Format = function(){
          * @return {String} The formatted currency string
          */
         usMoney : function(v){
-            return '$' + this.number(v);
+            return '$' + Roo.util.Format.number(v);
         },
         
         /**
