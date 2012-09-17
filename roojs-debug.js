@@ -13619,7 +13619,9 @@ Roo.util.Format = function(){
             
             
             var sub = ps[1] ?
-                    (decimals ?  ('.'+ zero.substring(ps[1].length) + ps[1]) : '') :
+                    // has decimals..
+                    (decimals ?  ('.'+ ps[1] + zero.substring(ps[1].length)) : '') :
+                    // does not have decimals
                     (decimals ? ('.' + zero) : '');
             
             
