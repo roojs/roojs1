@@ -173,7 +173,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                 }
                 if (!rdata || !rdata.success) {
                     Roo.log(rdata);
-                    Roo.MessageBox.alert(rdata);
+                    Roo.MessageBox.alert(Roo.encode(rdata));
                     return;
                 }
                 var data = rdata.data;
