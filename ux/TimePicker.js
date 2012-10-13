@@ -67,6 +67,8 @@ Roo.extend(Roo.form.TimePicker , Roo.form.DisplayField ,  {
         
         paper.setSize(this.width,this.height);
         
+         
+        
         this.renderPaper(this.startHour,this.endHour);
     },
     
@@ -77,6 +79,12 @@ Roo.extend(Roo.form.TimePicker , Roo.form.DisplayField ,  {
         // let's create a pie chart...
         var open =  startHour.split(':').shift() * 1;
         var close =  endHour.split(':').shift() * 1;
+        
+        if (close < open || close >= 24) {
+            endHour = '24:00';
+            close = 24;
+        }
+        
         
         var paper = this.paper;
         this.paper.clear();
