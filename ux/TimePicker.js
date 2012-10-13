@@ -80,9 +80,11 @@ Roo.extend(Roo.form.TimePicker , Roo.form.DisplayField ,  {
         var open =  startHour.split(':').shift() * 1;
         var close =  endHour.split(':').shift() * 1;
         
+        var late_night_close = false;
         if (close < open || close >= 24) {
-            endHour = '24:00';
+            //endHour = '24:00';
             close = 24;
+            late_night_close = close;
         }
         
         
