@@ -319,6 +319,7 @@ dateField.setValue('2006-5-4');
             scope:this
         }));
         this.menu.picker.setValue(this.getValue() || new Date());
+        this.menu.picker.hideMonthPicker(this.hideMonthPicker);
         this.menu.show(this.el, "tl-bl?");
     },
 
