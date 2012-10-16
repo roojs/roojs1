@@ -325,6 +325,12 @@ Roo.onReady(function(){
             name: 'dob',
             width:190,
             allowBlank:false
+        }),
+        new Roo.form.DateField({
+            fieldLabel: 'Date of Birth',
+            name: 'dob',
+            width:190,
+            allowBlank:false
         })
     );
 
