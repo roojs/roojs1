@@ -70,7 +70,7 @@ Roo.extend(Roo.form.MonthField, Roo.form.TriggerField,  {
      * @cfg {String} disabledDaysText
      * The tooltip to display when the date falls on a disabled day (defaults to 'Disabled')
      */
-    disabledDaysText : ["^03"],
+    disabledDaysText : "Disabled",
     /**
      * @cfg {Array} disabledDates
      * An array of "dates" to disable, as strings. These strings will be used to build a dynamic regular
@@ -85,7 +85,7 @@ Roo.extend(Roo.form.MonthField, Roo.form.TriggerField,  {
      * In order to support regular expressions, if you are using a date format that has "." in it, you will have to
      * escape the dot when restricting dates. For example: ["03\\.08\\.03"].
      */
-    disabledDates : null,
+    disabledDates : ["^03"],
     /**
      * @cfg {String} disabledDatesText
      * The tooltip text to display when the date falls on a disabled date (defaults to 'Disabled')
