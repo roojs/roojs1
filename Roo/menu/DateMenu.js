@@ -34,7 +34,7 @@ Roo.menu.DateMenu = function(config){
      * @param {Date} date
      */
     this.relayEvents(di, ["select"]);
-    
+    console.log(123);
     this.on('beforeshow', function(){
         if(this.picker){
             this.picker.hideMonthPicker(true);
