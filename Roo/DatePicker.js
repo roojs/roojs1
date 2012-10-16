@@ -461,6 +461,7 @@ Roo.extend(Roo.DatePicker, Roo.Component, {
     },
 
     hideMonthPicker : function(disableAnim){
+        Roo.log(disableAnim);
         if(this.monthPicker){
             if(disableAnim === true){
                 this.monthPicker.hide();
