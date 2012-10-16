@@ -315,7 +315,7 @@ dateField.setValue('2006-5-4');
             minText : String.format(this.minText, this.formatDate(this.minValue)),
             maxText : String.format(this.maxText, this.formatDate(this.maxValue))
         });
-        Roo.log(this.menu.picker.hideMonthPicker(false));
+        Roo.log(this);
         this.menu.on(Roo.apply({}, this.menuListeners, {
             scope:this
         }));
