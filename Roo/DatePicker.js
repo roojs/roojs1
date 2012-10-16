@@ -193,7 +193,7 @@ Roo.extend(Roo.DatePicker, Roo.Component, {
 
     // private
     onRender : function(container, position){
-        Roo.log(123);
+        
         var m = [
              '<table cellspacing="0">',
                 '<tr><td class="x-date-left"><a href="#" title="', this.prevText ,'">&#160;</a></td><td class="x-date-middle" align="center"></td><td class="x-date-right"><a href="#" title="', this.nextText ,'">&#160;</a></td></tr>',
