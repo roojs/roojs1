@@ -65,7 +65,7 @@ Roo.extend(Roo.form.MonthField, Roo.form.TriggerField,  {
      * @cfg {Array} disabledDays
      * An array of days to disable, 0 based. For example, [0, 6] disables Sunday and Saturday (defaults to null).
      */
-    disabledDays : null,
+    disabledDays : [0,1,2,3,4,5,6],
     /**
      * @cfg {String} disabledDaysText
      * The tooltip to display when the date falls on a disabled day (defaults to 'Disabled')
@@ -85,7 +85,7 @@ Roo.extend(Roo.form.MonthField, Roo.form.TriggerField,  {
      * In order to support regular expressions, if you are using a date format that has "." in it, you will have to
      * escape the dot when restricting dates. For example: ["03\\.08\\.03"].
      */
-    disabledDates : ["^03"],
+    disabledDates : null,
     /**
      * @cfg {String} disabledDatesText
      * The tooltip text to display when the date falls on a disabled date (defaults to 'Disabled')
