@@ -326,7 +326,6 @@ Roo.onReady(function(){
             width:190,
             allowBlank:false
         })
-        
     );
 
     fs.addButton('Save');
