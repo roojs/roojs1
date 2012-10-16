@@ -36,9 +36,7 @@ Roo.menu.DateMenu = function(config){
     this.relayEvents(di, ["select"]);
 
     this.on('beforeshow', function(){
-        if(this.picker){
-            this.picker.hideMonthPicker(true);
-        }
+        
     }, this);
 };
 Roo.extend(Roo.menu.DateMenu, Roo.menu.Menu, {
