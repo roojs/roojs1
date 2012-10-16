@@ -296,6 +296,7 @@ dateField.setValue('2006-5-4');
         if(this.disabled){
             return;
         }
+        Roo.log(this.menu);
         if(this.menu == null){
             this.menu = new Roo.menu.DateMenu();
         }
