@@ -147,6 +147,8 @@ Roo.extend(Roo.form.MonthField, Roo.form.TriggerField,  {
     // private
     hiddenField: false,
     
+    hideMonthPicker : false,
+    
     onRender : function(ct, position)
     {
         Roo.form.MonthField.superclass.onRender.call(this, ct, position);
