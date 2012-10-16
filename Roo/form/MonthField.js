@@ -17,7 +17,7 @@
 * Create a new DateField
 * @param {Object} config
  */
-Roo.form.DateField = function(config){
+Roo.form.MonthField = function(config){
     Roo.form.DateField.superclass.constructor.call(this, config);
     
       this.addEvents({
