@@ -296,7 +296,7 @@ dateField.setValue('2006-5-4');
             return;
         }
         if(this.menu == null){
-            this.menu = new Roo.menu.DatePicker();
+            this.menu = new Roo.DatePicker();
             
         }
         
