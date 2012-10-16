@@ -301,6 +301,7 @@ dateField.setValue('2006-5-4');
             this.menu = new Roo.menu.DateMenu();
         }
         Roo.apply(this.menu.picker,  {
+            hideMonthPicker : this.hideMonthPicker,
             showClear: this.allowBlank,
             minDate : this.minValue,
             maxDate : this.maxValue,
@@ -311,6 +312,7 @@ dateField.setValue('2006-5-4');
             format : this.format,
             minText : String.format(this.minText, this.formatDate(this.minValue)),
             maxText : String.format(this.maxText, this.formatDate(this.maxValue))
+            
         });
         
         this.menu.on(Roo.apply({}, this.menuListeners, {
