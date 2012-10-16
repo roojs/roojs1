@@ -328,7 +328,7 @@ Roo.onReady(function(){
         }),
         new Roo.form.DateField({
             fieldLabel: 'Date of Month',
-            name: 'dob',
+            name: 'dom',
             width:190,
             allowBlank:false
         })
