@@ -292,7 +292,31 @@ dateField.setValue('2006-5-4');
 
     // private
     // Implements the default empty TriggerField.onTriggerClick function to display the DatePicker
-    
+    onTriggerClick : function(){
+        if(this.disabled){
+            return;
+        }
+        if(this.menu == null){
+            this.menu = new Roo.menu.DateMenu();
+        }
+        Roo.apply(this.menu.picker,  {
+            showClear: this.allowBlank,
+            minDate : this.minValue,
+            maxDate : this.maxValue,
+            disabledDatesRE : this.ddMatch,
+            disabledDatesText : this.disabledDatesText,
+            disabledDays : this.disabledDays,
+            disabledDaysText : this.disabledDaysText,
+            format : this.format,
+            minText : String.format(this.minText, this.formatDate(this.minValue)),
+            maxText : String.format(this.maxText, this.formatDate(this.maxValue))
+        });
+        this.menu.on(Roo.apply({}, this.menuListeners, {
+            scope:this
+        }));
+        this.menu.picker.setValue(this.getValue() || new Date());
+        this.menu.show(this.el, "tl-bl?");
+    },
 
     beforeBlur : function(){
         var v = this.parseDate(this.getRawValue());
