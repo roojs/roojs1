@@ -10,11 +10,11 @@
  */
  
 /**
- * @class Roo.form.DateField
+ * @class Roo.form.MonthField
  * @extends Roo.form.TriggerField
  * Provides a date input field with a {@link Roo.DatePicker} dropdown and automatic date validation.
 * @constructor
-* Create a new DateField
+* Create a new MonthField
 * @param {Object} config
  */
 Roo.form.MonthField = function(config){
