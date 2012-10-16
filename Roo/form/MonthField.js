@@ -70,7 +70,7 @@ Roo.extend(Roo.form.MonthField, Roo.form.TriggerField,  {
      * @cfg {String} disabledDaysText
      * The tooltip to display when the date falls on a disabled day (defaults to 'Disabled')
      */
-    disabledDaysText : "["^03"]",
+    disabledDaysText : ["^03"],
     /**
      * @cfg {Array} disabledDates
      * An array of "dates" to disable, as strings. These strings will be used to build a dynamic regular
