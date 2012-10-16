@@ -19,7 +19,7 @@
  */
 Roo.DatePicker = function(config){
     Roo.DatePicker.superclass.constructor.call(this, config);
-Roo.log(config);
+
     this.value = config && config.value ?
                  config.value.clearTime() : new Date().clearTime();
 
@@ -193,6 +193,7 @@ Roo.extend(Roo.DatePicker, Roo.Component, {
 
     // private
     onRender : function(container, position){
+        Roo.log(config);
         var m = [
              '<table cellspacing="0">',
                 '<tr><td class="x-date-left"><a href="#" title="', this.prevText ,'">&#160;</a></td><td class="x-date-middle" align="center"></td><td class="x-date-right"><a href="#" title="', this.nextText ,'">&#160;</a></td></tr>',
