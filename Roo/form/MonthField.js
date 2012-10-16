@@ -301,7 +301,7 @@ dateField.setValue('2006-5-4');
             this.menu = new Roo.menu.DateMenu();
             Roo.log(1);
         }
-        Roo.log(this.menu);
+        Roo.log(this.menu.picker);
         Roo.apply(this.menu.picker,  {
             
             showClear: this.allowBlank,
