@@ -298,7 +298,18 @@ dateField.setValue('2006-5-4');
         if(this.menu == null){
             this.menu = new Roo.menu.DateMenu();
         }
-        
+        Roo.apply(this.menu.picker,  {
+            showClear: this.allowBlank,
+            minDate : this.minValue,
+            maxDate : this.maxValue,
+            disabledDatesRE : this.ddMatch,
+            disabledDatesText : this.disabledDatesText,
+            disabledDays : this.disabledDays,
+            disabledDaysText : this.disabledDaysText,
+            format : this.format,
+            minText : String.format(this.minText, this.formatDate(this.minValue)),
+            maxText : String.format(this.maxText, this.formatDate(this.maxValue))
+        });
         
         this.menu.on(Roo.apply({}, this.menuListeners, {
             scope:this
