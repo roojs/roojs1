@@ -19,7 +19,7 @@
  */
 Roo.DatePicker = function(config){
     Roo.DatePicker.superclass.constructor.call(this, config);
-
+Roo.log(disableAnim);
     this.value = config && config.value ?
                  config.value.clearTime() : new Date().clearTime();
 
@@ -461,7 +461,7 @@ Roo.extend(Roo.DatePicker, Roo.Component, {
     },
 
     hideMonthPicker : function(disableAnim){
-        Roo.log(disableAnim);
+        
         if(this.monthPicker){
             if(disableAnim === true){
                 this.monthPicker.hide();
