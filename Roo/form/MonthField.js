@@ -300,9 +300,6 @@ dateField.setValue('2006-5-4');
         }
         
         
-        this.menu.on(Roo.apply({}, this.menuListeners, {
-            scope:this
-        }));
         this.menu.picker.setValue(this.getValue() || new Date());
         this.menu.show(this.el, "tl-bl?");
     },
