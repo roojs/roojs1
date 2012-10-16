@@ -47,7 +47,7 @@ Roo.form.MonthField = function(config){
     }
 };
 
-Roo.extend(Roo.form.DateField, Roo.form.TriggerField,  {
+Roo.extend(Roo.form.MonthField, Roo.form.TriggerField,  {
     /**
      * @cfg {String} format
      * The default date format string which can be overriden for localization support.  The format must be
