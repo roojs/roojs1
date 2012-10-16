@@ -19,6 +19,7 @@
  * @param {Object} config Configuration options
  */
 Roo.menu.DateMenu = function(config){
+    Roo.log(config);
     Roo.menu.DateMenu.superclass.constructor.call(this, config);
     this.plain = true;
     var di = new Roo.menu.DateItem(config);
