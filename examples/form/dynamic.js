@@ -327,7 +327,7 @@ Roo.onReady(function(){
             allowBlank:false
         }),
         new Roo.form.DateField({
-            fieldLabel: 'Date of Birth',
+            fieldLabel: 'Date of Month',
             name: 'dob',
             width:190,
             allowBlank:false
