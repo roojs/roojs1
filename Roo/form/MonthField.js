@@ -54,7 +54,7 @@ Roo.extend(Roo.form.MonthField, Roo.form.TriggerField,  {
      * The default date format string which can be overriden for localization support.  The format must be
      * valid according to {@link Date#parseDate} (defaults to 'm/d/y').
      */
-    format : "m/d/y",
+    format : "M/Y",
     /**
      * @cfg {String} altFormats
      * Multiple date formats separated by "|" to try when parsing a user input value and it doesn't match the defined
