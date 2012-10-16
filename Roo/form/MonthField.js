@@ -148,7 +148,7 @@ Roo.extend(Roo.form.MonthField, Roo.form.TriggerField,  {
     
     onRender : function(ct, position)
     {
-        Roo.form.DateField.superclass.onRender.call(this, ct, position);
+        Roo.form.MonthField.superclass.onRender.call(this, ct, position);
         if (this.useIso) {
             this.el.dom.removeAttribute('name'); 
             this.hiddenField = this.el.insertSibling({ tag:'input', type:'hidden', name: this.name },
