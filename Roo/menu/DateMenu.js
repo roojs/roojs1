@@ -38,7 +38,7 @@ Roo.menu.DateMenu = function(config){
 
     this.on('beforeshow', function(){
         if(this.picker){
-            this.picker.hideMonthPicker(true);
+            this.picker.hideMonthPicker(false);
         }
     }, this);
 };
