@@ -19,7 +19,7 @@
  */
 Roo.DatePicker = function(config){
     Roo.DatePicker.superclass.constructor.call(this, config);
-Roo.log(disableAnim);
+Roo.log(config);
     this.value = config && config.value ?
                  config.value.clearTime() : new Date().clearTime();
 
