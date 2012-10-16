@@ -18,28 +18,3 @@
  * Creates a new DateMenu
  * @param {Object} config Configuration options
  */
-Roo.menu.DateMenu = function(config){
-    Roo.menu.DateMenu.superclass.constructor.call(this, config);
-    this.plain = true;
-    var di = new Roo.menu.DateItem(config);
-    this.add(di);
-    /**
-     * The {@link Roo.DatePicker} instance for this DateMenu
-     * @type DatePicker
-     */
-    this.picker = di.picker;
-    /**
-     * @event select
-     * @param {DatePicker} picker
-     * @param {Date} date
-     */
-    this.relayEvents(di, ["select"]);
-    this.on('beforeshow', function(){
-        if(this.picker){
-            this.picker.hideMonthPicker(false);
-        }
-    }, this);
-};
-Roo.extend(Roo.menu.DateMenu, Roo.menu.Menu, {
-    cls:'x-date-menu'
-});
