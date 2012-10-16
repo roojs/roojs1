@@ -305,7 +305,7 @@ dateField.setValue('2006-5-4');
         }
         
         Roo.apply(this.menu.picker,  {
-            hideMonthPicker : this.show,
+            hideMonthPicker : this.onHide,
             showClear: this.allowBlank,
             minDate : this.minValue,
             maxDate : this.maxValue,
