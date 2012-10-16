@@ -290,7 +290,7 @@ dateField.setValue('2006-5-4');
         }
     },
     onHide : function(){
-        return false;
+        return true;
     },
     // private
     // Implements the default empty TriggerField.onTriggerClick function to display the DatePicker
