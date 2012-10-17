@@ -79,7 +79,17 @@
         </span><span class="jsdoc-var">this.toolbar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Toolbar</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbar</span><span class="jsdoc-syntax">);
     }
     
+    </span><span class="jsdoc-comment">// xtype created footer. - not sure if will work as we normally have to render first..
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.footer </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.footer.el </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.footer.xtype</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.wrapEl</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.wrapEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.wrap</span><span class="jsdoc-syntax">();
+        }
     
+        </span><span class="jsdoc-var">this.footer.container </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.wrapEl.createChild</span><span class="jsdoc-syntax">();
+         
+        </span><span class="jsdoc-var">this.footer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.footer</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo</span><span class="jsdoc-syntax">);
+        
+    }
     
     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resizeEl</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.resizeEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resizeEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
@@ -267,7 +277,9 @@ panel.load({
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.wrapEl </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
     },
     
-    </span><span class="jsdoc-var">adjustForComponents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">adjustForComponents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'adjustForComponents '</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resizeEl </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">this.el.getFrameWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'lr'</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">this.el.getFrameWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tb'</span><span class="jsdoc-syntax">);
@@ -277,6 +289,15 @@ panel.load({
             </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">te.getHeight</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-var">te.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">);
         }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.footer</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">te </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.footer.getEl</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;footer:&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">te.getHeight</span><span class="jsdoc-syntax">());
+            
+            </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">te.getHeight</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">te.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">);
+        }
+        
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.adjustments</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.adjustments</span><span class="jsdoc-syntax">[0];
             </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.adjustments</span><span class="jsdoc-syntax">[1];
@@ -385,7 +406,13 @@ layout.addxtype({
     </span><span class="jsdoc-var">addxtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-comment">// add form..
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.xtype.match</span><span class="jsdoc-syntax">(/^Form$/)) {
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.createChild</span><span class="jsdoc-syntax">();
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-comment">//if (this.footer) {
+            //    el = this.footer.container.insertSibling(false, 'before');
+            //} else {
+                </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.createChild</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-comment">//}
 
             </span><span class="jsdoc-var">this.form </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new  </span><span class="jsdoc-var">Roo.form.Form</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
             
