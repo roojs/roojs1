@@ -344,7 +344,6 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
             body = body.join('');
         }
         
-        
         Roo.debug && Roo.log(body.replace(/\\n/,'\n'));
        
         /** eval:var:tpl eval:var:fm eval:var:useF eval:var:undef  */
