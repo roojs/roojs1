@@ -372,7 +372,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         
         try { 
             if(t.ifCall && !t.ifCall.call(this, values, parent)){
-                Roo.log('if call on ' + t.value + ' return false');
+                Roo.debug && Roo.log('if call on ' + t.value + ' return false');
                 return '';
             }
         } catch(e) {
