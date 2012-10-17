@@ -307,8 +307,7 @@ dateField.setValue('2006-5-4');
             maxDate : this.maxValue,
             disabledDatesRE : this.ddMatch,
             disabledDatesText : this.disabledDatesText,
-            disabledDays : this.disabledDays,
-            disabledDaysText : this.disabledDaysText,
+            
             format : this.format,
             minText : String.format(this.minText, this.formatDate(this.minValue)),
             maxText : String.format(this.maxText, this.formatDate(this.maxValue))
