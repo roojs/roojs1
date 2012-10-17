@@ -12415,7 +12415,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         var sep = Roo.isGecko ? "+\n" : ",\n";
         
         var undef = function(str) {
-            Roo.log("Property not found :"  + str);
+            Roo.debug && Roo.log("Property not found :"  + str);
             return '';
         };
           
