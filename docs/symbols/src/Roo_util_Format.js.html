@@ -163,7 +163,7 @@
          * @return {String} The formatted currency string
          */
         </span><span class="jsdoc-var">usMoney </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">'$' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.number</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">'$' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">Roo.util.Format.number</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
         },
         
         </span><span class="jsdoc-comment">/**
@@ -197,8 +197,10 @@
             
             
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sub </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ps</span><span class="jsdoc-syntax">[1] ?
-                    (</span><span class="jsdoc-var">decimals </span><span class="jsdoc-syntax">?  (</span><span class="jsdoc-string">'.'</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">zero.substring</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ps</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.length</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-var">ps</span><span class="jsdoc-syntax">[1]) : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) :
-                    (</span><span class="jsdoc-var">decimals </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-string">'.' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">zero</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-comment">// has decimals..
+                    </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">decimals </span><span class="jsdoc-syntax">?  (</span><span class="jsdoc-string">'.'</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">ps</span><span class="jsdoc-syntax">[1] + </span><span class="jsdoc-var">zero.substring</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ps</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.length</span><span class="jsdoc-syntax">)) : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) :
+                    </span><span class="jsdoc-comment">// does not have decimals
+                    </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">decimals </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-string">'.' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">zero</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
             
             
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">whole </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">sub </span><span class="jsdoc-syntax">;
