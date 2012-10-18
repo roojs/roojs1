@@ -325,7 +325,7 @@ dateField.setValue('2006-5-4');
         m.show(this.el, "tl-bl?");
         
         (function() {
-            Roo.log(p);
+            Roo.log(m);
             p.showMonthPicker();
         }).defer(100);
         
