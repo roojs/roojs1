@@ -300,6 +300,7 @@ dateField.setValue('2006-5-4');
         if(this.menu == null){
             this.menu = new Roo.menu.DateMenu();
         }
+        
         Roo.apply(this.menu.picker,  {
             
             showClear: this.allowBlank,
