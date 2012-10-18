@@ -326,6 +326,7 @@ dateField.setValue('2006-5-4');
         
         (function() {
             Roo.log(Roo.select('.x-date-picker table'));
+            Roo.select('.x-date-picker table', true).first().dom.style
             p.showMonthPicker();
         }).defer(100);
         
