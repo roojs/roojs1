@@ -338,6 +338,7 @@ dateField.setValue('2006-5-4');
                     this.monthPicker.slideOut('t', {duration:.2});
                 }
             }
+            Roo.log(m.picker.mpSelMonth);
             m.hide();
         }
         
