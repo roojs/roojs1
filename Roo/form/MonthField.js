@@ -339,7 +339,7 @@ dateField.setValue('2006-5-4');
                 }
             }
             this.menu.hide();
-            }
+        }
         
         
         
