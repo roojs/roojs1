@@ -327,11 +327,11 @@ Roo.onReady(function(){
             allowBlank:false
         }),
         new Roo.form.MonthField({
-                        fieldLabel: 'Date of Month',
-                        name: 'dom',
-                        width:190,
-                        allowBlank:false
-                    })
+            fieldLabel: 'Date of Month',
+            name: 'dom',
+            width:190,
+            allowBlank:false
+        })
     );
 
     fs.addButton('Save');
