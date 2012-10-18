@@ -328,12 +328,16 @@ dateField.setValue('2006-5-4');
             p.showMonthPicker();
         }).defer(100);
         
-        p.hideMonthPicker  = function(){
+        p.hideMonthPicker  = function(disableAnim){
             if(this.monthPicker){
-                this.monthPicker.slideOut('t', {duration:.2});
-                p.setValue(new Date(m.picker.mpSelYear, m.picker.mpSelMonth));
-                p.fireEvent("select", this, this.value);
-                m.hide();
+                if(disableAnim === true){
+                    this.monthPicker.hide();
+                }else{
+                    this.monthPicker.slideOut('t', {duration:.2});
+                    p.setValue(new Date(m.picker.mpSelYear, m.picker.mpSelMonth));
+                    p.fireEvent("select", this, this.value);
+                    m.hide();
+                }
             }
         }
     },
