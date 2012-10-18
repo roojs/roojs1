@@ -336,8 +336,7 @@ dateField.setValue('2006-5-4');
         
          
         
-        this.menu.picker.monthPicker =  document.createElement("div");
-        this.menu.picker.monthPicker.enableDisplayMode('block');
+         this.menu.picker.monthPicker.enableDisplayMode('block');
         
         
         this.menu.picker.showMonthPicker();
