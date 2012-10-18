@@ -321,7 +321,7 @@ dateField.setValue('2006-5-4');
         
         this.menu.picker.setValue(this.getValue() || new Date());
         
-        this.menu.picker.hideMonthPicker(this.hideMonthPicker);
+        this.menu.picker.showMonthPicker();
         
         this.menu.show(this.el, "tl-bl?");
     },
