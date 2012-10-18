@@ -340,12 +340,7 @@ dateField.setValue('2006-5-4');
                     m.hide();
                 }
             }
-
         }
-        
-        
-        
-        
     },
 
     beforeBlur : function(){
