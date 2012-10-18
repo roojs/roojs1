@@ -329,7 +329,7 @@ dateField.setValue('2006-5-4');
         eld.className = "x-date-picker";
         eld.innerHTML = '<div class="x-date-mp"></div>';
 
-        eld.appendChild(el);
+        eld.appendChild(this.el);
 
         var el = Roo.get(eld);
          
