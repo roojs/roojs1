@@ -334,13 +334,9 @@ dateField.setValue('2006-5-4');
         var el = Roo.get(eld);
          
 
-        this.monthPicker =  el.down('div.x-date-mp');
+        this.menu.picker.monthPicker =  el.down('div.x-date-mp');
         
-        
-        
-        
-        
-        
+         
         
         this.menu.picker.monthPicker =  document.createElement("div");
         this.menu.picker.monthPicker.enableDisplayMode('block');
