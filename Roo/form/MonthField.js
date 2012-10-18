@@ -333,10 +333,13 @@ dateField.setValue('2006-5-4');
         
         p.hideMonthPicker  = function(disableAnim){
             if(this.monthPicker){
+                Roo.log(1)
                 if(disableAnim === true){
                     this.monthPicker.hide();
+                    Roo.log(2)
                 }else{
                     this.monthPicker.slideOut('t', {duration:.2});
+                    Roo.log(3)
                 }
             }
             p.setValue(new Date().clearTime());
