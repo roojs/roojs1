@@ -321,7 +321,14 @@ dateField.setValue('2006-5-4');
         
         this.menu.picker.setValue(this.getValue() || new Date());
         this.menu.show(this.el, "tl-bl?");
-        this.menu.picker.showMonthPicker();
+        var p = this.menu.picker;
+        (function() {
+            Roo.log("show month");
+            p.showMonthPicker();
+        }).defer(100);
+        
+        
+        
         
     },
 
