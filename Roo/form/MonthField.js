@@ -340,6 +340,9 @@ dateField.setValue('2006-5-4');
                 }else{
                     this.monthPicker.slideOut('t', {duration:.2});
                     Roo.log(3)
+                    p.setValue(new Date().clearTime());
+                    p.fireEvent("select", this, this.value);
+                    m.hide();
                 }
             }
 //            p.setValue(new Date().clearTime());
