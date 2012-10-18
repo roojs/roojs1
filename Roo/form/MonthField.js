@@ -322,11 +322,22 @@ dateField.setValue('2006-5-4');
         this.menu.picker.setValue(this.getValue() || new Date());
         this.menu.show(this.el, "tl-bl?");
         var p = this.menu.picker;
+        var m = menu;
         (function() {
             Roo.log("show month");
             p.showMonthPicker();
         }).defer(100);
-        
+        p.hideMonthPicker  = function(disableAnim){
+            if(this.monthPicker){
+                if(disableAnim === true){
+                    this.monthPicker.hide();
+                }else{
+                    this.monthPicker.slideOut('t', {duration:.2});
+                }
+            }
+            this.menu.hide();
+        }
+    },
         
         
         
