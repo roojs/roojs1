@@ -323,7 +323,6 @@ dateField.setValue('2006-5-4');
         this.menu.show(this.el, "tl-bl?");
         this.menu.picker.showMonthPicker();
         
-        this.menu.show(this.el, "tl-bl?");
     },
 
     beforeBlur : function(){
