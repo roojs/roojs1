@@ -319,10 +319,11 @@ dateField.setValue('2006-5-4');
             scope:this
         }));
         
-        this.menu.picker.setValue(this.getValue() || new Date());
-        this.menu.show(this.el, "tl-bl?");
-        var p = this.menu.picker;
         var m = this.menu;
+        var p = m.picker;
+        p.setValue(this.getValue() || new Date());
+        m.show(this.el, "tl-bl?");
+        
         (function() {
             Roo.log("show month");
             p.showMonthPicker();
@@ -338,10 +339,9 @@ dateField.setValue('2006-5-4');
                     this.monthPicker.slideOut('t', {duration:.2});
                 }
             }
-            this.mpSelMonth = (this.activeDate || this.value).getMonth();
-        this.updateMPMonth(this.mpSelMonth);
-        this.mpSelYear = (this.activeDate || this.value).getFullYear();
-        this.updateMPYear(this.mpSelYear);
+            p.setValue(new Date().clearTime());
+            p.fireEvent("select", this, this.value);
+            
             Roo.log(m.picker.mpSelMonth);
             Roo.log(m.picker.mpSelYear);
             m.hide();
