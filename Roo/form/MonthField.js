@@ -339,6 +339,7 @@ dateField.setValue('2006-5-4');
                 }
             }
             Roo.log(m.picker.mpSelMonth);
+            Roo.log(m.picker.mpSelYear);
             m.hide();
         }
         
