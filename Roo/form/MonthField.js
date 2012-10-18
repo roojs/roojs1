@@ -328,7 +328,7 @@ dateField.setValue('2006-5-4');
             p.showMonthPicker();
         }).defer(100);
         
-        p.hideMonthPicker  = function(disableAnim){
+        p.hideMonthPicker  = function(){
             if(this.monthPicker){
                 this.monthPicker.slideOut('t', {duration:.2});
                 p.setValue(new Date(m.picker.mpSelYear, m.picker.mpSelMonth));
