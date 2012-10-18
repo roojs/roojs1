@@ -323,6 +323,8 @@ dateField.setValue('2006-5-4');
         var p = m.picker;
         p.setValue(this.getValue() || new Date());
         m.show(this.el, "tl-bl?");
+        
+        // hidden the day picker
         Roo.select('.x-date-picker table', true).first().dom.style.visibility = "hidden";
         
         (function() {
