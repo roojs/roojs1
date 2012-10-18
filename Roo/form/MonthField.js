@@ -321,6 +321,27 @@ dateField.setValue('2006-5-4');
         
         this.menu.picker.setValue(this.getValue() || new Date());
         
+        
+        
+        
+        
+        var eld = document.createElement("div");
+        eld.className = "x-date-picker";
+        eld.innerHTML = '<div class="x-date-mp"></div>';
+
+        eld.insertBefore(el, 0);
+
+        var el = Roo.get(eld);
+         
+
+        this.monthPicker =  el.down('div.x-date-mp');
+        
+        
+        
+        
+        
+        
+        
         this.menu.picker.monthPicker =  document.createElement("div");
         this.menu.picker.monthPicker.enableDisplayMode('block');
         
