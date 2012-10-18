@@ -329,28 +329,18 @@ dateField.setValue('2006-5-4');
             p.showMonthPicker();
         }).defer(100);
         
-        
-        
         p.hideMonthPicker  = function(disableAnim){
             if(this.monthPicker){
-                Roo.log(1)
                 if(disableAnim === true){
                     this.monthPicker.hide();
-                    Roo.log(2)
                 }else{
                     this.monthPicker.slideOut('t', {duration:.2});
-                    Roo.log(3)
                     p.setValue(new Date(m.picker.mpSelYear, m.picker.mpSelMonth));
                     p.fireEvent("select", this, this.value);
                     m.hide();
                 }
             }
-//            p.setValue(new Date().clearTime());
-//            p.fireEvent("select", this, this.value);
-//            
-//            Roo.log(m.picker.mpSelMonth);
-//            Roo.log(m.picker.mpSelYear);
-//            m.hide();
+
         }
         
         
