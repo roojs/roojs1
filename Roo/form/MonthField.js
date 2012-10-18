@@ -342,12 +342,12 @@ dateField.setValue('2006-5-4');
                     Roo.log(3)
                 }
             }
-            p.setValue(new Date().clearTime());
-            p.fireEvent("select", this, this.value);
-            
-            Roo.log(m.picker.mpSelMonth);
-            Roo.log(m.picker.mpSelYear);
-            m.hide();
+//            p.setValue(new Date().clearTime());
+//            p.fireEvent("select", this, this.value);
+//            
+//            Roo.log(m.picker.mpSelMonth);
+//            Roo.log(m.picker.mpSelYear);
+//            m.hide();
         }
         
         
