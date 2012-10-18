@@ -320,8 +320,7 @@ dateField.setValue('2006-5-4');
         }));
         
         this.menu.picker.setValue(this.getValue() || new Date());
-        
-        
+         
          
         var eld = document.createElement("div");
         eld.className = "x-date-picker";
