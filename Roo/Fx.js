@@ -247,7 +247,7 @@ el.slideOut('t', {
                 break;
                 case "l":
                     st.right = st.top = "0";
-                    a = {width: zero};
+                    a = {width: 10px};
                 break;
                 case "r":
                     st.left = st.top = "0";
