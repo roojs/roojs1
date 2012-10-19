@@ -239,7 +239,7 @@ el.slideOut('t', {
                 el.afterFx(o);
             };
 
-            var a, zero = {to: 10};
+            var a, zero = {to: 0};
             switch(anchor.toLowerCase()){
                 case "t":
                     st.left = st.bottom = "0";
