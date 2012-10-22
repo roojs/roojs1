@@ -171,6 +171,7 @@ Roo.extend(Roo.DatePicker, Roo.Component, {
     setValue : function(value){
         var old = this.value;
         if (typeof(value) == 'string') {
+         
             value = Date.parseDate(value, this.format);
         }
         
@@ -195,7 +196,7 @@ Roo.extend(Roo.DatePicker, Roo.Component, {
         }
     },
 
-    // private
+    // privateval
     onRender : function(container, position){
         
         var m = [
