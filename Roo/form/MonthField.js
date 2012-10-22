@@ -355,7 +355,7 @@ monthField.setValue('2006-5-4');
         }
         this.menu.on(  this.menuListeners, {
                 scope:this
-            }));
+            });
         
         p.showMonthPicker.defer(100, p);
     
