@@ -38147,6 +38147,10 @@ monthField.setValue('2006-5-4');
      */
     setValue : function(date){
         Roo.log('month setValue' + date);
+        // can only be first of month..
+        
+        var val = this.parseDate(date);
+        
         if (this.hiddenField) {
             this.hiddenField.value = this.formatDate(this.parseDate(date), 'Y-m-d');
         }
@@ -38157,11 +38161,16 @@ monthField.setValue('2006-5-4');
     // private
     parseDate : function(value){
         if(!value || value instanceof Date){
+            value = value ? Date.parseDate(value.format('Y-m-01')) : null;
             return value;
         }
         var v = Date.parseDate(value, this.format);
         if (!v && this.useIso) {
             v = Date.parseDate(value, 'Y-m-d');
+        }
+        if (v) {
+            // 
+            v = Date.parseDate(date.format('Y-m-01'));
         }
         
         
