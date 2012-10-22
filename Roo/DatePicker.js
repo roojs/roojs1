@@ -170,6 +170,10 @@ Roo.extend(Roo.DatePicker, Roo.Component, {
      */
     setValue : function(value){
         var old = this.value;
+        if (typeof(value) == 'string') {
+            value = Date.parseDate(value, 'Y-m-d');
+        }
+        
         this.value = value.clearTime(true);
         if(this.el){
             this.update(this.value);
