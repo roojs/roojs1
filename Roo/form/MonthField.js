@@ -220,6 +220,8 @@ Roo.extend(Roo.form.MonthField, Roo.form.TriggerField,  {
      */
     getValue : function(){
         
+        
+        
         return  this.hiddenField ?
                 this.hiddenField.value :
                 this.parseDate(Roo.form.DateField.superclass.getValue.call(this)) || "";
