@@ -310,6 +310,9 @@ monthField.setValue('2006-5-4');
         }
         if(this.menu == null){
             this.menu = new Roo.menu.DateMenu();
+            this.menu.on(Roo.apply({}, this.menuListeners, {
+                scope:this
+            }));
         }
         
         Roo.apply(this.menu.picker,  {
@@ -326,9 +329,7 @@ monthField.setValue('2006-5-4');
             
         });
         
-        this.menu.on(Roo.apply({}, this.menuListeners, {
-            scope:this
-        }));
+       
         
         var m = this.menu;
         var p = m.picker;
