@@ -175,7 +175,7 @@ Roo.extend(Roo.form.DateField, Roo.form.TriggerField,  {
         var svalue = value;
         value = this.parseDate(value);
         if(!value){
-            Roo.log('parse date failed');
+            Roo.log('parse date failed' + svalue);
             this.markInvalid(String.format(this.invalidText, svalue, this.format));
             return false;
         }
