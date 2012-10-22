@@ -323,6 +323,7 @@ monthField.setValue('2006-5-4');
         
         var m = this.menu;
         var p = m.picker;
+        o.format = this.format; // make sure they are the same..
         p.setValue(this.getValue() || new Date());
         m.show(this.el, "tl-bl?");
         
