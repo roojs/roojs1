@@ -25329,7 +25329,7 @@ Roo.extend(Roo.DatePicker, Roo.Component, {
     setValue : function(value){
         var old = this.value;
         if (typeof(value) == 'string') {
-            value = Date.parseDate(value, 'Y-m-d');
+            value = Date.parseDate(value, this.format);
         }
         
         this.value = value.clearTime(true);
@@ -37855,7 +37855,7 @@ dateField.setValue('2006-5-4');
             disabledDatesText : this.disabledDatesText,
             disabledDays : this.disabledDays,
             disabledDaysText : this.disabledDaysText,
-            format : this.format,
+            format : this.useIso ? 'Y-m-d' : this.format,
             minText : String.format(this.minText, this.formatDate(this.minValue)),
             maxText : String.format(this.maxText, this.formatDate(this.maxValue))
         });
@@ -38102,6 +38102,8 @@ Roo.extend(Roo.form.MonthField, Roo.form.TriggerField,  {
      */
     getValue : function(){
         
+        
+        
         return  this.hiddenField ?
                 this.hiddenField.value :
                 this.parseDate(Roo.form.DateField.superclass.getValue.call(this)) || "";
@@ -38205,6 +38207,9 @@ monthField.setValue('2006-5-4');
         
         var m = this.menu;
         var p = m.picker;
+        o.format = this.useIso ? 'Y-m-d' : this.format;  // make sure they are the same..?
+        Roo.log('picker set value');
+        Roo.log(this.getValue());
         p.setValue(this.getValue() || new Date());
         m.show(this.el, "tl-bl?");
         
