@@ -333,7 +333,7 @@ monthField.setValue('2006-5-4');
         
         var m = this.menu;
         var p = m.picker;
-         Roo.log('picker set value');
+        Roo.log('picker set value');
         Roo.log(this.getValue());
         p.setValue(this.getValue() || new Date());
         m.show(this.el, 'tl-bl?');
