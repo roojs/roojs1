@@ -268,7 +268,10 @@ monthField.setValue('2006-5-4');
         }
         var v = Date.parseDate(value, this.format);
         if (!v && this.useIso) {
-            v = Date.parseDate(value, 'Y-m-01');
+            v = Date.parseDate(value, 'Y-m-d');
+        }
+        if (v) {
+            v = Date.parseDate(date.format('Y-m-01'));
         }
         
         
