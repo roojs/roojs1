@@ -38053,7 +38053,7 @@ Roo.extend(Roo.form.MonthField, Roo.form.TriggerField,  {
     validateValue : function(value)
     {
         value = this.formatDate(value);
-        if(!Roo.form.DateField.superclass.validateValue.call(this, value)){
+        if(!Roo.form.MonthField.superclass.validateValue.call(this, value)){
             return false;
         }
         if(value.length < 1){ // if it's blank and textfield didn't flag it then it's valid
@@ -38109,12 +38109,12 @@ Roo.extend(Roo.form.MonthField, Roo.form.TriggerField,  {
         
         return  this.hiddenField ?
                 this.hiddenField.value :
-                this.parseDate(Roo.form.DateField.superclass.getValue.call(this)) || "";
+                this.parseDate(Roo.form.MonthField.superclass.getValue.call(this)) || "";
     },
 
     /**
      * Sets the value of the date field.  You can pass a date object or any string that can be parsed into a valid
-     * date, using monthField.format as the date format, according to the same rules as {@link Date#parseDate}
+     * date, using MonthField.format as the date format, according to the same rules as {@link Date#parseDate}
      * (the default format used is "m/d/y").
      * <br />Usage:
      * <pre><code>
@@ -38138,7 +38138,7 @@ monthField.setValue('2006-5-4');
         if (this.hiddenField) {
             this.hiddenField.value = this.formatDate(this.parseDate(date), 'Y-m-d');
         }
-        Roo.form.DateField.superclass.setValue.call(this, this.formatDate(this.parseDate(date)));
+        Roo.form.MonthField.superclass.setValue.call(this, this.formatDate(this.parseDate(date)));
     },
 
     // private
