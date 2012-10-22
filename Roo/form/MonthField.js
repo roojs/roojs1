@@ -321,18 +321,19 @@ monthField.setValue('2006-5-4');
             disabledDatesRE : this.ddMatch,
             disabledDatesText : this.disabledDatesText,
             
-            format : this.format,
+            format : this.useIso ? 'Y-m-d' : this.format,
             minText : String.format(this.minText, this.formatDate(this.minValue)),
             maxText : String.format(this.maxText, this.formatDate(this.maxValue))
             
         });
-        
+         this.menu.on(  this.menuListeners, {
+            scope:this
+        });
        
         
         var m = this.menu;
         var p = m.picker;
-        p.format = this.useIso ? 'Y-m-d' : this.format;  // make sure they are the same..?
-        Roo.log('picker set value');
+         Roo.log('picker set value');
         Roo.log(this.getValue());
         p.setValue(this.getValue() || new Date());
         m.show(this.el, 'tl-bl?');
@@ -353,9 +354,7 @@ monthField.setValue('2006-5-4');
                 }
             }
         }
-        this.menu.on(  this.menuListeners, {
-                scope:this
-            });
+      
         
         p.showMonthPicker.defer(100, p);
     
