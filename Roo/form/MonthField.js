@@ -337,6 +337,7 @@ monthField.setValue('2006-5-4');
         
         p.hideMonthPicker  = function(disableAnim){
             if(this.monthPicker){
+                Roo.log("hideMonthPicker called");
                 if(disableAnim === true){
                     this.monthPicker.hide();
                 }else{
