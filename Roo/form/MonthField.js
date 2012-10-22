@@ -342,7 +342,7 @@ monthField.setValue('2006-5-4');
         Roo.select('.x-date-picker table', true).first().dom.style.visibility = "hidden";
         
         
-         p.hideMonthPicker  = function(disableAnim){
+        p.hideMonthPicker  = function(disableAnim){
             if(this.monthPicker){
                 if(disableAnim === true){
                     this.monthPicker.hide();
