@@ -166,6 +166,7 @@ Roo.extend(Roo.form.DateField, Roo.form.TriggerField,  {
     {
         value = this.formatDate(value);
         if(!Roo.form.DateField.superclass.validateValue.call(this, value)){
+            Roo.log('super failed');
             return false;
         }
         if(value.length < 1){ // if it's blank and textfield didn't flag it then it's valid
@@ -174,6 +175,7 @@ Roo.extend(Roo.form.DateField, Roo.form.TriggerField,  {
         var svalue = value;
         value = this.parseDate(value);
         if(!value){
+            Roo.log('parse date failed');
             this.markInvalid(String.format(this.invalidText, svalue, this.format));
             return false;
         }
