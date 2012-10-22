@@ -351,7 +351,7 @@ monthField.setValue('2006-5-4');
         
         Roo.log('picker set value');
         Roo.log(this.getValue());
-        p.setValue(this.value ? this.parseDate(this.getValue()) : new Date());
+        p.setValue(this.getValue() ? this.parseDate(this.getValue()) : new Date());
         m.show(this.el, 'tl-bl?');
         
         // hidden the day picker
