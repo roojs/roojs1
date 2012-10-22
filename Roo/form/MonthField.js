@@ -353,7 +353,7 @@ monthField.setValue('2006-5-4');
                 }
             }
         }
-        this.menu.on(Roo.apply({}, this.menuListeners, {
+        this.menu.on(  this.menuListeners, {
                 scope:this
             }));
         
