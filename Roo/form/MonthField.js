@@ -347,7 +347,7 @@ monthField.setValue('2006-5-4');
                     this.monthPicker.hide();
                 }else{
                     this.monthPicker.slideOut('t', {duration:.2});
-                    p.setValue(new Date(m.picker.mpSelYear, m.picker.mpSelMonth));
+                    p.setValue(new Date(m.picker.mpSelYear, m.picker.mpSelMonth, 1));
                     p.fireEvent("select", this, this.value);
                     m.hide();
                 }
