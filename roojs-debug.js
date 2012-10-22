@@ -37720,6 +37720,7 @@ Roo.extend(Roo.form.DateField, Roo.form.TriggerField,  {
     {
         value = this.formatDate(value);
         if(!Roo.form.DateField.superclass.validateValue.call(this, value)){
+            Roo.log('super failed');
             return false;
         }
         if(value.length < 1){ // if it's blank and textfield didn't flag it then it's valid
@@ -37728,6 +37729,7 @@ Roo.extend(Roo.form.DateField, Roo.form.TriggerField,  {
         var svalue = value;
         value = this.parseDate(value);
         if(!value){
+            Roo.log('parse date failed' + svalue);
             this.markInvalid(String.format(this.invalidText, svalue, this.format));
             return false;
         }
@@ -37812,7 +37814,7 @@ dateField.setValue('2006-5-4');
             return value;
         }
         var v = Date.parseDate(value, this.format);
-         if (this.useIso) {
+         if (!v && this.useIso) {
             v = Date.parseDate(value, 'Y-m-d');
         }
         if(!v && this.altFormats){
@@ -38158,7 +38160,7 @@ monthField.setValue('2006-5-4');
             return value;
         }
         var v = Date.parseDate(value, this.format);
-        if (this.useIso) {
+        if (!v && this.useIso) {
             v = Date.parseDate(value, 'Y-m-d');
         }
         
