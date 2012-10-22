@@ -341,11 +341,8 @@ monthField.setValue('2006-5-4');
         // hidden the day picker
         Roo.select('.x-date-picker table', true).first().dom.style.visibility = "hidden";
         
-        (function() {
-            p.showMonthPicker();
-        }).defer(100);
         
-        p.hideMonthPicker  = function(disableAnim){
+         p.hideMonthPicker  = function(disableAnim){
             if(this.monthPicker){
                 if(disableAnim === true){
                     this.monthPicker.hide();
@@ -357,6 +354,12 @@ monthField.setValue('2006-5-4');
                 }
             }
         }
+        
+        (function() {
+            p.showMonthPicker();
+        }).defer(100);
+        
+       
     },
 
     beforeBlur : function(){
