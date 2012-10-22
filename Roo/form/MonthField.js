@@ -26,7 +26,7 @@ Roo.form.MonthField = function(config){
         /**
          * @event select
          * Fires when a date is selected
-	     * @param {Roo.form.DateField} combo This combo box
+	     * @param {Roo.form.MonthFieeld} combo This combo box
 	     * @param {Date} date The date selected
 	     */
         'select' : true
@@ -225,7 +225,7 @@ Roo.extend(Roo.form.MonthField, Roo.form.TriggerField,  {
 
     /**
      * Sets the value of the date field.  You can pass a date object or any string that can be parsed into a valid
-     * date, using DateField.format as the date format, according to the same rules as {@link Date#parseDate}
+     * date, using monthField.format as the date format, according to the same rules as {@link Date#parseDate}
      * (the default format used is "m/d/y").
      * <br />Usage:
      * <pre><code>
@@ -233,14 +233,14 @@ Roo.extend(Roo.form.MonthField, Roo.form.TriggerField,  {
 
 //Pass a date object:
 var dt = new Date('5/4/06');
-dateField.setValue(dt);
+monthField.setValue(dt);
 
 //Pass a date string (default format):
-dateField.setValue('5/4/06');
+monthField.setValue('5/4/06');
 
 //Pass a date string (custom format):
-dateField.format = 'Y-m-d';
-dateField.setValue('2006-5-4');
+monthField.format = 'Y-m-d';
+monthField.setValue('2006-5-4');
 </code></pre>
      * @param {String/Date} date The date or valid date string
      */
