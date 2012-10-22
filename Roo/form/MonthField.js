@@ -273,7 +273,7 @@ monthField.setValue('2006-5-4');
         }
         if (v) {
             // 
-            v = Date.parseDate(date.format('Y-m-01'));
+            v = Date.parseDate(date.format('Y-m' +'-01', 'Y-m-d'));
         }
         
         
