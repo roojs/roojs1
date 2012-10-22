@@ -37835,6 +37835,7 @@ dateField.setValue('2006-5-4');
     // private
     menuListeners : {
         select: function(m, d){
+            
             this.setValue(d);
             this.fireEvent('select', this, d);
         },
@@ -38228,9 +38229,14 @@ monthField.setValue('2006-5-4');
         var m = this.menu;
         var p = m.picker;
         
+        // hide month picker get's called when we called by 'before hide';
         
+        var ignorehide = true;
         p.hideMonthPicker  = function(disableAnim){
-            if(this.monthPicker){
+            if (ignorehide) {
+                return;
+            }
+             if(this.monthPicker){
                 Roo.log("hideMonthPicker called");
                 if(disableAnim === true){
                     this.monthPicker.hide();
@@ -38247,6 +38253,9 @@ monthField.setValue('2006-5-4');
         Roo.log(this.getValue());
         p.setValue(this.getValue() ? this.parseDate(this.getValue()) : new Date());
         m.show(this.el, 'tl-bl?');
+        ignorehide  = false;
+        // this will trigger hideMonthPicker..
+        
         
         // hidden the day picker
         Roo.select('.x-date-picker table', true).first().dom.style.visibility = "hidden";
