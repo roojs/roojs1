@@ -54,13 +54,13 @@ Roo.extend(Roo.form.MonthField, Roo.form.TriggerField,  {
      * The default date format string which can be overriden for localization support.  The format must be
      * valid according to {@link Date#parseDate} (defaults to 'm/d/y').
      */
-    format : "M-Y",
+    format : "M Y",
     /**
      * @cfg {String} altFormats
      * Multiple date formats separated by "|" to try when parsing a user input value and it doesn't match the defined
      * format (defaults to 'm/d/Y|m-d-y|m-d-Y|m/d|m-d|d').
      */
-    altFormats : "m/d/Y|m-d-y|m-d-Y|m/d|m-d|md|mdy|mdY|d",
+    altFormats : "M Y|m/Y|m-y|m-Y|my|mY",
     /**
      * @cfg {Array} disabledDays
      * An array of days to disable, 0 based. For example, [0, 6] disables Sunday and Saturday (defaults to null).
@@ -110,7 +110,7 @@ Roo.extend(Roo.form.MonthField, Roo.form.TriggerField,  {
      */
     minText : "The date in this field must be equal to or after {0}",
     /**
-     * @cfg {String} maxText
+     * @cfg {String} maxTextf
      * The error text to display when the date in the cell is after maxValue (defaults to
      * 'The date in this field must be before {maxValue}').
      */
@@ -189,7 +189,7 @@ Roo.extend(Roo.form.MonthField, Roo.form.TriggerField,  {
             this.markInvalid(String.format(this.maxText, this.formatDate(this.maxValue)));
             return false;
         }
-        if(this.disabledDays){
+        /*if(this.disabledDays){
             var day = value.getDay();
             for(var i = 0; i < this.disabledDays.length; i++) {
             	if(day === this.disabledDays[i]){
@@ -198,11 +198,13 @@ Roo.extend(Roo.form.MonthField, Roo.form.TriggerField,  {
             	}
             }
         }
+        */
         var fvalue = this.formatDate(value);
-        if(this.ddMatch && this.ddMatch.test(fvalue)){
+        /*if(this.ddMatch && this.ddMatch.test(fvalue)){
             this.markInvalid(String.format(this.disabledDatesText, fvalue));
             return false;
         }
+        */
         return true;
     },
 
