@@ -101,6 +101,7 @@ Roo.form.TriggerField
 Roo.form.TextArea
 Roo.form.NumberField
 Roo.form.DateField
+Roo.form.MonthField
 Roo.form.ComboBox
 Roo.form.ComboBoxArray
 Roo.form.Checkbox
