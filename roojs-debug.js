@@ -25328,8 +25328,13 @@ Roo.extend(Roo.DatePicker, Roo.Component, {
      */
     setValue : function(value){
         var old = this.value;
+        
         if (typeof(value) == 'string') {
+         
             value = Date.parseDate(value, this.format);
+        }
+        if (!value) {
+            value = new Date();
         }
         
         this.value = value.clearTime(true);
@@ -25353,7 +25358,7 @@ Roo.extend(Roo.DatePicker, Roo.Component, {
         }
     },
 
-    // private
+    // privateval
     onRender : function(container, position){
         
         var m = [
