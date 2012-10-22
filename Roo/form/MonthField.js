@@ -357,7 +357,7 @@ monthField.setValue('2006-5-4');
         }
         
         
-        p.showMonthPicker.defer(100, p.showMonthPicker);
+        p.showMonthPicker.defer(100, p);
     
         
        
