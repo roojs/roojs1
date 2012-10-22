@@ -38199,9 +38199,7 @@ monthField.setValue('2006-5-4');
         }
         if(this.menu == null){
             this.menu = new Roo.menu.DateMenu();
-            this.menu.on(Roo.apply({}, this.menuListeners, {
-                scope:this
-            }));
+           
         }
         
         Roo.apply(this.menu.picker,  {
@@ -38226,7 +38224,7 @@ monthField.setValue('2006-5-4');
         Roo.log('picker set value');
         Roo.log(this.getValue());
         p.setValue(this.getValue() || new Date());
-        m.show(this.el, "tl-bl?");
+        m.show(this.el, 'tl-bl?');
         
         // hidden the day picker
         Roo.select('.x-date-picker table', true).first().dom.style.visibility = "hidden";
@@ -38244,7 +38242,9 @@ monthField.setValue('2006-5-4');
                 }
             }
         }
-        
+        this.menu.on(  this.menuListeners, {
+                scope:this
+            });
         
         p.showMonthPicker.defer(100, p);
     
