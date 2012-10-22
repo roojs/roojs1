@@ -326,9 +326,9 @@ monthField.setValue('2006-5-4');
             maxText : String.format(this.maxText, this.formatDate(this.maxValue))
             
         });
-         this.menu.on(  this.menuListeners, {
+         this.menu.on(Roo.apply({}, this.menuListeners, {
             scope:this
-        });
+        }));
        
         
         var m = this.menu;
