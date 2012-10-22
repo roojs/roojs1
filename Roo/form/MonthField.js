@@ -254,6 +254,7 @@ monthField.setValue('2006-5-4');
             this.hiddenField.value = this.formatDate(this.parseDate(date), 'Y-m-d');
         }
         Roo.form.MonthField.superclass.setValue.call(this, this.formatDate(this.parseDate(date)));
+        this.value = this.parseDate(date);
     },
 
     // private
