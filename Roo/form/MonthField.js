@@ -249,6 +249,7 @@ monthField.setValue('2006-5-4');
      * @param {String/Date} date The date or valid date string
      */
     setValue : function(date){
+        Roo.log('month setValue' + date);
         if (this.hiddenField) {
             this.hiddenField.value = this.formatDate(this.parseDate(date), 'Y-m-d');
         }
