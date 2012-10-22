@@ -363,7 +363,7 @@ monthField.setValue('2006-5-4');
         
         
         // hidden the day picker
-        Roo.select('.x-date-picker table', true).first().dom.style.visibility = "hidden";
+        //Roo.select('.x-date-picker table', true).first().dom.style.visibility = "hidden";
         
         
         
