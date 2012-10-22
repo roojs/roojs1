@@ -26,7 +26,7 @@
         </span><span class="jsdoc-comment">/**
          * @event select
          * Fires when a date is selected
-	     * @param {Roo.form.DateField} combo This combo box
+	     * @param {Roo.form.MonthFieeld} combo This combo box
 	     * @param {Date} date The date selected
 	     */
         </span><span class="jsdoc-string">'select' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
@@ -133,9 +133,9 @@
     </span><span class="jsdoc-comment">/**
      * @cfg {Boolean} useIso
      * if enabled, then the date field will use a hidden field to store the 
-     * real value as iso formated date. default (false)
+     * real value as iso formated date. default (true)
      */ 
-    </span><span class="jsdoc-var">useIso </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">useIso </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-comment">/**
      * @cfg {String/Object} autoCreate
      * A DomHelper element spec, or true for a default element spec (defaults to
@@ -225,7 +225,7 @@
 
     </span><span class="jsdoc-comment">/**
      * Sets the value of the date field.  You can pass a date object or any string that can be parsed into a valid
-     * date, using DateField.format as the date format, according to the same rules as {@link Date#parseDate}
+     * date, using monthField.format as the date format, according to the same rules as {@link Date#parseDate}
      * (the default format used is &quot;m/d/y&quot;).
      * &lt;br /&gt;Usage:
      * &lt;pre&gt;&lt;code&gt;
@@ -233,14 +233,14 @@
 
 //Pass a date object:
 var dt = new Date('5/4/06');
-dateField.setValue(dt);
+monthField.setValue(dt);
 
 //Pass a date string (default format):
-dateField.setValue('5/4/06');
+monthField.setValue('5/4/06');
 
 //Pass a date string (custom format):
-dateField.format = 'Y-m-d';
-dateField.setValue('2006-5-4');
+monthField.format = 'Y-m-d';
+monthField.setValue('2006-5-4');
 &lt;/code&gt;&lt;/pre&gt;
      * @param {String/Date} date The date or valid date string
      */
@@ -300,6 +300,7 @@ dateField.setValue('2006-5-4');
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.menu </span><span class="jsdoc-syntax">== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.menu </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.menu.DateMenu</span><span class="jsdoc-syntax">();
         }
+        
         </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.menu.picker</span><span class="jsdoc-syntax">,  {
             
             </span><span class="jsdoc-var">showClear</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.allowBlank</span><span class="jsdoc-syntax">,
@@ -317,9 +318,31 @@ dateField.setValue('2006-5-4');
         </span><span class="jsdoc-var">this.menu.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">this.menuListeners</span><span class="jsdoc-syntax">, {
             </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">this
         </span><span class="jsdoc-syntax">}));
-        </span><span class="jsdoc-var">this.menu.picker.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">() || </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">());
-        </span><span class="jsdoc-var">this.menu.picker.hideMonthPicker</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hideMonthPicker</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.menu.show</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;tl-bl?&quot;</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">m </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.menu</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">m.picker</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">p.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">() || </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-var">m.show</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;tl-bl?&quot;</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-comment">// hidden the day picker
+        </span><span class="jsdoc-var">Roo.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.x-date-picker table'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.style.visibility </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;hidden&quot;</span><span class="jsdoc-syntax">;
+        
+        (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+            </span><span class="jsdoc-var">p.showMonthPicker</span><span class="jsdoc-syntax">();
+        })</span><span class="jsdoc-var">.defer</span><span class="jsdoc-syntax">(100);
+        
+        </span><span class="jsdoc-var">p.hideMonthPicker  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">disableAnim</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.monthPicker</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">disableAnim </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">this.monthPicker.hide</span><span class="jsdoc-syntax">();
+                }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                    </span><span class="jsdoc-var">this.monthPicker.slideOut</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'t'</span><span class="jsdoc-syntax">, {</span><span class="jsdoc-var">duration</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">.</span><span class="jsdoc-syntax">2});
+                    </span><span class="jsdoc-var">p.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m.picker.mpSelYear</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">m.picker.mpSelMonth</span><span class="jsdoc-syntax">));
+                    </span><span class="jsdoc-var">p.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;select&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">m.hide</span><span class="jsdoc-syntax">();
+                }
+            }
+        }
     },
 
     </span><span class="jsdoc-var">beforeBlur </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
