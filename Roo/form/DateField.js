@@ -281,6 +281,8 @@ dateField.setValue('2006-5-4');
     // private
     menuListeners : {
         select: function(m, d){
+            Roo.log("menuListeners  select");
+            
             this.setValue(d);
             this.fireEvent('select', this, d);
         },
