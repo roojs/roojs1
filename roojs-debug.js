@@ -38161,7 +38161,7 @@ monthField.setValue('2006-5-4');
     // private
     parseDate : function(value){
         if(!value || value instanceof Date){
-            value = value ? Date.parseDate(value.format('Y-m-01')) : null;
+            value = value ? Date.parseDate(value.format('Y-m') + '-01', 'Y-m-d') : null;
             return value;
         }
         var v = Date.parseDate(value, this.format);
@@ -38170,7 +38170,7 @@ monthField.setValue('2006-5-4');
         }
         if (v) {
             // 
-            v = Date.parseDate(date.format('Y-m-01'));
+            v = Date.parseDate(date.format('Y-m' +'-01', 'Y-m-d'));
         }
         
         
