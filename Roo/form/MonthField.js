@@ -325,7 +325,7 @@ monthField.setValue('2006-5-4');
         
         var m = this.menu;
         var p = m.picker;
-        o.format = this.useIso ? this.format : 'Y-m-d'; // make sure they are the same..?
+        o.format = this.useIso ? 'Y-m-d' : this.format;  // make sure they are the same..?
         Roo.log('picker set value');
         Roo.log(this.getValue());
         p.setValue(this.getValue() || new Date());
