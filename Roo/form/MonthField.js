@@ -135,7 +135,7 @@ Roo.extend(Roo.form.MonthField, Roo.form.TriggerField,  {
      * if enabled, then the date field will use a hidden field to store the 
      * real value as iso formated date. default (false)
      */ 
-    useIso : false,
+    useIso : true,
     /**
      * @cfg {String/Object} autoCreate
      * A DomHelper element spec, or true for a default element spec (defaults to
