@@ -24035,6 +24035,9 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         this.setValue(this.originalValue);
         this.clearInvalid();
         this.lastData = false;
+        if (this.view) {
+            this.view.clearSelections();
+        }
     },
     // private
     findRecord : function(prop, value){
