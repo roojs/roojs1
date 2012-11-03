@@ -99,8 +99,9 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         var s = this.html;
         
         // covert the html into DOM...
-        
-        var div = document.createElement('div');
+        var doc = document.implementation.createHTMLDocument("");
+        doc.documentElement.innerHTML = htmlBody
+        var div = doc.documentElement;
         div.innerHTML =   this.html  ;
         
         this.tpls = [];
