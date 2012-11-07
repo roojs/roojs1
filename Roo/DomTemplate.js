@@ -100,7 +100,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         
         // covert the html into DOM...
         var doc = document.implementation.createHTMLDocument("");
-        doc.documentElement.innerHTML = htmlBody
+        //doc.documentElement.innerHTML = htmlBody
         var div = doc.documentElement;
         div.innerHTML =   this.html  ;
         
