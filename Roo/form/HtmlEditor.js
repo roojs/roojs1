@@ -1102,7 +1102,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         
         var remove_keep_children= Roo.form.HtmlEditor.remove.indexOf(node.tagName.toLowerCase()) > -1;
         
-        // remove <a name=....> as rendering on yahoo mailer is bored with this.
+        // remove <a name=....> as rendering on yahoo mailer is borked with this.
         
         if (node.tagName.toLowerCase() == 'a' && !node.hasAttribute('href')) {
             remove_keep_children = true;
