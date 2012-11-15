@@ -576,11 +576,13 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                             // undo does not work.
                              
                             var sn = tb.selectedNode;
+                            Roo.log(sn);
                             var pn = sn.parentNode;
                             
                             for (var i = 0; i < sn.childNodes.length; i++) {
                                 var node = sn.childNodes[i];
                                 sn.removeChild(node);
+                                Roo.log("")
                                 pn.insertBefore(node, sn);
                                 
                             }
