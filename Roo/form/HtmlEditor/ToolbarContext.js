@@ -582,7 +582,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                             for (var i = 0; i < sn.childNodes.length; i++) {
                                 var node = sn.childNodes[i];
                                 sn.removeChild(node);
-                                Roo.log("")
+                                Roo.log(node);
                                 pn.insertBefore(node, sn);
                                 
                             }
