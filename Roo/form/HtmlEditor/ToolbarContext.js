@@ -389,7 +389,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         }
         
         if (!updateFooter) {
-            this.footDisp.dom.innerHTML = ''; 
+            //this.footDisp.dom.innerHTML = ''; 
             return;
         }
         // update the footer
@@ -593,7 +593,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     
                     
                     //_this.updateToolbar(null, null, pn);
-                    _this.updateToolbar(null, null, null);
+                    _this.updateToolbar(null, null, pn);
+                    this.footDisp.dom.innerHTML = ''; 
                 }
             }
             
