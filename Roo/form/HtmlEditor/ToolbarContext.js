@@ -574,7 +574,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                         {
                             // remove
                             // undo does not work.
-                            var nodes = [];
+                             
                             var sn = tb.selectedNode;
                             var pn = sn.parentNode;
                             
