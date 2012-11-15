@@ -552,7 +552,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
              
         }
         tb.addFill();
-        
+        var _this = this;
         tb.addButton( {
             text: 'Remove Tag',
     
@@ -589,7 +589,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     
                     
                     
-                    this.updateToolbar(null, null, pn);
+                    _this.updateToolbar(null, null, pn);
                 }
             }
             
