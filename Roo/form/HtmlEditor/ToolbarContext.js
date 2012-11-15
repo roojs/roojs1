@@ -561,7 +561,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     listeners : {
                         click : function ()
                         {
-                            editor.execCmd('inserthtml', '<!-- -->');
+                            // undo does not work.
                             // remove
                             tb.selectedNode.innerHTML = '';
                         }
@@ -573,7 +573,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                         click : function ()
                         {
                             // remove
-                            editor.execCmd('inserthtml', '<!-- -->');
+                            // undo does not work.
                             var nodes = [];
                             var sn = tb.selectedNode;
                             var pn = sn.parentNode;
