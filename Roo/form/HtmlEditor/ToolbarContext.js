@@ -573,7 +573,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                         click : function ()
                         {
                             // remove
-                            editor.execCmd('inserthtml', '');
+                            editor.execCmd('inserthtml', '<!-- -->');
                             var nodes = [];
                             var sn = tb.selectedNode;
                             var pn = sn.parentNode;
