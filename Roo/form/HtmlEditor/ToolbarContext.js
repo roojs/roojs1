@@ -593,7 +593,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     
                     
                     //_this.updateToolbar(null, null, pn);
-                    _this.updateToolbar(null, null, pn);
+                    _this.updateToolbar(null, null, null);
                     this.footDisp.dom.innerHTML = ''; 
                 }
             }
