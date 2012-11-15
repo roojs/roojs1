@@ -416,31 +416,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             
         //this.editorsyncValue();
     },
-    
-    updateFooter : function()
-    {
-         var html = '';
-        
-        this.footerEls = ans.reverse();
-        Roo.each(this.footerEls, function(a,i) {
-            if (!a) { return; }
-            html += html.length ? ' &gt; '  :  '';
-            
-            html += '<span class="x-ed-loc-' + i + '">' + a.tagName + '</span>';
-            
-        });
-       
-        // 
-        var sz = this.footDisp.up('td').getSize();
-        this.footDisp.dom.style.width = (sz.width -10) + 'px';
-        this.footDisp.dom.style.marginLeft = '5px';
-        
-        this.footDisp.dom.style.overflow = 'hidden';
-        
-        this.footDisp.dom.innerHTML = html;
-        
-        
-    }
+     
     
    
        
