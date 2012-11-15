@@ -388,7 +388,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
 
         }
         
-        if (!updateFooter) {
+        if (!ans) {
             this.footDisp.dom.innerHTML = ''; 
             return;
         }
@@ -416,6 +416,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             
         //this.editorsyncValue();
     },
+     
+    
    
        
     // private
