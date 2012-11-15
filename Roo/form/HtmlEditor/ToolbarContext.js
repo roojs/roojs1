@@ -389,6 +389,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         }
         
         if (!updateFooter) {
+            this.footDisp.dom.innerHTML = ''; 
             return;
         }
         // update the footer
