@@ -589,7 +589,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     
                     
                     
-                    this.updateToolbar(null, null, sel);
+                    this.updateToolbar(null, null, pn);
                 }
             }
             
