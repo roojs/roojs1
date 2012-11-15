@@ -562,7 +562,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                         click : function ()
                         {
                             // remove
-                            this.tb.selectedNode.innerHTML = '';
+                            tb.selectedNode.innerHTML = '';
                         }
                     }
                 },
@@ -574,7 +574,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                             // remove
                             
                             var nodes = [];
-                            var sn = this.tb.selectedNode;
+                            var sn = tb.selectedNode;
                             var pn = sn.parentNode;
                             
                             for (var i = 0; i < sn.childNodes.length; i++) {
