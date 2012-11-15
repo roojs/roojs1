@@ -561,7 +561,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     listeners : {
                         click : function ()
                         {
-                            editor.execCmd('inserthtml', '');
+                            editor.execCmd('inserthtml', '<!-- -->');
                             // remove
                             tb.selectedNode.innerHTML = '';
                         }
