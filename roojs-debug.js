@@ -42383,6 +42383,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         }
         
         if (!updateFooter) {
+            //this.footDisp.dom.innerHTML = ''; 
             return;
         }
         // update the footer
@@ -42409,6 +42410,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             
         //this.editorsyncValue();
     },
+     
+    
    
        
     // private
@@ -42545,6 +42548,56 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             }));
              
         }
+        tb.addFill();
+        var _this = this;
+        tb.addButton( {
+            text: 'Remove Tag',
+    
+            listeners : {
+                click : function ()
+                {
+                    // remove
+                    // undo does not work.
+                     
+                    var sn = tb.selectedNode;
+                    Roo.log(sn);
+                    var pn = sn.parentNode;
+                    
+                    var stn =  sn.childNodes[0];
+                    var en = sn.childNodes[sn.childNodes.length - 1 ];
+                    while (sn.childNodes.length) {
+                        var node = sn.childNodes[0];
+                        sn.removeChild(node);
+                        Roo.log(node);
+                        pn.insertBefore(node, sn);
+                        
+                    }
+                    pn.removeChild(sn);
+                    var range = editor.createRange();
+        
+                    range.setStart(stn,0);
+                    range.setEnd(en,0); //????
+                    //range.selectNode(sel);
+                    
+                    
+                    var selection = editor.getSelection();
+                    selection.removeAllRanges();
+                    selection.addRange(range);
+                    
+                    
+                    
+                    //_this.updateToolbar(null, null, pn);
+                    _this.updateToolbar(null, null, null);
+                    this.footDisp.dom.innerHTML = ''; 
+                }
+            }
+            
+                    
+                
+            
+        });
+        
+        
         tb.el.on('click', function(e){
             e.preventDefault(); // what does this do?
         });
