@@ -551,6 +551,37 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             }));
              
         }
+        tb.addFill();
+        
+        tb.addButton( {
+            text: 'Remove',
+            menu : [
+                {
+                    text : 'All Content',
+                    listeners : {
+                        click : function ()
+                        {
+                            // remove 
+                        }
+                    }
+                },
+                {
+                    text : 'Tag, Keep contents',
+                    listeners : {
+                        click : function ()
+                        {
+                            // remove 
+                        }
+                    }
+                    
+                    
+                }
+            ]
+                
+            
+        });
+        
+        
         tb.el.on('click', function(e){
             e.preventDefault(); // what does this do?
         });
