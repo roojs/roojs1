@@ -561,7 +561,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     listeners : {
                         click : function ()
                         {
-                            // remove 
+                            // remove
+                            this.tb.selectedNode.innerHTML = '';
                         }
                     }
                 },
@@ -570,7 +571,20 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     listeners : {
                         click : function ()
                         {
-                            // remove 
+                            // remove
+                            
+                            var nodes = [];
+                            var sn = this.tb.selectedNode;
+                            var pn = sn.parentNode;
+                            
+                            for (var i = 0; i < sn.childNodes.length; i++) {
+                                var node = sn.childNodes[i];
+                                sn.removeChild(node);
+                                pn.insertBefore(node, sn);
+                                
+                            }
+                            pn.removeChild(sn);
+                            
                         }
                     }
                     
