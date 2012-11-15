@@ -10,7 +10,7 @@
  */
  
 var mform;
-var editor
+var editor;
 Roo.onReady(function(){
 
     Roo.QuickTips.init();
