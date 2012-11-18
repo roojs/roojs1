@@ -112,26 +112,41 @@ Roo.onReady(function(){
         enableColLock:false,
         multiSort : true,
         enableDragDrop : true,
-        listeners : {
-               enddrag : function(g, dd, targetid , e) {
-                    Roo.log('enddrag');
-               },
-               dragdrop : function(g, dd, targetid , e) {
-                    Roo.log('dragdrop');
-               },
-                dragover : function(g, dd, targetid , e) {
-                    Roo.log('dragover');
-               },
-            dragenter : function(g, dd, targetid , e) {
-                    Roo.log('dragenter');
-               },
-                   dragout : function(g, dd, targetid , e) {
-                    Roo.log('dragout');
-               },
-        
-            
-            
-        }
+        dropTarget : Roo.factory({
+                  xtype: 'DropTarget',
+                  xns: Roo.dd,
+                  listeners : {
+                      drop : function (source, e, data)
+                      {
+                           Roo.log("DROP");
+                             
+                      },
+                      over : function (source, e, data)
+                      {
+                          // Roo.log("dragover");
+                           
+                          //Roo.log(e);
+                          /*
+                          var t = Roo.lib.Event.getTarget(e); 
+                          var ri = _this.grid.view.findRowIndex(t);
+                            //            Roo.log(ri);
+                          
+                          var rid  = false;
+                          if (ri !== false) {
+                              rid = _this.grid.getDataSource().getAt(ri).data;
+                          }
+                          
+                          var s = _this.grid.getSelectionModel().getSelections();
+                           */  
+                          //if (!isFromGroup && isToGroup) {
+                          this.valid = 'ok-add';
+                          
+                      }
+                  },
+                  ddGroup : 'Projects'
+
+                  
+              }
     });
 
     var layout = Roo.BorderLayout.create({
