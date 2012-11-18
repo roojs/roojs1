@@ -26,6 +26,8 @@ Roo.grid.GridView = function(config){
 Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
 
     unselectable :  'unselectable="on"',
+    unselectableCls :  'x-unselectable',
+    
     
     rowClass : "x-grid-row",
 
