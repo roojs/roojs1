@@ -193,10 +193,10 @@ Roo.onReady(function(){
                   expandRow : function(ri,pos)
                   {
                         var dom = grid.view.getRow(ri);
-                        Roo.log(dom);
-                        if (this.activeDom == dom) {
-                            return;
-                        }
+                        //Roo.log(dom);
+                        //if (this.activeDom == dom) {
+                        //    return;
+                        //}
                         if (this.activeDom) {
                             Roo.get(this.activeDom).removeClass('x-grid-dd-above');
                             Roo.get(this.activeDom).removeClass('x-grid-dd-below');
