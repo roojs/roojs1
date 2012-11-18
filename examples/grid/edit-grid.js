@@ -143,7 +143,7 @@ Roo.onReady(function(){
                           
                       }
                   },
-                  ddGroup : 'DDGroup'
+                  ddGroup : 'GridDD'
 
                   
               }
