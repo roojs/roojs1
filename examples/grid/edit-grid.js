@@ -138,7 +138,9 @@ Roo.onReady(function(){
                            var ri = grid.view.findRowIndex(t);
                            Roo.log(e);
                            Roo.log(data);
-                           
+                            var dp = this.getDropPoint(e,data);
+                          
+                           this.valid =    dp;
                            
                              
                       },
@@ -153,9 +155,7 @@ Roo.onReady(function(){
                                 return;
                            }
                           
-                          var dp = this.getDropPoint(e,data);
-                          
-                           this.valid =    dp;
+                         
                           this.valid = 'ok-add'; 
                           Roo.log("SET VALID TO: " + this.valid)
                           //Roo.log([source,e,data]);
