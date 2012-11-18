@@ -536,7 +536,7 @@ x-grid-dd-above td {
     border-top: 20px solid #fcfcfc;
     
 }
-x-grid-dd-above td {
-    border-below: 20px solid #fcfcfc;
+x-grid-dd-below td {
+    border-bottom: 20px solid #fcfcfc;
     
 }
