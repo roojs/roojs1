@@ -187,7 +187,7 @@ Roo.onReady(function(){
                       }
                   },
                   ddGroup : 'GridDD',
-                  activeDom = false,
+                  activeDom : false,
                   expandRow : function(ri,pos)
                   {
                         var dom = grid.view.getRow(ri);
