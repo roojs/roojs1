@@ -198,15 +198,16 @@ Roo.onReady(function(){
                             return;
                         }
                         if (this.activeDom) {
-                            this.activeDom.style.borderTop = '';
-                            this.activeDom.style.borderBottom = '';
-                            this.activeDom.style.display = '';
+                            Roo.get(this.activeDom).removeClass('x-grid-dd-above');
+                            Roo.get(this.activeDom).removeClass('x-grid-dd-below');
+                            
                             this.activeDom = false;
                         }
                         
                         if (ri == false) {
                             return;
                         }
+                        Roo.get(dom).addClass('x-grid-dd-' + pos);
                         dom.style[ pos == 'above' ? 'borderTop' : 'borderBottom'] ='20px solid #FCFCFC;';
                         dom.style.display =  'block';
                         this.activeDom = dom;
