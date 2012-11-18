@@ -189,7 +189,7 @@ Roo.onReady(function(){
                         if(y >= t && y < (t + q)){
                             return "above";
                         }
-                        if(!noBelow && (noAppend || y >= b-q && y <= b)){
+                        if(y >= b-q && y <= b){
                             return "below";
                         }
                         return false;
