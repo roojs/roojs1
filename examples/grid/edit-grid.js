@@ -183,14 +183,14 @@ Roo.onReady(function(){
                         // we may drop nodes anywhere, as long as allowChildren has not been set to false..
                         
                           
-                        var q = (b - t) / 2);
+                        var q = (b - t) / 2;
                         if(y >= t && y < (t + q)){
                             return "above";
-                        }else if(!noBelow && (noAppend || y >= b-q && y <= b)){
-                            return "below";
-                        }else{
-                            return "append";
                         }
+                        if(!noBelow && (noAppend || y >= b-q && y <= b)){
+                            return "below";
+                        }
+                        return false;
                     },                  
               });
       
