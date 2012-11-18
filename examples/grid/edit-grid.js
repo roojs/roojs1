@@ -144,6 +144,8 @@ Roo.onReady(function(){
                       },
                       over : function (source, e, data)
                       {
+                          Roo.log([source,e,data]);
+                          
                           // Roo.log("dragover");
                            
                           //Roo.log(e);
@@ -168,12 +170,11 @@ Roo.onReady(function(){
                 
                 getDropPoint : function(e, n, dd)
                     {
-                        var tn = n.node;
-                        if(tn.isRoot){
-                            return tn.allowChildren !== false ? "append" : false; // always append for root
-                        }
+                        //var tn = n.node;
+                       
                         var dragEl = n.ddel;
-                        var t = Roo.lib.Dom.getY(dragEl), b = t + dragEl.offsetHeight;
+                        var t = Roo.lib.Dom.getY(dragEl),
+                            b = t + dragEl.offsetHeight;
                         var y = Roo.lib.Event.getPageY(e);
                         //var noAppend = tn.allowChildren === false || tn.isLeaf();
                         
