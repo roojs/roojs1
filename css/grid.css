@@ -532,11 +532,11 @@ select.x-grid-editor{
 
 
 
-x-grid-dd-above td {
+.x-grid-dd-above td {
     border-top: 20px solid #fcfcfc;
     
 }
-x-grid-dd-below td {
+.x-grid-dd-below td {
     border-bottom: 20px solid #fcfcfc;
     
 }
