@@ -54,3 +54,11 @@
 .x-dd-drop-ok-sub .x-dd-drop-icon{
   background-image: url(../images/default/dd/drop-sub.gif);
 }
+
+.x-dd-drop-ok-above .x-dd-drop-icon{
+  background-image: url(../images/default/tree/drop-over.gif);
+}
+.x-dd-drop-ok-below .x-dd-drop-icon{
+  background-image: url(../images/default/tree/drop-under.gif);
+}
+
