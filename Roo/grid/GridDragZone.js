@@ -30,6 +30,7 @@ Roo.extend(Roo.grid.GridDragZone, Roo.dd.DragZone, {
     getDragData : function(e){
         var t = Roo.lib.Event.getTarget(e);
         var rowIndex = this.view.findRowIndex(t);
+        Roo.log(rowIndex);
         if(rowIndex !== false){
             var sm = this.grid.selModel;
             
