@@ -187,7 +187,6 @@ Roo.onReady(function(){
                           
                         var q = (b - t) / 2;
                         
-                        Roo.log([y, t, q, b]);
                         
                         if(y >= t && y < (t + q)){
                             return "above";
@@ -195,6 +194,9 @@ Roo.onReady(function(){
                         if(y >= b-q && y <= b){
                             return "below";
                         }
+                        Roo.log([y, t, q, b]);
+                        
+                        
                         return false;
                     },                  
               });
