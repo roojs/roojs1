@@ -31,8 +31,8 @@ Roo.onReady(function(){
     var cm = new Roo.grid.ColumnModel([{
            header: "Common Name",
            dataIndex: 'common',
-           width: 220,
-           /*
+           width: 220  /*,
+           
            editor: new Ed(new fm.TextField({
                allowBlank: false
            })) */
