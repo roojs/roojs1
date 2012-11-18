@@ -35072,6 +35072,9 @@ Roo.grid.GridView = function(config){
 
 Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
 
+    unselectable :  'unselectable="on"',
+    unselectableCls :  'x-unselectable',
+    
     
     rowClass : "x-grid-row",
 
@@ -35193,7 +35196,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         if(!tpls.hcell){
             tpls.hcell = new Roo.Template(
                 '<td class="x-grid-hd x-grid-td-{id} {cellId}"><div title="{title}" class="x-grid-hd-inner x-grid-hd-{id}">',
-                '<div class="x-grid-hd-text" unselectable="on">{value}<img class="x-grid-sort-icon" src="', Roo.BLANK_IMAGE_URL, '" /></div>',
+                '<div class="x-grid-hd-text ' + this.unselectableCls +  '" ' + this.unselectable +'>{value}<img class="x-grid-sort-icon" src="', Roo.BLANK_IMAGE_URL, '" /></div>',
                 "</div></td>"
              );
              tpls.hcell.disableFormats = true;
@@ -35201,7 +35204,8 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         tpls.hcell.compile();
 
         if(!tpls.hsplit){
-            tpls.hsplit = new Roo.Template('<div class="x-grid-split {splitId} x-grid-split-{id}" style="{style}" unselectable="on">&#160;</div>');
+            tpls.hsplit = new Roo.Template('<div class="x-grid-split {splitId} x-grid-split-{id}" style="{style} ' +
+                                            this.unselectableCls +  '" ' + this.unselectable +'>&#160;</div>');
             tpls.hsplit.disableFormats = true;
         }
         tpls.hsplit.compile();
@@ -35225,7 +35229,8 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         if(!tpls.cell){
             tpls.cell = new Roo.Template(
                 '<td class="x-grid-col x-grid-td-{id} {cellId} {css}" tabIndex="0">',
-                '<div class="x-grid-col-{id} x-grid-cell-inner"><div class="x-grid-cell-text" unselectable="on" {attr}>{value}</div></div>',
+                '<div class="x-grid-col-{id} x-grid-cell-inner"><div class="x-grid-cell-text ' +
+                    this.unselectableCls +  '" ' + this.unselectable +'" {attr}>{value}</div></div>',
                 "</td>"
             );
             tpls.cell.disableFormats = true;
@@ -36528,6 +36533,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
             this.dd = new Roo.grid.GridDragZone(this.grid, {
                 ddGroup : this.grid.ddGroup || 'GridDD'
             });
+            
         }
 
         /*
@@ -36826,15 +36832,45 @@ Roo.extend(Roo.grid.GridDragZone, Roo.dd.DragZone, {
     getDragData : function(e){
         var t = Roo.lib.Event.getTarget(e);
         var rowIndex = this.view.findRowIndex(t);
+        var sm = this.grid.selModel;
+            
+        //Roo.log(rowIndex);
+        
+        if (sm.getSelectedCell) {
+            // cell selection..
+            if (!sm.getSelectedCell()) {
+                return false;
+            }
+            if (rowIndex != sm.getSelectedCell()[0]) {
+                return false;
+            }
+        
+        }
+        
         if(rowIndex !== false){
-            var sm = this.grid.selModel;
+            
+            // if editorgrid.. 
+            
+            
+            //Roo.log([ sm.getSelectedCell() ? sm.getSelectedCell()[0] : 'NO' , rowIndex ]);
+               
             //if(!sm.isSelected(rowIndex) || e.hasModifier()){
-              //  sm.mouseDown(e, t);
+              //  
             //}
             if (e.hasModifier()){
                 sm.handleMouseDown(e, t); // non modifier buttons are handled by row select.
             }
-            return {grid: this.grid, ddel: this.ddel, rowIndex: rowIndex, selections:sm.getSelections()};
+            
+            Roo.log("getDragData");
+            
+            return {
+                grid: this.grid,
+                ddel: this.ddel,
+                rowIndex: rowIndex,
+                selections:sm.getSelections ? sm.getSelections() : (
+                    sm.getSelectedCell() ? [ grid.ds.getAt(sm.getSelectedCell()[0]) ] : []
+                )
+            };
         }
         return false;
     },
@@ -38399,7 +38435,17 @@ Roo.extend(Roo.grid.EditorGrid, Roo.grid.Grid, {
             this.activeEditor.completeEdit();
         }
         this.activeEditor = null;
+    },
+	
+	 /**
+     * Called to get grid's drag proxy text, by default returns this.ddText.
+     * @return {String}
+     */
+    getDragDropText : function(){
+        var count = this.selModel.getSelectedCell() ? 1 : 0;
+        return String.format(this.ddText, count, count == 1 ? '' : 's');
     }
+	
 });/*
  * Based on:
  * Ext JS Library 1.1.1
