@@ -209,7 +209,7 @@ Roo.onReady(function(){
                             this.activeDom = false;
                         }
                         
-                        if (ri == false) {
+                        if (ri === false) {
                             return;
                         }
                         Roo.get(dom).addClass('x-grid-dd-' + pos);
