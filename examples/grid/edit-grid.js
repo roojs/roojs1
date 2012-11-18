@@ -190,10 +190,14 @@ Roo.onReady(function(){
                 
                   expandRow : function(ri,pos)
                   {
+                        var dom = grid.view.getRow(ri);
+                        if (activeDom = dom) {
+                            return;
+                        }
+                        
                         if (ri == false) {
                             return;
                         }
-                        var dom = grid.view.getRow(ri);
                         dom.style[ pos == 'above' ? 'borderTop' : 'borderBottom'] ='20px solid #FCFCFC;';
                         dom.style.display =  'block';
                            
