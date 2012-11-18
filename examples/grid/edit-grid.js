@@ -154,13 +154,17 @@ Roo.onReady(function(){
                           // if drag point == drop point...
                            var t = Roo.lib.Event.getTarget(e); 
                            var ri = grid.view.findRowIndex(t);
-                           if(ri == data.rowIndex) {
-                              this.expandRow(false);
+                           var dp = this.getDropPoint(e,data);
+                           
+                           if(ri == data.rowIndex ||
+                                (dp == 'above' && ri-1 == data.RowIndex) ||
+                                (dp == 'below' && ri+1 == data.RowIndex) 
+                             ) {
+                               this.expandRow(false);
                           
                                 this.valid = false;
                                 return;
                            }
-                           var dp = this.getDropPoint(e,data);
                            this.expandRow(ri, dp);
                            
                          
