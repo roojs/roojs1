@@ -170,7 +170,7 @@ Roo.onReady(function(){
                            
                          
                           this.valid = 'ok-add'; 
-                          Roo.log("SET VALID TO: " + this.valid)
+                          //Roo.log("SET VALID TO: " + this.valid)
                           //Roo.log([source,e,data]);
                           
                           // Roo.log("dragover");
