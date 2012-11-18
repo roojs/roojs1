@@ -111,7 +111,27 @@ Roo.onReady(function(){
         cm: cm,
         enableColLock:false,
         multiSort : true,
-        enableDragDrop : true
+        enableDragDrop : true,
+        listeners : {
+               enddrag : function(g, dd, targetid , e) {
+                    Roo.log('enddrag');
+               },
+               dragdrop : function(g, dd, targetid , e) {
+                    Roo.log('dragdrop');
+               },
+                dragover : function(g, dd, targetid , e) {
+                    Roo.log('dragover');
+               },
+            dragenter : function(g, dd, targetid , e) {
+                    Roo.log('dragenter');
+               },
+                   dragout : function(g, dd, targetid , e) {
+                    Roo.log('dragout');
+               },
+        
+            
+            
+        }
     });
 
     var layout = Roo.BorderLayout.create({
