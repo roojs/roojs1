@@ -158,8 +158,8 @@ Roo.onReady(function(){
                            
                            Roo.log(JSON.stringify({ dp: dp,  ri: ri, src_ri: data.rowIndex}));
                            if(ri == data.rowIndex ||
-                                (dp == 'above' && ri+1 == data.RowIndex) ||
-                                (dp == 'below' && ri-1 == data.RowIndex) 
+                                (dp == 'above' && ri-1 == data.rowIndex) ||
+                                (dp == 'below' && ri+1 == data.rowIndex) 
                              ) {
                                this.expandRow(false);
                           
