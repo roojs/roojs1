@@ -158,7 +158,9 @@ Roo.onReady(function(){
                                 this.valid = false;
                                 return;
                            }
-                          
+                           var dp = this.getDropPoint(e,data);
+                           this.expandRow(ri, dp);
+                           
                          
                           this.valid = 'ok-add'; 
                           Roo.log("SET VALID TO: " + this.valid)
@@ -186,6 +188,18 @@ Roo.onReady(function(){
                   },
                   ddGroup : 'GridDD',
                 
+                  expandRow : function(ri,pos)
+                  {
+                        if (ri == false) {
+                            return;
+                        }
+                        var dom = grid.view.getRow(ri);
+                        dom.style[ pos == 'above' ? 'borderTop' : 'borderBottom'] ='20px solid #FCFCFC;';
+                        dom.style.display =  'block';
+                           
+                    
+                    
+                  }
                   getDropPoint : function(e, data)
                     {
                         //var tn = n.node;
