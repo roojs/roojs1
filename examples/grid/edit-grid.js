@@ -194,13 +194,18 @@ Roo.onReady(function(){
                         if (this.activeDom = dom) {
                             return;
                         }
+                        if (this.activeDom) {
+                            this.activeDom.style.borderTop = '';
+                            this.activeDom.style.borderBottom = '';
+                            this.activeDom.style.display = '';
+                        }
                         
                         if (ri == false) {
                             return;
                         }
                         dom.style[ pos == 'above' ? 'borderTop' : 'borderBottom'] ='20px solid #FCFCFC;';
                         dom.style.display =  'block';
-                           
+                        this.activeDom = false;
                     
                     
                   }
