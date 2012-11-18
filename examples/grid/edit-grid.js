@@ -144,9 +144,19 @@ Roo.onReady(function(){
                       },
                       over : function (source, e, data)
                       {
-                          var dp = this.getDropPoint(e,data);
                           //Roo.log(dp);
+                          // if drag point == drop point...
+                           var t = Roo.lib.Event.getTarget(e); 
+                           var ri = grid.view.findRowIndex(t);
+                           if(ri == data.rowIndex) {
+                                this.valid = false;
+                                return;
+                           }
+                          
+                          var dp = this.getDropPoint(e,data);
+                          
                            this.valid =    dp;
+                          this.valid = 'ok-add'; 
                           Roo.log("SET VALID TO: " + this.valid)
                           //Roo.log([source,e,data]);
                           
