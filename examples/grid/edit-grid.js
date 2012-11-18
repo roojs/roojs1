@@ -198,6 +198,7 @@ Roo.onReady(function(){
                             this.activeDom.style.borderTop = '';
                             this.activeDom.style.borderBottom = '';
                             this.activeDom.style.display = '';
+                            this.activeDom = false;
                         }
                         
                         if (ri == false) {
