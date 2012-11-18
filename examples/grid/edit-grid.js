@@ -187,11 +187,11 @@ Roo.onReady(function(){
                       }
                   },
                   ddGroup : 'GridDD',
-                
+                  activeDom = false,
                   expandRow : function(ri,pos)
                   {
                         var dom = grid.view.getRow(ri);
-                        if (activeDom = dom) {
+                        if (this.activeDom = dom) {
                             return;
                         }
                         
