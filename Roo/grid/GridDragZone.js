@@ -38,7 +38,8 @@ Roo.extend(Roo.grid.GridDragZone, Roo.dd.DragZone, {
                 Roo.log([ sm.getSelectedCell() ? sm.getSelectedCell()[0] : 'NO' , rowIndex ]);
                 return false;
             }
-            
+            Roo.log([ sm.getSelectedCell() ? sm.getSelectedCell()[0] : 'NO' , rowIndex ]);
+               
             //if(!sm.isSelected(rowIndex) || e.hasModifier()){
               //  
             //}
