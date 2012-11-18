@@ -139,9 +139,10 @@ Roo.onReady(function(){
                            Roo.log(e);
                            Roo.log(data);
                             var dp = this.getDropPoint(e,data);
-                          
-                           this.valid =    dp;
-                           
+                          // at this point should have above or below..
+                            
+                            
+                            
                              
                       },
                       over : function (source, e, data)
