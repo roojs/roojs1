@@ -164,10 +164,39 @@ Roo.onReady(function(){
                           
                       }
                   },
-                  ddGroup : 'GridDD'
-
-                  
+                  ddGroup : 'GridDD',
+                
+                getDropPoint : function(e, n, dd)
+                    {
+                        var tn = n.node;
+                        if(tn.isRoot){
+                            return tn.allowChildren !== false ? "append" : false; // always append for root
+                        }
+                        var dragEl = n.ddel;
+                        var t = Roo.lib.Dom.getY(dragEl), b = t + dragEl.offsetHeight;
+                        var y = Roo.lib.Event.getPageY(e);
+                        //var noAppend = tn.allowChildren === false || tn.isLeaf();
+                        
+                        // we may drop nodes anywhere, as long as allowChildren has not been set to false..
+                        var noAppend = tn.allowChildren === false;
+                        if(this.appendOnly || tn.parentNode.allowChildren === false){
+                            return noAppend ? false : "append";
+                        }
+                        var noBelow = false;
+                        if(!this.allowParentInsert){
+                            noBelow = tn.hasChildNodes() && tn.isExpanded();
+                        }
+                        var q = (b - t) / (noAppend ? 2 : 3);
+                        if(y >= t && y < (t + q)){
+                            return "above";
+                        }else if(!noBelow && (noAppend || y >= b-q && y <= b)){
+                            return "below";
+                        }else{
+                            return "append";
+                        }
+                    },                  
               });
+      
     
     
     var gridHead = grid.getView().getHeaderPanel(true);
