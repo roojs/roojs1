@@ -180,7 +180,7 @@ Roo.onReady(function(){
                         var ri =  Roo.fly(te).findParent("td", 6);
                             
                        
-                        var dragEl = data.ddel;
+                        var dragEl = ri;
                         var t = Roo.lib.Dom.getY(dragEl),
                             b = t + dragEl.offsetHeight;
                         var y = Roo.lib.Event.getPageY(e);
