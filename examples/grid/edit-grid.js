@@ -129,10 +129,7 @@ Roo.onReady(function(){
     grid.render();
 
     
-      grid.dropTarget = Roo.factory({
-                  xtype: 'DropTarget',
-                  xns: Roo.dd,
-                  el: grid.view.el,
+      grid.dropTarget = new Roo.dd.DropTarget(grid.view.el,  { 
                   listeners : {
                       drop : function (source, e, data)
                       {
