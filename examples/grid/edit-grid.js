@@ -144,7 +144,9 @@ Roo.onReady(function(){
                       },
                       over : function (source, e, data)
                       {
-                          this.getDropPoint(e,data)
+                          var dp = this.getDropPoint(e,data);
+                          Roo.log(dp);
+                          
                           Roo.log([source,e,data]);
                           
                           // Roo.log("dragover");
