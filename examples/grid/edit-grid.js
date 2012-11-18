@@ -134,6 +134,12 @@ Roo.onReady(function(){
                       drop : function (source, e, data)
                       {
                            Roo.log("DROP");
+                           var t = Roo.lib.Event.getTarget(e); 
+                           var ri = grid.view.findRowIndex(t);
+                           Roo.log(e);
+                           Roo.log(data);
+                           
+                           
                              
                       },
                       over : function (source, e, data)
