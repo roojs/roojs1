@@ -203,5 +203,15 @@ Roo.extend(Roo.grid.EditorGrid, Roo.grid.Grid, {
             this.activeEditor.completeEdit();
         }
         this.activeEditor = null;
+    },
+	
+	 /**
+     * Called to get grid's drag proxy text, by default returns this.ddText.
+     * @return {String}
+     */
+    getDragDropText : function(){
+        var count = this.selModel.getSelectedCell() ? 1 : 0;
+        return String.format(this.ddText, count, count == 1 ? '' : 's');
     }
+	
 });
