@@ -208,8 +208,7 @@ Roo.onReady(function(){
                             return;
                         }
                         Roo.get(dom).addClass('x-grid-dd-' + pos);
-                        dom.style[ pos == 'above' ? 'borderTop' : 'borderBottom'] ='20px solid #FCFCFC;';
-                        dom.style.display =  'block';
+                         
                         this.activeDom = dom;
                     
                     
