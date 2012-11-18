@@ -35,7 +35,7 @@ Roo.extend(Roo.grid.GridDragZone, Roo.dd.DragZone, {
             
             // if editorgrid.. 
             if (sm.getSelectedCell && (!sm.getSelectedCell() || (sm.getSelectedCell()[0] == rowIndex) ) ) {
-                return;
+                return false;
             }
             
             //if(!sm.isSelected(rowIndex) || e.hasModifier()){
