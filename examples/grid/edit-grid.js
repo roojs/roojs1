@@ -206,10 +206,10 @@ Roo.onReady(function(){
                         }
                         dom.style[ pos == 'above' ? 'borderTop' : 'borderBottom'] ='20px solid #FCFCFC;';
                         dom.style.display =  'block';
-                        this.activeDom = false;
+                        this.activeDom = dom;
                     
                     
-                  }
+                  },
                   getDropPoint : function(e, data)
                     {
                         //var tn = n.node;
