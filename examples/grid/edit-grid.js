@@ -193,6 +193,7 @@ Roo.onReady(function(){
                   expandRow : function(ri,pos)
                   {
                         var dom = grid.view.getRow(ri);
+                        Roo.log(dom);
                         if (this.activeDom == dom) {
                             return;
                         }
