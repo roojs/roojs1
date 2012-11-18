@@ -155,6 +155,8 @@ Roo.onReady(function(){
                            var t = Roo.lib.Event.getTarget(e); 
                            var ri = grid.view.findRowIndex(t);
                            if(ri == data.rowIndex) {
+                              this.expandRow(false);
+                          
                                 this.valid = false;
                                 return;
                            }
