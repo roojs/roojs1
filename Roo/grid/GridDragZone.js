@@ -30,9 +30,22 @@ Roo.extend(Roo.grid.GridDragZone, Roo.dd.DragZone, {
     getDragData : function(e){
         var t = Roo.lib.Event.getTarget(e);
         var rowIndex = this.view.findRowIndex(t);
+        var sm = this.grid.selModel;
+            
         Roo.log(rowIndex);
+        
+        if (sm.getSelectedCell) {
+            // cell selection..
+            if (!sm.getSelectedCell()) {
+                return false;
+            }
+            if (rowIndex != sm.getSelectedCell()[0]) {
+                return false;
+            }
+        
+        }
+        
         if(rowIndex !== false){
-            var sm = this.grid.selModel;
             
             // if editorgrid.. 
             if (sm.getSelectedCell && (!sm.getSelectedCell() || (sm.getSelectedCell()[0] == rowIndex) ) ) {
