@@ -194,7 +194,7 @@ Roo.onReady(function(){
                         if(y >= b-q && y <= b){
                             return "below";
                         }
-                        Roo.log([y, t, q, b]);
+                        Roo.log([ pos: y, dragtop : t, mid : q, drabgot: b]);
                         
                         
                         return false;
