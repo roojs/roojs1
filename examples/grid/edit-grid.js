@@ -144,7 +144,7 @@ Roo.onReady(function(){
                             grid.ds.remove(data.selections[0]);
                             grid.ds.insert(ri + (dp == 'below' ? 1 : 0) , data.selections);
                             grid.selModel.select(ri + (dp == 'below' ? 1 : 0), os[1])
-                            
+                            this.expandRow(false);
                             
                              
                       },
