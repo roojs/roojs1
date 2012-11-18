@@ -33,6 +33,7 @@ Roo.extend(Roo.grid.GridDragZone, Roo.dd.DragZone, {
         if(rowIndex !== false){
             var sm = this.grid.selModel;
             
+            // if editorgrid.. 
             if (sm.getSelectedCell && !sm.getSelectedCell()) {
                 sm.mouseDown(e, t);
             }
