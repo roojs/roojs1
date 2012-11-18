@@ -25,6 +25,7 @@ Roo.grid.GridView = function(config){
 
 Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
 
+    unselectable :  'unselectable="on"',
     
     rowClass : "x-grid-row",
 
@@ -1481,6 +1482,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
             this.dd = new Roo.grid.GridDragZone(this.grid, {
                 ddGroup : this.grid.ddGroup || 'GridDD'
             });
+            
         }
 
         /*
