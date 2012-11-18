@@ -144,6 +144,7 @@ Roo.onReady(function(){
                       },
                       over : function (source, e, data)
                       {
+                          this.getDropPoint(e,data)
                           Roo.log([source,e,data]);
                           
                           // Roo.log("dragover");
@@ -168,26 +169,21 @@ Roo.onReady(function(){
                   },
                   ddGroup : 'GridDD',
                 
-                getDropPoint : function(e, n, dd)
+                  getDropPoint : function(e, data)
                     {
                         //var tn = n.node;
+                       // data is from griddragzone
                        
-                        var dragEl = n.ddel;
+                        var dragEl = data.ddel;
                         var t = Roo.lib.Dom.getY(dragEl),
                             b = t + dragEl.offsetHeight;
                         var y = Roo.lib.Event.getPageY(e);
                         //var noAppend = tn.allowChildren === false || tn.isLeaf();
                         
                         // we may drop nodes anywhere, as long as allowChildren has not been set to false..
-                        var noAppend = tn.allowChildren === false;
-                        if(this.appendOnly || tn.parentNode.allowChildren === false){
-                            return noAppend ? false : "append";
-                        }
-                        var noBelow = false;
-                        if(!this.allowParentInsert){
-                            noBelow = tn.hasChildNodes() && tn.isExpanded();
-                        }
-                        var q = (b - t) / (noAppend ? 2 : 3);
+                        
+                          
+                        var q = (b - t) / 2);
                         if(y >= t && y < (t + q)){
                             return "above";
                         }else if(!noBelow && (noAppend || y >= b-q && y <= b)){
