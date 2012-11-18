@@ -146,7 +146,7 @@ Roo.onReady(function(){
                       {
                           var dp = this.getDropPoint(e,data);
                           Roo.log(dp);
-                           this.valid = 'ok-' + dp;
+                           this.valid = dp;
                           
                           //Roo.log([source,e,data]);
                           
