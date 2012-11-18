@@ -146,7 +146,7 @@ Roo.onReady(function(){
                   ddGroup : 'GridDD'
 
                   
-              }
+              })
     });
 
     var layout = Roo.BorderLayout.create({
