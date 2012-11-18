@@ -166,7 +166,7 @@ Roo.onReady(function(){
                           var s = _this.grid.getSelectionModel().getSelections();
                            */  
                           //if (!isFromGroup && isToGroup) {
-                          this.valid = 'ok-add';
+                          //this.valid = 'ok-add';
                           
                       }
                   },
