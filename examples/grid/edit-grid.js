@@ -133,11 +133,11 @@ Roo.onReady(function(){
                   listeners : {
                       drop : function (source, e, data)
                       {
-                           Roo.log("DROP");
+                           //Roo.log("DROP");
                            var t = Roo.lib.Event.getTarget(e); 
                            var ri = grid.view.findRowIndex(t);
-                           Roo.log(e);
-                           Roo.log(data);
+                           //Roo.log(e);
+                           //Roo.log(data);
                             var dp = this.getDropPoint(e,data);
                           // at this point should have above or below..
                             var os = grid.selModel.getSelectedCell()
@@ -156,7 +156,7 @@ Roo.onReady(function(){
                            var ri = grid.view.findRowIndex(t);
                            var dp = this.getDropPoint(e,data);
                            
-                           Roo.log(JSON.stringify({ dp: dp,  ri: ri, src_ri: data.rowIndex}));
+                           //Roo.log(JSON.stringify({ dp: dp,  ri: ri, src_ri: data.rowIndex}));
                            if(ri == data.rowIndex ||
                                 (dp == 'above' && ri-1 == data.rowIndex) ||
                                 (dp == 'below' && ri+1 == data.rowIndex) 
