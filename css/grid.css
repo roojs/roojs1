@@ -528,3 +528,15 @@ select.x-grid-editor{
     height:16px;
     width:16px;
 }
+
+
+
+
+x-grid-dd-above td {
+    border-top: 20px solid #fcfcfc;
+    
+}
+x-grid-dd-above td {
+    border-below: 20px solid #fcfcfc;
+    
+}
