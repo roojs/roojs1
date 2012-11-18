@@ -32,7 +32,7 @@ Roo.extend(Roo.grid.GridDragZone, Roo.dd.DragZone, {
         var rowIndex = this.view.findRowIndex(t);
         var sm = this.grid.selModel;
             
-        Roo.log(rowIndex);
+        //Roo.log(rowIndex);
         
         if (sm.getSelectedCell) {
             // cell selection..
