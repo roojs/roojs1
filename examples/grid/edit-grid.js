@@ -109,7 +109,8 @@ Roo.onReady(function(){
         ds: ds,
         cm: cm,
         enableColLock:false,
-        multiSort : true
+        multiSort : true,
+        enableDragDrop : true
     });
 
     var layout = Roo.BorderLayout.create({
