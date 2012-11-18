@@ -32,8 +32,13 @@ Roo.extend(Roo.grid.GridDragZone, Roo.dd.DragZone, {
         var rowIndex = this.view.findRowIndex(t);
         if(rowIndex !== false){
             var sm = this.grid.selModel;
+            
+            if (sm.getSelectedCell && !sm.getSelectedCell()) {
+                sm.mouseDown(e, t);
+            }
+            
             //if(!sm.isSelected(rowIndex) || e.hasModifier()){
-              //  sm.mouseDown(e, t);
+              //  
             //}
             if (e.hasModifier()){
                 sm.handleMouseDown(e, t); // non modifier buttons are handled by row select.
