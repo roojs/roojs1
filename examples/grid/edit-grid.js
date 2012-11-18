@@ -146,7 +146,7 @@ Roo.onReady(function(){
                       {
                           var dp = this.getDropPoint(e,data);
                           //Roo.log(dp);
-                           this.valid =   ' x-tree-drag-' + dp;
+                           this.valid =    dp;
                           Roo.log("SET VALID TO: " + this.valid)
                           //Roo.log([source,e,data]);
                           
