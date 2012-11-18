@@ -113,9 +113,9 @@ Roo.onReady(function(){
         multiSort : true,
         enableDragDrop : true,
        
-    });= 
+    });
     
-     grid.dropTarget : Roo.factory({
+     grid.dropTarget = Roo.factory({
                   xtype: 'DropTarget',
                   xns: Roo.dd,
                   el: grid.view.el,
@@ -150,7 +150,7 @@ Roo.onReady(function(){
                   ddGroup : 'GridDD'
 
                   
-              })
+              });
 
     var layout = Roo.BorderLayout.create({
         center: {
