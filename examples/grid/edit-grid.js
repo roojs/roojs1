@@ -112,9 +112,13 @@ Roo.onReady(function(){
         enableColLock:false,
         multiSort : true,
         enableDragDrop : true,
-        dropTarget : Roo.factory({
+       
+    });= 
+    
+     grid.dropTarget : Roo.factory({
                   xtype: 'DropTarget',
                   xns: Roo.dd,
+                  el: grid.view.el,
                   listeners : {
                       drop : function (source, e, data)
                       {
@@ -147,7 +151,6 @@ Roo.onReady(function(){
 
                   
               })
-    });
 
     var layout = Roo.BorderLayout.create({
         center: {
