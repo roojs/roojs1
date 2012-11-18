@@ -115,7 +115,21 @@ Roo.onReady(function(){
        
     });
     
-     grid.dropTarget = Roo.factory({
+   
+
+    var layout = Roo.BorderLayout.create({
+        center: {
+            margins:{left:3,top:3,right:3,bottom:3},
+            panels: [new Roo.GridPanel(grid)]
+        }
+    }, 'grid-panel');
+
+
+    // render it
+    grid.render();
+
+    
+      grid.dropTarget = Roo.factory({
                   xtype: 'DropTarget',
                   xns: Roo.dd,
                   el: grid.view.el,
@@ -151,18 +165,7 @@ Roo.onReady(function(){
 
                   
               });
-
-    var layout = Roo.BorderLayout.create({
-        center: {
-            margins:{left:3,top:3,right:3,bottom:3},
-            panels: [new Roo.GridPanel(grid)]
-        }
-    }, 'grid-panel');
-
-
-    // render it
-    grid.render();
-
+    
     
     var gridHead = grid.getView().getHeaderPanel(true);
     var tb = new Roo.Toolbar(gridHead, [{
