@@ -150,12 +150,12 @@ Roo.onReady(function(){
                       },
                       over : function (source, e, data)
                       {
-                          //Roo.log(dp);
+                          //
                           // if drag point == drop point...
                            var t = Roo.lib.Event.getTarget(e); 
                            var ri = grid.view.findRowIndex(t);
                            var dp = this.getDropPoint(e,data);
-                           
+                           Roo.log(dp);
                            //Roo.log(JSON.stringify({ dp: dp,  ri: ri, src_ri: data.rowIndex}));
                            if(ri == data.rowIndex ||
                                 (dp == 'above' && ri-1 == data.rowIndex) ||
