@@ -140,9 +140,10 @@ Roo.onReady(function(){
                            Roo.log(data);
                             var dp = this.getDropPoint(e,data);
                           // at this point should have above or below..
+                            var os = grid.selModel.getSelectedCell()
                             grid.ds.remove(data.selections[0]);
                             grid.ds.insert(ri + (dp == 'below' ? 1 : 0) , data.selections);
-                            
+                            grid.selModel.select(ri + (dp == 'below' ? 1 : 0), os[1])
                             
                             
                              
