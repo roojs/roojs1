@@ -176,6 +176,10 @@ Roo.onReady(function(){
                         //var tn = n.node;
                        // data is from griddragzone
                        
+                        var te = Roo.lib.Event.getTarget(e); 
+                        var ri =  Roo.fly(te).findParent("td", 6);
+                            
+                       
                         var dragEl = data.ddel;
                         var t = Roo.lib.Dom.getY(dragEl),
                             b = t + dragEl.offsetHeight;
