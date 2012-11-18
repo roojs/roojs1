@@ -32,9 +32,10 @@ Roo.onReady(function(){
            header: "Common Name",
            dataIndex: 'common',
            width: 220,
+           /*
            editor: new Ed(new fm.TextField({
                allowBlank: false
-           }))
+           })) */
         },{
            header: "Light",
            dataIndex: 'light',
