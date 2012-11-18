@@ -38,6 +38,9 @@ Roo.extend(Roo.grid.GridDragZone, Roo.dd.DragZone, {
             if (e.hasModifier()){
                 sm.handleMouseDown(e, t); // non modifier buttons are handled by row select.
             }
+            
+            Roo.log("getDragData");
+            
             return {
                 grid: this.grid,
                 ddel: this.ddel,
