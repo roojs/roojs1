@@ -34460,7 +34460,7 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
     */
     loadMask : false,
     /**
-    * @cfg {Roo.dd.DropTarget} dragTarget An {@link Roo.dd.DragTarget} config
+    * @cfg {Roo.dd.DropTarget} dropTarget An {@link Roo.dd.DropTarget} config
     */
     dropTarget: false,
     
@@ -34518,7 +34518,7 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
         }
         if (this.dropTarget && this.dropTarget.xtype) {
             delete this.dropTarget.xtype;
-            this.dropTarget =  new Ext.dd.DropTarget(this.getView().mainBody, this.dropTarget);
+            this.dropTarget =  new Roo.dd.DropTarget(this.getView().mainBody, this.dropTarget);
         }
         
         
