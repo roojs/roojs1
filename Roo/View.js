@@ -345,6 +345,9 @@ Roo.extend(Roo.View, Roo.util.Observable, {
             store.on("remove", this.onRemove, this);
             store.on("update", this.onUpdate, this);
             store.on("clear", this.refresh, this);
+            store.on("beforeload", this.mask);
+            store.on("load", this.unmask);
+            store.on("loadexception", this.unmask);
         }
         
         if(store){
