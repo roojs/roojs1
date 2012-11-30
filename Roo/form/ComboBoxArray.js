@@ -366,7 +366,7 @@ Roo.extend(Roo.form.ComboBoxArray.Item, Roo.BoxComponent, {
     
     defaultAutoCreate : {
         tag: 'div',
-        cls: 'x-cbarray-item',
+        cls: 'x-cbarray-item-t',
         cn : [ 
             { tag: 'div' },
             {
