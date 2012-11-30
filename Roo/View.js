@@ -205,7 +205,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     },
 
     /**
-     * Refreshes the view.
+     * Refreshes the view. - called by datachanged on the store. - do not call directly.
      */
     refresh : function(){
         var t = this.tpl;
