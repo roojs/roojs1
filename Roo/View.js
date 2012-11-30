@@ -342,9 +342,9 @@ Roo.extend(Roo.View, Roo.util.Observable, {
             this.store.un("remove", this.onRemove);
             this.store.un("update", this.onUpdate);
             this.store.un("clear", this.refresh);
-            this.store.un("beforeload", this.beforeLoad);
-            this.store.un("load", this.afterLoad);
-            this.store.un("loadexception", this.afterLoad);
+            this.store.un("beforeload", this.onBeforeLoad);
+            this.store.un("load", this.onLoad);
+            this.store.un("loadexception", this.onLoad);
         }
         if(store){
           
@@ -353,7 +353,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
             store.on("remove", this.onRemove, this);
             store.on("update", this.onUpdate, this);
             store.on("clear", this.refresh, this);
-            store.on("beforeload", this.beforeLoad, this);
+            store.on("beforeload", this.onBeforeLoad, this);
             store.on("load", this.afterLoad, this);
             store.on("loadexception", this.afterLoad, this);
         }
