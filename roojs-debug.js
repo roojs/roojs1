@@ -48259,6 +48259,16 @@ Roo.ContentPanel = function(el, config, content){
     }else{
         this.resizeEl = this.el;
     }
+    // handle view.xtype
+    
+    if (this.view && typeof(this.view.xtype) != 'undefined') {
+        this.view.el = this.el.appendChild(document.createElement("div"));
+        this.view = Roo.factory(this.view);
+        this.view.render && this.view.render(false, ''); // render blank..
+    }
+    
+    
+    
     this.addEvents({
         /**
          * @event activate
