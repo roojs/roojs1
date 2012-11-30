@@ -368,6 +368,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      */
     onBeforeLoad : function()
     {
+        this.el.update("");
         this.el.mask(this.mask ? this.mask : "Loading" ); 
     },
     onLoad : function ()
