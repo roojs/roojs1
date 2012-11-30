@@ -24272,6 +24272,11 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      * @cfg {String} emptyText The empty text to show when nothing is loaded.
      */
     emptyText : "",
+    
+    /**
+     * @cfg {String} text to display on mask (default Loading)
+     */
+    mask : false,
     /**
      * @cfg {Boolean} multiSelect Allow multiple selection
      */
@@ -24295,7 +24300,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     },
 
     /**
-     * Refreshes the view.
+     * Refreshes the view. - called by datachanged on the store. - do not call directly.
      */
     refresh : function(){
         var t = this.tpl;
@@ -24427,6 +24432,9 @@ Roo.extend(Roo.View, Roo.util.Observable, {
             this.store.un("remove", this.onRemove);
             this.store.un("update", this.onUpdate);
             this.store.un("clear", this.refresh);
+            this.store.un("beforeload", this.onBeforeLoad);
+            this.store.un("load", this.onLoad);
+            this.store.un("loadexception", this.onLoad);
         }
         if(store){
           
@@ -24435,12 +24443,29 @@ Roo.extend(Roo.View, Roo.util.Observable, {
             store.on("remove", this.onRemove, this);
             store.on("update", this.onUpdate, this);
             store.on("clear", this.refresh, this);
+            store.on("beforeload", this.onBeforeLoad, this);
+            store.on("load", this.onLoad, this);
+            store.on("loadexception", this.onLoad, this);
         }
         
         if(store){
             this.refresh();
         }
     },
+    /**
+     * onbeforeLoad - masks the loading area.
+     *
+     */
+    onBeforeLoad : function()
+    {
+        this.el.update("");
+        this.el.mask(this.mask ? this.mask : "Loading" ); 
+    },
+    onLoad : function ()
+    {
+        this.el.unmask();
+    },
+    
 
     /**
      * Returns the template node the passed child belongs to or null if it doesn't belong to one.
