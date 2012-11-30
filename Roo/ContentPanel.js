@@ -100,6 +100,7 @@ Roo.ContentPanel = function(el, config, content){
     
     if (this.view && typeof(this.view.xtype) != 'undefined') {
         this.view = Roo.factory(this.view);
+        this.view.render && this.view.render(false, ''); // render blank..
     }
     
     
