@@ -182,6 +182,11 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      * @cfg {String} emptyText The empty text to show when nothing is loaded.
      */
     emptyText : "",
+    
+    /**
+     * @cfg {String} text to display on mask (default Loading)
+     */
+    mask : false,
     /**
      * @cfg {Boolean} multiSelect Allow multiple selection
      */
@@ -358,12 +363,12 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         }
     },
     /**
-     * mask - 
+     * beforeLoad
      *
      */
-    mask : function()
+    beforeLoad : function()
     {
-        this.el.mask("Loading"); // configuable
+        this.el.mask(this.mask ? this.mask : "Loading" ); 
     }
 
     /**
