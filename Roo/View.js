@@ -337,6 +337,9 @@ Roo.extend(Roo.View, Roo.util.Observable, {
             this.store.un("remove", this.onRemove);
             this.store.un("update", this.onUpdate);
             this.store.un("clear", this.refresh);
+            this.store.un("beforeload", this.mask);
+            this.store.un("load", this.unmask);
+            this.store.un("loadexception", this.unmask);
         }
         if(store){
           
@@ -354,6 +357,10 @@ Roo.extend(Roo.View, Roo.util.Observable, {
             this.refresh();
         }
     },
+    /**
+     * mask - 
+     *
+     */
 
     /**
      * Returns the template node the passed child belongs to or null if it doesn't belong to one.
