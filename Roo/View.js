@@ -366,10 +366,15 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      * beforeLoad
      *
      */
-    beforeLoad : function()
+    onBeforeLoad : function()
     {
         this.el.mask(this.mask ? this.mask : "Loading" ); 
-    }
+    },
+    onLoad : function ()
+    {
+        this.el.unmask();
+    },
+    
 
     /**
      * Returns the template node the passed child belongs to or null if it doesn't belong to one.
