@@ -363,7 +363,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         }
     },
     /**
-     * beforeLoad
+     * onbeforeLoad - masks the loading area.
      *
      */
     onBeforeLoad : function()
