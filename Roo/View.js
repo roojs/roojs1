@@ -354,8 +354,8 @@ Roo.extend(Roo.View, Roo.util.Observable, {
             store.on("update", this.onUpdate, this);
             store.on("clear", this.refresh, this);
             store.on("beforeload", this.onBeforeLoad, this);
-            store.on("load", this.afterLoad, this);
-            store.on("loadexception", this.afterLoad, this);
+            store.on("load", this.onLoad, this);
+            store.on("loadexception", this.onLoad, this);
         }
         
         if(store){
