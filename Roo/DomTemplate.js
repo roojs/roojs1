@@ -38,9 +38,9 @@
 Roo.DomTemplate = function()
 {
      Roo.DomTemplate.superclass.constructor.apply(this, arguments);
-    if (this.html) {
+     if (this.html) {
         this.compile();
-    }
+     }
 };
 
 
