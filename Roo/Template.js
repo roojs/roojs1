@@ -131,7 +131,7 @@ Roo.Template.prototype = {
                 _t.compile();
              },
             failure : function(response) {
-                Roo.log("Template failed to load from " + url);
+                Roo.log("Template failed to load from " + _t.url);
                 _t.loading = false;
             }
         });
