@@ -4653,7 +4653,7 @@ Roo.Template.prototype = {
                 _t.compile();
              },
             failure : function(response) {
-                Roo.log("Template failed to load from " + url);
+                Roo.log("Template failed to load from " + _t.url);
                 _t.loading = false;
             }
         });
@@ -12188,9 +12188,9 @@ Roo.UpdateManager.BasicRenderer.prototype = {
 Roo.DomTemplate = function()
 {
      Roo.DomTemplate.superclass.constructor.apply(this, arguments);
-    if (this.html) {
+     if (this.html) {
         this.compile();
-    }
+     }
 };
 
 
