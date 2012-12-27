@@ -124,7 +124,7 @@ Roo.data.Store = function(config){
          */
         beforeload : true,
         /**
-         * @event load
+         * @event beforeloadadd
          * Fires after a new set of Records has been loaded.
          * @param {Store} this
          * @param {Roo.data.Record[]} records The Records that were loaded
