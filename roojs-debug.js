@@ -19811,6 +19811,15 @@ Roo.data.Store = function(config){
          * @param {Roo.data.Record[]} records The Records that were loaded
          * @param {Object} options The loading options that were specified (see {@link #load} for details)
          */
+        beforeloadadd : true,
+        /**
+         * @event load
+         * Fires after a new set of Records has been loaded, before they are added to the store.
+         * @param {Store} this
+         * @param {Roo.data.Record[]} records The Records that were loaded
+         * @param {Object} options The loading options that were specified (see {@link #load} for details)
+         * @params {Object} return from reader
+         */
         load : true,
         /**
          * @event loadexception
@@ -20068,6 +20077,9 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             return;
         }
         var r = o.records, t = o.totalRecords || r.length;
+        
+        this.fireEvent("beforeloadadd", this, r, options, o);
+        
         if(!options || options.add !== true){
             if(this.pruneModifiedRecords){
                 this.modified = [];
@@ -21211,7 +21223,7 @@ Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
          * After any data loads, the raw JSON data is available for further custom processing.
          * @type Object
          */
-        this.jsonData = o;
+        this.o.read = o;
         var s = this.meta, Record = this.recordType,
             f = Record.prototype.fields, fi = f.items, fl = f.length;
 
