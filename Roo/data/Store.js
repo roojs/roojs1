@@ -387,6 +387,9 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             return;
         }
         var r = o.records, t = o.totalRecords || r.length;
+        
+        this.fireEvent("beforeadd", this, r, options, o);
+        
         if(!options || options.add !== true){
             if(this.pruneModifiedRecords){
                 this.modified = [];
