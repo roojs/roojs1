@@ -137,6 +137,7 @@ Roo.data.Store = function(config){
          * @param {Store} this
          * @param {Roo.data.Record[]} records The Records that were loaded
          * @param {Object} options The loading options that were specified (see {@link #load} for details)
+         * @params {Object} return from reader
          */
         load : true,
         /**
