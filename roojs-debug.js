@@ -19805,7 +19805,7 @@ Roo.data.Store = function(config){
          */
         beforeload : true,
         /**
-         * @event load
+         * @event beforeloadadd
          * Fires after a new set of Records has been loaded.
          * @param {Store} this
          * @param {Roo.data.Record[]} records The Records that were loaded
@@ -21223,7 +21223,7 @@ Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
          * After any data loads, the raw JSON data is available for further custom processing.
          * @type Object
          */
-        this.o.read = o;
+        this.o = o;
         var s = this.meta, Record = this.recordType,
             f = Record.prototype.fields, fi = f.items, fl = f.length;
 
