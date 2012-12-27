@@ -202,6 +202,7 @@ Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
 	        records[i] = record;
 	    }
 	    return {
+            jsonData : o,
 	        success : success,
 	        records : records,
 	        totalRecords : totalRecords
