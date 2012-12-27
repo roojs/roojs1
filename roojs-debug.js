@@ -21274,6 +21274,7 @@ Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
 	        records[i] = record;
 	    }
 	    return {
+            raw : o,
 	        success : success,
 	        records : records,
 	        totalRecords : totalRecords
