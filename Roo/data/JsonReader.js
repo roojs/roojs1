@@ -139,7 +139,7 @@ Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
          * After any data loads, the raw JSON data is available for further custom processing.
          * @type Object
          */
-        this.o.read = o;
+        this.o = o;
         var s = this.meta, Record = this.recordType,
             f = Record.prototype.fields, fi = f.items, fl = f.length;
 
