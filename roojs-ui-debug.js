@@ -5057,7 +5057,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
     loadRecords : function(o, options, success){
         if(!o || success === false){
             if(success !== false){
-                this.fireEvent("load", this, [], options);
+                this.fireEvent("load", this, [], options, o);
             }
             if(options.callback){
                 options.callback.call(options.scope || this, [], options, false);
@@ -5095,7 +5095,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             this.totalLength = Math.max(t, this.data.length+r.length);
             this.add(r);
         }
-        this.fireEvent("load", this, r, options);
+        this.fireEvent("load", this, r, options, o);
         if(options.callback){
             options.callback.call(options.scope || this, r, options, true);
         }
