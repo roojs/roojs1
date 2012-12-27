@@ -130,6 +130,14 @@ Roo.data.Store = function(config){
          * @param {Roo.data.Record[]} records The Records that were loaded
          * @param {Object} options The loading options that were specified (see {@link #load} for details)
          */
+        beforeloadadd : true,
+        /**
+         * @event load
+         * Fires after a new set of Records has been loaded, before they are added to the store.
+         * @param {Store} this
+         * @param {Roo.data.Record[]} records The Records that were loaded
+         * @param {Object} options The loading options that were specified (see {@link #load} for details)
+         */
         load : true,
         /**
          * @event loadexception
