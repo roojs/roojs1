@@ -41253,7 +41253,11 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 clean.push(p);
                 return true;
             });
-            node.setAttribute(clean.join(':'));
+            if (clean.length) { 
+                node.setAttribute(n, clean.join(':'));
+            } else {
+                node.removeAttribute(n);
+            }
             
         }
         
