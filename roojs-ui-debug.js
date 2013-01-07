@@ -26240,9 +26240,10 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 node.removeAttribute(n);
                 return;
             }
-            
+            var cwhite = typeof(this.cwhite) == 'undefined' ? Roo.form.HtmlEditor.cwhite : this.cwhite;
             
             var parts = v.split(/;/);
+            var clean = [];
             Roo.each(parts, function(p) {
                 p = p.replace(/\s+/g,'');
                 if (!p.length) {
@@ -26251,14 +26252,15 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 var l = p.split(':').shift().replace(/\s+/g,'');
                 
                 // only allow 'c whitelisted system attributes'
-                if (Roo.form.HtmlEditor.cwhite.indexOf(l) < 0) {
+                if ( cwhite.indexOf(l) < 0) {
                     Roo.log('(REMOVE)' + node.tagName +'.' + n + ':'+l + '=' + v);
-                    node.removeAttribute(n);
-                    return false;
+                    //node.removeAttribute(n);
+                    return true;
                 }
+                clean.push(p);
                 return true;
             });
-            
+            node.setAttribute(clean.join(':'));
             
         }
         
