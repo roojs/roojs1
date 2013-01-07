@@ -1159,7 +1159,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                     return true;
                 }
                 var l = p.split(':').shift().replace(/\s+/g,'');
-                
+                Roo.log(l);
                 // only allow 'c whitelisted system attributes'
                 if ( cwhite.indexOf(l) < 0) {
                     Roo.log('(REMOVE)' + node.tagName +'.' + n + ':'+l + '=' + v);
