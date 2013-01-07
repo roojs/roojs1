@@ -1149,7 +1149,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 node.removeAttribute(n);
                 return;
             }
-            
+            var cwhite = typeof(this.cwhite) == 'undefined' ? Roo.form.HtmlEditor.cwhite : cwhite;
             
             var parts = v.split(/;/);
             var clean = [];
