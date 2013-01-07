@@ -41166,6 +41166,8 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     
     cleanUpChild : function (node)
     {
+        var ed = this;
+        
         //console.log(node);
         if (node.nodeName == "#text") {
             // clean up silly Windows -- stuff?
@@ -41233,7 +41235,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 node.removeAttribute(n);
                 return;
             }
-            var cwhite = typeof(this.cwhite) == 'undefined' ? Roo.form.HtmlEditor.cwhite : this.cwhite;
+            var cwhite = typeof(ed.cwhite) == 'undefined' ? Roo.form.HtmlEditor.cwhite : ed.cwhite;
             
             var parts = v.split(/;/);
             var clean = [];
