@@ -1161,7 +1161,8 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                     return true;
                 }
                 var l = p.split(':').shift().replace(/\s+/g,'');
-                Roo.log(l);
+                l = l.replace(/^\s+/g,'').replace(/\s+$/g,'');
+                
                 // only allow 'c whitelisted system attributes'
                 if ( cwhite.indexOf(l) < 0) {
                     Roo.log('(REMOVE CSS)' + node.tagName +'.' + n + ':'+l + '=' + v);
