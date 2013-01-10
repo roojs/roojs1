@@ -21348,7 +21348,10 @@ side          Add an error icon to the right of the field with a popup on hover
         if(!this.el){
             var cfg = this.getAutoCreate();
             if(!cfg.name){
-                cfg.name = this.name || this.id;
+                cfg.name = typeof(this.name) == 'undefined' ? this.id : this.name;
+            }
+            if (!cfg.name.length) {
+                delete cfg.name;
             }
             if(this.inputType){
                 cfg.type = this.inputType;
