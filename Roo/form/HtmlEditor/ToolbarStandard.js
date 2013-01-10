@@ -188,6 +188,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                     data : this.formats // from states.js
                 }),
                 blockFocus : true,
+                name : '',
                 //autoCreate : {tag: "div",  size: "20"},
                 displayField:'tag',
                 typeAhead: false,
