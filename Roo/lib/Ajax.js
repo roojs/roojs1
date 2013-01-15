@@ -228,6 +228,7 @@
             var oConn = this;
 
             if (callback && callback.timeout) {
+                
                 this.timeout[o.tId] = window.setTimeout(function() {
                     oConn.abort(o, callback, true);
                 }, callback.timeout);
