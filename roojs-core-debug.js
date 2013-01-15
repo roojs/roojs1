@@ -11382,7 +11382,7 @@ Roo.extend(Roo.data.Connection, Roo.util.Observable, {
                 failure: this.handleFailure,
                 scope: this,
                 argument: {options: o},
-                timeout : this.timeout
+                timeout : o.timeout || this.timeout
             };
 
             var method = o.method||this.method||(p ? "POST" : "GET");
@@ -11541,87 +11541,7 @@ Roo.extend(Roo.data.Connection, Roo.util.Observable, {
         }
     }
 });
-
-/**
- * @class Roo.Ajax
- * @extends Roo.data.Connection
- * Global Ajax request class.
- *
- * @singleton
- */
-Roo.Ajax = new Roo.data.Connection({
-    // fix up the docs
-   /**
-     * @cfg {String} url @hide
-     */
-    /**
-     * @cfg {Object} extraParams @hide
-     */
-    /**
-     * @cfg {Object} defaultHeaders @hide
-     */
-    /**
-     * @cfg {String} method (Optional) @hide
-     */
-    /**
-     * @cfg {Number} timeout (Optional) @hide
-     */
-    /**
-     * @cfg {Boolean} autoAbort (Optional) @hide
-     */
-
-    /**
-     * @cfg {Boolean} disableCaching (Optional) @hide
-     */
-
-    /**
-     * @property  disableCaching
-     * True to add a unique cache-buster param to GET requests. (defaults to true)
-     * @type Boolean
-     */
-    /**
-     * @property  url
-     * The default URL to be used for requests to the server. (defaults to undefined)
-     * @type String
-     */
-    /**
-     * @property  extraParams
-     * An object containing properties which are used as
-     * extra parameters to each request made by this object. (defaults to undefined)
-     * @type Object
-     */
-    /**
-     * @property  defaultHeaders
-     * An object containing request headers which are added to each request made by this object. (defaults to undefined)
-     * @type Object
-     */
-    /**
-     * @property  method
-     * The default HTTP method to be used for requests. (defaults to undefined; if not set but parms are present will use POST, otherwise GET)
-     * @type String
-     */
-    /**
-     * @property  timeout
-     * The timeout in milliseconds to be used for requests. (defaults to 30000)
-     * @type Number
-     */
-
-    /**
-     * @property  autoAbort
-     * Whether a new request should abort any pending requests. (defaults to false)
-     * @type Boolean
-     */
-    autoAbort : false,
-
-    /**
-     * Serialize the passed form into a url encoded string
-     * @param {String/HTMLElement} form
-     * @return {String}
-     */
-    serializeForm : function(form){
-        return Roo.lib.Ajax.serializeForm(form);
-    }
-});/*
+/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -11855,7 +11775,8 @@ um.update({<br/>
      */
     update : function(url, params, callback, discardUrl){
         if(this.fireEvent("beforeupdate", this.el, url, params) !== false){
-            var method = this.method, cfg;
+            var method = this.method,
+                cfg;
             if(typeof url == "object"){ // must be config object
                 cfg = url;
                 url = cfg.url;
@@ -11893,7 +11814,7 @@ um.update({<br/>
                 timeout: (this.timeout*1000),
                 argument: {"url": url, "form": null, "callback": callback, "params": params}
             });
-
+            Roo.log("updated manager called with timeout of " + o.timeout);
             this.transaction = Roo.Ajax.request(o);
         }
     },
