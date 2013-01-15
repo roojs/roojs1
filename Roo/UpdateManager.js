@@ -189,7 +189,8 @@ um.update({<br/>
      */
     update : function(url, params, callback, discardUrl){
         if(this.fireEvent("beforeupdate", this.el, url, params) !== false){
-            var method = this.method, cfg;
+            var method = this.method,
+                cfg;
             if(typeof url == "object"){ // must be config object
                 cfg = url;
                 url = cfg.url;
@@ -227,7 +228,7 @@ um.update({<br/>
                 timeout: (this.timeout*1000),
                 argument: {"url": url, "form": null, "callback": callback, "params": params}
             });
-
+            Roo.log("updated manager called with timeout of " + o.timeout);
             this.transaction = Roo.Ajax.request(o);
         }
     },
