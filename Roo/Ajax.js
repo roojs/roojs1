@@ -24,20 +24,17 @@
  * @cfg {Boolean} autoAbort (Optional) Whether a new request should abort any pending requests. (defaults to false)
  * @cfg {Boolean} disableCaching (Optional)   True to add a unique cache-buster param to GET requests. (defaults to true)
  */
-
-/**
- * @class Roo.Ajax
- * @extends Roo.data.Connection
- * Global Ajax request class.
- *
- * @singleton
- */
 Roo.Ajax = new Roo.data.Connection({
-    
+    // fix up the docs
+    /**
+     * @scope Roo.Ajax
+     * @type {Boolear} 
+     */
     autoAbort : false,
 
     /**
      * Serialize the passed form into a url encoded string
+     * @scope Roo.Ajax
      * @param {String/HTMLElement} form
      * @return {String}
      */
