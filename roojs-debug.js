@@ -2710,6 +2710,7 @@ Roo.lib.Event = function() {
             var oConn = this;
 
             if (callback && callback.timeout) {
+                
                 this.timeout[o.tId] = window.setTimeout(function() {
                     oConn.abort(o, callback, true);
                 }, callback.timeout);
@@ -12142,7 +12143,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
      *  x.t:(test,tesT) 
      * 
      */
-    re : /(\{|\%7B)([\w-\.]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?(\}|\%7D)/g,
+    re : /(\{|\%7B)([\w-\.]+)(?:\:([\w\.]*)(?:\(([^)]*?)?\))?)?(\}|\%7D)/g,
     //re : /\{([\w-\.]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?\}/g,
     
     iterChild : function (node, method) {
