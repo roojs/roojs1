@@ -71,7 +71,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
      *  x.t:(test,tesT) 
      * 
      */
-    re : /(\{|\%7B)([\w-\.]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?(\}|\%7D)/g,
+    re : /(\{|\%7B)([\w-\.]+)(?:\:([\w\.]*)(?:\(([\w-\.]*?)?\))?)?(\}|\%7D)/g,
     //re : /\{([\w-\.]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?\}/g,
     
     iterChild : function (node, method) {
