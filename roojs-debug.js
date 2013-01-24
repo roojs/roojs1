@@ -19971,7 +19971,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
      * @param {Object} options (optional) An object containing properties which may override the options
      * used in the last load operation. See {@link #load} for details (defaults to null, in which case
      * the most recently used options are reused).
-     */
+     */o
     reload : function(options){
         this.load(Roo.applyIf(options||{}, this.lastOptions));
     },
@@ -19991,11 +19991,11 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
         // if data returned failure - throw an exception.
         if (o.success === false) {
             // show a message if no listener is registered.
-            if (!this.hasListener('loadexception') && typeof(this.reader.jsonData.errorMsg) != 'undefined') {
-                    Roo.MessageBox.alert("Error loading",this.reader.jsonData.errorMsg);
+            if (!this.hasListener('loadexception') && typeof(o.raw.errorMsg) != 'undefined') {
+                    Roo.MessageBox.alert("Error loading",o.raw.errorMsg);
             }
             // loadmask wil be hooked into this..
-            this.fireEvent("loadexception", this, o, options, this.reader.jsonData);
+            this.fireEvent("loadexception", this, o, options, o.raw.errorMsg);
             return;
         }
         var r = o.records, t = o.totalRecords || r.length;
