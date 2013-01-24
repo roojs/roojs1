@@ -169,6 +169,7 @@ Roo.data.Store = function(config){
         delete this.inlineData;
     }
 };
+
 Roo.extend(Roo.data.Store, Roo.util.Observable, {
      /**
     * @cfg {boolean} isLocal   flag if data is locally available (and can be always looked up
