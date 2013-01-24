@@ -368,7 +368,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
      * @param {Object} options (optional) An object containing properties which may override the options
      * used in the last load operation. See {@link #load} for details (defaults to null, in which case
      * the most recently used options are reused).
-     */o
+     */
     reload : function(options){
         this.load(Roo.applyIf(options||{}, this.lastOptions));
     },
