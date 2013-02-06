@@ -100,15 +100,16 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         
         // covert the html into DOM...
         var doc = false;
+        var div =false;
         try {
             doc = document.implementation.createHTMLDocument("");
             doc.documentElement.innerHTML =   this.html  ;
+            div = doc.documentElement;
         } catch (e) {
-            // old IE...
-            doc = new ActiveXObject('htmlfile');
-            doc.open();
-            doc.write(this.html);
-            doc.close();
+            // old IE... - nasty -- it causes all sorts of issues.. with
+            // images getting pulled from server..
+            div = document.createElement('div');
+            div.innerHTML = this.html;
         }
         //doc.documentElement.innerHTML = htmlBody
         var div = doc.documentElement;
