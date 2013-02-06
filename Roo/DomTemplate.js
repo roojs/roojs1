@@ -112,7 +112,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
             div.innerHTML = this.html;
         }
         //doc.documentElement.innerHTML = htmlBody
-        var div = doc.documentElement;
+         
         
         
         this.tpls = [];
