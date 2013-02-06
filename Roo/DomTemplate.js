@@ -102,16 +102,17 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         var doc = false;
         try {
             doc = document.implementation.createHTMLDocument("");
+            doc.documentElement.innerHTML =   this.html  ;
         } catch (e) {
             // old IE...
             doc = new ActiveXObject('htmlfile');
             doc.open();
-            doc.write('');
+            doc.write(this.html);
             doc.close();
         }
         //doc.documentElement.innerHTML = htmlBody
         var div = doc.documentElement;
-        div.innerHTML =   this.html  ;
+        
         
         this.tpls = [];
         var _t = this;
