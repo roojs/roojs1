@@ -12171,7 +12171,13 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
         var s = this.html;
         
         // covert the html into DOM...
-        var doc = document.implementation.createHTMLDocument("");
+        var doc = false;
+        try {
+            doc = document.implementation.createHTMLDocument("");
+        } catch (e) {
+            // old IE...
+            doc = new ActiveXObject("htmlfile");
+        }
         //doc.documentElement.innerHTML = htmlBody
         var div = doc.documentElement;
         div.innerHTML =   this.html  ;
