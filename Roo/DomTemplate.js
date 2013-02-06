@@ -104,7 +104,10 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
             doc = document.implementation.createHTMLDocument("");
         } catch (e) {
             // old IE...
-            doc = new ActiveXObject("htmlfile");
+            doc = new ActiveXObject('htmlfile');
+            doc.open();
+            doc.write('');
+            doc.close();
         }
         //doc.documentElement.innerHTML = htmlBody
         var div = doc.documentElement;
