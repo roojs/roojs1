@@ -40464,9 +40464,20 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 }
             }
             html = this.cleanHtml(html);
-            // fix up the special chars..
+            // fix up the special chars.. normaly like back quotes in word...
+            // however we do not want to do this with chinese..
             html = html.replace(/([\x80-\uffff])/g, function (a, b) {
-                return "&#"+b.charCodeAt()+";" 
+                var cc = b.charCodeAt();
+                if (
+                    (cc => 0x4e00 && cc < 0xA000 ) ||
+
+                    (cc => 0x3400 && cc < 0x4E00 ) ||
+
+                    (cc => 0xf900 && cc < 0xfb00 )
+                ) {
+                        return c;
+                }
+                return "&#"+cc+";" 
             });
             if(this.fireEvent('beforesync', this, html) !== false){
                 this.el.dom.value = html;
