@@ -25543,13 +25543,11 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             html = html.replace(/([\x80-\uffff])/g, function (a, b) {
                 var cc = b.charCodeAt();
                 if (
-                    (cc => 0x4e00 && cc < 0xA000 ) ||
-
-                    (cc => 0x3400 && cc < 0x4E00 ) ||
-
-                    (cc => 0xf900 && cc < 0xfb00 )
+                    (cc >= 0x4E00 && cc < 0xA000 ) ||
+                    (cc >= 0x3400 && cc < 0x4E00 ) ||
+                    (cc >= 0xf900 && cc < 0xfb00 )
                 ) {
-                        return c;
+                        return b;
                 }
                 return "&#"+cc+";" 
             });
