@@ -443,7 +443,8 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 }
             }
             html = this.cleanHtml(html);
-            // fix up the special chars..
+            // fix up the special chars.. normaly like back quotes in word...
+            // however we do not want to do this with chinese..
             html = html.replace(/([\x80-\uffff])/g, function (a, b) {
                 return "&#"+b.charCodeAt()+";" 
             });
