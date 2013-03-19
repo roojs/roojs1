@@ -37681,6 +37681,7 @@ Roo.extend(Roo.form.DateField, Roo.form.TriggerField,  {
         Roo.form.DateField.superclass.onRender.call(this, ct, position);
         if (this.useIso) {
             this.el.dom.removeAttribute('name'); 
+            this.el.dom.setAttribute('name', this.name + '____hidden___' ); 
             this.hiddenField = this.el.insertSibling({ tag:'input', type:'hidden', name: this.name },
                     'before', true);
             this.hiddenField.value = this.value ? this.formatDate(this.value, 'Y-m-d') : '';
