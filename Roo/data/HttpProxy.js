@@ -29,10 +29,7 @@
 Roo.data.HttpProxy = function(conn){
     Roo.data.HttpProxy.superclass.constructor.call(this);
     // is conn a conn config or a real conn?
-    if (conn.xtype) {
-        Roo.apply(this.conn.xtype);
-        conn  = false;
-    }
+    
     this.conn = conn;
     this.useAjax = !conn || !conn.events;
   
@@ -107,9 +104,9 @@ Roo.extend(Roo.data.HttpProxy, Roo.data.DataProxy, {
                 callback : this.loadResponse,
                 scope: this
             };
-            if (this.timeout) {
-                Roo.log('setting timeout to ' + this.timeout);
-                o.timeout = this.timeout;
+            if (this.conn.timeout) {
+                Roo.log('setting timeout to ' + this.conn.timeout);
+                o.timeout = this.conn.timeout;
             }
             if(this.useAjax){
                 Roo.applyIf(o, this.conn);
