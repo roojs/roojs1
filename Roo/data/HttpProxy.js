@@ -109,12 +109,14 @@ Roo.extend(Roo.data.HttpProxy, Roo.data.DataProxy, {
                 o.timeout = this.conn.timeout;
             }
             if(this.useAjax){
+                Roo.log("using ajax");
                 Roo.applyIf(o, this.conn);
                 if(this.activeRequest){
                     Roo.Ajax.abort(this.activeRequest);
                 }
                 this.activeRequest = Roo.Ajax.request(o);
             }else{
+                Roo.log("not using ajax");
                 this.conn.request(o);
             }
         }else{
