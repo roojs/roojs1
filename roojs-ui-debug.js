@@ -5772,6 +5772,7 @@ Roo.extend(Roo.data.MemoryProxy, Roo.data.DataProxy, {
 Roo.data.HttpProxy = function(conn){
     Roo.data.HttpProxy.superclass.constructor.call(this);
     // is conn a conn config or a real conn?
+    
     this.conn = conn;
     this.useAjax = !conn || !conn.events;
   
@@ -5846,17 +5847,19 @@ Roo.extend(Roo.data.HttpProxy, Roo.data.DataProxy, {
                 callback : this.loadResponse,
                 scope: this
             };
-            if (this.timeout) {
-                Roo.log('setting timeout to ' + this.timeout);
-                o.timeout = this.timeout;
+            if (this.conn.timeout) {
+                Roo.log('setting timeout to ' + this.conn.timeout);
+                o.timeout = this.conn.timeout;
             }
             if(this.useAjax){
+                Roo.log("using ajax");
                 Roo.applyIf(o, this.conn);
                 if(this.activeRequest){
                     Roo.Ajax.abort(this.activeRequest);
                 }
                 this.activeRequest = Roo.Ajax.request(o);
             }else{
+                Roo.log("not using ajax");
                 this.conn.request(o);
             }
         }else{
