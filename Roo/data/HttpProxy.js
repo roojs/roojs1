@@ -103,6 +103,9 @@ Roo.extend(Roo.data.HttpProxy, Roo.data.DataProxy, {
                 callback : this.loadResponse,
                 scope: this
             };
+            if (this.timeout) {
+                o.timeout = this.timeout;
+            }
             if(this.useAjax){
                 Roo.applyIf(o, this.conn);
                 if(this.activeRequest){
