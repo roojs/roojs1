@@ -5772,7 +5772,9 @@ Roo.extend(Roo.data.MemoryProxy, Roo.data.DataProxy, {
 Roo.data.HttpProxy = function(conn){
     Roo.data.HttpProxy.superclass.constructor.call(this);
     // is conn a conn config or a real conn?
-    
+    Roo.log('httpproxy:conn');
+    Roo.log(conn);
+            
     this.conn = conn;
     this.useAjax = !conn || !conn.events;
   
