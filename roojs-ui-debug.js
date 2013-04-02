@@ -5847,6 +5847,7 @@ Roo.extend(Roo.data.HttpProxy, Roo.data.DataProxy, {
                 scope: this
             };
             if (this.timeout) {
+                Roo.log('setting timeout to ' + this.timeout);
                 o.timeout = this.timeout;
             }
             if(this.useAjax){
