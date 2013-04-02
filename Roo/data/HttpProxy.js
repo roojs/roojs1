@@ -31,7 +31,7 @@ Roo.data.HttpProxy = function(conn){
     // is conn a conn config or a real conn?
     if (conn.xtype) {
         Roo.apply(this.conn.xtype);
-        conn  = fals;
+        conn  = false;
     }
     this.conn = conn;
     this.useAjax = !conn || !conn.events;
