@@ -29,6 +29,10 @@
 Roo.data.HttpProxy = function(conn){
     Roo.data.HttpProxy.superclass.constructor.call(this);
     // is conn a conn config or a real conn?
+    if (conn.xtype) {
+        Roo.apply(this.conn.xtype);
+        conn  = fals;
+    }
     this.conn = conn;
     this.useAjax = !conn || !conn.events;
   
