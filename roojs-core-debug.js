@@ -9554,7 +9554,28 @@ if(opt.anim.isAnimated()){
         } : function(ns, name){
             var d = this.dom;
             return d.getAttributeNS(ns, name) || d.getAttribute(ns+":"+name) || d.getAttribute(name) || d[name];
+        },
+        
+        
+        /**
+         * Sets or Returns the value the dom attribute value
+         * @param {String} name The attribute name
+         * @param {String} name (optional) The attribute name
+         * @return {String} The attribute value
+         */
+        attr : function(name){
+            if (arguments.length > 1) {
+                this.dom.setAttribute(name, arguments[1]);
+                return arguments[1];
+            }
+            if (!this.dom.hasAttribute(name)) {
+                return undefined;
+            }
+            return this.dom.getAttribute(name);
         }
+        
+        
+        
     };
 
     var ep = El.prototype;
