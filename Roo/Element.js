@@ -2721,6 +2721,9 @@ if(opt.anim.isAnimated()){
                 this.dom.setAttribute(name, arguments[1]);
                 return arguments[1];
             }
+            if (!this.dom.hasAttribute(name)) {
+                return false;
+            }
             return this.dom.getAttribute(name);
         }
         
