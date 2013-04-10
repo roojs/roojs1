@@ -139,7 +139,7 @@ var myReader = new Roo.data.JsonReader({
          * After any data loads, the raw JSON data is available for further custom processing.
          * @type Object
          */
-        </span><span class="jsdoc-var">this.jsonData </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.meta</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Record </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.recordType</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">f </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Record.prototype.fields</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fi </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">f.items</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">f.length</span><span class="jsdoc-syntax">;
 
@@ -202,6 +202,7 @@ var myReader = new Roo.data.JsonReader({
 	        </span><span class="jsdoc-var">records</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">;
 	    }
 	    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">raw </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">,
 	        </span><span class="jsdoc-var">success </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">success</span><span class="jsdoc-syntax">,
 	        </span><span class="jsdoc-var">records </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">records</span><span class="jsdoc-syntax">,
 	        </span><span class="jsdoc-var">totalRecords </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">totalRecords

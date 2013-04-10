@@ -389,6 +389,7 @@
         }
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">updateFooter</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">//this.footDisp.dom.innerHTML = ''; 
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-comment">// update the footer
@@ -415,6 +416,8 @@
             
         </span><span class="jsdoc-comment">//this.editorsyncValue();
     </span><span class="jsdoc-syntax">},
+     
+    
    
        
     </span><span class="jsdoc-comment">// private
@@ -551,6 +554,56 @@
             }));
              
         }
+        </span><span class="jsdoc-var">tb.addFill</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">tb.addButton</span><span class="jsdoc-syntax">( {
+            </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Remove Tag'</span><span class="jsdoc-syntax">,
+    
+            </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
+                </span><span class="jsdoc-var">click </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">()
+                {
+                    </span><span class="jsdoc-comment">// remove
+                    // undo does not work.
+                     
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tb.selectedNode</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sn.parentNode</span><span class="jsdoc-syntax">;
+                    
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">stn </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">sn.childNodes</span><span class="jsdoc-syntax">[0];
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">en </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sn.childNodes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">sn.childNodes.length </span><span class="jsdoc-syntax">- 1 ];
+                    </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn.childNodes.length</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sn.childNodes</span><span class="jsdoc-syntax">[0];
+                        </span><span class="jsdoc-var">sn.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">pn.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">);
+                        
+                    }
+                    </span><span class="jsdoc-var">pn.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">editor.createRange</span><span class="jsdoc-syntax">();
+        
+                    </span><span class="jsdoc-var">range.setStart</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">stn</span><span class="jsdoc-syntax">,0);
+                    </span><span class="jsdoc-var">range.setEnd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">en</span><span class="jsdoc-syntax">,0); </span><span class="jsdoc-comment">//????
+                    //range.selectNode(sel);
+                    
+                    
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">selection </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">editor.getSelection</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-var">selection.removeAllRanges</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-var">selection.addRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">range</span><span class="jsdoc-syntax">);
+                    
+                    
+                    
+                    </span><span class="jsdoc-comment">//_this.updateToolbar(null, null, pn);
+                    </span><span class="jsdoc-var">_this.updateToolbar</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">this.footDisp.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">; 
+                }
+            }
+            
+                    
+                
+            
+        });
+        
+        
         </span><span class="jsdoc-var">tb.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-comment">// what does this do?
         </span><span class="jsdoc-syntax">});

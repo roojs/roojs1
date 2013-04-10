@@ -228,6 +228,7 @@
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">oConn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
 
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">callback </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">callback.timeout</span><span class="jsdoc-syntax">) {
+                
                 </span><span class="jsdoc-var">this.timeout</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">o.tId</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">window.setTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
                     </span><span class="jsdoc-var">oConn.abort</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
                 }, </span><span class="jsdoc-var">callback.timeout</span><span class="jsdoc-syntax">);

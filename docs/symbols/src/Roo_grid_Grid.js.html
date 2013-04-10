@@ -414,7 +414,7 @@
     */
     </span><span class="jsdoc-var">loadMask </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-comment">/**
-    * @cfg {Roo.dd.DropTarget} dragTarget An {@link Roo.dd.DragTarget} config
+    * @cfg {Roo.dd.DropTarget} dropTarget An {@link Roo.dd.DropTarget} config
     */
     </span><span class="jsdoc-var">dropTarget</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
@@ -472,7 +472,7 @@
         }
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dropTarget </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.dropTarget.xtype</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">this.dropTarget.xtype</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-var">this.dropTarget </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Ext.dd.DropTarget</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getView</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.mainBody</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.dropTarget</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.dropTarget </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.dd.DropTarget</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getView</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.mainBody</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.dropTarget</span><span class="jsdoc-syntax">);
         }
         
         

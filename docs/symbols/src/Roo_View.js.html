@@ -182,6 +182,11 @@
      * @cfg {String} emptyText The empty text to show when nothing is loaded.
      */
     </span><span class="jsdoc-var">emptyText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} text to display on mask (default Loading)
+     */
+    </span><span class="jsdoc-var">mask </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-comment">/**
      * @cfg {Boolean} multiSelect Allow multiple selection
      */
@@ -205,7 +210,7 @@
     },
 
     </span><span class="jsdoc-comment">/**
-     * Refreshes the view.
+     * Refreshes the view. - called by datachanged on the store. - do not call directly.
      */
     </span><span class="jsdoc-var">refresh </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tpl</span><span class="jsdoc-syntax">;
@@ -337,6 +342,9 @@
             </span><span class="jsdoc-var">this.store.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;remove&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onRemove</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.store.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;update&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onUpdate</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.store.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;clear&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.refresh</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.store.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforeload&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onBeforeLoad</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.store.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;load&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.store.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;loadexception&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">);
         }
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">store</span><span class="jsdoc-syntax">){
           
@@ -345,12 +353,29 @@
             </span><span class="jsdoc-var">store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;remove&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onRemove</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;update&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onUpdate</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;clear&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.refresh</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforeload&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onBeforeLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;load&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;loadexception&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">store</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.refresh</span><span class="jsdoc-syntax">();
         }
     },
+    </span><span class="jsdoc-comment">/**
+     * onbeforeLoad - masks the loading area.
+     *
+     */
+    </span><span class="jsdoc-var">onBeforeLoad </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.el.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.el.mask</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.mask </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.mask </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Loading&quot; </span><span class="jsdoc-syntax">); 
+    },
+    </span><span class="jsdoc-var">onLoad </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.el.unmask</span><span class="jsdoc-syntax">();
+    },
+    
 
     </span><span class="jsdoc-comment">/**
      * Returns the template node the passed child belongs to or null if it doesn't belong to one.

@@ -443,9 +443,18 @@
                 }
             }
             </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cleanHtml</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-comment">// fix up the special chars..
+            </span><span class="jsdoc-comment">// fix up the special chars.. normaly like back quotes in word...
+            // however we do not want to do this with chinese..
             </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">html.replace</span><span class="jsdoc-syntax">(/([\x80-\uffff])/g, </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">&quot;&amp;#&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">b.charCodeAt</span><span class="jsdoc-syntax">()+</span><span class="jsdoc-string">&quot;;&quot; 
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">b.charCodeAt</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(
+                    (</span><span class="jsdoc-var">cc </span><span class="jsdoc-syntax">&gt;= 0x4E00 &amp;&amp; </span><span class="jsdoc-var">cc </span><span class="jsdoc-syntax">&lt; 0xA000 ) ||
+                    (</span><span class="jsdoc-var">cc </span><span class="jsdoc-syntax">&gt;= 0x3400 &amp;&amp; </span><span class="jsdoc-var">cc </span><span class="jsdoc-syntax">&lt; 0x4E00 ) ||
+                    (</span><span class="jsdoc-var">cc </span><span class="jsdoc-syntax">&gt;= 0xf900 &amp;&amp; </span><span class="jsdoc-var">cc </span><span class="jsdoc-syntax">&lt; 0xfb00 )
+                ) {
+                        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">&quot;&amp;#&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">cc</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">&quot;;&quot; 
             </span><span class="jsdoc-syntax">});
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforesync'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">this.el.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">;
@@ -1082,6 +1091,8 @@
     
     </span><span class="jsdoc-var">cleanUpChild </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)
     {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ed </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        
         </span><span class="jsdoc-comment">//console.log(node);
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.nodeName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;#text&quot;</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-comment">// clean up silly Windows -- stuff?
@@ -1102,11 +1113,12 @@
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">remove_keep_children</span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.form.HtmlEditor.remove.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.tagName.toLowerCase</span><span class="jsdoc-syntax">()) &gt; -1;
         
-        </span><span class="jsdoc-comment">// remove &lt;a name=....&gt; as rendering on yahoo mailer is bored with this.
+        </span><span class="jsdoc-comment">// remove &lt;a name=....&gt; as rendering on yahoo mailer is borked with this.
+        // this will have to be flaged elsewhere - perhaps ablack=name... on the mailer..
         
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.tagName.toLowerCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">'a' </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">node.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'href'</span><span class="jsdoc-syntax">)) {
-            </span><span class="jsdoc-var">remove_keep_children </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
-        }
+        //if (node.tagName.toLowerCase() == 'a' &amp;&amp; !node.hasAttribute('href')) {
+        //    remove_keep_children = true;
+        //}
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">remove_keep_children</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.cleanUpChildren</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
@@ -1137,7 +1149,7 @@
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v.match</span><span class="jsdoc-syntax">(/^#/)) {
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
-            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;(REMOVE)&quot;</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">node.tagName </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'.' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'=' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;(REMOVE TAG)&quot;</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">node.tagName </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'.' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'=' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">node.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">);
             
         }
@@ -1148,25 +1160,32 @@
                 </span><span class="jsdoc-var">node.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
-            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cwhite </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ed.cwhite</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.form.HtmlEditor.cwhite </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">ed.cwhite</span><span class="jsdoc-syntax">;
             
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">parts </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v.split</span><span class="jsdoc-syntax">(/;/);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">clean </span><span class="jsdoc-syntax">= [];
             </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">parts</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">p.replace</span><span class="jsdoc-syntax">(/\s+/g,</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">p.replace</span><span class="jsdoc-syntax">(/^\s+/g,</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/\s+$/g,</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">p.length</span><span class="jsdoc-syntax">) {
                     </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
                 }
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">l </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">p.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">':'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.shift</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/\s+/g,</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">l </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">l.replace</span><span class="jsdoc-syntax">(/^\s+/g,</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/\s+$/g,</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
                 
                 </span><span class="jsdoc-comment">// only allow 'c whitelisted system attributes'
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.form.HtmlEditor.cwhite.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">) &lt; 0) {
-                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'(REMOVE)' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">node.tagName </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'.' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">':'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">l </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'=' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
-                    </span><span class="jsdoc-var">node.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">);
-                    </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">cwhite.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">) &lt; 0) {
+                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'(REMOVE CSS)' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">node.tagName </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'.' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">':'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">l </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'=' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-comment">//node.removeAttribute(n);
+                    </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
                 }
+                </span><span class="jsdoc-var">clean.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
             });
-            
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">clean.length</span><span class="jsdoc-syntax">) { 
+                </span><span class="jsdoc-var">node.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">clean.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">';'</span><span class="jsdoc-syntax">));
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">node.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">);
+            }
             
         }
         
@@ -1174,6 +1193,11 @@
         </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.attributes.length</span><span class="jsdoc-syntax">-1; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&gt; -1 ; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">--) {
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.attributes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
             </span><span class="jsdoc-comment">//console.log(a);
+            
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.name.toLowerCase</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.substr</span><span class="jsdoc-syntax">(0,2)==</span><span class="jsdoc-string">'on'</span><span class="jsdoc-syntax">)  {
+                </span><span class="jsdoc-var">node.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.name</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+            }
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.form.HtmlEditor.ablack.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.name.toLowerCase</span><span class="jsdoc-syntax">()) &gt; -1) {
                 </span><span class="jsdoc-var">node.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.name</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
@@ -1295,7 +1319,7 @@
 </span><span class="jsdoc-syntax">];
     
 </span><span class="jsdoc-var">Roo.form.HtmlEditor.aclean </span><span class="jsdoc-syntax">= [ 
-    </span><span class="jsdoc-string">'action'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'background'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'codebase'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'dynsrc'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'href'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'lowsrc'
+    </span><span class="jsdoc-string">'action'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'background'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'codebase'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'dynsrc'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'href'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'lowsrc' 
 </span><span class="jsdoc-syntax">];
 
 </span><span class="jsdoc-comment">// protocols..

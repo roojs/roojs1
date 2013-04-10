@@ -203,5 +203,15 @@
             </span><span class="jsdoc-var">this.activeEditor.completeEdit</span><span class="jsdoc-syntax">();
         }
         </span><span class="jsdoc-var">this.activeEditor </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+    },
+	
+	 </span><span class="jsdoc-comment">/**
+     * Called to get grid's drag proxy text, by default returns this.ddText.
+     * @return {String}
+     */
+    </span><span class="jsdoc-var">getDragDropText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">count </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.selModel.getSelectedCell</span><span class="jsdoc-syntax">() ? 1 : 0;
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.ddText</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">count</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">count </span><span class="jsdoc-syntax">== 1 ? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'s'</span><span class="jsdoc-syntax">);
     }
+	
 });</span></code></body></html>

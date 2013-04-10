@@ -30,15 +30,45 @@
     </span><span class="jsdoc-var">getDragData </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Event.getTarget</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rowIndex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.view.findRowIndex</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.selModel</span><span class="jsdoc-syntax">;
+            
+        </span><span class="jsdoc-comment">//Roo.log(rowIndex);
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sm.getSelectedCell</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">// cell selection..
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">sm.getSelectedCell</span><span class="jsdoc-syntax">()) {
+                </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">sm.getSelectedCell</span><span class="jsdoc-syntax">()[0]) {
+                </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+            }
+        
+        }
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.selModel</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-comment">//if(!sm.isSelected(rowIndex) || e.hasModifier()){
-              //  sm.mouseDown(e, t);
+            
+            </span><span class="jsdoc-comment">// if editorgrid.. 
+            
+            
+            //Roo.log([ sm.getSelectedCell() ? sm.getSelectedCell()[0] : 'NO' , rowIndex ]);
+               
+            //if(!sm.isSelected(rowIndex) || e.hasModifier()){
+              //  
             //}
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.hasModifier</span><span class="jsdoc-syntax">()){
                 </span><span class="jsdoc-var">sm.handleMouseDown</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// non modifier buttons are handled by row select.
             </span><span class="jsdoc-syntax">}
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{</span><span class="jsdoc-var">grid</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.grid</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ddel</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.ddel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">selections</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">sm.getSelections</span><span class="jsdoc-syntax">()};
+            
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;getDragData&quot;</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">grid</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.grid</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">ddel</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.ddel</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">selections</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">sm.getSelections </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">sm.getSelections</span><span class="jsdoc-syntax">() : (
+                    </span><span class="jsdoc-var">sm.getSelectedCell</span><span class="jsdoc-syntax">() ? [ </span><span class="jsdoc-var">this.grid.ds.getAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sm.getSelectedCell</span><span class="jsdoc-syntax">()[0]) ] : []
+                )
+            };
         }
         </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
     },
