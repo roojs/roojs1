@@ -2711,7 +2711,7 @@ if(opt.anim.isAnimated()){
         
         
         /**
-         * Sets or Returns the value the attribute value
+         * Sets or Returns the value the dom attribute value
          * @param {String} name The attribute name
          * @param {String} name (optional) The attribute name
          * @return {String} The attribute value
