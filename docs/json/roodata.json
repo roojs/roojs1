@@ -18,7 +18,56 @@
    "events": []
   },
   "Roo.Ajax": {
-   "props": [],
+   "props": [
+    {
+     "name": "url",
+     "type": "String",
+     "desc": "The default URL to be used for requests to the server. (defaults to undefined)",
+     "memberOf": ""
+    },
+    {
+     "name": "extraParams",
+     "type": "Object",
+     "desc": "An object containing properties which are used as extra parameters to each request made by this object. (defaults to undefined)",
+     "memberOf": ""
+    },
+    {
+     "name": "defaultHeaders",
+     "type": "Object",
+     "desc": "An object containing request headers which are added to each request made by this object. (defaults to undefined)",
+     "memberOf": ""
+    },
+    {
+     "name": "method",
+     "type": "String",
+     "desc": "(Optional)  The default HTTP method to be used for requests. (defaults to undefined; if not set but parms are present will use POST, otherwise GET)",
+     "memberOf": ""
+    },
+    {
+     "name": "timeout",
+     "type": "Number",
+     "desc": "(Optional) The timeout in milliseconds to be used for requests. (defaults to 30000)",
+     "memberOf": ""
+    },
+    {
+     "name": "autoAbort",
+     "type": "Boolean",
+     "desc": "(Optional) Whether a new request should abort any pending requests. (defaults to false)",
+     "memberOf": ""
+    },
+    {
+     "name": "disableCaching",
+     "type": "Boolean",
+     "desc": "(Optional)   True to add a unique cache-buster param to GET requests. (defaults to true)",
+     "memberOf": ""
+    },
+    {
+     "name": "listeners",
+     "type": "Object",
+     "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+     "memberOf": "Roo.util.Observable"
+    }
+   ],
    "events": [
     {
      "name": "beforerequest",
@@ -1759,6 +1808,12 @@
      "name": "emptyText",
      "type": "String",
      "desc": "The empty text to show when nothing is loaded.",
+     "memberOf": "Roo.View"
+    },
+    {
+     "name": "text",
+     "type": "String",
+     "desc": "to display on mask (default Loading)",
      "memberOf": "Roo.View"
     },
     {
@@ -4292,6 +4347,12 @@
      "memberOf": ""
     },
     {
+     "name": "text",
+     "type": "String",
+     "desc": "to display on mask (default Loading)",
+     "memberOf": ""
+    },
+    {
      "name": "multiSelect",
      "type": "Boolean",
      "desc": "Allow multiple selection",
@@ -4732,6 +4793,12 @@
      "desc": "Fires before a request is made for a new data object.  If the beforeload handler returns false\nthe load action will be canceled."
     },
     {
+     "name": "beforeloadadd",
+     "sig": "function (_self, records, options)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after a new set of Records has been loaded."
+    },
+    {
      "name": "clear",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -4747,7 +4814,7 @@
      "name": "load",
      "sig": "function (_self, records, options)\n{\n\n}",
      "type": "function",
-     "desc": "Fires after a new set of Records has been loaded."
+     "desc": "Fires after a new set of Records has been loaded, before they are added to the store."
     },
     {
      "name": "loadexception",
@@ -4973,6 +5040,12 @@
      "desc": "Fires before a request is made for a new data object.  If the beforeload handler returns false\nthe load action will be canceled."
     },
     {
+     "name": "beforeloadadd",
+     "sig": "function (_self, records, options)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after a new set of Records has been loaded."
+    },
+    {
      "name": "clear",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -4988,7 +5061,7 @@
      "name": "load",
      "sig": "function (_self, records, options)\n{\n\n}",
      "type": "function",
-     "desc": "Fires after a new set of Records has been loaded."
+     "desc": "Fires after a new set of Records has been loaded, before they are added to the store."
     },
     {
      "name": "loadexception",
@@ -5097,6 +5170,12 @@
      "desc": "Fires before a request is made for a new data object.  If the beforeload handler returns false\nthe load action will be canceled."
     },
     {
+     "name": "beforeloadadd",
+     "sig": "function (_self, records, options)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after a new set of Records has been loaded."
+    },
+    {
      "name": "clear",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -5112,7 +5191,7 @@
      "name": "load",
      "sig": "function (_self, records, options)\n{\n\n}",
      "type": "function",
-     "desc": "Fires after a new set of Records has been loaded."
+     "desc": "Fires after a new set of Records has been loaded, before they are added to the store."
     },
     {
      "name": "loadexception",
@@ -10845,7 +10924,7 @@
      "memberOf": ""
     },
     {
-     "name": "maxText",
+     "name": "maxTextf",
      "type": "String",
      "desc": "The error text to display when the date in the cell is after maxValue (defaults to\n'The date in this field must be before {maxValue}').",
      "memberOf": ""
@@ -13628,9 +13707,9 @@
      "memberOf": "Roo.grid.Grid"
     },
     {
-     "name": "dragTarget",
+     "name": "dropTarget",
      "type": "Roo.dd.DropTarget",
-     "desc": "An {@link Roo.dd.DragTarget} config",
+     "desc": "An {@link Roo.dd.DropTarget} config",
      "memberOf": "Roo.grid.Grid"
     },
     {
@@ -13964,9 +14043,9 @@
      "memberOf": ""
     },
     {
-     "name": "dragTarget",
+     "name": "dropTarget",
      "type": "Roo.dd.DropTarget",
-     "desc": "An {@link Roo.dd.DragTarget} config",
+     "desc": "An {@link Roo.dd.DropTarget} config",
      "memberOf": ""
     },
     {
@@ -14509,9 +14588,9 @@
      "memberOf": "Roo.grid.Grid"
     },
     {
-     "name": "dragTarget",
+     "name": "dropTarget",
      "type": "Roo.dd.DropTarget",
-     "desc": "An {@link Roo.dd.DragTarget} config",
+     "desc": "An {@link Roo.dd.DropTarget} config",
      "memberOf": "Roo.grid.Grid"
     },
     {
