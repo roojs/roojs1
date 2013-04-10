@@ -96,6 +96,16 @@
     }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
         </span><span class="jsdoc-var">this.resizeEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
     }
+    </span><span class="jsdoc-comment">// handle view.xtype
+    
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.view </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.view.xtype</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.view.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">this.view </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.view</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.view.render </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.view.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// render blank..
+    </span><span class="jsdoc-syntax">}
+    
+    
+    
     </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
         </span><span class="jsdoc-comment">/**
          * @event activate
@@ -279,7 +289,7 @@ panel.load({
     
     </span><span class="jsdoc-var">adjustForComponents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'adjustForComponents '</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">//Roo.log('adjustForComponents ');
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resizeEl </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">this.el.getFrameWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'lr'</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">this.el.getFrameWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tb'</span><span class="jsdoc-syntax">);

@@ -38,9 +38,9 @@
 </span><span class="jsdoc-var">Roo.DomTemplate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
 {
      </span><span class="jsdoc-var">Roo.DomTemplate.superclass.constructor.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">);
-    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.html</span><span class="jsdoc-syntax">) {
+     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.html</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-var">this.compile</span><span class="jsdoc-syntax">();
-    }
+     }
 };
 
 
@@ -71,7 +71,7 @@
      *  x.t:(test,tesT) 
      * 
      */
-    </span><span class="jsdoc-var">re </span><span class="jsdoc-syntax">: /(\{|\%7B)([\w-\.]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?(\}|\%7D)/g,
+    </span><span class="jsdoc-var">re </span><span class="jsdoc-syntax">: /(\{|\%7B)([\w-\.]+)(?:\:([\w\.]*)(?:\(([^)]*?)?\))?)?(\}|\%7D)/g,
     </span><span class="jsdoc-comment">//re : /\{([\w-\.]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?\}/g,
     
     </span><span class="jsdoc-var">iterChild </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">method</span><span class="jsdoc-syntax">) {
@@ -99,9 +99,21 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.html</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-comment">// covert the html into DOM...
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">doc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">div </span><span class="jsdoc-syntax">=</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">doc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.implementation.createHTMLDocument</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">doc.documentElement.innerHTML </span><span class="jsdoc-syntax">=   </span><span class="jsdoc-var">this.html  </span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">div </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.documentElement</span><span class="jsdoc-syntax">;
+        } </span><span class="jsdoc-keyword">catch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">// old IE... - nasty -- it causes all sorts of issues.. with
+            // images getting pulled from server..
+            </span><span class="jsdoc-var">div </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">div.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.html</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-comment">//doc.documentElement.innerHTML = htmlBody
+         
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">div </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">div.innerHTML </span><span class="jsdoc-syntax">=   </span><span class="jsdoc-var">this.html  </span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-var">this.tpls </span><span class="jsdoc-syntax">= [];
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
