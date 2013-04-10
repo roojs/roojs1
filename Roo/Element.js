@@ -2722,7 +2722,7 @@ if(opt.anim.isAnimated()){
                 return arguments[1];
             }
             return this.dom.getAttribute(name);
-        },
+        }
         
         
         
