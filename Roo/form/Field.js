@@ -22,4 +22,4 @@ Roo.form.Field = function(config){
 };
 
 Roo.extend(Roo.form.Field, Roo.BoxComponent,  {
-)};
+});
