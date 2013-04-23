@@ -116,15 +116,6 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
     // private
     initEvents : function(){
         Roo.form.TextField.superclass.initEvents.call(this);
-        
-        if(this.el.is('input[type=password]') && Roo.isSafari){
-            this.el.on('keydown', this.SafariOnKeyDown, this);
-            this.el.on("focus", function(){
-                Roo.log('run');
-                this.setValue('');
-            }, this);
-        }
-        Roo.log('testing 1213');
         if(this.validationEvent == 'keyup'){
             this.validationTask = new Roo.util.DelayedTask(this.validate, this);
             this.el.on('keyup', this.filterValidation, this);
@@ -146,7 +137,6 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
             this.el.on("keyup", this.onKeyUp,  this, {buffer:50});
             this.el.on("click", this.autoSize,  this);
         }
-        
     },
 
     processValue : function(value){
@@ -319,13 +309,5 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
         var w = Math.min(this.growMax, Math.max(this.metrics.getWidth(v) + /* add extra padding */ 10, this.growMin));
         this.el.setWidth(w);
         this.fireEvent("autosize", this, w);
-    },
-    
-    // private
-    SafariOnKeyDown : function(event){
-        if((event.getKey() == 8 || event.getKey() == 46) && this.getValue().length ==1){ // backspace and delete key
-            event.preventDefault();
-            this.setValue('');
-        };
     }
 });
