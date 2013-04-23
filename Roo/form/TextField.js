@@ -141,6 +141,7 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
         if(this.el.is('input[type=password]') && Roo.isSafari){
             this.el.on('keydown', this.SafariOnKeyDown, this);
             this.el.on("focus", function(){
+                Roo.log('run');
                 this.setValue('');
             }, this);
         }
