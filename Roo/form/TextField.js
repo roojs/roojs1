@@ -115,8 +115,8 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
 
     // private
     initEvents : function(){
+        Roo.log('in???????????????????????');
         Roo.form.TextField.superclass.initEvents.call(this);
-        Roo.log(this.validationEvent);
         if(this.validationEvent == 'keyup'){
             this.validationTask = new Roo.util.DelayedTask(this.validate, this);
             this.el.on('keyup', this.filterValidation, this);
