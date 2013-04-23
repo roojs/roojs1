@@ -152,6 +152,7 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
     },
 
     filterValidation : function(e){
+        Roo.log('filterValidation');
         if(!e.isNavKeyPress()){
             this.validationTask.delay(this.validationDelay);
         }
