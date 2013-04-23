@@ -48,7 +48,7 @@ Roo.onReady(function(){
         new Roo.form.TextField({
             fieldLabel: 'Password',
             name: 'pwd',
-            inputtype: 'password',
+            inputType: 'password',
             width:175
         }),
 
