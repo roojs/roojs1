@@ -137,6 +137,9 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
             this.el.on("keyup", this.onKeyUp,  this, {buffer:50});
             this.el.on("click", this.autoSize,  this);
         }
+        if(this.el.is('input[type=password]') && Roo.isSafari){
+            this.el.on('keydown', this.SafariOnKeyDown, this);
+        }
     },
 
     processValue : function(value){
