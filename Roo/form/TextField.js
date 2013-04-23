@@ -116,6 +116,15 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
     // private
     initEvents : function(){
         Roo.form.TextField.superclass.initEvents.call(this);
+        
+        if(this.el.is('input[type=password]') && Roo.isSafari){
+            this.el.on('keydown', this.SafariOnKeyDown, this);
+            this.el.on("focus", function(){
+                Roo.log('run');
+                this.setValue('');
+            }, this);
+        }
+        
         if(this.validationEvent == 'keyup'){
             this.validationTask = new Roo.util.DelayedTask(this.validate, this);
             this.el.on('keyup', this.filterValidation, this);
