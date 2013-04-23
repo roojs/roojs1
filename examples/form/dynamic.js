@@ -45,6 +45,12 @@ Roo.onReady(function(){
             name: 'company',
             width:175
         }),
+        new Roo.form.TextField({
+            fieldLabel: 'Password',
+            name: 'pwd',
+            type: 'password'
+            width:175
+        }),
 
         new Roo.form.TextField({
             fieldLabel: 'Email',
