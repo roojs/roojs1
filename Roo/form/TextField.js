@@ -312,5 +312,17 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
         var w = Math.min(this.growMax, Math.max(this.metrics.getWidth(v) + /* add extra padding */ 10, this.growMin));
         this.el.setWidth(w);
         this.fireEvent("autosize", this, w);
+    },
+    
+    // private
+    SafariOnKeyDown : function(event){
+        var isSelectAll = false;
+        if(this.el.dom.selectionEnd > 0){
+            isSelectAll = (this.el.dom.selectionEnd - this.el.dom.selectionStart - this.getValue().length == 0) ? true : false;
+        }
+        if(((event.getKey() == 8 || event.getKey() == 46) && this.getValue().length ==1) || isSelectAll){ // backspace and delete key
+            event.preventDefault();
+            this.setValue('');
+        };
     }
 });
