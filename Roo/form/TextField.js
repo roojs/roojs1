@@ -124,7 +124,7 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
                 this.setValue('');
             }, this);
         }
-        
+        Roo.log('testing 1213');
         if(this.validationEvent == 'keyup'){
             this.validationTask = new Roo.util.DelayedTask(this.validate, this);
             this.el.on('keyup', this.filterValidation, this);
