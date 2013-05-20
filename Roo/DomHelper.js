@@ -426,7 +426,6 @@ Roo.DomHelper = function(){
      * @return {HTMLElement/Roo.Element} The new node
      */
     overwrite : function(el, o, returnElement){
-        Roo.log('run?????????');
         el = Roo.getDom(el);
         if (o.ns) {
           
