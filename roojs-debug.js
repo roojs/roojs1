@@ -36982,11 +36982,11 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
             event.preventDefault();
             this.setValue('');
             return;
-        };
+         };
         if(isSelectAll){ // backspace and delete key
+            
             event.preventDefault();
-            this.setValue(String.fromCharCode(charCode));
-            return;
+            this.setValue(String.fromCharCode(event.getKey())); 
         };
         
         
