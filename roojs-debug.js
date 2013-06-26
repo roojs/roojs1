@@ -9560,7 +9560,7 @@ if(opt.anim.isAnimated()){
         /**
          * Sets or Returns the value the dom attribute value
          * @param {String} name The attribute name
-         * @param {String} name (optional) The attribute name
+         * @param {String} value (optional) The value to set the attribute to
          * @return {String} The attribute value
          */
         attr : function(name){
@@ -12426,7 +12426,7 @@ Roo.extend(Roo.DomTemplate, Roo.Template, {
                 return "'"+ sep +   udef_st   +    format + name + args + "))"+sep+"'";
             }
              
-            if (args.length) {
+            if (args && args.length) {
                 // called with xxyx.yuu:(test,test)
                 // change to ()
                 return "'"+ sep + udef_st  + name + '(' +  args + "))"+sep+"'";
