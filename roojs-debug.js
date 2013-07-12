@@ -40412,7 +40412,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     toggleSourceEdit : function(sourceEditMode){
         
         this.sourceEditMode = sourceEditMode === true;
-        
+        Roo.log(sourceEditMode);
         if(this.sourceEditMode){
           
             this.syncValue();
