@@ -1172,7 +1172,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             
             var parts = v.split(/;/);
             var clean = [];
-            Roo.log(parts);
+            
             Roo.each(parts, function(p) {
                 p = p.replace(/^\s+/g,'').replace(/\s+$/g,'');
                 if (!p.length) {
@@ -1180,7 +1180,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 }
                 var l = p.split(':').shift().replace(/\s+/g,'');
                 l = l.replace(/^\s+/g,'').replace(/\s+$/g,'');
-                
+                Roo.log(l)
                 // only allow 'c whitelisted system attributes'
                 if ( cwhite.indexOf(l) < 0) {
                     Roo.log('(REMOVE CSS)' + node.tagName +'.' + n + ':'+l + '=' + v);
