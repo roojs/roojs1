@@ -40539,14 +40539,13 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     pushValue : function(){
         if(this.initialized){
             var v = this.el.dom.value;
-            Roo.log(v);
+            
             if(v.length < 1){
                 v = '&#160;';
             }
             
             if(this.fireEvent('beforepush', this, v) !== false){
                 var d = (this.doc.body || this.doc.documentElement);
-                Roo.log(d);
                 d.innerHTML = v;
                 this.cleanUpPaste();
                 this.el.dom.value = d.innerHTML;
@@ -41134,19 +41133,16 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         
     },
     
-    cleanWordChars : function(input) {
+    cleanWordChars : function(input) {// change the chars to hex code
         var he = Roo.form.HtmlEditor;
-        Roo.log('inputt........');
-        Roo.log(input);
         
         var output = input;
         Roo.each(he.swapCodes, function(sw) { 
-        
             var swapper = new RegExp("\\u" + sw[0].toString(16), "g"); // hex codes
+            
             output = output.replace(swapper, sw[1]);
         });
-        Roo.log('output........');
-        Roo.log(output);
+        
         return output;
     },
     
@@ -41167,7 +41163,6 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     cleanUpChild : function (node)
     {
         var ed = this;
-        
         //console.log(node);
         if (node.nodeName == "#text") {
             // clean up silly Windows -- stuff?
@@ -41224,7 +41219,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             if (v.match(/^#/)) {
                 return;
             }
-            Roo.log("(REMOVE TAG)"+ node.tagName +'.' + n + '=' + v);
+//            Roo.log("(REMOVE TAG)"+ node.tagName +'.' + n + '=' + v);
             node.removeAttribute(n);
             
         }
@@ -41239,6 +41234,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             
             var parts = v.split(/;/);
             var clean = [];
+            
             Roo.each(parts, function(p) {
                 p = p.replace(/^\s+/g,'').replace(/\s+$/g,'');
                 if (!p.length) {
@@ -41249,10 +41245,16 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 
                 // only allow 'c whitelisted system attributes'
                 if ( cwhite.indexOf(l) < 0) {
-                    Roo.log('(REMOVE CSS)' + node.tagName +'.' + n + ':'+l + '=' + v);
+//                    Roo.log('(REMOVE CSS)' + node.tagName +'.' + n + ':'+l + '=' + v);
                     //node.removeAttribute(n);
                     return true;
                 }
+                
+                if(l == 'font-size'){
+//                    Roo.log('(REMOVE FONT SIZE)' + node.tagName +'.' + n + ':'+l + '=' + v);
+                    return true;
+                }
+                
                 clean.push(p);
                 return true;
             });
