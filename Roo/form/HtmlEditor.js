@@ -355,7 +355,8 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             this.el.dom.removeAttribute('tabIndex');
             this.el.focus();
         }else{
-             
+            Roo.log('out')
+            Roo.log(this.pushValue()); 
             this.pushValue();
             this.iframe.className = '';
             this.el.addClass('x-hidden');
