@@ -1172,6 +1172,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             
             var parts = v.split(/;/);
             var clean = [];
+            Roo.log(parts);
             Roo.each(parts, function(p) {
                 p = p.replace(/^\s+/g,'').replace(/\s+$/g,'');
                 if (!p.length) {
