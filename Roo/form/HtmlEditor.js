@@ -347,16 +347,16 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         this.sourceEditMode = sourceEditMode === true;
         
         if(this.sourceEditMode){
-            Roo.log('in');
-            Roo.log(this.syncValue());
+//            Roo.log('in');
+//            Roo.log(this.syncValue());
             this.syncValue();
             this.iframe.className = 'x-hidden';
             this.el.removeClass('x-hidden');
             this.el.dom.removeAttribute('tabIndex');
             this.el.focus();
         }else{
-            Roo.log('out')
-            Roo.log(this.pushValue()); 
+//            Roo.log('out')
+//            Roo.log(this.pushValue()); 
             this.pushValue();
             this.iframe.className = '';
             this.el.addClass('x-hidden');
