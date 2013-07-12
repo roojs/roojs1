@@ -345,9 +345,10 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     toggleSourceEdit : function(sourceEditMode){
         
         this.sourceEditMode = sourceEditMode === true;
-        Roo.log(sourceEditMode);
+        
         if(this.sourceEditMode){
-          
+            Roo.log('in');
+            Roo.log(this.syncValue());
             this.syncValue();
             this.iframe.className = 'x-hidden';
             this.el.removeClass('x-hidden');
