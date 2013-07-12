@@ -1101,7 +1101,8 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     cleanUpChild : function (node)
     {
         var ed = this;
-        
+        Roo.log(node);
+        Roo.log(ed);
         //console.log(node);
         if (node.nodeName == "#text") {
             // clean up silly Windows -- stuff?
