@@ -1076,7 +1076,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         Roo.each(he.swapCodes, function(sw) { 
         
             var swapper = new RegExp("\\u" + sw[0].toString(16), "g"); // hex codes
-            Roo.log(swapper);
+            Roo.log(sw);
             output = output.replace(swapper, sw[1]);
         });
         Roo.log('output........');
