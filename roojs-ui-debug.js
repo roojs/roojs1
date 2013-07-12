@@ -25555,7 +25555,6 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     syncValue : function(){
         if(this.initialized){
             var bd = (this.doc.body || this.doc.documentElement);
-            Roo.log(bd);
             //this.cleanUpPaste(); -- this is done else where and causes havoc..
             var html = bd.innerHTML;
             if(Roo.isSafari){
@@ -25593,12 +25592,14 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     pushValue : function(){
         if(this.initialized){
             var v = this.el.dom.value;
+            Roo.log(v);
             if(v.length < 1){
                 v = '&#160;';
             }
             
             if(this.fireEvent('beforepush', this, v) !== false){
                 var d = (this.doc.body || this.doc.documentElement);
+                Roo.log(d);
                 d.innerHTML = v;
                 this.cleanUpPaste();
                 this.el.dom.value = d.innerHTML;
@@ -26195,6 +26196,8 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             var swapper = new RegExp("\\u" + sw[0].toString(16), "g"); // hex codes
             output = output.replace(swapper, sw[1]);
         });
+        Roo.log(input);
+        Roo.log(output);
         return output;
     },
     

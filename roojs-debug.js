@@ -40412,16 +40412,18 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     toggleSourceEdit : function(sourceEditMode){
         
         this.sourceEditMode = sourceEditMode === true;
-        Roo.log(sourceEditMode);
+        
         if(this.sourceEditMode){
-          
+            Roo.log('in');
+            Roo.log(this.syncValue());
             this.syncValue();
             this.iframe.className = 'x-hidden';
             this.el.removeClass('x-hidden');
             this.el.dom.removeAttribute('tabIndex');
             this.el.focus();
         }else{
-             
+            Roo.log('out')
+            Roo.log(this.pushValue()); 
             this.pushValue();
             this.iframe.className = '';
             this.el.addClass('x-hidden');
@@ -40537,12 +40539,14 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     pushValue : function(){
         if(this.initialized){
             var v = this.el.dom.value;
+            Roo.log(v);
             if(v.length < 1){
                 v = '&#160;';
             }
             
             if(this.fireEvent('beforepush', this, v) !== false){
                 var d = (this.doc.body || this.doc.documentElement);
+                Roo.log(d);
                 d.innerHTML = v;
                 this.cleanUpPaste();
                 this.el.dom.value = d.innerHTML;
@@ -41139,6 +41143,8 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             var swapper = new RegExp("\\u" + sw[0].toString(16), "g"); // hex codes
             output = output.replace(swapper, sw[1]);
         });
+        Roo.log(input);
+        Roo.log(output);
         return output;
     },
     
