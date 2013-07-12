@@ -1067,7 +1067,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         
     },
     
-    cleanWordChars : function(input) {
+    cleanWordChars : function(input) {// change the chars to hex code
         var he = Roo.form.HtmlEditor;
         
         var output = input;
