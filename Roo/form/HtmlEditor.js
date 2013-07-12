@@ -1099,7 +1099,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         var ed = this;
         Roo.log('inputt........');
         Roo.log(node);
-        Roo.log(ed);
+//        Roo.log(ed);
         Roo.log('output........');
         //console.log(node);
         if (node.nodeName == "#text") {
