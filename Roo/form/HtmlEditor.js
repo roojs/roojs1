@@ -472,12 +472,14 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     pushValue : function(){
         if(this.initialized){
             var v = this.el.dom.value;
+            Roo.log(v);
             if(v.length < 1){
                 v = '&#160;';
             }
             
             if(this.fireEvent('beforepush', this, v) !== false){
                 var d = (this.doc.body || this.doc.documentElement);
+                Roo.log(d);
                 d.innerHTML = v;
                 this.cleanUpPaste();
                 this.el.dom.value = d.innerHTML;
