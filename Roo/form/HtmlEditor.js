@@ -1187,7 +1187,12 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                     //node.removeAttribute(n);
                     return true;
                 }
-                Roo.log(p)
+                
+                if(l == 'font-size'){
+                    Roo.log('(REMOVE CSS)' + node.tagName +'.' + n + ':'+l + '=' + v);
+                    return true;
+                }
+                
                 clean.push(p);
                 return true;
             });
