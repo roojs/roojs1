@@ -435,6 +435,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     syncValue : function(){
         if(this.initialized){
             var bd = (this.doc.body || this.doc.documentElement);
+            Roo.log(bd);
             //this.cleanUpPaste(); -- this is done else where and causes havoc..
             var html = bd.innerHTML;
             if(Roo.isSafari){
