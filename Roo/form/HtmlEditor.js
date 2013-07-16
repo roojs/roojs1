@@ -1352,7 +1352,6 @@ Roo.form.HtmlEditor.cwhite= [
 
 // black listed style attributes.
 Roo.form.HtmlEditor.cblack= [
-        'text-align',
         'font-size'//??
 ];
 
