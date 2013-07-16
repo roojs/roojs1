@@ -1164,6 +1164,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 return;
             }
             var cwhite = typeof(ed.cwhite) == 'undefined' ? Roo.form.HtmlEditor.cwhite : ed.cwhite;
+            var cblack = typeof(ed.cblack) == 'undefined' ? Roo.form.HtmlEditor.cblack : ed.cblack;
             
             var parts = v.split(/;/);
             var clean = [];
