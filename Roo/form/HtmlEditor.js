@@ -1352,7 +1352,7 @@ Roo.form.HtmlEditor.cwhite= [
 
 // black listed style attributes.
 Roo.form.HtmlEditor.cblack= [
-        'font-size'
+      //  'font-size' -- this can be set by the project 
 ];
 
 
