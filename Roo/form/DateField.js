@@ -212,6 +212,14 @@ Roo.extend(Roo.form.DateField, Roo.form.TriggerField,  {
     validateBlur : function(){
         return !this.menu || !this.menu.isVisible();
     },
+    
+    getName: function()
+    {
+        // returns hidden if it's set..
+        if (!this.rendered) {return ''};
+        return !this.hiddenName && this.el.dom.name  ? this.el.dom.name : (this.hiddenName || '');
+        
+    },
 
     /**
      * Returns the current date value of the date field.
