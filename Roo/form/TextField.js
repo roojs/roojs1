@@ -320,6 +320,7 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
         // this is a workaround for a password hang bug on chrome/ webkit.
         
         var isSelectAll = false;
+        
         if(this.el.dom.selectionEnd > 0){
             isSelectAll = (this.el.dom.selectionEnd - this.el.dom.selectionStart - this.getValue().length == 0) ? true : false;
         }
@@ -327,7 +328,8 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
             event.preventDefault();
             this.setValue('');
             return;
-         };
+        }
+        
         if(isSelectAll){ // backspace and delete key
             
             event.preventDefault();
