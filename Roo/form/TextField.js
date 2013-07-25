@@ -337,7 +337,7 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
             //
             var cc = String.fromCharCode(event.getCharCode());
             this.setValue( this.shiftKey ?  cc : cc.toLowerCase());
-            )); 
+            
         }
         
         
