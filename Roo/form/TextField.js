@@ -315,7 +315,10 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
     },
     
     // private
-    SafariOnKeyDown : function(event){
+    SafariOnKeyDown : function(event)
+    {
+        // this is a workaround for a password hang bug on chrome/ webkit.
+        
         var isSelectAll = false;
         if(this.el.dom.selectionEnd > 0){
             isSelectAll = (this.el.dom.selectionEnd - this.el.dom.selectionStart - this.getValue().length == 0) ? true : false;
@@ -328,7 +331,8 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
         if(isSelectAll){ // backspace and delete key
             
             event.preventDefault();
-            // we cast to lowercase, as that is more
+            // this is very hacky as keydown always get's upper case.
+            // 
             this.setValue(String.fromCharCode(
                             this.shiftKey ? event.getKey() : event.getKey().toLowerCase()
                     )); 
