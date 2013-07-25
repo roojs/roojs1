@@ -328,7 +328,7 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
         if(isSelectAll){ // backspace and delete key
             
             event.preventDefault();
-            this.setValue(String.fromCharCode(event.charCode)); 
+            this.setValue(String.fromCharCode(event.getCharCode())); 
         };
         
         
