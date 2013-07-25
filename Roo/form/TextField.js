@@ -316,6 +316,12 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
     },
     
     // private
+    safariLastKey : false,
+    
+    SafariOnKeyPress : function(event){
+        this.safariLastChar = event.getCharCode();
+    },
+    
     SafariOnKeyDown : function(event){
         var isSelectAll = false;
         if(this.el.dom.selectionEnd > 0){
@@ -327,11 +333,9 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
             return;
          };
         if(isSelectAll){ // backspace and delete key
-            
             event.preventDefault();
-            this.setValue(String.fromCharCode(event.getCharCode())); 
+            this.setValue(String.fromCharCode(this.safariLastChar)); 
         };
-        
         
     }
 });
