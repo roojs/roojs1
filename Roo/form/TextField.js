@@ -336,7 +336,7 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
             // this is very hacky as keydown always get's upper case.
             //
             var cc = String.fromCharCode(event.getCharCode());
-            this.setValue( this.shiftKey ?  cc : cc.toLowerCase());
+            this.setValue( event.shiftKey ?  cc : cc.toLowerCase());
             
         }
         
