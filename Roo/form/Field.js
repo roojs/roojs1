@@ -450,9 +450,7 @@ side          Add an error icon to the right of the field with a popup on hover
      */
     getRawValue : function(){
         var v = this.el.getValue();
-        if(v === this.emptyText){
-            v = '';
-        }
+        
         return v;
     },
 
