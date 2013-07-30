@@ -658,7 +658,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         this.value = '';
         this.setRawValue('');
         this.lastSelectionText = '';
-        this.applyEmptyText();
+        
     },
 
     /**
