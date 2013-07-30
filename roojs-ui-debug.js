@@ -21608,9 +21608,7 @@ side          Add an error icon to the right of the field with a popup on hover
      */
     getRawValue : function(){
         var v = this.el.getValue();
-        if(v === this.emptyText){
-            v = '';
-        }
+        
         return v;
     },
 
@@ -21620,9 +21618,7 @@ side          Add an error icon to the right of the field with a popup on hover
      */
     getValue : function(){
         var v = this.el.getValue();
-        if(v === this.emptyText || v === undefined){
-            v = '';
-        }
+         
         return v;
     },
 
@@ -21815,17 +21811,18 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
      */
     regexText : "",
     /**
-     * @cfg {String} emptyText The default text to display in an empty field (defaults to null).
+     * @cfg {String} emptyText The default text to display in an empty field - placeholder... (defaults to null).
      */
     emptyText : null,
-    /**
-     * @cfg {String} emptyClass The CSS class to apply to an empty field to style the {@link #emptyText} (defaults to
-     * 'x-form-empty-field').  This class is automatically added and removed as needed depending on the current field value.
-     */
-    emptyClass : 'x-form-empty-field',
+   
 
     // private
-    initEvents : function(){
+    initEvents : function()
+    {
+        if (this.emptyText) {
+            this.el.attr('placeholder', this.emptyText);
+        }
+        
         Roo.form.TextField.superclass.initEvents.call(this);
         if(this.validationEvent == 'keyup'){
             this.validationTask = new Roo.util.DelayedTask(this.validate, this);
@@ -21834,12 +21831,10 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
         else if(this.validationEvent !== false){
             this.el.on(this.validationEvent, this.validate, this, {buffer: this.validationDelay});
         }
-        if(this.selectOnFocus || this.emptyText){
+        
+        if(this.selectOnFocus){
             this.on("focus", this.preFocus, this);
-            if(this.emptyText){
-                this.on('blur', this.postBlur, this);
-                this.applyEmptyText();
-            }
+            
         }
         if(this.maskRe || (this.vtype && this.disableKeyFilter !== true && (this.maskRe = Roo.form.VTypes[this.vtype+'Mask']))){
             this.el.on("keypress", this.filterKeys, this);
@@ -21879,38 +21874,23 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
 
     /**
      * Resets the current field value to the originally-loaded value and clears any validation messages.
-     * Also adds emptyText and emptyClass if the original value was blank.
+     *  
      */
     reset : function(){
         Roo.form.TextField.superclass.reset.call(this);
-        this.applyEmptyText();
+       
     },
 
-    applyEmptyText : function(){
-        if(this.rendered && this.emptyText && this.getRawValue().length < 1){
-            this.setRawValue(this.emptyText);
-            this.el.addClass(this.emptyClass);
-        }
-    },
-
+    
     // private
     preFocus : function(){
-        if(this.emptyText){
-            if(this.el.dom.value == this.emptyText){
-                this.setRawValue('');
-            }
-            this.el.removeClass(this.emptyClass);
-        }
+        
         if(this.selectOnFocus){
             this.el.dom.select();
         }
     },
 
-    // private
-    postBlur : function(){
-        this.applyEmptyText();
-    },
-
+    
     // private
     filterKeys : function(e){
         var k = e.getKey();
@@ -21927,11 +21907,9 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
     },
 
     setValue : function(v){
-        if(this.emptyText && this.el && v !== undefined && v !== null && v !== ''){
-            this.el.removeClass(this.emptyClass);
-        }
+        
         Roo.form.TextField.superclass.setValue.apply(this, arguments);
-        this.applyEmptyText();
+        
         this.autoSize();
     },
 
@@ -21942,7 +21920,7 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
      * @return {Boolean} True if the value is valid, else false
      */
     validateValue : function(value){
-        if(value.length < 1 || value === this.emptyText){ // if it's blank
+        if(value.length < 1)  { // if it's blank
              if(this.allowBlank){
                 this.clearInvalid();
                 return true;
