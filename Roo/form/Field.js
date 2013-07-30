@@ -460,9 +460,7 @@ side          Add an error icon to the right of the field with a popup on hover
      */
     getValue : function(){
         var v = this.el.getValue();
-        if(v === this.emptyText || v === undefined){
-            v = '';
-        }
+         
         return v;
     },
 
