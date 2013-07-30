@@ -38972,7 +38972,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         this.value = '';
         this.setRawValue('');
         this.lastSelectionText = '';
-        this.applyEmptyText();
+        
     },
 
     /**
@@ -39208,7 +39208,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         if(this.el.dom.value.length > 0){
             this.el.dom.value =
                 this.lastSelectionText === undefined ? '' : this.lastSelectionText;
-            this.applyEmptyText();
+             
         }
     },
 
