@@ -104,7 +104,7 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
      */
     regexText : "",
     /**
-     * @cfg {String} emptyText The default text to display in an empty field (defaults to null).
+     * @cfg {String} emptyText The default text to display in an empty field - placeholder... (defaults to null).
      */
     emptyText : null,
     /**
@@ -114,7 +114,12 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
     emptyClass : 'x-form-empty-field',
 
     // private
-    initEvents : function(){
+    initEvents : function()
+    {
+        if (this.emptyText) {
+            this.el.attr('placeholder', this.emptyText);
+        }
+        
         Roo.form.TextField.superclass.initEvents.call(this);
         if(this.validationEvent == 'keyup'){
             this.validationTask = new Roo.util.DelayedTask(this.validate, this);
@@ -127,7 +132,7 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
             this.on("focus", this.preFocus, this);
             if(this.emptyText){
                 this.on('blur', this.postBlur, this);
-                this.applyEmptyText();
+                 
             }
         }
         if(this.maskRe || (this.vtype && this.disableKeyFilter !== true && (this.maskRe = Roo.form.VTypes[this.vtype+'Mask']))){
@@ -177,7 +182,7 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
 
     applyEmptyText : function(){
         if(this.rendered && this.emptyText && this.getRawValue().length < 1){
-            this.setRawValue(this.emptyText);
+            
             this.el.addClass(this.emptyClass);
         }
     },
@@ -185,9 +190,7 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
     // private
     preFocus : function(){
         if(this.emptyText){
-            if(this.el.dom.value == this.emptyText){
-                this.setRawValue('');
-            }
+           
             this.el.removeClass(this.emptyClass);
         }
         if(this.selectOnFocus){
@@ -231,7 +234,7 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
      * @return {Boolean} True if the value is valid, else false
      */
     validateValue : function(value){
-        if(value.length < 1 || value === this.emptyText){ // if it's blank
+        if(value.length < 1)  { // if it's blank
              if(this.allowBlank){
                 this.clearInvalid();
                 return true;
