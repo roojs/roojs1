@@ -124,12 +124,10 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
         else if(this.validationEvent !== false){
             this.el.on(this.validationEvent, this.validate, this, {buffer: this.validationDelay});
         }
-        if(this.selectOnFocus || this.emptyText){
+        
+        if(this.selectOnFocus){
             this.on("focus", this.preFocus, this);
-            if(this.emptyText){
-                this.on('blur', this.postBlur, this);
-                 
-            }
+            
         }
         if(this.maskRe || (this.vtype && this.disableKeyFilter !== true && (this.maskRe = Roo.form.VTypes[this.vtype+'Mask']))){
             this.el.on("keypress", this.filterKeys, this);
@@ -185,11 +183,7 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
         }
     },
 
-    // private
-    postBlur : function(){
-       
-    },
-
+    
     // private
     filterKeys : function(e){
         var k = e.getKey();
