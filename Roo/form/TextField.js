@@ -107,11 +107,7 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
      * @cfg {String} emptyText The default text to display in an empty field - placeholder... (defaults to null).
      */
     emptyText : null,
-    /**
-     * @cfg {String} emptyClass The CSS class to apply to an empty field to style the {@link #emptyText} (defaults to
-     * 'x-form-empty-field').  This class is automatically added and removed as needed depending on the current field value.
-     */
-    emptyClass : 'x-form-empty-field',
+   
 
     // private
     initEvents : function()
@@ -173,26 +169,17 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
 
     /**
      * Resets the current field value to the originally-loaded value and clears any validation messages.
-     * Also adds emptyText and emptyClass if the original value was blank.
+     *  
      */
     reset : function(){
         Roo.form.TextField.superclass.reset.call(this);
-        this.applyEmptyText();
+       
     },
 
-    applyEmptyText : function(){
-        if(this.rendered && this.emptyText && this.getRawValue().length < 1){
-            
-            this.el.addClass(this.emptyClass);
-        }
-    },
-
+    
     // private
     preFocus : function(){
-        if(this.emptyText){
-           
-            this.el.removeClass(this.emptyClass);
-        }
+        
         if(this.selectOnFocus){
             this.el.dom.select();
         }
@@ -200,7 +187,7 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
 
     // private
     postBlur : function(){
-        this.applyEmptyText();
+       
     },
 
     // private
@@ -219,11 +206,9 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
     },
 
     setValue : function(v){
-        if(this.emptyText && this.el && v !== undefined && v !== null && v !== ''){
-            this.el.removeClass(this.emptyClass);
-        }
+        
         Roo.form.TextField.superclass.setValue.apply(this, arguments);
-        this.applyEmptyText();
+        
         this.autoSize();
     },
 
