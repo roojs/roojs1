@@ -81,19 +81,17 @@ Roo.LoadMask.prototype = {
         
         if (typeof(arguments[3]) != 'undefined') {
             Roo.MessageBox.alert("Error loading",arguments[3]);
-        } else {
-            /*
-            try {
-                if (this.store && typeof(this.store.reader.jsonData.errorMsg) != 'undefined') {
-                    Roo.MessageBox.alert("Error loading",this.store.reader.jsonData.errorMsg);
-                }   
-            } catch(e) {
-                
-            }
-            */
+        } 
+        /*
+        try {
+            if (this.store && typeof(this.store.reader.jsonData.errorMsg) != 'undefined') {
+                Roo.MessageBox.alert("Error loading",this.store.reader.jsonData.errorMsg);
+            }   
+        } catch(e) {
+            
         }
-        // te
-        
+        */
+    
         
         
         this.el.unmask(this.removeMask);
