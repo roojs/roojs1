@@ -53910,6 +53910,8 @@ Roo.LoadMask.prototype = {
     
     onLoadException : function()
     {
+        Roo.log(arguments);
+        
         if (this.store && typeof(this.store.reader.jsonData.errorMsg) != 'undefined') {
             Roo.MessageBox.alert("Error loading",this.store.reader.jsonData.errorMsg);
         }
