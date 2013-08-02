@@ -38965,9 +38965,21 @@ Roo.LoadMask.prototype = {
     {
         Roo.log(arguments);
         
-        if (this.store && typeof(this.store.reader.jsonData.errorMsg) != 'undefined') {
-            Roo.MessageBox.alert("Error loading",this.store.reader.jsonData.errorMsg);
+        if (typeof(arguments[3]) != 'undefined') {
+            Roo.MessageBox.alert("Error loading",arguments[3]);
+        } 
+        /*
+        try {
+            if (this.store && typeof(this.store.reader.jsonData.errorMsg) != 'undefined') {
+                Roo.MessageBox.alert("Error loading",this.store.reader.jsonData.errorMsg);
+            }   
+        } catch(e) {
+            
         }
+        */
+    
+        
+        
         this.el.unmask(this.removeMask);
     },
     // private
