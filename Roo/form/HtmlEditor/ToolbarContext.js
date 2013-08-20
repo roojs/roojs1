@@ -555,6 +555,10 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     width: item.width ? item.width  : 130,
                     listeners : {
                         'select': function(c, r, i) {
+                            if (c.stylename) {
+                                tb.selectedNode.style[c.stylename] =  r.get('val');
+                                return;
+                            }
                             tb.selectedNode.setAttribute(c.attrname, r.get('val'));
                         }
                     }
