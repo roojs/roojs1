@@ -37,6 +37,16 @@ Roo.form.HtmlEditor.ToolbarContext = function(config)
     // dont call parent... till later.
     this.styles = this.styles || {};
 }
+
+Roo.form.HtmlEditor.ToolbarContext.fontFamilies = [
+        'Arial',
+        'Courier New',
+        'Tahoma',
+        'Times New Roman',
+        'Verdana'
+    ],
+    
+
 Roo.form.HtmlEditor.ToolbarContext.types = {
     'IMG' : {
         width : {
