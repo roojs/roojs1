@@ -1191,11 +1191,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 }
                 
                 
-                
-//                if(l == 'font-size'){
-////                    Roo.log('(REMOVE FONT SIZE)' + node.tagName +'.' + n + ':'+l + '=' + v);
-//                    return true;
-//                }
+                 
                 
                 clean.push(p);
                 return true;
