@@ -235,24 +235,7 @@ Roo.form.HtmlEditor.ToolbarContext.options = {
 };
 
 // fixme - these need to be configurable..
-
-Roo.form.HtmlEditor.ToolbarContext[ 'font-family']  = {
-    title : "font",
-    style : 'fontFamily',
-    displayField: 'display',
-    optname : 'font-family',
-    width: 140
-
-};
-
-Roo.each([ 'SPAN', 'DIV' , 'TD' , 'P' ], function(tg) {
-    var cx= Roo.form.HtmlEditor.ToolbarContext;
-    if (typeof(cx.types[tg]) == 'undefined') {
-        cx.types[tg] = {};
-    }
-    
-    cx.types[tg]['font-family'] = cx[ 'font-family'] ;
-});
+ 
 
 Roo.form.HtmlEditor.ToolbarContext.types
 
