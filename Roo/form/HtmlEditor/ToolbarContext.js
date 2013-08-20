@@ -187,6 +187,9 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
     }
 
 };
+
+// fixme - these need to be configurable..
+
 Roo.form.HtmlEditor.ToolbarContext[ 'font-family']  = {
     title : "font",
     style : 'fontFamily',
