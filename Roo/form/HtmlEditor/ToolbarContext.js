@@ -579,7 +579,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             var opts = item.opts ? item.opts : false;
             if (items.optname) {
                 opts = tbops[items.optname];
-                //code
+           
             }
             
             if (opts) {
