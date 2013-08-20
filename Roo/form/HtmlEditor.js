@@ -163,7 +163,10 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         }
         
         for (var i =0 ; i < editor.toolbars.length;i++) {
-            editor.toolbars[i] = Roo.factory(editor.toolbars[i], Roo.form.HtmlEditor);
+            editor.toolbars[i] = Roo.factory(
+                    typeof(editor.toolbars[i]) == 'string' ?
+                        { xtype: editor.toolbars[i]} : editor.toolbars[i],
+                Roo.form.HtmlEditor);
             editor.toolbars[i].init(editor);
         }
          
