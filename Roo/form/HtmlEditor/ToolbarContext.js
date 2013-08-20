@@ -578,11 +578,11 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             
             var opts = item.opts ? item.opts : false;
             if (items.optname) {
-                opts = 
+                opts = tbops[items.optname];
                 //code
             }
             
-            if (item.opts) {
+            if (opts) {
                 // opts == pulldown..
                 tb.addField( new Roo.form.ComboBox({
                     store: new Roo.data.SimpleStore({
