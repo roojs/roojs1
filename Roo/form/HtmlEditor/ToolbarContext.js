@@ -374,9 +374,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 this.tb.fields.each(function(e) {
                     if (e.stylename) {
                         e.setValue(sel.style[e.stylename]);
-                    }
-                    
-                    
+                        return;
+                    } 
                    e.setValue(sel.getAttribute(e.attrname));
                 });
             }
