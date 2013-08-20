@@ -588,7 +588,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     store: new Roo.data.SimpleStore({
                         id : 'val',
                         fields: ['val', 'display'],
-                        data : item.opts  
+                        data : opts  
                     }),
                     name : '-roo-edit-' + i,
                     attrname : i,
