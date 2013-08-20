@@ -575,7 +575,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             tb.add(item.title + ":&nbsp;");
             
             
-            
+            //optname == used so you can configure the options available..
             var opts = item.opts ? item.opts : false;
             if (items.optname) {
                 opts = tbops[items.optname];
