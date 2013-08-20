@@ -226,11 +226,11 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
 // this should be configurable..
 Roo.form.HtmlEditor.ToolbarContext.options = {
         'font-family'  : [ 
-                    [ 'Helvetica,Arial,sans-serif', 'Helvetica'],
-                    [ 'Courier New', 'Courier New'],
-                    [ 'Tahoma', 'Tahoma'],
-                    [ 'Times New Roman,serif', 'Times'],
-                    [ 'Verdana','Verdana' ]
+                [ 'Helvetica,Arial,sans-serif', 'Helvetica'],
+                [ 'Courier New', 'Courier New'],
+                [ 'Tahoma', 'Tahoma'],
+                [ 'Times New Roman,serif', 'Times'],
+                [ 'Verdana','Verdana' ]
         ]
 };
 
@@ -280,7 +280,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
      */
     styles : false,
     
-    
+    options: false,
     
     toolbars : false,
     
