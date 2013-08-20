@@ -1347,7 +1347,7 @@ Roo.form.HtmlEditor.pwhite= [
 // white listed style attributes.
 Roo.form.HtmlEditor.cwhite= [
         'text-align',
-        'font-family'
+        'font-family',
 //        'font-size'//??
 ];
 
