@@ -132,7 +132,8 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
             style : 'fontFamily',
             displayField: 'display',
             optname : 'font-family',
-            width: 140
+            width: 140,
+            editable : true
         }
     },
     'INPUT' : {
@@ -195,7 +196,8 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
             style : 'fontFamily',
             displayField: 'display',
             optname : 'font-family',
-            width: 140
+            width: 140,
+            editable : true
         }
     },
     'DIV' : {
@@ -204,7 +206,8 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
             style : 'fontFamily',
             displayField: 'display',
             optname : 'font-family',
-            width: 140
+            width: 140,
+            editable : true
         }
     },
      'P' : {
@@ -213,7 +216,8 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
             style : 'fontFamily',
             displayField: 'display',
             optname : 'font-family',
-            width: 140
+            width: 140,
+            editable : true
         }
     },
     
