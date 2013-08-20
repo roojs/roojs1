@@ -27709,7 +27709,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             if (opts) {
                 // opts == pulldown..
                 tb.addField( new Roo.form.ComboBox({
-                    store:   typeof(tbc.stores[i]) != 'undefined' ?  tbc.stores[i] : new Roo.data.SimpleStore({
+                    store:   typeof(tbc.stores[i]) != 'undefined' ?  Roo.factory(tbc.stores[i],Roo.data) : new Roo.data.SimpleStore({
                         id : 'val',
                         fields: ['val', 'display'],
                         data : opts  
