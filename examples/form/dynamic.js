@@ -257,7 +257,8 @@ Roo.onReady(function(){
                         fieldLabel:'Biography',
                         width:550,
                         height:200,
-                        resizable: 's' /// where the handles should got..
+                        resizable: 's'. /// where the handles should got..
+                        toolbars : [ 'Standard', 'Context' ]  
                     }
                 ]
             }
