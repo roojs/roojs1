@@ -551,8 +551,9 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
     
             }));
         }
-            
-        var tbops = Roo.form.HtmlEditor.ToolbarContext.options;
+        
+        var tbc = Roo.form.HtmlEditor.ToolbarContext;
+        var tbops = tbc.options;
         
         for (var i in tlist) {
             
@@ -570,7 +571,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             if (opts) {
                 // opts == pulldown..
                 tb.addField( new Roo.form.ComboBox({
-                    store: new Roo.data.SimpleStore({
+                    store:   typeof(tbc.stores[i]) != 'undefined' ?  tbc.stores[i] : new Roo.data.SimpleStore({
                         id : 'val',
                         fields: ['val', 'display'],
                         data : opts  
