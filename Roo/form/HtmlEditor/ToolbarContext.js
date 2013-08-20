@@ -373,7 +373,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             if (this.tb.fields) {
                 this.tb.fields.each(function(e) {
                     if (e.stylename) {
-                        
+                        e.setValue(sel.style[e.stylename]);
                     }
                     
                     
