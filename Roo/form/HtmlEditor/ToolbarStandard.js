@@ -464,6 +464,9 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
     
     createFontOptions : function(){
         var buf = [], fs = this.fontFamilies, ff, lc;
+        
+        
+        
         for(var i = 0, len = fs.length; i< len; i++){
             ff = fs[i];
             lc = ff.toLowerCase();
