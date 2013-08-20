@@ -161,7 +161,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             e.preventDefault(); // what does this do?
         });
 
-        if(!this.disable.font && !Roo.isSafari){
+        if(!this.disable.font) { // && !Roo.isSafari){
             /* why no safari for fonts */
             editor.fontSelect = tb.el.createChild({
                 tag:'select',
