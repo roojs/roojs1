@@ -1178,12 +1178,12 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 var l = p.split(':').shift().replace(/\s+/g,'');
                 l = l.replace(/^\s+/g,'').replace(/\s+$/g,'');
                 
-                if ( cblack.indexOf(l) < 0) {
+                if ( cblack.indexOf(l) > -1) {
 //                    Roo.log('(REMOVE CSS)' + node.tagName +'.' + n + ':'+l + '=' + v);
                     //node.removeAttribute(n);
                     return true;
                 }
-                
+                Roo.log()
                 // only allow 'c whitelisted system attributes'
                 if ( cwhite.length &&  cwhite.indexOf(l) < 0) {
 //                    Roo.log('(REMOVE CSS)' + node.tagName +'.' + n + ':'+l + '=' + v);
