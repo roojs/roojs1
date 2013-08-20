@@ -1177,18 +1177,20 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 var l = p.split(':').shift().replace(/\s+/g,'');
                 l = l.replace(/^\s+/g,'').replace(/\s+$/g,'');
                 
-                // only allow 'c whitelisted system attributes'
-                if ( cwhite.indexOf(l) < 0) {
-//                    Roo.log('(REMOVE CSS)' + node.tagName +'.' + n + ':'+l + '=' + v);
-                    //node.removeAttribute(n);
-                    return true;
-                }
-                
                 if ( cblack.indexOf(l) < 0) {
 //                    Roo.log('(REMOVE CSS)' + node.tagName +'.' + n + ':'+l + '=' + v);
                     //node.removeAttribute(n);
                     return true;
                 }
+                
+                // only allow 'c whitelisted system attributes'
+                if ( !cwhite.length || cwhite.indexOf(l) < 0) {
+//                    Roo.log('(REMOVE CSS)' + node.tagName +'.' + n + ':'+l + '=' + v);
+                    //node.removeAttribute(n);
+                    return true;
+                }
+                
+                
                 
 //                if(l == 'font-size'){
 ////                    Roo.log('(REMOVE FONT SIZE)' + node.tagName +'.' + n + ':'+l + '=' + v);
