@@ -195,7 +195,7 @@ Roo.form.HtmlEditor.ToolbarContext[ 'font-family']  = {
         [ 'helvetica,arial,sans-serif'],
         [ 'Courier New'],
         [ 'Tahoma'],
-        [ 'Times New Roman'],
+        [ 'Times New Roman,serif'],
         [ 'Verdana' ]
     ],
     width: 160
