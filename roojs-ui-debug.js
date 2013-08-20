@@ -27720,7 +27720,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     displayField: item.displayField ? item.displayField : 'val',
                     valueField :  'val',
                     typeAhead: false,
-                    mode: 'local',
+                    mode: typeof(tbc.stores[i]) != 'undefined'  ? 'remote' : 'local',
                     editable : false,
                     triggerAction: 'all',
                     emptyText:'Select',
