@@ -169,6 +169,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                 cls:'x-font-select',
                 html: editor.createFontOptions()
             });
+            
             editor.fontSelect.on('change', function(){
                 var font = editor.fontSelect.dom.value;
                 editor.relayCmd('fontname', font);
