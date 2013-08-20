@@ -199,7 +199,7 @@ Roo.form.HtmlEditor.ToolbarContext[ 'font-family']  = {
         ],
         width: 80
     }
-}
+};
 
 Roo.each([ 'SPAN', 'DIV' , 'TD' , 'P' ], function(tg) {
     var cx= Roo.form.HtmlEditor.ToolbarContext;
