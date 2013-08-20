@@ -27313,18 +27313,22 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
     }
 
 };
+
+// fixme - these need to be configurable..
+
 Roo.form.HtmlEditor.ToolbarContext[ 'font-family']  = {
     title : "font",
     style : 'fontFamily',
+    displayField: 'display',
     opts : [
-        [""],
-        [ 'Arial'],
-        [ 'Courier New'],
-        [ 'Tahoma'],
-        [ 'Times New Roman'],
-        [ 'Verdana' ]
+        ["" , '--None--'],
+        [ 'helvetica,Arial,sans-serif', 'Helvetica'],
+        [ 'Courier New', 'Courier New'],
+        [ 'Tahoma', 'Tahoma'],
+        [ 'Times New Roman,serif', 'Times'],
+        [ 'Verdana','Verdana' ]
     ],
-    width: 160
+    width: 140
 
 };
 
@@ -27631,7 +27635,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 }),
                 name : '-roo-edit-className',
                 attrname : 'className',
-                displayField:'val',
+                displayField: 'val',
                 typeAhead: false,
                 mode: 'local',
                 editable : false,
@@ -27665,13 +27669,14 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 tb.addField( new Roo.form.ComboBox({
                     store: new Roo.data.SimpleStore({
                         id : 'val',
-                        fields: ['val'],
+                        fields: ['val', 'display'],
                         data : item.opts  
                     }),
                     name : '-roo-edit-' + i,
                     attrname : i,
                     stylename : item.style ? item.style : false,
-                    displayField:'val',
+                    displayField: item.displayField ? item.displayField : 'val',
+                    valueField :  'val',
                     typeAhead: false,
                     mode: 'local',
                     editable : false,
