@@ -1166,6 +1166,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             var cwhite = typeof(ed.cwhite) == 'undefined' ? Roo.form.HtmlEditor.cwhite : ed.cwhite;
             var cblack = typeof(ed.cblack) == 'undefined' ? Roo.form.HtmlEditor.cblack : ed.cblack;
             
+            
             var parts = v.split(/;/);
             var clean = [];
             
@@ -1184,7 +1185,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 }
                 
                 // only allow 'c whitelisted system attributes'
-                if ( !cwhite.length || cwhite.indexOf(l) < 0) {
+                if ( cwhite.length &&  cwhite.indexOf(l) < 0) {
 //                    Roo.log('(REMOVE CSS)' + node.tagName +'.' + n + ':'+l + '=' + v);
                     //node.removeAttribute(n);
                     return true;
