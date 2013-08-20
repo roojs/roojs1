@@ -40230,7 +40230,10 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         }
         
         for (var i =0 ; i < editor.toolbars.length;i++) {
-            editor.toolbars[i] = Roo.factory(editor.toolbars[i], Roo.form.HtmlEditor);
+            editor.toolbars[i] = Roo.factory(
+                    typeof(editor.toolbars[i]) == 'string' ?
+                        { xtype: editor.toolbars[i]} : editor.toolbars[i],
+                Roo.form.HtmlEditor);
             editor.toolbars[i].init(editor);
         }
          
@@ -40700,7 +40703,18 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     insertTag : function(tg)
     {
         // could be a bit smarter... -> wrap the current selected tRoo..
-        
+        if (tg.toLowerCase() == 'span') {
+            
+            range = this.createRange(this.getSelection());
+            var wrappingNode = this.doc.createElement("span");
+            wrappingNode.appendChild(range.extractContents());
+            range.insertNode(wrappingNode);
+
+            return;
+            
+            
+            
+        }
         this.execCmd("formatblock",   tg);
         
     },
@@ -40709,7 +40723,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     {
         
         
-        range = this.createRange();
+        var range = this.createRange();
         range.deleteContents();
                //alert(Sender.getAttribute('label'));
                
@@ -41233,6 +41247,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             var cwhite = typeof(ed.cwhite) == 'undefined' ? Roo.form.HtmlEditor.cwhite : ed.cwhite;
             var cblack = typeof(ed.cblack) == 'undefined' ? Roo.form.HtmlEditor.cblack : ed.cblack;
             
+            
             var parts = v.split(/;/);
             var clean = [];
             
@@ -41244,23 +41259,22 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 var l = p.split(':').shift().replace(/\s+/g,'');
                 l = l.replace(/^\s+/g,'').replace(/\s+$/g,'');
                 
+                
+                if ( cblack.indexOf(l) > -1) {
+//                    Roo.log('(REMOVE CSS)' + node.tagName +'.' + n + ':'+l + '=' + v);
+                    //node.removeAttribute(n);
+                    return true;
+                }
+                //Roo.log()
                 // only allow 'c whitelisted system attributes'
-                if ( cwhite.indexOf(l) < 0) {
+                if ( cwhite.length &&  cwhite.indexOf(l) < 0) {
 //                    Roo.log('(REMOVE CSS)' + node.tagName +'.' + n + ':'+l + '=' + v);
                     //node.removeAttribute(n);
                     return true;
                 }
                 
-                if ( cblack.indexOf(l) < 0) {
-//                    Roo.log('(REMOVE CSS)' + node.tagName +'.' + n + ':'+l + '=' + v);
-                    //node.removeAttribute(n);
-                    return true;
-                }
                 
-//                if(l == 'font-size'){
-////                    Roo.log('(REMOVE FONT SIZE)' + node.tagName +'.' + n + ':'+l + '=' + v);
-//                    return true;
-//                }
+                 
                 
                 clean.push(p);
                 return true;
@@ -41413,7 +41427,9 @@ Roo.form.HtmlEditor.pwhite= [
 
 // white listed style attributes.
 Roo.form.HtmlEditor.cwhite= [
-        'text-align'
+      //  'text-align', /// default is to allow most things..
+      
+         
 //        'font-size'//??
 ];
 
@@ -41554,7 +41570,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         ["p"] ,  
         ["h1"],["h2"],["h3"],["h4"],["h5"],["h6"], 
         ["pre"],[ "code"], 
-        ["abbr"],[ "acronym"],[ "address"],[ "cite"],[ "samp"],[ "var"]
+        ["abbr"],[ "acronym"],[ "address"],[ "cite"],[ "samp"],[ "var"],
+        ['div'],['span']
     ],
      /**
      * @cfg {String} defaultFont default font to use.
@@ -41598,7 +41615,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         });
 
         if(!this.disable.font) { // && !Roo.isSafari){
-            /* why no safari for fonts */
+            /* why no safari for fonts 
             editor.fontSelect = tb.el.createChild({
                 tag:'select',
                 tabIndex: -1,
@@ -41616,6 +41633,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                 editor.fontSelect.dom,
                 '-'
             );
+            */
             
         };
         if(!this.disable.formats){
@@ -41900,6 +41918,9 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
     
     createFontOptions : function(){
         var buf = [], fs = this.fontFamilies, ff, lc;
+        
+        
+        
         for(var i = 0, len = fs.length; i< len; i++){
             ff = fs[i];
             lc = ff.toLowerCase();
@@ -42101,6 +42122,9 @@ Roo.form.HtmlEditor.ToolbarContext = function(config)
     // dont call parent... till later.
     this.styles = this.styles || {};
 }
+
+ 
+
 Roo.form.HtmlEditor.ToolbarContext.types = {
     'IMG' : {
         width : {
@@ -42187,6 +42211,13 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
             title: "Colspan",
             width: 20
             
+        },
+         'font-family'  : {
+            title : "Font",
+            style : 'fontFamily',
+            displayField: 'display',
+            optname : 'font-family',
+            width: 140
         }
     },
     'INPUT' : {
@@ -42238,16 +42269,62 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
     // should this just be 
     'BODY' : {
         title : {
-            title: "title",
+            title: "Title",
             width: 200,
             disabled : true
         }
     },
+    'SPAN' : {
+        'font-family'  : {
+            title : "Font",
+            style : 'fontFamily',
+            displayField: 'display',
+            optname : 'font-family',
+            width: 140
+        }
+    },
+    'DIV' : {
+        'font-family'  : {
+            title : "Font",
+            style : 'fontFamily',
+            displayField: 'display',
+            optname : 'font-family',
+            width: 140
+        }
+    },
+     'P' : {
+        'font-family'  : {
+            title : "Font",
+            style : 'fontFamily',
+            displayField: 'display',
+            optname : 'font-family',
+            width: 140
+        }
+    },
+    
     '*' : {
         // empty..
     }
+
 };
 
+// this should be configurable.. - you can either set it up using stores, or modify options somehwere..
+Roo.form.HtmlEditor.ToolbarContext.stores = false;
+
+Roo.form.HtmlEditor.ToolbarContext.options = {
+        'font-family'  : [ 
+                [ 'Helvetica,Arial,sans-serif', 'Helvetica'],
+                [ 'Courier New', 'Courier New'],
+                [ 'Tahoma', 'Tahoma'],
+                [ 'Times New Roman,serif', 'Times'],
+                [ 'Verdana','Verdana' ]
+        ]
+};
+
+// fixme - these need to be configurable..
+ 
+
+Roo.form.HtmlEditor.ToolbarContext.types
 
 
 Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
@@ -42273,7 +42350,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
      */
     styles : false,
     
-    
+    options: false,
     
     toolbars : false,
     
@@ -42408,6 +42485,10 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             // update attributes
             if (this.tb.fields) {
                 this.tb.fields.each(function(e) {
+                    if (e.stylename) {
+                        e.setValue(sel.style[e.stylename]);
+                        return;
+                    } 
                    e.setValue(sel.getAttribute(e.attrname));
                 });
             }
@@ -42537,7 +42618,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 }),
                 name : '-roo-edit-className',
                 attrname : 'className',
-                displayField:'val',
+                displayField: 'val',
                 typeAhead: false,
                 mode: 'local',
                 editable : false,
@@ -42555,8 +42636,9 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
     
             }));
         }
-            
         
+        var tbc = Roo.form.HtmlEditor.ToolbarContext;
+        var tbops = tbc.options;
         
         for (var i in tlist) {
             
@@ -42564,21 +42646,28 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             tb.add(item.title + ":&nbsp;");
             
             
+            //optname == used so you can configure the options available..
+            var opts = item.opts ? item.opts : false;
+            if (item.optname) {
+                opts = tbops[item.optname];
+           
+            }
             
-            
-            if (item.opts) {
+            if (opts) {
                 // opts == pulldown..
                 tb.addField( new Roo.form.ComboBox({
-                    store: new Roo.data.SimpleStore({
+                    store:   typeof(tbc.stores[i]) != 'undefined' ?  Roo.factory(tbc.stores[i],Roo.data) : new Roo.data.SimpleStore({
                         id : 'val',
-                        fields: ['val'],
-                        data : item.opts  
+                        fields: ['val', 'display'],
+                        data : opts  
                     }),
                     name : '-roo-edit-' + i,
                     attrname : i,
-                    displayField:'val',
+                    stylename : item.style ? item.style : false,
+                    displayField: item.displayField ? item.displayField : 'val',
+                    valueField :  'val',
                     typeAhead: false,
-                    mode: 'local',
+                    mode: typeof(tbc.stores[i]) != 'undefined'  ? 'remote' : 'local',
                     editable : false,
                     triggerAction: 'all',
                     emptyText:'Select',
@@ -42586,6 +42675,10 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     width: item.width ? item.width  : 130,
                     listeners : {
                         'select': function(c, r, i) {
+                            if (c.stylename) {
+                                tb.selectedNode.style[c.stylename] =  r.get('val');
+                                return;
+                            }
                             tb.selectedNode.setAttribute(c.attrname, r.get('val'));
                         }
                     }
@@ -42630,7 +42723,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     // undo does not work.
                      
                     var sn = tb.selectedNode;
-                    Roo.log(sn);
+                    
                     var pn = sn.parentNode;
                     
                     var stn =  sn.childNodes[0];
@@ -42638,7 +42731,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     while (sn.childNodes.length) {
                         var node = sn.childNodes[0];
                         sn.removeChild(node);
-                        Roo.log(node);
+                        //Roo.log(node);
                         pn.insertBefore(node, sn);
                         
                     }
@@ -42658,7 +42751,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     
                     //_this.updateToolbar(null, null, pn);
                     _this.updateToolbar(null, null, null);
-                    this.footDisp.dom.innerHTML = ''; 
+                    _this.footDisp.dom.innerHTML = ''; 
                 }
             }
             
@@ -42721,7 +42814,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
     {
         ev.preventDefault();
         var  cn = dom.className;
-        Roo.log(cn);
+        //Roo.log(cn);
         if (!cn.match(/x-ed-loc-/)) {
             return;
         }
