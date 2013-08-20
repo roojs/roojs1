@@ -38,10 +38,7 @@ Roo.form.HtmlEditor.ToolbarContext = function(config)
     this.styles = this.styles || {};
 }
 
-Roo.form.HtmlEditor.ToolbarContext.fontFamilies = [
-        
-    ],
-    
+ 
 
 Roo.form.HtmlEditor.ToolbarContext.types = {
     'IMG' : {
