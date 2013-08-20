@@ -188,17 +188,17 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
 
 };
 Roo.form.HtmlEditor.ToolbarContext[ 'font-family']  = {
-        title : "font",
-        opts : [
-            [""],
-            [ 'Arial'],
-            [ 'Courier New'],
-            [ 'Tahoma'],
-            [ 'Times New Roman'],
-            [ 'Verdana' ]
-        ],
-        width: 80
-    }
+    title : "font",
+    opts : [
+        [""],
+        [ 'Arial'],
+        [ 'Courier New'],
+        [ 'Tahoma'],
+        [ 'Times New Roman'],
+        [ 'Verdana' ]
+    ],
+    width: 80
+
 };
 
 Roo.each([ 'SPAN', 'DIV' , 'TD' , 'P' ], function(tg) {
