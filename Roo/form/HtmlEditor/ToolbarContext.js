@@ -190,8 +190,9 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
 Roo.form.HtmlEditor.ToolbarContext[ 'font-family']  = {
     title : "font",
     style : 'fontFamily',
+    displayField: 'display',
     opts : [
-        [""],
+        ["" , '--None--'],
         [ 'helvetica,Arial,sans-serif'],
         [ 'Courier New'],
         [ 'Tahoma'],
