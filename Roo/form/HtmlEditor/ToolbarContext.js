@@ -199,7 +199,7 @@ Roo.form.HtmlEditor.ToolbarContext[ 'font-family']  = {
         [ 'Times New Roman,serif', 'Times'],
         [ 'Verdana','Verdana' ]
     ],
-    width: 160
+    width: 140
 
 };
 
