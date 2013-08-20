@@ -567,7 +567,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             }));
         }
             
-        
+        var tbops = Roo.form.HtmlEditor.ToolbarContext.options;
         
         for (var i in tlist) {
             
@@ -576,6 +576,11 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             
             
             
+            var opts = item.opts ? item.opts : false;
+            if (items.optname) {
+                opts = 
+                //code
+            }
             
             if (item.opts) {
                 // opts == pulldown..
