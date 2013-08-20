@@ -202,11 +202,12 @@ Roo.form.HtmlEditor.ToolbarContext[ 'font-family']  = {
 }
 
 Roo.each([ 'SPAN', 'DIV' , 'TD' , 'P' ], function(tg) {
-    if (typeof(Roo.form.HtmlEditor.ToolbarContext.types[tg]) == 'undefined') {
-        Roo.form.HtmlEditor.ToolbarContext.types[tg] = {};
+    var cx= Roo.form.HtmlEditor.ToolbarContext;
+    if (typeof(cx.types[tg]) == 'undefined') {
+        cx.types[tg] = {};
     }
     
-    Roo.form.HtmlEditor.ToolbarContext.types[tg]['font-family'] = Roo.form.HtmlEditor.ToolbarContext[ 'font-family'] ;
+    cx.types[tg]['font-family'] = cx[ 'font-family'] ;
 });
 
 Roo.form.HtmlEditor.ToolbarContext.types
