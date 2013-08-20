@@ -189,6 +189,7 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
 };
 Roo.form.HtmlEditor.ToolbarContext[ 'font-family']  = {
     title : "font",
+    style : 'font-family',
     opts : [
         [""],
         [ 'Arial'],
