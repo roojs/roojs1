@@ -583,7 +583,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     valueField :  'val',
                     typeAhead: false,
                     mode: 'local',
-                    editable : false,
+                    editable : typeof(item.editable) == 'undefined' ? false : item.editable,
                     triggerAction: 'all',
                     emptyText:'Select',
                     selectOnFocus:true,
