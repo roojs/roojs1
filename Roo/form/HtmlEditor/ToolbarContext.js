@@ -132,8 +132,7 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
             style : 'fontFamily',
             displayField: 'display',
             optname : 'font-family',
-            width: 140,
-            editable : true
+            width: 140
         }
     },
     'INPUT' : {
@@ -196,8 +195,7 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
             style : 'fontFamily',
             displayField: 'display',
             optname : 'font-family',
-            width: 140,
-            editable : true
+            width: 140
         }
     },
     'DIV' : {
@@ -206,8 +204,7 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
             style : 'fontFamily',
             displayField: 'display',
             optname : 'font-family',
-            width: 140,
-            editable : true
+            width: 140
         }
     },
      'P' : {
@@ -216,8 +213,7 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
             style : 'fontFamily',
             displayField: 'display',
             optname : 'font-family',
-            width: 140,
-            editable : true
+            width: 140
         }
     },
     
@@ -546,7 +542,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 selectOnFocus:true,
                 width: 130,
                 listeners : {
-                    'change': function(c, r, i) {
+                    'select': function(c, r, i) {
                         // initial support only for on class per el..
                         tb.selectedNode.className =  r ? r.get('val') : '';
                         editor.syncValue();
@@ -587,7 +583,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     valueField :  'val',
                     typeAhead: false,
                     mode: 'local',
-                    editable : typeof(item.editable) == 'undefined' ? false : item.editable,
+                    editable : false,
                     triggerAction: 'all',
                     emptyText:'Select',
                     selectOnFocus:true,
