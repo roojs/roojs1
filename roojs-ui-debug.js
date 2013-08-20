@@ -25756,7 +25756,18 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     insertTag : function(tg)
     {
         // could be a bit smarter... -> wrap the current selected tRoo..
-        
+        if (tg.toLowerCase() == 'span') {
+            
+            range = this.createRange(this.getSelection());
+            var wrappingNode = this.doc.createElement("span");
+            wrappingNode.appendChild(range.extractContents());
+            range.insertNode(wrappingNode);
+
+            return;
+            
+            
+            
+        }
         this.execCmd("formatblock",   tg);
         
     },
@@ -25765,7 +25776,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     {
         
         
-        range = this.createRange();
+        var range = this.createRange();
         range.deleteContents();
                //alert(Sender.getAttribute('label'));
                
@@ -26612,7 +26623,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         ["p"] ,  
         ["h1"],["h2"],["h3"],["h4"],["h5"],["h6"], 
         ["pre"],[ "code"], 
-        ["abbr"],[ "acronym"],[ "address"],[ "cite"],[ "samp"],[ "var"]
+        ["abbr"],[ "acronym"],[ "address"],[ "cite"],[ "samp"],[ "var"],
+        ['div'],['span']
     ],
      /**
      * @cfg {String} defaultFont default font to use.
@@ -27252,6 +27264,13 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
             title: "Colspan",
             width: 20
             
+        },
+         'font-family'  : {
+            title : "Font",
+            style : 'fontFamily',
+            displayField: 'display',
+            optname : 'font-family',
+            width: 140
         }
     },
     'INPUT' : {
@@ -27303,43 +27322,60 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
     // should this just be 
     'BODY' : {
         title : {
-            title: "title",
+            title: "Title",
             width: 200,
             disabled : true
         }
     },
+    'SPAN' : {
+        'font-family'  : {
+            title : "Font",
+            style : 'fontFamily',
+            displayField: 'display',
+            optname : 'font-family',
+            width: 140
+        }
+    },
+    'DIV' : {
+        'font-family'  : {
+            title : "Font",
+            style : 'fontFamily',
+            displayField: 'display',
+            optname : 'font-family',
+            width: 140
+        }
+    },
+     'P' : {
+        'font-family'  : {
+            title : "Font",
+            style : 'fontFamily',
+            displayField: 'display',
+            optname : 'font-family',
+            width: 140
+        }
+    },
+    
     '*' : {
         // empty..
     }
 
 };
 
-// fixme - these need to be configurable..
+// this should be configurable.. - you can either set it up using stores, or modify options somehwere..
+Roo.form.HtmlEditor.ToolbarContext.stores = false;
 
-Roo.form.HtmlEditor.ToolbarContext[ 'font-family']  = {
-    title : "font",
-    style : 'fontFamily',
-    displayField: 'display',
-    opts : [
-        ["" , '--None--'],
-        [ 'helvetica,Arial,sans-serif', 'Helvetica'],
-        [ 'Courier New', 'Courier New'],
-        [ 'Tahoma', 'Tahoma'],
-        [ 'Times New Roman,serif', 'Times'],
-        [ 'Verdana','Verdana' ]
-    ],
-    width: 140
-
+Roo.form.HtmlEditor.ToolbarContext.options = {
+        'font-family'  : [ 
+                [ 'Helvetica,Arial,sans-serif', 'Helvetica'],
+                [ 'Courier New', 'Courier New'],
+                [ 'Tahoma', 'Tahoma'],
+                [ 'Times New Roman,serif', 'Times'],
+                [ 'Verdana','Verdana' ]
+        ]
 };
 
-Roo.each([ 'SPAN', 'DIV' , 'TD' , 'P' ], function(tg) {
-    var cx= Roo.form.HtmlEditor.ToolbarContext;
-    if (typeof(cx.types[tg]) == 'undefined') {
-        cx.types[tg] = {};
-    }
-    
-    cx.types[tg]['font-family'] = cx[ 'font-family'] ;
-});
+// fixme - these need to be configurable..
+ 
 
 Roo.form.HtmlEditor.ToolbarContext.types
 
@@ -27367,7 +27403,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
      */
     styles : false,
     
-    
+    options: false,
     
     toolbars : false,
     
@@ -27653,8 +27689,9 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
     
             }));
         }
-            
         
+        var tbc = Roo.form.HtmlEditor.ToolbarContext;
+        var tbops = tbc.options;
         
         for (var i in tlist) {
             
@@ -27662,15 +27699,20 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             tb.add(item.title + ":&nbsp;");
             
             
+            //optname == used so you can configure the options available..
+            var opts = item.opts ? item.opts : false;
+            if (item.optname) {
+                opts = tbops[item.optname];
+           
+            }
             
-            
-            if (item.opts) {
+            if (opts) {
                 // opts == pulldown..
                 tb.addField( new Roo.form.ComboBox({
-                    store: new Roo.data.SimpleStore({
+                    store:   typeof(tbc.stores[i]) != 'undefined' ?  tbc.stores[i] : new Roo.data.SimpleStore({
                         id : 'val',
                         fields: ['val', 'display'],
-                        data : item.opts  
+                        data : opts  
                     }),
                     name : '-roo-edit-' + i,
                     attrname : i,
@@ -27762,7 +27804,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     
                     //_this.updateToolbar(null, null, pn);
                     _this.updateToolbar(null, null, null);
-                    this.footDisp.dom.innerHTML = ''; 
+                    _this.footDisp.dom.innerHTML = ''; 
                 }
             }
             
