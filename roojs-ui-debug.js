@@ -14885,15 +14885,20 @@ Roo.extend(Roo.BasicDialog, Roo.util.Observable, {
     },
 
     // private
-    syncBodyHeight : function(){
-        var bd = this.body, cb = this.centerBg, bw = this.bwrap;
+    syncBodyHeight : function()
+    {
+        var bd = this.body, // the text
+            cb = this.centerBg, // wrapper around bottom.. but does not seem to be used..
+            bw = this.bwrap;
         var height = this.size.height - this.getHeaderFooterHeight(false);
         bd.setHeight(height-bd.getMargins("tb"));
         var hh = this.header.getHeight();
         var h = this.size.height-hh;
         cb.setHeight(h);
+        
         bw.setLeftTop(cb.getPadding("l"), hh+cb.getPadding("t"));
         bw.setHeight(h-cb.getPadding("tb"));
+        
         bw.setWidth(this.el.getWidth(true)-cb.getPadding("lr"));
         bd.setWidth(bw.getWidth(true));
         if(this.tabs){
@@ -26646,23 +26651,25 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         });
 
         if(!this.disable.font && !Roo.isSafari){
-            /* why no safari for fonts
+            /* why no safari for fonts */
             editor.fontSelect = tb.el.createChild({
                 tag:'select',
                 tabIndex: -1,
                 cls:'x-font-select',
                 html: editor.createFontOptions()
             });
+            
             editor.fontSelect.on('change', function(){
                 var font = editor.fontSelect.dom.value;
                 editor.relayCmd('fontname', font);
                 editor.deferFocus();
             }, editor);
+            
             tb.add(
                 editor.fontSelect.dom,
                 '-'
             );
-            */
+            
         };
         if(!this.disable.formats){
             this.formatCombo = new Roo.form.ComboBox({
