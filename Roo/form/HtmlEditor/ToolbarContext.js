@@ -39,11 +39,7 @@ Roo.form.HtmlEditor.ToolbarContext = function(config)
 }
 
 Roo.form.HtmlEditor.ToolbarContext.fontFamilies = [
-        'Arial',
-        'Courier New',
-        'Tahoma',
-        'Times New Roman',
-        'Verdana'
+        
     ],
     
 
@@ -192,8 +188,32 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
     '*' : {
         // empty..
     }
-};
 
+};
+Roo.form.HtmlEditor.ToolbarContext[ 'font-family']  = {
+        title : "font",
+        opts : [
+            [""],
+            [ 'Arial'],
+            [ 'Courier New'],
+            [ 'Tahoma'],
+            [ 'Times New Roman'],
+            [ 'Verdana' ]
+        ],
+        width: 80
+    }
+}
+
+Roo.each([ 'SPAN', 'DIV' , 'TD' , 'P' ], function(tg) {
+    if (typeof(Roo.form.HtmlEditor.ToolbarContext.types[tg]) == 'undefined') {
+        Roo.form.HtmlEditor.ToolbarContext.types[tg] = {};
+    }
+    
+    Roo.form.HtmlEditor.ToolbarContext.types[tg]['font-family'] = 
+}
+
+
+Roo.form.HtmlEditor.ToolbarContext.types
 
 
 Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
