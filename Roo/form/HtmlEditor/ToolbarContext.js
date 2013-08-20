@@ -189,7 +189,7 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
 };
 Roo.form.HtmlEditor.ToolbarContext[ 'font-family']  = {
     title : "font",
-    style : 'font-family',
+    style : 'fontFamily',
     opts : [
         [""],
         [ 'Arial'],
@@ -372,8 +372,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             // update attributes
             if (this.tb.fields) {
                 this.tb.fields.each(function(e) {
-                    if (e.attrname) {
-                        //code
+                    if (e.stylename) {
+                        
                     }
                     
                     
