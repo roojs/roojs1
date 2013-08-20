@@ -1187,7 +1187,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                     //node.removeAttribute(n);
                     return true;
                 }
-                Roo.log()
+                //Roo.log()
                 // only allow 'c whitelisted system attributes'
                 if ( cwhite.length &&  cwhite.indexOf(l) < 0) {
 //                    Roo.log('(REMOVE CSS)' + node.tagName +'.' + n + ':'+l + '=' + v);
