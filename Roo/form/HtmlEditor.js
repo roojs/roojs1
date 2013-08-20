@@ -645,7 +645,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     {
         
         
-        range = this.createRange();
+        var range = this.createRange();
         range.deleteContents();
                //alert(Sender.getAttribute('label'));
                
