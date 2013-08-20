@@ -25283,7 +25283,10 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         }
         
         for (var i =0 ; i < editor.toolbars.length;i++) {
-            editor.toolbars[i] = Roo.factory(editor.toolbars[i], Roo.form.HtmlEditor);
+            editor.toolbars[i] = Roo.factory(
+                    typeof(editor.toolbars[i]) == 'string' ?
+                        { xtype: editor.toolbars[i]} : editor.toolbars[i],
+                Roo.form.HtmlEditor);
             editor.toolbars[i].init(editor);
         }
          
@@ -26286,6 +26289,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
             var cwhite = typeof(ed.cwhite) == 'undefined' ? Roo.form.HtmlEditor.cwhite : ed.cwhite;
             var cblack = typeof(ed.cblack) == 'undefined' ? Roo.form.HtmlEditor.cblack : ed.cblack;
             
+            
             var parts = v.split(/;/);
             var clean = [];
             
@@ -26297,23 +26301,22 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                 var l = p.split(':').shift().replace(/\s+/g,'');
                 l = l.replace(/^\s+/g,'').replace(/\s+$/g,'');
                 
+                
+                if ( cblack.indexOf(l) > -1) {
+//                    Roo.log('(REMOVE CSS)' + node.tagName +'.' + n + ':'+l + '=' + v);
+                    //node.removeAttribute(n);
+                    return true;
+                }
+                //Roo.log()
                 // only allow 'c whitelisted system attributes'
-                if ( cwhite.indexOf(l) < 0) {
+                if ( cwhite.length &&  cwhite.indexOf(l) < 0) {
 //                    Roo.log('(REMOVE CSS)' + node.tagName +'.' + n + ':'+l + '=' + v);
                     //node.removeAttribute(n);
                     return true;
                 }
                 
-                if ( cblack.indexOf(l) < 0) {
-//                    Roo.log('(REMOVE CSS)' + node.tagName +'.' + n + ':'+l + '=' + v);
-                    //node.removeAttribute(n);
-                    return true;
-                }
                 
-//                if(l == 'font-size'){
-////                    Roo.log('(REMOVE FONT SIZE)' + node.tagName +'.' + n + ':'+l + '=' + v);
-//                    return true;
-//                }
+                 
                 
                 clean.push(p);
                 return true;
@@ -26466,7 +26469,9 @@ Roo.form.HtmlEditor.pwhite= [
 
 // white listed style attributes.
 Roo.form.HtmlEditor.cwhite= [
-        'text-align'
+      //  'text-align', /// default is to allow most things..
+      
+         
 //        'font-size'//??
 ];
 
@@ -26651,7 +26656,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         });
 
         if(!this.disable.font) { // && !Roo.isSafari){
-            /* why no safari for fonts */
+            /* why no safari for fonts 
             editor.fontSelect = tb.el.createChild({
                 tag:'select',
                 tabIndex: -1,
@@ -26669,6 +26674,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                 editor.fontSelect.dom,
                 '-'
             );
+            */
             
         };
         if(!this.disable.formats){
@@ -26953,6 +26959,9 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
     
     createFontOptions : function(){
         var buf = [], fs = this.fontFamilies, ff, lc;
+        
+        
+        
         for(var i = 0, len = fs.length; i< len; i++){
             ff = fs[i];
             lc = ff.toLowerCase();
@@ -27154,6 +27163,9 @@ Roo.form.HtmlEditor.ToolbarContext = function(config)
     // dont call parent... till later.
     this.styles = this.styles || {};
 }
+
+ 
+
 Roo.form.HtmlEditor.ToolbarContext.types = {
     'IMG' : {
         width : {
@@ -27299,8 +27311,33 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
     '*' : {
         // empty..
     }
+
+};
+Roo.form.HtmlEditor.ToolbarContext[ 'font-family']  = {
+    title : "font",
+    style : 'fontFamily',
+    opts : [
+        [""],
+        [ 'Arial'],
+        [ 'Courier New'],
+        [ 'Tahoma'],
+        [ 'Times New Roman'],
+        [ 'Verdana' ]
+    ],
+    width: 160
+
 };
 
+Roo.each([ 'SPAN', 'DIV' , 'TD' , 'P' ], function(tg) {
+    var cx= Roo.form.HtmlEditor.ToolbarContext;
+    if (typeof(cx.types[tg]) == 'undefined') {
+        cx.types[tg] = {};
+    }
+    
+    cx.types[tg]['font-family'] = cx[ 'font-family'] ;
+});
+
+Roo.form.HtmlEditor.ToolbarContext.types
 
 
 Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
@@ -27461,6 +27498,10 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             // update attributes
             if (this.tb.fields) {
                 this.tb.fields.each(function(e) {
+                    if (e.stylename) {
+                        e.setValue(sel.style[e.stylename]);
+                        return;
+                    } 
                    e.setValue(sel.getAttribute(e.attrname));
                 });
             }
@@ -27629,6 +27670,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     }),
                     name : '-roo-edit-' + i,
                     attrname : i,
+                    stylename : item.style ? item.style : false,
                     displayField:'val',
                     typeAhead: false,
                     mode: 'local',
@@ -27639,6 +27681,10 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     width: item.width ? item.width  : 130,
                     listeners : {
                         'select': function(c, r, i) {
+                            if (c.stylename) {
+                                tb.selectedNode.style[c.stylename] =  r.get('val');
+                                return;
+                            }
                             tb.selectedNode.setAttribute(c.attrname, r.get('val'));
                         }
                     }
@@ -27683,7 +27729,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     // undo does not work.
                      
                     var sn = tb.selectedNode;
-                    Roo.log(sn);
+                    
                     var pn = sn.parentNode;
                     
                     var stn =  sn.childNodes[0];
@@ -27691,7 +27737,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     while (sn.childNodes.length) {
                         var node = sn.childNodes[0];
                         sn.removeChild(node);
-                        Roo.log(node);
+                        //Roo.log(node);
                         pn.insertBefore(node, sn);
                         
                     }
@@ -27774,7 +27820,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
     {
         ev.preventDefault();
         var  cn = dom.className;
-        Roo.log(cn);
+        //Roo.log(cn);
         if (!cn.match(/x-ed-loc-/)) {
             return;
         }
