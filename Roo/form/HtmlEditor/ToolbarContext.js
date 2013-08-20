@@ -126,6 +126,13 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
             title: "Colspan",
             width: 20
             
+        },
+         'font-family'  : {
+            title : "Font",
+            style : 'fontFamily',
+            displayField: 'display',
+            optname : 'font-family',
+            width: 140
         }
     },
     'INPUT' : {
@@ -177,15 +184,54 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
     // should this just be 
     'BODY' : {
         title : {
-            title: "title",
+            title: "Title",
             width: 200,
             disabled : true
         }
     },
+    'SPAN' : {
+        'font-family'  : {
+            title : "Font",
+            style : 'fontFamily',
+            displayField: 'display',
+            optname : 'font-family',
+            width: 140
+        }
+    },
+    'DIV' : {
+        'font-family'  : {
+            title : "Font",
+            style : 'fontFamily',
+            displayField: 'display',
+            optname : 'font-family',
+            width: 140
+        }
+    },
+     'P' : {
+        'font-family'  : {
+            title : "Font",
+            style : 'fontFamily',
+            displayField: 'display',
+            optname : 'font-family',
+            width: 140
+        }
+    },
+    
     '*' : {
         // empty..
     }
 
+};
+
+// this should be configurable..
+Roo.form.HtmlEditor.ToolbarContext.options = {
+        'font-family'  : [ 
+                    [ 'Helvetica,Arial,sans-serif', 'Helvetica'],
+                    [ 'Courier New', 'Courier New'],
+                    [ 'Tahoma', 'Tahoma'],
+                    [ 'Times New Roman,serif', 'Times'],
+                    [ 'Verdana','Verdana' ]
+        ]
 };
 
 // fixme - these need to be configurable..
@@ -194,14 +240,7 @@ Roo.form.HtmlEditor.ToolbarContext[ 'font-family']  = {
     title : "font",
     style : 'fontFamily',
     displayField: 'display',
-    opts : [
-        ["" , '--None--'],
-        [ 'helvetica,Arial,sans-serif', 'Helvetica'],
-        [ 'Courier New', 'Courier New'],
-        [ 'Tahoma', 'Tahoma'],
-        [ 'Times New Roman,serif', 'Times'],
-        [ 'Verdana','Verdana' ]
-    ],
+    optname : 'font-family',
     width: 140
 
 };
