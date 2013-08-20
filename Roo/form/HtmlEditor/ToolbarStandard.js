@@ -118,7 +118,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         ["p"] ,  
         ["h1"],["h2"],["h3"],["h4"],["h5"],["h6"], 
         ["pre"],[ "code"], 
-        ["abbr"],[ "acronym"],[ "address"],[ "cite"],[ "samp"],[ "var"]
+        ["abbr"],[ "acronym"],[ "address"],[ "cite"],[ "samp"],[ "var"],
+        ['div'],['span']
     ],
      /**
      * @cfg {String} defaultFont default font to use.
