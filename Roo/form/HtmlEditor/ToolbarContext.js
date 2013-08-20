@@ -209,7 +209,7 @@ Roo.each([ 'SPAN', 'DIV' , 'TD' , 'P' ], function(tg) {
         Roo.form.HtmlEditor.ToolbarContext.types[tg] = {};
     }
     
-    Roo.form.HtmlEditor.ToolbarContext.types[tg]['font-family'] = 
+    Roo.form.HtmlEditor.ToolbarContext.types[tg]['font-family'] = Roo.form.HtmlEditor.ToolbarContext[ 'font-family'] ;
 }
 
 
