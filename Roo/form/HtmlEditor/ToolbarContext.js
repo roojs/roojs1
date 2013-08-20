@@ -539,7 +539,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 tb.addField( new Roo.form.ComboBox({
                     store: new Roo.data.SimpleStore({
                         id : 'val',
-                        fields: ['val'],
+                        fields: ['val', 'display'],
                         data : item.opts  
                     }),
                     name : '-roo-edit-' + i,
