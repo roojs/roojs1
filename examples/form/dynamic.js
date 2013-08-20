@@ -258,7 +258,7 @@ Roo.onReady(function(){
                         width:550,
                         height:200,
                         resizable: 's', /// where the handles should got..
-                        toolbars : [ 'Standard', 'Context' ]  
+                        toolbars : [ 'ToolbarStandard', 'ToolbarContext' ]  
                     }
                 ]
             }
