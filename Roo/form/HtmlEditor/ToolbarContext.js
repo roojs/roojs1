@@ -371,6 +371,11 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             // update attributes
             if (this.tb.fields) {
                 this.tb.fields.each(function(e) {
+                    if (e.attrname) {
+                        //code
+                    }
+                    
+                    
                    e.setValue(sel.getAttribute(e.attrname));
                 });
             }
@@ -539,6 +544,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     }),
                     name : '-roo-edit-' + i,
                     attrname : i,
+                    stylename : item.style ? item.style : false,
                     displayField:'val',
                     typeAhead: false,
                     mode: 'local',
