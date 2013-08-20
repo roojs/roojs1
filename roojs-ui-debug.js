@@ -26656,7 +26656,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                 tag:'select',
                 tabIndex: -1,
                 cls:'x-font-select',
-                html: editor.createFontOptions()
+                html: this.createFontOptions()
             });
             
             editor.fontSelect.on('change', function(){
