@@ -223,7 +223,9 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
 
 };
 
-// this should be configurable..
+// this should be configurable.. - you can either set it up using stores, or modify options somehwere..
+Roo.form.HtmlEditor.ToolbarContext.stores = false;
+
 Roo.form.HtmlEditor.ToolbarContext.options = {
         'font-family'  : [ 
                 [ 'Helvetica,Arial,sans-serif', 'Helvetica'],
