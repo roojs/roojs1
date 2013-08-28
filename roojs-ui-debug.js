@@ -30621,7 +30621,7 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
     expand : function ()
     {
         Roo.form.ComboCheck.superclass.expand.call(this);
-        this.valueBefore = this.value;
+        this.valueBefore = tyepof(this.value) == 'undefined' ? '' : this.value;
         
 
     },
