@@ -140,9 +140,10 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
     },
     expand : function ()
     {
-        this.valueBefore = tyepof(this.value) == 'undefined' ? '' : this.value;
-        Roo.form.ComboCheck.superclass.expand.call(this);
         
+        Roo.form.ComboCheck.superclass.expand.call(this);
+        this.valueBefore = typeof(this.value) == 'undefined' ? '' : this.value;
+        this.valueBefore = typeof(this.valueBefore) == 'undefined' ? '' : this.valueBefore;
         
 
     },
