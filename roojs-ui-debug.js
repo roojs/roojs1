@@ -30597,6 +30597,7 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
         this.setValue('[]');
         if (this.value != this.valueBefore) {
             this.fireEvent('change', this, this.value, this.valueBefore);
+            this.valueBefore = this.value;
         }
     },
     getValueArray : function()
@@ -30640,6 +30641,7 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
         if (this.value != this.valueBefore) {
 
             this.fireEvent('change', this, this.value, this.valueBefore);
+            this.valueBefore = this.value;
         }
         
     },
