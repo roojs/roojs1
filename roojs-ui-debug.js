@@ -30620,8 +30620,10 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
     },
     expand : function ()
     {
+        
         Roo.form.ComboCheck.superclass.expand.call(this);
-        this.valueBefore = tyepof(this.value) == 'undefined' ? '' : this.value;
+        this.valueBefore = typeof(this.value) == 'undefined' ? '' : this.value;
+        //this.valueBefore = typeof(this.valueBefore) == 'undefined' ? '' : this.valueBefore;
         
 
     },
