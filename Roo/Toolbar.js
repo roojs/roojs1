@@ -65,7 +65,7 @@ Roo.Toolbar.prototype = {
         }
         // using a table allows for vertical alignment
         // 100% width is needed by Safari...
-        this.el.update('<div class=" x-small-editor"><table cellspacing="0"><tr></tr></table></div>');
+        this.el.update('<div class="x-toolbar x-small-editor"><table cellspacing="0"><tr></tr></table></div>');
         this.tr = this.el.child("tr", true);
         var autoId = 0;
         this.items = new Roo.util.MixedCollection(false, function(o){
