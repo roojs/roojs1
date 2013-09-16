@@ -18,6 +18,9 @@
  */ 
 Roo.Toolbar = function(container, buttons, config)
 {
+    Roo.log(container);
+    Roo.log(buttons);
+    Roo.log(config);
     /// old consturctor format still supported..
     if(container instanceof Array){ // omit the container for later rendering
         buttons = container;
