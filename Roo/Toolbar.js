@@ -59,9 +59,6 @@ Roo.Toolbar.prototype = {
      */
     // private
     render : function(ct){
-        Roo.log('HERE!!!!!!!!!!!!!!!!!!!!!!!!!111');
-        Roo.log(ct);
-        Roo.log(this);
         this.el = Roo.get(ct);
         if(this.cls){
             this.el.addClass(this.cls);
