@@ -18,6 +18,7 @@
  */ 
 Roo.Toolbar = function(container, buttons, config)
 {
+    Roo.log('HERE!!!!!!!!!!!!!!!!!!!!!!!!');
     Roo.log(container);
     Roo.log(buttons);
     Roo.log(config);
