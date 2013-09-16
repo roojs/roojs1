@@ -37,13 +37,13 @@ Roo.Toolbar = function(container, buttons, config)
     Roo.apply(this, config);
     this.buttons = buttons;
     
-//    if(container){
-//        this.render(container);
-//    }
-//    this.xitems = xitems;
-//    Roo.each(xitems, function(b) {
-//        this.add(b);
-//    }, this);
+    if(container){
+        this.render(container);
+    }
+    this.xitems = xitems;
+    Roo.each(xitems, function(b) {
+        this.add(b);
+    }, this);
     
 };
 
