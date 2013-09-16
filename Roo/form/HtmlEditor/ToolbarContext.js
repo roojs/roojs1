@@ -272,7 +272,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
     init : function(editor)
     {
         this.editor = editor;
-        
+        Roo.log('HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!111');
+        Roo.log(this);
         
         var fid = editor.frameId;
         var etb = this;
