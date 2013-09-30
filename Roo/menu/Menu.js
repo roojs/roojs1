@@ -150,6 +150,10 @@ Roo.extend(Roo.menu.Menu, Roo.util.Observable, {
         ul.on("mouseover", this.onMouseOver, this);
         ul.on("mouseout", this.onMouseOut, this);
         this.items.each(function(item){
+            if (item.hidden) {
+                return;
+            }
+            
             var li = document.createElement("li");
             li.className = "x-menu-list-item";
             ul.dom.appendChild(li);
