@@ -58,6 +58,12 @@ Roo.extend(Roo.menu.BaseItem, Roo.Component, {
      * @cfg {Boolean} canActivate True if this item can be visually activated (defaults to false)
      */
     canActivate : false,
+    
+     /**
+     * @cfg {Boolean} hidden True to prevent creation of this menu item (defaults to false)
+     */
+    hidden: false,
+    
     /**
      * @cfg {String} activeClass The CSS class to use when the item becomes activated (defaults to "x-menu-item-active")
      */
