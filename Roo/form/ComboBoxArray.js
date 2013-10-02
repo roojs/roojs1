@@ -101,7 +101,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
         
         this.combo = Roo.factory(this.combo, Roo.form);
         this.combo.onRender(ct, position);
-        if (typeof(this.combo.width) != 'undefined')) {
+        if (typeof(this.combo.width) != 'undefined') {
             this.combo.onResize(this.combo.width,0);
         }
         
