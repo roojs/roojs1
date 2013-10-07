@@ -289,7 +289,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
                 if (!li.length) {
                     return;
                 }
-                add = {};
+                var add = {};
                 add[this.valueField] = k;
                 add[this.displayField] = li.item(0).data[this.displayField];
                 
