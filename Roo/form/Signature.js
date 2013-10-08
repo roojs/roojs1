@@ -83,13 +83,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         Roo.log(ct);
         Roo.log(position);
         
-        if(!this.el){
-            this.defaultAutoCreate = {
-                tag: "iframe",
-                style:"width: 300px; height: 100px; border: 0;",
-                src: "signature.svg"
-            };
-        }
+        
         Roo.form.Signature.superclass.onRender.call(this, ct, position);
         
         this.wrap = this.el.wrap({
