@@ -555,11 +555,11 @@ Roo.onReady(function(){
     /*
      * ================ form 7 =======================
      */
-    var form7 = new Roo.form.Form({
+    var signature = new Roo.form.Form({
         labelWidth: 75, // label settings here cascade unless overridden
         url:'save-form.php'
     });
-    form7.add(
+    signature.add(
         new Roo.form.Signature({
             fieldLabel: 'Signature',
             name: 's',
@@ -570,7 +570,7 @@ Roo.onReady(function(){
 //    form7.addButton('Save');
 //    form7.addButton('Cancel');
 
-    form7.render('form-ct7');
+    signature.render('form-ct7');
     
     
     
