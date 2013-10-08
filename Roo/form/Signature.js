@@ -142,7 +142,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         this.tb.add({
                 btn('test'),
                 btn('underline')
-        })
+        });
              
 //        
 //        if (!editor.toolbars || !editor.toolbars.length) {
