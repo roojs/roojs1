@@ -80,9 +80,8 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         return svg.getSignature();
     },
     reset : function(){
-        var svg = document.getElementsByTagName('iframe')[0].contentWindow;
-                    var pathdata = document.getElementById('pathdata');
+        var svg = this.el.dom.contentWindow;
         svg.clearSignature();
-        pathdata.textContent = '';
+        
     }
 });
