@@ -192,7 +192,9 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         svg.clearSignature();
         Roo.form.Signature.superclass.reset.call(this);
     },
-    
+    test : function(){
+        this.signPanel.dom.contentWindow
+    },
     //public
     setConfirmed : function(){
         if(!this.getSignature()){
