@@ -79,7 +79,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                     </script>*/
     // private
     
-     defaultAutoCreate : { // modified by initCompnoent..
+    defaultAutoCreate : { // modified by initCompnoent..
         tag: "input",
         type:"hidden"
     },
@@ -118,6 +118,70 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
 //            }
 //            this.el.setHeight(this.growMin);
 //        }
+    },
+    createSVG : function(){
+//        <svg xmlns="http://www.w3.org/2000/svg" width="300" height="100" viewBox="0 0 300 100">
+//    <rect id="r" width="300" height="100" fill="#ffa"/>
+//    <line x1="0" y1="80" x2="300" y2="80" stroke="#666" stroke-width="1" stroke-dasharray="3" shape-rendering="crispEdges" pointer-events="none"/>
+//    <path id="p" stroke="navy" stroke-width="2" fill="none" pointer-events="none"/>
+//    <script>
+//        var r = document.getElementById('r'),
+//        p = document.getElementById('p'),
+//        signaturePath = '',
+//        isDown = false;
+//
+//        function isTouchEvent(e) {
+//            return e.type.match(/^touch/);
+//        }
+//
+//        function getCoords(e) {
+//            if (isTouchEvent(e)) {
+//                return e.targetTouches[0].clientX + ',' + e.targetTouches[0].clientY;
+//            }
+//            return e.clientX + ',' + e.clientY;
+//        }
+//
+//        function down(e) {
+//            signaturePath += 'M' + getCoords(e) + ' ';
+//            p.setAttribute('d', signaturePath);
+//            isDown = true;
+//console.log('up');
+//            if (isTouchEvent(e)) e.preventDefault();
+//        }
+//
+//        function move(e) {
+//            if (isDown) {
+//                signaturePath += 'L' + getCoords(e) + ' ';
+//                p.setAttribute('d', signaturePath);
+//            }
+//
+//            if (isTouchEvent(e)) e.preventDefault();
+//        }
+//
+//        function up(e) {
+//            isDown = false; 
+//            console.log('up');
+//            if (isTouchEvent(e)) e.preventDefault();
+//        }
+//
+//        r.addEventListener('mousedown', down, false);
+//        r.addEventListener('mousemove', move, false);
+//        r.addEventListener('mouseup', up, false);
+//        r.addEventListener('touchstart', down, false);
+//        r.addEventListener('touchmove', move, false);
+//        r.addEventListener('touchend', up, false);
+//        r.addEventListener('mouseout', up, false);
+//
+//        function clearSignature() {
+//            signaturePath = '';
+//            p.setAttribute('d', '');
+//        }
+//
+//        function getSignature() {
+//            return signaturePath;
+//        }
+//    </script>
+//</svg>
     },
     /**
      * Protected method that will not generally be called directly. It
