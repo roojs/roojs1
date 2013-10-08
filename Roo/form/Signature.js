@@ -83,6 +83,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
             };
         }
         Roo.form.Signature.superclass.onRender.call(this, ct, position);
+        
         this.wrap = this.el.wrap({
             cls:'x-html-editor-wrap', cn:{cls:'x-html-editor-tb'}
         });
