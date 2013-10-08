@@ -38,7 +38,7 @@
 
         function up(e) {
             isDown = false; 
-
+            Roo.log('up');
             if (isTouchEvent(e)) e.preventDefault();
         }
 
