@@ -62,7 +62,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                 src: "signature.svg"
             };
         }
-        Roo.form.TextArea.superclass.onRender.call(this, ct, position);
+        Roo.form.Signature.superclass.onRender.call(this, ct, position);
 //        if(this.grow){
 //            this.textSizeEl = Roo.DomHelper.append(document.body, {
 //                tag: "pre", cls: "x-form-grow-sizer"
