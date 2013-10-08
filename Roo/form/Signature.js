@@ -55,6 +55,8 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                     </script>*/
     // private
     onRender : function(ct, position){
+        Roo.log(ct);
+        Roo.log(position);
         if(!this.el){
             this.defaultAutoCreate = {
                 tag: "iframe",
@@ -72,5 +74,16 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
 //            }
 //            this.el.setHeight(this.growMin);
 //        }
+    },
+    showSignature : function(){
+        var svg = document.getElementsByTagName('iframe')[0].contentWindow;
+        var pathdata = document.getElementById('pathdata');
+        pathdata.textContent = svg.getSignature();
+    },
+    clearSignature : function(){
+        var svg = document.getElementsByTagName('iframe')[0].contentWindow;
+                    var pathdata = document.getElementById('pathdata');
+        svg.clearSignature();
+        pathdata.textContent = '';
     }
 });
