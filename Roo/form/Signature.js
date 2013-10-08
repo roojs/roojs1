@@ -195,7 +195,9 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     
     //public
     setConfirmed : function(){
-        
+        if(!this.getSignature()){
+            return;
+        }
         Roo.get(this.signPanel.dom.contentWindow.r).attr('fill', '#ffa');
         this.setValue(this.getSignature());
         
