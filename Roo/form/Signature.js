@@ -201,7 +201,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     },
     //public
     clear : function(){
-        this.reset()
+        this.reset();
     },
     // private
     // Subclasses should provide the validation implementation by overriding this
