@@ -154,8 +154,8 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                 text: 'Confirm'
             },
             {
-                
-                cls : 'x-btn-icon x-edit-forecolor  x-signature-'+id,
+//                background: none repeat scroll 0 center transparent;
+                cls : 'x-btn-icon x-signature-btn  x-signature-'+id,
                 scope: editor, // was editor...
                 handler: this.clear,
                 clickEvent:'mousedown',
