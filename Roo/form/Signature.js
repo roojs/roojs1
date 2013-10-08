@@ -142,26 +142,19 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         this.tb.add(
             // add filler here...
         {
-                id : xid,
-                cmd : id,
-                cls : 'x-btn-icon x-edit-'+id,
-                enableToggle:toggle !== false,
+                
+                cls : 'x-btn-icon x-signature-'+id,
                 scope: editor, // was editor...
-                handler:handler||editor.relayBtnCmd,
+                handler: function() { },
                 clickEvent:'mousedown',
-                tooltip: etb.buttonTips[id] || undefined, ///tips ???
-                tabIndex:-1
+                text: 'Cancel'
             }
              {
-                id : xid,
-                cmd : id,
-                cls : 'x-btn-icon x-edit-'+id,
-                enableToggle:toggle !== false,
+                cls : 'x-btn-icon x-signature-'+id,
                 scope: editor, // was editor...
-                handler:handler||editor.relayBtnCmd,
+                handler: function() { },
                 clickEvent:'mousedown',
-                tooltip: etb.buttonTips[id] || undefined, ///tips ???
-                tabIndex:-1
+                text: 'OK'
             } 
         );
              
