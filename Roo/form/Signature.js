@@ -105,18 +105,23 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
      * @param {HtmlEditor} editor
      */
     createToolbar : function(editor){
-        if (!editor.toolbars || !editor.toolbars.length) {
-            editor.toolbars = [ new Roo.form.HtmlEditor.ToolbarStandard() ]; // can be empty?
-        }
         
-        for (var i =0 ; i < editor.toolbars.length;i++) {
-            editor.toolbars[i] = Roo.factory(
-                    typeof(editor.toolbars[i]) == 'string' ?
-                        { xtype: editor.toolbars[i]} : editor.toolbars[i],
-                Roo.form.HtmlEditor);
-            editor.toolbars[i].init(editor);
-        }
+        var tb = new Roo.Toolbar(editor.wrap.dom.firstChild);
+        this.tb = tb;
          
+//        
+//        if (!editor.toolbars || !editor.toolbars.length) {
+//            editor.toolbars = [ new Roo.form.HtmlEditor.ToolbarStandard() ]; // can be empty?
+//        }
+//        
+//        for (var i =0 ; i < editor.toolbars.length;i++) {
+//            editor.toolbars[i] = Roo.factory(
+//                    typeof(editor.toolbars[i]) == 'string' ?
+//                        { xtype: editor.toolbars[i]} : editor.toolbars[i],
+//                Roo.form.HtmlEditor);
+//            editor.toolbars[i].init(editor);
+//        }
+//         
         
     },
     getSignature : function(){
