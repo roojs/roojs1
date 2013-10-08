@@ -21,3 +21,7 @@
 Roo.form.Signature = function(config){
     Roo.form.Signature.superclass.constructor.call(this, config);
 };
+
+Roo.extend(Roo.form.Signature, Roo.form.Field,  {
+    
+});
