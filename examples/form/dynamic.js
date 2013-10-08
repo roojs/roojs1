@@ -557,7 +557,8 @@ Roo.onReady(function(){
      */
     signature = new Roo.form.Form({
         labelWidth: 75, // label settings here cascade unless overridden
-        url:'save-form.php'
+        url:'save-form.php',
+        width: 500
     });
     signature.add(
         new Roo.form.Signature({
