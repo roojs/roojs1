@@ -197,7 +197,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     setConfirmed : function(){
         this.setValue(this.getSignature());
         
-        Roo.log('inin')
+        Roo.log(this.signPanel.dom.contentWindow.r)
     },
     //public
     clear : function(){
