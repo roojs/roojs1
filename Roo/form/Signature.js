@@ -190,11 +190,14 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         svg.clearSignature();
         Roo.form.Signature.superclass.reset.call(this);
     },
+    
+    //public
     setConfirmed : function(){
         this.setValue(this.getSignature());
         
         Roo.log('inin')
     },
+    //public
     clear : function(){
         this.reset()
     },
