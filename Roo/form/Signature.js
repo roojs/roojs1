@@ -82,5 +82,6 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     reset : function(){
         var svg = this.el.dom.contentWindow;
         svg.clearSignature();
+        Roo.form.Signature.superclass.reset.call(this);
     }
 });
