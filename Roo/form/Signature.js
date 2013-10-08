@@ -77,7 +77,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     },
     showSignature : function(){
         Roo.log(this);
-//        var svg = this.findField('s').el.dom.contentWindow;
+        var svg = this.el.dom.contentWindow;
 //        var pathdata = document.getElementById('pathdata');
 //        pathdata.textContent = svg.getSignature();
     },
