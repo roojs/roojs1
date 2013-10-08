@@ -140,8 +140,29 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         var tb = new Roo.Toolbar(editor.wrap.dom.firstChild);
         this.tb = tb;
         this.tb.add(
-                btn('test'),
-                btn('underline')
+            // add filler here...
+        {
+                id : xid,
+                cmd : id,
+                cls : 'x-btn-icon x-edit-'+id,
+                enableToggle:toggle !== false,
+                scope: editor, // was editor...
+                handler:handler||editor.relayBtnCmd,
+                clickEvent:'mousedown',
+                tooltip: etb.buttonTips[id] || undefined, ///tips ???
+                tabIndex:-1
+            }
+             {
+                id : xid,
+                cmd : id,
+                cls : 'x-btn-icon x-edit-'+id,
+                enableToggle:toggle !== false,
+                scope: editor, // was editor...
+                handler:handler||editor.relayBtnCmd,
+                clickEvent:'mousedown',
+                tooltip: etb.buttonTips[id] || undefined, ///tips ???
+                tabIndex:-1
+            } 
         );
              
 //        
