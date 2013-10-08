@@ -58,10 +58,15 @@ Roo.onReady(function(){
             vtype:'email',
             width:175
         }),
-         new Roo.form.DayPicker({
+        new Roo.form.DayPicker({
             fieldLabel: 'Pick a day',
             name: 'daypick',
             width:175
+        }),
+        new Roo.form.Signature({
+            fieldLabel: 'Signature',
+            name: 's',
+            width: 300
         })
     );
 
