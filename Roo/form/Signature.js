@@ -63,14 +63,14 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
             };
         }
 //        Roo.form.TextArea.superclass.onRender.call(this, ct, position);
-        if(this.grow){
-            this.textSizeEl = Roo.DomHelper.append(document.body, {
-                tag: "pre", cls: "x-form-grow-sizer"
-            });
-            if(this.preventScrollbars){
-                this.el.setStyle("overflow", "hidden");
-            }
-            this.el.setHeight(this.growMin);
-        }
+//        if(this.grow){
+//            this.textSizeEl = Roo.DomHelper.append(document.body, {
+//                tag: "pre", cls: "x-form-grow-sizer"
+//            });
+//            if(this.preventScrollbars){
+//                this.el.setStyle("overflow", "hidden");
+//            }
+//            this.el.setHeight(this.growMin);
+//        }
     }
 });
