@@ -51,6 +51,11 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     growMin : 30,
     
     confirmed : false,
+    
+    /**
+     * @cfg {Boolean} allowBlank False to validate that the value length > 0 (defaults to true)
+     */
+    allowBlank : false,
     /*                    <p>Please sign on the dotted line below.</p>
                     <iframe src=signature.svg style="width: 300px; height: 100px; border: 0;"></iframe>
                     <div>
