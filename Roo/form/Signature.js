@@ -195,14 +195,15 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     
     //public
     setConfirmed : function(){
+        
+        Roo.get(this.signPanel.dom.contentWindow.r).attr('fill', '#ffa');
         this.setValue(this.getSignature());
         
         Roo.log(Roo.get(this.signPanel.dom.contentWindow.r).attr('fill', '#cfc'));
     },
     //public
     clear : function(){
-        Roo.get(this.signPanel.dom.contentWindow.r).attr('fill', '#ffa')
-        
+        Roo.get(this.signPanel.dom.contentWindow.r).attr('fill', '#ffa');
         this.reset();
     },
     // private
