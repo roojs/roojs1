@@ -525,29 +525,29 @@ Roo.onReady(function(){
     form5.render('form-ct5');
  
     
-    form6 = new Roo.form.Form({
-        labelAlign: 'left',
-        labelWidth: 120,
-        items : [
-            {
-            
-                xtype: 'TimePicker',
-                xns : Roo.form,
-                fieldLabel: 'test time picker',
-                name: 'time'
-            },
-            {
-                xtype: 'DateDisplay',
-                xns : Roo.form,
-                fieldLabel: 'test date picker',
-                name: 'date'
-            }
-             
-        
-        ]
-    });
-    
-    form6.render('form-ct6');
+//    form6 = new Roo.form.Form({
+//        labelAlign: 'left',
+//        labelWidth: 120,
+//        items : [
+//            {
+//            
+//                xtype: 'TimePicker',
+//                xns : Roo.form,
+//                fieldLabel: 'test time picker',
+//                name: 'time'
+//            },
+//            {
+//                xtype: 'DateDisplay',
+//                xns : Roo.form,
+//                fieldLabel: 'test date picker',
+//                name: 'date'
+//            }
+//             
+//        
+//        ]
+//    });
+//    
+//    form6.render('form-ct6');
     
     
     
