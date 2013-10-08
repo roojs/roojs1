@@ -148,7 +148,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                 handler: function() { },
                 clickEvent:'mousedown',
                 text: 'Cancel'
-            }
+            },
              {
                 cls : 'x-btn-icon x-signature-'+id,
                 scope: editor, // was editor...
