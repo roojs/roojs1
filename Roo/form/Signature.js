@@ -181,7 +181,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     },
     getSignature : function(){
         Roo.log(this.signPanel);
-        var svg = this.el.dom.contentWindow;
+        var svg = this.signPanel.dom.contentWindow;
         
         return svg.getSignature();
     },
