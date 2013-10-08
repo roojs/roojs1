@@ -139,10 +139,10 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         
         var tb = new Roo.Toolbar(editor.wrap.dom.firstChild);
         this.tb = tb;
-        this.tb.add({
+        this.tb.add(
                 btn('test'),
                 btn('underline')
-        });
+        );
              
 //        
 //        if (!editor.toolbars || !editor.toolbars.length) {
