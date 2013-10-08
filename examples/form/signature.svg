@@ -37,9 +37,9 @@ console.log('up');
         }
 
         function up(e) {
-<!--            isDown = false; -->
+            isDown = false; 
             console.log('up');
-<!--            if (isTouchEvent(e)) e.preventDefault();-->
+            if (isTouchEvent(e)) e.preventDefault();
         }
 
         r.addEventListener('mousedown', down, false);
