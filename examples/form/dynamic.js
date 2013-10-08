@@ -554,22 +554,22 @@ Roo.onReady(function(){
     /*
      * ================ form 7 =======================
      */
-//    var form7 = new Roo.form.Form({
-//        labelWidth: 75, // label settings here cascade unless overridden
-//        url:'save-form.php'
-//    });
-//    form7.add(
-//        new Roo.form.Signature({
-//            fieldLabel: 'Signature',
-//            name: 's',
-//            width: 300
-//        })
-//    );
+////    var form7 = new Roo.form.Form({
+////        labelWidth: 75, // label settings here cascade unless overridden
+////        url:'save-form.php'
+////    });
+////    form7.add(
+////        new Roo.form.Signature({
+////            fieldLabel: 'Signature',
+////            name: 's',
+////            width: 300
+////        })
+////    );
+////
+////    form7.addButton('Save');
+////    form7.addButton('Cancel');
 //
-//    form7.addButton('Save');
-//    form7.addButton('Cancel');
-
-//    form7.render('form-ct7');
+////    form7.render('form-ct7');
     
     
     
