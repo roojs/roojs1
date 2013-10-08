@@ -57,9 +57,9 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     onRender : function(ct, position){
         if(!this.el){
             this.defaultAutoCreate = {
-                tag: "textarea",
-                style:"width:300px;height:60px;",
-                autocomplete: "off"
+                tag: "iframe",
+                style:"width: 300px; height: 100px; border: 0;",
+                src: "signature.svg"
             };
         }
         Roo.form.TextArea.superclass.onRender.call(this, ct, position);
