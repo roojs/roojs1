@@ -196,7 +196,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         Roo.log('inin')
     },
     clear : function(){
-        
+        this.reset()
     },
     // private
     // Subclasses should provide the validation implementation by overriding this
