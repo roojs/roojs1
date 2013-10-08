@@ -11,6 +11,7 @@
  
 var mform;
 var simple;
+var signature;
 
 Roo.onReady(function(){
 
