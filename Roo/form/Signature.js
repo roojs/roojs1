@@ -23,5 +23,18 @@ Roo.form.Signature = function(config){
 };
 
 Roo.extend(Roo.form.Signature, Roo.form.Field,  {
+    /**
+     * @cfg {Boolean} grow True if this field should automatically grow and shrink to its content
+     */
+    grow : false,
+    /**
+     * @cfg {Number} growMin The minimum width to allow when grow = true (defaults to 30)
+     */
+    growMin : 30,
     
+    // private
+    initEvents : function()
+    {
+        
+    }
 });
