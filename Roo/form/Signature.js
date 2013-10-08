@@ -75,13 +75,9 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
 //            this.el.setHeight(this.growMin);
 //        }
     },
-    showSignature : function(){
-        Roo.log(this);
+    getSignature : function(){
         var svg = this.el.dom.contentWindow;
         return svg.getSignature();
-        Roo.log(svg.getSignature());
-//        var pathdata = document.getElementById('pathdata');
-//        pathdata.textContent = svg.getSignature();
     },
     clearSignature : function(){
         var svg = document.getElementsByTagName('iframe')[0].contentWindow;
