@@ -23,7 +23,7 @@
             signaturePath += 'M' + getCoords(e) + ' ';
             p.setAttribute('d', signaturePath);
             isDown = true;
-
+console.log('up');
             if (isTouchEvent(e)) e.preventDefault();
         }
 
