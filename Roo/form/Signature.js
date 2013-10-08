@@ -120,6 +120,14 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
 //        }
     },
     createSVG : function(){
+        this.wrap.createChild({
+                tag: 'svg',
+                xmlns:"http://www.w3.org/2000/svg",
+                width: 300,
+                height: 100,
+                viewBox:"0 0 300 100"
+            }, this.signPanel
+        );
 //        <svg xmlns="http://www.w3.org/2000/svg" width="300" height="100" viewBox="0 0 300 100">
 //    <rect id="r" width="300" height="100" fill="#ffa"/>
 //    <line x1="0" y1="80" x2="300" y2="80" stroke="#666" stroke-width="1" stroke-dasharray="3" shape-rendering="crispEdges" pointer-events="none"/>
