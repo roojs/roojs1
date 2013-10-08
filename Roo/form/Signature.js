@@ -146,7 +146,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         this.tb = tb;
         this.tb.add(
             // add filler here...
-        {
+            {
                 
                 cls : '  x-signature-'+id,
                 scope: editor, // was editor...
@@ -186,5 +186,17 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         var svg = this.el.dom.contentWindow;
         svg.clearSignature();
         Roo.form.Signature.superclass.reset.call(this);
+    },
+    setConfirmed : function(){
+        
+    },
+    clear : function(){
+        
+    },
+    // private
+    // Subclasses should provide the validation implementation by overriding this
+    validateValue : function(value){
+        
+        return true;
     }
 });
