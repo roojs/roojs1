@@ -555,7 +555,7 @@ Roo.onReady(function(){
     /*
      * ================ form 7 =======================
      */
-    var signature = new Roo.form.Form({
+    signature = new Roo.form.Form({
         labelWidth: 75, // label settings here cascade unless overridden
         url:'save-form.php'
     });
