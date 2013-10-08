@@ -20,6 +20,24 @@
 
 Roo.form.Signature = function(config){
     Roo.form.Signature.superclass.constructor.call(this, config);
+    
+    this.addEvents({
+         /**
+         * @event confirm
+         * Fires when the 'confirm' icon is pressed (add a listener to enable add button)
+	     * @param {Roo.form.ComboBox} combo This combo box
+	     */
+        'confirm' : true,
+        /**
+         * @event reset
+         * Fires when the 'edit' icon is pressed (add a listener to enable add button)
+	     * @param {Roo.form.ComboBox} combo This combo box
+	     * @param {Roo.data.Record|false} record The data record returned from the underlying store (or false on nothing selected)
+	     */
+        'reset' : true
+        
+        
+    });
 };
 
 Roo.extend(Roo.form.Signature, Roo.form.Field,  {
