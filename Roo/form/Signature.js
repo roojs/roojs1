@@ -143,14 +143,14 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
             // add filler here...
         {
                 
-                cls : 'x-btn-icon x-signature-'+id,
+                cls : '  x-signature-'+id,
                 scope: editor, // was editor...
                 handler: function() { },
                 clickEvent:'mousedown',
                 text: 'Cancel'
             },
              {
-                cls : 'x-btn-icon x-signature-'+id,
+                cls : ' x-signature-'+id,
                 scope: editor, // was editor...
                 handler: function() { },
                 clickEvent:'mousedown',
