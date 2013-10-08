@@ -179,12 +179,14 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
 //         
         
     },
+    // private
     getSignature : function(){
         Roo.log(this.signPanel);
         var svg = this.signPanel.dom.contentWindow;
         
         return svg.getSignature();
     },
+    // private
     reset : function(){
         var svg = this.signPanel.dom.contentWindow;
         svg.clearSignature();
