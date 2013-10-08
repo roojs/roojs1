@@ -151,7 +151,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                 scope: editor, // was editor...
                 handler: this.setConfirmed,
                 clickEvent:'mousedown',
-                text: 'OK'
+                text: 'Confirm'
             },
             {
                 
