@@ -51,5 +51,5 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
             }
             this.el.setHeight(this.growMin);
         }
-    },
+    }
 });
