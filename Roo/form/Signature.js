@@ -201,6 +201,8 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     },
     //public
     clear : function(){
+        Roo.get(this.signPanel.dom.contentWindow.r).attr('fill', '#ffa')
+        
         this.reset();
     },
     // private
