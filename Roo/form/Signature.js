@@ -147,7 +147,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         this.tb = tb;
         this.tb.add(
             {
-                cls : ' x-signature-'+id,
+                cls : 'x-btn-icon x-signature-btn x-signature-'+id,
                 scope: editor, // was editor...
                 handler: this.setConfirmed,
                 clickEvent:'mousedown',
@@ -155,7 +155,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
             },
             {
 //                background: none repeat scroll 0 center transparent;
-                cls : 'x-btn-icon x-signature-btn  x-signature-'+id,
+                cls : 'x-btn-icon x-signature-btn x-signature-'+id,
                 scope: editor, // was editor...
                 handler: this.clear,
                 clickEvent:'mousedown',
