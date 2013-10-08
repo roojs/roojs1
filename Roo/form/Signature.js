@@ -121,12 +121,29 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
      */
     createToolbar : function(editor){
         Roo.log('in?');
+         function btn(id, toggle, handler){
+            var xid = fid + '-'+ id ;
+            return {
+                id : xid,
+                cmd : id,
+                cls : 'x-btn-icon x-edit-'+id,
+                enableToggle:toggle !== false,
+                scope: editor, // was editor...
+                handler:handler||editor.relayBtnCmd,
+                clickEvent:'mousedown',
+                tooltip: etb.buttonTips[id] || undefined, ///tips ???
+                tabIndex:-1
+            };
+        }
+        
+        
         var tb = new Roo.Toolbar(editor.wrap.dom.firstChild);
         this.tb = tb;
-        this.tb.add(
+        this.tb.add({
                 btn('test'),
                 btn('underline')
-            );
+        })
+             
 //        
 //        if (!editor.toolbars || !editor.toolbars.length) {
 //            editor.toolbars = [ new Roo.form.HtmlEditor.ToolbarStandard() ]; // can be empty?
