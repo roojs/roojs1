@@ -104,7 +104,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         this.signPanel = this.wrap.createChild({
                 tag: 'iframe',
                 style:"width: 300px; height: 100px; border: 0;",
-                src: "signature.svg"
+//                src: "signature.svg"
             }, this.el
         );
         
