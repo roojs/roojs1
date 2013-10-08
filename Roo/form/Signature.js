@@ -191,6 +191,8 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         Roo.form.Signature.superclass.reset.call(this);
     },
     setConfirmed : function(){
+        this.setValue(this.getSignature());
+        
         Roo.log('inin')
     },
     clear : function(){
