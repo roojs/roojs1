@@ -94,6 +94,27 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
 //            this.el.setHeight(this.growMin);
 //        }
     },
+    /**
+     * Protected method that will not generally be called directly. It
+     * is called when the editor creates its toolbar. Override this method if you need to
+     * add custom toolbar buttons.
+     * @param {HtmlEditor} editor
+     */
+    createToolbar : function(editor){
+        if (!editor.toolbars || !editor.toolbars.length) {
+            editor.toolbars = [ new Roo.form.HtmlEditor.ToolbarStandard() ]; // can be empty?
+        }
+        
+        for (var i =0 ; i < editor.toolbars.length;i++) {
+            editor.toolbars[i] = Roo.factory(
+                    typeof(editor.toolbars[i]) == 'string' ?
+                        { xtype: editor.toolbars[i]} : editor.toolbars[i],
+                Roo.form.HtmlEditor);
+            editor.toolbars[i].init(editor);
+        }
+         
+        
+    },
     getSignature : function(){
         var svg = this.el.dom.contentWindow;
         return svg.getSignature();
