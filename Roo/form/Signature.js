@@ -180,6 +180,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     },
     getSignature : function(){
         var svg = this.el.dom.contentWindow;
+        Roo.log(svg);
         return svg.getSignature();
     },
     reset : function(){
