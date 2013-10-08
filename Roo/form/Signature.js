@@ -72,6 +72,13 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                     }
                     </script>*/
     // private
+    
+      defaultAutoCreate : { // modified by initCompnoent..
+        tag: "input",
+        type:"hidden"
+    },
+
+    
     onRender : function(ct, position){
         Roo.log(ct);
         Roo.log(position);
