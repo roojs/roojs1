@@ -155,7 +155,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
             },
             {
                 
-                cls : '  x-signature-'+id,
+                cls : 'x-btn-icon x-edit-forecolor  x-signature-'+id,
                 scope: editor, // was editor...
                 handler: this.clear,
                 clickEvent:'mousedown',
