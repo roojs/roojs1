@@ -569,7 +569,7 @@ Roo.onReady(function(){
     form7.addButton('Save');
     form7.addButton('Cancel');
 
-    form7.render('form-ct7');
+//    form7.render('form-ct7');
     
     
     
