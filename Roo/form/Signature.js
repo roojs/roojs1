@@ -83,6 +83,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
             };
         }
         Roo.form.Signature.superclass.onRender.call(this, ct, position);
+        this.createToolbar(this);
 //        if(this.grow){
 //            this.textSizeEl = Roo.DomHelper.append(document.body, {
 //                tag: "pre", cls: "x-form-grow-sizer"
