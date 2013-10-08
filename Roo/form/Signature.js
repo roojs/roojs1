@@ -33,8 +33,23 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     growMin : 30,
     
     // private
-    initEvents : function()
-    {
-        
-    }
+    onRender : function(ct, position){
+        if(!this.el){
+            this.defaultAutoCreate = {
+                tag: "textarea",
+                style:"width:300px;height:60px;",
+                autocomplete: "off"
+            };
+        }
+        Roo.form.TextArea.superclass.onRender.call(this, ct, position);
+        if(this.grow){
+            this.textSizeEl = Roo.DomHelper.append(document.body, {
+                tag: "pre", cls: "x-form-grow-sizer"
+            });
+            if(this.preventScrollbars){
+                this.el.setStyle("overflow", "hidden");
+            }
+            this.el.setHeight(this.growMin);
+        }
+    },
 });
