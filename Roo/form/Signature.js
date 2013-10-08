@@ -146,7 +146,13 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         var tb = new Roo.Toolbar(editor.wrap.dom.firstChild);
         this.tb = tb;
         this.tb.add(
-            // add filler here...
+            {
+                cls : ' x-signature-'+id,
+                scope: editor, // was editor...
+                handler: this.setConfirmed,
+                clickEvent:'mousedown',
+                text: 'OK'
+            },
             {
                 
                 cls : '  x-signature-'+id,
@@ -154,14 +160,8 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                 handler: this.clear,
                 clickEvent:'mousedown',
                 text: 'Cancel'
-            },
-             {
-                cls : ' x-signature-'+id,
-                scope: editor, // was editor...
-                handler: this.setConfirmed,
-                clickEvent:'mousedown',
-                text: 'OK'
-            } 
+            }
+            
         );
              
 //        
