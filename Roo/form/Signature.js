@@ -52,6 +52,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     
     confirmed : false,
     
+    signPanel : false,
     /**
      * @cfg {Boolean} allowBlank False to validate that the value length > 0 (defaults to true)
      */
@@ -100,7 +101,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         
         this.createToolbar(this);
         
-        var iframe = this.wrap.createChild({
+        this.signPanel = this.wrap.createChild({
                 tag: 'iframe',
                 style:"width: 300px; height: 100px; border: 0;",
                 src: "signature.svg"
