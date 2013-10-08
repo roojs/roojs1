@@ -105,7 +105,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
      * @param {HtmlEditor} editor
      */
     createToolbar : function(editor){
-        
+        Roo.log('in?');
         var tb = new Roo.Toolbar(editor.wrap.dom.firstChild);
         this.tb = tb;
         this.tb.add(
