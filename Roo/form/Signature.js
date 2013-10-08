@@ -73,7 +73,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                     </script>*/
     // private
     
-      defaultAutoCreate : { // modified by initCompnoent..
+     defaultAutoCreate : { // modified by initCompnoent..
         tag: "input",
         type:"hidden"
     },
@@ -82,6 +82,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     onRender : function(ct, position){
         Roo.log(ct);
         Roo.log(position);
+        
         if(!this.el){
             this.defaultAutoCreate = {
                 tag: "iframe",
@@ -95,7 +96,19 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
             cls:'x-html-editor-wrap', cn:{cls:'x-html-editor-tb'}
         });
         
+        
+        
+        
         this.createToolbar(this);
+        
+        var iframe = this.wrap.createChild({
+                tag: 'iframe',
+                style:"width: 300px; height: 100px; border: 0;",
+                src: "signature.svg"
+            }, this.el
+        );
+        
+        
 //        if(this.grow){
 //            this.textSizeEl = Roo.DomHelper.append(document.body, {
 //                tag: "pre", cls: "x-form-grow-sizer"
