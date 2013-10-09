@@ -214,7 +214,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     //mouse event headler 
     down : function (e) {
         var sp = this.signatureTmp.split(' ').pop();
-        Roo.log(sp.pop());
+        Roo.log(sp);
         this.signatureTmp += 'M' + this.getCoords(e) + ' ';
         this.signPanel.select('#svg-p', true).first().attr('d', this.signatureTmp);
         Roo.log('down');
