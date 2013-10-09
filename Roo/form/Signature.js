@@ -100,96 +100,168 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         
         
         this.createToolbar(this);
+//        this.signPanel = this.signFrame.createChild({
+//                tag: 'svg',
+//                xmlns:"http://www.w3.org/2000/svg",
+//                width: 300,
+//                height: 100,
+//                viewBox:"0 0 300 100"
+//            }
+//        );
         
+        
+//        this.signPanel = this.wrap.createChild({
+//                tag: 'iframe',
+//                style:"width: 300px; height: 100px; border: 0;",
+//                src: 'signature.svg'
+//            }, this.el
+//        );
         this.signPanel = this.wrap.createChild({
-                tag: 'iframe',
+                tag: 'div',
                 style:"width: 300px; height: 100px; border: 0;"
-//                src: "signature.svg"
-            }, this.el
+        }, this.el
         );
+            
+        var _t = this;
+          this.signPanel.createChild({
+              ns:'svg',
+              xmlns : 'http://www.w3.org/2000/svg',
+              tag : 'svg',
+              width: "300",
+              height: "100",
+              viewBox: "0 0 300 100",
+              cn : [
+                {
+                    tag: "rect",
+                    id: "r",
+                    width: 300,
+                    height: 100,
+                    fill: "#ffa"
+                },
+                {
+                    tag: "line",
+                    x1: "0",
+                    y1: "80",
+                    x2: "300",
+                    y2: "80",
+                    'stroke': "#666",
+                    'stroke-width': "1",
+                    'stroke-dasharray': "3",
+                    'shape-rendering': "crispEdges",
+                    'pointer-events': "none"
+                },
+                {
+                    tag: "path",
+                    id: "p",
+                    'stroke': "navy",
+                    'stroke-width': "2",
+                    'fill': "none",
+                    'pointer-events': "none"
+                },
+              ]
+          });
         
         
-//        if(this.grow){
-//            this.textSizeEl = Roo.DomHelper.append(document.body, {
-//                tag: "pre", cls: "x-form-grow-sizer"
-//            });
-//            if(this.preventScrollbars){
-//                this.el.setStyle("overflow", "hidden");
-//            }
-//            this.el.setHeight(this.growMin);
-//        }
+        _t.createSVG()
+        (function() { _t.createSVG() }).defer(3000);
+//        this.signPanel.createChild(
+//            {
+//                tag: "rect",
+//                id: "r",
+//                width: 300,
+//                height: 100,
+//                fill: "#ffa"
+//            },
+//            
+//            this.signPanel.el
+//        );
+//        this.signPanel.createChild(
+//            {
+//                tag: "line",
+//                x1: "0",
+//                y1: "80",
+//                x2: "300",
+//                y2: "80",
+//                'stroke': "#666",
+//                'stroke-width': "1",
+//                'stroke-dasharray': "3",
+//                'shape-rendering': "crispEdges",
+//                'pointer-events': "none"
+//            },
+//            this.signPanel.el
+//        );
+//        this.signPanel.createChild(
+//            {
+//                tag: "path",
+//                id: "p",
+//                'stroke': "navy",
+//                'stroke-width': "2",
+//                'fill': "none",
+//                'pointer-events': "none"
+//            },
+//            this.signPanel.el
+//        );
     },
-    createSVG : function(){
-        this.wrap.createChild({
-                tag: 'svg',
-                xmlns:"http://www.w3.org/2000/svg",
-                width: 300,
-                height: 100,
-                viewBox:"0 0 300 100"
-            }, this.signPanel
-        );
-//        <svg xmlns="http://www.w3.org/2000/svg" width="300" height="100" viewBox="0 0 300 100">
-//    <rect id="r" width="300" height="100" fill="#ffa"/>
-//    <line x1="0" y1="80" x2="300" y2="80" stroke="#666" stroke-width="1" stroke-dasharray="3" shape-rendering="crispEdges" pointer-events="none"/>
-//    <path id="p" stroke="navy" stroke-width="2" fill="none" pointer-events="none"/>
-//    <script>
-//        var r = document.getElementById('r'),
-//        p = document.getElementById('p'),
-//        signaturePath = '',
-//        isDown = false;
-//
-//        function isTouchEvent(e) {
-//            return e.type.match(/^touch/);
-//        }
-//
-//        function getCoords(e) {
-//            if (isTouchEvent(e)) {
-//                return e.targetTouches[0].clientX + ',' + e.targetTouches[0].clientY;
-//            }
-//            return e.clientX + ',' + e.clientY;
-//        }
-//
-//        function down(e) {
-//            signaturePath += 'M' + getCoords(e) + ' ';
-//            p.setAttribute('d', signaturePath);
-//            isDown = true;
-//console.log('up');
-//            if (isTouchEvent(e)) e.preventDefault();
-//        }
-//
-//        function move(e) {
-//            if (isDown) {
-//                signaturePath += 'L' + getCoords(e) + ' ';
-//                p.setAttribute('d', signaturePath);
-//            }
-//
-//            if (isTouchEvent(e)) e.preventDefault();
-//        }
-//
-//        function up(e) {
-//            isDown = false; 
-//            console.log('up');
-//            if (isTouchEvent(e)) e.preventDefault();
-//        }
-//
-//        r.addEventListener('mousedown', down, false);
-//        r.addEventListener('mousemove', move, false);
-//        r.addEventListener('mouseup', up, false);
-//        r.addEventListener('touchstart', down, false);
-//        r.addEventListener('touchmove', move, false);
-//        r.addEventListener('touchend', up, false);
-//        r.addEventListener('mouseout', up, false);
-//
-//        function clearSignature() {
-//            signaturePath = '';
-//            p.setAttribute('d', '');
-//        }
-//
-//        function getSignature() {
-//            return signaturePath;
-//        }
-//    </script>
-//</svg>
+    createSVG : function(){ 
+        var svg = this.signPanel.dom.contentWindow;
+        
+        Roo.log(svg.document.getElementById('r'));
+        
+        
+        var r = svg.document.getElementById('r'),
+        p = svg.document.getElementById('p'),
+        signaturePath = '',
+        isDown = false;
+return;
+        function isTouchEvent(e) {
+            return e.type.match(/^touch/);
+        }
+
+        function getCoords(e) {
+            if (isTouchEvent(e)) {
+                return e.targetTouches[0].clientX + ',' + e.targetTouches[0].clientY;
+            }
+            return e.clientX + ',' + e.clientY;
+        }
+
+        function down(e) {
+            signaturePath += 'M' + getCoords(e) + ' ';
+            p.setAttribute('d', signaturePath);
+            isDown = true;
+            if (isTouchEvent(e)) e.preventDefault();
+        }
+
+        function move(e) {
+            if (isDown) {
+                signaturePath += 'L' + getCoords(e) + ' ';
+                p.setAttribute('d', signaturePath);
+            }
+
+            if (isTouchEvent(e)) e.preventDefault();
+        }
+
+        function up(e) {
+            isDown = false; 
+            console.log('up');
+            if (isTouchEvent(e)) e.preventDefault();
+        }
+
+        r.addEventListener('mousedown', down, false);
+        r.addEventListener('mousemove', move, false);
+        r.addEventListener('mouseup', up, false);
+        r.addEventListener('touchstart', down, false);
+        r.addEventListener('touchmove', move, false);
+        r.addEventListener('touchend', up, false);
+        r.addEventListener('mouseout', up, false);
+
+        function clearSignature() {
+            signaturePath = '';
+            p.setAttribute('d', '');
+        }
+
+        function getSignature() {
+            return signaturePath;
+        }
     },
     /**
      * Protected method that will not generally be called directly. It
