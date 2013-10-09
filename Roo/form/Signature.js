@@ -224,7 +224,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         // log_svgcursorPoint = "offset based on svg"+ " x:" + a.e +" y:" + a.f;
         var b = a.inverse();
         var mx = pt.matrixTransform(b);
-        Roo.log(mx);
+        Roo.log(mx.x + ',' + mx.y);
         
         return mx.x + ',' + mx.y;
         
