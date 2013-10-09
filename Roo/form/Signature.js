@@ -81,6 +81,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
      * @cfg {String} fieldLabel Label to use when rendering a form.
      */
     signatureTmp : '',
+    
     // private
     defaultAutoCreate : { // modified by initCompnoent..
         tag: "input",
