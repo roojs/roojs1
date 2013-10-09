@@ -251,7 +251,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     },
     //mouse event headler 
     down : function (e) {
-        this.signatureTmp += 'M' + getCoords(e) + ' ';
+        this.signatureTmp += 'M' + this.getCoords(e) + ' ';
 //        p.setAttribute('d', signatureTmp);
         Roo.log('down');
         this.isMouseDown = true;
@@ -259,7 +259,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     },
     move : function (e) {
         if (this.isMouseDown) {
-            this.signatureTmp += 'L' + getCoords(e) + ' ';
+            this.signatureTmp += 'L' + this.getCoords(e) + ' ';
 //            p.setAttribute('d', signaturePath);
         }
 
