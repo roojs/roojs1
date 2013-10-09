@@ -206,7 +206,8 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         this.signPanel.select('#svg-p', true).first().attr('d', this.signatureTmp);
         Roo.log('down');
         this.isMouseDown = true;
-        if (this.isTouchEvent(e)) e.preventDefault();
+        //if (this.isTouchEvent(e)) 
+            e.preventDefault();
     },
     move : function (e) {
         if (this.isMouseDown) {
