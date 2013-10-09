@@ -161,9 +161,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                     'stroke': "navy",
                     'stroke-width': "2",
                     'fill': "none",
-                    'pointer-events': 'none',
-                    d : 'M89,50 L90,50 L91,51 L92,51 L93,51 L95,51'
-                    
+                    'pointer-events': 'none'
                 },
               ]
         });
