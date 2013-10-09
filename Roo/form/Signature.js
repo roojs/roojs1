@@ -260,7 +260,10 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                 clickEvent:'mousedown',
                 text: 'Cancel'
             } ,
-            
+            {
+                 xtype : 'Fill',
+                 xns: Roo.Toolbar
+            }, 
             {
                 cls : '  x-signature-btn x-signature-'+id,
                 scope: editor, // was editor...
