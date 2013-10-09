@@ -173,8 +173,6 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     createSVG : function(){ 
         var svg = this.signPanel;
         var r = svg.select('#svg-r', true).first().dom;
-        
-        
         var t = this;
 
         r.addEventListener('mousedown', function(e) { return t.down(e); }, false);
