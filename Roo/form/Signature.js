@@ -214,8 +214,11 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         if (this.isTouchEvent(e)) e.preventDefault();
     },
     up : function (e) {
-        this.isMouseDown = false; 
+        this.isMouseDown = false;
         Roo.log('up');
+        if(this.getValue() != this.signatureTmp){
+            
+        }
 //        Roo.log(this.signatureTmp);
         if (this.isTouchEvent(e)) e.preventDefault();
     },
