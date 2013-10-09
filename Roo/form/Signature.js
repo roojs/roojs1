@@ -210,10 +210,24 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         return e.type.match(/^touch/);
     },
     getCoords : function (e) {
+        var pt    = svg.createSVGPoint();
+        pt.x = e.clientX; 
+        pt.y = e.clientY;
         if (this.isTouchEvent(e)) {
-            return e.targetTouches[0].clientX + ',' + e.targetTouches[0].clientY;
+            pt.x =  e.targetTouches[0].clientX 
+            pt.y = e.targetTouches[0].clientY;
         }
+        
+        
+        
+        var a = svg.getScreenCTM();
+        log_svgcursorPoint = "offset based on svg"+ " x:" + a.e +" y:" + a.f;
+        var b = a.inverse();
+        var mx = pt.matrixTransform(b);
+        Roo.log(mx);
+        
         return e.clientX + ',' + e.clientY;
+        
     },
     //mouse event headler 
     down : function (e) {
