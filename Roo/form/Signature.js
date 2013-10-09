@@ -263,7 +263,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
 //            p.setAttribute('d', signaturePath);
         }
         Roo.log(e);
-//        Roo.log()
+        Roo.log(this.isTouchEvent(e));
         if (this.isTouchEvent(e)) e.preventDefault();
     },
     up : function (e) {
