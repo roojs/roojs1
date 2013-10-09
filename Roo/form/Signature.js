@@ -77,6 +77,9 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
      * @cfg {Boolean} isConfirmed False to validate that the value length > 0 (defaults to true)
      */
     isConfirmed : false,
+    /**
+     * @cfg {String} fieldLabel Label to use when rendering a form.
+     */
     signatureTmp : '',
     // private
     defaultAutoCreate : { // modified by initCompnoent..
