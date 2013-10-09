@@ -376,7 +376,15 @@ Roo.apply(Roo.XComponent, {
 		
 	// elmodules (is a list of DOM based modules )
         Roo.each(this.elmodules, function(e) {
-            mods.push(e)
+            mods.push(e);
+            if (this.topModule &&
+                typeof(e.parent) == 'string' &&
+                e.parent.substring(0,1) == '#' &&
+                Roo.get(e.parent.substr(1))
+               ) {
+                this.topModule e'
+            }
+            
         });
 
         
@@ -404,7 +412,7 @@ Roo.apply(Roo.XComponent, {
         if (this.topModule) { 
             this.topModule.modules.keySort('ASC',  cmp );
             this.topModule.modules.each(addMod);
-        }
+        } 
         return mods;
     },
     
