@@ -131,7 +131,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                     tag: "path",
                     id: "svg-p",
                     'stroke': "navy",
-                    'stroke-width': "10",
+                    'stroke-width': "3",
                     'fill': "none",
                     'pointer-events': 'none'
                 },
