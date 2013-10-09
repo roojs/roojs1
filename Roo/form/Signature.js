@@ -233,12 +233,13 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     up : function (e) {
         this.isMouseDown = false;
         var sp = this.signatureTmp.split(' ');
-        Roo.log(sp);
-        Roo.log(sp[sp.length-2]);
+        
         if(!sp[sp.length-2].match(/^L/)){
             sp.pop();
             sp.pop();
         }
+        Roo.log(sp);
+        Roo.log(sp[sp.length-2]);
         Roo.log('up');
         if(this.getValue() != this.signatureTmp){
             this.signPanel.select('#svg-r', true).first().attr('fill', '#ffa');
