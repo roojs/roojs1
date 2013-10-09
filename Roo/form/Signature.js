@@ -183,10 +183,11 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         r.addEventListener('mousedown', function(e) { return t.down(e); }, false);
         r.addEventListener('mousemove', function(e) { return t.move(e); }, false);
         r.addEventListener('mouseup', function(e) { return t.up(e); }, false);
+        r.addEventListener('mouseout', function(e) { return t.up(e); }, false);
         r.addEventListener('touchstart', function(e) { return t.down(e); }, false);
         r.addEventListener('touchmove', function(e) { return t.move(e); }, false);
         r.addEventListener('touchend', function(e) { return t.up(e); }, false);
-        r.addEventListener('mouseout', function(e) { return t.up(e); }, false);
+        
         return;
         function clearSignature() {
             signaturePath = '';
@@ -324,11 +325,6 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         this.setValue(this.getSignature());
         
 //        Roo.log(Roo.get(this.signPanel.dom.contentWindow.r).attr('fill', '#cfc'));
-    },
-    //public
-    clear : function(){
-        this.signPanel.select('#svg-r', true).first().attr('fill', '#ffa');
-        this.reset();
     },
     // private
     // Subclasses should provide the validation implementation by overriding this
