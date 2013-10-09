@@ -556,15 +556,20 @@ dlg.show();
     },
 
     </span><span class="jsdoc-comment">// private
-    </span><span class="jsdoc-var">syncBodyHeight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.body</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cb </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.centerBg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">bw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.bwrap</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">syncBodyHeight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.body</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// the text
+            </span><span class="jsdoc-var">cb </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.centerBg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// wrapper around bottom.. but does not seem to be used..
+            </span><span class="jsdoc-var">bw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.bwrap</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.size.height </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.getHeaderFooterHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">bd.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">-</span><span class="jsdoc-var">bd.getMargins</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;tb&quot;</span><span class="jsdoc-syntax">));
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hh </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.header.getHeight</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.size.height</span><span class="jsdoc-syntax">-</span><span class="jsdoc-var">hh</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">cb.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">);
+        
         </span><span class="jsdoc-var">bw.setLeftTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cb.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;l&quot;</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">hh</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">cb.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;t&quot;</span><span class="jsdoc-syntax">));
         </span><span class="jsdoc-var">bw.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">-</span><span class="jsdoc-var">cb.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;tb&quot;</span><span class="jsdoc-syntax">));
+        
         </span><span class="jsdoc-var">bw.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.getWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)-</span><span class="jsdoc-var">cb.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;lr&quot;</span><span class="jsdoc-syntax">));
         </span><span class="jsdoc-var">bd.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">bw.getWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tabs</span><span class="jsdoc-syntax">){

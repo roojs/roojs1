@@ -77,9 +77,23 @@
     
     </span><span class="jsdoc-var">onLoadException </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store.reader.jsonData.errorMsg</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">Roo.MessageBox.alert</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Error loading&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.store.reader.jsonData.errorMsg</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">[3]) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.MessageBox.alert</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Error loading&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">[3]);
+        } 
+        </span><span class="jsdoc-comment">/*
+        try {
+            if (this.store &amp;&amp; typeof(this.store.reader.jsonData.errorMsg) != 'undefined') {
+                Roo.MessageBox.alert(&quot;Error loading&quot;,this.store.reader.jsonData.errorMsg);
+            }   
+        } catch(e) {
+            
         }
+        */
+    
+        
+        
         </span><span class="jsdoc-var">this.el.unmask</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.removeMask</span><span class="jsdoc-syntax">);
     },
     </span><span class="jsdoc-comment">// private
