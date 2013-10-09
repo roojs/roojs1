@@ -161,8 +161,8 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                     'pointer-events': "none"
                 },
               ]
-        },
-    this.signPanel.el
+        }
+//    this.signPanel.el
 );
         var _t = this;
         _t.createSVG();
