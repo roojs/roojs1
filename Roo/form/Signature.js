@@ -172,7 +172,6 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     },
     //mouse event headler 
     down : function (e) {
-        var sp = this.signatureTmp.split(' ');
         this.signatureTmp += 'M' + this.getCoords(e) + ' ';
         this.signPanel.select('#svg-p', true).first().attr('d', this.signatureTmp);
         
@@ -204,7 +203,6 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
             this.signPanel.select('#svg-r', true).first().attr('fill', '#ffa');
             this.isConfirmed = false;
         }
-        
         e.preventDefault();
     },
     
@@ -240,7 +238,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                 handler: this.reset,
                 clickEvent:'mousedown',
                 text: this.labels.clear
-            } ,
+            },
             {
                  xtype : 'Fill',
                  xns: Roo.Toolbar
@@ -252,7 +250,6 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                 clickEvent:'mousedown',
                 text: this.labels.confirm
             }
-           
         );
     
     },
