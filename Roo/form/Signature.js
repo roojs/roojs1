@@ -278,6 +278,7 @@ return;
         }
         return e.clientX + ',' + e.clientY;
     },
+    //mouse headler 
     down : function (e) {
         signaturePath += 'M' + getCoords(e) + ' ';
         p.setAttribute('d', signaturePath);
