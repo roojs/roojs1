@@ -374,6 +374,7 @@ Roo.apply(Roo.XComponent, {
         // make a flat list in order of modules to build.
         var mods = this.topModule ? [ this.topModule ] : [];
 		
+        
 	// elmodules (is a list of DOM based modules )
         Roo.each(this.elmodules, function(e) {
             mods.push(e);
