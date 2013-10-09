@@ -70,25 +70,24 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
      */
     allowBlank : false,
     /**
-     * @cfg {Boolean} isMouseDown False to validate that the value length > 0 (defaults to true)
+     * @cfg {Boolean} isMouseDown False to validate that the mouse down event (defaults to false)
      */
     isMouseDown : false,
     /**
-     * @cfg {Boolean} isConfirmed False to validate that the value length > 0 (defaults to true)
+     * @cfg {Boolean} isConfirmed validate the signature is confirmed or not for submitting form (defaults to false)
      */
     isConfirmed : false,
     /**
-     * @cfg {String} fieldLabel Label to use when rendering a form.
+     * @cfg {String} signatureTmp SVG mapping string (defaults to empty string)
      */
     signatureTmp : '',
     
-    // private
     defaultAutoCreate : { // modified by initCompnoent..
         tag: "input",
         type:"hidden"
     },
 
-    
+    // private
     onRender : function(ct, position){
         
         Roo.form.Signature.superclass.onRender.call(this, ct, position);
