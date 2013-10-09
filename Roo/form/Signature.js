@@ -244,7 +244,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         return e.type.match(/^touch/);
     },
     getCoords : function (e) {
-        if (isTouchEvent(e)) {
+        if (this.isTouchEvent(e)) {
             return e.targetTouches[0].clientX + ',' + e.targetTouches[0].clientY;
         }
         return e.clientX + ',' + e.clientY;
@@ -255,7 +255,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
 //        p.setAttribute('d', signatureTmp);
         Roo.log('down');
         this.isMouseDown = true;
-        if (isTouchEvent(e)) e.preventDefault();
+        if (this.isTouchEvent(e)) e.preventDefault();
     },
     move : function (e) {
         if (this.isMouseDown) {
@@ -263,12 +263,12 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
 //            p.setAttribute('d', signaturePath);
         }
 
-        if (isTouchEvent(e)) e.preventDefault();
+        if (this.isTouchEvent(e)) e.preventDefault();
     },
     up : function (e) {
         this.isMouseDown = false; 
         Roo.log('up');
-        if (isTouchEvent(e)) e.preventDefault();
+        if (this.isTouchEvent(e)) e.preventDefault();
     },
     
     /**
