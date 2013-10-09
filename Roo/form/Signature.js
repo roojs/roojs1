@@ -217,6 +217,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         p = svg.document.getElementById('p'),
         signaturePath = '',
         isDown = false;
+        Roo.log(r);
 return;
         function isTouchEvent(e) {
             return e.type.match(/^touch/);
