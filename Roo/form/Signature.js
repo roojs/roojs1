@@ -222,9 +222,9 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         this.isMouseDown = false;
         Roo.log(r);
 
-        
+        var t = this;
 
-        r.addEventListener('mousedown', this.down, false);
+        r.addEventListener('mousedown', function(e) { t.down(e); }, false);
         r.addEventListener('mousemove', this.move, false);
         r.addEventListener('mouseup', this.up, false);
         r.addEventListener('touchstart', this.down, false);
