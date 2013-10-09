@@ -46,7 +46,6 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         clear : "Clear",
         confirm : "Confirm"
     },
-    
     /**
      * @cfg {Number} width The signature panel width (defaults to 300)
      */
