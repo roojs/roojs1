@@ -225,12 +225,12 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         var t = this;
 
         r.addEventListener('mousedown', function(e) { return t.down(e); }, false);
-        r.addEventListener('mousemove', this.move, false);
-        r.addEventListener('mouseup', this.up, false);
-        r.addEventListener('touchstart', this.down, false);
-        r.addEventListener('touchmove', this.move, false);
-        r.addEventListener('touchend', this.up, false);
-        r.addEventListener('mouseout', this.up, false);
+        r.addEventListener('mousemove', function(e) { return t.move(e); }, false);
+        r.addEventListener('mouseup', function(e) { return t.up(e); }, false);
+        r.addEventListener('touchstart', function(e) { return t.down(e); }, false);
+        r.addEventListener('touchmove', function(e) { return t.move(e); }, false);
+        r.addEventListener('touchend', function(e) { return t.up(e); }, false);
+        r.addEventListener('mouseout', function(e) { return t.up(e); }, false);
         return;
         function clearSignature() {
             signaturePath = '';
