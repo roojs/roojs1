@@ -101,6 +101,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
             cls:'x-html-editor-wrap', cn:{cls:'x-html-editor-tb', style : 'width: ' + this.width + 'px'}
         });
         
+        this.el.setWidth(this.width);
         
         
         
