@@ -167,8 +167,9 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                 },
               ]
         });
-        
+        Roo.log(this.svgEl);
         this.svgBox = this.svgEl.getBox();
+        Roo.log(this.svgBox);
         var _t = this;
         
         _t.createSVG();
