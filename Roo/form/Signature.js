@@ -35,8 +35,6 @@ Roo.form.Signature = function(config){
 	     * @param {Roo.data.Record|false} record The data record returned from the underlying store (or false on nothing selected)
 	     */
         'reset' : true
-        
-        
     });
 };
 
