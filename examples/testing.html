@@ -1,201 +1,201 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-    <style type="text/css">
-        .drag
-        {
-            position: relative;
-            height: 50px;
-            width: 50px;
-            background-color: #FF0000;
-            color: White;
-        }
-        
-        .dropon
-        {
-            position: relative;
-            
-           
-        }
-    </style>
+    <head runat="server">
+        <title></title>
+        <style type="text/css">
+            .drag
+            {
+                position: relative;
+                height: 50px;
+                width: 50px;
+                background-color: #FF0000;
+                color: White;
+            }
 
-    <script type="text/javascript">
+            .dropon
+            {
+                position: relative;
 
-        var _startX = 0;            // mouse starting positions
-        var _startY = 0;
-        var _offsetX = 0;           // current element offset
-        var _offsetY = 0;
-        var _dragElement;
-        var _oldZIndex = 0;         // we temporarily increase the z-index during drag
-        var _debug;
-        var _countClick = 0;
-        InitDragDrop();
-        function InitDragDrop() {
-            document.onclick = OnMouseClick;
-            document.onMouseClick = OnMouseClick;
 
-        }
+            }
+        </style>
 
-        function OnMouseClick(e) {
-            
-            _debug = $('debug');
-            // if first click this is zero
-            if (_countClick == 0) {
-                // IE
-                if (e == null)
-                    e = window.event;
+        <script type="text/javascript">
 
-                // IE uses srcElement, others use target
-                var target = e.target != null ? e.target : e.srcElement;
-
-                _debug.innerHTML = target.className == 'drag'
-        ? 'draggable element clicked'
-        : 'NON-draggable element clicked';
-
-                // for IE, left click == 1
-                // for Firefox, left click == 0
-                if ((e.button == 1 && window.event != null || e.button == 0) && target.className == 'drag') {
-                    // grab the mouse position
-                    _startX = e.clientX;
-                    _startY = e.clientY;
-
-                    // grab the clicked element's position
-                    _offsetX = ExtractNumber(target.style.left);
-                    _offsetY = ExtractNumber(target.style.top);
-
-                    // bring the clicked element to the front while it is being dragged
-                    _oldZIndex = target.style.zIndex;
-                    target.style.zIndex = 10000;
-
-                    // set _dragElement for next click
-                    _dragElement = target;
-
-                    // tell our code to start moving the element with the mouse
-                    document.onmousemove = OnMouseMove;
-
-                    // cancel out any text selections
-                    document.body.focus();
-
-                    // prevent text selection in IE
-                    document.onselectstart = function() { return false; };
-                    // prevent IE from trying to drag an image
-                    target.ondragstart = function() { return false; };
-
-                    //set click count to 1 so we know next click is to release
-                    _countClick = 1;
-                    // prevent text selection (except IE)
-                    return false;
-                }
+            var _startX = 0;            // mouse starting positions
+            var _startY = 0;
+            var _offsetX = 0;           // current element offset
+            var _offsetY = 0;
+            var _dragElement;
+            var _oldZIndex = 0;         // we temporarily increase the z-index during drag
+            var _debug;
+            var _countClick = 0;
+            InitDragDrop();
+            function InitDragDrop() {
+                document.onclick = OnMouseClick;
+                document.onMouseClick = OnMouseClick;
 
             }
 
-            if (_countClick == 1) {
-                
-                var hitelements = getElementsByClassName("dropon");
+            function OnMouseClick(e) {
+            
+                _debug = $('debug');
+                // if first click this is zero
+                if (_countClick == 0) {
+                    // IE
+                    if (e == null)
+                        e = window.event;
 
-                for (var i = 0; i < hitelements.length; i++) {
-                    if (_dragElement != null) {
-                        var hittest = hitTest(_dragElement, hitelements[i]);
+                    // IE uses srcElement, others use target
+                    var target = e.target != null ? e.target : e.srcElement;
 
-                        if (hittest) //we have a div we want (dropon)
-                        {
+                    _debug.innerHTML = target.className == 'drag'
+                        ? 'draggable element clicked'
+                    : 'NON-draggable element clicked';
 
+                    // for IE, left click == 1
+                    // for Firefox, left click == 0
+                    if ((e.button == 1 && window.event != null || e.button == 0) && target.className == 'drag') {
+                        // grab the mouse position
+                        _startX = e.clientX;
+                        _startY = e.clientY;
 
-                            if (_dragElement != null) {
-                                _dragElement.style.zIndex = _oldZIndex;
+                        // grab the clicked element's position
+                        _offsetX = ExtractNumber(target.style.left);
+                        _offsetY = ExtractNumber(target.style.top);
 
-                                // we're done with these events until the next OnMouseDown
-                                document.onmousemove = null;
-                                document.onselectstart = null;
-                                _dragElement.ondragstart = null;
+                        // bring the clicked element to the front while it is being dragged
+                        _oldZIndex = target.style.zIndex;
+                        target.style.zIndex = 10000;
 
-                                // this is how we know we're not dragging      
-                                _dragElement = null;
+                        // set _dragElement for next click
+                        _dragElement = target;
 
-                                _debug.innerHTML = 'mouse up';
-                            }
+                        // tell our code to start moving the element with the mouse
+                        document.onmousemove = OnMouseMove;
 
-                            //set click count back to 0 so next we know it's first click again
-                            _countClick = 0;
-                        }
+                        // cancel out any text selections
+                        document.body.focus();
+
+                        // prevent text selection in IE
+                        document.onselectstart = function() { return false; };
+                        // prevent IE from trying to drag an image
+                        target.ondragstart = function() { return false; };
+
+                        //set click count to 1 so we know next click is to release
+                        _countClick = 1;
+                        // prevent text selection (except IE)
+                        return false;
                     }
-                    
+
                 }
+
+                if (_countClick == 1) {
+                
+                    var hitelements = getElementsByClassName("dropon");
+
+                    for (var i = 0; i < hitelements.length; i++) {
+                        if (_dragElement != null) {
+                            var hittest = hitTest(_dragElement, hitelements[i]);
+
+                            if (hittest) //we have a div we want (dropon)
+                            {
+
+
+                                if (_dragElement != null) {
+                                    _dragElement.style.zIndex = _oldZIndex;
+
+                                    // we're done with these events until the next OnMouseDown
+                                    document.onmousemove = null;
+                                    document.onselectstart = null;
+                                    _dragElement.ondragstart = null;
+
+                                    // this is how we know we're not dragging      
+                                    _dragElement = null;
+
+                                    _debug.innerHTML = 'mouse up';
+                                }
+
+                                //set click count back to 0 so next we know it's first click again
+                                _countClick = 0;
+                            }
+                        }
+                    
+                    }
                 
 
                 
+                }
+
             }
 
-        }
+            function OnMouseMove(e) {
+                if (e == null)
+                    var e = window.event;
 
-        function OnMouseMove(e) {
-            if (e == null)
-                var e = window.event;
+                // this is the actual "drag code"
+                _dragElement.style.left = (_offsetX + e.clientX - _startX) + 'px';
+                _dragElement.style.top = (_offsetY + e.clientY - _startY) + 'px';
 
-            // this is the actual "drag code"
-            _dragElement.style.left = (_offsetX + e.clientX - _startX) + 'px';
-            _dragElement.style.top = (_offsetY + e.clientY - _startY) + 'px';
-
-            _debug.innerHTML = '(' + _dragElement.style.left + ', ' + _dragElement.style.top + ')';
-        }
-
-        function ExtractNumber(value) {
-            var n = parseInt(value);
-
-            return n == null || isNaN(n) ? 0 : n;
-        }
-
-        // this is simply a shortcut for the eyes and fingers
-        function $(id) {
-            return document.getElementById(id);
-        }
-
-        function OnMouseUp(e) {
-
-        }
-
-        hitTest = function(o, l) {
-            function getOffset(o) {
-                for (var r = { l: o.offsetLeft, t: o.offsetTop, r: o.offsetWidth, b: o.offsetHeight };
-            o = o.offsetParent; r.l += o.offsetLeft, r.t += o.offsetTop);
-                return r.r += r.l, r.b += r.t, r;
+                _debug.innerHTML = '(' + _dragElement.style.left + ', ' + _dragElement.style.top + ')';
             }
-            var a = arguments, j = a.length;
-            j > 2 && (o = { offsetLeft: o, offsetTop: l, offsetWidth: j == 5 ? a[2] : 0,
-                offsetHeight: j == 5 ? a[3] : 0, offsetParent: null
-            }, l = a[j - 1]);
-            for (var b, s, r = [], a = getOffset(o), j = isNaN(l.length), i = (j ? l = [l] : l).length; i;
-        b = getOffset(l[--i]), (a.l == b.l || (a.l > b.l ? a.l <= b.r : b.l <= a.r))
-        && (a.t == b.t || (a.t > b.t ? a.t <= b.b : b.t <= a.b)) && (r[r.length] = l[i]));
-            return j ? !!r.length : r;
-        };
 
-        function getElementsByClassName(classname, node) {
-            if (!node) node = document.getElementsByTagName("body")[0];
-            var a = [];
-            var re = new RegExp('\\b' + classname + '\\b');
-            var els = node.getElementsByTagName("*");
-            for (var i = 0, j = els.length; i < j; i++)
-                if (re.test(els[i].className)) a.push(els[i]);
-            return a;
-        }
-    </script>
+            function ExtractNumber(value) {
+                var n = parseInt(value);
 
-</head>
-<body>
-    <form id="form1" runat="server">
-    <div runat="server" id="thediv" class="drag">
-        Drag this
-    </div>
-    
-    <div id="slot1" class="dropon" style='position: absolute; height: 28px; width: 28px;
-        top: 200px; left: 200px; background-color: #FF0000; color: White;'>
-    </div>
-    <div id="slot2" class="dropon" style='position: absolute; height: 28px; width: 28px;
-        top: 200px; left: 230px; background-color: #FF0000; color: White;'>
-    </div>
-    <pre id="debug"> </pre>
-    </form>
-</body>
+                return n == null || isNaN(n) ? 0 : n;
+            }
+
+            // this is simply a shortcut for the eyes and fingers
+            function $(id) {
+                return document.getElementById(id);
+            }
+
+            function OnMouseUp(e) {
+
+            }
+
+            hitTest = function(o, l) {
+                function getOffset(o) {
+                    for (var r = { l: o.offsetLeft, t: o.offsetTop, r: o.offsetWidth, b: o.offsetHeight };
+                    o = o.offsetParent; r.l += o.offsetLeft, r.t += o.offsetTop);
+                    return r.r += r.l, r.b += r.t, r;
+                }
+                var a = arguments, j = a.length;
+                j > 2 && (o = { offsetLeft: o, offsetTop: l, offsetWidth: j == 5 ? a[2] : 0,
+                    offsetHeight: j == 5 ? a[3] : 0, offsetParent: null
+                }, l = a[j - 1]);
+                for (var b, s, r = [], a = getOffset(o), j = isNaN(l.length), i = (j ? l = [l] : l).length; i;
+                b = getOffset(l[--i]), (a.l == b.l || (a.l > b.l ? a.l <= b.r : b.l <= a.r))
+                    && (a.t == b.t || (a.t > b.t ? a.t <= b.b : b.t <= a.b)) && (r[r.length] = l[i]));
+                return j ? !!r.length : r;
+            };
+
+            function getElementsByClassName(classname, node) {
+                if (!node) node = document.getElementsByTagName("body")[0];
+                var a = [];
+                var re = new RegExp('\\b' + classname + '\\b');
+                var els = node.getElementsByTagName("*");
+                for (var i = 0, j = els.length; i < j; i++)
+                    if (re.test(els[i].className)) a.push(els[i]);
+                return a;
+            }
+        </script>
+
+    </head>
+    <body>
+        
+            <div runat="server" id="thediv" class="drag">
+                Drag this
+            </div>
+
+            <div id="slot1" class="dropon" style='position: absolute; height: 28px; width: 28px;
+                 top: 200px; left: 200px; background-color: #FF0000; color: White;'>
+            </div>
+            <div id="slot2" class="dropon" style='position: absolute; height: 28px; width: 28px;
+                 top: 200px; left: 230px; background-color: #FF0000; color: White;'>
+            </div>
+            <pre id="debug"> </pre>
+        
+    </body>
 </html>
