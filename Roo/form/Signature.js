@@ -253,7 +253,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     //mouse event headler 
     down : function (e) {
         this.signatureTmp += 'M' + this.getCoords(e) + ' ';
-        this.signPanel.select('#svg-p', true).first().setAttribute('d', this.signatureTmp);
+        this.signPanel.select('#svg-p', true).first().attr('d', this.signatureTmp);
         Roo.log('down');
         this.isMouseDown = true;
         if (this.isTouchEvent(e)) e.preventDefault();
@@ -261,7 +261,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     move : function (e) {
         if (this.isMouseDown) {
             this.signatureTmp += 'L' + this.getCoords(e) + ' ';
-            this.signPanel.select('#svg-p', true).first().setAttribute('d', this.signatureTmp);
+            this.signPanel.select('#svg-p', true).first().attr('d', this.signatureTmp);
         }
         Roo.log(e);
         Roo.log(this);
