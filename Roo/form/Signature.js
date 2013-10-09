@@ -97,7 +97,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         this.createToolbar(this);
         this.signPanel = this.wrap.createChild({
                 tag: 'div',
-                style:"width: 300px; height: 100px; border: 0;"
+                style: 'width: ' + this.width + 'px; height: ' + this.height + 'px; border: 0;'
             }, this.el
         );
             
