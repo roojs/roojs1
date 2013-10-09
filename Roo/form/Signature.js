@@ -119,7 +119,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         this.signPanel = this.wrap.createChild({
                 tag: 'div',
                 style:"width: 300px; height: 100px; border: 0;"
-        }, this.el
+            }, this.el
         );
             
         this.svgEl = this.signPanel.createChild({
