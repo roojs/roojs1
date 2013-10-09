@@ -282,6 +282,6 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         if(this.isConfirmed){
             return true;
         }
-        
+        return false;
     }
 });
