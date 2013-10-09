@@ -253,6 +253,7 @@ return;
     down : function (e) {
         this.signatureTmp += 'M' + getCoords(e) + ' ';
 //        p.setAttribute('d', signatureTmp);
+        Roo.log('down');
         this.isMouseDown = true;
         if (isTouchEvent(e)) e.preventDefault();
     },
@@ -266,7 +267,7 @@ return;
     },
     up : function (e) {
         this.isMouseDown = false; 
-        console.log('up');
+        Roo.log('up');
         if (isTouchEvent(e)) e.preventDefault();
     },
     
