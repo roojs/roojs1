@@ -210,7 +210,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     createSVG : function(){ 
         var svg = this.signPanel;
         Roo.log(this.signPanel);
-        Roo.log(svg.select('#r', true));
+//        Roo.log(svg.select('#r', true));
         
         
         var r = svg.select('#svg-r', true).first(),
@@ -269,6 +269,35 @@ return;
             return signaturePath;
         }
     },
+    isTouchEvent : function(e){
+        return e.type.match(/^touch/);
+    },
+    getCoords : function (e) {
+        if (isTouchEvent(e)) {
+            return e.targetTouches[0].clientX + ',' + e.targetTouches[0].clientY;
+        }
+        return e.clientX + ',' + e.clientY;
+    },
+    down : function (e) {
+        signaturePath += 'M' + getCoords(e) + ' ';
+        p.setAttribute('d', signaturePath);
+        isDown = true;
+        if (isTouchEvent(e)) e.preventDefault();
+    },
+    move : function (e) {
+        if (isDown) {
+            signaturePath += 'L' + getCoords(e) + ' ';
+            p.setAttribute('d', signaturePath);
+        }
+
+        if (isTouchEvent(e)) e.preventDefault();
+    },
+    up : function (e) {
+        isDown = false; 
+        console.log('up');
+        if (isTouchEvent(e)) e.preventDefault();
+    },
+    
     /**
      * Protected method that will not generally be called directly. It
      * is called when the editor creates its toolbar. Override this method if you need to
