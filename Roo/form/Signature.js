@@ -121,9 +121,9 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                 style:"width: 300px; height: 100px; border: 0;"
         }, this.el
         );
-            new Roo.DomTemplate({
-                html: '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="100" viewBox="0 0 300 100"></svg>'
-            });
+//            new Roo.DomTemplate({
+//                html: '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="100" viewBox="0 0 300 100"></svg>'
+//            });
         
         this.signPanel.createChild({
               ns: 'svg',
