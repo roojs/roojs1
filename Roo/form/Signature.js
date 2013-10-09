@@ -248,21 +248,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
             }
            
         );
-             
-//        
-//        if (!editor.toolbars || !editor.toolbars.length) {
-//            editor.toolbars = [ new Roo.form.HtmlEditor.ToolbarStandard() ]; // can be empty?
-//        }
-//        
-//        for (var i =0 ; i < editor.toolbars.length;i++) {
-//            editor.toolbars[i] = Roo.factory(
-//                    typeof(editor.toolbars[i]) == 'string' ?
-//                        { xtype: editor.toolbars[i]} : editor.toolbars[i],
-//                Roo.form.HtmlEditor);
-//            editor.toolbars[i].init(editor);
-//        }
-//         
-        
+    
     },
     // private
     getSignature : function(){
