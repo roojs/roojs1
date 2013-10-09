@@ -134,7 +134,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                     'stroke-width': "3",
                     'fill': "none",
                     'pointer-events': 'none'
-                },
+                }
               ]
         });
         this.createSVG();
