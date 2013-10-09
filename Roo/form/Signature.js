@@ -57,6 +57,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
      * @cfg {Boolean} allowBlank False to validate that the value length > 0 (defaults to true)
      */
     allowBlank : false,
+    signatureTmp : '',
     /*                    <p>Please sign on the dotted line below.</p>
                     <iframe src=signature.svg style="width: 300px; height: 100px; border: 0;"></iframe>
                     <div>
@@ -219,38 +220,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         isDown = false;
         Roo.log(r);
 return;
-        function isTouchEvent(e) {
-            return e.type.match(/^touch/);
-        }
-
-        function getCoords(e) {
-            if (isTouchEvent(e)) {
-                return e.targetTouches[0].clientX + ',' + e.targetTouches[0].clientY;
-            }
-            return e.clientX + ',' + e.clientY;
-        }
-
-        function down(e) {
-            signaturePath += 'M' + getCoords(e) + ' ';
-            p.setAttribute('d', signaturePath);
-            isDown = true;
-            if (isTouchEvent(e)) e.preventDefault();
-        }
-
-        function move(e) {
-            if (isDown) {
-                signaturePath += 'L' + getCoords(e) + ' ';
-                p.setAttribute('d', signaturePath);
-            }
-
-            if (isTouchEvent(e)) e.preventDefault();
-        }
-
-        function up(e) {
-            isDown = false; 
-            console.log('up');
-            if (isTouchEvent(e)) e.preventDefault();
-        }
+        
 
         r.addEventListener('mousedown', down, false);
         r.addEventListener('mousemove', move, false);
