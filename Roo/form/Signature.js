@@ -98,7 +98,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         Roo.form.Signature.superclass.onRender.call(this, ct, position);
         
         this.wrap = this.el.wrap({
-            cls:'x-html-editor-wrap', style : 'width: ' + this.width + 'px', cn:{cls:'x-html-editor-tb'}
+            cls:'x-html-editor-wrap', style : 'width: ' + this.width + 'px', cn:{cls:'tag-div'}
         });
         
         
