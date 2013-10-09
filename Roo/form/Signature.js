@@ -187,13 +187,14 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         this.isMouseDown = false;
         var sp = this.signatureTmp.split(' ');
         Roo.log(sp)
-        if(!sp[sp.length-2].match(/^L/) && sp.length > 0){
-            sp.pop();
-            sp.pop();
-            sp.push("");
-            this.signatureTmp = sp.join(" ");
+        if(sp.length > 0){
+            if(!sp[sp.length-2].match(/^L/)){
+                sp.pop();
+                sp.pop();
+                sp.push("");
+                this.signatureTmp = sp.join(" ");
+            }
         }
-        
         if(this.getValue() != this.signatureTmp){
             this.signPanel.select('#svg-r', true).first().attr('fill', '#ffa');
             this.isConfirmed = false;
