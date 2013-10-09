@@ -263,8 +263,8 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
             this.signatureTmp += 'L' + this.getCoords(e) + ' ';
             this.signPanel.select('#svg-p', true).first().attr('d', this.signatureTmp);
         }
-        Roo.log(e);
-        Roo.log(this);
+//        Roo.log(e);
+//        Roo.log(this);
         if (this.isTouchEvent(e)) e.preventDefault();
     },
     up : function (e) {
