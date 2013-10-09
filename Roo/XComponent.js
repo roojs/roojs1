@@ -382,7 +382,7 @@ Roo.apply(Roo.XComponent, {
                 e.parent.substring(0,1) == '#' &&
                 Roo.get(e.parent.substr(1))
                ) {
-                this.topModule e'
+                this.topModule = e;
             }
             
         });
