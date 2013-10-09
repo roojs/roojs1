@@ -42,7 +42,12 @@ Roo.form.Signature = function(config){
 
 Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     /**
-     * @cfg {String} fieldLabel Label to use when rendering a form.
+     * @cfg {Object} fieldLabel Label to use when rendering a form.
+     * defaults to 
+     * labels : { 
+     *      clear : "Clear",
+     *      confirm : "Confirm"
+     *  }
      */
     labels : { 
         clear : "Clear",
