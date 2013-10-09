@@ -224,7 +224,8 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
             this.signPanel.select('#svg-r', true).first().attr('fill', '#ffa');
         }
 //        Roo.log(this.signatureTmp);
-        if (this.isTouchEvent(e)) e.preventDefault();
+        //if (this.isTouchEvent(e)) 
+            e.preventDefault();
     },
     
     /**
