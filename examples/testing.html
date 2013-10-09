@@ -1,218 +1,201 @@
-<html>
-    <head>
-        <style type="text/css">
-            .drag
-            {
-                position: absolute;
-                color: White;
-                z-index: 1;
-            }
-            .slot
-            {
-                position: absolute;
-                height: 32px;
-                width: 32px;
-                color: White;
-                z-index: 0;
-            }
-        </style>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .drag
+        {
+            position: relative;
+            height: 50px;
+            width: 50px;
+            background-color: #FF0000;
+            color: White;
+        }
+        
+        .dropon
+        {
+            position: relative;
+            
+           
+        }
+    </style>
 
-        <script type="text/javascript">
+    <script type="text/javascript">
 
-            var _offsetX = 0;
-            var _offsetY = 0;
-            var _dragElement;
-            var _oldZIndex = 0;
-            var _countClick = 0;
-            window.onload = InitDragDrop;
-            function InitDragDrop() {
-                document.onclick = OnMouseClick;
-                document.getElementById('inv_slot1').onclick = OnMouseClick; document.getElementById('inv_slot2').onclick = OnMouseClick; document.getElementById('inv_slot3').onclick = OnMouseClick; document.getElementById('inv_slot4').onclick = OnMouseClick; document.getElementById('inv_slot5').onclick = OnMouseClick; document.getElementById('inv_slot6').onclick = OnMouseClick; document.getElementById('inv_slot7').onclick = Drop; document.getElementById('inv_slot8').onclick = Drop; document.getElementById('inv_slot9').onclick = Drop; document.getElementById('slot1').onclick = OnMouseClick; document.getElementById('slot2').onclick = OnMouseClick; document.getElementById('slot3').onclick = OnMouseClick; document.getElementById('slot4').onclick = OnMouseClick; document.getElementById('slot5').onclick = OnMouseClick; document.getElementById('slot6').onclick = OnMouseClick; document.getElementById('slot7').onclick = OnMouseClick; document.getElementById('slot8').onclick = OnMouseClick; document.getElementById('slot9').onclick = OnMouseClick; document.getElementById('slot10').onclick = OnMouseClick; document.getElementById('slot11').onclick = OnMouseClick; document.getElementById('slot12').onclick = OnMouseClick; document.getElementById('slot13').onclick = OnMouseClick; document.getElementById('slot14').onclick = OnMouseClick; document.getElementById('slot15').onclick = OnMouseClick; document.getElementById('slot16').onclick = OnMouseClick; document.getElementById('slot17').onclick = OnMouseClick; document.getElementById('slot18').onclick = OnMouseClick; document.getElementById('slot19').onclick = OnMouseClick; document.getElementById('slot20').onclick = OnMouseClick; document.getElementById('slot21').onclick = OnMouseClick; document.getElementById('slot22').onclick = OnMouseClick; document.getElementById('slot23').onclick = OnMouseClick; document.getElementById('slot24').onclick = OnMouseClick; document.getElementById('slot25').onclick = OnMouseClick; document.getElementById('slot26').onclick = OnMouseClick; document.getElementById('slot27').onclick = OnMouseClick; document.getElementById('slot28').onclick = OnMouseClick; document.getElementById('slot29').onclick = OnMouseClick; document.getElementById('slot30').onclick = OnMouseClick; document.getElementById('slot31').onclick = OnMouseClick; document.getElementById('slot32').onclick = OnMouseClick; document.getElementById('slot3').onclick = Drop; document.getElementById('slot4').onclick = Drop; document.getElementById('slot5').onclick = Drop; document.getElementById('slot6').onclick = Drop; document.getElementById('slot7').onclick = Drop; document.getElementById('slot11').onclick = Drop; document.getElementById('slot12').onclick = Drop; document.getElementById('slot13').onclick = Drop; document.getElementById('slot14').onclick = Drop; document.getElementById('slot15').onclick = Drop; document.getElementById('slot17').onclick = Drop; document.getElementById('slot18').onclick = Drop; document.getElementById('slot19').onclick = Drop; document.getElementById('slot20').onclick = Drop; document.getElementById('slot21').onclick = Drop; document.getElementById('slot22').onclick = Drop; document.getElementById('slot23').onclick = Drop; document.getElementById('slot24').onclick = Drop; document.getElementById('slot25').onclick = Drop; document.getElementById('slot26').onclick = Drop; document.getElementById('slot27').onclick = Drop; document.getElementById('slot28').onclick = Drop; document.getElementById('slot29').onclick = Drop; document.getElementById('slot30').onclick = Drop; document.getElementById('slot31').onclick = Drop; document.getElementById('slot32').onclick = Drop;
+        var _startX = 0;            // mouse starting positions
+        var _startY = 0;
+        var _offsetX = 0;           // current element offset
+        var _offsetY = 0;
+        var _dragElement;
+        var _oldZIndex = 0;         // we temporarily increase the z-index during drag
+        var _debug;
+        var _countClick = 0;
+        InitDragDrop();
+        function InitDragDrop() {
+            document.onclick = OnMouseClick;
+            document.onMouseClick = OnMouseClick;
 
+        }
 
-            }
+        function OnMouseClick(e) {
+            
+            _debug = $('debug');
+            // if first click this is zero
+            if (_countClick == 0) {
+                // IE
+                if (e == null)
+                    e = window.event;
 
-            function OnMouseClick(e) {
-                if (_countClick == 0) {
-                    if (e == null)
-                        e = window.event;
-                    var target = e.target != null ? e.target : e.srcElement;
-                    if ((e.button == 1 && window.event != null || e.button == 0) && target.className == 'drag') {
-                        _offsetX = ExtractNumber(target.style.left);
-                        _offsetY = ExtractNumber(target.style.top);
-                        _oldZIndex = target.style.zIndex;
-                        target.style.zIndex = 10000;
-                        _dragElement = target;
-                    
-                        document.onmousemove = OnMouseMove;
-                        document.body.focus();
-                        document.onselectstart = function() { return false; };
-                        target.ondragstart = function() { return false; };
-                        if (!e) var e = window.event;
-                        e.cancelBubble = true;
-                        if (e.stopPropagation) e.stopPropagation();
-                        _dragElement.parentElement.onclick = Drop;
-                        _countClick = 1;
-                    }
-                }
-            }
-            function Drop(e) {
-                if (_countClick == 1) {
-                    if (e == null)
-                        e = window.event;
-                    var item = _dragElement.id;
+                // IE uses srcElement, others use target
+                var target = e.target != null ? e.target : e.srcElement;
 
+                _debug.innerHTML = target.className == 'drag'
+        ? 'draggable element clicked'
+        : 'NON-draggable element clicked';
 
-                    var target = e.target != null ? e.target : e.srcElement;
-                    var slot = target.id;
+                // for IE, left click == 1
+                // for Firefox, left click == 0
+                if ((e.button == 1 && window.event != null || e.button == 0) && target.className == 'drag') {
+                    // grab the mouse position
+                    _startX = e.clientX;
+                    _startY = e.clientY;
 
+                    // grab the clicked element's position
                     _offsetX = ExtractNumber(target.style.left);
                     _offsetY = ExtractNumber(target.style.top);
 
-                    if (_dragElement != null) {
-                        _dragElement.style.zIndex = _oldZIndex;
-                        document.onmousemove = null;
-                        document.onselectstart = null;
-                        _dragElement.style.left = _offsetX;
-                        _dragElement.style.top = _offsetY;
-                        _dragElement.ondragstart = null;
-                        _dragElement.parentElement.onclick = null;
-                        _dragElement = null;
-                    }
-                    _countClick = 0;
+                    // bring the clicked element to the front while it is being dragged
+                    _oldZIndex = target.style.zIndex;
+                    target.style.zIndex = 10000;
+
+                    // set _dragElement for next click
+                    _dragElement = target;
+
+                    // tell our code to start moving the element with the mouse
+                    document.onmousemove = OnMouseMove;
+
+                    // cancel out any text selections
+                    document.body.focus();
+
+                    // prevent text selection in IE
+                    document.onselectstart = function() { return false; };
+                    // prevent IE from trying to drag an image
+                    target.ondragstart = function() { return false; };
+
+                    //set click count to 1 so we know next click is to release
+                    _countClick = 1;
+                    // prevent text selection (except IE)
+                    return false;
                 }
 
-                window.location = "include/inv_p.php?char=1&from=" + item + "&to=" + slot;
             }
 
+            if (_countClick == 1) {
+                
+                var hitelements = getElementsByClassName("dropon");
+
+                for (var i = 0; i < hitelements.length; i++) {
+                    if (_dragElement != null) {
+                        var hittest = hitTest(_dragElement, hitelements[i]);
+
+                        if (hittest) //we have a div we want (dropon)
+                        {
 
 
-            function OnMouseMove(e) {
-                if (e == null)
-                    var e = window.event;
+                            if (_dragElement != null) {
+                                _dragElement.style.zIndex = _oldZIndex;
 
-                // this is the actual "drag code"
-                _dragElement.style.left = (e.clientX) + 1;
-                _dragElement.style.top = (e.clientY) + 1;
+                                // we're done with these events until the next OnMouseDown
+                                document.onmousemove = null;
+                                document.onselectstart = null;
+                                _dragElement.ondragstart = null;
+
+                                // this is how we know we're not dragging      
+                                _dragElement = null;
+
+                                _debug.innerHTML = 'mouse up';
+                            }
+
+                            //set click count back to 0 so next we know it's first click again
+                            _countClick = 0;
+                        }
+                    }
+                    
+                }
+                
+
+                
             }
 
-            function ExtractNumber(value) {
-                var n = parseInt(value);
-                return n == null || isNaN(n) ? 0 : n;
+        }
+
+        function OnMouseMove(e) {
+            if (e == null)
+                var e = window.event;
+
+            // this is the actual "drag code"
+            _dragElement.style.left = (_offsetX + e.clientX - _startX) + 'px';
+            _dragElement.style.top = (_offsetY + e.clientY - _startY) + 'px';
+
+            _debug.innerHTML = '(' + _dragElement.style.left + ', ' + _dragElement.style.top + ')';
+        }
+
+        function ExtractNumber(value) {
+            var n = parseInt(value);
+
+            return n == null || isNaN(n) ? 0 : n;
+        }
+
+        // this is simply a shortcut for the eyes and fingers
+        function $(id) {
+            return document.getElementById(id);
+        }
+
+        function OnMouseUp(e) {
+
+        }
+
+        hitTest = function(o, l) {
+            function getOffset(o) {
+                for (var r = { l: o.offsetLeft, t: o.offsetTop, r: o.offsetWidth, b: o.offsetHeight };
+            o = o.offsetParent; r.l += o.offsetLeft, r.t += o.offsetTop);
+                return r.r += r.l, r.b += r.t, r;
             }
+            var a = arguments, j = a.length;
+            j > 2 && (o = { offsetLeft: o, offsetTop: l, offsetWidth: j == 5 ? a[2] : 0,
+                offsetHeight: j == 5 ? a[3] : 0, offsetParent: null
+            }, l = a[j - 1]);
+            for (var b, s, r = [], a = getOffset(o), j = isNaN(l.length), i = (j ? l = [l] : l).length; i;
+        b = getOffset(l[--i]), (a.l == b.l || (a.l > b.l ? a.l <= b.r : b.l <= a.r))
+        && (a.t == b.t || (a.t > b.t ? a.t <= b.b : b.t <= a.b)) && (r[r.length] = l[i]));
+            return j ? !!r.length : r;
+        };
 
-            function $(id) {
-                return document.getElementById(id);
-            }
+        function getElementsByClassName(classname, node) {
+            if (!node) node = document.getElementsByTagName("body")[0];
+            var a = [];
+            var re = new RegExp('\\b' + classname + '\\b');
+            var els = node.getElementsByTagName("*");
+            for (var i = 0, j = els.length; i < j; i++)
+                if (re.test(els[i].className)) a.push(els[i]);
+            return a;
+        }
+    </script>
 
-            function OnMouseUp(e) { }
-        
- 
- 
- 
-        </script>
-
-    </head>
-    <body topmargin="0" leftmargin="0">
-        <div style='position: relative; height: 400px; width: 256px; top: 0px; left: 0px;
-             background-color: #000000; color: White; z-index: 0; background: url(http://street-kings-online.com/files/bg.jpg) no-repeat left top;'>
-        </div><div id='inv_slot1_parent'>
-            <div id='inv_slot1' class='drag' style='width: 32px; height: 64px; top: 84px; left: 16px;
-                 background: url(http://street-kings-online.com/sprites/items/c01_sword01.gif) no-repeat center top;'>
-            </div></div> 
-        <div id='inv_slot2' class='drag' style='width: 64px; height: 64px; top: 84px; left: 176px;
-             background: url(http://street-kings-online.com/sprites/items/2_3.gif) no-repeat center top;'>
-        </div>
-        <div id='inv_slot3' class='drag' style='width: 64px; height: 64px; top: 10px; left: 96px;
-             background: url(http://street-kings-online.com/sprites/items/4_9.gif) no-repeat center top;'>
-        </div>
-        <div id='inv_slot4' class='drag' style='width: 64px; height: 64px; top: 190px; left: 16px;
-             background: url(http://street-kings-online.com/sprites/items/5_2.gif) no-repeat center top;'>
-        </div>
-        <div id='inv_slot5' class='drag' style='width: 64px; height: 96px; top: 84px; left: 96px;
-             background: url(http://street-kings-online.com/sprites/items/3_11.gif) no-repeat center top;'>
-        </div>
-        <div id='inv_slot6' class='drag' style='width: 64px; height: 64px; top: 190px; left: 96px;
-             background: url(http://street-kings-online.com/sprites/items/8_9.gif) no-repeat center top;'>
-        </div>
-        <div id='inv_slot7' class='slot' style='top: 42px; left: 48px; width: 32px; height: 32px;'>
-        </div>
-        <div id='inv_slot8' class='slot' style='top: 190px; left: 176px; width: 32px; height: 32px;'>
-        </div>
-        <div id='inv_slot9' class='slot' style='top: 190px; left: 208px; width: 32px; height: 32px;'>
-        </div>
-        <div id='slot1' class='drag' style='width: 32px; height: 64px; top: 272px; left: 0px;
-             background: url(http://street-kings-online.com/sprites/items/c01_sword01.gif) no-repeat center top;'>
-        </div>
-        <div id='slot2' class='drag' style='width: 32px; height: 64px; top: 272px; left: 32px;
-             background: url(http://street-kings-online.com/sprites/items/c01_sword01.gif) no-repeat center top;'>
-        </div>
-        <div id='slot8' class='drag' style='width: 32px; height: 64px; top: 272px; left: 224px;
-             background: url(http://street-kings-online.com/sprites/items/c01_sword01.gif) no-repeat center top;'>
-        </div>
-        <div id='slot1' class='slot' style='top: 272px; left: 0px;'>
-        </div>
-        <div id='slot2' class='slot' style='top: 272px; left: 32px;'>
-        </div>
-        <div id='slot3' class='slot' style='top: 272px; left: 64px;'>
-        </div>
-        <div id='slot4' class='slot' style='top: 272px; left: 96px;'>
-        </div>
-        <div id='slot5' class='slot' style='top: 272px; left: 128px;'>
-        </div>
-        <div id='slot6' class='slot' style='top: 272px; left: 160px;'>
-        </div>
-        <div id='slot7' class='slot' style='top: 272px; left: 192px;'>
-        </div>
-        <div id='slot8' class='slot' style='top: 272px; left: 224px;'>
-        </div>
-        <div id='slot9' class='slot' style='top: 304px; left: 0px;'>
-        </div>
-        <div id='slot10' class='slot' style='top: 304px; left: 32px;'>
-        </div>
-        <div id='slot11' class='slot' style='top: 304px; left: 64px;'>
-        </div>
-        <div id='slot12' class='slot' style='top: 304px; left: 96px;'>
-        </div>
-        <div id='slot13' class='slot' style='top: 304px; left: 128px;'>
-        </div>
-        <div id='slot14' class='slot' style='top: 304px; left: 160px;'>
-        </div>
-        <div id='slot15' class='slot' style='top: 304px; left: 192px;'>
-        </div>
-        <div id='slot16' class='slot' style='top: 304px; left: 224px;'>
-        </div>
-        <div id='slot17' class='slot' style='top: 336px; left: 0px;'>
-        </div>
-        <div id='slot18' class='slot' style='top: 336px; left: 32px;'>
-        </div>
-        <div id='slot19' class='slot' style='top: 336px; left: 64px;'>
-        </div>
-        <div id='slot20' class='slot' style='top: 336px; left: 96px;'>
-        </div>
-        <div id='slot21' class='slot' style='top: 336px; left: 128px;'>
-        </div>
-        <div id='slot22' class='slot' style='top: 336px; left: 160px;'>
-        </div>
-        <div id='slot23' class='slot' style='top: 336px; left: 192px;'>
-        </div>
-        <div id='slot24' class='slot' style='top: 336px; left: 224px;'>
-        </div>
-        <div id='slot25' class='slot' style='top: 368px; left: 0px;'>
-        </div>
-        <div id='slot26' class='slot' style='top: 368px; left: 32px;'>
-        </div>
-        <div id='slot27' class='slot' style='top: 368px; left: 64px;'>
-        </div>
-        <div id='slot28' class='slot' style='top: 368px; left: 96px;'>
-        </div>
-        <div id='slot29' class='slot' style='top: 368px; left: 128px;'>
-        </div>
-        <div id='slot30' class='slot' style='top: 368px; left: 160px;'>
-        </div>
-        <div id='slot31' class='slot' style='top: 368px; left: 192px;'>
-        </div>
-        <div id='slot32' class='slot' style='top: 368px; left: 224px;'>
-        </div>
-    </body>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div runat="server" id="thediv" class="drag">
+        Drag this
+    </div>
+    
+    <div id="slot1" class="dropon" style='position: absolute; height: 28px; width: 28px;
+        top: 200px; left: 200px; background-color: #FF0000; color: White;'>
+    </div>
+    <div id="slot2" class="dropon" style='position: absolute; height: 28px; width: 28px;
+        top: 200px; left: 230px; background-color: #FF0000; color: White;'>
+    </div>
+    <pre id="debug"> </pre>
+    </form>
+</body>
 </html>
