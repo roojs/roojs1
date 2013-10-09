@@ -210,7 +210,6 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
      * @param {HtmlEditor} editor
      */
     createToolbar : function(editor){
-        Roo.log('in?');
          function btn(id, toggle, handler){
             var xid = fid + '-'+ id ;
             return {
