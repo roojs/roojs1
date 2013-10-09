@@ -41,6 +41,12 @@ Roo.form.Signature = function(config){
 };
 
 Roo.extend(Roo.form.Signature, Roo.form.Field,  {
+    
+    labels { 
+        cancel : "Cancel",
+        confirm : "Confirm"
+    },
+    
     /**
      * @cfg {Boolean} allowBlank False to validate that the value length > 0 (defaults to true)
      */
