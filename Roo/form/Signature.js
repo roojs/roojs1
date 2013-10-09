@@ -210,7 +210,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     createSVG : function(){ 
         var svg = this.signPanel;
         Roo.log(this.signPanel);
-        Roo.log(svg.get('r'));
+        Roo.log(svg.select('#r', true));
         
         
         var r = svg.document.getElementById('r'),
