@@ -217,6 +217,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     },
     up : function (e) {
         this.isMouseDown = false; 
+        Roo.log('up');
 //        Roo.log(this.signatureTmp);
         if (this.isTouchEvent(e)) e.preventDefault();
     },
