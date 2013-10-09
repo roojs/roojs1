@@ -319,14 +319,14 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         if(!this.getSignature()){
             return;
         }
-        this.signPanel.select('#svg-p', true).first().attr('fill', '#ffa');
+        this.signPanel.select('#svg-r', true).first().attr('fill', '#ffa');
         this.setValue(this.getSignature());
         
 //        Roo.log(Roo.get(this.signPanel.dom.contentWindow.r).attr('fill', '#cfc'));
     },
     //public
     clear : function(){
-        this.signPanel.select('#svg-p', true).first().attr('fill', '#ffa');
+        this.signPanel.select('#svg-r', true).first().attr('fill', '#ffa');
         this.reset();
     },
     // private
