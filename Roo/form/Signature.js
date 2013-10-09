@@ -271,7 +271,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         }
         this.signPanel.select('#svg-r', true).first().attr('fill', '#cfc');
         this.setValue(this.getSignature());
-        
+        this.isConfirmed = true;
 //        Roo.log(Roo.get(this.signPanel.dom.contentWindow.r).attr('fill', '#cfc'));
     },
     // private
