@@ -214,7 +214,8 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
             this.signatureTmp += 'L' + this.getCoords(e) + ' ';
             this.signPanel.select('#svg-p', true).first().attr('d', this.signatureTmp);
         }
-        if (this.isTouchEvent(e)) e.preventDefault();
+        //if (this.isTouchEvent(e)) 
+            e.preventDefault();
     },
     up : function (e) {
         this.isMouseDown = false;
