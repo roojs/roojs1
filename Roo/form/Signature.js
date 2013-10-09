@@ -111,8 +111,8 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                 {
                     tag: "rect",
                     id: "svg-r",
-                    width: 300,
-                    height: 100,
+                    width: this.width,
+                    height: this.height,
                     fill: "#ffa"
                 },
                 {
