@@ -220,17 +220,17 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         
         this.isMouseDown = false;
         Roo.log(r);
-return;
+
         
 
-        r.addEventListener('mousedown', down, false);
-        r.addEventListener('mousemove', move, false);
-        r.addEventListener('mouseup', up, false);
-        r.addEventListener('touchstart', down, false);
-        r.addEventListener('touchmove', move, false);
-        r.addEventListener('touchend', up, false);
-        r.addEventListener('mouseout', up, false);
-
+        r.addEventListener('mousedown', this.down, false);
+        r.addEventListener('mousemove', this.move, false);
+        r.addEventListener('mouseup', this.up, false);
+        r.addEventListener('touchstart', this.down, false);
+        r.addEventListener('touchmove', this.move, false);
+        r.addEventListener('touchend', this.up, false);
+        r.addEventListener('mouseout', this.up, false);
+        return;
         function clearSignature() {
             signaturePath = '';
             p.setAttribute('d', '');
