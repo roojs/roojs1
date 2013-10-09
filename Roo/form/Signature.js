@@ -60,26 +60,9 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
      */
     height : 100,
     /**
-     * @cfg {Object} signPanel The signature SVG panel element (defaults to {})
-     */
-    
-    /**
      * @cfg {Boolean} allowBlank False to validate that the value length > 0 (defaults to false)
      */
     allowBlank : false,
-    /**
-     * @cfg {Boolean} isMouseDown False to validate that the mouse down event (defaults to false)
-     */
-    isMouseDown : false,
-    /**
-     * @cfg {Boolean} isConfirmed validate the signature is confirmed or not for submitting form (defaults to false)
-     */
-    
-    /**
-     * @cfg {String} signatureTmp SVG mapping string (defaults to empty string)
-     */
-    
-    
     
     //private
     // {Object} signPanel The signature SVG panel element (defaults to {})
