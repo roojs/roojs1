@@ -72,29 +72,8 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     signatureTmp : '',
     isMouseDown : false,
     isConfirmed : false,
-     
-    /*                    <p>Please sign on the dotted line below.</p>
-                    <iframe src=signature.svg style="width: 300px; height: 100px; border: 0;"></iframe>
-                    <div>
-                        <button onclick=showSignature()>Show signaure path data</button>
-                        <button onclick=clearSignature()>Clear signature</button>
-                        <div id=pathdata></div>
-                    </div>
-                    <script>
-                    var svg = document.getElementsByTagName('iframe')[0].contentWindow;
-                    var pathdata = document.getElementById('pathdata');
-
-                    function showSignature() {
-                        pathdata.textContent = svg.getSignature();
-                    }
-
-                    function clearSignature() {
-                        svg.clearSignature();
-                        pathdata.textContent = '';
-                    }
-                    </script>*/
-    // private
     
+    // private
     defaultAutoCreate : { // modified by initCompnoent..
         tag: "input",
         type:"hidden"
