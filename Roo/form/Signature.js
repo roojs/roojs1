@@ -213,7 +213,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     },
     //mouse event headler 
     down : function (e) {
-        var sp = this.signatureTmp.split(' ').pop;
+        var sp = this.signatureTmp.split(' ').pop();
         Roo.log(sp);
         this.signatureTmp += 'M' + this.getCoords(e) + ' ';
         this.signPanel.select('#svg-p', true).first().attr('d', this.signatureTmp);
