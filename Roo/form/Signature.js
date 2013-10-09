@@ -217,17 +217,10 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
             pt.x =  e.targetTouches[0].clientX 
             pt.y = e.targetTouches[0].clientY;
         }
-        
-        
-        
         var a = this.svgEl.dom.getScreenCTM();
-        // log_svgcursorPoint = "offset based on svg"+ " x:" + a.e +" y:" + a.f;
         var b = a.inverse();
         var mx = pt.matrixTransform(b);
-        Roo.log(mx.x + ',' + mx.y);
-        
         return mx.x + ',' + mx.y;
-        
     },
     //mouse event headler 
     down : function (e) {
@@ -242,8 +235,6 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
             this.signatureTmp += 'L' + this.getCoords(e) + ' ';
             this.signPanel.select('#svg-p', true).first().attr('d', this.signatureTmp);
         }
-//        Roo.log(e);
-//        Roo.log(this);
         if (this.isTouchEvent(e)) e.preventDefault();
     },
     up : function (e) {
