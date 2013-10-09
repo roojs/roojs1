@@ -58,6 +58,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
      */
     allowBlank : false,
     signatureTmp : '',
+    isMouseDown : false,
     /*                    <p>Please sign on the dotted line below.</p>
                     <iframe src=signature.svg style="width: 300px; height: 100px; border: 0;"></iframe>
                     <div>
@@ -217,7 +218,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         var r = svg.select('#svg-r', true).first(),
         p = svg.select('#svg-p', true).first(),
         signaturePath = '';
-        this.isDown = false;
+        this.isMouseDown = false;
         Roo.log(r);
 return;
         
@@ -252,11 +253,11 @@ return;
     down : function (e) {
         this.signatureTmp += 'M' + getCoords(e) + ' ';
 //        p.setAttribute('d', signatureTmp);
-        this.isDown = true;
+        this.isMouseDown = true;
         if (isTouchEvent(e)) e.preventDefault();
     },
     move : function (e) {
-        if (this.isDown) {
+        if (this.isMouseDown) {
             signaturePath += 'L' + getCoords(e) + ' ';
             p.setAttribute('d', signaturePath);
         }
@@ -264,7 +265,7 @@ return;
         if (isTouchEvent(e)) e.preventDefault();
     },
     up : function (e) {
-        this.isDown = false; 
+        this.isMouseDown = false; 
         console.log('up');
         if (isTouchEvent(e)) e.preventDefault();
     },
