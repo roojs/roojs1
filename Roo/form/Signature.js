@@ -252,6 +252,15 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         var tb = new Roo.Toolbar(editor.wrap.dom.firstChild);
         this.tb = tb;
         this.tb.add(
+         {
+//                background: none repeat scroll 0 center transparent;
+                cls : ' x-signature-btn x-signature-'+id,
+                scope: editor, // was editor...
+                handler: this.reset,
+                clickEvent:'mousedown',
+                text: 'Cancel'
+            } ,
+            
             {
                 cls : '  x-signature-btn x-signature-'+id,
                 scope: editor, // was editor...
@@ -259,22 +268,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                 clickEvent:'mousedown',
                 text: 'Confirm'
             },
-            {
-//                background: none repeat scroll 0 center transparent;
-                cls : ' x-signature-btn x-signature-'+id,
-                scope: editor, // was editor...
-                handler: this.reset,
-                clickEvent:'mousedown',
-                text: 'Cancel'
-            },
-            {
-                cls : 'x-btn-icon x-signature-btn x-signature-'+id,
-                scope: editor, // was editor...
-                handler: this.test,
-                clickEvent:'mousedown',
-                text: 'TEST!!'
-            }
-            
+           
         );
              
 //        
