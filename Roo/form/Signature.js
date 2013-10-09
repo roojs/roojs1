@@ -210,7 +210,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         return e.type.match(/^touch/);
     },
     getCoords : function (e) {
-        var pt    = svg.createSVGPoint();
+        var pt    = this.svgEl.dom.createSVGPoint();
         pt.x = e.clientX; 
         pt.y = e.clientY;
         if (this.isTouchEvent(e)) {
@@ -220,7 +220,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         
         
         
-        var a = svg.getScreenCTM();
+        var a = this.svgEl.dom.getScreenCTM();
         // log_svgcursorPoint = "offset based on svg"+ " x:" + a.e +" y:" + a.f;
         var b = a.inverse();
         var mx = pt.matrixTransform(b);
