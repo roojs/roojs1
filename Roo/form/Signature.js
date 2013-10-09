@@ -173,46 +173,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
           Roo.log(this.svgEl);
         this.svgBox = this.svgEl.getBox();
         Roo.log(this.svgBox);
-        
-        
-//        (function() { _t.createSVG() }).defer(3000);
-//        this.signPanel.createChild(
-//            {
-//                tag: "rect",
-//                id: "r",
-//                width: 300,
-//                height: 100,
-//                fill: "#ffa"
-//            },
-//            
-//            this.signPanel.el
-//        );
-//        this.signPanel.createChild(
-//            {
-//                tag: "line",
-//                x1: "0",
-//                y1: "80",
-//                x2: "300",
-//                y2: "80",
-//                'stroke': "#666",
-//                'stroke-width': "1",
-//                'stroke-dasharray': "3",
-//                'shape-rendering': "crispEdges",
-//                'pointer-events': "none"
-//            },
-//            this.signPanel.el
-//        );
-//        this.signPanel.createChild(
-//            {
-//                tag: "path",
-//                id: "p",
-//                'stroke': "navy",
-//                'stroke-width': "2",
-//                'fill': "none",
-//                'pointer-events': "none"
-//            },
-//            this.signPanel.el
-//        );
+         
     },
     createSVG : function(){ 
         var svg = this.signPanel;
