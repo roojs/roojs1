@@ -43,7 +43,7 @@ Roo.form.Signature = function(config){
 Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     
     labels : { 
-        cancel : "Cancel",
+        clear : "Clear",
         confirm : "Confirm"
     },
     
