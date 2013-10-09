@@ -213,8 +213,8 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         Roo.log(svg.select('#r', true));
         
         
-        var r = svg.document.getElementById('r'),
-        p = svg.document.getElementById('p'),
+        var r = svg.select('#svg-r', true).first(),
+        p = svg.select('#svg-p', true).first(),
         signaturePath = '',
         isDown = false;
         Roo.log(r);
