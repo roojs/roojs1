@@ -226,7 +226,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         var mx = pt.matrixTransform(b);
         Roo.log(mx);
         
-        return e.clientX + ',' + e.clientY;
+        return mx.x + ',' + mx.y;
         
     },
     //mouse event headler 
