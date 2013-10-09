@@ -195,6 +195,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         
         if(this.getValue() != this.signatureTmp){
             this.signPanel.select('#svg-r', true).first().attr('fill', '#ffa');
+            this.isConfirmed = false;
         }
         
         e.preventDefault();
