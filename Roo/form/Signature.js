@@ -106,7 +106,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
               tag : 'svg',
               width: this.width,
               height: this.height,
-              viewBox: "0 0 300 100",
+              viewBox: '0 0 '+this.width+' '+this.height,
               cn : [
                 {
                     tag: "rect",
