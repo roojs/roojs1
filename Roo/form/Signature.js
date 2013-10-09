@@ -237,6 +237,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         if(!sp[sp.length-2].match(/^L/)){
             sp.pop();
             sp.pop();
+            sp.push("");
         }
         Roo.log(sp);
         Roo.log(sp[sp.length-2]);
