@@ -45630,6 +45630,298 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
         this.value = v;
     }
     
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.form.Signature
+ * @extends Roo.form.Field
+ * Signature field.  
+ * @constructor
+ * 
+ * @param {Object} config Configuration options
+ */
+
+Roo.form.Signature = function(config){
+    Roo.form.Signature.superclass.constructor.call(this, config);
+    
+    this.addEvents({// not in used??
+         /**
+         * @event confirm
+         * Fires when the 'confirm' icon is pressed (add a listener to enable add button)
+	     * @param {Roo.form.ComboBox} combo This combo box
+	     */
+        'confirm' : true,
+        /**
+         * @event reset
+         * Fires when the 'edit' icon is pressed (add a listener to enable add button)
+	     * @param {Roo.form.ComboBox} combo This combo box
+	     * @param {Roo.data.Record|false} record The data record returned from the underlying store (or false on nothing selected)
+	     */
+        'reset' : true
+    });
+};
+
+Roo.extend(Roo.form.Signature, Roo.form.Field,  {
+    /**
+     * @cfg {Object} labels Label to use when rendering a form.
+     * defaults to 
+     * labels : { 
+     *      clear : "Clear",
+     *      confirm : "Confirm"
+     *  }
+     */
+    labels : { 
+        clear : "Clear",
+        confirm : "Confirm"
+    },
+    /**
+     * @cfg {Number} width The signature panel width (defaults to 300)
+     */
+    width: 300,
+    /**
+     * @cfg {Number} height The signature panel height (defaults to 100)
+     */
+    height : 100,
+    /**
+     * @cfg {Object} signPanel The signature SVG panel element (defaults to {})
+     */
+    signPanel : {},
+    /**
+     * @cfg {Boolean} allowBlank False to validate that the value length > 0 (defaults to false)
+     */
+    allowBlank : false,
+    /**
+     * @cfg {Boolean} isMouseDown False to validate that the mouse down event (defaults to false)
+     */
+    isMouseDown : false,
+    /**
+     * @cfg {Boolean} isConfirmed validate the signature is confirmed or not for submitting form (defaults to false)
+     */
+    isConfirmed : false,
+    /**
+     * @cfg {String} signatureTmp SVG mapping string (defaults to empty string)
+     */
+    signatureTmp : '',
+    
+    defaultAutoCreate : { // modified by initCompnoent..
+        tag: "input",
+        type:"hidden"
+    },
+
+    // private
+    onRender : function(ct, position){
+        
+        Roo.form.Signature.superclass.onRender.call(this, ct, position);
+        
+        this.wrap = this.el.wrap({
+            cls:'x-form-signature-wrap', style : 'width: ' + this.width + 'px', cn:{cls:'x-form-signature'}
+        });
+        
+        this.createToolbar(this);
+        this.signPanel = this.wrap.createChild({
+                tag: 'div',
+                style: 'width: ' + this.width + 'px; height: ' + this.height + 'px; border: 0;'
+            }, this.el
+        );
+            
+        this.svgEl = this.signPanel.createChild({
+              xmlns : 'http://www.w3.org/2000/svg',
+              tag : 'svg',
+              width: this.width,
+              height: this.height,
+              viewBox: '0 0 '+this.width+' '+this.height,
+              cn : [
+                {
+                    tag: "rect",
+                    id: "svg-r",
+                    width: this.width,
+                    height: this.height,
+                    fill: "#ffa"
+                },
+                {
+                    tag: "line",
+                    x1: "0",
+                    y1: "80",
+                    x2: "300",
+                    y2: "80",
+                    'stroke': "#666",
+                    'stroke-width': "1",
+                    'stroke-dasharray': "3",
+                    'shape-rendering': "crispEdges",
+                    'pointer-events': "none"
+                },
+                {
+                    tag: "path",
+                    id: "svg-p",
+                    'stroke': "navy",
+                    'stroke-width': "3",
+                    'fill': "none",
+                    'pointer-events': 'none'
+                }
+              ]
+        });
+        this.createSVG();
+        this.svgBox = this.svgEl.dom.getScreenCTM();
+    },
+    createSVG : function(){ 
+        var svg = this.signPanel;
+        var r = svg.select('#svg-r', true).first().dom;
+        var t = this;
+
+        r.addEventListener('mousedown', function(e) { return t.down(e); }, false);
+        r.addEventListener('mousemove', function(e) { return t.move(e); }, false);
+        r.addEventListener('mouseup', function(e) { return t.up(e); }, false);
+        r.addEventListener('mouseout', function(e) { return t.up(e); }, false);
+        r.addEventListener('touchstart', function(e) { return t.down(e); }, false);
+        r.addEventListener('touchmove', function(e) { return t.move(e); }, false);
+        r.addEventListener('touchend', function(e) { return t.up(e); }, false);
+        
+    },
+    isTouchEvent : function(e){
+        return e.type.match(/^touch/);
+    },
+    getCoords : function (e) {
+        var pt    = this.svgEl.dom.createSVGPoint();
+        pt.x = e.clientX; 
+        pt.y = e.clientY;
+        if (this.isTouchEvent(e)) {
+            pt.x =  e.targetTouches[0].clientX 
+            pt.y = e.targetTouches[0].clientY;
+        }
+        var a = this.svgEl.dom.getScreenCTM();
+        var b = a.inverse();
+        var mx = pt.matrixTransform(b);
+        return mx.x + ',' + mx.y;
+    },
+    //mouse event headler 
+    down : function (e) {
+        this.signatureTmp += 'M' + this.getCoords(e) + ' ';
+        this.signPanel.select('#svg-p', true).first().attr('d', this.signatureTmp);
+        
+        this.isMouseDown = true;
+        
+        e.preventDefault();
+    },
+    move : function (e) {
+        if (this.isMouseDown) {
+            this.signatureTmp += 'L' + this.getCoords(e) + ' ';
+            this.signPanel.select('#svg-p', true).first().attr('d', this.signatureTmp);
+        }
+        
+        e.preventDefault();
+    },
+    up : function (e) {
+        this.isMouseDown = false;
+        var sp = this.signatureTmp.split(' ');
+        
+        if(sp.length > 1){
+            if(!sp[sp.length-2].match(/^L/)){
+                sp.pop();
+                sp.pop();
+                sp.push("");
+                this.signatureTmp = sp.join(" ");
+            }
+        }
+        if(this.getValue() != this.signatureTmp){
+            this.signPanel.select('#svg-r', true).first().attr('fill', '#ffa');
+            this.isConfirmed = false;
+        }
+        e.preventDefault();
+    },
+    
+    /**
+     * Protected method that will not generally be called directly. It
+     * is called when the editor creates its toolbar. Override this method if you need to
+     * add custom toolbar buttons.
+     * @param {HtmlEditor} editor
+     */
+    createToolbar : function(editor){
+         function btn(id, toggle, handler){
+            var xid = fid + '-'+ id ;
+            return {
+                id : xid,
+                cmd : id,
+                cls : 'x-btn-icon x-edit-'+id,
+                enableToggle:toggle !== false,
+                scope: editor, // was editor...
+                handler:handler||editor.relayBtnCmd,
+                clickEvent:'mousedown',
+                tooltip: etb.buttonTips[id] || undefined, ///tips ???
+                tabIndex:-1
+            };
+        }
+        
+        
+        var tb = new Roo.Toolbar(editor.wrap.dom.firstChild);
+        this.tb = tb;
+        this.tb.add(
+           {
+                cls : ' x-signature-btn x-signature-'+id,
+                scope: editor, // was editor...
+                handler: this.reset,
+                clickEvent:'mousedown',
+                text: this.labels.clear
+            },
+            {
+                 xtype : 'Fill',
+                 xns: Roo.Toolbar
+            }, 
+            {
+                cls : '  x-signature-btn x-signature-'+id,
+                scope: editor, // was editor...
+                handler: this.setConfirmed,
+                clickEvent:'mousedown',
+                text: this.labels.confirm
+            }
+        );
+    
+    },
+    // private
+    getSignature : function(){
+        return this.signatureTmp;
+    },
+    // private
+    reset : function(){
+        this.signatureTmp = '';
+        this.signPanel.select('#svg-r', true).first().attr('fill', '#ffa');
+        this.signPanel.select('#svg-p', true).first().attr('d', '');
+        this.isConfirmed = false;
+        Roo.form.Signature.superclass.reset.call(this);
+    },
+    test : function(){
+//        Roo.log(this.signPanel.dom.contentWindow.up())
+    },
+    //public
+    setConfirmed : function(){
+        if(!this.getSignature()){
+            return;
+        }
+        this.signPanel.select('#svg-r', true).first().attr('fill', '#cfc');
+        this.setValue(this.getSignature());
+        this.isConfirmed = true;
+//        Roo.log(Roo.get(this.signPanel.dom.contentWindow.r).attr('fill', '#cfc'));
+    },
+    // private
+    // Subclasses should provide the validation implementation by overriding this
+    validateValue : function(value){
+        if(this.allowBlank){
+            return true;
+        }
+        
+        if(this.isConfirmed){
+            return true;
+        }
+        return false;
+    }
 });//<script type="text/javasscript">
  
 
@@ -54767,15 +55059,17 @@ Roo.apply(Roo.XComponent, {
         // make a flat list in order of modules to build.
         var mods = this.topModule ? [ this.topModule ] : [];
 		
+        
 	// elmodules (is a list of DOM based modules )
         Roo.each(this.elmodules, function(e) {
             mods.push(e);
-            if (this.topModule &&
+            if (!this.topModule &&
                 typeof(e.parent) == 'string' &&
                 e.parent.substring(0,1) == '#' &&
                 Roo.get(e.parent.substr(1))
                ) {
-                this.topModule = e;
+                
+                _this.topModule = e;
             }
             
         });
