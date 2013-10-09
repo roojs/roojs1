@@ -162,8 +162,12 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                 },
               ]
         });
+        
+        
         var _t = this;
+        
         _t.createSVG();
+        
         (function() { _t.createSVG() }).defer(3000);
 //        this.signPanel.createChild(
 //            {
