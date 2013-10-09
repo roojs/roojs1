@@ -217,7 +217,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         
         
         var r = svg.select('#svg-r', true).first().dom,
-        p = svg.select('#svg-p', true).first();
+        p = this.signPanel.select('#svg-p', true).first();
         
         this.isMouseDown = false;
         Roo.log(r);
@@ -253,7 +253,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     //mouse event headler 
     down : function (e) {
         this.signatureTmp += 'M' + this.getCoords(e) + ' ';
-//        p.setAttribute('d', signatureTmp);
+        this.signPanel.select('#svg-p', true).first().setAttribute('d', signatureTmp);
         Roo.log('down');
         this.isMouseDown = true;
         if (this.isTouchEvent(e)) e.preventDefault();
@@ -261,7 +261,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     move : function (e) {
         if (this.isMouseDown) {
             this.signatureTmp += 'L' + this.getCoords(e) + ' ';
-//            p.setAttribute('d', signaturePath);
+            this.signPanel.select('#svg-p', true).first().setAttribute('d', signaturePath);
         }
         Roo.log(e);
         Roo.log(this);
