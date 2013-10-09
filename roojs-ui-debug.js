@@ -24756,7 +24756,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
                 if (!li.length) {
                     return;
                 }
-                add = {};
+                var add = {};
                 add[this.valueField] = k;
                 add[this.displayField] = li.item(0).data[this.displayField];
                 
@@ -39822,24 +39822,32 @@ Roo.apply(Roo.XComponent, {
 		
 	// elmodules (is a list of DOM based modules )
         Roo.each(this.elmodules, function(e) {
-            mods.push(e)
+            mods.push(e);
+            if (this.topModule &&
+                typeof(e.parent) == 'string' &&
+                e.parent.substring(0,1) == '#' &&
+                Roo.get(e.parent.substr(1))
+               ) {
+                this.topModule = e;
+            }
+            
         });
 
         
         // add modules to their parents..
         var addMod = function(m) {
-	    Roo.debug && Roo.log("build Order: add: " + m.name);
-            
-        mods.push(m);
-        if (m.modules && !m.disabled) {
-            Roo.debug && Roo.log("build Order: " + m.modules.length + " child modules");
-            m.modules.keySort('ASC',  cmp );
-            Roo.debug && Roo.log("build Order: " + m.modules.length + " child modules (after sort)");
-
-            m.modules.each(addMod);
-        } else {
-            Roo.debug && Roo.log("build Order: no child modules");
-	    }
+            Roo.debug && Roo.log("build Order: add: " + m.name);
+                
+            mods.push(m);
+            if (m.modules && !m.disabled) {
+                Roo.debug && Roo.log("build Order: " + m.modules.length + " child modules");
+                m.modules.keySort('ASC',  cmp );
+                Roo.debug && Roo.log("build Order: " + m.modules.length + " child modules (after sort)");
+    
+                m.modules.each(addMod);
+            } else {
+                Roo.debug && Roo.log("build Order: no child modules");
+            }
             // not sure if this is used any more..
             if (m.finalize) {
                 m.finalize.name = m.name + " (clean up) ";
@@ -39850,7 +39858,7 @@ Roo.apply(Roo.XComponent, {
         if (this.topModule) { 
             this.topModule.modules.keySort('ASC',  cmp );
             this.topModule.modules.each(addMod);
-        }
+        } 
         return mods;
     },
     
