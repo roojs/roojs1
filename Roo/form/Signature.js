@@ -41,6 +41,9 @@ Roo.form.Signature = function(config){
 };
 
 Roo.extend(Roo.form.Signature, Roo.form.Field,  {
+    /**
+     * @cfg {Boolean} allowBlank False to validate that the value length > 0 (defaults to true)
+     */
     width: 300,
     height : 100,
     
@@ -62,7 +65,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     allowBlank : false,
     signatureTmp : '',
     isMouseDown : false,
-    _t : false,
+     
     /*                    <p>Please sign on the dotted line below.</p>
                     <iframe src=signature.svg style="width: 300px; height: 100px; border: 0;"></iframe>
                     <div>
@@ -262,7 +265,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                 scope: editor, // was editor...
                 handler: this.reset,
                 clickEvent:'mousedown',
-                text: 'Cancel'
+                text: "Clear"'"
             } ,
             {
                  xtype : 'Fill',
