@@ -172,12 +172,9 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     },
     createSVG : function(){ 
         var svg = this.signPanel;
-        var r = svg.select('#svg-r', true).first().dom,
-        p = this.signPanel.select('#svg-p', true).first();
+        var r = svg.select('#svg-r', true).first().dom;
         
-        this.isMouseDown = false;
-        Roo.log(r);
-
+        
         var t = this;
 
         r.addEventListener('mousedown', function(e) { return t.down(e); }, false);
@@ -188,15 +185,6 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         r.addEventListener('touchmove', function(e) { return t.move(e); }, false);
         r.addEventListener('touchend', function(e) { return t.up(e); }, false);
         
-        return;
-        function clearSignature() {
-            signaturePath = '';
-            p.setAttribute('d', '');
-        }
-
-        function getSignature() {
-            return signaturePath;
-        }
     },
     isTouchEvent : function(e){
         return e.type.match(/^touch/);
