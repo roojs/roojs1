@@ -236,7 +236,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                 scope: editor, // was editor...
                 handler: this.reset,
                 clickEvent:'mousedown',
-                text: "Clear"
+                text: this.labels.clear
             } ,
             {
                  xtype : 'Fill',
@@ -247,7 +247,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                 scope: editor, // was editor...
                 handler: this.setConfirmed,
                 clickEvent:'mousedown',
-                text: 'Confirm'
+                text: this.labels.confirm
             }
            
         );
