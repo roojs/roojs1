@@ -319,7 +319,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         if(!this.getSignature()){
             return;
         }
-        this.signPanel.select('#svg-r', true).first().attr('fill', '#ffa');
+        this.signPanel.select('#svg-r', true).first().attr('fill', '#cfc');
         this.setValue(this.getSignature());
         
 //        Roo.log(Roo.get(this.signPanel.dom.contentWindow.r).attr('fill', '#cfc'));
