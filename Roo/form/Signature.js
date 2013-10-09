@@ -137,7 +137,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
               cn : [
                 {
                     tag: "rect",
-                    id: "r",
+                    id: "svg-r",
                     width: 300,
                     height: 100,
                     fill: "#ffa"
@@ -156,7 +156,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                 },
                 {
                     tag: "path",
-                    id: "p",
+                    id: "svg-p",
                     'stroke': "navy",
                     'stroke-width': "2",
                     'fill': "none",
