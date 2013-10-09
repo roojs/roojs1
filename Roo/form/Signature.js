@@ -122,7 +122,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                     x2: "300",
                     y2: "80",
                     'stroke': "#666",
-                    'stroke-width': "1",
+                    'stroke-width': "10",
                     'stroke-dasharray': "3",
                     'shape-rendering': "crispEdges",
                     'pointer-events': "none"
