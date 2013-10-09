@@ -21,7 +21,7 @@
 Roo.form.Signature = function(config){
     Roo.form.Signature.superclass.constructor.call(this, config);
     
-    this.addEvents({
+    this.addEvents({// not in used??
          /**
          * @event confirm
          * Fires when the 'confirm' icon is pressed (add a listener to enable add button)
