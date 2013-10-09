@@ -208,15 +208,15 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
 //        );
     },
     createSVG : function(){ 
-//        var svg = this.signPanel.dom.contentWindow;
+        var svg = this.signPanel;
         Roo.log(this.signPanel);
 //        Roo.log(svg.document.getElementById('r'));
         
         
-//        var r = svg.document.getElementById('r'),
-//        p = svg.document.getElementById('p'),
-//        signaturePath = '',
-//        isDown = false;
+        var r = svg.document.getElementById('r'),
+        p = svg.document.getElementById('p'),
+        signaturePath = '',
+        isDown = false;
 return;
         function isTouchEvent(e) {
             return e.type.match(/^touch/);
