@@ -270,7 +270,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                 handler: this.setConfirmed,
                 clickEvent:'mousedown',
                 text: 'Confirm'
-            },
+            }
            
         );
              
