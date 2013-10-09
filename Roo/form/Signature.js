@@ -123,7 +123,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         );
             
         
-          this.signPanel.createChild({
+        this.signPanel.createChild({
               ns:'svg',
               xmlns : 'http://www.w3.org/2000/svg',
               tag : 'svg',
@@ -159,7 +159,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                     'pointer-events': "none"
                 },
               ]
-          });
+        });
         var _t = this;
         _t.createSVG();
         (function() { _t.createSVG() }).defer(3000);
