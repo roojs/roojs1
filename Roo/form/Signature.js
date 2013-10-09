@@ -238,6 +238,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
             sp.pop();
             sp.pop();
             sp.push("");
+            this.signatureTmp = sp.join(" ");
             Roo.log('in?');
         }
         Roo.log(sp);
