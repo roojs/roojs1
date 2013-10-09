@@ -279,7 +279,9 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     // private
     // Subclasses should provide the validation implementation by overriding this
     validateValue : function(value){
+        if(this.isConfirmed){
+            return true;
+        }
         
-        return true;
     }
 });
