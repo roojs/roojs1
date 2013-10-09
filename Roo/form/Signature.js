@@ -172,10 +172,6 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     },
     createSVG : function(){ 
         var svg = this.signPanel;
-        Roo.log(this.signPanel);
-//        Roo.log(svg.select('#r', true));
-        
-        
         var r = svg.select('#svg-r', true).first().dom,
         p = this.signPanel.select('#svg-p', true).first();
         
@@ -310,12 +306,12 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         Roo.log(this.signPanel);
         var svg = this.signPanel.dom.contentWindow;
         
-        return svg.getSignature();
+        return this.signatureTmp;
     },
     // private
     reset : function(){
-        var svg = this.signPanel.dom.contentWindow;
-        svg.clearSignature();
+        this.signatureTmp = '';
+        this.signPanel.select('#svg-p', true).first().attr('d', '');
         Roo.form.Signature.superclass.reset.call(this);
     },
     test : function(){
