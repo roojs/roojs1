@@ -272,7 +272,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
 //                background: none repeat scroll 0 center transparent;
                 cls : 'x-btn-icon x-signature-btn x-signature-'+id,
                 scope: editor, // was editor...
-                handler: this.clear,
+                handler: this.reset,
                 clickEvent:'mousedown',
                 text: 'Cancel'
             },
@@ -308,6 +308,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     // private
     reset : function(){
         this.signatureTmp = '';
+        this.signPanel.select('#svg-r', true).first().attr('fill', '#ffa');
         this.signPanel.select('#svg-p', true).first().attr('d', '');
         Roo.form.Signature.superclass.reset.call(this);
     },
