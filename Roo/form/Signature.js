@@ -167,14 +167,15 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                 },
               ]
         });
-        Roo.log(this.svgEl);
+       
+      
+        _t.createSVG();
+          Roo.log(this.svgEl);
         this.svgBox = this.svgEl.getBox();
         Roo.log(this.svgBox);
         var _t = this;
         
-        _t.createSVG();
-        
-        (function() { _t.createSVG() }).defer(3000);
+//        (function() { _t.createSVG() }).defer(3000);
 //        this.signPanel.createChild(
 //            {
 //                tag: "rect",
