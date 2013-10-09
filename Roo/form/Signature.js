@@ -48,31 +48,34 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     },
     
     /**
-     * @cfg {Boolean} allowBlank False to validate that the value length > 0 (defaults to true)
+     * @cfg {Number} width The signature panel width (defaults to 300)
      */
     width: 300,
+    /**
+     * @cfg {Number} height The signature panel height (defaults to 100)
+     */
     height : 100,
-    
     /**
-     * @cfg {Boolean} grow True if this field should automatically grow and shrink to its content
+     * @cfg {Boolean} allowBlank False to validate that the value length > 0 (defaults to true)
      */
-    grow : false,
-    /**
-     * @cfg {Number} growMin The minimum width to allow when grow = true (defaults to 30)
-     */
-    growMin : 30,
-    
     confirmed : false,
-    
+    /**
+     * @cfg {Boolean} allowBlank False to validate that the value length > 0 (defaults to true)
+     */
     signPanel : false,
     /**
      * @cfg {Boolean} allowBlank False to validate that the value length > 0 (defaults to true)
      */
     allowBlank : false,
-    signatureTmp : '',
+    /**
+     * @cfg {Boolean} allowBlank False to validate that the value length > 0 (defaults to true)
+     */
     isMouseDown : false,
+    /**
+     * @cfg {Boolean} allowBlank False to validate that the value length > 0 (defaults to true)
+     */
     isConfirmed : false,
-    
+    signatureTmp : '',
     // private
     defaultAutoCreate : { // modified by initCompnoent..
         tag: "input",
