@@ -128,7 +128,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
 //                html: '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="100" viewBox="0 0 300 100"></svg>'
 //            });
         
-        this.signPanel.createChild({
+        this.svgEl = this.signPanel.createChild({
 //              ns: 'svg',
               xmlns : 'http://www.w3.org/2000/svg',
               tag : 'svg',
@@ -168,7 +168,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
               ]
         });
         
-        
+        this.svgBox = this.svgEl.getBox();
         var _t = this;
         
         _t.createSVG();
