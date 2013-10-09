@@ -116,33 +116,13 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         
         
         this.createToolbar(this);
-//        this.signPanel = this.signFrame.createChild({
-//                tag: 'svg',
-//                xmlns:"http://www.w3.org/2000/svg",
-//                width: 300,
-//                height: 100,
-//                viewBox:"0 0 300 100"
-//            }
-//        );
-        
-        
-//        this.signPanel = this.wrap.createChild({
-//                tag: 'iframe',
-//                style:"width: 300px; height: 100px; border: 0;",
-//                src: 'signature.svg'
-//            }, this.el
-//        );
         this.signPanel = this.wrap.createChild({
                 tag: 'div',
                 style:"width: 300px; height: 100px; border: 0;"
         }, this.el
         );
-//            new Roo.DomTemplate({
-//                html: '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="100" viewBox="0 0 300 100"></svg>'
-//            });
-        
+            
         this.svgEl = this.signPanel.createChild({
-//              ns: 'svg',
               xmlns : 'http://www.w3.org/2000/svg',
               tag : 'svg',
               width: "300",
