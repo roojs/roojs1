@@ -150,6 +150,10 @@
         </span><span class="jsdoc-var">ul.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mouseover&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onMouseOver</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">ul.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mouseout&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onMouseOut</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.items.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item.hidden</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">li </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;li&quot;</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">li.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;x-menu-list-item&quot;</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">ul.dom.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">li</span><span class="jsdoc-syntax">);
