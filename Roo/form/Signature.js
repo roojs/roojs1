@@ -216,8 +216,8 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         
         var r = svg.select('#svg-r', true).first(),
         p = svg.select('#svg-p', true).first(),
-        signaturePath = '',
-        isDown = false;
+        signaturePath = '';
+        this.isDown = false;
         Roo.log(r);
 return;
         
@@ -250,13 +250,13 @@ return;
     },
     //mouse event headler 
     down : function (e) {
-        signaturePath += 'M' + getCoords(e) + ' ';
-        p.setAttribute('d', signaturePath);
-        isDown = true;
+        this.signatureTmp += 'M' + getCoords(e) + ' ';
+//        p.setAttribute('d', signatureTmp);
+        this.isDown = true;
         if (isTouchEvent(e)) e.preventDefault();
     },
     move : function (e) {
-        if (isDown) {
+        if (this.isDown) {
             signaturePath += 'L' + getCoords(e) + ' ';
             p.setAttribute('d', signaturePath);
         }
@@ -264,7 +264,7 @@ return;
         if (isTouchEvent(e)) e.preventDefault();
     },
     up : function (e) {
-        isDown = false; 
+        this.isDown = false; 
         console.log('up');
         if (isTouchEvent(e)) e.preventDefault();
     },
