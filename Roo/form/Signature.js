@@ -167,13 +167,8 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                 },
               ]
         });
-       
-      
         this.createSVG();
-          Roo.log(this.svgEl);
-        this.svgBox = this.svgEl.dom.getScreenCTM();;
-        Roo.log(this.svgBox);
-         
+        this.svgBox = this.svgEl.dom.getScreenCTM();
     },
     createSVG : function(){ 
         var svg = this.signPanel;
