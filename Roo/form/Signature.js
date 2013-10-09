@@ -303,9 +303,6 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     },
     // private
     getSignature : function(){
-        Roo.log(this.signPanel);
-        var svg = this.signPanel.dom.contentWindow;
-        
         return this.signatureTmp;
     },
     // private
