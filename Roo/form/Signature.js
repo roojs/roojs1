@@ -70,11 +70,11 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
      */
     allowBlank : false,
     /**
-     * @cfg {Boolean} allowBlank False to validate that the value length > 0 (defaults to true)
+     * @cfg {Boolean} isMouseDown False to validate that the value length > 0 (defaults to true)
      */
     isMouseDown : false,
     /**
-     * @cfg {Boolean} allowBlank False to validate that the value length > 0 (defaults to true)
+     * @cfg {Boolean} isConfirmed False to validate that the value length > 0 (defaults to true)
      */
     isConfirmed : false,
     signatureTmp : '',
