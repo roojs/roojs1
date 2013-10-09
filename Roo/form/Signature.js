@@ -258,8 +258,8 @@ return;
     },
     move : function (e) {
         if (this.isMouseDown) {
-            signaturePath += 'L' + getCoords(e) + ' ';
-            p.setAttribute('d', signaturePath);
+            this.signatureTmp += 'L' + getCoords(e) + ' ';
+//            p.setAttribute('d', signaturePath);
         }
 
         if (isTouchEvent(e)) e.preventDefault();
