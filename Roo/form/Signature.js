@@ -215,7 +215,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
 //        Roo.log(svg.select('#r', true));
         
         
-        var r = svg.select('#svg-r', true).first(),
+        var r = svg.select('#svg-r', true).first().dom,
         p = svg.select('#svg-p', true).first();
         
         this.isMouseDown = false;
