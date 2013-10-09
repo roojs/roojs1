@@ -102,18 +102,12 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
 
     
     onRender : function(ct, position){
-        Roo.log(ct);
-        Roo.log(position);
-        
         
         Roo.form.Signature.superclass.onRender.call(this, ct, position);
         
         this.wrap = this.el.wrap({
             cls:'x-form-signature-wrap', style : 'width: ' + this.width + 'px', cn:{cls:'x-form-signature'}
         });
-        
-        
-        
         
         this.createToolbar(this);
         this.signPanel = this.wrap.createChild({
