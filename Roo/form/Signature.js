@@ -217,9 +217,9 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         Roo.log(sp[sp.length-1]);
         this.signatureTmp += 'M' + this.getCoords(e) + ' ';
         this.signPanel.select('#svg-p', true).first().attr('d', this.signatureTmp);
-        Roo.log('down');
+        
         this.isMouseDown = true;
-        //if (this.isTouchEvent(e)) 
+        
         e.preventDefault();
     },
     move : function (e) {
@@ -227,8 +227,8 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
             this.signatureTmp += 'L' + this.getCoords(e) + ' ';
             this.signPanel.select('#svg-p', true).first().attr('d', this.signatureTmp);
         }
-        //if (this.isTouchEvent(e)) 
-            e.preventDefault();
+        
+        e.preventDefault();
     },
     up : function (e) {
         this.isMouseDown = false;
