@@ -186,7 +186,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     up : function (e) {
         this.isMouseDown = false;
         var sp = this.signatureTmp.split(' ');
-        Roo.log(sp)
+        Roo.log(sp.length)
         if(sp.length > 0){
             if(!sp[sp.length-2].match(/^L/)){
                 sp.pop();
