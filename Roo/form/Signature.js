@@ -112,10 +112,10 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                 },
                 {
                     tag: "line",
-                    x1: "0",
-                    y1: "80",
-                    x2: this.width,
-                    y2: "80",
+                    x1: "0", // start
+                    y1: "80", // start
+                    x2: this.width, // end
+                    y2: "83", // end
                     'stroke': "#666",
                     'stroke-width': "1",
                     'stroke-dasharray': "3",
