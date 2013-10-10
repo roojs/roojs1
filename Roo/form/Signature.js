@@ -108,7 +108,8 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                     id: "svg-r",
                     width: this.width,
                     height: this.height,
-                    fill: "#ffa"
+                    fill: "#fff",
+                    'fill-opacity' : '0.0'
                 },
                 {
                     tag: "line",
