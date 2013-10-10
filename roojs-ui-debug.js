@@ -30743,7 +30743,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     /**
      * @cfg {Number} height The signature panel height (defaults to 100)
      */
-    height : 400,
+    height : 100,
     /**
      * @cfg {Boolean} allowBlank False to validate that the value length > 0 (defaults to false)
      */
@@ -30934,12 +30934,10 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     
     },
     //public
-    getImageEl : function(){
+    getImageDataURI : function(){
         var svg = this.svgEl.dom.outerHTML;
         var src = 'data:image/svg+xml;base64,'+window.btoa(svg);
-        var source = new Image();
-        source.src = src;
-        return source;
+        return src;
     },
     getConfirmed : function(){
         return this.isConfirmed;
