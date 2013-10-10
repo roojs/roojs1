@@ -30743,27 +30743,22 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     /**
      * @cfg {Number} height The signature panel height (defaults to 100)
      */
-    height : 100,
-    /**
-     * @cfg {Object} signPanel The signature SVG panel element (defaults to {})
-     */
-    signPanel : {},
+    height : 400,
     /**
      * @cfg {Boolean} allowBlank False to validate that the value length > 0 (defaults to false)
      */
     allowBlank : false,
-    /**
-     * @cfg {Boolean} isMouseDown False to validate that the mouse down event (defaults to false)
-     */
+    
+    //private
+    // {Object} signPanel The signature SVG panel element (defaults to {})
+    signPanel : {},
+    // {Boolean} isMouseDown False to validate that the mouse down event (defaults to false)
     isMouseDown : false,
-    /**
-     * @cfg {Boolean} isConfirmed validate the signature is confirmed or not for submitting form (defaults to false)
-     */
+    // {Boolean} isConfirmed validate the signature is confirmed or not for submitting form (defaults to false)
     isConfirmed : false,
-    /**
-     * @cfg {String} signatureTmp SVG mapping string (defaults to empty string)
-     */
+    // {String} signatureTmp SVG mapping string (defaults to empty string)
     signatureTmp : '',
+    
     
     defaultAutoCreate : { // modified by initCompnoent..
         tag: "input",
@@ -30802,10 +30797,10 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                 },
                 {
                     tag: "line",
-                    x1: "0",
-                    y1: "80",
-                    x2: "300",
-                    y2: "80",
+                    x1: "0", // start
+                    y1: (this.height*0.8), // start set the line in 80% of height
+                    x2: this.width, // end
+                    y2: (this.height*0.8), // end set the line in 80% of height
                     'stroke': "#666",
                     'stroke-width': "1",
                     'stroke-dasharray': "3",
@@ -30938,6 +30933,17 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         );
     
     },
+    //public
+    getImageEl : function(){
+        var svg = this.svgEl.dom.outerHTML;
+        var src = 'data:image/svg+xml;base64,'+window.btoa(svg);
+        var source = new Image();
+        source.src = src;
+        return source;
+    },
+    getConfirmed : function(){
+        return this.isConfirmed;
+    },
     // private
     getSignature : function(){
         return this.signatureTmp;
@@ -30953,7 +30959,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     test : function(){
 //        Roo.log(this.signPanel.dom.contentWindow.up())
     },
-    //public
+    //private
     setConfirmed : function(){
         if(!this.getSignature()){
             return;
