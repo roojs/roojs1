@@ -118,7 +118,8 @@
         [</span><span class="jsdoc-string">&quot;p&quot;</span><span class="jsdoc-syntax">] ,  
         [</span><span class="jsdoc-string">&quot;h1&quot;</span><span class="jsdoc-syntax">],[</span><span class="jsdoc-string">&quot;h2&quot;</span><span class="jsdoc-syntax">],[</span><span class="jsdoc-string">&quot;h3&quot;</span><span class="jsdoc-syntax">],[</span><span class="jsdoc-string">&quot;h4&quot;</span><span class="jsdoc-syntax">],[</span><span class="jsdoc-string">&quot;h5&quot;</span><span class="jsdoc-syntax">],[</span><span class="jsdoc-string">&quot;h6&quot;</span><span class="jsdoc-syntax">], 
         [</span><span class="jsdoc-string">&quot;pre&quot;</span><span class="jsdoc-syntax">],[ </span><span class="jsdoc-string">&quot;code&quot;</span><span class="jsdoc-syntax">], 
-        [</span><span class="jsdoc-string">&quot;abbr&quot;</span><span class="jsdoc-syntax">],[ </span><span class="jsdoc-string">&quot;acronym&quot;</span><span class="jsdoc-syntax">],[ </span><span class="jsdoc-string">&quot;address&quot;</span><span class="jsdoc-syntax">],[ </span><span class="jsdoc-string">&quot;cite&quot;</span><span class="jsdoc-syntax">],[ </span><span class="jsdoc-string">&quot;samp&quot;</span><span class="jsdoc-syntax">],[ </span><span class="jsdoc-string">&quot;var&quot;</span><span class="jsdoc-syntax">]
+        [</span><span class="jsdoc-string">&quot;abbr&quot;</span><span class="jsdoc-syntax">],[ </span><span class="jsdoc-string">&quot;acronym&quot;</span><span class="jsdoc-syntax">],[ </span><span class="jsdoc-string">&quot;address&quot;</span><span class="jsdoc-syntax">],[ </span><span class="jsdoc-string">&quot;cite&quot;</span><span class="jsdoc-syntax">],[ </span><span class="jsdoc-string">&quot;samp&quot;</span><span class="jsdoc-syntax">],[ </span><span class="jsdoc-string">&quot;var&quot;</span><span class="jsdoc-syntax">],
+        [</span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">],[</span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">]
     ],
      </span><span class="jsdoc-comment">/**
      * @cfg {String} defaultFont default font to use.
@@ -161,24 +162,27 @@
             </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-comment">// what does this do?
         </span><span class="jsdoc-syntax">});
 
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.disable.font </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">Roo.isSafari</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-comment">/* why no safari for fonts
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.disable.font</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// &amp;&amp; !Roo.isSafari){
+            /* why no safari for fonts 
             editor.fontSelect = tb.el.createChild({
                 tag:'select',
                 tabIndex: -1,
                 cls:'x-font-select',
-                html: editor.createFontOptions()
+                html: this.createFontOptions()
             });
+            
             editor.fontSelect.on('change', function(){
                 var font = editor.fontSelect.dom.value;
                 editor.relayCmd('fontname', font);
                 editor.deferFocus();
             }, editor);
+            
             tb.add(
                 editor.fontSelect.dom,
                 '-'
             );
             */
+            
         </span><span class="jsdoc-syntax">};
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.disable.formats</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.formatCombo </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.form.ComboBox</span><span class="jsdoc-syntax">({
@@ -462,6 +466,9 @@
     
     </span><span class="jsdoc-var">createFontOptions </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">buf </span><span class="jsdoc-syntax">= [], </span><span class="jsdoc-var">fs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.fontFamilies</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ff</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">lc</span><span class="jsdoc-syntax">;
+        
+        
+        
         </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">fs.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
             </span><span class="jsdoc-var">ff </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">fs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
             </span><span class="jsdoc-var">lc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ff.toLowerCase</span><span class="jsdoc-syntax">();

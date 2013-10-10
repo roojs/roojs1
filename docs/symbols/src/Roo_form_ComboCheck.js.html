@@ -117,6 +117,7 @@
         </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'[]'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">this.valueBefore</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'change'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.valueBefore</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.valueBefore </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">;
         }
     },
     </span><span class="jsdoc-var">getValueArray </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
@@ -139,11 +140,13 @@
     },
     </span><span class="jsdoc-var">expand </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">()
     {
+        
         </span><span class="jsdoc-var">Roo.form.ComboCheck.superclass.expand.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.valueBefore </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.valueBefore </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-comment">//this.valueBefore = typeof(this.valueBefore) == 'undefined' ? '' : this.valueBefore;
         
 
-    },
+    </span><span class="jsdoc-syntax">},
     
     </span><span class="jsdoc-var">collapse </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-var">Roo.form.ComboCheck.superclass.collapse.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
@@ -160,6 +163,7 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">this.valueBefore</span><span class="jsdoc-syntax">) {
 
             </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'change'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.valueBefore</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.valueBefore </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">;
         }
         
     },

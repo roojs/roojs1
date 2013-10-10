@@ -212,6 +212,14 @@
     </span><span class="jsdoc-var">validateBlur </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">!</span><span class="jsdoc-var">this.menu </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.menu.isVisible</span><span class="jsdoc-syntax">();
     },
+    
+    </span><span class="jsdoc-var">getName</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-comment">// returns hidden if it's set..
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.rendered</span><span class="jsdoc-syntax">) {</span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">};
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">!</span><span class="jsdoc-var">this.hiddenName </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.el.dom.name  </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.el.dom.name </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">this.hiddenName </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+        
+    },
 
     </span><span class="jsdoc-comment">/**
      * Returns the current date value of the date field.

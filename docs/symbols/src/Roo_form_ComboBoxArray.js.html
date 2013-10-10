@@ -101,6 +101,10 @@
         
         </span><span class="jsdoc-var">this.combo </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.combo</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.form</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.combo.onRender</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.combo.width</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.combo.onResize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.combo.width</span><span class="jsdoc-syntax">,0);
+        }
+        
         </span><span class="jsdoc-var">this.combo.initEvents</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-comment">// assigned so form know we need to do this..
@@ -285,7 +289,7 @@
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">li.length</span><span class="jsdoc-syntax">) {
                     </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
                 }
-                </span><span class="jsdoc-var">add </span><span class="jsdoc-syntax">= {};
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">add </span><span class="jsdoc-syntax">= {};
                 </span><span class="jsdoc-var">add</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.valueField</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">add</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.displayField</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">li.item</span><span class="jsdoc-syntax">(0)</span><span class="jsdoc-var">.data</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.displayField</span><span class="jsdoc-syntax">];
                 
