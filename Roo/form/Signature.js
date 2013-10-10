@@ -249,6 +249,9 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     
     },
     //public
+    getImageDataURL : function(){
+        
+    },
     getConfirmed : function(){
         return this.isConfirmed;
     },
