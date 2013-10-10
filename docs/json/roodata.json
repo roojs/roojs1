@@ -12178,7 +12178,7 @@
   "Roo.form.Signature": {
    "props": [
     {
-     "name": "fieldLabel",
+     "name": "labels",
      "type": "Object",
      "desc": "Label to use when rendering a form.\ndefaults to \nlabels : { \n     clear : \"Clear\",\n     confirm : \"Confirm\"\n }",
      "memberOf": ""
@@ -12196,34 +12196,16 @@
      "memberOf": ""
     },
     {
-     "name": "signPanel",
-     "type": "Object",
-     "desc": "The signature SVG panel element (defaults to {})",
-     "memberOf": ""
-    },
-    {
      "name": "allowBlank",
      "type": "Boolean",
      "desc": "False to validate that the value length > 0 (defaults to false)",
      "memberOf": ""
     },
     {
-     "name": "isMouseDown",
-     "type": "Boolean",
-     "desc": "False to validate that the mouse down event (defaults to false)",
-     "memberOf": ""
-    },
-    {
-     "name": "isConfirmed",
-     "type": "Boolean",
-     "desc": "validate the signature is confirmed or not for submitting form (defaults to false)",
-     "memberOf": ""
-    },
-    {
-     "name": "signatureTmp",
+     "name": "fieldLabel",
      "type": "String",
-     "desc": "SVG mapping string (defaults to empty string)",
-     "memberOf": ""
+     "desc": "Label to use when rendering a form.",
+     "memberOf": "Roo.form.Field"
     },
     {
      "name": "qtip",
