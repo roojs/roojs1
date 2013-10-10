@@ -248,6 +248,8 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         );
     
     },
+    
+    
     // private
     getSignature : function(){
         return this.signatureTmp;
@@ -263,7 +265,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     test : function(){
 //        Roo.log(this.signPanel.dom.contentWindow.up())
     },
-    //public
+    //private
     setConfirmed : function(){
         if(!this.getSignature()){
             return;
