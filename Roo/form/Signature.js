@@ -58,7 +58,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     /**
      * @cfg {Number} height The signature panel height (defaults to 100)
      */
-    height : 100,
+    height : 400,
     /**
      * @cfg {Boolean} allowBlank False to validate that the value length > 0 (defaults to false)
      */
