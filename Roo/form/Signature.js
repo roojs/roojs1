@@ -250,7 +250,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     },
     //public
     getImageEl : function(){
-        var svg = this.svgEl;
+        var svg = this.svgEl.dom.outerHTML;
         var src = 'data:image/svg+xml;base64,'+window.btoa(svg);
         var source = new Image();
         source.src = src;
