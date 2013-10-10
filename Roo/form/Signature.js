@@ -109,7 +109,6 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                     width: this.width,
                     height: this.height,
                     fill: "#fff",
-                    'fill-opacity' : '0.0'
                 },
                 {
                     tag: "line",
