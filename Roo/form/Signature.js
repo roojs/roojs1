@@ -248,8 +248,10 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         );
     
     },
-    
-    
+    //public
+    getConfirmed : function(){
+        return this.isConfirmed;
+    },
     // private
     getSignature : function(){
         return this.signatureTmp;
