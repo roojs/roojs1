@@ -98,7 +98,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
             
         this.svgEl = this.signPanel.createChild({
               xmlns : 'http://www.w3.org/2000/svg',
-              tag : 'svg',
+              tag : 'canvas',
               width: this.width,
               height: this.height,
               viewBox: '0 0 '+this.width+' '+this.height,
