@@ -30936,7 +30936,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     //public
     getImageDataURI : function(){
         var svg = this.svgEl.dom.outerHTML;
-        Roo.log(svg);
+        Roo.log(this.svgEl);
         var src = 'data:image/svg+xml;base64,'+window.btoa(svg);
         return src;
     },
