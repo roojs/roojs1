@@ -249,12 +249,20 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     
     },
     //public
+    /**
+     * 
+     * @return {String} Image Data URI
+     */
     getImageDataURI : function(){
         var svg = this.svgEl.dom.outerHTML;
         Roo.log(this.svgEl);
         var src = 'data:image/svg+xml;base64,'+window.btoa(svg);
         return src;
     },
+    /**
+     * 
+     * @return {Boolean} this.isConfirmed
+     */
     getConfirmed : function(){
         return this.isConfirmed;
     },
