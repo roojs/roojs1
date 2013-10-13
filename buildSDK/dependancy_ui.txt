@@ -162,4 +162,6 @@ Roo.XTemplate
 
 // extras..
 Roo.XComponent
-Roo.Login
+
+// is this ready yet? - is it used?
+// Roo.Login
