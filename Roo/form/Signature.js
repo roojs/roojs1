@@ -169,7 +169,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     //mouse event headler 
     down : function (e) {
         this.signatureTmp += 'M' + this.getCoords(e) + ' ';
-        this.signPanel.select('#'+ this.svgID + '-svg-p', true).first().dom.setAttributeNS('http://www.w3.org/2000/svg','d', this.signatureTmp);
+        this.signPanel.select('#'+ this.svgID + '-svg-p', true).first().attr('d', this.signatureTmp);
         
         this.isMouseDown = true;
         
