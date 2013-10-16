@@ -96,6 +96,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
             }, this.el
         );
             
+        this.svgID = Roo.id();
         this.svgEl = this.signPanel.createChild({
               xmlns : 'http://www.w3.org/2000/svg',
               tag : 'svg',
@@ -105,7 +106,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
               cn : [
                 {
                     tag: "rect",
-                    cls: "roo-signature-svg-r",
+                    id: this.svgID + "-svg-r",
                     width: this.width,
                     height: this.height,
                     fill: "#ffa"
@@ -124,7 +125,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                 },
                 {
                     tag: "path",
-                    cls: "roo-signature-svg-p",
+                    id: this.svgID + "-svg-p",
                     'stroke': "navy",
                     'stroke-width': "3",
                     'fill': "none",
@@ -137,7 +138,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     },
     createSVG : function(){ 
         var svg = this.signPanel;
-        var r = svg.select('.roo-signature-svg-r', true).first().dom;
+        var r = svg.select('#'+ this.svgID + '-svg-r', true).first().dom;
         var t = this;
 
         r.addEventListener('mousedown', function(e) { return t.down(e); }, false);
@@ -168,7 +169,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     //mouse event headler 
     down : function (e) {
         this.signatureTmp += 'M' + this.getCoords(e) + ' ';
-        this.signPanel.select('.roo-signature-svg-p', true).first().dom.setAttributeNS('http://www.w3.org/2000/svg','d', this.signatureTmp);
+        this.signPanel.select('#'+ this.svgID + '-svg-p', true).first().dom.setAttributeNS('http://www.w3.org/2000/svg','d', this.signatureTmp);
         
         this.isMouseDown = true;
         
@@ -177,7 +178,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     move : function (e) {
         if (this.isMouseDown) {
             this.signatureTmp += 'L' + this.getCoords(e) + ' ';
-            this.signPanel.select('.roo-signature-svg-p', true).first().dom.setAttributeNS('http://www.w3.org/2000/svg', 'd', this.signatureTmp);
+            this.signPanel.select('#'+ this.svgID + '-svg-p', true).first().dom.setAttributeNS('http://www.w3.org/2000/svg', 'd', this.signatureTmp);
         }
         
         e.preventDefault();
@@ -195,7 +196,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
             }
         }
         if(this.getValue() != this.signatureTmp){
-            this.signPanel.select('.roo-signature-svg-r', true).first().attr('fill', '#ffa');
+            this.signPanel.select('#'+ this.svgID + '-svg-r', true).first().attr('fill', '#ffa');
             this.isConfirmed = false;
         }
         e.preventDefault();
@@ -272,8 +273,8 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     // private
     reset : function(){
         this.signatureTmp = '';
-        this.signPanel.select('.roo-signature-svg-r', true).first().attr('fill', '#ffa');
-        this.signPanel.select('.roo-signature-svg-p', true).first().dom.setAttributeNS('http://www.w3.org/2000/svg', 'd', '');
+        this.signPanel.select('#'+ this.svgID + '-svg-r', true).first().attr('fill', '#ffa');
+        this.signPanel.select('#'+ this.svgID + '-svg-p', true).first().dom.setAttributeNS('http://www.w3.org/2000/svg', 'd', '');
         this.isConfirmed = false;
         Roo.form.Signature.superclass.reset.call(this);
     },
@@ -285,7 +286,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         if(!this.getSignature()){
             return;
         }
-        this.signPanel.select('.roo-signature-svg-r', true).first().attr('fill', '#cfc');
+        this.signPanel.select('#'+ this.svgID + '-svg-r', true).first().attr('fill', '#cfc');
         this.setValue(this.getSignature());
         this.isConfirmed = true;
 //        Roo.log(Roo.get(this.signPanel.dom.contentWindow.r).attr('fill', '#cfc'));
