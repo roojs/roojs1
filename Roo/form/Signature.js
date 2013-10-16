@@ -274,7 +274,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     reset : function(){
         this.signatureTmp = '';
         this.signPanel.select('#'+ this.svgID + '-svg-r', true).first().attr('fill', '#ffa');
-        this.signPanel.select('#'+ this.svgID + '-svg-p', true).first().dom.setAttributeNS('http://www.w3.org/2000/svg', 'd', '');
+        this.signPanel.select('#'+ this.svgID + '-svg-p', true).first().attr( 'd', '');
         this.isConfirmed = false;
         Roo.form.Signature.superclass.reset.call(this);
     },
