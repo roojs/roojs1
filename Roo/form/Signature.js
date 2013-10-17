@@ -268,14 +268,14 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     },
     /**
      * 
-     * @return {Boolean} this.isConfirmed
+     * @return {int} this.width
      */
     getWidth : function(){
         return this.width;
     },
     /**
      * 
-     * @return {Boolean} this.isConfirmed
+     * @return {int} this.height
      */
     getHeight : function(){
         return this.height;
