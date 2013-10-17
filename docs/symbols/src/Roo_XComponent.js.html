@@ -411,7 +411,7 @@
             }
             
         }
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.topModule</span><span class="jsdoc-syntax">) { 
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.topModule </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.topModule.modules</span><span class="jsdoc-syntax">) { 
             </span><span class="jsdoc-var">this.topModule.modules.keySort</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'ASC'</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">cmp </span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.topModule.modules.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">addMod</span><span class="jsdoc-syntax">);
         } 
