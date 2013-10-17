@@ -266,6 +266,20 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     getConfirmed : function(){
         return this.isConfirmed;
     },
+    /**
+     * 
+     * @return {Boolean} this.isConfirmed
+     */
+    getWidth : function(){
+        
+    },
+    /**
+     * 
+     * @return {Boolean} this.isConfirmed
+     */
+    getHeight : function(){
+        
+    },
     // private
     getSignature : function(){
         return this.signatureTmp;
