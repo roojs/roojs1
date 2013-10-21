@@ -21,6 +21,10 @@ viewpanel = new Roo.XComponent({
                 {
                     xtype: 'View',
                     xns: Roo,
+                     : function(_self)
+                    {
+                        Roo.log(_self);   
+                    },
                     footer : {
                         xtype: 'PagingToolbar',
                         xns: Roo,

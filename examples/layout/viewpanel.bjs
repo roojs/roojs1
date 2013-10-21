@@ -10,8 +10,9 @@
             "|xns": "Roo",
             "items": [
                 {
-                    "|xns": "Roo",
                     "xtype": "View",
+                    "|": "function(_self)\n{\n    Roo.log(_self);   \n}\n",
+                    "|xns": "Roo",
                     "items": [
                         {
                             "*prop": "footer",
