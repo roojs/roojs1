@@ -39,11 +39,11 @@ Roo.ViewPanel = function(view, config){
         
     }
     
-    grid.monitorWindowResize = false; // turn off autosizing
-    grid.autoHeight = false;
-    grid.autoWidth = false;
-    this.grid = grid;
-    this.grid.getGridEl().replaceClass("x-layout-inactive-content", "x-layout-component-panel");
+    //grid.monitorWindowResize = false; // turn off autosizing
+    //grid.autoHeight = false;
+    //grid.autoWidth = false;
+    //this.grid = grid;
+    //this.grid.getGridEl().replaceClass("x-layout-inactive-content", "x-layout-component-panel");
 };
 
 Roo.extend(Roo.GridPanel, Roo.ContentPanel, {
