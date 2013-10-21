@@ -168,7 +168,7 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
         this.footer = Roo.factory(this.footer, Roo);
         this.wrapEl.appendChild(this.el);
         this.wrapEl.remove(fctr);
-        this.wrapEl.appendChild(this.el);
+        this.wrapEl.appendChild(fctr);
         
          // they get detached?
     }
