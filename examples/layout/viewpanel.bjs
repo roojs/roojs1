@@ -4,7 +4,12 @@
     "parent": "",
     "title": "",
     "path": "/home/chris/gitlive/roojs1/examples/layout/viewpanel.bjs",
-    "items": false,
+    "items": [
+        {
+            "|xns": "Roo",
+            "xtype": "ContentPanel"
+        }
+    ],
     "permname": "",
     "modOrder": "001"
 }
