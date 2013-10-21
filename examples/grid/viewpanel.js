@@ -1,197 +1,276 @@
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
 
-var ImageChooser = function(config){
-    // create the dialog from scratch
-    var dlg = new Roo.LayoutDialog(config.id || Roo.id(), {
-		autoCreate : true,
-		minWidth:400,
-		minHeight:300,
-		syncHeightBeforeShow: true,
-		shadow:true,
-        fixedcenter:true,
-        center:{autoScroll:false},
-		east:{split:true,initialSize:150,minSize:150,maxSize:250}
-	});
-	dlg.setTitle('Choose an Image');
-	dlg.getEl().addClass('ychooser-dlg');
-	dlg.addKeyListener(27, dlg.hide, dlg);
+Roo.BLANK_IMAGE_URL  = "../../images/default/s.gif";
+
+var grid = false;
+
+Roo.onReady(function(){
+    Roo.QuickTips.init();
+    function formatBoolean(value){
+        return value ? 'Yes' : 'No';  
+    };
     
-    // add some buttons
-    this.ok = dlg.addButton('OK', this.doCallback, this);
-    this.ok.disable();
-    dlg.setDefaultButton(dlg.addButton('Cancel', dlg.hide, dlg));
-    dlg.on('show', this.load, this);
-	this.dlg = dlg;
-	var layout = dlg.getLayout();
-	
-	// filter/sorting toolbar
-	this.tb = new Roo.Toolbar(this.dlg.body.createChild({tag:'div'}));
-	this.sortSelect = Roo.DomHelper.append(this.dlg.body.dom, {
-		tag:'select', children: [
-			{tag: 'option', value:'name', selected: 'true', html:'Name'},
-			{tag: 'option', value:'size', html:'File Size'},
-			{tag: 'option', value:'lastmod', html:'Last Modified'}
-		]
-	}, true);
-	this.sortSelect.on('change', this.sortImages, this, true);
-	
-	this.txtFilter = Roo.DomHelper.append(this.dlg.body.dom, {
-		tag:'input', type:'text', size:'12'}, true);
-		
-	this.txtFilter.on('focus', function(){this.dom.select();});
-	this.txtFilter.on('keyup', this.filter, this, {buffer:500});
-	
-	this.tb.add('Filter:', this.txtFilter.dom, 'separator', 'Sort By:', this.sortSelect.dom);
-	
-	// add the panels to the layout
-	layout.beginUpdate();
-	var vp = layout.add('center', new Roo.ContentPanel(Roo.id(), {
-		autoCreate : true,
-		toolbar: this.tb,
-		fitToFrame:true
-	}));
-	var dp = layout.add('east', new Roo.ContentPanel(Roo.id(), {
-		autoCreate : true,
-		fitToFrame:true
-	}));
-    layout.endUpdate();
-	
-	var bodyEl = vp.getEl();
-	bodyEl.appendChild(this.tb.getEl());
-	var viewBody = bodyEl.createChild({tag:'div', cls:'ychooser-view'});
-	vp.resizeEl = viewBody;
-	
-	this.detailEl = dp.getEl();
-	
-	// create the required templates
-	this.thumbTemplate = new Roo.Template(
-		'<div class="thumb-wrap" id="{name}">' +
-		'<div class="thumb"><img src="{url}" title="{name}"></div>' +
-		'<span>{shortName}</span></div>'
-	);
-	this.thumbTemplate.compile();	
-	
-	this.detailsTemplate = new Roo.Template(
-		'<div class="details"><img src="{url}"><div class="details-info">' +
-		'<b>Image Name:</b>' +
-		'<span>{name}</span>' +
-		'<b>Size:</b>' +
-		'<span>{sizeString}</span>' +
-		'<b>Last Modified:</b>' +
-		'<span>{dateString}</span></div></div>'
-	);
-	this.detailsTemplate.compile();	
-    
-    // initialize the View		
-	this.view = new Roo.JsonView(viewBody, this.thumbTemplate, {
-		singleSelect: true,
-		jsonRoot: 'images',
-		emptyText : '<div style="padding:10px;">No images match the specified filter</div>'
-	});
-    this.view.on('selectionchange', this.showDetails, this, {buffer:100});
-    this.view.on('dblclick', this.doCallback, this);
-    this.view.on('loadexception', this.onLoadException, this);
-    this.view.on('beforeselect', function(view){
-        return view.getCount() > 0;
+    function formatDate(value){
+        return value ? value.dateFormat('M d, Y') : '';
+    };
+    // shorthand alias
+    var fm = Roo.form, Ed = Roo.grid.GridEditor;
+
+    // the column model has information about grid columns
+    // dataIndex maps the column to the specific data field in
+    // the data store (created below)
+    var cm = new Roo.grid.ColumnModel([{
+           header: "Common Name",
+           dataIndex: 'common',
+           width: 220  /*,
+           
+           editor: new Ed(new fm.TextField({
+               allowBlank: false
+           })) */
+        },{
+           header: "Light",
+           dataIndex: 'light',
+           width: 130,
+           editor: new Ed(new Roo.form.ComboBox({
+               typeAhead: true,
+               triggerAction: 'all',
+               transform:'light',
+               lazyRender:true
+            }))
+        },{
+           header: "Price",
+           dataIndex: 'price',
+           width: 70,
+           align: 'right',
+           renderer: 'usMoney',
+           editor: new Ed(new fm.NumberField({
+               allowBlank: false,
+               allowNegative: false,
+               maxValue: 10
+           }))
+        },{
+           header: "Available",
+           dataIndex: 'availDate',
+           width: 95,
+           renderer: formatDate,
+           editor: new Ed(new fm.DateField({
+                format: 'm/d/y',
+                minValue: '01/01/06',
+                disabledDays: [0, 6],
+                disabledDaysText: 'Plants are not available on the weekends'
+            }))
+        },{
+           header: "Indoor?",
+           dataIndex: 'indoor',
+           width: 55,
+           renderer: formatBoolean,
+           editor: new Ed(new fm.Checkbox())
+        }]);
+
+    // by default columns are sortable
+    cm.defaultSortable = true;
+
+    // this could be inline, but we want to define the Plant record
+    // type so we can add records dynamically
+    var Plant = Roo.data.Record.create([
+           // the "name" below matches the tag name to read, except "availDate"
+           // which is mapped to the tag "availability"
+           {name: 'common', type: 'string'},
+           {name: 'botanical', type: 'string'},
+           {name: 'light'},
+           {name: 'price', type: 'float'},             // automatic date conversions
+           {name: 'availDate', mapping: 'availability', type: 'date', dateFormat: 'm/d/Y'},
+           {name: 'indoor', type: 'bool'}
+      ]);
+
+    // create the Data Store
+    var ds = new Roo.data.Store({
+        // load using HTTP
+        proxy: new Roo.data.HttpProxy({url: 'plants.xml'}),
+        remoteSort : true,
+        
+        // the return will be XML, so lets set up a reader
+        reader: new Roo.data.XmlReader({
+               // records will have a "plant" tag
+               record: 'plant'
+           }, Plant)
     });
-    Roo.apply(this, config, {
-        width: 540, height: 400
+
+    // create the editor grid
+    grid = new Roo.grid.EditorGrid('editor-grid', {
+        ds: ds,
+        cm: cm,
+        enableColLock:false,
+        multiSort : true,
+        enableDragDrop : true,
+       
     });
     
-    var formatSize = function(size){
-        if(size < 1024) {
-            return size + " bytes";
-        } else {
-            return (Math.round(((size*10) / 1024))/10) + " KB";
+   
+
+    var layout = Roo.BorderLayout.create({
+        center: {
+            margins:{left:3,top:3,right:3,bottom:3},
+            panels: [new Roo.GridPanel(grid)]
         }
-    };
-    
-    // cache data by image name for easy lookup
-    var lookup = {};
-    // make some values pretty for display
-    this.view.prepareData = function(data){
-    	data.shortName = data.name.ellipse(15);
-    	data.sizeString = formatSize(data.size);
-    	data.dateString = new Date(data.lastmod).format("m/d/Y g:i a");
-    	lookup[data.name] = data;
-    	return data;
-    };
-    this.lookup = lookup;
-    
-	dlg.resizeTo(this.width, this.height);
-	this.loaded = false;
-};
-ImageChooser.prototype = {
-	show : function(el, callback){
-	    this.reset();
-	    this.dlg.show(el);
-		this.callback = callback;
-	},
-	
-	reset : function(){
-	    this.view.getEl().dom.scrollTop = 0;
-	    this.view.clearFilter();
-		this.txtFilter.dom.value = '';
-		this.view.select(0);
-	},
-	
-	load : function(){
-		if(!this.loaded){
-			this.view.load({url: this.url, params:this.params, callback:this.onLoad.createDelegate(this)});
-		}
-	},
-	
-	onLoadException : function(v,o){
-	    this.view.getEl().update('<div style="padding:10px;">Error loading images.</div>'); 
-	},
-	
-	filter : function(){
-		var filter = this.txtFilter.dom.value;
-		this.view.filter('name', filter);
-		this.view.select(0);
-	},
-	
-	onLoad : function(){
-		this.loaded = true;
-		this.view.select(0);
-	},
-	
-	sortImages : function(){
-		var p = this.sortSelect.dom.value;
-    	this.view.sort(p, p != 'name' ? 'desc' : 'asc');
-    	this.view.select(0);
-    },
-	
-	showDetails : function(view, nodes){
-	    var selNode = nodes[0];
-		if(selNode && this.view.getCount() > 0){
-			this.ok.enable();
-		    var data = this.lookup[selNode.id];
-            this.detailEl.hide();
-            this.detailsTemplate.overwrite(this.detailEl, data);
-            this.detailEl.slideIn('l', {stopFx:true,duration:.2});
-			
-		}else{
-		    this.ok.disable();
-		    this.detailEl.update('');
-		}
-	},
-	
-	doCallback : function(){
-        var selNode = this.view.getSelectedNodes()[0];
-		var callback = this.callback;
-		var lookup = this.lookup;
-		this.dlg.hide(function(){
-            if(selNode && callback){
-				var data = lookup[selNode.id];
-				callback(data);
-			}
-		});
-	}
-};
+    }, 'grid-panel');
 
-String.prototype.ellipse = function(maxLength){
-    if(this.length > maxLength){
-        return this.substr(0, maxLength-3) + '...';
-    }
-    return this;
-};
+
+    // render it
+    grid.render();
+
+    
+      grid.dropTarget = new Roo.dd.DropTarget(grid.view.el,  { 
+                  listeners : {
+                      drop : function (source, e, data)
+                      {
+                           //Roo.log("DROP");
+                           var t = Roo.lib.Event.getTarget(e); 
+                           var ri = grid.view.findRowIndex(t);
+                           //Roo.log(e);
+                           //Roo.log(data);
+                            var dp = this.getDropPoint(e,data);
+                          // at this point should have above or below..
+                            var os = grid.selModel.getSelectedCell()
+                            grid.ds.remove(data.selections[0]);
+                            grid.ds.insert(ri + (dp == 'below' ? 1 : 0) , data.selections);
+                            grid.selModel.select(ri + (dp == 'below' ? 1 : 0), os[1])
+                            this.expandRow(false);
+                            
+                             
+                      },
+                      over : function (source, e, data)
+                      {
+                          //
+                          // if drag point == drop point...
+                           var t = Roo.lib.Event.getTarget(e); 
+                           var ri = grid.view.findRowIndex(t);
+                           var dp = this.getDropPoint(e,data);
+                           Roo.log(dp);
+                           //Roo.log(JSON.stringify({ dp: dp,  ri: ri, src_ri: data.rowIndex}));
+                           if(ri == data.rowIndex ||
+                                (dp == 'above' && ri-1 == data.rowIndex) ||
+                                (dp == 'below' && ri+1 == data.rowIndex) 
+                             ) {
+                               this.expandRow(false);
+                          
+                                this.valid = false;
+                                return;
+                           }
+                           this.expandRow(ri, dp);
+                           
+                         
+                          this.valid = 'ok-add'; 
+                          //Roo.log("SET VALID TO: " + this.valid)
+                          //Roo.log([source,e,data]);
+                          
+                          // Roo.log("dragover");
+                           
+                          //Roo.log(e);
+                          /*
+                          var t = Roo.lib.Event.getTarget(e); 
+                          var ri = _this.grid.view.findRowIndex(t);
+                            //            Roo.log(ri);
+                          
+                          var rid  = false;
+                          if (ri !== false) {
+                              rid = _this.grid.getDataSource().getAt(ri).data;
+                          }
+                          
+                          var s = _this.grid.getSelectionModel().getSelections();
+                           */  
+                          //if (!isFromGroup && isToGroup) {
+                          //this.valid = 'ok-add';
+                          
+                      }
+                  },
+                  ddGroup : 'GridDD',
+                  activeDom : false,
+                  expandRow : function(ri,pos)
+                  {
+                        var dom = grid.view.getRow(ri);
+                        //Roo.log(dom);
+                        //if (this.activeDom == dom) {
+                        //    return;
+                        //}
+                        if (this.activeDom) {
+                            Roo.get(this.activeDom).removeClass('x-grid-dd-above');
+                            Roo.get(this.activeDom).removeClass('x-grid-dd-below');
+                            
+                            this.activeDom = false;
+                        }
+                        
+                        if (ri === false) {
+                            return;
+                        }
+                        Roo.get(dom).addClass('x-grid-dd-' + pos);
+                         
+                        this.activeDom = dom;
+                    
+                    
+                  },
+                  getDropPoint : function(e, data)
+                    {
+                        //var tn = n.node;
+                       // data is from griddragzone
+                       
+                        var te = Roo.lib.Event.getTarget(e); 
+                        var ri =  Roo.fly(te).findParent("td", 6);
+                            
+                       
+                        var dragEl = ri;
+                        var t = Roo.lib.Dom.getY(dragEl),
+                            b = t + dragEl.offsetHeight;
+                        var y = Roo.lib.Event.getPageY(e);
+                        //var noAppend = tn.allowChildren === false || tn.isLeaf();
+                        
+                        // we may drop nodes anywhere, as long as allowChildren has not been set to false..
+                        
+                          
+                        var q = (b - t) / 2;
+                        
+                        
+                        if(y >= t && y < (t + q)){
+                            return "above";
+                        }
+                        if(y >= b-q && y <= b){
+                            return "below";
+                        }
+                        Roo.log( JSON.stringify( {pos: y, dragtop : t, mid : q, drabgot: b }));
+                        
+                        
+                        return false;
+                    },                  
+              });
+      
+    
+    
+    var gridHead = grid.getView().getHeaderPanel(true);
+    var tb = new Roo.Toolbar(gridHead, [{
+        text: 'Add Plant',
+        handler : function(){
+            var p = new Plant({
+                common: 'New Plant 1',
+                light: 'Mostly Shade',
+                price: 0,
+                availDate: new Date(),
+                indoor: false
+            });
+            grid.stopEditing();
+            ds.insert(0, p);
+            grid.startEditing(0, 0);
+        }
+    }]);
+
+    // trigger the data store load
+    ds.load();
+});
