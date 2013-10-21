@@ -438,7 +438,7 @@ layout.addxtype({
             return this.form;
         }
         // should only have one of theses..
-        if ([/*'View',*/ 'JsonView', 'DatePicker'].indexOf(cfg.xtype) > -1) {
+        if (['View', 'JsonView', 'DatePicker'].indexOf(cfg.xtype) > -1) {
             // views..
             cfg.el = this.el.appendChild(document.createElement("div"));
             // factory?
