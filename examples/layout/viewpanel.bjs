@@ -4,44 +4,7 @@
     "parent": "",
     "title": "",
     "path": "/home/chris/gitlive/roojs1/examples/layout/viewpanel.bjs",
-    "items": [
-        {
-            "xtype": "ViewPanel",
-            "|xns": "Roo",
-            "items": [
-                {
-                    "*prop": "view",
-                    "xtype": "View",
-                    "|xns": "Roo",
-                    "items": [
-                        {
-                            "*prop": "tpl",
-                            "html": "<b> hello </b>",
-                            "xtype": "Template",
-                            "|xns": "Roo"
-                        },
-                        {
-                            "|xns": "Roo.data",
-                            "xtype": "Store",
-                            "*prop": "store",
-                            "items": [
-                                {
-                                    "|xns": "Roo.data",
-                                    "xtype": "HttpProxy",
-                                    "*prop": "proxy"
-                                },
-                                {
-                                    "|xns": "Roo.data",
-                                    "xtype": "JsonReader",
-                                    "*prop": "reader"
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        }
-    ],
+    "items": [],
     "permname": "",
     "modOrder": "001"
 }
