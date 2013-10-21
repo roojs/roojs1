@@ -101,8 +101,7 @@ viewpanel = new Roo.XComponent({
                 ],
                 center : {
                     xtype: 'LayoutRegion',
-                    xns: Roo,
-                    height : 200
+                    xns: Roo
                 }
             }
         };
