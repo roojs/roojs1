@@ -70,7 +70,16 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
     
     
     this.tpl.compile();
-   
+    if ( this.footer && this.footer.xtype) {
+         
+         
+        Roo.log("this.el.parentNode()");
+        Roo.log(panel.el.dom );
+
+        this.footer.dataSource = this.store
+        this.footer.container = panel.el;
+        this.footer = Roo.factory(this.footer, Roo);
+    }
 
      
     /** @private */
@@ -215,17 +224,8 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     
     render : function(a,b, panel)
     {
-        Roo.log('render');
-        if (panel && this.footer && this.footer.xtype) {
-         
-         
-            Roo.log("this.el.parentNode()");
-            Roo.log(panel.el.dom );
-            
-            this.footer.dataSource = this.store
-            this.footer.container = panel.el;
-            this.footer = Roo.factory(this.footer, Roo);
-        }
+        
+       
 
     },
     
