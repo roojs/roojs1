@@ -49,7 +49,7 @@ viewpanel = new Roo.XComponent({
                                 xns: Roo,
                                 emptyText : "no data",
                                 text : "loading",
-                                footer : {
+                                fxooter : {
                                     xtype: 'PagingToolbar',
                                     xns: Roo,
                                     pageSize : 20
