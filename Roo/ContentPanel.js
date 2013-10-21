@@ -449,7 +449,7 @@ layout.addxtype({
                         ret.render(false, '',this); 
                 }, this); // render blank..
             
-            ret.render && ret.render(false, ''); // render blank..
+            //ret.render && ret.render(false, ''); // render blank..
             this.view = ret;
             return ret;
         }
