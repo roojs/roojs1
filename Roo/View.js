@@ -154,13 +154,13 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
     
     
      if (this.footer && this.footer.xtype) {
-         Roo.log("this.el.parentNode()");
+        Roo.log("this.el.parentNode()");
         Roo.log(this.el.dom );
         if (!this.wrapEl) {
             this.wrapEl = this.el.wrap();
         }
         this.footer.dataSource = this.store
-        this.footer.container = this.wrapEl;
+        //this.footer.container = this.wrapEl;
         this.footer = Roo.factory(this.footer, Roo);
     }
     
