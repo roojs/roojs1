@@ -153,17 +153,7 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
     Roo.View.superclass.constructor.call(this);
     
     
-     if (this.footer && this.footer.xtype) {
-        Roo.log("this.el.parentNode()");
-        Roo.log(this.el.dom );
-        if (!this.wrapEl) {
-            this.wrapEl = this.el.wrap();
-        }
-        this.footer.dataSource = this.store
-        //this.footer.container = this.wrapEl;
-        this.footer = Roo.factory(this.footer, Roo);
-    }
-    
+     
     
 };
 
@@ -222,6 +212,24 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     getEl : function(){
         return this.el;
     },
+    
+    render : function()
+    {
+        if (this.footer && this.footer.xtype) {
+         
+         
+            Roo.log("this.el.parentNode()");
+            Roo.log(this.el.dom );
+            if (!this.wrapEl) {
+                this.wrapEl = this.el.wrap();
+            }
+            this.footer.dataSource = this.store
+            this.footer.container = this.wrapEl;
+            this.footer = Roo.factory(this.footer, Roo);
+        }
+
+    }
+    
 
     /**
      * Refreshes the view. - called by datachanged on the store. - do not call directly.
