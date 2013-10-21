@@ -52,15 +52,14 @@ Roo.onReady(function(){
         
         // the return will be XML, so lets set up a reader
         reader: new Roo.data.JsonReader({
-            root: 'topics',
+            root: 'images',
             totalProperty: 'totalCount',
-            id: 'post_id'
+            id: 'id'
         }, [
-            {name: 'title', mapping: 'topic_title'},
-            {name: 'author', mapping: 'author'},
-            {name: 'totalPosts', mapping: 'topic_replies', type: 'int'},
-            {name: 'lastPost', mapping: 'post_time', type: 'date', dateFormat: 'timestamp'},
-            {name: 'excerpt', mapping: 'post_text'}
+            {name: 'name', type: 'string'},
+            {name: 'size', type: 'string'},
+            {name: 'lastmod', type: 'string'},
+            {name: 'url', type: 'string'}
         ])
     });
 
