@@ -43,17 +43,7 @@ Roo.onReady(function(){
 
     // this could be inline, but we want to define the Plant record
     // type so we can add records dynamically
-    var Plant = Roo.data.Record.create([
-           // the "name" below matches the tag name to read, except "availDate"
-           // which is mapped to the tag "availability"
-           {name: 'common', type: 'string'},
-           {name: 'botanical', type: 'string'},
-           {name: 'light'},
-           {name: 'price', type: 'float'},             // automatic date conversions
-           {name: 'availDate', mapping: 'availability', type: 'date', dateFormat: 'm/d/Y'},
-           {name: 'indoor', type: 'bool'}
-      ]);
-
+    // 
     // create the Data Store
     var ds = new Roo.data.Store({
         // load using HTTP
