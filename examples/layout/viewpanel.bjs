@@ -42,6 +42,7 @@
                                 {
                                     "*prop": "reader",
                                     "id": "id",
+                                    "root": "images",
                                     "xtype": "JsonReader",
                                     "|xns": "Roo.data"
                                 }
