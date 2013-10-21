@@ -47,6 +47,7 @@ viewpanel = new Roo.XComponent({
                             {
                                 xtype: 'View',
                                 xns: Roo,
+                                view : '',
                                 emptyText : "no data",
                                 text : "loading",
                                 footer : {
