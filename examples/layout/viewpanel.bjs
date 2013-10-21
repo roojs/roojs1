@@ -33,9 +33,10 @@
                             "|xns": "Roo.data",
                             "items": [
                                 {
-                                    "|xns": "Roo.data",
+                                    "*prop": "proxy",
+                                    "url": "get-images.php",
                                     "xtype": "HttpProxy",
-                                    "*prop": "proxy"
+                                    "|xns": "Roo.data"
                                 },
                                 {
                                     "|xns": "Roo.data",
