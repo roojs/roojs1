@@ -167,7 +167,7 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
         this.footer = Roo.factory(this.footer, Roo);
         fctr.insertFirst(this.el);
         Roo.log('in')
-        Roo.log(this.el.dom.parentNode.parentNode.parentNode.id);
+        Roo.log(this.el.dom.parentNode.parentNode.id);
          Roo.log(this.el);
         // this is a bit insane - as the paging toolbar seems to detach the el..
 //        dom.parentNode.parentNode.parentNode
