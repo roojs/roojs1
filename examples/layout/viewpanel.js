@@ -16,57 +16,7 @@ viewpanel = new Roo.XComponent({
         var MODULE = this;
         return {
             xtype: 'NestedLayoutPanel',
-            xns: Roo,
-            layout : {
-                xtype: 'BorderLayout',
-                xns: Roo,
-                items : [
-                    {
-                        xtype: 'ContentPanel',
-                        xns: Roo,
-                        items : [
-                            {
-                                xtype: 'View',
-                                xns: Roo,
-                                footer : {
-                                    xtype: 'PagingToolbar',
-                                    xns: Roo
-                                },
-                                tpl : {
-                                    xtype: 'Template',
-                                    xns: Roo
-                                },
-                                store : {
-                                    xtype: 'Store',
-                                    xns: Roo.data,
-                                    proxy : {
-                                        xtype: 'HttpProxy',
-                                        xns: Roo.data
-                                    },
-                                    reader : {
-                                        xtype: 'JsonReader',
-                                        xns: Roo.data
-                                    }
-                                }
-                            }
-                        ],
-                        toolbar : {
-                            xtype: 'Toolbar',
-                            xns: Roo,
-                            items : [
-                                {
-                                    xtype: 'Button',
-                                    xns: Roo.Toolbar
-                                }
-                            ]
-                        }
-                    }
-                ],
-                center : {
-                    xtype: 'LayoutRegion',
-                    xns: Roo
-                }
-            }
+            xns: Roo
         };
     }
 });
