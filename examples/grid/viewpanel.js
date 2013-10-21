@@ -82,7 +82,7 @@ Roo.onReady(function(){
     var layout = Roo.BorderLayout.create({
         center: {
             margins:{left:3,top:3,right:3,bottom:3},
-            panels: [new Roo.GridPanel(grid)]
+            panels: [new Roo.ViewPanel(grid)]
         }
     }, 'grid-panel');
 
