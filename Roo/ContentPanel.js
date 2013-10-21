@@ -98,12 +98,7 @@ Roo.ContentPanel = function(el, config, content){
     }
     // handle view.xtype
     
-    if (this.view && typeof(this.view.xtype) != 'undefined') {
-        this.view.el = this.el.appendChild(document.createElement("div"));
-        this.view = Roo.factory(this.view);
-        this.view.render && this.view.render(false, ''); // render blank..
-    }
-    
+ 
     
     
     this.addEvents({
@@ -139,6 +134,16 @@ Roo.ContentPanel = function(el, config, content){
         
         
     });
+    
+    if (this.view && typeof(this.view.xtype) != 'undefined') {
+        this.view.el = this.el.appendChild(document.createElement("div"));
+        this.view = Roo.factory(this.view);
+         
+        this.view.render && this.on('render', function() { this.view.render(false, ''); }, this) // render blank..
+    }
+    
+    
+    
     if(this.autoScroll){
         this.resizeEl.setStyle("overflow", "auto");
     } else {
