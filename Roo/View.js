@@ -70,16 +70,7 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
     
     
     this.tpl.compile();
-    if ( this.footer && this.footer.xtype) {
-         
-         
-        
-        this.wrapEl = this.el.wrap();
-
-        this.footer.dataSource = this.store
-        this.footer.container = this.wrapEl;
-        this.footer = Roo.factory(this.footer, Roo);
-    }
+   
 
      
     /** @private */
@@ -144,6 +135,18 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
          */
           "preparedata" : true
         });
+
+
+     if ( this.footer && this.footer.xtype) {
+         
+         
+        
+        this.wrapEl = this.el.wrap();
+
+        this.footer.dataSource = this.store
+        this.footer.container = this.wrapEl;
+        this.footer = Roo.factory(this.footer, Roo);
+    }
 
     this.el.on({
         "click": this.onClick,
