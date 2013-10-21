@@ -16,7 +16,13 @@ viewpanel = new Roo.XComponent({
         var MODULE = this;
         return {
             xtype: 'ContentPanel',
-            xns: Roo
+            xns: Roo,
+            items : [
+                {
+                    xtype: 'View',
+                    xns: Roo
+                }
+            ]
         };
     }
 });

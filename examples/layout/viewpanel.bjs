@@ -7,7 +7,13 @@
     "items": [
         {
             "|xns": "Roo",
-            "xtype": "ContentPanel"
+            "xtype": "ContentPanel",
+            "items": [
+                {
+                    "|xns": "Roo",
+                    "xtype": "View"
+                }
+            ]
         }
     ],
     "permname": "",
