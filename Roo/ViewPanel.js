@@ -34,7 +34,7 @@ Roo.ViewPanel = function(view, config){
     if (this.footer && !this.footer.el && this.footer.xtype) {
         
         this.footer.container = this.wrapper.el; // this.getView().getFooterPanel(true);
-        this.footer.dataSource = this.grid.dataSource;
+        this.footer.dataSource = this.view.dataSource;
         this.footer = Roo.factory(this.footer, Roo);
         
     }
