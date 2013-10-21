@@ -159,7 +159,7 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
     Roo.View.superclass.constructor.call(this);
     
      if ( this.footer && this.footer.xtype) {
-           
+         Roo.log(this.footer);
         var placeholder = this.wrapEl.appendChild(document.createElement("div"));
         var fctr = this.wrapEl.appendChild(document.createElement("div"));
         
