@@ -102,16 +102,7 @@ Roo.onReady(function(){
     var tb = new Roo.Toolbar(gridHead, [{
         text: 'Add Plant',
         handler : function(){
-            var p = new Plant({
-                common: 'New Plant 1',
-                light: 'Mostly Shade',
-                price: 0,
-                availDate: new Date(),
-                indoor: false
-            });
-            grid.stopEditing();
-            ds.insert(0, p);
-            grid.startEditing(0, 0);
+            Roo.log('clicked');
         }
     }]);
 
