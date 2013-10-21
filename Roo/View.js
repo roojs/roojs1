@@ -175,7 +175,10 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
     
     Roo.View.superclass.constructor.call(this);
     
-
+Roo.log('in?');
+        Roo.log('in')
+        Roo.log(this.el.dom.offsetParent.clientHeight);
+         Roo.log(this.el);
     Roo.log(this.el.id);
     Roo.log(this.wrapEl.id);
      
@@ -399,15 +402,11 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      */
     onBeforeLoad : function()
     {
-        this.el.update("");Roo.log('in?');
-        Roo.log('in')
-        Roo.log(this.el.dom.offsetParent.clientHeight);
-         Roo.log(this.el);
+        this.el.update("");
         this.el.mask(this.mask ? this.mask : "Loading" ); 
     },
     onLoad : function ()
     {
-        
         this.el.unmask();
     },
     
