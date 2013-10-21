@@ -35,7 +35,14 @@
                                         {
                                             "|xns": "Roo.data",
                                             "xtype": "Store",
-                                            "*prop": "store"
+                                            "*prop": "store",
+                                            "items": [
+                                                {
+                                                    "|xns": "Roo.data",
+                                                    "xtype": "JsonReader",
+                                                    "*prop": "reader"
+                                                }
+                                            ]
                                         }
                                     ]
                                 }
