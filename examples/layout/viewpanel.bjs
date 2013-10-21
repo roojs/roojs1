@@ -31,7 +31,7 @@
                             "|xns": "Roo",
                             "items": [
                                 {
-                                    "*prop": "",
+                                    "*prop": "view",
                                     "emptyText": "no data",
                                     "text": "loading",
                                     "xtype": "View",
