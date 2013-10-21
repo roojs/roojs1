@@ -154,7 +154,7 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
     
     
      if (this.footer && this.footer.xtype) {
-         
+        Roo.log(this.el.parentNode());
         if (!this.wrapEl) {
             this.wrapEl = this.el.wrap();
         }
