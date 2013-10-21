@@ -12,7 +12,14 @@
                 {
                     "|xns": "Roo",
                     "xtype": "BorderLayout",
-                    "*prop": "layout"
+                    "*prop": "layout",
+                    "items": [
+                        {
+                            "|xns": "Roo",
+                            "xtype": "LayoutRegion",
+                            "*prop": "center"
+                        }
+                    ]
                 }
             ]
         }

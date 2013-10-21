@@ -19,7 +19,11 @@ viewpanel = new Roo.XComponent({
             xns: Roo,
             layout : {
                 xtype: 'BorderLayout',
-                xns: Roo
+                xns: Roo,
+                center : {
+                    xtype: 'LayoutRegion',
+                    xns: Roo
+                }
             }
         };
     }
