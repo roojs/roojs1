@@ -166,9 +166,7 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
         this.footer.container = fctr;
         this.footer = Roo.factory(this.footer, Roo);
         fctr.insertFirst(this.el);
-        Roo.log('in')
-        Roo.log(this.el.dom.offsetParent.clientHeight);
-         Roo.log(this.el);
+        
         // this is a bit insane - as the paging toolbar seems to detach the el..
 //        dom.parentNode.parentNode.parentNode
          // they get detached?
@@ -406,6 +404,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     },
     onLoad : function ()
     {
+        Roo.log('in?');
         this.el.unmask();
     },
     
