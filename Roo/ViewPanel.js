@@ -23,7 +23,7 @@ Roo.ViewPanel = function(el, config){
     this.wrapper = Roo.DomHelper.append(document.body, // wrapper for IE7 strict & safari scroll issue
         {tag: "div", cls: "x-layout-grid-wrapper x-layout-inactive-content"}, true);
         
-    this.wrapper.dom.appendChild(view.el.dom);
+    this.wrapper.dom.appendChild(el.dom);
     
     Roo.ViewPanel.superclass.constructor.call(this, this.wrapper, config);
     
