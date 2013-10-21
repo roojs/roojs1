@@ -77,7 +77,7 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
         Roo.log(panel.el.dom );
 
         this.footer.dataSource = this.store
-        this.footer.container = panel.el;
+        this.footer.container = this.el;
         this.footer = Roo.factory(this.footer, Roo);
     }
 
