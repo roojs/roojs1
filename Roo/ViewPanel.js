@@ -131,11 +131,6 @@ Roo.extend(Roo.ViewPanel, Roo.grid.Grid, {
             this.footer.container = this.getView().getFooterPanel(true);
             this.footer = Roo.factory(this.footer, Roo);
         }
-        if (this.dropTarget && this.dropTarget.xtype) {
-            delete this.dropTarget.xtype;
-            this.dropTarget =  new Roo.dd.DropTarget(this.getView().mainBody, this.dropTarget);
-        }
-        
         
         this.rendered = true;
         this.fireEvent('render', this);
