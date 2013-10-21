@@ -23,7 +23,7 @@ Roo.onReady(function(){
         return value ? value.dateFormat('M d, Y') : '';
     };
     // shorthand alias
-    var fm = Roo.form, Ed = Roo.ViewPanel;
+//    var fm = Roo.form, Ed = Roo.ViewPanel;
 
     // the column model has information about grid columns
     // dataIndex maps the column to the specific data field in
