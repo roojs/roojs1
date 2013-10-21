@@ -4,12 +4,7 @@
     "parent": "#view-panel",
     "title": "",
     "path": "/home/chris/gitlive/roojs1/examples/layout/viewpanel.bjs",
-    "items": [
-        {
-            "|xns": "Roo",
-            "xtype": "NestedLayoutPanel"
-        }
-    ],
+    "items": [],
     "permname": "",
     "modOrder": "001"
 }
