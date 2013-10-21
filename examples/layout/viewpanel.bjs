@@ -23,6 +23,11 @@
                                     "|xns": "Roo.data",
                                     "xtype": "HttpProxy",
                                     "*prop": "proxy"
+                                },
+                                {
+                                    "|xns": "Roo.data",
+                                    "xtype": "JsonReader",
+                                    "*prop": "reader"
                                 }
                             ]
                         }
