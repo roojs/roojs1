@@ -38,6 +38,7 @@ Roo.ViewPanel = function(el, config){
         this.footer = Roo.factory(this.footer, Roo);
         
     }
+    //??? create teh view???
     
     //grid.monitorWindowResize = false; // turn off autosizing
     //grid.autoHeight = false;
