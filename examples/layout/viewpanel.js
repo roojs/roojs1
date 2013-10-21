@@ -33,6 +33,7 @@ viewpanel = new Roo.XComponent({
                     
                 }
             },
+            autoCreate : 'true',
             items : [
                 {
                     xtype: 'View',
