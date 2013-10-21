@@ -158,7 +158,7 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
         this.setStore(this.store, true);
     }
     
-       if ( this.footer && this.footer.xtype) {
+    if ( this.footer && this.footer.xtype) {
            
          var fctr = this.wrapEl.appendChild(document.createElement("div"));
         
@@ -175,12 +175,12 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
     
     Roo.View.superclass.constructor.call(this);
     
-Roo.log('in?');
-        Roo.log(this.el.dom.offsetParent)
-        Roo.log(this.el.dom.offsetParent.clientHeight);
-         Roo.log(this.el);
-    Roo.log(this.el.id);
-    Roo.log(this.wrapEl.id);
+//Roo.log('in?');
+//        Roo.log(this.el.dom.offsetParent)
+//        Roo.log(this.el.dom.offsetParent.clientHeight);
+//         Roo.log(this.el);
+//    Roo.log(this.el.id);
+//    Roo.log(this.wrapEl.id);
      
     
 };
