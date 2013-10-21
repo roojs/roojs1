@@ -219,12 +219,10 @@ Roo.extend(Roo.View, Roo.util.Observable, {
          
          
             Roo.log("this.el.parentNode()");
-            Roo.log(this.el.dom );
-            if (!this.wrapEl) {
-                this.wrapEl = this.el.wrap();
-            }
+            Roo.log(panel.el.dom );
+            
             this.footer.dataSource = this.store
-            this.footer.container = this.wrapEl;
+            this.footer.container = panel.el;
             this.footer = Roo.factory(this.footer, Roo);
         }
 
