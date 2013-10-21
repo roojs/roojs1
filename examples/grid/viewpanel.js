@@ -23,7 +23,7 @@ Roo.onReady(function(){
         return value ? value.dateFormat('M d, Y') : '';
     };
     // shorthand alias
-    var fm = Roo.form, Ed = Roo.grid.GridEditor;
+    var fm = Roo.form, Ed = Roo.ViewPanel;
 
     // the column model has information about grid columns
     // dataIndex maps the column to the specific data field in
@@ -106,7 +106,7 @@ Roo.onReady(function(){
     });
 
     // create the editor grid
-    grid = new Roo.grid.EditorGrid('editor-grid', {
+    grid = new Roo.ViewPanel('editor-grid', {
         ds: ds,
         cm: cm,
         enableColLock:false,
