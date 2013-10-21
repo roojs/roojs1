@@ -1,7 +1,7 @@
 {
     "id": "roo-file-304",
     "name": "viewpanel",
-    "parent": "",
+    "parent": "#view-panel",
     "title": "",
     "path": "/home/chris/gitlive/roojs1/examples/layout/viewpanel.bjs",
     "items": [

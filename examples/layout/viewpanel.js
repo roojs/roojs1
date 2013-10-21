@@ -5,8 +5,8 @@
 viewpanel = new Roo.XComponent({
     part     :  ["layout","viewpanel"],
     order    : '001-viewpanel',
-    region   : '#view-panel',
-    parent   : false,
+    region   : '',
+    parent   : '#view-panel',
     name     : "unnamed module",
     disabled : false, 
     permname : '', 
