@@ -25,7 +25,7 @@ Roo.ViewPanel = function(view, config){
         
     this.wrapper.dom.appendChild(view.el.dom);
     
-    Roo.GridPanel.superclass.constructor.call(this, this.wrapper, config);
+    Roo.ViewPanel.superclass.constructor.call(this, this.wrapper, config);
     
     if(this.toolbar){
         this.toolbar.el.insertBefore(this.wrapper.dom.firstChild);
@@ -33,7 +33,7 @@ Roo.ViewPanel = function(view, config){
     // xtype created footer. - not sure if will work as we normally have to render first..
     if (this.footer && !this.footer.el && this.footer.xtype) {
         
-        this.footer.container = this.grid.getView().getFooterPanel(true);
+        this.footer.container = this.wrapper.el; // this.getView().getFooterPanel(true);
         this.footer.dataSource = this.grid.dataSource;
         this.footer = Roo.factory(this.footer, Roo);
         
