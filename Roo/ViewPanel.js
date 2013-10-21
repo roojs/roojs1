@@ -47,6 +47,8 @@ Roo.ViewPanel = function(el, config){
 };
 
 Roo.extend(Roo.ViewPanel, Roo.ContentPanel, {
+    
+    autoCreate : true,
     getId : function(){
         return this.view.id;
     },
