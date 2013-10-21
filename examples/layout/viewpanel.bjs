@@ -4,77 +4,7 @@
     "parent": "#view-panel",
     "title": "",
     "path": "/home/chris/gitlive/roojs1/examples/layout/viewpanel.bjs",
-    "items": [
-        {
-            "listeners": {
-                "activate": "function (_self)\n{\n    Roo.log(_self);\n    \n    if(_self.active && _self.view){\n        _this.view = this.view;\n    }\n}",
-                "render": "function (_self)\n{\n    _this.panel = _self;\n    \n    \n}"
-            },
-            "region": "center",
-            "xtype": "ContentPanel",
-            "|autoCreate": "true",
-            "|xns": "Roo",
-            "items": [
-                {
-                    "emptyText": "no data",
-                    "text": "loading",
-                    "xtype": "View",
-                    "|xns": "Roo",
-                    "items": [
-                        {
-                            "*prop": "footer",
-                            "pageSize": 20,
-                            "xtype": "PagingToolbar",
-                            "|xns": "Roo"
-                        },
-                        {
-                            "*prop": "tpl",
-                            "html": "<b>test</b>",
-                            "xtype": "Template",
-                            "|xns": "Roo"
-                        },
-                        {
-                            "listeners": {
-                                "beforeload": "function (_self, o)\n{\n    o.params = o.params || {};\n    o.params.test = 1;\n}"
-                            },
-                            "*prop": "store",
-                            "xtype": "Store",
-                            "|xns": "Roo.data",
-                            "items": [
-                                {
-                                    "*prop": "proxy",
-                                    "method": "GET",
-                                    "xtype": "HttpProxy",
-                                    "|url": "'get-images.php'",
-                                    "|xns": "Roo.data"
-                                },
-                                {
-                                    "*prop": "reader",
-                                    "id": "id",
-                                    "root": "images",
-                                    "xtype": "JsonReader",
-                                    "|fields": "[\n    {name: 'name', type: 'string'},\n    {name: 'size', type: 'string'},\n    {name: 'lastmod', type: 'string'},\n    {name: 'url', type: 'string'}\n]",
-                                    "|xns": "Roo.data"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "|xns": "Roo",
-                    "xtype": "Toolbar",
-                    "*prop": "toolbar",
-                    "items": [
-                        {
-                            "text": "ADDDDDDDDDDD",
-                            "xtype": "Button",
-                            "|xns": "Roo.Toolbar"
-                        }
-                    ]
-                }
-            ]
-        }
-    ],
+    "items": [],
     "permname": "",
     "modOrder": "001"
 }
