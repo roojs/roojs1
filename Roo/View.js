@@ -234,7 +234,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      * @return {Roo.Element}
      */
     getEl : function(){
-        return this.el;
+        return this.wrapEl;
     },
     
     
