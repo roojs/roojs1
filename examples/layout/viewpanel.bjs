@@ -23,7 +23,7 @@
                         {
                             "listeners": {
                                 "activate": "function (_self)\n{\n    Roo.log(_self);\n    \n}",
-                                "render": "function (_self)\n{\n    _this.bodypanel = _self;\n    \n    \n}"
+                                "render": "function (_self)\n{\n    _this.bodypanel = _self;\n    \n    Roo.log('render');\n}"
                             },
                             "region": "center",
                             "xtype": "ContentPanel",

@@ -35,7 +35,7 @@ viewpanel = new Roo.XComponent({
                             {
                                 _this.bodypanel = _self;
                                 
-                                
+                                Roo.log('render');
                             }
                         },
                         region : 'center',
