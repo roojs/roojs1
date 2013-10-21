@@ -73,7 +73,7 @@ Roo.onReady(function(){
     
 
     // create the editor grid
-    var grid = new Roo.grid.Grid('topic-grid', {
+    var grid = new Roo.grid.Grid('view', {
         ds: ds,
         cm: cm,
         selModel: new Roo.grid.RowSelectionModel({singleSelect:true}),
@@ -82,7 +82,7 @@ Roo.onReady(function(){
     });
 
     // make the grid resizable, do before render for better performance
-    var rz = new Roo.Resizable('topic-grid', {
+    var rz = new Roo.Resizable('view', {
         wrap:true,
         minHeight:100,
         pinned:true,
