@@ -32030,7 +32030,34 @@ layout.addxtype({
                 }
                 break;
            
-               
+            case 'ViewPanel': 
+            
+                // needs grid and region
+                
+                //var el = this.getRegion(region).el.createChild();
+                var el = this.el.createChild();
+                // create the grid first...
+                
+                var view = new Roo.View(el, cfg.view);
+                delete cfg.view;
+                if (region == 'center' && this.active ) {
+                    cfg.background = false;
+                }
+                ret = new Roo[cfg.xtype](view, cfg); // new panel!!!!!
+                
+                this.add(region, ret);
+                if (cfg.background) {
+                    ret.on('activate', function(gp) {
+                        //if (!gp.grid.rendered) {
+                        //    gp.grid.render();
+                        //}
+                    });
+                } else {
+                   // view.render();
+                }
+                break;
+           
+                
                 
                 
             default: 
