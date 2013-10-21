@@ -166,7 +166,7 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
         this.footer.dataSource = this.store
         this.footer.container = fctr;
         this.footer = Roo.factory(this.footer, Roo);
-        this.wrapEl.appendChild(this.el);
+        placeholder.appendChild(this.el);
         this.wrapEl.remove(fctr);
         this.wrapEl.appendChild(fctr);
         
