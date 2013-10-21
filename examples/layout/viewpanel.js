@@ -33,6 +33,7 @@ viewpanel = new Roo.XComponent({
                     
                 }
             },
+            region : 'center',
             autoCreate : true,
             items : [
                 {
