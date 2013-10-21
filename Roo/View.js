@@ -62,6 +62,7 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
     this.wrapEla = this.el.wrap();
     this.el = this.wrapEla.appendChild(document.createElement("div"));
     
+    
     if(typeof(this.tpl) == "string"){
         this.tpl = new Roo.Template(this.tpl);
     } else {
@@ -166,7 +167,7 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
         this.footer.container = fctr;
         this.footer = Roo.factory(this.footer, Roo);
     }
-    
+    Roo.log(this.el.id);
      
     
 };
