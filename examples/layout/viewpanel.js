@@ -35,6 +35,10 @@ viewpanel = new Roo.XComponent({
                                 store : {
                                     xtype: 'Store',
                                     xns: Roo.data,
+                                    proxy : {
+                                        xtype: 'HttpProxy',
+                                        xns: Roo.data
+                                    },
                                     reader : {
                                         xtype: 'JsonReader',
                                         xns: Roo.data
