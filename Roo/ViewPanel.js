@@ -443,7 +443,7 @@ Roo.extend(Roo.ViewPanel, Roo.util.Observable, {
     	}
     	var view = this.getView();
         view.init(this);
-
+        Roo.log(c);
         c.on("click", this.onClick, this);
         c.on("dblclick", this.onDblClick, this);
         c.on("contextmenu", this.onContextMenu, this);
