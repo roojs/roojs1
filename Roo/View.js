@@ -166,7 +166,7 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
         this.footer.dataSource = this.store
         this.footer.container = fctr;
         this.footer = Roo.factory(this.footer, Roo);
-        placeholder.appendChild(this.el);
+        fctr.appendChild(this.el);
         
         
          // they get detached?
