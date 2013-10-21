@@ -869,3 +869,6 @@ var viewpanel = new Roo.XComponent({
         };
     }
 });
+
+
+viewpanel.render('view');
