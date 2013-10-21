@@ -2,7 +2,7 @@
 
 // Auto generated file - created by app.Builder.js- do not edit directly (at present!)
 
-
+Roo.BLANK_IMAGE_URL  = "../../images/default/s.gif";
 
 Roo.onReady(function(){
     
