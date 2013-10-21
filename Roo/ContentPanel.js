@@ -134,7 +134,7 @@ Roo.ContentPanel = function(el, config, content){
         
         
     });
-    
+    Roo.log(this.view);
     if (this.view && typeof(this.view.xtype) != 'undefined') {
         this.view.el = this.el.appendChild(document.createElement("div"));
         this.view = Roo.factory(this.view); 
