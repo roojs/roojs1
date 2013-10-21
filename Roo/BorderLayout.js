@@ -487,7 +487,7 @@ layout.addxtype({
                         //}
                     });
                 } else {
-                    view.render();
+                   // view.render();
                 }
                 break;
            
