@@ -169,6 +169,7 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
         placeholder.appendChild(this.el);
         placeholder.removeChild(fctr);
         
+        
          // they get detached?
     }
     
