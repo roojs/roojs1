@@ -22,7 +22,7 @@ viewpanel = new Roo.XComponent({
                 xns: Roo,
                 items : [
                     {
-                        xtype: 'GridPanel',
+                        xtype: 'ViewPanel',
                         xns: Roo
                     }
                 ],

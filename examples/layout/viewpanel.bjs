@@ -20,8 +20,8 @@
                             "*prop": "center"
                         },
                         {
-                            "|xns": "Roo",
-                            "xtype": "GridPanel"
+                            "xtype": "ViewPanel",
+                            "|xns": "Roo"
                         }
                     ]
                 }
