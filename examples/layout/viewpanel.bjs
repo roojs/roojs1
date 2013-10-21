@@ -34,7 +34,7 @@
                             "items": [
                                 {
                                     "*prop": "proxy",
-                                    "method": "POST",
+                                    "method": "GET",
                                     "xtype": "HttpProxy",
                                     "|url": "baseURL + 'get-images.php'",
                                     "|xns": "Roo.data"
