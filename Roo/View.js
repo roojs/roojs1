@@ -134,6 +134,8 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
          * @param {Object} data to be rendered (change this)
          */
           "preparedata" : true
+          
+          
         });
 
 
@@ -155,9 +157,7 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
     Roo.View.superclass.constructor.call(this);
     
      if ( this.footer && this.footer.xtype) {
-         
-         
-        
+           
         this.wrapEl = this.el.wrap();
 
         this.footer.dataSource = this.store
