@@ -298,6 +298,10 @@ Roo.grid.ViewPanel = function(container, config){
 
 
 Roo.extend(Roo.grid.ViewPanel, Roo.grid.Grid, {
+    
+    // private
+    rendered : false,
+    
     /**
     * @cfg {Boolean} autoWidth True to set the grid's width to the default total width of the grid's columns instead
     * of a fixed width. Default is false.
