@@ -1,5 +1,5 @@
 <?php
-$dir = dirname(__FILE__) ."../view/images/thumbs/";
+$dir = dirname(__FILE__) ."/../view/images/thumbs/";
 
 $images = array();
 $d = dir($dir);
