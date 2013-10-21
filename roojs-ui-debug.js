@@ -34184,7 +34184,9 @@ layout.addxtype({
             
             var ret = new Roo.factory(cfg);
             ret.render && this.on('render', 
+                
                 function() { 
+                        Roo.log('call render?');
                         ret.render(false, '',this); 
                 }, this); // render blank..
             
