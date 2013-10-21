@@ -11,7 +11,7 @@
             "items": [
                 {
                     "xtype": "View",
-                    "|": "function(_self)\n{\n    Roo.log(_self);   \n}\n",
+                    "|render": "function(_self)\n{\n    Roo.log(_self);   \n}\n",
                     "|xns": "Roo",
                     "items": [
                         {
