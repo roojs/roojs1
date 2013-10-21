@@ -24192,7 +24192,11 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
          * @param {Object} data to be rendered (change this)
          */
           "preparedata" : true
+          
+          
         });
+
+
 
     this.el.on({
         "click": this.onClick,
@@ -24210,6 +24214,15 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
     }
     Roo.View.superclass.constructor.call(this);
     
+     if ( this.footer && this.footer.xtype) {
+           
+        this.wrapEl = this.el.wrap();
+        var fctr = this.wrapEl.appendChild(document.createElement("div"));
+        
+        this.footer.dataSource = this.store
+        this.footer.container = fctr;
+        this.footer = Roo.factory(this.footer, Roo);
+    }
     
      
     
@@ -24271,21 +24284,6 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         return this.el;
     },
     
-    render : function(a,b, panel)
-    {
-        Roo.log('render');
-        if (panel && this.footer && this.footer.xtype) {
-         
-         
-            Roo.log("this.el.parentNode()");
-            Roo.log(panel.el.dom );
-            
-            this.footer.dataSource = this.store
-            this.footer.container = panel.el;
-            this.footer = Roo.factory(this.footer, Roo);
-        }
-
-    },
     
 
     /**
@@ -48820,16 +48818,8 @@ Roo.ContentPanel = function(el, config, content){
         
         
     });
-    Roo.log(this.view);
-    if (this.view && typeof(this.view.xtype) != 'undefined') {
-        this.view.el = this.el.appendChild(document.createElement("div"));
-        this.view = Roo.factory(this.view); 
-        this.view.render && this.on('render', 
-                function() { 
-                        this.view.render(false, '',this); 
-                }, this); // render blank..
-    }
     
+
     
     
     if(this.autoScroll){
@@ -48852,6 +48842,16 @@ Roo.ContentPanel = function(el, config, content){
     
     
     Roo.ContentPanel.superclass.constructor.call(this);
+    
+        if (this.view && typeof(this.view.xtype) != 'undefined') {
+        this.view.el = this.el.appendChild(document.createElement("div"));
+        this.view = Roo.factory(this.view); 
+        this.view.render && this.on('render', 
+                function() { 
+                        this.view.render(false, '',this); 
+                }, this); // render blank..
+    }
+    
     
     this.fireEvent('render', this);
 };
@@ -49124,20 +49124,15 @@ layout.addxtype({
             return this.form;
         }
         // should only have one of theses..
-        if ([/* 'View',*/ 'JsonView', 'DatePicker'].indexOf(cfg.xtype) > -1) {
-            // views..
+        if ([ 'View', 'JsonView', 'DatePicker'].indexOf(cfg.xtype) > -1) {
+            // views.. should not be just added - used named prop 'view''
+            
             cfg.el = this.el.appendChild(document.createElement("div"));
             // factory?
             
             var ret = new Roo.factory(cfg);
-            ret.render && this.on('render', 
-                
-                function() { 
-                        Roo.log('call render?');
-                        ret.render(false, '',this); 
-                }, this); // render blank..
-            
-            //ret.render && ret.render(false, ''); // render blank..
+             
+             ret.render && ret.render(false, ''); // render blank..
             this.view = ret;
             return ret;
         }
