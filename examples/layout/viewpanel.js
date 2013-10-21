@@ -17,6 +17,14 @@ viewpanel = new Roo.XComponent({
         return {
             xtype: 'ContentPanel',
             xns: Roo,
+            listeners : {
+                activate : function (_self)
+                {
+                    Roo.log(_self);
+                    
+                    
+                }
+            },
             items : [
                 {
                     xtype: 'View',
