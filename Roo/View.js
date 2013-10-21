@@ -151,6 +151,15 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
         this.setStore(this.store, true);
     }
     Roo.View.superclass.constructor.call(this);
+    
+    
+     if (this.footer && this.footer.xtype) {
+        this.footer.dataSource = this.store
+        this.footer.container = this.el;
+        this.footer = Roo.factory(this.footer, Roo);
+    }
+    
+    
 };
 
 Roo.extend(Roo.View, Roo.util.Observable, {
