@@ -33,11 +33,6 @@
                                             "*prop": "tpl"
                                         },
                                         {
-                                            "|xns": "Roo",
-                                            "xtype": "Template",
-                                            "*prop": "tpl"
-                                        },
-                                        {
                                             "|xns": "Roo.data",
                                             "xtype": "Store",
                                             "*prop": "store",
