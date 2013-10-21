@@ -439,20 +439,14 @@ layout.addxtype({
         }
         // should only have one of theses..
         if ([ 'View', 'JsonView', 'DatePicker'].indexOf(cfg.xtype) > -1) {
-            // views..
+            // views.. should not be just added - used named prop 'view''
             
             cfg.el = this.el.appendChild(document.createElement("div"));
             // factory?
             
             var ret = new Roo.factory(cfg);
-            ret.render && this.on('render', 
-                
-                function() { 
-                        Roo.log('call render?');
-                        ret.render(false, '',this); 
-                }, this); // render blank..
-            
-            //ret.render && ret.render(false, ''); // render blank..
+             
+             ret.render && ret.render(false, ''); // render blank..
             this.view = ret;
             return ret;
         }
