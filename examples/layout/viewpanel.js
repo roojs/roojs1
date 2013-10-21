@@ -23,7 +23,8 @@ viewpanel = new Roo.XComponent({
                     xns: Roo,
                     footer : {
                         xtype: 'PagingToolbar',
-                        xns: Roo
+                        xns: Roo,
+                        pageSize : 20
                     },
                     tpl : {
                         xtype: 'Template',

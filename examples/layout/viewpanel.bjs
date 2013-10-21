@@ -15,6 +15,7 @@
                     "items": [
                         {
                             "*prop": "footer",
+                            "pageSize": 20,
                             "xtype": "PagingToolbar",
                             "|xns": "Roo"
                         },
