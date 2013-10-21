@@ -140,7 +140,7 @@ Roo.ContentPanel = function(el, config, content){
         this.view = Roo.factory(this.view); 
         this.view.render && this.on('render', 
                 function() { 
-                        this.view.render(false, ''); 
+                        this.view.render(false, '',this); 
                 }, this); // render blank..
     }
     
