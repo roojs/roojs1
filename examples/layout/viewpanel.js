@@ -28,7 +28,7 @@ viewpanel = new Roo.XComponent({
                             {
                                 xtype: 'View',
                                 xns: Roo,
-                                tpl : {
+                                footer : {
                                     xtype: 'Template',
                                     xns: Roo
                                 },

@@ -28,9 +28,9 @@
                                     "xtype": "View",
                                     "items": [
                                         {
-                                            "|xns": "Roo",
+                                            "*prop": "footer",
                                             "xtype": "Template",
-                                            "*prop": "tpl"
+                                            "|xns": "Roo"
                                         },
                                         {
                                             "|xns": "Roo",
