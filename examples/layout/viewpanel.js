@@ -22,7 +22,11 @@ viewpanel = new Roo.XComponent({
                 xns: Roo,
                 store : {
                     xtype: 'Store',
-                    xns: Roo.data
+                    xns: Roo.data,
+                    proxy : {
+                        xtype: 'HttpProxy',
+                        xns: Roo.data
+                    }
                 }
             }
         };

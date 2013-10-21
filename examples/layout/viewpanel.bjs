@@ -17,7 +17,14 @@
                         {
                             "|xns": "Roo.data",
                             "xtype": "Store",
-                            "*prop": "store"
+                            "*prop": "store",
+                            "items": [
+                                {
+                                    "|xns": "Roo.data",
+                                    "xtype": "HttpProxy",
+                                    "*prop": "proxy"
+                                }
+                            ]
                         }
                     ]
                 }
