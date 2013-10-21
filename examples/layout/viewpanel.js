@@ -32,6 +32,10 @@ viewpanel = new Roo.XComponent({
                                     xtype: 'Template',
                                     xns: Roo
                                 },
+                                tpl : {
+                                    xtype: 'Template',
+                                    xns: Roo
+                                },
                                 store : {
                                     xtype: 'Store',
                                     xns: Roo.data,
