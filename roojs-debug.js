@@ -24273,7 +24273,8 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     
     render : function(a,b, panel)
     {
-        if (this.footer && this.footer.xtype) {
+        Roo.log('render');
+        if (panel && this.footer && this.footer.xtype) {
          
          
             Roo.log("this.el.parentNode()");
@@ -49129,7 +49130,12 @@ layout.addxtype({
             // factory?
             
             var ret = new Roo.factory(cfg);
-            ret.render && ret.render(false, ''); // render blank..
+            ret.render && this.on('render', 
+                function() { 
+                        ret.render(false, '',this); 
+                }, this); // render blank..
+            
+            //ret.render && ret.render(false, ''); // render blank..
             this.view = ret;
             return ret;
         }
