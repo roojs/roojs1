@@ -160,12 +160,13 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
     
      if ( this.footer && this.footer.xtype) {
            
-        
+        var placeholder = this.wrapEl.appendChild(document.createElement("div"));
         var fctr = this.wrapEl.appendChild(document.createElement("div"));
-        this.wrapEl.appendChild(this.el);
+        
         this.footer.dataSource = this.store
         this.footer.container = fctr;
         this.footer = Roo.factory(this.footer, Roo);
+        placeholder.appendChild(this.el);
          // they get detached?
     }
     
