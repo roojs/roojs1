@@ -6,8 +6,9 @@
     "path": "/home/chris/gitlive/roojs1/examples/layout/viewpanel.bjs",
     "items": [
         {
-            "|xns": "Roo",
+            "region": "center",
             "xtype": "NestedLayoutPanel",
+            "|xns": "Roo",
             "items": [
                 {
                     "|xns": "Roo",

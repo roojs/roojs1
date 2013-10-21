@@ -17,6 +17,7 @@ viewpanel = new Roo.XComponent({
         return {
             xtype: 'NestedLayoutPanel',
             xns: Roo,
+            region : 'center',
             layout : {
                 xtype: 'BorderLayout',
                 xns: Roo,
