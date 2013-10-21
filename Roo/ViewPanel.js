@@ -19,6 +19,7 @@
  * @param {Object} dataSource The data model to bind to
  * @param {Object} colModel The column model with info about this grid's columns
  */
+
 Roo.grid.ViewPanel = function(container, config){
     Roo.grid.ViewPanel.superclass.constructor.call(this, container, config);
     this.getGridEl().addClass("xedit-grid");
