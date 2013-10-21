@@ -17,6 +17,7 @@
                     "items": [
                         {
                             "*prop": "center",
+                            "height": 200,
                             "xtype": "LayoutRegion",
                             "|xns": "Roo"
                         },
