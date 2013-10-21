@@ -20,7 +20,7 @@
                             "*prop": "center"
                         },
                         {
-                            "xtype": "ViewPanel",
+                            "xtype": "ContentPanel",
                             "|xns": "Roo",
                             "items": [
                                 {
