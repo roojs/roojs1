@@ -55,7 +55,6 @@ Roo.onReady(function(){
     var view = Roo.grid.ViewPanel("view", {
         ds: ds,
         cm: cm,
-        selModel: new Roo.grid.RowSelectionModel({singleSelect:true}),
         enableColLock:false,
         loadMask: true
     });
