@@ -24,9 +24,10 @@
                             "|xns": "Roo"
                         },
                         {
-                            "|xns": "Roo",
+                            "*prop": "tpl",
+                            "html": "<b>test</b>",
                             "xtype": "Template",
-                            "*prop": "tpl"
+                            "|xns": "Roo"
                         },
                         {
                             "listeners": {
