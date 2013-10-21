@@ -222,12 +222,6 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         return this.el;
     },
     
-    render : function(a,b, panel)
-    {
-        
-       
-
-    },
     
 
     /**
