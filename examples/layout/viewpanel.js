@@ -29,7 +29,7 @@ viewpanel = new Roo.XComponent({
                             activate : function (_self)
                             {
                                 Roo.log(_self);
-                                
+                                Roo.log('active');
                             },
                             render : function (_self)
                             {
