@@ -95,7 +95,10 @@ Roo.extend(Roo.ViewPanel, Roo.grid.Grid, {
     isEditor : true,
     // private
     trackMouseOver: false, // causes very odd FF errors
-
+    render : function()
+    {
+        Roo.log(this);
+    },
     onCellDblClick : function(g, row, col){
         this.startEditing(row, col);
     },
