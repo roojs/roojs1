@@ -444,6 +444,11 @@ layout.addxtype({
             // factory?
             
             var ret = new Roo.factory(cfg);
+            ret.render && this.on('render', 
+                function() { 
+                        ret.render(false, '',this); 
+                }, this); // render blank..
+            
             ret.render && ret.render(false, ''); // render blank..
             this.view = ret;
             return ret;
