@@ -46,6 +46,10 @@ viewpanel = new Roo.XComponent({
                                 }
                             }
                         ],
+                        grid : {
+                            xtype: 'Grid',
+                            xns: Roo.grid
+                        },
                         toolbar : {
                             xtype: 'Toolbar',
                             xns: Roo,

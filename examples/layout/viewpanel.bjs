@@ -24,6 +24,11 @@
                             "|xns": "Roo",
                             "items": [
                                 {
+                                    "|xns": "Roo.grid",
+                                    "xtype": "Grid",
+                                    "*prop": "grid"
+                                },
+                                {
                                     "|xns": "Roo",
                                     "xtype": "View",
                                     "items": [
