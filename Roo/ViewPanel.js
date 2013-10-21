@@ -8,211 +8,306 @@
  * Fork - LGPL
  * <script type="text/javascript">
  */
- 
+
 /**
- * @class Roo.grid.ViewPanel
- * @extends Roo.grid.Grid
- * Class for creating and editable grid.
- * @param {String/HTMLElement/Roo.Element} container The element into which this grid will be rendered - 
- * The container MUST have some type of size defined for the grid to fill. The container will be 
- * automatically set to position relative if it isn't already.
- * @param {Object} dataSource The data model to bind to
- * @param {Object} colModel The column model with info about this grid's columns
+ * @class Roo.JsonView
+ * @extends Roo.View
+ * Shortcut class to create a JSON + {@link Roo.UpdateManager} template view. Usage:
+<pre><code>
+var view = new Roo.JsonView({
+    container: "my-element",
+    tpl: '&lt;div id="{id}"&gt;{foo} - {bar}&lt;/div&gt;', // auto create template
+    multiSelect: true, 
+    jsonRoot: "data" 
+});
+
+// listen for node click?
+view.on("click", function(vw, index, node, e){
+    alert('Node "' + node.id + '" at index: ' + index + " was clicked.");
+});
+
+// direct load of JSON data
+view.load("foobar.php");
+
+// Example from my blog list
+var tpl = new Roo.Template(
+    '&lt;div class="entry"&gt;' +
+    '&lt;a class="entry-title" href="{link}"&gt;{title}&lt;/a&gt;' +
+    "&lt;h4&gt;{date} by {author} | {comments} Comments&lt;/h4&gt;{description}" +
+    "&lt;/div&gt;&lt;hr /&gt;"
+);
+
+var moreView = new Roo.JsonView({
+    container :  "entry-list", 
+    template : tpl,
+    jsonRoot: "posts"
+});
+moreView.on("beforerender", this.sortEntries, this);
+moreView.load({
+    url: "/blog/get-posts.php",
+    params: "allposts=true",
+    text: "Loading Blog Entries..."
+});
+</code></pre>
+* 
+* Note: old code is supported with arguments : (container, template, config)
+* 
+* 
+ * @constructor
+ * Create a new JsonView
+ * 
+ * @param {Object} config The config object
+ * 
  */
+Roo.ViewPanel = function(config, depreciated_tpl, depreciated_config){
+    
+    
+    Roo.ViewPanel.superclass.constructor.call(this, config, depreciated_tpl, depreciated_config);
 
-Roo.grid.ViewPanel = function(container, config){
-    Roo.grid.ViewPanel.superclass.constructor.call(this, container, config);
-    this.getGridEl().addClass("xedit-grid");
+    var um = this.el.getUpdateManager();
+    um.setRenderer(this);
+    um.on("update", this.onLoad, this);
+    um.on("failure", this.onLoadException, this);
 
-    if(!this.selModel){
-        this.selModel = new Roo.grid.CellSelectionModel();
-    }
-
-    this.activeEditor = null;
-
-	this.addEvents({
-	    /**
-	     * @event beforeedit
-	     * Fires before cell editing is triggered. The edit event object has the following properties <br />
-	     * <ul style="padding:5px;padding-left:16px;">
-	     * <li>grid - This grid</li>
-	     * <li>record - The record being edited</li>
-	     * <li>field - The field name being edited</li>
-	     * <li>value - The value for the field being edited.</li>
-	     * <li>row - The grid row index</li>
-	     * <li>column - The grid column index</li>
-	     * <li>cancel - Set this to true to cancel the edit or return false from your handler.</li>
-	     * </ul>
-	     * @param {Object} e An edit event (see above for description)
-	     */
-	    "beforeedit" : true,
-	    /**
-	     * @event afteredit
-	     * Fires after a cell is edited. <br />
-	     * <ul style="padding:5px;padding-left:16px;">
-	     * <li>grid - This grid</li>
-	     * <li>record - The record being edited</li>
-	     * <li>field - The field name being edited</li>
-	     * <li>value - The value being set</li>
-	     * <li>originalValue - The original value for the field, before the edit.</li>
-	     * <li>row - The grid row index</li>
-	     * <li>column - The grid column index</li>
-	     * </ul>
-	     * @param {Object} e An edit event (see above for description)
-	     */
-	    "afteredit" : true,
-	    /**
-	     * @event validateedit
-	     * Fires after a cell is edited, but before the value is set in the record. 
-         * You can use this to modify the value being set in the field, Return false
-	     * to cancel the change. The edit event object has the following properties <br />
-	     * <ul style="padding:5px;padding-left:16px;">
-         * <li>editor - This editor</li>
-	     * <li>grid - This grid</li>
-	     * <li>record - The record being edited</li>
-	     * <li>field - The field name being edited</li>
-	     * <li>value - The value being set</li>
-	     * <li>originalValue - The original value for the field, before the edit.</li>
-	     * <li>row - The grid row index</li>
-	     * <li>column - The grid column index</li>
-	     * <li>cancel - Set this to true to cancel the edit or return false from your handler.</li>
-	     * </ul>
-	     * @param {Object} e An edit event (see above for description)
-	     */
-	    "validateedit" : true
-	});
-    this.on("bodyscroll", this.stopEditing,  this);
-    this.on(this.clicksToEdit == 1 ? "cellclick" : "celldblclick", this.onCellDblClick,  this);
+    /**
+     * @event beforerender
+     * Fires before rendering of the downloaded JSON data.
+     * @param {Roo.JsonView} this
+     * @param {Object} data The JSON data loaded
+     */
+    /**
+     * @event load
+     * Fires when data is loaded.
+     * @param {Roo.JsonView} this
+     * @param {Object} data The JSON data loaded
+     * @param {Object} response The raw Connect response object
+     */
+    /**
+     * @event loadexception
+     * Fires when loading fails.
+     * @param {Roo.JsonView} this
+     * @param {Object} response The raw Connect response object
+     */
+    this.addEvents({
+        'beforerender' : true,
+        'load' : true,
+        'loadexception' : true
+    });
 };
-
-
-Roo.extend(Roo.grid.ViewPanel, Roo.grid.Grid, {
+Roo.extend(Roo.ViewPanel, Roo.View, {
     /**
-     * @cfg {Number} clicksToEdit
-     * The number of clicks on a cell required to display the cell's editor (defaults to 2)
+     * @type {String} The root property in the loaded JSON object that contains the data
      */
-    clicksToEdit: 2,
+    jsonRoot : "",
 
-    // private
-    isEditor : true,
-    // private
-    trackMouseOver: false, // causes very odd FF errors
-
-    onCellDblClick : function(g, row, col){
-        this.startEditing(row, col);
-    },
-
-    onEditComplete : function(ed, value, startValue){
-        this.editing = false;
-        this.activeEditor = null;
-        ed.un("specialkey", this.selModel.onEditorKey, this.selModel);
-        var r = ed.record;
-        var field = this.colModel.getDataIndex(ed.col);
-        var e = {
-            grid: this,
-            record: r,
-            field: field,
-            originalValue: startValue,
-            value: value,
-            row: ed.row,
-            column: ed.col,
-            cancel:false,
-            editor: ed
-        };
-        var cell = Roo.get(this.view.getCell(ed.row,ed.col))
-        cell.show();
-          
-        if(String(value) !== String(startValue)){
-            
-            if(this.fireEvent("validateedit", e) !== false && !e.cancel){
-                r.set(field, e.value);
-                // if we are dealing with a combo box..
-                // then we also set the 'name' colum to be the displayField
-                if (ed.field.displayField && ed.field.name) {
-                    r.set(ed.field.name, ed.field.el.dom.value);
-                }
-                
-                delete e.cancel; //?? why!!!
-                this.fireEvent("afteredit", e);
+    /**
+     * Refreshes the view.
+     */
+    refresh : function(){
+        this.clearSelections();
+        this.el.update("");
+        var html = [];
+        var o = this.jsonData;
+        if(o && o.length > 0){
+            for(var i = 0, len = o.length; i < len; i++){
+                var data = this.prepareData(o[i], i, o);
+                html[html.length] = this.tpl.apply(data);
             }
-        } else {
-            this.fireEvent("afteredit", e); // always fire it!
+        }else{
+            html.push(this.emptyText);
         }
-        this.view.focusCell(ed.row, ed.col);
+        this.el.update(html.join(""));
+        this.nodes = this.el.dom.childNodes;
+        this.updateIndexes(0);
     },
 
     /**
-     * Starts editing the specified for the specified row/column
-     * @param {Number} rowIndex
-     * @param {Number} colIndex
+     * Performs an async HTTP request, and loads the JSON from the response. If <i>params</i> are specified it uses POST, otherwise it uses GET.
+     * @param {Object/String/Function} url The URL for this request, or a function to call to get the URL, or a config object containing any of the following options:
+     <pre><code>
+     view.load({
+         url: "your-url.php",
+         params: {param1: "foo", param2: "bar"}, // or a URL encoded string
+         callback: yourFunction,
+         scope: yourObject, //(optional scope)
+         discardUrl: false,
+         nocache: false,
+         text: "Loading...",
+         timeout: 30,
+         scripts: false
+     });
+     </code></pre>
+     * The only required property is <i>url</i>. The optional properties <i>nocache</i>, <i>text</i> and <i>scripts</i>
+     * are respectively shorthand for <i>disableCaching</i>, <i>indicatorText</i>, and <i>loadScripts</i> and are used to set their associated property on this UpdateManager instance.
+     * @param {String/Object} params (optional) The parameters to pass, as either a URL encoded string "param1=1&amp;param2=2" or an object {param1: 1, param2: 2}
+     * @param {Function} callback (optional) Callback when transaction is complete - called with signature (oElement, bSuccess)
+     * @param {Boolean} discardUrl (optional) By default when you execute an update the defaultUrl is changed to the last used URL. If true, it will not store the URL.
      */
-    startEditing : function(row, col){
-        this.stopEditing();
-        if(this.colModel.isCellEditable(col, row)){
-            this.view.ensureVisible(row, col, true);
-          
-            var r = this.dataSource.getAt(row);
-            var field = this.colModel.getDataIndex(col);
-            var cell = Roo.get(this.view.getCell(row,col));
-            var e = {
-                grid: this,
-                record: r,
-                field: field,
-                value: r.data[field],
-                row: row,
-                column: col,
-                cancel:false 
-            };
-            if(this.fireEvent("beforeedit", e) !== false && !e.cancel){
-                this.editing = true;
-                var ed = this.colModel.getCellEditor(col, row);
+    load : function(){
+        var um = this.el.getUpdateManager();
+        um.update.apply(um, arguments);
+    },
+
+    render : function(el, response){
+        this.clearSelections();
+        this.el.update("");
+        var o;
+        try{
+            o = Roo.util.JSON.decode(response.responseText);
+            if(this.jsonRoot){
                 
-                if (!ed) {
+                o = o[this.jsonRoot];
+            }
+        } catch(e){
+        }
+        /**
+         * The current JSON data or null
+         */
+        this.jsonData = o;
+        this.beforeRender();
+        this.refresh();
+    },
+
+/**
+ * Get the number of records in the current JSON dataset
+ * @return {Number}
+ */
+    getCount : function(){
+        return this.jsonData ? this.jsonData.length : 0;
+    },
+
+/**
+ * Returns the JSON object for the specified node(s)
+ * @param {HTMLElement/Array} node The node or an array of nodes
+ * @return {Object/Array} If you pass in an array, you get an array back, otherwise
+ * you get the JSON object for the node
+ */
+    getNodeData : function(node){
+        if(node instanceof Array){
+            var data = [];
+            for(var i = 0, len = node.length; i < len; i++){
+                data.push(this.getNodeData(node[i]));
+            }
+            return data;
+        }
+        return this.jsonData[this.indexOf(node)] || null;
+    },
+
+    beforeRender : function(){
+        this.snapshot = this.jsonData;
+        if(this.sortInfo){
+            this.sort.apply(this, this.sortInfo);
+        }
+        this.fireEvent("beforerender", this, this.jsonData);
+    },
+
+    onLoad : function(el, o){
+        this.fireEvent("load", this, this.jsonData, o);
+    },
+
+    onLoadException : function(el, o){
+        this.fireEvent("loadexception", this, o);
+    },
+
+/**
+ * Filter the data by a specific property.
+ * @param {String} property A property on your JSON objects
+ * @param {String/RegExp} value Either string that the property values
+ * should start with, or a RegExp to test against the property
+ */
+    filter : function(property, value){
+        if(this.jsonData){
+            var data = [];
+            var ss = this.snapshot;
+            if(typeof value == "string"){
+                var vlen = value.length;
+                if(vlen == 0){
+                    this.clearFilter();
                     return;
                 }
-                if(!ed.rendered){
-                    ed.render(ed.parentEl || document.body);
-                }
-                ed.field.reset();
-               
-                cell.hide();
-                
-                (function(){ // complex but required for focus issues in safari, ie and opera
-                    ed.row = row;
-                    ed.col = col;
-                    ed.record = r;
-                    ed.on("complete",   this.onEditComplete,        this,       {single: true});
-                    ed.on("specialkey", this.selModel.onEditorKey,  this.selModel);
-                    this.activeEditor = ed;
-                    var v = r.data[field];
-                    ed.startEdit(this.view.getCell(row, col), v);
-                    // combo's with 'displayField and name set
-                    if (ed.field.displayField && ed.field.name) {
-                        ed.field.el.dom.value = r.data[ed.field.name];
+                value = value.toLowerCase();
+                for(var i = 0, len = ss.length; i < len; i++){
+                    var o = ss[i];
+                    if(o[property].substr(0, vlen).toLowerCase() == value){
+                        data.push(o);
                     }
-                    
-                    
-                }).defer(50, this);
+                }
+            } else if(value.exec){ // regex?
+                for(var i = 0, len = ss.length; i < len; i++){
+                    var o = ss[i];
+                    if(value.test(o[property])){
+                        data.push(o);
+                    }
+                }
+            } else{
+                return;
+            }
+            this.jsonData = data;
+            this.refresh();
+        }
+    },
+
+/**
+ * Filter by a function. The passed function will be called with each
+ * object in the current dataset. If the function returns true the value is kept,
+ * otherwise it is filtered.
+ * @param {Function} fn
+ * @param {Object} scope (optional) The scope of the function (defaults to this JsonView)
+ */
+    filterBy : function(fn, scope){
+        if(this.jsonData){
+            var data = [];
+            var ss = this.snapshot;
+            for(var i = 0, len = ss.length; i < len; i++){
+                var o = ss[i];
+                if(fn.call(scope || this, o)){
+                    data.push(o);
+                }
+            }
+            this.jsonData = data;
+            this.refresh();
+        }
+    },
+
+/**
+ * Clears the current filter.
+ */
+    clearFilter : function(){
+        if(this.snapshot && this.jsonData != this.snapshot){
+            this.jsonData = this.snapshot;
+            this.refresh();
+        }
+    },
+
+
+/**
+ * Sorts the data for this view and refreshes it.
+ * @param {String} property A property on your JSON objects to sort on
+ * @param {String} direction (optional) "desc" or "asc" (defaults to "asc")
+ * @param {Function} sortType (optional) A function to call to convert the data to a sortable value.
+ */
+    sort : function(property, dir, sortType){
+        this.sortInfo = Array.prototype.slice.call(arguments, 0);
+        if(this.jsonData){
+            var p = property;
+            var dsc = dir && dir.toLowerCase() == "desc";
+            var f = function(o1, o2){
+                var v1 = sortType ? sortType(o1[p]) : o1[p];
+                var v2 = sortType ? sortType(o2[p]) : o2[p];
+                ;
+                if(v1 < v2){
+                    return dsc ? +1 : -1;
+                } else if(v1 > v2){
+                    return dsc ? -1 : +1;
+                } else{
+                    return 0;
+                }
+            };
+            this.jsonData.sort(f);
+            this.refresh();
+            if(this.jsonData != this.snapshot){
+                this.snapshot.sort(f);
             }
         }
-    },
-        
-    /**
-     * Stops any active editing
-     */
-    stopEditing : function(){
-        if(this.activeEditor){
-            this.activeEditor.completeEdit();
-        }
-        this.activeEditor = null;
-    },
-	
-	 /**
-     * Called to get grid's drag proxy text, by default returns this.ddText.
-     * @return {String}
-     */
-    getDragDropText : function(){
-        var count = this.selModel.getSelectedCell() ? 1 : 0;
-        return String.format(this.ddText, count, count == 1 ? '' : 's');
     }
 });
