@@ -111,7 +111,7 @@ Roo.onReady(function(){
         cm: cm,
         enableColLock:false,
         multiSort : true,
-        enableDragDrop : true,
+        enableDragDrop : true
        
     });
     
