@@ -97,7 +97,49 @@ Roo.extend(Roo.ViewPanel, Roo.grid.Grid, {
     trackMouseOver: false, // causes very odd FF errors
     render : function()
     {
-        Roo.log(this);
+        var c = this.container;
+        // try to detect autoHeight/width mode
+        if((!c.dom.offsetHeight || c.dom.offsetHeight < 20) || c.getStyle("height") == "auto"){
+    	    this.autoHeight = true;
+    	}
+    	var view = this.getView();
+        view.init(this);
+
+        c.on("click", this.onClick, this);
+        c.on("dblclick", this.onDblClick, this);
+        c.on("contextmenu", this.onContextMenu, this);
+        c.on("keydown", this.onKeyDown, this);
+
+        this.relayEvents(c, ["mousedown","mouseup","mouseover","mouseout","keypress"]);
+
+        this.getSelectionModel().init(this);
+
+        view.render();
+
+        if(this.loadMask){
+            this.loadMask = new Roo.LoadMask(this.container,
+                    Roo.apply({store:this.dataSource}, this.loadMask));
+        }
+        
+        
+        if (this.toolbar && this.toolbar.xtype) {
+            this.toolbar.container = this.getView().getHeaderPanel(true);
+            this.toolbar = new Roo.Toolbar(this.toolbar);
+        }
+        if (this.footer && this.footer.xtype) {
+            this.footer.dataSource = this.getDataSource();
+            this.footer.container = this.getView().getFooterPanel(true);
+            this.footer = Roo.factory(this.footer, Roo);
+        }
+        if (this.dropTarget && this.dropTarget.xtype) {
+            delete this.dropTarget.xtype;
+            this.dropTarget =  new Roo.dd.DropTarget(this.getView().mainBody, this.dropTarget);
+        }
+        
+        
+        this.rendered = true;
+        this.fireEvent('render', this);
+        return this;
     },
     onCellDblClick : function(g, row, col){
         this.startEditing(row, col);
