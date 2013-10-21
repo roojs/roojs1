@@ -43,54 +43,51 @@ viewpanel = new Roo.XComponent({
                         },
                         region : 'center',
                         autoCreate : true,
-                        items : [
-                            {
-                                xtype: 'View',
+                         : {
+                            xtype: 'View',
+                            xns: Roo,
+                            emptyText : "no data",
+                            text : "loading",
+                            footer : {
+                                xtype: 'PagingToolbar',
                                 xns: Roo,
-                                view : '',
-                                emptyText : "no data",
-                                text : "loading",
-                                footer : {
-                                    xtype: 'PagingToolbar',
-                                    xns: Roo,
-                                    pageSize : 20
-                                },
-                                tpl : {
-                                    xtype: 'Template',
-                                    xns: Roo,
-                                    html : '<b>test</b>'
-                                },
-                                store : {
-                                    xtype: 'Store',
-                                    xns: Roo.data,
-                                    listeners : {
-                                        beforeload : function (_self, o)
-                                        {
-                                            o.params = o.params || {};
-                                            o.params.test = 1;
-                                        }
-                                    },
-                                    proxy : {
-                                        xtype: 'HttpProxy',
-                                        xns: Roo.data,
-                                        method : 'GET',
-                                        url : 'get-images.php'
-                                    },
-                                    reader : {
-                                        xtype: 'JsonReader',
-                                        xns: Roo.data,
-                                        id : 'id',
-                                        root : 'images',
-                                        fields : [
-                                            {name: 'name', type: 'string'},
-                                            {name: 'size', type: 'string'},
-                                            {name: 'lastmod', type: 'string'},
-                                            {name: 'url', type: 'string'}
-                                        ]
+                                pageSize : 20
+                            },
+                            tpl : {
+                                xtype: 'Template',
+                                xns: Roo,
+                                html : '<b>test</b>'
+                            },
+                            store : {
+                                xtype: 'Store',
+                                xns: Roo.data,
+                                listeners : {
+                                    beforeload : function (_self, o)
+                                    {
+                                        o.params = o.params || {};
+                                        o.params.test = 1;
                                     }
+                                },
+                                proxy : {
+                                    xtype: 'HttpProxy',
+                                    xns: Roo.data,
+                                    method : 'GET',
+                                    url : 'get-images.php'
+                                },
+                                reader : {
+                                    xtype: 'JsonReader',
+                                    xns: Roo.data,
+                                    id : 'id',
+                                    root : 'images',
+                                    fields : [
+                                        {name: 'name', type: 'string'},
+                                        {name: 'size', type: 'string'},
+                                        {name: 'lastmod', type: 'string'},
+                                        {name: 'url', type: 'string'}
+                                    ]
                                 }
                             }
-                        ],
+                        },
                         toolbar : {
                             xtype: 'Toolbar',
                             xns: Roo,
