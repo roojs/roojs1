@@ -17,7 +17,7 @@
  * @param {Roo.grid.Grid} grid The grid for this panel
  * @param {String/Object} config A string to set only the panel's title, or a config object
  */
-Roo.ViewPanel = function(view, config){
+Roo.ViewPanel = function(el, config){
     
   
     this.wrapper = Roo.DomHelper.append(document.body, // wrapper for IE7 strict & safari scroll issue
