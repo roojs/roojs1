@@ -159,7 +159,7 @@ Roo.ContentPanel = function(el, config, content){
     
     Roo.ContentPanel.superclass.constructor.call(this);
     
-        if (this.view && typeof(this.view.xtype) != 'undefined') {
+    if (this.view && typeof(this.view.xtype) != 'undefined') {
         this.view.el = this.el.appendChild(document.createElement("div"));
         this.view = Roo.factory(this.view); 
         this.view.render  &&  this.view.render(false, '');  
