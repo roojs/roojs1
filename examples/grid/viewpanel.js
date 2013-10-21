@@ -49,7 +49,7 @@ Roo.onReady(function(){
            header: "Last Post",
            dataIndex: 'lastPost',
            width: 150,
-           renderer: String.format('{0}', 'test'),
+           renderer: String.format('{0}', 'test')
         }]);
     
     var view = Roo.grid.ViewPanel("view", {
