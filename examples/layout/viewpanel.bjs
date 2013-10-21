@@ -22,7 +22,7 @@
                         },
                         {
                             "listeners": {
-                                "activate": "function (_self)\n{\n    Roo.log(_self);\n    Roo.log(this.el.dom.offsetParent.clientHeight);\n    this.el.setHeight(this.el.dom.offsetParent.clientHeight-60);\n    Roo.log('active');\n}",
+                                "activate": "function (_self)\n{\n    Roo.log(_self);\n    Roo.log(this.el.dom.offsetParent.clientHeight);\n    this.el.setHeight(this.el.dom.offsetParent.clientHeight-55);\n    Roo.log('active');\n}",
                                 "render": "function (_self)\n{\n    _this.bodypanel = _self;\n    \n    Roo.log('render');\n}"
                             },
                             "region": "center",

@@ -30,7 +30,7 @@ viewpanel = new Roo.XComponent({
                             {
                                 Roo.log(_self);
                                 Roo.log(this.el.dom.offsetParent.clientHeight);
-                                this.el.setHeight(this.el.dom.offsetParent.clientHeight-60);
+                                this.el.setHeight(this.el.dom.offsetParent.clientHeight-55);
                                 Roo.log('active');
                             },
                             render : function (_self)
