@@ -7,7 +7,7 @@
     "items": [
         {
             "listeners": {
-                "render": "function (_self)\n{\n    Roo.log(_self);\n}"
+                "render": "function (_self)\n{\n    Roo.log(_self);\n    _this.view = _self;\n}"
             },
             "xtype": "ContentPanel",
             "|xns": "Roo",
