@@ -5,6 +5,7 @@
 
 
 Roo.onReady(function(){
+    
     var viewpanel = new Roo.XComponent({
         part     :  ["Hebe","Members"],
         order    : '001-Pman.Tab.Members',
