@@ -10,7 +10,7 @@
                 "activate": "function (_self)\n{\n    Roo.log(_self);\n    \n    if(_self.active && _self.view){\n        _this.view = this.view;\n    }\n}",
                 "render": "function (_self)\n{\n    _this.panel = _self;\n    \n    \n}"
             },
-            "autoCreate": "true",
+            "|autoCreate": "true",
             "xtype": "ContentPanel",
             "|xns": "Roo",
             "items": [
