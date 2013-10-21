@@ -87,5 +87,132 @@ Roo.grid.ViewPanel = function(container, config){
 
 
 Roo.extend(Roo.grid.ViewPanel, Roo.grid.Grid, {
-    
+    /**
+     * @cfg {Number} clicksToEdit
+     * The number of clicks on a cell required to display the cell's editor (defaults to 2)
+     */
+    clicksToEdit: 2,
+
+    // private
+    isEditor : true,
+    // private
+    trackMouseOver: false, // causes very odd FF errors
+
+    onCellDblClick : function(g, row, col){
+        this.startEditing(row, col);
+    },
+
+    onEditComplete : function(ed, value, startValue){
+        this.editing = false;
+        this.activeEditor = null;
+        ed.un("specialkey", this.selModel.onEditorKey, this.selModel);
+        var r = ed.record;
+        var field = this.colModel.getDataIndex(ed.col);
+        var e = {
+            grid: this,
+            record: r,
+            field: field,
+            originalValue: startValue,
+            value: value,
+            row: ed.row,
+            column: ed.col,
+            cancel:false,
+            editor: ed
+        };
+        var cell = Roo.get(this.view.getCell(ed.row,ed.col))
+        cell.show();
+          
+        if(String(value) !== String(startValue)){
+            
+            if(this.fireEvent("validateedit", e) !== false && !e.cancel){
+                r.set(field, e.value);
+                // if we are dealing with a combo box..
+                // then we also set the 'name' colum to be the displayField
+                if (ed.field.displayField && ed.field.name) {
+                    r.set(ed.field.name, ed.field.el.dom.value);
+                }
+                
+                delete e.cancel; //?? why!!!
+                this.fireEvent("afteredit", e);
+            }
+        } else {
+            this.fireEvent("afteredit", e); // always fire it!
+        }
+        this.view.focusCell(ed.row, ed.col);
+    },
+
+    /**
+     * Starts editing the specified for the specified row/column
+     * @param {Number} rowIndex
+     * @param {Number} colIndex
+     */
+    startEditing : function(row, col){
+        this.stopEditing();
+        if(this.colModel.isCellEditable(col, row)){
+            this.view.ensureVisible(row, col, true);
+          
+            var r = this.dataSource.getAt(row);
+            var field = this.colModel.getDataIndex(col);
+            var cell = Roo.get(this.view.getCell(row,col));
+            var e = {
+                grid: this,
+                record: r,
+                field: field,
+                value: r.data[field],
+                row: row,
+                column: col,
+                cancel:false 
+            };
+            if(this.fireEvent("beforeedit", e) !== false && !e.cancel){
+                this.editing = true;
+                var ed = this.colModel.getCellEditor(col, row);
+                
+                if (!ed) {
+                    return;
+                }
+                if(!ed.rendered){
+                    ed.render(ed.parentEl || document.body);
+                }
+                ed.field.reset();
+               
+                cell.hide();
+                
+                (function(){ // complex but required for focus issues in safari, ie and opera
+                    ed.row = row;
+                    ed.col = col;
+                    ed.record = r;
+                    ed.on("complete",   this.onEditComplete,        this,       {single: true});
+                    ed.on("specialkey", this.selModel.onEditorKey,  this.selModel);
+                    this.activeEditor = ed;
+                    var v = r.data[field];
+                    ed.startEdit(this.view.getCell(row, col), v);
+                    // combo's with 'displayField and name set
+                    if (ed.field.displayField && ed.field.name) {
+                        ed.field.el.dom.value = r.data[ed.field.name];
+                    }
+                    
+                    
+                }).defer(50, this);
+            }
+        }
+    },
+        
+    /**
+     * Stops any active editing
+     */
+    stopEditing : function(){
+        if(this.activeEditor){
+            this.activeEditor.completeEdit();
+        }
+        this.activeEditor = null;
+    },
+	
+	 /**
+     * Called to get grid's drag proxy text, by default returns this.ddText.
+     * @return {String}
+     */
+    getDragDropText : function(){
+        var count = this.selModel.getSelectedCell() ? 1 : 0;
+        return String.format(this.ddText, count, count == 1 ? '' : 's');
+    }
 });
