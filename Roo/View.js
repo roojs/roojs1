@@ -137,16 +137,6 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
         });
 
 
-     if ( this.footer && this.footer.xtype) {
-         
-         
-        
-        this.wrapEl = this.el.wrap();
-
-        this.footer.dataSource = this.store
-        this.footer.container = this.wrapEl;
-        this.footer = Roo.factory(this.footer, Roo);
-    }
 
     this.el.on({
         "click": this.onClick,
@@ -164,6 +154,16 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
     }
     Roo.View.superclass.constructor.call(this);
     
+     if ( this.footer && this.footer.xtype) {
+         
+         
+        
+        this.wrapEl = this.el.wrap();
+
+        this.footer.dataSource = this.store
+        this.footer.container = this.wrapEl;
+        this.footer = Roo.factory(this.footer, Roo);
+    }
     
      
     
