@@ -60,7 +60,8 @@ Roo.onReady(function(){
         loadMask: true
     });
     
+    // render it
+    view.render();
     
-    viewpanel.render('view');
 
 });
