@@ -36,7 +36,7 @@
                                     "*prop": "proxy",
                                     "method": "POST",
                                     "xtype": "HttpProxy",
-                                    "|url": "get-images.php",
+                                    "|url": "'get-images.php'",
                                     "|xns": "Roo.data"
                                 },
                                 {
