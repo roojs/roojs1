@@ -57,8 +57,9 @@
                     "*prop": "toolbar",
                     "items": [
                         {
-                            "|xns": "Roo.Toolbar",
-                            "xtype": "Button"
+                            "text": "ADDDDDDDDDDD",
+                            "xtype": "Button",
+                            "|xns": "Roo.Toolbar"
                         }
                     ]
                 }
