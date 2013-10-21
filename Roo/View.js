@@ -168,7 +168,7 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
         this.footer = Roo.factory(this.footer, Roo);
     }
     Roo.log(this.el.id);
-    Roo.log(this.wrapEla);
+    Roo.log(this.wrapEla.id);
      
     
 };
