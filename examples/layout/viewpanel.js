@@ -17,16 +17,14 @@ viewpanel = new Roo.XComponent({
         return {
             xtype: 'ContentPanel',
             xns: Roo,
-            items : [
-                {
-                    xtype: 'View',
-                    xns: Roo,
-                    store : {
-                        xtype: 'Store',
-                        xns: Roo.data
-                    }
+             : {
+                xtype: 'View',
+                xns: Roo,
+                store : {
+                    xtype: 'Store',
+                    xns: Roo.data
                 }
-            ]
+            }
         };
     }
 });

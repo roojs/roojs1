@@ -10,8 +10,9 @@
             "xtype": "ContentPanel",
             "items": [
                 {
-                    "|xns": "Roo",
+                    "*prop": "",
                     "xtype": "View",
+                    "|xns": "Roo",
                     "items": [
                         {
                             "|xns": "Roo.data",
