@@ -87,18 +87,6 @@
                                             ]
                                         }
                                     ]
-                                },
-                                {
-                                    "|xns": "Roo",
-                                    "xtype": "Toolbar",
-                                    "*prop": "toolbar",
-                                    "items": [
-                                        {
-                                            "text": "ADDDDDDDDDDD",
-                                            "xtype": "Button",
-                                            "|xns": "Roo.Toolbar"
-                                        }
-                                    ]
                                 }
                             ]
                         }
