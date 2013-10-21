@@ -6,11 +6,11 @@
     "path": "/home/chris/gitlive/roojs1/examples/layout/viewpanel.bjs",
     "items": [
         {
+            "xtype": "ViewPanel",
             "|xns": "Roo",
-            "xtype": "ContentPanel",
             "items": [
                 {
-                    "*prop": "",
+                    "*prop": "view",
                     "xtype": "View",
                     "|xns": "Roo",
                     "items": [

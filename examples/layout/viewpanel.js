@@ -15,9 +15,9 @@ viewpanel = new Roo.XComponent({
         var _this = this;
         var MODULE = this;
         return {
-            xtype: 'ContentPanel',
+            xtype: 'ViewPanel',
             xns: Roo,
-             : {
+            view : {
                 xtype: 'View',
                 xns: Roo,
                 store : {
