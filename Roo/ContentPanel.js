@@ -134,7 +134,7 @@ Roo.ContentPanel = function(el, config, content){
         
         
     });
-    Roo.log(this.view);
+    
     if (this.view && typeof(this.view.xtype) != 'undefined') {
         this.view.el = this.el.appendChild(document.createElement("div"));
         this.view = Roo.factory(this.view); 
@@ -438,8 +438,9 @@ layout.addxtype({
             return this.form;
         }
         // should only have one of theses..
-        if ([/* 'View',*/ 'JsonView', 'DatePicker'].indexOf(cfg.xtype) > -1) {
+        if ([ 'View', 'JsonView', 'DatePicker'].indexOf(cfg.xtype) > -1) {
             // views..
+            
             cfg.el = this.el.appendChild(document.createElement("div"));
             // factory?
             
