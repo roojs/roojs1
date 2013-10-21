@@ -162,11 +162,11 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
            
         
         var fctr = this.wrapEl.appendChild(document.createElement("div"));
-        
+        this.wrapEl.appendChild(this.el);
         this.footer.dataSource = this.store
         this.footer.container = fctr;
         this.footer = Roo.factory(this.footer, Roo);
-        this.wrapEl.appendChild(this.el); // they get detached?
+         // they get detached?
     }
     
     Roo.log(this.el.id);
