@@ -8,680 +8,306 @@
  * Fork - LGPL
  * <script type="text/javascript">
  */
- 
+
 /**
- * @class Roo.grid.Grid
- * @extends Roo.util.Observable
- * This class represents the primary interface of a component based grid control.
- * <br><br>Usage:<pre><code>
- var grid = new Roo.grid.Grid("my-container-id", {
-     ds: myDataStore,
-     cm: myColModel,
-     selModel: mySelectionModel,
-     autoSizeColumns: true,
-     monitorWindowResize: false,
-     trackMouseOver: true
- });
- // set any options
- grid.render();
- * </code></pre>
- * <b>Common Problems:</b><br/>
- * - Grid does not resize properly when going smaller: Setting overflow hidden on the container
- * element will correct this<br/>
- * - If you get el.style[camel]= NaNpx or -2px or something related, be certain you have given your container element
- * dimensions. The grid adapts to your container's size, if your container has no size defined then the results
- * are unpredictable.<br/>
- * - Do not render the grid into an element with display:none. Try using visibility:hidden. Otherwise there is no way for the
- * grid to calculate dimensions/offsets.<br/>
-  * @constructor
- * @param {String/HTMLElement/Roo.Element} container The element into which this grid will be rendered -
- * The container MUST have some type of size defined for the grid to fill. The container will be
- * automatically set to position relative if it isn't already.
- * @param {Object} config A config object that sets properties on this grid.
+ * @class Roo.JsonView
+ * @extends Roo.View
+ * Shortcut class to create a JSON + {@link Roo.UpdateManager} template view. Usage:
+<pre><code>
+var view = new Roo.JsonView({
+    container: "my-element",
+    tpl: '&lt;div id="{id}"&gt;{foo} - {bar}&lt;/div&gt;', // auto create template
+    multiSelect: true, 
+    jsonRoot: "data" 
+});
+
+// listen for node click?
+view.on("click", function(vw, index, node, e){
+    alert('Node "' + node.id + '" at index: ' + index + " was clicked.");
+});
+
+// direct load of JSON data
+view.load("foobar.php");
+
+// Example from my blog list
+var tpl = new Roo.Template(
+    '&lt;div class="entry"&gt;' +
+    '&lt;a class="entry-title" href="{link}"&gt;{title}&lt;/a&gt;' +
+    "&lt;h4&gt;{date} by {author} | {comments} Comments&lt;/h4&gt;{description}" +
+    "&lt;/div&gt;&lt;hr /&gt;"
+);
+
+var moreView = new Roo.JsonView({
+    container :  "entry-list", 
+    template : tpl,
+    jsonRoot: "posts"
+});
+moreView.on("beforerender", this.sortEntries, this);
+moreView.load({
+    url: "/blog/get-posts.php",
+    params: "allposts=true",
+    text: "Loading Blog Entries..."
+});
+</code></pre>
+* 
+* Note: old code is supported with arguments : (container, template, config)
+* 
+* 
+ * @constructor
+ * Create a new JsonView
+ * 
+ * @param {Object} config The config object
+ * 
  */
-Roo.ViewPanel = function(container, config){
-	// initialize the container
-	this.container = Roo.get(container);
-	this.container.update("");
-	this.container.setStyle("overflow", "hidden");
-    this.container.addClass('x-grid-container');
-
-    this.id = this.container.id;
-
-    Roo.apply(this, config);
-    // check and correct shorthanded configs
-    if(this.ds){
-        this.dataSource = this.ds;
-        delete this.ds;
-    }
-    if(this.cm){
-        this.colModel = this.cm;
-        delete this.cm;
-    }
-    if(this.sm){
-        this.selModel = this.sm;
-        delete this.sm;
-    }
-
-    if (this.selModel) {
-        this.selModel = Roo.factory(this.selModel, Roo.grid);
-        this.sm = this.selModel;
-        this.sm.xmodule = this.xmodule || false;
-    }
-    if (typeof(this.colModel.config) == 'undefined') {
-        this.colModel = new Roo.grid.ColumnModel(this.colModel);
-        this.cm = this.colModel;
-        this.cm.xmodule = this.xmodule || false;
-    }
-    if (this.dataSource) {
-        this.dataSource= Roo.factory(this.dataSource, Roo.data);
-        this.ds = this.dataSource;
-        this.ds.xmodule = this.xmodule || false;
-         
-    }
+Roo.ViewPanel = function(config, depreciated_tpl, depreciated_config){
     
     
-    
-    if(this.width){
-        this.container.setWidth(this.width);
-    }
+    Roo.ViewPanel.superclass.constructor.call(this, config, depreciated_tpl, depreciated_config);
 
-    if(this.height){
-        this.container.setHeight(this.height);
-    }
-    /** @private */
-	this.addEvents({
-        // raw events
-        /**
-         * @event click
-         * The raw click event for the entire grid.
-         * @param {Roo.EventObject} e
-         */
-        "click" : true,
-        /**
-         * @event dblclick
-         * The raw dblclick event for the entire grid.
-         * @param {Roo.EventObject} e
-         */
-        "dblclick" : true,
-        /**
-         * @event contextmenu
-         * The raw contextmenu event for the entire grid.
-         * @param {Roo.EventObject} e
-         */
-        "contextmenu" : true,
-        /**
-         * @event mousedown
-         * The raw mousedown event for the entire grid.
-         * @param {Roo.EventObject} e
-         */
-        "mousedown" : true,
-        /**
-         * @event mouseup
-         * The raw mouseup event for the entire grid.
-         * @param {Roo.EventObject} e
-         */
-        "mouseup" : true,
-        /**
-         * @event mouseover
-         * The raw mouseover event for the entire grid.
-         * @param {Roo.EventObject} e
-         */
-        "mouseover" : true,
-        /**
-         * @event mouseout
-         * The raw mouseout event for the entire grid.
-         * @param {Roo.EventObject} e
-         */
-        "mouseout" : true,
-        /**
-         * @event keypress
-         * The raw keypress event for the entire grid.
-         * @param {Roo.EventObject} e
-         */
-        "keypress" : true,
-        /**
-         * @event keydown
-         * The raw keydown event for the entire grid.
-         * @param {Roo.EventObject} e
-         */
-        "keydown" : true,
+    var um = this.el.getUpdateManager();
+    um.setRenderer(this);
+    um.on("update", this.onLoad, this);
+    um.on("failure", this.onLoadException, this);
 
-        // custom events
-
-        /**
-         * @event cellclick
-         * Fires when a cell is clicked
-         * @param {Grid} this
-         * @param {Number} rowIndex
-         * @param {Number} columnIndex
-         * @param {Roo.EventObject} e
-         */
-        "cellclick" : true,
-        /**
-         * @event celldblclick
-         * Fires when a cell is double clicked
-         * @param {Grid} this
-         * @param {Number} rowIndex
-         * @param {Number} columnIndex
-         * @param {Roo.EventObject} e
-         */
-        "celldblclick" : true,
-        /**
-         * @event rowclick
-         * Fires when a row is clicked
-         * @param {Grid} this
-         * @param {Number} rowIndex
-         * @param {Roo.EventObject} e
-         */
-        "rowclick" : true,
-        /**
-         * @event rowdblclick
-         * Fires when a row is double clicked
-         * @param {Grid} this
-         * @param {Number} rowIndex
-         * @param {Roo.EventObject} e
-         */
-        "rowdblclick" : true,
-        /**
-         * @event headerclick
-         * Fires when a header is clicked
-         * @param {Grid} this
-         * @param {Number} columnIndex
-         * @param {Roo.EventObject} e
-         */
-        "headerclick" : true,
-        /**
-         * @event headerdblclick
-         * Fires when a header cell is double clicked
-         * @param {Grid} this
-         * @param {Number} columnIndex
-         * @param {Roo.EventObject} e
-         */
-        "headerdblclick" : true,
-        /**
-         * @event rowcontextmenu
-         * Fires when a row is right clicked
-         * @param {Grid} this
-         * @param {Number} rowIndex
-         * @param {Roo.EventObject} e
-         */
-        "rowcontextmenu" : true,
-        /**
-         * @event cellcontextmenu
-         * Fires when a cell is right clicked
-         * @param {Grid} this
-         * @param {Number} rowIndex
-         * @param {Number} cellIndex
-         * @param {Roo.EventObject} e
-         */
-         "cellcontextmenu" : true,
-        /**
-         * @event headercontextmenu
-         * Fires when a header is right clicked
-         * @param {Grid} this
-         * @param {Number} columnIndex
-         * @param {Roo.EventObject} e
-         */
-        "headercontextmenu" : true,
-        /**
-         * @event bodyscroll
-         * Fires when the body element is scrolled
-         * @param {Number} scrollLeft
-         * @param {Number} scrollTop
-         */
-        "bodyscroll" : true,
-        /**
-         * @event columnresize
-         * Fires when the user resizes a column
-         * @param {Number} columnIndex
-         * @param {Number} newSize
-         */
-        "columnresize" : true,
-        /**
-         * @event columnmove
-         * Fires when the user moves a column
-         * @param {Number} oldIndex
-         * @param {Number} newIndex
-         */
-        "columnmove" : true,
-        /**
-         * @event startdrag
-         * Fires when row(s) start being dragged
-         * @param {Grid} this
-         * @param {Roo.GridDD} dd The drag drop object
-         * @param {event} e The raw browser event
-         */
-        "startdrag" : true,
-        /**
-         * @event enddrag
-         * Fires when a drag operation is complete
-         * @param {Grid} this
-         * @param {Roo.GridDD} dd The drag drop object
-         * @param {event} e The raw browser event
-         */
-        "enddrag" : true,
-        /**
-         * @event dragdrop
-         * Fires when dragged row(s) are dropped on a valid DD target
-         * @param {Grid} this
-         * @param {Roo.GridDD} dd The drag drop object
-         * @param {String} targetId The target drag drop object
-         * @param {event} e The raw browser event
-         */
-        "dragdrop" : true,
-        /**
-         * @event dragover
-         * Fires while row(s) are being dragged. "targetId" is the id of the Yahoo.util.DD object the selected rows are being dragged over.
-         * @param {Grid} this
-         * @param {Roo.GridDD} dd The drag drop object
-         * @param {String} targetId The target drag drop object
-         * @param {event} e The raw browser event
-         */
-        "dragover" : true,
-        /**
-         * @event dragenter
-         *  Fires when the dragged row(s) first cross another DD target while being dragged
-         * @param {Grid} this
-         * @param {Roo.GridDD} dd The drag drop object
-         * @param {String} targetId The target drag drop object
-         * @param {event} e The raw browser event
-         */
-        "dragenter" : true,
-        /**
-         * @event dragout
-         * Fires when the dragged row(s) leave another DD target while being dragged
-         * @param {Grid} this
-         * @param {Roo.GridDD} dd The drag drop object
-         * @param {String} targetId The target drag drop object
-         * @param {event} e The raw browser event
-         */
-        "dragout" : true,
-        /**
-         * @event rowclass
-         * Fires when a row is rendered, so you can change add a style to it.
-         * @param {GridView} gridview   The grid view
-         * @param {Object} rowcfg   contains record  rowIndex and rowClass - set rowClass to add a style.
-         */
-        'rowclass' : true,
-
-        /**
-         * @event render
-         * Fires when the grid is rendered
-         * @param {Grid} grid
-         */
-        'render' : true
+    /**
+     * @event beforerender
+     * Fires before rendering of the downloaded JSON data.
+     * @param {Roo.JsonView} this
+     * @param {Object} data The JSON data loaded
+     */
+    /**
+     * @event load
+     * Fires when data is loaded.
+     * @param {Roo.JsonView} this
+     * @param {Object} data The JSON data loaded
+     * @param {Object} response The raw Connect response object
+     */
+    /**
+     * @event loadexception
+     * Fires when loading fails.
+     * @param {Roo.JsonView} this
+     * @param {Object} response The raw Connect response object
+     */
+    this.addEvents({
+        'beforerender' : true,
+        'load' : true,
+        'loadexception' : true
     });
-
-    Roo.ViewPanel.superclass.constructor.call(this);
 };
-Roo.extend(Roo.ViewPanel, Roo.util.Observable, {
-    
+Roo.extend(Roo.ViewPanel, Roo.View, {
     /**
-     * @cfg {String} ddGroup - drag drop group.
+     * @type {String} The root property in the loaded JSON object that contains the data
      */
+    jsonRoot : "",
 
     /**
-     * @cfg {Number} minColumnWidth The minimum width a column can be resized to. Default is 25.
+     * Refreshes the view.
      */
-    minColumnWidth : 25,
-
-    /**
-     * @cfg {Boolean} autoSizeColumns True to automatically resize the columns to fit their content
-     * <b>on initial render.</b> It is more efficient to explicitly size the columns
-     * through the ColumnModel's {@link Roo.grid.ColumnModel#width} config option.  Default is false.
-     */
-    autoSizeColumns : false,
-
-    /**
-     * @cfg {Boolean} autoSizeHeaders True to measure headers with column data when auto sizing columns. Default is true.
-     */
-    autoSizeHeaders : true,
-
-    /**
-     * @cfg {Boolean} monitorWindowResize True to autoSize the grid when the window resizes. Default is true.
-     */
-    monitorWindowResize : true,
-
-    /**
-     * @cfg {Boolean} maxRowsToMeasure If autoSizeColumns is on, maxRowsToMeasure can be used to limit the number of
-     * rows measured to get a columns size. Default is 0 (all rows).
-     */
-    maxRowsToMeasure : 0,
-
-    /**
-     * @cfg {Boolean} trackMouseOver True to highlight rows when the mouse is over. Default is true.
-     */
-    trackMouseOver : true,
-
-    /**
-    * @cfg {Boolean} enableDrag  True to enable drag of rows. Default is false. (double check if this is needed?)
-    */
-    
-    /**
-    * @cfg {Boolean} enableDragDrop True to enable drag and drop of rows. Default is false.
-    */
-    enableDragDrop : false,
-    
-    /**
-    * @cfg {Boolean} enableColumnMove True to enable drag and drop reorder of columns. Default is true.
-    */
-    enableColumnMove : true,
-    
-    /**
-    * @cfg {Boolean} enableColumnHide True to enable hiding of columns with the header context menu. Default is true.
-    */
-    enableColumnHide : true,
-    
-    /**
-    * @cfg {Boolean} enableRowHeightSync True to manually sync row heights across locked and not locked rows. Default is false.
-    */
-    enableRowHeightSync : false,
-    
-    /**
-    * @cfg {Boolean} stripeRows True to stripe the rows.  Default is true.
-    */
-    stripeRows : true,
-    
-    /**
-    * @cfg {Boolean} autoHeight True to fit the height of the grid container to the height of the data. Default is false.
-    */
-    autoHeight : false,
-
-    /**
-     * @cfg {String} autoExpandColumn The id (or dataIndex) of a column in this grid that should expand to fill unused space. This id can not be 0. Default is false.
-     */
-    autoExpandColumn : false,
-
-    /**
-    * @cfg {Number} autoExpandMin The minimum width the autoExpandColumn can have (if enabled).
-    * Default is 50.
-    */
-    autoExpandMin : 50,
-
-    /**
-    * @cfg {Number} autoExpandMax The maximum width the autoExpandColumn can have (if enabled). Default is 1000.
-    */
-    autoExpandMax : 1000,
-
-    /**
-    * @cfg {Object} view The {@link Roo.grid.GridView} used by the grid. This can be set before a call to render().
-    */
-    view : null,
-
-    /**
-    * @cfg {Object} loadMask An {@link Roo.LoadMask} config or true to mask the grid while loading. Default is false.
-    */
-    loadMask : false,
-    /**
-    * @cfg {Roo.dd.DropTarget} dropTarget An {@link Roo.dd.DropTarget} config
-    */
-    dropTarget: false,
-    
-   
-    
-    // private
-    rendered : false,
-
-    /**
-    * @cfg {Boolean} autoWidth True to set the grid's width to the default total width of the grid's columns instead
-    * of a fixed width. Default is false.
-    */
-    /**
-    * @cfg {Number} maxHeight Sets the maximum height of the grid - ignored if autoHeight is not on.
-    */
-    /**
-     * Called once after all setup has been completed and the grid is ready to be rendered.
-     * @return {Roo.grid.Grid} this
-     */
-    render : function()
-    {
-        var c = this.container;
-        // try to detect autoHeight/width mode
-        if((!c.dom.offsetHeight || c.dom.offsetHeight < 20) || c.getStyle("height") == "auto"){
-    	    this.autoHeight = true;
-    	}
-    	var view = this.getView();
-        view.init(this);
-        Roo.log(c);
-        c.on("click", this.onClick, this);
-        c.on("dblclick", this.onDblClick, this);
-        c.on("contextmenu", this.onContextMenu, this);
-        c.on("keydown", this.onKeyDown, this);
-
-        this.relayEvents(c, ["mousedown","mouseup","mouseover","mouseout","keypress"]);
-
-        this.getSelectionModel().init(this);
-
-        view.render();
-
-        if(this.loadMask){
-            this.loadMask = new Roo.LoadMask(this.container,
-                    Roo.apply({store:this.dataSource}, this.loadMask));
-        }
-        
-        
-        if (this.toolbar && this.toolbar.xtype) {
-            this.toolbar.container = this.getView().getHeaderPanel(true);
-            this.toolbar = new Roo.Toolbar(this.toolbar);
-        }
-        if (this.footer && this.footer.xtype) {
-            this.footer.dataSource = this.getDataSource();
-            this.footer.container = this.getView().getFooterPanel(true);
-            this.footer = Roo.factory(this.footer, Roo);
-        }
-        if (this.dropTarget && this.dropTarget.xtype) {
-            delete this.dropTarget.xtype;
-            this.dropTarget =  new Roo.dd.DropTarget(this.getView().mainBody, this.dropTarget);
-        }
-        
-        
-        this.rendered = true;
-        this.fireEvent('render', this);
-        return this;
-    },
-
-	/**
-	 * Reconfigures the grid to use a different Store and Column Model.
-	 * The View will be bound to the new objects and refreshed.
-	 * @param {Roo.data.Store} dataSource The new {@link Roo.data.Store} object
-	 * @param {Roo.grid.ColumnModel} The new {@link Roo.grid.ColumnModel} object
-	 */
-    reconfigure : function(dataSource, colModel){
-        if(this.loadMask){
-            this.loadMask.destroy();
-            this.loadMask = new Roo.LoadMask(this.container,
-                    Roo.apply({store:dataSource}, this.loadMask));
-        }
-        this.view.bind(dataSource, colModel);
-        this.dataSource = dataSource;
-        this.colModel = colModel;
-        this.view.refresh(true);
-    },
-
-    // private
-    onKeyDown : function(e){
-        this.fireEvent("keydown", e);
-    },
-
-    /**
-     * Destroy this grid.
-     * @param {Boolean} removeEl True to remove the element
-     */
-    destroy : function(removeEl, keepListeners){
-        if(this.loadMask){
-            this.loadMask.destroy();
-        }
-        var c = this.container;
-        c.removeAllListeners();
-        this.view.destroy();
-        this.colModel.purgeListeners();
-        if(!keepListeners){
-            this.purgeListeners();
-        }
-        c.update("");
-        if(removeEl === true){
-            c.remove();
-        }
-    },
-
-    // private
-    processEvent : function(name, e){
-        this.fireEvent(name, e);
-        var t = e.getTarget();
-        var v = this.view;
-        var header = v.findHeaderIndex(t);
-        if(header !== false){
-            this.fireEvent("header" + name, this, header, e);
+    refresh : function(){
+        this.clearSelections();
+        this.el.update("");
+        var html = [];
+        var o = this.jsonData;
+        if(o && o.length > 0){
+            for(var i = 0, len = o.length; i < len; i++){
+                var data = this.prepareData(o[i], i, o);
+                html[html.length] = this.tpl.apply(data);
+            }
         }else{
-            var row = v.findRowIndex(t);
-            var cell = v.findCellIndex(t);
-            if(row !== false){
-                this.fireEvent("row" + name, this, row, e);
-                if(cell !== false){
-                    this.fireEvent("cell" + name, this, row, cell, e);
-                }
-            }
+            html.push(this.emptyText);
         }
+        this.el.update(html.join(""));
+        this.nodes = this.el.dom.childNodes;
+        this.updateIndexes(0);
     },
 
-    // private
-    onClick : function(e){
-        this.processEvent("click", e);
+    /**
+     * Performs an async HTTP request, and loads the JSON from the response. If <i>params</i> are specified it uses POST, otherwise it uses GET.
+     * @param {Object/String/Function} url The URL for this request, or a function to call to get the URL, or a config object containing any of the following options:
+     <pre><code>
+     view.load({
+         url: "your-url.php",
+         params: {param1: "foo", param2: "bar"}, // or a URL encoded string
+         callback: yourFunction,
+         scope: yourObject, //(optional scope)
+         discardUrl: false,
+         nocache: false,
+         text: "Loading...",
+         timeout: 30,
+         scripts: false
+     });
+     </code></pre>
+     * The only required property is <i>url</i>. The optional properties <i>nocache</i>, <i>text</i> and <i>scripts</i>
+     * are respectively shorthand for <i>disableCaching</i>, <i>indicatorText</i>, and <i>loadScripts</i> and are used to set their associated property on this UpdateManager instance.
+     * @param {String/Object} params (optional) The parameters to pass, as either a URL encoded string "param1=1&amp;param2=2" or an object {param1: 1, param2: 2}
+     * @param {Function} callback (optional) Callback when transaction is complete - called with signature (oElement, bSuccess)
+     * @param {Boolean} discardUrl (optional) By default when you execute an update the defaultUrl is changed to the last used URL. If true, it will not store the URL.
+     */
+    load : function(){
+        var um = this.el.getUpdateManager();
+        um.update.apply(um, arguments);
     },
 
-    // private
-    onContextMenu : function(e, t){
-        this.processEvent("contextmenu", e);
-    },
-
-    // private
-    onDblClick : function(e){
-        this.processEvent("dblclick", e);
-    },
-
-    // private
-    walkCells : function(row, col, step, fn, scope){
-        var cm = this.colModel, clen = cm.getColumnCount();
-        var ds = this.dataSource, rlen = ds.getCount(), first = true;
-        if(step < 0){
-            if(col < 0){
-                row--;
-                first = false;
+    render : function(el, response){
+        this.clearSelections();
+        this.el.update("");
+        var o;
+        try{
+            o = Roo.util.JSON.decode(response.responseText);
+            if(this.jsonRoot){
+                
+                o = o[this.jsonRoot];
             }
-            while(row >= 0){
-                if(!first){
-                    col = clen-1;
+        } catch(e){
+        }
+        /**
+         * The current JSON data or null
+         */
+        this.jsonData = o;
+        this.beforeRender();
+        this.refresh();
+    },
+
+/**
+ * Get the number of records in the current JSON dataset
+ * @return {Number}
+ */
+    getCount : function(){
+        return this.jsonData ? this.jsonData.length : 0;
+    },
+
+/**
+ * Returns the JSON object for the specified node(s)
+ * @param {HTMLElement/Array} node The node or an array of nodes
+ * @return {Object/Array} If you pass in an array, you get an array back, otherwise
+ * you get the JSON object for the node
+ */
+    getNodeData : function(node){
+        if(node instanceof Array){
+            var data = [];
+            for(var i = 0, len = node.length; i < len; i++){
+                data.push(this.getNodeData(node[i]));
+            }
+            return data;
+        }
+        return this.jsonData[this.indexOf(node)] || null;
+    },
+
+    beforeRender : function(){
+        this.snapshot = this.jsonData;
+        if(this.sortInfo){
+            this.sort.apply(this, this.sortInfo);
+        }
+        this.fireEvent("beforerender", this, this.jsonData);
+    },
+
+    onLoad : function(el, o){
+        this.fireEvent("load", this, this.jsonData, o);
+    },
+
+    onLoadException : function(el, o){
+        this.fireEvent("loadexception", this, o);
+    },
+
+/**
+ * Filter the data by a specific property.
+ * @param {String} property A property on your JSON objects
+ * @param {String/RegExp} value Either string that the property values
+ * should start with, or a RegExp to test against the property
+ */
+    filter : function(property, value){
+        if(this.jsonData){
+            var data = [];
+            var ss = this.snapshot;
+            if(typeof value == "string"){
+                var vlen = value.length;
+                if(vlen == 0){
+                    this.clearFilter();
+                    return;
                 }
-                first = false;
-                while(col >= 0){
-                    if(fn.call(scope || this, row, col, cm) === true){
-                        return [row, col];
+                value = value.toLowerCase();
+                for(var i = 0, len = ss.length; i < len; i++){
+                    var o = ss[i];
+                    if(o[property].substr(0, vlen).toLowerCase() == value){
+                        data.push(o);
                     }
-                    col--;
                 }
-                row--;
-            }
-        } else {
-            if(col >= clen){
-                row++;
-                first = false;
-            }
-            while(row < rlen){
-                if(!first){
-                    col = 0;
-                }
-                first = false;
-                while(col < clen){
-                    if(fn.call(scope || this, row, col, cm) === true){
-                        return [row, col];
+            } else if(value.exec){ // regex?
+                for(var i = 0, len = ss.length; i < len; i++){
+                    var o = ss[i];
+                    if(value.test(o[property])){
+                        data.push(o);
                     }
-                    col++;
                 }
-                row++;
+            } else{
+                return;
+            }
+            this.jsonData = data;
+            this.refresh();
+        }
+    },
+
+/**
+ * Filter by a function. The passed function will be called with each
+ * object in the current dataset. If the function returns true the value is kept,
+ * otherwise it is filtered.
+ * @param {Function} fn
+ * @param {Object} scope (optional) The scope of the function (defaults to this JsonView)
+ */
+    filterBy : function(fn, scope){
+        if(this.jsonData){
+            var data = [];
+            var ss = this.snapshot;
+            for(var i = 0, len = ss.length; i < len; i++){
+                var o = ss[i];
+                if(fn.call(scope || this, o)){
+                    data.push(o);
+                }
+            }
+            this.jsonData = data;
+            this.refresh();
+        }
+    },
+
+/**
+ * Clears the current filter.
+ */
+    clearFilter : function(){
+        if(this.snapshot && this.jsonData != this.snapshot){
+            this.jsonData = this.snapshot;
+            this.refresh();
+        }
+    },
+
+
+/**
+ * Sorts the data for this view and refreshes it.
+ * @param {String} property A property on your JSON objects to sort on
+ * @param {String} direction (optional) "desc" or "asc" (defaults to "asc")
+ * @param {Function} sortType (optional) A function to call to convert the data to a sortable value.
+ */
+    sort : function(property, dir, sortType){
+        this.sortInfo = Array.prototype.slice.call(arguments, 0);
+        if(this.jsonData){
+            var p = property;
+            var dsc = dir && dir.toLowerCase() == "desc";
+            var f = function(o1, o2){
+                var v1 = sortType ? sortType(o1[p]) : o1[p];
+                var v2 = sortType ? sortType(o2[p]) : o2[p];
+                ;
+                if(v1 < v2){
+                    return dsc ? +1 : -1;
+                } else if(v1 > v2){
+                    return dsc ? -1 : +1;
+                } else{
+                    return 0;
+                }
+            };
+            this.jsonData.sort(f);
+            this.refresh();
+            if(this.jsonData != this.snapshot){
+                this.snapshot.sort(f);
             }
         }
-        return null;
-    },
-
-    // private
-    getSelections : function(){
-        return this.selModel.getSelections();
-    },
-
-    /**
-     * Causes the grid to manually recalculate its dimensions. Generally this is done automatically,
-     * but if manual update is required this method will initiate it.
-     */
-    autoSize : function(){
-        if(this.rendered){
-            this.view.layout();
-            if(this.view.adjustForScroll){
-                this.view.adjustForScroll();
-            }
-        }
-    },
-
-    /**
-     * Returns the grid's underlying element.
-     * @return {Element} The element
-     */
-    getGridEl : function(){
-        return this.container;
-    },
-
-    // private for compatibility, overridden by editor grid
-    stopEditing : function(){},
-
-    /**
-     * Returns the grid's SelectionModel.
-     * @return {SelectionModel}
-     */
-    getSelectionModel : function(){
-        if(!this.selModel){
-            this.selModel = new Roo.grid.RowSelectionModel();
-        }
-        return this.selModel;
-    },
-
-    /**
-     * Returns the grid's DataSource.
-     * @return {DataSource}
-     */
-    getDataSource : function(){
-        return this.dataSource;
-    },
-
-    /**
-     * Returns the grid's ColumnModel.
-     * @return {ColumnModel}
-     */
-    getColumnModel : function(){
-        return this.colModel;
-    },
-
-    /**
-     * Returns the grid's GridView object.
-     * @return {GridView}
-     */
-    getView : function(){
-        if(!this.view){
-            this.view = new Roo.grid.GridView(this.viewConfig);
-        }
-        return this.view;
-    },
-    /**
-     * Called to get grid's drag proxy text, by default returns this.ddText.
-     * @return {String}
-     */
-    getDragDropText : function(){
-        var count = this.selModel.getCount();
-        return String.format(this.ddText, count, count == 1 ? '' : 's');
     }
 });
-/**
- * Configures the text is the drag proxy (defaults to "%0 selected row(s)").
- * %0 is replaced with the number of selected rows.
- * @type String
- */
-Roo.grid.Grid.prototype.ddText = "{0} selected row{1}";
