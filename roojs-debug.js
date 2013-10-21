@@ -24271,22 +24271,20 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         return this.el;
     },
     
-    render : function()
+    render : function(a,b, panel)
     {
         if (this.footer && this.footer.xtype) {
          
          
             Roo.log("this.el.parentNode()");
-            Roo.log(this.el.dom );
-            if (!this.wrapEl) {
-                this.wrapEl = this.el.wrap();
-            }
+            Roo.log(panel.el.dom );
+            
             this.footer.dataSource = this.store
-            this.footer.container = this.wrapEl;
+            this.footer.container = panel.el;
             this.footer = Roo.factory(this.footer, Roo);
         }
 
-    }
+    },
     
 
     /**
@@ -48825,7 +48823,10 @@ Roo.ContentPanel = function(el, config, content){
     if (this.view && typeof(this.view.xtype) != 'undefined') {
         this.view.el = this.el.appendChild(document.createElement("div"));
         this.view = Roo.factory(this.view); 
-        this.view.render && this.on('render', function() { this.view.render(false, ''); }, this) // render blank..
+        this.view.render && this.on('render', 
+                function() { 
+                        this.view.render(false, '',this); 
+                }, this); // render blank..
     }
     
     
