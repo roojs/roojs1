@@ -50,7 +50,10 @@ viewpanel = new Roo.XComponent({
                             xtype: 'JsonReader',
                             xns: Roo.data,
                             id : 'id',
-                            root : 'images'
+                            root : 'images',
+                            fields : function() {
+                                
+                            }
                         }
                     }
                 }

@@ -44,6 +44,7 @@
                                     "id": "id",
                                     "root": "images",
                                     "xtype": "JsonReader",
+                                    "|fields": "function() {\n    \n}\n",
                                     "|xns": "Roo.data"
                                 }
                             ]
