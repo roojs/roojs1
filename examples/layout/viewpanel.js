@@ -44,7 +44,7 @@ viewpanel = new Roo.XComponent({
                             xtype: 'HttpProxy',
                             xns: Roo.data,
                             method : 'GET',
-                            url : baseURL + 'get-images.php'
+                            url : 'get-images.php'
                         },
                         reader : {
                             xtype: 'JsonReader',
