@@ -20,7 +20,7 @@
                     "|xns": "Roo",
                     "items": [
                         {
-                            "*prop": "footer",
+                            "*prop": "xfooter",
                             "pageSize": 20,
                             "xtype": "PagingToolbar",
                             "|xns": "Roo"
