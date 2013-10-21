@@ -51,9 +51,12 @@ viewpanel = new Roo.XComponent({
                             xns: Roo.data,
                             id : 'id',
                             root : 'images',
-                            fields : function() {
-                                
-                            }
+                            fields : [
+                                {name: 'name', type: 'string'},
+                                {name: 'size', type: 'string'},
+                                {name: 'lastmod', type: 'string'},
+                                {name: 'url', type: 'string'}
+                            ]
                         }
                     }
                 }
