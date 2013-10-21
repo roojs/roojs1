@@ -11,7 +11,14 @@
             "items": [
                 {
                     "|xns": "Roo",
-                    "xtype": "View"
+                    "xtype": "View",
+                    "items": [
+                        {
+                            "|xns": "Roo.data",
+                            "xtype": "Store",
+                            "*prop": "store"
+                        }
+                    ]
                 }
             ]
         }
