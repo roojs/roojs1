@@ -234,5 +234,32 @@ Roo.onReady(function(){
     }]);
 
     // trigger the data store load
-    ds.load();
+//    ds.load();
+    
+    var gridFoot = grid.getView().getFooterPanel(true);
+
+    // add a paging toolbar to the grid's footer
+    var paging = new Roo.PagingToolbar(gridFoot, ds, {
+        pageSize: 25,
+        displayInfo: true,
+        displayMsg: 'Displaying topics {0} - {1} of {2}',
+        emptyMsg: "No topics to display"
+    });
+    // add the detailed view button
+    paging.add('-', {
+        pressed: true,
+        enableToggle:true,
+        text: 'Detailed View',
+        cls: 'x-btn-text-icon details',
+        toggleHandler: toggleDetails
+    });
+
+    // trigger the data store load
+    ds.load({params:{start:0, limit:25}});
+
+    function toggleDetails(btn, pressed){
+        cm.getColumnById('topic').renderer = pressed ? renderTopic : renderTopicPlain;
+        cm.getColumnById('last').renderer = pressed ? renderLast : renderLastPlain;
+        grid.getView().refresh();
+    }
 });
