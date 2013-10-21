@@ -30,9 +30,6 @@ viewpanel = new Roo.XComponent({
                             {
                                 Roo.log(_self);
                                 
-                                if(_self.active && _self.view){
-                                    _this.view = this.view;
-                                }
                             },
                             render : function (_self)
                             {

@@ -22,7 +22,7 @@
                         },
                         {
                             "listeners": {
-                                "activate": "function (_self)\n{\n    Roo.log(_self);\n    \n    if(_self.active && _self.view){\n        _this.view = this.view;\n    }\n}",
+                                "activate": "function (_self)\n{\n    Roo.log(_self);\n    \n}",
                                 "render": "function (_self)\n{\n    _this.bodypanel = _self;\n    \n    \n}"
                             },
                             "region": "center",
