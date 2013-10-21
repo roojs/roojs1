@@ -36,7 +36,7 @@ viewpanel = new Roo.XComponent({
                             },
                             render : function (_self)
                             {
-                                _this.panel = _self;
+                                _this.bodypanel = _self;
                                 
                                 
                             }
