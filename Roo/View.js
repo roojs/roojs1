@@ -165,12 +165,12 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
         this.footer.dataSource = this.store
         this.footer.container = fctr;
         this.footer = Roo.factory(this.footer, Roo);
-        fctr.insertFirst(this.el);
+        
         // this is a bit insane - as the paging toolbar seems to detach the el..
         
          // they get detached?
     }
-    
+    fctr.insertFirst(this.el);
     
     Roo.View.superclass.constructor.call(this);
     
