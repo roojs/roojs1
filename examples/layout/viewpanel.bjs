@@ -26,7 +26,7 @@
                         },
                         {
                             "listeners": {
-                                "beforeload": "function (_self, o)\n{\n    o.params = o.params || {};\n}"
+                                "beforeload": "function (_self, o)\n{\n    o.params = o.params || {};\n    o.params.test = 1;\n}"
                             },
                             "*prop": "store",
                             "xtype": "Store",

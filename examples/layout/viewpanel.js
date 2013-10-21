@@ -37,6 +37,7 @@ viewpanel = new Roo.XComponent({
                             beforeload : function (_self, o)
                             {
                                 o.params = o.params || {};
+                                o.params.test = 1;
                             }
                         },
                         proxy : {
