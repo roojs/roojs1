@@ -18,6 +18,10 @@
                             "|xns": "Roo",
                             "xtype": "LayoutRegion",
                             "*prop": "center"
+                        },
+                        {
+                            "|xns": "Roo",
+                            "xtype": "GridPanel"
                         }
                     ]
                 }
