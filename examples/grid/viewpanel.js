@@ -57,7 +57,7 @@ Roo.onReady(function(){
     // create the Data Store
     var ds = new Roo.data.Store({
         // load using HTTP
-        proxy: new Roo.data.HttpProxy({url: 'plants.xml'}),
+        proxy: new Roo.data.HttpProxy({url: 'get-images.php'}),
         remoteSort : true,
         
         // the return will be XML, so lets set up a reader
