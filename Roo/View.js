@@ -176,7 +176,7 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
     Roo.View.superclass.constructor.call(this);
     
 Roo.log('in?');
-        Roo.log('in')
+        Roo.log(this.el.dom.offsetParent)
         Roo.log(this.el.dom.offsetParent.clientHeight);
          Roo.log(this.el);
     Roo.log(this.el.id);
