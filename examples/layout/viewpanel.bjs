@@ -50,6 +50,11 @@
                                             ]
                                         }
                                     ]
+                                },
+                                {
+                                    "|xns": "Roo",
+                                    "xtype": "Toolbar",
+                                    "*prop": "toolbar"
                                 }
                             ]
                         }
