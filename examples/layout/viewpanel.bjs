@@ -15,9 +15,10 @@
                     "|xns": "Roo",
                     "items": [
                         {
-                            "|xns": "Roo",
+                            "*prop": "tpl",
+                            "html": "<b> hello </b>",
                             "xtype": "Template",
-                            "*prop": "tpl"
+                            "|xns": "Roo"
                         },
                         {
                             "|xns": "Roo.data",
