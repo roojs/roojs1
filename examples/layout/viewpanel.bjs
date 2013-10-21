@@ -40,9 +40,10 @@
                                     "|xns": "Roo.data"
                                 },
                                 {
-                                    "|xns": "Roo.data",
+                                    "*prop": "reader",
+                                    "id": "id",
                                     "xtype": "JsonReader",
-                                    "*prop": "reader"
+                                    "|xns": "Roo.data"
                                 }
                             ]
                         }
