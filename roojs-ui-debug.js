@@ -39030,4 +39030,1329 @@ Roo.extend(Roo.grid.EditorGrid, Roo.grid.Grid, {
         return String.format(this.ddText, count, count == 1 ? '' : 's');
     }
 	
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+// private - not really -- you end up using it !
+// This is a support class used internally by the Grid components
+
+/**
+ * @class Roo.grid.GridEditor
+ * @extends Roo.Editor
+ * Class for creating and editable grid elements.
+ * @param {Object} config any settings (must include field)
+ */
+Roo.grid.GridEditor = function(field, config){
+    if (!config && field.field) {
+        config = field;
+        field = Roo.factory(config.field, Roo.form);
+    }
+    Roo.grid.GridEditor.superclass.constructor.call(this, field, config);
+    field.monitorTab = false;
+};
+
+Roo.extend(Roo.grid.GridEditor, Roo.Editor, {
+    
+    /**
+     * @cfg {Roo.form.Field} field Field to wrap (or xtyped)
+     */
+    
+    alignment: "tl-tl",
+    autoSize: "width",
+    hideEl : false,
+    cls: "x-small-editor x-grid-editor",
+    shim:false,
+    shadow:"frame"
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+  
+
+  
+Roo.grid.PropertyRecord = Roo.data.Record.create([
+    {name:'name',type:'string'},  'value'
+]);
+
+
+Roo.grid.PropertyStore = function(grid, source){
+    this.grid = grid;
+    this.store = new Roo.data.Store({
+        recordType : Roo.grid.PropertyRecord
+    });
+    this.store.on('update', this.onUpdate,  this);
+    if(source){
+        this.setSource(source);
+    }
+    Roo.grid.PropertyStore.superclass.constructor.call(this);
+};
+
+
+
+Roo.extend(Roo.grid.PropertyStore, Roo.util.Observable, {
+    setSource : function(o){
+        this.source = o;
+        this.store.removeAll();
+        var data = [];
+        for(var k in o){
+            if(this.isEditableValue(o[k])){
+                data.push(new Roo.grid.PropertyRecord({name: k, value: o[k]}, k));
+            }
+        }
+        this.store.loadRecords({records: data}, {}, true);
+    },
+
+    onUpdate : function(ds, record, type){
+        if(type == Roo.data.Record.EDIT){
+            var v = record.data['value'];
+            var oldValue = record.modified['value'];
+            if(this.grid.fireEvent('beforepropertychange', this.source, record.id, v, oldValue) !== false){
+                this.source[record.id] = v;
+                record.commit();
+                this.grid.fireEvent('propertychange', this.source, record.id, v, oldValue);
+            }else{
+                record.reject();
+            }
+        }
+    },
+
+    getProperty : function(row){
+       return this.store.getAt(row);
+    },
+
+    isEditableValue: function(val){
+        if(val && val instanceof Date){
+            return true;
+        }else if(typeof val == 'object' || typeof val == 'function'){
+            return false;
+        }
+        return true;
+    },
+
+    setValue : function(prop, value){
+        this.source[prop] = value;
+        this.store.getById(prop).set('value', value);
+    },
+
+    getSource : function(){
+        return this.source;
+    }
 });
+
+Roo.grid.PropertyColumnModel = function(grid, store){
+    this.grid = grid;
+    var g = Roo.grid;
+    g.PropertyColumnModel.superclass.constructor.call(this, [
+        {header: this.nameText, sortable: true, dataIndex:'name', id: 'name'},
+        {header: this.valueText, resizable:false, dataIndex: 'value', id: 'value'}
+    ]);
+    this.store = store;
+    this.bselect = Roo.DomHelper.append(document.body, {
+        tag: 'select', style:'display:none', cls: 'x-grid-editor', children: [
+            {tag: 'option', value: 'true', html: 'true'},
+            {tag: 'option', value: 'false', html: 'false'}
+        ]
+    });
+    Roo.id(this.bselect);
+    var f = Roo.form;
+    this.editors = {
+        'date' : new g.GridEditor(new f.DateField({selectOnFocus:true})),
+        'string' : new g.GridEditor(new f.TextField({selectOnFocus:true})),
+        'number' : new g.GridEditor(new f.NumberField({selectOnFocus:true, style:'text-align:left;'})),
+        'int' : new g.GridEditor(new f.NumberField({selectOnFocus:true, allowDecimals:false, style:'text-align:left;'})),
+        'boolean' : new g.GridEditor(new f.Field({el:this.bselect,selectOnFocus:true}))
+    };
+    this.renderCellDelegate = this.renderCell.createDelegate(this);
+    this.renderPropDelegate = this.renderProp.createDelegate(this);
+};
+
+Roo.extend(Roo.grid.PropertyColumnModel, Roo.grid.ColumnModel, {
+    
+    
+    nameText : 'Name',
+    valueText : 'Value',
+    
+    dateFormat : 'm/j/Y',
+    
+    
+    renderDate : function(dateVal){
+        return dateVal.dateFormat(this.dateFormat);
+    },
+
+    renderBool : function(bVal){
+        return bVal ? 'true' : 'false';
+    },
+
+    isCellEditable : function(colIndex, rowIndex){
+        return colIndex == 1;
+    },
+
+    getRenderer : function(col){
+        return col == 1 ?
+            this.renderCellDelegate : this.renderPropDelegate;
+    },
+
+    renderProp : function(v){
+        return this.getPropertyName(v);
+    },
+
+    renderCell : function(val){
+        var rv = val;
+        if(val instanceof Date){
+            rv = this.renderDate(val);
+        }else if(typeof val == 'boolean'){
+            rv = this.renderBool(val);
+        }
+        return Roo.util.Format.htmlEncode(rv);
+    },
+
+    getPropertyName : function(name){
+        var pn = this.grid.propertyNames;
+        return pn && pn[name] ? pn[name] : name;
+    },
+
+    getCellEditor : function(colIndex, rowIndex){
+        var p = this.store.getProperty(rowIndex);
+        var n = p.data['name'], val = p.data['value'];
+        
+        if(typeof(this.grid.customEditors[n]) == 'string'){
+            return this.editors[this.grid.customEditors[n]];
+        }
+        if(typeof(this.grid.customEditors[n]) != 'undefined'){
+            return this.grid.customEditors[n];
+        }
+        if(val instanceof Date){
+            return this.editors['date'];
+        }else if(typeof val == 'number'){
+            return this.editors['number'];
+        }else if(typeof val == 'boolean'){
+            return this.editors['boolean'];
+        }else{
+            return this.editors['string'];
+        }
+    }
+});
+
+/**
+ * @class Roo.grid.PropertyGrid
+ * @extends Roo.grid.EditorGrid
+ * This class represents the  interface of a component based property grid control.
+ * <br><br>Usage:<pre><code>
+ var grid = new Roo.grid.PropertyGrid("my-container-id", {
+      
+ });
+ // set any options
+ grid.render();
+ * </code></pre>
+  
+ * @constructor
+ * @param {String/HTMLElement/Roo.Element} container The element into which this grid will be rendered -
+ * The container MUST have some type of size defined for the grid to fill. The container will be
+ * automatically set to position relative if it isn't already.
+ * @param {Object} config A config object that sets properties on this grid.
+ */
+Roo.grid.PropertyGrid = function(container, config){
+    config = config || {};
+    var store = new Roo.grid.PropertyStore(this);
+    this.store = store;
+    var cm = new Roo.grid.PropertyColumnModel(this, store);
+    store.store.sort('name', 'ASC');
+    Roo.grid.PropertyGrid.superclass.constructor.call(this, container, Roo.apply({
+        ds: store.store,
+        cm: cm,
+        enableColLock:false,
+        enableColumnMove:false,
+        stripeRows:false,
+        trackMouseOver: false,
+        clicksToEdit:1
+    }, config));
+    this.getGridEl().addClass('x-props-grid');
+    this.lastEditRow = null;
+    this.on('columnresize', this.onColumnResize, this);
+    this.addEvents({
+         /**
+	     * @event beforepropertychange
+	     * Fires before a property changes (return false to stop?)
+	     * @param {Roo.grid.PropertyGrid} grid property grid? (check could be store)
+	     * @param {String} id Record Id
+	     * @param {String} newval New Value
+         * @param {String} oldval Old Value
+	     */
+        "beforepropertychange": true,
+        /**
+	     * @event propertychange
+	     * Fires after a property changes
+	     * @param {Roo.grid.PropertyGrid} grid property grid? (check could be store)
+	     * @param {String} id Record Id
+	     * @param {String} newval New Value
+         * @param {String} oldval Old Value
+	     */
+        "propertychange": true
+    });
+    this.customEditors = this.customEditors || {};
+};
+Roo.extend(Roo.grid.PropertyGrid, Roo.grid.EditorGrid, {
+    
+     /**
+     * @cfg {Object} customEditors map of colnames=> custom editors.
+     * the custom editor can be one of the standard ones (date|string|number|int|boolean), or a
+     * grid editor eg. Roo.grid.GridEditor(new Roo.form.TextArea({selectOnFocus:true})),
+     * false disables editing of the field.
+	 */
+    
+      /**
+     * @cfg {Object} propertyNames map of property Names to their displayed value
+	 */
+    
+    render : function(){
+        Roo.grid.PropertyGrid.superclass.render.call(this);
+        this.autoSize.defer(100, this);
+    },
+
+    autoSize : function(){
+        Roo.grid.PropertyGrid.superclass.autoSize.call(this);
+        if(this.view){
+            this.view.fitColumns();
+        }
+    },
+
+    onColumnResize : function(){
+        this.colModel.setColumnWidth(1, this.container.getWidth(true)-this.colModel.getColumnWidth(0));
+        this.autoSize();
+    },
+    /**
+     * Sets the data for the Grid
+     * accepts a Key => Value object of all the elements avaiable.
+     * @param {Object} data  to appear in grid.
+     */
+    setSource : function(source){
+        this.store.setSource(source);
+        //this.autoSize();
+    },
+    /**
+     * Gets all the data from the grid.
+     * @return {Object} data  data stored in grid
+     */
+    getSource : function(){
+        return this.store.getSource();
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.LoadMask
+ * A simple utility class for generically masking elements while loading data.  If the element being masked has
+ * an underlying {@link Roo.data.Store}, the masking will be automatically synchronized with the store's loading
+ * process and the mask element will be cached for reuse.  For all other elements, this mask will replace the
+ * element's UpdateManager load indicator and will be destroyed after the initial load.
+ * @constructor
+ * Create a new LoadMask
+ * @param {String/HTMLElement/Roo.Element} el The element or DOM node, or its id
+ * @param {Object} config The config object
+ */
+Roo.LoadMask = function(el, config){
+    this.el = Roo.get(el);
+    Roo.apply(this, config);
+    if(this.store){
+        this.store.on('beforeload', this.onBeforeLoad, this);
+        this.store.on('load', this.onLoad, this);
+        this.store.on('loadexception', this.onLoadException, this);
+        this.removeMask = false;
+    }else{
+        var um = this.el.getUpdateManager();
+        um.showLoadIndicator = false; // disable the default indicator
+        um.on('beforeupdate', this.onBeforeLoad, this);
+        um.on('update', this.onLoad, this);
+        um.on('failure', this.onLoad, this);
+        this.removeMask = true;
+    }
+};
+
+Roo.LoadMask.prototype = {
+    /**
+     * @cfg {Boolean} removeMask
+     * True to create a single-use mask that is automatically destroyed after loading (useful for page loads),
+     * False to persist the mask element reference for multiple uses (e.g., for paged data widgets).  Defaults to false.
+     */
+    /**
+     * @cfg {String} msg
+     * The text to display in a centered loading message box (defaults to 'Loading...')
+     */
+    msg : 'Loading...',
+    /**
+     * @cfg {String} msgCls
+     * The CSS class to apply to the loading message element (defaults to "x-mask-loading")
+     */
+    msgCls : 'x-mask-loading',
+
+    /**
+     * Read-only. True if the mask is currently disabled so that it will not be displayed (defaults to false)
+     * @type Boolean
+     */
+    disabled: false,
+
+    /**
+     * Disables the mask to prevent it from being displayed
+     */
+    disable : function(){
+       this.disabled = true;
+    },
+
+    /**
+     * Enables the mask so that it can be displayed
+     */
+    enable : function(){
+        this.disabled = false;
+    },
+    
+    onLoadException : function()
+    {
+        Roo.log(arguments);
+        
+        if (typeof(arguments[3]) != 'undefined') {
+            Roo.MessageBox.alert("Error loading",arguments[3]);
+        } 
+        /*
+        try {
+            if (this.store && typeof(this.store.reader.jsonData.errorMsg) != 'undefined') {
+                Roo.MessageBox.alert("Error loading",this.store.reader.jsonData.errorMsg);
+            }   
+        } catch(e) {
+            
+        }
+        */
+    
+        
+        
+        this.el.unmask(this.removeMask);
+    },
+    // private
+    onLoad : function()
+    {
+        this.el.unmask(this.removeMask);
+    },
+
+    // private
+    onBeforeLoad : function(){
+        if(!this.disabled){
+            this.el.mask(this.msg, this.msgCls);
+        }
+    },
+
+    // private
+    destroy : function(){
+        if(this.store){
+            this.store.un('beforeload', this.onBeforeLoad, this);
+            this.store.un('load', this.onLoad, this);
+            this.store.un('loadexception', this.onLoadException, this);
+        }else{
+            var um = this.el.getUpdateManager();
+            um.un('beforeupdate', this.onBeforeLoad, this);
+            um.un('update', this.onLoad, this);
+            um.un('failure', this.onLoad, this);
+        }
+    }
+};/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+
+/**
+ * @class Roo.XTemplate
+ * @extends Roo.Template
+ * Provides a template that can have nested templates for loops or conditionals. The syntax is:
+<pre><code>
+var t = new Roo.XTemplate(
+	'&lt;select name="{name}"&gt;',
+		'&lt;tpl for="options"&gt;&lt;option value="{value:trim}"&gt;{text:ellipsis(10)}&lt;/option&gt;&lt;/tpl&gt;',
+	'&lt;/select&gt;'
+);
+ 
+// then append, applying the master template values
+ </code></pre>
+ *
+ * Supported features:
+ *
+ *  Tags:
+
+<pre><code>
+      {a_variable} - output encoded.
+      {a_variable.format:("Y-m-d")} - call a method on the variable
+      {a_variable:raw} - unencoded output
+      {a_variable:toFixed(1,2)} - Roo.util.Format."toFixed"
+      {a_variable:this.method_on_template(...)} - call a method on the template object.
+ 
+</code></pre>
+ *  The tpl tag:
+<pre><code>
+        &lt;tpl for="a_variable or condition.."&gt;&lt;/tpl&gt;
+        &lt;tpl if="a_variable or condition"&gt;&lt;/tpl&gt;
+        &lt;tpl exec="some javascript"&gt;&lt;/tpl&gt;
+        &lt;tpl name="named_template"&gt;&lt;/tpl&gt; (experimental)
+  
+        &lt;tpl for="."&gt;&lt;/tpl&gt; - just iterate the property..
+        &lt;tpl for=".."&gt;&lt;/tpl&gt; - iterates with the parent (probably the template) 
+</code></pre>
+ *      
+ */
+Roo.XTemplate = function()
+{
+    Roo.XTemplate.superclass.constructor.apply(this, arguments);
+    if (this.html) {
+        this.compile();
+    }
+};
+
+
+Roo.extend(Roo.XTemplate, Roo.Template, {
+
+    /**
+     * The various sub templates
+     */
+    tpls : false,
+    /**
+     *
+     * basic tag replacing syntax
+     * WORD:WORD()
+     *
+     * // you can fake an object call by doing this
+     *  x.t:(test,tesT) 
+     * 
+     */
+    re : /\{([\w-\.]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?\}/g,
+
+    /**
+     * compile the template
+     *
+     * This is not recursive, so I'm not sure how nested templates are really going to be handled..
+     *
+     */
+    compile: function()
+    {
+        var s = this.html;
+     
+        s = ['<tpl>', s, '</tpl>'].join('');
+    
+        var re     = /<tpl\b[^>]*>((?:(?=([^<]+))\2|<(?!tpl\b[^>]*>))*?)<\/tpl>/,
+            nameRe = /^<tpl\b[^>]*?for="(.*?)"/,
+            ifRe   = /^<tpl\b[^>]*?if="(.*?)"/,
+            execRe = /^<tpl\b[^>]*?exec="(.*?)"/,
+            namedRe = /^<tpl\b[^>]*?name="(\w+)"/,  // named templates..
+            m,
+            id     = 0,
+            tpls   = [];
+    
+        while(true == !!(m = s.match(re))){
+            var forMatch   = m[0].match(nameRe),
+                ifMatch   = m[0].match(ifRe),
+                execMatch   = m[0].match(execRe),
+                namedMatch   = m[0].match(namedRe),
+                
+                exp  = null, 
+                fn   = null,
+                exec = null,
+                name = forMatch && forMatch[1] ? forMatch[1] : '';
+                
+            if (ifMatch) {
+                // if - puts fn into test..
+                exp = ifMatch && ifMatch[1] ? ifMatch[1] : null;
+                if(exp){
+                   fn = new Function('values', 'parent', 'with(values){ return '+(Roo.util.Format.htmlDecode(exp))+'; }');
+                }
+            }
+            
+            if (execMatch) {
+                // exec - calls a function... returns empty if true is  returned.
+                exp = execMatch && execMatch[1] ? execMatch[1] : null;
+                if(exp){
+                   exec = new Function('values', 'parent', 'with(values){ '+(Roo.util.Format.htmlDecode(exp))+'; }');
+                }
+            }
+            
+            
+            if (name) {
+                // for = 
+                switch(name){
+                    case '.':  name = new Function('values', 'parent', 'with(values){ return values; }'); break;
+                    case '..': name = new Function('values', 'parent', 'with(values){ return parent; }'); break;
+                    default:   name = new Function('values', 'parent', 'with(values){ return '+name+'; }');
+                }
+            }
+            var uid = namedMatch ? namedMatch[1] : id;
+            
+            
+            tpls.push({
+                id:     namedMatch ? namedMatch[1] : id,
+                target: name,
+                exec:   exec,
+                test:   fn,
+                body:   m[1] || ''
+            });
+            if (namedMatch) {
+                s = s.replace(m[0], '');
+            } else { 
+                s = s.replace(m[0], '{xtpl'+ id + '}');
+            }
+            ++id;
+        }
+        this.tpls = [];
+        for(var i = tpls.length-1; i >= 0; --i){
+            this.compileTpl(tpls[i]);
+            this.tpls[tpls[i].id] = tpls[i];
+        }
+        this.master = tpls[tpls.length-1];
+        return this;
+    },
+    /**
+     * same as applyTemplate, except it's done to one of the subTemplates
+     * when using named templates, you can do:
+     *
+     * var str = pl.applySubTemplate('your-name', values);
+     *
+     * 
+     * @param {Number} id of the template
+     * @param {Object} values to apply to template
+     * @param {Object} parent (normaly the instance of this object)
+     */
+    applySubTemplate : function(id, values, parent)
+    {
+        
+        
+        var t = this.tpls[id];
+        
+        
+        try { 
+            if(t.test && !t.test.call(this, values, parent)){
+                return '';
+            }
+        } catch(e) {
+            Roo.log("Xtemplate.applySubTemplate 'test': Exception thrown");
+            Roo.log(e.toString());
+            Roo.log(t.test);
+            return ''
+        }
+        try { 
+            
+            if(t.exec && t.exec.call(this, values, parent)){
+                return '';
+            }
+        } catch(e) {
+            Roo.log("Xtemplate.applySubTemplate 'exec': Exception thrown");
+            Roo.log(e.toString());
+            Roo.log(t.exec);
+            return ''
+        }
+        try {
+            var vs = t.target ? t.target.call(this, values, parent) : values;
+            parent = t.target ? values : parent;
+            if(t.target && vs instanceof Array){
+                var buf = [];
+                for(var i = 0, len = vs.length; i < len; i++){
+                    buf[buf.length] = t.compiled.call(this, vs[i], parent);
+                }
+                return buf.join('');
+            }
+            return t.compiled.call(this, vs, parent);
+        } catch (e) {
+            Roo.log("Xtemplate.applySubTemplate : Exception thrown");
+            Roo.log(e.toString());
+            Roo.log(t.compiled);
+            return '';
+        }
+    },
+
+    compileTpl : function(tpl)
+    {
+        var fm = Roo.util.Format;
+        var useF = this.disableFormats !== true;
+        var sep = Roo.isGecko ? "+" : ",";
+        var undef = function(str) {
+            Roo.log("Property not found :"  + str);
+            return '';
+        };
+        
+        var fn = function(m, name, format, args)
+        {
+            //Roo.log(arguments);
+            args = args ? args.replace(/\\'/g,"'") : args;
+            //["{TEST:(a,b,c)}", "TEST", "", "a,b,c", 0, "{TEST:(a,b,c)}"]
+            if (typeof(format) == 'undefined') {
+                format= 'htmlEncode';
+            }
+            if (format == 'raw' ) {
+                format = false;
+            }
+            
+            if(name.substr(0, 4) == 'xtpl'){
+                return "'"+ sep +'this.applySubTemplate('+name.substr(4)+', values, parent)'+sep+"'";
+            }
+            
+            // build an array of options to determine if value is undefined..
+            
+            // basically get 'xxxx.yyyy' then do
+            // (typeof(xxxx) == 'undefined' || typeof(xxx.yyyy) == 'undefined') ?
+            //    (function () { Roo.log("Property not found"); return ''; })() :
+            //    ......
+            
+            var udef_ar = [];
+            var lookfor = '';
+            Roo.each(name.split('.'), function(st) {
+                lookfor += (lookfor.length ? '.': '') + st;
+                udef_ar.push(  "(typeof(" + lookfor + ") == 'undefined')"  );
+            });
+            
+            var udef_st = '((' + udef_ar.join(" || ") +") ? undef('" + name + "') : "; // .. needs )
+            
+            
+            if(format && useF){
+                
+                args = args ? ',' + args : "";
+                 
+                if(format.substr(0, 5) != "this."){
+                    format = "fm." + format + '(';
+                }else{
+                    format = 'this.call("'+ format.substr(5) + '", ';
+                    args = ", values";
+                }
+                
+                return "'"+ sep +   udef_st   +    format + name + args + "))"+sep+"'";
+            }
+             
+            if (args.length) {
+                // called with xxyx.yuu:(test,test)
+                // change to ()
+                return "'"+ sep + udef_st  + name + '(' +  args + "))"+sep+"'";
+            }
+            // raw.. - :raw modifier..
+            return "'"+ sep + udef_st  + name + ")"+sep+"'";
+            
+        };
+        var body;
+        // branched to use + in gecko and [].join() in others
+        if(Roo.isGecko){
+            body = "tpl.compiled = function(values, parent){  with(values) { return '" +
+                   tpl.body.replace(/(\r\n|\n)/g, '\\n').replace(/'/g, "\\'").replace(this.re, fn) +
+                    "';};};";
+        }else{
+            body = ["tpl.compiled = function(values, parent){  with (values) { return ['"];
+            body.push(tpl.body.replace(/(\r\n|\n)/g,
+                            '\\n').replace(/'/g, "\\'").replace(this.re, fn));
+            body.push("'].join('');};};");
+            body = body.join('');
+        }
+        
+        Roo.debug && Roo.log(body.replace(/\\n/,'\n'));
+       
+        /** eval:var:tpl eval:var:fm eval:var:useF eval:var:undef  */
+        eval(body);
+        
+        return this;
+    },
+
+    applyTemplate : function(values){
+        return this.master.compiled.call(this, values, {});
+        //var s = this.subs;
+    },
+
+    apply : function(){
+        return this.applyTemplate.apply(this, arguments);
+    }
+
+ });
+
+Roo.XTemplate.from = function(el){
+    el = Roo.getDom(el);
+    return new Roo.XTemplate(el.value || el.innerHTML);
+};/*
+ * Original code for Roojs - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.XComponent
+ * A delayed Element creator...
+ * Or a way to group chunks of interface together.
+ * 
+ * Mypart.xyx = new Roo.XComponent({
+
+    parent : 'Mypart.xyz', // empty == document.element.!!
+    order : '001',
+    name : 'xxxx'
+    region : 'xxxx'
+    disabled : function() {} 
+     
+    tree : function() { // return an tree of xtype declared components
+        var MODULE = this;
+        return 
+        {
+            xtype : 'NestedLayoutPanel',
+            // technicall
+        }
+     ]
+ *})
+ *
+ *
+ * It can be used to build a big heiracy, with parent etc.
+ * or you can just use this to render a single compoent to a dom element
+ * MYPART.render(Roo.Element | String(id) | dom_element )
+ * 
+ * @extends Roo.util.Observable
+ * @constructor
+ * @param cfg {Object} configuration of component
+ * 
+ */
+Roo.XComponent = function(cfg) {
+    Roo.apply(this, cfg);
+    this.addEvents({ 
+        /**
+	     * @event built
+	     * Fires when this the componnt is built
+	     * @param {Roo.XComponent} c the component
+	     */
+        'built' : true
+        
+    });
+    this.region = this.region || 'center'; // default..
+    Roo.XComponent.register(this);
+    this.modules = false;
+    this.el = false; // where the layout goes..
+    
+    
+}
+Roo.extend(Roo.XComponent, Roo.util.Observable, {
+    /**
+     * @property el
+     * The created element (with Roo.factory())
+     * @type {Roo.Layout}
+     */
+    el  : false,
+    
+    /**
+     * @property el
+     * for BC  - use el in new code
+     * @type {Roo.Layout}
+     */
+    panel : false,
+    
+    /**
+     * @property layout
+     * for BC  - use el in new code
+     * @type {Roo.Layout}
+     */
+    layout : false,
+    
+     /**
+     * @cfg {Function|boolean} disabled
+     * If this module is disabled by some rule, return true from the funtion
+     */
+    disabled : false,
+    
+    /**
+     * @cfg {String} parent 
+     * Name of parent element which it get xtype added to..
+     */
+    parent: false,
+    
+    /**
+     * @cfg {String} order
+     * Used to set the order in which elements are created (usefull for multiple tabs)
+     */
+    
+    order : false,
+    /**
+     * @cfg {String} name
+     * String to display while loading.
+     */
+    name : false,
+    /**
+     * @cfg {String} region
+     * Region to render component to (defaults to center)
+     */
+    region : 'center',
+    
+    /**
+     * @cfg {Array} items
+     * A single item array - the first element is the root of the tree..
+     * It's done this way to stay compatible with the Xtype system...
+     */
+    items : false,
+    
+    /**
+     * @property _tree
+     * The method that retuns the tree of parts that make up this compoennt 
+     * @type {function}
+     */
+    _tree  : false,
+    
+     /**
+     * render
+     * render element to dom or tree
+     * @param {Roo.Element|String|DomElement} optional render to if parent is not set.
+     */
+    
+    render : function(el)
+    {
+        
+        el = el || false;
+        var hp = this.parent ? 1 : 0;
+        
+        if (!el && typeof(this.parent) == 'string' && this.parent.substring(0,1) == '#') {
+            // if parent is a '#.....' string, then let's use that..
+            var ename = this.parent.substr(1)
+            this.parent = false;
+            el = Roo.get(ename);
+            if (!el) {
+                Roo.log("Warning - element can not be found :#" + ename );
+                return;
+            }
+        }
+        
+        
+        if (!this.parent) {
+            
+            el = el ? Roo.get(el) : false; 	
+            
+            // it's a top level one..
+            this.parent =  {
+                el : new Roo.BorderLayout(el || document.body, {
+                
+                     center: {
+                         titlebar: false,
+                         autoScroll:false,
+                         closeOnTab: true,
+                         tabPosition: 'top',
+                          //resizeTabs: true,
+                         alwaysShowTabs: el && hp? false :  true,
+                         hideTabs: el || !hp ? true :  false,
+                         minTabWidth: 140
+                     }
+                 })
+            }
+        }
+        
+		if (!this.parent.el) {
+			// probably an old style ctor, which has been disabled.
+			return;
+			
+		}
+		// The 'tree' method is  '_tree now' 
+            
+        var tree = this._tree ? this._tree() : this.tree();
+        tree.region = tree.region || this.region;
+        this.el = this.parent.el.addxtype(tree);
+        this.fireEvent('built', this);
+        
+        this.panel = this.el;
+        this.layout = this.panel.layout;
+		this.parentLayout = this.parent.layout  || false;  
+         
+    }
+    
+});
+
+Roo.apply(Roo.XComponent, {
+    /**
+     * @property  hideProgress
+     * true to disable the building progress bar.. usefull on single page renders.
+     * @type Boolean
+     */
+    hideProgress : false,
+    /**
+     * @property  buildCompleted
+     * True when the builder has completed building the interface.
+     * @type Boolean
+     */
+    buildCompleted : false,
+     
+    /**
+     * @property  topModule
+     * the upper most module - uses document.element as it's constructor.
+     * @type Object
+     */
+     
+    topModule  : false,
+      
+    /**
+     * @property  modules
+     * array of modules to be created by registration system.
+     * @type {Array} of Roo.XComponent
+     */
+    
+    modules : [],
+    /**
+     * @property  elmodules
+     * array of modules to be created by which use #ID 
+     * @type {Array} of Roo.XComponent
+     */
+     
+    elmodules : [],
+
+    
+    /**
+     * Register components to be built later.
+     *
+     * This solves the following issues
+     * - Building is not done on page load, but after an authentication process has occured.
+     * - Interface elements are registered on page load
+     * - Parent Interface elements may not be loaded before child, so this handles that..
+     * 
+     *
+     * example:
+     * 
+     * MyApp.register({
+          order : '000001',
+          module : 'Pman.Tab.projectMgr',
+          region : 'center',
+          parent : 'Pman.layout',
+          disabled : false,  // or use a function..
+        })
+     
+     * * @param {Object} details about module
+     */
+    register : function(obj) {
+		
+        Roo.XComponent.event.fireEvent('register', obj);
+        switch(typeof(obj.disabled) ) {
+                
+            case 'undefined':
+                break;
+            
+            case 'function':
+                if ( obj.disabled() ) {
+                        return;
+                }
+                break;
+            
+            default:
+                if (obj.disabled) {
+                        return;
+                }
+                break;
+        }
+		
+        this.modules.push(obj);
+         
+    },
+    /**
+     * convert a string to an object..
+     * eg. 'AAA.BBB' -> finds AAA.BBB
+
+     */
+    
+    toObject : function(str)
+    {
+        if (!str || typeof(str) == 'object') {
+            return str;
+        }
+        if (str.substring(0,1) == '#') {
+            return str;
+        }
+
+        var ar = str.split('.');
+        var rt, o;
+        rt = ar.shift();
+            /** eval:var:o */
+        try {
+            eval('if (typeof ' + rt + ' == "undefined"){ o = false;} o = ' + rt + ';');
+        } catch (e) {
+            throw "Module not found : " + str;
+        }
+        
+        if (o === false) {
+            throw "Module not found : " + str;
+        }
+        Roo.each(ar, function(e) {
+            if (typeof(o[e]) == 'undefined') {
+                throw "Module not found : " + str;
+            }
+            o = o[e];
+        });
+        
+        return o;
+        
+    },
+    
+    
+    /**
+     * move modules into their correct place in the tree..
+     * 
+     */
+    preBuild : function ()
+    {
+        var _t = this;
+        Roo.each(this.modules , function (obj)
+        {
+            Roo.XComponent.event.fireEvent('beforebuild', obj);
+            
+            var opar = obj.parent;
+            try { 
+                obj.parent = this.toObject(opar);
+            } catch(e) {
+                Roo.log("parent:toObject failed: " + e.toString());
+                return;
+            }
+            
+            if (!obj.parent) {
+                Roo.debug && Roo.log("GOT top level module");
+                Roo.debug && Roo.log(obj);
+                obj.modules = new Roo.util.MixedCollection(false, 
+                    function(o) { return o.order + '' }
+                );
+                this.topModule = obj;
+                return;
+            }
+			// parent is a string (usually a dom element name..)
+            if (typeof(obj.parent) == 'string') {
+                this.elmodules.push(obj);
+                return;
+            }
+            if (obj.parent.constructor != Roo.XComponent) {
+                Roo.log("Warning : Object Parent is not instance of XComponent:" + obj.name)
+            }
+            if (!obj.parent.modules) {
+                obj.parent.modules = new Roo.util.MixedCollection(false, 
+                    function(o) { return o.order + '' }
+                );
+            }
+            if (obj.parent.disabled) {
+                obj.disabled = true;
+            }
+            obj.parent.modules.add(obj);
+        }, this);
+    },
+    
+     /**
+     * make a list of modules to build.
+     * @return {Array} list of modules. 
+     */ 
+    
+    buildOrder : function()
+    {
+        var _this = this;
+        var cmp = function(a,b) {   
+            return String(a).toUpperCase() > String(b).toUpperCase() ? 1 : -1;
+        };
+        if ((!this.topModule || !this.topModule.modules) && !this.elmodules.length) {
+            throw "No top level modules to build";
+        }
+        
+        // make a flat list in order of modules to build.
+        var mods = this.topModule ? [ this.topModule ] : [];
+		
+        
+	// elmodules (is a list of DOM based modules )
+        Roo.each(this.elmodules, function(e) {
+            mods.push(e);
+            if (!this.topModule &&
+                typeof(e.parent) == 'string' &&
+                e.parent.substring(0,1) == '#' &&
+                Roo.get(e.parent.substr(1))
+               ) {
+                
+                _this.topModule = e;
+            }
+            
+        });
+
+        
+        // add modules to their parents..
+        var addMod = function(m) {
+            Roo.debug && Roo.log("build Order: add: " + m.name);
+                
+            mods.push(m);
+            if (m.modules && !m.disabled) {
+                Roo.debug && Roo.log("build Order: " + m.modules.length + " child modules");
+                m.modules.keySort('ASC',  cmp );
+                Roo.debug && Roo.log("build Order: " + m.modules.length + " child modules (after sort)");
+    
+                m.modules.each(addMod);
+            } else {
+                Roo.debug && Roo.log("build Order: no child modules");
+            }
+            // not sure if this is used any more..
+            if (m.finalize) {
+                m.finalize.name = m.name + " (clean up) ";
+                mods.push(m.finalize);
+            }
+            
+        }
+        if (this.topModule && this.topModule.modules) { 
+            this.topModule.modules.keySort('ASC',  cmp );
+            this.topModule.modules.each(addMod);
+        } 
+        return mods;
+    },
+    
+     /**
+     * Build the registered modules.
+     * @param {Object} parent element.
+     * @param {Function} optional method to call after module has been added.
+     * 
+     */ 
+   
+    build : function() 
+    {
+        
+        this.preBuild();
+        var mods = this.buildOrder();
+      
+        //this.allmods = mods;
+        //Roo.debug && Roo.log(mods);
+        //return;
+        if (!mods.length) { // should not happen
+            throw "NO modules!!!";
+        }
+        
+        
+        var msg = "Building Interface...";
+        // flash it up as modal - so we store the mask!?
+        if (!this.hideProgress) {
+            Roo.MessageBox.show({ title: 'loading' });
+            Roo.MessageBox.show({
+               title: "Please wait...",
+               msg: msg,
+               width:450,
+               progress:true,
+               closable:false,
+               modal: false
+              
+            });
+        }
+        var total = mods.length;
+        
+        var _this = this;
+        var progressRun = function() {
+            if (!mods.length) {
+                Roo.debug && Roo.log('hide?');
+                if (!this.hideProgress) {
+                    Roo.MessageBox.hide();
+                }
+                Roo.XComponent.event.fireEvent('buildcomplete', _this.topModule);
+                
+                // THE END...
+                return false;   
+            }
+            
+            var m = mods.shift();
+            
+            
+            Roo.debug && Roo.log(m);
+            // not sure if this is supported any more.. - modules that are are just function
+            if (typeof(m) == 'function') { 
+                m.call(this);
+                return progressRun.defer(10, _this);
+            } 
+            
+            
+            msg = "Building Interface " + (total  - mods.length) + 
+                    " of " + total + 
+                    (m.name ? (' - ' + m.name) : '');
+			Roo.debug && Roo.log(msg);
+            if (!this.hideProgress) { 
+                Roo.MessageBox.updateProgress(  (total  - mods.length)/total, msg  );
+            }
+            
+         
+            // is the module disabled?
+            var disabled = (typeof(m.disabled) == 'function') ?
+                m.disabled.call(m.module.disabled) : m.disabled;    
+            
+            
+            if (disabled) {
+                return progressRun(); // we do not update the display!
+            }
+            
+            // now build 
+            
+			
+			
+            m.render();
+            // it's 10 on top level, and 1 on others??? why...
+            return progressRun.defer(10, _this);
+             
+        }
+        progressRun.defer(1, _this);
+     
+        
+        
+    },
+	
+	
+	/**
+	 * Event Object.
+	 *
+	 *
+	 */
+	event: false, 
+    /**
+	 * wrapper for event.on - aliased later..  
+	 * Typically use to register a event handler for register:
+	 *
+	 * eg. Roo.XComponent.on('register', function(comp) { comp.disable = true } );
+	 *
+	 */
+    on : false
+   
+    
+    
+});
+
+Roo.XComponent.event = new Roo.util.Observable({
+		events : { 
+			/**
+			 * @event register
+			 * Fires when an Component is registered,
+			 * set the disable property on the Component to stop registration.
+			 * @param {Roo.XComponent} c the component being registerd.
+			 * 
+			 */
+			'register' : true,
+            /**
+			 * @event beforebuild
+			 * Fires before each Component is built
+			 * can be used to apply permissions.
+			 * @param {Roo.XComponent} c the component being registerd.
+			 * 
+			 */
+			'beforebuild' : true,
+			/**
+			 * @event buildcomplete
+			 * Fires on the top level element when all elements have been built
+			 * @param {Roo.XComponent} the top level component.
+			 */
+			'buildcomplete' : true
+			
+		}
+});
+
+Roo.XComponent.on = Roo.XComponent.event.on.createDelegate(Roo.XComponent.event); 
+ 

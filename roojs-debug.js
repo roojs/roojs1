@@ -24209,6 +24209,10 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
         this.setStore(this.store, true);
     }
     Roo.View.superclass.constructor.call(this);
+    
+    
+     
+    
 };
 
 Roo.extend(Roo.View, Roo.util.Observable, {
@@ -24266,6 +24270,24 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     getEl : function(){
         return this.el;
     },
+    
+    render : function()
+    {
+        if (this.footer && this.footer.xtype) {
+         
+         
+            Roo.log("this.el.parentNode()");
+            Roo.log(this.el.dom );
+            if (!this.wrapEl) {
+                this.wrapEl = this.el.wrap();
+            }
+            this.footer.dataSource = this.store
+            this.footer.container = this.wrapEl;
+            this.footer = Roo.factory(this.footer, Roo);
+        }
+
+    }
+    
 
     /**
      * Refreshes the view. - called by datachanged on the store. - do not call directly.
@@ -48763,12 +48785,7 @@ Roo.ContentPanel = function(el, config, content){
     }
     // handle view.xtype
     
-    if (this.view && typeof(this.view.xtype) != 'undefined') {
-        this.view.el = this.el.appendChild(document.createElement("div"));
-        this.view = Roo.factory(this.view);
-        this.view.render && this.view.render(false, ''); // render blank..
-    }
-    
+ 
     
     
     this.addEvents({
@@ -48804,6 +48821,15 @@ Roo.ContentPanel = function(el, config, content){
         
         
     });
+    
+    if (this.view && typeof(this.view.xtype) != 'undefined') {
+        this.view.el = this.el.appendChild(document.createElement("div"));
+        this.view = Roo.factory(this.view); 
+        this.view.render && this.on('render', function() { this.view.render(false, ''); }, this) // render blank..
+    }
+    
+    
+    
     if(this.autoScroll){
         this.resizeEl.setStyle("overflow", "auto");
     } else {
