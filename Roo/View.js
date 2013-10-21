@@ -59,7 +59,7 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
         this.tpl = depreciated_tpl;
         Roo.apply(this, depreciated_config);
     }
-    this.wrapEla = this.el.wrap();
+    var wrapEla = this.el.wrap().wrap();
     ///this.el = this.wrapEla.appendChild(document.createElement("div"));
     
     
