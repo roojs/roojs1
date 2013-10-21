@@ -25,6 +25,12 @@ viewpanel = new Roo.XComponent({
                     if(_self.active && _self.view){
                         _this.view = this.view;
                     }
+                },
+                render : function (_self)
+                {
+                    _this.panel = _self;
+                    
+                    
                 }
             },
             items : [
