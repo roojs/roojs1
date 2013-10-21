@@ -161,7 +161,7 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
      if ( this.footer && this.footer.xtype) {
            
         
-        var fctr = this.wrapEla.appendChild(document.createElement("div"));
+        var fctr = this.wrapEl.appendChild(document.createElement("div"));
         
         this.footer.dataSource = this.store
         this.footer.container = fctr;
