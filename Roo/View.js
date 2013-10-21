@@ -215,6 +215,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     
     render : function(a,b, panel)
     {
+        Roo.log('render');
         if (panel && this.footer && this.footer.xtype) {
          
          
