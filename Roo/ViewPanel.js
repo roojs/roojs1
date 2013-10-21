@@ -46,9 +46,9 @@ Roo.ViewPanel = function(view, config){
     //this.grid.getGridEl().replaceClass("x-layout-inactive-content", "x-layout-component-panel");
 };
 
-Roo.extend(Roo.GridPanel, Roo.ContentPanel, {
+Roo.extend(Roo.ViewPanel, Roo.ContentPanel, {
     getId : function(){
-        return this.grid.id;
+        return this.view.id;
     },
     
     /**
@@ -56,7 +56,7 @@ Roo.extend(Roo.GridPanel, Roo.ContentPanel, {
      * @return {Roo.grid.Grid} 
      */
     getGrid : function(){
-        return this.grid;    
+        return this.view;    
     },
     
     setSize : function(width, height){
