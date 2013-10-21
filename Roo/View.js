@@ -399,12 +399,15 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      */
     onBeforeLoad : function()
     {
-        this.el.update("");
+        this.el.update("");Roo.log('in?');
+        Roo.log('in')
+        Roo.log(this.el.dom.offsetParent.clientHeight);
+         Roo.log(this.el);
         this.el.mask(this.mask ? this.mask : "Loading" ); 
     },
     onLoad : function ()
     {
-        Roo.log('in?');
+        
         this.el.unmask();
     },
     
