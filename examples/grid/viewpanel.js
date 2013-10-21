@@ -73,7 +73,7 @@ Roo.onReady(function(){
     
 
     // create the editor grid
-    var grid = new Roo.grid.Grid('view', {
+    var grid = new Roo.ViewPanel('view', {
         ds: ds,
         cm: cm,
         selModel: new Roo.grid.RowSelectionModel({singleSelect:true}),
