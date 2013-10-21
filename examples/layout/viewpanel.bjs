@@ -6,9 +6,6 @@
     "path": "/home/chris/gitlive/roojs1/examples/layout/viewpanel.bjs",
     "items": [
         {
-            "listeners": {
-                "render": "function (_self)\n{\n    Roo.log(_self);\n    _this.view = _self;\n}"
-            },
             "xtype": "ContentPanel",
             "|xns": "Roo",
             "items": [
