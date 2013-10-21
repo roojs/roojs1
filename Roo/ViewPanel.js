@@ -10,7 +10,7 @@
  */
  
 /**
- * @class Roo.grid.EditorGrid
+ * @class Roo.grid.ViewPanel
  * @extends Roo.grid.Grid
  * Class for creating and editable grid.
  * @param {String/HTMLElement/Roo.Element} container The element into which this grid will be rendered - 
