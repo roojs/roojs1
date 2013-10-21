@@ -61,10 +61,17 @@ Roo.onReady(function(){
         remoteSort : true,
         
         // the return will be XML, so lets set up a reader
-        reader: new Roo.data.XmlReader({
-               // records will have a "plant" tag
-               record: 'plant'
-           }, Plant)
+        reader: new Roo.data.JsonReader({
+            root: 'topics',
+            totalProperty: 'totalCount',
+            id: 'post_id'
+        }, [
+            {name: 'title', mapping: 'topic_title'},
+            {name: 'author', mapping: 'author'},
+            {name: 'totalPosts', mapping: 'topic_replies', type: 'int'},
+            {name: 'lastPost', mapping: 'post_time', type: 'date', dateFormat: 'timestamp'},
+            {name: 'excerpt', mapping: 'post_text'}
+        ])
     });
 
     // create the editor grid
