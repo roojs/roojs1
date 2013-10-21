@@ -25,9 +25,12 @@
                             "*prop": "tpl"
                         },
                         {
-                            "|xns": "Roo.data",
-                            "xtype": "Store",
+                            "listeners": {
+                                "beforeload": "function (_self, o)\n{\n    o.params = o.params || {};\n}"
+                            },
                             "*prop": "store",
+                            "xtype": "Store",
+                            "|xns": "Roo.data",
                             "items": [
                                 {
                                     "|xns": "Roo.data",

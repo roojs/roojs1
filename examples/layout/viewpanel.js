@@ -33,6 +33,12 @@ viewpanel = new Roo.XComponent({
                     store : {
                         xtype: 'Store',
                         xns: Roo.data,
+                        listeners : {
+                            beforeload : function (_self, o)
+                            {
+                                o.params = o.params || {};
+                            }
+                        },
                         proxy : {
                             xtype: 'HttpProxy',
                             xns: Roo.data
