@@ -37,7 +37,7 @@ Roo.onReady(function(){
                allowBlank: false
            })) */
         }]);
-
+    Roo.log(cm);
     // by default columns are sortable
     cm.defaultSortable = true;
 
