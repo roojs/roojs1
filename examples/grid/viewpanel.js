@@ -36,44 +36,6 @@ Roo.onReady(function(){
            editor: new Ed(new fm.TextField({
                allowBlank: false
            })) */
-        },{
-           header: "Light",
-           dataIndex: 'light',
-           width: 130,
-           editor: new Ed(new Roo.form.ComboBox({
-               typeAhead: true,
-               triggerAction: 'all',
-               transform:'light',
-               lazyRender:true
-            }))
-        },{
-           header: "Price",
-           dataIndex: 'price',
-           width: 70,
-           align: 'right',
-           renderer: 'usMoney',
-           editor: new Ed(new fm.NumberField({
-               allowBlank: false,
-               allowNegative: false,
-               maxValue: 10
-           }))
-        },{
-           header: "Available",
-           dataIndex: 'availDate',
-           width: 95,
-           renderer: formatDate,
-           editor: new Ed(new fm.DateField({
-                format: 'm/d/y',
-                minValue: '01/01/06',
-                disabledDays: [0, 6],
-                disabledDaysText: 'Plants are not available on the weekends'
-            }))
-        },{
-           header: "Indoor?",
-           dataIndex: 'indoor',
-           width: 55,
-           renderer: formatBoolean,
-           editor: new Ed(new fm.Checkbox())
         }]);
 
     // by default columns are sortable
