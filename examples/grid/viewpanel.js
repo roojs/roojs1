@@ -30,7 +30,7 @@ Roo.onReady(function(){
     // the data store (created below)
     var cm = new Roo.grid.ColumnModel([{
            header: "Common Name",
-           dataIndex: 'common',
+           dataIndex: 'url',
            width: 220  /*,
            
            editor: new Ed(new fm.TextField({
