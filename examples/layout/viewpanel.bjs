@@ -21,7 +21,20 @@
                         },
                         {
                             "xtype": "ContentPanel",
-                            "|xns": "Roo"
+                            "|xns": "Roo",
+                            "items": [
+                                {
+                                    "|xns": "Roo",
+                                    "xtype": "View",
+                                    "items": [
+                                        {
+                                            "|xns": "Roo",
+                                            "xtype": "Template",
+                                            "*prop": "tpl"
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 }
