@@ -100,7 +100,7 @@ Roo.onReady(function(){
     
     var gridHead = grid.getView().getHeaderPanel(true);
     var tb = new Roo.Toolbar(gridHead, [{
-        text: 'Add Plant',
+        text: 'Add new',
         handler : function(){
             Roo.log('clicked');
         }
