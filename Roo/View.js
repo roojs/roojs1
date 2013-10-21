@@ -228,7 +228,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
             this.footer = Roo.factory(this.footer, Roo);
         }
 
-    }
+    },
     
 
     /**
