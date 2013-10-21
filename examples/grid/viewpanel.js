@@ -2,7 +2,7 @@
 
 // Auto generated file - created by app.Builder.js- do not edit directly (at present!)
 
-Pman.Tab.Members = new Roo.XComponent({
+var viewpanel = new Roo.XComponent({
     part     :  ["Hebe","Members"],
     order    : '001-Pman.Tab.Members',
     region   : 'center',
