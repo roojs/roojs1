@@ -19,8 +19,8 @@
  * @param {Object} dataSource The data model to bind to
  * @param {Object} colModel The column model with info about this grid's columns
  */
-Roo.grid.EditorGrid = function(container, config){
-    Roo.grid.EditorGrid.superclass.constructor.call(this, container, config);
+Roo.grid.ViewPanel = function(container, config){
+    Roo.grid.ViewPanel.superclass.constructor.call(this, container, config);
     this.getGridEl().addClass("xedit-grid");
 
     if(!this.selModel){
@@ -83,3 +83,8 @@ Roo.grid.EditorGrid = function(container, config){
     this.on("bodyscroll", this.stopEditing,  this);
     this.on(this.clicksToEdit == 1 ? "cellclick" : "celldblclick", this.onCellDblClick,  this);
 };
+
+
+Roo.extend(Roo.grid.ViewPanel, Roo.grid.Grid, {
+    
+});
