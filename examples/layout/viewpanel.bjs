@@ -40,7 +40,7 @@
                                             "xtype": "Fill"
                                         },
                                         {
-                                            "text": "ADDDDDDDDDDD",
+                                            "text": "Reload",
                                             "xtype": "Button",
                                             "|xns": "Roo.Toolbar"
                                         }
