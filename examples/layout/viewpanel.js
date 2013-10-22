@@ -72,7 +72,7 @@ viewpanel = new Roo.XComponent({
                                 xns: Roo,
                                 html : '<div class="thumb-wrap" > ' + 
                                   
-                                  'test'+
+                                  '{name}'+
                                 
                                 '</div>'
                             },

@@ -62,7 +62,7 @@
                                         {
                                             "*prop": "tpl",
                                             "xtype": "Template",
-                                            "|html": "'<div class=\"thumb-wrap\" > ' + \n  \n  'test'+\n\n'</div>'",
+                                            "|html": "'<div class=\"thumb-wrap\" > ' + \n  \n  '{name}'+\n\n'</div>'",
                                             "|xns": "Roo"
                                         },
                                         {
