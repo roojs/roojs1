@@ -57,13 +57,7 @@
                                             "*prop": "footer",
                                             "pageSize": 20,
                                             "xtype": "PagingToolbar",
-                                            "|xns": "Roo",
-                                            "items": [
-                                                {
-                                                    "|xns": "Roo.Toolbar",
-                                                    "xtype": "Button"
-                                                }
-                                            ]
+                                            "|xns": "Roo"
                                         },
                                         {
                                             "*prop": "tpl",
