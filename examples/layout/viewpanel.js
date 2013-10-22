@@ -47,6 +47,10 @@ viewpanel = new Roo.XComponent({
                             xns: Roo,
                             items : [
                                 {
+                                    xtype: 'Fill',
+                                    xns: Roo.Toolbar
+                                },
+                                {
                                     xtype: 'Button',
                                     xns: Roo.Toolbar,
                                     text : "ADDDDDDDDDDD"
