@@ -61,8 +61,8 @@
                                         },
                                         {
                                             "*prop": "tpl",
-                                            "|html": "'<div class=\"thumb-wrap\" > ' + \n  \n  '<div ext:qtip=\"test\" class=\"thumb\"><img  src=\"'+ baseURL + '/Roo/Fax.jpg?_id={id}&thumb=120.jpg\" class=\"thumb-img\"></div>'+\n\n'</div>'",
                                             "xtype": "Template",
+                                            "|html": "'<div class=\"thumb-wrap\" > ' + \n  \n  'test'+\n\n'</div>'",
                                             "|xns": "Roo"
                                         },
                                         {

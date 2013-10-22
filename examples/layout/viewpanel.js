@@ -72,7 +72,7 @@ viewpanel = new Roo.XComponent({
                                 xns: Roo,
                                 html : '<div class="thumb-wrap" > ' + 
                                   
-                                  '<div ext:qtip="test" class="thumb"><img  src="'+ baseURL + '/Roo/Fax.jpg?_id={id}&thumb=120.jpg" class="thumb-img"></div>'+
+                                  'test'+
                                 
                                 '</div>'
                             },
