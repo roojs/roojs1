@@ -24117,7 +24117,9 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
         this.tpl = depreciated_tpl;
         Roo.apply(this, depreciated_config);
     }
-     
+    this.wrapEl  = this.el.wrap().wrap();
+    ///this.el = this.wrapEla.appendChild(document.createElement("div"));
+    
     
     if(typeof(this.tpl) == "string"){
         this.tpl = new Roo.Template(this.tpl);
@@ -24129,7 +24131,8 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
     
     this.tpl.compile();
    
-
+  
+    
      
     /** @private */
     this.addEvents({
@@ -24212,19 +24215,24 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
         this.store = Roo.factory(this.store, Roo.data);
         this.setStore(this.store, true);
     }
-    Roo.View.superclass.constructor.call(this);
     
-     if ( this.footer && this.footer.xtype) {
+    if ( this.footer && this.footer.xtype) {
            
-        this.wrapEl = this.el.wrap();
-        var fctr = this.wrapEl.appendChild(document.createElement("div"));
+         var fctr = this.wrapEl.appendChild(document.createElement("div"));
         
         this.footer.dataSource = this.store
         this.footer.container = fctr;
         this.footer = Roo.factory(this.footer, Roo);
+        fctr.insertFirst(this.el);
+        
+        // this is a bit insane - as the paging toolbar seems to detach the el..
+//        dom.parentNode.parentNode.parentNode
+         // they get detached?
     }
     
-     
+    
+    Roo.View.superclass.constructor.call(this);
+    
     
 };
 
@@ -24281,7 +24289,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      * @return {Roo.Element}
      */
     getEl : function(){
-        return this.el;
+        return this.wrapEl;
     },
     
     
@@ -40736,10 +40744,10 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     insertTag : function(tg)
     {
         // could be a bit smarter... -> wrap the current selected tRoo..
-        if (tg.toLowerCase() == 'span') {
+        if (tg.toLowerCase() == 'span' || tg.toLowerCase() == 'code') {
             
             range = this.createRange(this.getSelection());
-            var wrappingNode = this.doc.createElement("span");
+            var wrappingNode = this.doc.createElement(tg.toLowerCase());
             wrappingNode.appendChild(range.extractContents());
             range.insertNode(wrappingNode);
 
@@ -48843,13 +48851,10 @@ Roo.ContentPanel = function(el, config, content){
     
     Roo.ContentPanel.superclass.constructor.call(this);
     
-        if (this.view && typeof(this.view.xtype) != 'undefined') {
+    if (this.view && typeof(this.view.xtype) != 'undefined') {
         this.view.el = this.el.appendChild(document.createElement("div"));
         this.view = Roo.factory(this.view); 
-        this.view.render && this.on('render', 
-                function() { 
-                        this.view.render(false, '',this); 
-                }, this); // render blank..
+        this.view.render  &&  this.view.render(false, '');  
     }
     
     
