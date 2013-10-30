@@ -639,7 +639,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
         if (tg.toLowerCase() == 'span' || tg.toLowerCase() == 'code') {
             
             range = this.createRange(this.getSelection());
-            var wrappingNode = this.doc.createElement("span");
+            var wrappingNode = this.doc.createElement(tg.toLowerCase());
             wrappingNode.appendChild(range.extractContents());
             range.insertNode(wrappingNode);
 
