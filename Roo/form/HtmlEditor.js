@@ -636,7 +636,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
     insertTag : function(tg)
     {
         // could be a bit smarter... -> wrap the current selected tRoo..
-        if (tg.toLowerCase() == 'span') {
+        if (tg.toLowerCase() == 'span' || tg.toLowerCase() == 'code') {
             
             range = this.createRange(this.getSelection());
             var wrappingNode = this.doc.createElement("span");
