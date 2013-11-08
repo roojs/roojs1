@@ -221,7 +221,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
             return;
         }
         var rootURL = Roo.BLANK_IMAGE_URL.replace(/\/gray\/s\.gif$/, '');
-        
+        Roo.log(rootURL);
         Roo.ux.Lightbox.css = Roo.util.CSS.createStyleSheet( {
             '.roo-lightbox' : {
                 position: 'absolute',
