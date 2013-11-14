@@ -299,7 +299,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         this.setValue(s);
         this.isConfirmed = false;
         Roo.form.Signature.superclass.reset.call(this);
-    },
+    }, 
     test : function(){
 //        Roo.log(this.signPanel.dom.contentWindow.up())
     },
