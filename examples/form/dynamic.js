@@ -482,6 +482,41 @@ Roo.onReady(function(){
                 value : '1',
                 width:'auto'
             },
+            
+            {
+            
+                xtype: 'Radio',
+                xns : Roo.form,
+                fieldLabel: 'A test radio box',
+                boxLabel:'Test1',
+                name:'radiotest',
+                inputValue : '1',
+                width:'auto'
+            },
+              {
+            
+                xtype: 'Radio',
+                xns : Roo.form,
+                fieldLabel: 'A test radio box2',
+                boxLabel:'Test1',
+                name:'radiotest',
+                inputValue : '2',
+                checked: true,
+                width:'auto'
+            },
+            {
+            
+                xtype: 'Checkbox',
+                xns : Roo.form,
+               fieldLabel: 'A checkbox',
+                boxLabel:'RooJS v1.1.1',
+                name:'extuser',
+                inputValue : '1',
+                value : '1',
+                width:'auto'
+            },
+            
+            
             {
                 xtype : 'DisplayField',
                 xns : Roo.form,

@@ -30,5 +30,36 @@ Roo.extend(Roo.form.Radio, Roo.form.Checkbox, {
      */
     getGroupValue : function(){
         return this.el.up('form').child('input[name='+this.el.dom.name+']:checked', true).value;
-    }
+    },
+    
+    
+    onRender : function(ct, position){
+        Roo.form.Checkbox.superclass.onRender.call(this, ct, position);
+        /*
+        if(this.inputValue !== undefined){
+            this.el.dom.value = this.inputValue;
+        }
+        */
+        this.wrap = this.el.wrap({cls: "x-form-check-wrap"});
+        //this.wrap = this.el.wrap({cls: 'x-menu-check-item '});
+        //var viewEl = this.wrap.createChild({ 
+        //    tag: 'img', cls: 'x-menu-item-icon', style: 'margin: 0px;' ,src : Roo.BLANK_IMAGE_URL });
+        //this.viewEl = viewEl;   
+        //this.wrap.on('click', this.onClick,  this); 
+        
+        //this.el.on('DOMAttrModified', this.setFromHidden,  this); //ff
+        //this.el.on('propertychange', this.setFromHidden,  this);  //ie
+        
+        
+        
+        if(this.boxLabel){
+            this.wrap.createChild({tag: 'label', htmlFor: this.el.id, cls: 'x-form-cb-label', html: this.boxLabel});
+        //    viewEl.on('click', this.onClick,  this); 
+        }
+         if(this.checked){
+            this.el.dom.checked =   'checked' ;
+        }
+         
+    } 
+    
 });
