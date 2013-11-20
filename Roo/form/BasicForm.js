@@ -501,6 +501,19 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 return;
             }
             var v = f.getValue();
+            if (f.inputType =='radio') {
+                if (typeof(ret[f.getName()]) = 'undefined') {
+                    ret[f.getName()] = ''; // empty..
+                }
+                
+                if (f.el.dom.checked) {
+                    v = f.el.dom.value;
+                }
+                
+                
+            }
+            
+            var v = f.getValue();
             // not sure if this supported any more..
             if ((typeof(v) == 'object') && f.getRawValue) {
                 v = f.getRawValue() ; // dates..
