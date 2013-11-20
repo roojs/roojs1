@@ -36644,14 +36644,14 @@ side          Add an error icon to the right of the field with a popup on hover
                 if(tag == 'input'){
                     return w + 2;
                 }
-                if(tag = 'textarea'){
+                if(tag == 'textarea'){
                     return w-2;
                 }
             }else if(Roo.isOpera){
                 if(tag == 'input'){
                     return w + 2;
                 }
-                if(tag = 'textarea'){
+                if(tag == 'textarea'){
                     return w-2;
                 }
             }
@@ -40110,11 +40110,11 @@ Roo.extend(Roo.form.Radio, Roo.form.Checkbox, {
     
     onRender : function(ct, position){
         Roo.form.Checkbox.superclass.onRender.call(this, ct, position);
-        /*
+        
         if(this.inputValue !== undefined){
             this.el.dom.value = this.inputValue;
         }
-        */
+         
         this.wrap = this.el.wrap({cls: "x-form-check-wrap"});
         //this.wrap = this.el.wrap({cls: 'x-menu-check-item '});
         //var viewEl = this.wrap.createChild({ 
@@ -43425,6 +43425,19 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 return;
             }
             var v = f.getValue();
+            if (f.inputType =='radio') {
+                if (typeof(ret[f.getName()]) == 'undefined') {
+                    ret[f.getName()] = ''; // empty..
+                }
+                
+                if (!f.el.dom.checked) {
+                    return;
+                    
+                }
+                v = f.el.dom.value;
+                
+            }
+            
             // not sure if this supported any more..
             if ((typeof(v) == 'object') && f.getRawValue) {
                 v = f.getRawValue() ; // dates..
