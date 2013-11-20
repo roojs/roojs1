@@ -35,11 +35,11 @@ Roo.extend(Roo.form.Radio, Roo.form.Checkbox, {
     
     onRender : function(ct, position){
         Roo.form.Checkbox.superclass.onRender.call(this, ct, position);
-        /*
+        
         if(this.inputValue !== undefined){
             this.el.dom.value = this.inputValue;
         }
-        */
+         
         this.wrap = this.el.wrap({cls: "x-form-check-wrap"});
         //this.wrap = this.el.wrap({cls: 'x-menu-check-item '});
         //var viewEl = this.wrap.createChild({ 
@@ -61,5 +61,6 @@ Roo.extend(Roo.form.Radio, Roo.form.Checkbox, {
         }
          
     } 
+    
     
 });
