@@ -497,14 +497,14 @@ side          Add an error icon to the right of the field with a popup on hover
                 if(tag == 'input'){
                     return w + 2;
                 }
-                if(tag = 'textarea'){
+                if(tag == 'textarea'){
                     return w-2;
                 }
             }else if(Roo.isOpera){
                 if(tag == 'input'){
                     return w + 2;
                 }
-                if(tag = 'textarea'){
+                if(tag == 'textarea'){
                     return w-2;
                 }
             }
