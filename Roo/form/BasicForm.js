@@ -506,14 +506,14 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                     ret[f.getName()] = ''; // empty..
                 }
                 
-                if (f.el.dom.checked) {
-                    v = f.el.dom.value;
+                if (!f.el.dom.checked) {
+                    return;
+                    
                 }
-                
+                v = f.el.dom.value;
                 
             }
             
-            var v = f.getValue();
             // not sure if this supported any more..
             if ((typeof(v) == 'object') && f.getRawValue) {
                 v = f.getRawValue() ; // dates..
