@@ -502,7 +502,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             }
             var v = f.getValue();
             if (f.inputType =='radio') {
-                if (typeof(ret[f.getName()]) = 'undefined') {
+                if (typeof(ret[f.getName()]) == 'undefined') {
                     ret[f.getName()] = ''; // empty..
                 }
                 
