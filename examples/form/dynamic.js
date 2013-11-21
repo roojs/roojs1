@@ -602,7 +602,7 @@ Roo.onReady(function(){
             listeners : {
                 confirm : function (aa)
                 {
-                    Roo.log(aa);
+                    Roo.log(aa.getImageDataURI());
                     Roo.log('in confirm');
                 }
             },
