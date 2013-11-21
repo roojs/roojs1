@@ -317,6 +317,27 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
 //        Roo.log(Roo.get(this.signPanel.dom.contentWindow.r).attr('fill', '#cfc'));
     },
     // private
+    confirmHandler : function(){
+        if(!this.getConfirmed()){
+            return false; // stops
+        }
+//        
+//        var valid = true;
+//        this.items.each(function(f){
+//            if(!f.isValid(true)){
+//                valid = false;
+//                return false;
+//            }
+//        });
+//        for(var i = 0, len = this.buttons.length; i < len; i++){
+//            var btn = this.buttons[i];
+//            if(btn.formBind === true && btn.disabled === valid){
+//                btn.setDisabled(!valid);
+//            }
+//        }
+        this.fireEvent('confirm', this);
+    },
+    // private
     // Subclasses should provide the validation implementation by overriding this
     validateValue : function(value){
         if(this.allowBlank){
