@@ -114,6 +114,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                 },
                 {
                     tag: "line",
+                    id: this.svgID + "-svg-l",
                     x1: "0", // start
                     y1: (this.height*0.8), // start set the line in 80% of height
                     x2: this.width, // end
@@ -259,10 +260,14 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     getImageDataURI : function(w, h){
         var newSvgEl = {};
         Roo.apply(newSvgEl, this.svgEl);
+        var rect = newSvgEl.select('#'+newSvgEl.id+'-r').first();
         
         newSvgEl.attr('viewBox', '0 0 '+w+' '+h);
         newSvgEl.attr('height', h);
         newSvgEl.attr('width', w);
+        
+        rect.attr('height', h);
+        rect.attr('width', w);
         
         var svg = this.svgEl.dom.outerHTML;
         var src = 'data:image/svg+xml;base64,'+window.btoa(svg);
