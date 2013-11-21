@@ -258,15 +258,13 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
      * @return {String} Image Data URI
      */
     getImageDataURI : function(w, h){
-//        var newSvgEl = {};
+        //FIXME bug.......
         var newSvgEl = this.svgEl.dom.cloneNode(true);
-//        var newSvgEl = Roo.get(a.);
+
         var rect = newSvgEl.childNodes[0];
         
-//        Roo.log(a);
         Roo.log(newSvgEl);
-        newSvgEl.removeChild(newSvgEl.childNodes[1])
-//        newSvgEl.select('#'+newSvgEl.id+'-l').first().remove()
+        newSvgEl.removeChild(newSvgEl.childNodes[1]);
         
         newSvgEl.setAttribute('viewBox', '0 0 '+w+' '+h);
         newSvgEl.setAttribute('height', h);
