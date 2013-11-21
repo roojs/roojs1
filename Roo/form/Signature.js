@@ -262,6 +262,8 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         Roo.apply(newSvgEl, this.svgEl);
         var rect = newSvgEl.select('#'+newSvgEl.id+'-r').first();
         
+        newSvgEl.select('#'+newSvgEl.id+'-l').first().remove()
+        
         newSvgEl.attr('viewBox', '0 0 '+w+' '+h);
         newSvgEl.attr('height', h);
         newSvgEl.attr('width', w);
