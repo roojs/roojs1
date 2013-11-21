@@ -100,6 +100,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         this.svgEl = this.signPanel.createChild({
               xmlns : 'http://www.w3.org/2000/svg',
               tag : 'svg',
+              id : this.svgID + "-svg",
               width: this.width,
               height: this.height,
               viewBox: '0 0 '+this.width+' '+this.height,
@@ -255,10 +256,13 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
      * 
      * @return {String} Image Data URI
      */
-    getImageDataURI : function(){
+    getImageDataURI : function(w, h){
         var newSvgEl = {};
         Roo.apply(newSvgEl, this.svgEl);
         
+        newSvgEl.attr('viewBox', '0 0 '+w+' '+h);
+        newSvgEl.attr('height', h);
+        newSvgEl.attr('width', w);
         
         var svg = this.svgEl.dom.outerHTML;
         var src = 'data:image/svg+xml;base64,'+window.btoa(svg);
