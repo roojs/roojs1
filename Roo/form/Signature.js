@@ -251,6 +251,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     },
     //public
     /**
+     * when user is clicked confirm then show this image.....
      * 
      * @return {String} Image Data URI
      */
