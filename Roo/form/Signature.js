@@ -261,18 +261,19 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
 //        var newSvgEl = {};
         var newSvgEl = this.svgEl.dom.cloneNode(true);
 //        var newSvgEl = Roo.get(a.);
-//        var rect = newSvgEl.select('#'+newSvgEl.id+'-r').first();
+        var rect = newSvgEl.childNodes[0];
         
 //        Roo.log(a);
         Roo.log(newSvgEl);
+        newSvgEl.removeChild(newSvgEl.childNodes[1])
 //        newSvgEl.select('#'+newSvgEl.id+'-l').first().remove()
         
         newSvgEl.setAttribute('viewBox', '0 0 '+w+' '+h);
         newSvgEl.setAttribute('height', h);
         newSvgEl.setAttribute('width', w);
         
-//        rect.attr('height', h);
-//        rect.attr('width', w);
+        rect.setAttribute('height', h);
+        rect.setAttribute('width', w);
         
         var svg = newSvgEl.outerHTML;
         var src = 'data:image/svg+xml;base64,'+window.btoa(svg);
