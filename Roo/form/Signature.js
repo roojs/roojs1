@@ -318,6 +318,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     },
     // private
     confirmHandler : function(){
+        Roo.log('in confirm clicked');
         if(!this.getConfirmed()){
             return false; // stops
         }
