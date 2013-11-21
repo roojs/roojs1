@@ -599,6 +599,12 @@ Roo.onReady(function(){
         new Roo.form.Signature({
             fieldLabel: 'Signature',
             name: 's',
+            listeners : {
+                confirm : function (combo)
+                {
+                    Roo.log('in confirm');
+                }
+            },
             width: 300
         })
     );
