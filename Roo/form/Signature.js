@@ -258,8 +258,8 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
      * @return {String} Image Data URI
      */
     getImageDataURI : function(w, h){
-        var newSvgEl = {};
-        Roo.apply(newSvgEl, this.svgEl);
+//        var newSvgEl = {};
+        var newSvgEl = Roo.apply({}, this.svgEl);
         var rect = newSvgEl.select('#'+newSvgEl.id+'-r').first();
         
         newSvgEl.select('#'+newSvgEl.id+'-l').first().remove()
