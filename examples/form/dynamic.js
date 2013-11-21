@@ -600,7 +600,7 @@ Roo.onReady(function(){
             fieldLabel: 'Signature',
             name: 's',
             listeners : {
-                confirm : function (aa)
+                confirm : function (_self)
                 {
                     Roo.log(this.getImageDataURI());
                     Roo.log('in confirm');
