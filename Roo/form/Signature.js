@@ -257,6 +257,8 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
      */
     getImageDataURI : function(){
         Roo.log(this.svgEl);
+        this.svgEl.setWidth(400);
+        this.svgEl.setHeight(200);
         var svg = this.svgEl.dom.outerHTML;
         var src = 'data:image/svg+xml;base64,'+window.btoa(svg);
         return src;
