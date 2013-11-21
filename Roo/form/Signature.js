@@ -242,7 +242,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
             {
                 cls : '  x-signature-btn x-signature-'+id,
                 scope: editor, // was editor...
-                handler: this.setConfirmed,
+                handler: this.confirmHandler,
                 clickEvent:'mousedown',
                 text: this.labels.confirm
             }
@@ -306,6 +306,13 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     },
     //private
     setConfirmed : function(){
+        
+        
+        
+//        Roo.log(Roo.get(this.signPanel.dom.contentWindow.r).attr('fill', '#cfc'));
+    },
+    // private
+    confirmHandler : function(){
         if(!this.getSignature()){
             return;
         }
@@ -313,15 +320,6 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         this.setValue(this.getSignature());
         this.isConfirmed = true;
         
-        
-//        Roo.log(Roo.get(this.signPanel.dom.contentWindow.r).attr('fill', '#cfc'));
-    },
-    // private
-    confirmHandler : function(){
-        Roo.log('in confirm clicked');
-        if(!this.getConfirmed()){
-            return false; // stops
-        }
         Roo.log('in confirm clicked');
 //        
 //        var valid = true;
