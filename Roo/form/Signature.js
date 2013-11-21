@@ -263,7 +263,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         var newSvgEl = Roo.get(this.svgEl.dom.cloneNode(true));
         var rect = newSvgEl.select('#'+newSvgEl.id+'-r').first();
         
-        Roo.log(newSvgEl);
+        Roo.log(a);
         
         newSvgEl.select('#'+newSvgEl.id+'-l').first().remove()
         
