@@ -274,7 +274,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
 //        rect.attr('height', h);
 //        rect.attr('width', w);
         
-        var svg = newSvgEl.dom.outerHTML;
+        var svg = newSvgEl.outerHTML;
         var src = 'data:image/svg+xml;base64,'+window.btoa(svg);
         return src;
     },
