@@ -600,8 +600,9 @@ Roo.onReady(function(){
             fieldLabel: 'Signature',
             name: 's',
             listeners : {
-                confirm : function (combo)
+                confirm : function (aa)
                 {
+                    Roo.log(aa);
                     Roo.log('in confirm');
                 }
             },
