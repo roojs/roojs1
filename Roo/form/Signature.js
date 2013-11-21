@@ -259,20 +259,20 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
      */
     getImageDataURI : function(w, h){
 //        var newSvgEl = {};
-        var a = this.svgEl.dom.cloneNode(true);
-        var newSvgEl = Roo.get(a);
-        var rect = newSvgEl.select('#'+newSvgEl.id+'-r').first();
+        var newSvgEl = this.svgEl.dom.cloneNode(true);
+//        var newSvgEl = Roo.get(a.);
+//        var rect = newSvgEl.select('#'+newSvgEl.id+'-r').first();
         
-        Roo.log(a);
+//        Roo.log(a);
         Roo.log(newSvgEl);
-        newSvgEl.select('#'+newSvgEl.id+'-l').first().remove()
+//        newSvgEl.select('#'+newSvgEl.id+'-l').first().remove()
         
-        newSvgEl.attr('viewBox', '0 0 '+w+' '+h);
-        newSvgEl.attr('height', h);
-        newSvgEl.attr('width', w);
+        newSvgEl.setAttribute('viewBox', '0 0 '+w+' '+h);
+        newSvgEl.setAttribute('height', h);
+        newSvgEl.setAttribute('width', w);
         
-        rect.attr('height', h);
-        rect.attr('width', w);
+//        rect.attr('height', h);
+//        rect.attr('width', w);
         
         var svg = newSvgEl.dom.outerHTML;
         var src = 'data:image/svg+xml;base64,'+window.btoa(svg);
