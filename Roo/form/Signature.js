@@ -260,11 +260,11 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     getImageDataURI : function(w, h){
 //        var newSvgEl = {};
         var a = this.svgEl.dom.cloneNode(true);
-        var newSvgEl = Roo.get(this.svgEl.dom.cloneNode(true));
+        var newSvgEl = Roo.get(a);
         var rect = newSvgEl.select('#'+newSvgEl.id+'-r').first();
         
         Roo.log(a);
-        
+        Roo.log(newSvgEl);
         newSvgEl.select('#'+newSvgEl.id+'-l').first().remove()
         
         newSvgEl.attr('viewBox', '0 0 '+w+' '+h);
