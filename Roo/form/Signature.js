@@ -259,7 +259,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
      */
     getImageDataURI : function(w, h){
 //        var newSvgEl = {};
-//        var a = Roo.get(this.svgEl.dom.cloneNode(true));
+        var a = this.svgEl.dom.cloneNode(true);
         var newSvgEl = Roo.get(this.svgEl.dom.cloneNode(true));
         var rect = newSvgEl.select('#'+newSvgEl.id+'-r').first();
         
