@@ -25,7 +25,7 @@ Roo.form.Signature = function(config){
          /**
          * @event confirm
          * Fires when the 'confirm' icon is pressed (add a listener to enable add button)
-	     * @param {Roo.form.ComboBox} combo This combo box
+	     * @param {Roo.form.Signature} combo This combo box
 	     */
         'confirm' : true,
         /**
@@ -312,6 +312,8 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         this.signPanel.select('#'+ this.svgID + '-svg-r', true).first().attr('fill', '#cfc');
         this.setValue(this.getSignature());
         this.isConfirmed = true;
+        
+        
 //        Roo.log(Roo.get(this.signPanel.dom.contentWindow.r).attr('fill', '#cfc'));
     },
     // private
