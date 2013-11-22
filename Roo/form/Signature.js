@@ -257,7 +257,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
      * 
      * @return {String} Image Data URI
      */
-    getImageDataURI : function(w, h){
+    getImageDataURI : function(){
         //FIXME bug.......
         var svg = this.svgEl.dom.outerHTML;
         var src = 'data:image/svg+xml;base64,'+window.btoa(svg);
