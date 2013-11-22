@@ -259,21 +259,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
      */
     getImageDataURI : function(w, h){
         //FIXME bug.......
-        var newSvgEl = this.svgEl.dom.cloneNode(true);
-
-        var rect = newSvgEl.childNodes[0];
-        
-        Roo.log(newSvgEl);
-        newSvgEl.removeChild(newSvgEl.childNodes[1]);
-        
-        newSvgEl.setAttribute('viewBox', '0 0 '+w+' '+h);
-        newSvgEl.setAttribute('height', h);
-        newSvgEl.setAttribute('width', w);
-        
-        rect.setAttribute('height', h);
-        rect.setAttribute('width', w);
-        
-        var svg = newSvgEl.outerHTML;
+        var svg = this.svgEl.dom.outerHTML;
         var src = 'data:image/svg+xml;base64,'+window.btoa(svg);
         return src;
     },
