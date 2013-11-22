@@ -25190,6 +25190,7 @@ Roo.extend(Roo.form.Radio, Roo.form.Checkbox, {
          
     } 
     
+    
 });//<script type="text/javascript">
 
 /*
@@ -30781,7 +30782,7 @@ Roo.form.Signature = function(config){
          /**
          * @event confirm
          * Fires when the 'confirm' icon is pressed (add a listener to enable add button)
-	     * @param {Roo.form.ComboBox} combo This combo box
+	     * @param {Roo.form.Signature} combo This combo box
 	     */
         'confirm' : true,
         /**
@@ -30856,6 +30857,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         this.svgEl = this.signPanel.createChild({
               xmlns : 'http://www.w3.org/2000/svg',
               tag : 'svg',
+              id : this.svgID + "-svg",
               width: this.width,
               height: this.height,
               viewBox: '0 0 '+this.width+' '+this.height,
@@ -30869,6 +30871,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
                 },
                 {
                     tag: "line",
+                    id: this.svgID + "-svg-l",
                     x1: "0", // start
                     y1: (this.height*0.8), // start set the line in 80% of height
                     x2: this.width, // end
@@ -30998,7 +31001,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
             {
                 cls : '  x-signature-btn x-signature-'+id,
                 scope: editor, // was editor...
-                handler: this.setConfirmed,
+                handler: this.confirmHandler,
                 clickEvent:'mousedown',
                 text: this.labels.confirm
             }
@@ -31007,13 +31010,14 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     },
     //public
     /**
+     * when user is clicked confirm then show this image.....
      * 
      * @return {String} Image Data URI
      */
     getImageDataURI : function(){
         var svg = this.svgEl.dom.outerHTML;
         var src = 'data:image/svg+xml;base64,'+window.btoa(svg);
-        return src;
+        return src; 
     },
     /**
      * 
@@ -31061,13 +31065,36 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
     },
     //private
     setConfirmed : function(){
+        
+        
+        
+//        Roo.log(Roo.get(this.signPanel.dom.contentWindow.r).attr('fill', '#cfc'));
+    },
+    // private
+    confirmHandler : function(){
         if(!this.getSignature()){
             return;
         }
         this.signPanel.select('#'+ this.svgID + '-svg-r', true).first().attr('fill', '#cfc');
         this.setValue(this.getSignature());
         this.isConfirmed = true;
-//        Roo.log(Roo.get(this.signPanel.dom.contentWindow.r).attr('fill', '#cfc'));
+        
+        Roo.log('in confirm clicked');
+//        
+//        var valid = true;
+//        this.items.each(function(f){
+//            if(!f.isValid(true)){
+//                valid = false;
+//                return false;
+//            }
+//        });
+//        for(var i = 0, len = this.buttons.length; i < len; i++){
+//            var btn = this.buttons[i];
+//            if(btn.formBind === true && btn.disabled === valid){
+//                btn.setDisabled(!valid);
+//            }
+//        }
+        this.fireEvent('confirm', this);
     },
     // private
     // Subclasses should provide the validation implementation by overriding this
