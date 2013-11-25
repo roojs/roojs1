@@ -100,7 +100,7 @@ var ResizableExample = {
         dynamic: true,
         draggable: true,
         resizeChild: true
-    });
+    })
 };
 
 Roo.EventManager.onDocumentReady(ResizableExample.init, ResizableExample, true);
