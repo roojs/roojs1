@@ -163,6 +163,7 @@ Roo.Resizable = function(el, config)
     }
 
     if(this.draggable){
+        Roo.log('in?');
         this.dd = this.dynamic ?
             this.el.initDD(null) : this.el.initDDProxy(null, {dragElId: this.proxy.id});
         //this.dd.setHandleElId(this.resizeChild ? this.resizeChild.id : this.el.id);
