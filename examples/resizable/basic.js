@@ -90,6 +90,40 @@ var ResizableExample = {
             dynamic: true
         });
         
+        
+        new Roo.Resizable('box1', {
+            wrap:true,
+            width: 595,
+            height: 200,
+            minWidth:20,
+            minHeight:20,
+            handles: 'all',
+            dynamic: true,
+            draggable: true
+        });
+        
+        new Roo.Resizable('box2', {
+            wrap:true,
+            width: 595,
+            height: 200,
+            minWidth:20,
+            minHeight:20,
+            handles: 'all',
+            dynamic: true,
+            draggable: true
+        });
+        
+        new Roo.Resizable('box3', {
+            wrap:true,
+            width: 595,
+            height: 200,
+            minWidth:20,
+            minHeight:20,
+            handles: 'all',
+            dynamic: true,
+            draggable: true
+        });
+        
         this.multi = new Roo.Resizable('multi-box', {
             wrap:true,
             width: 595,
@@ -99,7 +133,8 @@ var ResizableExample = {
             handles: 'all',
             dynamic: true,
             draggable: true,
-            resizeChild: true
+            resizeChild: true,
+            
         });
     },
     multi : Roo.emptyFn
