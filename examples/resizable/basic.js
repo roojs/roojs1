@@ -132,7 +132,7 @@ var ResizableExample = {
         var ids = ['box1', 'box2', 'box3'];
         
         for(var i = 1; i < 4; i++){
-            Roo.get('box'+i).destroy();
+            this['box'+i].destroy();
         }
         
         
