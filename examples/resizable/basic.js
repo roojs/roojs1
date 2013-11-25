@@ -130,7 +130,7 @@ var ResizableExample = {
             height: 200,
             minWidth:20,
             minHeight:20,
-            handles: 'all',
+            handles: 'se',
             dynamic: true,
             draggable: true,
             resizeChild: true,
