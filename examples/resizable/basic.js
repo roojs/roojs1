@@ -101,7 +101,7 @@ var ResizableExample = {
                 minWidth:20,
                 minHeight:20,
                 handles: 'se',
-                dynamic: true,
+                dynamic: false,
                 draggable: true
             });
         }
