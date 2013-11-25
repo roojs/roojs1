@@ -91,6 +91,7 @@ var ResizableExample = {
         });
         
         this.multi = new Roo.Resizable('multi-box', {
+            wrap:true,
             width: 595,
             height: 200,
             minWidth:20,
