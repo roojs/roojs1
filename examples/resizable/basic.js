@@ -90,8 +90,15 @@ var ResizableExample = {
             dynamic: true
         });
         
-        var multi = new Roo.Resizable('multi', {
-            
+        var multi = new Roo.Resizable('multi-box', {
+            width: 595,
+            height: 200,
+            minWidth:20,
+            minHeight:20,
+            handles: 'se',
+            dynamic: true,
+            draggable: true,
+            resizeChild: true
         });
     }
 };
