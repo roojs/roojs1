@@ -89,7 +89,17 @@ var ResizableExample = {
             minWidth: 50,
             dynamic: true
         });
-        this.multi;
+        
+        this.multi = new Roo.Resizable('multi-box', {
+            width: 595,
+            height: 200,
+            minWidth:20,
+            minHeight:20,
+            handles: 'all',
+            dynamic: true,
+            draggable: true,
+            resizeChild: true
+        });
     },
     multi : Roo.emptyFn
 };
