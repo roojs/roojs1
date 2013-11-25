@@ -93,8 +93,8 @@ var ResizableExample = {
         
         new Roo.Resizable('box1', {
             wrap:true,
-            width: 595,
-            height: 200,
+            width: 150,
+            height: 100,
             minWidth:20,
             minHeight:20,
             handles: 'all',
@@ -104,8 +104,8 @@ var ResizableExample = {
         
         new Roo.Resizable('box2', {
             wrap:true,
-            width: 595,
-            height: 200,
+            width: 150,
+            height: 100,
             minWidth:20,
             minHeight:20,
             handles: 'all',
@@ -115,8 +115,8 @@ var ResizableExample = {
         
         new Roo.Resizable('box3', {
             wrap:true,
-            width: 595,
-            height: 200,
+            width: 150,
+            height: 100,
             minWidth:20,
             minHeight:20,
             handles: 'all',
