@@ -121,7 +121,7 @@ var ResizableExample = {
             handles: 'se',
             dynamic: true,
             draggable: true,
-            resizeChild: true,
+            resizeChild: true
             
         });
     },
