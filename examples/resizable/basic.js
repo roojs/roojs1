@@ -106,12 +106,11 @@ var ResizableExample = {
             });
         }
         
-        for(var id in boxes){
-            var el = _t[id+'-el'];
-            if(el){
-                el.appendTo(group);
+        Roo.each(ids, function(id){
+            if(ids[id]){
+                Roo.get(id).appendTo(Roo.get('multi-box'));
             }
-        }
+        });
         
         this.multi = new Roo.Resizable('multi-box', {
             
