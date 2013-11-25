@@ -94,7 +94,7 @@ var ResizableExample = {
         var ids = ['box1', 'box2', 'box3'];
         
         for(var i = 1; i < 4; i++){
-            ids['box'+i] = new Roo.Resizable('box'+i, {
+            this['box'+i] = new Roo.Resizable('box'+i, {
                 wrap:true,
                 width: 150,
                 height: 100,
