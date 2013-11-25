@@ -187,9 +187,12 @@ Warning: Snapping and preserveRatio conflict and can not be used together.
 Warning: for obvious reasons animate and dynamic resizing can not be used together.
 <hr>
 
-<img id="custom" src="sara_and_zack.jpg" width="200" height="152" style="position:absolute;left:0;top:0;"/>
-<div style="padding:8px;border:1px solid #c3daf9;background:#d9e8fb;width:150px;text-align:center;"><button id="showMe">Show Me</button></div>
-<pre class="code"><code>var custom = new Ext.Resizable('custom', {
+
+<div style="padding:8px;border:1px solid #c3daf9;background:#d9e8fb;width:150px;text-align:center;">Boxes 1</div>
+<div style="padding:8px;border:1px solid #c3daf9;background:#d9e8fb;width:150px;text-align:center;">Boxes 2</div>
+<div style="padding:8px;border:1px solid #c3daf9;background:#d9e8fb;width:150px;text-align:center;">Boxes 3</div>
+<pre class="code">
+<code>var custom = new Ext.Resizable('custom', {
     wrap:true,
     pinned:true,
     minWidth:50,
@@ -198,7 +201,8 @@ Warning: for obvious reasons animate and dynamic resizing can not be used togeth
     dynamic:true,
     handles: 'all', // shorthand for 'n s e w ne nw se sw'
     draggable:true
-});</code></pre>
+});</code>
+</pre>
 
 </body>
 </html>
