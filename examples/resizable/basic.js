@@ -91,38 +91,27 @@ var ResizableExample = {
         });
         
         
-        new Roo.Resizable('box1', {
-            wrap:true,
-            width: 150,
-            height: 100,
-            minWidth:20,
-            minHeight:20,
-            handles: 'all',
-            dynamic: true,
-            draggable: true
-        });
+        var ids = ['box1', 'box2', 'box3'];
         
-        new Roo.Resizable('box2', {
-            wrap:true,
-            width: 150,
-            height: 100,
-            minWidth:20,
-            minHeight:20,
-            handles: 'all',
-            dynamic: true,
-            draggable: true
-        });
+        for(var i = 1; i < 4; i++){
+            ids['box'+i] = new Roo.Resizable('box'+i, {
+                wrap:true,
+                width: 150,
+                height: 100,
+                minWidth:20,
+                minHeight:20,
+                handles: 'all',
+                dynamic: true,
+                draggable: true
+            });
+        }
         
-        new Roo.Resizable('box3', {
-            wrap:true,
-            width: 150,
-            height: 100,
-            minWidth:20,
-            minHeight:20,
-            handles: 'all',
-            dynamic: true,
-            draggable: true
-        });
+        for(var id in boxes){
+            var el = _t[id+'-el'];
+            if(el){
+                el.appendTo(group);
+            }
+        }
         
         this.multi = new Roo.Resizable('multi-box', {
             
