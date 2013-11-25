@@ -165,7 +165,7 @@ Roo.Resizable = function(el, config)
     if(this.draggable){
         this.dd = this.dynamic ?
             this.el.initDD(null) : this.el.initDDProxy(null, {dragElId: this.proxy.id});
-        this.dd.setHandleElId(this.resizeChild.id);
+        this.dd.setHandleElId(this.resizeChild ? this.resizeChild.id : this.el.id);
     }
 
     // public events
@@ -311,6 +311,7 @@ Roo.extend(Roo.Resizable, Roo.util.Observable, {
     updateChildSize : function(){
         
         if(this.resizeChild){
+            Roo.log('in?');
             var el = this.el;
             var child = this.resizeChild;
             var adj = this.adjustments;
