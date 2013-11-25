@@ -102,10 +102,13 @@ var ResizableExample = {
                 minHeight:20,
                 handles: 'se',
                 dynamic: true,
-                draggable: true
+                draggable: true,
+                onMouseUp: aaa
             });
         }
-        
+        var aaa = function(){
+            Roo.log(11)
+        }
 //        Roo.each(ids, function(id){
 //            if(ids[id]){
 //                Roo.get(id).appendTo(Roo.get('multi-box'));
