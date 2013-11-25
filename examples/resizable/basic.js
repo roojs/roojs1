@@ -92,7 +92,9 @@ var ResizableExample = {
         
         
         var ids = ['box1', 'box2', 'box3'];
-        
+        var aaa = function(){
+            Roo.log(11)
+        }
         for(var i = 1; i < 4; i++){
             this['box'+i] = new Roo.Resizable('box'+i, {
                 wrap:true,
@@ -106,9 +108,7 @@ var ResizableExample = {
                 onMouseUp: aaa
             });
         }
-        var aaa = function(){
-            Roo.log(11)
-        }
+        
 //        Roo.each(ids, function(id){
 //            if(ids[id]){
 //                Roo.get(id).appendTo(Roo.get('multi-box'));
