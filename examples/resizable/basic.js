@@ -144,7 +144,7 @@ var ResizableExample = {
             handles: 'se',
             dynamic: true,
             draggable: true,
-            resizeChild: false
+            resizeChild: true
             
         });
         
