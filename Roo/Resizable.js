@@ -311,7 +311,6 @@ Roo.extend(Roo.Resizable, Roo.util.Observable, {
     updateChildSize : function(){
         
         if(this.resizeChild){
-            Roo.log('in?');
             var el = this.el;
             var child = this.resizeChild;
             var adj = this.adjustments;
