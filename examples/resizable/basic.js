@@ -112,18 +112,18 @@ var ResizableExample = {
 //            }
 //        });
         
-//        this.multi = new Roo.Resizable('multi-box', {
-//            
-//            width: 595,
-//            height: 200,
-//            minWidth:20,
-//            minHeight:20,
-//            handles: 'se',
-//            dynamic: true,
-//            draggable: true,
-//            resizeChild: false
-//            
-//        });
+        this.multi = new Roo.Resizable('multi-box', {
+            
+            width: 595,
+            height: 200,
+            minWidth:20,
+            minHeight:20,
+            handles: 'se',
+            dynamic: true,
+            draggable: true,
+            resizeChild: false
+            
+        });
     },
     multi : Roo.emptyFn,
     
@@ -135,6 +135,18 @@ var ResizableExample = {
             this['box'+i].el.appendTo(Roo.get('grouping'));
         }
         
+        this.multi = new Roo.Resizable(Roo.get('grouping'), {
+            
+            width: 595,
+            height: 200,
+            minWidth:20,
+            minHeight:20,
+            handles: 'se',
+            dynamic: true,
+            draggable: true,
+            resizeChild: false
+            
+        });
         
     }
 };
