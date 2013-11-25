@@ -89,6 +89,10 @@ var ResizableExample = {
             minWidth: 50,
             dynamic: true
         });
+        
+        var multi = new Roo.Resizable('multi', {
+            
+        });
     }
 };
 
