@@ -165,7 +165,7 @@ Roo.Resizable = function(el, config)
     if(this.draggable){
         this.dd = this.dynamic ?
             this.el.initDD(null) : this.el.initDDProxy(null, {dragElId: this.proxy.id});
-        this.dd.setHandleElId(this.resizeChild ? this.resizeChild.id : this.el.id);
+        //this.dd.setHandleElId(this.resizeChild ? this.resizeChild.id : this.el.id);
     }
 
     // public events
@@ -583,7 +583,10 @@ Roo.extend(Roo.Resizable, Roo.util.Observable, {
     getResizeChild : function(){
         return this.resizeChild;
     },
-
+    groupHandler : function()
+    {
+        
+    },
     /**
      * Destroys this resizable. If the element was wrapped and
      * removeEl is not true then the element remains.
