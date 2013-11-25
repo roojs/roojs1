@@ -105,7 +105,7 @@ var ResizableExample = {
                 handles: 'se',
                 dynamic: true,
                 draggable: true,
-                onMouseUp: aaa
+                onMouseUp: function(){ Roo.log(1123) }
             });
         }
         
