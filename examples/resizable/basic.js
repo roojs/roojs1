@@ -91,16 +91,7 @@ var ResizableExample = {
         });
         this.multi;
     },
-    multi : new Roo.Resizable('multi-box', {
-        width: 595,
-        height: 200,
-        minWidth:20,
-        minHeight:20,
-        handles: 'all',
-        dynamic: true,
-        draggable: true,
-        resizeChild: true
-    })
+    multi : Roo.emptyFn
 };
 
 Roo.EventManager.onDocumentReady(ResizableExample.init, ResizableExample, true);
