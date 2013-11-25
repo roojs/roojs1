@@ -125,7 +125,18 @@ var ResizableExample = {
 //            
 //        });
     },
-    multi : Roo.emptyFn
+    multi : Roo.emptyFn,
+    
+    group : function()
+    {
+        var ids = ['box1', 'box2', 'box3'];
+        
+        for(var i = 1; i < 4; i++){
+            ids['box'+i].destroy();
+        }
+        
+        
+    }
 };
 
 Roo.EventManager.onDocumentReady(ResizableExample.init, ResizableExample, true);
