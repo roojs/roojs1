@@ -13528,6 +13528,7 @@ Roo.Resizable = function(el, config)
          * @param {Roo.EventObject} e The mousedown event
          */
         "beforeresize" : true,
+        "resizing" : true,
         /**
          * @event resize
          * Fired after a resize.
@@ -13726,6 +13727,7 @@ Roo.extend(Roo.Resizable, Roo.util.Observable, {
 
     // private
     onMouseMove : function(e){
+        
         if(this.enabled){
             try{// try catch so if something goes wrong the user doesn't get hung
 
@@ -13902,6 +13904,7 @@ Roo.extend(Roo.Resizable, Roo.util.Observable, {
             }
             }catch(e){}
         }
+        this.fireEvent("resizing", this, x, y, w, h, e);
     },
 
     // private
