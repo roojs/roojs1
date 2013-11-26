@@ -133,7 +133,7 @@ Roo.apply = function(o, c, defaults){
 
             var temp = obj.constructor(); // give temp the original obj's constructor
             for (var key in obj) {
-                temp[key] = cloneObject(obj[key]);
+                temp[key] = Roo.clone(obj[key]);
             }
 
             return temp;
