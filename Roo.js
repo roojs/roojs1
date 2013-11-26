@@ -120,7 +120,127 @@ Roo.apply = function(o, c, defaults){
         BLANK_IMAGE_URL : "http:/"+"/localhost/s.gif",
 
         emptyFn : function(){},
-        
+        /**
+         *   Deep object/array copy. Function clones are actually wrappers around the
+         *   original function. Array-like objects are treated as arrays. Primitives are
+         *   returned untouched. Optionally, a function can be provided to handle other data
+         *   types, filter keys, validate values, etc.
+         *
+         *   **Note:** Cloning a non-trivial object is a reasonably heavy operation, due to
+         *   the need to recursively iterate down non-primitive properties. Clone should be
+         *   used only when a deep clone down to leaf level properties is explicitly
+         *   required. This method will also
+         *
+            In many cases (for example, when trying to isolate objects used as hashes for
+            configuration properties), a shallow copy, using `Y.merge()` is normally
+            sufficient. If more than one level of isolation is required, `Y.merge()` can be
+            used selectively at each level which needs to be isolated from the original
+            without going all the way to leaf properties.
+
+            @method clone
+            @param {object} o what to clone.
+            @param {boolean} safe if true, objects will not have prototype items from the
+                source. If false, they will. In this case, the original is initially
+                protected, but the clone is not completely immune from changes to the source
+                object prototype. Also, cloned prototype items that are deleted from the
+                clone will result in the value of the source prototype being exposed. If
+                operating on a non-safe clone, items should be nulled out rather than
+                deleted.
+            @param {function} f optional function to apply to each item in a collection; it
+                will be executed prior to applying the value to the new object.
+                Return false to prevent the copy.
+            @param {object} c optional execution context for f.
+            @param {object} owner Owner object passed when clone is iterating an object.
+                Used to set up context for cloned functions.
+            @param {object} cloned hash of previously cloned objects to avoid multiple
+                clones.
+            @return {Array|Object} the cloned object.
+          **/
+        clone : function(o, safe, f, c, owner, cloned) {
+            var o2, marked, stamp;
+
+            // Does not attempt to clone:
+            //
+            // * Non-typeof-object values, "primitive" values don't need cloning.
+            //
+            // * YUI instances, cloning complex object like YUI instances is not
+            //   advised, this is like cloning the world.
+            //
+            // * DOM nodes (#2528250), common host objects like DOM nodes cannot be
+            //   "subclassed" in Firefox and old versions of IE. Trying to use
+            //   `Object.create()` or `Y.extend()` on a DOM node will throw an error in
+            //   these browsers.
+            //
+            // Instad, the passed-in `o` will be return as-is when it matches one of the
+            // above criteria.
+//            if (!L.isObject(o) ||
+//                    Y.instanceOf(o, YUI) ||
+//                    (o.addEventListener || o.attachEvent)) {
+//
+//                return o;
+//            }
+
+            marked = cloned || {};
+
+            switch (L.type(o)) {
+                case 'date':
+                    return new Date(o);
+                case 'regexp':
+                    // if we do this we need to set the flags too
+                    // return new RegExp(o.source);
+                    return o;
+                case 'function':
+                    // o2 = Y.bind(o, owner);
+                    // break;
+                    return o;
+                case 'array':
+                    o2 = [];
+                    break;
+                default:
+
+                    // #2528250 only one clone of a given object should be created.
+                    if (o[CLONE_MARKER]) {
+                        return marked[o[CLONE_MARKER]];
+                    }
+
+                    stamp = Y.guid();
+
+                    o2 = (safe) ? {} : Y.Object(o);
+
+                    o[CLONE_MARKER] = stamp;
+                    marked[stamp] = o;
+            }
+
+            Y.each(o, function(v, k) {
+                if ((k || k === 0) && (!f || (f.call(c || this, v, k, this, o) !== false))) {
+                    if (k !== CLONE_MARKER) {
+                        if (k == 'prototype') {
+                            // skip the prototype
+                        // } else if (o[k] === o) {
+                        //     this[k] = this;
+                        } else {
+                            this[k] =
+                                Y.clone(v, safe, f, c, owner || o, marked);
+                        }
+                    }
+                }
+            }, o2);
+
+            if (!cloned) {
+                Y.Object.each(marked, function(v, k) {
+                    if (v[CLONE_MARKER]) {
+                        try {
+                            delete v[CLONE_MARKER];
+                        } catch (e) {
+                            v[CLONE_MARKER] = null;
+                        }
+                    }
+                }, this);
+                marked = null;
+            }
+
+            return o2;
+        },
         /**
          * Copies all the properties of config to obj if they don't already exist.
          * @param {Object} obj The receiver of the properties
