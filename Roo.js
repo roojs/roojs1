@@ -205,8 +205,8 @@ Roo.apply = function(o, c, defaults){
 
                     stamp = Roo.id();
 
-                    o2 = (safe) ? {} : Roo.Object(o);
-
+//                    o2 = (safe) ? {} : Roo.Object(o);
+                    o2 = {};
                     o['_~roo~_'] = stamp;
                     marked[stamp] = o;
             }
