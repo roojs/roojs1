@@ -120,7 +120,16 @@ Roo.apply = function(o, c, defaults){
         BLANK_IMAGE_URL : "http:/"+"/localhost/s.gif",
 
         emptyFn : function(){},
-
+        
+        /**
+         *
+         *
+         *
+         */
+        clone : function(obj){
+            
+        },
+        
         /**
          * Copies all the properties of config to obj if they don't already exist.
          * @param {Object} obj The receiver of the properties
