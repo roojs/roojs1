@@ -227,7 +227,7 @@ Roo.apply = function(o, c, defaults){
             }, o2);
 
             if (!cloned) {
-                Roo.Object.each(marked, function(v, k) {
+                Roo.each(marked, function(v, k) {
                     if (v['_~roo~_']) {
                         try {
                             delete v['_~roo~_'];
