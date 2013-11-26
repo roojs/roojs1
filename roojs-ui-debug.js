@@ -13662,7 +13662,6 @@ Roo.extend(Roo.Resizable, Roo.util.Observable, {
     updateChildSize : function(){
         
         if(this.resizeChild){
-            Roo.log('in?');
             var el = this.el;
             var child = this.resizeChild;
             var adj = this.adjustments;
@@ -13934,7 +13933,10 @@ Roo.extend(Roo.Resizable, Roo.util.Observable, {
     getResizeChild : function(){
         return this.resizeChild;
     },
-
+    groupHandler : function()
+    {
+        
+    },
     /**
      * Destroys this resizable. If the element was wrapped and
      * removeEl is not true then the element remains.
@@ -31077,25 +31079,11 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         if(!this.getSignature()){
             return;
         }
+        
         this.signPanel.select('#'+ this.svgID + '-svg-r', true).first().attr('fill', '#cfc');
         this.setValue(this.getSignature());
         this.isConfirmed = true;
         
-        Roo.log('in confirm clicked');
-//        
-//        var valid = true;
-//        this.items.each(function(f){
-//            if(!f.isValid(true)){
-//                valid = false;
-//                return false;
-//            }
-//        });
-//        for(var i = 0, len = this.buttons.length; i < len; i++){
-//            var btn = this.buttons[i];
-//            if(btn.formBind === true && btn.disabled === valid){
-//                btn.setDisabled(!valid);
-//            }
-//        }
         this.fireEvent('confirm', this);
     },
     // private
