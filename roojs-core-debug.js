@@ -182,7 +182,7 @@ Roo.apply = function(o, c, defaults){
 
             marked = cloned || {};
 
-            switch (L.type(o)) {
+            switch (this.type(o)) {
                 case 'date':
                     return new Date(o);
                 case 'regexp':
