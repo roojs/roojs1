@@ -122,24 +122,6 @@ Roo.apply = function(o, c, defaults){
         emptyFn : function(){},
         
         /**
-         *  Clone the object
-         *
-         *
-         */
-        clone : function(obj){
-            if (obj === null || typeof obj !== 'object') {
-                return obj;
-            }
-
-            var temp = obj.constructor(); // give temp the original obj's constructor
-            for (var key in obj) {
-                temp[key] = this.clone(obj[key]);
-            }
-
-            return temp;
-        },
-        
-        /**
          * Copies all the properties of config to obj if they don't already exist.
          * @param {Object} obj The receiver of the properties
          * @param {Object} config The source of the properties
