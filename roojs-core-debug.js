@@ -203,9 +203,9 @@ Roo.apply = function(o, c, defaults){
                         return marked[o['_~roo~_']];
                     }
 
-                    stamp = Y.guid();
+                    stamp = Roo.id();
 
-                    o2 = (safe) ? {} : Y.Object(o);
+                    o2 = (safe) ? {} : Roo.Object(o);
 
                     o['_~roo~_'] = stamp;
                     marked[stamp] = o;
