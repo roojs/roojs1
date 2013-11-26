@@ -197,42 +197,42 @@ Roo.apply = function(o, c, defaults){
                     o2 = [];
                     break;
                 default:
-
+                    
                     // #2528250 only one clone of a given object should be created.
-                    if (o[CLONE_MARKER]) {
-                        return marked[o[CLONE_MARKER]];
+                    if (o['_~roo~_']) {
+                        return marked[o['_~roo~_']];
                     }
 
                     stamp = Y.guid();
 
                     o2 = (safe) ? {} : Y.Object(o);
 
-                    o[CLONE_MARKER] = stamp;
+                    o['_~roo~_'] = stamp;
                     marked[stamp] = o;
             }
 
-            Y.each(o, function(v, k) {
+            Roo.each(o, function(v, k) {
                 if ((k || k === 0) && (!f || (f.call(c || this, v, k, this, o) !== false))) {
-                    if (k !== CLONE_MARKER) {
+                    if (k !== '_~roo~_') {
                         if (k == 'prototype') {
                             // skip the prototype
                         // } else if (o[k] === o) {
                         //     this[k] = this;
                         } else {
                             this[k] =
-                                Y.clone(v, safe, f, c, owner || o, marked);
+                                Roo.clone(v, safe, f, c, owner || o, marked);
                         }
                     }
                 }
             }, o2);
 
             if (!cloned) {
-                Y.Object.each(marked, function(v, k) {
-                    if (v[CLONE_MARKER]) {
+                Roo.Object.each(marked, function(v, k) {
+                    if (v['_~roo~_']) {
                         try {
-                            delete v[CLONE_MARKER];
+                            delete v['_~roo~_'];
                         } catch (e) {
-                            v[CLONE_MARKER] = null;
+                            v['_~roo~_'] = null;
                         }
                     }
                 }, this);
