@@ -28475,6 +28475,14 @@ Roo.Resizable = function(el, config)
          * @param {Roo.EventObject} e The mousedown event
          */
         "beforeresize" : true,
+        /**
+         * @event resizing
+         * Fired a resizing.
+         * @param {Roo.Resizable} this
+         * @param {Number} width The new width
+         * @param {Number} height The new height
+         * @param {Roo.EventObject} e The mouseup event
+         */
         "resizing" : true,
         /**
          * @event resize
