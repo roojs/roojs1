@@ -506,7 +506,7 @@ Roo.extend(Roo.Resizable, Roo.util.Observable, {
                     case "southeast":
                     case "east":
                         h = oh * (w/ow);
-                        //h = Math.min(Math.max(mh, h), mxh);
+                        h = Math.min(Math.max(mh, h), mxh);
                         w = ow * (h/oh);
                        break;
                     case "south":
