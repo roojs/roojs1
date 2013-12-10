@@ -28479,8 +28479,10 @@ Roo.Resizable = function(el, config)
          * @event resizing
          * Fired a resizing.
          * @param {Roo.Resizable} this
-         * @param {Number} width The new width
-         * @param {Number} height The new height
+         * @param {Number} x The new x position
+         * @param {Number} y The new y position
+         * @param {Number} w The new w width
+         * @param {Number} h The new h hight
          * @param {Roo.EventObject} e The mouseup event
          */
         "resizing" : true,
@@ -28802,7 +28804,7 @@ Roo.extend(Roo.Resizable, Roo.util.Observable, {
                     case "southeast":
                     case "east":
                         h = oh * (w/ow);
-                        h = Math.min(Math.max(mh, h), mxh);
+                        h = Math.max(Math.max(mh, h), mxh);
                         w = ow * (h/oh);
                        break;
                     case "south":
