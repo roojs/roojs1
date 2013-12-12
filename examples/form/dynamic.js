@@ -253,6 +253,9 @@ Roo.onReady(function(){
                         name: 'scountry',
                         //vtype:'email',
                         width:225,
+                        valueField :'code',
+                        displayField  : 'title',
+                        emptyText : 'Select a country',
                         store: {
                              xtype : 'Store',
                              xns: Roo.data,
@@ -269,7 +272,7 @@ Roo.onReady(function(){
                                  totalProperty: 'totalCount',
                                  id: 'post_id',
                                  fields : [
-                                     'id', 'name'
+                                     'code', 'title'
                                  ]
                              }
                          },
