@@ -41,6 +41,8 @@ Roo.onReady(function(){
             width:175
         }),
 
+        
+        
         new Roo.form.TextField({
             fieldLabel: 'Company',
             name: 'company',
@@ -243,9 +245,40 @@ Roo.onReady(function(){
                         name: 'email',
                         vtype:'email',
                         width:225
+                    },
+                    
+                    {
+                        xtype : 'Select',
+                        fieldLabel: 'Country',
+                        name: 'scountry',
+                        //vtype:'email',
+                        width:225,
+                        store: {
+                             xtype : 'Store',
+                             xns: Roo.data,
+                             
+                             proxy: {
+                                 xns : Roo.data,
+                                 xtype : 'HttpProxy',
+                                 url: 'sample.data.json'
+                             },
+                             reader: {
+                                 xns : Roo.data,
+                                 xtype : 'JsonReader',
+                                 root: 'data',
+                                 totalProperty: 'totalCount',
+                                 id: 'post_id',
+                                 fields : [
+                                     'id', 'name'
+                                 ]
+                             }
+                         },
                     }
                 ]
-            },  
+            },
+            
+            
+            
             {
                   
                 xtype : 'Column', 
@@ -475,7 +508,7 @@ Roo.onReady(function(){
             
                 xtype: 'Checkbox',
                 xns : Roo.form,
-               fieldLabel: 'A checkbox',
+                fieldLabel: 'A checkbox',
                 boxLabel:'RooJS v1.1.1',
                 name:'extuser',
                 inputValue : '1',
