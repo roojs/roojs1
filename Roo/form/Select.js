@@ -359,10 +359,10 @@ Roo.extend(Roo.form.Select , Roo.form.ComboBox, {
      * @param {String} value The value to match
      */
     setValue : function(v){
-        
-        for (var i =0; i < this.dom.options.length;i++) {
-            if (v == this.dom.options[i].value) {
-                this.dom.selectedIndex = i;
+        var d = this.el.dom;
+        for (var i =0; i < d.options.length;i++) {
+            if (v == d.options[i].value) {
+                d.selectedIndex = i;
                 this.value = v;
                 return;
             }
