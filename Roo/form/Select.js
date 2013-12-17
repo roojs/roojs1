@@ -292,7 +292,10 @@ Roo.extend(Roo.form.Select , Roo.form.ComboBox, {
                 op.innerHTML = String.format('{0}', r.data[df]);
                 dom.appendChild(op);
             });
-            this.setValue(this.value);
+            if (typeof(this.value != 'undefined')) {
+                this.setValue(this.value);
+            }
+            
              
         }else{
             //this.onEmptyResults();
