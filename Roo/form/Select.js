@@ -179,6 +179,12 @@ Roo.extend(Roo.form.Select , Roo.form.ComboBox, {
      * the store, valueNotFoundText will be displayed as the field text if defined (defaults to undefined)
      */
     valueNotFoundText : undefined,
+    
+    /**
+     * @cfg {String} defaultValue The value displayed after loading the store.
+     */
+    defaultValue: '',
+    
     /**
      * @cfg {Boolean} blockFocus Prevents all focus calls, so it can work with things like HTML edtor bar
      */
