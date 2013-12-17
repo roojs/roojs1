@@ -292,8 +292,8 @@ Roo.extend(Roo.form.Select , Roo.form.ComboBox, {
                 op.innerHTML = String.format('{0}', r.data[df]);
                 dom.appendChild(op);
             });
-            if (typeof(this.value != 'undefined')) {
-                this.setValue(this.value);
+            if (typeof(this.defaultValue != 'undefined')) {
+                this.setValue(this.defaultValue);
             }
             
              
