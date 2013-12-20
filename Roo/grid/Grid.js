@@ -535,8 +535,10 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
         if (Roo.isTouch && name == 'click') {
             return;
         }
+        if (name != 'touchstart' ) {
+            this.fireEvent(name, e);    
+        }
         
-        this.fireEvent(name == 'touchstart' ? 'click' : name, e);
         var t = e.getTarget();
         var v = this.view;
         var header = v.findHeaderIndex(t);
