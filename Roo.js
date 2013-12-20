@@ -60,7 +60,7 @@ Roo.apply = function(o, c, defaults){
         isWindows = (ua.indexOf("windows") != -1 || ua.indexOf("win32") != -1),
         isMac = (ua.indexOf("macintosh") != -1 || ua.indexOf("mac os x") != -1),
         isLinux = (ua.indexOf("linux") != -1),
-        isSecure = window.location.href.toLowerCase().indexOf("https") === 0;
+        isSecure = window.location.href.toLowerCase().indexOf("https") === 0,
         isTouch = 'ontouchstart' in document.documentElement;
     // remove css image flicker
 	if(isIE && !isIE7){
