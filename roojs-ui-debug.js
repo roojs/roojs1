@@ -35867,6 +35867,10 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
     processEvent : function(name, e){
         // does this fire select???
         Roo.log('grid:processEvent '  + name);
+        if (Roo.isTouch && name == 'click') {
+            return;
+        }
+        
         this.fireEvent(name == 'touch' ? 'click' : name, e);
         var t = e.getTarget();
         var v = this.view;
