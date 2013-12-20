@@ -449,7 +449,7 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
         c.on("contextmenu", this.onContextMenu, this);
         c.on("keydown", this.onKeyDown, this);
         if (Roo.isTouch) {
-            c.on("touch", this.onTouch, this);
+            c.on("touchend", this.onTouch, this);
         }
 
         this.relayEvents(c, ["mousedown","mouseup","mouseover","mouseout","keypress"]);
