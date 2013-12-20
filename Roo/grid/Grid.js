@@ -581,8 +581,8 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
         this.processEvent("click", e);
     },
    // private
-    onTouch : function(e){
-        this.processEvent("touch", e);
+    onTouchEnd : function(e){
+        this.processEvent("touchend", e);
     },
 
     // private
