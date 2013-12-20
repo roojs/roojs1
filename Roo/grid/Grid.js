@@ -536,6 +536,28 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
         }else{
             var row = v.findRowIndex(t);
             var cell = v.findCellIndex(t);
+            if (name == 'touch') {
+                // first touch is always a click.
+                // hopefull this happens after selection is updated.?
+                name = 'click';
+                
+                if (typeof(this.selModel.getSelectedCell) != 'undefined') {
+                    var cs = this.selModel.getSelectedCell();
+                    if (row == cs[0] && cell == cs[1]){
+                        name = 'dblclick';
+                    }
+                }
+                if (typeof(this.selModel.getSelections) != 'undefined') {
+                    var cs = this.selModel.getSelections();
+                    var ds = this.dataSource;
+                    if (cs.length == 1 && ds.getAt(row) == cs[0]){
+                        name = 'dblclick';
+                    }
+                }
+                
+            }
+            
+            
             if(row !== false){
                 this.fireEvent("row" + name, this, row, e);
                 if(cell !== false){
