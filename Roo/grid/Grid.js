@@ -536,12 +536,12 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
             return;
         }
         
-        this.fireEvent('touchend' ? 'click' : name, e);
+        this.fireEvent(name =='touchend' ? 'click' : name, e);
         var t = e.getTarget();
         var v = this.view;
         var header = v.findHeaderIndex(t);
         if(header !== false){
-            this.fireEvent("header" + ('touchend' ? 'click' : name), this, header, e);
+            this.fireEvent("header" + (name == 'touchend' ? 'click' : name), this, header, e);
         }else{
             var row = v.findRowIndex(t);
             var cell = v.findCellIndex(t);
