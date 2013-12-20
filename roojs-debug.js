@@ -50816,11 +50816,11 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
     processEvent : function(name, e){
         // does this fire select???
         Roo.log('grid:processEvent '  + name);
-        if (Roo.isTouch && name == 'click') {
-            return;
+        
+        if (name != 'touchstart' ) {
+            this.fireEvent(name, e);    
         }
         
-        this.fireEvent(name == 'touchstart' ? 'click' : name, e);
         var t = e.getTarget();
         var v = this.view;
         var header = v.findHeaderIndex(t);
@@ -50832,7 +50832,7 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
             if (name == 'touchstart') {
                 // first touch is always a click.
                 // hopefull this happens after selection is updated.?
-                name = 'click';
+                name = false;
                 
                 if (typeof(this.selModel.getSelectedCell) != 'undefined') {
                     var cs = this.selModel.getSelectedCell();
@@ -50847,7 +50847,9 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
                         name = 'dblclick';
                     }
                 }
-                
+                if (!name) {
+                    return;
+                }
             }
             
             
