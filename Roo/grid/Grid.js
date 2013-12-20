@@ -549,6 +549,10 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
     onClick : function(e){
         this.processEvent("click", e);
     },
+   // private
+    onTouch : function(e){
+        this.processEvent("touch", e);
+    },
 
     // private
     onContextMenu : function(e, t){
