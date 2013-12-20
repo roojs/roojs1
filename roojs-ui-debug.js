@@ -35784,7 +35784,7 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
         c.on("contextmenu", this.onContextMenu, this);
         c.on("keydown", this.onKeyDown, this);
         if (Roo.isTouch) {
-            c.on("touch", this.onTouch, this);
+            c.on("touchend", this.onTouch, this);
         }
 
         this.relayEvents(c, ["mousedown","mouseup","mouseover","mouseout","keypress"]);
@@ -35871,7 +35871,7 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
             return;
         }
         
-        this.fireEvent(name == 'touch' ? 'click' : name, e);
+        this.fireEvent(name == 'touchend' ? 'click' : name, e);
         var t = e.getTarget();
         var v = this.view;
         var header = v.findHeaderIndex(t);
@@ -35880,7 +35880,7 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
         }else{
             var row = v.findRowIndex(t);
             var cell = v.findCellIndex(t);
-            if (name == 'touch') {
+            if (name == 'touchend') {
                 // first touch is always a click.
                 // hopefull this happens after selection is updated.?
                 name = 'click';
