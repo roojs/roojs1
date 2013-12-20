@@ -611,5 +611,5 @@ Roo.extend(Roo.form.Select , Roo.form.ComboBox, {
     },
     getResizeEl : function(){
         return this.el;
-    },
+    }
 });
