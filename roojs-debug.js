@@ -50733,7 +50733,7 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
         c.on("contextmenu", this.onContextMenu, this);
         c.on("keydown", this.onKeyDown, this);
         if (Roo.isTouch) {
-            c.on("touchend", this.onTouch, this);
+            c.on("touchend", this.onTouchEnd, this);
         }
 
         this.relayEvents(c, ["mousedown","mouseup","mouseover","mouseout","keypress"]);
@@ -50820,12 +50820,12 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
             return;
         }
         
-        this.fireEvent(name == 'touchend' ? 'click' : name, e);
+        this.fireEvent('touchend' ? 'click' : name, e);
         var t = e.getTarget();
         var v = this.view;
         var header = v.findHeaderIndex(t);
         if(header !== false){
-            this.fireEvent("header" + name, this, header, e);
+            this.fireEvent("header" + ('touchend' ? 'click' : name), this, header, e);
         }else{
             var row = v.findRowIndex(t);
             var cell = v.findCellIndex(t);
@@ -50865,8 +50865,8 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
         this.processEvent("click", e);
     },
    // private
-    onTouch : function(e){
-        this.processEvent("touch", e);
+    onTouchEnd : function(e){
+        this.processEvent("touchend", e);
     },
 
     // private
