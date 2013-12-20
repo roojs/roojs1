@@ -536,7 +536,7 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
             return;
         }
         
-        this.fireEvent(name =='touchend' ? 'click' : name, e);
+        this.fireEvent(name == 'touchend' ? 'click' : name, e);
         var t = e.getTarget();
         var v = this.view;
         var header = v.findHeaderIndex(t);
