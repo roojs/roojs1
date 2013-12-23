@@ -268,16 +268,15 @@ Roo.extend(Roo.dd.DD, Roo.dd.DragDrop, {
 
     toString: function() {
         return ("DD " + this.id);
-    },
+    }
 
     //////////////////////////////////////////////////////////////////////////
     // Debugging ygDragDrop events that can be overridden
     //////////////////////////////////////////////////////////////////////////
-    
-    startDrag: function(x, y) {
-        Roo.log('startDrag??');
-    }
     /*
+    startDrag: function(x, y) {
+    },
+
     onDrag: function(e) {
     },
 
