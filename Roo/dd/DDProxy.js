@@ -162,6 +162,7 @@ Roo.extend(Roo.dd.DDProxy, Roo.dd.DD, {
 
     // overrides Roo.dd.DragDrop
     b4StartDrag: function(x, y) {
+        Roo.log('inin?');
         // show the drag frame
         this.showFrame(x, y);
     },
