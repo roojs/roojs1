@@ -196,9 +196,13 @@ Roo.dd.DragDropMgr = function() {
 
             this.init();
 
-
-            Event.on(document, "mouseup",   this.handleMouseUp, this, true);
-            Event.on(document, "mousemove", this.handleMouseMove, this, true);
+            if (!Roo.isTouch) {
+                Event.on(document, "mouseup",   this.handleMouseUp, this, true);
+                Event.on(document, "mousemove", this.handleMouseMove, this, true);
+            }
+            Event.on(document, "touchend",   this.handleMouseUp, this, true);
+            Event.on(document, "touchmove", this.handleMouseMove, this, true);
+            
             Event.on(window,   "unload",    this._onUnload, this, true);
             Event.on(window,   "resize",    this._onResize, this, true);
             // Event.on(window,   "mouseout",    this._test);
