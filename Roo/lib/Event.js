@@ -133,6 +133,7 @@ Roo.lib.Event = function() {
 
         getTarget: function(ev, resolveTextNode) {
             ev = ev.browserEvent || ev;
+             ev = Roo.isTouch ? (ev.touches[0] || ev.changedTouches[0] )  : ev;
             var t = ev.target || ev.srcElement;
             return this.resolveTextNode(t);
         },
