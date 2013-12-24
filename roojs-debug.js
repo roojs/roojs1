@@ -15774,10 +15774,12 @@ Roo.extend(Roo.dd.DragDrop, Roo.util.Observable , {
         Roo.log(this);
         Roo.log(e);
         if (!Roo.isTouch && this.primaryButtonOnly && e.button != 0) {
+            Roo.log('not touch/ button !=0');
             return;
         }
 
         if (this.isLocked()) {
+            Roo.log('locked');
             return;
         }
 
@@ -15785,9 +15787,11 @@ Roo.extend(Roo.dd.DragDrop, Roo.util.Observable , {
 
         var pt = new Roo.lib.Point(Roo.lib.Event.getPageX(e), Roo.lib.Event.getPageY(e));
         if (!this.hasOuterHandles && !this.DDM.isOverTarget(pt, this) )  {
+                // do nothing.
         } else {
+            Roo.log('check validator');
             if (this.clickValidator(e)) {
-
+                Roo.log('validate success');
                 // set the initial element position
                 this.setStartPosition();
 
