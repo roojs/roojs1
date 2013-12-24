@@ -149,7 +149,7 @@ Roo.lib.Event = function() {
 
         getPageX: function(ev) {
             ev = ev.browserEvent || ev;
-            ev = Roo.isTouch ? ev.touches[0] : ev;
+            ev = Roo.isTouch ? (ev.touches[0] || ev.changedTouches[0] )  : ev;
             var x = ev.pageX;
             if (!x && 0 !== x) {
                 x = ev.clientX || 0;
@@ -165,7 +165,7 @@ Roo.lib.Event = function() {
 
         getPageY: function(ev) {
             ev = ev.browserEvent || ev;
-            ev = Roo.isTouch ? ev.touches[0] : ev;
+            ev = Roo.isTouch ? (ev.touches[0] || ev.changedTouches[0] )  : ev;
             var y = ev.pageY;
             if (!y && 0 !== y) {
                 y = ev.clientY || 0;
@@ -182,14 +182,14 @@ Roo.lib.Event = function() {
 
         getXY: function(ev) {
             ev = ev.browserEvent || ev;
-            ev = Roo.isTouch ? ev.touches[0] : ev;
+            ev = Roo.isTouch ? (ev.touches[0] || ev.changedTouches[0] )  : ev;
             return [this.getPageX(ev), this.getPageY(ev)];
         },
 
 
         getRelatedTarget: function(ev) {
             ev = ev.browserEvent || ev;
-            ev = Roo.isTouch ? ev.touches[0] : ev;
+            ev = Roo.isTouch ? (ev.touches[0] || ev.changedTouches[0] ) : ev;
             var t = ev.relatedTarget;
             if (!t) {
                 if (ev.type == "mouseout") {
@@ -205,7 +205,7 @@ Roo.lib.Event = function() {
 
         getTime: function(ev) {
             ev = ev.browserEvent || ev;
-            ev = Roo.isTouch ? ev.touches[0] : ev;
+            ev = Roo.isTouch ? (ev.touches[0] || ev.changedTouches[0] ) : ev;
             if (!ev.time) {
                 var t = new Date().getTime();
                 try {
