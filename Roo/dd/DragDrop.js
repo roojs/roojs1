@@ -565,7 +565,9 @@ Roo.extend(Roo.dd.DragDrop, Roo.util.Observable , {
      */
     init: function(id, sGroup, config) {
         this.initTarget(id, sGroup, config);
-        Event.on(this.id, "mousedown", this.handleMouseDown, this);
+        if (!Roo.isTouch) {
+            Event.on(this.id, "mousedown", this.handleMouseDown, this);
+        }
         Event.on(this.id, "touchstart", this.handleMouseDown, this);
         // Event.on(this.id, "selectstart", Event.preventDefault);
     },
