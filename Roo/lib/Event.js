@@ -205,6 +205,7 @@ Roo.lib.Event = function() {
 
         getTime: function(ev) {
             ev = ev.browserEvent || ev;
+            ev = Roo.isTouch ? ev.touches[0] : ev;
             if (!ev.time) {
                 var t = new Date().getTime();
                 try {
