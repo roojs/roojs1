@@ -15515,6 +15515,7 @@ Roo.extend(Roo.dd.DragDrop, Roo.util.Observable , {
     init: function(id, sGroup, config) {
         this.initTarget(id, sGroup, config);
         Event.on(this.id, "mousedown", this.handleMouseDown, this);
+        Event.on(this.id, "touchstart", this.handleMouseDown, this);
         // Event.on(this.id, "selectstart", Event.preventDefault);
     },
 
@@ -15738,6 +15739,8 @@ Roo.extend(Roo.dd.DragDrop, Roo.util.Observable , {
      */
     unreg: function() {
         Event.un(this.id, "mousedown",
+                this.handleMouseDown);
+        Event.un(this.id, "touchstart",
                 this.handleMouseDown);
         this._domRef = null;
         this.DDM._remove(this);
