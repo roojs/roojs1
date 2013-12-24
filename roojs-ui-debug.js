@@ -565,7 +565,9 @@ Roo.extend(Roo.dd.DragDrop, Roo.util.Observable , {
      */
     init: function(id, sGroup, config) {
         this.initTarget(id, sGroup, config);
-        Event.on(this.id, "mousedown", this.handleMouseDown, this);
+        if (!Roo.isTouch) {
+            Event.on(this.id, "mousedown", this.handleMouseDown, this);
+        }
         Event.on(this.id, "touchstart", this.handleMouseDown, this);
         // Event.on(this.id, "selectstart", Event.preventDefault);
     },
@@ -1363,9 +1365,13 @@ Roo.dd.DragDropMgr = function() {
 
             this.init();
 
-
-            Event.on(document, "mouseup",   this.handleMouseUp, this, true);
-            Event.on(document, "mousemove", this.handleMouseMove, this, true);
+            if (!Roo.isTouch) {
+                Event.on(document, "mouseup",   this.handleMouseUp, this, true);
+                Event.on(document, "mousemove", this.handleMouseMove, this, true);
+            }
+            Event.on(document, "touchend",   this.handleMouseUp, this, true);
+            Event.on(document, "touchmove", this.handleMouseMove, this, true);
+            
             Event.on(window,   "unload",    this._onUnload, this, true);
             Event.on(window,   "resize",    this._onResize, this, true);
             // Event.on(window,   "mouseout",    this._test);
