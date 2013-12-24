@@ -149,6 +149,7 @@ Roo.lib.Event = function() {
 
         getPageX: function(ev) {
             ev = ev.browserEvent || ev;
+            ev = Roo.isTouch ? ev.touches[0] : ev;
             var x = ev.pageX;
             if (!x && 0 !== x) {
                 x = ev.clientX || 0;
