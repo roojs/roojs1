@@ -824,7 +824,7 @@ Roo.extend(Roo.dd.DragDrop, Roo.util.Observable , {
     handleMouseDown: function(e, oDD){
         Roo.log(this);
         Roo.log(e);
-        if (this.primaryButtonOnly && e.button != 0) {
+        if (!Roo.isTouch && this.primaryButtonOnly && e.button != 0) {
             return;
         }
 
