@@ -15771,6 +15771,8 @@ Roo.extend(Roo.dd.DragDrop, Roo.util.Observable , {
      * @private
      */
     handleMouseDown: function(e, oDD){
+        Roo.log(this);
+        Roo.log(e);
         if (this.primaryButtonOnly && e.button != 0) {
             return;
         }
