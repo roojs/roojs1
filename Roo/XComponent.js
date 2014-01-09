@@ -134,7 +134,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
         if (!el && typeof(this.parent) == 'string' && this.parent.substring(0,1) == '#') {
             // if parent is a '#.....' string, then let's use that..
             var ename = this.parent.substr(1)
-            this.parent = this.parent == '#bootstrap' ? true : false; // flags it as a top module...
+            this.parent = this.parent == '#bootstrap' ? { el : true}  : false; // flags it as a top module...
             el = Roo.get(ename);
             if (!el) {
                 Roo.log("Warning - element can not be found :#" + ename );
