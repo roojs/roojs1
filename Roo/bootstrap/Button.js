@@ -29,7 +29,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     html: false,
     active: false,
     weight: 'default',
-    size: false,
+    size: '',
     
     autoCreate : {
         cls: 'btn',
