@@ -30,6 +30,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     active: false,
     weight: 'default',
     size: '',
+    tag: 'button',
     
     autoCreate : {
         cls: 'btn',
@@ -50,6 +51,8 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         }
         
         cfg.cls += this.size.length ? (' btn-' + this.size) : '';
+        
+        cfg.tag = this.tag;
         
         
         return cfg;
