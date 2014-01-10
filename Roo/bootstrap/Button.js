@@ -117,6 +117,8 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
                     html: this.badge
                 }
             ]
+            
+            cfg.html='';
         }
         
         return cfg;
