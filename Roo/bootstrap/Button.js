@@ -25,10 +25,11 @@ Roo.bootstrap.Button = function(config){
 };
 
 Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
-      
+    
     html: false,
     active: false,
     weight: 'default',
+    size: false,
     
     autoCreate : {
         cls: 'btn',
