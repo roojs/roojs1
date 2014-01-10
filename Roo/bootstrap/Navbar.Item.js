@@ -9,8 +9,8 @@ Roo.bootstrap.Navbar.Item = function(config){
 };
 
 Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
-      
-	href : false,
+    
+    href : false,
     html : false,
     
     autoCreate : {
