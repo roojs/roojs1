@@ -196,6 +196,11 @@ Roo.example.bootstrap = new Roo.XComponent({
                             xns : Roo.bootstrap,
                             isClose: true
                         },
+                        {
+                            xtype: 'Button',
+                            xns : Roo.bootstrap,
+                            glyphicon: 'search'
+                        },
                     ]
                 },
             ]
