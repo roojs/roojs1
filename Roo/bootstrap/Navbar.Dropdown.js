@@ -9,9 +9,9 @@ Roo.bootstrap.Navbar.Dropdown = function(config){
 };
 
 Roo.extend(Roo.bootstrap.Navbar.Dropdown, Roo.bootstrap.Component,  {
-      
-	 
+    
     html : false,
+    align : 'left',
     
     autoCreate : {
         cls: 'dropdown',
