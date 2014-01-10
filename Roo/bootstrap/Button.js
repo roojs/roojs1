@@ -73,7 +73,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         }
         
         if (this.disabled) {
-            cfg.disabled='disabled';
+            cfg.disabled = 'disabled';
         }
         
         return cfg;
