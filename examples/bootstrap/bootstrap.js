@@ -144,22 +144,25 @@ Roo.example.bootstrap = new Roo.XComponent({
                         {
                             xtype: 'Button',
                             xns : Roo.bootstrap,
+                            weight: 'primary'
+                            active: true
+                        },
+                        {
+                            xtype: 'Button',
+                            xns : Roo.bootstrap,
+                            weight: 'danger',
+                            size : 'lg',
+                        },
+                        {
+                            xtype: 'Button',
+                            xns : Roo.bootstrap,
                             weight: 'danger',
                             active: true
                         },
                         {
                             xtype: 'Button',
                             xns : Roo.bootstrap,
-                            size : 'lg',
-                        },
-                        {
-                            xtype: 'Button',
-                            xns : Roo.bootstrap,
-                            active: true
-                        },
-                        {
-                            xtype: 'Button',
-                            xns : Roo.bootstrap,
+                            weight: 'info',
                             size : 'sm',
                         },
                         {
