@@ -11,7 +11,7 @@ Roo.bootstrap.Button = function(config){
 Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
       
     html: false,
-    
+    active: false,
     
     autoCreate : {
         cls: 'btn btn-default',
@@ -24,7 +24,11 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         var cfg = Roo.apply({}, Roo.bootstrap.Button.superclass.getAutoCreate.call(this));
         
         cfg.html = this.html || cfg.html ;
-        cfg.html = this.html || cfg.html ;
+        
+        if (active) {
+            cfg.cls += ' active';
+        }
+        
         return cfg;
     }
    
