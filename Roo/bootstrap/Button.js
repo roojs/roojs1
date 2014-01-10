@@ -44,7 +44,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         
         cfg.html = this.html || cfg.html;
         
-        if (['default', 'primary', 'success', 'info', 'warning'].indexOf(this.weight) < 0) {
+        if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) < 0) {
             Roo.log("Invalid value for weight: " + this.weight + ". must be default, primary, success, info or warning.");
             this.tag = 'button';
         }
