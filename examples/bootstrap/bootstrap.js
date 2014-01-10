@@ -195,7 +195,8 @@ Roo.example.bootstrap = new Roo.XComponent({
                             xtype: 'Button',
                             xns : Roo.bootstrap,
                             tag: 'submit',
-                            html: 'active'
+                            html: 'active',
+                            value: 'test'
                         },
                         {
                             xtype: 'Button',
