@@ -89,14 +89,14 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         }
         
         if (this.glyphicon) {
-            var html = this.html;
-            delete cfg.html;
+            //var html = this.html;
+            //delete cfg.html;
             cfg.cn= [
                 {
                     tag: 'span',
                     cls: 'glyphicon-' + this.glyphicon,
-                },
-                html
+                }//,
+                //html
             ];
         }
         
