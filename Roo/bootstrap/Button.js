@@ -110,7 +110,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             cfg.html += ' ';
             
             cfg.cn = [
-                html,
+                this.html,
                 {
                     tag: 'span',
                     cls: 'badge',
