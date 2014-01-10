@@ -130,77 +130,90 @@ Roo.example.bootstrap = new Roo.XComponent({
                         {
                             xtype: 'Button',
                             xns : Roo.bootstrap,
-                            html: 'test'
+                            html: 'default'
                         },
                          {
                             xtype: 'Button',
                             xns : Roo.bootstrap,
-                            active: true
+                            active: true,
+                            html: 'active'
                         },
                         {
                             xtype: 'Button',
                             xns : Roo.bootstrap,
-                            weight: 'primary'
+                            weight: 'primary',
+                            html: 'active'
                         },
                         {
                             xtype: 'Button',
                             xns : Roo.bootstrap,
-                            weight: 'success',
+                            weight: 'success',,
+                            html: 'active'
                         },
                         {
                             xtype: 'Button',
                             xns : Roo.bootstrap,
                             weight: 'info',
-                            size : 'lg',
+                            size : 'lg',,
+                            html: 'active'
                         },
                         {
                             xtype: 'Button',
                             xns : Roo.bootstrap,
-                            weight: 'warning',
+                            weight: 'warning',,
+                            html: 'active'
                         },
                         {
                             xtype: 'Button',
                             xns : Roo.bootstrap,
                             weight: 'danger',
-                            size : 'sm',
+                            size : 'sm',,
+                            html: 'active'
                         },
                         {
                             xtype: 'Button',
                             xns : Roo.bootstrap,
                             weight: 'danger',
-                            size : 'xs',
+                            size : 'xs',,
+                            html: 'active'
                         },
                         {
                             xtype: 'Button',
                             xns : Roo.bootstrap,
                             weight: 'link',
                             tag: 'a',
-                            href: 'http://www.roojs.com'
+                            href: 'http://www.roojs.com',
+                            html: 'active'
                         },
                         {
                             xtype: 'Button',
                             xns : Roo.bootstrap,
-                            tag: 'input'
+                            tag: 'input',
+                            html: 'active'
                         },
                         {
                             xtype: 'Button',
                             xns : Roo.bootstrap,
-                            tag: 'submit'
+                            tag: 'submit',
+                            html: 'active'
                         },
                         {
                             xtype: 'Button',
                             xns : Roo.bootstrap,
-                            disabled: true
+                            disabled: true,
+                            html: 'active'
                         },
                         {
                             xtype: 'Button',
                             xns : Roo.bootstrap,
-                            isClose: true
+                            isClose: true,
+                            html: 'active'
                         },
                         {
                             xtype: 'Button',
                             xns : Roo.bootstrap,
-                            glyphicon: 'search'
+                            glyphicon: 'search',
+                            html: 'active'
                         },
                         {
                             xtype: 'Button',
