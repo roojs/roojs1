@@ -25,7 +25,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         
         cfg.html = this.html || cfg.html ;
         
-        if (active) {
+        if (this.active) {
             cfg.cls += ' active';
         }
         
