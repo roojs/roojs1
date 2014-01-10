@@ -15,7 +15,7 @@ Container
   
 Button.js
   active: true/false
-  primary: true/false
+  weight : default (or empty) | primary | success | info | warning
   size : lg / sm / xs (default empty)
   tag: button (default) | a | input | submit
   href:  // if set then and tag != 'a' = then show error
