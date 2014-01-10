@@ -3,7 +3,23 @@
  *
  * row
  * 
- */ 
+ */
+
+/**
+ * @class Roo.bootstrap.Button
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Button class
+ * @cfg {String} html The button content
+ * @cfg {String} weight default (or empty) | primary | success | info | warning
+ *
+ *
+ * 
+ * @constructor
+ * Create a new button
+ * @param {Object} config The config object
+ */
+
+
 Roo.bootstrap.Button = function(config){
     Roo.bootstrap.Button.superclass.constructor.call(this, config);
 };
