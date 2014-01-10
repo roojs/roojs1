@@ -33,6 +33,8 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     tag: 'button',
     href: '',
     disabled: false,
+    isClose: false,
+    glyphicon: '',
     
     autoCreate : {
         cls: 'btn',
