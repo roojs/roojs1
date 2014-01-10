@@ -99,7 +99,6 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
                 html
             ];
             
-            cfg.cls += ' glyphicon-' + this.glyphicon;
         }
         
         return cfg;
