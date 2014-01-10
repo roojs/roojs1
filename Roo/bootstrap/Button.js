@@ -88,6 +88,12 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             cfg.disabled = 'disabled';
         }
         
+        if (this.items) {
+            cfg.tag = 'ul';
+            
+            this.glyphicon = 'caret';
+        }
+        
         if (this.glyphicon) {
             cfg.html = ' ' + cfg.html;
             
