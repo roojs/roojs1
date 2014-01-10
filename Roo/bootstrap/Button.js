@@ -32,6 +32,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     size: '',
     tag: 'button',
     href: '',
+    disabled: false,
     
     autoCreate : {
         cls: 'btn',
@@ -69,6 +70,10 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             Roo.log("Tag must be a to set href.");
         } else {
             cfg.href = this.href;
+        }
+        
+        if (this.disabled) {
+            cfg.disabled='disabled';
         }
         
         return cfg;
