@@ -89,6 +89,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         }
         
         if (this.glyphicon) {
+            cfg.html = ' ' + cfg.html;
             //var html = this.html;
             //delete cfg.html;
             cfg.cn= [
