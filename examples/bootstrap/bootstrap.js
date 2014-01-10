@@ -52,14 +52,26 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xns: Roo.bootstrap.Navbar.Dropdown,
                                     html: "hello",
                                     href : 'http://roojs.com'
+                                }
+                            ]
+                        },
+                        {
+                            xtype: 'Dropdown',
+                            xns: Roo.bootstrap.Navbar,
+                            align: 'right',
+                            items : [
+                                {
+                                    xtype: 'Item',
+                                    xns: Roo.bootstrap.Navbar.Dropdown,
+                                    html: "hello",
+                                    href : 'http://roojs.com'
                                 },
                                 {
                                     xtype: 'Item',
                                     xns: Roo.bootstrap.Navbar.Dropdown,
                                     html: "hello",
-                                    href : 'http://roojs.com',
-                                    align: "right"
-                                }  
+                                    href : 'http://roojs.com'
+                                }
                             ]
                         }
                     ]
