@@ -171,7 +171,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                             weight: 'info',
                             size : 'xs',
                             active: true,
-                            tag: 'testing'
+                            tag: 'a'
                         },
                     ]
                 },
