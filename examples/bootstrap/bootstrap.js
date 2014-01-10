@@ -147,6 +147,12 @@ Roo.example.bootstrap = new Roo.XComponent({
                             weight: 'danger',
                             active: true
                         },
+                        {
+                            xtype: 'Button',
+                            xns : Roo.bootstrap,
+                            size : 'xl',
+                            active: true
+                        },
                     ]
                 },
             ]
