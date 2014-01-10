@@ -51,7 +51,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             
             cfg["aria-hidden"] = true;
             
-            cfg.html = "&times;"
+            cfg.html = "&times;";
             
             return cfg;
         }
