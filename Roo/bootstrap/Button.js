@@ -93,8 +93,8 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             delete cfg.html;
             cfg.cn= [
                 {
-                    tag: span
-                    cls glyphicon-' + this.glyphicon;
+                    tag: 'span',
+                    cls: 'glyphicon-' + this.glyphicon,
                 },
                 html
             ];
