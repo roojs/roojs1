@@ -35,6 +35,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     disabled: false,
     isClose: false,
     glyphicon: '',
+    badge: '',
     
     autoCreate : {
         cls: 'btn',
@@ -97,12 +98,24 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         if (this.glyphicon) {
             cfg.html = ' ' + cfg.html;
             
-            cfg.cn= [
+            cfg.cn = [
                 {
                     tag: 'span',
                     cls: 'glyphicon glyphicon-' + this.glyphicon,
                 }
             ];
+        }
+        
+        if (this.badge) {
+            cfg.html += ' ';
+            
+            cfg.cn = [
+                {
+                    tag: 'span',
+                    cls: 'badge',
+                    html: this.badge
+                }
+            ]
         }
         
         return cfg;
