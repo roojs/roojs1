@@ -41,7 +41,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         
         var cfg = Roo.apply({}, Roo.bootstrap.Button.superclass.getAutoCreate.call(this));
         
-        cfg.html = this.html || cfg.html ;
+        cfg.html = this.html || cfg.html;
         
         cfg.cls += ' btn-' + this.weight;
         
@@ -49,10 +49,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             cfg.cls += ' active';
         }
         
-        var size = this.size.length ? this.size: 'default';
-        if (this.size!=='default') {
-            cfg.cls += ' btn' + this.size;
-        }
+        cfg.cls += this.size.length ? (' btn-' + this.size) : '';
         
         
         return cfg;
