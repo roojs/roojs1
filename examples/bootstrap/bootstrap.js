@@ -199,7 +199,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                         {
                             xtype: 'Button',
                             xns : Roo.bootstrap,
-                            glyphicon: 'step-forward'
+                            glyphicon: 'search'
                         },
                     ]
                 },
