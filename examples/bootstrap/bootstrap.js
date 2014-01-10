@@ -59,7 +59,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                 },
                 {
                     xtype: 'Navbar',
-                    cls : 'navbar-fixed-top navbar-inverse',
+                    cls : 'navbar-fixed-top navbar-inverse navbar-right',
                     role : 'navigation',
                     xns: Roo.bootstrap,
                     items : [
