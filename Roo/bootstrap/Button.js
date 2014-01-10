@@ -31,6 +31,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     weight: 'default',
     size: '',
     tag: 'button',
+    href: '',
     
     autoCreate : {
         cls: 'btn',
@@ -64,7 +65,11 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             cfg.tag = this.tag;
         }
         
-        
+        if (this.tag !== 'a' && this.href !== '') {
+            Roo.log("Tag must be a to set href.");
+        } else {
+            cfg.href = this.href;
+        }
         
         return cfg;
     }
