@@ -20,7 +20,7 @@ Button.js
   tag: button (default) | a | input | submit
   href:  // if set then and tag != 'a' = then show error
   disabled  : true/false
-  type: normal | close | 
+  isClose: true/false 
   glyphicon: volume-up  (see components styling)
   (( if button has items[] then show a carret and crete the ul/ for dropdown))
   dropdirection : default empty (down) can be 'dropup'
