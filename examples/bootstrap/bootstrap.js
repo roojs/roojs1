@@ -206,7 +206,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                             xns : Roo.bootstrap,
                             items: [
                                 {
-                                    xtype: 'Button',
+                                    xtype: 'li',
                                     xns : Roo.bootstrap,
                                 }
                             ]
