@@ -46,8 +46,6 @@ Roo.extend(Roo.bootstrap.Navbar.Dropdown, Roo.bootstrap.Component,  {
     
     getAutoCreate : function(){
         var cfg = Roo.bootstrap.Navbar.Dropdown.superclass.getAutoCreate.call(this);
-        
-	cfg.cls += cfg.align==='right'?' navbar-right':'';
 	
         cfg.cn[0].cn[0] = this.html || cfg.cn[0].cn[0];
         return cfg;
