@@ -181,6 +181,11 @@ Roo.example.bootstrap = new Roo.XComponent({
                             xns : Roo.bootstrap,
                             tag: 'input'
                         },
+                        {
+                            xtype: 'Button',
+                            xns : Roo.bootstrap,
+                            disabled: true
+                        },
                     ]
                 },
             ]
