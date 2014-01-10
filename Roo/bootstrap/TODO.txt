@@ -1,0 +1,101 @@
+http://getbootstrap.com/
+
+Component
+  hideon = xs,sm,md,lg,print ( adds .hidden-xs) - value can be a combination of any of these
+  showon = xs,sm,md,lg,print  ( adds .visible-xs) - value can be a combination of any of these
+
+
+Container
+ - add type : (empty) | jumbotron | page-header | thumbnail
+ - alert (empty) | success | info | warning | danger
+ - dismiss : false | true
+ 
+ ** if alert -> then after render??? change all the children..
+ ** add hook? afterChildRender to Component..
+  
+Button.js
+  active: true/false
+  primary: true/false
+  size : lg / sm / xs (default empty)
+  tag: button (default) | a | input | submit
+  href:  // if set then and tag != 'a' = then show error
+  disabled  : true/false
+  type: normal | close | 
+  glyphicon: volume-up  (see components styling)
+  (( if button has items[] then show a carret and crete the ul/ for dropdown))
+  dropdirection : default empty (down) can be 'dropup'
+  badge: (empty) or value
+  
+Navbar.Dropdown
+    - add align:  left (defualt) right
+    - add aligh
+
+Navbar.Button (extends Button)
+    
+Navbar.Item
+    - add
+        disabled
+    - if href is empty - then do not use <a> tags. (and use navbar-text)
+    - add align : right
+    - add badge
+
+Navbar -
+    type : tabs | pills | stacked | justified | fixed-top | fixed-bottom  | static-top | inverse (default empty)  
+
+BreadCrumb
+BreadCrumb.Item
+  - active: true | false
+
+ButtonGroup.js
+    size : lg / sm / xs (default empty)
+    align: (empty) or vertical | justified
+    
+  
+Navbar.Dropdown.Divider.js
+
+  
+Img.js
+    format: rounded | circle | thumbnail
+    
+Progress
+   now:
+   max:
+   min:
+   width:
+   striped: false | true
+   active: false | true
+   // if items -> then use that for the items.
+   
+ProgressItem
+    width:
+    
+    
+MediaBlock
+   src
+   alt
+   href
+   title
+   html
+     
+MediaList
+   
+MediaList.Item
+   src
+   alt
+   href
+   title
+   html
+   
+   
+ListGroup
+ (use div version)
+ 
+ListGroupItem
+ (use div's)
+  html:
+  badge:
+  title:
+  href:
+   
+   
+   
