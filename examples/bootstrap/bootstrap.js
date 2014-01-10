@@ -182,38 +182,32 @@ Roo.example.bootstrap = new Roo.XComponent({
                             xns : Roo.bootstrap,
                             weight: 'link',
                             tag: 'a',
-                            href: 'http://www.roojs.com',
-                            html: 'active'
+                            href: 'http://www.roojs.com'
                         },
                         {
                             xtype: 'Button',
                             xns : Roo.bootstrap,
-                            tag: 'input',
-                            html: 'active'
+                            tag: 'input'
                         },
                         {
                             xtype: 'Button',
                             xns : Roo.bootstrap,
-                            tag: 'submit',
-                            html: 'active'
+                            tag: 'submit'
                         },
                         {
                             xtype: 'Button',
                             xns : Roo.bootstrap,
-                            disabled: true,
-                            html: 'active'
+                            disabled: true
                         },
                         {
                             xtype: 'Button',
                             xns : Roo.bootstrap,
-                            isClose: true,
-                            html: 'active'
+                            isClose: true
                         },
                         {
                             xtype: 'Button',
                             xns : Roo.bootstrap,
-                            glyphicon: 'search',
-                            html: 'active'
+                            glyphicon: 'search'
                         },
                         {
                             xtype: 'Button',
