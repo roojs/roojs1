@@ -207,7 +207,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                             items: [
                                 {
                                     tag: 'ul',
-                                    xns : Roo.bootstrap,
+                                    
                                 }
                             ]
                         },
