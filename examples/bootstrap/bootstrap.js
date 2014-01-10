@@ -183,7 +183,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                             weight: 'link',
                             tag: 'a',
                             href: 'http://www.roojs.com',
-                            html: 'active'
+                            html: 'link a'
                         },
                         {
                             xtype: 'Button',
