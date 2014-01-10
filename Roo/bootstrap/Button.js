@@ -49,7 +49,10 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             cfg.cls += ' active';
         }
         
-        
+        var size = this.size.length ? this.size: 'default';
+        if (this.size!=='default') {
+            cfg.cls += ' btn' + this.size;
+        }
         
         
         return cfg;
