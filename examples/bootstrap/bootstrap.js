@@ -215,8 +215,8 @@ Roo.example.bootstrap = new Roo.XComponent({
                             xtype: 'Button',
                             xns : Roo.bootstrap,
                             weight: 'primary',
-                            badge: '42'
-                            cls: 'pollright'
+                            badge: '42',
+                            cls: 'pull-right'
                         }
                     ]
                 },
