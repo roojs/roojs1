@@ -47,8 +47,9 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) < 0) {
             Roo.log("Invalid value for weight: " + this.weight + ". must be default, primary, success, info or warning.");
             this.tag = 'button';
+        } else {
+            cfg.cls += ' btn-' + this.weight;
         }
-        cfg.cls += ' btn-' + this.weight;
         
         if (this.active) {
             cfg.cls += ' active';
