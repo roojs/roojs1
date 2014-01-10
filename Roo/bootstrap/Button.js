@@ -12,9 +12,10 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
       
     html: false,
     active: false,
+    weight: 'default',
     
     autoCreate : {
-        cls: 'btn btn-default',
+        cls: 'btn',
         tag : 'button',
         html: 'hello'
     },
@@ -25,9 +26,14 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         
         cfg.html = this.html || cfg.html ;
         
+        cfg.cls += ' btn-' + this.weight;
+        
         if (this.active) {
             cfg.cls += ' active';
         }
+        
+        
+        
         
         return cfg;
     }
