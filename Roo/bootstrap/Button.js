@@ -88,6 +88,10 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             cfg.disabled = 'disabled';
         }
         
+        if (this.glyphicon) {
+            cfg.cls += ' glyphicon-' + this.glyphicon;
+        }
+        
         return cfg;
     }
    
