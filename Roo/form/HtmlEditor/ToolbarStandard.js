@@ -369,7 +369,6 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                     handler: function(a,b) {
                         var c = editor.getValue();
                         var nodes = [];
-                        Roo.log(Roo.get(editor.doc.body));
                         c.select('[style]').each(function(i) {
                             nodes.push(i.dom);
                         });
