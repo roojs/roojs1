@@ -691,6 +691,11 @@ if(opt.anim.isAnimated()){
                 }
                 var s = this.attr('style').split(';');
                 Roo.log(s);
+                
+                Roo.each(s, function(v){
+                    var style = v.split(':');
+                    r[style[0]] = style[1];
+                });
                 return r;
             }
             for(var i = 0; i < len; i++){
