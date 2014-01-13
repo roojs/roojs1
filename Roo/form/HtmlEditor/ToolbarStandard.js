@@ -369,7 +369,6 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                     html: this.cleanStyles[i],
                     handler: function(a,b) {
                         var c = Roo.get(editor.doc.body);
-                        
                         c.select('[style]').each(function(s) {
                             s.dom.style.removeProperty(a.html);
                         });
