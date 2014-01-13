@@ -326,7 +326,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         // special menu.. - needs to be tidied up..
         if (!this.disable.special) {
             smenu = {
-                text: "&#169;",
+                text: "S;",
                 cls: 'x-edit-none',
                 
                 menu : {
