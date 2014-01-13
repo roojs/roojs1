@@ -356,19 +356,22 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         // special menu.. - needs to be tidied up..
         if (!this.disable.cleanStyles) {
             cmenu = {
-                text: "&#169;",
+                text: "Clean",
                 cls: 'x-btn-icon',
                 
                 menu : {
                     items : []
                 }
             };
-            for (var i =0; i < this.specialChars.length; i++) {
-                smenu.menu.items.push({
+            for (var i =0; i < this.cleanStyles.length; i++) {
+                cmenu.menu.items.push({
                     
-                    html: this.specialChars[i],
+                    html: this.cleanStyles[i],
                     handler: function(a,b) {
-                        editor.insertAtCursor(String.fromCharCode(a.html.replace('&#','').replace(';', '')));
+                        Roo.log('handle');
+                        Roo.log(a);
+                        Roo.log(b);
+//                        editor.insertAtCursor(String.fromCharCode(a.html.replace('&#','').replace(';', '')));
                         //editor.insertAtCursor(a.html);
                         
                     },
@@ -377,7 +380,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             }
             
             
-            tb.add(smenu);
+            tb.add(cmenu);
             
             
         }
