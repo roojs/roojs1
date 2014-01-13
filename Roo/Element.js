@@ -679,13 +679,13 @@ if(opt.anim.isAnimated()){
          * @return {Object} The style object
          */
         getStyles : function(){
-            Roo.log('in?');
+            
             
             
             var a = arguments, len = a.length, r = {};
             if(a == 'all'){
                 var s = this.attr('style').split(';');
-                
+                Roo.log(s);
                 return r;
             }
             for(var i = 0; i < len; i++){
