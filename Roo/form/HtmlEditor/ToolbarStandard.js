@@ -370,14 +370,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                         var c = Roo.get(editor.doc.body);
                         var nodes = [];
                         c.select('[style]').each(function(i) {
-                           i.dom.style.removeProperty('font-size');
-//                            i.setStyle()
-                            
-                            Roo.log(i.getStyle('font-size'));
+                            i.dom.style.removeProperty('font-size');
                         });
-                        
-//                        editor.insertAtCursor(String.fromCharCode(a.html.replace('&#','').replace(';', '')));
-                        //editor.insertAtCursor(a.html);
                         
                     },
                     tabIndex:-1
