@@ -123,8 +123,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
     ],
     
     cleanStyles : [
-        "font-size",
-        "color"
+        "font-size"
     ],
      /**
      * @cfg {String} defaultFont default font to use.
