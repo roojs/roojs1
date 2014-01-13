@@ -354,7 +354,6 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         
         var cmenu = { };
         if (!this.disable.cleanStyles) {
-            Roo.log('init toolbar style');
             cmenu = {
                 cls: 'x-btn-icon x-btn-clear',
                 
