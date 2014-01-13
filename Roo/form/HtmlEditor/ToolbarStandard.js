@@ -364,16 +364,17 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                 }
             };
             for (var i =0; i < this.cleanStyles.length; i++) {
+                var style = this.cleanStyles[i];
                 cmenu.menu.items.push({
                     
-                    html: this.cleanStyles[i],
+                    html: style,
                     handler: function(a,b) {
                         Roo.log('style');
-                        Roo.log(this.cleanStyles[i])
+                        Roo.log(style)
                         var c = Roo.get(editor.doc.body);
                         var nodes = [];
                         c.select('[style]').each(function(s) {
-                            s.dom.style.removeProperty(this.cleanStyles[i]);
+                            s.dom.style.removeProperty(style);
                         });
                         
                     },
