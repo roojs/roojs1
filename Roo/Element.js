@@ -684,7 +684,7 @@ if(opt.anim.isAnimated()){
             
             var a = arguments, len = a.length, r = {};
             Roo.log(a[0]);
-            if(a[0]){
+            if(a[0] == 'all'){
                 var s = this.attr('style').split(';');
                 Roo.log(s);
                 return r;
