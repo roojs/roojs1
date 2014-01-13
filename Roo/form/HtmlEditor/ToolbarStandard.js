@@ -369,7 +369,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                     handler: function(a,b) {
                         var c = editor.getValue();
                         Roo.log(Roo.get(editor.doc.body));
-                        
+                        c.select()
                         
 //                        editor.insertAtCursor(String.fromCharCode(a.html.replace('&#','').replace(';', '')));
                         //editor.insertAtCursor(a.html);
