@@ -368,8 +368,11 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                     html: this.cleanStyles[i],
                     handler: function(a,b) {
                         var c = editor.getValue();
+                        var nodes = [];
                         Roo.log(Roo.get(editor.doc.body));
-                        c.select()
+                        c.select('[style]').each(function(i) {
+                            nodes.push(i.dom);
+                        });
                         
 //                        editor.insertAtCursor(String.fromCharCode(a.html.replace('&#','').replace(';', '')));
                         //editor.insertAtCursor(a.html);
