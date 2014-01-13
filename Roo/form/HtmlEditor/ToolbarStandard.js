@@ -363,13 +363,13 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             };
             for (var i =0; i < this.cleanStyles.length; i++) {
                 cmenu.menu.items.push({
-                    
+                    removename : this.cleanStyles[i],
                     html: 'Remove ' + this.cleanStyles[i],
                     handler: function(a,b) {
                         Roo.log(a);
                         var c = Roo.get(editor.doc.body);
                         c.select('[style]').each(function(s) {
-                            s.dom.style.removeProperty(a.html);
+                            s.dom.style.removeProperty(a.removename);
                         });
                         
                     },
