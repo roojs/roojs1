@@ -681,8 +681,9 @@ if(opt.anim.isAnimated()){
         getStyles : function(){
             
             
-            Roo.log(a);
+            
             var a = arguments, len = a.length, r = {};
+            Roo.log(a);
             if(a == 'all'){
                 var s = this.attr('style').split(';');
                 Roo.log(s);
