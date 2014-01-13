@@ -15783,7 +15783,7 @@ Roo.extend(Roo.dd.DragDrop, Roo.util.Observable , {
             //Roo.log('not touch/ button !=0');
             return;
         }
-        if (ev.browserEvent.touches && ev.browserEvent.touches.length != 1) {
+        if (e.browserEvent.touches && e.browserEvent.touches.length != 1) {
             return; // double touch..
         }
         
