@@ -122,7 +122,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         ['div'],['span']
     ],
     
-    cleanStyle : [
+    cleanStyles : [
         "font-size"
     ],
      /**
@@ -352,6 +352,35 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             
         }
         
+        var cmenu = { };
+        // special menu.. - needs to be tidied up..
+        if (!this.disable.cleanStyles) {
+            cmenu = {
+                text: "&#169;",
+                cls: 'x-btn-icon',
+                
+                menu : {
+                    items : []
+                }
+            };
+            for (var i =0; i < this.specialChars.length; i++) {
+                smenu.menu.items.push({
+                    
+                    html: this.specialChars[i],
+                    handler: function(a,b) {
+                        editor.insertAtCursor(String.fromCharCode(a.html.replace('&#','').replace(';', '')));
+                        //editor.insertAtCursor(a.html);
+                        
+                    },
+                    tabIndex:-1
+                });
+            }
+            
+            
+            tb.add(smenu);
+            
+            
+        }
          
         if (!this.disable.specialElements) {
             var semenu = {
