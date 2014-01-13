@@ -370,8 +370,10 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                         var c = Roo.get(editor.doc.body);
                         var nodes = [];
                         c.select('[style]').each(function(i) {
-                            nodes.push(i.dom);
+                            
+                            nodes.push(i.dom.getAttributeNs('font-size','style'));
                         });
+                        
                         Roo.log(nodes);
 //                        editor.insertAtCursor(String.fromCharCode(a.html.replace('&#','').replace(';', '')));
                         //editor.insertAtCursor(a.html);
