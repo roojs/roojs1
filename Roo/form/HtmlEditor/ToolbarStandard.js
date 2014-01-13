@@ -353,6 +353,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         }
         
         var cmenu = { };
+        Roo.log('init toolbar style');
         // special menu.. - needs to be tidied up..
         if (!this.disable.cleanStyles) {
             Roo.log('init toolbar style');
