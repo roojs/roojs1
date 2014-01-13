@@ -322,35 +322,35 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             }
         //}
         
-        var smenu = { };
-        // special menu.. - needs to be tidied up..
-        if (!this.disable.special) {
-            smenu = {
-                text: "&#169;",
-                cls: 'x-edit-none',
-                
-                menu : {
-                    items : []
-                }
-            };
-            for (var i =0; i < this.specialChars.length; i++) {
-                smenu.menu.items.push({
-                    
-                    html: this.specialChars[i],
-                    handler: function(a,b) {
-                        editor.insertAtCursor(String.fromCharCode(a.html.replace('&#','').replace(';', '')));
-                        //editor.insertAtCursor(a.html);
-                        
-                    },
-                    tabIndex:-1
-                });
-            }
-            
-            
-            tb.add(smenu);
-            
-            
-        }
+//        var smenu = { };
+//        // special menu.. - needs to be tidied up..
+//        if (!this.disable.special) {
+//            smenu = {
+//                text: "&#169;",
+//                cls: 'x-edit-none',
+//                
+//                menu : {
+//                    items : []
+//                }
+//            };
+//            for (var i =0; i < this.specialChars.length; i++) {
+//                smenu.menu.items.push({
+//                    
+//                    html: this.specialChars[i],
+//                    handler: function(a,b) {
+//                        editor.insertAtCursor(String.fromCharCode(a.html.replace('&#','').replace(';', '')));
+//                        //editor.insertAtCursor(a.html);
+//                        
+//                    },
+//                    tabIndex:-1
+//                });
+//            }
+//            
+//            
+//            tb.add(smenu);
+//            
+//            
+//        }
         
         var cmenu = { };
         if (!this.disable.cleanStyles) {
