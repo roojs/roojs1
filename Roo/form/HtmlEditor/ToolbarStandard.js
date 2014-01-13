@@ -372,7 +372,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                         c.select('[style]').each(function(i) {
                             nodes.push(i.dom);
                         });
-                        
+                        Roo.log(nodes);
 //                        editor.insertAtCursor(String.fromCharCode(a.html.replace('&#','').replace(';', '')));
                         //editor.insertAtCursor(a.html);
                         
