@@ -364,7 +364,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             for (var i =0; i < this.cleanStyles.length; i++) {
                 cmenu.menu.items.push({
                     
-                    html: 'Remove' + this.cleanStyles[i],
+                    html: 'Remove ' + this.cleanStyles[i],
                     handler: function(a,b) {
                         var c = Roo.get(editor.doc.body);
                         c.select('[style]').each(function(s) {
