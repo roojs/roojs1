@@ -351,6 +351,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             
             
         }
+        
          
         if (!this.disable.specialElements) {
             var semenu = {
