@@ -679,19 +679,12 @@ if(opt.anim.isAnimated()){
          * @return {Object} The style object
          */
         getStyles : function(){
-            
-            
-            
             var a = arguments, len = a.length, r = {};
-            Roo.log(a[0]);
             if(a[0] == 'all'){
-                Roo.log(this)
                 if(!this.attr('style')){
                     return r;
                 }
                 var s = this.attr('style').split(';');
-                Roo.log(s);
-                
                 Roo.each(s, function(v){
                     var style = v.split(':');
                     r[style[0]] = style[1];
