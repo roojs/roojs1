@@ -683,7 +683,7 @@ if(opt.anim.isAnimated()){
             
             
             var a = arguments, len = a.length, r = {};
-            Roo.log(a);
+            Roo.log(typeof(a));
             if(a.indexOf('all') !== -1){
                 var s = this.attr('style').split(';');
                 Roo.log(s);
