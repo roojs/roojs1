@@ -376,10 +376,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                 });
             }
             
-            
             tb.add(cmenu);
-            
-            
         }
          
         if (!this.disable.specialElements) {
