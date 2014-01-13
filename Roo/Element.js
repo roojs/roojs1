@@ -680,7 +680,7 @@ if(opt.anim.isAnimated()){
          */
         getStyles : function(){
             var a = arguments, len = a.length, r = {};
-            if(a[0] == 'all'){
+            if(a[0] == 'all'){// for Ticket #2048
                 if(!this.attr('style')){
                     return r;
                 }
