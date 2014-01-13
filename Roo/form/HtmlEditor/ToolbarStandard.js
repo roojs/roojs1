@@ -356,7 +356,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         if (!this.disable.cleanStyles) {
             Roo.log('init toolbar style');
             cmenu = {
-                text: "Clean",
+                icon: rootURL + '/Pman/templates/images/edit-clear.gif',
                 cls: 'x-btn-icon',
                 
                 menu : {
