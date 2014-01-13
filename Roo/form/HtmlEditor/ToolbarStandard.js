@@ -370,8 +370,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                     handler: function(a,b) {
                         var c = Roo.get(editor.doc.body);
                         var nodes = [];
-                        c.select('[style]').each(function(i) {
-                            i.dom.style.removeProperty(this.cleanStyles[i]);
+                        c.select('[style]').each(function(v) {
+                            v.dom.style.removeProperty(this.cleanStyles[i]);
                         });
                         
                     },
