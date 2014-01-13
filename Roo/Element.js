@@ -675,22 +675,10 @@ if(opt.anim.isAnimated()){
          * @param {String} style1 A style name
          * @param {String} style2 A style name
          * @param {String} etc.
-         * @param {String} all If param get all of the styles..
          * @return {Object} The style object
          */
         getStyles : function(){
             var a = arguments, len = a.length, r = {};
-            if(a[0] == 'all'){// for Ticket #2048 get all the styles
-                if(!this.attr('style')){
-                    return r;
-                }
-                var s = this.attr('style').split(';');
-                Roo.each(s, function(v){
-                    var style = v.split(':');
-                    r[style[0]] = style[1];
-                });
-                return r;
-            }
             for(var i = 0; i < len; i++){
                 r[a[i]] = this.getStyle(a[i]);
             }
