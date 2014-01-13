@@ -686,6 +686,9 @@ if(opt.anim.isAnimated()){
             Roo.log(a[0]);
             if(a[0] == 'all'){
                 Roo.log(this)
+                if(!this.attr('style')){
+                    return r;
+                }
                 var s = this.attr('style').split(';');
                 Roo.log(s);
                 return r;
