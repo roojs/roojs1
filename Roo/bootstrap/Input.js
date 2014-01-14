@@ -49,7 +49,16 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         }
         
     }
-    
+    setDisabled : function(v)
+    {
+        var i  = this.el.select('input',true).dom;
+        if (v) {
+            i.removeAttribute('disabled');
+            return;
+            
+        }
+        i.setAttribute('disabled','true');
+    }
 });
 
  
