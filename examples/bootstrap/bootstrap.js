@@ -392,11 +392,12 @@ Roo.example.bootstrap = new Roo.XComponent({
                     xtype: 'Container',
                     xns: Roo.bootstrap,
                     style :  'margin-top:60px',
-                    labelAlign : 'left',
+                    
                     items : [
                         {
                             xtype: 'Form',
                             xns: Roo.bootstrap,
+                            labelAlign : 'left',
                             items : [
                                 {
                                     xtype: 'Input',
