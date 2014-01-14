@@ -73,7 +73,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                     xtype: 'Container',
                     xns: Roo.bootstrap,
                     jumbotron : true,
-                     style :  'padding: 30px 15px 40px', 
+                      
                     html : '<h1> hello world </h1><p>test</p>'
                 },
                 {
