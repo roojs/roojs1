@@ -377,6 +377,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xtype: 'Input',
                                     xns: Roo.bootstrap,
                                     name : 'test',
+                                    label : 'test'
                                 }
                             ]
                         }
