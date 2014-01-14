@@ -122,10 +122,20 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         };
           
     },
+    
+    initEvents : function()
+    {
+        this.el.select('.modal-header .close').on('click', this.hide, this);
+    },
     show : function() {
         this.el.addClass('on');
         this.el.removeClass('fade');
         this.el.setStyle('display', 'block');
+    },
+    hide : function() {
+        this.el.removeClass('on');
+        this.el.addClass('fade');
+        this.el.setStyle('display', 'none');
     }
 });
 
