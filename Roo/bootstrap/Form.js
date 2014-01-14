@@ -26,8 +26,13 @@ Roo.bootstrap.Form = function(config){
 Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
       
     
-     
-    
+     getAutoCreate : function(){
+        
+        return {
+            tag: 'form',
+            method : this.method || 'POST',
+            id : this.id || Roo.id()
+        },
     
 });
 
