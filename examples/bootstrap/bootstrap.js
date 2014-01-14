@@ -388,8 +388,32 @@ Roo.example.bootstrap = new Roo.XComponent({
                             ]
                         }
                     ]
+                },{
+                    xtype: 'Container',
+                    xns: Roo.bootstrap,
+                    style :  'margin-top:60px',
+                    labelAlign : 'left',
+                    items : [
+                        {
+                            xtype: 'Form',
+                            xns: Roo.bootstrap,
+                            items : [
+                                {
+                                    xtype: 'Input',
+                                    xns: Roo.bootstrap,
+                                    name : 'test',
+                                    fieldLabel : 'test'
+                                },
+                                {
+                                    xtype: 'Button',
+                                    xns: Roo.bootstrap,
+                                    html : 'Submit'
+                                    
+                                },
+                            ]
+                        }
+                    ]
                 }
-                                
             ]
         };
     }
