@@ -124,6 +124,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     },
     show : function() {
         this.el.addClass('on');
+        this.el.removeClass('fade');
         this.el.set('display', 'block');
     }
 });
