@@ -30,7 +30,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                     type : this.inputType,
                     cls : 'form-control'
                 }
-        }
+            ]
+        };
     }
     
 });
