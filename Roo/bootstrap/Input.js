@@ -11,7 +11,7 @@ Roo.bootstrap.Input = function(config){
 
 Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     
-    fieldLabel : 'test',
+    fieldLabel : '',
     inputType : 'text',
     
     getAutoCreate : function(){
