@@ -48,6 +48,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 	
 	if (['fixed-top','fixed-bottom','static-top'].indexOf(this.position)!==-1) {
 	    cfg.cn[0].cls += ' navbar-' + this.position;
+        cfg.tag = 'header';
 	}
 	 
 	if (this.collapse) {
