@@ -9,7 +9,8 @@ Roo.bootstrap.Container = function(config){
 };
 
 Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
-      
+     
+    jumbotron : false, // doc me
 	autoCreate : {
         cls: 'container',
         html : null
