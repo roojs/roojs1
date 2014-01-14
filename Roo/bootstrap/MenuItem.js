@@ -17,16 +17,16 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
     
     getAutoCreate : function(){
         var cfg= {
-       // cls: '',
-	    tag : 'li',
-	    cn : [
-		{
-		    tag : 'a',
-		    href : '#',
-		    html : 'Link'
-		}
-	    ]
-	};
+            // cls: '',
+             tag : 'li',
+             cn : [
+             {
+                 tag : 'a',
+                 href : '#',
+                 html : 'Link'
+             }
+             ]
+         };
 	    
         cfg.cn[0].href = this.href || cfg.cn[0].href ;
         cfg.cn[0].html = this.html || cfg.cn[0].html ;
