@@ -15777,13 +15777,12 @@ Roo.extend(Roo.dd.DragDrop, Roo.util.Observable , {
      * @private
      */
     handleMouseDown: function(e, oDD){
-        Roo.log(this);
-        Roo.log(e);
+     
         if (!Roo.isTouch && this.primaryButtonOnly && e.button != 0) {
             //Roo.log('not touch/ button !=0');
             return;
         }
-        if (ev.browserEvent.touches && ev.browserEvent.touches.length != 1) {
+        if (e.browserEvent.touches && e.browserEvent.touches.length != 1) {
             return; // double touch..
         }
         
