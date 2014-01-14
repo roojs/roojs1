@@ -31,7 +31,8 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         var cfg = {
             tag: 'form',
             method : this.method || 'POST',
-            id : this.id || Roo.id()
+            id : this.id || Roo.id(),
+            cls : ''
         }
         
         if (this.labelAlign == 'left' ) {
