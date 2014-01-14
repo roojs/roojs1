@@ -69,11 +69,12 @@ Roo.example.bootstrap = new Roo.XComponent({
                         {
                             xtype: 'Item',
                             xns: Roo.bootstrap.Navbar,
-                            href: '',
+                            href: '#',
                             html: "dialog",
                             listeners : {
                                 click : function() {
-                                    _this.dialogs['test'].show();
+                                    Roo.ComponentMgr.get('test-modal-1').show()
+
                                 }
                             }
                             
