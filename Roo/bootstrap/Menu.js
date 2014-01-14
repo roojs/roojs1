@@ -58,7 +58,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
  
        //if (e.isDefaultPrevented()) return;
         
-       this.triggerEl.toggleClass('open');
+       this.triggerEl[isActive ? 'removeClass' : 'addClass']('open');
        
        //  .trigger('shown.bs.dropdown', relatedTarget)
  
