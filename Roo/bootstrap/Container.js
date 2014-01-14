@@ -18,6 +18,9 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         
         var cfg = Roo.apply({}, Roo.bootstrap.Container.superclass.getAutoCreate.call(this));
+        if (this.jumbotron) {
+            cfg.cls = 'jumbotron';
+        }
         
         cfg.html = this.html || cfg.html;
         return cfg;
