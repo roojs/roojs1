@@ -295,6 +295,25 @@ Roo.example.bootstrap = new Roo.XComponent({
                         {
                             xtype: 'ButtonGroup',
                             xns : Roo.bootstrap,
+                            align: 'vertical',
+                            items: [
+                                {
+                                    xtype: 'Button',
+                                    xns : Roo.bootstrap,
+                                },
+                                {
+                                    xtype: 'Button',
+                                    xns : Roo.bootstrap,
+                                },
+                                {
+                                    xtype: 'Button',
+                                    xns : Roo.bootstrap,
+                                }
+                            ]
+                        },
+                        {
+                            xtype: 'ButtonGroup',
+                            xns : Roo.bootstrap,
                             size: 'lg',
                             align: 'justified',
                             items: [
