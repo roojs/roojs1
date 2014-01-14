@@ -16,17 +16,28 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     
     getAutoCreate : function(){
         
+        var id = Roo.id();
         return {
             cls: 'input-group',
             cn : [
+                /*
                 {
                     tag: 'span',
                     cls : 'input-group-addon',
                     html : this.fieldLabel
                     
                 },
+                */
+                {
+                    tag: 'label',
+                    'for' :  id,
+                    cls : 'input-group-addon',
+                    html : this.fieldLabel
+                    
+                },
                 {
                     tag: 'input',
+                    id : id,
                     type : this.inputType,
                     cls : 'form-control'
                 }
