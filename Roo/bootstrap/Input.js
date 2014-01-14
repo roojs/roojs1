@@ -17,7 +17,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         
         var id = Roo.id();
-        return {
+        var cfg = {
             cls: 'input-group',
             cn : [
                 /*
@@ -38,10 +38,16 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                     tag: 'input',
                     id : id,
                     type : this.inputType,
-                    cls : 'form-control'
+                    cls : 'form-control',
+                    placeholder : this.placeholder || '',
+                    
                 }
             ]
         };
+        if (this.disabled) {
+            cfg.cn[1].disabled=true;
+        }
+        
     }
     
 });
