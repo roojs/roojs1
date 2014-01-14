@@ -48,7 +48,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             cfg.cn[1].disabled=true;
         }
         
-    }
+    },
     setDisabled : function(v)
     {
         var i  = this.el.select('input',true).dom;
