@@ -29,7 +29,7 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
             cfg.cls = 'btn-group-' + this.align;
             
             if (this.align == 'justified') {
-                console.log(this.items)
+                console.log(this.items);
             }
         }
         
