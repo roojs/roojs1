@@ -320,14 +320,17 @@ Roo.example.bootstrap = new Roo.XComponent({
                                 {
                                     xtype: 'Button',
                                     xns : Roo.bootstrap,
+                                    tag : 'a'
                                 },
                                 {
                                     xtype: 'Button',
                                     xns : Roo.bootstrap,
+                                    tag : 'a'
                                 },
                                 {
                                     xtype: 'Button',
                                     xns : Roo.bootstrap,
+                                    tag : 'a'
                                 }
                             ]
                         }
