@@ -32,6 +32,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 {
                     tag: 'label',
                     'for' :  id,
+                    cls : 'col-sm-2',
                     html : this.fieldLabel
                     
                 },
