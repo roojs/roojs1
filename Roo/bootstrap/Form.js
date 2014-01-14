@@ -11,9 +11,7 @@ Roo.bootstrap.Form = function(config){
 Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
       
     
-    render : function() {
-        // not supported..
-    }
+     
     
     
 });
