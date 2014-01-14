@@ -78,6 +78,24 @@ Roo.example.bootstrap = new Roo.XComponent({
                             }
                             
                         },
+                        
+                         {
+                            xtype: 'Modal',
+                            xns: Roo.bootstrap,
+                            title : 'test1',
+                            html: "dialog",
+                            listeners : {
+                                click : function() {
+                                    _this.dialogs['test'].show();
+                                }
+                            }
+                            
+                        },
+                        
+                        
+                        
+                        
+                        
                     ]
                     
                 },
