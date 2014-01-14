@@ -373,9 +373,11 @@ Roo.example.bootstrap = new Roo.XComponent({
                             xtype: 'Form',
                             xns: Roo.bootstrap,
                             items : [
-                                xtype: 'Input',
-                                xns: Roo.bootstrap,
-                                name : 'test',
+                                {
+                                    xtype: 'Input',
+                                    xns: Roo.bootstrap,
+                                    name : 'test',
+                                }
                             ]
                         }
                     ]
