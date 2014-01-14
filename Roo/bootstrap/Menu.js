@@ -71,7 +71,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     clearMenus : function()
     {
         //$(backdrop).remove()
-        Roo.select('a.dropdown-toggle',true).each(function(aa) {
+        Roo.select('.dropdown-toggle',true).each(function(aa) {
             if (!aa.hasClass('open')) {
                 return;
             }
