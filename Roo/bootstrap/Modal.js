@@ -64,25 +64,37 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                                 {
                                     cls : 'modal-body',
                                     html : this.body,
-                                }
+                                },
+                                 {
+                                    cls : 'modal-footer',
+                                    cn : [
+                                        {
+                                            tag: 'button',
+                                            cls : 'btn btn-default',
+                                            html : 'Close'
+                                        },
+                                        {
+                                            tag: 'button',
+                                            cls : 'btn btn-primary',
+                                            html : 'Save'
+                                        },
+                                    
+                                    ]
+                                },
+                                
+                                
                             ]
                             
                         }
+                    ]
                         
-                     
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                  </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
-              </div><!-- /.modal -->
-            
+                }
+            ]
             
             
         };
           
-    }
+    },
     show : function() {
         this.el.addClass('on');
         this.el.set('display', 'block');
