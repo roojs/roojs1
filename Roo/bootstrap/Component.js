@@ -52,20 +52,35 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     addxtype : function (tree) {
         var cn = this;
         if (tree.xtype != 'Body') {
-            var tt = Roo.apply({}, tree);
-            delete tt.items;
+            
             cn = Roo.factory(tree);
+	    cn.parentType = this.xtype;
             cn.onRender(this.getChildContainer());
             // then add the element..
         }
+	if (typeof (tree.menu) != 'undefined') {
+	    tree.menu.parentType = cn.xtype;
+	    tree.menu.triggerEl = cn.el;
+	    this.items.push(cn.addxtype(Roo.apply({}, tree.menu)));
+	    
+	}
+	
         if (!tree.items || !tree.items.length) {
             return this;
         }
+	var items = tree.items;
+	delete tree.items;
+	this.items = [];
+	Roo.log(items.length);
         // add the items..
-        for(var i =0;i < tree.items.length;i++) {
-            cn.addxtype(Roo.apply({}, tree.items[i]));
+        for(var i =0;i < items.length;i++) {
+            this.items.push(cn.addxtype(Roo.apply({}, items[i])));
             
         }
+	// if it has a menu?
+	
+	
+	
         return this;
     }
     

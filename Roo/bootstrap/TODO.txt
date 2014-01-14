@@ -14,33 +14,33 @@ Container
  ** add hook? afterChildRender to Component..
   
 Button.js
-  active: true/false
-  weight : default (or empty) | primary | success | info | warning
-  size : lg / sm / xs (default empty)
-  tag: button (default) | a | input | submit
-  href:  // if set then and tag != 'a' = then show error
-  disabled  : true/false
-  isClose: true/false 
-  glyphicon: volume-up  (see components styling)
-  (( if button has items[] then show a carret and crete the ul/ for dropdown))
-  dropdirection : default empty (down) can be 'dropup'
-  badge: (empty) or value
+  active: true/false --- good
+  weight : default (or empty) | primary | success | info | warning --- good
+  size : lg / sm / xs (default empty) --- good
+  tag: button (default) | a | input | submit --- input + submit (form)
+  href:  // if set then and tag != 'a' = then show error --- good
+  disabled  : true/false --- good
+  isClose: true/false --- good
+  glyphicon: volume-up  (see components styling) --- good
+  (( if button has items[] then show a carret and crete the ul/ for dropdown)) --- not done, how to I create ul for dropdown?
+  dropdirection : default empty (down) can be 'dropup' --- .dropup class must be added to parent .btn-group div. .pull-right?
+  badge: (empty) or value --- converts to tag a, add pull-right?
   
-Navbar.Dropdown
-    - add align:  left (defualt) right
-    - add aligh
+Navbar.Dropdown --- problem: has autocreate
+    - add align:  left (default) right --- problem: parent must have navbar-collapse
+    - add pull-right --- what to call it?
 
-Navbar.Button (extends Button)
+Navbar.Button (extends Button) --- how do I do this
     
 Navbar.Item
     - add
-        disabled
-    - if href is empty - then do not use <a> tags. (and use navbar-text)
-    - add align : right
-    - add badge
+        disabled --- no navbar item disabled
+    - if href is empty - then do not use <a> tags. (and use navbar-text) --- problem: if href is empty, it uses default from autocreate instead
+    - add align : right --- the alignment of the parent ul is set, not the li items
+    - add badge --- good
 
 Navbar -
-    type : tabs | pills | stacked | justified | fixed-top | fixed-bottom  | static-top | inverse (default empty)  
+    type : tabs | pills | stacked | justified | fixed-top | fixed-bottom  | static-top | inverse (default empty)  --- +collapse problem: justified must have <a> children
 
 BreadCrumb
 BreadCrumb.Item
@@ -49,7 +49,6 @@ BreadCrumb.Item
 ButtonGroup.js
     size : lg / sm / xs (default empty)
     align: (empty) or vertical | justified
-    
   
 Navbar.Dropdown.Divider.js
 

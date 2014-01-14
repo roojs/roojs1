@@ -33,7 +33,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     
     html: false,
     active: false,
-    weight: 'default',
+    weight: '',
     size: '',
     tag: 'button',
     href: '',
@@ -64,11 +64,14 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             return cfg;
         }
         
-        if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) < 0) {
-            Roo.log("Invalid value for weight: " + this.weight + ". must be default, primary, success, info or warning.");
-            this.tag = 'button';
-        } else {
+         if (this.parentType != 'Navbar') {
+            this.weight = this.weight.length ?  this.weight : 'default';
+         }
+        if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
+            
             cfg.cls += ' btn-' + this.weight;
+        } else {
+            
         }
         
         if (this.active) {
@@ -83,20 +86,34 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         } else {
             cfg.tag = this.tag;
         }
-        
-        if (this.tag !== 'a' && this.href !== '') {
-            Roo.log("Tag must be a to set href.");
-        } else {
-            cfg.href = this.href;
+         
+        Roo.log(this.parentType);
+        if (this.parentType == 'Navbar') {
+            cfg.tag = 'li';
+            cfg.cls = '';
+            cfg.cn =  [  {
+                tag : 'a',
+                html : this.html,
+                href : this.href || '#'
+            }];
+            if (this.menu) {
+                cfg.cn[0].html = this.html  + ' <span class="caret"></span>';
+                cfg.cls += ' dropdown'
+            }   
+            
+            delete cfg.html;
+            
         }
+        
+        
         
         if (this.disabled) {
             cfg.disabled = 'disabled';
         }
         
         if (this.items) {
+            Roo.log('changing to ul' );
             cfg.tag = 'ul';
-            
             this.glyphicon = 'caret';
         }
         
@@ -114,6 +131,12 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         if (this.badge) {
             cfg.html += ' ';
             
+            cfg.tag = 'a';
+            
+            cfg.cls='';
+            
+            cfg.href=this.href;
+            
             cfg.cn = [
                 cfg.html,
                 {
@@ -124,6 +147,12 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             ]
             
             cfg.html='';
+        }
+        
+        if (cfg.tag !== 'a' && this.href !== '') {
+            throw "Tag must be a to set href.";
+        } else {
+            cfg.href = this.href;
         }
         
         return cfg;

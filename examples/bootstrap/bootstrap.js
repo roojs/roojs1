@@ -34,28 +34,38 @@ Roo.example.bootstrap = new Roo.XComponent({
                         {
                             xtype: 'Item',
                             xns: Roo.bootstrap.Navbar,
+                            href: '',
                             html: "hello",
-                            href : 'http://roojs.com'
+                            badge: 'test'
                         },
                         {
-                            xtype: 'Dropdown',
-                            xns: Roo.bootstrap.Navbar,
-                            items : [
-                                {
-                                    xtype: 'Item',
-                                    xns: Roo.bootstrap.Navbar.Dropdown,
-                                    html: "hello",
-                                    href : 'http://roojs.com'
-                                },
-                                {
-                                    xtype: 'Item',
-                                    xns: Roo.bootstrap.Navbar.Dropdown,
-                                    html: "hello",
-                                    href : 'http://roojs.com'
+                            xtype: 'Button',
+                            xns: Roo.bootstrap,
+                            
+                            html: "hellox",
+                             
+                            menu:  {
+                                    xtype: 'Menu',
+                                    xns: Roo.bootstrap,
+                                  //  badge: 'test',
+                                    items : [
+                                        {
+                                            xtype: 'MenuItem',
+                                            xns: Roo.bootstrap,
+                                            html: "hello aaa",
+                                            href : 'http://roojs.com'
+                                        },
+                                        {
+                                            xtype: 'MenuItem',
+                                            xns: Roo.bootstrap,
+                                            html: "hello",
+                                            href : 'http://roojs.com'
+                                        }
+                                    ]
                                 }
-                            ]
                         }
                     ]
+                    
                 },
                 {
                     xtype: 'Container',
@@ -83,41 +93,74 @@ Roo.example.bootstrap = new Roo.XComponent({
                                             xtype: 'Navbar',
                                             xns: Roo.bootstrap,
                                             items : [
-                                                        
                                                 {
                                                     xtype: 'Item',
                                                     xns: Roo.bootstrap.Navbar,
-                                                    html: "hello",
-                                                    href : 'http://roojs.com'
+                                                    html: "nav",
+                                                    href : 'http://roojs.com',
+                                                    
+                                                    menu:    {
+                                                        xtype: 'Menu',
+                                                        xns: Roo.bootstrap,
+                                                        items : [
+                                                            {
+                                                                xtype: 'MenuItem',
+                                                                xns: Roo.bootstrap,
+                                                                html: "hello",
+                                                                href : 'http://roojs.com'
+                                                            }   ,
+                                                            {
+                                                                xtype: 'MenuItem',
+                                                                xns: Roo.bootstrap,
+                                                                html: "hello",
+                                                                href : 'http://roojs.com'
+                                                            }   
+                                                        ]
+                                                    }
                                                 },
-                                                        
                                                 {
-                                                    xtype: 'Dropdown',
-                                                    xns: Roo.bootstrap.Navbar,
-                                                    items : [
-                                                        {
-                                                            xtype: 'Item',
-                                                            xns: Roo.bootstrap.Navbar.Dropdown,
-                                                            html: "hello",
-                                                            href : 'http://roojs.com'
-                                                        }   ,
-                                                        {
-                                                            xtype: 'Item',
-                                                            xns: Roo.bootstrap.Navbar.Dropdown,
-                                                            html: "hello",
-                                                            href : 'http://roojs.com'
-                                                        }   
-                                                    ]
-                                                }            
-                                            ]
-                                        }
-                                                
-                                                
-                                    ]
+                                                        xtype: 'Navbar',
+                                                        xns: Roo.bootstrap,
+                                                        align: 'right',
+                                                        collapse : true,
+                                                        items : [
+                                                            {
+                                                                xtype: 'Item',
+                                                                xns: Roo.bootstrap.Navbar,
+                                                                html: "nav",
+                                                                href : 'http://roojs.com',
+                                                                menu :   {
+                                                                    xtype: 'Menu',
+                                                                    xns: Roo.bootstrap,
+                                                                    items : [
+                                                                        {
+                                                                            xtype: 'MenuItem',
+                                                                            xns: Roo.bootstrap,
+                                                                            html: "hello",
+                                                                            href : 'http://roojs.com'
+                                                                        }  ,
+                                                                        {
+                                                                            xtype: 'MenuItem',
+                                                                            xns: Roo.bootstrap,
+                                                                            html: "hello",
+                                                                            href : 'http://roojs.com'
+                                                                        }   
+                                                                    ]
+                                                                }
+                                                             
+                                                            }
+                                                        ]
+                                                       
+                                                    }
+                                            ]    
+                                            
+                                             
+                                        },
                                         
+                                       
+                                    ]
                                 }
                             ]
-                    
                         }
                     ]
                 },
@@ -187,18 +230,6 @@ Roo.example.bootstrap = new Roo.XComponent({
                         {
                             xtype: 'Button',
                             xns : Roo.bootstrap,
-                            tag: 'input',
-                            html: 'active'
-                        },
-                        {
-                            xtype: 'Button',
-                            xns : Roo.bootstrap,
-                            tag: 'submit',
-                            html: 'active',
-                        },
-                        {
-                            xtype: 'Button',
-                            xns : Roo.bootstrap,
                             disabled: true,
                             html: 'disabled'
                         },
@@ -216,7 +247,42 @@ Roo.example.bootstrap = new Roo.XComponent({
                         {
                             xtype: 'Button',
                             xns : Roo.bootstrap,
+                            menu:  {
+                                xtype : 'Menu',
+                                xns : Roo.bootstrap,
+                                items : [
+                                    {
+                                        xtype: 'Button',
+                                        xns : Roo.bootstrap,
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            xtype: 'Button',
+                            xns : Roo.bootstrap,
+                            badge: '42',
+                            href: '#'
+                        }
+                    ]
+                },
+                {
+                    xtype: 'Container',
+                    xns: Roo.bootstrap,
+                    style :  'margin-top:60px', 
+                    items : [
+                        {
+                            xtype: 'ButtonGroup',
+                            xns : Roo.bootstrap,
                             items: [
+                                {
+                                    xtype: 'Button',
+                                    xns : Roo.bootstrap,
+                                },
+                                {
+                                    xtype: 'Button',
+                                    xns : Roo.bootstrap,
+                                },
                                 {
                                     xtype: 'Button',
                                     xns : Roo.bootstrap,
@@ -224,12 +290,27 @@ Roo.example.bootstrap = new Roo.XComponent({
                             ]
                         },
                         {
-                            xtype: 'Button',
+                            xtype: 'ButtonGroup',
                             xns : Roo.bootstrap,
-                            badge: '42',
+                            size: 'lg',
+                            align: 'justified',
+                            items: [
+                                {
+                                    xtype: 'Button',
+                                    xns : Roo.bootstrap,
+                                },
+                                {
+                                    xtype: 'Button',
+                                    xns : Roo.bootstrap,
+                                },
+                                {
+                                    xtype: 'Button',
+                                    xns : Roo.bootstrap,
+                                }
+                            ]
                         }
                     ]
-                },
+                }
             ]
         };
     }
