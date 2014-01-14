@@ -28,11 +28,16 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
     
      getAutoCreate : function(){
         
-        return {
+        cfg = {
             tag: 'form',
             method : this.method || 'POST',
             id : this.id || Roo.id()
         }
+        
+        if (this.labelAlign == 'left' ) {
+            cfg.cls += ' form-horizontal';
+        }
+        return cfg;
     }
     
 });
