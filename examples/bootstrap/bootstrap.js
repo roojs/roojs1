@@ -69,7 +69,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                         {
                             xtype: 'Button',
                             xns: Roo.bootstrap,
-                            href: '#',
+                           
                             html: "dialog",
                             listeners : {
                                 click : function() {
