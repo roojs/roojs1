@@ -15777,13 +15777,12 @@ Roo.extend(Roo.dd.DragDrop, Roo.util.Observable , {
      * @private
      */
     handleMouseDown: function(e, oDD){
-        Roo.log(this);
-        Roo.log(e);
+     
         if (!Roo.isTouch && this.primaryButtonOnly && e.button != 0) {
             //Roo.log('not touch/ button !=0');
             return;
         }
-        if (ev.browserEvent.touches && ev.browserEvent.touches.length != 1) {
+        if (e.browserEvent.touches && e.browserEvent.touches.length != 1) {
             return; // double touch..
         }
         
@@ -41691,6 +41690,10 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         ["abbr"],[ "acronym"],[ "address"],[ "cite"],[ "samp"],[ "var"],
         ['div'],['span']
     ],
+    
+    cleanStyles : [
+        "font-size"
+    ],
      /**
      * @cfg {String} defaultFont default font to use.
      */
@@ -41916,6 +41919,35 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             tb.add(smenu);
             
             
+        }
+        
+        var cmenu = { };
+        if (!this.disable.cleanStyles) {
+            cmenu = {
+                cls: 'x-btn-icon x-btn-clear',
+                
+                menu : {
+                    items : []
+                }
+            };
+            for (var i =0; i < this.cleanStyles.length; i++) {
+                cmenu.menu.items.push({
+                    actiontype : this.cleanStyles[i],
+                    html: 'Remove ' + this.cleanStyles[i],
+                    handler: function(a,b) {
+                        Roo.log(a);
+                        Roo.log(b);
+                        var c = Roo.get(editor.doc.body);
+                        c.select('[style]').each(function(s) {
+                            s.dom.style.removeProperty(a.actiontype);
+                        });
+                        
+                    },
+                    tabIndex:-1
+                });
+            }
+            
+            tb.add(cmenu);
         }
          
         if (!this.disable.specialElements) {
@@ -55645,9 +55677,9 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
         if (!el && typeof(this.parent) == 'string' && this.parent.substring(0,1) == '#') {
             // if parent is a '#.....' string, then let's use that..
             var ename = this.parent.substr(1)
-            this.parent = false;
+            this.parent = (this.parent == '#bootstrap') ? { el : true}  : false; // flags it as a top module...
             el = Roo.get(ename);
-            if (!el) {
+            if (!el && !this.parent) {
                 Roo.log("Warning - element can not be found :#" + ename );
                 return;
             }

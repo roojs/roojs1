@@ -121,6 +121,10 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         ["abbr"],[ "acronym"],[ "address"],[ "cite"],[ "samp"],[ "var"],
         ['div'],['span']
     ],
+    
+    cleanStyles : [
+        "font-size"
+    ],
      /**
      * @cfg {String} defaultFont default font to use.
      */
@@ -346,6 +350,35 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             tb.add(smenu);
             
             
+        }
+        
+        var cmenu = { };
+        if (!this.disable.cleanStyles) {
+            cmenu = {
+                cls: 'x-btn-icon x-btn-clear',
+                
+                menu : {
+                    items : []
+                }
+            };
+            for (var i =0; i < this.cleanStyles.length; i++) {
+                cmenu.menu.items.push({
+                    actiontype : this.cleanStyles[i],
+                    html: 'Remove ' + this.cleanStyles[i],
+                    handler: function(a,b) {
+                        Roo.log(a);
+                        Roo.log(b);
+                        var c = Roo.get(editor.doc.body);
+                        c.select('[style]').each(function(s) {
+                            s.dom.style.removeProperty(a.actiontype);
+                        });
+                        
+                    },
+                    tabIndex:-1
+                });
+            }
+            
+            tb.add(cmenu);
         }
          
         if (!this.disable.specialElements) {
