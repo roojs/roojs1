@@ -13,6 +13,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     
     fieldLabel : '',
     inputType : 'text',
+    disabled : false,
     
     getAutoCreate : function(){
         
