@@ -36,13 +36,19 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                     
                 },
                 {
-                    tag: 'input',
-                    id : id,
-                    type : this.inputType,
-                    cls : 'form-control',
-                    placeholder : this.placeholder || '',
-                    
+                    cls : "col-sm-10", // needed for left align?
+                    cn: [
+                        {
+                            tag: 'input',
+                            id : id,
+                            type : this.inputType,
+                            cls : 'form-control',
+                            placeholder : this.placeholder || '',
+                            
+                        }
+                    ]
                 }
+                
             ]
         };
         if (this.disabled) {
