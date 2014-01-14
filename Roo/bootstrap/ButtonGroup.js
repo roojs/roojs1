@@ -28,7 +28,7 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
         if (['vertical','justified'].indexOf(this.align)!==-1) {
             cfg.cls = 'btn-group-' + this.align;
             
-            if (this.align==='justified') {
+            if (this.align == 'justified') {
                 console.log(this.items)
             }
         }
