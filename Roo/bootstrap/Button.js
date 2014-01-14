@@ -133,7 +133,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             
             cfg.tag = 'a';
             
-            //cfg.cls='btn';
+             cfg.cls='btn';
             
             cfg.href=this.href;
             
