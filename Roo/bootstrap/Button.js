@@ -168,6 +168,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         return cfg;
     },
     initEvents: function() {
+        Roo.log('init events?');
         this.el.select('a.btn',true).on('click', function(e) { Roo.log('click') ; this.fireEvent('click', this); } );
     }
    
