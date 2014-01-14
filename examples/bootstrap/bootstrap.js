@@ -378,7 +378,13 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xns: Roo.bootstrap,
                                     name : 'test',
                                     fieldLabel : 'test'
-                                }
+                                },
+                                {
+                                    xtype: 'Button',
+                                    xns: Roo.bootstrap,
+                                    html : 'Submit'
+                                    
+                                },
                             ]
                         }
                     ]
