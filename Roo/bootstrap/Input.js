@@ -19,7 +19,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         var id = Roo.id();
         var cfg = {
-            cls: 'input-group form-group',
+            cls: 'form-group', //input-group 
             cn : [
                 /*
                 {
