@@ -31,7 +31,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 {
                     tag: 'label',
                     'for' :  id,
-                    cls : 'input-group-addon',
                     html : this.fieldLabel
                     
                 },
