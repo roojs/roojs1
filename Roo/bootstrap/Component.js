@@ -54,31 +54,33 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         if (tree.xtype != 'Body') {
             
             cn = Roo.factory(tree);
-	    cn.parentType = this.xtype;
+            cn.parentType = this.xtype;
             cn.onRender(this.getChildContainer());
             // then add the element..
         }
-	if (typeof (tree.menu) != 'undefined') {
-	    tree.menu.parentType = cn.xtype;
-	    tree.menu.triggerEl = cn.el;
-	    this.items.push(cn.addxtype(Roo.apply({}, tree.menu)));
-	    
-	}
-	
-        if (!tree.items || !tree.items.length) {
-            return this;
-        }
-	var items = tree.items;
-	delete tree.items;
-	this.items = [];
-	Roo.log(items.length);
-        // add the items..
-        for(var i =0;i < items.length;i++) {
-            this.items.push(cn.addxtype(Roo.apply({}, items[i])));
+        var nitems = [];
+        if (typeof (tree.menu) != 'undefined') {
+            tree.menu.parentType = cn.xtype;
+            tree.menu.triggerEl = cn.el;
+            nitems.push(cn.addxtype(Roo.apply({}, tree.menu)));
             
         }
-	// if it has a menu?
 	
+        if (!tree.items || !tree.items.length) {
+            this.items = nitems;
+            return this;
+        }
+        var items = tree.items;
+        delete tree.items;
+        
+        Roo.log(items.length);
+            // add the items..
+        for(var i =0;i < items.length;i++) {
+            nitems.push(cn.addxtype(Roo.apply({}, items[i])));
+            
+        }
+    
+        this.items = nitems;
 	
 	
         return this;
