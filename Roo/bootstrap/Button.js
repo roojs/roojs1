@@ -151,7 +151,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         
         if (cfg.tag !== 'a' && this.href !== '') {
             throw "Tag must be a to set href.";
-        } else {
+        } else if (this.href !== '') {
             cfg.href = this.href;
         }
         
