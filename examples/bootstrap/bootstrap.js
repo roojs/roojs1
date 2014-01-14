@@ -70,6 +70,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                 {
                     xtype: 'Container',
                     xns: Roo.bootstrap,
+                    jumbotron : true,
                     style :  'margin-top:60px', 
                     html : '<h1> hello world </h1><p>test</p>'
                 },
