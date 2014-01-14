@@ -65,7 +65,19 @@ Roo.example.bootstrap = new Roo.XComponent({
                                         }
                                     ]
                                 }
-                        }
+                        },
+                        {
+                            xtype: 'Item',
+                            xns: Roo.bootstrap.Navbar,
+                            href: '',
+                            html: "dialog",
+                            listeners : {
+                                click : function() {
+                                    _this.dialogs['test'].show();
+                                }
+                            }
+                            
+                        },
                     ]
                     
                 },
