@@ -32,7 +32,8 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             tag: 'form',
             method : this.method || 'POST',
             id : this.id || Roo.id()
-        },
+        }
+    }
     
 });
 
