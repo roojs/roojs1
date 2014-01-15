@@ -13,6 +13,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
       
 	cls : false,
     
+    style : false,
+    
     autoCreate : false,
     
     initEvents : function() {  },
