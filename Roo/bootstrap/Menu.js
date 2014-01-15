@@ -11,7 +11,7 @@
  * Bootstrap Menu class - container for MenuItems
  * 
  * @constructor
- * Create a new button
+ * Create a new Menu
  * @param {Object} config The config object
  */
 
