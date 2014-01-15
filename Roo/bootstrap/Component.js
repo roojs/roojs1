@@ -4,6 +4,27 @@
  * base class for bootstrap elements..
  * 
  */
+
+/**
+ * @class Roo.bootstrap.Component
+ * @extends Roo.Component
+ * Bootstrap Component base class
+ * @cfg {String} html The button content
+ * @cfg {String} weight default (or empty) | primary | success | info | warning
+ * @cfg {String} size empty | lg | sm | xs
+ * @cfg {String} tag empty | a | input | submit
+ * @cfg {String} href empty or href
+ * @cfg {Boolean} disabled false | true
+ * @cfg {Boolean} isClose false | true
+ * @cfg {String} empty | see glyphicon reference list
+ * @cfg {String} badge text for badge
+ * 
+ * @constructor
+ * Create a new button
+ * @param {Object} config The config object
+ */
+
+
 Roo.bootstrap = Roo.bootstrap || {};
 Roo.bootstrap.Component = function(config){
     Roo.bootstrap.Component.superclass.constructor.call(this, config);
