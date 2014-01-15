@@ -3,15 +3,29 @@
  *
  * row
  * 
- */ 
+ */
+
+/**
+ * @class Roo.bootstrap.Menu
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Menu class
+ * @cfg {String} method  GET | POST (default POST)
+ * @cfg {String} labelAlign top | left (default top)
+ * 
+ * @constructor
+ * Create a new button
+ * @param {Object} config The config object
+ */
+
+
 Roo.bootstrap.Menu = function(config){
     Roo.bootstrap.Menu.superclass.constructor.call(this, config);
 };
 
 Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     
-    html : false,
-    align : '',
+   /// html : false,
+    //align : '',
     triggerEl : false,
     
     
