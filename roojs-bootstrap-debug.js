@@ -499,7 +499,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             id : id,
             type : this.inputType,
             cls : 'form-control',
-            placeholder : this.placeholder || '',
+            placeholder : this.placeholder || '' 
             
         };
 
@@ -561,6 +561,280 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             
         }
         i.setAttribute('disabled','true');
+    }
+});
+
+ 
+/*
+ * - LGPL
+ *
+ * row
+ * 
+ */ 
+Roo.bootstrap.Menu = function(config){
+    Roo.bootstrap.Menu.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
+    
+    html : false,
+    align : '',
+    triggerEl : false,
+    
+    
+    getChildContainer : function() {
+        return this.el;  
+    },
+    
+    getAutoCreate : function(){
+	 
+	//if (['right'].indexOf(this.align)!==-1) {
+	//    cfg.cn[1].cls += ' pull-right'
+	//}
+	
+        return {
+                tag : 'ul',
+                cls : 'dropdown-menu' 
+                
+            };
+    },
+    initEvents : function() {
+       // Roo.log("ADD event");
+       // Roo.log(this.triggerEl.dom);
+        this.triggerEl.on('click', this.toggle, this);
+        this.triggerEl.addClass('dropdown-toggle');
+        
+    },
+    toggle  : function(e)
+    {
+        //Roo.log(e.getTarget());
+       // Roo.log(this.triggerEl.dom);
+        if (Roo.get(e.getTarget()).findParent('.dropdown-menu')) {
+            return;
+        }
+        var isActive = this.triggerEl.hasClass('open');
+        // if disabled.. ingore
+        this.clearMenus(e);
+        //if ('ontouchstart' in document.documentElement && !$parent.closest('.navbar-nav').length) {
+         // if mobile we use a backdrop because click events don't delegate
+        // $('<div class="dropdown-backdrop"/>').insertAfter($(this)).on('click', clearMenus)
+        // }
+ 
+       //var relatedTarget = { relatedTarget: this }
+       //$parent.trigger(e = $.Event('show.bs.dropdown', relatedTarget))
+ 
+       //if (e.isDefaultPrevented()) return;
+        
+       this.triggerEl[isActive ? 'removeClass' : 'addClass']('open');
+       
+       //  .trigger('shown.bs.dropdown', relatedTarget)
+ 
+       this.triggerEl.focus();
+       Roo.log(e);
+       e.preventDefault(); 
+        
+        
+    },
+    clearMenus : function()
+    {
+        //$(backdrop).remove()
+        Roo.select('.dropdown-toggle',true).each(function(aa) {
+            if (!aa.hasClass('open')) {
+                return;
+            }
+            // triger close...
+            aa.removeClass('open');
+          //var parent = getParent($(this))
+          //var relatedTarget = { relatedTarget: this }
+          
+           //$parent.trigger(e = $.Event('hide.bs.dropdown', relatedTarget))
+          //if (e.isDefaultPrevented()) return
+           //$parent.removeClass('open').trigger('hidden.bs.dropdown', relatedTarget)
+        })
+    }
+    
+   
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * row
+ * 
+ */ 
+Roo.bootstrap.MenuItem = function(config){
+    Roo.bootstrap.MenuItem.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
+      
+	href : false,
+    html : false,
+    
+    
+    
+    getAutoCreate : function(){
+        var cfg= {
+            // cls: '',
+             tag : 'li',
+             cn : [
+             {
+                 tag : 'a',
+                 href : '#',
+                 html : 'Link'
+             }
+             ]
+         };
+	    
+        cfg.cn[0].href = this.href || cfg.cn[0].href ;
+        cfg.cn[0].html = this.html || cfg.cn[0].html ;
+        return cfg;
+    }
+   
+});
+
+ 
+
+ 
+/*
+<div class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+*/
+/*
+ * - LGPL
+ *
+ * page contgainer.
+ * 
+ */ 
+Roo.bootstrap.Modal = function(config){
+    Roo.bootstrap.Modal.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
+    
+    title : 'test dialog',
+    body : 'test body',
+	buttons : false,
+    onRender : function(ct, position){
+        Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
+        if(!this.el){
+            var cfg = Roo.apply({},  this.getAutoCreate());
+            cfg.id = Roo.id();
+            //if(!cfg.name){
+            //    cfg.name = typeof(this.name) == 'undefined' ? this.id : this.name;
+            //}
+            //if (!cfg.name.length) {
+            //    delete cfg.name;
+           // }
+            if (this.cls) {
+                cfg.cls += ' ' + this.cls;
+            }
+            if (this.style) {
+                cfg.style = this.style;
+            }
+            this.el = Roo.get(document.body).createChild(cfg, position);
+        }
+        //var type = this.el.dom.type;
+         
+        if(this.tabIndex !== undefined){
+            this.el.dom.setAttribute('tabIndex', this.tabIndex);
+        }
+        this.initEvents();
+        //this.el.addClass([this.fieldClass, this.cls]);
+        
+    },
+    getAutoCreate : function(){
+        
+        return {
+            cls: "modal fade",
+            cn : [
+                {
+                    cls: "modal-dialog",
+                    cn : [
+                        {
+                            cls : "modal-content",
+                            cn : [
+                                {
+                                    cls : 'modal-header',
+                                    cn : [
+                                        {
+                                            tag: 'button',
+                                            cls : 'close',
+                                            html : '&times'
+                                        },
+                                        {
+                                            tag: 'h4',
+                                            cls : 'modal-title',
+                                            html : this.title
+                                        }
+                                    
+                                    ]
+                                },
+                                {
+                                    cls : 'modal-body',
+                                    html : this.body,
+                                },
+                                 {
+                                    cls : 'modal-footer',
+                                    cn : [
+                                        {
+                                            tag: 'button',
+                                            cls : 'btn btn-default',
+                                            html : 'Close'
+                                        },
+                                        {
+                                            tag: 'button',
+                                            cls : 'btn btn-primary',
+                                            html : 'Save'
+                                        },
+                                    
+                                    ]
+                                },
+                                
+                                
+                            ]
+                            
+                        }
+                    ]
+                        
+                }
+            ]
+            
+            
+        };
+          
+    },
+    
+    initEvents : function()
+    {
+        this.el.select('.modal-header .close').on('click', this.hide, this);
+    },
+    show : function() {
+        this.el.addClass('on');
+        this.el.removeClass('fade');
+        this.el.setStyle('display', 'block');
+    },
+    hide : function() {
+        this.el.removeClass('on');
+        this.el.addClass('fade');
+        this.el.setStyle('display', 'none');
     }
 });
 
