@@ -83,12 +83,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 break;
                 
         }
-        
-        var cfg = {
-            cls: 'form-group', //input-group 
-            cn : 
-        };
-        
+         
         
         
         
