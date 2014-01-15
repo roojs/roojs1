@@ -96,7 +96,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             cfg.tag = this.tag;
         }
          
-        Roo.log(this.parentType);
+        //Roo.log(this.parentType);
         if (this.parentType == 'Navbar') {
             cfg.tag = 'li';
             
