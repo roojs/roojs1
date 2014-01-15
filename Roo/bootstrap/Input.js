@@ -38,7 +38,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
 
         
         switch(align) {
-            case 'left:':
+            case 'left':
                 
                 cfg.cn = [
                     
