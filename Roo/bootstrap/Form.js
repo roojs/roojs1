@@ -11,13 +11,6 @@
  * Bootstrap Form class
  * @cfg {String} method  GET | POST (default POST)
  * @cfg {String} labelAlign top | left (default top)
- * @cfg {String} size empty | lg | sm | xs
- * @cfg {String} tag empty | a | input | submit
- * @cfg {String} href empty or href
- * @cfg {Boolean} disabled false | true
- * @cfg {Boolean} isClose false | true
- * @cfg {String} empty | see glyphicon reference list
- * @cfg {String} badge text for badge
  * 
  * @constructor
  * Create a new button
