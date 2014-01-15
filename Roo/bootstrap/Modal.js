@@ -104,7 +104,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                                             tag: 'button',
                                             cls : 'btn btn-primary',
                                             html : 'Save'
-                                        },
+                                        }
                                     
                                     ]
                                 }
