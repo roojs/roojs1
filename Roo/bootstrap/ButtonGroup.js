@@ -53,8 +53,8 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
             cfg.cls += ' btn-group-' + this.size;
         }
         
-        if (['up'].indexOf(this.direction) > -1) {
-            cfg.cls += ' dropup';
+        if (this.direction == 'up') {
+            cfg.cls += ' dropup' ;
         }
         
         return cfg;
