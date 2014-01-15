@@ -31,25 +31,24 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     // private
     onRender : function(ct, position){
         Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
-        if(!this.el){
-            var cfg = Roo.apply({},  this.getAutoCreate());
-            cfg.id = Roo.id();
-            
-            if (this.cls) {
-                cfg.cls += ' ' + this.cls;
-            }
-            if (this.style) { // fixme needs to support more complex style data.
-                cfg.style = this.style;
-            }
-            this.el = ct.createChild(cfg, position);
+        if(this.el){
+            return;
         }
-        //var type = this.el.dom.type;
-         
+        var cfg = Roo.apply({},  this.getAutoCreate());
+        cfg.id = Roo.id();
+        
+        if (this.cls) {
+            cfg.cls += ' ' + this.cls;
+        }
+        if (this.style) { // fixme needs to support more complex style data.
+            cfg.style = this.style;
+        }
+        this.el = ct.createChild(cfg, position);
         if(this.tabIndex !== undefined){
             this.el.dom.setAttribute('tabIndex', this.tabIndex);
         }
         this.initEvents();
-        //this.el.addClass([this.fieldClass, this.cls]);
+    
         
     },
     getChildContainer : function()
