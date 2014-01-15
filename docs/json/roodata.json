@@ -4703,7 +4703,109 @@
     }
    ]
   },
+  "Roo.bootstrap.ButtonGroup": {
+   "props": [
+    {
+     "name": "size",
+     "type": "string",
+     "desc": "lg | sm | xs (default empty normal)",
+     "memberOf": ""
+    },
+    {
+     "name": "align",
+     "type": "string",
+     "desc": "vertical | justified  (default none)",
+     "memberOf": ""
+    },
+    {
+     "name": "direction",
+     "type": "string",
+     "desc": "up | down (default down)",
+     "memberOf": ""
+    }
+   ],
+   "events": []
+  },
+  "Roo.bootstrap.Column": {
+   "props": [
+    {
+     "name": "colspan",
+     "type": "number",
+     "desc": "Number of columsn to span",
+     "memberOf": ""
+    }
+   ],
+   "events": []
+  },
   "Roo.bootstrap.Form": {
+   "props": [
+    {
+     "name": "method",
+     "type": "String",
+     "desc": "GET | POST (default POST)",
+     "memberOf": ""
+    },
+    {
+     "name": "labelAlign",
+     "type": "String",
+     "desc": "top | left (default top)",
+     "memberOf": ""
+    }
+   ],
+   "events": [
+    {
+     "name": "clientvalidation",
+     "sig": "function (_self, valid)\n{\n\n}",
+     "type": "function",
+     "desc": "If the monitorValid config option is true, this event fires repetitively to notify of valid state"
+    },
+    {
+     "name": "rendered",
+     "sig": "function (form)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the form is rendered"
+    }
+   ]
+  },
+  "Roo.bootstrap.Input": {
+   "props": [
+    {
+     "name": "disabled",
+     "type": "boolean",
+     "desc": "is it disabled",
+     "memberOf": ""
+    },
+    {
+     "name": "fieldLabel",
+     "type": "string",
+     "desc": "- the label associated",
+     "memberOf": ""
+    }
+   ],
+   "events": []
+  },
+  "Roo.bootstrap.Menu": {
+   "props": [],
+   "events": []
+  },
+  "Roo.bootstrap.MenuItem": {
+   "props": [
+    {
+     "name": "html",
+     "type": "String",
+     "desc": "the menu label",
+     "memberOf": ""
+    },
+    {
+     "name": "href",
+     "type": "String",
+     "desc": "the link",
+     "memberOf": ""
+    }
+   ],
+   "events": []
+  },
+  "Roo.bootstrap.Row": {
    "props": [],
    "events": []
   },
