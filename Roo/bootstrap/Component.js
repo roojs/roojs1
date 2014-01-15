@@ -29,7 +29,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     },
     
     // private
-    onRender : function(ct, position){
+    onRender : function(ct, position)
+    {
         Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
         if(this.el){
             return;
