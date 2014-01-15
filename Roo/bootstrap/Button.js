@@ -90,7 +90,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         cfg.cls += this.size.length ? (' btn-' + this.size) : '';
         
         if (['a', 'button', 'input', 'submit'].indexOf(this.tag) < 0) {
-            Roo.log("Invalid value for tag: " + this.tag + ". must be a, button, input or submit.");
+            throw "Invalid value for tag: " + this.tag + ". must be a, button, input or submit.";
             this.tag = 'button';
         } else {
             cfg.tag = this.tag;
