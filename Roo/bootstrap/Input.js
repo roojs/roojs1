@@ -17,41 +17,81 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     
     getAutoCreate : function(){
         
+        var parent = this.parent();
+        
+        var align = parent.labelAlign;
+        
         var id = Roo.id();
+        
+        var cfg = {
+            cls: 'form-group' //input-group
+        };
+        
+        switch(align) {
+            case 'left:':
+                
+                cfg.cn = [
+                    
+                    {
+                        tag: 'label',
+                        'for' :  id,
+                        cls : 'col-sm-2 control-label',
+                        html : this.fieldLabel
+                        
+                    },
+                    {
+                        cls : "col-sm-10", 
+                        cn: [
+                            {
+                                tag: 'input',
+                                id : id,
+                                type : this.inputType,
+                                cls : 'form-control',
+                                placeholder : this.placeholder || '',
+                                
+                            }
+                        ]
+                    }
+                    
+                ];
+                break;
+            default:
+                
+                 cfg.cn = [
+                   
+                    {
+                        tag: 'span',
+                        cls : 'input-group-addon',
+                        html : this.fieldLabel
+                        
+                    },
+                    
+                    {
+                         cn: [
+                            {
+                                tag: 'input',
+                                id : id,
+                                type : this.inputType,
+                                cls : 'form-control',
+                                placeholder : this.placeholder || '',
+                                
+                            }
+                        ]
+                    }
+                    
+                ];
+                break;
+                
+        }
+        
         var cfg = {
             cls: 'form-group', //input-group 
-            cn : [
-                /*
-                {
-                    tag: 'span',
-                    cls : 'input-group-addon',
-                    html : this.fieldLabel
-                    
-                },
-                */
-                {
-                    tag: 'label',
-                    'for' :  id,
-                    cls : 'col-sm-2 control-label',
-                    html : this.fieldLabel
-                    
-                },
-                {
-                    cls : "col-sm-10", // needed for left align?
-                    cn: [
-                        {
-                            tag: 'input',
-                            id : id,
-                            type : this.inputType,
-                            cls : 'form-control',
-                            placeholder : this.placeholder || '',
-                            
-                        }
-                    ]
-                }
-                
-            ]
+            cn : 
         };
+        
+        
+        
+        
         if (this.disabled) {
             cfg.cn[1].disabled=true;
         }
