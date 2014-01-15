@@ -28,8 +28,8 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 	
         cfg.cn = [
             {
-            cls: 'nav',
-            tag : 'ul'
+                cls: 'nav',
+                tag : 'ul'
             }
         ];
         
