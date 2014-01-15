@@ -133,6 +133,7 @@
 
         </span><span class="jsdoc-var">getTarget</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">resolveTextNode</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.browserEvent </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.touches </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-var">ev.touches</span><span class="jsdoc-syntax">[0] || </span><span class="jsdoc-var">ev.changedTouches</span><span class="jsdoc-syntax">[0] || </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">)  : </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.target </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">ev.srcElement</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.resolveTextNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">);
         },
@@ -149,6 +150,7 @@
 
         </span><span class="jsdoc-var">getPageX</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.browserEvent </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.touches </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-var">ev.touches</span><span class="jsdoc-syntax">[0] || </span><span class="jsdoc-var">ev.changedTouches</span><span class="jsdoc-syntax">[0] || </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">)  : </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.pageX</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">&amp;&amp; 0 !== </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.clientX </span><span class="jsdoc-syntax">|| 0;
@@ -164,6 +166,7 @@
 
         </span><span class="jsdoc-var">getPageY</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.browserEvent </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.touches </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-var">ev.touches</span><span class="jsdoc-syntax">[0] || </span><span class="jsdoc-var">ev.changedTouches</span><span class="jsdoc-syntax">[0] || </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">)  : </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.pageY</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">&amp;&amp; 0 !== </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.clientY </span><span class="jsdoc-syntax">|| 0;
@@ -180,12 +183,14 @@
 
         </span><span class="jsdoc-var">getXY</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.browserEvent </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.touches </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-var">ev.touches</span><span class="jsdoc-syntax">[0] || </span><span class="jsdoc-var">ev.changedTouches</span><span class="jsdoc-syntax">[0] || </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">)  : </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.getPageX</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">this.getPageY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">)];
         },
 
 
         </span><span class="jsdoc-var">getRelatedTarget</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.browserEvent </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.touches </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-var">ev.touches</span><span class="jsdoc-syntax">[0] || </span><span class="jsdoc-var">ev.changedTouches</span><span class="jsdoc-syntax">[0] || </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">)  : </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.relatedTarget</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev.type </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;mouseout&quot;</span><span class="jsdoc-syntax">) {
@@ -201,6 +206,7 @@
 
         </span><span class="jsdoc-var">getTime</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.browserEvent </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.touches </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-var">ev.touches</span><span class="jsdoc-syntax">[0] || </span><span class="jsdoc-var">ev.changedTouches</span><span class="jsdoc-syntax">[0] || </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">)  : </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">ev.time</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getTime</span><span class="jsdoc-syntax">();
                 </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
