@@ -383,10 +383,185 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
         var cfg = Roo.apply({}, Roo.bootstrap.Column.superclass.getAutoCreate.call(this));
         cfg.cls += 'col-md-' + this.colspan;
         return cfg;
-    },
+    }
    
 });
 
  
+
+ /*
+ * - LGPL
+ *
+ * page contgainer.
+ * 
+ */ 
+Roo.bootstrap.Container = function(config){
+    Roo.bootstrap.Container.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
+     
+    jumbotron : false, // doc me
+	autoCreate : {
+        cls: 'container',
+        html : null
+    },
+    getAutoCreate : function(){
+        
+        var cfg = Roo.apply({}, Roo.bootstrap.Container.superclass.getAutoCreate.call(this));
+        if (this.jumbotron) {
+            cfg.cls = 'jumbotron';
+        }
+        
+        cfg.html = this.html || cfg.html;
+        return cfg;
+    }
+   
+});
+
+ /*
+ * - LGPL
+ *
+ * row
+ * 
+ */ 
+Roo.bootstrap.Form = function(config){
+    Roo.bootstrap.Form.superclass.constructor.call(this, config);
+    this.addEvents({
+        /**
+         * @event clientvalidation
+         * If the monitorValid config option is true, this event fires repetitively to notify of valid state
+         * @param {Form} this
+         * @param {Boolean} valid true if the form has passed client-side validation
+         */
+        clientvalidation: true,
+        /**
+         * @event rendered
+         * Fires when the form is rendered
+         * @param {Roo.form.Form} form
+         */
+        rendered : true
+    });
+};
+
+Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
+      
+    
+     getAutoCreate : function(){
+        
+        var cfg = {
+            tag: 'form',
+            method : this.method || 'POST',
+            id : this.id || Roo.id(),
+            cls : ''
+        }
+        
+        if (this.labelAlign == 'left' ) {
+            cfg.cls += ' form-horizontal';
+        }
+        return cfg;
+    }
+    
+});
+
+ 
+/*
+ * - LGPL
+ *
+ * row
+ * 
+ */ 
+Roo.bootstrap.Input = function(config){
+    Roo.bootstrap.Input.superclass.constructor.call(this, config);
+   
+};
+
+Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
+    
+    fieldLabel : '',
+    inputType : 'text',
+    disabled : false,
+    
+    getAutoCreate : function(){
+        
+        var parent = this.parent();
+        
+        var align = parent.labelAlign;
+        
+        var id = Roo.id();
+        
+        var cfg = {
+            cls: 'form-group' //input-group
+        };
+        
+        var input =  {
+            tag: 'input',
+            id : id,
+            type : this.inputType,
+            cls : 'form-control',
+            placeholder : this.placeholder || '',
+            
+        };
+
+        
+        switch(align) {
+            case 'left':
+                
+                cfg.cn = [
+                    
+                    {
+                        tag: 'label',
+                        'for' :  id,
+                        cls : 'col-sm-2 control-label',
+                        html : this.fieldLabel
+                        
+                    },
+                    {
+                        cls : "col-sm-10", 
+                        cn: [
+                            input
+                        ]
+                    }
+                    
+                ];
+                break;
+            default:
+                
+                 cfg.cn = [
+                   
+                    {
+                        tag: 'label',
+                        //cls : 'input-group-addon',
+                        html : this.fieldLabel
+                        
+                    },
+                    
+                    input
+                    
+                ];
+                break;
+                
+        }
+         
+        
+        
+        
+        if (this.disabled) {
+            input.disabled=true;
+        }
+        return cfg;
+        
+    },
+    setDisabled : function(v)
+    {
+        var i  = this.el.select('input',true).dom;
+        if (v) {
+            i.removeAttribute('disabled');
+            return;
+            
+        }
+        i.setAttribute('disabled','true');
+    }
+});
 
  
