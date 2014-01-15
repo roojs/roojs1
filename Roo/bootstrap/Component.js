@@ -13,7 +13,7 @@
  * @cfg {String} style any extra css
  * 
  * @constructor
- * Create a new button
+ * Do not use directly - it does not do anything..
  * @param {Object} config The config object
  */
 
