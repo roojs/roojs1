@@ -32,16 +32,16 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             };
     },
     initEvents : function() {
-        Roo.log("ADD event");
-        Roo.log(this.triggerEl.dom);
+       // Roo.log("ADD event");
+       // Roo.log(this.triggerEl.dom);
         this.triggerEl.on('click', this.toggle, this);
         this.triggerEl.addClass('dropdown-toggle');
         
     },
     toggle  : function(e)
     {
-        Roo.log(e.getTarget());
-        Roo.log(this.triggerEl.dom);
+        //Roo.log(e.getTarget());
+       // Roo.log(this.triggerEl.dom);
         if (Roo.get(e.getTarget()).findParent('.dropdown-menu')) {
             return;
         }
