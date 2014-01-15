@@ -29,7 +29,7 @@ Roo.extend(Roo.bootstrap.Navbar.Button, Roo.bootstrap.Component,  {
             
         } ;
         cfg.cn.push({
-            html : this.html || '',
+            html : this.html || ''
             //href : this.
              //       )
         });
