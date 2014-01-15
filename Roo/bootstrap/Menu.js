@@ -8,9 +8,7 @@
 /**
  * @class Roo.bootstrap.Menu
  * @extends Roo.bootstrap.Component
- * Bootstrap Menu class
- * @cfg {String} method  GET | POST (default POST)
- * @cfg {String} labelAlign top | left (default top)
+ * Bootstrap Menu class - container for MenuItems
  * 
  * @constructor
  * Create a new button
