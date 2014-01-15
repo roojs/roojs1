@@ -20,7 +20,7 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
         var cfg = Roo.apply({}, Roo.bootstrap.Column.superclass.getAutoCreate.call(this));
         cfg.cls += 'col-md-' + this.colspan;
         return cfg;
-    },
+    }
    
 });
 
