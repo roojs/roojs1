@@ -868,8 +868,8 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 	
         cfg.cn = [
             {
-            cls: 'nav',
-            tag : 'ul'
+                cls: 'nav',
+                tag : 'ul'
             }
         ];
         
@@ -917,7 +917,28 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     
     getChildContainer : function() {
         return this.el.select('ul', true).first();
-    },
+    }
+   
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * row
+ * 
+ */ 
+Roo.bootstrap.Row = function(config){
+    Roo.bootstrap.Row.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.Row, Roo.bootstrap.Component,  {
+      
+	autoCreate : {
+        cls: 'row clearfix'
+    }
+ 
    
 });
 
