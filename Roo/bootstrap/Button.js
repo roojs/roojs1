@@ -60,7 +60,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         
         
-        Roo.log("Parent is : " this.parent().xtype);
+        Roo.log("Button Parent is : " + this.parent().xtype);
         
         
         var cfg = Roo.apply({}, Roo.bootstrap.Button.superclass.getAutoCreate.call(this));
