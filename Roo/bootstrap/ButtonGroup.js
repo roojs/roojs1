@@ -12,7 +12,7 @@
  * Bootstrap ButtonGroup class
  * @cfg {string} size lg | sm | xs (default empty normal)
  * @cfg {string} align vertical | justified  (default none)
- * @cfg {string} dropdirection (up)
+ * @cfg {string} dropdirection up | down (default down)
  * 
  * 
  * @constructor
