@@ -64,7 +64,9 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         if (tree.xtype != 'Body') {
             
             cn = Roo.factory(tree);
-            cn.parentType = this.xtype;
+            
+            cn.parentType = this.xtype; //??
+            cn.parentId = this.id;
             cn.onRender(this.getChildContainer());
             // then add the element..
         }
