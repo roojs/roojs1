@@ -5,6 +5,7 @@
  * 
  */
 
+Roo.bootstrap = Roo.bootstrap || {};
 /**
  * @class Roo.bootstrap.Component
  * @extends Roo.Component
@@ -18,7 +19,7 @@
  */
 
 
-Roo.bootstrap = Roo.bootstrap || {};
+
 Roo.bootstrap.Component = function(config){
     Roo.bootstrap.Component.superclass.constructor.call(this, config);
 };
