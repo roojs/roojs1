@@ -27,6 +27,16 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             cls: 'form-group' //input-group
         };
         
+        var input =  {
+            tag: 'input',
+            id : id,
+            type : this.inputType,
+            cls : 'form-control',
+            placeholder : this.placeholder || '',
+            
+        };
+
+        
         switch(align) {
             case 'left:':
                 
@@ -42,14 +52,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                     {
                         cls : "col-sm-10", 
                         cn: [
-                            {
-                                tag: 'input',
-                                id : id,
-                                type : this.inputType,
-                                cls : 'form-control',
-                                placeholder : this.placeholder || '',
-                                
-                            }
+                            input
                         ]
                     }
                     
@@ -66,18 +69,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                         
                     },
                     
-                    {
-                         cn: [
-                            {
-                                tag: 'input',
-                                id : id,
-                                type : this.inputType,
-                                cls : 'form-control',
-                                placeholder : this.placeholder || '',
-                                
-                            }
-                        ]
-                    }
+                    input
                     
                 ];
                 break;
