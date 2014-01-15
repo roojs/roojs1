@@ -9,7 +9,10 @@
 /**
  * @class Roo.bootstrap.MenuItem
  * @extends Roo.bootstrap.Component
- * Bootstrap MenuItem class 
+ * Bootstrap MenuItem class
+ * @cfg {String} html the menu label
+ * @cfg {String} href the link 
+ * 
  * 
  * @constructor
  * Create a new MenuItem
