@@ -65,7 +65,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             
             cn.parentType = this.xtype; //??
             cn.parentId = this.id;
-            cn.onRender(this.getChildContainer());
+            cn.render(this.getChildContainer());
             // then add the element..
         }
         var nitems = [];
