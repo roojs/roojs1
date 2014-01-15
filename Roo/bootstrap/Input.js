@@ -3,7 +3,20 @@
  *
  * row
  * 
- */ 
+ */
+/**
+ * @class Roo.bootstrap.Input
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Input class
+ * @cfg {boolean} disabled is it disabled
+ * @cfg {string} fieldLabel - the label associated
+ * 
+ * 
+ * @constructor
+ * Create a new Input
+ * @param {Object} config The config object
+ */
+
 Roo.bootstrap.Input = function(config){
     Roo.bootstrap.Input.superclass.constructor.call(this, config);
    
