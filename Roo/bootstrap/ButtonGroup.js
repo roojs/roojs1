@@ -3,7 +3,23 @@
  *
  * page contgainer.
  * 
- */ 
+ */
+
+
+/**
+ * @class Roo.bootstrap.ButtonGroup
+ * @extends Roo.bootstrap.Component
+ * Bootstrap ButtonGroup class
+ * @cfg {string} size lg | sm | xs (default empty normal)
+ * @cfg {string} align vertical | justified  (default none)
+ * @cfg {string} dropdirection (up)
+ * 
+ * 
+ * @constructor
+ * Create a new Input
+ * @param {Object} config The config object
+ */
+
 Roo.bootstrap.ButtonGroup = function(config){
     Roo.bootstrap.ButtonGroup.superclass.constructor.call(this, config);
 };
@@ -12,7 +28,7 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
     
     size: '',
     align: '',
-    dropdirection: '',
+     direction: '',
     
     autoCreate : {
         cls: 'btn-group',
@@ -37,7 +53,7 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
             cfg.cls += ' btn-group-' + this.size;
         }
         
-        if (['dropup'].indexOf(this.dropdirection)) {
+        if (['up'].indexOf(this.direction)) {
             cfg.cls += ' dropup';
         }
         
