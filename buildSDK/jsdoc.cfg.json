@@ -11,7 +11,8 @@
 		"Roo/menu",
 		"Roo/state",
 		"Roo/tree",
-		"Roo/util"
+		"Roo/util",
+        "Roo/bootstrap"
 		],
 	"exclude-src" : [
 		"roojs-all.js",
