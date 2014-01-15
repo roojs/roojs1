@@ -11,7 +11,8 @@ Roo.bootstrap.Component = function(config){
 
 Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
       
-	 
+	cls : false,
+    
     autoCreate : false,
     
     initEvents : function() {  },
@@ -31,12 +32,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         if(!this.el){
             var cfg = Roo.apply({},  this.getAutoCreate());
             cfg.id = Roo.id();
-            //if(!cfg.name){
-            //    cfg.name = typeof(this.name) == 'undefined' ? this.id : this.name;
-            //}
-            //if (!cfg.name.length) {
-            //    delete cfg.name;
-           // }
+            
             if (this.cls) {
                 cfg.cls += ' ' + this.cls;
             }
