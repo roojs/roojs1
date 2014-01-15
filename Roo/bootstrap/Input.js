@@ -63,7 +63,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                  cfg.cn = [
                    
                     {
-                        tag: 'span',
+                        tag: 'label',
                         cls : 'input-group-addon',
                         html : this.fieldLabel
                         
