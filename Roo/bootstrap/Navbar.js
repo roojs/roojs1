@@ -77,7 +77,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     
     getChildContainer : function() {
         return this.el.select('ul', true).first();
-    },
+    }
    
 });
 
