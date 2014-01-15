@@ -9,10 +9,9 @@
  * @class Roo.bootstrap.Row
  * @extends Roo.bootstrap.Component
  * Bootstrap Row class (contains columns...)
- * @cfg {number} colspan  Number of columsn to span
  * 
  * @constructor
- * Create a new Column
+ * Create a new Row
  * @param {Object} config The config object
  */
 
