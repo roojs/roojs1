@@ -32,7 +32,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             id : id,
             type : this.inputType,
             cls : 'form-control',
-            placeholder : this.placeholder || '',
+            placeholder : this.placeholder || '' 
             
         };
 
