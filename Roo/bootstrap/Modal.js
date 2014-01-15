@@ -107,7 +107,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                                         },
                                     
                                     ]
-                                },
+                                }
                                 
                                 
                             ]
