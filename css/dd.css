@@ -61,4 +61,6 @@
 .x-dd-drop-below .x-dd-drop-icon{
   background-image: url(../images/default/tree/drop-under.gif);
 }
-
+/* used by drag drop - inserts into dom.. */
+.col-move-bottom { display: none; }
+.col-move-top { display: none; }
