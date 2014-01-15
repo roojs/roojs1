@@ -83,7 +83,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         var items = tree.items;
         delete tree.items;
         
-        Roo.log(items.length);
+        //Roo.log(items.length);
             // add the items..
         for(var i =0;i < items.length;i++) {
             nitems.push(cn.addxtype(Roo.apply({}, items[i])));
