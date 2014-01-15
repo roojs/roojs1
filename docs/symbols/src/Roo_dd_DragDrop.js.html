@@ -565,7 +565,10 @@
      */
     </span><span class="jsdoc-var">init</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sGroup</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-var">this.initTarget</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sGroup</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">Event.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;mousedown&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.handleMouseDown</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">Roo.isTouch</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Event.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;mousedown&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.handleMouseDown</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">Event.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;touchstart&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.handleMouseDown</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-comment">// Event.on(this.id, &quot;selectstart&quot;, Event.preventDefault);
     </span><span class="jsdoc-syntax">},
 
@@ -790,6 +793,8 @@
     </span><span class="jsdoc-var">unreg</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
         </span><span class="jsdoc-var">Event.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;mousedown&quot;</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">this.handleMouseDown</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Event.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;touchstart&quot;</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">this.handleMouseDown</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this._domRef </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.DDM._remove</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     },
@@ -817,21 +822,31 @@
      * @private
      */
     </span><span class="jsdoc-var">handleMouseDown</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">oDD</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.primaryButtonOnly </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">e.button </span><span class="jsdoc-syntax">!= 0) {
+     
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">Roo.isTouch </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.primaryButtonOnly </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">e.button </span><span class="jsdoc-syntax">!= 0) {
+            </span><span class="jsdoc-comment">//Roo.log('not touch/ button !=0');
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.browserEvent.touches </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">e.browserEvent.touches.length </span><span class="jsdoc-syntax">!= 1) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// double touch..
+        </span><span class="jsdoc-syntax">}
+        
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isLocked</span><span class="jsdoc-syntax">()) {
+            </span><span class="jsdoc-comment">//Roo.log('locked');
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
 
         </span><span class="jsdoc-var">this.DDM.refreshCache</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.groups</span><span class="jsdoc-syntax">);
-
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">Roo.lib.Event.getPageX</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">Roo.lib.Event.getPageY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)]);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.lib.Point</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.lib.Event.getPageX</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">Roo.lib.Event.getPageY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">));
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.hasOuterHandles </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.DDM.isOverTarget</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pt</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">) )  {
-        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-comment">//Roo.log('no outer handes or not over target');
+                // do nothing.
+        </span><span class="jsdoc-syntax">} </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'check validator'</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.clickValidator</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)) {
-
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'validate success'</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-comment">// set the initial element position
                 </span><span class="jsdoc-var">this.setStartPosition</span><span class="jsdoc-syntax">();
 

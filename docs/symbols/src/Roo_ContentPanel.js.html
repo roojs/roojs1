@@ -98,12 +98,7 @@
     }
     </span><span class="jsdoc-comment">// handle view.xtype
     
-    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.view </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.view.xtype</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
-        </span><span class="jsdoc-var">this.view.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">));
-        </span><span class="jsdoc-var">this.view </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.view</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.view.render </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.view.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// render blank..
-    </span><span class="jsdoc-syntax">}
-    
+ 
     
     
     </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
@@ -139,6 +134,10 @@
         
         
     </span><span class="jsdoc-syntax">});
+    
+
+    
+    
     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autoScroll</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.resizeEl.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;overflow&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;auto&quot;</span><span class="jsdoc-syntax">);
     } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
@@ -159,6 +158,13 @@
     
     
     </span><span class="jsdoc-var">Roo.ContentPanel.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.view </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.view.xtype</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.view.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">this.view </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.view</span><span class="jsdoc-syntax">); 
+        </span><span class="jsdoc-var">this.view.render  </span><span class="jsdoc-syntax">&amp;&amp;  </span><span class="jsdoc-var">this.view.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);  
+    }
+    
     
     </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'render'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 };
@@ -431,13 +437,15 @@ layout.addxtype({
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.form</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-comment">// should only have one of theses..
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'View'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'JsonView'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'DatePicker'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.xtype</span><span class="jsdoc-syntax">) &gt; -1) {
-            </span><span class="jsdoc-comment">// views..
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">([ </span><span class="jsdoc-string">'View'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'JsonView'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'DatePicker'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.xtype</span><span class="jsdoc-syntax">) &gt; -1) {
+            </span><span class="jsdoc-comment">// views.. should not be just added - used named prop 'view''
+            
             </span><span class="jsdoc-var">cfg.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">));
             </span><span class="jsdoc-comment">// factory?
             
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">ret.render </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">ret.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// render blank..
+             
+             </span><span class="jsdoc-var">ret.render </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">ret.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// render blank..
             </span><span class="jsdoc-var">this.view </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
         }

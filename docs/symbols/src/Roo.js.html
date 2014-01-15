@@ -60,8 +60,8 @@
         </span><span class="jsdoc-var">isWindows </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">ua.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;windows&quot;</span><span class="jsdoc-syntax">) != -1 || </span><span class="jsdoc-var">ua.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;win32&quot;</span><span class="jsdoc-syntax">) != -1),
         </span><span class="jsdoc-var">isMac </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">ua.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;macintosh&quot;</span><span class="jsdoc-syntax">) != -1 || </span><span class="jsdoc-var">ua.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mac os x&quot;</span><span class="jsdoc-syntax">) != -1),
         </span><span class="jsdoc-var">isLinux </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">ua.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;linux&quot;</span><span class="jsdoc-syntax">) != -1),
-        </span><span class="jsdoc-var">isSecure </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">window.location.href.toLowerCase</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;https&quot;</span><span class="jsdoc-syntax">) === 0;
-
+        </span><span class="jsdoc-var">isSecure </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">window.location.href.toLowerCase</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;https&quot;</span><span class="jsdoc-syntax">) === 0,
+        </span><span class="jsdoc-var">isTouch </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-string">'ontouchstart' </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">window </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">window.DocumentTouch </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">document </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">DocumentTouch</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-comment">// remove css image flicker
 	</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isIE </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">isIE7</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">try</span><span class="jsdoc-syntax">{
@@ -120,7 +120,7 @@
         </span><span class="jsdoc-var">BLANK_IMAGE_URL </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;http:/&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">&quot;/localhost/s.gif&quot;</span><span class="jsdoc-syntax">,
 
         </span><span class="jsdoc-var">emptyFn </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){},
-
+        
         </span><span class="jsdoc-comment">/**
          * Copies all the properties of config to obj if they don't already exist.
          * @param {Object} obj The receiver of the properties
@@ -615,6 +615,8 @@ Roo.factory(conf, Roo.data);
         </span><span class="jsdoc-var">isLinux </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">isLinux</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/** @type Boolean */
         </span><span class="jsdoc-var">isMac </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">isMac</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/** @type Boolean */
+        </span><span class="jsdoc-var">isTouch </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">isTouch</span><span class="jsdoc-syntax">,
 
         </span><span class="jsdoc-comment">/**
          * By default, Ext intelligently decides whether floating elements should be shimmed. If you are using flash,

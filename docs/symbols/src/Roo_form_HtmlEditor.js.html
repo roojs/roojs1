@@ -636,10 +636,10 @@
     </span><span class="jsdoc-var">insertTag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tg</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-comment">// could be a bit smarter... -&gt; wrap the current selected tRoo..
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tg.toLowerCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tg.toLowerCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">'span' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">tg.toLowerCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">'code'</span><span class="jsdoc-syntax">) {
             
             </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.createRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getSelection</span><span class="jsdoc-syntax">());
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">wrappingNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.doc.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;span&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">wrappingNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.doc.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tg.toLowerCase</span><span class="jsdoc-syntax">());
             </span><span class="jsdoc-var">wrappingNode.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">range.extractContents</span><span class="jsdoc-syntax">());
             </span><span class="jsdoc-var">range.insertNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">wrappingNode</span><span class="jsdoc-syntax">);
 

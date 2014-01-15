@@ -121,6 +121,10 @@
         [</span><span class="jsdoc-string">&quot;abbr&quot;</span><span class="jsdoc-syntax">],[ </span><span class="jsdoc-string">&quot;acronym&quot;</span><span class="jsdoc-syntax">],[ </span><span class="jsdoc-string">&quot;address&quot;</span><span class="jsdoc-syntax">],[ </span><span class="jsdoc-string">&quot;cite&quot;</span><span class="jsdoc-syntax">],[ </span><span class="jsdoc-string">&quot;samp&quot;</span><span class="jsdoc-syntax">],[ </span><span class="jsdoc-string">&quot;var&quot;</span><span class="jsdoc-syntax">],
         [</span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">],[</span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">]
     ],
+    
+    </span><span class="jsdoc-var">cleanStyles </span><span class="jsdoc-syntax">: [
+        </span><span class="jsdoc-string">&quot;font-size&quot;
+    </span><span class="jsdoc-syntax">],
      </span><span class="jsdoc-comment">/**
      * @cfg {String} defaultFont default font to use.
      */
@@ -346,6 +350,35 @@
             </span><span class="jsdoc-var">tb.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">smenu</span><span class="jsdoc-syntax">);
             
             
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cmenu </span><span class="jsdoc-syntax">= { };
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.disable.cleanStyles</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cmenu </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-btn-icon x-btn-clear'</span><span class="jsdoc-syntax">,
+                
+                </span><span class="jsdoc-var">menu </span><span class="jsdoc-syntax">: {
+                    </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">: []
+                }
+            };
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.cleanStyles.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                </span><span class="jsdoc-var">cmenu.menu.items.push</span><span class="jsdoc-syntax">({
+                    </span><span class="jsdoc-var">actiontype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.cleanStyles</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">],
+                    </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Remove ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.cleanStyles</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">],
+                    </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">editor.doc.body</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">c.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'[style]'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">) {
+                            </span><span class="jsdoc-var">s.dom.style.removeProperty</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.actiontype</span><span class="jsdoc-syntax">);
+                        });
+                        
+                    },
+                    </span><span class="jsdoc-var">tabIndex</span><span class="jsdoc-syntax">:-1
+                });
+            }
+            
+            </span><span class="jsdoc-var">tb.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cmenu</span><span class="jsdoc-syntax">);
         }
          
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.disable.specialElements</span><span class="jsdoc-syntax">) {

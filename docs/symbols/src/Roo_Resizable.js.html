@@ -178,6 +178,17 @@ resizer.on(&quot;resize&quot;, myHandler);
          */
         </span><span class="jsdoc-string">&quot;beforeresize&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/**
+         * @event resizing
+         * Fired a resizing.
+         * @param {Roo.Resizable} this
+         * @param {Number} x The new x position
+         * @param {Number} y The new y position
+         * @param {Number} w The new w width
+         * @param {Number} h The new h hight
+         * @param {Roo.EventObject} e The mouseup event
+         */
+        </span><span class="jsdoc-string">&quot;resizing&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
          * @event resize
          * Fired after a resize.
          * @param {Roo.Resizable} this
@@ -309,6 +320,7 @@ resizer.on(&quot;resize&quot;, myHandler);
 
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">updateChildSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resizeChild</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">child </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.resizeChild</span><span class="jsdoc-syntax">;
@@ -374,6 +386,7 @@ resizer.on(&quot;resize&quot;, myHandler);
 
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">onMouseMove </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.enabled</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">try</span><span class="jsdoc-syntax">{</span><span class="jsdoc-comment">// try catch so if something goes wrong the user doesn't get hung
 
@@ -550,6 +563,7 @@ resizer.on(&quot;resize&quot;, myHandler);
             }
             }</span><span class="jsdoc-keyword">catch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){}
         }
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;resizing&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
     },
 
     </span><span class="jsdoc-comment">// private
@@ -581,7 +595,10 @@ resizer.on(&quot;resize&quot;, myHandler);
     </span><span class="jsdoc-var">getResizeChild </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.resizeChild</span><span class="jsdoc-syntax">;
     },
-
+    </span><span class="jsdoc-var">groupHandler </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        
+    },
     </span><span class="jsdoc-comment">/**
      * Destroys this resizable. If the element was wrapped and
      * removeEl is not true then the element remains.

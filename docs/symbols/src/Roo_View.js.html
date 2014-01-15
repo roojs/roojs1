@@ -59,7 +59,9 @@
         </span><span class="jsdoc-var">this.tpl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">depreciated_tpl</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">depreciated_config</span><span class="jsdoc-syntax">);
     }
-     
+    </span><span class="jsdoc-var">this.wrapEl  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.wrap</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.wrap</span><span class="jsdoc-syntax">();
+    </span><span class="jsdoc-comment">///this.el = this.wrapEla.appendChild(document.createElement(&quot;div&quot;));
+    
     
     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tpl</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">&quot;string&quot;</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.tpl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tpl</span><span class="jsdoc-syntax">);
@@ -71,7 +73,8 @@
     
     </span><span class="jsdoc-var">this.tpl.compile</span><span class="jsdoc-syntax">();
    
-
+  
+    
      
     </span><span class="jsdoc-comment">/** @private */
     </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
@@ -134,7 +137,11 @@
          * @param {Object} data to be rendered (change this)
          */
           </span><span class="jsdoc-string">&quot;preparedata&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+          
+          
         </span><span class="jsdoc-syntax">});
+
+
 
     </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">({
         </span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">,
@@ -150,7 +157,25 @@
         </span><span class="jsdoc-var">this.store </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.data</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.setStore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
     }
+    
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.footer </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.footer.xtype</span><span class="jsdoc-syntax">) {
+           
+         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fctr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.wrapEl.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">));
+        
+        </span><span class="jsdoc-var">this.footer.dataSource </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.store
+        this.footer.container </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">fctr</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.footer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.footer</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">fctr.insertFirst</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-comment">// this is a bit insane - as the paging toolbar seems to detach the el..
+//        dom.parentNode.parentNode.parentNode
+         // they get detached?
+    </span><span class="jsdoc-syntax">}
+    
+    
     </span><span class="jsdoc-var">Roo.View.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    
+    
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.View</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.util.Observable</span><span class="jsdoc-syntax">, {
@@ -206,8 +231,10 @@
      * @return {Roo.Element}
      */
     </span><span class="jsdoc-var">getEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.wrapEl</span><span class="jsdoc-syntax">;
     },
+    
+    
 
     </span><span class="jsdoc-comment">/**
      * Refreshes the view. - called by datachanged on the store. - do not call directly.
