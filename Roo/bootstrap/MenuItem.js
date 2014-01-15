@@ -3,7 +3,20 @@
  *
  * row
  * 
- */ 
+ */
+
+
+/**
+ * @class Roo.bootstrap.MenuItem
+ * @extends Roo.bootstrap.Component
+ * Bootstrap MenuItem class 
+ * 
+ * @constructor
+ * Create a new MenuItem
+ * @param {Object} config The config object
+ */
+
+
 Roo.bootstrap.MenuItem = function(config){
     Roo.bootstrap.MenuItem.superclass.constructor.call(this, config);
 };
