@@ -1,0 +1,94 @@
+<html><head><title>../roojs1/Roo/bootstrap/Menu.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ * row
+ * 
+ */ 
+</span><span class="jsdoc-var">Roo.bootstrap.Menu </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.bootstrap.Menu.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Menu</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
+    
+    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">triggerEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    
+    </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;  
+    },
+    
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+	 
+	</span><span class="jsdoc-comment">//if (['right'].indexOf(this.align)!==-1) {
+	//    cfg.cn[1].cls += ' pull-right'
+	//}
+	
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'ul'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'dropdown-menu' 
+                
+            </span><span class="jsdoc-syntax">};
+    },
+    </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+       </span><span class="jsdoc-comment">// Roo.log(&quot;ADD event&quot;);
+       // Roo.log(this.triggerEl.dom);
+        </span><span class="jsdoc-var">this.triggerEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.toggle</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.triggerEl.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'dropdown-toggle'</span><span class="jsdoc-syntax">);
+        
+    },
+    </span><span class="jsdoc-var">toggle  </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-comment">//Roo.log(e.getTarget());
+       // Roo.log(this.triggerEl.dom);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.getTarget</span><span class="jsdoc-syntax">())</span><span class="jsdoc-var">.findParent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.dropdown-menu'</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">isActive </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.triggerEl.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'open'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">// if disabled.. ingore
+        </span><span class="jsdoc-var">this.clearMenus</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">//if ('ontouchstart' in document.documentElement &amp;&amp; !$parent.closest('.navbar-nav').length) {
+         // if mobile we use a backdrop because click events don't delegate
+        // $('&lt;div class=&quot;dropdown-backdrop&quot;/&gt;').insertAfter($(this)).on('click', clearMenus)
+        // }
+ 
+       //var relatedTarget = { relatedTarget: this }
+       //$parent.trigger(e = $.Event('show.bs.dropdown', relatedTarget))
+ 
+       //if (e.isDefaultPrevented()) return;
+        
+       </span><span class="jsdoc-var">this.triggerEl</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">isActive </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'removeClass' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'addClass'</span><span class="jsdoc-syntax">](</span><span class="jsdoc-string">'open'</span><span class="jsdoc-syntax">);
+       
+       </span><span class="jsdoc-comment">//  .trigger('shown.bs.dropdown', relatedTarget)
+ 
+       </span><span class="jsdoc-var">this.triggerEl.focus</span><span class="jsdoc-syntax">();
+       </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+       </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">(); 
+        
+        
+    },
+    </span><span class="jsdoc-var">clearMenus </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-comment">//$(backdrop).remove()
+        </span><span class="jsdoc-var">Roo.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.dropdown-toggle'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">aa</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">aa.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'open'</span><span class="jsdoc-syntax">)) {
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-comment">// triger close...
+            </span><span class="jsdoc-var">aa.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'open'</span><span class="jsdoc-syntax">);
+          </span><span class="jsdoc-comment">//var parent = getParent($(this))
+          //var relatedTarget = { relatedTarget: this }
+          
+           //$parent.trigger(e = $.Event('hide.bs.dropdown', relatedTarget))
+          //if (e.isDefaultPrevented()) return
+           //$parent.removeClass('open').trigger('hidden.bs.dropdown', relatedTarget)
+        </span><span class="jsdoc-syntax">})
+    }
+    
+   
+});
+
+ 
+
+ </span></code></body></html>
