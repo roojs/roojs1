@@ -15,6 +15,16 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     autoCreate : false,
     
     initEvents : function() {  },
+    
+    parentId : false,
+    
+    parent: function() {
+        // returns the parent component..
+        return Roo.ComponentMgr.get(this.parentId)
+        
+        
+    },
+    
     // private
     onRender : function(ct, position){
         Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
