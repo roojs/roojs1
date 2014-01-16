@@ -157,7 +157,6 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                         xtype: 'Navbar',
                                                         xns: Roo.bootstrap,
                                                         align: 'right',
-                                                        collapse : true,
                                                         items : [
                                                             {
                                                                 xtype: 'Item',
