@@ -27,7 +27,7 @@ Roo.bootstrap.MenuItem = function(config){
 Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
     
     getAutoCreate : function(){
-        var cfg= {
+        var cfg = {
             cls: 'divider',
             tag : 'li'
         };
