@@ -184,7 +184,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                 xns: Roo.bootstrap,
                                                                 html: "hello",
                                                                 href : 'http://roojs.com'
-                                                            }   
+                                                            }
                                                         ]
                                                     }
                                                 }
