@@ -139,7 +139,11 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                 xns: Roo.bootstrap,
                                                                 html: "hello",
                                                                 href : 'http://roojs.com'
-                                                            }   ,
+                                                            },
+                                                            {
+                                                                xtype: 'MenuSeparator',
+                                                                xns: Roo.bootstrap,
+                                                            },
                                                             {
                                                                 xtype: 'MenuItem',
                                                                 xns: Roo.bootstrap,
