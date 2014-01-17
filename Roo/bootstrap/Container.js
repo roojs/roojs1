@@ -1,7 +1,7 @@
 /*
  * - LGPL
  *
- * page contgainer.
+ * page container.
  * 
  */ 
 Roo.bootstrap.Container = function(config){
