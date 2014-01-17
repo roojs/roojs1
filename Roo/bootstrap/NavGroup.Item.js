@@ -8,7 +8,7 @@ Roo.bootstrap.NavGroup.Item = function(config){
     Roo.bootstrap.NavGroup.Item.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.NavGroup.Item, Roo.bootstrap.Component,  {
     
     href : false,
     html : false,
