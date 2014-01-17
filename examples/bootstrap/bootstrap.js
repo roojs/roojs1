@@ -158,7 +158,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                         {
                                             xtype: 'NavGroup',
                                             xns: Roo.bootstrap,
-                                            items : [
+                                            items: [
                                                 {
                                                     xtype: 'Item',
                                                     xns: Roo.bootstrap.Navbar,
