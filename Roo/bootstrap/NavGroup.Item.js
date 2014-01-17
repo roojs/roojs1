@@ -4,8 +4,8 @@
  * row
  * 
  */ 
-Roo.bootstrap.Navbar.Item = function(config){
-    Roo.bootstrap.Navbar.Item.superclass.constructor.call(this, config);
+Roo.bootstrap.NavGroup.Item = function(config){
+    Roo.bootstrap.NavGroup.Item.superclass.constructor.call(this, config);
 };
 
 Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
@@ -20,7 +20,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
     
     getAutoCreate : function(){
         
-        var cfg = Roo.apply({}, Roo.bootstrap.Navbar.Item.superclass.getAutoCreate.call(this));
+        var cfg = Roo.apply({}, Roo.bootstrap.NavGroup.Item.superclass.getAutoCreate.call(this));
 	cfg.cn = [
             {
 		tag: 'p',
