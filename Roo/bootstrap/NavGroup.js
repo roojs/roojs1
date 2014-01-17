@@ -4,11 +4,11 @@
  * row
  * 
  */ 
-Roo.bootstrap.Navbar = function(config){
-    Roo.bootstrap.Navbar.superclass.constructor.call(this, config);
+Roo.bootstrap.NavGroup = function(config){
+    Roo.bootstrap.NavGroup.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     
     type: 'nav',
     arrangement: '',
