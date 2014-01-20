@@ -27,7 +27,6 @@ Roo.bootstrap.Img = function(config){
 Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
     
     imgResponsive: true,
-    border: '',
     src: '',
     
     autoCreate : {
