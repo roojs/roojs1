@@ -41,7 +41,7 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
         
         cfg.html = this.html || cfg.html;
         
-        cfg.src=this.src||cfg.src;
+        cfg.src = this.src || cfg.src;
         
         return cfg;
     }
