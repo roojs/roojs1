@@ -44,7 +44,6 @@ Roo.example.bootstrap = new Roo.XComponent({
                             xtype: 'Button',
                             xns: Roo.bootstrap,
                             html: "hello",
-                            disabled: true,
                             menu:  {
                                     xtype: 'Menu',
                                     xns: Roo.bootstrap,
