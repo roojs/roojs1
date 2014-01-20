@@ -286,6 +286,43 @@ Roo.example.bootstrap = new Roo.XComponent({
                 {
                     xtype: 'Container',
                     xns: Roo.bootstrap,
+                    style :  'margin-top:60px',
+                    
+                    items : [
+                        {
+                            xtype: 'ButtonGroup',
+                            xns: Roo.bootstrap,
+                            items : [
+                                {
+                                    xtype: 'Button',
+                                    xns: Roo.bootstrap,
+                                    html: "hello",
+                                    menu:  {
+                                            xtype: 'Menu',
+                                            xns: Roo.bootstrap,
+                                            items : [
+                                                {
+                                                    xtype: 'MenuItem',
+                                                    xns: Roo.bootstrap,
+                                                    html: "hello aaa",
+                                                    href : 'http://roojs.com'
+                                                },
+                                                {
+                                                    xtype: 'MenuItem',
+                                                    xns: Roo.bootstrap,
+                                                    html: "hello",
+                                                    href : 'http://roojs.com'
+                                                }
+                                            ]
+                                        }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    xtype: 'Container',
+                    xns: Roo.bootstrap,
                     style :  'margin-top:60px', 
                     items : [
                         {
@@ -434,43 +471,6 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xns: Roo.bootstrap,
                                     html : '',
                                     glyphicon: 'align-justify'
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    xtype: 'Container',
-                    xns: Roo.bootstrap,
-                    style :  'margin-top:60px',
-                    
-                    items : [
-                        {
-                            xtype: 'ButtonGroup',
-                            xns: Roo.bootstrap,
-                            items : [
-                                {
-                                    xtype: 'Button',
-                                    xns: Roo.bootstrap,
-                                    html: "hello",
-                                    menu:  {
-                                            xtype: 'Menu',
-                                            xns: Roo.bootstrap,
-                                            items : [
-                                                {
-                                                    xtype: 'MenuItem',
-                                                    xns: Roo.bootstrap,
-                                                    html: "hello aaa",
-                                                    href : 'http://roojs.com'
-                                                },
-                                                {
-                                                    xtype: 'MenuItem',
-                                                    xns: Roo.bootstrap,
-                                                    html: "hello",
-                                                    href : 'http://roojs.com'
-                                                }
-                                            ]
-                                        }
                                 }
                             ]
                         }
