@@ -470,9 +470,14 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     glyphicon: 'align-left',
                                     menu: [
                                         {
-                                            xtype: 'Button',
+                                            xtype: 'Menu',
                                             xns: Roo.bootstrap,
-                                            html : 'a',
+                                            items: [
+                                                {
+                                                    xtype: 'Button',
+                                                    xns: Roo.bootstrap
+                                                }
+                                            ]
                                         }
                                     ]
                                 }
