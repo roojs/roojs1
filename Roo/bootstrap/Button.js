@@ -106,7 +106,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             
             cfg.cls = '';
             cfg.cn =  [{
-                tag : cfg.tag,
+                tag : this.tag,
                 html : this.html,
                 href : this.href || '#'
             }];
