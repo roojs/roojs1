@@ -160,8 +160,8 @@ Roo.example.bootstrap = new Roo.XComponent({
                                             xns: Roo.bootstrap,
                                             items: [
                                                 {
-                                                    xtype: 'Button',
-                                                    xns: Roo.bootstrap,
+                                                    xtype: 'Item',
+                                                    xns: Roo.bootstrap.Navbar,
                                                     html: "nav",
                                                     href : 'http://roojs.com',
                                                     menu: {
