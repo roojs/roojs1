@@ -474,7 +474,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                             ]
                         }
                     ]
-                }
+                },
                 {
                     xtype: 'Img',
                     xns: Roo.bootstrap,
