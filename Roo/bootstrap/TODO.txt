@@ -27,7 +27,7 @@ Button.js
   badge: (empty) or value --- converts to tag a, add pull-right?
   
 Navbar.Dropdown --- problem: has autocreate
-    - add align:  left (default) right --- problem: parent must have navbar-collapse
+    - add align:  left (default) right
     - add pull-right --- what to call it?
 
 Navbar.Button (extends Button) --- how do I do this
