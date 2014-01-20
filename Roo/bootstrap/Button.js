@@ -118,6 +118,9 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             delete cfg.html;
             
         } else if (this.menu) {
+            cfg.tag='a'
+            cfg.cn[0].html = this.html  + ' <span class="caret"></span>';
+            cfg.cls += ' dropdown';
         }
         
         
