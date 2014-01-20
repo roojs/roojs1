@@ -448,25 +448,25 @@ Roo.example.bootstrap = new Roo.XComponent({
                                         {
                                             xtype: 'Button',
                                             xns: Roo.bootstrap,
-                                            html : '',
+                                            html : ' ',
                                             glyphicon: 'align-left'
                                         },
                                         {
                                             xtype: 'Button',
                                             xns: Roo.bootstrap,
-                                            html : '',
+                                            html : ' ',
                                             glyphicon: 'align-center'
                                         },
                                         {
                                             xtype: 'Button',
                                             xns: Roo.bootstrap,
-                                            html : '',
+                                            html : ' ',
                                             glyphicon: 'align-right'
                                         },
                                         {
                                             xtype: 'Button',
                                             xns: Roo.bootstrap,
-                                            html : '',
+                                            html : ' ',
                                             glyphicon: 'align-justify'
                                         }
                                     ]
