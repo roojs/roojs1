@@ -132,9 +132,9 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         }
         
         if (this.glyphicon) {
-            if(typeof(cfg.html)==="string"&&cfg.html){
+            if((typeof(cfg.html) === "string") && cfg.html){
                 cfg.html = ' ' + cfg.html;
-            }
+            };
             
             cfg.cn = [
                 {
