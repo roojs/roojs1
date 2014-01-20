@@ -452,17 +452,15 @@ Roo.example.bootstrap = new Roo.XComponent({
                                 {
                                     xtype: 'Button',
                                     xns: Roo.bootstrap,
-                                    html : '',
-                                    glyphicon: 'align-left',
-                                    menu: [
-                                        {
+                                    html: "hello",
+                                    menu:  {
                                             xtype: 'Menu',
                                             xns: Roo.bootstrap,
-                                            items: [
+                                            items : [
                                                 {
                                                     xtype: 'MenuItem',
                                                     xns: Roo.bootstrap,
-                                                    html: "hello",
+                                                    html: "hello aaa",
                                                     href : 'http://roojs.com'
                                                 },
                                                 {
@@ -473,8 +471,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                 }
                                             ]
                                         }
-                                    ]
-                                }
+                                },
                             ]
                         }
                     ]
