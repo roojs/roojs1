@@ -43,7 +43,7 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
         
         cfg.src = this.src || cfg.src;
         
-        if (['rounded','circle','thumbnail'].indexOf(this.border)) {
+        if (['rounded','circle','thumbnail'].indexOf(this.border)>-1) {
             cfg.cls += ' img-' + this.border;
         }
         
