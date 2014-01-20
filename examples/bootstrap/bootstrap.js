@@ -414,7 +414,46 @@ Roo.example.bootstrap = new Roo.XComponent({
                             ]
                         }
                     ]
-                },{
+                },
+                {
+                    xtype: 'Container',
+                    xns: Roo.bootstrap,
+                    style :  'margin-top:60px',
+                    
+                    items : [
+                        {
+                            xtype: 'ButtonGroup',
+                            xns: Roo.bootstrap,
+                            items : [
+                                {
+                                    xtype: 'Button',
+                                    xns: Roo.bootstrap,
+                                    html : '',
+                                    glyphicon: 'align-left'
+                                },
+                                {
+                                    xtype: 'Button',
+                                    xns: Roo.bootstrap,
+                                    html : '',
+                                    glyphicon: 'align-center'
+                                },
+                                {
+                                    xtype: 'Button',
+                                    xns: Roo.bootstrap,
+                                    html : '',
+                                    glyphicon: 'align-right'
+                                },
+                                {
+                                    xtype: 'Button',
+                                    xns: Roo.bootstrap,
+                                    html : '',
+                                    glyphicon: 'align-justify'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
                     xtype: 'Container',
                     xns: Roo.bootstrap,
                     style :  'margin-top:60px',
