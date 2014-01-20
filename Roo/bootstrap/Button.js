@@ -101,11 +101,11 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         }
          
         //gsRoo.log(this.parentType);
-        if (this.parentType == 'Navbar') {
+        if (this.menu) {
             cfg.tag = 'li';
             
             cfg.cls = '';
-            cfg.cn =  [  {
+            cfg.cn =  [{
                 tag : 'a',
                 html : this.html,
                 href : this.href || '#'
