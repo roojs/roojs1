@@ -404,13 +404,13 @@ Roo.example.bootstrap = new Roo.XComponent({
                     ]
                 },
                 {
-                    xtype: 'ButtonToolbar',
+                    xtype: 'Container',
                     xns: Roo.bootstrap,
+                    style :  'margin-top:60px',
                     items: [
                         {
-                            xtype: 'Container',
+                            xtype: 'ButtonToolbar',
                             xns: Roo.bootstrap,
-                            style :  'margin-top:60px',
                             
                             items : [
                                 {
