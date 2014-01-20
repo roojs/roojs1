@@ -26,12 +26,8 @@ Roo.bootstrap.ButtonToolbar = function(config){
 
 Roo.extend(Roo.bootstrap.ButtonToolbar, Roo.bootstrap.Component,  {
     
-    size: '',
-    align: '',
-     direction: '',
-    
     autoCreate : {
-        cls: 'btn-group',
+        cls: 'btn-toolbar',
         html : null
     },
 
@@ -40,22 +36,6 @@ Roo.extend(Roo.bootstrap.ButtonToolbar, Roo.bootstrap.Component,  {
         var cfg = Roo.apply({}, Roo.bootstrap.ButtonToolbar.superclass.getAutoCreate.call(this));
         
         cfg.html = this.html || cfg.html;
-        
-        if (['vertical','justified'].indexOf(this.align)!==-1) {
-            cfg.cls = 'btn-group-' + this.align;
-            
-            if (this.align == 'justified') {
-                console.log(this.items);
-            }
-        }
-        
-        if (['lg','sm','xs'].indexOf(this.size)!==-1) {
-            cfg.cls += ' btn-group-' + this.size;
-        }
-        
-        if (this.direction == 'up') {
-            cfg.cls += ' dropup' ;
-        }
         
         return cfg;
     }
