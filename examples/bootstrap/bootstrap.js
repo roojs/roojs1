@@ -155,40 +155,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                             ]    
                                             
                                              
-                                        },
-                                        {
-                                            xtype: 'NavGroup',
-                                            xns: Roo.bootstrap,
-                                            items: [
-                                                {
-                                                    xtype: 'Button',
-                                                    xns: Roo.bootstrap,
-                                                    html: "hello",
-                                                    menu:  {
-                                                            xtype: 'Menu',
-                                                            xns: Roo.bootstrap,
-                                                            items : [
-                                                                {
-                                                                    xtype: 'MenuItem',
-                                                                    xns: Roo.bootstrap,
-                                                                    html: "hello aaa",
-                                                                    href : 'http://roojs.com'
-                                                                },
-                                                                {
-                                                                    xtype: 'MenuItem',
-                                                                    xns: Roo.bootstrap,
-                                                                    html: "hello",
-                                                                    href : 'http://roojs.com'
-                                                                }
-                                                            ]
-                                                        }
-                                                }
-                                            ]    
-                                            
-                                             
                                         }
-                                        
-                                       
                                     ]
                                 }
                             ]
