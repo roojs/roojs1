@@ -43,7 +43,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                         {
                             xtype: 'Button',
                             xns: Roo.bootstrap,
-                            html: "hellox",
+                            html: "hello",
                             menu:  {
                                     xtype: 'Menu',
                                     xns: Roo.bootstrap,
