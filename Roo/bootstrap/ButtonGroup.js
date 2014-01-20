@@ -28,7 +28,8 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
     
     size: '',
     align: '',
-     direction: '',
+    direction: '',
+    toolbar: false,
     
     autoCreate : {
         cls: 'btn-group',
@@ -40,6 +41,15 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
         var cfg = Roo.apply({}, Roo.bootstrap.ButtonGroup.superclass.getAutoCreate.call(this));
         
         cfg.html = this.html || cfg.html;
+        
+        if (this.toolbar) {
+            cfg = {
+                cls: 'btn-toolbar',
+                html: null
+            }
+            
+            return cfg;
+        }
         
         if (['vertical','justified'].indexOf(this.align)!==-1) {
             cfg.cls = 'btn-group-' + this.align;
