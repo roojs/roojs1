@@ -101,7 +101,8 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         }
          
         //gsRoo.log(this.parentType);
-        if (this.menu) {
+        if (this.parentType == 'Navbar') {
+            cfg.tag = 'li';
             
             cfg.cls = '';
             cfg.cn =  [{
@@ -112,8 +113,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             if (this.menu) {
                 cfg.cn[0].html = this.html  + ' <span class="caret"></span>';
                 cfg.cls += ' dropdown';
-            }
-            cfg.tag = 'li';
+            }   
             
             delete cfg.html;
             
