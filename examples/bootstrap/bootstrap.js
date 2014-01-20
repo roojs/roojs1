@@ -421,16 +421,9 @@ Roo.example.bootstrap = new Roo.XComponent({
                     
                     items : [
                         {
-                            xtype: 'Form',
+                            xtype: 'ButtonGroup',
                             xns: Roo.bootstrap,
-                            labelAlign : 'left',
                             items : [
-                                {
-                                    xtype: 'Input',
-                                    xns: Roo.bootstrap,
-                                    name : 'test',
-                                    fieldLabel : 'test'
-                                },
                                 {
                                     xtype: 'Button',
                                     xns: Roo.bootstrap,
