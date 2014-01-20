@@ -40,7 +40,7 @@ Navbar.Item
     - add badge --- good
 
 Navbar -
-    type : tabs | pills | stacked | justified | fixed-top | fixed-bottom  | static-top | inverse (default empty)  --- +collapse problem: justified must have <a> children
+    type : tabs | pills | stacked | justified | fixed-top | fixed-bottom  | static-top | inverse (default empty)  --- +collapse, problem: justified works only for <a>, not <button>
 
 BreadCrumb
 BreadCrumb.Item
