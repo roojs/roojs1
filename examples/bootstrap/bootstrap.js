@@ -484,7 +484,6 @@ Roo.example.bootstrap = new Roo.XComponent({
                             xns: Roo.bootstrap,
                             src: 'http://img.brothersoft.com/screenshots/softimage/r/rose_flower_screensaver-234027-1240456558.jpeg',
                             border: 'thumbnail',
-                            alt: 'x',
                             style: 'width: 400px'
                         }
                     ]
