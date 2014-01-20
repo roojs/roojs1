@@ -102,18 +102,18 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
          
         //gsRoo.log(this.parentType);
         if (this.menu) {
-            cfg.tag = 'li';
             
             cfg.cls = '';
             cfg.cn =  [{
-                tag : 'a',
+                tag : cfg.tag,
                 html : this.html,
                 href : this.href || '#'
             }];
             if (this.menu) {
                 cfg.cn[0].html = this.html  + ' <span class="caret"></span>';
                 cfg.cls += ' dropdown';
-            }   
+            }
+            cfg.tag = 'li';
             
             delete cfg.html;
             
