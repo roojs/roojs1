@@ -471,7 +471,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                 }
                                             ]
                                         }
-                                },
+                                }
                             ]
                         }
                     ]
