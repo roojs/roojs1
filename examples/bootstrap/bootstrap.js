@@ -160,32 +160,27 @@ Roo.example.bootstrap = new Roo.XComponent({
                                             xns: Roo.bootstrap,
                                             items: [
                                                 {
-                                                    xtype: 'Item',
-                                                    xns: Roo.bootstrap.Navbar,
-                                                    html: "nav",
-                                                    href : 'http://roojs.com',
-                                                    menu: {
-                                                        xtype: 'Menu',
-                                                        xns: Roo.bootstrap,
-                                                        items : [
-                                                            {
-                                                                xtype: 'MenuItem',
-                                                                xns: Roo.bootstrap,
-                                                                html: "hello",
-                                                                href : 'http://roojs.com'
-                                                            },
-                                                            {
-                                                                xtype: 'MenuSeparator',
-                                                                xns: Roo.bootstrap,
-                                                            },
-                                                            {
-                                                                xtype: 'MenuItem',
-                                                                xns: Roo.bootstrap,
-                                                                html: "hello",
-                                                                href : 'http://roojs.com'
-                                                            }
-                                                        ]
-                                                    }
+                                                    xtype: 'Button',
+                                                    xns: Roo.bootstrap,
+                                                    html: "hello",
+                                                    menu:  {
+                                                            xtype: 'Menu',
+                                                            xns: Roo.bootstrap,
+                                                            items : [
+                                                                {
+                                                                    xtype: 'MenuItem',
+                                                                    xns: Roo.bootstrap,
+                                                                    html: "hello aaa",
+                                                                    href : 'http://roojs.com'
+                                                                },
+                                                                {
+                                                                    xtype: 'MenuItem',
+                                                                    xns: Roo.bootstrap,
+                                                                    html: "hello",
+                                                                    href : 'http://roojs.com'
+                                                                }
+                                                            ]
+                                                        }
                                                 }
                                             ]    
                                             
