@@ -65,7 +65,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         
         var cfg = Roo.apply({}, Roo.bootstrap.Button.superclass.getAutoCreate.call(this));
         
-        cfg.html = this.html === undefined? cfg.html : this.html;
+        cfg.html = this.html || cfg.html;
         
         if (this.isClose) {
             cfg.cls += ' close';
