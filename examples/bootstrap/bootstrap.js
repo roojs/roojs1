@@ -39,7 +39,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                             href: '#',
                             html: "hello",
                             badge: 'test',
-                            isActive: true
+                            active: true
                         },
                         {
                             xtype: 'Button',
