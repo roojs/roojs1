@@ -20,11 +20,11 @@
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.ButtonGroup = function(config){
-    Roo.bootstrap.ButtonGroup.superclass.constructor.call(this, config);
+Roo.bootstrap.Img = function(config){
+    Roo.bootstrap.Img.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
     
     imgResponsive: true,
     border: '',
@@ -36,7 +36,7 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
 
     getAutoCreate : function(){
         
-        var cfg = Roo.apply({}, Roo.bootstrap.ButtonGroup.superclass.getAutoCreate.call(this));
+        var cfg = Roo.apply({}, Roo.bootstrap.Img.superclass.getAutoCreate.call(this));
         
         cfg.html = this.html || cfg.html;
         
