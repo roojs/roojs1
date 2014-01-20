@@ -119,7 +119,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             
         } else if (this.menu) {
             cfg.tag='a'
-            cfg.cls += ' dropdown';
+            cfg.cls += ' dropdown test';
         }
         
         
