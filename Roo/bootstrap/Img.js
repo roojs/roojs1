@@ -28,6 +28,7 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
     
     imgResponsive: true,
     border: '',
+    src: '',
     
     autoCreate : {
         cls: 'img-responsive',
@@ -39,6 +40,8 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
         var cfg = Roo.apply({}, Roo.bootstrap.Img.superclass.getAutoCreate.call(this));
         
         cfg.html = this.html || cfg.html;
+        
+        cfg.src=this.src||cfg.src;
         
         return cfg;
     }
