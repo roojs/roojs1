@@ -48,7 +48,9 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
             cfg.cls += ' img-' + this.border;
         }
         
-        cfg.alt = this.alt || null;
+        if(this.alt){
+            cfg.alt = this.alt;
+        }
         
         return cfg;
     }
