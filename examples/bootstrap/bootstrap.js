@@ -422,22 +422,22 @@ Roo.example.bootstrap = new Roo.XComponent({
                                         {
                                             xtype: 'Button',
                                             xns: Roo.bootstrap,
-                                            html : '',
+                                            html : 'A',
                                         },
                                         {
                                             xtype: 'Button',
                                             xns: Roo.bootstrap,
-                                            html : '',
+                                            html : 'B',
                                         },
                                         {
                                             xtype: 'Button',
                                             xns: Roo.bootstrap,
-                                            html : '',
+                                            html : 'C',
                                         },
                                         {
                                             xtype: 'Button',
                                             xns: Roo.bootstrap,
-                                            html : '',
+                                            html : 'D',
                                         }
                                     ]
                                 },
