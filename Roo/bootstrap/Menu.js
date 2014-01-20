@@ -39,7 +39,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
 	
         return {
                 tag : 'ul',
-                cls : 'dropdown-menu' 
+                cls : 'dropdown-menu test' 
                 
             };
     },
