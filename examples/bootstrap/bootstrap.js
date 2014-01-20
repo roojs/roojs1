@@ -38,7 +38,8 @@ Roo.example.bootstrap = new Roo.XComponent({
                             xns: Roo.bootstrap.Navbar,
                             href: '#',
                             html: "hello",
-                            badge: 'test'
+                            badge: 'test',
+                            active: true
                         },
                         {
                             xtype: 'Button',
