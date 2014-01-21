@@ -32,8 +32,8 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 	    
 	    cfg.cn = [
 		{
-		    tag : 'ul',
-		    cls: 'nav'
+		    tag : 'div',
+		    cls: 'collapse navbar-collapse'
 		}
 	    ];
 	    
