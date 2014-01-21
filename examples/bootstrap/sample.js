@@ -28,7 +28,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                     xns: Roo.bootstrap,
                     position: 'fixed-top',
                     inverse: true,
-                    brand: '<img src="img/logo.png" alt="logo">',
+                    brand: '<img src="http://detail.herokuapp.com/img/logo.png" alt="logo">',
                     collapse: true,
                     items: [
                         {
