@@ -35,6 +35,11 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 	    
 	    cfg.cls += this.inverse ? ' navbar-inverse' : '';
 	    
+	    if (['fixed-top','fixed-bottom','static-top'].indexOf(this.position)> -1) {
+		cfg.cls += ' navbar-' + this.position;
+		cfg.tag = this.position  == 'fixed-bottom' ? 'footer' : 'header';
+	    }
+	    
 	    cfg.cn = [
 		{
 		    tag : 'div',
