@@ -32,6 +32,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 	if (this.menu) {
 	    cfg.cn[0].tag='a';
 	    cfg.cn[0].href='#';
+	    cfg.cn[0].html += " <span class='caret'></span>";
 	//}else if (!this.href) {
 	//    cfg.cn[0].tag='p';
 	//    cfg.cn[0].cls='navbar-text';
