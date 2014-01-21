@@ -33,19 +33,15 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 		cfg.cls += ' navbar-' + this.position;
 		cfg.tag = this.position  == 'fixed-bottom' ? 'footer' : 'header';
 	    }
-	    var m={
-		tag: 'div'
-	    };
-	    m.cn=cfg.cn
+	    
 	    cfg.cn = [
 		{
 		    tag: 'div',
-		    cls: 'collapse navbar-collapse',
-		    cn: cfg.cn
+		    cls: 'collapse navbar-collapse'
 		}
 	    ];
 	    
-	    return m;
+	    return cfg;
 	}
 	
         cfg.cn = [
