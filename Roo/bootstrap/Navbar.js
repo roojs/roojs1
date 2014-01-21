@@ -35,12 +35,11 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 	    }
 	    
 	    if (this.brand) {
-		cfg.cn=(cfg.cn||[]).unshift(
+		cfg.cn[0]=
 		    {
 			tag: 'div',
 			class: 'navbar-header',
 		    }
-		)
 	    }
 	    
 	    return cfg;
