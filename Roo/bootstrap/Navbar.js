@@ -37,6 +37,14 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 	    }
 	    
 	    if (this.brand||this.collapse) {
+		var brandbtn;
+		if (this.brand) {
+		    brandbtn = {
+			tag: 'a',
+			cls: 'navbar-brand',
+			href: '#'
+		    }
+		}
 		cfg.cn.push(
 		    {
 			tag:'div',
@@ -67,7 +75,8 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 					cls: 'icon-bar'
 				    }
 				]
-			    }
+			    },
+			    
 			]
 		    }
 		)
