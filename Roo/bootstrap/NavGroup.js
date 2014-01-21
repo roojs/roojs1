@@ -25,12 +25,6 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.NavGroup.superclass.getAutoCreate.call(this));
 	
-        cfg.cn = [
-            {
-                cls: 'nav',
-                tag : 'ul'
-            }
-        ];
         
         if (this.align === 'right') {
             cfg.cls += ' navbar-right';
