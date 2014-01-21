@@ -32,27 +32,10 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
             }
         ];
         
-        if (['tabs','pills'].indexOf(this.type)!==-1) {
-            cfg.cn[0].cls += ' nav-' + this.type
-        } else {
-            if (this.type!=='nav') {
-            Roo.log('nav type must be nav/tabs/pills')
-            }
-            cfg.cn[0].cls += ' navbar-nav'
-        }
-        
-        if (['stacked','justified'].indexOf(this.arrangement)!==-1) {
-            cfg.cn[0].cls += ' nav-' + this.arrangement;
-        }
-        
-        if (['fixed-top','fixed-bottom','static-top'].indexOf(this.position)> -1) {
-            cfg.cls += ' navbar-' + this.position;
-            cfg.tag = this.position  == 'fixed-bottom' ? 'footer' : 'header';
-        }
-        
         if (this.align === 'right') {
-            cfg.cn[0].cls += ' navbar-right';
+            cfg.cls += ' navbar-right';
         }
+        
         if (this.inverse) {
             cfg.cls += ' navbar-inverse';
             
