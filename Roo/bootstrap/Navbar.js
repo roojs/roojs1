@@ -39,7 +39,8 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 	    if (this.collapse) {
 		cfg.cn.push(
 		    {
-			
+			tag: 'div',
+			cls: 'collapse navbar-collapse'
 		    }
 		)
 	    }
