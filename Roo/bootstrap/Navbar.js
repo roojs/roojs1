@@ -39,7 +39,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 		{
 		    tag: 'div',
 		    cls: 'collapse navbar-collapse',
-		    cn: cfg.cn
+		    cn: this.cn
 		}
 		
 		cfg.cn=collapsecontainer;
