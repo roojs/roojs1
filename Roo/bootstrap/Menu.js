@@ -38,10 +38,10 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
 	//}
 	
         return {
-                tag : 'ul',
-                cls : 'dropdown-menu' 
-                
-            };
+	    tag : 'ul',
+	    cls : 'dropdown-menu' 
+            
+        };
     },
     initEvents : function() {
        // Roo.log("ADD event");
