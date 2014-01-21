@@ -29,6 +29,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                     position : 'fixed-top',
                     inverse : true,
                     collapse: true,
+                    contained: true,
                     brand: '<a class="navbar-brand" href="#">Brand</a>',
                     xns: Roo.bootstrap,
                     items : [
