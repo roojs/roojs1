@@ -45,7 +45,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     },
     
     getChildContainer : function() {
-        return this.el.select('ul', true).first();
+        return this;
     }
    
 });
