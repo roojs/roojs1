@@ -15,8 +15,8 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     bar: false,
     
     autoCreate : {
-        cls: 'navbar navbar-default',
-        tag : 'nav',
+        cls: 'nav',
+        tag : 'ul',
         role : 'navigation'
     },
     
