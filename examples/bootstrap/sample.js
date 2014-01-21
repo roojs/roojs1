@@ -33,6 +33,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                         {
                             xtype: 'NavGroup',
                             xns: Roo.bootstrap,
+                            align: 'right',
                             items: [
                                 {
                                     xtype: 'Item',
