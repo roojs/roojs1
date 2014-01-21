@@ -85,7 +85,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xns: Roo.bootstrap,
                                     title : 'test1',
                                     html: "dialog"
-                                },
+                                }
                             ]
                         }
                     ]
