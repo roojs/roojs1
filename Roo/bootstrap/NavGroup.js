@@ -18,9 +18,8 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     align: '',
     
     autoCreate : {
-        cls: 'navbar navbar-default',
-        tag : 'nav',
-        role : 'navigation'
+        cls: 'nav navbar-nav',
+        tag : 'ul',
     },
     
     getAutoCreate : function(){
