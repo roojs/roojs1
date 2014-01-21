@@ -29,6 +29,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                     position: 'fixed-top',
                     inverse: true,
                     brand: 'Detail Admin',
+                    collapse: true,
                     items: [
                         {
                             xtype: 'NavGroup',
