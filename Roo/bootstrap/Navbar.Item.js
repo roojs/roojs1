@@ -37,7 +37,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 	//    cfg.cn[0].cls='navbar-text';
 	} else {
 	    cfg.cn[0].tag='a';
-	    cfg.cn[0].href=this.href;
+	    cfg.cn[0].href=this.href||'#';
 	    cfg.cn[0].html=this.html;
 	}
 	
