@@ -38,7 +38,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 		cfg.cn[0]=
 		    {
 			tag: 'div',
-			class: 'navbar-header',
+			class: 'navbar-header'
 		    }
 	    }
 	    
