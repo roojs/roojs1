@@ -27,7 +27,6 @@ Roo.example.bootstrap = new Roo.XComponent({
                  {
                     xtype: 'Navbar',
                     position : 'fixed-top',
-                    bar: true,
                     inverse : true,
                     xns: Roo.bootstrap,
                     items : [
@@ -116,7 +115,6 @@ Roo.example.bootstrap = new Roo.XComponent({
                                         {
                                             xtype: 'Navbar',
                                             xns: Roo.bootstrap,
-                                            bar: true,
                                             items : [
                                                 {
                                                     xtype: 'NavGroup',
