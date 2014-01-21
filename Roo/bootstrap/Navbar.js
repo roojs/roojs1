@@ -51,7 +51,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 		var container = {
 		    tag: 'div',
 		    class: 'container',
-		    items: [
+		    cn: [
 			cfg.cn[0]
 		    ]
 		}
