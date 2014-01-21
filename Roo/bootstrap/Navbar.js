@@ -17,9 +17,6 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     arrangement: '',
     position: '',
     
-    
-    
-    
     autoCreate : {
         cls: 'nav',
         tag: 'ul',
