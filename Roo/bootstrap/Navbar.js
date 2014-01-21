@@ -16,12 +16,20 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     
     autoCreate : {
         cls: 'nav',
-        tag : 'ul',
-        role : 'navigation'
+        tag: 'ul',
+        role: 'navigation'
     },
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Navbar.superclass.getAutoCreate.call(this));
+	
+	if (this.bar) {
+	    cfg = {
+		tag: nav,
+		cls: 'navbar',
+		role: 'navigation'
+	    }
+	}
 	
         cfg.cn = [
             {
