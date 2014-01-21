@@ -56,6 +56,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 			cls: 'collapse navbar-collapse',
 			items: this.items
 		    })
+		    delete this.items
 		}
 	    }
 	    
