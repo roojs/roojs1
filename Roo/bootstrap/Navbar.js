@@ -25,7 +25,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 	
 	if (this.bar) {
 	    cfg = {
-		tag: nav,
+		tag: 'nav',
 		cls: 'navbar',
 		role: 'navigation'
 	    }
