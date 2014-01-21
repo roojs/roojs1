@@ -26,6 +26,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                 {
                     xtype: 'Navbar',
                     xns: Roo.bootstrap,
+                    brand: 'a',
                     items: [
                         {
                             xtype: 'NavGroup',
