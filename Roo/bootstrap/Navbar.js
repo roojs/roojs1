@@ -37,7 +37,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 	    }
 	    
 	    if (this.brand||this.collapse) {
-		var brandbtn=null;
+		var brandbtn={};
 		if (this.brand) {
 		    brandbtn = {
 			tag: 'a',
@@ -76,7 +76,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 				    }
 				]
 			    },
-			    null
+			    brandbtn
 			]
 		    }
 		)
