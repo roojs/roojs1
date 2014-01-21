@@ -14,13 +14,13 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
     html : false,
     badge : '',
     
-    autoCreate : {
-        tag : 'li'
-    },
-    
     getAutoCreate : function(){
         
         var cfg = Roo.apply({}, Roo.bootstrap.Navbar.Item.superclass.getAutoCreate.call(this));
+	
+	cfg = {
+	    tag: 'li'
+	}
 	cfg.cn = [
             {
 		tag: 'p',
