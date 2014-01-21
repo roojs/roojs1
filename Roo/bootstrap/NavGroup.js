@@ -26,9 +26,6 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         var cfg = Roo.apply({}, Roo.bootstrap.NavGroup.superclass.getAutoCreate.call(this));
 	
         cfg.cn = [
-            {
-                tag : 'li'
-            }
         ];
         
         if (this.align === 'right') {
