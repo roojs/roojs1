@@ -50,7 +50,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 		    ]
 		}
 		
-		cfg.cn=[container];
+		cfg.cn=[collapse];
 	    }
 	    
 	    if (this.contained) {
