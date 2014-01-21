@@ -40,7 +40,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 		cfg.tag = this.position  == 'fixed-bottom' ? 'footer' : 'header';
 	    }
 	    
-	    cfg.cn = [
+	    cfg = [
 		{
 		    tag : 'div',
 		    cls: 'collapse navbar-collapse',
