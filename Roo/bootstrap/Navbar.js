@@ -37,47 +37,49 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 	    }
 	    
 	    if (this.brand||this.collapse) {
-		var brandbtn={};
-		if (this.brand) {
-		    brandbtn = {
-			tag: 'a',
-			cls: 'navbar-brand',
-			href: '#'
+		var headercontents = [
+		    {
+			tag: 'button',
+			type: 'button',
+			cls: 'navbar-toggle',
+			'data-toggle': 'collapse',
+			'data-target': '#',
+			cn: [
+			    {
+				tag: 'span',
+				cls: 'sr-only',
+				html: 'Toggle navigation'
+			    },
+			    {
+				tag: 'span',
+				cls: 'icon-bar'
+			    },
+			    {
+				tag: 'span',
+				cls: 'icon-bar'
+			    },
+			    {
+				tag: 'span',
+				cls: 'icon-bar'
+			    }
+			]
 		    }
+		]
+		if (this.brand) {
+		    headercontents.push(
+			{
+			    tag: 'a',
+			    href: '#',
+			    html: this.brand,
+			    cls: 'navbar-brand'
+			}
+		    )
 		}
 		cfg.cn.push(
 		    {
 			tag:'div',
 			cls: 'navbar-header',
-			cn: [
-			    {
-				tag: 'button',
-				type: 'button',
-				cls: 'navbar-toggle',
-				'data-toggle': 'collapse',
-				'data-target': '#',
-				cn: [
-				    {
-					tag: 'span',
-					cls: 'sr-only',
-					html: 'Toggle navigation'
-				    },
-				    {
-					tag: 'span',
-					cls: 'icon-bar'
-				    },
-				    {
-					tag: 'span',
-					cls: 'icon-bar'
-				    },
-				    {
-					tag: 'span',
-					cls: 'icon-bar'
-				    }
-				]
-			    },
-			    brandbtn
-			]
+			cn: headercontents
 		    }
 		)
 	    }
