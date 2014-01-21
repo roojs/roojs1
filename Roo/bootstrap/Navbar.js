@@ -86,8 +86,8 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     },
     
     getChildContainer : function() {
-	if (this.bar) {
-	    return this.el.select('',true).first();
+	if (this.collapse) {
+	    return this.el.select('.collapse',true).first();
 	}
 	
         return this.el;
