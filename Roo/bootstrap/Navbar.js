@@ -25,7 +25,8 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 	    cfg = {
 		tag: 'nav',
 		cls: 'navbar',
-		role: 'navigation'
+		role: 'navigation',
+		cn: []
 	    }
 	    
 	    cfg.cls += this.inverse ? ' navbar-inverse' : '';
@@ -33,6 +34,14 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 	    if (['fixed-top','fixed-bottom','static-top'].indexOf(this.position)>-1) {
 		cfg.cls += ' navbar-' + this.position;
 		cfg.tag = this.position  == 'fixed-bottom' ? 'footer' : 'header';
+	    }
+	    
+	    if (this.collapse) {
+		cfg.cn.push(
+		    {
+			
+		    }
+		)
 	    }
 	    
 	    return cfg;
@@ -76,6 +85,10 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     },
     
     getChildContainer : function() {
+	if (this.bar) {
+	    return this.el.select('',true).first();
+	}
+	
         return this.el;
     }
    
