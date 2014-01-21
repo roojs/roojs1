@@ -28,7 +28,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         cfg.cn = [
             {
                 cls: 'nav',
-                tag : 'ul'
+                tag : 'li'
             }
         ];
         
@@ -51,7 +51,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     },
     
     getChildContainer : function() {
-        return this.el.select('ul', true).first();
+        return this.el.select('li', true).first();
     }
    
 });
