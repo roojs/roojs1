@@ -47,7 +47,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 		}
 	    ];
 	    
-	    delete this.cn
+	    delete cfg.cn
 	    
 	    return cfg;
 	}
