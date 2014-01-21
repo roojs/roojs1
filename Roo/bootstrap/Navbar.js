@@ -29,7 +29,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 		cn: []
 	    }
 	    
-	    cfg.cls += this.inverse ? ' navbar-inverse' : '';
+	    cfg.cls += this.inverse ? ' navbar-inverse' : ' navbar-default';
 	    
 	    if (['fixed-top','fixed-bottom','static-top'].indexOf(this.position)>-1) {
 		cfg.cls += ' navbar-' + this.position;
