@@ -33,6 +33,8 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 		role: 'navigation'
 	    }
 	    
+	    cfg.cls += this.inverse ? ' navbar-inverse' : '';
+	    
 	    cfg.cn = [
 		{
 		    tag : 'div',
