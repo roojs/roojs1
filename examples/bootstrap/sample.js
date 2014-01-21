@@ -28,7 +28,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                     xns: Roo.bootstrap,
                     position: 'fixed-top',
                     inverse: true,
-                    brand: 'a',
+                    brand: 'Detail Admin',
                     items: [
                         {
                             xtype: 'NavGroup',
