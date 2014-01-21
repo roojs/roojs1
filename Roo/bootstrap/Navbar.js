@@ -47,6 +47,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 		    cn: this.cn || []
 		}
 	    ];
+	    delete this.cn
 	    
 	    if (this.contained) {
 		
