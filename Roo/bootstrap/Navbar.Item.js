@@ -29,8 +29,10 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
         ];
 	
         cfg.cn[0].html = this.html || cfg.cn[0].html ;
-	
-	if (!this.href) {
+	if (this.menu) {
+	    cfg.cn[0].tag='a';
+	    cfg.cn[0].href='#';
+	}else if (!this.href) {
 	    cfg.cn[0].tag='p';
 	    cfg.cn[0].cls='navbar-text';
 	} else {
