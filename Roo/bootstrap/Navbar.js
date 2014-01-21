@@ -47,8 +47,6 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 		}
 	    ];
 	    
-	    cfg.cn=[null]
-	    
 	    return cfg;
 	}
 	
