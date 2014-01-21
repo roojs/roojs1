@@ -48,6 +48,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 	    ];
 	    
 	    if (this.contained) {
+		
 		var container = {
 		    tag: 'div',
 		    class: 'container',
