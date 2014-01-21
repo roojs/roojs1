@@ -45,8 +45,8 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     active: true
                                 },
                                 {
-                                    xtype: 'Button',
-                                    xns: Roo.bootstrap,
+                                    xtype: 'Item',
+                                    xns: Roo.bootstrap.Navbar,
                                     html: "hello",
                                     menu:  {
                                             xtype: 'Menu',
@@ -68,8 +68,8 @@ Roo.example.bootstrap = new Roo.XComponent({
                                         }
                                 },
                                 {
-                                    xtype: 'Button',
-                                    xns: Roo.bootstrap,
+                                    xtype: 'Item',
+                                    xns: Roo.bootstrap.Navbar,
                                    
                                     html: "dialog",
                                     listeners : {
