@@ -34,10 +34,6 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 		cfg.tag = this.position  == 'fixed-bottom' ? 'footer' : 'header';
 	    }
 	    
-	    if (['stacked','justified'].indexOf(this.arrangement)!==-1) {
-		cfg.cn[0].cls += ' nav-' + this.arrangement;
-	    }
-	    
 	    return cfg;
 	}
 	
