@@ -12,7 +12,13 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     
     type: 'nav',
     inverse: false,
-    bar: false,
+    bar: true,
+    
+    arrangement: '',
+    position: '',
+    
+    
+    
     
     autoCreate : {
         cls: 'nav',
