@@ -56,6 +56,16 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 	 
 	
         return cfg;
+    },
+    initEvents: function() {
+       // Roo.log('init events?');
+       // Roo.log(this.el.dom);
+        this.el.select('a',true).on('click',
+                function(e) {
+                    this.fireEvent('click', this);
+                },
+                this
+        );
     }
    
 });
