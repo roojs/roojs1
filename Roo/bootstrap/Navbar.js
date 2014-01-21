@@ -34,6 +34,16 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 		cfg.tag = this.position  == 'fixed-bottom' ? 'footer' : 'header';
 	    }
 	    
+	    if (this.brand) {
+		cfg.cn.unshift(
+		    {
+			tag: 'div',
+			class: 'navbar-header',
+			html: this.brand
+		    }
+		)
+	    }
+	    
 	    return cfg;
 	}
 	
