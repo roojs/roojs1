@@ -27,7 +27,6 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
 	
         cfg.cn = [
             {
-                cls: 'nav',
                 tag : 'li'
             }
         ];
