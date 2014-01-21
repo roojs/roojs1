@@ -29,6 +29,8 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 		cls: 'navbar',
 		role: 'navigation'
 	    }
+	    
+	    return cfg;
 	}
 	
         cfg.cn = [
