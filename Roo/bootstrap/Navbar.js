@@ -56,7 +56,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 		    ]
 		}
 		
-		cfg.cn[0]=container;
+		cfg.cn=[container];
 	    }
 	    
 	    return cfg;
