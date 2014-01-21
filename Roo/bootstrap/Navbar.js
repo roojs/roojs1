@@ -39,6 +39,14 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 		    {
 			tag: 'div',
 			class: 'navbar-header'
+			cn: [
+			    {
+				tag: 'a',
+				class:'navbar-brand',
+				href:'#',
+				html: this.brand
+			    }
+			]
 		    }]
 	    }
 	    
