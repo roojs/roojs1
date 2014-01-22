@@ -30,6 +30,11 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 		]
 	    }
 	    
+	    if (this.href) {
+		cfg.cn[0].tag = 'a',
+		cfg.cn[0].href = this.href;
+	    }
+	    
 	    return cfg;
 	}
 	
