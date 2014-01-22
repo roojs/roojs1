@@ -118,8 +118,8 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xtype: 'Item',
                                     xns: Roo.bootstrap.Navbar,
                                     href: '#',
-                                    glyphicon: 'home',
-                                    html: "Hello",
+                                    glyphicon: 'stats',
+                                    html: 'Charts',
                                     active: true
                                 }
                             ]
