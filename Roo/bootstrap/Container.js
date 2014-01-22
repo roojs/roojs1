@@ -25,13 +25,13 @@ Roo.bootstrap.Container = function(config){
 Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
      
     jumbotron : false, // doc me
-	autoCreate : {
-        cls: 'container',
-        html : null
-    },
+	
     getAutoCreate : function(){
         
-        var cfg = Roo.apply({}, Roo.bootstrap.Container.superclass.getAutoCreate.call(this));
+        var cfg = {
+            cls: 'container',
+            html : null
+        };
         if (this.jumbotron) {
             cfg.cls = 'jumbotron';
         }
