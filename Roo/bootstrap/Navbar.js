@@ -14,10 +14,10 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     brand: '',
     inverse: false,
     collapse: false,
+    position: '',
     
     type: 'nav',
     arrangement: '',
-    position: '',
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Navbar.superclass.getAutoCreate.call(this));
