@@ -141,7 +141,6 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
     },
     getButtonContainer : function() {
-         
          return this.el.select('.modal-footer',true).first();
         
     },
