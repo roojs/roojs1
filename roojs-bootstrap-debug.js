@@ -1013,15 +1013,15 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 				    },
 				    {
 					tag: 'span',
-					cls: 'icon-bar',
+					cls: 'icon-bar'
 				    },
 				    {
 					tag: 'span',
-					cls: 'icon-bar',
+					cls: 'icon-bar'
 				    },
 				    {
 					tag: 'span',
-					cls: 'icon-bar',
+					cls: 'icon-bar'
 				    }
 				]
 			    }
@@ -1104,6 +1104,38 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 	
         return this.el;
     }
+   
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * row
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.Row
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Row class (contains columns...)
+ * 
+ * @constructor
+ * Create a new Row
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.Row = function(config){
+    Roo.bootstrap.Row.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.Row, Roo.bootstrap.Component,  {
+      
+	autoCreate : {
+        cls: 'row clearfix'
+    }
+ 
    
 });
 
