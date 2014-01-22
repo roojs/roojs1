@@ -1214,28 +1214,54 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
  *
  * row
  * 
- */
-
-/**
- * @class Roo.bootstrap.Row
- * @extends Roo.bootstrap.Component
- * Bootstrap Row class (contains columns...)
- * 
- * @constructor
- * Create a new Row
- * @param {Object} config The config object
- */
-
-Roo.bootstrap.Row = function(config){
-    Roo.bootstrap.Row.superclass.constructor.call(this, config);
+ */ 
+Roo.bootstrap.NavGroup = function(config){
+    Roo.bootstrap.NavGroup.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.Row, Roo.bootstrap.Component,  {
-      
-	autoCreate : {
-        cls: 'row clearfix'
+Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
+    
+    align: '',
+    
+    getAutoCreate : function(){
+        var cfg = Roo.apply({}, Roo.bootstrap.NavGroup.superclass.getAutoCreate.call(this));
+        
+        cfg = {
+            tag : 'ul',
+            cls: 'nav navbar-nav',
+        }
+        
+        if (this.parent().sidebar === true) {
+            cfg = {
+                tag: 'div',
+                cls: 'dashboard-menu'
+            }
+            
+            return cfg;
+        }
+        
+        
+        if (this.align === 'right') {
+            cfg.cls += ' navbar-right';
+        }
+        
+        if (this.inverse) {
+            cfg.cls += ' navbar-inverse';
+            
+        }
+        /* type: nav | tabs | pills
+         * arrangement: stacked | justified
+         * position: fixed/static etc
+         * inverse: true/false
+         */
+        
+        
+        return cfg;
+    },
+    
+    getChildContainer : function() {
+        return this.el;
     }
- 
    
 });
 
