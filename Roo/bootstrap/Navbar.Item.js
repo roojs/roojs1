@@ -10,9 +10,11 @@ Roo.bootstrap.Navbar.Item = function(config){
 
 Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
     
-    href : false,
-    html : '',
-    badge : '',
+    href: false,
+    html: '',
+    badge: '',
+    icon: false,
+    glyphicon: false,
     
     getAutoCreate : function(){
         
