@@ -49,7 +49,7 @@ Roo.bootstrap.Modal = function(config){
 Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     
     title : 'test dialog',
-    body : 'test body',
+   
 	buttons : false,
     onRender : function(ct, position){
         Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
