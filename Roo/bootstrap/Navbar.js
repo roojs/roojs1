@@ -3,7 +3,22 @@
  *
  * row
  * 
- */ 
+ */
+
+/**
+ * @class Roo.bootstrap.Navbar
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Navbar class
+ * @cfg {Boolean} sidebar has side bar
+ * @cfg {Boolean} bar is a bar?
+ * 
+ * 
+ * @constructor
+ * Create a new MenuItem
+ * @param {Object} config The config object
+ */
+
+
 Roo.bootstrap.Navbar = function(config){
     Roo.bootstrap.Navbar.superclass.constructor.call(this, config);
 };
@@ -25,9 +40,9 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 	
 	if (this.sidebar === true) {
 	    cfg = {
-		tag: 'div',
-		cls: 'sidebar-nav'
-	    }
+            tag: 'div',
+            cls: 'sidebar-nav'
+	    };
 	    return cfg;
 	}
 	
