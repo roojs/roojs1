@@ -43,7 +43,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 	}
         
         if (this.glyphicon) {
-            cfg.html = ' ' + cfg.html;
+            if(cfg.html){cfg.html = ' ' + cfg.html};
             cfg.cn=cfg.cn||[]
             cfg.cn.unshift(
                 {
