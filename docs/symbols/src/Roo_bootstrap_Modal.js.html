@@ -23,7 +23,20 @@
  *
  * page contgainer.
  * 
- */ 
+ */
+
+/**
+ * @class Roo.bootstrap.Modal
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Modal class
+ * @cfg {String} title Title of dialog
+ * @cfg {Array} buttons Array of buttons
+    
+ * @constructor
+ * Create a new Modal Dialog
+ * @param {Object} config The config object
+ */
+
 </span><span class="jsdoc-var">Roo.bootstrap.Modal </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">Roo.bootstrap.Modal.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
 };
@@ -31,7 +44,7 @@
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Modal</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
     
     </span><span class="jsdoc-var">title </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'test dialog'</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">body </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'test body'</span><span class="jsdoc-syntax">,
+   
 	</span><span class="jsdoc-var">buttons </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">Roo.bootstrap.Component.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
@@ -89,25 +102,27 @@
                                     ]
                                 },
                                 {
-                                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'modal-body'</span><span class="jsdoc-syntax">,
-                                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.body
+                                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'modal-body'
+                                 
                                 </span><span class="jsdoc-syntax">},
                                  {
-                                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'modal-footer'</span><span class="jsdoc-syntax">,
-                                    </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'modal-footer'
+                                    </span><span class="jsdoc-comment">/*
+                                    cn : [
                                         {
-                                            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,
-                                            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'btn btn-default'</span><span class="jsdoc-syntax">,
-                                            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Close'
-                                        </span><span class="jsdoc-syntax">},
+                                            tag: 'button',
+                                            cls : 'btn btn-default',
+                                            html : 'Close'
+                                        },
                                         {
-                                            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,
-                                            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'btn btn-primary'</span><span class="jsdoc-syntax">,
-                                            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Save'
-                                        </span><span class="jsdoc-syntax">}
+                                            tag: 'button',
+                                            cls : 'btn btn-primary',
+                                            html : 'Save'
+                                        }
                                     
                                     ]
-                                }
+                                    */
+                                </span><span class="jsdoc-syntax">}
                                 
                                 
                             ]
@@ -122,7 +137,15 @@
         };
           
     },
-    
+    </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+         
+         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-body'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        
+    },
+    </span><span class="jsdoc-var">getButtonContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-footer'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        
+    },
     </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-header .close'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);

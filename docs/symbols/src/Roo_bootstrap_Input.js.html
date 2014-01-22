@@ -27,6 +27,7 @@
     </span><span class="jsdoc-var">fieldLabel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">inputType </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'text'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">disabled </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         
@@ -48,7 +49,9 @@
             </span><span class="jsdoc-var">placeholder </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.placeholder </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'' 
             
         </span><span class="jsdoc-syntax">};
-
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">input.name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">;
+        }
         
         </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">align</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">:
