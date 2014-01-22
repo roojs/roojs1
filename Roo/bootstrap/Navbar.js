@@ -42,7 +42,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     
     getAutoCreate : function(){
         var cfg = {
-            cls : 'navbar',
+            cls : 'navbar'
         };
 	
         if (this.sidebar === true) {
