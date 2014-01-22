@@ -27,7 +27,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                     xtype: 'Navbar',
                     xns: Roo.bootstrap,
                     bar: true,
-                    position: 'fixed-top',
+                    position: 'static-top',
                     inverse: true,
                     brand: '<img src="http://detail.herokuapp.com/img/logo.png" alt="logo">',
                     collapse: true,
