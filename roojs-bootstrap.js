@@ -13,7 +13,7 @@ A.cls+=this.size.length?(' btn-'+this.size):'';if(['a','button','input','submit'
 //Roo/bootstrap/Column.js
 Roo.bootstrap.Column=function(A){Roo.bootstrap.Column.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.Column,Roo.bootstrap.Component,{xs:null,sm:null,md:null,lg:null,offset:0,autoCreate:{cls:'column'},getAutoCreate:function(){var A=Roo.apply({},Roo.bootstrap.Column.superclass.getAutoCreate.call(this));A.cls+='col-md-'+this.colspan;return A;}});
 //Roo/bootstrap/Container.js
-Roo.bootstrap.Container=function(A){Roo.bootstrap.Container.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.Container,Roo.bootstrap.Component,{jumbotron:false,autoCreate:{cls:'container',html:null},getAutoCreate:function(){var A=Roo.apply({},Roo.bootstrap.Container.superclass.getAutoCreate.call(this));if(this.jumbotron){A.cls='jumbotron';}
+Roo.bootstrap.Container=function(A){Roo.bootstrap.Container.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.Container,Roo.bootstrap.Component,{jumbotron:false,getAutoCreate:function(){var A={cls:'container',html:''};if(this.jumbotron){A.cls='jumbotron';}
 A.html=this.html||A.html;return A;}});
 //Roo/bootstrap/Form.js
 Roo.bootstrap.Form=function(A){Roo.bootstrap.Form.superclass.constructor.call(this,A);this.addEvents({clientvalidation:true,rendered:true});};Roo.extend(Roo.bootstrap.Form,Roo.bootstrap.Component,{getAutoCreate:function(){var A={tag:'form',method:this.method||'POST',id:this.id||Roo.id(),cls:''};if(this.labelAlign=='left'){A.cls+=' form-horizontal';}return A;}});
