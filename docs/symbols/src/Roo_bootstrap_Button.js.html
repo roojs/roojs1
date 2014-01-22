@@ -105,7 +105,7 @@
             </span><span class="jsdoc-var">cfg.tag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'li'</span><span class="jsdoc-syntax">;
             
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">=  [  {
+            </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">=  [{
                 </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.html</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">href </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.href </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'#'
@@ -117,6 +117,9 @@
             
             </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">cfg.html</span><span class="jsdoc-syntax">;
             
+        } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.menu</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.tag</span><span class="jsdoc-syntax">=</span><span class="jsdoc-string">'a'
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' dropdown test'</span><span class="jsdoc-syntax">;
         }
         
         
