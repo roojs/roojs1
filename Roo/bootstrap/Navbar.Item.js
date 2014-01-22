@@ -44,13 +44,13 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
         
         if (this.glyphicon) {
             cfg.html = ' ' + cfg.html;
-            
-            cfg.cn = [
+            cfg.cn=cfg.cn||[]
+            cfg.cn.unshift(
                 {
                     tag: 'span',
                     cls: 'glyphicon glyphicon-' + this.glyphicon
                 }
-            ];
+            );
         }
 	
 	if (this.badge !== '') {
