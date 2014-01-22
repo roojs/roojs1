@@ -11,6 +11,7 @@
  * Bootstrap Navbar class
  * @cfg {Boolean} sidebar has side bar
  * @cfg {Boolean} bar is a bar?
+ * @cfg {String} position (fixed-top|fixed-bottom|static-top) position
  * @cfg {String} brand what is brand
  * @cfg {Boolean} inverse is inverted color
  * @cfg {String} type (nav|pills|tabs)
