@@ -10,6 +10,8 @@ Roo.bootstrap.Navbar = function(config){
 
 Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     
+    sidebar: false,
+    
     bar: true,
     brand: '',
     inverse: false,
@@ -20,6 +22,11 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Navbar.superclass.getAutoCreate.call(this));
+	
+	if (this.sidebar === true) {
+	    
+	    return cfg;
+	}
 	
 	if (this.bar === true) {
 	    cfg = {
