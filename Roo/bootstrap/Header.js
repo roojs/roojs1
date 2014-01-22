@@ -35,7 +35,6 @@ Roo.extend(Roo.bootstrap.Navbar.Button, Roo.bootstrap.Component,  {
         var cfg = {
             tag: 'h' + (1 *this.cfg.level),
             html: this.html || 'fill in html'
-            
         } ;
         
         return cfg;
