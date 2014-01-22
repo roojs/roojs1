@@ -134,8 +134,6 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     href: '#',
                                     glyphicon: 'edit',
                                     html: 'Forms',
-                                    active: true
-                                }
                             ]
                         },
                         {
