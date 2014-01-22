@@ -63,7 +63,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xns: Roo.bootstrap.Navbar,
                                     href: '#',
                                     glyphicon: 'home',
-                                    html: 'Hello',
+                                    html: 'Hello'
                                 }
                             ]
                         },
@@ -76,7 +76,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xns: Roo.bootstrap.Navbar,
                                     href: '#',
                                     glyphicon: 'stats',
-                                    html: 'Charts',
+                                    html: 'Charts'
                                 }
                             ]
                         },
@@ -89,7 +89,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xns: Roo.bootstrap.Navbar,
                                     href: '#',
                                     glyphicon: 'user',
-                                    html: 'Users',
+                                    html: 'Users'
                                 }
                             ]
                         },
@@ -102,7 +102,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xns: Roo.bootstrap.Navbar,
                                     href: '#',
                                     glyphicon: 'edit',
-                                    html: 'Forms',
+                                    html: 'Forms'
                                 }
                             ]
                         },
@@ -115,7 +115,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xns: Roo.bootstrap.Navbar,
                                     href: '#',
                                     glyphicon: 'picture',
-                                    html: 'Gallery',
+                                    html: 'Gallery'
                                 }
                             ]
                         },
@@ -128,7 +128,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xns: Roo.bootstrap.Navbar,
                                     href: '#',
                                     glyphicon: 'calendar',
-                                    html: 'Calendar',
+                                    html: 'Calendar'
                                 }
                             ]
                         },
@@ -141,7 +141,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xns: Roo.bootstrap.Navbar,
                                     href: '#',
                                     glyphicon: 'th-large',
-                                    html: 'Tables',
+                                    html: 'Tables'
                                 }
                             ]
                         },
@@ -154,7 +154,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xns: Roo.bootstrap.Navbar,
                                     href: '#',
                                     glyphicon: 'flash',
-                                    html: 'UI Elements',
+                                    html: 'UI Elements'
                                 }
                             ]
                         },
@@ -167,7 +167,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xns: Roo.bootstrap.Navbar,
                                     href: '#',
                                     glyphicon: 'cog',
-                                    html: 'My Info',
+                                    html: 'My Info'
                                 }
                             ]
                         },
@@ -180,7 +180,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xns: Roo.bootstrap.Navbar,
                                     href: '#',
                                     glyphicon: 'share-alt',
-                                    html: 'Extras',
+                                    html: 'Extras'
                                 }
                             ]
                         }
