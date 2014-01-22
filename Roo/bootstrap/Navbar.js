@@ -77,14 +77,6 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 	    if (this.brand !== '') {
 		
 	    }
-	    cfg.cn.push(
-		{
-		    tag:'div',
-		    cls: 'navbar-header',
-		    cn: headercontents
-		}
-	    )
-	    
 	    if (this.collapse) {
 		cfg.cn.push(
 		    {
