@@ -156,7 +156,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xtype: 'Item',
                                     xns: Roo.bootstrap.Navbar,
                                     href: '#',
-                                    glyphicon: 'picture',
+                                    glyphicon: 'calendar',
                                     html: 'Calendar',
                                 }
                             ]
@@ -169,7 +169,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xtype: 'Item',
                                     xns: Roo.bootstrap.Navbar,
                                     href: '#',
-                                    glyphicon: 'picture',
+                                    glyphicon: 'th-large',
                                     html: 'Tables',
                                 }
                             ]
