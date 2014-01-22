@@ -105,7 +105,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xns: Roo.bootstrap.Navbar,
                                     href: '#',
                                     glyphicon: 'home',
-                                    html: "Hello",
+                                    html: 'Hello',
                                 }
                             ]
                         },
