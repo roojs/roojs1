@@ -180,7 +180,16 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xns: Roo.bootstrap.Navbar,
                                     href: '#',
                                     glyphicon: 'share-alt',
-                                    html: 'Extras'
+                                    html: 'Extras',
+                                    items: [
+                                        {
+                                            xtype: 'Menu',
+                                            xns: Roo.bootstrap,
+                                            items: [
+                                                
+                                            ]
+                                        }
+                                    ]
                                 }
                             ]
                         }
