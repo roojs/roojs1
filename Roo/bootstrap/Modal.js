@@ -106,7 +106,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                                  
                                 },
                                  {
-                                    cls : 'modal-footer',
+                                    cls : 'modal-footer'
+                                    /*
                                     cn : [
                                         {
                                             tag: 'button',
@@ -120,6 +121,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                                         }
                                     
                                     ]
+                                    */
                                 }
                                 
                                 
