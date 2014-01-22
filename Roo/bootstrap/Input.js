@@ -27,6 +27,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     fieldLabel : '',
     inputType : 'text',
     disabled : false,
+    name : false,
     
     getAutoCreate : function(){
         
@@ -48,7 +49,9 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             placeholder : this.placeholder || '' 
             
         };
-
+        if (this.name) {
+            input.name = name;
+        }
         
         switch(align) {
             case 'left':
