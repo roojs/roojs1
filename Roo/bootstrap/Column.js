@@ -21,8 +21,13 @@ Roo.bootstrap.Column = function(config){
 };
 
 Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
-      
-    colspan : 6,
+    
+    xs: 12,
+    sm: null,
+    md: null,
+    lg: null,
+    
+    offset: 0,
     
 	autoCreate : {
         cls: 'column'
@@ -31,6 +36,9 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Column.superclass.getAutoCreate.call(this));
         cfg.cls += 'col-md-' + this.colspan;
+	
+	
+	
         return cfg;
     }
    
