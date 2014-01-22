@@ -88,6 +88,19 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xtype: 'Item',
                                     xns: Roo.bootstrap.Navbar,
                                     href: '#',
+                                    glyphicon: 'user',
+                                    html: 'Users',
+                                }
+                            ]
+                        },
+                        {
+                            xtype: 'NavGroup',
+                            xns: Roo.bootstrap,
+                            items: [
+                                {
+                                    xtype: 'Item',
+                                    xns: Roo.bootstrap.Navbar,
+                                    href: '#',
                                     glyphicon: 'edit',
                                     html: 'Forms',
                                 }
@@ -153,7 +166,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xtype: 'Item',
                                     xns: Roo.bootstrap.Navbar,
                                     href: '#',
-                                    glyphicon: 'user',
+                                    glyphicon: 'cog',
                                     html: 'My Info',
                                 }
                             ]
