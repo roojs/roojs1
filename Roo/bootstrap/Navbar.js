@@ -79,7 +79,9 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 		    tag: 'a',
 		    href: '#',
 		    cls: 'navbar-brand',
-		    cn: [this.brand]
+		    cn: [
+			this.brand
+		    ]
 		})
 	    }
 	    if (this.collapse) {
