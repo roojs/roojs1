@@ -18,7 +18,9 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
         
         var cfg = Roo.apply({}, Roo.bootstrap.Navbar.Item.superclass.getAutoCreate.call(this));
 	
-	console.log(this.parent().parent().sidebar)
+	if (this.parent().parent().sidebar === true) {
+	    return cfg;
+	}
 	
 	cfg = {
 	    tag: 'li'
