@@ -30,11 +30,6 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap Modal class
  * @cfg {String} title Title of dialog
- * @cfg {String} body HTML body?
- * @cfg {buttons} inverse is inverted color
- * @cfg {String} type (nav|pills|tabs)
- * @cfg {Boolean} arrangement stacked|justified
- * @cfg {String} align (left|right) alignment
  
     
  * @constructor
