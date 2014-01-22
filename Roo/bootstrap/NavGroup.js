@@ -10,7 +10,6 @@ Roo.bootstrap.NavGroup = function(config){
 
 Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     
-    type: 'nav',
     align: '',
     
     autoCreate : {
