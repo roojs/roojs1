@@ -4,7 +4,22 @@
  * base class for bootstrap elements..
  * 
  */
+
 Roo.bootstrap = Roo.bootstrap || {};
+/**
+ * @class Roo.bootstrap.Component
+ * @extends Roo.Component
+ * Bootstrap Component base class
+ * @cfg {String} cls css class
+ * @cfg {String} style any extra css
+ * 
+ * @constructor
+ * Do not use directly - it does not do anything..
+ * @param {Object} config The config object
+ */
+
+
+
 Roo.bootstrap.Component = function(config){
     Roo.bootstrap.Component.superclass.constructor.call(this, config);
 };
@@ -132,7 +147,23 @@ Roo.extend(Roo.bootstrap.Body, Roo.bootstrap.Component,  {
  *
  * page contgainer.
  * 
- */ 
+ */
+
+
+/**
+ * @class Roo.bootstrap.ButtonGroup
+ * @extends Roo.bootstrap.Component
+ * Bootstrap ButtonGroup class
+ * @cfg {string} size lg | sm | xs (default empty normal)
+ * @cfg {string} align vertical | justified  (default none)
+ * @cfg {string} direction up | down (default down)
+ * 
+ * 
+ * @constructor
+ * Create a new Input
+ * @param {Object} config The config object
+ */
+
 Roo.bootstrap.ButtonGroup = function(config){
     Roo.bootstrap.ButtonGroup.superclass.constructor.call(this, config);
 };
@@ -141,7 +172,8 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
     
     size: '',
     align: '',
-    dropdirection: '',
+    direction: '',
+    toolbar: false,
     
     autoCreate : {
         cls: 'btn-group',
@@ -153,6 +185,15 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
         var cfg = Roo.apply({}, Roo.bootstrap.ButtonGroup.superclass.getAutoCreate.call(this));
         
         cfg.html = this.html || cfg.html;
+        
+        if (this.toolbar) {
+            cfg = {
+                cls: 'btn-toolbar',
+                html: null
+            }
+            
+            return cfg;
+        }
         
         if (['vertical','justified'].indexOf(this.align)!==-1) {
             cfg.cls = 'btn-group-' + this.align;
@@ -166,8 +207,8 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
             cfg.cls += ' btn-group-' + this.size;
         }
         
-        if (['dropup'].indexOf(this.dropdirection)) {
-            cfg.cls += ' dropup';
+        if (this.direction == 'up') {
+            cfg.cls += ' dropup' ;
         }
         
         return cfg;
@@ -282,7 +323,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             cfg.tag = 'li';
             
             cfg.cls = '';
-            cfg.cn =  [  {
+            cfg.cn =  [{
                 tag : 'a',
                 html : this.html,
                 href : this.href || '#'
@@ -294,6 +335,9 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             
             delete cfg.html;
             
+        } else if (this.menu) {
+            cfg.tag='a'
+            cfg.cls += ' dropdown test';
         }
         
         
@@ -366,14 +410,31 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
  *
  * column
  * 
- */ 
+ */
+
+/**
+ * @class Roo.bootstrap.Column
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Column class
+ * @cfg {number} colspan  Number of columsn to span
+ * 
+ * @constructor
+ * Create a new Column
+ * @param {Object} config The config object
+ */
+
 Roo.bootstrap.Column = function(config){
     Roo.bootstrap.Column.superclass.constructor.call(this, config);
 };
 
 Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
-      
-    colspan : 6,
+    
+    xs: null,
+    sm: null,
+    md: null,
+    lg: null,
+    
+    offset: 0,
     
 	autoCreate : {
         cls: 'column'
@@ -382,6 +443,9 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Column.superclass.getAutoCreate.call(this));
         cfg.cls += 'col-md-' + this.colspan;
+	
+	
+	
         return cfg;
     }
    
@@ -392,7 +456,7 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
  /*
  * - LGPL
  *
- * page contgainer.
+ * page container.
  * 
  */ 
 Roo.bootstrap.Container = function(config){
@@ -424,7 +488,21 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
  *
  * row
  * 
- */ 
+ */
+
+/**
+ * @class Roo.bootstrap.Form
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Form class
+ * @cfg {String} method  GET | POST (default POST)
+ * @cfg {String} labelAlign top | left (default top)
+ * 
+ * @constructor
+ * Create a new button
+ * @param {Object} config The config object
+ */
+
+
 Roo.bootstrap.Form = function(config){
     Roo.bootstrap.Form.superclass.constructor.call(this, config);
     this.addEvents({
@@ -470,7 +548,20 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
  *
  * row
  * 
- */ 
+ */
+/**
+ * @class Roo.bootstrap.Input
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Input class
+ * @cfg {boolean} disabled is it disabled
+ * @cfg {string} fieldLabel - the label associated
+ * 
+ * 
+ * @constructor
+ * Create a new Input
+ * @param {Object} config The config object
+ */
+
 Roo.bootstrap.Input = function(config){
     Roo.bootstrap.Input.superclass.constructor.call(this, config);
    
@@ -570,15 +661,27 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
  *
  * row
  * 
- */ 
+ */
+
+/**
+ * @class Roo.bootstrap.Menu
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Menu class - container for MenuItems
+ * 
+ * @constructor
+ * Create a new Menu
+ * @param {Object} config The config object
+ */
+
+
 Roo.bootstrap.Menu = function(config){
     Roo.bootstrap.Menu.superclass.constructor.call(this, config);
 };
 
 Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     
-    html : false,
-    align : '',
+   /// html : false,
+    //align : '',
     triggerEl : false,
     
     
@@ -593,10 +696,10 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
 	//}
 	
         return {
-                tag : 'ul',
-                cls : 'dropdown-menu' 
-                
-            };
+	    tag : 'ul',
+	    cls : 'dropdown-menu' 
+            
+        };
     },
     initEvents : function() {
        // Roo.log("ADD event");
@@ -663,14 +766,30 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
  *
  * row
  * 
- */ 
+ */
+
+
+/**
+ * @class Roo.bootstrap.MenuItem
+ * @extends Roo.bootstrap.Component
+ * Bootstrap MenuItem class
+ * @cfg {String} html the menu label
+ * @cfg {String} href the link 
+ * 
+ * 
+ * @constructor
+ * Create a new MenuItem
+ * @param {Object} config The config object
+ */
+
+
 Roo.bootstrap.MenuItem = function(config){
     Roo.bootstrap.MenuItem.superclass.constructor.call(this, config);
 };
 
 Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
-      
-	href : false,
+    
+    href : false,
     html : false,
     
     
@@ -850,21 +969,96 @@ Roo.bootstrap.Navbar = function(config){
 
 Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     
+    sidebar: false,
+    
+    bar: false,
+    brand: '',
+    inverse: false,
+    position: '',
+    
     type: 'nav',
     arrangement: '',
-    position: '',
-    inverse: false,
-    collapse: false,
-    align: '',
-    
-    autoCreate : {
-        cls: 'navbar navbar-default',
-        tag : 'nav',
-        role : 'navigation'
-    },
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Navbar.superclass.getAutoCreate.call(this));
+	
+	if (this.sidebar === true) {
+	    cfg = {
+		tag: 'div',
+		cls: 'sidebar-nav'
+	    }
+	    return cfg;
+	}
+	
+	if (this.bar === true) {
+	    cfg = {
+		tag: 'nav',
+		cls: 'navbar',
+		role: 'navigation',
+		cn: [
+		    {
+			tag: 'div',
+			cls: 'navbar-header',
+			cn: [
+			    {
+				tag: 'button',
+				type: 'button',
+				cls: 'navbar-toggle',
+				'data-toggle': 'collapse',
+				cn: [
+				    {
+					tag: 'span',
+					cls: 'sr-only',
+					html: 'Toggle navigation'
+				    },
+				    {
+					tag: 'span',
+					cls: 'icon-bar',
+				    },
+				    {
+					tag: 'span',
+					cls: 'icon-bar',
+				    },
+				    {
+					tag: 'span',
+					cls: 'icon-bar',
+				    }
+				]
+			    }
+			]
+		    },
+		    {
+			tag: 'div',
+			cls: 'collapse navbar-collapse'
+		    }
+		]
+	    }
+	    
+	    cfg.cls += this.inverse ? ' navbar-inverse' : ' navbar-default';
+	    
+	    if (['fixed-top','fixed-bottom','static-top'].indexOf(this.position)>-1) {
+		cfg.cls += ' navbar-' + this.position;
+		cfg.tag = this.position  == 'fixed-bottom' ? 'footer' : 'header';
+	    }
+	    
+	    if (this.brand !== '') {
+		cfg.cn[0].cn.push({
+		    tag: 'a',
+		    href: '#',
+		    cls: 'navbar-brand',
+		    cn: [
+			this.brand
+		    ]
+		})
+	    }
+	    
+	    return cfg;
+	
+	} else if (this.bar === false) {
+	    
+	} else {
+	    Roo.log('Property \'bar\' in of Navbar must be either true or false')
+	}
 	
         cfg.cn = [
             {
@@ -886,18 +1080,6 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
             cfg.cn[0].cls += ' nav-' + this.arrangement;
         }
         
-        if (['fixed-top','fixed-bottom','static-top'].indexOf(this.position)> -1) {
-            cfg.cls += ' navbar-' + this.position;
-            cfg.tag = this.position  == 'fixed-bottom' ? 'footer' : 'header';
-        }
-         
-        if (this.collapse) {
-            cfg.tag  = 'div';
-            cfg.cls =  'collapse navbar-collapse ';
-            
-            
-        }
-        
         if (this.align === 'right') {
             cfg.cn[0].cls += ' navbar-right';
         }
@@ -916,29 +1098,12 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     },
     
     getChildContainer : function() {
-        return this.el.select('ul', true).first();
+	if (this.bar === true) {
+	    return this.el.select('.collapse',true).first();
+	}
+	
+        return this.el;
     }
-   
-});
-
- 
-
- /*
- * - LGPL
- *
- * row
- * 
- */ 
-Roo.bootstrap.Row = function(config){
-    Roo.bootstrap.Row.superclass.constructor.call(this, config);
-};
-
-Roo.extend(Roo.bootstrap.Row, Roo.bootstrap.Component,  {
-      
-	autoCreate : {
-        cls: 'row clearfix'
-    }
- 
    
 });
 
