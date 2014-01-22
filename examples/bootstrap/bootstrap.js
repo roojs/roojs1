@@ -40,14 +40,6 @@ Roo.example.bootstrap = new Roo.XComponent({
                                 {
                                     xtype: 'Item',
                                     xns: Roo.bootstrap.Navbar,
-                                    href: '#',
-                                    html: "hello",
-                                    badge: 'test',
-                                    active: true
-                                },
-                                {
-                                    xtype: 'Item',
-                                    xns: Roo.bootstrap.Navbar,
                                     html: "hello",
                                     menu:  {
                                             xtype: 'Menu',
@@ -101,29 +93,6 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     html: "hello",
                                     badge: 'test',
                                     active: true
-                                },
-                                {
-                                    xtype: 'Item',
-                                    xns: Roo.bootstrap.Navbar,
-                                    html: "hello",
-                                    menu:  {
-                                            xtype: 'Menu',
-                                            xns: Roo.bootstrap,
-                                            items : [
-                                                {
-                                                    xtype: 'MenuItem',
-                                                    xns: Roo.bootstrap,
-                                                    html: "hello aaa",
-                                                    href : 'http://roojs.com'
-                                                },
-                                                {
-                                                    xtype: 'MenuItem',
-                                                    xns: Roo.bootstrap,
-                                                    html: "hello",
-                                                    href : 'http://roojs.com'
-                                                }
-                                            ]
-                                        }
                                 },
                                 {
                                     xtype: 'Item',
