@@ -23,11 +23,6 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Navbar.superclass.getAutoCreate.call(this));
 	
-	if (this.sidebar === true) {
-	    
-	    return cfg;
-	}
-	
 	if (this.bar === true) {
 	    cfg = {
 		tag: 'nav',
