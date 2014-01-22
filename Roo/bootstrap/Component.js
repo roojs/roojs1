@@ -92,7 +92,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             nitems.push(cn.addxtype(Roo.apply({}, tree.menu)));
             
         }
-        if (typeof (tree.buttons) != 'undefined' && typeof(cn.getButtonContainer) == 'function') {)
+        if (typeof (tree.buttons) != 'undefined' && typeof(cn.getButtonContainer) == 'function') {
             
             for(var i =0;i < items.length;i++) {
                 nitems.push(cn.addxtype(Roo.apply({}, items[i]), 'getButtonContainer'));
