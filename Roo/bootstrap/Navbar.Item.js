@@ -27,6 +27,17 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 		html: 'Text'
             }
         ];
+        
+        if (this.glyphicon) {
+            if(cfg.html){cfg.html = ' ' + cfg.html};
+            cfg.cn=cfg.cn||[]
+            cfg.cn.unshift(
+                {
+                    tag: 'span',
+                    cls: 'glyphicon glyphicon-' + this.glyphicon
+                }
+            );
+        }
 	
         cfg.cn[0].html = this.html || cfg.cn[0].html ;
 	if (this.menu) {
@@ -41,17 +52,6 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 	    cfg.cn[0].href=this.href||'#';
 	    cfg.cn[0].html=this.html;
 	}
-        
-        if (this.glyphicon) {
-            if(cfg.html){cfg.html = ' ' + cfg.html};
-            cfg.cn=cfg.cn||[]
-            cfg.cn.unshift(
-                {
-                    tag: 'span',
-                    cls: 'glyphicon glyphicon-' + this.glyphicon
-                }
-            );
-        }
 	
 	if (this.badge !== '') {
 	    
