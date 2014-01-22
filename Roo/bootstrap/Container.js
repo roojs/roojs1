@@ -14,7 +14,7 @@
  * @cfg {String} html content of element
  *    
  * @constructor
- * Create a new Navbar Button
+ * Create a new Container
  * @param {Object} config The config object
  */
 
