@@ -185,9 +185,6 @@ Roo.example.bootstrap = new Roo.XComponent({
                                         {
                                             xtype: 'Menu',
                                             xns: Roo.bootstrap,
-                                            items: [
-                                                
-                                            ]
                                         }
                                     ]
                                 }
