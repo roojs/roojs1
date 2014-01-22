@@ -18,11 +18,11 @@
  */
 
 
-Roo.bootstrap.Navbar.Button = function(config){
-    Roo.bootstrap.Navbar.Button.superclass.constructor.call(this, config);
+Roo.bootstrap.Header  = function(config){
+    Roo.bootstrap.Header.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.Navbar.Button, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.Header, Roo.bootstrap.Component,  {
     
     //href : false,
     html : false,
