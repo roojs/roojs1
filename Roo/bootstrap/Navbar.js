@@ -103,6 +103,11 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 	    }
 	    
 	    return cfg;
+	
+	} else if (this.bar === false) {
+	    
+	} else {
+	    Roo.log('Property \'bar\' in of Navbar must be either true or false')
 	}
 	
         cfg.cn = [
