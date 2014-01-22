@@ -106,7 +106,6 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     href: '#',
                                     glyphicon: 'home',
                                     html: "Hello",
-                                    active: true
                                 }
                             ]
                         },
@@ -120,7 +119,6 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     href: '#',
                                     glyphicon: 'stats',
                                     html: 'Charts',
-                                    active: true
                                 }
                             ]
                         },
