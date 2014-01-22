@@ -65,7 +65,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 			]
 		    }
 		]
-		if (this.brand) {
+		if (false&&this.brand) {
 		    headercontents.push(
 			{
 			    tag: 'a',
