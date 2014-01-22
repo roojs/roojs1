@@ -33,7 +33,7 @@ Roo.extend(Roo.bootstrap.Header, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         
         var cfg = {
-            tag: 'h' + (1 *this.cfg.level),
+            tag: 'h' + (1 *this.level),
             html: this.html || 'fill in html'
         } ;
         
