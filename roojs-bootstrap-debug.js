@@ -546,6 +546,65 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
 /*
  * - LGPL
  *
+ * page contgainer.
+ * 
+ */
+
+
+/**
+ * @class Roo.bootstrap.ButtonGroup
+ * @extends Roo.bootstrap.Component
+ * Bootstrap ButtonGroup class
+ * @cfg {string} size lg | sm | xs (default empty normal)
+ * @cfg {string} align vertical | justified  (default none)
+ * @cfg {string} direction up | down (default down)
+ * 
+ * 
+ * @constructor
+ * Create a new Input
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.Img = function(config){
+    Roo.bootstrap.Img.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
+    
+    imgResponsive: true,
+    border: '',
+    src: '',
+    
+    autoCreate : {
+        tag: 'img',
+        cls: 'img-responsive',
+        html : null
+    },
+
+    getAutoCreate : function(){
+        
+        var cfg = Roo.apply({}, Roo.bootstrap.Img.superclass.getAutoCreate.call(this));
+        
+        cfg.html = this.html || cfg.html;
+        
+        cfg.src = this.src || cfg.src;
+        
+        if (['rounded','circle','thumbnail'].indexOf(this.border)>-1) {
+            cfg.cls += ' img-' + this.border;
+        }
+        
+        if(this.alt){
+            cfg.alt = this.alt;
+        }
+        
+        return cfg;
+    }
+   
+});
+
+ /*
+ * - LGPL
+ *
  * row
  * 
  */
@@ -809,6 +868,47 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
 	    
         cfg.cn[0].href = this.href || cfg.cn[0].href ;
         cfg.cn[0].html = this.html || cfg.cn[0].html ;
+        return cfg;
+    }
+   
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * row
+ * 
+ */
+
+
+/**
+ * @class Roo.bootstrap.MenuItem
+ * @extends Roo.bootstrap.Component
+ * Bootstrap MenuItem class
+ * @cfg {String} html the menu label
+ * @cfg {String} href the link 
+ * 
+ * 
+ * @constructor
+ * Create a new MenuItem
+ * @param {Object} config The config object
+ */
+
+
+Roo.bootstrap.MenuSeparator = function(config){
+    Roo.bootstrap.MenuSeparator.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
+    
+    getAutoCreate : function(){
+        var cfg = {
+            cls: 'divider',
+            tag : 'li'
+        };
+        
         return cfg;
     }
    

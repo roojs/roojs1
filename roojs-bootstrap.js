@@ -17,6 +17,8 @@ Roo.bootstrap.Container=function(A){Roo.bootstrap.Container.superclass.construct
 A.html=this.html||A.html;return A;}});
 //Roo/bootstrap/Form.js
 Roo.bootstrap.Form=function(A){Roo.bootstrap.Form.superclass.constructor.call(this,A);this.addEvents({clientvalidation:true,rendered:true});};Roo.extend(Roo.bootstrap.Form,Roo.bootstrap.Component,{getAutoCreate:function(){var A={tag:'form',method:this.method||'POST',id:this.id||Roo.id(),cls:''};if(this.labelAlign=='left'){A.cls+=' form-horizontal';}return A;}});
+//Roo/bootstrap/Img.js
+Roo.bootstrap.Img=function(A){Roo.bootstrap.Img.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.Img,Roo.bootstrap.Component,{imgResponsive:true,border:'',src:'',autoCreate:{tag:'img',cls:'img-responsive',html:null},getAutoCreate:function(){var A=Roo.apply({},Roo.bootstrap.Img.superclass.getAutoCreate.call(this));A.html=this.html||A.html;A.src=this.src||A.src;if(['rounded','circle','thumbnail'].indexOf(this.border)>-1){A.cls+=' img-'+this.border;}if(this.alt){A.alt=this.alt;}return A;}});
 //Roo/bootstrap/Input.js
 Roo.bootstrap.Input=function(A){Roo.bootstrap.Input.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.Input,Roo.bootstrap.Component,{fieldLabel:'',inputType:'text',disabled:false,getAutoCreate:function(){var A=this.parent();var B=A.labelAlign;var id=Roo.id();var C={cls:'form-group'};var D={tag:'input',id:id,type:this.inputType,cls:'form-control',placeholder:this.placeholder||''};switch(B){case 'left':C.cn=[{tag:'label','for':id,cls:'col-sm-2 control-label',html:this.fieldLabel},{cls:"col-sm-10",cn:[D]}];break;default:C.cn=[{tag:'label',html:this.fieldLabel},D];break;}if(this.disabled){D.disabled=true;}return C;},setDisabled:function(v){var i=this.el.select('input',true).dom;if(v){i.removeAttribute('disabled');return;}
 i.setAttribute('disabled','true');}});
@@ -25,6 +27,8 @@ Roo.bootstrap.Menu=function(A){Roo.bootstrap.Menu.superclass.constructor.call(th
 aa.removeClass('open');})}});
 //Roo/bootstrap/MenuItem.js
 Roo.bootstrap.MenuItem=function(A){Roo.bootstrap.MenuItem.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.MenuItem,Roo.bootstrap.Component,{href:false,html:false,getAutoCreate:function(){var A={tag:'li',cn:[{tag:'a',href:'#',html:'Link'}]};A.cn[0].href=this.href||A.cn[0].href;A.cn[0].html=this.html||A.cn[0].html;return A;}});
+//Roo/bootstrap/MenuSeparator.js
+Roo.bootstrap.MenuSeparator=function(A){Roo.bootstrap.MenuSeparator.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.MenuSeparator,Roo.bootstrap.Component,{getAutoCreate:function(){var A={cls:'divider',tag:'li'};return A;}});
 //Roo/bootstrap/Modal.js
 Roo.bootstrap.Modal=function(A){Roo.bootstrap.Modal.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.Modal,Roo.bootstrap.Component,{title:'test dialog',body:'test body',buttons:false,onRender:function(ct,A){Roo.bootstrap.Component.superclass.onRender.call(this,ct,A);if(!this.el){var B=Roo.apply({},this.getAutoCreate());B.id=Roo.id();if(this.cls){B.cls+=' '+this.cls;}if(this.style){B.style=this.style;}
 this.el=Roo.get(document.body).createChild(B,A);}if(this.tabIndex!==undefined){this.el.dom.setAttribute('tabIndex',this.tabIndex);}
