@@ -19,7 +19,7 @@
  
     
  * @constructor
- * Create a new MenuItem
+ * Create a new Navbar
  * @param {Object} config The config object
  */
 
