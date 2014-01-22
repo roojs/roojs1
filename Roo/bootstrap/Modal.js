@@ -102,8 +102,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                                     ]
                                 },
                                 {
-                                    cls : 'modal-body',
-                                    html : this.body
+                                    cls : 'modal-body'
+                                 
                                 },
                                  {
                                     cls : 'modal-footer',
