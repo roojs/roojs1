@@ -15,7 +15,7 @@
  * @cfg {Boolean} inverse is inverted color
  * @cfg {String} type (nav|pills|tabs)
  * @cfg {Boolean} arrangement stacked|justified
-
+ * @cfg {String} align (left|right) alignment
  * 
  *   bar: false,
     brand: '',
