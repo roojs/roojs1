@@ -22,7 +22,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Navbar.superclass.getAutoCreate.call(this));
 	
-	if (this.bar) {
+	if (this.bar === true) {
 	    cfg = {
 		tag: 'nav',
 		cls: 'navbar',
