@@ -23,7 +23,25 @@
  *
  * page contgainer.
  * 
- */ 
+ */
+
+/**
+ * @class Roo.bootstrap.Modal
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Modal class
+ * @cfg {String} title Title of dialog
+ * @cfg {String} body HTML body?
+ * @cfg {buttons} inverse is inverted color
+ * @cfg {String} type (nav|pills|tabs)
+ * @cfg {Boolean} arrangement stacked|justified
+ * @cfg {String} align (left|right) alignment
+ 
+    
+ * @constructor
+ * Create a new Navbar
+ * @param {Object} config The config object
+ */
+
 Roo.bootstrap.Modal = function(config){
     Roo.bootstrap.Modal.superclass.constructor.call(this, config);
 };
@@ -122,7 +140,11 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         };
           
     },
-    
+    getChildContainer : function() {
+         
+         return this.el.select('.modal-body',true).first();
+        
+    },
     initEvents : function()
     {
         this.el.select('.modal-header .close').on('click', this.hide, this);
