@@ -8,12 +8,15 @@ Roo.bootstrap.Button
 Roo.bootstrap.Column
 Roo.bootstrap.Container
 Roo.bootstrap.Form
+Roo.bootstrap.Img
 Roo.bootstrap.Input
 
 Roo.bootstrap.Menu
 Roo.bootstrap.MenuItem
+Roo.bootstrap.MenuSeparator
 Roo.bootstrap.Modal
 Roo.bootstrap.Navbar
+Roo.bootstrap.NavbarGroup
 Roo.bootstrap.Navbar.Button
 Roo.bootstrap.Navbar.Item
 
