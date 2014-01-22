@@ -29,7 +29,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
         ];
         
         if (this.glyphicon) {
-            if(cfg.html){this.html = ' ' + cfg.html};
+            if(cfg.html){cfg.html = ' ' + this.html};
             cfg.cn=[
                 {
                     tag: 'span',
