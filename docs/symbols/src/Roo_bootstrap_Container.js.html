@@ -3,7 +3,21 @@
  *
  * page container.
  * 
- */ 
+ */
+
+
+/**
+ * @class Roo.bootstrap.Container
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Container class
+ * @cfg {Boolean} jumbotron is it a jubmotron element
+ * @cfg {String} html content of element
+ *    
+ * @constructor
+ * Create a new Container
+ * @param {Object} config The config object
+ */
+
 </span><span class="jsdoc-var">Roo.bootstrap.Container </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">Roo.bootstrap.Container.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
 };
@@ -11,13 +25,13 @@
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Container</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
      
     </span><span class="jsdoc-var">jumbotron </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// doc me
-	</span><span class="jsdoc-var">autoCreate </span><span class="jsdoc-syntax">: {
-        </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'container'</span><span class="jsdoc-syntax">,
-        </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null
-    </span><span class="jsdoc-syntax">},
+	
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">Roo.bootstrap.Container.superclass.getAutoCreate.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'container'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''
+        </span><span class="jsdoc-syntax">};
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.jumbotron</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'jumbotron'</span><span class="jsdoc-syntax">;
         }
