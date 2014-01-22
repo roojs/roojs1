@@ -72,15 +72,17 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         return this.el;
     },
     
-    addxtype : function (tree) {
+    addxtype : function (tree, cntr) {
         var cn = this;
+        cntr = typeof(cntr == 'undefined' ) ? 'getChildContainer' : cntr;
+        
         if (tree.xtype != 'Body') {
             
             cn = Roo.factory(tree);
             
             cn.parentType = this.xtype; //??
             cn.parentId = this.id;
-            cn.render(this.getChildContainer());
+            cn.render(this[cntr]());
             // then add the element..
         }
         var nitems = [];
@@ -90,7 +92,15 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             nitems.push(cn.addxtype(Roo.apply({}, tree.menu)));
             
         }
-	
+        if (typeof (tree.buttons) != 'undefined' && cn.addButtons) {
+            tree.menu.parentType = cn.xtype;
+            tree.menu.triggerEl = cn.el;
+            for(var i =0;i < items.length;i++) {
+                nitems.push(cn.addxtype(Roo.apply({}, items[i])));
+            }
+            nitems.push(cn.addxtype(Roo.apply({}, tree.menu)));
+            
+        }
         if (!tree.items || !tree.items.length) {
             this.items = nitems;
             return this;
