@@ -157,7 +157,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xns: Roo.bootstrap.Navbar,
                                     href: '#',
                                     glyphicon: 'picture',
-                                    html: 'Gallery',
+                                    html: 'Calendar',
                                 }
                             ]
                         },
@@ -170,7 +170,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xns: Roo.bootstrap.Navbar,
                                     href: '#',
                                     glyphicon: 'picture',
-                                    html: 'Gallery',
+                                    html: 'Tables',
                                 }
                             ]
                         },
@@ -183,7 +183,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xns: Roo.bootstrap.Navbar,
                                     href: '#',
                                     glyphicon: 'picture',
-                                    html: 'Gallery',
+                                    html: 'UI Elements',
                                 }
                             ]
                         },
@@ -196,7 +196,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xns: Roo.bootstrap.Navbar,
                                     href: '#',
                                     glyphicon: 'picture',
-                                    html: 'Gallery',
+                                    html: 'My Info',
                                 }
                             ]
                         },
@@ -209,7 +209,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xns: Roo.bootstrap.Navbar,
                                     href: '#',
                                     glyphicon: 'picture',
-                                    html: 'Gallery',
+                                    html: 'Extras',
                                 }
                             ]
                         }
