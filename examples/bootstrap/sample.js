@@ -132,7 +132,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xtype: 'Item',
                                     xns: Roo.bootstrap.Navbar,
                                     href: '#',
-                                    glyphicon: 'stats',
+                                    glyphicon: 'edit',
                                     html: 'Forms',
                                     active: true
                                 }
