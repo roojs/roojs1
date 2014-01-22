@@ -54,15 +54,15 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 				    },
 				    {
 					tag: 'span',
-					cls: 'icon-bar',
+					cls: 'icon-bar'
 				    },
 				    {
 					tag: 'span',
-					cls: 'icon-bar',
+					cls: 'icon-bar'
 				    },
 				    {
 					tag: 'span',
-					cls: 'icon-bar',
+					cls: 'icon-bar'
 				    }
 				]
 			    }
