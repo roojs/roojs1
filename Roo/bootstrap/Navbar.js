@@ -26,7 +26,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 	if (this.sidebar === true) {
 	    cfg = {
 		tag: 'div',
-		id: 'sidebar-nav'
+		cls: 'sidebar-nav'
 	    }
 	    return cfg;
 	}
