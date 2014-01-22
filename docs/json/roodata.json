@@ -5894,6 +5894,12 @@
      "memberOf": ""
     },
     {
+     "name": "position",
+     "type": "String",
+     "desc": "(fixed-top|fixed-bottom|static-top) position",
+     "memberOf": ""
+    },
+    {
      "name": "brand",
      "type": "String",
      "desc": "what is brand",
