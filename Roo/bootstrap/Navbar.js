@@ -16,14 +16,7 @@
  * @cfg {String} type (nav|pills|tabs)
  * @cfg {Boolean} arrangement stacked|justified
  * @cfg {String} align (left|right) alignment
- * 
- *   bar: false,
-    brand: '',
-    inverse: false,
-    position: '',
-    
-    type: 'nav',
-    arrangement: '',
+ 
     
  * @constructor
  * Create a new MenuItem
