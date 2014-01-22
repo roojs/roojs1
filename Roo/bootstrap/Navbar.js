@@ -41,85 +41,87 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     arrangement: '',
     
     getAutoCreate : function(){
-        var cfg = Roo.apply({}, Roo.bootstrap.Navbar.superclass.getAutoCreate.call(this));
+        var cfg = {
+            cls : 'navbar',
+        };
 	
-	if (this.sidebar === true) {
-	    cfg = {
-            tag: 'div',
-            cls: 'sidebar-nav'
-	    };
-	    return cfg;
-	}
-	
-	if (this.bar === true) {
-	    cfg = {
-            tag: 'nav',
-            cls: 'navbar',
-            role: 'navigation',
-            cn: [
-                {
+        if (this.sidebar === true) {
+            cfg = {
                 tag: 'div',
-                cls: 'navbar-header',
+                cls: 'sidebar-nav'
+            };
+            return cfg;
+        }
+        
+        if (this.bar === true) {
+            cfg = {
+                tag: 'nav',
+                cls: 'navbar',
+                role: 'navigation',
                 cn: [
                     {
-                    tag: 'button',
-                    type: 'button',
-                    cls: 'navbar-toggle',
-                    'data-toggle': 'collapse',
+                    tag: 'div',
+                    cls: 'navbar-header',
                     cn: [
                         {
-                        tag: 'span',
-                        cls: 'sr-only',
-                        html: 'Toggle navigation'
-                        },
-                        {
-                        tag: 'span',
-                        cls: 'icon-bar'
-                        },
-                        {
-                        tag: 'span',
-                        cls: 'icon-bar'
-                        },
-                        {
-                        tag: 'span',
-                        cls: 'icon-bar'
+                        tag: 'button',
+                        type: 'button',
+                        cls: 'navbar-toggle',
+                        'data-toggle': 'collapse',
+                        cn: [
+                            {
+                            tag: 'span',
+                            cls: 'sr-only',
+                            html: 'Toggle navigation'
+                            },
+                            {
+                            tag: 'span',
+                            cls: 'icon-bar'
+                            },
+                            {
+                            tag: 'span',
+                            cls: 'icon-bar'
+                            },
+                            {
+                            tag: 'span',
+                            cls: 'icon-bar'
+                            }
+                        ]
                         }
                     ]
+                    },
+                    {
+                    tag: 'div',
+                    cls: 'collapse navbar-collapse'
                     }
                 ]
-                },
-                {
-                tag: 'div',
-                cls: 'collapse navbar-collapse'
-                }
-            ]
-	    }
-	    
-	    cfg.cls += this.inverse ? ' navbar-inverse' : ' navbar-default';
-	    
-	    if (['fixed-top','fixed-bottom','static-top'].indexOf(this.position)>-1) {
-		cfg.cls += ' navbar-' + this.position;
-		cfg.tag = this.position  == 'fixed-bottom' ? 'footer' : 'header';
-	    }
-	    
-	    if (this.brand !== '') {
-            cfg.cn[0].cn.push({
-                tag: 'a',
-                href: '#',
-                cls: 'navbar-brand',
-                cn: [
-                this.brand
-                ]
-            });
-	    }
-	    
-	    return cfg;
-	
-	} else if (this.bar === false) {
-	    
-	} else {
-	    Roo.log('Property \'bar\' in of Navbar must be either true or false')
-	}
+            }
+            
+            cfg.cls += this.inverse ? ' navbar-inverse' : ' navbar-default';
+            
+            if (['fixed-top','fixed-bottom','static-top'].indexOf(this.position)>-1) {
+            cfg.cls += ' navbar-' + this.position;
+            cfg.tag = this.position  == 'fixed-bottom' ? 'footer' : 'header';
+            }
+            
+            if (this.brand !== '') {
+                cfg.cn[0].cn.push({
+                    tag: 'a',
+                    href: '#',
+                    cls: 'navbar-brand',
+                    cn: [
+                    this.brand
+                    ]
+                });
+            }
+            
+            return cfg;
+        
+        } else if (this.bar === false) {
+            
+        } else {
+            Roo.log('Property \'bar\' in of Navbar must be either true or false')
+        }
 	
         cfg.cn = [
             {
