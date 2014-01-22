@@ -182,7 +182,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xtype: 'Item',
                                     xns: Roo.bootstrap.Navbar,
                                     href: '#',
-                                    glyphicon: 'picture',
+                                    glyphicon: 'flash',
                                     html: 'UI Elements',
                                 }
                             ]
@@ -195,7 +195,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xtype: 'Item',
                                     xns: Roo.bootstrap.Navbar,
                                     href: '#',
-                                    glyphicon: 'picture',
+                                    glyphicon: 'user',
                                     html: 'My Info',
                                 }
                             ]
@@ -208,7 +208,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xtype: 'Item',
                                     xns: Roo.bootstrap.Navbar,
                                     href: '#',
-                                    glyphicon: 'picture',
+                                    glyphicon: 'share-alt',
                                     html: 'Extras',
                                 }
                             ]
