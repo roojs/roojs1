@@ -20,6 +20,8 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
             tag : 'ul',
         }
         
+        console.log(this.parent())
+        
         
         if (this.align === 'right') {
             cfg.cls += ' navbar-right';
