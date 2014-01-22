@@ -94,8 +94,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         }
         if (typeof (tree.buttons) != 'undefined' && typeof(cn.getButtonContainer) == 'function') {
             
-            for(var i =0;i < items.length;i++) {
-                nitems.push(cn.addxtype(Roo.apply({}, items[i]), 'getButtonContainer'));
+            for(var i =0;i < ree.buttons.length;i++) {
+                nitems.push(cn.addxtype(Roo.apply({}, ree.buttons[i]), 'getButtonContainer'));
             }
             
             
