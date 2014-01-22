@@ -12,7 +12,7 @@
  * Bootstrap Container class
  * @cfg {Boolean} jumbotron is it a jubmotron element
  * @cfg {String} html content of element
-    
+ *    
  * @constructor
  * Create a new Navbar Button
  * @param {Object} config The config object
