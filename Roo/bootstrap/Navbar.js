@@ -75,7 +75,12 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 		Roo.log('Property \'position\' of Navbar must be either fixed-top, fixed-bottom or static-top')
 	    }
 	    if (this.brand !== '') {
-		cfg.cn[0].cn.push(this.brand)
+		cfg.cn[0].cn.push({
+		    tag: 'a',
+		    href: '#',
+		    cls: 'navbar-brand',
+		    cn: [this.brand]
+		})
 	    }
 	    if (this.collapse) {
 		cfg.cn.push(
