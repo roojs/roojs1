@@ -35,6 +35,10 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 		cfg.cn[0].href = this.href;
 	    }
 	    
+	    if (this.html) {
+		cfg.cn[0].html = this.html;
+	    }
+	    
 	    return cfg;
 	}
 	
