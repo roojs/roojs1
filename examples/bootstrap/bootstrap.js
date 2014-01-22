@@ -88,6 +88,63 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     html: "dialog"
                                 }
                             ]
+                        },
+                        {
+                            xtype: 'NavGroup',
+                            xns: Roo.bootstrap,
+                            align: 'right',
+                            items: [
+                                {
+                                    xtype: 'Item',
+                                    xns: Roo.bootstrap.Navbar,
+                                    href: '#',
+                                    html: "hello",
+                                    badge: 'test',
+                                    active: true
+                                },
+                                {
+                                    xtype: 'Item',
+                                    xns: Roo.bootstrap.Navbar,
+                                    html: "hello",
+                                    menu:  {
+                                            xtype: 'Menu',
+                                            xns: Roo.bootstrap,
+                                            items : [
+                                                {
+                                                    xtype: 'MenuItem',
+                                                    xns: Roo.bootstrap,
+                                                    html: "hello aaa",
+                                                    href : 'http://roojs.com'
+                                                },
+                                                {
+                                                    xtype: 'MenuItem',
+                                                    xns: Roo.bootstrap,
+                                                    html: "hello",
+                                                    href : 'http://roojs.com'
+                                                }
+                                            ]
+                                        }
+                                },
+                                {
+                                    xtype: 'Item',
+                                    xns: Roo.bootstrap.Navbar,
+                                   
+                                    html: "dialog",
+                                    listeners : {
+                                        click : function() {
+                                            Roo.ComponentMgr.get('test-modal-1').show()
+                                        }
+                                    }
+                                    
+                                },
+                                {
+                                    xtype: 'Modal',
+                                    id: 'test-modal-1',
+                                    xns: Roo.bootstrap,
+                                    title : 'test1',
+                                    html: "dialog"
+                                }
+                            ]
                         }
                     ]
                     
