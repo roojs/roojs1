@@ -16,7 +16,7 @@ Roo.bootstrap.MenuItem
 Roo.bootstrap.MenuSeparator
 Roo.bootstrap.Modal
 Roo.bootstrap.Navbar
-Roo.bootstrap.NavbarGroup
+Roo.bootstrap.NavGroup
 Roo.bootstrap.Navbar.Button
 Roo.bootstrap.Navbar.Item
 
