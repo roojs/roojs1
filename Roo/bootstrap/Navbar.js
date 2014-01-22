@@ -11,6 +11,7 @@ Roo.bootstrap.Navbar = function(config){
 Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     
     bar: true,
+    brand: '',
     inverse: false,
     collapse: false,
     
