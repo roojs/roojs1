@@ -94,6 +94,22 @@ Roo.example.bootstrap = new Roo.XComponent({
                     xtype: 'Navbar',
                     xns: Roo.bootstrap,
                     sidebar: true,
+                    items: [
+                        {
+                            xtype: 'NavGroup',
+                            xns: Roo.bootstrap,
+                            items: [
+                                {
+                                    xtype: 'Item',
+                                    xns: Roo.bootstrap.Navbar,
+                                    href: '#',
+                                    html: "hello",
+                                    badge: 'test',
+                                    active: true
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
                     xtype: 'Container',
