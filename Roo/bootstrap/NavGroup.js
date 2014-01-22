@@ -16,11 +16,16 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         var cfg = Roo.apply({}, Roo.bootstrap.NavGroup.superclass.getAutoCreate.call(this));
         
         cfg = {
-            cls: 'nav navbar-nav',
             tag : 'ul',
+            cls: 'nav navbar-nav',
         }
         
-        console.log(this.parent())
+        if (this.parent().sidebar === true) {
+            cfg = {
+                tag: 'div',
+                cls: 'dashboard-menu'
+            }
+        }
         
         
         if (this.align === 'right') {
