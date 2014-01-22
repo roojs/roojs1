@@ -33,7 +33,7 @@
  
     
  * @constructor
- * Create a new Navbar
+ * Create a new Modal Dialog
  * @param {Object} config The config object
  */
 
