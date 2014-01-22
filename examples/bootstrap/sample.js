@@ -156,7 +156,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xtype: 'Item',
                                     xns: Roo.bootstrap.Navbar,
                                     href: '#',
-                                    glyphicon: 'calender',
+                                    glyphicon: 'calendar',
                                     html: 'Calendar',
                                 }
                             ]
