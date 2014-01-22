@@ -93,12 +93,11 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             
         }
         if (typeof (tree.buttons) != 'undefined' && cn.addButtons) {
-            tree.menu.parentType = cn.xtype;
-            tree.menu.triggerEl = cn.el;
+            
             for(var i =0;i < items.length;i++) {
-                nitems.push(cn.addxtype(Roo.apply({}, items[i])));
+                nitems.push(cn.addxtype(Roo.apply({}, items[i]), 'getButtonContainer'));
             }
-            nitems.push(cn.addxtype(Roo.apply({}, tree.menu)));
+            
             
         }
         if (!tree.items || !tree.items.length) {
