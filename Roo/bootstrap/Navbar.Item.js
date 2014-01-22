@@ -22,7 +22,8 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 	
 	if (this.parent().parent().sidebar === true) {
 	    cfg = {
-		tag: 'li'
+		tag: 'li',
+		cn: []
 	    }
 	    
 	    return cfg;
