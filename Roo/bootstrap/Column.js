@@ -22,7 +22,7 @@ Roo.bootstrap.Column = function(config){
 
 Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
     
-    xs: 12,
+    xs: null,
     sm: null,
     md: null,
     lg: null,
