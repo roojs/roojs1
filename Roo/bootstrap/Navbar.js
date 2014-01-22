@@ -10,11 +10,11 @@ Roo.bootstrap.Navbar = function(config){
 
 Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     
-    type: 'nav',
-    inverse: false,
     bar: true,
+    inverse: false,
     collapse: false,
     
+    type: 'nav',
     arrangement: '',
     position: '',
     
