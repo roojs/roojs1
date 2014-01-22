@@ -74,54 +74,16 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 	    } else {
 		Roo.log('Property \'position\' of Navbar must be either fixed-top, fixed-bottom or static-top')
 	    }
-	    
-	    if (this.brand!==''||this.collapse===true) {
-		var headercontents = [
-		    {
-			tag: 'button',
-			type: 'button',
-			cls: 'navbar-toggle',
-			'data-toggle': 'collapse',
-			'data-target': '#',
-			cn: [
-			    {
-				tag: 'span',
-				cls: 'sr-only',
-				html: 'Toggle navigation'
-			    },
-			    {
-				tag: 'span',
-				cls: 'icon-bar'
-			    },
-			    {
-				tag: 'span',
-				cls: 'icon-bar'
-			    },
-			    {
-				tag: 'span',
-				cls: 'icon-bar'
-			    }
-			]
-		    }
-		]
-		if (this.brand) {
-		    headercontents.push(
-			{
-			    tag: 'a',
-			    href: '#',
-			    html: this.brand,
-			    cls: 'navbar-brand'
-			}
-		    )
-		}
-		cfg.cn.push(
-		    {
-			tag:'div',
-			cls: 'navbar-header',
-			cn: headercontents
-		    }
-		)
+	    if (this.brand !== '') {
+		
 	    }
+	    cfg.cn.push(
+		{
+		    tag:'div',
+		    cls: 'navbar-header',
+		    cn: headercontents
+		}
+	    )
 	    
 	    if (this.collapse) {
 		cfg.cn.push(
