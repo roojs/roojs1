@@ -162,11 +162,11 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     },
     
     getChildContainer : function() {
-	if (this.bar === true) {
-	    return this.el.select('.collapse',true).first();
-	}
-	
-        return this.el;
+        if (this.bar === true) {
+            return this.el.select('.collapse',true).first();
+        }
+        
+           return this.el;
     }
    
 });
