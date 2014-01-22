@@ -72,15 +72,17 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         return this.el;
     },
     
-    addxtype : function (tree) {
+    addxtype : function (tree, cntr) {
         var cn = this;
+        cntr = typeof(cntr == 'undefined' ) ? 'getChildContainer' : cntr;
+        
         if (tree.xtype != 'Body') {
             
             cn = Roo.factory(tree);
             
             cn.parentType = this.xtype; //??
             cn.parentId = this.id;
-            cn.render(this.getChildContainer());
+            cn.render(this[cntr]());
             // then add the element..
         }
         var nitems = [];
@@ -90,7 +92,14 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             nitems.push(cn.addxtype(Roo.apply({}, tree.menu)));
             
         }
-	
+        if (typeof (tree.buttons) != 'undefined' && typeof(cn.getButtonContainer) == 'function') {
+            
+            for(var i =0;i < items.length;i++) {
+                nitems.push(cn.addxtype(Roo.apply({}, items[i]), 'getButtonContainer'));
+            }
+            
+            
+        }
         if (!tree.items || !tree.items.length) {
             this.items = nitems;
             return this;
@@ -645,6 +654,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     fieldLabel : '',
     inputType : 'text',
     disabled : false,
+    name : false,
     
     getAutoCreate : function(){
         
@@ -666,7 +676,9 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             placeholder : this.placeholder || '' 
             
         };
-
+        if (this.name) {
+            input.name = name;
+        }
         
         switch(align) {
             case 'left':
@@ -1001,7 +1013,20 @@ Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
  *
  * page contgainer.
  * 
- */ 
+ */
+
+/**
+ * @class Roo.bootstrap.Modal
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Modal class
+ * @cfg {String} title Title of dialog
+ * @cfg {Array} buttons Array of buttons
+    
+ * @constructor
+ * Create a new Modal Dialog
+ * @param {Object} config The config object
+ */
+
 Roo.bootstrap.Modal = function(config){
     Roo.bootstrap.Modal.superclass.constructor.call(this, config);
 };
@@ -1009,7 +1034,7 @@ Roo.bootstrap.Modal = function(config){
 Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     
     title : 'test dialog',
-    body : 'test body',
+   
 	buttons : false,
     onRender : function(ct, position){
         Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
@@ -1067,11 +1092,12 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                                     ]
                                 },
                                 {
-                                    cls : 'modal-body',
-                                    html : this.body
+                                    cls : 'modal-body'
+                                 
                                 },
                                  {
-                                    cls : 'modal-footer',
+                                    cls : 'modal-footer'
+                                    /*
                                     cn : [
                                         {
                                             tag: 'button',
@@ -1085,6 +1111,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                                         }
                                     
                                     ]
+                                    */
                                 }
                                 
                                 
@@ -1100,7 +1127,15 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         };
           
     },
-    
+    getChildContainer : function() {
+         
+         return this.el.select('.modal-body',true).first();
+        
+    },
+    getButtonContainer : function() {
+         return this.el.select('.modal-footer',true).first();
+        
+    },
     initEvents : function()
     {
         this.el.select('.modal-header .close').on('click', this.hide, this);
@@ -1281,11 +1316,11 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     },
     
     getChildContainer : function() {
-	if (this.bar === true) {
-	    return this.el.select('.collapse',true).first();
-	}
-	
-        return this.el;
+        if (this.bar === true) {
+            return this.el.select('.collapse',true).first();
+        }
+        
+           return this.el;
     }
    
 });
