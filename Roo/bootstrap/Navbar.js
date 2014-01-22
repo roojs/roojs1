@@ -11,10 +11,10 @@
  * Bootstrap Navbar class
  * @cfg {Boolean} sidebar has side bar
  * @cfg {Boolean} bar is a bar?
- * @cfg {Boolean} brand is a bar?
- * @cfg {Boolean} inverse is a bar?
- * @cfg {Boolean} type is a bar?
- * @cfg {Boolean} arrangement is a bar?
+ * @cfg {String} brand what is brand
+ * @cfg {Boolean} inverse is inverted color
+ * @cfg {String} type (nav|pills|tabs)
+ * @cfg {Boolean} arrangement stacked|justified
 
  * 
  *   bar: false,
@@ -43,7 +43,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     brand: '',
     inverse: false,
     position: '',
-    
+    align : false,
     type: 'nav',
     arrangement: '',
     
