@@ -35,6 +35,8 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 	    if (['fixed-top','fixed-bottom','static-top'].indexOf(this.position)>-1) {
 		cfg.cls += ' navbar-' + this.position;
 		cfg.tag = this.position  == 'fixed-bottom' ? 'footer' : 'header';
+	    } else {
+		Roo.log('Property \'position\' of Navbar must be either fixed-top, fixed-bottom or static-top')
 	    }
 	    
 	    if (this.brand||this.collapse) {
