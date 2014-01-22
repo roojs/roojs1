@@ -84,14 +84,6 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 		})
 	    }
 	    
-	    if (this.contained) {
-		cfg.cn = [{
-		    tag: 'div',
-		    cls: 'container',
-		    cn: cfg.cn
-		}]
-	    }
-	    
 	    return cfg;
 	
 	} else if (this.bar === false) {
