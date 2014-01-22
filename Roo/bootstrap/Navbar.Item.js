@@ -40,7 +40,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 	    }
 	    
 	    if (this.icon) {
-		cfg.cn[0].html = '<i class="icon-"'+this.icon+'"></i>'+cfg.cn[0].html || this.html
+		cfg.cn[0].html = '<i class="icon-'+this.icon+'"></i>'+cfg.cn[0].html || this.html
 	    }
 	    
 	    return cfg;
