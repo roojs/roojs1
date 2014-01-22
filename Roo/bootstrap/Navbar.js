@@ -27,7 +27,39 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 		tag: 'nav',
 		cls: 'navbar',
 		role: 'navigation',
-		cn: []
+		cn: [
+		    {
+			tag: 'div',
+			cls: 'navbar-header',
+			cn: [
+			    {
+				tag: 'button',
+				type: 'button',
+				cls: 'navbar-toggle',
+				'data-toggle': 'collapse',
+				cn: [
+				    {
+					tag: 'span',
+					cls: 'sr-only',
+					html: 'Toggle navigation'
+				    },
+				    {
+					tag: 'span',
+					cls: 'icon-bar',
+				    },
+				    {
+					tag: 'span',
+					cls: 'icon-bar',
+				    },
+				    {
+					tag: 'span',
+					cls: 'icon-bar',
+				    }
+				]
+			    }
+			]
+		    }
+		]
 	    }
 	    
 	    cfg.cls += this.inverse ? ' navbar-inverse' : ' navbar-default';
