@@ -12,13 +12,13 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     
     align: '',
     
-    autoCreate : {
-        cls: 'nav navbar-nav',
-        tag : 'ul',
-    },
-    
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.NavGroup.superclass.getAutoCreate.call(this));
+        
+        cfg = {
+            cls: 'nav navbar-nav',
+            tag : 'ul',
+        }
         
         
         if (this.align === 'right') {
