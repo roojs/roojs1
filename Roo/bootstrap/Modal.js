@@ -140,6 +140,11 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
          return this.el.select('.modal-body',true).first();
         
     },
+    getButtonContainer : function() {
+         
+         return this.el.select('.modal-footer',true).first();
+        
+    },
     initEvents : function()
     {
         this.el.select('.modal-header .close').on('click', this.hide, this);
