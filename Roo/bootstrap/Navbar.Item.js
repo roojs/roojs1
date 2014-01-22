@@ -30,13 +30,12 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
         
         if (this.glyphicon) {
             if(cfg.html){cfg.html = ' ' + cfg.html};
-            cfg.cn=cfg.cn||[]
-            cfg.cn.unshift(
+            cfg.cn=[
                 {
                     tag: 'span',
                     cls: 'glyphicon glyphicon-' + this.glyphicon
                 }
-            );
+            ];
         }
 	
         cfg.cn[0].html = this.html || cfg.cn[0].html ;
