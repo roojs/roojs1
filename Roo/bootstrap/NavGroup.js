@@ -25,6 +25,8 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
                 tag: 'div',
                 cls: 'dashboard-menu'
             }
+            
+            return cfg;
         }
         
         
