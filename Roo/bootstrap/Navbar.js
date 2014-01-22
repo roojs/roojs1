@@ -12,7 +12,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     
     sidebar: false,
     
-    bar: true,
+    bar: false,
     brand: '',
     inverse: false,
     position: '',
