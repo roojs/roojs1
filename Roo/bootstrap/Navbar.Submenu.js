@@ -16,11 +16,11 @@
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.Submenu.Item = function(config){
+Roo.bootstrap.Navbar.Submenu.Item = function(config){
     Roo.bootstrap.Submenu.Item.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.Submenu.Item, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.Navbar.Submenu.Item, Roo.bootstrap.Component,  {
     
     xs: 12,
     sm: 12,
@@ -34,7 +34,7 @@ Roo.extend(Roo.bootstrap.Submenu.Item, Roo.bootstrap.Component,  {
     },
     
     getAutoCreate : function(){
-        var cfg = Roo.apply({}, Roo.bootstrap.Submenu.Item.superclass.getAutoCreate.call(this));
+        var cfg = Roo.apply({}, Roo.bootstrap.Navbar.Submenu.Item.superclass.getAutoCreate.call(this));
         cfg.cls += 'col-md-' + this.md;
 	
 	
