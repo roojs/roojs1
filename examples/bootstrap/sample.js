@@ -89,7 +89,25 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xns: Roo.bootstrap.Navbar,
                                     href: '#',
                                     glyphicon: 'user',
-                                    html: 'Users'
+                                    html: 'Users',
+                                    menu:  {
+                                            xtype: 'Menu',
+                                            xns: Roo.bootstrap,
+                                            items : [
+                                                {
+                                                    xtype: 'MenuItem',
+                                                    xns: Roo.bootstrap,
+                                                    html: "hello aaa",
+                                                    href : 'http://roojs.com'
+                                                },
+                                                {
+                                                    xtype: 'MenuItem',
+                                                    xns: Roo.bootstrap,
+                                                    html: "hello",
+                                                    href : 'http://roojs.com'
+                                                }
+                                            ]
+                                        }
                                 }
                             ]
                         },
