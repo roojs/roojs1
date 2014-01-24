@@ -32,6 +32,10 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 		]
 	    }
 	    
+	    if (this.html) {
+		cfg.cn[0].html = this.html;
+	    }
+	    
 	    if (this.active) {
 		this.cls += ' active';
 	    }
@@ -44,10 +48,6 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 	    if (this.href) {
 		cfg.cn[0].tag = 'a',
 		cfg.cn[0].href = this.href;
-	    }
-	    
-	    if (this.html) {
-		cfg.cn[0].html = this.html;
 	    }
 	    
 	    if (this.glyphicon) {
