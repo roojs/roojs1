@@ -1,81 +1,81 @@
-#pad-wrapper {
+.pad-wrapper {
   /* separator */
   /* pop dialogs specific styles */
 }
-#pad-wrapper .title {
+.pad-wrapper .title {
   margin-bottom: 30px;
 }
-#pad-wrapper .section {
+.pad-wrapper .section {
   margin-bottom: 40px;
 }
-#pad-wrapper .section a.btn-flat,
-#pad-wrapper .section a.btn-glow {
+.pad-wrapper .section a.btn-flat,
+.pad-wrapper .section a.btn-glow {
   margin-right: 5px;
 }
-#pad-wrapper .section.btns a.btn-flat,
-#pad-wrapper .section.btns a.btn-glow {
+.pad-wrapper .section.btns a.btn-flat,
+.pad-wrapper .section.btns a.btn-glow {
   margin-bottom: 12px;
 }
-#pad-wrapper .section code {
+.pad-wrapper .section code {
   margin-right: 25px;
 }
-#pad-wrapper .section .btn-group i {
+.pad-wrapper .section .btn-group i {
   color: #7d8892;
 }
-#pad-wrapper .section .btn-group.audio i {
+.pad-wrapper .section .btn-group.audio i {
   color: #96a9b8;
   font-size: 12px;
 }
-#pad-wrapper .ctrls {
+.pad-wrapper .ctrls {
   margin-bottom: 20px;
 }
-#pad-wrapper .ctrls .btn-glow {
+.pad-wrapper .ctrls .btn-glow {
   margin-right: 8px;
 }
-#pad-wrapper .ctrls .btn-flat.icon {
+.pad-wrapper .ctrls .btn-flat.icon {
   margin-right: 8px;
 }
-#pad-wrapper .ctrls .btn-group.settings {
+.pad-wrapper .ctrls .btn-group.settings {
   margin-left: 20px;
 }
-#pad-wrapper .ctrls .btn-group.settings i {
+.pad-wrapper .ctrls .btn-group.settings i {
   font-size: 13px;
   color: #444;
 }
-#pad-wrapper .ctrls .slider-frame {
+.pad-wrapper .ctrls .slider-frame {
   margin-right: 10px;
 }
-#pad-wrapper .ctrls .pagination {
+.pad-wrapper .ctrls .pagination {
   margin: 5px 0px;
 }
-#pad-wrapper .ctrls .pagination.inverse {
+.pad-wrapper .ctrls .pagination.inverse {
   margin-left: 25px;
 }
-#pad-wrapper .ctrls h4 {
+.pad-wrapper .ctrls h4 {
   margin: 20px 0px 20px 0px;
 }
-#pad-wrapper .ctrls .dropdown .dropdown-menu {
+.pad-wrapper .ctrls .dropdown .dropdown-menu {
   margin-right: 10px;
   position: static;
   display: block;
 }
-#pad-wrapper .ctrls .nav-tabs {
+.pad-wrapper .ctrls .nav-tabs {
   margin-bottom: 15px;
 }
-#pad-wrapper .ctrls .tab-content {
+.pad-wrapper .ctrls .tab-content {
   padding: 0px 10px;
   margin-bottom: 20px;
 }
-#pad-wrapper .sliders .slider {
+.pad-wrapper .sliders .slider {
   margin-bottom: 20px;
 }
-#pad-wrapper .separator {
+.pad-wrapper .separator {
   border-top: 1px solid #edeff1;
   margin-top: 100px;
   padding-top: 45px;
   box-shadow: inset 0px 3px 4px -1px #fafafa;
 }
-#pad-wrapper .section.dialogs h4 {
+.pad-wrapper .section.dialogs h4 {
   margin-bottom: 30px;
 }
 
@@ -157,7 +157,7 @@
 }
 
 @media (min-width: 768px) and (max-width: 979px) {
-  #pad-wrapper .section.dialogs > .span4 {
+  .pad-wrapper .section.dialogs > .span4 {
     width: 100%;
     margin-bottom: 30px;
   }
