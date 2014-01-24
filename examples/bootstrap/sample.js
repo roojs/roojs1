@@ -43,7 +43,6 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     href: '#',
                                     html: "hello",
                                     badge: 'test',
-                                    active: true
                                 }
                             ]
                         }
