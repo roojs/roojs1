@@ -24,13 +24,17 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
     
     tag: 'div',
     cls: '',
+    html: '',
+    
     
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Element.superclass.getAutoCreate.call(this));
 	
 	cfg = {
-	    tag: this.tag
+	    tag: this.tag,
+            cls: this.cls,
+            html: this.html
 	}
 	
         return cfg;
