@@ -36,12 +36,17 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
 	//if (['right'].indexOf(this.align)!==-1) {
 	//    cfg.cn[1].cls += ' pull-right'
 	//}
-	
-        return {
+	var cfg = {
 	    tag : 'ul',
 	    cls : 'dropdown-menu' 
-            
-        };
+	    
+	}
+	
+	if (this.type==='submenu') {
+	    cfg.cls='submenu active'
+	}
+	
+        return cfg;
     },
     initEvents : function() {
        // Roo.log("ADD event");
