@@ -26,13 +26,14 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 		cls: '',
 		cn: [
 		    {
-			tag: 'p'
+			tag: 'p',
+			cls: ''
 		    }
 		]
 	    }
 	    
 	    if (this.menu) {
-		cfg.cls += ' dropdown-toggle';
+		cfg.cn[0].cls += ' dropdown-toggle';
 	    }
 	    
 	    if (this.href) {
