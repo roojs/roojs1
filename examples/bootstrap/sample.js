@@ -178,14 +178,14 @@ Roo.example.bootstrap = new Roo.XComponent({
                                             level: 4,
                                             html: 'Flat Buttons',
                                             cls: 'title'
+                                        },
+                                        {
+                                            xtype: 'Column',
+                                            xns: Roo.bootstrap,
+                                            md: 6,
+                                            html: 'a'
                                         }
                                     ]
-                                },
-                                {
-                                    xtype: 'Column',
-                                    xns: Roo.bootstrap,
-                                    md: 6,
-                                    html: 'a'
                                 }
                             ]
                         }
