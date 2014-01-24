@@ -96,8 +96,8 @@ Roo.example.bootstrap = new Roo.XComponent({
                                             xns: Roo.bootstrap.Navbar,
                                             items: [
                                                 {
-                                                    xtype: 'SubmenuItem',
-                                                    xns: Roo.bootstrap.Navbar,
+                                                    xtype: 'Item',
+                                                    xns: Roo.bootstrap.Navbar.Submenu,
                                                     html: 'test'
                                                 }
                                             ]
