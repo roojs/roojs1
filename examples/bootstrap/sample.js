@@ -158,7 +158,8 @@ Roo.example.bootstrap = new Roo.XComponent({
                     ]
                 },
                 {
-                    xtype: 'container'
+                    xtype: 'Container',
+                    xns: Roo.bootstrap.Navbar
                 }
             ]
         };
