@@ -611,6 +611,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                     xns: Roo.bootstrap,
                                                     cls: 'ctrls',
                                                     items: [
+                                                        
                                                     ]
                                                 }
                                             ]
