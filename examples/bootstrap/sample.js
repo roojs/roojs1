@@ -226,6 +226,40 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                             ]
                                                                         }
                                                                     ]
+                                                                },
+                                                                {
+                                                                    xtype: 'Element',
+                                                                    xns: Roo.bootstrap,
+                                                                    tag: 'tr',
+                                                                    items: [
+                                                                        {
+                                                                            xtype: 'Element',
+                                                                            xns: Roo.bootstrap,
+                                                                            tag: 'td',
+                                                                            items: [
+                                                                                {
+                                                                                    xtype: 'Element',
+                                                                                    xns: Roo.bootstrap,
+                                                                                    tag: 'code',
+                                                                                    html: '.btn-flat.inverse'
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            xtype: 'Element',
+                                                                            xns: Roo.bootstrap,
+                                                                            tag: 'td',
+                                                                            items: [
+                                                                                {
+                                                                                    xtype: 'Element',
+                                                                                    xns: Roo.bootstrap,
+                                                                                    tag: 'a',
+                                                                                    cls: 'btn-flat inverse',
+                                                                                    html: 'INVERSE BUTTON'
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
                                                                 }
                                                             ]
                                                         }
