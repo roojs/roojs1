@@ -33,7 +33,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     },
     
     getChildContainer: function(){
-        return this.el
+        return document.body
     }
    
 });
