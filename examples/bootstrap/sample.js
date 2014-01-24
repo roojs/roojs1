@@ -161,7 +161,14 @@ Roo.example.bootstrap = new Roo.XComponent({
                     xtype: 'Container',
                     xns: Roo.bootstrap,
                     cls: 'content',
-                    html: ''
+                    items: [
+                        {
+                            xtype: 'Container',
+                            xns: Roo.bootstrap,
+                            cls: 'pad-wrapper',
+                            html: ''
+                        }
+                    ]
                 }
             ]
         };
