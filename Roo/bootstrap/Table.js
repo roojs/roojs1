@@ -29,13 +29,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
 	    tag: 'table'
 	}
 	
-	var sizes=['xs','sm','md','lg'];
-	sizes.map(function(size){
-	    if (this[size]) {
-		cfg.cls += ' col-' + size + '-' + this[size];
-	    }
-	})
-	
         return cfg;
     }
    
