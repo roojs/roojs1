@@ -36,7 +36,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             cfg.cls = 'jumbotron';
         }
 	if (this.cls) {
-	    cfg.cls = this.cls;
+	    cfg.cls = '';
 	}
         
         cfg.html = this.html || cfg.html;
