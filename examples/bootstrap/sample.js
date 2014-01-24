@@ -171,7 +171,14 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xtype: 'Row',
                                     xns: Roo.bootstrap,
                                     cls: 'section btns',
-                                    html: ''
+                                    items: [
+                                        {
+                                            xtype: 'Header',
+                                            xns: Roo.bootstrap,
+                                            level: 4,
+                                            html: 'Flat Buttons'
+                                        }
+                                    ]
                                 }
                             ]
                         }
