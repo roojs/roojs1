@@ -224,9 +224,8 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                     ]
                                                                 },
                                                                 {
-                                                                    xtype: 'Element',
+                                                                    xtype: 'TableRow',
                                                                     xns: Roo.bootstrap,
-                                                                    tag: 'tr',
                                                                     items: [
                                                                         {
                                                                             xtype: 'Element',
@@ -258,9 +257,8 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                     ]
                                                                 },
                                                                 {
-                                                                    xtype: 'Element',
+                                                                    xtype: 'TableCell',
                                                                     xns: Roo.bootstrap,
-                                                                    tag: 'tr',
                                                                     items: [
                                                                         {
                                                                             xtype: 'Element',
@@ -292,9 +290,8 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                     ]
                                                                 },
                                                                 {
-                                                                    xtype: 'Element',
+                                                                    xtype: 'TableCell',
                                                                     xns: Roo.bootstrap,
-                                                                    tag: 'tr',
                                                                     items: [
                                                                         {
                                                                             xtype: 'Element',
@@ -326,9 +323,8 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                     ]
                                                                 },
                                                                 {
-                                                                    xtype: 'Element',
+                                                                    xtype: 'TableCell',
                                                                     xns: Roo.bootstrap,
-                                                                    tag: 'tr',
                                                                     items: [
                                                                         {
                                                                             xtype: 'Element',
@@ -360,9 +356,8 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                     ]
                                                                 },
                                                                 {
-                                                                    xtype: 'Element',
+                                                                    xtype: 'TableCell',
                                                                     xns: Roo.bootstrap,
-                                                                    tag: 'tr',
                                                                     items: [
                                                                         {
                                                                             xtype: 'Element',
@@ -394,9 +389,8 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                     ]
                                                                 },
                                                                 {
-                                                                    xtype: 'Element',
+                                                                    xtype: 'TableCell',
                                                                     xns: Roo.bootstrap,
-                                                                    tag: 'tr',
                                                                     items: [
                                                                         {
                                                                             xtype: 'Element',
@@ -428,9 +422,8 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                     ]
                                                                 },
                                                                 {
-                                                                    xtype: 'Element',
+                                                                    xtype: 'TableCell',
                                                                     xns: Roo.bootstrap,
-                                                                    tag: 'tr',
                                                                     items: [
                                                                         {
                                                                             xtype: 'Element',
