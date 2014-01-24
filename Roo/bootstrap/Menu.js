@@ -43,7 +43,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
 	}
 	
 	if (this.type==='submenu') {
-	    cfg.cls='submenu active';
+	    cfg.cls='submenu active'
 	}
 	
         return cfg;
@@ -62,7 +62,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         if (Roo.get(e.getTarget()).findParent('.dropdown-menu')) {
             return;
         }
-        var isActive = this.triggerEl.hasClass(this.type==='submenu'?'active':'open');
+        var isActive = this.triggerEl.hasClass('open');
         // if disabled.. ingore
         this.clearMenus(e);
         //if ('ontouchstart' in document.documentElement && !$parent.closest('.navbar-nav').length) {
@@ -75,7 +75,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
  
        //if (e.isDefaultPrevented()) return;
         
-       this.triggerEl[isActive ? 'removeClass' : 'addClass'](this.type==='submenu'?'active':'open');
+       this.triggerEl[isActive ? 'removeClass' : 'addClass']('open');
        
        //  .trigger('shown.bs.dropdown', relatedTarget)
  
@@ -89,11 +89,11 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     {
         //$(backdrop).remove()
         Roo.select('.dropdown-toggle',true).each(function(aa) {
-            if (!aa.hasClass(this.type==='submenu'?'active':'open')) {
+            if (!aa.hasClass('open')) {
                 return;
             }
             // triger close...
-            aa.removeClass(this.type==='submenu'?'active':'open');
+            aa.removeClass('open');
           //var parent = getParent($(this))
           //var relatedTarget = { relatedTarget: this }
           
