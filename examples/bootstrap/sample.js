@@ -177,6 +177,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                             xns: Roo.bootstrap,
                                             level: 4,
                                             html: 'Flat Buttons'
+                                            cls: 'title'
                                         }
                                     ]
                                 }
