@@ -43,7 +43,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
 	}
 	
 	if (this.type==='submenu') {
-	    cfg.cls='submenu'
+	    cfg.cls='submenu active';
 	}
 	
         return cfg;
