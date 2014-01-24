@@ -37,8 +37,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     },
     
     getChildContainer: function(){
-        return this.el;
         console.log(this.el);
+        return this.el;
     }
    
 });
