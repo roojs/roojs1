@@ -37,7 +37,8 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
 	    cls: 'column'
 	}
 	
-	['xs','sm','md','lg'].map(function(size){
+	var sizes=['xs','sm','md','lg'];
+	sizes.map(function(size){
 	    if (this[size]) {
 		cfg.cls += ' col-'+size+'-'+this[size];
 	    }
