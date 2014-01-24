@@ -191,7 +191,29 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                         {
                                                             xtype: 'Element',
                                                             xns: Roo.bootstrap,
-                                                            tag: 'tbody'
+                                                            tag: 'tbody',
+                                                            items: [
+                                                                {
+                                                                    xtype: 'Element',
+                                                                    xns: Roo.bootstrap,
+                                                                    tag: 'tr',
+                                                                    items: [
+                                                                        {
+                                                                            xtype: 'Element',
+                                                                            xns: Roo.bootstrap,
+                                                                            tag: 'td',
+                                                                            items: [
+                                                                                {
+                                                                                    xtype: 'Element',
+                                                                                    xns: Roo.bootstrap,
+                                                                                    tag: 'code',
+                                                                                    html: '.btn-flat.inverse'
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
                                                         }
                                                     ]
                                                 }
