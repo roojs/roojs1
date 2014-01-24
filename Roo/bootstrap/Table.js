@@ -28,7 +28,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
 	    tag: 'table',
             cn: [
                 {
-                    tag: 'a',
+                    tag: 'span',
                     html: 'a'
                 }
             ]
