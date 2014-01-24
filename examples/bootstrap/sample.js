@@ -160,7 +160,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                 {
                     xtype: 'Container',
                     xns: Roo.bootstrap,
-                    type: 'content',
+                    cls: 'content',
                     html: ''
                 }
             ]
