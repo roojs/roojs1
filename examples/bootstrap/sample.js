@@ -479,7 +479,13 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                 {
                                                     xtype: 'Row',
                                                     xns: Roo.bootstrap,
-                                                    cls: 'ctrls'
+                                                    cls: 'ctrls',
+                                                    items: [
+                                                        {
+                                                            xtype: 'ButtonGroup',
+                                                            xns: Roo.bootstrap
+                                                        }
+                                                    ]
                                                 }
                                             ]
                                         }
