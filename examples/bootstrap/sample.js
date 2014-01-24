@@ -180,6 +180,11 @@ Roo.example.bootstrap = new Roo.XComponent({
                                             cls: 'title'
                                         }
                                     ]
+                                },
+                                {
+                                    xtype: 'Column',
+                                    xns: Too.bootstrap,
+                                    md: 6
                                 }
                             ]
                         }
