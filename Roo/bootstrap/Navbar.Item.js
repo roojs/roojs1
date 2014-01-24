@@ -33,7 +33,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 	    }
 	    
 	    if (this.active) {
-		this.cls += ' active'
+		this.cls += ' active';
 	    }
 	    
 	    if (this.menu) {
