@@ -571,6 +571,23 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                     xns: Roo.bootstrap,
                                                                     cls: 'btn-glow',
                                                                     html: 'Drop down'
+                                                                },
+                                                                {
+                                                                    xtype: 'Button',
+                                                                    xns: Roo.bootstrap,
+                                                                    cls: 'btn-glow',
+                                                                    menu: {
+                                                                        xtype: 'Menu',
+                                                                        xns: Roo.bootstrap,
+                                                                        items: [
+                                                                            {
+                                                                                xtype: 'MenuItem',
+                                                                                xns: Roo.bootstrap,
+                                                                                html: "hello aaa",
+                                                                                href : 'http://roojs.com'
+                                                                            }
+                                                                        ]
+                                                                    }
                                                                 }
                                                             ]
                                                         }
