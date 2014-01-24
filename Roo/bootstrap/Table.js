@@ -30,10 +30,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
 	}
 	
         return cfg;
-    },
-    
-    getChildContainer: function(){
-        return this.el;
     }
    
 });
