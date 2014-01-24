@@ -75,7 +75,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
  
        //if (e.isDefaultPrevented()) return;
         
-       this.triggerEl[isActive ? 'removeClass' : 'addClass']('open');
+       this.triggerEl[isActive ? 'removeClass' : 'addClass'](this.type==='submenu'?'active':'open');
        
        //  .trigger('shown.bs.dropdown', relatedTarget)
  
@@ -89,11 +89,11 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     {
         //$(backdrop).remove()
         Roo.select('.dropdown-toggle',true).each(function(aa) {
-            if (!aa.hasClass('open')) {
+            if (!aa.hasClass(this.type==='submenu'?'active':'open')) {
                 return;
             }
             // triger close...
-            aa.removeClass('open');
+            aa.removeClass(this.type==='submenu'?'active':'open');
           //var parent = getParent($(this))
           //var relatedTarget = { relatedTarget: this }
           
