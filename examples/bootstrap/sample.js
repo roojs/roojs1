@@ -554,6 +554,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                             cls:'btn-flat icon',
                                                             html: 'Fork me on github',
                                                             glyphicon: 'circle-arrow-up'
+                                                            btn: false
                                                         }
                                                     ]
                                                 }
