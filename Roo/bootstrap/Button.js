@@ -60,6 +60,8 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             html: 'hello'
         }
         
+        console.log(this.parent())
+        
         cfg.html = this.html || cfg.html;
         
         if (this.isClose) {
