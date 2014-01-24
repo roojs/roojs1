@@ -22,10 +22,10 @@ Roo.bootstrap.Submenu.Item = function(config){
 
 Roo.extend(Roo.bootstrap.Submenu.Item, Roo.bootstrap.Component,  {
     
-    xs: null,
-    sm: null,
-    md: null,
-    lg: null,
+    xs: 12,
+    sm: 12,
+    md: 12,
+    lg: 12,
     
     offset: 0,
     
@@ -35,7 +35,7 @@ Roo.extend(Roo.bootstrap.Submenu.Item, Roo.bootstrap.Component,  {
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Submenu.Item.superclass.getAutoCreate.call(this));
-        cfg.cls += 'col-md-' + this.colspan;
+        cfg.cls += 'col-md-' + this.md;
 	
 	
 	
