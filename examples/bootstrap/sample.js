@@ -40,8 +40,15 @@ Roo.example.bootstrap = new Roo.XComponent({
                                 {
                                     xtype: 'Item',
                                     xns: Roo.bootstrap.Navbar,
-                                    href: '#',
-                                    html: "hello"
+                                    items: [
+                                        {
+                                            xtype: 'Element',
+                                            xns: Roo.bootstrap,
+                                            tag: 'input',
+                                            cls: 'search',
+                                            type: 'text'
+                                        }
+                                    ]
                                 }
                             ]
                         }
