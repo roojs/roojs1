@@ -73,8 +73,6 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             }
         }
         
-        console.log(this.parent().btn)
-        
         cfg.html = this.html || cfg.html;
         
         if (this.isClose) {
