@@ -55,10 +55,10 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         Roo.log("Button Parent is : " + this.parent().xtype);
         
         var cfg = {
-        cls: 'btn',
-        tag : 'button',
-        html: 'hello'
-    }
+            cls: 'btn',
+            tag : 'button',
+            html: 'hello'
+        }
         
         cfg.html = this.html || cfg.html;
         
