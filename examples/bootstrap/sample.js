@@ -542,6 +542,20 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                             ]
                                                         }
                                                     ]
+                                                },
+                                                {
+                                                    xtype: 'Row',
+                                                    xns: Roo.bootstrap,
+                                                    cls: 'ctrls',
+                                                    items: [
+                                                        {
+                                                            xtype: 'Button',
+                                                            xns: Roo.bootstrap,
+                                                            cls:'btn-flat icon',
+                                                            html: 'Fork me on github',
+                                                            glyphicon: 'user'
+                                                        }
+                                                    ]
                                                 }
                                             ]
                                         }
