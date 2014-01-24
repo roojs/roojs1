@@ -487,9 +487,8 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                             cls: 'large',
                                                             items: [
                                                                 {
-                                                                    xtype: 'Element',
+                                                                    xtype: 'Button',
                                                                     xns: Roo.bootstrap,
-                                                                    tag: 'button',
                                                                     cls: 'glow left'
                                                                 }
                                                             ]
