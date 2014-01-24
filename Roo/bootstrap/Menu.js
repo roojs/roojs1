@@ -62,7 +62,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         if (Roo.get(e.getTarget()).findParent('.dropdown-menu')) {
             return;
         }
-        var isActive = this.triggerEl.hasClass('open');
+        var isActive = this.triggerEl.hasClass(this.type==='submenu'?'active':'open');
         // if disabled.. ingore
         this.clearMenus(e);
         //if ('ontouchstart' in document.documentElement && !$parent.closest('.navbar-nav').length) {
