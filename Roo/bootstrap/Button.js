@@ -55,9 +55,22 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         Roo.log("Button Parent is : " + this.parent().xtype);
         
         var cfg = {
-            cls: 'btn',
+            cls: '',
             tag : 'button',
             html: 'hello'
+        }
+        
+        if (this.parent().btn) {
+            cfg.cls='btn';
+            if (this.parentType != 'Navbar') {
+                this.weight = this.weight.length ?  this.weight : 'default';
+            }
+            if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
+                
+                cfg.cls += ' btn-' + this.weight;
+            } else {
+                
+            }
         }
         
         console.log(this.parent().btn)
@@ -72,16 +85,6 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             cfg.html = "&times;";
             
             return cfg;
-        }
-        
-        if (this.parentType != 'Navbar') {
-            this.weight = this.weight.length ?  this.weight : 'default';
-        }
-        if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
-            
-            cfg.cls += ' btn-' + this.weight;
-        } else {
-            
         }
         
         if (this.active) {
