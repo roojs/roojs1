@@ -63,6 +63,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xtype: 'Item',
                                     xns: Roo.bootstrap.Navbar,
                                     html: "hello",
+                                    active: true,
                                     menu:  {
                                             xtype: 'Menu',
                                             xns: Roo.bootstrap,
