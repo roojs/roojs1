@@ -509,6 +509,25 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                     html: 'RIGHT'
                                                                 }
                                                             ]
+                                                        },
+                                                        {
+                                                            xtype: 'ButtonGroup',
+                                                            xns: Roo.bootstrap,
+                                                            items: [
+                                                                {
+                                                                    xtype: 'Button',
+                                                                    xns: Roo.bootstrap,
+                                                                    cls: 'glow left',
+                                                                    html: 'LEFT',
+                                                                    active: true
+                                                                },
+                                                                {
+                                                                    xtype: 'Button',
+                                                                    xns: Roo.bootstrap,
+                                                                    cls: 'glow middle',
+                                                                    html: 'RIGHT'
+                                                                }
+                                                            ]
                                                         }
                                                     ]
                                                 }
