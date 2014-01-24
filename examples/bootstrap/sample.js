@@ -78,6 +78,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     href: '#',
                                     glyphicon: 'user',
                                     html: 'Users',
+                                    active: true,
                                     menu:  {
                                             xtype: 'Menu',
                                             xns: Roo.bootstrap,
