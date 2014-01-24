@@ -37,7 +37,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     },
     
     getChildContainer: function(){
-        console.log(this.el.select('tbody',true'));
+        console.log(this.el.select('tbody',true));
         return this.el;
     }
    
