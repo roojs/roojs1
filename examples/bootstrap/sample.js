@@ -506,6 +506,13 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                     cls: 'glow middle',
                                                                     html: ' ',
                                                                     glyphicon: 'fullscreen'
+                                                                },
+                                                                {
+                                                                    xtype: 'Button',
+                                                                    xns: Roo.bootstrap,
+                                                                    cls: 'glow middle',
+                                                                    html: ' ',
+                                                                    glyphicon: 'zoom-out'
                                                                 }
                                                             ]
                                                         }
