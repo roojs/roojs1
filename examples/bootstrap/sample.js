@@ -183,7 +183,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                 },
                                 {
                                     xtype: 'Column',
-                                    xns: Too.bootstrap,
+                                    xns: Roo.bootstrap,
                                     md: 6,
                                     html: 'a'
                                 }
