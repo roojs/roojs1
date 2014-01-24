@@ -51,16 +51,14 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     glyphicon: '',
     badge: '',
     
-    autoCreate : {
-        cls: 'btn',
-        tag : 'button',
-        html: 'hello'
-    },
-    
     getAutoCreate : function(){
         Roo.log("Button Parent is : " + this.parent().xtype);
         
-        var cfg = Roo.apply({}, Roo.bootstrap.Button.superclass.getAutoCreate.call(this));
+        var cfg = {
+        cls: 'btn',
+        tag : 'button',
+        html: 'hello'
+    }
         
         cfg.html = this.html || cfg.html;
         
