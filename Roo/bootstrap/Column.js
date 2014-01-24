@@ -29,15 +29,19 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
     
     offset: 0,
     
-	autoCreate : {
-        cls: 'column'
-    },
-    
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Column.superclass.getAutoCreate.call(this));
-        cfg.cls += 'col-md-' + this.colspan;
 	
+	cfg = {
+	    tag: 'div',
+	    cls: 'column'
+	}
 	
+	['xs','sm','md','lg'].map(function(size){
+	    if (this[size]) {
+		cfg.cls += ' col-'+size+'-'+this[size];
+	    }
+	})
 	
         return cfg;
     }
