@@ -86,13 +86,19 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                 {
                                                     xtype: 'MenuItem',
                                                     xns: Roo.bootstrap,
-                                                    html: "hello aaa",
+                                                    html: "User list",
                                                     href : 'http://roojs.com'
                                                 },
                                                 {
                                                     xtype: 'MenuItem',
                                                     xns: Roo.bootstrap,
-                                                    html: "hello",
+                                                    html: "New user form",
+                                                    href : 'http://roojs.com'
+                                                },
+                                                {
+                                                    xtype: 'MenuItem',
+                                                    xns: Roo.bootstrap,
+                                                    html: "User profile",
                                                     href : 'http://roojs.com'
                                                 }
                                             ]
