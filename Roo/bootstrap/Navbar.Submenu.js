@@ -16,8 +16,8 @@
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.Submenu = function(config){
-    Roo.bootstrap.Submenu.superclass.constructor.call(this, config);
+Roo.bootstrap.Navbar.Submenu = function(config){
+    Roo.bootstrap.Navbar.Submenu.superclass.constructor.call(this, config);
 };
 
 Roo.extend(Roo.bootstrap.Navbar.Submenu, Roo.bootstrap.Component,  {
