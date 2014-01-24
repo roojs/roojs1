@@ -42,7 +42,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 	    
 	    if (this.menu) {
 		cfg.cn[0].cls += ' dropdown-toggle';
-		cfg.cn[0].html = (cfg.cn[0].html || this.html) + '<span class="caret"></span>';
+		cfg.cn[0].html = (cfg.cn[0].html || this.html) + '<span class="chevron-down"></span>';
 	    }
 	    
 	    if (this.href) {
