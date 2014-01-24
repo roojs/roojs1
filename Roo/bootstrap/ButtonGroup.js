@@ -30,6 +30,7 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
     align: '',
     direction: '',
     toolbar: false,
+    btn: true,
     
     autoCreate : {
         cls: 'btn-group',
