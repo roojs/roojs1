@@ -470,6 +470,14 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                     ]
                                                 }
                                             ]
+                                        },
+                                        {
+                                            xtype: 'Column',
+                                            xns: Roo.bootstrap,
+                                            md: 6,
+                                            items: [
+                                                
+                                            ]
                                         }
                                     ]
                                 }
