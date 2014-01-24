@@ -28,8 +28,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
 	    tag: 'table',
             cn: [
                 {
-                    tag: 'span',
-                    html: 'abc'
+                    tag: 'tbody'
                 }
             ]
 	}
@@ -38,7 +37,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     },
     
     getChildContainer: function(){
-        console.log(this.el,this.el.select('tbody',true).first());
         return this.el;
     }
    
