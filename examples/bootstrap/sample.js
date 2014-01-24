@@ -515,6 +515,41 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                     glyphicon: 'zoom-out'
                                                                 }
                                                             ]
+                                                        },
+                                                        {
+                                                            xtype: 'ButtonGroup',
+                                                            xns: Roo.bootstrap,
+                                                            cls: 'large',
+                                                            items: [
+                                                                {
+                                                                    xtype: 'Button',
+                                                                    xns: Roo.bootstrap,
+                                                                    cls: 'glow left',
+                                                                    html: ' ',
+                                                                    glyphicon: 'link'
+                                                                },
+                                                                {
+                                                                    xtype: 'Button',
+                                                                    xns: Roo.bootstrap,
+                                                                    cls: 'glow middle',
+                                                                    html: ' ',
+                                                                    glyphicon: 'random'
+                                                                },
+                                                                {
+                                                                    xtype: 'Button',
+                                                                    xns: Roo.bootstrap,
+                                                                    cls: 'glow middle',
+                                                                    html: ' ',
+                                                                    glyphicon: 'fullscreen'
+                                                                },
+                                                                {
+                                                                    xtype: 'Button',
+                                                                    xns: Roo.bootstrap,
+                                                                    cls: 'glow right',
+                                                                    html: ' ',
+                                                                    glyphicon: 'zoom-out'
+                                                                }
+                                                            ]
                                                         }
                                                     ]
                                                 }
