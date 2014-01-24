@@ -90,7 +90,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     href: '#',
                                     glyphicon: 'user',
                                     html: 'Users',
-                                    menu: [
+                                    items: [
                                         {
                                             xtype: 'Submenu',
                                             xns: Roo.bootstrap.Navbar,
