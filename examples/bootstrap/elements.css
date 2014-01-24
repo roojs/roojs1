@@ -251,7 +251,7 @@
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset !important;
 }
 .btn-glow [class^="glyphicon glyphicon-"],
-.btn-glow [class*=" icon-"] {
+.btn-glow [class*=" glyphicon glyphicon-"] {
   margin-right: 3px;
 }
 .btn-glow i.shuffle {
