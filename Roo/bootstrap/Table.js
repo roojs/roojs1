@@ -29,7 +29,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             cn: [
                 {
                     tag: 'span',
-                    html: 'a'
+                    html: 'abc'
                 }
             ]
 	}
