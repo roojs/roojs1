@@ -64,13 +64,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     href: '#',
                                     glyphicon: 'home',
                                     html: 'Hello'
-                                }
-                            ]
-                        },
-                        {
-                            xtype: 'NavGroup',
-                            xns: Roo.bootstrap,
-                            items: [
+                                },
                                 {
                                     xtype: 'Item',
                                     xns: Roo.bootstrap.Navbar,
@@ -78,6 +72,12 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     glyphicon: 'stats',
                                     html: 'Charts'
                                 }
+                            ]
+                        },
+                        {
+                            xtype: 'NavGroup',
+                            xns: Roo.bootstrap,
+                            items: [
                             ]
                         },
                         {
