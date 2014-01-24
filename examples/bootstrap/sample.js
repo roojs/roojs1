@@ -569,13 +569,13 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                 {
                                                                     xtype: 'Button',
                                                                     xns: Roo.bootstrap,
-                                                                    cls: 'btn-glow',
+                                                                    cls: 'btn glow',
                                                                     html: 'Drop down'
                                                                 },
                                                                 {
                                                                     xtype: 'Button',
                                                                     xns: Roo.bootstrap,
-                                                                    cls: 'btn-glow',
+                                                                    cls: 'btn glow',
                                                                     html: '<span class="caret"></span>',
                                                                     menu: {
                                                                         xtype: 'Menu',
