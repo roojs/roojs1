@@ -26,14 +26,19 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
 	
 	cfg = {
-	    tag: 'table'
+	    tag: 'table',
+            cn: [
+                {
+                    tag: 'tbody'
+                }
+            ]
 	}
 	
         return cfg;
     },
     
     getChildContainer: function(){
-        return this.el
+        return this.el.select('.tbody',true);
     }
    
 });
