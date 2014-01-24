@@ -166,7 +166,13 @@ Roo.example.bootstrap = new Roo.XComponent({
                             xtype: 'Container',
                             xns: Roo.bootstrap,
                             cls: 'pad-wrapper',
-                            html: 'sasd'
+                            items: [
+                                {
+                                    xtype: 'Row',
+                                    xns: Roo.bootstrap,
+                                    cls: 'section btns'
+                                }
+                            ]
                         }
                     ]
                 }
