@@ -23,11 +23,16 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 	if (this.parent().parent().sidebar === true) {
 	    cfg = {
 		tag: 'li',
+		cls: '',
 		cn: [
 		    {
 			tag: 'p'
 		    }
 		]
+	    }
+	    
+	    if (this.menu) {
+		cfg.cls += ' dropdown-toggle';
 	    }
 	    
 	    if (this.href) {
