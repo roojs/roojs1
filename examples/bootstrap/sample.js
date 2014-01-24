@@ -186,7 +186,14 @@ Roo.example.bootstrap = new Roo.XComponent({
                                             items: [
                                                 {
                                                     xtype: 'Table',
-                                                    xns: Roo.bootstrap
+                                                    xns: Roo.bootstrap,
+                                                    items: [
+                                                        {
+                                                            xtype: 'Element',
+                                                            xns: Roo.bootstrap,
+                                                            tag: 'tbody'
+                                                        }
+                                                    ]
                                                 }
                                             ]
                                         }
