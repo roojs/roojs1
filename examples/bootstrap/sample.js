@@ -498,7 +498,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                     xns: Roo.bootstrap,
                                                                     cls: 'glow middle',
                                                                     html: ' ',
-                                                                    glyphicon: 'shuffle'
+                                                                    glyphicon: 'random'
                                                                 }
                                                             ]
                                                         }
