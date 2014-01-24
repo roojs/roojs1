@@ -32,6 +32,10 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 		]
 	    }
 	    
+	    if (this.active) {
+		this.cls += ' active'
+	    }
+	    
 	    if (this.menu) {
 		cfg.cn[0].cls += ' dropdown-toggle';
 	    }
