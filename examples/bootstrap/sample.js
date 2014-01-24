@@ -93,6 +93,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     menu:  {
                                             xtype: 'Menu',
                                             xns: Roo.bootstrap,
+                                            type: 'submenu',
                                             items : [
                                                 {
                                                     xtype: 'MenuItem',
