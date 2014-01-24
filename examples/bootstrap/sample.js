@@ -71,13 +71,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     href: '#',
                                     glyphicon: 'stats',
                                     html: 'Charts'
-                                }
-                            ]
-                        },
-                        {
-                            xtype: 'NavGroup',
-                            xns: Roo.bootstrap,
-                            items: [
+                                },
                                 {
                                     xtype: 'Item',
                                     xns: Roo.bootstrap.Navbar,
@@ -103,91 +97,49 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                 }
                                             ]
                                         }
-                                }
-                            ]
-                        },
-                        {
-                            xtype: 'NavGroup',
-                            xns: Roo.bootstrap,
-                            items: [
+                                },
                                 {
                                     xtype: 'Item',
                                     xns: Roo.bootstrap.Navbar,
                                     href: '#',
                                     glyphicon: 'edit',
                                     html: 'Forms'
-                                }
-                            ]
-                        },
-                        {
-                            xtype: 'NavGroup',
-                            xns: Roo.bootstrap,
-                            items: [
+                                },
                                 {
                                     xtype: 'Item',
                                     xns: Roo.bootstrap.Navbar,
                                     href: '#',
                                     glyphicon: 'picture',
                                     html: 'Gallery'
-                                }
-                            ]
-                        },
-                        {
-                            xtype: 'NavGroup',
-                            xns: Roo.bootstrap,
-                            items: [
+                                },
                                 {
                                     xtype: 'Item',
                                     xns: Roo.bootstrap.Navbar,
                                     href: '#',
                                     glyphicon: 'calendar',
                                     html: 'Calendar'
-                                }
-                            ]
-                        },
-                        {
-                            xtype: 'NavGroup',
-                            xns: Roo.bootstrap,
-                            items: [
+                                },
                                 {
                                     xtype: 'Item',
                                     xns: Roo.bootstrap.Navbar,
                                     href: '#',
                                     glyphicon: 'th-large',
                                     html: 'Tables'
-                                }
-                            ]
-                        },
-                        {
-                            xtype: 'NavGroup',
-                            xns: Roo.bootstrap,
-                            items: [
+                                },
                                 {
                                     xtype: 'Item',
                                     xns: Roo.bootstrap.Navbar,
                                     href: '#',
                                     glyphicon: 'flash',
                                     html: 'UI Elements'
-                                }
-                            ]
-                        },
-                        {
-                            xtype: 'NavGroup',
-                            xns: Roo.bootstrap,
-                            items: [
+                                },
                                 {
                                     xtype: 'Item',
                                     xns: Roo.bootstrap.Navbar,
                                     href: '#',
                                     glyphicon: 'cog',
                                     html: 'My Info'
-                                }
-                            ]
-                        },
-                        {
-                            xtype: 'NavGroup',
-                            xns: Roo.bootstrap,
-                            items: [
+                                },
                                 {
                                     xtype: 'Item',
                                     xns: Roo.bootstrap.Navbar,
