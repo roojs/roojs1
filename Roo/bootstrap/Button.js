@@ -64,6 +64,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             tag : 'button',
             html: 'hello'
         }
+        cfg.html = this.html || cfg.html;
         
         if (this.toggle===true) {
             cfg={
@@ -109,7 +110,6 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             }
         }
         
-        cfg.html = this.html || cfg.html;
         
         if (this.active) {
             cfg.cls += ' active';
