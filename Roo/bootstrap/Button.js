@@ -40,11 +40,11 @@ Roo.bootstrap.Button = function(config){
 
 Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     html: false,
-    active: false,
-    weight: '',
-    size: '',
-    tag: 'button',
-    href: '',
+    active: false, // t/f
+    weight: '', // default, danger, etc.
+    size: '', // lg, md, ...
+    tag: 'button', // a, ...
+    href: '', //
     disabled: false,
     isClose: false,
     glyphicon: '',
@@ -84,6 +84,16 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             return cfg;
         }
         
+        if (this.isClose) {
+            cfg.cls += ' close';
+            
+            cfg["aria-hidden"] = true;
+            
+            cfg.html = "&times;";
+            
+            return cfg;
+        }
+        
         
         if (this.parent().btn&&this.parent().type=='ButtonGroup') {
             cfg.cls='btn';
@@ -99,16 +109,6 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         }
         
         cfg.html = this.html || cfg.html;
-        
-        if (this.isClose) {
-            cfg.cls += ' close';
-            
-            cfg["aria-hidden"] = true;
-            
-            cfg.html = "&times;";
-            
-            return cfg;
-        }
         
         if (this.active) {
             cfg.cls += ' active';
