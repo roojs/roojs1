@@ -688,6 +688,17 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                             xtype: 'TableCell',
                                                                             xns: Roo.bootstrap,
                                                                             html: '<code>.btn.btn-default</code>'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'TableCell',
+                                                                            xns: Roo.bootstrap,
+                                                                            cn: [
+                                                                                {
+                                                                                    xtype: 'Button',
+                                                                                    xns: Roo.bootstrap,
+                                                                                    html: 'a'
+                                                                                }
+                                                                            ]
                                                                         }
                                                                     ]
                                                                 }
