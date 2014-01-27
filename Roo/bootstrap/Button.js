@@ -50,6 +50,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     glyphicon: '',
     badge: '',
     theme: 'default',
+    inverse: false,
     
     type: false,
     
@@ -117,6 +118,10 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
                     cfg.cls += ' ' + this.weight;
                 }
             }
+        }
+        
+        if (this.inverse) {
+            this.cls += ' inverse'
         }
         
         
