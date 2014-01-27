@@ -28,6 +28,12 @@ Roo.extend(Roo.bootstrap.TableCell, Roo.bootstrap.Component,  {
 	cfg = {
 	    tag: 'td'
 	}
+        if (this.html) {
+            cfg.html=this.html
+        }
+        if (this.cls) {
+            cfg.cls=this.cls
+        }
 	
         return cfg;
     }
