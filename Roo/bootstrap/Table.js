@@ -31,7 +31,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
 	cfg = {
 	    tag: 'table',
 	    cn: [
-		{tag: 'tbody'}
+		{
+		    tag: 'tbody'
+		}
 	    ]
 	}
         if (this.html) {
@@ -42,11 +44,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         }
 	
         return cfg;
-    },
-    
-    getChildContainer: function(){
-	console.log(testing=this.el)
-	return this.el.select('tbody',true).elements[0]
     }
    
 });
