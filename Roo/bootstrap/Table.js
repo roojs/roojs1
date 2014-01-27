@@ -45,7 +45,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     },
     
     getChildContainer: function(){
-	console.log(this.el)
+	console.log(var testing=this.el)
 	return this.el
     }
    
