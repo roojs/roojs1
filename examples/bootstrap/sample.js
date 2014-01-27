@@ -807,7 +807,14 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                     ]
                                                 }
                                             ]
-                                        },
+                                        }
+                                    ]
+                                },
+                                {
+                                    xtype: 'Row',
+                                    xns: Roo.bootstrap,
+                                    cls: 'section btns',
+                                    items: [
                                         {
                                             xtype: 'Column',
                                             xns: Roo.bootstrap,
