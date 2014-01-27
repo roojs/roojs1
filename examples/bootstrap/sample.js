@@ -587,8 +587,9 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                     cls: 'ctrls',
                                                     items: [
                                                         {
-                                                            xtype: 'Button',
-                                                            xns: Roo.bootstrap
+                                                            xtype: 'Element',
+                                                            xns: Roo.bootstrap,
+                                                            html: '<input class="search" type="text" placeholder="Search input...">'
                                                         }
                                                     ]
                                                 }
