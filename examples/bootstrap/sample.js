@@ -650,6 +650,33 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                     offtext: 'OFF',
                                                     defaulton: false,
                                                     weight: 'danger'
+                                                },
+                                                {
+                                                    xtype: 'Button',
+                                                    xns: Roo.bootstrap,
+                                                    type: 'switch',
+                                                    ontext: 'ON',
+                                                    offtext: 'OFF',
+                                                    defaulton: false,
+                                                    weight: 'black'
+                                                },
+                                                {
+                                                    xtype: 'Button',
+                                                    xns: Roo.bootstrap,
+                                                    type: 'switch',
+                                                    ontext: 'ON',
+                                                    offtext: 'OFF',
+                                                    defaulton: false,
+                                                    weight: 'gray'
+                                                },
+                                                {
+                                                    xtype: 'Button',
+                                                    xns: Roo.bootstrap,
+                                                    type: 'switch',
+                                                    ontext: 'ON',
+                                                    offtext: 'OFF',
+                                                    defaulton: false,
+                                                    weight: 'white'
                                                 }
                                             ]
                                         }
