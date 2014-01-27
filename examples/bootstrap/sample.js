@@ -592,9 +592,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                             html: '<input class="search" type="text" placeholder="Search input...">'
                                                         }
                                                     ]
-                                                }
-                                            ]
-                                        },
+                                                },
                                         {
                                             xtype: 'Header',
                                             xns: Roo.bootstrap,
@@ -651,6 +649,8 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                     defaulton: false,
                                                     weight: 'danger'
                                                 }
+                                            ]
+                                        }
                                             ]
                                         }
                                     ]
