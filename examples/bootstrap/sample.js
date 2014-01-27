@@ -85,30 +85,30 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     html: 'Users',
                                     active: true,
                                     menu:  {
-                                            xtype: 'Menu',
-                                            xns: Roo.bootstrap,
-                                            type: 'submenu',
-                                            items : [
-                                                {
-                                                    xtype: 'MenuItem',
-                                                    xns: Roo.bootstrap,
-                                                    html: "User list",
-                                                    href : 'http://roojs.com'
-                                                },
-                                                {
-                                                    xtype: 'MenuItem',
-                                                    xns: Roo.bootstrap,
-                                                    html: "New user form",
-                                                    href : 'http://roojs.com'
-                                                },
-                                                {
-                                                    xtype: 'MenuItem',
-                                                    xns: Roo.bootstrap,
-                                                    html: "User profile",
-                                                    href : 'http://roojs.com'
-                                                }
-                                            ]
-                                        }
+                                        xtype: 'Menu',
+                                        xns: Roo.bootstrap,
+                                        type: 'submenu',
+                                        items : [
+                                            {
+                                                xtype: 'MenuItem',
+                                                xns: Roo.bootstrap,
+                                                html: "User list",
+                                                href : 'http://roojs.com'
+                                            },
+                                            {
+                                                xtype: 'MenuItem',
+                                                xns: Roo.bootstrap,
+                                                html: "New user form",
+                                                href : 'http://roojs.com'
+                                            },
+                                            {
+                                                xtype: 'MenuItem',
+                                                xns: Roo.bootstrap,
+                                                html: "User profile",
+                                                href : 'http://roojs.com'
+                                            }
+                                        ]
+                                    }
                                 },
                                 {
                                     xtype: 'Item',
@@ -652,6 +652,20 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                     ]
                                                 }
                                             ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    xtype: 'Row',
+                                    xns: Roo.bootstrap,
+                                    cls: 'section btns',
+                                    items: [
+                                        {
+                                            xtype: 'Header',
+                                            xns: Roo.bootstrap,
+                                            level: 4,
+                                            html: 'Flat Buttons',
+                                            cls: 'title'
                                         }
                                     ]
                                 }
