@@ -1039,7 +1039,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                 {
                                                                     xtype: 'Button',
                                                                     xns: Roo.bootstrap,
-                                                                        menu: {
+                                                                        menu: [{
                                                                             xtype: 'Menu',
                                                                             xns: Roo.bootstrap,
                                                                             items: [
@@ -1062,7 +1062,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                                     href : 'http://roojs.com'
                                                                                 }
                                                                             ]
-                                                                        }
+                                                                        }]
                                                                 }
                                                             ]
                                                         }
