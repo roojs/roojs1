@@ -98,7 +98,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             return cfg;
         }
         
-        
+        console.log(this.parent().btn,this.parent().type=='ButtonGroup')
         if (this.parent().btn&&this.parent().type=='ButtonGroup') {
             cfg.cls = 'btn';
             if (this.parentType != 'Navbar') {
