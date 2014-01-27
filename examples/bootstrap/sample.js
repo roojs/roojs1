@@ -1068,6 +1068,17 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                             ]
                                                         }
                                                     ]
+                                                },
+                                                {
+                                                    xtype: 'Row',
+                                                    xns: Roo.bootstrap,
+                                                    cls: 'ctrls',
+                                                    items: [
+                                                        {
+                                                            xtype: 'NavGroup',
+                                                            xns: Roo.bootstrap
+                                                        }
+                                                    ]
                                                 }
                                             ]
                                         }
