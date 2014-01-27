@@ -562,7 +562,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                     cls: 'ctrls',
                                                     items: [
                                                         {
-                                                            xtype: 'pagination',
+                                                            xtype: 'Pagination',
                                                             xns: Roo.bootstrap
                                                         }
                                                     ]
