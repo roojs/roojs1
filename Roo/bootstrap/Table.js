@@ -22,12 +22,21 @@ Roo.bootstrap.Table = function(config){
 
 Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
+    html: false,
+    cls: false,
+    
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
 	
 	cfg = {
-	    tag: 'table',
+	    tag: 'table'
 	}
+        if (this.html) {
+            cfg.html=this.html
+        }
+        if (this.cls) {
+            cfg.cls=this.cls
+        }
 	
         return cfg;
     }
