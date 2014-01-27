@@ -40,11 +40,11 @@ Roo.bootstrap.Button = function(config){
 
 Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     html: false,
-    active: false, // t/f
-    weight: '', // default, danger, etc.
-    size: '', // lg, md, ...
-    tag: 'button', // a, ...
-    href: '', //
+    active: false,
+    weight: '',
+    size: '',
+    tag: 'button',
+    href: '',
     disabled: false,
     isClose: false,
     glyphicon: '',
@@ -143,7 +143,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             delete cfg.html;
             
         } else if (this.menu) {
-            cfg.tag='a'
+            cfg.tag = 'a'
             cfg.cls += ' dropdown test';
         }
         
