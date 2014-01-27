@@ -710,7 +710,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                         {
                                                                             xtype: 'TableCell',
                                                                             xns: Roo.bootstrap,
-                                                                            html: '<code>.btn-glow</code>'
+                                                                            html: '<code>.btn-glow.inverse</code>'
                                                                         },
                                                                         {
                                                                             xtype: 'TableCell',
@@ -733,7 +733,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                         {
                                                                             xtype: 'TableCell',
                                                                             xns: Roo.bootstrap,
-                                                                            html: '<code>.btn-glow</code>'
+                                                                            html: '<code>.btn-glow.primary</code>'
                                                                         },
                                                                         {
                                                                             xtype: 'TableCell',
@@ -756,7 +756,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                         {
                                                                             xtype: 'TableCell',
                                                                             xns: Roo.bootstrap,
-                                                                            html: '<code>.btn-glow</code>'
+                                                                            html: '<code>.btn-glow.success</code>'
                                                                         },
                                                                         {
                                                                             xtype: 'TableCell',
