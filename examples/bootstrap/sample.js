@@ -720,7 +720,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                                     xtype: 'Button',
                                                                                     xns: Roo.bootstrap,
                                                                                     html: 'Sign up now',
-                                                                                    cls: 'btn-glow'
+                                                                                    cls: 'btn-glow inverse'
                                                                                 }
                                                                             ]
                                                                         }
@@ -743,7 +743,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                                     xtype: 'Button',
                                                                                     xns: Roo.bootstrap,
                                                                                     html: 'Sign up now',
-                                                                                    cls: 'btn-glow'
+                                                                                    cls: 'btn-glow primary'
                                                                                 }
                                                                             ]
                                                                         }
@@ -766,7 +766,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                                     xtype: 'Button',
                                                                                     xns: Roo.bootstrap,
                                                                                     html: 'Sign up now',
-                                                                                    cls: 'btn-glow'
+                                                                                    cls: 'btn-glow success'
                                                                                 }
                                                                             ]
                                                                         }
