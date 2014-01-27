@@ -28,8 +28,6 @@ Roo.extend(Roo.bootstrap.Slider, Roo.bootstrap.Component,  {
         
         var cfg = {
             tag: 'div',
-            cls: 'container',
-            html : ''
         }
         
         return cfg;
