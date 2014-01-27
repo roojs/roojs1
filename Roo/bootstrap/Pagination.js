@@ -26,8 +26,6 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
     cls: false,
     
     getAutoCreate : function(){
-        var cfg = Roo.apply({}, Roo.bootstrap.Pagination.superclass.getAutoCreate.call(this));
-	
 	cfg = {
 	    tag: 'table'
 	}
