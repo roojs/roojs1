@@ -64,7 +64,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             html: 'hello'
         }
         
-        if (this.toggle) {
+        if (this.toggle===true) {
             cfg={
                 tag: 'div',
                 cls: 'slider-frame',
