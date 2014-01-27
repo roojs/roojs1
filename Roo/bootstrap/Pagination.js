@@ -55,9 +55,14 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
         }
         cfg.cn.push(
             {
-                tag: 'a',
-                href: '#',
-                html: '&raquo;'
+                tag: 'li',
+                cn: [
+                    {
+                       tag: 'a',
+                       href: '#',
+                       html: '&raquo;'
+                    }
+                ]
             }
         )
 	
