@@ -41,6 +41,17 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
         if (this.cls) {
             cfg.cls=this.cls
         }
+        cfg.cn[0]={
+                tag: 'li',
+                cn: [
+                    {
+                        tag: 'a',
+                        href:'#',
+                        html: '&laquo;'
+                    }
+                ]
+            }
+        }
 	
         return cfg;
     }
