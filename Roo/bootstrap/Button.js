@@ -60,7 +60,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         
         var cfg = {
-            cls: '',
+            cls: 'btn',
             tag : 'button',
             html: 'hello'
         }
