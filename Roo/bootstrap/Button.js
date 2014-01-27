@@ -49,6 +49,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     isClose: false,
     glyphicon: '',
     badge: '',
+    default: true,
     
     type: false,
     
@@ -60,7 +61,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         
         var cfg = {
-            cls: 'btn',
+            cls: this.default?'btn':'',
             tag : 'button',
             html: 'hello'
         }
