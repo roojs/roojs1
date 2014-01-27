@@ -63,11 +63,11 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
             cfg.cn.push(
                 {
                     tag: 'li',
+                    cls: active===i?'active':'',
                     cn: [
                         {
                             tag: 'a',
                             href: '#',
-                            cls: active===i?'active':'',
                             html: i
                         }
                     ]
