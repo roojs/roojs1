@@ -24,6 +24,7 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
     
     html: false,
     cls: false,
+    size: false,
     inverse: false,
     from: 1,
     to: 4,
