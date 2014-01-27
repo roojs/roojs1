@@ -989,6 +989,11 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                     level: 4,
                                                     html: 'Bootstrap 3 buttons',
                                                     cls: 'title'
+                                                },
+                                                {
+                                                    xtype: 'Row',
+                                                    xns: Roo.bootstrap,
+                                                    cls: 'ctrls'
                                                 }
                                             ]
                                         }
