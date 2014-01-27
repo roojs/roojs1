@@ -880,7 +880,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                         {
                                                                             xtype: 'TableCell',
                                                                             xns: Roo.bootstrap,
-                                                                            html: '<code>.btn.btn-primary</code>'
+                                                                            html: '<code>.btn.btn-success</code>'
                                                                         },
                                                                         {
                                                                             xtype: 'TableCell',
@@ -888,7 +888,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                             items: [
                                                                                 {
                                                                                     xtype: 'Button',
-                                                                                    weight: 'primary',
+                                                                                    weight: 'success',
                                                                                     xns: Roo.bootstrap,
                                                                                     html: 'Sign up now'
                                                                                 }
@@ -903,7 +903,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                         {
                                                                             xtype: 'TableCell',
                                                                             xns: Roo.bootstrap,
-                                                                            html: '<code>.btn.btn-primary</code>'
+                                                                            html: '<code>.btn.btn-warning</code>'
                                                                         },
                                                                         {
                                                                             xtype: 'TableCell',
@@ -911,7 +911,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                             items: [
                                                                                 {
                                                                                     xtype: 'Button',
-                                                                                    weight: 'primary',
+                                                                                    weight: 'warning',
                                                                                     xns: Roo.bootstrap,
                                                                                     html: 'Sign up now'
                                                                                 }
@@ -926,7 +926,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                         {
                                                                             xtype: 'TableCell',
                                                                             xns: Roo.bootstrap,
-                                                                            html: '<code>.btn.btn-primary</code>'
+                                                                            html: '<code>.btn.btn-info</code>'
                                                                         },
                                                                         {
                                                                             xtype: 'TableCell',
@@ -934,7 +934,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                             items: [
                                                                                 {
                                                                                     xtype: 'Button',
-                                                                                    weight: 'primary',
+                                                                                    weight: 'info',
                                                                                     xns: Roo.bootstrap,
                                                                                     html: 'Sign up now'
                                                                                 }
@@ -949,7 +949,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                         {
                                                                             xtype: 'TableCell',
                                                                             xns: Roo.bootstrap,
-                                                                            html: '<code>.btn.btn-primary</code>'
+                                                                            html: '<code>.btn.btn-danger</code>'
                                                                         },
                                                                         {
                                                                             xtype: 'TableCell',
@@ -957,7 +957,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                             items: [
                                                                                 {
                                                                                     xtype: 'Button',
-                                                                                    weight: 'primary',
+                                                                                    weight: 'danger',
                                                                                     xns: Roo.bootstrap,
                                                                                     html: 'Sign up now'
                                                                                 }
