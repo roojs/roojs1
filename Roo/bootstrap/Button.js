@@ -66,7 +66,12 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         }
         
         if (this.type==='switch') {
-            //code
+            cfg={
+                tag: 'div',
+                cls: 'slider-frame'
+                
+                return cfg;
+            }
         }
         
         
