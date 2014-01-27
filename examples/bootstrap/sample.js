@@ -804,6 +804,33 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                     ]
                                                 }
                                             ]
+                                        },
+                                        {
+                                            xtype: 'Column',
+                                            xns: Roo.bootstrap,
+                                            md: 6,
+                                            items: [
+                                                {
+                                                    xtype: 'Header',
+                                                    xns: Roo.bootstrap,
+                                                    level: 4,
+                                                    html: 'Sliders',
+                                                    cls: 'title'
+                                                },
+                                                {
+                                                    xtype: 'Container',
+                                                    xns: Roo.bootstrap,
+                                                    cls: 'sliders',
+                                                    items: [
+                                                        {
+                                                            xtype: 'Slider',
+                                                            xns: Roo.bootstrap,
+                                                            html: 'Sign up now',
+                                                            cls: 'btn-glow success'
+                                                        }
+                                                    ]
+                                                }
+                                            ]
                                         }
                                     ]
                                 }
