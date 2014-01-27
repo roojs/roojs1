@@ -99,7 +99,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         }
         
         if (this.theme) {
-            cfg.cls = 'btn' + this.theme==='default'?'':('-'+this.theme);
+            cfg.cls = 'btn' + (this.theme==='default')?'':('-'+this.theme);
             if (this.parentType != 'Navbar') {
                 this.weight = this.weight.length ?  this.weight : 'default';
             }
