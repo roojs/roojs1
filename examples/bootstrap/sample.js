@@ -700,6 +700,57 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                                     cls: 'btn-glow'
                                                                                 }
                                                                             ]
+                                                                        },
+                                                                        {
+                                                                            xtype: 'TableCell',
+                                                                            xns: Roo.bootstrap,
+                                                                            html: '<code>.btn-glow</code>'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'TableCell',
+                                                                            xns: Roo.bootstrap,
+                                                                            items: [
+                                                                                {
+                                                                                    xtype: 'Button',
+                                                                                    xns: Roo.bootstrap,
+                                                                                    html: 'Sign up now',
+                                                                                    cls: 'btn-glow'
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            xtype: 'TableCell',
+                                                                            xns: Roo.bootstrap,
+                                                                            html: '<code>.btn-glow</code>'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'TableCell',
+                                                                            xns: Roo.bootstrap,
+                                                                            items: [
+                                                                                {
+                                                                                    xtype: 'Button',
+                                                                                    xns: Roo.bootstrap,
+                                                                                    html: 'Sign up now',
+                                                                                    cls: 'btn-glow'
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            xtype: 'TableCell',
+                                                                            xns: Roo.bootstrap,
+                                                                            html: '<code>.btn-glow</code>'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'TableCell',
+                                                                            xns: Roo.bootstrap,
+                                                                            items: [
+                                                                                {
+                                                                                    xtype: 'Button',
+                                                                                    xns: Roo.bootstrap,
+                                                                                    html: 'Sign up now',
+                                                                                    cls: 'btn-glow'
+                                                                                }
+                                                                            ]
                                                                         }
                                                                     ]
                                                                 }
