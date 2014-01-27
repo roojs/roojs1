@@ -78,7 +78,12 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
                         html: this.offtext
                     }
                 ]
-            }
+            };
+            
+            if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
+                
+                cfg.cn[0].cls += ' btn-' + this.weight;
+            } else {
             
             return cfg;
         }
