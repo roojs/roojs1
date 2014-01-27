@@ -65,6 +65,13 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             tag : 'button',
             html: 'hello'
         }
+        
+        if (['a', 'button', 'input', 'submit'].indexOf(this.tag) < 0) {
+            throw "Invalid value for tag: " + this.tag + ". must be a, button, input or submit.";
+            this.tag = 'button';
+        } else {
+            cfg.tag = this.tag;
+        }
         cfg.html = this.html || cfg.html;
         
         if (this.toggle===true) {
@@ -132,13 +139,6 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         }
         
         cfg.cls += this.size.length ? (' btn-' + this.size) : '';
-        
-        if (['a', 'button', 'input', 'submit'].indexOf(this.tag) < 0) {
-            throw "Invalid value for tag: " + this.tag + ". must be a, button, input or submit.";
-            this.tag = 'button';
-        } else {
-            cfg.tag = this.tag;
-        }
          
         //gsRoo.log(this.parentType);
         if (this.parentType === 'Navbar') {
