@@ -81,7 +81,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             };
             
             if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
-                cfg.cls += this.weight;
+                cfg.cls += ' '+this.weight;
             }
             
             return cfg;
