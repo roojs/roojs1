@@ -49,7 +49,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     isClose: false,
     glyphicon: '',
     badge: '',
-    default: true,
+    theme: 'default',
     
     type: false,
     
