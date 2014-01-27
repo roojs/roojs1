@@ -277,14 +277,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                         {
                                                                             xtype: 'TableCell',
                                                                             xns: Roo.bootstrap,
-                                                                            items: [
-                                                                                {
-                                                                                    xtype: 'Element',
-                                                                                    xns: Roo.bootstrap,
-                                                                                    tag: 'code',
-                                                                                    html: '.btn-flat.default'
-                                                                                }
-                                                                            ]
+                                                                            html: '<code>.btn-flat.default</code>'
                                                                         },
                                                                         {
                                                                             xtype: 'TableCell',
@@ -308,13 +301,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                         {
                                                                             xtype: 'TableCell',
                                                                             xns: Roo.bootstrap,
-                                                                            items: [
-                                                                                {
-                                                                                    xtype: 'Element',
-                                                                                    xns: Roo.bootstrap,
-                                                                                    html: '<code>.btn-flat.primary</code>'
-                                                                                }
-                                                                            ]
+                                                                            html: '<code>.btn-flat.primary</code>'
                                                                         },
                                                                         {
                                                                             xtype: 'TableCell',
@@ -338,14 +325,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                         {
                                                                             xtype: 'TableCell',
                                                                             xns: Roo.bootstrap,
-                                                                            items: [
-                                                                                {
-                                                                                    xtype: 'Element',
-                                                                                    xns: Roo.bootstrap,
-                                                                                    tag: 'code',
-                                                                                    html: '.btn-flat.success'
-                                                                                }
-                                                                            ]
+                                                                            html: '<code>.btn-flat.success</code>'
                                                                         },
                                                                         {
                                                                             xtype: 'TableCell',
