@@ -1004,7 +1004,16 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                     xtype: 'Element',
                                                                     xns: Roo.bootstrap,
                                                                     tag: 'ul',
-                                                                    
+                                                                    cls: 'dropdown-menu',
+                                                                    items: [
+                                                                        {
+                                                                            xtype: 'Element',
+                                                                            xns: Roo.bootstrap,
+                                                                            tag: 'li',
+                                                                            cls: 'dropdown-header',
+                                                                            html: 'Dropdown header'
+                                                                        }
+                                                                    ]
                                                                 }
                                                             ]
                                                         }
