@@ -51,6 +51,11 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     glyphicon: '',
     badge: '',
     
+    type: false,
+    ontext: 'ON',
+    offtext: 'OFF',
+    defaulton: true,
+    
     getAutoCreate : function(){
         Roo.log("Button Parent is : " + this.parent().xtype);
         
@@ -58,6 +63,10 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             cls: '',
             tag : 'button',
             html: 'hello'
+        }
+        
+        if (this.type==='switch') {
+            //code
         }
         
         
