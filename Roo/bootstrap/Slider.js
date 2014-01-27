@@ -26,7 +26,8 @@ Roo.extend(Roo.bootstrap.Slider, Roo.bootstrap.Component,  {
 	
     getAutoCreate : function(){
         
-        var cfg = {
+        var cfg = 
+            tag: 'div',
             cls: 'container',
             html : ''
         }
