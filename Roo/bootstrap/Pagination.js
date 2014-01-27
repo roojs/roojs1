@@ -33,6 +33,7 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
 	cfg = {
 	    tag: 'ul',
+            cls: 'pagination'
             cn: []
 	}
         if (this.html) {
