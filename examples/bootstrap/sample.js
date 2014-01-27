@@ -787,7 +787,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                     xtype: 'Header',
                                                     xns: Roo.bootstrap,
                                                     level: 4,
-                                                    html: 'Glow Buttons',
+                                                    html: 'Sliders',
                                                     cls: 'title'
                                                 }
                                             ]
