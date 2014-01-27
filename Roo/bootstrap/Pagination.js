@@ -24,10 +24,15 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
     
     html: false,
     cls: false,
+    inverse: false,
+    from: 1,
+    to: 4,
+    align: false,
+    active: 1,
     
     getAutoCreate : function(){
 	cfg = {
-	    tag: 'table',
+	    tag: 'ul',
             cn: []
 	}
         if (this.html) {
