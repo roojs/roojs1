@@ -844,6 +844,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                                 {
                                                                                     xtype: 'Button',
                                                                                     xns: Roo.bootstrap
+                                                                                    html: 'Sign up now'
                                                                                 }
                                                                             ]
                                                                         }
