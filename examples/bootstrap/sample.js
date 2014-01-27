@@ -1108,28 +1108,13 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                     cls: 'ctrls',
                                                     items: [
                                                         {
-                                                            xtype: 'Navbar',
+                                                            xtype: 'ButtonGroup',
                                                             xns: Roo.bootstrap,
-                                                            bar: false,
-                                                            type: 'tabs',
                                                             items: [
                                                                 {
                                                                     xtype: 'Button',
                                                                     xns: Roo.bootstrap,
-                                                                    html: 'Home',
-                                                                    active: true
-                                                                },
-                                                                {
-                                                                    xtype: 'Button',
-                                                                    xns: Roo.bootstrap,
-                                                                    html: 'Profile',
-                                                                    active: true
-                                                                },
-                                                                {
-                                                                    xtype: 'Button',
-                                                                    xns: Roo.bootstrap,
-                                                                    html: 'Messages',
-                                                                    active: true
+                                                                    html: 'a'
                                                                 }
                                                             ]
                                                         }
