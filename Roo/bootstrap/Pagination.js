@@ -16,17 +16,17 @@
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.Table = function(config){
-    Roo.bootstrap.Table.superclass.constructor.call(this, config);
+Roo.bootstrap.Pagination = function(config){
+    Roo.bootstrap.Pagination.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
     
     html: false,
     cls: false,
     
     getAutoCreate : function(){
-        var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
+        var cfg = Roo.apply({}, Roo.bootstrap.Pagination.superclass.getAutoCreate.call(this));
 	
 	cfg = {
 	    tag: 'table'
