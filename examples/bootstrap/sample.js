@@ -1078,7 +1078,14 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                             xtype: 'Navbar',
                                                             xns: Roo.bootstrap,
                                                             bar: false,
-                                                            type: 'tabs'
+                                                            type: 'tabs',
+                                                            items: [
+                                                                {
+                                                                    xtype: 'Button',
+                                                                    xns: Roo.bootstrap,
+                                                                    html: 'Home'
+                                                                }
+                                                            ]
                                                         }
                                                     ]
                                                 }
