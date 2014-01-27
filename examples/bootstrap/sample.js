@@ -1024,6 +1024,10 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                 {
                                                                     xtype: 'Button',
                                                                     xns: Roo.bootstrap
+                                                                },
+                                                                {
+                                                                    xtype: 'Button',
+                                                                    xns: Roo.bootstrap
                                                                 }
                                                             ]
                                                         }
