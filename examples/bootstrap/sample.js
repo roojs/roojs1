@@ -663,7 +663,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                         {
                                             xtype: 'Column',
                                             xns: Roo.bootstrap,
-                                            md: 5,
+                                            md: 6,
                                             items: [
                                                 {
                                                     xtype: 'Header',
