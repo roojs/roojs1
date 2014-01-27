@@ -818,9 +818,27 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                     cls: 'title'
                                                 },
                                                 {
-                                                    xtype: 'Container',
+                                                    xtype: 'Table',
                                                     xns: Roo.bootstrap,
-                                                    cls: 'sliders'
+                                                    items: [
+                                                        {
+                                                            xtype: 'TableBody',
+                                                            xns: Roo.bootstrap,
+                                                            items: [
+                                                                    {
+                                                                    xtype: 'TableRow',
+                                                                    xns: Roo.bootstrap,
+                                                                    items: [
+                                                                        {
+                                                                            xtype: 'TableCell',
+                                                                            xns: Roo.bootstrap,
+                                                                            html: '<code>.btn.btn-default'</code>
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
                                                 }
                                             ]
                                         }
