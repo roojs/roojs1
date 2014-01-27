@@ -51,6 +51,8 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     badge: '',
     
     type: false,
+    
+    isSwitch: false,
     ontext: 'ON',
     offtext: 'OFF',
     defaulton: true,
