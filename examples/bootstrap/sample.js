@@ -580,6 +580,31 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                             active: 1
                                                         }
                                                     ]
+                                                },
+                                                {
+                                                    xtype: 'Row',
+                                                    xns: Roo.bootstrap,
+                                                    cls: 'ctrls',
+                                                    items: [
+                                                        {
+                                                            xtype: 'Pagination',
+                                                            xns: Roo.bootstrap,
+                                                            inverse: false,
+                                                            align: 'left',
+                                                            from: 1,
+                                                            to: 4,
+                                                            active: 1
+                                                        },
+                                                        {
+                                                            xtype: 'Pagination',
+                                                            xns: Roo.bootstrap,
+                                                            inverse: true,
+                                                            align: 'left',
+                                                            from: 1,
+                                                            to: 4,
+                                                            active: 1
+                                                        }
+                                                    ]
                                                 }
                                             ]
                                         }
