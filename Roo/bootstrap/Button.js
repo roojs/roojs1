@@ -59,6 +59,8 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     
     getAutoCreate : function(){
         
+        var cfg={};
+        
         if (this.toggle===true) {
             cfg={
                 tag: 'div',
@@ -191,7 +193,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         
         if (cfg.tag !== 'a' && this.href !== '') {
             throw "Tag must be a to set href.";
-        } else if (this.href.length>0) {
+        } else if (this.href.length > 0) {
             cfg.href = this.href;
         }
         
