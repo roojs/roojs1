@@ -697,7 +697,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                                     xtype: 'Button',
                                                                                     xns: Roo.bootstrap,
                                                                                     html: 'Sign up now',
-                                                                                    cls: 'btn-glow'
+                                                                                    theme: 'glow'
                                                                                 }
                                                                             ]
                                                                         }
@@ -720,7 +720,8 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                                     xtype: 'Button',
                                                                                     xns: Roo.bootstrap,
                                                                                     html: 'Sign up now',
-                                                                                    cls: 'btn-glow inverse'
+                                                                                    theme: 'glow',
+                                                                                    inverse: true
                                                                                 }
                                                                             ]
                                                                         }
