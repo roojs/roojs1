@@ -623,6 +623,24 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                     offtext: 'OFF',
                                                     defaulton: false,
                                                     weight: 'primary'
+                                                },
+                                                {
+                                                    xtype: 'Button',
+                                                    xns: Roo.bootstrap,
+                                                    type: 'switch',
+                                                    ontext: 'ON',
+                                                    offtext: 'OFF',
+                                                    defaulton: false,
+                                                    weight: 'info'
+                                                },
+                                                {
+                                                    xtype: 'Button',
+                                                    xns: Roo.bootstrap,
+                                                    type: 'switch',
+                                                    ontext: 'ON',
+                                                    offtext: 'OFF',
+                                                    defaulton: false,
+                                                    weight: 'danger'
                                                 }
                                             ]
                                         }
