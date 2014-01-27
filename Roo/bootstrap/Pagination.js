@@ -27,7 +27,8 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
     
     getAutoCreate : function(){
 	cfg = {
-	    tag: 'table'
+	    tag: 'table',
+            cn: []
 	}
         if (this.html) {
             cfg.html=this.html
