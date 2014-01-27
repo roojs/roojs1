@@ -700,7 +700,13 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                                     cls: 'btn-glow'
                                                                                 }
                                                                             ]
-                                                                        },
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    xtype: 'TableRow',
+                                                                    xns: Roo.bootstrap,
+                                                                    items: [
                                                                         {
                                                                             xtype: 'TableCell',
                                                                             xns: Roo.bootstrap,
@@ -717,7 +723,13 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                                     cls: 'btn-glow'
                                                                                 }
                                                                             ]
-                                                                        },
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    xtype: 'TableRow',
+                                                                    xns: Roo.bootstrap,
+                                                                    items: [
                                                                         {
                                                                             xtype: 'TableCell',
                                                                             xns: Roo.bootstrap,
@@ -734,7 +746,13 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                                     cls: 'btn-glow'
                                                                                 }
                                                                             ]
-                                                                        },
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    xtype: 'TableRow',
+                                                                    xns: Roo.bootstrap,
+                                                                    items: [
                                                                         {
                                                                             xtype: 'TableCell',
                                                                             xns: Roo.bootstrap,
