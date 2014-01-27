@@ -52,7 +52,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     
     type: false,
     
-    isSwitch: false,
+    toggle: false,
     ontext: 'ON',
     offtext: 'OFF',
     defaulton: true,
