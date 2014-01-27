@@ -777,6 +777,20 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                     ]
                                                 }
                                             ]
+                                        },
+                                        {
+                                            xtype: 'Column',
+                                            xns: Roo.bootstrap,
+                                            md: 5,
+                                            items: [
+                                                {
+                                                    xtype: 'Header',
+                                                    xns: Roo.bootstrap,
+                                                    level: 4,
+                                                    html: 'Glow Buttons',
+                                                    cls: 'title'
+                                                }
+                                            ]
                                         }
                                     ]
                                 }
