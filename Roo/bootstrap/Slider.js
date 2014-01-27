@@ -31,13 +31,7 @@ Roo.extend(Roo.bootstrap.Slider, Roo.bootstrap.Component,  {
         var cfg = {
             cls: 'container',
             html : ''
-        };
-        if (this.jumbotron) {
-            cfg.cls = 'jumbotron';
         }
-	if (this.cls) {
-	    cfg.cls = '';
-	}
         
         cfg.html = this.html || cfg.html;
         return cfg;
