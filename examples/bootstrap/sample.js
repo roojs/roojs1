@@ -996,7 +996,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                     cls: 'ctrls',
                                                     items: [
                                                         {
-                                                            xtype: 'Menu',
+                                                            xtype: 'Element',
                                                             xns: Roo.bootstrap
                                                         }
                                                     ]
