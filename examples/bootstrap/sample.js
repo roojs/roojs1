@@ -233,8 +233,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                                 {
                                                                                     xtype: 'Element',
                                                                                     xns: Roo.bootstrap,
-                                                                                    tag: 'code',
-                                                                                    html: '.btn-flat.white'
+                                                                                    html: '<code>.btn-flat.white</code>'
                                                                                 }
                                                                             ]
                                                                         },
