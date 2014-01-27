@@ -601,6 +601,17 @@ Roo.example.bootstrap = new Roo.XComponent({
                                             level: 4,
                                             html: 'Switch buttons',
                                             cls: 'title'
+                                        },
+                                        {
+                                            xtype: 'Row',
+                                            xns: Roo.bootstrap,
+                                            cls: 'ctrls',
+                                            items: [
+                                                {
+                                                    xtype: 'Button',
+                                                    xns: 
+                                                }
+                                            ]
                                         }
                                     ]
                                 }
