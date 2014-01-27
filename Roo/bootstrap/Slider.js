@@ -23,8 +23,6 @@ Roo.bootstrap.Slider = function(config){
 };
 
 Roo.extend(Roo.bootstrap.Slider, Roo.bootstrap.Component,  {
-     
-    jumbotron : false, // doc me
 	
     getAutoCreate : function(){
         
