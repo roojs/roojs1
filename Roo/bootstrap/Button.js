@@ -57,8 +57,6 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     defaulton: true,
     
     getAutoCreate : function(){
-        Roo.log("Button Parent is : " + this.parent().xtype);
-        
         var cfg = {
             cls: '',
             tag : 'button',
