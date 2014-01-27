@@ -56,6 +56,22 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
                 }
             ]
         }
+        
+        for (var i=this.from;i++;i<this.to) {
+            cfg.cn.push(
+                {
+                    tag: 'li',
+                    cn: [
+                        {
+                            tag: 'a',
+                            href: '#',
+                            html: i
+                        }
+                    ]
+                }
+            )
+        }
+        
         cfg.cn.push(
             {
                 tag: 'li',
