@@ -166,7 +166,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
             return this.el.select('.collapse',true).first();
         }
         
-           return this.el;
+        return this.el;
     }
    
 });
