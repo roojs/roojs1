@@ -796,7 +796,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                     cls: 'sliders',
                                                     items: [
                                                                                 {
-                                                                                    xtype: 'Button',
+                                                                                    xtype: 'Slider',
                                                                                     xns: Roo.bootstrap,
                                                                                     html: 'Sign up now',
                                                                                     cls: 'btn-glow success'
