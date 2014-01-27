@@ -32,7 +32,6 @@ Roo.extend(Roo.bootstrap.Slider, Roo.bootstrap.Component,  {
             html : ''
         }
         
-        cfg.html = this.html || cfg.html;
         return cfg;
     }
    
