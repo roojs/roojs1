@@ -37,6 +37,9 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
             cls: 'pagination',
             cn: []
 	}
+        if (this.inverse) {
+            cfg.cls += ' inverse'
+        }
         if (this.html) {
             cfg.html=this.html
         }
