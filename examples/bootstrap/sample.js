@@ -872,6 +872,98 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                                             ]
                                                                         }
                                                                     ]
+                                                                },
+                                                                {
+                                                                    xtype: 'TableRow',
+                                                                    xns: Roo.bootstrap,
+                                                                    items: [
+                                                                        {
+                                                                            xtype: 'TableCell',
+                                                                            xns: Roo.bootstrap,
+                                                                            html: '<code>.btn.btn-primary</code>'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'TableCell',
+                                                                            xns: Roo.bootstrap,
+                                                                            items: [
+                                                                                {
+                                                                                    xtype: 'Button',
+                                                                                    weight: 'primary',
+                                                                                    xns: Roo.bootstrap,
+                                                                                    html: 'Sign up now'
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    xtype: 'TableRow',
+                                                                    xns: Roo.bootstrap,
+                                                                    items: [
+                                                                        {
+                                                                            xtype: 'TableCell',
+                                                                            xns: Roo.bootstrap,
+                                                                            html: '<code>.btn.btn-primary</code>'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'TableCell',
+                                                                            xns: Roo.bootstrap,
+                                                                            items: [
+                                                                                {
+                                                                                    xtype: 'Button',
+                                                                                    weight: 'primary',
+                                                                                    xns: Roo.bootstrap,
+                                                                                    html: 'Sign up now'
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    xtype: 'TableRow',
+                                                                    xns: Roo.bootstrap,
+                                                                    items: [
+                                                                        {
+                                                                            xtype: 'TableCell',
+                                                                            xns: Roo.bootstrap,
+                                                                            html: '<code>.btn.btn-primary</code>'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'TableCell',
+                                                                            xns: Roo.bootstrap,
+                                                                            items: [
+                                                                                {
+                                                                                    xtype: 'Button',
+                                                                                    weight: 'primary',
+                                                                                    xns: Roo.bootstrap,
+                                                                                    html: 'Sign up now'
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    xtype: 'TableRow',
+                                                                    xns: Roo.bootstrap,
+                                                                    items: [
+                                                                        {
+                                                                            xtype: 'TableCell',
+                                                                            xns: Roo.bootstrap,
+                                                                            html: '<code>.btn.btn-primary</code>'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'TableCell',
+                                                                            xns: Roo.bootstrap,
+                                                                            items: [
+                                                                                {
+                                                                                    xtype: 'Button',
+                                                                                    weight: 'primary',
+                                                                                    xns: Roo.bootstrap,
+                                                                                    html: 'Sign up now'
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
                                                                 }
                                                             ]
                                                         }
