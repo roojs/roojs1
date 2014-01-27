@@ -57,7 +57,7 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
             ]
         }
         var from=this.from>0?this.from:1;
-        var to=this.to-i<=10?this.to:i+10;
+        var to=this.to-from<=10?this.to:i+10;
         for (var i=from;i<=to;i++) {
             cfg.cn.push(
                 {
