@@ -33,7 +33,6 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
 	
 	cfg = {
 	    tag: this.tag,
-            cls: this.cls,
             html: this.html
 	}
 	
