@@ -58,7 +58,7 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
         }
         var i=this.from>0?this.from:1;
         var j=this.to-i<=10?this.to:i+10;
-        for (var i=0;i<j;i++) {
+        for (var i=i;i<j;i++) {
             cfg.cn.push(
                 {
                     tag: 'li',
