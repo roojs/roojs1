@@ -99,7 +99,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         }
         
         console.log(this.parent().btn,this.parent().type=='ButtonGroup')
-        if (this.parent().type=='ButtonGroup') {
+        if (true) {
             cfg.cls = 'btn';
             if (this.parentType != 'Navbar') {
                 this.weight = this.weight.length ?  this.weight : 'default';
