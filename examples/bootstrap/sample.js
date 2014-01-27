@@ -1101,6 +1101,39 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                             ]
                                                         }
                                                     ]
+                                                },
+                                                {
+                                                    xtype: 'Row',
+                                                    xns: Roo.bootstrap,
+                                                    cls: 'ctrls',
+                                                    items: [
+                                                        {
+                                                            xtype: 'Navbar',
+                                                            xns: Roo.bootstrap,
+                                                            bar: false,
+                                                            type: 'tabs',
+                                                            items: [
+                                                                {
+                                                                    xtype: 'Button',
+                                                                    xns: Roo.bootstrap,
+                                                                    html: 'Home',
+                                                                    active: true
+                                                                },
+                                                                {
+                                                                    xtype: 'Button',
+                                                                    xns: Roo.bootstrap,
+                                                                    html: 'Profile',
+                                                                    active: true
+                                                                },
+                                                                {
+                                                                    xtype: 'Button',
+                                                                    xns: Roo.bootstrap,
+                                                                    html: 'Messages',
+                                                                    active: true
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
                                                 }
                                             ]
                                         }
