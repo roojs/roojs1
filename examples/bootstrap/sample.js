@@ -563,7 +563,12 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                     items: [
                                                         {
                                                             xtype: 'Pagination',
-                                                            xns: Roo.bootstrap
+                                                            xns: Roo.bootstrap,
+                                                            inverse: false,
+                                                            align: left,
+                                                            from: 1,
+                                                            to: 4,
+                                                            active: 1
                                                         }
                                                     ]
                                                 }
