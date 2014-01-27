@@ -508,7 +508,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                         {
                                                             xtype: 'Button',
                                                             xns: Roo.bootstrap,
-                                                            cls:'btn-glow',
+                                                            theme: 'glow',
                                                             html: 'Icon button',
                                                             glyphicon: 'wrench'
                                                         },
