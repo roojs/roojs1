@@ -59,7 +59,11 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     
     getAutoCreate : function(){
         
-        var cfg={};
+        var cfg = {
+            cls: '',
+            tag : 'button',
+            html: 'hello'
+        }
         
         if (this.toggle===true) {
             cfg={
@@ -91,11 +95,6 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             cfg.html = "&times;";
             
             return cfg;
-        }
-        var cfg = {
-            cls: '',
-            tag : 'button',
-            html: 'hello'
         }
         
         
