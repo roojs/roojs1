@@ -593,64 +593,64 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                         }
                                                     ]
                                                 },
-                                        {
-                                            xtype: 'Header',
-                                            xns: Roo.bootstrap,
-                                            level: 4,
-                                            html: 'Switch buttons',
-                                            cls: 'title'
-                                        },
-                                        {
-                                            xtype: 'Row',
-                                            xns: Roo.bootstrap,
-                                            cls: 'ctrls',
-                                            items: [
                                                 {
-                                                    xtype: 'Button',
+                                                    xtype: 'Header',
                                                     xns: Roo.bootstrap,
-                                                    type: 'switch',
-                                                    ontext: 'ON',
-                                                    offtext: 'OFF',
-                                                    defaulton: false
+                                                    level: 4,
+                                                    html: 'Switch buttons',
+                                                    cls: 'title'
                                                 },
                                                 {
-                                                    xtype: 'Button',
+                                                    xtype: 'Row',
                                                     xns: Roo.bootstrap,
-                                                    type: 'switch',
-                                                    ontext: 'ON',
-                                                    offtext: 'OFF',
-                                                    defaulton: false,
-                                                    weight: 'primary'
-                                                },
-                                                {
-                                                    xtype: 'Button',
-                                                    xns: Roo.bootstrap,
-                                                    type: 'switch',
-                                                    ontext: 'ON',
-                                                    offtext: 'OFF',
-                                                    defaulton: false,
-                                                    weight: 'info'
-                                                },
-                                                {
-                                                    xtype: 'Button',
-                                                    xns: Roo.bootstrap,
-                                                    type: 'switch',
-                                                    ontext: 'ON',
-                                                    offtext: 'OFF',
-                                                    defaulton: false,
-                                                    weight: 'success'
-                                                },
-                                                {
-                                                    xtype: 'Button',
-                                                    xns: Roo.bootstrap,
-                                                    type: 'switch',
-                                                    ontext: 'ON',
-                                                    offtext: 'OFF',
-                                                    defaulton: false,
-                                                    weight: 'danger'
+                                                    cls: 'ctrls',
+                                                    items: [
+                                                        {
+                                                            xtype: 'Button',
+                                                            xns: Roo.bootstrap,
+                                                            type: 'switch',
+                                                            ontext: 'ON',
+                                                            offtext: 'OFF',
+                                                            defaulton: false
+                                                        },
+                                                        {
+                                                            xtype: 'Button',
+                                                            xns: Roo.bootstrap,
+                                                            type: 'switch',
+                                                            ontext: 'ON',
+                                                            offtext: 'OFF',
+                                                            defaulton: false,
+                                                            weight: 'primary'
+                                                        },
+                                                        {
+                                                            xtype: 'Button',
+                                                            xns: Roo.bootstrap,
+                                                            type: 'switch',
+                                                            ontext: 'ON',
+                                                            offtext: 'OFF',
+                                                            defaulton: false,
+                                                            weight: 'info'
+                                                        },
+                                                        {
+                                                            xtype: 'Button',
+                                                            xns: Roo.bootstrap,
+                                                            type: 'switch',
+                                                            ontext: 'ON',
+                                                            offtext: 'OFF',
+                                                            defaulton: false,
+                                                            weight: 'success'
+                                                        },
+                                                        {
+                                                            xtype: 'Button',
+                                                            xns: Roo.bootstrap,
+                                                            type: 'switch',
+                                                            ontext: 'ON',
+                                                            offtext: 'OFF',
+                                                            defaulton: false,
+                                                            weight: 'danger'
+                                                        }
+                                                    ]
                                                 }
-                                            ]
-                                        }
                                             ]
                                         }
                                     ]
