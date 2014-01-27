@@ -124,7 +124,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         }
          
         //gsRoo.log(this.parentType);
-        if (this.parentType == 'Navbar') {
+        if (this.parentType === 'Navbar') {
             cfg.tag = 'li';
             
             cfg.cls = '';
@@ -191,7 +191,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         
         if (cfg.tag !== 'a' && this.href !== '') {
             throw "Tag must be a to set href.";
-        } else if (this.href !== '') {
+        } else if (this.href.length>0) {
             cfg.href = this.href;
         }
         
