@@ -49,7 +49,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     isClose: false,
     glyphicon: '',
     badge: '',
-    theme: false,
+    theme: 'default',
     
     type: false,
     
@@ -99,13 +99,18 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         }
         
         if (true) {
-            cfg.cls = 'btn' + (this.theme ? ('-'+this.theme) : '');
-            if (this.parentType != 'Navbar') {
-                this.weight = this.weight.length ?  this.weight : 'default';
-            }
-            if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1&&this.theme===false) {
+            if (this.theme==='default') {
+                cfg.cls = 'btn'
                 
-                cfg.cls += ' btn-' + this.weight;
+                if (this.parentType != 'Navbar') {
+                    this.weight = this.weight.length ?  this.weight : 'default';
+                }
+                if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1&&this.theme===false) {
+                    
+                    cfg.cls += ' btn-' + this.weight;
+                }
+            } else if (this.theme==='glow') {
+                cfg.cls='btn-glow'
             }
         }
         
