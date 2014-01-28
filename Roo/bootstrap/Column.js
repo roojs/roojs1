@@ -35,7 +35,7 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
 	cfg = {
 	    tag: 'div',
 	    cls: 'column'
-	}
+	};
 	
 	var settings=this;
 	['xs','sm','md','lg'].map(function(size){
