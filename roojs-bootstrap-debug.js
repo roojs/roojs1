@@ -1556,8 +1556,6 @@ Roo.extend(Roo.bootstrap.Navbar.Button, Roo.bootstrap.Component,  {
  * Create a new Navbar Button
  * @param {Object} config The config object
  */
-
-
 Roo.bootstrap.Navbar.Item = function(config){
     Roo.bootstrap.Navbar.Item.superclass.constructor.call(this, config);
 };
@@ -1567,7 +1565,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
     href: false,
     html: '',
     badge: '',
-     
+    icon: false,
     glyphicon: false,
     
     getAutoCreate : function(){
@@ -1577,20 +1575,31 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 	if (this.parent().parent().sidebar === true) {
 	    cfg = {
 		tag: 'li',
+		cls: '',
 		cn: [
 		    {
-			tag: 'p'
+			tag: 'p',
+			cls: ''
 		    }
 		]
+	    }
+	    
+	    if (this.html) {
+		cfg.cn[0].html = this.html;
+	    }
+	    
+	    if (this.active) {
+		this.cls += ' active';
+	    }
+	    
+	    if (this.menu) {
+		cfg.cn[0].cls += ' dropdown-toggle';
+		cfg.cn[0].html = (cfg.cn[0].html || this.html) + '<span class="glyphicon glyphicon-chevron-down"></span>';
 	    }
 	    
 	    if (this.href) {
 		cfg.cn[0].tag = 'a',
 		cfg.cn[0].href = this.href;
-	    }
-	    
-	    if (this.html) {
-		cfg.cn[0].html = this.html;
 	    }
 	    
 	    if (this.glyphicon) {
@@ -1662,7 +1671,6 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
     }
    
 });
-
  
 
  /*
