@@ -744,7 +744,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 cn :  [] 
             };
             if (this.before) {
-                cn.push({
+                inputblock.cn.push({
                     tag :'span',
                     cls : 'input-group-addon',
                     html : this.before
@@ -752,7 +752,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             }
             cn.push(input);
             if (this.after) {
-                cn.push({
+                inputblock.cn.push({
                     tag :'span',
                     cls : 'input-group-addon',
                     html : this.after
@@ -1785,19 +1785,19 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
     active: 1,
     
     getAutoCreate : function(){
-	cfg = {
-	    tag: 'ul',
-            cls: 'pagination',
-            cn: []
-	}
+        cfg = {
+            tag: 'ul',
+                cls: 'pagination',
+                cn: []
+        };
         if (this.inverse) {
-            cfg.cls += ' inverse'
+            cfg.cls += ' inverse';
         }
         if (this.html) {
-            cfg.html=this.html
+            cfg.html=this.html;
         }
         if (this.cls) {
-            cfg.cls=this.cls
+            cfg.cls=this.cls;
         }
         cfg.cn[0]={
             tag: 'li',
@@ -1808,7 +1808,7 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
                     html: '&laquo;'
                 }
             ]
-        }
+        };
         var from=this.from>0?this.from:1;
         var to=this.to-from<=10?this.to:from+10;
         var active=this.active>=from&&this.active<=to?this.active:null;
@@ -1825,7 +1825,7 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
                         }
                     ]
                 }
-            )
+            );
         }
         
         cfg.cn.push(
@@ -1839,7 +1839,185 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
                     }
                 ]
             }
-        )
+        );
+	
+        return cfg;
+    }
+   
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * page container.
+ * 
+ */
+
+
+/**
+ * @class Roo.bootstrap.Container
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Container class
+ * @cfg {Boolean} jumbotron is it a jubmotron element
+ * @cfg {String} html content of element
+ *    
+ * @constructor
+ * Create a new Container
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.Slider = function(config){
+    Roo.bootstrap.Slider.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.Slider, Roo.bootstrap.Component,  {
+	
+    getAutoCreate : function(){
+        
+        var cfg = {
+            tag: 'div',
+            cls: 'slider slider-sample1 vertical-handler ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all',
+            cn: [
+                {
+                    tag: 'a',
+                    cls: 'ui-slider-handle ui-state-default ui-corner-all'
+                }
+            ]
+        }
+        
+        return cfg;
+    }
+   
+});
+
+ /*
+ * - LGPL
+ *
+ * column
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.Column
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Column class
+ * @cfg {number} colspan  Number of columsn to span
+ * 
+ * @constructor
+ * Create a new Column
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.Table = function(config){
+    Roo.bootstrap.Table.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
+    
+    html: false,
+    cls: false,
+    
+    getAutoCreate : function(){
+        var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
+	
+	cfg = {
+	    tag: 'table',
+	    cn: [
+		{
+		    tag: 'tbody'
+		}
+	    ]
+	}
+        if (this.html) {
+            cfg.html=this.html
+        }
+        if (this.cls) {
+            cfg.cls=this.cls
+        }
+	
+        return cfg;
+    }
+   
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * column
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.Column
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Column class
+ * @cfg {number} colspan  Number of columsn to span
+ * 
+ * @constructor
+ * Create a new Column
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.TableCell = function(config){
+    Roo.bootstrap.TableCell.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.TableCell, Roo.bootstrap.Component,  {
+    
+    getAutoCreate : function(){
+        var cfg = Roo.apply({}, Roo.bootstrap.TableCell.superclass.getAutoCreate.call(this));
+	
+	cfg = {
+	    tag: 'td'
+	}
+        if (this.html) {
+            cfg.html=this.html
+        }
+        if (this.cls) {
+            cfg.cls=this.cls
+        }
+	
+        return cfg;
+    }
+   
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * column
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.Column
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Column class
+ * @cfg {number} colspan  Number of columsn to span
+ * 
+ * @constructor
+ * Create a new Column
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.TableRow = function(config){
+    Roo.bootstrap.TableRow.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.TableRow, Roo.bootstrap.Component,  {
+    
+    getAutoCreate : function(){
+        var cfg = Roo.apply({}, Roo.bootstrap.TableRow.superclass.getAutoCreate.call(this));
+	
+	cfg = {
+	    tag: 'tr'
+	}
 	
         return cfg;
     }
