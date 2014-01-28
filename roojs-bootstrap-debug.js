@@ -292,7 +292,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         var cfg = {
             tag : 'button',
             html: 'hello'
-        }
+        };
         
         if (['a', 'button', 'input', 'submit'].indexOf(this.tag) < 0) {
             throw "Invalid value for tag: " + this.tag + ". must be a, button, input or submit.";
