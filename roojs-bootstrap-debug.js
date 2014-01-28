@@ -1414,9 +1414,284 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         if (this.bar === true) {
             return this.el.select('.collapse',true).first();
         }
-        console.log(this)
+        console.log(this);
         return this.el;
     }
+   
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * row
+ * 
+ */ 
+Roo.bootstrap.NavGroup = function(config){
+    Roo.bootstrap.NavGroup.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
+    
+    align: '',
+    
+    getAutoCreate : function(){
+        var cfg = Roo.apply({}, Roo.bootstrap.NavGroup.superclass.getAutoCreate.call(this));
+        
+        cfg = {
+            tag : 'ul',
+            cls: 'nav navbar-nav' 
+        }
+        
+        if (this.parent().sidebar === true) {
+            cfg = {
+                tag: 'ul',
+                cls: 'dashboard-menu'
+            }
+            
+            return cfg;
+        }
+        
+        
+        if (this.align === 'right') {
+            cfg.cls += ' navbar-right';
+        }
+        
+        if (this.inverse) {
+            cfg.cls += ' navbar-inverse';
+            
+        }
+        /* type: nav | tabs | pills
+         * arrangement: stacked | justified
+         * position: fixed/static etc
+         * inverse: true/false
+         */
+        
+        
+        return cfg;
+    }
+   
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * row
+ * 
+ */
+/**
+ * @class Roo.bootstrap.Navbar.Button
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Navbar.Button class
+ * @cfg {String} href  link to
+ * @cfg {String} html content of button
+    
+ * @constructor
+ * Create a new Navbar Button
+ * @param {Object} config The config object
+ */
+
+
+Roo.bootstrap.Navbar.Button = function(config){
+    Roo.bootstrap.Navbar.Button.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.Navbar.Button, Roo.bootstrap.Component,  {
+    
+    href : false,
+    html : false,
+    
+    autoCreate : {
+        cls: 'btn',
+        tag : 'button',
+        html: 'hello'
+    },
+    
+    getAutoCreate : function(){
+        
+        var cfg = {
+            cls: 'btn',
+            tag : 'button',
+            html: 'hello',
+            cn : []
+            
+        } ;
+        cfg.cn.push({
+            html : this.html || ''
+            //href : this.
+             //       )
+        });
+        cfg.cn.push({
+            tag: 'span',
+            cls : 'carat'
+        });
+        
+        return cfg;
+    }
+   
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * row
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.Navbar.Item
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Navbar.Button class
+ * @cfg {String} href  link to
+ * @cfg {String} html content of button
+ * @cfg {String} badge text inside badge
+ * @cfg {String} glyphicon name of glyphicon
+  
+ * @constructor
+ * Create a new Navbar Button
+ * @param {Object} config The config object
+ */
+
+
+Roo.bootstrap.Navbar.Item = function(config){
+    Roo.bootstrap.Navbar.Item.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
+    
+    href: false,
+    html: '',
+    badge: '',
+     
+    glyphicon: false,
+    
+    getAutoCreate : function(){
+        
+        var cfg = Roo.apply({}, Roo.bootstrap.Navbar.Item.superclass.getAutoCreate.call(this));
+	
+	if (this.parent().parent().sidebar === true) {
+	    cfg = {
+		tag: 'li',
+		cn: [
+		    {
+			tag: 'p'
+		    }
+		]
+	    }
+	    
+	    if (this.href) {
+		cfg.cn[0].tag = 'a',
+		cfg.cn[0].href = this.href;
+	    }
+	    
+	    if (this.html) {
+		cfg.cn[0].html = this.html;
+	    }
+	    
+	    if (this.glyphicon) {
+		cfg.cn[0].html = '<i class="glyphicon glyphicon-'+this.glyphicon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
+	    }
+	    
+	    return cfg;
+	}
+	
+	cfg = {
+	    tag: 'li'
+	}
+	cfg.cn = [
+            {
+		tag: 'p',
+		html: 'Text'
+            }
+        ];
+        
+        if (this.glyphicon) {
+            if(cfg.html){cfg.html = ' ' + this.html};
+            cfg.cn=[
+                {
+                    tag: 'span',
+                    cls: 'glyphicon glyphicon-' + this.glyphicon
+                }
+            ];
+        }
+	
+        cfg.cn[0].html = this.html || cfg.cn[0].html ;
+	if (this.menu) {
+	    cfg.cn[0].tag='a';
+	    cfg.cn[0].href='#';
+	    cfg.cn[0].html += " <span class='caret'></span>";
+	//}else if (!this.href) {
+	//    cfg.cn[0].tag='p';
+	//    cfg.cn[0].cls='navbar-text';
+	} else {
+	    cfg.cn[0].tag='a';
+	    cfg.cn[0].href=this.href||'#';
+	    cfg.cn[0].html=this.html;
+	}
+	
+	if (this.badge !== '') {
+	    
+	    cfg.cn[0].cn=[
+		cfg.cn[0].html + ' ',
+		{
+		    tag: 'span',
+		    cls: 'badge',
+		    html: this.badge
+		}
+	    ];
+	    cfg.cn[0].html=''
+	}
+	 
+	
+        return cfg;
+    },
+    initEvents: function() {
+       // Roo.log('init events?');
+       // Roo.log(this.el.dom);
+        this.el.select('a',true).on('click',
+                function(e) {
+                    this.fireEvent('click', this);
+                },
+                this
+        );
+    }
+   
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * row
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.Row
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Row class (contains columns...)
+ * 
+ * @constructor
+ * Create a new Row
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.Row = function(config){
+    Roo.bootstrap.Row.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.Row, Roo.bootstrap.Component,  {
+      
+	autoCreate : {
+        cls: 'row clearfix'
+    }
+ 
    
 });
 
