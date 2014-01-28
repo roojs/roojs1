@@ -763,7 +763,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         
         switch(true) {
-            case align=='left' && this.fieldLabel:
+            case align==='left' && this.fieldLabel.length:
                 
                 cfg.cn = [
                     
@@ -783,7 +783,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                     
                 ];
                 break;
-            case  this.fieldLabel:
+            case  this.fieldLabel.length:
                 
                  cfg.cn = [
                    
