@@ -750,7 +750,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                     html : this.before
                 });
             }
-            cn.push(input);
+            inputblock.cn.push(input);
             if (this.after) {
                 inputblock.cn.push({
                     tag :'span',
