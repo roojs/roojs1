@@ -108,6 +108,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                     
                 ];
                 break;
+            
+            
             case  this.fieldLabel.length:
                 
                  cfg.cn = [
@@ -130,7 +132,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                         inputblock
                     
                 ];
-                
+                break;
                 
         }
          
