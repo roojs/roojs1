@@ -336,7 +336,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         
         if (true) {
             if (this.theme==='default') {
-                cfg.cls = 'btn'
+                cfg.cls = 'btn';
                 
                 if (this.parentType != 'Navbar') {
                     this.weight = this.weight.length ?  this.weight : 'default';
@@ -348,7 +348,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             } else if (this.theme==='glow') {
                 
                 cfg.tag = 'a';
-                cfg.cls='btn-glow'
+                cfg.cls='btn-glow';
                 
                 if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
                     
