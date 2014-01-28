@@ -11,6 +11,7 @@
  * @cfg {boolean} disabled is it disabled
  * @cfg {string} fieldLabel - the label associated
  * @cfg {string}  inputType - input / file submit ...
+ * @cfg {string} placeholder - placeholder to put in text.
  * 
  * @constructor
  * Create a new Input
@@ -52,6 +53,28 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         if (this.name) {
             input.name = name;
         }
+        
+        var inputblock = input;
+        
+        if (this.addOn) {
+            
+            inputblock = {
+                cls : 'input-group',
+                cn : [
+                    {
+                        tag: 'span',
+                        html : this.addOn
+                        
+                    },
+                    input
+                }
+                ]
+                
+            }
+            
+            
+        }
+        
         
         switch(align) {
             case 'left':
