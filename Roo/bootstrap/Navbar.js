@@ -71,21 +71,21 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
                             'data-toggle': 'collapse',
                             cn: [
                                 {
-                                tag: 'span',
-                                cls: 'sr-only',
-                                html: 'Toggle navigation'
+                                    tag: 'span',
+                                    cls: 'sr-only',
+                                    html: 'Toggle navigation'
                                 },
                                 {
-                                tag: 'span',
-                                cls: 'icon-bar'
+                                    tag: 'span',
+                                    cls: 'icon-bar'
                                 },
                                 {
-                                tag: 'span',
-                                cls: 'icon-bar'
+                                    tag: 'span',
+                                    cls: 'icon-bar'
                                 },
                                 {
-                                tag: 'span',
-                                cls: 'icon-bar'
+                                    tag: 'span',
+                                    cls: 'icon-bar'
                                 }
                             ]
                             }
@@ -96,7 +96,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
                     cls: 'collapse navbar-collapse'
                     }
                 ]
-            }
+            };
             
             cfg.cls += this.inverse ? ' navbar-inverse' : ' navbar-default';
             
