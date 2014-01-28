@@ -68,7 +68,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 cn :  [] 
             };
             if (this.before) {
-                cn.push({
+                inputblock.cn.push({
                     tag :'span',
                     cls : 'input-group-addon',
                     html : this.before
@@ -76,7 +76,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             }
             cn.push(input);
             if (this.after) {
-                cn.push({
+                inputblock.cn.push({
                     tag :'span',
                     cls : 'input-group-addon',
                     html : this.after
