@@ -101,7 +101,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                     {
                         cls : "col-sm-10", 
                         cn: [
-                            input
+                            inputblock
                         ]
                     }
                     
