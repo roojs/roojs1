@@ -76,6 +76,10 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
             width: 50
         },
         href:  {
+            title: "Target",
+            width: 220
+        } 
+        href:  {
             title: "Href",
             width: 220
         } // border?
