@@ -22,3 +22,5 @@ Roo.bootstrap.Navbar.Button
 Roo.bootstrap.Navbar.Item
 
 Roo.bootstrap.Row
+
+Roo.bootstrap.Element
