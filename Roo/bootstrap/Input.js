@@ -56,22 +56,27 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         var inputblock = input;
         
-        if (this.addOn) {
+        if (this.addOnBefore || this.addOnAfter) {
             
             inputblock = {
                 cls : 'input-group',
-                cn : [
-                    {
-                        tag: 'span',
-                        html : this.addOn
-                        
-                    },
-                    input
-                }
-                ]
-                
+                cn :  [] 
+            };
+            if (this.addOnBefore) {
+                cn.push({
+                    tag :'span',
+                    cls : 'input-group-addon',
+                    html : this.addOnBefore
+                });
             }
-            
+            cn.push(input);
+            if (this.addOnAfter) {
+                cn.push({
+                    tag :'span',
+                    cls : 'input-group-addon',
+                    html : this.addOnAfter
+                });
+            }
             
         }
         
