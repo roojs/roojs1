@@ -24,3 +24,8 @@ Roo.bootstrap.Navbar.Item
 Roo.bootstrap.Row
 
 Roo.bootstrap.Element
+Roo.bootstrap.Pagination
+Roo.bootstrap.Slider
+Roo.bootstrap.Table
+Roo.bootstrap.TableCell
+Roo.bootstrap.TableRow
