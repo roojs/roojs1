@@ -183,6 +183,7 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
     align: '',
     direction: '',
     toolbar: false,
+    btn: true,
     
     autoCreate : {
         cls: 'btn-group',
@@ -266,7 +267,6 @@ Roo.bootstrap.Button = function(config){
 };
 
 Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
-    
     html: false,
     active: false,
     weight: '',
@@ -277,22 +277,52 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     isClose: false,
     glyphicon: '',
     badge: '',
+    theme: 'default',
+    inverse: false,
     
-    autoCreate : {
-        cls: 'btn',
-        tag : 'button',
-        html: 'hello'
-    },
+    type: false,
+    
+    toggle: false,
+    ontext: 'ON',
+    offtext: 'OFF',
+    defaulton: true,
     
     getAutoCreate : function(){
         
+        var cfg = {
+            tag : 'button',
+            html: 'hello'
+        }
         
-        Roo.log("Button Parent is : " + this.parent().xtype);
-        
-        
-        var cfg = Roo.apply({}, Roo.bootstrap.Button.superclass.getAutoCreate.call(this));
-        
+        if (['a', 'button', 'input', 'submit'].indexOf(this.tag) < 0) {
+            throw "Invalid value for tag: " + this.tag + ". must be a, button, input or submit.";
+            this.tag = 'button';
+        } else {
+            cfg.tag = this.tag;
+        }
         cfg.html = this.html || cfg.html;
+        
+        if (this.toggle===true) {
+            cfg={
+                tag: 'div',
+                cls: 'slider-frame',
+                cn: [
+                    {
+                        tag: 'span',
+                        'data-on-text':'ON',
+                        'data-off-text':'OFF',
+                        cls: 'slider-button',
+                        html: this.offtext
+                    }
+                ]
+            };
+            
+            if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
+                cfg.cls += ' '+this.weight;
+            }
+            
+            return cfg;
+        }
         
         if (this.isClose) {
             cfg.cls += ' close';
@@ -304,31 +334,42 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             return cfg;
         }
         
-        if (this.parentType != 'Navbar') {
-            this.weight = this.weight.length ?  this.weight : 'default';
+        if (true) {
+            if (this.theme==='default') {
+                cfg.cls = 'btn'
+                
+                if (this.parentType != 'Navbar') {
+                    this.weight = this.weight.length ?  this.weight : 'default';
+                }
+                if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
+                    
+                    cfg.cls += ' btn-' + this.weight;
+                }
+            } else if (this.theme==='glow') {
+                
+                cfg.tag = 'a';
+                cfg.cls='btn-glow'
+                
+                if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
+                    
+                    cfg.cls += ' ' + this.weight;
+                }
+            }
         }
-        if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
-            
-            cfg.cls += ' btn-' + this.weight;
-        } else {
-            
+        
+        if (this.inverse) {
+            this.cls += ' inverse';
         }
+        
         
         if (this.active) {
             cfg.cls += ' active';
         }
         
         cfg.cls += this.size.length ? (' btn-' + this.size) : '';
-        
-        if (['a', 'button', 'input', 'submit'].indexOf(this.tag) < 0) {
-            throw "Invalid value for tag: " + this.tag + ". must be a, button, input or submit.";
-            this.tag = 'button';
-        } else {
-            cfg.tag = this.tag;
-        }
          
         //gsRoo.log(this.parentType);
-        if (this.parentType == 'Navbar') {
+        if (this.parentType === 'Navbar') {
             cfg.tag = 'li';
             
             cfg.cls = '';
@@ -345,7 +386,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             delete cfg.html;
             
         } else if (this.menu) {
-            cfg.tag='a'
+            cfg.tag = 'a'
             cfg.cls += ' dropdown test';
         }
         
@@ -395,7 +436,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         
         if (cfg.tag !== 'a' && this.href !== '') {
             throw "Tag must be a to set href.";
-        } else if (this.href !== '') {
+        } else if (this.href.length > 0) {
             cfg.href = this.href;
         }
         
@@ -445,1162 +486,23 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
     
     offset: 0,
     
-	autoCreate : {
-        cls: 'column'
-    },
-    
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Column.superclass.getAutoCreate.call(this));
-        cfg.cls += 'col-md-' + this.colspan;
-	
-	
-	
-        return cfg;
-    }
-   
-});
-
- 
-
- /*
- * - LGPL
- *
- * page container.
- * 
- */
-
-
-/**
- * @class Roo.bootstrap.Container
- * @extends Roo.bootstrap.Component
- * Bootstrap Container class
- * @cfg {Boolean} jumbotron is it a jubmotron element
- * @cfg {String} html content of element
- *    
- * @constructor
- * Create a new Container
- * @param {Object} config The config object
- */
-
-Roo.bootstrap.Container = function(config){
-    Roo.bootstrap.Container.superclass.constructor.call(this, config);
-};
-
-Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
-     
-    jumbotron : false, // doc me
-	
-    getAutoCreate : function(){
-        
-        var cfg = {
-            cls: 'container',
-            html : ''
-        };
-        if (this.jumbotron) {
-            cfg.cls = 'jumbotron';
-        }
-        
-        cfg.html = this.html || cfg.html;
-        return cfg;
-    }
-   
-});
-
- /*
- * - LGPL
- *
- * row
- * 
- */
-
-/**
- * @class Roo.bootstrap.Form
- * @extends Roo.bootstrap.Component
- * Bootstrap Form class
- * @cfg {String} method  GET | POST (default POST)
- * @cfg {String} labelAlign top | left (default top)
- * 
- * @constructor
- * Create a new button
- * @param {Object} config The config object
- */
-
-
-Roo.bootstrap.Form = function(config){
-    Roo.bootstrap.Form.superclass.constructor.call(this, config);
-    this.addEvents({
-        /**
-         * @event clientvalidation
-         * If the monitorValid config option is true, this event fires repetitively to notify of valid state
-         * @param {Form} this
-         * @param {Boolean} valid true if the form has passed client-side validation
-         */
-        clientvalidation: true,
-        /**
-         * @event rendered
-         * Fires when the form is rendered
-         * @param {Roo.form.Form} form
-         */
-        rendered : true
-    });
-};
-
-Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
-      
-    
-     getAutoCreate : function(){
-        
-        var cfg = {
-            tag: 'form',
-            method : this.method || 'POST',
-            id : this.id || Roo.id(),
-            cls : ''
-        }
-        
-        if (this.labelAlign == 'left' ) {
-            cfg.cls += ' form-horizontal';
-        }
-        return cfg;
-    }
-    
-});
-
- 
-/*
- * - LGPL
- *
- * page contgainer.
- * 
- */
-
-
-/**
- * @class Roo.bootstrap.ButtonGroup
- * @extends Roo.bootstrap.Component
- * Bootstrap ButtonGroup class
- * @cfg {string} size lg | sm | xs (default empty normal)
- * @cfg {string} align vertical | justified  (default none)
- * @cfg {string} direction up | down (default down)
- * 
- * 
- * @constructor
- * Create a new Input
- * @param {Object} config The config object
- */
-
-Roo.bootstrap.Img = function(config){
-    Roo.bootstrap.Img.superclass.constructor.call(this, config);
-};
-
-Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
-    
-    imgResponsive: true,
-    border: '',
-    src: '',
-    
-    autoCreate : {
-        tag: 'img',
-        cls: 'img-responsive',
-        html : null
-    },
-
-    getAutoCreate : function(){
-        
-        var cfg = Roo.apply({}, Roo.bootstrap.Img.superclass.getAutoCreate.call(this));
-        
-        cfg.html = this.html || cfg.html;
-        
-        cfg.src = this.src || cfg.src;
-        
-        if (['rounded','circle','thumbnail'].indexOf(this.border)>-1) {
-            cfg.cls += ' img-' + this.border;
-        }
-        
-        if(this.alt){
-            cfg.alt = this.alt;
-        }
-        
-        return cfg;
-    }
-   
-});
-
- /*
- * - LGPL
- *
- * row
- * 
- */
-/**
- * @class Roo.bootstrap.Input
- * @extends Roo.bootstrap.Component
- * Bootstrap Input class
- * @cfg {boolean} disabled is it disabled
- * @cfg {string} fieldLabel - the label associated
- * 
- * 
- * @constructor
- * Create a new Input
- * @param {Object} config The config object
- */
-
-Roo.bootstrap.Input = function(config){
-    Roo.bootstrap.Input.superclass.constructor.call(this, config);
-   
-};
-
-Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
-    
-    fieldLabel : '',
-    inputType : 'text',
-    disabled : false,
-    name : false,
-    
-    getAutoCreate : function(){
-        
-        var parent = this.parent();
-        
-        var align = parent.labelAlign;
-        
-        var id = Roo.id();
-        
-        var cfg = {
-            cls: 'form-group' //input-group
-        };
-        
-        var input =  {
-            tag: 'input',
-            id : id,
-            type : this.inputType,
-            cls : 'form-control',
-            placeholder : this.placeholder || '' 
-            
-        };
-        if (this.name) {
-            input.name = name;
-        }
-        
-        switch(align) {
-            case 'left':
-                
-                cfg.cn = [
-                    
-                    {
-                        tag: 'label',
-                        'for' :  id,
-                        cls : 'col-sm-2 control-label',
-                        html : this.fieldLabel
-                        
-                    },
-                    {
-                        cls : "col-sm-10", 
-                        cn: [
-                            input
-                        ]
-                    }
-                    
-                ];
-                break;
-            default:
-                
-                 cfg.cn = [
-                   
-                    {
-                        tag: 'label',
-                        //cls : 'input-group-addon',
-                        html : this.fieldLabel
-                        
-                    },
-                    
-                    input
-                    
-                ];
-                break;
-                
-        }
-         
-        
-        
-        
-        if (this.disabled) {
-            input.disabled=true;
-        }
-        return cfg;
-        
-    },
-    setDisabled : function(v)
-    {
-        var i  = this.el.select('input',true).dom;
-        if (v) {
-            i.removeAttribute('disabled');
-            return;
-            
-        }
-        i.setAttribute('disabled','true');
-    }
-});
-
- 
-/*
- * - LGPL
- *
- * row
- * 
- */
-/**
- * @class Roo.bootstrap.Header
- * @extends Roo.bootstrap.Component
- * Bootstrap Header class
-  * @cfg {String} html content of header
-  * @cfg {Number} level (1|2|3|4|5|6|7) default 1
-    
-  }
- * @constructor
- * Create a new Header
- * @param {Object} config The config object
- */
-
-
-Roo.bootstrap.Header  = function(config){
-    Roo.bootstrap.Header.superclass.constructor.call(this, config);
-};
-
-Roo.extend(Roo.bootstrap.Header, Roo.bootstrap.Component,  {
-    
-    //href : false,
-    html : false,
-    level : 1,
-    
-    
-    
-    getAutoCreate : function(){
-        
-        var cfg = {
-            tag: 'h' + (1 *this.level),
-            html: this.html || 'fill in html'
-        } ;
-        
-        return cfg;
-    }
-   
-});
-
- 
-
- /*
- * - LGPL
- *
- * row
- * 
- */
-
-/**
- * @class Roo.bootstrap.Menu
- * @extends Roo.bootstrap.Component
- * Bootstrap Menu class - container for MenuItems
- * 
- * @constructor
- * Create a new Menu
- * @param {Object} config The config object
- */
-
-
-Roo.bootstrap.Menu = function(config){
-    Roo.bootstrap.Menu.superclass.constructor.call(this, config);
-};
-
-Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
-    
-   /// html : false,
-    //align : '',
-    triggerEl : false,
-    
-    
-    getChildContainer : function() {
-        return this.el;  
-    },
-    
-    getAutoCreate : function(){
-	 
-	//if (['right'].indexOf(this.align)!==-1) {
-	//    cfg.cn[1].cls += ' pull-right'
-	//}
-	
-        return {
-	    tag : 'ul',
-	    cls : 'dropdown-menu' 
-            
-        };
-    },
-    initEvents : function() {
-       // Roo.log("ADD event");
-       // Roo.log(this.triggerEl.dom);
-        this.triggerEl.on('click', this.toggle, this);
-        this.triggerEl.addClass('dropdown-toggle');
-        
-    },
-    toggle  : function(e)
-    {
-        //Roo.log(e.getTarget());
-       // Roo.log(this.triggerEl.dom);
-        if (Roo.get(e.getTarget()).findParent('.dropdown-menu')) {
-            return;
-        }
-        var isActive = this.triggerEl.hasClass('open');
-        // if disabled.. ingore
-        this.clearMenus(e);
-        //if ('ontouchstart' in document.documentElement && !$parent.closest('.navbar-nav').length) {
-         // if mobile we use a backdrop because click events don't delegate
-        // $('<div class="dropdown-backdrop"/>').insertAfter($(this)).on('click', clearMenus)
-        // }
- 
-       //var relatedTarget = { relatedTarget: this }
-       //$parent.trigger(e = $.Event('show.bs.dropdown', relatedTarget))
- 
-       //if (e.isDefaultPrevented()) return;
-        
-       this.triggerEl[isActive ? 'removeClass' : 'addClass']('open');
-       
-       //  .trigger('shown.bs.dropdown', relatedTarget)
- 
-       this.triggerEl.focus();
-       Roo.log(e);
-       e.preventDefault(); 
-        
-        
-    },
-    clearMenus : function()
-    {
-        //$(backdrop).remove()
-        Roo.select('.dropdown-toggle',true).each(function(aa) {
-            if (!aa.hasClass('open')) {
-                return;
-            }
-            // triger close...
-            aa.removeClass('open');
-          //var parent = getParent($(this))
-          //var relatedTarget = { relatedTarget: this }
-          
-           //$parent.trigger(e = $.Event('hide.bs.dropdown', relatedTarget))
-          //if (e.isDefaultPrevented()) return
-           //$parent.removeClass('open').trigger('hidden.bs.dropdown', relatedTarget)
-        })
-    }
-    
-   
-});
-
- 
-
- /*
- * - LGPL
- *
- * row
- * 
- */
-
-
-/**
- * @class Roo.bootstrap.MenuItem
- * @extends Roo.bootstrap.Component
- * Bootstrap MenuItem class
- * @cfg {String} html the menu label
- * @cfg {String} href the link 
- * 
- * 
- * @constructor
- * Create a new MenuItem
- * @param {Object} config The config object
- */
-
-
-Roo.bootstrap.MenuItem = function(config){
-    Roo.bootstrap.MenuItem.superclass.constructor.call(this, config);
-};
-
-Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
-    
-    href : false,
-    html : false,
-    
-    
-    
-    getAutoCreate : function(){
-        var cfg= {
-            // cls: '',
-             tag : 'li',
-             cn : [
-             {
-                 tag : 'a',
-                 href : '#',
-                 html : 'Link'
-             }
-             ]
-         };
-	    
-        cfg.cn[0].href = this.href || cfg.cn[0].href ;
-        cfg.cn[0].html = this.html || cfg.cn[0].html ;
-        return cfg;
-    }
-   
-});
-
- 
-
- /*
- * - LGPL
- *
- * row
- * 
- */
-
-
-/**
- * @class Roo.bootstrap.MenuItem
- * @extends Roo.bootstrap.Component
- * Bootstrap MenuItem class
- * @cfg {String} html the menu label
- * @cfg {String} href the link 
- * 
- * 
- * @constructor
- * Create a new MenuItem
- * @param {Object} config The config object
- */
-
-
-Roo.bootstrap.MenuSeparator = function(config){
-    Roo.bootstrap.MenuSeparator.superclass.constructor.call(this, config);
-};
-
-Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
-    
-    getAutoCreate : function(){
-        var cfg = {
-            cls: 'divider',
-            tag : 'li'
-        };
-        
-        return cfg;
-    }
-   
-});
-
- 
-
- 
-/*
-<div class="modal fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        <p>One fine body&hellip;</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-*/
-/*
- * - LGPL
- *
- * page contgainer.
- * 
- */
-
-/**
- * @class Roo.bootstrap.Modal
- * @extends Roo.bootstrap.Component
- * Bootstrap Modal class
- * @cfg {String} title Title of dialog
- * @cfg {Array} buttons Array of buttons
-    
- * @constructor
- * Create a new Modal Dialog
- * @param {Object} config The config object
- */
-
-Roo.bootstrap.Modal = function(config){
-    Roo.bootstrap.Modal.superclass.constructor.call(this, config);
-};
-
-Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
-    
-    title : 'test dialog',
-   
-	buttons : false,
-    onRender : function(ct, position){
-        Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
-        if(!this.el){
-            var cfg = Roo.apply({},  this.getAutoCreate());
-            cfg.id = Roo.id();
-            //if(!cfg.name){
-            //    cfg.name = typeof(this.name) == 'undefined' ? this.id : this.name;
-            //}
-            //if (!cfg.name.length) {
-            //    delete cfg.name;
-           // }
-            if (this.cls) {
-                cfg.cls += ' ' + this.cls;
-            }
-            if (this.style) {
-                cfg.style = this.style;
-            }
-            this.el = Roo.get(document.body).createChild(cfg, position);
-        }
-        //var type = this.el.dom.type;
-         
-        if(this.tabIndex !== undefined){
-            this.el.dom.setAttribute('tabIndex', this.tabIndex);
-        }
-        this.initEvents();
-        //this.el.addClass([this.fieldClass, this.cls]);
-        
-    },
-    getAutoCreate : function(){
-        
-        return {
-            cls: "modal fade",
-            cn : [
-                {
-                    cls: "modal-dialog",
-                    cn : [
-                        {
-                            cls : "modal-content",
-                            cn : [
-                                {
-                                    cls : 'modal-header',
-                                    cn : [
-                                        {
-                                            tag: 'button',
-                                            cls : 'close',
-                                            html : '&times'
-                                        },
-                                        {
-                                            tag: 'h4',
-                                            cls : 'modal-title',
-                                            html : this.title
-                                        }
-                                    
-                                    ]
-                                },
-                                {
-                                    cls : 'modal-body'
-                                 
-                                },
-                                 {
-                                    cls : 'modal-footer'
-                                    /*
-                                    cn : [
-                                        {
-                                            tag: 'button',
-                                            cls : 'btn btn-default',
-                                            html : 'Close'
-                                        },
-                                        {
-                                            tag: 'button',
-                                            cls : 'btn btn-primary',
-                                            html : 'Save'
-                                        }
-                                    
-                                    ]
-                                    */
-                                }
-                                
-                                
-                            ]
-                            
-                        }
-                    ]
-                        
-                }
-            ]
-            
-            
-        };
-          
-    },
-    getChildContainer : function() {
-         
-         return this.el.select('.modal-body',true).first();
-        
-    },
-    getButtonContainer : function() {
-         return this.el.select('.modal-footer',true).first();
-        
-    },
-    initEvents : function()
-    {
-        this.el.select('.modal-header .close').on('click', this.hide, this);
-    },
-    show : function() {
-        this.el.addClass('on');
-        this.el.removeClass('fade');
-        this.el.setStyle('display', 'block');
-    },
-    hide : function() {
-        this.el.removeClass('on');
-        this.el.addClass('fade');
-        this.el.setStyle('display', 'none');
-    }
-});
-
- /*
- * - LGPL
- *
- * row
- * 
- */
-
-/**
- * @class Roo.bootstrap.Navbar
- * @extends Roo.bootstrap.Component
- * Bootstrap Navbar class
- * @cfg {Boolean} sidebar has side bar
- * @cfg {Boolean} bar is a bar?
- * @cfg {String} position (fixed-top|fixed-bottom|static-top) position
- * @cfg {String} brand what is brand
- * @cfg {Boolean} inverse is inverted color
- * @cfg {String} type (nav|pills|tabs)
- * @cfg {Boolean} arrangement stacked|justified
- * @cfg {String} align (left|right) alignment
- 
-    
- * @constructor
- * Create a new Navbar
- * @param {Object} config The config object
- */
-
-
-Roo.bootstrap.Navbar = function(config){
-    Roo.bootstrap.Navbar.superclass.constructor.call(this, config);
-};
-
-Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
-    
-    sidebar: false,
-    
-    bar: false,
-    brand: '',
-    inverse: false,
-    position: '',
-    align : false,
-    type: 'nav',
-    arrangement: '',
-    
-    getAutoCreate : function(){
-        var cfg = {
-            cls : 'navbar'
-        };
-	
-        if (this.sidebar === true) {
-            cfg = {
-                tag: 'div',
-                cls: 'sidebar-nav'
-            };
-            return cfg;
-        }
-        
-        if (this.bar === true) {
-            cfg = {
-                tag: 'nav',
-                cls: 'navbar',
-                role: 'navigation',
-                cn: [
-                    {
-                    tag: 'div',
-                    cls: 'navbar-header',
-                    cn: [
-                        {
-                        tag: 'button',
-                        type: 'button',
-                        cls: 'navbar-toggle',
-                        'data-toggle': 'collapse',
-                        cn: [
-                            {
-                            tag: 'span',
-                            cls: 'sr-only',
-                            html: 'Toggle navigation'
-                            },
-                            {
-                            tag: 'span',
-                            cls: 'icon-bar'
-                            },
-                            {
-                            tag: 'span',
-                            cls: 'icon-bar'
-                            },
-                            {
-                            tag: 'span',
-                            cls: 'icon-bar'
-                            }
-                        ]
-                        }
-                    ]
-                    },
-                    {
-                    tag: 'div',
-                    cls: 'collapse navbar-collapse'
-                    }
-                ]
-            }
-            
-            cfg.cls += this.inverse ? ' navbar-inverse' : ' navbar-default';
-            
-            if (['fixed-top','fixed-bottom','static-top'].indexOf(this.position)>-1) {
-            cfg.cls += ' navbar-' + this.position;
-            cfg.tag = this.position  == 'fixed-bottom' ? 'footer' : 'header';
-            }
-            
-            if (this.brand !== '') {
-                cfg.cn[0].cn.push({
-                    tag: 'a',
-                    href: '#',
-                    cls: 'navbar-brand',
-                    cn: [
-                    this.brand
-                    ]
-                });
-            }
-            
-            return cfg;
-        
-        } else if (this.bar === false) {
-            
-        } else {
-            Roo.log('Property \'bar\' in of Navbar must be either true or false')
-        }
-	
-        cfg.cn = [
-            {
-                cls: 'nav',
-                tag : 'ul'
-            }
-        ];
-        
-        if (['tabs','pills'].indexOf(this.type)!==-1) {
-            cfg.cn[0].cls += ' nav-' + this.type
-        } else {
-            if (this.type!=='nav') {
-            Roo.log('nav type must be nav/tabs/pills')
-            }
-            cfg.cn[0].cls += ' navbar-nav'
-        }
-        
-        if (['stacked','justified'].indexOf(this.arrangement)!==-1) {
-            cfg.cn[0].cls += ' nav-' + this.arrangement;
-        }
-        
-        if (this.align === 'right') {
-            cfg.cn[0].cls += ' navbar-right';
-        }
-        if (this.inverse) {
-            cfg.cls += ' navbar-inverse';
-            
-        }
-        /* type: nav | tabs | pills
-         * arrangement: stacked | justified
-         * position: fixed/static etc
-         * inverse: true/false
-         */
-        
-        
-        return cfg;
-    },
-    
-    getChildContainer : function() {
-        if (this.bar === true) {
-            return this.el.select('.collapse',true).first();
-        }
-        
-           return this.el;
-    }
-   
-});
-
- 
-
- /*
- * - LGPL
- *
- * row
- * 
- */ 
-Roo.bootstrap.NavGroup = function(config){
-    Roo.bootstrap.NavGroup.superclass.constructor.call(this, config);
-};
-
-Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
-    
-    align: '',
-    
-    getAutoCreate : function(){
-        var cfg = Roo.apply({}, Roo.bootstrap.NavGroup.superclass.getAutoCreate.call(this));
-        
-        cfg = {
-            tag : 'ul',
-            cls: 'nav navbar-nav' 
-        }
-        
-        if (this.parent().sidebar === true) {
-            cfg = {
-                tag: 'div',
-                cls: 'dashboard-menu'
-            }
-            
-            return cfg;
-        }
-        
-        
-        if (this.align === 'right') {
-            cfg.cls += ' navbar-right';
-        }
-        
-        if (this.inverse) {
-            cfg.cls += ' navbar-inverse';
-            
-        }
-        /* type: nav | tabs | pills
-         * arrangement: stacked | justified
-         * position: fixed/static etc
-         * inverse: true/false
-         */
-        
-        
-        return cfg;
-    },
-    
-    getChildContainer : function() {
-        return this.el;
-    }
-   
-});
-
- 
-
- /*
- * - LGPL
- *
- * row
- * 
- */
-/**
- * @class Roo.bootstrap.Navbar.Button
- * @extends Roo.bootstrap.Component
- * Bootstrap Navbar.Button class
- * @cfg {String} href  link to
- * @cfg {String} html content of button
-    
- * @constructor
- * Create a new Navbar Button
- * @param {Object} config The config object
- */
-
-
-Roo.bootstrap.Navbar.Button = function(config){
-    Roo.bootstrap.Navbar.Button.superclass.constructor.call(this, config);
-};
-
-Roo.extend(Roo.bootstrap.Navbar.Button, Roo.bootstrap.Component,  {
-    
-    href : false,
-    html : false,
-    
-    autoCreate : {
-        cls: 'btn',
-        tag : 'button',
-        html: 'hello'
-    },
-    
-    getAutoCreate : function(){
-        
-        var cfg = {
-            cls: 'btn',
-            tag : 'button',
-            html: 'hello',
-            cn : []
-            
-        } ;
-        cfg.cn.push({
-            html : this.html || ''
-            //href : this.
-             //       )
-        });
-        cfg.cn.push({
-            tag: 'span',
-            cls : 'carat'
-        });
-        
-        return cfg;
-    }
-   
-});
-
- 
-
- /*
- * - LGPL
- *
- * row
- * 
- */
-
-/**
- * @class Roo.bootstrap.Navbar.Item
- * @extends Roo.bootstrap.Component
- * Bootstrap Navbar.Button class
- * @cfg {String} href  link to
- * @cfg {String} html content of button
- * @cfg {String} badge text inside badge
- * @cfg {String} glyphicon name of glyphicon
-  
- * @constructor
- * Create a new Navbar Button
- * @param {Object} config The config object
- */
-
-
-Roo.bootstrap.Navbar.Item = function(config){
-    Roo.bootstrap.Navbar.Item.superclass.constructor.call(this, config);
-};
-
-Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
-    
-    href: false,
-    html: '',
-    badge: '',
-     
-    glyphicon: false,
-    
-    getAutoCreate : function(){
-        
-        var cfg = Roo.apply({}, Roo.bootstrap.Navbar.Item.superclass.getAutoCreate.call(this));
-	
-	if (this.parent().parent().sidebar === true) {
-	    cfg = {
-		tag: 'li',
-		cn: [
-		    {
-			tag: 'p'
-		    }
-		]
-	    }
-	    
-	    if (this.href) {
-		cfg.cn[0].tag = 'a',
-		cfg.cn[0].href = this.href;
-	    }
-	    
-	    if (this.html) {
-		cfg.cn[0].html = this.html;
-	    }
-	    
-	    if (this.glyphicon) {
-		cfg.cn[0].html = '<i class="glyphicon glyphicon-'+this.glyphicon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
-	    }
-	    
-	    return cfg;
-	}
 	
 	cfg = {
-	    tag: 'li'
-	}
-	cfg.cn = [
-            {
-		tag: 'p',
-		html: 'Text'
-            }
-        ];
-        
-        if (this.glyphicon) {
-            if(cfg.html){cfg.html = ' ' + this.html};
-            cfg.cn=[
-                {
-                    tag: 'span',
-                    cls: 'glyphicon glyphicon-' + this.glyphicon
-                }
-            ];
-        }
-	
-        cfg.cn[0].html = this.html || cfg.cn[0].html ;
-	if (this.menu) {
-	    cfg.cn[0].tag='a';
-	    cfg.cn[0].href='#';
-	    cfg.cn[0].html += " <span class='caret'></span>";
-	//}else if (!this.href) {
-	//    cfg.cn[0].tag='p';
-	//    cfg.cn[0].cls='navbar-text';
-	} else {
-	    cfg.cn[0].tag='a';
-	    cfg.cn[0].href=this.href||'#';
-	    cfg.cn[0].html=this.html;
+	    tag: 'div',
+	    cls: 'column'
 	}
 	
-	if (this.badge !== '') {
-	    
-	    cfg.cn[0].cn=[
-		cfg.cn[0].html + ' ',
-		{
-		    tag: 'span',
-		    cls: 'badge',
-		    html: this.badge
-		}
-	    ];
-	    cfg.cn[0].html=''
-	}
-	 
+	var settings=this;
+	['xs','sm','md','lg'].map(function(size){
+	    if (settings[size]) {
+		cfg.cls += ' col-' + size + '-' + settings[size];
+	    }
+	})
 	
         return cfg;
-    },
-    initEvents: function() {
-       // Roo.log('init events?');
-       // Roo.log(this.el.dom);
-        this.el.select('a',true).on('click',
-                function(e) {
-                    this.fireEvent('click', this);
-                },
-                this
-        );
     }
-   
-});
-
- 
-
- /*
- * - LGPL
- *
- * row
- * 
- */
-
-/**
- * @class Roo.bootstrap.Row
- * @extends Roo.bootstrap.Component
- * Bootstrap Row class (contains columns...)
- * 
- * @constructor
- * Create a new Row
- * @param {Object} config The config object
- */
-
-Roo.bootstrap.Row = function(config){
-    Roo.bootstrap.Row.superclass.constructor.call(this, config);
-};
-
-Roo.extend(Roo.bootstrap.Row, Roo.bootstrap.Component,  {
-      
-	autoCreate : {
-        cls: 'row clearfix'
-    }
- 
    
 });
 
