@@ -201,7 +201,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
                     cls: 'badge',
                     html: this.badge
                 }
-            ]
+            ];
             
             cfg.html='';
         }
