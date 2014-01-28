@@ -32,11 +32,11 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
     active: 1,
     
     getAutoCreate : function(){
-	cfg = {
-	    tag: 'ul',
-            cls: 'pagination',
-            cn: []
-	}
+        cfg = {
+            tag: 'ul',
+                cls: 'pagination',
+                cn: []
+        };
         if (this.inverse) {
             cfg.cls += ' inverse'
         }
