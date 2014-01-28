@@ -10,7 +10,7 @@
  * Bootstrap Input class
  * @cfg {boolean} disabled is it disabled
  * @cfg {string} fieldLabel - the label associated
- * 
+ * @cfg {string}  inputType - input / file submit ...
  * 
  * @constructor
  * Create a new Input
