@@ -12,6 +12,9 @@
  * @cfg {string} fieldLabel - the label associated
  * @cfg {string}  inputType - input / file submit ...
  * @cfg {string} placeholder - placeholder to put in text.
+ * @cfg {string}  before - input group add on before
+ * @cfg {string} after - input group add on after
+ * 
  * 
  * @constructor
  * Create a new Input
@@ -29,6 +32,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     inputType : 'text',
     disabled : false,
     name : false,
+    before : false,
+    after : false,
     
     getAutoCreate : function(){
         
@@ -56,25 +61,25 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         var inputblock = input;
         
-        if (this.addOnBefore || this.addOnAfter) {
+        if (this.before || this.after) {
             
             inputblock = {
                 cls : 'input-group',
                 cn :  [] 
             };
-            if (this.addOnBefore) {
+            if (this.before) {
                 cn.push({
                     tag :'span',
                     cls : 'input-group-addon',
-                    html : this.addOnBefore
+                    html : this.before
                 });
             }
             cn.push(input);
-            if (this.addOnAfter) {
+            if (this.after) {
                 cn.push({
                     tag :'span',
                     cls : 'input-group-addon',
-                    html : this.addOnAfter
+                    html : this.after
                 });
             }
             
