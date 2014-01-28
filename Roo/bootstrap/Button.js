@@ -120,7 +120,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             } else if (this.theme==='glow') {
                 
                 cfg.tag = 'a';
-                cfg.cls='btn-glow'
+                cfg.cls='btn-glow';
                 
                 if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
                     
