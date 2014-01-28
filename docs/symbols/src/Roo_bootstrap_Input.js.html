@@ -10,6 +10,10 @@
  * Bootstrap Input class
  * @cfg {boolean} disabled is it disabled
  * @cfg {string} fieldLabel - the label associated
+ * @cfg {string}  inputType - input / file submit ...
+ * @cfg {string} placeholder - placeholder to put in text.
+ * @cfg {string}  before - input group add on before
+ * @cfg {string} after - input group add on after
  * 
  * 
  * @constructor
@@ -28,6 +32,8 @@
     </span><span class="jsdoc-var">inputType </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'text'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">disabled </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">before </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">after </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         
@@ -53,8 +59,35 @@
             </span><span class="jsdoc-var">input.name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">;
         }
         
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">inputblock </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.before </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.after</span><span class="jsdoc-syntax">) {
+            
+            </span><span class="jsdoc-var">inputblock </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input-group'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">:  [] 
+            };
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.before</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">cn.push</span><span class="jsdoc-syntax">({
+                    </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input-group-addon'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.before
+                </span><span class="jsdoc-syntax">});
+            }
+            </span><span class="jsdoc-var">cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.after</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">cn.push</span><span class="jsdoc-syntax">({
+                    </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input-group-addon'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.after
+                </span><span class="jsdoc-syntax">});
+            }
+            
+        }
+        
+        
         </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">align</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">:
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'left' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.fieldLabel</span><span class="jsdoc-syntax">:
                 
                 </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
                     
@@ -68,13 +101,13 @@
                     {
                         </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;col-sm-10&quot;</span><span class="jsdoc-syntax">, 
                         </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
-                            </span><span class="jsdoc-var">input
+                            </span><span class="jsdoc-var">inputblock
                         </span><span class="jsdoc-syntax">]
                     }
                     
                 ];
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-keyword">default</span><span class="jsdoc-syntax">:
+            </span><span class="jsdoc-keyword">case  </span><span class="jsdoc-var">this.fieldLabel</span><span class="jsdoc-syntax">:
                 
                  </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
                    
@@ -85,10 +118,18 @@
                         
                     </span><span class="jsdoc-syntax">},
                     
-                    </span><span class="jsdoc-var">input
+                    </span><span class="jsdoc-var">inputblock
                     
                 </span><span class="jsdoc-syntax">];
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-keyword">default</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
+                    
+                        </span><span class="jsdoc-var">inputblock
+                    
+                </span><span class="jsdoc-syntax">];
+                
                 
         }
          
