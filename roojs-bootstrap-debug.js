@@ -474,6 +474,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
  * @cfg {Number} sm colspan out of 12 for tablet-sized screens
  * @cfg {Number} md colspan out of 12 for computer-sized screens
  * @cfg {Number} lg colspan out of 12 for large computer-sized screens
+ * @cfg {String} html content of column.
  * 
  * @constructor
  * Create a new Column
@@ -490,7 +491,7 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
     sm: null,
     md: null,
     lg: null,
-    
+    html: '',
     offset: 0,
     
     getAutoCreate : function(){
@@ -507,6 +508,9 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
                 cfg.cls += ' col-' + size + '-' + settings[size];
             }
         });
+        if (this.html.length) {
+            cfg.html = html;
+        }
 	
         return cfg;
     }
