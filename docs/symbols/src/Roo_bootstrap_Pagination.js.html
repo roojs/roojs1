@@ -1,18 +1,23 @@
 <html><head><title>../roojs1/Roo/bootstrap/Pagination.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
  * - LGPL
  *
- * column
+ * pagination
  * 
  */
 
 /**
- * @class Roo.bootstrap.Column
+ * @class Roo.bootstrap.Pagination
  * @extends Roo.bootstrap.Component
- * Bootstrap Column class
- * @cfg {number} colspan  Number of columsn to span
+ * Bootstrap Pagination class
+ * @cfg {String} size xs | sm | md | lg
+ * @cfg {Boolean} inverse false | true
+ * @cfg {Number} from pagination starting number
+ * @cfg {Number} to pagination ending number
+ * @cfg {String} align empty or left | right
+ * @cfg {Number} active active page number
  * 
  * @constructor
- * Create a new Column
+ * Create a new Pagination
  * @param {Object} config The config object
  */
 
@@ -22,7 +27,6 @@
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Pagination</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
     
-    </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">inverse</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,

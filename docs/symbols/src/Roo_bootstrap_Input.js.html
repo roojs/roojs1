@@ -1,13 +1,18 @@
 <html><head><title>../roojs1/Roo/bootstrap/Input.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
  * - LGPL
  *
- * row
+ * Input
  * 
  */
+
 /**
  * @class Roo.bootstrap.Input
  * @extends Roo.bootstrap.Component
  * Bootstrap Input class
+ * @cfg {Boolean} disabled is it disabled
+ * @cfg {String} fieldLabel - the label associated
+ * @cfg {String} inputType button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text
+ * @cfg {String} name name of the input
  * @cfg {boolean} disabled is it disabled
  * @cfg {string} fieldLabel - the label associated
  * @cfg {string}  inputType - input / file submit ...
@@ -32,6 +37,7 @@
     </span><span class="jsdoc-var">inputType </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'text'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">disabled </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">placeholder</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">before </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">after </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     

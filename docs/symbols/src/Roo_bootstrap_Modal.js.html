@@ -31,7 +31,7 @@
  * Bootstrap Modal class
  * @cfg {String} title Title of dialog
  * @cfg {Array} buttons Array of buttons
-    
+ * 
  * @constructor
  * Create a new Modal Dialog
  * @param {Object} config The config object
