@@ -27,6 +27,9 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     
     jumbotron : false,
     well: '',
+    panel : '',
+    header: '',
+    footer : '',
     
     getAutoCreate : function(){
         
@@ -52,6 +55,18 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
                     break;
             }
         }
+        if (this.well.length) {
+            switch (this.well) {
+                case 'lg':
+                case 'sm':
+                    cfg.cls +'well well-' +this.well;
+                    break;
+                default:
+                    cfg.cls +'well';
+                    break;
+            }
+        }
+        
         
         cfg.html = this.html || cfg.html;
         return cfg;
