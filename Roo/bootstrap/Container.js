@@ -61,10 +61,10 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             switch (this.well) {
                 case 'lg':
                 case 'sm':
-                    cfg.cls +'well well-' +this.well;
+                    cfg.cls +=' well well-' +this.well;
                     break;
                 default:
-                    cfg.cls +'well';
+                    cfg.cls +=' well';
                     break;
             }
         }
