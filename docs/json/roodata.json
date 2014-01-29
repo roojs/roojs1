@@ -5246,6 +5246,24 @@
      "memberOf": ""
     },
     {
+     "name": "panel",
+     "type": "String",
+     "desc": "(primary|success|info|warning|danger) render as a panel.",
+     "memberOf": ""
+    },
+    {
+     "name": "header",
+     "type": "String",
+     "desc": "content of header (for panel)",
+     "memberOf": ""
+    },
+    {
+     "name": "footer",
+     "type": "String",
+     "desc": "content of footer (for panel)",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
