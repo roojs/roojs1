@@ -68,15 +68,15 @@
                 </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">:  [] 
             };
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.before</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">cn.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">inputblock.cn.push</span><span class="jsdoc-syntax">({
                     </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input-group-addon'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.before
                 </span><span class="jsdoc-syntax">});
             }
-            </span><span class="jsdoc-var">cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">inputblock.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.after</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">cn.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">inputblock.cn.push</span><span class="jsdoc-syntax">({
                     </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input-group-addon'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.after
@@ -85,10 +85,11 @@
             
         }
         
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">align</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fieldLabel.length</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">align</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'left' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.fieldLabel</span><span class="jsdoc-syntax">:
-                
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">===</span><span class="jsdoc-string">'left' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.fieldLabel.length</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;left and has label&quot;</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
                     
                     {
@@ -106,9 +107,8 @@
                     }
                     
                 ];
-                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-keyword">case  </span><span class="jsdoc-var">this.fieldLabel</span><span class="jsdoc-syntax">:
-                
+        } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.fieldLabel.length</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot; label&quot;</span><span class="jsdoc-syntax">);
                  </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
                    
                     {
@@ -121,9 +121,10 @@
                     </span><span class="jsdoc-var">inputblock
                     
                 </span><span class="jsdoc-syntax">];
-                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
             
-            </span><span class="jsdoc-keyword">default</span><span class="jsdoc-syntax">:
+                   </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot; no label &amp;&amp; no align&quot;</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
                     
                         </span><span class="jsdoc-var">inputblock

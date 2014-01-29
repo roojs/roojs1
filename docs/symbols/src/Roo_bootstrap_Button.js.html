@@ -64,7 +64,7 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'hello'
-        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-syntax">};
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'submit'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tag</span><span class="jsdoc-syntax">) &lt; 0) {
             </span><span class="jsdoc-keyword">throw </span><span class="jsdoc-string">&quot;Invalid value for tag: &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.tag </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;. must be a, button, input or submit.&quot;</span><span class="jsdoc-syntax">;
@@ -108,7 +108,7 @@
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.theme</span><span class="jsdoc-syntax">===</span><span class="jsdoc-string">'default'</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'btn'
+                </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'btn'</span><span class="jsdoc-syntax">;
                 
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parentType </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'Navbar'</span><span class="jsdoc-syntax">) {
                     </span><span class="jsdoc-var">this.weight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.weight.length </span><span class="jsdoc-syntax">?  </span><span class="jsdoc-var">this.weight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'default'</span><span class="jsdoc-syntax">;
@@ -120,7 +120,7 @@
             } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.theme</span><span class="jsdoc-syntax">===</span><span class="jsdoc-string">'glow'</span><span class="jsdoc-syntax">) {
                 
                 </span><span class="jsdoc-var">cfg.tag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">;
-                </span><span class="jsdoc-var">cfg.cls</span><span class="jsdoc-syntax">=</span><span class="jsdoc-string">'btn-glow'
+                </span><span class="jsdoc-var">cfg.cls</span><span class="jsdoc-syntax">=</span><span class="jsdoc-string">'btn-glow'</span><span class="jsdoc-syntax">;
                 
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'default'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'primary'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'success'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'info'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'warning'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'danger'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'link'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.weight</span><span class="jsdoc-syntax">) &gt; -1) {
                     
@@ -158,7 +158,7 @@
             </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">cfg.html</span><span class="jsdoc-syntax">;
             
         } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.menu</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">cfg.tag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'a'
+            </span><span class="jsdoc-var">cfg.tag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' dropdown test'</span><span class="jsdoc-syntax">;
         }
         
@@ -201,7 +201,7 @@
                     </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'badge'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.badge
                 </span><span class="jsdoc-syntax">}
-            ]
+            ];
             
             </span><span class="jsdoc-var">cfg.html</span><span class="jsdoc-syntax">=</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
         }
