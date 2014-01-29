@@ -5006,6 +5006,12 @@
      "memberOf": ""
     },
     {
+     "name": "html",
+     "type": "String",
+     "desc": "content of column.",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
