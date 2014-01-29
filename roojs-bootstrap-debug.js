@@ -555,6 +555,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     panel : '',
     header: '',
     footer : '',
+  
      
     getChildContainer : function() {
         if (this.panel.length) {
@@ -568,7 +569,8 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         
         var cfg = {
-            html : ''
+            html : '',
+            cls : ''
         };
         if (this.jumbotron) {
             cfg.cls = 'jumbotron';
