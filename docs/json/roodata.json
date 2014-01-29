@@ -4648,7 +4648,7 @@
     {
      "name": "weight",
      "type": "String",
-     "desc": "default (or empty) | primary | success | info | warning",
+     "desc": "default (or empty) | primary | success | info | warning | danger",
      "memberOf": ""
     },
     {
@@ -4682,15 +4682,51 @@
      "memberOf": ""
     },
     {
-     "name": "empty",
+     "name": "glyphicon",
      "type": "String",
-     "desc": "| see glyphicon reference list",
+     "desc": "empty | adjust | align-center | align-justify | align-left | align-right | arrow-down | arrow-left | arrow-right | arrow-up | asterisk | backward | ban-circle | barcode | bell | bold | book | bookmark | briefcase | bullhorn | calendar | camera | certificate | check | chevron-down | chevron-left | chevron-right | chevron-up | circle-arrow-down | circle-arrow-left | circle-arrow-right | circle-arrow-up | cloud | cloud-download | cloud-upload | cog | collapse-down | collapse-up | comment | compressed | copyright-mark | credit-card | cutlery | dashboard | download | download-alt | earphone | edit | eject | envelope | euro | exclamation-sign | expand | export | eye-close | eye-open | facetime-video | fast-backward | fast-forward | file | film | filter | fire | flag | flash | floppy-disk | floppy-open | floppy-remove | floppy-save | floppy-saved | folder-close | folder-open | font | forward | fullscreen | gbp | gift | glass | globe | hand-down | hand-left | hand-right | hand-up | hd-video | hdd | header | headphones | heart | heart-empty | home | import | inbox | indent-left | indent-right | info-sign | italic | leaf | link | list | list-alt | lock | log-in | log-out | magnet | map-marker | minus | minus-sign | move | music | new-window | off | ok | ok-circle | ok-sign | open | paperclip | pause | pencil | phone | phone-alt | picture | plane | play | play-circle | plus | plus-sign | print | pushpin | qrcode | question-sign | random | record | refresh | registration-mark | remove | remove-circle | remove-sign | repeat | resize-full | resize-horizontal | resize-small | resize-vertical | retweet | road | save | saved | screenshot | sd-video | search | send | share | share-alt | shopping-cart | signal | sort | sort-by-alphabet | sort-by-alphabet-alt | sort-by-attributes | sort-by-attributes-alt | sort-by-order | sort-by-order-alt | sound-5-1 | sound-6-1 | sound-7-1 | sound-dolby | sound-stereo | star | star-empty | stats | step-backward | step-forward | stop | subtitles | tag | tags | tasks | text-height | text-width | th | th-large | th-list | thumbs-down | thumbs-up | time | tint | tower | transfer | trash | tree-conifer | tree-deciduous | unchecked | upload | usd | user | volume-down | volume-off | volume-up | warning-sign | wrench | zoom-in | zoom-out",
      "memberOf": ""
     },
     {
      "name": "badge",
      "type": "String",
      "desc": "text for badge",
+     "memberOf": ""
+    },
+    {
+     "name": "theme",
+     "type": "String",
+     "desc": "default (or empty) | glow",
+     "memberOf": ""
+    },
+    {
+     "name": "inverse",
+     "type": "Boolean",
+     "desc": "false | true",
+     "memberOf": ""
+    },
+    {
+     "name": "toggle",
+     "type": "Boolean",
+     "desc": "false | true",
+     "memberOf": ""
+    },
+    {
+     "name": "ontext",
+     "type": "String",
+     "desc": "text for on toggle state",
+     "memberOf": ""
+    },
+    {
+     "name": "offtext",
+     "type": "String",
+     "desc": "text for off toggle state",
+     "memberOf": ""
+    },
+    {
+     "name": "defaulton",
+     "type": "Boolean",
+     "desc": "true | false",
      "memberOf": ""
     },
     {
@@ -4809,20 +4845,32 @@
    "props": [
     {
      "name": "size",
-     "type": "string",
+     "type": "String",
      "desc": "lg | sm | xs (default empty normal)",
      "memberOf": ""
     },
     {
      "name": "align",
-     "type": "string",
+     "type": "String",
      "desc": "vertical | justified  (default none)",
      "memberOf": ""
     },
     {
      "name": "direction",
-     "type": "string",
+     "type": "String",
      "desc": "up | down (default down)",
+     "memberOf": ""
+    },
+    {
+     "name": "toolbar",
+     "type": "Boolean",
+     "desc": "false | true",
+     "memberOf": ""
+    },
+    {
+     "name": "btn",
+     "type": "Boolean",
+     "desc": "true | false",
      "memberOf": ""
     },
     {
@@ -4934,9 +4982,27 @@
   "Roo.bootstrap.Column": {
    "props": [
     {
-     "name": "colspan",
-     "type": "number",
-     "desc": "Number of columsn to span",
+     "name": "xs",
+     "type": "Number",
+     "desc": "colspan out of 12 for mobile-sized screens",
+     "memberOf": ""
+    },
+    {
+     "name": "sm",
+     "type": "Number",
+     "desc": "colspan out of 12 for tablet-sized screens",
+     "memberOf": ""
+    },
+    {
+     "name": "md",
+     "type": "Number",
+     "desc": "colspan out of 12 for computer-sized screens",
+     "memberOf": ""
+    },
+    {
+     "name": "lg",
+     "type": "Number",
+     "desc": "colspan out of 12 for large computer-sized screens",
      "memberOf": ""
     },
     {
@@ -5158,13 +5224,19 @@
     {
      "name": "jumbotron",
      "type": "Boolean",
-     "desc": "is it a jubmotron element",
+     "desc": "is it a jumbotron element",
      "memberOf": ""
     },
     {
      "name": "html",
      "type": "String",
      "desc": "content of element",
+     "memberOf": ""
+    },
+    {
+     "name": "well",
+     "type": "Boolean",
+     "desc": "container is a well",
      "memberOf": ""
     },
     {
@@ -5276,16 +5348,22 @@
   "Roo.bootstrap.Element": {
    "props": [
     {
-     "name": "colspan",
-     "type": "number",
-     "desc": "Number of columsn to span",
+     "name": "html",
+     "type": "String",
+     "desc": "contents of the element",
+     "memberOf": ""
+    },
+    {
+     "name": "tag",
+     "type": "String",
+     "desc": "tag of the element",
      "memberOf": ""
     },
     {
      "name": "cls",
      "type": "String",
-     "desc": "css class",
-     "memberOf": "Roo.bootstrap.Component"
+     "desc": "class of the element",
+     "memberOf": ""
     },
     {
      "name": "style",
@@ -5530,7 +5608,7 @@
     {
      "name": "level",
      "type": "Number",
-     "desc": "(1|2|3|4|5|6|7) default 1\n    \n  }",
+     "desc": "(1|2|3|4|5|6) default 1",
      "memberOf": ""
     },
     {
@@ -5642,21 +5720,27 @@
   "Roo.bootstrap.Img": {
    "props": [
     {
-     "name": "size",
-     "type": "string",
-     "desc": "lg | sm | xs (default empty normal)",
+     "name": "imgResponsive",
+     "type": "Boolean",
+     "desc": "false | true",
      "memberOf": ""
     },
     {
-     "name": "align",
-     "type": "string",
-     "desc": "vertical | justified  (default none)",
+     "name": "border",
+     "type": "String",
+     "desc": "rounded | circle | thumbnail",
      "memberOf": ""
     },
     {
-     "name": "direction",
-     "type": "string",
-     "desc": "up | down (default down)",
+     "name": "src",
+     "type": "String",
+     "desc": "image source",
+     "memberOf": ""
+    },
+    {
+     "name": "alt",
+     "type": "String",
+     "desc": "image alternative text",
      "memberOf": ""
     },
     {
@@ -5769,20 +5853,26 @@
    "props": [
     {
      "name": "disabled",
-     "type": "boolean",
+     "type": "Boolean",
      "desc": "is it disabled",
      "memberOf": ""
     },
     {
      "name": "fieldLabel",
-     "type": "string",
+     "type": "String",
      "desc": "- the label associated",
      "memberOf": ""
     },
     {
      "name": "inputType",
-     "type": "string",
-     "desc": "- input / file submit ...",
+     "type": "String",
+     "desc": "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
+     "memberOf": ""
+    },
+    {
+     "name": "name",
+     "type": "String",
+     "desc": "name of the input",
      "memberOf": ""
     },
     {
@@ -5911,6 +6001,12 @@
   },
   "Roo.bootstrap.Menu": {
    "props": [
+    {
+     "name": "type",
+     "type": "String",
+     "desc": "type of menu",
+     "memberOf": ""
+    },
     {
      "name": "cls",
      "type": "String",
@@ -6140,18 +6236,6 @@
   "Roo.bootstrap.MenuSeparator": {
    "props": [
     {
-     "name": "html",
-     "type": "String",
-     "desc": "the menu label",
-     "memberOf": ""
-    },
-    {
-     "name": "href",
-     "type": "String",
-     "desc": "the link",
-     "memberOf": ""
-    },
-    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
@@ -6377,6 +6461,126 @@
     }
    ]
   },
+  "Roo.bootstrap.NavGroup": {
+   "props": [
+    {
+     "name": "align",
+     "type": "String",
+     "desc": "left | right",
+     "memberOf": ""
+    },
+    {
+     "name": "inverse",
+     "type": "Boolean",
+     "desc": "false | true",
+     "memberOf": ""
+    },
+    {
+     "name": "cls",
+     "type": "String",
+     "desc": "css class",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "style",
+     "type": "String",
+     "desc": "any extra css",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "disableClass",
+     "type": "String",
+     "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
+     "memberOf": "Roo.Component"
+    },
+    {
+     "name": "allowDomMove",
+     "type": "Boolean",
+     "desc": "Whether the component can move the Dom node when rendering (defaults to true).",
+     "memberOf": "Roo.Component"
+    },
+    {
+     "name": "hideMode",
+     "type": "String",
+     "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+     "memberOf": "Roo.Component"
+    },
+    {
+     "name": "actionMode",
+     "type": "String",
+     "desc": "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el'",
+     "memberOf": "Roo.Component"
+    },
+    {
+     "name": "listeners",
+     "type": "Object",
+     "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+     "memberOf": "Roo.util.Observable"
+    }
+   ],
+   "events": [
+    {
+     "name": "beforedestroy",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires before the component is destroyed. Return false to stop the destroy."
+    },
+    {
+     "name": "beforehide",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires before the component is hidden. Return false to stop the hide."
+    },
+    {
+     "name": "beforerender",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires before the component is rendered. Return false to stop the render."
+    },
+    {
+     "name": "beforeshow",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires before the component is shown.  Return false to stop the show."
+    },
+    {
+     "name": "destroy",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the component is destroyed."
+    },
+    {
+     "name": "disable",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the component is disabled."
+    },
+    {
+     "name": "enable",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the component is enabled."
+    },
+    {
+     "name": "hide",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the component is hidden."
+    },
+    {
+     "name": "render",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the component is rendered."
+    },
+    {
+     "name": "show",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the component is shown."
+    }
+   ]
+  },
   "Roo.bootstrap.Navbar": {
    "props": [
     {
@@ -6412,19 +6616,19 @@
     {
      "name": "type",
      "type": "String",
-     "desc": "(nav|pills|tabs)",
+     "desc": "(nav | pills | tabs)",
      "memberOf": ""
     },
     {
      "name": "arrangement",
      "type": "Boolean",
-     "desc": "stacked|justified",
+     "desc": "stacked | justified",
      "memberOf": ""
     },
     {
      "name": "align",
      "type": "String",
-     "desc": "(left|right) alignment",
+     "desc": "(left | right) alignment",
      "memberOf": ""
     },
     {
@@ -6788,9 +6992,39 @@
   "Roo.bootstrap.Pagination": {
    "props": [
     {
-     "name": "colspan",
-     "type": "number",
-     "desc": "Number of columsn to span",
+     "name": "size",
+     "type": "String",
+     "desc": "xs | sm | md | lg",
+     "memberOf": ""
+    },
+    {
+     "name": "inverse",
+     "type": "Boolean",
+     "desc": "false | true",
+     "memberOf": ""
+    },
+    {
+     "name": "from",
+     "type": "Number",
+     "desc": "pagination starting number",
+     "memberOf": ""
+    },
+    {
+     "name": "to",
+     "type": "Number",
+     "desc": "pagination ending number",
+     "memberOf": ""
+    },
+    {
+     "name": "align",
+     "type": "String",
+     "desc": "empty or left | right",
+     "memberOf": ""
+    },
+    {
+     "name": "active",
+     "type": "Number",
+     "desc": "active page number",
      "memberOf": ""
     },
     {
@@ -7010,18 +7244,6 @@
   "Roo.bootstrap.Slider": {
    "props": [
     {
-     "name": "jumbotron",
-     "type": "Boolean",
-     "desc": "is it a jubmotron element",
-     "memberOf": ""
-    },
-    {
-     "name": "html",
-     "type": "String",
-     "desc": "content of element",
-     "memberOf": ""
-    },
-    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
@@ -7129,12 +7351,6 @@
   },
   "Roo.bootstrap.Table": {
    "props": [
-    {
-     "name": "colspan",
-     "type": "number",
-     "desc": "Number of columsn to span",
-     "memberOf": ""
-    },
     {
      "name": "cls",
      "type": "String",
@@ -7244,12 +7460,6 @@
   "Roo.bootstrap.TableBody": {
    "props": [
     {
-     "name": "colspan",
-     "type": "number",
-     "desc": "Number of columsn to span",
-     "memberOf": ""
-    },
-    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
@@ -7358,12 +7568,6 @@
   "Roo.bootstrap.TableCell": {
    "props": [
     {
-     "name": "colspan",
-     "type": "number",
-     "desc": "Number of columsn to span",
-     "memberOf": ""
-    },
-    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
@@ -7471,12 +7675,6 @@
   },
   "Roo.bootstrap.TableRow": {
    "props": [
-    {
-     "name": "colspan",
-     "type": "number",
-     "desc": "Number of columsn to span",
-     "memberOf": ""
-    },
     {
      "name": "cls",
      "type": "String",
