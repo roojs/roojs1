@@ -68,7 +68,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         var cfg = {
             tag : 'button',
             html: 'hello'
-        }
+        };
         
         if (['a', 'button', 'input', 'submit'].indexOf(this.tag) < 0) {
             throw "Invalid value for tag: " + this.tag + ". must be a, button, input or submit.";
@@ -112,7 +112,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         
         if (true) {
             if (this.theme==='default') {
-                cfg.cls = 'btn'
+                cfg.cls = 'btn';
                 
                 if (this.parentType != 'Navbar') {
                     this.weight = this.weight.length ?  this.weight : 'default';
@@ -124,7 +124,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             } else if (this.theme==='glow') {
                 
                 cfg.tag = 'a';
-                cfg.cls='btn-glow'
+                cfg.cls='btn-glow';
                 
                 if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
                     
@@ -162,7 +162,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             delete cfg.html;
             
         } else if (this.menu) {
-            cfg.tag = 'a'
+            cfg.tag = 'a';
             cfg.cls += ' dropdown test';
         }
         
@@ -205,7 +205,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
                     cls: 'badge',
                     html: this.badge
                 }
-            ]
+            ];
             
             cfg.html='';
         }

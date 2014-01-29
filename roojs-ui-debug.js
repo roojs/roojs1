@@ -27355,6 +27355,10 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
             title: "Name",
             width: 50
         },
+        target:  {
+            title: "Target",
+            width: 120
+        },
         href:  {
             title: "Href",
             width: 220

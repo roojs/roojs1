@@ -183,6 +183,7 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
     align: '',
     direction: '',
     toolbar: false,
+    btn: true,
     
     autoCreate : {
         cls: 'btn-group',
@@ -266,7 +267,6 @@ Roo.bootstrap.Button = function(config){
 };
 
 Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
-    
     html: false,
     active: false,
     weight: '',
@@ -277,22 +277,52 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     isClose: false,
     glyphicon: '',
     badge: '',
+    theme: 'default',
+    inverse: false,
     
-    autoCreate : {
-        cls: 'btn',
-        tag : 'button',
-        html: 'hello'
-    },
+    type: false,
+    
+    toggle: false,
+    ontext: 'ON',
+    offtext: 'OFF',
+    defaulton: true,
     
     getAutoCreate : function(){
         
+        var cfg = {
+            tag : 'button',
+            html: 'hello'
+        };
         
-        Roo.log("Button Parent is : " + this.parent().xtype);
-        
-        
-        var cfg = Roo.apply({}, Roo.bootstrap.Button.superclass.getAutoCreate.call(this));
-        
+        if (['a', 'button', 'input', 'submit'].indexOf(this.tag) < 0) {
+            throw "Invalid value for tag: " + this.tag + ". must be a, button, input or submit.";
+            this.tag = 'button';
+        } else {
+            cfg.tag = this.tag;
+        }
         cfg.html = this.html || cfg.html;
+        
+        if (this.toggle===true) {
+            cfg={
+                tag: 'div',
+                cls: 'slider-frame',
+                cn: [
+                    {
+                        tag: 'span',
+                        'data-on-text':'ON',
+                        'data-off-text':'OFF',
+                        cls: 'slider-button',
+                        html: this.offtext
+                    }
+                ]
+            };
+            
+            if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
+                cfg.cls += ' '+this.weight;
+            }
+            
+            return cfg;
+        }
         
         if (this.isClose) {
             cfg.cls += ' close';
@@ -304,31 +334,42 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             return cfg;
         }
         
-        if (this.parentType != 'Navbar') {
-            this.weight = this.weight.length ?  this.weight : 'default';
+        if (true) {
+            if (this.theme==='default') {
+                cfg.cls = 'btn';
+                
+                if (this.parentType != 'Navbar') {
+                    this.weight = this.weight.length ?  this.weight : 'default';
+                }
+                if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
+                    
+                    cfg.cls += ' btn-' + this.weight;
+                }
+            } else if (this.theme==='glow') {
+                
+                cfg.tag = 'a';
+                cfg.cls='btn-glow';
+                
+                if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
+                    
+                    cfg.cls += ' ' + this.weight;
+                }
+            }
         }
-        if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
-            
-            cfg.cls += ' btn-' + this.weight;
-        } else {
-            
+        
+        if (this.inverse) {
+            this.cls += ' inverse';
         }
+        
         
         if (this.active) {
             cfg.cls += ' active';
         }
         
         cfg.cls += this.size.length ? (' btn-' + this.size) : '';
-        
-        if (['a', 'button', 'input', 'submit'].indexOf(this.tag) < 0) {
-            throw "Invalid value for tag: " + this.tag + ". must be a, button, input or submit.";
-            this.tag = 'button';
-        } else {
-            cfg.tag = this.tag;
-        }
          
         //gsRoo.log(this.parentType);
-        if (this.parentType == 'Navbar') {
+        if (this.parentType === 'Navbar') {
             cfg.tag = 'li';
             
             cfg.cls = '';
@@ -345,7 +386,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             delete cfg.html;
             
         } else if (this.menu) {
-            cfg.tag='a'
+            cfg.tag = 'a';
             cfg.cls += ' dropdown test';
         }
         
@@ -388,14 +429,14 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
                     cls: 'badge',
                     html: this.badge
                 }
-            ]
+            ];
             
             cfg.html='';
         }
         
         if (cfg.tag !== 'a' && this.href !== '') {
             throw "Tag must be a to set href.";
-        } else if (this.href !== '') {
+        } else if (this.href.length > 0) {
             cfg.href = this.href;
         }
         
@@ -445,15 +486,20 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
     
     offset: 0,
     
-	autoCreate : {
-        cls: 'column'
-    },
-    
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Column.superclass.getAutoCreate.call(this));
-        cfg.cls += 'col-md-' + this.colspan;
-	
-	
+        
+        cfg = {
+            tag: 'div',
+            cls: 'column'
+        };
+        
+        var settings=this;
+        ['xs','sm','md','lg'].map(function(size){
+            if (settings[size]) {
+                cfg.cls += ' col-' + size + '-' + settings[size];
+            }
+        });
 	
         return cfg;
     }
@@ -499,6 +545,9 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         if (this.jumbotron) {
             cfg.cls = 'jumbotron';
         }
+	if (this.cls) {
+	    cfg.cls = '';
+	}
         
         cfg.html = this.html || cfg.html;
         return cfg;
@@ -637,6 +686,10 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
  * Bootstrap Input class
  * @cfg {boolean} disabled is it disabled
  * @cfg {string} fieldLabel - the label associated
+ * @cfg {string}  inputType - input / file submit ...
+ * @cfg {string} placeholder - placeholder to put in text.
+ * @cfg {string}  before - input group add on before
+ * @cfg {string} after - input group add on after
  * 
  * 
  * @constructor
@@ -655,6 +708,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     inputType : 'text',
     disabled : false,
     name : false,
+    before : false,
+    after : false,
     
     getAutoCreate : function(){
         
@@ -680,9 +735,37 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             input.name = name;
         }
         
-        switch(align) {
-            case 'left':
-                
+        var inputblock = input;
+        
+        if (this.before || this.after) {
+            
+            inputblock = {
+                cls : 'input-group',
+                cn :  [] 
+            };
+            if (this.before) {
+                inputblock.cn.push({
+                    tag :'span',
+                    cls : 'input-group-addon',
+                    html : this.before
+                });
+            }
+            inputblock.cn.push(input);
+            if (this.after) {
+                inputblock.cn.push({
+                    tag :'span',
+                    cls : 'input-group-addon',
+                    html : this.after
+                });
+            }
+            
+        }
+        
+        Roo.log(align);
+        Roo.log(this.fieldLabel.length);
+        
+        if (align ==='left' && this.fieldLabel.length) {
+                Roo.log("left and has label");
                 cfg.cn = [
                     
                     {
@@ -695,14 +778,13 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                     {
                         cls : "col-sm-10", 
                         cn: [
-                            input
+                            inputblock
                         ]
                     }
                     
                 ];
-                break;
-            default:
-                
+        } else if ( this.fieldLabel.length) {
+                Roo.log(" label");
                  cfg.cn = [
                    
                     {
@@ -712,10 +794,19 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                         
                     },
                     
-                    input
+                    inputblock
                     
                 ];
-                break;
+
+        } else {
+            
+                   Roo.log(" no label && no align");
+                cfg.cn = [
+                    
+                        inputblock
+                    
+                ];
+                
                 
         }
          
@@ -825,12 +916,17 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
 	//if (['right'].indexOf(this.align)!==-1) {
 	//    cfg.cn[1].cls += ' pull-right'
 	//}
-	
-        return {
+	var cfg = {
 	    tag : 'ul',
 	    cls : 'dropdown-menu' 
-            
-        };
+	    
+	}
+	
+	if (this.type==='submenu') {
+	    cfg.cls='submenu active'
+	}
+	
+        return cfg;
     },
     initEvents : function() {
        // Roo.log("ADD event");
@@ -1215,42 +1311,42 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
                 role: 'navigation',
                 cn: [
                     {
-                    tag: 'div',
-                    cls: 'navbar-header',
-                    cn: [
-                        {
-                        tag: 'button',
-                        type: 'button',
-                        cls: 'navbar-toggle',
-                        'data-toggle': 'collapse',
+                        tag: 'div',
+                        cls: 'navbar-header',
                         cn: [
                             {
-                            tag: 'span',
-                            cls: 'sr-only',
-                            html: 'Toggle navigation'
-                            },
-                            {
-                            tag: 'span',
-                            cls: 'icon-bar'
-                            },
-                            {
-                            tag: 'span',
-                            cls: 'icon-bar'
-                            },
-                            {
-                            tag: 'span',
-                            cls: 'icon-bar'
+                            tag: 'button',
+                            type: 'button',
+                            cls: 'navbar-toggle',
+                            'data-toggle': 'collapse',
+                            cn: [
+                                {
+                                    tag: 'span',
+                                    cls: 'sr-only',
+                                    html: 'Toggle navigation'
+                                },
+                                {
+                                    tag: 'span',
+                                    cls: 'icon-bar'
+                                },
+                                {
+                                    tag: 'span',
+                                    cls: 'icon-bar'
+                                },
+                                {
+                                    tag: 'span',
+                                    cls: 'icon-bar'
+                                }
+                            ]
                             }
                         ]
-                        }
-                    ]
                     },
                     {
                     tag: 'div',
                     cls: 'collapse navbar-collapse'
                     }
                 ]
-            }
+            };
             
             cfg.cls += this.inverse ? ' navbar-inverse' : ' navbar-default';
             
@@ -1319,8 +1415,8 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         if (this.bar === true) {
             return this.el.select('.collapse',true).first();
         }
-        
-           return this.el;
+        console.log(this);
+        return this.el;
     }
    
 });
@@ -1351,7 +1447,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         
         if (this.parent().sidebar === true) {
             cfg = {
-                tag: 'div',
+                tag: 'ul',
                 cls: 'dashboard-menu'
             }
             
@@ -1375,10 +1471,6 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         
         
         return cfg;
-    },
-    
-    getChildContainer : function() {
-        return this.el;
     }
    
 });
@@ -1465,8 +1557,6 @@ Roo.extend(Roo.bootstrap.Navbar.Button, Roo.bootstrap.Component,  {
  * Create a new Navbar Button
  * @param {Object} config The config object
  */
-
-
 Roo.bootstrap.Navbar.Item = function(config){
     Roo.bootstrap.Navbar.Item.superclass.constructor.call(this, config);
 };
@@ -1476,7 +1566,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
     href: false,
     html: '',
     badge: '',
-     
+    icon: false,
     glyphicon: false,
     
     getAutoCreate : function(){
@@ -1486,20 +1576,31 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 	if (this.parent().parent().sidebar === true) {
 	    cfg = {
 		tag: 'li',
+		cls: '',
 		cn: [
 		    {
-			tag: 'p'
+			tag: 'p',
+			cls: ''
 		    }
 		]
+	    }
+	    
+	    if (this.html) {
+		cfg.cn[0].html = this.html;
+	    }
+	    
+	    if (this.active) {
+		this.cls += ' active';
+	    }
+	    
+	    if (this.menu) {
+		cfg.cn[0].cls += ' dropdown-toggle';
+		cfg.cn[0].html = (cfg.cn[0].html || this.html) + '<span class="glyphicon glyphicon-chevron-down"></span>';
 	    }
 	    
 	    if (this.href) {
 		cfg.cn[0].tag = 'a',
 		cfg.cn[0].href = this.href;
-	    }
-	    
-	    if (this.html) {
-		cfg.cn[0].html = this.html;
 	    }
 	    
 	    if (this.glyphicon) {
@@ -1571,7 +1672,6 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
     }
    
 });
-
  
 
  /*
@@ -1601,6 +1701,327 @@ Roo.extend(Roo.bootstrap.Row, Roo.bootstrap.Component,  {
         cls: 'row clearfix'
     }
  
+   
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * column
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.Column
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Column class
+ * @cfg {number} colspan  Number of columsn to span
+ * 
+ * @constructor
+ * Create a new Column
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.Element = function(config){
+    Roo.bootstrap.Element.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
+    
+    tag: 'div',
+    cls: '',
+    html: '',
+    
+    
+    
+    getAutoCreate : function(){
+        var cfg = Roo.apply({}, Roo.bootstrap.Element.superclass.getAutoCreate.call(this));
+	
+	cfg = {
+	    tag: this.tag,
+	    cls: '',
+            html: this.html
+	}
+	
+        return cfg;
+    }
+   
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * column
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.Column
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Column class
+ * @cfg {number} colspan  Number of columsn to span
+ * 
+ * @constructor
+ * Create a new Column
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.Pagination = function(config){
+    Roo.bootstrap.Pagination.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
+    
+    html: false,
+    cls: false,
+    size: false,
+    inverse: false,
+    from: 1,
+    to: 4,
+    align: false,
+    active: 1,
+    
+    getAutoCreate : function(){
+        cfg = {
+            tag: 'ul',
+                cls: 'pagination',
+                cn: []
+        };
+        if (this.inverse) {
+            cfg.cls += ' inverse';
+        }
+        if (this.html) {
+            cfg.html=this.html;
+        }
+        if (this.cls) {
+            cfg.cls=this.cls;
+        }
+        cfg.cn[0]={
+            tag: 'li',
+            cn: [
+                {
+                    tag: 'a',
+                    href:'#',
+                    html: '&laquo;'
+                }
+            ]
+        };
+        var from=this.from>0?this.from:1;
+        var to=this.to-from<=10?this.to:from+10;
+        var active=this.active>=from&&this.active<=to?this.active:null;
+        for (var i=from;i<=to;i++) {
+            cfg.cn.push(
+                {
+                    tag: 'li',
+                    cls: active===i?'active':'',
+                    cn: [
+                        {
+                            tag: 'a',
+                            href: '#',
+                            html: i
+                        }
+                    ]
+                }
+            );
+        }
+        
+        cfg.cn.push(
+            {
+                tag: 'li',
+                cn: [
+                    {
+                       tag: 'a',
+                       href: '#',
+                       html: '&raquo;'
+                    }
+                ]
+            }
+        );
+	
+        return cfg;
+    }
+   
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * page container.
+ * 
+ */
+
+
+/**
+ * @class Roo.bootstrap.Container
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Container class
+ * @cfg {Boolean} jumbotron is it a jubmotron element
+ * @cfg {String} html content of element
+ *    
+ * @constructor
+ * Create a new Container
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.Slider = function(config){
+    Roo.bootstrap.Slider.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.Slider, Roo.bootstrap.Component,  {
+	
+    getAutoCreate : function(){
+        
+        var cfg = {
+            tag: 'div',
+            cls: 'slider slider-sample1 vertical-handler ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all',
+            cn: [
+                {
+                    tag: 'a',
+                    cls: 'ui-slider-handle ui-state-default ui-corner-all'
+                }
+            ]
+        }
+        
+        return cfg;
+    }
+   
+});
+
+ /*
+ * - LGPL
+ *
+ * column
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.Column
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Column class
+ * @cfg {number} colspan  Number of columsn to span
+ * 
+ * @constructor
+ * Create a new Column
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.Table = function(config){
+    Roo.bootstrap.Table.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
+    
+    html: false,
+    cls: false,
+    
+    getAutoCreate : function(){
+        var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
+	
+	cfg = {
+	    tag: 'table',
+	    cn: [
+		{
+		    tag: 'tbody'
+		}
+	    ]
+	}
+        if (this.html) {
+            cfg.html=this.html
+        }
+        if (this.cls) {
+            cfg.cls=this.cls
+        }
+	
+        return cfg;
+    }
+   
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * column
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.Column
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Column class
+ * @cfg {number} colspan  Number of columsn to span
+ * 
+ * @constructor
+ * Create a new Column
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.TableCell = function(config){
+    Roo.bootstrap.TableCell.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.TableCell, Roo.bootstrap.Component,  {
+    
+    getAutoCreate : function(){
+        var cfg = Roo.apply({}, Roo.bootstrap.TableCell.superclass.getAutoCreate.call(this));
+	
+	cfg = {
+	    tag: 'td'
+	}
+        if (this.html) {
+            cfg.html=this.html
+        }
+        if (this.cls) {
+            cfg.cls=this.cls
+        }
+	
+        return cfg;
+    }
+   
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * column
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.Column
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Column class
+ * @cfg {number} colspan  Number of columsn to span
+ * 
+ * @constructor
+ * Create a new Column
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.TableRow = function(config){
+    Roo.bootstrap.TableRow.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.TableRow, Roo.bootstrap.Component,  {
+    
+    getAutoCreate : function(){
+        var cfg = Roo.apply({}, Roo.bootstrap.TableRow.superclass.getAutoCreate.call(this));
+	
+	cfg = {
+	    tag: 'tr'
+	}
+	
+        return cfg;
+    }
    
 });
 

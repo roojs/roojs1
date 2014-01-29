@@ -34,18 +34,18 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Column.superclass.getAutoCreate.call(this));
-	
-	cfg = {
-	    tag: 'div',
-	    cls: 'column'
-	}
-	
-	var settings=this;
-	['xs','sm','md','lg'].map(function(size){
-	    if (settings[size]) {
-		cfg.cls += ' col-' + size + '-' + settings[size];
-	    }
-	})
+        
+        cfg = {
+            tag: 'div',
+            cls: 'column'
+        };
+        
+        var settings=this;
+        ['xs','sm','md','lg'].map(function(size){
+            if (settings[size]) {
+                cfg.cls += ' col-' + size + '-' + settings[size];
+            }
+        });
 	
         return cfg;
     }

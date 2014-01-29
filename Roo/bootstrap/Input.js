@@ -13,6 +13,12 @@
  * @cfg {String} fieldLabel - the label associated
  * @cfg {String} inputType button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text
  * @cfg {String} name name of the input
+ * @cfg {boolean} disabled is it disabled
+ * @cfg {string} fieldLabel - the label associated
+ * @cfg {string}  inputType - input / file submit ...
+ * @cfg {string} placeholder - placeholder to put in text.
+ * @cfg {string}  before - input group add on before
+ * @cfg {string} after - input group add on after
  * 
  * 
  * @constructor
@@ -32,6 +38,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     disabled : false,
     name : false,
     placeholder: false,
+    before : false,
+    after : false,
     
     getAutoCreate : function(){
         
@@ -57,9 +65,37 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             input.name = name;
         }
         
-        switch(align) {
-            case 'left':
-                
+        var inputblock = input;
+        
+        if (this.before || this.after) {
+            
+            inputblock = {
+                cls : 'input-group',
+                cn :  [] 
+            };
+            if (this.before) {
+                inputblock.cn.push({
+                    tag :'span',
+                    cls : 'input-group-addon',
+                    html : this.before
+                });
+            }
+            inputblock.cn.push(input);
+            if (this.after) {
+                inputblock.cn.push({
+                    tag :'span',
+                    cls : 'input-group-addon',
+                    html : this.after
+                });
+            }
+            
+        }
+        
+        Roo.log(align);
+        Roo.log(this.fieldLabel.length);
+        
+        if (align ==='left' && this.fieldLabel.length) {
+                Roo.log("left and has label");
                 cfg.cn = [
                     
                     {
@@ -72,14 +108,13 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                     {
                         cls : "col-sm-10", 
                         cn: [
-                            input
+                            inputblock
                         ]
                     }
                     
                 ];
-                break;
-            default:
-                
+        } else if ( this.fieldLabel.length) {
+                Roo.log(" label");
                  cfg.cn = [
                    
                     {
@@ -89,10 +124,19 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                         
                     },
                     
-                    input
+                    inputblock
                     
                 ];
-                break;
+
+        } else {
+            
+                   Roo.log(" no label && no align");
+                cfg.cn = [
+                    
+                        inputblock
+                    
+                ];
+                
                 
         }
          

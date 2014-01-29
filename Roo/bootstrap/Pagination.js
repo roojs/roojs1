@@ -36,19 +36,19 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
     active: 1,
     
     getAutoCreate : function(){
-	cfg = {
-	    tag: 'ul',
-            cls: 'pagination',
-            cn: []
-	}
+        cfg = {
+            tag: 'ul',
+                cls: 'pagination',
+                cn: []
+        };
         if (this.inverse) {
-            cfg.cls += ' inverse'
+            cfg.cls += ' inverse';
         }
         if (this.html) {
-            cfg.html=this.html
+            cfg.html=this.html;
         }
         if (this.cls) {
-            cfg.cls=this.cls
+            cfg.cls=this.cls;
         }
         cfg.cn[0]={
             tag: 'li',
@@ -59,7 +59,7 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
                     html: '&laquo;'
                 }
             ]
-        }
+        };
         var from=this.from>0?this.from:1;
         var to=this.to-from<=10?this.to:from+10;
         var active=this.active>=from&&this.active<=to?this.active:null;
@@ -76,7 +76,7 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
                         }
                     ]
                 }
-            )
+            );
         }
         
         cfg.cn.push(
@@ -90,7 +90,7 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
                     }
                 ]
             }
-        )
+        );
 	
         return cfg;
     }
