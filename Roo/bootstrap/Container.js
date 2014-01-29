@@ -47,7 +47,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
                 case 'sm':
                     cfg.cls +'well well-' +this.well;
                     break;
-                default;
+                default:
                     cfg.cls +'well';
                     break;
             }
