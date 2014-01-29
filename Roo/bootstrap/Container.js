@@ -12,7 +12,7 @@
  * Bootstrap Container class
  * @cfg {Boolean} jumbotron is it a jumbotron element
  * @cfg {String} html content of element
- * @cfg {Boolean} well container is a well
+ * @cfg {String} well (lg|sm|md) a well, large, small or medium.
  *    
  * @constructor
  * Create a new Container
@@ -26,7 +26,7 @@ Roo.bootstrap.Container = function(config){
 Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     
     jumbotron : false,
-    well: false,
+    well: '',
     
     getAutoCreate : function(){
         
@@ -37,9 +37,21 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         if (this.jumbotron) {
             cfg.cls = 'jumbotron';
         }
-	if (this.cls) {
-	    cfg.cls = '';
-	}
+        if (this.cls) {
+            cfg.cls = '';
+        }
+        
+        if (this.well.length) {
+            switch (this.well) {
+                case 'lg':
+                case 'sm':
+                    cfg.cls +'well well-' +this.well;
+                    break;
+                default;
+                    cfg.cls +'well';
+                    break;
+            }
+        }
         
         cfg.html = this.html || cfg.html;
         return cfg;
