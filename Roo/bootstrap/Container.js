@@ -37,7 +37,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         }
         
         return this.el;
-    }
+    },
     
     
     getAutoCreate : function(){
