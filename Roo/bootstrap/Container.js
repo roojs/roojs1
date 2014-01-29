@@ -30,6 +30,15 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     panel : '',
     header: '',
     footer : '',
+     
+    getChildContainer : function() {
+        if (this.panel.length) {
+            return this.el.select('.panel-body',true).first();
+        }
+        
+        return this.el;
+    }
+    
     
     getAutoCreate : function(){
         
