@@ -53,7 +53,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             cfg.cls = 'jumbotron';
         }
         if (this.cls) {
-            cfg.cls = '';
+            cfg.cls = this.cls;
         }
         
         if (this.well.length) {
