@@ -534,6 +534,10 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
  * @cfg {Boolean} jumbotron is it a jumbotron element
  * @cfg {String} html content of element
  * @cfg {String} well (lg|sm|md) a well, large, small or medium.
+ * @cfg {String} panel (primary|success|info|warning|danger) render as a panel.
+ * @cfg {String} header content of header (for panel)
+ * @cfg {String} footer content of footer (for panel)
+ * 
  *    
  * @constructor
  * Create a new Container
@@ -548,6 +552,18 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     
     jumbotron : false,
     well: '',
+    panel : '',
+    header: '',
+    footer : '',
+     
+    getChildContainer : function() {
+        if (this.panel.length) {
+            return this.el.select('.panel-body',true).first();
+        }
+        
+        return this.el;
+    },
+    
     
     getAutoCreate : function(){
         
@@ -559,7 +575,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             cfg.cls = 'jumbotron';
         }
         if (this.cls) {
-            cfg.cls = '';
+            cfg.cls = this.cls;
         }
         
         if (this.well.length) {
@@ -574,7 +590,39 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             }
         }
         
-        cfg.html = this.html || cfg.html;
+        var body = cfg;
+        
+        if (this.panel.length) {
+            cfg.cls += 'panel panel-' + this.panel;
+            cfg.cn = [];
+            if (this.header.length) {
+                cfg.cn.push({
+                    tag: 'h3',
+                    cls : 'panel-heading',
+                    html : this.header
+                });
+            }
+            body = false;
+            cfg.cn.push({
+                cls : 'panel-body',
+                html : this.html
+            });
+            
+            
+            if (this.footer.length) {
+                cfg.cn.push({
+                    tag: 'h3',
+                    cls : 'panel-footer',
+                    html : this.footer
+                });
+            }
+            
+        }
+        if (body) {
+            body.html = this.html || cfg.html;
+        }
+        
+        
         return cfg;
     }
    
