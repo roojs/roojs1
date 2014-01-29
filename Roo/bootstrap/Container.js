@@ -99,7 +99,9 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         if (body) {
             body.html = this.html || cfg.html;
         }
-        
+        if (!cfg.cls.length) {
+            cfg.cls =  'container';
+        }
         
         return cfg;
     }
