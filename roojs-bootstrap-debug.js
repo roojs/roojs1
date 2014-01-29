@@ -1,7 +1,7 @@
 /*
  * - LGPL
  *
- * base class for bootstrap elements..
+ * base class for bootstrap elements.
  * 
  */
 
@@ -25,8 +25,8 @@ Roo.bootstrap.Component = function(config){
 };
 
 Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
-      
-	cls : false,
+    
+    cls : false,
     
     style : false,
     
@@ -64,9 +64,10 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             this.el.dom.setAttribute('tabIndex', this.tabIndex);
         }
         this.initEvents();
-    
+	
         
     },
+    
     getChildContainer : function()
     {
         return this.el;
@@ -112,22 +113,22 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         for(var i =0;i < items.length;i++) {
             nitems.push(cn.addxtype(Roo.apply({}, items[i])));
         }
-    
+	
         this.items = nitems;
 	
 	
         return this;
     }
     
-     
- 
+    
+    
     
 });
 
  /*
  * - LGPL
  *
- * page contgainer.
+ * page container.
  * 
  */ 
 Roo.bootstrap.Body = function(config){
@@ -154,7 +155,7 @@ Roo.extend(Roo.bootstrap.Body, Roo.bootstrap.Component,  {
  /*
  * - LGPL
  *
- * page contgainer.
+ * button group
  * 
  */
 
@@ -163,9 +164,11 @@ Roo.extend(Roo.bootstrap.Body, Roo.bootstrap.Component,  {
  * @class Roo.bootstrap.ButtonGroup
  * @extends Roo.bootstrap.Component
  * Bootstrap ButtonGroup class
- * @cfg {string} size lg | sm | xs (default empty normal)
- * @cfg {string} align vertical | justified  (default none)
- * @cfg {string} direction up | down (default down)
+ * @cfg {String} size lg | sm | xs (default empty normal)
+ * @cfg {String} align vertical | justified  (default none)
+ * @cfg {String} direction up | down (default down)
+ * @cfg {Boolean} toolbar false | true
+ * @cfg {Boolean} btn true | false
  * 
  * 
  * @constructor
@@ -184,15 +187,12 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
     direction: '',
     toolbar: false,
     btn: true,
-    
-    autoCreate : {
-        cls: 'btn-group',
-        html : null
-    },
 
     getAutoCreate : function(){
-        
-        var cfg = Roo.apply({}, Roo.bootstrap.ButtonGroup.superclass.getAutoCreate.call(this));
+        var cfg = {
+            cls: 'btn-group',
+            html : null
+        }
         
         cfg.html = this.html || cfg.html;
         
@@ -229,7 +229,7 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
  /*
  * - LGPL
  *
- * row
+ * button
  * 
  */
 
@@ -238,14 +238,20 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
  * @extends Roo.bootstrap.Component
  * Bootstrap Button class
  * @cfg {String} html The button content
- * @cfg {String} weight default (or empty) | primary | success | info | warning
+ * @cfg {String} weight default (or empty) | primary | success | info | warning | danger
  * @cfg {String} size empty | lg | sm | xs
  * @cfg {String} tag empty | a | input | submit
  * @cfg {String} href empty or href
  * @cfg {Boolean} disabled false | true
  * @cfg {Boolean} isClose false | true
- * @cfg {String} empty | see glyphicon reference list
+ * @cfg {String} glyphicon empty | adjust | align-center | align-justify | align-left | align-right | arrow-down | arrow-left | arrow-right | arrow-up | asterisk | backward | ban-circle | barcode | bell | bold | book | bookmark | briefcase | bullhorn | calendar | camera | certificate | check | chevron-down | chevron-left | chevron-right | chevron-up | circle-arrow-down | circle-arrow-left | circle-arrow-right | circle-arrow-up | cloud | cloud-download | cloud-upload | cog | collapse-down | collapse-up | comment | compressed | copyright-mark | credit-card | cutlery | dashboard | download | download-alt | earphone | edit | eject | envelope | euro | exclamation-sign | expand | export | eye-close | eye-open | facetime-video | fast-backward | fast-forward | file | film | filter | fire | flag | flash | floppy-disk | floppy-open | floppy-remove | floppy-save | floppy-saved | folder-close | folder-open | font | forward | fullscreen | gbp | gift | glass | globe | hand-down | hand-left | hand-right | hand-up | hd-video | hdd | header | headphones | heart | heart-empty | home | import | inbox | indent-left | indent-right | info-sign | italic | leaf | link | list | list-alt | lock | log-in | log-out | magnet | map-marker | minus | minus-sign | move | music | new-window | off | ok | ok-circle | ok-sign | open | paperclip | pause | pencil | phone | phone-alt | picture | plane | play | play-circle | plus | plus-sign | print | pushpin | qrcode | question-sign | random | record | refresh | registration-mark | remove | remove-circle | remove-sign | repeat | resize-full | resize-horizontal | resize-small | resize-vertical | retweet | road | save | saved | screenshot | sd-video | search | send | share | share-alt | shopping-cart | signal | sort | sort-by-alphabet | sort-by-alphabet-alt | sort-by-attributes | sort-by-attributes-alt | sort-by-order | sort-by-order-alt | sound-5-1 | sound-6-1 | sound-7-1 | sound-dolby | sound-stereo | star | star-empty | stats | step-backward | step-forward | stop | subtitles | tag | tags | tasks | text-height | text-width | th | th-large | th-list | thumbs-down | thumbs-up | time | tint | tower | transfer | trash | tree-conifer | tree-deciduous | unchecked | upload | usd | user | volume-down | volume-off | volume-up | warning-sign | wrench | zoom-in | zoom-out
  * @cfg {String} badge text for badge
+ * @cfg {String} theme default (or empty) | glow
+ * @cfg {Boolean} inverse false | true
+ * @cfg {Boolean} toggle false | true
+ * @cfg {String} ontext text for on toggle state
+ * @cfg {String} offtext text for off toggle state
+ * @cfg {Boolean} defaulton true | false
  * 
  * @constructor
  * Create a new button
@@ -279,8 +285,6 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     badge: '',
     theme: 'default',
     inverse: false,
-    
-    type: false,
     
     toggle: false,
     ontext: 'ON',
@@ -466,7 +470,10 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
  * @class Roo.bootstrap.Column
  * @extends Roo.bootstrap.Component
  * Bootstrap Column class
- * @cfg {number} colspan  Number of columsn to span
+ * @cfg {Number} xs colspan out of 12 for mobile-sized screens
+ * @cfg {Number} sm colspan out of 12 for tablet-sized screens
+ * @cfg {Number} md colspan out of 12 for computer-sized screens
+ * @cfg {Number} lg colspan out of 12 for large computer-sized screens
  * 
  * @constructor
  * Create a new Column
@@ -520,8 +527,9 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
  * @class Roo.bootstrap.Container
  * @extends Roo.bootstrap.Component
  * Bootstrap Container class
- * @cfg {Boolean} jumbotron is it a jubmotron element
+ * @cfg {Boolean} jumbotron is it a jumbotron element
  * @cfg {String} html content of element
+ * @cfg {Boolean} well container is a well
  *    
  * @constructor
  * Create a new Container
@@ -533,9 +541,10 @@ Roo.bootstrap.Container = function(config){
 };
 
 Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
-     
-    jumbotron : false, // doc me
-	
+    
+    jumbotron : false,
+    well: false,
+    
     getAutoCreate : function(){
         
         var cfg = {
@@ -558,7 +567,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
  /*
  * - LGPL
  *
- * row
+ * form
  * 
  */
 
@@ -570,7 +579,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
  * @cfg {String} labelAlign top | left (default top)
  * 
  * @constructor
- * Create a new button
+ * Create a new Form
  * @param {Object} config The config object
  */
 
@@ -618,19 +627,19 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
 /*
  * - LGPL
  *
- * page contgainer.
+ * image
  * 
  */
 
 
 /**
- * @class Roo.bootstrap.ButtonGroup
+ * @class Roo.bootstrap.Img
  * @extends Roo.bootstrap.Component
- * Bootstrap ButtonGroup class
- * @cfg {string} size lg | sm | xs (default empty normal)
- * @cfg {string} align vertical | justified  (default none)
- * @cfg {string} direction up | down (default down)
- * 
+ * Bootstrap Img class
+ * @cfg {Boolean} imgResponsive false | true
+ * @cfg {String} border rounded | circle | thumbnail
+ * @cfg {String} src image source
+ * @cfg {String} alt image alternative text
  * 
  * @constructor
  * Create a new Input
@@ -646,16 +655,14 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
     imgResponsive: true,
     border: '',
     src: '',
-    
-    autoCreate : {
-        tag: 'img',
-        cls: 'img-responsive',
-        html : null
-    },
 
     getAutoCreate : function(){
         
-        var cfg = Roo.apply({}, Roo.bootstrap.Img.superclass.getAutoCreate.call(this));
+        cfg = {
+            tag: 'img',
+            cls: 'img-responsive',
+            html : null
+        }
         
         cfg.html = this.html || cfg.html;
         
@@ -677,13 +684,18 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
  /*
  * - LGPL
  *
- * row
+ * Input
  * 
  */
+
 /**
  * @class Roo.bootstrap.Input
  * @extends Roo.bootstrap.Component
  * Bootstrap Input class
+ * @cfg {Boolean} disabled is it disabled
+ * @cfg {String} fieldLabel - the label associated
+ * @cfg {String} inputType button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text
+ * @cfg {String} name name of the input
  * @cfg {boolean} disabled is it disabled
  * @cfg {string} fieldLabel - the label associated
  * @cfg {string}  inputType - input / file submit ...
@@ -708,6 +720,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     inputType : 'text',
     disabled : false,
     name : false,
+    placeholder: false,
     before : false,
     after : false,
     
@@ -835,17 +848,17 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
 /*
  * - LGPL
  *
- * row
+ * header
  * 
  */
+
 /**
  * @class Roo.bootstrap.Header
  * @extends Roo.bootstrap.Component
  * Bootstrap Header class
-  * @cfg {String} html content of header
-  * @cfg {Number} level (1|2|3|4|5|6|7) default 1
-    
-  }
+ * @cfg {String} html content of header
+ * @cfg {Number} level (1|2|3|4|5|6) default 1
+ * 
  * @constructor
  * Create a new Header
  * @param {Object} config The config object
@@ -881,7 +894,7 @@ Roo.extend(Roo.bootstrap.Header, Roo.bootstrap.Component,  {
  /*
  * - LGPL
  *
- * row
+ * menu
  * 
  */
 
@@ -889,6 +902,7 @@ Roo.extend(Roo.bootstrap.Header, Roo.bootstrap.Component,  {
  * @class Roo.bootstrap.Menu
  * @extends Roo.bootstrap.Component
  * Bootstrap Menu class - container for MenuItems
+ * @cfg {String} type type of menu
  * 
  * @constructor
  * Create a new Menu
@@ -905,6 +919,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
    /// html : false,
     //align : '',
     triggerEl : false,
+    type: false,
     
     
     getChildContainer : function() {
@@ -991,7 +1006,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
  /*
  * - LGPL
  *
- * row
+ * menu item
  * 
  */
 
@@ -1001,7 +1016,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
  * @extends Roo.bootstrap.Component
  * Bootstrap MenuItem class
  * @cfg {String} html the menu label
- * @cfg {String} href the link 
+ * @cfg {String} href the link
  * 
  * 
  * @constructor
@@ -1019,21 +1034,18 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
     href : false,
     html : false,
     
-    
-    
     getAutoCreate : function(){
         var cfg= {
-            // cls: '',
-             tag : 'li',
-             cn : [
-             {
-                 tag : 'a',
-                 href : '#',
-                 html : 'Link'
-             }
-             ]
-         };
-	    
+	    tag: 'li',
+	    cn: [
+		{
+		    tag : 'a',
+		    href : '#',
+		    html : 'Link'
+		}
+	    ]
+        };
+	
         cfg.cn[0].href = this.href || cfg.cn[0].href ;
         cfg.cn[0].html = this.html || cfg.cn[0].html ;
         return cfg;
@@ -1046,18 +1058,15 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
  /*
  * - LGPL
  *
- * row
+ * menu separator
  * 
  */
 
 
 /**
- * @class Roo.bootstrap.MenuItem
+ * @class Roo.bootstrap.MenuSeparator
  * @extends Roo.bootstrap.Component
- * Bootstrap MenuItem class
- * @cfg {String} html the menu label
- * @cfg {String} href the link 
- * 
+ * Bootstrap MenuSeparator class
  * 
  * @constructor
  * Create a new MenuItem
@@ -1117,7 +1126,7 @@ Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
  * Bootstrap Modal class
  * @cfg {String} title Title of dialog
  * @cfg {Array} buttons Array of buttons
-    
+ * 
  * @constructor
  * Create a new Modal Dialog
  * @param {Object} config The config object
@@ -1251,7 +1260,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
  /*
  * - LGPL
  *
- * row
+ * navbar
  * 
  */
 
@@ -1264,11 +1273,11 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
  * @cfg {String} position (fixed-top|fixed-bottom|static-top) position
  * @cfg {String} brand what is brand
  * @cfg {Boolean} inverse is inverted color
- * @cfg {String} type (nav|pills|tabs)
- * @cfg {Boolean} arrangement stacked|justified
- * @cfg {String} align (left|right) alignment
- 
-    
+ * @cfg {String} type (nav | pills | tabs)
+ * @cfg {Boolean} arrangement stacked | justified
+ * @cfg {String} align (left | right) alignment
+ *
+ * 
  * @constructor
  * Create a new Navbar
  * @param {Object} config The config object
@@ -1401,11 +1410,6 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
             cfg.cls += ' navbar-inverse';
             
         }
-        /* type: nav | tabs | pills
-         * arrangement: stacked | justified
-         * position: fixed/static etc
-         * inverse: true/false
-         */
         
         
         return cfg;
@@ -1426,9 +1430,22 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
  /*
  * - LGPL
  *
- * row
+ * nav group
  * 
- */ 
+ */
+
+/**
+ * @class Roo.bootstrap.NavGroup
+ * @extends Roo.bootstrap.Component
+ * Bootstrap NavGroup class
+ * @cfg {String} align left | right
+ * @cfg {Boolean} inverse false | true
+ * 
+ * @constructor
+ * Create a new nav group
+ * @param {Object} config The config object
+ */
+
 Roo.bootstrap.NavGroup = function(config){
     Roo.bootstrap.NavGroup.superclass.constructor.call(this, config);
 };
@@ -1436,6 +1453,8 @@ Roo.bootstrap.NavGroup = function(config){
 Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     
     align: '',
+    inverse: false,
+    form: false,
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.NavGroup.superclass.getAutoCreate.call(this));
@@ -1454,6 +1473,19 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
             return cfg;
         }
         
+        if (this.form === true) {
+            cfg = {
+                tag: 'form',
+                cls: 'navbar-form'
+            }
+            
+            if (this.align === 'right') {
+                cfg.cls += ' navbar-right';
+            } else {
+                cfg.cls += ' navbar-left';
+            }
+        }
+        
         
         if (this.align === 'right') {
             cfg.cls += ' navbar-right';
@@ -1463,11 +1495,6 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
             cfg.cls += ' navbar-inverse';
             
         }
-        /* type: nav | tabs | pills
-         * arrangement: stacked | justified
-         * position: fixed/static etc
-         * inverse: true/false
-         */
         
         
         return cfg;
@@ -1696,12 +1723,12 @@ Roo.bootstrap.Row = function(config){
 };
 
 Roo.extend(Roo.bootstrap.Row, Roo.bootstrap.Component,  {
-      
-	autoCreate : {
+    
+    autoCreate: {
         cls: 'row clearfix'
     }
- 
-   
+    
+    
 });
 
  
@@ -1709,18 +1736,20 @@ Roo.extend(Roo.bootstrap.Row, Roo.bootstrap.Component,  {
  /*
  * - LGPL
  *
- * column
+ * element
  * 
  */
 
 /**
- * @class Roo.bootstrap.Column
+ * @class Roo.bootstrap.Element
  * @extends Roo.bootstrap.Component
- * Bootstrap Column class
- * @cfg {number} colspan  Number of columsn to span
+ * Bootstrap Element class
+ * @cfg {String} html contents of the element
+ * @cfg {String} tag tag of the element
+ * @cfg {String} cls class of the element
  * 
  * @constructor
- * Create a new Column
+ * Create a new Element
  * @param {Object} config The config object
  */
 
@@ -1755,18 +1784,23 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
  /*
  * - LGPL
  *
- * column
+ * pagination
  * 
  */
 
 /**
- * @class Roo.bootstrap.Column
+ * @class Roo.bootstrap.Pagination
  * @extends Roo.bootstrap.Component
- * Bootstrap Column class
- * @cfg {number} colspan  Number of columsn to span
+ * Bootstrap Pagination class
+ * @cfg {String} size xs | sm | md | lg
+ * @cfg {Boolean} inverse false | true
+ * @cfg {Number} from pagination starting number
+ * @cfg {Number} to pagination ending number
+ * @cfg {String} align empty or left | right
+ * @cfg {Number} active active page number
  * 
  * @constructor
- * Create a new Column
+ * Create a new Pagination
  * @param {Object} config The config object
  */
 
@@ -1776,7 +1810,6 @@ Roo.bootstrap.Pagination = function(config){
 
 Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
     
-    html: false,
     cls: false,
     size: false,
     inverse: false,
@@ -1852,20 +1885,18 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
  /*
  * - LGPL
  *
- * page container.
+ * slider
  * 
  */
 
 
 /**
- * @class Roo.bootstrap.Container
+ * @class Roo.bootstrap.Slider
  * @extends Roo.bootstrap.Component
- * Bootstrap Container class
- * @cfg {Boolean} jumbotron is it a jubmotron element
- * @cfg {String} html content of element
+ * Bootstrap Slider class
  *    
  * @constructor
- * Create a new Container
+ * Create a new Slider
  * @param {Object} config The config object
  */
 
@@ -1874,7 +1905,7 @@ Roo.bootstrap.Slider = function(config){
 };
 
 Roo.extend(Roo.bootstrap.Slider, Roo.bootstrap.Component,  {
-	
+    
     getAutoCreate : function(){
         
         var cfg = {
@@ -1896,18 +1927,17 @@ Roo.extend(Roo.bootstrap.Slider, Roo.bootstrap.Component,  {
  /*
  * - LGPL
  *
- * column
+ * table
  * 
  */
 
 /**
- * @class Roo.bootstrap.Column
+ * @class Roo.bootstrap.Table
  * @extends Roo.bootstrap.Component
- * Bootstrap Column class
- * @cfg {number} colspan  Number of columsn to span
+ * Bootstrap Table class
  * 
  * @constructor
- * Create a new Column
+ * Create a new Table
  * @param {Object} config The config object
  */
 
@@ -1948,18 +1978,17 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
  /*
  * - LGPL
  *
- * column
+ * table cell
  * 
  */
 
 /**
- * @class Roo.bootstrap.Column
+ * @class Roo.bootstrap.TableCell
  * @extends Roo.bootstrap.Component
- * Bootstrap Column class
- * @cfg {number} colspan  Number of columsn to span
+ * Bootstrap TableCell class
  * 
  * @constructor
- * Create a new Column
+ * Create a new TableCell
  * @param {Object} config The config object
  */
 
@@ -1992,18 +2021,17 @@ Roo.extend(Roo.bootstrap.TableCell, Roo.bootstrap.Component,  {
  /*
  * - LGPL
  *
- * column
+ * table row
  * 
  */
 
 /**
- * @class Roo.bootstrap.Column
+ * @class Roo.bootstrap.TableRow
  * @extends Roo.bootstrap.Component
- * Bootstrap Column class
- * @cfg {number} colspan  Number of columsn to span
+ * Bootstrap TableRow class
  * 
  * @constructor
- * Create a new Column
+ * Create a new TableRow
  * @param {Object} config The config object
  */
 
