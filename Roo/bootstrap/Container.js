@@ -13,6 +13,9 @@
  * @cfg {Boolean} jumbotron is it a jumbotron element
  * @cfg {String} html content of element
  * @cfg {String} well (lg|sm|md) a well, large, small or medium.
+ * @cfg {String} panel (primary|success|info|warning|danger) render as a panel.
+ * @cfg {String} panel (primary|success|info|warning|danger) render as a panel. 
+ * 
  *    
  * @constructor
  * Create a new Container
@@ -64,6 +67,9 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
                     break;
             }
         }
+        
+        var body = cfg;
+        
         if (this.panel.length) {
             switch (this.well) {
                 case 'lg':
@@ -77,7 +83,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         }
         
         
-        cfg.html = this.html || cfg.html;
+        body.html = this.html || cfg.html;
         return cfg;
     }
    
