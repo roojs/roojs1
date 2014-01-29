@@ -14,7 +14,8 @@
  * @cfg {String} html content of element
  * @cfg {String} well (lg|sm|md) a well, large, small or medium.
  * @cfg {String} panel (primary|success|info|warning|danger) render as a panel.
- * @cfg {String} panel (primary|success|info|warning|danger) render as a panel. 
+ * @cfg {String} header content of header (for panel)
+ * @cfg {String} footer content of footer (for panel)
  * 
  *    
  * @constructor
