@@ -47,8 +47,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         
         var cfg = {
-            cls: 'container',
-            html : ''
+              html : ''
         };
         if (this.jumbotron) {
             cfg.cls = 'jumbotron';
