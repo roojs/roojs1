@@ -13,6 +13,8 @@
  * @cfg {Number} sm colspan out of 12 for tablet-sized screens
  * @cfg {Number} md colspan out of 12 for computer-sized screens
  * @cfg {Number} lg colspan out of 12 for large computer-sized screens
+ * @cfg {String} lg colspan out of 12 for large computer-sized screens
+
  * 
  * @constructor
  * Create a new Column
