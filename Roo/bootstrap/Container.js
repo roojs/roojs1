@@ -71,19 +71,36 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         var body = cfg;
         
         if (this.panel.length) {
-            switch (this.well) {
-                case 'lg':
-                case 'sm':
-                    cfg.cls +'well well-' +this.well;
-                    break;
-                default:
-                    cfg.cls +'well';
-                    break;
+            cfg.cls += 'panel panel-' + this.panel;
+            cfg.cn = [];
+            if (this.header.length) {
+                cfg.cn.push({
+                    tag: 'h3',
+                    cls : 'panel-heading',
+                    html : this.header
+                });
             }
+            body = false;
+            cfg.cn.push({
+                cls : 'panel-body',
+                html : this.html
+            });
+            
+            
+            if (this.footer.length) {
+                cfg.cn.push({
+                    tag: 'h3',
+                    cls : 'panel-footer',
+                    html : this.footer
+                });
+            }
+            
+        }
+        if (body) {
+            body.html = this.html || cfg.html;
         }
         
         
-        body.html = this.html || cfg.html;
         return cfg;
     }
    
