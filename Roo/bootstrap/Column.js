@@ -29,7 +29,7 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
     sm: null,
     md: null,
     lg: null,
-    
+    html: '',
     offset: 0,
     
     getAutoCreate : function(){
@@ -46,6 +46,9 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
                 cfg.cls += ' col-' + size + '-' + settings[size];
             }
         });
+        if (this.html.length) {
+            cfg.html = html;
+        }
 	
         return cfg;
     }
