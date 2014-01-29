@@ -1,15 +1,18 @@
 /*
  * - LGPL
  *
- * row
+ * Input
  * 
  */
+
 /**
  * @class Roo.bootstrap.Input
  * @extends Roo.bootstrap.Component
  * Bootstrap Input class
- * @cfg {boolean} disabled is it disabled
- * @cfg {string} fieldLabel - the label associated
+ * @cfg {Boolean} disabled is it disabled
+ * @cfg {String} fieldLabel - the label associated
+ * @cfg {String} inputType button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text
+ * @cfg {String} name name of the input
  * 
  * 
  * @constructor
@@ -28,6 +31,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     inputType : 'text',
     disabled : false,
     name : false,
+    placeholder: false,
     
     getAutoCreate : function(){
         

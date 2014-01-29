@@ -10,8 +10,9 @@
  * @class Roo.bootstrap.Container
  * @extends Roo.bootstrap.Component
  * Bootstrap Container class
- * @cfg {Boolean} jumbotron is it a jubmotron element
+ * @cfg {Boolean} jumbotron is it a jumbotron element
  * @cfg {String} html content of element
+ * @cfg {Boolean} well container is a well
  *    
  * @constructor
  * Create a new Container
@@ -23,9 +24,10 @@ Roo.bootstrap.Container = function(config){
 };
 
 Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
-     
-    jumbotron : false, // doc me
-	
+    
+    jumbotron : false,
+    well: false,
+    
     getAutoCreate : function(){
         
         var cfg = {

@@ -1,7 +1,7 @@
 /*
  * - LGPL
  *
- * row
+ * menu
  * 
  */
 
@@ -9,6 +9,7 @@
  * @class Roo.bootstrap.Menu
  * @extends Roo.bootstrap.Component
  * Bootstrap Menu class - container for MenuItems
+ * @cfg {String} type type of menu
  * 
  * @constructor
  * Create a new Menu
@@ -25,6 +26,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
    /// html : false,
     //align : '',
     triggerEl : false,
+    type: false,
     
     
     getChildContainer : function() {

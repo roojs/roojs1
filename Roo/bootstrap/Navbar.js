@@ -1,7 +1,7 @@
 /*
  * - LGPL
  *
- * row
+ * navbar
  * 
  */
 
@@ -14,11 +14,11 @@
  * @cfg {String} position (fixed-top|fixed-bottom|static-top) position
  * @cfg {String} brand what is brand
  * @cfg {Boolean} inverse is inverted color
- * @cfg {String} type (nav|pills|tabs)
- * @cfg {Boolean} arrangement stacked|justified
- * @cfg {String} align (left|right) alignment
- 
-    
+ * @cfg {String} type (nav | pills | tabs)
+ * @cfg {Boolean} arrangement stacked | justified
+ * @cfg {String} align (left | right) alignment
+ *
+ * 
  * @constructor
  * Create a new Navbar
  * @param {Object} config The config object
@@ -151,11 +151,6 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
             cfg.cls += ' navbar-inverse';
             
         }
-        /* type: nav | tabs | pills
-         * arrangement: stacked | justified
-         * position: fixed/static etc
-         * inverse: true/false
-         */
         
         
         return cfg;

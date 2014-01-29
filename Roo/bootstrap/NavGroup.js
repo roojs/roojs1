@@ -1,9 +1,22 @@
 /*
  * - LGPL
  *
- * row
+ * nav group
  * 
- */ 
+ */
+
+/**
+ * @class Roo.bootstrap.NavGroup
+ * @extends Roo.bootstrap.Component
+ * Bootstrap NavGroup class
+ * @cfg {String} align left | right
+ * @cfg {Boolean} inverse false | true
+ * 
+ * @constructor
+ * Create a new nav group
+ * @param {Object} config The config object
+ */
+
 Roo.bootstrap.NavGroup = function(config){
     Roo.bootstrap.NavGroup.superclass.constructor.call(this, config);
 };
@@ -11,6 +24,8 @@ Roo.bootstrap.NavGroup = function(config){
 Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     
     align: '',
+    inverse: false,
+    form: false,
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.NavGroup.superclass.getAutoCreate.call(this));
@@ -29,6 +44,19 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
             return cfg;
         }
         
+        if (this.form === true) {
+            cfg = {
+                tag: 'form',
+                cls: 'navbar-form'
+            }
+            
+            if (this.align === 'right') {
+                cfg.cls += ' navbar-right';
+            } else {
+                cfg.cls += ' navbar-left';
+            }
+        }
+        
         
         if (this.align === 'right') {
             cfg.cls += ' navbar-right';
@@ -38,11 +66,6 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
             cfg.cls += ' navbar-inverse';
             
         }
-        /* type: nav | tabs | pills
-         * arrangement: stacked | justified
-         * position: fixed/static etc
-         * inverse: true/false
-         */
         
         
         return cfg;

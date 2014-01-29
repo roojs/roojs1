@@ -20,12 +20,12 @@ Roo.bootstrap.Row = function(config){
 };
 
 Roo.extend(Roo.bootstrap.Row, Roo.bootstrap.Component,  {
-      
-	autoCreate : {
+    
+    autoCreate: {
         cls: 'row clearfix'
     }
- 
-   
+    
+    
 });
 
  

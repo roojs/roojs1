@@ -9,7 +9,10 @@
  * @class Roo.bootstrap.Column
  * @extends Roo.bootstrap.Component
  * Bootstrap Column class
- * @cfg {number} colspan  Number of columsn to span
+ * @cfg {Number} xs colspan out of 12 for mobile-sized screens
+ * @cfg {Number} sm colspan out of 12 for tablet-sized screens
+ * @cfg {Number} md colspan out of 12 for computer-sized screens
+ * @cfg {Number} lg colspan out of 12 for large computer-sized screens
  * 
  * @constructor
  * Create a new Column

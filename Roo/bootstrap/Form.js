@@ -1,7 +1,7 @@
 /*
  * - LGPL
  *
- * row
+ * form
  * 
  */
 
@@ -13,7 +13,7 @@
  * @cfg {String} labelAlign top | left (default top)
  * 
  * @constructor
- * Create a new button
+ * Create a new Form
  * @param {Object} config The config object
  */
 

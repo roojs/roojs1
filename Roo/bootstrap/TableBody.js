@@ -1,18 +1,17 @@
 /*
  * - LGPL
  *
- * column
+ * table body
  * 
  */
 
 /**
- * @class Roo.bootstrap.Column
+ * @class Roo.bootstrap.TableBody
  * @extends Roo.bootstrap.Component
- * Bootstrap Column class
- * @cfg {number} colspan  Number of columsn to span
+ * Bootstrap TableBody class
  * 
  * @constructor
- * Create a new Column
+ * Create a new TableBody
  * @param {Object} config The config object
  */
 

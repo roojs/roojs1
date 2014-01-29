@@ -1,7 +1,7 @@
 /*
  * - LGPL
  *
- * page contgainer.
+ * button group
  * 
  */
 
@@ -10,9 +10,11 @@
  * @class Roo.bootstrap.ButtonGroup
  * @extends Roo.bootstrap.Component
  * Bootstrap ButtonGroup class
- * @cfg {string} size lg | sm | xs (default empty normal)
- * @cfg {string} align vertical | justified  (default none)
- * @cfg {string} direction up | down (default down)
+ * @cfg {String} size lg | sm | xs (default empty normal)
+ * @cfg {String} align vertical | justified  (default none)
+ * @cfg {String} direction up | down (default down)
+ * @cfg {Boolean} toolbar false | true
+ * @cfg {Boolean} btn true | false
  * 
  * 
  * @constructor
@@ -31,15 +33,12 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
     direction: '',
     toolbar: false,
     btn: true,
-    
-    autoCreate : {
-        cls: 'btn-group',
-        html : null
-    },
 
     getAutoCreate : function(){
-        
-        var cfg = Roo.apply({}, Roo.bootstrap.ButtonGroup.superclass.getAutoCreate.call(this));
+        var cfg = {
+            cls: 'btn-group',
+            html : null
+        }
         
         cfg.html = this.html || cfg.html;
         

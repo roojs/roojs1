@@ -1,7 +1,7 @@
 /*
  * - LGPL
  *
- * base class for bootstrap elements..
+ * base class for bootstrap elements.
  * 
  */
 
@@ -25,8 +25,8 @@ Roo.bootstrap.Component = function(config){
 };
 
 Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
-      
-	cls : false,
+    
+    cls : false,
     
     style : false,
     
@@ -64,9 +64,10 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             this.el.dom.setAttribute('tabIndex', this.tabIndex);
         }
         this.initEvents();
-    
+	
         
     },
+    
     getChildContainer : function()
     {
         return this.el;
@@ -112,15 +113,15 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         for(var i =0;i < items.length;i++) {
             nitems.push(cn.addxtype(Roo.apply({}, items[i])));
         }
-    
+	
         this.items = nitems;
 	
 	
         return this;
     }
     
-     
- 
+    
+    
     
 });
 

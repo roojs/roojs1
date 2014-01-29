@@ -1,18 +1,15 @@
 /*
  * - LGPL
  *
- * row
+ * menu separator
  * 
  */
 
 
 /**
- * @class Roo.bootstrap.MenuItem
+ * @class Roo.bootstrap.MenuSeparator
  * @extends Roo.bootstrap.Component
- * Bootstrap MenuItem class
- * @cfg {String} html the menu label
- * @cfg {String} href the link 
- * 
+ * Bootstrap MenuSeparator class
  * 
  * @constructor
  * Create a new MenuItem

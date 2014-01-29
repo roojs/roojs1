@@ -1,19 +1,19 @@
 /*
  * - LGPL
  *
- * page contgainer.
+ * image
  * 
  */
 
 
 /**
- * @class Roo.bootstrap.ButtonGroup
+ * @class Roo.bootstrap.Img
  * @extends Roo.bootstrap.Component
- * Bootstrap ButtonGroup class
- * @cfg {string} size lg | sm | xs (default empty normal)
- * @cfg {string} align vertical | justified  (default none)
- * @cfg {string} direction up | down (default down)
- * 
+ * Bootstrap Img class
+ * @cfg {Boolean} imgResponsive false | true
+ * @cfg {String} border rounded | circle | thumbnail
+ * @cfg {String} src image source
+ * @cfg {String} alt image alternative text
  * 
  * @constructor
  * Create a new Input
@@ -29,16 +29,14 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
     imgResponsive: true,
     border: '',
     src: '',
-    
-    autoCreate : {
-        tag: 'img',
-        cls: 'img-responsive',
-        html : null
-    },
 
     getAutoCreate : function(){
         
-        var cfg = Roo.apply({}, Roo.bootstrap.Img.superclass.getAutoCreate.call(this));
+        cfg = {
+            tag: 'img',
+            cls: 'img-responsive',
+            html : null
+        }
         
         cfg.html = this.html || cfg.html;
         

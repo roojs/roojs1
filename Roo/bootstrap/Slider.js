@@ -1,20 +1,18 @@
 /*
  * - LGPL
  *
- * page container.
+ * slider
  * 
  */
 
 
 /**
- * @class Roo.bootstrap.Container
+ * @class Roo.bootstrap.Slider
  * @extends Roo.bootstrap.Component
- * Bootstrap Container class
- * @cfg {Boolean} jumbotron is it a jubmotron element
- * @cfg {String} html content of element
+ * Bootstrap Slider class
  *    
  * @constructor
- * Create a new Container
+ * Create a new Slider
  * @param {Object} config The config object
  */
 
@@ -23,7 +21,7 @@ Roo.bootstrap.Slider = function(config){
 };
 
 Roo.extend(Roo.bootstrap.Slider, Roo.bootstrap.Component,  {
-	
+    
     getAutoCreate : function(){
         
         var cfg = {

@@ -1,7 +1,7 @@
 /*
  * - LGPL
  *
- * row
+ * menu item
  * 
  */
 
@@ -11,7 +11,7 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap MenuItem class
  * @cfg {String} html the menu label
- * @cfg {String} href the link 
+ * @cfg {String} href the link
  * 
  * 
  * @constructor
@@ -29,21 +29,18 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
     href : false,
     html : false,
     
-    
-    
     getAutoCreate : function(){
         var cfg= {
-            // cls: '',
-             tag : 'li',
-             cn : [
-             {
-                 tag : 'a',
-                 href : '#',
-                 html : 'Link'
-             }
-             ]
-         };
-	    
+	    tag: 'li',
+	    cn: [
+		{
+		    tag : 'a',
+		    href : '#',
+		    html : 'Link'
+		}
+	    ]
+        };
+	
         cfg.cn[0].href = this.href || cfg.cn[0].href ;
         cfg.cn[0].html = this.html || cfg.cn[0].html ;
         return cfg;

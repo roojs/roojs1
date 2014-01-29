@@ -1,18 +1,20 @@
 /*
  * - LGPL
  *
- * column
+ * element
  * 
  */
 
 /**
- * @class Roo.bootstrap.Column
+ * @class Roo.bootstrap.Element
  * @extends Roo.bootstrap.Component
- * Bootstrap Column class
- * @cfg {number} colspan  Number of columsn to span
+ * Bootstrap Element class
+ * @cfg {String} html contents of the element
+ * @cfg {String} tag tag of the element
+ * @cfg {String} cls class of the element
  * 
  * @constructor
- * Create a new Column
+ * Create a new Element
  * @param {Object} config The config object
  */
 

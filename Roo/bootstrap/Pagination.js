@@ -1,18 +1,23 @@
 /*
  * - LGPL
  *
- * column
+ * pagination
  * 
  */
 
 /**
- * @class Roo.bootstrap.Column
+ * @class Roo.bootstrap.Pagination
  * @extends Roo.bootstrap.Component
- * Bootstrap Column class
- * @cfg {number} colspan  Number of columsn to span
+ * Bootstrap Pagination class
+ * @cfg {String} size xs | sm | md | lg
+ * @cfg {Boolean} inverse false | true
+ * @cfg {Number} from pagination starting number
+ * @cfg {Number} to pagination ending number
+ * @cfg {String} align empty or left | right
+ * @cfg {Number} active active page number
  * 
  * @constructor
- * Create a new Column
+ * Create a new Pagination
  * @param {Object} config The config object
  */
 
@@ -22,7 +27,6 @@ Roo.bootstrap.Pagination = function(config){
 
 Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
     
-    html: false,
     cls: false,
     size: false,
     inverse: false,
