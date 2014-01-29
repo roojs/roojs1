@@ -64,7 +64,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
                     break;
             }
         }
-        if (this.well.length) {
+        if (this.panel.length) {
             switch (this.well) {
                 case 'lg':
                 case 'sm':
