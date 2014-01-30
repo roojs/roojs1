@@ -97,7 +97,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             if (this.footer.length) {
                 cfg.cn.push({
                     cls : 'panel-footer',
-                    html : this.header
+                    html : this.footer
                     
                 });
             }
