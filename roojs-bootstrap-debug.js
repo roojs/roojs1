@@ -537,6 +537,7 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
  * @cfg {String} panel (primary|success|info|warning|danger) render as a panel.
  * @cfg {String} header content of header (for panel)
  * @cfg {String} footer content of footer (for panel)
+ * @id {String} id can be #wrap / #footer ?? others??
  * 
  *    
  * @constructor
