@@ -48,7 +48,7 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
             }
         });
         if (this.html.length) {
-            cfg.html = html;
+            cfg.html = this.html;
         }
 	
         return cfg;
