@@ -509,7 +509,7 @@
             }
         });
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.html.length</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">cfg.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">cfg.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.html</span><span class="jsdoc-syntax">;
         }
 	
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
@@ -534,6 +534,11 @@
  * @cfg {Boolean} jumbotron is it a jumbotron element
  * @cfg {String} html content of element
  * @cfg {String} well (lg|sm|md) a well, large, small or medium.
+ * @cfg {String} panel (primary|success|info|warning|danger) render as a panel.
+ * @cfg {String} header content of header (for panel)
+ * @cfg {String} footer content of footer (for panel)
+ * @id {String} id can be #wrap / #footer ?? others??
+ * 
  *    
  * @constructor
  * Create a new Container
@@ -548,33 +553,85 @@
     
     </span><span class="jsdoc-var">jumbotron </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">well</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">panel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">header</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">footer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+  
+     
+    </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.panel.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.panel-body'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        }
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
+    },
+    
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
-            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'container'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''
+            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''
         </span><span class="jsdoc-syntax">};
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.jumbotron</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'jumbotron'</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cls </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
         }
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.well.length</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">switch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.well</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'lg'</span><span class="jsdoc-syntax">:
                 </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">:
-                    </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'well well-' </span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.well</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+=</span><span class="jsdoc-string">' well well-' </span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.well</span><span class="jsdoc-syntax">;
                     </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-keyword">default</span><span class="jsdoc-syntax">:
-                    </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'well'</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+=</span><span class="jsdoc-string">' well'</span><span class="jsdoc-syntax">;
                     </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             }
         }
         
-        </span><span class="jsdoc-var">cfg.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">cfg.html</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">body </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.panel.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">'panel panel-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.panel</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [];
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.header.length</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">({
+                    
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'panel-heading'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [{
+                        </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'h3'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'panel-title'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.header
+                    </span><span class="jsdoc-syntax">}]
+                    
+                });
+            }
+            </span><span class="jsdoc-var">body </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'panel-body'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.html
+            </span><span class="jsdoc-syntax">});
+            
+            
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.footer.length</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">({
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'panel-footer'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.footer
+                    
+                </span><span class="jsdoc-syntax">});
+            }
+            
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">body.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">cfg.html</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">cfg.cls.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-string">'container'</span><span class="jsdoc-syntax">;
+        }
+        
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
     }
    

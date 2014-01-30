@@ -5264,6 +5264,12 @@
      "memberOf": ""
     },
     {
+     "name": "id",
+     "type": "String",
+     "desc": "can be #wrap / #footer ?? others??",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
