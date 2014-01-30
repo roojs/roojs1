@@ -598,9 +598,14 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             cfg.cn = [];
             if (this.header.length) {
                 cfg.cn.push({
-                    tag: 'h3',
+                    
                     cls : 'panel-heading',
-                    html : this.header
+                    cn : [{
+                        tag: 'h3',
+                        cls : 'panel-title',
+                        html : this.header
+                    }]
+                    
                 });
             }
             body = false;
@@ -612,9 +617,9 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             
             if (this.footer.length) {
                 cfg.cn.push({
-                    tag: 'h3',
                     cls : 'panel-footer',
                     html : this.footer
+                    
                 });
             }
             
