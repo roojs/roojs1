@@ -537,9 +537,8 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
  * @cfg {String} panel (primary|success|info|warning|danger) render as a panel.
  * @cfg {String} header content of header (for panel)
  * @cfg {String} footer content of footer (for panel)
- * @cfg {String} id can be #wrap / #footer ?? others??
- * 
- *    
+ * @cfg {String} sticky (footer|wrap|push) block to use as footer or body- needs css-bootstrap/sticky-footer.css
+ *     
  * @constructor
  * Create a new Container
  * @param {Object} config The config object
@@ -556,6 +555,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     panel : '',
     header: '',
     footer : '',
+    sticky: '',
   
      
     getChildContainer : function() {
@@ -580,6 +580,17 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             cfg.cls = this.cls + '';
         }
         
+	if (this.sticky.length) {
+	    var bd = Roo.get(document.body)
+	    if (!bd.hasClass('bootstrap-sticky')) {
+		bd.addClass('bootstrap-sticky');
+		Roo.select('html',true).setStyle('height', '100%');
+	    }
+	     
+	    cfg.cls += 'bootstrap-sticky-' + this.sticky;
+	}
+	
+	
         if (this.well.length) {
             switch (this.well) {
                 case 'lg':
@@ -1213,8 +1224,10 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     
     title : 'test dialog',
    
-	buttons : false,
-    onRender : function(ct, position){
+    buttons : false,
+
+    onRender : function(ct, position)
+    {
         Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
         if(!this.el){
             var cfg = Roo.apply({},  this.getAutoCreate());
@@ -1569,66 +1582,6 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
             
         }
         
-        
-        return cfg;
-    }
-   
-});
-
- 
-
- /*
- * - LGPL
- *
- * row
- * 
- */
-/**
- * @class Roo.bootstrap.Navbar.Button
- * @extends Roo.bootstrap.Component
- * Bootstrap Navbar.Button class
- * @cfg {String} href  link to
- * @cfg {String} html content of button
-    
- * @constructor
- * Create a new Navbar Button
- * @param {Object} config The config object
- */
-
-
-Roo.bootstrap.Navbar.Button = function(config){
-    Roo.bootstrap.Navbar.Button.superclass.constructor.call(this, config);
-};
-
-Roo.extend(Roo.bootstrap.Navbar.Button, Roo.bootstrap.Component,  {
-    
-    href : false,
-    html : false,
-    
-    autoCreate : {
-        cls: 'btn',
-        tag : 'button',
-        html: 'hello'
-    },
-    
-    getAutoCreate : function(){
-        
-        var cfg = {
-            cls: 'btn',
-            tag : 'button',
-            html: 'hello',
-            cn : []
-            
-        } ;
-        cfg.cn.push({
-            html : this.html || ''
-            //href : this.
-             //       )
-        });
-        cfg.cn.push({
-            tag: 'span',
-            cls : 'carat'
-        });
         
         return cfg;
     }

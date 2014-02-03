@@ -16,9 +16,8 @@
  * @cfg {String} panel (primary|success|info|warning|danger) render as a panel.
  * @cfg {String} header content of header (for panel)
  * @cfg {String} footer content of footer (for panel)
- * @cfg {String} id can be #wrap / #footer ?? others??
- * 
- *    
+ * @cfg {String} sticky (footer|wrap|push) block to use as footer or body- needs css-bootstrap/sticky-footer.css
+ *     
  * @constructor
  * Create a new Container
  * @param {Object} config The config object
@@ -35,6 +34,7 @@
     </span><span class="jsdoc-var">panel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">header</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">footer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">sticky</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
   
      
     </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
@@ -59,6 +59,17 @@
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cls </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
         }
         
+	</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.sticky.length</span><span class="jsdoc-syntax">) {
+	    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)
+	    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">bd.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'bootstrap-sticky'</span><span class="jsdoc-syntax">)) {
+		</span><span class="jsdoc-var">bd.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'bootstrap-sticky'</span><span class="jsdoc-syntax">);
+		</span><span class="jsdoc-var">Roo.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'html'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'height'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'100%'</span><span class="jsdoc-syntax">);
+	    }
+	     
+	    </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">'bootstrap-sticky-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.sticky</span><span class="jsdoc-syntax">;
+	}
+	
+	
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.well.length</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">switch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.well</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'lg'</span><span class="jsdoc-syntax">:

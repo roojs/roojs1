@@ -16,9 +16,8 @@
  * @cfg {String} panel (primary|success|info|warning|danger) render as a panel.
  * @cfg {String} header content of header (for panel)
  * @cfg {String} footer content of footer (for panel)
- * @cfg {String} id can be #wrap / #footer ?? others??
- * 
- *    
+ * @cfg {String} sticky (footer|wrap|push) block to use as footer or body- needs css-bootstrap/sticky-footer.css
+ *     
  * @constructor
  * Create a new Container
  * @param {Object} config The config object
@@ -35,6 +34,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     panel : '',
     header: '',
     footer : '',
+    sticky: '',
   
      
     getChildContainer : function() {
@@ -59,6 +59,17 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             cfg.cls = this.cls + '';
         }
         
+	if (this.sticky.length) {
+	    var bd = Roo.get(document.body)
+	    if (!bd.hasClass('bootstrap-sticky')) {
+		bd.addClass('bootstrap-sticky');
+		Roo.select('html',true).setStyle('height', '100%');
+	    }
+	     
+	    cfg.cls += 'bootstrap-sticky-' + this.sticky;
+	}
+	
+	
         if (this.well.length) {
             switch (this.well) {
                 case 'lg':
