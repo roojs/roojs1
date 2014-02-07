@@ -82,15 +82,14 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
     // private
     activeAction : null,
  
-    
-    
     /**
-     * childForms - used for multi-tab forms
-     * @type {Array}
+     * By default wait messages are displayed with Roo.MessageBox.wait. You can target a specific
+     * element by passing it or its id or mask the form itself by passing in true.
+     * @type Mixed
      */
-    childForms : false,
+    waitMsgTarget : false,
     
-    
+     
     
     /**
      * By default wait messages are displayed with Roo.MessageBox.wait. You can target a specific
@@ -181,6 +180,294 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         }
         return this;
     },
+    
+    // private
+    beforeAction : function(action){
+        var o = action.options;
+        
+        // not really supported yet..
+        if(this.waitMsgTarget === true){
+            this.el.mask(o.waitMsg || "Sending", 'x-mask-loading');
+        }else if(this.waitMsgTarget){
+            this.waitMsgTarget = Roo.get(this.waitMsgTarget);
+            this.waitMsgTarget.mask(o.waitMsg || "Sending", 'x-mask-loading');
+        }else {
+            Roo.MessageBox.wait(o.waitMsg || "Sending", o.waitTitle || this.waitTitle || 'Please Wait...');
+        }
+         
+    },
+
+    // private
+    afterAction : function(action, success){
+        this.activeAction = null;
+        var o = action.options;
+        
+        if(this.waitMsgTarget === true){
+            this.el.unmask();
+        }else if(this.waitMsgTarget){
+            this.waitMsgTarget.unmask();
+        }else{
+            Roo.MessageBox.updateProgress(1);
+            Roo.MessageBox.hide();
+        }
+         
+        if(success){
+            if(o.reset){
+                this.reset();
+            }
+            Roo.callback(o.success, o.scope, [this, action]);
+            this.fireEvent('actioncomplete', this, action);
+            
+        }else{
+            
+            // failure condition..
+            // we have a scenario where updates need confirming.
+            // eg. if a locking scenario exists..
+            // we look for { errors : { needs_confirm : true }} in the response.
+            if (
+                (typeof(action.result) != 'undefined')  &&
+                (typeof(action.result.errors) != 'undefined')  &&
+                (typeof(action.result.errors.needs_confirm) != 'undefined')
+           ){
+                var _t = this;
+                Roo.MessageBox.confirm(
+                    "Change requires confirmation",
+                    action.result.errorMsg,
+                    function(r) {
+                        if (r != 'yes') {
+                            return;
+                        }
+                        _t.doAction('submit', { params :  { _submit_confirmed : 1 } }  );
+                    }
+                    
+                );
+                
+                
+                
+                return;
+            }
+            
+            Roo.callback(o.failure, o.scope, [this, action]);
+            // show an error message if no failed handler is set..
+            if (!this.hasListener('actionfailed')) {
+                Roo.MessageBox.alert("Error",
+                    (typeof(action.result) != 'undefined' && typeof(action.result.errorMsg) != 'undefined') ?
+                        action.result.errorMsg :
+                        "Saving Failed, please check your entries or try again"
+                );
+            }
+            
+            this.fireEvent('actionfailed', this, action);
+        }
+        
+    },
+    /**
+     * Find a Roo.form.Field in this form by id, dataIndex, name or hiddenName
+     * @param {String} id The value to search for
+     * @return Field
+     */
+    findField : function(id){
+        var field = this.items.get(id);
+        if(!field){
+            this.items.each(function(f){
+                if(f.isFormField && (f.dataIndex == id || f.id == id || f.getName() == id)){
+                    field = f;
+                    return false;
+                }
+            });
+        }
+        return field || null;
+    },
+     /**
+     * Mark fields in this form invalid in bulk.
+     * @param {Array/Object} errors Either an array in the form [{id:'fieldId', msg:'The message'},...] or an object hash of {id: msg, id2: msg2}
+     * @return {BasicForm} this
+     */
+    markInvalid : function(errors){
+        if(errors instanceof Array){
+            for(var i = 0, len = errors.length; i < len; i++){
+                var fieldError = errors[i];
+                var f = this.findField(fieldError.id);
+                if(f){
+                    f.markInvalid(fieldError.msg);
+                }
+            }
+        }else{
+            var field, id;
+            for(id in errors){
+                if(typeof errors[id] != 'function' && (field = this.findField(id))){
+                    field.markInvalid(errors[id]);
+                }
+            }
+        }
+        Roo.each(this.childForms || [], function (f) {
+            f.markInvalid(errors);
+        });
+        
+        return this;
+    },
+
+    /**
+     * Set values for fields in this form in bulk.
+     * @param {Array/Object} values Either an array in the form [{id:'fieldId', value:'foo'},...] or an object hash of {id: value, id2: value2}
+     * @return {BasicForm} this
+     */
+    setValues : function(values){
+        if(values instanceof Array){ // array of objects
+            for(var i = 0, len = values.length; i < len; i++){
+                var v = values[i];
+                var f = this.findField(v.id);
+                if(f){
+                    f.setValue(v.value);
+                    if(this.trackResetOnLoad){
+                        f.originalValue = f.getValue();
+                    }
+                }
+            }
+        }else{ // object hash
+            var field, id;
+            for(id in values){
+                if(typeof values[id] != 'function' && (field = this.findField(id))){
+                    
+                    if (field.setFromData && 
+                        field.valueField && 
+                        field.displayField &&
+                        // combos' with local stores can 
+                        // be queried via setValue()
+                        // to set their value..
+                        (field.store && !field.store.isLocal)
+                        ) {
+                        // it's a combo
+                        var sd = { };
+                        sd[field.valueField] = typeof(values[field.hiddenName]) == 'undefined' ? '' : values[field.hiddenName];
+                        sd[field.displayField] = typeof(values[field.name]) == 'undefined' ? '' : values[field.name];
+                        field.setFromData(sd);
+                        
+                    } else {
+                        field.setValue(values[id]);
+                    }
+                    
+                    
+                    if(this.trackResetOnLoad){
+                        field.originalValue = field.getValue();
+                    }
+                }
+            }
+        }
+         
+        Roo.each(this.childForms || [], function (f) {
+            f.setValues(values);
+        });
+                
+        return this;
+    },
+
+    /**
+     * Returns the fields in this form as an object with key/value pairs. If multiple fields exist with the same name
+     * they are returned as an array.
+     * @param {Boolean} asString
+     * @return {Object}
+     */
+    getValues : function(asString){
+        if (this.childForms) {
+            // copy values from the child forms
+            Roo.each(this.childForms, function (f) {
+                this.setValues(f.getValues());
+            }, this);
+        }
+        
+        
+        
+        var fs = Roo.lib.Ajax.serializeForm(this.el.dom);
+        if(asString === true){
+            return fs;
+        }
+        return Roo.urlDecode(fs);
+    },
+    
+    /**
+     * Returns the fields in this form as an object with key/value pairs. 
+     * This differs from getValues as it calls getValue on each child item, rather than using dom data.
+     * @return {Object}
+     */
+    getFieldValues : function(with_hidden)
+    {
+        if (this.childForms) {
+            // copy values from the child forms
+            // should this call getFieldValues - probably not as we do not currently copy
+            // hidden fields when we generate..
+            Roo.each(this.childForms, function (f) {
+                this.setValues(f.getValues());
+            }, this);
+        }
+        
+        var ret = {};
+        this.items.each(function(f){
+            if (!f.getName()) {
+                return;
+            }
+            var v = f.getValue();
+            if (f.inputType =='radio') {
+                if (typeof(ret[f.getName()]) == 'undefined') {
+                    ret[f.getName()] = ''; // empty..
+                }
+                
+                if (!f.el.dom.checked) {
+                    return;
+                    
+                }
+                v = f.el.dom.value;
+                
+            }
+            
+            // not sure if this supported any more..
+            if ((typeof(v) == 'object') && f.getRawValue) {
+                v = f.getRawValue() ; // dates..
+            }
+            // combo boxes where name != hiddenName...
+            if (f.name != f.getName()) {
+                ret[f.name] = f.getRawValue();
+            }
+            ret[f.getName()] = v;
+        });
+        
+        return ret;
+    },
+
+    /**
+     * Clears all invalid messages in this form.
+     * @return {BasicForm} this
+     */
+    clearInvalid : function(){
+        this.items.each(function(f){
+           f.clearInvalid();
+        });
+        
+        Roo.each(this.childForms || [], function (f) {
+            f.clearInvalid();
+        });
+        
+        
+        return this;
+    },
+
+    /**
+     * Resets this form.
+     * @return {BasicForm} this
+     */
+    reset : function(){
+        this.items.each(function(f){
+            f.reset();
+        });
+        
+        Roo.each(this.childForms || [], function (f) {
+            f.reset();
+        });
+       
+        
+        return this;
+    }
+    
 });
 
  
