@@ -224,14 +224,12 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
        // Roo.log('init events?');
        // Roo.log(this.el.dom);
        if (this.el.hasClass('roo-button')) {
-            this.el.on('click', this.onClick, thi
+            this.el.on('click', this.onClick, this);
        } else {
             this.el.select('.roo-button').on('click', this.onClick, this);
        }
        
        
-       
-       //this.el.select('button',true).on('click', this.onClick, this);
         
     },
     onClick : function(e)
