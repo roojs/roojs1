@@ -59,8 +59,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         cfg.id = Roo.id();
         
         if (this.xattr) {
-            for (var i in xattr) {
-                cfg[i] = xattr[i];
+            for (var i in this.xattr) {
+                cfg[i] = this.xattr[i];
             }
         }
         
