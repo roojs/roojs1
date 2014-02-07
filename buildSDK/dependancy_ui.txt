@@ -36,11 +36,8 @@ Roo.data.Tree
 
 
 
-Roo.ComponentMgr
-Roo.Component
 Roo.Layer
 Roo.Shadow
-Roo.BoxComponent
 Roo.SplitBar
 Roo.View
 
