@@ -67,6 +67,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         
         var cfg = {
             tag : 'button',
+            cls : 'roo-button',
             html: 'hello'
         };
         
@@ -81,7 +82,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         if (this.toggle===true) {
             cfg={
                 tag: 'div',
-                cls: 'slider-frame',
+                cls: 'slider-frame roo-button',
                 cn: [
                     {
                         tag: 'span',
@@ -112,7 +113,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         
         if (true) {
             if (this.theme==='default') {
-                cfg.cls = 'btn';
+                cfg.cls = 'btn roo-button';
                 
                 if (this.parentType != 'Navbar') {
                     this.weight = this.weight.length ?  this.weight : 'default';
@@ -222,6 +223,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
        // Roo.log('init events?');
        // Roo.log(this.el.dom);
        
+       this.el.on('click', this.onClick, this);
        this.el.on('click', this.onClick, this);
        
        //this.el.select('button',true).on('click', this.onClick, this);
