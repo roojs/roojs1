@@ -334,6 +334,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         
         var cfg = {
             tag : 'button',
+            cls : 'roo-button',
             html: 'hello'
         };
         
@@ -348,7 +349,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         if (this.toggle===true) {
             cfg={
                 tag: 'div',
-                cls: 'slider-frame',
+                cls: 'slider-frame roo-button',
                 cn: [
                     {
                         tag: 'span',
@@ -379,7 +380,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         
         if (true) {
             if (this.theme==='default') {
-                cfg.cls = 'btn';
+                cfg.cls = 'btn roo-button';
                 
                 if (this.parentType != 'Navbar') {
                     this.weight = this.weight.length ?  this.weight : 'default';
@@ -391,7 +392,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             } else if (this.theme==='glow') {
                 
                 cfg.tag = 'a';
-                cfg.cls='btn-glow';
+                cfg.cls = 'btn-glow roo-button';
                 
                 if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
                     
@@ -418,6 +419,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             cfg.cls = '';
             cfg.cn =  [{
                 tag : 'a',
+                cls : 'roo-button',
                 html : this.html,
                 href : this.href || '#'
             }];
@@ -438,7 +440,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         if (this.disabled) {
             cfg.disabled = 'disabled';
         }
-        
+        //????
         if (this.items) {
             Roo.log('changing to ul' );
             cfg.tag = 'ul';
@@ -461,7 +463,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             
             cfg.tag = 'a';
             
-            cfg.cls='btn';
+            cfg.cls='btn roo-button';
             
             cfg.href=this.href;
             
@@ -488,8 +490,13 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     initEvents: function() {
        // Roo.log('init events?');
        // Roo.log(this.el.dom);
-       this.el.select('a',true).on('click', this.onClick, this);
-       this.el.select('button',true).on('click', this.onClick, this);
+       if (this.el.hasClass('roo-button')) {
+            this.el.on('click', this.onClick, this);
+       } else {
+            this.el.select('.roo-button').on('click', this.onClick, this);
+       }
+       
+       
         
     },
     onClick : function(e)
