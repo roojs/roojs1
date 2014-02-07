@@ -148,7 +148,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             
         }
         if (!tree.items || !tree.items.length) {
-            this.items = nitems;
+            cn.items = nitems;
             return cn;
         }
         var items = tree.items;
