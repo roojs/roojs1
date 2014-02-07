@@ -459,7 +459,7 @@ Roo.apply(Roo.XComponent, {
         var progressRun = function() {
             if (!mods.length) {
                 Roo.debug && Roo.log('hide?');
-                if (!this.hideProgress) {
+                if (!this.hideProgress || !Roo.MessageBox) {
                     Roo.MessageBox.hide();
                 }
                 Roo.XComponent.event.fireEvent('buildcomplete', _this.topModule);
@@ -483,7 +483,7 @@ Roo.apply(Roo.XComponent, {
                     " of " + total + 
                     (m.name ? (' - ' + m.name) : '');
 			Roo.debug && Roo.log(msg);
-            if (!this.hideProgress) { 
+            if (!this.hideProgress || !Roo.MessageBox) { 
                 Roo.MessageBox.updateProgress(  (total  - mods.length)/total, msg  );
             }
             
