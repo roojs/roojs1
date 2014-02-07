@@ -104,7 +104,10 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      */
     selectOnFocus : false,
     
-    
+     /**
+     * @cfg {String} maskRe An input mask regular expression that will be used to filter keystrokes that don't match (defaults to null)
+     */
+    maskRe : null,
     
     fieldLabel : '',
     inputType : 'text',
