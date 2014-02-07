@@ -29,18 +29,36 @@ Roo.bootstrap.Form = function(config){
          */
         clientvalidation: true,
         /**
-         * @event rendered
-         * Fires when the form is rendered
-         * @param {Roo.form.Form} form
+         * @event beforeaction
+         * Fires before any action is performed. Return false to cancel the action.
+         * @param {Form} this
+         * @param {Action} action The action to be performed
          */
-        rendered : true
+        beforeaction: true,
+        /**
+         * @event actionfailed
+         * Fires when an action fails.
+         * @param {Form} this
+         * @param {Action} action The action that failed
+         */
+        actionfailed : true,
+        /**
+         * @event actioncomplete
+         * Fires when an action is completed.
+         * @param {Form} this
+         * @param {Action} action The action that completed
+         */
+        actioncomplete : true
     });
+    
 };
 
 Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
       
     
-     getAutoCreate : function(){
+    
+    
+    getAutoCreate : function(){
         
         var cfg = {
             tag: 'form',
