@@ -28,6 +28,9 @@ Roo.bootstrap.Component = function(config){
 
 Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     
+    
+    allowDomMove : false, // to stop relocations in parent onRender...
+    
     cls : false,
     
     style : false,
@@ -127,7 +130,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         }
         
         
-        
+        // handle the kids..
         
         var nitems = [];
         if (typeof (tree.menu) != 'undefined') {
@@ -2251,7 +2254,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         var items = this.getItems();
         var field = items.get(id);
         if(!field){
-            this.items.each(function(f){
+             items.each(function(f){
                 if(f.isFormField && (f.dataIndex == id || f.id == id || f.getName() == id)){
                     field = f;
                     return false;
