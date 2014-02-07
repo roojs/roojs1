@@ -55,7 +55,25 @@ Roo.bootstrap.Form = function(config){
 
 Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
       
-    
+     /**
+     * @cfg {String} method
+     * The request method to use (GET or POST) for form actions if one isn't supplied in the action options.
+     */
+    method : 'POST',
+    /**
+     * @cfg {String} url
+     * The URL to use for form actions if one isn't supplied in the action options.
+     */
+    /**
+     * @cfg {Boolean} fileUpload
+     * Set to true if this form is a file upload.
+     */
+     
+    /**
+     * @cfg {Object} baseParams
+     * Parameters to pass with all requests. e.g. baseParams: {id: '123', foo: 'bar'}.
+     */
+      
     
     
     getAutoCreate : function(){
