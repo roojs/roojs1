@@ -454,6 +454,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             return;
         }
         this.el.removeClass(this.invalidClass);
+        /*
         switch(this.msgTarget){
             case 'qtip':
                 this.el.dom.qtip = '';
@@ -479,6 +480,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 t.style.display = 'none';
                 break;
         }
+        */
         this.fireEvent('valid', this);
     },
 
