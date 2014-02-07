@@ -330,10 +330,11 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         if(this.maskRe || (this.vtype && this.disableKeyFilter !== true && (this.maskRe = Roo.form.VTypes[this.vtype+'Mask']))){
             this.el.on("keypress", this.filterKeys, this);
         }
-        if(this.grow){
+       /* if(this.grow){
             this.el.on("keyup", this.onKeyUp,  this, {buffer:50});
             this.el.on("click", this.autoSize,  this);
         }
+        */
         if(this.el.is('input[type=password]') && Roo.isSafari){
             this.el.on('keydown', this.SafariOnKeyDown, this);
         }
