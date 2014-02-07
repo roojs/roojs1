@@ -364,9 +364,9 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             }
         }
          
-        Roo.each(this.childForms || [], function (f) {
-            f.setValues(values);
-        });
+        //Roo.each(this.childForms || [], function (f) {
+        //    f.setValues(values);
+        //});
                 
         return this;
     },
@@ -378,12 +378,12 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
      * @return {Object}
      */
     getValues : function(asString){
-        if (this.childForms) {
+        //if (this.childForms) {
             // copy values from the child forms
-            Roo.each(this.childForms, function (f) {
-                this.setValues(f.getValues());
-            }, this);
-        }
+        //    Roo.each(this.childForms, function (f) {
+        //        this.setValues(f.getValues());
+        //    }, this);
+        //}
         
         
         
@@ -401,17 +401,9 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
      */
     getFieldValues : function(with_hidden)
     {
-        if (this.childForms) {
-            // copy values from the child forms
-            // should this call getFieldValues - probably not as we do not currently copy
-            // hidden fields when we generate..
-            Roo.each(this.childForms, function (f) {
-                this.setValues(f.getValues());
-            }, this);
-        }
-        
+        var items = this.getItems();
         var ret = {};
-        this.items.each(function(f){
+        items.each(function(f){
             if (!f.getName()) {
                 return;
             }
@@ -448,7 +440,9 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
      * @return {BasicForm} this
      */
     clearInvalid : function(){
-        this.items.each(function(f){
+        var items = this.getItems();
+        
+        items.each(function(f){
            f.clearInvalid();
         });
         
