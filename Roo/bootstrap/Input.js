@@ -478,7 +478,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     preFocus : function(){
         
         if(this.selectOnFocus){
-            this.el.dom.select();
+            this.inputEl().dom.select();
         }
     },
     filterKeys : function(e){
