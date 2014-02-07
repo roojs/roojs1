@@ -12,6 +12,8 @@ Roo.bootstrap = Roo.bootstrap || {};
  * Bootstrap Component base class
  * @cfg {String} cls css class
  * @cfg {String} style any extra css
+ * @cfg {Object} xattr extra attributes to add to 'element' (used by builder to store stuff.)
+ 
  * 
  * @constructor
  * Do not use directly - it does not do anything..
@@ -34,6 +36,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     
     initEvents : function() {  },
     
+    xattr : false,
+    
     parentId : false,
     
     parent: function() {
@@ -50,8 +54,15 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         if(this.el){
             return;
         }
+        
         var cfg = Roo.apply({},  this.getAutoCreate());
         cfg.id = Roo.id();
+        
+        if (this.xattr) {
+            for (var i in xattr) {
+                cfg[i] = xattr[i];
+            }
+        }
         
         if (this.cls) {
             cfg.cls += ' ' + this.cls;
@@ -1582,6 +1593,66 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
             
         }
         
+        
+        return cfg;
+    }
+   
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * row
+ * 
+ */
+/**
+ * @class Roo.bootstrap.Navbar.Button
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Navbar.Button class
+ * @cfg {String} href  link to
+ * @cfg {String} html content of button
+    
+ * @constructor
+ * Create a new Navbar Button
+ * @param {Object} config The config object
+ */
+
+
+Roo.bootstrap.Navbar.Button = function(config){
+    Roo.bootstrap.Navbar.Button.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.Navbar.Button, Roo.bootstrap.Component,  {
+    
+    href : false,
+    html : false,
+    
+    autoCreate : {
+        cls: 'btn',
+        tag : 'button',
+        html: 'hello'
+    },
+    
+    getAutoCreate : function(){
+        
+        var cfg = {
+            cls: 'btn',
+            tag : 'button',
+            html: 'hello',
+            cn : []
+            
+        } ;
+        cfg.cn.push({
+            html : this.html || ''
+            //href : this.
+             //       )
+        });
+        cfg.cn.push({
+            tag: 'span',
+            cls : 'carat'
+        });
         
         return cfg;
     }
