@@ -118,7 +118,10 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      */
     disableKeyFilter : false,
     
-    
+       /**
+     * @cfg {Boolean} disabled True to disable the field (defaults to false).
+     */
+    disabled : false,
     
     
     fieldLabel : '',
