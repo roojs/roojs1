@@ -304,6 +304,11 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         }
         return false;
     },
+    
+    
+    
+    
+    
      // private
     fireKey : function(e){
         //Roo.log('field ' + e.getKey());
@@ -343,6 +348,15 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      */
     getValue : function(){
         var v = this.el.select('input.form-control').first().getValue();
+        return v;
+    },
+    /**
+     * Returns the raw data value which may or may not be a valid, defined value.  To return a normalized value see {@link #getValue}.
+     * @return {Mixed} value The field value
+     */
+    getRawValue : function(){
+        var v = this.el.select('input.form-control').first().getValue();
+        
         return v;
     },
     preFocus : function(){
