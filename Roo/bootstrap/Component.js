@@ -28,6 +28,9 @@ Roo.bootstrap.Component = function(config){
 
 Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     
+    
+    allowDomMove : true, // to stop relocations in parent onRender...
+    
     cls : false,
     
     style : false,
