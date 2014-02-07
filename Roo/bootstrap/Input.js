@@ -442,7 +442,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      * Clear any invalid styles/messages for this field
      */
     clearInvalid : function(){
-        if(!this.rendered || this.preventMark){ // not rendered
+        
+        if(!this.el || this.preventMark){ // not rendered
             return;
         }
         this.el.removeClass(this.invalidClass);
