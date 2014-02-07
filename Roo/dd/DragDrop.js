@@ -838,7 +838,7 @@ Roo.extend(Roo.dd.DragDrop, Roo.util.Observable , {
         }
 
         this.DDM.refreshCache(this.groups);
-        Roo.log([Roo.lib.Event.getPageX(e), Roo.lib.Event.getPageY(e)]);
+//        Roo.log([Roo.lib.Event.getPageX(e), Roo.lib.Event.getPageY(e)]);
         var pt = new Roo.lib.Point(Roo.lib.Event.getPageX(e), Roo.lib.Event.getPageY(e));
         if (!this.hasOuterHandles && !this.DDM.isOverTarget(pt, this) )  {
             //Roo.log('no outer handes or not over target');
