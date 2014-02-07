@@ -38,10 +38,10 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
   
      
     getChildContainer : function() {
-        if (this.panel.length) {
+        /*if (this.panel.length) {
             return this.el.select('.panel-body',true).first();
         }
-        
+        */
         return this.el;
     },
     
