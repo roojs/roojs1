@@ -290,6 +290,32 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             this.fireEvent("focus", this);
         }
     },
+    // private
+    onBlur : function(){
+        this.beforeBlur();
+        if(!Roo.isOpera && this.focusClass){ // don't touch in Opera
+            this.el.removeClass(this.focusClass);
+        }
+        this.hasFocus = false;
+        if(this.validationEvent !== false && this.validateOnBlur && this.validationEvent != "blur"){
+            this.validate();
+        }
+        var v = this.getValue();
+        if(String(v) !== String(this.startValue)){
+            this.fireEvent('change', this, v, this.startValue);
+        }
+        this.fireEvent("blur", this);
+    },
+     /**
+     * Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {@link #getRawValue}.
+     * @return {Mixed} value The field value
+     */
+    getValue : function(){
+        var v = this.el.select('input.form-control').first().getValue();
+         
+        return v;
+    },
+
 });
 
  
