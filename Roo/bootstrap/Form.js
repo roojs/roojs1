@@ -467,6 +467,19 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
        
         
         return this;
+    },
+    getItems : function()
+    {
+        
+        var iter = function(el) {
+            
+            
+            
+        };
+        
+        
+        
+        
     }
     
 });
