@@ -320,6 +320,12 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         var v = this.el.select('input.form-control').first().getValue();
         return v;
     },
+    preFocus : function(){
+        
+        if(this.selectOnFocus){
+            this.el.dom.select();
+        }
+    },
 
 });
 
