@@ -29,6 +29,56 @@
 Roo.bootstrap.Input = function(config){
     Roo.bootstrap.Input.superclass.constructor.call(this, config);
    
+        this.addEvents({
+            /**
+             * @event focus
+             * Fires when this field receives input focus.
+             * @param {Roo.form.Field} this
+             */
+            focus : true,
+            /**
+             * @event blur
+             * Fires when this field loses input focus.
+             * @param {Roo.form.Field} this
+             */
+            blur : true,
+            /**
+             * @event specialkey
+             * Fires when any key related to navigation (arrows, tab, enter, esc, etc.) is pressed.  You can check
+             * {@link Roo.EventObject#getKey} to determine which key was pressed.
+             * @param {Roo.form.Field} this
+             * @param {Roo.EventObject} e The event object
+             */
+            specialkey : true,
+            /**
+             * @event change
+             * Fires just before the field blurs if the field value has changed.
+             * @param {Roo.form.Field} this
+             * @param {Mixed} newValue The new value
+             * @param {Mixed} oldValue The original value
+             */
+            change : true,
+            /**
+             * @event invalid
+             * Fires after the field has been marked as invalid.
+             * @param {Roo.form.Field} this
+             * @param {String} msg The validation message
+             */
+            invalid : true,
+            /**
+             * @event valid
+             * Fires after the field has been validated with no errors.
+             * @param {Roo.form.Field} this
+             */
+            valid : true,
+             /**
+             * @event keyup
+             * Fires after the key up
+             * @param {Roo.form.Field} this
+             * @param {Roo.EventObject}  e The event Object
+             */
+            keyup : true
+        });
 };
 
 Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
@@ -161,56 +211,35 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     },
     initEvents : function()
     {
-        this.addEvents({
-            /**
-             * @event focus
-             * Fires when this field receives input focus.
-             * @param {Roo.form.Field} this
-             */
-            focus : true,
-            /**
-             * @event blur
-             * Fires when this field loses input focus.
-             * @param {Roo.form.Field} this
-             */
-            blur : true,
-            /**
-             * @event specialkey
-             * Fires when any key related to navigation (arrows, tab, enter, esc, etc.) is pressed.  You can check
-             * {@link Roo.EventObject#getKey} to determine which key was pressed.
-             * @param {Roo.form.Field} this
-             * @param {Roo.EventObject} e The event object
-             */
-            specialkey : true,
-            /**
-             * @event change
-             * Fires just before the field blurs if the field value has changed.
-             * @param {Roo.form.Field} this
-             * @param {Mixed} newValue The new value
-             * @param {Mixed} oldValue The original value
-             */
-            change : true,
-            /**
-             * @event invalid
-             * Fires after the field has been marked as invalid.
-             * @param {Roo.form.Field} this
-             * @param {String} msg The validation message
-             */
-            invalid : true,
-            /**
-             * @event valid
-             * Fires after the field has been validated with no errors.
-             * @param {Roo.form.Field} this
-             */
-            valid : true,
-             /**
-             * @event keyup
-             * Fires after the key up
-             * @param {Roo.form.Field} this
-             * @param {Roo.EventObject}  e The event Object
-             */
-            keyup : true
-        });
+        
+        if (this.emptyText) {
+            this.el.attr('placeholder', this.emptyText);
+        }
+        
+        Roo.form.TextField.superclass.initEvents.call(this);
+        if(this.validationEvent == 'keyup'){
+            this.validationTask = new Roo.util.DelayedTask(this.validate, this);
+            this.el.on('keyup', this.filterValidation, this);
+        }
+        else if(this.validationEvent !== false){
+            this.el.on(this.validationEvent, this.validate, this, {buffer: this.validationDelay});
+        }
+        
+        if(this.selectOnFocus){
+            this.on("focus", this.preFocus, this);
+            
+        }
+        if(this.maskRe || (this.vtype && this.disableKeyFilter !== true && (this.maskRe = Roo.form.VTypes[this.vtype+'Mask']))){
+            this.el.on("keypress", this.filterKeys, this);
+        }
+        if(this.grow){
+            this.el.on("keyup", this.onKeyUp,  this, {buffer:50});
+            this.el.on("click", this.autoSize,  this);
+        }
+        if(this.el.is('input[type=password]') && Roo.isSafari){
+            this.el.on('keydown', this.SafariOnKeyDown, this);
+        }
+        
     }
     
 });
