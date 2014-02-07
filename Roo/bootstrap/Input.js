@@ -294,9 +294,12 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         return cfg;
         
     },
-    
-    inputEl: function () {
-        this.el.select('input.form-control',true).first();
+    /**
+     * return the real input element.
+     */
+    inputEl: function ()
+    {
+        return this.el.select('input.form-control',true).first();
     }
     setDisabled : function(v)
     {
