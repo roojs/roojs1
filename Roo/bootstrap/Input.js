@@ -312,7 +312,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      */
     getValue : function(){
         var v = this.el.select('input.form-control').first().getValue();
-         
         return v;
     },
 
