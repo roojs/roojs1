@@ -59,15 +59,15 @@
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cls </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
         }
         
-	</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.sticky.length</span><span class="jsdoc-syntax">) {
-	    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)
-	    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">bd.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'bootstrap-sticky'</span><span class="jsdoc-syntax">)) {
-		</span><span class="jsdoc-var">bd.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'bootstrap-sticky'</span><span class="jsdoc-syntax">);
-		</span><span class="jsdoc-var">Roo.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'html'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'height'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'100%'</span><span class="jsdoc-syntax">);
-	    }
-	     
-	    </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">'bootstrap-sticky-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.sticky</span><span class="jsdoc-syntax">;
-	}
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.sticky.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">bd.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'bootstrap-sticky'</span><span class="jsdoc-syntax">)) {
+                </span><span class="jsdoc-var">bd.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'bootstrap-sticky'</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">Roo.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'html'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'height'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'100%'</span><span class="jsdoc-syntax">);
+            }
+             
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">'bootstrap-sticky-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.sticky</span><span class="jsdoc-syntax">;
+        }
 	
 	
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.well.length</span><span class="jsdoc-syntax">) {

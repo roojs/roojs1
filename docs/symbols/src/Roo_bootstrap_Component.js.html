@@ -12,6 +12,8 @@
  * Bootstrap Component base class
  * @cfg {String} cls css class
  * @cfg {String} style any extra css
+ * @cfg {Object} xattr extra attributes to add to 'element' (used by builder to store stuff.)
+ 
  * 
  * @constructor
  * Do not use directly - it does not do anything..
@@ -34,6 +36,8 @@
     
     </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {  },
     
+    </span><span class="jsdoc-var">xattr </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
     </span><span class="jsdoc-var">parentId </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">parent</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
@@ -48,10 +52,26 @@
     {
         </span><span class="jsdoc-var">Roo.bootstrap.Component.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">){
+            
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'xtype'</span><span class="jsdoc-syntax">)) {
+                </span><span class="jsdoc-var">this.el.dom.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'xtype'</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.initEvents</span><span class="jsdoc-syntax">();
+            }
+            
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
+        
+         
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({},  </span><span class="jsdoc-var">this.getAutoCreate</span><span class="jsdoc-syntax">());
         </span><span class="jsdoc-var">cfg.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-comment">// fill in the extra attributes 
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.xattr </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.xattr</span><span class="jsdoc-syntax">) ==</span><span class="jsdoc-string">'object'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">this.xattr</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">this.xattr</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+            }
+        }
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">;
@@ -77,15 +97,33 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">cntr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cntr </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">'getChildContainer' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">;
         
+        </span><span class="jsdoc-comment">// render the element if it's not BODY.
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree.xtype </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'Body'</span><span class="jsdoc-syntax">) {
             
             </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">);
             
             </span><span class="jsdoc-var">cn.parentType </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.xtype</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">//??
             </span><span class="jsdoc-var">cn.parentId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-comment">// does the container contain child eleemnts with 'xtype' attributes.
+            // that match this xtype..
+            // note - when we render we create these as well..
+            // so we should check to see if body has xtype set.
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'xtype'</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'Roo.bootstrap.Body'</span><span class="jsdoc-syntax">) {
+            
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">echild </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">]())</span><span class="jsdoc-var">.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'*[xtype]'</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">echild</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">cn.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">echild</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-comment">//echild.dom.removeAttribute('xtype');
+                </span><span class="jsdoc-syntax">}
+            }
             </span><span class="jsdoc-var">cn.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">]());
             </span><span class="jsdoc-comment">// then add the element..
         </span><span class="jsdoc-syntax">}
+        
+        
+        
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nitems </span><span class="jsdoc-syntax">= [];
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree.menu</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">tree.menu.parentType </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cn.xtype</span><span class="jsdoc-syntax">;
