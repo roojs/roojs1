@@ -446,9 +446,6 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
            f.clearInvalid();
         });
         
-        Roo.each(this.childForms || [], function (f) {
-            f.clearInvalid();
-        });
         
         
         return this;
@@ -459,7 +456,8 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
      * @return {BasicForm} this
      */
     reset : function(){
-        this.items.each(function(f){
+        var items = this.getItems();
+        items.each(function(f){
             f.reset();
         });
         
