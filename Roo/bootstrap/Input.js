@@ -82,6 +82,11 @@ Roo.bootstrap.Input = function(config){
 };
 
 Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
+     /**
+     * @cfg {String/Boolean} validationEvent The event that should initiate field validation. Set to false to disable
+      automatic validation (defaults to "keyup").
+     */
+    validationEvent : "keyup",
     
     fieldLabel : '',
     inputType : 'text',
