@@ -137,7 +137,25 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      */
     blankText : "This field is required",
     
-    
+     /**
+     * @cfg {Number} minLength Minimum input field length required (defaults to 0)
+     */
+    minLength : 0,
+    /**
+     * @cfg {Number} maxLength Maximum input field length allowed (defaults to Number.MAX_VALUE)
+     */
+    maxLength : Number.MAX_VALUE,
+    /**
+     * @cfg {String} minLengthText Error text to display if the minimum length validation fails (defaults to "The minimum length for this field is {minLength}")
+     */
+    minLengthText : "The minimum length for this field is {0}",
+    /**
+     * @cfg {String} maxLengthText Error text to display if the maximum length validation fails (defaults to "The maximum length for this field is {maxLength}")
+     */
+    maxLengthText : "The maximum length for this field is {0}",
+    /**
+     * @cfg {Boolean} selectOnFocus True to automatically select any existing field text when the field receives input focus (defaults to false)
+     */
     
     
     
