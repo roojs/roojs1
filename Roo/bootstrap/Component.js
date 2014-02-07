@@ -12,6 +12,8 @@ Roo.bootstrap = Roo.bootstrap || {};
  * Bootstrap Component base class
  * @cfg {String} cls css class
  * @cfg {String} style any extra css
+ * @cfg {Object} xattr extra attributes to add to 'element' (used by builder to store stuff.)
+ 
  * 
  * @constructor
  * Do not use directly - it does not do anything..
@@ -34,6 +36,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     
     initEvents : function() {  },
     
+    xattr : false,
+    
     parentId : false,
     
     parent: function() {
@@ -50,8 +54,15 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         if(this.el){
             return;
         }
+        
         var cfg = Roo.apply({},  this.getAutoCreate());
         cfg.id = Roo.id();
+        
+        if (this.xattr) {
+            for (var i in this.xattr) {
+                cfg[i] = this.xattr[i];
+            }
+        }
         
         if (this.cls) {
             cfg.cls += ' ' + this.cls;
