@@ -55,6 +55,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             return;
         }
         
+         
+        
         var cfg = Roo.apply({},  this.getAutoCreate());
         cfg.id = Roo.id();
         
