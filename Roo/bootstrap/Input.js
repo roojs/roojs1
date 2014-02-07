@@ -341,6 +341,19 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             this.el.dom.select();
         }
     },
+    filterKeys : function(e){
+        var k = e.getKey();
+        if(!Roo.isIE && (e.isNavKeyPress() || k == e.BACKSPACE || (k == e.DELETE && e.button == -1))){
+            return;
+        }
+        var c = e.getCharCode(), cc = String.fromCharCode(c);
+        if(Roo.isIE && (e.isSpecialKey() || !cc)){
+            return;
+        }
+        if(!this.maskRe.test(cc)){
+            e.stopEvent();
+        }
+    },
 
 });
 
