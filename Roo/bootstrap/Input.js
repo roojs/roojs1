@@ -324,10 +324,10 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         //Roo.form.TextField.superclass.initEvents.call(this);
         if(this.validationEvent == 'keyup'){
             this.validationTask = new Roo.util.DelayedTask(this.validate, this);
-            this.el.on('keyup', this.filterValidation, this);
+            this.inputEl().on('keyup', this.filterValidation, this);
         }
         else if(this.validationEvent !== false){
-            this.el.on(this.validationEvent, this.validate, this, {buffer: this.validationDelay});
+            this.inputEl().on(this.validationEvent, this.validate, this, {buffer: this.validationDelay});
         }
         
         if(this.selectOnFocus){
@@ -335,15 +335,15 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             
         }
         if(this.maskRe || (this.vtype && this.disableKeyFilter !== true && (this.maskRe = Roo.form.VTypes[this.vtype+'Mask']))){
-            this.el.on("keypress", this.filterKeys, this);
+            this.inputEl().on("keypress", this.filterKeys, this);
         }
        /* if(this.grow){
             this.el.on("keyup", this.onKeyUp,  this, {buffer:50});
             this.el.on("click", this.autoSize,  this);
         }
         */
-        if(this.el.is('input[type=password]') && Roo.isSafari){
-            this.el.on('keydown', this.SafariOnKeyDown, this);
+        if(this.inputEl().is('input[type=password]') && Roo.isSafari){
+            this.inputEl().on('keydown', this.SafariOnKeyDown, this);
         }
         
     },
@@ -422,7 +422,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     },
     onFocus : function(){
         if(!Roo.isOpera && this.focusClass){ // don't touch in Opera
-            this.el.addClass(this.focusClass);
+           // this.el.addClass(this.focusClass);
         }
         if(!this.hasFocus){
             this.hasFocus = true;
