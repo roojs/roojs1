@@ -108,7 +108,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 var echild = Roo.get(this[cntr]()).child('*[xtype]');
                 if (echild) {
                     cn.el = echild.first();
-                    echild.first().attr('xtype', '');
+                    echild.first().attr('xtype', false);
                 }
             }
             cn.render(this[cntr]());
