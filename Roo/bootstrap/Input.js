@@ -95,6 +95,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      * @cfg {Number} validationDelay The length of time in milliseconds after user input begins until validation is initiated (defaults to 250)
      */
     validationDelay : 250,
+    
+    
     fieldLabel : '',
     inputType : 'text',
     disabled : false,
@@ -224,7 +226,13 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     initEvents : function()
     {
         
-          
+        this.el.on("keydown" , this.fireKey,  this);
+        this.el.on("focus", this.onFocus,  this);
+        this.el.on("blur", this.onBlur,  this);
+        this.el.relayEvent('keyup', this);
+
+        // reference to original value for reset
+        this.originalValue = this.getValue();
         //Roo.form.TextField.superclass.initEvents.call(this);
         if(this.validationEvent == 'keyup'){
             this.validationTask = new Roo.util.DelayedTask(this.validate, this);
