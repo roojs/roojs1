@@ -91,15 +91,33 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         var cn = this;
         cntr = typeof(cntr == 'undefined' ) ? 'getChildContainer' : cntr;
         
+        // render the element if it's not BODY.
         if (tree.xtype != 'Body') {
             
             cn = Roo.factory(tree);
             
             cn.parentType = this.xtype; //??
             cn.parentId = this.id;
+            
+            // does the container contain child eleemnts with 'xtype' attributes.
+            // that match this xtype..
+            // note - when we render we create these as well..
+            // so we should check to see if body has xtype set.
+            if (Roo.get(document.body).attr('xtype') == 'Roo.Bootstrap.Body') {
+            
+                var echild = Roo.get(this[cntr]()).child('*[xtype]');
+                if (echild) {
+                    cn.el = echild.first();
+                    echild.first().attr('xtype', '');
+                }
+            }
             cn.render(this[cntr]());
             // then add the element..
         }
+        
+        
+        
+        
         var nitems = [];
         if (typeof (tree.menu) != 'undefined') {
             tree.menu.parentType = cn.xtype;
