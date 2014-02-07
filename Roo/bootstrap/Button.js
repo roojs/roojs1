@@ -228,7 +228,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     onClick : function(e)
     {
         e.preventDefault();
-        this.fireEvent('click', thism3);
+        this.fireEvent('click', this, e);
     }
     
     
