@@ -286,13 +286,21 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         }
         
     },
-    filterValidation : function()
-    {
-        
+    filterValidation : function(e){
+        if(!e.isNavKeyPress()){
+            this.validationTask.delay(this.validationDelay);
+        }
     },
-    validate : function()
-    {
-        
+     /**
+     * Validates the field value
+     * @return {Boolean} True if the value is valid, else false
+     */
+    validate : function(){
+        if(this.disabled || this.validateValue(this.processValue(this.getRawValue()))){
+            this.clearInvalid();
+            return true;
+        }
+        return false;
     },
      // private
     fireKey : function(e){
