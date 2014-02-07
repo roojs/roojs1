@@ -438,6 +438,41 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             e.stopEvent();
         }
     },
+     /**
+     * Clear any invalid styles/messages for this field
+     */
+    clearInvalid : function(){
+        if(!this.rendered || this.preventMark){ // not rendered
+            return;
+        }
+        this.el.removeClass(this.invalidClass);
+        switch(this.msgTarget){
+            case 'qtip':
+                this.el.dom.qtip = '';
+                break;
+            case 'title':
+                this.el.dom.title = '';
+                break;
+            case 'under':
+                if(this.errorEl){
+                    Roo.form.Field.msgFx[this.msgFx].hide(this.errorEl, this);
+                }
+                break;
+            case 'side':
+                if(this.errorIcon){
+                    this.errorIcon.dom.qtip = '';
+                    this.errorIcon.hide();
+                    this.un('resize', this.alignErrorIcon, this);
+                }
+                break;
+            default:
+                var t = Roo.getDom(this.msgTarget);
+                t.innerHTML = '';
+                t.style.display = 'none';
+                break;
+        }
+        this.fireEvent('valid', this);
+    },
 
 });
 
