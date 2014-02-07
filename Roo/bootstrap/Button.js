@@ -224,8 +224,14 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
        this.el.select('a',true).relayEvent('click', this);
        this.el.select('button',true).relayEvent('click', this);
         
+    },
+    onClick : function(e)
+    {
+        e.preventDefault();
+        this.fireEvent('click', thism3);
     }
-   
+    
+    
 });
 
  
