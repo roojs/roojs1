@@ -132,6 +132,14 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      * @cfg {Boolean} allowBlank False to validate that the value length > 0 (defaults to true)
      */
     allowBlank : true,
+    /**
+     * @cfg {String} blankText Error text to display if the allow blank validation fails (defaults to "This field is required")
+     */
+    blankText : "This field is required",
+    
+    
+    
+    
     
     fieldLabel : '',
     inputType : 'text',
