@@ -106,7 +106,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         if (tree.xtype != 'Body') {
             
             cn = Roo.factory(tree);
-            Roo.log(cn);
+           // Roo.log(cn);
             cn.parentType = this.xtype; //??
             cn.parentId = this.id;
             
@@ -118,7 +118,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             
                 var echild = Roo.get(this[cntr]()).child('*[xtype]');
                 if (echild) {
-                    Roo.log("found child for " + this.xtype +": " + echild.attr('xtype') );
+                  //  Roo.log("found child for " + this.xtype +": " + echild.attr('xtype') );
                     cn.el = echild;
                     //echild.dom.removeAttribute('xtype');
                 } else {
