@@ -411,6 +411,11 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xns: Roo.bootstrap,
                                     name : 'test',
                                     fieldLabel : 'test'
+                                    listeners : {
+                                        keyup : function() {
+                                            alert("Test");
+                                        }
+                                    }
                                 },
                                 {
                                     xtype: 'Button',
