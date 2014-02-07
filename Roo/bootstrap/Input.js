@@ -463,6 +463,18 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         return v;
     },
+    /**
+     * Sets a data value into the field and validates it.  To set the value directly without validation see {@link #setRawValue}.
+     * @param {Mixed} value The value to set
+     */
+    setValue : function(v){
+        this.value = v;
+        if(this.rendered){
+            this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+            this.validate();
+        }
+    },
+    
     /*
     processValue : function(value){
         if(this.stripCharsRe){
