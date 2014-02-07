@@ -137,7 +137,21 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         });
         return valid;
     },
-
+    /**
+     * Returns true if any fields in this form have changed since their original load.
+     * @return Boolean
+     */
+    isDirty : function(){
+        var dirty = false;
+        var items = this.getItems();
+        items.each(function(f){
+           if(f.isDirty()){
+               dirty = true;
+               return false;
+           }
+        });
+        return dirty;
+    },
     
 });
 
