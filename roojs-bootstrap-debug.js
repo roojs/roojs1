@@ -378,28 +378,28 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             return cfg;
         }
         
-        if (true) {
-            if (this.theme==='default') {
-                cfg.cls = 'btn roo-button';
+         
+        if (this.theme==='default') {
+            cfg.cls = 'btn roo-button';
+            
+            if (this.parentType != 'Navbar') {
+                this.weight = this.weight.length ?  this.weight : 'default';
+            }
+            if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
                 
-                if (this.parentType != 'Navbar') {
-                    this.weight = this.weight.length ?  this.weight : 'default';
-                }
-                if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
-                    
-                    cfg.cls += ' btn-' + this.weight;
-                }
-            } else if (this.theme==='glow') {
+                cfg.cls += ' btn-' + this.weight;
+            }
+        } else if (this.theme==='glow') {
+            
+            cfg.tag = 'a';
+            cfg.cls = 'btn-glow roo-button';
+            
+            if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
                 
-                cfg.tag = 'a';
-                cfg.cls = 'btn-glow roo-button';
-                
-                if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
-                    
-                    cfg.cls += ' ' + this.weight;
-                }
+                cfg.cls += ' ' + this.weight;
             }
         }
+   
         
         if (this.inverse) {
             this.cls += ' inverse';
@@ -501,6 +501,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     },
     onClick : function(e)
     {
+        Roo.log('button on click ');
         e.preventDefault();
         this.fireEvent('click', this, e);
     }
