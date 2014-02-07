@@ -2774,7 +2774,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             
         };
         if (this.name) {
-            input.name = name;
+            input.name = this.name;
         }
         
         var inputblock = input;
