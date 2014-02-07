@@ -52,6 +52,12 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     {
         Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
         if(this.el){
+            
+            if (this.attr('xtype')) {
+                this.el.dom.removeAttribute('xtype');
+                this.initEvents();
+            }
+            
             return;
         }
         
@@ -108,7 +114,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 var echild = Roo.get(this[cntr]()).child('*[xtype]');
                 if (echild) {
                     cn.el = echild;
-                    echild.dom.removeAttribute('xtype');
+                    //echild.dom.removeAttribute('xtype');
                 }
             }
             cn.render(this[cntr]());
