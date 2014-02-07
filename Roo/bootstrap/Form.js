@@ -111,6 +111,12 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             cfg.cls += ' form-horizontal';
         }
         return cfg;
+    },
+    initEvents : function()
+    {
+        this.el.on('submit', this.onSubmit, this);
+        
+        
     }
     
 });
