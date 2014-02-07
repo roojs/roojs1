@@ -430,6 +430,10 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             this.fireEvent("focus", this);
         }
     },
+    
+    beforeBlur : Roo.emptyFn,
+
+    
     // private
     onBlur : function(){
         this.beforeBlur();
