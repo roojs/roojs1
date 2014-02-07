@@ -160,7 +160,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             nitems.push(cn.addxtype(Roo.apply({}, items[i])));
         }
 	
-        this.items = nitems;
+        cn.items = nitems;
 	
 	
         return cn;
