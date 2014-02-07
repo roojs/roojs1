@@ -575,6 +575,34 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         */
         this.fireEvent('invalid', this, msg);
     },
+    // private
+    SafariOnKeyDown : function(event)
+    {
+        // this is a workaround for a password hang bug on chrome/ webkit.
+        
+        var isSelectAll = false;
+        
+        if(this.el.dom.selectionEnd > 0){
+            isSelectAll = (this.el.dom.selectionEnd - this.el.dom.selectionStart - this.getValue().length == 0) ? true : false;
+        }
+        if(((event.getKey() == 8 || event.getKey() == 46) && this.getValue().length ==1)){ // backspace and delete key
+            event.preventDefault();
+            this.setValue('');
+            return;
+        }
+        
+        if(isSelectAll){ // backspace and delete key
+            
+            event.preventDefault();
+            // this is very hacky as keydown always get's upper case.
+            //
+            var cc = String.fromCharCode(event.getCharCode());
+            this.setValue( event.shiftKey ?  cc : cc.toLowerCase());
+            
+        }
+        
+        
+    }
 });
 
  
