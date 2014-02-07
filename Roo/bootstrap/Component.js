@@ -155,7 +155,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         this.items = nitems;
 	
 	
-        return this;
+        return cn;
     }
     
     
