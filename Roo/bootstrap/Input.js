@@ -459,7 +459,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      * @return {Mixed} value The field value
      */
     getRawValue : function(){
-        var v = this.el.select('input.form-control').first().getValue();
+        var v = this.inputEl().getValue();
         
         return v;
     },
