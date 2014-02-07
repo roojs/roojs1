@@ -108,6 +108,10 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     before : false,
     after : false,
     
+    // private
+    hasFocus : false,
+    
+    
     getAutoCreate : function(){
         
         var parent = this.parent();
