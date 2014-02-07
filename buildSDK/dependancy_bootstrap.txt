@@ -7,7 +7,7 @@ Roo.bootstrap.ButtonGroup
 Roo.bootstrap.Button
 Roo.bootstrap.Column
 Roo.bootstrap.Container
-Roo.bootstrap.Form
+
 Roo.bootstrap.Img
 
 Roo.bootstrap.Header
@@ -30,6 +30,6 @@ Roo.bootstrap.Table
 Roo.bootstrap.TableCell
 Roo.bootstrap.TableRow
 
-
+Roo.bootstrap.Form
 Roo.form.VTypes
 Roo.bootstrap.Input
