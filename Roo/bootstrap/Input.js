@@ -99,6 +99,12 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      * @cfg {String} focusClass The CSS class to use when the field receives focus (defaults to "x-form-focus")
      */
     focusClass : "x-form-focus",
+    /**
+     * @cfg {Boolean} selectOnFocus True to automatically select any existing field text when the field receives input focus (defaults to false)
+     */
+    selectOnFocus : false,
+    
+    
     
     fieldLabel : '',
     inputType : 'text',
