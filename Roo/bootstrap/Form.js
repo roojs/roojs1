@@ -187,14 +187,14 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         
         // not really supported yet.. ??
         
-        if(this.waitMsgTarget === true){
+        //if(this.waitMsgTarget === true){
             this.el.mask(o.waitMsg || "Sending", 'x-mask-loading');
-        }else if(this.waitMsgTarget){
-            this.waitMsgTarget = Roo.get(this.waitMsgTarget);
-            this.waitMsgTarget.mask(o.waitMsg || "Sending", 'x-mask-loading');
-        }else {
-            Roo.MessageBox.wait(o.waitMsg || "Sending", o.waitTitle || this.waitTitle || 'Please Wait...');
-        }
+        //}else if(this.waitMsgTarget){
+        //    this.waitMsgTarget = Roo.get(this.waitMsgTarget);
+        //    this.waitMsgTarget.mask(o.waitMsg || "Sending", 'x-mask-loading');
+        //}else {
+        //    Roo.MessageBox.wait(o.waitMsg || "Sending", o.waitTitle || this.waitTitle || 'Please Wait...');
+       // }
          
     },
 
@@ -203,15 +203,15 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         this.activeAction = null;
         var o = action.options;
         
-        if(this.waitMsgTarget === true){
+        //if(this.waitMsgTarget === true){
             this.el.unmask();
-        }else if(this.waitMsgTarget){
-            this.waitMsgTarget.unmask();
-        }else{
-            Roo.MessageBox.updateProgress(1);
-            Roo.MessageBox.hide();
-        }
-         
+        //}else if(this.waitMsgTarget){
+        //    this.waitMsgTarget.unmask();
+        //}else{
+        //    Roo.MessageBox.updateProgress(1);
+        //    Roo.MessageBox.hide();
+       // }
+        // 
         if(success){
             if(o.reset){
                 this.reset();
@@ -231,6 +231,9 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 (typeof(action.result.errors.needs_confirm) != 'undefined')
            ){
                 var _t = this;
+                Roo.log("not supported yet");
+                 /*
+                
                 Roo.MessageBox.confirm(
                     "Change requires confirmation",
                     action.result.errorMsg,
@@ -242,7 +245,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                     }
                     
                 );
-                
+                */
                 
                 
                 return;
@@ -251,11 +254,14 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             Roo.callback(o.failure, o.scope, [this, action]);
             // show an error message if no failed handler is set..
             if (!this.hasListener('actionfailed')) {
+                Roo.log("need to add dialog support");
+                /*
                 Roo.MessageBox.alert("Error",
                     (typeof(action.result) != 'undefined' && typeof(action.result.errorMsg) != 'undefined') ?
                         action.result.errorMsg :
                         "Saving Failed, please check your entries or try again"
                 );
+                */
             }
             
             this.fireEvent('actionfailed', this, action);
