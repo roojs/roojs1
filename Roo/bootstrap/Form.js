@@ -74,7 +74,29 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
      * Parameters to pass with all requests. e.g. baseParams: {id: '123', foo: 'bar'}.
      */
       
+    /**
+     * @cfg {Number} timeout Timeout for form actions in seconds (default is 30 seconds).
+     */
+    timeout: 30,
+
+    // private
+    activeAction : null,
+ 
     
+    
+    /**
+     * childForms - used for multi-tab forms
+     * @type {Array}
+     */
+    childForms : false,
+    
+    
+    
+    /**
+     * By default wait messages are displayed with Roo.MessageBox.wait. You can target a specific
+     * element by passing it or its id or mask the form itself by passing in true.
+     * @type Mixed
+     */
     
     getAutoCreate : function(){
         
