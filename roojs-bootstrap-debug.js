@@ -56,8 +56,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         Roo.log("Call onRender: " + this.xtype);
         
         Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
+        
         if(this.el){
-            
             if (this.el.attr('xtype')) {
                 this.el.dom.removeAttribute('xtype');
                 this.initEvents();
@@ -148,7 +148,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             
         }
         if (!tree.items || !tree.items.length) {
-            this.items = nitems;
+            cn.items = nitems;
             return cn;
         }
         var items = tree.items;
@@ -160,7 +160,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             nitems.push(cn.addxtype(Roo.apply({}, items[i])));
         }
 	
-        this.items = nitems;
+        cn.items = nitems;
 	
 	
         return cn;
