@@ -434,7 +434,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     onBlur : function(){
         this.beforeBlur();
         if(!Roo.isOpera && this.focusClass){ // don't touch in Opera
-            this.el.removeClass(this.focusClass);
+            //this.el.removeClass(this.focusClass);
         }
         this.hasFocus = false;
         if(this.validationEvent !== false && this.validateOnBlur && this.validationEvent != "blur"){
@@ -451,7 +451,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      * @return {Mixed} value The field value
      */
     getValue : function(){
-        var v = this.el.select('input.form-control').first().getValue();
+        var v = this.inputEl().getValue();
         return v;
     },
     /**
