@@ -174,6 +174,10 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
             
         var tree = this._tree ? this._tree() : this.tree();
         tree.region = tree.region || this.region;
+        if (this.parent.el === true) {
+            // bootstrap... - body..
+            this.parent = Roo.factory(tree);
+        }
         this.el = this.parent.el.addxtype(tree);
         this.fireEvent('built', this);
         
