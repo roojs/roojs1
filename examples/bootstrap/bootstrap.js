@@ -410,7 +410,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xtype: 'Input',
                                     xns: Roo.bootstrap,
                                     name : 'test',
-                                    fieldLabel : 'test'
+                                    fieldLabel : 'test',
                                     listeners : {
                                         keyup : function() {
                                             alert("Test");
