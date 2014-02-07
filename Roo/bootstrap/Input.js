@@ -359,6 +359,18 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         return v;
     },
+    // private
+    processValue : function(value){
+        if(this.stripCharsRe){
+            var newValue = value.replace(this.stripCharsRe, '');
+            if(newValue !== value){
+                this.setRawValue(newValue);
+                return newValue;
+            }
+        }
+        return value;
+    },
+
     preFocus : function(){
         
         if(this.selectOnFocus){
