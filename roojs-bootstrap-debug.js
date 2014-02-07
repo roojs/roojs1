@@ -488,8 +488,8 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     initEvents: function() {
        // Roo.log('init events?');
        // Roo.log(this.el.dom);
-       this.el.select('a',true).relayEvent('click', this);
-       this.el.select('button',true).relayEvent('click', this);
+       this.el.select('a',true).on('click', this.onClick, this);
+       this.el.select('button',true).on('click', this.onClick, this);
         
     },
     onClick : function(e)
