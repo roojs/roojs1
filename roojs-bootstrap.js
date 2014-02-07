@@ -5,7 +5,7 @@ this.initEvents();},getChildContainer:function(){return this.el;},addxtype:funct
 cn.render(this[B]());}var D=[];if(typeof(A.menu)!='undefined'){A.menu.parentType=cn.xtype;A.menu.triggerEl=cn.el;D.push(cn.addxtype(Roo.apply({},A.menu)));}if(typeof(A.buttons)!='undefined'&&typeof(cn.getButtonContainer)=='function'){for(var i=0;i<A.buttons.length;i++){D.push(cn.addxtype(Roo.apply({},A.buttons[i]),'getButtonContainer'));}}if(!A.items||!A.items.length){this.items=D;return this;}var E=A.items;delete A.items;for(var i=0;i<E.length;i++){D.push(cn.addxtype(Roo.apply({},E[i])));}
 this.items=D;return this;}});
 //Roo/bootstrap/Body.js
-Roo.bootstrap.Body=function(A){Roo.bootstrap.Body.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.Body,Roo.bootstrap.Component,{autoCreate:{cls:'container'},onRender:function(ct,A){this.el=Roo.get(document.body);}});
+Roo.bootstrap.Body=function(A){Roo.bootstrap.Body.superclass.constructor.call(this,A);this.el=Roo.get(document.body);};Roo.extend(Roo.bootstrap.Body,Roo.bootstrap.Component,{autoCreate:{cls:'container'},onRender:function(ct,A){}});
 //Roo/bootstrap/ButtonGroup.js
 Roo.bootstrap.ButtonGroup=function(A){Roo.bootstrap.ButtonGroup.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.ButtonGroup,Roo.bootstrap.Component,{size:'',align:'',direction:'',toolbar:false,btn:true,getAutoCreate:function(){var A={cls:'btn-group',html:null}
 A.html=this.html||A.html;if(this.toolbar){A={cls:'btn-toolbar',html:null};return A;}if(['vertical','justified'].indexOf(this.align)!==-1){A.cls='btn-group-'+this.align;if(this.align=='justified'){console.log(this.items);}}if(['lg','sm','xs'].indexOf(this.size)!==-1){A.cls+=' btn-group-'+this.size;}if(this.direction=='up'){A.cls+=' dropup';}return A;}});
