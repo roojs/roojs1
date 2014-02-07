@@ -113,7 +113,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             
                 var echild = Roo.get(this[cntr]()).child('*[xtype]');
                 if (echild) {
-                    Roo.log("found child for " + this.xtype);
+                    Roo.log("found child for " + this.xtype +": " + echild.attr('xtype') );
                     cn.el = echild;
                     //echild.dom.removeAttribute('xtype');
                 } else {
