@@ -212,11 +212,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     initEvents : function()
     {
         
-        if (this.emptyText) {
-            this.el.attr('placeholder', this.emptyText);
-        }
-        
-        Roo.form.TextField.superclass.initEvents.call(this);
+          
+        //Roo.form.TextField.superclass.initEvents.call(this);
         if(this.validationEvent == 'keyup'){
             this.validationTask = new Roo.util.DelayedTask(this.validate, this);
             this.el.on('keyup', this.filterValidation, this);
