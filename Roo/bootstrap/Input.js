@@ -153,10 +153,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      * @cfg {String} maxLengthText Error text to display if the maximum length validation fails (defaults to "The maximum length for this field is {maxLength}")
      */
     maxLengthText : "The maximum length for this field is {0}",
-    /**
-     * @cfg {Boolean} selectOnFocus True to automatically select any existing field text when the field receives input focus (defaults to false)
-     */
-    selectOnFocus : true,
+  
     
     /**
      * @cfg {Function} validator A custom validation function to be called during field validation (defaults to null).
