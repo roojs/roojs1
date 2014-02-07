@@ -13,7 +13,6 @@
  * @cfg {String} fieldLabel - the label associated
  * @cfg {String} inputType button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text
  * @cfg {String} name name of the input
- * @cfg {boolean} disabled is it disabled
  * @cfg {string} fieldLabel - the label associated
  * @cfg {string}  inputType - input / file submit ...
  * @cfg {string} placeholder - placeholder to put in text.
@@ -126,7 +125,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     
     fieldLabel : '',
     inputType : 'text',
-    disabled : false,
+    
     name : false,
     placeholder: false,
     before : false,
