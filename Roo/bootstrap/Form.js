@@ -276,7 +276,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
     findField : function(id){
         var field = this.getItems().get(id);
         if(!field){
-            this.items.each(function(f){
+            this.getItems().each(function(f){
                 if(f.isFormField && (f.dataIndex == id || f.id == id || f.getName() == id)){
                     field = f;
                     return false;
