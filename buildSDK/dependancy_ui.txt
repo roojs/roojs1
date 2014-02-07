@@ -162,7 +162,7 @@ Roo.LoadMask
 Roo.XTemplate
 
 // extras..
-Roo.XComponent
+
 
 // is this ready yet? - is it used?
 // Roo.Login
