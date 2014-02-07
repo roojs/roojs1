@@ -492,6 +492,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             return;
         }
         this.el.addClass(this.invalidClass);
+        /*
         msg = msg || this.invalidText;
         switch(this.msgTarget){
             case 'qtip':
@@ -530,6 +531,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 t.style.display = this.msgDisplay;
                 break;
         }
+        */
         this.fireEvent('invalid', this, msg);
     },
 });
