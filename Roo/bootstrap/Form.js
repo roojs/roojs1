@@ -149,6 +149,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
                dirty = true;
                return false;
            }
+           return true;
         });
         return dirty;
     },
