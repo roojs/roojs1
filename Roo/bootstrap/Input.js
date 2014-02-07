@@ -156,6 +156,24 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     /**
      * @cfg {Boolean} selectOnFocus True to automatically select any existing field text when the field receives input focus (defaults to false)
      */
+    selectOnFocus : true,
+    
+    /**
+     * @cfg {Function} validator A custom validation function to be called during field validation (defaults to null).
+     * If available, this function will be called only after the basic validators all return true, and will be passed the
+     * current field value and expected to return boolean true if the value is valid or a string error message if invalid.
+     */
+    validator : null,
+    /**
+     * @cfg {RegExp} regex A JavaScript RegExp object to be tested against the field value during validation (defaults to null).
+     * If available, this regex will be evaluated only after the basic validators all return true, and will be passed the
+     * current field value.  If the test fails, the field will be marked invalid using {@link #regexText}.
+     */
+    regex : null,
+    /**
+     * @cfg {String} regexText The error text to display if {@link #regex} is used and the test fails during validation (defaults to "")
+     */
+    regexText : "",
     
     
     
