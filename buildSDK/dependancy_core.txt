@@ -67,5 +67,8 @@ Roo.state.Manager
 Roo.state.CookieProvider
 
 // moved from ui..
+Roo.ComponentMgr
+Roo.Component
 Roo.BoxComponent
+
 Roo.XComponent
