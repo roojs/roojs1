@@ -103,7 +103,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     /**
      * @cfg {String} invalidClass The CSS class to use when marking a field invalid (defaults to "x-form-invalid")
      */
-    invalidClass : "x-form-invalid",
+    invalidClass : "has-error",
     
     /**
      * @cfg {Boolean} selectOnFocus True to automatically select any existing field text when the field receives input focus (defaults to false)
