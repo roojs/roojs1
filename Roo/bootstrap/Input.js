@@ -265,8 +265,15 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     validate : function()
     {
         
-    }
-    
+    },
+     // private
+    fireKey : function(e){
+        //Roo.log('field ' + e.getKey());
+        if(e.isNavKeyPress()){
+            this.fireEvent("specialkey", this, e);
+        }
+    },
+
 });
 
  
