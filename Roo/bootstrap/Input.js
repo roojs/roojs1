@@ -136,7 +136,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     
     // private
     hasFocus : false,
-    
+    preventMark: false,
     
     getAutoCreate : function(){
         
