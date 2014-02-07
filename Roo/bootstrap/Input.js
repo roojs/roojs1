@@ -298,7 +298,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      * @return {Boolean} True if the value is valid, else false
      */
     validate : function(){
-        if(this.disabled || this.validateValue(this.processValue(this.getRawValue()))){
+        //if(this.disabled || this.validateValue(this.processValue(this.getRawValue()))){
+        if(this.disabled || this.validateValue(this.getRawValue())){
             this.clearInvalid();
             return true;
         }
