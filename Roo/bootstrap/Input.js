@@ -87,7 +87,14 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
       automatic validation (defaults to "keyup").
      */
     validationEvent : "keyup",
-    
+     /**
+     * @cfg {Boolean} validateOnBlur Whether the field should validate when it loses focus (defaults to true).
+     */
+    validateOnBlur : true,
+    /**
+     * @cfg {Number} validationDelay The length of time in milliseconds after user input begins until validation is initiated (defaults to 250)
+     */
+    validationDelay : 250,
     fieldLabel : '',
     inputType : 'text',
     disabled : false,
@@ -241,6 +248,14 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         if(this.el.is('input[type=password]') && Roo.isSafari){
             this.el.on('keydown', this.SafariOnKeyDown, this);
         }
+        
+    },
+    filterValidation : function()
+    {
+        
+    },
+    validate : function()
+    {
         
     }
     
