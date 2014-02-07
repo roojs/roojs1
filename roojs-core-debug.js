@@ -14956,6 +14956,769 @@ Roo.extend(Roo.state.CookieProvider, Roo.state.Provider, {
            ((this.secure == true) ? "; secure" : "");
     }
 });/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+
+/**
+ * @class Roo.ComponentMgr
+ * Provides a common registry of all components on a page so that they can be easily accessed by component id (see {@link Roo.getCmp}).
+ * @singleton
+ */
+Roo.ComponentMgr = function(){
+    var all = new Roo.util.MixedCollection();
+
+    return {
+        /**
+         * Registers a component.
+         * @param {Roo.Component} c The component
+         */
+        register : function(c){
+            all.add(c);
+        },
+
+        /**
+         * Unregisters a component.
+         * @param {Roo.Component} c The component
+         */
+        unregister : function(c){
+            all.remove(c);
+        },
+
+        /**
+         * Returns a component by id
+         * @param {String} id The component id
+         */
+        get : function(id){
+            return all.get(id);
+        },
+
+        /**
+         * Registers a function that will be called when a specified component is added to ComponentMgr
+         * @param {String} id The component id
+         * @param {Funtction} fn The callback function
+         * @param {Object} scope The scope of the callback
+         */
+        onAvailable : function(id, fn, scope){
+            all.on("add", function(index, o){
+                if(o.id == id){
+                    fn.call(scope || o, o);
+                    all.un("add", fn, scope);
+                }
+            });
+        }
+    };
+}();/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.Component
+ * @extends Roo.util.Observable
+ * Base class for all major Roo components.  All subclasses of Component can automatically participate in the standard
+ * Roo component lifecycle of creation, rendering and destruction.  They also have automatic support for basic hide/show
+ * and enable/disable behavior.  Component allows any subclass to be lazy-rendered into any {@link Roo.Container} and
+ * to be automatically registered with the {@link Roo.ComponentMgr} so that it can be referenced at any time via {@link Roo.getCmp}.
+ * All visual components (widgets) that require rendering into a layout should subclass Component.
+ * @constructor
+ * @param {Roo.Element/String/Object} config The configuration options.  If an element is passed, it is set as the internal
+ * element and its id used as the component id.  If a string is passed, it is assumed to be the id of an existing element
+ * and is used as the component id.  Otherwise, it is assumed to be a standard config object and is applied to the component.
+ */
+Roo.Component = function(config){
+    config = config || {};
+    if(config.tagName || config.dom || typeof config == "string"){ // element object
+        config = {el: config, id: config.id || config};
+    }
+    this.initialConfig = config;
+
+    Roo.apply(this, config);
+    this.addEvents({
+        /**
+         * @event disable
+         * Fires after the component is disabled.
+	     * @param {Roo.Component} this
+	     */
+        disable : true,
+        /**
+         * @event enable
+         * Fires after the component is enabled.
+	     * @param {Roo.Component} this
+	     */
+        enable : true,
+        /**
+         * @event beforeshow
+         * Fires before the component is shown.  Return false to stop the show.
+	     * @param {Roo.Component} this
+	     */
+        beforeshow : true,
+        /**
+         * @event show
+         * Fires after the component is shown.
+	     * @param {Roo.Component} this
+	     */
+        show : true,
+        /**
+         * @event beforehide
+         * Fires before the component is hidden. Return false to stop the hide.
+	     * @param {Roo.Component} this
+	     */
+        beforehide : true,
+        /**
+         * @event hide
+         * Fires after the component is hidden.
+	     * @param {Roo.Component} this
+	     */
+        hide : true,
+        /**
+         * @event beforerender
+         * Fires before the component is rendered. Return false to stop the render.
+	     * @param {Roo.Component} this
+	     */
+        beforerender : true,
+        /**
+         * @event render
+         * Fires after the component is rendered.
+	     * @param {Roo.Component} this
+	     */
+        render : true,
+        /**
+         * @event beforedestroy
+         * Fires before the component is destroyed. Return false to stop the destroy.
+	     * @param {Roo.Component} this
+	     */
+        beforedestroy : true,
+        /**
+         * @event destroy
+         * Fires after the component is destroyed.
+	     * @param {Roo.Component} this
+	     */
+        destroy : true
+    });
+    if(!this.id){
+        this.id = "ext-comp-" + (++Roo.Component.AUTO_ID);
+    }
+    Roo.ComponentMgr.register(this);
+    Roo.Component.superclass.constructor.call(this);
+    this.initComponent();
+    if(this.renderTo){ // not supported by all components yet. use at your own risk!
+        this.render(this.renderTo);
+        delete this.renderTo;
+    }
+};
+
+/** @private */
+Roo.Component.AUTO_ID = 1000;
+
+Roo.extend(Roo.Component, Roo.util.Observable, {
+    /**
+     * @scope Roo.Component.prototype
+     * @type {Boolean}
+     * true if this component is hidden. Read-only.
+     */
+    hidden : false,
+    /**
+     * @type {Boolean}
+     * true if this component is disabled. Read-only.
+     */
+    disabled : false,
+    /**
+     * @type {Boolean}
+     * true if this component has been rendered. Read-only.
+     */
+    rendered : false,
+    
+    /** @cfg {String} disableClass
+     * CSS class added to the component when it is disabled (defaults to "x-item-disabled").
+     */
+    disabledClass : "x-item-disabled",
+	/** @cfg {Boolean} allowDomMove
+	 * Whether the component can move the Dom node when rendering (defaults to true).
+	 */
+    allowDomMove : true,
+    /** @cfg {String} hideMode
+     * How this component should hidden. Supported values are
+     * "visibility" (css visibility), "offsets" (negative offset position) and
+     * "display" (css display) - defaults to "display".
+     */
+    hideMode: 'display',
+
+    /** @private */
+    ctype : "Roo.Component",
+
+    /**
+     * @cfg {String} actionMode 
+     * which property holds the element that used for  hide() / show() / disable() / enable()
+     * default is 'el' 
+     */
+    actionMode : "el",
+
+    /** @private */
+    getActionEl : function(){
+        return this[this.actionMode];
+    },
+
+    initComponent : Roo.emptyFn,
+    /**
+     * If this is a lazy rendering component, render it to its container element.
+     * @param {String/HTMLElement/Element} container (optional) The element this component should be rendered into. If it is being applied to existing markup, this should be left off.
+     */
+    render : function(container, position){
+        if(!this.rendered && this.fireEvent("beforerender", this) !== false){
+            if(!container && this.el){
+                this.el = Roo.get(this.el);
+                container = this.el.dom.parentNode;
+                this.allowDomMove = false;
+            }
+            this.container = Roo.get(container);
+            this.rendered = true;
+            if(position !== undefined){
+                if(typeof position == 'number'){
+                    position = this.container.dom.childNodes[position];
+                }else{
+                    position = Roo.getDom(position);
+                }
+            }
+            this.onRender(this.container, position || null);
+            if(this.cls){
+                this.el.addClass(this.cls);
+                delete this.cls;
+            }
+            if(this.style){
+                this.el.applyStyles(this.style);
+                delete this.style;
+            }
+            this.fireEvent("render", this);
+            this.afterRender(this.container);
+            if(this.hidden){
+                this.hide();
+            }
+            if(this.disabled){
+                this.disable();
+            }
+        }
+        return this;
+    },
+
+    /** @private */
+    // default function is not really useful
+    onRender : function(ct, position){
+        if(this.el){
+            this.el = Roo.get(this.el);
+            if(this.allowDomMove !== false){
+                ct.dom.insertBefore(this.el.dom, position);
+            }
+        }
+    },
+
+    /** @private */
+    getAutoCreate : function(){
+        var cfg = typeof this.autoCreate == "object" ?
+                      this.autoCreate : Roo.apply({}, this.defaultAutoCreate);
+        if(this.id && !cfg.id){
+            cfg.id = this.id;
+        }
+        return cfg;
+    },
+
+    /** @private */
+    afterRender : Roo.emptyFn,
+
+    /**
+     * Destroys this component by purging any event listeners, removing the component's element from the DOM,
+     * removing the component from its {@link Roo.Container} (if applicable) and unregistering it from {@link Roo.ComponentMgr}.
+     */
+    destroy : function(){
+        if(this.fireEvent("beforedestroy", this) !== false){
+            this.purgeListeners();
+            this.beforeDestroy();
+            if(this.rendered){
+                this.el.removeAllListeners();
+                this.el.remove();
+                if(this.actionMode == "container"){
+                    this.container.remove();
+                }
+            }
+            this.onDestroy();
+            Roo.ComponentMgr.unregister(this);
+            this.fireEvent("destroy", this);
+        }
+    },
+
+	/** @private */
+    beforeDestroy : function(){
+
+    },
+
+	/** @private */
+	onDestroy : function(){
+
+    },
+
+    /**
+     * Returns the underlying {@link Roo.Element}.
+     * @return {Roo.Element} The element
+     */
+    getEl : function(){
+        return this.el;
+    },
+
+    /**
+     * Returns the id of this component.
+     * @return {String}
+     */
+    getId : function(){
+        return this.id;
+    },
+
+    /**
+     * Try to focus this component.
+     * @param {Boolean} selectText True to also select the text in this component (if applicable)
+     * @return {Roo.Component} this
+     */
+    focus : function(selectText){
+        if(this.rendered){
+            this.el.focus();
+            if(selectText === true){
+                this.el.dom.select();
+            }
+        }
+        return this;
+    },
+
+    /** @private */
+    blur : function(){
+        if(this.rendered){
+            this.el.blur();
+        }
+        return this;
+    },
+
+    /**
+     * Disable this component.
+     * @return {Roo.Component} this
+     */
+    disable : function(){
+        if(this.rendered){
+            this.onDisable();
+        }
+        this.disabled = true;
+        this.fireEvent("disable", this);
+        return this;
+    },
+
+	// private
+    onDisable : function(){
+        this.getActionEl().addClass(this.disabledClass);
+        this.el.dom.disabled = true;
+    },
+
+    /**
+     * Enable this component.
+     * @return {Roo.Component} this
+     */
+    enable : function(){
+        if(this.rendered){
+            this.onEnable();
+        }
+        this.disabled = false;
+        this.fireEvent("enable", this);
+        return this;
+    },
+
+	// private
+    onEnable : function(){
+        this.getActionEl().removeClass(this.disabledClass);
+        this.el.dom.disabled = false;
+    },
+
+    /**
+     * Convenience function for setting disabled/enabled by boolean.
+     * @param {Boolean} disabled
+     */
+    setDisabled : function(disabled){
+        this[disabled ? "disable" : "enable"]();
+    },
+
+    /**
+     * Show this component.
+     * @return {Roo.Component} this
+     */
+    show: function(){
+        if(this.fireEvent("beforeshow", this) !== false){
+            this.hidden = false;
+            if(this.rendered){
+                this.onShow();
+            }
+            this.fireEvent("show", this);
+        }
+        return this;
+    },
+
+    // private
+    onShow : function(){
+        var ae = this.getActionEl();
+        if(this.hideMode == 'visibility'){
+            ae.dom.style.visibility = "visible";
+        }else if(this.hideMode == 'offsets'){
+            ae.removeClass('x-hidden');
+        }else{
+            ae.dom.style.display = "";
+        }
+    },
+
+    /**
+     * Hide this component.
+     * @return {Roo.Component} this
+     */
+    hide: function(){
+        if(this.fireEvent("beforehide", this) !== false){
+            this.hidden = true;
+            if(this.rendered){
+                this.onHide();
+            }
+            this.fireEvent("hide", this);
+        }
+        return this;
+    },
+
+    // private
+    onHide : function(){
+        var ae = this.getActionEl();
+        if(this.hideMode == 'visibility'){
+            ae.dom.style.visibility = "hidden";
+        }else if(this.hideMode == 'offsets'){
+            ae.addClass('x-hidden');
+        }else{
+            ae.dom.style.display = "none";
+        }
+    },
+
+    /**
+     * Convenience function to hide or show this component by boolean.
+     * @param {Boolean} visible True to show, false to hide
+     * @return {Roo.Component} this
+     */
+    setVisible: function(visible){
+        if(visible) {
+            this.show();
+        }else{
+            this.hide();
+        }
+        return this;
+    },
+
+    /**
+     * Returns true if this component is visible.
+     */
+    isVisible : function(){
+        return this.getActionEl().isVisible();
+    },
+
+    cloneConfig : function(overrides){
+        overrides = overrides || {};
+        var id = overrides.id || Roo.id();
+        var cfg = Roo.applyIf(overrides, this.initialConfig);
+        cfg.id = id; // prevent dup id
+        return new this.constructor(cfg);
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.BoxComponent
+ * @extends Roo.Component
+ * Base class for any visual {@link Roo.Component} that uses a box container.  BoxComponent provides automatic box
+ * model adjustments for sizing and positioning and will work correctly withnin the Component rendering model.  All
+ * container classes should subclass BoxComponent so that they will work consistently when nested within other Ext
+ * layout containers.
+ * @constructor
+ * @param {Roo.Element/String/Object} config The configuration options.
+ */
+Roo.BoxComponent = function(config){
+    Roo.Component.call(this, config);
+    this.addEvents({
+        /**
+         * @event resize
+         * Fires after the component is resized.
+	     * @param {Roo.Component} this
+	     * @param {Number} adjWidth The box-adjusted width that was set
+	     * @param {Number} adjHeight The box-adjusted height that was set
+	     * @param {Number} rawWidth The width that was originally specified
+	     * @param {Number} rawHeight The height that was originally specified
+	     */
+        resize : true,
+        /**
+         * @event move
+         * Fires after the component is moved.
+	     * @param {Roo.Component} this
+	     * @param {Number} x The new x position
+	     * @param {Number} y The new y position
+	     */
+        move : true
+    });
+};
+
+Roo.extend(Roo.BoxComponent, Roo.Component, {
+    // private, set in afterRender to signify that the component has been rendered
+    boxReady : false,
+    // private, used to defer height settings to subclasses
+    deferHeight: false,
+    /** @cfg {Number} width
+     * width (optional) size of component
+     */
+     /** @cfg {Number} height
+     * height (optional) size of component
+     */
+     
+    /**
+     * Sets the width and height of the component.  This method fires the resize event.  This method can accept
+     * either width and height as separate numeric arguments, or you can pass a size object like {width:10, height:20}.
+     * @param {Number/Object} width The new width to set, or a size object in the format {width, height}
+     * @param {Number} height The new height to set (not required if a size object is passed as the first arg)
+     * @return {Roo.BoxComponent} this
+     */
+    setSize : function(w, h){
+        // support for standard size objects
+        if(typeof w == 'object'){
+            h = w.height;
+            w = w.width;
+        }
+        // not rendered
+        if(!this.boxReady){
+            this.width = w;
+            this.height = h;
+            return this;
+        }
+
+        // prevent recalcs when not needed
+        if(this.lastSize && this.lastSize.width == w && this.lastSize.height == h){
+            return this;
+        }
+        this.lastSize = {width: w, height: h};
+
+        var adj = this.adjustSize(w, h);
+        var aw = adj.width, ah = adj.height;
+        if(aw !== undefined || ah !== undefined){ // this code is nasty but performs better with floaters
+            var rz = this.getResizeEl();
+            if(!this.deferHeight && aw !== undefined && ah !== undefined){
+                rz.setSize(aw, ah);
+            }else if(!this.deferHeight && ah !== undefined){
+                rz.setHeight(ah);
+            }else if(aw !== undefined){
+                rz.setWidth(aw);
+            }
+            this.onResize(aw, ah, w, h);
+            this.fireEvent('resize', this, aw, ah, w, h);
+        }
+        return this;
+    },
+
+    /**
+     * Gets the current size of the component's underlying element.
+     * @return {Object} An object containing the element's size {width: (element width), height: (element height)}
+     */
+    getSize : function(){
+        return this.el.getSize();
+    },
+
+    /**
+     * Gets the current XY position of the component's underlying element.
+     * @param {Boolean} local (optional) If true the element's left and top are returned instead of page XY (defaults to false)
+     * @return {Array} The XY position of the element (e.g., [100, 200])
+     */
+    getPosition : function(local){
+        if(local === true){
+            return [this.el.getLeft(true), this.el.getTop(true)];
+        }
+        return this.xy || this.el.getXY();
+    },
+
+    /**
+     * Gets the current box measurements of the component's underlying element.
+     * @param {Boolean} local (optional) If true the element's left and top are returned instead of page XY (defaults to false)
+     * @returns {Object} box An object in the format {x, y, width, height}
+     */
+    getBox : function(local){
+        var s = this.el.getSize();
+        if(local){
+            s.x = this.el.getLeft(true);
+            s.y = this.el.getTop(true);
+        }else{
+            var xy = this.xy || this.el.getXY();
+            s.x = xy[0];
+            s.y = xy[1];
+        }
+        return s;
+    },
+
+    /**
+     * Sets the current box measurements of the component's underlying element.
+     * @param {Object} box An object in the format {x, y, width, height}
+     * @returns {Roo.BoxComponent} this
+     */
+    updateBox : function(box){
+        this.setSize(box.width, box.height);
+        this.setPagePosition(box.x, box.y);
+        return this;
+    },
+
+    // protected
+    getResizeEl : function(){
+        return this.resizeEl || this.el;
+    },
+
+    // protected
+    getPositionEl : function(){
+        return this.positionEl || this.el;
+    },
+
+    /**
+     * Sets the left and top of the component.  To set the page XY position instead, use {@link #setPagePosition}.
+     * This method fires the move event.
+     * @param {Number} left The new left
+     * @param {Number} top The new top
+     * @returns {Roo.BoxComponent} this
+     */
+    setPosition : function(x, y){
+        this.x = x;
+        this.y = y;
+        if(!this.boxReady){
+            return this;
+        }
+        var adj = this.adjustPosition(x, y);
+        var ax = adj.x, ay = adj.y;
+
+        var el = this.getPositionEl();
+        if(ax !== undefined || ay !== undefined){
+            if(ax !== undefined && ay !== undefined){
+                el.setLeftTop(ax, ay);
+            }else if(ax !== undefined){
+                el.setLeft(ax);
+            }else if(ay !== undefined){
+                el.setTop(ay);
+            }
+            this.onPosition(ax, ay);
+            this.fireEvent('move', this, ax, ay);
+        }
+        return this;
+    },
+
+    /**
+     * Sets the page XY position of the component.  To set the left and top instead, use {@link #setPosition}.
+     * This method fires the move event.
+     * @param {Number} x The new x position
+     * @param {Number} y The new y position
+     * @returns {Roo.BoxComponent} this
+     */
+    setPagePosition : function(x, y){
+        this.pageX = x;
+        this.pageY = y;
+        if(!this.boxReady){
+            return;
+        }
+        if(x === undefined || y === undefined){ // cannot translate undefined points
+            return;
+        }
+        var p = this.el.translatePoints(x, y);
+        this.setPosition(p.left, p.top);
+        return this;
+    },
+
+    // private
+    onRender : function(ct, position){
+        Roo.BoxComponent.superclass.onRender.call(this, ct, position);
+        if(this.resizeEl){
+            this.resizeEl = Roo.get(this.resizeEl);
+        }
+        if(this.positionEl){
+            this.positionEl = Roo.get(this.positionEl);
+        }
+    },
+
+    // private
+    afterRender : function(){
+        Roo.BoxComponent.superclass.afterRender.call(this);
+        this.boxReady = true;
+        this.setSize(this.width, this.height);
+        if(this.x || this.y){
+            this.setPosition(this.x, this.y);
+        }
+        if(this.pageX || this.pageY){
+            this.setPagePosition(this.pageX, this.pageY);
+        }
+    },
+
+    /**
+     * Force the component's size to recalculate based on the underlying element's current height and width.
+     * @returns {Roo.BoxComponent} this
+     */
+    syncSize : function(){
+        delete this.lastSize;
+        this.setSize(this.el.getWidth(), this.el.getHeight());
+        return this;
+    },
+
+    /**
+     * Called after the component is resized, this method is empty by default but can be implemented by any
+     * subclass that needs to perform custom logic after a resize occurs.
+     * @param {Number} adjWidth The box-adjusted width that was set
+     * @param {Number} adjHeight The box-adjusted height that was set
+     * @param {Number} rawWidth The width that was originally specified
+     * @param {Number} rawHeight The height that was originally specified
+     */
+    onResize : function(adjWidth, adjHeight, rawWidth, rawHeight){
+
+    },
+
+    /**
+     * Called after the component is moved, this method is empty by default but can be implemented by any
+     * subclass that needs to perform custom logic after a move occurs.
+     * @param {Number} x The new x position
+     * @param {Number} y The new y position
+     */
+    onPosition : function(x, y){
+
+    },
+
+    // private
+    adjustSize : function(w, h){
+        if(this.autoWidth){
+            w = 'auto';
+        }
+        if(this.autoHeight){
+            h = 'auto';
+        }
+        return {width : w, height: h};
+    },
+
+    // private
+    adjustPosition : function(x, y){
+        return {x : x, y: y};
+    }
+});/*
  * Original code for Roojs - LGPL
  * <script type="text/javascript">
  */
