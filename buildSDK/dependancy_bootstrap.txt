@@ -9,7 +9,7 @@ Roo.bootstrap.Column
 Roo.bootstrap.Container
 Roo.bootstrap.Form
 Roo.bootstrap.Img
-Roo.bootstrap.Input
+
 Roo.bootstrap.Header
 
 Roo.bootstrap.Menu
@@ -29,3 +29,7 @@ Roo.bootstrap.Slider
 Roo.bootstrap.Table
 Roo.bootstrap.TableCell
 Roo.bootstrap.TableRow
+
+
+Roo.form.VTypes
+Roo.bootstrap.Input
