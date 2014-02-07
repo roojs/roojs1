@@ -113,7 +113,10 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      */
     vtype : null,
     
-    
+      /**
+     * @cfg {Boolean} disableKeyFilter True to disable input keystroke filtering (defaults to false)
+     */
+    disableKeyFilter : false,
     
     
     
