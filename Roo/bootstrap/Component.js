@@ -56,8 +56,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         Roo.log("Call onRender: " + this.xtype);
         
         Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
+        
         if(this.el){
-            
             if (this.el.attr('xtype')) {
                 this.el.dom.removeAttribute('xtype');
                 this.initEvents();
