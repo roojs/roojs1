@@ -125,7 +125,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             } else if (this.theme==='glow') {
                 
                 cfg.tag = 'a';
-                cfg.cls='btn-glow';
+                cfg.cls = 'btn-glow roo-button';
                 
                 if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
                     
@@ -152,6 +152,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             cfg.cls = '';
             cfg.cn =  [{
                 tag : 'a',
+                cls : 'roo-button',
                 html : this.html,
                 href : this.href || '#'
             }];
@@ -172,7 +173,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         if (this.disabled) {
             cfg.disabled = 'disabled';
         }
-        
+        //????
         if (this.items) {
             Roo.log('changing to ul' );
             cfg.tag = 'ul';
