@@ -55,10 +55,13 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             return;
         }
         
+         
+        
         var cfg = Roo.apply({},  this.getAutoCreate());
         cfg.id = Roo.id();
         
-        if (this.xattr) {
+        // fill in the extra attributes 
+        if (this.xattr && typeof(this.xattr) =='object') {
             for (var i in this.xattr) {
                 cfg[i] = this.xattr[i];
             }
@@ -88,15 +91,33 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         var cn = this;
         cntr = typeof(cntr == 'undefined' ) ? 'getChildContainer' : cntr;
         
+        // render the element if it's not BODY.
         if (tree.xtype != 'Body') {
             
             cn = Roo.factory(tree);
             
             cn.parentType = this.xtype; //??
             cn.parentId = this.id;
+            
+            // does the container contain child eleemnts with 'xtype' attributes.
+            // that match this xtype..
+            // note - when we render we create these as well..
+            // so we should check to see if body has xtype set.
+            if (Roo.get(document.body).attr('xtype') == 'Roo.Bootstrap.Body') {
+            
+                var echild = Roo.get(this[cntr]()).child('*[xtype]');
+                if (echild) {
+                    cn.el = echild;
+                    echild.dom.removeAttribute('xtype');
+                }
+            }
             cn.render(this[cntr]());
             // then add the element..
         }
+        
+        
+        
+        
         var nitems = [];
         if (typeof (tree.menu) != 'undefined') {
             tree.menu.parentType = cn.xtype;
@@ -591,15 +612,15 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             cfg.cls = this.cls + '';
         }
         
-	if (this.sticky.length) {
-	    var bd = Roo.get(document.body)
-	    if (!bd.hasClass('bootstrap-sticky')) {
-		bd.addClass('bootstrap-sticky');
-		Roo.select('html',true).setStyle('height', '100%');
-	    }
-	     
-	    cfg.cls += 'bootstrap-sticky-' + this.sticky;
-	}
+        if (this.sticky.length) {
+            var bd = Roo.get(document.body)
+            if (!bd.hasClass('bootstrap-sticky')) {
+            bd.addClass('bootstrap-sticky');
+            Roo.select('html',true).setStyle('height', '100%');
+            }
+             
+            cfg.cls += 'bootstrap-sticky-' + this.sticky;
+        }
 	
 	
         if (this.well.length) {
