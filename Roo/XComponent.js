@@ -441,7 +441,7 @@ Roo.apply(Roo.XComponent, {
         
         var msg = "Building Interface...";
         // flash it up as modal - so we store the mask!?
-        if (!this.hideProgress || !Roo.MessageBox) {
+        if (!this.hideProgress && Roo.MessageBox) {
             Roo.MessageBox.show({ title: 'loading' });
             Roo.MessageBox.show({
                title: "Please wait...",
@@ -459,7 +459,7 @@ Roo.apply(Roo.XComponent, {
         var progressRun = function() {
             if (!mods.length) {
                 Roo.debug && Roo.log('hide?');
-                if (!this.hideProgress || !Roo.MessageBox) {
+                if (!this.hideProgress && Roo.MessageBox) {
                     Roo.MessageBox.hide();
                 }
                 Roo.XComponent.event.fireEvent('buildcomplete', _this.topModule);
@@ -483,7 +483,7 @@ Roo.apply(Roo.XComponent, {
                     " of " + total + 
                     (m.name ? (' - ' + m.name) : '');
 			Roo.debug && Roo.log(msg);
-            if (!this.hideProgress || !Roo.MessageBox) { 
+            if (!this.hideProgress &&  Roo.MessageBox) { 
                 Roo.MessageBox.updateProgress(  (total  - mods.length)/total, msg  );
             }
             
