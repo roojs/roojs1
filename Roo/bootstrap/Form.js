@@ -117,7 +117,11 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         this.el.on('submit', this.onSubmit, this);
         
         
-    }
+    },
+    // private
+    onSubmit : function(e){
+        e.stopEvent();
+    },
     
 });
 
