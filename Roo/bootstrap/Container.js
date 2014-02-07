@@ -60,7 +60,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         }
         
         if (this.sticky.length) {
-            var bd = Roo.get(document.body)
+            var bd = Roo.get(document.body);
             if (!bd.hasClass('bootstrap-sticky')) {
                 bd.addClass('bootstrap-sticky');
                 Roo.select('html',true).setStyle('height', '100%');
