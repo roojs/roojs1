@@ -127,7 +127,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         }
         
         
-        
+        // handle the kids..
         
         var nitems = [];
         if (typeof (tree.menu) != 'undefined') {
