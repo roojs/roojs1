@@ -121,7 +121,10 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      * @cfg {Boolean} disabled True to disable the field (defaults to false).
      */
     disabled : false,
-    
+     /**
+     * @cfg {Boolean} allowBlank False to validate that the value length > 0 (defaults to true)
+     */
+    allowBlank : true,
     
     fieldLabel : '',
     inputType : 'text',
@@ -307,7 +310,51 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     },
     
     
-    
+    /**
+     * Validates a value according to the field's validation rules and marks the field as invalid
+     * if the validation fails
+     * @param {Mixed} value The value to validate
+     * @return {Boolean} True if the value is valid, else false
+     */
+    validateValue : function(value){
+        if(value.length < 1)  { // if it's blank
+             if(this.allowBlank){
+                this.clearInvalid();
+                return true;
+             }else{
+                this.markInvalid(this.blankText);
+                return false;
+             }
+        }
+        if(value.length < this.minLength){
+            this.markInvalid(String.format(this.minLengthText, this.minLength));
+            return false;
+        }
+        if(value.length > this.maxLength){
+            this.markInvalid(String.format(this.maxLengthText, this.maxLength));
+            return false;
+        }
+        if(this.vtype){
+            var vt = Roo.form.VTypes;
+            if(!vt[this.vtype](value, this)){
+                this.markInvalid(this.vtypeText || vt[this.vtype +'Text']);
+                return false;
+            }
+        }
+        if(typeof this.validator == "function"){
+            var msg = this.validator(value);
+            if(msg !== true){
+                this.markInvalid(msg);
+                return false;
+            }
+        }
+        if(this.regex && !this.regex.test(value)){
+            this.markInvalid(this.regexText);
+            return false;
+        }
+        return true;
+    },
+
     
     
      // private
