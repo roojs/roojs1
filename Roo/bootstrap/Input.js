@@ -359,7 +359,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         return v;
     },
-    // private
+    /*
     processValue : function(value){
         if(this.stripCharsRe){
             var newValue = value.replace(this.stripCharsRe, '');
@@ -370,7 +370,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         }
         return value;
     },
-
+  */
     preFocus : function(){
         
         if(this.selectOnFocus){
