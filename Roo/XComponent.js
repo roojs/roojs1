@@ -441,7 +441,7 @@ Roo.apply(Roo.XComponent, {
         
         var msg = "Building Interface...";
         // flash it up as modal - so we store the mask!?
-        if (!this.hideProgress) {
+        if (!this.hideProgress || !Roo.MessageBox) {
             Roo.MessageBox.show({ title: 'loading' });
             Roo.MessageBox.show({
                title: "Please wait...",
