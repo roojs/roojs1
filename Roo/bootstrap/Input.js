@@ -95,7 +95,10 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      * @cfg {Number} validationDelay The length of time in milliseconds after user input begins until validation is initiated (defaults to 250)
      */
     validationDelay : 250,
-    
+     /**
+     * @cfg {String} focusClass The CSS class to use when the field receives focus (defaults to "x-form-focus")
+     */
+    focusClass : "x-form-focus",
     
     fieldLabel : '',
     inputType : 'text',
@@ -273,7 +276,16 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             this.fireEvent("specialkey", this, e);
         }
     },
-
+    onFocus : function(){
+        if(!Roo.isOpera && this.focusClass){ // don't touch in Opera
+            this.el.addClass(this.focusClass);
+        }
+        if(!this.hasFocus){
+            this.hasFocus = true;
+            this.startValue = this.getValue();
+            this.fireEvent("focus", this);
+        }
+    },
 });
 
  
