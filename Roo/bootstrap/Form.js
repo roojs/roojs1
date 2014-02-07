@@ -474,7 +474,9 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             return o.id || (o.id = Roo.id());
         });
         var iter = function(el) {
-            if (el.inputEL) r.add(el);
+            if (el.inputEl) {
+                r.add(el);
+            }
             if (!el.items) {
                 return;
             }
@@ -486,7 +488,10 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         };
         iter(this);
         return r;
-         
+        
+        
+        
+        
     }
     
 });
