@@ -470,14 +470,22 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
     },
     getItems : function()
     {
-        
+        var r=new Roo.util.MixedCollection(false, function(o){
+            return o.id || (o.id = Roo.id());
+        });
         var iter = function(el) {
-            
+            if (el.inputEL) r.add(el);
+            if (!el.items) {
+                return;
+            }
+            Roo.each(el.items,function(e) {
+                iter(e);
+            });
             
             
         };
-        
-        
+        iter(this);
+        return r;
         
         
     }
