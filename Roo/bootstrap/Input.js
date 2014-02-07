@@ -108,6 +108,15 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      * @cfg {String} maskRe An input mask regular expression that will be used to filter keystrokes that don't match (defaults to null)
      */
     maskRe : null,
+       /**
+     * @cfg {String} vtype A validation type name as defined in {@link Roo.form.VTypes} (defaults to null)
+     */
+    vtype : null,
+    
+    
+    
+    
+    
     
     fieldLabel : '',
     inputType : 'text',
