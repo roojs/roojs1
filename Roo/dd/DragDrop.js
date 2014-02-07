@@ -844,9 +844,9 @@ Roo.extend(Roo.dd.DragDrop, Roo.util.Observable , {
             //Roo.log('no outer handes or not over target');
                 // do nothing.
         } else {
-            Roo.log('check validator');
+//            Roo.log('check validator');
             if (this.clickValidator(e)) {
-                Roo.log('validate success');
+//                Roo.log('validate success');
                 // set the initial element position
                 this.setStartPosition();
 
