@@ -274,13 +274,15 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
      * @return Field
      */
     findField : function(id){
-        var field = this.getItems().get(id);
+        var items = this.getItems();
+        var field = items.get(id);
         if(!field){
-            this.getItems().each(function(f){
+            this.items.each(function(f){
                 if(f.isFormField && (f.dataIndex == id || f.id == id || f.getName() == id)){
                     field = f;
                     return false;
                 }
+                return true;
             });
         }
         return field || null;
@@ -307,9 +309,9 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 }
             }
         }
-        Roo.each(this.childForms || [], function (f) {
-            f.markInvalid(errors);
-        });
+        //Roo.each(this.childForms || [], function (f) {
+        //    f.markInvalid(errors);
+        //});
         
         return this;
     },
