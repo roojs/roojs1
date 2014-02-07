@@ -296,7 +296,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     },
     
     inputEl: function () {
-        this.el.select('input.form-control',true);
+        this.el.select('input.form-control',true).first();
     }
     setDisabled : function(v)
     {
