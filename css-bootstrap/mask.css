@@ -32,7 +32,7 @@
 .x-body-masked select,.ext-masked object,.ext-masked embed{
     visibility:hidden;
 }
-.x-dlg-mask{
+.x-dlg-mask {
     z-index:10000;   
     display:none;
     position:absolute;
