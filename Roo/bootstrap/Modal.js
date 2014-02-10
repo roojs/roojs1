@@ -95,7 +95,23 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                 cls : 'modal-body',
                 html : this.html | ''
         };
+        var bts = [];
         
+        
+        
+            {
+                tag: 'button',
+                cls : 'btn btn-default',
+                html : 'Close'
+            },
+            
+            {
+                tag: 'button',
+                cls : 'btn btn-primary',
+                html : 'Save'
+            }
+        
+        ];
         return {
             cls: "modal fade",
             cn : [
@@ -189,5 +205,72 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.el.setStyle('display', 'none');
     }
 });
+
+
+Roo.apply(Roo.bootstrap.Modal  {
+    /**
+         * Button config that displays a single OK button
+         * @type Object
+         */
+        OK :  [{
+            tag: 'button',
+            cls : 'btn btn-default',
+            html : 'OK'
+        }], 
+        /**
+         * Button config that displays Yes and No buttons
+         * @type Object
+         */
+        YESNO : [
+            {
+                tag: 'button',
+                cls : 'btn btn-default',
+                html : 'Yes'
+            },
+            {
+                tag: 'button',
+                cls : 'btn',
+                html : 'No'
+            }
+        ],
+        
+        /**
+         * Button config that displays OK and Cancel buttons
+         * @type Object
+         */
+        OKCANCEL : [
+            {
+                tag: 'button',
+                cls : 'btn btn-default',
+                html : 'OK'
+            },
+            {
+                tag: 'button',
+                cls : 'btn ',
+                html : 'Cancel'
+            }
+        ],
+        /**
+         * Button config that displays Yes, No and Cancel buttons
+         * @type Object
+         */
+        YESNOCANCEL : [
+            {
+                tag: 'button',
+                cls : 'btn btn-default',
+                html : 'Yes'
+            },
+            {
+                tag: 'button',
+                cls : 'btn',
+                html : 'No'
+            },
+            {
+                tag: 'button',
+                cls : 'btn',
+                html : 'Cancel'
+            }
+        ]
+
 
  
