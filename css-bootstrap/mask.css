@@ -1,4 +1,5 @@
-.roo-el-mask {
+.roo-el-mask
+{
 	z-index:20000;   
     position:absolute;
     top:0;
@@ -19,20 +20,24 @@
     background-color: #fff;
 }
 
-.roo-el-mask-msg div {
+.roo-el-mask-msg div
+{
     font: bold 13px "sans serif", tahoma, verdana, helvetica;
     z-index:20001;
     padding:4px 15px;
     color: #557;
     
 }
-.x-body-masked {
+.x-body-masked
+{
 	overflow:hidden !important;
 }
-.x-body-masked select,.ext-masked object,.ext-masked embed{
+.x-body-masked select,.ext-masked object,.ext-masked embed
+{
     visibility:hidden;
 }
-.x-dlg-mask {
+.x-dlg-mask
+{
     z-index:10000;   
     display:none;
     position:absolute;
