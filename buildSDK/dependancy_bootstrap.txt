@@ -30,6 +30,7 @@ Roo.bootstrap.Table
 Roo.bootstrap.TableCell
 Roo.bootstrap.TableRow
 
+Roo.form.Action
 Roo.bootstrap.Form
 Roo.form.VTypes
 Roo.bootstrap.Input
