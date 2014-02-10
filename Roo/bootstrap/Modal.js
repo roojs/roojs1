@@ -95,13 +95,13 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                 cls : 'modal-body',
                 html : this.html || ''
         };
-        var bts = [];
+        var btns = [];
         if (this.buttons) {
             Roo.each(this.buttons, function(bb) {
                 b = Roo.apply({}, bb);
                 b.xns = b.xns || Roo.bootstrap;
                 b.xtype = b.xtype || 'Button';
-                bts.push(b);
+                btns.push(b);
             });
         }
          
