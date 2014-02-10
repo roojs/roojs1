@@ -3439,9 +3439,9 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     },
     focus : function (selectText){
         if(this.rendered){
-            this.inputEl.focus();
+            this.inputEl().focus();
             if(selectText === true){
-                this.inputEl.dom.select();
+                this.inputEl().dom.select();
             }
         }
         return this;
