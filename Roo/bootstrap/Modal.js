@@ -72,6 +72,18 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         if(this.tabIndex !== undefined){
             this.el.dom.setAttribute('tabIndex', this.tabIndex);
         }
+        
+        
+        
+        this.mask = dh.append(document.body, {tag: "div", cls:"x-dlg-mask"}, true);
+        this.mask.enableDisplayMode("block");
+        this.mask.hide();
+        this.el.addClass("x-dlg-modal");
+    
+        
+        
+        
+        
         this.initEvents();
         //this.el.addClass([this.fieldClass, this.cls]);
         
@@ -156,7 +168,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         if (!this.rendered) {
             this.render();
         }
-        
+       
         this.el.addClass('on');
         this.el.removeClass('fade');
         this.el.setStyle('display', 'block');
