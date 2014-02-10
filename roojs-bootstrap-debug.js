@@ -3474,7 +3474,13 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         this.setValue(this.originalValue);
         this.clearInvalid();
     },
-    
+     /**
+     * Returns the name of the field
+     * @return {Mixed} name The name field
+     */
+    getName: function(){
+        return this.name;
+    },
      /**
      * Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {@link #getRawValue}.
      * @return {Mixed} value The field value
