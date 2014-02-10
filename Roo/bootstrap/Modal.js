@@ -90,6 +90,12 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     },
     getAutoCreate : function(){
         
+        
+        var bdy = {
+                cls : 'modal-body',
+                html : this.html | ''
+        };
+        
         return {
             cls: "modal fade",
             cn : [
@@ -115,10 +121,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                                     
                                     ]
                                 },
-                                {
-                                    cls : 'modal-body'
-                                 
-                                },
+                                bdy
                                  {
                                     cls : 'modal-footer'
                                     /*
