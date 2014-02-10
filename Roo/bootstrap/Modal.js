@@ -188,7 +188,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
 });
 
 
-Roo.apply(Roo.bootstrap.Modal  {
+Roo.apply(Roo.bootstrap.Modal,  {
     /**
          * Button config that displays a single OK button
          * @type Object
