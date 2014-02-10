@@ -1090,7 +1090,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         if (this.buttons) {
             Roo.each(this.buttons, function(bb) {
                 b = Roo.apply({}, bb);
-                b.xns = b.xns || 'Roo.bootstrap';
+                b.xns = b.xns || Roo.bootstrap;
                 b.xtype = b.xtype || 'Button';
                 var btn = Roo.factory(b);
                 b.onRender(this.el.select('.modal-footer').first());
