@@ -8,7 +8,9 @@
  * Fork - LGPL
  * <script type="text/javascript">
  */
- 
+
+// as we use this in bootstrap.
+Roo.namespace('Roo.form');
  /**
  * @class Roo.form.Action
  * Internal Class used to handle form actions
@@ -17,7 +19,6 @@
  * @param {Object} config Configuration options
  */
 
-Roo.namespace('Roo.form');
  
  
 // define the action interface
