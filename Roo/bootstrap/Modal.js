@@ -172,8 +172,12 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.el.addClass('on');
         this.el.removeClass('fade');
         this.el.setStyle('display', 'block');
+        this.maskEl.show();
+        
+        
     },
     hide : function() {
+        this.maskEl.hide();
         this.el.removeClass('on');
         this.el.addClass('fade');
         this.el.setStyle('display', 'none');
