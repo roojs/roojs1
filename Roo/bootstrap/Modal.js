@@ -97,21 +97,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         };
         var bts = [];
         
-        
-        
-            {
-                tag: 'button',
-                cls : 'btn btn-default',
-                html : 'Close'
-            },
-            
-            {
-                tag: 'button',
-                cls : 'btn btn-primary',
-                html : 'Save'
-            }
-        
-        ];
+         
         return {
             cls: "modal fade",
             cn : [
@@ -140,21 +126,9 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                                 bdy,
                                  {
                                     cls : 'modal-footer'
-                                    /*
-                                    cn : [
-                                        {
-                                            tag: 'button',
-                                            cls : 'btn btn-default',
-                                            html : 'Close'
-                                        },
-                                        {
-                                            tag: 'button',
-                                            cls : 'btn btn-primary',
-                                            html : 'Save'
-                                        }
                                     
-                                    ]
-                                    */
+                                    cn :  btns
+                                    
                                 }
                                 
                                 
