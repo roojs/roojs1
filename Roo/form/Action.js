@@ -16,6 +16,8 @@
  * @param {Roo.form.BasicForm} el The form element or its id
  * @param {Object} config Configuration options
  */
+
+Roo.namespace('Roo.form');
  
  
 // define the action interface
@@ -32,7 +34,7 @@ Roo.form.Action.CLIENT_INVALID = 'client';
  * Server Validation Failed
  * @const 
  */
- Roo.form.Action.SERVER_INVALID = 'server';
+Roo.form.Action.SERVER_INVALID = 'server';
  /**
  * Connect to Server Failed
  * @const 
