@@ -1045,6 +1045,15 @@ Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
 
 Roo.bootstrap.Modal = function(config){
     Roo.bootstrap.Modal.superclass.constructor.call(this, config);
+    this.addEvents({
+        // raw events
+        /**
+         * @event click
+         * The raw click event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "btnclick" : true
+    });
 };
 
 Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
@@ -1189,14 +1198,17 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
         
     },
-    hide : function() {
+    hide : function()
+    {
         this.maskEl.hide();
         this.el.removeClass('on');
         this.el.addClass('fade');
         this.el.setStyle('display', 'none');
     },
-    onButtonClick: function(a,b,c) {
-        Roo.log([a,b,c]);
+    onButtonClick: function(btn,e)
+    {
+        //Roo.log([a,b,c]);
+        this.fireEvent('btnclick', a.name, e);
     }
 });
 
