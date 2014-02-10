@@ -244,6 +244,6 @@ Roo.apply(Roo.bootstrap.Modal  {
                 html : 'Cancel'
             }
         ]
-
+});
 
  
