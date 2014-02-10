@@ -459,8 +459,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         this.clearInvalid();
     },
      /**
-     * Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {@link #getRawValue}.
-     * @return {Mixed} value The name value
+     * Returns the name of the field
+     * @return {Mixed} value The name field
      */
     getName: function(){
         return this.name;
