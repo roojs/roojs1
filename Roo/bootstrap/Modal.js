@@ -194,6 +194,7 @@ Roo.apply(Roo.bootstrap.Modal,  {
          */
         OK :  [{
             name : 'ok',
+            weight : 'default',
             html : 'OK'
         }], 
         /**
@@ -203,6 +204,7 @@ Roo.apply(Roo.bootstrap.Modal,  {
         YESNO : [
             {
                 name  :'yes',
+                weight : 'default',
                 html : 'Yes'
             },
             {
@@ -218,6 +220,7 @@ Roo.apply(Roo.bootstrap.Modal,  {
         OKCANCEL : [
             {
                 name : 'ok',
+                weight : 'default',
                 html : 'OK'
             },
             {
@@ -232,6 +235,7 @@ Roo.apply(Roo.bootstrap.Modal,  {
         YESNOCANCEL : [
             {
                 name : 'yes',
+                weight : 'default',
                 html : 'Yes'
             },
             {
