@@ -1166,6 +1166,10 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.el.select('.modal-header .close').on('click', this.hide, this);
     },
     show : function() {
+        if (!this.rendered) {
+            this.render();
+        }
+        
         this.el.addClass('on');
         this.el.removeClass('fade');
         this.el.setStyle('display', 'block');
