@@ -194,7 +194,7 @@ Roo.apply(Roo.bootstrap.Modal,  {
          * @type Object
          */
         OK :  [{
-            name 'ok',
+            name : 'ok',
             html : 'OK'
         }], 
         /**
@@ -203,11 +203,11 @@ Roo.apply(Roo.bootstrap.Modal,  {
          */
         YESNO : [
             {
-                name 'yes',
+                name  :'yes',
                 html : 'Yes'
             },
             {
-                name 'no',
+                name  : 'no',
                 html : 'No'
             }
         ],
@@ -218,7 +218,7 @@ Roo.apply(Roo.bootstrap.Modal,  {
          */
         OKCANCEL : [
             {
-                name 'ok',
+                name : 'ok',
                 html : 'OK'
             },
             {
@@ -236,7 +236,7 @@ Roo.apply(Roo.bootstrap.Modal,  {
                 html : 'Yes'
             },
             {
-                name : 'no'
+                name : 'no',
                 html : 'No'
             },
             {
