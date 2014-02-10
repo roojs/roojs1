@@ -96,7 +96,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                 b.xns = b.xns || Roo.bootstrap;
                 b.xtype = b.xtype || 'Button';
                 if (typeof(b.listeners) == 'undefined') {
-                    b.listeners = { click : this.onButtonClick };
+                    b.listeners = { click : function(b) { this.onButtonClick(b); } };
                 }
                 
                 var btn = Roo.factory(b);
