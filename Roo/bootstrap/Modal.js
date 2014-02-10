@@ -93,7 +93,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
         var bdy = {
                 cls : 'modal-body',
-                html : this.html | ''
+                html : this.html || ''
         };
         var bts = [];
         if (this.buttons) {
