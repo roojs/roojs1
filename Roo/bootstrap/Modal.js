@@ -39,6 +39,15 @@
 
 Roo.bootstrap.Modal = function(config){
     Roo.bootstrap.Modal.superclass.constructor.call(this, config);
+      this.addEvents({
+        // raw events
+        /**
+         * @event click
+         * The raw click event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "btnclick" : true
+    });
 };
 
 Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
