@@ -460,7 +460,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     },
      /**
      * Returns the name of the field
-     * @return {Mixed} value The name field
+     * @return {Mixed} name The name field
      */
     getName: function(){
         return this.name;
