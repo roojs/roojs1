@@ -1092,7 +1092,12 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                 b = Roo.apply({}, bb);
                 b.xns = b.xns || Roo.bootstrap;
                 b.xtype = b.xtype || 'Button';
+                if (typeof(b.listeners) == 'undefined') {
+                    b.listeners.click = this.onButtonClick;
+                }
+                
                 var btn = Roo.factory(b);
+                
                 btn.onRender(this.el.select('.modal-footer').first());
                 
             },this);
@@ -1189,6 +1194,9 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.el.removeClass('on');
         this.el.addClass('fade');
         this.el.setStyle('display', 'none');
+    },
+    onButtonClick: function(a,b,c) {
+        Roo.log([a,b,c]);
     }
 });
 
