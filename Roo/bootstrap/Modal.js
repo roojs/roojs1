@@ -125,7 +125,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                                 },
                                 bdy,
                                  {
-                                    cls : 'modal-footer'
+                                    cls : 'modal-footer',
                                     
                                     cn :  btns
                                     
