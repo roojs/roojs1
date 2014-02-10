@@ -101,6 +101,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                 b = Roo.apply({}, bb);
                 b.xns = b.xns || Roo.bootstrap;
                 b.xtype = b.xtype || 'Button';
+                
                 bts.push(b);
             });
         }
@@ -193,8 +194,7 @@ Roo.apply(Roo.bootstrap.Modal  {
          * @type Object
          */
         OK :  [{
-            tag: 'button',
-            cls : 'btn btn-default',
+            name 'ok'
             html : 'OK'
         }], 
         /**
@@ -203,13 +203,11 @@ Roo.apply(Roo.bootstrap.Modal  {
          */
         YESNO : [
             {
-                tag: 'button',
-                cls : 'btn btn-default',
+                name 'yes',
                 html : 'Yes'
             },
             {
-                tag: 'button',
-                cls : 'btn',
+                name 'no',
                 html : 'No'
             }
         ],
@@ -220,13 +218,11 @@ Roo.apply(Roo.bootstrap.Modal  {
          */
         OKCANCEL : [
             {
-                tag: 'button',
-                cls : 'btn btn-default',
+                name 'ok',
                 html : 'OK'
             },
             {
-                tag: 'button',
-                cls : 'btn ',
+               name : 'cancel',
                 html : 'Cancel'
             }
         ],
@@ -236,18 +232,15 @@ Roo.apply(Roo.bootstrap.Modal  {
          */
         YESNOCANCEL : [
             {
-                tag: 'button',
-                cls : 'btn btn-default',
+                name : 'yes',
                 html : 'Yes'
             },
             {
-                tag: 'button',
-                cls : 'btn',
+                name : 'no'
                 html : 'No'
             },
             {
-                tag: 'button',
-                cls : 'btn',
+                name : 'cancel',
                 html : 'Cancel'
             }
         ]
