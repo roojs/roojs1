@@ -194,7 +194,7 @@ Roo.apply(Roo.bootstrap.Modal,  {
          * @type Object
          */
         OK :  [{
-            name 'ok'
+            name 'ok',
             html : 'OK'
         }], 
         /**
