@@ -43,8 +43,4 @@
    filter: alpha(opacity=50);
    background-color:#CCC;
 }
-
-
-body.masked .x-dlg select {
-	visibility:visible;
-}
+ 
