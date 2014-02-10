@@ -139,14 +139,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             nitems.push(cn.addxtype(Roo.apply({}, tree.menu)));
             
         }
-        if (typeof (tree.buttons) != 'undefined' && typeof(cn.getButtonContainer) == 'function') {
-            
-            for(var i =0;i < tree.buttons.length;i++) {
-                nitems.push(cn.addxtype(Roo.apply({}, tree.buttons[i]), 'getButtonContainer'));
-            }
-            
-            
-        }
+        
         if (!tree.items || !tree.items.length) {
             cn.items = nitems;
             return cn;
@@ -1043,7 +1036,7 @@ Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
  * @extends Roo.bootstrap.Component
  * Bootstrap Modal class
  * @cfg {String} title Title of dialog
- * @cfg {Array} buttons Array of buttons
+ * @cfg {Array} buttons Array of buttons or standard button set..
  * 
  * @constructor
  * Create a new Modal Dialog
@@ -1103,6 +1096,21 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     },
     getAutoCreate : function(){
         
+        
+        var bdy = {
+                cls : 'modal-body',
+                html : this.html || ''
+        };
+        var bts = [];
+        if (this.buttons) {
+            Roo.each(this.buttons, function(bb) {
+                b = Roo.apply({}, bb);
+                b.xns = b.xns || Roo.bootstrap;
+                b.xtype = b.xtype || 'Button';
+                bts.push(b);
+            });
+        }
+         
         return {
             cls: "modal fade",
             cn : [
@@ -1128,27 +1136,11 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                                     
                                     ]
                                 },
+                                bdy,
                                 {
-                                    cls : 'modal-body'
-                                 
-                                },
-                                 {
-                                    cls : 'modal-footer'
-                                    /*
-                                    cn : [
-                                        {
-                                            tag: 'button',
-                                            cls : 'btn btn-default',
-                                            html : 'Close'
-                                        },
-                                        {
-                                            tag: 'button',
-                                            cls : 'btn btn-primary',
-                                            html : 'Save'
-                                        }
+                                    cls : 'modal-footer',
+                                    cn :  btns
                                     
-                                    ]
-                                    */
                                 }
                                 
                                 
@@ -1198,6 +1190,69 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.el.addClass('fade');
         this.el.setStyle('display', 'none');
     }
+});
+
+
+Roo.apply(Roo.bootstrap.Modal,  {
+    /**
+         * Button config that displays a single OK button
+         * @type Object
+         */
+        OK :  [{
+            name : 'ok',
+            weight : 'primary',
+            html : 'OK'
+        }], 
+        /**
+         * Button config that displays Yes and No buttons
+         * @type Object
+         */
+        YESNO : [
+            {
+                name  :'yes',
+                weight : 'primary',
+                html : 'Yes'
+            },
+            {
+                name  : 'no',
+                html : 'No'
+            }
+        ],
+        
+        /**
+         * Button config that displays OK and Cancel buttons
+         * @type Object
+         */
+        OKCANCEL : [
+            {
+                name : 'ok',
+                weight : 'primary',
+                html : 'OK'
+            },
+            {
+               name : 'cancel',
+                html : 'Cancel'
+            }
+        ],
+        /**
+         * Button config that displays Yes, No and Cancel buttons
+         * @type Object
+         */
+        YESNOCANCEL : [
+            {
+                name : 'yes',
+                weight : 'primary',
+                html : 'Yes'
+            },
+            {
+                name : 'no',
+                html : 'No'
+            },
+            {
+                name : 'cancel',
+                html : 'Cancel'
+            }
+        ]
 });
 
  /*
