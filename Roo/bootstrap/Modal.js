@@ -103,7 +103,6 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                 b.xtype = b.xtype || 'Button';
                 bts.push(b);
             });
-            
         }
          
         return {
@@ -132,9 +131,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                                     ]
                                 },
                                 bdy,
-                                 {
+                                {
                                     cls : 'modal-footer',
-                                    
                                     cn :  btns
                                     
                                 }
