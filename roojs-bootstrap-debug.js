@@ -3466,6 +3466,15 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         }
         this.fireEvent("blur", this);
     },
+    
+    /**
+     * Resets the current field value to the originally loaded value and clears any validation messages
+     */
+    reset : function(){
+        this.setValue(this.originalValue);
+        this.clearInvalid();
+    },
+    
      /**
      * Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {@link #getRawValue}.
      * @return {Mixed} value The field value
