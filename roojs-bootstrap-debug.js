@@ -3437,6 +3437,16 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             this.fireEvent("specialkey", this, e);
         }
     },
+    focus : function (selectText){
+        if(this.rendered){
+            this.inputEl.focus();
+            if(selectText === true){
+                this.inputEl.dom.select();
+            }
+        }
+        return this;
+    } ,
+    
     onFocus : function(){
         if(!Roo.isOpera && this.focusClass){ // don't touch in Opera
            // this.el.addClass(this.focusClass);
