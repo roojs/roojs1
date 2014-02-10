@@ -81,6 +81,17 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         //this.el.addClass("x-dlg-modal");
     
         
+        if (this.buttons) {
+            Roo.each(this.buttons, function(bb) {
+                b = Roo.apply({}, bb);
+                b.xns = b.xns || 'Roo.bootstrap';
+                b.xtype = b.xtype || 'Button';
+                var btn = Roo.factory(b);
+                b.onRender(this.el.select('.modal-footer').first())l
+                
+                
+            });
+        }
         
         
         
@@ -95,15 +106,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                 cls : 'modal-body',
                 html : this.html || ''
         };
-        var btns = [];
-        if (this.buttons) {
-            Roo.each(this.buttons, function(bb) {
-                b = Roo.apply({}, bb);
-                b.xns = b.xns || 'Roo.bootstrap';
-                b.xtype = b.xtype || 'Button';
-                btns.push(b);
-            });
-        }
+        
          
         return {
             cls: "modal fade",
