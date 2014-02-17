@@ -196,17 +196,17 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
 
     // private
     getResizeEl : function(){
-        return this.inputEL();
+        return this.inputEl();
     },
 
     // private
     getPositionEl : function(){
-        return this.wrap;
+        return this.inputEl();
     },
 
     // private
     alignErrorIcon : function(){
-        this.errorIcon.alignTo(this.wrap, 'tl-tr', [2, 0]);
+        this.errorIcon.alignTo(this.inputEl(), 'tl-tr', [2, 0]);
     },
 
     // private
