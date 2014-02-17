@@ -11,6 +11,8 @@
  * Bootstrap Form class
  * @cfg {String} method  GET | POST (default POST)
  * @cfg {String} labelAlign top | left (default top)
+  * @cfg {String} align left  | right - for navbars
+
  * 
  * @constructor
  * Create a new Form
@@ -105,10 +107,18 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             id : this.id || Roo.id(),
             cls : ''
         }
+        if (this.parent().xtype == 'Navbar') {
+            cfg.cls = 'navbar-form';
+            if (this.align) {
+                //code
+            }
+        }
         
         if (this.labelAlign == 'left' ) {
             cfg.cls += ' form-horizontal';
         }
+        
+        
         return cfg;
     },
     initEvents : function()
