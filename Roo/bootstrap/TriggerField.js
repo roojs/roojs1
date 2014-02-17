@@ -84,7 +84,9 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         if (this.name) {
             input.name = this.name;
         }
-        
+        if (this.size) {
+            cls += ' input-' + this.size;
+        }
         var inputblock = {
             cls: 'combobox-container',
             cn: [
