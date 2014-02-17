@@ -236,7 +236,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
     onDestroy : function(){
         if(this.trigger){
             this.trigger.removeAllListeners();
-            this.trigger.remove();
+          //  this.trigger.remove();
         }
         if(this.wrap){
             this.wrap.remove();
