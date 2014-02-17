@@ -62,6 +62,150 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
 
     
     actionMode : 'wrap',
+    
+    
+    
+    getAutoCreate : function(){
+       
+        var parent = this.parent();
+        
+        var align = parent.labelAlign;
+        
+        var id = Roo.id();
+        
+        var cfg = {
+            cls: 'form-group' //input-group
+        };
+        
+        var input =  {
+            tag: 'input',
+            id : id,
+            type : this.inputType,
+            cls : 'form-control',
+            placeholder : this.placeholder || '' 
+            
+        };
+        if (this.name) {
+            input.name = this.name;
+        }
+        
+        var inputblock = {
+            cls: 'combobox-container',
+            cn: [
+                {
+                    tag: 'input',
+                    type : 'hidden',
+                },
+                input,
+                {
+                    tag :'span',
+                    cls : 'add-on btn dropdown-toggle',
+                    cn : [
+                        {
+                            tag: 'span',
+                            cls: 'caret'
+                        },
+                        {
+                            tag: 'span',
+                            cls: 'combobox-clear',
+                            cn  : [
+                                {
+                                    tag : 'i',
+                                    cls: 'icon-remove'
+                                }
+                            ]
+                        },
+                    ]
+                        
+                }
+            ]
+        };
+        
+        if (this.before || this.after) {
+            
+            inputblock = {
+                cls : 'input-group',
+                cn :  [] 
+            };
+            if (this.before) {
+                inputblock.cn.push({
+                    tag :'span',
+                    cls : 'input-group-addon',
+                    html : this.before
+                });
+            }
+            inputblock.cn.push(input);
+            if (this.after) {
+                inputblock.cn.push({
+                    tag :'span',
+                    cls : 'input-group-addon',
+                    html : this.after
+                });
+            }
+            
+        }
+        
+        Roo.log(align);
+        Roo.log(this.fieldLabel.length);
+        
+        if (align ==='left' && this.fieldLabel.length) {
+                Roo.log("left and has label");
+                cfg.cn = [
+                    
+                    {
+                        tag: 'label',
+                        'for' :  id,
+                        cls : 'col-sm-2 control-label',
+                        html : this.fieldLabel
+                        
+                    },
+                    {
+                        cls : "col-sm-10", 
+                        cn: [
+                            inputblock
+                        ]
+                    }
+                    
+                ];
+        } else if ( this.fieldLabel.length) {
+                Roo.log(" label");
+                 cfg.cn = [
+                   
+                    {
+                        tag: 'label',
+                        //cls : 'input-group-addon',
+                        html : this.fieldLabel
+                        
+                    },
+                    
+                    inputblock
+                    
+                ];
+
+        } else {
+            
+                   Roo.log(" no label && no align");
+                cfg.cn = [
+                    
+                        inputblock
+                    
+                ];
+                
+                
+        }
+         
+        
+        
+        
+        if (this.disabled) {
+            input.disabled=true;
+        }
+        return cfg;
+        
+    },
+    
+    
+    
     // private
     onResize : function(w, h){
         Roo.form.TriggerField.superclass.onResize.apply(this, arguments);
