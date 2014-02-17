@@ -474,7 +474,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
     // private
     onResize: function(w, h){
-        Roo.form.ComboBox.superclass.onResize.apply(this, arguments);
+        Roo.bootstrap.ComboBox.superclass.onResize.apply(this, arguments);
         
         if(typeof w != 'number'){
             // we do not handle it!?!?
