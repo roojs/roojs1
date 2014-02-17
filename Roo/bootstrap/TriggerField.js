@@ -87,7 +87,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             input.name = this.name;
         }
         
-        inputblock = {
+        var inputblock = {
             cls: 'combobox-container',
             cn: [
                 {
@@ -167,12 +167,8 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         } else {
             
                 Roo.log(" no label && no align");
-                cfg.cn = [
-                    
-                        inputblock
-                    
-                ];
-                
+                cfg = inputblock
+                     
                 
         }
          
