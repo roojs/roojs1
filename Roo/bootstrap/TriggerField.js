@@ -103,7 +103,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                 },
                 {
                     tag :'span',
-                    cls : 'add-on btn dropdown-toggle',
+                    cls : 'input-group-addon btn dropdown-toggle',
                     cn : [
                         {
                             tag: 'span',
