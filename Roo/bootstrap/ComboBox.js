@@ -486,7 +486,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         var x = w - tw;
         this.inputEl().setWidth( this.adjustWidth('input', x));
             
-        this.trigger.setStyle('left', x+'px');
+        //this.trigger.setStyle('left', x+'px');
         
         if(this.list && this.listWidth === undefined){
             var lw = Math.max(x + this.trigger.getWidth(), this.minListWidth);
