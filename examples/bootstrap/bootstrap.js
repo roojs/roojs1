@@ -12,6 +12,7 @@ Roo.example.bootstrap = new Roo.XComponent({
     permname : '', 
     _tree : function()
     {
+        
         this.parent = {
             el : new Roo.bootstrap.Body(),
         }
