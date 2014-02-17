@@ -5420,6 +5420,30 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
+     "name": "xs",
+     "type": "Number",
+     "desc": "colspan out of 12 for mobile-sized screens",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "sm",
+     "type": "Number",
+     "desc": "colspan out of 12 for tablet-sized screens",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "md",
+     "type": "Number",
+     "desc": "colspan out of 12 for computer-sized screens",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "lg",
+     "type": "Number",
+     "desc": "colspan out of 12 for large computer-sized screens",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -6605,6 +6629,30 @@
      "name": "size",
      "type": "string",
      "desc": "- (lg|sm) or leave empty..",
+     "memberOf": ""
+    },
+    {
+     "name": "xs",
+     "type": "Number",
+     "desc": "colspan out of 12 for mobile-sized screens",
+     "memberOf": ""
+    },
+    {
+     "name": "sm",
+     "type": "Number",
+     "desc": "colspan out of 12 for tablet-sized screens",
+     "memberOf": ""
+    },
+    {
+     "name": "md",
+     "type": "Number",
+     "desc": "colspan out of 12 for computer-sized screens",
+     "memberOf": ""
+    },
+    {
+     "name": "lg",
+     "type": "Number",
+     "desc": "colspan out of 12 for large computer-sized screens",
      "memberOf": ""
     },
     {
@@ -8807,6 +8855,30 @@
      "name": "size",
      "type": "string",
      "desc": "- (lg|sm) or leave empty..",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "xs",
+     "type": "Number",
+     "desc": "colspan out of 12 for mobile-sized screens",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "sm",
+     "type": "Number",
+     "desc": "colspan out of 12 for tablet-sized screens",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "md",
+     "type": "Number",
+     "desc": "colspan out of 12 for computer-sized screens",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "lg",
+     "type": "Number",
+     "desc": "colspan out of 12 for large computer-sized screens",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
