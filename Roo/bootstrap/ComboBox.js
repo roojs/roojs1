@@ -711,7 +711,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         // returns hidden if it's set..
         if (!this.rendered) {return ''};
-        return !this.hiddenName && this.inputEl().dom.name  ? this.el.dom.name : (this.hiddenName || '');
+        return !this.hiddenName && this.inputEl().dom.name  ? this.inputEl().dom.name : (this.hiddenName || '');
         
     },
     // private
