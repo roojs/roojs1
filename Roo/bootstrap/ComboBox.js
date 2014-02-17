@@ -277,9 +277,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
         var cls = 'x-combo-list';
 
-        this.list = new Roo.Layer({
-            shadow: this.shadow, cls: [cls, this.listClass].join(' '), constrain:false
-        });
+        //this.list = new Roo.Layer({
+        //    shadow: this.shadow, cls: [cls, this.listClass].join(' '), constrain:false
+        //});
 
         var lw = this.listWidth || Math.max(this.wrap.getWidth(), this.minListWidth);
         this.list.setWidth(lw);
