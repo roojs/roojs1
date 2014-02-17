@@ -210,11 +210,11 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
     },
 
     // private
-    onRender : function(ct, position){
-        Roo.form.TriggerField.superclass.onRender.call(this, ct, position);
-        this.wrap = this.el.wrap({cls: "x-form-field-wrap"});
-        this.trigger = this.wrap.createChild(this.triggerConfig ||
-                {tag: "img", src: Roo.BLANK_IMAGE_URL, cls: "x-form-trigger " + this.triggerClass});
+    initEvents : function(){
+        
+        //this.wrap = this.el.wrap({cls: "x-form-field-wrap"});
+        
+        this.trigger = this.el.select('span.dropdown-toggle').first();
         if(this.hideTrigger){
             this.trigger.setDisplayed(false);
         }
