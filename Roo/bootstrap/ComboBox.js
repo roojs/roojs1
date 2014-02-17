@@ -740,7 +740,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.onSelect(r, index);
         }
         if(doFocus !== false && !this.blockFocus){
-            this.el.focus();
+            this.inputEl().focus();
         }
     },
 
