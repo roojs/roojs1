@@ -386,7 +386,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         */
         
  
-        this.keyNav = new Roo.KeyNav(this.el, {
+        this.keyNav = new Roo.KeyNav(this.inputEl(), {
             "up" : function(e){
                 this.inKeyMode = true;
                 this.selectPrev();
@@ -427,14 +427,19 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
             forceKeyDown: true
         });
+        
+        
         this.queryDelay = Math.max(this.queryDelay || 10,
                 this.mode == 'local' ? 10 : 250);
+        
+        
         this.dqTask = new Roo.util.DelayedTask(this.initQuery, this);
+        
         if(this.typeAhead){
             this.taTask = new Roo.util.DelayedTask(this.onTypeAhead, this);
         }
         if(this.editable !== false){
-            this.el.on("keyup", this.onKeyUp, this);
+            this.inputEl().on("keyup", this.onKeyUp, this);
         }
         if(this.forceSelection){
             this.on('blur', this.doForce, this);
