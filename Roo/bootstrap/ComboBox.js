@@ -325,7 +325,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.assetHeight += this.footer.getHeight();
         }
         */
-
+        this.list = this.el.select('ul',true).first();
+            
         if(!this.tpl){
             this.tpl = '<li><a href="#">{' + this.displayField + '}</a></li>';
         }
