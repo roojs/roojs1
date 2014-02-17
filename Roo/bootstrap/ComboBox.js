@@ -271,9 +271,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
              
              
         }
-        if(Roo.isGecko){
-            this.el.dom.setAttribute('autocomplete', 'off');
-        }
+        //if(Roo.isGecko){
+        //    this.el.dom.setAttribute('autocomplete', 'off');
+        //}
 
         var cls = 'x-combo-list';
 
