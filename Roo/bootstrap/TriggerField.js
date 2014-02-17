@@ -287,7 +287,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         if(this.monitorTab){
             this.el.un("keydown", this.checkTab, this);
         }
-        this.wrap.removeClass('x-trigger-wrap-focus');
+        //this.wrap.removeClass('x-trigger-wrap-focus');
         Roo.form.TriggerField.superclass.onBlur.call(this);
     },
 
