@@ -543,7 +543,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.restrictHeight();
             if(this.lastQuery == this.allQuery){
                 if(this.editable){
-                    this.el.dom.select();
+                    this.inputEl().dom.select();
                 }
                 if(!this.selectByValue(this.value, true)){
                     this.select(0, true);
@@ -565,7 +565,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.collapse();
         Roo.log(this.store.reader.jsonData);
         if (this.store && typeof(this.store.reader.jsonData.errorMsg) != 'undefined') {
-            Roo.MessageBox.alert("Error loading",this.store.reader.jsonData.errorMsg);
+            // fixme
+            //Roo.MessageBox.alert("Error loading",this.store.reader.jsonData.errorMsg);
         }
         
         
