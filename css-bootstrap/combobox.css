@@ -151,3 +151,6 @@
 .btn .combobox-clear [class^="icon-"] {
   line-height: 1.4em;
 }
+.combobox-container .dropdown-menu {
+    border-radius: 0;
+}
