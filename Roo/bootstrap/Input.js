@@ -210,6 +210,9 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         if (this.name) {
             input.name = this.name;
         }
+        if (this.size) {
+            cls += ' input-' + this.size;
+        }
         
         var inputblock = input;
         
