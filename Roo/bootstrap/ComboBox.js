@@ -1,18 +1,11 @@
 /*
- * Based on:
- * Ext JS Library 1.1.1
- * Copyright(c) 2006-2007, Ext JS, LLC.
- *
- * Originally Released Under LGPL - original licence link has changed is not relivant.
- *
- * Fork - LGPL
- * <script type="text/javascript">
+ * - LGPL
+ * * 
  */
- 
 
 /**
- * @class Roo.form.ComboBox
- * @extends Roo.form.TriggerField
+ * @class Roo.bootstrap.ComboBox
+ * @extends Roo.bootstrap.TriggerField
  * A combobox control with support for autocomplete, remote-loading, paging and many other features.
  * @constructor
  * Create a new ComboBox.
