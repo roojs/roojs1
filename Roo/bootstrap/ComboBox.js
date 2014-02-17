@@ -11,8 +11,8 @@
  * Create a new ComboBox.
  * @param {Object} config Configuration options
  */
-Roo.form.ComboBox = function(config){
-    Roo.form.ComboBox.superclass.constructor.call(this, config);
+Roo.bootstrap.ComboBox = function(config){
+    Roo.bootstrap.ComboBox.superclass.constructor.call(this, config);
     this.addEvents({
         /**
          * @event expand
