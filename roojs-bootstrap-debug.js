@@ -2437,6 +2437,8 @@ Roo.form.Action.ACTION_TYPES = {
  * Bootstrap Form class
  * @cfg {String} method  GET | POST (default POST)
  * @cfg {String} labelAlign top | left (default top)
+  * @cfg {String} align left  | right - for navbars
+
  * 
  * @constructor
  * Create a new Form
@@ -2504,6 +2506,10 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
      * @cfg {Number} timeout Timeout for form actions in seconds (default is 30 seconds).
      */
     timeout: 30,
+    /**
+     * @cfg {Sting} align (left|right) for navbar forms
+     */
+    align : 'left',
 
     // private
     activeAction : null,
@@ -2531,10 +2537,16 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             id : this.id || Roo.id(),
             cls : ''
         }
+        if (this.parent().xtype == 'Navbar') {
+            cfg.cls = 'navbar-form navbar-' + this.align;
+            
+        }
         
         if (this.labelAlign == 'left' ) {
             cfg.cls += ' form-horizontal';
         }
+        
+        
         return cfg;
     },
     initEvents : function()
@@ -3034,6 +3046,7 @@ Roo.form.VTypes = function(){
  * @cfg {string} placeholder - placeholder to put in text.
  * @cfg {string}  before - input group add on before
  * @cfg {string} after - input group add on after
+ * @cfg {string} size - (lg|sm) or leave empty..
  * 
  * 
  * @constructor
@@ -3197,7 +3210,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     placeholder: false,
     before : false,
     after : false,
-    
+    size : false,
     // private
     hasFocus : false,
     preventMark: false,
@@ -3225,6 +3238,9 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         };
         if (this.name) {
             input.name = this.name;
+        }
+        if (this.size) {
+            input.cls += ' input-' + this.size;
         }
         
         var inputblock = input;
@@ -3671,4 +3687,349 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     }
 });
 
+ 
+/*
+ * - LGPL
+ *
+ * trigger field - base class for combo..
+ * 
+ */
+ 
+/**
+ * @class Roo.bootstrap.TriggerField
+ * @extends Roo.bootstrap.Input
+ * Provides a convenient wrapper for TextFields that adds a clickable trigger button (looks like a combobox by default).
+ * The trigger has no default action, so you must assign a function to implement the trigger click handler by
+ * overriding {@link #onTriggerClick}. You can create a TriggerField directly, as it renders exactly like a combobox
+ * for which you can provide a custom implementation.  For example:
+ * <pre><code>
+var trigger = new Roo.bootstrap.TriggerField();
+trigger.onTriggerClick = myTriggerFn;
+trigger.applyTo('my-field');
+</code></pre>
+ *
+ * However, in general you will most likely want to use TriggerField as the base class for a reusable component.
+ * {@link Roo.bootstrap.DateField} and {@link Roo.bootstrap.ComboBox} are perfect examples of this.
+ * @cfg {String} triggerClass An additional CSS class used to style the trigger button.  The trigger will always get the
+ * class 'x-form-trigger' by default and triggerClass will be <b>appended</b> if specified.
+ * @constructor
+ * Create a new TriggerField.
+ * @param {Object} config Configuration options (valid {@Roo.bootstrap.Input} config options will also be applied
+ * to the base TextField)
+ */
+Roo.bootstrap.TriggerField = function(config){
+    this.mimicing = false;
+    Roo.bootstrap.TriggerField.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
+    /**
+     * @cfg {String} triggerClass A CSS class to apply to the trigger
+     */
+     /**
+     * @cfg {Boolean} hideTrigger True to hide the trigger element and display only the base text field (defaults to false)
+     */
+    hideTrigger:false,
+
+    /** @cfg {Boolean} grow @hide */
+    /** @cfg {Number} growMin @hide */
+    /** @cfg {Number} growMax @hide */
+
+    /**
+     * @hide 
+     * @method
+     */
+    autoSize: Roo.emptyFn,
+    // private
+    monitorTab : true,
+    // private
+    deferHeight : true,
+
+    
+    actionMode : 'wrap',
+    
+    
+    
+    getAutoCreate : function(){
+       
+        var parent = this.parent();
+        
+        var align = parent.labelAlign;
+        
+        var id = Roo.id();
+        
+        var cfg = {
+            cls: 'form-group' //input-group
+        };
+        
+        var input =  {
+            tag: 'input',
+            id : id,
+            type : this.inputType,
+            cls : 'form-control',
+            autocomplete: 'off',
+            placeholder : this.placeholder || '' 
+            
+        };
+        if (this.name) {
+            input.name = this.name;
+        }
+        if (this.size) {
+            input.cls += ' input-' + this.size;
+        }
+        var inputblock = {
+            cls: 'combobox-container input-group',
+            cn: [
+                {
+                    tag: 'input',
+                    type : 'hidden',
+                    cls: 'form-hidden-field'
+                },
+                input,
+                {
+                    tag: 'ul',
+                    cls : 'typeahead typeahead-long dropdown-menu',
+                    style : 'display:none'
+                },
+                {
+                    tag :'span',
+                    cls : 'input-group-addon btn dropdown-toggle',
+                    cn : [
+                        {
+                            tag: 'span',
+                            cls: 'caret'
+                        },
+                        {
+                            tag: 'span',
+                            cls: 'combobox-clear',
+                            cn  : [
+                                {
+                                    tag : 'i',
+                                    cls: 'icon-remove'
+                                }
+                            ]
+                        },
+                    ]
+                        
+                }
+            ]
+        };
+        
+        
+        
+        
+        if (align ==='left' && this.fieldLabel.length) {
+                
+            
+            
+                Roo.log("left and has label");
+                cfg.cn = [
+                    
+                    {
+                        tag: 'label',
+                        'for' :  id,
+                        cls : 'col-sm-2 control-label',
+                        html : this.fieldLabel
+                        
+                    },
+                    {
+                        cls : "col-sm-10", 
+                        cn: [
+                            inputblock
+                        ]
+                    }
+                    
+                ];
+        } else if ( this.fieldLabel.length) {
+                Roo.log(" label");
+                 cfg.cn = [
+                   
+                    {
+                        tag: 'label',
+                        //cls : 'input-group-addon',
+                        html : this.fieldLabel
+                        
+                    },
+                    
+                    inputblock
+                    
+                ];
+
+        } else {
+            
+                Roo.log(" no label && no align");
+                cfg = inputblock
+                     
+                
+        }
+         
+        
+        
+        
+        if (this.disabled) {
+            input.disabled=true;
+        }
+        return cfg;
+        
+    },
+    
+    
+    
+    // private
+    onResize : function(w, h){
+        Roo.boostrap.TriggerField.superclass.onResize.apply(this, arguments);
+        if(typeof w == 'number'){
+            var x = w - this.trigger.getWidth();
+            this.inputEl().setWidth(this.adjustWidth('input', x));
+            this.trigger.setStyle('left', x+'px');
+        }
+    },
+
+    // private
+    adjustSize : Roo.BoxComponent.prototype.adjustSize,
+
+    // private
+    getResizeEl : function(){
+        return this.inputEl();
+    },
+
+    // private
+    getPositionEl : function(){
+        return this.inputEl();
+    },
+
+    // private
+    alignErrorIcon : function(){
+        this.errorIcon.alignTo(this.inputEl(), 'tl-tr', [2, 0]);
+    },
+
+    // private
+    initEvents : function(){
+        
+        //this.wrap = this.el.wrap({cls: "x-form-field-wrap"});
+        
+        this.trigger = this.el.select('span.dropdown-toggle',true).first();
+        if(this.hideTrigger){
+            this.trigger.setDisplayed(false);
+        }
+        this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
+        //this.trigger.addClassOnOver('x-form-trigger-over');
+        //this.trigger.addClassOnClick('x-form-trigger-click');
+        
+        //if(!this.width){
+        //    this.wrap.setWidth(this.el.getWidth()+this.trigger.getWidth());
+        //}
+    },
+
+    // private
+    initTrigger : function(){
+       
+    },
+
+    // private
+    onDestroy : function(){
+        if(this.trigger){
+            this.trigger.removeAllListeners();
+          //  this.trigger.remove();
+        }
+        //if(this.wrap){
+        //    this.wrap.remove();
+        //}
+        Roo.bootstrap.TriggerField.superclass.onDestroy.call(this);
+    },
+
+    // private
+    onFocus : function(){
+        Roo.bootstrap.TriggerField.superclass.onFocus.call(this);
+        /*
+        if(!this.mimicing){
+            this.wrap.addClass('x-trigger-wrap-focus');
+            this.mimicing = true;
+            Roo.get(Roo.isIE ? document.body : document).on("mousedown", this.mimicBlur, this);
+            if(this.monitorTab){
+                this.el.on("keydown", this.checkTab, this);
+            }
+        }
+        */
+    },
+
+    // private
+    checkTab : function(e){
+        if(e.getKey() == e.TAB){
+            this.triggerBlur();
+        }
+    },
+
+    // private
+    onBlur : function(){
+        // do nothing
+    },
+
+    // private
+    mimicBlur : function(e, t){
+        /*
+        if(!this.wrap.contains(t) && this.validateBlur()){
+            this.triggerBlur();
+        }
+        */
+    },
+
+    // private
+    triggerBlur : function(){
+        this.mimicing = false;
+        Roo.get(Roo.isIE ? document.body : document).un("mousedown", this.mimicBlur);
+        if(this.monitorTab){
+            this.el.un("keydown", this.checkTab, this);
+        }
+        //this.wrap.removeClass('x-trigger-wrap-focus');
+        Roo.bootstrap.TriggerField.superclass.onBlur.call(this);
+    },
+
+    // private
+    // This should be overriden by any subclass that needs to check whether or not the field can be blurred.
+    validateBlur : function(e, t){
+        return true;
+    },
+
+    // private
+    onDisable : function(){
+        Roo.bootstrap.TriggerField.superclass.onDisable.call(this);
+        //if(this.wrap){
+        //    this.wrap.addClass('x-item-disabled');
+        //}
+    },
+
+    // private
+    onEnable : function(){
+        Roo.bootstrap.TriggerField.superclass.onEnable.call(this);
+        //if(this.wrap){
+        //    this.el.removeClass('x-item-disabled');
+        //}
+    },
+
+    // private
+    onShow : function(){
+        var ae = this.getActionEl();
+        
+        if(ae){
+            ae.dom.style.display = '';
+            ae.dom.style.visibility = 'visible';
+        }
+    },
+
+    // private
+    
+    onHide : function(){
+        var ae = this.getActionEl();
+        ae.dom.style.display = 'none';
+    },
+
+    /**
+     * The function that should handle the trigger's click event.  This method does nothing by default until overridden
+     * by an implementing function.
+     * @method
+     * @param {EventObject} e
+     */
+    onTriggerClick : Roo.emptyFn
+});
  
