@@ -358,7 +358,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.setEditable(false);
         }
         
-        
+        /*
         
         if (typeof(this.events.add.listeners) != 'undefined') {
             
@@ -383,6 +383,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 
             }, this);
         }
+        */
         
         
         
