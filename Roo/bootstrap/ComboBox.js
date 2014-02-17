@@ -481,8 +481,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
         var tw = this.trigger.getWidth();
-        tw += this.addicon ? this.addicon.getWidth() : 0;
-        tw += this.editicon ? this.editicon.getWidth() : 0;
+       // tw += this.addicon ? this.addicon.getWidth() : 0;
+       // tw += this.editicon ? this.editicon.getWidth() : 0;
         var x = w - tw;
         this.el.setWidth( this.adjustWidth('input', x));
             
