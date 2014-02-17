@@ -441,6 +441,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xns: Roo.bootstrap,
                                     name : 'test',
                                     fieldLabel : 'test',
+                                    displayField : 'state',
                                     mode : 'local',
                                     store : {
                                         xtype : 'SimpleStore',
