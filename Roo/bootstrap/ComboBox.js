@@ -138,12 +138,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * @cfg {String} selectedClass CSS class to apply to the selected item in the dropdown list (defaults to 'x-combo-selected')
      */
     selectedClass: 'x-combo-selected',
-    /**
-     * @cfg {String} triggerClass An additional CSS class used to style the trigger button.  The trigger will always get the
-     * class 'x-form-trigger' and triggerClass will be <b>appended</b> if specified (defaults to 'x-form-arrow-trigger'
-     * which displays a downward arrow icon).
-     */
-    triggerClass : 'x-form-arrow-trigger',
+    
     /**
      * @cfg {Boolean/String} shadow True or "sides" for the default effect, "frame" for 4-way shadow, and "drop" for bottom-right
      */
@@ -258,12 +253,15 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     // element that contains real text value.. (when hidden is used..)
      
     // private
-    onRender : function(ct, position){
-        Roo.form.ComboBox.superclass.onRender.call(this, ct, position);
+    initEvents: function(ct, position){
+        Roo.bootstrap.ComboBox.superclass.onRender.call(this, ct, position);
+        
+        
         if(this.hiddenName){
-            this.hiddenField = this.el.insertSibling({tag:'input', type:'hidden', name: this.hiddenName, id:  (this.hiddenId||this.hiddenName)},
-                    'before', true);
-            this.hiddenField.value =
+            
+            this.hiddenField = this.el.select('input.form-hidden-field',true).first();
+            
+            this.hiddenField.dom.value =
                 this.hiddenValue !== undefined ? this.hiddenValue :
                 this.value !== undefined ? this.value : '';
 
