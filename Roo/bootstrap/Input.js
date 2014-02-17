@@ -181,7 +181,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     placeholder: false,
     before : false,
     after : false,
-    
+    size : false,
     // private
     hasFocus : false,
     preventMark: false,
