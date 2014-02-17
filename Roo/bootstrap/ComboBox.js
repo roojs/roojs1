@@ -667,7 +667,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             vv = !o || typeof(o[this.valueField]) == 'undefined' ? dv : o[this.valueField];
         }
         if(this.hiddenField){
-            this.hiddenField.value = vv;
+            this.hiddenField.dom.value = vv;
             
             this.lastSelectionText = dv;
             Roo.form.ComboBox.superclass.setValue.call(this, dv);
