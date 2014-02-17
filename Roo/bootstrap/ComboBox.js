@@ -640,7 +640,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.hiddenField){
             this.hiddenField.dom.value = v;
         }
-        Roo.form.ComboBox.superclass.setValue.call(this, text);
+        Roo.bootstrap.ComboBox.superclass.setValue.call(this, text);
         this.value = v;
     },
     /**
