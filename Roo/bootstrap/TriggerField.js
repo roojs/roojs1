@@ -196,7 +196,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
 
     // private
     getResizeEl : function(){
-        return this.wrap;
+        return this.inputEL();
     },
 
     // private
