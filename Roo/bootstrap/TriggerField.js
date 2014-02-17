@@ -118,7 +118,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                                     cls: 'icon-remove'
                                 }
                             ]
-                        },
+                        }
                     ]
                         
                 }
