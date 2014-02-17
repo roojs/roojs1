@@ -71,7 +71,7 @@ Roo.bootstrap.ComboBox = function(config){
     });
     
     if (!this.store) {
-        new Exception("can not find store for combo");
+        throw new Exception("can not find store for combo");
     }
     this.store = Roo.factory(this.store, Roo.data);
     
