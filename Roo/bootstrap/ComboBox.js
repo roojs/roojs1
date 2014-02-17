@@ -278,13 +278,15 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         //}
 
         var cls = 'x-combo-list';
+        this.list = this.el.select('ul',true).first();
 
         //this.list = new Roo.Layer({
         //    shadow: this.shadow, cls: [cls, this.listClass].join(' '), constrain:false
         //});
-        /*
+        
         var lw = this.listWidth || Math.max(this.inputEl().getWidth(), this.minListWidth);
         this.list.setWidth(lw);
+        /*
         this.list.swallowEvent('mousewheel');
         this.assetHeight = 0;
 
@@ -327,7 +329,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.assetHeight += this.footer.getHeight();
         }
         */
-        this.list = this.el.select('ul',true).first();
             
         if(!this.tpl){
             this.tpl = '<li><a href="#">{' + this.displayField + '}</a></li>';
