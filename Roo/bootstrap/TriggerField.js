@@ -13,7 +13,7 @@
  * overriding {@link #onTriggerClick}. You can create a TriggerField directly, as it renders exactly like a combobox
  * for which you can provide a custom implementation.  For example:
  * <pre><code>
-var trigger = new Roo.form.TriggerField();
+var trigger = new Roo.bootstrap.TriggerField();
 trigger.onTriggerClick = myTriggerFn;
 trigger.applyTo('my-field');
 </code></pre>
@@ -24,7 +24,7 @@ trigger.applyTo('my-field');
  * class 'x-form-trigger' by default and triggerClass will be <b>appended</b> if specified.
  * @constructor
  * Create a new TriggerField.
- * @param {Object} config Configuration options (valid {@Roo.form.TextField} config options will also be applied
+ * @param {Object} config Configuration options (valid {@Roo.bootstrap.Input} config options will also be applied
  * to the base TextField)
  */
 Roo.bootstrap.TriggerField = function(config){
@@ -183,7 +183,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
     
     // private
     onResize : function(w, h){
-        Roo.form.TriggerField.superclass.onResize.apply(this, arguments);
+        Roo.boostrap.TriggerField.superclass.onResize.apply(this, arguments);
         if(typeof w == 'number'){
             var x = w - this.trigger.getWidth();
             this.inputEl().setWidth(this.adjustWidth('input', x));
