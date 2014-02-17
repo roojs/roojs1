@@ -91,6 +91,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                 {
                     tag: 'input',
                     type : 'hidden',
+                    cls: 'form-hidden-field'
                 },
                 input,
                 {
