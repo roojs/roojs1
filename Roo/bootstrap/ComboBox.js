@@ -602,7 +602,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.valueField){
             return typeof this.value != 'undefined' ? this.value : '';
         }else{
-            return Roo.form.ComboBox.superclass.getValue.call(this);
+            return Roo.bootstrap.ComboBox.superclass.getValue.call(this);
         }
     },
 
