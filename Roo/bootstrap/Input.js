@@ -18,6 +18,7 @@
  * @cfg {string} placeholder - placeholder to put in text.
  * @cfg {string}  before - input group add on before
  * @cfg {string} after - input group add on after
+ * @cfg {string} size - (lg|sm) or leave empty..
  * 
  * 
  * @constructor
