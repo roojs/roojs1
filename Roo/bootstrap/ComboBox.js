@@ -17,19 +17,19 @@ Roo.bootstrap.ComboBox = function(config){
         /**
          * @event expand
          * Fires when the dropdown list is expanded
-	     * @param {Roo.form.ComboBox} combo This combo box
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
 	     */
         'expand' : true,
         /**
          * @event collapse
          * Fires when the dropdown list is collapsed
-	     * @param {Roo.form.ComboBox} combo This combo box
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
 	     */
         'collapse' : true,
         /**
          * @event beforeselect
          * Fires before a list item is selected. Return false to cancel the selection.
-	     * @param {Roo.form.ComboBox} combo This combo box
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
 	     * @param {Roo.data.Record} record The data record returned from the underlying store
 	     * @param {Number} index The index of the selected item in the dropdown list
 	     */
@@ -37,7 +37,7 @@ Roo.bootstrap.ComboBox = function(config){
         /**
          * @event select
          * Fires when a list item is selected
-	     * @param {Roo.form.ComboBox} combo This combo box
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
 	     * @param {Roo.data.Record} record The data record returned from the underlying store (or false on clear)
 	     * @param {Number} index The index of the selected item in the dropdown list
 	     */
@@ -46,7 +46,7 @@ Roo.bootstrap.ComboBox = function(config){
          * @event beforequery
          * Fires before all queries are processed. Return false to cancel the query or set cancel to true.
          * The event object passed has these properties:
-	     * @param {Roo.form.ComboBox} combo This combo box
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
 	     * @param {String} query The query
 	     * @param {Boolean} forceAll true to force "all" query
 	     * @param {Boolean} cancel true to cancel the query
@@ -56,13 +56,13 @@ Roo.bootstrap.ComboBox = function(config){
          /**
          * @event add
          * Fires when the 'add' icon is pressed (add a listener to enable add button)
-	     * @param {Roo.form.ComboBox} combo This combo box
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
 	     */
         'add' : true,
         /**
          * @event edit
          * Fires when the 'edit' icon is pressed (add a listener to enable add button)
-	     * @param {Roo.form.ComboBox} combo This combo box
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
 	     * @param {Roo.data.Record|false} record The data record returned from the underlying store (or false on nothing selected)
 	     */
         'edit' : true
