@@ -525,8 +525,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(!this.hasFocus){
             return;
         }
-        this.innerList.update(this.loadingText ?
-               '<div class="loading-indicator">'+this.loadingText+'</div>' : '');
+        //this.innerList.update(this.loadingText ?
+        //       '<div class="loading-indicator">'+this.loadingText+'</div>' : '');
+        this.list.dom.innerHTML = '<li class="loading-indicator">'+(this.loadingText||'loading')+'</li>' ;
+        
         this.restrictHeight();
         this.selectedIndex = -1;
     },
