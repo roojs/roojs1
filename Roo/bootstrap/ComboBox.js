@@ -746,7 +746,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
     // private
     restrictHeight : function(){
-        this.innerList.dom.style.height = '';
+        //this.innerList.dom.style.height = '';
         var inner = this.innerList.dom;
         var h = Math.max(inner.clientHeight, inner.offsetHeight, inner.scrollHeight);
         this.innerList.setHeight(h < this.maxHeight ? 'auto' : this.maxHeight);
