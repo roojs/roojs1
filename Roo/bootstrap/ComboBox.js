@@ -253,7 +253,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     // element that contains real text value.. (when hidden is used..)
      
     // private
-    initEvents: function(ct, position){
+    initEvents: function(){
         Roo.bootstrap.ComboBox.superclass.onRender.call(this, ct, position);
         
         
