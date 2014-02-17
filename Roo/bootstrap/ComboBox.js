@@ -638,7 +638,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         this.lastSelectionText = text;
         if(this.hiddenField){
-            this.hiddenField.value = v;
+            this.hiddenField.dom.value = v;
         }
         Roo.form.ComboBox.superclass.setValue.call(this, text);
         this.value = v;
