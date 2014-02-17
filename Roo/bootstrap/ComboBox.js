@@ -69,42 +69,7 @@ Roo.bootstrap.ComboBox = function(config){
         
         
     });
-    if(this.transform){
-        this.allowDomMove = false;
-        var s = Roo.getDom(this.transform);
-        if(!this.hiddenName){
-            this.hiddenName = s.name;
-        }
-        if(!this.store){
-            this.mode = 'local';
-            var d = [], opts = s.options;
-            for(var i = 0, len = opts.length;i < len; i++){
-                var o = opts[i];
-                var value = (Roo.isIE ? o.getAttributeNode('value').specified : o.hasAttribute('value')) ? o.value : o.text;
-                if(o.selected) {
-                    this.value = value;
-                }
-                d.push([value, o.text]);
-            }
-            this.store = new Roo.data.SimpleStore({
-                'id': 0,
-                fields: ['value', 'text'],
-                data : d
-            });
-            this.valueField = 'value';
-            this.displayField = 'text';
-        }
-        s.name = Roo.id(); // wipe out the name in case somewhere else they have a reference
-        if(!this.lazyRender){
-            this.target = true;
-            this.el = Roo.DomHelper.insertBefore(s, this.autoCreate || this.defaultAutoCreate);
-            s.parentNode.removeChild(s); // remove it
-            this.render(this.el.parentNode);
-        }else{
-            s.parentNode.removeChild(s); // remove it
-        }
-
-    }
+    
     if (this.store) {
         this.store = Roo.factory(this.store, Roo.data);
     }
@@ -120,7 +85,7 @@ Roo.bootstrap.ComboBox = function(config){
     }
 };
 
-Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
+Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     /**
      * @cfg {String/HTMLElement/Element} transform The id, DOM node or element of an existing select to convert to a ComboBox
      */
