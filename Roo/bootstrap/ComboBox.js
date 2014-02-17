@@ -385,14 +385,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         */
         
-        
-        
-    },
-
-    // private
-    initEvents : function(){
-        Roo.form.ComboBox.superclass.initEvents.call(this);
-
+ 
         this.keyNav = new Roo.KeyNav(this.el, {
             "up" : function(e){
                 this.inKeyMode = true;
