@@ -34,3 +34,5 @@ Roo.form.Action
 Roo.bootstrap.Form
 Roo.form.VTypes
 Roo.bootstrap.Input
+Roo.bootstrap.TriggerField
+Roo.bootstrap.ComboBox
