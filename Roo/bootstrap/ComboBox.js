@@ -1008,13 +1008,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 if (cselitem.id == v.id) {
                     cselitem = false;
                 }
-                return;
+                return true;
             }
                 
             if (v.get(this.displayField) && v.get(this.displayField).substring(0,1).toUpperCase() == k) {
                 match = this.store.indexOf(v);
                 return false;
             }
+            return true;
         }, this);
         
         if (match === false) {
