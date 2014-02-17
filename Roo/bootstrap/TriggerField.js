@@ -246,7 +246,8 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
 
     // private
     onFocus : function(){
-        Roo.form.TriggerField.superclass.onFocus.call(this);
+        Roo.bootstrap.TriggerField.superclass.onFocus.call(this);
+        /*
         if(!this.mimicing){
             this.wrap.addClass('x-trigger-wrap-focus');
             this.mimicing = true;
@@ -255,6 +256,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                 this.el.on("keydown", this.checkTab, this);
             }
         }
+        */
     },
 
     // private
@@ -271,9 +273,11 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
 
     // private
     mimicBlur : function(e, t){
+        /*
         if(!this.wrap.contains(t) && this.validateBlur()){
             this.triggerBlur();
         }
+        */
     },
 
     // private
