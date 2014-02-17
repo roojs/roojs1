@@ -439,7 +439,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xtype: 'ComboBox',
                                     xns: Roo.bootstrap,
                                     name : 'test',
-                                    fieldLabel : 'test'
+                                    fieldLabel : 'test',
                                     store : {
                                         xtype : 'SimpleStore',
                                         xns : Roo.data,
