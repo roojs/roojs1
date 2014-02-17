@@ -70,9 +70,11 @@ Roo.bootstrap.ComboBox = function(config){
         
     });
     
-    if (this.store) {
-        this.store = Roo.factory(this.store, Roo.data);
+    if (!this.store) {
+        new Exception("can not find store for combo");
     }
+    this.store = Roo.factory(this.store, Roo.data);
+    
     
     this.selectedIndex = -1;
     if(this.mode == 'local'){
@@ -336,7 +338,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         });
 
         this.view.on('click', this.onViewClick, this);
-
+        
+        
+        
         this.store.on('beforeload', this.onBeforeLoad, this);
         this.store.on('load', this.onLoad, this);
         this.store.on('loadexception', this.onLoadException, this);
