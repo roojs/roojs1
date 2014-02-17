@@ -445,6 +445,12 @@ Roo.example.bootstrap = new Roo.XComponent({
                                         xns : Roo.data,
                                         fields: ['abbr', 'state'],
                                         data : [ [ 'aa', 'aaa'] , ['bb', 'bbb'] ]
+                                    },
+                                    listeners : {
+                                        render : function(self)
+                                        {
+                                            _this.combo = self;
+                                        }
                                     }
     
                                 },
