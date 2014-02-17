@@ -299,15 +299,15 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
 
     // private
     onDisable : function(){
-        Roo.form.TriggerField.superclass.onDisable.call(this);
-        if(this.wrap){
-            this.wrap.addClass('x-item-disabled');
-        }
+        Roo.bootstrap.TriggerField.superclass.onDisable.call(this);
+        //if(this.wrap){
+        //    this.wrap.addClass('x-item-disabled');
+        //}
     },
 
     // private
     onEnable : function(){
-        Roo.form.TriggerField.superclass.onEnable.call(this);
+        Roo.bootstrap.TriggerField.superclass.onEnable.call(this);
         //if(this.wrap){
         //    this.el.removeClass('x-item-disabled');
         //}
