@@ -80,8 +80,10 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
      * @cfg {Number} timeout Timeout for form actions in seconds (default is 30 seconds).
      */
     timeout: 30,
-    
-    navbar : 'left',
+    /**
+     * @cfg {Sting} align (left|right) for navbar forms
+     */
+    align : 'left',
 
     // private
     activeAction : null,
