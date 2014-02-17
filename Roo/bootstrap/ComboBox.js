@@ -280,7 +280,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         //this.list = new Roo.Layer({
         //    shadow: this.shadow, cls: [cls, this.listClass].join(' '), constrain:false
         //});
-
+        /*
         var lw = this.listWidth || Math.max(this.inputEl().getWidth(), this.minListWidth);
         this.list.setWidth(lw);
         this.list.swallowEvent('mousewheel');
@@ -324,13 +324,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if (this.footer) {
             this.assetHeight += this.footer.getHeight();
         }
-        
+        */
 
         if(!this.tpl){
-            this.tpl = '<div class="'+cls+'-item">{' + this.displayField + '}</div>';
+            this.tpl = '<li><a href="#">{' + this.displayField + '}</a></li>';
         }
 
-        this.view = new Roo.View(this.innerList, this.tpl, {
+        this.view = new Roo.View(this.el.select('ul',true).first(), this.tpl, {
             singleSelect:true, store: this.store, selectedClass: this.selectedClass
         });
 
@@ -339,7 +339,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.store.on('beforeload', this.onBeforeLoad, this);
         this.store.on('load', this.onLoad, this);
         this.store.on('loadexception', this.onLoadException, this);
-
+        /*
         if(this.resizable){
             this.resizer = new Roo.Resizable(this.list,  {
                pinned:true, handles:'se'
@@ -352,10 +352,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             }, this);
             this[this.pageSize?'footer':'innerList'].setStyle('margin-bottom', this.handleHeight+'px');
         }
+        */
         if(!this.editable){
             this.editable = true;
             this.setEditable(false);
-        }  
+        }
+        
         
         
         if (typeof(this.events.add.listeners) != 'undefined') {
