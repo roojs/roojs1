@@ -611,7 +611,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
     clearValue : function(){
         if(this.hiddenField){
-            this.hiddenField.value = '';
+            this.hiddenField.dom.value = '';
         }
         this.value = '';
         this.setRawValue('');
