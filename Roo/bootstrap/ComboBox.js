@@ -86,9 +86,7 @@ Roo.bootstrap.ComboBox = function(config){
 };
 
 Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
-    /**
-     * @cfg {String/HTMLElement/Element} transform The id, DOM node or element of an existing select to convert to a ComboBox
-     */
+     
     /**
      * @cfg {Boolean} lazyRender True to prevent the ComboBox from rendering until requested (should always be used when
      * rendering into an Roo.Editor, defaults to false)
@@ -109,9 +107,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * @cfg {String/Roo.Template} tpl The template to use to render the output
      */
      
-    // private
-    defaultAutoCreate : {tag: "input", type: "text", size: "24", autocomplete: "off"},
-    /**
+     /**
      * @cfg {Number} listWidth The width in pixels of the dropdown list (defaults to the width of the ComboBox field)
      */
     listWidth: undefined,
