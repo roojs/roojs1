@@ -72,6 +72,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             cls: 'form-group' //input-group
         };
         
+        
         var input =  {
             tag: 'input',
             id : id,
@@ -173,6 +174,12 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                 
         }
          
+        var settings=this;
+        ['xs','sm','md','lg'].map(function(size){
+            if (settings[size]) {
+                cfg.cls += ' col-' + size + '-' + settings[size];
+            }
+        });
         
         
         
