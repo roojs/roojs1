@@ -11,6 +11,8 @@
  * Bootstrap Form class
  * @cfg {String} method  GET | POST (default POST)
  * @cfg {String} labelAlign top | left (default top)
+  * @cfg {String} align left  | right - for navbars
+
  * 
  * @constructor
  * Create a new Form
@@ -78,6 +80,10 @@
      * @cfg {Number} timeout Timeout for form actions in seconds (default is 30 seconds).
      */
     </span><span class="jsdoc-var">timeout</span><span class="jsdoc-syntax">: 30,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Sting} align (left|right) for navbar forms
+     */
+    </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">activeAction </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
@@ -105,10 +111,16 @@
             </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">(),
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''
         </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.xtype </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'Navbar'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'navbar-form navbar-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.align</span><span class="jsdoc-syntax">;
+            
+        }
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelAlign </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'left' </span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' form-horizontal'</span><span class="jsdoc-syntax">;
         }
+        
+        
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
     },
     </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
