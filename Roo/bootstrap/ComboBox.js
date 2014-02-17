@@ -510,13 +510,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         this.editable = value;
         if(!value){
-            this.el.dom.setAttribute('readOnly', true);
-            this.el.on('mousedown', this.onTriggerClick,  this);
-            this.el.addClass('x-combo-noedit');
+            this.inputEl().dom.setAttribute('readOnly', true);
+            this.inputEl().on('mousedown', this.onTriggerClick,  this);
+            this.inputEl().addClass('x-combo-noedit');
         }else{
-            this.el.dom.setAttribute('readOnly', false);
-            this.el.un('mousedown', this.onTriggerClick,  this);
-            this.el.removeClass('x-combo-noedit');
+            this.inputEl().dom.setAttribute('readOnly', false);
+            this.inputEl().un('mousedown', this.onTriggerClick,  this);
+            this.inputEl().removeClass('x-combo-noedit');
         }
     },
 
