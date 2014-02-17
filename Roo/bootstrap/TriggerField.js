@@ -308,9 +308,9 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
     // private
     onEnable : function(){
         Roo.form.TriggerField.superclass.onEnable.call(this);
-        if(this.wrap){
-            this.wrap.removeClass('x-item-disabled');
-        }
+        //if(this.wrap){
+        //    this.el.removeClass('x-item-disabled');
+        //}
     },
 
     // private
