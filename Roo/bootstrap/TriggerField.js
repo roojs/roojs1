@@ -6,8 +6,8 @@
  */
  
 /**
- * @class Roo.form.TriggerField
- * @extends Roo.form.TextField
+ * @class Roo.bootstrap.TriggerField
+ * @extends Roo.bootstrap.Input
  * Provides a convenient wrapper for TextFields that adds a clickable trigger button (looks like a combobox by default).
  * The trigger has no default action, so you must assign a function to implement the trigger click handler by
  * overriding {@link #onTriggerClick}. You can create a TriggerField directly, as it renders exactly like a combobox
@@ -19,7 +19,7 @@ trigger.applyTo('my-field');
 </code></pre>
  *
  * However, in general you will most likely want to use TriggerField as the base class for a reusable component.
- * {@link Roo.form.DateField} and {@link Roo.form.ComboBox} are perfect examples of this.
+ * {@link Roo.bootstrap.DateField} and {@link Roo.bootstrap.ComboBox} are perfect examples of this.
  * @cfg {String} triggerClass An additional CSS class used to style the trigger button.  The trigger will always get the
  * class 'x-form-trigger' by default and triggerClass will be <b>appended</b> if specified.
  * @constructor
@@ -27,12 +27,12 @@ trigger.applyTo('my-field');
  * @param {Object} config Configuration options (valid {@Roo.form.TextField} config options will also be applied
  * to the base TextField)
  */
-Roo.form.TriggerField = function(config){
+Roo.bootstrap.TriggerField = function(config){
     this.mimicing = false;
-    Roo.form.TriggerField.superclass.constructor.call(this, config);
+    Roo.bootstrap.TriggerField.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.form.TriggerField, Roo.form.TextField,  {
+Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
     /**
      * @cfg {String} triggerClass A CSS class to apply to the trigger
      */
