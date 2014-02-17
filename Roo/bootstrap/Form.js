@@ -112,10 +112,8 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             cls : ''
         }
         if (this.parent().xtype == 'Navbar') {
-            cfg.cls = 'navbar-form';
-            if (this.align) {
-                //code
-            }
+            cfg.cls = 'navbar-form navbar-' + this.align;
+            
         }
         
         if (this.labelAlign == 'left' ) {
