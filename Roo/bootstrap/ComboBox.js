@@ -455,7 +455,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.view.purgeListeners();
         }
         if(this.list){
-            this.list.destroy();
+            this.list.dom.innerHTML  = '';
         }
         if(this.store){
             this.store.un('beforeload', this.onBeforeLoad, this);
