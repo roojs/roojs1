@@ -461,7 +461,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.store.un('load', this.onLoad, this);
             this.store.un('loadexception', this.onLoadException, this);
         }
-        Roo.form.ComboBox.superclass.onDestroy.call(this);
+        Roo.bootstrap.ComboBox.superclass.onDestroy.call(this);
     },
 
     // private
