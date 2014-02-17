@@ -670,14 +670,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.hiddenField.dom.value = vv;
             
             this.lastSelectionText = dv;
-            Roo.form.ComboBox.superclass.setValue.call(this, dv);
+            Roo.bootstrap.ComboBox.superclass.setValue.call(this, dv);
             this.value = vv;
             return;
         }
         // no hidden field.. - we store the value in 'value', but still display
         // display field!!!!
         this.lastSelectionText = dv;
-        Roo.form.ComboBox.superclass.setValue.call(this, dv);
+        Roo.bootstrap.ComboBox.superclass.setValue.call(this, dv);
         this.value = vv;
         
         
