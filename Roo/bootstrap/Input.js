@@ -19,6 +19,10 @@
  * @cfg {string}  before - input group add on before
  * @cfg {string} after - input group add on after
  * @cfg {string} size - (lg|sm) or leave empty..
+ * @cfg {Number} xs colspan out of 12 for mobile-sized screens
+ * @cfg {Number} sm colspan out of 12 for tablet-sized screens
+ * @cfg {Number} md colspan out of 12 for computer-sized screens
+ * @cfg {Number} lg colspan out of 12 for large computer-sized screens
  * 
  * 
  * @constructor
@@ -214,6 +218,12 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         if (this.size) {
             input.cls += ' input-' + this.size;
         }
+        var settings=this;
+        ['xs','sm','md','lg'].map(function(size){
+            if (settings[size]) {
+                cfg.cls += ' col-' + size + '-' + settings[size];
+            }
+        });
         
         var inputblock = input;
         
