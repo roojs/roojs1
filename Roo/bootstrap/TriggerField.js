@@ -73,7 +73,9 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         
         var id = Roo.id();
         
-        
+        var cfg = {
+            cls: 'form-group' //input-group
+        };
         
         var input =  {
             tag: 'input',
