@@ -440,7 +440,13 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xns: Roo.bootstrap,
                                     name : 'test',
                                     fieldLabel : 'test'
-                                    
+                                    store : {
+                                        xtype : 'SimpleStore',
+                                        xns : Roo.data,
+                                        fields: ['abbr', 'state'],
+                                        data : [ [ 'aa', 'aaa'] , ['bb', 'bbb'] ]
+                                    }
+    
                                 },
                                 {
                                     xtype: 'Button',
