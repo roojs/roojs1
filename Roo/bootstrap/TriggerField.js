@@ -73,9 +73,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         
         var id = Roo.id();
         
-        var cfg = {
-            cls: 'form-group' //input-group
-        };
+        
         
         var input =  {
             tag: 'input',
@@ -89,7 +87,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             input.name = this.name;
         }
         
-        var inputblock = {
+        inputblock = {
             cls: 'combobox-container',
             cn: [
                 {
@@ -126,34 +124,13 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             ]
         };
         
-        if (this.before || this.after) {
-            
-            inputblock = {
-                cls : 'input-group',
-                cn :  [] 
-            };
-            if (this.before) {
-                inputblock.cn.push({
-                    tag :'span',
-                    cls : 'input-group-addon',
-                    html : this.before
-                });
-            }
-            inputblock.cn.push(input);
-            if (this.after) {
-                inputblock.cn.push({
-                    tag :'span',
-                    cls : 'input-group-addon',
-                    html : this.after
-                });
-            }
-            
-        }
         
-        Roo.log(align);
-        Roo.log(this.fieldLabel.length);
+        
         
         if (align ==='left' && this.fieldLabel.length) {
+                
+            
+            
                 Roo.log("left and has label");
                 cfg.cn = [
                     
@@ -189,7 +166,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
 
         } else {
             
-                   Roo.log(" no label && no align");
+                Roo.log(" no label && no align");
                 cfg.cn = [
                     
                         inputblock
