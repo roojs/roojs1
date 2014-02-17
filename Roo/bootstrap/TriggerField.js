@@ -238,10 +238,10 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             this.trigger.removeAllListeners();
           //  this.trigger.remove();
         }
-        if(this.wrap){
-            this.wrap.remove();
-        }
-        Roo.form.TriggerField.superclass.onDestroy.call(this);
+        //if(this.wrap){
+        //    this.wrap.remove();
+        //}
+        Roo.bootstrap.TriggerField.superclass.onDestroy.call(this);
     },
 
     // private
