@@ -221,10 +221,10 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
         //this.trigger.addClassOnOver('x-form-trigger-over');
         //this.trigger.addClassOnClick('x-form-trigger-click');
-        this.initTrigger();
-        if(!this.width){
-            this.wrap.setWidth(this.el.getWidth()+this.trigger.getWidth());
-        }
+        
+        //if(!this.width){
+        //    this.wrap.setWidth(this.el.getWidth()+this.trigger.getWidth());
+        //}
     },
 
     // private
