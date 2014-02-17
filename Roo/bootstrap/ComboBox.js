@@ -977,7 +977,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 this.doQuery(this.getRawValue());
             }
             if (!this.blockFocus) {
-                this.el.focus();
+                this.inputEl().focus();
             }
         }
     },
