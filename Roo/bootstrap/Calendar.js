@@ -257,6 +257,29 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         this.el.select('.fc-day-header',true).setWidth(sz.width / 7);
         this.el.select('.fc-day-content div',true).setHeight(34);
     },
+    
+    
+    // private
+    showPrevMonth : function(e){
+        this.update(this.activeDate.add("mo", -1));
+    },
+
+    // private
+    showNextMonth : function(e){
+        this.update(this.activeDate.add("mo", 1));
+    },
+
+    // private
+    showPrevYear : function(){
+        this.update(this.activeDate.add("y", -1));
+    },
+
+    // private
+    showNextYear : function(){
+        this.update(this.activeDate.add("y", 1));
+    },
+
+    
    // private
     update : function(date)
     {
