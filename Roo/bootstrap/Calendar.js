@@ -376,7 +376,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
 
         //this.mbtn.setText(Date.monthNames[date.getMonth()] + " " + date.getFullYear());
         this.fireEvent('monthchange', this, date);
-        
+        /*
         if(!this.internalRender){
             var main = this.el.dom.firstChild;
             var w = main.offsetWidth;
@@ -392,7 +392,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 this.update.defer(10, this, [date]);
             }
         }
-        
+        */
         
     }
 });
