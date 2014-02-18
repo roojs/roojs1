@@ -484,7 +484,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     addItem : function(ev)
     {
         
-        // look for vertical location slot in 
+        // look for vertical location slot in
+        var cells = this.findCells(ev);
         this.findBestRow(ev);
         
         // work out the location.
