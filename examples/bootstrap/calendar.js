@@ -31,7 +31,7 @@ Roo.example.calendar = new Roo.XComponent({
                     cls : 'col-md-9',
                     listeners : {
                         render : function() {
-                            _this.render = this;
+                            _this.cal = this;
                         }
                         
                     }
