@@ -550,7 +550,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         // first make sure there is enough space..
         Roo.each(this.cells, function(c) {
 
-            c.select('.fc-day-content',true).first().setHeight(Math.max(54, cell.rows * 20));
+            c.select('.fc-day-content',true).first().setHeight(Math.max(54, c.rows * 20));
         })
         
         for (var e = 0; e < this.calevents.length; e++) {
