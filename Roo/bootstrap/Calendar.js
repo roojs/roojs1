@@ -122,7 +122,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                             },
                             {
                                 cls: 'fc-day-content',
-                                html: 'D',
+                             
                                 cn : [
                                      {
                                         style: 'position: relative;' // height: 17px;
