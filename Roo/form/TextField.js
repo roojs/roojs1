@@ -218,6 +218,7 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
                 this.clearInvalid();
                 return true;
              }else{
+                 Roo.log('run mark Invalid');
                 this.markInvalid(this.blankText);
                 return false;
              }
