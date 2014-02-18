@@ -418,10 +418,12 @@ side          Add an error icon to the right of the field with a popup on hover
         if(!this.rendered || this.preventMark){ // not rendered
             return;
         }
-        this.el.removeClass(this.invalidClass);
+        var obj = (typeof(this.combo) != 'undefined') ? this.combo : this; // fix the combox array!!
+        
+        obj.el.removeClass(this.invalidClass);
         switch(this.msgTarget){
             case 'qtip':
-                this.el.dom.qtip = '';
+                obj.el.dom.qtip = '';
                 break;
             case 'title':
                 this.el.dom.title = '';
