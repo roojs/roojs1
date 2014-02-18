@@ -15894,6 +15894,10 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
             
         var tree = this._tree ? this._tree() : this.tree();
         tree.region = tree.region || this.region;
+        if (this.parent.el === true) {
+            // bootstrap... - body..
+            this.parent.el = Roo.factory(tree);
+        }
         this.el = this.parent.el.addxtype(tree);
         this.fireEvent('built', this);
         
@@ -16161,7 +16165,7 @@ Roo.apply(Roo.XComponent, {
         
         var msg = "Building Interface...";
         // flash it up as modal - so we store the mask!?
-        if (!this.hideProgress) {
+        if (!this.hideProgress && Roo.MessageBox) {
             Roo.MessageBox.show({ title: 'loading' });
             Roo.MessageBox.show({
                title: "Please wait...",
@@ -16179,7 +16183,7 @@ Roo.apply(Roo.XComponent, {
         var progressRun = function() {
             if (!mods.length) {
                 Roo.debug && Roo.log('hide?');
-                if (!this.hideProgress) {
+                if (!this.hideProgress && Roo.MessageBox) {
                     Roo.MessageBox.hide();
                 }
                 Roo.XComponent.event.fireEvent('buildcomplete', _this.topModule);
@@ -16203,7 +16207,7 @@ Roo.apply(Roo.XComponent, {
                     " of " + total + 
                     (m.name ? (' - ' + m.name) : '');
 			Roo.debug && Roo.log(msg);
-            if (!this.hideProgress) { 
+            if (!this.hideProgress &&  Roo.MessageBox) { 
                 Roo.MessageBox.updateProgress(  (total  - mods.length)/total, msg  );
             }
             
@@ -40466,6 +40470,18 @@ Roo.extend(Roo.form.ComboBoxArray.Item, Roo.BoxComponent, {
         this.el.child('img').un('click', this.remove, this);
         this.el.remove();
         this.cb.updateHiddenEl();
+    },
+    
+    /**
+     * Validates the combox array value
+     * @return {Boolean} True if the value is valid, else false
+     */
+    validate : function(){
+        if(this.disabled || this.validateValue(this.processValue(this.getValue()))){
+            this.clearInvalid();
+            return true;
+        }
+        return false;
     }
     
     
@@ -44646,7 +44662,9 @@ Roo.Form = Roo.form.Form;
  * Fork - LGPL
  * <script type="text/javascript">
  */
- 
+
+// as we use this in bootstrap.
+Roo.namespace('Roo.form');
  /**
  * @class Roo.form.Action
  * Internal Class used to handle form actions
@@ -44654,6 +44672,7 @@ Roo.Form = Roo.form.Form;
  * @param {Roo.form.BasicForm} el The form element or its id
  * @param {Object} config Configuration options
  */
+
  
  
 // define the action interface
@@ -44670,7 +44689,7 @@ Roo.form.Action.CLIENT_INVALID = 'client';
  * Server Validation Failed
  * @const 
  */
- Roo.form.Action.SERVER_INVALID = 'server';
+Roo.form.Action.SERVER_INVALID = 'server';
  /**
  * Connect to Server Failed
  * @const 
