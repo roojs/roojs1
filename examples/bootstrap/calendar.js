@@ -27,7 +27,8 @@ Roo.example.bootstrap = new Roo.XComponent({
             items : [
                  {
                     xtype: 'Calendar',
-                    xns: Roo.bootstrap
+                    xns: Roo.bootstrap,
+                    cls : 'col-md-9'
                  }
             ]
         };
