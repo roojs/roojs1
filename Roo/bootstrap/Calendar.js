@@ -533,7 +533,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         ev.rows = rows;
         ev.cells = cells;
         for (var i = 0; i < cells.length;i++) {
-            cells[i].rows = Math.max(cells[i].rows || 0 , row + 1 );
+            cells[i].rows = Math.max(cells[i].rows || 0 , ev.row + 1 );
         }
         
         this.calevents.push(ev);
