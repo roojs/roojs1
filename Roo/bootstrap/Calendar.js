@@ -454,8 +454,9 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     findBestRow: function(ev)
     {
         var ret = 0;
-         
-        for (d = ev.start.clearTime(); d < new Date().setDate(ev.end.clearTime().getDate());  d.setDate(d.getDate()+1)) {
+        var s = ev.start.clone().clearTime();
+        var e= ev.end.clone().clearTime();
+        for (d = s; d < e;  d.setDate(d.getDate()+1)) {
             Roo.log(d);
         }
         //d.setDate(d.ev()+1);
