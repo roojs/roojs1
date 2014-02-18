@@ -361,12 +361,15 @@ side          Add an error icon to the right of the field with a popup on hover
         if(!this.rendered || this.preventMark){ // not rendered
             return;
         }
-        this.el.addClass(this.invalidClass);
+        
+        var obj = (typeof(this.combo) != 'undefined') ? this.combo : this; // fix the combox array!!
+        
+        obj.el.addClass(this.invalidClass);
         msg = msg || this.invalidText;
         switch(this.msgTarget){
             case 'qtip':
-                this.el.dom.qtip = msg;
-                this.el.dom.qclass = 'x-form-invalid-tip';
+                obj.el.dom.qtip = msg;
+                obj.el.dom.qclass = 'x-form-invalid-tip';
                 if(Roo.QuickTips){ // fix for floating editors interacting with DND
                     Roo.QuickTips.enable();
                 }
