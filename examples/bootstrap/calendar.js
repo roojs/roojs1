@@ -34,7 +34,7 @@ Roo.example.calendar = new Roo.XComponent({
                             xtype: 'Row',
                             xns: Roo.bootstrap,
                             style :  'margin-top:50px',
-                            cn : [
+                            items : [
                                 { 
                                     xtype: 'Calendar',
                                     xns: Roo.bootstrap,
