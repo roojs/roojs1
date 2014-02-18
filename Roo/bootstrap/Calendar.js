@@ -437,10 +437,10 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     },
     
     findCell : function(dt) {
-        dt = dt.clearTime();
+        dt = dt.clearTime().getTime();
         var ret = false;
         this.cells.each(function(c){
-            Roo.log("check " +c.dateValue + '?=' + dt);
+            //Roo.log("check " +c.dateValue + '?=' + dt);
             if(c.dateValue == dt){
                 ret = c;
                 return false;
