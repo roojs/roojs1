@@ -499,7 +499,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var sbox = startcell.select('.fc-day-content',true).first().getBox();
         var ebox = endcell.select('.fc-day-content',true).first().getBox();
         
-        var crow = {};
+        var crow = false;
         var rows = [];
         for(var i =0; i < cells.length; i++) {
             if (!crow) {
