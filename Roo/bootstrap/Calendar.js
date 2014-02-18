@@ -500,6 +500,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var ebox = endcell.select('.fc-day-content',true).first().getBox();
         
         
+        // how many rows should it span..
+        
         var  cfg = {
             cls : 'fc-event fc-event-hori fc-event-draggable fc-event-start fc-event-end ui-draggable',
             style : 'position: absolute', // left: 387px; width: 121px; top: 359px;
@@ -534,6 +536,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         var ctr = this.el.select('.fc-event-container',true).first();
         var cg = ctr.createChild(cfg);
+        
+        
         //Roo.log(cg);
         cg.setXY([sbox.x, sbox.y +(row * 20)]);
         
