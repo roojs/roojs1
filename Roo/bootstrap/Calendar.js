@@ -117,6 +117,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
        
         var cal_heads = function() {
             var ret = [];
+            // fixme - handle this.startDay
+            
             for (var i =0; i < Date.dayNames.length; i++) {
                 var d = Date.dayNames[i];
                 ret.push({
