@@ -542,7 +542,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                             {
                               tag:'span',
                               cls: 'fc-event-time',
-                              html : '7pm'
+                              html : rows.length > 1 ? '' : '7pm'
                             },
                             {
                               tag:'span',
