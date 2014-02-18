@@ -446,6 +446,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             }
             return true;
         });
+        Roo.log(ret);
         return ret;
     },
     
