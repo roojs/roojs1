@@ -223,11 +223,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     initEvents : function()
     {
         this.resize();
-        this.cells = this.el.query('.fc-day');
+        this.cells = this.el.select('.fc-day',true);
         this.textNodes = this.el.query('.fc-day-number');
-         
-            this.update(new Date());
-         
         
         
     },
