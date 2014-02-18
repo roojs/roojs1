@@ -448,7 +448,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                         },
                         {
                           tag:'span',
-                          cls: 'fc-event-title'
+                          cls: 'fc-event-title',
                           html : String.format('{0}', ev.desc)
                         }
                         
