@@ -522,6 +522,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             };
             
         }
+        rows.push(crow);
+        
         
         // how many rows should it span..
         
