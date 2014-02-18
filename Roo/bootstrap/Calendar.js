@@ -527,65 +527,71 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         ev.rows = rows;
         ev.cells = cells;
-        this.events.push(ev);
-    }
-    
-        
-        for(var i =0; i < rows.length; i++) {
-            
-             
-            // how many rows should it span..
-            
-            var  cfg = {
-                cls : 'fc-event fc-event-hori fc-event-draggable ui-draggable',
-                style : 'position: absolute', // left: 387px; width: 121px; top: 359px;
-                
-                unselectable : "on",
-                cn : [
-                    {
-                        cls: 'fc-event-inner',
-                        cn : [
-                            {
-                              tag:'span',
-                              cls: 'fc-event-time',
-                              html : cells.length > 1 ? '' : '7pm'
-                            },
-                            {
-                              tag:'span',
-                              cls: 'fc-event-title',
-                              html : String.format('{0}', ev.title)
-                            }
-                            
-                            
-                        ]
-                    },
-                    {
-                        cls: 'ui-resizable-handle ui-resizable-e',
-                        html : '&nbsp;&nbsp;&nbsp',
-                    }
-                    
-                ]
-            };
-            if (i == 0) {
-                cfg.cls += ' fc-event-start';
-            }
-            if ((i+1) == rows.length) {
-                cfg.cls += ' fc-event-end';
-            }
-            
-            var ctr = this.el.select('.fc-event-container',true).first();
-            var cg = ctr.createChild(cfg);
-            var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
-            var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
-            //Roo.log(cg);
-            cg.setXY([sbox.x +2, sbox.y +(row * 20)]);    
-            cg.setWidth(ebox.right - sbox.x -2);
-        }
-        
         for (var i = 0; i < cells.length;i++) {
             cells[i].rows = Math.max(cells[i].rows || 0 , row + 1 );
         }
         
+        this.events.push(ev);
+    }
+    renderEvents: function()
+    {
+        for (var e = 0; e < this.events.length; e++) {
+            var ev = this.events[e];
+        
+            
+            for(var i =0; i < rows.length; i++) {
+                
+                 
+                // how many rows should it span..
+                
+                var  cfg = {
+                    cls : 'fc-event fc-event-hori fc-event-draggable ui-draggable',
+                    style : 'position: absolute', // left: 387px; width: 121px; top: 359px;
+                    
+                    unselectable : "on",
+                    cn : [
+                        {
+                            cls: 'fc-event-inner',
+                            cn : [
+                                {
+                                  tag:'span',
+                                  cls: 'fc-event-time',
+                                  html : cells.length > 1 ? '' : '7pm'
+                                },
+                                {
+                                  tag:'span',
+                                  cls: 'fc-event-title',
+                                  html : String.format('{0}', ev.title)
+                                }
+                                
+                                
+                            ]
+                        },
+                        {
+                            cls: 'ui-resizable-handle ui-resizable-e',
+                            html : '&nbsp;&nbsp;&nbsp',
+                        }
+                        
+                    ]
+                };
+                if (i == 0) {
+                    cfg.cls += ' fc-event-start';
+                }
+                if ((i+1) == rows.length) {
+                    cfg.cls += ' fc-event-end';
+                }
+                
+                var ctr = this.el.select('.fc-event-container',true).first();
+                var cg = ctr.createChild(cfg);
+                var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
+                var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
+                //Roo.log(cg);
+                cg.setXY([sbox.x +2, sbox.y +(row * 20)]);    
+                cg.setWidth(ebox.right - sbox.x -2);
+            }
+            
+           
+            
         
         
     }
