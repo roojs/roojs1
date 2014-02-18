@@ -223,7 +223,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     initEvents : function()
     {
         this.resize();
-        this.cells = this.el.select('fc-')
+        this.cells = this.el.select('td.fc-day');
         this.update(new Date());
         
     },
