@@ -517,7 +517,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             // different row.
             rows.push(crow);
             crow = {
-                start: cells[i]
+                start: cells[i],
                 end : cells[i]
             };
             
