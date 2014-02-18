@@ -27,30 +27,6 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         
         
-        var cfg = {
-            cls : 'fc fc-ltr',
-            cn : [
-                header,
-                {
-                    cls : 'fc-content',
-                    style : "position: relative;",
-                    cn : [
-                        {
-                            cls : 'fc-view fc-view-month fc-grid',
-                            style : 'position: relative',
-                            unselectable : 'on',
-                            cn : [
-                                event_container,
-                                cal_table
-                            ]
-                        }
-                    ]
-    
-                }
-           ] 
-            
-        };
-        
         fc_button = function(name, corner, style, content ) {
             return Roo.apply({},{
                 tag : 'span',
@@ -115,6 +91,30 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
                     ]
                 }
             ]
+        };
+        
+        var cfg = {
+            cls : 'fc fc-ltr',
+            cn : [
+                header,
+                {
+                    cls : 'fc-content',
+                    style : "position: relative;",
+                    cn : [
+                        {
+                            cls : 'fc-view fc-view-month fc-grid',
+                            style : 'position: relative',
+                            unselectable : 'on',
+                            cn : [
+                                event_container,
+                                cal_table
+                            ]
+                        }
+                    ]
+    
+                }
+           ] 
+            
         };
         
      
