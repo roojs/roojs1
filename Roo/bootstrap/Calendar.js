@@ -542,7 +542,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     renderEvents: function()
     {
         for (var e = 0; e < this.calevents.length; e++) {
-            var ev = this.events[e];
+            var ev = this.calevents[e];
             var cells = ev.cells;
             var rows = ev.rows;
             
