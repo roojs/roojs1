@@ -106,7 +106,10 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
                             style : 'position: relative',
                             unselectable : 'on',
                             cn : [
-                                event_container,
+                                {
+                                    cls : 'fc-event-container',
+                                    style : 'position:absolute;z-index:8;top:0;left:0;'
+                                },
                                 cal_table
                             ]
                         }
@@ -117,70 +120,34 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             
         };
         
-     
- 
-  <DIV class="fc-content" style="position: relative;">
-    <DIV class="fc-view fc-view-month fc-grid" style="position:relative" unselectable="on">
-      <DIV class="fc-event-container" style="position:absolute;z-index:8;top:0;left:0">
-        <DIV class="fc-event fc-event-hori fc-event-draggable fc-event-start fc-event-end ui-draggable" style="position: absolute; left: 657px; width: 104px; top: 36px;" unselectable="on">
-          <DIV class="fc-event-inner">
-            <SPAN class="fc-event-title">All Day Event</SPAN>
-          </DIV>
-          <DIV class="ui-resizable-handle ui-resizable-e">   </DIV>
-        </DIV>
-        <DIV class="fc-event fc-event-hori fc-event-draggable fc-event-start" style="position: absolute; left: 439px; width: 325px; top: 219px;">
-          <DIV class="fc-event-inner">
-            <SPAN class="fc-event-title">Long Event</SPAN>
-          </DIV>
-        </DIV>
-        <DIV class="fc-event fc-event-hori fc-event-draggable fc-event-end" style="position: absolute; left: 1px; width: 105px; top: 310px;">
-          <DIV class="fc-event-inner">
-            <SPAN class="fc-event-title">Long Event</SPAN>
-          </DIV>
-          <DIV class="ui-resizable-handle ui-resizable-e">   </DIV>
-        </DIV>
-        <DIV class="fc-event fc-event-hori fc-event-draggable fc-event-start fc-event-end" style="position: absolute; left: 657px; width: 104px; top: 236px;">
-          <DIV class="fc-event-inner">
-            <SPAN class="fc-event-time">4p</SPAN>
-            <SPAN class="fc-event-title">Repeating Event</SPAN>
-          </DIV>
-          <DIV class="ui-resizable-handle ui-resizable-e">   </DIV>
-        </DIV>
-        <DIV class="fc-event fc-event-hori fc-event-draggable fc-event-start fc-event-end" style="position: absolute; left: 657px; width: 104px; top: 310px;">
-          <DIV class="fc-event-inner">
-            <SPAN class="fc-event-time">4p</SPAN>
-            <SPAN class="fc-event-title">Repeating Event</SPAN>
-          </DIV>
-          <DIV class="ui-resizable-handle ui-resizable-e">   </DIV>
-        </DIV>
-        <DIV class="fc-event fc-event-hori fc-event-draggable fc-event-start fc-event-end" style="position: absolute; left: 221px; width: 102px; top: 310px;">
-          <DIV class="fc-event-inner">
-            <SPAN class="fc-event-time">10:30a</SPAN>
-            <SPAN class="fc-event-title">Meeting</SPAN>
-          </DIV>
-          <DIV class="ui-resizable-handle ui-resizable-e">   </DIV>
-        </DIV>
-        <DIV class="fc-event fc-event-hori fc-event-draggable fc-event-start fc-event-end" style="position: absolute; left: 221px; width: 102px; top: 327px;">
-          <DIV class="fc-event-inner">
-            <SPAN class="fc-event-time">12p</SPAN>
-            <SPAN class="fc-event-title">Lunch</SPAN>
-          </DIV>
-          <DIV class="ui-resizable-handle ui-resizable-e">   </DIV>
-        </DIV>
-        <DIV class="fc-event fc-event-hori fc-event-draggable fc-event-start fc-event-end" style="position: absolute; left: 330px; width: 102px; top: 310px;">
-          <DIV class="fc-event-inner">
-            <SPAN class="fc-event-time">7p</SPAN>
-            <SPAN class="fc-event-title">Birthday Party</SPAN>
-          </DIV>
-          <DIV class="ui-resizable-handle ui-resizable-e">   </DIV>
-        </DIV>
-        <A href="http://google.com/" class="fc-event fc-event-hori fc-event-draggable fc-event-start fc-event-end" style="position: absolute; left: 548px; width: 213px; top: 401px;">
-          <DIV class="fc-event-inner">
-            <SPAN class="fc-event-title">Click for Google</SPAN>
-          </DIV>
-          <DIV class="ui-resizable-handle ui-resizable-e">   </DIV>
-        </A>
-      </DIV>
+        var cal_table = {
+            tag: 'table',
+            cls: 'fc-border-separate',
+            style : 'width:100%',
+            cellspacing  : 0,
+            cn : [
+                { 
+                    tag: 'tr',
+                    cls : 'fc-first fc-last'
+                    cn : cal_heads()
+                }
+            ]
+        };
+        var cal_heads = function() {
+            var ret = [];
+            for (var i =0; i < Date.dayNames.length; i++) {
+                var d = Date.dayNames[i];
+                ret.push({
+                    tag: 'th',
+                    cls : 'fc-day-header fc-' + d.substring(0,3).toLowerCase() + 'fc-widget-header';
+                    html : d.substring(0,3)
+                });
+                ret[0].cls += 'fc-first';
+                ret[6].cls += 'fc-last';
+            }
+            
+        }
+        
       <TABLE class="fc-border-separate" style="width:100%" cellspacing="0">
         <THEAD>
           <TR class="fc-first fc-last">
