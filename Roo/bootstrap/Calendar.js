@@ -94,7 +94,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         };
         
        
-          var cal_heads = function() {
+        var cal_heads = function() {
             var ret = [];
             for (var i =0; i < Date.dayNames.length; i++) {
                 var d = Date.dayNames[i];
@@ -103,13 +103,14 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                     cls : 'fc-day-header fc-' + d.substring(0,3).toLowerCase() + 'fc-widget-header',
                     html : d.substring(0,3)
                 });
-                ret[0].cls += 'fc-first';
-                ret[6].cls += 'fc-last';
+                
             }
-            
+            ret[0].cls += 'fc-first';
+            ret[6].cls += 'fc-last';
+            return ret;
         };
-         var cal_cell = function(n) {
-            var ret = {
+        var cal_cell = function(n) {
+            return  {
                 tag: 'td',
                 cls : 'fc-day fc-'+n + ' fc-widget-content fc-first', ///fc-other-month fc-past
                 cn : [
