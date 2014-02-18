@@ -440,6 +440,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         dt = dt.clearTime();
         var ret = false;
         this.cells.each(function(c){
+            Roo.log("check " +c.dateValue + '?=' + dt);
             if(c.dateValue == dt){
                 ret = c;
                 return false;
