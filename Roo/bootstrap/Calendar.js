@@ -255,6 +255,9 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         this.el.select('.fc-button',true).addClassOnOver('fc-state-hover');
         this.cells.addClassOnOver('fc-state-hover');
         
+        
+        this.calevents = [];
+        
         this.addItem({
             start: new Date(),
             end : new Date().add(Date.DAY, 2),
@@ -532,7 +535,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             cells[i].rows = Math.max(cells[i].rows || 0 , row + 1 );
         }
         
-        this.events.push(ev);
+        this.calevents.push(ev);
     },
     
     renderEvents: function()
