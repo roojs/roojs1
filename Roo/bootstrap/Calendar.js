@@ -400,10 +400,10 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         }
         var extraDays = 0;
         for(; i < 42; i++) {
-             textEls[i].innerHTML = (++extraDays);
-             d.setDate(d.getDate()+1);
-             cells[i].className = "fc-future fc-other-month";
-             setCellClass(this, cells[i]);
+            textEls[i].innerHTML = (++extraDays);
+            d.setDate(d.getDate()+1);
+            cells[i].className = "fc-future fc-other-month";
+            setCellClass(this, cells[i]);
         }
 
         this.el.select('.fc-header-title h2',true).update(Date.monthNames[date.getMonth()] + " " + date.getFullYear());
@@ -430,9 +430,27 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
     },
     
+    findCell : function(dt) {
+        dt = dt.clearTime();
+        var ret = false;
+        this.cells.each(function(c){
+            if(c.dateValue == dt){
+                ret = c;
+                return false;
+            }
+            return true;
+        });
+        return ret;
+    }
+    
+    
     
     addItem : function(ev)
     {
+        
+        // work out the location.
+        ev.start
+        
         var  cfg = {
             cls : 'fc-event fc-event-hori fc-event-draggable fc-event-start fc-event-end ui-draggable',
             style : 'position: absolute;', //left: 387px; width: 121px; top: 359px;"
