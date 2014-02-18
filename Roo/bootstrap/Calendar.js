@@ -537,7 +537,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         cg.setWidth(ebox.right - sbox.x);
         for (var i = 0; i < cells.length;i++) {
-            cells[i].rows = Math.max(cells.rows || 0 , row + 1 );
+            cells[i].rows = Math.max(cells[i].rows || 0 , row + 1 );
         }
         
         
