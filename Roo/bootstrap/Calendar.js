@@ -100,7 +100,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 var d = Date.dayNames[i];
                 ret.push({
                     tag: 'th',
-                    cls : 'fc-day-header fc-' + d.substring(0,3).toLowerCase() + 'fc-widget-header',
+                    cls : 'fc-day-header fc-' + d.substring(0,3).toLowerCase() + ' fc-widget-header',
                     html : d.substring(0,3)
                 });
                 
