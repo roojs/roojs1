@@ -255,6 +255,12 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         this.el.select('.fc-button',true).addClassOnOver('fc-state-hover');
         this.cells.addClassOnOver('fc-state-hover');
         
+        this.addItem({
+            start: new Date(),
+            end : new Date().add(Date.DAY, 2),
+            title : 'test'
+        });
+        
     },
     resize : function() {
         var sz  = this.el.getSize();
