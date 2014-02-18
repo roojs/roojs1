@@ -56,7 +56,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                             'fc-corner-' + corner.split(' ').join(' fc-corner-') :
                             ''
                         ),
-                html : '<SPAN class="fc-text-'+style+ '" unselectable: 'on'>'+content +'</SPAN>',
+                html : '<SPAN class="fc-text-'+style+ '" unselectable="on">'+content +'</SPAN>',
                 unselectable: 'on'
             });
         };
