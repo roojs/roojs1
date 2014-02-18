@@ -28,7 +28,7 @@ Roo.example.calendar = new Roo.XComponent({
                  {
                     xtype: 'Calendar',
                     xns: Roo.bootstrap,
-                    cls : 'col-md-9',
+                    cls : 'col-md-6',
                     listeners : {
                         render : function() {
                             _this.cal = this;
