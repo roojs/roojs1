@@ -18,6 +18,23 @@
 
 Roo.bootstrap.Calendar = function(config){
     Roo.bootstrap.Calendar.superclass.constructor.call(this, config);
+     this.addEvents({
+        /**
+	     * @event select
+	     * Fires when a date is selected
+	     * @param {DatePicker} this
+	     * @param {Date} date The selected date
+	     */
+        'select': true,
+        /**
+	     * @event monthchange
+	     * Fires when the displayed month changes 
+	     * @param {DatePicker} this
+	     * @param {Date} date The selected month
+	     */
+        'monthchange': true
+    });
+
 };
 
 Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
