@@ -54,7 +54,8 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         fc_button = function(name, corner, style, content ) {
             return Roo.apply({},{
                 tag : 'span',
-                cls : 'fc-button fc-button-'+name+' fc-state-default fc-corner-' + corner,
+                cls : 'fc-button fc-button-'+name+' fc-state-default ' + 
+                            'fc-corner-' + corner.split(' ').join(' fc-corner-') ;
                 html : '<SPAN class="fc-text-'+style+ '">'+content +'</SPAN>',
                 unselectable: 'on'
             });
@@ -68,17 +69,49 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
                 {
                     tag: 'tr',
                     cn : [
-                        tag : 'td'
-                        cls : 'fc-header-left'
-                        cn : [
-                            fc_button('prev', 'left', 'arrow', '‹' ),
-                            fc_button('next', 'right', 'arrow', '›' ),
-                            { tag: 'span', cls: 'fc-header-space' },
-                            fc_button('today', 'left right', '', 'today' ),
-                            <SPAN class="fc-button fc-button-today fc-state-default fc-corner-left fc-corner-right fc-state-disabled" unselectable="on">today</SPAN>
-                            
-                        ]
+                        {
+                            tag : 'td',
+                            cls : 'fc-header-left',
+                            cn : [
+                                fc_button('prev', 'left', 'arrow', '‹' ),
+                                fc_button('next', 'right', 'arrow', '›' ),
+                                { tag: 'span', cls: 'fc-header-space' },
+                                fc_button('today', 'left right', '', 'today' ), // neds state disabled..
+                                
+                                
+                            ]
+                        },
                         
+                        {
+                            tag : 'td',
+                            cls : 'fc-header-center',
+                            cn : [
+                                {
+                                    tag: 'span',
+                                    cls: 'fc-header-title',
+                                    cn : {
+                                        tag: 'H2',
+                                        html : 'month / year'
+                                    }
+                                }
+                                
+                            ]
+                        },
+                        {
+                            tag : 'td',
+                            cls : 'fc-header-right',
+                            cn : [
+                                fc_button('prev', 'left', 'arrow', '‹' ),
+                                fc_button('next', 'right', 'arrow', '›' ),
+                                { tag: 'span', cls: 'fc-header-space' },
+                                fc_button('today', 'left right', '', 'today' ), // neds state disabled..
+                                
+                                
+                            ]
+                        },  
+    <SPAN class="fc-button fc-button-month fc-state-default fc-corner-left fc-state-active" unselectable="on">month</SPAN>
+    <SPAN class="fc-button fc-button-agendaWeek fc-state-default" unselectable="on">week</SPAN>
+    <SPAN class="fc-button fc-button-agendaDay fc-state-default fc-corner-right" unselectable="on">day</SPAN>   
                         
                     ]
                 }
@@ -90,9 +123,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
       <TR>
         <TD class="fc-header-left">
           
-          <SPAN class="fc-header-space"></SPAN>
-          <SPAN class="fc-button fc-button-today fc-state-default fc-corner-left fc-corner-right fc-state-disabled" unselectable="on">today</SPAN>
-        </TD>
+            </TD>
         <TD class="fc-header-center">
           <SPAN class="fc-header-title">
             <H2>February 2014</H2>
