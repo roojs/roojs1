@@ -451,6 +451,24 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         return ret;
     },
     
+    findCells : function(ev) {
+        var s = ev.start.dt.clearTime().getTime();
+        var e= new Date().setDate(ev.end.clone().clearTime().getDate());
+        var ret = [];
+        this.cells.each(function(c){
+            //Roo.log("check " +c.dateValue + '?=' + dt);
+            if(c.dateValue < e){
+                return ;
+            }
+            if(c.dateValue > s){
+                return ;
+            }
+            ret.push(c);
+        });
+        Roo.log(ret);
+        return ret;    
+    }
+    
     findBestRow: function(ev)
     {
         var ret = 0;
