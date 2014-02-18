@@ -493,7 +493,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 
             ]
         };
-        
+        var ctr = this.el.select('.fc-event-container',true).first();
+        ctr.appendChild(cfg);
         
         
         
