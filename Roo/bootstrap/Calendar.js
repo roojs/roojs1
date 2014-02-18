@@ -525,47 +525,55 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         rows.push(crow);
         
         
-        // how many rows should it span..
-        
-        var  cfg = {
-            cls : 'fc-event fc-event-hori fc-event-draggable fc-event-start fc-event-end ui-draggable',
-            style : 'position: absolute', // left: 387px; width: 121px; top: 359px;
+        for(var i =0; i < rows.length; i++) {
             
-            unselectable : "on",
-            cn : [
-                {
-                    cls: 'fc-event-inner',
-                    cn : [
-                        {
-                          tag:'span',
-                          cls: 'fc-event-time',
-                          html : '7pm'
-                        },
-                        {
-                          tag:'span',
-                          cls: 'fc-event-title',
-                          html : String.format('{0}', ev.title)
-                        }
-                        
-                        
-                    ]
-                },
-                {
-                    cls: 'ui-resizable-handle ui-resizable-e',
-                    html : '&nbsp;&nbsp;&nbsp',
-                }
+             
+            // how many rows should it span..
+            
+            var  cfg = {
+                cls : 'fc-event fc-event-hori fc-event-draggable ui-draggable',
+                style : 'position: absolute', // left: 387px; width: 121px; top: 359px;
                 
-            ]
-        };
-        
-        
-        var ctr = this.el.select('.fc-event-container',true).first();
-        var cg = ctr.createChild(cfg);
-        
-        
-        //Roo.log(cg);
-        cg.setXY([sbox.x, sbox.y +(row * 20)]);
-        
+                unselectable : "on",
+                cn : [
+                    {
+                        cls: 'fc-event-inner',
+                        cn : [
+                            {
+                              tag:'span',
+                              cls: 'fc-event-time',
+                              html : '7pm'
+                            },
+                            {
+                              tag:'span',
+                              cls: 'fc-event-title',
+                              html : String.format('{0}', ev.title)
+                            }
+                            
+                            
+                        ]
+                    },
+                    {
+                        cls: 'ui-resizable-handle ui-resizable-e',
+                        html : '&nbsp;&nbsp;&nbsp',
+                    }
+                    
+                ]
+            };
+            if (i == 0) {
+                cfg.cls += ' fc-event-start';
+            }
+            if ((i+1) == rows.length) {
+                cfg.cls += ' fc-event-end';
+            }
+            
+            var ctr = this.el.select('.fc-event-container',true).first();
+            var cg = ctr.createChild(cfg);
+            var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
+            var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
+            //Roo.log(cg);
+            cg.setXY([sbox.x, sbox.y +(row * 20)]);
+            
         cg.setWidth(ebox.right - sbox.x);
         for (var i = 0; i < cells.length;i++) {
             cells[i].rows = Math.max(cells[i].rows || 0 , row + 1 );
