@@ -574,7 +574,9 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             //Roo.log(cg);
             cg.setXY([sbox.x, sbox.y +(row * 20)]);
             
-        cg.setWidth(ebox.right - sbox.x);
+            cg.setWidth(ebox.right - sbox.x);
+        }
+        
         for (var i = 0; i < cells.length;i++) {
             cells[i].rows = Math.max(cells[i].rows || 0 , row + 1 );
         }
