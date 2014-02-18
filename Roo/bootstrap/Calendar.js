@@ -346,6 +346,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                     cell.className = " fc-state-disabled";
                 }
             }
+            Roo.log(cell.dom.className);
         };
 
         var i = 0;
