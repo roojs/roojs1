@@ -201,7 +201,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                                     cls : 'fc-event-container',
                                     style : 'position:absolute;z-index:8;top:0;left:0;'
                                 },
-                                cal_table()
+                                cal_table
                             ]
                         }
                     ]
