@@ -592,9 +592,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 cg.setWidth(ebox.right - sbox.x -2);
             }
             
-           
-            
-        
+        }
         
     }
 });
