@@ -157,6 +157,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 
             }
             ret[0].cls += ' fc-first';
+            ret[0].cn[0].cn[0].style = 'min-height:90px';
             ret[5].cls += ' fc-last';
             return ret;
             
