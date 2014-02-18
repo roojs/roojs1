@@ -101,10 +101,10 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                             tag : 'td',
                             cls : 'fc-header-right',
                             cn : [
-                                fc_button('month', 'left', '', 'month' ),
+                          /*      fc_button('month', 'left', '', 'month' ),
                                 fc_button('week', '', '', 'week' ),
                                 fc_button('day', 'right', '', 'day' )
-                                
+                            */    
                                 
                             ]
                         },
