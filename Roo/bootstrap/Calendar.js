@@ -389,7 +389,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             intDay = i - startingPos + 1;
             textEls[i].innerHTML = (intDay);
             d.setDate(d.getDate()+1);
-            cells[i].className = '' "x-date-active";
+            cells[i].className = ''; // "x-date-active";
             setCellClass(this, cells[i]);
         }
         var extraDays = 0;
