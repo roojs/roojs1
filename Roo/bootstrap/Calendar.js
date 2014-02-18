@@ -467,16 +467,13 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         });
         Roo.log(ret);
         return ret;    
-    }
+    },
     
-    findBestRow: function(ev)
+    findBestRow: function(cells)
     {
         var ret = 0;
-        var s = ev.start.clone().clearTime();
-        var e= new Date().setDate(ev.end.clone().clearTime().getDate());
-        for (d = s; d < e;  d.setDate(d.getDate()+1)) {
-            var cell = this.findCell(d);
-            ret  = Math.max(cell.events || 0);
+        for (var i =0 ; i < cells.length;i++) {
+            ret  = Math.max(cells[i].events || 0);
         }
         return ret;
         //d.setDate(d.ev()+1);
