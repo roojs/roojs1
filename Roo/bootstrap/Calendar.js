@@ -295,9 +295,9 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             }
             if(t == sel){
                 cell.className += " fc-state-highlight";
-                setTimeout(function(){
-                    try{cell.firstChild.focus();}catch(e){}
-                }, 50);
+                //setTimeout(function(){
+                //    try{cell.firstChild.focus();}catch(e){}
+                //}, 50);
             }
             // disabling
             if(t < min) {
