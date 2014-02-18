@@ -313,37 +313,37 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             var t = d.getTime();
             cell.dateValue = t;
             if(t == today){
-                cell.className += " fc-today";
+                cell.dom.className += " fc-today";
                 cell.title = cal.todayText;
             }
             if(t == sel){
-                cell.className += " fc-state-highlight";
+                cell.dom.className += " fc-state-highlight";
                 //setTimeout(function(){
                 //    try{cell.firstChild.focus();}catch(e){}
                 //}, 50);
             }
             // disabling
             if(t < min) {
-                cell.className = " fc-state-disabled";
+                cell.dom.className = " fc-state-disabled";
                 cell.title = cal.minText;
                 return;
             }
             if(t > max) {
-                cell.className = " fc-state-disabled";
+                cell.dom.className = " fc-state-disabled";
                 cell.title = cal.maxText;
                 return;
             }
             if(ddays){
                 if(ddays.indexOf(d.getDay()) != -1){
                     cell.title = ddaysText;
-                    cell.className = " fc-state-disabled";
+                    cell.dom.className = " fc-state-disabled";
                 }
             }
             if(ddMatch && format){
                 var fvalue = d.dateFormat(format);
                 if(ddMatch.test(fvalue)){
                     cell.title = ddText.replace("%0", fvalue);
-                    cell.className = " fc-state-disabled";
+                    cell.dom.className = " fc-state-disabled";
                 }
             }
         };
