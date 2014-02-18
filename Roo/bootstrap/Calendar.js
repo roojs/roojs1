@@ -457,6 +457,9 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         // work out the location.
         var startcell = this.findCell(ev.start);
         var endcell = this.findCell(ev.end);
+        Roo.log(startcell.getBox());
+        Roo.log(endcell.getBox());
+        
         
         var  cfg = {
             cls : 'fc-event fc-event-hori fc-event-draggable fc-event-start fc-event-end ui-draggable',
