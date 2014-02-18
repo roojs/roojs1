@@ -215,6 +215,18 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
          
         
         return cfg;
+    },
+    
+    
+    initEvents : function()
+    {
+        this.resize();
+        
+        
+    },
+    resize : function() {
+        var sz  = this.el.getSize();
+        this.el.select('.fc-day-header',true).setWidth(sz / 7);
     }
    
 });
