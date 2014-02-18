@@ -419,7 +419,7 @@ Roo.extend(Roo.form.ComboBoxArray.Item, Roo.BoxComponent, {
     },
     
     /**
-     * Validates the field value
+     * Validates the combox array value
      * @return {Boolean} True if the value is valid, else false
      */
     validate : function(){
