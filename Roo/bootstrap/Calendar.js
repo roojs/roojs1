@@ -105,42 +105,20 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
                             cls : 'fc-header-right',
                             cn : [
                                 fc_button('month', 'left', '', 'month' ),
-                                fc_button('next', 'right', '', '›' ),
-                                fc_button('next', 'right', '', '›' ),
-                                { tag: 'span', cls: 'fc-header-space' },
-                                fc_button('today', 'left right', '', 'today' ), // neds state disabled..
+                                fc_button('week', '', '', 'week' ),
+                                fc_button('day', 'right', '', 'day' )
                                 
                                 
                             ]
-                        },  
-    <SPAN class="fc-button fc-button-month fc-state-default fc-corner-left fc-state-active" unselectable="on">month</SPAN>
-    <SPAN class="fc-button fc-button-agendaWeek fc-state-default" unselectable="on">week</SPAN>
-    <SPAN class="fc-button fc-button-agendaDay fc-state-default fc-corner-right" unselectable="on">day</SPAN>   
+                        },
                         
                     ]
                 }
-        }
+            ]
+        };
         
      
-  <TABLE class="fc-header" style="width:100%">
-    <TBODY>
-      <TR>
-        <TD class="fc-header-left">
-          
-            </TD>
-        <TD class="fc-header-center">
-          <SPAN class="fc-header-title">
-            <H2>February 2014</H2>
-          </SPAN>
-        </TD>
-        <TD class="fc-header-right">
-          <SPAN class="fc-button fc-button-month fc-state-default fc-corner-left fc-state-active" unselectable="on">month</SPAN>
-          <SPAN class="fc-button fc-button-agendaWeek fc-state-default" unselectable="on">week</SPAN>
-          <SPAN class="fc-button fc-button-agendaDay fc-state-default fc-corner-right" unselectable="on">day</SPAN>
-        </TD>
-      </TR>
-    </TBODY>
-  </TABLE>
+ 
   <DIV class="fc-content" style="position: relative;">
     <DIV class="fc-view fc-view-month fc-grid" style="position:relative" unselectable="on">
       <DIV class="fc-event-container" style="position:absolute;z-index:8;top:0;left:0">
