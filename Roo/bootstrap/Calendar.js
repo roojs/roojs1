@@ -497,7 +497,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var cg = ctr.createChild(cfg);
         cg.setXY([startcell.x, startcell.y]);
         
-        cg.setWidth([startcell.right - startcell.x);
+        cg.setWidth(startcell.right - startcell.x);
         
         
         
