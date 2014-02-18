@@ -349,7 +349,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             if (!cell.initialClassName) {
                 cell.initialClassName = cell.dom.className;
             }
-            cell.dom.className = cell.initialClassName  + cell.className;
+            cell.dom.className = cell.initialClassName  + ' ' +  cell.className;
         };
 
         var i = 0;
