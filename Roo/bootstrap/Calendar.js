@@ -16,11 +16,11 @@
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.Container = function(config){
-    Roo.bootstrap.Container.superclass.constructor.call(this, config);
+Roo.bootstrap.Calendar = function(config){
+    Roo.bootstrap.Calendar.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
      
       
