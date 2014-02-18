@@ -354,7 +354,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         for(; i < startingPos; i++) {
             textEls[i].innerHTML = (++prevStart);
             d.setDate(d.getDate()+1);
-            cells[i].className = "x-date-prevday";
+            cells[i].className = "fc-past";
             setCellClass(this, cells[i]);
         }
         for(; i < days; i++){
@@ -368,7 +368,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         for(; i < 42; i++) {
              textEls[i].innerHTML = (++extraDays);
              d.setDate(d.getDate()+1);
-             cells[i].className = "x-date-nextday";
+             cells[i].className = "fc-future";
              setCellClass(this, cells[i]);
         }
 
