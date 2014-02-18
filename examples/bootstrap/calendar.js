@@ -2,7 +2,7 @@
 
 Roo.example = Roo.example || {};
 
-Roo.example.bootstrap = new Roo.XComponent({
+Roo.example.calendar = new Roo.XComponent({
     part     :  ["layout","viewpanel"],
     order    : '001-viewpanel',
     region   : '',
@@ -28,7 +28,13 @@ Roo.example.bootstrap = new Roo.XComponent({
                  {
                     xtype: 'Calendar',
                     xns: Roo.bootstrap,
-                    cls : 'col-md-9'
+                    cls : 'col-md-9',
+                    listeners : {
+                        render : function() {
+                            _this.render
+                        }
+                        
+                    }
                  }
             ]
         };
