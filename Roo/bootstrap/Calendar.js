@@ -251,7 +251,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         this.update(new Date());
         this.el.select('.fc-button-prev',true).on('click', this.showPrevMonth, this);
         this.el.select('.fc-button-next',true).on('click', this.showNextMonth, this);
-        this.el.select('.fc-button',true).addClassOnOver('fc-button-hover');
+        this.el.select('.fc-button',true).addClassOnOver('fc-state-hover');
         
         
     },
