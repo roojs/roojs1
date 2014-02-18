@@ -457,7 +457,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         for (d = ev.start.clearTime(); d < ev.end.getDate()+1; d = d.setDate(d.getDate()+1)) {
             Roo.log(d);
         }
-        d.setDate(d.ev()+1);
+        //d.setDate(d.ev()+1);
         
     }
     
