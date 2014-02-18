@@ -228,7 +228,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var sz  = this.el.getSize();
         
         this.el.select('.fc-day-header',true).setWidth(sz.width / 7);
-        this.el.select('td.fc-day-content div',true).setHeight(34);
+        this.el.select('.fc-day-content div',true).setHeight(34);
     }
    
 });
