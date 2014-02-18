@@ -256,6 +256,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         this.cells.addClassOnOver('fc-state-hover');
         
         
+        // move to ... 
         this.calevents = [];
         
         this.addItem({
