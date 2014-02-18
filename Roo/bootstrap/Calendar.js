@@ -461,7 +461,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             if(c.dateValue < e){
                 return ;
             }
-            if(c.dateValue > s){
+            if(c.dateValue < s){
                 return ;
             }
             ret.push(c);
