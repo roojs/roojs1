@@ -167,26 +167,56 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
                 
                 for (var i =0; i < Date.dayNames.length; i++) {
                     var d = Date.dayNames[i];
-                    row.cn.push(cal_cell());
+                    row.cn.push(cal_cell(c.substring(0,3).toLowerCase());
+
                 }
+                row.cn[0].cls+=' fc-first';
                 ret.push(row);
                 
             }
-            var ret[0].cls += ' fc-first';
+            ret[0].cls += ' fc-first';
             
             
+        };
+        var cal_cell = function(n) {
+            var ret = {
+                tag: 'td',
+                cls : 'fc-day fc-'+n + ' fc-widget-content fc-first', ///fc-other-month fc-past
+                cn : [
+                    {
+                        cn : [
+                            {
+                                cls: 'fc-day-number',
+                                html: 'D'
+                            },
+                            {
+                                cls: 'fc-day-content',
+                                html: 'D',
+                                cn : [
+                                     {
+                                        style: 'position: relative;' // height: 17px;
+                                    }
+                                ]
+                            }
+                            
+                            
+                        ]
+                    }
+                ]
+                <TD class="fc-day fc-sun fc-widget-content fc-other-month fc-past fc-first" data-date="2014-01-26">
+                  <DIV style="min-height: 91px;">
+                    <DIV class="fc-day-number">26</DIV>
+                    <DIV class="fc-day-content">
+                      <DIV style="position: relative; height: 17px;"> </DIV>
+                    </DIV>
+                  </DIV>
+                </TD>    
+            }
         }
       
         <TBODY>
           <TR class="fc-week fc-first">
-            <TD class="fc-day fc-sun fc-widget-content fc-other-month fc-past fc-first" data-date="2014-01-26">
-              <DIV style="min-height: 91px;">
-                <DIV class="fc-day-number">26</DIV>
-                <DIV class="fc-day-content">
-                  <DIV style="position: relative; height: 17px;"> </DIV>
-                </DIV>
-              </DIV>
-            </TD>
+            
             <TD class="fc-day fc-mon fc-widget-content fc-other-month fc-past" data-date="2014-01-27">
               <DIV>
                 <DIV class="fc-day-number">27</DIV>
