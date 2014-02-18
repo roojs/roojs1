@@ -227,7 +227,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         this.textNodes = this.el.query('.fc-day-number');
         try { 
             this.update(new Date());
-        catch(e) {
+        } catch(e) {
             Roo.log(e);
         }
         
