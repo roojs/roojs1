@@ -250,6 +250,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                        }, 50);
                        return false;
                    }
+                   return true;
                 });
                 return;
             }
@@ -288,7 +289,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             var t = d.getTime();
             cell.firstChild.dateValue = t;
             if(t == today){
-                cell.className += " x-date-today";
+                cell.className += " fc-today";
                 cell.title = cal.todayText;
             }
             if(t == sel){
