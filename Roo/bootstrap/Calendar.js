@@ -269,7 +269,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         this.update(this.activeDate.add("mo", -1));
     },
     showToday : function(e){
-        this.update(new Date());
+        this.update(new Date().clearTime());
     },
     // private
     showNextMonth : function(e){
@@ -290,6 +290,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
    // private
     update : function(date)
     {
+        date = Date.
         var vd = this.activeDate;
         this.activeDate = date;
         if(vd && this.el){
