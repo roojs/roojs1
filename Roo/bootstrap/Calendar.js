@@ -324,26 +324,26 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             }
             // disabling
             if(t < min) {
-                cell.dom.className = " fc-state-disabled";
+                cell.dom.className += " fc-state-disabled";
                 cell.title = cal.minText;
                 return;
             }
             if(t > max) {
-                cell.dom.className = " fc-state-disabled";
+                cell.dom.className += " fc-state-disabled";
                 cell.title = cal.maxText;
                 return;
             }
             if(ddays){
                 if(ddays.indexOf(d.getDay()) != -1){
                     cell.title = ddaysText;
-                    cell.dom.className = " fc-state-disabled";
+                    cell.dom.className += " fc-state-disabled";
                 }
             }
             if(ddMatch && format){
                 var fvalue = d.dateFormat(format);
                 if(ddMatch.test(fvalue)){
                     cell.title = ddText.replace("%0", fvalue);
-                    cell.dom.className = " fc-state-disabled";
+                    cell.dom.className += " fc-state-disabled";
                 }
             }
         };
