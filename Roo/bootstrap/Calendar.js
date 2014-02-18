@@ -452,7 +452,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     },
     
     findCells : function(ev) {
-        var s = ev.start.clearTime().getTime();
+        var s = ev.start.clone().clearTime().getTime();
         var e= new Date().setDate(ev.end.clone().clearTime().getDate());
         var ret = [];
         this.cells.each(function(c){
