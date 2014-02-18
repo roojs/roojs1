@@ -347,6 +347,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 }
             }
             Roo.log(cell.dom.className);
+            Roo.log(cell.className);
         };
 
         var i = 0;
