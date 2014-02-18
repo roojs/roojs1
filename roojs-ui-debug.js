@@ -24131,8 +24131,8 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
         msg = msg || this.invalidText;
         switch(this.msgTarget){
             case 'qtip':
-                this.el.dom.qtip = msg;
-                this.el.dom.qclass = 'x-form-invalid-tip';
+                this.combo.el.dom.qtip = msg;
+                this.combo.el.dom.qclass = 'x-form-invalid-tip';
                 if(Roo.QuickTips){ // fix for floating editors interacting with DND
                     Roo.QuickTips.enable();
                 }
