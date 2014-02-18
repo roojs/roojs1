@@ -112,7 +112,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var cal_cell = function(n) {
             return  {
                 tag: 'td',
-                cls : 'fc-day fc-'+n + ' fc-widget-content fc-first', ///fc-other-month fc-past
+                cls : 'fc-day fc-'+n + ' fc-widget-content', ///fc-other-month fc-past
                 cn : [
                     {
                         cn : [
