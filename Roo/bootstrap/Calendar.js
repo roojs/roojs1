@@ -290,6 +290,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         if(vd && this.el){
             var t = date.getTime();
             if(vd.getMonth() == date.getMonth() && vd.getFullYear() == date.getFullYear()){
+                Roo.log('using add remove');
                 this.cells.removeClass("fc-state-highlight");
                 this.cells.each(function(c){
                    if(c.dom.firstChild.dateValue == t){
