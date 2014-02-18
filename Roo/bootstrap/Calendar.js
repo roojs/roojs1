@@ -551,7 +551,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         this.cells.each(function(c) {
             Roo.log(c.select('.fc-day-content div',true).first(), Math.max(34, c.rows * 25));
             c.select('.fc-day-content div',true).first().setHeight(Math.max(34, c.rows * 25));
-        })
+        });
         
         for (var e = 0; e < this.calevents.length; e++) {
             var ev = this.calevents[e];
