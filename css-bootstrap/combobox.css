@@ -11,7 +11,7 @@
   content: "";
 }
 .combobox-container:after {
-  clear: both;
+  /* clear: both; */
 }
 .combobox-container input,
 .combobox-container .uneditable-input {
