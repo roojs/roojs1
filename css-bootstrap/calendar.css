@@ -13,7 +13,7 @@
     margin: 0;
 	 
 	font-family: Lucida Sans,Arial,sans-serif;
-	font-size: 13px;
+	 
     
     
 	}
@@ -23,7 +23,7 @@
 	border-spacing: 0;
 	}
 	
-.fc,
+html .fc,
 .fc table {
 	font-size: 1em;
 	}
