@@ -249,6 +249,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         this.cells = this.el.select('.fc-day',true);
         this.textNodes = this.el.query('.fc-day-number');
         this.update(new Date());
+        this.el.select('fc-button-prev',).on('click', this.showPrevMonth, this);
+        this.el.select('fc-button-next',).on('click', this.showNextMonth, this);
         
     },
     resize : function() {
