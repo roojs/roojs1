@@ -459,7 +459,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         }
         //d.setDate(d.ev()+1);
         
-    }
+    },
     
     
     addItem : function(ev)
