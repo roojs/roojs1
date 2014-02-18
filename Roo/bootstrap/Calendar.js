@@ -260,7 +260,11 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             end : new Date().add(Date.DAY, 2),
             title : 'test'
         });
-        
+          this.addItem({
+            start: new Date()add(Date.DAY, -2),,
+            end : new Date().add(Date.DAY, 2),
+            title : 'test'
+        });
     },
     resize : function() {
         var sz  = this.el.getSize();
