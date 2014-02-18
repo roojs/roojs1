@@ -509,7 +509,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 };
                 continue;
             }
-            if (crow.getY() == cells[i].getY()) {
+            if (crow.start.getY() == cells[i].getY()) {
                 // on same row.
                 crow.end = cells[i];
                 continue;
