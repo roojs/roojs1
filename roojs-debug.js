@@ -40389,6 +40389,17 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
         
     },
     
+    /**
+     * Validates the combox array value
+     * @return {Boolean} True if the value is valid, else false
+     */
+    validate : function(){
+        if(this.disabled || this.validateValue(this.processValue(this.getValue()))){
+            this.clearInvalid();
+            return true;
+        }
+        return false;
+    },
     
     validateValue : function(value){
         return Roo.form.ComboBoxArray.superclass.validateValue.call(this, this.getValue());
@@ -40470,20 +40481,7 @@ Roo.extend(Roo.form.ComboBoxArray.Item, Roo.BoxComponent, {
         this.el.child('img').un('click', this.remove, this);
         this.el.remove();
         this.cb.updateHiddenEl();
-    },
-    
-    /**
-     * Validates the combox array value
-     * @return {Boolean} True if the value is valid, else false
-     */
-    validate : function(){
-        if(this.disabled || this.validateValue(this.processValue(this.getValue()))){
-            this.clearInvalid();
-            return true;
-        }
-        return false;
     }
-    
     
 });/*
  * Based on:
