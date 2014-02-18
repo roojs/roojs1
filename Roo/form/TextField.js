@@ -213,13 +213,11 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
      * @return {Boolean} True if the value is valid, else false
      */
     validateValue : function(value){
-        Roo.log('run TEXTFILED validateValue');
         if(value.length < 1)  { // if it's blank
              if(this.allowBlank){
                 this.clearInvalid();
                 return true;
              }else{
-                 Roo.log('run mark Invalid');
                 this.markInvalid(this.blankText);
                 return false;
              }
