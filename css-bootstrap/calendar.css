@@ -67,7 +67,9 @@ html .fc,
 	white-space: nowrap;
     font-size: 1.5em;
     font-family: Lucida Sans,Arial,sans-serif;
-	
+    font-weight: bold;
+    line-height: normal;;
+	margin:0;
 	}
 	
 .fc .fc-header-space {
