@@ -148,11 +148,34 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
                             cn : cal_heads()
                         }
                     ]
+                },
+                { 
+                    tag: 'tbody',
+                    cn : cal_rows()
                 }
                   
             ]
         };
-      
+        var cal_rows = function() {
+            var ret = []
+            for (var r = 0; r < 6; r++) {
+                var row= {
+                    tag : 'tr',
+                    cls : 'fc-week',
+                    cn : []
+                };
+                
+                for (var i =0; i < Date.dayNames.length; i++) {
+                    var d = Date.dayNames[i];
+                    row.cn.push(cal_cell());
+                }
+                ret.push(row);
+                
+            }
+            var ret[0].cls += ' fc-first';
+            
+            
+        }
       
         <TBODY>
           <TR class="fc-week fc-first">
