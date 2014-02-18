@@ -347,7 +347,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
              setCellClass(this, cells[i]);
         }
 
-        this.mbtn.setText(Date.monthNames[date.getMonth()] + " " + date.getFullYear());
+        //this.mbtn.setText(Date.monthNames[date.getMonth()] + " " + date.getFullYear());
         this.fireEvent('monthchange', this, date);
         
         if(!this.internalRender){
