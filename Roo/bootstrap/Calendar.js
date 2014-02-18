@@ -457,8 +457,10 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var s = ev.start.clone().clearTime();
         var e= new Date().setDate(ev.end.clone().clearTime().getDate());
         for (d = s; d < e;  d.setDate(d.getDate()+1)) {
-            Roo.log(d);
+            var cell = this.findCell(d);
+            ret  = Math.max(cell.events || 0);
         }
+        return ret;
         //d.setDate(d.ev()+1);
         
     },
