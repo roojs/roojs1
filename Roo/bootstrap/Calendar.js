@@ -252,7 +252,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         this.el.select('.fc-button-prev',true).on('click', this.showPrevMonth, this);
         this.el.select('.fc-button-next',true).on('click', this.showNextMonth, this);
         this.el.select('.fc-button',true).addClassOnOver('fc-state-hover');
-        
+        this.cells.addClassOnOver('fc-state-hover');
         
     },
     resize : function() {
