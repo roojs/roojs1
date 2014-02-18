@@ -117,7 +117,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
        
         var cal_heads = function() {
             var ret = [];
-            // fixme - handle this.startDay
+            // fixme - handle this.
             
             for (var i =0; i < Date.dayNames.length; i++) {
                 var d = Date.dayNames[i];
@@ -313,37 +313,37 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             var t = d.getTime();
             cell.dateValue = t;
             if(t == today){
-                cell.dom.className += " fc-today";
+                cell.className += " fc-today";
                 cell.title = cal.todayText;
             }
             if(t == sel){
-                cell.dom.className += " fc-state-highlight";
+                cell.className += " fc-state-highlight";
                 //setTimeout(function(){
                 //    try{cell.firstChild.focus();}catch(e){}
                 //}, 50);
             }
             // disabling
             if(t < min) {
-                cell.dom.className += " fc-state-disabled";
+                cell.className = " fc-state-disabled";
                 cell.title = cal.minText;
                 return;
             }
             if(t > max) {
-                cell.dom.className += " fc-state-disabled";
+                cell.className = " fc-state-disabled";
                 cell.title = cal.maxText;
                 return;
             }
             if(ddays){
                 if(ddays.indexOf(d.getDay()) != -1){
                     cell.title = ddaysText;
-                    cell.dom.className += " fc-state-disabled";
+                    cell.className = " fc-state-disabled";
                 }
             }
             if(ddMatch && format){
                 var fvalue = d.dateFormat(format);
                 if(ddMatch.test(fvalue)){
                     cell.title = ddText.replace("%0", fvalue);
-                    cell.dom.className += " fc-state-disabled";
+                    cell.className = " fc-state-disabled";
                 }
             }
         };
@@ -352,21 +352,21 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         for(; i < startingPos; i++) {
             textEls[i].innerHTML = (++prevStart);
             d.setDate(d.getDate()+1);
-            cells[i].dom.className =+ "fc-past";
+            cells[i].className = "x-date-prevday";
             setCellClass(this, cells[i]);
         }
         for(; i < days; i++){
             intDay = i - startingPos + 1;
             textEls[i].innerHTML = (intDay);
             d.setDate(d.getDate()+1);
-            cells[i].dom.className =+ "x-date-active";
+            cells[i].className = "x-date-active";
             setCellClass(this, cells[i]);
         }
         var extraDays = 0;
         for(; i < 42; i++) {
              textEls[i].innerHTML = (++extraDays);
              d.setDate(d.getDate()+1);
-             cells[i].dom.className =+ "fc-future";
+             cells[i].className = "x-date-nextday";
              setCellClass(this, cells[i]);
         }
 
