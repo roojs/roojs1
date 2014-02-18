@@ -55,7 +55,10 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             return Roo.apply({},{
                 tag : 'span',
                 cls : 'fc-button fc-button-'+name+' fc-state-default ' + 
-                            'fc-corner-' + corner.split(' ').join(' fc-corner-') ;
+                         (corner.length ?
+                            'fc-corner-' + corner.split(' ').join(' fc-corner-') :
+                            ''
+                        ),
                 html : '<SPAN class="fc-text-'+style+ '">'+content +'</SPAN>',
                 unselectable: 'on'
             });
@@ -101,8 +104,9 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
                             tag : 'td',
                             cls : 'fc-header-right',
                             cn : [
-                                fc_button('prev', 'left', 'arrow', '‹' ),
-                                fc_button('next', 'right', 'arrow', '›' ),
+                                fc_button('month', 'left', '', 'month' ),
+                                fc_button('next', 'right', '', '›' ),
+                                fc_button('next', 'right', '', '›' ),
                                 { tag: 'span', cls: 'fc-header-space' },
                                 fc_button('today', 'left right', '', 'today' ), // neds state disabled..
                                 
