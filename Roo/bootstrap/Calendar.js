@@ -298,7 +298,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 Roo.log('using add remove');
                 this.cells.removeClass("fc-state-highlight");
                 this.cells.each(function(c){
-                   if(c.dom.firstChild.dateValue == t){
+                   if(c.dateValue == t){
                        c.addClass("fc-state-highlight");
                        setTimeout(function(){
                             try{c.dom.firstChild.focus();}catch(e){}
