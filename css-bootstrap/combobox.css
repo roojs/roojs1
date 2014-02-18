@@ -4,6 +4,7 @@
 .combobox-container {
   margin-bottom: 5px;
   *zoom: 1;
+  display: inline-table;
 }
 .combobox-container:before,
 .combobox-container:after {
