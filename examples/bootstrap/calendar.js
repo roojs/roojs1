@@ -42,6 +42,7 @@ Roo.example.calendar = new Roo.XComponent({
                                 
                             }
                          }
+                    ]
                  }
             ]
         };
