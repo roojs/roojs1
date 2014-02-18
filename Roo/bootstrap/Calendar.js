@@ -460,7 +460,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                     html : '&nbsp;&nbsp;&nbsp',
                 }
                 
-            }
+            ]
         };
         
         
