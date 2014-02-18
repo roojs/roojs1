@@ -529,6 +529,9 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         }
         rows.push(crow);
         
+        ev.rows = rows;
+        ev.cells = cells;
+        
         
         for(var i =0; i < rows.length; i++) {
             
