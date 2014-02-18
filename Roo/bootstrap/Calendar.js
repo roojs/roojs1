@@ -128,7 +128,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             cn : [
                 { 
                     tag: 'tr',
-                    cls : 'fc-first fc-last'
+                    cls : 'fc-first fc-last',
                     cn : cal_heads()
                 }
             ]
@@ -139,14 +139,14 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
                 var d = Date.dayNames[i];
                 ret.push({
                     tag: 'th',
-                    cls : 'fc-day-header fc-' + d.substring(0,3).toLowerCase() + 'fc-widget-header';
+                    cls : 'fc-day-header fc-' + d.substring(0,3).toLowerCase() + 'fc-widget-header',
                     html : d.substring(0,3)
                 });
                 ret[0].cls += 'fc-first';
                 ret[6].cls += 'fc-last';
             }
             
-        }
+        };
         
       <TABLE class="fc-border-separate" style="width:100%" cellspacing="0">
         <THEAD>
