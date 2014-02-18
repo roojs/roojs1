@@ -21235,13 +21235,11 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
      * @return {Boolean} True if the value is valid, else false
      */
     validateValue : function(value){
-        Roo.log('run TEXTFILED validateValue');
         if(value.length < 1)  { // if it's blank
              if(this.allowBlank){
                 this.clearInvalid();
                 return true;
              }else{
-                 Roo.log('run mark Invalid');
                 this.markInvalid(this.blankText);
                 return false;
              }
@@ -24119,6 +24117,56 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
     validateValue : function(value){
         return Roo.form.ComboBoxArray.superclass.validateValue.call(this, this.getValue());
         
+    },
+    
+    /**
+     * Mark this combo array as invalid
+     * @param {String} msg The validation message
+     */
+    markInvalid : function(msg){
+        if(!this.rendered || this.preventMark){ // not rendered
+            return;
+        }
+        this.combo.el.addClass(this.invalidClass);
+        msg = msg || this.invalidText;
+        switch(this.msgTarget){
+            case 'qtip':
+                this.el.dom.qtip = msg;
+                this.el.dom.qclass = 'x-form-invalid-tip';
+                if(Roo.QuickTips){ // fix for floating editors interacting with DND
+                    Roo.QuickTips.enable();
+                }
+                break;
+            case 'title':
+                this.el.dom.title = msg;
+                break;
+            case 'under':
+                if(!this.errorEl){
+                    var elp = this.el.findParent('.x-form-element', 5, true);
+                    this.errorEl = elp.createChild({cls:'x-form-invalid-msg'});
+                    this.errorEl.setWidth(elp.getWidth(true)-20);
+                }
+                this.errorEl.update(msg);
+                Roo.form.Field.msgFx[this.msgFx].show(this.errorEl, this);
+                break;
+            case 'side':
+                if(!this.errorIcon){
+                    var elp = this.el.findParent('.x-form-element', 5, true);
+                    this.errorIcon = elp.createChild({cls:'x-form-invalid-icon'});
+                }
+                this.alignErrorIcon();
+                this.errorIcon.dom.qtip = msg;
+                this.errorIcon.dom.qclass = 'x-form-invalid-tip';
+                this.errorIcon.show();
+                this.on('resize', this.alignErrorIcon, this);
+                break;
+            default:
+                var t = Roo.getDom(this.msgTarget);
+                t.innerHTML = msg;
+                t.style.display = this.msgDisplay;
+                break;
+        }
+        this.fireEvent('invalid', this, msg);
     }
     
 });
