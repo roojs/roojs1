@@ -157,7 +157,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 
             }
             ret[0].cls += ' fc-first';
-            
+            return ret;
             
         };
         var cal_table = {
