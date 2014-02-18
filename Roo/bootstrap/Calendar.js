@@ -428,6 +428,44 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         }
         */
         
+    },
+    
+    
+    addItem : function(ev)
+    {
+        var  cfg = {
+            cls : 'fc-event fc-event-hori fc-event-draggable fc-event-start fc-event-end ui-draggable',
+            style : 'position: absolute;', //left: 387px; width: 121px; top: 359px;"
+            unselectable : "on",
+            cn : [
+                {
+                    cls: 'fc-event-inner',
+                    cn : [
+                        {
+                          tag:'span',
+                          cls: 'fc-event-time'
+                          html : '7pm'
+                        }
+                        {
+                          tag:'span',
+                          cls: 'fc-event-title'
+                          html : String.format('{0}', ev.desc)
+                        }
+                        
+                        
+                    ]
+                },
+                {
+                    cls: 'ui-resizable-handle ui-resizable-e',
+                    html : '&nbsp;&nbsp;&nbsp',
+                }
+                
+            }
+        };
+        
+        
+        
+        
     }
 });
 
