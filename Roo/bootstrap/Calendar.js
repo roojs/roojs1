@@ -148,7 +148,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 
                 for (var i =0; i < Date.dayNames.length; i++) {
                     var d = Date.dayNames[i];
-                    row.cn.push(cal_cell(c.substring(0,3).toLowerCase()));
+                    row.cn.push(cal_cell(d.substring(0,3).toLowerCase()));
 
                 }
                 row.cn[0].cls+=' fc-first';
