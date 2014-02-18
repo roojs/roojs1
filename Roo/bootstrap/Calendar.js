@@ -270,6 +270,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             end : new Date().add(Date.HOUR, 2),
             title : 'test'
         });
+        this.renderEvents();
     },
     resize : function() {
         var sz  = this.el.getSize();
