@@ -74,7 +74,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
                             fc_button('prev', 'left', 'arrow', '‹' ),
                             fc_button('next', 'right', 'arrow', '›' ),
                             { tag: 'span', cls: 'fc-header-space' },
-                            fc_button('today', 'left right', 'arrow', '›' ),
+                            fc_button('today', 'left right', '', 'today' ),
                             <SPAN class="fc-button fc-button-today fc-state-default fc-corner-left fc-corner-right fc-state-disabled" unselectable="on">today</SPAN>
                             
                         ]
