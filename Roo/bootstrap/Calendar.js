@@ -119,21 +119,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
            ] 
             
         };
-        
-        var cal_table = {
-            tag: 'table',
-            cls: 'fc-border-separate',
-            style : 'width:100%',
-            cellspacing  : 0,
-            cn : [
-                { 
-                    tag: 'tr',
-                    cls : 'fc-first fc-last',
-                    cn : cal_heads()
-                }
-            ]
-        };
-        var cal_heads = function() {
+          var cal_heads = function() {
             var ret = [];
             for (var i =0; i < Date.dayNames.length; i++) {
                 var d = Date.dayNames[i];
@@ -147,19 +133,27 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             }
             
         };
-        
-      <TABLE class="fc-border-separate" style="width:100%" cellspacing="0">
-        <THEAD>
-          <TR class="fc-first fc-last">
-            <TH class="fc-day-header fc-sun fc-widget-header fc-first" style="width: 108px;">Sun</TH>
-            <TH class="fc-day-header fc-mon fc-widget-header" style="width: 108px;">Mon</TH>
-            <TH class="fc-day-header fc-tue fc-widget-header" style="width: 108px;">Tue</TH>
-            <TH class="fc-day-header fc-wed fc-widget-header" style="width: 108px;">Wed</TH>
-            <TH class="fc-day-header fc-thu fc-widget-header" style="width: 108px;">Thu</TH>
-            <TH class="fc-day-header fc-fri fc-widget-header" style="width: 108px;">Fri</TH>
-            <TH class="fc-day-header fc-sat fc-widget-header fc-last">Sat</TH>
-          </TR>
-        </THEAD>
+        var cal_table = {
+            tag: 'table',
+            cls: 'fc-border-separate',
+            style : 'width:100%',
+            cellspacing  : 0,
+            cn : [
+                { 
+                    tag: 'thead',
+                    cn : [
+                        { 
+                            tag: 'tr',
+                            cls : 'fc-first fc-last',
+                            cn : cal_heads()
+                        }
+                    ]
+                }
+                  
+            ]
+        };
+      
+      
         <TBODY>
           <TR class="fc-week fc-first">
             <TD class="fc-day fc-sun fc-widget-content fc-other-month fc-past fc-first" data-date="2014-01-26">
