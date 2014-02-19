@@ -335,6 +335,17 @@
         
     },
     
+    </span><span class="jsdoc-comment">/**
+     * Validates the combox array value
+     * @return {Boolean} True if the value is valid, else false
+     */
+    </span><span class="jsdoc-var">validate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.validateValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.processValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">()))){
+            </span><span class="jsdoc-var">this.clearInvalid</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+    },
     
     </span><span class="jsdoc-var">validateValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.form.ComboBoxArray.superclass.validateValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">());
@@ -417,6 +428,5 @@
         </span><span class="jsdoc-var">this.el.remove</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.cb.updateHiddenEl</span><span class="jsdoc-syntax">();
     }
-    
     
 });</span></code></body></html>
