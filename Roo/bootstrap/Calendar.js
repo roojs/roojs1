@@ -76,7 +76,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                                 fc_button('prev', 'left', 'arrow', '&#8249;' ),
                                 fc_button('next', 'right', 'arrow', '&#8250;' ),
                                 { tag: 'span', cls: 'fc-header-space' },
-                                fc_button('today', 'left right', '', 'today' ), // neds state disabled..
+                                fc_button('today', 'left right', '', 'today' )  // neds state disabled..
                                 
                                 
                             ]
