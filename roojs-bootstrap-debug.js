@@ -5695,7 +5695,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                         },
                         {
                             cls: 'ui-resizable-handle ui-resizable-e',
-                            html : '&nbsp;&nbsp;&nbsp',
+                            html : '&nbsp;&nbsp;&nbsp'
                         }
                         
                     ]
