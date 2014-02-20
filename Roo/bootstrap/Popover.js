@@ -126,16 +126,20 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         if (!this.title.length) {
             this.el.select('.popover-title',true).hide();
         }
-    }
+    },
+    // private
+    timeout : null,
+    hoverState : null,
+    
     
     enter : function (obj) {
        
     
         clearTimeout(this.timeout);
     
-        self.hoverState = 'in'
+        this.hoverState = 'in'
     
-        if (!self.options.delay || !self.options.delay.show) return self.show()
+        if (!this.delay || !this.delay.show) return self.show()
     
         self.timeout = setTimeout(function () {
           if (self.hoverState == 'in') self.show()
