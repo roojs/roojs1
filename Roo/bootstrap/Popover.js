@@ -200,15 +200,16 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         if (autoPlace) {
             // fixme..
         }
-        
-        this.el.alignTo(on_el, Roo.bootstrap.Popover.alignment[placement]);
+        var align = Roo.bootstrap.Popover.alignment[placement]
+        this.el.alignTo(on_el, align[0],align[1]);
+        var arrow = this.el.select('.arrow').first();
+        arrow.setClass(align[2]);
         
         this.el.addClass('in');
         this.hoverState = null;
         
         if (this.el.hasClass('fade')) {
             // fade it?
-            
         }
         
     },
@@ -222,10 +223,10 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
 });
 
 Roo.bootstrap.Popover.alignment = {
-    'left' : ['r-l', [-10,0]],
-    'right' : ['l-r', [10,0]],
-    'bottom' : ['t-b', [0,10]],
-    'top' : [ 'b-t', [0,-10]]
+    'left' : ['r-l', [-10,0], 'right'],
+    'right' : ['l-r', [10,0], 'left'],
+    'bottom' : ['t-b', [0,10], 'top'],
+    'top' : [ 'b-t', [0,-10], 'bottom']
 };
 
  
