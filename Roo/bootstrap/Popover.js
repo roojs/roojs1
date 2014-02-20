@@ -213,6 +213,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     },
     hide : function()
     {
+        this.el.setXY([0,0]);
         this.el.removeClass('in');
         
     }
