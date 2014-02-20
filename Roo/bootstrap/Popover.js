@@ -27,7 +27,7 @@ Roo.bootstrap.Popover = function(config){
 Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     
     title: 'Fill in a title',
-    html: '',
+    html: false,
     
     placement : 'right',
     trigger : 'click',
@@ -86,6 +86,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         if (!el) {
             el = (this.over == 'parent') ? this.parent().el : Roo.get(this.over);
         }
+        this.
     },
     
     
