@@ -203,7 +203,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         var align = Roo.bootstrap.Popover.alignment[placement]
         this.el.alignTo(on_el, align[0],align[1]);
         var arrow = this.el.select('.arrow').first();
-        arrow.dom.className = align[2];
+        //arrow.set(align[2], 
         
         this.el.addClass('in');
         this.hoverState = null;
