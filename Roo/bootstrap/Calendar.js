@@ -558,6 +558,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
     renderEvents: function()
     {
+        this.clearEvents();
         // first make sure there is enough space..
         this.cells.each(function(c) {
             Roo.log(c.select('.fc-day-content div',true).first(), Math.max(34, c.rows * 20));
