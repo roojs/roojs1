@@ -84,9 +84,10 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     show : function (el)
     {
         if (!el) {
-            el = (this.over == 'parent' ? this.parent().el : Roo.get(this.over);
+            el = (this.over == 'parent') ? this.parent().el : Roo.get(this.over);
         }
-    }
+    },
+    
     
     
     
