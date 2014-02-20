@@ -27,8 +27,7 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
     tag: 'div',
     cls: '',
     html: '',
-    
-    
+     
     
     getAutoCreate : function(){
         
