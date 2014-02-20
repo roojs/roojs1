@@ -232,7 +232,15 @@ Roo.example.bootstrap = new Roo.XComponent({
                         {
                             xtype: 'Button',
                             xns : Roo.bootstrap,
-                            html: 'default'
+                            html: 'popover - default',
+                            cn : [
+                                {
+                                    xtype: 'Popover',
+                                    xns: Roo.bootstrap,
+                                    title : "test popover",
+                                    html : "test content"
+                                }
+                            ]
                         },
                          {
                             xtype: 'Button',
