@@ -92,7 +92,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         if (over === false) {
             return; 
         }
-        if (tiggers) {
+        if (this.triggers = false) {
             //code
         }
         
