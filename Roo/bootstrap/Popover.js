@@ -91,8 +91,8 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     
     initEvents : function()
     {
-        this.el.select('.popover-title',true).enableDisplayMode('block');
-        this.el.setVisibilityMode(Roo.Element.DISPLAY);
+        this.el.select('.popover-title',true).setVisibilityMode(Roo.Element.DISPLAY);
+        this.el.enableDisplayMode('block');
         this.el.hide();
         if (this.over === false) {
             return; 
@@ -189,7 +189,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         //this.el.detach()
         //this.el.setXY([0,0]);
         this.el.show();
-      
+        this.el.dom.style.display='block';
         this.el.addClass(placement);
         
         //this.el.appendTo(on_el);
