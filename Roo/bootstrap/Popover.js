@@ -187,7 +187,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         //this.el.detach()
         this.el.setXY([0,0]);
         this.el.show();
-
+        this.el.addClass(placement);
         
         
         
