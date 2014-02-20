@@ -92,7 +92,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         if (over === false) {
             return; 
         }
-        if (this.triggers = false) {
+        if (this.triggers === false) {
             return;
         }
         var on_el = (this.over == 'parent') ? this.parent().el : Roo.get(this.over);
@@ -100,15 +100,16 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         Roo.each(triggers, function(trigger) {
         
             if (trigger == 'click') {
-              this.$element.on('click.' + this.type, this.options.selector, $.proxy(this.toggle, this))
+                this.on_el.on('click', this.toggle, this);
             } else if (trigger != 'manual') {
-              var eventIn  = trigger == 'hover' ? 'mouseenter' : 'focusin'
-              var eventOut = trigger == 'hover' ? 'mouseleave' : 'focusout'
+                var eventIn  = trigger == 'hover' ? 'mouseenter' : 'focusin'
+                var eventOut = trigger == 'hover' ? 'mouseleave' : 'focusout'
       
-              this.$element.on(eventIn  + '.' + this.type, this.options.selector, $.proxy(this.enter, this))
-              this.$element.on(eventOut + '.' + this.type, this.options.selector, $.proxy(this.leave, this))
+                this.on_el.on(eventIn  ,this.enter, this);
+              this.$element.on(eventOut, this.leave, this);
             }
         }, this);
+        
     },
     
     show : function (on_el)
