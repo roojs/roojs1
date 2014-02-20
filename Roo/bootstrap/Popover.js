@@ -9,8 +9,8 @@
  * @class Roo.bootstrap.Popover
  * @extends Roo.bootstrap.Component
  * Bootstrap Element class
- * @cfg {String} html contents of the popover (or false)
- * @cfg {String} title of popover
+ * @cfg {String} html contents of the popover 
+ * @cfg {String} title of popover (or false to hide)
  * @cfg {String} placement how it is placed
  * @cfg {String} trigger
  * @cfg {String} over what (parent or false to trigger manually.)
