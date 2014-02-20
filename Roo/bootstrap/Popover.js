@@ -11,6 +11,9 @@
  * Bootstrap Element class
  * @cfg {String} html contents of the popover
  * @cfg {String} title of popover
+ * @cfg {String} placement how it is placed
+ * @cfg {String} trigger
+ * @cfg {String} over what (parent or empty to trigger manually.)
  * 
  * @constructor
  * Create a new Popover
@@ -29,7 +32,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     placement : 'right',
     trigger : 'click',
     
-    over: 'parent'
+    over: 'parent',
     
     
     getAutoCreate : function(){
