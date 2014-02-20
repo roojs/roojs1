@@ -23,8 +23,8 @@ Roo.bootstrap.Popover = function(config){
 
 Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     
-    tag: 'div',
-    cls: '',
+     
+    title: 'Fill in a title',
     html: '',
     
     
