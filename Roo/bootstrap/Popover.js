@@ -12,7 +12,7 @@
  * @cfg {String} html contents of the popover   (or false to use children..)
  * @cfg {String} title of popover (or false to hide)
  * @cfg {String} placement how it is placed
- * @cfg {String} trigger
+ * @cfg {String} trigger (or false to trigger manually)
  * @cfg {String} over what (parent or false to trigger manually.)
  * 
  * @constructor
@@ -91,6 +91,9 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         this.el.select('.popover-title',true).setVisibilityMode(Roo.Element.DISPLAY);
         if (over === false) {
             return; 
+        }
+        if (tiggers) {
+            //code
         }
         
     },
