@@ -109,8 +109,8 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
                 var eventIn  = trigger == 'hover' ? 'mouseenter' : 'focusin'
                 var eventOut = trigger == 'hover' ? 'mouseleave' : 'focusout'
       
-                this.on_el.on(eventIn  ,this.enter, this);
-              this.$element.on(eventOut, this.leave, this);
+                on_el.on(eventIn  ,this.enter, this);
+                on_el.on(eventOut, this.leave, this);
             }
         }, this);
         
