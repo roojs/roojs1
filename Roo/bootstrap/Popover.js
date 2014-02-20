@@ -34,6 +34,10 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     
     over: 'parent',
     
+    getChildContainer : function()
+    {
+        return this.el.select('.popover-content',true).first();
+    },
     
     getAutoCreate : function(){
          
