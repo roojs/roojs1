@@ -43,6 +43,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
          
         var cfg = {
            cls : 'popover',
+           style: 'display:block',
            cn : [
                 {
                     cls : 'arrow'
