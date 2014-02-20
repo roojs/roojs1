@@ -191,6 +191,17 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         
         this.el.appendTo(on_el);
         
+        var p = this.getPosition();
+        var box = this.el.getBox();
+        
+        if (autoPlace) {
+            // fixme..
+        }
+        
+        this.el.alignTo(on_el, placement[0])
+        
+        
+        
         
     },
     
