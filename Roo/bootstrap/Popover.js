@@ -132,7 +132,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     hoverState : null,
     
     
-    enter : function (obj) {
+    enter : function () {
        
     
         clearTimeout(this.timeout);
@@ -140,7 +140,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         this.hoverState = 'in'
     
         if (!this.delay || !this.delay.show) {
-            self.show();
+            this.show();
             return 
         }
         var _t = this;
@@ -149,7 +149,24 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
                 _t.show();
             }
         }, this.delay.show)
+    },
+    leave : function() {
+        clearTimeout(this.timeout);
+    
+        this.hoverState = 'out'
+    
+        if (!this.delay || !this.delay.hide) {
+            this.hide();
+            return 
+        }
+        var _t = this;
+        this.timeout = setTimeout(function () {
+            if (_t.hoverState == 'in') {
+                _t.hide();
+            }
+        }, this.delay.hide)
     }
+    
     
     
 });
