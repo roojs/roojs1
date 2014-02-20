@@ -12,7 +12,7 @@
  * @cfg {String} html contents of the popover   (or false to use children..)
  * @cfg {String} title of popover (or false to hide)
  * @cfg {String} placement how it is placed
- * @cfg {String} trigger (or false to trigger manually)
+ * @cfg {String} trigger click || hover (or false to trigger manually)
  * @cfg {String} over what (parent or false to trigger manually.)
  * 
  * @constructor
@@ -30,7 +30,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     html: false,
     
     placement : 'right',
-    trigger : 'click',
+    trigger : 'click', // hover
     
     over: 'parent',
     
