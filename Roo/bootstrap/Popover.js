@@ -161,7 +161,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         if (!on_el) {
             on_el= (this.over == 'parent') ? this.parent().el : Roo.get(this.over);
         }
-        
+        // set content.
         this.el.select('.popover-title').dom.innerHtml = this.title;
         if (this.html !== false) {
             this.el.select('.popover-content',true).dom.innerHtml = this.title;
@@ -170,6 +170,15 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         if (!this.title.length) {
             this.el.select('.popover-title',true).hide();
         }
+        
+        var placement = typeof this.placement == 'function' ?
+            this.placement.call(this, this.el, on_el) :
+            this.placement
+        
+        
+        
+        
+        
     },
     
 });
