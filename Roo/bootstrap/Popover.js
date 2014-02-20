@@ -6,23 +6,22 @@
  */
 
 /**
- * @class Roo.bootstrap.Element
+ * @class Roo.bootstrap.Popover
  * @extends Roo.bootstrap.Component
  * Bootstrap Element class
- * @cfg {String} html contents of the element
- * @cfg {String} tag tag of the element
- * @cfg {String} cls class of the element
+ * @cfg {String} html contents of the popover
+ * @cfg {String} title of popover
  * 
  * @constructor
- * Create a new Element
+ * Create a new Popover
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.Element = function(config){
-    Roo.bootstrap.Element.superclass.constructor.call(this, config);
+Roo.bootstrap.Popover = function(config){
+    Roo.bootstrap.Popover.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     
     tag: 'div',
     cls: '',
@@ -32,11 +31,29 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
     
     getAutoCreate : function(){
          
-        cfg = {
-            tag: this.tag,
-            cls: '',
-            html: this.html
-        }
+        var cfg = {
+           cls : 'popover',
+           cn : [
+                {
+                    cls : 'arrow'
+                },
+                {
+                    cls : 'popover-inner',
+                    cn : [
+                        {
+                            tag: 'h3'
+                            cls: 'popover-title',
+                            html : this.title
+                        },
+                        {
+                            cls : 'popover-content',
+                            html : this.html
+                        }
+                    ]
+                    
+                }
+           ]
+        };
         
             return cfg;
     }
