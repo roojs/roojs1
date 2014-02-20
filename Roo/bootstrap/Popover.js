@@ -190,7 +190,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         this.el.show();
         this.el.addClass(placement);
         
-        this.el.appendTo(on_el);
+        //this.el.appendTo(on_el);
         
         var p = this.getPosition();
         var box = this.el.getBox();
