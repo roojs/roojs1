@@ -104,7 +104,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         Roo.each(triggers, function(trigger) {
         
             if (trigger == 'click') {
-                this.on_el.on('click', this.toggle, this);
+                on_el.on('click', this.toggle, this);
             } else if (trigger != 'manual') {
                 var eventIn  = trigger == 'hover' ? 'mouseenter' : 'focusin'
                 var eventOut = trigger == 'hover' ? 'mouseleave' : 'focusout'
