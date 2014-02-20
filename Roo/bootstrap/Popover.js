@@ -173,8 +173,18 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         
         var placement = typeof this.placement == 'function' ?
             this.placement.call(this, this.el, on_el) :
-            this.placement
+            this.placement;
+            
+        var autoToken = /\s?auto?\s?/i;
+        var autoPlace = autoToken.test(placement);
+        if (autoPlace) {
+            placement = placement.replace(autoToken, '') || 'top';
+        }
         
+        //this.el.detach()
+        this.el.setXY([0,0]);
+        this.el.show();
+
         
         
         
