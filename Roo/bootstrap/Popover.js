@@ -41,7 +41,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
                     cls : 'popover-inner',
                     cn : [
                         {
-                            tag: 'h3'
+                            tag: 'h3',
                             cls: 'popover-title',
                             html : this.title
                         },
@@ -55,7 +55,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
            ]
         };
         
-            return cfg;
+        return cfg;
     }
    
 });
