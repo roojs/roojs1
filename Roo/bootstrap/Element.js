@@ -31,13 +31,12 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
     
     
     getAutoCreate : function(){
-        var cfg = Roo.apply({}, Roo.bootstrap.Element.superclass.getAutoCreate.call(this));
-	
-	cfg = {
-	    tag: this.tag,
-	    cls: '',
+        
+        var cfg = {
+            tag: this.tag,
+            cls: '',
             html: this.html
-	}
+        }
 	
         return cfg;
     }
