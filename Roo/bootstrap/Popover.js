@@ -200,7 +200,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         
         this.el.alignTo(on_el, placement[0]);
         
-        this.hoverState = null
+        this.hoverState = null;
         
         
         
