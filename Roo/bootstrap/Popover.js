@@ -198,8 +198,9 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             // fixme..
         }
         
-        this.el.alignTo(on_el, placement[0])
+        this.el.alignTo(on_el, placement[0]);
         
+        this.hoverState = null
         
         
         
