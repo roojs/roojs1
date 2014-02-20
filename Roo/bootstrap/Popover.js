@@ -202,7 +202,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         }
         var align = Roo.bootstrap.Popover.alignment[placement]
         this.el.alignTo(on_el, align[0],align[1]);
-        var arrow = this.el.select('.arrow').first();
+        var arrow = this.el.select('.arrow',true).first();
         //arrow.set(align[2], 
         
         this.el.addClass('in');
