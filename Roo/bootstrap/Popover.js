@@ -112,21 +112,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         
     },
     
-    show : function (on_el)
-    {
-        if (!on_el) {
-            on_el= (this.over == 'parent') ? this.parent().el : Roo.get(this.over);
-        }
-        
-        this.el.select('.popover-title').dom.innerHtml = this.title;
-        if (this.html !== false) {
-            this.el.select('.popover-content',true).dom.innerHtml = this.title;
-        }
-        this.el.removeClass('fade top bottom left right in');
-        if (!this.title.length) {
-            this.el.select('.popover-title',true).hide();
-        }
-    },
+    
     // private
     timeout : null,
     hoverState : null,
@@ -168,9 +154,23 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
                 _t.hide();
             }
         }, this.delay.hide)
-    }
+    },
     
-    
+    show : function (on_el)
+    {
+        if (!on_el) {
+            on_el= (this.over == 'parent') ? this.parent().el : Roo.get(this.over);
+        }
+        
+        this.el.select('.popover-title').dom.innerHtml = this.title;
+        if (this.html !== false) {
+            this.el.select('.popover-content',true).dom.innerHtml = this.title;
+        }
+        this.el.removeClass('fade top bottom left right in');
+        if (!this.title.length) {
+            this.el.select('.popover-title',true).hide();
+        }
+    },
     
 });
 
