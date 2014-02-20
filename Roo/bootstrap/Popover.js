@@ -139,11 +139,15 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     
         this.hoverState = 'in'
     
-        if (!this.delay || !this.delay.show) return self.show()
+        if (!this.delay || !this.delay.show) {
+            return self.show();
+        }
     
-        self.timeout = setTimeout(function () {
-          if (self.hoverState == 'in') self.show()
-        }, self.options.delay.show)
+        this.timeout = setTimeout(function () {
+            if (self.hoverState == 'in') {
+                self.show();
+            }
+        }, this.delay.show)
       }
     
     
