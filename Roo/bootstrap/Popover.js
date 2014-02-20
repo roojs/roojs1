@@ -201,7 +201,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         
         this.el.alignTo(on_el, placement[0]);
         
-        this.addClas('in');
+        this.addClass('in');
         this.hoverState = null;
         
         if (this.el.hasClass('fade')) {
