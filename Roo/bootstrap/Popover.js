@@ -40,7 +40,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     },
     
     getAutoCreate : function(){
-         
+         Roo.log('make popover?');
         var cfg = {
            cls : 'popover',
            style: 'display:block',
