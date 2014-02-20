@@ -83,6 +83,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
                 cfg.style = this.style;
             }
             this.el = Roo.get(document.body).createChild(cfg, position);
+            Roo.log(this.el);
         }
         this.initEvents();
     },
