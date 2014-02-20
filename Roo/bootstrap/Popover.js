@@ -27,7 +27,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     html: '',
     
     placement : 'right',
-    trigger : 'click'
+    trigger : 'click',
     
     
     getAutoCreate : function(){
