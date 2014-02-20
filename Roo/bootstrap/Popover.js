@@ -202,7 +202,10 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         
         this.hoverState = null;
         
-        
+        if (this.el.hasClass('fade')) {
+            // fade it?
+            
+        }
         
     },
     
