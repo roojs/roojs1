@@ -128,7 +128,19 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         }
     }
     
+    enter : function (obj) {
+       
     
+        clearTimeout(this.timeout);
+    
+        self.hoverState = 'in'
+    
+        if (!self.options.delay || !self.options.delay.show) return self.show()
+    
+        self.timeout = setTimeout(function () {
+          if (self.hoverState == 'in') self.show()
+        }, self.options.delay.show)
+      }
     
     
 });
