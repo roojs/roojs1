@@ -140,7 +140,8 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         this.hoverState = 'in'
     
         if (!this.delay || !this.delay.show) {
-            return self.show();
+            self.show();
+            return 
         }
         var _t = this;
         this.timeout = setTimeout(function () {
@@ -148,7 +149,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
                 _t.show();
             }
         }, this.delay.show)
-      }
+    }
     
     
 });
