@@ -238,7 +238,12 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     xtype: 'Popover',
                                     xns: Roo.bootstrap,
                                     title : "test popover",
-                                    html : "test content"
+                                    html : "test content",
+                                    listeners : {
+                                        render : function(args) {
+                                            _this.popover = this;
+                                        }
+                                    }
                                 }
                             ]
                         },
