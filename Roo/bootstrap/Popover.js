@@ -93,7 +93,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             return; 
         }
         if (this.triggers = false) {
-            //code
+            return;
         }
         
     },
