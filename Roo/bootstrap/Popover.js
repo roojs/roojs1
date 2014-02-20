@@ -161,7 +161,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         }
         var _t = this;
         this.timeout = setTimeout(function () {
-            if (_t.hoverState == 'in') {
+            if (_t.hoverState == 'out') {
                 _t.hide();
             }
         }, this.delay.hide)
