@@ -95,7 +95,20 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         if (this.triggers = false) {
             return;
         }
+        var on_el = (this.over == 'parent') ? this.parent().el : Roo.get(this.over);
+        var triggers = this.trigger.split(' ');
+        Roo.each(triggers, function(trigger) {
         
+            if (trigger == 'click') {
+              this.$element.on('click.' + this.type, this.options.selector, $.proxy(this.toggle, this))
+            } else if (trigger != 'manual') {
+              var eventIn  = trigger == 'hover' ? 'mouseenter' : 'focusin'
+              var eventOut = trigger == 'hover' ? 'mouseleave' : 'focusout'
+      
+              this.$element.on(eventIn  + '.' + this.type, this.options.selector, $.proxy(this.enter, this))
+              this.$element.on(eventOut + '.' + this.type, this.options.selector, $.proxy(this.leave, this))
+            }
+        }, this);
     },
     
     show : function (on_el)
