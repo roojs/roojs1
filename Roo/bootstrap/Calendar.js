@@ -32,7 +32,22 @@ Roo.bootstrap.Calendar = function(config){
 	     * @param {DatePicker} this
 	     * @param {Date} date The selected month
 	     */
-        'monthchange': true
+        'monthchange': true,
+        /**
+	     * @event evententer
+	     * Fires when mouse over an event
+	     * @param {Calendar} this
+	     * @param {event} Event
+	     */
+        'evententer': true,
+        /**
+	     * @event eventleave
+	     * Fires when the mouse leaves an
+	     * @param {Calendar} this
+	     * @param {event}
+	     */
+        'eventleave': true
+        
     });
 
 };
@@ -643,4 +658,5 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     },
 });
 
+ 
  
