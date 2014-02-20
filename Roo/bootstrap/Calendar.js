@@ -545,6 +545,13 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         this.calevents.push(ev);
     },
     
+    clearEvents: function() {
+        this.calevents.each(function(e) {
+           
+        });
+        
+    }
+    
     renderEvents: function()
     {
         // first make sure there is enough space..
@@ -602,6 +609,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 
                 var ctr = this.el.select('.fc-event-container',true).first();
                 var cg = ctr.createChild(cfg);
+                ev.els.push(cg);
                 var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
                 var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
                 //Roo.log(cg);
