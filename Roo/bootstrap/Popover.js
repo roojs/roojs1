@@ -208,6 +208,11 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         }
         
     },
+    hide : function()
+    {
+        this.removeClass('in');
+        
+    }
     
 });
 
