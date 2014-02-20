@@ -567,7 +567,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 el.un('mouseleave' ,this.onEventLeave, this);
                 el.remove();
             });
-        });
+        },this);
         
     },
     
