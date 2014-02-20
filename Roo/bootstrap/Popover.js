@@ -85,13 +85,16 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     initEvents : function()
     {
         this.el.select('.popover-title',true).setVisibilityMode(Roo.Element.DISPLAY);
+        
+        
     },
     
-    show : function (el)
+    show : function (on_el)
     {
-        if (!el) {
-            el = (this.over == 'parent') ? this.parent().el : Roo.get(this.over);
+        if (!on_el) {
+            on_el= (this.over == 'parent') ? this.parent().el : Roo.get(this.over);
         }
+        
         this.el.select('.popover-title').dom.innerHtml = this.title;
         if (this.html !== false) {
             this.el.select('.popover-content',true).dom.innerHtml = this.title;
