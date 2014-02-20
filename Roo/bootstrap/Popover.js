@@ -166,9 +166,9 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             on_el= (this.over == 'parent') ? this.parent().el : Roo.get(this.over);
         }
         // set content.
-        this.el.select('.popover-title',trun).dom.innerHtml = this.title;
+        this.el.select('.popover-title',true).first().dom.innerHtml = this.title;
         if (this.html !== false) {
-            this.el.select('.popover-content',true).dom.innerHtml = this.title;
+            this.el.select('.popover-content',true).first().dom.innerHtml = this.title;
         }
         this.el.removeClass('fade top bottom left right in');
         if (!this.title.length) {
