@@ -13,7 +13,7 @@
  * @cfg {String} title of popover
  * @cfg {String} placement how it is placed
  * @cfg {String} trigger
- * @cfg {String} over what (parent or empty to trigger manually.)
+ * @cfg {String} over what (parent or false to trigger manually.)
  * 
  * @constructor
  * Create a new Popover
@@ -85,7 +85,9 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     initEvents : function()
     {
         this.el.select('.popover-title',true).setVisibilityMode(Roo.Element.DISPLAY);
-        
+        if (over === false) {
+            return; 
+        }
         
     },
     
