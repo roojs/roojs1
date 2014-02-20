@@ -55,8 +55,24 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         };
         
         return cfg;
+    },
+    // as it get's added to the bottom of the page.
+    onRender : function(ct, position)
+    {
+        Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
+        if(!this.el){
+            var cfg = Roo.apply({},  this.getAutoCreate());
+            cfg.id = Roo.id();
+            
+            if (this.cls) {
+                cfg.cls += ' ' + this.cls;
+            }
+            if (this.style) {
+                cfg.style = this.style;
+            }
+            this.el = Roo.get(document.body).createChild(cfg, position);
+        }
     }
-   
 });
 
  
