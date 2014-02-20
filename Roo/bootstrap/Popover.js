@@ -71,7 +71,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     // as it get's added to the bottom of the page.
     onRender : function(ct, position)
     {
-        Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
+        Roo.bootstrap.Popover.superclass.onRender.call(this, ct, position);
         if(!this.el){
             var cfg = Roo.apply({},  this.getAutoCreate());
             cfg.id = Roo.id();
