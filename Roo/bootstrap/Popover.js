@@ -30,7 +30,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     html: false,
     
     placement : 'right',
-    trigger : 'click', // hover
+    trigger : 'hover', // hover
     
     over: 'parent',
     
