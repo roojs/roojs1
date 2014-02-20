@@ -44,10 +44,10 @@ Roo.example.calendar = new Roo.XComponent({
                                             _this.cal = this;
                                         },
                                         evententer : function(e,el,data) {
-                                            this.popover.show(el)
+                                            _this.popover.show(el)
                                         },
                                         eventleave : function(e,el,data) {
-                                            this.popover.hide();
+                                            _this.popover.hide();
                                         },
                                     }
                                  }
