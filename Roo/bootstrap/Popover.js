@@ -221,6 +221,11 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     
 });
 
- 
+Roo.bootstrap.Popover.alignment = {
+    'left' : ['r-l', [-10,0]],
+    'right' : ['l-r', [10,0]],
+    'bottom' : ['t-b', [0,10]],
+    'top' : [ 'b-t', [0,-10]]
+};
 
  
