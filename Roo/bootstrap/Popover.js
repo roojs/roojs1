@@ -189,7 +189,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         this.el.show();
         this.el.addClass(placement);
         
-        
+        this.el.appendTo(on_el);
         
         
     },
