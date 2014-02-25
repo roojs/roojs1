@@ -55,3 +55,4 @@ Roo.View
 
 
 Roo.bootstrap.Calendar
+Roo.bootstrap.Popover
