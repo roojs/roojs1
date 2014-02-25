@@ -35,9 +35,23 @@ Roo.bootstrap.Form
 Roo.form.VTypes
 Roo.bootstrap.Input
 Roo.bootstrap.TriggerField
-Roo.View
+
+Roo.data.SortTypes
+Roo.data.Record
 Roo.data.Store
+Roo.data.SimpleStore
+Roo.data.JsonStore
+Roo.data.Field
+Roo.data.DataReader
+Roo.data.DataProxy
+Roo.data.MemoryProxy
+Roo.data.HttpProxy
+Roo.data.ScriptTagProxy
+Roo.data.JsonReader
+Roo.data.ArrayReader
+
 Roo.bootstrap.ComboBox
+Roo.View
 
 
 Roo.bootstrap.Calendar
