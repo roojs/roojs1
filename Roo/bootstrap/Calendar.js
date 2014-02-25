@@ -591,7 +591,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 // how many rows should it span..
                 
                 var  cfg = {
-                    cls : 'fc-event fc-event-hori fc-event-draggable ui-draggable',
+                    cls : 'roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable',
                     style : 'position: absolute', // left: 387px; width: 121px; top: 359px;
                     
                     unselectable : "on",
