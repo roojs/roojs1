@@ -36,6 +36,7 @@ Roo.form.VTypes
 Roo.bootstrap.Input
 Roo.bootstrap.TriggerField
 Roo.View
+Roo.data.Store
 Roo.bootstrap.ComboBox
 
 
