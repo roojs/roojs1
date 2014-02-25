@@ -35,6 +35,8 @@ Roo.bootstrap.Form
 Roo.form.VTypes
 Roo.bootstrap.Input
 Roo.bootstrap.TriggerField
+Roo.View
 Roo.bootstrap.ComboBox
+
 
 Roo.bootstrap.Calendar
