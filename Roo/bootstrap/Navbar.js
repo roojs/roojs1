@@ -160,7 +160,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         Roo.log(this.el.select('.navbar-toggle',true));
         this.el.select('.navbar-toggle',true).on('click', function() {
             Roo.log('click');
-            this.el.select('.navbar-collapse',true).toggleClass('on');                                 
+            this.el.select('.navbar-collapse',true).toggleClass('in');                                 
         }, this);
     },
     
