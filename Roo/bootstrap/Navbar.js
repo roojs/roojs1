@@ -156,16 +156,18 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         return cfg;
     },
     
-    initEvents :function () {
-        Roo.log(this.el.select('.navbar-toggle',true));
+    initEvents :function ()
+    {
+        //Roo.log(this.el.select('.navbar-toggle',true));
         this.el.select('.navbar-toggle',true).on('click', function() {
-            Roo.log('click');
+           // Roo.log('click');
             this.el.select('.navbar-collapse',true).toggleClass('in');                                 
         }, this);
     },
     
     
-    getChildContainer : function() {
+    getChildContainer : function()
+    {
         if (this.bar === true) {
             return this.el.select('.collapse',true).first();
         }
