@@ -156,6 +156,13 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         return cfg;
     },
     
+    initEvents :function () {
+        this.el.select('.navbar-toggle',true).on('click', function() {
+            this.el.select('.navbar-collapse',true).toggleClass('on');                                 
+        }, this);
+    },
+    
+    
     getChildContainer : function() {
         if (this.bar === true) {
             return this.el.select('.collapse',true).first();
