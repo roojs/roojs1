@@ -1433,14 +1433,18 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         return cfg;
     },
     
-    initEvents :function () {
+    initEvents :function ()
+    {
+        //Roo.log(this.el.select('.navbar-toggle',true));
         this.el.select('.navbar-toggle',true).on('click', function() {
-            this.el.select('.navbar-collapse',true).toggleClass('on');                                 
+           // Roo.log('click');
+            this.el.select('.navbar-collapse',true).toggleClass('in');                                 
         }, this);
     },
     
     
-    getChildContainer : function() {
+    getChildContainer : function()
+    {
         if (this.bar === true) {
             return this.el.select('.collapse',true).first();
         }
