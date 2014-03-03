@@ -70,11 +70,6 @@
         
     </span><span class="jsdoc-syntax">});
     
-    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">) {
-        </span><span class="jsdoc-keyword">throw </span><span class="jsdoc-string">&quot;can not find store for combo&quot;</span><span class="jsdoc-syntax">;
-    }
-    </span><span class="jsdoc-var">this.store </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.data</span><span class="jsdoc-syntax">);
-    
     
     </span><span class="jsdoc-var">this.selectedIndex </span><span class="jsdoc-syntax">= -1;
     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.mode </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'local'</span><span class="jsdoc-syntax">){
@@ -256,6 +251,14 @@
      
     // private
     </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">throw </span><span class="jsdoc-string">&quot;can not find store for combo&quot;</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.store </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.data</span><span class="jsdoc-syntax">);
+        
+        
+        
         </span><span class="jsdoc-var">Roo.bootstrap.ComboBox.superclass.initEvents.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
         
