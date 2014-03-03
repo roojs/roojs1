@@ -375,11 +375,20 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var min = this.minDate ? this.minDate.clearTime() : Number.NEGATIVE_INFINITY;
         var max = this.maxDate ? this.maxDate.clearTime() : Number.POSITIVE_INFINITY;
         var ddMatch = this.disabledDatesRE;
+        Roo.log('ddMatch');
+        Roo.log(ddMatch);
         var ddText = this.disabledDatesText;
+        Roo.log('ddText');
+        Roo.log(ddText);
         var ddays = this.disabledDays ? this.disabledDays.join("") : false;
+        Roo.log('ddays');
+        Roo.log(ddays);
         var ddaysText = this.disabledDaysText;
+        Roo.log('ddaysText');
+        Roo.log(ddaysText);
         var format = this.format;
-
+        Roo.log('format');
+        Roo.log(format);
         var setCellClass = function(cal, cell){
             cell.title = "";
             var t = d.getTime();
