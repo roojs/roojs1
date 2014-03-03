@@ -447,6 +447,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         }
 
         this.el.select('.fc-header-title h2',true).update(Date.monthNames[date.getMonth()] + " " + date.getFullYear());
+        Roo.log(date);
         this.fireEvent('monthchange', this, date);
         
         
