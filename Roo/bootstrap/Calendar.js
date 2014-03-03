@@ -657,7 +657,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         //code
     } ,
     monthchange: function (cal, date) {
-        Roo.log(cal);
+        Roo.log('run monthchange');
     }
 });
 
