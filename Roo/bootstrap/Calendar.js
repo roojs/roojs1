@@ -423,7 +423,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             }
             cell.dom.className = cell.initialClassName  + ' ' +  cell.className;
         };
-        Roo.log(textEls);
+
         var i = 0;
         for(; i < startingPos; i++) {
             textEls[i].innerHTML = (++prevStart);
