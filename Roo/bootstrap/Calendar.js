@@ -133,7 +133,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var cal_heads = function() {
             var ret = [];
             // fixme - handle this.
-            Roo.log(Date.dayNames);
+            
             for (var i =0; i < Date.dayNames.length; i++) {
                 var d = Date.dayNames[i];
                 ret.push({
@@ -145,7 +145,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             }
             ret[0].cls += ' fc-first';
             ret[6].cls += ' fc-last';
-            Roo.log(ret);
             return ret;
         };
         var cal_cell = function(n) {
