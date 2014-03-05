@@ -62,8 +62,8 @@ Roo.example.calendar = new Roo.XComponent({
                   {
                     xtype: 'Popover',
                     xns: Roo.bootstrap,
-                    title : "test popover",
-                    html : "test content",
+                    title : "test popover title",
+                    html : "test content html",
                     trigger : false,
                     listeners : {
                         render : function(args) {
