@@ -145,7 +145,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             }
             ret[0].cls += ' fc-first';
             ret[6].cls += ' fc-last';
-            print_r(ret);
+            Roo.log(ret);
             return ret;
         };
         var cal_cell = function(n) {
