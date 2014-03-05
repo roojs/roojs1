@@ -177,7 +177,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         };
         var cal_rows = function() {
             
-            var totalDays = (new Date('2014-02-05').clearTime().getDaysInMonth() + new Date().clearTime().getFirstDateOfMonth().getDay()) / 7;
+            var totalDays = Math.ceil((new Date().clearTime().getDaysInMonth() + new Date().clearTime().getFirstDateOfMonth().getDay()) / 7);
             
             
             Roo.log(totalDays);
