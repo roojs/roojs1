@@ -662,8 +662,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         this.fireEvent('eventleave', this, el);
         //code
     },
-    onMonthChange: function (dp, d) {
-        Roo.log(dp, d);
+    onMonthChange: function (e, date) {
+        Roo.log(e, date);
         this.fireEvent('monthchange', this, date);
     }
 });
