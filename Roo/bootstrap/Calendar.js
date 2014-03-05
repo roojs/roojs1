@@ -660,6 +660,9 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     },
     onEventLeave: function (e, el,c,d) {
         this.fireEvent('eventleave', this, el);
+    },
+    initial: function () {
+        this.initComponent();
     }
 });
 
