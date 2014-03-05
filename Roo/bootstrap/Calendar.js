@@ -178,7 +178,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var cal_rows = function() {
             
             var days = new Date().clearTime().getDaysInMonth();
-            var firstDay = new Date().clearTime().getFirstDateOfMonth();
+            var firstDay = new Date().clearTime().getFirstDateOfMonth().getDay();
             
             Roo.log(firstDay);
             var ret = []
