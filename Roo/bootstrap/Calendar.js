@@ -647,6 +647,11 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
     getEvents: function (d) {
         
+        this.resize();
+        this.cells = this.el.select('.fc-day',true);
+        this.textNodes = this.el.query('.fc-day-number');
+        this.cells.addClassOnOver('fc-state-hover');
+        
         this.calevents = [];
         
         this.addItem({
