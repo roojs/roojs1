@@ -573,7 +573,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
     renderEvents: function()
     {
-        Roo.log('renderEvents');
         this.clearEvents();
         // first make sure there is enough space..
         this.cells.each(function(c) {
