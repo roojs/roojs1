@@ -495,7 +495,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var ret = [];
         this.cells.each(function(c){
             //Roo.log("check " +c.dateValue + '<' + e + ' > ' + s);
-            Roo.log(c);
+            
             if(c.dateValue > e){
                 return ;
             }
