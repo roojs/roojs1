@@ -111,7 +111,7 @@ Roo.form.ComboBox = function(config){
             s.parentNode.removeChild(s); // remove it
         }
 
-    }Roo.log(this.store);
+    }Roo.log('debug here'); Roo.log(this.store);
     if (this.store) {
         this.store = Roo.factory(this.store, Roo.data);
     }
