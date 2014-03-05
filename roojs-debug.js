@@ -295,6 +295,7 @@ Roo.factory(conf, Roo.data);
         factory : function(c, ns)
         {
             // no xtype, no ns or c.xns - or forced off by c.xns
+            Roo.log(c);
             if (!c.xtype   || (!ns && !c.xns) ||  (c.xns === false)) { // not enough info...
                 return c;
             }
