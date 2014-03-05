@@ -338,7 +338,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
    // private
     update : function(date)
     {
-       Roo.log('run');
         var vd = this.activeDate;
         this.activeDate = date;
         if(vd && this.el){
