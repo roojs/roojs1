@@ -455,10 +455,11 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         var table = this.el.select('table.fc-border-separate').elements[0];
         
-        Roo.log(table.rows);
+        table.rows[6]
         
         if(totalRows != 6){
             
+           
             
 //            this.el.select('tr.fc-week.fc-last',true).hide();
         }
