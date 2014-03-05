@@ -211,7 +211,6 @@ Roo.extend(Roo.BoxComponent, Roo.Component, {
 
     // private
     onRender : function(ct, position){
-        Roo.log('boxcomponent');
         Roo.BoxComponent.superclass.onRender.call(this, ct, position);
         if(this.resizeEl){
             this.resizeEl = Roo.get(this.resizeEl);
