@@ -646,8 +646,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
     getEvents: function (d) {
         
-        
-                // move to ... 
         this.calevents = [];
         
         this.addItem({
