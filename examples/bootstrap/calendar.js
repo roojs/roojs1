@@ -21,7 +21,7 @@ Roo.example.calendar = new Roo.XComponent({
         
         var _this = this;
         var MODULE = this;
-        var baseURL = '/web.eventmanager/admin.php';
+        var baseURL = '/sandbox/hk.php';
         
         return {
             xtype: 'Body',
@@ -66,12 +66,12 @@ Roo.example.calendar = new Roo.XComponent({
                                             }
                                         },
                                         remoteSort : true,
-                                        sortInfo : { direction : 'ASC', field: 'start_dt' },
+                                        sortInfo : { direction : 'ASC', field: 'id' },
                                         proxy : {
                                             xtype: 'HttpProxy',
                                             xns: Roo.data,
                                             method : 'GET',
-                                            url : baseURL + '/Roo/Cal_event.php'
+                                            url : baseURL + '/Roo/Cohead.php'
                                         },
                                         reader : {
                                             xtype: 'JsonReader',
