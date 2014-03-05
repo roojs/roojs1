@@ -319,7 +319,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     },
     // private
     showNextMonth : function(e){
-        Roo.log(this.el);
+        Roo.log(this.el.getEl());
         this.update(this.activeDate.add("mo", 1));
     },
 
