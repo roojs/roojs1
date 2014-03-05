@@ -50,7 +50,7 @@ Roo.example.calendar = new Roo.XComponent({
                                             Roo.log('event leave');
                                             _this.popover.hide();
                                         },
-                                        monthchange : function(dp,d) {
+                                        monthchange : function(e,date) {
                                             Roo.log('month change');
                                         }
                                     }
