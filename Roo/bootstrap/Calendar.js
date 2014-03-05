@@ -176,7 +176,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             }
         };
         var cal_rows = function() {
-            var rows = new Date().clearTime();
+            var rows = new Date().clearTime().getDaysInMonth;
             Roo.log(rows);
             var ret = []
             for (var r = 0; r < 6; r++) {
