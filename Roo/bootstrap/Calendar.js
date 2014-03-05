@@ -201,7 +201,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             return ret;
             
         };
-        Roo.log(cal_rows);
+        Roo.log(cal_rows());
         var cal_table = {
             tag: 'table',
             cls: 'fc-border-separate',
