@@ -531,8 +531,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         ev.row = this.findBestRow(cells);
         
         // work out the location.
-        Roo.log(cells[0].getY());
-        Roo.log('en');
+        
         var crow = false;
         var rows = [];
         for(var i =0; i < cells.length; i++) {
