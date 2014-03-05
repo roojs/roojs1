@@ -79,7 +79,7 @@ Roo.example.calendar = new Roo.XComponent({
                                             id : 'id',
                                             root : 'data',
                                             totalProperty : 'total',
-                                            fields : [{"name":"id","type":"int"},{"name":"title","type":"string"}]
+                                            fields : [{"name":"cohead_id","type":"int"},{"name":"cohead_number","type":"string"}]
                                         }
                                     }
                                  }
