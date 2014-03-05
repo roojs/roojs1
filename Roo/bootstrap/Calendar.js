@@ -445,7 +445,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var extraDays = 0;
         
         days =  days + 6 - date.getLastDateOfMonth().getDay();
-        
+        Roo.log(days);
         for(; i < days; i++) {
             textEls[i].innerHTML = (++extraDays);
             d.setDate(d.getDate()+1);
