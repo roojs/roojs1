@@ -489,6 +489,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var s = ev.start.clone().clearTime().getTime();
         var e= ev.end.clone().clearTime().getTime();
         var ret = [];
+        Roo.log(cells);
         this.cells.each(function(c){
             //Roo.log("check " +c.dateValue + '<' + e + ' > ' + s);
             
