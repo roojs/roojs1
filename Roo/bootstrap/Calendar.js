@@ -177,10 +177,10 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         };
         var cal_rows = function() {
             
-            var days = new Date().clearTime().getDaysInMonth();
-            var firstDay = new Date().clearTime().getFirstDateOfMonth().getDay();
+            var totalDays = (new Date().clearTime().getDaysInMonth() + new Date().clearTime().getFirstDateOfMonth().getDay()) / 7;
             
-            Roo.log(firstDay);
+            
+            Roo.log(totalDays);
             var ret = []
             for (var r = 0; r < 6; r++) {
                 var row= {
