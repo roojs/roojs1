@@ -662,7 +662,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         this.store = Roo.factory(this.store, Roo.data);
         
-        Roo.log(this.store);
+        Roo.log(this);
         
 //        this.renderEvents();
     }
