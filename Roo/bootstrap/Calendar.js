@@ -454,6 +454,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var totalRows = Math.ceil((date.getDaysInMonth() + date.getFirstDateOfMonth().getDay()) / 7);
         
         if(totalRows != 6){
+            var table = this.el.select('table.fc-border-separate');
+            
             this.el.select('tr.fc-week.fc-last',true).hide();
         }
         
