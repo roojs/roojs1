@@ -62,16 +62,16 @@ Roo.example.calendar = new Roo.XComponent({
                                         listeners : {
                                             beforeload : function (_self, o){
                                                 o.params = o.params || {};
-                                                
+                                                o.params._activeDate = typeof(_this.cal.activeDate) == 'string' ? _this.cal.activeDate : _this.cal.activeDate.format("Y-m-d");
                                             }
                                         },
                                         remoteSort : true,
-                                        sortInfo : { direction : 'DESC', field: 'display_order' },
+                                        sortInfo : { direction : 'ASC', field: 'start_dt' },
                                         proxy : {
                                             xtype: 'HttpProxy',
                                             xns: Roo.data,
                                             method : 'GET',
-                                            url : baseURL + '/Roo/Category.php'
+                                            url : baseURL + '/Roo/Cal_event.php'
                                         },
                                         reader : {
                                             xtype: 'JsonReader',
