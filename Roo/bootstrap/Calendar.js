@@ -654,7 +654,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     },
     
     onEventEnter: function (e, el,c,d) {
-        Roo.log(el);
         this.fireEvent('evententer', this, el);
     },
     onEventLeave: function (e, el,c,d) {
