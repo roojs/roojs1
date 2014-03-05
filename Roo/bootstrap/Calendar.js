@@ -450,8 +450,12 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         }
         
         Roo.log(this.el.select('tr.fc-week.fc-last',true));
-
+        
         this.el.select('.fc-header-title h2',true).update(Date.monthNames[date.getMonth()] + " " + date.getFullYear());
+        
+        var totalRows = Math.ceil((date.getDaysInMonth() + date.getFirstDateOfMonth().getDay()) / 7);
+        
+        
         
         this.fireEvent('monthchange', this, date);
         
