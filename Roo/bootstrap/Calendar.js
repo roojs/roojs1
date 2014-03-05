@@ -271,6 +271,16 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         this.el.select('.fc-button-today',true).on('click', this.showToday, this);
         this.el.select('.fc-button',true).addClassOnOver('fc-state-hover');
         this.cells.addClassOnOver('fc-state-hover');
+        
+        if (!this.store) {
+            return;
+        }
+        
+        this.store = Roo.factory(this.store, Roo.data);
+        
+        Roo.log('after');
+        Roo.log(this.store);
+        
 
     },
     resize : function() {
@@ -656,14 +666,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         this.calevents = [];
         
-        if (!this.store) {
-            return;
-        }
         
-        this.store = Roo.factory(this.store, Roo.data);
-        
-        Roo.log('after');
-        Roo.log(this.store);
         
 //        this.renderEvents();
     }
