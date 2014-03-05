@@ -58,7 +58,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
      * @cfg {Number} startDay
      * Day index at which the week should begin, 0-based (defaults to 0, which is Sunday)
      */
-    startDay : 1,
+    startDay : 0,
       
     getAutoCreate : function(){
         
