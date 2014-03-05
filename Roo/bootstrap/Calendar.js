@@ -436,7 +436,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             this.el.select('tr.fc-week.fc-prev-last',true).addClass('fc-last');
         }
         
-        
+        this.getEvents(date);
         
         this.fireEvent('monthchange', this, date);
         
