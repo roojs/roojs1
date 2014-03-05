@@ -176,8 +176,11 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             }
         };
         var cal_rows = function() {
+            
             var days = new Date().clearTime().getDaysInMonth();
-            Roo.log(days);
+            var firstDay = new Date().clearTime().getFirstDateOfMonth();
+            
+            Roo.log(firstDay);
             var ret = []
             for (var r = 0; r < 6; r++) {
                 var row= {
