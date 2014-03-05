@@ -305,6 +305,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
      
     // private
     onRender : function(ct, position){
+        Roo.log('dee');Roo.log(this.store);
         Roo.form.ComboBox.superclass.onRender.call(this, ct, position);
         if(this.hiddenName){
             this.hiddenField = this.el.insertSibling({tag:'input', type:'hidden', name: this.hiddenName, id:  (this.hiddenId||this.hiddenName)},
