@@ -84,9 +84,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         if (this.style) { // fixme needs to support more complex style data.
             cfg.style = this.style;
         }
-        
         this.el = ct.createChild(cfg, position);
-        return;
         if(this.tabIndex !== undefined){
             this.el.dom.setAttribute('tabIndex', this.tabIndex);
         }
