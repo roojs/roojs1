@@ -532,6 +532,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         // work out the location.
         Roo.log(cells[0]);
+        Roo.log('en');
         var crow = false;
         var rows = [];
         for(var i =0; i < cells.length; i++) {
