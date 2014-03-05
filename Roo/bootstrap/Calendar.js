@@ -458,9 +458,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         Roo.log(this.el.select('table tr:last-child', true));
         
         if(totalRows != 6){
-            for(var r = 1; r <= table.rows.length; r++ ){
-                
-            }
+           
            
             
 //            this.el.select('tr.fc-week.fc-last',true).hide();
