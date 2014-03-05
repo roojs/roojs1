@@ -449,7 +449,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             setCellClass(this, cells[i]);
         }
         
-        Roo.log(this.el.dom.lastChild);
+        Roo.log(this.el.select('.fc_last',true));
 
         this.el.select('.fc-header-title h2',true).update(Date.monthNames[date.getMonth()] + " " + date.getFullYear());
         
