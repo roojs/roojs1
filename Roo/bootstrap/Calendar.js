@@ -455,6 +455,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         var totalRows = Math.ceil((date.getDaysInMonth() + date.getFirstDateOfMonth().getDay()) / 7);
         
+        Roo.log(totalRows);
         
         
         this.fireEvent('monthchange', this, date);
