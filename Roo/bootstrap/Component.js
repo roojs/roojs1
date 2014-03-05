@@ -68,27 +68,27 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         
         Roo.log('run onRender'); 
         
-        var cfg = Roo.apply({},  this.getAutoCreate());
-        cfg.id = Roo.id();
-        
-        // fill in the extra attributes 
-        if (this.xattr && typeof(this.xattr) =='object') {
-            for (var i in this.xattr) {
-                cfg[i] = this.xattr[i];
-            }
-        }
-        
-        if (this.cls) {
-            cfg.cls += ' ' + this.cls;
-        }
-        if (this.style) { // fixme needs to support more complex style data.
-            cfg.style = this.style;
-        }
-        this.el = ct.createChild(cfg, position);
-        if(this.tabIndex !== undefined){
-            this.el.dom.setAttribute('tabIndex', this.tabIndex);
-        }
-        this.initEvents();
+//        var cfg = Roo.apply({},  this.getAutoCreate());
+//        cfg.id = Roo.id();
+//        
+//        // fill in the extra attributes 
+//        if (this.xattr && typeof(this.xattr) =='object') {
+//            for (var i in this.xattr) {
+//                cfg[i] = this.xattr[i];
+//            }
+//        }
+//        
+//        if (this.cls) {
+//            cfg.cls += ' ' + this.cls;
+//        }
+//        if (this.style) { // fixme needs to support more complex style data.
+//            cfg.style = this.style;
+//        }
+//        this.el = ct.createChild(cfg, position);
+//        if(this.tabIndex !== undefined){
+//            this.el.dom.setAttribute('tabIndex', this.tabIndex);
+//        }
+//        this.initEvents();
 	
         
     },
