@@ -197,7 +197,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 
             }
             ret[0].cls += ' fc-first';
-           
+            ret[4].cls += ' fc-prev-last';
             ret[5].cls += ' fc-last';
             return ret;
             
@@ -453,12 +453,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         var totalRows = Math.ceil((date.getDaysInMonth() + date.getFirstDateOfMonth().getDay()) / 7);
         
-//        var table = this.el.select('table.fc-border-separate').elements[0];
-        
-        Roo.log(this.el.select('table tr:nth-last-child(2)', true));
-        
         if(totalRows != 6){
-           
+            
            
             
 //            this.el.select('tr.fc-week.fc-last',true).hide();
