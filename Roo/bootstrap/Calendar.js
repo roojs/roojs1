@@ -177,12 +177,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         };
         var cal_rows = function() {
             
-            var date = this.activeDate || new Date().clearTime();
-            
-            var totalRows = Math.ceil((date.getDaysInMonth() + date.getFirstDateOfMonth().getDay()) / 7);
-            
             var ret = []
-            for (var r = 0; r < totalRows; r++) {
+            for (var r = 0; r < 6; r++) {
                 var row= {
                     tag : 'tr',
                     cls : 'fc-week',
@@ -319,15 +315,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     },
     // private
     showNextMonth : function(e){
-//        var p = this.el.dom.parentNode;
-//        
-//        p.removeChild(this.el.dom);
-//        
-//        p = Roo.get(p);
-//        p.createChild(this.getAutoCreate());
-//        
-        
-        
         this.update(this.activeDate.add("mo", 1));
     },
 
