@@ -275,30 +275,30 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         this.cells.addClassOnOver('fc-state-hover');
         
         
-        // move to ... 
-        this.calevents = [];
-        
-        this.addItem({
-            start: new Date(),
-            end : new Date().add(Date.DAY, 2),
-            title : 'test'
-        });
-        this.addItem({
-            start: new Date().add(Date.DAY, -5), 
-            end : new Date().add(Date.DAY, 2),
-            title : 'test'
-        });
-        this.addItem({
-            start: new Date(), 
-            end : new Date().add(Date.HOUR, 2),
-            title : 'test'
-        });
-         this.addItem({
-            start: new Date(), 
-            end : new Date().add(Date.HOUR, 2),
-            title : 'test'
-        });
-        this.renderEvents();
+//        // move to ... 
+//        this.calevents = [];
+//        
+//        this.addItem({
+//            start: new Date(),
+//            end : new Date().add(Date.DAY, 2),
+//            title : 'test'
+//        });
+//        this.addItem({
+//            start: new Date().add(Date.DAY, -5), 
+//            end : new Date().add(Date.DAY, 2),
+//            title : 'test'
+//        });
+//        this.addItem({
+//            start: new Date(), 
+//            end : new Date().add(Date.HOUR, 2),
+//            title : 'test'
+//        });
+//         this.addItem({
+//            start: new Date(), 
+//            end : new Date().add(Date.HOUR, 2),
+//            title : 'test'
+//        });
+//        this.renderEvents();
     },
     resize : function() {
         var sz  = this.el.getSize();
