@@ -177,12 +177,10 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         };
         var cal_rows = function() {
             
-            var totalDays = Math.ceil((new Date().clearTime().getDaysInMonth() + new Date().clearTime().getFirstDateOfMonth().getDay()) / 7);
+            var totalRows = Math.ceil((new Date().clearTime().getDaysInMonth() + new Date().clearTime().getFirstDateOfMonth().getDay()) / 7);
             
-            
-            Roo.log(totalDays);
             var ret = []
-            for (var r = 0; r < 6; r++) {
+            for (var r = 0; r < totalRows; r++) {
                 var row= {
                     tag : 'tr',
                     cls : 'fc-week',
