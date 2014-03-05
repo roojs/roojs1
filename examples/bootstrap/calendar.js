@@ -52,7 +52,7 @@ Roo.example.calendar = new Roo.XComponent({
                                         },
                                         monthchange : function(e,date) {
                                             Roo.log(_this);
-                                            Roo.log(baseURL);
+                                            Roo.log(Roo.baseURL);
                                         }
                                     }
 //                                    store : {
