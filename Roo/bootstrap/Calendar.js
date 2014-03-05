@@ -631,8 +631,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 var cg = ctr.createChild(cfg);
                 
                 
-                cg.on('evententer' ,this.onEventEnter, this);
-                cg.on('eventleave' ,this.onEventLeave, this);
+                cg.on('mouseenter' ,this.onEventEnter, this);
+                cg.on('mouseleave' ,this.onEventLeave, this);
                 
                 ev.els.push(cg);
                 var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
