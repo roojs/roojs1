@@ -178,7 +178,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var cal_rows = function() {
             var ret = []
             for (var r = 0; r < 6; r++) {
-                if(r !== 0) return;
+                if(r !== 0) continue;
                 var row= {
                     tag : 'tr',
                     cls : 'fc-week',
