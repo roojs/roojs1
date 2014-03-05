@@ -654,14 +654,11 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     },
     
     onEventEnter: function (e, el,c,d) {
-        Roo.log(e,el,c,d)
+        Roo.log(el);
         this.fireEvent('evententer', this, el);
-        //code
     },
     onEventLeave: function (e, el,c,d) {
-        Roo.log(e,el,c,d)
         this.fireEvent('eventleave', this, el);
-        //code
     }
 });
 
