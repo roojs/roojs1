@@ -355,8 +355,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 return;
             }
         }
-        Roo.log(vd);
-        Roo.log(date);
+        
         var days = date.getDaysInMonth();
         var firstOfMonth = date.getFirstDateOfMonth();
         var startingPos = firstOfMonth.getDay()-this.startDay;
