@@ -636,7 +636,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 
                 var ctr = this.el.select('.fc-event-container',true).first();
                 var cg = ctr.createChild(cfg);
-                Roo.log(cg);
                 
                 cg.on('mouseenter' ,this.onEventEnter, this);
                 cg.on('mouseleave' ,this.onEventLeave, this);
