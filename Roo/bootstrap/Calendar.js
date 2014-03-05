@@ -320,6 +320,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     // private
     showNextMonth : function(e){
         var p = this.el.parentNode;
+        Roo.log(p);
         p.removeChild(this.el);
         p.createChild(this.getAutoCreate());
         
