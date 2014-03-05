@@ -443,6 +443,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             setCellClass(this, cells[i]);
         }
         var extraDays = 0;
+        var endPos = date.getLastDateOfMonth()
         for(; i < 42; i++) {
             textEls[i].innerHTML = (++extraDays);
             d.setDate(d.getDate()+1);
