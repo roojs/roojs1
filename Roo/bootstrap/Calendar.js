@@ -275,8 +275,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         if (!this.store) {
             return;
         }
-        Roo.log(Roo.data.Connection);
-        this.store = Roo.factory(this.store, Roo.data);
+        
+        this.store = Roo.factory(this.store, true);
          
 //        this.store.on('load', function(data) {
 //            Roo.log('data here');
