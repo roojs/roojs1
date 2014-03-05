@@ -21,6 +21,8 @@ Roo.example.calendar = new Roo.XComponent({
         
         var _this = this;
         var MODULE = this;
+        var baseURL = '/web.eventmanager/admin.php';
+        
         return {
             xtype: 'Body',
             xns: Roo.bootstrap,
@@ -52,7 +54,7 @@ Roo.example.calendar = new Roo.XComponent({
                                         },
                                         monthchange : function(e,date) {
                                             Roo.log(_this);
-                                            Roo.log(Roo.baseURL);
+                                            Roo.log(baseURL);
                                         }
                                     }
 //                                    store : {
