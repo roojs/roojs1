@@ -455,7 +455,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
 //        var table = this.el.select('table.fc-border-separate').elements[0];
         
-        Roo.log(this.el.select('table tr:tr:nth-last-child(2)', true));
+        Roo.log(this.el.select('table tr:nth-last-child(2)', true));
         
         if(totalRows != 6){
            
