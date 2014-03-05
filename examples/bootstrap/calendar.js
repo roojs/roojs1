@@ -51,7 +51,7 @@ Roo.example.calendar = new Roo.XComponent({
                                             _this.popover.hide();
                                         },
                                         monthchange : function(dp,d) {
-                                            Roo.log()
+                                            Roo.log('month change');
                                         }
                                     }
                                  }
