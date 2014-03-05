@@ -224,8 +224,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                   
             ]
         };
-        Roo.log('table');
-         Roo.log(cal_table);
+         
          var cfg = {
             cls : 'fc fc-ltr',
             cn : [
