@@ -271,32 +271,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         this.el.select('.fc-button-today',true).on('click', this.showToday, this);
         this.el.select('.fc-button',true).addClassOnOver('fc-state-hover');
         this.cells.addClassOnOver('fc-state-hover');
-        
-        
-//        // move to ... 
-//        this.calevents = [];
-//        
-//        this.addItem({
-//            start: new Date(),
-//            end : new Date().add(Date.DAY, 2),
-//            title : 'test'
-//        });
-//        this.addItem({
-//            start: new Date().add(Date.DAY, -5), 
-//            end : new Date().add(Date.DAY, 2),
-//            title : 'test'
-//        });
-//        this.addItem({
-//            start: new Date(), 
-//            end : new Date().add(Date.HOUR, 2),
-//            title : 'test'
-//        });
-//         this.addItem({
-//            start: new Date(), 
-//            end : new Date().add(Date.HOUR, 2),
-//            title : 'test'
-//        });
-//        this.renderEvents();
+
     },
     resize : function() {
         var sz  = this.el.getSize();
@@ -664,8 +639,38 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     onEventEnter: function (e, el,c,d) {
         this.fireEvent('evententer', this, el);
     },
+    
     onEventLeave: function (e, el,c,d) {
         this.fireEvent('eventleave', this, el);
+    },
+    
+    getEvents: function (d) {
+        this.categoryList =  new Ext.data.Store({
+            proxy: new Ext.data.HttpProxy({
+                url: baseURL + '/Category/List.json',
+                method: 'GET'
+            }),
+            reader: new Ext.data.JsonReader({
+                root: 'data',
+                totalProperty: 'total',
+                id: 'id'
+            }, [ 'id', 'title', 'full_name' ]),
+            listeners : {
+                'load' : function() {  
+                    FlexyShop.CategoryEdit.loaded();
+                },
+                'beforeload' :  function(str,opts) {
+                    if (typeof(opts.params) == 'undefined') {
+                   //     opts.params = { start :0, limit: 25 };
+                        opts.params = { };
+                    }
+                    //
+                    opts.params.except = FlexyShop.CategoryEdit.data.id;
+                    opts.params.includeTop = 1;
+                    opts.params.ts = Math.random();
+                }
+            }
+        });
     }
 });
 
