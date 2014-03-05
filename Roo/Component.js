@@ -28,8 +28,7 @@ Roo.Component = function(config){
         config = {el: config, id: config.id || config};
     }
     this.initialConfig = config;
-    Roo.log('config');
-    Roo.log(config);
+
     Roo.apply(this, config);
     this.addEvents({
         /**
