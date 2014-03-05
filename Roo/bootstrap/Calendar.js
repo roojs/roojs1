@@ -453,12 +453,14 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         var totalRows = Math.ceil((date.getDaysInMonth() + date.getFirstDateOfMonth().getDay()) / 7);
         
-        var table = this.el.select('table.fc-border-separate').elements[0];
+//        var table = this.el.select('table.fc-border-separate').elements[0];
         
-        Roo.log(table.rows);
+        Roo.log(this.el.select('table tr:last-child', true));
         
         if(totalRows != 6){
-            
+            for(var r = 1; r <= table.rows.length; r++ ){
+                
+            }
            
             
 //            this.el.select('tr.fc-week.fc-last',true).hide();
