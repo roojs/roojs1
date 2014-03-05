@@ -338,7 +338,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var vd = this.activeDate;
         this.activeDate = date;
         if(vd && this.el){
-            Roo.log('IN');
             var t = date.getTime();
             if(vd.getMonth() == date.getMonth() && vd.getFullYear() == date.getFullYear()){
                 Roo.log('using add remove');
