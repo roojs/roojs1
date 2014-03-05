@@ -360,7 +360,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var setCellClass = function(cal, cell){
             cell.title = "";
             var t = d.getTime();
-            Roo.log(d);
+            Roo.log(d.getTime() - today);
             cell.dateValue = t;
             if(t == today){
                 cell.className += " fc-today";
