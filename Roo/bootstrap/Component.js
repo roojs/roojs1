@@ -89,6 +89,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         if(this.tabIndex !== undefined){
             this.el.dom.setAttribute('tabIndex', this.tabIndex);
         }
+        return;
         this.initEvents();
 	
         
