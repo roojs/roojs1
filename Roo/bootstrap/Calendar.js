@@ -661,6 +661,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         }
         
         this.store = Roo.factory(this.store, Roo.data);
+        this.fireEvent('load', this.store);
         Roo.log('after');
         Roo.log(this.store);
         
