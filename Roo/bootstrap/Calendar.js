@@ -280,7 +280,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
          
         this.store.on('load', function(data) {
-             // loop throug data and load events..
+             // loop throug data and add events..
         });
         Roo.log('after');
         Roo.log(this.store);
