@@ -179,7 +179,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             
             var date = this.activeDate || new Date().clearTime();
             Roo.log(date);
-            var totalRows = Math.ceil((dategetDaysInMonth() + date.getFirstDateOfMonth().getDay()) / 7);
+            var totalRows = Math.ceil((date.getDaysInMonth() + date.getFirstDateOfMonth().getDay()) / 7);
             
             var ret = []
             for (var r = 0; r < totalRows; r++) {
