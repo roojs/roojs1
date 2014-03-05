@@ -23,8 +23,6 @@ Roo.bootstrap = Roo.bootstrap || {};
 
 
 Roo.bootstrap.Component = function(config){
-    Roo.log('config');
-    Roo.log(config);
     Roo.bootstrap.Component.superclass.constructor.call(this, config);
 };
 
@@ -68,7 +66,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             return;
         }
         
-        Roo.log('run onRender'); 
+         
         
         var cfg = Roo.apply({},  this.getAutoCreate());
         cfg.id = Roo.id();
