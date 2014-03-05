@@ -14,7 +14,7 @@ Roo.example.calendar = new Roo.XComponent({
     {
         
         this.parent = {
-            el : new Roo.bootstrap.Body(),
+            el : new Roo.bootstrap.Body()
         }
         this.parent.el.layout = false;
         this.parent.el.render(document.body);
@@ -51,9 +51,36 @@ Roo.example.calendar = new Roo.XComponent({
                                             _this.popover.hide();
                                         },
                                         monthchange : function(e,date) {
-                                            Roo.log('month change');
+                                            Roo.log(_this);
+                                            Roo.log(baseURL);
                                         }
                                     }
+//                                    store : {
+//                                        xtype: 'Store',
+//                                        xns: Roo.data,
+//                                        listeners : {
+//                                            beforeload : function (_self, o){
+//                                                o.params = o.params || {};
+//                                                
+//                                            }
+//                                        },
+//                                        remoteSort : true,
+//                                        sortInfo : { direction : 'DESC', field: 'display_order' },
+//                                        proxy : {
+//                                            xtype: 'HttpProxy',
+//                                            xns: Roo.data,
+//                                            method : 'GET',
+//                                            url : baseURL + '/Roo/Category.php'
+//                                        },
+//                                        reader : {
+//                                            xtype: 'JsonReader',
+//                                            xns: Roo.data,
+//                                            id : 'id',
+//                                            root : 'data',
+//                                            totalProperty : 'total',
+//                                            fields : [{"name":"id","type":"int"},{"name":"title","type":"string"}]
+//                                        }
+//                                    }
                                  }
                             ]
                         }
