@@ -453,7 +453,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         var totalRows = Math.ceil((date.getDaysInMonth() + date.getFirstDateOfMonth().getDay()) / 7);
         
-        var table = this.el.select('table.fc-border-separate');
+        var table = this.el.select('table.fc-border-separate').elements[0];
         
         Roo.log(table.rows);
         
