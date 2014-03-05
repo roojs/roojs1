@@ -53,7 +53,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     // private
     onRender : function(ct, position)
     {
-//        Roo.log("Call onRender: " + this.xtype);
+       // Roo.log("Call onRender: " + this.xtype);
         
         Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
         
@@ -69,7 +69,6 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
          
         
         var cfg = Roo.apply({},  this.getAutoCreate());
-        
         cfg.id = Roo.id();
         
         // fill in the extra attributes 
