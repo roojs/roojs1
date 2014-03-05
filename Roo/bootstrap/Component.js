@@ -23,6 +23,8 @@ Roo.bootstrap = Roo.bootstrap || {};
 
 
 Roo.bootstrap.Component = function(config){
+    Roo.log('config');
+    Roo.log(config);
     Roo.bootstrap.Component.superclass.constructor.call(this, config);
 };
 
