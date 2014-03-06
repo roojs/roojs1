@@ -273,12 +273,14 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         this.resize();
         this.cells = this.el.select('.fc-day',true);
         this.textNodes = this.el.query('.fc-day-number');
-        this.update(new Date().clearTime());
+        
         this.el.select('.fc-button-prev',true).on('click', this.showPrevMonth, this);
         this.el.select('.fc-button-next',true).on('click', this.showNextMonth, this);
         this.el.select('.fc-button-today',true).on('click', this.showToday, this);
         this.el.select('.fc-button',true).addClassOnOver('fc-state-hover');
         this.cells.addClassOnOver('fc-state-hover');
+        Roo.log(typeof(this.activeDate));
+//        if(typeof(this.activeDate) === 'undefind')
         
     },
     
