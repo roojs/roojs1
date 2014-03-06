@@ -596,7 +596,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             var ev = this.calevents[e];
             var cells = ev.cells;
             var rows = ev.rows;
-            var boxHeight = 0;
+            
             
             for(var i =0; i < rows.length; i++) {
                 
@@ -653,10 +653,9 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 cg.setXY([sbox.x +2, sbox.y +(ev.row * 20)]);    
                 cg.setWidth(ebox.right - sbox.x -2);
                 
-                boxHeight += cg.getHeight();
+                
             }
-            Roo.log(boxHeight);
-            cells[0].select('.fc-day-content div',true).first().setHeight(Math.max(34, boxHeight));
+            
             
         }
         
