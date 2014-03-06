@@ -60,7 +60,10 @@ Roo.example.calendar = new Roo.XComponent({
                                         xtype: 'Store',
                                         xns: Roo.data,
                                         listeners : {
-                                            
+                                            beforeload : function (_self, o){
+                                                o.params = o.params || {};
+                                                o.params._activeDate = typeof(_this.cal.activeDate) == 'string' ? _this.cal.activeDate : _this.cal.activeDate.format("Y-m-d");
+                                            }
                                         },
                                         remoteSort : true,
                                         sortInfo : { direction : 'ASC', field: 'start_dt' },
