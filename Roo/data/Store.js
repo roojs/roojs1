@@ -341,7 +341,6 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
      * </ul>
      */
     load : function(options){
-        Roo.log('run load?');
         options = options || {};
         if(this.fireEvent("beforeload", this, options) !== false){
             this.storeOptions(options);
@@ -378,10 +377,6 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
     // private
     // Called as a callback by the Reader during a load operation.
     loadRecords : function(o, options, success){
-        Roo.log('run load Records');
-        Roo.log(o);
-        Roo.log(options);
-        Roo.log(success);
         if(!o || success === false){
             if(success !== false){
                 this.fireEvent("load", this, [], options, o);
@@ -406,7 +401,6 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
         this.fireEvent("beforeloadadd", this, r, options, o);
         
         if(!options || options.add !== true){
-            Roo.log('in add');
             if(this.pruneModifiedRecords){
                 this.modified = [];
             }
@@ -423,14 +417,9 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             this.applySort();
             this.fireEvent("datachanged", this);
         }else{
-            Roo.log('else add');
             this.totalLength = Math.max(t, this.data.length+r.length);
             this.add(r);
         }
-        Roo.log(r);
-        Roo.log(this);
-        Roo.log(options);
-        Roo.log(o);
         this.fireEvent("load", this, r, options, o);
         if(options.callback){
             options.callback.call(options.scope || this, r, options, true);
