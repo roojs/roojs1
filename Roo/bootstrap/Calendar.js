@@ -591,17 +591,13 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
 //            Roo.log(c.select('.fc-day-content div',true).first(), Math.max(34, c.rows * 20));
             c.select('.fc-day-content div',true).first().setHeight(Math.max(34, c.rows * 20));
         });
-        Roo.log('cells');
-        Roo.log(this.cells);
+        
         for (var e = 0; e < this.calevents.length; e++) {
             var ev = this.calevents[e];
             var cells = ev.cells;
             var rows = ev.rows;
             var boxHeight = 0;
             
-            Roo.log('cells f');
-        Roo.log(cells);
-        
             for(var i =0; i < rows.length; i++) {
                 
                  
@@ -660,9 +656,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 boxHeight += Roo.log(cg.getHeight());
             }
             
-            cells.each(function(c) {
-                c.select('.fc-day-content div',true).first().setHeight(Math.max(34, boxHeight));
-            });
+            cells[0].select('.fc-day-content div',true).first().setHeight(Math.max(34, boxHeight));
             
         }
         
