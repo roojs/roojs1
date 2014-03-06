@@ -262,10 +262,16 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
     initEvents : function()
     {
-        return;
         if(!this.store){
-            return;
+            this.store = new Roo.data.SimpleStore({
+                'id': 0,
+                fields: ['value', 'text'],
+                data : d
+            });
+            this.valueField = 'value';
+            this.displayField = 'text';
         }
+        Roo.log(this.store);
         this.store = Roo.factory(this.store, Roo.data);
         
         this.store.on('load', this.onLoad, this);
