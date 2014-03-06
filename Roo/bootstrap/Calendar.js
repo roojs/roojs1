@@ -280,12 +280,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         this.el.select('.fc-button',true).addClassOnOver('fc-state-hover');
         this.cells.addClassOnOver('fc-state-hover');
         
-        if(typeof(this.activeDate) === 'undefined'){ // first time init...
-            this.activeDate = new Date().clearTime();
-        }
-        
-        this.update(this.activeDate);
-        
+        this.update(new Date().clearTime());
     },
     
     resize : function() {
@@ -298,17 +293,14 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
     // private
     showPrevMonth : function(e){
-//        this.activeDate = this.activeDate.add("mo", -1);
-        this.initEvents();
+        this.update(this.activeDate.add("mo", -1));
     },
     showToday : function(e){
         this.update(new Date().clearTime());
     },
     // private
     showNextMonth : function(e){
-//        this.activeDate = this.activeDate.add("mo", 1);
-        Roo.log(this.activeDate);
-        this.initEvents();
+        this.update(this.activeDate.add("mo", 1));
     },
 
     // private
@@ -325,9 +317,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
    // private
     update : function(date)
     {
-        var vd = this.prevDate;
-        this.prevDate = date;
-        
+        var vd = this.activeDate;
+        this.activeDate = date;
         if(vd && this.el){
             var t = date.getTime();
             if(vd.getMonth() == date.getMonth() && vd.getFullYear() == date.getFullYear()){
@@ -456,13 +447,9 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             this.el.select('tr.fc-week.fc-prev-last',true).addClass('fc-last');
         }
         
-        this.on('monthchange', this.onMonthChange, this);
+        this.getEvents(date);
         
         this.fireEvent('monthchange', this, date);
-        
-//        this.getEvents(date);
-        
-        
         
         
         /*
@@ -694,10 +681,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                Roo.log(d); 
             });
         }
-    },
-    
-    onMonthChange: function () {
-        Roo.log('onMonthChange');
     }
 });
 
