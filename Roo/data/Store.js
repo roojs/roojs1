@@ -382,7 +382,6 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
         Roo.log(options);
         Roo.log(success);
         if(!o || success === false){
-            Roo.log('in');
             if(success !== false){
                 this.fireEvent("load", this, [], options, o);
             }
