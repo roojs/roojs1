@@ -662,10 +662,10 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
     onLoad: function () {
         this.calevents = [];
-        Roo.log(this);
+        var cal = this;
         if(this.store.getCount() > 0){
             this.store.data.each(function(d){
-               this.addItem({
+               cal.addItem({
                     start: new Date(),
                     end : new Date().add(Date.DAY, 2),
                     title : 'test'
