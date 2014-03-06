@@ -21,7 +21,7 @@ Roo.example.calendar = new Roo.XComponent({
         
         var _this = this;
         var MODULE = this;
-        var baseURL = '/sandbox/hk.php';
+        var baseURL = '/web.eventmanager/admin.php';
         
         return {
             xtype: 'Body',
