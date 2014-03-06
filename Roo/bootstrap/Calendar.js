@@ -262,6 +262,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
     initEvents : function()
     {
+        throw "can not find store for combo";
+        
         if(!this.store){
             return;
         }
