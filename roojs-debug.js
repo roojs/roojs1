@@ -303,7 +303,6 @@ Roo.factory(conf, Roo.data);
                 return c;
             }
             if (ns[c.xtype]) {
-                Roo.log("Roo.Factory(" + c.xtype + ")");
                 if (Roo.debug) Roo.log("Roo.Factory(" + c.xtype + ")");
                 var ret = new ns[c.xtype](c);
                 ret.xns = false;
