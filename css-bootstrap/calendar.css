@@ -311,9 +311,6 @@ a.fc-event,
 	padding: 0 1px;
         overflow: hidden;
         white-space: nowrap;
-        text-overflow:ellipsis;
-       
-        width:100%;
 	}
 	
 .fc .ui-resizable-handle {
