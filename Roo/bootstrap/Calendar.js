@@ -565,6 +565,10 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
     clearEvents: function() {
         
+        if(!this.calevents){
+            return;
+        }
+        
         Roo.each(this.calevents, function(e) {
             Roo.each(e.els, function(el) {
                 el.un('mouseenter' ,this.onEventEnter, this);
