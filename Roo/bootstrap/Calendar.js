@@ -333,6 +333,10 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             }
         }
         
+        this.cells = this.el.select('.fc-day',true);
+        this.textNodes = this.el.query('.fc-day-number');
+        this.cells.addClassOnOver('fc-state-hover');
+        
         var days = date.getDaysInMonth();
         
         var firstOfMonth = date.getFirstDateOfMonth();
