@@ -501,7 +501,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             }
             ret.push(c);
         });
-        //Roo.log(ret);
+        
         return ret;    
     },
     
