@@ -324,8 +324,9 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
    // private
     update : function(date)
     {
-        var vd = this.activeDate;
-        this.activeDate = date;
+        var vd = this.prevDate;
+        this.prevDate = date;
+        
         if(vd && this.el){
             var t = date.getTime();
             if(vd.getMonth() == date.getMonth() && vd.getFullYear() == date.getFullYear()){
