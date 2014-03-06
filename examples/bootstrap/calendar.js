@@ -66,12 +66,12 @@ Roo.example.calendar = new Roo.XComponent({
                                             }
                                         },
                                         remoteSort : true,
-                                        sortInfo : { direction : 'ASC', field: 'id' },
+                                        sortInfo : { direction : 'ASC', field: 'start_dt' },
                                         proxy : {
                                             xtype: 'HttpProxy',
                                             xns: Roo.data,
                                             method : 'GET',
-                                            url : baseURL + '/Roo/Cohead.php'
+                                            url : baseURL + '/Roo/Cal_event.php'
                                         },
                                         reader : {
                                             xtype: 'JsonReader',
@@ -79,7 +79,7 @@ Roo.example.calendar = new Roo.XComponent({
                                             id : 'id',
                                             root : 'data',
                                             totalProperty : 'total',
-                                            fields : [{"name":"cohead_id","type":"int"},{"name":"cohead_number","type":"string"}]
+                                            fields : [{"name":"id","type":"int"},{"name":"title","type":"string"}]
                                         }
                                     }
                                  }
