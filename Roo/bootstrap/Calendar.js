@@ -282,12 +282,12 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         Roo.log(this.store);
         
-        Roo.log('start');
         this.store.on('load', function(data) {
             Roo.log('data here');
             Roo.log(data);
         });
-        Roo.log('end');
+        
+        this.store.fireEvent('load');
 
     },
     resize : function() {
