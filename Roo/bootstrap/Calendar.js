@@ -656,6 +656,10 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 boxHeight += Roo.log(cg.getHeight());
             }
             
+            cells.each(function(c) {
+                c.select('.fc-day-content div',true).first().setHeight(Math.max(34, boxHeight));
+            });
+            
         }
         
     },
