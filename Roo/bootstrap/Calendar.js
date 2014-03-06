@@ -656,30 +656,14 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         this.fireEvent('eventleave', this, el);
     },
     
-    getEvents: function (d) {
-        
-        this.resize();
-        this.cells = this.el.select('.fc-day',true);
-        this.textNodes = this.el.query('.fc-day-number');
-        this.cells.addClassOnOver('fc-state-hover');
-        
-        Roo.log('fire load');
-        this.store.load();
-        
-        this.calevents = [];
-        
-        
-        
-//        this.renderEvents();
-    },
-    
     onLoad: function () {
-        
+        this.calevents = [];
         if(this.store.getCount() > 0){
             this.store.data.each(function(d){
                Roo.log(d); 
             });
         }
+        this.renderEvents();
     }
 });
 
