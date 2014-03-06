@@ -597,7 +597,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             var cells = ev.cells;
             var rows = ev.rows;
             
-            
             for(var i =0; i < rows.length; i++) {
                 
                  
@@ -652,8 +651,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 //Roo.log(cg);
                 cg.setXY([sbox.x +2, sbox.y +(ev.row * 20)]);    
                 cg.setWidth(ebox.right - sbox.x -2);
-                
-                
             }
             
             
