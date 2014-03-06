@@ -675,7 +675,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     onLoad: function () {
         
             Roo.log('data here');
-            if(this.store.getCount > 0){
+            if(this.store.getCount()) > 0){
                 this.store.data.each(function(d){
                    Roo.log(d); 
                 });
