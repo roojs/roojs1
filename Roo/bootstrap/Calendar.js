@@ -283,7 +283,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         if(typeof(this.activeDate) === 'undefined'){ // first time init...
             this.activeDate = new Date().clearTime;
         }
-        
+        Roo.log(this.activeDate);
         this.update(this.activeDate);
         
     },
