@@ -667,8 +667,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             this.store.data.each(function(d){
                cal.addItem({
                     start: new Date(),
-                    end : new Date().add(Date.HOUR, 5),
-                    title : 'test'
+                    end : new Date().add(Date.H, 2),
+                    title : d.data.title
                 });
             });
         }
