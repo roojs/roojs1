@@ -302,6 +302,7 @@ Roo.factory(conf, Roo.data);
             if (c.constructor == ns[c.xtype]) {// already created...
                 return c;
             }
+            Roo.log("Roo.Factory(" + c.xtype + ")");
             if (ns[c.xtype]) {
                 if (Roo.debug) Roo.log("Roo.Factory(" + c.xtype + ")");
                 var ret = new ns[c.xtype](c);
