@@ -287,7 +287,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             Roo.log(data);
         });
         Roo.log('fire load');
-        this.store.fireEvent('load', this.store);
+        this.store.load();
 
     },
     resize : function() {
