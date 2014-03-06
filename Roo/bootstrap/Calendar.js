@@ -263,17 +263,11 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     initEvents : function()
     {
         if(!this.store){
-            this.store = new Roo.data.SimpleStore({
-                'id': 0,
-                fields: ['value', 'text'],
-                data : d
-            });
-            this.valueField = 'value';
-            this.displayField = 'text';
+            throw "can not find store for combo";
         }
         
         this.store = Roo.factory(this.store, Roo.data);
-        Roo.log(this.store);
+        
         this.store.on('load', this.onLoad, this);
         
         this.resize();
