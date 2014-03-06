@@ -679,8 +679,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 });
             });
         }
-        
-        this.renderEvents();
+        Roo.log(this.calevents);
+//        this.renderEvents();
     }
 });
 
