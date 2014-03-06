@@ -298,14 +298,16 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
     // private
     showPrevMonth : function(e){
-        this.update(this.activeDate.add("mo", -1));
+        this.activeDate = this.activeDate.add("mo", -1);
+        this.initEvents();
     },
     showToday : function(e){
         this.update(new Date().clearTime());
     },
     // private
     showNextMonth : function(e){
-        this.update(this.activeDate.add("mo", 1));
+        this.activeDate = this.activeDate.add("mo", 1);
+        this.initEvents();
     },
 
     // private
