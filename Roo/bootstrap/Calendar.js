@@ -564,12 +564,11 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     },
     
     clearEvents: function() {
+        Roo.log('run');
         Roo.each(this.calevents, function(e) {
             Roo.each(e.els, function(el) {
                 el.un('mouseenter' ,this.onEventEnter, this);
                 el.un('mouseleave' ,this.onEventLeave, this);
-                Roo.log('el');
-                Roo.log(el);
                 el.remove();
             },this);
         },this);
