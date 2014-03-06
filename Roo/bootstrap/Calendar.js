@@ -668,8 +668,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         this.clearEvents();
         
-        this.resize();
-        
         this.calevents = [];
         var cal = this;
         if(this.store.getCount() > 0){
