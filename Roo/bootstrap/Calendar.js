@@ -325,7 +325,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     update : function(date)
     {
         var vd = this.activeDate;
-        
+//        this.activeDate = date;
         if(vd && this.el){
             var t = date.getTime();
             if(vd.getMonth() == date.getMonth() && vd.getFullYear() == date.getFullYear()){
@@ -454,9 +454,13 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             this.el.select('tr.fc-week.fc-prev-last',true).addClass('fc-last');
         }
         
-        this.getEvents(date);
+        this.on('monthchange', this.onMonthChange, this);
         
         this.fireEvent('monthchange', this, date);
+        
+//        this.getEvents(date);
+        
+        
         
         
         /*
@@ -688,6 +692,10 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                Roo.log(d); 
             });
         }
+    },
+    
+    onMonthChange: function () {
+        Roo.log('onMonthChange');
     }
 });
 
