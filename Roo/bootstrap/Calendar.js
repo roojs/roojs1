@@ -267,6 +267,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         }
         this.store = Roo.factory(this.store, Roo.data);
         
+        this.store.on('load', this.onLoad());
+        
         this.resize();
         this.cells = this.el.select('.fc-day',true);
         this.textNodes = this.el.query('.fc-day-number');
@@ -277,17 +279,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         this.el.select('.fc-button',true).addClassOnOver('fc-state-hover');
         this.cells.addClassOnOver('fc-state-hover');
         
-        
-        
-        
-//        this.store.fireEvent('beforeload', this.store);
-        
-        Roo.log(this.store);
-        
-        this.store.on('load', this.onLoad());
-        
-        
-
     },
     resize : function() {
         var sz  = this.el.getSize();
