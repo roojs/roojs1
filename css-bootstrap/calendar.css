@@ -313,7 +313,7 @@ a.fc-event,
         white-space: nowrap;
         text-overflow:ellipsis;
         display:inline-block;
-        width:20000px;
+        width:100%;
 	}
 	
 .fc .ui-resizable-handle {
