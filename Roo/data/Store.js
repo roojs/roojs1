@@ -426,7 +426,10 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             this.totalLength = Math.max(t, this.data.length+r.length);
             this.add(r);
         }
-        Roo.log('OUT');
+        Roo.log(r);
+        Roo.log(this);
+        Roo.log(options);
+        Roo.log(o);
         this.fireEvent("load", this, r, options, o);
         if(options.callback){
             options.callback.call(options.scope || this, r, options, true);
