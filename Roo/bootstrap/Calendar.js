@@ -645,9 +645,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 cg.on('mouseleave' ,this.onEventLeave, this);
                 
                 ev.els.push(cg);
-                Roo.log('start');
-                Roo.log(rows[i].start);
-                Roo.log(rows[i].end);
+                
                 var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
                 var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
                 //Roo.log(cg);
