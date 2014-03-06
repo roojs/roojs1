@@ -334,7 +334,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 return;
             }
         }
-        
+        this.cells = '';
         this.cells = this.el.select('.fc-day',true);
         Roo.log('cells');
         Roo.log(this.cells);
