@@ -522,7 +522,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     {
         // look for vertical location slot in
         var cells = this.findCells(ev);
-        Roo.log(cells);
+        
         ev.row = this.findBestRow(cells);
         
         // work out the location.
@@ -550,6 +550,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             };
             
         }
+        
         rows.push(crow);
         ev.els = [];
         ev.rows = rows;
@@ -557,6 +558,10 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         for (var i = 0; i < cells.length;i++) {
             cells[i].rows = Math.max(cells[i].rows || 0 , ev.row + 1 );
             
+        }
+        
+        if(!crow){
+            return;
         }
         
         this.calevents.push(ev);
