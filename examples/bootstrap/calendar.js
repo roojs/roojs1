@@ -64,9 +64,9 @@ Roo.example.calendar = new Roo.XComponent({
                                                 Roo.log('beforeload');
                                                 Roo.log(_this);
                                                 o.params = o.params || {};
-                                                var d = new Date().format('Y-m-d');
+                                                var d = new Date().format('Y-m');
                                                 if(_this.cal){
-                                                    d = typeof(_this.cal.activeDate) == 'string' ? _this.cal.activeDate : _this.cal.activeDate.format("Y-m-d");
+                                                    d = typeof(_this.cal.activeDate) == 'string' ? _this.cal.activeDate : _this.cal.activeDate.format("Y-m");
                                                 }
                                                 o.params._activeDate = d
                                             }
