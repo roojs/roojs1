@@ -283,7 +283,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             Roo.log('data here');
             Roo.log(data);
         });
-        Roo.log('start');
+        Roo.log('end');
 
     },
     resize : function() {
