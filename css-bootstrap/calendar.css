@@ -309,6 +309,7 @@ a.fc-event,
 .fc-event-time,
 .fc-event-title {
 	padding: 0 1px;
+        white-space: nowrap;
 	}
 	
 .fc .ui-resizable-handle {
