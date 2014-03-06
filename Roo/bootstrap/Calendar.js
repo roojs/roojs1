@@ -510,8 +510,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var ret = 0;
         
         for (var i =0 ; i < cells.length;i++) {
-            Roo.log('cells row');
-            Roo.log(cells[i].rows);
             ret  = Math.max(cells[i].rows || 0,ret);
         }
         return ret;
