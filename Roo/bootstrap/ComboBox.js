@@ -252,6 +252,15 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     // private
     initEvents: function(){
         
+        this.store = new Roo.data.SimpleStore({
+                'id': 0,
+                fields: ['value', 'text'],
+                data : d
+            });
+            this.valueField = 'value';
+            this.displayField = 'text';
+        Roo.log(this.store);    
+            
         if (!this.store) {
             throw "can not find store for combo";
         }
