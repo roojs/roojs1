@@ -271,9 +271,9 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             this.valueField = 'value';
             this.displayField = 'text';
         }
-        Roo.log(this.store);
-        this.store = Roo.factory(this.store, Roo.data);
         
+        this.store = Roo.factory(this.store, Roo.data);
+        Roo.log(this.store);
         this.store.on('load', this.onLoad, this);
         
         this.resize();
