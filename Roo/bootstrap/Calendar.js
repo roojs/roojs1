@@ -661,13 +661,17 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     },
     
     onLoad: function () {
-//        this.calevents = [];
+        this.calevents = [];
         if(this.store.getCount() > 0){
             this.store.data.each(function(d){
-               Roo.log(d); 
+               this.addItem({
+                    start: new Date(),
+                    end : new Date().add(Date.DAY, 2),
+                    title : 'test'
+                });
             });
         }
-//        this.renderEvents();
+        this.renderEvents();
     }
 });
 
