@@ -568,7 +568,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         if(!this.calevents){
             return;
         }
-        
+        Roo.log(cells);
         Roo.each(this.cells, function(c){
             c.rows = 0;
         });
