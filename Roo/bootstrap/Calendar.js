@@ -666,13 +666,13 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         if(this.store.getCount() > 0){
             this.store.data.each(function(d){
                cal.addItem({
-                    start: new Date(),
-                    end : new Date().add(Date.H, 2),
+                    start: new Date(d.data.start_dt),
+                    end : new Date(d.data.end_dt),
                     title : d.data.title
                 });
             });
         }
-        Roo.log(this.calevents);
+        
         this.renderEvents();
     }
 });
