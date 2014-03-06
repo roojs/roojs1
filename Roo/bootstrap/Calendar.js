@@ -279,11 +279,11 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         this.el.select('.fc-button-today',true).on('click', this.showToday, this);
         this.el.select('.fc-button',true).addClassOnOver('fc-state-hover');
         this.cells.addClassOnOver('fc-state-hover');
-        Roo.log(new Date().clearTime);
-//        if(typeof(this.activeDate) === 'undefined'){ // first time init...
-            this.activeDate = new Date().clearTime;
-//        }
-        Roo.log(this.activeDate);
+        
+        if(typeof(this.activeDate) === 'undefined'){ // first time init...
+            this.activeDate = new Date().clearTime();
+        }
+        
         this.update(this.activeDate);
         
     },
