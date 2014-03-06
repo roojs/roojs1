@@ -656,6 +656,10 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         this.fireEvent('eventleave', this, el);
     },
     
+    onMonthChange: function () {
+        this.store.load();
+    },
+    
     onLoad: function () {
         this.calevents = [];
         if(this.store.getCount() > 0){
