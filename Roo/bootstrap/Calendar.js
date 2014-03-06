@@ -662,6 +662,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
     onLoad: function () {
         this.calevents = [];
+        
         if(this.store.getCount() > 0){
             this.store.data.each(function(d){
                this.addItem({
