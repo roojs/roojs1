@@ -281,8 +281,10 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         this.cells.addClassOnOver('fc-state-hover');
         
         if(typeof(this.activeDate) === 'undefined'){ // first time init...
-            this.update(new Date().clearTime());
+            this.activeDate = new Date().clearTime;
         }
+        
+        this.update(this.activeDate);
         
     },
     
