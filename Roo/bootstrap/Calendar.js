@@ -278,8 +278,15 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         this.store = Roo.factory(this.store, Roo.data);
         
-        this.store.on('load', this.onLoad(), this);
+//        this.store.fireEvent('beforeload', this.store);
         
+        Roo.log(this.store);
+        
+        this.store.on('load', function(data) {
+            Roo.log('data here');
+            Roo.log(data);
+        });
+        Roo.log('fire load');
         this.store.load();
 
     },
@@ -669,15 +676,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         
 //        this.renderEvents();
-    },
-    
-    onLoad: function() {
-        Roo.log('onLoad');
-        if(this.store.getCount() > 0){
-            Roo.log('get');
-        }
-        
-        
     }
 });
 
