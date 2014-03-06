@@ -325,7 +325,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     update : function(date)
     {
         var vd = this.activeDate;
-//        this.activeDate = date;
+        this.activeDate = date;
         if(vd && this.el){
             var t = date.getTime();
             if(vd.getMonth() == date.getMonth() && vd.getFullYear() == date.getFullYear()){
@@ -346,7 +346,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         }
         
         var days = date.getDaysInMonth();
-        Roo.log(days);
+        
         var firstOfMonth = date.getFirstDateOfMonth();
         var startingPos = firstOfMonth.getDay()-this.startDay;
 
