@@ -267,7 +267,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         }
         this.store = Roo.factory(this.store, Roo.data);
         
-        this.store.on('load', this.onStoreLoad(), this);
+        this.store.on('load', this.onLoad, this);
         
         this.resize();
         this.cells = this.el.select('.fc-day',true);
@@ -672,7 +672,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
 //        this.renderEvents();
     },
     
-    onStoreLoad: function () {
+    onLoad: function () {
         
             Roo.log('data here');
             if(this.store.getCount > 0){
