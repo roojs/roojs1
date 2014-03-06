@@ -61,10 +61,8 @@ Roo.example.calendar = new Roo.XComponent({
                                         xns: Roo.data,
                                         listeners : {
                                             beforeload : function (_self, o){
-                                                Roo.log('beforeload');
-                                                Roo.log(_this);
                                                 o.params = o.params || {};
-                                                //o.params._activeDate = typeof(_this.cal.activeDate) == 'string' ? _this.cal.activeDate : _this.cal.activeDate.format("Y-m-d");
+                                                o.params._activeDate = typeof(_this.cal.activeDate) == 'string' ? _this.cal.activeDate : _this.cal.activeDate.format("Y-m-d");
                                             }
                                         },
                                         remoteSort : true,
