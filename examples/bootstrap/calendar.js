@@ -61,8 +61,6 @@ Roo.example.calendar = new Roo.XComponent({
                                         xns: Roo.data,
                                         listeners : {
                                             beforeload : function (_self, o){
-                                                Roo.log('beforeload');
-                                                Roo.log(_this);
                                                 o.params = o.params || {};
                                                 var d = new Date().format('Y-m-d');
                                                 if(_this.cal){
