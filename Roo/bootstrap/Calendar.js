@@ -277,11 +277,11 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         }
         
         this.store = Roo.factory(this.store, Roo.data);
-         Roo.log(this.store);
-//        this.store.on('load', function(data) {
-//            Roo.log('data here');
-//            Roo.log(data);
-//        });
+        
+        this.store.on('load', function(data) {
+            Roo.log('data here');
+            Roo.log(data);
+        });
         
 
     },
