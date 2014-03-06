@@ -651,8 +651,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 cg.setXY([sbox.x +2, sbox.y +(ev.row * 20)]);    
                 cg.setWidth(ebox.right - sbox.x -2);
                 
-                Roo.log('ctr');
-                Roo.log(ctr.getHeight());
+                Roo.log('cg');
+                Roo.log(cg);
             }
             
         }
