@@ -27742,6 +27742,9 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 if(f){
                     f.setValue(v.value);
                     if(this.trackResetOnLoad){
+                        if(typeof(field.getValue()) == 'undefined'){
+                            Roo.log(field);
+                        }
                         f.originalValue = f.getValue();
                     }
                 }
@@ -27771,6 +27774,9 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                     
                     
                     if(this.trackResetOnLoad){
+                        if(typeof(field.getValue()) == 'undefined'){
+                            Roo.log(field);
+                        }
                         field.originalValue = field.getValue();
                     }
                 }
