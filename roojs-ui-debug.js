@@ -22277,15 +22277,24 @@ dateField.setValue('2006-5-4');
         if(v){
             this.setValue(v);
         }
-    }
+    },
 
-    /** @cfg {Boolean} grow @hide */
-    /** @cfg {Number} growMin @hide */
-    /** @cfg {Number} growMax @hide */
-    /**
-     * @hide
-     * @method autoSize
+    /*@
+     * overide
+     * 
      */
+    isDirty : function() {
+        if(this.disabled) {
+            return false;
+        }
+        
+        if(typeof(this.startValue) === 'undefined'){
+            return false;
+        }
+        
+        return String(this.getValue()) !== String(this.startValue);
+        
+    }
 });/*
  * Based on:
  * Ext JS Library 1.1.1
