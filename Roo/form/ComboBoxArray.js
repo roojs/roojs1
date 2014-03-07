@@ -427,31 +427,5 @@ Roo.extend(Roo.form.ComboBoxArray.Item, Roo.BoxComponent, {
         this.el.child('img').un('click', this.remove, this);
         this.el.remove();
         this.cb.updateHiddenEl();
-    },
-    
-    /*@
-     * overide
-     * 
-     */
-    isDirty : function() {
-        if(this.disabled) {
-            return false;
-        }
-        
-        try {
-            var d = Roo.decode(String(this.originalValue));
-        } catch (e) {
-            return String(this.getValue()) !== String(this.originalValue);
-        }
-        
-        var originalValue = [];
-        
-        for (var i = 0; i < d.length; i++){
-            originalValue.push(d[i][this.valueField]);
-        }
-        
-        return String(this.getValue()) !== String(originalValue.join(','));
-        
     }
-    
 });
