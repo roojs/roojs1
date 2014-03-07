@@ -37028,7 +37028,7 @@ side          Add an error icon to the right of the field with a popup on hover
      * Resets the current field value to the originally loaded value and clears any validation messages
      */
     reset : function(){
-        this.setValue(this.originalValue);
+        this.setValue(this.resetValue);
         this.clearInvalid();
     },
 
@@ -37042,6 +37042,7 @@ side          Add an error icon to the right of the field with a popup on hover
 
         // reference to original value for reset
         this.originalValue = this.getValue();
+        this.resetValue =  this.getValue();
     },
 
     // private
@@ -39701,7 +39702,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
     // private
     reset : function(){
         // overridden so that last data is reset..
-        this.setValue(this.originalValue);
+        this.setValue(this.resetValue);
         this.clearInvalid();
         this.lastData = false;
         if (this.view) {
