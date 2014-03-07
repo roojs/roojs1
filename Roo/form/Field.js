@@ -282,6 +282,7 @@ side          Add an error icon to the right of the field with a popup on hover
 
         // reference to original value for reset
         this.originalValue = this.getValue();
+        this.resetValue =  this.getValue();
     },
 
     // private
