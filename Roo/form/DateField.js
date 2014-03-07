@@ -342,13 +342,30 @@ dateField.setValue('2006-5-4');
         if(v){
             this.setValue(v);
         }
-    }
+    },
 
-    /** @cfg {Boolean} grow @hide */
-    /** @cfg {Number} growMin @hide */
-    /** @cfg {Number} growMax @hide */
-    /**
-     * @hide
-     * @method autoSize
+    /*@
+     * overide
+     * 
      */
+    isDirty : function() {
+//        if(this.disabled) {
+//            return false;
+//        }
+//        
+//        try {
+//            var d = Roo.decode(String(this.originalValue));
+//        } catch (e) {
+//            return String(this.getValue()) !== String(this.originalValue);
+//        }
+//        
+//        var originalValue = [];
+//        
+//        for (var i = 0; i < d.length; i++){
+//            originalValue.push(d[i][this.valueField]);
+//        }
+//        
+//        return String(this.getValue()) !== String(originalValue.join(','));
+        
+    }
 });
