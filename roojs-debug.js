@@ -40410,6 +40410,31 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
     validateValue : function(value){
         return Roo.form.ComboBoxArray.superclass.validateValue.call(this, this.getValue());
         
+    },
+    
+    /*@
+     * overide
+     * 
+     */
+    isDirty : function() {
+        if(this.disabled) {
+            return false;
+        }
+        
+        try {
+            var d = Roo.decode(String(this.originalValue));
+        } catch (e) {
+            return String(this.getValue()) !== String(this.originalValue);
+        }
+        
+        var originalValue = [];
+        
+        for (var i = 0; i < d.length; i++){
+            originalValue.push(d[i][this.valueField]);
+        }
+        
+        return String(this.getValue()) !== String(originalValue.join(','));
+        
     }
     
 });
@@ -40487,33 +40512,7 @@ Roo.extend(Roo.form.ComboBoxArray.Item, Roo.BoxComponent, {
         this.el.child('img').un('click', this.remove, this);
         this.el.remove();
         this.cb.updateHiddenEl();
-    },
-    
-    /*@
-     * overide
-     * 
-     */
-    isDirty : function() {
-        if(this.disabled) {
-            return false;
-        }
-        
-        try {
-            var d = Roo.decode(String(this.originalValue));
-        } catch (e) {
-            return String(this.getValue()) !== String(this.originalValue);
-        }
-        
-        var originalValue = [];
-        
-        for (var i = 0; i < d.length; i++){
-            originalValue.push(d[i][this.valueField]);
-        }
-        
-        return String(this.getValue()) !== String(originalValue.join(','));
-        
     }
-    
 });/*
  * Based on:
  * Ext JS Library 1.1.1
