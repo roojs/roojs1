@@ -175,7 +175,7 @@ Roo.extend(Roo.dd.DDProxy, Roo.dd.DD, {
     // By default we try to move the element to the last location of the frame.
     // This is so that the default behavior mirrors that of Roo.dd.DD.
     endDrag: function(e) {
-
+        Roo.log('in end?')
         var lel = this.getEl();
         var del = this.getDragEl();
 
