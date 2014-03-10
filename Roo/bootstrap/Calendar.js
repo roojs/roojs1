@@ -678,6 +678,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var cal = this;
         if(this.store.getCount() > 0){
             this.store.data.each(function(d){
+                Roo.log('store data');
+                Roo.log(d);
                cal.addItem({
                     start: new Date(d.data.start_dt),
                     end : new Date(d.data.end_dt),
