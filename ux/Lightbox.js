@@ -477,6 +477,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         
         ww -= 150;
         wh -= 150;
+        Roo.log(ww);
         // get new width and height
         var bs =  this.borderSize * 2;
         
