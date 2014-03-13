@@ -443,7 +443,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         // once image is preloaded, resize image container
 
         imgPreloader.on('load', function() {
-            Roo.log(this.imageArray);
+            
             this.lightboximage.dom.src = this.imageArray[this.activeImage].href || 
                 this.imageArray[this.activeImage].dom.href || this.imageArray[this.activeImage].dom.src;
             
