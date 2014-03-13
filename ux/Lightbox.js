@@ -443,7 +443,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         // once image is preloaded, resize image container
 
         imgPreloader.on('load', function() {
-            
+            Roo.log(this.imageArray);
             this.lightboximage.dom.src = this.imageArray[this.activeImage].href || 
                 this.imageArray[this.activeImage].dom.href || this.imageArray[this.activeImage].dom.src;
             
@@ -657,7 +657,6 @@ Roo.apply(Roo.ux.Lightbox.prototype,
     //  Preload previous and next images.
     //
     preloadNeighborImages: function(){
-        Roo.log('load!!');
         var preloadNextImage, preloadPrevImage;
         if (this.imageArray.length > this.activeImage + 1){
             preloadNextImage = Roo.DomHelper.append(document.body, { tag: 'img' } , true);
