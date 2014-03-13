@@ -443,10 +443,10 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         // once image is preloaded, resize image container
 
         imgPreloader.on('load', function() {
-            
+            Roo.log(this.imageArray);
             this.lightboximage.dom.src = this.imageArray[this.activeImage].href || 
-                this.imageArray[this.activeImage].dom.href;
-            Roo.log(this.lightboximage.dom.src);
+                this.imageArray[this.activeImage].dom.href || this.imageArray[this.activeImage].dom.src;
+            
             this.resizeImageContainer(imgPreloader.getWidth(), imgPreloader.getHeight());
             imgPreloader.remove();
         }, this);
