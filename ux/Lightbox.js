@@ -494,7 +494,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
                     
             
         }
-        
+        ROo.log(imgWidth);
         this.lightboximage.set( { width : imgWidth, height : imgHeight });
         
         
