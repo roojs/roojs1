@@ -447,7 +447,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
             this.lightboximage.dom.src = this.imageArray[this.activeImage].href || 
                 this.imageArray[this.activeImage].dom.href || this.imageArray[this.activeImage].dom.src;
             
-            this.resizeImageContainer(imgPreloader.getWidth(), imgPreloader.getHeight());
+            this.resizeImageContainer(this.imageArray[this.activeImage].dom.lWidth || imgPreloader.getWidth(), this.imageArray[this.activeImage].dom.lHeight || imgPreloader.getHeight());
             imgPreloader.remove();
         }, this);
         imgPreloader.dom.src = this.imageArray[this.activeImage].href || 
