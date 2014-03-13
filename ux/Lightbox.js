@@ -460,7 +460,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
     //  resizeImageContainer()
     //
     resizeImageContainer: function(imgWidth, imgHeight) {
-        Roo.log(imgWidth);
+
         // make sure we have some sensible sizes..
         imgWidth = Math.max(50, imgWidth);
         imgHeight = Math.max(50, imgHeight);
