@@ -327,8 +327,10 @@ Roo.apply(Roo.ux.Lightbox.prototype,
     updateImageList: function() {   
         this.updateImageList = Roo.emptyFn;
         if (this.imageArray.length) {
+            Roo.log('in');
             return;
         }
+        Roo.log('out');
         Roo.each(Roo.DomQuery.select('a[rel^=lightbox]'), function(e) {
             this.imageArray.push(Roo.get(e));
             Roo.get(e).on('click', (function(event, tg, tga,tgb) {
