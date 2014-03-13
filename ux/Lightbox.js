@@ -471,19 +471,18 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         
         //fixme need better calcs.
         var w = window;
-        Roo.log(w);
         var ww = w.innerWidth || (w.document.documentElement.clientWidth || w.document.body.clientWidth);
         var wh = w.innerHeight || (w.document.documentElement.clientHeight || w.document.body.clientHeight);
         
         ww -= 150;
         wh -= 150;
-        Roo.log(ww);
+        
         // get new width and height
         var bs =  this.borderSize * 2;
         
         var widthNew  =  imgWidth  + bs;
         var heightNew =  imgHeight + bs;
-        
+        Roo.log(widthNew);
         if (widthNew > ww || heightNew > wh) {
             // bigger than window.
             // scale here... - bit nasty..
