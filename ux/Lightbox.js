@@ -657,6 +657,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
     //  Preload previous and next images.
     //
     preloadNeighborImages: function(){
+        Roo.log('load!!');
         var preloadNextImage, preloadPrevImage;
         if (this.imageArray.length > this.activeImage + 1){
             preloadNextImage = Roo.DomHelper.append(document.body, { tag: 'img' } , true);
