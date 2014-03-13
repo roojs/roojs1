@@ -452,6 +452,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         }, this);
         imgPreloader.dom.src = this.imageArray[this.activeImage].href || 
             this.imageArray[this.activeImage].dom.href ||  this.imageArray[this.activeImage].dom.src;
+        Roo.log(imgPreloader.dom.src);
     },
 
     
