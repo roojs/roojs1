@@ -8165,14 +8165,14 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             textEls[i].innerHTML = (++prevStart);
             d.setDate(d.getDate()+1);
             cells[i].className = "fc-past fc-other-month";
-//            setCellClass(this, cells[i]);
+            setCellClass(this, cells[i]);
         }
         for(; i < days; i++){
             intDay = i - startingPos + 1;
             textEls[i].innerHTML = (intDay);
             d.setDate(d.getDate()+1);
             cells[i].className = ''; // "x-date-active";
-//            setCellClass(this, cells[i]);
+            setCellClass(this, cells[i]);
         }
         var extraDays = 0;
         
@@ -8180,7 +8180,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             textEls[i].innerHTML = (++extraDays);
             d.setDate(d.getDate()+1);
             cells[i].className = "fc-future fc-other-month";
-//            setCellClass(this, cells[i]);
+            setCellClass(this, cells[i]);
         }
         
         this.el.select('.fc-header-title h2',true).update(Date.monthNames[date.getMonth()] + " " + date.getFullYear());
