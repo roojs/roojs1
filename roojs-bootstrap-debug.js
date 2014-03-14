@@ -8520,7 +8520,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             if (this.style) {
                 cfg.style = this.style;
             }
-            Roo.log("adding to ")
+            Roo.log("adding to here")
             this.el = Roo.get(document.body).createChild(cfg, position);
             Roo.log(this.el);
         }
@@ -8529,7 +8529,6 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     
     initEvents : function()
     {
-        Roo.log('init Popover');
         this.el.select('.popover-title',true).setVisibilityMode(Roo.Element.DISPLAY);
         this.el.enableDisplayMode('block');
         this.el.hide();
@@ -8602,7 +8601,6 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     
     show : function (on_el)
     {
-        Roo.log('Popover show');
         if (!on_el) {
             on_el= (this.over == 'parent') ? this.parent().el : Roo.get(this.over);
         }
