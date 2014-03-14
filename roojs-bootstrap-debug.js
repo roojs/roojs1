@@ -8421,18 +8421,18 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         this.clearEvents();
 //        
         this.calevents = [];
-        var cal = this;
-        if(this.store.getCount() > 0){
-            this.store.data.each(function(d){
-               cal.addItem({
-                    start: new Date(d.data.start_dt),
-                    end : new Date(d.data.end_dt),
-                    time : d.data.start_time,
-                    title : d.data.title,
-                    description : d.data.description
-                });
-            });
-        }
+//        var cal = this;
+//        if(this.store.getCount() > 0){
+//            this.store.data.each(function(d){
+//               cal.addItem({
+//                    start: new Date(d.data.start_dt),
+//                    end : new Date(d.data.end_dt),
+//                    time : d.data.start_time,
+//                    title : d.data.title,
+//                    description : d.data.description
+//                });
+//            });
+//        }
         
         this.renderEvents();
     }
