@@ -421,6 +421,9 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         for(; i < startingPos; i++) {
             textEls[i].innerHTML = (++prevStart);
             d.setDate(d.getDate()+1);
+            if (cell.initialClassName) {
+                cell.initialClassName = cell.dom.className.replace('/fc-past|fc-other-month|fc-future/gi', '');
+            }
             cells[i].className = "fc-past fc-other-month";
             setCellClass(this, cells[i]);
         }
@@ -429,7 +432,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             textEls[i].innerHTML = (intDay);
             d.setDate(d.getDate()+1);
             if (cell.initialClassName) {
-                cell.initialClassName = cell.dom.className.replace('/fc-past/gi', '');
+                cell.initialClassName = cell.dom.className.replace('/fc-past|fc-other-month|fc-future/gi', '');
             }
             cells[i].className = ''; // "x-date-active";
             setCellClass(this, cells[i]);
