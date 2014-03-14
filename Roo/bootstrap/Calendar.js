@@ -410,7 +410,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             }
             
             if (!cell.initialClassName) {
-                Roo.log(cell);
+                Roo.log(cell.dom.className);
                 cell.initialClassName = cell.dom.className;
             }
             
