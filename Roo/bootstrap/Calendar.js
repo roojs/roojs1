@@ -682,7 +682,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                     start: new Date(d.data.start_dt),
                     end : new Date(d.data.end_dt),
                     time : d.data.start_time,
-                    title : d.data.title
+                    title : d.data.title,
+                    description : d.data.description
                 });
             });
         }
