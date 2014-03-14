@@ -428,6 +428,9 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             intDay = i - startingPos + 1;
             textEls[i].innerHTML = (intDay);
             d.setDate(d.getDate()+1);
+            if (cell.initialClassName) {
+                cell.initialClassName = cell.dom.className.replace('/fc-past/gi', '');
+            }
             cells[i].className = ''; // "x-date-active";
             setCellClass(this, cells[i]);
         }
