@@ -8014,7 +8014,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         this.resize();
         this.cells = this.el.select('.fc-day',true);
-        
+        Roo.log(this.cells);return;
         this.textNodes = this.el.query('.fc-day-number');
         this.cells.addClassOnOver('fc-state-hover');
         
@@ -8096,7 +8096,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var prevStart = pm.getDaysInMonth()-startingPos;
         
         var cells = this.cells.elements;
-        Roo.log(cells);return;
         var textEls = this.textNodes;
         days += startingPos;
 
