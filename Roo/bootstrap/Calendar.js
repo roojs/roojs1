@@ -670,7 +670,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     },
     
     onMonthChange: function () {
-        Roo.log(this.activeDate);
         this.store.load();
     },
     
