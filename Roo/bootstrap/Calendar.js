@@ -266,8 +266,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             throw "can not find store for combo";
         }
         
-        this.store = Roo.factory(this.store, Roo.data);
-        this.store.on('load', this.onLoad, this);
+//        this.store = Roo.factory(this.store, Roo.data);
+//        this.store.on('load', this.onLoad, this);
         
         this.resize();
         this.cells = this.el.select('.fc-day',true);
