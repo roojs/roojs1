@@ -8151,8 +8151,9 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                     cell.className = " fc-state-disabled";
                 }
             }
-            Roo.log(cell.dom.className);
+            
             if (!cell.initialClassName) {
+                Roo.log(cell.dom.className);
                 cell.initialClassName = cell.dom.className;
             }
             
@@ -8164,14 +8165,14 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         for(; i < startingPos; i++) {
             textEls[i].innerHTML = (++prevStart);
             d.setDate(d.getDate()+1);
-            cells[i].className = "fc-past fc-other-month";
+            cells[i].fclassName = "fc-past fc-other-month";
             setCellClass(this, cells[i]);
         }
         for(; i < days; i++){
             intDay = i - startingPos + 1;
             textEls[i].innerHTML = (intDay);
             d.setDate(d.getDate()+1);
-            cells[i].className = ''; // "x-date-active";
+            cells[i].fclassName = ''; // "x-date-active";
             setCellClass(this, cells[i]);
         }
         var extraDays = 0;
@@ -8179,7 +8180,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         for(; i < 42; i++) {
             textEls[i].innerHTML = (++extraDays);
             d.setDate(d.getDate()+1);
-            cells[i].className = "fc-future fc-other-month";
+            cells[i].fclassName = "fc-future fc-other-month";
             setCellClass(this, cells[i]);
         }
         
