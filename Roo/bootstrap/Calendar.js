@@ -268,7 +268,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         this.store = Roo.factory(this.store, Roo.data);
         this.store.on('load', this.onLoad, this);
-        
+        Roo.log(this.el);
         this.resize();
         this.cells = this.el.select('.fc-day',true);
         
