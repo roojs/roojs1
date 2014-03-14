@@ -343,14 +343,14 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         var firstOfMonth = date.getFirstDateOfMonth();
         var startingPos = firstOfMonth.getDay()-this.startDay;
-
+        
         if(startingPos < this.startDay){
             startingPos += 7;
         }
-
+        
         var pm = date.add("mo", -1);
         var prevStart = pm.getDaysInMonth()-startingPos;
-
+        
         var cells = this.cells.elements;
         var textEls = this.textNodes;
         days += startingPos;
@@ -407,13 +407,16 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                     cell.className = " fc-state-disabled";
                 }
             }
+            
             if (!cell.initialClassName) {
                 cell.initialClassName = cell.dom.className;
             }
+            
             cell.dom.className = cell.initialClassName  + ' ' +  cell.className;
         };
 
         var i = 0;
+        
         for(; i < startingPos; i++) {
             textEls[i].innerHTML = (++prevStart);
             d.setDate(d.getDate()+1);
@@ -587,7 +590,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         // first make sure there is enough space..
         
         this.cells.each(function(c) {
-//            Roo.log(c.select('.fc-day-content div',true).first(), Math.max(34, c.rows * 20));
+        
             c.select('.fc-day-content div',true).first().setHeight(Math.max(34, c.rows * 20));
         });
         
@@ -641,8 +644,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 var ctr = this.el.select('.fc-event-container',true).first();
                 var cg = ctr.createChild(cfg);
                 
-                cg.on('mouseenter' ,this.onEventEnter, this);
-                cg.on('mouseleave' ,this.onEventLeave, this);
+                cg.on('mouseenter' ,this.onEventEnter, this, ev);
+                cg.on('mouseleave' ,this.onEventLeave, this, ev);
                 
                 ev.els.push(cg);
                 
@@ -658,12 +661,12 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
     },
     
-    onEventEnter: function (e, el,c,d) {
-        this.fireEvent('evententer', this, el);
+    onEventEnter: function (e, el,event,d) {
+        this.fireEvent('evententer', this, el, event);
     },
     
-    onEventLeave: function (e, el,c,d) {
-        this.fireEvent('eventleave', this, el);
+    onEventLeave: function (e, el,event,d) {
+        this.fireEvent('eventleave', this, event);
     },
     
     onMonthChange: function () {
@@ -673,7 +676,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     onLoad: function () {
         
         this.clearEvents();
-        
+//        
         this.calevents = [];
         var cal = this;
         if(this.store.getCount() > 0){
