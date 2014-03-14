@@ -8095,7 +8095,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var pm = date.add("mo", -1);
         var prevStart = pm.getDaysInMonth()-startingPos;
         
-        var cells = this.cells.elements;
+        
         var textEls = this.textNodes;
         days += startingPos;
 
@@ -8153,8 +8153,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             }
             
             if (!cell.initialClassName) {
-                Roo.log('in');
-                Roo.log(cell);
                 cell.initialClassName = cell.dom.className;
             }
             
@@ -8166,14 +8164,14 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         for(; i < startingPos; i++) {
             textEls[i].innerHTML = (++prevStart);
             d.setDate(d.getDate()+1);
-            cells[i].fclassName = "fc-past fc-other-month";
+            cells[i].className = "fc-past fc-other-month";
             setCellClass(this, cells[i]);
         }
         for(; i < days; i++){
             intDay = i - startingPos + 1;
             textEls[i].innerHTML = (intDay);
             d.setDate(d.getDate()+1);
-            cells[i].fclassName = ''; // "x-date-active";
+            cells[i].className = ''; // "x-date-active";
             setCellClass(this, cells[i]);
         }
         var extraDays = 0;
@@ -8181,7 +8179,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         for(; i < 42; i++) {
             textEls[i].innerHTML = (++extraDays);
             d.setDate(d.getDate()+1);
-            cells[i].fclassName = "fc-future fc-other-month";
+            cells[i].className = "fc-future fc-other-month";
             setCellClass(this, cells[i]);
         }
         
