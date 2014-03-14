@@ -8095,7 +8095,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var pm = date.add("mo", -1);
         var prevStart = pm.getDaysInMonth()-startingPos;
         
-        var cells = this.cells;
+        var cells = this.cells.elements;
+        Roo.log(cells);return;
         var textEls = this.textNodes;
         days += startingPos;
 
