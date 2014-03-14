@@ -8010,11 +8010,11 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         }
         
         this.store = Roo.factory(this.store, Roo.data);
-//        this.store.on('load', this.onLoad, this);
+        this.store.on('load', this.onLoad, this);
         
         this.resize();
         this.cells = this.el.select('.fc-day',true);
-        Roo.log(this.cells);
+        
         this.textNodes = this.el.query('.fc-day-number');
         this.cells.addClassOnOver('fc-state-hover');
         
