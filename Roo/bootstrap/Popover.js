@@ -68,6 +68,14 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         
         return cfg;
     },
+    setTitle: function(str)
+    {
+        this.el.select('.popover-title',true).first().dom.innerHTML = str;
+    },
+    setContent: function(str)
+    {
+        this.el.select('.popover-content',true).first().dom.innerHTML = str;
+    },
     // as it get's added to the bottom of the page.
     onRender : function(ct, position)
     {
