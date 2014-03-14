@@ -150,7 +150,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var cal_cell = function(n) {
             return  {
                 tag: 'td',
-                cls : 'roo-dynamic fc-day fc-'+n + ' fc-widget-content', ///fc-other-month fc-past
+                cls : 'fc-day fc-'+n + ' fc-widget-content', ///fc-other-month fc-past
                 cn : [
                     {
                         cn : [
@@ -271,7 +271,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         this.resize();
         this.cells = this.el.select('.fc-day',true);
-        
+        Roo.log(this.cells);return;
         this.textNodes = this.el.query('.fc-day-number');
         this.cells.addClassOnOver('fc-state-hover');
         
