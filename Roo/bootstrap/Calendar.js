@@ -442,6 +442,9 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         for(; i < 42; i++) {
             textEls[i].innerHTML = (++extraDays);
             d.setDate(d.getDate()+1);
+            if (cell.initialClassName) {
+                cell.initialClassName = cell.dom.className.replace('/fc-past|fc-other-month|fc-future/gi', '');
+            }
             cells[i].className = "fc-future fc-other-month";
             setCellClass(this, cells[i]);
         }
