@@ -59,7 +59,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         
         if(this.el){
             if (this.el.attr('xtype')) {
-                this.el.attr('xtypex', this.el.attr('xtype'));
+//                this.el.attr('xtypex', this.el.attr('xtype'));
                 this.el.dom.removeAttribute('xtype');
                 
                 this.initEvents();
@@ -122,11 +122,11 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 Roo.log('cntr');
                 Roo.log(Roo.get(this[cntr]()));
                 
-                var echild = Roo.get(this[cntr]()).child('*[xtypex]');
+                var echild = Roo.get(this[cntr]()).child('*[xtype]');
                 Roo.log('echild');
                 Roo.log(echild);
                 
-                if (echild && echild.attr('xtypex').split('.').pop() == cn.xtype) {
+                if (echild && echild.attr('xtype').split('.').pop() == cn.xtype) {
                   //  Roo.log("found child for " + this.xtype +": " + echild.attr('xtype') );
                     cn.el = echild;
                     //echild.dom.removeAttribute('xtype');
