@@ -8175,7 +8175,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             Roo.log('cells[i].initialClassName');
             Roo.log(cells[i].initialClassName);
             if (cells[i].initialClassName) {
-                cells[i].initialClassName = cells[i].initialClassName.replace('/fc-past|fc-other-month|fc-future/gi', '');
+                cells[i].initialClassName = cells[i].initialClassName.replace('fc-past', '');
             }
             cells[i].className = ''; // "x-date-active";
             setCellClass(this, cells[i]);
