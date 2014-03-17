@@ -130,10 +130,10 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 if (echild && echild.attr('xtype').split('.').pop() == cn.xtype) {
                   //  Roo.log("found child for " + this.xtype +": " + echild.attr('xtype') );
                     cn.el = echild;
-                    Roo.log("GOT");
+                  //  Roo.log("GOT");
                     //echild.dom.removeAttribute('xtype');
                 } else {
-                    Roo.log("---");
+                    Roo.log("MISSING " + cn.xtype + " on child of " + this.el.attr('xbuilderid'));
                   // Roo.log("looking for " + cn.xtype);
                    // Roo.log("missing child for " + this.xtype);
                   //  Roo.log(this.el);
