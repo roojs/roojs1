@@ -122,11 +122,11 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 Roo.log('cntr');
                 Roo.log(Roo.get(this[cntr]()));
                 
-                var echild = Roo.get(this[cntr]()).child('*[xtype]');
+                var echild = Roo.get(this[cntr]()).child('*[xtypex]');
                 Roo.log('echild');
                 Roo.log(echild);
                 
-                if (echild && echild.attr('xtype').split('.').pop() == cn.xtype) {
+                if (echild && echild.attr('xtypex').split('.').pop() == cn.xtype) {
                   //  Roo.log("found child for " + this.xtype +": " + echild.attr('xtype') );
                     cn.el = echild;
                     //echild.dom.removeAttribute('xtype');
