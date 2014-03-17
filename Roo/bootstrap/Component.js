@@ -123,7 +123,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 //Roo.log('cntr');
                 //Roo.log(Roo.get(this[cntr]()));
                 
-                var echild = Roo.get(this[cntr]()).child('*[xtype]');
+                var echild = Roo.get(this[cntr]()).child('>*[xtype]');
                 //Roo.log('echild');
                 //Roo.log(echild);
                 
