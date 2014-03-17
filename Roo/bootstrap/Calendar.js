@@ -351,9 +351,9 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         var pm = date.add("mo", -1);
         var prevStart = pm.getDaysInMonth()-startingPos;
-        
-        var cells = this.cells.elements;
-        var textEls = this.textNodes;
+//        
+//        var cells = this.cells.elements;
+//        var textEls = this.textNodes;
         
         Roo.each(cells, function(cell){
             cell.removeClass([ 'fc-past', 'fc-other-month', 'fc-future', 'fc-state-highlight', 'fc-state-disabled']);
