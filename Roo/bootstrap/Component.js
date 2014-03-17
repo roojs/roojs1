@@ -126,7 +126,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                     Roo.log("missing child for " + this.xtype);
                     Roo.log(this.el);
                     Roo.log(cntr);
-                    Roo.log("looking for first child with xtype")
+                   
                 }
             }
             cn.render(this[cntr]());
