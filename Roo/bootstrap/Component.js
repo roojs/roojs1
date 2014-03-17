@@ -133,7 +133,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                   //  Roo.log("GOT");
                     //echild.dom.removeAttribute('xtype');
                 } else {
-                    Roo.log("MISSING");
+                    Roo.log("MISSING " + cn.xtype + " on child of " + this.el.attr('xbuilderid'));
                   // Roo.log("looking for " + cn.xtype);
                    // Roo.log("missing child for " + this.xtype);
                   //  Roo.log(this.el);
