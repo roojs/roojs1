@@ -8174,7 +8174,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             d.setDate(d.getDate()+1);
             Roo.log('cells[i].initialClassName');
             Roo.log(cells[i].initialClassName);
-            Roo.log(cell[i].dom.className);
+            Roo.log(cells[i].dom.className);
             if (cells[i].initialClassName) {
                 cells[i].initialClassName = cells[i].initialClassName.replace('/fc-past|fc-other-month|fc-future/gi', '');
             }
