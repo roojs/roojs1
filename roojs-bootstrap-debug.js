@@ -8165,6 +8165,10 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             textEls[i].innerHTML = (++prevStart);
             d.setDate(d.getDate()+1);
             
+            Roo.log('cells[i].initialClassName - ' + i);
+            Roo.log(cells[i].initialClassName);
+            Roo.log(cells[i].dom.className);
+            
             cells[i].className = "fc-past fc-other-month";
             setCellClass(this, cells[i]);
         }
@@ -8188,6 +8192,10 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         for(; i < 42; i++) {
             textEls[i].innerHTML = (++extraDays);
             d.setDate(d.getDate()+1);
+            
+            Roo.log('cells[i].initialClassName - ' + i);
+            Roo.log(cells[i].initialClassName);
+            Roo.log(cells[i].dom.className);
             
             cells[i].className = "fc-future fc-other-month";
             setCellClass(this, cells[i]);
