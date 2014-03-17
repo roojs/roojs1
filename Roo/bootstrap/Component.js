@@ -122,7 +122,11 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                     cn.el = echild;
                     //echild.dom.removeAttribute('xtype');
                 } else {
+                    
                     Roo.log("missing child for " + this.xtype);
+                    Roo.log(this);
+                    Roo.log(cntr);
+                    Roo.log("looking for first child with xtype")
                 }
             }
             cn.render(this[cntr]());
