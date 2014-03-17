@@ -119,7 +119,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             if (Roo.get(document.body).attr('xtype') == 'Roo.bootstrap.Body') {
                 
                 var echild = Roo.get(this[cntr]()).child('*[xtype]');
-                
+                Roo.log('echild');
+                Roo.log(echild);
                 
                 if (echild && echild.attr('xtype').split('.').pop() == cn.xtype) {
                   //  Roo.log("found child for " + this.xtype +": " + echild.attr('xtype') );
