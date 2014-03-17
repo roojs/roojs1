@@ -348,17 +348,19 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         if(startingPos < this.startDay){
             startingPos += 7;
         }
-        Roo.log(cells);
-        Roo.each(cells, function(cell){
-            Roo.log(cell);
-            cell.removeClass([ 'fc-past', 'fc-other-month', 'fc-future', 'fc-state-highlight', 'fc-state-disabled']);
-        });
         
         var pm = date.add("mo", -1);
         var prevStart = pm.getDaysInMonth()-startingPos;
         
         var cells = this.cells.elements;
         var textEls = this.textNodes;
+        
+        Roo.log(cells);
+        Roo.each(cells, function(cell){
+            Roo.log(cell);
+            cell.removeClass([ 'fc-past', 'fc-other-month', 'fc-future', 'fc-state-highlight', 'fc-state-disabled']);
+        });
+        
         days += startingPos;
 
         // convert everything to numbers so it's fast
