@@ -355,9 +355,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var cells = this.cells.elements;
         var textEls = this.textNodes;
         
-        Roo.log(cells);
         Roo.each(cells, function(cell){
-            Roo.log(cell);
             cell.removeClass([ 'fc-past', 'fc-other-month', 'fc-future', 'fc-state-highlight', 'fc-state-disabled']);
         });
         
