@@ -119,24 +119,27 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             // so we should check to see if body has xtype set.
             if (Roo.get(document.body).attr('xtype') == 'Roo.bootstrap.Body') {
                 
-                Roo.log('cntr');
-                Roo.log(Roo.get(this[cntr]()));
+                Roo.log(this.xtype + "=> " + cn.xtype);
+                //Roo.log('cntr');
+                //Roo.log(Roo.get(this[cntr]()));
                 
                 var echild = Roo.get(this[cntr]()).child('*[xtype]');
-                Roo.log('echild');
-                Roo.log(echild);
+                //Roo.log('echild');
+                //Roo.log(echild);
                 
                 if (echild && echild.attr('xtype').split('.').pop() == cn.xtype) {
                   //  Roo.log("found child for " + this.xtype +": " + echild.attr('xtype') );
                     cn.el = echild;
+                    Roo.log("GOT");
                     //echild.dom.removeAttribute('xtype');
                 } else {
-                   Roo.log("looking for " + cn.xtype);
-                    Roo.log("missing child for " + this.xtype);
-                    Roo.log(this.el);
-                    Roo.log(cntr);
-                     Roo.log(cn);
-                     Roo.log(this);
+                    Roo.log("---");
+                  // Roo.log("looking for " + cn.xtype);
+                   // Roo.log("missing child for " + this.xtype);
+                  //  Roo.log(this.el);
+                  //  Roo.log(cntr);
+                  //   Roo.log(cn);
+                  //   Roo.log(this);
                    
                 }
             }
