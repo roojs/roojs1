@@ -349,8 +349,9 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             startingPos += 7;
         }
         
-        foreach cell
-           cell.removeClass([ 'fc-past', 'fc-past', 'fc-past', 'fc-past', ])
+        Roo.each(cells, function(cell){
+            cell.removeClass([ 'fc-past', 'fc-other-month', 'fc-future', 'fc-state-highlight', 'fc-state-disabled']);
+        });
         
         var pm = date.add("mo", -1);
         var prevStart = pm.getDaysInMonth()-startingPos;
