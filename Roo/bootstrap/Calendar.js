@@ -348,7 +348,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         if(startingPos < this.startDay){
             startingPos += 7;
         }
-        
+        Roo.log(cells);
         Roo.each(cells, function(cell){
             Roo.log(cell);
             cell.removeClass([ 'fc-past', 'fc-other-month', 'fc-future', 'fc-state-highlight', 'fc-state-disabled']);
