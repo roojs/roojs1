@@ -118,6 +118,9 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             // so we should check to see if body has xtype set.
             if (Roo.get(document.body).attr('xtype') == 'Roo.bootstrap.Body') {
                 
+                Roo.log('cntr');
+                Roo.log(this[cntr]());
+                
                 var echild = Roo.get(this[cntr]()).child('*[xtype]');
                 Roo.log('echild');
                 Roo.log(echild);
