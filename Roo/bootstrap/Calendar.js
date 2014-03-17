@@ -430,7 +430,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             textEls[i].innerHTML = (intDay);
             d.setDate(d.getDate()+1);
             
-            Roo.log('cells[i].initialClassName');
+            Roo.log('cells[i].initialClassName' + i);
             Roo.log(cells[i].initialClassName);
             Roo.log(cells[i].dom.className);
             
