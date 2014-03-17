@@ -59,7 +59,9 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         
         if(this.el){
             if (this.el.attr('xtype')) {
+                this.el.attr('xtypex', this.el.attr('xtype'));
                 this.el.dom.removeAttribute('xtype');
+                
                 this.initEvents();
             }
             
@@ -126,7 +128,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                     Roo.log("missing child for " + this.xtype);
                     Roo.log(this.el);
                     Roo.log(cntr);
-                    Roo.log("looking for first child with xtype")
+                   
                 }
             }
             cn.render(this[cntr]());
