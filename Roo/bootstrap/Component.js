@@ -138,7 +138,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             
             // if object has flexy:if - then it may or may not be rendered.
             if (typeof(tree['flexy:if'] != 'undefined') && !cn.el) {
-                
+                // skip a flexy if element.
             } else {
             
                 cn.render(this[cntr]());
