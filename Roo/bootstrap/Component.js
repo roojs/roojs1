@@ -121,8 +121,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 
                 var echild = Roo.get(this[cntr]()).child('>*[xtype]');
                 
-                var is_js_build = !this.el.attr('xbuilderid');
-                
+                 
                 if (echild && echild.attr('xtype').split('.').pop() == cn.xtype) {
                   //  Roo.log("found child for " + this.xtype +": " + echild.attr('xtype') );
                   
