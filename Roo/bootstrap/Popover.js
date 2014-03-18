@@ -34,7 +34,6 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     
     over: 'parent',
     
-    // private
     can_build_overlaid : false,
     
     getChildContainer : function()
