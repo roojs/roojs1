@@ -702,7 +702,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         Roo.log(event);
         Roo.log('d');
         Roo.log(d);
-        this.fireEvent('click', this, event);
+        this.fireEvent('eventclick', this, event);
     },
     
     onMonthChange: function () {
