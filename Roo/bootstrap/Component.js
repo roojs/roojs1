@@ -120,8 +120,13 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 
                 var echild = Roo.get(this[cntr]()).child('>*[xtype]');
                 
+                
+                
                 if (echild && echild.attr('xtype').split('.').pop() == cn.xtype) {
                   //  Roo.log("found child for " + this.xtype +": " + echild.attr('xtype') );
+                  
+                  
+                  
                     cn.el = echild;
                   //  Roo.log("GOT");
                     //echild.dom.removeAttribute('xtype');
@@ -130,7 +135,14 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                    
                 }
             }
-            cn.render(this[cntr]());
+            
+            // if object has flexy:if - then it may or may not be rendered.
+            if (typeof(tree['flexy:if'] != 'undefined') && !cn.el) {
+                
+            } else {
+            
+                cn.render(this[cntr]());
+            }
             // then add the element..
         }
         
