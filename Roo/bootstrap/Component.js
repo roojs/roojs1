@@ -13,7 +13,7 @@ Roo.bootstrap = Roo.bootstrap || {};
  * @cfg {String} cls css class
  * @cfg {String} style any extra css
  * @cfg {Object} xattr extra attributes to add to 'element' (used by builder to store stuff.)
- 
+ * @cfg {Boolean} can_build_overlaid  True if element can be rebuild from a HTML page
  * 
  * @constructor
  * Do not use directly - it does not do anything..
