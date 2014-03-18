@@ -8438,11 +8438,11 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     },
     
     onEventLeave: function (e, el,event,d) {
-        this.fireEvent('eventleave', this, event);
+        this.fireEvent('eventleave', this, el, event);
     },
     
     onEventClick: function (e, el,event,d) {
-        this.fireEvent('eventclick', this, event);
+        this.fireEvent('eventclick', this, el, event);
     },
     
     onMonthChange: function () {
