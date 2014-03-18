@@ -46,7 +46,14 @@ Roo.bootstrap.Calendar = function(config){
 	     * @param {Calendar} this
 	     * @param {event}
 	     */
-        'eventleave': true
+        'eventleave': true,
+        /**
+	     * @event eventclick
+	     * Fires when the mouse leaves an
+	     * @param {Calendar} this
+	     * @param {event}
+	     */
+        'eventclick': true
         
     });
 
