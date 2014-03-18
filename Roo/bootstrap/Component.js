@@ -43,6 +43,9 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     
     parentId : false,
     
+    //private - used to indicate if it can be mapped from html
+    can_build_overlaid : true,
+    
     parent: function() {
         // returns the parent component..
         return Roo.ComponentMgr.get(this.parentId)
