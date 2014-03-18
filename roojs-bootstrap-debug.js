@@ -8459,6 +8459,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         if(this.store.getCount() > 0){
             this.store.data.each(function(d){
                cal.addItem({
+                    id : d.data.id,
                     start: new Date(d.data.start_dt),
                     end : new Date(d.data.end_dt),
                     time : d.data.start_time,
