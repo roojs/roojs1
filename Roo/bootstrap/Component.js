@@ -142,14 +142,14 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                     typeof(tree['flexy:foreach'] != 'undefined');
                 
             // if object has flexy:if - then it may or may not be rendered.
-            if (!is_js_build && has_flexy && !cn.el) {
+            //if (!is_js_build && has_flexy && !cn.el) {
                 // skip a flexy if element.
-            } else {
+            //} else {
             
                 // actually if flexy:foreach is found, we really want to create 
                 // multiple copies here...
                 cn.render(this[cntr]());
-            }
+           // }
             // then add the element..
         }
         
