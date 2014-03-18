@@ -8410,6 +8410,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 
                 cg.on('mouseenter' ,this.onEventEnter, this, ev);
                 cg.on('mouseleave' ,this.onEventLeave, this, ev);
+                cg.on('click', this.onEventClick, this, ev);
                 
                 ev.els.push(cg);
                 
@@ -8431,6 +8432,18 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
     onEventLeave: function (e, el,event,d) {
         this.fireEvent('eventleave', this, event);
+    },
+    
+    onEventClick: function (e, el,event,d) {
+        Roo.log('e');
+        Roo.log(e);
+        Roo.log('el');
+        Roo.log(el);
+        Roo.log('event');
+        Roo.log(event);
+        Roo.log('d');
+        Roo.log(d);
+        this.fireEvent('click', this, event);
     },
     
     onMonthChange: function () {
