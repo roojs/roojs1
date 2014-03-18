@@ -13,7 +13,7 @@ Roo.bootstrap = Roo.bootstrap || {};
  * @cfg {String} cls css class
  * @cfg {String} style any extra css
  * @cfg {Object} xattr extra attributes to add to 'element' (used by builder to store stuff.)
- 
+ * @cfg {Boolean} can_build_overlaid  True if element can be rebuild from a HTML page
  * 
  * @constructor
  * Do not use directly - it does not do anything..
@@ -42,6 +42,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     xattr : false,
     
     parentId : false,
+    
+    can_build_overlaid : true,
     
     parent: function() {
         // returns the parent component..
@@ -142,7 +144,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                     typeof(tree['flexy:foreach'] != 'undefined');
                 
             // if object has flexy:if - then it may or may not be rendered.
-            if (!is_js_build && has_flexy && !cn.el) {
+            if (!is_js_build && has_flexy && !cn.el &&  cn.can_build_overlaid) {
                 // skip a flexy if element.
                 Roo.log('skipping render');
              } else {
@@ -8528,6 +8530,9 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     trigger : 'hover', // hover
     
     over: 'parent',
+    
+     
+    can_build_overlaid : false,
     
     getChildContainer : function()
     {
