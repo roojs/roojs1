@@ -112,6 +112,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             cn.parentType = this.xtype; //??
             cn.parentId = this.id;
             
+            var is_js_build = false;
             // does the container contain child eleemnts with 'xtype' attributes.
             // that match this xtype..
             // note - when we render we create these as well..
@@ -120,7 +121,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 
                 var echild = Roo.get(this[cntr]()).child('>*[xtype]');
                 
-                
+                var is_js_build = !this.el.attr('xbuilderid');
                 
                 if (echild && echild.attr('xtype').split('.').pop() == cn.xtype) {
                   //  Roo.log("found child for " + this.xtype +": " + echild.attr('xtype') );
@@ -135,6 +136,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                    
                 }
             }
+           
+            
             var has_flexy = typeof(tree['flexy:if'] != 'undefined') ||
                     typeof(tree['flexy:foreach'] != 'undefined');
                 
