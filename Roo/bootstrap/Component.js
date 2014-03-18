@@ -142,7 +142,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                     typeof(tree['flexy:foreach'] != 'undefined');
                 
             // if object has flexy:if - then it may or may not be rendered.
-            if (has_flexy && !cn.el) {
+            if (!is_js_build && has_flexy && !cn.el) {
                 // skip a flexy if element.
             } else {
             
