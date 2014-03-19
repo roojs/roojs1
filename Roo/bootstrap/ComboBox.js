@@ -302,13 +302,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.innerList.on('mouseover', this.onViewOver, this);
         this.innerList.on('mousemove', this.onViewMove, this);
         this.innerList.setWidth(lw - this.list.getFrameWidth('lr'));
-        */
+        
         if(this.allowBlank && !this.pageSize && !this.disableClear){
             this.footer = this.list.createChild({cls:cls+'-ft'});
             this.pageTb = new Roo.Toolbar(this.footer);
            
         }
-        /*
         if(this.pageSize){
             this.footer = this.list.createChild({cls:cls+'-ft'});
             this.pageTb = new Roo.PagingToolbar(this.footer, this.store,
@@ -329,11 +328,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 }
             });
         }
-        */
         if (this.footer) {
             this.assetHeight += this.footer.getHeight();
         }
-        
+        */
             
         if(!this.tpl){
             this.tpl = '<li><a href="#">{' + this.displayField + '}</a></li>';
