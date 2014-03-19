@@ -7029,15 +7029,18 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         Roo.log('trigger click');
         
         if(this.disabled){
+            Roo.log('trigger click disabled');
             return;
         }
         if(this.isExpanded()){
+            Roo.log('trigger click isExpanded in');
             this.collapse();
             if (!this.blockFocus) {
                 this.inputEl().focus();
             }
             
         }else {
+            Roo.log('trigger click isExpanded else');
             this.hasFocus = true;
             if(this.triggerAction == 'all') {
                 this.doQuery(this.allQuery, true);
