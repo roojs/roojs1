@@ -6342,7 +6342,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.list.setWidth(lw);
         
         this.list.swallowEvent('mousewheel');
-        this.assetHeight = 0;
+        this.assetHeight = 1000;
 
         if(this.title){
             this.header = this.list.createChild({cls:cls+'-hd', html: this.title});
