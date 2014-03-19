@@ -6302,7 +6302,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      
     // private
     initEvents: function(){
-        Roo.log('combobox initEvents');
+        
         if (!this.store) {
             throw "can not find store for combo";
         }
@@ -6581,9 +6581,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
     // private
     onBeforeLoad : function(){
-        Roo.log('combo onBeforeLoad');
         if(!this.hasFocus){
-            Roo.log('combo onBeforeLoad no focus');
             return;
         }
         //this.innerList.update(this.loadingText ?
@@ -6596,9 +6594,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
     // private
     onLoad : function(){
-        Roo.log('combo onLoad');
         if(!this.hasFocus){
-            Roo.log('combo onLoad no focus');
             return;
         }
         if(this.store.getCount() > 0){
@@ -6797,7 +6793,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     // private
     onViewClick : function(doFocus)
     {
-        Roo.log('combo onViewClick');
         var index = this.view.getSelectedIndexes()[0];
         var r = this.store.getAt(index);
         if(r){
@@ -6933,17 +6928,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(q === undefined || q === null){
             q = '';
         }
-        Roo.log('doQuery, q : ' + q );
-        
         var qe = {
             query: q,
             forceAll: forceAll,
             combo: this,
             cancel:false
         };
-        Roo.log(this.fireEvent('beforequery', qe));
         if(this.fireEvent('beforequery', qe)===false || qe.cancel){
-            Roo.log('false?!');
             return false;
         }
         q = qe.query;
@@ -7033,19 +7024,15 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         Roo.log('trigger click');
         
         if(this.disabled){
-            Roo.log('trigger click disabled');
             return;
         }
-        Roo.log(this.getRawValue());
         if(this.isExpanded()){
-            Roo.log('trigger click isExpanded in');
             this.collapse();
             if (!this.blockFocus) {
                 this.inputEl().focus();
             }
             
         }else {
-            Roo.log('trigger click isExpanded else');
             this.hasFocus = true;
             if(this.triggerAction == 'all') {
                 this.doQuery(this.allQuery, true);
