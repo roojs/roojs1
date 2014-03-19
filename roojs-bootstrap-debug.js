@@ -6668,8 +6668,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             var newValue = r.data[this.displayField];
             var len = newValue.length;
             var selStart = this.getRawValue().length;
-            Roo.log('raw value : ' + this.getRawValue());
-            Roo.log(this);
+            
             if(selStart != len){
                 this.setRawValue(newValue);
                 this.selectText(selStart, newValue.length);
@@ -7036,8 +7035,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
     expand : function(){
         Roo.log('expand');
-        Roo.log(this.isExpanded());
-        Roo.log(this.hasFocus);
         if(this.isExpanded() || !this.hasFocus){
             return;
         }
