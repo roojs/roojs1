@@ -955,7 +955,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.isExpanded() || !this.hasFocus){
             return;
         }
-        Roo.log(this.list);
         this.list.alignTo(this.inputEl(), this.listAlign);
         this.list.show();
         Roo.get(document).on('mousedown', this.collapseIf, this);
