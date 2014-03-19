@@ -6340,7 +6340,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var lw = this.listWidth || Math.max(this.inputEl().getWidth(), this.minListWidth);
         this.list.setWidth(lw);
-        /*
+        
         this.list.swallowEvent('mousewheel');
         this.assetHeight = 0;
 
@@ -6353,7 +6353,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.innerList.on('mouseover', this.onViewOver, this);
         this.innerList.on('mousemove', this.onViewMove, this);
         this.innerList.setWidth(lw - this.list.getFrameWidth('lr'));
-        
+        /*
         if(this.allowBlank && !this.pageSize && !this.disableClear){
             this.footer = this.list.createChild({cls:cls+'-ft'});
             this.pageTb = new Roo.Toolbar(this.footer);
