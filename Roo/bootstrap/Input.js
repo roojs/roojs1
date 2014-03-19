@@ -446,6 +446,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     } ,
     
     onFocus : function(){
+        Roo.log('onFocus');
         if(!Roo.isOpera && this.focusClass){ // don't touch in Opera
            // this.el.addClass(this.focusClass);
         }
