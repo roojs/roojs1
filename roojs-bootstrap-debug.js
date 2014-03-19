@@ -6641,6 +6641,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             var newValue = r.data[this.displayField];
             var len = newValue.length;
             var selStart = this.getRawValue().length;
+            Roo.log('raw value : ' + this.getRawValue());
             if(selStart != len){
                 this.setRawValue(newValue);
                 this.selectText(selStart, newValue.length);
