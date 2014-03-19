@@ -3451,7 +3451,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     } ,
     
     onFocus : function(){
-        Roo.log('onFocus');
         if(!Roo.isOpera && this.focusClass){ // don't touch in Opera
            // this.el.addClass(this.focusClass);
         }
@@ -3908,7 +3907,6 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             this.trigger.setDisplayed(false);
         }
         this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
-        this.el.on("focus", this.onFocus,  this);
         //this.trigger.addClassOnOver('x-form-trigger-over');
         //this.trigger.addClassOnClick('x-form-trigger-click');
         
