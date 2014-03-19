@@ -6933,6 +6933,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(q === undefined || q === null){
             q = '';
         }
+        Roo.log('doQuery, q : ' + q );
+        
         var qe = {
             query: q,
             forceAll: forceAll,
