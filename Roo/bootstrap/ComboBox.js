@@ -455,7 +455,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.editable !== false){
             this.inputEl().on("keyup", this.onKeyUp, this);
         }
-        Roo.log('forceSelection : ' + this.forceSelection);
         if(this.forceSelection){
             this.on('blur', this.doForce, this);
         }
@@ -864,7 +863,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
     // private
     doForce : function(){
-        Roo.log('doForce');
         if(this.el.dom.value.length > 0){
             this.el.dom.value =
                 this.lastSelectionText === undefined ? '' : this.lastSelectionText;
