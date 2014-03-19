@@ -13272,6 +13272,7 @@ Roo.Resizable.Handle = function(rz, pos, disableTrackOver, transparent){
 // private
 Roo.Resizable.Handle.prototype = {
     afterResize : function(rz){
+        Roo.log('after?');
         // do nothing
     },
     // private
