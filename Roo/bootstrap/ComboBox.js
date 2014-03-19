@@ -987,6 +987,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             }
             
         }else {
+            doForce
             this.hasFocus = true;
             if(this.triggerAction == 'all') {
                 this.doQuery(this.allQuery, true);
