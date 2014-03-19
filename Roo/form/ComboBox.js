@@ -487,6 +487,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         if(this.editable !== false){
             this.el.on("keyup", this.onKeyUp, this);
         }
+        Roo.log('forceSelection : ' + this.forceSelection);
         if(this.forceSelection){
             this.on('blur', this.doForce, this);
         }
