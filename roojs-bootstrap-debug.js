@@ -6581,7 +6581,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
     // private
     onBeforeLoad : function(){
+        Roo.log('combo onBeforeLoad');
         if(!this.hasFocus){
+            Roo.log('combo onBeforeLoad no focus');
             return;
         }
         //this.innerList.update(this.loadingText ?
@@ -6594,7 +6596,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
     // private
     onLoad : function(){
+        Roo.log('combo onLoad');
         if(!this.hasFocus){
+            Roo.log('combo onLoad no focus');
             return;
         }
         if(this.store.getCount() > 0){
@@ -6793,6 +6797,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     // private
     onViewClick : function(doFocus)
     {
+        Roo.log('combo onViewClick');
         var index = this.view.getSelectedIndexes()[0];
         var r = this.store.getAt(index);
         if(r){
