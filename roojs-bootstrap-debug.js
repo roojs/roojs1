@@ -7007,6 +7007,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
     expand : function(){
         Roo.log('expand');
+        Roo.log(this.isExpanded());
+        Roo.log(this.hasFocus);
         if(this.isExpanded() || !this.hasFocus){
             return;
         }
