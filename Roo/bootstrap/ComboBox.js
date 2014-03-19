@@ -289,7 +289,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var lw = this.listWidth || Math.max(this.inputEl().getWidth(), this.minListWidth);
         this.list.setWidth(lw);
-        
+        /*
         this.list.swallowEvent('mousewheel');
         this.assetHeight = 0;
 
@@ -299,12 +299,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
 
         this.innerList = this.list.createChild({cls:cls+'-inner'});
-        Roo.log('innerList');
-        Roo.log(this.innerList);
-        this.list.on('mouseover', this.onViewOver, this);
-        this.list.on('mousemove', this.onViewMove, this);
-        this.list.setWidth(lw - this.list.getFrameWidth('lr'));
-        /*
+        this.innerList.on('mouseover', this.onViewOver, this);
+        this.innerList.on('mousemove', this.onViewMove, this);
+        this.innerList.setWidth(lw - this.list.getFrameWidth('lr'));
+        
         if(this.allowBlank && !this.pageSize && !this.disableClear){
             this.footer = this.list.createChild({cls:cls+'-ft'});
             this.pageTb = new Roo.Toolbar(this.footer);
@@ -731,12 +729,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
     // private
     onViewOver : function(e, t){
-        Roo.log('onViewOver');
         if(this.inKeyMode){ // prevent key nav and mouse over conflicts
             return;
         }
-        
-        Roo.log(t);
         var item = this.view.findItemFromChild(t);
         if(item){
             var index = this.view.indexOf(item);
