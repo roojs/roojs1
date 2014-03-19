@@ -813,7 +813,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(scrollIntoView !== false){
             var el = this.view.getNode(index);
             if(el){
-                //this.innerList.scrollChildIntoView(el, false);
+                this.list.scrollChildIntoView(el, false);
                 
             }
         }
