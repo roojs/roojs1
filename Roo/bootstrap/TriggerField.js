@@ -222,7 +222,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
 
     // private
     initEvents : function(){
-        
+        Roo.log('trigger init events');
         //this.wrap = this.el.wrap({cls: "x-form-field-wrap"});
         
         this.trigger = this.el.select('span.dropdown-toggle',true).first();
