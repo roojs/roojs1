@@ -301,9 +301,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.innerList = this.list.createChild({cls:cls+'-inner'});
         Roo.log('innerList');
         Roo.log(this.innerList);
-        this.innerList.on('mouseover', this.onViewOver, this);
-        this.innerList.on('mousemove', this.onViewMove, this);
-        this.innerList.setWidth(lw - this.list.getFrameWidth('lr'));
+        this.list.on('mouseover', this.onViewOver, this);
+        this.list.on('mousemove', this.onViewMove, this);
+        this.list.setWidth(lw - this.list.getFrameWidth('lr'));
         /*
         if(this.allowBlank && !this.pageSize && !this.disableClear){
             this.footer = this.list.createChild({cls:cls+'-ft'});
