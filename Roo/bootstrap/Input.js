@@ -507,6 +507,15 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         return v;
     },
+    
+    /**
+     * Sets the underlying DOM field's value directly, bypassing validation.  To set the value with validation see {@link #setValue}.
+     * @param {Mixed} value The value to set
+     */
+    setRawValue : function(v){
+        return this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+    },
+    
     /**
      * Sets a data value into the field and validates it.  To set the value directly without validation see {@link #setRawValue}.
      * @param {Mixed} value The value to set
