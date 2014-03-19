@@ -3451,7 +3451,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     } ,
     
     onFocus : function(){
-        Roo.log('onFocus');
         if(!Roo.isOpera && this.focusClass){ // don't touch in Opera
            // this.el.addClass(this.focusClass);
         }
@@ -3900,7 +3899,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
 
     // private
     initEvents : function(){
-        Roo.log('trigger init events');
+        
         //this.wrap = this.el.wrap({cls: "x-form-field-wrap"});
         
         this.trigger = this.el.select('span.dropdown-toggle',true).first();
@@ -3908,6 +3907,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             this.trigger.setDisplayed(false);
         }
         this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
+        this.el.on("focus", this.onFocus,  this);
         //this.trigger.addClassOnOver('x-form-trigger-over');
         //this.trigger.addClassOnClick('x-form-trigger-click');
         
