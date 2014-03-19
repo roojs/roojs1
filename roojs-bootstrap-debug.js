@@ -6302,7 +6302,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      
     // private
     initEvents: function(){
-        
+        Roo.log('combobox initEvents');
         if (!this.store) {
             throw "can not find store for combo";
         }
