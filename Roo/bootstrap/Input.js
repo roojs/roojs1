@@ -516,6 +516,23 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         return this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
     },
     
+    selectText : function(start, end){
+        var v = this.getRawValue();
+        if(v.length > 0){
+            start = start === undefined ? 0 : start;
+            end = end === undefined ? v.length : end;
+            var d = this.inputEl().dom;
+            if(d.setSelectionRange){
+                d.setSelectionRange(start, end);
+            }else if(d.createTextRange){
+                var range = d.createTextRange();
+                range.moveStart("character", start);
+                range.moveEnd("character", v.length-end);
+                range.select();
+            }
+        }
+    },
+    
     /**
      * Sets a data value into the field and validates it.  To set the value directly without validation see {@link #setRawValue}.
      * @param {Mixed} value The value to set
