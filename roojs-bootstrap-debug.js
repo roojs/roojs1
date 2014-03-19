@@ -6780,7 +6780,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
     // private
     onViewOver : function(e, t){
-        Roo.log('onViewOver');
         if(this.inKeyMode){ // prevent key nav and mouse over conflicts
             return;
         }
@@ -6860,7 +6859,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(scrollIntoView !== false){
             var el = this.view.getNode(index);
             if(el){
-                //this.innerList.scrollChildIntoView(el, false);
+                this.innerList.scrollChildIntoView(el, false);
                 
             }
         }
