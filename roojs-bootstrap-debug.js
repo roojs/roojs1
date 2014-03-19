@@ -7032,6 +7032,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             Roo.log('trigger click disabled');
             return;
         }
+        Roo.log(this.isExpanded);
         if(this.isExpanded()){
             Roo.log('trigger click isExpanded in');
             this.collapse();
