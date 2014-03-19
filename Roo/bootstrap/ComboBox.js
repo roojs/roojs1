@@ -729,7 +729,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
     // private
     onViewOver : function(e, t){
-        Roo.log('onViewOver')
+        Roo.log('onViewOver');
+        Roo.log(t);
         if(this.inKeyMode){ // prevent key nav and mouse over conflicts
             return;
         }
