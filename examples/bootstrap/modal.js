@@ -41,4 +41,6 @@ Roo.example.modal = new Roo.XComponent({
             ]
         };
     }
+    
+    _this.show();
 });
