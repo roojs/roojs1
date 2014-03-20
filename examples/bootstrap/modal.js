@@ -31,8 +31,15 @@ Roo.example.modal = new Roo.XComponent({
             id : 'test-modal',
             xtype: 'Modal',
             xns: Roo.bootstrap,
-            title : 'test'
-            
+            title : 'test',
+            items : [
+                 {
+                    xtype: 'Container',
+                    xns: Roo.bootstrap,
+                    html : 'hello world',
+                    style :  'margin-top:50px'
+                 }
+            ]
         };
     }
 });
