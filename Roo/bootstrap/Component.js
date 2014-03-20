@@ -108,7 +108,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         
         // render the element if it's not BODY.
         if (tree.xtype != 'Body') {
-            Roo.log(tree);
+            
             cn = Roo.factory(tree);
            
             cn.parentType = this.xtype; //??
@@ -139,7 +139,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 }
             }
            
-            Roo.log('in');
+            
             var has_flexy = typeof(tree['flexy:if'] != 'undefined') ||
                     typeof(tree['flexy:foreach'] != 'undefined');
                 
@@ -151,9 +151,6 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             
                 // actually if flexy:foreach is found, we really want to create 
                 // multiple copies here...
-                Roo.log(cn);
-                Roo.log(cn.render);
-                Roo.log(this[cntr]);
                 cn.render(this[cntr]());
              }
             // then add the element..
