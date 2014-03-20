@@ -246,3 +246,6 @@ Roo.util.Format = function(){
         }
     };
 }();
+Roo.util.Format.defaults = {
+    date : 'd/M/Y'
+};
