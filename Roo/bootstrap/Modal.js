@@ -42,7 +42,7 @@ Roo.bootstrap.Modal = function(config){
     this.addEvents({
         // raw events
         /**
-         * @event click
+         * @event btnclick
          * The raw click event for the entire grid.
          * @param {Roo.EventObject} e
          */
