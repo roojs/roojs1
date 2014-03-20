@@ -289,6 +289,10 @@
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.listWidth </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getWidth</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">this.minListWidth</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.list.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lw</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.list.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseover'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onViewOver</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.list.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mousemove'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onViewMove</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
         </span><span class="jsdoc-comment">/*
         this.list.swallowEvent('mousewheel');
         this.assetHeight = 0;
@@ -586,6 +590,7 @@
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">newValue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">r.data</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.displayField</span><span class="jsdoc-syntax">];
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">newValue.length</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">selStart </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getRawValue</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.length</span><span class="jsdoc-syntax">;
+            
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">selStart </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">this.setRawValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newValue</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">this.selectText</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">selStart</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">newValue.length</span><span class="jsdoc-syntax">);

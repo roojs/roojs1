@@ -4748,6 +4748,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "can_build_overlaid",
+     "type": "Boolean",
+     "desc": "True if element can be rebuild from a HTML page",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -4898,6 +4904,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "can_build_overlaid",
+     "type": "Boolean",
+     "desc": "True if element can be rebuild from a HTML page",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -5018,6 +5030,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "can_build_overlaid",
+     "type": "Boolean",
+     "desc": "True if element can be rebuild from a HTML page",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -5095,7 +5113,7 @@
      "name": "eventclick",
      "sig": "function (_self, )\n{\n\n}",
      "type": "function",
-     "desc": "Fires when the mouse leaves an"
+     "desc": "Fires when the mouse click an"
     },
     {
      "name": "evententer",
@@ -5189,6 +5207,12 @@
      "name": "xattr",
      "type": "Object",
      "desc": "extra attributes to add to 'element' (used by builder to store stuff.)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "can_build_overlaid",
+     "type": "Boolean",
+     "desc": "True if element can be rebuild from a HTML page",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -5714,6 +5738,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "can_build_overlaid",
+     "type": "Boolean",
+     "desc": "True if element can be rebuild from a HTML page",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -5912,6 +5942,12 @@
      "memberOf": ""
     },
     {
+     "name": "can_build_overlaid",
+     "type": "Boolean",
+     "desc": "True if element can be rebuild from a HTML page",
+     "memberOf": ""
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -6068,6 +6104,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "can_build_overlaid",
+     "type": "Boolean",
+     "desc": "True if element can be rebuild from a HTML page",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -6191,6 +6233,12 @@
      "name": "xattr",
      "type": "Object",
      "desc": "extra attributes to add to 'element' (used by builder to store stuff.)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "can_build_overlaid",
+     "type": "Boolean",
+     "desc": "True if element can be rebuild from a HTML page",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -6350,6 +6398,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "can_build_overlaid",
+     "type": "Boolean",
+     "desc": "True if element can be rebuild from a HTML page",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -6500,6 +6554,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "can_build_overlaid",
+     "type": "Boolean",
+     "desc": "True if element can be rebuild from a HTML page",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -6635,6 +6695,12 @@
      "name": "xattr",
      "type": "Object",
      "desc": "extra attributes to add to 'element' (used by builder to store stuff.)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "can_build_overlaid",
+     "type": "Boolean",
+     "desc": "True if element can be rebuild from a HTML page",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -6932,6 +6998,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "can_build_overlaid",
+     "type": "Boolean",
+     "desc": "True if element can be rebuild from a HTML page",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -7094,6 +7166,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "can_build_overlaid",
+     "type": "Boolean",
+     "desc": "True if element can be rebuild from a HTML page",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -7220,6 +7298,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "can_build_overlaid",
+     "type": "Boolean",
+     "desc": "True if element can be rebuild from a HTML page",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -7331,6 +7415,12 @@
      "name": "xattr",
      "type": "Object",
      "desc": "extra attributes to add to 'element' (used by builder to store stuff.)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "can_build_overlaid",
+     "type": "Boolean",
+     "desc": "True if element can be rebuild from a HTML page",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -7460,6 +7550,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "can_build_overlaid",
+     "type": "Boolean",
+     "desc": "True if element can be rebuild from a HTML page",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -7516,10 +7612,10 @@
      "desc": "Fires before the component is shown.  Return false to stop the show."
     },
     {
-     "name": "click",
+     "name": "btnclick",
      "sig": "function (e)\n{\n\n}",
      "type": "function",
-     "desc": "The raw click event for the entire grid."
+     "desc": "The raw btnclick event for the button"
     },
     {
      "name": "destroy",
@@ -7589,6 +7685,12 @@
      "name": "xattr",
      "type": "Object",
      "desc": "extra attributes to add to 'element' (used by builder to store stuff.)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "can_build_overlaid",
+     "type": "Boolean",
+     "desc": "True if element can be rebuild from a HTML page",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -7754,6 +7856,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "can_build_overlaid",
+     "type": "Boolean",
+     "desc": "True if element can be rebuild from a HTML page",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -7877,6 +7985,12 @@
      "name": "xattr",
      "type": "Object",
      "desc": "extra attributes to add to 'element' (used by builder to store stuff.)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "can_build_overlaid",
+     "type": "Boolean",
+     "desc": "True if element can be rebuild from a HTML page",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -8015,6 +8129,12 @@
      "name": "xattr",
      "type": "Object",
      "desc": "extra attributes to add to 'element' (used by builder to store stuff.)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "can_build_overlaid",
+     "type": "Boolean",
+     "desc": "True if element can be rebuild from a HTML page",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -8168,6 +8288,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "can_build_overlaid",
+     "type": "Boolean",
+     "desc": "True if element can be rebuild from a HTML page",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -8312,6 +8438,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "can_build_overlaid",
+     "type": "Boolean",
+     "desc": "True if element can be rebuild from a HTML page",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -8423,6 +8555,12 @@
      "name": "xattr",
      "type": "Object",
      "desc": "extra attributes to add to 'element' (used by builder to store stuff.)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "can_build_overlaid",
+     "type": "Boolean",
+     "desc": "True if element can be rebuild from a HTML page",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -8540,6 +8678,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "can_build_overlaid",
+     "type": "Boolean",
+     "desc": "True if element can be rebuild from a HTML page",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -8651,6 +8795,12 @@
      "name": "xattr",
      "type": "Object",
      "desc": "extra attributes to add to 'element' (used by builder to store stuff.)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "can_build_overlaid",
+     "type": "Boolean",
+     "desc": "True if element can be rebuild from a HTML page",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -8768,6 +8918,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "can_build_overlaid",
+     "type": "Boolean",
+     "desc": "True if element can be rebuild from a HTML page",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -8882,6 +9038,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "can_build_overlaid",
+     "type": "Boolean",
+     "desc": "True if element can be rebuild from a HTML page",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -8993,6 +9155,12 @@
      "name": "xattr",
      "type": "Object",
      "desc": "extra attributes to add to 'element' (used by builder to store stuff.)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "can_build_overlaid",
+     "type": "Boolean",
+     "desc": "True if element can be rebuild from a HTML page",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -9299,6 +9467,12 @@
      "name": "xattr",
      "type": "Object",
      "desc": "extra attributes to add to 'element' (used by builder to store stuff.)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "can_build_overlaid",
+     "type": "Boolean",
+     "desc": "True if element can be rebuild from a HTML page",
      "memberOf": "Roo.bootstrap.Component"
     },
     {

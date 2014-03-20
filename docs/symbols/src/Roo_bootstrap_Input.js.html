@@ -507,6 +507,32 @@
         
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
     },
+    
+    </span><span class="jsdoc-comment">/**
+     * Sets the underlying DOM field's value directly, bypassing validation.  To set the value with validation see {@link #setValue}.
+     * @param {Mixed} value The value to set
+     */
+    </span><span class="jsdoc-var">setRawValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.value </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">null </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">selectText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">end</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getRawValue</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v.length </span><span class="jsdoc-syntax">&gt; 0){
+            </span><span class="jsdoc-var">start </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">start </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">? 0 : </span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">end </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">end </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">v.length </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">end</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.setSelectionRange</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">d.setSelectionRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">end</span><span class="jsdoc-syntax">);
+            }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.createTextRange</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d.createTextRange</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">range.moveStart</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;character&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">range.moveEnd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;character&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v.length</span><span class="jsdoc-syntax">-</span><span class="jsdoc-var">end</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">range.select</span><span class="jsdoc-syntax">();
+            }
+        }
+    },
+    
     </span><span class="jsdoc-comment">/**
      * Sets a data value into the field and validates it.  To set the value directly without validation see {@link #setRawValue}.
      * @param {Mixed} value The value to set

@@ -219,7 +219,7 @@
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!(</span><span class="jsdoc-var">v </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">)){
                 </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Date.parse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">));
             }
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">v.dateFormat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">&quot;m/d/Y&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">v.dateFormat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.util.Format.defaults.date</span><span class="jsdoc-syntax">);
         },
 
         </span><span class="jsdoc-comment">/**
@@ -245,4 +245,7 @@
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">!</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.stripTagsRE</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
         }
     };
-}();</span></code></body></html>
+}();
+</span><span class="jsdoc-var">Roo.util.Format.defaults </span><span class="jsdoc-syntax">= {
+    </span><span class="jsdoc-var">date </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'d/M/Y'
+</span><span class="jsdoc-syntax">};</span></code></body></html>
