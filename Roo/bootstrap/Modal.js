@@ -202,9 +202,6 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     onButtonClick: function(btn,e)
     {
         //Roo.log([a,b,c]);
-        Roo.log('onButtonClick');
-        Roo.log(btn);
-        Roo.log(e);
         this.fireEvent('btnclick', btn.name, e);
     }
 });
