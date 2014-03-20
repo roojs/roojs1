@@ -37,7 +37,7 @@ Roo.example.modal = new Roo.XComponent({
                     xtype: 'Container',
                     xns: Roo.bootstrap,
                     html : 'hello world',
-                    style :  'margin-top:50px', 
+                    style :  'margin-top:50px'
                  }
             ]
         };
