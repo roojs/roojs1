@@ -120,7 +120,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             // note - when we render we create these as well..
             // so we should check to see if body has xtype set.
             if (Roo.get(document.body).attr('xtype') == 'Roo.bootstrap.Body') {
-                Roo.log('in');
+                
                 var self_cntr_el = Roo.get(this[cntr]());
                 var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
                 
@@ -139,7 +139,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 }
             }
            
-            
+            Roo.log('in');
             var has_flexy = typeof(tree['flexy:if'] != 'undefined') ||
                     typeof(tree['flexy:foreach'] != 'undefined');
                 
