@@ -182,7 +182,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
 	
         cn.items = nitems;
 	
-	
+	Roo.log(cn);
         return cn;
     }
     
