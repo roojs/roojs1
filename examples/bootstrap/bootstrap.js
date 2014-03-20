@@ -110,7 +110,13 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     }
                                     
                                 },
-                                
+                                {
+                                    xtype: 'Modal',
+                                    id: 'test-modal-1',
+                                    xns: Roo.bootstrap,
+                                    title : 'test1',
+                                    html: "dialog"
+                                },
                                 {
                                     xtype: 'Item',
                                     xns: Roo.bootstrap.Navbar,
