@@ -9,7 +9,7 @@ Roo.example = Roo.example || {};
 
 Roo.example.modal = new Roo.XComponent({
     part     :  ["layout","modal"],
-    order    : '001-viewpanel',
+    order    : '001-modal',
     region   : '',
     parent   : '#bootstrap',
     name     : "unnamed module",
