@@ -31,6 +31,7 @@ Roo.example.modal = new Roo.XComponent({
             xtype: 'Modal',
             xns: Roo.bootstrap,
             title : "Login",
+            buttons : Roo.bootstrap.Modal.OKCANCEL,
             items : [
                 {
                     xtype: 'Row',
