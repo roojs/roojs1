@@ -8189,11 +8189,11 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var ddays = this.disabledDays ? this.disabledDays.join("") : false;
         var ddaysText = this.disabledDaysText;
         var format = this.format;
-
+        Roo.log(today);
         var setCellClass = function(cal, cell){
             cell.title = "";
             var t = d.getTime();
-            
+            Roo.log(t);
             cell.dateValue = t;
             if(t == today){
                 cell.className += " fc-today";
