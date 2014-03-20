@@ -43,7 +43,7 @@ Roo.bootstrap.Modal = function(config){
         // raw events
         /**
          * @event btnclick
-         * The raw click event for the entire grid.
+         * The raw btnclick event for the button
          * @param {Roo.EventObject} e
          */
         "btnclick" : true
