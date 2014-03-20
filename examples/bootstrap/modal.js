@@ -17,7 +17,6 @@ Roo.example.modal = new Roo.XComponent({
     permname : '', 
     _tree : function()
     {
-        this.show();
         this.parent = {
             el : new Roo.bootstrap.Body()
         }
