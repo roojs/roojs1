@@ -31,6 +31,7 @@ Roo.example.modal = new Roo.XComponent({
         return {
             xtype: 'Modal',
             xns: Roo.bootstrap,
+            title : 'test',
             items : [
                  {
                     xtype: 'Container',
