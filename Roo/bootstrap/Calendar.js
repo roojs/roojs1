@@ -395,6 +395,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             cell.dateValue = t;
             if(t == today){
                 cell.className += " fc-today";
+                cell.className += " fc-state-highlight";
                 cell.title = cal.todayText;
             }
             if(t == sel){
