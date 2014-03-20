@@ -34,17 +34,38 @@ Roo.example.modal = new Roo.XComponent({
             buttons : Roo.bootstrap.Modal.OKCANCEL,
             items : [
                 {
-                    xtype: 'Row',
+                    xtype: 'Container',
                     xns: Roo.bootstrap,
                     items : [
                         {
-                            xtype: 'Container',
+                            xtype: 'Button',
+                            xns: Roo.bootstrap,
+                            html : 'LinkedIn'
+                        }
+                    ]
+                },
+                {
+                    xtype: 'Container',
+                    xns: Roo.bootstrap,
+                    well : 'md',
+                    style : 'margin-top:20px',
+                    items : [
+                        {
+                            xtype: 'Form',
                             xns: Roo.bootstrap,
                             items : [
                                 {
-                                    xtype: 'Button',
+                                    xtype: 'Input',
                                     xns: Roo.bootstrap,
-                                    html : 'LinkedIn'
+                                    fieldLabel : 'Email',
+                                    inputType : 'email',
+                                    vtype : 'email'
+                                },
+                                {
+                                    xtype: 'Input',
+                                    xns: Roo.bootstrap,
+                                    fieldLabel : 'Password',
+                                    inputType : 'password'
                                 }
                             ]
                         }
