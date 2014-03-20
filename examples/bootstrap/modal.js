@@ -40,6 +40,6 @@ Roo.example.modal = new Roo.XComponent({
                     style :  'margin-top:50px'
                  }
             ]
-        };
+        }.show();
     }
 });
