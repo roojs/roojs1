@@ -8200,10 +8200,9 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 cell.title = cal.todayText;
             }
             if(t == sel){
-                cell.className += " fc-state-highlight";
-                //setTimeout(function(){
-                //    try{cell.firstChild.focus();}catch(e){}
-                //}, 50);
+                // disable highlight in other month..
+                //cell.className += " fc-state-highlight";
+                
             }
             // disabling
             if(t < min) {
