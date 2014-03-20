@@ -30,14 +30,25 @@ Roo.example.modal = new Roo.XComponent({
         return {
             xtype: 'Modal',
             xns: Roo.bootstrap,
-            title : 'test',
+            title : "Login",
             items : [
-                 {
-                    xtype: 'Container',
+                {
+                    xtype: 'Row',
                     xns: Roo.bootstrap,
-                    html : 'hello world',
-                    style :  'margin-top:50px'
-                 }
+                    items : [
+                        {
+                            xtype: 'Container',
+                            xns: Roo.bootstrap,
+                            items : [
+                                {
+                                    xtype: 'Button',
+                                    xns: Roo.bootstrap,
+                                    html : 'LinkedIn'
+                                }
+                            ]
+                        }
+                    ]
+                }
             ]
         };
     }
