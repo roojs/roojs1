@@ -1234,7 +1234,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
           
     },
     getChildContainer : function() {
-         
+         Roo.log(this);
          return this.el.select('.modal-body',true).first();
         
     },
