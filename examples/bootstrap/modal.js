@@ -53,7 +53,7 @@ Roo.example.modal = new Roo.XComponent({
                             xtype: 'Img',
                             xns: Roo.bootstrap,
                             src : 'http://www.lifestylecareers.com.au/plugins/p10_mi_loginpanel/log-in-linkedin-small.png',
-                            href : '{baseURL}'
+                            href : baseURL + '/LinkedIn'
                         }
                     ]
                 },
