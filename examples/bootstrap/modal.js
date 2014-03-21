@@ -32,6 +32,11 @@ Roo.example.modal = new Roo.XComponent({
             xns: Roo.bootstrap,
             title : "Login",
             buttons : Roo.bootstrap.Modal.OKCANCEL,
+            listeners : {
+                btnclick : function (name, e) {
+                    Roo.log(name)
+                }
+            },
             items : [
                 {
                     xtype: 'Container',
@@ -53,6 +58,13 @@ Roo.example.modal = new Roo.XComponent({
                         {
                             xtype: 'Form',
                             xns: Roo.bootstrap,
+                            listeners : {
+                                actioncomplete : function (_self, action) {
+                                    if (action.type =='submit') {
+                                        _this.loginModal.hide();
+                                    }
+                                }
+                            },
                             items : [
                                 {
                                     xtype: 'Input',
