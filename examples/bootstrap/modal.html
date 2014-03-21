@@ -58,17 +58,19 @@
     <script type="text/javascript" src="../../Roo/form/VTypes.js"></script>
         
     <!-- test code -->
-    <!--<script type="text/javascript" src="modal.js"></script>-->
-    <script type="text/javascript" src="../../../web.eventmanager/Summit/templates/Blog.js"></script>
+    <script type="text/javascript" src="modal.js"></script>
   </head>
   
   <body id="body">
+      <flexy:toJavascript
+        baseURL="/web.eventmanager/demo.local.php"
+            ></flexy:toJavascript>
+  
     <script type="text/javascript">
-        var baseURL = '/web.eventmanager/demo.local.php';
       Roo.onReady(function() {
           Roo.XComponent.build();
           Roo.XComponent.on('buildcomplete', function() {
-            Login.el.show();
+            Roo.example.modal.el.show();
           });
       });
 
