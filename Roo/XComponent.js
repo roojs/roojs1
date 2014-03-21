@@ -416,6 +416,7 @@ Roo.apply(Roo.XComponent, {
             
         }
         if (this.topModule && this.topModule.modules) { 
+            Roo.log('run');
             this.topModule.modules.keySort('ASC',  cmp );
             this.topModule.modules.each(addMod);
         } 
