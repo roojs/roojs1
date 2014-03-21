@@ -39,7 +39,7 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
     imgResponsive: true,
     border: '',
     src: '',
-    href: '',
+    href: false,
 
     getAutoCreate : function(){
         
@@ -47,6 +47,21 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
             tag: 'img',
             cls: 'img-responsive',
             html : null
+        }
+        
+        if(this.href){
+            cfg = {
+                tag: 'a',
+                href: this.href,
+                cn: [
+		    {
+                        tag: 'img',
+			cls: 'img-responsive',
+                        html : null
+		    }
+		]
+            }
+            
         }
         
         cfg.html = this.html || cfg.html;
