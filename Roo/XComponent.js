@@ -433,6 +433,8 @@ Roo.apply(Roo.XComponent, {
     {
         
         this.preBuild();
+        Roo.log('this.topModule');
+        Roo.log(this.topModule);
         Roo.log('this.modules');
         Roo.log(this.modules);
         Roo.log('this.elmodules');
@@ -440,6 +442,8 @@ Roo.apply(Roo.XComponent, {
         var mods = this.buildOrder();
         Roo.log('build mods');
         Roo.log(mods);
+        Roo.log('this.topModule');
+        Roo.log(this.topModule);
         //this.allmods = mods;
         //Roo.debug && Roo.log(mods);
         //return;
