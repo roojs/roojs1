@@ -25,7 +25,7 @@ Roo.example.modal = new Roo.XComponent({
         
         var _this = this;
         var MODULE = this;
-        var baseURL = '/web.eventmanager/admin.php';
+        var baseURL = '/web.eventmanager/demo.local.php';
         
         return {
             xtype: 'Modal',
