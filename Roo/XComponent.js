@@ -131,7 +131,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
         el = el || false;
         var hp = this.parent ? 1 : 0;
         Roo.log('hp')
-        Roo.log(this.parent);
+        Roo.log(this.parent.substr(1));
         if (!el && typeof(this.parent) == 'string' && this.parent.substring(0,1) == '#') {
             // if parent is a '#.....' string, then let's use that..
             var ename = this.parent.substr(1)
