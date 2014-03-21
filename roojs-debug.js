@@ -16160,12 +16160,13 @@ Roo.apply(Roo.XComponent, {
     build : function() 
     {
         Roo.log('this');
-        Roo.log(this);
+        Roo.log(this.topModule);
         this.preBuild();
         Roo.log('this.elmodules');
         Roo.log(this.elmodules);
         var mods = this.buildOrder();
-      
+        Roo.log('mods');
+        Roo.log(mods);
         //this.allmods = mods;
         //Roo.debug && Roo.log(mods);
         //return;
