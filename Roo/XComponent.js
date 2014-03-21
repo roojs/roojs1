@@ -371,6 +371,8 @@ Roo.apply(Roo.XComponent, {
     buildOrder : function()
     {
         var _this = this;
+        Roo.log('_this');
+        Roo.log(_this);
         var cmp = function(a,b) {   
             return String(a).toUpperCase() > String(b).toUpperCase() ? 1 : -1;
         };
