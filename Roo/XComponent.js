@@ -319,10 +319,10 @@ Roo.apply(Roo.XComponent, {
     preBuild : function ()
     {
         var _t = this;
-        Roo.log(this.modules);
+        
         Roo.each(this.modules , function (obj)
         {
-            Roo.log(obj);
+            
             Roo.XComponent.event.fireEvent('beforebuild', obj);
             
             var opar = obj.parent;
@@ -332,7 +332,7 @@ Roo.apply(Roo.XComponent, {
                 Roo.log("parent:toObject failed: " + e.toString());
                 return;
             }
-            Roo.log(obj.parent);
+            
             if (!obj.parent) {
                 Roo.debug && Roo.log("GOT top level module");
                 Roo.debug && Roo.log(obj);
@@ -434,7 +434,8 @@ Roo.apply(Roo.XComponent, {
    
     build : function() 
     {
-        
+        Roo.log('this');
+        Roo.log(this);
         this.preBuild();
         Roo.log('this.elmodules');
         Roo.log(this.elmodules);
