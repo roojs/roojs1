@@ -15860,8 +15860,9 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
             var ename = this.parent.substr(1)
             this.parent = (this.parent == '#bootstrap') ? { el : true}  : false; // flags it as a top module...
             Roo.log('parent');
-            Roo.log(this.parent);return;
+            
             el = Roo.get(ename);
+            Roo.log(el);
             if (!el && !this.parent) {
                 Roo.log("Warning - element can not be found :#" + ename );
                 return;
