@@ -164,8 +164,9 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                  })
             }
         }
-        
-		if (!this.parent.el) {
+        Roo.log('xtype');
+        Roo.log(this.xtype);
+		if (!this.parent.el || this.xtype == 'Modal') {
 			// probably an old style ctor, which has been disabled.
 			return;
 			
@@ -173,24 +174,12 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
 		// The 'tree' method is  '_tree now' 
             
         var tree = this._tree ? this._tree() : this.tree();
-        
         tree.region = tree.region || this.region;
-        Roo.log('tree');
-        Roo.log(tree);
         if (this.parent.el === true) {
             // bootstrap... - body..
             this.parent.el = Roo.factory(tree);
         }
-        Roo.log('this.parent.el');
-        Roo.log(this.parent.el);return;
         this.el = this.parent.el.addxtype(tree);
-        
-        Roo.log('this.el');
-        Roo.log(this.el);
-        
-        Roo.log('this');
-        Roo.log(this);
-        
         this.fireEvent('built', this);
         
         this.panel = this.el;
