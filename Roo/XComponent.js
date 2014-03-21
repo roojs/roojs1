@@ -319,10 +319,8 @@ Roo.apply(Roo.XComponent, {
     preBuild : function ()
     {
         var _t = this;
-        
         Roo.each(this.modules , function (obj)
         {
-            
             Roo.XComponent.event.fireEvent('beforebuild', obj);
             
             var opar = obj.parent;
@@ -347,7 +345,6 @@ Roo.apply(Roo.XComponent, {
                 this.elmodules.push(obj);
                 return;
             }
-            
             if (obj.parent.constructor != Roo.XComponent) {
                 Roo.log("Warning : Object Parent is not instance of XComponent:" + obj.name)
             }
@@ -371,8 +368,6 @@ Roo.apply(Roo.XComponent, {
     buildOrder : function()
     {
         var _this = this;
-        Roo.log('_this');
-        Roo.log(_this);
         var cmp = function(a,b) {   
             return String(a).toUpperCase() > String(b).toUpperCase() ? 1 : -1;
         };
@@ -436,14 +431,10 @@ Roo.apply(Roo.XComponent, {
    
     build : function() 
     {
-        Roo.log('this');
-        Roo.log(this.topModule);
+        
         this.preBuild();
-        Roo.log('this.elmodules');
-        Roo.log(this.elmodules);
         var mods = this.buildOrder();
-        Roo.log('mods');
-        Roo.log(mods);
+      
         //this.allmods = mods;
         //Roo.debug && Roo.log(mods);
         //return;
