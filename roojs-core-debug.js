@@ -16070,7 +16070,7 @@ Roo.apply(Roo.XComponent, {
                 this.elmodules.push(obj);
                 return;
             }
-            Roo.log(obj.parent.constructor);
+            
             if (obj.parent.constructor != Roo.XComponent) {
                 Roo.log("Warning : Object Parent is not instance of XComponent:" + obj.name)
             }
@@ -16159,6 +16159,8 @@ Roo.apply(Roo.XComponent, {
     {
         
         this.preBuild();
+        Roo.log('this.elmodules');
+        Roo.log(this.elmodules);
         var mods = this.buildOrder();
       
         //this.allmods = mods;
