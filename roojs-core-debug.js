@@ -15972,7 +15972,7 @@ Roo.apply(Roo.XComponent, {
      * * @param {Object} details about module
      */
     register : function(obj) {
-		
+		Roo.log('run');
         Roo.XComponent.event.fireEvent('register', obj);
         switch(typeof(obj.disabled) ) {
                 
