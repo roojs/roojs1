@@ -105,8 +105,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     
     addxtype : function (tree, cntr, is_modal) {
         var cn = this;
-        Roo.log('run addxtype');
-        Roo.log(tree);
+        
         cntr = typeof(cntr == 'undefined' ) ? 'getChildContainer' : cntr;
         
         // render the element if it's not BODY.
@@ -118,6 +117,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             cn.parentId = this.id;
             
             var is_js_build = !Roo.select('body').first().attr('xtype');
+            Roo.log('Roo.get(document.body).attr(xtype)');
+            Roo.log(Roo.get(document.body).attr('xtype'));
             var is_modal = is_modal ? is_modal : (Roo.get(document.body).attr('xtype') == 'Roo.bootstrap.Modal');
             // does the container contain child eleemnts with 'xtype' attributes.
             // that match this xtype..
