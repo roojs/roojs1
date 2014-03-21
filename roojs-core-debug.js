@@ -16119,7 +16119,7 @@ Roo.apply(Roo.XComponent, {
         
         // add modules to their parents..
         var addMod = function(m) {
-            Roo.debug && Roo.log("build Order: add: " + m.name);
+            Roo.log("build Order: add: " + m.name);
                 
             mods.push(m);
             if (m.modules && !m.disabled) {
@@ -16139,7 +16139,6 @@ Roo.apply(Roo.XComponent, {
             
         }
         if (this.topModule && this.topModule.modules) { 
-            Roo.log('run');
             this.topModule.modules.keySort('ASC',  cmp );
             this.topModule.modules.each(addMod);
         } 
