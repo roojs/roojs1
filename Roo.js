@@ -90,7 +90,7 @@ Roo.apply = function(o, c, defaults){
          * @type Boolean
          */
         
-        debug: false,
+        debug: true,
 
         /**
          * True to automatically uncache orphaned Roo.Elements periodically (defaults to true)
