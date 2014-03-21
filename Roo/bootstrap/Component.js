@@ -164,7 +164,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         if (typeof (tree.menu) != 'undefined') {
             tree.menu.parentType = cn.xtype;
             tree.menu.triggerEl = cn.el;
-            nitems.push(cn.addxtype(Roo.apply({}, tree.menu)));
+            nitems.push(cn.addxtype(Roo.apply({}, tree.menu, is_modal)));
             
         }
         
