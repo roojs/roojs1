@@ -61,6 +61,15 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
         }
         
         return cfg;
+    },
+    
+    initEvents: function() {
+        this.el.on('click', this.onClick, this);
+       
+    },
+    onClick : function(e)
+    {
+        this.fireEvent('click', this, e);
     }
    
 });
