@@ -16156,6 +16156,8 @@ Roo.apply(Roo.XComponent, {
     {
         
         this.preBuild();
+        Roo.log('this.elmodules');
+        Roo.log(this.elmodules);
         var mods = this.buildOrder();
         Roo.log('build mods');
         Roo.log(mods);
