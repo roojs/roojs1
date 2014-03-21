@@ -458,7 +458,7 @@ Roo.apply(Roo.XComponent, {
             });
         }
         var total = mods.length;
-        
+        Roo.log(total);return;
         var _this = this;
         var progressRun = function() {
             if (!mods.length) {
