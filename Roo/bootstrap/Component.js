@@ -128,7 +128,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 
                 var self_cntr_el = Roo.get(this[cntr]());
                 var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
-                
+                Roo.log('echild');
+                Roo.log(echild);
                  
                 if (echild && echild.attr('xtype').split('.').pop() == cn.xtype) {
                   //  Roo.log("found child for " + this.xtype +": " + echild.attr('xtype') );
