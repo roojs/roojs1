@@ -39,7 +39,6 @@
 
 Roo.bootstrap.Modal = function(config){
     Roo.bootstrap.Modal.superclass.constructor.call(this, config);
-    this.el = Roo.get(document.body);
     this.addEvents({
         // raw events
         /**
