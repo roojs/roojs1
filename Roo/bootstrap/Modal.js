@@ -39,7 +39,6 @@
 
 Roo.bootstrap.Modal = function(config){
     Roo.bootstrap.Modal.superclass.constructor.call(this, config);
-    this.el = Roo.get(document.body);
     this.addEvents({
         // raw events
         /**
@@ -93,7 +92,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
         if (this.buttons) {
             Roo.each(this.buttons, function(bb) {
-                var b = Roo.apply({}, bb);
+                b = Roo.apply({}, bb);
                 b.xns = b.xns || Roo.bootstrap;
                 b.xtype = b.xtype || 'Button';
                 if (typeof(b.listeners) == 'undefined') {
