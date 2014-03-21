@@ -210,7 +210,7 @@ Roo.extend(Roo.bootstrap.Body, Roo.bootstrap.Component,  {
         cls: 'container'
     },
     onRender : function(ct, position){
-        Roo.log('run');
+        
         
         //this.el.addClass([this.fieldClass, this.cls]);
         
@@ -1110,6 +1110,7 @@ Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
 
 Roo.bootstrap.Modal = function(config){
     Roo.bootstrap.Modal.superclass.constructor.call(this, config);
+    this.el = Roo.get(document.body);
     this.addEvents({
         // raw events
         /**
