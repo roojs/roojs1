@@ -13606,7 +13606,7 @@ Roo.util.Format = function(){
             if(!(v instanceof Date)){
                 v = new Date(Date.parse(v));
             }
-            return v.dateFormat(format || "m/d/Y");
+            return v.dateFormat(format || Roo.util.Format.defaults.date);
         },
 
         /**
@@ -13632,7 +13632,10 @@ Roo.util.Format = function(){
             return !v ? v : String(v).replace(this.stripTagsRE, "");
         }
     };
-}();/*
+}();
+Roo.util.Format.defaults = {
+    date : 'd/M/Y'
+};/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -16154,7 +16157,7 @@ Roo.apply(Roo.XComponent, {
         
         this.preBuild();
         var mods = this.buildOrder();
-      
+      Roo.log(mods);
         //this.allmods = mods;
         //Roo.debug && Roo.log(mods);
         //return;
