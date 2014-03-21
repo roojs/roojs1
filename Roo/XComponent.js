@@ -392,7 +392,8 @@ Roo.apply(Roo.XComponent, {
             }
             
         });
-
+        Roo.log('mods1');
+        Roo.log(mods);
         
         // add modules to their parents..
         var addMod = function(m) {
@@ -419,6 +420,8 @@ Roo.apply(Roo.XComponent, {
             this.topModule.modules.keySort('ASC',  cmp );
             this.topModule.modules.each(addMod);
         } 
+        Roo.log('mods');
+        Roo.log(mods);
         return mods;
     },
     
