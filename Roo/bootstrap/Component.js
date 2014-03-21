@@ -178,7 +178,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         //Roo.log(items.length);
             // add the items..
         for(var i =0;i < items.length;i++) {
-            nitems.push(cn.addxtype(Roo.apply({}, items[i])));
+            nitems.push(cn.addxtype(Roo.apply({}, items[i], is_modal)));
         }
 	
         cn.items = nitems;
