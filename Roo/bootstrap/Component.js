@@ -105,8 +105,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     
     addxtype : function (tree, cntr, is_modal) {
         var cn = this;
-        Roo.log('run addxtype');
-        Roo.log(tree);
+        
         cntr = typeof(cntr == 'undefined' ) ? 'getChildContainer' : cntr;
         
         // render the element if it's not BODY.
