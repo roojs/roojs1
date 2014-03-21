@@ -58,6 +58,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
 
     onRender : function(ct, position)
     {
+        Roo.log('run');
         Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
         if(!this.el){
             var cfg = Roo.apply({},  this.getAutoCreate());
