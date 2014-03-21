@@ -39,6 +39,7 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
     imgResponsive: true,
     border: '',
     src: '',
+    href: '',
 
     getAutoCreate : function(){
         
