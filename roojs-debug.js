@@ -16167,6 +16167,7 @@ Roo.apply(Roo.XComponent, {
         var mods = this.buildOrder();
         Roo.log('build mods');
         Roo.log(mods);
+        return;
         Roo.log('this.topModule');
         Roo.log(this.topModule);
         //this.allmods = mods;
