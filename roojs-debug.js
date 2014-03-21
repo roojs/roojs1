@@ -16055,7 +16055,7 @@ Roo.apply(Roo.XComponent, {
                 Roo.log("parent:toObject failed: " + e.toString());
                 return;
             }
-            
+            Roo.log(obj.parent);
             if (!obj.parent) {
                 Roo.debug && Roo.log("GOT top level module");
                 Roo.debug && Roo.log(obj);
