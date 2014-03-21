@@ -249,7 +249,7 @@ Roo.apply(Roo.XComponent, {
      * * @param {Object} details about module
      */
     register : function(obj) {
-		Roo.log('run');
+		
         Roo.XComponent.event.fireEvent('register', obj);
         switch(typeof(obj.disabled) ) {
                 
@@ -382,8 +382,6 @@ Roo.apply(Roo.XComponent, {
 	// elmodules (is a list of DOM based modules )
         Roo.each(this.elmodules, function(e) {
             mods.push(e);
-            Roo.log('e');
-            Roo.log(e);
             if (!this.topModule &&
                 typeof(e.parent) == 'string' &&
                 e.parent.substring(0,1) == '#' &&
@@ -435,18 +433,8 @@ Roo.apply(Roo.XComponent, {
     {
         
         this.preBuild();
-        Roo.log('this.topModule');
-        Roo.log(this.topModule);
-        Roo.log('this.modules');
-        Roo.log(this.modules);
-        Roo.log('this.elmodules');
-        Roo.log(this.elmodules);
         var mods = this.buildOrder();
-        Roo.log('build mods');
-        Roo.log(mods);
-        return;
-        Roo.log('this.topModule');
-        Roo.log(this.topModule);
+      
         //this.allmods = mods;
         //Roo.debug && Roo.log(mods);
         //return;
