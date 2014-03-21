@@ -16117,7 +16117,7 @@ Roo.apply(Roo.XComponent, {
         });
         Roo.log('mods1');
         Roo.log(mods);
-        
+        return;
         // add modules to their parents..
         var addMod = function(m) {
             Roo.debug && Roo.log("build Order: add: " + m.name);
