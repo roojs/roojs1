@@ -503,7 +503,8 @@ Roo.apply(Roo.XComponent, {
             
             // now build 
             
-			
+		Roo.log('m');
+                Roo.log(m)
 			
             m.render();
             // it's 10 on top level, and 1 on others??? why...
