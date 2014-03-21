@@ -48,7 +48,18 @@ Roo.example.modal = new Roo.XComponent({
                 {
                     xtype: 'Container',
                     xns: Roo.bootstrap,
-                    html : '<script type="IN/Login"></script>'
+                    items : [
+                        {
+                            xtype: 'Img',
+                            xns: Roo.bootstrap,
+                            src : 'http://www.lifestylecareers.com.au/plugins/p10_mi_loginpanel/log-in-linkedin-small.png',
+                            listeners : {
+                                click : function (e) {
+                                    _this.loginModal.hide();
+                                }
+                            }
+                        }
+                    ]
                 },
                 {
                     xtype: 'Container',
