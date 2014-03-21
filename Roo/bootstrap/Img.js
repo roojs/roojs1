@@ -49,21 +49,6 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
             html : null
         }
         
-        if(this.href){
-            cfg = {
-                tag: 'a',
-                href: this.href,
-                cn: [
-		    {
-                        tag: 'img',
-			cls: 'img-responsive',
-                        html : null
-		    }
-		]
-            }
-            
-        }
-        
         cfg.html = this.html || cfg.html;
         
         cfg.src = this.src || cfg.src;
@@ -76,7 +61,18 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
             cfg.alt = this.alt;
         }
         
-        return cfg;
+        if(this.href){
+            var a = {
+                tag: 'a',
+                href: this.href,
+                cn: [
+		    cfg
+		]
+            }
+        }
+        
+        
+        return (this.href) ? a : cfg;
     },
     
     initEvents: function() {
