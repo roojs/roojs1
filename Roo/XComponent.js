@@ -322,6 +322,7 @@ Roo.apply(Roo.XComponent, {
         Roo.log(this.modules);
         Roo.each(this.modules , function (obj)
         {
+            Roo.log(obj);
             Roo.XComponent.event.fireEvent('beforebuild', obj);
             
             var opar = obj.parent;
