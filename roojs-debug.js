@@ -16119,7 +16119,7 @@ Roo.apply(Roo.XComponent, {
         
         // add modules to their parents..
         var addMod = function(m) {
-            Roo.log("build Order: add: " + m.name);
+            Roo.debug && Roo.log("build Order: add: " + m.name);
                 
             mods.push(m);
             if (m.modules && !m.disabled) {
@@ -16157,7 +16157,8 @@ Roo.apply(Roo.XComponent, {
         
         this.preBuild();
         var mods = this.buildOrder();
-      
+        Roo.log('build mods');
+        Roo.log(mods);
         //this.allmods = mods;
         //Roo.debug && Roo.log(mods);
         //return;
