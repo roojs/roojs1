@@ -22,6 +22,16 @@
 
 Roo.bootstrap.Img = function(config){
     Roo.bootstrap.Img.superclass.constructor.call(this, config);
+    
+    this.addEvents({
+        // img events
+        /**
+         * @event click
+         * The img click event for the img.
+         * @param {Roo.EventObject} e
+         */
+        "click" : true
+    });
 };
 
 Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
