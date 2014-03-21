@@ -62,10 +62,8 @@
   </head>
   
   <body id="body">
-      <flexy:toJavascript
-        baseURL="/web.eventmanager/demo.local.php"
-            ></flexy:toJavascript>
     <script type="text/javascript">
+        var baseURL = '/web.eventmanager/demo.local.php';
       Roo.onReady(function() {
           Roo.XComponent.build();
           Roo.XComponent.on('buildcomplete', function() {
