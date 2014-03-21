@@ -16197,7 +16197,8 @@ Roo.apply(Roo.XComponent, {
             
             var m = mods.shift();
             
-            
+            Roo.log('m');
+            Roo.log(m);
             Roo.debug && Roo.log(m);
             // not sure if this is supported any more.. - modules that are are just function
             if (typeof(m) == 'function') { 
@@ -16214,20 +16215,21 @@ Roo.apply(Roo.XComponent, {
                 Roo.MessageBox.updateProgress(  (total  - mods.length)/total, msg  );
             }
             
+            Roo.log('msg');
+            Roo.log(msg);
          
             // is the module disabled?
             var disabled = (typeof(m.disabled) == 'function') ?
                 m.disabled.call(m.module.disabled) : m.disabled;    
             
-            
+            Roo.log('disabled');
+            Roo.log(disabled);
             if (disabled) {
                 return progressRun(); // we do not update the display!
             }
             
             // now build 
             
-		Roo.log('m');
-                Roo.log(m)
 			
             m.render();
             // it's 10 on top level, and 1 on others??? why...
