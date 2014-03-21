@@ -55,7 +55,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     // private
     onRender : function(ct, position)
     {
-       // Roo.log("Call onRender: " + this.xtype);
+        Roo.log("Call onRender: " + this.xtype);
         
         Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
         
@@ -1162,7 +1162,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
         if (this.buttons) {
             Roo.each(this.buttons, function(bb) {
-                b = Roo.apply({}, bb);
+                var b = Roo.apply({}, bb);
                 b.xns = b.xns || Roo.bootstrap;
                 b.xtype = b.xtype || 'Button';
                 if (typeof(b.listeners) == 'undefined') {
