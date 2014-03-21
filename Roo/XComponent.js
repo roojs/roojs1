@@ -173,6 +173,8 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
 		// The 'tree' method is  '_tree now' 
             
         var tree = this._tree ? this._tree() : this.tree();
+        Roo.log('tree');
+        Roo.log(tree);
         tree.region = tree.region || this.region;
         if (this.parent.el === true) {
             // bootstrap... - body..
