@@ -119,6 +119,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             var is_js_build = !Roo.select('body').first().attr('xtype');
             Roo.log('Roo.get(document.body).attr(xtype)');
             Roo.log(Roo.get(document.body).attr('xtype'));
+            Roo.log(is_modal);
             var is_modal = is_modal ? is_modal : (Roo.get(document.body).attr('xtype') == 'Roo.bootstrap.Modal');
             // does the container contain child eleemnts with 'xtype' attributes.
             // that match this xtype..
@@ -128,7 +129,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 
                 var self_cntr_el = Roo.get(this[cntr]());
                 var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
-                
+                Roo.log('echild');
+                Roo.log(echild);
                  
                 if (echild && echild.attr('xtype').split('.').pop() == cn.xtype) {
                   //  Roo.log("found child for " + this.xtype +": " + echild.attr('xtype') );
