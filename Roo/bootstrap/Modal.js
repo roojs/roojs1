@@ -122,7 +122,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
          
         return {
-            cls: "modal fade",
+            cls: "modal fade roo-dynamic",
             cn : [
                 {
                     cls: "modal-dialog",
