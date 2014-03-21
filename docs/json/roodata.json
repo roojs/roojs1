@@ -6680,6 +6680,12 @@
      "memberOf": ""
     },
     {
+     "name": "href",
+     "type": "String",
+     "desc": "",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
@@ -6758,6 +6764,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before the component is shown.  Return false to stop the show."
+    },
+    {
+     "name": "click",
+     "sig": "function (e)\n{\n\n}",
+     "type": "function",
+     "desc": "The img click event for the img."
     },
     {
      "name": "destroy",
