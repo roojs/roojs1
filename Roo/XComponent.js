@@ -377,8 +377,8 @@ Roo.apply(Roo.XComponent, {
         
         // make a flat list in order of modules to build.
         var mods = this.topModule ? [ this.topModule ] : [];
-	Roo.log('this.elmodules');	
-        Roo.log(this.elmodules);
+		
+        
 	// elmodules (is a list of DOM based modules )
         Roo.each(this.elmodules, function(e) {
             mods.push(e);
@@ -392,9 +392,8 @@ Roo.apply(Roo.XComponent, {
             }
             
         });
-        Roo.log('mods1');
-        Roo.log(mods);
-        return;
+
+        
         // add modules to their parents..
         var addMod = function(m) {
             Roo.debug && Roo.log("build Order: add: " + m.name);
@@ -420,8 +419,6 @@ Roo.apply(Roo.XComponent, {
             this.topModule.modules.keySort('ASC',  cmp );
             this.topModule.modules.each(addMod);
         } 
-        Roo.log('mods');
-        Roo.log(mods);
         return mods;
     },
     
