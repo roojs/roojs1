@@ -117,6 +117,9 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             
             var is_js_build = !Roo.select('body').first().attr('xtype');
             var is_modal = is_modal ? is_modal : (this.xtype == 'Modal');
+            Roo.log('this.xtype');
+            Roo.log(this.xtype);
+            Roo.log(is_modal);
             // does the container contain child eleemnts with 'xtype' attributes.
             // that match this xtype..
             // note - when we render we create these as well..
