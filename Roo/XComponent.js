@@ -182,7 +182,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
             this.parent.el = Roo.factory(tree);
         }
         Roo.log('this.parent.el');
-        Roo.log(this.parent.el);
+        Roo.log(this.parent.el);return;
         this.el = this.parent.el.addxtype(tree);
         
         Roo.log('this.el');
