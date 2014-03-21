@@ -143,7 +143,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
             }
         }
         
-        
+        Roo.log(el);
         if (!this.parent) {
             
             el = el ? Roo.get(el) : false; 	
