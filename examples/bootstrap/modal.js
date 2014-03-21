@@ -48,7 +48,18 @@ Roo.example.modal = new Roo.XComponent({
                 {
                     xtype: 'Container',
                     xns: Roo.bootstrap,
-                    html : '<a href="https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=75o3wpchutc38g&state=edward.roojs&redirect_uri=http://localhost/web.eventmanager/demo.local.php" target="_blank"><img src="http://www.lifestylecareers.com.au/plugins/p10_mi_loginpanel/log-in-linkedin-small.png"/></a>'
+                    items : [
+                        {
+                            xtype: 'Img',
+                            xns: Roo.bootstrap,
+                            src : 'http://www.lifestylecareers.com.au/plugins/p10_mi_loginpanel/log-in-linkedin-small.png'
+                        },
+                        {
+                            xtype: 'Container',
+                            xns: Roo.bootstrap,
+                            html : '<a href="http://www.roojs.com"><img src="http://www.lifestylecareers.com.au/plugins/p10_mi_loginpanel/log-in-linkedin-small.png"/></a>'
+                        }
+                    ]
                 },
                 {
                     xtype: 'Container',
