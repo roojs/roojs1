@@ -102,7 +102,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         return this.el;
     },
     
-    addxtype : function (tree, cntr) {
+    addxtype : function (tree, cntr, is_modal) {
         var cn = this;
         cntr = typeof(cntr == 'undefined' ) ? 'getChildContainer' : cntr;
         
@@ -115,11 +115,12 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             cn.parentId = this.id;
             
             var is_js_build = !Roo.select('body').first().attr('xtype');
+            var is_modal = is_modal ? is_modal : (Roo.get(document.body).attr('xtype') == 'Roo.bootstrap.Modal');
             // does the container contain child eleemnts with 'xtype' attributes.
             // that match this xtype..
             // note - when we render we create these as well..
             // so we should check to see if body has xtype set.
-            if (Roo.get(document.body).attr('xtype') == 'Roo.bootstrap.Body') {
+            if (!is_modal && Roo.get(document.body).attr('xtype') == 'Roo.bootstrap.Body') {
                 
                 var self_cntr_el = Roo.get(this[cntr]());
                 var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
@@ -144,7 +145,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                     typeof(tree['flexy:foreach'] != 'undefined');
                 
             // if object has flexy:if - then it may or may not be rendered.
-            if (!is_js_build && has_flexy && !cn.el &&  cn.can_build_overlaid) {
+            if (!is_modal && !is_js_build && has_flexy && !cn.el &&  cn.can_build_overlaid) {
                 // skip a flexy if element.
                 Roo.log('skipping render');
              } else {
@@ -163,7 +164,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         if (typeof (tree.menu) != 'undefined') {
             tree.menu.parentType = cn.xtype;
             tree.menu.triggerEl = cn.el;
-            nitems.push(cn.addxtype(Roo.apply({}, tree.menu)));
+            nitems.push(cn.addxtype(Roo.apply({}, tree.menu, is_modal)));
             
         }
         
@@ -177,7 +178,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         //Roo.log(items.length);
             // add the items..
         for(var i =0;i < items.length;i++) {
-            nitems.push(cn.addxtype(Roo.apply({}, items[i])));
+            nitems.push(cn.addxtype(Roo.apply({}, items[i], is_modal)));
         }
 	
         cn.items = nitems;
@@ -741,7 +742,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
  * @cfg {String} border rounded | circle | thumbnail
  * @cfg {String} src image source
  * @cfg {String} alt image alternative text
- * @cfg {String} href
+ * @cfg {String} href a tag href
  * 
  * @constructor
  * Create a new Input
