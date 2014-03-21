@@ -108,7 +108,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         cntr = typeof(cntr == 'undefined' ) ? 'getChildContainer' : cntr;
         
         // render the element if it's not BODY.
-        if (tree.xtype != 'Body' || tree.xtype != 'Modal') {
+        if (tree.xtype != 'Body') {
             
             cn = Roo.factory(tree);
            
