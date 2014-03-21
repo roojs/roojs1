@@ -749,6 +749,16 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
 
 Roo.bootstrap.Img = function(config){
     Roo.bootstrap.Img.superclass.constructor.call(this, config);
+    
+    this.addEvents({
+        // img events
+        /**
+         * @event click
+         * The img click event for the img.
+         * @param {Roo.EventObject} e
+         */
+        "click" : true
+    });
 };
 
 Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
@@ -756,10 +766,11 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
     imgResponsive: true,
     border: '',
     src: '',
+    href: false,
 
     getAutoCreate : function(){
         
-        cfg = {
+        var cfg = {
             tag: 'img',
             cls: 'img-responsive',
             html : null
@@ -777,7 +788,31 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
             cfg.alt = this.alt;
         }
         
-        return cfg;
+        if(this.href){
+            var a = {
+                tag: 'a',
+                href: this.href,
+                cn: [
+		    cfg
+		]
+            }
+        }
+        
+        
+        return (this.href) ? a : cfg;
+    },
+    
+    initEvents: function() {
+        
+        if(!this.href){
+            this.el.on('click', this.onClick, this);
+        }
+    },
+    
+    onClick : function(e)
+    {
+        Roo.log('img onclick');
+        this.fireEvent('click', this, e);
     }
    
 });
@@ -1074,8 +1109,8 @@ Roo.bootstrap.Modal = function(config){
     this.addEvents({
         // raw events
         /**
-         * @event click
-         * The raw click event for the entire grid.
+         * @event btnclick
+         * The raw btnclick event for the button
          * @param {Roo.EventObject} e
          */
         "btnclick" : true
