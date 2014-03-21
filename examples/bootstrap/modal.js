@@ -34,20 +34,21 @@ Roo.example.modal = new Roo.XComponent({
             buttons : Roo.bootstrap.Modal.OKCANCEL,
             listeners : {
                 btnclick : function (name, e) {
-                    Roo.log(name)
+                    if(name == 'cancel'){
+                        _this.loginModal.hide();
+                    }
+                    
+                    Roo.log(name);
+                },
+                render : function (_self) {
+                    _this.loginModal = _self;
                 }
             },
             items : [
                 {
                     xtype: 'Container',
                     xns: Roo.bootstrap,
-                    items : [
-                        {
-                            xtype: 'Button',
-                            xns: Roo.bootstrap,
-                            html : 'LinkedIn'
-                        }
-                    ]
+                    html : '<a href="https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=75o3wpchutc38g&state=edward.roojs&redirect_uri=http://localhost/web.eventmanager/demo.local.php"><img src="http://www.lifestylecareers.com.au/plugins/p10_mi_loginpanel/log-in-linkedin-small.png"/></a>'
                 },
                 {
                     xtype: 'Container',
