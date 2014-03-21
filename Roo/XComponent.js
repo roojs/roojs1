@@ -442,7 +442,8 @@ Roo.apply(Roo.XComponent, {
         Roo.log('this.elmodules');
         Roo.log(this.elmodules);
         var mods = this.buildOrder();
-      
+        Roo.log('mods');
+        Roo.log(mods);
         //this.allmods = mods;
         //Roo.debug && Roo.log(mods);
         //return;
