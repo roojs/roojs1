@@ -15,7 +15,7 @@ Roo.extend(Roo.bootstrap.Body, Roo.bootstrap.Component,  {
         cls: 'container'
     },
     onRender : function(ct, position){
-        Roo.log('run');
+        
         
         //this.el.addClass([this.fieldClass, this.cls]);
         
