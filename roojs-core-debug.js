@@ -15888,7 +15888,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
             }
         }
         Roo.log('xtype');
-        Roo.log(this.xtype);
+        Roo.log(this);
 		if (!this.parent.el || this.xtype == 'Modal') {
 			// probably an old style ctor, which has been disabled.
 			return;
