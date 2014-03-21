@@ -434,7 +434,8 @@ Roo.apply(Roo.XComponent, {
         
         this.preBuild();
         var mods = this.buildOrder();
-      
+        Roo.log('build mods');
+        Roo.log(mods);
         //this.allmods = mods;
         //Roo.debug && Roo.log(mods);
         //return;
