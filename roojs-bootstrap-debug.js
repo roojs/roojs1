@@ -741,7 +741,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
  * @cfg {String} border rounded | circle | thumbnail
  * @cfg {String} src image source
  * @cfg {String} alt image alternative text
- * @cfg {String} href a href
+ * @cfg {String} a tag href
  * 
  * @constructor
  * Create a new Input
