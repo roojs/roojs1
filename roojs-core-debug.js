@@ -16181,7 +16181,7 @@ Roo.apply(Roo.XComponent, {
             });
         }
         var total = mods.length;
-        Roo.log(total);return;
+        
         var _this = this;
         var progressRun = function() {
             if (!mods.length) {
@@ -16226,7 +16226,8 @@ Roo.apply(Roo.XComponent, {
             
             // now build 
             
-			
+		Roo.log('m');
+                Roo.log(m)
 			
             m.render();
             // it's 10 on top level, and 1 on others??? why...
