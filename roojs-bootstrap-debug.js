@@ -55,7 +55,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     // private
     onRender : function(ct, position)
     {
-//        Roo.log("Call onRender: " + this.xtype);
+       // Roo.log("Call onRender: " + this.xtype);
         
         Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
         
@@ -105,9 +105,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     
     addxtype : function (tree, cntr, is_modal) {
         var cn = this;
-        
         cntr = typeof(cntr == 'undefined' ) ? 'getChildContainer' : cntr;
-        
+        Roo.log(cn);
         // render the element if it's not BODY.
         if (tree.xtype != 'Body') {
             
@@ -117,21 +116,16 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             cn.parentId = this.id;
             
             var is_js_build = !Roo.select('body').first().attr('xtype');
-            Roo.log('Roo.get(document.body).attr(xtype)');
-            Roo.log(Roo.get(document.body).attr('xtype'));
-            Roo.log(is_modal);
             var is_modal = is_modal ? is_modal : (Roo.get(document.body).attr('xtype') == 'Roo.bootstrap.Modal');
-            Roo.log(is_modal);
             // does the container contain child eleemnts with 'xtype' attributes.
             // that match this xtype..
             // note - when we render we create these as well..
             // so we should check to see if body has xtype set.
             if (!is_modal && Roo.get(document.body).attr('xtype') == 'Roo.bootstrap.Body') {
-                Roo.log(this[cntr]);
+                
                 var self_cntr_el = Roo.get(this[cntr]());
                 var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
-                Roo.log('echild');
-                Roo.log(echild);
+                
                  
                 if (echild && echild.attr('xtype').split('.').pop() == cn.xtype) {
                   //  Roo.log("found child for " + this.xtype +": " + echild.attr('xtype') );
