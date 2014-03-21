@@ -1110,6 +1110,7 @@ Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
 
 Roo.bootstrap.Modal = function(config){
     Roo.bootstrap.Modal.superclass.constructor.call(this, config);
+    this.el = Roo.select('.modal', true).first();
     this.addEvents({
         // raw events
         /**
