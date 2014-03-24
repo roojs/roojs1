@@ -1177,9 +1177,15 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                 
             },this);
         }
+        // render the children.
         
-        
-        
+        var items = this.items;
+        delete this.items;
+        var nitems = [];
+        for(var i =0;i < items.length;i++) {
+            nitems.push(this.addxtype(Roo.apply({}, items[i])));
+        }
+        this.items = nitems;
         this.initEvents();
         //this.el.addClass([this.fieldClass, this.cls]);
         
@@ -1248,8 +1254,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     initEvents : function()
     {
         this.el.select('.modal-header .close').on('click', this.hide, this);
-        
-        this.addxtype(this);
+//        
+//        this.addxtype(this);
     },
     show : function() {
         
