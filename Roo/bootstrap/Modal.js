@@ -106,6 +106,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                 
             },this);
         }
+        // render the children.
+        
         var items = tree.items;
         delete this.items;
         var nitems = [];
