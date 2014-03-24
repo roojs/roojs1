@@ -108,10 +108,11 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         }
         var items = tree.items;
         delete this.items;
+        var nitems = []''
         for(var i =0;i < items.length;i++) {
             nitems.push(cn.addxtype(Roo.apply({}, items[i])));
         }
-        
+        this.items = nitems;
         this.initEvents();
         //this.el.addClass([this.fieldClass, this.cls]);
         
