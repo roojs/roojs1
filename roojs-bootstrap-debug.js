@@ -1250,6 +1250,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     {
         Roo.log('Modal initEvents?!');
         this.el.select('.modal-header .close').on('click', this.hide, this);
+        this.addxtype(this);
     },
     show : function() {
         Roo.log('Modal show?!');
