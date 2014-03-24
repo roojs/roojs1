@@ -484,6 +484,8 @@ Roo.apply(Roo.XComponent, {
                 if (!this.hideProgress && Roo.MessageBox) {
                     Roo.MessageBox.hide();
                 }
+                Roo.XComponent.build_from_html = false; // reset, so dialogs will be build from javascript
+                
                 Roo.XComponent.event.fireEvent('buildcomplete', _this.topModule);
                 
                 // THE END...
