@@ -108,7 +108,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         }
         // render the children.
         
-        var items = tree.items;
+        var items = this.items;
         delete this.items;
         var nitems = [];
         for(var i =0;i < items.length;i++) {
