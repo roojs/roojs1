@@ -115,7 +115,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             cn.parentType = this.xtype; //??
             cn.parentId = this.id;
             
-            var is_js_build = !Roo.select('body').first().attr('xtype');
+            var build_from_html =  Roo.XComponent.build_from_html;
             
             // does the container contain child eleemnts with 'xtype' attributes.
             // that match this xtype..
@@ -146,7 +146,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                     typeof(tree['flexy:foreach'] != 'undefined');
                 
             // if object has flexy:if - then it may or may not be rendered.
-            if (!is_js_build && has_flexy && !cn.el &&  cn.can_build_overlaid) {
+            if (build_from_html && has_flexy && !cn.el &&  cn.can_build_overlaid) {
                 // skip a flexy if element.
                 Roo.log('skipping render');
              } else {
