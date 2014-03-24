@@ -1129,9 +1129,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
 
     onRender : function(ct, position)
     {
-        Roo.log('Modal onRender?!');
         Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
-        Roo.log(this.el);
+     
         if(!this.el){
             var cfg = Roo.apply({},  this.getAutoCreate());
             cfg.id = Roo.id();
@@ -1150,7 +1149,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.el = Roo.get(document.body).createChild(cfg, position);
         }
         //var type = this.el.dom.type;
-        Roo.log(this.el); 
+        
         if(this.tabIndex !== undefined){
             this.el.dom.setAttribute('tabIndex', this.tabIndex);
         }
@@ -1238,7 +1237,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
           
     },
     getChildContainer : function() {
-         Roo.log(this);
+         
          return this.el.select('.modal-body',true).first();
         
     },
@@ -1248,12 +1247,12 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     },
     initEvents : function()
     {
-        Roo.log('Modal initEvents?!');
         this.el.select('.modal-header .close').on('click', this.hide, this);
+        Roo.log(Roo.XComponent.build_from_html);
         this.addxtype(this);
     },
     show : function() {
-        Roo.log('Modal show?!');
+        
         if (!this.rendered) {
             this.render();
         }
