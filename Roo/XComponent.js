@@ -435,8 +435,12 @@ Roo.apply(Roo.XComponent, {
      * 
      */ 
    
-    build : function() 
+    build : function(opts) 
     {
+        
+        if (typeof(opts) != 'undefined') {
+            Roo.apply(this,opts);
+        }
         
         this.preBuild();
         var mods = this.buildOrder();
