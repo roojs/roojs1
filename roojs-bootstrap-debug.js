@@ -1248,9 +1248,11 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     },
     initEvents : function()
     {
+        Roo.log('Modal initEvents?!');
         this.el.select('.modal-header .close').on('click', this.hide, this);
     },
     show : function() {
+        Roo.log('Modal show?!');
         if (!this.rendered) {
             this.render();
         }
@@ -1267,6 +1269,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     },
     hide : function()
     {
+        Roo.log('Modal hide?!');
         this.maskEl.hide();
         this.el.removeClass('on');
         this.el.addClass('fade');
