@@ -15955,7 +15955,15 @@ Roo.apply(Roo.XComponent, {
      
     elmodules : [],
 
-    
+     /**
+     * @property  build_from_html
+     * Build elements from html - used by bootstrap HTML stuff 
+     *    - this is cleared after build is completed
+     * @type {boolean} true  (default false)
+     */
+     
+    build_from_html : false,
+
     /**
      * Register components to be built later.
      *
@@ -16158,8 +16166,12 @@ Roo.apply(Roo.XComponent, {
      * 
      */ 
    
-    build : function() 
+    build : function(opts) 
     {
+        
+        if (typeof(opts) != 'undefined') {
+            Roo.apply(this,opts);
+        }
         
         this.preBuild();
         var mods = this.buildOrder();
@@ -16195,6 +16207,8 @@ Roo.apply(Roo.XComponent, {
                 if (!this.hideProgress && Roo.MessageBox) {
                     Roo.MessageBox.hide();
                 }
+                Roo.XComponent.build_from_html = false; // reset, so dialogs will be build from javascript
+                
                 Roo.XComponent.event.fireEvent('buildcomplete', _this.topModule);
                 
                 // THE END...
