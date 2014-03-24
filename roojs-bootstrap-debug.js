@@ -1150,7 +1150,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.el = Roo.get(document.body).createChild(cfg, position);
         }
         //var type = this.el.dom.type;
-         
+        Roo.log(this.el); 
         if(this.tabIndex !== undefined){
             this.el.dom.setAttribute('tabIndex', this.tabIndex);
         }
