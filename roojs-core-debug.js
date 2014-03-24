@@ -299,6 +299,8 @@ Roo.factory(conf, Roo.data);
                 return c;
             }
             ns = c.xns ? c.xns : ns; // if c.xns is set, then use that..
+            Roo.log('ns');
+            Roo.log(ns);
             if (c.constructor == ns[c.xtype]) {// already created...
                 return c;
             }
