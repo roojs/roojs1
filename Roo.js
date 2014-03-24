@@ -299,13 +299,10 @@ Roo.factory(conf, Roo.data);
                 return c;
             }
             ns = c.xns ? c.xns : ns; // if c.xns is set, then use that..
-            Roo.log('ns');
-            Roo.log(ns);
             if (c.constructor == ns[c.xtype]) {// already created...
                 return c;
             }
             if (ns[c.xtype]) {
-                Roo.log("Roo.Factory(" + c.xtype + ")");
                 if (Roo.debug) Roo.log("Roo.Factory(" + c.xtype + ")");
                 var ret = new ns[c.xtype](c);
                 ret.xns = false;
