@@ -294,18 +294,17 @@ Roo.factory(conf, Roo.data);
          
         factory : function(c, ns)
         {
+            Roo.log('factory');
+            Roo.log(c);
             // no xtype, no ns or c.xns - or forced off by c.xns
             if (!c.xtype   || (!ns && !c.xns) ||  (c.xns === false)) { // not enough info...
                 return c;
             }
             ns = c.xns ? c.xns : ns; // if c.xns is set, then use that..
-            Roo.log('ns');
-            Roo.log(ns);
             if (c.constructor == ns[c.xtype]) {// already created...
                 return c;
             }
             if (ns[c.xtype]) {
-                Roo.log("Roo.Factory(" + c.xtype + ")");
                 if (Roo.debug) Roo.log("Roo.Factory(" + c.xtype + ")");
                 var ret = new ns[c.xtype](c);
                 ret.xns = false;
