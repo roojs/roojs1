@@ -239,7 +239,7 @@ Roo.apply(Roo.XComponent, {
      * @type {boolean} true  (default false)
      */
      
-    elmodules : [],
+    build_from_html : false,
 
     /**
      * Register components to be built later.
