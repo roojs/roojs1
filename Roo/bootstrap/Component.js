@@ -115,7 +115,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             cn.parentType = this.xtype; //??
             cn.parentId = this.id;
             
-            var is_js_build = !Roo.XComponent.build_from_html;
+            var build_from_html =  Roo.XComponent.build_from_html;
             
             // does the container contain child eleemnts with 'xtype' attributes.
             // that match this xtype..
