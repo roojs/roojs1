@@ -232,7 +232,15 @@ Roo.apply(Roo.XComponent, {
      
     elmodules : [],
 
-    
+     /**
+     * @property  build_from_html
+     * Build elements from html - used by bootstrap HTML stuff 
+     *    - this is cleared after build is completed
+     * @type {boolean} true  (default false)
+     */
+     
+    elmodules : [],
+
     /**
      * Register components to be built later.
      *
