@@ -112,7 +112,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         delete this.items;
         var nitems = [];
         for(var i =0;i < items.length;i++) {
-            nitems.push(cn.addxtype(Roo.apply({}, items[i])));
+            nitems.push(this.addxtype(Roo.apply({}, items[i])));
         }
         this.items = nitems;
         this.initEvents();
