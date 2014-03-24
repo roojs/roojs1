@@ -177,7 +177,6 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     initEvents : function()
     {
         this.el.select('.modal-header .close').on('click', this.hide, this);
-        Roo.log(Roo.XComponent.build_from_html);
         this.addxtype(this);
     },
     show : function() {
