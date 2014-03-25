@@ -24,6 +24,7 @@
  * @cfg {Number} md colspan out of 12 for computer-sized screens
  * @cfg {Number} lg colspan out of 12 for large computer-sized screens
  * @cfg {string} value default value of the input
+ * @cfg {string} labelWidth set the width of label (0-12)
  * 
  * 
  * @constructor
@@ -193,6 +194,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     preventMark: false,
     isFormField : true,
     value : '',
+    labelClass : 'col-sm-2',
+    
     
     getAutoCreate : function(){
         
