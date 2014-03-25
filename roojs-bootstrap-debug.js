@@ -3078,6 +3078,7 @@ Roo.form.VTypes = function(){
  * @cfg {Number} md colspan out of 12 for computer-sized screens
  * @cfg {Number} lg colspan out of 12 for large computer-sized screens
  * @cfg {string} value default value of the input
+ * @cfg {Number} labelWidth set the width of label (0-12)
  * 
  * 
  * @constructor
@@ -3247,6 +3248,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     preventMark: false,
     isFormField : true,
     value : '',
+    labelWidth : 2,
+    
     
     getAutoCreate : function(){
         
@@ -3318,12 +3321,12 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                     {
                         tag: 'label',
                         'for' :  id,
-                        cls : 'col-sm-2 control-label',
+                        cls : 'control-label col-sm-' + this.labelWidth,
                         html : this.fieldLabel
                         
                     },
                     {
-                        cls : "col-sm-10", 
+                        cls : "col-sm-" + (12 - this.labelWidth), 
                         cn: [
                             inputblock
                         ]
