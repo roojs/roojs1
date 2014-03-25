@@ -23,6 +23,7 @@
  * @cfg {Number} sm colspan out of 12 for tablet-sized screens
  * @cfg {Number} md colspan out of 12 for computer-sized screens
  * @cfg {Number} lg colspan out of 12 for large computer-sized screens
+ * @cfg {string} value default value of the input
  * 
  * 
  * @constructor
@@ -191,6 +192,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     hasFocus : false,
     preventMark: false,
     isFormField : true,
+    value : '',
     
     getAutoCreate : function(){
         
@@ -208,6 +210,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             tag: 'input',
             id : id,
             type : this.inputType,
+            value : this.value,
             cls : 'form-control',
             placeholder : this.placeholder || '' 
             
