@@ -59,6 +59,7 @@
     </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-var">Roo.bootstrap.Component.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
+     
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({},  </span><span class="jsdoc-var">this.getAutoCreate</span><span class="jsdoc-syntax">());
             </span><span class="jsdoc-var">cfg.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">();
@@ -77,7 +78,7 @@
             </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.createChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
         }
         </span><span class="jsdoc-comment">//var type = this.el.dom.type;
-         
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tabIndex </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.el.dom.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tabIndex'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.tabIndex</span><span class="jsdoc-syntax">);
         }
@@ -105,9 +106,15 @@
                 
             },</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
+        </span><span class="jsdoc-comment">// render the children.
         
-        
-        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nitems </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0;</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">items.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-var">nitems.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.addxtype</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">])));
+        }
+        </span><span class="jsdoc-var">this.items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nitems</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.initEvents</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-comment">//this.el.addClass([this.fieldClass, this.cls]);
         
@@ -176,8 +183,11 @@
     </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-header .close'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-    },
+</span><span class="jsdoc-comment">//        
+//        this.addxtype(this);
+    </span><span class="jsdoc-syntax">},
     </span><span class="jsdoc-var">show </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+        
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.rendered</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.render</span><span class="jsdoc-syntax">();
         }
@@ -194,6 +204,7 @@
     },
     </span><span class="jsdoc-var">hide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'Modal hide?!'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.maskEl.hide</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'on'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'fade'</span><span class="jsdoc-syntax">);

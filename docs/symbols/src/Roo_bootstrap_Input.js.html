@@ -23,6 +23,7 @@
  * @cfg {Number} sm colspan out of 12 for tablet-sized screens
  * @cfg {Number} md colspan out of 12 for computer-sized screens
  * @cfg {Number} lg colspan out of 12 for large computer-sized screens
+ * @cfg {string} value default value of the input
  * 
  * 
  * @constructor
@@ -191,6 +192,7 @@
     </span><span class="jsdoc-var">hasFocus </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">preventMark</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">isFormField </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         
@@ -208,6 +210,7 @@
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.inputType</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'form-control'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">placeholder </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.placeholder </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'' 
             

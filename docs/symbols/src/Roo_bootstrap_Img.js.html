@@ -14,7 +14,7 @@
  * @cfg {String} border rounded | circle | thumbnail
  * @cfg {String} src image source
  * @cfg {String} alt image alternative text
- * @cfg {String} href
+ * @cfg {String} href a tag href
  * 
  * @constructor
  * Create a new Input
