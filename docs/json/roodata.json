@@ -5618,6 +5618,12 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
+     "name": "value",
+     "type": "string",
+     "desc": "default value of the input",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -6682,7 +6688,7 @@
     {
      "name": "href",
      "type": "String",
-     "desc": "",
+     "desc": "a tag href",
      "memberOf": ""
     },
     {
@@ -6881,6 +6887,12 @@
      "name": "lg",
      "type": "Number",
      "desc": "colspan out of 12 for large computer-sized screens",
+     "memberOf": ""
+    },
+    {
+     "name": "value",
+     "type": "string",
+     "desc": "default value of the input",
      "memberOf": ""
     },
     {
@@ -9353,6 +9365,12 @@
      "name": "lg",
      "type": "Number",
      "desc": "colspan out of 12 for large computer-sized screens",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "value",
+     "type": "string",
+     "desc": "default value of the input",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
