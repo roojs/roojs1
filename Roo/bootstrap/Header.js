@@ -32,17 +32,6 @@ Roo.extend(Roo.bootstrap.Header, Roo.bootstrap.Component,  {
     
     getAutoCreate : function(){
         
-//        var cfg = {
-//          tag: 'div',
-//          html: null,
-//          cn: [
-//                {
-//                    tag: 'h' + (1 *this.level),
-//                    html: this.html || 'fill in html'
-//                }
-//          ]
-//        };
-        
         var cfg = {
             tag: 'h' + (1 *this.level),
             html: this.html || 'fill in html'
