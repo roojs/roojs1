@@ -10,3 +10,8 @@
     -webkit-box-orient: vertical;
 }
 
+.sw-child-headline {
+    display: inline-block;
+    width: auto;
+}
+
