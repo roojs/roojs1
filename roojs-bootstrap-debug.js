@@ -153,7 +153,9 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             
                 // actually if flexy:foreach is found, we really want to create 
                 // multiple copies here...
-                
+                Roo.log('cn.render');
+                Roo.log(cn);
+                Roo.log(this);
                 cn.render(this[cntr]());
              }
             // then add the element..
@@ -471,8 +473,6 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             cfg.disabled = 'disabled';
         }
         //????
-        Roo.log('this.items');
-        Roo.log(this.items);
         if (this.items) {
             Roo.log('changing to ul' );
             cfg.tag = 'ul';
