@@ -174,8 +174,6 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             cfg.disabled = 'disabled';
         }
         //????
-        Roo.log('this.items');
-        Roo.log(this.items);
         if (this.items) {
             Roo.log('changing to ul' );
             cfg.tag = 'ul';
