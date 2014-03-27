@@ -38,6 +38,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
   
      
     getChildContainer : function() {
+        
         if(!this.el){
             return false;
         }
