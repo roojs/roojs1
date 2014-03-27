@@ -38,7 +38,10 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
   
      
     getChildContainer : function() {
-        Roo.log(this);
+        if(!this.el){
+            return false;
+        }
+        
         if (this.panel.length) {
             return this.el.select('.panel-body',true).first();
         }
