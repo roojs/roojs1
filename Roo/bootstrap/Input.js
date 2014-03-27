@@ -482,6 +482,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             this.validate();
         }
         var v = this.getValue();
+        Roo.log('v');
+        Roo.log(v);
         if(String(v) !== String(this.startValue)){
             this.fireEvent('change', this, v, this.startValue);
         }
