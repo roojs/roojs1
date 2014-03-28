@@ -154,11 +154,10 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             
                 // actually if flexy:foreach is found, we really want to create 
                 // multiple copies here...
-                if(cn.xattr){
+                
                 Roo.log('render??')
-                Roo.log(this);
-                return;
-                }
+                Roo.log(cn);
+                
                 cn.render(this[cntr]());
              }
             // then add the element..
