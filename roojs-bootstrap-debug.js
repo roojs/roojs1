@@ -8587,7 +8587,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                     end : new Date(d.data.end_dt),
                     time : d.data.start_time,
                     title : d.data.title,
-                    description : d.data.description
+                    description : d.data.description,
+                    venue : d.data.venue
                 });
             });
         }
