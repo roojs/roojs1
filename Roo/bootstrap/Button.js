@@ -75,7 +75,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             throw "Invalid value for tag: " + this.tag + ". must be a, button, input or submit.";
             this.tag = 'button';
         } else {
-            cfg.tag = this.tag + "a";
+            cfg.tag = this.tag;
         }
         cfg.html = this.html || cfg.html;
         
