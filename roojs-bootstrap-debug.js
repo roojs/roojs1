@@ -156,7 +156,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 // multiple copies here...
                 if(cn.xattr){
                 Roo.log('render??')
-                Roo.log(cn);
+                Roo.log(this);
                 return;
                 }
                 cn.render(this[cntr]());
