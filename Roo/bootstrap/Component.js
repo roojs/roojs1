@@ -55,13 +55,9 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     // private
     onRender : function(ct, position)
     {
-        Roo.log("Call onRender: " + this.xtype);
-        
-        Roo.log(this.el)
+       // Roo.log("Call onRender: " + this.xtype);
         
         Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
-        
-        Roo.log(this.el)
         
         if(this.el){
             if (this.el.attr('xtype')) {
@@ -74,7 +70,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             return;
         }
         
-        
+         
         
         var cfg = Roo.apply({},  this.getAutoCreate());
         cfg.id = Roo.id();
@@ -129,8 +125,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                
                 var self_cntr_el = Roo.get(this[cntr]());
                 var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
-                Roo.log('GOT : ' + this.xtype );
-                Roo.log(cn.xattr);
+                
                  
                 if (echild && echild.attr('xtype').split('.').pop() == cn.xtype) {
                   //  Roo.log("found child for " + this.xtype +": " + echild.attr('xtype') );
@@ -158,9 +153,6 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             
                 // actually if flexy:foreach is found, we really want to create 
                 // multiple copies here...
-                
-                Roo.log('render??')
-                Roo.log(cn);
                 
                 cn.render(this[cntr]());
              }
