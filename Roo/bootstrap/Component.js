@@ -77,6 +77,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         
         // fill in the extra attributes 
         if (this.xattr && typeof(this.xattr) =='object') {
+            Roo.log(this.xattr);
             for (var i in this.xattr) {
                 cfg[i] = this.xattr[i];
             }
