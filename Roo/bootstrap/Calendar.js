@@ -328,27 +328,27 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     {
         var vd = this.activeDate;
         this.activeDate = date;
-        if(vd && this.el){
-            var t = date.getTime();
-            if(vd.getMonth() == date.getMonth() && vd.getFullYear() == date.getFullYear()){
-                Roo.log('using add remove');
-                
-                this.fireEvent('monthchange', this, date);
-                
-                this.cells.removeClass("fc-state-highlight");
-                this.cells.each(function(c){
-                   if(c.dateValue == t){
+//        if(vd && this.el){
+//            var t = date.getTime();
+//            if(vd.getMonth() == date.getMonth() && vd.getFullYear() == date.getFullYear()){
+//                Roo.log('using add remove');
+//                
+//                this.fireEvent('monthchange', this, date);
+//                
+//                this.cells.removeClass("fc-state-highlight");
+//                this.cells.each(function(c){
+//                   if(c.dateValue == t){
 //                       c.addClass("fc-state-highlight");
-                       setTimeout(function(){
-                            try{c.dom.firstChild.focus();}catch(e){}
-                       }, 50);
-                       return false;
-                   }
-                   return true;
-                });
-                return;
-            }
-        }
+//                       setTimeout(function(){
+//                            try{c.dom.firstChild.focus();}catch(e){}
+//                       }, 50);
+//                       return false;
+//                   }
+//                   return true;
+//                });
+//                return;
+//            }
+//        }
         
         var days = date.getDaysInMonth();
         
