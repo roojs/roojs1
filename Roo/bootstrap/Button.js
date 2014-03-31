@@ -200,6 +200,8 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             
             cfg.href=this.href;
             
+            var value = cfg.html;
+            
             if(this.glyphicon){
                 cfg.cn = [
                     {
@@ -211,6 +213,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             }
             
             cfg.cn = [
+                cfg.html,
                 {
                     tag: 'span',
                     cls: 'badge',
