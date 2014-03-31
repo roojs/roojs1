@@ -134,6 +134,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         var i =0 ;
         
         Roo.log('here');
+        Roo.log(this);
         Roo.log(tree);
 //        while (true) {
 //            i++;
