@@ -81,7 +81,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 cfg[i] = this.xattr[i];
             }
         }
-        
+        Roo.log('this.cls');
+        Roo.log(this.cls);
         if (this.cls) {
             cfg.cls += ' ' + this.cls;
         }
