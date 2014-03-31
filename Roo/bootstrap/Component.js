@@ -86,7 +86,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             var x = this.xattr.split(';');
             
             for (var i in x) {
-                var a = x[i].split(':');
+                var a = x[i];
+                var aa = a.split(':');
                 cfg[a[0]] = a[1];
             }
         }
