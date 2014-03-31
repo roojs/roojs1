@@ -560,13 +560,12 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             var value = cfg.html;
             
             if(this.glyphicon){
-                value = [
-                    {
-                        tag: 'span',
-                        cls: 'glyphicon glyphicon-' + this.glyphicon,
-                        html: this.html
-                    }
-                ];
+                value = {
+                            tag: 'span',
+                            cls: 'glyphicon glyphicon-' + this.glyphicon,
+                            html: this.html
+                        };
+                
             }
             
             cfg.cn = [
