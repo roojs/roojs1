@@ -194,9 +194,9 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         if (this.badge) {
             cfg.html += ' ';
             
-//            cfg.tag = 'a';
+            cfg.tag = 'a';
             
-//            cfg.cls='btn roo-button';
+            cfg.cls='btn roo-button';
             
             cfg.href=this.href;
             
