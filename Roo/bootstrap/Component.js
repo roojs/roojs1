@@ -116,15 +116,15 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         var has_flexy = (typeof(tree['flexy:if']) != 'undefined') ||
                     (typeof(tree['flexy:foreach']) != 'undefined');
         
-//        var build_from_html =  Roo.XComponent.build_from_html;
-//          
-//        var is_body  = (tree.xtype == 'Body') ;
-//          
-//        var page_has_body = (Roo.get(document.body).attr('xtype') == 'Roo.bootstrap.Body');
+        var build_from_html =  Roo.XComponent.build_from_html;
           
-//        if (!has_flexy || !build_from_html || is_body || !page_has_body  ) {
+        var is_body  = (tree.xtype == 'Body') ;
+          
+        var page_has_body = (Roo.get(document.body).attr('xtype') == 'Roo.bootstrap.Body');
+          
+        if (!has_flexy || !build_from_html || is_body || !page_has_body  ) {
 
-        if (!has_flexy) {
+//        if (!has_flexy) {
             
             return this.addxtypeChild(tree,cntr);
         }
@@ -147,22 +147,22 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         Roo.log(tree['flexy:if']);
         Roo.log(tree['flexy:foreach']);
         return false;
-//        while (true) {
-//            var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
-//            Roo.log('echild');
-//            Roo.log(echild);
-//            if (!echild) {
-//                break;
-//            }
-//            Roo.log(echild.attr('xtype').split('.').pop());
-//            Roo.log(cn.xtype);
-//            if (echild && echild.attr('xtype').split('.').pop() != cn.xtype) {
-//                break;
-//            }
-//            Roo.log("got child");
-//            ret = this.addxtypeChild(tree,cntr);
-//        }
-//        return ret;
+        while (true) {
+            var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
+            Roo.log('echild');
+            Roo.log(echild);
+            if (!echild) {
+                break;
+            }
+            Roo.log(echild.attr('xtype').split('.').pop());
+            Roo.log(cn.xtype);
+            if (echild && echild.attr('xtype').split('.').pop() != cn.xtype) {
+                break;
+            }
+            Roo.log("got child");
+            ret = this.addxtypeChild(tree,cntr);
+        }
+        return ret;
     },
     
     addxtypeChild : function (tree, cntr)
