@@ -123,8 +123,6 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         var page_has_body = (Roo.get(document.body).attr('xtype') == 'Roo.bootstrap.Body');
           
         if (!has_flexy || !build_from_html || is_body || !page_has_body  ) {
-
-//        if (!has_flexy) {
             
             return this.addxtypeChild(tree,cntr);
         }
@@ -149,17 +147,18 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
 //        return false;
         while (true) {
             var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
-            Roo.log('echild');
-            Roo.log(echild);
+//            Roo.log('echild');
+//            Roo.log(echild);
             if (!echild) {
                 break;
             }
-            Roo.log(echild.attr('xtype').split('.').pop());
-            Roo.log(cn.xtype);
+//            Roo.log(echild.attr('xtype').split('.').pop());
+//            Roo.log(cn.xtype);
             if (echild && echild.attr('xtype').split('.').pop() != cn.xtype) {
                 break;
             }
             Roo.log("got child");
+             Roo.log(this);
             ret = this.addxtypeChild(tree,cntr);
         }
         return ret;
