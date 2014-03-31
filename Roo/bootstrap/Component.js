@@ -124,6 +124,9 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             
             var build_from_html =  Roo.XComponent.build_from_html;
             
+            var has_flexy = typeof(tree['flexy:if'] != 'undefined') ||
+                    typeof(tree['flexy:foreach'] != 'undefined');
+          
             // does the container contain child eleemnts with 'xtype' attributes.
             // that match this xtype..
             // note - when we render we create these as well..
@@ -149,15 +152,19 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             }
            
             
-            var has_flexy = typeof(tree['flexy:if'] != 'undefined') ||
-                    typeof(tree['flexy:foreach'] != 'undefined');
-                
+               
             // if object has flexy:if - then it may or may not be rendered.
             if (build_from_html && has_flexy && !cn.el &&  cn.can_build_overlaid) {
                 // skip a flexy if element.
                 Roo.log('skipping render');
              } else {
-            
+                 if (has_flexy) {
+                     
+                     
+                     
+                 }
+                 
+                 
                 // actually if flexy:foreach is found, we really want to create 
                 // multiple copies here...
                 
