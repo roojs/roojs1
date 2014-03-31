@@ -87,7 +87,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             Roo.log('x');
             Roo.log(x);
             for (var i in x) {
-                Roo.log(x[i])
+                Roo.log(x[i]);
                 var a = x[i].split(':');
                 cfg[a[0]] = a[1];
             }
