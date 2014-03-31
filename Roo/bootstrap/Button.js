@@ -200,12 +200,17 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             
             cfg.href=this.href;
             
+            if(this.glyphicon){
+                cfg.cn = [
+                    {
+                        tag: 'span',
+                        cls: 'glyphicon glyphicon-' + this.glyphicon,
+                        html: this.html
+                    }
+                ];
+            }
+            
             cfg.cn = [
-                {
-                    tag: 'span',
-                    cls: 'glyphicon glyphicon-' + this.glyphicon
-                    
-                },
                 {
                     tag: 'span',
                     cls: 'badge',
@@ -213,7 +218,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
                 }
             ];
             
-//            cfg.html='';
+            cfg.html='';
         }
         
         if (cfg.tag !== 'a' && this.href !== '') {
