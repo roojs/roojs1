@@ -137,6 +137,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             if (echild && echild.attr('xtype').split('.').pop() != cn.xtype) {
                 break;
             }
+            Roo.log("got child");
             ret = this.addxtypeChild(tree,cntr);
         }
         return ret;
