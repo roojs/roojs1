@@ -560,8 +560,8 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             cfg.cn = [
                 {
                     tag: 'span',
-                    cls: 'glyphicon glyphicon-' + this.glyphicon,
-                    html: this.html
+                    cls: 'glyphicon glyphicon-' + this.glyphicon
+                    
                 },
                 {
                     tag: 'span',
@@ -570,7 +570,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
                 }
             ];
             
-            cfg.html='';
+//            cfg.html='';
         }
         
         if (cfg.tag !== 'a' && this.href !== '') {

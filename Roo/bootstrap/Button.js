@@ -213,7 +213,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
                 }
             ];
             
-            cfg.html='';
+//            cfg.html='';
         }
         
         if (cfg.tag !== 'a' && this.href !== '') {
