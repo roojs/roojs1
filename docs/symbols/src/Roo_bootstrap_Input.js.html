@@ -205,10 +205,16 @@
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">();
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
-            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'form-group' </span><span class="jsdoc-comment">//input-group
-        </span><span class="jsdoc-syntax">};
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {};
         
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputType </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'hidden'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'form-group' </span><span class="jsdoc-comment">//input-group
+        </span><span class="jsdoc-syntax">}
+        
+</span><span class="jsdoc-comment">//        var cfg = {
+//            cls: 'form-group' //input-group
+//        };
+
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">input </span><span class="jsdoc-syntax">=  {
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,

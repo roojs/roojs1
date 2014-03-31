@@ -14,6 +14,7 @@
  * @cfg {String} style any extra css
  * @cfg {Object} xattr extra attributes to add to 'element' (used by builder to store stuff.)
  * @cfg {Boolean} can_build_overlaid  True if element can be rebuild from a HTML page
+ * @cfg {string} dataId cutomer id
  * 
  * @constructor
  * Do not use directly - it does not do anything..
@@ -44,6 +45,8 @@
     </span><span class="jsdoc-var">parentId </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">can_build_overlaid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">dataId </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">parent</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
         </span><span class="jsdoc-comment">// returns the parent component..

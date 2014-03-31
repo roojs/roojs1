@@ -328,27 +328,27 @@
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">vd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.activeDate</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.activeDate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">vd </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">date.getTime</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">vd.getMonth</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-var">date.getMonth</span><span class="jsdoc-syntax">() &amp;&amp; </span><span class="jsdoc-var">vd.getFullYear</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-var">date.getFullYear</span><span class="jsdoc-syntax">()){
-                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'using add remove'</span><span class="jsdoc-syntax">);
-                
-                </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'monthchange'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">);
-                
-                </span><span class="jsdoc-var">this.cells.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;fc-state-highlight&quot;</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">this.cells.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">){
-                   </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.dateValue </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">){
-                       </span><span class="jsdoc-var">c.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;fc-state-highlight&quot;</span><span class="jsdoc-syntax">);
-                       </span><span class="jsdoc-var">setTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-                            </span><span class="jsdoc-keyword">try</span><span class="jsdoc-syntax">{</span><span class="jsdoc-var">c.dom.firstChild.focus</span><span class="jsdoc-syntax">();}</span><span class="jsdoc-keyword">catch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){}
-                       }, 50);
-                       </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
-                   }
-                   </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
-                });
-                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-            }
-        }
+</span><span class="jsdoc-comment">//        if(vd &amp;&amp; this.el){
+//            var t = date.getTime();
+//            if(vd.getMonth() == date.getMonth() &amp;&amp; vd.getFullYear() == date.getFullYear()){
+//                Roo.log('using add remove');
+//                
+//                this.fireEvent('monthchange', this, date);
+//                
+//                this.cells.removeClass(&quot;fc-state-highlight&quot;);
+//                this.cells.each(function(c){
+//                   if(c.dateValue == t){
+//                       c.addClass(&quot;fc-state-highlight&quot;);
+//                       setTimeout(function(){
+//                            try{c.dom.firstChild.focus();}catch(e){}
+//                       }, 50);
+//                       return false;
+//                   }
+//                   return true;
+//                });
+//                return;
+//            }
+//        }
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">days </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">date.getDaysInMonth</span><span class="jsdoc-syntax">();
         
@@ -719,7 +719,8 @@
                     </span><span class="jsdoc-var">end </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.data.end_dt</span><span class="jsdoc-syntax">),
                     </span><span class="jsdoc-var">time </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d.data.start_time</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">title </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d.data.title</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">description </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d.data.description
+                    </span><span class="jsdoc-var">description </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d.data.description</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">venue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d.data.venue
                 </span><span class="jsdoc-syntax">});
             });
         }
