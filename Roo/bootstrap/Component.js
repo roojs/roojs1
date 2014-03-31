@@ -147,13 +147,13 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
 //        return false;
         while (true) {
             var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
-            Roo.log('echild');
-            Roo.log(echild);
+//            Roo.log('echild');
+//            Roo.log(echild);
             if (!echild) {
                 break;
             }
-            Roo.log(echild.attr('xtype').split('.').pop());
-            Roo.log(cn.xtype);
+//            Roo.log(echild.attr('xtype').split('.').pop());
+//            Roo.log(cn.xtype);
             if (echild && echild.attr('xtype').split('.').pop() != cn.xtype) {
                 break;
             }
