@@ -110,9 +110,46 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         return this.el;
     },
     
-    addxtype : function (tree, cntr) {
+    
+    addxtype  : function(tree,cntr)
+    {
+        var has_flexy = typeof(tree['flexy:if'] != 'undefined') ||
+                    typeof(tree['flexy:foreach'] != 'undefined');
+        var build_from_html =  Roo.XComponent.build_from_html;
+          
+        var is_body  = (tree.xtype == 'Body') ;
+          
+        var page_has_body = (Roo.get(document.body).attr('xtype') == 'Roo.bootstrap.Body');
+          
+        if (!has_flexy || !build_from_html || is_body || !page_has_body  ) {
+            return this.addxtypeChild(tree,cntr);
+        }
         var cn = this;
         cntr = typeof(cntr == 'undefined' ) ? 'getChildContainer' : cntr;
+        var self_cntr_el = Roo.get(this[cntr]());
+        var ret = false;
+        while (true) {
+            
+            var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
+            if (!echild) {
+                break;
+            }
+            ret = this.addxtypeChild(tree,cntr);
+        }
+        return ret;
+    },
+    
+    addxtypeChild : function (tree, cntr)
+    {
+        var cn = this;
+        cntr = typeof(cntr == 'undefined' ) ? 'getChildContainer' : cntr;
+        
+        
+        var has_flexy = typeof(tree['flexy:if'] != 'undefined') ||
+                    typeof(tree['flexy:foreach'] != 'undefined');
+          
+        
+        
         
         // render the element if it's not BODY.
         if (tree.xtype != 'Body') {
@@ -123,6 +160,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             cn.parentId = this.id;
             
             var build_from_html =  Roo.XComponent.build_from_html;
+            
             
             // does the container contain child eleemnts with 'xtype' attributes.
             // that match this xtype..
@@ -149,15 +187,19 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             }
            
             
-            var has_flexy = typeof(tree['flexy:if'] != 'undefined') ||
-                    typeof(tree['flexy:foreach'] != 'undefined');
-                
+               
             // if object has flexy:if - then it may or may not be rendered.
             if (build_from_html && has_flexy && !cn.el &&  cn.can_build_overlaid) {
                 // skip a flexy if element.
                 Roo.log('skipping render');
              } else {
-            
+                 if (has_flexy) {
+                     
+                     
+                     
+                 }
+                 
+                 
                 // actually if flexy:foreach is found, we really want to create 
                 // multiple copies here...
                 
