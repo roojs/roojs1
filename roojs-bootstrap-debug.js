@@ -547,7 +547,8 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
                 }
             ];
         }
-        
+        Roo.log('cfg');
+        Roo.log(cfg)
         if (this.badge) {
             cfg.html += ' ';
             
