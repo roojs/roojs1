@@ -82,18 +82,6 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             }
         }
         
-//        if (this.xattr && typeof(this.xattr) =='string') {
-//            var x = this.xattr.split(';');
-//            
-//            for (var i in x) {
-//                if(typeof(x[i]) !== 'string'){
-//                    continue;
-//                }
-//                var a = x[i].split(':');
-//                cfg[a[0]] = a[1];
-//            }
-//        }
-        
         if (this.cls) {
             cfg.cls += ' ' + this.cls;
         }
@@ -533,7 +521,6 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
        // Roo.log('init events?');
        // Roo.log(this.el.dom);
        if (this.el.hasClass('roo-button')) {
-           Roo.log(this.el);
             this.el.on('click', this.onClick, this);
        } else {
             this.el.select('.roo-button').on('click', this.onClick, this);
