@@ -557,12 +557,20 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             
             cfg.href=this.href;
             
+            var value = cfg.html;
+            
+            if(this.glyphicon){
+                cfg.cn = [
+                    {
+                        tag: 'span',
+                        cls: 'glyphicon glyphicon-' + this.glyphicon,
+                        html: this.html
+                    }
+                ];
+            }
+            
             cfg.cn = [
-                {
-                    tag: 'span',
-                    cls: 'glyphicon glyphicon-' + this.glyphicon
-                    
-                },
+                value,
                 {
                     tag: 'span',
                     cls: 'badge',
@@ -570,7 +578,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
                 }
             ];
             
-//            cfg.html='';
+            cfg.html='';
         }
         
         if (cfg.tag !== 'a' && this.href !== '') {
