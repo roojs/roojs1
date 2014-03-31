@@ -191,27 +191,6 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             ];
         }
         
-        if (this.badge) {
-            cfg.html += ' ';
-            
-            cfg.tag = 'a';
-            
-            cfg.cls='btn roo-button';
-            
-            cfg.href=this.href;
-            
-            cfg.cn = [
-                cfg.html,
-                {
-                    tag: 'span',
-                    cls: 'badge',
-                    html: this.badge
-                }
-            ];
-            
-            cfg.html='';
-        }
-        
         if (cfg.tag !== 'a' && this.href !== '') {
             throw "Tag must be a to set href.";
         } else if (this.href.length > 0) {
