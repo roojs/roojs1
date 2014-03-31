@@ -158,7 +158,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 break;
             }
             Roo.log("got child");
-             Roo.log(cn);
+             Roo.log(this);
             ret = this.addxtypeChild(tree,cntr);
         }
         return ret;
