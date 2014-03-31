@@ -128,8 +128,9 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         cntr = typeof(cntr == 'undefined' ) ? 'getChildContainer' : cntr;
         var self_cntr_el = Roo.get(this[cntr]());
         var ret = false;
+        var i =0 ;
         while (true) {
-            
+            i++;
             var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
             if (!echild) {
                 break;
@@ -137,7 +138,11 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             if (echild && echild.attr('xtype').split('.').pop() != cn.xtype) {
                 break;
             }
+            Roo.log("got child");
             ret = this.addxtypeChild(tree,cntr);
+            if (i > 3) {
+                break;
+            }
         }
         return ret;
     },
@@ -196,11 +201,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 // skip a flexy if element.
                 Roo.log('skipping render');
              } else {
-                 if (has_flexy) {
-                     
-                     
-                     
-                 }
+                 
                  
                  
                 // actually if flexy:foreach is found, we really want to create 
