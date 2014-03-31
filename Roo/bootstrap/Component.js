@@ -14,6 +14,7 @@ Roo.bootstrap = Roo.bootstrap || {};
  * @cfg {String} style any extra css
  * @cfg {Object} xattr extra attributes to add to 'element' (used by builder to store stuff.)
  * @cfg {Boolean} can_build_overlaid  True if element can be rebuild from a HTML page
+ * @cfg {string} dataId cutomer id
  * 
  * @constructor
  * Do not use directly - it does not do anything..
@@ -44,6 +45,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     parentId : false,
     
     can_build_overlaid : true,
+    
+    dataId : false,
     
     parent: function() {
         // returns the parent component..
