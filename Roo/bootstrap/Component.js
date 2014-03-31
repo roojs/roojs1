@@ -197,11 +197,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 // skip a flexy if element.
                 Roo.log('skipping render');
              } else {
-                 if (has_flexy) {
-                     
-                     
-                     
-                 }
+                 
                  
                  
                 // actually if flexy:foreach is found, we really want to create 
