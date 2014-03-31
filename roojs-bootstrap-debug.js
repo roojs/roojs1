@@ -84,13 +84,13 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         
         if (this.xattr && typeof(this.xattr) =='string') {
             var x = this.xattr.split(';');
-            Roo.log(x);
+            
             for (var i in x) {
-                Roo.log(i);
-                Roo.log(x[i]);
-                Roo.log(typeof(x[i]));
-//                var a = x[i].split(':');
-//                cfg[a[0]] = a[1];
+                if(typeof(x[i]) !== 'string'){
+                    continue;
+                }
+                var a = x[i].split(':');
+                cfg[a[0]] = a[1];
             }
         }
         
