@@ -82,18 +82,6 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             }
         }
         
-//        if (this.xattr && typeof(this.xattr) =='string') {
-//            var x = this.xattr.split(';');
-//            
-//            for (var i in x) {
-//                if(typeof(x[i]) !== 'string'){
-//                    continue;
-//                }
-//                var a = x[i].split(':');
-//                cfg[a[0]] = a[1];
-//            }
-//        }
-        
         if (this.cls) {
             cfg.cls += ' ' + this.cls;
         }
