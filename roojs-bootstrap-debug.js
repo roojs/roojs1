@@ -115,6 +115,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     {
         var has_flexy = typeof(tree['flexy:if'] != 'undefined') ||
                     typeof(tree['flexy:foreach'] != 'undefined');
+                
         var build_from_html =  Roo.XComponent.build_from_html;
           
         var is_body  = (tree.xtype == 'Body') ;
@@ -124,27 +125,31 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         if (!has_flexy || !build_from_html || is_body || !page_has_body  ) {
             return this.addxtypeChild(tree,cntr);
         }
+        
         var cn = this;
         cntr = typeof(cntr == 'undefined' ) ? 'getChildContainer' : cntr;
+        
         var self_cntr_el = Roo.get(this[cntr]());
         var ret = false;
         var i =0 ;
-        while (true) {
-            i++;
-            var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
-            if (!echild) {
-                break;
-            }
-            if (echild && echild.attr('xtype').split('.').pop() != cn.xtype) {
-                break;
-            }
-            Roo.log("got child");
-            ret = this.addxtypeChild(tree,cntr);
-            if (i > 3) {
-                break;
-            }
-        }
-        return ret;
+        Roo.log('here');
+        Roo.log(cn);
+//        while (true) {
+//            i++;
+//            var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
+//            if (!echild) {
+//                break;
+//            }
+//            if (echild && echild.attr('xtype').split('.').pop() != cn.xtype) {
+//                break;
+//            }
+//            Roo.log("got child");
+//            ret = this.addxtypeChild(tree,cntr);
+//            if (i > 3) {
+//                break;
+//            }
+//        }
+//        return ret;
     },
     
     addxtypeChild : function (tree, cntr)

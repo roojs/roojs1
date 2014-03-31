@@ -134,22 +134,22 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         var i =0 ;
         Roo.log('here');
         Roo.log(cn);
-        while (true) {
-            i++;
-            var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
-            if (!echild) {
-                break;
-            }
-            if (echild && echild.attr('xtype').split('.').pop() != cn.xtype) {
-                break;
-            }
-            Roo.log("got child");
-            ret = this.addxtypeChild(tree,cntr);
-            if (i > 3) {
-                break;
-            }
-        }
-        return ret;
+//        while (true) {
+//            i++;
+//            var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
+//            if (!echild) {
+//                break;
+//            }
+//            if (echild && echild.attr('xtype').split('.').pop() != cn.xtype) {
+//                break;
+//            }
+//            Roo.log("got child");
+//            ret = this.addxtypeChild(tree,cntr);
+//            if (i > 3) {
+//                break;
+//            }
+//        }
+//        return ret;
     },
     
     addxtypeChild : function (tree, cntr)
