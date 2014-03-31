@@ -113,6 +113,9 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     
     addxtype  : function(tree,cntr)
     {
+        Roo.log('start');
+        Roo.log(this);
+        Roo.log(tree);
         var has_flexy = typeof(tree['flexy:if'] != 'undefined') ||
                     typeof(tree['flexy:foreach'] != 'undefined');
                 
