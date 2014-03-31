@@ -547,8 +547,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
                 }
             ];
         }
-        Roo.log('cfg');
-        Roo.log(cfg)
+        
         if (this.badge) {
             cfg.html += ' ';
             
@@ -559,7 +558,11 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             cfg.href=this.href;
             
             cfg.cn = [
-                cfg.cn,
+                {
+                    tag: 'span',
+                    cls: 'glyphicon glyphicon-' + this.glyphicon,
+                    html: this.html
+                },
                 {
                     tag: 'span',
                     cls: 'badge',
