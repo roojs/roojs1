@@ -127,16 +127,16 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         var cn = this;
         cntr = typeof(cntr == 'undefined' ) ? 'getChildContainer' : cntr;
         var self_cntr_el = Roo.get(this[cntr]());
-        
+        var ret = false;
         while (true) {
             
             var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
             if (!echild) {
                 break;
             }
-        
+            ret = this.addxtypeChild(tree,cntr);
         }
-      
+        return ret;
     },
     
     addxtypeChild : function (tree, cntr)
