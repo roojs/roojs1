@@ -4730,6 +4730,12 @@
      "memberOf": ""
     },
     {
+     "name": "preventDefault",
+     "type": "Boolean",
+     "desc": "true | false",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
