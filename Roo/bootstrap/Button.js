@@ -24,6 +24,7 @@
  * @cfg {String} ontext text for on toggle state
  * @cfg {String} offtext text for off toggle state
  * @cfg {Boolean} defaulton true | false
+ * @cfg {Boolean} preventDefault true | false
  * 
  * @constructor
  * Create a new button
@@ -62,6 +63,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     ontext: 'ON',
     offtext: 'OFF',
     defaulton: true,
+    preventDefault : false,
     
     getAutoCreate : function(){
         
