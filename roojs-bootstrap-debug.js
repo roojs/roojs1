@@ -549,17 +549,16 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         }
         
         if (this.badge) {
-//            cfg.html += ' ';
-//            
-//            cfg.tag = 'a';
-//            
-//            cfg.cls=cfg.cls;
-//            
-//            cfg.href=this.href;
+            cfg.html += ' ';
+            
+            cfg.tag = 'a';
+            
+//            cfg.cls='btn roo-button';
+            
+            cfg.href=this.href;
             
             cfg.cn = [
-                
-                cfg.cn,
+                cfg.html,
                 {
                     tag: 'span',
                     cls: 'badge',
