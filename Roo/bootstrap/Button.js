@@ -113,6 +113,26 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             return cfg;
         }
         
+        if (this.badge) {
+            cfg.html += ' ';
+            
+            cfg.tag = 'a';
+            
+            cfg.cls='btn roo-button';
+            
+            cfg.href=this.href;
+            
+            cfg.cn = [
+                cfg.html,
+                {
+                    tag: 'span',
+                    cls: 'badge',
+                    html: this.badge
+                }
+            ];
+            
+            cfg.html='';
+        }
          
         if (this.theme==='default') {
             cfg.cls = 'btn roo-button';
