@@ -152,7 +152,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             }
             Roo.log('this');
             Roo.log(this);
-            ret = this.addxtypeChild(tree),cntr);
+            ret = this.addxtypeChild(tree,cntr);
         }
         return ret;
     },
