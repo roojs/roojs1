@@ -133,7 +133,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         var ret = false;
         var i =0 ;
         Roo.log('here');
-        Roo.log(cn);
+        Roo.log(tree);
 //        while (true) {
 //            i++;
 //            var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
