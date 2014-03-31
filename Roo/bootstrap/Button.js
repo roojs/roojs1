@@ -63,7 +63,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     ontext: 'ON',
     offtext: 'OFF',
     defaulton: true,
-    preventDefault : false,
+    preventDefault : true,
     
     getAutoCreate : function(){
         
