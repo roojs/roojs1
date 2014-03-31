@@ -159,7 +159,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             }
             Roo.log("got child");
              Roo.log(this);
-            ret = this.addxtypeChild(tree,cntr);
+            ret = this.addxtypeChild(Roo.apply({}, tree),cntr);
         }
         return ret;
     },
@@ -246,7 +246,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             return cn;
         }
         var items = tree.items;
-//        delete tree.items;
+        delete tree.items;
         
         //Roo.log(items.length);
             // add the items..
