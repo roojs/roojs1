@@ -137,6 +137,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         var i =0 ;
         
         Roo.log('here');
+        Roo.log(tree['flexy:if']);
+        Roo.log(tree['flexy:foreach']);
         Roo.log(this);
         Roo.log(tree);
         Roo.log(cn);
