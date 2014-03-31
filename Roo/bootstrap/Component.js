@@ -114,6 +114,11 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         var cn = this;
         cntr = typeof(cntr == 'undefined' ) ? 'getChildContainer' : cntr;
         
+        
+        var has_flexy = typeof(tree['flexy:if'] != 'undefined') ||
+                    typeof(tree['flexy:foreach'] != 'undefined');
+          
+        
         // render the element if it's not BODY.
         if (tree.xtype != 'Body') {
             
@@ -124,9 +129,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             
             var build_from_html =  Roo.XComponent.build_from_html;
             
-            var has_flexy = typeof(tree['flexy:if'] != 'undefined') ||
-                    typeof(tree['flexy:foreach'] != 'undefined');
-          
+            
             // does the container contain child eleemnts with 'xtype' attributes.
             // that match this xtype..
             // note - when we render we create these as well..
