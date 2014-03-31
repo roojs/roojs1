@@ -169,8 +169,8 @@ Roo.log('here');
         cntr = typeof(cntr == 'undefined' ) ? 'getChildContainer' : cntr;
         
         
-        var has_flexy = typeof(tree['flexy:if'] != 'undefined') ||
-                    typeof(tree['flexy:foreach'] != 'undefined');
+        var has_flexy = (typeof(tree['flexy:if']) != 'undefined') ||
+                    (typeof(tree['flexy:foreach']) != 'undefined');
           
         
         
