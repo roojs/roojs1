@@ -123,6 +123,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         var page_has_body = (Roo.get(document.body).attr('xtype') == 'Roo.bootstrap.Body');
           
         if (!has_flexy || !build_from_html || is_body || !page_has_body  ) {
+            Roo.log('run');
             return this.addxtypeChild(tree,cntr);
         }
         
