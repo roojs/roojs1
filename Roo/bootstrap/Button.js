@@ -204,7 +204,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
                 {
                     tag: 'span',
                     cls: 'glyphicon glyphicon-' + this.glyphicon,
-                    html: this.html
+                    
                 },
                 {
                     tag: 'span',
