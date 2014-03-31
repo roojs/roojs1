@@ -116,13 +116,14 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         var has_flexy = typeof(tree['flexy:if'] != 'undefined') ||
                     typeof(tree['flexy:foreach'] != 'undefined');
         
-        var build_from_html =  Roo.XComponent.build_from_html;
+//        var build_from_html =  Roo.XComponent.build_from_html;
+//          
+//        var is_body  = (tree.xtype == 'Body') ;
+//          
+//        var page_has_body = (Roo.get(document.body).attr('xtype') == 'Roo.bootstrap.Body');
           
-        var is_body  = (tree.xtype == 'Body') ;
-          
-        var page_has_body = (Roo.get(document.body).attr('xtype') == 'Roo.bootstrap.Body');
-          
-        if (!has_flexy || !build_from_html || is_body || !page_has_body  ) {
+//        if (!has_flexy || !build_from_html || is_body || !page_has_body  ) {
+        if (!has_flexy) {
             
             return this.addxtypeChild(tree,cntr);
         }
