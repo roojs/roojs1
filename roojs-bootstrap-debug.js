@@ -45,7 +45,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     
     can_build_overlaid : true,
     
-    "data-id" : false,
+    "data-id" : 12,
     
     parent: function() {
         // returns the parent component..
