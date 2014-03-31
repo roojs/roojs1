@@ -527,8 +527,8 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             cfg.cls += ' dropdown test';
         }
         
-        
-        
+        Roo.log('this.disabled');
+        Roo.log(this.disabled);
         if (this.disabled) {
             cfg.disabled = 'disabled';
         }
