@@ -113,8 +113,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     
     addxtype  : function(tree,cntr)
     {
-        var has_flexy = typeof(tree['flexy:if'] != 'undefined') ||
-                    typeof(tree['flexy:foreach'] != 'undefined');
+        var has_flexy = (typeof(tree['flexy:if']) != 'undefined') ||
+                    (typeof(tree['flexy:foreach']) != 'undefined');
         
 //        var build_from_html =  Roo.XComponent.build_from_html;
 //          
@@ -123,9 +123,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
 //        var page_has_body = (Roo.get(document.body).attr('xtype') == 'Roo.bootstrap.Body');
           
 //        if (!has_flexy || !build_from_html || is_body || !page_has_body  ) {
-Roo.log('here');
-        Roo.log(typeof(tree['flexy:if'] != 'undefined'));
-        Roo.log(typeof(tree['flexy:foreach'] != 'undefined'));
+
         if (!has_flexy) {
             
             return this.addxtypeChild(tree,cntr);
@@ -169,8 +167,8 @@ Roo.log('here');
         cntr = typeof(cntr == 'undefined' ) ? 'getChildContainer' : cntr;
         
         
-        var has_flexy = typeof(tree['flexy:if'] != 'undefined') ||
-                    typeof(tree['flexy:foreach'] != 'undefined');
+        var has_flexy = (typeof(tree['flexy:if']) != 'undefined') ||
+                    (typeof(tree['flexy:foreach']) != 'undefined');
           
         
         
