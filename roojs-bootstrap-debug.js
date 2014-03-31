@@ -528,7 +528,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         }
         
         if (this.disabled) {
-            cfg.disabled = this.disabled;
+            cfg.disabled = 'disabled';
         }
         //????
         if (this.items) {
