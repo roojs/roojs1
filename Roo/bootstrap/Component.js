@@ -115,10 +115,16 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     {
         var has_flexy = typeof(tree['flexy:if'] != 'undefined') ||
                     typeof(tree['flexy:foreach'] != 'undefined');
-       
-        if (!has_flexy) {
-            return this.addxtypeChild(tree,cntr)
+       var build_from_html =  Roo.XComponent.build_from_html;
+          
+          var is_body  = (tree.xtype == 'Body') {
+          
+        if (!has_flexy || !build_from_html || is_body  ) {
+            return this.addxtypeChild(tree,cntr);
         }
+        
+        
+        
       
     },
     
