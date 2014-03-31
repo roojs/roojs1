@@ -146,7 +146,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         Roo.log(tree);
         Roo.log(tree['flexy:if']);
         Roo.log(tree['flexy:foreach']);
-        return false;
+//        return false;
         while (true) {
             var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
             Roo.log('echild');
