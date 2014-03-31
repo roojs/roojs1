@@ -85,7 +85,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         }
         
         if(this.data-id){
-            cfg.data-id = this.data-id;
+            cfg['data-id'] = this.data-id;
         }
         if (this.cls) {
             cfg.cls += ' ' + this.cls;
