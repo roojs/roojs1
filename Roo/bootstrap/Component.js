@@ -124,9 +124,13 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         if (!has_flexy || !build_from_html || is_body || !page_has_body  ) {
             return this.addxtypeChild(tree,cntr);
         }
+        while (true) {
+            var cn = this;
+            cntr = typeof(cntr == 'undefined' ) ? 'getChildContainer' : cntr;
+            var self_cntr_el = Roo.get(this[cntr]());
+            var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
         
-        
-        
+        }
       
     },
     
