@@ -45,8 +45,6 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     
     can_build_overlaid : true,
     
-    data_id : 12,
-    
     parent: function() {
         // returns the parent component..
         return Roo.ComponentMgr.get(this.parentId)
@@ -84,9 +82,15 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             }
         }
         
-        if(this.data_id){
-            cfg.data_id = this.data_id;
+        if (this.xattr && typeof(this.xattr) =='string') {
+            var x = this.xattr.split(';');
+            
+            for (var i in x) {
+                var a = x[i].split(':');
+                cfg[a[0]] = a[1];
+            }
         }
+        
         if (this.cls) {
             cfg.cls += ' ' + this.cls;
         }
