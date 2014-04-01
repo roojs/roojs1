@@ -328,7 +328,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     setDisabled : function(v)
     {
         var i  = this.inputEl().dom;
-        if (v) {
+        if (!v) {
             i.removeAttribute('disabled');
             return;
             
