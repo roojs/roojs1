@@ -30,7 +30,7 @@
 }
 .x-body-masked
 {
-	/*overflow:hidden !important;*/
+	overflow:hidden !important;
 }
 .x-body-masked select,.ext-masked object,.ext-masked embed
 {
