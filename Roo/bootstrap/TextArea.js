@@ -31,6 +31,7 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
     rows : 5,
     readOnly : false,
     warp : 'soft',
+    resize : false,
     
     getAutoCreate : function(){
         
@@ -53,6 +54,10 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
             
         };
         
+        if(this.resize){
+            input.style = (typeof(input.style) == 'undefined') ? 'resize:' + this.resize : input.style + 'resize:' + this.size;
+        }
+        
         if(this.cols){
             input.cols = this.cols;
         }
@@ -66,7 +71,7 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
         }
         
         if (this.size) {
-            input.cls += ' input-' + this.size;
+            input.cls = (typeof(input.cls) == 'undefined') ? 'input-' + this.size : input.cls + ' input-' + this.size;
         }
         
         var settings=this;
