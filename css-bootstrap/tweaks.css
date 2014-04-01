@@ -15,7 +15,7 @@
     width: auto;
 }
 
-textarea.noneresize {
+textarea.nonresize {
     resize: none;
 }
 
