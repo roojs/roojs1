@@ -92,8 +92,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         if (this.cls) {
             cfg.cls += ' ' + this.cls;
         }
-        Roo.log('this.style');
-        Roo.log(this.style);
+        
         if (this.style) { // fixme needs to support more complex style data.
             cfg.style = this.style;
         }
@@ -3853,7 +3852,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
  * @cfg {Number} rows Specifies the visible number of lines in a text area
  * @cfg {Number} readOnly Specifies that a text area should be read-only
  * @cfg {string} wrap (soft|hard)Specifies how the text in a text area is to be wrapped when submitted in a form
- * 
  * 
  * @constructor
  * Create a new TextArea
