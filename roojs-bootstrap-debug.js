@@ -3846,7 +3846,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
 
 /**
  * @class Roo.bootstrap.TextArea
- * @extends Roo.bootstrap.Component
+ * @extends Roo.bootstrap.Input
  * Bootstrap TextArea class
  * @cfg {Number} cols Specifies the visible width of a text area
  * @cfg {Number} rows Specifies the visible number of lines in a text area
@@ -3886,6 +3886,7 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
             warp : this.warp,
             rows : this.rows,
             value : this.value,
+            style : "resize:none",
             cls : 'form-control',
             placeholder : this.placeholder || '' 
             
