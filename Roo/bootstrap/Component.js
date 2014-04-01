@@ -90,7 +90,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         }
         
         if (this.cls) {
-            cfg.cls += ' ' + this.cls;
+            cfg.cls = (typeof(cfg.cls) == 'undefined') ? this.cls : cfg.cls + ' ' + this.cls;
         }
         
         if (this.style) { // fixme needs to support more complex style data.
