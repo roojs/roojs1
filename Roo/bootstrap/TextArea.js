@@ -53,8 +53,13 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
         };
         
         if(this.cols){
-            
+            input.cols = this.cols;
         }
+        
+        if (this.readOnly) {
+            input.readonly = true;
+        }
+        
         if (this.name) {
             input.name = this.name;
         }
