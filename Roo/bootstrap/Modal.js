@@ -235,13 +235,13 @@ Roo.apply(Roo.bootstrap.Modal,  {
          */
         YESNO : [
             {
+                name  : 'no',
+                html : 'No'
+            },
+            {
                 name  :'yes',
                 weight : 'primary',
                 html : 'Yes'
-            },
-            {
-                name  : 'no',
-                html : 'No'
             }
         ],
         
