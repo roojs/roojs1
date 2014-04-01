@@ -142,6 +142,10 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
             input.disabled=true;
         }
         
+        if (this.readOnly) {
+            input.readonly = true;
+        }
+        
         return cfg;
         
     },
