@@ -25,6 +25,7 @@
  * @cfg {String} offtext text for off toggle state
  * @cfg {Boolean} defaulton true | false
  * @cfg {Boolean} preventDefault true | false
+ * @cfg {Boolean} removeClass true | false remove the standard class..
  * 
  * @constructor
  * Create a new button
