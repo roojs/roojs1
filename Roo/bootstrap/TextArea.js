@@ -47,7 +47,6 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
             warp : this.warp,
             rows : this.rows,
             value : this.value,
-            style : "resize:none",
             cls : 'form-control',
             placeholder : this.placeholder || '' 
             
