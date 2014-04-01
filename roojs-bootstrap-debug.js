@@ -3394,9 +3394,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             
         }
         
-        Roo.log(align);
-        Roo.log(this.fieldLabel.length);
-        
         if (align ==='left' && this.fieldLabel.length) {
                 Roo.log("left and has label");
                 cfg.cn = [
@@ -3462,7 +3459,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     setDisabled : function(v)
     {
         var i  = this.inputEl().dom;
-        if (v) {
+        if (!v) {
             i.removeAttribute('disabled');
             return;
             
