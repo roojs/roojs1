@@ -55,7 +55,7 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
         };
         
         if(this.resize){
-            input.style = (typeof(input.style) == 'undefined') ? 'resize:' + this.resize : input.style + 'resize:' + this.size;
+            input.style = (typeof(input.style) == 'undefined') ? 'resize:' + this.resize : input.style + 'resize:' + this.resize;
         }
         
         if(this.cols){
