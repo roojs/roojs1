@@ -159,7 +159,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     {
         var cn = this;
         cntr = typeof(cntr == 'undefined' ) ? 'getChildContainer' : cntr;
-        Roo.log(tree);
+        
         
         var has_flexy = (typeof(tree['flexy:if']) != 'undefined') ||
                     (typeof(tree['flexy:foreach']) != 'undefined');
@@ -171,7 +171,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         if (tree.xtype != 'Body') {
             
             cn = Roo.factory(tree);
-           
+           Roo.log(cn);
             cn.parentType = this.xtype; //??
             cn.parentId = this.id;
             
