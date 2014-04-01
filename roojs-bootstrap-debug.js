@@ -92,6 +92,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         if (this.cls) {
             cfg.cls += ' ' + this.cls;
         }
+        Roo.log('this.style');
+        Roo.log(this.style);
         if (this.style) { // fixme needs to support more complex style data.
             cfg.style = this.style;
         }
