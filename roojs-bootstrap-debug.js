@@ -381,6 +381,7 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
  * @cfg {Boolean} defaulton true | false
  * @cfg {Boolean} preventDefault true | false
  * @cfg {Boolean} removeClass true | false remove the standard class..
+ * @cfg {string} name Specifies name attribute
  * 
  * @constructor
  * Create a new button
@@ -421,6 +422,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     defaulton: true,
     preventDefault : true,
     removeClass : false,
+    name : false,
     
     getAutoCreate : function(){
         
@@ -588,6 +590,10 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         
         if(this.removeClass){
             cfg.cls = '';
+        }
+        
+        if(this.name){
+            cfg.name = this.name;
         }
         
         return cfg;
