@@ -45,6 +45,9 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
         var input =  {
             tag: 'textarea',
             id : id,
+            warp : this.warp,
+            cols : this.cols,
+            rows : this.rows,
             value : this.value,
             cls : 'form-control',
             placeholder : this.placeholder || '' 
