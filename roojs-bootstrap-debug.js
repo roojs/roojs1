@@ -177,7 +177,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             
             var build_from_html =  Roo.XComponent.build_from_html;
             
-            var has_xbuilderid = typeof(cn.el.attr('xbuilderid')) != 'undefined';
+            var has_xbuilderid = typeof(cn.el) != 'undefined' || typeof(cn.el.attr('xbuilderid')) != 'undefined';
             
             // does the container contain child eleemnts with 'xtype' attributes.
             // that match this xtype..
