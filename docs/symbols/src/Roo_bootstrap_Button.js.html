@@ -25,6 +25,7 @@
  * @cfg {String} offtext text for off toggle state
  * @cfg {Boolean} defaulton true | false
  * @cfg {Boolean} preventDefault true | false
+ * @cfg {Boolean} removeClass true | false remove the standard class..
  * 
  * @constructor
  * Create a new button
@@ -64,6 +65,7 @@
     </span><span class="jsdoc-var">offtext</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'OFF'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">defaulton</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">preventDefault </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">removeClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         
@@ -227,6 +229,10 @@
             </span><span class="jsdoc-keyword">throw </span><span class="jsdoc-string">&quot;Tag must be a to set href.&quot;</span><span class="jsdoc-syntax">;
         } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.href.length </span><span class="jsdoc-syntax">&gt; 0) {
             </span><span class="jsdoc-var">cfg.href </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.href</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.removeClass</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
         }
         
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
