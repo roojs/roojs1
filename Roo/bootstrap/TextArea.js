@@ -9,23 +9,9 @@
  * @class Roo.bootstrap.TextArea
  * @extends Roo.bootstrap.Component
  * Bootstrap TextArea class
- * @cfg {Boolean} disabled is it disabled
- * @cfg {String} fieldLabel - the label associated
- * @cfg {String} name name of the input
- * @cfg {string} placeholder - placeholder to put in text.
- * @cfg {string}  before - input group add on before
- * @cfg {string} after - input group add on after
- * @cfg {string} size - (lg|sm) or leave empty..
- * @cfg {Number} xs colspan out of 12 for mobile-sized screens
- * @cfg {Number} sm colspan out of 12 for tablet-sized screens
- * @cfg {Number} md colspan out of 12 for computer-sized screens
- * @cfg {Number} lg colspan out of 12 for large computer-sized screens
- * @cfg {string} value default value of the input
- * @cfg {Number} labelWidth set the width of label (0-12)
  * @cfg {Number} cols Specifies the visible width of a text area
  * @cfg {Number} rows Specifies the visible number of lines in a text area
- * @cfg {Number} maxlength Specifies the maximum number of characters allowed in the text area
- * @cfg {Number} readonly Specifies that a text area should be read-only
+ * @cfg {Number} readOnly Specifies that a text area should be read-only
  * @cfg {string} wrap (soft|hard)Specifies how the text in a text area is to be wrapped when submitted in a form
  * 
  * 
@@ -37,167 +23,14 @@
 Roo.bootstrap.TextArea = function(config){
     Roo.bootstrap.TextArea.superclass.constructor.call(this, config);
    
-        this.addEvents({
-            /**
-             * @event focus
-             * Fires when this field receives input focus.
-             * @param {Roo.form.Field} this
-             */
-            focus : true,
-            /**
-             * @event blur
-             * Fires when this field loses input focus.
-             * @param {Roo.form.Field} this
-             */
-            blur : true,
-            /**
-             * @event specialkey
-             * Fires when any key related to navigation (arrows, tab, enter, esc, etc.) is pressed.  You can check
-             * {@link Roo.EventObject#getKey} to determine which key was pressed.
-             * @param {Roo.form.Field} this
-             * @param {Roo.EventObject} e The event object
-             */
-            specialkey : true,
-            /**
-             * @event change
-             * Fires just before the field blurs if the field value has changed.
-             * @param {Roo.form.Field} this
-             * @param {Mixed} newValue The new value
-             * @param {Mixed} oldValue The original value
-             */
-            change : true,
-            /**
-             * @event invalid
-             * Fires after the field has been marked as invalid.
-             * @param {Roo.form.Field} this
-             * @param {String} msg The validation message
-             */
-            invalid : true,
-            /**
-             * @event valid
-             * Fires after the field has been validated with no errors.
-             * @param {Roo.form.Field} this
-             */
-            valid : true,
-             /**
-             * @event keyup
-             * Fires after the key up
-             * @param {Roo.form.Field} this
-             * @param {Roo.EventObject}  e The event Object
-             */
-            keyup : true
-        });
 };
 
-Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
-     /**
-     * @cfg {String/Boolean} validationEvent The event that should initiate field validation. Set to false to disable
-      automatic validation (defaults to "keyup").
-     */
-    validationEvent : "keyup",
-     /**
-     * @cfg {Boolean} validateOnBlur Whether the field should validate when it loses focus (defaults to true).
-     */
-    validateOnBlur : true,
-    /**
-     * @cfg {Number} validationDelay The length of time in milliseconds after user input begins until validation is initiated (defaults to 250)
-     */
-    validationDelay : 250,
-     /**
-     * @cfg {String} focusClass The CSS class to use when the field receives focus (defaults to "x-form-focus")
-     */
-    focusClass : "x-form-focus",  // not needed???
-    
-       
-    /**
-     * @cfg {String} invalidClass The CSS class to use when marking a field invalid (defaults to "x-form-invalid")
-     */
-    invalidClass : "has-error",
-    
-    /**
-     * @cfg {Boolean} selectOnFocus True to automatically select any existing field text when the field receives input focus (defaults to false)
-     */
-    selectOnFocus : false,
-    
-     /**
-     * @cfg {String} maskRe An input mask regular expression that will be used to filter keystrokes that don't match (defaults to null)
-     */
-    maskRe : null,
-       /**
-     * @cfg {String} vtype A validation type name as defined in {@link Roo.form.VTypes} (defaults to null)
-     */
-    vtype : null,
-    
-      /**
-     * @cfg {Boolean} disableKeyFilter True to disable input keystroke filtering (defaults to false)
-     */
-    disableKeyFilter : false,
-    
-       /**
-     * @cfg {Boolean} disabled True to disable the field (defaults to false).
-     */
-    disabled : false,
-     /**
-     * @cfg {Boolean} allowBlank False to validate that the value length > 0 (defaults to true)
-     */
-    allowBlank : true,
-    /**
-     * @cfg {String} blankText Error text to display if the allow blank validation fails (defaults to "This field is required")
-     */
-    blankText : "This field is required",
-    
-     /**
-     * @cfg {Number} minLength Minimum input field length required (defaults to 0)
-     */
-    minLength : 0,
-    /**
-     * @cfg {Number} maxLength Maximum input field length allowed (defaults to Number.MAX_VALUE)
-     */
-    maxLength : Number.MAX_VALUE,
-    /**
-     * @cfg {String} minLengthText Error text to display if the minimum length validation fails (defaults to "The minimum length for this field is {minLength}")
-     */
-    minLengthText : "The minimum length for this field is {0}",
-    /**
-     * @cfg {String} maxLengthText Error text to display if the maximum length validation fails (defaults to "The maximum length for this field is {maxLength}")
-     */
-    maxLengthText : "The maximum length for this field is {0}",
-  
-    
-    /**
-     * @cfg {Function} validator A custom validation function to be called during field validation (defaults to null).
-     * If available, this function will be called only after the basic validators all return true, and will be passed the
-     * current field value and expected to return boolean true if the value is valid or a string error message if invalid.
-     */
-    validator : null,
-    /**
-     * @cfg {RegExp} regex A JavaScript RegExp object to be tested against the field value during validation (defaults to null).
-     * If available, this regex will be evaluated only after the basic validators all return true, and will be passed the
-     * current field value.  If the test fails, the field will be marked invalid using {@link #regexText}.
-     */
-    regex : null,
-    /**
-     * @cfg {String} regexText The error text to display if {@link #regex} is used and the test fails during validation (defaults to "")
-     */
-    regexText : "",
-    
-    
-    
-    fieldLabel : '',
-    inputType : 'text',
-    
-    name : false,
-    placeholder: false,
-    before : false,
-    after : false,
-    size : false,
-    // private
-    hasFocus : false,
-    preventMark: false,
-    isFormField : true,
-    value : '',
-    labelWidth : 2,
-    
+Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
+     
+    cols : 20,
+    rows : 3,
+    readOnly : false,
+    warp : 'soft',
     
     getAutoCreate : function(){
         
@@ -209,29 +42,23 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         var cfg = {};
         
-        if(this.inputType != 'hidden'){
-            cfg.cls = 'form-group' //input-group
-        }
-        
-//        var cfg = {
-//            cls: 'form-group' //input-group
-//        };
-
         var input =  {
-            tag: 'input',
+            tag: 'textarea',
             id : id,
-            type : this.inputType,
             value : this.value,
             cls : 'form-control',
             placeholder : this.placeholder || '' 
             
         };
+        
         if (this.name) {
             input.name = this.name;
         }
+        
         if (this.size) {
             input.cls += ' input-' + this.size;
         }
+        
         var settings=this;
         ['xs','sm','md','lg'].map(function(size){
             if (settings[size]) {
@@ -264,9 +91,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             }
             
         }
-        
-        Roo.log(align);
-        Roo.log(this.fieldLabel.length);
         
         if (align ==='left' && this.fieldLabel.length) {
                 Roo.log("left and has label");
@@ -313,9 +137,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 
                 
         }
-         
-        
-        
         
         if (this.disabled) {
             input.disabled=true;
