@@ -206,7 +206,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             
                
             // if object has flexy:if - then it may or may not be rendered.
-            if ((build_from_html && has_flexy && !cn.el &&  cn.can_build_overlaid) || has_xbuilderid) {
+            if ((build_from_html && has_flexy && !cn.el &&  cn.can_build_overlaid) || !has_xbuilderid) {
                 // skip a flexy if element.
                 Roo.log('skipping render');
              } else {
