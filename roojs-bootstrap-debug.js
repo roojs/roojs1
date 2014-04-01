@@ -137,8 +137,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
 
         var self_cntr_el = Roo.get(this[cntr]());
         var ret = false;
-        Roo.log('self_cntr_el');
-            Roo.log(self_cntr_el);
+        
         while (true) {
             var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
             
@@ -149,8 +148,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             if (echild && echild.attr('xtype').split('.').pop() != cn.xtype) {
                 break;
             }
-            Roo.log('this');
-            Roo.log(this);
+            
             ret = this.addxtypeChild(Roo.apply({}, tree),cntr);
         }
         return ret;
@@ -211,9 +209,6 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 Roo.log('skipping render');
              } else {
                  
-                 
-                 Roo.log('render');
-                Roo.log(cn);
                 // actually if flexy:foreach is found, we really want to create 
                 // multiple copies here...
                 cn.render(this[cntr]());
