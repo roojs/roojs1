@@ -9,6 +9,21 @@
  * @class Roo.bootstrap.TextArea
  * @extends Roo.bootstrap.Input
  * Bootstrap TextArea class
+ * @cfg {Boolean} disabled is it disabled
+ * @cfg {String} fieldLabel - the label associated
+ * @cfg {String} inputType button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text
+ * @cfg {String} name name of the input
+ * @cfg {string}  inputType - input / file submit ...
+ * @cfg {string} placeholder - placeholder to put in text.
+ * @cfg {string}  before - input group add on before
+ * @cfg {string} after - input group add on after
+ * @cfg {string} size - (lg|sm) or leave empty..
+ * @cfg {Number} xs colspan out of 12 for mobile-sized screens
+ * @cfg {Number} sm colspan out of 12 for tablet-sized screens
+ * @cfg {Number} md colspan out of 12 for computer-sized screens
+ * @cfg {Number} lg colspan out of 12 for large computer-sized screens
+ * @cfg {string} value default value of the input
+ * @cfg {Number} labelWidth set the width of label (0-12)
  * @cfg {Number} cols Specifies the visible width of a text area
  * @cfg {Number} rows Specifies the visible number of lines in a text area
  * @cfg {Number} readOnly Specifies that a text area should be read-only
