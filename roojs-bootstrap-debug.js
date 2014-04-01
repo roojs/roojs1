@@ -3865,7 +3865,7 @@ Roo.bootstrap.TextArea = function(config){
 
 Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
      
-    cols : 20,
+    cols : 0,
     rows : 3,
     readOnly : false,
     warp : 'soft',
