@@ -13,6 +13,7 @@
  * @cfg {Number} rows Specifies the visible number of lines in a text area
  * @cfg {Number} readOnly Specifies that a text area should be read-only
  * @cfg {string} wrap (soft|hard)Specifies how the text in a text area is to be wrapped when submitted in a form
+ * @cfg {string} resize (none|both|horizontal|vertical|inherit|initial)
  * 
  * @constructor
  * Create a new TextArea
@@ -30,6 +31,7 @@
     </span><span class="jsdoc-var">rows </span><span class="jsdoc-syntax">: 5,
     </span><span class="jsdoc-var">readOnly </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">warp </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'soft'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">resize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         
@@ -47,11 +49,14 @@
             </span><span class="jsdoc-var">warp </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.warp</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">rows </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.rows</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;resize:none&quot;</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'form-control'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">placeholder </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.placeholder </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'' 
             
         </span><span class="jsdoc-syntax">};
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resize</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">input.style </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input.style</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">'resize:' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.resize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">input.style </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'resize:' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.resize</span><span class="jsdoc-syntax">;
+        }
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cols</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">input.cols </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cols</span><span class="jsdoc-syntax">;
@@ -66,7 +71,7 @@
         }
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.size</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">input.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' input-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.size</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">input.cls </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input.cls</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">'input-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.size </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">input.cls </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' input-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.size</span><span class="jsdoc-syntax">;
         }
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">settings</span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;

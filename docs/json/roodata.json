@@ -9356,6 +9356,12 @@
      "memberOf": ""
     },
     {
+     "name": "resize",
+     "type": "string",
+     "desc": "(none|both|horizontal|vertical|inherit|initial)",
+     "memberOf": ""
+    },
+    {
      "name": "disabled",
      "type": "Boolean",
      "desc": "is it disabled",
