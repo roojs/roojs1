@@ -13,6 +13,7 @@
  * @cfg {Number} rows Specifies the visible number of lines in a text area
  * @cfg {Number} readOnly Specifies that a text area should be read-only
  * @cfg {string} wrap (soft|hard)Specifies how the text in a text area is to be wrapped when submitted in a form
+ * @cfg {string} resize (none|both|horizontal|vertical|inherit|initial)
  * 
  * @constructor
  * Create a new TextArea
