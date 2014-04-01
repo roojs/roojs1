@@ -45,7 +45,6 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
             tag: 'textarea',
             id : id,
             warp : this.warp,
-            cols : this.cols,
             rows : this.rows,
             value : this.value,
             cls : 'form-control',
@@ -53,6 +52,9 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
             
         };
         
+        if(this.cols){
+            
+        }
         if (this.name) {
             input.name = this.name;
         }
@@ -142,10 +144,6 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
         
         if (this.disabled) {
             input.disabled=true;
-        }
-        
-        if (this.readOnly) {
-            input.readonly = true;
         }
         
         return cfg;
