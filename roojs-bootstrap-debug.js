@@ -3865,8 +3865,8 @@ Roo.bootstrap.TextArea = function(config){
 
 Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
      
-    cols : 0,
-    rows : 3,
+    cols : false,
+    rows : 5,
     readOnly : false,
     warp : 'soft',
     
@@ -3884,13 +3884,20 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
             tag: 'textarea',
             id : id,
             warp : this.warp,
-            cols : this.cols,
             rows : this.rows,
             value : this.value,
             cls : 'form-control',
             placeholder : this.placeholder || '' 
             
         };
+        
+        if(this.cols){
+            input.cols = this.cols;
+        }
+        
+        if (this.readOnly) {
+            input.readonly = true;
+        }
         
         if (this.name) {
             input.name = this.name;
@@ -3981,10 +3988,6 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
         
         if (this.disabled) {
             input.disabled=true;
-        }
-        
-        if (this.readOnly) {
-            input.readonly = true;
         }
         
         return cfg;
