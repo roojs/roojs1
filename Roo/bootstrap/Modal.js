@@ -251,13 +251,13 @@ Roo.apply(Roo.bootstrap.Modal,  {
          */
         OKCANCEL : [
             {
+               name : 'cancel',
+                html : 'Cancel'
+            },
+            {
                 name : 'ok',
                 weight : 'primary',
                 html : 'OK'
-            },
-            {
-               name : 'cancel',
-                html : 'Cancel'
             }
         ],
         /**
