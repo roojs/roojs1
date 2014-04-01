@@ -31,7 +31,6 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
     rows : 3,
     readOnly : false,
     warp : 'soft',
-    resize : 'both',
     
     getAutoCreate : function(){
         
