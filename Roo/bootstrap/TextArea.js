@@ -153,11 +153,11 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
         
     },
     /**
-     * return the real input element.
+     * return the real textarea element.
      */
     inputEl: function ()
     {
-        return this.el.select('input.form-control',true).first();
+        return this.el.select('textarea.form-control',true).first();
     },
     setDisabled : function(v)
     {
