@@ -7,13 +7,12 @@
 
 /**
  * @class Roo.bootstrap.TextArea
- * @extends Roo.bootstrap.Component
+ * @extends Roo.bootstrap.Input
  * Bootstrap TextArea class
  * @cfg {Number} cols Specifies the visible width of a text area
  * @cfg {Number} rows Specifies the visible number of lines in a text area
  * @cfg {Number} readOnly Specifies that a text area should be read-only
  * @cfg {string} wrap (soft|hard)Specifies how the text in a text area is to be wrapped when submitted in a form
- * 
  * 
  * @constructor
  * Create a new TextArea
@@ -27,8 +26,8 @@
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.TextArea</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Input</span><span class="jsdoc-syntax">,  {
      
-    </span><span class="jsdoc-var">cols </span><span class="jsdoc-syntax">: 20,
-    </span><span class="jsdoc-var">rows </span><span class="jsdoc-syntax">: 3,
+    </span><span class="jsdoc-var">cols </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">rows </span><span class="jsdoc-syntax">: 5,
     </span><span class="jsdoc-var">readOnly </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">warp </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'soft'</span><span class="jsdoc-syntax">,
     
@@ -46,13 +45,20 @@
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'textarea'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">warp </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.warp</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">cols </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.cols</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">rows </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.rows</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'form-control'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">placeholder </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.placeholder </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'' 
             
         </span><span class="jsdoc-syntax">};
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cols</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">input.cols </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cols</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.readOnly</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">input.readonly </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        }
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">input.name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">;
@@ -143,10 +149,6 @@
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">input.disabled</span><span class="jsdoc-syntax">=</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
-        }
-        
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.readOnly</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">input.readonly </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
         }
         
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
