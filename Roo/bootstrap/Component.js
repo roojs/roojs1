@@ -209,9 +209,6 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 Roo.log('skipping render');
              } else {
                  
-                 
-                 Roo.log('render');
-                Roo.log(cn);
                 // actually if flexy:foreach is found, we really want to create 
                 // multiple copies here...
                 cn.render(this[cntr]());
