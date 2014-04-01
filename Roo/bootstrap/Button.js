@@ -65,6 +65,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     offtext: 'OFF',
     defaulton: true,
     preventDefault : true,
+    removeClass : false,
     
     getAutoCreate : function(){
         
@@ -228,6 +229,10 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             throw "Tag must be a to set href.";
         } else if (this.href.length > 0) {
             cfg.href = this.href;
+        }
+        
+        if(this.removeClass){
+            cfg.cls = '';
         }
         
         return cfg;
