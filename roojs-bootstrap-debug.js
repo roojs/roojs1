@@ -3852,6 +3852,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
  * @cfg {Number} rows Specifies the visible number of lines in a text area
  * @cfg {Number} readOnly Specifies that a text area should be read-only
  * @cfg {string} wrap (soft|hard)Specifies how the text in a text area is to be wrapped when submitted in a form
+ * @cfg {string} resize (none|both|horizontal|vertical|inherit|initial)
  * 
  * @constructor
  * Create a new TextArea
@@ -3869,6 +3870,7 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
     rows : 5,
     readOnly : false,
     warp : 'soft',
+    resize : false,
     
     getAutoCreate : function(){
         
@@ -3886,11 +3888,14 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
             warp : this.warp,
             rows : this.rows,
             value : this.value,
-            style : "resize:none",
             cls : 'form-control',
             placeholder : this.placeholder || '' 
             
         };
+        
+        if(this.resize){
+            input.style = (typeof(input.style) == 'undefined') ? 'resize:' + this.resize : input.style + 'resize:' + this.resize;
+        }
         
         if(this.cols){
             input.cols = this.cols;
@@ -3905,7 +3910,7 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
         }
         
         if (this.size) {
-            input.cls += ' input-' + this.size;
+            input.cls = (typeof(input.cls) == 'undefined') ? 'input-' + this.size : input.cls + ' input-' + this.size;
         }
         
         var settings=this;
