@@ -4736,6 +4736,12 @@
      "memberOf": ""
     },
     {
+     "name": "removeClass",
+     "type": "Boolean",
+     "desc": "true | false remove the standard class..",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",

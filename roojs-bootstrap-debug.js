@@ -380,6 +380,7 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
  * @cfg {String} offtext text for off toggle state
  * @cfg {Boolean} defaulton true | false
  * @cfg {Boolean} preventDefault true | false
+ * @cfg {Boolean} removeClass true | false remove the standard class..
  * 
  * @constructor
  * Create a new button
@@ -419,13 +420,14 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     offtext: 'OFF',
     defaulton: true,
     preventDefault : true,
+    removeClass : false,
     
     getAutoCreate : function(){
         
         var cfg = {
             tag : 'button',
             cls : 'roo-button',
-            html: 'hello'
+            html: ''
         };
         
         if (['a', 'button', 'input', 'submit'].indexOf(this.tag) < 0) {
@@ -582,6 +584,10 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             throw "Tag must be a to set href.";
         } else if (this.href.length > 0) {
             cfg.href = this.href;
+        }
+        
+        if(this.removeClass){
+            cfg.cls = '';
         }
         
         return cfg;
