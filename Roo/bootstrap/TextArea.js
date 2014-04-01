@@ -26,7 +26,7 @@ Roo.bootstrap.TextArea = function(config){
 
 Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
      
-    cols : 0,
+    cols : false,
     rows : 5,
     readOnly : false,
     warp : 'soft',
