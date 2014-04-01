@@ -15,3 +15,7 @@
     width: auto;
 }
 
+textarea.noneresize {
+    resize: none;
+}
+
