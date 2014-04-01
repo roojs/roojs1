@@ -38,6 +38,56 @@
 Roo.bootstrap.TextArea = function(config){
     Roo.bootstrap.TextArea.superclass.constructor.call(this, config);
    
+   this.addEvents({
+            /**
+             * @event focus
+             * Fires when this field receives textarea focus.
+             * @param {Roo.form.Field} this
+             */
+            focus : true,
+            /**
+             * @event blur
+             * Fires when this field loses textarea focus.
+             * @param {Roo.form.Field} this
+             */
+            blur : true,
+            /**
+             * @event specialkey
+             * Fires when any key related to navigation (arrows, tab, enter, esc, etc.) is pressed.  You can check
+             * {@link Roo.EventObject#getKey} to determine which key was pressed.
+             * @param {Roo.form.Field} this
+             * @param {Roo.EventObject} e The event object
+             */
+            specialkey : true,
+            /**
+             * @event change
+             * Fires just before the field blurs if the field value has changed.
+             * @param {Roo.form.Field} this
+             * @param {Mixed} newValue The new value
+             * @param {Mixed} oldValue The original value
+             */
+            change : true,
+            /**
+             * @event invalid
+             * Fires after the field has been marked as invalid.
+             * @param {Roo.form.Field} this
+             * @param {String} msg The validation message
+             */
+            invalid : true,
+            /**
+             * @event valid
+             * Fires after the field has been validated with no errors.
+             * @param {Roo.form.Field} this
+             */
+            valid : true,
+             /**
+             * @event keyup
+             * Fires after the key up
+             * @param {Roo.form.Field} this
+             * @param {Roo.EventObject}  e The event Object
+             */
+            keyup : true
+        });
 };
 
 Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
