@@ -141,6 +141,7 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
         if (this.disabled) {
             input.disabled=true;
         }
+        
         return cfg;
         
     },
