@@ -1383,13 +1383,13 @@ Roo.apply(Roo.bootstrap.Modal,  {
          */
         YESNO : [
             {
+                name  : 'no',
+                html : 'No'
+            },
+            {
                 name  :'yes',
                 weight : 'primary',
                 html : 'Yes'
-            },
-            {
-                name  : 'no',
-                html : 'No'
             }
         ],
         
@@ -1399,13 +1399,13 @@ Roo.apply(Roo.bootstrap.Modal,  {
          */
         OKCANCEL : [
             {
+               name : 'cancel',
+                html : 'Cancel'
+            },
+            {
                 name : 'ok',
                 weight : 'primary',
                 html : 'OK'
-            },
-            {
-               name : 'cancel',
-                html : 'Cancel'
             }
         ],
         /**
