@@ -7,7 +7,7 @@
 
 /**
  * @class Roo.bootstrap.TextArea
- * @extends Roo.bootstrap.Component
+ * @extends Roo.bootstrap.Input
  * Bootstrap TextArea class
  * @cfg {Number} cols Specifies the visible width of a text area
  * @cfg {Number} rows Specifies the visible number of lines in a text area
