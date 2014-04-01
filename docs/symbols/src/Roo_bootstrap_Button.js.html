@@ -170,8 +170,6 @@
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' dropdown test'</span><span class="jsdoc-syntax">;
         }
         
-        
-        
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cfg.disabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'disabled'</span><span class="jsdoc-syntax">;
         }
@@ -198,12 +196,23 @@
             
             </span><span class="jsdoc-var">cfg.tag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">;
             
-            </span><span class="jsdoc-var">cfg.cls</span><span class="jsdoc-syntax">=</span><span class="jsdoc-string">'btn roo-button'</span><span class="jsdoc-syntax">;
+</span><span class="jsdoc-comment">//            cfg.cls='btn roo-button';
             
             </span><span class="jsdoc-var">cfg.href</span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">this.href</span><span class="jsdoc-syntax">;
             
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg.html</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.glyphicon</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">= {
+                            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'glyphicon glyphicon-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.glyphicon</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.html
+                        </span><span class="jsdoc-syntax">};
+                
+            }
+            
             </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
-                </span><span class="jsdoc-var">cfg.html</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">,
                 {
                     </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'badge'</span><span class="jsdoc-syntax">,
@@ -224,7 +233,7 @@
     },
     </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
        </span><span class="jsdoc-comment">// Roo.log('init events?');
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">);
+//        Roo.log(this.el.dom);
        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'roo-button'</span><span class="jsdoc-syntax">)) {
             </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
