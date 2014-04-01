@@ -26,6 +26,7 @@
  * @cfg {Boolean} defaulton true | false
  * @cfg {Boolean} preventDefault true | false
  * @cfg {Boolean} removeClass true | false remove the standard class..
+ * @cfg {string} name Specifies name attribute
  * 
  * @constructor
  * Create a new button
@@ -66,13 +67,14 @@
     </span><span class="jsdoc-var">defaulton</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">preventDefault </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">removeClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-button'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'hello'
+            </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''
         </span><span class="jsdoc-syntax">};
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'submit'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tag</span><span class="jsdoc-syntax">) &lt; 0) {
@@ -233,6 +235,10 @@
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.removeClass</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg.name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">;
         }
         
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;

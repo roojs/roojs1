@@ -4742,6 +4742,12 @@
      "memberOf": ""
     },
     {
+     "name": "name",
+     "type": "string",
+     "desc": "Specifies name attribute",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
