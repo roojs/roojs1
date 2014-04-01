@@ -72,7 +72,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         var cfg = {
             tag : 'button',
             cls : 'roo-button',
-            html: 'hello'
+            html: ''
         };
         
         if (['a', 'button', 'input', 'submit'].indexOf(this.tag) < 0) {
