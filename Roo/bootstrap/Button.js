@@ -26,7 +26,6 @@
  * @cfg {Boolean} defaulton true | false
  * @cfg {Boolean} preventDefault true | false
  * @cfg {Boolean} removeClass true | false remove the standard class..
- * @cfg {string} name Specifies name attribute
  * 
  * @constructor
  * Create a new button
