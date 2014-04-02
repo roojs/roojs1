@@ -235,7 +235,9 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         var items = tree.items;
         delete tree.items;
         
+        Roo.log('tree');
         Roo.log(tree);
+        Roo.log('itmes');
         Roo.log(items);
         //Roo.log(items.length);
             // add the items..
