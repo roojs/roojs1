@@ -144,20 +144,20 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         var self_cntr_el = Roo.get(this[cntr]());
         
         if (!has_flexy_each) {
-            if(!has_flexy_if || typeof(tree.name) == 'undefined'  || !build_from_html || is_body || !page_has_body){
+//            if(!has_flexy_if || typeof(tree.name) == 'undefined'  || !build_from_html || is_body || !page_has_body){
                 return this.addxtypeChild(tree,cntr);
-            }
-            Roo.log('here');
-            Roo.log(this);
-            
-            var echild =self_cntr_el ? self_cntr_el.child('>*[name=' + tree.name + ']') : false;
-                
-            if(echild){
-                return this.addxtypeChild(Roo.apply({}, tree),cntr);
-            }
-            
-            Roo.log('skipping render');
-            return cn;
+//            }
+//            Roo.log('here');
+//            Roo.log(this);
+//            
+//            var echild =self_cntr_el ? self_cntr_el.child('>*[name=' + tree.name + ']') : false;
+//                
+//            if(echild){
+//                return this.addxtypeChild(Roo.apply({}, tree),cntr);
+//            }
+//            
+//            Roo.log('skipping render');
+//            return cn;
             
         }
         
