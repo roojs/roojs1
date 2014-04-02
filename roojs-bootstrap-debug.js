@@ -124,6 +124,11 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     {
         var cn = this;
         
+        cn = Roo.factory(tree);
+           
+        cn.parentType = this.xtype; //??
+        cn.parentId = this.id;
+        
         cntr = typeof(cntr == 'undefined' ) ? 'getChildContainer' : cntr;
         
         var has_flexy_each =  (typeof(tree['flexy:foreach']) != 'undefined');
@@ -136,29 +141,26 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
           
         var page_has_body = (Roo.get(document.body).attr('xtype') == 'Roo.bootstrap.Body');
           
+        var self_cntr_el = Roo.get(this[cntr]());
+        
         if (!has_flexy_each) {
             if(!has_flexy_if || typeof(tree.name) == 'undefined'  || !build_from_html || is_body || !page_has_body){
                 return this.addxtypeChild(tree,cntr);
             }
             Roo.log('here');
             Roo.log(this);
-            var self_cntr_el = Roo.get(this[cntr]());
+            
             var echild =self_cntr_el ? self_cntr_el.child('>*[name=' + tree.name + ']') : false;
                 
             if(echild){
                 return this.addxtypeChild(tree,cntr);
             }
             
+            Roo.log('skipping render');
             return cn;
             
         }
         
-        cn = Roo.factory(tree);
-           
-        cn.parentType = this.xtype; //??
-        cn.parentId = this.id;
-
-        var self_cntr_el = Roo.get(this[cntr]());
         var ret = false;
         
         while (true) {
