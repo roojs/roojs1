@@ -15,6 +15,7 @@ Roo.bootstrap = Roo.bootstrap || {};
  * @cfg {Object} xattr extra attributes to add to 'element' (used by builder to store stuff.)
  * @cfg {Boolean} can_build_overlaid  True if element can be rebuild from a HTML page
  * @cfg {string} dataId cutomer id
+ * @cfg {string} name Specifies name attribute
  * 
  * @constructor
  * Do not use directly - it does not do anything..
@@ -47,6 +48,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     can_build_overlaid : true,
     
     dataId : false,
+    
+    name : false,
     
     parent: function() {
         // returns the parent component..
@@ -96,6 +99,11 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         if (this.style) { // fixme needs to support more complex style data.
             cfg.style = this.style;
         }
+        
+        if(this.name){
+            cfg.name = this.name;
+        }
+        
         this.el = ct.createChild(cfg, position);
         
         if(this.tabIndex !== undefined){
@@ -401,7 +409,6 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
  * @cfg {Boolean} defaulton true | false
  * @cfg {Boolean} preventDefault true | false
  * @cfg {Boolean} removeClass true | false remove the standard class..
- * @cfg {string} name Specifies name attribute
  * 
  * @constructor
  * Create a new button
@@ -610,10 +617,6 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         
         if(this.removeClass){
             cfg.cls = '';
-        }
-        
-        if(this.name){
-            cfg.name = this.name;
         }
         
         return cfg;
