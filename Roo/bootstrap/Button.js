@@ -24,7 +24,7 @@
  * @cfg {String} ontext text for on toggle state
  * @cfg {String} offtext text for off toggle state
  * @cfg {Boolean} defaulton true | false
- * @cfg {Boolean} preventDefault true | false
+ * @cfg {Boolean} preventDefault (true | false) default true
  * @cfg {Boolean} removeClass true | false remove the standard class..
  * 
  * @constructor
