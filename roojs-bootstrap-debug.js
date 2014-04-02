@@ -133,11 +133,14 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         var page_has_body = (Roo.get(document.body).attr('xtype') == 'Roo.bootstrap.Body');
           
         if (!has_flexy_each || !build_from_html || is_body || !page_has_body  ) {
-            if(!has_flexy_if || typeof(tree.name) == 'undefined'){
+            if(!has_flexy_if || typeof(tree.name) == 'undefined' || !build_from_html){
                 return this.addxtypeChild(tree,cntr);
             }
             
-            if(Roo.get(this[cntr]()).child('>*[name=' + tree.name + ']')){
+            var self_cntr_el = Roo.get(this[cntr]());
+            var echild =self_cntr_el ? self_cntr_el.child('>*[name=' + tree.name + ']') : false;
+                
+            if(echild){
                 return this.addxtypeChild(tree,cntr);
             }
             
