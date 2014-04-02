@@ -169,7 +169,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         
         // render the element if it's not BODY.
         if (tree.xtype != 'Body') {
-            
+            var test = Roo.factory(tree);
             cn = Roo.factory(tree);
            
             cn.parentType = this.xtype; //??
@@ -187,6 +187,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 Roo.log(this);
                 Roo.log('cn');
                 Roo.log(cn);
+                Roo.log('test');
+                Roo.log(test);
                 var self_cntr_el = Roo.get(this[cntr]());
                 var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
                 Roo.log('self_cntr_el');
