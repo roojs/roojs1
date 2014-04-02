@@ -147,8 +147,6 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             if(!has_flexy_if || typeof(tree.name) == 'undefined' || !build_from_html || is_body || !page_has_body){
                 return this.addxtypeChild(tree,cntr);
             }
-            Roo.log('here');
-            Roo.log(this);
             
             var echild =self_cntr_el ? self_cntr_el.child('>*[name=' + tree.name + ']') : false;
                 
@@ -207,25 +205,9 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             // note - when we render we create these as well..
             // so we should check to see if body has xtype set.
             if (Roo.get(document.body).attr('xtype') == 'Roo.bootstrap.Body') {
-                Roo.log('this');
-                Roo.log(this);
-                Roo.log('cn');
-                Roo.log(cn);
-                Roo.log('test');
-                Roo.log(test);
-                
+               
                 var self_cntr_el = Roo.get(this[cntr]());
                 var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
-                
-                Roo.log('self_cntr_el');
-                Roo.log(self_cntr_el);
-                
-                Roo.log('echild');
-                Roo.log(echild);
-                
-                if(echild){
-                    Roo.log(echild.attr('xbuilderid'));
-                }
                 
                 if (echild && echild.attr('xtype').split('.').pop() == cn.xtype) {
                   //  Roo.log("found child for " + this.xtype +": " + echild.attr('xtype') );
@@ -275,10 +257,6 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         var items = tree.items;
         delete tree.items;
         
-        Roo.log('tree');
-        Roo.log(tree);
-        Roo.log('itmes');
-        Roo.log(items);
         //Roo.log(items.length);
             // add the items..
         for(var i =0;i < items.length;i++) {
