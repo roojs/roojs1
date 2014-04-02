@@ -203,6 +203,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                     Roo.log(echild.attr('xbuilderid'));
                 }
                 
+                Roo.log(authUser);
                 
                 if (echild && echild.attr('xtype').split('.').pop() == cn.xtype) {
                   //  Roo.log("found child for " + this.xtype +": " + echild.attr('xtype') );
