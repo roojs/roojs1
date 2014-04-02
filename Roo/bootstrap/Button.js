@@ -236,10 +236,6 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             cfg.cls = '';
         }
         
-        if(this.name){
-            cfg.name = this.name;
-        }
-        
         return cfg;
     },
     initEvents: function() {
