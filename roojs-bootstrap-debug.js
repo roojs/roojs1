@@ -113,7 +113,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     
     
     addxtype  : function(tree,cntr)
-    {
+    {return false;
         var has_flexy_each =  (typeof(tree['flexy:foreach']) != 'undefined');
         
         var build_from_html =  Roo.XComponent.build_from_html;
@@ -189,6 +189,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 Roo.log(cn);
                 Roo.log('test');
                 Roo.log(test);
+                
                 var self_cntr_el = Roo.get(this[cntr]());
                 var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
                 Roo.log('self_cntr_el');
@@ -196,6 +197,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 
                 Roo.log('echild');
                 Roo.log(echild);
+                
+                
                 
                 if (echild && echild.attr('xtype').split('.').pop() == cn.xtype) {
                   //  Roo.log("found child for " + this.xtype +": " + echild.attr('xtype') );
