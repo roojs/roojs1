@@ -137,7 +137,10 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 return this.addxtypeChild(tree,cntr);
             }
             
-            if(Roo.get(this[cntr]()).child('>*[name=' + tree.name + ']')){
+            var self_cntr_el = Roo.get(this[cntr]());
+            var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
+                
+            if(echild){
                 return this.addxtypeChild(tree,cntr);
             }
             
