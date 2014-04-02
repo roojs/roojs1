@@ -136,7 +136,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             if(!has_flexy_if || typeof(tree.name) == 'undefined'  || !build_from_html || is_body || !page_has_body){
                 return this.addxtypeChild(tree,cntr);
             }
-            
+            Roo.log('here');
+            Roo.log(this);
             var self_cntr_el = Roo.get(this[cntr]());
             var echild =self_cntr_el ? self_cntr_el.child('>*[name=' + tree.name + ']') : false;
                 
