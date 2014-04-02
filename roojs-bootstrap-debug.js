@@ -212,7 +212,11 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                  
                 // actually if flexy:foreach is found, we really want to create 
                 // multiple copies here...
-                Roo.log(cn.reader);
+                if(cn.header == "Profile Summary"){}
+                    Roo.log(cn);
+                    return;
+                }
+                
                 cn.render(this[cntr]());
              }
             // then add the element..
