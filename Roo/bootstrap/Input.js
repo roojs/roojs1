@@ -196,6 +196,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     isFormField : true,
     value : '',
     labelWidth : 2,
+    checked : false,
     
     
     getAutoCreate : function(){
