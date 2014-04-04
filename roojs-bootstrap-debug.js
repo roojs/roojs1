@@ -3486,7 +3486,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                     {
                         tag: 'label',
                         'for' :  id,
-                        cls : 'control-label col-sm-' + this.labelWidth,
                         cn : [
                             inputblock
                         ],
