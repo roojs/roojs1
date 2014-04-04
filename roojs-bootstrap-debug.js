@@ -3387,6 +3387,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             placeholder : this.placeholder || '' 
             
         };
+      
+        
         if (this.name) {
             input.name = this.name;
         }
