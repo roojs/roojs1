@@ -222,10 +222,14 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             id : id,
             type : this.inputType,
             value : this.value,
-            cls : 'form-control',
+            cls : '',
             placeholder : this.placeholder || '' 
             
         };
+        
+        if(this.inputType == 'checkbox'){
+            input.cls = '';
+        }
         
         if (this.name) {
             input.name = this.name;
