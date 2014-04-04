@@ -25,6 +25,7 @@
  * @cfg {Number} lg colspan out of 12 for large computer-sized screens
  * @cfg {string} value default value of the input
  * @cfg {Number} labelWidth set the width of label (0-12)
+ * @cfg {Boolean} checked initial checkbox
  * 
  * 
  * @constructor
