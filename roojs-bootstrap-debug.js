@@ -3481,19 +3481,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 
         }
         
-        if(this.inputType == 'checkbox'){
-            cfg.cn = [
-                    {
-                        tag: 'label',
-                        'for' :  id,
-                        cn : [
-                            inputblock
-                        ],
-                        html : this.fieldLabel
-                    }
-                ];
-        }
-        
         return cfg;
         
     },
