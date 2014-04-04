@@ -227,10 +227,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             
         };
         
-        if(this.inputType == 'checkbox'){
-            input.cls = '';
-        }
-        
         if (this.name) {
             input.name = this.name;
         }
