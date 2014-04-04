@@ -15,7 +15,7 @@
     width: auto;
 }
 
-.form-checkbox input[type=checkbox] {
+.form-checkbox > input[type=checkbox] {
     height: 30px;
     width: auto;
 }
