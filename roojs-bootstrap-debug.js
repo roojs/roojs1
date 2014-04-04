@@ -16,6 +16,8 @@ Roo.bootstrap = Roo.bootstrap || {};
  * @cfg {Boolean} can_build_overlaid  True if element can be rebuild from a HTML page
  * @cfg {string} dataId cutomer id
  * @cfg {string} name Specifies name attribute
+ * @cfg {width} width set the width of the element
+ * @cfg {height} height set the height of the element
  * 
  * @constructor
  * Do not use directly - it does not do anything..
@@ -3358,6 +3360,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     value : '',
     labelWidth : 2,
     checked : false,
+    width: false,
+    height:false,
     
     
     getAutoCreate : function(){
@@ -3383,13 +3387,17 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             id : id,
             type : this.inputType,
             value : this.value,
-            cls : '',
+            cls : 'form-control',
             placeholder : this.placeholder || '' 
             
         };
         
-        if(this.inputType == 'checkbox'){
-            input.cls = '';
+        if(this.width){
+            input.width = this.width;
+        }
+        
+        if(this.height){
+            input.height = this.height;
         }
         
         if (this.name) {
