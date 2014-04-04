@@ -227,6 +227,13 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             
         };
         
+        if (this.disabled) {
+            input.disabled=true;
+        }
+        
+        if(this.checked){
+            input.checked = 'true';
+        }
         
         if (this.name) {
             input.name = this.name;
@@ -313,12 +320,17 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 
         }
         
-        if (this.disabled) {
-            input.disabled=true;
-        }
-        
-        if(this.checked){
-            input.checked = 'true';
+        if(this.inputType == 'checkbox'){
+            cfg.cn = [
+                    {
+                        tag: 'label',
+                        'for' :  id,
+                        cn : [
+                            inputblock
+                        ]
+                        
+                    }
+                ];
         }
         
         return cfg;
