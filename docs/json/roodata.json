@@ -4732,7 +4732,7 @@
     {
      "name": "preventDefault",
      "type": "Boolean",
-     "desc": "true | false",
+     "desc": "(true | false) default true",
      "memberOf": ""
     },
     {
@@ -5687,6 +5687,12 @@
      "name": "labelWidth",
      "type": "Number",
      "desc": "set the width of label (0-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "checked",
+     "type": "Boolean",
+     "desc": "initial checkbox",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -7043,6 +7049,12 @@
      "name": "labelWidth",
      "type": "Number",
      "desc": "set the width of label (0-12)",
+     "memberOf": ""
+    },
+    {
+     "name": "checked",
+     "type": "Boolean",
+     "desc": "initial checkbox",
      "memberOf": ""
     },
     {
@@ -9602,6 +9614,12 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
+     "name": "checked",
+     "type": "Boolean",
+     "desc": "initial checkbox",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -9971,6 +9989,12 @@
      "name": "labelWidth",
      "type": "Number",
      "desc": "set the width of label (0-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "checked",
+     "type": "Boolean",
+     "desc": "initial checkbox",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
