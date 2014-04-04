@@ -197,8 +197,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     value : '',
     labelWidth : 2,
     checked : false,
-    width: false,
-    height:false,
     
     
     getAutoCreate : function(){
@@ -229,13 +227,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             
         };
         
-        if(this.width){
-            input.width = this.width;
-        }
-        
-        if(this.height){
-            input.height = this.height;
-        }
         
         if (this.name) {
             input.name = this.name;
