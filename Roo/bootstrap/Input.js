@@ -327,8 +327,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                         'for' :  id,
                         cn : [
                             inputblock
-                        ]
-                        
+                        ],
+                        html : this.fieldLabel
                     }
                 ];
         }
