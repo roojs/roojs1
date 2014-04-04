@@ -401,7 +401,7 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
  * @cfg {String} ontext text for on toggle state
  * @cfg {String} offtext text for off toggle state
  * @cfg {Boolean} defaulton true | false
- * @cfg {Boolean} preventDefault true | false
+ * @cfg {Boolean} preventDefault (true | false) default true
  * @cfg {Boolean} removeClass true | false remove the standard class..
  * 
  * @constructor
@@ -3186,6 +3186,7 @@ Roo.form.VTypes = function(){
  * @cfg {Number} lg colspan out of 12 for large computer-sized screens
  * @cfg {string} value default value of the input
  * @cfg {Number} labelWidth set the width of label (0-12)
+ * @cfg {Boolean} checked initial checkbox
  * 
  * 
  * @constructor
@@ -3356,6 +3357,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     isFormField : true,
     value : '',
     labelWidth : 2,
+    checked : false,
     
     
     getAutoCreate : function(){
@@ -3469,13 +3471,15 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 
                 
         }
-         
-        
-        
         
         if (this.disabled) {
             input.disabled=true;
         }
+        
+        if(this.checked){
+            input.checked = 'true';
+        }
+        
         return cfg;
         
     },
