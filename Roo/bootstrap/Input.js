@@ -315,10 +315,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             input.disabled=true;
         }
         
-        if(this.inputType == 'checkbox'){
-            if(this.checked){
-                input.checked = 'true';
-            }
+        if(this.checked){
+            input.checked = 'true';
         }
         
         return cfg;
