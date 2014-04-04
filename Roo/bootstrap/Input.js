@@ -222,7 +222,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             id : id,
             type : this.inputType,
             value : this.value,
-            cls : '',
+            cls : 'form-control',
             placeholder : this.placeholder || '' 
             
         };
