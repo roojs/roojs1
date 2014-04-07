@@ -72,7 +72,6 @@ Roo.extend(Roo.bootstrap.TableCell, Roo.bootstrap.Component,  {
         if (this.cls) {
             cfg.cls=this.cls
         }
-        
         if (this.abbr) {
             cfg.abbr=this.abbr
         }
