@@ -79,6 +79,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
          
         
         var cfg = Roo.apply({},  this.getAutoCreate());
+        Roo.log('cfg');
+        Roo.log(cfg);
         cfg.id = Roo.id();
         
         // fill in the extra attributes 
@@ -2105,18 +2107,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
 	
 	cfg = {
-	    tag: 'table'
-//	    cn: [
-//                {
-//		    tag: 'thead'
-//		},
-//		{
-//		    tag: 'tbody'
-//		},
-//                {
-//		    tag: 'tfoot'
-//		}
-//	    ]
+	    tag: 'table',
+	    cn: [
+		{
+		    tag: 'tbody'
+		}
+	    ]
 	}
         if (this.html) {
             cfg.html=this.html
