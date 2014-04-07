@@ -9,7 +9,7 @@
  * @class Roo.bootstrap.TableRow
  * @extends Roo.bootstrap.Component
  * Bootstrap TableRow class
- * @cfg {String} cls cell class
+ * @cfg {String} cls row class
  * 
  * @constructor
  * Create a new TableRow
