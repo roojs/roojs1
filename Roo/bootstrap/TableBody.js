@@ -9,6 +9,8 @@
  * @class Roo.bootstrap.TableBody
  * @extends Roo.bootstrap.Component
  * Bootstrap TableBody class
+ * @cfg {String} cls element class
+ * @cfg {String} tag element tag (thead|tbody|tfoot) default tbody
  * 
  * @constructor
  * Create a new TableBody
