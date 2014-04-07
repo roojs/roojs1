@@ -2198,7 +2198,8 @@ Roo.extend(Roo.bootstrap.TableRow, Roo.bootstrap.Component,  {
 	cfg = {
 	    tag: 'tr'
 	}
-	
+	Roo.log('row');
+        Roo.log(cfg);
         return cfg;
     }
    
