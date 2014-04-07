@@ -19,7 +19,7 @@
  * @cfg {String} rules Specifies which parts of the inside borders that should be visible
  * @cfg {String} sortable Specifies that the table should be sortable
  * @cfg {String} summary Specifies a summary of the content of a table
- * @cfg {String} width Specifies the width of a table
+ * @cfg {Number} width Specifies the width of a table
  * 
  * @constructor
  * Create a new Table
