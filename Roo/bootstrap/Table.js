@@ -33,6 +33,18 @@ Roo.bootstrap.Table = function(config){
 Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     cls: false,
+    align: false,
+    bgcolor: false,
+    border: false,
+    cellpadding: false,
+    cellspacing: false,
+    frame: false,
+    rules: false,
+    sortable: false,
+    summary: false,
+    width: false,
+    
+    
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
