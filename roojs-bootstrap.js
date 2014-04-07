@@ -65,7 +65,7 @@ Roo.bootstrap.Slider=function(A){Roo.bootstrap.Slider.superclass.constructor.cal
 //Roo/bootstrap/Table.js
 Roo.bootstrap.Table=function(A){Roo.bootstrap.Table.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.Table,Roo.bootstrap.Component,{html:false,cls:false,getAutoCreate:function(){var A=Roo.apply({},Roo.bootstrap.Table.superclass.getAutoCreate.call(this));A={tag:'table'};if(this.html){A.html=this.html}if(this.cls){A.cls=this.cls}return A;}});
 //Roo/bootstrap/TableCell.js
-Roo.bootstrap.TableCell=function(A){Roo.bootstrap.TableCell.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.TableCell,Roo.bootstrap.Component,{getAutoCreate:function(){var A=Roo.apply({},Roo.bootstrap.TableCell.superclass.getAutoCreate.call(this));A={tag:'td'};if(this.html){A.html=this.html}if(this.cls){A.cls=this.cls}return A;}});
+Roo.bootstrap.TableCell=function(A){Roo.bootstrap.TableCell.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.TableCell,Roo.bootstrap.Component,{html:false,cls:false,getAutoCreate:function(){var A=Roo.apply({},Roo.bootstrap.TableCell.superclass.getAutoCreate.call(this));A={tag:'td'};if(this.html){A.html=this.html}if(this.cls){A.cls=this.cls}return A;}});
 //Roo/bootstrap/TableRow.js
 Roo.bootstrap.TableRow=function(A){Roo.bootstrap.TableRow.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.TableRow,Roo.bootstrap.Component,{getAutoCreate:function(){var A=Roo.apply({},Roo.bootstrap.TableRow.superclass.getAutoCreate.call(this));A={tag:'tr'};return A;}});
 //Roo/bootstrap/TableBody.js

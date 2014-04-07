@@ -2144,6 +2144,9 @@ Roo.bootstrap.TableCell = function(config){
 
 Roo.extend(Roo.bootstrap.TableCell, Roo.bootstrap.Component,  {
     
+    html: false,
+    cls: false,
+    
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.TableCell.superclass.getAutoCreate.call(this));
 	
