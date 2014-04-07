@@ -72,6 +72,47 @@ Roo.extend(Roo.bootstrap.TableCell, Roo.bootstrap.Component,  {
         if (this.cls) {
             cfg.cls=this.cls
         }
+        
+        if (this.abbr) {
+            cfg.abbr=this.abbr
+        }
+        if (this.align) {
+            cfg.align=this.align
+        }
+        if (this.axis) {
+            cfg.axis=this.axis
+        }
+        if (this.bgcolor) {
+            cfg.bgcolor=this.bgcolor
+        }
+        if (this.charoff) {
+            cfg.charoff=this.charoff
+        }
+        if (this.colspan) {
+            cfg.colspan=this.colspan
+        }
+        if (this.headers) {
+            cfg.headers=this.headers
+        }
+        if (this.height) {
+            cfg.height=this.height
+        }
+        if (this.nowrap) {
+            cfg.nowrap=this.nowrap
+        }
+        if (this.rowspan) {
+            cfg.rowspan=this.rowspan
+        }
+        if (this.scope) {
+            cfg.scope=this.scope
+        }
+        if (this.valign) {
+            cfg.valign=this.valign
+        }
+        if (this.width) {
+            cfg.width=this.width
+        }
+        
 	
         return cfg;
     }
