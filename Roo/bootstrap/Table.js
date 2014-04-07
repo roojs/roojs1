@@ -28,18 +28,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
 	
 	cfg = {
-	    tag: 'table'
-//	    cn: [
-//                {
-//		    tag: 'thead'
-//		},
-//		{
-//		    tag: 'tbody'
-//		},
-//                {
-//		    tag: 'tfoot'
-//		}
-//	    ]
+	    tag: 'table',
+	    cn: [
+		{
+		    tag: 'tbody'
+		}
+	    ]
 	}
         if (this.html) {
             cfg.html=this.html
