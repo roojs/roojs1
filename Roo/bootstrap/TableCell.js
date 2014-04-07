@@ -40,7 +40,6 @@ Roo.extend(Roo.bootstrap.TableCell, Roo.bootstrap.Component,  {
     html: false,
     cls: false,
     tag: false,
-    
     abbr: false,
     align: false,
     axis: false,
