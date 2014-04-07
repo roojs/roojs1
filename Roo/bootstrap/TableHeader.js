@@ -25,7 +25,7 @@ Roo.extend(Roo.bootstrap.TableHeader, Roo.bootstrap.Component,  {
         var cfg = Roo.apply({}, Roo.bootstrap.TableHeader.superclass.getAutoCreate.call(this));
 	
 	cfg = {
-	    tag: 'th'
+	    tag: 'thead'
 	}
 	
         return cfg;
