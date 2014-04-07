@@ -27,8 +27,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
 	
-//	cfg = {
-//	    tag: 'table',
+	cfg = {
+	    tag: 'table',
 //	    cn: [
 //                {
 //		    tag: 'thead'
@@ -40,7 +40,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
 //		    tag: 'tfoot'
 //		}
 //	    ]
-//	}
+	}
         if (this.html) {
             cfg.html=this.html
         }
