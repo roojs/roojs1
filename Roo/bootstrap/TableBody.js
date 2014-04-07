@@ -11,6 +11,10 @@
  * Bootstrap TableBody class
  * @cfg {String} cls element class
  * @cfg {String} tag element tag (thead|tbody|tfoot) default tbody
+ * @cfg {String} align Aligns the content inside the element
+ * @cfg {String} char Aligns the content inside the element to a character
+ * @cfg {Number} charoff Sets the number of characters the content inside the element will be aligned from the character specified by the char attribute
+ * @cfg {String} valign Vertical aligns the content inside the <tbody> element
  * 
  * @constructor
  * Create a new TableBody
@@ -25,6 +29,10 @@ Roo.extend(Roo.bootstrap.TableBody, Roo.bootstrap.Component,  {
     
     cls: false,
     tag: false,
+    align: false,
+    char: false,
+    charoff: false,
+    valign: false,
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.TableBody.superclass.getAutoCreate.call(this));
