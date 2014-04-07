@@ -49,9 +49,6 @@ Roo.extend(Roo.bootstrap.TableBody, Roo.bootstrap.Component,  {
         if(this.align){
             cfg.align = this.align;
         }
-        if(this.char){
-            cfg.char = this.char;
-        }
         if(this.charoff){
             cfg.charoff = this.charoff;
         }
