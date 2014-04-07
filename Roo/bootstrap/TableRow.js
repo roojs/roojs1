@@ -10,6 +10,10 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap TableRow class
  * @cfg {String} cls row class
+ * @cfg {String} align Aligns the content in a table row
+ * @cfg {String} bgcolor Specifies a background color for a table row
+ * @cfg {Number} charoff Sets the number of characters the content will be aligned from the character specified by the char attribute
+ * @cfg {String} valign Vertical aligns the content in a table row
  * 
  * @constructor
  * Create a new TableRow
