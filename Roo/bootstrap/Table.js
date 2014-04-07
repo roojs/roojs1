@@ -9,7 +9,6 @@
  * @class Roo.bootstrap.Table
  * @extends Roo.bootstrap.Component
  * Bootstrap Table class
- * @cfg {String} html table contain text
  * @cfg {String} cls table class
  * 
  * @constructor
