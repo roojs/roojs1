@@ -29,11 +29,6 @@ Roo.extend(Roo.bootstrap.TableRow, Roo.bootstrap.Component,  {
 	}
 	
         return cfg;
-    },
-    
-    getChildContainer : function()
-    {
-        return this.el.select('tbody', true).first();
     }
    
 });
