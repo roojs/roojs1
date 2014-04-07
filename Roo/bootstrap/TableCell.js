@@ -12,6 +12,19 @@
  * @cfg {String} html cell contain text
  * @cfg {String} cls cell class
  * @cfg {String} tag cell tag (td|th) default td
+ * @cfg {String} abbr Specifies an abbreviated version of the content in a cell
+ * @cfg {String} align Aligns the content in a cell
+ * @cfg {String} axis Categorizes cells
+ * @cfg {String} bgcolor Specifies the background color of a cell
+ * @cfg {Number} charoff Sets the number of characters the content will be aligned from the character specified by the char attribute
+ * @cfg {Number} colspan Specifies the number of columns a cell should span
+ * @cfg {String} headers Specifies one or more header cells a cell is related to
+ * @cfg {Number} height Sets the height of a cell
+ * @cfg {String} nowrap Specifies that the content inside a cell should not wrap
+ * @cfg {Number} rowspan Sets the number of rows a cell should span
+ * @cfg {String} scope Defines a way to associate header cells and data cells in a table
+ * @cfg {String} valign Vertical aligns the content in a cell
+ * @cfg {Number} width Specifies the width of a cell
  * 
  * @constructor
  * Create a new TableCell
