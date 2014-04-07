@@ -31,6 +31,7 @@ Roo.extend(Roo.bootstrap.TableBody, Roo.bootstrap.Component,  {
         if(this.tag){
             cfg.tag = this.tag;
         }
+        
         if (this.html) {
             cfg.html=this.html
         }
