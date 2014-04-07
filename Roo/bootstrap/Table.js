@@ -9,9 +9,8 @@
  * @class Roo.bootstrap.Table
  * @extends Roo.bootstrap.Component
  * Bootstrap Table class
- * @cfg {String} html cell contain text
- * @cfg {String} cls cell class
- * @cfg {String} tag cell tag (td|th) default td
+ * @cfg {String} html table contain text
+ * @cfg {String} cls table class
  * 
  * @constructor
  * Create a new Table
