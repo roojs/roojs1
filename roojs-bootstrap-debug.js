@@ -3611,7 +3611,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         }
         
         if(this.checked){
-            input.checked = 'true';
+            input.checked = this.checked;
         }
         
         if (this.name) {
