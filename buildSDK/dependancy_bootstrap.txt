@@ -29,6 +29,9 @@ Roo.bootstrap.Slider
 Roo.bootstrap.Table
 Roo.bootstrap.TableCell
 Roo.bootstrap.TableRow
+Roo.bootstrap.TableBody
+Roo.bootstrap.TableHead
+Roo.bootstrap.TableFoot
 
 Roo.form.Action
 Roo.bootstrap.Form
