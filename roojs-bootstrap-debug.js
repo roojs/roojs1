@@ -2086,8 +2086,17 @@ Roo.extend(Roo.bootstrap.Slider, Roo.bootstrap.Component,  {
  * @class Roo.bootstrap.Table
  * @extends Roo.bootstrap.Component
  * Bootstrap Table class
- * @cfg {String} html table contain text
  * @cfg {String} cls table class
+ * @cfg {String} align (left|center|right) Specifies the alignment of a table according to surrounding text
+ * @cfg {String} bgcolor Specifies the background color for a table
+ * @cfg {Number} border Specifies whether the table cells should have borders or not
+ * @cfg {Number} cellpadding Specifies the space between the cell wall and the cell content
+ * @cfg {Number} cellspacing Specifies the space between cells
+ * @cfg {String} frame Specifies which parts of the outside borders that should be visible
+ * @cfg {String} rules Specifies which parts of the inside borders that should be visible
+ * @cfg {String} sortable Specifies that the table should be sortable
+ * @cfg {String} summary Specifies a summary of the content of a table
+ * @cfg {Number} width Specifies the width of a table
  * 
  * @constructor
  * Create a new Table
@@ -2100,8 +2109,19 @@ Roo.bootstrap.Table = function(config){
 
 Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
-    html: false,
     cls: false,
+    align: false,
+    bgcolor: false,
+    border: false,
+    cellpadding: false,
+    cellspacing: false,
+    frame: false,
+    rules: false,
+    sortable: false,
+    summary: false,
+    width: false,
+    
+    
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
@@ -2109,12 +2129,41 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
 	cfg = {
 	    tag: 'table'
 	}
-        if (this.html) {
-            cfg.html=this.html
-        }
+        
         if (this.cls) {
             cfg.cls=this.cls
         }
+        if (this.align) {
+            cfg.align=this.align
+        }
+        if (this.bgcolor) {
+            cfg.bgcolor=this.bgcolor
+        }
+        if (this.border) {
+            cfg.border=this.border
+        }
+        if (this.cellpadding) {
+            cfg.cellpadding=this.cellpadding
+        }
+        if (this.cellspacing) {
+            cfg.cellspacing=this.cellspacing
+        }
+        if (this.frame) {
+            cfg.frame=this.frame
+        }
+        if (this.rules) {
+            cfg.rules=this.rules
+        }
+        if (this.sortable) {
+            cfg.sortable=this.sortable
+        }
+        if (this.summary) {
+            cfg.summary=this.summary
+        }if (this.width) {
+            cfg.width=this.width
+        }
+        
+        
 	
         return cfg;
     }
@@ -2137,6 +2186,19 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
  * @cfg {String} html cell contain text
  * @cfg {String} cls cell class
  * @cfg {String} tag cell tag (td|th) default td
+ * @cfg {String} abbr Specifies an abbreviated version of the content in a cell
+ * @cfg {String} align Aligns the content in a cell
+ * @cfg {String} axis Categorizes cells
+ * @cfg {String} bgcolor Specifies the background color of a cell
+ * @cfg {Number} charoff Sets the number of characters the content will be aligned from the character specified by the char attribute
+ * @cfg {Number} colspan Specifies the number of columns a cell should span
+ * @cfg {String} headers Specifies one or more header cells a cell is related to
+ * @cfg {Number} height Sets the height of a cell
+ * @cfg {String} nowrap Specifies that the content inside a cell should not wrap
+ * @cfg {Number} rowspan Sets the number of rows a cell should span
+ * @cfg {String} scope Defines a way to associate header cells and data cells in a table
+ * @cfg {String} valign Vertical aligns the content in a cell
+ * @cfg {Number} width Specifies the width of a cell
  * 
  * @constructor
  * Create a new TableCell
@@ -2152,6 +2214,20 @@ Roo.extend(Roo.bootstrap.TableCell, Roo.bootstrap.Component,  {
     html: false,
     cls: false,
     tag: false,
+    abbr: false,
+    align: false,
+    axis: false,
+    bgcolor: false,
+    charoff: false,
+    colspan: false,
+    headers: false,
+    height: false,
+    nowrap: false,
+    rowspan: false,
+    scope: false,
+    valign: false,
+    width: false,
+    
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.TableCell.superclass.getAutoCreate.call(this));
@@ -2170,6 +2246,46 @@ Roo.extend(Roo.bootstrap.TableCell, Roo.bootstrap.Component,  {
         if (this.cls) {
             cfg.cls=this.cls
         }
+        if (this.abbr) {
+            cfg.abbr=this.abbr
+        }
+        if (this.align) {
+            cfg.align=this.align
+        }
+        if (this.axis) {
+            cfg.axis=this.axis
+        }
+        if (this.bgcolor) {
+            cfg.bgcolor=this.bgcolor
+        }
+        if (this.charoff) {
+            cfg.charoff=this.charoff
+        }
+        if (this.colspan) {
+            cfg.colspan=this.colspan
+        }
+        if (this.headers) {
+            cfg.headers=this.headers
+        }
+        if (this.height) {
+            cfg.height=this.height
+        }
+        if (this.nowrap) {
+            cfg.nowrap=this.nowrap
+        }
+        if (this.rowspan) {
+            cfg.rowspan=this.rowspan
+        }
+        if (this.scope) {
+            cfg.scope=this.scope
+        }
+        if (this.valign) {
+            cfg.valign=this.valign
+        }
+        if (this.width) {
+            cfg.width=this.width
+        }
+        
 	
         return cfg;
     }
@@ -2190,6 +2306,10 @@ Roo.extend(Roo.bootstrap.TableCell, Roo.bootstrap.Component,  {
  * @extends Roo.bootstrap.Component
  * Bootstrap TableRow class
  * @cfg {String} cls row class
+ * @cfg {String} align Aligns the content in a table row
+ * @cfg {String} bgcolor Specifies a background color for a table row
+ * @cfg {Number} charoff Sets the number of characters the content will be aligned from the character specified by the char attribute
+ * @cfg {String} valign Vertical aligns the content in a table row
  * 
  * @constructor
  * Create a new TableRow
@@ -2203,6 +2323,10 @@ Roo.bootstrap.TableRow = function(config){
 Roo.extend(Roo.bootstrap.TableRow, Roo.bootstrap.Component,  {
     
     cls: false,
+    align: false,
+    bgcolor: false,
+    charoff: false,
+    valign: false,
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.TableRow.superclass.getAutoCreate.call(this));
@@ -2210,6 +2334,22 @@ Roo.extend(Roo.bootstrap.TableRow, Roo.bootstrap.Component,  {
 	cfg = {
 	    tag: 'tr'
 	}
+        
+        if(this.cls){
+            cfg.cls = this.cls;
+        }
+        if(this.align){
+            cfg.align = this.align;
+        }
+        if(this.bgcolor){
+            cfg.bgcolor = this.bgcolor;
+        }
+        if(this.charoff){
+            cfg.charoff = this.charoff;
+        }
+        if(this.valign){
+            cfg.valign = this.valign;
+        }
 	
         return cfg;
     }
@@ -2231,6 +2371,9 @@ Roo.extend(Roo.bootstrap.TableRow, Roo.bootstrap.Component,  {
  * Bootstrap TableBody class
  * @cfg {String} cls element class
  * @cfg {String} tag element tag (thead|tbody|tfoot) default tbody
+ * @cfg {String} align Aligns the content inside the element
+ * @cfg {Number} charoff Sets the number of characters the content inside the element will be aligned from the character specified by the char attribute
+ * @cfg {String} valign Vertical aligns the content inside the <tbody> element
  * 
  * @constructor
  * Create a new TableBody
@@ -2245,6 +2388,9 @@ Roo.extend(Roo.bootstrap.TableBody, Roo.bootstrap.Component,  {
     
     cls: false,
     tag: false,
+    align: false,
+    charoff: false,
+    valign: false,
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.TableBody.superclass.getAutoCreate.call(this));
@@ -2253,17 +2399,23 @@ Roo.extend(Roo.bootstrap.TableBody, Roo.bootstrap.Component,  {
 	    tag: 'tbody'
 	}
         
-        if(this.tag){
-            cfg.tag = this.tag;
-        }
-        
-        if (this.html) {
-            cfg.html=this.html
-        }
         if (this.cls) {
             cfg.cls=this.cls
         }
+        if(this.tag){
+            cfg.tag = this.tag;
+        }
 	
+        if(this.align){
+            cfg.align = this.align;
+        }
+        if(this.charoff){
+            cfg.charoff = this.charoff;
+        }
+        if(this.valign){
+            cfg.valign = this.valign;
+        }
+        
         return cfg;
     }
    
