@@ -9,8 +9,17 @@
  * @class Roo.bootstrap.Table
  * @extends Roo.bootstrap.Component
  * Bootstrap Table class
- * @cfg {String} html table contain text
  * @cfg {String} cls table class
+ * @cfg {String} align (left|center|right) Specifies the alignment of a table according to surrounding text
+ * @cfg {String} bgcolor Specifies the background color for a table
+ * @cfg {Number} border Specifies whether the table cells should have borders or not
+ * @cfg {Number} cellpadding Specifies the space between the cell wall and the cell content
+ * @cfg {Number} cellspacing Specifies the space between cells
+ * @cfg {String} frame Specifies which parts of the outside borders that should be visible
+ * @cfg {String} rules Specifies which parts of the inside borders that should be visible
+ * @cfg {String} sortable Specifies that the table should be sortable
+ * @cfg {String} summary Specifies a summary of the content of a table
+ * @cfg {Number} width Specifies the width of a table
  * 
  * @constructor
  * Create a new Table
@@ -23,8 +32,19 @@
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Table</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
     
-    </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">align</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">bgcolor</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">border</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">cellpadding</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">cellspacing</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">frame</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">rules</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">sortable</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">summary</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">Roo.bootstrap.Table.superclass.getAutoCreate.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">));
@@ -32,12 +52,41 @@
 	</span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
 	    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'table'
 	</span><span class="jsdoc-syntax">}
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.html</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">cfg.html</span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">this.html
-        </span><span class="jsdoc-syntax">}
+        
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cfg.cls</span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">this.cls
         </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.align</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.align</span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">this.align
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bgcolor</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.bgcolor</span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">this.bgcolor
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.border</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.border</span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">this.border
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cellpadding</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.cellpadding</span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">this.cellpadding
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cellspacing</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.cellspacing</span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">this.cellspacing
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.frame</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.frame</span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">this.frame
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.rules</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.rules</span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">this.rules
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.sortable</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.sortable</span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">this.sortable
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.summary</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.summary</span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">this.summary
+        </span><span class="jsdoc-syntax">}</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.width</span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">this.width
+        </span><span class="jsdoc-syntax">}
+        
+        
 	
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
     }

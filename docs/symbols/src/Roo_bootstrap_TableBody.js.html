@@ -11,6 +11,9 @@
  * Bootstrap TableBody class
  * @cfg {String} cls element class
  * @cfg {String} tag element tag (thead|tbody|tfoot) default tbody
+ * @cfg {String} align Aligns the content inside the element
+ * @cfg {Number} charoff Sets the number of characters the content inside the element will be aligned from the character specified by the char attribute
+ * @cfg {String} valign Vertical aligns the content inside the &lt;tbody&gt; element
  * 
  * @constructor
  * Create a new TableBody
@@ -25,6 +28,9 @@
     
     </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">align</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">charoff</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">valign</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">Roo.bootstrap.TableBody.superclass.getAutoCreate.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">));
@@ -33,17 +39,23 @@
 	    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tbody'
 	</span><span class="jsdoc-syntax">}
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tag</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">cfg.tag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tag</span><span class="jsdoc-syntax">;
-        }
-        
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.html</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">cfg.html</span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">this.html
-        </span><span class="jsdoc-syntax">}
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cfg.cls</span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">this.cls
         </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tag</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg.tag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tag</span><span class="jsdoc-syntax">;
+        }
 	
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.align</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg.align </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.align</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.charoff</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg.charoff </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.charoff</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.valign</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg.valign </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.valign</span><span class="jsdoc-syntax">;
+        }
+        
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
     }
    
