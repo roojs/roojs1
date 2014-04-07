@@ -21,7 +21,6 @@ Roo.bootstrap.TableBody = function(config){
 
 Roo.extend(Roo.bootstrap.TableBody, Roo.bootstrap.Component,  {
     
-    html: false,
     cls: false,
     tag: false,
     
