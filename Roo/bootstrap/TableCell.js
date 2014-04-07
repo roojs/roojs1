@@ -30,6 +30,11 @@ Roo.extend(Roo.bootstrap.TableCell, Roo.bootstrap.Component,  {
 	cfg = {
 	    tag: 'td'
 	}
+        
+        if(this.tag){
+            cfg.tag = this.tag;
+        }
+        
         if (this.html) {
             cfg.html=this.html
         }
