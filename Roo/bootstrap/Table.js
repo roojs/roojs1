@@ -30,8 +30,14 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
 	cfg = {
 	    tag: 'table',
 	    cn: [
+                {
+		    tag: 'thead'
+		},
 		{
 		    tag: 'tbody'
+		},
+                {
+		    tag: 'tfoot'
 		}
 	    ]
 	}
