@@ -12,7 +12,7 @@
  * @cfg {String} cls element class
  * @cfg {String} tag element tag (thead|tbody|tfoot) default tbody
  * @cfg {String} align Aligns the content inside the element
- * @cfg {String} character Aligns the content inside the element to a character
+ * @cfg {String} char Aligns the content inside the element to a character
  * @cfg {Number} charoff Sets the number of characters the content inside the element will be aligned from the character specified by the char attribute
  * @cfg {String} valign Vertical aligns the content inside the <tbody> element
  * 
@@ -30,7 +30,7 @@ Roo.extend(Roo.bootstrap.TableBody, Roo.bootstrap.Component,  {
     cls: false,
     tag: false,
     align: false,
-    character: false,
+    char: false,
     charoff: false,
     valign: false,
     
@@ -41,17 +41,26 @@ Roo.extend(Roo.bootstrap.TableBody, Roo.bootstrap.Component,  {
 	    tag: 'tbody'
 	}
         
-        if(this.tag){
-            cfg.tag = this.tag;
-        }
-        
-        if (this.html) {
-            cfg.html=this.html
-        }
         if (this.cls) {
             cfg.cls=this.cls
         }
+        if(this.tag){
+            cfg.tag = this.tag;
+        }
 	
+        if(this.align){
+            cfg.align = this.align;
+        }
+        if(this.char){
+            cfg.char = this.char;
+        }
+        if(this.charoff){
+            cfg.charoff = this.charoff;
+        }
+        if(this.valign){
+            cfg.valign = this.valign;
+        }
+        
         return cfg;
     }
    
