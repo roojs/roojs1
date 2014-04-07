@@ -191,7 +191,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         
         // render the element if it's not BODY.
         if (tree.xtype != 'Body') {
-            
+            var test = Roo.factory(tree);
             cn = Roo.factory(tree);
            
             cn.parentType = this.xtype; //??
@@ -199,8 +199,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             
             var build_from_html =  Roo.XComponent.build_from_html;
             
-            Roo.log('cn');
-            Roo.log(cn);
+            
             // does the container contain child eleemnts with 'xtype' attributes.
             // that match this xtype..
             // note - when we render we create these as well..
@@ -208,9 +207,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             if (Roo.get(document.body).attr('xtype') == 'Roo.bootstrap.Body') {
                
                 var self_cntr_el = Roo.get(this[cntr]());
-                Roo.log(self_cntr_el);
                 var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
-                Roo.log(echild);
+                
                 if (echild && echild.attr('xtype').split('.').pop() == cn.xtype) {
                   //  Roo.log("found child for " + this.xtype +": " + echild.attr('xtype') );
                   
