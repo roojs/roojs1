@@ -63,7 +63,7 @@ cfg.cn.push({tag:'li',cn:[{tag:'a',href:'#',html:'&raquo;'}]});return cfg;}});
 //Roo/bootstrap/Slider.js
 Roo.bootstrap.Slider=function(A){Roo.bootstrap.Slider.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.Slider,Roo.bootstrap.Component,{getAutoCreate:function(){var A={tag:'div',cls:'slider slider-sample1 vertical-handler ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all',cn:[{tag:'a',cls:'ui-slider-handle ui-state-default ui-corner-all'}]};return A;}});
 //Roo/bootstrap/Table.js
-Roo.bootstrap.Table=function(A){Roo.bootstrap.Table.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.Table,Roo.bootstrap.Component,{html:false,cls:false,getAutoCreate:function(){var A=Roo.apply({},Roo.bootstrap.Table.superclass.getAutoCreate.call(this));A={tag:'table',cn:[{tag:'thead'},{tag:'tbody'},{tag:'tfoot'}]};if(this.html){A.html=this.html}if(this.cls){A.cls=this.cls}return A;}});
+Roo.bootstrap.Table=function(A){Roo.bootstrap.Table.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.Table,Roo.bootstrap.Component,{html:false,cls:false,getAutoCreate:function(){var A=Roo.apply({},Roo.bootstrap.Table.superclass.getAutoCreate.call(this));if(this.html){A.html=this.html}if(this.cls){A.cls=this.cls}return A;}});
 //Roo/bootstrap/TableCell.js
 Roo.bootstrap.TableCell=function(A){Roo.bootstrap.TableCell.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.TableCell,Roo.bootstrap.Component,{getAutoCreate:function(){var A=Roo.apply({},Roo.bootstrap.TableCell.superclass.getAutoCreate.call(this));A={tag:'td'};if(this.html){A.html=this.html}if(this.cls){A.cls=this.cls}return A;}});
 //Roo/bootstrap/TableRow.js
