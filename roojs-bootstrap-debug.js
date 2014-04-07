@@ -2086,6 +2086,8 @@ Roo.extend(Roo.bootstrap.Slider, Roo.bootstrap.Component,  {
  * @class Roo.bootstrap.Table
  * @extends Roo.bootstrap.Component
  * Bootstrap Table class
+ * @cfg {String} html table contain text
+ * @cfg {String} cls table class
  * 
  * @constructor
  * Create a new Table
@@ -2132,6 +2134,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
  * @class Roo.bootstrap.TableCell
  * @extends Roo.bootstrap.Component
  * Bootstrap TableCell class
+ * @cfg {String} html cell contain text
+ * @cfg {String} cls cell class
+ * @cfg {String} tag cell tag (td|th) default td
  * 
  * @constructor
  * Create a new TableCell
@@ -2146,6 +2151,7 @@ Roo.extend(Roo.bootstrap.TableCell, Roo.bootstrap.Component,  {
     
     html: false,
     cls: false,
+    tag: false,
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.TableCell.superclass.getAutoCreate.call(this));
@@ -2153,6 +2159,11 @@ Roo.extend(Roo.bootstrap.TableCell, Roo.bootstrap.Component,  {
 	cfg = {
 	    tag: 'td'
 	}
+        
+        if(this.tag){
+            cfg.tag = this.tag;
+        }
+        
         if (this.html) {
             cfg.html=this.html
         }
@@ -2178,6 +2189,7 @@ Roo.extend(Roo.bootstrap.TableCell, Roo.bootstrap.Component,  {
  * @class Roo.bootstrap.TableRow
  * @extends Roo.bootstrap.Component
  * Bootstrap TableRow class
+ * @cfg {String} cls row class
  * 
  * @constructor
  * Create a new TableRow
@@ -2189,6 +2201,8 @@ Roo.bootstrap.TableRow = function(config){
 };
 
 Roo.extend(Roo.bootstrap.TableRow, Roo.bootstrap.Component,  {
+    
+    cls: false,
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.TableRow.superclass.getAutoCreate.call(this));
@@ -2215,6 +2229,8 @@ Roo.extend(Roo.bootstrap.TableRow, Roo.bootstrap.Component,  {
  * @class Roo.bootstrap.TableBody
  * @extends Roo.bootstrap.Component
  * Bootstrap TableBody class
+ * @cfg {String} cls element class
+ * @cfg {String} tag element tag (thead|tbody|tfoot) default tbody
  * 
  * @constructor
  * Create a new TableBody
@@ -2227,92 +2243,26 @@ Roo.bootstrap.TableBody = function(config){
 
 Roo.extend(Roo.bootstrap.TableBody, Roo.bootstrap.Component,  {
     
+    cls: false,
+    tag: false,
+    
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.TableBody.superclass.getAutoCreate.call(this));
 	
 	cfg = {
 	    tag: 'tbody'
 	}
+        
+        if(this.tag){
+            cfg.tag = this.tag;
+        }
+        
         if (this.html) {
             cfg.html=this.html
         }
         if (this.cls) {
             cfg.cls=this.cls
         }
-	
-        return cfg;
-    }
-   
-});
-
- 
-
- /*
- * - LGPL
- *
- * table row
- * 
- */
-
-/**
- * @class Roo.bootstrap.TableHead
- * @extends Roo.bootstrap.Component
- * Bootstrap TableHead class
- * 
- * @constructor
- * Create a new TableHead
- * @param {Object} config The config object
- */
-
-Roo.bootstrap.TableHead = function(config){
-    Roo.bootstrap.TableHead.superclass.constructor.call(this, config);
-};
-
-Roo.extend(Roo.bootstrap.TableHead, Roo.bootstrap.Component,  {
-    
-    getAutoCreate : function(){
-        var cfg = Roo.apply({}, Roo.bootstrap.TableHead.superclass.getAutoCreate.call(this));
-	
-	cfg = {
-	    tag: 'thead'
-	}
-	
-        return cfg;
-    }
-   
-});
-
- 
-
- /*
- * - LGPL
- *
- * table row
- * 
- */
-
-/**
- * @class Roo.bootstrap.TableFoot
- * @extends Roo.bootstrap.Component
- * Bootstrap TableFoot class
- * 
- * @constructor
- * Create a new TableFoot
- * @param {Object} config The config object
- */
-
-Roo.bootstrap.TableFoot = function(config){
-    Roo.bootstrap.TableFoot.superclass.constructor.call(this, config);
-};
-
-Roo.extend(Roo.bootstrap.TableFoot, Roo.bootstrap.Component,  {
-    
-    getAutoCreate : function(){
-        var cfg = Roo.apply({}, Roo.bootstrap.TableFoot.superclass.getAutoCreate.call(this));
-	
-	cfg = {
-	    tag: 'tfoot'
-	}
 	
         return cfg;
     }
