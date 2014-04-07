@@ -27,6 +27,10 @@ Roo.bootstrap.TableRow = function(config){
 Roo.extend(Roo.bootstrap.TableRow, Roo.bootstrap.Component,  {
     
     cls: false,
+    align: false,
+    bgcolor: false,
+    charoff: false,
+    valign: false,
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.TableRow.superclass.getAutoCreate.call(this));
@@ -34,6 +38,22 @@ Roo.extend(Roo.bootstrap.TableRow, Roo.bootstrap.Component,  {
 	cfg = {
 	    tag: 'tr'
 	}
+        
+        if(this.cls){
+            cfg.cls = this.cls;
+        }
+        if(this.align){
+            cfg.align = this.align;
+        }
+        if(this.bgcolor){
+            cfg.bgcolor = this.bgcolor;
+        }
+        if(this.charoff){
+            cfg.charoff = this.charoff;
+        }
+        if(this.valign){
+            cfg.valign = this.valign;
+        }
 	
         return cfg;
     }
