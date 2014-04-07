@@ -41,6 +41,21 @@ Roo.extend(Roo.bootstrap.TableCell, Roo.bootstrap.Component,  {
     cls: false,
     tag: false,
     
+    abbr: false,
+    align: false,
+    axis: false,
+    bgcolor: false,
+    charoff: false,
+    colspan: false,
+    headers: false,
+    height: false,
+    nowrap: false,
+    rowspan: false,
+    scope: false,
+    valign: false,
+    width: false,
+    
+    
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.TableCell.superclass.getAutoCreate.call(this));
 	
