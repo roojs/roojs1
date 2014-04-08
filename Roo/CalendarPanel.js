@@ -117,7 +117,7 @@ Roo.extend(Roo.CalendarPanel, Roo.ContentPanel, {
       //  this.grid.destroy();
        // delete this.grid;
          Roo.GridPanel.superclass.destroy.call(this); 
-    }
+    },
     
     
     render : function()
