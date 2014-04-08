@@ -8252,6 +8252,12 @@
      "memberOf": ""
     },
     {
+     "name": "font_awesome_icon",
+     "type": "String",
+     "desc": "name of font awesome icon",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",

@@ -71,7 +71,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 	    }
             
             if (this.font_awesome_icon) {
-		cfg.cn[0].html = '<i class="'+this.font_awesome_icon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
+		cfg.cn[0].html = '<i class="icon-'+this.font_awesome_icon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
 	    }
 	    
 	    return cfg;
