@@ -1093,7 +1093,15 @@ Roo.CalendarPanel = function(config){
 	     * @param {Calendar} this
 	     * @param {event}
 	     */
-        'eventclick': true
+        'eventclick': true,
+        /**
+	     * @event rendered
+	     * Fires when the grid is rendered
+	     * @param {Calendar} this
+	    
+	     */
+        'rendered': true
+        
         
     });
     
@@ -1178,7 +1186,10 @@ Roo.extend(Roo.CalendarPanel, Roo.ContentPanel, {
         if(this.tabIndex !== undefined){
             this.el.dom.setAttribute('tabIndex', this.tabIndex);
         }
+        
+        
         this.initEvents();
+        this.fireEvent('rendered');
     },
     
     
