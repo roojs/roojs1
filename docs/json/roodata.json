@@ -8252,7 +8252,7 @@
      "memberOf": ""
     },
     {
-     "name": "font_awesome_icon",
+     "name": "icon",
      "type": "String",
      "desc": "name of font awesome icon",
      "memberOf": ""
