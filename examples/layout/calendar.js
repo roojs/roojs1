@@ -44,6 +44,11 @@ calendarpanel = new Roo.XComponent({
                     xtype: 'LayoutRegion',
                     xns: Roo
                 }
+            },
+            listeners : {
+                'activate' : function() {
+                    Roo.log('nested activate');
+                }
             }
         };
     }
