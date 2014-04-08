@@ -67,6 +67,10 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 	    if (this.glyphicon) {
 		cfg.cn[0].html = '<i class="glyphicon glyphicon-'+this.glyphicon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
 	    }
+            
+            if (this.font_awesome_icon) {
+		cfg.cn[0].html = '<i class="'+this.font_awesome_icon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
+	    }
 	    
 	    return cfg;
 	}
