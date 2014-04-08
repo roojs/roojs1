@@ -183,7 +183,7 @@ Roo.extend(Roo.CalendarPanel, Roo.ContentPanel, {
 
 Roo.each([
     'getAutoCreate',
-    'initEvents'
+    'initEvents',
     'resize',
     'showPrevMonth',
     'showToday',
