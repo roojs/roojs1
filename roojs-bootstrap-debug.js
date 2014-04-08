@@ -1980,7 +1980,7 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
     active: 1,
     
     getAutoCreate : function(){
-        cfg = {
+        var cfg = {
             tag: 'ul',
                 cls: 'pagination',
                 cn: []
