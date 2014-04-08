@@ -120,10 +120,13 @@ Roo.extend(Roo.CalendarPanel, Roo.ContentPanel, {
         Roo.GridPanel.superclass.destroy.call(this);
          
     },
-    
-    
     render : function()
     {
+        this.onRender(this.el, false)
+    },
+    
+    onRender : function(ct, position)
+    
         if (this.rendered) {
             return;
         }
