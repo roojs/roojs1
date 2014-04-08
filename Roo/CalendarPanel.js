@@ -205,6 +205,7 @@ Roo.each([
 
     
 ], function(p) {
+    Roo.log('add' + p);
     Roo.CalendarPanel.prototype[p] = Roo.boostrap.Calendar.prototype[p];
  
 });
