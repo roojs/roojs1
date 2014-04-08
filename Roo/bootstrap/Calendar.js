@@ -381,6 +381,9 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         // convert everything to numbers so it's fast
         var day = 86400000;
         var d = (new Date(pm.getFullYear(), pm.getMonth(), prevStart)).clearTime();
+        
+        Roo.log(pm);
+        
         var today = new Date().clearTime().getTime();
         var sel = date.clearTime().getTime();
         var min = this.minDate ? this.minDate.clearTime() : Number.NEGATIVE_INFINITY;
