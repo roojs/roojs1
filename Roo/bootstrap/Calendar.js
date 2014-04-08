@@ -397,6 +397,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             cell.title = "";
             var t = d.getTime();
             
+            Roo.log(d);
+            
             cell.dateValue = t;
             if(t == today){
                 cell.className += " fc-today";
