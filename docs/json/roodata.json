@@ -838,6 +838,12 @@
      "desc": "Fires after the component is rendered."
     },
     {
+     "name": "rendered",
+     "sig": "function (_self, )\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the grid is rendered"
+    },
+    {
      "name": "select",
      "sig": "function (_self, date)\n{\n\n}",
      "type": "function",
