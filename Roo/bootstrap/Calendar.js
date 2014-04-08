@@ -5,7 +5,7 @@
  * 
  */
 
-
+Roo.bootstrap = Roo.bootstrap || {};
 /**
  * @class Roo.bootstrap.Calendar
  * @extends Roo.bootstrap.Component
@@ -15,6 +15,8 @@
  * Create a new Container
  * @param {Object} config The config object
  */
+
+
 
 Roo.bootstrap.Calendar = function(config){
     Roo.bootstrap.Calendar.superclass.constructor.call(this, config);
