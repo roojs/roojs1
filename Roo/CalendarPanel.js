@@ -171,12 +171,12 @@ Roo.extend(Roo.CalendarPanel, Roo.ContentPanel, {
             this.el.dom.setAttribute('tabIndex', this.tabIndex);
         }
         this.initEvents();
-    },
+    }/*,
     
     
     getAutoCreate : Roo.bootstrap.Calendar.prototype.getAutoCreate,
     
     initEvents : Roo.bootstrap.Calendar.prototype.initEvents 
-    
+    */
     
 });
