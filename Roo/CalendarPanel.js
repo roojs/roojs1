@@ -91,7 +91,7 @@ Roo.CalendarPanel = function(config){
 	     * @param {Calendar} this
 	     * @param {event}
 	     */
-        'rendered': true,
+        'rendered': true
         
         
     });
