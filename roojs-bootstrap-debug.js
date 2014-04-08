@@ -1819,11 +1819,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
         }
         
         cfg.cn[0].html = this.html || cfg.cn[0].html ;
-        Roo.log(this.icon);
-        if (this.icon) {
-            cfg.cn[0].html = '<i class="'+this.icon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
-        }
-
+        
 	if (this.menu) {
 	    cfg.cn[0].tag='a';
 	    cfg.cn[0].href='#';
@@ -1850,6 +1846,9 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 	    cfg.cn[0].html=''
 	}
 	 
+        if (this.icon) {
+            cfg.cn[0].html = '<i class="'+this.icon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
+        }
 	
         return cfg;
     },
