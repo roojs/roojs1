@@ -54,7 +54,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
        // Roo.log("ADD event");
        // Roo.log(this.triggerEl.dom);
         this.triggerEl.on('click', this.toggle, this);
-        this.triggerEl.addClass('dropdown-toggle');
+        this.triggerEl.addClass('dropdown dropdown-toggle');
         
     },
     toggle  : function(e)
