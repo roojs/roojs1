@@ -126,7 +126,7 @@ Roo.extend(Roo.CalendarPanel, Roo.ContentPanel, {
     },
     
     onRender : function(ct, position)
-    
+    {
         if (this.rendered) {
             return;
         }
