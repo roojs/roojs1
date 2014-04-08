@@ -92,6 +92,8 @@ Roo.CalendarPanel = function(config){
     //this.grid.getGridEl().replaceClass("x-layout-inactive-content", "x-layout-component-panel");
 };
 
+Roo.apply(Roo.CalendarPanel, Roo.boostrap.Calendar);
+
 Roo.extend(Roo.CalendarPanel, Roo.ContentPanel, {
     getId : function(){
         return this.id;
