@@ -40,6 +40,7 @@ Roo.CalendarPanel = function(config){
     
      this.on('activate', function()
     {
+            Roo.log('activate');
         if (this.rendered) {
             return;
         }
