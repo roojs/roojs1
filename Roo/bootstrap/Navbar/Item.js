@@ -96,6 +96,17 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
                 }
             ];
         }
+        
+        if (this.icon) {
+            if(cfg.html){cfg.html = ' ' + this.html};
+            
+            cfg.cn=[
+                {
+                    tag: 'span',
+                    cls: this.icon
+                }
+            ];
+        }
 	
         cfg.cn[0].html = this.html || cfg.cn[0].html ;
 	if (this.menu) {
