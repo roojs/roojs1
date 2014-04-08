@@ -86,12 +86,12 @@ Roo.CalendarPanel = function(config){
 	     */
         'eventclick': true,
         /**
-	     * @event render
+	     * @event rendered
 	     * Fires when the grid is rendered
 	     * @param {Calendar} this
 	     * @param {event}
 	     */
-        'eventclick': true,
+        'rendered': true,
         
         
     });
