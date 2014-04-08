@@ -1818,18 +1818,12 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
             ];
         }
         
-        if (this.icon) {
-            if(cfg.html){cfg.html = ' ' + this.html};
-            
-            cfg.cn=[
-                {
-                    tag: 'span',
-                    cls: this.icon
-                }
-            ];
-        }
-	
         cfg.cn[0].html = this.html || cfg.cn[0].html ;
+        
+        if (this.icon) {
+            cfg.cn[0].html = '<i class="'+this.icon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
+        }
+
 	if (this.menu) {
 	    cfg.cn[0].tag='a';
 	    cfg.cn[0].href='#';
