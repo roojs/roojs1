@@ -8090,6 +8090,12 @@
      "memberOf": ""
     },
     {
+     "name": "brand_href",
+     "type": "String",
+     "desc": "href of the brand",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
