@@ -30,11 +30,11 @@ calendarpanel = new Roo.XComponent({
                         listeners : {
                             activate : function (_self)
                             {
-                                
+                                Roo.log('activate');
                             },
                             render : function (_self)
                             {
-                                
+                                Roo.log('render');
                             }
                         }
                     }
