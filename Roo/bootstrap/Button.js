@@ -140,7 +140,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
    
         
         if (this.inverse) {
-            this.cls += ' inverse';
+            this.cls += ' btn-inverse';
         }
         
         
