@@ -281,7 +281,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         this.resize();
         
         this.cells = this.el.select('.fc-day',true);
-        Roo.log(this.cells);
+        //Roo.log(this.cells);
         this.textNodes = this.el.query('.fc-day-number');
         this.cells.addClassOnOver('fc-state-hover');
         
@@ -381,9 +381,9 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         // convert everything to numbers so it's fast
         var day = 86400000;
         var d = (new Date(pm.getFullYear(), pm.getMonth(), prevStart)).clearTime();
-        Roo.log(d);
-        Roo.log(pm);
-        Roo.log(prevStart);
+        //Roo.log(d);
+        //Roo.log(pm);
+        //Roo.log(prevStart);
         
         var today = new Date().clearTime().getTime();
         var sel = date.clearTime().getTime();
@@ -401,7 +401,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             cell.title = "";
             var t = d.getTime();
             
-            Roo.log(d);
+            //Roo.log(d);
             
             cell.dateValue = t;
             if(t == today){
@@ -533,7 +533,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
        // Roo.log(e);
         var ret = [];
         this.cells.each(function(c){
-             Roo.log("check " +c.dateValue + '<' + e + ' > ' + s);
+             ////Roo.log("check " +c.dateValue + '<' + e + ' > ' + s);
             
             if(c.dateValue > e){
                 return ;
@@ -720,7 +720,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     onLoad: function () {
         
         this.clearEvents();
-        Roo.log('calendar onload');
+        //Roo.log('calendar onload');
 //        
         this.calevents = [];
         var cal = this;
