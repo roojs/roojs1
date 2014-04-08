@@ -93,35 +93,6 @@ Roo.CalendarPanel = function(config){
 };
 
 
-Roo.each([
-    'getAutoCreate',
-    'initEvents',
-    'resize',
-    'showPrevMonth',
-    'showToday',
-    'showNextMonth',
-    'showPrevYear',
-    'showNextYear',
-    'update',
-    'findCell',
-    'findCells',
-    'findBestRow',
-    'addItem',
-    'clearEvents',
-    'renderEvents',
-    'onEventEnter',
-    'onEventLeave',
-    'onEventClick',
-    'onMonthChange',
-    'onLoad'
-
-    
-], function(p) {
-    Roo.log('add' + p);
-    Roo.CalendarPanel.prototype[p] = Roo.boostrap.Calendar.prototype[p];
- 
-});
-
 Roo.extend(Roo.CalendarPanel, Roo.ContentPanel, {
     getId : function(){
         return this.id;
@@ -210,3 +181,32 @@ Roo.extend(Roo.CalendarPanel, Roo.ContentPanel, {
 });
 
 
+
+Roo.each([
+    'getAutoCreate',
+    'initEvents',
+    'resize',
+    'showPrevMonth',
+    'showToday',
+    'showNextMonth',
+    'showPrevYear',
+    'showNextYear',
+    'update',
+    'findCell',
+    'findCells',
+    'findBestRow',
+    'addItem',
+    'clearEvents',
+    'renderEvents',
+    'onEventEnter',
+    'onEventLeave',
+    'onEventClick',
+    'onMonthChange',
+    'onLoad'
+
+    
+], function(p) {
+    Roo.log('add' + p);
+    Roo.CalendarPanel.prototype[p] = Roo.bootstrap.Calendar.prototype[p];
+ 
+});
