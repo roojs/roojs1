@@ -169,7 +169,6 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             delete cfg.html;
             
         } else if (this.menu) {
-            cfg.tag = 'a';
             cfg.cls += ' dropdown';
         }
         
