@@ -17,6 +17,7 @@
  * @cfg {String} type (nav | pills | tabs)
  * @cfg {Boolean} arrangement stacked | justified
  * @cfg {String} align (left | right) alignment
+ * @cfg {String} brand_href href of the brand
  *
  * 
  * @constructor
@@ -40,6 +41,7 @@
     </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'nav'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">arrangement</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">brand_href</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
@@ -101,14 +103,14 @@
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.inverse </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">' navbar-inverse' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">' navbar-default'</span><span class="jsdoc-syntax">;
             
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'fixed-top'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'fixed-bottom'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'static-top'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">)&gt;-1) {
-            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' navbar-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-var">cfg.tag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.position  </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'fixed-bottom' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'footer' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'header'</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' navbar-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">cfg.tag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.position  </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'fixed-bottom' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'footer' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'header'</span><span class="jsdoc-syntax">;
             }
             
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.brand </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cn.push</span><span class="jsdoc-syntax">({
                     </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">href</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">href</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.brand_href </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.brand_href </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'navbar-brand'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
                     </span><span class="jsdoc-var">this.brand
