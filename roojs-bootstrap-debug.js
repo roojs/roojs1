@@ -1030,7 +1030,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
        // Roo.log("ADD event");
        // Roo.log(this.triggerEl.dom);
         this.triggerEl.on('click', this.toggle, this);
-        this.triggerEl.addClass('dropdown-toggle');
+        this.triggerEl.addClass('dropdown dropdown-toggle');
         
     },
     toggle  : function(e)
@@ -1776,9 +1776,9 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 	    if (this.active) {
 		this.cls += ' active';
 	    }
-	    Roo.log(this.menu);
+	    
 	    if (this.menu) {
-		cfg.cn[0].cls += ' dropdown-toggle';
+		cfg.cn[0].cls += 'dropdown dropdown-toggle';
 		cfg.cn[0].html = (cfg.cn[0].html || this.html) + '<span class="glyphicon glyphicon-chevron-down"></span>';
 	    }
 	    
