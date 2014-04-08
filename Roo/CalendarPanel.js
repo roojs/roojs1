@@ -92,7 +92,6 @@ Roo.CalendarPanel = function(config){
     //this.grid.getGridEl().replaceClass("x-layout-inactive-content", "x-layout-component-panel");
 };
 
-Roo.apply(Roo.CalendarPanel, Roo.boostrap.Calendar);
 
 Roo.extend(Roo.CalendarPanel, Roo.ContentPanel, {
     getId : function(){
@@ -171,12 +170,25 @@ Roo.extend(Roo.CalendarPanel, Roo.ContentPanel, {
             this.el.dom.setAttribute('tabIndex', this.tabIndex);
         }
         this.initEvents();
-    }/*,
+    },
     
     
     getAutoCreate : Roo.bootstrap.Calendar.prototype.getAutoCreate,
     
     initEvents : Roo.bootstrap.Calendar.prototype.initEvents 
-    */
+    
     
 });
+
+
+Roo.each([
+    
+    
+    
+    
+], function(p) {
+    Roo.apply(Roo.CalendarPanel.prototype[p], Roo.boostrap.Calendar.prototype[p]);
+
+    
+}
+
