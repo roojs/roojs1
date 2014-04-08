@@ -1204,7 +1204,7 @@ Roo.extend(Roo.CalendarPanel, Roo.ContentPanel, {
         
         this.initEvents();
         this.fireEvent('rendered');
-    },
+    }
     
     
     
