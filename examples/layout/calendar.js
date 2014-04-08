@@ -20,6 +20,7 @@ calendarpanel = new Roo.XComponent({
             region : 'center',
             layout : {
                 xtype: 'BorderLayout',
+                region : 'center',
                 xns: Roo,
                 items : [
                     {
