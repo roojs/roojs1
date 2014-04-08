@@ -182,7 +182,8 @@ Roo.extend(Roo.CalendarPanel, Roo.ContentPanel, {
 
 
 Roo.each([
-    
+    'getAutoCreate',
+    'initEvents'
     
     
     
