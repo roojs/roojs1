@@ -99,7 +99,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
                 ]
             };
             
-            if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link', 'inverse'].indexOf(this.weight) > -1) {
+            if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
                 cfg.cls += ' '+this.weight;
             }
             
@@ -123,7 +123,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             if (this.parentType != 'Navbar') {
                 this.weight = this.weight.length ?  this.weight : 'default';
             }
-            if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link', 'inverse'].indexOf(this.weight) > -1) {
+            if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
                 
                 cfg.cls += ' btn-' + this.weight;
             }
@@ -132,7 +132,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             cfg.tag = 'a';
             cfg.cls = 'btn-glow roo-button';
             
-            if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link', 'inverse'].indexOf(this.weight) > -1) {
+            if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
                 
                 cfg.cls += ' ' + this.weight;
             }
