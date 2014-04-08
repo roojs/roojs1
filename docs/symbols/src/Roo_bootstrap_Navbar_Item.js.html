@@ -13,6 +13,7 @@
  * @cfg {String} html content of button
  * @cfg {String} badge text inside badge
  * @cfg {String} glyphicon name of glyphicon
+ * @cfg {String} font_awesome_icon name of font awesome icon
   
  * @constructor
  * Create a new Navbar Button
@@ -29,6 +30,7 @@
     </span><span class="jsdoc-var">badge</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">icon</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">glyphicon</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">font_awesome_icon</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         
@@ -66,6 +68,10 @@
 	    
 	    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.glyphicon</span><span class="jsdoc-syntax">) {
 		</span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;i class=&quot;glyphicon glyphicon-'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.glyphicon</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'&quot;&gt;&lt;/i&gt;&lt;span&gt;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&lt;/span&gt;'
+	    </span><span class="jsdoc-syntax">}
+            
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.font_awesome_icon</span><span class="jsdoc-syntax">) {
+		</span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;i class=&quot;'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.font_awesome_icon</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'&quot;&gt;&lt;/i&gt;&lt;span&gt;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&lt;/span&gt;'
 	    </span><span class="jsdoc-syntax">}
 	    
 	    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
