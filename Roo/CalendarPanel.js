@@ -131,7 +131,7 @@ Roo.extend(Roo.CalendarPanel, Roo.ContentPanel, {
         var res = this.autoCreate;
         
         
-    }
+    },
     
     
     getAutoCreate : Roo.bootstrap.Calendar.prototype.getAutoCreate,
