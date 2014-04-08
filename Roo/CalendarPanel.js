@@ -102,6 +102,9 @@ Roo.CalendarPanel = function(config){
 
 
 Roo.extend(Roo.CalendarPanel, Roo.ContentPanel, {
+    
+    startDay : 0,
+    
     getId : function(){
         return this.id;
     },
