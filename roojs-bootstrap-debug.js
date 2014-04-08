@@ -1030,7 +1030,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
        // Roo.log("ADD event");
        // Roo.log(this.triggerEl.dom);
         this.triggerEl.on('click', this.toggle, this);
-        this.triggerEl.addClass('dropdown dropdown-toggle');
+        this.triggerEl.addClass('dropdown-toggle');
         
     },
     toggle  : function(e)
@@ -1778,7 +1778,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 	    }
 	    
 	    if (this.menu) {
-		cfg.cn[0].cls += 'dropdown dropdown-toggle';
+		cfg.cn[0].cls += ' dropdown-toggle';
 		cfg.cn[0].html = (cfg.cn[0].html || this.html) + '<span class="glyphicon glyphicon-chevron-down"></span>';
 	    }
 	    
@@ -1814,6 +1814,17 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
                 {
                     tag: 'span',
                     cls: 'glyphicon glyphicon-' + this.glyphicon
+                }
+            ];
+        }
+        
+        if (this.icon) {
+            if(cfg.html){cfg.html = ' ' + this.html};
+            
+            cfg.cn=[
+                {
+                    tag: 'span',
+                    cls: this.icon
                 }
             ];
         }
