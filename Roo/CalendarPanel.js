@@ -120,17 +120,55 @@ Roo.extend(Roo.CalendarPanel, Roo.ContentPanel, {
     destroy : function(){
       //  this.grid.destroy();
        // delete this.grid;
-         Roo.GridPanel.superclass.destroy.call(this); 
+        Roo.GridPanel.superclass.destroy.call(this);
+         
     },
     
     
     render : function()
     {
+        if (this.rendered) {
+            return;
+        }
+        this.rendered = true;
         
         Roo.log("render calendar");
-        var res = this.getAutoCreate();
+        
+        Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
         
         
+        var cfg = Roo.apply({},  this.getAutoCreate());
+        cfg.id = Roo.id();
+        
+        // fill in the extra attributes 
+        if (this.xattr && typeof(this.xattr) =='object') {
+            for (var i in this.xattr) {
+                cfg[i] = this.xattr[i];
+            }
+        }
+        
+        if(this.dataId){
+            cfg.dataId = this.dataId;
+        }
+        
+        if (this.cls) {
+            cfg.cls = (typeof(cfg.cls) == 'undefined') ? this.cls : cfg.cls + ' ' + this.cls;
+        }
+        
+        if (this.style) { // fixme needs to support more complex style data.
+            cfg.style = this.style;
+        }
+        
+        if(this.name){
+            cfg.name = this.name;
+        }
+        
+        this.el = ct.createChild(cfg, position);
+        
+        if(this.tabIndex !== undefined){
+            this.el.dom.setAttribute('tabIndex', this.tabIndex);
+        }
+        this.initEvents();
     },
     
     
