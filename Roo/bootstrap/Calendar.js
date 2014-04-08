@@ -362,7 +362,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             startingPos += 7;
         }
         
-        var pm = date.add("mo", -1);
+        var pm = date.add(Date.MONTH, -1);
         var prevStart = pm.getDaysInMonth()-startingPos;
 //        
         this.cells = this.el.select('.fc-day',true);
