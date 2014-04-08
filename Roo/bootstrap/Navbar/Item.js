@@ -125,6 +125,9 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 	    cfg.cn[0].html=''
 	}
 	 
+        if (this.icon) {
+            cfg.cn[0].html = '<i class="'+this.icon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
+        }
 	
         return cfg;
     },
