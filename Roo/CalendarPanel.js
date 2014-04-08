@@ -50,7 +50,7 @@ Roo.CalendarPanel = function(config){
         this.rendered = true;
         //console.log('render tree');
         this.render();
-    },true);
+    },this);
     
     this.addEvents({
         /**
