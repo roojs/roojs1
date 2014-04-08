@@ -128,7 +128,7 @@ Roo.extend(Roo.CalendarPanel, Roo.ContentPanel, {
     {
         
         Roo.log("render calendar");
-        var res = this.autoCreate();
+        var res = this.getAutoCreate();
         
         
     },
