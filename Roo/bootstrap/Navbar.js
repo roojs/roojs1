@@ -17,6 +17,7 @@
  * @cfg {String} type (nav | pills | tabs)
  * @cfg {Boolean} arrangement stacked | justified
  * @cfg {String} align (left | right) alignment
+ * @cfg {String} brand_href href of the brand
  *
  * 
  * @constructor
@@ -40,6 +41,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     align : false,
     type: 'nav',
     arrangement: '',
+    brand_href: false,
     
     getAutoCreate : function(){
         var cfg = {
@@ -108,7 +110,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
             if (this.brand !== '') {
                 cfg.cn[0].cn.push({
                     tag: 'a',
-                    href: this.brand-href ? this.brand-href : '#',
+                    href: this.brand_href ? this.brand_href : '#',
                     cls: 'navbar-brand',
                     cn: [
                     this.brand
