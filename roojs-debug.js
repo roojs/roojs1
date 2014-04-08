@@ -48415,6 +48415,7 @@ layout.addxtype({
                 if (typeof(Roo[cfg.xtype]) != 'undefined') {
                     
                     ret = new Roo[cfg.xtype](cfg); // new panel!!!!!
+                    this.add(region, ret);
                 } else {
                 
                     alert("Can not add '" + cfg.xtype + "' to BorderLayout");
