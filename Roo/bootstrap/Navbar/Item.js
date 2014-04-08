@@ -13,7 +13,7 @@
  * @cfg {String} html content of button
  * @cfg {String} badge text inside badge
  * @cfg {String} glyphicon name of glyphicon
- * @cfg {String} font_awesome_icon name of font awesome icon
+ * @cfg {String} icon name of font awesome icon
   
  * @constructor
  * Create a new Navbar Button
@@ -30,7 +30,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
     badge: '',
     icon: false,
     glyphicon: false,
-    font_awesome_icon: false,
+    icon: false,
     
     getAutoCreate : function(){
         
@@ -70,8 +70,8 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 		cfg.cn[0].html = '<i class="glyphicon glyphicon-'+this.glyphicon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
 	    }
             
-            if (this.font_awesome_icon) {
-		cfg.cn[0].html = '<i class="icon-'+this.font_awesome_icon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
+            if (this.icon) {
+		cfg.cn[0].html = '<i class="'+this.icon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
 	    }
 	    
 	    return cfg;
