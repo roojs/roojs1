@@ -108,7 +108,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
             if (this.brand !== '') {
                 cfg.cn[0].cn.push({
                     tag: 'a',
-                    href: '#',
+                    href: this.brand-href ? this.brand-href : '#',
                     cls: 'navbar-brand',
                     cn: [
                     this.brand
