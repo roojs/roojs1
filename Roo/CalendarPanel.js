@@ -18,6 +18,7 @@
 
 Roo.CalendarPanel = function(config){
     
+    Roo.log("cal panel ctr");
   
     this.wrapper = Roo.DomHelper.append(document.body, // wrapper for IE7 strict & safari scroll issue
         {tag: "div", cls: "x-layout-grid-wrapper x-layout-inactive-content"}, true);
