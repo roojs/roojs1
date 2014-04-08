@@ -32105,9 +32105,16 @@ layout.addxtype({
                 
                 
                 
-            default: 
-                alert("Can not add '" + cfg.xtype + "' to BorderLayout");
-                return null;
+            default:
+                if (typeof(Roo[cfg.xtype]) != 'undefined') {
+                    
+                    ret = new Roo[cfg.xtype](cfg); // new panel!!!!!
+                } else {
+                
+                    alert("Can not add '" + cfg.xtype + "' to BorderLayout");
+                    return null;
+                }
+                
              // GridPanel (grid, cfg)
             
         }
