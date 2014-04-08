@@ -1733,6 +1733,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
  * @cfg {String} html content of button
  * @cfg {String} badge text inside badge
  * @cfg {String} glyphicon name of glyphicon
+ * @cfg {String} icon name of font awesome icon
   
  * @constructor
  * Create a new Navbar Button
@@ -1749,6 +1750,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
     badge: '',
     icon: false,
     glyphicon: false,
+    icon: false,
     
     getAutoCreate : function(){
         
@@ -1786,6 +1788,10 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 	    
 	    if (this.glyphicon) {
 		cfg.cn[0].html = '<i class="glyphicon glyphicon-'+this.glyphicon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
+	    }
+            
+            if (this.icon) {
+		cfg.cn[0].html = '<i class="'+this.icon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
 	    }
 	    
 	    return cfg;
