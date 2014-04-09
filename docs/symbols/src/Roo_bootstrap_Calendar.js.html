@@ -72,7 +72,7 @@
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         
         
-        </span><span class="jsdoc-var">fc_button </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">corner</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">content </span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fc_button </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">corner</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">content </span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({},{
                 </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fc-button fc-button-'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">' fc-state-default ' </span><span class="jsdoc-syntax">+ 
@@ -279,8 +279,9 @@
         </span><span class="jsdoc-var">this.store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'load'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-var">this.resize</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-var">this.cells </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-day'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
         
+        </span><span class="jsdoc-var">this.cells </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-day'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">//Roo.log(this.cells);
         </span><span class="jsdoc-var">this.textNodes </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.query</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-day-number'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.cells.addClassOnOver</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'fc-state-hover'</span><span class="jsdoc-syntax">);
         
@@ -361,7 +362,7 @@
             </span><span class="jsdoc-var">startingPos </span><span class="jsdoc-syntax">+= 7;
         }
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">date.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mo&quot;</span><span class="jsdoc-syntax">, -1);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">date.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Date.MONTH</span><span class="jsdoc-syntax">, -1);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">prevStart </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pm.getDaysInMonth</span><span class="jsdoc-syntax">()-</span><span class="jsdoc-var">startingPos</span><span class="jsdoc-syntax">;
 </span><span class="jsdoc-comment">//        
         </span><span class="jsdoc-var">this.cells </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-day'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
@@ -380,6 +381,10 @@
         </span><span class="jsdoc-comment">// convert everything to numbers so it's fast
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">day </span><span class="jsdoc-syntax">= 86400000;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pm.getFullYear</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">pm.getMonth</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">prevStart</span><span class="jsdoc-syntax">))</span><span class="jsdoc-var">.clearTime</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-comment">//Roo.log(d);
+        //Roo.log(pm);
+        //Roo.log(prevStart);
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">today </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.clearTime</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getTime</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">date.clearTime</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getTime</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">min </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.minDate </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.minDate.clearTime</span><span class="jsdoc-syntax">() : </span><span class="jsdoc-var">Number.NEGATIVE_INFINITY</span><span class="jsdoc-syntax">;
@@ -391,8 +396,12 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.format</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">setCellClass </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cal</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cell</span><span class="jsdoc-syntax">){
+            
+            </span><span class="jsdoc-comment">//Roo.log('set Cell Class');
             </span><span class="jsdoc-var">cell.title </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d.getTime</span><span class="jsdoc-syntax">();
+            
+            </span><span class="jsdoc-comment">//Roo.log(d);
             
             </span><span class="jsdoc-var">cell.dateValue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">today</span><span class="jsdoc-syntax">){
@@ -519,10 +528,12 @@
     
     </span><span class="jsdoc-var">findCells </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.start.clone</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.clearTime</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getTime</span><span class="jsdoc-syntax">();
+       </span><span class="jsdoc-comment">// Roo.log(s);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.end.clone</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.clearTime</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getTime</span><span class="jsdoc-syntax">();
+       </span><span class="jsdoc-comment">// Roo.log(e);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= [];
         </span><span class="jsdoc-var">this.cells.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-comment">//Roo.log(&quot;check &quot; +c.dateValue + '&lt;' + e + ' &gt; ' + s);
+             </span><span class="jsdoc-comment">////Roo.log(&quot;check &quot; +c.dateValue + '&lt;' + e + ' &gt; ' + s);
             
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.dateValue </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">;
@@ -709,8 +720,8 @@
     </span><span class="jsdoc-var">onLoad</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
         
         </span><span class="jsdoc-var">this.clearEvents</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'calendar onload'</span><span class="jsdoc-syntax">);
-</span><span class="jsdoc-comment">//        
+        </span><span class="jsdoc-comment">//Roo.log('calendar onload');
+//        
         </span><span class="jsdoc-var">this.calevents </span><span class="jsdoc-syntax">= [];
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cal </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store.getCount</span><span class="jsdoc-syntax">() &gt; 0){

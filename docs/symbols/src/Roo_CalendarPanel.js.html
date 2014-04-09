@@ -40,7 +40,13 @@
         //this.footer = Roo.factory(this.footer, Roo);
         
     </span><span class="jsdoc-syntax">}
+    </span><span class="jsdoc-var">this.view </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.calendar.View</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-var">skipNavHeader </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">skipMonthHeader </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false
+        
+    </span><span class="jsdoc-syntax">},</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">));
     
+     
     </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'activate'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'activate'</span><span class="jsdoc-syntax">);
@@ -84,45 +90,30 @@
 	     * @param {Calendar} this
 	     * @param {event}
 	     */
-        </span><span class="jsdoc-string">'eventclick'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-string">'eventclick'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+	     * @event rendered
+	     * Fires when the grid is rendered
+	     * @param {Calendar} this
+	    
+	     */
+        </span><span class="jsdoc-string">'rendered'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        
         
     </span><span class="jsdoc-syntax">});
-    
+    </span><span class="jsdoc-var">this.relayEvents</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.view</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-string">&quot;select&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;monthchange&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;evententer&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;eventleave&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;rendered&quot;</span><span class="jsdoc-syntax">]);
+
     </span><span class="jsdoc-comment">//this.grid = grid;
     //this.grid.getGridEl().replaceClass(&quot;x-layout-inactive-content&quot;, &quot;x-layout-component-panel&quot;);
 </span><span class="jsdoc-syntax">};
 
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.CalendarPanel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.ContentPanel</span><span class="jsdoc-syntax">, {
-    </span><span class="jsdoc-var">getId </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">;
-    },
-    </span><span class="jsdoc-comment">/*
-    setSize : function(width, height){
-        if(!this.ignoreResize(width, height)){
-            var grid = this.grid;
-            var size = this.adjustForComponents(width, height);
-            grid.getGridEl().setSize(size.width, size.height);
-            grid.autoSize();
-        }
-    },
     
-    beforeSlide : function(){
-        this.grid.getView().scroller.clip();
-    },
-    
-    afterSlide : function(){
-        this.grid.getView().scroller.unclip();
-    },
-    */
-    </span><span class="jsdoc-var">destroy </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-      </span><span class="jsdoc-comment">//  this.grid.destroy();
-       // delete this.grid;
-        </span><span class="jsdoc-var">Roo.GridPanel.superclass.destroy.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-         
-    },
+      
     </span><span class="jsdoc-var">render </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ct </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">));
         </span><span class="jsdoc-var">this.onRender</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">)
     },
     
@@ -135,10 +126,11 @@
         
         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;render calendar&quot;</span><span class="jsdoc-syntax">);
         
+        
         </span><span class="jsdoc-comment">//Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
         
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({},  </span><span class="jsdoc-var">this.getAutoCreate</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({},  </span><span class="jsdoc-var">this.view.getAutoCreate</span><span class="jsdoc-syntax">());
         </span><span class="jsdoc-var">cfg.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-comment">// fill in the extra attributes 
@@ -164,50 +156,21 @@
             </span><span class="jsdoc-var">cfg.name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">;
         }
         
-        </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ct.createChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.view.el </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">ct.createChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tabIndex </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.el.dom.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tabIndex'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.tabIndex</span><span class="jsdoc-syntax">);
-        }
-        </span><span class="jsdoc-var">this.initEvents</span><span class="jsdoc-syntax">();
-    },
+        </span><span class="jsdoc-comment">//if(this.tabIndex !== undefined){
+        //    this.el.dom.setAttribute('tabIndex', this.tabIndex);
+        //}
+        
+        
+        </span><span class="jsdoc-var">this.view.initEvents</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'rendered'</span><span class="jsdoc-syntax">);
+    }
     
     
-    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.bootstrap.Calendar.prototype.getAutoCreate</span><span class="jsdoc-syntax">,
-    
-    </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.bootstrap.Calendar.prototype.initEvents 
     
     
-</span><span class="jsdoc-syntax">});
-
-
-
-</span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">([
-    </span><span class="jsdoc-string">'getAutoCreate'</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-string">'initEvents'</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-string">'resize'</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-string">'showPrevMonth'</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-string">'showToday'</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-string">'showNextMonth'</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-string">'showPrevYear'</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-string">'showNextYear'</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-string">'update'</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-string">'findCell'</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-string">'findCells'</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-string">'findBestRow'</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-string">'addItem'</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-string">'clearEvents'</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-string">'renderEvents'</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-string">'onEventEnter'</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-string">'onEventLeave'</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-string">'onEventClick'</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-string">'onMonthChange'</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-string">'onLoad'
-
-    
-</span><span class="jsdoc-syntax">], </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">) {
-    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'add' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">);
-    </span><span class="jsdoc-var">Roo.CalendarPanel.prototype</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">Roo.bootstrap.Calendar.prototype</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">];
- 
 });
+
+ 
 </span></code></body></html>
