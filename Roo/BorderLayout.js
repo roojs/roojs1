@@ -609,6 +609,8 @@ Roo.BorderLayout.RegionFactory = {
         if(config.lightweight || config.basic){
             return new Roo.BasicLayoutRegion(mgr, config, target);
         }
+        Roo.log('mgr!!!!!!!!!!!!!!!!!!!');
+        Roo.log(mgr);
         switch(target){
             case "north":
                 return new Roo.NorthLayoutRegion(mgr, config);
