@@ -829,8 +829,8 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
 //        
         this.calevents = [];
          
-        if(this.store.getCount() > 0){
-            this.store.data.each(function(d){
+        if(this.eventStore.getCount() > 0){
+            this.eventStore.data.each(function(d){
                 
                 
                 // FIXME..
