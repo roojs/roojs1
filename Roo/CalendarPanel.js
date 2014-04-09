@@ -22,7 +22,10 @@ Roo.CalendarPanel = function(config){
   
     this.wrapper = Roo.DomHelper.append(document.body, // wrapper for IE7 strict & safari scroll issue
         {tag: "div", cls: "x-layout-grid-wrapper x-layout-inactive-content"}, true);
-    Roo.log(this.warpper);return;
+    Roo.log(this.warpper);
+    Roo.log(this.config);
+    
+    return;
     //this.wrapper.dom.appendChild(grid.getGridEl().dom);
     
     Roo.CalendarPanel.superclass.constructor.call(this, this.wrapper, config);
