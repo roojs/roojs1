@@ -114,6 +114,8 @@ Roo.extend(Roo.CalendarPanel, Roo.ContentPanel, {
     render : function()
     {
         var ct = this.el.appendChild(document.createElement("div"));
+        Roo.log('ct');
+        Roo.log(ct);
         this.onRender(this.el, false)
     },
     
