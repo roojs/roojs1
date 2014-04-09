@@ -798,7 +798,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
                     cfg.cls += ' fc-event-end';
                 }
                 
-                var ctr = this.el.select('.fc-event-container',true).first();
+                var ctr = this.view.el.select('.fc-event-container',true).first();
                 var cg = ctr.createChild(cfg);
                 
                 cg.on('mouseenter' ,this.onEventEnter, this, ev);
