@@ -713,17 +713,19 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
 //                var ctr = this.el.select('.fc-event-container',true).first();
                 var cg = startCell.createChild(cfg);
                 
+                cg.setStyle('margin-top', rows[i].start.row * 20);
+                
                 cg.on('mouseenter' ,this.onEventEnter, this, ev);
                 cg.on('mouseleave' ,this.onEventLeave, this, ev);
                 cg.on('click', this.onEventClick, this, ev);
                 
                 ev.els.push(cg);
-                
-                var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
-                var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
-                //Roo.log(cg);
-                cg.setXY([sbox.x +2, sbox.y +(ev.row * 20)]);    
-                cg.setWidth(ebox.right - sbox.x -2);
+//                
+//                var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
+//                var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
+//                //Roo.log(cg);
+//                cg.setXY([sbox.x +2, sbox.y +(ev.row * 20)]);    
+//                cg.setWidth(ebox.right - sbox.x -2);
             }
             
             
