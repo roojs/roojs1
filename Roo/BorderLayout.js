@@ -394,7 +394,8 @@ layout.addxtype({
             delete cfg.items;
         }
         var nb = false;
-        
+        Roo.log('cfg.xtype!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        Roo.log(cfg.xtype);
         switch(cfg.xtype) 
         {
             case 'ContentPanel':  // ContentPanel (el, cfg)
