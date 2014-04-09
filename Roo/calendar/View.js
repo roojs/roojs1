@@ -670,7 +670,7 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
             for(var i =0; i < rows.length; i++) {
                 
                 var startCell = Roo.select('.fc-cell-' + rows[i].start.dateValue, true).first();
-                startCell.setStyle('margin-top', rows[i].start.row * 20);
+
                 // how many rows should it span..
                 
                 var  cfg = {
@@ -710,8 +710,8 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
                     cfg.cls += ' fc-event-end';
                 }
                 
-                var ctr = this.el.select('.fc-event-container',true).first();
-                var cg = ctr.createChild(cfg);
+//                var ctr = this.el.select('.fc-event-container',true).first();
+                var cg = startCell.createChild(cfg);
                 
                 cg.on('mouseenter' ,this.onEventEnter, this, ev);
                 cg.on('mouseleave' ,this.onEventLeave, this, ev);
