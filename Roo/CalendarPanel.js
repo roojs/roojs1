@@ -124,7 +124,7 @@ Roo.extend(Roo.CalendarPanel, Roo.ContentPanel, {
         }
         this.rendered = true;
         
-        Roo.log("render calendar");
+        Roo.log("CalendarPanel.js render calendar");
         
         
         //Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
