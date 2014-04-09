@@ -73,7 +73,8 @@ calendarpanel = new Roo.XComponent({
                 ],
                 center : {
                     xtype: 'LayoutRegion',
-                    xns: Roo
+                    xns: Roo,
+                    height : 900
                 }
             },
             listeners : {
