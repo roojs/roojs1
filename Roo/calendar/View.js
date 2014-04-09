@@ -312,7 +312,8 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
             this.el.select('.fc-button-next',true).on('click', this.showNextMonth, this);
             this.el.select('.fc-button-today',true).on('click', this.showToday, this);
             this.el.select('.fc-button',true).addClassOnOver('fc-state-hover');
-        /** FIXEM        this.on('monthchange', this.onMonthChange, this);
+        }
+        this.on('monthchange', this.onMonthChange, this);
         
         this.update(new Date().clearTime());
     },
