@@ -113,6 +113,8 @@ Roo.extend(Roo.LayoutManager, Roo.util.Observable, {
      */
     getViewSize : function(){
         var size;
+        Roo.log('getViewSize!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
+        Roo.log(this.el.dom);
         if(this.el.dom != document.body){
             size = this.el.getSize();
         }else{
