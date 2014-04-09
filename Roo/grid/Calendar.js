@@ -798,7 +798,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
                                   tag:'span',
                                   cls: 'fc-event-title',
                                   html : String.format('{0}', ev.title),
-                                  qtip: String.format('{0}', ev.title)
+                                  qtip: String.format('{0}<br/>', ev.title,ev.description || '')
                                 }
                                 
                                 
