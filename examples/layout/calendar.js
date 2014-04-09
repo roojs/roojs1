@@ -27,36 +27,36 @@ calendarpanel = new Roo.XComponent({
                     Roo.log('render');
                 }
             },
-                store : {
-                    xtype: 'Store',
-                    xns: Roo.data,
-                    listeners : {
-                        beforeload : function (_self, o){
-                            o.params = o.params || {};
-                            var d = new Date().format('Y-m-d');
-                            if(_this.cal){
-                                d = typeof(_this.cal.activeDate) == 'string' ? _this.cal.activeDate : _this.cal.activeDate.format("Y-m-d");
-                            }
-                            o.params._activeDate = d
+            store : {
+                xtype: 'Store',
+                xns: Roo.data,
+                listeners : {
+                    beforeload : function (_self, o){
+                        o.params = o.params || {};
+                        var d = new Date().format('Y-m-d');
+                        if(_this.cal){
+                            d = typeof(_this.cal.activeDate) == 'string' ? _this.cal.activeDate : _this.cal.activeDate.format("Y-m-d");
                         }
-                    },
-                    remoteSort : true,
-                    sortInfo : { direction : 'ASC', field: 'start_dt' },
-                    proxy : {
-                        xtype: 'HttpProxy',
-                        xns: Roo.data,
-                        method : 'GET',
-                        url : 'http://roojs.com/admin.php/Roo/mtrack_ticket?_dc=1396967515369&_future_schedule=1&query%5Bviewtype%5D=active&limit=999&sort=summary&dir=ASC'
-                    },
-                    reader : {
-                        xtype: 'JsonReader',
-                        xns: Roo.data,
-                        id : 'id',
-                        root : 'data',
-                        totalProperty : 'total',
-                        fields : [{"name":"id","type":"int"},{"name":"title","type":"string"}]
+                        o.params._activeDate = d
                     }
+                },
+                remoteSort : true,
+                sortInfo : { direction : 'ASC', field: 'start_dt' },
+                proxy : {
+                    xtype: 'HttpProxy',
+                    xns: Roo.data,
+                    method : 'GET',
+                    url : 'http://roojs.com/admin.php/Roo/mtrack_ticket?_dc=1396967515369&_future_schedule=1&query%5Bviewtype%5D=active&limit=999&sort=summary&dir=ASC'
+                },
+                reader : {
+                    xtype: 'JsonReader',
+                    xns: Roo.data,
+                    id : 'id',
+                    root : 'data',
+                    totalProperty : 'total',
+                    fields : [{"name":"id","type":"int"},{"name":"title","type":"string"}]
                 }
+            }
         }
             
     }
