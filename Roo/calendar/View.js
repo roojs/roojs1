@@ -623,10 +623,10 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
         ev.els = [];
         ev.rows = rows;
         ev.cells = cells;
-        for (var i = 0; i < cells.length;i++) {
-            cells[i].rows = Math.max(cells[i].rows || 0 , ev.row + 1 );
-            
-        }
+//        for (var i = 0; i < cells.length;i++) {
+//            cells[i].rows = Math.max(cells[i].rows || 0 , ev.row + 1 );
+//            
+//        }
         
         this.calevents.push(ev);
     },
