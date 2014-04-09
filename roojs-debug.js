@@ -7853,6 +7853,9 @@ if(opt.anim.isAnimated()){
          */
         getViewSize : function(){
             var d = this.dom, doc = document, aw = 0, ah = 0;
+            Roo.log('getViewSize!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
+            Roo.log(d);
+            Roo.log(doc);
             if(d == doc || d == doc.body){
                 return {width : D.getViewWidth(), height: D.getViewHeight()};
             }else{
