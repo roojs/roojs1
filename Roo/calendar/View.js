@@ -668,7 +668,7 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
             var rows = ev.rows;
             
             for(var i =0; i < rows.length; i++) {
-                var startCell = Roo.select('.');
+                var startCell = Roo.select('.fc-cell-' + rows[i].start.dateValue, true).first();
                  
                 // how many rows should it span..
                 
