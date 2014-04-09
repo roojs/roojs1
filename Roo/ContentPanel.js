@@ -173,6 +173,7 @@ Roo.extend(Roo.ContentPanel, Roo.util.Observable, {
     tabTip:'',
     setRegion : function(region){
         this.region = region;
+        Roo.log('region1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
         if(region){
            this.el.replaceClass("x-layout-inactive-content", "x-layout-active-content");
         }else{
