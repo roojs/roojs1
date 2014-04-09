@@ -25,7 +25,6 @@ Roo.LayoutManager = function(container, config){
     }
     this.id = this.el.id;
     this.el.addClass("x-layout-container");
-    this.el.setStyle('height', '500px');
     /** false to disable window resize monitoring @type Boolean */
     this.monitorWindowResize = true;
     this.regions = {};
