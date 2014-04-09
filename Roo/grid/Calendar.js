@@ -866,8 +866,14 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
         this.calevents = [];
          
         if(this.eventStore.getCount() > 0){
+            
+            var i =0;
+            
             this.eventStore.data.each(function(d){
-                
+                if (i>0) {
+                    return;
+                }
+                i++;
                 
                 // FIXME..
                 var add = Roo.apply({}, d.data);
@@ -886,7 +892,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
                 add.id = add.id || d.id;
                 add.title = add.title || '??';
                 this.addItem(add);
-                return true;
+                
             
                 // other than the 'required' coluns, we should just pass the data from the store.
                 
