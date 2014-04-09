@@ -43,6 +43,7 @@
  * @cfg {Boolean}   toolbar         xtype configuration for a toolbar - shows on right of tabbar
  */
 Roo.LayoutRegion = function(mgr, config, pos){
+    Roo.log('1');
     Roo.LayoutRegion.superclass.constructor.call(this, mgr, config, pos, true);
     var dh = Roo.DomHelper;
     /** This region's container element 
