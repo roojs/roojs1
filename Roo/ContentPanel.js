@@ -36,7 +36,10 @@
  * @param {String} region (optional) Used by xtype constructors to add to regions. (values center,east,west,south,north)
  */
 Roo.ContentPanel = function(el, config, content){
-    
+    Roo.log('Content Panel call');
+    Roo.log(el);
+    Roo.log(config);
+    Roo.log(content);
      
     /*
     if(el.autoCreate || el.xtype){ // xtype is available if this is called from factory
