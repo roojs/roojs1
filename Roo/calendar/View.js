@@ -753,12 +753,12 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
                 
                 // FIXME..
                 var add = Roo.apply({}, d.data);
-                if (typeof(add.end_dt) == 'undefined')) {
+                if (typeof(add.end_dt) == 'undefined')  {
                     Roo.log("Missing End time in calendar data: ");
                     Roo.log(d);
                     return;
                 }
-                if (typeof(add.start_dt) == 'undefined')) {
+                if (typeof(add.start_dt) == 'undefined')  {
                     Roo.log("Missing Start time in calendar data: ");
                     Roo.log(d);
                     return;
