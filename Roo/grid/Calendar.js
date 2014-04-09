@@ -513,15 +513,16 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
             
             //Roo.log(d);
             
+            
             cell.dateValue = t;
             if(t == today){
-               // cell.className += " fc-today";
-               // cell.className += " fc-state-highlight";
+                cell.className += " fc-today";
+                cell.className += " fc-state-highlight";
                 cell.title = cal.todayText;
             }
             if(t == sel){
                 // disable highlight in other month..
-                //cell.className += " fc-state-highlight";
+                cell.className += " fc-state-highlight";
                 
             }
             // disabling
@@ -545,12 +546,12 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
                 var fvalue = d.dateFormat(format);
                 if(ddMatch.test(fvalue)){
                     cell.title = ddText.replace("%0", fvalue);
-                   // cell.className = " fc-state-disabled";
+                   cell.className = " fc-state-disabled";
                 }
             }
             
             if (!cell.initialClassName) {
-                //cell.initialClassName = cell.dom.className;
+                cell.initialClassName = cell.dom.className;
             }
             
             cell.dom.className = cell.initialClassName  + ' ' +  cell.className;
