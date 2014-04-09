@@ -714,7 +714,7 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
                 var cg = startCell.createChild(cfg);
                 
                 
-//                cg.setStyle('padding-top', rows[i].start.row * 20);
+                cg.setStyle('margin-top', rows[i].start.row * 20);
                 
                 cg.on('mouseenter' ,this.onEventEnter, this, ev);
                 cg.on('mouseleave' ,this.onEventLeave, this, ev);
