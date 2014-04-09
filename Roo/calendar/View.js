@@ -717,7 +717,7 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
                 var firstEvent = cg.child('>fc-event').first() || false;
                 
                 if(firstEvent){
-                    firstEvent.setStyle('padding-top', ev.row * 20 + 'px');
+                    firstEvent.setStyle('margin-top', ev.row * 20 + 'px');
                 }
                 
                 
