@@ -258,7 +258,7 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
       
     getAutoCreate : function(){
          
-         Roo.log('View.js getAutoCreate');
+         
         var mbody = [];
         if (!this.skipNavHeader) {
             mbody.push(this.navHeader());
@@ -297,7 +297,7 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
         if(!this.store){
             throw "can not find store for calendar";
         }
-        Roo.log('View.js initEvents');
+        
         this.store = Roo.factory(this.store, Roo.data);
         this.store.on('load', this.onLoad, this);
         
@@ -355,7 +355,6 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
    // private
     update : function(date)
     {
-        Roo.log('View.js update');
         var vd = this.activeDate;
         this.activeDate = date;
 //        if(vd && this.el){
@@ -747,13 +746,13 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
     onLoad: function () {
         
         this.clearEvents();
-        Roo.log('View.js onload');
+        //Roo.log('calendar onload');
 //        
         this.calevents = [];
          
         if(this.store.getCount() > 0){
             this.store.data.each(function(d){
-//                Roo.log(d);
+                
                 
                 // FIXME..
                 var add = Roo.apply({}, d.data);
