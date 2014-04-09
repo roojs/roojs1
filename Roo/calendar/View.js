@@ -430,9 +430,6 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
             //Roo.log(d);
             
             cell.dateValue = t;
-            
-            cell.className += " fc-cell-" + t;
-            
             if(t == today){
                 cell.className += " fc-today";
                 cell.className += " fc-state-highlight";
@@ -555,26 +552,26 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
         return ret;
     },
     
-//    findCells : function(ev) {
-//        var s = ev.start_dt.clone().clearTime().getTime();
-//       // Roo.log(s);
-//        var e= ev.end_dt.clone().clearTime().getTime();
-//       // Roo.log(e);
-//        var ret = [];
-//        this.cells.each(function(c){
-//             ////Roo.log("check " +c.dateValue + '<' + e + ' > ' + s);
-//            
-//            if(c.dateValue > e){
-//                return ;
-//            }
-//            if(c.dateValue < s){
-//                return ;
-//            }
-//            ret.push(c);
-//        });
-//        
-//        return ret;    
-//    },
+    findCells : function(ev) {
+        var s = ev.start_dt.clone().clearTime().getTime();
+       // Roo.log(s);
+        var e= ev.end_dt.clone().clearTime().getTime();
+       // Roo.log(e);
+        var ret = [];
+        this.cells.each(function(c){
+             ////Roo.log("check " +c.dateValue + '<' + e + ' > ' + s);
+            
+            if(c.dateValue > e){
+                return ;
+            }
+            if(c.dateValue < s){
+                return ;
+            }
+            ret.push(c);
+        });
+        
+        return ret;    
+    },
     
     findBestRow: function(cells)
     {
@@ -591,7 +588,7 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
     addItem : function(ev)
     {
         // look for vertical location slot in
-        var cells = this.findCell(ev);
+        var cells = this.findCells(ev);
         
         ev.row = this.findBestRow(cells);
         
