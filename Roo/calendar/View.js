@@ -576,16 +576,16 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
         return ret;    
     },
     
-//    findBestRow: function(cells)
-//    {
-//        var ret = 0;
-//        
-//        for (var i =0 ; i < cells.length;i++) {
-//            ret  = Math.max(cells[i].rows || 0,ret);
-//        }
-//        return ret;
-//        
-//    },
+    findBestRow: function(cells)
+    {
+        var ret = 0;
+        
+        for (var i =0 ; i < cells.length;i++) {
+            ret  = Math.max(cells[i].rows || 0,ret);
+        }
+        return ret;
+        
+    },
     
     
     addItem : function(ev)
@@ -593,7 +593,7 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
         // look for vertical location slot in
         var cells = this.findCells(ev);
         
-//        ev.row = this.findBestRow(cells);
+        ev.row = this.findBestRow(cells);
         
         // work out the location.
         
@@ -625,10 +625,10 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
         ev.els = [];
         ev.rows = rows;
         ev.cells = cells;
-//        for (var i = 0; i < cells.length;i++) {
-//            cells[i].rows = Math.max(cells[i].rows || 0 , ev.row + 1 );
-//            
-//        }
+        for (var i = 0; i < cells.length;i++) {
+            cells[i].rows = Math.max(cells[i].rows || 0 , ev.row + 1 );
+            
+        }
         
         this.calevents.push(ev);
     },
