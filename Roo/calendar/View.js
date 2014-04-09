@@ -248,7 +248,7 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
         }
         ret.cn.push( { 
                     tag: 'tbody',
-                    style: 'display: block;overflow: auto;',
+                    
                     cn : this.monthBody()
                 });
         return ret;
