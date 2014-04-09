@@ -64,6 +64,18 @@ Roo.grid.Calendar = function(container, config){
     this.ds = this.dataSource;
     this.ds.xmodule = this.xmodule || false;
     
+    
+    var cellRender = function(v,x,r)
+    {
+        return String.format(
+            '<div class="fc-day  fc-widget-content"><div>'
+                '<div class="fc-day-number">{0}</div>'+
+                '<div class="fc-day-content"><div style="position:relative"></div></div>'
+            '</div></div>', v);
+    
+    }
+    
+    
     this.colModel = new Roo.grid.ColumnModel( [
         {
             xtype: 'ColumnModel',
