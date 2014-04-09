@@ -763,8 +763,8 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
                     Roo.log(d);
                     return;
                 }
-                add.start_dt = typeof(add.start_dt) == 'string' ? Data.parseDate(add.start_dt,'Y-m-d H:i:s'),
-                add.end_dt = typeof(add.end_dt) == 'string' ? Data.parseDate(add.end_dt,'Y-m-d H:i:s'),
+                add.start_dt = typeof(add.start_dt) == 'string' ? Data.parseDate(add.start_dt,'Y-m-d H:i:s') : add.start_dt,
+                add.end_dt = typeof(add.end_dt) == 'string' ? Data.parseDate(add.end_dt,'Y-m-d H:i:s') : add.end_dt,
                 add.id = add.id || d.id;
                 add.title = add.title || '??';
                 this.addItem(add);
