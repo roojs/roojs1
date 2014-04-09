@@ -83,6 +83,7 @@ Roo.BorderLayout = function(container, config){
     config = config || {};
     Roo.log('2');
     Roo.BorderLayout.superclass.constructor.call(this, container, config);
+    Roo.log('4');
     this.factory = config.factory || Roo.BorderLayout.RegionFactory;
     for(var i = 0, len = this.factory.validRegions.length; i < len; i++) {
     	var target = this.factory.validRegions[i];
