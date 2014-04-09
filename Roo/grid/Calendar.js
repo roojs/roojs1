@@ -50,7 +50,7 @@ Roo.grid.Calendar = function(container, config){
     }
     if (this.eventStore) {
         this.eventStore= Roo.factory(this.eventStore, Roo.data);
-         
+        this.eventStore.on('load',this.onLoad, this);
          
     }
     
@@ -615,6 +615,260 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
         
         
     }
+    
+    findCell : function(dt) {
+        dt = dt.clearTime().getTime();
+        var ret = false;
+        this.cells.each(function(c){
+            //Roo.log("check " +c.dateValue + '?=' + dt);
+            if(c.dateValue == dt){
+                ret = c;
+                return false;
+            }
+            return true;
+        });
+        
+        return ret;
+    },
+    
+    findCells : function(ev) {
+        var s = ev.start_dt.clone().clearTime().getTime();
+       // Roo.log(s);
+        var e= ev.end_dt.clone().clearTime().getTime();
+       // Roo.log(e);
+        var ret = [];
+        this.cells.each(function(c){
+             ////Roo.log("check " +c.dateValue + '<' + e + ' > ' + s);
+            
+            if(c.dateValue > e){
+                return ;
+            }
+            if(c.dateValue < s){
+                return ;
+            }
+            ret.push(c);
+        });
+        
+        return ret;    
+    },
+    
+    findBestRow: function(cells)
+    {
+        var ret = 0;
+        
+        for (var i =0 ; i < cells.length;i++) {
+            ret  = Math.max(cells[i].rows || 0,ret);
+        }
+        return ret;
+        
+    },
+    
+    
+    addItem : function(ev)
+    {
+        // look for vertical location slot in
+        var cells = this.findCells(ev);
+        
+        ev.row = this.findBestRow(cells);
+        
+        // work out the location.
+        
+        var crow = false;
+        var rows = [];
+        for(var i =0; i < cells.length; i++) {
+            if (!crow) {
+                crow = {
+                    start : cells[i],
+                    end :  cells[i]
+                };
+                continue;
+            }
+            if (crow.start.getY() == cells[i].getY()) {
+                // on same row.
+                crow.end = cells[i];
+                continue;
+            }
+            // different row.
+            rows.push(crow);
+            crow = {
+                start: cells[i],
+                end : cells[i]
+            };
+            
+        }
+        
+        rows.push(crow);
+        ev.els = [];
+        ev.rows = rows;
+        ev.cells = cells;
+        for (var i = 0; i < cells.length;i++) {
+            cells[i].rows = Math.max(cells[i].rows || 0 , ev.row + 1 );
+            
+        }
+        
+        this.calevents.push(ev);
+    },
+    
+    clearEvents: function() {
+        
+        if(!this.calevents){
+            return;
+        }
+        
+        Roo.each(this.cells.elements, function(c){
+            c.rows = 0;
+        });
+        
+        Roo.each(this.calevents, function(e) {
+            Roo.each(e.els, function(el) {
+                el.un('mouseenter' ,this.onEventEnter, this);
+                el.un('mouseleave' ,this.onEventLeave, this);
+                el.remove();
+            },this);
+        },this);
+        
+    },
+    
+    renderEvents: function()
+    {   
+        // first make sure there is enough space..
+        
+        this.cells.each(function(c) {
+        
+            c.select('.fc-day-content div',true).first().setHeight(Math.max(34, c.rows * 20));
+        });
+        
+        for (var e = 0; e < this.calevents.length; e++) {
+            var ev = this.calevents[e];
+            var cells = ev.cells;
+            var rows = ev.rows;
+            
+            for(var i =0; i < rows.length; i++) {
+                
+                 
+                // how many rows should it span..
+                
+                var  cfg = {
+                    cls : 'roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable',
+                    style : 'position: absolute', // left: 387px; width: 121px; top: 359px;
+                    
+                    unselectable : "on",
+                    cn : [
+                        {
+                            cls: 'fc-event-inner',
+                            cn : [
+                                {
+                                  tag:'span',
+                                  cls: 'fc-event-time',
+                                  html : cells.length > 1 ? '' : ev.start_dt.format('h:ia')
+                                },
+                                {
+                                  tag:'span',
+                                  cls: 'fc-event-title',
+                                  html : String.format('{0}', ev.title)
+                                }
+                                
+                                
+                            ]
+                        },
+                        {
+                            cls: 'ui-resizable-handle ui-resizable-e',
+                            html : '&nbsp;&nbsp;&nbsp'
+                        }
+                        
+                    ]
+                };
+                if (i == 0) {
+                    cfg.cls += ' fc-event-start';
+                }
+                if ((i+1) == rows.length) {
+                    cfg.cls += ' fc-event-end';
+                }
+                
+                var ctr = this.el.select('.fc-event-container',true).first();
+                var cg = ctr.createChild(cfg);
+                
+                cg.on('mouseenter' ,this.onEventEnter, this, ev);
+                cg.on('mouseleave' ,this.onEventLeave, this, ev);
+                cg.on('click', this.onEventClick, this, ev);
+                
+                ev.els.push(cg);
+                
+                var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
+                var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
+                //Roo.log(cg);
+                cg.setXY([sbox.x +2, sbox.y +(ev.row * 20)]);    
+                cg.setWidth(ebox.right - sbox.x -2);
+            }
+            
+            
+        }
+        
+    },
+    
+    onEventEnter: function (e, el,event,d) {
+        this.fireEvent('evententer', this, el, event);
+    },
+    
+    onEventLeave: function (e, el,event,d) {
+        this.fireEvent('eventleave', this, el, event);
+    },
+    
+    onEventClick: function (e, el,event,d) {
+        this.fireEvent('eventclick', this, el, event);
+    },
+    
+    onMonthChange: function () {
+        this.store.load();
+    },
+    
+    onLoad: function () {
+        
+        this.clearEvents();
+        //Roo.log('calendar onload');
+//        
+        this.calevents = [];
+         
+        if(this.store.getCount() > 0){
+            this.store.data.each(function(d){
+                
+                
+                // FIXME..
+                var add = Roo.apply({}, d.data);
+                if (typeof(add.end_dt) == 'undefined')  {
+                    Roo.log("Missing End time in calendar data: ");
+                    Roo.log(d);
+                    return;
+                }
+                if (typeof(add.start_dt) == 'undefined')  {
+                    Roo.log("Missing Start time in calendar data: ");
+                    Roo.log(d);
+                    return;
+                }
+                add.start_dt = typeof(add.start_dt) == 'string' ? Date.parseDate(add.start_dt,'Y-m-d H:i:s') : add.start_dt,
+                add.end_dt = typeof(add.end_dt) == 'string' ? Date.parseDate(add.end_dt,'Y-m-d H:i:s') : add.end_dt,
+                add.id = add.id || d.id;
+                add.title = add.title || '??';
+                this.addItem(add);
+                
+                // other than the 'required' coluns, we should just pass the data from the store.
+                
+                
+               /*cal.addItem({
+                    id : d.data.id,
+                    start: new Date(d.data.start_dt),
+                    end : new Date(d.data.end_dt),
+                    time : d.data.start_time,
+                    title : d.data.title,
+                    description : d.data.description,
+                    venue : d.data.venue
+                });*/
+            },this);
+        }
+        
+        this.renderEvents();
+    }
+    
 
 });
 /*
