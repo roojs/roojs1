@@ -355,6 +355,7 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
    // private
     update : function(date)
     {
+        Roo.log('View.js update');
         var vd = this.activeDate;
         this.activeDate = date;
 //        if(vd && this.el){
