@@ -33,25 +33,25 @@ div.fc-view {
 	border: 1px solid #963;
 	height: 500px;
 	overflow: auto;
-	width: 756px
+	width: 100%
 }
 
 /* Reset overflow value to hidden for all non-IE browsers. */
 html>body div.fc-view {
 	overflow: hidden;
-	width: 756px
+	width: 100%
 }
 
 /* define width of table. IE browsers only                 */
 div.fc-view table {
 	float: left;
-	width: 740
+	width: 100%
 }
 
 /* define width of table. Add 16px to width for scrollbar.           */
 /* All other non-IE browsers.                                        */
 html>body div.fc-view table {
-	width: 756px
+	width: 100%
 }
 
 /* set table header to a fixed position. WinIE 6.x only                                       */
@@ -69,7 +69,7 @@ html>body thead tr {
 }
 
 /* make the TH elements pretty */
-thead th {
+/*thead th {
 	background: #C96;
 	border-left: 1px solid #EB8;
 	border-right: 1px solid #B74;
@@ -77,7 +77,7 @@ thead th {
 	font-weight: normal;
 	padding: 4px 3px;
 	text-align: left
-}
+}*/
 
 /* make the A elements pretty. makes for nice clickable headers                */
 /*thead a, thead a:link, thead a:visited {
@@ -130,7 +130,7 @@ html>body tbody {
 /* define width of TH elements: 1st, 2nd, and 3rd respectively.          */
 /* Add 16px to last TH for scrollbar padding. All other non-IE browsers. */
 /* http://www.w3.org/TR/REC-CSS2/selector.html#adjacent-selectors        */
-/*html>body thead th {
+html>body thead th {
 	width: 200px
 }
 
@@ -142,13 +142,13 @@ html>body thead th + th + th {
 	width: 316px
 }
 
- define width of TD elements: 1st, 2nd, and 3rd respectively.          
- All other non-IE browsers.                                            
- http://www.w3.org/TR/REC-CSS2/selector.html#adjacent-selectors        
+/* define width of TD elements: 1st, 2nd, and 3rd respectively.          */
+/* All other non-IE browsers.                                            */
+/* http://www.w3.org/TR/REC-CSS2/selector.html#adjacent-selectors        */
 html>body tbody td {
 	width: 200px
 }
-
+/*
 html>body tbody td + td {
 	width: 240px
 }
@@ -165,7 +165,7 @@ html>body tbody td + td + td {
 <h1>View Panel Example</h1>
 
 
-<div id="view-panel" style="width:900px;height:500;">
+<div id="view-panel" style="width:700px;height:500;">
 
 </div>
  
