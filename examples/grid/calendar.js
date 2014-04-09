@@ -102,11 +102,7 @@ var Example = {
                             xtype: 'Separator',
                             xns: Roo.Toolbar
                         },
-                        {
-                            xtype: 'TextItem',
-                            xns: Roo.Toolbar,
-                            text : "Blue: in-active, green: in-active sup-event, red: de-active, purple: de-active sup-event"
-                        },
+                         
                         {
                             xtype: 'Fill',
                             xns: Roo.Toolbar
