@@ -106,37 +106,10 @@ Roo.CalendarPanel = function(config){
 
 Roo.extend(Roo.CalendarPanel, Roo.ContentPanel, {
     
-    startDay : 0,
-    
-    getId : function(){
-        return this.id;
-    },
-    /*
-    setSize : function(width, height){
-        if(!this.ignoreResize(width, height)){
-            var grid = this.grid;
-            var size = this.adjustForComponents(width, height);
-            grid.getGridEl().setSize(size.width, size.height);
-            grid.autoSize();
-        }
-    },
-    
-    beforeSlide : function(){
-        this.grid.getView().scroller.clip();
-    },
-    
-    afterSlide : function(){
-        this.grid.getView().scroller.unclip();
-    },
-    */
-    destroy : function(){
-      //  this.grid.destroy();
-       // delete this.grid;
-        Roo.GridPanel.superclass.destroy.call(this);
-         
-    },
+      
     render : function()
     {
+        var ct = this.el.appendChild(document.createElement("div"));
         this.onRender(this.el, false)
     },
     
@@ -148,6 +121,7 @@ Roo.extend(Roo.CalendarPanel, Roo.ContentPanel, {
         this.rendered = true;
         
         Roo.log("render calendar");
+        
         
         //Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
         
