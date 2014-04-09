@@ -163,7 +163,7 @@ Roo.extend(Roo.CalendarPanel, Roo.ContentPanel, {
         }
         
         
-        this.initEvents();
+        this.view.initEvents();
         this.fireEvent('rendered');
     }
     
