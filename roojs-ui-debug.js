@@ -39861,6 +39861,24 @@ Roo.grid.Calendar = function(container, config){
 
     },this);
     
+    if (!Roo.grid.Calendar.style) {
+        Roo.grid.Calendar.style = Roo.util.CSS.createStyleSheet({
+            
+            
+            '.x-grid-cal .x-grid-col' :  {
+                height: 'auto !important',
+                'vertical-align': 'top'
+            },
+            '.x-grid-cal  .fc-event-hori' : {
+                height: '14px'
+            }
+             
+            
+        }, Roo.id());
+    }
+
+    
+    
 };
 Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
     /**
