@@ -258,7 +258,7 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
       
     getAutoCreate : function(){
          
-         
+         Roo.log('View.js getAutoCreate');
         var mbody = [];
         if (!this.skipNavHeader) {
             mbody.push(this.navHeader());
