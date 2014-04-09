@@ -675,7 +675,7 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
                 
                 var  cfg = {
                     cls : 'roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable',
-                    style : 'position: absolute', // left: 387px; width: 121px; top: 359px;
+                    style : 'position: absolute, margin-top:' + rows[i].start.row * 20, // left: 387px; width: 121px; top: 359px;
                     
                     unselectable : "on",
                     cn : [
@@ -713,7 +713,7 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
 //                var ctr = this.el.select('.fc-event-container',true).first();
                 var cg = startCell.createChild(cfg);
                 
-                cg.setStyle('margin-top', rows[i].start.row * 20);
+//                cg.setStyle('margin-top', rows[i].start.row * 20);
                 
                 cg.on('mouseenter' ,this.onEventEnter, this, ev);
                 cg.on('mouseleave' ,this.onEventLeave, this, ev);
