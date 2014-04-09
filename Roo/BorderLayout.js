@@ -124,7 +124,6 @@ Roo.extend(Roo.BorderLayout, Roo.LayoutManager, {
     layout : function(){
         if(this.updating) return;
         var size = this.getViewSize();
-        
         var w = size.width;
         var h = size.height;
         var centerW = w;
@@ -194,8 +193,6 @@ Roo.extend(Roo.BorderLayout, Roo.LayoutManager, {
             //if(this.hideOnLayout){
                 //center.el.setStyle("display", "block");
             //}
-            Roo.log('center box !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
-            Roo.log(centerBox);
             center.updateBox(this.safeBox(centerBox));
         }
         this.el.repaint();
