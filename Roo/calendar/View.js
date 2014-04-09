@@ -746,7 +746,7 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
     onLoad: function () {
         
         this.clearEvents();
-        //Roo.log('calendar onload');
+        Roo.log('View.js onload');
 //        
         this.calevents = [];
          
