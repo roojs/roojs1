@@ -98,7 +98,7 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
         return  {
             tag : 'table',
             cls : 'fc-header',
-            style : 'width:100%',
+            style : 'width:100%, height:100%',
             cn : [
                 {
                     tag: 'tr',
@@ -230,7 +230,7 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
         var ret = {
             tag: 'table',
             cls: 'fc-border-separate',
-            style : 'width:100%',
+            style : 'width:100%, height:100%',
             cellspacing  : 0,
             cn : []
         }
