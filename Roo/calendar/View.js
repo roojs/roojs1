@@ -267,11 +267,8 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
             cls : 'fc-content',
             style : "position: relative;",
             cn : [
-                {
-                    
+                
                     this.monthTable()
-                    
-                }
             ]
 
         });
