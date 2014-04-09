@@ -42,7 +42,7 @@ Roo.CalendarPanel = function(config){
     }
     this.view = new Roo.calendar.View(config);
     
-    
+     
     this.on('activate', function()
     {
         Roo.log('activate');
@@ -97,7 +97,8 @@ Roo.CalendarPanel = function(config){
         
         
     });
-    
+    this.relayEvents(this.view, ["select","monthchange","evententer","eventleave","rendered"]);
+
     //this.grid = grid;
     //this.grid.getGridEl().replaceClass("x-layout-inactive-content", "x-layout-component-panel");
 };
