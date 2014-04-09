@@ -407,7 +407,9 @@ Roo.grid.Calendar = function(container, config){
 
     Roo.grid.Grid.superclass.constructor.call(this);
     this.on('render', function() {
-              (function() { this.setDate(new Date()); }).defer(100,this); //default today..
+        this.view.el.addClass('x-grid-cal'); 
+        
+        (function() { this.setDate(new Date()); }).defer(100,this); //default today..
 
     });
     
@@ -433,7 +435,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
         }
     },
      setDate :function(date) {
-          this.resizeColumns();
+        this.resizeColumns();
         var vd = this.activeDate;
         this.activeDate = date;
 //        if(vd && this.el){
