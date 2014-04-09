@@ -754,7 +754,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
         // first make sure there is enough space..
         
         this.cells.each(function(c) {
-             Roo.log(c.select('.fc-day-content div',true).first());
+            Roo.log(c.select('.fc-day-content div',true).first());
             c.select('.fc-day-content div',true).first().setHeight(Math.max(34, (c.rows || 1) * 20));
         });
         
