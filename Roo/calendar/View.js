@@ -297,7 +297,7 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
         if(!this.store){
             throw "can not find store for calendar";
         }
-        
+        Roo.log('View.js initEvents');
         this.store = Roo.factory(this.store, Roo.data);
         this.store.on('load', this.onLoad, this);
         
