@@ -713,6 +713,7 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
 //                var ctr = this.el.select('.fc-event-container',true).first();
                 var cg = startCell.createChild(cfg);
                 
+                Roo.log(rows[i]);
                 cg.setStyle('margin-top', rows[i].start.rows * 20);
                 
                 cg.on('mouseenter' ,this.onEventEnter, this, ev);
