@@ -7853,9 +7853,6 @@ if(opt.anim.isAnimated()){
          */
         getViewSize : function(){
             var d = this.dom, doc = document, aw = 0, ah = 0;
-            Roo.log('getViewSize!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
-            Roo.log(d);
-            Roo.log(doc);
             if(d == doc || d == doc.body){
                 return {width : D.getViewWidth(), height: D.getViewHeight()};
             }else{
@@ -48068,8 +48065,6 @@ Roo.extend(Roo.BorderLayout, Roo.LayoutManager, {
     layout : function(){
         if(this.updating) return;
         var size = this.getViewSize();
-        Roo.log('size!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(size);
         var w = size.width;
         var h = size.height;
         var centerW = w;
