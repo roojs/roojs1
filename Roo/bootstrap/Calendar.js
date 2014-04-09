@@ -72,7 +72,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         
         
-        fc_button = function(name, corner, style, content ) {
+        var fc_button = function(name, corner, style, content ) {
             return Roo.apply({},{
                 tag : 'span',
                 cls : 'fc-button fc-button-'+name+' fc-state-default ' + 
