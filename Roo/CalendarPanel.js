@@ -27,7 +27,7 @@ Roo.CalendarPanel = function(config){
     
     Roo.CalendarPanel.superclass.constructor.call(this, this.wrapper, config);
     
-    Roo.log(this.el);
+//    Roo.log(this.el);
     
     if(this.toolbar){
         this.toolbar.el.insertBefore(this.wrapper.dom.firstChild);
@@ -49,7 +49,7 @@ Roo.CalendarPanel = function(config){
      
     this.on('activate', function()
     {
-        Roo.log('activate');
+        Roo.log('CalendarPanel.js activate');
          
         //console.log('render tree');
         this.render();
