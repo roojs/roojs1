@@ -64,55 +64,67 @@ Roo.grid.Calendar = function(container, config){
     this.ds = this.dataSource;
     this.ds.xmodule = this.xmodule || false;
     
+    
+    var cellRender = function(v,x,r)
+    {
+        return String.format(
+            '<div class="fc-day  fc-widget-content"><div>' +
+                '<div class="fc-day-number">{0}</div>'+
+                '<div class="fc-day-content"><div style="position:relative"></div></div>' +
+            '</div></div>', v);
+    
+    }
+    
+    
     this.colModel = new Roo.grid.ColumnModel( [
         {
             xtype: 'ColumnModel',
             xns: Roo.grid,
             dataIndex : 'weekday0',
             header : 'Sunday',
-            //renderer : function(v,x,r) { return _this.grid.cellrenderer(v,x,r); }
+            renderer : cellRender
         },
         {
             xtype: 'ColumnModel',
             xns: Roo.grid,
             dataIndex : 'weekday1',
             header : 'Monday',
-            //renderer : function(v,x,r) { return _this.grid.cellrenderer(v,x,r); }
+            renderer : cellRender
         },
         {
             xtype: 'ColumnModel',
             xns: Roo.grid,
             dataIndex : 'weekday2',
             header : 'Tuesday',
-            //renderer : function(v,x,r) { return _this.grid.cellrenderer(v,x,r); }
+            renderer : cellRender
         },
         {
             xtype: 'ColumnModel',
             xns: Roo.grid,
             dataIndex : 'weekday3',
             header : 'Wednesday',
-            //renderer : function(v,x,r) { return _this.grid.cellrenderer(v,x,r); }
+            renderer : cellRender
         },
         {
             xtype: 'ColumnModel',
             xns: Roo.grid,
             dataIndex : 'weekday4',
             header : 'Thursday',
-            //renderer : function(v,x,r) { return _this.grid.cellrenderer(v,x,r); }
+            renderer : cellRender
         },
         {
             xtype: 'ColumnModel',
             xns: Roo.grid,
             dataIndex : 'weekday5',
             header : 'Friday',
-            //renderer : function(v,x,r) { return _this.grid.cellrenderer(v,x,r); }
+            renderer : cellRender
         },
         {
             xtype: 'ColumnModel',
             xns: Roo.grid,
             dataIndex : 'weekday6',
             header : 'Saturday',
-            //renderer : function(v,x,r) { return _this.grid.cellrenderer(v,x,r); }
+            renderer : cellRender
         }
     ]);
     this.cm = this.colModel;
@@ -734,7 +746,6 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
         // first make sure there is enough space..
         
         this.cells.each(function(c) {
-        
             c.select('.fc-day-content div',true).first().setHeight(Math.max(34, c.rows * 20));
         });
         
@@ -829,8 +840,8 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
 //        
         this.calevents = [];
          
-        if(this.store.getCount() > 0){
-            this.store.data.each(function(d){
+        if(this.eventStore.getCount() > 0){
+            this.eventStore.data.each(function(d){
                 
                 
                 // FIXME..
