@@ -658,8 +658,8 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
         // first make sure there is enough space..
         
         this.cells.each(function(c) {
-        
-            c.select('.fc-day-content div',true).first().setHeight(Math.max(34, c.rows * 20));
+            c.select('.fc-day-content div',true).first().setHeight(20);
+//            c.select('.fc-day-content div',true).first().setHeight(Math.max(34, c.rows * 20));
         });
         
         for (var e = 0; e < this.calevents.length; e++) {
@@ -670,7 +670,7 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
             for(var i =0; i < rows.length; i++) {
                 
                 var startCell = Roo.select('.fc-cell-' + rows[i].start.dateValue, true).first();
-                 
+                startCell.setStyle('margin-top', rows[i].start.row * 20);
                 // how many rows should it span..
                 
                 var  cfg = {
