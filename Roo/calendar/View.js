@@ -726,6 +726,8 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
                 var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
 //                //Roo.log(cg);
 //                cg.setXY([sbox.x +2, sbox.y +(ev.row * 20)]);    
+                Roo.log(sbox);
+                Roo.log(ebox);
                 cg.setWidth(ebox.right - sbox.x -2);
 
 
