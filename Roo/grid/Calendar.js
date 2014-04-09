@@ -614,7 +614,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
         
         
         
-    }
+    },
     
     findCell : function(dt) {
         dt = dt.clearTime().getTime();
