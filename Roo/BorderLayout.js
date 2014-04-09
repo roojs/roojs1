@@ -394,8 +394,7 @@ layout.addxtype({
             delete cfg.items;
         }
         var nb = false;
-        Roo.log('cfg.xtype!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(cfg.xtype);
+        
         switch(cfg.xtype) 
         {
             case 'ContentPanel':  // ContentPanel (el, cfg)
@@ -431,9 +430,6 @@ layout.addxtype({
                 if (region == 'center' && this.active && this.getRegion('center').panels.length < 1) {
                     cfg.background = false;
                 }
-                Roo.log('NestedLayoutPanel');
-                Roo.log(el);
-                Roo.log(clayout);
                 var layout = new Roo.BorderLayout(el, clayout);
                 
                 ret = new Roo[cfg.xtype](layout, cfg); // new panel!!!!!
@@ -613,8 +609,6 @@ Roo.BorderLayout.RegionFactory = {
         if(config.lightweight || config.basic){
             return new Roo.BasicLayoutRegion(mgr, config, target);
         }
-        Roo.log('mgr!!!!!!!!!!!!!!!!!!!');
-        Roo.log(mgr);
         switch(target){
             case "north":
                 return new Roo.NorthLayoutRegion(mgr, config);
