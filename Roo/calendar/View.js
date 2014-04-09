@@ -771,7 +771,7 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
                 add.end_dt = typeof(add.end_dt) == 'string' ? Date.parseDate(add.end_dt,'Y-m-d H:i:s') : add.end_dt,
                 add.id = add.id || d.id;
                 add.title = add.title || '??';
-                this.addItem(add);
+//                this.addItem(add);
                 
                 // other than the 'required' coluns, we should just pass the data from the store.
                 
