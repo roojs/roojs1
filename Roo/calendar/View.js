@@ -268,16 +268,9 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
             style : "position: relative;",
             cn : [
                 {
-                    cls : 'fc-view fc-view-month fc-grid',
-                    style : 'position: relative',
-                    unselectable : 'on',
-                    cn : [
-                        {
-                            cls : 'fc-event-container',
-                            style : 'position:absolute;z-index:8;top:0;left:0;'
-                        },
-                        this.monthTable()
-                    ]
+                    
+                    this.monthTable()
+                    
                 }
             ]
 
