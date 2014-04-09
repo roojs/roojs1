@@ -431,8 +431,6 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
             
             cell.dateValue = t;
             
-            cell.className += " fc-cell-" + t;
-            
             if(t == today){
                 cell.className += " fc-today";
                 cell.className += " fc-state-highlight";
