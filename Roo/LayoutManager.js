@@ -27,8 +27,8 @@ Roo.LayoutManager = function(container, config){
     }else if(this.el.dom != document.body && this.el.getStyle('position') == 'static'){
 //        this.el.position('relative');
     }
-    Roo.log(this);
-    return;
+//    Roo.log(this);
+//    return;
     this.id = this.el.id;
     this.el.addClass("x-layout-container");
     
