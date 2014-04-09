@@ -5,7 +5,9 @@
  * 
  */
 
- 
+ Roo.calendar = Roo.calendar || {};
+
+
 /**
  * @class Roo.calendar.View
  * @extends Roo.bootstrap.Component
@@ -16,8 +18,6 @@
  * @param {Object} config The config object
  */
 
-
-Roo.calendar = Roo.calendar || {};
 
 
 
