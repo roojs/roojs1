@@ -124,6 +124,7 @@ Roo.extend(Roo.BorderLayout, Roo.LayoutManager, {
     layout : function(){
         if(this.updating) return;
         var size = this.getViewSize();
+        
         var w = size.width;
         var h = size.height;
         var centerW = w;
