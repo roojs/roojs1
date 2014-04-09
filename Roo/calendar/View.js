@@ -705,7 +705,6 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
                 };
                 if (i == 0) {
                     cfg.cls += ' fc-event-start';
-                    cg.setStyle('margin-top', ev.row * 20 + 'px');
                 }
                 if ((i+1) == rows.length) {
                     cfg.cls += ' fc-event-end';
