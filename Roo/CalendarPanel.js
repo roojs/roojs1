@@ -156,11 +156,9 @@ Roo.extend(Roo.CalendarPanel, Roo.ContentPanel, {
             cfg.name = this.name;
         }
         
-        this.el = ct.createChild(cfg, position);
+        ct.createChild(cfg, position);
         
-        if(this.tabIndex !== undefined){
-            this.el.dom.setAttribute('tabIndex', this.tabIndex);
-        }
+         
         
         
         this.view.initEvents();
