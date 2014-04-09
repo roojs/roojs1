@@ -17,9 +17,6 @@
 Roo.LayoutManager = function(container, config){
     Roo.LayoutManager.superclass.constructor.call(this);
     this.el = Roo.get(container);
-    Roo.log('height!!!!!!!!!!!!!!!!!??');
-    Roo.log(this.el.getStyles('width', 'height'));
-    return;
     // ie scrollbar fix
     if(this.el.dom == document.body && Roo.isIE && !config.allowScroll){
         document.body.scroll = "no";
