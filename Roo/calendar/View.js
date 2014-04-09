@@ -722,14 +722,14 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
                 
                 ev.els.push(cg);
 //                
-//                var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
-//                var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
+                var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
+                var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
 //                //Roo.log(cg);
 //                cg.setXY([sbox.x +2, sbox.y +(ev.row * 20)]);    
-//                cg.setWidth(ebox.right - sbox.x -2);
+                cg.setWidth(ebox.right - sbox.x -2);
 
 
-                cg.setWidth(134);
+//                cg.setWidth(134);
             }
             
             
