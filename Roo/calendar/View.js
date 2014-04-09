@@ -690,7 +690,7 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
                                 {
                                   tag:'span',
                                   cls: 'fc-event-title',
-                                  html : String.format('{0}', ev.start_dt)
+                                  html : String.format('{0}', ev.title)
                                 }
                                 
                                 
