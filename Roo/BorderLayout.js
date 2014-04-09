@@ -193,6 +193,8 @@ Roo.extend(Roo.BorderLayout, Roo.LayoutManager, {
             //if(this.hideOnLayout){
                 //center.el.setStyle("display", "block");
             //}
+            Roo.log('center box !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
+            Roo.log(centerBox);
             center.updateBox(this.safeBox(centerBox));
         }
         this.el.repaint();
