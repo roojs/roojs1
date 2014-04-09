@@ -596,14 +596,26 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
         
         var totalRows = Math.ceil((date.getDaysInMonth() + date.getFirstDateOfMonth().getDay()) / 7);
         
+        // this will cause all the cells to mis
         var rows= [];
         var i =0;
         for (var r = 0;r < 6;r++) {
             for (var c =0;c < 7;c++) {
                 this.ds.getAt(r).set('weekday' + c ,cells[i++].dayName );
-            }
-            
+            }    
         }
+        
+        this.cells = this.view.el.select('.x-grid-row .x-grid-col',true);
+        for(i=0;i<cells.length;i++) {
+            
+            this.cells[i].dayName = cells[i].dayName ;
+            this.cells[i].className = cells[i].className;
+            this.cells[i].initialClassName = cells[i].initialClassName ;
+            this.cells[i].title = cells[i].title ;
+            this.cells[i].dateValue = cells[i].dateValue ;
+        }
+        
+        
         
         
         //this.el.select('tr.fc-week.fc-prev-last',true).removeClass('fc-last');
