@@ -727,6 +727,8 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
 //                //Roo.log(cg);
 //                cg.setXY([sbox.x +2, sbox.y +(ev.row * 20)]);    
 //                cg.setWidth(ebox.right - sbox.x -2);
+
+
                 cg.setWidth(134);
             }
             
