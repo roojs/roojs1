@@ -782,7 +782,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
                 
                 var  cfg = {
                     cls : 'roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable',
-                    style : 'position: relative', // left: 387px; width: 121px; top: 359px;
+                    style : 'position: absolute', // left: 387px; width: 121px; top: 359px;
                     
                     unselectable : "on",
                     cn : [
