@@ -22,7 +22,7 @@ Roo.CalendarPanel = function(config){
   
     this.wrapper = Roo.DomHelper.append(document.body, // wrapper for IE7 strict & safari scroll issue
         {tag: "div", cls: "x-layout-grid-wrapper x-layout-inactive-content"}, true);
-    
+        
     //this.wrapper.dom.appendChild(grid.getGridEl().dom);
     
     Roo.CalendarPanel.superclass.constructor.call(this, this.wrapper, config);
@@ -49,7 +49,7 @@ Roo.CalendarPanel = function(config){
      
     this.on('activate', function()
     {
-        Roo.log('CalendarPanel.js activate');
+        Roo.log('activate');
          
         //console.log('render tree');
         this.render();
@@ -124,7 +124,7 @@ Roo.extend(Roo.CalendarPanel, Roo.ContentPanel, {
         }
         this.rendered = true;
         
-        Roo.log("CalendarPanel.js render calendar");
+        Roo.log("render calendar");
         
         
         //Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
@@ -157,8 +157,7 @@ Roo.extend(Roo.CalendarPanel, Roo.ContentPanel, {
         }
         
         this.view.el =  ct.createChild(cfg, position);
-        Roo.log('this.view');
-        Roo.log(this.view);
+        
         //if(this.tabIndex !== undefined){
         //    this.el.dom.setAttribute('tabIndex', this.tabIndex);
         //}
