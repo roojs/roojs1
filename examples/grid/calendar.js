@@ -61,6 +61,8 @@ var Example = {
         }, 'grid-panel');
 
         this.grid.render();
+        this.grid.load();
+        
         var gridHead = this.grid.getView().getHeaderPanel(true);
         var tb = new Roo.Toolbar(gridHead, [ {
                             xtype: 'Button',
@@ -123,7 +125,7 @@ var Example = {
                             },
                             text : "Next"
                         }
-    ]);
+            ]);
         
         
         
