@@ -15,7 +15,7 @@ Roo.BLANK_IMAGE_URL  = "../../images/default/s.gif";
 var Example = {
     init : function(){
         // some data yanked off the web
-         
+        Roo.QuickTips.init ();
   
         // create the Grid
         this.grid = new Roo.grid.Calendar('grid-example', {
