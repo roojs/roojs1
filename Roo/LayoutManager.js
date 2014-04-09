@@ -25,7 +25,7 @@ Roo.LayoutManager = function(container, config){
     if(this.el.dom == document.body && Roo.isIE && !config.allowScroll){
         document.body.scroll = "no";
     }else if(this.el.dom != document.body && this.el.getStyle('position') == 'static'){
-        this.el.position('relative');
+//        this.el.position('relative');
     }
     Roo.log(this);
     return;
