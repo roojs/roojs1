@@ -411,7 +411,7 @@ Roo.grid.Calendar = function(container, config){
         
         (function() { this.setDate(new Date()); }).defer(100,this); //default today..
 
-    });
+    },this);
     
 };
 Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
