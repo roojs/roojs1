@@ -431,7 +431,7 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
             
             cell.dateValue = t;
             
-            cell.className += " fc-cell-" + t;
+//            cell.className += " fc-cell-" + t;
             
             if(t == today){
                 cell.className += " fc-today";
@@ -704,6 +704,9 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
                 };
                 if (i == 0) {
                     cfg.cls += ' fc-event-start';
+                    
+                    var start_cell = Roo.select('.fc-cell-' + rows[i].start.)
+                    
                 }
                 if ((i+1) == rows.length) {
                     cfg.cls += ' fc-event-end';
