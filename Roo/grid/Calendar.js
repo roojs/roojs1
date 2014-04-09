@@ -867,13 +867,10 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
          
         if(this.eventStore.getCount() > 0){
             
-            var i =0;
+           
             
             this.eventStore.data.each(function(d){
-                if (i>0) {
-                    return;
-                }
-                i++;
+                
                 
                 // FIXME..
                 var add = Roo.apply({}, d.data);
