@@ -420,8 +420,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
      */
     eventStore : 25,
 
-    autoHeight : true,
-    
+     
     activeDate : false,
     startDay : 0,
     autoWidth : true,
