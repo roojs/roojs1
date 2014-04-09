@@ -82,6 +82,7 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
     createBody : function(){
         /** This region's body element 
         * @type Roo.Element */
+       Roo.log('createBody!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11');
         this.bodyEl = this.el.createChild({tag: "div", cls: "x-layout-panel-body"});
     },
 
