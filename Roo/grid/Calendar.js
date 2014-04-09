@@ -415,42 +415,16 @@ Roo.grid.Calendar = function(container, config){
     
     if (!Roo.grid.Calendar.style) {
         Roo.grid.Calendar.style = Roo.util.CSS.createStyleSheet({
-            '.course-timesheet .x-grid-row' : {
-                height: '80px'
+            
+            
+            '.x-grid-cal .x-grid-col' :  {
+                height: 'auto !important',
+                'vertical-align': 'top'
             },
-            '.x-grid-row td' : {
-                'vertical-align' : 0
-            },
-            '.course-edit-link' : {
-                'color' : 'blue',
-                'text-overflow' : 'ellipsis',
-                'overflow' : 'hidden',
-                'white-space' : 'nowrap',
-                'cursor' : 'pointer'
-            },
-            '.sub-link' : {
-                'color' : 'green'
-            },
-            '.de-act-sup-link' : {
-                'color' : 'purple',
-                'text-decoration' : 'line-through'
-            },
-            '.de-act-link' : {
-                'color' : 'red',
-                'text-decoration' : 'line-through'
-            },
-            '.course-timesheet .course-highlight' : {
-                'border-top-style': 'dashed !important',
-                'border-bottom-bottom': 'dashed !important'
-            },
-            '.course-timesheet .course-item' : {
-                'font-family'   : 'tahoma, arial, helvetica',
-                'font-size'     : '11px',
-                'overflow'      : 'hidden',
-                'padding-left'  : '10px',
-                'padding-right' : '10px',
-                'padding-top' : '10px' 
+            '.x-grid-cal  .fc-event-hori' : {
+                height: '14px'
             }
+             
             
         }, Roo.id());
     }
