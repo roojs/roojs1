@@ -101,7 +101,7 @@ Roo.CalendarPanel = function(config){
         
         
     });
-    this.relayEvents(this.view, ["select","monthchange","evententer","eventleave","rendered"]);
+//    this.relayEvents(this.view, ["select","monthchange","evententer","eventleave","rendered"]);
 
     //this.grid = grid;
     //this.grid.getGridEl().replaceClass("x-layout-inactive-content", "x-layout-component-panel");
