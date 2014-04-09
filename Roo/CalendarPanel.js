@@ -41,7 +41,7 @@ Roo.CalendarPanel = function(config){
         
     }
     this.view = new Roo.calendar.View(Roo.apply({
-        skipNavHeader : true,
+        skipNavHeader : false,
         skipMonthHeader : true
         
     },config));
