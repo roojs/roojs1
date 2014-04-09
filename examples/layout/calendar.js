@@ -21,6 +21,7 @@ calendarpanel = new Roo.XComponent({
             layout : {
                 xtype: 'BorderLayout',
                 region : 'center',
+                height : 900,
                 xns: Roo,
                 items : [
                     {
