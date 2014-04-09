@@ -202,7 +202,8 @@ Roo.extend(Roo.BorderLayout, Roo.LayoutManager, {
     // private
     safeBox : function(box){
         box.width = Math.max(0, box.width);
-        if(box.height){
+        
+        if(box.height || box.height > 0){
             box.height = box.height;
         }
         
