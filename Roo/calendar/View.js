@@ -671,7 +671,7 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
                 
                 var startCell = Roo.select('.fc-cell-' + rows[i].start.dateValue + ' .fc-day-content', true).first();
                 Roo.log('startCell');
-                Roo.log(startCell);
+                Roo.log('.fc-cell-' + rows[i].start.dateValue + ' .fc-day-content');
                 // how many rows should it span..
                 
                 var  cfg = {
