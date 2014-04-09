@@ -129,42 +129,42 @@ Roo.extend(Roo.CalendarPanel, Roo.ContentPanel, {
         
         //Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
         
-        
-        var cfg = Roo.apply({});
-        cfg.id = Roo.id();
-        
-        // fill in the extra attributes 
-        if (this.xattr && typeof(this.xattr) =='object') {
-            for (var i in this.xattr) {
-                cfg[i] = this.xattr[i];
-            }
-        }
-        
-        if(this.dataId){
-            cfg.dataId = this.dataId;
-        }
-        
-        if (this.cls) {
-            cfg.cls = (typeof(cfg.cls) == 'undefined') ? this.cls : cfg.cls + ' ' + this.cls;
-        }
-        
-        if (this.style) { // fixme needs to support more complex style data.
-            cfg.style = this.style;
-        }
-        
-        if(this.name){
-            cfg.name = this.name;
-        }
-        
-//        this.view.el =  ct.createChild(cfg, position);
-        Roo.log('this.view');
-        Roo.log(this.view);
-        //if(this.tabIndex !== undefined){
-        //    this.el.dom.setAttribute('tabIndex', this.tabIndex);
-        //}
-        
-        
-        this.view.initEvents();
+//        
+//        var cfg = Roo.apply({},  this.view.getAutoCreate());
+//        cfg.id = Roo.id();
+//        
+//        // fill in the extra attributes 
+//        if (this.xattr && typeof(this.xattr) =='object') {
+//            for (var i in this.xattr) {
+//                cfg[i] = this.xattr[i];
+//            }
+//        }
+//        
+//        if(this.dataId){
+//            cfg.dataId = this.dataId;
+//        }
+//        
+//        if (this.cls) {
+//            cfg.cls = (typeof(cfg.cls) == 'undefined') ? this.cls : cfg.cls + ' ' + this.cls;
+//        }
+//        
+//        if (this.style) { // fixme needs to support more complex style data.
+//            cfg.style = this.style;
+//        }
+//        
+//        if(this.name){
+//            cfg.name = this.name;
+//        }
+//        
+////        this.view.el =  ct.createChild(cfg, position);
+//        Roo.log('this.view');
+//        Roo.log(this.view);
+//        //if(this.tabIndex !== undefined){
+//        //    this.el.dom.setAttribute('tabIndex', this.tabIndex);
+//        //}
+//        
+//        
+//        this.view.initEvents();
         this.fireEvent('rendered');
     }
     
