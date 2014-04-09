@@ -712,7 +712,7 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
                 
 //                var ctr = this.el.select('.fc-event-container',true).first();
                 var cg = startCell.createChild(cfg);
-                
+                cg.setWidth(134);
                 Roo.log(rows[i]);
                 Roo.log(cg);
                 cg.setStyle('margin-top', rows[i].start.rows * 20);
@@ -732,7 +732,7 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
 //                cg.setWidth(ebox.right - sbox.x -2);
 //                Roo.log(boxes);
 
-//                cg.setWidth(134);
+                
             }
             
             
