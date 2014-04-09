@@ -706,12 +706,15 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
                 if (i == 0) {
                     cfg.cls += ' fc-event-start';
                 }
+                
                 if ((i+1) == rows.length) {
                     cfg.cls += ' fc-event-end';
                 }
                 
 //                var ctr = this.el.select('.fc-event-container',true).first();
                 var cg = startCell.createChild(cfg);
+                
+                cg.setStyle('padding-top', ev.row * 20 + 'px');
                 
                 cg.on('mouseenter' ,this.onEventEnter, this, ev);
                 cg.on('mouseleave' ,this.onEventLeave, this, ev);
