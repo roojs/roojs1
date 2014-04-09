@@ -82,6 +82,7 @@ the container size if it is not the body element.</b>
 Roo.BorderLayout = function(container, config){
     config = config || {};
     Roo.BorderLayout.superclass.constructor.call(this, container, config);
+    return;
     this.factory = config.factory || Roo.BorderLayout.RegionFactory;
     for(var i = 0, len = this.factory.validRegions.length; i < len; i++) {
     	var target = this.factory.validRegions[i];
