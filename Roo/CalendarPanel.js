@@ -24,7 +24,7 @@ Roo.CalendarPanel = function(config){
         {tag: "div", cls: "x-layout-grid-wrapper x-layout-inactive-content"}, true);
     Roo.log(this.warpper);
     Roo.log(this.config);
-    Roo.log(Roo.DomHelper.append(document.body),{}, true});
+    Roo.log(Roo.DomHelper.append(document.body),{}, true);
     return;
     //this.wrapper.dom.appendChild(grid.getGridEl().dom);
     
