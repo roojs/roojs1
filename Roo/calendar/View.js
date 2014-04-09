@@ -252,9 +252,12 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
                 });
                 
         ret.cn.push({
-            
+                    tag: 'div',
+                    cn : [
+            {
                             cls : 'fc-event-container',
                             style : 'position:absolute;z-index:8;top:0;left:0;'
+            }       ]
                         
         });
         return ret;
