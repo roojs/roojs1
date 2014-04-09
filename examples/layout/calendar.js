@@ -582,5 +582,5 @@ calendarpanel = new Roo.XComponent({
                 }
             }
         };
-    }
+   }
 });
