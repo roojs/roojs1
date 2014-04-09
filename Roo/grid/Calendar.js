@@ -70,49 +70,49 @@ Roo.grid.Calendar = function(container, config){
             xns: Roo.grid,
             dataIndex : 'weekday0',
             header : 'Sunday',
-            //renderer : function(v,x,r) { return _this.grid.cellrenderer(v,x,r); }
+            renderer : cellRender
         },
         {
             xtype: 'ColumnModel',
             xns: Roo.grid,
             dataIndex : 'weekday1',
             header : 'Monday',
-            //renderer : function(v,x,r) { return _this.grid.cellrenderer(v,x,r); }
+            renderer : cellRender
         },
         {
             xtype: 'ColumnModel',
             xns: Roo.grid,
             dataIndex : 'weekday2',
             header : 'Tuesday',
-            //renderer : function(v,x,r) { return _this.grid.cellrenderer(v,x,r); }
+            renderer : cellRender
         },
         {
             xtype: 'ColumnModel',
             xns: Roo.grid,
             dataIndex : 'weekday3',
             header : 'Wednesday',
-            //renderer : function(v,x,r) { return _this.grid.cellrenderer(v,x,r); }
+            renderer : cellRender
         },
         {
             xtype: 'ColumnModel',
             xns: Roo.grid,
             dataIndex : 'weekday4',
             header : 'Thursday',
-            //renderer : function(v,x,r) { return _this.grid.cellrenderer(v,x,r); }
+            renderer : cellRender
         },
         {
             xtype: 'ColumnModel',
             xns: Roo.grid,
             dataIndex : 'weekday5',
             header : 'Friday',
-            //renderer : function(v,x,r) { return _this.grid.cellrenderer(v,x,r); }
+            renderer : cellRender
         },
         {
             xtype: 'ColumnModel',
             xns: Roo.grid,
             dataIndex : 'weekday6',
             header : 'Saturday',
-            //renderer : function(v,x,r) { return _this.grid.cellrenderer(v,x,r); }
+            renderer : cellRender
         }
     ]);
     this.cm = this.colModel;
@@ -734,7 +734,6 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
         // first make sure there is enough space..
         
         this.cells.each(function(c) {
-        
             c.select('.fc-day-content div',true).first().setHeight(Math.max(34, c.rows * 20));
         });
         
