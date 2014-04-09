@@ -40,7 +40,11 @@ Roo.CalendarPanel = function(config){
         //this.footer = Roo.factory(this.footer, Roo);
         
     }
-    this.view = new Roo.calendar.View(config);
+    this.view = new Roo.calendar.View(Roo.apply({
+        skipNavHeader : true,
+        skipMonthHeader : true
+        
+    },config));
     
      
     this.on('activate', function()
