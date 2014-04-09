@@ -20,14 +20,15 @@ Roo.LayoutManager = function(container, config){
     Roo.LayoutManager.superclass.constructor.call(this);
     
     this.el = Roo.get(container);
-    Roo.log(this);
-    return;
+    
     // ie scrollbar fix
     if(this.el.dom == document.body && Roo.isIE && !config.allowScroll){
         document.body.scroll = "no";
     }else if(this.el.dom != document.body && this.el.getStyle('position') == 'static'){
         this.el.position('relative');
     }
+    Roo.log(this);
+    return;
     this.id = this.el.id;
     this.el.addClass("x-layout-container");
     
