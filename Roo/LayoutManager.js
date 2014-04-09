@@ -16,12 +16,7 @@
  */
 Roo.LayoutManager = function(container, config){
     Roo.LayoutManager.superclass.constructor.call(this);
-    Roo.log('run!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-    Roo.log(container);
-    
     this.el = Roo.get(container);
-    Roo.log('this.el');
-    Roo.log(this.el);return;
     // ie scrollbar fix
     if(this.el.dom == document.body && Roo.isIE && !config.allowScroll){
         document.body.scroll = "no";
@@ -116,8 +111,6 @@ Roo.extend(Roo.LayoutManager, Roo.util.Observable, {
      */
     getViewSize : function(){
         var size;
-        Roo.log('getViewSize!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
-        Roo.log(this.el.dom);
         if(this.el.dom != document.body){
             size = this.el.getSize();
         }else{
