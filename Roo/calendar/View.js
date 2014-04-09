@@ -252,7 +252,7 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
                 });
                 
         ret.cn.push({
-            
+                    tag: 'div',
                     cls : 'fc-view fc-view-month fc-grid',
                     style : 'position: relative',
                     unselectable : 'on',
