@@ -714,13 +714,6 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
 //                var ctr = this.el.select('.fc-event-container',true).first();
                 var cg = startCell.createChild(cfg);
                 
-                var firstEvent = startCell.select('.fc-event', true).first();
-                Roo.log(firstEvent);
-                if(firstEvent){
-                    firstEvent.setStyle('margin-top', ev.row * 20 + 'px');
-                }
-                
-                
                 cg.on('mouseenter' ,this.onEventEnter, this, ev);
                 cg.on('mouseleave' ,this.onEventLeave, this, ev);
                 cg.on('click', this.onEventClick, this, ev);
