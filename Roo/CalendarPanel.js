@@ -40,6 +40,8 @@ Roo.CalendarPanel = function(config){
         //this.footer = Roo.factory(this.footer, Roo);
         
     }
+    this.view = new Roo.calendar.View(config);
+    
     
     this.on('activate', function()
     {
