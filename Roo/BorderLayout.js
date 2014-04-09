@@ -430,6 +430,9 @@ layout.addxtype({
                 if (region == 'center' && this.active && this.getRegion('center').panels.length < 1) {
                     cfg.background = false;
                 }
+                Roo.log('NestedLayoutPanel');
+                Roo.log(el);
+                Roo.log(clayout);
                 var layout = new Roo.BorderLayout(el, clayout);
                 
                 ret = new Roo[cfg.xtype](layout, cfg); // new panel!!!!!
