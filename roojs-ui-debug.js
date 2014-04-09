@@ -32763,6 +32763,7 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
     },
 
     updateBox : function(box){
+        Roo.log('run updatebox !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11');
         this.box = box;
         if(!this.collapsed){
             this.el.dom.style.left = box.x + "px";
