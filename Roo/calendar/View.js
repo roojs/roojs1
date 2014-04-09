@@ -82,7 +82,7 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
     navHeader: function() {
         // header is a bit specific to bootstrap implementation - eg. roo would not use this..
     
-        fc_button = function(name, corner, style, content ) {
+        var fc_button = function(name, corner, style, content ) {
             return Roo.apply({},{
                 tag : 'span',
                 cls : 'fc-button fc-button-'+name+' fc-state-default ' + 
