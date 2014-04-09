@@ -45,8 +45,6 @@
 Roo.LayoutRegion = function(mgr, config, pos){
     Roo.LayoutRegion.superclass.constructor.call(this, mgr, config, pos, true);
     var dh = Roo.DomHelper;
-    Roo.log('mgr.el.dom!!!!!!!!!!!!!!!!!!!!!!!!');
-    Roo.log(mgr.el.dom);
     /** This region's container element 
     * @type Roo.Element */
     this.el = dh.append(mgr.el.dom, {tag: "div", cls: "x-layout-panel x-layout-panel-" + this.position}, true);
