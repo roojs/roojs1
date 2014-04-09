@@ -887,6 +887,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
                 add.title = add.title || '??';
                 this.addItem(add);
                 return true;
+            
                 // other than the 'required' coluns, we should just pass the data from the store.
                 
                 
