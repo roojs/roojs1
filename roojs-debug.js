@@ -48134,8 +48134,6 @@ Roo.extend(Roo.BorderLayout, Roo.LayoutManager, {
             //if(this.hideOnLayout){
                 //center.el.setStyle("display", "block");
             //}
-            Roo.log('center box !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
-            Roo.log(centerBox);
             center.updateBox(this.safeBox(centerBox));
         }
         this.el.repaint();
@@ -49071,9 +49069,7 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
     },
 
     updateBox : function(box){
-        Roo.log('run updatebox !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11');
         this.box = box;
-        Roo.log(box);
         if(!this.collapsed){
             this.el.dom.style.left = box.x + "px";
             this.el.dom.style.top = box.y + "px";
@@ -49089,7 +49085,6 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
     },
 
     updateBody : function(w, h){
-        
         if(w !== null){
             this.el.setWidth(w);
             w -= this.el.getBorderWidth("rl");
