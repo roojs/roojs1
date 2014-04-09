@@ -250,6 +250,13 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
                     tag: 'tbody',
                     cn : this.monthBody()
                 });
+                
+        ret.cn.push({
+            
+                            cls : 'fc-event-container',
+                            style : 'position:absolute;z-index:8;top:0;left:0;'
+                        
+        });
         return ret;
     },
     
@@ -272,10 +279,7 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
                     style : 'position: relative',
                     unselectable : 'on',
                     cn : [
-                        {
-                            cls : 'fc-event-container',
-                            style : 'position:absolute;z-index:8;top:0;left:0;'
-                        },
+                        
                         this.monthTable()
                     ]
                 }
