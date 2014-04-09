@@ -45,13 +45,14 @@
 Roo.LayoutRegion = function(mgr, config, pos){
     Roo.LayoutRegion.superclass.constructor.call(this, mgr, config, pos, true);
     var dh = Roo.DomHelper;
+    Roo.log('mgr.el.dom!!!!!!!!!!!!!!!!!!!!!!!!');
+    Roo.log(mgr.el.dom);
     /** This region's container element 
     * @type Roo.Element */
     this.el = dh.append(mgr.el.dom, {tag: "div", cls: "x-layout-panel x-layout-panel-" + this.position}, true);
     /** This region's title element 
     * @type Roo.Element */
-   Roo.log('this.el');
-   Roo.log(this.el);
+
     this.titleEl = dh.append(this.el.dom, {tag: "div", unselectable: "on", cls: "x-unselectable x-layout-panel-hd x-layout-title-"+this.position, children:[
         {tag: "span", cls: "x-unselectable x-layout-panel-hd-text", unselectable: "on", html: "&#160;"},
         {tag: "div", cls: "x-unselectable x-layout-panel-hd-tools", unselectable: "on"}
