@@ -88,12 +88,12 @@ var Example = {
                             listeners : {
                                 render : function (_self)
                                 {
-                                    _this.monthField = _self;
+                                 //   _this.monthField = _self;
                                    // _this.monthField.set  today
                                 },
                                 select : function (combo, date)
                                 {
-                                    _this.grid.ds.load({});
+                                   // _this.grid.ds.load({});
                                 }
                             },
                             value : (function() { return new Date(); })()
