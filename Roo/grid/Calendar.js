@@ -435,6 +435,9 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
         }
     },
      setDate :function(date) {
+        
+        Roo.log('setDate?');
+        
         this.resizeColumns();
         var vd = this.activeDate;
         this.activeDate = date;
