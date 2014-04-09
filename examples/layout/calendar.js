@@ -17,6 +17,7 @@ calendarpanel = new Roo.XComponent({
         return {
             xtype: 'NestedLayoutPanel',
             xns: Roo,
+            height : '900px',
             region : 'center',
             layout : {
                 xtype: 'BorderLayout',
