@@ -608,11 +608,11 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
         this.cells = this.view.el.select('.x-grid-row .x-grid-col',true);
         for(i=0;i<cells.length;i++) {
             
-            this.cells[i].dayName = cells[i].dayName ;
-            this.cells[i].className = cells[i].className;
-            this.cells[i].initialClassName = cells[i].initialClassName ;
-            this.cells[i].title = cells[i].title ;
-            this.cells[i].dateValue = cells[i].dateValue ;
+            this.cells.elements[i].dayName = cells[i].dayName ;
+            this.cells.elements[i].className = cells[i].className;
+            this.cells.elements[i].initialClassName = cells[i].initialClassName ;
+            this.cells.elements[i].title = cells[i].title ;
+            this.cells.elements[i].dateValue = cells[i].dateValue ;
         }
         
         
@@ -829,6 +829,9 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
                 var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
                 var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
                 //Roo.log(cg);
+                
+                Roo.log()
+                
                 cg.setXY([sbox.x +2, sbox.y +(ev.row * 20)]);    
                 cg.setWidth(ebox.right - sbox.x -2);
             }
