@@ -211,6 +211,7 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
     },
 
     updateBody : function(w, h){
+        Roo.log('LayoutRegion!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1 UpdateBody');
         if(w !== null){
             this.el.setWidth(w);
             w -= this.el.getBorderWidth("rl");
