@@ -130,7 +130,7 @@ Roo.extend(Roo.CalendarPanel, Roo.ContentPanel, {
         //Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
         
         
-        var cfg = Roo.apply({},  this.view.getAutoCreate());
+        var cfg = Roo.apply({});
         cfg.id = Roo.id();
         
         // fill in the extra attributes 
