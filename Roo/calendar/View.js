@@ -665,7 +665,7 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
             var rows = ev.rows;
             
             for(var i =0; i < rows.length; i++) {
-                
+                var startCell = false;
                  
                 // how many rows should it span..
                 
