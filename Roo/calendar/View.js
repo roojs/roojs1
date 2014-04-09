@@ -250,11 +250,6 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
                     tag: 'tbody',
                     cn : this.monthBody()
                 });
-                
-        ret.cn.push( {
-                cls : 'fc-event-container',
-                style : 'position:absolute;z-index:8;top:0;left:0;'
-            });
         return ret;
     },
     
@@ -277,7 +272,10 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
                     style : 'position: relative',
                     unselectable : 'on',
                     cn : [
-                        
+                        {
+                            cls : 'fc-event-container',
+                            style : 'position:absolute;z-index:8;top:0;left:0;'
+                        },
                         this.monthTable()
                     ]
                 }
@@ -432,9 +430,6 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
             //Roo.log(d);
             
             cell.dateValue = t;
-            
-//            cell.className += " fc-cell-" + t;
-            
             if(t == today){
                 cell.className += " fc-today";
                 cell.className += " fc-state-highlight";
@@ -660,16 +655,14 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
         // first make sure there is enough space..
         
         this.cells.each(function(c) {
-            c.select('.fc-day-content div',true).first().setHeight(34);
-//            c.select('.fc-day-content div',true).first().setHeight(Math.max(34, c.rows * 20));
+        
+            c.select('.fc-day-content div',true).first().setHeight(Math.max(34, c.rows * 20));
         });
         
         for (var e = 0; e < this.calevents.length; e++) {
             var ev = this.calevents[e];
             var cells = ev.cells;
             var rows = ev.rows;
-            
-            var start_cell = false;
             
             for(var i =0; i < rows.length; i++) {
                 
@@ -706,12 +699,8 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
                         
                     ]
                 };
-                
                 if (i == 0) {
                     cfg.cls += ' fc-event-start';
-                    
-                    start_cell = Roo.select('.fc-cell-' + rows[i].start.dateValue , true).first();
-                    
                 }
                 if ((i+1) == rows.length) {
                     cfg.cls += ' fc-event-end';
