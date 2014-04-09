@@ -25,7 +25,7 @@ Roo.CalendarPanel = function(config){
         
     //this.wrapper.dom.appendChild(grid.getGridEl().dom);
     
-//    Roo.CalendarPanel.superclass.constructor.call(this, this.wrapper, config);
+    Roo.CalendarPanel.superclass.constructor.call(this, this.wrapper, config);
     
     Roo.log(this.el);
     
