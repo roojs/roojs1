@@ -17,6 +17,9 @@
  */
 
 
+Roo.calendar = Roo.calendar || {};
+
+
 
 Roo.calendar.View = function(config){
    Roo.calendar.View.superclass.constructor.call(this, config);
