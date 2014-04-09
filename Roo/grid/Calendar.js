@@ -72,7 +72,7 @@ Roo.grid.Calendar = function(container, config){
                 '<div class="fc-event-container"></div>' +
                 '<div class="fc-day-number">{0}</div>'+
                 
-                '<div class="fc-day-content"><div style="position:relative"></div></div>' +
+                '<div class="fc-day-content"><div style="position:absolute;"></div></div>' +
             '</div></div>', v);
     
     }
