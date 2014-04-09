@@ -708,8 +708,7 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
                 if (i == 0) {
                     cfg.cls += ' fc-event-start';
                     
-                    var start_cell = Roo.select('.fc-cell-' + rows[i].start.dateValue , true).first();
-                    
+                    start_cell = Roo.select('.fc-cell-' + rows[i].start.dateValue , true).first();
                     
                 }
                 if ((i+1) == rows.length) {
