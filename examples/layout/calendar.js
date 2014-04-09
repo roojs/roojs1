@@ -55,8 +55,8 @@ calendarpanel = new Roo.XComponent({
                                 proxy : {
                                     xtype: 'HttpProxy',
                                     xns: Roo.data,
-                                    method : 'GET'
-//                                    url : 'http://roojs.com/admin.php/Roo/mtrack_ticket?_dc=1396967515369&_future_schedule=1&query%5Bviewtype%5D=active&limit=999&sort=summary&dir=ASC'
+                                    method : 'GET',
+                                    url : 'http://roojs.com/admin.php/Roo/mtrack_ticket?_dc=1396967515369&_future_schedule=1&query%5Bviewtype%5D=active&limit=999&sort=summary&dir=ASC'
                                 },
                                 reader : {
                                     xtype: 'JsonReader',
