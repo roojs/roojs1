@@ -753,7 +753,7 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
          
         if(this.store.getCount() > 0){
             this.store.data.each(function(d){
-                Roo.log(d);
+//                Roo.log(d);
                 
                 // FIXME..
                 var add = Roo.apply({}, d.data);
