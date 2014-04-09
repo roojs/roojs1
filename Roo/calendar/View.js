@@ -750,7 +750,7 @@ Roo.extend(Roo.calendar.View, Roo.BoxComponent,  {
         Roo.log('View.js onload');
 //        
         this.calevents = [];
-         
+         Roo.log(this.store.data);
         if(this.store.getCount() > 0){
             this.store.data.each(function(d){
                 
