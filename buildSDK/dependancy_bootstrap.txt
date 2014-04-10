@@ -58,3 +58,6 @@ Roo.View
 
 Roo.bootstrap.Calendar
 Roo.bootstrap.Popover
+
+Roo.bootstrap.Progress
+Roo.bootstrap.ProgressBar
