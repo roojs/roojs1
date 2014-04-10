@@ -762,15 +762,15 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
     
     clearEvents: function() {
         
-        if(!this.calevents){
+        if (!this.eventStore.getCount()) {
             return;
         }
-        
+        // reset number of rows in cells.
         Roo.each(this.cells.elements, function(c){
             c.rows = 0;
         });
         
-        Roo.each(this.calevents, function(e) {
+        this.eventStore.each(function(e) {
             Roo.each(e.els, function(el) {
                 el.un('mouseenter' ,this.onEventEnter, this);
                 el.un('mouseleave' ,this.onEventLeave, this);
