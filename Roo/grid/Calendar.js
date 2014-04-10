@@ -801,7 +801,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
                 '<div class="roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable {fccls} {cls}"  style="position: absolute" unselectable="on">' +
                     '<div class="fc-event-inner">' +
                         '<span class="fc-event-time">{time}</span>', +
-                        '<span class="fc-event-title" qtip="{qtip}">{title}</span>', +
+                        '<span class="fc-event-title" qtip="{qtip}">{title}</span>' +
                     '</div>' +
                     '<div class="ui-resizable-heandle ui-resizable-e">&nbsp;&nbsp;&nbsp;</div>' +
                 '</div>'
