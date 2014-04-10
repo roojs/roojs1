@@ -9507,7 +9507,8 @@ Roo.extend(Roo.bootstrap.ProgressBar, Roo.bootstrap.Component,  {
     role : false,
     sr_only: false,
     
-    getAutoCreate : function(){
+    getAutoCreate : function()
+    {
         
         var cfg = {
             tag: 'div',
@@ -9548,6 +9549,12 @@ Roo.extend(Roo.bootstrap.ProgressBar, Roo.bootstrap.Component,  {
         }
         
         return cfg;
+    },
+    
+    update : function(aria_valuenow)
+    {
+        this.aria_valuenow = aria_valuenow;
+        this.el.setStyle('width', this.aria_valuenow / this.aria_valuemax);
     }
    
 });
