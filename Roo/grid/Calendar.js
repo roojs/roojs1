@@ -51,6 +51,7 @@ Roo.grid.Calendar = function(container, config){
     if (this.eventStore) {
         this.eventStore= Roo.factory(this.eventStore, Roo.data);
         this.eventStore.on('load',this.onLoad, this);
+        this.eventStore.on('beforeload',this.clearEvents, this);
          
     }
     
@@ -681,10 +682,10 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
         return ret;
     },
     
-    findCells : function(ev) {
-        var s = ev.start_dt.clone().clearTime().getTime();
+    findCells : function(rec) {
+        var s = rec.data.start_dt.clone().clearTime().getTime();
        // Roo.log(s);
-        var e= ev.end_dt.clone().clearTime().getTime();
+        var e= rec.data.end_dt.clone().clearTime().getTime();
        // Roo.log(e);
         var ret = [];
         this.cells.each(function(c){
@@ -874,9 +875,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
         
         this.clearEvents();
         //Roo.log('calendar onload');
-//        
-        this.calevents = [];
-         
+//         
         if(this.eventStore.getCount() > 0){
             
            
