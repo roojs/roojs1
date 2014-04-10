@@ -794,7 +794,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
             },this);
             e.els = [];
         }
-    }
+    },
     
     
     renderEvent : function(ev,ctr) {
@@ -802,10 +802,10 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
              ctr = this.view.el.select('.fc-event-container',true).first();
         }
         
-        if (ev.els) {
-            this.clearEvent(ev);
+         
+        this.clearEvent(ev);
             //code
-        }
+       
         
         
         ev.els = [];
