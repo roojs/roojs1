@@ -11,6 +11,7 @@
  * Bootstrap NavGroup class
  * @cfg {String} align left | right
  * @cfg {Boolean} inverse false | true
+ * @cfg {Boolean} inverse false | true
  * 
  * @constructor
  * Create a new nav group
@@ -26,6 +27,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     align: '',
     inverse: false,
     form: false,
+    type: false,
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.NavGroup.superclass.getAutoCreate.call(this));
@@ -55,10 +57,6 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
             } else {
                 cfg.cls += ' navbar-left';
             }
-        }
-        
-        if (['tabs','pills'].indexOf(this.type)!==-1) {
-            cfg.cls += ' nav-' + this.type
         }
         
         if (this.align === 'right') {
