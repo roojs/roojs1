@@ -828,7 +828,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
                     cls += ' fc-event-end';
                 }
                 
-                
+                Roo.log(ev.data);
                 // how many rows should it span..
                 var cg = this.eventTmpl.append(ctr,Roo.apply({
                     fccls : cls
