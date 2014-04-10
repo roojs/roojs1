@@ -1746,6 +1746,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
  * @cfg {String} glyphicon name of glyphicon
  * @cfg {String} icon name of font awesome icon
  * @cfg {Boolena} active Is item active
+ * @cfg {Boolean} preventDefault (true | false) default true
   
  * @constructor
  * Create a new Navbar Button
@@ -1753,6 +1754,15 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
  */
 Roo.bootstrap.Navbar.Item = function(config){
     Roo.bootstrap.Navbar.Item.superclass.constructor.call(this, config);
+    this.addEvents({
+        // raw events
+        /**
+         * @event click
+         * The raw click event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "click" : true
+    });
 };
 
 Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
@@ -1764,6 +1774,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
     glyphicon: false,
     icon: false,
     active: false,
+    preventDefault : true,
     
     getAutoCreate : function(){
         
@@ -1872,12 +1883,17 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
     initEvents: function() {
        // Roo.log('init events?');
        // Roo.log(this.el.dom);
-        this.el.select('a',true).on('click',
-                function(e) {
-                    this.fireEvent('click', this);
-                },
-                this
-        );
+        this.el.select('a',true).on('click', this.onClick, this);
+    },
+    
+    onClick : function(e)
+    {
+        Roo.log('item on click ');
+        if(this.preventDefault){
+            e.preventDefault();
+        }
+        
+        this.fireEvent('click', this, e);
     }
    
 });
@@ -9460,15 +9476,17 @@ Roo.bootstrap.ProgressBar = function(config){
 
 Roo.extend(Roo.bootstrap.ProgressBar, Roo.bootstrap.Component,  {
     
-    aria_valuenow : false,
+    aria_valuenow : 0,
     aria_valuemin : 0,
     aria_valuemax : 100,
     label : false,
     panel : false,
     role : false,
     sr_only: false,
+    width : false,
     
     getAutoCreate : function(){
+        
         var cfg = {
             tag: 'div',
             cls: 'progress-bar'
