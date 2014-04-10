@@ -27,14 +27,23 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     align: '',
     inverse: false,
     form: false,
-    type: false,
+    type: 'nav',
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.NavGroup.superclass.getAutoCreate.call(this));
         
         cfg = {
             tag : 'ul',
-            cls: 'nav navbar-nav' 
+            cls: 'nav' 
+        }
+        
+        if (['tabs','pills'].indexOf(this.type)!==-1) {
+            cfg.cls += ' nav-' + this.type
+        } else {
+            if (this.type!=='nav') {
+                Roo.log('nav type must be nav/tabs/pills')
+            }
+            cfg.cls += ' navbar-nav'
         }
         
         if (this.parent().sidebar === true) {
