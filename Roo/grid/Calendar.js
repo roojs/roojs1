@@ -803,12 +803,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
         }
         
         if (ev.els) {
-            Roo.each(ev.els, function(el) {
-                el.un('mouseenter' ,this.onEventEnter, this);
-                el.un('mouseleave' ,this.onEventLeave, this);
-                el.remove();
-            },this);
-            ev.els = [];
+            this.clearEvent(ev);
             //code
         }
         
