@@ -46,15 +46,15 @@ Roo.extend(Roo.bootstrap.Progress, Roo.bootstrap.Component,  {
         };
       
         if(this.aria_valuenow){
-            cfg['aria-valuenow'] = this.aria_valuenow;
+            cfg.cn[0]['aria-valuenow'] = this.aria_valuenow;
         }
         
         if(this.label){
-            cfg.html = this.label;
+            cfg.cn[0].html = this.label;
         }
         
         if(this.panel){
-            cfg.cls += 'progress-bar-' + this.panel;
+            cfg.cn[0].cls += 'progress-bar-' + this.panel;
         }
         
         return cfg;
