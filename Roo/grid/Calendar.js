@@ -794,6 +794,18 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
         if (!ctr) {
              ctr = this.view.el.select('.fc-event-container',true).first();
         }
+        
+        if (ev.els) {
+            Roo.each(ev.els, function(el) {
+                el.un('mouseenter' ,this.onEventEnter, this);
+                el.un('mouseleave' ,this.onEventLeave, this);
+                el.remove();
+            },this);
+            ev.els = [];
+            //code
+        }
+        
+        
         ev.els = [];
         var cells = ev.cells;
         var rows = ev.rows;
