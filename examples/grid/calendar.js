@@ -58,6 +58,8 @@ var Example = {
                     
                     if (rec.data.estimated) {
                         rec.data.cls = "Greys-q3-6"; // grey...
+                    } else {
+                        'RdYlGn-q' + rec.data.priority_id_seqid +'-7'
                     }
                     
                     rec.data.cls = "x-fixme";
