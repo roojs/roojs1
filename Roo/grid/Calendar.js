@@ -776,6 +776,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
                 el.un('mouseleave' ,this.onEventLeave, this);
                 el.remove();
             },this);
+            e.els = [];
         },this);
         
     },
