@@ -1894,25 +1894,29 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
         }
         
         if (['tabs','pills'].indexOf(this.parent().type)!==-1) {
-            
-            Roo.each(this.parent().el.select('.active',true).elements, function(v){
-                v.removeClass('active');
-            })
-            
-            this.el.addClass('active');
-            
-            if(this.href && this.href.substring(0,1) == '#'){
-                var tab = Roo.select('[tabId=' + this.href + ']', true).first();
-                
-                Roo.each(tab.findParent('.tab-content', 0, true)select('.active', true).elements, function(v){
-                    v.removeClass('active');
-                });
-                
-                tab.addClass('active');
-            }
+            this.onTabsClick(e);
         } 
         
         this.fireEvent('click', this, e);
+    },
+    
+    onTabsClick : function(e)
+    {
+        Roo.each(this.parent().el.select('.active',true).elements, function(v){
+            v.removeClass('active');
+        })
+
+        this.el.addClass('active');
+
+        if(this.href && this.href.substring(0,1) == '#'){
+            var tab = Roo.select('[tabId=' + this.href + ']', true).first();
+
+            Roo.each(tab.findParent('.tab-content', 0, true).select('.active', true).elements, function(v){
+                v.removeClass('active');
+            });
+
+            tab.addClass('active');
+        }
     }
    
 });
