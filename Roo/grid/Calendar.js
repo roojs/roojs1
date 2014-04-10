@@ -714,12 +714,12 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
     },
     
     
-    addItem : function(ev)
+    addItem : function(rec)
     {
         // look for vertical location slot in
-        var cells = this.findCells(ev);
+        var cells = this.findCells(rec);
         
-        ev.row = this.findBestRow(cells);
+        rec.row = this.findBestRow(cells);
         
         // work out the location.
         
@@ -748,15 +748,15 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
         }
         
         rows.push(crow);
-        ev.els = [];
-        ev.rows = rows;
-        ev.cells = cells;
+        rec.els = [];
+        rec.rows = rows;
+        rec.cells = cells;
         for (var i = 0; i < cells.length;i++) {
-            cells[i].rows = Math.max(cells[i].rows || 0 , ev.row + 1 );
+            cells[i].rows = Math.max(cells[i].rows || 0 , rec.row + 1 );
             
         }
         
-        this.calevents.push(ev);
+        this.calevents.push(rec);
     },
     
     clearEvents: function() {
