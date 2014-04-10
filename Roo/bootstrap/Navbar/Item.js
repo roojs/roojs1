@@ -82,6 +82,11 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 	cfg = {
 	    tag: 'li'
 	}
+        
+        if (this.active) {
+            this.cls += ' active';
+        }
+            
 	cfg.cn = [
             {
 		tag: 'p',
