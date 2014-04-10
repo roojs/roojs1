@@ -815,7 +815,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
             
             for(var i =0; i < rows.length; i++) {
                 
-                cls = '',
+                cls = '';
                 if (i == 0) {
                     cls += ' fc-event-start';
                 }
