@@ -168,7 +168,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
                 v.removeClass('active');
             })
             
-            this.addClass('active');
+            this.el.addClass('active');
         } 
         
         this.fireEvent('click', this, e);
