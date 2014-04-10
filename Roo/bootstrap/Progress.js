@@ -15,6 +15,8 @@
  * @cfg {String} label label for the progress bar
  * @cfg {String} panel (success | info | warning | danger )
  * @cfg {String} role role of the progress bar
+ * @cfg {Boolean} striped striped of the progress bar
+ * @cfg {Boolean} active animated of the progress bar
  * 
  * 
  * @constructor
@@ -33,6 +35,7 @@ Roo.extend(Roo.bootstrap.Progress, Roo.bootstrap.Component,  {
     aria_valuemax : 100,
     label : false,
     panel : false,
+    role : false,
     
     getAutoCreate : function(){
         var cfg = {
@@ -46,6 +49,10 @@ Roo.extend(Roo.bootstrap.Progress, Roo.bootstrap.Component,  {
             ]
         };
       
+        if(this.role){
+            cfg.cn[0].role = this.role;
+        }
+        
         if(this.aria_valuenow){
             cfg.cn[0]['aria-valuenow'] = this.aria_valuenow;
         }
