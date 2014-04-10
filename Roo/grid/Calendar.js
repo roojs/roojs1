@@ -756,7 +756,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
             
         }
         
-        this.calevents.push(rec);
+        
     },
     
     clearEvents: function() {
