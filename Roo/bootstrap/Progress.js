@@ -36,7 +36,13 @@ Roo.extend(Roo.bootstrap.Progress, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         var cfg = {
             tag: 'div',
-            cls: 'progress-bar'
+            cls: 'progress',
+            cn: [
+                {
+                    tag: 'div',
+                    cls: 'progress-bar'
+                }
+            ]
         };
       
         if(this.aria_valuenow){
