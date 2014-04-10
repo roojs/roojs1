@@ -11,7 +11,7 @@
  * Bootstrap NavGroup class
  * @cfg {String} align left | right
  * @cfg {Boolean} inverse false | true
- * @cfg {Boolean} inverse false | true
+ * @cfg {String} type (nav|pills|tab) default nav
  * 
  * @constructor
  * Create a new nav group
