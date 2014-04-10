@@ -60,11 +60,11 @@ Roo.extend(Roo.bootstrap.ProgressBar, Roo.bootstrap.Component,  {
         }
         
         if(this.aria_valuemin){
-            cfg['aria_valuemin'] = this.aria_valuemin;
+            cfg['aria-valuemin'] = this.aria_valuemin;
         }
         
         if(this.aria_valuemax){
-            cfg['aria_valuemax'] = this.aria_valuemax;
+            cfg['aria-valuemax'] = this.aria_valuemax;
         }
         
         if(this.label && !this.sr_only){
