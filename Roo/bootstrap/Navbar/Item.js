@@ -22,6 +22,15 @@
  */
 Roo.bootstrap.Navbar.Item = function(config){
     Roo.bootstrap.Navbar.Item.superclass.constructor.call(this, config);
+    this.addEvents({
+        // raw events
+        /**
+         * @event click
+         * The raw click event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "click" : true
+    });
 };
 
 Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
