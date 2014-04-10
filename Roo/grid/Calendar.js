@@ -779,12 +779,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
         });
         
         this.eventStore.each(function(e) {
-            Roo.each(e.els, function(el) {
-                el.un('mouseenter' ,this.onEventEnter, this);
-                el.un('mouseleave' ,this.onEventLeave, this);
-                el.remove();
-            },this);
-            e.els = [];
+            this.clearEvent(e);
         },this);
         
     },
