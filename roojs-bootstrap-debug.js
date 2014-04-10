@@ -67,6 +67,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         
         if(this.el){
             if (this.el.attr('xtype')) {
+                Roo.log('this.el');
+                Roo.log(this.el);
                 this.el.attr('xtypex', this.el.attr('xtype'));
                 this.el.dom.removeAttribute('xtype');
                 
