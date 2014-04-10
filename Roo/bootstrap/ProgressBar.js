@@ -85,8 +85,9 @@ Roo.extend(Roo.bootstrap.ProgressBar, Roo.bootstrap.Component,  {
     {
         Roo.log('call update?');
         this.aria_valuenow = aria_valuenow;
-        Roo.log(this);
+        
         this.el.setStyle('width', (this.aria_valuenow / this.aria_valuemax));
+        Roo.log(this);
     }
    
 });
