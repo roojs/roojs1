@@ -1815,7 +1815,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 	}
         
         if (this.active) {
-            cfg.cls += ' active';
+            cfg.cls = typeof(cfg.cls) == 'undefined' ? 'active' : cfg.cls + ' active';
         }
             
 	cfg.cn = [
