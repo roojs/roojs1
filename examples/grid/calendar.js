@@ -54,7 +54,7 @@ var Example = {
                 eventrender : function(c, rec) {
                     rec.data.title = rec.data.person_id_name + ' ' + rec.data.project_id_name;
                     rec.data.qtip  = rec.data.summary;
-                    rec.data.cls = "fixme";
+                    rec.data.cls = "x-fixme";
                     
                 }
             }
