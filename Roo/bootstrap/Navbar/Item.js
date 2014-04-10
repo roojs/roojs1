@@ -14,7 +14,7 @@
  * @cfg {String} badge text inside badge
  * @cfg {String} glyphicon name of glyphicon
  * @cfg {String} icon name of font awesome icon
- * @cfg {Boolena} active Item is active?
+ * @cfg {Boolena} active Is item active
   
  * @constructor
  * Create a new Navbar Button
