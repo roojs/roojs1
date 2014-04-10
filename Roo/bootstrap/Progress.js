@@ -14,6 +14,7 @@
  * @cfg {Number} aria_valuemax aria-value max
  * @cfg {String} label label for the progress bar
  * @cfg {String} panel (success | info | warning | danger )
+ * @cfg {String} role role of the progress bar
  * 
  * 
  * @constructor
