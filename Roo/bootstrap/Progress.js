@@ -24,15 +24,8 @@ Roo.bootstrap.Progress = function(config){
 
 Roo.extend(Roo.bootstrap.Progress, Roo.bootstrap.Component,  {
     
-    aria_valuenow : false,
-    aria_valuemin : 0,
-    aria_valuemax : 100,
-    label : false,
-    panel : false,
-    role : false,
     striped : false,
     active: false,
-    sr_only: false,
     
     getAutoCreate : function(){
         var cfg = {
