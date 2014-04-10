@@ -84,7 +84,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 	}
         
         if (this.active) {
-            cfg.cls += ' active';
+            this.cls += ' active';
         }
             
 	cfg.cn = [
