@@ -19,15 +19,15 @@
  * 
  * 
  * @constructor
- * Create a new Progress
+ * Create a new ProgressBar
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.Progress = function(config){
-    Roo.bootstrap.Progress.superclass.constructor.call(this, config);
+Roo.bootstrap.ProgressBar = function(config){
+    Roo.bootstrap.ProgressBar.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.Progress, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.ProgressBar, Roo.bootstrap.Component,  {
     
     aria_valuenow : false,
     aria_valuemin : 0,
