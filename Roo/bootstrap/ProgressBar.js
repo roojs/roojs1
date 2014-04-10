@@ -16,6 +16,7 @@
  * @cfg {String} panel (success | info | warning | danger )
  * @cfg {String} role role of the progress bar
  * @cfg {String} sr_only text
+ * @cfg {Number} width percentages of the bar
  * 
  * 
  * @constructor
