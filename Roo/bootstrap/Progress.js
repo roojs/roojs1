@@ -30,6 +30,8 @@ Roo.extend(Roo.bootstrap.Progress, Roo.bootstrap.Component,  {
     aria_valuenow : false,
     aria_valuemin : 0,
     aria_valuemax : 100,
+    label : false,
+    panel : false,
     
     getAutoCreate : function(){
         var cfg = {
@@ -39,6 +41,14 @@ Roo.extend(Roo.bootstrap.Progress, Roo.bootstrap.Component,  {
       
         if(this.aria_valuenow){
             cfg['aria-valuenow'] = this.aria_valuenow;
+        }
+        
+        if(this.label){
+            cfg.html = this.label;
+        }
+        
+        if(this.panel){
+            cfg.cls += 'progress-bar-' + this.panel;
         }
         
         return cfg;
