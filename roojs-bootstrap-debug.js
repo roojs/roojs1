@@ -9506,13 +9506,13 @@ Roo.extend(Roo.bootstrap.ProgressBar, Roo.bootstrap.Component,  {
     panel : false,
     role : false,
     sr_only: false,
-    width : false,
     
     getAutoCreate : function(){
         
         var cfg = {
             tag: 'div',
-            cls: 'progress-bar'
+            cls: 'progress-bar',
+            style: 'width:' + (this.aria_valuenow / this.aria_valuemax)
         };
         
         if(this.sr_only){
