@@ -806,14 +806,27 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
             c.select('.fc-day-content div',true).first().setHeight(Math.max(34, (c.rows || 1) * 20));
         });
         
+        var cls;
         for (var e = 0; e < this.calevents.length; e++) {
             var ev = this.calevents[e];
             var cells = ev.cells;
             var rows = ev.rows;
             
+            
             for(var i =0; i < rows.length; i++) {
                 
-                Roo.a
+                cls = '',
+                if (i == 0) {
+                    cls += ' fc-event-start';
+                }
+                if ((i+1) == rows.length) {
+                    cls += ' fc-event-end';
+                }
+                
+                Roo.apply({
+                    fccls : cls
+                    
+                }, rec.data)
                 // how many rows should it span..
                 
                 var  cfg = {
@@ -847,12 +860,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
                         
                     ]
                 };
-                if (i == 0) {
-                    cfg.cls += ' fc-event-start';
-                }
-                if ((i+1) == rows.length) {
-                    cfg.cls += ' fc-event-end';
-                }
+                
                 
                 var ctr = this.view.el.select('.fc-event-container',true).first();
                 var cg = ctr.createChild(cfg);
