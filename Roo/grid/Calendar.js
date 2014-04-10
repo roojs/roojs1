@@ -874,7 +874,6 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
     
     onLoad: function () {
         
-        this.clearEvents();
         //Roo.log('calendar onload');
 //         
         if(this.eventStore.getCount() > 0){
