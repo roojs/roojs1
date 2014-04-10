@@ -16212,7 +16212,7 @@ Roo.apply(Roo.XComponent, {
             }
             
             var m = mods.shift();
-            
+            Roo.log('m');
             Roo.log(m);
             Roo.debug && Roo.log(m);
             // not sure if this is supported any more.. - modules that are are just function
@@ -56620,7 +56620,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
         
         
         this.cells.each(function(c) {
-            Roo.log(c.select('.fc-day-content div',true).first());
+            //Roo.log(c.select('.fc-day-content div',true).first());
             c.select('.fc-day-content div',true).first().setHeight(Math.max(34, (c.rows || 1) * 20));
         });
         
