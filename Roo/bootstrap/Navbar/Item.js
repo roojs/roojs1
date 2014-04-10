@@ -164,7 +164,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
         
         if (['tabs','pills'].indexOf(this.parent().type)!==-1) {
             
-            Roo.each(this.parent().select('.active',true).elements, function(v){
+            Roo.each(this.parent().el.select('.active',true).elements, function(v){
                 v.removeClass('active');
             })
             
