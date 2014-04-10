@@ -8396,6 +8396,12 @@
      "memberOf": ""
     },
     {
+     "name": "active",
+     "type": "Boolena",
+     "desc": "Is item active",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
