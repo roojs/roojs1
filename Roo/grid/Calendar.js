@@ -790,7 +790,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
     },
     
     
-    function renderEvent(args,ctr) {
+     renderEvent : function(args,ctr) {
         if (!ctr) {
              ctr = this.view.el.select('.fc-event-container',true).first();
         }
