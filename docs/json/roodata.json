@@ -9470,6 +9470,12 @@
      "memberOf": ""
     },
     {
+     "name": "tabId",
+     "type": "String",
+     "desc": "tab relate id",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
