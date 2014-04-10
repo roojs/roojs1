@@ -827,14 +827,12 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
                 
                 
                 // how many rows should it span..
-                this.eventTmpl.append(ctr,Roo.apply({
+                var cg = this.eventTmpl.append(ctr,Roo.apply({
                     fccls : cls
                     
-                }, rec.data) );
+                }, rec.data) , true);
                 
                 
-               
-                var cg = ctr.createChild(cfg);
                 
                 cg.on('mouseenter' ,this.onEventEnter, this, ev);
                 cg.on('mouseleave' ,this.onEventLeave, this, ev);
