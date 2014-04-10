@@ -806,6 +806,8 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
             c.select('.fc-day-content div',true).first().setHeight(Math.max(34, (c.rows || 1) * 20));
         });
         
+        var ctr = this.view.el.select('.fc-event-container',true).first();
+        
         var cls;
         for (var e = 0; e < this.calevents.length; e++) {
             var ev = this.calevents[e];
@@ -823,46 +825,15 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
                     cls += ' fc-event-end';
                 }
                 
-                Roo.apply({
+                
+                // how many rows should it span..
+                this.eventTmpl.append(ctr,Roo.apply({
                     fccls : cls
                     
-                }, rec.data)
-                // how many rows should it span..
-                
-                var  cfg = {
-                    cls : 'roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable',
-                    style : 'position: absolute', // left: 387px; width: 121px; top: 359px;
-                    
-                    unselectable : "on",
-                    cn : [
-                        {
-                            cls: 'fc-event-inner',
-                            cn : [
-                                {
-                                  tag:'span',
-                                  cls: 'fc-event-time',
-                                  html : cells.length > 1 ? '' : ev.start_dt.format('h:ia')
-                                },
-                                {
-                                  tag:'span',
-                                  cls: 'fc-event-title',
-                                  html : String.format('{0}', ev.title),
-                                  qtip: String.format('{0} - {1}', ev.title,ev.description || '')
-                                }
-                                
-                                
-                            ]
-                        },
-                        {
-                            cls: 'ui-resizable-handle ui-resizable-e',
-                            html : '&nbsp;&nbsp;&nbsp'
-                        }
-                        
-                    ]
-                };
+                }, rec.data) );
                 
                 
-                var ctr = this.view.el.select('.fc-event-container',true).first();
+               
                 var cg = ctr.createChild(cfg);
                 
                 cg.on('mouseenter' ,this.onEventEnter, this, ev);
