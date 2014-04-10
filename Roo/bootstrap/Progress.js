@@ -9,9 +9,9 @@
  * @class Roo.bootstrap.Progress
  * @extends Roo.bootstrap.Component
  * Bootstrap Progress class
- * @cfg {String} size xs | sm | md | lg
- 
  * @cfg {Number} aria_valuenow aria-value now
+ * @cfg {Number} aria_valuemin aria-value min
+ * @cfg {Number} aria_valuemax aria-value max
  * 
  * @constructor
  * Create a new Progress
@@ -25,6 +25,8 @@ Roo.bootstrap.Progress = function(config){
 Roo.extend(Roo.bootstrap.Progress, Roo.bootstrap.Component,  {
     
     aria_valuenow : false,
+    aria_valuemin : 0,
+    aria_valuemax : 100,
     
     getAutoCreate : function(){
         var cfg = {
