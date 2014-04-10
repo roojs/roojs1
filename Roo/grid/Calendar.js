@@ -811,6 +811,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
         var cls;
         for (var e = 0; e < this.calevents.length; e++) {
             var ev = this.calevents[e];
+            ev.els = [];
             var cells = ev.cells;
             var rows = ev.rows;
             
