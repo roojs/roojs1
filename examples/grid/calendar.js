@@ -52,6 +52,7 @@ var Example = {
             },
             listeners : {
                 eventrender : function(c, rec) {
+                    Roo.log([c,rec]);
                     rec.data.title = rec.data.person_id_name + ' ' + rec.data.project_id_name;
                     rec.data.qtip  = rec.data.summary;
                     rec.data.cls = "x-fixme";
