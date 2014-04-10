@@ -489,8 +489,8 @@ Roo.apply(Roo.XComponent, {
             }
             
             var m = mods.shift();
-            Roo.log('m');
-            Roo.log(m);
+            
+            
             Roo.debug && Roo.log(m);
             // not sure if this is supported any more.. - modules that are are just function
             if (typeof(m) == 'function') { 
