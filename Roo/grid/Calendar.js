@@ -903,19 +903,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
                 
                 this.addItem(d);
                 
-            
-                // other than the 'required' coluns, we should just pass the data from the store.
-                
-                
-               /*cal.addItem({
-                    id : d.data.id,
-                    start: new Date(d.data.start_dt),
-                    end : new Date(d.data.end_dt),
-                    time : d.data.start_time,
-                    title : d.data.title,
-                    description : d.data.description,
-                    venue : d.data.venue
-                });*/
+             
             },this);
         }
         
