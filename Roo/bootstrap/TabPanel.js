@@ -10,6 +10,7 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap TabPanel class
  * @cfg {Boolean} active panel active
+ * @cfg {String} html panel content
  * 
  * 
  * @constructor
@@ -24,18 +25,18 @@ Roo.bootstrap.TabPanel = function(config){
 Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
     
     active: false,
+    html: false,
     
     getAutoCreate : function(){
         var cfg = {
             tag: 'div',
-            cls: 'tab-pane'
+            cls: 'tab-pane',
+            html: this.html || ''
         };
         
-              
         if(this.active){
             cfg.cls += ' active';
         }
-        
         
         return cfg;
     }
