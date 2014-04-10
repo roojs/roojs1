@@ -8042,6 +8042,12 @@
      "memberOf": ""
     },
     {
+     "name": "type",
+     "type": "String",
+     "desc": "(nav|pills|tab) default nav",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
