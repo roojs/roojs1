@@ -38910,4 +38910,2259 @@ Roo.extend(Roo.grid.CellSelectionModel, Roo.grid.AbstractSelectionModel,  {
             this.fireEvent.defer(100, this, ['tabend',this]);
         }
     }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.grid.EditorGrid
+ * @extends Roo.grid.Grid
+ * Class for creating and editable grid.
+ * @param {String/HTMLElement/Roo.Element} container The element into which this grid will be rendered - 
+ * The container MUST have some type of size defined for the grid to fill. The container will be 
+ * automatically set to position relative if it isn't already.
+ * @param {Object} dataSource The data model to bind to
+ * @param {Object} colModel The column model with info about this grid's columns
+ */
+Roo.grid.EditorGrid = function(container, config){
+    Roo.grid.EditorGrid.superclass.constructor.call(this, container, config);
+    this.getGridEl().addClass("xedit-grid");
+
+    if(!this.selModel){
+        this.selModel = new Roo.grid.CellSelectionModel();
+    }
+
+    this.activeEditor = null;
+
+	this.addEvents({
+	    /**
+	     * @event beforeedit
+	     * Fires before cell editing is triggered. The edit event object has the following properties <br />
+	     * <ul style="padding:5px;padding-left:16px;">
+	     * <li>grid - This grid</li>
+	     * <li>record - The record being edited</li>
+	     * <li>field - The field name being edited</li>
+	     * <li>value - The value for the field being edited.</li>
+	     * <li>row - The grid row index</li>
+	     * <li>column - The grid column index</li>
+	     * <li>cancel - Set this to true to cancel the edit or return false from your handler.</li>
+	     * </ul>
+	     * @param {Object} e An edit event (see above for description)
+	     */
+	    "beforeedit" : true,
+	    /**
+	     * @event afteredit
+	     * Fires after a cell is edited. <br />
+	     * <ul style="padding:5px;padding-left:16px;">
+	     * <li>grid - This grid</li>
+	     * <li>record - The record being edited</li>
+	     * <li>field - The field name being edited</li>
+	     * <li>value - The value being set</li>
+	     * <li>originalValue - The original value for the field, before the edit.</li>
+	     * <li>row - The grid row index</li>
+	     * <li>column - The grid column index</li>
+	     * </ul>
+	     * @param {Object} e An edit event (see above for description)
+	     */
+	    "afteredit" : true,
+	    /**
+	     * @event validateedit
+	     * Fires after a cell is edited, but before the value is set in the record. 
+         * You can use this to modify the value being set in the field, Return false
+	     * to cancel the change. The edit event object has the following properties <br />
+	     * <ul style="padding:5px;padding-left:16px;">
+         * <li>editor - This editor</li>
+	     * <li>grid - This grid</li>
+	     * <li>record - The record being edited</li>
+	     * <li>field - The field name being edited</li>
+	     * <li>value - The value being set</li>
+	     * <li>originalValue - The original value for the field, before the edit.</li>
+	     * <li>row - The grid row index</li>
+	     * <li>column - The grid column index</li>
+	     * <li>cancel - Set this to true to cancel the edit or return false from your handler.</li>
+	     * </ul>
+	     * @param {Object} e An edit event (see above for description)
+	     */
+	    "validateedit" : true
+	});
+    this.on("bodyscroll", this.stopEditing,  this);
+    this.on(this.clicksToEdit == 1 ? "cellclick" : "celldblclick", this.onCellDblClick,  this);
+};
+
+Roo.extend(Roo.grid.EditorGrid, Roo.grid.Grid, {
+    /**
+     * @cfg {Number} clicksToEdit
+     * The number of clicks on a cell required to display the cell's editor (defaults to 2)
+     */
+    clicksToEdit: 2,
+
+    // private
+    isEditor : true,
+    // private
+    trackMouseOver: false, // causes very odd FF errors
+
+    onCellDblClick : function(g, row, col){
+        this.startEditing(row, col);
+    },
+
+    onEditComplete : function(ed, value, startValue){
+        this.editing = false;
+        this.activeEditor = null;
+        ed.un("specialkey", this.selModel.onEditorKey, this.selModel);
+        var r = ed.record;
+        var field = this.colModel.getDataIndex(ed.col);
+        var e = {
+            grid: this,
+            record: r,
+            field: field,
+            originalValue: startValue,
+            value: value,
+            row: ed.row,
+            column: ed.col,
+            cancel:false,
+            editor: ed
+        };
+        var cell = Roo.get(this.view.getCell(ed.row,ed.col))
+        cell.show();
+          
+        if(String(value) !== String(startValue)){
+            
+            if(this.fireEvent("validateedit", e) !== false && !e.cancel){
+                r.set(field, e.value);
+                // if we are dealing with a combo box..
+                // then we also set the 'name' colum to be the displayField
+                if (ed.field.displayField && ed.field.name) {
+                    r.set(ed.field.name, ed.field.el.dom.value);
+                }
+                
+                delete e.cancel; //?? why!!!
+                this.fireEvent("afteredit", e);
+            }
+        } else {
+            this.fireEvent("afteredit", e); // always fire it!
+        }
+        this.view.focusCell(ed.row, ed.col);
+    },
+
+    /**
+     * Starts editing the specified for the specified row/column
+     * @param {Number} rowIndex
+     * @param {Number} colIndex
+     */
+    startEditing : function(row, col){
+        this.stopEditing();
+        if(this.colModel.isCellEditable(col, row)){
+            this.view.ensureVisible(row, col, true);
+          
+            var r = this.dataSource.getAt(row);
+            var field = this.colModel.getDataIndex(col);
+            var cell = Roo.get(this.view.getCell(row,col));
+            var e = {
+                grid: this,
+                record: r,
+                field: field,
+                value: r.data[field],
+                row: row,
+                column: col,
+                cancel:false 
+            };
+            if(this.fireEvent("beforeedit", e) !== false && !e.cancel){
+                this.editing = true;
+                var ed = this.colModel.getCellEditor(col, row);
+                
+                if (!ed) {
+                    return;
+                }
+                if(!ed.rendered){
+                    ed.render(ed.parentEl || document.body);
+                }
+                ed.field.reset();
+               
+                cell.hide();
+                
+                (function(){ // complex but required for focus issues in safari, ie and opera
+                    ed.row = row;
+                    ed.col = col;
+                    ed.record = r;
+                    ed.on("complete",   this.onEditComplete,        this,       {single: true});
+                    ed.on("specialkey", this.selModel.onEditorKey,  this.selModel);
+                    this.activeEditor = ed;
+                    var v = r.data[field];
+                    ed.startEdit(this.view.getCell(row, col), v);
+                    // combo's with 'displayField and name set
+                    if (ed.field.displayField && ed.field.name) {
+                        ed.field.el.dom.value = r.data[ed.field.name];
+                    }
+                    
+                    
+                }).defer(50, this);
+            }
+        }
+    },
+        
+    /**
+     * Stops any active editing
+     */
+    stopEditing : function(){
+        if(this.activeEditor){
+            this.activeEditor.completeEdit();
+        }
+        this.activeEditor = null;
+    },
+	
+	 /**
+     * Called to get grid's drag proxy text, by default returns this.ddText.
+     * @return {String}
+     */
+    getDragDropText : function(){
+        var count = this.selModel.getSelectedCell() ? 1 : 0;
+        return String.format(this.ddText, count, count == 1 ? '' : 's');
+    }
+	
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+// private - not really -- you end up using it !
+// This is a support class used internally by the Grid components
+
+/**
+ * @class Roo.grid.GridEditor
+ * @extends Roo.Editor
+ * Class for creating and editable grid elements.
+ * @param {Object} config any settings (must include field)
+ */
+Roo.grid.GridEditor = function(field, config){
+    if (!config && field.field) {
+        config = field;
+        field = Roo.factory(config.field, Roo.form);
+    }
+    Roo.grid.GridEditor.superclass.constructor.call(this, field, config);
+    field.monitorTab = false;
+};
+
+Roo.extend(Roo.grid.GridEditor, Roo.Editor, {
+    
+    /**
+     * @cfg {Roo.form.Field} field Field to wrap (or xtyped)
+     */
+    
+    alignment: "tl-tl",
+    autoSize: "width",
+    hideEl : false,
+    cls: "x-small-editor x-grid-editor",
+    shim:false,
+    shadow:"frame"
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+  
+
+  
+Roo.grid.PropertyRecord = Roo.data.Record.create([
+    {name:'name',type:'string'},  'value'
+]);
+
+
+Roo.grid.PropertyStore = function(grid, source){
+    this.grid = grid;
+    this.store = new Roo.data.Store({
+        recordType : Roo.grid.PropertyRecord
+    });
+    this.store.on('update', this.onUpdate,  this);
+    if(source){
+        this.setSource(source);
+    }
+    Roo.grid.PropertyStore.superclass.constructor.call(this);
+};
+
+
+
+Roo.extend(Roo.grid.PropertyStore, Roo.util.Observable, {
+    setSource : function(o){
+        this.source = o;
+        this.store.removeAll();
+        var data = [];
+        for(var k in o){
+            if(this.isEditableValue(o[k])){
+                data.push(new Roo.grid.PropertyRecord({name: k, value: o[k]}, k));
+            }
+        }
+        this.store.loadRecords({records: data}, {}, true);
+    },
+
+    onUpdate : function(ds, record, type){
+        if(type == Roo.data.Record.EDIT){
+            var v = record.data['value'];
+            var oldValue = record.modified['value'];
+            if(this.grid.fireEvent('beforepropertychange', this.source, record.id, v, oldValue) !== false){
+                this.source[record.id] = v;
+                record.commit();
+                this.grid.fireEvent('propertychange', this.source, record.id, v, oldValue);
+            }else{
+                record.reject();
+            }
+        }
+    },
+
+    getProperty : function(row){
+       return this.store.getAt(row);
+    },
+
+    isEditableValue: function(val){
+        if(val && val instanceof Date){
+            return true;
+        }else if(typeof val == 'object' || typeof val == 'function'){
+            return false;
+        }
+        return true;
+    },
+
+    setValue : function(prop, value){
+        this.source[prop] = value;
+        this.store.getById(prop).set('value', value);
+    },
+
+    getSource : function(){
+        return this.source;
+    }
 });
+
+Roo.grid.PropertyColumnModel = function(grid, store){
+    this.grid = grid;
+    var g = Roo.grid;
+    g.PropertyColumnModel.superclass.constructor.call(this, [
+        {header: this.nameText, sortable: true, dataIndex:'name', id: 'name'},
+        {header: this.valueText, resizable:false, dataIndex: 'value', id: 'value'}
+    ]);
+    this.store = store;
+    this.bselect = Roo.DomHelper.append(document.body, {
+        tag: 'select', style:'display:none', cls: 'x-grid-editor', children: [
+            {tag: 'option', value: 'true', html: 'true'},
+            {tag: 'option', value: 'false', html: 'false'}
+        ]
+    });
+    Roo.id(this.bselect);
+    var f = Roo.form;
+    this.editors = {
+        'date' : new g.GridEditor(new f.DateField({selectOnFocus:true})),
+        'string' : new g.GridEditor(new f.TextField({selectOnFocus:true})),
+        'number' : new g.GridEditor(new f.NumberField({selectOnFocus:true, style:'text-align:left;'})),
+        'int' : new g.GridEditor(new f.NumberField({selectOnFocus:true, allowDecimals:false, style:'text-align:left;'})),
+        'boolean' : new g.GridEditor(new f.Field({el:this.bselect,selectOnFocus:true}))
+    };
+    this.renderCellDelegate = this.renderCell.createDelegate(this);
+    this.renderPropDelegate = this.renderProp.createDelegate(this);
+};
+
+Roo.extend(Roo.grid.PropertyColumnModel, Roo.grid.ColumnModel, {
+    
+    
+    nameText : 'Name',
+    valueText : 'Value',
+    
+    dateFormat : 'm/j/Y',
+    
+    
+    renderDate : function(dateVal){
+        return dateVal.dateFormat(this.dateFormat);
+    },
+
+    renderBool : function(bVal){
+        return bVal ? 'true' : 'false';
+    },
+
+    isCellEditable : function(colIndex, rowIndex){
+        return colIndex == 1;
+    },
+
+    getRenderer : function(col){
+        return col == 1 ?
+            this.renderCellDelegate : this.renderPropDelegate;
+    },
+
+    renderProp : function(v){
+        return this.getPropertyName(v);
+    },
+
+    renderCell : function(val){
+        var rv = val;
+        if(val instanceof Date){
+            rv = this.renderDate(val);
+        }else if(typeof val == 'boolean'){
+            rv = this.renderBool(val);
+        }
+        return Roo.util.Format.htmlEncode(rv);
+    },
+
+    getPropertyName : function(name){
+        var pn = this.grid.propertyNames;
+        return pn && pn[name] ? pn[name] : name;
+    },
+
+    getCellEditor : function(colIndex, rowIndex){
+        var p = this.store.getProperty(rowIndex);
+        var n = p.data['name'], val = p.data['value'];
+        
+        if(typeof(this.grid.customEditors[n]) == 'string'){
+            return this.editors[this.grid.customEditors[n]];
+        }
+        if(typeof(this.grid.customEditors[n]) != 'undefined'){
+            return this.grid.customEditors[n];
+        }
+        if(val instanceof Date){
+            return this.editors['date'];
+        }else if(typeof val == 'number'){
+            return this.editors['number'];
+        }else if(typeof val == 'boolean'){
+            return this.editors['boolean'];
+        }else{
+            return this.editors['string'];
+        }
+    }
+});
+
+/**
+ * @class Roo.grid.PropertyGrid
+ * @extends Roo.grid.EditorGrid
+ * This class represents the  interface of a component based property grid control.
+ * <br><br>Usage:<pre><code>
+ var grid = new Roo.grid.PropertyGrid("my-container-id", {
+      
+ });
+ // set any options
+ grid.render();
+ * </code></pre>
+  
+ * @constructor
+ * @param {String/HTMLElement/Roo.Element} container The element into which this grid will be rendered -
+ * The container MUST have some type of size defined for the grid to fill. The container will be
+ * automatically set to position relative if it isn't already.
+ * @param {Object} config A config object that sets properties on this grid.
+ */
+Roo.grid.PropertyGrid = function(container, config){
+    config = config || {};
+    var store = new Roo.grid.PropertyStore(this);
+    this.store = store;
+    var cm = new Roo.grid.PropertyColumnModel(this, store);
+    store.store.sort('name', 'ASC');
+    Roo.grid.PropertyGrid.superclass.constructor.call(this, container, Roo.apply({
+        ds: store.store,
+        cm: cm,
+        enableColLock:false,
+        enableColumnMove:false,
+        stripeRows:false,
+        trackMouseOver: false,
+        clicksToEdit:1
+    }, config));
+    this.getGridEl().addClass('x-props-grid');
+    this.lastEditRow = null;
+    this.on('columnresize', this.onColumnResize, this);
+    this.addEvents({
+         /**
+	     * @event beforepropertychange
+	     * Fires before a property changes (return false to stop?)
+	     * @param {Roo.grid.PropertyGrid} grid property grid? (check could be store)
+	     * @param {String} id Record Id
+	     * @param {String} newval New Value
+         * @param {String} oldval Old Value
+	     */
+        "beforepropertychange": true,
+        /**
+	     * @event propertychange
+	     * Fires after a property changes
+	     * @param {Roo.grid.PropertyGrid} grid property grid? (check could be store)
+	     * @param {String} id Record Id
+	     * @param {String} newval New Value
+         * @param {String} oldval Old Value
+	     */
+        "propertychange": true
+    });
+    this.customEditors = this.customEditors || {};
+};
+Roo.extend(Roo.grid.PropertyGrid, Roo.grid.EditorGrid, {
+    
+     /**
+     * @cfg {Object} customEditors map of colnames=> custom editors.
+     * the custom editor can be one of the standard ones (date|string|number|int|boolean), or a
+     * grid editor eg. Roo.grid.GridEditor(new Roo.form.TextArea({selectOnFocus:true})),
+     * false disables editing of the field.
+	 */
+    
+      /**
+     * @cfg {Object} propertyNames map of property Names to their displayed value
+	 */
+    
+    render : function(){
+        Roo.grid.PropertyGrid.superclass.render.call(this);
+        this.autoSize.defer(100, this);
+    },
+
+    autoSize : function(){
+        Roo.grid.PropertyGrid.superclass.autoSize.call(this);
+        if(this.view){
+            this.view.fitColumns();
+        }
+    },
+
+    onColumnResize : function(){
+        this.colModel.setColumnWidth(1, this.container.getWidth(true)-this.colModel.getColumnWidth(0));
+        this.autoSize();
+    },
+    /**
+     * Sets the data for the Grid
+     * accepts a Key => Value object of all the elements avaiable.
+     * @param {Object} data  to appear in grid.
+     */
+    setSource : function(source){
+        this.store.setSource(source);
+        //this.autoSize();
+    },
+    /**
+     * Gets all the data from the grid.
+     * @return {Object} data  data stored in grid
+     */
+    getSource : function(){
+        return this.store.getSource();
+    }
+});/*
+  
+ * Licence LGPL
+ 
+ */
+ 
+/**
+ * @class Roo.grid.Calendar
+ * @extends Roo.util.Grid
+ * This class extends the Grid to provide a calendar widget
+ * <br><br>Usage:<pre><code>
+ var grid = new Roo.grid.Calendar("my-container-id", {
+     ds: myDataStore,
+     cm: myColModel,
+     selModel: mySelectionModel,
+     autoSizeColumns: true,
+     monitorWindowResize: false,
+     trackMouseOver: true
+     eventstore : real data store..
+ });
+ // set any options
+ grid.render();
+  
+  * @constructor
+ * @param {String/HTMLElement/Roo.Element} container The element into which this grid will be rendered -
+ * The container MUST have some type of size defined for the grid to fill. The container will be
+ * automatically set to position relative if it isn't already.
+ * @param {Object} config A config object that sets properties on this grid.
+ */
+Roo.grid.Calendar = function(container, config){
+	// initialize the container
+	this.container = Roo.get(container);
+	this.container.update("");
+	this.container.setStyle("overflow", "hidden");
+    this.container.addClass('x-grid-container');
+
+    this.id = this.container.id;
+
+    Roo.apply(this, config);
+    // check and correct shorthanded configs
+    
+    var rows = [];
+    var d =1;
+    for (var r = 0;r < 6;r++) {
+        
+        rows[r]=[];
+        for (var c =0;c < 7;c++) {
+            rows[r][c]= '';
+        }
+    }
+    if (this.eventStore) {
+        this.eventStore= Roo.factory(this.eventStore, Roo.data);
+        this.eventStore.on('load',this.onLoad, this);
+        this.eventStore.on('beforeload',this.clearEvents, this);
+         
+    }
+    
+    this.dataSource = new Roo.data.Store({
+            proxy: new Roo.data.MemoryProxy(rows),
+            reader: new Roo.data.ArrayReader({}, [
+                   'weekday0', 'weekday1', 'weekday2', 'weekday3', 'weekday4', 'weekday5', 'weekday6' ])
+    });
+
+    this.dataSource.load();
+    this.ds = this.dataSource;
+    this.ds.xmodule = this.xmodule || false;
+    
+    
+    var cellRender = function(v,x,r)
+    {
+        return String.format(
+            '<div class="fc-day  fc-widget-content"><div>' +
+                '<div class="fc-event-container"></div>' +
+                '<div class="fc-day-number">{0}</div>'+
+                
+                '<div class="fc-day-content"><div style="position:relative"></div></div>' +
+            '</div></div>', v);
+    
+    }
+    
+    
+    this.colModel = new Roo.grid.ColumnModel( [
+        {
+            xtype: 'ColumnModel',
+            xns: Roo.grid,
+            dataIndex : 'weekday0',
+            header : 'Sunday',
+            renderer : cellRender
+        },
+        {
+            xtype: 'ColumnModel',
+            xns: Roo.grid,
+            dataIndex : 'weekday1',
+            header : 'Monday',
+            renderer : cellRender
+        },
+        {
+            xtype: 'ColumnModel',
+            xns: Roo.grid,
+            dataIndex : 'weekday2',
+            header : 'Tuesday',
+            renderer : cellRender
+        },
+        {
+            xtype: 'ColumnModel',
+            xns: Roo.grid,
+            dataIndex : 'weekday3',
+            header : 'Wednesday',
+            renderer : cellRender
+        },
+        {
+            xtype: 'ColumnModel',
+            xns: Roo.grid,
+            dataIndex : 'weekday4',
+            header : 'Thursday',
+            renderer : cellRender
+        },
+        {
+            xtype: 'ColumnModel',
+            xns: Roo.grid,
+            dataIndex : 'weekday5',
+            header : 'Friday',
+            renderer : cellRender
+        },
+        {
+            xtype: 'ColumnModel',
+            xns: Roo.grid,
+            dataIndex : 'weekday6',
+            header : 'Saturday',
+            renderer : cellRender
+        }
+    ]);
+    this.cm = this.colModel;
+    this.cm.xmodule = this.xmodule || false;
+ 
+        
+          
+    //this.selModel = new Roo.grid.CellSelectionModel();
+    //this.sm = this.selModel;
+    //this.selModel.init(this);
+    
+    
+    if(this.width){
+        this.container.setWidth(this.width);
+    }
+
+    if(this.height){
+        this.container.setHeight(this.height);
+    }
+    /** @private */
+	this.addEvents({
+        // raw events
+        /**
+         * @event click
+         * The raw click event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "click" : true,
+        /**
+         * @event dblclick
+         * The raw dblclick event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "dblclick" : true,
+        /**
+         * @event contextmenu
+         * The raw contextmenu event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "contextmenu" : true,
+        /**
+         * @event mousedown
+         * The raw mousedown event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "mousedown" : true,
+        /**
+         * @event mouseup
+         * The raw mouseup event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "mouseup" : true,
+        /**
+         * @event mouseover
+         * The raw mouseover event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "mouseover" : true,
+        /**
+         * @event mouseout
+         * The raw mouseout event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "mouseout" : true,
+        /**
+         * @event keypress
+         * The raw keypress event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "keypress" : true,
+        /**
+         * @event keydown
+         * The raw keydown event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "keydown" : true,
+
+        // custom events
+
+        /**
+         * @event cellclick
+         * Fires when a cell is clicked
+         * @param {Grid} this
+         * @param {Number} rowIndex
+         * @param {Number} columnIndex
+         * @param {Roo.EventObject} e
+         */
+        "cellclick" : true,
+        /**
+         * @event celldblclick
+         * Fires when a cell is double clicked
+         * @param {Grid} this
+         * @param {Number} rowIndex
+         * @param {Number} columnIndex
+         * @param {Roo.EventObject} e
+         */
+        "celldblclick" : true,
+        /**
+         * @event rowclick
+         * Fires when a row is clicked
+         * @param {Grid} this
+         * @param {Number} rowIndex
+         * @param {Roo.EventObject} e
+         */
+        "rowclick" : true,
+        /**
+         * @event rowdblclick
+         * Fires when a row is double clicked
+         * @param {Grid} this
+         * @param {Number} rowIndex
+         * @param {Roo.EventObject} e
+         */
+        "rowdblclick" : true,
+        /**
+         * @event headerclick
+         * Fires when a header is clicked
+         * @param {Grid} this
+         * @param {Number} columnIndex
+         * @param {Roo.EventObject} e
+         */
+        "headerclick" : true,
+        /**
+         * @event headerdblclick
+         * Fires when a header cell is double clicked
+         * @param {Grid} this
+         * @param {Number} columnIndex
+         * @param {Roo.EventObject} e
+         */
+        "headerdblclick" : true,
+        /**
+         * @event rowcontextmenu
+         * Fires when a row is right clicked
+         * @param {Grid} this
+         * @param {Number} rowIndex
+         * @param {Roo.EventObject} e
+         */
+        "rowcontextmenu" : true,
+        /**
+         * @event cellcontextmenu
+         * Fires when a cell is right clicked
+         * @param {Grid} this
+         * @param {Number} rowIndex
+         * @param {Number} cellIndex
+         * @param {Roo.EventObject} e
+         */
+         "cellcontextmenu" : true,
+        /**
+         * @event headercontextmenu
+         * Fires when a header is right clicked
+         * @param {Grid} this
+         * @param {Number} columnIndex
+         * @param {Roo.EventObject} e
+         */
+        "headercontextmenu" : true,
+        /**
+         * @event bodyscroll
+         * Fires when the body element is scrolled
+         * @param {Number} scrollLeft
+         * @param {Number} scrollTop
+         */
+        "bodyscroll" : true,
+        /**
+         * @event columnresize
+         * Fires when the user resizes a column
+         * @param {Number} columnIndex
+         * @param {Number} newSize
+         */
+        "columnresize" : true,
+        /**
+         * @event columnmove
+         * Fires when the user moves a column
+         * @param {Number} oldIndex
+         * @param {Number} newIndex
+         */
+        "columnmove" : true,
+        /**
+         * @event startdrag
+         * Fires when row(s) start being dragged
+         * @param {Grid} this
+         * @param {Roo.GridDD} dd The drag drop object
+         * @param {event} e The raw browser event
+         */
+        "startdrag" : true,
+        /**
+         * @event enddrag
+         * Fires when a drag operation is complete
+         * @param {Grid} this
+         * @param {Roo.GridDD} dd The drag drop object
+         * @param {event} e The raw browser event
+         */
+        "enddrag" : true,
+        /**
+         * @event dragdrop
+         * Fires when dragged row(s) are dropped on a valid DD target
+         * @param {Grid} this
+         * @param {Roo.GridDD} dd The drag drop object
+         * @param {String} targetId The target drag drop object
+         * @param {event} e The raw browser event
+         */
+        "dragdrop" : true,
+        /**
+         * @event dragover
+         * Fires while row(s) are being dragged. "targetId" is the id of the Yahoo.util.DD object the selected rows are being dragged over.
+         * @param {Grid} this
+         * @param {Roo.GridDD} dd The drag drop object
+         * @param {String} targetId The target drag drop object
+         * @param {event} e The raw browser event
+         */
+        "dragover" : true,
+        /**
+         * @event dragenter
+         *  Fires when the dragged row(s) first cross another DD target while being dragged
+         * @param {Grid} this
+         * @param {Roo.GridDD} dd The drag drop object
+         * @param {String} targetId The target drag drop object
+         * @param {event} e The raw browser event
+         */
+        "dragenter" : true,
+        /**
+         * @event dragout
+         * Fires when the dragged row(s) leave another DD target while being dragged
+         * @param {Grid} this
+         * @param {Roo.GridDD} dd The drag drop object
+         * @param {String} targetId The target drag drop object
+         * @param {event} e The raw browser event
+         */
+        "dragout" : true,
+        /**
+         * @event rowclass
+         * Fires when a row is rendered, so you can change add a style to it.
+         * @param {GridView} gridview   The grid view
+         * @param {Object} rowcfg   contains record  rowIndex and rowClass - set rowClass to add a style.
+         */
+        'rowclass' : true,
+
+        /**
+         * @event render
+         * Fires when the grid is rendered
+         * @param {Grid} grid
+         */
+        'render' : true,
+            /**
+	     * @event select
+	     * Fires when a date is selected
+	     * @param {DatePicker} this
+	     * @param {Date} date The selected date
+	     */
+        'select': true,
+        /**
+	     * @event monthchange
+	     * Fires when the displayed month changes 
+	     * @param {DatePicker} this
+	     * @param {Date} date The selected month
+	     */
+        'monthchange': true,
+        /**
+	     * @event evententer
+	     * Fires when mouse over an event
+	     * @param {Calendar} this
+	     * @param {event} Event
+	     */
+        'evententer': true,
+        /**
+	     * @event eventleave
+	     * Fires when the mouse leaves an
+	     * @param {Calendar} this
+	     * @param {event}
+	     */
+        'eventleave': true,
+        /**
+	     * @event eventclick
+	     * Fires when the mouse click an
+	     * @param {Calendar} this
+	     * @param {event}
+	     */
+        'eventclick': true,
+        /**
+	     * @event eventrender
+	     * Fires before each cell is rendered, so you can modify the contents, like cls / title / qtip
+	     * @param {Calendar} this
+	     * @param {data} data to be modified
+	     */
+        'eventrender': true
+        
+    });
+
+    Roo.grid.Grid.superclass.constructor.call(this);
+    this.on('render', function() {
+        this.view.el.addClass('x-grid-cal'); 
+        
+        (function() { this.setDate(new Date()); }).defer(100,this); //default today..
+
+    },this);
+    
+    if (!Roo.grid.Calendar.style) {
+        Roo.grid.Calendar.style = Roo.util.CSS.createStyleSheet({
+            
+            
+            '.x-grid-cal .x-grid-col' :  {
+                height: 'auto !important',
+                'vertical-align': 'top'
+            },
+            '.x-grid-cal  .fc-event-hori' : {
+                height: '14px'
+            }
+             
+            
+        }, Roo.id());
+    }
+
+    
+    
+};
+Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
+    /**
+     * @cfg {Store} eventStore The store that loads events.
+     */
+    eventStore : 25,
+
+     
+    activeDate : false,
+    startDay : 0,
+    autoWidth : true,
+    monitorWindowResize : false,
+
+    
+    resizeColumns : function() {
+        var col = (this.view.el.getWidth() / 7) - 3;
+        // loop through cols, and setWidth
+        for(var i =0 ; i < 7 ; i++){
+            this.cm.setColumnWidth(i, col);
+        }
+    },
+     setDate :function(date) {
+        
+        Roo.log('setDate?');
+        
+        this.resizeColumns();
+        var vd = this.activeDate;
+        this.activeDate = date;
+//        if(vd && this.el){
+//            var t = date.getTime();
+//            if(vd.getMonth() == date.getMonth() && vd.getFullYear() == date.getFullYear()){
+//                Roo.log('using add remove');
+//                
+//                this.fireEvent('monthchange', this, date);
+//                
+//                this.cells.removeClass("fc-state-highlight");
+//                this.cells.each(function(c){
+//                   if(c.dateValue == t){
+//                       c.addClass("fc-state-highlight");
+//                       setTimeout(function(){
+//                            try{c.dom.firstChild.focus();}catch(e){}
+//                       }, 50);
+//                       return false;
+//                   }
+//                   return true;
+//                });
+//                return;
+//            }
+//        }
+        
+        var days = date.getDaysInMonth();
+        
+        var firstOfMonth = date.getFirstDateOfMonth();
+        var startingPos = firstOfMonth.getDay()-this.startDay;
+        
+        if(startingPos < this.startDay){
+            startingPos += 7;
+        }
+        
+        var pm = date.add(Date.MONTH, -1);
+        var prevStart = pm.getDaysInMonth()-startingPos;
+//        
+        
+        
+        this.cells = this.view.el.select('.x-grid-row .x-grid-col',true);
+        
+        this.textNodes = this.view.el.query('.x-grid-row .x-grid-col .x-grid-cell-text');
+        //this.cells.addClassOnOver('fc-state-hover');
+        
+        var cells = this.cells.elements;
+        var textEls = this.textNodes;
+        
+        //Roo.each(cells, function(cell){
+        //    cell.removeClass([ 'fc-past', 'fc-other-month', 'fc-future', 'fc-state-highlight', 'fc-state-disabled']);
+        //});
+        
+        days += startingPos;
+
+        // convert everything to numbers so it's fast
+        var day = 86400000;
+        var d = (new Date(pm.getFullYear(), pm.getMonth(), prevStart)).clearTime();
+        //Roo.log(d);
+        //Roo.log(pm);
+        //Roo.log(prevStart);
+        
+        var today = new Date().clearTime().getTime();
+        var sel = date.clearTime().getTime();
+        var min = this.minDate ? this.minDate.clearTime() : Number.NEGATIVE_INFINITY;
+        var max = this.maxDate ? this.maxDate.clearTime() : Number.POSITIVE_INFINITY;
+        var ddMatch = this.disabledDatesRE;
+        var ddText = this.disabledDatesText;
+        var ddays = this.disabledDays ? this.disabledDays.join("") : false;
+        var ddaysText = this.disabledDaysText;
+        var format = this.format;
+        
+        var setCellClass = function(cal, cell){
+            
+            //Roo.log('set Cell Class');
+            cell.title = "";
+            var t = d.getTime();
+            
+            //Roo.log(d);
+            
+            
+            cell.dateValue = t;
+            if(t == today){
+                cell.className += " fc-today";
+                cell.className += " fc-state-highlight";
+                cell.title = cal.todayText;
+            }
+            if(t == sel){
+                // disable highlight in other month..
+                cell.className += " fc-state-highlight";
+                
+            }
+            // disabling
+            if(t < min) {
+                //cell.className = " fc-state-disabled";
+                cell.title = cal.minText;
+                return;
+            }
+            if(t > max) {
+                //cell.className = " fc-state-disabled";
+                cell.title = cal.maxText;
+                return;
+            }
+            if(ddays){
+                if(ddays.indexOf(d.getDay()) != -1){
+                    // cell.title = ddaysText;
+                   // cell.className = " fc-state-disabled";
+                }
+            }
+            if(ddMatch && format){
+                var fvalue = d.dateFormat(format);
+                if(ddMatch.test(fvalue)){
+                    cell.title = ddText.replace("%0", fvalue);
+                   cell.className = " fc-state-disabled";
+                }
+            }
+            
+            if (!cell.initialClassName) {
+                cell.initialClassName = cell.dom.className;
+            }
+            
+            cell.dom.className = cell.initialClassName  + ' ' +  cell.className;
+        };
+
+        var i = 0;
+        
+        for(; i < startingPos; i++) {
+            cells[i].dayName =  (++prevStart);
+            Roo.log(textEls[i]);
+            d.setDate(d.getDate()+1);
+            
+            //cells[i].className = "fc-past fc-other-month";
+            setCellClass(this, cells[i]);
+        }
+        
+        var intDay = 0;
+        
+        for(; i < days; i++){
+            intDay = i - startingPos + 1;
+            cells[i].dayName =  (intDay);
+            d.setDate(d.getDate()+1);
+            
+            cells[i].className = ''; // "x-date-active";
+            setCellClass(this, cells[i]);
+        }
+        var extraDays = 0;
+        
+        for(; i < 42; i++) {
+            //textEls[i].innerHTML = (++extraDays);
+            
+            d.setDate(d.getDate()+1);
+            cells[i].dayName = (++extraDays);
+            cells[i].className = "fc-future fc-other-month";
+            setCellClass(this, cells[i]);
+        }
+        
+        //this.el.select('.fc-header-title h2',true).update(Date.monthNames[date.getMonth()] + " " + date.getFullYear());
+        
+        var totalRows = Math.ceil((date.getDaysInMonth() + date.getFirstDateOfMonth().getDay()) / 7);
+        
+        // this will cause all the cells to mis
+        var rows= [];
+        var i =0;
+        for (var r = 0;r < 6;r++) {
+            for (var c =0;c < 7;c++) {
+                this.ds.getAt(r).set('weekday' + c ,cells[i++].dayName );
+            }    
+        }
+        
+        this.cells = this.view.el.select('.x-grid-row .x-grid-col',true);
+        for(i=0;i<cells.length;i++) {
+            
+            this.cells.elements[i].dayName = cells[i].dayName ;
+            this.cells.elements[i].className = cells[i].className;
+            this.cells.elements[i].initialClassName = cells[i].initialClassName ;
+            this.cells.elements[i].title = cells[i].title ;
+            this.cells.elements[i].dateValue = cells[i].dateValue ;
+        }
+        
+        
+        
+        
+        //this.el.select('tr.fc-week.fc-prev-last',true).removeClass('fc-last');
+        //this.el.select('tr.fc-week.fc-next-last',true).addClass('fc-last').show();
+        
+        ////if(totalRows != 6){
+            //this.el.select('tr.fc-week.fc-last',true).removeClass('fc-last').addClass('fc-next-last').hide();
+           // this.el.select('tr.fc-week.fc-prev-last',true).addClass('fc-last');
+       // }
+        
+        this.fireEvent('monthchange', this, date);
+        
+        
+    },
+ /**
+     * Returns the grid's SelectionModel.
+     * @return {SelectionModel}
+     */
+    getSelectionModel : function(){
+        if(!this.selModel){
+            this.selModel = new Roo.grid.CellSelectionModel();
+        }
+        return this.selModel;
+    },
+
+    load: function() {
+        this.eventStore.load()
+        
+        
+        
+    },
+    
+    findCell : function(dt) {
+        dt = dt.clearTime().getTime();
+        var ret = false;
+        this.cells.each(function(c){
+            //Roo.log("check " +c.dateValue + '?=' + dt);
+            if(c.dateValue == dt){
+                ret = c;
+                return false;
+            }
+            return true;
+        });
+        
+        return ret;
+    },
+    
+    findCells : function(rec) {
+        var s = rec.data.start_dt.clone().clearTime().getTime();
+       // Roo.log(s);
+        var e= rec.data.end_dt.clone().clearTime().getTime();
+       // Roo.log(e);
+        var ret = [];
+        this.cells.each(function(c){
+             ////Roo.log("check " +c.dateValue + '<' + e + ' > ' + s);
+            
+            if(c.dateValue > e){
+                return ;
+            }
+            if(c.dateValue < s){
+                return ;
+            }
+            ret.push(c);
+        });
+        
+        return ret;    
+    },
+    
+    findBestRow: function(cells)
+    {
+        var ret = 0;
+        
+        for (var i =0 ; i < cells.length;i++) {
+            ret  = Math.max(cells[i].rows || 0,ret);
+        }
+        return ret;
+        
+    },
+    
+    
+    addItem : function(rec)
+    {
+        // look for vertical location slot in
+        var cells = this.findCells(rec);
+        
+        rec.row = this.findBestRow(cells);
+        
+        // work out the location.
+        
+        var crow = false;
+        var rows = [];
+        for(var i =0; i < cells.length; i++) {
+            if (!crow) {
+                crow = {
+                    start : cells[i],
+                    end :  cells[i]
+                };
+                continue;
+            }
+            if (crow.start.getY() == cells[i].getY()) {
+                // on same row.
+                crow.end = cells[i];
+                continue;
+            }
+            // different row.
+            rows.push(crow);
+            crow = {
+                start: cells[i],
+                end : cells[i]
+            };
+            
+        }
+        
+        rows.push(crow);
+        rec.els = [];
+        rec.rows = rows;
+        rec.cells = cells;
+        for (var i = 0; i < cells.length;i++) {
+            cells[i].rows = Math.max(cells[i].rows || 0 , rec.row + 1 );
+            
+        }
+        
+        
+    },
+    
+    clearEvents: function() {
+        
+        if (!this.eventStore.getCount()) {
+            return;
+        }
+        // reset number of rows in cells.
+        Roo.each(this.cells.elements, function(c){
+            c.rows = 0;
+        });
+        
+        this.eventStore.each(function(e) {
+            this.clearEvent(e);
+        },this);
+        
+    },
+    
+    clearEvent : function(ev)
+    {
+        if (ev.els) {
+            Roo.each(ev.els, function(el) {
+                el.un('mouseenter' ,this.onEventEnter, this);
+                el.un('mouseleave' ,this.onEventLeave, this);
+                el.remove();
+            },this);
+            ev.els = [];
+        }
+    },
+    
+    
+    renderEvent : function(ev,ctr) {
+        if (!ctr) {
+             ctr = this.view.el.select('.fc-event-container',true).first();
+        }
+        
+         
+        this.clearEvent(ev);
+            //code
+       
+        
+        
+        ev.els = [];
+        var cells = ev.cells;
+        var rows = ev.rows;
+        this.fireEvent('eventrender', this, ev);
+        
+        for(var i =0; i < rows.length; i++) {
+            
+            cls = '';
+            if (i == 0) {
+                cls += ' fc-event-start';
+            }
+            if ((i+1) == rows.length) {
+                cls += ' fc-event-end';
+            }
+            
+            //Roo.log(ev.data);
+            // how many rows should it span..
+            var cg = this.eventTmpl.append(ctr,Roo.apply({
+                fccls : cls
+                
+            }, ev.data) , true);
+            
+            
+            cg.on('mouseenter' ,this.onEventEnter, this, ev);
+            cg.on('mouseleave' ,this.onEventLeave, this, ev);
+            cg.on('click', this.onEventClick, this, ev);
+            
+            ev.els.push(cg);
+            
+            var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
+            var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
+            //Roo.log(cg);
+             
+            cg.setXY([sbox.x +2, sbox.y +(ev.row * 20)]);    
+            cg.setWidth(ebox.right - sbox.x -2);
+        }
+    },
+    
+    renderEvents: function()
+    {   
+        // first make sure there is enough space..
+        
+        if (!this.eventTmpl) {
+            this.eventTmpl = new Roo.Template(
+                '<div class="roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable {fccls} {cls}"  style="position: absolute" unselectable="on">' +
+                    '<div class="fc-event-inner">' +
+                        '<span class="fc-event-time">{time}</span>' +
+                        '<span class="fc-event-title" qtip="{qtip}">{title}</span>' +
+                    '</div>' +
+                    '<div class="ui-resizable-heandle ui-resizable-e">&nbsp;&nbsp;&nbsp;</div>' +
+                '</div>'
+            );
+                
+        }
+               
+        
+        
+        this.cells.each(function(c) {
+            //Roo.log(c.select('.fc-day-content div',true).first());
+            c.select('.fc-day-content div',true).first().setHeight(Math.max(34, (c.rows || 1) * 20));
+        });
+        
+        var ctr = this.view.el.select('.fc-event-container',true).first();
+        
+        var cls;
+        this.eventStore.each(function(ev){
+            
+            this.renderEvent(ev);
+             
+             
+        }, this);
+        this.view.layout();
+        
+    },
+    
+    onEventEnter: function (e, el,event,d) {
+        this.fireEvent('evententer', this, el, event);
+    },
+    
+    onEventLeave: function (e, el,event,d) {
+        this.fireEvent('eventleave', this, el, event);
+    },
+    
+    onEventClick: function (e, el,event,d) {
+        this.fireEvent('eventclick', this, el, event);
+    },
+    
+    onMonthChange: function () {
+        this.store.load();
+    },
+    
+    onLoad: function () {
+        
+        //Roo.log('calendar onload');
+//         
+        if(this.eventStore.getCount() > 0){
+            
+           
+            
+            this.eventStore.each(function(d){
+                
+                
+                // FIXME..
+                var add =   d.data;
+                if (typeof(add.end_dt) == 'undefined')  {
+                    Roo.log("Missing End time in calendar data: ");
+                    Roo.log(d);
+                    return;
+                }
+                if (typeof(add.start_dt) == 'undefined')  {
+                    Roo.log("Missing Start time in calendar data: ");
+                    Roo.log(d);
+                    return;
+                }
+                add.start_dt = typeof(add.start_dt) == 'string' ? Date.parseDate(add.start_dt,'Y-m-d H:i:s') : add.start_dt,
+                add.end_dt = typeof(add.end_dt) == 'string' ? Date.parseDate(add.end_dt,'Y-m-d H:i:s') : add.end_dt,
+                add.id = add.id || d.id;
+                add.title = add.title || '??';
+                
+                this.addItem(d);
+                
+             
+            },this);
+        }
+        
+        this.renderEvents();
+    }
+    
+
+});
+/*
+ grid : {
+                xtype: 'Grid',
+                xns: Roo.grid,
+                listeners : {
+                    render : function ()
+                    {
+                        _this.grid = this;
+                        
+                        if (!this.view.el.hasClass('course-timesheet')) {
+                            this.view.el.addClass('course-timesheet');
+                        }
+                        if (this.tsStyle) {
+                            this.ds.load({});
+                            return; 
+                        }
+                        Roo.log('width');
+                        Roo.log(_this.grid.view.el.getWidth());
+                        
+                        
+                        this.tsStyle =  Roo.util.CSS.createStyleSheet({
+                            '.course-timesheet .x-grid-row' : {
+                                height: '80px'
+                            },
+                            '.x-grid-row td' : {
+                                'vertical-align' : 0
+                            },
+                            '.course-edit-link' : {
+                                'color' : 'blue',
+                                'text-overflow' : 'ellipsis',
+                                'overflow' : 'hidden',
+                                'white-space' : 'nowrap',
+                                'cursor' : 'pointer'
+                            },
+                            '.sub-link' : {
+                                'color' : 'green'
+                            },
+                            '.de-act-sup-link' : {
+                                'color' : 'purple',
+                                'text-decoration' : 'line-through'
+                            },
+                            '.de-act-link' : {
+                                'color' : 'red',
+                                'text-decoration' : 'line-through'
+                            },
+                            '.course-timesheet .course-highlight' : {
+                                'border-top-style': 'dashed !important',
+                                'border-bottom-bottom': 'dashed !important'
+                            },
+                            '.course-timesheet .course-item' : {
+                                'font-family'   : 'tahoma, arial, helvetica',
+                                'font-size'     : '11px',
+                                'overflow'      : 'hidden',
+                                'padding-left'  : '10px',
+                                'padding-right' : '10px',
+                                'padding-top' : '10px' 
+                            }
+                            
+                        }, Roo.id());
+                                this.ds.load({});
+                    }
+                },
+                autoWidth : true,
+                monitorWindowResize : false,
+                cellrenderer : function(v,x,r)
+                {
+                    return v;
+                },
+                sm : {
+                    xtype: 'CellSelectionModel',
+                    xns: Roo.grid
+                },
+                dataSource : {
+                    xtype: 'Store',
+                    xns: Roo.data,
+                    listeners : {
+                        beforeload : function (_self, options)
+                        {
+                            options.params = options.params || {};
+                            options.params._month = _this.monthField.getValue();
+                            options.params.limit = 9999;
+                            options.params['sort'] = 'when_dt';    
+                            options.params['dir'] = 'ASC';    
+                            this.proxy.loadResponse = this.loadResponse;
+                            Roo.log("load?");
+                            //this.addColumns();
+                        },
+                        load : function (_self, records, options)
+                        {
+                            _this.grid.view.el.select('.course-edit-link', true).on('click', function() {
+                                // if you click on the translation.. you can edit it...
+                                var el = Roo.get(this);
+                                var id = el.dom.getAttribute('data-id');
+                                var d = el.dom.getAttribute('data-date');
+                                var t = el.dom.getAttribute('data-time');
+                                //var id = this.child('span').dom.textContent;
+                                
+                                //Roo.log(this);
+                                Pman.Dialog.CourseCalendar.show({
+                                    id : id,
+                                    when_d : d,
+                                    when_t : t,
+                                    productitem_active : id ? 1 : 0
+                                }, function() {
+                                    _this.grid.ds.load({});
+                                });
+                           
+                           });
+                           
+                           _this.panel.fireEvent('resize', [ '', '' ]);
+                        }
+                    },
+                    loadResponse : function(o, success, response){
+                            // this is overridden on before load..
+                            
+                            Roo.log("our code?");	
+                            //Roo.log(success);
+                            //Roo.log(response)
+                            delete this.activeRequest;
+                            if(!success){
+                                this.fireEvent("loadexception", this, o, response);
+                                o.request.callback.call(o.request.scope, null, o.request.arg, false);
+                                return;
+                            }
+                            var result;
+                            try {
+                                result = o.reader.read(response);
+                            }catch(e){
+                                Roo.log("load exception?");
+                                this.fireEvent("loadexception", this, o, response, e);
+                                o.request.callback.call(o.request.scope, null, o.request.arg, false);
+                                return;
+                            }
+                            Roo.log("ready...");        
+                            // loop through result.records;
+                            // and set this.tdate[date] = [] << array of records..
+                            _this.tdata  = {};
+                            Roo.each(result.records, function(r){
+                                //Roo.log(r.data);
+                                if(typeof(_this.tdata[r.data.when_dt.format('j')]) == 'undefined'){
+                                    _this.tdata[r.data.when_dt.format('j')] = [];
+                                }
+                                _this.tdata[r.data.when_dt.format('j')].push(r.data);
+                            });
+                            
+                            //Roo.log(_this.tdata);
+                            
+                            result.records = [];
+                            result.totalRecords = 6;
+                    
+                            // let's generate some duumy records for the rows.
+                            //var st = _this.dateField.getValue();
+                            
+                            // work out monday..
+                            //st = st.add(Date.DAY, -1 * st.format('w'));
+                            
+                            var date = Date.parseDate(_this.monthField.getValue(), "Y-m-d");
+                            
+                            var firstOfMonth = date.getFirstDayOfMonth();
+                            var days = date.getDaysInMonth();
+                            var d = 1;
+                            var firstAdded = false;
+                            for (var i = 0; i < result.totalRecords ; i++) {
+                                //var d= st.add(Date.DAY, i);
+                                var row = {};
+                                var added = 0;
+                                for(var w = 0 ; w < 7 ; w++){
+                                    if(!firstAdded && firstOfMonth != w){
+                                        continue;
+                                    }
+                                    if(d > days){
+                                        continue;
+                                    }
+                                    firstAdded = true;
+                                    var dd = (d > 0 && d < 10) ? "0"+d : d;
+                                    row['weekday'+w] = String.format(
+                                                    '<span style="font-size: 16px;"><b>{0}</b></span>'+
+                                                    '<span class="course-edit-link" style="color:blue;" data-id="0" data-date="{1}"> Add New</span>',
+                                                    d,
+                                                    date.format('Y-m-')+dd
+                                                );
+                                    added++;
+                                    if(typeof(_this.tdata[d]) != 'undefined'){
+                                        Roo.each(_this.tdata[d], function(r){
+                                            var is_sub = '';
+                                            var deactive = '';
+                                            var id = r.id;
+                                            var desc = (r.productitem_id_descrip) ? r.productitem_id_descrip : '';
+                                            if(r.parent_id*1>0){
+                                                is_sub = (r.productitem_id_visible*1 < 1) ? 'de-act-sup-link' :'sub-link';
+                                                id = r.parent_id;
+                                            }
+                                            if(r.productitem_id_visible*1 < 1 && r.parent_id*1 < 1){
+                                                deactive = 'de-act-link';
+                                            }
+                                            
+                                            row['weekday'+w] += String.format(
+                                                    '<br /><span class="course-edit-link {3} {4}" qtip="{5}" data-id="{0}">{2} - {1}</span>',
+                                                    id, //0
+                                                    r.product_id_name, //1
+                                                    r.when_dt.format('h:ia'), //2
+                                                    is_sub, //3
+                                                    deactive, //4
+                                                    desc // 5
+                                            );
+                                        });
+                                    }
+                                    d++;
+                                }
+                                
+                                // only do this if something added..
+                                if(added > 0){ 
+                                    result.records.push(_this.grid.dataSource.reader.newRow(row));
+                                }
+                                
+                                
+                                // push it twice. (second one with an hour..
+                                
+                            }
+                            //Roo.log(result);
+                            this.fireEvent("load", this, o, o.request.arg);
+                            o.request.callback.call(o.request.scope, result, o.request.arg, true);
+                        },
+                    sortInfo : {field: 'when_dt', direction : 'ASC' },
+                    proxy : {
+                        xtype: 'HttpProxy',
+                        xns: Roo.data,
+                        method : 'GET',
+                        url : baseURL + '/Roo/Shop_course.php'
+                    },
+                    reader : {
+                        xtype: 'JsonReader',
+                        xns: Roo.data,
+                        id : 'id',
+                        fields : [
+                            {
+                                'name': 'id',
+                                'type': 'int'
+                            },
+                            {
+                                'name': 'when_dt',
+                                'type': 'string'
+                            },
+                            {
+                                'name': 'end_dt',
+                                'type': 'string'
+                            },
+                            {
+                                'name': 'parent_id',
+                                'type': 'int'
+                            },
+                            {
+                                'name': 'product_id',
+                                'type': 'int'
+                            },
+                            {
+                                'name': 'productitem_id',
+                                'type': 'int'
+                            },
+                            {
+                                'name': 'guid',
+                                'type': 'int'
+                            }
+                        ]
+                    }
+                },
+                toolbar : {
+                    xtype: 'Toolbar',
+                    xns: Roo,
+                    items : [
+                        {
+                            xtype: 'Button',
+                            xns: Roo.Toolbar,
+                            listeners : {
+                                click : function (_self, e)
+                                {
+                                    var sd = Date.parseDate(_this.monthField.getValue(), "Y-m-d");
+                                    sd.setMonth(sd.getMonth()-1);
+                                    _this.monthField.setValue(sd.format('Y-m-d'));
+                                    _this.grid.ds.load({});
+                                }
+                            },
+                            text : "Back"
+                        },
+                        {
+                            xtype: 'Separator',
+                            xns: Roo.Toolbar
+                        },
+                        {
+                            xtype: 'MonthField',
+                            xns: Roo.form,
+                            listeners : {
+                                render : function (_self)
+                                {
+                                    _this.monthField = _self;
+                                   // _this.monthField.set  today
+                                },
+                                select : function (combo, date)
+                                {
+                                    _this.grid.ds.load({});
+                                }
+                            },
+                            value : (function() { return new Date(); })()
+                        },
+                        {
+                            xtype: 'Separator',
+                            xns: Roo.Toolbar
+                        },
+                        {
+                            xtype: 'TextItem',
+                            xns: Roo.Toolbar,
+                            text : "Blue: in-active, green: in-active sup-event, red: de-active, purple: de-active sup-event"
+                        },
+                        {
+                            xtype: 'Fill',
+                            xns: Roo.Toolbar
+                        },
+                        {
+                            xtype: 'Button',
+                            xns: Roo.Toolbar,
+                            listeners : {
+                                click : function (_self, e)
+                                {
+                                    var sd = Date.parseDate(_this.monthField.getValue(), "Y-m-d");
+                                    sd.setMonth(sd.getMonth()+1);
+                                    _this.monthField.setValue(sd.format('Y-m-d'));
+                                    _this.grid.ds.load({});
+                                }
+                            },
+                            text : "Next"
+                        }
+                    ]
+                },
+                 
+            }
+        };
+        
+        *//*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.LoadMask
+ * A simple utility class for generically masking elements while loading data.  If the element being masked has
+ * an underlying {@link Roo.data.Store}, the masking will be automatically synchronized with the store's loading
+ * process and the mask element will be cached for reuse.  For all other elements, this mask will replace the
+ * element's UpdateManager load indicator and will be destroyed after the initial load.
+ * @constructor
+ * Create a new LoadMask
+ * @param {String/HTMLElement/Roo.Element} el The element or DOM node, or its id
+ * @param {Object} config The config object
+ */
+Roo.LoadMask = function(el, config){
+    this.el = Roo.get(el);
+    Roo.apply(this, config);
+    if(this.store){
+        this.store.on('beforeload', this.onBeforeLoad, this);
+        this.store.on('load', this.onLoad, this);
+        this.store.on('loadexception', this.onLoadException, this);
+        this.removeMask = false;
+    }else{
+        var um = this.el.getUpdateManager();
+        um.showLoadIndicator = false; // disable the default indicator
+        um.on('beforeupdate', this.onBeforeLoad, this);
+        um.on('update', this.onLoad, this);
+        um.on('failure', this.onLoad, this);
+        this.removeMask = true;
+    }
+};
+
+Roo.LoadMask.prototype = {
+    /**
+     * @cfg {Boolean} removeMask
+     * True to create a single-use mask that is automatically destroyed after loading (useful for page loads),
+     * False to persist the mask element reference for multiple uses (e.g., for paged data widgets).  Defaults to false.
+     */
+    /**
+     * @cfg {String} msg
+     * The text to display in a centered loading message box (defaults to 'Loading...')
+     */
+    msg : 'Loading...',
+    /**
+     * @cfg {String} msgCls
+     * The CSS class to apply to the loading message element (defaults to "x-mask-loading")
+     */
+    msgCls : 'x-mask-loading',
+
+    /**
+     * Read-only. True if the mask is currently disabled so that it will not be displayed (defaults to false)
+     * @type Boolean
+     */
+    disabled: false,
+
+    /**
+     * Disables the mask to prevent it from being displayed
+     */
+    disable : function(){
+       this.disabled = true;
+    },
+
+    /**
+     * Enables the mask so that it can be displayed
+     */
+    enable : function(){
+        this.disabled = false;
+    },
+    
+    onLoadException : function()
+    {
+        Roo.log(arguments);
+        
+        if (typeof(arguments[3]) != 'undefined') {
+            Roo.MessageBox.alert("Error loading",arguments[3]);
+        } 
+        /*
+        try {
+            if (this.store && typeof(this.store.reader.jsonData.errorMsg) != 'undefined') {
+                Roo.MessageBox.alert("Error loading",this.store.reader.jsonData.errorMsg);
+            }   
+        } catch(e) {
+            
+        }
+        */
+    
+        
+        
+        this.el.unmask(this.removeMask);
+    },
+    // private
+    onLoad : function()
+    {
+        this.el.unmask(this.removeMask);
+    },
+
+    // private
+    onBeforeLoad : function(){
+        if(!this.disabled){
+            this.el.mask(this.msg, this.msgCls);
+        }
+    },
+
+    // private
+    destroy : function(){
+        if(this.store){
+            this.store.un('beforeload', this.onBeforeLoad, this);
+            this.store.un('load', this.onLoad, this);
+            this.store.un('loadexception', this.onLoadException, this);
+        }else{
+            var um = this.el.getUpdateManager();
+            um.un('beforeupdate', this.onBeforeLoad, this);
+            um.un('update', this.onLoad, this);
+            um.un('failure', this.onLoad, this);
+        }
+    }
+};/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+
+/**
+ * @class Roo.XTemplate
+ * @extends Roo.Template
+ * Provides a template that can have nested templates for loops or conditionals. The syntax is:
+<pre><code>
+var t = new Roo.XTemplate(
+	'&lt;select name="{name}"&gt;',
+		'&lt;tpl for="options"&gt;&lt;option value="{value:trim}"&gt;{text:ellipsis(10)}&lt;/option&gt;&lt;/tpl&gt;',
+	'&lt;/select&gt;'
+);
+ 
+// then append, applying the master template values
+ </code></pre>
+ *
+ * Supported features:
+ *
+ *  Tags:
+
+<pre><code>
+      {a_variable} - output encoded.
+      {a_variable.format:("Y-m-d")} - call a method on the variable
+      {a_variable:raw} - unencoded output
+      {a_variable:toFixed(1,2)} - Roo.util.Format."toFixed"
+      {a_variable:this.method_on_template(...)} - call a method on the template object.
+ 
+</code></pre>
+ *  The tpl tag:
+<pre><code>
+        &lt;tpl for="a_variable or condition.."&gt;&lt;/tpl&gt;
+        &lt;tpl if="a_variable or condition"&gt;&lt;/tpl&gt;
+        &lt;tpl exec="some javascript"&gt;&lt;/tpl&gt;
+        &lt;tpl name="named_template"&gt;&lt;/tpl&gt; (experimental)
+  
+        &lt;tpl for="."&gt;&lt;/tpl&gt; - just iterate the property..
+        &lt;tpl for=".."&gt;&lt;/tpl&gt; - iterates with the parent (probably the template) 
+</code></pre>
+ *      
+ */
+Roo.XTemplate = function()
+{
+    Roo.XTemplate.superclass.constructor.apply(this, arguments);
+    if (this.html) {
+        this.compile();
+    }
+};
+
+
+Roo.extend(Roo.XTemplate, Roo.Template, {
+
+    /**
+     * The various sub templates
+     */
+    tpls : false,
+    /**
+     *
+     * basic tag replacing syntax
+     * WORD:WORD()
+     *
+     * // you can fake an object call by doing this
+     *  x.t:(test,tesT) 
+     * 
+     */
+    re : /\{([\w-\.]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?\}/g,
+
+    /**
+     * compile the template
+     *
+     * This is not recursive, so I'm not sure how nested templates are really going to be handled..
+     *
+     */
+    compile: function()
+    {
+        var s = this.html;
+     
+        s = ['<tpl>', s, '</tpl>'].join('');
+    
+        var re     = /<tpl\b[^>]*>((?:(?=([^<]+))\2|<(?!tpl\b[^>]*>))*?)<\/tpl>/,
+            nameRe = /^<tpl\b[^>]*?for="(.*?)"/,
+            ifRe   = /^<tpl\b[^>]*?if="(.*?)"/,
+            execRe = /^<tpl\b[^>]*?exec="(.*?)"/,
+            namedRe = /^<tpl\b[^>]*?name="(\w+)"/,  // named templates..
+            m,
+            id     = 0,
+            tpls   = [];
+    
+        while(true == !!(m = s.match(re))){
+            var forMatch   = m[0].match(nameRe),
+                ifMatch   = m[0].match(ifRe),
+                execMatch   = m[0].match(execRe),
+                namedMatch   = m[0].match(namedRe),
+                
+                exp  = null, 
+                fn   = null,
+                exec = null,
+                name = forMatch && forMatch[1] ? forMatch[1] : '';
+                
+            if (ifMatch) {
+                // if - puts fn into test..
+                exp = ifMatch && ifMatch[1] ? ifMatch[1] : null;
+                if(exp){
+                   fn = new Function('values', 'parent', 'with(values){ return '+(Roo.util.Format.htmlDecode(exp))+'; }');
+                }
+            }
+            
+            if (execMatch) {
+                // exec - calls a function... returns empty if true is  returned.
+                exp = execMatch && execMatch[1] ? execMatch[1] : null;
+                if(exp){
+                   exec = new Function('values', 'parent', 'with(values){ '+(Roo.util.Format.htmlDecode(exp))+'; }');
+                }
+            }
+            
+            
+            if (name) {
+                // for = 
+                switch(name){
+                    case '.':  name = new Function('values', 'parent', 'with(values){ return values; }'); break;
+                    case '..': name = new Function('values', 'parent', 'with(values){ return parent; }'); break;
+                    default:   name = new Function('values', 'parent', 'with(values){ return '+name+'; }');
+                }
+            }
+            var uid = namedMatch ? namedMatch[1] : id;
+            
+            
+            tpls.push({
+                id:     namedMatch ? namedMatch[1] : id,
+                target: name,
+                exec:   exec,
+                test:   fn,
+                body:   m[1] || ''
+            });
+            if (namedMatch) {
+                s = s.replace(m[0], '');
+            } else { 
+                s = s.replace(m[0], '{xtpl'+ id + '}');
+            }
+            ++id;
+        }
+        this.tpls = [];
+        for(var i = tpls.length-1; i >= 0; --i){
+            this.compileTpl(tpls[i]);
+            this.tpls[tpls[i].id] = tpls[i];
+        }
+        this.master = tpls[tpls.length-1];
+        return this;
+    },
+    /**
+     * same as applyTemplate, except it's done to one of the subTemplates
+     * when using named templates, you can do:
+     *
+     * var str = pl.applySubTemplate('your-name', values);
+     *
+     * 
+     * @param {Number} id of the template
+     * @param {Object} values to apply to template
+     * @param {Object} parent (normaly the instance of this object)
+     */
+    applySubTemplate : function(id, values, parent)
+    {
+        
+        
+        var t = this.tpls[id];
+        
+        
+        try { 
+            if(t.test && !t.test.call(this, values, parent)){
+                return '';
+            }
+        } catch(e) {
+            Roo.log("Xtemplate.applySubTemplate 'test': Exception thrown");
+            Roo.log(e.toString());
+            Roo.log(t.test);
+            return ''
+        }
+        try { 
+            
+            if(t.exec && t.exec.call(this, values, parent)){
+                return '';
+            }
+        } catch(e) {
+            Roo.log("Xtemplate.applySubTemplate 'exec': Exception thrown");
+            Roo.log(e.toString());
+            Roo.log(t.exec);
+            return ''
+        }
+        try {
+            var vs = t.target ? t.target.call(this, values, parent) : values;
+            parent = t.target ? values : parent;
+            if(t.target && vs instanceof Array){
+                var buf = [];
+                for(var i = 0, len = vs.length; i < len; i++){
+                    buf[buf.length] = t.compiled.call(this, vs[i], parent);
+                }
+                return buf.join('');
+            }
+            return t.compiled.call(this, vs, parent);
+        } catch (e) {
+            Roo.log("Xtemplate.applySubTemplate : Exception thrown");
+            Roo.log(e.toString());
+            Roo.log(t.compiled);
+            return '';
+        }
+    },
+
+    compileTpl : function(tpl)
+    {
+        var fm = Roo.util.Format;
+        var useF = this.disableFormats !== true;
+        var sep = Roo.isGecko ? "+" : ",";
+        var undef = function(str) {
+            Roo.log("Property not found :"  + str);
+            return '';
+        };
+        
+        var fn = function(m, name, format, args)
+        {
+            //Roo.log(arguments);
+            args = args ? args.replace(/\\'/g,"'") : args;
+            //["{TEST:(a,b,c)}", "TEST", "", "a,b,c", 0, "{TEST:(a,b,c)}"]
+            if (typeof(format) == 'undefined') {
+                format= 'htmlEncode';
+            }
+            if (format == 'raw' ) {
+                format = false;
+            }
+            
+            if(name.substr(0, 4) == 'xtpl'){
+                return "'"+ sep +'this.applySubTemplate('+name.substr(4)+', values, parent)'+sep+"'";
+            }
+            
+            // build an array of options to determine if value is undefined..
+            
+            // basically get 'xxxx.yyyy' then do
+            // (typeof(xxxx) == 'undefined' || typeof(xxx.yyyy) == 'undefined') ?
+            //    (function () { Roo.log("Property not found"); return ''; })() :
+            //    ......
+            
+            var udef_ar = [];
+            var lookfor = '';
+            Roo.each(name.split('.'), function(st) {
+                lookfor += (lookfor.length ? '.': '') + st;
+                udef_ar.push(  "(typeof(" + lookfor + ") == 'undefined')"  );
+            });
+            
+            var udef_st = '((' + udef_ar.join(" || ") +") ? undef('" + name + "') : "; // .. needs )
+            
+            
+            if(format && useF){
+                
+                args = args ? ',' + args : "";
+                 
+                if(format.substr(0, 5) != "this."){
+                    format = "fm." + format + '(';
+                }else{
+                    format = 'this.call("'+ format.substr(5) + '", ';
+                    args = ", values";
+                }
+                
+                return "'"+ sep +   udef_st   +    format + name + args + "))"+sep+"'";
+            }
+             
+            if (args.length) {
+                // called with xxyx.yuu:(test,test)
+                // change to ()
+                return "'"+ sep + udef_st  + name + '(' +  args + "))"+sep+"'";
+            }
+            // raw.. - :raw modifier..
+            return "'"+ sep + udef_st  + name + ")"+sep+"'";
+            
+        };
+        var body;
+        // branched to use + in gecko and [].join() in others
+        if(Roo.isGecko){
+            body = "tpl.compiled = function(values, parent){  with(values) { return '" +
+                   tpl.body.replace(/(\r\n|\n)/g, '\\n').replace(/'/g, "\\'").replace(this.re, fn) +
+                    "';};};";
+        }else{
+            body = ["tpl.compiled = function(values, parent){  with (values) { return ['"];
+            body.push(tpl.body.replace(/(\r\n|\n)/g,
+                            '\\n').replace(/'/g, "\\'").replace(this.re, fn));
+            body.push("'].join('');};};");
+            body = body.join('');
+        }
+        
+        Roo.debug && Roo.log(body.replace(/\\n/,'\n'));
+       
+        /** eval:var:tpl eval:var:fm eval:var:useF eval:var:undef  */
+        eval(body);
+        
+        return this;
+    },
+
+    applyTemplate : function(values){
+        return this.master.compiled.call(this, values, {});
+        //var s = this.subs;
+    },
+
+    apply : function(){
+        return this.applyTemplate.apply(this, arguments);
+    }
+
+ });
+
+Roo.XTemplate.from = function(el){
+    el = Roo.getDom(el);
+    return new Roo.XTemplate(el.value || el.innerHTML);
+};
