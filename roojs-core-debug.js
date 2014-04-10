@@ -15902,7 +15902,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
             // bootstrap... - body..
             this.parent.el = Roo.factory(tree);
         }
-        
+        Roo.log(this.parent.el);
         this.el = this.parent.el.addxtype(tree);
         this.fireEvent('built', this);
         
@@ -16215,7 +16215,6 @@ Roo.apply(Roo.XComponent, {
             
             
             Roo.debug && Roo.log(m);
-            return;
             // not sure if this is supported any more.. - modules that are are just function
             if (typeof(m) == 'function') { 
                 m.call(this);
