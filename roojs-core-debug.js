@@ -15901,8 +15901,9 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
         if (this.parent.el === true) {
             // bootstrap... - body..
             this.parent.el = Roo.factory(tree);
+            Roo.log(this.parent.el);return;
         }
-        Roo.log(this.parent.el);
+        
         this.el = this.parent.el.addxtype(tree);
         this.fireEvent('built', this);
         
