@@ -39499,6 +39499,7 @@ Roo.grid.Calendar = function(container, config){
     if (this.eventStore) {
         this.eventStore= Roo.factory(this.eventStore, Roo.data);
         this.eventStore.on('load',this.onLoad, this);
+        this.eventStore.on('beforeload',this.clearEvents, this);
          
     }
     
@@ -39850,7 +39851,15 @@ Roo.grid.Calendar = function(container, config){
 	     * @param {Calendar} this
 	     * @param {event}
 	     */
-        'eventclick': true
+        'eventclick': true,
+        /**
+	     * @event eventrender
+	     * Fires before each cell is rendered, so you can modify the contents, like cls / title / qtip
+	     * @param {Calendar} this
+	     * @param {data} data to be modified
+	     */
+        'eventrender': true
+        
     });
 
     Roo.grid.Grid.superclass.constructor.call(this);
@@ -40129,10 +40138,10 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
         return ret;
     },
     
-    findCells : function(ev) {
-        var s = ev.start_dt.clone().clearTime().getTime();
+    findCells : function(rec) {
+        var s = rec.data.start_dt.clone().clearTime().getTime();
        // Roo.log(s);
-        var e= ev.end_dt.clone().clearTime().getTime();
+        var e= rec.data.end_dt.clone().clearTime().getTime();
        // Roo.log(e);
         var ret = [];
         this.cells.each(function(c){
@@ -40162,12 +40171,12 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
     },
     
     
-    addItem : function(ev)
+    addItem : function(rec)
     {
         // look for vertical location slot in
-        var cells = this.findCells(ev);
+        var cells = this.findCells(rec);
         
-        ev.row = this.findBestRow(cells);
+        rec.row = this.findBestRow(cells);
         
         // work out the location.
         
@@ -40196,96 +40205,92 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
         }
         
         rows.push(crow);
-        ev.els = [];
-        ev.rows = rows;
-        ev.cells = cells;
+        rec.els = [];
+        rec.rows = rows;
+        rec.cells = cells;
         for (var i = 0; i < cells.length;i++) {
-            cells[i].rows = Math.max(cells[i].rows || 0 , ev.row + 1 );
+            cells[i].rows = Math.max(cells[i].rows || 0 , rec.row + 1 );
             
         }
         
-        this.calevents.push(ev);
+        
     },
     
     clearEvents: function() {
         
-        if(!this.calevents){
+        if (!this.eventStore.getCount()) {
             return;
         }
-        
+        // reset number of rows in cells.
         Roo.each(this.cells.elements, function(c){
             c.rows = 0;
         });
         
-        Roo.each(this.calevents, function(e) {
+        this.eventStore.each(function(e) {
             Roo.each(e.els, function(el) {
                 el.un('mouseenter' ,this.onEventEnter, this);
                 el.un('mouseleave' ,this.onEventLeave, this);
                 el.remove();
             },this);
+            e.els = [];
         },this);
         
     },
     
+    
+    
+    
     renderEvents: function()
     {   
         // first make sure there is enough space..
+        
+        if (!this.eventTmpl) {
+            this.eventTmpl = new Roo.Template(
+                '<div class="roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable {fccls} {cls}"  style="position: absolute" unselectable="on">' +
+                    '<div class="fc-event-inner">' +
+                        '<span class="fc-event-time">{time}</span>' +
+                        '<span class="fc-event-title" qtip="{qtip}">{title}</span>' +
+                    '</div>' +
+                    '<div class="ui-resizable-heandle ui-resizable-e">&nbsp;&nbsp;&nbsp;</div>' +
+                '</div>'
+            );
+                
+        }
+               
+        
         
         this.cells.each(function(c) {
             Roo.log(c.select('.fc-day-content div',true).first());
             c.select('.fc-day-content div',true).first().setHeight(Math.max(34, (c.rows || 1) * 20));
         });
         
-        for (var e = 0; e < this.calevents.length; e++) {
-            var ev = this.calevents[e];
+        var ctr = this.view.el.select('.fc-event-container',true).first();
+        
+        var cls;
+        this.eventStore.each(function(ev){
+            
+            ev.els = [];
             var cells = ev.cells;
             var rows = ev.rows;
+            this.fireEvent('eventrender', this, ev);
             
             for(var i =0; i < rows.length; i++) {
                 
-                 
-                // how many rows should it span..
-                
-                var  cfg = {
-                    cls : 'roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable',
-                    style : 'position: absolute', // left: 387px; width: 121px; top: 359px;
-                    
-                    unselectable : "on",
-                    cn : [
-                        {
-                            cls: 'fc-event-inner',
-                            cn : [
-                                {
-                                  tag:'span',
-                                  cls: 'fc-event-time',
-                                  html : cells.length > 1 ? '' : ev.start_dt.format('h:ia')
-                                },
-                                {
-                                  tag:'span',
-                                  cls: 'fc-event-title',
-                                  html : String.format('{0}', ev.title),
-                                  qtip: String.format('{0} - {1}', ev.title,ev.description || '')
-                                }
-                                
-                                
-                            ]
-                        },
-                        {
-                            cls: 'ui-resizable-handle ui-resizable-e',
-                            html : '&nbsp;&nbsp;&nbsp'
-                        }
-                        
-                    ]
-                };
+                cls = '';
                 if (i == 0) {
-                    cfg.cls += ' fc-event-start';
+                    cls += ' fc-event-start';
                 }
                 if ((i+1) == rows.length) {
-                    cfg.cls += ' fc-event-end';
+                    cls += ' fc-event-end';
                 }
                 
-                var ctr = this.view.el.select('.fc-event-container',true).first();
-                var cg = ctr.createChild(cfg);
+                Roo.log(ev.data);
+                // how many rows should it span..
+                var cg = this.eventTmpl.append(ctr,Roo.apply({
+                    fccls : cls
+                    
+                }, ev.data) , true);
+                
                 
                 cg.on('mouseenter' ,this.onEventEnter, this, ev);
                 cg.on('mouseleave' ,this.onEventLeave, this, ev);
@@ -40296,15 +40301,13 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
                 var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
                 var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
                 //Roo.log(cg);
-                
-                Roo.log()
-                
+                 
                 cg.setXY([sbox.x +2, sbox.y +(ev.row * 20)]);    
                 cg.setWidth(ebox.right - sbox.x -2);
             }
             
             
-        }
+        }, this);
         this.view.layout();
         
     },
@@ -40327,20 +40330,17 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
     
     onLoad: function () {
         
-        this.clearEvents();
         //Roo.log('calendar onload');
-//        
-        this.calevents = [];
-         
+//         
         if(this.eventStore.getCount() > 0){
             
            
             
-            this.eventStore.data.each(function(d){
+            this.eventStore.each(function(d){
                 
                 
                 // FIXME..
-                var add = Roo.apply({}, d.data);
+                var add =   d.data;
                 if (typeof(add.end_dt) == 'undefined')  {
                     Roo.log("Missing End time in calendar data: ");
                     Roo.log(d);
@@ -40355,21 +40355,10 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
                 add.end_dt = typeof(add.end_dt) == 'string' ? Date.parseDate(add.end_dt,'Y-m-d H:i:s') : add.end_dt,
                 add.id = add.id || d.id;
                 add.title = add.title || '??';
-                this.addItem(add);
                 
-            
-                // other than the 'required' coluns, we should just pass the data from the store.
+                this.addItem(d);
                 
-                
-               /*cal.addItem({
-                    id : d.data.id,
-                    start: new Date(d.data.start_dt),
-                    end : new Date(d.data.end_dt),
-                    time : d.data.start_time,
-                    title : d.data.title,
-                    description : d.data.description,
-                    venue : d.data.venue
-                });*/
+             
             },this);
         }
         
