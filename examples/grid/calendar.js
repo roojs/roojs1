@@ -57,7 +57,7 @@ var Example = {
                     rec.data.qtip  = '#' + rec.data.id + ' ' + rec.data.summary;
                     
                     if (rec.data.estimated) {
-                        rec.data.cls = "Greys-q3-6"; // white...
+                        rec.data.cls = "Greys-q3-6"; // grey...
                     }
                     
                     rec.data.cls = "x-fixme";
