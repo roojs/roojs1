@@ -824,7 +824,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
             ev.els = [];
             var cells = ev.cells;
             var rows = ev.rows;
-             
+            this.fireEvent('eventrender', this, ev);
             
             for(var i =0; i < rows.length; i++) {
                 
