@@ -31,6 +31,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
     icon: false,
     glyphicon: false,
     icon: false,
+    active: false
     
     getAutoCreate : function(){
         
