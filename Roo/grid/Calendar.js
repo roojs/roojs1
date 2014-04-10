@@ -816,7 +816,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
             ev.els = [];
             var cells = ev.cells;
             var rows = ev.rows;
-            var rec = ev.rec;
+             
             
             for(var i =0; i < rows.length; i++) {
                 
@@ -833,7 +833,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
                 var cg = this.eventTmpl.append(ctr,Roo.apply({
                     fccls : cls
                     
-                }, rec.data) , true);
+                }, ev.data) , true);
                 
                 
                 cg.on('mouseenter' ,this.onEventEnter, this, ev);
