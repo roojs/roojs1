@@ -15,6 +15,7 @@
  * @cfg {String} glyphicon name of glyphicon
  * @cfg {String} icon name of font awesome icon
  * @cfg {Boolena} active Is item active
+ * @cfg {Boolean} preventDefault (true | false) default true
   
  * @constructor
  * Create a new Navbar Button
@@ -42,6 +43,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
     glyphicon: false,
     icon: false,
     active: false,
+    preventDefault : true,
     
     getAutoCreate : function(){
         
