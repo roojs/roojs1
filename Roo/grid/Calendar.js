@@ -789,6 +789,18 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
         
     },
     
+    clearEvent(ev)
+    {
+        if (ev.els) {
+            Roo.each(e.els, function(el) {
+                el.un('mouseenter' ,this.onEventEnter, this);
+                el.un('mouseleave' ,this.onEventLeave, this);
+                el.remove();
+            },this);
+            e.els = [];
+        }
+    }
+    
     
     renderEvent : function(ev,ctr) {
         if (!ctr) {
