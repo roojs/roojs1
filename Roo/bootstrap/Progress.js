@@ -13,6 +13,8 @@
  * @cfg {Number} aria_valuemin aria-value min
  * @cfg {Number} aria_valuemax aria-value max
  * @cfg {String} label label for the progress bar
+ * @cfg {String} panel (success | info | warning | danger )
+ * 
  * 
  * @constructor
  * Create a new Progress
