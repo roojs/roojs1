@@ -881,7 +881,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
             
            
             
-            this.eventStore.data.each(function(d){
+            this.eventStore.each(function(d){
                 
                 
                 // FIXME..
