@@ -1894,7 +1894,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
         }
         
         if (['tabs','pills'].indexOf(this.parent().type)!==-1) {
-            Roo.log(this.parent().el);
+            
             Roo.each(this.parent().el.select('.active',true).elements, function(v){
                 v.removeClass('active');
             })
@@ -1903,9 +1903,8 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
             
             if(this.href && this.href.substring(0,1) == '#'){
                 var tab = Roo.select('[tabId=' + this.href + ']', true).first();
-                Roo.log(tab);
-                Roo.log(tab.findParent('.tab-content', 0, true));
-                Roo.each(tab.parentNode.select('.active', true).elements, function(v){
+                
+                Roo.each(tab.findParent('.tab-content', 0, true)select('.active', true).elements, function(v){
                     v.removeClass('active');
                 });
                 
