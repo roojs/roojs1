@@ -1587,7 +1587,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
             Roo.log('Property \'bar\' in of Navbar must be either true or false')
         }
 	
-        cfg.cn = [
+        cfg = [
             {
                 cls: 'nav',
                 tag : 'ul'
@@ -1595,20 +1595,20 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         ];
         
         if (['tabs','pills'].indexOf(this.type)!==-1) {
-            cfg.cn[0].cls += ' nav-' + this.type
+            cfg.cls += ' nav-' + this.type
         } else {
             if (this.type!=='nav') {
             Roo.log('nav type must be nav/tabs/pills')
             }
-            cfg.cn[0].cls += ' navbar-nav'
+            cfg.cls += ' navbar-nav'
         }
         
         if (['stacked','justified'].indexOf(this.arrangement)!==-1) {
-            cfg.cn[0].cls += ' nav-' + this.arrangement;
+            cfg.cls += ' nav-' + this.arrangement;
         }
         
         if (this.align === 'right') {
-            cfg.cn[0].cls += ' navbar-right';
+            cfg.cls += ' navbar-right';
         }
         if (this.inverse) {
             cfg.cls += ' navbar-inverse';
