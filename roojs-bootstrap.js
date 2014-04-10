@@ -53,7 +53,7 @@ Roo.bootstrap.Navbar.Item=function(A){Roo.bootstrap.Navbar.Item.superclass.const
 A={tag:'li'};if(this.active){A.cls=typeof(A.cls)=='undefined'?'active':A.cls+' active';}
 A.cn=[{tag:'p',html:'Text'}];if(this.glyphicon){if(A.html){A.html=' '+this.html};A.cn=[{tag:'span',cls:'glyphicon glyphicon-'+this.glyphicon}];}
 A.cn[0].html=this.html||A.cn[0].html;if(this.menu){A.cn[0].tag='a';A.cn[0].href='#';A.cn[0].html+=" <span class='caret'></span>";}else {A.cn[0].tag='a';A.cn[0].href=this.href||'#';A.cn[0].html=this.html;}if(this.badge!==''){A.cn[0].cn=[A.cn[0].html+' ',{tag:'span',cls:'badge',html:this.badge}];A.cn[0].html=''}if(this.icon){A.cn[0].html='<i class="'+this.icon+'"></i><span>'+A.cn[0].html||this.html+'</span>'}return A;},initEvents:function(){this.el.select('a',true).on('click',this.onClick,this);},onClick:function(e){Roo.log('item on click ');if(this.preventDefault){e.preventDefault();}if(['tabs','pills'].indexOf(this.parent().type)!==-1){Roo.each(this.parent().el.select('.active',true).elements,function(v){v.removeClass('active');})
-this.el.addClass('active');}this.fireEvent('click',this,e);}});
+this.el.addClass('active');if(this.href&&this.href.substring(0,1)=='#'){var A=Roo.select('tabId='+this.href,true).first();Roo.each(A.parent().select('.active',true).elements,function(v){v.removeClass('active');});A.addClass('active');}}this.fireEvent('click',this,e);}});
 //Roo/bootstrap/Row.js
 Roo.bootstrap.Row=function(A){Roo.bootstrap.Row.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.Row,Roo.bootstrap.Component,{getAutoCreate:function(){return {cls:'row clearfix'};}});
 //Roo/bootstrap/Element.js
