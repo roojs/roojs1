@@ -14,6 +14,7 @@
  * @cfg {String} badge text inside badge
  * @cfg {String} glyphicon name of glyphicon
  * @cfg {String} icon name of font awesome icon
+ * @cfg {Boolena} active Item is active?
   
  * @constructor
  * Create a new Navbar Button
@@ -31,7 +32,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
     icon: false,
     glyphicon: false,
     icon: false,
-    active: false
+    active: false,
     
     getAutoCreate : function(){
         
