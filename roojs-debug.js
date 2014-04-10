@@ -16215,6 +16215,7 @@ Roo.apply(Roo.XComponent, {
             
             
             Roo.debug && Roo.log(m);
+            return;
             // not sure if this is supported any more.. - modules that are are just function
             if (typeof(m) == 'function') { 
                 m.call(this);
