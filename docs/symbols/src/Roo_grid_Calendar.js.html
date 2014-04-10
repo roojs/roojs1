@@ -51,6 +51,7 @@
     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.eventStore</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-var">this.eventStore</span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.eventStore</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.data</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.eventStore.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'load'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.eventStore.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforeload'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.clearEvents</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
          
     }
     
@@ -402,7 +403,15 @@
 	     * @param {Calendar} this
 	     * @param {event}
 	     */
-        </span><span class="jsdoc-string">'eventclick'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-string">'eventclick'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+	     * @event eventrender
+	     * Fires before each cell is rendered, so you can modify the contents, like cls / title / qtip
+	     * @param {Calendar} this
+	     * @param {data} data to be modified
+	     */
+        </span><span class="jsdoc-string">'eventrender'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        
     </span><span class="jsdoc-syntax">});
 
     </span><span class="jsdoc-var">Roo.grid.Grid.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
@@ -412,6 +421,24 @@
         (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() { </span><span class="jsdoc-var">this.setDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">()); })</span><span class="jsdoc-var">.defer</span><span class="jsdoc-syntax">(100,</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">//default today..
 
     </span><span class="jsdoc-syntax">},</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">Roo.grid.Calendar.style</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">Roo.grid.Calendar.style </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.util.CSS.createStyleSheet</span><span class="jsdoc-syntax">({
+            
+            
+            </span><span class="jsdoc-string">'.x-grid-cal .x-grid-col' </span><span class="jsdoc-syntax">:  {
+                </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'auto !important'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-string">'vertical-align'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'top'
+            </span><span class="jsdoc-syntax">},
+            </span><span class="jsdoc-string">'.x-grid-cal  .fc-event-hori' </span><span class="jsdoc-syntax">: {
+                </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'14px'
+            </span><span class="jsdoc-syntax">}
+             
+            
+        }, </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">());
+    }
+
+    
     
 };
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.grid.Calendar</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.grid.Grid</span><span class="jsdoc-syntax">, {
@@ -663,10 +690,10 @@
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
     },
     
-    </span><span class="jsdoc-var">findCells </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">) {
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.start_dt.clone</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.clearTime</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getTime</span><span class="jsdoc-syntax">();
+    </span><span class="jsdoc-var">findCells </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rec</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">rec.data.start_dt.clone</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.clearTime</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getTime</span><span class="jsdoc-syntax">();
        </span><span class="jsdoc-comment">// Roo.log(s);
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.end_dt.clone</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.clearTime</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getTime</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">rec.data.end_dt.clone</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.clearTime</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getTime</span><span class="jsdoc-syntax">();
        </span><span class="jsdoc-comment">// Roo.log(e);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= [];
         </span><span class="jsdoc-var">this.cells.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">){
@@ -696,12 +723,12 @@
     },
     
     
-    </span><span class="jsdoc-var">addItem </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">)
+    </span><span class="jsdoc-var">addItem </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rec</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-comment">// look for vertical location slot in
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cells </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.findCells</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cells </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.findCells</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rec</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-var">ev.row </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.findBestRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">rec.row </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.findBestRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-comment">// work out the location.
         
@@ -730,115 +757,128 @@
         }
         
         </span><span class="jsdoc-var">rows.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">crow</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">ev.els </span><span class="jsdoc-syntax">= [];
-        </span><span class="jsdoc-var">ev.rows </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">rows</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">ev.cells </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">rec.els </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-var">rec.rows </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">rows</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">rec.cells </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">cells.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
-            </span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.rows </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.rows </span><span class="jsdoc-syntax">|| 0 , </span><span class="jsdoc-var">ev.row </span><span class="jsdoc-syntax">+ 1 );
+            </span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.rows </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.rows </span><span class="jsdoc-syntax">|| 0 , </span><span class="jsdoc-var">rec.row </span><span class="jsdoc-syntax">+ 1 );
             
         }
         
-        </span><span class="jsdoc-var">this.calevents.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">);
+        
     },
     
     </span><span class="jsdoc-var">clearEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.calevents</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.eventStore.getCount</span><span class="jsdoc-syntax">()) {
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
-        
+        </span><span class="jsdoc-comment">// reset number of rows in cells.
         </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cells.elements</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">c.rows </span><span class="jsdoc-syntax">= 0;
         });
         
-        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.calevents</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.els</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.eventStore.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.clearEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        },</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+    },
+    
+    </span><span class="jsdoc-var">clearEvent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev.els</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev.els</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">el.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseenter' </span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.onEventEnter</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">el.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseleave' </span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.onEventLeave</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">el.remove</span><span class="jsdoc-syntax">();
             },</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-        },</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">ev.els </span><span class="jsdoc-syntax">= [];
+        }
+    },
+    
+    
+    </span><span class="jsdoc-var">renderEvent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">ctr</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">ctr</span><span class="jsdoc-syntax">) {
+             </span><span class="jsdoc-var">ctr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.view.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-event-container'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        }
         
+         
+        </span><span class="jsdoc-var">this.clearEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-comment">//code
+       
+        
+        
+        </span><span class="jsdoc-var">ev.els </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cells </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.cells</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rows </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.rows</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'eventrender'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">rows.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">== 0) {
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' fc-event-start'</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">+1) == </span><span class="jsdoc-var">rows.length</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' fc-event-end'</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-comment">//Roo.log(ev.data);
+            // how many rows should it span..
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.eventTmpl.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ctr</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">fccls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cls
+                
+            </span><span class="jsdoc-syntax">}, </span><span class="jsdoc-var">ev.data</span><span class="jsdoc-syntax">) , </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            
+            
+            </span><span class="jsdoc-var">cg.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseenter' </span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.onEventEnter</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">cg.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseleave' </span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.onEventLeave</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">cg.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onEventClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-var">ev.els.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cg</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sbox </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">rows</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.start.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-day-content'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getBox</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ebox </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">rows</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.end.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-day-content'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getBox</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-comment">//Roo.log(cg);
+             
+            </span><span class="jsdoc-var">cg.setXY</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">sbox.x </span><span class="jsdoc-syntax">+2, </span><span class="jsdoc-var">sbox.y </span><span class="jsdoc-syntax">+(</span><span class="jsdoc-var">ev.row </span><span class="jsdoc-syntax">* 20)]);    
+            </span><span class="jsdoc-var">cg.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ebox.right </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">sbox.x </span><span class="jsdoc-syntax">-2);
+        }
     },
     
     </span><span class="jsdoc-var">renderEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {   
         </span><span class="jsdoc-comment">// first make sure there is enough space..
         
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.eventTmpl</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.eventTmpl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">(
+                </span><span class="jsdoc-string">'&lt;div class=&quot;roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable {fccls} {cls}&quot;  style=&quot;position: absolute&quot; unselectable=&quot;on&quot;&gt;' </span><span class="jsdoc-syntax">+
+                    </span><span class="jsdoc-string">'&lt;div class=&quot;fc-event-inner&quot;&gt;' </span><span class="jsdoc-syntax">+
+                        </span><span class="jsdoc-string">'&lt;span class=&quot;fc-event-time&quot;&gt;{time}&lt;/span&gt;' </span><span class="jsdoc-syntax">+
+                        </span><span class="jsdoc-string">'&lt;span class=&quot;fc-event-title&quot; qtip=&quot;{qtip}&quot;&gt;{title}&lt;/span&gt;' </span><span class="jsdoc-syntax">+
+                    </span><span class="jsdoc-string">'&lt;/div&gt;' </span><span class="jsdoc-syntax">+
+                    </span><span class="jsdoc-string">'&lt;div class=&quot;ui-resizable-heandle ui-resizable-e&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/div&gt;' </span><span class="jsdoc-syntax">+
+                </span><span class="jsdoc-string">'&lt;/div&gt;'
+            </span><span class="jsdoc-syntax">);
+                
+        }
+               
+        
+        
         </span><span class="jsdoc-var">this.cells.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-day-content div'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">());
+            </span><span class="jsdoc-comment">//Roo.log(c.select('.fc-day-content div',true).first());
             </span><span class="jsdoc-var">c.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-day-content div'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(34, (</span><span class="jsdoc-var">c.rows </span><span class="jsdoc-syntax">|| 1) * 20));
         });
         
-        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.calevents.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">++) {
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.calevents</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">];
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cells </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.cells</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rows </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.rows</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ctr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.view.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-event-container'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.eventStore.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">){
             
-            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">rows.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
-                
-                 
-                </span><span class="jsdoc-comment">// how many rows should it span..
-                
-                </span><span class="jsdoc-keyword">var  </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
-                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'position: absolute'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// left: 387px; width: 121px; top: 359px;
-                    
-                    </span><span class="jsdoc-var">unselectable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;on&quot;</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
-                        {
-                            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fc-event-inner'</span><span class="jsdoc-syntax">,
-                            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
-                                {
-                                  </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
-                                  </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fc-event-time'</span><span class="jsdoc-syntax">,
-                                  </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cells.length </span><span class="jsdoc-syntax">&gt; 1 ? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">ev.start_dt.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'h:ia'</span><span class="jsdoc-syntax">)
-                                },
-                                {
-                                  </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
-                                  </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fc-event-title'</span><span class="jsdoc-syntax">,
-                                  </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'{0}'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ev.title</span><span class="jsdoc-syntax">),
-                                  </span><span class="jsdoc-var">qtip</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'{0} - {1}'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ev.title</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">ev.description </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">)
-                                }
-                                
-                                
-                            ]
-                        },
-                        {
-                            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'ui-resizable-handle ui-resizable-e'</span><span class="jsdoc-syntax">,
-                            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&amp;nbsp;&amp;nbsp;&amp;nbsp'
-                        </span><span class="jsdoc-syntax">}
-                        
-                    ]
-                };
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">== 0) {
-                    </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' fc-event-start'</span><span class="jsdoc-syntax">;
-                }
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">+1) == </span><span class="jsdoc-var">rows.length</span><span class="jsdoc-syntax">) {
-                    </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' fc-event-end'</span><span class="jsdoc-syntax">;
-                }
-                
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ctr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.view.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-event-container'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ctr.createChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
-                
-                </span><span class="jsdoc-var">cg.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseenter' </span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.onEventEnter</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">cg.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseleave' </span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.onEventLeave</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">cg.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onEventClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">);
-                
-                </span><span class="jsdoc-var">ev.els.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cg</span><span class="jsdoc-syntax">);
-                
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sbox </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">rows</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.start.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-day-content'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getBox</span><span class="jsdoc-syntax">();
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ebox </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">rows</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.end.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-day-content'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getBox</span><span class="jsdoc-syntax">();
-                </span><span class="jsdoc-comment">//Roo.log(cg);
-                
-                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">()
-                
-                </span><span class="jsdoc-var">cg.setXY</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">sbox.x </span><span class="jsdoc-syntax">+2, </span><span class="jsdoc-var">sbox.y </span><span class="jsdoc-syntax">+(</span><span class="jsdoc-var">ev.row </span><span class="jsdoc-syntax">* 20)]);    
-                </span><span class="jsdoc-var">cg.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ebox.right </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">sbox.x </span><span class="jsdoc-syntax">-2);
-            }
-            
-            
-        }
+            </span><span class="jsdoc-var">this.renderEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">);
+             
+             
+        }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.view.layout</span><span class="jsdoc-syntax">();
         
     },
@@ -861,20 +901,17 @@
     
     </span><span class="jsdoc-var">onLoad</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
         
-        </span><span class="jsdoc-var">this.clearEvents</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-comment">//Roo.log('calendar onload');
-//        
-        </span><span class="jsdoc-var">this.calevents </span><span class="jsdoc-syntax">= [];
-         
+//         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.eventStore.getCount</span><span class="jsdoc-syntax">() &gt; 0){
             
            
             
-            </span><span class="jsdoc-var">this.eventStore.data.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.eventStore.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">){
                 
                 
                 </span><span class="jsdoc-comment">// FIXME..
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">add </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">d.data</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">add </span><span class="jsdoc-syntax">=   </span><span class="jsdoc-var">d.data</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">add.end_dt</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">)  {
                     </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Missing End time in calendar data: &quot;</span><span class="jsdoc-syntax">);
                     </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">);
@@ -889,22 +926,11 @@
                 </span><span class="jsdoc-var">add.end_dt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">add.end_dt</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Date.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">add.end_dt</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'Y-m-d H:i:s'</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">add.end_dt</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">add.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">add.id </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">d.id</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">add.title </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">add.title </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'??'</span><span class="jsdoc-syntax">;
-                </span><span class="jsdoc-var">this.addItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">add</span><span class="jsdoc-syntax">);
                 
-            
-                </span><span class="jsdoc-comment">// other than the 'required' coluns, we should just pass the data from the store.
+                </span><span class="jsdoc-var">this.addItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">);
                 
-                
-               /*cal.addItem({
-                    id : d.data.id,
-                    start: new Date(d.data.start_dt),
-                    end : new Date(d.data.end_dt),
-                    time : d.data.start_time,
-                    title : d.data.title,
-                    description : d.data.description,
-                    venue : d.data.venue
-                });*/
-            </span><span class="jsdoc-syntax">},</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+             
+            },</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
         
         </span><span class="jsdoc-var">this.renderEvents</span><span class="jsdoc-syntax">();
