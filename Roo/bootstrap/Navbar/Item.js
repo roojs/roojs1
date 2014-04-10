@@ -135,8 +135,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
         if (this.icon) {
             cfg.cn[0].html = '<i class="'+this.icon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
         }
-        Roo.log('cfg!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-	Roo.log(cfg);
+        
         return cfg;
     },
     initEvents: function() {
