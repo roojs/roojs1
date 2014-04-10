@@ -789,7 +789,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
         
     },
     
-    clearEvent(ev)
+    clearEvent : function(ev)
     {
         if (ev.els) {
             Roo.each(e.els, function(el) {
