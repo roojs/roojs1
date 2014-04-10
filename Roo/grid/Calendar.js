@@ -795,40 +795,10 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
                     '</div>' +
                     '<div class="ui-resizable-heandle ui-resizable-e">&nbsp;&nbsp;&nbsp;</div>' +
                 '</div>'
-            )
+            );
                 
         }
-                var  cfg = {
-                    cls : 'roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable',
-                    style : 'position: absolute', // left: 387px; width: 121px; top: 359px;
-                    
-                    unselectable : "on",
-                    cn : [
-                        {
-                            cls: 'fc-event-inner',
-                            cn : [
-                                {
-                                  tag:'span',
-                                  cls: 'fc-event-time',
-                                  html : cells.length > 1 ? '' : ev.start_dt.format('h:ia')
-                                },
-                                {
-                                  tag:'span',
-                                  cls: 'fc-event-title',
-                                  html : String.format('{0}', ev.title),
-                                  qtip: String.format('{0} - {1}', ev.title,ev.description || '')
-                                }
-                                
-                                
-                            ]
-                        },
-                        {
-                            cls: 'ui-resizable-handle ui-resizable-e',
-                            html : '&nbsp;&nbsp;&nbsp'
-                        }
-                        
-                    ]
-                };
+               
         
         
         this.cells.each(function(c) {
