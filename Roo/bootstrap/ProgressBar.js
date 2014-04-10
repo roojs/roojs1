@@ -43,8 +43,7 @@ Roo.extend(Roo.bootstrap.ProgressBar, Roo.bootstrap.Component,  {
         
         var cfg = {
             tag: 'div',
-            cls: 'progress-bar',
-            style: 'width:' + (this.aria_valuenow / this.aria_valuemax )
+            cls: 'progress-bar'
         };
         
         if(this.sr_only){
