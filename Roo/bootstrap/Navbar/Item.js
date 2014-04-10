@@ -161,7 +161,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
         if(this.preventDefault){
             e.preventDefault();
         }
-        
+        Roo.log(this.parent().parent().type);
         if (['tabs','pills'].indexOf(this.parent().parent().type)!==-1) {
             Roo.log('tabs or pills on click');
         } 
