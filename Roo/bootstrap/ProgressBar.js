@@ -36,7 +36,6 @@ Roo.extend(Roo.bootstrap.ProgressBar, Roo.bootstrap.Component,  {
     panel : false,
     role : false,
     sr_only: false,
-    width : false,
     
     getAutoCreate : function(){
         
