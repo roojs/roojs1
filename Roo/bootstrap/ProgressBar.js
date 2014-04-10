@@ -40,7 +40,7 @@ Roo.extend(Roo.bootstrap.ProgressBar, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         var cfg = {
             tag: 'div',
-            cls: 'progress-bar'
+            cls: 'progress-bar',
         };
         
         if(this.sr_only){
