@@ -788,7 +788,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
         
         if (!this.eventTmpl) {
             this.eventTmpl = new Roo.Template(
-                '<div class="roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable {cls}"  style="position: absolute" unselectable="on">' +
+                '<div class="roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable {fccls} {cls}"  style="position: absolute" unselectable="on">' +
                     '<div class="fc-event-inner">' +
                         '<span class="fc-event-time">{time}</span>', +
                         '<span class="fc-event-title" qtip="{qtip}">{title}</span>', +
@@ -813,7 +813,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
             
             for(var i =0; i < rows.length; i++) {
                 
-                 
+                Roo.a
                 // how many rows should it span..
                 
                 var  cfg = {
