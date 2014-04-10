@@ -36,6 +36,8 @@ Roo.extend(Roo.bootstrap.Progress, Roo.bootstrap.Component,  {
     label : false,
     panel : false,
     role : false,
+    striped : false,
+    active: false,
     
     getAutoCreate : function(){
         var cfg = {
@@ -48,7 +50,15 @@ Roo.extend(Roo.bootstrap.Progress, Roo.bootstrap.Component,  {
                 }
             ]
         };
+        
+        if(this.striped){
+            cfg.cls += ' progress-striped';
+        }
       
+        if(this.active){
+            cfg.cls += ' active';
+        }
+        
         if(this.role){
             cfg.cn[0].role = this.role;
         }
@@ -62,7 +72,7 @@ Roo.extend(Roo.bootstrap.Progress, Roo.bootstrap.Component,  {
         }
         
         if(this.panel){
-            cfg.cn[0].cls += 'progress-bar-' + this.panel;
+            cfg.cn[0].cls += ' progress-bar-' + this.panel;
         }
         
         return cfg;
