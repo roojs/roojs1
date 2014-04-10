@@ -885,7 +885,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
                 
                 
                 // FIXME..
-                var add = Roo.apply({}, d.data);
+                var add =   d.data;
                 if (typeof(add.end_dt) == 'undefined')  {
                     Roo.log("Missing End time in calendar data: ");
                     Roo.log(d);
@@ -896,7 +896,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
                     Roo.log(d);
                     return;
                 }
-                add.start_dt = typeof(add.start_dt) == 'string' ? Date.parseDate(add.start_dt,'Y-m-d H:i:s') : add.start_dt,
+                d.data.start_dt = typeof(add.start_dt) == 'string' ? Date.parseDate(add.start_dt,'Y-m-d H:i:s') : add.start_dt,
                 add.end_dt = typeof(add.end_dt) == 'string' ? Date.parseDate(add.end_dt,'Y-m-d H:i:s') : add.end_dt,
                 add.id = add.id || d.id;
                 add.title = add.title || '??';
