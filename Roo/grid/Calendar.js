@@ -863,8 +863,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
             
             this.renderEvent(ev);
              
-            
-            
+             
         }, this);
         this.view.layout();
         
