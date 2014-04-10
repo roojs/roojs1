@@ -8380,7 +8380,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
  * 
  */
 
-
+Roo.bootstrap = Roo.bootstrap || {};
 /**
  * @class Roo.bootstrap.Calendar
  * @extends Roo.bootstrap.Component
@@ -8390,6 +8390,8 @@ Roo.extend(Roo.View, Roo.util.Observable, {
  * Create a new Container
  * @param {Object} config The config object
  */
+
+
 
 Roo.bootstrap.Calendar = function(config){
     Roo.bootstrap.Calendar.superclass.constructor.call(this, config);
@@ -8445,7 +8447,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         
         
-        fc_button = function(name, corner, style, content ) {
+        var fc_button = function(name, corner, style, content ) {
             return Roo.apply({},{
                 tag : 'span',
                 cls : 'fc-button fc-button-'+name+' fc-state-default ' + 
@@ -8645,15 +8647,16 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     initEvents : function()
     {
         if(!this.store){
-            throw "can not find store for combo";
+            throw "can not find store for calendar";
         }
         
         this.store = Roo.factory(this.store, Roo.data);
         this.store.on('load', this.onLoad, this);
         
         this.resize();
-        this.cells = this.el.select('.fc-day',true);
         
+        this.cells = this.el.select('.fc-day',true);
+        //Roo.log(this.cells);
         this.textNodes = this.el.query('.fc-day-number');
         this.cells.addClassOnOver('fc-state-hover');
         
@@ -8734,7 +8737,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             startingPos += 7;
         }
         
-        var pm = date.add("mo", -1);
+        var pm = date.add(Date.MONTH, -1);
         var prevStart = pm.getDaysInMonth()-startingPos;
 //        
         this.cells = this.el.select('.fc-day',true);
@@ -8753,6 +8756,10 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         // convert everything to numbers so it's fast
         var day = 86400000;
         var d = (new Date(pm.getFullYear(), pm.getMonth(), prevStart)).clearTime();
+        //Roo.log(d);
+        //Roo.log(pm);
+        //Roo.log(prevStart);
+        
         var today = new Date().clearTime().getTime();
         var sel = date.clearTime().getTime();
         var min = this.minDate ? this.minDate.clearTime() : Number.NEGATIVE_INFINITY;
@@ -8764,8 +8771,12 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var format = this.format;
         
         var setCellClass = function(cal, cell){
+            
+            //Roo.log('set Cell Class');
             cell.title = "";
             var t = d.getTime();
+            
+            //Roo.log(d);
             
             cell.dateValue = t;
             if(t == today){
@@ -8892,10 +8903,12 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
     findCells : function(ev) {
         var s = ev.start.clone().clearTime().getTime();
+       // Roo.log(s);
         var e= ev.end.clone().clearTime().getTime();
+       // Roo.log(e);
         var ret = [];
         this.cells.each(function(c){
-            //Roo.log("check " +c.dateValue + '<' + e + ' > ' + s);
+             ////Roo.log("check " +c.dateValue + '<' + e + ' > ' + s);
             
             if(c.dateValue > e){
                 return ;
@@ -9082,7 +9095,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     onLoad: function () {
         
         this.clearEvents();
-        Roo.log('calendar onload');
+        //Roo.log('calendar onload');
 //        
         this.calevents = [];
         var cal = this;
