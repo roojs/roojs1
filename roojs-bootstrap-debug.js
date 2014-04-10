@@ -9553,6 +9553,7 @@ Roo.extend(Roo.bootstrap.ProgressBar, Roo.bootstrap.Component,  {
     
     update : function(aria_valuenow)
     {
+        Roo.log('call update?');
         this.aria_valuenow = aria_valuenow;
         this.el.setStyle('width', this.aria_valuenow / this.aria_valuemax);
     }
