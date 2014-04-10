@@ -1745,6 +1745,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
  * @cfg {String} badge text inside badge
  * @cfg {String} glyphicon name of glyphicon
  * @cfg {String} icon name of font awesome icon
+ * @cfg {Boolena} active Is item active
   
  * @constructor
  * Create a new Navbar Button
@@ -1762,6 +1763,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
     icon: false,
     glyphicon: false,
     icon: false,
+    active: false,
     
     getAutoCreate : function(){
         
@@ -1811,6 +1813,11 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 	cfg = {
 	    tag: 'li'
 	}
+        
+        if (this.active) {
+            this.cls += ' active';
+        }
+            
 	cfg.cn = [
             {
 		tag: 'p',
