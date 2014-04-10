@@ -30,7 +30,7 @@ Roo.bootstrap.ProgressBar = function(config){
 
 Roo.extend(Roo.bootstrap.ProgressBar, Roo.bootstrap.Component,  {
     
-    aria_valuenow : false,
+    aria_valuenow : 0,
     aria_valuemin : 0,
     aria_valuemax : 100,
     label : false,
@@ -40,9 +40,11 @@ Roo.extend(Roo.bootstrap.ProgressBar, Roo.bootstrap.Component,  {
     width : false,
     
     getAutoCreate : function(){
+        
         var cfg = {
             tag: 'div',
-            cls: 'progress-bar'
+            cls: 'progress-bar',
+            style: 'width:' + (this.aria_valuenow / this.aria_valuemax )
         };
         
         if(this.sr_only){
@@ -51,6 +53,10 @@ Roo.extend(Roo.bootstrap.ProgressBar, Roo.bootstrap.Component,  {
                 cls: 'sr-only',
                 html: this.sr_only
             }
+        }
+        
+        if(this.width){
+            
         }
         
         if(this.role){
