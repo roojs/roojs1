@@ -403,7 +403,15 @@ Roo.grid.Calendar = function(container, config){
 	     * @param {Calendar} this
 	     * @param {event}
 	     */
-        'eventclick': true
+        'eventclick': true,
+        /**
+	     * @event eventrender
+	     * Fires before each cell is rendered, so you can modify the contents, like cls / title / qtip
+	     * @param {Calendar} this
+	     * @param {data} data to be modified
+	     */
+        'eventrender': true
+        
     });
 
     Roo.grid.Grid.superclass.constructor.call(this);
