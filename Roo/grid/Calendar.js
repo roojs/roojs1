@@ -811,7 +811,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
         var ctr = this.view.el.select('.fc-event-container',true).first();
         
         var cls;
-         this.eventStore.each(function(ev){
+        this.eventStore.each(function(ev){
             
             ev.els = [];
             var cells = ev.cells;
@@ -851,7 +851,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
             }
             
             
-        }
+        }, this);
         this.view.layout();
         
     },
