@@ -40227,18 +40227,72 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
         });
         
         this.eventStore.each(function(e) {
-            Roo.each(e.els, function(el) {
-                el.un('mouseenter' ,this.onEventEnter, this);
-                el.un('mouseleave' ,this.onEventLeave, this);
-                el.remove();
-            },this);
-            e.els = [];
+            this.clearEvent(e);
         },this);
         
     },
     
+    clearEvent : function(ev)
+    {
+        if (ev.els) {
+            Roo.each(ev.els, function(el) {
+                el.un('mouseenter' ,this.onEventEnter, this);
+                el.un('mouseleave' ,this.onEventLeave, this);
+                el.remove();
+            },this);
+            ev.els = [];
+        }
+    },
     
     
+    renderEvent : function(ev,ctr) {
+        if (!ctr) {
+             ctr = this.view.el.select('.fc-event-container',true).first();
+        }
+        
+         
+        this.clearEvent(ev);
+            //code
+       
+        
+        
+        ev.els = [];
+        var cells = ev.cells;
+        var rows = ev.rows;
+        this.fireEvent('eventrender', this, ev);
+        
+        for(var i =0; i < rows.length; i++) {
+            
+            cls = '';
+            if (i == 0) {
+                cls += ' fc-event-start';
+            }
+            if ((i+1) == rows.length) {
+                cls += ' fc-event-end';
+            }
+            
+            //Roo.log(ev.data);
+            // how many rows should it span..
+            var cg = this.eventTmpl.append(ctr,Roo.apply({
+                fccls : cls
+                
+            }, ev.data) , true);
+            
+            
+            cg.on('mouseenter' ,this.onEventEnter, this, ev);
+            cg.on('mouseleave' ,this.onEventLeave, this, ev);
+            cg.on('click', this.onEventClick, this, ev);
+            
+            ev.els.push(cg);
+            
+            var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
+            var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
+            //Roo.log(cg);
+             
+            cg.setXY([sbox.x +2, sbox.y +(ev.row * 20)]);    
+            cg.setWidth(ebox.right - sbox.x -2);
+        }
+    },
     
     renderEvents: function()
     {   
@@ -40269,44 +40323,9 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
         var cls;
         this.eventStore.each(function(ev){
             
-            ev.els = [];
-            var cells = ev.cells;
-            var rows = ev.rows;
-            this.fireEvent('eventrender', this, ev);
-            
-            for(var i =0; i < rows.length; i++) {
-                
-                cls = '';
-                if (i == 0) {
-                    cls += ' fc-event-start';
-                }
-                if ((i+1) == rows.length) {
-                    cls += ' fc-event-end';
-                }
-                
-                Roo.log(ev.data);
-                // how many rows should it span..
-                var cg = this.eventTmpl.append(ctr,Roo.apply({
-                    fccls : cls
-                    
-                }, ev.data) , true);
-                
-                
-                cg.on('mouseenter' ,this.onEventEnter, this, ev);
-                cg.on('mouseleave' ,this.onEventLeave, this, ev);
-                cg.on('click', this.onEventClick, this, ev);
-                
-                ev.els.push(cg);
-                
-                var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
-                var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
-                //Roo.log(cg);
-                 
-                cg.setXY([sbox.x +2, sbox.y +(ev.row * 20)]);    
-                cg.setWidth(ebox.right - sbox.x -2);
-            }
-            
-            
+            this.renderEvent(ev);
+             
+             
         }, this);
         this.view.layout();
         
