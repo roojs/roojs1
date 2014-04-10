@@ -151,6 +151,16 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
        // Roo.log('init events?');
        // Roo.log(this.el.dom);
         this.el.select('a',true).on('click', this.onClick, this);
+    },
+    
+    onClick : function(e)
+    {
+        Roo.log('item on click ');
+        if(this.preventDefault){
+            e.preventDefault();
+        }
+        
+        this.fireEvent('click', this, e);
     }
    
 });
