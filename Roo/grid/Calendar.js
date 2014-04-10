@@ -833,7 +833,6 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
                 }, rec.data) , true);
                 
                 
-                
                 cg.on('mouseenter' ,this.onEventEnter, this, ev);
                 cg.on('mouseleave' ,this.onEventLeave, this, ev);
                 cg.on('click', this.onEventClick, this, ev);
