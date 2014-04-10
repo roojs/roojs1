@@ -830,7 +830,7 @@ Roo.extend(Roo.grid.Calendar, Roo.grid.Grid, {
             cg.setXY([sbox.x +2, sbox.y +(ev.row * 20)]);    
             cg.setWidth(ebox.right - sbox.x -2);
         }
-    }
+    },
     
     renderEvents: function()
     {   
