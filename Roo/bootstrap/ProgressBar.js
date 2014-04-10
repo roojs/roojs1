@@ -40,17 +40,11 @@ Roo.extend(Roo.bootstrap.ProgressBar, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         var cfg = {
             tag: 'div',
-            cls: 'progress',
-            cn: [
-                {
-                    tag: 'div',
-                    cls: 'progress-bar'
-                }
-            ]
+            cls: 'progress-bar'
         };
         
         if(this.sr_only){
-            cfg.cn[0].cn = {
+            cfg.cn = {
                 tag: 'span',
                 cls: 'sr-only',
                 html: this.sr_only
@@ -58,19 +52,19 @@ Roo.extend(Roo.bootstrap.ProgressBar, Roo.bootstrap.Component,  {
         }
         
         if(this.role){
-            cfg.cn[0].role = this.role;
+            cfg.role = this.role;
         }
         
         if(this.aria_valuenow){
-            cfg.cn[0]['aria-valuenow'] = this.aria_valuenow;
+            cfg['aria-valuenow'] = this.aria_valuenow;
         }
         
         if(this.label && !this.sr_only){
-            cfg.cn[0].html = this.label;
+            cfg.html = this.label;
         }
         
         if(this.panel){
-            cfg.cn[0].cls += ' progress-bar-' + this.panel;
+            cfg.cls += ' progress-bar-' + this.panel;
         }
         
         return cfg;
