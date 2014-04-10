@@ -17,6 +17,7 @@
  * @cfg {String} role role of the progress bar
  * @cfg {Boolean} striped striped of the progress bar
  * @cfg {Boolean} active animated of the progress bar
+ * @cfg {String} sr_only text
  * 
  * 
  * @constructor
