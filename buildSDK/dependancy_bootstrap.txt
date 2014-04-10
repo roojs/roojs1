@@ -61,3 +61,5 @@ Roo.bootstrap.Popover
 
 Roo.bootstrap.Progress
 Roo.bootstrap.ProgressBar
+
+Roo.bootstrap.TabPanel
