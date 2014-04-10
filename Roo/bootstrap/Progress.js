@@ -78,7 +78,7 @@ Roo.extend(Roo.bootstrap.Progress, Roo.bootstrap.Component,  {
             cfg.cn[0]['aria-valuenow'] = this.aria_valuenow;
         }
         
-        if(this.label){
+        if(this.label && !this.sr_only){
             cfg.cn[0].html = this.label;
         }
         
