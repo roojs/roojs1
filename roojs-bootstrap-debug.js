@@ -1904,7 +1904,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
             if(this.href && this.href.substring(0,1) == '#'){
                 var tab = Roo.select('div[tabId=' + this.href + ']', true).first();
                 
-                Roo.each(tab.parent().select('.active', true).elements, function(v){
+                Roo.each(tab.parentNode.select('.active', true).elements, function(v){
                     v.removeClass('active');
                 });
                 
