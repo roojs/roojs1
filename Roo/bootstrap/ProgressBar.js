@@ -55,10 +55,6 @@ Roo.extend(Roo.bootstrap.ProgressBar, Roo.bootstrap.Component,  {
             }
         }
         
-        if(this.width){
-            
-        }
-        
         if(this.role){
             cfg.role = this.role;
         }
