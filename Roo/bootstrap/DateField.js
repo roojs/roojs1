@@ -81,12 +81,14 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     },
     
     fillMonths: function(){
-            var html = '';
-            var i = 0
-            while (i < 12) {
-                    html += '<span class="month">'+DPGlobal.dates.monthsShort[i++]+'</span>';
-            }
-            this.picker.find('.datepicker-months td').append(html);
+        
+        
+        var html = '';
+        var i = 0
+        while (i < 12) {
+                html += '<span class="month">'+DPGlobal.dates.monthsShort[i++]+'</span>';
+        }
+        this.picker().select('.datepicker-months td', true).first().append(html);
     },
     
     show : function()
