@@ -9667,14 +9667,13 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
         
         this.el.select('.input-group', true).first().createChild(Roo.bootstrap.DateField.template);
+        this.picker().setVisibilityMode(Roo.Element.DISPLAY);
         this.startViewMode = this.viewMode;
         this.weekEnd = this.weekStart === 0 ? 6 : this.weekStart - 1;
         this.fillDow();
         this.fillMonths();
         this.update();
         this.showMode();
-//        Roo.log(this.template().render(ct).el);
-//        this.picker = this.template().render(ct).el.appendTo(this.el);
     },
     
     picker : function()
