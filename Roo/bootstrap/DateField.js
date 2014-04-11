@@ -120,13 +120,13 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         this.picker().select('.datepicker-days th.switch', true).first().dom.innerHTML = Roo.bootstrap.DateField.dates.months[month]+' '+year;
         
-//        var prevMonth = new Date(year, month-1, 28,0,0,0,0),
-//                day = prevMonth.getDaysInMonth();
-//                
-//        prevMonth.setDate(day);
-//        prevMonth.setDate(day - (prevMonth.getDay() - this.weekStart + 7)%7);
-//        var nextMonth = new Date(prevMonth);
-//        nextMonth.setDate(nextMonth.getDate() + 42);
+        var prevMonth = new Date(year, month-1, 28,0,0,0,0),
+                day = prevMonth.getDaysInMonth();
+                
+        prevMonth.setDate(day);
+        prevMonth.setDate(day - (prevMonth.getDay() - this.weekStart + 7)%7);
+        var nextMonth = new Date(prevMonth);
+        nextMonth.setDate(nextMonth.getDate() + 42);
 //        nextMonth = nextMonth.valueOf();
 //        var html = [];
 //        var clsName,
