@@ -143,26 +143,26 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                                     '</div>'+
                             '</div>';
     
-//    getAutoCreate : function(){
-//        var cfg = {
-//            tag: 'div',
-//            cls: 'input-append date',
-//            cn: [
-//                {
-//                    tag: 'input',
-//                    cls: 'span2 form-control'
-//                },
-//                {
-//                        tag: 'span',
-//                        cls: 'add-on',
-//                        html: '<i class="icon-th"></i>'
-//                    }
-//            ]
-//            
-//        };
-//        
-//        return cfg;
-//    }
+    getAutoCreate : function(){
+        var cfg = {
+            tag: 'div',
+            cls: 'input-append date',
+            cn: [
+                {
+                    tag: 'input',
+                    cls: 'span2 form-control'
+                },
+                {
+                        tag: 'span',
+                        cls: 'add-on',
+                        html: '<i class="icon-th"></i>'
+                    }
+            ]
+            
+        };
+        
+        return cfg;
+    }
     
     onFocus : function()
     {
