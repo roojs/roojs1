@@ -29,7 +29,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Component,  {
             cn: [
                 {
                     tag: 'input',
-                    cls: 'span2 form-control'
+                    cls: 'span2'
                 },
                 {
                     tag: 'span',
