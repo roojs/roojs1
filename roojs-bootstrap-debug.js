@@ -9638,9 +9638,9 @@ Roo.bootstrap.DateField = function(config){
 
 Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
-    headTemplate : function()
+    dateFieldHead : function()
     {
-        var headTemplate = {
+        var dateFieldHead = {
             tag: 'thead',
             cn: [
                 {
@@ -9667,12 +9667,12 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             ]
         }
         
-        return headTemplate;
+        return dateFieldHead;
     },
     
-    contTemplate : function()
+    dateFieldCont : function()
     {
-        var contTemplate = {
+        var dateFieldCont = {
             tag: 'tbody',
             cn: [
                 {
@@ -9687,12 +9687,12 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             ]
         }
         
-        return contTemplate;
+        return dateFieldCont;
     },
     
-    template : function()
+    dateFieldTemplate : function()
     {
-        var template = {
+        var dateFieldTemplate = {
             tag: 'div',
             cls: 'datepicker dropdown-menu',
             cn: [
@@ -9704,7 +9704,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                             tag: 'table',
                             cls: 'table-condensed',
                             cn:[
-                                this.headTemplate(),
+                                this.dateFieldHead(),
                                 {
                                     tag: 'tbody'
                                 }
@@ -9720,8 +9720,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                             tag: 'table',
                             cls: 'table-condensed',
                             cn:[
-                                this.headTemplate(),
-                                this.contTemplate()
+                                this.dateFieldHead(),
+                                this.dateFieldCont()
                             ]
                         }
                     ]
@@ -9734,8 +9734,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                             tag: 'table',
                             cls: 'table-condensed',
                             cn:[
-                                this.headTemplate(),
-                                this.contTemplate()
+                                this.dateFieldHead(),
+                                this.dateFieldCont()
                             ]
                         }
                     ]
@@ -9743,9 +9743,29 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             ]
         }
         
-        return template;
+        return dateFieldTemplate;
     },
-//    getAutoCreate : function(){
+    
+    template : function()
+    {
+        return new Roo.bootstrap.Element (this.dateFieldTemplate()); 
+    },
+    
+    onRender: function(ct, position)
+    {
+        Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
+        Roo.log(this.template());
+//        this.picker = new Roo.bootstrap.Element(this.template()).appendTo(this.el);
+    },
+    
+    onFocus : function()
+    {
+        Roo.bootstrap.DateField.superclass.onFocus.call(this);
+        Roo.log('onFocus !');
+    }
+    
+    
+    //    getAutoCreate : function(){
 //        var cfg = {
 //            tag: 'div',
 //            cls: 'input-append date',
@@ -9765,19 +9785,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 //        
 //        return cfg;
 //    }
-    
-    onRender: function(ct, position)
-    {
-        Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
-        Roo.log(new Roo.bootstrap.Element(this.template()));
-        this.picker = new Roo.bootstrap.Element(this.template()).appendTo(this.el);
-    },
-    
-    onFocus : function()
-    {
-        Roo.bootstrap.DateField.superclass.onFocus.call(this);
-        Roo.log('onFocus !');
-    }
    
 });
 
