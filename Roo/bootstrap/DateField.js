@@ -41,20 +41,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 //        this.picker = this.template().render(ct).el.appendTo(this.el);
     },
     
-    onFocus : function()
-    {
-        Roo.bootstrap.DateField.superclass.onFocus.call(this);
-        Roo.log('onFocus !');
-        this.show();
-    },
-    
-    onBlur : function()
-    {
-        Roo.bootstrap.DateField.superclass.onBlur.call(this);
-        Roo.log('onBlur !');
-        this.hide();
-    },
-    
     picker : function()
     {
         return this.el.select('.datepicker', true).first();
@@ -117,6 +103,20 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             }
         }
         return v;
+    },
+    
+    onFocus : function()
+    {
+        Roo.bootstrap.DateField.superclass.onFocus.call(this);
+        Roo.log('onFocus !');
+        this.show();
+    },
+    
+    onBlur : function()
+    {
+        Roo.bootstrap.DateField.superclass.onBlur.call(this);
+        Roo.log('onBlur !');
+        this.hide();
     },
     
     show : function()
