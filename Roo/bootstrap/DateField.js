@@ -305,7 +305,24 @@ Roo.apply(Roo.bootstrap.DateField,  {
             daysMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
             months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
             monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    }
+    },
+    
+    modes: [
+            {
+                clsName: 'days',
+                navFnc: 'Month',
+                navStep: 1
+            },
+            {
+                clsName: 'months',
+                navFnc: 'FullYear',
+                navStep: 1
+            },
+            {
+                clsName: 'years',
+                navFnc: 'FullYear',
+                navStep: 10
+    }]
 });
 
 Roo.apply(Roo.bootstrap.DateField,  {
