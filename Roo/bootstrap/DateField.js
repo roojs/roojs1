@@ -112,12 +112,12 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 //			return date.join(format.separator);
 //		},
 		headTemplate: '<thead>'+
-							'<tr>'+
-								'<th class="prev">&lsaquo;</th>'+
-								'<th colspan="5" class="switch"></th>'+
-								'<th class="next">&rsaquo;</th>'+
-							'</tr>'+
-						'</thead>',
+                                    '<tr>'+
+                                            '<th class="prev">&lsaquo;</th>'+
+                                            '<th colspan="5" class="switch"></th>'+
+                                            '<th class="next">&rsaquo;</th>'+
+                                    '</tr>'+
+                            '</thead>',
 		contTemplate: '<tbody><tr><td colspan="7"></td></tr></tbody>'
 	};
     
