@@ -247,6 +247,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     hide : function()
     {
         this.picker().hide();
+        this.viewMode = this.startViewMode;
+        this.showMode();
     }
     
     
