@@ -146,7 +146,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     {
         Roo.bootstrap.DateField.superclass.onFocus.call(this);
         Roo.log('onFocus !');
-        this.picker().show();
+        this.show();
     },
     
     onBlur : function()
@@ -154,11 +154,16 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         Roo.bootstrap.DateField.superclass.onBlur.call(this);
         Roo.log('onBlur !');
         this.picker().hide();
-    }
+    },
     
     picker : function()
     {
         return this.el.select('.datepicker', true).first();
+    },
+    
+    show : function()
+    {
+        this.picker().show();
     }
     
     
