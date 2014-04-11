@@ -9663,7 +9663,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Component,  {
     
     initEvents: function(){
         
-        Roo.bootstrap.ComboBox.superclass.initEvents.call(this);
+        Roo.bootstrap.DateField.superclass.initEvents.call(this);
         
     }
    
