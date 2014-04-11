@@ -9638,7 +9638,7 @@ Roo.bootstrap.DateField = function(config){
 
 Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
-    weekStart : 0,
+    weekStart : 1,
       
 //    template : function()
 //    {
@@ -9649,7 +9649,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     {
         Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
         
-        this.el.createChild(Roo.bootstrap.DateField.template, position);
+        this.el.createChild(Roo.bootstrap.DateField.template);
         this.fillDow();
 //        Roo.log(this.template().render(ct).el);
 //        this.picker = this.template().render(ct).el.appendTo(this.el);
@@ -9677,6 +9677,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     fillDow: function()
     {
         var dowCnt = this.weekStart;
+        
         var html = '<tr>';
         
         while (dowCnt < this.weekStart + 7) {

@@ -21,7 +21,7 @@ Roo.bootstrap.DateField = function(config){
 
 Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
-    weekStart : 0,
+    weekStart : 1,
       
 //    template : function()
 //    {
