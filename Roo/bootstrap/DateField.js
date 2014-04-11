@@ -80,15 +80,22 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.picker().select('.datepicker-days thead', true).first().createChild(dow);
     },
     
-    fillMonths: function(){
-        
-        
+    fillMonths: function()
+    {   
         var html = '';
         var i = 0
+        var months = this.picker().select('.datepicker-months td', true).first();
+        
         while (i < 12) {
-                html += '<span class="month">'+Roo.bootstrap.DateField.dates.monthsShort[i++]+'</span>';
+            var month = {
+                tag: 'span',
+                cls: 'month',
+                html: Roo.bootstrap.DateField.dates.monthsShort[i++]
+            }
+            
+            months.createChild(month);
         }
-        this.picker().select('.datepicker-months td', true).first().createChild(html);
+        
     },
     
     show : function()
