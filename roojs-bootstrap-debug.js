@@ -9638,114 +9638,8 @@ Roo.bootstrap.DateField = function(config){
 
 Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
-    dateFieldHead : function()
-    {
-        var dateFieldHead = {
-            tag: 'thead',
-            cn: [
-                {
-                    tag: 'tr',
-                    cn: [
-                        {
-                            tag: 'th',
-                            cls: 'prev',
-                            html: '&lsaquo;'
-                        },
-                        {
-                            tag: 'th',
-                            cls: 'switch',
-                            colspan: '5'
-                        },
-                        {
-                            tag: 'th',
-                            cls: 'next',
-                            html: '&rsaquo;'
-                        }
-                        
-                    ]
-                }
-            ]
-        };
-        
-        return dateFieldHead;
-    },
-    
-    dateFieldCont : function()
-    {
-        var dateFieldCont = {
-            tag: 'tbody',
-            cn: [
-                {
-                    tag: 'tr',
-                    cn: [
-                        {
-                            tag: 'td',
-                            colspan: '7'
-                        }
-                    ]
-                }
-            ]
-        };
-        
-        return dateFieldCont;
-    },
-    
-    dateFieldTemplate : function()
-    {
-        var dateFieldTemplate = {
-            tag: 'div',
-            cls: 'datepicker dropdown-menu',
-            cn: [
-                {
-                    tag: 'div',
-                    cls: 'datepicker-days',
-                    cn: [
-                        {
-                            tag: 'table',
-                            cls: 'table-condensed',
-                            cn:[
-                                this.dateFieldHead(),
-                                {
-                                    tag: 'tbody'
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    tag: 'div',
-                    cls: 'datepicker-months',
-                    cn: [
-                        {
-                            tag: 'table',
-                            cls: 'table-condensed',
-                            cn:[
-                                this.dateFieldHead(),
-                                this.dateFieldCont()
-                            ]
-                        }
-                    ]
-                },
-                {
-                    tag: 'div',
-                    cls: 'datepicker-years',
-                    cn: [
-                        {
-                            tag: 'table',
-                            cls: 'table-condensed',
-                            cn:[
-                                this.dateFieldHead(),
-                                this.dateFieldCont()
-                            ]
-                        }
-                    ]
-                }
-            ]
-        };
-        
-        return dateFieldTemplate;
-    },
-//    
+    weekStart : 0,
+      
 //    template : function()
 //    {
 //        return new Roo.bootstrap.Element (this.dateFieldTemplate()); 
@@ -9754,7 +9648,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     onRender: function(ct, position)
     {
         Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
-        this.el.createChild(this.dateFieldTemplate(), position);
+        Roo.log(this.dateFieldTemplate);
+//        this.el.createChild(this.dateFieldTemplate(), position);
 //        Roo.log(this.template().render(ct).el);
 //        this.picker = this.template().render(ct).el.appendTo(this.el);
     },
@@ -9776,6 +9671,17 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     picker : function()
     {
         return this.el.select('.datepicker', true).first();
+    },
+    
+    fillDow: function()
+    {
+        var dowCnt = this.weekStart;
+        var html = '<tr>';
+        while (dowCnt < this.weekStart + 7) {
+                html += '<th class="dow">'+DPGlobal.dates.daysMin[(dowCnt++)%7]+'</th>';
+        }
+        html += '</tr>';
+        this.picker.find('.datepicker-days thead').append(html);
     },
     
     show : function()
@@ -9810,6 +9716,102 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 //        return cfg;
 //    }
    
+});
+
+Roo.apply(Roo.bootstrap.DateField,  {
+    
+    dateFieldHead : {
+        tag: 'thead',
+        cn: [
+            {
+                tag: 'tr',
+                cn: [
+                    {
+                        tag: 'th',
+                        cls: 'prev',
+                        html: '&lsaquo;'
+                    },
+                    {
+                        tag: 'th',
+                        cls: 'switch',
+                        colspan: '5'
+                    },
+                    {
+                        tag: 'th',
+                        cls: 'next',
+                        html: '&rsaquo;'
+                    }
+
+                ]
+            }
+        ]
+    },
+    
+    dateFieldCont : {
+        tag: 'tbody',
+        cn: [
+            {
+                tag: 'tr',
+                cn: [
+                    {
+                        tag: 'td',
+                        colspan: '7'
+                    }
+                ]
+            }
+        ]
+    },
+    
+    dateFieldTemplate : {
+        tag: 'div',
+        cls: 'datepicker dropdown-menu',
+        cn: [
+            {
+                tag: 'div',
+                cls: 'datepicker-days',
+                cn: [
+                    {
+                        tag: 'table',
+                        cls: 'table-condensed',
+                        cn:[
+                            this.dateFieldHead,
+                            {
+                                tag: 'tbody'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                tag: 'div',
+                cls: 'datepicker-months',
+                cn: [
+                    {
+                        tag: 'table',
+                        cls: 'table-condensed',
+                        cn:[
+                            this.dateFieldHead,
+                            this.dateFieldCont
+                        ]
+                    }
+                ]
+            },
+            {
+                tag: 'div',
+                cls: 'datepicker-years',
+                cn: [
+                    {
+                        tag: 'table',
+                        cls: 'table-condensed',
+                        cn:[
+                            this.dateFieldHead,
+                            this.dateFieldCont
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
 });
 
  
