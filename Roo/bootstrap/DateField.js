@@ -50,6 +50,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
         
         this.el.select('.input-group', true).first().createChild(Roo.bootstrap.DateField.template);
+        this.startViewMode = this.viewMode;
         this.fillDow();
         this.fillMonths();
         this.update();
