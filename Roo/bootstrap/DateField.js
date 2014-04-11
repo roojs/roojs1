@@ -157,7 +157,7 @@ Roo.apply(Roo.bootstrap.DateField,  {
                         tag: 'table',
                         cls: 'table-condensed',
                         cn:[
-                            this.head,
+                            Roo.bootstrap.DateField.head,
                             {
                                 tag: 'tbody'
                             }
@@ -173,8 +173,8 @@ Roo.apply(Roo.bootstrap.DateField,  {
                         tag: 'table',
                         cls: 'table-condensed',
                         cn:[
-                            this.head,
-                            this.content
+                            Roo.bootstrap.DateField.head,
+                            Roo.bootstrap.DateField.content
                         ]
                     }
                 ]
@@ -187,8 +187,8 @@ Roo.apply(Roo.bootstrap.DateField,  {
                         tag: 'table',
                         cls: 'table-condensed',
                         cn:[
-                            this.head,
-                            this.content
+                            Roo.bootstrap.DateField.head,
+                            Roo.bootstrap.DateField.content
                         ]
                     }
                 ]
