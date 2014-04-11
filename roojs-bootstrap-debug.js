@@ -9814,8 +9814,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     place: function()
     {
-        var offset = this.el ? this.el.offset() : this.el.offset();
-        this.picker().setTop(offset.top + this.height).setLeft(offset.left);
+        this.picker().setTop(this.el.getY()).setLeft(this.el.getX());
     },
     
     parseDate : function(value){
@@ -9854,7 +9853,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     show : function()
     {
         this.picker().show();
-        this.height = this.el ? this.el.getY() : 0;
         this.place();
     },
     
