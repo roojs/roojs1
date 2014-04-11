@@ -63,3 +63,5 @@ Roo.bootstrap.Progress
 Roo.bootstrap.ProgressBar
 
 Roo.bootstrap.TabPanel
+
+Roo.bootstrap.DateField
