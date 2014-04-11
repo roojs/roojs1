@@ -124,7 +124,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     ]
                 }
             ]
-        }
+        };
         
         return dateFieldTemplate;
     },
