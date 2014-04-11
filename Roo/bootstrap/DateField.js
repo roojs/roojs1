@@ -37,6 +37,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     weekStart : 0,
     
     viewMode : 0,
+    
+    minViewMode : 0,
       
 //    template : function()
 //    {
