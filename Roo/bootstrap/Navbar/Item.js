@@ -43,7 +43,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
     glyphicon: false,
     icon: false,
     active: false,
-    preventDefault : true,
+    preventDefault : false,
     
     getAutoCreate : function(){
         
