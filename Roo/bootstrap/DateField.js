@@ -164,9 +164,14 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 //        return cfg;
 //    }
     
+    onRender: function()
+    {
+        Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
+    },
+    
     onFocus : function()
     {
-        Roo.bootstrap.TriggerField.superclass.onFocus.call(this);
+        Roo.bootstrap.DateField.superclass.onFocus.call(this);
         Roo.log('onFocus !');
     }
    
