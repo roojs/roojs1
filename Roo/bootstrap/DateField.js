@@ -42,6 +42,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 //        
 //        return cfg;
 //    }
+
+    initEvents: function() {
+        this.inputEl().select('a',true).on('click', this.onClick, this);
+    },
    
 });
 
