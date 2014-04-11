@@ -9720,7 +9720,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 
 Roo.apply(Roo.bootstrap.DateField,  {
     
-    dateFieldHead : {
+    head : {
         tag: 'thead',
         cn: [
             {
@@ -9747,7 +9747,7 @@ Roo.apply(Roo.bootstrap.DateField,  {
         ]
     },
     
-    dateFieldCont : {
+    content : {
         tag: 'tbody',
         cn: [
             {
@@ -9762,7 +9762,7 @@ Roo.apply(Roo.bootstrap.DateField,  {
         ]
     },
     
-    dateFieldTemplate : {
+    template : {
         tag: 'div',
         cls: 'datepicker dropdown-menu',
         cn: [
@@ -9774,7 +9774,7 @@ Roo.apply(Roo.bootstrap.DateField,  {
                         tag: 'table',
                         cls: 'table-condensed',
                         cn:[
-                            this.dateFieldHead,
+                            this.head,
                             {
                                 tag: 'tbody'
                             }
@@ -9790,8 +9790,8 @@ Roo.apply(Roo.bootstrap.DateField,  {
                         tag: 'table',
                         cls: 'table-condensed',
                         cn:[
-                            this.dateFieldHead,
-                            this.dateFieldCont
+                            this.head,
+                            this.content
                         ]
                     }
                 ]
@@ -9804,8 +9804,8 @@ Roo.apply(Roo.bootstrap.DateField,  {
                         tag: 'table',
                         cls: 'table-condensed',
                         cn:[
-                            this.dateFieldHead,
-                            this.dateFieldCont
+                            this.head,
+                            this.content
                         ]
                     }
                 ]
