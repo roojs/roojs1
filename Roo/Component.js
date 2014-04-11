@@ -360,7 +360,7 @@ Roo.extend(Roo.Component, Roo.util.Observable, {
         }else if(this.hideMode == 'offsets'){
             ae.removeClass('x-hidden');
         }else{
-            ae.dom.style.display = "block";
+            ae.dom.style.display = "";
         }
     },
 
