@@ -137,8 +137,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     onRender: function(ct, position)
     {
         Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
-        Roo.log(this.template().render(ct));
-//        this.picker = new Roo.bootstrap.Element(this.template()).appendTo(this.el);
+        
+        this.picker = this.template().render(ct).el.appendTo(this.el);
     },
     
     onFocus : function()
