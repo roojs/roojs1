@@ -114,7 +114,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 
         this.picker().select('.datepicker-days th:eq(1)', true).first().innerHTML(Roo.bootstrap.DateField.dates.months[month]+' '+year);
         
-        var prevMonth = new Date(year, month-1, 1,0,0,0,0),
+        var prevMonth = new Date(year, month-1, 28,0,0,0,0),
                 day = prevMonth.getDaysInMonth();
                 
         prevMonth.setDate(day);
