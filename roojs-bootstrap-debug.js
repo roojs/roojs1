@@ -9734,7 +9734,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 month = d.getMonth(),
                 currentDate = this.date.valueOf();
                 
-        this.picker().select('.datepicker-days th:eq(1)', true).first().innerHTML(Roo.bootstrap.DateField.dates.months[month]+' '+year);
+        this.picker().select('.datepicker-days th', true).first().innerHTML(Roo.bootstrap.DateField.dates.months[month]+' '+year);
         
         var prevMonth = new Date(year, month-1, 28,0,0,0,0),
                 day = prevMonth.getDaysInMonth();
@@ -9771,30 +9771,30 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         }
         this.picker().select('.datepicker-days tbody',true).first().empty().createChild(html.join(''));
         
-//        var currentYear = this.date.getFullYear();
-//
-//        var months = this.picker().select('.datepicker-months',true).first().select('th:eq(1)',true).first().innerHTML(year);
-////                                .find('th:eq(1)')
-////                                        .text(year)
-////                                        .end()
-////                                .find('span').removeClass('active');
-//        if (currentYear === year) {
-//                months.eq(this.date.getMonth()).addClass('active');
-//        }
-//
-//        html = '';
-//        year = parseInt(year/10, 10) * 10;
-//        var yearCont = this.picker().select('.datepicker-years', true).first().select('th:eq(1)', true).first().innerHTML(year + '-' + (year + 9));
-////                                                .find('th:eq(1)')
-////                                                        .text(year + '-' + (year + 9))
-////                                                        .end()
-////                                                .find('td');
-//        year -= 1;
-//        for (var i = -1; i < 11; i++) {
-//                html += '<span class="year'+(i === -1 || i === 10 ? ' old' : '')+(currentYear === year ? ' active' : '')+'">'+year+'</span>';
-//                year += 1;
-//        }
-//        yearCont.select('td', true).first().innerHTML(html);
+        var currentYear = this.date.getFullYear();
+
+        var months = this.picker().select('.datepicker-months',true).first().select('th',true).first().innerHTML(year);
+//                                .find('th:eq(1)')
+//                                        .text(year)
+//                                        .end()
+//                                .find('span').removeClass('active');
+        if (currentYear === year) {
+                months.eq(this.date.getMonth()).addClass('active');
+        }
+
+        html = '';
+        year = parseInt(year/10, 10) * 10;
+        var yearCont = this.picker().select('.datepicker-years', true).first().select('th', true).first().innerHTML(year + '-' + (year + 9));
+//                                                .find('th:eq(1)')
+//                                                        .text(year + '-' + (year + 9))
+//                                                        .end()
+//                                                .find('td');
+        year -= 1;
+        for (var i = -1; i < 11; i++) {
+                html += '<span class="year'+(i === -1 || i === 10 ? ' old' : '')+(currentYear === year ? ' active' : '')+'">'+year+'</span>';
+                year += 1;
+        }
+        yearCont.select('td', true).first().innerHTML(html);
     },
     
     showMode: function(dir) {
