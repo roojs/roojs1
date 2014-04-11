@@ -9651,6 +9651,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         this.el.createChild(Roo.bootstrap.DateField.template);
         this.fillDow();
+        this.fillMonths();
 //        Roo.log(this.template().render(ct).el);
 //        this.picker = this.template().render(ct).el.appendTo(this.el);
     },
@@ -9694,6 +9695,17 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         }
         
         this.picker().select('.datepicker-days thead', true).first().createChild(dow);
+    },
+    
+    fillMonths: function(){
+        
+        
+        var html = '';
+        var i = 0
+        while (i < 12) {
+                html += '<span class="month">'+DPGlobal.dates.monthsShort[i++]+'</span>';
+        }
+        this.picker().select('.datepicker-months td', true).first().createChild(html);
     },
     
     show : function()

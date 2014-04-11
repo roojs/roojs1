@@ -88,7 +88,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         while (i < 12) {
                 html += '<span class="month">'+DPGlobal.dates.monthsShort[i++]+'</span>';
         }
-        this.picker().select('.datepicker-months td', true).first().append(html);
+        this.picker().select('.datepicker-months td', true).first().createChild(html);
     },
     
     show : function()
