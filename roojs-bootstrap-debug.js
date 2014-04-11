@@ -9646,14 +9646,12 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Component,  {
             cn: [
                 {
                     tag: 'input',
-                    cls: 'span2',
-                    cn: [
-                        {
-                            tag: 'span',
-                            cls: 'add-on',
-                            html: '<i class="icon-th"></i>'
-                        }
-                    ]
+                    cls: 'span2'
+                },
+                {
+                    tag: 'span',
+                    cls: 'add-on',
+                    html: '<i class="icon-th"></i>'
                 }
             ]
             
