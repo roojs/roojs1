@@ -1979,7 +1979,7 @@ Roo.bootstrap.Element = function(config){
     Roo.bootstrap.Element.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.Element, Roo.Element,  {
+Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
     
     tag: 'div',
     cls: '',
@@ -9811,7 +9811,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         }
         Roo.each(this.picker().select('>div',true).elements, function(v){
             v.setVisibilityMode(Roo.Element.DISPLAY);
-            Roo.log(v.hide);
             v.hide();
         });
         this.picker().select('.datepicker-'+Roo.bootstrap.DateField.modes[this.viewMode].clsName, true).first().show();
