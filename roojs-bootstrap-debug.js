@@ -9651,7 +9651,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     template : '<div class="datepicker dropdown-menu">'+
                         '<div class="datepicker-days">'+
                                 '<table class=" table-condensed">'+
-                                        this..headTemplate+
+                                        this.headTemplate+
                                         '<tbody></tbody>'+
                                 '</table>'+
                         '</div>'+
