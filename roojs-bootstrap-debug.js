@@ -9659,6 +9659,12 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.TriggerField,  {
         };
         
         return cfg;
+    },
+    
+    initEvents: function(){
+        
+        Roo.bootstrap.ComboBox.superclass.initEvents.call(this);
+        
     }
    
 });
