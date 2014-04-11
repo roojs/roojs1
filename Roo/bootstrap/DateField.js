@@ -22,6 +22,7 @@ Roo.bootstrap.DateField = function(config){
 Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     weekStart : 0,
+    format: 'Y-m-d',
       
 //    template : function()
 //    {
@@ -96,6 +97,25 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             months.createChild(month);
         }
         
+    },
+    
+    parseDate : function(value){
+        if(!value || value instanceof Date){
+            return value;
+        }
+        var v = Date.parseDate(value, this.format);
+         if (!v && this.useIso) {
+            v = Date.parseDate(value, 'Y-m-d');
+        }
+        if(!v && this.altFormats){
+            if(!this.altFormatsArray){
+                this.altFormatsArray = this.altFormats.split("|");
+            }
+            for(var i = 0, len = this.altFormatsArray.length; i < len && !v; i++){
+                v = Date.parseDate(value, this.altFormatsArray[i]);
+            }
+        }
+        return v;
     },
     
     show : function()
