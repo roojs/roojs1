@@ -21,8 +21,20 @@ Roo.bootstrap.DateField = function(config){
 
 Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
+    /**
+     * @cfg {String} format
+     * The default date format string which can be overriden for localization support.  The format must be
+     * valid according to {@link Date#parseDate} (defaults to 'm/d/y').
+     */
+    format : "m/d/y",
+    /**
+     * @cfg {String} altFormats
+     * Multiple date formats separated by "|" to try when parsing a user input value and it doesn't match the defined
+     * format (defaults to 'm/d/Y|m-d-y|m-d-Y|m/d|m-d|d').
+     */
+    altFormats : "m/d/Y|m-d-y|m-d-Y|m/d|m-d|md|mdy|mdY|d",
+    
     weekStart : 0,
-    format: 'Y-m-d',
       
 //    template : function()
 //    {
@@ -84,6 +96,15 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             months.createChild(month);
         }
         
+    },
+    
+    update: function(newDate){
+        this.date = this.parseDate(
+                typeof newDate === 'string' ? newDate : (this.isInput ? this.element.prop('value') : this.element.data('date')),
+                this.format
+        );
+        this.viewDate = new Date(this.date.getFullYear(), this.date.getMonth(), 1, 0, 0, 0, 0);
+        this.fill();
     },
     
     parseDate : function(value){
