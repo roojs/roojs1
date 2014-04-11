@@ -1964,7 +1964,7 @@ Roo.extend(Roo.bootstrap.Row, Roo.bootstrap.Component,  {
 
 /**
  * @class Roo.bootstrap.Element
- * @extends Roo.bootstrap.Component
+ * @extends Roo.Element
  * Bootstrap Element class
  * @cfg {String} html contents of the element
  * @cfg {String} tag tag of the element
@@ -1979,7 +1979,7 @@ Roo.bootstrap.Element = function(config){
     Roo.bootstrap.Element.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.Element, Roo.Element,  {
     
     tag: 'div',
     cls: '',

@@ -57,7 +57,7 @@ this.el.addClass('active');if(this.href&&this.href.substring(0,1)=='#'){var A=Ro
 //Roo/bootstrap/Row.js
 Roo.bootstrap.Row=function(A){Roo.bootstrap.Row.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.Row,Roo.bootstrap.Component,{getAutoCreate:function(){return {cls:'row clearfix'};}});
 //Roo/bootstrap/Element.js
-Roo.bootstrap.Element=function(A){Roo.bootstrap.Element.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.Element,Roo.bootstrap.Component,{tag:'div',cls:'',html:'',getAutoCreate:function(){var A={tag:this.tag,cls:'',html:this.html};return A;}});
+Roo.bootstrap.Element=function(A){Roo.bootstrap.Element.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.Element,Roo.Element,{tag:'div',cls:'',html:'',getAutoCreate:function(){var A={tag:this.tag,cls:'',html:this.html};return A;}});
 //Roo/bootstrap/Pagination.js
 Roo.bootstrap.Pagination=function(A){Roo.bootstrap.Pagination.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.Pagination,Roo.bootstrap.Component,{cls:false,size:false,inverse:false,from:1,to:4,align:false,active:1,getAutoCreate:function(){var A={tag:'ul',cls:'pagination',cn:[]};if(this.inverse){A.cls+=' inverse';}if(this.html){A.html=this.html;}if(this.cls){A.cls=this.cls;}
 A.cn[0]={tag:'li',cn:[{tag:'a',href:'#',html:'&laquo;'}]};var B=this.from>0?this.from:1;var to=this.to-B<=10?this.to:B+10;var C=this.active>=B&&this.active<=to?this.active:null;for(var i=B;i<=to;i++){A.cn.push({tag:'li',cls:C===i?'active':'',cn:[{tag:'a',href:'#',html:i}]});}
