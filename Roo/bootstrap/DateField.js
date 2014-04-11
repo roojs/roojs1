@@ -237,7 +237,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     show : function()
     {
         this.picker().show();
-        this.height = this.el ? this.el.outerHeight() : this.el.outerHeight();
+        this.height = this.el ? this.el.getY() : 0;
         this.place();
     },
     
