@@ -106,6 +106,74 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.fill();
     },
     
+    fill: function() {
+        var d = new Date(this.viewDate),
+                year = d.getFullYear(),
+                month = d.getMonth(),
+                currentDate = this.date.valueOf();
+                
+        this.picker().select('.datepicker-days th:eq(1)', true).first().innerHTML(Roo.bootstrap.DateField.dates.months[month]+' '+year);
+        
+        var prevMonth = new Date(year, month-1, 1,0,0,0,0),
+                day = prevMonth.getDaysInMonth();
+                
+        prevMonth.setDate(day);
+        prevMonth.setDate(day - (prevMonth.getDay() - this.weekStart + 7)%7);
+        var nextMonth = new Date(prevMonth);
+        nextMonth.setDate(nextMonth.getDate() + 42);
+        nextMonth = nextMonth.valueOf();
+        var html = [];
+        var clsName,
+                prevY,
+                prevM;
+        while(prevMonth.valueOf() < nextMonth) {
+                if (prevMonth.getDay() === this.weekStart) {
+                        html.push('<tr>');
+                }
+                clsName = this.onRender(prevMonth);
+                prevY = prevMonth.getFullYear();
+                prevM = prevMonth.getMonth();
+                if ((prevM < month &&  prevY === year) ||  prevY < year) {
+                        clsName += ' old';
+                } else if ((prevM > month && prevY === year) || prevY > year) {
+                        clsName += ' new';
+                }
+                if (prevMonth.valueOf() === currentDate) {
+                        clsName += ' active';
+                }
+                html.push('<td class="day '+clsName+'">'+prevMonth.getDate() + '</td>');
+                if (prevMonth.getDay() === this.weekEnd) {
+                        html.push('</tr>');
+                }
+                prevMonth.setDate(prevMonth.getDate()+1);
+        }
+        this.picker.find('.datepicker-days tbody').empty().append(html.join(''));
+        var currentYear = this.date.getFullYear();
+
+        var months = this.picker.find('.datepicker-months')
+                                .find('th:eq(1)')
+                                        .text(year)
+                                        .end()
+                                .find('span').removeClass('active');
+        if (currentYear === year) {
+                months.eq(this.date.getMonth()).addClass('active');
+        }
+
+        html = '';
+        year = parseInt(year/10, 10) * 10;
+        var yearCont = this.picker.find('.datepicker-years')
+                                                .find('th:eq(1)')
+                                                        .text(year + '-' + (year + 9))
+                                                        .end()
+                                                .find('td');
+        year -= 1;
+        for (var i = -1; i < 11; i++) {
+                html += '<span class="year'+(i === -1 || i === 10 ? ' old' : '')+(currentYear === year ? ' active' : '')+'">'+year+'</span>';
+                year += 1;
+        }
+        yearCont.html(html);
+    },
+    
     parseDate : function(value){
         if(!value || value instanceof Date){
             return value;
