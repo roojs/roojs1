@@ -129,45 +129,44 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         return dateFieldTemplate;
     },
     
-    template : function()
-    {
-        return new Roo.bootstrap.Element (this.dateFieldTemplate()); 
-    },
+//    template : function()
+//    {
+//        return new Roo.bootstrap.Element (this.dateFieldTemplate()); 
+//    },
     
     onRender: function(ct, position)
     {
         Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
-        Roo.log(this.template().render(ct).el);
-        this.picker = this.template().render(ct).el.appendTo(this.el);
+//        Roo.log(this.template().render(ct).el);
+//        this.picker = this.template().render(ct).el.appendTo(this.el);
     },
     
     onFocus : function()
     {
         Roo.bootstrap.DateField.superclass.onFocus.call(this);
         Roo.log('onFocus !');
+    },
+    
+    getAutoCreate : function(){
+        var cfg = {
+            tag: 'div',
+            cls: 'input-append date',
+            cn: [
+                {
+                    tag: 'input',
+                    cls: 'span2 form-control'
+                },
+                {
+                        tag: 'span',
+                        cls: 'add-on',
+                        html: '<i class="icon-th"></i>'
+                    }
+            ]
+            
+        };
+        
+        return cfg;
     }
-    
-    
-    //    getAutoCreate : function(){
-//        var cfg = {
-//            tag: 'div',
-//            cls: 'input-append date',
-//            cn: [
-//                {
-//                    tag: 'input',
-//                    cls: 'span2 form-control'
-//                },
-//                {
-//                        tag: 'span',
-//                        cls: 'add-on',
-//                        html: '<i class="icon-th"></i>'
-//                    }
-//            ]
-//            
-//        };
-//        
-//        return cfg;
-//    }
    
 });
 
