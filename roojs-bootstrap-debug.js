@@ -9662,7 +9662,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     onFocus : function()
     {
-        Roo.log('onFocus');
+        Roo.bootstrap.TriggerField.superclass.onFocus.call(this);
+        Roo.log('onFocus !');
     }
    
 });
