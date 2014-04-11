@@ -9775,32 +9775,33 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 }
                 prevMonth.setDate(prevMonth.getDate()+1);
         }
+        this.picker().select('.datepicker-days tbody',true).first().innerHTML = '';
         this.picker().select('.datepicker-days tbody',true).first().createChild(html.join(''));
 //        
-//        var currentYear = this.date.getFullYear();
+        var currentYear = this.date.getFullYear();
 //
-//        var months = this.picker().select('.datepicker-months',true).first().select('th',true).first().dom.innerHTML = year;
-////                                .find('th:eq(1)')
-////                                        .text(year)
-////                                        .end()
-////                                .find('span').removeClass('active');
-//        if (currentYear === year) {
-//                months.eq(this.date.getMonth()).addClass('active');
-//        }
-//
-//        html = '';
-//        year = parseInt(year/10, 10) * 10;
-//        var yearCont = this.picker().select('.datepicker-years', true).first().select('th', true).first().dom.innerHTML = year + '-' + (year + 9);
-////                                                .find('th:eq(1)')
-////                                                        .text(year + '-' + (year + 9))
-////                                                        .end()
-////                                                .find('td');
-//        year -= 1;
-//        for (var i = -1; i < 11; i++) {
-//                html += '<span class="year'+(i === -1 || i === 10 ? ' old' : '')+(currentYear === year ? ' active' : '')+'">'+year+'</span>';
-//                year += 1;
-//        }
-//        yearCont.select('td', true).first().dom.innerHTML = html;
+        var months = this.picker().select('.datepicker-months',true).first().select('th',true).first().dom.innerHTML = year;
+//                                .find('th:eq(1)')
+//                                        .text(year)
+//                                        .end()
+//                                .find('span').removeClass('active');
+        if (currentYear === year) {
+                months.eq(this.date.getMonth()).addClass('active');
+        }
+
+        html = '';
+        year = parseInt(year/10, 10) * 10;
+        var yearCont = this.picker().select('.datepicker-years', true).first().select('th', true).first().dom.innerHTML = year + '-' + (year + 9);
+//                                                .find('th:eq(1)')
+//                                                        .text(year + '-' + (year + 9))
+//                                                        .end()
+//                                                .find('td');
+        year -= 1;
+        for (var i = -1; i < 11; i++) {
+                html += '<span class="year'+(i === -1 || i === 10 ? ' old' : '')+(currentYear === year ? ' active' : '')+'">'+year+'</span>';
+                year += 1;
+        }
+        yearCont.select('td', true).first().dom.innerHTML = html;
     },
     
     showMode: function(dir) {
