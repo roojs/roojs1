@@ -25,18 +25,22 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         var cfg = {
             tag: 'div',
-            cls: 'progress'
+            cls: 'input-append date',
+            cn: [
+                {
+                    tag: 'input',
+                    cls: 'span',
+                    cn: [
+                        {
+                            tag: 'span',
+                            cls: 'add-on',
+                            html: '<i class="icon-th"></i>'
+                        }
+                    ]
+                }
+            ]
+            
         };
-        
-        
-        if(this.striped){
-            cfg.cls += ' progress-striped';
-        }
-      
-        if(this.active){
-            cfg.cls += ' active';
-        }
-        
         
         return cfg;
     }
