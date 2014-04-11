@@ -35,6 +35,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     altFormats : "m/d/Y|m-d-y|m-d-Y|m/d|m-d|md|mdy|mdY|d",
     
     weekStart : 0,
+    
+    viewMode : 0,
       
 //    template : function()
 //    {
@@ -174,6 +176,13 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 year += 1;
         }
         yearCont.select('td', true).first().innerHTML(html);
+    },
+    
+    showMode: function(dir) {
+        if (dir) {
+                this.viewMode = Math.max(this.minViewMode, Math.min(2, this.viewMode + dir));
+        }
+        this.picker.find('>div').hide().filter('.datepicker-'+DPGlobal.modes[this.viewMode].clsName).show();
     },
     
     parseDate : function(value){
