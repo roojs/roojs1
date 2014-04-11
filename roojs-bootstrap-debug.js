@@ -9754,7 +9754,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     onRender: function(ct, position)
     {
         Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
-        Roo.log(this.template());
+        Roo.log(this.template().getEl());
 //        this.picker = new Roo.bootstrap.Element(this.template()).appendTo(this.el);
     },
     
