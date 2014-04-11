@@ -9790,8 +9790,8 @@ Roo.apply(Roo.bootstrap.DateField,  {
                         tag: 'table',
                         cls: 'table-condensed',
                         cn:[
-                            Roo.bootstrap.DateField.head,
-                            Roo.bootstrap.DateField.content
+                            this.head,
+                            this.content
                         ]
                     }
                 ]
@@ -9804,8 +9804,8 @@ Roo.apply(Roo.bootstrap.DateField,  {
                         tag: 'table',
                         cls: 'table-condensed',
                         cn:[
-                            Roo.bootstrap.DateField.head,
-                            Roo.bootstrap.DateField.content
+                            this.head,
+                            this.content
                         ]
                     }
                 ]
