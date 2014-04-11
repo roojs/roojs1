@@ -61,6 +61,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     {
         var dowCnt = this.weekStart;
         var html = '<tr>';
+        
         while (dowCnt < this.weekStart + 7) {
                 html += '<th class="dow">'+Roo.bootstrap.DateField.dates.daysMin[(dowCnt++)%7]+'</th>';
         }
@@ -68,7 +69,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         Roo.log(this.picker().select('.datepicker-days thead', true).first());
         
-        this.picker().select('.datepicker-days thead', true).first().appendChild(html);
+        this.picker().select('.datepicker-days thead', true).first().createChild(html);
     },
     
     show : function()
