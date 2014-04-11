@@ -9754,8 +9754,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     onRender: function(ct, position)
     {
         Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
-        Roo.log(this.template().render(ct).el);
-        this.picker = this.template().render(ct).el.appendTo(this.el);
+        Roo.log('ct');
+        Roo.log(ct);
+//        Roo.log(this.template().render(ct).el);
+//        this.picker = this.template().render(ct).el.appendTo(this.el);
     },
     
     onFocus : function()
@@ -9764,8 +9766,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         Roo.log('onFocus !');
     }
     
-    
-    //    getAutoCreate : function(){
+//    getAutoCreate : function(){
 //        var cfg = {
 //            tag: 'div',
 //            cls: 'input-append date',
