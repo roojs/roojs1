@@ -9774,7 +9774,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         var currentYear = this.date.getFullYear();
 
-        var months = this.picker().select('.datepicker-months',true).first().select('th',true).first().dom.innerHTML(year);
+        var months = this.picker().select('.datepicker-months',true).first().select('th',true).first().dom.innerHTML = year;
 //                                .find('th:eq(1)')
 //                                        .text(year)
 //                                        .end()
@@ -9785,7 +9785,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 
         html = '';
         year = parseInt(year/10, 10) * 10;
-        var yearCont = this.picker().select('.datepicker-years', true).first().select('th', true).first().dom.innerHTML(year + '-' + (year + 9));
+        var yearCont = this.picker().select('.datepicker-years', true).first().select('th', true).first().dom.innerHTML = year + '-' + (year + 9);
 //                                                .find('th:eq(1)')
 //                                                        .text(year + '-' + (year + 9))
 //                                                        .end()
@@ -9795,7 +9795,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 html += '<span class="year'+(i === -1 || i === 10 ? ' old' : '')+(currentYear === year ? ' active' : '')+'">'+year+'</span>';
                 year += 1;
         }
-        yearCont.select('td', true).first().dom.innerHTML(html);
+        yearCont.select('td', true).first().dom.innerHTML = html;
     },
     
     showMode: function(dir) {
