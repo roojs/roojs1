@@ -21,37 +21,6 @@ Roo.bootstrap.DateField = function(config){
 
 Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
-//    headTemplate : '<thead>'+
-//                                '<tr>'+
-//                                        '<th class="prev">&lsaquo;</th>'+
-//                                        '<th colspan="5" class="switch"></th>'+
-//                                        '<th class="next">&rsaquo;</th>'+
-//                                '</tr>'+
-//                        '</thead>',
-//    
-//    contTemplate : '<tbody><tr><td colspan="7"></td></tr></tbody>',
-//    
-//    template : '<div class="datepicker dropdown-menu">'+
-//                        '<div class="datepicker-days">'+
-//                                '<table class=" table-condensed">'+
-//                                        this.headTemplate+
-//                                        '<tbody></tbody>'+
-//                                '</table>'+
-//                        '</div>'+
-//                        '<div class="datepicker-months">'+
-//                                '<table class="table-condensed">'+
-//                                        this.headTemplate+
-//                                        this.contTemplate+
-//                                '</table>'+
-//                        '</div>'+
-//                        '<div class="datepicker-years">'+
-//                                '<table class="table-condensed">'+
-//                                        this.headTemplate+
-//                                        this.contTemplate+
-//                                '</table>'+
-//                        '</div>'+
-//                '</div>',
-         
     headTemplate : function()
     {
         var headTemplate = {
@@ -82,6 +51,26 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         }
         
         return headTemplate;
+    },
+    
+    contTemplate : function()
+    {
+        var contTemplate = {
+            tag: 'tbody',
+            cn: [
+                {
+                    tag: 'tr',
+                    cn: [
+                        {
+                            tag: 'td',
+                            colspan: '7'
+                        }
+                    ]
+                }
+            ]
+        }
+        
+        return contTemplate;
     },
     
     template : function()
@@ -137,7 +126,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             ]
         }
         
-        return template;
+        return new Roo.bootstrap.Element(template);
     },
 //    getAutoCreate : function(){
 //        var cfg = {
@@ -164,7 +153,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     {
         Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
         
-        this.picker = new Roo.this.template.appendTo(this.el);
+        this.picker = this.template().appendTo(this.el);
     },
     
     onFocus : function()
