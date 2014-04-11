@@ -149,6 +149,13 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.picker().show();
     },
     
+    onBlur : function()
+    {
+        Roo.bootstrap.DateField.superclass.onBlur.call(this);
+        Roo.log('onBlur !');
+        this.picker().hide();
+    }
+    
     picker : function()
     {
         return this.el.select('.datepicker', true).first();
