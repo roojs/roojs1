@@ -147,49 +147,7 @@ Roo.apply(Roo.bootstrap.DateField,  {
 });
 
 Roo.apply(Roo.bootstrap.DateField,  {
-    
-    head : {
-        tag: 'thead',
-        cn: [
-            {
-                tag: 'tr',
-                cn: [
-                    {
-                        tag: 'th',
-                        cls: 'prev',
-                        html: '&lsaquo;'
-                    },
-                    {
-                        tag: 'th',
-                        cls: 'switch',
-                        colspan: '5'
-                    },
-                    {
-                        tag: 'th',
-                        cls: 'next',
-                        html: '&rsaquo;'
-                    }
-
-                ]
-            }
-        ]
-    },
-    
-    content : {
-        tag: 'tbody',
-        cn: [
-            {
-                tag: 'tr',
-                cn: [
-                    {
-                        tag: 'td',
-                        colspan: '7'
-                    }
-                ]
-            }
-        ]
-    },
-    
+  
     template : {
         tag: 'div',
         cls: 'datepicker dropdown-menu',
