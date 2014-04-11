@@ -143,8 +143,6 @@ var DPGlobal = {
                         
 Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
-    
-    
 //    getAutoCreate : function(){
 //        var cfg = {
 //            tag: 'div',
