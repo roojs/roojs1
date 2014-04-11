@@ -184,7 +184,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         if (dir) {
                 this.viewMode = Math.max(this.minViewMode, Math.min(2, this.viewMode + dir));
         }
-        this.picker.find('>div').hide().filter('.datepicker-'+DPGlobal.modes[this.viewMode].clsName).show();
+        this.picker().select('>div',true).first().hide();
+        this.picker().select('.datepicker-'+Roo.bootstrap.DateField.modes[this.viewMode].clsName, true).first().show();
     },
     
     parseDate : function(value){
