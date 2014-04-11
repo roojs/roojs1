@@ -99,10 +99,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     },
     
     update: function(newDate){
-        this.date = this.parseDate(
-                typeof newDate === 'string' ? newDate : (this.isInput ? this.element.prop('value') : this.element.data('date')),
-                this.format
-        );
+        
+        this.date = (typeof(newDate) === 'undefined') ? new Date() : (typeof(newDate) === 'string') ? this.parseDate(newDate) : newDate;
+        
         this.viewDate = new Date(this.date.getFullYear(), this.date.getMonth(), 1, 0, 0, 0, 0);
         this.fill();
     },
