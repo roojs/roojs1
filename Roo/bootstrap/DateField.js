@@ -49,7 +49,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     {
         Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
         
-        this.el.createChild(Roo.bootstrap.DateField.template);
+        this.el.select('.input-group', true).first().createChild(Roo.bootstrap.DateField.template);
         this.fillDow();
         this.fillMonths();
         this.update();
