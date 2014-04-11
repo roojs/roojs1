@@ -59,7 +59,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     fillDow: function()
     {
-        var dowCnt = 1;
+        var dowCnt = this.weekStart;
         
         var dow = {
             tag: 'tr',
