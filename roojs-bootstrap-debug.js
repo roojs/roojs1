@@ -9678,10 +9678,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         var dowCnt = this.weekStart;
         var html = '<tr>';
         while (dowCnt < this.weekStart + 7) {
-                html += '<th class="dow">'+DPGlobal.dates.daysMin[(dowCnt++)%7]+'</th>';
+                html += '<th class="dow">'+Roo.bootstrap.DateField.dates.daysMin[(dowCnt++)%7]+'</th>';
         }
         html += '</tr>';
-        this.picker.find('.datepicker-days thead').append(html);
+        this.picker().find('.datepicker-days thead').append(html);
     },
     
     show : function()
@@ -9760,6 +9760,14 @@ Roo.apply(Roo.bootstrap.DateField,  {
                 ]
             }
         ]
+    },
+    
+    dates:{
+            days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            daysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+            daysMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
+            months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+            monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     }
 });
 
