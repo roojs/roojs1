@@ -195,6 +195,15 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.picker().select('.datepicker-'+Roo.bootstrap.DateField.modes[this.viewMode].clsName, true).first().show();
     },
     
+    place: function()
+    {
+        var offset = this.el ? this.el.offset() : this.el.offset();
+        this.picker.css({
+                top: offset.top + this.height,
+                left: offset.left
+        });
+    },
+    
     parseDate : function(value){
         if(!value || value instanceof Date){
             return value;
