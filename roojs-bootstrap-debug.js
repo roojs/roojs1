@@ -9682,7 +9682,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 html += '<th class="dow">'+Roo.bootstrap.DateField.dates.daysMin[(dowCnt++)%7]+'</th>';
         }
         html += '</tr>';
-        Roo.log(Roo.get(html));
+        Roo.log(html);
         Roo.log(this.picker().select('.datepicker-days thead', true).first());
         this.picker().select('.datepicker-days thead', true).first().insertAfter(html);
     },
