@@ -21,36 +21,44 @@ Roo.bootstrap.DateField = function(config){
 
 Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
-    headTemplate : '<thead>'+
-                                '<tr>'+
-                                        '<th class="prev">&lsaquo;</th>'+
-                                        '<th colspan="5" class="switch"></th>'+
-                                        '<th class="next">&rsaquo;</th>'+
-                                '</tr>'+
-                        '</thead>',
-    
-    contTemplate : '<tbody><tr><td colspan="7"></td></tr></tbody>',
-    
-    template : '<div class="datepicker dropdown-menu">'+
-                        '<div class="datepicker-days">'+
-                                '<table class=" table-condensed">'+
-                                        this.headTemplate+
-                                        '<tbody></tbody>'+
-                                '</table>'+
-                        '</div>'+
-                        '<div class="datepicker-months">'+
-                                '<table class="table-condensed">'+
-                                        this.headTemplate+
-                                        this.contTemplate+
-                                '</table>'+
-                        '</div>'+
-                        '<div class="datepicker-years">'+
-                                '<table class="table-condensed">'+
-                                        this.headTemplate+
-                                        this.contTemplate+
-                                '</table>'+
-                        '</div>'+
-                '</div>',
+//    headTemplate : '<thead>'+
+//                                '<tr>'+
+//                                        '<th class="prev">&lsaquo;</th>'+
+//                                        '<th colspan="5" class="switch"></th>'+
+//                                        '<th class="next">&rsaquo;</th>'+
+//                                '</tr>'+
+//                        '</thead>',
+//    
+//    contTemplate : '<tbody><tr><td colspan="7"></td></tr></tbody>',
+//    
+//    template : '<div class="datepicker dropdown-menu">'+
+//                        '<div class="datepicker-days">'+
+//                                '<table class=" table-condensed">'+
+//                                        this.headTemplate+
+//                                        '<tbody></tbody>'+
+//                                '</table>'+
+//                        '</div>'+
+//                        '<div class="datepicker-months">'+
+//                                '<table class="table-condensed">'+
+//                                        this.headTemplate+
+//                                        this.contTemplate+
+//                                '</table>'+
+//                        '</div>'+
+//                        '<div class="datepicker-years">'+
+//                                '<table class="table-condensed">'+
+//                                        this.headTemplate+
+//                                        this.contTemplate+
+//                                '</table>'+
+//                        '</div>'+
+//                '</div>',
+            
+    DateFieldTemplate : function()
+    {
+        var cfg = {
+            tag: 'div',
+            cls: 'datepicker dropdown-menu'
+        }
+    },
 //    getAutoCreate : function(){
 //        var cfg = {
 //            tag: 'div',
@@ -76,7 +84,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     {
         Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
         
-        this.picker = this.template.appendTo(this.el);
+        this.picker = new Roo.this.template.appendTo(this.el);
     },
     
     onFocus : function()
