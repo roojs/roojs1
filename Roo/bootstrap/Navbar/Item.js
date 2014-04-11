@@ -15,7 +15,7 @@
  * @cfg {String} glyphicon name of glyphicon
  * @cfg {String} icon name of font awesome icon
  * @cfg {Boolena} active Is item active
- * @cfg {Boolean} preventDefault (true | false) default true
+ * @cfg {Boolean} preventDefault (true | false) default false
   
  * @constructor
  * Create a new Navbar Button
