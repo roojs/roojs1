@@ -210,6 +210,98 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 
 Roo.apply(Roo.bootstrap.DateField,  {
     
+    dateFieldHead : {
+        tag: 'thead',
+        cn: [
+            {
+                tag: 'tr',
+                cn: [
+                    {
+                        tag: 'th',
+                        cls: 'prev',
+                        html: '&lsaquo;'
+                    },
+                    {
+                        tag: 'th',
+                        cls: 'switch',
+                        colspan: '5'
+                    },
+                    {
+                        tag: 'th',
+                        cls: 'next',
+                        html: '&rsaquo;'
+                    }
+
+                ]
+            }
+        ]
+    },
+    
+    dateFieldCont : {
+        tag: 'tbody',
+        cn: [
+            {
+                tag: 'tr',
+                cn: [
+                    {
+                        tag: 'td',
+                        colspan: '7'
+                    }
+                ]
+            }
+        ]
+    },
+    
+    dateFieldTemplate : {
+        tag: 'div',
+        cls: 'datepicker dropdown-menu',
+        cn: [
+            {
+                tag: 'div',
+                cls: 'datepicker-days',
+                cn: [
+                    {
+                        tag: 'table',
+                        cls: 'table-condensed',
+                        cn:[
+                            this.dateFieldHead(),
+                            {
+                                tag: 'tbody'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                tag: 'div',
+                cls: 'datepicker-months',
+                cn: [
+                    {
+                        tag: 'table',
+                        cls: 'table-condensed',
+                        cn:[
+                            this.dateFieldHead(),
+                            this.dateFieldCont()
+                        ]
+                    }
+                ]
+            },
+            {
+                tag: 'div',
+                cls: 'datepicker-years',
+                cn: [
+                    {
+                        tag: 'table',
+                        cls: 'table-condensed',
+                        cn:[
+                            this.dateFieldHead(),
+                            this.dateFieldCont()
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
 });
 
  
