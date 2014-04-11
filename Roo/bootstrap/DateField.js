@@ -54,7 +54,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
          
     headTemplate : function()
     {
-        var head = {
+        var headTemplate = {
             tag: 'thead',
             cn: [
                 {
@@ -80,6 +80,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 }
             ]
         }
+        
+        return headTemplate;
     },
     
     template : function()
