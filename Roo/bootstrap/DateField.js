@@ -57,8 +57,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.fillMonths();
         this.update();
         this.showMode();
-//        Roo.log(this.template().render(ct).el);
-//        this.picker = this.template().render(ct).el.appendTo(this.el);
     },
     
     picker : function()
