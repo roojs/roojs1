@@ -70,6 +70,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     show : function()
     {
         this.picker().show();
+        this.fillDow();
     },
     
     hide : function()
