@@ -8404,7 +8404,7 @@
     {
      "name": "preventDefault",
      "type": "Boolean",
-     "desc": "(true | false) default true",
+     "desc": "(true | false) default false",
      "memberOf": ""
     },
     {
