@@ -7,7 +7,7 @@
 
 /**
  * @class Roo.bootstrap.DateField
- * @extends Roo.bootstrap.TriggerField
+ * @extends Roo.bootstrap.Component
  * Bootstrap DateField class
  * 
  * @constructor
@@ -19,7 +19,7 @@ Roo.bootstrap.DateField = function(config){
     Roo.bootstrap.DateField.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.TriggerField,  {
+Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Component,  {
     
     
     getAutoCreate : function(){
