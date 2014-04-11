@@ -68,7 +68,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         Roo.log(this.picker().select('.datepicker-days thead', true).first());
         
-        this.picker().select('.datepicker-days thead', true).first().insertAfter(html);
+        this.picker().select('.datepicker-days thead', true).first().appendChild(html);
     },
     
     show : function()
