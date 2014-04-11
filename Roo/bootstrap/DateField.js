@@ -19,9 +19,7 @@ Roo.bootstrap.DateField = function(config){
     Roo.bootstrap.DateField.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
-    
-    var DPGlobal = {
+var DPGlobal = {
 //		modes: [
 //			{
 //				clsName: 'days',
@@ -142,6 +140,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                                             '</table>'+
                                     '</div>'+
                             '</div>';
+                        
+Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
+    
+    
     
 //    getAutoCreate : function(){
 //        var cfg = {
