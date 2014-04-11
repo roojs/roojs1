@@ -9683,7 +9683,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         }
         html += '</tr>';
         Roo.log(this.picker().select('.datepicker-days thead', true).first());
-        this.picker().select('.datepicker-days thead', true).first().append(html);
+        this.picker().select('.datepicker-days thead', true).first().appendChild(html);
     },
     
     show : function()
