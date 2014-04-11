@@ -131,9 +131,25 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     template : function()
     {
-        new Roo.bootstrap.Element (this.dateFieldTemplate()); 
+        return new Roo.bootstrap.Element (this.dateFieldTemplate()); 
+    },
+
+    
+    onRender: function(ct, position)
+    {
+        Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
+        Roo.log(new Roo.bootstrap.Element(this.template()));
+        this.picker = new Roo.bootstrap.Element(this.template()).appendTo(this.el);
+    },
+    
+    onFocus : function()
+    {
+        Roo.bootstrap.DateField.superclass.onFocus.call(this);
+        Roo.log('onFocus !');
     }
-//    getAutoCreate : function(){
+    
+    
+    //    getAutoCreate : function(){
 //        var cfg = {
 //            tag: 'div',
 //            cls: 'input-append date',
@@ -153,19 +169,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 //        
 //        return cfg;
 //    }
-    
-    onRender: function(ct, position)
-    {
-        Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
-        Roo.log(new Roo.bootstrap.Element(this.template()));
-        this.picker = new Roo.bootstrap.Element(this.template()).appendTo(this.el);
-    },
-    
-    onFocus : function()
-    {
-        Roo.bootstrap.DateField.superclass.onFocus.call(this);
-        Roo.log('onFocus !');
-    }
    
 });
 
