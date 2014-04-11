@@ -194,7 +194,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 this.viewMode = Math.max(this.minViewMode, Math.min(2, this.viewMode + dir));
         }
         Roo.each(this.picker().select('>div',true).elements, function(v){
-//            v.setVisibilityMode(2);
+            v.setVisibilityMode(1);
             v.hide();
         });
         this.picker().select('.datepicker-'+Roo.bootstrap.DateField.modes[this.viewMode].clsName, true).first().show();
