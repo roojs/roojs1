@@ -130,7 +130,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         nextMonth.setDate(nextMonth.getDate() + 42);
         
-        nextMonth = nextMonth.getTime();
+        nextMonth = nextMonth.valueOf();
         
         Roo.log(nextMonth);
 //        var html = [];
