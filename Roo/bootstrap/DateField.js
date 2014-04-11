@@ -33,6 +33,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
         
         this.el.createChild(Roo.bootstrap.DateField.template, position);
+        this.fillDow();
 //        Roo.log(this.template().render(ct).el);
 //        this.picker = this.template().render(ct).el.appendTo(this.el);
     },
@@ -70,7 +71,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     show : function()
     {
         this.picker().show();
-        this.fillDow();
+        
     },
     
     hide : function()
