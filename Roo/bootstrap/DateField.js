@@ -51,7 +51,37 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 //                                '</table>'+
 //                        '</div>'+
 //                '</div>',
-            
+         
+    headTemplate : function()
+    {
+        var head = {
+            tag: 'thead',
+            cn: [
+                {
+                    tag: 'tr',
+                    cn: [
+                        {
+                            tag: 'th',
+                            cls: 'prev',
+                            html: '&lsaquo;'
+                        },
+                        {
+                            tag: 'th',
+                            cls: 'switch',
+                            colspan: '5'
+                        },
+                        {
+                            tag: 'th',
+                            cls: 'next',
+                            html: '&rsaquo;'
+                        }
+                        
+                    ]
+                }
+            ]
+        }
+    },
+    
     template : function()
     {
         var template = {
@@ -104,6 +134,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 }
             ]
         }
+        
+        return template;
     },
 //    getAutoCreate : function(){
 //        var cfg = {
