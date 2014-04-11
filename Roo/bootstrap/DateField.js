@@ -42,11 +42,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 //        
 //        return cfg;
 //    }
-
-    initEvents : function() 
-    {
-        this.inputEl().on('focus', this.onFocus, this);
-    },
     
     onFocus : function()
     {
