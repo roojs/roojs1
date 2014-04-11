@@ -222,4 +222,4 @@ Roo.bootstrap.ProgressBar=function(A){Roo.bootstrap.ProgressBar.superclass.const
 //Roo/bootstrap/TabPanel.js
 Roo.bootstrap.TabPanel=function(A){Roo.bootstrap.TabPanel.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.TabPanel,Roo.bootstrap.Component,{active:false,html:false,tabId:false,getAutoCreate:function(){var A={tag:'div',cls:'tab-pane',html:this.html||''};if(this.active){A.cls+=' active';}if(this.tabId){A.tabId=this.tabId;}return A;}});
 //Roo/bootstrap/DateField.js
-Roo.bootstrap.DateField=function(A){Roo.bootstrap.DateField.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.DateField,Roo.bootstrap.Input,{initEvents:function(){this.inputEl().on('focus',this.onFocus,this);},onFocus:function(){Roo.log('onFocus');}});
+Roo.bootstrap.DateField=function(A){Roo.bootstrap.DateField.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.DateField,Roo.bootstrap.Input,{onFocus:function(){Roo.log('onFocus');}});
