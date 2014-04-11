@@ -7,7 +7,7 @@
 
 /**
  * @class Roo.bootstrap.Element
- * @extends Roo.Element
+ * @extends Roo.bootstrap.Component
  * Bootstrap Element class
  * @cfg {String} html contents of the element
  * @cfg {String} tag tag of the element
@@ -22,7 +22,7 @@ Roo.bootstrap.Element = function(config){
     Roo.bootstrap.Element.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.Element, Roo.Element,  {
+Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
     
     tag: 'div',
     cls: '',
