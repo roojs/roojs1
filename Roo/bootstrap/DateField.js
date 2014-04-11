@@ -48,7 +48,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     ]
                 }
             ]
-        }
+        };
         
         return dateFieldHead;
     },
@@ -68,7 +68,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     ]
                 }
             ]
-        }
+        };
         
         return dateFieldCont;
     },
