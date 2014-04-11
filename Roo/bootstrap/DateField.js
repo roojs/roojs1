@@ -178,7 +178,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 html += '<span class="year'+(i === -1 || i === 10 ? ' old' : '')+(currentYear === year ? ' active' : '')+'">'+year+'</span>';
                 year += 1;
         }
-        yearCont.select('td', true).first().innerHTML(html);
+        yearCont.select('td', true).first().dom.innerHTML(html);
     },
     
     showMode: function(dir) {
