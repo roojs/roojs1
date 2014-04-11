@@ -127,8 +127,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         prevMonth.setDate(day - (prevMonth.getDay() - this.weekStart + 7)%7);
         
         var nextMonth = new Date(prevMonth);
-        Roo.log(nextMonth);
+        
         nextMonth.setDate(nextMonth.getDate() + 42);
+        Roo.log(nextMonth);
 //        nextMonth = nextMonth.valueOf();
 //        var html = [];
 //        var clsName,
