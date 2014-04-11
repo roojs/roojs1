@@ -9763,7 +9763,14 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     {
         Roo.bootstrap.DateField.superclass.onFocus.call(this);
         Roo.log('onFocus !');
+        this.picker().show();
+    },
+    
+    picker : function()
+    {
+        return this.el.select('.datepicker', true).first();
     }
+    
     
 //    getAutoCreate : function(){
 //        var cfg = {
