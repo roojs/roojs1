@@ -9638,36 +9638,113 @@ Roo.bootstrap.DateField = function(config){
 
 Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
-    headTemplate : '<thead>'+
-                                '<tr>'+
-                                        '<th class="prev">&lsaquo;</th>'+
-                                        '<th colspan="5" class="switch"></th>'+
-                                        '<th class="next">&rsaquo;</th>'+
-                                '</tr>'+
-                        '</thead>',
+    headTemplate : function()
+    {
+        var headTemplate = {
+            tag: 'thead',
+            cn: [
+                {
+                    tag: 'tr',
+                    cn: [
+                        {
+                            tag: 'th',
+                            cls: 'prev',
+                            html: '&lsaquo;'
+                        },
+                        {
+                            tag: 'th',
+                            cls: 'switch',
+                            colspan: '5'
+                        },
+                        {
+                            tag: 'th',
+                            cls: 'next',
+                            html: '&rsaquo;'
+                        }
+                        
+                    ]
+                }
+            ]
+        }
+        
+        return headTemplate;
+    },
     
-    contTemplate : '<tbody><tr><td colspan="7"></td></tr></tbody>',
+    contTemplate : function()
+    {
+        var contTemplate = {
+            tag: 'tbody',
+            cn: [
+                {
+                    tag: 'tr',
+                    cn: [
+                        {
+                            tag: 'td',
+                            colspan: '7'
+                        }
+                    ]
+                }
+            ]
+        }
+        
+        return contTemplate;
+    },
     
-    template : '<div class="datepicker dropdown-menu">'+
-                        '<div class="datepicker-days">'+
-                                '<table class=" table-condensed">'+
-                                        this.headTemplate+
-                                        '<tbody></tbody>'+
-                                '</table>'+
-                        '</div>'+
-                        '<div class="datepicker-months">'+
-                                '<table class="table-condensed">'+
-                                        this.headTemplate+
-                                        this.contTemplate+
-                                '</table>'+
-                        '</div>'+
-                        '<div class="datepicker-years">'+
-                                '<table class="table-condensed">'+
-                                        this.headTemplate+
-                                        this.contTemplate+
-                                '</table>'+
-                        '</div>'+
-                '</div>',
+    template : function()
+    {
+        var template = {
+            tag: 'div',
+            cls: 'datepicker dropdown-menu',
+            cn: [
+                {
+                    tag: 'div',
+                    cls: 'datepicker-days',
+                    cn: [
+                        {
+                            tag: 'table',
+                            cls: 'table-condensed',
+                            cn:[
+                                this.headTemplate(),
+                                {
+                                    tag: 'tbody'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    tag: 'div',
+                    cls: 'datepicker-months',
+                    cn: [
+                        {
+                            tag: 'table',
+                            cls: 'table-condensed',
+                            cn:[
+                                this.headTemplate(),
+                                this.contTemplate()
+                            ]
+                        }
+                    ]
+                },
+                {
+                    tag: 'div',
+                    cls: 'datepicker-years',
+                    cn: [
+                        {
+                            tag: 'table',
+                            cls: 'table-condensed',
+                            cn:[
+                                this.headTemplate(),
+                                this.contTemplate()
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+        
+        return template;
+    },
 //    getAutoCreate : function(){
 //        var cfg = {
 //            tag: 'div',
@@ -9693,7 +9770,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     {
         Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
         
-        this.picker = this.template.appendTo(this.el);
+        this.picker = new Roo.bootstrap.Element(this.template()).appendTo(this.el);
     },
     
     onFocus : function()
