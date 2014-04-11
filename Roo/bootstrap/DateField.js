@@ -193,7 +193,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         if (dir) {
                 this.viewMode = Math.max(this.minViewMode, Math.min(2, this.viewMode + dir));
         }
-        this.picker().select('>div',true).first().hide();
+        this.picker().select('div',true).first().hide();
         this.picker().select('.datepicker-'+Roo.bootstrap.DateField.modes[this.viewMode].clsName, true).first().show();
     },
     
