@@ -9646,7 +9646,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.TriggerField,  {
             cn: [
                 {
                     tag: 'input',
-                    cls: 'span2'
+                    cls: 'span2 form-control'
                 },
                 {
                     tag: 'span',
