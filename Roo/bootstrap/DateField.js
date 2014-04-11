@@ -126,7 +126,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             ]
         }
         
-        return new Roo.bootstrap.Element(template);
+        return template;
     },
 //    getAutoCreate : function(){
 //        var cfg = {
@@ -153,7 +153,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     {
         Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
         
-        this.picker = this.template().appendTo(this.el);
+        this.picker = new Roo.bootstrap.Element(this.template()).appendTo(this.el);
     },
     
     onFocus : function()
