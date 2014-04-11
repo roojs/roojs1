@@ -61,16 +61,22 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     {
         var dowCnt = this.weekStart;
         
-        var html = '<tr>';
+        var dow = {
+            tag: 'tr',
+            cn: [
+                
+            ]
+        };
         
         while (dowCnt < this.weekStart + 7) {
-                html += '<th class="dow">'+Roo.bootstrap.DateField.dates.daysMin[(dowCnt++)%7]+'</th>';
+                dow.cn.push({
+                    tag: 'th',
+                    cls: 'dow',
+                    html: Roo.bootstrap.DateField.dates.daysMin[(dowCnt++)%7]
+                });
         }
-        html += '</tr>';
         
-        Roo.log(this.picker().select('.datepicker-days thead', true).first());
-        
-        this.picker().select('.datepicker-days thead', true).first().createChild(html);
+        this.picker().select('.datepicker-days thead', true).first().createChild(dow);
     },
     
     show : function()
