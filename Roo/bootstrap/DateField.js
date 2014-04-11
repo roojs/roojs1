@@ -21,7 +21,7 @@ Roo.bootstrap.DateField = function(config){
 
 Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
-    var headTemplate : '<thead>'+
+    headTemplate : '<thead>'+
                                 '<tr>'+
                                         '<th class="prev">&lsaquo;</th>'+
                                         '<th colspan="5" class="switch"></th>'+
@@ -29,9 +29,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                                 '</tr>'+
                         '</thead>',
     
-    var contTemplate : '<tbody><tr><td colspan="7"></td></tr></tbody>',
+    contTemplate : '<tbody><tr><td colspan="7"></td></tr></tbody>',
     
-    var template : '<div class="datepicker dropdown-menu">'+
+    template : '<div class="datepicker dropdown-menu">'+
                         '<div class="datepicker-days">'+
                                 '<table class=" table-condensed">'+
                                         this..headTemplate+
