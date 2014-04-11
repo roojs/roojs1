@@ -52,11 +52,57 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 //                        '</div>'+
 //                '</div>',
             
-    DateFieldTemplate : function()
+    template : function()
     {
-        var cfg = {
+        var template = {
             tag: 'div',
-            cls: 'datepicker dropdown-menu'
+            cls: 'datepicker dropdown-menu',
+            cn: [
+                {
+                    tag: 'div',
+                    cls: 'datepicker-days',
+                    cn: [
+                        {
+                            tag: 'table',
+                            cls: 'table-condensed',
+                            cn:[
+                                this.headTemplate(),
+                                {
+                                    tag: 'tbody'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    tag: 'div',
+                    cls: 'datepicker-months',
+                    cn: [
+                        {
+                            tag: 'table',
+                            cls: 'table-condensed',
+                            cn:[
+                                this.headTemplate(),
+                                this.contTemplate()
+                            ]
+                        }
+                    ]
+                },
+                {
+                    tag: 'div',
+                    cls: 'datepicker-years',
+                    cn: [
+                        {
+                            tag: 'table',
+                            cls: 'table-condensed',
+                            cn:[
+                                this.headTemplate(),
+                                this.contTemplate()
+                            ]
+                        }
+                    ]
+                }
+            ]
         }
     },
 //    getAutoCreate : function(){
