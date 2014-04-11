@@ -9747,35 +9747,35 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         nextMonth.setDate(nextMonth.getDate() + 42);
         
-        nextMonth = nextMonth.getTime();
+        nextMonth = nextMonth.valueOf();
         
-        Roo.log(nextMonth);
-//        var html = [];
-//        var clsName,
-//                prevY,
-//                prevM;
-//        while(prevMonth.valueOf() < nextMonth) {
-//                if (prevMonth.getDay() === this.weekStart) {
-//                        html.push('<tr>');
-//                }
+        var html = [];
+        var clsName = '',
+                prevY,
+                prevM;
+        
+        while(prevMonth.valueOf() < nextMonth) {
+                if (prevMonth.getDay() === this.weekStart) {
+                        html.push('<tr>');
+                }
 //                clsName = this.onRender(prevMonth);
-//                prevY = prevMonth.getFullYear();
-//                prevM = prevMonth.getMonth();
-//                if ((prevM < month &&  prevY === year) ||  prevY < year) {
-//                        clsName += ' old';
-//                } else if ((prevM > month && prevY === year) || prevY > year) {
-//                        clsName += ' new';
-//                }
-//                if (prevMonth.valueOf() === currentDate) {
-//                        clsName += ' active';
-//                }
-//                html.push('<td class="day '+clsName+'">'+prevMonth.getDate() + '</td>');
-//                if (prevMonth.getDay() === this.weekEnd) {
-//                        html.push('</tr>');
-//                }
-//                prevMonth.setDate(prevMonth.getDate()+1);
-//        }
-//        this.picker().select('.datepicker-days tbody',true).first().empty().createChild(html.join(''));
+                prevY = prevMonth.getFullYear();
+                prevM = prevMonth.getMonth();
+                if ((prevM < month &&  prevY === year) ||  prevY < year) {
+                        clsName += ' old';
+                } else if ((prevM > month && prevY === year) || prevY > year) {
+                        clsName += ' new';
+                }
+                if (prevMonth.valueOf() === currentDate) {
+                        clsName += ' active';
+                }
+                html.push('<td class="day '+clsName+'">'+prevMonth.getDate() + '</td>');
+                if (prevMonth.getDay() === this.weekEnd) {
+                        html.push('</tr>');
+                }
+                prevMonth.setDate(prevMonth.getDate()+1);
+        }
+        this.picker().select('.datepicker-days tbody',true).first().empty().createChild(html.join(''));
 //        
 //        var currentYear = this.date.getFullYear();
 //
