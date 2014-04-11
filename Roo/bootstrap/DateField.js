@@ -146,6 +146,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     {
         Roo.bootstrap.DateField.superclass.onFocus.call(this);
         Roo.log('onFocus !');
+        this.picker().show();
     },
     
     picker : function()
