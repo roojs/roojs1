@@ -6446,18 +6446,6 @@
   "Roo.bootstrap.DateField": {
    "props": [
     {
-     "name": "triggerClass",
-     "type": "String",
-     "desc": "An additional CSS class used to style the trigger button.  The trigger will always get the\nclass 'x-form-trigger' by default and triggerClass will be <b>appended</b> if specified.",
-     "memberOf": "Roo.bootstrap.TriggerField"
-    },
-    {
-     "name": "hideTrigger",
-     "type": "Boolean",
-     "desc": "True to hide the trigger element and display only the base text field (defaults to false)",
-     "memberOf": "Roo.bootstrap.TriggerField"
-    },
-    {
      "name": "disabled",
      "type": "Boolean",
      "desc": "is it disabled",
