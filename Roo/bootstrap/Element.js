@@ -22,7 +22,7 @@ Roo.bootstrap.Element = function(config){
     Roo.bootstrap.Element.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.Element, Roo.Element,  {
+Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
     
     tag: 'div',
     cls: '',
