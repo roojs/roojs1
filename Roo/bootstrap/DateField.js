@@ -10,22 +10,22 @@
  */
  
 /**
- * @class Roo.form.DateField
- * @extends Roo.form.TriggerField
+ * @class Roo.bootstrap.DateField
+ * @extends Roo.bootstrap.TriggerField
  * Provides a date input field with a {@link Roo.DatePicker} dropdown and automatic date validation.
 * @constructor
 * Create a new DateField
 * @param {Object} config
  */
-Roo.form.DateField = function(config){
-    Roo.form.DateField.superclass.constructor.call(this, config);
+Roo.bootstrap.DateField = function(config){
+    Roo.bootstrap.DateField.superclass.constructor.call(this, config);
     
       this.addEvents({
          
         /**
          * @event select
          * Fires when a date is selected
-	     * @param {Roo.form.DateField} combo This combo box
+	     * @param {Roo.bootstrap.DateField} combo This combo box
 	     * @param {Date} date The date selected
 	     */
         'select' : true
@@ -47,7 +47,7 @@ Roo.form.DateField = function(config){
     }
 };
 
-Roo.extend(Roo.form.DateField, Roo.form.TriggerField,  {
+Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.TriggerField,  {
     /**
      * @cfg {String} format
      * The default date format string which can be overriden for localization support.  The format must be
@@ -148,7 +148,7 @@ Roo.extend(Roo.form.DateField, Roo.form.TriggerField,  {
     
     onRender : function(ct, position)
     {
-        Roo.form.DateField.superclass.onRender.call(this, ct, position);
+        Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
         if (this.useIso) {
             //this.el.dom.removeAttribute('name'); 
             Roo.log("Changing name?");
@@ -167,7 +167,7 @@ Roo.extend(Roo.form.DateField, Roo.form.TriggerField,  {
     validateValue : function(value)
     {
         value = this.formatDate(value);
-        if(!Roo.form.DateField.superclass.validateValue.call(this, value)){
+        if(!Roo.bootstrap.DateField.superclass.validateValue.call(this, value)){
             Roo.log('super failed');
             return false;
         }
@@ -229,7 +229,7 @@ Roo.extend(Roo.form.DateField, Roo.form.TriggerField,  {
         
         return  this.hiddenField ?
                 this.hiddenField.value :
-                this.parseDate(Roo.form.DateField.superclass.getValue.call(this)) || "";
+                this.parseDate(Roo.bootstrap.DateField.superclass.getValue.call(this)) || "";
     },
 
     /**
@@ -257,7 +257,7 @@ dateField.setValue('2006-5-4');
         if (this.hiddenField) {
             this.hiddenField.value = this.formatDate(this.parseDate(date), 'Y-m-d');
         }
-        Roo.form.DateField.superclass.setValue.call(this, this.formatDate(this.parseDate(date)));
+        Roo.bootstrap.DateField.superclass.setValue.call(this, this.formatDate(this.parseDate(date)));
         // make sure the value field is always stored as a date..
         this.value = this.parseDate(date);
         
