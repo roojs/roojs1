@@ -119,7 +119,29 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                                     '</tr>'+
                             '</thead>',
 		contTemplate: '<tbody><tr><td colspan="7"></td></tr></tbody>'
+                
 	};
+        
+        DPGlobal.template = '<div class="datepicker dropdown-menu">'+
+                                    '<div class="datepicker-days">'+
+                                            '<table class=" table-condensed">'+
+                                                    DPGlobal.headTemplate+
+                                                    '<tbody></tbody>'+
+                                            '</table>'+
+                                    '</div>'+
+                                    '<div class="datepicker-months">'+
+                                            '<table class="table-condensed">'+
+                                                    DPGlobal.headTemplate+
+                                                    DPGlobal.contTemplate+
+                                            '</table>'+
+                                    '</div>'+
+                                    '<div class="datepicker-years">'+
+                                            '<table class="table-condensed">'+
+                                                    DPGlobal.headTemplate+
+                                                    DPGlobal.contTemplate+
+                                            '</table>'+
+                                    '</div>'+
+                            '</div>';
     
 //    getAutoCreate : function(){
 //        var cfg = {
