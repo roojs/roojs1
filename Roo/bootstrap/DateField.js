@@ -7,7 +7,7 @@
 
 /**
  * @class Roo.bootstrap.DateField
- * @extends Roo.bootstrap.Component
+ * @extends Roo.bootstrap.TriggerField
  * Bootstrap DateField class
  * 
  * @constructor
@@ -19,7 +19,7 @@ Roo.bootstrap.DateField = function(config){
     Roo.bootstrap.DateField.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.TriggerField,  {
     
     
     getAutoCreate : function(){
@@ -29,11 +29,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Component,  {
             cn: [
                 {
                     tag: 'input',
-                    cls: 'span2'
+                    cls: 'span2 form-control'
                 },
                 {
                     tag: 'span',
-                    cls: 'add-on',
+                    cls: 'add-on dropdown-toggle',
                     html: '<i class="icon-th"></i>'
                 }
             ]
@@ -41,12 +41,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Component,  {
         };
         
         return cfg;
-    },
-    
-    initEvents: function(){
-        
-        Roo.bootstrap.DateField.superclass.initEvents.call(this);
-        
     }
    
 });
