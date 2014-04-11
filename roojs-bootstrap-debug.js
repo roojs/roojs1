@@ -9745,17 +9745,16 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         return dateFieldTemplate;
     },
-    
-    template : function()
-    {
-        return new Roo.bootstrap.Element (this.dateFieldTemplate()); 
-    },
+//    
+//    template : function()
+//    {
+//        return new Roo.bootstrap.Element (this.dateFieldTemplate()); 
+//    },
     
     onRender: function(ct, position)
     {
         Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
-        Roo.log('ct');
-        Roo.log(ct);
+        this.el.createChild(this.dateFieldTemplate(), position);
 //        Roo.log(this.template().render(ct).el);
 //        this.picker = this.template().render(ct).el.appendTo(this.el);
     },
