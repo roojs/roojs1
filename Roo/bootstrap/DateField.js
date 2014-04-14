@@ -283,8 +283,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         Roo.log(target.nodeName);
         Roo.log(target.className);
         
-        var input = this.el.select('input', true).first();
-        
         switch(target.nodeName.toLowerCase()) {
                 case 'th':
                         switch(target.className) {
@@ -299,7 +297,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                                                 Roo.bootstrap.DateField.modes[this.viewMode].navStep * (target.className === 'prev' ? -1 : 1)
                                         );
                                         this.fill();
-                                        input.setVaule(this.date);
+                                        this.setVaule(this.date);
                                         break;
                         }
                         break;
