@@ -10109,9 +10109,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 break;
             case 37: // left
             case 39: // right
-                Roo.log('here');
                 if (!this.keyboardNavigation) break;
-                Roo.log('out');
                 dir = e.keyCode == 37 ? -1 : 1;
                 
                 if (e.ctrlKey){
@@ -10129,7 +10127,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 if (this.dateWithinRange(newDate)){
                     this.date = newDate;
                     this.viewDate = newViewDate;
-                    this.setValue();
+                    this.setValue(this.formatDate(this.date));
                     this.update();
                     e.preventDefault();
                     dateChanged = true;
@@ -10154,7 +10152,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 if (this.dateWithinRange(newDate)){
                     this.date = newDate;
                     this.viewDate = newViewDate;
-                    this.setValue();
+                    this.setValue(this.formatDate(this.date));
                     this.update();
                     e.preventDefault();
                     dateChanged = true;
