@@ -173,7 +173,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
           
         var currentYear = this.date.getFullYear();
         var currentMonth = this.date.getMonth();
-
+////
         this.picker().select('.datepicker-months th.switch',true).first().dom.innerHTML = year;
         
         Roo.each(this.picker().select('>.datepicker-months tbody span',true).elements, function(v,k){
@@ -184,8 +184,17 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             }
         });
         
+////                                .find('th:eq(1)')
+////                                        .text(year)
+////                                        .end()
+////                                .find('span').removeClass('active');
+//        if (currentYear === year) {
+//                months.eq(this.date.getMonth()).addClass('active');
+//        }
+//
 //        html = '';
-//        year = parseInt(year/10, 10) * 10;
+        year = parseInt(year/10, 10) * 10;
+        Roo.log(year);
 //        var yearCont = this.picker().select('.datepicker-years', true).first().select('th', true).first().dom.innerHTML = year + '-' + (year + 9);
 ////                                                .find('th:eq(1)')
 ////                                                        .text(year + '-' + (year + 9))
