@@ -558,7 +558,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             this._events = [
             [this.el, {
                 keyup: this.update,
-                keydown: this.keydown,
+                keydown: this.onKeydown,
                 click: this.show
             }]
             ];
