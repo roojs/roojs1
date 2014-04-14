@@ -223,7 +223,13 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         this.date = (typeof(newDate) === 'undefined') ? new Date() : (typeof(newDate) === 'string') ? this.parseDate(newDate) : newDate;
         
-        this.viewDate = new Date(this.date.getFullYear(), this.date.getMonth(), 1, 0, 0, 0, 0);
+        if (this.date < this.startDate) {
+            this.viewDate = new Date(this.startDate);
+        } else if (this.date > this.endDate) {
+            this.viewDate = new Date(this.endDate);
+        } else {
+            this.viewDate = new Date(this.date);
+        }
         
         this.fill();
     },
