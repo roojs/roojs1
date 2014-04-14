@@ -48,6 +48,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     todayHighlight : false,
     
+    language: 'en',
+    
     UTCDate: function()
     {
         return new Date(Date.UTC.apply(Date, arguments));
