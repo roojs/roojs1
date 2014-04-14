@@ -307,14 +307,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     },
     
     onClick: function(e) {
-        Roo.log('click');
-        Roo.log(e);
-        var target = e.getTarget();
-        Roo.log(target);
         
-        Roo.log(target.nodeName);
-        Roo.log(target.className);
-        Roo.log(target.innerHTML);
+        var target = e.getTarget();
         
         var nodeName = target.nodeName;
         var className = target.className;
