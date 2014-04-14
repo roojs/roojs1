@@ -10181,6 +10181,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         Roo.log(nodeName);
         Roo.log(className);
         Roo.log(html);
+        
         switch(nodeName.toLowerCase()) {
             case 'th':
                 switch(className) {
