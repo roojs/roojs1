@@ -9729,7 +9729,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.date = (typeof(newDate) === 'undefined') ? new Date() : (typeof(newDate) === 'string') ? this.parseDate(newDate) : newDate;
         
         this.viewDate = new Date(this.date.getFullYear(), this.date.getMonth(), 1, 0, 0, 0, 0);
-        Roo.log(this.viewDate);
+        
         this.fill();
     },
     
@@ -9904,14 +9904,13 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                                         break;
                                 case 'prev':
                                 case 'next':
-                                        Roo.log(this.date);
-//                                        this.viewDate['set'+DPGlobal.modes[this.viewMode].navFnc].call(
-//                                                this.viewDate,
-//                                                this.viewDate['get'+DPGlobal.modes[this.viewMode].navFnc].call(this.viewDate) + 
-//                                                DPGlobal.modes[this.viewMode].navStep * (target[0].className === 'prev' ? -1 : 1)
-//                                        );
-//                                        this.fill();
-//                                        this.set();
+                                        this.viewDate['set'+Roo.bootstrap.DateField.modes[this.viewMode].navFnc].call(
+                                                this.viewDate,
+                                                this.viewDate['get'+Roo.bootstrap.DateField.modes[this.viewMode].navFnc].call(this.viewDate) + 
+                                                Roo.bootstrap.DateField.modes[this.viewMode].navStep * (target.className === 'prev' ? -1 : 1)
+                                        );
+                                        this.fill();
+                                        this.set();
                                         break;
                         }
                         break;
