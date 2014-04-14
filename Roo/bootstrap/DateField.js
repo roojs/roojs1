@@ -443,6 +443,23 @@ Roo.apply(Roo.bootstrap.DateField,  {
         ]
     },
     
+    footer : {
+        tag: 'tfoot',
+        cn: [
+            {
+                tag: 'tr',
+                cn: [
+                    {
+                        tag: 'th',
+                        colspan: '7',
+                        cls: 'today'
+                    }
+                    
+                ]
+            }
+        ]
+    },
+    
     dates:{
             days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
             daysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
