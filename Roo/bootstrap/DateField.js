@@ -135,7 +135,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         nextMonth = nextMonth.valueOf();
         
         var html = false;
-        var fillMonths = {};
+        var fillMonths = [];
         
         while(prevMonth.valueOf() < nextMonth) {
             var clsName = '';
@@ -179,9 +179,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             prevMonth.setDate(prevMonth.getDate()+1);
         }
         
-        Roo.log(html);
+        Roo.log(fillMonths);
 //        this.picker().select('.datepicker-days tbody',true).first().innerHTML = '';
-        this.picker().select('.datepicker-days tbody',true).first().createChild(html);
+        this.picker().select('.datepicker-days tbody',true).first().createChild(fillMonths);
 //        
 //        var currentYear = this.date.getFullYear();
 ////
