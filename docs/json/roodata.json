@@ -6446,6 +6446,24 @@
   "Roo.bootstrap.DateField": {
    "props": [
     {
+     "name": "weekStart",
+     "type": "Number",
+     "desc": "default 0",
+     "memberOf": ""
+    },
+    {
+     "name": "viewMode",
+     "type": "viewMode",
+     "desc": "default empty, (months|years)",
+     "memberOf": ""
+    },
+    {
+     "name": "minViewMode",
+     "type": "minViewMode",
+     "desc": "default empty, (months|years)",
+     "memberOf": ""
+    },
+    {
      "name": "format",
      "type": "String",
      "desc": "The default date format string which can be overriden for localization support.  The format must be\nvalid according to {@link Date#parseDate} (defaults to 'm/d/y').",
