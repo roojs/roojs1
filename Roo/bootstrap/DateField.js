@@ -221,9 +221,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     place: function()
     {
-        Roo.log(this.el);
         var input = this.el.select('input', true).first();
-        Roo.log(input);
+     
         this.picker().setTop(input.getHeight()).setLeft(input.getLeft() - this.el.getLeft());
     },
     
