@@ -15,6 +15,8 @@
  * @cfg {Number} minViewMode default empty, (months|years)
  * @cfg {Boolean} todayHighlight default false
  * @cfg {Boolean} todayBtn default false
+ * @cfg {Boolean} calendarWeeks default false
+ * 
  * @cfg {Boolean} forceParse default true
  * @cfg {Boolean} autoclose default false
  * @cfg {Boolean} keyboardNavigation default true
