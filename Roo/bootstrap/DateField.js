@@ -490,13 +490,17 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                         break;
                     case 'prev':
                     case 'next':
-                        this.viewDate['set'+Roo.bootstrap.DateField.modes[this.viewMode].navFnc].call(
-                            this.viewDate,
-                            this.viewDate['get'+Roo.bootstrap.DateField.modes[this.viewMode].navFnc].call(this.viewDate) + 
-                            Roo.bootstrap.DateField.modes[this.viewMode].navStep * (target.className === 'prev' ? -1 : 1)
-                            );
+                        var dir = Roo.bootstrap.DateField.modes[this.viewMode].navStep * (className == 'prev' ? -1 : 1);
+                        switch(this.viewMode){
+                                case 0:
+                                        this.viewDate = this.moveMonth(this.viewDate, dir);
+                                        break;
+                                case 1:
+                                case 2:
+                                        this.viewDate = this.moveYear(this.viewDate, dir);
+                                        break;
+                        }
                         this.fill();
-                        //                                        this.setValue(this.formatDate(this.date));
                         break;
                 }
                 break;
