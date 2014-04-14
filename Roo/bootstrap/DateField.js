@@ -357,8 +357,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             prevMonth.setDate(prevMonth.getDate()+1);
         }
           
-        var currentYear = this.date.getFullYear();
-        var currentMonth = this.date.getMonth();
+        var currentYear = this.date && this.date.getUTCFullYear();
+        var currentMonth = this.date && this.date.getUTCMonth();
 
         this.picker().select('>.datepicker-months th.switch',true).first().dom.innerHTML = year;
         
