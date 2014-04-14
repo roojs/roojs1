@@ -375,8 +375,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         });
         
         
-        
-        
         year = parseInt(year/10, 10) * 10;
         
         this.picker().select('>.datepicker-years th.switch', true).first().dom.innerHTML = year + '-' + (year + 9);
