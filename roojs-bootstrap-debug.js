@@ -9666,7 +9666,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.picker().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
         this.picker().on('mousedown', this.onMousedown);
-        this.picker().swallowEvent("click");
+        this.picker().on('click', this.onClick);
         
         this.startViewMode = this.viewMode;
         this.weekEnd = this.weekStart === 0 ? 6 : this.weekStart - 1;
@@ -9886,6 +9886,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     onClick: function(e) {
         Roo.log('click');
         Roo.log(e);
+        var a = e.getTargeT();
+        Roo.log(a);
 //        var target = $(e.target).closest('span, td, th');
 //        if (target.length === 1) {
 //                switch(target[0].nodeName.toLowerCase()) {
