@@ -508,24 +508,20 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 }
                 break;
             case 'span':
-                if (className.indexOf('month') !== -1) {
-                    this.viewDate.setMonth(new Date(html + " 1").getMonth());
-                } else {
-                    var year = parseInt(html, 10) || 0;
-                    this.viewDate.setFullYear(year);
+                if (className.indexOf('disabled') === -1) {
+                    this.viewDate.setUTCDate(1);
+                    if (className.indexOf('month') !== -1) {
+                        this.viewDate.setUTCMonth(Roo.bootstrap.DateField.dates[this.language].monthsShort.indexOf(html));
+                    } else {
+                        var year = parseInt(html, 10) || 0;
+                        this.viewDate.setUTCFullYear(year);
+                        
+                    }
+                    this.showMode(-1);
+                    this.fill();
                 }
-                if (this.viewMode !== 0) {
-                    this.date = new Date(this.viewDate);
-                //                        this.element.trigger({
-                //                                type: 'changeDate',
-                //                                date: this.date,
-                //                                viewMode: DPGlobal.modes[this.viewMode].clsName
-                //                        });
-                }
-                this.showMode(-1);
-                this.fill();
-                //                    this.set();
                 break;
+                
             case 'td':
                 if (className.indexOf('day') !== -1 && className.indexOf('disabled') === -1){
                     var day = parseInt(html, 10) || 1;
