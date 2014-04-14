@@ -155,9 +155,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         this.setStartDate(this.startDate);
         this.setEndDate(this.endDate);
-                
-        this.daysOfWeekDisabled = [];
         
+        this.setDaysOfWeekDisabled(this.daysOfWeekDisabled);
         
         this.fillDow();
         this.fillMonths();
