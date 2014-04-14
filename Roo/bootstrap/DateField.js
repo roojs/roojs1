@@ -89,7 +89,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     fillMonths: function()
     {   
-        var html = '';
         var i = 0
         var months = this.picker().select('>.datepicker-months td', true).first();
         
