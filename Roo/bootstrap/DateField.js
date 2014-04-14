@@ -20,7 +20,6 @@
  * @cfg {Boolean} calendarWeeks default false
  * @cfg {Object} daysOfWeekDisabled default empty
  * 
- * @cfg {Boolean} autoclose default false
  * @cfg {Boolean} keyboardNavigation default true
  * @cfg {String} language default en
  * 
