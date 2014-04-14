@@ -368,14 +368,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 v.addClass('active');
             }
             
-            if (year < startYear || year > endYear) {
-                v.addClass('disabled');
-            }
-            
-            if (year == startYear && k < startMonth) {
-                v.addClass('disabled');
-            }
-            if (year == endYear && k > endMonth) {
+            if (year < startYear || year > endYear || (year == startYear && k < startMonth) || (year == endYear && k > endMonth)) {
                 v.addClass('disabled');
             }
             
