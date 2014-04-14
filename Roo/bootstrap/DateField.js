@@ -161,10 +161,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             if (prevMonth.valueOf() === currentDate) {
                     clsName += ' active';
             }
-            Roo.log('months day detail!!!');
-            Roo.log(prevMonth);
-            Roo.log(clsName);
-            Roo.log(prevMonth.getDate());
             
             fillMonths.cn.push({
                 tag: 'td',
