@@ -9656,11 +9656,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     viewMode : 0,
     
     minViewMode : 0,
-      
-//    template : function()
-//    {
-//        return new Roo.bootstrap.Element (this.dateFieldTemplate()); 
-//    },
     
     onRender: function(ct, position)
     {
@@ -9669,6 +9664,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.el.select('>.input-group', true).first().createChild(Roo.bootstrap.DateField.template);
         
         this.picker().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
+//        this.picker().on('mousedown', this.mousedown);
+        this.picker().on('click', this.click);
+        
         this.startViewMode = this.viewMode;
         this.weekEnd = this.weekStart === 0 ? 6 : this.weekStart - 1;
         this.fillDow();
@@ -9706,7 +9705,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     fillMonths: function()
     {   
-        var html = '';
         var i = 0
         var months = this.picker().select('>.datepicker-months td', true).first();
         
@@ -9767,7 +9765,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     };
             }
             
-//                clsName = this.onRender(prevMonth);
             var prevY = prevMonth.getFullYear();
             var prevM = prevMonth.getMonth();
             if ((prevM < month &&  prevY === year) ||  prevY < year) {
@@ -9790,7 +9787,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
           
         var currentYear = this.date.getFullYear();
         var currentMonth = this.date.getMonth();
-////
+
         this.picker().select('>.datepicker-months th.switch',true).first().dom.innerHTML = year;
         
         Roo.each(this.picker().select('>.datepicker-months tbody span',true).elements, function(v,k){
@@ -9801,22 +9798,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             }
         });
         
-//                                .find('th:eq(1)')
-//                                        .text(year)
-//                                        .end()
-//                                .find('span').removeClass('active');
-//        if (currentYear === year) {
-//                months.eq(this.date.getMonth()).addClass('active');
-//        }
-//
-//        html = '';
         year = parseInt(year/10, 10) * 10;
         
         this.picker().select('>.datepicker-years th.switch', true).first().dom.innerHTML = year + '-' + (year + 9);
-//                                                .find('th:eq(1)')
-//                                                        .text(year + '-' + (year + 9))
-//                                                        .end()
-//                                                .find('td');
         
         year -= 1;
         for (var i = -1; i < 11; i++) {
@@ -9892,7 +9876,83 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.picker().hide();
         this.viewMode = this.startViewMode;
         this.showMode();
-    }
+    },
+    
+    mousedown: function(e){
+        e.stopPropagation();
+        e.preventDefault();
+    },
+    
+    click: function(e) {
+        Roo.log('click');
+        Roo.log(e);
+        e.stopPropagation();
+        e.preventDefault();
+//        var target = $(e.target).closest('span, td, th');
+//        if (target.length === 1) {
+//                switch(target[0].nodeName.toLowerCase()) {
+//                        case 'th':
+//                                switch(target[0].className) {
+//                                        case 'switch':
+//                                                this.showMode(1);
+//                                                break;
+//                                        case 'prev':
+//                                        case 'next':
+//                                                this.viewDate['set'+DPGlobal.modes[this.viewMode].navFnc].call(
+//                                                        this.viewDate,
+//                                                        this.viewDate['get'+DPGlobal.modes[this.viewMode].navFnc].call(this.viewDate) + 
+//                                                        DPGlobal.modes[this.viewMode].navStep * (target[0].className === 'prev' ? -1 : 1)
+//                                                );
+//                                                this.fill();
+//                                                this.set();
+//                                                break;
+//                                }
+//                                break;
+//                        case 'span':
+//                                if (target.is('.month')) {
+//                                        var month = target.parent().find('span').index(target);
+//                                        this.viewDate.setMonth(month);
+//                                } else {
+//                                        var year = parseInt(target.text(), 10)||0;
+//                                        this.viewDate.setFullYear(year);
+//                                }
+//                                if (this.viewMode !== 0) {
+//                                        this.date = new Date(this.viewDate);
+//                                        this.element.trigger({
+//                                                type: 'changeDate',
+//                                                date: this.date,
+//                                                viewMode: DPGlobal.modes[this.viewMode].clsName
+//                                        });
+//                                }
+//                                this.showMode(-1);
+//                                this.fill();
+//                                this.set();
+//                                break;
+//                        case 'td':
+//                                if (target.is('.day') && !target.is('.disabled')){
+//                                        var day = parseInt(target.text(), 10)||1;
+//                                        var month = this.viewDate.getMonth();
+//                                        if (target.is('.old')) {
+//                                                month -= 1;
+//                                        } else if (target.is('.new')) {
+//                                                month += 1;
+//                                        }
+//                                        var year = this.viewDate.getFullYear();
+//                                        this.date = new Date(year, month, day,0,0,0,0);
+//                                        this.viewDate = new Date(year, month, Math.min(28, day),0,0,0,0);
+//                                        this.fill();
+//                                        this.set();
+//                                        this.element.trigger({
+//                                                type: 'changeDate',
+//                                                date: this.date,
+//                                                viewMode: DPGlobal.modes[this.viewMode].clsName
+//                                        });
+//                                }
+//                                break;
+//                }
+//        }
+    },
+    
     
     
 //    getAutoCreate : function(){
