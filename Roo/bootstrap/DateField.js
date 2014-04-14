@@ -180,6 +180,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.fillMonths();
         this.update();
         this.showMode();
+        
+        if(this.isInline) {
+            this.show();
+        }
     },
     
     picker : function()
