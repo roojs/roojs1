@@ -9756,6 +9756,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         var fillMonths = false;
         
+        this.picker().select('>.datepicker-days tbody',true).first().dom.innerHTML = '';
+        
         while(prevMonth.valueOf() < nextMonth) {
             var clsName = '';
             
@@ -9806,6 +9808,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         year = parseInt(year/10, 10) * 10;
         
         this.picker().select('>.datepicker-years th.switch', true).first().dom.innerHTML = year + '-' + (year + 9);
+        
+        this.picker().select('>.datepicker-years tbody td',true).first().dom.innerHTML = '';
         
         year -= 1;
         for (var i = -1; i < 11; i++) {
