@@ -52,6 +52,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     todayHighlight : false,
     
+    todayBtn: false,
+    
     language: 'en',
     
     forceParse: true,
