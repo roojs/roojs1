@@ -9753,42 +9753,41 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         var html = false;
         
-        var clsName = '',
-            prevY,
-            prevM;
-        
         while(prevMonth.valueOf() < nextMonth) {
-                if (prevMonth.getDay() === this.weekStart) {
-                        html = {
-                            tag: 'tr',
-                            cn: []
-                        };
-                }
+            var clsName = '';
+            
+            if (prevMonth.getDay() === this.weekStart) {
+                    html = {
+                        tag: 'tr',
+                        cn: []
+                    };
+            }
+            
 //                clsName = this.onRender(prevMonth);
-                prevY = prevMonth.getFullYear();
-                prevM = prevMonth.getMonth();
-                if ((prevM < month &&  prevY === year) ||  prevY < year) {
-                        clsName += ' old';
-                } else if ((prevM > month && prevY === year) || prevY > year) {
-                        clsName += ' new';
-                }
-                if (prevMonth.valueOf() === currentDate) {
-                        clsName += ' active';
-                }
-                Roo.log('months day detail!!!');
-                Roo.log(prevMonth);
-                Roo.log(clsName);
-                Roo.log(prevMonth.getDate());
-                html.cn.push({
-                    tag: 'td',
-                    cls: 'day ' + clsName,
-                    html: prevMonth.getDate()
-                })
+            var prevY = prevMonth.getFullYear();
+            var prevM = prevMonth.getMonth();
+            if ((prevM < month &&  prevY === year) ||  prevY < year) {
+                    clsName += ' old';
+            } else if ((prevM > month && prevY === year) || prevY > year) {
+                    clsName += ' new';
+            }
+            if (prevMonth.valueOf() === currentDate) {
+                    clsName += ' active';
+            }
+            Roo.log('months day detail!!!');
+            Roo.log(prevMonth);
+            Roo.log(clsName);
+            Roo.log(prevMonth.getDate());
+            html.cn.push({
+                tag: 'td',
+                cls: 'day ' + clsName,
+                html: prevMonth.getDate()
+            })
 //                html.push('<td class="day '+clsName+'">'+prevMonth.getDate() + '</td>');
 //                if (prevMonth.getDay() === this.weekEnd) {
 //                        html.push('</tr>');
 //                }
-                prevMonth.setDate(prevMonth.getDate()+1);
+            prevMonth.setDate(prevMonth.getDate()+1);
         }
 //        this.picker().select('.datepicker-days tbody',true).first().innerHTML = '';
 //        this.picker().select('.datepicker-days tbody',true).first().createChild(html.join(''));
