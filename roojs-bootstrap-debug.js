@@ -9858,6 +9858,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         return v;
     },
     
+    formatDate : function(date, fmt){
+        return (!date || !(date instanceof Date)) ?
+               date : date.dateFormat(fmt || this.format);
+    },
+    
     onFocus : function()
     {
         Roo.bootstrap.DateField.superclass.onFocus.call(this);
@@ -9912,8 +9917,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                                                 Roo.bootstrap.DateField.modes[this.viewMode].navStep * (target.className === 'prev' ? -1 : 1)
                                         );
                                         this.fill();
-                                        Roo.log(this.parseDate(this.data));
-                                        this.setValue(this.parseDate(this.date));
+                                        Roo.log(this.formatDate(this.date));
+                                        this.setValue(this.formatDate(this.date));
                                         break;
                         }
                         break;
