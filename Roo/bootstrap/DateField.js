@@ -18,6 +18,7 @@
  * @cfg {Boolean} todayHighlight default false
  * @cfg {Boolean} todayBtn default false
  * @cfg {Boolean} calendarWeeks default false
+ * @cfg {Object} daysOfWeekDisabled default empty
  * 
  * @cfg {Boolean} forceParse default true
  * @cfg {Boolean} autoclose default false
