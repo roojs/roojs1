@@ -332,11 +332,12 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                         break;
                 case 'td':
                         if (className.indexOf('day') !== -1 && className.indexOf('disabled') === -1){
-                                var day = parseInt(target.text(), 10)||1;
+                                var day = parseInt(html, 10) || 1;
                                 var month = this.viewDate.getMonth();
-                                if (target.is('.old')) {
+                                
+                                if (className.indexOf('old') !== -1) {
                                         month -= 1;
-                                } else if (target.is('.new')) {
+                                } else if (className.indexOf('new') !== -1) {
                                         month += 1;
                                 }
                                 var year = this.viewDate.getFullYear();
