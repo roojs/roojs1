@@ -52,8 +52,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         this.picker().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
-//        this.el.on('mousedown', this.onMousedown);
-        this.el.on('click', this.onClick);
+        this.picker().on('mousedown', this.onMousedown);
+        this.picker().on('click', this.onClick);
         
         this.startViewMode = this.viewMode;
         this.weekEnd = this.weekStart === 0 ? 6 : this.weekStart - 1;
