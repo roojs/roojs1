@@ -64,6 +64,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     keyboardNavigation: true,
     
+    calendarWeeks: false,
+    
     _events: [],
     
     UTCDate: function()
