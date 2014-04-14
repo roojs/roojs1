@@ -9912,8 +9912,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                                                 Roo.bootstrap.DateField.modes[this.viewMode].navStep * (target.className === 'prev' ? -1 : 1)
                                         );
                                         this.fill();
-                                        Roo.log(this.rendered);
-                                        this.setVaule(this.date);
+                                        this.setValue(this.date);
                                         break;
                         }
                         break;
@@ -9959,16 +9958,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                         }
                         break;
         }
-    },
-    
-    setValue : function(v){
-        this.date = v;
-        if(this.rendered){
-            this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
-            this.validate();
-        }
     }
-    
 //    getAutoCreate : function(){
 //        var cfg = {
 //            tag: 'div',
