@@ -269,7 +269,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     onClick: function(e) {
         Roo.log('click');
         Roo.log(e);
-        var a = e.getTargeT();
+        var a = e.getTarget();
         Roo.log(a);
 //        var target = $(e.target).closest('span, td, th');
 //        if (target.length === 1) {
