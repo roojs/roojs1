@@ -9814,7 +9814,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             v.setVisibilityMode(Roo.Element.DISPLAY);
             v.hide();
         });
-//        this.picker().select('.datepicker-'+Roo.bootstrap.DateField.modes[this.viewMode].clsName, true).first().show();
+        this.picker().select('.datepicker-'+Roo.bootstrap.DateField.modes[this.viewMode].clsName, true).first().show();
     },
     
     place: function()
