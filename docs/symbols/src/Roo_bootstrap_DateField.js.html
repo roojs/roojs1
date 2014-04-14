@@ -51,6 +51,7 @@
         
         </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.input-group'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.createChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.DateField.template</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.originalDisplay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.startViewMode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.viewMode</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.weekEnd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.weekStart </span><span class="jsdoc-syntax">=== 0 ? 6 : </span><span class="jsdoc-var">this.weekStart </span><span class="jsdoc-syntax">- 1;
         </span><span class="jsdoc-var">this.fillDow</span><span class="jsdoc-syntax">();
@@ -133,39 +134,53 @@
         
         </span><span class="jsdoc-var">nextMonth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nextMonth.valueOf</span><span class="jsdoc-syntax">();
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= [];
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">clsName </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">prevY</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">prevM</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fillMonths </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-keyword">while</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">prevMonth.valueOf</span><span class="jsdoc-syntax">() &lt; </span><span class="jsdoc-var">nextMonth</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">prevMonth.getDay</span><span class="jsdoc-syntax">() === </span><span class="jsdoc-var">this.weekStart</span><span class="jsdoc-syntax">) {
-                        </span><span class="jsdoc-var">html.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&lt;tr&gt;'</span><span class="jsdoc-syntax">);
-                }
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">clsName </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">prevMonth.getDay</span><span class="jsdoc-syntax">() === </span><span class="jsdoc-var">this.weekStart</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fillMonths</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.datepicker-days tbody'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.createChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fillMonths</span><span class="jsdoc-syntax">);
+                    }
+                    
+                    </span><span class="jsdoc-var">fillMonths </span><span class="jsdoc-syntax">= {
+                        </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tr'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: []
+                    };
+            }
+            
 </span><span class="jsdoc-comment">//                clsName = this.onRender(prevMonth);
-                </span><span class="jsdoc-var">prevY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">prevMonth.getFullYear</span><span class="jsdoc-syntax">();
-                </span><span class="jsdoc-var">prevM </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">prevMonth.getMonth</span><span class="jsdoc-syntax">();
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">prevM </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">month </span><span class="jsdoc-syntax">&amp;&amp;  </span><span class="jsdoc-var">prevY </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">year</span><span class="jsdoc-syntax">) ||  </span><span class="jsdoc-var">prevY </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">year</span><span class="jsdoc-syntax">) {
-                        </span><span class="jsdoc-var">clsName </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' old'</span><span class="jsdoc-syntax">;
-                } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">prevM </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">month </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">prevY </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">year</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-var">prevY </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">year</span><span class="jsdoc-syntax">) {
-                        </span><span class="jsdoc-var">clsName </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' new'</span><span class="jsdoc-syntax">;
-                }
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">prevMonth.valueOf</span><span class="jsdoc-syntax">() === </span><span class="jsdoc-var">currentDate</span><span class="jsdoc-syntax">) {
-                        </span><span class="jsdoc-var">clsName </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' active'</span><span class="jsdoc-syntax">;
-                }
-                </span><span class="jsdoc-var">html.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&lt;td class=&quot;day '</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">clsName</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'&quot;&gt;'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">prevMonth.getDate</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-string">'&lt;/td&gt;'</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">prevMonth.getDay</span><span class="jsdoc-syntax">() === </span><span class="jsdoc-var">this.weekEnd</span><span class="jsdoc-syntax">) {
-                        </span><span class="jsdoc-var">html.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&lt;/tr&gt;'</span><span class="jsdoc-syntax">);
-                }
-                </span><span class="jsdoc-var">prevMonth.setDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">prevMonth.getDate</span><span class="jsdoc-syntax">()+1);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">prevY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">prevMonth.getFullYear</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">prevM </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">prevMonth.getMonth</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">prevM </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">month </span><span class="jsdoc-syntax">&amp;&amp;  </span><span class="jsdoc-var">prevY </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">year</span><span class="jsdoc-syntax">) ||  </span><span class="jsdoc-var">prevY </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">year</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">clsName </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' old'</span><span class="jsdoc-syntax">;
+            } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">prevM </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">month </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">prevY </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">year</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-var">prevY </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">year</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">clsName </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' new'</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">prevMonth.valueOf</span><span class="jsdoc-syntax">() === </span><span class="jsdoc-var">currentDate</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">clsName </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' active'</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-var">fillMonths.cn.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'td'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'day ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">clsName</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">prevMonth.getDate</span><span class="jsdoc-syntax">()
+            })
+            
+            </span><span class="jsdoc-var">prevMonth.setDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">prevMonth.getDate</span><span class="jsdoc-syntax">()+1);
         }
-        </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.datepicker-days tbody'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.datepicker-days tbody'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.createChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">));
-</span><span class="jsdoc-comment">//        
-//        var currentYear = this.date.getFullYear();
-////
-//        var months = this.picker().select('.datepicker-months',true).first().select('th',true).first().dom.innerHTML = year;
-////                                .find('th:eq(1)')
+          
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">currentYear </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.date.getFullYear</span><span class="jsdoc-syntax">();
+</span><span class="jsdoc-comment">////
+        </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.datepicker-months th.switch'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">year</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'here!!!!!!!!!!!!!!!!'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&gt;.datepicker-months tbody span'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+        });
+        
+</span><span class="jsdoc-comment">////                                .find('th:eq(1)')
 ////                                        .text(year)
 ////                                        .end()
 ////                                .find('span').removeClass('active');
@@ -194,6 +209,7 @@
         }
         </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&gt;div'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">v.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">v.originalDisplay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">v.hide</span><span class="jsdoc-syntax">();
         });
         </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.datepicker-'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">Roo.bootstrap.DateField.modes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.viewMode</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.clsName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.show</span><span class="jsdoc-syntax">();
