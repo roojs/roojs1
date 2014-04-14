@@ -9903,11 +9903,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         Roo.log(target.nodeName);
         Roo.log(target.className);
-        Roo.log(target.text);
+        Roo.log(target.innerHTML);
         
         var nodeName = target.nodeName;
         var className = target.className;
-        var text = target.text;
+        var text = target.innerHTML;
         
         switch(nodeName.toLowerCase()) {
                 case 'th':
