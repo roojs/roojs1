@@ -505,7 +505,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     setStartDate: function(startDate){
             this.startDate = startDate||-Infinity;
             if (this.startDate !== -Infinity) {
-                    this.startDate = DPGlobal.parseDate(this.startDate, this.format, this.language);
+                    this.startDate = this.parseDate(this.startDate);
             }
             this.update();
             this.updateNavArrows();
@@ -514,7 +514,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     setEndDate: function(endDate){
             this.endDate = endDate||Infinity;
             if (this.endDate !== Infinity) {
-                    this.endDate = DPGlobal.parseDate(this.endDate, this.format, this.language);
+                    this.endDate = this.parseDate(this.endDate);
             }
             this.update();
             this.updateNavArrows();
