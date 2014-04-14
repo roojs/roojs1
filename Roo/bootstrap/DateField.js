@@ -261,9 +261,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     },
     
     mousedown: function(e){
-        Roo.log('mousedown');
-            e.stopPropagation();
-            e.preventDefault();
+        e.stopPropagation();
+        e.preventDefault();
     }
     
     
