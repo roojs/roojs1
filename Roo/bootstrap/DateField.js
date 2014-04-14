@@ -283,12 +283,17 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         Roo.log(e);
         var target = e.getTarget();
         Roo.log(target);
+        
         Roo.log(target.nodeName);
         Roo.log(target.className);
         
-        switch(target.nodeName.toLowerCase()) {
+        var nodeName = target.nodeName;
+        var className = target.className;
+        var text = traget.text;
+        
+        switch(nodeName.toLowerCase()) {
                 case 'th':
-                        switch(target.className) {
+                        switch(className) {
                                 case 'switch':
                                         this.showMode(1);
                                         break;
@@ -325,7 +330,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                         this.set();
                         break;
                 case 'td':
-                        if (target.is('.day') && !target.is('.disabled')){
+                        if (className.indexOf('day') && !className.indexOf('disabled')){
                                 var day = parseInt(target.text(), 10)||1;
                                 var month = this.viewDate.getMonth();
                                 if (target.is('.old')) {
