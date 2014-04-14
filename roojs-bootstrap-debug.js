@@ -10174,6 +10174,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         var target = e.getTarget();
         
+        if(target.nodeName.toLowerCase() === 'i'){
+            target = target.dom.parentNode;
+        }
+        
         var nodeName = target.nodeName;
         var className = target.className;
         var html = target.innerHTML;
@@ -10182,7 +10186,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         Roo.log(className);
         Roo.log(html);
         
-        Roo.log(Roo.get(target).findParent());
         
         switch(nodeName.toLowerCase()) {
             case 'th':
