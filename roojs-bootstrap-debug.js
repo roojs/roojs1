@@ -9731,64 +9731,64 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     },
     
     fill: function() {
-        var d = new Date(this.viewDate),
-                year = d.getFullYear(),
-                month = d.getMonth(),
-                currentDate = this.date.valueOf();
-                
-        
-        this.picker().select('.datepicker-days th.switch', true).first().dom.innerHTML = Roo.bootstrap.DateField.dates.months[month]+' '+year;
-        
-        var prevMonth = new Date(year, month-1, 28,0,0,0,0),
-                day = prevMonth.getDaysInMonth();
-                
-        prevMonth.setDate(day);
-        prevMonth.setDate(day - (prevMonth.getDay() - this.weekStart + 7)%7);
-        
-        var nextMonth = new Date(prevMonth);
-        
-        nextMonth.setDate(nextMonth.getDate() + 42);
-        
-        nextMonth = nextMonth.valueOf();
-        
-        var html = false;
-        
-        while(prevMonth.valueOf() < nextMonth) {
-            var clsName = '';
-            
-            if (prevMonth.getDay() === this.weekStart) {
-                    html = {
-                        tag: 'tr',
-                        cn: []
-                    };
-            }
-            
-//                clsName = this.onRender(prevMonth);
-            var prevY = prevMonth.getFullYear();
-            var prevM = prevMonth.getMonth();
-            if ((prevM < month &&  prevY === year) ||  prevY < year) {
-                    clsName += ' old';
-            } else if ((prevM > month && prevY === year) || prevY > year) {
-                    clsName += ' new';
-            }
-            if (prevMonth.valueOf() === currentDate) {
-                    clsName += ' active';
-            }
-            Roo.log('months day detail!!!');
-            Roo.log(prevMonth);
-            Roo.log(clsName);
-            Roo.log(prevMonth.getDate());
-            html.cn.push({
-                tag: 'td',
-                cls: 'day ' + clsName,
-                html: prevMonth.getDate()
-            })
-//                html.push('<td class="day '+clsName+'">'+prevMonth.getDate() + '</td>');
-//                if (prevMonth.getDay() === this.weekEnd) {
-//                        html.push('</tr>');
-//                }
-            prevMonth.setDate(prevMonth.getDate()+1);
-        }
+//        var d = new Date(this.viewDate),
+//                year = d.getFullYear(),
+//                month = d.getMonth(),
+//                currentDate = this.date.valueOf();
+//                
+//        
+//        this.picker().select('.datepicker-days th.switch', true).first().dom.innerHTML = Roo.bootstrap.DateField.dates.months[month]+' '+year;
+//        
+//        var prevMonth = new Date(year, month-1, 28,0,0,0,0),
+//                day = prevMonth.getDaysInMonth();
+//                
+//        prevMonth.setDate(day);
+//        prevMonth.setDate(day - (prevMonth.getDay() - this.weekStart + 7)%7);
+//        
+//        var nextMonth = new Date(prevMonth);
+//        
+//        nextMonth.setDate(nextMonth.getDate() + 42);
+//        
+//        nextMonth = nextMonth.valueOf();
+//        
+//        var html = false;
+//        
+//        while(prevMonth.valueOf() < nextMonth) {
+//            var clsName = '';
+//            
+//            if (prevMonth.getDay() === this.weekStart) {
+//                    html = {
+//                        tag: 'tr',
+//                        cn: []
+//                    };
+//            }
+//            
+////                clsName = this.onRender(prevMonth);
+//            var prevY = prevMonth.getFullYear();
+//            var prevM = prevMonth.getMonth();
+//            if ((prevM < month &&  prevY === year) ||  prevY < year) {
+//                    clsName += ' old';
+//            } else if ((prevM > month && prevY === year) || prevY > year) {
+//                    clsName += ' new';
+//            }
+//            if (prevMonth.valueOf() === currentDate) {
+//                    clsName += ' active';
+//            }
+//            Roo.log('months day detail!!!');
+//            Roo.log(prevMonth);
+//            Roo.log(clsName);
+//            Roo.log(prevMonth.getDate());
+//            html.cn.push({
+//                tag: 'td',
+//                cls: 'day ' + clsName,
+//                html: prevMonth.getDate()
+//            })
+////                html.push('<td class="day '+clsName+'">'+prevMonth.getDate() + '</td>');
+////                if (prevMonth.getDay() === this.weekEnd) {
+////                        html.push('</tr>');
+////                }
+//            prevMonth.setDate(prevMonth.getDate()+1);
+//        }
 //        this.picker().select('.datepicker-days tbody',true).first().innerHTML = '';
 //        this.picker().select('.datepicker-days tbody',true).first().createChild(html.join(''));
 //        
