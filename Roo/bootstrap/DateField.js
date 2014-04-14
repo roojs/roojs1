@@ -177,6 +177,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         Roo.log('here!!!!!!!!!!!!!!!!');
         Roo.each(this.picker().select('>.datepicker-months tbody span',true).elements, function(v,k){
+            Roo.log(v);
+            Roo.log(k);
             v.removeClass('active');
         });
         
