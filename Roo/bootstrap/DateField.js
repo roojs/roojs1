@@ -443,20 +443,22 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             }]
             ];
         }
-        else if (this.el.is('div')) {  // inline datepicker
+        else if (this.el.dom.nodeName.toLowerCase.indexOf('div') !== -1) {  // inline datepicker
             this.isInline = true;
         }
         else {
             this._events = [
-            [this.element, {
-                click: $.proxy(this.show, this)
+            [this.el, {
+                click: this.show
             }]
             ];
         }
         for (var i=0, el, ev; i<this._events.length; i++){
             el = this._events[i][0];
             ev = this._events[i][1];
-            el.on(ev);
+            Roo.log(ev);
+//            Roo.each
+//            el.on(ev);
         }
     },
     _detachEvents: function(){
