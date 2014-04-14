@@ -195,7 +195,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             dow.cn.push({
                 tag: 'th',
                 cls: 'dow',
-                html: Roo.bootstrap.DateField.dates.daysMin[(dowCnt++)%7]
+                html: Roo.bootstrap.DateField.dates[this.language].daysMin[(dowCnt++)%7]
             });
         }
         
@@ -204,14 +204,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     fillMonths: function()
     {   
-        var i = 0
-        var months = this.picker().select('>.datepicker-months td', true).first();
-        
         while (i < 12) {
             var month = {
                 tag: 'span',
                 cls: 'month',
-                html: Roo.bootstrap.DateField.dates.monthsShort[i++]
+                html: Roo.bootstrap.DateField.dates[this.language].monthsShort[i++]
             }
             
             months.createChild(month);
