@@ -159,7 +159,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         Roo.each(this.picker().select('tfoot th.today', true).elements, function(v){
             if(!this.calendarWeeks){
-                v.dom.parentNode;
+                Roo.log(v.dom.parentNode);
                 return;
             };
             
