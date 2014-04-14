@@ -433,16 +433,16 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             this._events = [
             // For components that are not readonly, allow keyboard nav
             [this.inputEl(), {
-                focus: $.proxy(this.show, this),
-                keyup: $.proxy(this.update, this),
-                keydown: $.proxy(this.keydown, this)
+                focus: this.show,
+                keyup: this.update,
+                keydown: this.keydown
             }],
             [this.component, {
-                click: $.proxy(this.show, this)
+                click: this.show
             }]
             ];
         }
-        else if (this.element.is('div')) {  // inline datepicker
+        else if (this.el.is('div')) {  // inline datepicker
             this.isInline = true;
         }
         else {
