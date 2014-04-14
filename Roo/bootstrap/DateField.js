@@ -344,7 +344,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                                 this.date = new Date(year, month, day,0,0,0,0);
                                 this.viewDate = new Date(year, month, Math.min(28, day),0,0,0,0);
                                 this.fill();
-                                this.set();
+                                this.setValue(this.date);
                                 this.element.trigger({
                                         type: 'changeDate',
                                         date: this.date,
