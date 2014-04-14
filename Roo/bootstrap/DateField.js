@@ -51,7 +51,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     language: 'en',
     
-    forceParse: true;
+    forceParse: true,
     
     _events: [],
     
@@ -85,7 +85,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         this._attachEvents();
         
-        this.forceParse = true;
         
         if (typeof(this.minViewMode === 'string')) {
             switch (this.minViewMode) {
