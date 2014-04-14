@@ -136,10 +136,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         var html = false;
         
-        var clsName = '',
-            prevY,
-            prevM;
-        
         while(prevMonth.valueOf() < nextMonth) {
                 if (prevMonth.getDay() === this.weekStart) {
                         html = {
