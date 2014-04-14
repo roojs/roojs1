@@ -136,6 +136,13 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.picker().addClass('datepicker-dropdown');
         
         this.startViewMode = this.viewMode;
+        
+        if (this.calendarWeeks)
+			this.picker().select('>tfoot th.today')
+                                                    .attr('colspan', function(i, val){
+                                                            return parseInt(val) + 1;
+                                                    });
+        
         this.weekEnd = this.weekStart === 0 ? 6 : this.weekStart - 1;
         this.fillDow();
         this.fillMonths();
