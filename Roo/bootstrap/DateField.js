@@ -540,6 +540,48 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         });
         this.update();
         this.updateNavArrows();
+    },
+    
+    updateNavArrows: function() {
+        var d = new Date(this.viewDate),
+        year = d.getUTCFullYear(),
+        month = d.getUTCMonth();
+        switch (this.viewMode) {
+            case 0:
+                this.picker.select('>.prev', true).first().show();
+                this.picker.select('>.next', true).first().show();
+                
+                if (this.startDate !== -Infinity && year <= this.startDate.getUTCFullYear() && month <= this.startDate.getUTCMonth()) {
+                    this.picker.select('>.prev', true).first().hide();
+                }
+                
+                if (this.endDate !== Infinity && year >= this.endDate.getUTCFullYear() && month >= this.endDate.getUTCMonth()) {
+                    this.picker.select('>.next', true).first().hide();
+                } 
+                
+                break;
+            case 1:
+            case 2:
+                if (this.startDate !== -Infinity && year <= this.startDate.getUTCFullYear()) {
+                    this.picker.find('.prev').css({
+                        visibility: 'hidden'
+                    });
+                } else {
+                    this.picker.find('.prev').css({
+                        visibility: 'visible'
+                    });
+                }
+                if (this.endDate !== Infinity && year >= this.endDate.getUTCFullYear()) {
+                    this.picker.find('.next').css({
+                        visibility: 'hidden'
+                    });
+                } else {
+                    this.picker.find('.next').css({
+                        visibility: 'visible'
+                    });
+                }
+                break;
+        }
     }
    
 });
