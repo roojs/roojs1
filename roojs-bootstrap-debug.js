@@ -9951,7 +9951,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 //                                break;
 //                }
 //        }
-    },
+    }
     
     
     
