@@ -9667,7 +9667,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
         
         this.el.select('>.input-group', true).first().createChild(Roo.bootstrap.DateField.template);
-        Roo.log(this.picker());
+        
         this.picker().setVisibilityMode(Roo.Element.DISPLAY);
         this.picker().originalDisplay = 'block';
         this.startViewMode = this.viewMode;
@@ -9680,7 +9680,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     picker : function()
     {
-        Roo.log(this.el);
         return this.el.select('.datepicker', true).first();
     },
     
@@ -9841,7 +9840,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     place: function()
     {
-        var input = this.el.select('>input', true).first();
+        var input = this.el.select('input', true).first();
      
         this.picker().setTop(input.getHeight()).setLeft(input.getLeft() - this.el.getLeft());
     },
