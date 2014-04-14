@@ -9752,11 +9752,16 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         nextMonth = nextMonth.valueOf();
         
         var html = false;
+        var fillMonths = {};
         
         while(prevMonth.valueOf() < nextMonth) {
             var clsName = '';
             
             if (prevMonth.getDay() === this.weekStart) {
+                    if(html){
+                        fillMonths.push(html);
+                    }
+                    
                     html = {
                         tag: 'tr',
                         cn: []
@@ -9790,6 +9795,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 //                }
             prevMonth.setDate(prevMonth.getDate()+1);
         }
+        
+        Roo.log(html);
 //        this.picker().select('.datepicker-days tbody',true).first().innerHTML = '';
         this.picker().select('.datepicker-days tbody',true).first().createChild(html);
 //        
