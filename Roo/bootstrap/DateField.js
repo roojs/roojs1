@@ -9,6 +9,10 @@
  * @class Roo.bootstrap.DateField
  * @extends Roo.bootstrap.Input
  * Bootstrap DateField class
+ * @cfg {Number} weekStart default 0
+ * @cfg {Number} weekStart default 0
+ * @cfg {viewMode} viewMode default 0, (month:1|year:2)
+ * @cfg {minViewMode} minViewMode default 0, (month:1|year:2)
  * 
  * @constructor
  * Create a new DateField
@@ -274,66 +278,66 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         Roo.log(target.nodeName);
         Roo.log(target.className);
         
-//        switch(target.nodeName.toLowerCase()) {
-//                case 'th':
-//                        switch(target.className) {
-//                                case 'switch':
-//                                        this.showMode(1);
-//                                        break;
-//                                case 'prev':
-//                                case 'next':
-//                                        this.viewDate['set'+DPGlobal.modes[this.viewMode].navFnc].call(
-//                                                this.viewDate,
-//                                                this.viewDate['get'+DPGlobal.modes[this.viewMode].navFnc].call(this.viewDate) + 
-//                                                DPGlobal.modes[this.viewMode].navStep * (target[0].className === 'prev' ? -1 : 1)
-//                                        );
-//                                        this.fill();
-//                                        this.set();
-//                                        break;
-//                        }
-//                        break;
-//                case 'span':
-//                        if (target.is('.month')) {
-//                                var month = target.parent().find('span').index(target);
-//                                this.viewDate.setMonth(month);
-//                        } else {
-//                                var year = parseInt(target.text(), 10)||0;
-//                                this.viewDate.setFullYear(year);
-//                        }
-//                        if (this.viewMode !== 0) {
-//                                this.date = new Date(this.viewDate);
-//                                this.element.trigger({
-//                                        type: 'changeDate',
-//                                        date: this.date,
-//                                        viewMode: DPGlobal.modes[this.viewMode].clsName
-//                                });
-//                        }
-//                        this.showMode(-1);
-//                        this.fill();
-//                        this.set();
-//                        break;
-//                case 'td':
-//                        if (target.is('.day') && !target.is('.disabled')){
-//                                var day = parseInt(target.text(), 10)||1;
-//                                var month = this.viewDate.getMonth();
-//                                if (target.is('.old')) {
-//                                        month -= 1;
-//                                } else if (target.is('.new')) {
-//                                        month += 1;
-//                                }
-//                                var year = this.viewDate.getFullYear();
-//                                this.date = new Date(year, month, day,0,0,0,0);
-//                                this.viewDate = new Date(year, month, Math.min(28, day),0,0,0,0);
-//                                this.fill();
-//                                this.set();
-//                                this.element.trigger({
-//                                        type: 'changeDate',
-//                                        date: this.date,
-//                                        viewMode: DPGlobal.modes[this.viewMode].clsName
-//                                });
-//                        }
-//                        break;
-//        }
+        switch(target.nodeName.toLowerCase()) {
+                case 'th':
+                        switch(target.className) {
+                                case 'switch':
+                                        this.showMode(1);
+                                        break;
+                                case 'prev':
+                                case 'next':
+                                        this.viewDate['set'+DPGlobal.modes[this.viewMode].navFnc].call(
+                                                this.viewDate,
+                                                this.viewDate['get'+DPGlobal.modes[this.viewMode].navFnc].call(this.viewDate) + 
+                                                DPGlobal.modes[this.viewMode].navStep * (target[0].className === 'prev' ? -1 : 1)
+                                        );
+                                        this.fill();
+                                        this.set();
+                                        break;
+                        }
+                        break;
+                case 'span':
+                        if (target.is('.month')) {
+                                var month = target.parent().find('span').index(target);
+                                this.viewDate.setMonth(month);
+                        } else {
+                                var year = parseInt(target.text(), 10)||0;
+                                this.viewDate.setFullYear(year);
+                        }
+                        if (this.viewMode !== 0) {
+                                this.date = new Date(this.viewDate);
+                                this.element.trigger({
+                                        type: 'changeDate',
+                                        date: this.date,
+                                        viewMode: DPGlobal.modes[this.viewMode].clsName
+                                });
+                        }
+                        this.showMode(-1);
+                        this.fill();
+                        this.set();
+                        break;
+                case 'td':
+                        if (target.is('.day') && !target.is('.disabled')){
+                                var day = parseInt(target.text(), 10)||1;
+                                var month = this.viewDate.getMonth();
+                                if (target.is('.old')) {
+                                        month -= 1;
+                                } else if (target.is('.new')) {
+                                        month += 1;
+                                }
+                                var year = this.viewDate.getFullYear();
+                                this.date = new Date(year, month, day,0,0,0,0);
+                                this.viewDate = new Date(year, month, Math.min(28, day),0,0,0,0);
+                                this.fill();
+                                this.set();
+                                this.element.trigger({
+                                        type: 'changeDate',
+                                        date: this.date,
+                                        viewMode: DPGlobal.modes[this.viewMode].clsName
+                                });
+                        }
+                        break;
+        }
     }
     
     
