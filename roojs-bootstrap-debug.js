@@ -9769,9 +9769,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 year = d.getFullYear(),
                 month = d.getMonth(),
                 currentDate = this.date.clearTime().valueOf();
-                
-        Roo.log('this.date');
-        Roo.log(this.date.valueOf());
+        
         this.picker().select('>.datepicker-days th.switch', true).first().dom.innerHTML = Roo.bootstrap.DateField.dates.months[month]+' '+year;
         
         var prevMonth = new Date(year, month-1, 28,0,0,0,0),
@@ -9820,7 +9818,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     prevD == today.getDate()) {
                     clsName += ' today';
             }
-            Roo.log(prevMonth.valueOf());
+            
             if (prevMonth.valueOf() === currentDate) {
                     clsName += ' active';
             }
