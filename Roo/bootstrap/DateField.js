@@ -137,9 +137,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         var html = false;
         
         while(prevMonth.valueOf() < nextMonth) {
-            var clsName = '',
-            prevY,
-            prevM;
+            var clsName = '';
             
             if (prevMonth.getDay() === this.weekStart) {
                     html = {
@@ -147,9 +145,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                         cn: []
                     };
             }
+            
 //                clsName = this.onRender(prevMonth);
-            prevY = prevMonth.getFullYear();
-            prevM = prevMonth.getMonth();
+            var prevY = prevMonth.getFullYear();
+            var prevM = prevMonth.getMonth();
             if ((prevM < month &&  prevY === year) ||  prevY < year) {
                     clsName += ' old';
             } else if ((prevM > month && prevY === year) || prevY > year) {
