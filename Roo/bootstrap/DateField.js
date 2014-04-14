@@ -94,15 +94,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         this._attachEvents();
         
-        this.el.select('>.input-group', true).first().createChild(Roo.bootstrap.DateField.template);
-        
-        this.picker().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
-        
-        this.picker().on('mousedown', this.onMousedown, this);
-        this.picker().on('click', this.onClick, this);
-        
-        this.picker().addClass('datepicker-dropdown');
-        
         if (typeof(this.minViewMode === 'string')) {
             switch (this.minViewMode) {
                     case 'months':
