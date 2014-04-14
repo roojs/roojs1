@@ -502,6 +502,14 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                         }
                         this.fill();
                         break;
+                    case 'today':
+                        var date = new Date();
+                        date = UTCDate(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
+
+                        this.showMode(-2);
+                        var which = this.todayBtn == 'linked' ? null : 'view';
+                        this._setDate(date, which);
+                        break;
                 }
                 break;
             case 'span':
@@ -547,6 +555,15 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 }
                 break;
         }
+    },
+    
+    _setDate: function(date, which){
+        if (!which || which == 'date')
+            this.date = date;
+        if (!which || which  == 'view')
+            this.viewDate = date;
+        this.fill();
+        this.hide()
     },
     
     _attachEvents: function(){
