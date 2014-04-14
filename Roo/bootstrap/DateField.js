@@ -53,10 +53,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.picker().setVisibilityMode(Roo.Element.DISPLAY);
         this.startViewMode = this.viewMode;
         this.weekEnd = this.weekStart === 0 ? 6 : this.weekStart - 1;
-        this.fillDow();
-        this.fillMonths();
-        this.update();
-        this.showMode();
+//        this.fillDow();
+//        this.fillMonths();
+//        this.update();
+//        this.showMode();
     },
     
     picker : function()
