@@ -87,6 +87,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         var today = new Date();
         return UTCDate(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate());
     },
+    
+    setUTCDate: function(d) {
+            this.date = d;
+            this.setValue(this.formatDate(this.date));
+    },
         
     onRender: function(ct, position)
     {
@@ -254,16 +259,20 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 //        this.picker.select('>tfoot th.today').
 //						.text(dates[this.language].today)
 //						.toggle(this.todayBtn !== false);
+    
+        this.updateNavArrows();
+        this.fillMonths();
                                                 
-        var prevMonth = new Date(year, month-1, 28,0,0,0,0),
-        day = prevMonth.getDaysInMonth();
+        var prevMonth = UTCDate(year, month-1, 28,0,0,0,0),
+        
+        day = prevMonth.getDaysInMonth(prevMonth.getUTCFullYear(), prevMonth.getUTCMonth());
                 
-        prevMonth.setDate(day);
-        prevMonth.setDate(day - (prevMonth.getDay() - this.weekStart + 7)%7);
+        prevMonth.setUTCDate(day);
+        prevMonth.setUTCDate(day - (prevMonth.getUTCDay() - this.weekStart + 7)%7);
         
         var nextMonth = new Date(prevMonth);
         
-        nextMonth.setDate(nextMonth.getDate() + 42);
+        nextMonth.setUTCDate(nextMonth.getDate() + 42);
         
         nextMonth = nextMonth.valueOf();
         
