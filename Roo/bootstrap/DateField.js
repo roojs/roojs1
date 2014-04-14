@@ -44,6 +44,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     minViewMode : 0,
     
+    
+    inputEl : function(){
+        this.el.select('input', true).first();
+    },
+    
     onRender: function(ct, position)
     {
         Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
@@ -219,9 +224,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     place: function()
     {
-        var input = this.el.select('input', true).first();
-     
-        this.picker().setTop(input.getHeight()).setLeft(input.getLeft() - this.el.getLeft());
+        this.picker().setTop(input.getHeight()).setLeft(this.inputEl().getLeft() - this.el.getLeft());
     },
     
     parseDate : function(value){
