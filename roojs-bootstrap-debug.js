@@ -9661,6 +9661,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     minViewMode : 0,
     
+    
+    inputEl : function(){
+        this.el.select('input', true).first();
+    },
+    
     onRender: function(ct, position)
     {
         Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
@@ -9836,9 +9841,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     place: function()
     {
-        var input = this.el.select('input', true).first();
-     
-        this.picker().setTop(input.getHeight()).setLeft(input.getLeft() - this.el.getLeft());
+        this.picker().setTop(this.inputEl().getHeight()).setLeft(this.inputEl().getLeft() - this.el.getLeft());
     },
     
     parseDate : function(value){
@@ -9914,6 +9917,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                                                 Roo.bootstrap.DateField.modes[this.viewMode].navStep * (target.className === 'prev' ? -1 : 1)
                                         );
                                         this.fill();
+                                        Roo.log(this.rendered);
                                         this.setVaule(this.date);
                                         break;
                         }
@@ -9959,6 +9963,14 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                                 });
                         }
                         break;
+        }
+    },
+    
+    setValue : function(v){
+        this.date = v;
+        if(this.rendered){
+            this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+            this.validate();
         }
     }
     
