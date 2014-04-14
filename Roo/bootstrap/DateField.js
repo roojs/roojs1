@@ -100,7 +100,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 html: Roo.bootstrap.DateField.dates.monthsShort[i++]
             }
             
-            months.createChild(month);
+//            months.createChild(month);
         }
         
     },
