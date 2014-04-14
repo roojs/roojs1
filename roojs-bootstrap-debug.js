@@ -9820,6 +9820,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     prevD == today.getDate()) {
                     clsName += ' today';
             }
+            Roo.log(prevMonth.valueOf());
             if (prevMonth.valueOf() === currentDate) {
                     clsName += ' active';
             }
