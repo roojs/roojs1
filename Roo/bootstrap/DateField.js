@@ -355,7 +355,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     }
                     this.showMode(-1);
                     this.fill();
-                    this.set();
+//                    this.set();
                     break;
                 case 'td':
                     if (className.indexOf('day') !== -1 && className.indexOf('disabled') === -1){
