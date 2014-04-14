@@ -9665,7 +9665,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     onRender: function(ct, position)
     {
         Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
-        Roo.log(this.picker);
+        Roo.log(this.picker());
         this.el.select('>.input-group', true).first().createChild(Roo.bootstrap.DateField.template);
         this.picker().setVisibilityMode(Roo.Element.DISPLAY);
         this.picker().originalDisplay = 'block';
