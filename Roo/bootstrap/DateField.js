@@ -331,7 +331,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                         this.set();
                         break;
                 case 'td':
-                        if (className.indexOf('day') && !className.indexOf('disabled')){
+                        if (className.indexOf('day') !== -1 && className.indexOf('disabled') === -1){
                                 var day = parseInt(target.text(), 10)||1;
                                 var month = this.viewDate.getMonth();
                                 if (target.is('.old')) {
