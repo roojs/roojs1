@@ -9886,9 +9886,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     onClick: function(e) {
         Roo.log('click');
         Roo.log(e);
-        var a = e.getTarget();
-        Roo.log(a);
-//        var target = $(e.target).closest('span, td, th');
+        var target = e.getTarget();
+        Roo.log(target);
+        Roo.log(typeof(target));
+        
 //        if (target.length === 1) {
 //                switch(target[0].nodeName.toLowerCase()) {
 //                        case 'th':
