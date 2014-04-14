@@ -9939,65 +9939,64 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         switch(nodeName.toLowerCase()) {
                 case 'th':
-                        switch(className) {
-                                case 'switch':
-                                        this.showMode(1);
-                                        break;
-                                case 'prev':
-                                case 'next':
-                                        this.viewDate['set'+Roo.bootstrap.DateField.modes[this.viewMode].navFnc].call(
-                                                this.viewDate,
-                                                this.viewDate['get'+Roo.bootstrap.DateField.modes[this.viewMode].navFnc].call(this.viewDate) + 
-                                                Roo.bootstrap.DateField.modes[this.viewMode].navStep * (target.className === 'prev' ? -1 : 1)
-                                        );
-                                        this.fill();
+                    switch(className) {
+                        case 'switch':
+                            this.showMode(1);
+                            break;
+                        case 'prev':
+                        case 'next':
+                            this.viewDate['set'+Roo.bootstrap.DateField.modes[this.viewMode].navFnc].call(
+                                    this.viewDate,
+                                    this.viewDate['get'+Roo.bootstrap.DateField.modes[this.viewMode].navFnc].call(this.viewDate) + 
+                                    Roo.bootstrap.DateField.modes[this.viewMode].navStep * (target.className === 'prev' ? -1 : 1)
+                            );
+                            this.fill();
 //                                        this.setValue(this.formatDate(this.date));
-                                        break;
-                        }
-                        break;
+                            break;
+                    }
+                    break;
                 case 'span':
-                        if (target.is('.month')) {
-                                var month = target.parent().find('span').index(target);
-                                this.viewDate.setMonth(month);
-                        } else {
-                                var year = parseInt(target.text(), 10)||0;
-                                this.viewDate.setFullYear(year);
-                        }
-                        if (this.viewMode !== 0) {
-                                this.date = new Date(this.viewDate);
-                                this.element.trigger({
-                                        type: 'changeDate',
-                                        date: this.date,
-                                        viewMode: DPGlobal.modes[this.viewMode].clsName
-                                });
-                        }
-                        this.showMode(-1);
-                        this.fill();
-                        this.set();
-                        break;
+                    if (className.indexOf('month') !== -1) {
+                        this.viewDate.setMonth(new Date(html + " 1").getMonth());
+                    } else {
+                        var year = parseInt(html, 10) || 0;
+                        this.viewDate.setFullYear(year);
+                    }
+                    if (this.viewMode !== 0) {
+                        this.date = new Date(this.viewDate);
+//                        this.element.trigger({
+//                                type: 'changeDate',
+//                                date: this.date,
+//                                viewMode: DPGlobal.modes[this.viewMode].clsName
+//                        });
+                    }
+                    this.showMode(-1);
+                    this.fill();
+//                    this.set();
+                    break;
                 case 'td':
-                        if (className.indexOf('day') !== -1 && className.indexOf('disabled') === -1){
-                                var day = parseInt(html, 10) || 1;
-                                var month = this.viewDate.getMonth();
-                                
-                                if (className.indexOf('old') !== -1) {
-                                        month -= 1;
-                                } else if (className.indexOf('new') !== -1) {
-                                        month += 1;
-                                }
-                                var year = this.viewDate.getFullYear();
-                                this.date = new Date(year, month, day,0,0,0,0);
-                                this.viewDate = new Date(year, month, Math.min(28, day),0,0,0,0);
-                                this.fill();
-                                this.setValue(this.formatDate(this.date));
-                                
+                    if (className.indexOf('day') !== -1 && className.indexOf('disabled') === -1){
+                        var day = parseInt(html, 10) || 1;
+                        var month = this.viewDate.getMonth();
+
+                        if (className.indexOf('old') !== -1) {
+                                month -= 1;
+                        } else if (className.indexOf('new') !== -1) {
+                                month += 1;
+                        }
+                        var year = this.viewDate.getFullYear();
+                        this.date = new Date(year, month, day,0,0,0,0);
+                        this.viewDate = new Date(year, month, Math.min(28, day),0,0,0,0);
+                        this.fill();
+                        this.setValue(this.formatDate(this.date));
+
 //                                this.element.trigger({
 //                                        type: 'changeDate',
 //                                        date: this.date,
 //                                        viewMode: DPGlobal.modes[this.viewMode].clsName
 //                                });
-                        }
-                        break;
+                    }
+                    break;
         }
     }
 //    getAutoCreate : function(){
