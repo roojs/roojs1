@@ -6453,14 +6453,62 @@
     },
     {
      "name": "viewMode",
-     "type": "viewMode",
+     "type": "Number",
      "desc": "default empty, (months|years)",
      "memberOf": ""
     },
     {
      "name": "minViewMode",
-     "type": "minViewMode",
+     "type": "Number",
      "desc": "default empty, (months|years)",
+     "memberOf": ""
+    },
+    {
+     "name": "startDate",
+     "type": "Number",
+     "desc": "default -Infinity",
+     "memberOf": ""
+    },
+    {
+     "name": "endDate",
+     "type": "Number",
+     "desc": "default Infinity",
+     "memberOf": ""
+    },
+    {
+     "name": "todayHighlight",
+     "type": "Boolean",
+     "desc": "default false",
+     "memberOf": ""
+    },
+    {
+     "name": "todayBtn",
+     "type": "Boolean",
+     "desc": "default false",
+     "memberOf": ""
+    },
+    {
+     "name": "calendarWeeks",
+     "type": "Boolean",
+     "desc": "default false",
+     "memberOf": ""
+    },
+    {
+     "name": "daysOfWeekDisabled",
+     "type": "Object",
+     "desc": "default empty",
+     "memberOf": ""
+    },
+    {
+     "name": "keyboardNavigation",
+     "type": "Boolean",
+     "desc": "default true",
+     "memberOf": ""
+    },
+    {
+     "name": "language",
+     "type": "String",
+     "desc": "default en",
      "memberOf": ""
     },
     {
