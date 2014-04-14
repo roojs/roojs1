@@ -15,6 +15,7 @@
  * @cfg {Number} minViewMode default empty, (months|years)
  * @cfg {Boolean} todayHighlight default false
  * @cfg {Boolean} forceParse default true
+ * @cfg {Boolean} autoclose default false
  * @cfg {String} language default en
  * 
  * @constructor
@@ -52,6 +53,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     language: 'en',
     
     forceParse: true,
+    
+    autoclose: false,
     
     _events: [],
     
