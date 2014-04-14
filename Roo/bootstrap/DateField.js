@@ -171,9 +171,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             prevMonth.setDate(prevMonth.getDate()+1);
         }
           
-//        var currentYear = this.date.getFullYear();
+        var currentYear = this.date.getFullYear();
 ////
-//        var months = this.picker().select('.datepicker-months',true).first().select('th',true).first().dom.innerHTML = year;
+        var months = this.picker().select('.datepicker-months th.switch',true).first().dom.innerHTML = year;
 ////                                .find('th:eq(1)')
 ////                                        .text(year)
 ////                                        .end()
