@@ -16,6 +16,7 @@
  * @cfg {Boolean} todayHighlight default false
  * @cfg {Boolean} forceParse default true
  * @cfg {Boolean} autoclose default false
+ * @cfg {Boolean} keyboardNavigation default true
  * @cfg {String} language default en
  * 
  * @constructor
@@ -55,6 +56,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     forceParse: true,
     
     autoclose: false,
+    
+    keyboardNavigation: true,
     
     _events: [],
     
