@@ -9878,7 +9878,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 endYear = this.endDate !== Infinity ? this.endDate.getUTCFullYear() : Infinity,
                 endMonth = this.endDate !== Infinity ? this.endDate.getUTCMonth() : Infinity,
                 currentDate = this.date && this.date.valueOf(),
-                today = new Date();
+                today = this.UTCToday();
         
         this.picker().select('>.datepicker-days thead th.switch', true).first().dom.innerHTML = Roo.bootstrap.DateField.dates[this.language].months[month]+' '+year;
         
