@@ -286,13 +286,14 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                                         break;
                                 case 'prev':
                                 case 'next':
-                                        this.viewDate['set'+DPGlobal.modes[this.viewMode].navFnc].call(
-                                                this.viewDate,
-                                                this.viewDate['get'+DPGlobal.modes[this.viewMode].navFnc].call(this.viewDate) + 
-                                                DPGlobal.modes[this.viewMode].navStep * (target[0].className === 'prev' ? -1 : 1)
-                                        );
-                                        this.fill();
-                                        this.set();
+                                        Roo.log(this.viewDate);
+//                                        this.viewDate['set'+DPGlobal.modes[this.viewMode].navFnc].call(
+//                                                this.viewDate,
+//                                                this.viewDate['get'+DPGlobal.modes[this.viewMode].navFnc].call(this.viewDate) + 
+//                                                DPGlobal.modes[this.viewMode].navStep * (target[0].className === 'prev' ? -1 : 1)
+//                                        );
+//                                        this.fill();
+//                                        this.set();
                                         break;
                         }
                         break;
