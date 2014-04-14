@@ -9665,8 +9665,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     onRender: function(ct, position)
     {
         Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
-        
-        this.el.select('.input-group', true).first().createChild(Roo.bootstrap.DateField.template);
+        Roo.log(this.picker);
+        this.el.select('>.input-group', true).first().createChild(Roo.bootstrap.DateField.template);
         this.picker().setVisibilityMode(Roo.Element.DISPLAY);
         this.picker().originalDisplay = 'block';
         this.startViewMode = this.viewMode;
@@ -9679,7 +9679,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     picker : function()
     {
-        return this.el.select('.datepicker', true).first();
+        return this.el.select('>.datepicker', true).first();
     },
     
     fillDow: function()
@@ -9701,14 +9701,14 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 });
         }
         
-        this.picker().select('.datepicker-days thead', true).first().createChild(dow);
+        this.picker().select('>.datepicker-days thead', true).first().createChild(dow);
     },
     
     fillMonths: function()
     {   
         var html = '';
         var i = 0
-        var months = this.picker().select('.datepicker-months td', true).first();
+        var months = this.picker().select('>.datepicker-months td', true).first();
         
         while (i < 12) {
             var month = {
@@ -9737,7 +9737,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 currentDate = this.date.valueOf();
                 
         
-        this.picker().select('.datepicker-days th.switch', true).first().dom.innerHTML = Roo.bootstrap.DateField.dates.months[month]+' '+year;
+        this.picker().select('>.datepicker-days th.switch', true).first().dom.innerHTML = Roo.bootstrap.DateField.dates.months[month]+' '+year;
         
         var prevMonth = new Date(year, month-1, 28,0,0,0,0),
                 day = prevMonth.getDaysInMonth();
@@ -9758,7 +9758,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             
             if (prevMonth.getDay() === this.weekStart) {
                     if(fillMonths){
-                        this.picker().select('.datepicker-days tbody',true).first().createChild(fillMonths);
+                        this.picker().select('>.datepicker-days tbody',true).first().createChild(fillMonths);
                     }
                     
                     fillMonths = {
@@ -9791,7 +9791,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         var currentYear = this.date.getFullYear();
         var currentMonth = this.date.getMonth();
 ////
-        this.picker().select('.datepicker-months th.switch',true).first().dom.innerHTML = year;
+        this.picker().select('>.datepicker-months th.switch',true).first().dom.innerHTML = year;
         
         Roo.each(this.picker().select('>.datepicker-months tbody span',true).elements, function(v,k){
             v.removeClass('active');
@@ -9810,8 +9810,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 //        }
 //
 //        html = '';
-//        year = parseInt(year/10, 10) * 10;
-//        var yearCont = this.picker().select('.datepicker-years', true).first().select('th', true).first().dom.innerHTML = year + '-' + (year + 9);
+        year = parseInt(year/10, 10) * 10;
+        
+        var yearCont = this.picker().select('>.datepicker-years', true).first().select('th', true).first().dom.innerHTML = year + '-' + (year + 9);
 ////                                                .find('th:eq(1)')
 ////                                                        .text(year + '-' + (year + 9))
 ////                                                        .end()
@@ -9833,12 +9834,12 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             v.originalDisplay = 'block';
             v.hide();
         });
-        this.picker().select('.datepicker-'+Roo.bootstrap.DateField.modes[this.viewMode].clsName, true).first().show();
+        this.picker().select('>.datepicker-'+Roo.bootstrap.DateField.modes[this.viewMode].clsName, true).first().show();
     },
     
     place: function()
     {
-        var input = this.el.select('input', true).first();
+        var input = this.el.select('>input', true).first();
      
         this.picker().setTop(input.getHeight()).setLeft(input.getLeft() - this.el.getLeft());
     },
