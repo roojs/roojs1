@@ -266,7 +266,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         e.preventDefault();
     },
     
-    click: function(e) {
+    onClick: function(e) {
         Roo.log('click');
         Roo.log(e);
         e.stopPropagation();
