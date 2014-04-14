@@ -92,6 +92,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.picker().on('mousedown', this.onMousedown, this);
         this.picker().on('click', this.onClick, this);
         
+        this.picker().addClass('datepicker-dropdown dropdown-menu');
+        
 //        if (typeof(this.minViewMode === 'string')) {
 //            switch (this.minViewMode) {
 //                    case 'months':
