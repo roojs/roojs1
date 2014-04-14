@@ -14,6 +14,7 @@
  * @cfg {Number} viewMode default empty, (months|years)
  * @cfg {Number} minViewMode default empty, (months|years)
  * @cfg {Boolean} todayHighlight default false
+ * @cfg {Boolean} forceParse default true
  * @cfg {String} language default en
  * 
  * @constructor
@@ -50,6 +51,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     language: 'en',
     
+    forceParse: true;
+    
     _events: [],
     
     UTCDate: function()
@@ -81,6 +84,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.hasInput = this.component && this.inputEL().length;
         
         this._attachEvents();
+        
+        this.forceParse = true;
         
         if (typeof(this.minViewMode === 'string')) {
             switch (this.minViewMode) {
