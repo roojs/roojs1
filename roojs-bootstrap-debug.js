@@ -9682,6 +9682,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
     onRender: function(ct, position)
     {
+        Roo.log('this.el');
         Roo.log(this.el);
         Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
         
