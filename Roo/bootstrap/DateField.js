@@ -300,8 +300,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                                                 Roo.bootstrap.DateField.modes[this.viewMode].navStep * (target.className === 'prev' ? -1 : 1)
                                         );
                                         this.fill();
-                                        Roo.log(this.parseDate(this.date));
-                                        this.setValue(this.parseDate(this.date));
+                                        Roo.log(this.formatDate(this.date));
+                                        this.setValue(this.formatDate(this.date));
                                         break;
                         }
                         break;
