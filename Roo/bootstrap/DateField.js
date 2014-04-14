@@ -492,9 +492,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 break;
             case 37: // left
             case 39: // right
+                Roo.log(dir);
                 if (!this.keyboardNavigation) break;
                 dir = e.keyCode == 37 ? -1 : 1;
-                Roo.log(dir);
+                
                 if (e.ctrlKey){
                     newDate = this.moveYear(this.date, dir);
                     newViewDate = this.moveYear(this.viewDate, dir);
