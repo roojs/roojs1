@@ -11,8 +11,8 @@
  * Bootstrap DateField class
  * @cfg {Number} weekStart default 0
  * @cfg {Number} weekStart default 0
- * @cfg {viewMode} viewMode default 0, (months:1|years:2)
- * @cfg {minViewMode} minViewMode default 0, (months:1|years:2)
+ * @cfg {viewMode} viewMode default empty, (months|years)
+ * @cfg {minViewMode} minViewMode default empty, (months|years)
  * 
  * @constructor
  * Create a new DateField
