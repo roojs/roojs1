@@ -467,6 +467,12 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         e.preventDefault();
     },
     
+    keyup: function(e){
+        Roo.bootstrap.DateField.superclass.keyup.call(this);
+        
+        
+    },
+    
     fireKey: function(e){
         
         Roo.bootstrap.DateField.superclass.fireKey.call(this);
@@ -640,48 +646,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     this.hide();
                 }
                 break;
-        }
-    },
-    
-    _attachEvents: function(){
-        this._detachEvents();
-        if (this.isInput) { // single input
-            this._events = [
-            [this.el, {
-                keyup: this.update,
-                keydown: this.onKeydown,
-                click: this.show
-            }]
-            ];
-        }
-        else if (this.component && this.hasInput){ // component: input + button
-            this._events = [
-            // For components that are not readonly, allow keyboard nav
-            [this.inputEl(), {
-                focus: this.show,
-                keyup: this.update,
-                keydown: this.onKeydown
-            }],
-            [this.component, {
-                click: this.show
-            }]
-            ];
-        }
-        else if (this.el.dom.nodeName.toLowerCase.indexOf('div') !== -1) {  // inline datepicker
-            this.isInline = true;
-        }
-        else {
-            this._events = [
-            [this.el, {
-                click: this.show
-            }]
-            ];
-        }
-        for (var i=0, el, ev; i<this._events.length; i++){
-            el = this._events[i][0];
-            ev = this._events[i][1];
-            
-            el.on(ev);
         }
     },
     
