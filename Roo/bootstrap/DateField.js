@@ -503,7 +503,8 @@ Roo.apply(Roo.bootstrap.DateField,  {
                             Roo.bootstrap.DateField.head,
                             {
                                 tag: 'tbody'
-                            }
+                            },
+                            Roo.bootstrap.DateField.footer
                         ]
                     }
                 ]
@@ -517,7 +518,8 @@ Roo.apply(Roo.bootstrap.DateField,  {
                         cls: 'table-condensed',
                         cn:[
                             Roo.bootstrap.DateField.head,
-                            Roo.bootstrap.DateField.content
+                            Roo.bootstrap.DateField.content,
+                            Roo.bootstrap.DateField.footer
                         ]
                     }
                 ]
@@ -531,7 +533,8 @@ Roo.apply(Roo.bootstrap.DateField,  {
                         cls: 'table-condensed',
                         cn:[
                             Roo.bootstrap.DateField.head,
-                            Roo.bootstrap.DateField.content
+                            Roo.bootstrap.DateField.content,
+                            Roo.bootstrap.DateField.footer
                         ]
                     }
                 ]
