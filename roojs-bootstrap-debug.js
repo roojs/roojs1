@@ -9768,7 +9768,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         var d = new Date(this.viewDate),
                 year = d.getFullYear(),
                 month = d.getMonth(),
-                currentDate = this.date.valueOf();
+                currentDate = this.date.clearTime().valueOf();
                 
         Roo.log('this.date');
         Roo.log(this.date.valueOf());
