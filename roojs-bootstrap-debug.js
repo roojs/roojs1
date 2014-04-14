@@ -9696,7 +9696,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     UTCToday: function()
     {
         var today = new Date();
-        return UTCDate(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate());
+        return this.UTCDate(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate());
     },
     
     getDate: function() {
@@ -9891,7 +9891,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.updateNavArrows();
         this.fillMonths();
                                                 
-        var prevMonth = UTCDate(year, month-1, 28,0,0,0,0),
+        var prevMonth = this.UTCDate(year, month-1, 28,0,0,0,0),
         
         day = prevMonth.getDaysInMonth(prevMonth.getUTCFullYear(), prevMonth.getUTCMonth());
                 
@@ -9930,7 +9930,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     // Thursday of this week
                     th = new Date(+ws + (7 + 4 - ws.getUTCDay()) % 7 * 864e5),
                     // First Thursday of year, year from thursday
-                    yth = new Date(+(yth = UTCDate(th.getUTCFullYear(), 0, 1)) + (7 + 4 - yth.getUTCDay())%7*864e5),
+                    yth = new Date(+(yth = this.UTCDate(th.getUTCFullYear(), 0, 1)) + (7 + 4 - yth.getUTCDay())%7*864e5),
                     // Calendar week: ms between thursdays, div ms per day, div 7 days
                     calWeek =  (th - yth) / 864e5 / 7 + 1;
                     
@@ -10215,7 +10215,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                         break;
                     case 'today':
                         var date = new Date();
-                        this.date = UTCDate(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
+                        this.date = this.UTCDate(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
                         this.fill()
                         this.hide();
                         break;
@@ -10257,7 +10257,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                             month += 1;
                         }
                     }
-                    this.date = UTCDate(year, month, day,0,0,0,0);
+                    this.date = this.UTCDate(year, month, day,0,0,0,0);
                     this.viewDate = UTCDate(year, month, Math.min(28, day),0,0,0,0);
                     this.fill();
                     this.hide();
