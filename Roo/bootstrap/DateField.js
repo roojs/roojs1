@@ -468,6 +468,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     },
     
     fireKey: function(e){
+        
+        Roo.bootstrap.DateField.superclass.fireKey.call(this);
+        
         if (this.picker().isVisible()){
             if (e.keyCode == 27) // allow escape to hide and re-show picker
                 this.show();
