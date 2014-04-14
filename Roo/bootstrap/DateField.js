@@ -39,11 +39,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     viewMode : 0,
     
     minViewMode : 0,
-      
-//    template : function()
-//    {
-//        return new Roo.bootstrap.Element (this.dateFieldTemplate()); 
-//    },
     
     onRender: function(ct, position)
     {
