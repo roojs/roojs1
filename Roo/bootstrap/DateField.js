@@ -770,7 +770,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 
     
     remove: function() {
-        this.picker().dom.parentNode.removeChild(this.picker());
+        this.picker().remove();
     }
    
 });
