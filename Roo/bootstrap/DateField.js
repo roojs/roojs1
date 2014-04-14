@@ -139,6 +139,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         var fillMonths = false;
         
+        this.picker().select('>.datepicker-days tbody',true).first().dom.innerHTML = '';
+        
         while(prevMonth.valueOf() < nextMonth) {
             var clsName = '';
             
