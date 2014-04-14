@@ -207,6 +207,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         var i = 0
         var months = this.picker().select('>.datepicker-months td', true).first();
         
+        months.dom.innerHTML = '';
+        
         while (i < 12) {
             var month = {
                 tag: 'span',
@@ -236,12 +238,23 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     fill: function() {
         var d = new Date(this.viewDate),
-        year = d.getFullYear(),
-        month = d.getMonth(),
-        currentDate = this.date.clearTime().valueOf();
+                year = d.getUTCFullYear(),
+                month = d.getUTCMonth(),
+                startYear = this.startDate !== -Infinity ? this.startDate.getUTCFullYear() : -Infinity,
+                startMonth = this.startDate !== -Infinity ? this.startDate.getUTCMonth() : -Infinity,
+                endYear = this.endDate !== Infinity ? this.endDate.getUTCFullYear() : Infinity,
+                endMonth = this.endDate !== Infinity ? this.endDate.getUTCMonth() : Infinity,
+                currentDate = this.date && this.date.valueOf(),
+                today = new Date();
         
-        this.picker().select('>.datepicker-days th.switch', true).first().dom.innerHTML = Roo.bootstrap.DateField.dates.months[month]+' '+year;
+        this.picker().select('>.datepicker-days thead th.switch', true).first().dom.innerHTML = Roo.bootstrap.DateField.dates[this.language].months[month]+' '+year;
         
+        this.picker().select('>tfoot th.today', true).first().dom.innerHTML = Roo.bootstrap.DateField.dates[this.language].today;
+        
+//        this.picker.select('>tfoot th.today').
+//						.text(dates[this.language].today)
+//						.toggle(this.todayBtn !== false);
+                                                
         var prevMonth = new Date(year, month-1, 28,0,0,0,0),
         day = prevMonth.getDaysInMonth();
                 
