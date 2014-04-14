@@ -14,6 +14,7 @@
  * @cfg {Number} viewMode default empty, (months|years)
  * @cfg {Number} minViewMode default empty, (months|years)
  * @cfg {Boolean} todayHighlight default false
+ * @cfg {String} language default en
  * 
  * @constructor
  * Create a new DateField
