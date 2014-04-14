@@ -73,8 +73,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.format = this.format || 'm/d/y';
         this.isInline = false;
         this.isInput = true;
-        
-        this.component = this.el.select('.add-on', true).first() : false;
+        this.component = this.el.select('.add-on', true).first() || false;
         
         if (typeof(this.minViewMode === 'string')) {
             switch (this.minViewMode) {
