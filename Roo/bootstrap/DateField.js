@@ -71,7 +71,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         this.isRTL = Roo.bootstrap.DateField.dates[this.language].rtl || false;
         this.format = this.format || 'm/d/y';
-        
+        this.isInline = false;
+        this.isInput = true;
         
         if (typeof(this.minViewMode === 'string')) {
             switch (this.minViewMode) {
