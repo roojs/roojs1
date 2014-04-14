@@ -10027,7 +10027,7 @@ Roo.apply(Roo.bootstrap.DateField,  {
                     {
                         tag: 'th',
                         cls: 'prev',
-                        html: '&lsaquo;'
+                        html: '<i class="icon-arrow-left"/>'
                     },
                     {
                         tag: 'th',
@@ -10037,7 +10037,7 @@ Roo.apply(Roo.bootstrap.DateField,  {
                     {
                         tag: 'th',
                         cls: 'next',
-                        html: '&rsaquo;'
+                        html: '<i class="icon-arrow-right"/>'
                     }
 
                 ]
@@ -10055,6 +10055,23 @@ Roo.apply(Roo.bootstrap.DateField,  {
                         tag: 'td',
                         colspan: '7'
                     }
+                ]
+            }
+        ]
+    },
+    
+    footer : {
+        tag: 'tfoot',
+        cn: [
+            {
+                tag: 'tr',
+                cn: [
+                    {
+                        tag: 'th',
+                        colspan: '7',
+                        cls: 'today'
+                    }
+                    
                 ]
             }
         ]
@@ -10090,7 +10107,7 @@ Roo.apply(Roo.bootstrap.DateField,  {
   
     template : {
         tag: 'div',
-        cls: 'datepicker dropdown-menu',
+        cls: 'datepicker datepicker-dropdown dropdown-menu',
         cn: [
             {
                 tag: 'div',
@@ -10103,7 +10120,8 @@ Roo.apply(Roo.bootstrap.DateField,  {
                             Roo.bootstrap.DateField.head,
                             {
                                 tag: 'tbody'
-                            }
+                            },
+                            Roo.bootstrap.DateField.footer
                         ]
                     }
                 ]
@@ -10117,7 +10135,8 @@ Roo.apply(Roo.bootstrap.DateField,  {
                         cls: 'table-condensed',
                         cn:[
                             Roo.bootstrap.DateField.head,
-                            Roo.bootstrap.DateField.content
+                            Roo.bootstrap.DateField.content,
+                            Roo.bootstrap.DateField.footer
                         ]
                     }
                 ]
@@ -10131,7 +10150,8 @@ Roo.apply(Roo.bootstrap.DateField,  {
                         cls: 'table-condensed',
                         cn:[
                             Roo.bootstrap.DateField.head,
-                            Roo.bootstrap.DateField.content
+                            Roo.bootstrap.DateField.content,
+                            Roo.bootstrap.DateField.footer
                         ]
                     }
                 ]
