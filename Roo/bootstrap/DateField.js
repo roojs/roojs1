@@ -280,7 +280,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 
         prevMonth.setUTCDate(day);
         prevMonth.setUTCDate(day - (prevMonth.getUTCDay() - this.weekStart + 7)%7);
-        
+        Roo.log(prevMonth);
         var nextMonth = new Date(prevMonth);
         
         nextMonth.setUTCDate(nextMonth.getUTCDate() + 42);
@@ -336,8 +336,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 prevMonth.getUTCDate() == today.getDate()) {
                 clsName += ' today';
             }
-            Roo.log(currentDate);
-            Roo.log(prevMonth.valueOf());
+            
             if (currentDate && prevMonth.valueOf() === currentDate) {
                 clsName += ' active';
             }
