@@ -48,7 +48,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         this.picker().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
-//        this.picker().on('mousedown', this.mousedown);
+        this.picker().on('mousedown', this.mousedown);
         this.picker().on('click', this.onClick);
         
         this.startViewMode = this.viewMode;
