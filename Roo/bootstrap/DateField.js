@@ -73,6 +73,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     endDate: Infinity,
     
+    daysOfWeekDisabled: [],
+    
     _events: [],
     
     UTCDate: function()
