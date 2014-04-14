@@ -9657,9 +9657,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     weekStart : 0,
     
-    viewMode : '',
+    viewMode : 'months',
     
-    minViewMode : '',
+    minViewMode : 'months',
     
     onRender: function(ct, position)
     {

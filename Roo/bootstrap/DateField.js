@@ -42,7 +42,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     viewMode : 'months',
     
-    minViewMode : ''months,
+    minViewMode : 'months',
     
     onRender: function(ct, position)
     {
