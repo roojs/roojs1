@@ -9856,7 +9856,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     update: function(newDate){
         
-        this.date = (typeof(newDate) === 'undefined') ? new Date() : (typeof(newDate) === 'string') ? this.parseDate(newDate) : newDate;
+        this.date = (typeof(newDate) === 'undefined') ? this.UTCDate() : (typeof(newDate) === 'string') ? this.parseDate(newDate) : newDate;
         
         if (this.date < this.startDate) {
             this.viewDate = new Date(this.startDate);
@@ -9892,9 +9892,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.fillMonths();
                                                 
         var prevMonth = this.UTCDate(year, month-1, 28,0,0,0,0),
-        Roo.log(prevMonth);
+        
         day = prevMonth.getDaysInMonth(prevMonth.getUTCFullYear(), prevMonth.getUTCMonth());
-                
+         Roo.log(prevMonth);       
         prevMonth.setUTCDate(day);
         Roo.log(prevMonth);
         prevMonth.setUTCDate(day - (prevMonth.getUTCDay() - this.weekStart + 7)%7);
