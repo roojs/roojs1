@@ -9628,8 +9628,8 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
  * Bootstrap DateField class
  * @cfg {Number} weekStart default 0
  * @cfg {Number} weekStart default 0
- * @cfg {viewMode} viewMode default 0, (months:1|years:2)
- * @cfg {minViewMode} minViewMode default 0, (months:1|years:2)
+ * @cfg {viewMode} viewMode default empty, (months|years)
+ * @cfg {minViewMode} minViewMode default empty, (months|years)
  * 
  * @constructor
  * Create a new DateField
@@ -9657,14 +9657,42 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     weekStart : 0,
     
-    viewMode : 0,
+    viewMode : '',
     
-    minViewMode : 0,
+    minViewMode : '',
     
     onRender: function(ct, position)
     {
         Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
         
+        if (typeof(this.minViewMode === 'string')) {
+            switch (this.minViewMode) {
+                    case 'months':
+                            this.minViewMode = 1;
+                            break;
+                    case 'years':
+                            this.minViewMode = 2;
+                            break;
+                    default:
+                            this.minViewMode = 0;
+                            break;
+            }
+        }
+        
+        if (typeof(this.viewMode === 'string')) {
+            switch (this.viewMode) {
+                    case 'months':
+                            this.viewMode = 1;
+                            break;
+                    case 'years':
+                            this.viewMode = 2;
+                            break;
+                    default:
+                            this.viewMode = 0;
+                            break;
+            }
+        }
+                
         this.el.select('>.input-group', true).first().createChild(Roo.bootstrap.DateField.template);
         
         this.picker().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
@@ -9907,7 +9935,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         var nodeName = target.nodeName;
         var className = target.className;
-        var text = target.innerHTML;
+        var html = target.innerHTML;
         
         switch(nodeName.toLowerCase()) {
                 case 'th':
@@ -9949,23 +9977,25 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                         break;
                 case 'td':
                         if (className.indexOf('day') !== -1 && className.indexOf('disabled') === -1){
-                                var day = parseInt(target.text(), 10)||1;
+                                var day = parseInt(html, 10) || 1;
                                 var month = this.viewDate.getMonth();
-                                if (target.is('.old')) {
+                                
+                                if (className.indexOf('old') !== -1) {
                                         month -= 1;
-                                } else if (target.is('.new')) {
+                                } else if (className.indexOf('new') !== -1) {
                                         month += 1;
                                 }
                                 var year = this.viewDate.getFullYear();
                                 this.date = new Date(year, month, day,0,0,0,0);
                                 this.viewDate = new Date(year, month, Math.min(28, day),0,0,0,0);
                                 this.fill();
-                                this.set();
-                                this.element.trigger({
-                                        type: 'changeDate',
-                                        date: this.date,
-                                        viewMode: DPGlobal.modes[this.viewMode].clsName
-                                });
+                                this.setValue(this.date);
+                                
+//                                this.element.trigger({
+//                                        type: 'changeDate',
+//                                        date: this.date,
+//                                        viewMode: DPGlobal.modes[this.viewMode].clsName
+//                                });
                         }
                         break;
         }
