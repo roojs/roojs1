@@ -224,7 +224,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     place: function()
     {
-        this.picker().setTop(input.getHeight()).setLeft(this.inputEl().getLeft() - this.el.getLeft());
+        this.picker().setTop(this.inputEl().getHeight()).setLeft(this.inputEl().getLeft() - this.el.getLeft());
     },
     
     parseDate : function(value){
