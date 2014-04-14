@@ -161,6 +161,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             Roo.log(prevMonth);
             Roo.log(clsName);
             Roo.log(prevMonth.getDate());
+            
             html.cn.push({
                 tag: 'td',
                 cls: 'day ' + clsName,
