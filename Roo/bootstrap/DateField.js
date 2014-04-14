@@ -85,34 +85,35 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         this._attachEvents();
         
+        this.el.select('>.input-group', true).first().createChild(Roo.bootstrap.DateField.template);
         
-        if (typeof(this.minViewMode === 'string')) {
-            switch (this.minViewMode) {
-                    case 'months':
-                            this.minViewMode = 1;
-                            break;
-                    case 'years':
-                            this.minViewMode = 2;
-                            break;
-                    default:
-                            this.minViewMode = 0;
-                            break;
-            }
-        }
-        
-        if (typeof(this.viewMode === 'string')) {
-            switch (this.viewMode) {
-                    case 'months':
-                            this.viewMode = 1;
-                            break;
-                    case 'years':
-                            this.viewMode = 2;
-                            break;
-                    default:
-                            this.viewMode = 0;
-                            break;
-            }
-        }
+//        if (typeof(this.minViewMode === 'string')) {
+//            switch (this.minViewMode) {
+//                    case 'months':
+//                            this.minViewMode = 1;
+//                            break;
+//                    case 'years':
+//                            this.minViewMode = 2;
+//                            break;
+//                    default:
+//                            this.minViewMode = 0;
+//                            break;
+//            }
+//        }
+//        
+//        if (typeof(this.viewMode === 'string')) {
+//            switch (this.viewMode) {
+//                    case 'months':
+//                            this.viewMode = 1;
+//                            break;
+//                    case 'years':
+//                            this.viewMode = 2;
+//                            break;
+//                    default:
+//                            this.viewMode = 0;
+//                            break;
+//            }
+//        }
                 
         this.el.select('>.input-group', true).first().createChild(Roo.bootstrap.DateField.template);
         
