@@ -9665,9 +9665,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     onRender: function(ct, position)
     {
         Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
-        Roo.log(this.picker().hide);
+        
         this.el.select('.input-group', true).first().createChild(Roo.bootstrap.DateField.template);
-//        this.picker().setVisibilityMode(Roo.Element.DISPLAY);
+        this.picker().setVisibilityMode(Roo.Element.DISPLAY);
         this.startViewMode = this.viewMode;
         this.weekEnd = this.weekStart === 0 ? 6 : this.weekStart - 1;
         this.fillDow();
@@ -9810,6 +9810,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 this.viewMode = Math.max(this.minViewMode, Math.min(2, this.viewMode + dir));
         }
         Roo.each(this.picker().select('>div',true).elements, function(v){
+            Roo.log(v.hide);
 //            v.setVisibilityMode(Roo.Element.DISPLAY);
 //            v.hide();
         });
