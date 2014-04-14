@@ -593,14 +593,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             el.on(ev);
         }
     },
-    _detachEvents: function(){
-        for (var i=0, el, ev; i<this._events.length; i++){
-            el = this._events[i][0];
-            ev = this._events[i][1];
-            el.off(ev);
-        }
-        this._events = [];
-    },
     
     setStartDate: function(startDate){
         this.startDate = startDate || -Infinity;
