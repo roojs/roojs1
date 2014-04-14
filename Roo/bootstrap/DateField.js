@@ -347,11 +347,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     }
                     if (this.viewMode !== 0) {
                         this.date = new Date(this.viewDate);
-                        this.element.trigger({
-                                type: 'changeDate',
-                                date: this.date,
-                                viewMode: DPGlobal.modes[this.viewMode].clsName
-                        });
+//                        this.element.trigger({
+//                                type: 'changeDate',
+//                                date: this.date,
+//                                viewMode: DPGlobal.modes[this.viewMode].clsName
+//                        });
                     }
                     this.showMode(-1);
                     this.fill();
