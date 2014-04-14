@@ -255,7 +255,13 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.picker().hide();
         this.viewMode = this.startViewMode;
         this.showMode();
+    },
+    
+    mousedown: function(e){
+            e.stopPropagation();
+            e.preventDefault();
     }
+    
     
     
 //    getAutoCreate : function(){
