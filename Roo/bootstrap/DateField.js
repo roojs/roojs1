@@ -109,29 +109,29 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         if (typeof(this.minViewMode === 'string')) {
             switch (this.minViewMode) {
-                    case 'months':
-                            this.minViewMode = 1;
-                            break;
-                    case 'years':
-                            this.minViewMode = 2;
-                            break;
-                    default:
-                            this.minViewMode = 0;
-                            break;
+                case 'months':
+                    this.minViewMode = 1;
+                    break;
+                case 'years':
+                    this.minViewMode = 2;
+                    break;
+                default:
+                    this.minViewMode = 0;
+                    break;
             }
         }
         
         if (typeof(this.viewMode === 'string')) {
             switch (this.viewMode) {
-                    case 'months':
-                            this.viewMode = 1;
-                            break;
-                    case 'years':
-                            this.viewMode = 2;
-                            break;
-                    default:
-                            this.viewMode = 0;
-                            break;
+                case 'months':
+                    this.viewMode = 1;
+                    break;
+                case 'years':
+                    this.viewMode = 2;
+                    break;
+                default:
+                    this.viewMode = 0;
+                    break;
             }
         }
                 
@@ -148,9 +148,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         if (this.calendarWeeks){
             this.picker().select('>tfoot th.today')
-                                        .attr('colspan', function(i, val){
-                                                return parseInt(val) + 1;
-                                        });
+            .attr('colspan', function(i, val){
+                return parseInt(val) + 1;
+            });
         }
 			
         
@@ -180,15 +180,15 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             tag: 'tr',
             cn: [
                 
-            ]
+        ]
         };
         
         while (dowCnt < this.weekStart + 7) {
-                dow.cn.push({
-                    tag: 'th',
-                    cls: 'dow',
-                    html: Roo.bootstrap.DateField.dates.daysMin[(dowCnt++)%7]
-                });
+            dow.cn.push({
+                tag: 'th',
+                cls: 'dow',
+                html: Roo.bootstrap.DateField.dates.daysMin[(dowCnt++)%7]
+            });
         }
         
         this.picker().select('>.datepicker-days thead', true).first().createChild(dow);
@@ -222,14 +222,14 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     fill: function() {
         var d = new Date(this.viewDate),
-                year = d.getFullYear(),
-                month = d.getMonth(),
-                currentDate = this.date.clearTime().valueOf();
+        year = d.getFullYear(),
+        month = d.getMonth(),
+        currentDate = this.date.clearTime().valueOf();
         
         this.picker().select('>.datepicker-days th.switch', true).first().dom.innerHTML = Roo.bootstrap.DateField.dates.months[month]+' '+year;
         
         var prevMonth = new Date(year, month-1, 28,0,0,0,0),
-                day = prevMonth.getDaysInMonth();
+        day = prevMonth.getDaysInMonth();
                 
         prevMonth.setDate(day);
         prevMonth.setDate(day - (prevMonth.getDay() - this.weekStart + 7)%7);
@@ -248,14 +248,14 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             var clsName = '';
             
             if (prevMonth.getDay() === this.weekStart) {
-                    if(fillMonths){
-                        this.picker().select('>.datepicker-days tbody',true).first().createChild(fillMonths);
-                    }
+                if(fillMonths){
+                    this.picker().select('>.datepicker-days tbody',true).first().createChild(fillMonths);
+                }
                     
-                    fillMonths = {
-                        tag: 'tr',
-                        cn: []
-                    };
+                fillMonths = {
+                    tag: 'tr',
+                    cn: []
+                };
             }
             
             var prevY = prevMonth.getFullYear();
@@ -264,19 +264,19 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             var today = new Date();
             
             if ((prevM < month &&  prevY === year) ||  prevY < year) {
-                    clsName += ' old';
+                clsName += ' old';
             } else if ((prevM > month && prevY === year) || prevY > year) {
-                    clsName += ' new';
+                clsName += ' new';
             }
             if (this.todayHighlight &&
-                    prevY == today.getFullYear() &&
-                    prevM == today.getMonth() &&
-                    prevD == today.getDate()) {
-                    clsName += ' today';
+                prevY == today.getFullYear() &&
+                prevM == today.getMonth() &&
+                prevD == today.getDate()) {
+                clsName += ' today';
             }
             
             if (prevMonth.valueOf() === currentDate) {
-                    clsName += ' active';
+                clsName += ' active';
             }
             
             fillMonths.cn.push({
@@ -321,7 +321,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     showMode: function(dir) {
         if (dir) {
-                this.viewMode = Math.max(this.minViewMode, Math.min(2, this.viewMode + dir));
+            this.viewMode = Math.max(this.minViewMode, Math.min(2, this.viewMode + dir));
         }
         Roo.each(this.picker().select('>div',true).elements, function(v){
             v.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
@@ -340,7 +340,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             return value;
         }
         var v = Date.parseDate(value, this.format);
-         if (!v && this.useIso) {
+        if (!v && this.useIso) {
             v = Date.parseDate(value, 'Y-m-d');
         }
         if(!v && this.altFormats){
@@ -356,7 +356,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     formatDate : function(date, fmt){
         return (!date || !(date instanceof Date)) ?
-               date : date.dateFormat(fmt || this.format);
+        date : date.dateFormat(fmt || this.format);
     },
     
     onFocus : function()
@@ -400,65 +400,65 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         var html = target.innerHTML;
         
         switch(nodeName.toLowerCase()) {
-                case 'th':
-                    switch(className) {
-                        case 'switch':
-                            this.showMode(1);
-                            break;
-                        case 'prev':
-                        case 'next':
-                            this.viewDate['set'+Roo.bootstrap.DateField.modes[this.viewMode].navFnc].call(
-                                    this.viewDate,
-                                    this.viewDate['get'+Roo.bootstrap.DateField.modes[this.viewMode].navFnc].call(this.viewDate) + 
-                                    Roo.bootstrap.DateField.modes[this.viewMode].navStep * (target.className === 'prev' ? -1 : 1)
+            case 'th':
+                switch(className) {
+                    case 'switch':
+                        this.showMode(1);
+                        break;
+                    case 'prev':
+                    case 'next':
+                        this.viewDate['set'+Roo.bootstrap.DateField.modes[this.viewMode].navFnc].call(
+                            this.viewDate,
+                            this.viewDate['get'+Roo.bootstrap.DateField.modes[this.viewMode].navFnc].call(this.viewDate) + 
+                            Roo.bootstrap.DateField.modes[this.viewMode].navStep * (target.className === 'prev' ? -1 : 1)
                             );
-                            this.fill();
-//                                        this.setValue(this.formatDate(this.date));
-                            break;
-                    }
-                    break;
-                case 'span':
-                    if (className.indexOf('month') !== -1) {
-                        this.viewDate.setMonth(new Date(html + " 1").getMonth());
-                    } else {
-                        var year = parseInt(html, 10) || 0;
-                        this.viewDate.setFullYear(year);
-                    }
-                    if (this.viewMode !== 0) {
-                        this.date = new Date(this.viewDate);
-//                        this.element.trigger({
-//                                type: 'changeDate',
-//                                date: this.date,
-//                                viewMode: DPGlobal.modes[this.viewMode].clsName
-//                        });
-                    }
-                    this.showMode(-1);
-                    this.fill();
-//                    this.set();
-                    break;
-                case 'td':
-                    if (className.indexOf('day') !== -1 && className.indexOf('disabled') === -1){
-                        var day = parseInt(html, 10) || 1;
-                        var month = this.viewDate.getMonth();
-
-                        if (className.indexOf('old') !== -1) {
-                                month -= 1;
-                        } else if (className.indexOf('new') !== -1) {
-                                month += 1;
-                        }
-                        var year = this.viewDate.getFullYear();
-                        this.date = new Date(year, month, day,0,0,0,0);
-                        this.viewDate = new Date(year, month, Math.min(28, day),0,0,0,0);
                         this.fill();
-                        this.setValue(this.formatDate(this.date));
-                        this.hide();
-//                                this.element.trigger({
-//                                        type: 'changeDate',
-//                                        date: this.date,
-//                                        viewMode: DPGlobal.modes[this.viewMode].clsName
-//                                });
+                        //                                        this.setValue(this.formatDate(this.date));
+                        break;
+                }
+                break;
+            case 'span':
+                if (className.indexOf('month') !== -1) {
+                    this.viewDate.setMonth(new Date(html + " 1").getMonth());
+                } else {
+                    var year = parseInt(html, 10) || 0;
+                    this.viewDate.setFullYear(year);
+                }
+                if (this.viewMode !== 0) {
+                    this.date = new Date(this.viewDate);
+                //                        this.element.trigger({
+                //                                type: 'changeDate',
+                //                                date: this.date,
+                //                                viewMode: DPGlobal.modes[this.viewMode].clsName
+                //                        });
+                }
+                this.showMode(-1);
+                this.fill();
+                //                    this.set();
+                break;
+            case 'td':
+                if (className.indexOf('day') !== -1 && className.indexOf('disabled') === -1){
+                    var day = parseInt(html, 10) || 1;
+                    var month = this.viewDate.getMonth();
+
+                    if (className.indexOf('old') !== -1) {
+                        month -= 1;
+                    } else if (className.indexOf('new') !== -1) {
+                        month += 1;
                     }
-                    break;
+                    var year = this.viewDate.getFullYear();
+                    this.date = new Date(year, month, day,0,0,0,0);
+                    this.viewDate = new Date(year, month, Math.min(28, day),0,0,0,0);
+                    this.fill();
+                    this.setValue(this.formatDate(this.date));
+                    this.hide();
+                //                                this.element.trigger({
+                //                                        type: 'changeDate',
+                //                                        date: this.date,
+                //                                        viewMode: DPGlobal.modes[this.viewMode].clsName
+                //                                });
+                }
+                break;
         }
     },
     
@@ -513,21 +513,33 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     },
     
     setStartDate: function(startDate){
-            this.startDate = startDate||-Infinity;
-            if (this.startDate !== -Infinity) {
-                    this.startDate = this.parseDate(this.startDate);
-            }
-            this.update();
-            this.updateNavArrows();
+        this.startDate = startDate || -Infinity;
+        if (this.startDate !== -Infinity) {
+            this.startDate = this.parseDate(this.startDate);
+        }
+        this.update();
+        this.updateNavArrows();
     },
 
     setEndDate: function(endDate){
-            this.endDate = endDate||Infinity;
-            if (this.endDate !== Infinity) {
-                    this.endDate = this.parseDate(this.endDate);
-            }
-            this.update();
-            this.updateNavArrows();
+        this.endDate = endDate || Infinity;
+        if (this.endDate !== Infinity) {
+            this.endDate = this.parseDate(this.endDate);
+        }
+        this.update();
+        this.updateNavArrows();
+    },
+    
+    setDaysOfWeekDisabled: function(daysOfWeekDisabled){
+        this.daysOfWeekDisabled = daysOfWeekDisabled || [];
+        if (typeof(this.daysOfWeekDisabled) !== 'object') {
+            this.daysOfWeekDisabled = this.daysOfWeekDisabled.split(/,\s*/);
+        }
+        this.daysOfWeekDisabled = $.map(this.daysOfWeekDisabled, function (d) {
+            return parseInt(d, 10);
+        });
+        this.update();
+        this.updateNavArrows();
     }
    
 });
@@ -537,88 +549,88 @@ Roo.apply(Roo.bootstrap.DateField,  {
     head : {
         tag: 'thead',
         cn: [
+        {
+            tag: 'tr',
+            cn: [
             {
-                tag: 'tr',
-                cn: [
-                    {
-                        tag: 'th',
-                        cls: 'prev',
-                        html: '<i class="icon-arrow-left"/>'
-                    },
-                    {
-                        tag: 'th',
-                        cls: 'switch',
-                        colspan: '5'
-                    },
-                    {
-                        tag: 'th',
-                        cls: 'next',
-                        html: '<i class="icon-arrow-right"/>'
-                    }
-
-                ]
+                tag: 'th',
+                cls: 'prev',
+                html: '<i class="icon-arrow-left"/>'
+            },
+            {
+                tag: 'th',
+                cls: 'switch',
+                colspan: '5'
+            },
+            {
+                tag: 'th',
+                cls: 'next',
+                html: '<i class="icon-arrow-right"/>'
             }
+
+            ]
+        }
         ]
     },
     
     content : {
         tag: 'tbody',
         cn: [
+        {
+            tag: 'tr',
+            cn: [
             {
-                tag: 'tr',
-                cn: [
-                    {
-                        tag: 'td',
-                        colspan: '7'
-                    }
-                ]
+                tag: 'td',
+                colspan: '7'
             }
+            ]
+        }
         ]
     },
     
     footer : {
         tag: 'tfoot',
         cn: [
+        {
+            tag: 'tr',
+            cn: [
             {
-                tag: 'tr',
-                cn: [
-                    {
-                        tag: 'th',
-                        colspan: '7',
-                        cls: 'today'
-                    }
-                    
-                ]
+                tag: 'th',
+                colspan: '7',
+                cls: 'today'
             }
+                    
+            ]
+        }
         ]
     },
     
     dates:{
         en: {
-                days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-                daysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-                daysMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
-                months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-                monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                today: "Today"
-            }
+            days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            daysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+            daysMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
+            months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+            monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            today: "Today"
+        }
     },
     
     modes: [
-            {
-                clsName: 'days',
-                navFnc: 'Month',
-                navStep: 1
-            },
-            {
-                clsName: 'months',
-                navFnc: 'FullYear',
-                navStep: 1
-            },
-            {
-                clsName: 'years',
-                navFnc: 'FullYear',
-                navStep: 10
+    {
+        clsName: 'days',
+        navFnc: 'Month',
+        navStep: 1
+    },
+    {
+        clsName: 'months',
+        navFnc: 'FullYear',
+        navStep: 1
+    },
+    {
+        clsName: 'years',
+        navFnc: 'FullYear',
+        navStep: 10
     }]
 });
 
@@ -628,53 +640,53 @@ Roo.apply(Roo.bootstrap.DateField,  {
         tag: 'div',
         cls: 'datepicker dropdown-menu',
         cn: [
+        {
+            tag: 'div',
+            cls: 'datepicker-days',
+            cn: [
             {
-                tag: 'div',
-                cls: 'datepicker-days',
-                cn: [
-                    {
-                        tag: 'table',
-                        cls: 'table-condensed',
-                        cn:[
-                            Roo.bootstrap.DateField.head,
-                            {
-                                tag: 'tbody'
-                            },
-                            Roo.bootstrap.DateField.footer
-                        ]
-                    }
-                ]
-            },
-            {
-                tag: 'div',
-                cls: 'datepicker-months',
-                cn: [
-                    {
-                        tag: 'table',
-                        cls: 'table-condensed',
-                        cn:[
-                            Roo.bootstrap.DateField.head,
-                            Roo.bootstrap.DateField.content,
-                            Roo.bootstrap.DateField.footer
-                        ]
-                    }
-                ]
-            },
-            {
-                tag: 'div',
-                cls: 'datepicker-years',
-                cn: [
-                    {
-                        tag: 'table',
-                        cls: 'table-condensed',
-                        cn:[
-                            Roo.bootstrap.DateField.head,
-                            Roo.bootstrap.DateField.content,
-                            Roo.bootstrap.DateField.footer
-                        ]
-                    }
+                tag: 'table',
+                cls: 'table-condensed',
+                cn:[
+                Roo.bootstrap.DateField.head,
+                {
+                    tag: 'tbody'
+                },
+                Roo.bootstrap.DateField.footer
                 ]
             }
+            ]
+        },
+        {
+            tag: 'div',
+            cls: 'datepicker-months',
+            cn: [
+            {
+                tag: 'table',
+                cls: 'table-condensed',
+                cn:[
+                Roo.bootstrap.DateField.head,
+                Roo.bootstrap.DateField.content,
+                Roo.bootstrap.DateField.footer
+                ]
+            }
+            ]
+        },
+        {
+            tag: 'div',
+            cls: 'datepicker-years',
+            cn: [
+            {
+                tag: 'table',
+                cls: 'table-condensed',
+                cn:[
+                Roo.bootstrap.DateField.head,
+                Roo.bootstrap.DateField.content,
+                Roo.bootstrap.DateField.footer
+                ]
+            }
+            ]
+        }
         ]
     }
 });
