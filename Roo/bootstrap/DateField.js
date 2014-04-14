@@ -349,7 +349,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     },
     
     setValue : function(v){
-        this.value = v;
+        this.date = v;
         if(this.rendered){
             this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
             this.validate();
