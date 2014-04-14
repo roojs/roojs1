@@ -134,18 +134,17 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         nextMonth = nextMonth.valueOf();
         
-        var html = false;
-        var fillMonths = [];
+        var fillMonths = false;
         
         while(prevMonth.valueOf() < nextMonth) {
             var clsName = '';
             
             if (prevMonth.getDay() === this.weekStart) {
-                    if(html){
+                    if(fillMonths){
                         this.picker().select('.datepicker-days tbody',true).first().createChild(html);
                     }
                     
-                    html = {
+                    fillMonths = {
                         tag: 'tr',
                         cn: []
                     };
@@ -167,15 +166,12 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             Roo.log(clsName);
             Roo.log(prevMonth.getDate());
             
-            html.cn.push({
+            fillMonths.cn.push({
                 tag: 'td',
                 cls: 'day ' + clsName,
                 html: prevMonth.getDate()
             })
-//                html.push('<td class="day '+clsName+'">'+prevMonth.getDate() + '</td>');
-//                if (prevMonth.getDay() === this.weekEnd) {
-//                        html.push('</tr>');
-//                }
+            
             prevMonth.setDate(prevMonth.getDate()+1);
         }
         
