@@ -9631,6 +9631,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
  * @cfg {Number} viewMode default empty, (months|years)
  * @cfg {Number} minViewMode default empty, (months|years)
  * @cfg {Boolean} todayHighlight default false
+ * @cfg {String} language default en
  * 
  * @constructor
  * Create a new DateField
@@ -9664,9 +9665,38 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     todayHighlight : false,
     
+    language: 'en',
+    
+    _events: [],
+    
+    UTCDate: function()
+    {
+        return new Date(Date.UTC.apply(Date, arguments));
+    },
+    
+    UTCToday: function()
+    {
+        var today = new Date();
+        return UTCDate(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate());
+    },
+        
     onRender: function(ct, position)
     {
+        Roo.log(this.el);
         Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
+        
+        this.language = this.language || 'en';
+        this.language = this.language in Roo.bootstrap.DateField.dates ? this.language : this.language.split('-')[0];
+        this.language = this.language in Roo.bootstrap.DateField.dates ? this.language : "en";
+        
+        this.isRTL = Roo.bootstrap.DateField.dates[this.language].rtl || false;
+        this.format = this.format || 'm/d/y';
+        this.isInline = false;
+        this.isInput = true;
+        this.component = this.el.select('.add-on', true).first() || false;
+        this.component = (this.component && this.component.length === 0) ? false : this.component;
+        this.hasInput = this.component && this.inputEL().length;
+        
         
         if (typeof(this.minViewMode === 'string')) {
             switch (this.minViewMode) {
@@ -10004,27 +10034,56 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     }
                     break;
         }
+    },
+    
+    _attachEvents: function(){
+        this._detachEvents();
+        if (this.isInput) { // single input
+            this._events = [
+            [this.el, {
+                keyup: this.update,
+                keydown: this.keydown,
+                click: this.show
+            }]
+            ];
+        }
+        else if (this.component && this.hasInput){ // component: input + button
+            this._events = [
+            // For components that are not readonly, allow keyboard nav
+            [this.inputEl(), {
+                focus: this.show,
+                keyup: this.update,
+                keydown: this.keydown
+            }],
+            [this.component, {
+                click: this.show
+            }]
+            ];
+        }
+        else if (this.el.is('div')) {  // inline datepicker
+            this.isInline = true;
+        }
+        else {
+            this._events = [
+            [this.element, {
+                click: $.proxy(this.show, this)
+            }]
+            ];
+        }
+        for (var i=0, el, ev; i<this._events.length; i++){
+            el = this._events[i][0];
+            ev = this._events[i][1];
+            el.on(ev);
+        }
+    },
+    _detachEvents: function(){
+        for (var i=0, el, ev; i<this._events.length; i++){
+            el = this._events[i][0];
+            ev = this._events[i][1];
+            el.off(ev);
+        }
+        this._events = [];
     }
-//    getAutoCreate : function(){
-//        var cfg = {
-//            tag: 'div',
-//            cls: 'input-append date',
-//            cn: [
-//                {
-//                    tag: 'input',
-//                    cls: 'span2 form-control'
-//                },
-//                {
-//                        tag: 'span',
-//                        cls: 'add-on',
-//                        html: '<i class="icon-th"></i>'
-//                    }
-//            ]
-//            
-//        };
-//        
-//        return cfg;
-//    }
    
 });
 
@@ -10090,11 +10149,14 @@ Roo.apply(Roo.bootstrap.DateField,  {
     },
     
     dates:{
-            days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-            daysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-            daysMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
-            months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-            monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        en: {
+                days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+                daysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+                daysMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
+                months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+                monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                today: "Today"
+            }
     },
     
     modes: [
