@@ -153,7 +153,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         this.weekEnd = this.weekStart === 0 ? 6 : this.weekStart - 1;
         
-        
         this.setStartDate(this.startDate);
         this.setEndDate(this.endDate);
                 
