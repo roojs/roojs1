@@ -9701,7 +9701,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 });
         }
         
-        this.picker().select('.datepicker-days thead', true).first().createChild(dow);
+//        this.picker().select('.datepicker-days thead', true).first().createChild(dow);
     },
     
     fillMonths: function()
