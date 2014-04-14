@@ -436,7 +436,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     onFocus : function()
     {
         Roo.bootstrap.DateField.superclass.onFocus.call(this);
-        Roo.log('onFocus !');
         this.show();
     },
     
