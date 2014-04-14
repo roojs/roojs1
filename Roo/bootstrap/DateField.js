@@ -141,7 +141,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             
             if (prevMonth.getDay() === this.weekStart) {
                     if(fillMonths){
-                        this.picker().select('.datepicker-days tbody',true).first().createChild(html);
+                        this.picker().select('.datepicker-days tbody',true).first().createChild(fillMonths);
                     }
                     
                     fillMonths = {
