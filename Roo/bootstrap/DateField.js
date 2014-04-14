@@ -564,11 +564,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         var nodeName = target.nodeName;
         var className = target.className;
         var html = target.innerHTML;
-        Roo.log(target);
-        Roo.log(nodeName);
-        Roo.log(className);
-        Roo.log(html);
-        
         
         switch(nodeName.toLowerCase()) {
             case 'th':
@@ -771,7 +766,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 
     
     remove: function() {
-        this.picker().parent().removeChild(this.picker());
+        this.picker().dom.parentNode.removeChild(this.picker());
     }
    
 });
