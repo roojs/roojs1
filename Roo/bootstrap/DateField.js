@@ -551,15 +551,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         }
     },
     
-    _setDate: function(date, which){
-        if (!which || which == 'date')
-            this.date = date;
-        if (!which || which  == 'view')
-            this.viewDate = date;
-        this.fill();
-        this.hide();
-    },
-    
     _attachEvents: function(){
         this._detachEvents();
         if (this.isInput) { // single input
