@@ -535,7 +535,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         if (typeof(this.daysOfWeekDisabled) !== 'object') {
             this.daysOfWeekDisabled = this.daysOfWeekDisabled.split(/,\s*/);
         }
-        this.daysOfWeekDisabled = $.map(this.daysOfWeekDisabled, function (d) {
+        this.daysOfWeekDisabled = this.daysOfWeekDisabled.map(function (d) {
             return parseInt(d, 10);
         });
         this.update();
