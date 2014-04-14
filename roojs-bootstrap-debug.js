@@ -10301,28 +10301,28 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         year = d.getUTCFullYear(),
         month = d.getUTCMonth();
         
-        this.picker.select('>.prev', true).first().show();
-        this.picker.select('>.next', true).first().show();
+        this.picker().select('>.prev', true).first().show();
+        this.picker().select('>.next', true).first().show();
                 
         switch (this.viewMode) {
             case 0:
                 
                 if (this.startDate !== -Infinity && year <= this.startDate.getUTCFullYear() && month <= this.startDate.getUTCMonth()) {
-                    this.picker.select('>.prev', true).first().hide();
+                    this.picker().select('>.prev', true).first().hide();
                 }
                 
                 if (this.endDate !== Infinity && year >= this.endDate.getUTCFullYear() && month >= this.endDate.getUTCMonth()) {
-                    this.picker.select('>.next', true).first().hide();
+                    this.picker().select('>.next', true).first().hide();
                 } 
                 
                 break;
             case 1:
             case 2:
                 if (this.startDate !== -Infinity && year <= this.startDate.getUTCFullYear()) {
-                    this.picker.select('>.prev', true).first().hide();
+                    this.picker().select('>.prev', true).first().hide();
                 } 
                 if (this.endDate !== Infinity && year >= this.endDate.getUTCFullYear()) {
-                    this.picker.select('>.next', true).first().hide();
+                    this.picker().select('>.next', true).first().hide();
                 } 
                 break;
         }
