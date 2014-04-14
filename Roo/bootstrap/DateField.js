@@ -67,6 +67,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         this.language = this.language || 'en';
         this.language = this.language in Roo.bootstrap.DateField.dates ? this.language : this.language.split('-')[0];
+        this.language = this.language in dates ? this.language : "en";
         
         if (typeof(this.minViewMode === 'string')) {
             switch (this.minViewMode) {
