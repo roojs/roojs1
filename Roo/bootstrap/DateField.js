@@ -239,7 +239,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     update: function(newDate){
         
-        this.date = (typeof(newDate) === 'undefined') ? this.UTCDate() : (typeof(newDate) === 'string') ? this.parseDate(newDate) : newDate;
+        this.date = (typeof(newDate) === 'undefined') ? this.UTCToday() : (typeof(newDate) === 'string') ? this.parseDate(newDate) : newDate;
         
         if (this.date < this.startDate) {
             this.viewDate = new Date(this.startDate);
