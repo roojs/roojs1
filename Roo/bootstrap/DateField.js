@@ -150,7 +150,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     };
             }
             
-//                clsName = this.onRender(prevMonth);
             var prevY = prevMonth.getFullYear();
             var prevM = prevMonth.getMonth();
             if ((prevM < month &&  prevY === year) ||  prevY < year) {
@@ -173,7 +172,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
           
         var currentYear = this.date.getFullYear();
         var currentMonth = this.date.getMonth();
-////
+
         this.picker().select('>.datepicker-months th.switch',true).first().dom.innerHTML = year;
         
         Roo.each(this.picker().select('>.datepicker-months tbody span',true).elements, function(v,k){
@@ -184,22 +183,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             }
         });
         
-//                                .find('th:eq(1)')
-//                                        .text(year)
-//                                        .end()
-//                                .find('span').removeClass('active');
-//        if (currentYear === year) {
-//                months.eq(this.date.getMonth()).addClass('active');
-//        }
-//
-//        html = '';
         year = parseInt(year/10, 10) * 10;
         
         this.picker().select('>.datepicker-years th.switch', true).first().dom.innerHTML = year + '-' + (year + 9);
-//                                                .find('th:eq(1)')
-//                                                        .text(year + '-' + (year + 9))
-//                                                        .end()
-//                                                .find('td');
         
         year -= 1;
         for (var i = -1; i < 11; i++) {
