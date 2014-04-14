@@ -157,7 +157,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.startViewMode = this.viewMode;
         
         if (this.calendarWeeks){
-            this.picker().select('>tfoot th.today')
+            this.picker().select('tfoot th.today')
             .attr('colspan', function(i, val){
                 return parseInt(val) + 1;
             });
