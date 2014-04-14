@@ -241,6 +241,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         return v;
     },
     
+    formatDate : function(date, fmt){
+        return (!date || !(date instanceof Date)) ?
+               date : date.dateFormat(fmt || this.format);
+    },
+    
     onFocus : function()
     {
         Roo.bootstrap.DateField.superclass.onFocus.call(this);
