@@ -172,7 +172,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         }
           
         var currentYear = this.date.getFullYear();
-        Roo.log(currentYear);
+        var currentMonth = this.date.getMonth();
 ////
         this.picker().select('.datepicker-months th.switch',true).first().dom.innerHTML = year;
         
@@ -180,7 +180,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         Roo.each(this.picker().select('>.datepicker-months tbody span',true).elements, function(v,k){
             v.removeClass('active');
             
-            if(k === this.date.getMonth()){
+            if(currentYear === year && k === currentMonth){
                 v.addClass('active');
             }
         });
