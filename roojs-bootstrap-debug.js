@@ -9697,6 +9697,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.component = (this.component && this.component.length === 0) ? false : this.component;
         this.hasInput = this.component && this.inputEL().length;
         
+        this._attachEvents();
         
         if (typeof(this.minViewMode === 'string')) {
             switch (this.minViewMode) {
