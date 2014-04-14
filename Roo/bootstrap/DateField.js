@@ -560,7 +560,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         if (!which || which  == 'view')
             this.viewDate = date;
         this.fill();
-        this.setValue(this.formatDate(this.date));
+        this.hide();
     },
     
     _attachEvents: function(){
