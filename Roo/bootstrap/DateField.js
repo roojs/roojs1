@@ -279,6 +279,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         day = prevMonth.getDaysInMonth(prevMonth.getUTCFullYear(), prevMonth.getUTCMonth());
                 
         prevMonth.setUTCDate(day);
+        Roo.log(prevMonth);
         prevMonth.setUTCDate(day - (prevMonth.getUTCDay() - this.weekStart + 7)%7);
         Roo.log(prevMonth);
         var nextMonth = new Date(prevMonth);
