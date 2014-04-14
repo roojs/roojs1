@@ -13,6 +13,8 @@
  * @cfg {Number} weekStart default 0
  * @cfg {Number} viewMode default empty, (months|years)
  * @cfg {Number} minViewMode default empty, (months|years)
+ * @cfg {Number} startDate default -Infinity
+ * @cfg {Number} endDate default Infinity
  * @cfg {Boolean} todayHighlight default false
  * @cfg {Boolean} todayBtn default false
  * @cfg {Boolean} calendarWeeks default false
@@ -65,6 +67,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     keyboardNavigation: true,
     
     calendarWeeks: false,
+    
+    startDate: -Infinity,
+    
+    endDate: Infinity,
     
     _events: [],
     
@@ -146,8 +152,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 			
         
         this.weekEnd = this.weekStart === 0 ? 6 : this.weekStart - 1;
-        this.startDate = -Infinity;
-        this.endDate = Infinity;
+        
         
         this.setStartDate(this.startDate);
         this.setEndDate(this.endDate);
