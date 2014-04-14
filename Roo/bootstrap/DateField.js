@@ -546,10 +546,12 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         var d = new Date(this.viewDate),
         year = d.getUTCFullYear(),
         month = d.getUTCMonth();
+        
+        this.picker.select('>.prev', true).first().show();
+        this.picker.select('>.next', true).first().show();
+                
         switch (this.viewMode) {
             case 0:
-                this.picker.select('>.prev', true).first().show();
-                this.picker.select('>.next', true).first().show();
                 
                 if (this.startDate !== -Infinity && year <= this.startDate.getUTCFullYear() && month <= this.startDate.getUTCMonth()) {
                     this.picker.select('>.prev', true).first().hide();
@@ -563,23 +565,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             case 1:
             case 2:
                 if (this.startDate !== -Infinity && year <= this.startDate.getUTCFullYear()) {
-                    this.picker.find('.prev').css({
-                        visibility: 'hidden'
-                    });
-                } else {
-                    this.picker.find('.prev').css({
-                        visibility: 'visible'
-                    });
-                }
+                    this.picker.select('>.prev', true).first().hide();
+                } 
                 if (this.endDate !== Infinity && year >= this.endDate.getUTCFullYear()) {
-                    this.picker.find('.next').css({
-                        visibility: 'hidden'
-                    });
-                } else {
-                    this.picker.find('.next').css({
-                        visibility: 'visible'
-                    });
-                }
+                    this.picker.select('>.next', true).first().hide();
+                } 
                 break;
         }
     }
