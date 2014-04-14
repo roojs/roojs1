@@ -195,7 +195,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 //        html = '';
         year = parseInt(year/10, 10) * 10;
         
-        var yearCont = this.picker().select('>.datepicker-years', true).first().select('th', true).first().dom.innerHTML = year + '-' + (year + 9);
+        var yearCont = this.picker().select('>.datepicker-years th.switch', true).first().dom.innerHTML = year + '-' + (year + 9);
 ////                                                .find('th:eq(1)')
 ////                                                        .text(year + '-' + (year + 9))
 ////                                                        .end()
