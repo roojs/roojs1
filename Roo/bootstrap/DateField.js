@@ -560,7 +560,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         var nodeName = target.nodeName;
         var className = target.className;
         var html = target.innerHTML;
-        Roo.log(target.parent());
+        Roo.log(target.parents());
         Roo.log(nodeName);
         Roo.log(className);
         Roo.log(html);
