@@ -790,6 +790,21 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 this.hide();
                 break;
         }
+//        if (dateChanged){
+//            this.element.trigger({
+//                type: 'changeDate',
+//                date: this.date
+//            });
+//            var element;
+//            if (this.isInput) {
+//                element = this.element;
+//            } else if (this.component){
+//                element = this.element.find('input');
+//            }
+//            if (element) {
+//                element.change();
+//            }
+//        }
     },
     
     remove: function() {
