@@ -269,8 +269,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     onClick: function(e) {
         Roo.log('click');
         Roo.log(e);
-        e.stopPropagation();
-        e.preventDefault();
 //        var target = $(e.target).closest('span, td, th');
 //        if (target.length === 1) {
 //                switch(target[0].nodeName.toLowerCase()) {

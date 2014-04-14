@@ -9665,7 +9665,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         this.picker().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
-//        this.picker().on('mousedown', this.mousedown);
+        this.picker().on('mousedown', this.onMousedown);
         this.picker().on('click', this.onClick);
         
         this.startViewMode = this.viewMode;
@@ -9878,7 +9878,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.showMode();
     },
     
-    mousedown: function(e){
+    onMousedown: function(e){
         e.stopPropagation();
         e.preventDefault();
     },
@@ -9886,8 +9886,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     onClick: function(e) {
         Roo.log('click');
         Roo.log(e);
-        e.stopPropagation();
-        e.preventDefault();
 //        var target = $(e.target).closest('span, td, th');
 //        if (target.length === 1) {
 //                switch(target[0].nodeName.toLowerCase()) {
