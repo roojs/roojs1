@@ -356,13 +356,14 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         }
           
         var currentYear = this.date && this.date.getUTCFullYear();
+        var currentMonth = this.date && this.date.getUTCMonth();
         
         this.picker().select('>.datepicker-months th.switch',true).first().dom.innerHTML = year;
         
         Roo.each(this.picker().select('>.datepicker-months tbody span',true).elements, function(v,k){
             v.removeClass('active');
             
-            if(currentYear === year && k === this.date.getUTCMonth()){
+            if(currentYear === year && k === currentMonth){
                 v.addClass('active');
             }
             
