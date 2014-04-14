@@ -173,6 +173,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 //                }
             prevMonth.setDate(prevMonth.getDate()+1);
         }
+        
+        Roo.log(html);
 //        this.picker().select('.datepicker-days tbody',true).first().innerHTML = '';
         this.picker().select('.datepicker-days tbody',true).first().createChild(html);
 //        
