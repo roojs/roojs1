@@ -339,7 +339,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                         }
                         break;
                 case 'span':
-                        if (target.is('.month')) {
+                        if (className.indexOf('month') !== -1) {
+                                Roo.log(target.parent());
                                 var month = target.parent().find('span').index(target);
                                 this.viewDate.setMonth(month);
                         } else {
