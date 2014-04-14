@@ -493,7 +493,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             case 37: // left
             case 39: // right
                 if (!this.keyboardNavigation) break;
-               Roo.log('out');
                 dir = e.keyCode == 37 ? -1 : 1;
                 
                 if (e.ctrlKey){
