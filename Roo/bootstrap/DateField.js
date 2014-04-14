@@ -44,11 +44,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     minViewMode : 0,
     
-    
-    inputEl : function(){
-        this.el.select('input', true).first();
-    },
-    
     onRender: function(ct, position)
     {
         Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
