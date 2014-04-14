@@ -9789,6 +9789,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         }
           
         var currentYear = this.date.getFullYear();
+        Roo.log(currentYear);
 ////
         this.picker().select('.datepicker-months th.switch',true).first().dom.innerHTML = year;
         
