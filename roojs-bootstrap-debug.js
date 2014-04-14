@@ -9681,7 +9681,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     picker : function()
     {
         Roo.log(this.el);
-        return this.el.select('>.datepicker', true).first();
+        return this.el.select('>*.datepicker', true).first();
     },
     
     fillDow: function()
