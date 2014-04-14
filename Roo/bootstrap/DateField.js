@@ -343,6 +343,14 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                         }
                         break;
         }
+    },
+    
+    setValue : function(v){
+        this.value = v;
+        if(this.rendered){
+            this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+            this.validate();
+        }
     }
     
 //    getAutoCreate : function(){
