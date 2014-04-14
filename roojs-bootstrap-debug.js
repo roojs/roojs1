@@ -9796,7 +9796,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         Roo.each(this.picker().select('>.datepicker-months tbody span',true).elements, function(v,k){
             v.removeClass('active');
             
-            if(k === this.data.getMonth()){
+            if(k === this.date.getMonth()){
                 v.addClass('active');
             }
         });
