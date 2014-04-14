@@ -416,27 +416,56 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     }
                     break;
         }
+    },
+    
+    _attachEvents: function(){
+        this._detachEvents();
+        if (this.isInput) { // single input
+            this._events = [
+            [this.el, {
+                keyup: this.update,
+                keydown: this.keydown,
+                click: this.show
+            }]
+            ];
+        }
+        else if (this.component && this.hasInput){ // component: input + button
+            this._events = [
+            // For components that are not readonly, allow keyboard nav
+            [this.inputEl(), {
+                focus: $.proxy(this.show, this),
+                keyup: $.proxy(this.update, this),
+                keydown: $.proxy(this.keydown, this)
+            }],
+            [this.component, {
+                click: $.proxy(this.show, this)
+            }]
+            ];
+        }
+        else if (this.element.is('div')) {  // inline datepicker
+            this.isInline = true;
+        }
+        else {
+            this._events = [
+            [this.element, {
+                click: $.proxy(this.show, this)
+            }]
+            ];
+        }
+        for (var i=0, el, ev; i<this._events.length; i++){
+            el = this._events[i][0];
+            ev = this._events[i][1];
+            el.on(ev);
+        }
+    },
+    _detachEvents: function(){
+        for (var i=0, el, ev; i<this._events.length; i++){
+            el = this._events[i][0];
+            ev = this._events[i][1];
+            el.off(ev);
+        }
+        this._events = [];
     }
-//    getAutoCreate : function(){
-//        var cfg = {
-//            tag: 'div',
-//            cls: 'input-append date',
-//            cn: [
-//                {
-//                    tag: 'input',
-//                    cls: 'span2 form-control'
-//                },
-//                {
-//                        tag: 'span',
-//                        cls: 'add-on',
-//                        html: '<i class="icon-th"></i>'
-//                    }
-//            ]
-//            
-//        };
-//        
-//        return cfg;
-//    }
    
 });
 
