@@ -647,6 +647,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 } 
                 break;
         }
+    },
+    
+    remove: function() {
+        this._detachEvents();
+        this.picker().parent().removeChild(this.picker());
     }
    
 });
