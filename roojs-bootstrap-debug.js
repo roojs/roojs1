@@ -9778,10 +9778,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             if (prevMonth.valueOf() === currentDate) {
                     clsName += ' active';
             }
-            Roo.log('months day detail!!!');
-            Roo.log(prevMonth);
-            Roo.log(clsName);
-            Roo.log(prevMonth.getDate());
             
             fillMonths.cn.push({
                 tag: 'td',
@@ -9792,9 +9788,15 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             prevMonth.setDate(prevMonth.getDate()+1);
         }
           
-//        var currentYear = this.date.getFullYear();
+        var currentYear = this.date.getFullYear();
 ////
-//        var months = this.picker().select('.datepicker-months',true).first().select('th',true).first().dom.innerHTML = year;
+        this.picker().select('.datepicker-months th.switch',true).first().dom.innerHTML = year;
+        
+        Roo.log('here!!!!!!!!!!!!!!!!');
+        Roo.each(this.picker().select('>datepicker-months > tbody > span',true).elements, function(v){
+            Roo.log(v);
+        });
+        
 ////                                .find('th:eq(1)')
 ////                                        .text(year)
 ////                                        .end()
@@ -9823,7 +9825,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 this.viewMode = Math.max(this.minViewMode, Math.min(2, this.viewMode + dir));
         }
         Roo.each(this.picker().select('>div',true).elements, function(v){
-//            Roo.log(v.hide);
             v.setVisibilityMode(Roo.Element.DISPLAY);
             v.originalDisplay = 'block';
             v.hide();
