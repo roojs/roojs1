@@ -201,8 +201,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 //                                                        .end()
 //                                                .find('td');
         
-        this.picker().select('>.datepicker-years tbody td',true);
-        var fillYears = false;
         year -= 1;
         for (var i = -1; i < 11; i++) {
             this.picker().select('>.datepicker-years tbody td',true).first().createChild({
