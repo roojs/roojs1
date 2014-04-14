@@ -385,7 +385,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         for (var i = -1; i < 11; i++) {
             this.picker().select('>.datepicker-years tbody td',true).first().createChild({
                 tag: 'span',
-                cls: 'year' + (i === -1 || i === 10 ? ' old' : '')+(currentYear === year ? ' active' : ''),
+                cls: 'year' + (i === -1 || i === 10 ? ' old' : '') + (currentYear === year ? ' active' : '') + (year < startYear || year > endYear ? ' disabled' : ''),
                 html: year
             })
             
