@@ -195,6 +195,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         Roo.each(this.picker().select('>div',true).elements, function(v){
 //            Roo.log(v.hide);
             v.setVisibilityMode(Roo.Element.DISPLAY);
+            v.originalDisplay = 'block';
             v.hide();
         });
         this.picker().select('.datepicker-'+Roo.bootstrap.DateField.modes[this.viewMode].clsName, true).first().show();
