@@ -9628,8 +9628,9 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
  * Bootstrap DateField class
  * @cfg {Number} weekStart default 0
  * @cfg {Number} weekStart default 0
- * @cfg {viewMode} viewMode default empty, (months|years)
- * @cfg {minViewMode} minViewMode default empty, (months|years)
+ * @cfg {Number} viewMode default empty, (months|years)
+ * @cfg {Number} minViewMode default empty, (months|years)
+ * @cfg {Boolean} todayHighlight default true
  * 
  * @constructor
  * Create a new DateField
@@ -9660,6 +9661,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     viewMode : '',
     
     minViewMode : '',
+    
+    todayHighlight : true,
     
     onRender: function(ct, position)
     {
@@ -9802,10 +9805,19 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             
             var prevY = prevMonth.getFullYear();
             var prevM = prevMonth.getMonth();
+            var prevD = prevMonth.getDate();
+            var today = new Date();
+            
             if ((prevM < month &&  prevY === year) ||  prevY < year) {
                     clsName += ' old';
             } else if ((prevM > month && prevY === year) || prevY > year) {
                     clsName += ' new';
+            }
+            if (this.todayHighlight &&
+                    prevY == today.getFullYear() &&
+                    prevM == today.getMonth() &&
+                    prevD == today.getDate()) {
+                    clsName += ' today';
             }
             if (prevMonth.valueOf() === currentDate) {
                     clsName += ' active';
@@ -10107,7 +10119,7 @@ Roo.apply(Roo.bootstrap.DateField,  {
   
     template : {
         tag: 'div',
-        cls: 'datepicker datepicker-dropdown dropdown-menu',
+        cls: 'datepicker dropdown-menu',
         cn: [
             {
                 tag: 'div',
