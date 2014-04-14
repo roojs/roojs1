@@ -327,24 +327,19 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 }
             }
             
-            var prevY = prevMonth.getFullYear();
-            var prevM = prevMonth.getMonth();
-            var prevD = prevMonth.getDate();
-            var today = new Date();
-            
-            if ((prevM < month &&  prevY === year) ||  prevY < year) {
+            if (prevMonth.getUTCFullYear() < year || (prevMonth.getUTCFullYear() == year && prevMonth.getUTCMonth() < month)) {
                 clsName += ' old';
-            } else if ((prevM > month && prevY === year) || prevY > year) {
+            } else if (prevMonth.getUTCFullYear() > year || (prevMonth.getUTCFullYear() == year && prevMonth.getUTCMonth() > month)) {
                 clsName += ' new';
             }
             if (this.todayHighlight &&
-                prevY == today.getFullYear() &&
-                prevM == today.getMonth() &&
-                prevD == today.getDate()) {
+                prevMonth.getUTCFullYear() == today.getFullYear() &&
+                prevMonth.getUTCMonth() == today.getMonth() &&
+                prevMonth.getUTCDate() == today.getDate()) {
                 clsName += ' today';
             }
             
-            if (prevMonth.valueOf() === currentDate) {
+            if (currentDate && prevMonth.valueOf() === currentDate) {
                 clsName += ' active';
             }
             
