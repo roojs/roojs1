@@ -188,6 +188,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             
             var prevY = prevMonth.getFullYear();
             var prevM = prevMonth.getMonth();
+            var prevD = prevMonth.getDate();
             var today = new Date();
             
             if ((prevM < month &&  prevY === year) ||  prevY < year) {
@@ -196,9 +197,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     clsName += ' new';
             }
             if (this.todayHighlight &&
-                    prevMonth.getUTCFullYear() == today.getFullYear() &&
-                    prevMonth.getUTCMonth() == today.getMonth() &&
-                    prevMonth.getUTCDate() == today.getDate()) {
+                    prevY == today.getFullYear() &&
+                    prevM == today.getMonth() &&
+                    prevD == today.getDate()) {
                     clsName += ' today';
             }
             if (prevMonth.valueOf() === currentDate) {
