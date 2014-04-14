@@ -10129,7 +10129,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     this.viewDate = newViewDate;
                     this.setValue(this.formatDate(this.date));
                     this.update();
-                    this.fill();
                     e.preventDefault();
                     dateChanged = true;
                 }
