@@ -160,7 +160,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 }
                 prevMonth.setDate(prevMonth.getDate()+1);
         }
-        this.picker().select('.datepicker-days tbody',true).first().innerHTML = '';
+//        this.picker().select('.datepicker-days tbody',true).first().innerHTML = '';
 //        this.picker().select('.datepicker-days tbody',true).first().createChild(html.join(''));
 //        
 //        var currentYear = this.date.getFullYear();

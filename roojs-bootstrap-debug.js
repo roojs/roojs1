@@ -9717,7 +9717,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 html: Roo.bootstrap.DateField.dates.monthsShort[i++]
             }
             
-            months.createChild(month);
+//            months.createChild(month);
         }
         
     },
@@ -9777,8 +9777,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 }
                 prevMonth.setDate(prevMonth.getDate()+1);
         }
-        this.picker().select('.datepicker-days tbody',true).first().innerHTML = '';
-        this.picker().select('.datepicker-days tbody',true).first().createChild(html.join(''));
+//        this.picker().select('.datepicker-days tbody',true).first().innerHTML = '';
+//        this.picker().select('.datepicker-days tbody',true).first().createChild(html.join(''));
 //        
 //        var currentYear = this.date.getFullYear();
 ////
