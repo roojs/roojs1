@@ -718,7 +718,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         return date >= this.startDate && date <= this.endDate;
     },
 
-    keydown: function(e){
+    onKeydown: function(e){
         if (this.picker().isVisible()){
             if (e.keyCode == 27) // allow escape to hide and re-show picker
                 this.show();
