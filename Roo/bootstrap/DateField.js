@@ -59,8 +59,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     language: 'en',
     
-    autoclose: false,
-    
     keyboardNavigation: true,
     
     calendarWeeks: false,
