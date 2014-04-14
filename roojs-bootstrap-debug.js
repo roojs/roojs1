@@ -9912,7 +9912,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                                                 Roo.bootstrap.DateField.modes[this.viewMode].navStep * (target.className === 'prev' ? -1 : 1)
                                         );
                                         this.fill();
-                                        this.setValue(this.date);
+                                        Roo.log(this.parseDate(this.data));
+                                        this.setValue(this.parseDate(this.date));
                                         break;
                         }
                         break;
