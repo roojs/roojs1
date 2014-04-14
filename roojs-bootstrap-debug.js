@@ -10074,7 +10074,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         for (var i=0, el, ev; i<this._events.length; i++){
             el = this._events[i][0];
             ev = this._events[i][1];
-            Roo.log(ev);
+            
+            Roo.each(ev, function(v,k){
+               Roo.log(v); 
+            });
 //            Roo.each
 //            el.on(ev);
         }
