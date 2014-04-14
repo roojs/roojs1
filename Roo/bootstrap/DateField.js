@@ -343,6 +343,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 clsName += ' active';
             }
             
+            if (prevMonth.valueOf() < this.startDate || prevMonth.valueOf() > this.endDate ||
+                    this.daysOfWeekDisabled.indexOf(prevMonth.getUTCDay()) !== -1) {
+                    clsName += ' disabled';
+            }
+            
             fillMonths.cn.push({
                 tag: 'td',
                 cls: 'day ' + clsName,
