@@ -9914,7 +9914,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                                                 Roo.bootstrap.DateField.modes[this.viewMode].navStep * (target.className === 'prev' ? -1 : 1)
                                         );
                                         this.fill();
-                                        this.set();
+                                        this.setVaule(this.date);
                                         break;
                         }
                         break;
@@ -9961,8 +9961,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                         break;
         }
     }
-    
-    
     
 //    getAutoCreate : function(){
 //        var cfg = {
