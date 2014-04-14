@@ -9682,10 +9682,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
     onRender: function(ct, position)
     {
+        
+        Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
         Roo.log('this.el');
         Roo.log(this.el);
-        Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
-        
         this.language = this.language || 'en';
         this.language = this.language in Roo.bootstrap.DateField.dates ? this.language : this.language.split('-')[0];
         this.language = this.language in Roo.bootstrap.DateField.dates ? this.language : "en";
