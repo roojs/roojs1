@@ -9759,7 +9759,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             
             if (prevMonth.getDay() === this.weekStart) {
                     if(html){
-                        fillMonths.push(html);
+                        this.picker().select('.datepicker-days tbody',true).first().createChild(html);
                     }
                     
                     html = {
@@ -9798,7 +9798,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         Roo.log(fillMonths);
 //        this.picker().select('.datepicker-days tbody',true).first().innerHTML = '';
-        this.picker().select('.datepicker-days tbody',true).first().createChild(fillMonths);
+//        this.picker().select('.datepicker-days tbody',true).first().createChild(fillMonths);
 //        
 //        var currentYear = this.date.getFullYear();
 ////
