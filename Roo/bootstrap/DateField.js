@@ -458,12 +458,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             el = this._events[i][0];
             ev = this._events[i][1];
             
-            Roo.each(ev, function(v,k){
-               Roo.log(v); 
-               Roo.log(k); 
-            });
 //            Roo.each
-//            el.on(ev);
+            el.on(ev);
         }
     },
     _detachEvents: function(){
