@@ -9666,8 +9666,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.picker().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
         this.picker().on('mousedown', this.onMousedown);
-        Roo.log('here');
-        Roo.each(this.picker().select('span td th',true).elements, function(v){
+        Roo.log('here!!!!!!!!');
+        Roo.each(this.picker().select('span,th,td',true).elements, function(v){
             Roo.log(v);
         })
         
