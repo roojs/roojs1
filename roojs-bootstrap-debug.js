@@ -9793,8 +9793,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.picker().select('.datepicker-months th.switch',true).first().dom.innerHTML = year;
         
         Roo.log('here!!!!!!!!!!!!!!!!');
-        Roo.each(this.picker().select('>.datepicker-months tbody span',true).elements, function(v){
+        Roo.each(this.picker().select('>.datepicker-months tbody span',true).elements, function(v,k){
             Roo.log(v);
+            Roo.log(k);
+            v.removeClass('active');
         });
         
 ////                                .find('th:eq(1)')
