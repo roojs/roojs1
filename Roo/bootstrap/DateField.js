@@ -211,7 +211,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             
             year += 1;
         }
-//        yearCont.select('td', true).first().dom.innerHTML = html;
     },
     
     showMode: function(dir) {
