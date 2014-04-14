@@ -274,6 +274,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         Roo.log(typeof(target));
         Roo.log(target.length);
         Roo.log(target.nodeName);
+        Roo.log(target.className);
 //        if (target.length === 1) {
 //                switch(target[0].nodeName.toLowerCase()) {
 //                        case 'th':
