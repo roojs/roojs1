@@ -10175,7 +10175,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         var target = e.getTarget();
         
         if(target.nodeName.toLowerCase() === 'i'){
-            target = target.dom.parentNode;
+            target = Roo.get(target).dom.parentNode;
         }
         
         var nodeName = target.nodeName;
