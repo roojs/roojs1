@@ -9892,7 +9892,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.fillMonths();
                                                 
         var prevMonth = this.UTCDate(year, month-1, 28,0,0,0,0),
-        
+        prevMonth.setUTCDate(day);
         day = prevMonth.getDaysInMonth(prevMonth.getUTCFullYear(), prevMonth.getUTCMonth());
                 
         prevMonth.setUTCDate(day);
