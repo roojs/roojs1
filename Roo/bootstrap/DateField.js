@@ -47,6 +47,17 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     todayHighlight : false,
     
+    UTCDate: function()
+    {
+        return new Date(Date.UTC.apply(Date, arguments));
+    },
+    
+    UTCToday: function()
+    {
+        var today = new Date();
+        return UTCDate(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate());
+    },
+        
     onRender: function(ct, position)
     {
         Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
