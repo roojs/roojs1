@@ -9776,7 +9776,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         Roo.each(this.picker().select('tfoot th.today', true).elements, function(v){
             if(!this.calendarWeeks){
-                v.dom.parentNode;
+                v.remove();
                 return;
             };
             
@@ -10387,7 +10387,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 
     
     remove: function() {
-        this.picker().dom.parentNode.removeChild(this.picker());
+        this.picker().remove();
     }
    
 });
