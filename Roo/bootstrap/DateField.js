@@ -180,8 +180,16 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             tag: 'tr',
             cn: [
                 
-        ]
+            ]
         };
+        
+        if(this.calendarWeeks){
+            dow.cn.push({
+                tag: 'th',
+                cls: 'cw',
+                html: '&nbsp;'
+            })
+        }
         
         while (dowCnt < this.weekStart + 7) {
             dow.cn.push({
