@@ -410,7 +410,7 @@ Roo.apply(Roo.bootstrap.DateField,  {
                     {
                         tag: 'th',
                         cls: 'prev',
-                        html: '&lsaquo;'
+                        html: '<i class="icon-arrow-left"/>'
                     },
                     {
                         tag: 'th',
@@ -420,7 +420,7 @@ Roo.apply(Roo.bootstrap.DateField,  {
                     {
                         tag: 'th',
                         cls: 'next',
-                        html: '&rsaquo;'
+                        html: '<i class="icon-arrow-right"/>'
                     }
 
                 ]
