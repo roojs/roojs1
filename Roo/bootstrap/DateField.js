@@ -353,11 +353,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 //                                viewMode: DPGlobal.modes[this.viewMode].clsName
 //                        });
                     }
-                    if(this.viewMode !== 0){
-                        this.setValue(this.viewDate);
-                        this.hide();
-                        break;
-                    }
                     this.showMode(-1);
                     this.fill();
 //                    this.set();
