@@ -287,7 +287,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                                         break;
                                 case 'prev':
                                 case 'next':
-                                        Roo.log(this.date);
+                                        Roo.log(this.viewDate);
 //                                        this.viewDate['set'+DPGlobal.modes[this.viewMode].navFnc].call(
 //                                                this.viewDate,
 //                                                this.viewDate['get'+DPGlobal.modes[this.viewMode].navFnc].call(this.viewDate) + 
