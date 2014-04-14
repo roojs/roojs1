@@ -173,7 +173,12 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
           
         var currentYear = this.date.getFullYear();
 ////
-        var months = this.picker().select('.datepicker-months th.switch',true).first().dom.innerHTML = year;
+        this.picker().select('.datepicker-months th.switch',true).first().dom.innerHTML = year;
+        
+        Roo.each(this.picker().select('>datepicker-months > tbody > span',true).elements, function(v){
+            Roo.log(v);
+        });
+        
 ////                                .find('th:eq(1)')
 ////                                        .text(year)
 ////                                        .end()
@@ -202,7 +207,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 this.viewMode = Math.max(this.minViewMode, Math.min(2, this.viewMode + dir));
         }
         Roo.each(this.picker().select('>div',true).elements, function(v){
-//            Roo.log(v.hide);
             v.setVisibilityMode(Roo.Element.DISPLAY);
             v.originalDisplay = 'block';
             v.hide();
