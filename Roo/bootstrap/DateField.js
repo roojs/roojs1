@@ -277,7 +277,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         Roo.log(target);
         Roo.log(target.nodeName);
         Roo.log(target.className);
-        var _this = this;
+        
         switch(target.nodeName.toLowerCase()) {
                 case 'th':
                         switch(target.className) {
@@ -286,7 +286,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                                         break;
                                 case 'prev':
                                 case 'next':
-                                        Roo.log(_this);
+                                        Roo.log(this.veiwDate);
 //                                        this.viewDate['set'+DPGlobal.modes[this.viewMode].navFnc].call(
 //                                                this.viewDate,
 //                                                this.viewDate['get'+DPGlobal.modes[this.viewMode].navFnc].call(this.viewDate) + 
