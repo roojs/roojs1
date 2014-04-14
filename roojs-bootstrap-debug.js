@@ -10093,7 +10093,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     },
     
     fireKey: function(e){
-        Roo.log(e.keyCode);
         if (!this.picker().isVisible()){
             if (e.keyCode == 27) // allow escape to hide and re-show picker
                 this.show();
@@ -10166,21 +10165,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 this.hide();
                 break;
         }
-//        if (dateChanged){
-//            this.element.trigger({
-//                type: 'changeDate',
-//                date: this.date
-//            });
-//            var element;
-//            if (this.isInput) {
-//                element = this.element;
-//            } else if (this.component){
-//                element = this.element.find('input');
-//            }
-//            if (element) {
-//                element.change();
-//            }
-//        }
     },
     
     
