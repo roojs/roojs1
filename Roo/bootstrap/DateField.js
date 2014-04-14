@@ -569,7 +569,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             [this.inputEl(), {
                 focus: this.show,
                 keyup: this.update,
-                keydown: this.keydown
+                keydown: this.onKeydown
             }],
             [this.component, {
                 click: this.show
@@ -808,7 +808,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     },
     
     remove: function() {
-        this._detachEvents();
         this.picker().parent().removeChild(this.picker());
     }
    
