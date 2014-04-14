@@ -158,6 +158,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         if (this.calendarWeeks){
             Roo.each(this.picker().select('tfoot th.today', true).elements, function(v){
+                v.dom.innerHTML = Roo.bootstrap.DateField.dates[this.language].today
                 v.attr('colspan', function(i, val){
                     return parseInt(val) + 1;
                 });
