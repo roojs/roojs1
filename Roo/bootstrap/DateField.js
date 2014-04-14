@@ -40,9 +40,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     weekStart : 0,
     
-    viewMode : 'months',
+    viewMode : '',
     
-    minViewMode : 'months',
+    minViewMode : '',
     
     onRender: function(ct, position)
     {
