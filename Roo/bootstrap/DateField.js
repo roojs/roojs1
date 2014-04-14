@@ -272,7 +272,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         var target = e.getTarget();
         Roo.log(target);
         Roo.log(typeof(target));
-//        var target = $(e.target).closest('span, td, th');
+        
 //        if (target.length === 1) {
 //                switch(target[0].nodeName.toLowerCase()) {
 //                        case 'th':
