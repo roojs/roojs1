@@ -147,6 +147,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         this.weekEnd = this.weekStart === 0 ? 6 : this.weekStart - 1;
         this.startDate = -Infinity;
+        this.endDate = Infinity;
+        this.daysOfWeekDisabled = [];
         
         
         this.fillDow();
@@ -498,6 +500,24 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             el.off(ev);
         }
         this._events = [];
+    },
+    
+    setStartDate: function(startDate){
+            this.startDate = startDate||-Infinity;
+            if (this.startDate !== -Infinity) {
+                    this.startDate = DPGlobal.parseDate(this.startDate, this.format, this.language);
+            }
+            this.update();
+            this.updateNavArrows();
+    },
+
+    setEndDate: function(endDate){
+            this.endDate = endDate||Infinity;
+            if (this.endDate !== Infinity) {
+                    this.endDate = DPGlobal.parseDate(this.endDate, this.format, this.language);
+            }
+            this.update();
+            this.updateNavArrows();
     }
    
 });
