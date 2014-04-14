@@ -523,31 +523,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 break;
                 
             case 'td':
-                if (target.is('.day') && !target.is('.disabled')){
-                        var day = parseInt(target.text(), 10)||1;
-                        var year = this.viewDate.getUTCFullYear(),
-                                month = this.viewDate.getUTCMonth();
-                        if (target.is('.old')) {
-                                if (month === 0) {
-                                        month = 11;
-                                        year -= 1;
-                                } else {
-                                        month -= 1;
-                                }
-                        } else if (target.is('.new')) {
-                                if (month == 11) {
-                                        month = 0;
-                                        year += 1;
-                                } else {
-                                        month += 1;
-                                }
-                        }
-                        this._setDate(UTCDate(year, month, day,0,0,0,0));
-                }
-                break;
-                
-                
-                
                 if (className.indexOf('day') !== -1 && className.indexOf('disabled') === -1){
                     var day = parseInt(html, 10) || 1;
                     var year = this.viewDate.getUTCFullYear(),
