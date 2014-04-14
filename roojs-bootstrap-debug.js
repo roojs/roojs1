@@ -9630,7 +9630,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
  * @cfg {Number} weekStart default 0
  * @cfg {Number} viewMode default empty, (months|years)
  * @cfg {Number} minViewMode default empty, (months|years)
- * @cfg {Boolean} todayHighlight default true
+ * @cfg {Boolean} todayHighlight default false
  * 
  * @constructor
  * Create a new DateField
@@ -9662,7 +9662,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     minViewMode : '',
     
-    todayHighlight : true,
+    todayHighlight : false,
     
     onRender: function(ct, position)
     {

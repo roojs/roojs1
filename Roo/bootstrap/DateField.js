@@ -45,7 +45,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     minViewMode : '',
     
-    todayHighlight : true,
+    todayHighlight : false,
     
     onRender: function(ct, position)
     {
