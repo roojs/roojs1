@@ -523,26 +523,55 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 break;
                 
             case 'td':
+                if (target.is('.day') && !target.is('.disabled')){
+                        var day = parseInt(target.text(), 10)||1;
+                        var year = this.viewDate.getUTCFullYear(),
+                                month = this.viewDate.getUTCMonth();
+                        if (target.is('.old')) {
+                                if (month === 0) {
+                                        month = 11;
+                                        year -= 1;
+                                } else {
+                                        month -= 1;
+                                }
+                        } else if (target.is('.new')) {
+                                if (month == 11) {
+                                        month = 0;
+                                        year += 1;
+                                } else {
+                                        month += 1;
+                                }
+                        }
+                        this._setDate(UTCDate(year, month, day,0,0,0,0));
+                }
+                break;
+                
+                
+                
                 if (className.indexOf('day') !== -1 && className.indexOf('disabled') === -1){
                     var day = parseInt(html, 10) || 1;
-                    var month = this.viewDate.getMonth();
+                    var year = this.viewDate.getUTCFullYear(),
+                        month = this.viewDate.getUTCMonth();
 
                     if (className.indexOf('old') !== -1) {
-                        month -= 1;
+                        if(month === 0 ){
+                            month = 11;
+                            year -= 1;
+                        }else{
+                            month -= 1;
+                        }
                     } else if (className.indexOf('new') !== -1) {
-                        month += 1;
+                        if (month == 11) {
+                            month = 0;
+                            year += 1;
+                        } else {
+                            month += 1;
+                        }
                     }
-                    var year = this.viewDate.getFullYear();
-                    this.date = new Date(year, month, day,0,0,0,0);
-                    this.viewDate = new Date(year, month, Math.min(28, day),0,0,0,0);
+                    this.date = UTCDate(year, month, day,0,0,0,0);
+                    this.viewDate = UTCDate(year, month, Math.min(28, day),0,0,0,0);
                     this.fill();
-                    this.setValue(this.formatDate(this.date));
                     this.hide();
-                //                                this.element.trigger({
-                //                                        type: 'changeDate',
-                //                                        date: this.date,
-                //                                        viewMode: DPGlobal.modes[this.viewMode].clsName
-                //                                });
                 }
                 break;
         }
