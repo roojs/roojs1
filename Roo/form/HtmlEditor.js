@@ -198,7 +198,7 @@ Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
                    '</style>';
         } else {
             Roo.log('this.stylesheets');
-            Roo.log(this.stylesheet);
+            Roo.log(this.stylesheets);
             Roo.each(this.stylesheets, function(s) {
                 st += '<link rel="stylesheet" type="text/css" href="' + s +'" />'
             });
