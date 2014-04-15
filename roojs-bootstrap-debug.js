@@ -403,6 +403,7 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
  * @cfg {Boolean} defaulton true | false
  * @cfg {Boolean} preventDefault (true | false) default true
  * @cfg {Boolean} removeClass true | false remove the standard class..
+ * @cfg {String} target (_self|_blank|_parent|_top)target for a href.
  * 
  * @constructor
  * Create a new button
@@ -441,9 +442,10 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     ontext: 'ON',
     offtext: 'OFF',
     defaulton: true,
-    preventDefault : true,
-    removeClass : false,
-    name : false,
+    preventDefault: true,
+    removeClass: false,
+    name: false,
+    target: false,
     
     getAutoCreate : function(){
         
@@ -612,6 +614,10 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         
         if(this.removeClass){
             cfg.cls = '';
+        }
+        
+        if(this.target){
+            cfg.target = this.target;
         }
         
         return cfg;
