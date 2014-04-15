@@ -65,9 +65,10 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     ontext: 'ON',
     offtext: 'OFF',
     defaulton: true,
-    preventDefault : true,
-    removeClass : false,
-    name : false,
+    preventDefault: true,
+    removeClass: false,
+    name: false,
+    target: false,
     
     getAutoCreate : function(){
         
@@ -236,6 +237,10 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         
         if(this.removeClass){
             cfg.cls = '';
+        }
+        
+        if(this.target){
+            cfg.target = this.target;
         }
         
         return cfg;
