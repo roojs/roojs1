@@ -26,6 +26,7 @@
  * @cfg {Boolean} defaulton true | false
  * @cfg {Boolean} preventDefault (true | false) default true
  * @cfg {Boolean} removeClass true | false remove the standard class..
+ * @cfg {String} target (_self|_blank|_parent|_top)target for a href.
  * 
  * @constructor
  * Create a new button
