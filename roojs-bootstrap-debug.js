@@ -1389,6 +1389,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.el.removeClass('on');
         this.el.addClass('fade');
         this.el.setStyle('display', 'none');
+        this.fireEvent('hide', this);
     },
     onButtonClick: function(btn,e)
     {
