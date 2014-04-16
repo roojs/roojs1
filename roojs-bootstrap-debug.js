@@ -1142,10 +1142,6 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
     html : false,
     preventDefault: true,
     
-    getChildContainer : function() {
-        return this.el;  
-    },
-    
     getAutoCreate : function(){
         var cfg= {
 	    tag: 'li',
