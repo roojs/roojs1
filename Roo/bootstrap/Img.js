@@ -71,10 +71,6 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
                 cn: [
 		    cfg
 		]
-            };
-            
-            if(this.target){
-                a.target = this.target;
             }
         }
         
