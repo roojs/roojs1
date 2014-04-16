@@ -548,10 +548,10 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             delete cfg.html;
             
         } 
-//        else if (this.menu) {
-//            cfg.tag = 'a';
-//            cfg.cls += ' dropdown';
-//        }
+        else if (this.menu) {
+            cfg.cls += ' dropdown';
+            cfg.html = this.html  + ' <span class="caret"></span>';
+        }
         
         if (this.disabled) {
             cfg.disabled = 'disabled';
