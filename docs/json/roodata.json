@@ -7412,6 +7412,12 @@
      "memberOf": ""
     },
     {
+     "name": "target",
+     "type": "String",
+     "desc": "(_self|_blank|_parent|_top)target for a href.",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",

@@ -15,6 +15,7 @@
  * @cfg {String} src image source
  * @cfg {String} alt image alternative text
  * @cfg {String} href a tag href
+ * @cfg {String} target (_self|_blank|_parent|_top)target for a href.
  * 
  * @constructor
  * Create a new Input
@@ -41,6 +42,7 @@
     </span><span class="jsdoc-var">border</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">src</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">href</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         
@@ -70,6 +72,11 @@
 		    </span><span class="jsdoc-var">cfg
 		</span><span class="jsdoc-syntax">]
             }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.target</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">a.target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.target</span><span class="jsdoc-syntax">;
+            }
+            
         }
         
         
