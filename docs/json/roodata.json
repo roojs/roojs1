@@ -7412,12 +7412,6 @@
      "memberOf": ""
     },
     {
-     "name": "target",
-     "type": "String",
-     "desc": "(_self|_blank|_parent|_top) a tag target",
-     "memberOf": ""
-    },
-    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
