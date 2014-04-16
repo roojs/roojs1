@@ -171,10 +171,9 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             delete cfg.html;
             
         } 
-//        else if (this.menu) {
-//            cfg.tag = 'a';
-//            cfg.cls += ' dropdown';
-//        }
+        else if (this.menu) {
+            cfg.cls += ' dropdown';
+        }
         
         if (this.disabled) {
             cfg.disabled = 'disabled';
