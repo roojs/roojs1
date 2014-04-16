@@ -15864,9 +15864,19 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                 return;
             }
         }
+        var tree = this._tree ? this._tree() : this.tree();
+
         
+        if (!this.parent && typeof(Roo.bootstrap) != 'undefined' && tree.xns == Roo.bootstrap) {
+            //el = Roo.get(document.body);
+            this.parent = { el : true };
+        }
+            
+            
         
         if (!this.parent) {
+            
+            Roo.log("no parent - creating one");
             
             el = el ? Roo.get(el) : false; 	
             
@@ -15895,7 +15905,6 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
 		}
 		// The 'tree' method is  '_tree now' 
             
-        var tree = this._tree ? this._tree() : this.tree();
         tree.region = tree.region || this.region;
         
         if (this.parent.el === true) {
