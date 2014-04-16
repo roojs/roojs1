@@ -145,7 +145,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
 
         
         if (!this.parent && typeof(Roo.bootstrap) != 'undefined' && tree.xns == Roo.bootstrap) {
-            el = Roo.get(document.body);
+            //el = Roo.get(document.body);
             this.parent = { el : true };
         }
             
