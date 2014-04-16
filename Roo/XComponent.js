@@ -141,7 +141,12 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                 return;
             }
         }
+        var tree = this._tree ? this._tree() : this.tree();
+
         
+        if (!this.parent && ) {
+            
+            
         
         if (!this.parent) {
             
@@ -174,7 +179,6 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
 		}
 		// The 'tree' method is  '_tree now' 
             
-        var tree = this._tree ? this._tree() : this.tree();
         tree.region = tree.region || this.region;
         
         if (this.parent.el === true) {
