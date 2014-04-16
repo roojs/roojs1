@@ -145,6 +145,8 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
         
         if (!this.parent) {
             
+            Roo.log("no parent - creating one");
+            
             el = el ? Roo.get(el) : false; 	
             
             // it's a top level one..
