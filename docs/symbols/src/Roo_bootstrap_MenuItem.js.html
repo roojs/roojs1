@@ -12,6 +12,7 @@
  * Bootstrap MenuItem class
  * @cfg {String} html the menu label
  * @cfg {String} href the link
+ * @cfg {Boolean} preventDefault (true | false) default true
  * 
  * 
  * @constructor
@@ -22,12 +23,22 @@
 
 </span><span class="jsdoc-var">Roo.bootstrap.MenuItem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">Roo.bootstrap.MenuItem.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">// raw events
+        /**
+         * @event click
+         * The raw click event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        </span><span class="jsdoc-string">&quot;click&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.MenuItem</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
     
     </span><span class="jsdoc-var">href </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">preventDefault</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">= {
@@ -44,6 +55,21 @@
         </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.href </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.href </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.href </span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html </span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+        
+        </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+    },
+    </span><span class="jsdoc-var">onClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'item on click '</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.preventDefault</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+        }
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
     }
    
 });
