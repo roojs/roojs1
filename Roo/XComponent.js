@@ -144,7 +144,9 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
         var tree = this._tree ? this._tree() : this.tree();
 
         
-        if (!this.parent && ) {
+        if (!this.parent && typeof(Roo.bootstrap) != 'undefined' && tree.xns == Roo.bootstrap) {
+            Roo.log("bootstap!");
+        }
             
             
         
