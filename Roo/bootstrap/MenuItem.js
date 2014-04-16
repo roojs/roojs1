@@ -40,13 +40,6 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
     html : false,
     preventDefault: true,
     
-    getChildContainer : function() {
-        Roo.log('this.el');
-        Roo.log(this.el);
-        Roo.log(this.parent());
-        return this.el;  
-    },
-    
     getAutoCreate : function(){
         var cfg= {
 	    tag: 'li',
