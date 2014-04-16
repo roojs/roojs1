@@ -30,6 +30,8 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     
     
     getChildContainer : function() {
+        Roo.log('this.el');
+        Roo.log(this.el);
         return this.el;  
     },
     
