@@ -41,6 +41,9 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
     preventDefault: true,
     
     getChildContainer : function() {
+        Roo.log('this.el');
+        Roo.log(this.el);
+        Roo.log(this.parent());
         return this.el;  
     },
     
