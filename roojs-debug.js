@@ -13326,7 +13326,7 @@ Roo.util.JSON = new (function(){
      */
     this.encode = function(o)
     {
-        // should this be extended to fully wrap stringify..
+        // should this be extended to fully wrap ..
         
         if(typeof o == "undefined" || o === null){
             return "null";
@@ -13379,7 +13379,7 @@ Roo.util.JSON = new (function(){
  * Shorthand for {@link Roo.util.JSON#encode}
  * @member Roo encode 
  * @method */
-Roo.encode = typeof(JSON) != 'undefined' && JSON.stringify ? JSON.stringify : Roo.util.JSON.encode;
+Roo.encode = typeof(JSON) != 'undefined' && JSON. ? JSON. : Roo.util.JSON.encode;
 /** 
  * Shorthand for {@link Roo.util.JSON#decode}
  * @member Roo decode 
@@ -31362,7 +31362,7 @@ Roo.MessageBox = function(){
             msgEl.innerHTML = text || '&#160;';
       
             var cw =  Math.max(msgEl.offsetWidth, msgEl.parentNode.scrollWidth);
-            //Roo.log("guesed size: " + JSON.stringify([cw,msgEl.offsetWidth, msgEl.parentNode.scrollWidth]));
+            //Roo.log("guesed size: " + JSON.([cw,msgEl.offsetWidth, msgEl.parentNode.scrollWidth]));
             var w = Math.max(
                     Math.min(opt.width || cw , this.maxWidth), 
                     Math.max(opt.minWidth || this.minWidth, bwidth)

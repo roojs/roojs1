@@ -156,7 +156,7 @@ Roo.onReady(function(){
                            var ri = grid.view.findRowIndex(t);
                            var dp = this.getDropPoint(e,data);
                            Roo.log(dp);
-                           //Roo.log(JSON.stringify({ dp: dp,  ri: ri, src_ri: data.rowIndex}));
+                           //Roo.log(JSON.({ dp: dp,  ri: ri, src_ri: data.rowIndex}));
                            if(ri == data.rowIndex ||
                                 (dp == 'above' && ri-1 == data.rowIndex) ||
                                 (dp == 'below' && ri+1 == data.rowIndex) 
@@ -245,7 +245,7 @@ Roo.onReady(function(){
                         if(y >= b-q && y <= b){
                             return "below";
                         }
-                        Roo.log( JSON.stringify( {pos: y, dragtop : t, mid : q, drabgot: b }));
+                        Roo.log( JSON.( {pos: y, dragtop : t, mid : q, drabgot: b }));
                         
                         
                         return false;
