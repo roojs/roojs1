@@ -15,6 +15,7 @@
  * @cfg {String} src image source
  * @cfg {String} alt image alternative text
  * @cfg {String} href a tag href
+ * @cfg {String} target (_self|_blank|_parent|_top)target for a href.
  * 
  * @constructor
  * Create a new Input
@@ -71,6 +72,11 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
 		    cfg
 		]
             }
+            
+            if(this.target){
+                a.target = this.target;
+            }
+            
         }
         
         
