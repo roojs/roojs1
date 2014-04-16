@@ -387,7 +387,7 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
  * @extends Roo.bootstrap.Component
  * Bootstrap Button class
  * @cfg {String} html The button content
- * @cfg {String} weight default (or empty) | primary | success | info | warning | danger
+ * @cfg {String} weight default (or empty) | primary | success | info | warning | danger | link
  * @cfg {String} size empty | lg | sm | xs
  * @cfg {String} tag empty | a | input | submit
  * @cfg {String} href empty or href
@@ -774,6 +774,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         }
         
         if (this.sticky.length) {
+            
             var bd = Roo.get(document.body);
             if (!bd.hasClass('bootstrap-sticky')) {
                 bd.addClass('bootstrap-sticky');
@@ -1113,6 +1114,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
  * Bootstrap MenuItem class
  * @cfg {String} html the menu label
  * @cfg {String} href the link
+ * @cfg {Boolean} preventDefault (true | false) default true
  * 
  * 
  * @constructor
@@ -1123,12 +1125,22 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
 
 Roo.bootstrap.MenuItem = function(config){
     Roo.bootstrap.MenuItem.superclass.constructor.call(this, config);
+    this.addEvents({
+        // raw events
+        /**
+         * @event click
+         * The raw click event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "click" : true
+    });
 };
 
 Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
     
     href : false,
     html : false,
+    preventDefault: true,
     
     getAutoCreate : function(){
         var cfg= {
@@ -1145,6 +1157,21 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
         cfg.cn[0].href = this.href || cfg.cn[0].href ;
         cfg.cn[0].html = this.html || cfg.cn[0].html ;
         return cfg;
+    },
+    
+    initEvents: function() {
+        
+        this.el.on('click', this.onClick, this);
+        
+    },
+    onClick : function(e)
+    {
+        Roo.log('item on click ');
+        if(this.preventDefault){
+            e.preventDefault();
+        }
+        
+        this.fireEvent('click', this, e);
     }
    
 });
