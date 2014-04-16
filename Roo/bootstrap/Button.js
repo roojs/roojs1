@@ -176,59 +176,6 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             cfg.html = this.html  + ' <span class="caret"></span>';
         }
         
-        if (this.disabled) {
-            cfg.disabled = 'disabled';
-        }
-        //????
-        if (this.items) {
-            Roo.log('changing to ul' );
-            cfg.tag = 'ul';
-            this.glyphicon = 'caret';
-        }
-        
-        if (this.glyphicon) {
-            cfg.html = ' ' + cfg.html;
-            
-            cfg.cn = [
-                {
-                    tag: 'span',
-                    cls: 'glyphicon glyphicon-' + this.glyphicon
-                }
-            ];
-        }
-        
-        if (this.badge) {
-            cfg.html += ' ';
-            
-            cfg.tag = 'a';
-            
-//            cfg.cls='btn roo-button';
-            
-            cfg.href=this.href;
-            
-            var value = cfg.html;
-            
-            if(this.glyphicon){
-                value = {
-                            tag: 'span',
-                            cls: 'glyphicon glyphicon-' + this.glyphicon,
-                            html: this.html
-                        };
-                
-            }
-            
-            cfg.cn = [
-                value,
-                {
-                    tag: 'span',
-                    cls: 'badge',
-                    html: this.badge
-                }
-            ];
-            
-            cfg.html='';
-        }
-        
         if (cfg.tag !== 'a' && this.href !== '') {
             throw "Tag must be a to set href.";
         } else if (this.href.length > 0) {
