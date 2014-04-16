@@ -527,32 +527,6 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             cfg.cls += ' active';
         }
         
-        cfg.cls += this.size.length ? (' btn-' + this.size) : '';
-         
-        //gsRoo.log(this.parentType);
-        if (this.parentType === 'Navbar') {
-            cfg.tag = 'li';
-            
-            cfg.cls = '';
-            cfg.cn =  [{
-                tag : 'a',
-                cls : 'roo-button',
-                html : this.html,
-                href : this.href || '#'
-            }];
-            if (this.menu) {
-                cfg.cn[0].html = this.html  + ' <span class="caret"></span>';
-                cfg.cls += ' dropdown';
-            }   
-            
-            delete cfg.html;
-            
-        } 
-        else if (this.menu) {
-            cfg.cls += ' dropdown';
-            cfg.html = this.html  + ' <span class="caret"></span>';
-        }
-        
         if (this.disabled) {
             cfg.disabled = 'disabled';
         }
@@ -604,6 +578,32 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             ];
             
             cfg.html='';
+        }
+        
+        cfg.cls += this.size.length ? (' btn-' + this.size) : '';
+         
+        //gsRoo.log(this.parentType);
+        if (this.parentType === 'Navbar') {
+            cfg.tag = 'li';
+            
+            cfg.cls = '';
+            cfg.cn =  [{
+                tag : 'a',
+                cls : 'roo-button',
+                html : this.html,
+                href : this.href || '#'
+            }];
+            if (this.menu) {
+                cfg.cn[0].html = this.html  + ' <span class="caret"></span>';
+                cfg.cls += ' dropdown';
+            }   
+            
+            delete cfg.html;
+            
+        } 
+        else if (this.menu) {
+            cfg.cls += ' dropdown';
+            cfg.html = this.html  + ' <span class="caret"></span>';
         }
         
         if (cfg.tag !== 'a' && this.href !== '') {
