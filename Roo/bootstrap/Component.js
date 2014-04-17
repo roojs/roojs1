@@ -250,6 +250,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             tree.menu.parentType = cn.xtype;
             tree.menu.triggerEl = cn.el;
             cn.addxtype(Roo.apply({}, tree.menu));
+            return cn;
             
         }
         
