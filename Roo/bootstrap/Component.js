@@ -253,9 +253,11 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         }
         
         if (!tree.items || !tree.items.length) {
-            Roo.log('tree.menu item');
-            Roo.log(nitems);
+            
+            
             cn.items = nitems;
+            Roo.log('tree.menu item');
+            Roo.log(cn);
             return cn;
         }
         var items = tree.items;
