@@ -154,6 +154,12 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             cfg.disabled = 'disabled';
         }
         
+        if (this.items) {
+            Roo.log('changing to ul' );
+            cfg.tag = 'ul';
+            this.glyphicon = 'caret';
+        }
+        
         cfg.cls += this.size.length ? (' btn-' + this.size) : '';
          
         //gsRoo.log(this.parentType);
@@ -175,10 +181,6 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             delete cfg.html;
             
         } 
-        else if (this.menu) {
-            cfg.cls += ' dropdown';
-            cfg.html = this.html  + ' <span class="caret"></span>';
-        }
         
         if (this.glyphicon) {
             cfg.html = ' ' + cfg.html;
@@ -221,6 +223,11 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             ];
             
             cfg.html='';
+        }
+        
+        if (this.menu) {
+            cfg.cls += ' dropdown';
+            cfg.html = this.html  + ' <span class="caret"></span>';
         }
         
         if (cfg.tag !== 'a' && this.href !== '') {
