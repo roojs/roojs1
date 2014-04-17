@@ -547,6 +547,10 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             
             delete cfg.html;
             
+        } 
+        else if (this.menu) {
+            cfg.cls += ' dropdown';
+            cfg.html = this.html  + ' <span class="caret"></span>';
         }
         
         if (this.disabled) {
@@ -600,11 +604,6 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             ];
             
             cfg.html='';
-        }
-        
-        if (this.menu) {
-            cfg.cls += ' dropdown';
-            cfg.html = cfg.html  + ' <span class="caret"></span>';
         }
         
         if (cfg.tag !== 'a' && this.href !== '') {
