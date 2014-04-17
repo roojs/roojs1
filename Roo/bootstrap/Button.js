@@ -225,6 +225,11 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             cfg.html='';
         }
         
+        if (this.menu) {
+            cfg.cls += ' dropdown';
+            cfg.html = this.html  + ' <span class="caret"></span>';
+        }
+        
         if (cfg.tag !== 'a' && this.href !== '') {
             throw "Tag must be a to set href.";
         } else if (this.href.length > 0) {
