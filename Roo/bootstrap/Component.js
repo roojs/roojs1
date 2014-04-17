@@ -154,10 +154,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 return this.addxtypeChild(Roo.apply({}, tree),cntr);
             }
             
-            Roo.log('skipping render flexy');
-            Roo.log(self_cntr_el);
-            Roo.log(echild);
-            Roo.log(cn);
+            Roo.log('skipping render');
             return cn;
             
         }
@@ -249,8 +246,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         if (typeof (tree.menu) != 'undefined') {
             tree.menu.parentType = cn.xtype;
             tree.menu.triggerEl = cn.el;
-            cn.addxtype(Roo.apply({}, tree.menu));
-            return cn;
+            nitems.push(cn.addxtype(Roo.apply({}, tree.menu)));
             
         }
         
