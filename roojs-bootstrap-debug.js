@@ -105,6 +105,9 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         }
         
         this.el = ct.createChild(cfg, position);
+        Roo.log('reader here');
+        Roo.log(ct);
+        Roo.log(this.el);
         
         if(this.tabIndex !== undefined){
             this.el.dom.setAttribute('tabIndex', this.tabIndex);
