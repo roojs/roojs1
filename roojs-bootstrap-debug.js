@@ -154,10 +154,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 return this.addxtypeChild(Roo.apply({}, tree),cntr);
             }
             
-            Roo.log('skipping render flexy');
-            Roo.log(self_cntr_el);
-            Roo.log(echild);
-            Roo.log(cn);
+            Roo.log('skipping render');
             return cn;
             
         }
@@ -247,15 +244,20 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         
         var nitems = [];
         if (typeof (tree.menu) != 'undefined') {
+            Roo.log('tree.menu');
+            Roo.log(cn);
             tree.menu.parentType = cn.xtype;
             tree.menu.triggerEl = cn.el;
-            cn.addxtype(Roo.apply({}, tree.menu));
-            return cn;
+            nitems.push(cn.addxtype(Roo.apply({}, tree.menu)));
             
         }
         
         if (!tree.items || !tree.items.length) {
+            
+            
             cn.items = nitems;
+            Roo.log('tree.menu item');
+            Roo.log(cn);
             return cn;
         }
         var items = tree.items;
