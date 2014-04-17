@@ -154,7 +154,9 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 return this.addxtypeChild(Roo.apply({}, tree),cntr);
             }
             
-            Roo.log('skipping render');
+            Roo.log('skipping render flexy');
+            Roo.log(echild);
+            Roo.log(cn);
             return cn;
             
         }
