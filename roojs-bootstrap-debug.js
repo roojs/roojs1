@@ -155,6 +155,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             }
             
             Roo.log('skipping render flexy');
+            Roo.log(self_cntr_el);
             Roo.log(echild);
             Roo.log(cn);
             return cn;
