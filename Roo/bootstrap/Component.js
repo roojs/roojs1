@@ -253,6 +253,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         }
         
         if (!tree.items || !tree.items.length) {
+            Roo.log('tree.menu item');
+            Roo.log(nitems);
             cn.items = nitems;
             return cn;
         }
