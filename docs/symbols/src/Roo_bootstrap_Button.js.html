@@ -150,6 +150,16 @@
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' active'</span><span class="jsdoc-syntax">;
         }
         
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.disabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'disabled'</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'changing to ul' </span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">cfg.tag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'ul'</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.glyphicon </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'caret'</span><span class="jsdoc-syntax">;
+        }
+        
         </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.size.length </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-string">' btn-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.size</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
          
         </span><span class="jsdoc-comment">//gsRoo.log(this.parentType);
@@ -171,20 +181,6 @@
             </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">cfg.html</span><span class="jsdoc-syntax">;
             
         } 
-</span><span class="jsdoc-comment">//        else if (this.menu) {
-//            cfg.tag = 'a';
-//            cfg.cls += ' dropdown';
-//        }
-        
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">cfg.disabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'disabled'</span><span class="jsdoc-syntax">;
-        }
-        </span><span class="jsdoc-comment">//????
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'changing to ul' </span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">cfg.tag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'ul'</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-var">this.glyphicon </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'caret'</span><span class="jsdoc-syntax">;
-        }
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.glyphicon</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cfg.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cfg.html</span><span class="jsdoc-syntax">;
@@ -227,6 +223,11 @@
             ];
             
             </span><span class="jsdoc-var">cfg.html</span><span class="jsdoc-syntax">=</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.menu</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' dropdown'</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">cfg.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">' &lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;'</span><span class="jsdoc-syntax">;
         }
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.tag </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-string">'a' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.href </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
