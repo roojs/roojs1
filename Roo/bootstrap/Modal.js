@@ -107,13 +107,17 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             },this);
         }
         // render the children.
-        
-        var items = this.items;
-        delete this.items;
         var nitems = [];
-        for(var i =0;i < items.length;i++) {
-            nitems.push(this.addxtype(Roo.apply({}, items[i])));
+        
+        if(typeof(this.items != 'undefined')){
+            var items = this.items;
+            delete this.items;
+
+            for(var i =0;i < items.length;i++) {
+                nitems.push(this.addxtype(Roo.apply({}, items[i])));
+            }
         }
+        
         this.items = nitems;
         this.initEvents();
         //this.el.addClass([this.fieldClass, this.cls]);
