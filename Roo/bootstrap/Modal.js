@@ -178,15 +178,15 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             
             
         };
-//        Roo.log(modal);
+
         if(this.cwidth){
-            modal.cn[0].style = (typeof(modal.cn[0].style) != 'undefined') ? modal.cn[0].style + ' width:' + this.cwidth : 'width:' + this.cwidth;
+            modal.cn[0].style = (typeof(modal.cn[0].style) != 'undefined') ? modal.cn[0].style + ' width:' + this.cwidth + 'px' : 'width:' + this.cwidth + 'px';
         }
         
         if(this.cheight){
-            modal.cn[0].style = (typeof(modal.cn[0].style) != 'undefined') ? modal.cn[0].style + ' height:' + this.cheight : 'height:' + this.cheight;
+            modal.cn[0].style = (typeof(modal.cn[0].style) != 'undefined') ? modal.cn[0].style + ' height:' + this.cheight + 'px' : 'height:' + this.cheight + 'px';
         }
-//        
+
         return modal;
           
     },
