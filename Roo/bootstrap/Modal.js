@@ -179,13 +179,15 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             
         };
         
-//        if(this.width){
-//            modal.cn[0].style = (typeof(modal.cn[0].style) != 'undefined') ? modal.cn[0].style + ' width:' + this.width : 'width:' + this.width;
-//        }
-//        
-//        if(this.height){
-//            modal.cn[0].style = (typeof(modal.cn[0].style) != 'undefined') ? modal.cn[0].style + ' height:' + this.height : 'height:' + this.height;
-//        }
+        if(this.width){
+            modal.cn[0].style = (typeof(modal.cn[0].style) != 'undefined') ? modal.cn[0].style + ' width:' + this.width : 'width:' + this.width;
+        }
+        
+        if(this.height){
+            modal.cn[0].style = (typeof(modal.cn[0].style) != 'undefined') ? modal.cn[0].style + ' height:' + this.height : 'height:' + this.height;
+        }
+        
+        return modal;
           
     },
     getChildContainer : function() {
