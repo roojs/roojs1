@@ -1249,8 +1249,8 @@ Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
  * @extends Roo.bootstrap.Component
  * Bootstrap Modal class
  * @cfg {String} title Title of dialog
- * @cfg {Number} width width of dialog
- * @cfg {Number} height height of dialog
+ * @cfg {Number} cwidth width of content dialog
+ * @cfg {Number} cheight height of content dialog
  * @cfg {Array} buttons Array of buttons or standard button set..
  * 
  * @constructor
@@ -1277,9 +1277,9 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
    
     buttons : false,
     
-    width : false,
+    cwidth : false,
     
-    height : false,
+    cheight : false,
 
     onRender : function(ct, position)
     {
