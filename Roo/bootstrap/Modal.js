@@ -30,6 +30,8 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap Modal class
  * @cfg {String} title Title of dialog
+ * @cfg {Number} width width of dialog
+ * @cfg {Number} height height of dialog
  * @cfg {Array} buttons Array of buttons or standard button set..
  * 
  * @constructor
@@ -55,6 +57,10 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     title : 'test dialog',
    
     buttons : false,
+    
+    width : false,
+    
+    height : false,
 
     onRender : function(ct, position)
     {
@@ -90,7 +96,6 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.maskEl.hide();
         //this.el.addClass("x-dlg-modal");
     
-        
         if (this.buttons) {
             Roo.each(this.buttons, function(bb) {
                 b = Roo.apply({}, bb);
