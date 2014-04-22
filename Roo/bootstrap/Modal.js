@@ -179,13 +179,13 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             
         };
 //        Roo.log(modal);
-//        if(this.width){
-//            modal.cn[0].style = (typeof(modal.cn[0].style) != 'undefined') ? modal.cn[0].style + ' width:' + this.width : 'width:' + this.width;
-//        }
-//        
-//        if(this.height){
-//            modal.cn[0].style = (typeof(modal.cn[0].style) != 'undefined') ? modal.cn[0].style + ' height:' + this.height : 'height:' + this.height;
-//        }
+        if(this.cwidth){
+            modal.cn[0].style = (typeof(modal.cn[0].style) != 'undefined') ? modal.cn[0].style + ' width:' + this.cwidth : 'width:' + this.cwidth;
+        }
+        
+        if(this.height){
+            modal.cn[0].style = (typeof(modal.cn[0].style) != 'undefined') ? modal.cn[0].style + ' height:' + this.cheight : 'height:' + this.cheight;
+        }
 //        
         return modal;
           
