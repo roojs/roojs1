@@ -30,8 +30,8 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap Modal class
  * @cfg {String} title Title of dialog
- * @cfg {Number} cwidth width of content dialog
- * @cfg {Number} cheight height of content dialog
+ * @cfg {Number} width width of dialog
+ * @cfg {Number} height height of dialog
  * @cfg {Array} buttons Array of buttons or standard button set..
  * 
  * @constructor
@@ -58,9 +58,9 @@
    
     </span><span class="jsdoc-var">buttons </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
-    </span><span class="jsdoc-var">cwidth </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
-    </span><span class="jsdoc-var">cheight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">)
     {
@@ -179,14 +179,14 @@
             
         };
 </span><span class="jsdoc-comment">//        Roo.log(modal);
-//        if(this.width){
-//            modal.cn[0].style = (typeof(modal.cn[0].style) != 'undefined') ? modal.cn[0].style + ' width:' + this.width : 'width:' + this.width;
-//        }
-//        
-//        if(this.height){
-//            modal.cn[0].style = (typeof(modal.cn[0].style) != 'undefined') ? modal.cn[0].style + ' height:' + this.height : 'height:' + this.height;
-//        }
-//        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">modal.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.style </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">modal.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.style</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">modal.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.style </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' width:' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'width:' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.height</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">modal.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.style </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">modal.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.style</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">modal.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.style </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' height:' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.height </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'height:' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.height</span><span class="jsdoc-syntax">;
+        }
+</span><span class="jsdoc-comment">//        
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">modal</span><span class="jsdoc-syntax">;
           
     },
