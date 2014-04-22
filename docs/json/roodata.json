@@ -8354,13 +8354,13 @@
      "memberOf": ""
     },
     {
-     "name": "width",
+     "name": "cwidth",
      "type": "Number",
      "desc": "width of dialog",
      "memberOf": ""
     },
     {
-     "name": "height",
+     "name": "cheight",
      "type": "Number",
      "desc": "height of dialog",
      "memberOf": ""
