@@ -136,13 +136,6 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                 html : this.html || ''
         };
         
-        if(this.width){
-            bdy.style = (typeof(bdy.style) != 'undefined') ? bdy.style + ' width:' + this.width : 'width:' + this.width;
-        }
-        
-        if(this.height){
-            bdy.style = (typeof(bdy.style) != 'undefined') ? bdy.style + ' height:' + this.height : 'height:' + this.height;
-        }
          
         var modal = {
             cls: "modal fade",
@@ -186,7 +179,13 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             
         };
         
+        if(this.width){
+            modal.cn[0].style = (typeof(modal.cn[0].style) != 'undefined') ? modal.cn[0].style + ' width:' + this.width : 'width:' + this.width;
+        }
         
+        if(this.height){
+            modal.cn[0].style = (typeof(modal.cn[0].style) != 'undefined') ? modal.cn[0].style + ' height:' + this.height : 'height:' + this.height;
+        }
         
         return modal;
           
