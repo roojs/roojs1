@@ -109,7 +109,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         // render the children.
         var nitems = [];
         
-        if(typeof(this.items != 'undefined')){
+        if(typeof(this.items) != 'undefined'){
             var items = this.items;
             delete this.items;
 
