@@ -8354,15 +8354,15 @@
      "memberOf": ""
     },
     {
-     "name": "cwidth",
+     "name": "width",
      "type": "Number",
-     "desc": "width of content dialog",
+     "desc": "width of dialog",
      "memberOf": ""
     },
     {
-     "name": "cheight",
+     "name": "height",
      "type": "Number",
-     "desc": "height of content dialog",
+     "desc": "height of dialog",
      "memberOf": ""
     },
     {

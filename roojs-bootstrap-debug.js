@@ -1249,8 +1249,8 @@ Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
  * @extends Roo.bootstrap.Component
  * Bootstrap Modal class
  * @cfg {String} title Title of dialog
- * @cfg {Number} cwidth width of content dialog
- * @cfg {Number} cheight height of content dialog
+ * @cfg {Number} width width of dialog
+ * @cfg {Number} height height of dialog
  * @cfg {Array} buttons Array of buttons or standard button set..
  * 
  * @constructor
@@ -1277,9 +1277,9 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
    
     buttons : false,
     
-    cwidth : false,
+    width : false,
     
-    cheight : false,
+    height : false,
 
     onRender : function(ct, position)
     {
@@ -1398,12 +1398,12 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             
         };
 //        Roo.log(modal);
-        if(this.cwidth){
-            modal.cn[0].style = (typeof(modal.cn[0].style) != 'undefined') ? modal.cn[0].style + ' width:' + this.cwidth : 'width:' + this.cwidth;
+        if(this.width){
+            modal.cn[0].style = (typeof(modal.cn[0].style) != 'undefined') ? modal.cn[0].style + ' width:' + this.width : 'width:' + this.width;
         }
         
         if(this.height){
-            modal.cn[0].style = (typeof(modal.cn[0].style) != 'undefined') ? modal.cn[0].style + ' height:' + this.cheight : 'height:' + this.cheight;
+            modal.cn[0].style = (typeof(modal.cn[0].style) != 'undefined') ? modal.cn[0].style + ' height:' + this.height : 'height:' + this.height;
         }
 //        
         return modal;
