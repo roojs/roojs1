@@ -1249,6 +1249,8 @@ Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
  * @extends Roo.bootstrap.Component
  * Bootstrap Modal class
  * @cfg {String} title Title of dialog
+ * @cfg {Number} width width of dialog
+ * @cfg {Number} height height of dialog
  * @cfg {Array} buttons Array of buttons or standard button set..
  * 
  * @constructor
@@ -1274,6 +1276,10 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     title : 'test dialog',
    
     buttons : false,
+    
+    width : false,
+    
+    height : false,
 
     onRender : function(ct, position)
     {
@@ -1309,7 +1315,6 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.maskEl.hide();
         //this.el.addClass("x-dlg-modal");
     
-        
         if (this.buttons) {
             Roo.each(this.buttons, function(bb) {
                 b = Roo.apply({}, bb);
@@ -1351,7 +1356,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         };
         
          
-        return {
+        var modal = {
             cls: "modal fade",
             cn : [
                 {
@@ -1392,6 +1397,14 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             
             
         };
+        
+        if(this.width){
+            modal.cn[0].style = (typeof(modal.cn[0].style) != 'undefined') ? modal.cn[0].style + ' width:' + this.width : 'width:' + this.width;
+        }
+        
+        if(this.height){
+            modal.cn[0].style = (typeof(modal.cn[0].style) != 'undefined') ? modal.cn[0].style + ' height:' + this.height : 'height:' + this.height;
+        }
           
     },
     getChildContainer : function() {
