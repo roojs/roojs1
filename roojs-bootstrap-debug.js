@@ -1259,7 +1259,7 @@ Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
  */
 
 Roo.bootstrap.Modal = function(config){
-    Roo.bootstrap.Modal.superclass.constructor.call(this, config);
+//    Roo.bootstrap.Modal.superclass.constructor.call(this, config);
     this.addEvents({
         // raw events
         /**
@@ -1283,7 +1283,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
 
     onRender : function(ct, position)
     {
-//        Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
+        Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
      
         if(!this.el){
             var cfg = Roo.apply({},  this.getAutoCreate());
