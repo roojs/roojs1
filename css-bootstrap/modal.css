@@ -21,9 +21,25 @@
 .modal-md-12 {
   float: left;
 }
+
+.modal-md-1,
+.modal-md-2,
+.modal-md-3,
+.modal-md-4,
+.modal-md-5,
+.modal-md-6,
+.modal-md-7,
+.modal-md-8,
+.modal-md-9,
+.modal-md-10,
+.modal-md-11,
+.modal-md-12 .modal-dialog {
+  float: left;
+  margin: 0 auto;
+}
+
 .modal-md-12 .modal-dialog {
   width: 100%;
-  margin: 0 auto;
 }
 .modal-md-11 .modal-dialog {
   width: 91.66666666666666%;
@@ -33,7 +49,6 @@
 }
 .modal-md-9 .modal-dialog {
   width: 75%;
-  margin: 0 auto;
 }
 .modal-md-8 .modal-dialog {
   width: 66.66666666666666%;
