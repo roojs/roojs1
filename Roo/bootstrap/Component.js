@@ -25,7 +25,7 @@ Roo.bootstrap = Roo.bootstrap || {};
 
 
 Roo.bootstrap.Component = function(config){
-    Roo.bootstrap.Component.superclass.constructor.call(this, config);
+//    Roo.bootstrap.Component.superclass.constructor.call(this, config);
 };
 
 Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
