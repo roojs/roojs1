@@ -111,7 +111,7 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
     initEvents: function() {
         var _this = this;
         Roo.each(this.el.select('li > a',true).elements, function(v){
-           v.on('click', _this.onClick, this); 
+           v.on('click', _this.onClick, _this); 
         });
     },
     
