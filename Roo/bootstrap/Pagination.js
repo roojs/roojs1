@@ -115,7 +115,7 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
     },
     onClick : function(e)
     {
-        Roo.log('on click ');
+        Roo.log('pagination on click ');
         if(this.preventDefault){
             e.preventDefault();
         }
