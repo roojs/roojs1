@@ -1249,8 +1249,6 @@ Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
  * @extends Roo.bootstrap.Component
  * Bootstrap Modal class
  * @cfg {String} title Title of dialog
- * @cfg {Number} width width of dialog
- * @cfg {Number} height height of dialog
  * @cfg {Array} buttons Array of buttons or standard button set..
  * 
  * @constructor
@@ -1277,10 +1275,6 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
    
     buttons : false,
     
-    width : false,
-    
-    height : false,
-
     onRender : function(ct, position)
     {
         Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
@@ -1356,7 +1350,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         };
         
          
-        var modal = {
+        return modal = {
             cls: "modal fade",
             cn : [
                 {
@@ -1397,16 +1391,6 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             
             
         };
-
-        if(this.width){
-            modal.cn[0].style = (typeof(modal.cn[0].style) != 'undefined') ? modal.cn[0].style + ' width:' + this.width + 'px' : 'width:' + this.width + 'px';
-        }
-        
-        if(this.height){
-            modal.cn[0].style = (typeof(modal.cn[0].style) != 'undefined') ? modal.cn[0].style + ' height:' + this.height + 'px' : 'height:' + this.height + 'px';
-        }
-
-        return modal;
           
     },
     getChildContainer : function() {
@@ -2119,6 +2103,7 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
             cn: [
                 {
                     tag: 'a',
+                    cls: 'previous',
                     href:'#',
                     html: '&laquo;'
                 }
@@ -2149,6 +2134,7 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
                 cn: [
                     {
                        tag: 'a',
+                       cls: 'next',
                        href: '#',
                        html: '&raquo;'
                     }
