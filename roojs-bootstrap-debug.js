@@ -2059,10 +2059,6 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
  * Bootstrap Pagination class
  * @cfg {String} size xs | sm | md | lg
  * @cfg {Boolean} inverse false | true
- * @cfg {Number} from pagination starting number
- * @cfg {Number} to pagination ending number
- * @cfg {String} align empty or left | right
- * @cfg {Number} active active page number
  * 
  * @constructor
  * Create a new Pagination
@@ -2078,16 +2074,11 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
     cls: false,
     size: false,
     inverse: false,
-    from: 1,
-    to: 4,
-    align: false,
-    active: 1,
     
     getAutoCreate : function(){
         var cfg = {
             tag: 'ul',
-                cls: 'pagination',
-                cn: []
+                cls: 'pagination'
         };
         if (this.inverse) {
             cfg.cls += ' inverse';
@@ -2096,51 +2087,127 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
             cfg.html=this.html;
         }
         if (this.cls) {
-            cfg.cls=this.cls;
+            cfg.cls += " " + this.cls;
         }
-        cfg.cn[0]={
-            tag: 'li',
-            cn: [
-                {
-                    tag: 'a',
-                    href:'#',
-                    html: '&laquo;'
-                }
-            ]
-        };
-        var from=this.from>0?this.from:1;
-        var to=this.to-from<=10?this.to:from+10;
-        var active=this.active>=from&&this.active<=to?this.active:null;
-        for (var i=from;i<=to;i++) {
-            cfg.cn.push(
-                {
-                    tag: 'li',
-                    cls: active===i?'active':'',
-                    cn: [
-                        {
-                            tag: 'a',
-                            href: '#',
-                            html: i
-                        }
-                    ]
-                }
-            );
-        }
-        
-        cfg.cn.push(
-            {
-                tag: 'li',
-                cn: [
-                    {
-                       tag: 'a',
-                       href: '#',
-                       html: '&raquo;'
-                    }
-                ]
-            }
-        );
+//        cfg.cn[0]={
+//            tag: 'li',
+//            cn: [
+//                {
+//                    tag: 'a',
+//                    href:'#',
+//                    html: '&laquo;'
+//                }
+//            ]
+//        };
+//        var from=this.from>0?this.from:1;
+//        var to=this.to-from<=10?this.to:from+10;
+//        var active=this.active>=from&&this.active<=to?this.active:null;
+//        for (var i=from;i<=to;i++) {
+//            cfg.cn.push(
+//                {
+//                    tag: 'li',
+//                    cls: active===i?'active':'',
+//                    cn: [
+//                        {
+//                            tag: 'a',
+//                            href: '#',
+//                            html: i
+//                        }
+//                    ]
+//                }
+//            );
+//        }
+//        
+//        cfg.cn.push(
+//            {
+//                tag: 'li',
+//                cn: [
+//                    {
+//                       tag: 'a',
+//                       href: '#',
+//                       html: '&raquo;'
+//                    }
+//                ]
+//            }
+//        );
 	
         return cfg;
+    }
+   
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * Pagination item
+ * 
+ */
+
+
+/**
+ * @class Roo.bootstrap.PaginationItem
+ * @extends Roo.bootstrap.Component
+ * Bootstrap PaginationItem class
+ * @cfg {String} html text
+ * @cfg {String} href the link
+ * @cfg {Boolean} preventDefault (true | false) default true
+ * 
+ * 
+ * @constructor
+ * Create a new PaginationItem
+ * @param {Object} config The config object
+ */
+
+
+Roo.bootstrap.PaginationItem = function(config){
+    Roo.bootstrap.PaginationItem.superclass.constructor.call(this, config);
+    this.addEvents({
+        // raw events
+        /**
+         * @event click
+         * The raw click event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "click" : true
+    });
+};
+
+Roo.extend(Roo.bootstrap.PaginationItem, Roo.bootstrap.Component,  {
+    
+    href : false,
+    html : false,
+    preventDefault: true,
+    
+    getAutoCreate : function(){
+        var cfg= {
+	    tag: 'li',
+	    cn: [
+		{
+		    tag : 'a',
+		    href : this.href ? this.href : '#',
+		    html : this.html ? this.html : ''
+		}
+	    ]
+        };
+	
+        return cfg;
+    },
+    
+    initEvents: function() {
+        
+        this.el.on('click', this.onClick, this);
+        
+    },
+    onClick : function(e)
+    {
+        Roo.log('PaginationItem on click ');
+        if(this.preventDefault){
+            e.preventDefault();
+        }
+        
+        this.fireEvent('click', this, e);
     }
    
 });
