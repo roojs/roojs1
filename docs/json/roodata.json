@@ -9050,6 +9050,12 @@
      "memberOf": ""
     },
     {
+     "name": "preventDefault",
+     "type": "Boolean",
+     "desc": "(true | false) default false",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
@@ -9140,6 +9146,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before the component is shown.  Return false to stop the show."
+    },
+    {
+     "name": "click",
+     "sig": "function (e)\n{\n\n}",
+     "type": "function",
+     "desc": "The raw click event for the entire grid."
     },
     {
      "name": "destroy",

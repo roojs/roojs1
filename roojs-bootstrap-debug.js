@@ -2063,6 +2063,7 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
  * @cfg {Number} to pagination ending number
  * @cfg {String} align empty or left | right
  * @cfg {Number} active active page number
+ * @cfg {Boolean} preventDefault (true | false) default false
  * 
  * @constructor
  * Create a new Pagination
@@ -2071,6 +2072,16 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
 
 Roo.bootstrap.Pagination = function(config){
     Roo.bootstrap.Pagination.superclass.constructor.call(this, config);
+    
+    this.addEvents({
+        // raw events
+        /**
+         * @event click
+         * The raw click event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "click" : true
+    });
 };
 
 Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
@@ -2082,6 +2093,7 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
     to: 4,
     align: false,
     active: 1,
+    preventDefault : false,
     
     getAutoCreate : function(){
         var cfg = {
@@ -2141,6 +2153,21 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
         );
 	
         return cfg;
+    },
+    
+    initEvents: function() {
+        this.el.on('click', this.onClick, this);
+    },
+    
+    onClick : function(e)
+    {
+        Roo.log('pagination click');
+        
+        if(this.preventDefault){
+            e.preventDefault();
+        }
+        
+        this.fireEvent('click', this, e);
     }
    
 });

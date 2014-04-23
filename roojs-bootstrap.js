@@ -60,9 +60,10 @@ Roo.bootstrap.Row=function(A){Roo.bootstrap.Row.superclass.constructor.call(this
 //Roo/bootstrap/Element.js
 Roo.bootstrap.Element=function(A){Roo.bootstrap.Element.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.Element,Roo.bootstrap.Component,{tag:'div',cls:'',html:'',getAutoCreate:function(){var A={tag:this.tag,cls:'',html:this.html};return A;}});
 //Roo/bootstrap/Pagination.js
-Roo.bootstrap.Pagination=function(A){Roo.bootstrap.Pagination.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.Pagination,Roo.bootstrap.Component,{cls:false,size:false,inverse:false,from:1,to:4,align:false,active:1,getAutoCreate:function(){var A={tag:'ul',cls:'pagination',cn:[]};if(this.inverse){A.cls+=' inverse';}if(this.html){A.html=this.html;}if(this.cls){A.cls=this.cls;}
+Roo.bootstrap.Pagination=function(A){Roo.bootstrap.Pagination.superclass.constructor.call(this,A);this.addEvents({"click":true});};Roo.extend(Roo.bootstrap.Pagination,Roo.bootstrap.Component,{cls:false,size:false,inverse:false,from:1,to:4,align:false,active:1,preventDefault:false,getAutoCreate:function(){var A={tag:'ul',cls:'pagination',cn:[]};if(this.inverse){A.cls+=' inverse';}if(this.html){A.html=this.html;}if(this.cls){A.cls=this.cls;}
 A.cn[0]={tag:'li',cn:[{tag:'a',href:'#',html:'&laquo;'}]};var B=this.from>0?this.from:1;var to=this.to-B<=10?this.to:B+10;var C=this.active>=B&&this.active<=to?this.active:null;for(var i=B;i<=to;i++){A.cn.push({tag:'li',cls:C===i?'active':'',cn:[{tag:'a',href:'#',html:i}]});}
-A.cn.push({tag:'li',cn:[{tag:'a',href:'#',html:'&raquo;'}]});return A;}});
+A.cn.push({tag:'li',cn:[{tag:'a',href:'#',html:'&raquo;'}]});return A;},initEvents:function(){this.el.on('click',this.onClick,this);},onClick:function(e){Roo.log('pagination click');if(this.preventDefault){e.preventDefault();}
+this.fireEvent('click',this,e);}});
 //Roo/bootstrap/Slider.js
 Roo.bootstrap.Slider=function(A){Roo.bootstrap.Slider.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.Slider,Roo.bootstrap.Component,{getAutoCreate:function(){var A={tag:'div',cls:'slider slider-sample1 vertical-handler ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all',cn:[{tag:'a',cls:'ui-slider-handle ui-state-default ui-corner-all'}]};return A;}});
 //Roo/bootstrap/Table.js
