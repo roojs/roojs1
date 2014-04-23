@@ -34,7 +34,7 @@
 .modal-md-10,
 .modal-md-11,
 .modal-md-12 .modal-dialog {
-  float: left;
+  margin: 0 auto;
 }
 
 .modal-md-12 .modal-dialog {
