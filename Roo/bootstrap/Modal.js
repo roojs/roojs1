@@ -30,8 +30,6 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap Modal class
  * @cfg {String} title Title of dialog
- * @cfg {Number} width width of dialog
- * @cfg {Number} height height of dialog
  * @cfg {Array} buttons Array of buttons or standard button set..
  * 
  * @constructor
@@ -58,10 +56,6 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
    
     buttons : false,
     
-    width : false,
-    
-    height : false,
-
     onRender : function(ct, position)
     {
         Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
