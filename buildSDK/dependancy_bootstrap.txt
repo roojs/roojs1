@@ -25,6 +25,7 @@ Roo.bootstrap.Row
 
 Roo.bootstrap.Element
 Roo.bootstrap.Pagination
+Roo.bootstrap.PaginationItem
 Roo.bootstrap.Slider
 Roo.bootstrap.Table
 Roo.bootstrap.TableCell
