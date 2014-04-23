@@ -67,6 +67,7 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
             cn: [
                 {
                     tag: 'a',
+                    cls: 'previous',
                     href:'#',
                     html: '&laquo;'
                 }
@@ -97,6 +98,7 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
                 cn: [
                     {
                        tag: 'a',
+                       cls: 'next',
                        href: '#',
                        html: '&raquo;'
                     }
