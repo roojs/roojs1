@@ -13,6 +13,7 @@
  * @cfg {String} html text
  * @cfg {String} href the link
  * @cfg {Boolean} preventDefault (true | false) default true
+ * @cfg {Boolean} active (true | false) default false
  * 
  * 
  * @constructor
@@ -39,6 +40,8 @@ Roo.extend(Roo.bootstrap.PaginationItem, Roo.bootstrap.Component,  {
     href : false,
     html : false,
     preventDefault: true,
+    active : false,
+    cls : false,
     
     getAutoCreate : function(){
         var cfg= {
@@ -51,6 +54,14 @@ Roo.extend(Roo.bootstrap.PaginationItem, Roo.bootstrap.Component,  {
 		}
 	    ]
         };
+        
+        if(this.cls){
+            cfg.cls = this.cls;
+        }
+        
+        if(this.active){
+            cfg.cls = typeof(cfg.cls) !== 'undefined' ? cfg.cls + ' active' : 'active';
+        }
 	
         return cfg;
     },
