@@ -11,10 +11,6 @@
  * Bootstrap Pagination class
  * @cfg {String} size xs | sm | md | lg
  * @cfg {Boolean} inverse false | true
- * @cfg {Number} from pagination starting number
- * @cfg {Number} to pagination ending number
- * @cfg {String} align empty or left | right
- * @cfg {Number} active active page number
  * 
  * @constructor
  * Create a new Pagination
@@ -30,16 +26,11 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
     cls: false,
     size: false,
     inverse: false,
-    from: 1,
-    to: 4,
-    align: false,
-    active: 1,
     
     getAutoCreate : function(){
         var cfg = {
             tag: 'ul',
-                cls: 'pagination',
-                cn: []
+                cls: 'pagination'
         };
         if (this.inverse) {
             cfg.cls += ' inverse';
@@ -48,49 +39,49 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
             cfg.html=this.html;
         }
         if (this.cls) {
-            cfg.cls=this.cls;
+            cfg.cls += " " + this.cls;
         }
-        cfg.cn[0]={
-            tag: 'li',
-            cn: [
-                {
-                    tag: 'a',
-                    href:'#',
-                    html: '&laquo;'
-                }
-            ]
-        };
-        var from=this.from>0?this.from:1;
-        var to=this.to-from<=10?this.to:from+10;
-        var active=this.active>=from&&this.active<=to?this.active:null;
-        for (var i=from;i<=to;i++) {
-            cfg.cn.push(
-                {
-                    tag: 'li',
-                    cls: active===i?'active':'',
-                    cn: [
-                        {
-                            tag: 'a',
-                            href: '#',
-                            html: i
-                        }
-                    ]
-                }
-            );
-        }
-        
-        cfg.cn.push(
-            {
-                tag: 'li',
-                cn: [
-                    {
-                       tag: 'a',
-                       href: '#',
-                       html: '&raquo;'
-                    }
-                ]
-            }
-        );
+//        cfg.cn[0]={
+//            tag: 'li',
+//            cn: [
+//                {
+//                    tag: 'a',
+//                    href:'#',
+//                    html: '&laquo;'
+//                }
+//            ]
+//        };
+//        var from=this.from>0?this.from:1;
+//        var to=this.to-from<=10?this.to:from+10;
+//        var active=this.active>=from&&this.active<=to?this.active:null;
+//        for (var i=from;i<=to;i++) {
+//            cfg.cn.push(
+//                {
+//                    tag: 'li',
+//                    cls: active===i?'active':'',
+//                    cn: [
+//                        {
+//                            tag: 'a',
+//                            href: '#',
+//                            html: i
+//                        }
+//                    ]
+//                }
+//            );
+//        }
+//        
+//        cfg.cn.push(
+//            {
+//                tag: 'li',
+//                cn: [
+//                    {
+//                       tag: 'a',
+//                       href: '#',
+//                       html: '&raquo;'
+//                    }
+//                ]
+//            }
+//        );
 	
         return cfg;
     }
