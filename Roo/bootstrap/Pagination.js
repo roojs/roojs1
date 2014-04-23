@@ -41,48 +41,6 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
         if (this.cls) {
             cfg.cls += " " + this.cls;
         }
-//        cfg.cn[0]={
-//            tag: 'li',
-//            cn: [
-//                {
-//                    tag: 'a',
-//                    href:'#',
-//                    html: '&laquo;'
-//                }
-//            ]
-//        };
-//        var from=this.from>0?this.from:1;
-//        var to=this.to-from<=10?this.to:from+10;
-//        var active=this.active>=from&&this.active<=to?this.active:null;
-//        for (var i=from;i<=to;i++) {
-//            cfg.cn.push(
-//                {
-//                    tag: 'li',
-//                    cls: active===i?'active':'',
-//                    cn: [
-//                        {
-//                            tag: 'a',
-//                            href: '#',
-//                            html: i
-//                        }
-//                    ]
-//                }
-//            );
-//        }
-//        
-//        cfg.cn.push(
-//            {
-//                tag: 'li',
-//                cn: [
-//                    {
-//                       tag: 'a',
-//                       href: '#',
-//                       html: '&raquo;'
-//                    }
-//                ]
-//            }
-//        );
-	
         return cfg;
     }
    
