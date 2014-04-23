@@ -63,6 +63,9 @@ Roo.extend(Roo.BoxComponent, Roo.Component, {
      * @return {Roo.BoxComponent} this
      */
     setSize : function(w, h){
+        Roo.log('BoxComponent!!!!!!!!!!');
+        Roo.log(w);
+        Roo.log(h);
         // support for standard size objects
         if(typeof w == 'object'){
             h = w.height;
