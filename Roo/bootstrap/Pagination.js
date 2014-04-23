@@ -93,6 +93,21 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
         );
 	
         return cfg;
+    },
+    
+    initEvents: function() {
+        this.el.on('click', this.onClick, this);
+    },
+    
+    onClick : function(e)
+    {
+        Roo.log('pagination click');
+        
+        if(this.preventDefault){
+            e.preventDefault();
+        }
+        
+        this.fireEvent('click', this, e);
     }
    
 });
