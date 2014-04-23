@@ -25,7 +25,7 @@ Roo.bootstrap = Roo.bootstrap || {};
 
 
 Roo.bootstrap.Component = function(config){
-    Roo.bootstrap.Component.superclass.constructor.call(this, config);
+//    Roo.bootstrap.Component.superclass.constructor.call(this, config);
 };
 
 Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
@@ -1283,7 +1283,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
 
     onRender : function(ct, position)
     {
-//        Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
+        Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
      
         if(!this.el){
             var cfg = Roo.apply({},  this.getAutoCreate());
