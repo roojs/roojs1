@@ -2108,13 +2108,14 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
             cfg.html=this.html;
         }
         if (this.cls) {
-            cfg.cls=this.cls;
+            cfg.cls += this.cls;
         }
         cfg.cn[0]={
             tag: 'li',
             cn: [
                 {
                     tag: 'a',
+                    cls: 'previous',
                     href:'#',
                     html: '&laquo;'
                 }
@@ -2145,6 +2146,7 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
                 cn: [
                     {
                        tag: 'a',
+                       cls: 'next',
                        href: '#',
                        html: '&raquo;'
                     }
