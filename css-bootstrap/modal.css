@@ -7,3 +7,53 @@
 */
 
 
+.modal-md-1,
+.modal-md-2,
+.modal-md-3,
+.modal-md-4,
+.modal-md-5,
+.modal-md-6,
+.modal-md-7,
+.modal-md-8,
+.modal-md-9,
+.modal-md-10,
+.modal-md-11,
+.modal-md-12 {
+  float: left;
+}
+.modal-md-12 .modal-dialog {
+  width: 100%;
+}
+.modal-md-11 .modal-dialog {
+  width: 91.66666666666666%;
+}
+.modal-md-10 .modal-dialog {
+  width: 83.33333333333334%;
+}
+.modal-md-9 .modal-dialog {
+  width: 75%;
+}
+.modal-md-8 .modal-dialog {
+  width: 66.66666666666666%;
+}
+.modal-md-7 .modal-dialog {
+  width: 58.333333333333336%;
+}
+.modal-md-6 .modal-dialog {
+  width: 50%;
+}
+.modal-md-5 .modal-dialog {
+  width: 41.66666666666667%;
+}
+.modal-md-4 .modal-dialog {
+  width: 33.33333333333333%;
+}
+.modal-md-3 .modal-dialog {
+  width: 25%;
+}
+.modal-md-2 .modal-dialog {
+  width: 16.666666666666664%;
+}
+.modal-md-1 .modal-dialog {
+  width: 8.333333333333332%;
+}
