@@ -109,9 +109,9 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
     },
     
     initEvents: function() {
-//        Roo.each(this.el.select('li > a',true).elements, function(v){
-//           v.on('click', this.onClick, this); 
-//        });
+        Roo.each(this.el.select('li > a',true).elements, function(v){
+           v.on('click', this.onClick, this); 
+        });
     },
     
     onClick : function(e)
