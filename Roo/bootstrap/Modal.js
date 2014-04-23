@@ -131,7 +131,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         };
         
          
-        var modal = {
+        return modal = {
             cls: "modal fade",
             cn : [
                 {
@@ -172,16 +172,6 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             
             
         };
-
-        if(this.width){
-            modal.cn[0].style = (typeof(modal.cn[0].style) != 'undefined') ? modal.cn[0].style + ' width:' + this.width + 'px' : 'width:' + this.width + 'px';
-        }
-        
-        if(this.height){
-            modal.cn[0].style = (typeof(modal.cn[0].style) != 'undefined') ? modal.cn[0].style + ' height:' + this.height + 'px' : 'height:' + this.height + 'px';
-        }
-
-        return modal;
           
     },
     getChildContainer : function() {
