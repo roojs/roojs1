@@ -2063,7 +2063,6 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
  * @cfg {Number} to pagination ending number
  * @cfg {String} align empty or left | right
  * @cfg {Number} active active page number
- * @cfg {Boolean} preventDefault (true | false) default true
  * 
  * @constructor
  * Create a new Pagination
@@ -2072,15 +2071,6 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
 
 Roo.bootstrap.Pagination = function(config){
     Roo.bootstrap.Pagination.superclass.constructor.call(this, config);
-    this.addEvents({
-        // raw events
-        /**
-         * @event click
-         * The raw click event for the entire grid.
-         * @param {Roo.EventObject} e
-         */
-        "click" : true
-    });
 };
 
 Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
@@ -2092,7 +2082,6 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
     to: 4,
     align: false,
     active: 1,
-    preventDefault: true,
     
     getAutoCreate : function(){
         var cfg = {
@@ -2114,7 +2103,6 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
             cn: [
                 {
                     tag: 'a',
-                    cls: 'previous',
                     href:'#',
                     html: '&laquo;'
                 }
@@ -2145,7 +2133,6 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
                 cn: [
                     {
                        tag: 'a',
-                       cls: 'next',
                        href: '#',
                        html: '&raquo;'
                     }
@@ -2154,22 +2141,6 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
         );
 	
         return cfg;
-    },
-    
-    initEvents: function() {
-        Roo.each(this.el.select('li > a',true).elements, function(v){
-           v.on('click', this.onClick, this); 
-        });
-    },
-    
-    onClick : function(e)
-    {
-        Roo.log('pagination on click ');
-        if(this.preventDefault){
-            e.preventDefault();
-        }
-        
-        this.fireEvent('click', this, e);
     }
    
 });
