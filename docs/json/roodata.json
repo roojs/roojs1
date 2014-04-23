@@ -9026,30 +9026,6 @@
      "memberOf": ""
     },
     {
-     "name": "from",
-     "type": "Number",
-     "desc": "pagination starting number",
-     "memberOf": ""
-    },
-    {
-     "name": "to",
-     "type": "Number",
-     "desc": "pagination ending number",
-     "memberOf": ""
-    },
-    {
-     "name": "align",
-     "type": "String",
-     "desc": "empty or left | right",
-     "memberOf": ""
-    },
-    {
-     "name": "active",
-     "type": "Number",
-     "desc": "active page number",
-     "memberOf": ""
-    },
-    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
