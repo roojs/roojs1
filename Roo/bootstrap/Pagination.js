@@ -15,6 +15,7 @@
  * @cfg {Number} to pagination ending number
  * @cfg {String} align empty or left | right
  * @cfg {Number} active active page number
+ * @cfg {Boolean} preventDefault (true | false) default false
  * 
  * @constructor
  * Create a new Pagination
@@ -44,6 +45,7 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
     to: 4,
     align: false,
     active: 1,
+    preventDefault : false,
     
     getAutoCreate : function(){
         var cfg = {
