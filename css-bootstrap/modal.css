@@ -19,7 +19,7 @@
 .modal-md-10,
 .modal-md-11,
 .modal-md-12 {
-  float: center;
+  float: left;
 }
 .modal-md-12 .modal-dialog {
   width: 100%;
