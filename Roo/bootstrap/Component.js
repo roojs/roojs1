@@ -164,11 +164,11 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         Roo.log(self_cntr_el);
         while (true) {
             var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
-            Roo.log(echild);
+            
             if (!echild) {
                 break;
             }
-            
+            Roo.log(echild);
             if (echild && echild.attr('xtype').split('.').pop() != cn.xtype) {
                 break;
             }
