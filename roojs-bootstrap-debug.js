@@ -4513,6 +4513,9 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         var inputblock = input;
         
+        Roo.log(this.fieldLabel);
+        Roo.log(align);
+        
         if (align ==='left' && this.fieldLabel.length) {
                 Roo.log("left and has label");
                 cfg.cn = [
@@ -4571,8 +4574,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
      */
     inputEl: function ()
     {
-        Roo.log('checkbox');
-        Roo.log(this.el.select('input[type=checkbox]',true).first());
         return this.el.select('input[type=checkbox]',true).first();
     }
 });
