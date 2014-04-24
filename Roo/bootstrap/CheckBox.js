@@ -110,9 +110,9 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         return cfg;
         
-    },
+    }
     /**
-     * return the real textarea element.
+     * return the real CheckBox element.
      */
 //    inputEl: function ()
 //    {
