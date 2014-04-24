@@ -64,6 +64,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         if (this.cls) {
             cfg.cls+=  ' ' +this.cls;
         }
+        
+        // this lot should be simplifed...
+        
         if (this.align) {
             cfg.align=this.align;
         }
