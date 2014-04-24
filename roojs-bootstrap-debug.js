@@ -4493,7 +4493,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         var input =  {
             tag: 'input',
-            type: 'checkbox'
+            type: 'checkbox',
             id : id,
             value : this.value || '',
             placeholder : this.placeholder || '' 
