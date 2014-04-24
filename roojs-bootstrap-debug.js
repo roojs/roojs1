@@ -2248,6 +2248,14 @@ Roo.extend(Roo.bootstrap.Slider, Roo.bootstrap.Component,  {
  * @cfg {String} summary Specifies a summary of the content of a table
  * @cfg {Number} width Specifies the width of a table
  * 
+ * @cfg {boolean} striped Should the rows be alternative striped
+ * @cfg {boolean} bordered Add borders to the table
+ * @cfg {boolean} hover Add hover highlighting
+ * @cfg {boolean} condensed Format condensed
+*
+ 
+ 
+ * 
  * @constructor
  * Create a new Table
  * @param {Object} config The config object
@@ -2275,42 +2283,57 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
-	
-	cfg = {
-	    tag: 'table'
-	}
+        
+        cfg = {
+            tag: 'table',
+            cls : 'table'
+        }
+            
+        if (this.striped) {
+            cfg.cls += ' table-striped';
+        }
+        if (this.hover) {
+            cfg.cls += ' table-hover';
+        }
+        if (this.bordered) {
+            cfg.cls += ' table-bordered';
+        }
         
         if (this.cls) {
-            cfg.cls=this.cls
+            cfg.cls+=  ' ' +this.cls;
         }
+        
+        // this lot should be simplifed...
+        
         if (this.align) {
-            cfg.align=this.align
+            cfg.align=this.align;
         }
         if (this.bgcolor) {
-            cfg.bgcolor=this.bgcolor
+            cfg.bgcolor=this.bgcolor;
         }
         if (this.border) {
-            cfg.border=this.border
+            cfg.border=this.border;
         }
         if (this.cellpadding) {
-            cfg.cellpadding=this.cellpadding
+            cfg.cellpadding=this.cellpadding;
         }
         if (this.cellspacing) {
-            cfg.cellspacing=this.cellspacing
+            cfg.cellspacing=this.cellspacing;
         }
         if (this.frame) {
-            cfg.frame=this.frame
+            cfg.frame=this.frame;
         }
         if (this.rules) {
-            cfg.rules=this.rules
+            cfg.rules=this.rules;
         }
         if (this.sortable) {
-            cfg.sortable=this.sortable
+            cfg.sortable=this.sortable;
         }
         if (this.summary) {
-            cfg.summary=this.summary
-        }if (this.width) {
-            cfg.width=this.width
+            cfg.summary=this.summary;
+        }
+        if (this.width) {
+            cfg.width=this.width;
         }
         
         
@@ -2481,10 +2504,10 @@ Roo.extend(Roo.bootstrap.TableRow, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.TableRow.superclass.getAutoCreate.call(this));
 	
-	cfg = {
-	    tag: 'tr'
-	}
-        
+        cfg = {
+            tag: 'tr'
+        }
+            
         if(this.cls){
             cfg.cls = this.cls;
         }
@@ -2545,10 +2568,10 @@ Roo.extend(Roo.bootstrap.TableBody, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.TableBody.superclass.getAutoCreate.call(this));
 	
-	cfg = {
-	    tag: 'tbody'
-	}
-        
+        cfg = {
+            tag: 'tbody'
+        }
+            
         if (this.cls) {
             cfg.cls=this.cls
         }
