@@ -1,6 +1,86 @@
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/*
+ * - LGPL
+ *
+ * Input
+ * 
  */
 
+/**
+ * @class Roo.bootstrap.CheckBox
+ * @extends Roo.bootstrap.Input
+ * Bootstrap CheckBox class
+ * @cfg {Number} cols Specifies the visible width of a text area
+ * @cfg {Number} rows Specifies the visible number of lines in a text area
+ * @cfg {Number} readOnly Specifies that a text area should be read-only
+ * @cfg {string} wrap (soft|hard)Specifies how the text in a text area is to be wrapped when submitted in a form
+ * @cfg {string} resize (none|both|horizontal|vertical|inherit|initial)
+ * 
+ * @constructor
+ * Create a new CheckBox
+ * @param {Object} config The config object
+ */
 
+Roo.bootstrap.CheckBox = function(config){
+    Roo.bootstrap.CheckBox.superclass.constructor.call(this, config);
+   
+};
+
+Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
+     
+    
+    
+    getAutoCreate : function(){
+        
+        var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
+        
+        var id = Roo.id();
+        
+        var cfg = {};
+        
+        var input =  {
+            tag: 'input',
+            type: 'checkbox'
+            id : id,
+            value : this.value || '',
+            placeholder : this.placeholder || '' 
+            
+        };
+        
+        if (this.name) {
+            input.name = this.name;
+        }
+        
+        if (this.size) {
+            input.cls = (typeof(input.cls) == 'undefined') ? 'input-' + this.size : input.cls + ' input-' + this.size;
+        }
+        
+        var settings=this;
+        ['xs','sm','md','lg'].map(function(size){
+            if (settings[size]) {
+                cfg.cls += ' col-' + size + '-' + settings[size];
+            }
+        });
+        
+        cfg.cn = [
+            
+            input
+
+        ];
+        
+        if (this.disabled) {
+            input.disabled=true;
+        }
+        
+        return cfg;
+        
+    },
+    /**
+     * return the real textarea element.
+     */
+    inputEl: function ()
+    {
+        return this.el.select('textarea.form-control',true).first();
+    }
+});
+
+ 
