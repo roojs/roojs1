@@ -3727,11 +3727,25 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     checked : false,
     
     
+    
+    parentLabelAlign : function()
+    {
+        var parent = this;
+        while (parent.parent()) {
+            parent = parent.parent();
+            if (typeof(parent.labelAlign) !='undefined') {
+                return parent.labelAlign;
+            }
+        }
+        return 'left';
+        
+    },
+    
     getAutoCreate : function(){
         
         var parent = this.parent();
         
-        var align = parent.labelAlign;
+        var align = this.parentLabelAlign();
         
         var id = Roo.id();
         
