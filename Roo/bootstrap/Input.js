@@ -217,7 +217,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         var parent = this.parent();
         
-        var align = parent.labelAlign;
+        var align = this.parentLabelAlign();
         
         var id = Roo.id();
         
