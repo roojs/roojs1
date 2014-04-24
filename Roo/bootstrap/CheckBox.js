@@ -112,13 +112,13 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
     },
     /**
-     * return the real CheckBox element.
+     * return the real checkbox element.
      */
     inputEl: function ()
     {
-        Roo.log('eche');
-        Roo.log(this.el);
-        return this.el.select('input',true).first();
+        Roo.log('checkbox');
+        Roo.log(this.el.select('input[type=checkbox]',true).first());
+        return this.el.select('input[type=checkbox]',true).first();
     }
 });
 
