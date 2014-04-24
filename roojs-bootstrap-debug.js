@@ -2252,7 +2252,8 @@ Roo.extend(Roo.bootstrap.Slider, Roo.bootstrap.Component,  {
  * @cfg {boolean} bordered Add borders to the table
  * @cfg {boolean} hover Add hover highlighting
  * @cfg {boolean} condensed Format condensed
-*
+ * @cfg {boolean} responsive Format condensed
+ 
  
  
  * 
@@ -2278,6 +2279,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     sortable: false,
     summary: false,
     width: false,
+    striped : false,
+    bordered: false,
+    hover:  false,
+    condensed : false,
+    responsive : false,
     
     
     
@@ -2298,6 +2304,15 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         if (this.bordered) {
             cfg.cls += ' table-bordered';
         }
+        if (this.condensed) {
+            cfg.cls += ' table-condensed';
+        }
+        if (this.responsive) {
+            cfg.cls += ' table-responsive';
+        }
+        
+          
+        
         
         if (this.cls) {
             cfg.cls+=  ' ' +this.cls;
