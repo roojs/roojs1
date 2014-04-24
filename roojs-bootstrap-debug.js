@@ -3592,6 +3592,7 @@ Roo.form.VTypes = function(){
  * @cfg {string} value default value of the input
  * @cfg {Number} labelWidth set the width of label (0-12)
  * @cfg {Boolean} checked initial checkbox
+ * @cfg {String} labelAlign (top|left)
  * 
  * 
  * @constructor
@@ -3763,6 +3764,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     value : '',
     labelWidth : 2,
     checked : false,
+    labelAlign : false,
     
     
     
@@ -3782,6 +3784,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         
         var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
+        Roo.log(this.fieldLabel);
         Roo.log(align);
         var id = Roo.id();
         
