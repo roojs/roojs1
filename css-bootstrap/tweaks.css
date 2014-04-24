@@ -17,7 +17,7 @@
 
 .form-checkbox input[type=checkbox] {
     height: 20px;
-    width: 20px;
+    width: 100%;
     box-shadow: none;
     float: left;
 }
