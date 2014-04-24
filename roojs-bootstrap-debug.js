@@ -3577,7 +3577,7 @@ Roo.form.VTypes = function(){
  * Bootstrap Input class
  * @cfg {Boolean} disabled is it disabled
  * @cfg {String} fieldLabel - the label associated
- * @cfg {String} inputType button | email | file | hidden | image | number | password | radio | range | reset | search | submit | text
+ * @cfg {String} inputType button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text
  * @cfg {String} name name of the input
  * @cfg {string} fieldLabel - the label associated
  * @cfg {string}  inputType - input / file submit ...
@@ -3591,7 +3591,9 @@ Roo.form.VTypes = function(){
  * @cfg {Number} lg colspan out of 12 for large computer-sized screens
  * @cfg {string} value default value of the input
  * @cfg {Number} labelWidth set the width of label (0-12)
+ * @cfg {Boolean} checked initial checkbox
  * @cfg {String} labelAlign (top|left)
+ * @cfg {String} boxLabel Text of checkbox
  * 
  * 
  * @constructor
@@ -3762,7 +3764,9 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     isFormField : true,
     value : '',
     labelWidth : 2,
+    checked : false,
     labelAlign : false,
+    boxLabel : false,
     
     parentLabelAlign : function()
     {
@@ -3788,7 +3792,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         if(this.inputType != 'hidden'){
             cfg.cls = 'form-group' //input-group
         }
-
+        
         var input =  {
             tag: 'input',
             id : id,
@@ -3845,8 +3849,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             }
             
         }
-        Roo.log(this.fieldLabel);
-        Roo.log(align);
+        
         if (align ==='left' && this.fieldLabel.length) {
                 Roo.log("left and has label");
                 cfg.cn = [
@@ -4449,133 +4452,6 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
     inputEl: function ()
     {
         return this.el.select('textarea.form-control',true).first();
-    }
-});
-
- 
-/*
- * - LGPL
- *
- * Input
- * 
- */
-
-/**
- * @class Roo.bootstrap.CheckBox
- * @extends Roo.bootstrap.Input
- * Bootstrap CheckBox class
- * 
- * @constructor
- * Create a new CheckBox
- * @param {Object} config The config object
- */
-
-Roo.bootstrap.CheckBox = function(config){
-    Roo.bootstrap.CheckBox.superclass.constructor.call(this, config);
-   
-};
-
-Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
-     
-    
-    
-    getAutoCreate : function(){
-        
-        var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
-        
-        var id = Roo.id();
-        
-        var cfg = {};
-        
-        var input =  {
-            tag: 'input',
-            type: 'checkbox',
-            id : id,
-            value : this.value || '',
-            cls : 'form-control',
-            placeholder : this.placeholder || '' 
-            
-        };
-        
-        if (this.name) {
-            input.name = this.name;
-        }
-        
-        if (this.size) {
-            input.cls = (typeof(input.cls) == 'undefined') ? 'input-' + this.size : input.cls + ' input-' + this.size;
-        }
-        
-        var settings=this;
-        ['xs','sm','md','lg'].map(function(size){
-            if (settings[size]) {
-                cfg.cls += ' col-' + size + '-' + settings[size];
-            }
-        });
-        
-        var inputblock = input;
-        
-        Roo.log(this.fieldLabel);
-        Roo.log(align);
-        
-        if (align ==='left' && this.fieldLabel.length) {
-                Roo.log("left and has label");
-                cfg.cn = [
-                    
-                    {
-                        tag: 'label',
-                        'for' :  id,
-                        cls : 'control-label col-sm-' + this.labelWidth,
-                        html : this.fieldLabel
-                        
-                    },
-                    {
-                        cls : "col-sm-" + (12 - this.labelWidth), 
-                        cn: [
-                            inputblock
-                        ]
-                    }
-                    
-                ];
-        } else if ( this.fieldLabel.length) {
-                Roo.log(" label");
-                 cfg.cn = [
-                   
-                    {
-                        tag: 'label',
-                        //cls : 'input-group-addon',
-                        html : this.fieldLabel
-                        
-                    },
-                    
-                    inputblock
-                    
-                ];
-
-        } else {
-            
-                   Roo.log(" no label && no align");
-                cfg.cn = [
-                    
-                        inputblock
-                    
-                ];
-                
-                
-        }
-        
-        if (this.disabled) {
-            input.disabled=true;
-        }
-        
-        return cfg;
-        
-    },
-    /**
-     * return the real checkbox element.
-     */
-    inputEl: function ()
-    {
-        return this.el.select('input[type=checkbox]',true).first();
     }
 });
 
