@@ -198,6 +198,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     value : '',
     labelWidth : 2,
     checked : false,
+    labelAlign : false,
     
     
     
