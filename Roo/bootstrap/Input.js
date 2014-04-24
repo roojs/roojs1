@@ -211,7 +211,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         }
         return 'left';
         
-    }
+    },
     
     getAutoCreate : function(){
         
