@@ -25,7 +25,8 @@
  * @cfg {boolean} bordered Add borders to the table
  * @cfg {boolean} hover Add hover highlighting
  * @cfg {boolean} condensed Format condensed
-*
+ * @cfg {boolean} responsive Format condensed
+ 
  
  
  * 
@@ -51,6 +52,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     sortable: false,
     summary: false,
     width: false,
+    striped : false,
+    bordered: false,
+    hover:  false,
+    condensed : false,
+    responsive : false,
     
     
     
