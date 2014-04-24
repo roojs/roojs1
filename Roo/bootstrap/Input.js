@@ -11,7 +11,7 @@
  * Bootstrap Input class
  * @cfg {Boolean} disabled is it disabled
  * @cfg {String} fieldLabel - the label associated
- * @cfg {String} inputType button | email | file | hidden | image | number | password | radio | range | reset | search | submit | text
+ * @cfg {String} inputType button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text
  * @cfg {String} name name of the input
  * @cfg {string} fieldLabel - the label associated
  * @cfg {string}  inputType - input / file submit ...
@@ -25,7 +25,9 @@
  * @cfg {Number} lg colspan out of 12 for large computer-sized screens
  * @cfg {string} value default value of the input
  * @cfg {Number} labelWidth set the width of label (0-12)
+ * @cfg {Boolean} checked initial checkbox
  * @cfg {String} labelAlign (top|left)
+ * @cfg {String} boxLabel Text of checkbox
  * 
  * 
  * @constructor
@@ -196,7 +198,9 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     isFormField : true,
     value : '',
     labelWidth : 2,
+    checked : false,
     labelAlign : false,
+    boxLabel : false,
     
     parentLabelAlign : function()
     {
@@ -222,6 +226,10 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         if(this.inputType != 'hidden'){
             cfg.cls = 'form-group' //input-group
         }
+        
+//        var cfg = {
+//            cls: 'form-group' //input-group
+//        };
 
         var input =  {
             tag: 'input',
@@ -279,8 +287,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             }
             
         }
-        Roo.log(this.fieldLabel);
-        Roo.log(align);
+        
         if (align ==='left' && this.fieldLabel.length) {
                 Roo.log("left and has label");
                 cfg.cn = [
