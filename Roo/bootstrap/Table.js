@@ -20,6 +20,10 @@
  * @cfg {String} sortable Specifies that the table should be sortable
  * @cfg {String} summary Specifies a summary of the content of a table
  * @cfg {Number} width Specifies the width of a table
+ * @cfg {Number} striped Specifies the width of a table
+*
+ 
+ 
  * 
  * @constructor
  * Create a new Table
