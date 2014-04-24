@@ -79,7 +79,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
      */
     inputEl: function ()
     {
-        return this.el.select('textarea.form-control',true).first();
+        return this.el.select('input[type=checkbox]',true).first();
     }
 });
 
