@@ -5758,7 +5758,7 @@
     {
      "name": "inputType",
      "type": "String",
-     "desc": "button | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
+     "desc": "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -5828,9 +5828,21 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
+     "name": "checked",
+     "type": "Boolean",
+     "desc": "initial checkbox",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
      "name": "labelAlign",
      "type": "String",
      "desc": "(top|left)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "boxLabel",
+     "type": "String",
+     "desc": "Text of checkbox",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -6544,7 +6556,7 @@
     {
      "name": "inputType",
      "type": "String",
-     "desc": "button | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
+     "desc": "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -6614,9 +6626,21 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
+     "name": "checked",
+     "type": "Boolean",
+     "desc": "initial checkbox",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
      "name": "labelAlign",
      "type": "String",
      "desc": "(top|left)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "boxLabel",
+     "type": "String",
+     "desc": "Text of checkbox",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -7570,7 +7594,7 @@
     {
      "name": "inputType",
      "type": "String",
-     "desc": "button | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
+     "desc": "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
      "memberOf": ""
     },
     {
@@ -7640,9 +7664,21 @@
      "memberOf": ""
     },
     {
+     "name": "checked",
+     "type": "Boolean",
+     "desc": "initial checkbox",
+     "memberOf": ""
+    },
+    {
      "name": "labelAlign",
      "type": "String",
      "desc": "(top|left)",
+     "memberOf": ""
+    },
+    {
+     "name": "boxLabel",
+     "type": "String",
+     "desc": "Text of checkbox",
      "memberOf": ""
     },
     {
@@ -11014,7 +11050,7 @@
     {
      "name": "inputType",
      "type": "String",
-     "desc": "button | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
+     "desc": "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -11084,9 +11120,21 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
+     "name": "checked",
+     "type": "Boolean",
+     "desc": "initial checkbox",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
      "name": "labelAlign",
      "type": "String",
      "desc": "(top|left)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "boxLabel",
+     "type": "String",
+     "desc": "Text of checkbox",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -11392,7 +11440,7 @@
     {
      "name": "inputType",
      "type": "String",
-     "desc": "button | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
+     "desc": "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -11462,9 +11510,21 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
+     "name": "checked",
+     "type": "Boolean",
+     "desc": "initial checkbox",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
      "name": "labelAlign",
      "type": "String",
      "desc": "(top|left)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "boxLabel",
+     "type": "String",
+     "desc": "Text of checkbox",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
