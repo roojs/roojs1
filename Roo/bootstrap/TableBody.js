@@ -35,10 +35,10 @@ Roo.extend(Roo.bootstrap.TableBody, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.TableBody.superclass.getAutoCreate.call(this));
 	
-	cfg = {
-	    tag: 'tbody'
-	}
-        
+        cfg = {
+            tag: 'tbody'
+        }
+            
         if (this.cls) {
             cfg.cls=this.cls
         }
