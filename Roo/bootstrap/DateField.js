@@ -465,7 +465,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.viewMode = this.startViewMode;
         this.showMode();
         
-        this.setValue(this.formatDate(this.date));
     },
     
     onMousedown: function(e){
