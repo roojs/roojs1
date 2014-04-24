@@ -114,10 +114,10 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     /**
      * return the real textarea element.
      */
-    inputEl: function ()
-    {
-        return this.el.select('input',true).first();
-    }
+//    inputEl: function ()
+//    {
+//        return this.el.select('input',true).first();
+//    }
 });
 
  
