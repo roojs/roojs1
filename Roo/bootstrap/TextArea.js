@@ -35,9 +35,7 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
     
     getAutoCreate : function(){
         
-        var parent = this.parent();
-        
-        var align = parent.labelAlign;
+        var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
         
         var id = Roo.id();
         
