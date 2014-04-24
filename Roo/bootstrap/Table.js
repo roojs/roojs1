@@ -54,40 +54,45 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
         
         cfg = {
-            tag: 'table'
+            tag: 'table',
+            cls : 'table'
         }
             
+        if (this.striped) {
+            cfg.cls += ' table-striped';
+        }
         if (this.cls) {
-            cfg.cls=this.cls
+            cfg.cls+=  ' ' +this.cls;
         }
         if (this.align) {
-            cfg.align=this.align
+            cfg.align=this.align;
         }
         if (this.bgcolor) {
-            cfg.bgcolor=this.bgcolor
+            cfg.bgcolor=this.bgcolor;
         }
         if (this.border) {
-            cfg.border=this.border
+            cfg.border=this.border;
         }
         if (this.cellpadding) {
-            cfg.cellpadding=this.cellpadding
+            cfg.cellpadding=this.cellpadding;
         }
         if (this.cellspacing) {
-            cfg.cellspacing=this.cellspacing
+            cfg.cellspacing=this.cellspacing;
         }
         if (this.frame) {
-            cfg.frame=this.frame
+            cfg.frame=this.frame;
         }
         if (this.rules) {
-            cfg.rules=this.rules
+            cfg.rules=this.rules;
         }
         if (this.sortable) {
-            cfg.sortable=this.sortable
+            cfg.sortable=this.sortable;
         }
         if (this.summary) {
-            cfg.summary=this.summary
-        }if (this.width) {
-            cfg.width=this.width
+            cfg.summary=this.summary;
+        }
+        if (this.width) {
+            cfg.width=this.width;
         }
         
         
