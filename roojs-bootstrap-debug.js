@@ -3845,7 +3845,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             }
             
         }
-        
+        Roo.log(this.fieldLabel);
+        Roo.log(align);
         if (align ==='left' && this.fieldLabel.length) {
                 Roo.log("left and has label");
                 cfg.cn = [
@@ -4463,11 +4464,6 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
  * @class Roo.bootstrap.CheckBox
  * @extends Roo.bootstrap.Input
  * Bootstrap CheckBox class
- * @cfg {Number} cols Specifies the visible width of a text area
- * @cfg {Number} rows Specifies the visible number of lines in a text area
- * @cfg {Number} readOnly Specifies that a text area should be read-only
- * @cfg {string} wrap (soft|hard)Specifies how the text in a text area is to be wrapped when submitted in a form
- * @cfg {string} resize (none|both|horizontal|vertical|inherit|initial)
  * 
  * @constructor
  * Create a new CheckBox
