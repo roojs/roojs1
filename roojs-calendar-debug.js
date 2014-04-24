@@ -347,7 +347,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         
         
-        fc_button = function(name, corner, style, content ) {
+        var fc_button = function(name, corner, style, content ) {
             return Roo.apply({},{
                 tag : 'span',
                 cls : 'fc-button fc-button-'+name+' fc-state-default ' + 
@@ -1060,7 +1060,13 @@ Roo.CalendarPanel = function(config){
         //this.footer = Roo.factory(this.footer, Roo);
         
     }
+    this.view = new Roo.calendar.View(Roo.apply({
+        skipNavHeader : true,
+        skipMonthHeader : false
+        
+    },config));
     
+     
     this.on('activate', function()
     {
         Roo.log('activate');
@@ -1115,7 +1121,8 @@ Roo.CalendarPanel = function(config){
         
         
     });
-    
+    this.relayEvents(this.view, ["select","monthchange","evententer","eventleave","rendered"]);
+
     //this.grid = grid;
     //this.grid.getGridEl().replaceClass("x-layout-inactive-content", "x-layout-component-panel");
 };
@@ -1123,37 +1130,10 @@ Roo.CalendarPanel = function(config){
 
 Roo.extend(Roo.CalendarPanel, Roo.ContentPanel, {
     
-    startDay : 0,
-    
-    getId : function(){
-        return this.id;
-    },
-    /*
-    setSize : function(width, height){
-        if(!this.ignoreResize(width, height)){
-            var grid = this.grid;
-            var size = this.adjustForComponents(width, height);
-            grid.getGridEl().setSize(size.width, size.height);
-            grid.autoSize();
-        }
-    },
-    
-    beforeSlide : function(){
-        this.grid.getView().scroller.clip();
-    },
-    
-    afterSlide : function(){
-        this.grid.getView().scroller.unclip();
-    },
-    */
-    destroy : function(){
-      //  this.grid.destroy();
-       // delete this.grid;
-        Roo.GridPanel.superclass.destroy.call(this);
-         
-    },
+      
     render : function()
     {
+        var ct = this.el.appendChild(document.createElement("div"));
         this.onRender(this.el, false)
     },
     
@@ -1166,10 +1146,11 @@ Roo.extend(Roo.CalendarPanel, Roo.ContentPanel, {
         
         Roo.log("render calendar");
         
+        
         //Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
         
         
-        var cfg = Roo.apply({},  this.getAutoCreate());
+        var cfg = Roo.apply({},  this.view.getAutoCreate());
         cfg.id = Roo.id();
         
         // fill in the extra attributes 
@@ -1195,14 +1176,14 @@ Roo.extend(Roo.CalendarPanel, Roo.ContentPanel, {
             cfg.name = this.name;
         }
         
-        this.el = ct.createChild(cfg, position);
+        this.view.el =  ct.createChild(cfg, position);
         
-        if(this.tabIndex !== undefined){
-            this.el.dom.setAttribute('tabIndex', this.tabIndex);
-        }
+        //if(this.tabIndex !== undefined){
+        //    this.el.dom.setAttribute('tabIndex', this.tabIndex);
+        //}
         
         
-        this.initEvents();
+        this.view.initEvents();
         this.fireEvent('rendered');
     }
     
@@ -1211,33 +1192,4 @@ Roo.extend(Roo.CalendarPanel, Roo.ContentPanel, {
     
 });
 
-
-
-Roo.each([
-    'getAutoCreate',
-    'initEvents',
-    'resize',
-    'showPrevMonth',
-    'showToday',
-    'showNextMonth',
-    'showPrevYear',
-    'showNextYear',
-    'update',
-    'findCell',
-    'findCells',
-    'findBestRow',
-    'addItem',
-    'clearEvents',
-    'renderEvents',
-    'onEventEnter',
-    'onEventLeave',
-    'onEventClick',
-    'onMonthChange',
-    'onLoad'
-
-    
-], function(p) {
-    Roo.log('add' + p);
-    Roo.CalendarPanel.prototype[p] = Roo.bootstrap.Calendar.prototype[p];
  
-});
