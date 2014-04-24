@@ -544,10 +544,12 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 }
                 break;
             case 13: // enter
+                this.setValue(this.formatDate(this.date));
                 this.hide();
                 e.preventDefault();
                 break;
             case 9: // tab
+                this.setValue(this.formatDate(this.date));
                 this.hide();
                 break;
         }
@@ -592,6 +594,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                         var date = new Date();
                         this.date = this.UTCDate(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
                         this.fill()
+                        this.setValue(this.formatDate(this.date));
                         this.hide();
                         break;
                 }
@@ -635,6 +638,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     this.date = this.UTCDate(year, month, day,0,0,0,0);
                     this.viewDate = this.UTCDate(year, month, Math.min(28, day),0,0,0,0);
                     this.fill();
+                    this.setValue(this.formatDate(this.date));
                     this.hide();
                 }
                 break;
