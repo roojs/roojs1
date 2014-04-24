@@ -37,6 +37,7 @@ Roo.bootstrap.Form
 Roo.form.VTypes
 Roo.bootstrap.Input
 Roo.bootstrap.TextArea
+Roo.bootstrap.CheckBox
 Roo.bootstrap.TriggerField
 
 Roo.data.SortTypes
