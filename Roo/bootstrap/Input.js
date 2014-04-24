@@ -215,9 +215,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     
     getAutoCreate : function(){
         
-        var parent = this.parent();
-        
-        var align = this.parentLabelAlign();
+        var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
         
         var id = Roo.id();
         
