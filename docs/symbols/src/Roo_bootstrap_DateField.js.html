@@ -412,6 +412,22 @@
     {
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isInline</span><span class="jsdoc-syntax">) </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         
+        </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'bottom'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">]);
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.getScroll</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.top</span><span class="jsdoc-syntax">) - (</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getBottom</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getHeight</span><span class="jsdoc-syntax">()) &lt; 0){
+            </span><span class="jsdoc-comment">/*
+             * place to the top of element!
+             *
+             */
+            
+            </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setTop</span><span class="jsdoc-syntax">(0 - </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getHeight</span><span class="jsdoc-syntax">())</span><span class="jsdoc-var">.setLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getLeft</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">this.el.getLeft</span><span class="jsdoc-syntax">());
+            
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'bottom'</span><span class="jsdoc-syntax">);
+        
         </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getHeight</span><span class="jsdoc-syntax">())</span><span class="jsdoc-var">.setLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getLeft</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">this.el.getLeft</span><span class="jsdoc-syntax">());
     },
     
@@ -465,7 +481,6 @@
         </span><span class="jsdoc-var">this.viewMode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.startViewMode</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.showMode</span><span class="jsdoc-syntax">();
         
-        </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.formatDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">));
     },
     
     </span><span class="jsdoc-var">onMousedown</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
@@ -545,10 +560,12 @@
                 }
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">13: </span><span class="jsdoc-comment">// enter
+                </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.formatDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">));
                 </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
                 </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">9: </span><span class="jsdoc-comment">// tab
+                </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.formatDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">));
                 </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
         }
@@ -593,6 +610,7 @@
                         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">date </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">();
                         </span><span class="jsdoc-var">this.date </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.UTCDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">date.getFullYear</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">date.getMonth</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">date.getDate</span><span class="jsdoc-syntax">(), 0, 0, 0);
                         </span><span class="jsdoc-var">this.fill</span><span class="jsdoc-syntax">()
+                        </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.formatDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">));
                         </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
                         </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
                 }
@@ -636,6 +654,7 @@
                     </span><span class="jsdoc-var">this.date </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.UTCDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">year</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">month</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">day</span><span class="jsdoc-syntax">,0,0,0,0);
                     </span><span class="jsdoc-var">this.viewDate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.UTCDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">year</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">month</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(28, </span><span class="jsdoc-var">day</span><span class="jsdoc-syntax">),0,0,0,0);
                     </span><span class="jsdoc-var">this.fill</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.formatDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">));
                     </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
                 }
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
