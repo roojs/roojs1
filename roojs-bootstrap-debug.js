@@ -3906,7 +3906,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             cfg.cn.push({
                 tag: 'label',
                 'for': id,
-                html: this.boxLable
+                html: this.boxLabel
             })
         }
         
