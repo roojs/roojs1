@@ -58,6 +58,9 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         var inputblock = input;
         
+        Roo.log(this.fieldLabel);
+        Roo.log(align);
+        
         if (align ==='left' && this.fieldLabel.length) {
                 Roo.log("left and has label");
                 cfg.cn = [
