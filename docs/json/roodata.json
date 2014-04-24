@@ -10280,6 +10280,36 @@
      "memberOf": ""
     },
     {
+     "name": "striped",
+     "type": "boolean",
+     "desc": "Should the rows be alternative striped",
+     "memberOf": ""
+    },
+    {
+     "name": "bordered",
+     "type": "boolean",
+     "desc": "Add borders to the table",
+     "memberOf": ""
+    },
+    {
+     "name": "hover",
+     "type": "boolean",
+     "desc": "Add hover highlighting",
+     "memberOf": ""
+    },
+    {
+     "name": "condensed",
+     "type": "boolean",
+     "desc": "Format condensed",
+     "memberOf": ""
+    },
+    {
+     "name": "responsive",
+     "type": "boolean",
+     "desc": "Format condensed",
+     "memberOf": ""
+    },
+    {
      "name": "style",
      "type": "String",
      "desc": "any extra css",
