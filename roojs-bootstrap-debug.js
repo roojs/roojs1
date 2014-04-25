@@ -3848,6 +3848,11 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             
         }
         
+        inputblock.cn.push({
+           tag: 'span',
+           html: 'box text'
+        })
+        
         if (align ==='left' && this.fieldLabel.length) {
                 Roo.log("left and has label");
                 cfg.cn = [
