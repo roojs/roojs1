@@ -760,7 +760,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             this.fireEvent('check', this, state);
         }
         
-        this.el.dom.value = state ? this.value : this.valueOff;
+        this.inputEl().dom.value = state ? this.value : this.valueOff;
         
     }
 });
