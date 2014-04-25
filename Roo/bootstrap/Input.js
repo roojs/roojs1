@@ -726,6 +726,10 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         }
         
         
+    },
+    
+    onCheck : function(){
+        this.fireEvent("check", this);
     }
 });
 
