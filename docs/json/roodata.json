@@ -5840,12 +5840,6 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
-     "name": "boxLabel",
-     "type": "String",
-     "desc": "box label for checkbox and radio",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -6635,12 +6629,6 @@
      "name": "labelAlign",
      "type": "String",
      "desc": "(top|left)",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
-     "name": "boxLabel",
-     "type": "String",
-     "desc": "box label for checkbox and radio",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -7676,12 +7664,6 @@
      "memberOf": ""
     },
     {
-     "name": "boxLabel",
-     "type": "String",
-     "desc": "box label for checkbox and radio",
-     "memberOf": ""
-    },
-    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -7961,6 +7943,12 @@
      "name": "html",
      "type": "String",
      "desc": "The label content",
+     "memberOf": ""
+    },
+    {
+     "name": "tag",
+     "type": "String",
+     "desc": "(span|label|p) The tag of this element, default label",
      "memberOf": ""
     },
     {
@@ -11270,12 +11258,6 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
-     "name": "boxLabel",
-     "type": "String",
-     "desc": "box label for checkbox and radio",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -11657,12 +11639,6 @@
      "name": "labelAlign",
      "type": "String",
      "desc": "(top|left)",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
-     "name": "boxLabel",
-     "type": "String",
-     "desc": "box label for checkbox and radio",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
