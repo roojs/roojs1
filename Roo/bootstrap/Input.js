@@ -738,7 +738,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         if(this.inputType != 'checkbox' || this.inputType != 'radio'){
             return;
         }
-        this.fireEvent("check", this);
+        
+        this.setChecked(!this.checked);
     }
 });
 
