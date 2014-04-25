@@ -3931,10 +3931,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         this.inputEl().on("keydown" , this.fireKey,  this);
         this.inputEl().on("focus", this.onFocus,  this);
         this.inputEl().on("blur", this.onBlur,  this);
-        Roo.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(this.inputEl());
-        this.inputEl().on('DOMAttrModified', this.onCheck,  this); //ff
-        this.inputEl().on('propertychange', this.onCheck,  this);  //ie
+        
+        this.inputEl().on('click', this.onClick,  this);
         
         this.inputEl().relayEvent('keyup', this);
 
@@ -4298,8 +4296,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
     },
     
-    onCheck : function(){
-        Roo.log('onCheck????????????????????????????????????');
+    onClick : function(){
+        Roo.log('onClick????????????????????????????????????');
         this.fireEvent("check", this);
     }
 });
