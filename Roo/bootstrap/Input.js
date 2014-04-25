@@ -365,6 +365,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         this.inputEl().on("keydown" , this.fireKey,  this);
         this.inputEl().on("focus", this.onFocus,  this);
         this.inputEl().on("blur", this.onBlur,  this);
+        this.inputEl().on("check", this.onCheck,  this);
         this.inputEl().relayEvent('keyup', this);
 
         // reference to original value for reset
