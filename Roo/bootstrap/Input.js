@@ -330,7 +330,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 
         };
         
-        if(this.boxLabel && this.inputType == 'checkbox'){
+        if(this.boxLabel){
             cfg.cn.push({
                 tag: 'label',
                 cls: 'checkbox-label',
