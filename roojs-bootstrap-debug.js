@@ -3593,6 +3593,7 @@ Roo.form.VTypes = function(){
  * @cfg {Number} labelWidth set the width of label (0-12)
  * @cfg {Boolean} checked initial checkbox
  * @cfg {String} labelAlign (top|left)
+ * @cfg {String} boxLabel box label for checkbox
  * 
  * 
  * @constructor
@@ -3765,6 +3766,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     labelWidth : 2,
     checked : false,
     labelAlign : false,
+    boxLabel : false,
     
     parentLabelAlign : function()
     {
@@ -3894,10 +3896,13 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 
         };
         
-        cfg.cn.push({
-           tag: 'span',
-           html: 'box text'
-        });
+        if(this.boxLabel && this.inputType == 'checkbox'){
+            cfg.cn.push({
+                tag: 'span',
+                html: this.boxLabel
+            });
+        }
+        
         
         return cfg;
         

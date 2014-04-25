@@ -5840,6 +5840,12 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
+     "name": "boxLabel",
+     "type": "String",
+     "desc": "box label for checkbox",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -6629,6 +6635,12 @@
      "name": "labelAlign",
      "type": "String",
      "desc": "(top|left)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "boxLabel",
+     "type": "String",
+     "desc": "box label for checkbox",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -7661,6 +7673,12 @@
      "name": "labelAlign",
      "type": "String",
      "desc": "(top|left)",
+     "memberOf": ""
+    },
+    {
+     "name": "boxLabel",
+     "type": "String",
+     "desc": "box label for checkbox",
      "memberOf": ""
     },
     {
@@ -11252,6 +11270,12 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
+     "name": "boxLabel",
+     "type": "String",
+     "desc": "box label for checkbox",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -11633,6 +11657,12 @@
      "name": "labelAlign",
      "type": "String",
      "desc": "(top|left)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "boxLabel",
+     "type": "String",
+     "desc": "box label for checkbox",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
