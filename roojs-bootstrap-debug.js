@@ -4346,6 +4346,10 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
             
         };
         
+        if(this.maxLength && this.maxLength != Number.MAX_VALUE){
+            input.maxLength = this.maxLength;
+        }
+        
         if(this.resize){
             input.style = (typeof(input.style) == 'undefined') ? 'resize:' + this.resize : input.style + 'resize:' + this.resize;
         }
