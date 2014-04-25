@@ -22,7 +22,14 @@
     float: left;
 }
 
-.checkbox-label {
+.form-radio input[type=radio] {
+    height: 15px;
+    width: 15px;
+    box-shadow: none;
+    float: left;
+}
+
+.radio-label {
     margin-top: 4px;
     margin-left: 5px;
     margin-bottom: 0px;
