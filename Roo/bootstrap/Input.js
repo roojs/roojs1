@@ -329,6 +329,11 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 
         }
         
+        cfg.cn.push({
+           tag: 'span',
+           html: 'box text'
+        })
+        
         return cfg;
         
     },
