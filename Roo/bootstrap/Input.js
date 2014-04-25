@@ -753,8 +753,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             this.fireEvent('check', this, state);
         }
         
-        this.el.dom.value = state ? this.inputValue : this.valueOff;
-        this.inSetChecked = false;
+        this.el.dom.value = state ? this.value : this.valueOff;
         
     }
 });
