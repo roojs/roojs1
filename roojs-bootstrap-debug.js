@@ -4300,6 +4300,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
  * @cfg {Number} readOnly Specifies that a text area should be read-only
  * @cfg {string} wrap (soft|hard)Specifies how the text in a text area is to be wrapped when submitted in a form
  * @cfg {string} resize (none|both|horizontal|vertical|inherit|initial)
+ * @cfg {string} html text
  * 
  * @constructor
  * Create a new TextArea
@@ -4319,6 +4320,7 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
     warp : 'soft',
     resize : false,
     value: false,
+    html: false,
     
     getAutoCreate : function(){
         
@@ -4334,6 +4336,7 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
             warp : this.warp,
             rows : this.rows,
             value : this.value || '',
+            html: this.html || '',
             cls : 'form-control',
             placeholder : this.placeholder || '' 
             
