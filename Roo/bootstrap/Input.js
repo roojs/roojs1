@@ -330,12 +330,12 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         Roo.log(cfg); return cfg;
         
-        cfg.cn.push({
-           tag: 'span',
-           html: 'box text'
-        })
-        
-        return cfg;
+//        cfg.cn.push({
+//           tag: 'span',
+//           html: 'box text'
+//        })
+//        
+//        return cfg;
         
     },
     /**
