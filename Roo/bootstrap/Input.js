@@ -85,7 +85,14 @@ Roo.bootstrap.Input = function(config){
              * @param {Roo.form.Field} this
              * @param {Roo.EventObject}  e The event Object
              */
-            keyup : true
+            keyup : true,
+            /**
+            * @event check
+            * Fires when the checkbox is checked or unchecked.
+            * @param {Roo.form.Checkbox} this This checkbox
+            * @param {Boolean} checked The new checked value
+            */
+           check : true
         });
 };
 
