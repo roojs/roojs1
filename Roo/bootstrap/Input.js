@@ -231,10 +231,13 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             type : this.inputType,
             value : this.value,
             cls : 'form-control',
-            placeholder : this.placeholder || '',
-            maxLength : this.maxLength
+            placeholder : this.placeholder || ''
             
         };
+        
+        if(this.maxLength && this.maxLength != Number.MAX_VALUE){
+            input.maxLength = this.maxLength;
+        }
         
         if (this.disabled) {
             input.disabled=true;
