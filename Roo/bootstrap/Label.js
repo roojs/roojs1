@@ -10,7 +10,7 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap Label class
  * @cfg {String} html The label content
- * @cfg {String} tag (span|label) The tag of this element, default label
+ * @cfg {String} tag (span|label|p) The tag of this element, default label
  * 
  * @constructor
  * Create a new Label
