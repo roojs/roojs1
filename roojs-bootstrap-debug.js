@@ -3785,7 +3785,9 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         var id = Roo.id();
         
-        var cfg = {};
+        var cfg = {
+            cn: []
+        };
         
         if(this.inputType != 'hidden'){
             cfg.cls = 'form-group' //input-group
