@@ -11162,6 +11162,12 @@
      "memberOf": ""
     },
     {
+     "name": "html",
+     "type": "string",
+     "desc": "text",
+     "memberOf": ""
+    },
+    {
      "name": "disabled",
      "type": "Boolean",
      "desc": "is it disabled",

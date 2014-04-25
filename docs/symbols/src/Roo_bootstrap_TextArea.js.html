@@ -14,6 +14,7 @@
  * @cfg {Number} readOnly Specifies that a text area should be read-only
  * @cfg {string} wrap (soft|hard)Specifies how the text in a text area is to be wrapped when submitted in a form
  * @cfg {string} resize (none|both|horizontal|vertical|inherit|initial)
+ * @cfg {string} html text
  * 
  * @constructor
  * Create a new TextArea
@@ -32,6 +33,8 @@
     </span><span class="jsdoc-var">readOnly </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">warp </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'soft'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">resize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         
@@ -46,7 +49,8 @@
             </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">warp </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.warp</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">rows </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.rows</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'form-control'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">placeholder </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.placeholder </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'' 
             
