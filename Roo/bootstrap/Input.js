@@ -27,7 +27,7 @@
  * @cfg {Number} labelWidth set the width of label (0-12)
  * @cfg {Boolean} checked initial checkbox
  * @cfg {String} labelAlign (top|left)
- * @cfg {String} boxLabel box label for checkbox
+ * @cfg {String} boxLabel box label for checkbox and radio
  * 
  * 
  * @constructor
