@@ -10696,6 +10696,7 @@ Roo.apply(Roo.bootstrap.DateField,  {
  * @class Roo.bootstrap.Label
  * @extends Roo.bootstrap.Component
  * Bootstrap Label class
+ * @cfg {String} html The label content
  * 
  * @constructor
  * Create a new Label
