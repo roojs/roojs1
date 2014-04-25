@@ -533,8 +533,11 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      * @return {Mixed} value The field value
      */
     getValue : function(){
-        var v = this.inputEl().getValue();
-        return v;
+        if(this.inputType != 'checkbox' && this.inputType != 'radio'){
+            return this.inputEl().getValue();
+        }
+        
+        return this.getGroupValue();
     },
     /**
      * Returns the raw data value which may or may not be a valid, defined value.  To return a normalized value see {@link #getValue}.
