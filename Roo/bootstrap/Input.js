@@ -738,7 +738,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     
     onClick : function(){
         Roo.log('got');
-        if(this.inputType != 'checkbox' || this.inputType != 'radio'){
+        if(this.inputType != 'checkbox' && this.inputType != 'radio'){
             return;
         }
         Roo.log('run set Checked');
