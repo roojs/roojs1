@@ -604,7 +604,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         
         if (this.menu) {
             cfg.cls += ' dropdown';
-            cfg.html = typeof(cfg.html) != 'undefined' ? cfg.html + ' 11<span class="caret"></span>' : '<span class="caret"></span>';
+            cfg.html = typeof(cfg.html) != 'undefined' ? cfg.html + ' <span class="caret"></span>' : '<span class="caret"></span>';
         }
         
         if (cfg.tag !== 'a' && this.href !== '') {
@@ -10681,6 +10681,50 @@ Roo.apply(Roo.bootstrap.DateField,  {
         }
         ]
     }
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * Label
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.Label
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Label class
+ * 
+ * @constructor
+ * Create a new Label
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.Label = function(config){
+    Roo.bootstrap.Label.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.Label, Roo.bootstrap.Component,  {
+    
+    html: false,
+    
+    getAutoCreate : function(){
+        
+        var cfg = {
+            tag: 'label',
+            html: this.html || ''
+        }
+        
+        
+        if (this.cls) {
+            cfg.cls = this.cls;
+        }
+        
+        return cfg;
+    }
+   
 });
 
  
