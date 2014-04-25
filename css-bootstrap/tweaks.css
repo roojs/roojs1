@@ -15,11 +15,8 @@
     width: auto;
 }
 
-.form-checkbox input[type=checkbox] {
-    height: 15px;
-    width: 15px;
+.form-non-box-shadow input {
     box-shadow: none;
-    float: left;
 }
 
 .form-radio input[type=radio] {
@@ -27,11 +24,4 @@
     width: 15px;
     box-shadow: none;
     float: left;
-}
-
-.input-label {
-    margin-top: 4px;
-    margin-left: 5px;
-    margin-bottom: 0px;
-    font-weight: normal;
 }
