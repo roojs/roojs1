@@ -366,6 +366,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         this.inputEl().on("focus", this.onFocus,  this);
         this.inputEl().on("blur", this.onBlur,  this);
         Roo.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        Roo.log(this.inputEl());
         this.inputEl().on('DOMAttrModified', this.onCheck,  this); //ff
         this.inputEl().on('propertychange', this.onCheck,  this);  //ie
         
