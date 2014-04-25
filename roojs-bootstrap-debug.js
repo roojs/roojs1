@@ -3593,6 +3593,7 @@ Roo.form.VTypes = function(){
  * @cfg {Number} labelWidth set the width of label (0-12)
  * @cfg {Boolean} checked initial checkbox
  * @cfg {String} labelAlign (top|left)
+ * @cfg {String} valueOff The value that should go into the generated input element's value when unchecked.
  * 
  * 
  * @constructor
@@ -3769,6 +3770,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     preventMark: false,
     isFormField : true,
     value : '',
+    valueOff: '',
     labelWidth : 2,
     checked : false,
     labelAlign : false,
@@ -4301,8 +4303,24 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     },
     
     onClick : function(){
-        Roo.log(this.inputType);
-        this.fireEvent("check", this);
+        if(this.inputType != 'checkbox' || this.inputType != 'radio'){
+            return;
+        }
+        
+        this.setChecked(!this.checked);
+    },
+    
+    setChecked : function(state,suppressEvent)
+    {
+    
+        this.checked = state;
+        
+        if(suppressEvent !== true){
+            this.fireEvent('check', this, state);
+        }
+        
+        this.el.dom.value = state ? this.value : this.valueOff;
+        
     }
 });
 
