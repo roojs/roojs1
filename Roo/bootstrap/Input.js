@@ -203,6 +203,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     preventMark: false,
     isFormField : true,
     value : '',
+    valueOff: '',
     labelWidth : 2,
     checked : false,
     labelAlign : false,
@@ -740,6 +741,20 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         }
         
         this.setChecked(!this.checked);
+    },
+    
+    setChecked : function(state,suppressEvent)
+    {
+    
+        this.checked = state;
+        
+        if(suppressEvent !== true){
+            this.fireEvent('check', this, state);
+        }
+        
+        this.el.dom.value = state ? this.inputValue : this.valueOff;
+        this.inSetChecked = false;
+        
     }
 });
 
