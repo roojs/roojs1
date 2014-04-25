@@ -328,10 +328,13 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 
         };
         
-        cfg.cn.push({
-           tag: 'span',
-           html: 'box text'
-        });
+        if(this.boxLabel && this.inputType == 'checkbox'){
+            cfg.cn.push({
+                tag: 'span',
+                html: this.boxLabel
+            });
+        }
+        
         
         return cfg;
         
