@@ -10697,6 +10697,7 @@ Roo.apply(Roo.bootstrap.DateField,  {
  * @extends Roo.bootstrap.Component
  * Bootstrap Label class
  * @cfg {String} html The label content
+ * @cfg {String} tag (span|label|p) The tag of this element, default label
  * 
  * @constructor
  * Create a new Label
@@ -10710,11 +10711,12 @@ Roo.bootstrap.Label = function(config){
 Roo.extend(Roo.bootstrap.Label, Roo.bootstrap.Component,  {
     
     html: false,
+    tag: 'label',
     
     getAutoCreate : function(){
         
         var cfg = {
-            tag: 'label',
+            tag: this.tag,
             html: this.html || ''
         }
         
