@@ -18,10 +18,3 @@
 .form-non-box-shadow input {
     box-shadow: none;
 }
-
-.form-radio input[type=radio] {
-    height: 15px;
-    width: 15px;
-    box-shadow: none;
-    float: left;
-}
