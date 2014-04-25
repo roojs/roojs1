@@ -5842,7 +5842,7 @@
     {
      "name": "boxLabel",
      "type": "String",
-     "desc": "box label for checkbox",
+     "desc": "box label for checkbox and radio",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -6640,7 +6640,7 @@
     {
      "name": "boxLabel",
      "type": "String",
-     "desc": "box label for checkbox",
+     "desc": "box label for checkbox and radio",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -7678,7 +7678,7 @@
     {
      "name": "boxLabel",
      "type": "String",
-     "desc": "box label for checkbox",
+     "desc": "box label for checkbox and radio",
      "memberOf": ""
     },
     {
@@ -11272,7 +11272,7 @@
     {
      "name": "boxLabel",
      "type": "String",
-     "desc": "box label for checkbox",
+     "desc": "box label for checkbox and radio",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -11662,7 +11662,7 @@
     {
      "name": "boxLabel",
      "type": "String",
-     "desc": "box label for checkbox",
+     "desc": "box label for checkbox and radio",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
