@@ -27,7 +27,7 @@
  * @cfg {Number} labelWidth set the width of label (0-12)
  * @cfg {Boolean} checked initial checkbox
  * @cfg {String} labelAlign (top|left)
- * @cfg {String} valueOff value of the input
+ * @cfg {String} valueOff The value that should go into the generated input element's value when unchecked.
  * 
  * 
  * @constructor
