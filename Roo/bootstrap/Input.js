@@ -536,8 +536,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         if(this.inputType != 'checkbox' && this.inputType != 'radio'){
             return this.inputEl().getValue();
         }
-        
-        return this.inputEl().getGroupValue();
+        Roo.log(this.inputEl());
+//        return this.inputEl().getGroupValue();
     },
     /**
      * Returns the raw data value which may or may not be a valid, defined value.  To return a normalized value see {@link #getValue}.
