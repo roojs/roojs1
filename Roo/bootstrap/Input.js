@@ -280,7 +280,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 });
             }
             
-        }
+        };
         
         if (align ==='left' && this.fieldLabel.length) {
                 Roo.log("left and has label");
@@ -326,12 +326,12 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 ];
                 
                 
-        }
+        };
         
-//        cfg.cn.push({
-//           tag: 'span',
-//           html: 'box text'
-//        })
+        cfg.cn.push({
+           tag: 'span',
+           html: 'box text'
+        })
         
         return cfg;
         
