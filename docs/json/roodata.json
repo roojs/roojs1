@@ -6061,7 +6061,7 @@
      "name": "check",
      "sig": "function (_self, checked)\n{\n\n}",
      "type": "function",
-     "desc": "Fires when the checkbox is checked or unchecked."
+     "desc": "Fires when the checkbox or radio is checked or unchecked."
     },
     {
      "name": "collapse",
@@ -6847,7 +6847,7 @@
      "name": "check",
      "sig": "function (_self, checked)\n{\n\n}",
      "type": "function",
-     "desc": "Fires when the checkbox is checked or unchecked."
+     "desc": "Fires when the checkbox or radio is checked or unchecked."
     },
     {
      "name": "destroy",
@@ -7885,7 +7885,7 @@
      "name": "check",
      "sig": "function (_self, checked)\n{\n\n}",
      "type": "function",
-     "desc": "Fires when the checkbox is checked or unchecked."
+     "desc": "Fires when the checkbox or radio is checked or unchecked."
     },
     {
      "name": "destroy",
@@ -11491,7 +11491,7 @@
      "name": "check",
      "sig": "function (_self, checked)\n{\n\n}",
      "type": "function",
-     "desc": "Fires when the checkbox is checked or unchecked."
+     "desc": "Fires when the checkbox or radio is checked or unchecked."
     },
     {
      "name": "destroy",
@@ -11881,7 +11881,7 @@
      "name": "check",
      "sig": "function (_self, checked)\n{\n\n}",
      "type": "function",
-     "desc": "Fires when the checkbox is checked or unchecked."
+     "desc": "Fires when the checkbox or radio is checked or unchecked."
     },
     {
      "name": "destroy",
