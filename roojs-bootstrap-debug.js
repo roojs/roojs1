@@ -3655,7 +3655,7 @@ Roo.bootstrap.Input = function(config){
             /**
             * @event check
             * Fires when the checkbox or radio is checked or unchecked.
-            * @param {Roo.bootstrap.Input} this This checkbox
+            * @param {Roo.bootstrap.Input} this This input
             * @param {Boolean} checked The new checked value
             */
            check : true
@@ -3931,7 +3931,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         this.inputEl().on("keydown" , this.fireKey,  this);
         this.inputEl().on("focus", this.onFocus,  this);
         this.inputEl().on("blur", this.onBlur,  this);
-        
+        Roo.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        Roo.log(this.inputEl());
         this.inputEl().on('DOMAttrModified', this.onCheck,  this); //ff
         this.inputEl().on('propertychange', this.onCheck,  this);  //ie
         
