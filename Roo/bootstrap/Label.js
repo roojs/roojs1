@@ -9,6 +9,7 @@
  * @class Roo.bootstrap.Label
  * @extends Roo.bootstrap.Component
  * Bootstrap Label class
+ * @cfg {String} html The button content
  * 
  * @constructor
  * Create a new Label
