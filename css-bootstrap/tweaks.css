@@ -21,3 +21,9 @@
     box-shadow: none;
     float: left;
 }
+
+.checkbox-label {
+    margin-top: 4px;
+    margin-left: 5px;
+    font-weight: normal;
+}
