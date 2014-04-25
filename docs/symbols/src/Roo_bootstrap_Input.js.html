@@ -85,7 +85,14 @@
              * @param {Roo.form.Field} this
              * @param {Roo.EventObject}  e The event Object
              */
-            </span><span class="jsdoc-var">keyup </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+            </span><span class="jsdoc-var">keyup </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-comment">/**
+            * @event check
+            * Fires when the checkbox is checked or unchecked.
+            * @param {Roo.form.Checkbox} this This checkbox
+            * @param {Boolean} checked The new checked value
+            */
+           </span><span class="jsdoc-var">check </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
         </span><span class="jsdoc-syntax">});
 };
 
@@ -234,6 +241,10 @@
             </span><span class="jsdoc-var">placeholder </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.placeholder </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''
             
         </span><span class="jsdoc-syntax">};
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.maxLength </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.maxLength </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">Number.MAX_VALUE</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">input.maxLength </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.maxLength</span><span class="jsdoc-syntax">;
+        }
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">input.disabled</span><span class="jsdoc-syntax">=</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
