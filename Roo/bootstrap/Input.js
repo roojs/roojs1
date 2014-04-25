@@ -733,7 +733,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     },
     
     getGroupValue : function(){
-        return this.el.up('form').child('input[name='+this.el.dom.name+']:checked', true).value;
+        return this.parent().child('input[name='+this.el.dom.name+']:checked', true).value;
     },
     
     onClick : function(){
