@@ -4318,6 +4318,7 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
     readOnly : false,
     warp : 'soft',
     resize : false,
+    value: false,
     
     getAutoCreate : function(){
         
@@ -4332,7 +4333,7 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
             id : id,
             warp : this.warp,
             rows : this.rows,
-            value : this.value,
+            value : this.value || '',
             cls : 'form-control',
             placeholder : this.placeholder || '' 
             
