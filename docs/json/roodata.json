@@ -6058,6 +6058,12 @@
      "desc": "Fires just before the field blurs if the field value has changed."
     },
     {
+     "name": "check",
+     "sig": "function (_self, checked)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the checkbox is checked or unchecked."
+    },
+    {
      "name": "collapse",
      "sig": "function (combo)\n{\n\n}",
      "type": "function",
@@ -6836,6 +6842,12 @@
      "sig": "function (_self, newValue, oldValue)\n{\n\n}",
      "type": "function",
      "desc": "Fires just before the field blurs if the field value has changed."
+    },
+    {
+     "name": "check",
+     "sig": "function (_self, checked)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the checkbox is checked or unchecked."
     },
     {
      "name": "destroy",
@@ -7868,6 +7880,12 @@
      "sig": "function (_self, newValue, oldValue)\n{\n\n}",
      "type": "function",
      "desc": "Fires just before the field blurs if the field value has changed."
+    },
+    {
+     "name": "check",
+     "sig": "function (_self, checked)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the checkbox is checked or unchecked."
     },
     {
      "name": "destroy",
@@ -11470,6 +11488,12 @@
      "desc": "Fires just before the field blurs if the field value has changed."
     },
     {
+     "name": "check",
+     "sig": "function (_self, checked)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the checkbox is checked or unchecked."
+    },
+    {
      "name": "destroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -11852,6 +11876,12 @@
      "sig": "function (_self, newValue, oldValue)\n{\n\n}",
      "type": "function",
      "desc": "Fires just before the field blurs if the field value has changed."
+    },
+    {
+     "name": "check",
+     "sig": "function (_self, checked)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the checkbox is checked or unchecked."
     },
     {
      "name": "destroy",
