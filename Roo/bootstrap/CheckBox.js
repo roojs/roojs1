@@ -11,7 +11,7 @@
  * Bootstrap CheckBox class
  * 
  * @cfg {String} valueOff The value that should go into the generated input element's value when unchecked.
- * @cfg {String} boxLabel The value that should go into the generated input element's value when unchecked.
+ * @cfg {String} boxLabel The text that appears beside the checkbox
  * 
  * @constructor
  * Create a new CheckBox
