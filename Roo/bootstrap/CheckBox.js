@@ -45,15 +45,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         this.inputEl().on('click', this.onClick,  this);
     },
     
-    getGroupValue : function()
-    {
-        if(typeof(this.inputEl().up('form').child('input[name='+this.inputEl().dom.name+']:checked', true)) == 'undefined'){
-            return '';
-        }
-        
-        return this.inputEl().up('form').child('input[name='+this.inputEl().dom.name+']:checked', true).value;
-    },
-    
     onClick : function()
     {
         if(this.inputType != 'checkbox' && this.inputType != 'radio'){
