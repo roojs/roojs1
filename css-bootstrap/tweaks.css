@@ -15,8 +15,12 @@
     width: auto;
 }
 
-.box-label {
+.box-input-label {
     width: 100%;
+}
+
+.box-label {
+    margin-left: 5px;
 }
 
 /*.form-box input {
