@@ -5360,6 +5360,12 @@
      "memberOf": ""
     },
     {
+     "name": "checked",
+     "type": "Boolean",
+     "desc": "initnal the element",
+     "memberOf": ""
+    },
+    {
      "name": "disabled",
      "type": "Boolean",
      "desc": "is it disabled",
