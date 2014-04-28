@@ -31,7 +31,9 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
             toolbar: true,
             cn: [
                 {
-                    
+                    new Roo.bootstrap.Button({
+                        
+                    })
                 }
             ]
         });
