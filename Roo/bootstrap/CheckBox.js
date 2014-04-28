@@ -36,6 +36,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     inputType: 'checkbox',
     valueOff: '',
+    boxLabel: false,
     
     getAutoCreate : function()
     {
