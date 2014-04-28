@@ -185,8 +185,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         this.inputEl().on('click', this.onClick,  this);
         
-        this.inputEl().on('DOMAttrModified', this.setFromHidden,  this); //ff
-        this.inputEl().on('propertychange', this.setFromHidden,  this);  //ie
     },
     
     onClick : function()
@@ -207,14 +205,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         this.inputEl().dom.value = state ? this.value : this.valueOff;
         
-    },
-    
-    setFromHidden : function()
-    {
-        Roo.log('setFromHidden');
-        Roo.log(this);
     }
-    
 });
 
  
