@@ -28,7 +28,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
         var cfg = {};
         
         var toolbar = new Roo.bootstrap.ButtonGroup({
-            toolbar: true
+            toolbar: true,
             cn: [
                 {
                     
