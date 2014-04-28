@@ -10801,12 +10801,12 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                     {
                         tag: 'label',
                         'for' :  id,
-                        cls : 'control-label col-sm-' + this.labelWidth,
+                        cls : 'control-label col-md-' + this.labelWidth,
                         html : this.fieldLabel
                         
                     },
                     {
-                        cls : "col-sm-" + (12 - this.labelWidth), 
+                        cls : "col-md-" + (12 - this.labelWidth), 
                         cn: [
                             inputblock
                         ]
