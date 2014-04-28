@@ -44,9 +44,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         var cfg = {};
         
-        if(this.inputType != 'hidden'){
-            cfg.cls = 'form-group' //input-group
-        }
+        cfg.cls = 'form-group' //input-group
         
         var input =  {
             tag: 'input',
