@@ -53,7 +53,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             id : id,
             type : this.inputType,
             value : this.value,
-            cls : 'form-checkbox',
+            cls : 'form-box',
             placeholder : this.placeholder || ''
             
         };
@@ -171,7 +171,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
      */
     inputEl: function ()
     {
-        return this.el.select('input.form-checkbox',true).first();
+        return this.el.select('input.form-box',true).first();
     },
     
     initEvents : function()
