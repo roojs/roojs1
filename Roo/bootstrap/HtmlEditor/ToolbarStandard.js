@@ -396,8 +396,6 @@ Roo.apply(Roo.bootstrap.HtmlEditor.ToolbarStandard.prototype,  {
         
         }
         
-        
-        
         // disable everything...
         
         this.tb.items.each(function(item){
