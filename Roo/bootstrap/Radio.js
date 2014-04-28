@@ -202,7 +202,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
      */
     getValue : function(){
         return this.getGroupValue();
-    },
+    }
     
 });
 
