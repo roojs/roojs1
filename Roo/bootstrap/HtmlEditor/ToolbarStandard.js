@@ -17,15 +17,16 @@
 
 Roo.bootstrap.HtmlEditor.ToolbarStandard = function(config)
 {   
-    Roo.apply(this, config);
-    
-    // default disabled, based on 'good practice'..
-    this.disable = this.disable || {};
-    Roo.applyIf(this.disable, {
-        fontSize : true,
-        colors : true,
-        specialElements : true
-    });
+    Roo.bootstrap.HtmlEditor.ToolbarStandard.superclass.constructor.call(this, config);
+//    Roo.apply(this, config);
+//    
+//    // default disabled, based on 'good practice'..
+//    this.disable = this.disable || {};
+//    Roo.applyIf(this.disable, {
+//        fontSize : true,
+//        colors : true,
+//        specialElements : true
+//    });
     
 }
 
