@@ -219,7 +219,7 @@ Roo.bootstrap.Toolbar.prototype = {
             return buttons;
         }
         var b = config;
-        if(!(config instanceof Roo.Toolbar.Button)){
+        if(!(config instanceof Roo.bootstrap.Toolbar.Button)){
             b = config.split ?
                 new Roo.bootstrap.Toolbar.SplitButton(config) :
                 new Roo.bootstrap.Toolbar.Button(config);
