@@ -127,12 +127,6 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
     iframePad:3,
     hideMode:'offsets',
     
-    inputEl: function ()
-    {
-        Roo.log(this.el);
-        return this.el.select('textarea.form-control',true).first();
-    },
-    
     getAutoCreate : function()
     {
         var cfg = {
