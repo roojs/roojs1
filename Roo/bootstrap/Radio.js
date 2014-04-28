@@ -154,6 +154,27 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         
     },
     
+    onClick : function()
+    {   
+        this.setChecked(true);
+    },
+    
+    setChecked : function(state,suppressEvent)
+    {
+        this.checked = state;
+        
+        Roo.each(this.inputEl().up('form').child('input[name='+this.inputEl().dom.name+']', true).elements, function(v){
+            v.checked = false;
+        });
+        
+        if(suppressEvent !== true){
+            this.fireEvent('check', this, state);
+        }
+        
+        this.inputEl().dom.value = state ? this.value : this.valueOff;
+        
+    },
+    
     getGroupValue : function()
     {
         if(typeof(this.inputEl().up('form').child('input[name='+this.inputEl().dom.name+']:checked', true)) == 'undefined'){
