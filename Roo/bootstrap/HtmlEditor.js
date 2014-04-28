@@ -303,36 +303,36 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TriggerField,  {
     // private
     onResize : function(w, h)
     {
-        //Roo.log('resize: ' +w + ',' + h );
-        Roo.inputEl().HtmlEditor.superclass.onResize.apply(this, arguments);
-        if(this.inputEl() && this.iframe){
-            if(typeof w == 'number'){
-                var aw = w - this.wrap.getFrameWidth('lr');
-                this.inputEl().setWidth(this.adjustWidth('textarea', aw));
-                this.iframe.style.width = aw + 'px';
-            }
-            if(typeof h == 'number'){
-                var tbh = 0;
-                for (var i =0; i < this.toolbars.length;i++) {
-                    // fixme - ask toolbars for heights?
-                    tbh += this.toolbars[i].tb.el.getHeight();
-                    if (this.toolbars[i].footer) {
-                        tbh += this.toolbars[i].footer.el.getHeight();
-                    }
-                }
-                
-                
-                
-                
-                var ah = h - this.wrap.getFrameWidth('tb') - tbh;// this.tb.el.getHeight();
-                ah -= 5; // knock a few pixes off for look..
-                this.inputEl().setHeight(this.adjustWidth('textarea', ah));
-                this.iframe.style.height = ah + 'px';
-                if(this.doc){
-                    (this.doc.body || this.doc.documentElement).style.height = (ah - (this.iframePad*2)) + 'px';
-                }
-            }
-        }
+//        //Roo.log('resize: ' +w + ',' + h );
+//        Roo.inputEl().HtmlEditor.superclass.onResize.apply(this, arguments);
+//        if(this.inputEl() && this.iframe){
+//            if(typeof w == 'number'){
+//                var aw = w - this.wrap.getFrameWidth('lr');
+//                this.inputEl().setWidth(this.adjustWidth('textarea', aw));
+//                this.iframe.style.width = aw + 'px';
+//            }
+//            if(typeof h == 'number'){
+//                var tbh = 0;
+//                for (var i =0; i < this.toolbars.length;i++) {
+//                    // fixme - ask toolbars for heights?
+//                    tbh += this.toolbars[i].tb.el.getHeight();
+//                    if (this.toolbars[i].footer) {
+//                        tbh += this.toolbars[i].footer.el.getHeight();
+//                    }
+//                }
+//                
+//                
+//                
+//                
+//                var ah = h - this.wrap.getFrameWidth('tb') - tbh;// this.tb.el.getHeight();
+//                ah -= 5; // knock a few pixes off for look..
+//                this.inputEl().setHeight(this.adjustWidth('textarea', ah));
+//                this.iframe.style.height = ah + 'px';
+//                if(this.doc){
+//                    (this.doc.body || this.doc.documentElement).style.height = (ah - (this.iframePad*2)) + 'px';
+//                }
+//            }
+//        }
     },
 
     /**
