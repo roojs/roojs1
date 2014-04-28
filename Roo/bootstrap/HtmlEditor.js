@@ -7,7 +7,7 @@
 
 /**
  * @class Roo.bootstrap.HtmlEditor
- * @extends Roo.bootstrap.Component
+ * @extends Roo.bootstrap.TriggerField
  * Bootstrap HtmlEditor class
 
  * @constructor
@@ -80,7 +80,7 @@ Roo.bootstrap.HtmlEditor = function(config){
 };
 
 
-Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TriggerField,  {
       /**
      * @cfg {Array} toolbars Array of toolbars. - defaults to just the Standard one
      */
