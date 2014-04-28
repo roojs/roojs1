@@ -7772,234 +7772,6 @@
   "Roo.bootstrap.HtmlEditor": {
    "props": [
     {
-     "name": "toolbars",
-     "type": "Array",
-     "desc": "Array of toolbars. - defaults to just the Standard one",
-     "memberOf": ""
-    },
-    {
-     "name": "createLinkText",
-     "type": "String",
-     "desc": "The default text for the create link prompt",
-     "memberOf": ""
-    },
-    {
-     "name": "defaultLinkValue",
-     "type": "String",
-     "desc": "The default value for the create link prompt (defaults to http:/ /)",
-     "memberOf": ""
-    },
-    {
-     "name": "resizable",
-     "type": "String",
-     "desc": "'s' or 'se' or 'e' - wrapps the element in a\n                       Roo.resizable.",
-     "memberOf": ""
-    },
-    {
-     "name": "height",
-     "type": "Number",
-     "desc": "(in pixels)",
-     "memberOf": ""
-    },
-    {
-     "name": "width",
-     "type": "Number",
-     "desc": "(in pixels)",
-     "memberOf": ""
-    },
-    {
-     "name": "stylesheets",
-     "type": "Array",
-     "desc": "url of stylesheets. set to [] to disable stylesheets.",
-     "memberOf": ""
-    },
-    {
-     "name": "triggerClass",
-     "type": "String",
-     "desc": "An additional CSS class used to style the trigger button.  The trigger will always get the\nclass 'x-form-trigger' by default and triggerClass will be <b>appended</b> if specified.",
-     "memberOf": "Roo.bootstrap.TriggerField"
-    },
-    {
-     "name": "hideTrigger",
-     "type": "Boolean",
-     "desc": "True to hide the trigger element and display only the base text field (defaults to false)",
-     "memberOf": "Roo.bootstrap.TriggerField"
-    },
-    {
-     "name": "disabled",
-     "type": "Boolean",
-     "desc": "is it disabled",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
-     "name": "fieldLabel",
-     "type": "String",
-     "desc": "- the label associated",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
-     "name": "name",
-     "type": "String",
-     "desc": "name of the input",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
-     "name": "placeholder",
-     "type": "string",
-     "desc": "- placeholder to put in text.",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
-     "name": "before",
-     "type": "string",
-     "desc": "- input group add on before",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
-     "name": "after",
-     "type": "string",
-     "desc": "- input group add on after",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
-     "name": "size",
-     "type": "string",
-     "desc": "- (lg|sm) or leave empty..",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
-     "name": "xs",
-     "type": "Number",
-     "desc": "colspan out of 12 for mobile-sized screens",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
-     "name": "sm",
-     "type": "Number",
-     "desc": "colspan out of 12 for tablet-sized screens",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
-     "name": "md",
-     "type": "Number",
-     "desc": "colspan out of 12 for computer-sized screens",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
-     "name": "lg",
-     "type": "Number",
-     "desc": "colspan out of 12 for large computer-sized screens",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
-     "name": "value",
-     "type": "string",
-     "desc": "default value of the input",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
-     "name": "labelWidth",
-     "type": "Number",
-     "desc": "set the width of label (0-12)",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
-     "name": "labelAlign",
-     "type": "String",
-     "desc": "(top|left)",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
-     "name": "validationEvent",
-     "type": "String/Boolean",
-     "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
-     "name": "validationDelay",
-     "type": "Number",
-     "desc": "The length of time in milliseconds after user input begins until validation is initiated (defaults to 250)",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
-     "name": "selectOnFocus",
-     "type": "Boolean",
-     "desc": "True to automatically select any existing field text when the field receives input focus (defaults to false)",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
-     "name": "maskRe",
-     "type": "String",
-     "desc": "An input mask regular expression that will be used to filter keystrokes that don't match (defaults to null)",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
-     "name": "vtype",
-     "type": "String",
-     "desc": "A validation type name as defined in {@link Roo.form.VTypes} (defaults to null)",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
-     "name": "disableKeyFilter",
-     "type": "Boolean",
-     "desc": "True to disable input keystroke filtering (defaults to false)",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
-     "name": "allowBlank",
-     "type": "Boolean",
-     "desc": "False to validate that the value length > 0 (defaults to true)",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
-     "name": "blankText",
-     "type": "String",
-     "desc": "Error text to display if the allow blank validation fails (defaults to \"This field is required\")",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
-     "name": "minLength",
-     "type": "Number",
-     "desc": "Minimum input field length required (defaults to 0)",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
-     "name": "maxLength",
-     "type": "Number",
-     "desc": "Maximum input field length allowed (defaults to Number.MAX_VALUE)",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
-     "name": "minLengthText",
-     "type": "String",
-     "desc": "Error text to display if the minimum length validation fails (defaults to \"The minimum length for this field is {minLength}\")",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
-     "name": "maxLengthText",
-     "type": "String",
-     "desc": "Error text to display if the maximum length validation fails (defaults to \"The maximum length for this field is {maxLength}\")",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
-     "name": "validator",
-     "type": "Function",
-     "desc": "A custom validation function to be called during field validation (defaults to null).\nIf available, this function will be called only after the basic validators all return true, and will be passed the\ncurrent field value and expected to return boolean true if the value is valid or a string error message if invalid.",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
-     "name": "regex",
-     "type": "RegExp",
-     "desc": "A JavaScript RegExp object to be tested against the field value during validation (defaults to null).\nIf available, this regex will be evaluated only after the basic validators all return true, and will be passed the\ncurrent field value.  If the test fails, the field will be marked invalid using {@link #regexText}.",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
-     "name": "regexText",
-     "type": "String",
-     "desc": "The error text to display if {@link #regex} is used and the test fails during validation (defaults to \"\")",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
@@ -8027,6 +7799,12 @@
      "name": "dataId",
      "type": "string",
      "desc": "cutomer id",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "name",
+     "type": "string",
+     "desc": "Specifies name attribute",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -8062,12 +7840,6 @@
    ],
    "events": [
     {
-     "name": "activate",
-     "sig": "function (_self)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires when the editor is first receives the focus. Any insertion must wait\nuntil after this event."
-    },
-    {
      "name": "beforedestroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -8078,12 +7850,6 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before the component is hidden. Return false to stop the hide."
-    },
-    {
-     "name": "beforepush",
-     "sig": "function (_self, html)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires before the iframe editor is updated with content from the textarea. Return false\nto cancel the push."
     },
     {
      "name": "beforerender",
@@ -8098,12 +7864,6 @@
      "desc": "Fires before the component is shown.  Return false to stop the show."
     },
     {
-     "name": "beforesync",
-     "sig": "function (_self, html)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires before the textarea is updated with content from the editor iframe. Return false\nto cancel the sync."
-    },
-    {
      "name": "destroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -8114,18 +7874,6 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires after the component is disabled."
-    },
-    {
-     "name": "editmodechange",
-     "sig": "function (_self, sourceEdit)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires when the editor switches edit modes"
-    },
-    {
-     "name": "editorevent",
-     "sig": "function (_self)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires when on any editor (mouse up/down cursor movement etc.) - used for toolbar hooks."
     },
     {
      "name": "enable",
@@ -8140,30 +7888,6 @@
      "desc": "Fires after the component is hidden."
     },
     {
-     "name": "initialize",
-     "sig": "function (_self)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires when the editor is fully initialized (including the iframe)"
-    },
-    {
-     "name": "invalid",
-     "sig": "function (_self, msg)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires after the field has been marked as invalid."
-    },
-    {
-     "name": "keyup",
-     "sig": "function (_self, e)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires after the key up"
-    },
-    {
-     "name": "push",
-     "sig": "function (_self, html)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires when the iframe editor is updated with content from the textarea."
-    },
-    {
      "name": "render",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -8174,18 +7898,6 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires after the component is shown."
-    },
-    {
-     "name": "sync",
-     "sig": "function (_self, html)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires when the textarea is updated with content from the editor iframe."
-    },
-    {
-     "name": "valid",
-     "sig": "function (_self)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires after the field has been validated with no errors."
     }
    ]
   },
