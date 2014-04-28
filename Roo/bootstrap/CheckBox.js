@@ -193,11 +193,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
 //    },
     
     onClick : function()
-    {
-        if(this.inputType != 'checkbox' && this.inputType != 'radio'){
-            return;
-        }
-        
+    {   
         this.setChecked(!this.checked);
     },
     
