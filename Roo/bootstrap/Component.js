@@ -266,7 +266,19 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         cn.items = nitems;
 	
         return cn;
-    }
+    },
+    
+    adjustWidth : function(width){
+            if(typeof width == "number"){
+                if(this.autoBoxAdjust && !this.isBorderBox()){
+                   width -= (this.getBorderWidth("lr") + this.getPadding("lr"));
+                }
+                if(width < 0){
+                    width = 0;
+                }
+            }
+            return width;
+        }
     
     
     
