@@ -25,14 +25,15 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
     
     getAutoCreate : function()
     {
-        var cfg = {
-            
-        }
+        var cfg = {};
         
-        cfg.cn.push({
-           new Roo.bootstrap.ButtonGroup({
-               toolbar: true
-           })
+        var toolbar = new Roo.bootstrap.ButtonGroup({
+            toolbar: true
+            cn: [
+                {
+                    
+                }
+            ]
         });
         
         return cfg;
