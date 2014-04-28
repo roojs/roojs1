@@ -451,7 +451,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
                 return "&#"+cc+";" 
             });
             if(this.fireEvent('beforesync', this, html) !== false){
-                this.inputEl().dom.value = html;
+                this.el.dom.value = html;
                 this.fireEvent('sync', this, html);
             }
         }
@@ -463,7 +463,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
      */
     pushValue : function(){
         if(this.initialized){
-            var v = this.inputEl().dom.value;
+            var v = this.el.dom.value;
             
             if(v.length < 1){
                 v = '&#160;';
@@ -473,7 +473,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
                 var d = (this.doc.body || this.doc.documentElement);
                 d.innerHTML = v;
                 this.cleanUpPaste();
-                this.inputEl().dom.value = d.innerHTML;
+                this.el.dom.value = d.innerHTML;
                 this.fireEvent('push', this, v);
             }
         }
@@ -489,7 +489,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
         if(this.win && !this.sourceEditMode){
             this.win.focus();
         }else{
-            this.inputEl().focus();
+            this.el.focus();
         }
     },
     
@@ -525,7 +525,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
         //var ss = this.el.getStyles('font-size', 'font-family', 'background-image', 'background-repeat');
         // this copies styles from the containing element into thsi one..
         // not sure why we need all of this..
-        var ss = this.inputEl().getStyles('font-size', 'background-image', 'background-repeat');
+        var ss = this.el.getStyles('font-size', 'background-image', 'background-repeat');
         ss['background-attachment'] = 'fixed'; // w3c
         dbody.bgProperties = 'fixed'; // ie
         Roo.DomHelper.applyStyles(dbody, ss);
