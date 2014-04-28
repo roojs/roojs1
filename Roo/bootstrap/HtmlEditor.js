@@ -209,13 +209,13 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
     {
         var _t = this;
         Roo.bootstrap.HtmlEditor.superclass.onRender.call(this, ct, position);
-        this.inputEl().dom.style.border = '0 none';
-        this.inputEl().dom.setAttribute('tabIndex', -1);
-        this.inputEl().addClass('x-hidden');
+        this.el.dom.style.border = '0 none';
+        this.el.dom.setAttribute('tabIndex', -1);
+        this.el.addClass('x-hidden');
         if(Roo.isIE){ // fix IE 1px bogus margin
-            this.inputEl().applyStyles('margin-top:-1px;margin-bottom:-1px;')
+            this.el.applyStyles('margin-top:-1px;margin-bottom:-1px;')
         }
-        this.wrap = this.inputEl().wrap({
+        this.wrap = this.el.wrap({
             cls:'x-html-editor-wrap', cn:{cls:'x-html-editor-tb'}
         });
         
@@ -249,7 +249,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
             name: this.frameId,
             frameBorder : 'no',
             'src' : Roo.SSL_SECURE_URL ? Roo.SSL_SECURE_URL  :  "javascript:false"
-        }, this.inputEl()
+        }, this.el
         );
         
        // console.log(iframe);
@@ -299,11 +299,11 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
     onResize : function(w, h)
     {
         //Roo.log('resize: ' +w + ',' + h );
-        Roo.inputEl().HtmlEditor.superclass.onResize.apply(this, arguments);
-        if(this.inputEl() && this.iframe){
+        Roo.el.HtmlEditor.superclass.onResize.apply(this, arguments);
+        if(this.el && this.iframe){
             if(typeof w == 'number'){
                 var aw = w - this.wrap.getFrameWidth('lr');
-                this.inputEl().setWidth(this.adjustWidth('textarea', aw));
+                this.el.setWidth(this.adjustWidth('textarea', aw));
                 this.iframe.style.width = aw + 'px';
             }
             if(typeof h == 'number'){
@@ -321,7 +321,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
                 
                 var ah = h - this.wrap.getFrameWidth('tb') - tbh;// this.tb.el.getHeight();
                 ah -= 5; // knock a few pixes off for look..
-                this.inputEl().setHeight(this.adjustWidth('textarea', ah));
+                this.el.setHeight(this.adjustWidth('textarea', ah));
                 this.iframe.style.height = ah + 'px';
                 if(this.doc){
                     (this.doc.body || this.doc.documentElement).style.height = (ah - (this.iframePad*2)) + 'px';
@@ -343,16 +343,16 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
 //            Roo.log(this.syncValue());
             this.syncValue();
             this.iframe.className = 'x-hidden';
-            this.inputEl().removeClass('x-hidden');
-            this.inputEl().dom.removeAttribute('tabIndex');
-            this.inputEl().focus();
+            this.el.removeClass('x-hidden');
+            this.el.dom.removeAttribute('tabIndex');
+            this.el.focus();
         }else{
 //            Roo.log('out')
 //            Roo.log(this.pushValue()); 
             this.pushValue();
             this.iframe.className = '';
-            this.inputEl().addClass('x-hidden');
-            this.inputEl().dom.setAttribute('tabIndex', -1);
+            this.el.addClass('x-hidden');
+            this.el.dom.setAttribute('tabIndex', -1);
             this.deferFocus();
         }
         this.setSize(this.wrap.getSize());
@@ -380,14 +380,6 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
         return this.wrap;
     },
     
-     /**
-     * Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {@link #getRawValue}.
-     * @return {Mixed} value The field value
-     */
-    getValue : function(){
-        return this.inputEl().getValue();
-    },
-
     // private
     initEvents : function(){
         this.originalValue = this.getValue();
