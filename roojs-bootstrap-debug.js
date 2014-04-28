@@ -10742,7 +10742,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             id : id,
             type : this.inputType,
             value : this.value,
-            cls : 'form-control',
             placeholder : this.placeholder || ''
             
         };
@@ -10843,6 +10842,14 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         return cfg;
         
+    },
+    
+    /**
+     * return the real input element.
+     */
+    inputEl: function ()
+    {
+        return this.el.select('input[type=checkbox]',true).first();
     },
     
     initEvents : function()
