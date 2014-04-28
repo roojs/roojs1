@@ -26,11 +26,14 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
     getAutoCreate : function()
     {
         var cfg = {
-            tag: "textarea",
-            cls: "form-control",
-            style:'width: ' + this.width + 'px;height: ' + this.height + 'px;',
-            autocomplete: "off"
+            
         }
+        
+        cfg.cn.push({
+           new Roo.bootstrap.ButtonGroup({
+               toolbar: true
+           })
+        });
         
         return cfg;
         
