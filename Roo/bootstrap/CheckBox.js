@@ -65,16 +65,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         this.inputEl().dom.value = state ? this.value : this.valueOff;
         
-    },
-    
-    /**
-     * Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {@link #getRawValue}.
-     * @return {Mixed} value The field value
-     */
-    getValue : function(){
-        return this.getGroupValue();
-    },
-    
+    }
 });
 
  
