@@ -11482,6 +11482,14 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
     getPositionEl : function(){
         return this.wrap;
     },
+    
+     /**
+     * Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {@link #getRawValue}.
+     * @return {Mixed} value The field value
+     */
+    getValue : function(){
+        return this.inputEl().getValue();
+    },
 
     // private
     initEvents : function(){
