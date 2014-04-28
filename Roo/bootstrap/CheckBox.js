@@ -66,6 +66,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         if (this.size) {
             input.cls += ' input-' + this.size;
         }
+        
         var settings=this;
         ['xs','sm','md','lg'].map(function(size){
             if (settings[size]) {
