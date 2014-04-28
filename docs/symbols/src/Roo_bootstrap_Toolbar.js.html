@@ -1,0 +1,619 @@
+<html><head><title>../roojs1/Roo/bootstrap/Toolbar.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty">
+<span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ * Toolbar
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.Toolbar
+ * 
+ * Bootstrap Toolbar class
+
+ * @constructor
+ * Create a new Toolbar
+ * @param {Object} config The config object
+ */
+
+</span><span class="jsdoc-var">Roo.bootstrap.Toolbar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">buttons</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">)
+{
+    </span><span class="jsdoc-comment">/// old consturctor format still supported..
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">container </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Array</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// omit the container for later rendering
+        </span><span class="jsdoc-var">buttons </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">buttons</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">container </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+    }
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'object' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">container.xtype</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">container </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.container</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">buttons </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.buttons </span><span class="jsdoc-syntax">|| []; </span><span class="jsdoc-comment">// not really - use items!!
+    </span><span class="jsdoc-syntax">}
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">xitems </span><span class="jsdoc-syntax">= [];
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">config.items</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">xitems </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.items</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">config.items</span><span class="jsdoc-syntax">;
+    }
+    </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.buttons </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">buttons</span><span class="jsdoc-syntax">;
+    
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">);
+    }
+    </span><span class="jsdoc-var">this.xitems </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">xitems</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xitems</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">);
+    }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    
+};
+
+</span><span class="jsdoc-var">Roo.bootstrap.Toolbar.prototype </span><span class="jsdoc-syntax">= {
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Array} items
+     * array of button configs or elements to add (will be converted to a MixedCollection)
+     */
+    
+    /**
+     * @cfg {String/HTMLElement/Element} container
+     * The id or element that will contain the toolbar
+     */
+    // private
+    </span><span class="jsdoc-var">render </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-comment">// using a table allows for vertical alignment
+        // 100% width is needed by Safari...
+        </span><span class="jsdoc-var">this.el.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&lt;div class=&quot;x-toolbar x-small-editor&quot;&gt;&lt;table cellspacing=&quot;0&quot;&gt;&lt;tr&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.tr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;tr&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">autoId </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-var">this.items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.util.MixedCollection</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">o.id </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-string">&quot;item&quot; </span><span class="jsdoc-syntax">+ (++</span><span class="jsdoc-var">autoId</span><span class="jsdoc-syntax">));
+        });
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.buttons</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.add.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.buttons</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">this.buttons</span><span class="jsdoc-syntax">;
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Adds element(s) to the toolbar -- this function takes a variable number of 
+     * arguments of mixed type and adds them to the toolbar.
+     * @param {Mixed} arg1 The following types of arguments are all valid:&lt;br /&gt;
+     * &lt;ul&gt;
+     * &lt;li&gt;{@link Roo.Toolbar.Button} config: A valid button config object (equivalent to {@link #addButton})&lt;/li&gt;
+     * &lt;li&gt;HtmlElement: Any standard HTML element (equivalent to {@link #addElement})&lt;/li&gt;
+     * &lt;li&gt;Field: Any form field (equivalent to {@link #addField})&lt;/li&gt;
+     * &lt;li&gt;Item: Any subclass of {@link Roo.Toolbar.Item} (equivalent to {@link #addItem})&lt;/li&gt;
+     * &lt;li&gt;String: Any generic string (gets wrapped in a {@link Roo.Toolbar.TextItem}, equivalent to {@link #addText}).
+     * Note that there are a few special strings that are treated differently as explained nRoo.&lt;/li&gt;
+     * &lt;li&gt;'separator' or '-': Creates a separator element (equivalent to {@link #addSeparator})&lt;/li&gt;
+     * &lt;li&gt;' ': Creates a spacer element (equivalent to {@link #addSpacer})&lt;/li&gt;
+     * &lt;li&gt;'-&gt;': Creates a fill element (equivalent to {@link #addFill})&lt;/li&gt;
+     * &lt;/ul&gt;
+     * @param {Mixed} arg2
+     * @param {Mixed} etc.
+     */
+    </span><span class="jsdoc-var">add </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">l </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">a.length</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+            </span><span class="jsdoc-var">this._add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+        }
+    },
+    </span><span class="jsdoc-comment">// private..
+    </span><span class="jsdoc-var">_add </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">) {
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.xtype</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Toolbar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">el.xtype</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.bootstrap </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.Toolbar</span><span class="jsdoc-syntax">);
+        }
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.applyTo</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// some kind of form field
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.addField</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+        } 
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.render</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// some kind of Toolbar.Item
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.addItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;string&quot;</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// string
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;separator&quot; </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;-&quot;</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.addSeparator</span><span class="jsdoc-syntax">();
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot; &quot;</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.addSpacer</span><span class="jsdoc-syntax">();
+            }
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;-&gt;&quot;</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.addFill</span><span class="jsdoc-syntax">();
+            }
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.addText</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+            
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.tagName</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// element
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.addElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;object&quot;</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// must be button config?
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.addButton</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-comment">// and now what?!?!
+        </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Add an Xtype element
+     * @param {Object} xtype Xtype Object
+     * @return {Object} created Object
+     */
+    </span><span class="jsdoc-var">addxtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);  
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Returns the Element for this toolbar.
+     * @return {Roo.Element}
+     */
+    </span><span class="jsdoc-var">getEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;  
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Adds a separator
+     * @return {Roo.bootstrap.Toolbar.Item} The separator item
+     */
+    </span><span class="jsdoc-var">addSeparator </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.addItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Separator</span><span class="jsdoc-syntax">());
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Adds a spacer element
+     * @return {Roo.bootstrap.Toolbar.Spacer} The spacer item
+     */
+    </span><span class="jsdoc-var">addSpacer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.addItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Spacer</span><span class="jsdoc-syntax">());
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Adds a fill element that forces subsequent additions to the right side of the toolbar
+     * @return {Roo.bootstrap.Toolbar.Fill} The fill item
+     */
+    </span><span class="jsdoc-var">addFill </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.addItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Fill</span><span class="jsdoc-syntax">());
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Adds any standard HTML element to the toolbar
+     * @param {String/HTMLElement/Element} el The element or id of the element to add
+     * @return {Roo.bootstrap.Toolbar.Item} The element's item
+     */
+    </span><span class="jsdoc-var">addElement </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.addItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Item</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">));
+    },
+    </span><span class="jsdoc-comment">/**
+     * Collection of items on the toolbar.. (only Toolbar Items, so use fields to retrieve fields)
+     * @type Roo.util.MixedCollection  
+     */
+    </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+     
+    </span><span class="jsdoc-comment">/**
+     * Adds any Toolbar.Item or subclass
+     * @param {Roo.bootstrap.Toolbar.Item} item
+     * @return {Roo.bootstrap.Toolbar.Item} The item
+     */
+    </span><span class="jsdoc-var">addItem </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">td </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.nextBlock</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">item.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.items.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Adds a button (or buttons). See {@link Roo.Toolbar.Button} for more info on the config.
+     * @param {Object/Array} config A button config or array of configs
+     * @return {Roo.bootstrap.Toolbar.Button/Array}
+     */
+    </span><span class="jsdoc-var">addButton </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Array</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">buttons </span><span class="jsdoc-syntax">= [];
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                </span><span class="jsdoc-var">buttons.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.addButton</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]));
+            }
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">buttons</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!(</span><span class="jsdoc-var">config </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Roo.Toolbar.Button</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.split </span><span class="jsdoc-syntax">?
+                </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.Toolbar.SplitButton</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">) :
+                </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Button</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">td </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.nextBlock</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">b.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.items.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Adds text to the toolbar
+     * @param {String} text The text to add
+     * @return {Roo.bootstrap.Toolbar.Item} The element's item
+     */
+    </span><span class="jsdoc-var">addText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.addItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.Toolbar.TextItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">));
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Inserts any {@link Roo.Toolbar.Item}/{@link Roo.bootstrap.Toolbar.Button} at the specified index.
+     * @param {Number} index The index where the item is to be inserted
+     * @param {Object/Roo.bootstrap.Toolbar.Item/Roo.bootstrap.Toolbar.Button (may be Array)} item The button, or button config object to be inserted.
+     * @return {Roo.bootstrap.Toolbar.Button/Item}
+     */
+    </span><span class="jsdoc-var">insertButton </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Array</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">buttons </span><span class="jsdoc-syntax">= [];
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">item.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+               </span><span class="jsdoc-var">buttons.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.insertButton</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]));
+            }
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">buttons</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!(</span><span class="jsdoc-var">item </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Button</span><span class="jsdoc-syntax">)){
+           </span><span class="jsdoc-var">item </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Button</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">td </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;td&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.tr.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.tr.childNodes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">]);
+        </span><span class="jsdoc-var">item.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.items.insert</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Adds a new element to the toolbar from the passed {@link Roo.DomHelper} config.
+     * @param {Object} config
+     * @return {Roo.bootstrap.Toolbar.Item} The element's item
+     */
+    </span><span class="jsdoc-var">addDom </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">returnEl</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">td </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.nextBlock</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">Roo.DomHelper.overwrite</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ti </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Item</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td.firstChild</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">ti.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.items.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ti</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ti</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Collection of fields on the toolbar.. usefull for quering (value is false if there are no fields)
+     * @type Roo.util.MixedCollection  
+     */
+    </span><span class="jsdoc-var">fields </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-comment">/**
+     * Adds a dynamically rendered Roo.form field (TextField, ComboBox, etc).
+     * Note: the field should not have been rendered yet. For a field that has already been
+     * rendered, use {@link #addElement}.
+     * @param {Roo.bootstrap.Input} field
+     * @return {Roo.bootstrap.ToolbarItem}
+     */
+     
+      
+    </span><span class="jsdoc-var">addField </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">field</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.fields</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">autoId </span><span class="jsdoc-syntax">= 0;
+            </span><span class="jsdoc-var">this.fields </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.util.MixedCollection</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">o.id </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-string">&quot;item&quot; </span><span class="jsdoc-syntax">+ (++</span><span class="jsdoc-var">autoId</span><span class="jsdoc-syntax">));
+            });
+
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">td </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.nextBlock</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">field.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ti </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Item</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td.firstChild</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">ti.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.items.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ti</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.fields.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">field</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ti</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-comment">/**
+     * Hide the toolbar
+     * @method hide
+     */
+     
+      
+    </span><span class="jsdoc-var">hide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.el.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.el.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.hide</span><span class="jsdoc-syntax">();
+    },
+    </span><span class="jsdoc-comment">/**
+     * Show the toolbar
+     * @method show
+     */
+    </span><span class="jsdoc-var">show </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.el.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.show</span><span class="jsdoc-syntax">();
+    },
+      
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">nextBlock </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">td </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;td&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.tr.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">destroy </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// rendered?
+            </span><span class="jsdoc-var">Roo.destroy.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.items.items</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fields</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// rendered?
+            </span><span class="jsdoc-var">Roo.destroy.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.fields.items</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">Roo.Element.uncache</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.tr</span><span class="jsdoc-syntax">);
+    }
+};
+
+</span><span class="jsdoc-comment">/**
+ * @class Roo.Toolbar.Item
+ * The base class that other classes should extend in order to get some basic common toolbar item functionality.
+ * @constructor
+ * Creates a new Item
+ * @param {HTMLElement} el 
+ */
+</span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Item </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.getDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.hidden </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+};
+
+</span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Item.prototype </span><span class="jsdoc-syntax">= {
+    
+    </span><span class="jsdoc-comment">/**
+     * Get this item's HTML Element
+     * @return {HTMLElement}
+     */
+    </span><span class="jsdoc-var">getEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+       </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;  
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">render </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.td </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">td.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Removes and destroys this item.
+     */
+    </span><span class="jsdoc-var">destroy </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.td.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.td</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Shows this item.
+     */
+    </span><span class="jsdoc-var">show</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.hidden </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.td.style.display </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Hides this item.
+     */
+    </span><span class="jsdoc-var">hide</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.hidden </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.td.style.display </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;none&quot;</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Convenience function for boolean show/hide.
+     * @param {Boolean} visible true to show/false to hide
+     */
+    </span><span class="jsdoc-var">setVisible</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">visible</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">visible</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.show</span><span class="jsdoc-syntax">();
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
+        }
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Try to focus this item.
+     */
+    </span><span class="jsdoc-var">focus </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">Roo.fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.focus</span><span class="jsdoc-syntax">();
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Disables this item.
+     */
+    </span><span class="jsdoc-var">disable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">Roo.fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.td</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-item-disabled&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.disabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.el.disabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Enables this item.
+     */
+    </span><span class="jsdoc-var">enable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">Roo.fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.td</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-item-disabled&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.disabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.el.disabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    }
+};
+
+
+</span><span class="jsdoc-comment">/**
+ * @class Roo.bootstrap.Toolbar.Separator
+ * @extends Roo.bootstrap.Toolbar.Item
+ * A simple toolbar separator class
+ * @constructor
+ * Creates a new Separator
+ */
+</span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Separator </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;span&quot;</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">s.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;ytb-sep&quot;</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Separator.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">);
+};
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Separator</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Item</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-var">enable</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">Roo.emptyFn</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">disable</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">Roo.emptyFn</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">focus</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">Roo.emptyFn
+</span><span class="jsdoc-syntax">});
+
+</span><span class="jsdoc-comment">/**
+ * @class Roo.bootstrap.Toolbar.Spacer
+ * @extends Roo.bootstrap.Toolbar.Item
+ * A simple element that adds extra horizontal space to a toolbar.
+ * @constructor
+ * Creates a new Spacer
+ */
+</span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Spacer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">s.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;ytb-spacer&quot;</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">Roo.Toolbar.Spacer.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">);
+};
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Spacer</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Item</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-var">enable</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">Roo.emptyFn</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">disable</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">Roo.emptyFn</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">focus</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">Roo.emptyFn
+</span><span class="jsdoc-syntax">});
+
+</span><span class="jsdoc-comment">/**
+ * @class Roo.bootstrap.Toolbar.Fill
+ * @extends Roo.bootstrap.Toolbar.Spacer
+ * A simple element that adds a greedy (100% width) horizontal space to a toolbar.
+ * @constructor
+ * Creates a new Spacer
+ */
+</span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Fill </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Spacer</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">render </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">td.style.width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'100%'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Fill.superclass.render.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">);
+    }
+});
+
+</span><span class="jsdoc-comment">/**
+ * @class Roo.bootstrap.Toolbar.TextItem
+ * @extends Roo.bootstrap.Toolbar.Item
+ * A simple class that renders text directly into a toolbar.
+ * @constructor
+ * Creates a new TextItem
+ * @param {String} text
+ */
+</span><span class="jsdoc-var">Roo.bootstrap.Toolbar.TextItem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'object'</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text.text</span><span class="jsdoc-syntax">;
+    }
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;span&quot;</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">s.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;ytb-text&quot;</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">s.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">Roo.bootstrap.Toolbar.TextItem.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">);
+};
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Toolbar.TextItem</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Item</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-var">enable</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">Roo.emptyFn</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">disable</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">Roo.emptyFn</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">focus</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">Roo.emptyFn
+</span><span class="jsdoc-syntax">});
+
+</span><span class="jsdoc-comment">/**
+ * @class Roo.bootstrap.Toolbar.Button
+ * @extends Roo.bootstrap.Button
+ * A button that renders into a toolbar.
+ * @constructor
+ * Creates a new Button
+ * @param {Object} config A standard {@link Roo.bootstrap.Button} config object
+ */
+</span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Button </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Button.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+};
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Button</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Button</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-var">render </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.td </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Button.superclass.render.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Removes and destroys this button
+     */
+    </span><span class="jsdoc-var">destroy </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Button.superclass.destroy.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.td.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.td</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Shows this button
+     */
+    </span><span class="jsdoc-var">show</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.hidden </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.td.style.display </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Hides this button
+     */
+    </span><span class="jsdoc-var">hide</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.hidden </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.td.style.display </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;none&quot;</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Disables this item
+     */
+    </span><span class="jsdoc-var">disable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">Roo.fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.td</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-item-disabled&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.disabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Enables this item
+     */
+    </span><span class="jsdoc-var">enable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">Roo.fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.td</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-item-disabled&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.disabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    }
+});
+</span><span class="jsdoc-comment">// backwards compat
+</span><span class="jsdoc-var">Roo.bootstrap.ToolbarButton </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Button</span><span class="jsdoc-syntax">;
+
+</span><span class="jsdoc-comment">/**
+ * @class Roo.bootstrap.Toolbar.SplitButton
+ * @extends Roo.bootstrap.SplitButton
+ * A menu button that renders into a toolbar.
+ * @constructor
+ * Creates a new SplitButton
+ * @param {Object} config A standard {@link Roo.bootstrap.SplitButton} config object
+ */
+</span><span class="jsdoc-var">Roo.bootstrap.Toolbar.SplitButton </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.bootstrap.Toolbar.SplitButton.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+};
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Toolbar.SplitButton</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.SplitButton</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-var">render </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.td </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">Roo.bootstrap.Toolbar.SplitButton.superclass.render.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Removes and destroys this button
+     */
+    </span><span class="jsdoc-var">destroy </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">Roo.bootstrap.Toolbar.SplitButton.superclass.destroy.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.td.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.td</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Shows this button
+     */
+    </span><span class="jsdoc-var">show</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.hidden </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.td.style.display </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Hides this button
+     */
+    </span><span class="jsdoc-var">hide</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.hidden </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.td.style.display </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;none&quot;</span><span class="jsdoc-syntax">;
+    }
+});
+
+</span><span class="jsdoc-comment">// backwards compat
+</span><span class="jsdoc-var">Roo.bootstrap.Toolbar.MenuButton </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.Toolbar.SplitButton</span><span class="jsdoc-syntax">;</span></code></body></html>

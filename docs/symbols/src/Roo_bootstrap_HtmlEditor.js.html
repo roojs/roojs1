@@ -129,7 +129,7 @@
     
     </span><span class="jsdoc-var">inputEl</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'textarea.form-control'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
     },
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
@@ -383,6 +383,14 @@
     </span><span class="jsdoc-comment">// private (for BoxComponent)
     </span><span class="jsdoc-var">getPositionEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.wrap</span><span class="jsdoc-syntax">;
+    },
+    
+     </span><span class="jsdoc-comment">/**
+     * Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {@link #getRawValue}.
+     * @return {Mixed} value The field value
+     */
+    </span><span class="jsdoc-var">getValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getValue</span><span class="jsdoc-syntax">();
     },
 
     </span><span class="jsdoc-comment">// private
