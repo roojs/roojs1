@@ -33,11 +33,129 @@ Roo.bootstrap.CheckBox = function(config){
 
 Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
+    inputType: 'checkbox',
+    
     
     getAutoCreate : function()
     {
+        var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
         
+        var id = Roo.id();
         
+        var cfg = {};
+        
+        if(this.inputType != 'hidden'){
+            cfg.cls = 'form-group' //input-group
+        }
+        
+        var input =  {
+            tag: 'input',
+            id : id,
+            type : this.inputType,
+            value : this.value,
+            cls : 'form-control',
+            placeholder : this.placeholder || ''
+            
+        };
+        
+        if(this.maxLength && this.maxLength != Number.MAX_VALUE){
+            input.maxLength = this.maxLength;
+        }
+        
+        if (this.disabled) {
+            input.disabled=true;
+        }
+        
+        if (this.name) {
+            input.name = this.name;
+        }
+        if (this.size) {
+            input.cls += ' input-' + this.size;
+        }
+        var settings=this;
+        ['xs','sm','md','lg'].map(function(size){
+            if (settings[size]) {
+                cfg.cls += ' col-' + size + '-' + settings[size];
+            }
+        });
+        
+        var inputblock = input;
+        
+        if (this.before || this.after) {
+            
+            inputblock = {
+                cls : 'input-group',
+                cn :  [] 
+            };
+            if (this.before) {
+                inputblock.cn.push({
+                    tag :'span',
+                    cls : 'input-group-addon',
+                    html : this.before
+                });
+            }
+            inputblock.cn.push(input);
+            if (this.after) {
+                inputblock.cn.push({
+                    tag :'span',
+                    cls : 'input-group-addon',
+                    html : this.after
+                });
+            }
+            
+        };
+        
+        if (align ==='left' && this.fieldLabel.length) {
+                Roo.log("left and has label");
+                cfg.cn = [
+                    
+                    {
+                        tag: 'label',
+                        'for' :  id,
+                        cls : 'control-label col-sm-' + this.labelWidth,
+                        html : this.fieldLabel
+                        
+                    },
+                    {
+                        cls : "col-sm-" + (12 - this.labelWidth), 
+                        cn: [
+                            inputblock
+                        ]
+                    }
+                    
+                ];
+        } else if ( this.fieldLabel.length) {
+                Roo.log(" label");
+                 cfg.cn = [
+                   
+                    {
+                        tag: 'label',
+                        //cls : 'input-group-addon',
+                        html : this.fieldLabel
+                        
+                    },
+                    
+                    inputblock
+                    
+                ];
+
+        } else {
+            
+                   Roo.log(" no label && no align");
+                cfg.cn = [
+                    
+                        inputblock
+                    
+                ];
+                
+                
+        };
+        
+        return cfg;
+        
+        if(this.checked){
+            input.checked = this.checked;
+        }
     },
     
     initEvents : function()
