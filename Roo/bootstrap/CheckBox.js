@@ -51,7 +51,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             id : id,
             type : this.inputType,
             value : this.value,
-            cls : 'form-control',
+            cls : 'form-control form-checkbox',
             placeholder : this.placeholder || ''
             
         };
