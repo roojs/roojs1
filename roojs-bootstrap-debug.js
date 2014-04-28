@@ -10892,7 +10892,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     setChecked : function(state,suppressEvent)
     {
-    
+        Roo.log('state');
+        Roo.log(state);
         this.checked = state;
         
         if(suppressEvent !== true){
