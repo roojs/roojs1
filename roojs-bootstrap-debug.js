@@ -10702,6 +10702,7 @@ Roo.apply(Roo.bootstrap.DateField,  {
  * 
  * @cfg {String} valueOff The value that should go into the generated input element's value when unchecked.
  * @cfg {String} boxLabel The text that appears beside the checkbox
+ * @cfg {Boolean} checked initnal the element
  * 
  * @constructor
  * Create a new CheckBox
@@ -10727,6 +10728,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     inputType: 'checkbox',
     valueOff: '',
     boxLabel: false,
+    checked: false,
     
     getAutoCreate : function()
     {
@@ -10742,7 +10744,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             tag: 'input',
             id : id,
             type : this.inputType,
-            value : this.value,
+            value : (this.checked) ? this.valueOff : this.value,
             cls : 'form-box',
             placeholder : this.placeholder || ''
             
@@ -10869,6 +10871,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     initEvents : function()
     {
         Roo.bootstrap.CheckBox.superclass.initEvents.call(this);
+        
         this.inputEl().on('click', this.onClick,  this);
     },
     
@@ -10882,11 +10885,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
 //    },
     
     onClick : function()
-    {
-        if(this.inputType != 'checkbox' && this.inputType != 'radio'){
-            return;
-        }
-        
+    {   
         this.setChecked(!this.checked);
     },
     
