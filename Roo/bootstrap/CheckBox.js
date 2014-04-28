@@ -11,6 +11,7 @@
  * Bootstrap CheckBox class
  * 
  * @cfg {String} valueOff The value that should go into the generated input element's value when unchecked.
+ * @cfg {String} boxLabel The value that should go into the generated input element's value when unchecked.
  * 
  * @constructor
  * Create a new CheckBox
@@ -24,7 +25,7 @@ Roo.bootstrap.CheckBox = function(config){
             /**
             * @event check
             * Fires when the element is checked or unchecked.
-            * @param {Roo.bootstrap.Input} this This input
+            * @param {Roo.bootstrap.CheckBox} this This input
             * @param {Boolean} checked The new checked value
             */
            check : true
