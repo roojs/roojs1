@@ -116,7 +116,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                         
                     },
                     {
-                        cls : "col-sm-" + (12 - this.labelWidth), 
+                        cls : "col-md-" + (12 - this.labelWidth), 
                         cn: [
                             inputblock
                         ]
