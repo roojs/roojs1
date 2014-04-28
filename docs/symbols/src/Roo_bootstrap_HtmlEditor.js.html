@@ -303,37 +303,37 @@
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">onResize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-comment">//Roo.log('resize: ' +w + ',' + h );
-        </span><span class="jsdoc-var">Roo.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.HtmlEditor.superclass.onResize.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">() &amp;&amp; </span><span class="jsdoc-var">this.iframe</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'number'</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">aw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.wrap.getFrameWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'lr'</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.adjustWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'textarea'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">aw</span><span class="jsdoc-syntax">));
-                </span><span class="jsdoc-var">this.iframe.style.width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">aw </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px'</span><span class="jsdoc-syntax">;
-            }
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'number'</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tbh </span><span class="jsdoc-syntax">= 0;
-                </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.toolbars.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
-                    </span><span class="jsdoc-comment">// fixme - ask toolbars for heights?
-                    </span><span class="jsdoc-var">tbh </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.tb.el.getHeight</span><span class="jsdoc-syntax">();
-                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.footer</span><span class="jsdoc-syntax">) {
-                        </span><span class="jsdoc-var">tbh </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.footer.el.getHeight</span><span class="jsdoc-syntax">();
-                    }
-                }
-                
-                
-                
-                
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ah </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.wrap.getFrameWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tb'</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">tbh</span><span class="jsdoc-syntax">;</span><span class="jsdoc-comment">// this.tb.el.getHeight();
-                </span><span class="jsdoc-var">ah </span><span class="jsdoc-syntax">-= 5; </span><span class="jsdoc-comment">// knock a few pixes off for look..
-                </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.adjustWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'textarea'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ah</span><span class="jsdoc-syntax">));
-                </span><span class="jsdoc-var">this.iframe.style.height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ah </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px'</span><span class="jsdoc-syntax">;
-                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.doc</span><span class="jsdoc-syntax">){
-                    (</span><span class="jsdoc-var">this.doc.body </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.doc.documentElement</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.style.height </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">ah </span><span class="jsdoc-syntax">- (</span><span class="jsdoc-var">this.iframePad</span><span class="jsdoc-syntax">*2)) + </span><span class="jsdoc-string">'px'</span><span class="jsdoc-syntax">;
-                }
-            }
-        }
-    },
+</span><span class="jsdoc-comment">//        //Roo.log('resize: ' +w + ',' + h );
+//        Roo.inputEl().HtmlEditor.superclass.onResize.apply(this, arguments);
+//        if(this.inputEl() &amp;&amp; this.iframe){
+//            if(typeof w == 'number'){
+//                var aw = w - this.wrap.getFrameWidth('lr');
+//                this.inputEl().setWidth(this.adjustWidth('textarea', aw));
+//                this.iframe.style.width = aw + 'px';
+//            }
+//            if(typeof h == 'number'){
+//                var tbh = 0;
+//                for (var i =0; i &lt; this.toolbars.length;i++) {
+//                    // fixme - ask toolbars for heights?
+//                    tbh += this.toolbars[i].tb.el.getHeight();
+//                    if (this.toolbars[i].footer) {
+//                        tbh += this.toolbars[i].footer.el.getHeight();
+//                    }
+//                }
+//                
+//                
+//                
+//                
+//                var ah = h - this.wrap.getFrameWidth('tb') - tbh;// this.tb.el.getHeight();
+//                ah -= 5; // knock a few pixes off for look..
+//                this.inputEl().setHeight(this.adjustWidth('textarea', ah));
+//                this.iframe.style.height = ah + 'px';
+//                if(this.doc){
+//                    (this.doc.body || this.doc.documentElement).style.height = (ah - (this.iframePad*2)) + 'px';
+//                }
+//            }
+//        }
+    </span><span class="jsdoc-syntax">},
 
     </span><span class="jsdoc-comment">/**
      * Toggles the editor between standard and source edit mode.

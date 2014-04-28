@@ -486,29 +486,29 @@
 
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">onResize</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-var">Roo.bootstrap.ComboBox.superclass.onResize.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">);
-        
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'number'</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-comment">// we do not handle it!?!?
-            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-        }
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.trigger.getWidth</span><span class="jsdoc-syntax">();
-       </span><span class="jsdoc-comment">// tw += this.addicon ? this.addicon.getWidth() : 0;
-       // tw += this.editicon ? this.editicon.getWidth() : 0;
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">tw</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setWidth</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.adjustWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">));
-            
-        </span><span class="jsdoc-comment">//this.trigger.setStyle('left', x+'px');
-        
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.list </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.listWidth </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.trigger.getWidth</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">this.minListWidth</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">this.list.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lw</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">this.innerList.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lw </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.list.getFrameWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'lr'</span><span class="jsdoc-syntax">));
-        }
+</span><span class="jsdoc-comment">//        Roo.bootstrap.ComboBox.superclass.onResize.apply(this, arguments);
+//        
+//        if(typeof w != 'number'){
+//            // we do not handle it!?!?
+//            return;
+//        }
+//        var tw = this.trigger.getWidth();
+//       // tw += this.addicon ? this.addicon.getWidth() : 0;
+//       // tw += this.editicon ? this.editicon.getWidth() : 0;
+//        var x = w - tw;
+//        this.inputEl().setWidth( this.adjustWidth('input', x));
+//            
+//        //this.trigger.setStyle('left', x+'px');
+//        
+//        if(this.list &amp;&amp; this.listWidth === undefined){
+//            var lw = Math.max(x + this.trigger.getWidth(), this.minListWidth);
+//            this.list.setWidth(lw);
+//            this.innerList.setWidth(lw - this.list.getFrameWidth('lr'));
+//        }
         
     
         
-    },
+    </span><span class="jsdoc-syntax">},
 
     </span><span class="jsdoc-comment">/**
      * Allow or prevent the user from directly editing the field text.  If false is passed,
