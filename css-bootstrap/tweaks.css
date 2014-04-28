@@ -18,6 +18,10 @@
 .box-label {
     width: 100%;
 }
+
+.box-label:parent span {
+    margin-left: 5px;
+}
 /*.form-box input {
     height: 15px;
     width: 15px;
