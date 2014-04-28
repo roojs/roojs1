@@ -56,10 +56,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             
         };
         
-        if(this.maxLength && this.maxLength != Number.MAX_VALUE){
-            input.maxLength = this.maxLength;
-        }
-        
         if (this.disabled) {
             input.disabled=true;
         }
