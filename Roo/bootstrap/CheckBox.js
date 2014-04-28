@@ -34,6 +34,7 @@ Roo.bootstrap.CheckBox = function(config){
 Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     inputType: 'checkbox',
+    labelWidth: 12,
     valueOff: '',
     
     getAutoCreate : function()
@@ -129,6 +130,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                    
                     {
                         tag: 'label',
+                        'for'
                         //cls : 'input-group-addon',
                         html : this.fieldLabel
                         
