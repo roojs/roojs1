@@ -10,6 +10,8 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap CheckBox class
  * 
+ * @cfg {String} valueOff The value that should go into the generated input element's value when unchecked.
+ * 
  * @constructor
  * Create a new CheckBox
  * @param {Object} config The config object
@@ -32,8 +34,14 @@ Roo.bootstrap.CheckBox = function(config){
 Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     
-    getAutoCreate : function(){
+    getAutoCreate : function()
+    {
         
+        
+    },
+    
+    initEvents : function()
+    {
         
     }
     
