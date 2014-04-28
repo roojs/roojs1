@@ -16,7 +16,7 @@
  * @param {Object} config The config object
  */
 
-Roo.Toolbar = function(container, buttons, config)
+Roo.bootstrap.Toolbar = function(container, buttons, config)
 {
     /// old consturctor format still supported..
     if(container instanceof Array){ // omit the container for later rendering
@@ -47,7 +47,7 @@ Roo.Toolbar = function(container, buttons, config)
     
 };
 
-Roo.Toolbar.prototype = {
+Roo.bootstrap.Toolbar.prototype = {
     /**
      * @cfg {Array} items
      * array of button configs or elements to add (will be converted to a MixedCollection)
@@ -157,35 +157,35 @@ Roo.Toolbar.prototype = {
     
     /**
      * Adds a separator
-     * @return {Roo.Toolbar.Item} The separator item
+     * @return {Roo.bootstrap.Toolbar.Item} The separator item
      */
     addSeparator : function(){
-        return this.addItem(new Roo.Toolbar.Separator());
+        return this.addItem(new Roo.bootstrap.Toolbar.Separator());
     },
 
     /**
      * Adds a spacer element
-     * @return {Roo.Toolbar.Spacer} The spacer item
+     * @return {Roo.bootstrap.Toolbar.Spacer} The spacer item
      */
     addSpacer : function(){
-        return this.addItem(new Roo.Toolbar.Spacer());
+        return this.addItem(new Roo.bootstrap.Toolbar.Spacer());
     },
 
     /**
      * Adds a fill element that forces subsequent additions to the right side of the toolbar
-     * @return {Roo.Toolbar.Fill} The fill item
+     * @return {Roo.bootstrap.Toolbar.Fill} The fill item
      */
     addFill : function(){
-        return this.addItem(new Roo.Toolbar.Fill());
+        return this.addItem(new Roo.bootstrap.Toolbar.Fill());
     },
 
     /**
      * Adds any standard HTML element to the toolbar
      * @param {String/HTMLElement/Element} el The element or id of the element to add
-     * @return {Roo.Toolbar.Item} The element's item
+     * @return {Roo.bootstrap.Toolbar.Item} The element's item
      */
     addElement : function(el){
-        return this.addItem(new Roo.Toolbar.Item(el));
+        return this.addItem(new Roo.bootstrap.Toolbar.Item(el));
     },
     /**
      * Collection of items on the toolbar.. (only Toolbar Items, so use fields to retrieve fields)
@@ -195,8 +195,8 @@ Roo.Toolbar.prototype = {
      
     /**
      * Adds any Toolbar.Item or subclass
-     * @param {Roo.Toolbar.Item} item
-     * @return {Roo.Toolbar.Item} The item
+     * @param {Roo.bootstrap.Toolbar.Item} item
+     * @return {Roo.bootstrap.Toolbar.Item} The item
      */
     addItem : function(item){
         var td = this.nextBlock();
@@ -208,7 +208,7 @@ Roo.Toolbar.prototype = {
     /**
      * Adds a button (or buttons). See {@link Roo.Toolbar.Button} for more info on the config.
      * @param {Object/Array} config A button config or array of configs
-     * @return {Roo.Toolbar.Button/Array}
+     * @return {Roo.bootstrap.Toolbar.Button/Array}
      */
     addButton : function(config){
         if(config instanceof Array){
@@ -221,8 +221,8 @@ Roo.Toolbar.prototype = {
         var b = config;
         if(!(config instanceof Roo.Toolbar.Button)){
             b = config.split ?
-                new Roo.Toolbar.SplitButton(config) :
-                new Roo.Toolbar.Button(config);
+                new Roo.bootstrap.Toolbar.SplitButton(config) :
+                new Roo.bootstrap.Toolbar.Button(config);
         }
         var td = this.nextBlock();
         b.render(td);
@@ -233,17 +233,17 @@ Roo.Toolbar.prototype = {
     /**
      * Adds text to the toolbar
      * @param {String} text The text to add
-     * @return {Roo.Toolbar.Item} The element's item
+     * @return {Roo.bootstrap.Toolbar.Item} The element's item
      */
     addText : function(text){
-        return this.addItem(new Roo.Toolbar.TextItem(text));
+        return this.addItem(new Roo.bootstrap.Toolbar.TextItem(text));
     },
     
     /**
-     * Inserts any {@link Roo.Toolbar.Item}/{@link Roo.Toolbar.Button} at the specified index.
+     * Inserts any {@link Roo.Toolbar.Item}/{@link Roo.bootstrap.Toolbar.Button} at the specified index.
      * @param {Number} index The index where the item is to be inserted
-     * @param {Object/Roo.Toolbar.Item/Roo.Toolbar.Button (may be Array)} item The button, or button config object to be inserted.
-     * @return {Roo.Toolbar.Button/Item}
+     * @param {Object/Roo.bootstrap.Toolbar.Item/Roo.bootstrap.Toolbar.Button (may be Array)} item The button, or button config object to be inserted.
+     * @return {Roo.bootstrap.Toolbar.Button/Item}
      */
     insertButton : function(index, item){
         if(item instanceof Array){
@@ -253,8 +253,8 @@ Roo.Toolbar.prototype = {
             }
             return buttons;
         }
-        if (!(item instanceof Roo.Toolbar.Button)){
-           item = new Roo.Toolbar.Button(item);
+        if (!(item instanceof Roo.bootstrap.Toolbar.Button)){
+           item = new Roo.bootstrap.Toolbar.Button(item);
         }
         var td = document.createElement("td");
         this.tr.insertBefore(td, this.tr.childNodes[index]);
@@ -266,12 +266,12 @@ Roo.Toolbar.prototype = {
     /**
      * Adds a new element to the toolbar from the passed {@link Roo.DomHelper} config.
      * @param {Object} config
-     * @return {Roo.Toolbar.Item} The element's item
+     * @return {Roo.bootstrap.Toolbar.Item} The element's item
      */
     addDom : function(config, returnEl){
         var td = this.nextBlock();
         Roo.DomHelper.overwrite(td, config);
-        var ti = new Roo.Toolbar.Item(td.firstChild);
+        var ti = new Roo.bootstrap.Toolbar.Item(td.firstChild);
         ti.render(td);
         this.items.add(ti);
         return ti;
@@ -287,8 +287,8 @@ Roo.Toolbar.prototype = {
      * Adds a dynamically rendered Roo.form field (TextField, ComboBox, etc).
      * Note: the field should not have been rendered yet. For a field that has already been
      * rendered, use {@link #addElement}.
-     * @param {Roo.form.Field} field
-     * @return {Roo.ToolbarItem}
+     * @param {Roo.bootstrap.Input} field
+     * @return {Roo.bootstrap.ToolbarItem}
      */
      
       
@@ -303,7 +303,7 @@ Roo.Toolbar.prototype = {
         
         var td = this.nextBlock();
         field.render(td);
-        var ti = new Roo.Toolbar.Item(td.firstChild);
+        var ti = new Roo.bootstrap.Toolbar.Item(td.firstChild);
         ti.render(td);
         this.items.add(ti);
         this.fields.add(field);
@@ -355,13 +355,13 @@ Roo.Toolbar.prototype = {
  * Creates a new Item
  * @param {HTMLElement} el 
  */
-Roo.Toolbar.Item = function(el){
+Roo.bootstrap.Toolbar.Item = function(el){
     this.el = Roo.getDom(el);
     this.id = Roo.id(this.el);
     this.hidden = false;
 };
 
-Roo.Toolbar.Item.prototype = {
+Roo.bootstrap.Toolbar.Item.prototype = {
     
     /**
      * Get this item's HTML Element
@@ -440,101 +440,101 @@ Roo.Toolbar.Item.prototype = {
 
 
 /**
- * @class Roo.Toolbar.Separator
- * @extends Roo.Toolbar.Item
+ * @class Roo.bootstrap.Toolbar.Separator
+ * @extends Roo.bootstrap.Toolbar.Item
  * A simple toolbar separator class
  * @constructor
  * Creates a new Separator
  */
-Roo.Toolbar.Separator = function(){
+Roo.bootstrap.Toolbar.Separator = function(){
     var s = document.createElement("span");
     s.className = "ytb-sep";
-    Roo.Toolbar.Separator.superclass.constructor.call(this, s);
+    Roo.bootstrap.Toolbar.Separator.superclass.constructor.call(this, s);
 };
-Roo.extend(Roo.Toolbar.Separator, Roo.Toolbar.Item, {
+Roo.extend(Roo.bootstrap.Toolbar.Separator, Roo.bootstrap.Toolbar.Item, {
     enable:Roo.emptyFn,
     disable:Roo.emptyFn,
     focus:Roo.emptyFn
 });
 
 /**
- * @class Roo.Toolbar.Spacer
- * @extends Roo.Toolbar.Item
+ * @class Roo.bootstrap.Toolbar.Spacer
+ * @extends Roo.bootstrap.Toolbar.Item
  * A simple element that adds extra horizontal space to a toolbar.
  * @constructor
  * Creates a new Spacer
  */
-Roo.Toolbar.Spacer = function(){
+Roo.bootstrap.Toolbar.Spacer = function(){
     var s = document.createElement("div");
     s.className = "ytb-spacer";
     Roo.Toolbar.Spacer.superclass.constructor.call(this, s);
 };
-Roo.extend(Roo.Toolbar.Spacer, Roo.Toolbar.Item, {
+Roo.extend(Roo.bootstrap.Toolbar.Spacer, Roo.bootstrap.Toolbar.Item, {
     enable:Roo.emptyFn,
     disable:Roo.emptyFn,
     focus:Roo.emptyFn
 });
 
 /**
- * @class Roo.Toolbar.Fill
- * @extends Roo.Toolbar.Spacer
+ * @class Roo.bootstrap.Toolbar.Fill
+ * @extends Roo.bootstrap.Toolbar.Spacer
  * A simple element that adds a greedy (100% width) horizontal space to a toolbar.
  * @constructor
  * Creates a new Spacer
  */
-Roo.Toolbar.Fill = Roo.extend(Roo.Toolbar.Spacer, {
+Roo.bootstrap.Toolbar.Fill = Roo.extend(Roo.bootstrap.Toolbar.Spacer, {
     // private
     render : function(td){
         td.style.width = '100%';
-        Roo.Toolbar.Fill.superclass.render.call(this, td);
+        Roo.bootstrap.Toolbar.Fill.superclass.render.call(this, td);
     }
 });
 
 /**
- * @class Roo.Toolbar.TextItem
- * @extends Roo.Toolbar.Item
+ * @class Roo.bootstrap.Toolbar.TextItem
+ * @extends Roo.bootstrap.Toolbar.Item
  * A simple class that renders text directly into a toolbar.
  * @constructor
  * Creates a new TextItem
  * @param {String} text
  */
-Roo.Toolbar.TextItem = function(text){
+Roo.bootstrap.Toolbar.TextItem = function(text){
     if (typeof(text) == 'object') {
         text = text.text;
     }
     var s = document.createElement("span");
     s.className = "ytb-text";
     s.innerHTML = text;
-    Roo.Toolbar.TextItem.superclass.constructor.call(this, s);
+    Roo.bootstrap.Toolbar.TextItem.superclass.constructor.call(this, s);
 };
-Roo.extend(Roo.Toolbar.TextItem, Roo.Toolbar.Item, {
+Roo.extend(Roo.bootstrap.Toolbar.TextItem, Roo.bootstrap.Toolbar.Item, {
     enable:Roo.emptyFn,
     disable:Roo.emptyFn,
     focus:Roo.emptyFn
 });
 
 /**
- * @class Roo.Toolbar.Button
- * @extends Roo.Button
+ * @class Roo.bootstrap.Toolbar.Button
+ * @extends Roo.bootstrap.Button
  * A button that renders into a toolbar.
  * @constructor
  * Creates a new Button
- * @param {Object} config A standard {@link Roo.Button} config object
+ * @param {Object} config A standard {@link Roo.bootstrap.Button} config object
  */
-Roo.Toolbar.Button = function(config){
-    Roo.Toolbar.Button.superclass.constructor.call(this, null, config);
+Roo.bootstrap.Toolbar.Button = function(config){
+    Roo.bootstrap.Toolbar.Button.superclass.constructor.call(this, null, config);
 };
-Roo.extend(Roo.Toolbar.Button, Roo.Button, {
+Roo.extend(Roo.bootstrap.Toolbar.Button, Roo.bootstrap.Button, {
     render : function(td){
         this.td = td;
-        Roo.Toolbar.Button.superclass.render.call(this, td);
+        Roo.bootstrap.Toolbar.Button.superclass.render.call(this, td);
     },
     
     /**
      * Removes and destroys this button
      */
     destroy : function(){
-        Roo.Toolbar.Button.superclass.destroy.call(this);
+        Roo.bootstrap.Toolbar.Button.superclass.destroy.call(this);
         this.td.parentNode.removeChild(this.td);
     },
     
@@ -571,30 +571,30 @@ Roo.extend(Roo.Toolbar.Button, Roo.Button, {
     }
 });
 // backwards compat
-Roo.ToolbarButton = Roo.Toolbar.Button;
+Roo.bootstrap.ToolbarButton = Roo.bootstrap.Toolbar.Button;
 
 /**
- * @class Roo.Toolbar.SplitButton
- * @extends Roo.SplitButton
+ * @class Roo.bootstrap.Toolbar.SplitButton
+ * @extends Roo.bootstrap.SplitButton
  * A menu button that renders into a toolbar.
  * @constructor
  * Creates a new SplitButton
- * @param {Object} config A standard {@link Roo.SplitButton} config object
+ * @param {Object} config A standard {@link Roo.bootstrap.SplitButton} config object
  */
-Roo.Toolbar.SplitButton = function(config){
-    Roo.Toolbar.SplitButton.superclass.constructor.call(this, null, config);
+Roo.bootstrap.Toolbar.SplitButton = function(config){
+    Roo.bootstrap.Toolbar.SplitButton.superclass.constructor.call(this, null, config);
 };
-Roo.extend(Roo.Toolbar.SplitButton, Roo.SplitButton, {
+Roo.extend(Roo.bootstrap.Toolbar.SplitButton, Roo.bootstrap.SplitButton, {
     render : function(td){
         this.td = td;
-        Roo.Toolbar.SplitButton.superclass.render.call(this, td);
+        Roo.bootstrap.Toolbar.SplitButton.superclass.render.call(this, td);
     },
     
     /**
      * Removes and destroys this button
      */
     destroy : function(){
-        Roo.Toolbar.SplitButton.superclass.destroy.call(this);
+        Roo.bootstrap.Toolbar.SplitButton.superclass.destroy.call(this);
         this.td.parentNode.removeChild(this.td);
     },
     
@@ -616,4 +616,4 @@ Roo.extend(Roo.Toolbar.SplitButton, Roo.SplitButton, {
 });
 
 // backwards compat
-Roo.Toolbar.MenuButton = Roo.Toolbar.SplitButton;
+Roo.bootstrap.Toolbar.MenuButton = Roo.bootstrap.Toolbar.SplitButton;
