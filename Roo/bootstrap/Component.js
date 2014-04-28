@@ -180,6 +180,9 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     addxtypeChild : function (tree, cntr)
     {
         var cn = this;
+        
+        
+        
         cntr = typeof(cntr == 'undefined' ) ? 'getChildContainer' : cntr;
         
         

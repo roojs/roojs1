@@ -35465,7 +35465,8 @@ Roo.extend(Roo.menu.Menu, Roo.util.Observable, {
             tag: "a", cls: "x-menu-focus", href: "#", onclick: "return false;", tabIndex:"-1"
         });
         var ul = el.createChild({tag: "ul", cls: "x-menu-list"});
-        ul.on("click", this.onClick, this);
+        ul.on(Roo.isTouch ? 'touchstart' : 'click'   , this.onClick, this);
+        
         ul.on("mouseover", this.onMouseOver, this);
         ul.on("mouseout", this.onMouseOut, this);
         this.items.each(function(item){
@@ -35518,11 +35519,28 @@ Roo.extend(Roo.menu.Menu, Roo.util.Observable, {
 
     // private
     onClick : function(e){
-        var t;
-        if(t = this.findTargetItem(e)){
-            t.onClick(e);
-            this.fireEvent("click", this, t, e);
+        Roo.log("menu.onClick");
+        var t = this.findTargetItem(e);
+        if(!t){
+            return;
         }
+        Roo.log(e);
+        if (Roo.isTouch && e.type == 'touchstart' && t.menu  && !t.disabled) {
+            if(t == this.activeItem && t.shouldDeactivate(e)){
+                this.activeItem.deactivate();
+                delete this.activeItem;
+                return;
+            }
+            if(t.canActivate){
+                this.setActiveItem(t, true);
+            }
+            return;
+            
+            
+        }
+        
+        t.onClick(e);
+        this.fireEvent("click", this, t, e);
     },
 
     // private
@@ -51545,7 +51563,9 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
         var v = this.view;
         var header = v.findHeaderIndex(t);
         if(header !== false){
-            this.fireEvent("header" + (name == 'touchstart' ? 'click' : name), this, header, e);
+            var ename = name == 'touchstart' ? 'click' : name;
+             
+            this.fireEvent("header" + ename, this, header, e);
         }else{
             var row = v.findRowIndex(t);
             var cell = v.findCellIndex(t);
@@ -53267,7 +53287,17 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
     },
 
 
-    handleHeaderClick : function(g, index){
+    handleHeaderClick : function(g, index,e){
+        
+        Roo.log("header click");
+        
+        if (Roo.isTouch) {
+            // touch events on header are handled by context
+            this.handleHdCtx(g,index,e);
+            return;
+        }
+        
+        
         if(this.headersDisabled){
             return;
         }
@@ -53380,6 +53410,15 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                     cm.setLocked(index, false);
                 }
             break;
+            case 'wider': // used to expand cols on touch..
+            case 'narrow':
+                var cw = cm.getColumnWidth(index);
+                cw += (item.id == 'wider' ? 1 : -1) * 50;
+                cw = Math.max(0, cw);
+                cw = Math.min(cw,4000);
+                cm.setColumnWidth(index, cw);
+                break;
+                
             default:
                 index = cm.getIndexById(item.id.substr(4));
                 if(index != -1){
@@ -53509,6 +53548,15 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                     {id:"unlock", text: this.unlockText, cls: "xg-hmenu-unlock"}
                 );
             }
+            if (Roo.isTouch) {
+                 this.hmenu.add('-',
+                    {id:"wider", text: this.columnsWiderText},
+                    {id:"narrow", text: this.columnsNarrowText }
+                );
+                
+                 
+            }
+            
             if(this.grid.enableColumnHide !== false){
 
                 this.colMenu = new Roo.menu.Menu({id:this.grid.id + "-hcols-menu"});
@@ -53711,7 +53759,10 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
     sortDescText : "Sort Descending",
     lockText : "Lock Column",
     unlockText : "Unlock Column",
-    columnsText : "Columns"
+    columnsText : "Columns",
+ 
+    columnsWiderText : "Wider",
+    columnsNarrowText : "Thinner"
 });
 
 

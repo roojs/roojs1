@@ -146,7 +146,8 @@ Roo.extend(Roo.menu.Menu, Roo.util.Observable, {
             tag: "a", cls: "x-menu-focus", href: "#", onclick: "return false;", tabIndex:"-1"
         });
         var ul = el.createChild({tag: "ul", cls: "x-menu-list"});
-        ul.on("click", this.onClick, this);
+        ul.on(Roo.isTouch ? 'touchstart' : 'click'   , this.onClick, this);
+        
         ul.on("mouseover", this.onMouseOver, this);
         ul.on("mouseout", this.onMouseOut, this);
         this.items.each(function(item){
@@ -199,11 +200,28 @@ Roo.extend(Roo.menu.Menu, Roo.util.Observable, {
 
     // private
     onClick : function(e){
-        var t;
-        if(t = this.findTargetItem(e)){
-            t.onClick(e);
-            this.fireEvent("click", this, t, e);
+        Roo.log("menu.onClick");
+        var t = this.findTargetItem(e);
+        if(!t){
+            return;
         }
+        Roo.log(e);
+        if (Roo.isTouch && e.type == 'touchstart' && t.menu  && !t.disabled) {
+            if(t == this.activeItem && t.shouldDeactivate(e)){
+                this.activeItem.deactivate();
+                delete this.activeItem;
+                return;
+            }
+            if(t.canActivate){
+                this.setActiveItem(t, true);
+            }
+            return;
+            
+            
+        }
+        
+        t.onClick(e);
+        this.fireEvent("click", this, t, e);
     },
 
     // private

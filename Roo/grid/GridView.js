@@ -1225,7 +1225,17 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
     },
 
 
-    handleHeaderClick : function(g, index){
+    handleHeaderClick : function(g, index,e){
+        
+        Roo.log("header click");
+        
+        if (Roo.isTouch) {
+            // touch events on header are handled by context
+            this.handleHdCtx(g,index,e);
+            return;
+        }
+        
+        
         if(this.headersDisabled){
             return;
         }
@@ -1338,6 +1348,15 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                     cm.setLocked(index, false);
                 }
             break;
+            case 'wider': // used to expand cols on touch..
+            case 'narrow':
+                var cw = cm.getColumnWidth(index);
+                cw += (item.id == 'wider' ? 1 : -1) * 50;
+                cw = Math.max(0, cw);
+                cw = Math.min(cw,4000);
+                cm.setColumnWidth(index, cw);
+                break;
+                
             default:
                 index = cm.getIndexById(item.id.substr(4));
                 if(index != -1){
@@ -1467,6 +1486,15 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                     {id:"unlock", text: this.unlockText, cls: "xg-hmenu-unlock"}
                 );
             }
+            if (Roo.isTouch) {
+                 this.hmenu.add('-',
+                    {id:"wider", text: this.columnsWiderText},
+                    {id:"narrow", text: this.columnsNarrowText }
+                );
+                
+                 
+            }
+            
             if(this.grid.enableColumnHide !== false){
 
                 this.colMenu = new Roo.menu.Menu({id:this.grid.id + "-hcols-menu"});
@@ -1669,7 +1697,10 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
     sortDescText : "Sort Descending",
     lockText : "Lock Column",
     unlockText : "Unlock Column",
-    columnsText : "Columns"
+    columnsText : "Columns",
+ 
+    columnsWiderText : "Wider",
+    columnsNarrowText : "Thinner"
 });
 
 

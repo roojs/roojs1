@@ -541,7 +541,9 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
         var v = this.view;
         var header = v.findHeaderIndex(t);
         if(header !== false){
-            this.fireEvent("header" + (name == 'touchstart' ? 'click' : name), this, header, e);
+            var ename = name == 'touchstart' ? 'click' : name;
+             
+            this.fireEvent("header" + ename, this, header, e);
         }else{
             var row = v.findRowIndex(t);
             var cell = v.findCellIndex(t);
