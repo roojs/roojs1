@@ -154,21 +154,6 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         
     },
     
-    /**
-     * return the real input element.
-     */
-    inputEl: function ()
-    {
-        return this.el.select('input.form-box',true).first();
-    },
-    
-    initEvents : function()
-    {
-        Roo.bootstrap.CheckBox.superclass.initEvents.call(this);
-        
-        this.inputEl().on('click', this.onClick,  this);
-    },
-    
     getGroupValue : function()
     {
         if(typeof(this.inputEl().up('form').child('input[name='+this.inputEl().dom.name+']:checked', true)) == 'undefined'){
@@ -176,24 +161,6 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         }
         
         return this.inputEl().up('form').child('input[name='+this.inputEl().dom.name+']:checked', true).value;
-    },
-    
-    onClick : function()
-    {   
-        this.setChecked(!this.checked);
-    },
-    
-    setChecked : function(state,suppressEvent)
-    {
-    
-        this.checked = state;
-        
-        if(suppressEvent !== true){
-            this.fireEvent('check', this, state);
-        }
-        
-        this.inputEl().dom.value = state ? this.value : this.valueOff;
-        
     },
     
     /**
