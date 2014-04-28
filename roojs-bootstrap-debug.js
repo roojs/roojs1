@@ -12502,19 +12502,20 @@ Roo.bootstrap.HtmlEditor.swapCodes   =[
 
 Roo.bootstrap.HtmlEditor.ToolbarStandard = function(config)
 {   
-    Roo.apply(this, config);
-    
-    // default disabled, based on 'good practice'..
-    this.disable = this.disable || {};
-    Roo.applyIf(this.disable, {
-        fontSize : true,
-        colors : true,
-        specialElements : true
-    });
+    Roo.bootstrap.HtmlEditor.ToolbarStandard.superclass.constructor.call(this, config);
+//    Roo.apply(this, config);
+//    
+//    // default disabled, based on 'good practice'..
+//    this.disable = this.disable || {};
+//    Roo.applyIf(this.disable, {
+//        fontSize : true,
+//        colors : true,
+//        specialElements : true
+//    });
     
 }
 
-Roo.apply(Roo.bootstrap.HtmlEditor.ToolbarStandard.prototype,  {
+Roo.extend(Roo.bootstrap.HtmlEditor.ToolbarStandard, Roo.bootstrap.Component,  {
     
     tb: false,
     
@@ -12702,53 +12703,53 @@ Roo.apply(Roo.bootstrap.HtmlEditor.ToolbarStandard.prototype,  {
         
         
         if(!this.disable.colors){
-            tb.add(
-                '-', {
-                    id:editor.frameId +'-forecolor',
-                    cls:'x-btn-icon x-edit-forecolor',
-                    clickEvent:'mousedown',
-                    tooltip: this.buttonTips['forecolor'] || undefined,
-                    tabIndex:-1,
-                    menu : new Roo.menu.ColorMenu({
-                        allowReselect: true,
-                        focus: Roo.emptyFn,
-                        value:'000000',
-                        plain:true,
-                        selectHandler: function(cp, color){
-                            editor.execCmd('forecolor', Roo.isSafari || Roo.isIE ? '#'+color : color);
-                            editor.deferFocus();
-                        },
-                        scope: editor,
-                        clickEvent:'mousedown'
-                    })
-                }, {
-                    id:editor.frameId +'backcolor',
-                    cls:'x-btn-icon x-edit-backcolor',
-                    clickEvent:'mousedown',
-                    tooltip: this.buttonTips['backcolor'] || undefined,
-                    tabIndex:-1,
-                    menu : new Roo.menu.ColorMenu({
-                        focus: Roo.emptyFn,
-                        value:'FFFFFF',
-                        plain:true,
-                        allowReselect: true,
-                        selectHandler: function(cp, color){
-                            if(Roo.isGecko){
-                                editor.execCmd('useCSS', false);
-                                editor.execCmd('hilitecolor', color);
-                                editor.execCmd('useCSS', true);
-                                editor.deferFocus();
-                            }else{
-                                editor.execCmd(Roo.isOpera ? 'hilitecolor' : 'backcolor', 
-                                    Roo.isSafari || Roo.isIE ? '#'+color : color);
-                                editor.deferFocus();
-                            }
-                        },
-                        scope:editor,
-                        clickEvent:'mousedown'
-                    })
-                }
-            );
+//            tb.add(
+//                '-', {
+//                    id:editor.frameId +'-forecolor',
+//                    cls:'x-btn-icon x-edit-forecolor',
+//                    clickEvent:'mousedown',
+//                    tooltip: this.buttonTips['forecolor'] || undefined,
+//                    tabIndex:-1,
+//                    menu : new Roo.menu.ColorMenu({
+//                        allowReselect: true,
+//                        focus: Roo.emptyFn,
+//                        value:'000000',
+//                        plain:true,
+//                        selectHandler: function(cp, color){
+//                            editor.execCmd('forecolor', Roo.isSafari || Roo.isIE ? '#'+color : color);
+//                            editor.deferFocus();
+//                        },
+//                        scope: editor,
+//                        clickEvent:'mousedown'
+//                    })
+//                }, {
+//                    id:editor.frameId +'backcolor',
+//                    cls:'x-btn-icon x-edit-backcolor',
+//                    clickEvent:'mousedown',
+//                    tooltip: this.buttonTips['backcolor'] || undefined,
+//                    tabIndex:-1,
+//                    menu : new Roo.menu.ColorMenu({
+//                        focus: Roo.emptyFn,
+//                        value:'FFFFFF',
+//                        plain:true,
+//                        allowReselect: true,
+//                        selectHandler: function(cp, color){
+//                            if(Roo.isGecko){
+//                                editor.execCmd('useCSS', false);
+//                                editor.execCmd('hilitecolor', color);
+//                                editor.execCmd('useCSS', true);
+//                                editor.deferFocus();
+//                            }else{
+//                                editor.execCmd(Roo.isOpera ? 'hilitecolor' : 'backcolor', 
+//                                    Roo.isSafari || Roo.isIE ? '#'+color : color);
+//                                editor.deferFocus();
+//                            }
+//                        },
+//                        scope:editor,
+//                        clickEvent:'mousedown'
+//                    })
+//                }
+//            );
         };
         // now add all the items...
         
