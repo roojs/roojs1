@@ -45,6 +45,15 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         this.inputEl().on('click', this.onClick,  this);
     },
     
+//    getGroupValue : function()
+//    {
+//        if(typeof(this.inputEl().up('form').child('input[name='+this.inputEl().dom.name+']:checked', true)) == 'undefined'){
+//            return '';
+//        }
+//        
+//        return this.inputEl().up('form').child('input[name='+this.inputEl().dom.name+']:checked', true).value;
+//    },
+    
     onClick : function()
     {
         if(this.inputType != 'checkbox' && this.inputType != 'radio'){
@@ -66,6 +75,15 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         this.inputEl().dom.value = state ? this.value : this.valueOff;
         
     }
+    
+    /**
+     * Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {@link #getRawValue}.
+     * @return {Mixed} value The field value
+     */
+//    getValue : function(){
+//        return this.getGroupValue();
+//    },
+    
 });
 
  
