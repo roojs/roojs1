@@ -2034,9 +2034,11 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
         
         var cfg = {
             tag: this.tag,
-            cls: '',
+            cls: this.cls,
             html: this.html
         }
+        
+        
 	
         return cfg;
     }
