@@ -196,7 +196,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     preventMark: false,
     isFormField : true,
     value : '',
-    valueOff: '',
     labelWidth : 2,
     checked : false,
     labelAlign : false,
