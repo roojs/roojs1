@@ -11225,6 +11225,11 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
     iframePad:3,
     hideMode:'offsets',
     
+    inputEl: function ()
+    {
+        return this.el;
+    },
+    
     getAutoCreate : function()
     {
         var cfg = {
@@ -11307,13 +11312,13 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
     {
         var _t = this;
         Roo.bootstrap.HtmlEditor.superclass.onRender.call(this, ct, position);
-        this.el.dom.style.border = '0 none';
-        this.el.dom.setAttribute('tabIndex', -1);
-        this.el.addClass('x-hidden');
+        this.inputEl().dom.style.border = '0 none';
+        this.inputEl().dom.setAttribute('tabIndex', -1);
+        this.inputEl().addClass('x-hidden');
         if(Roo.isIE){ // fix IE 1px bogus margin
-            this.el.applyStyles('margin-top:-1px;margin-bottom:-1px;')
+            this.inputEl().applyStyles('margin-top:-1px;margin-bottom:-1px;')
         }
-        this.wrap = this.el.wrap({
+        this.wrap = this.inputEl().wrap({
             cls:'x-html-editor-wrap', cn:{cls:'x-html-editor-tb'}
         });
         
@@ -11347,7 +11352,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
             name: this.frameId,
             frameBorder : 'no',
             'src' : Roo.SSL_SECURE_URL ? Roo.SSL_SECURE_URL  :  "javascript:false"
-        }, this.el
+        }, this.inputEl()
         );
         
        // console.log(iframe);
@@ -11397,11 +11402,11 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
     onResize : function(w, h)
     {
         //Roo.log('resize: ' +w + ',' + h );
-        Roo.el.HtmlEditor.superclass.onResize.apply(this, arguments);
-        if(this.el && this.iframe){
+        Roo.inputEl().HtmlEditor.superclass.onResize.apply(this, arguments);
+        if(this.inputEl() && this.iframe){
             if(typeof w == 'number'){
                 var aw = w - this.wrap.getFrameWidth('lr');
-                this.el.setWidth(this.adjustWidth('textarea', aw));
+                this.inputEl().setWidth(this.adjustWidth('textarea', aw));
                 this.iframe.style.width = aw + 'px';
             }
             if(typeof h == 'number'){
@@ -11419,7 +11424,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
                 
                 var ah = h - this.wrap.getFrameWidth('tb') - tbh;// this.tb.el.getHeight();
                 ah -= 5; // knock a few pixes off for look..
-                this.el.setHeight(this.adjustWidth('textarea', ah));
+                this.inputEl().setHeight(this.adjustWidth('textarea', ah));
                 this.iframe.style.height = ah + 'px';
                 if(this.doc){
                     (this.doc.body || this.doc.documentElement).style.height = (ah - (this.iframePad*2)) + 'px';
@@ -11441,16 +11446,16 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
 //            Roo.log(this.syncValue());
             this.syncValue();
             this.iframe.className = 'x-hidden';
-            this.el.removeClass('x-hidden');
-            this.el.dom.removeAttribute('tabIndex');
-            this.el.focus();
+            this.inputEl().removeClass('x-hidden');
+            this.inputEl().dom.removeAttribute('tabIndex');
+            this.inputEl().focus();
         }else{
 //            Roo.log('out')
 //            Roo.log(this.pushValue()); 
             this.pushValue();
             this.iframe.className = '';
-            this.el.addClass('x-hidden');
-            this.el.dom.setAttribute('tabIndex', -1);
+            this.inputEl().addClass('x-hidden');
+            this.inputEl().dom.setAttribute('tabIndex', -1);
             this.deferFocus();
         }
         this.setSize(this.wrap.getSize());
@@ -11478,9 +11483,17 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
         return this.wrap;
     },
     
+     /**
+     * Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {@link #getRawValue}.
+     * @return {Mixed} value The field value
+     */
+    getValue : function(){
+        return this.inputEl().getValue();
+    },
+
     // private
     initEvents : function(){
-        this.originalValue = this.el.getValue();
+        this.originalValue = this.getValue();
     },
 
     /**
@@ -11549,7 +11562,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
                 return "&#"+cc+";" 
             });
             if(this.fireEvent('beforesync', this, html) !== false){
-                this.el.dom.value = html;
+                this.inputEl().dom.value = html;
                 this.fireEvent('sync', this, html);
             }
         }
@@ -11561,7 +11574,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
      */
     pushValue : function(){
         if(this.initialized){
-            var v = this.el.dom.value;
+            var v = this.inputEl().dom.value;
             
             if(v.length < 1){
                 v = '&#160;';
@@ -11571,7 +11584,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
                 var d = (this.doc.body || this.doc.documentElement);
                 d.innerHTML = v;
                 this.cleanUpPaste();
-                this.el.dom.value = d.innerHTML;
+                this.inputEl().dom.value = d.innerHTML;
                 this.fireEvent('push', this, v);
             }
         }
@@ -11587,7 +11600,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
         if(this.win && !this.sourceEditMode){
             this.win.focus();
         }else{
-            this.el.focus();
+            this.inputEl().focus();
         }
     },
     
@@ -11623,7 +11636,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
         //var ss = this.el.getStyles('font-size', 'font-family', 'background-image', 'background-repeat');
         // this copies styles from the containing element into thsi one..
         // not sure why we need all of this..
-        var ss = this.el.getStyles('font-size', 'background-image', 'background-repeat');
+        var ss = this.inputEl().getStyles('font-size', 'background-image', 'background-repeat');
         ss['background-attachment'] = 'fixed'; // w3c
         dbody.bgProperties = 'fixed'; // ie
         Roo.DomHelper.applyStyles(dbody, ss);
