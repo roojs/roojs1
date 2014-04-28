@@ -4657,7 +4657,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
     
     // private
     onResize : function(w, h){
-        Roo.boostrap.TriggerField.superclass.onResize.apply(this, arguments);
+        Roo.bootstrap.TriggerField.superclass.onResize.apply(this, arguments);
         if(typeof w == 'number'){
             var x = w - this.trigger.getWidth();
             this.inputEl().setWidth(this.adjustWidth('input', x));
