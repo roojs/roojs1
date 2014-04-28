@@ -31,18 +31,6 @@ Roo.bootstrap.CheckBox = function(config){
 
 Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
-    parentLabelAlign : function()
-    {
-        var parent = this;
-        while (parent.parent()) {
-            parent = parent.parent();
-            if (typeof(parent.labelAlign) !='undefined') {
-                return parent.labelAlign;
-            }
-        }
-        return 'left';
-        
-    },
     
     getAutoCreate : function(){
         
