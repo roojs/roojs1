@@ -10726,7 +10726,8 @@ Roo.bootstrap.CheckBox = function(config){
 Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     inputType: 'checkbox',
-    valueOff: '',
+    value: 1,
+    valueOff: 0,
     boxLabel: false,
     checked: false,
     
