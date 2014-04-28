@@ -304,7 +304,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TriggerField,  {
     onResize : function(w, h)
     {
         //Roo.log('resize: ' +w + ',' + h );
-        Roo.inputEl().HtmlEditor.superclass.onResize.apply(this, arguments);
+//        Roo.inputEl().HtmlEditor.superclass.onResize.apply(this, arguments);
 //        if(this.inputEl() && this.iframe){
 //            if(typeof w == 'number'){
 //                var aw = w - this.wrap.getFrameWidth('lr');
