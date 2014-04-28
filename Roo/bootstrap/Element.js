@@ -40,6 +40,18 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
         
 	
         return cfg;
+    },
+    
+    adjustWidth : function(width){
+        if(typeof width == "number"){
+            if(this.autoBoxAdjust && !this.isBorderBox()){
+               width -= (this.getBorderWidth("lr") + this.getPadding("lr"));
+            }
+            if(width < 0){
+                width = 0;
+            }
+        }
+        return width;
     }
    
 });
