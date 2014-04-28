@@ -11227,6 +11227,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
     
     inputEl: function ()
     {
+        Roo.log(this.el.select('textarea.form-control',true).first());
         return this.el.select('textarea.form-control',true).first();
     },
     
