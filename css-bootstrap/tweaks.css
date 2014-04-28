@@ -15,9 +15,12 @@
     width: auto;
 }
 
-.form-box input {
+.box-label {
+    width: 100%
+}
+/*.form-box input {
     height: 15px;
     width: 15px;
     box-shadow: none;
     float: left;
-}
+}*/
