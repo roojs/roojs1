@@ -139,7 +139,7 @@ Roo.apply(Roo.bootstrap.HtmlEditor.ToolbarStandard.prototype,  {
         
         
         
-        var tb = new Roo.Toolbar(editor.wrap.dom.firstChild);
+        var tb = new Roo.bootstrap.Toolbar(editor.wrap.dom.firstChild);
         this.tb = tb;
          // stop form submits
         tb.el.on('click', function(e){
