@@ -42,6 +42,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     initEvents : function()
     {
+       
         this.inputEl().on('click', this.onClick,  this);
     },
     
