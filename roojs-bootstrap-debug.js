@@ -10902,6 +10902,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     setFromHidden : function()
     {
         Roo.log('setFromHidden');
+        Roo.log(this);
     }
     
 });
