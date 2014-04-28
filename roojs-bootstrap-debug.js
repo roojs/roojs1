@@ -3591,9 +3591,7 @@ Roo.form.VTypes = function(){
  * @cfg {Number} lg colspan out of 12 for large computer-sized screens
  * @cfg {string} value default value of the input
  * @cfg {Number} labelWidth set the width of label (0-12)
- * @cfg {Boolean} checked initial checkbox
  * @cfg {String} labelAlign (top|left)
- * @cfg {String} valueOff The value that should go into the generated input element's value when unchecked.
  * 
  * 
  * @constructor
@@ -3652,14 +3650,7 @@ Roo.bootstrap.Input = function(config){
              * @param {Roo.form.Field} this
              * @param {Roo.EventObject}  e The event Object
              */
-            keyup : true,
-            /**
-            * @event check
-            * Fires when the checkbox or radio is checked or unchecked.
-            * @param {Roo.bootstrap.Input} this This input
-            * @param {Boolean} checked The new checked value
-            */
-           check : true
+            keyup : true
         });
 };
 
@@ -3770,9 +3761,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     preventMark: false,
     isFormField : true,
     value : '',
-    valueOff: '',
     labelWidth : 2,
-    checked : false,
     labelAlign : false,
     
     parentLabelAlign : function()
@@ -3816,10 +3805,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         if (this.disabled) {
             input.disabled=true;
-        }
-        
-        if(this.checked){
-            input.checked = this.checked;
         }
         
         if (this.name) {
@@ -3933,8 +3918,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         this.inputEl().on("keydown" , this.fireKey,  this);
         this.inputEl().on("focus", this.onFocus,  this);
         this.inputEl().on("blur", this.onBlur,  this);
-        
-        this.inputEl().on('click', this.onClick,  this);
         
         this.inputEl().relayEvent('keyup', this);
 
@@ -4099,11 +4082,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      * @return {Mixed} value The field value
      */
     getValue : function(){
-        if(this.inputType != 'checkbox' && this.inputType != 'radio'){
-            return this.inputEl().getValue();
-        }
-        
-        return this.getGroupValue();
+        return this.inputEl().getValue();
     },
     /**
      * Returns the raw data value which may or may not be a valid, defined value.  To return a normalized value see {@link #getValue}.
@@ -4297,40 +4276,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             this.setValue( event.shiftKey ?  cc : cc.toLowerCase());
             
         }
-        
-        
-    },
-    
-    getGroupValue : function()
-    {
-        if(typeof(this.inputEl().up('form').child('input[name='+this.inputEl().dom.name+']:checked', true)) == 'undefined'){
-            return '';
-        }
-        
-        return this.inputEl().up('form').child('input[name='+this.inputEl().dom.name+']:checked', true).value;
-    },
-    
-    onClick : function()
-    {
-        if(this.inputType != 'checkbox' && this.inputType != 'radio'){
-            return;
-        }
-        
-        this.setChecked(!this.checked);
-    },
-    
-    setChecked : function(state,suppressEvent)
-    {
-    
-        this.checked = state;
-        
-        if(suppressEvent !== true){
-            this.fireEvent('check', this, state);
-        }
-        
-        this.inputEl().dom.value = state ? this.value : this.valueOff;
-        
     }
+    
 });
 
  
@@ -10745,48 +10692,204 @@ Roo.apply(Roo.bootstrap.DateField,  {
  /*
  * - LGPL
  *
- * Label
+ * CheckBox
  * 
  */
 
 /**
- * @class Roo.bootstrap.Label
+ * @class Roo.bootstrap.CheckBox
  * @extends Roo.bootstrap.Component
- * Bootstrap Label class
- * @cfg {String} html The label content
- * @cfg {String} tag (span|label|p) The tag of this element, default label
+ * Bootstrap CheckBox class
+ * 
+ * @cfg {String} valueOff The value that should go into the generated input element's value when unchecked.
  * 
  * @constructor
- * Create a new Label
+ * Create a new CheckBox
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.Label = function(config){
-    Roo.bootstrap.Label.superclass.constructor.call(this, config);
+Roo.bootstrap.CheckBox = function(config){
+    Roo.bootstrap.CheckBox.superclass.constructor.call(this, config);
+   
+        this.addEvents({
+            /**
+            * @event check
+            * Fires when the element is checked or unchecked.
+            * @param {Roo.bootstrap.Input} this This input
+            * @param {Boolean} checked The new checked value
+            */
+           check : true
+        });
 };
 
-Roo.extend(Roo.bootstrap.Label, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
-    html: false,
-    tag: 'label',
+    inputType: 'checkbox',
     
-    getAutoCreate : function(){
+    
+    getAutoCreate : function()
+    {
+        var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
         
-        var cfg = {
-            tag: this.tag,
-            html: this.html || ''
+        var id = Roo.id();
+        
+        var cfg = {};
+        
+        cfg.cls = 'form-group' //input-group
+        
+        var input =  {
+            tag: 'input',
+            id : id,
+            type : this.inputType,
+            value : this.value,
+            cls : 'form-control',
+            placeholder : this.placeholder || ''
+            
+        };
+        
+        if (this.disabled) {
+            input.disabled=true;
         }
         
-        
-        if (this.cls) {
-            cfg.cls = this.cls;
+        if(this.checked){
+            input.checked = this.checked;
         }
+        
+        if (this.name) {
+            input.name = this.name;
+        }
+        if (this.size) {
+            input.cls += ' input-' + this.size;
+        }
+        
+        var settings=this;
+        ['xs','sm','md','lg'].map(function(size){
+            if (settings[size]) {
+                cfg.cls += ' col-' + size + '-' + settings[size];
+            }
+        });
+        
+        var inputblock = input;
+        
+        if (this.before || this.after) {
+            
+            inputblock = {
+                cls : 'input-group',
+                cn :  [] 
+            };
+            if (this.before) {
+                inputblock.cn.push({
+                    tag :'span',
+                    cls : 'input-group-addon',
+                    html : this.before
+                });
+            }
+            inputblock.cn.push(input);
+            if (this.after) {
+                inputblock.cn.push({
+                    tag :'span',
+                    cls : 'input-group-addon',
+                    html : this.after
+                });
+            }
+            
+        };
+        
+        if (align ==='left' && this.fieldLabel.length) {
+                Roo.log("left and has label");
+                cfg.cn = [
+                    
+                    {
+                        tag: 'label',
+                        'for' :  id,
+                        cls : 'control-label col-sm-' + this.labelWidth,
+                        html : this.fieldLabel
+                        
+                    },
+                    {
+                        cls : "col-sm-" + (12 - this.labelWidth), 
+                        cn: [
+                            inputblock
+                        ]
+                    }
+                    
+                ];
+        } else if ( this.fieldLabel.length) {
+                Roo.log(" label");
+                 cfg.cn = [
+                   
+                    {
+                        tag: 'label',
+                        //cls : 'input-group-addon',
+                        html : this.fieldLabel
+                        
+                    },
+                    
+                    inputblock
+                    
+                ];
+
+        } else {
+            
+                   Roo.log(" no label && no align");
+                cfg.cn = [
+                    
+                        inputblock
+                    
+                ];
+                
+                
+        };
         
         return cfg;
+        
+    },
+    
+    initEvents : function()
+    {
+       
+        this.inputEl().on('click', this.onClick,  this);
+    },
+    
+//    getGroupValue : function()
+//    {
+//        if(typeof(this.inputEl().up('form').child('input[name='+this.inputEl().dom.name+']:checked', true)) == 'undefined'){
+//            return '';
+//        }
+//        
+//        return this.inputEl().up('form').child('input[name='+this.inputEl().dom.name+']:checked', true).value;
+//    },
+    
+    onClick : function()
+    {
+        if(this.inputType != 'checkbox' && this.inputType != 'radio'){
+            return;
+        }
+        
+        this.setChecked(!this.checked);
+    },
+    
+    setChecked : function(state,suppressEvent)
+    {
+    
+        this.checked = state;
+        
+        if(suppressEvent !== true){
+            this.fireEvent('check', this, state);
+        }
+        
+        this.inputEl().dom.value = state ? this.value : this.valueOff;
+        
     }
-   
+    
+    /**
+     * Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {@link #getRawValue}.
+     * @return {Mixed} value The field value
+     */
+//    getValue : function(){
+//        return this.getGroupValue();
+//    },
+    
 });
-
- 
 
  
