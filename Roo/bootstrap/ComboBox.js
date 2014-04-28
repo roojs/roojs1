@@ -486,25 +486,25 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
     // private
     onResize: function(w, h){
-        Roo.bootstrap.ComboBox.superclass.onResize.apply(this, arguments);
-        
-        if(typeof w != 'number'){
-            // we do not handle it!?!?
-            return;
-        }
-        var tw = this.trigger.getWidth();
-       // tw += this.addicon ? this.addicon.getWidth() : 0;
-       // tw += this.editicon ? this.editicon.getWidth() : 0;
-        var x = w - tw;
-        this.inputEl().setWidth( this.adjustWidth('input', x));
-            
-        //this.trigger.setStyle('left', x+'px');
-        
-        if(this.list && this.listWidth === undefined){
-            var lw = Math.max(x + this.trigger.getWidth(), this.minListWidth);
-            this.list.setWidth(lw);
-            this.innerList.setWidth(lw - this.list.getFrameWidth('lr'));
-        }
+//        Roo.bootstrap.ComboBox.superclass.onResize.apply(this, arguments);
+//        
+//        if(typeof w != 'number'){
+//            // we do not handle it!?!?
+//            return;
+//        }
+//        var tw = this.trigger.getWidth();
+//       // tw += this.addicon ? this.addicon.getWidth() : 0;
+//       // tw += this.editicon ? this.editicon.getWidth() : 0;
+//        var x = w - tw;
+//        this.inputEl().setWidth( this.adjustWidth('input', x));
+//            
+//        //this.trigger.setStyle('left', x+'px');
+//        
+//        if(this.list && this.listWidth === undefined){
+//            var lw = Math.max(x + this.trigger.getWidth(), this.minListWidth);
+//            this.list.setWidth(lw);
+//            this.innerList.setWidth(lw - this.list.getFrameWidth('lr'));
+//        }
         
     
         
