@@ -1225,7 +1225,17 @@
     },
 
 
-    </span><span class="jsdoc-var">handleHeaderClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">g</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">handleHeaderClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">g</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;header click&quot;</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isTouch</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">// touch events on header are handled by context
+            </span><span class="jsdoc-var">this.handleHdCtx</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">g</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.headersDisabled</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
@@ -1338,6 +1348,15 @@
                     </span><span class="jsdoc-var">cm.setLocked</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
                 }
             </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'wider'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-comment">// used to expand cols on touch..
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'narrow'</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cm.getColumnWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">cw </span><span class="jsdoc-syntax">+= (</span><span class="jsdoc-var">item.id </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'wider' </span><span class="jsdoc-syntax">? 1 : -1) * 50;
+                </span><span class="jsdoc-var">cw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-var">cw</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">cw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cw</span><span class="jsdoc-syntax">,4000);
+                </span><span class="jsdoc-var">cm.setColumnWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cw</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                
             </span><span class="jsdoc-keyword">default</span><span class="jsdoc-syntax">:
                 </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cm.getIndexById</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item.id.substr</span><span class="jsdoc-syntax">(4));
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">!= -1){
@@ -1467,6 +1486,15 @@
                     {</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;unlock&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.unlockText</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;xg-hmenu-unlock&quot;</span><span class="jsdoc-syntax">}
                 );
             }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isTouch</span><span class="jsdoc-syntax">) {
+                 </span><span class="jsdoc-var">this.hmenu.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'-'</span><span class="jsdoc-syntax">,
+                    {</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;wider&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.columnsWiderText</span><span class="jsdoc-syntax">},
+                    {</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;narrow&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.columnsNarrowText </span><span class="jsdoc-syntax">}
+                );
+                
+                 
+            }
+            
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.grid.enableColumnHide </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
 
                 </span><span class="jsdoc-var">this.colMenu </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.menu.Menu</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">this.grid.id </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;-hcols-menu&quot;</span><span class="jsdoc-syntax">});
@@ -1669,7 +1697,10 @@
     </span><span class="jsdoc-var">sortDescText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Sort Descending&quot;</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">lockText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Lock Column&quot;</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">unlockText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Unlock Column&quot;</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">columnsText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Columns&quot;
+    </span><span class="jsdoc-var">columnsText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Columns&quot;</span><span class="jsdoc-syntax">,
+ 
+    </span><span class="jsdoc-var">columnsWiderText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Wider&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">columnsNarrowText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Thinner&quot;
 </span><span class="jsdoc-syntax">});
 
 
