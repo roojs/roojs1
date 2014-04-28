@@ -191,7 +191,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         
         // render the element if it's not BODY.
         if (tree.xtype != 'Body') {
-            var test = Roo.factory(tree);
+            Roo.log(tree);
             cn = Roo.factory(tree);
            
             cn.parentType = this.xtype; //??
