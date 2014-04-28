@@ -5354,6 +5354,12 @@
      "memberOf": ""
     },
     {
+     "name": "boxLabel",
+     "type": "String",
+     "desc": "The text that appears beside the checkbox",
+     "memberOf": ""
+    },
+    {
      "name": "disabled",
      "type": "Boolean",
      "desc": "is it disabled",
