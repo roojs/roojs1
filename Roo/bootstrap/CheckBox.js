@@ -111,7 +111,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                     {
                         tag: 'label',
                         'for' :  id,
-                        cls : 'control-label col-sm-' + this.labelWidth,
+                        cls : 'control-label col-md-' + this.labelWidth,
                         html : this.fieldLabel
                         
                     },
