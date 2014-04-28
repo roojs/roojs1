@@ -1,45 +1,28 @@
-<html><head><title>../roojs1/Roo/bootstrap/CheckBox.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+<html><head><title>../roojs1/Roo/bootstrap/Radio.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
  * - LGPL
  *
- * CheckBox
+ * Radio
  * 
  */
 
 /**
- * @class Roo.bootstrap.CheckBox
- * @extends Roo.bootstrap.Input
- * Bootstrap CheckBox class
- * 
- * @cfg {String} valueOff The value that should go into the generated input element's value when unchecked.
- * @cfg {String} boxLabel The text that appears beside the checkbox
- * @cfg {Boolean} checked initnal the element
- * 
+ * @class Roo.bootstrap.Radio
+ * @extends Roo.bootstrap.CheckBox
+ * Bootstrap Radio class
+
  * @constructor
- * Create a new CheckBox
+ * Create a new Radio
  * @param {Object} config The config object
  */
 
-</span><span class="jsdoc-var">Roo.bootstrap.CheckBox </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
-    </span><span class="jsdoc-var">Roo.bootstrap.CheckBox.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+</span><span class="jsdoc-var">Roo.bootstrap.Radio </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.bootstrap.Radio.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
    
-        </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
-            </span><span class="jsdoc-comment">/**
-            * @event check
-            * Fires when the element is checked or unchecked.
-            * @param {Roo.bootstrap.CheckBox} this This input
-            * @param {Boolean} checked The new checked value
-            */
-           </span><span class="jsdoc-var">check </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
-        </span><span class="jsdoc-syntax">});
 };
 
-</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.CheckBox</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Input</span><span class="jsdoc-syntax">,  {
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Radio</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.CheckBox</span><span class="jsdoc-syntax">,  {
     
-    </span><span class="jsdoc-var">inputType</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'checkbox'</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">: 1,
-    </span><span class="jsdoc-var">valueOff</span><span class="jsdoc-syntax">: 0,
-    </span><span class="jsdoc-var">boxLabel</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">checked</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">inputType</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'radio'</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -171,29 +154,17 @@
         
     },
     
-    </span><span class="jsdoc-comment">/**
-     * return the real input element.
-     */
-    </span><span class="jsdoc-var">inputEl</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">()
-    {
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'input.form-box'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
-    },
-    
-    </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
-    {
-        </span><span class="jsdoc-var">Roo.bootstrap.CheckBox.superclass.initEvents.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-        
-        </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-        
-    },
-    
     </span><span class="jsdoc-var">onClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {   
-        </span><span class="jsdoc-var">this.setChecked</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.checked</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.setChecked</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
     },
     
     </span><span class="jsdoc-var">setChecked </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">suppressEvent</span><span class="jsdoc-syntax">)
     {
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.up</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'form'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'input[name='</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.name</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">']'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">v.checked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        });
+        
         </span><span class="jsdoc-var">this.checked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">suppressEvent </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
@@ -202,7 +173,25 @@
         
         </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.valueOff</span><span class="jsdoc-syntax">;
         
+    },
+    
+    </span><span class="jsdoc-var">getGroupValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.up</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'form'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'input[name='</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.name</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">']:checked'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.up</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'form'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'input[name='</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.name</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">']:checked'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.value</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {@link #getRawValue}.
+     * @return {Mixed} value The field value
+     */
+    </span><span class="jsdoc-var">getValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.getGroupValue</span><span class="jsdoc-syntax">();
     }
+    
 });
 
  
