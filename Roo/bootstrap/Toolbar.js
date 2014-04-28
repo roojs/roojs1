@@ -9,10 +9,10 @@
 /**
  * @class Roo.bootstrap.Toolbar
  * 
- * Bootstrap HtmlEditor.ToolbarStandard class
+ * Bootstrap Toolbar class
 
  * @constructor
- * Create a new ToolbarStandard
+ * Create a new Toolbar
  * @param {Object} config The config object
  */
 
@@ -105,7 +105,7 @@ Roo.Toolbar.prototype = {
     _add : function(el) {
         
         if (el.xtype) {
-            el = Roo.factory(el, typeof(Roo.Toolbar[el.xtype]) == 'undefined' ? Roo.form : Roo.Toolbar);
+            el = Roo.factory(el, typeof(Roo.Toolbar[el.xtype]) == 'undefined' ? Roo.bootstrap : Roo.Toolbar);
         }
         
         if (el.applyTo){ // some kind of form field
