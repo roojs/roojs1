@@ -148,9 +148,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         return cfg;
         
-        if(this.checked){
-            input.checked = this.checked;
-        }
     },
     
     initEvents : function()
