@@ -10698,7 +10698,7 @@ Roo.apply(Roo.bootstrap.DateField,  {
 
 /**
  * @class Roo.bootstrap.CheckBox
- * @extends Roo.bootstrap.Component
+ * @extends Roo.bootstrap.Input
  * Bootstrap CheckBox class
  * 
  * @cfg {String} valueOff The value that should go into the generated input element's value when unchecked.
