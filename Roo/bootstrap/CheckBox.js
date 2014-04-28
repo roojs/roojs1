@@ -78,67 +78,67 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         });
         
         var inputblock = input;
-        
-        if (this.before || this.after) {
-            
-            inputblock = {
-                cls : 'input-group',
-                cn :  [] 
-            };
-            if (this.before) {
-                inputblock.cn.push({
-                    tag :'span',
-                    cls : 'input-group-addon',
-                    html : this.before
-                });
-            }
-            inputblock.cn.push(input);
-            if (this.after) {
-                inputblock.cn.push({
-                    tag :'span',
-                    cls : 'input-group-addon',
-                    html : this.after
-                });
-            }
-            
-        };
-        
-        if (align ==='left' && this.fieldLabel.length) {
-                Roo.log("left and has label");
-                cfg.cn = [
-                    
-                    {
-                        tag: 'label',
-                        'for' :  id,
-                        cls : 'control-label col-sm-' + this.labelWidth,
-                        html : this.fieldLabel
-                        
-                    },
-                    {
-                        cls : "col-sm-" + (12 - this.labelWidth), 
-                        cn: [
-                            inputblock
-                        ]
-                    }
-                    
-                ];
-        } else if ( this.fieldLabel.length) {
-                Roo.log(" label");
-                 cfg.cn = [
-                   
-                    {
-                        tag: 'label',
-                        //cls : 'input-group-addon',
-                        html : this.fieldLabel
-                        
-                    },
-                    
-                    inputblock
-                    
-                ];
-
-        } else {
-            
+//        
+//        if (this.before || this.after) {
+//            
+//            inputblock = {
+//                cls : 'input-group',
+//                cn :  [] 
+//            };
+//            if (this.before) {
+//                inputblock.cn.push({
+//                    tag :'span',
+//                    cls : 'input-group-addon',
+//                    html : this.before
+//                });
+//            }
+//            inputblock.cn.push(input);
+//            if (this.after) {
+//                inputblock.cn.push({
+//                    tag :'span',
+//                    cls : 'input-group-addon',
+//                    html : this.after
+//                });
+//            }
+//            
+//        };
+//        
+//        if (align ==='left' && this.fieldLabel.length) {
+//                Roo.log("left and has label");
+//                cfg.cn = [
+//                    
+//                    {
+//                        tag: 'label',
+//                        'for' :  id,
+//                        cls : 'control-label col-sm-' + this.labelWidth,
+//                        html : this.fieldLabel
+//                        
+//                    },
+//                    {
+//                        cls : "col-sm-" + (12 - this.labelWidth), 
+//                        cn: [
+//                            inputblock
+//                        ]
+//                    }
+//                    
+//                ];
+//        } else if ( this.fieldLabel.length) {
+//                Roo.log(" label");
+//                 cfg.cn = [
+//                   
+//                    {
+//                        tag: 'label',
+//                        //cls : 'input-group-addon',
+//                        html : this.fieldLabel
+//                        
+//                    },
+//                    
+//                    inputblock
+//                    
+//                ];
+//
+//        } else {
+//            
                    Roo.log(" no label && no align");
                 cfg.cn = [
                     
@@ -146,8 +146,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                     
                 ];
                 
-                
-        };
+//                
+//        };
         
         return cfg;
         
