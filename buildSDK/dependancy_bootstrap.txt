@@ -69,3 +69,4 @@ Roo.bootstrap.DateField
 
 Roo.bootstrap.CheckBox
 Roo.bootstrap.Radio
+Roo.bootstrap.HtmlEditor
