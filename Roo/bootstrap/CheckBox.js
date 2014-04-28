@@ -60,6 +60,10 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             input.disabled=true;
         }
         
+        if(this.checked){
+            input.checked = this.checked;
+        }
+        
         if (this.name) {
             input.name = this.name;
         }
