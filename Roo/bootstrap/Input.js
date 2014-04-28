@@ -722,37 +722,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         }
         
         
-    },
-    
-    getGroupValue : function()
-    {
-        if(typeof(this.inputEl().up('form').child('input[name='+this.inputEl().dom.name+']:checked', true)) == 'undefined'){
-            return '';
-        }
-        
-        return this.inputEl().up('form').child('input[name='+this.inputEl().dom.name+']:checked', true).value;
-    },
-    
-    onClick : function()
-    {
-        if(this.inputType != 'checkbox' && this.inputType != 'radio'){
-            return;
-        }
-        
-        this.setChecked(!this.checked);
-    },
-    
-    setChecked : function(state,suppressEvent)
-    {
-    
-        this.checked = state;
-        
-        if(suppressEvent !== true){
-            this.fireEvent('check', this, state);
-        }
-        
-        this.inputEl().dom.value = state ? this.value : this.valueOff;
-        
     }
 });
 
