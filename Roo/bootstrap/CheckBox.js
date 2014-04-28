@@ -23,7 +23,7 @@ Roo.bootstrap.CheckBox = function(config){
         this.addEvents({
             /**
             * @event check
-            * Fires when the checkbox or radio is checked or unchecked.
+            * Fires when the element is checked or unchecked.
             * @param {Roo.bootstrap.Input} this This input
             * @param {Boolean} checked The new checked value
             */
