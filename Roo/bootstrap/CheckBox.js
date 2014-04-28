@@ -69,6 +69,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         if (this.name) {
             input.name = this.name;
         }
+        
         if (this.size) {
             input.cls += ' input-' + this.size;
         }
@@ -153,6 +154,13 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                 
                 
         };
+        
+        if(this.boxLabel){
+            cfg.cn.push({
+                tag: 'span',
+                html: this.boxLabel
+            })
+        }
         
         return cfg;
         
