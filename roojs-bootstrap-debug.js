@@ -10819,6 +10819,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                    
                     {
                         tag: 'label',
+                        'for': id,
+                        cls  : 'control-label col-sm-12',
                         //cls : 'input-group-addon',
                         html : this.fieldLabel
                         
