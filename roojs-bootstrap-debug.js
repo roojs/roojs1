@@ -11480,7 +11480,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
     
     // private
     initEvents : function(){
-        this.originalValue = this.getValue();
+        this.originalValue = this.el.getValue();
     },
 
     /**
