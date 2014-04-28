@@ -266,18 +266,6 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         cn.items = nitems;
 	
         return cn;
-    },
-    
-    adjustWidth : function(width){
-        if(typeof width == "number"){
-            if(this.autoBoxAdjust && !this.isBorderBox()){
-               width -= (this.getBorderWidth("lr") + this.getPadding("lr"));
-            }
-            if(width < 0){
-                width = 0;
-            }
-        }
-        return width;
     }
     
     
@@ -4669,12 +4657,12 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
     
     // private
     onResize : function(w, h){
-        Roo.bootstrap.TriggerField.superclass.onResize.apply(this, arguments);
-        if(typeof w == 'number'){
-            var x = w - this.trigger.getWidth();
-            this.inputEl().setWidth(this.adjustWidth('input', x));
-            this.trigger.setStyle('left', x+'px');
-        }
+//        Roo.bootstrap.TriggerField.superclass.onResize.apply(this, arguments);
+//        if(typeof w == 'number'){
+//            var x = w - this.trigger.getWidth();
+//            this.inputEl().setWidth(this.adjustWidth('input', x));
+//            this.trigger.setStyle('left', x+'px');
+//        }
     },
 
     // private
@@ -7336,25 +7324,25 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
     // private
     onResize: function(w, h){
-        Roo.bootstrap.ComboBox.superclass.onResize.apply(this, arguments);
-        
-        if(typeof w != 'number'){
-            // we do not handle it!?!?
-            return;
-        }
-        var tw = this.trigger.getWidth();
-       // tw += this.addicon ? this.addicon.getWidth() : 0;
-       // tw += this.editicon ? this.editicon.getWidth() : 0;
-        var x = w - tw;
-        this.inputEl().setWidth( this.adjustWidth('input', x));
-            
-        //this.trigger.setStyle('left', x+'px');
-        
-        if(this.list && this.listWidth === undefined){
-            var lw = Math.max(x + this.trigger.getWidth(), this.minListWidth);
-            this.list.setWidth(lw);
-            this.innerList.setWidth(lw - this.list.getFrameWidth('lr'));
-        }
+//        Roo.bootstrap.ComboBox.superclass.onResize.apply(this, arguments);
+//        
+//        if(typeof w != 'number'){
+//            // we do not handle it!?!?
+//            return;
+//        }
+//        var tw = this.trigger.getWidth();
+//       // tw += this.addicon ? this.addicon.getWidth() : 0;
+//       // tw += this.editicon ? this.editicon.getWidth() : 0;
+//        var x = w - tw;
+//        this.inputEl().setWidth( this.adjustWidth('input', x));
+//            
+//        //this.trigger.setStyle('left', x+'px');
+//        
+//        if(this.list && this.listWidth === undefined){
+//            var lw = Math.max(x + this.trigger.getWidth(), this.minListWidth);
+//            this.list.setWidth(lw);
+//            this.innerList.setWidth(lw - this.list.getFrameWidth('lr'));
+//        }
         
     
         
@@ -11413,36 +11401,36 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TriggerField,  {
     // private
     onResize : function(w, h)
     {
-        //Roo.log('resize: ' +w + ',' + h );
-        Roo.inputEl().HtmlEditor.superclass.onResize.apply(this, arguments);
-        if(this.inputEl() && this.iframe){
-            if(typeof w == 'number'){
-                var aw = w - this.wrap.getFrameWidth('lr');
-                this.inputEl().setWidth(this.adjustWidth('textarea', aw));
-                this.iframe.style.width = aw + 'px';
-            }
-            if(typeof h == 'number'){
-                var tbh = 0;
-                for (var i =0; i < this.toolbars.length;i++) {
-                    // fixme - ask toolbars for heights?
-                    tbh += this.toolbars[i].tb.el.getHeight();
-                    if (this.toolbars[i].footer) {
-                        tbh += this.toolbars[i].footer.el.getHeight();
-                    }
-                }
-                
-                
-                
-                
-                var ah = h - this.wrap.getFrameWidth('tb') - tbh;// this.tb.el.getHeight();
-                ah -= 5; // knock a few pixes off for look..
-                this.inputEl().setHeight(this.adjustWidth('textarea', ah));
-                this.iframe.style.height = ah + 'px';
-                if(this.doc){
-                    (this.doc.body || this.doc.documentElement).style.height = (ah - (this.iframePad*2)) + 'px';
-                }
-            }
-        }
+//        //Roo.log('resize: ' +w + ',' + h );
+//        Roo.inputEl().HtmlEditor.superclass.onResize.apply(this, arguments);
+//        if(this.inputEl() && this.iframe){
+//            if(typeof w == 'number'){
+//                var aw = w - this.wrap.getFrameWidth('lr');
+//                this.inputEl().setWidth(this.adjustWidth('textarea', aw));
+//                this.iframe.style.width = aw + 'px';
+//            }
+//            if(typeof h == 'number'){
+//                var tbh = 0;
+//                for (var i =0; i < this.toolbars.length;i++) {
+//                    // fixme - ask toolbars for heights?
+//                    tbh += this.toolbars[i].tb.el.getHeight();
+//                    if (this.toolbars[i].footer) {
+//                        tbh += this.toolbars[i].footer.el.getHeight();
+//                    }
+//                }
+//                
+//                
+//                
+//                
+//                var ah = h - this.wrap.getFrameWidth('tb') - tbh;// this.tb.el.getHeight();
+//                ah -= 5; // knock a few pixes off for look..
+//                this.inputEl().setHeight(this.adjustWidth('textarea', ah));
+//                this.iframe.style.height = ah + 'px';
+//                if(this.doc){
+//                    (this.doc.body || this.doc.documentElement).style.height = (ah - (this.iframePad*2)) + 'px';
+//                }
+//            }
+//        }
     },
 
     /**
@@ -13360,7 +13348,7 @@ Roo.bootstrap.Toolbar.prototype = {
             return buttons;
         }
         var b = config;
-        if(!(config instanceof Roo.Toolbar.Button)){
+        if(!(config instanceof Roo.bootstrap.Toolbar.Button)){
             b = config.split ?
                 new Roo.bootstrap.Toolbar.SplitButton(config) :
                 new Roo.bootstrap.Toolbar.Button(config);
