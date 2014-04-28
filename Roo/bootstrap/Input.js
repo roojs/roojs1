@@ -720,9 +720,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             this.setValue( event.shiftKey ?  cc : cc.toLowerCase());
             
         }
-        
-        
     }
+    
 });
 
  
