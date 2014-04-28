@@ -195,11 +195,11 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
     // private
     onResize : function(w, h){
         Roo.bootstrap.TriggerField.superclass.onResize.apply(this, arguments);
-        if(typeof w == 'number'){
-            var x = w - this.trigger.getWidth();
-            this.inputEl().setWidth(this.adjustWidth('input', x));
-            this.trigger.setStyle('left', x+'px');
-        }
+//        if(typeof w == 'number'){
+//            var x = w - this.trigger.getWidth();
+//            this.inputEl().setWidth(this.adjustWidth('input', x));
+//            this.trigger.setStyle('left', x+'px');
+//        }
     },
 
     // private
