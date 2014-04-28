@@ -10875,20 +10875,15 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         this.inputEl().on('click', this.onClick,  this);
         
-        this.inputEl().on('DOMAttrModified', this.setFromHidden,  this); //ff
-        this.inputEl().on('propertychange', this.setFromHidden,  this);  //ie
     },
     
     onClick : function()
     {   
-        Roo.log(this);
         this.setChecked(!this.checked);
     },
     
     setChecked : function(state,suppressEvent)
     {
-        Roo.log('state');
-        Roo.log(state);
         this.checked = state;
         
         if(suppressEvent !== true){
@@ -10897,14 +10892,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         this.inputEl().dom.value = state ? this.value : this.valueOff;
         
-    },
-    
-    setFromHidden : function()
-    {
-        Roo.log('setFromHidden');
-        Roo.log(this);
     }
-    
 });
 
  
@@ -11061,6 +11049,27 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         }
         
         return cfg;
+        
+    },
+    
+    onClick : function()
+    {   
+        this.setChecked(true);
+    },
+    
+    setChecked : function(state,suppressEvent)
+    {
+        Roo.each(this.inputEl().up('form').child('input[name='+this.inputEl().dom.name+']', true).elements, function(v){
+            v.checked = false;
+        });
+        
+        this.checked = state;
+        
+        if(suppressEvent !== true){
+            this.fireEvent('check', this, state);
+        }
+        
+        this.inputEl().dom.value = state ? this.value : this.valueOff;
         
     },
     
