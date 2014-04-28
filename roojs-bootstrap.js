@@ -58,7 +58,7 @@ this.el.addClass('active');if(this.href&&this.href.substring(0,1)=='#'){var A=Ro
 //Roo/bootstrap/Row.js
 Roo.bootstrap.Row=function(A){Roo.bootstrap.Row.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.Row,Roo.bootstrap.Component,{getAutoCreate:function(){return {cls:'row clearfix'};}});
 //Roo/bootstrap/Element.js
-Roo.bootstrap.Element=function(A){Roo.bootstrap.Element.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.Element,Roo.bootstrap.Component,{tag:'div',cls:'',html:'',getAutoCreate:function(){var A={tag:this.tag,cls:this.cls,html:this.html};return A;}});
+Roo.bootstrap.Element=function(A){Roo.bootstrap.Element.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.Element,Roo.bootstrap.Component,{tag:'div',cls:'',html:'',getAutoCreate:function(){var A={tag:this.tag,cls:this.cls,html:this.html};return A;},adjustWidth:function(A){if(typeof A=="number"){if(this.autoBoxAdjust&&!this.isBorderBox()){A-=(this.getBorderWidth("lr")+this.getPadding("lr"));}if(A<0){A=0;}}return A;}});
 //Roo/bootstrap/Pagination.js
 Roo.bootstrap.Pagination=function(A){Roo.bootstrap.Pagination.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.Pagination,Roo.bootstrap.Component,{cls:false,size:false,inverse:false,getAutoCreate:function(){var A={tag:'ul',cls:'pagination'};if(this.inverse){A.cls+=' inverse';}if(this.html){A.html=this.html;}if(this.cls){A.cls+=" "+this.cls;}return A;}});
 //Roo/bootstrap/PaginationItem.js
