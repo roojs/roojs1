@@ -193,7 +193,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         if (tree.xtype != 'Body') {
             Roo.log(tree);
             cn = Roo.factory(tree);
-           
+           Roo.log(cn);
             cn.parentType = this.xtype; //??
             cn.parentId = this.id;
             
