@@ -30,7 +30,7 @@ Roo.bootstrap.HtmlEditor.ToolbarStandard = function(config)
     
 }
 
-Roo.apply(Roo.bootstrap.HtmlEditor.ToolbarStandard.prototype,  {
+Roo.extend(Roo.bootstrap.HtmlEditor.ToolbarStandard, Roo.bootstrap.Component,  {
     
     tb: false,
     
