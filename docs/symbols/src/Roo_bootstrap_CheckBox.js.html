@@ -11,6 +11,7 @@
  * Bootstrap CheckBox class
  * 
  * @cfg {String} valueOff The value that should go into the generated input element's value when unchecked.
+ * @cfg {String} boxLabel The text that appears beside the checkbox
  * 
  * @constructor
  * Create a new CheckBox
@@ -24,7 +25,7 @@
             </span><span class="jsdoc-comment">/**
             * @event check
             * Fires when the element is checked or unchecked.
-            * @param {Roo.bootstrap.Input} this This input
+            * @param {Roo.bootstrap.CheckBox} this This input
             * @param {Boolean} checked The new checked value
             */
            </span><span class="jsdoc-var">check </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
@@ -35,6 +36,7 @@
     
     </span><span class="jsdoc-var">inputType</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'checkbox'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">valueOff</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">boxLabel</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -51,7 +53,7 @@
             </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.inputType</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'form-control'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'form-checkbox'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">placeholder </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.placeholder </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''
             
         </span><span class="jsdoc-syntax">};
@@ -67,6 +69,7 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">input.name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">;
         }
+        
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.size</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">input.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' input-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.size</span><span class="jsdoc-syntax">;
         }
@@ -111,12 +114,12 @@
                     {
                         </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-string">'for' </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'control-label col-sm-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'control-label col-md-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.fieldLabel
                         
                     </span><span class="jsdoc-syntax">},
                     {
-                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;col-sm-&quot; </span><span class="jsdoc-syntax">+ (12 - </span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">), 
+                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;col-md-&quot; </span><span class="jsdoc-syntax">+ (12 - </span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">), 
                         </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
                             </span><span class="jsdoc-var">inputblock
                         </span><span class="jsdoc-syntax">]
@@ -129,6 +132,8 @@
                    
                     {
                         </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-string">'for'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'control-label box-label'</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-comment">//cls : 'input-group-addon',
                         </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.fieldLabel
                         
@@ -150,8 +155,23 @@
                 
         };
         
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.boxLabel</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.boxLabel
+            </span><span class="jsdoc-syntax">})
+        }
+        
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
         
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * return the real input element.
+     */
+    </span><span class="jsdoc-var">inputEl</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'input.form-checkbox'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
     },
     
     </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
