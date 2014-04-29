@@ -209,9 +209,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         */
         this.frameId = Roo.id();
         
-        this.createToolbar(this);
-        
-      
+         
         
         var iframe = this.wrap.createChild({
             tag: 'iframe',
