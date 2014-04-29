@@ -253,7 +253,6 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         
         this.editorcore.onResize(ew,eh);
         
-        
     },
 
     /**
