@@ -244,18 +244,18 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         if(!this.iframe){
             return;
         }
-            if(typeof w == 'number'){
-                
-                this.iframe.style.width = w + 'px';
-            }
-            if(typeof h == 'number'){
-                
-                this.iframe.style.height = h + 'px';
-                if(this.doc){
-                    (this.doc.body || this.doc.documentElement).style.height = (h - (this.iframePad*2)) + 'px';
-                }
+        if(typeof w == 'number'){
+            
+            this.iframe.style.width = w + 'px';
+        }
+        if(typeof h == 'number'){
+            
+            this.iframe.style.height = h + 'px';
+            if(this.doc){
+                (this.doc.body || this.doc.documentElement).style.height = (h - (this.iframePad*2)) + 'px';
             }
         }
+        
     },
 
     /**
