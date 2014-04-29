@@ -185,9 +185,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         if(Roo.isIE){ // fix IE 1px bogus margin
             this.el.applyStyles('margin-top:-1px;margin-bottom:-1px;')
         }
-        this.wrap = this.el.wrap({
-            cls:'x-html-editor-wrap', cn:{cls:'x-html-editor-tb'}
-        });
+       
         /*
         if (this.resizable) {
             this.resizeEl = new Roo.Resizable(this.wrap, {
