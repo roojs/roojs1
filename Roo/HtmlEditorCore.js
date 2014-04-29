@@ -200,9 +200,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }, this.el
         );
         
-       // console.log(iframe);
-        //this.wrap.dom.appendChild(iframe);
-
+        
         this.iframe = iframe.dom;
 
          this.assignDocWin();
