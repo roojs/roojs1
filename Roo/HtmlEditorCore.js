@@ -21,14 +21,66 @@ Roo.HtmlEditorCore = function(config){
     Roo.HtmlEditorCore.superclass.constructor.call(this, config);
     this.addEvents({
         /**
-         * @event check
-         * Fires when the checkbox is checked or unchecked.
-	     * @param {Roo.form.Checkbox} this This checkbox
-	     * @param {Boolean} checked The new checked value
-	     */
-        check : true
+         * @event initialize
+         * Fires when the editor is fully initialized (including the iframe)
+         * @param {HtmlEditor} this
+         */
+        initialize: true,
+        /**
+         * @event activate
+         * Fires when the editor is first receives the focus. Any insertion must wait
+         * until after this event.
+         * @param {HtmlEditor} this
+         */
+        activate: true,
+         /**
+         * @event beforesync
+         * Fires before the textarea is updated with content from the editor iframe. Return false
+         * to cancel the sync.
+         * @param {HtmlEditor} this
+         * @param {String} html
+         */
+        beforesync: true,
+         /**
+         * @event beforepush
+         * Fires before the iframe editor is updated with content from the textarea. Return false
+         * to cancel the push.
+         * @param {HtmlEditor} this
+         * @param {String} html
+         */
+        beforepush: true,
+         /**
+         * @event sync
+         * Fires when the textarea is updated with content from the editor iframe.
+         * @param {HtmlEditor} this
+         * @param {String} html
+         */
+        sync: true,
+         /**
+         * @event push
+         * Fires when the iframe editor is updated with content from the textarea.
+         * @param {HtmlEditor} this
+         * @param {String} html
+         */
+        push: true,
+         /**
+         * @event editmodechange
+         * Fires when the editor switches edit modes
+         * @param {HtmlEditor} this
+         * @param {Boolean} sourceEdit True if source edit, false if standard editing.
+         */
+        editmodechange: true,
+        /**
+         * @event editorevent
+         * Fires when on any editor (mouse up/down cursor movement etc.) - used for toolbar hooks.
+         * @param {HtmlEditor} this
+         */
+        editorevent: true
     });
+     
 };
+
+
 Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
 
@@ -75,65 +127,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
     // private
     initComponent : function(){
-        this.addEvents({
-            /**
-             * @event initialize
-             * Fires when the editor is fully initialized (including the iframe)
-             * @param {HtmlEditor} this
-             */
-            initialize: true,
-            /**
-             * @event activate
-             * Fires when the editor is first receives the focus. Any insertion must wait
-             * until after this event.
-             * @param {HtmlEditor} this
-             */
-            activate: true,
-             /**
-             * @event beforesync
-             * Fires before the textarea is updated with content from the editor iframe. Return false
-             * to cancel the sync.
-             * @param {HtmlEditor} this
-             * @param {String} html
-             */
-            beforesync: true,
-             /**
-             * @event beforepush
-             * Fires before the iframe editor is updated with content from the textarea. Return false
-             * to cancel the push.
-             * @param {HtmlEditor} this
-             * @param {String} html
-             */
-            beforepush: true,
-             /**
-             * @event sync
-             * Fires when the textarea is updated with content from the editor iframe.
-             * @param {HtmlEditor} this
-             * @param {String} html
-             */
-            sync: true,
-             /**
-             * @event push
-             * Fires when the iframe editor is updated with content from the textarea.
-             * @param {HtmlEditor} this
-             * @param {String} html
-             */
-            push: true,
-             /**
-             * @event editmodechange
-             * Fires when the editor switches edit modes
-             * @param {HtmlEditor} this
-             * @param {Boolean} sourceEdit True if source edit, false if standard editing.
-             */
-            editmodechange: true,
-            /**
-             * @event editorevent
-             * Fires when on any editor (mouse up/down cursor movement etc.) - used for toolbar hooks.
-             * @param {HtmlEditor} this
-             */
-            editorevent: true
-        });
-         
+        
     },
 
     
