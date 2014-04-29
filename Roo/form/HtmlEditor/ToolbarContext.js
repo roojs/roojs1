@@ -279,7 +279,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         this.editorcore = editor.editorcore ? editor.editorcore : editor;
         var editorcore = this.editorcore;
         
-        var fid = editor.frameId;
+        var fid = editorcore.frameId;
         var etb = this;
         function btn(id, toggle, handler){
             var xid = fid + '-'+ id ;
