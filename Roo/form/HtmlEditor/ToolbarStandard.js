@@ -144,7 +144,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         
         
         
-        var fid = editor.frameId;
+        var fid = editorcore.frameId;
         var etb = this;
         function btn(id, toggle, handler){
             var xid = fid + '-'+ id ;
@@ -153,8 +153,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                 cmd : id,
                 cls : 'x-btn-icon x-edit-'+id,
                 enableToggle:toggle !== false,
-                scope: editor, // was editor...
-                handler:handler||editor.relayBtnCmd,
+                scope: editorcore, // was editor...
+                handler:handler||editorcore.relayBtnCmd,
                 clickEvent:'mousedown',
                 tooltip: etb.buttonTips[id] || undefined, ///tips ???
                 tabIndex:-1
@@ -212,7 +212,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                 width:135,
                 listeners : {
                     'select': function(c, r, i) {
-                        editor.insertTag(r.get('tag'));
+                        editorcore.insertTag(r.get('tag'));
                         editor.focus();
                     }
                 }
@@ -234,8 +234,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                 '-',
                 
                 
-                btn('increasefontsize', false, editor.adjustFont),
-                btn('decreasefontsize', false, editor.adjustFont)
+                btn('increasefontsize', false, editorcore.adjustFont),
+                btn('decreasefontsize', false, editorcore.adjustFont)
             );
         };
         
@@ -243,7 +243,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         if(!this.disable.colors){
             tb.add(
                 '-', {
-                    id:editor.frameId +'-forecolor',
+                    id:editorcore.frameId +'-forecolor',
                     cls:'x-btn-icon x-edit-forecolor',
                     clickEvent:'mousedown',
                     tooltip: this.buttonTips['forecolor'] || undefined,
@@ -254,14 +254,14 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                         value:'000000',
                         plain:true,
                         selectHandler: function(cp, color){
-                            editor.execCmd('forecolor', Roo.isSafari || Roo.isIE ? '#'+color : color);
+                            editorcore.execCmd('forecolor', Roo.isSafari || Roo.isIE ? '#'+color : color);
                             editor.deferFocus();
                         },
-                        scope: editor,
+                        scope: editorcore,
                         clickEvent:'mousedown'
                     })
                 }, {
-                    id:editor.frameId +'backcolor',
+                    id:editorcore.frameId +'backcolor',
                     cls:'x-btn-icon x-edit-backcolor',
                     clickEvent:'mousedown',
                     tooltip: this.buttonTips['backcolor'] || undefined,
@@ -273,17 +273,17 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                         allowReselect: true,
                         selectHandler: function(cp, color){
                             if(Roo.isGecko){
-                                editor.execCmd('useCSS', false);
-                                editor.execCmd('hilitecolor', color);
-                                editor.execCmd('useCSS', true);
+                                editorcore.execCmd('useCSS', false);
+                                editorcore.execCmd('hilitecolor', color);
+                                editorcore.execCmd('useCSS', true);
                                 editor.deferFocus();
                             }else{
-                                editor.execCmd(Roo.isOpera ? 'hilitecolor' : 'backcolor', 
+                                editorcore.execCmd(Roo.isOpera ? 'hilitecolor' : 'backcolor', 
                                     Roo.isSafari || Roo.isIE ? '#'+color : color);
                                 editor.deferFocus();
                             }
                         },
-                        scope:editor,
+                        scope:editorcore,
                         clickEvent:'mousedown'
                     })
                 }
@@ -305,7 +305,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             if(!this.disable.links){
                 tb.add(
                     '-',
-                    btn('createlink', false, editor.createLink)    /// MOVE TO HERE?!!?!?!?!
+                    btn('createlink', false, editorcore.createLink)    /// MOVE TO HERE?!!?!?!?!
                 );
             };
 
@@ -342,7 +342,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                     
                     html: this.specialChars[i],
                     handler: function(a,b) {
-                        editor.insertAtCursor(String.fromCharCode(a.html.replace('&#','').replace(';', '')));
+                        editorcore.insertAtCursor(String.fromCharCode(a.html.replace('&#','').replace(';', '')));
                         //editor.insertAtCursor(a.html);
                         
                     },
@@ -372,7 +372,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                     handler: function(a,b) {
                         Roo.log(a);
                         Roo.log(b);
-                        var c = Roo.get(editor.doc.body);
+                        var c = Roo.get(editorcore.doc.body);
                         c.select('[style]').each(function(s) {
                             s.dom.style.removeProperty(a.actiontype);
                         });
@@ -414,7 +414,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             for(var i =0; i< this.btns.length;i++) {
                 var b = Roo.factory(this.btns[i],Roo.form);
                 b.cls =  'x-edit-none';
-                b.scope = editor;
+                b.scope = editorcore;
                 tb.add(b);
             }
         
@@ -425,7 +425,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         // disable everything...
         
         this.tb.items.each(function(item){
-           if(item.id != editor.frameId+ '-sourceedit'){
+           if(item.id != editorcore.frameId+ '-sourceedit'){
                 item.disable();
             }
         });
@@ -445,7 +445,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
      */
     updateToolbar: function(){
 
-        if(!this.editor.activated){
+        if(!this.editorcore.activated){
             this.editor.onFirstFocus();
             return;
         }
