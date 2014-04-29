@@ -172,7 +172,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     onRender : function(ct, position)
     {
         var _t = this;
-        //Roo.form.HtmlEditor.superclass.onRender.call(this, ct, position);
+        Roo.form.HtmlEditorCore.superclass.onRender.call(this, ct, position);
         
         
         this.el.dom.style.border = '0 none';
