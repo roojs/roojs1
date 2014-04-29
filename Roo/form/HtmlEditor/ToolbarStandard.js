@@ -142,7 +142,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         this.editorcore = editor.editorcore ? editor.editorcore : editor;
         var editorcore = this.editorcore;
         
-        
+        var _t = this;
         
         var fid = editorcore.frameId;
         var etb = this;
