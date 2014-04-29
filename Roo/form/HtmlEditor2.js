@@ -329,6 +329,8 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
 
     
     /**
+     * textarea -> HTMLArea.
+     *
      * Protected method that will not generally be called directly. Pushes the value of the textarea
      * into the iframe editor.
      */
