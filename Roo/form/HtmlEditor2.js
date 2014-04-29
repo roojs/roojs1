@@ -224,6 +224,10 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         var _t = this;
         Roo.form.HtmlEditor.superclass.onRender.call(this, ct, position);
         
+        this.wrap = this.el.wrap({
+            cls:'x-html-editor-wrap', cn:{cls:'x-html-editor-tb'}
+        });
+        
         this.editorcore.onRender(ct, position);
          
         if (this.resizable) {
