@@ -258,7 +258,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                 var eh = ah;
             }
         }
-        Roo.log('onResize:' + [ew,eh].join(',') );
+        Roo.log('onResize:' + [w,h,ew,eh].join(',') );
         this.editorcore.onResize(ew,eh);
         
     },
