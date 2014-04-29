@@ -223,16 +223,9 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
     {
         var _t = this;
         Roo.form.HtmlEditor.superclass.onRender.call(this, ct, position);
-        this.el.dom.style.border = '0 none';
-        this.el.dom.setAttribute('tabIndex', -1);
-        this.el.addClass('x-hidden');
-        if(Roo.isIE){ // fix IE 1px bogus margin
-            this.el.applyStyles('margin-top:-1px;margin-bottom:-1px;')
-        }
-        this.wrap = this.el.wrap({
-            cls:'x-html-editor-wrap', cn:{cls:'x-html-editor-tb'}
-        });
         
+        this.editorcore.onRender(ct, position);
+         
         if (this.resizable) {
             this.resizeEl = new Roo.Resizable(this.wrap, {
                 pinned : true,
@@ -251,55 +244,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             
         }
 
-        this.frameId = Roo.id();
         
-        this.createToolbar(this);
-        
-      
-        
-        var iframe = this.wrap.createChild({
-            tag: 'iframe',
-            id: this.frameId,
-            name: this.frameId,
-            frameBorder : 'no',
-            'src' : Roo.SSL_SECURE_URL ? Roo.SSL_SECURE_URL  :  "javascript:false"
-        }, this.el
-        );
-        
-       // console.log(iframe);
-        //this.wrap.dom.appendChild(iframe);
-
-        this.iframe = iframe.dom;
-
-         this.assignDocWin();
-        
-        this.doc.designMode = 'on';
-       
-        this.doc.open();
-        this.doc.write(this.getDocMarkup());
-        this.doc.close();
-
-        
-        var task = { // must defer to wait for browser to be ready
-            run : function(){
-                //console.log("run task?" + this.doc.readyState);
-                this.assignDocWin();
-                if(this.doc.body || this.doc.readyState == 'complete'){
-                    try {
-                        this.doc.designMode="on";
-                    } catch (e) {
-                        return;
-                    }
-                    Roo.TaskMgr.stop(task);
-                    this.initEditor.defer(10, this);
-                }
-            },
-            interval : 10,
-            duration:10000,
-            scope: this
-        };
-        Roo.TaskMgr.start(task);
-
         if(!this.width){
             this.setSize(this.wrap.getSize());
         }
