@@ -61,6 +61,7 @@ Roo.extend(Roo.bootstrap.TableBody, Roo.bootstrap.Component,  {
     
     initEvents : function()
     {
+        Roo.log('initEvents');
         if(!this.store){
             return;
         }
