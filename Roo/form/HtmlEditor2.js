@@ -266,14 +266,14 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         if(this.sourceEditMode){
 //            Roo.log('in');
 //            Roo.log(this.syncValue());
-            this.syncValue();
+            this.editorcore.syncValue();
             this.el.removeClass('x-hidden');
             this.el.dom.removeAttribute('tabIndex');
             this.el.focus();
         }else{
 //            Roo.log('out')
 //            Roo.log(this.pushValue()); 
-            //this.pushValue();
+            this.editorcore.this.pushValue();
             
             this.el.addClass('x-hidden');
             this.el.dom.setAttribute('tabIndex', -1);
@@ -420,7 +420,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         this.initialized = true;
 
         this.fireEvent('initialize', this);
-        this.pushValue();
+        this.editorcore.pushValue();
     },
 
     // private
