@@ -25,7 +25,7 @@ Roo.onReady(function(){
             {
                 xtype : 'HtmlEditor',
                 xns: Roo.form,
-           /*     toolbars : [    
+                toolbars : [    
                     {
                         xtype : 'ToolbarStandard',
                         xns : Roo.form.HtmlEditor
@@ -41,7 +41,7 @@ Roo.onReady(function(){
                     
                     
                 ],
-                */
+               
                 id:'bio',
                 name : 'bio',
                 fieldLabel:'Biography',
