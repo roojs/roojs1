@@ -335,11 +335,8 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
 
     // doc'ed in Field
     focus : function(){
-        if(this.win && !this.sourceEditMode){
-            this.win.focus();
-        }else{
-            this.el.focus();
-        }
+        this.editorcore.focus();
+        
     },
     
     assignDocWin: function()
