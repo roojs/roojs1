@@ -15,8 +15,10 @@
  * any element that has display set to 'none' can cause problems in Safari and Firefox.<br/><br/>
  */
 
-Roo.form.HtmlEditorCore = function(config){
-    Roo.form.Checkbox.superclass.constructor.call(this, config);
+Roo.HtmlEditorCore = function(config){
+    
+    
+    Roo.HtmlEditorCore.superclass.constructor.call(this, config);
     this.addEvents({
         /**
          * @event check
@@ -29,8 +31,12 @@ Roo.form.HtmlEditorCore = function(config){
 };
 Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
+
+     /**
+     * @cfg {Roo.form.HtmlEditor|Roo.bootstrap.HtmlEditor} 
+     */
     
-    inputEl
+    owner : false,
     
      /**
      * @cfg {String} resizable  's' or 'se' or 'e' - wrapps the element in a
