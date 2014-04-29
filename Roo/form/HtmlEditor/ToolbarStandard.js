@@ -521,6 +521,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
     },
     
     toggleSourceEdit : function(sourceEditMode){
+        
+        Roo.log("toolbar toogle");
         if(sourceEditMode === undefined){
             sourceEditMode = !this.sourceEditMode;
         }
