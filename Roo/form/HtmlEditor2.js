@@ -327,62 +327,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         this.pushValue();
     },
 
-    /**
-     * Protected method that will not generally be called directly. If you need/want
-     * custom HTML cleanup, this is the method you should override.
-     * @param {String} html The HTML to be cleaned
-     * return {String} The cleaned HTML
-     */
-    cleanHtml : function(html){
-        html = String(html);
-        if(html.length > 5){
-            if(Roo.isSafari){ // strip safari nonsense
-                html = html.replace(/\sclass="(?:Apple-style-span|khtml-block-placeholder)"/gi, '');
-            }
-        }
-        if(html == '&nbsp;'){
-            html = '';
-        }
-        return html;
-    },
-
-    /**
-     * Protected method that will not generally be called directly. Syncs the contents
-     * of the editor iframe with the textarea.
-     */
-    syncValue : function(){
-        if(this.initialized){
-            var bd = (this.doc.body || this.doc.documentElement);
-            //this.cleanUpPaste(); -- this is done else where and causes havoc..
-            var html = bd.innerHTML;
-            if(Roo.isSafari){
-                var bs = bd.getAttribute('style'); // Safari puts text-align styles on the body element!
-                var m = bs.match(/text-align:(.*?);/i);
-                if(m && m[1]){
-                    html = '<div style="'+m[0]+'">' + html + '</div>';
-                }
-            }
-            html = this.cleanHtml(html);
-            // fix up the special chars.. normaly like back quotes in word...
-            // however we do not want to do this with chinese..
-            html = html.replace(/([\x80-\uffff])/g, function (a, b) {
-                var cc = b.charCodeAt();
-                if (
-                    (cc >= 0x4E00 && cc < 0xA000 ) ||
-                    (cc >= 0x3400 && cc < 0x4E00 ) ||
-                    (cc >= 0xf900 && cc < 0xfb00 )
-                ) {
-                        return b;
-                }
-                return "&#"+cc+";" 
-            });
-            if(this.fireEvent('beforesync', this, html) !== false){
-                this.el.dom.value = html;
-                this.fireEvent('sync', this, html);
-            }
-        }
-    },
-
+    
     /**
      * Protected method that will not generally be called directly. Pushes the value of the textarea
      * into the iframe editor.
