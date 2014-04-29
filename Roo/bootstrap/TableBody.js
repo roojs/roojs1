@@ -83,7 +83,7 @@ Roo.extend(Roo.bootstrap.TableBody, Roo.bootstrap.Component,  {
     
     clear: function() 
     {
-        this.el.remove()
+        this.el.dom.innerHTML = '';
     }
    
 });
