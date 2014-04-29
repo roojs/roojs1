@@ -73,7 +73,7 @@ Roo.extend(Roo.bootstrap.TableBody, Roo.bootstrap.Component,  {
     
     onLoad: function () {
         
-        this.clearTabel();
+        this.clear();
         
         this.fireEvent('load', this);
     }
