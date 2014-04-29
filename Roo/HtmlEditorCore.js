@@ -186,25 +186,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             this.el.applyStyles('margin-top:-1px;margin-bottom:-1px;')
         }
        
-        /*
-        if (this.resizable) {
-            this.resizeEl = new Roo.Resizable(this.wrap, {
-                pinned : true,
-                wrap: true,
-                dynamic : true,
-                minHeight : this.height,
-                height: this.height,
-                handles : this.resizable,
-                width: this.width,
-                listeners : {
-                    resize : function(r, w, h) {
-                        _t.onResize(w,h); // -something
-                    }
-                }
-            });
-            
-        }
-        */
+        
         this.frameId = Roo.id();
         
          
