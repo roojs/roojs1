@@ -305,7 +305,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             if(!this.disable.links){
                 tb.add(
                     '-',
-                    btn('createlink', false, editorcore.createLink)    /// MOVE TO HERE?!!?!?!?!
+                    btn('createlink', false, this.createLink)    /// MOVE TO HERE?!!?!?!?!
                 );
             };
 
