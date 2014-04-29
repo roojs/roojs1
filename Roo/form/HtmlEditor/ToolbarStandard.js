@@ -451,8 +451,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         }
 
         var btns = this.tb.items.map, 
-            doc = this.editor.doc,
-            frameId = this.editor.frameId;
+            doc = this.editorcore.doc,
+            frameId = this.editorcore.frameId;
 
         if(!this.disable.font && !Roo.isSafari){
             /*
@@ -477,7 +477,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             btns[frameId + '-insertunorderedlist'].toggle(doc.queryCommandState('insertunorderedlist'));
         }
         
-        var ans = this.editor.getAllAncestors();
+        var ans = this.editorcore.getAllAncestors();
         if (this.formatCombo) {
             
             
@@ -524,14 +524,14 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             sourceEditMode = !this.sourceEditMode;
         }
         this.sourceEditMode = sourceEditMode === true;
-        var btn = this.tb.items.get(this.editor.frameId +'-sourceedit');
+        var btn = this.tb.items.get(this.editorcore.frameId +'-sourceedit');
         // just toggle the button?
-        if(btn.pressed !== this.editor.sourceEditMode){
-            btn.toggle(this.editor.sourceEditMode);
+        if(btn.pressed !== this.editorcore.sourceEditMode){
+            btn.toggle(this.editorcore.sourceEditMode);
             return;
         }
         
-        if(this.sourceEditMode){
+        if(this.editorcore.sourceEditMode){
             this.tb.items.each(function(item){
                 if(item.cmd != 'sourceedit'){
                     item.disable();
