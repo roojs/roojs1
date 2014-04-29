@@ -61,12 +61,12 @@ Roo.extend(Roo.bootstrap.TableBody, Roo.bootstrap.Component,  {
     
     initEvents : function()
     {
-        Roo.log('this.store');
-        Roo.log(this.store);
+        
         if(!this.store){
             return;
         }
-        
+        Roo.log('this.store');
+        Roo.log(this.store);
         this.store = Roo.factory(this.store, Roo.data);
         this.store.on('load', this.onLoad, this);
         
