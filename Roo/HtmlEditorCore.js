@@ -551,7 +551,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         this.execCmd(cmd, value);
         this.fireEvent('editorevent', this);
         //this.updateToolbar();
-        this.deferFocus();
+        this.owner.deferFocus();
     },
 
     /**
