@@ -359,7 +359,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             this.toolbars[i].onFirstFocus();
         }
         
-    },
+    }
      
     
     // hide stuff that is not compatible
