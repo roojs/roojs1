@@ -367,7 +367,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     clearInvalid : Roo.emptyFn,
 
     setValue : function(v){
-        Roo.form.HtmlEditor.superclass.setValue.call(this, v);
+        this.owner.setValue.call(this, v);
         this.pushValue();
     },
 
