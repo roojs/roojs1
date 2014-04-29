@@ -366,29 +366,8 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
     // private
     onFirstFocus : function(){
         
-        this.assignDocWin();
-        
-        
-        this.activated = true;
-        for (var i =0; i < this.toolbars.length;i++) {
-            this.toolbars[i].onFirstFocus();
-        }
-       
-        if(Roo.isGecko){ // prevent silly gecko errors
-            this.win.focus();
-            var s = this.win.getSelection();
-            if(!s.focusNode || s.focusNode.nodeType != 3){
-                var r = s.getRangeAt(0);
-                r.selectNodeContents((this.doc.body || this.doc.documentElement));
-                r.collapse(true);
-                this.deferFocus();
-            }
-            try{
-                this.execCmd('useCSS', true);
-                this.execCmd('styleWithCSS', false);
-            }catch(e){}
-        }
-        this.fireEvent('activate', this);
+        this.editorcore.onFirstFocus();
+         
     },
 
     // private
