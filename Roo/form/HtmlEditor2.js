@@ -338,63 +338,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         this.editorcore.focus();
         
     },
-    
-    assignDocWin: function()
-    {
-        var iframe = this.iframe;
-        
-         if(Roo.isIE){
-            this.doc = iframe.contentWindow.document;
-            this.win = iframe.contentWindow;
-        } else {
-            if (!Roo.get(this.frameId)) {
-                return;
-            }
-            this.doc = (iframe.contentDocument || Roo.get(this.frameId).dom.document);
-            this.win = Roo.get(this.frameId).dom.contentWindow;
-        }
-    },
-    
-    // private
-    initEditor : function(){
-        //console.log("INIT EDITOR");
-        this.assignDocWin();
-        
-        
-        
-        this.doc.designMode="on";
-        this.doc.open();
-        this.doc.write(this.getDocMarkup());
-        this.doc.close();
-        
-        var dbody = (this.doc.body || this.doc.documentElement);
-        //var ss = this.el.getStyles('font-size', 'font-family', 'background-image', 'background-repeat');
-        // this copies styles from the containing element into thsi one..
-        // not sure why we need all of this..
-        var ss = this.el.getStyles('font-size', 'background-image', 'background-repeat');
-        ss['background-attachment'] = 'fixed'; // w3c
-        dbody.bgProperties = 'fixed'; // ie
-        Roo.DomHelper.applyStyles(dbody, ss);
-        Roo.EventManager.on(this.doc, {
-            //'mousedown': this.onEditorEvent,
-            'mouseup': this.onEditorEvent,
-            'dblclick': this.onEditorEvent,
-            'click': this.onEditorEvent,
-            'keyup': this.onEditorEvent,
-            buffer:100,
-            scope: this
-        });
-        if(Roo.isGecko){
-            Roo.EventManager.on(this.doc, 'keypress', this.mozKeyPress, this);
-        }
-        if(Roo.isIE || Roo.isSafari || Roo.isOpera){
-            Roo.EventManager.on(this.doc, 'keydown', this.fixKeys, this);
-        }
-        this.initialized = true;
-
-        this.fireEvent('initialize', this);
-        this.editorcore.pushValue();
-    },
+      
 
     // private
     onDestroy : function(){
