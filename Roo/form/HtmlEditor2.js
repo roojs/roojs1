@@ -229,8 +229,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             if(typeof w == 'number'){
                 var aw = w - this.wrap.getFrameWidth('lr');
                 this.el.setWidth(this.adjustWidth('textarea', aw));
-                this.editorcore.iframe.style.width = aw + 'px';
-            }
+             }
             if(typeof h == 'number'){
                 var tbh = 0;
                 for (var i =0; i < this.toolbars.length;i++) {
