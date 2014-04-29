@@ -457,8 +457,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         
         this.activated = true;
-        this.owner.fireEvent('firstfocus');
-      
+         
+    
         if(Roo.isGecko){ // prevent silly gecko errors
             this.win.focus();
             var s = this.win.getSelection();
