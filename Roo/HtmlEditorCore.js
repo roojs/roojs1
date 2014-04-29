@@ -549,7 +549,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     relayCmd : function(cmd, value){
         this.win.focus();
         this.execCmd(cmd, value);
-        this.fireEvent('editorevent', this);
+        this.owner.fireEvent('editorevent', this);
         //this.updateToolbar();
         this.owner.deferFocus();
     },
