@@ -442,7 +442,14 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
     relayBtnCmd : function(btn) {
         this.editorcore.relayCmd(btn.cmd);
     },
-    
+    // private used internally
+    createLink : function(){
+        var url = prompt(this.createLinkText, this.defaultLinkValue);
+        if(url && url != 'http:/'+'/'){
+            this.editorcore.relayCmd('createlink', url);
+        }
+    },
+
     
     /**
      * Protected method that will not generally be called directly. It triggers
