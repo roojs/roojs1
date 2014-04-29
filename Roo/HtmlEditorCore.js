@@ -275,8 +275,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 //            Roo.log(this.pushValue()); 
             this.pushValue();
             this.iframe.className = '';
-            this.el.addClass('x-hidden');
-            this.el.dom.setAttribute('tabIndex', -1);
             this.deferFocus();
         }
         this.setSize(this.wrap.getSize());
