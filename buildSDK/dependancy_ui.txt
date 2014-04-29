@@ -103,6 +103,7 @@ Roo.form.ComboBox
 Roo.form.ComboBoxArray
 Roo.form.Checkbox
 Roo.form.Radio
+Roo.HtmlEditorCore
 Roo.form.HtmlEditor
 Roo.form.HtmlEditor.ToolbarStandard
 Roo.form.HtmlEditor.ToolbarContext
