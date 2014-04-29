@@ -247,7 +247,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 }
             },
             interval : 10,
-            duration:10000,
+            duration: 10000,
             scope: this
         };
         Roo.TaskMgr.start(task);
