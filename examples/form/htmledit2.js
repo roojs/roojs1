@@ -47,6 +47,7 @@ Roo.onReady(function(){
                 fieldLabel:'Biography',
                 width:800,
                 height:400,
+                stylesheets : [],
                 resizable: 's' /// where the handles should got..
 
             },
