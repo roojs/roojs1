@@ -63,13 +63,7 @@ Roo.HtmlEditorCore = function(config){
          * @param {String} html
          */
         push: true,
-         /**
-         * @event editmodechange
-         * Fires when the editor switches edit modes
-         * @param {Roo.HtmlEditorCore} this
-         * @param {Boolean} sourceEdit True if source edit, false if standard editing.
-         */
-        editmodechange: true,
+        
         /**
          * @event editorevent
          * Fires when on any editor (mouse up/down cursor movement etc.) - used for toolbar hooks.
