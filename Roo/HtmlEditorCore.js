@@ -278,7 +278,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             this.deferFocus();
         }
         this.setSize(this.wrap.getSize());
-        this.fireEvent('editmodechange', this, this.sourceEditMode);
+        //this.fireEvent('editmodechange', this, this.sourceEditMode);
     },
 
     // private used internally
