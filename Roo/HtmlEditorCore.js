@@ -211,7 +211,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
          
         
-        var iframe = this.wrap.createChild({
+        var iframe = this.owner.wrap.createChild({
             tag: 'iframe',
             id: this.frameId,
             name: this.frameId,
