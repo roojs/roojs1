@@ -273,14 +273,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         //this.fireEvent('editmodechange', this, this.sourceEditMode);
     },
 
-    // private used internally
-    createLink : function(){
-        var url = prompt(this.createLinkText, this.defaultLinkValue);
-        if(url && url != 'http:/'+'/'){
-            this.relayCmd('createlink', url);
-        }
-    },
-
+    
   
 
     /**
