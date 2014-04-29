@@ -324,7 +324,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
 
     setValue : function(v){
         Roo.form.HtmlEditor.superclass.setValue.call(this, v);
-        this.pushValue();
+        this.editorcore.pushValue();
     },
 
     
