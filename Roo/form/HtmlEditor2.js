@@ -39,14 +39,6 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
      * @cfg {Array} toolbars Array of toolbars. - defaults to just the Standard one
      */
     toolbars : false,
-    /**
-     * @cfg {String} createLinkText The default text for the create link prompt
-     */
-    createLinkText : 'Please enter the URL for the link:',
-    /**
-     * @cfg {String} defaultLinkValue The default value for the create link prompt (defaults to http:/ /)
-     */
-    defaultLinkValue : 'http:/'+'/',
    
      /**
      * @cfg {String} resizable  's' or 'se' or 'e' - wrapps the element in a
