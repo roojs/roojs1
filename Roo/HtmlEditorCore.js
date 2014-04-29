@@ -85,7 +85,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
 
      /**
-     * @cfg {Roo.form.HtmlEditor|Roo.bootstrap.HtmlEditor} 
+     * @cfg {Roo.form.HtmlEditor|Roo.bootstrap.HtmlEditor} the owner field 
      */
     
     owner : false,
