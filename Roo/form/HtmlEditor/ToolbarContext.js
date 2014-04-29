@@ -658,14 +658,14 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                         
                     }
                     pn.removeChild(sn);
-                    var range = editor.createRange();
+                    var range = editorcore.createRange();
         
                     range.setStart(stn,0);
                     range.setEnd(en,0); //????
                     //range.selectNode(sel);
                     
                     
-                    var selection = editor.getSelection();
+                    var selection = editorcore.getSelection();
                     selection.removeAllRanges();
                     selection.addRange(range);
                     
