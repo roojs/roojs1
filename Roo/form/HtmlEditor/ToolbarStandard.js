@@ -62,6 +62,18 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
          
      */
     disable : false,
+    
+    
+     /**
+     * @cfg {String} createLinkText The default text for the create link prompt
+     */
+    createLinkText : 'Please enter the URL for the link:',
+    /**
+     * @cfg {String} defaultLinkValue The default value for the create link prompt (defaults to http:/ /)
+     */
+    defaultLinkValue : 'http:/'+'/',
+   
+    
       /**
      * @cfg {Array} fontFamilies An array of available font families
      */
