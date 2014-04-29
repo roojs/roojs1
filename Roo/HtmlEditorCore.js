@@ -269,7 +269,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             this.iframe.className = '';
             this.deferFocus();
         }
-        this.setSize(this.wrap.getSize());
+        this.setSize(this.owner.wrap.getSize());
         //this.fireEvent('editmodechange', this, this.sourceEditMode);
     },
 
@@ -445,8 +445,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             //    this.toolbars[i].onDestroy();
            // }
             
-            this.wrap.dom.innerHTML = '';
-            this.wrap.remove();
+            //this.wrap.dom.innerHTML = '';
+            //this.wrap.remove();
         }
     },
 
