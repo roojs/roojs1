@@ -128,6 +128,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     getDocMarkup : function(){
         // body styles..
         var st = '';
+        Roo.log(this.stylesheets);
+        
         if (this.stylesheets === false) {
             
             Roo.get(document.head).select('style').each(function(node) {
