@@ -154,7 +154,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                 cls : 'x-btn-icon x-edit-'+id,
                 enableToggle:toggle !== false,
                 scope: _t, // was editor...
-                handler:handler||editorcore.relayBtnCmd,
+                handler:handler||this.relayBtnCmd,
                 clickEvent:'mousedown',
                 tooltip: etb.buttonTips[id] || undefined, ///tips ???
                 tabIndex:-1
