@@ -558,7 +558,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             return;
         }
         
-        if(this.editorcore.sourceEditMode){
+        if(sourceEditMode){
             this.tb.items.each(function(item){
                 if(item.cmd != 'sourceedit'){
                     item.disable();
