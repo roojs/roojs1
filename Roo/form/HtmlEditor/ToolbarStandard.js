@@ -456,6 +456,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
     },
     // private used internally
     createLink : function(){
+        Roo.log("create link?");
         var url = prompt(this.createLinkText, this.defaultLinkValue);
         if(url && url != 'http:/'+'/'){
             this.editorcore.relayCmd('createlink', url);
