@@ -240,8 +240,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     onResize : function(w, h)
     {
         //Roo.log('resize: ' +w + ',' + h );
-        Roo.HtmlEditorCore.superclass.onResize.apply(this, arguments);
-        if(this.iframe){
+        //Roo.HtmlEditorCore.superclass.onResize.apply(this, arguments);
+        if(!this.iframe){
+            return;
+        }
             if(typeof w == 'number'){
                 
                 this.iframe.style.width = w + 'px';
