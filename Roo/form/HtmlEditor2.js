@@ -213,7 +213,8 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             });
             
         }
-
+        this.createToolbar(this);
+       
         
         if(!this.width){
             this.setSize(this.wrap.getSize());
