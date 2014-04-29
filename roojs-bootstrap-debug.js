@@ -2607,6 +2607,24 @@ Roo.extend(Roo.bootstrap.TableBody, Roo.bootstrap.Component,  {
         }
         
         return cfg;
+    },
+    
+    initEvents : function()
+    {
+        if(!this.store){
+            return;
+        }
+        
+        this.store = Roo.factory(this.store, Roo.data);
+        this.store.on('load', this.onLoad, this);
+        
+    },
+    
+    onLoad: function () {
+        
+        this.clearTabel();
+        
+        this.fireEvent('load', this);
     }
    
 });
@@ -11123,18 +11141,20 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
     
     getAutoCreate : function()
     {
-        var cfg = {};
-        
-        var toolbar = new Roo.bootstrap.ButtonGroup({
-            toolbar: true
-            cn: [
-                {
-                    
-                }
-            ]
-        });
-        
-        return cfg;
+//        var cfg = {};
+//        
+//        var toolbar = new Roo.bootstrap.ButtonGroup({
+//            toolbar: true,
+//            cn: [
+//                {
+//                    new Roo.bootstrap.Button({
+//                        
+//                    })
+//                }
+//            ]
+//        });
+//        
+//        return cfg;
         
     }
 });
