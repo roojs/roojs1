@@ -277,7 +277,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             
             this.el.addClass('x-hidden');
             this.el.dom.setAttribute('tabIndex', -1);
-            this.deferFocus();
+            //this.deferFocus();
         }
         this.editorcore.toggleSourceEdit(sourceEditMode);
         
