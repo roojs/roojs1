@@ -283,24 +283,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
     },
 
- 
   
-
-    /**
-     * Overridden and disabled. The editor element does not support standard valid/invalid marking. @hide
-     * @method
-     */
-    markInvalid : Roo.emptyFn,
-    /**
-     * Overridden and disabled. The editor element does not support standard valid/invalid marking. @hide
-     * @method
-     */
-    clearInvalid : Roo.emptyFn,
-
-    setValue : function(v){
-        this.owner.setValue.call(this, v);
-        this.pushValue();
-    },
 
     /**
      * Protected method that will not generally be called directly. If you need/want
