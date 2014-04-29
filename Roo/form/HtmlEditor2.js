@@ -222,6 +222,9 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
     {
         //Roo.log('resize: ' +w + ',' + h );
         Roo.form.HtmlEditor.superclass.onResize.apply(this, arguments);
+        
+        this.editorcore.onResize(w,h);
+        
         if(this.el && this.iframe){
             if(typeof w == 'number'){
                 var aw = w - this.wrap.getFrameWidth('lr');
@@ -245,8 +248,8 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                 ah -= 5; // knock a few pixes off for look..
                 this.el.setHeight(this.adjustWidth('textarea', ah));
                 this.editorcore.iframe.style.height = ah + 'px';
-                if(this.doc){
-                    (this.doc.body || this.doc.documentElement).style.height = (ah - (this.iframePad*2)) + 'px';
+                if(this.editorcore.doc){
+                    (this.editorcore.doc.body || this.editorcore.doc.documentElement).style.height = (ah - (this.iframePad*2)) + 'px';
                 }
             }
         }
