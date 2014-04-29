@@ -283,19 +283,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
     },
 
-    // private (for BoxComponent)
-    adjustSize : Roo.BoxComponent.prototype.adjustSize,
-
-    // private (for BoxComponent)
-    getResizeEl : function(){
-        return this.wrap;
-    },
-
-    // private (for BoxComponent)
-    getPositionEl : function(){
-        return this.wrap;
-    },
-
+ 
+ 
     // private
     initEvents : function(){
         this.originalValue = this.getValue();
