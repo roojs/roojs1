@@ -267,10 +267,9 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
      * Toggles the editor between standard and source edit mode.
      * @param {Boolean} sourceEdit (optional) True for source edit, false for standard
      */
-    toggleSourceEdit : function(sourceEditMode){
+    toggleSourceEdit : function(sourceEditMode)
+    {
         this.editorcore.toggleSourceEdit(sourceEditMode);
-        
-        
         
         if(this.editorcore.sourceEditMode){
 //            Roo.log('in');
