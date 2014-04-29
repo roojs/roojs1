@@ -281,6 +281,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             this.el.dom.removeAttribute('tabIndex');
             this.el.focus();
         }else{
+            Roo.log('editor - hiding textarea');
 //            Roo.log('out')
 //            Roo.log(this.pushValue()); 
             this.editorcore.pushValue();
