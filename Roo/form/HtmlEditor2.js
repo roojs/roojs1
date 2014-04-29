@@ -11,12 +11,12 @@
 Roo.form.HtmlEditor = function(config){
     
     
-    if (!config.toolbars) {
-        config.toolbars = [];
-    }
+    
     Roo.form.HtmlEditor.superclass.constructor.call(this, config);
     
-    
+    if (!this.toolbars) {
+        this.toolbars = [];
+    }
 };
 
 /**
