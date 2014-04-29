@@ -268,8 +268,9 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
      * @param {Boolean} sourceEdit (optional) True for source edit, false for standard
      */
     toggleSourceEdit : function(sourceEditMode){
+        this.editorcore.toggleSourceEdit(sourceEditMode);
         
-        this.editorcore.sourceEditMode = sourceEditMode === true;
+        
         
         if(this.editorcore.sourceEditMode){
 //            Roo.log('in');
@@ -287,7 +288,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             this.el.dom.setAttribute('tabIndex', -1);
             //this.deferFocus();
         }
-        this.editorcore.toggleSourceEdit(sourceEditMode);
+        
         
         this.setSize(this.wrap.getSize());
         this.fireEvent('editmodechange', this, this.editorcore.sourceEditMode);
