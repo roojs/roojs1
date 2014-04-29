@@ -530,7 +530,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         var btn = this.tb.items.get(this.editorcore.frameId +'-sourceedit');
         // just toggle the button?
         if(btn.pressed !== this.sourceEditMode){
-            btn.toggle(this.editorcore.sourceEditMode);
+            btn.toggle(this.sourceEditMode);
             return;
         }
         
