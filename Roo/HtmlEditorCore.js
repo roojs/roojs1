@@ -307,7 +307,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             var html = bd.innerHTML;
             if(Roo.isSafari){
                 var bs = bd.getAttribute('style'); // Safari puts text-align styles on the body element!
-                var m = bs.match(/text-align:(.*?);/i);
+                var m = bs ? bs.match(/text-align:(.*?);/i) : false;
                 if(m && m[1]){
                     html = '<div style="'+m[0]+'">' + html + '</div>';
                 }
