@@ -371,15 +371,15 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         var updateFooter = sel ? false : true;
         
         
-        var ans = this.editor.getAllAncestors();
+        var ans = this.editorcore.getAllAncestors();
         
         // pick
         var ty= Roo.form.HtmlEditor.ToolbarContext.types;
         
         if (!sel) { 
-            sel = ans.length ? (ans[0] ?  ans[0]  : ans[1]) : this.editor.doc.body;
-            sel = sel ? sel : this.editor.doc.body;
-            sel = sel.tagName.length ? sel : this.editor.doc.body;
+            sel = ans.length ? (ans[0] ?  ans[0]  : ans[1]) : this.editorcore.doc.body;
+            sel = sel ? sel : this.editorcore.doc.body;
+            sel = sel.tagName.length ? sel : this.editorcore.doc.body;
             
         }
         // pick a menu that exists..
@@ -511,6 +511,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
     buildToolbar: function(tlist, nm)
     {
         var editor = this.editor;
+        var editorcore = this.editorcore;
          // create a new element.
         var wdiv = editor.wrap.createChild({
                 tag: 'div'
@@ -551,7 +552,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     'select': function(c, r, i) {
                         // initial support only for on class per el..
                         tb.selectedNode.className =  r ? r.get('val') : '';
-                        editor.syncValue();
+                        editorcore.syncValue();
                     }
                 }
     
