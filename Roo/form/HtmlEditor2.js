@@ -365,7 +365,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
 
     // private
     onFirstFocus : function(){
-        
+        Roo.log("onFirstFocus");
         this.editorcore.onFirstFocus();
          for (var i =0; i < this.toolbars.length;i++) {
             this.toolbars[i].onFirstFocus();
