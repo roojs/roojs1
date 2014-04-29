@@ -559,6 +559,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         }
         
         if(sourceEditMode){
+            Roo.log("disabling buttons");
             this.tb.items.each(function(item){
                 if(item.cmd != 'sourceedit'){
                     item.disable();
@@ -566,6 +567,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             });
           
         }else{
+            Roo.log("enabling buttons");
             if(this.initialized){
                 this.tb.items.each(function(item){
                     item.enable();
