@@ -172,7 +172,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     onRender : function(ct, position)
     {
         var _t = this;
-        Roo.form.HtmlEditorCore.superclass.onRender.call(this, ct, position);
+        Roo.HtmlEditorCore.superclass.onRender.call(this, ct, position);
         
         
         this.el.dom.style.border = '0 none';
@@ -265,7 +265,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     onResize : function(w, h)
     {
         //Roo.log('resize: ' +w + ',' + h );
-        Roo.form.HtmlEditor.superclass.onResize.apply(this, arguments);
+        Roo.HtmlEditorCore.superclass.onResize.apply(this, arguments);
         if(this.el && this.iframe){
             if(typeof w == 'number'){
                 var aw = w - this.wrap.getFrameWidth('lr');
