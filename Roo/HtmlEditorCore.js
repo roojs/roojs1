@@ -333,9 +333,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 }
                 return "&#"+cc+";" 
             });
-            if(this.fireEvent('beforesync', this, html) !== false){
+            if(this.owner.fireEvent('beforesync', this, html) !== false){
                 this.el.dom.value = html;
-                this.fireEvent('sync', this, html);
+                this.owner.fireEvent('sync', this, html);
             }
         }
     },
