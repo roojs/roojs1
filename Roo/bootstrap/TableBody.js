@@ -57,6 +57,24 @@ Roo.extend(Roo.bootstrap.TableBody, Roo.bootstrap.Component,  {
         }
         
         return cfg;
+    },
+    
+    initEvents : function()
+    {
+        if(!this.store){
+            return;
+        }
+        
+        this.store = Roo.factory(this.store, Roo.data);
+        this.store.on('load', this.onLoad, this);
+        
+    },
+    
+    onLoad: function () {
+        
+        this.clearTabel();
+        
+        this.fireEvent('load', this);
     }
    
 });
