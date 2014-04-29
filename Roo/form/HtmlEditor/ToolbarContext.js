@@ -341,7 +341,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         //Roo.log(ev);
         // capture mouse up - this is handy for selecting images..
         // perhaps should go somewhere else...
-        if(!this.editor.activated){
+        if(!this.editorcore.activated){
              this.editor.onFirstFocus();
             return;
         }
