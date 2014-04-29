@@ -312,7 +312,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 //            Roo.log('in');
 //            Roo.log(this.syncValue());
             this.syncValue();
-            this.iframe.className = 'x-hidden';
+            this.iframe.className = 'x-hidden';     //FIXME - what's the BS styles for these
             this.el.removeClass('x-hidden');
             this.el.dom.removeAttribute('tabIndex');
             this.el.focus();
