@@ -2611,6 +2611,7 @@ Roo.extend(Roo.bootstrap.TableBody, Roo.bootstrap.Component,  {
     
     initEvents : function()
     {
+        Roo.log('initEvents');
         if(!this.store){
             return;
         }
@@ -2622,7 +2623,7 @@ Roo.extend(Roo.bootstrap.TableBody, Roo.bootstrap.Component,  {
     
     onLoad: function () {
         
-        this.clearTabel();
+        this.clear();
         
         this.fireEvent('load', this);
     }
