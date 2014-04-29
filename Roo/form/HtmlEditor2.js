@@ -281,7 +281,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         }else{
 //            Roo.log('out')
 //            Roo.log(this.pushValue()); 
-            this.editorcore.this.pushValue();
+            this.editorcore.pushValue();
             
             this.el.addClass('x-hidden');
             this.el.dom.setAttribute('tabIndex', -1);
