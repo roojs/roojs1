@@ -287,8 +287,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             this.el.dom.setAttribute('tabIndex', -1);
             //this.deferFocus();
         }
-        
-        
+         
         this.setSize(this.wrap.getSize());
         this.fireEvent('editmodechange', this, this.editorcore.sourceEditMode);
     },
