@@ -17,7 +17,7 @@ Roo.form.HtmlEditor = function(config){
     if (!this.toolbars) {
         this.toolbars = [];
     }
-    this.editorcore = new Roo.HtmlEditorCore(Roo.apply({ owner : this} , config);
+    this.editorcore = new Roo.HtmlEditorCore(Roo.apply({ owner : this} , config));
     
     
 };
