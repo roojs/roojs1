@@ -229,7 +229,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             if(typeof w == 'number'){
                 var aw = w - this.wrap.getFrameWidth('lr');
                 this.el.setWidth(this.adjustWidth('textarea', aw));
-             }
+            }
             if(typeof h == 'number'){
                 var tbh = 0;
                 for (var i =0; i < this.toolbars.length;i++) {
@@ -246,10 +246,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                 var ah = h - this.wrap.getFrameWidth('tb') - tbh;// this.tb.el.getHeight();
                 ah -= 5; // knock a few pixes off for look..
                 this.el.setHeight(this.adjustWidth('textarea', ah));
-                this.editorcore.iframe.style.height = ah + 'px';
-                if(this.editorcore.doc){
-                    (this.editorcore.doc.body || this.editorcore.doc.documentElement).style.height = (ah - (this.iframePad*2)) + 'px';
-                }
+                
             }
         }
     },
