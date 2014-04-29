@@ -11,8 +11,12 @@
 Roo.form.HtmlEditor = function(config){
     
     
+    if (!config.toolbars) {
+        config.toolbars = [];
+    }
     Roo.form.HtmlEditor.superclass.constructor.call(this, config);
-     
+    
+    
 };
 
 /**
@@ -27,7 +31,7 @@ Roo.form.HtmlEditor = function(config){
  * An Editor is a sensitive component that can't be used in all spots standard fields can be used. Putting an Editor within
  * any element that has display set to 'none' can cause problems in Safari and Firefox.<br/><br/>
  */
-Roo.form.HtmlEditor = Roo.extend(Roo.form.Field, {
+Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
       /**
      * @cfg {Array} toolbars Array of toolbars. - defaults to just the Standard one
      */
