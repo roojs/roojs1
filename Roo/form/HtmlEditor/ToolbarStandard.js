@@ -139,6 +139,9 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
     init : function(editor)
     {
         this.editor = editor;
+        this.editorcore = editor.editorcore ? editor.editorcore : editor;
+        var editorcore = this.editorcore;
+        
         
         
         var fid = editor.frameId;
