@@ -475,7 +475,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 this.execCmd('styleWithCSS', false);
             }catch(e){}
         }
-        this.fireEvent('activate', this);
+        this.owner.fireEvent('activate', this);
     },
 
     // private
