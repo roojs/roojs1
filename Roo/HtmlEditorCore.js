@@ -243,8 +243,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         Roo.HtmlEditorCore.superclass.onResize.apply(this, arguments);
         if(this.iframe){
             if(typeof w == 'number'){
-                var aw = w - this.wrap.getFrameWidth('lr');
-                this.iframe.style.width = aw + 'px';
+                
+                this.iframe.style.width = w + 'px';
             }
             if(typeof h == 'number'){
                 
