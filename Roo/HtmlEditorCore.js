@@ -123,13 +123,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     iframePad:3,
     hideMode:'offsets',
     
-    
-
-    // private
-    initComponent : function(){
-        
-    },
-
+     
     
 
     /**
