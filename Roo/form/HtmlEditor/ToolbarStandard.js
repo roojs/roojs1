@@ -546,6 +546,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             }
             
         }
+        Roo.log("calling toggole on editor");
         // tell the editor that it's been pressed..
         this.editor.toggleSourceEdit(sourceEditMode);
        
