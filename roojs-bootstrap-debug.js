@@ -2611,13 +2611,14 @@ Roo.extend(Roo.bootstrap.TableBody, Roo.bootstrap.Component,  {
     
     initEvents : function()
     {
-        Roo.log('this.store');
-        Roo.log(this.store);
+        
         if(!this.store){
             return;
         }
         
         this.store = Roo.factory(this.store, Roo.data);
+        Roo.log('this.store');
+        Roo.log(this.store);
         this.store.on('load', this.onLoad, this);
         
     },
