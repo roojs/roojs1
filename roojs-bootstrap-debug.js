@@ -2626,7 +2626,7 @@ Roo.extend(Roo.bootstrap.TableBody, Roo.bootstrap.Component,  {
     onLoad: function () {
         
 //        this.clear();
-        
+        Roo.log(this.el);
         this.fireEvent('load', this);
     }
    
