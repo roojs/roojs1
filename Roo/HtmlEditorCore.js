@@ -265,9 +265,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             this.iframe.className = 'x-hidden';     //FIXME - what's the BS styles for these
             
         }else{
-//            Roo.log('out')
-//            Roo.log(this.pushValue()); 
-            this.pushValue();
+ 
             this.iframe.className = '';
             this.deferFocus();
         }
