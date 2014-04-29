@@ -241,31 +241,16 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     {
         //Roo.log('resize: ' +w + ',' + h );
         Roo.HtmlEditorCore.superclass.onResize.apply(this, arguments);
-        if(this.el && this.iframe){
+        if(this.iframe){
             if(typeof w == 'number'){
                 var aw = w - this.wrap.getFrameWidth('lr');
-                this.el.setWidth(this.adjustWidth('textarea', aw));
                 this.iframe.style.width = aw + 'px';
             }
             if(typeof h == 'number'){
-                var tbh = 0;
-                for (var i =0; i < this.toolbars.length;i++) {
-                    // fixme - ask toolbars for heights?
-                    tbh += this.toolbars[i].tb.el.getHeight();
-                    if (this.toolbars[i].footer) {
-                        tbh += this.toolbars[i].footer.el.getHeight();
-                    }
-                }
                 
-                
-                
-                
-                var ah = h - this.wrap.getFrameWidth('tb') - tbh;// this.tb.el.getHeight();
-                ah -= 5; // knock a few pixes off for look..
-                this.el.setHeight(this.adjustWidth('textarea', ah));
-                this.iframe.style.height = ah + 'px';
+                this.iframe.style.height = h + 'px';
                 if(this.doc){
-                    (this.doc.body || this.doc.documentElement).style.height = (ah - (this.iframePad*2)) + 'px';
+                    (this.doc.body || this.doc.documentElement).style.height = (h - (this.iframePad*2)) + 'px';
                 }
             }
         }
