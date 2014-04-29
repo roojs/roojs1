@@ -272,6 +272,8 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         this.editorcore.toggleSourceEdit(sourceEditMode);
         
         if(this.editorcore.sourceEditMode){
+            Roo.log('editor - showing textarea');
+            
 //            Roo.log('in');
 //            Roo.log(this.syncValue());
             this.editorcore.syncValue();
