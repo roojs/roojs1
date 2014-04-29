@@ -257,10 +257,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         if(!this.width){
             this.setSize(this.wrap.getSize());
         }
-        if (this.resizeEl) {
-            this.resizeEl.resizeTo.defer(100, this.resizeEl,[ this.width,this.height ] );
-            // should trigger onReize..
-        }
+         
     },
 
     // private
