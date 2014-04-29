@@ -176,48 +176,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         
     },
 
-    /**
-     * Protected method that will not generally be called directly. It
-     * is called when the editor initializes the iframe with HTML contents. Override this method if you
-     * want to change the initialization markup of the iframe (e.g. to add stylesheets).
-     */
-    getDocMarkup : function(){
-        // body styles..
-        var st = '';
-        if (this.stylesheets === false) {
-            
-            Roo.get(document.head).select('style').each(function(node) {
-                st += node.dom.outerHTML || new XMLSerializer().serializeToString(node.dom);
-            });
-            
-            Roo.get(document.head).select('link').each(function(node) { 
-                st += node.dom.outerHTML || new XMLSerializer().serializeToString(node.dom);
-            });
-            
-        } else if (!this.stylesheets.length) {
-                // simple..
-                st = '<style type="text/css">' +
-                    'body{border:0;margin:0;padding:3px;height:98%;cursor:text;}' +
-                   '</style>';
-        } else {
-            Roo.each(this.stylesheets, function(s) {
-                st += '<link rel="stylesheet" type="text/css" href="' + s +'" />'
-            });
-            
-        }
-        
-        st +=  '<style type="text/css">' +
-            'IMG { cursor: pointer } ' +
-        '</style>';
-
-        
-        return '<html><head>' + st  +
-            //<style type="text/css">' +
-            //'body{border:0;margin:0;padding:3px;height:98%;cursor:text;}' +
-            //'</style>' +
-            ' </head><body class="roo-htmleditor-body"></body></html>';
-    },
-
+     
     // private
     onRender : function(ct, position)
     {
@@ -267,7 +226,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             if(typeof w == 'number'){
                 var aw = w - this.wrap.getFrameWidth('lr');
                 this.el.setWidth(this.adjustWidth('textarea', aw));
-                this.iframe.style.width = aw + 'px';
+                this.editorcore.iframe.style.width = aw + 'px';
             }
             if(typeof h == 'number'){
                 var tbh = 0;
@@ -285,7 +244,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                 var ah = h - this.wrap.getFrameWidth('tb') - tbh;// this.tb.el.getHeight();
                 ah -= 5; // knock a few pixes off for look..
                 this.el.setHeight(this.adjustWidth('textarea', ah));
-                this.iframe.style.height = ah + 'px';
+                this.editorcore.iframe.style.height = ah + 'px';
                 if(this.doc){
                     (this.doc.body || this.doc.documentElement).style.height = (ah - (this.iframePad*2)) + 'px';
                 }
