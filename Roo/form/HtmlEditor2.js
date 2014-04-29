@@ -327,31 +327,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         this.editorcore.pushValue();
     },
 
-    
-    /**
-     * textarea -> HTMLArea.
-     *
-     * Protected method that will not generally be called directly. Pushes the value of the textarea
-     * into the iframe editor.
-     */
-    pushValue : function(){
-        if(this.initialized){
-            var v = this.el.dom.value;
-            
-            if(v.length < 1){
-                v = '&#160;';
-            }
-            
-            if(this.fireEvent('beforepush', this, v) !== false){
-                var d = (this.doc.body || this.doc.documentElement);
-                d.innerHTML = v;
-                this.cleanUpPaste();
-                this.el.dom.value = d.innerHTML;
-                this.fireEvent('push', this, v);
-            }
-        }
-    },
-
+     
     // private
     deferFocus : function(){
         this.focus.defer(10, this);
