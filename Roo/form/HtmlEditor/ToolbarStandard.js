@@ -56,6 +56,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
     rendered: false,
     
     editor : false,
+    editorcore : false,
     /**
      * @cfg {Object} disable  List of toolbar elements to disable
          
