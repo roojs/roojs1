@@ -438,9 +438,10 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         //editor.on('editmodechange', this.updateToolbar, this);
     },
     
+    
     relayBtnCmd : function(btn) {
         this.editorcore.relayCmd(btn.cmd);
-    }
+    },
     
     
     /**
