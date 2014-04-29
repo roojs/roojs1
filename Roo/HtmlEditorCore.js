@@ -9,11 +9,12 @@
  
 /**
  * @class Roo.HtmlEditorCore
+ * @extends Roo.Component
  * Provides a the editing component for the HTML editors in Roo. (bootstrap and Roo.form)
  *
  * any element that has display set to 'none' can cause problems in Safari and Firefox.<br/><br/>
  */
-Roo.HtmlEditorCore = Roo.extend(Roo.util.Observable, {
+Roo.HtmlEditorCore = Roo.extend(Roo.Component, {
        
    
      /**
@@ -114,27 +115,7 @@ Roo.HtmlEditorCore = Roo.extend(Roo.util.Observable, {
          
     },
 
-    /**
-     * Protected method that will not generally be called directly. It
-     * is called when the editor creates its toolbar. Override this method if you need to
-     * add custom toolbar buttons.
-     * @param {HtmlEditor} editor
-     */
-    createToolbar : function(editor){
-        if (!editor.toolbars || !editor.toolbars.length) {
-            editor.toolbars = [ new Roo.form.HtmlEditor.ToolbarStandard() ]; // can be empty?
-        }
-        
-        for (var i =0 ; i < editor.toolbars.length;i++) {
-            editor.toolbars[i] = Roo.factory(
-                    typeof(editor.toolbars[i]) == 'string' ?
-                        { xtype: editor.toolbars[i]} : editor.toolbars[i],
-                Roo.form.HtmlEditor);
-            editor.toolbars[i].init(editor);
-        }
-         
-        
-    },
+    
 
     /**
      * Protected method that will not generally be called directly. It
@@ -182,7 +163,9 @@ Roo.HtmlEditorCore = Roo.extend(Roo.util.Observable, {
     onRender : function(ct, position)
     {
         var _t = this;
-        Roo.form.HtmlEditor.superclass.onRender.call(this, ct, position);
+        //Roo.form.HtmlEditor.superclass.onRender.call(this, ct, position);
+        
+        
         this.el.dom.style.border = '0 none';
         this.el.dom.setAttribute('tabIndex', -1);
         this.el.addClass('x-hidden');
@@ -192,7 +175,7 @@ Roo.HtmlEditorCore = Roo.extend(Roo.util.Observable, {
         this.wrap = this.el.wrap({
             cls:'x-html-editor-wrap', cn:{cls:'x-html-editor-tb'}
         });
-        
+        /*
         if (this.resizable) {
             this.resizeEl = new Roo.Resizable(this.wrap, {
                 pinned : true,
@@ -210,7 +193,7 @@ Roo.HtmlEditorCore = Roo.extend(Roo.util.Observable, {
             });
             
         }
-
+        */
         this.frameId = Roo.id();
         
         this.createToolbar(this);
