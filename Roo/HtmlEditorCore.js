@@ -305,6 +305,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     },
 
     /**
+     * HTML Editor -> Textarea
      * Protected method that will not generally be called directly. Syncs the contents
      * of the editor iframe with the textarea.
      */
