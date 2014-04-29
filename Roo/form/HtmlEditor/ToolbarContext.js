@@ -253,6 +253,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
     rendered: false,
     
     editor : false,
+    editorcore : false,
     /**
      * @cfg {Object} disable  List of toolbar elements to disable
          
@@ -289,7 +290,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 cls : 'x-btn-icon x-edit-'+id,
                 enableToggle:toggle !== false,
                 scope: editor, // was editor...
-                handler:handler||editor.relayBtnCmd,
+                handler:handler||editorcore.relayBtnCmd,
                 clickEvent:'mousedown',
                 tooltip: etb.buttonTips[id] || undefined, ///tips ???
                 tabIndex:-1
@@ -361,7 +362,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 nodeRange.selectNodeContents(sel);
             }
             //nodeRange.collapse(true);
-            var s = editor.win.getSelection();
+            var s = this.editorcore.win.getSelection();
             s.removeAllRanges();
             s.addRange(nodeRange);
         }  
@@ -743,13 +744,13 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         var sel = ans[n];
         
          // pick
-        var range = this.editor.createRange();
+        var range = this.editorcore.createRange();
         
         range.selectNodeContents(sel);
         //range.selectNode(sel);
         
         
-        var selection = this.editor.getSelection();
+        var selection = this.editorcore.getSelection();
         selection.removeAllRanges();
         selection.addRange(range);
         
