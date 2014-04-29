@@ -357,7 +357,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 d.innerHTML = v;
                 this.cleanUpPaste();
                 this.el.dom.value = d.innerHTML;
-                this.fireEvent('push', this, v);
+                this.owner.fireEvent('push', this, v);
             }
         }
     },
