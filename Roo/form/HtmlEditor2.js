@@ -233,7 +233,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         var ew = false;
         var eh = false;
         
-        if(this.el && this.iframe){
+        if(this.el ){
             if(typeof w == 'number'){
                 var aw = w - this.wrap.getFrameWidth('lr');
                 this.el.setWidth(this.adjustWidth('textarea', aw));
