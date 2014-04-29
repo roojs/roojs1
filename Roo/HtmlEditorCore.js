@@ -429,7 +429,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
         this.initialized = true;
 
-        this.fireEvent('initialize', this);
+        this.owner.fireEvent('initialize', this);
         this.pushValue();
     },
 
