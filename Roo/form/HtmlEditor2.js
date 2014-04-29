@@ -3,21 +3,17 @@
 /*
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
- * licensing@extjs.com
+ * Licence LGPL
  * 
- * http://www.extjs.com/license
  */
  
- /*
-  * 
-  * Known bugs:
-  * Default CSS appears to render it as fixed text by default (should really be Sans-Serif)
-  * - IE ? - no idea how much works there.
-  * 
-  * 
-  * 
-  */
  
+Roo.form.HtmlEditor = function(config){
+    
+    
+    Roo.form.HtmlEditor.superclass.constructor.call(this, config);
+     
+};
 
 /**
  * @class Ext.form.HtmlEditor
