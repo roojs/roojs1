@@ -269,7 +269,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             this.iframe.className = '';
             this.deferFocus();
         }
-        this.setSize(this.owner.wrap.getSize());
+        //this.setSize(this.owner.wrap.getSize());
         //this.fireEvent('editmodechange', this, this.sourceEditMode);
     },
 
