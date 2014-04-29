@@ -284,11 +284,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     },
 
  
- 
-    // private
-    initEvents : function(){
-        this.originalValue = this.getValue();
-    },
+  
 
     /**
      * Overridden and disabled. The editor element does not support standard valid/invalid marking. @hide
