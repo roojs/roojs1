@@ -801,7 +801,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         var body = cfg;
         
         if (this.panel.length) {
-            cfg.cls += 'panel panel-' + this.panel;
+            cfg.cls += ' panel panel-' + this.panel;
             cfg.cn = [];
             if (this.header.length) {
                 cfg.cn.push({
