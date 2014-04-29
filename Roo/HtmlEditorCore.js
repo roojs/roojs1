@@ -527,10 +527,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         if(this.rendered){
             
-            for (var i =0; i < this.toolbars.length;i++) {
-                // fixme - ask toolbars for heights?
-                this.toolbars[i].onDestroy();
-            }
+            //for (var i =0; i < this.toolbars.length;i++) {
+            //    // fixme - ask toolbars for heights?
+            //    this.toolbars[i].onDestroy();
+           // }
             
             this.wrap.dom.innerHTML = '';
             this.wrap.remove();
