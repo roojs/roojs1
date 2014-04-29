@@ -23,21 +23,21 @@ Roo.HtmlEditorCore = function(config){
         /**
          * @event initialize
          * Fires when the editor is fully initialized (including the iframe)
-         * @param {HtmlEditor} this
+         * @param {Roo.HtmlEditorCore} this
          */
         initialize: true,
         /**
          * @event activate
          * Fires when the editor is first receives the focus. Any insertion must wait
          * until after this event.
-         * @param {HtmlEditor} this
+         * @param {Roo.HtmlEditorCore} this
          */
         activate: true,
          /**
          * @event beforesync
          * Fires before the textarea is updated with content from the editor iframe. Return false
          * to cancel the sync.
-         * @param {HtmlEditor} this
+         * @param {Roo.HtmlEditorCore} this
          * @param {String} html
          */
         beforesync: true,
@@ -45,35 +45,35 @@ Roo.HtmlEditorCore = function(config){
          * @event beforepush
          * Fires before the iframe editor is updated with content from the textarea. Return false
          * to cancel the push.
-         * @param {HtmlEditor} this
+         * @param {Roo.HtmlEditorCore} this
          * @param {String} html
          */
         beforepush: true,
          /**
          * @event sync
          * Fires when the textarea is updated with content from the editor iframe.
-         * @param {HtmlEditor} this
+         * @param {Roo.HtmlEditorCore} this
          * @param {String} html
          */
         sync: true,
          /**
          * @event push
          * Fires when the iframe editor is updated with content from the textarea.
-         * @param {HtmlEditor} this
+         * @param {Roo.HtmlEditorCore} this
          * @param {String} html
          */
         push: true,
          /**
          * @event editmodechange
          * Fires when the editor switches edit modes
-         * @param {HtmlEditor} this
+         * @param {Roo.HtmlEditorCore} this
          * @param {Boolean} sourceEdit True if source edit, false if standard editing.
          */
         editmodechange: true,
         /**
          * @event editorevent
          * Fires when on any editor (mouse up/down cursor movement etc.) - used for toolbar hooks.
-         * @param {HtmlEditor} this
+         * @param {Roo.HtmlEditorCore} this
          */
         editorevent: true
     });
@@ -1040,7 +1040,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     },
     
     cleanWordChars : function(input) {// change the chars to hex code
-        var he = Roo.form.HtmlEditor;
+        var he = Roo.HtmlEditorCore;
         
         var output = input;
         Roo.each(he.swapCodes, function(sw) { 
@@ -1080,14 +1080,14 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             return; 
         }
         
-        if (Roo.form.HtmlEditor.black.indexOf(node.tagName.toLowerCase()) > -1) {
+        if (Roo.HtmlEditorCore.black.indexOf(node.tagName.toLowerCase()) > -1) {
             // remove node.
             node.parentNode.removeChild(node);
             return;
             
         }
         
-        var remove_keep_children= Roo.form.HtmlEditor.remove.indexOf(node.tagName.toLowerCase()) > -1;
+        var remove_keep_children= Roo.HtmlEditorCore.remove.indexOf(node.tagName.toLowerCase()) > -1;
         
         // remove <a name=....> as rendering on yahoo mailer is borked with this.
         // this will have to be flaged elsewhere - perhaps ablack=name... on the mailer..
@@ -1136,8 +1136,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 node.removeAttribute(n);
                 return;
             }
-            var cwhite = typeof(ed.cwhite) == 'undefined' ? Roo.form.HtmlEditor.cwhite : ed.cwhite;
-            var cblack = typeof(ed.cblack) == 'undefined' ? Roo.form.HtmlEditor.cblack : ed.cblack;
+            var cwhite = typeof(ed.cwhite) == 'undefined' ? Roo.HtmlEditorCore.cwhite : ed.cwhite;
+            var cblack = typeof(ed.cblack) == 'undefined' ? Roo.HtmlEditorCore.cblack : ed.cblack;
             
             
             var parts = v.split(/;/);
@@ -1188,11 +1188,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 node.removeAttribute(a.name);
                 continue;
             }
-            if (Roo.form.HtmlEditor.ablack.indexOf(a.name.toLowerCase()) > -1) {
+            if (Roo.HtmlEditorCore.ablack.indexOf(a.name.toLowerCase()) > -1) {
                 node.removeAttribute(a.name);
                 continue;
             }
-            if (Roo.form.HtmlEditor.aclean.indexOf(a.name.toLowerCase()) > -1) {
+            if (Roo.HtmlEditorCore.aclean.indexOf(a.name.toLowerCase()) > -1) {
                 cleanAttr(a.name,a.value); // fixme..
                 continue;
             }
@@ -1270,7 +1270,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      */
 });
 
-Roo.form.HtmlEditor.white = [
+Roo.HtmlEditorCore.white = [
         'area', 'br', 'img', 'input', 'hr', 'wbr',
         
        'address', 'blockquote', 'center', 'dd',      'dir',       'div', 
@@ -1288,7 +1288,7 @@ Roo.form.HtmlEditor.white = [
 ];
 
 
-Roo.form.HtmlEditor.black = [
+Roo.HtmlEditorCore.black = [
     //    'embed',  'object', // enable - backend responsiblity to clean thiese
         'applet', // 
         'base',   'basefont', 'bgsound', 'blink',  'body', 
@@ -1296,29 +1296,29 @@ Roo.form.HtmlEditor.black = [
         'iframe', 'layer',  'link',     'meta',    'object',   
         'script', 'style' ,'title',  'xml' // clean later..
 ];
-Roo.form.HtmlEditor.clean = [
+Roo.HtmlEditorCore.clean = [
     'script', 'style', 'title', 'xml'
 ];
-Roo.form.HtmlEditor.remove = [
+Roo.HtmlEditorCore.remove = [
     'font'
 ];
 // attributes..
 
-Roo.form.HtmlEditor.ablack = [
+Roo.HtmlEditorCore.ablack = [
     'on'
 ];
     
-Roo.form.HtmlEditor.aclean = [ 
+Roo.HtmlEditorCore.aclean = [ 
     'action', 'background', 'codebase', 'dynsrc', 'href', 'lowsrc' 
 ];
 
 // protocols..
-Roo.form.HtmlEditor.pwhite= [
+Roo.HtmlEditorCore.pwhite= [
         'http',  'https',  'mailto'
 ];
 
 // white listed style attributes.
-Roo.form.HtmlEditor.cwhite= [
+Roo.HtmlEditorCore.cwhite= [
       //  'text-align', /// default is to allow most things..
       
          
@@ -1326,12 +1326,12 @@ Roo.form.HtmlEditor.cwhite= [
 ];
 
 // black listed style attributes.
-Roo.form.HtmlEditor.cblack= [
+Roo.HtmlEditorCore.cblack= [
       //  'font-size' -- this can be set by the project 
 ];
 
 
-Roo.form.HtmlEditor.swapCodes   =[ 
+Roo.HtmlEditorCore.swapCodes   =[ 
     [    8211, "--" ], 
     [    8212, "--" ], 
     [    8216,  "'" ],  
