@@ -533,10 +533,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         range.insertNode(this.doc.createTextNode(txt));
     } ,
     
-    // private
-    relayBtnCmd : function(btn){
-        this.relayCmd(btn.cmd);
-    },
+     
 
     /**
      * Executes a Midas editor command on the editor document and performs necessary focus and
