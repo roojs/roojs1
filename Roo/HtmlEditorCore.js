@@ -172,12 +172,16 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     onRender : function(ct, position)
     {
         var _t = this;
-        Roo.HtmlEditorCore.superclass.onRender.call(this, ct, position);
+        //Roo.HtmlEditorCore.superclass.onRender.call(this, ct, position);
+        this.el = this.owner.el;
         
         
         this.el.dom.style.border = '0 none';
         this.el.dom.setAttribute('tabIndex', -1);
         this.el.addClass('x-hidden');
+        
+        
+        
         if(Roo.isIE){ // fix IE 1px bogus margin
             this.el.applyStyles('margin-top:-1px;margin-bottom:-1px;')
         }
