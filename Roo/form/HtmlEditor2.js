@@ -76,7 +76,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
     deferHeight: true,
     initialized : false,
     activated : false,
-    sourceEditMode : false,
+    
     onFocus : Roo.emptyFn,
     iframePad:3,
     hideMode:'offsets',
@@ -269,9 +269,9 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
      */
     toggleSourceEdit : function(sourceEditMode){
         
-        this.sourceEditMode = sourceEditMode === true;
+        this.editorcore.sourceEditMode = sourceEditMode === true;
         
-        if(this.sourceEditMode){
+        if(this.editorcore.sourceEditMode){
 //            Roo.log('in');
 //            Roo.log(this.syncValue());
             this.editorcore.syncValue();
@@ -290,7 +290,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         this.editorcore.toggleSourceEdit(sourceEditMode);
         
         this.setSize(this.wrap.getSize());
-        this.fireEvent('editmodechange', this, this.sourceEditMode);
+        this.fireEvent('editmodechange', this, this.editorcore.sourceEditMode);
     },
 /*
     // private used internally
