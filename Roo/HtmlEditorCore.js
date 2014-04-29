@@ -500,7 +500,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     },
 
     onEditorEvent : function(e){
-        this.fireEvent('editorevent', this, e);
+        this.owner.fireEvent('editorevent', this, e);
       //  this.updateToolbar();
         this.syncValue(); //we can not sync so often.. sync cleans, so this breaks stuff
     },
