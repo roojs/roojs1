@@ -286,15 +286,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         this.setSize(this.wrap.getSize());
         this.fireEvent('editmodechange', this, this.editorcore.sourceEditMode);
     },
-/*
-    // private used internally
-    createLink : function(){
-        var url = prompt(this.createLinkText, this.defaultLinkValue);
-        if(url && url != 'http:/'+'/'){
-            this.relayCmd('createlink', url);
-        }
-    },
-*/
+ 
     // private (for BoxComponent)
     adjustSize : Roo.BoxComponent.prototype.adjustSize,
 
