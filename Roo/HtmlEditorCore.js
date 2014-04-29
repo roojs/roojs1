@@ -544,10 +544,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         
         this.activated = true;
-        for (var i =0; i < this.toolbars.length;i++) {
-            this.toolbars[i].onFirstFocus();
-        }
-       
+       // for (var i =0; i < this.toolbars.length;i++) {
+       //     this.toolbars[i].onFirstFocus();
+       // }
+       //
         if(Roo.isGecko){ // prevent silly gecko errors
             this.win.focus();
             var s = this.win.getSelection();
