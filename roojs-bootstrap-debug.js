@@ -2624,16 +2624,8 @@ Roo.extend(Roo.bootstrap.TableBody, Roo.bootstrap.Component,  {
     },
     
     onLoad: function () 
-    {
-        
-        this.clear();
-        
+    {   
         this.fireEvent('load', this);
-    },
-    
-    clear: function() 
-    {
-        this.el.dom.innerHTML = '';
     }
    
 });
