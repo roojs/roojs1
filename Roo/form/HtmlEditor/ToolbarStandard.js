@@ -568,7 +568,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
           
         }else{
             Roo.log("enabling buttons");
-            if(this.initialized){
+            if(this.editorcore.initialized){
                 this.tb.items.each(function(item){
                     item.enable();
                 });
