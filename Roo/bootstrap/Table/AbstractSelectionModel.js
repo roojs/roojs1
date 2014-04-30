@@ -12,7 +12,7 @@ Roo.bootstrap.Table.AbstractSelectionModel = function(){
 };
 
 
-Roo.extend(Roo.bootstrap.Tabel.AbstractSelectionModel, Roo.util.Observable,  {
+Roo.extend(Roo.bootstrap.Table.AbstractSelectionModel, Roo.util.Observable,  {
     /** @ignore Called by the grid automatically. Do not call directly. */
     init : function(grid){
         this.grid = grid;
