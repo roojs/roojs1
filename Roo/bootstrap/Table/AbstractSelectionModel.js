@@ -8,7 +8,7 @@
  */
 Roo.bootstrap.Table.AbstractSelectionModel = function(){
     this.locked = false;
-    Roo.bootstrap.Tabel.AbstractSelectionModel.superclass.constructor.call(this);
+    Roo.bootstrap.Table.AbstractSelectionModel.superclass.constructor.call(this);
 };
 
 
