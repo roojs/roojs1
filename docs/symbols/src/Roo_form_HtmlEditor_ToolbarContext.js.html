@@ -253,6 +253,7 @@ Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.f
     </span><span class="jsdoc-var">rendered</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">editor </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">editorcore </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-comment">/**
      * @cfg {Object} disable  List of toolbar elements to disable
          
@@ -276,9 +277,10 @@ Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.f
     </span><span class="jsdoc-var">init </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-var">this.editor </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.editorcore </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">editor.editorcore </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">editor.editorcore </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">editorcore </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editorcore</span><span class="jsdoc-syntax">;
         
-        
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">editor.frameId</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">editorcore.frameId</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">etb </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">function </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">toggle</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">xid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">fid </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-'</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">;
@@ -287,8 +289,8 @@ Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.f
                 </span><span class="jsdoc-var">cmd </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-btn-icon x-edit-'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">enableToggle</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">toggle </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// was editor...
-                </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">||</span><span class="jsdoc-var">editor.relayBtnCmd</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">editorcore</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// was editor...
+                </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">||</span><span class="jsdoc-var">editorcore.relayBtnCmd</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">clickEvent</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'mousedown'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">tooltip</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">etb.buttonTips</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">] || </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">///tips ???
                 </span><span class="jsdoc-var">tabIndex</span><span class="jsdoc-syntax">:-1
@@ -339,7 +341,7 @@ Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.f
         </span><span class="jsdoc-comment">//Roo.log(ev);
         // capture mouse up - this is handy for selecting images..
         // perhaps should go somewhere else...
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.editor.activated</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.editorcore.activated</span><span class="jsdoc-syntax">){
              </span><span class="jsdoc-var">this.editor.onFirstFocus</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
@@ -360,7 +362,7 @@ Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.f
                 </span><span class="jsdoc-var">nodeRange.selectNodeContents</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">);
             }
             </span><span class="jsdoc-comment">//nodeRange.collapse(true);
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">editor.win.getSelection</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editorcore.win.getSelection</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-var">s.removeAllRanges</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-var">s.addRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nodeRange</span><span class="jsdoc-syntax">);
         }  
@@ -369,15 +371,15 @@ Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.f
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">updateFooter </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
         
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ans </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editor.getAllAncestors</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ans </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editorcore.getAllAncestors</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-comment">// pick
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ty</span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.form.HtmlEditor.ToolbarContext.types</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">) { 
-            </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ans.length </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-var">ans</span><span class="jsdoc-syntax">[0] ?  </span><span class="jsdoc-var">ans</span><span class="jsdoc-syntax">[0]  : </span><span class="jsdoc-var">ans</span><span class="jsdoc-syntax">[1]) : </span><span class="jsdoc-var">this.editor.doc.body</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.editor.doc.body</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel.tagName.length </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.editor.doc.body</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ans.length </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-var">ans</span><span class="jsdoc-syntax">[0] ?  </span><span class="jsdoc-var">ans</span><span class="jsdoc-syntax">[0]  : </span><span class="jsdoc-var">ans</span><span class="jsdoc-syntax">[1]) : </span><span class="jsdoc-var">this.editorcore.doc.body</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.editorcore.doc.body</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel.tagName.length </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.editorcore.doc.body</span><span class="jsdoc-syntax">;
             
         }
         </span><span class="jsdoc-comment">// pick a menu that exists..
@@ -509,6 +511,7 @@ Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.f
     </span><span class="jsdoc-var">buildToolbar</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tlist</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">nm</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">editor </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editor</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">editorcore </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editorcore</span><span class="jsdoc-syntax">;
          </span><span class="jsdoc-comment">// create a new element.
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">wdiv </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">editor.wrap.createChild</span><span class="jsdoc-syntax">({
                 </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'
@@ -549,7 +552,7 @@ Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.f
                     </span><span class="jsdoc-string">'select'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
                         </span><span class="jsdoc-comment">// initial support only for on class per el..
                         </span><span class="jsdoc-var">tb.selectedNode.className </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">r.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'val'</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
-                        </span><span class="jsdoc-var">editor.syncValue</span><span class="jsdoc-syntax">();
+                        </span><span class="jsdoc-var">editorcore.syncValue</span><span class="jsdoc-syntax">();
                     }
                 }
     
@@ -655,14 +658,14 @@ Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.f
                         
                     }
                     </span><span class="jsdoc-var">pn.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">);
-                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">editor.createRange</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">editorcore.createRange</span><span class="jsdoc-syntax">();
         
                     </span><span class="jsdoc-var">range.setStart</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">stn</span><span class="jsdoc-syntax">,0);
                     </span><span class="jsdoc-var">range.setEnd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">en</span><span class="jsdoc-syntax">,0); </span><span class="jsdoc-comment">//????
                     //range.selectNode(sel);
                     
                     
-                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">selection </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">editor.getSelection</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">selection </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">editorcore.getSelection</span><span class="jsdoc-syntax">();
                     </span><span class="jsdoc-var">selection.removeAllRanges</span><span class="jsdoc-syntax">();
                     </span><span class="jsdoc-var">selection.addRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">range</span><span class="jsdoc-syntax">);
                     
@@ -742,13 +745,13 @@ Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.f
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ans</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">];
         
          </span><span class="jsdoc-comment">// pick
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editor.createRange</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editorcore.createRange</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-var">range.selectNodeContents</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-comment">//range.selectNode(sel);
         
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">selection </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editor.getSelection</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">selection </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editorcore.getSelection</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">selection.removeAllRanges</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">selection.addRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">range</span><span class="jsdoc-syntax">);
         

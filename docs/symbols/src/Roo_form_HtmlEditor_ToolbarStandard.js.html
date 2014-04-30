@@ -56,11 +56,24 @@
     </span><span class="jsdoc-var">rendered</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">editor </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">editorcore </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-comment">/**
      * @cfg {Object} disable  List of toolbar elements to disable
          
      */
     </span><span class="jsdoc-var">disable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    
+     </span><span class="jsdoc-comment">/**
+     * @cfg {String} createLinkText The default text for the create link prompt
+     */
+    </span><span class="jsdoc-var">createLinkText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Please enter the URL for the link:'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} defaultLinkValue The default value for the create link prompt (defaults to http:/ /)
+     */
+    </span><span class="jsdoc-var">defaultLinkValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'http:/'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'/'</span><span class="jsdoc-syntax">,
+   
+    
       </span><span class="jsdoc-comment">/**
      * @cfg {Array} fontFamilies An array of available font families
      */
@@ -138,9 +151,12 @@
     </span><span class="jsdoc-var">init </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-var">this.editor </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.editorcore </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">editor.editorcore </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">editor.editorcore </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">editorcore </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editorcore</span><span class="jsdoc-syntax">;
         
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">editor.frameId</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">editorcore.frameId</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">etb </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">function </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">toggle</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">xid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">fid </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-'</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">;
@@ -149,8 +165,8 @@
                 </span><span class="jsdoc-var">cmd </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-btn-icon x-edit-'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">enableToggle</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">toggle </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// was editor...
-                </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">||</span><span class="jsdoc-var">editor.relayBtnCmd</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">_t</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// was editor...
+                </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">||</span><span class="jsdoc-var">_t.relayBtnCmd</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">clickEvent</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'mousedown'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">tooltip</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">etb.buttonTips</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">] || </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">///tips ???
                 </span><span class="jsdoc-var">tabIndex</span><span class="jsdoc-syntax">:-1
@@ -208,7 +224,7 @@
                 </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">:135,
                 </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
                     </span><span class="jsdoc-string">'select'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
-                        </span><span class="jsdoc-var">editor.insertTag</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tag'</span><span class="jsdoc-syntax">));
+                        </span><span class="jsdoc-var">editorcore.insertTag</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tag'</span><span class="jsdoc-syntax">));
                         </span><span class="jsdoc-var">editor.focus</span><span class="jsdoc-syntax">();
                     }
                 }
@@ -230,8 +246,8 @@
                 </span><span class="jsdoc-string">'-'</span><span class="jsdoc-syntax">,
                 
                 
-                </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'increasefontsize'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editor.adjustFont</span><span class="jsdoc-syntax">),
-                </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'decreasefontsize'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editor.adjustFont</span><span class="jsdoc-syntax">)
+                </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'increasefontsize'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editorcore.adjustFont</span><span class="jsdoc-syntax">),
+                </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'decreasefontsize'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editorcore.adjustFont</span><span class="jsdoc-syntax">)
             );
         };
         
@@ -239,7 +255,7 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.disable.colors</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">tb.add</span><span class="jsdoc-syntax">(
                 </span><span class="jsdoc-string">'-'</span><span class="jsdoc-syntax">, {
-                    </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">editor.frameId </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'-forecolor'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">editorcore.frameId </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'-forecolor'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'x-btn-icon x-edit-forecolor'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">clickEvent</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'mousedown'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">tooltip</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.buttonTips</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'forecolor'</span><span class="jsdoc-syntax">] || </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">,
@@ -250,14 +266,14 @@
                         </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'000000'</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-var">plain</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-var">selectHandler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cp</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">color</span><span class="jsdoc-syntax">){
-                            </span><span class="jsdoc-var">editor.execCmd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'forecolor'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.isSafari </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.isIE </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">color </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">color</span><span class="jsdoc-syntax">);
+                            </span><span class="jsdoc-var">editorcore.execCmd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'forecolor'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.isSafari </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.isIE </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">color </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">color</span><span class="jsdoc-syntax">);
                             </span><span class="jsdoc-var">editor.deferFocus</span><span class="jsdoc-syntax">();
                         },
-                        </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">editorcore</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-var">clickEvent</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'mousedown'
                     </span><span class="jsdoc-syntax">})
                 }, {
-                    </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">editor.frameId </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'backcolor'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">editorcore.frameId </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'backcolor'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'x-btn-icon x-edit-backcolor'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">clickEvent</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'mousedown'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">tooltip</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.buttonTips</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'backcolor'</span><span class="jsdoc-syntax">] || </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">,
@@ -269,17 +285,17 @@
                         </span><span class="jsdoc-var">allowReselect</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-var">selectHandler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cp</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">color</span><span class="jsdoc-syntax">){
                             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isGecko</span><span class="jsdoc-syntax">){
-                                </span><span class="jsdoc-var">editor.execCmd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'useCSS'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
-                                </span><span class="jsdoc-var">editor.execCmd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'hilitecolor'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">color</span><span class="jsdoc-syntax">);
-                                </span><span class="jsdoc-var">editor.execCmd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'useCSS'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+                                </span><span class="jsdoc-var">editorcore.execCmd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'useCSS'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+                                </span><span class="jsdoc-var">editorcore.execCmd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'hilitecolor'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">color</span><span class="jsdoc-syntax">);
+                                </span><span class="jsdoc-var">editorcore.execCmd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'useCSS'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
                                 </span><span class="jsdoc-var">editor.deferFocus</span><span class="jsdoc-syntax">();
                             }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
-                                </span><span class="jsdoc-var">editor.execCmd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isOpera </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'hilitecolor' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'backcolor'</span><span class="jsdoc-syntax">, 
+                                </span><span class="jsdoc-var">editorcore.execCmd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isOpera </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'hilitecolor' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'backcolor'</span><span class="jsdoc-syntax">, 
                                     </span><span class="jsdoc-var">Roo.isSafari </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.isIE </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">color </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">color</span><span class="jsdoc-syntax">);
                                 </span><span class="jsdoc-var">editor.deferFocus</span><span class="jsdoc-syntax">();
                             }
                         },
-                        </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">editorcore</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-var">clickEvent</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'mousedown'
                     </span><span class="jsdoc-syntax">})
                 }
@@ -301,7 +317,7 @@
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.disable.links</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">tb.add</span><span class="jsdoc-syntax">(
                     </span><span class="jsdoc-string">'-'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'createlink'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editor.createLink</span><span class="jsdoc-syntax">)    </span><span class="jsdoc-comment">/// MOVE TO HERE?!!?!?!?!
+                    </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'createlink'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.createLink</span><span class="jsdoc-syntax">)    </span><span class="jsdoc-comment">/// MOVE TO HERE?!!?!?!?!
                 </span><span class="jsdoc-syntax">);
             };
 
@@ -316,6 +332,7 @@
                 </span><span class="jsdoc-var">tb.add</span><span class="jsdoc-syntax">(
                     </span><span class="jsdoc-string">'-'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'sourceedit'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
                         </span><span class="jsdoc-var">this.toggleSourceEdit</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn.pressed</span><span class="jsdoc-syntax">);
                     })
                 );
@@ -338,7 +355,7 @@
                     
                     </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.specialChars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">],
                     </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">) {
-                        </span><span class="jsdoc-var">editor.insertAtCursor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String.fromCharCode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.html.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&amp;#'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">';'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">)));
+                        </span><span class="jsdoc-var">editorcore.insertAtCursor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String.fromCharCode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.html.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&amp;#'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">';'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">)));
                         </span><span class="jsdoc-comment">//editor.insertAtCursor(a.html);
                         
                     </span><span class="jsdoc-syntax">},
@@ -368,7 +385,7 @@
                     </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">) {
                         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">);
                         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">);
-                        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">editor.doc.body</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">editorcore.doc.body</span><span class="jsdoc-syntax">);
                         </span><span class="jsdoc-var">c.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'[style]'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">) {
                             </span><span class="jsdoc-var">s.dom.style.removeProperty</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.actiontype</span><span class="jsdoc-syntax">);
                         });
@@ -410,7 +427,7 @@
             </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.btns.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.btns</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">],</span><span class="jsdoc-var">Roo.form</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">b.cls </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-string">'x-edit-none'</span><span class="jsdoc-syntax">;
-                </span><span class="jsdoc-var">b.scope </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">b.scope </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">editorcore</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">tb.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">);
             }
         
@@ -421,7 +438,7 @@
         </span><span class="jsdoc-comment">// disable everything...
         
         </span><span class="jsdoc-var">this.tb.items.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">){
-           </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item.id </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">editor.frameId</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-sourceedit'</span><span class="jsdoc-syntax">){
+           </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item.id </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">editorcore.frameId</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-sourceedit'</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">item.disable</span><span class="jsdoc-syntax">();
             }
         });
@@ -434,6 +451,18 @@
     </span><span class="jsdoc-syntax">},
     
     
+    </span><span class="jsdoc-var">relayBtnCmd </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.editorcore.relayCmd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn.cmd</span><span class="jsdoc-syntax">);
+    },
+    </span><span class="jsdoc-comment">// private used internally
+    </span><span class="jsdoc-var">createLink </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;create link?&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">url </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">prompt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.createLinkText</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.defaultLinkValue</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">url </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">url </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'http:/'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'/'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.editorcore.relayCmd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'createlink'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">);
+        }
+    },
+
     
     </span><span class="jsdoc-comment">/**
      * Protected method that will not generally be called directly. It triggers
@@ -441,14 +470,14 @@
      */
     </span><span class="jsdoc-var">updateToolbar</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
 
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.editor.activated</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.editorcore.activated</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.editor.onFirstFocus</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">btns </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tb.items.map</span><span class="jsdoc-syntax">, 
-            </span><span class="jsdoc-var">doc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editor.doc</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">frameId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editor.frameId</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">doc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editorcore.doc</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">frameId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editorcore.frameId</span><span class="jsdoc-syntax">;
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.disable.font </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">Roo.isSafari</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-comment">/*
@@ -473,7 +502,7 @@
             </span><span class="jsdoc-var">btns</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">frameId </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-insertunorderedlist'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.toggle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">doc.queryCommandState</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'insertunorderedlist'</span><span class="jsdoc-syntax">));
         }
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ans </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editor.getAllAncestors</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ans </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editorcore.getAllAncestors</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.formatCombo</span><span class="jsdoc-syntax">) {
             
             
@@ -516,18 +545,21 @@
     },
     
     </span><span class="jsdoc-var">toggleSourceEdit </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sourceEditMode</span><span class="jsdoc-syntax">){
+        
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;toolbar toogle&quot;</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sourceEditMode </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">sourceEditMode </span><span class="jsdoc-syntax">= !</span><span class="jsdoc-var">this.sourceEditMode</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-var">this.sourceEditMode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sourceEditMode </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">btn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tb.items.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.editor.frameId </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'-sourceedit'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">btn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tb.items.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.editorcore.frameId </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'-sourceedit'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-comment">// just toggle the button?
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn.pressed </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">this.editor.sourceEditMode</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">btn.toggle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.editor.sourceEditMode</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn.pressed </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">this.sourceEditMode</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">btn.toggle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.sourceEditMode</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.sourceEditMode</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sourceEditMode</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;disabling buttons&quot;</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.tb.items.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item.cmd </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'sourceedit'</span><span class="jsdoc-syntax">){
                     </span><span class="jsdoc-var">item.disable</span><span class="jsdoc-syntax">();
@@ -535,13 +567,15 @@
             });
           
         }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.initialized</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;enabling buttons&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.editorcore.initialized</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">this.tb.items.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">){
                     </span><span class="jsdoc-var">item.enable</span><span class="jsdoc-syntax">();
                 });
             }
             
         }
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;calling toggole on editor&quot;</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-comment">// tell the editor that it's been pressed..
         </span><span class="jsdoc-var">this.editor.toggleSourceEdit</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sourceEditMode</span><span class="jsdoc-syntax">);
        
