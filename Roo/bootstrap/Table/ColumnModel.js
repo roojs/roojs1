@@ -93,9 +93,9 @@ Roo.bootstrap.Tabel.ColumnModel = function(config){
          */
         "columnlockchange" : true
     });
-    Roo.grid.ColumnModel.superclass.constructor.call(this);
+    Roo.bootstrap.Tabel.ColumnModel.superclass.constructor.call(this);
 };
-Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
+Roo.extend(Roo.bootstrap.Tabel.ColumnModel, Roo.util.Observable, {
     /**
      * @cfg {String} header The header text to display in the Grid view.
      */
@@ -129,9 +129,6 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
      * @cfg {Function} renderer (Optional) A function used to generate HTML markup for a cell
      * given the cell's data value. See {@link #setRenderer}. If not specified, the
      * default renderer uses the raw data value.
-     */
-       /**
-     * @cfg {Roo.grid.GridEditor} editor (Optional) For grid editors - returns the grid editor 
      */
     /**
      * @cfg {String} align (Optional) Set the CSS text-align property of the column.  Defaults to undefined.
