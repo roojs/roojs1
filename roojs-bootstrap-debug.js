@@ -2235,7 +2235,7 @@ Roo.extend(Roo.bootstrap.Slider, Roo.bootstrap.Component,  {
  */
 
 /**
- * @class Roo.bootstrap.Table.Table
+ * @class Roo.bootstrap.Table
  * @extends Roo.bootstrap.Component
  * Bootstrap Table class
  * @cfg {String} cls table class
@@ -2264,16 +2264,16 @@ Roo.extend(Roo.bootstrap.Slider, Roo.bootstrap.Component,  {
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.Table.Table = function(config){
-    Roo.bootstrap.Table.Table.superclass.constructor.call(this, config);
+Roo.bootstrap.Table = function(config){
+    Roo.bootstrap.Table.superclass.constructor.call(this, config);
     
     if (this.sm) {
-        this.selModel = Roo.factory(this.sm, Roo.bootstrap.Table);
+        this.selModel = Roo.factory(this.sm, Roo.bootstrap.TableGrid);
         this.sm = this.selModel;
         this.sm.xmodule = this.xmodule || false;
     }
     if (this.cm && typeof(this.cm.config) == 'undefined') {
-        this.colModel = new Roo.bootstrap.Table.ColumnModel(this.cm);
+        this.colModel = new Roo.bootstrap.TableGrid.ColumnModel(this.cm);
         this.cm = this.colModel;
         this.cm.xmodule = this.xmodule || false;
     }
@@ -2285,7 +2285,7 @@ Roo.bootstrap.Table.Table = function(config){
     }
 };
 
-Roo.extend(Roo.bootstrap.Table.Table, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     cls: false,
     align: false,
@@ -2305,7 +2305,7 @@ Roo.extend(Roo.bootstrap.Table.Table, Roo.bootstrap.Component,  {
     responsive : false,
     
     getAutoCreate : function(){
-        var cfg = Roo.apply({}, Roo.bootstrap.Table.Table.superclass.getAutoCreate.call(this));
+        var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
         
         cfg = {
             tag: 'table',
@@ -2383,9 +2383,9 @@ Roo.extend(Roo.bootstrap.Table.Table, Roo.bootstrap.Component,  {
  * table cell
  * 
  */
- 
+
 /**
- * @class Roo.bootstrap.Table.TableCell
+ * @class Roo.bootstrap.TableCell
  * @extends Roo.bootstrap.Component
  * Bootstrap TableCell class
  * @cfg {String} html cell contain text
@@ -2410,11 +2410,11 @@ Roo.extend(Roo.bootstrap.Table.Table, Roo.bootstrap.Component,  {
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.Table.TableCell = function(config){
-    Roo.bootstrap.Table.TableCell.superclass.constructor.call(this, config);
+Roo.bootstrap.TableCell = function(config){
+    Roo.bootstrap.TableCell.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.Table.TableCell, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.TableCell, Roo.bootstrap.Component,  {
     
     html: false,
     cls: false,
@@ -2435,7 +2435,7 @@ Roo.extend(Roo.bootstrap.Table.TableCell, Roo.bootstrap.Component,  {
     
     
     getAutoCreate : function(){
-        var cfg = Roo.apply({}, Roo.bootstrap.Table.TableCell.superclass.getAutoCreate.call(this));
+        var cfg = Roo.apply({}, Roo.bootstrap.TableCell.superclass.getAutoCreate.call(this));
 	
 	cfg = {
 	    tag: 'td'
@@ -2507,7 +2507,7 @@ Roo.extend(Roo.bootstrap.Table.TableCell, Roo.bootstrap.Component,  {
  */
 
 /**
- * @class Roo.bootstrap.Table.TableRow
+ * @class Roo.bootstrap.TableRow
  * @extends Roo.bootstrap.Component
  * Bootstrap TableRow class
  * @cfg {String} cls row class
@@ -2521,11 +2521,11 @@ Roo.extend(Roo.bootstrap.Table.TableCell, Roo.bootstrap.Component,  {
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.Table.TableRow = function(config){
-    Roo.bootstrap.TTable.ableRow.superclass.constructor.call(this, config);
+Roo.bootstrap.TableRow = function(config){
+    Roo.bootstrap.TableRow.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.Table.TableRow, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.TableRow, Roo.bootstrap.Component,  {
     
     cls: false,
     align: false,
@@ -2534,7 +2534,7 @@ Roo.extend(Roo.bootstrap.Table.TableRow, Roo.bootstrap.Component,  {
     valign: false,
     
     getAutoCreate : function(){
-        var cfg = Roo.apply({}, Roo.bootstrap.Table.TableRow.superclass.getAutoCreate.call(this));
+        var cfg = Roo.apply({}, Roo.bootstrap.TableRow.superclass.getAutoCreate.call(this));
 	
         cfg = {
             tag: 'tr'
@@ -2571,7 +2571,7 @@ Roo.extend(Roo.bootstrap.Table.TableRow, Roo.bootstrap.Component,  {
  */
 
 /**
- * @class Roo.bootstrap.Table.TableBody
+ * @class Roo.bootstrap.TableBody
  * @extends Roo.bootstrap.Component
  * Bootstrap TableBody class
  * @cfg {String} cls element class
@@ -2585,11 +2585,11 @@ Roo.extend(Roo.bootstrap.Table.TableRow, Roo.bootstrap.Component,  {
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.Table.TableBody = function(config){
-    Roo.bootstrap.Table.TableBody.superclass.constructor.call(this, config);
+Roo.bootstrap.TableBody = function(config){
+    Roo.bootstrap.TableBody.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.Table.TableBody, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.TableBody, Roo.bootstrap.Component,  {
     
     cls: false,
     tag: false,
@@ -2598,7 +2598,7 @@ Roo.extend(Roo.bootstrap.Table.TableBody, Roo.bootstrap.Component,  {
     valign: false,
     
     getAutoCreate : function(){
-        var cfg = Roo.apply({}, Roo.bootstrap.Table.TableBody.superclass.getAutoCreate.call(this));
+        var cfg = Roo.apply({}, Roo.bootstrap.TableBody.superclass.getAutoCreate.call(this));
 	
         cfg = {
             tag: 'tbody'
@@ -11178,19 +11178,19 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
 });
 
 /**
- * @class Roo.bootstrap.Table.AbstractSelectionModel
+ * @class Roo.bootstrap.TableGrid.AbstractSelectionModel
  * @extends Roo.util.Observable
  * Abstract base class for grid SelectionModels.  It provides the interface that should be
  * implemented by descendant classes.  This class should not be directly instantiated.
  * @constructor
  */
-Roo.bootstrap.Table.AbstractSelectionModel = function(){
+Roo.bootstrap.TableGrid.AbstractSelectionModel = function(){
     this.locked = false;
     Roo.bootstrap.Table.AbstractSelectionModel.superclass.constructor.call(this);
 };
 
 
-Roo.extend(Roo.bootstrap.Table.AbstractSelectionModel, Roo.util.Observable,  {
+Roo.extend(Roo.bootstrap.TableGrid.AbstractSelectionModel, Roo.util.Observable,  {
     /** @ignore Called by the grid automatically. Do not call directly. */
     init : function(grid){
         this.grid = grid;
@@ -11220,7 +11220,7 @@ Roo.extend(Roo.bootstrap.Table.AbstractSelectionModel, Roo.util.Observable,  {
     }
 });
 /**
- * @class Roo.bootstrap.Table.ColumnModel
+ * @class Roo.bootstrap.TableGrid.ColumnModel
  * @extends Roo.util.Observable
  * This is the default implementation of a ColumnModel used by the bootstrap table. It defines
  * the columns in the table.
@@ -11229,7 +11229,7 @@ Roo.extend(Roo.bootstrap.Table.AbstractSelectionModel, Roo.util.Observable,  {
  * @param {Object} config An Array of column config objects. See this class's
  * config objects for details.
 */
-Roo.bootstrap.Table.ColumnModel = function(config){
+Roo.bootstrap.TableGrid.ColumnModel = function(config){
 	/**
      * The config passed into the constructor
      */
@@ -11314,9 +11314,9 @@ Roo.bootstrap.Table.ColumnModel = function(config){
          */
         "columnlockchange" : true
     });
-    Roo.bootstrap.Table.ColumnModel.superclass.constructor.call(this);
+    Roo.bootstrap.TableGrid.ColumnModel.superclass.constructor.call(this);
 };
-Roo.extend(Roo.bootstrap.Table.ColumnModel, Roo.util.Observable, {
+Roo.extend(Roo.bootstrap.TableGrid.ColumnModel, Roo.util.Observable, {
     /**
      * @cfg {String} header The header text to display in the Grid view.
      */
@@ -11507,7 +11507,7 @@ Roo.extend(Roo.bootstrap.Table.ColumnModel, Roo.util.Observable, {
      */
     getRenderer : function(col){
         if(!this.config[col].renderer){
-            return Roo.bootstrap.Table.ColumnModel.defaultRenderer;
+            return Roo.bootstrap.TableGrid.ColumnModel.defaultRenderer;
         }
         return this.config[col].renderer;
     },
@@ -11702,7 +11702,7 @@ Roo.extend(Roo.bootstrap.Table.ColumnModel, Roo.util.Observable, {
     }
 });
 
-Roo.bootstrap.Table.ColumnModel.defaultRenderer = function(value){
+Roo.bootstrap.TableGrid.ColumnModel.defaultRenderer = function(value){
 	if(typeof value == "string" && value.length < 1){
 	    return "&#160;";
 	}
@@ -11710,18 +11710,18 @@ Roo.bootstrap.Table.ColumnModel.defaultRenderer = function(value){
 };
 
 // Alias for backwards compatibility
-Roo.bootstrap.Table.DefaultColumnModel = Roo.bootstrap.Table.ColumnModel;
+Roo.bootstrap.TableGrid.DefaultColumnModel = Roo.bootstrap.TableGrid.ColumnModel;
 
 /**
- * @extends Roo.bootstrap.Table.AbstractSelectionModel
- * @class Roo.bootstrap.Table.RowSelectionModel
- * The default SelectionModel used by {@link Roo.bootstrap.Table}.
+ * @extends Roo.bootstrap.TableGrid.AbstractSelectionModel
+ * @class Roo.bootstrap.TableGrid.RowSelectionModel
+ * The default SelectionModel used by {@link Roo.bootstrap.TableGrid}.
  * It supports multiple selections and keyboard selection/navigation. 
  * @constructor
  * @param {Object} config
  */
 
-Roo.bootstrap.Table.RowSelectionModel = function(config){
+Roo.bootstrap.TableGrid.RowSelectionModel = function(config){
     Roo.apply(this, config);
     this.selections = new Roo.util.MixedCollection(false, function(o){
         return o.id;
@@ -11767,11 +11767,11 @@ Roo.bootstrap.Table.RowSelectionModel = function(config){
 	     */
         "rowdeselect" : true
     });
-    Roo.bootstrap.Table.RowSelectionModel.superclass.constructor.call(this);
+    Roo.bootstrap.TableGrid.RowSelectionModel.superclass.constructor.call(this);
     this.locked = false;
 };
 
-Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSelectionModel,  {
+Roo.extend(Roo.bootstrap.TableGrid.RowSelectionModel, Roo.bootstrap.TableGrid.AbstractSelectionModel,  {
     /**
      * @cfg {Boolean} singleSelect
      * True to allow selection of only one row at a time (defaults to false)
