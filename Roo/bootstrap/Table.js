@@ -48,7 +48,7 @@ Roo.bootstrap.Table = function(config){
         this.cm = this.colModel;
         this.cm.xmodule = this.xmodule || false;
     }
-    if (this.stroe) {
+    if (this.store) {
         this.store= Roo.factory(this.store, Roo.data);
         Roo.log(this.store);
         this.ds = this.store;
