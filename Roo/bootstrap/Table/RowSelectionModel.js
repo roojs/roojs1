@@ -7,6 +7,7 @@
  * @constructor
  * @param {Object} config
  */
+
 Roo.bootstrap.Tabel.RowSelectionModel = function(config){
     Roo.apply(this, config);
     this.selections = new Roo.util.MixedCollection(false, function(o){
