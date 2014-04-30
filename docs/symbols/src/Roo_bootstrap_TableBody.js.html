@@ -57,28 +57,29 @@
         }
         
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
-    },
-    
-    </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
-    {
-        
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-        }
-        
-        </span><span class="jsdoc-var">this.store </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.data</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'load'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-        
-        </span><span class="jsdoc-var">this.store.load</span><span class="jsdoc-syntax">();
-        
-    },
-    
-    </span><span class="jsdoc-var">onLoad</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() 
-    {   
-        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'load'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     }
-   
-});
+    
+</span><span class="jsdoc-comment">//    initEvents : function()
+//    {
+//        
+//        if(!this.store){
+//            return;
+//        }
+//        
+//        this.store = Roo.factory(this.store, Roo.data);
+//        this.store.on('load', this.onLoad, this);
+//        
+//        this.store.load();
+//        
+//    },
+//    
+//    onLoad: function () 
+//    {   
+//        this.fireEvent('load', this);
+//    }
+//    
+//   
+</span><span class="jsdoc-syntax">});
 
  
 
