@@ -40,6 +40,7 @@ Roo.bootstrap.Table = function(config){
     
     if (this.sm) {
         this.selModel = Roo.factory(this.sm, Roo.bootstrap);
+        Roo.log(this.selModel);return;
         this.sm = this.selModel;
         this.sm.xmodule = this.xmodule || false;
     }
