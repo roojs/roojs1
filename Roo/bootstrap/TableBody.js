@@ -77,6 +77,7 @@ Roo.extend(Roo.bootstrap.TableBody, Roo.bootstrap.Component,  {
     {   
         this.fireEvent('load', this);
     }
+    
    
 });
 
