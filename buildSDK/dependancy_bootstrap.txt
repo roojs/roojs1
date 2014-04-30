@@ -27,10 +27,10 @@ Roo.bootstrap.Element
 Roo.bootstrap.Pagination
 Roo.bootstrap.PaginationItem
 Roo.bootstrap.Slider
-Roo.bootstrap.Table.Table
-Roo.bootstrap.Table.TableCell
-Roo.bootstrap.Table.TableRow
-Roo.bootstrap.Table.TableBody
+Roo.bootstrap.Table
+Roo.bootstrap.TableCell
+Roo.bootstrap.TableRow
+Roo.bootstrap.TableBody
 
 Roo.form.Action
 Roo.bootstrap.Form
