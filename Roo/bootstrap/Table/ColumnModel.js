@@ -286,7 +286,7 @@ Roo.extend(Roo.bootstrap.Tabel.ColumnModel, Roo.util.Observable, {
      */
     getRenderer : function(col){
         if(!this.config[col].renderer){
-            return Roo.grid.ColumnModel.defaultRenderer;
+            return Roo.bootstrap.Table.ColumnModel.defaultRenderer;
         }
         return this.config[col].renderer;
     },
