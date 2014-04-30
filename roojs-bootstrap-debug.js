@@ -2255,6 +2255,7 @@ Roo.extend(Roo.bootstrap.Slider, Roo.bootstrap.Component,  {
  * @cfg {boolean} hover Add hover highlighting
  * @cfg {boolean} condensed Format condensed
  * @cfg {boolean} responsive Format condensed
+ * 
  
  
  
@@ -2286,6 +2287,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     hover:  false,
     condensed : false,
     responsive : false,
+    
+    store : false,
+    cm : false,
+    sm : false,
     
     
     
@@ -2607,27 +2612,28 @@ Roo.extend(Roo.bootstrap.TableBody, Roo.bootstrap.Component,  {
         }
         
         return cfg;
-    },
-    
-    initEvents : function()
-    {
-        
-        if(!this.store){
-            return;
-        }
-        
-        this.store = Roo.factory(this.store, Roo.data);
-        this.store.on('load', this.onLoad, this);
-        
-        this.store.load();
-        
-    },
-    
-    onLoad: function () 
-    {   
-        this.fireEvent('load', this);
     }
-   
+    
+//    initEvents : function()
+//    {
+//        
+//        if(!this.store){
+//            return;
+//        }
+//        
+//        this.store = Roo.factory(this.store, Roo.data);
+//        this.store.on('load', this.onLoad, this);
+//        
+//        this.store.load();
+//        
+//    },
+//    
+//    onLoad: function () 
+//    {   
+//        this.fireEvent('load', this);
+//    }
+//    
+//   
 });
 
  
