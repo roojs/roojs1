@@ -2266,7 +2266,7 @@ Roo.extend(Roo.bootstrap.Slider, Roo.bootstrap.Component,  {
 
 Roo.bootstrap.Table = function(config){
     Roo.bootstrap.Table.superclass.constructor.call(this, config);
-    Roo.log(this.sm);return;
+    Roo.log(this.cm);return;
     if (this.sm) {
         this.selModel = Roo.factory(this.sm, Roo.bootstrap);
         this.sm = this.selModel;
