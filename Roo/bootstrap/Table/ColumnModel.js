@@ -94,9 +94,9 @@ Roo.bootstrap.Table.ColumnModel = function(config){
          */
         "columnlockchange" : true
     });
-    Roo.bootstrap.Tabel.ColumnModel.superclass.constructor.call(this);
+    Roo.bootstrap.Table.ColumnModel.superclass.constructor.call(this);
 };
-Roo.extend(Roo.bootstrap.Tabel.ColumnModel, Roo.util.Observable, {
+Roo.extend(Roo.bootstrap.Table.ColumnModel, Roo.util.Observable, {
     /**
      * @cfg {String} header The header text to display in the Grid view.
      */
@@ -482,7 +482,7 @@ Roo.extend(Roo.bootstrap.Tabel.ColumnModel, Roo.util.Observable, {
     }
 });
 
-Roo.bootstrap.Tabel.ColumnModel.defaultRenderer = function(value){
+Roo.bootstrap.Table.ColumnModel.defaultRenderer = function(value){
 	if(typeof value == "string" && value.length < 1){
 	    return "&#160;";
 	}
@@ -490,4 +490,4 @@ Roo.bootstrap.Tabel.ColumnModel.defaultRenderer = function(value){
 };
 
 // Alias for backwards compatibility
-Roo.bootstrap.Tabel.DefaultColumnModel = Roo.bootstrap.Tabel.ColumnModel;
+Roo.bootstrap.Table.DefaultColumnModel = Roo.bootstrap.Table.ColumnModel;
