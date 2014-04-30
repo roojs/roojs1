@@ -11,6 +11,7 @@ Roo.bootstrap.Tabel.AbstractSelectionModel = function(){
     Roo.bootstrap.Tabel.AbstractSelectionModel.superclass.constructor.call(this);
 };
 
+
 Roo.extend(Roo.bootstrap.Tabel.AbstractSelectionModel, Roo.util.Observable,  {
     /** @ignore Called by the grid automatically. Do not call directly. */
     init : function(grid){
