@@ -2269,7 +2269,6 @@ Roo.bootstrap.Table = function(config){
     
     if (this.sm) {
         this.selModel = Roo.factory(this.sm, Roo.bootstrap);
-        Roo.log(this.selModel);return;
         this.sm = this.selModel;
         this.sm.xmodule = this.xmodule || false;
     }
@@ -2280,6 +2279,7 @@ Roo.bootstrap.Table = function(config){
     }
     if (this.store) {
         this.store= Roo.factory(this.store, Roo.data);
+        Roo.log(this.store);
         this.ds = this.store;
         this.ds.xmodule = this.xmodule || false;
          
