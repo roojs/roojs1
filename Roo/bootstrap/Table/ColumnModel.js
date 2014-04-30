@@ -9,7 +9,7 @@
  * @param {Object} config An Array of column config objects. See this class's
  * config objects for details.
 */
-Roo.bootstrap.Tabel.ColumnModel = function(config){
+Roo.bootstrap.Table.ColumnModel = function(config){
 	/**
      * The config passed into the constructor
      */
