@@ -2268,7 +2268,7 @@ Roo.bootstrap.Table = function(config){
     Roo.bootstrap.Table.superclass.constructor.call(this, config);
     
     if (this.sm) {
-        this.selModel = Roo.factory(this.sm, Roo.bootstrap);
+        this.selModel = Roo.factory(this.sm, Roo.bootstrap.Table.RowSelectionModel);
         this.sm = this.selModel;
         this.sm.xmodule = this.xmodule || false;
     }
@@ -2279,7 +2279,6 @@ Roo.bootstrap.Table = function(config){
     }
     if (this.store) {
         this.store= Roo.factory(this.store, Roo.data);
-        Roo.log(this.store);
         this.ds = this.store;
         this.ds.xmodule = this.xmodule || false;
          
