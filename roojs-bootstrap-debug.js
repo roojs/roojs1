@@ -2235,7 +2235,7 @@ Roo.extend(Roo.bootstrap.Slider, Roo.bootstrap.Component,  {
  */
 
 /**
- * @class Roo.bootstrap.Table
+ * @class Roo.bootstrap.Table.Table
  * @extends Roo.bootstrap.Component
  * Bootstrap Table class
  * @cfg {String} cls table class
@@ -2264,11 +2264,11 @@ Roo.extend(Roo.bootstrap.Slider, Roo.bootstrap.Component,  {
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.Table = function(config){
-    Roo.bootstrap.Table.superclass.constructor.call(this, config);
+Roo.bootstrap.Table.Table = function(config){
+    Roo.bootstrap.Table.Table.superclass.constructor.call(this, config);
     
     if (this.sm) {
-        this.selModel = new Roo.bootstrap.Table.RowSelectionModel(this.sm);;
+        this.selModel = Roo.factory(this.sm, Roo.bootstrap.Table);
         this.sm = this.selModel;
         this.sm.xmodule = this.xmodule || false;
     }
@@ -2285,7 +2285,7 @@ Roo.bootstrap.Table = function(config){
     }
 };
 
-Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.Table.Table, Roo.bootstrap.Component,  {
     
     cls: false,
     align: false,
@@ -2305,7 +2305,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     responsive : false,
     
     getAutoCreate : function(){
-        var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
+        var cfg = Roo.apply({}, Roo.bootstrap.Table.Table.superclass.getAutoCreate.call(this));
         
         cfg = {
             tag: 'table',
@@ -2383,9 +2383,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
  * table cell
  * 
  */
-
+ 
 /**
- * @class Roo.bootstrap.TableCell
+ * @class Roo.bootstrap.Table.TableCell
  * @extends Roo.bootstrap.Component
  * Bootstrap TableCell class
  * @cfg {String} html cell contain text
@@ -2410,11 +2410,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.TableCell = function(config){
-    Roo.bootstrap.TableCell.superclass.constructor.call(this, config);
+Roo.bootstrap.Table.TableCell = function(config){
+    Roo.bootstrap.Table.TableCell.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.TableCell, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.Table.TableCell, Roo.bootstrap.Component,  {
     
     html: false,
     cls: false,
@@ -2435,7 +2435,7 @@ Roo.extend(Roo.bootstrap.TableCell, Roo.bootstrap.Component,  {
     
     
     getAutoCreate : function(){
-        var cfg = Roo.apply({}, Roo.bootstrap.TableCell.superclass.getAutoCreate.call(this));
+        var cfg = Roo.apply({}, Roo.bootstrap.Table.TableCell.superclass.getAutoCreate.call(this));
 	
 	cfg = {
 	    tag: 'td'
@@ -2507,7 +2507,7 @@ Roo.extend(Roo.bootstrap.TableCell, Roo.bootstrap.Component,  {
  */
 
 /**
- * @class Roo.bootstrap.TableRow
+ * @class Roo.bootstrap.Table.TableRow
  * @extends Roo.bootstrap.Component
  * Bootstrap TableRow class
  * @cfg {String} cls row class
@@ -2521,11 +2521,11 @@ Roo.extend(Roo.bootstrap.TableCell, Roo.bootstrap.Component,  {
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.TableRow = function(config){
-    Roo.bootstrap.TableRow.superclass.constructor.call(this, config);
+Roo.bootstrap.Table.TableRow = function(config){
+    Roo.bootstrap.TTable.ableRow.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.TableRow, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.Table.TableRow, Roo.bootstrap.Component,  {
     
     cls: false,
     align: false,
@@ -2534,7 +2534,7 @@ Roo.extend(Roo.bootstrap.TableRow, Roo.bootstrap.Component,  {
     valign: false,
     
     getAutoCreate : function(){
-        var cfg = Roo.apply({}, Roo.bootstrap.TableRow.superclass.getAutoCreate.call(this));
+        var cfg = Roo.apply({}, Roo.bootstrap.Table.TableRow.superclass.getAutoCreate.call(this));
 	
         cfg = {
             tag: 'tr'
@@ -2571,7 +2571,7 @@ Roo.extend(Roo.bootstrap.TableRow, Roo.bootstrap.Component,  {
  */
 
 /**
- * @class Roo.bootstrap.TableBody
+ * @class Roo.bootstrap.Table.TableBody
  * @extends Roo.bootstrap.Component
  * Bootstrap TableBody class
  * @cfg {String} cls element class
@@ -2585,11 +2585,11 @@ Roo.extend(Roo.bootstrap.TableRow, Roo.bootstrap.Component,  {
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.TableBody = function(config){
-    Roo.bootstrap.TableBody.superclass.constructor.call(this, config);
+Roo.bootstrap.Table.TableBody = function(config){
+    Roo.bootstrap.Table.TableBody.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.TableBody, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.Table.TableBody, Roo.bootstrap.Component,  {
     
     cls: false,
     tag: false,
@@ -2598,7 +2598,7 @@ Roo.extend(Roo.bootstrap.TableBody, Roo.bootstrap.Component,  {
     valign: false,
     
     getAutoCreate : function(){
-        var cfg = Roo.apply({}, Roo.bootstrap.TableBody.superclass.getAutoCreate.call(this));
+        var cfg = Roo.apply({}, Roo.bootstrap.Table.TableBody.superclass.getAutoCreate.call(this));
 	
         cfg = {
             tag: 'tbody'
