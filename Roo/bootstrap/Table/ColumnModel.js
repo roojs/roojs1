@@ -481,7 +481,7 @@ Roo.extend(Roo.bootstrap.Tabel.ColumnModel, Roo.util.Observable, {
     }
 });
 
-Roo.grid.ColumnModel.defaultRenderer = function(value){
+Roo.bootstrap.Tabel.ColumnModel.defaultRenderer = function(value){
 	if(typeof value == "string" && value.length < 1){
 	    return "&#160;";
 	}
@@ -489,4 +489,4 @@ Roo.grid.ColumnModel.defaultRenderer = function(value){
 };
 
 // Alias for backwards compatibility
-Roo.grid.DefaultColumnModel = Roo.grid.ColumnModel;
+Roo.bootstrap.Tabel.DefaultColumnModel = Roo.bootstrap.Tabel.ColumnModel;
