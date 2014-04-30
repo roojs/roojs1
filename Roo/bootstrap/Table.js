@@ -39,12 +39,12 @@ Roo.bootstrap.Table = function(config){
     Roo.bootstrap.Table.superclass.constructor.call(this, config);
     
     if (this.sm) {
-        this.selModel = Roo.factory(this.sm, Roo.bootstrap.TableGrid);
+        this.selModel = Roo.factory(this.sm, Roo.bootstrap.Table);
         this.sm = this.selModel;
         this.sm.xmodule = this.xmodule || false;
     }
     if (this.cm && typeof(this.cm.config) == 'undefined') {
-        this.colModel = new Roo.bootstrap.TableGrid.ColumnModel(this.cm);
+        this.colModel = new Roo.bootstrap.Table.ColumnModel(this.cm);
         this.cm = this.colModel;
         this.cm.xmodule = this.xmodule || false;
     }
