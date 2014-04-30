@@ -2279,6 +2279,7 @@ Roo.bootstrap.Table = function(config){
     }
     if (this.stroe) {
         this.store= Roo.factory(this.store, Roo.data);
+        Roo.log(this.store);
         this.ds = this.store;
         this.ds.xmodule = this.xmodule || false;
          
