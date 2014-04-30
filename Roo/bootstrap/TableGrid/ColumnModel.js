@@ -1,6 +1,6 @@
 
 /**
- * @class Roo.bootstrap.TableGrid.ColumnModel
+ * @class Roo.bootstrap.Table.ColumnModel
  * @extends Roo.util.Observable
  * This is the default implementation of a ColumnModel used by the bootstrap table. It defines
  * the columns in the table.
@@ -9,7 +9,7 @@
  * @param {Object} config An Array of column config objects. See this class's
  * config objects for details.
 */
-Roo.bootstrap.TableGrid.ColumnModel = function(config){
+Roo.bootstrap.Table.ColumnModel = function(config){
 	/**
      * The config passed into the constructor
      */
@@ -94,9 +94,9 @@ Roo.bootstrap.TableGrid.ColumnModel = function(config){
          */
         "columnlockchange" : true
     });
-    Roo.bootstrap.TableGrid.ColumnModel.superclass.constructor.call(this);
+    Roo.bootstrap.Table.ColumnModel.superclass.constructor.call(this);
 };
-Roo.extend(Roo.bootstrap.TableGrid.ColumnModel, Roo.util.Observable, {
+Roo.extend(Roo.bootstrap.Table.ColumnModel, Roo.util.Observable, {
     /**
      * @cfg {String} header The header text to display in the Grid view.
      */
@@ -287,7 +287,7 @@ Roo.extend(Roo.bootstrap.TableGrid.ColumnModel, Roo.util.Observable, {
      */
     getRenderer : function(col){
         if(!this.config[col].renderer){
-            return Roo.bootstrap.TableGrid.ColumnModel.defaultRenderer;
+            return Roo.bootstrap.Table.ColumnModel.defaultRenderer;
         }
         return this.config[col].renderer;
     },
@@ -482,7 +482,7 @@ Roo.extend(Roo.bootstrap.TableGrid.ColumnModel, Roo.util.Observable, {
     }
 });
 
-Roo.bootstrap.TableGrid.ColumnModel.defaultRenderer = function(value){
+Roo.bootstrap.Table.ColumnModel.defaultRenderer = function(value){
 	if(typeof value == "string" && value.length < 1){
 	    return "&#160;";
 	}
@@ -490,4 +490,4 @@ Roo.bootstrap.TableGrid.ColumnModel.defaultRenderer = function(value){
 };
 
 // Alias for backwards compatibility
-Roo.bootstrap.TableGrid.DefaultColumnModel = Roo.bootstrap.TableGrid.ColumnModel;
+Roo.bootstrap.Table.DefaultColumnModel = Roo.bootstrap.Table.ColumnModel;
