@@ -28,6 +28,7 @@
  * @cfg {boolean} responsive Format condensed
  *
  
+ 
  * 
  * @constructor
  * Create a new Table
