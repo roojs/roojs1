@@ -30,12 +30,12 @@ Roo.bootstrap.Tabel.ColumnModel = function(config){
         if(typeof c.id == "undefined"){
             c.id = Roo.id();
         }
-        if(c.editor && c.editor.xtype){
-            c.editor  = Roo.factory(c.editor, Roo.grid);
-        }
-        if(c.editor && c.editor.isFormField){
-            c.editor = new Roo.grid.GridEditor(c.editor);
-        }
+//        if(c.editor && c.editor.xtype){
+//            c.editor  = Roo.factory(c.editor, Roo.grid);
+//        }
+//        if(c.editor && c.editor.isFormField){
+//            c.editor = new Roo.grid.GridEditor(c.editor);
+//        }
         this.lookup[c.id] = c;
     }
 
