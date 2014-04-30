@@ -2023,12 +2023,6 @@
      "desc": "Fires after the component is disabled."
     },
     {
-     "name": "editmodechange",
-     "sig": "function (_self, sourceEdit)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires when the editor switches edit modes"
-    },
-    {
      "name": "editorevent",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -18892,18 +18886,6 @@
      "memberOf": ""
     },
     {
-     "name": "createLinkText",
-     "type": "String",
-     "desc": "The default text for the create link prompt",
-     "memberOf": ""
-    },
-    {
-     "name": "defaultLinkValue",
-     "type": "String",
-     "desc": "The default value for the create link prompt (defaults to http:/ /)",
-     "memberOf": ""
-    },
-    {
      "name": "resizable",
      "type": "String",
      "desc": "'s' or 'se' or 'e' - wrapps the element in a\n                       Roo.resizable.",
@@ -18960,6 +18942,12 @@
      "desc": "Fires when on any editor (mouse up/down cursor movement etc.) - used for toolbar hooks."
     },
     {
+     "name": "firstfocus",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when on first focus - needed by toolbars.."
+    },
+    {
      "name": "initialize",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -19008,6 +18996,18 @@
      "name": "btns",
      "type": "Array",
      "desc": "List of additional buttons.\n\n\nNEEDS Extra CSS? \n.x-html-editor-tb .x-edit-none .x-btn-text { background: none; }",
+     "memberOf": ""
+    },
+    {
+     "name": "createLinkText",
+     "type": "String",
+     "desc": "The default text for the create link prompt",
+     "memberOf": ""
+    },
+    {
+     "name": "defaultLinkValue",
+     "type": "String",
+     "desc": "The default value for the create link prompt (defaults to http:/ /)",
      "memberOf": ""
     },
     {
