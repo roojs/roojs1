@@ -37,6 +37,23 @@
 
 Roo.bootstrap.Table = function(config){
     Roo.bootstrap.Table.superclass.constructor.call(this, config);
+    
+    if (this.sm) {
+        this.selModel = Roo.factory(this.sm, Roo.bootstrap.Table);
+        this.sm = this.selModel;
+        this.sm.xmodule = this.xmodule || false;
+    }
+    if (typeof(this.colModel.config) == 'undefined') {
+        this.colModel = new Roo.grid.ColumnModel(this.colModel);
+        this.cm = this.colModel;
+        this.cm.xmodule = this.xmodule || false;
+    }
+    if (this.dataSource) {
+        this.dataSource= Roo.factory(this.dataSource, Roo.data);
+        this.ds = this.dataSource;
+        this.ds.xmodule = this.xmodule || false;
+         
+    }
 };
 
 Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
