@@ -71,6 +71,6 @@ Roo.bootstrap.CheckBox
 Roo.bootstrap.Radio
 Roo.bootstrap.HtmlEditor
 
-Roo.bootstrap.Table.AbstractSelectionModel
-Roo.bootstrap.Table.ColumnModel
-Roo.bootstrap.Table.RowSelectionModel
+Roo.bootstrap.TableGrid.AbstractSelectionModel
+Roo.bootstrap.TableGrid.ColumnModel
+Roo.bootstrap.TableGrid.RowSelectionModel
