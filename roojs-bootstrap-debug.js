@@ -2255,8 +2255,7 @@ Roo.extend(Roo.bootstrap.Slider, Roo.bootstrap.Component,  {
  * @cfg {boolean} hover Add hover highlighting
  * @cfg {boolean} condensed Format condensed
  * @cfg {boolean} responsive Format condensed
- * 
- 
+ *
  
  
  * 
@@ -2613,6 +2612,7 @@ Roo.extend(Roo.bootstrap.TableBody, Roo.bootstrap.Component,  {
         
         return cfg;
     }
+    
     
 //    initEvents : function()
 //    {
