@@ -106,7 +106,7 @@ Roo.extend(Roo.bootstrap.Tabel.ColumnModel, Roo.util.Observable, {
      */
     /**
      * @cfg {Number} width (Optional) The initial width in pixels of the column. Using this
-     * instead of {@link Roo.grid.Grid#autoSizeColumns} is more efficient.
+     * 
      */
     /**
      * @cfg {Boolean} sortable (Optional) True if sorting is to be allowed on this column.
