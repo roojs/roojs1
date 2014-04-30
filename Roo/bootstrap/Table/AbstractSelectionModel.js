@@ -6,7 +6,7 @@
  * implemented by descendant classes.  This class should not be directly instantiated.
  * @constructor
  */
-Roo.bootstrap.Tabel.AbstractSelectionModel = function(){
+Roo.bootstrap.Table.AbstractSelectionModel = function(){
     this.locked = false;
     Roo.bootstrap.Tabel.AbstractSelectionModel.superclass.constructor.call(this);
 };
