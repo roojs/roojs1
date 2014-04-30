@@ -70,3 +70,7 @@ Roo.bootstrap.DateField
 Roo.bootstrap.CheckBox
 Roo.bootstrap.Radio
 Roo.bootstrap.HtmlEditor
+
+Roo.bootstrap.Table.AbstractSelectionModel
+Roo.bootstrap.Table.ColumnModel
+Roo.bootstrap.Table.RowSelectionModel
