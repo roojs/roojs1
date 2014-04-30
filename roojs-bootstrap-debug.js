@@ -2268,12 +2268,12 @@ Roo.bootstrap.Table = function(config){
     Roo.bootstrap.Table.superclass.constructor.call(this, config);
     
     if (this.sm) {
-        this.selModel = Roo.factory(this.sm, Roo.bootstrap.TableGrid);
+        this.selModel = Roo.factory(this.sm, Roo.bootstrap.Table);
         this.sm = this.selModel;
         this.sm.xmodule = this.xmodule || false;
     }
     if (this.cm && typeof(this.cm.config) == 'undefined') {
-        this.colModel = new Roo.bootstrap.TableGrid.ColumnModel(this.cm);
+        this.colModel = new Roo.bootstrap.Table.ColumnModel(this.cm);
         this.cm = this.colModel;
         this.cm.xmodule = this.xmodule || false;
     }
@@ -11178,19 +11178,19 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
 });
 
 /**
- * @class Roo.bootstrap.TableGrid.AbstractSelectionModel
+ * @class Roo.bootstrap.Table.AbstractSelectionModel
  * @extends Roo.util.Observable
  * Abstract base class for grid SelectionModels.  It provides the interface that should be
  * implemented by descendant classes.  This class should not be directly instantiated.
  * @constructor
  */
-Roo.bootstrap.TableGrid.AbstractSelectionModel = function(){
+Roo.bootstrap.Table.AbstractSelectionModel = function(){
     this.locked = false;
     Roo.bootstrap.Table.AbstractSelectionModel.superclass.constructor.call(this);
 };
 
 
-Roo.extend(Roo.bootstrap.TableGrid.AbstractSelectionModel, Roo.util.Observable,  {
+Roo.extend(Roo.bootstrap.Table.AbstractSelectionModel, Roo.util.Observable,  {
     /** @ignore Called by the grid automatically. Do not call directly. */
     init : function(grid){
         this.grid = grid;
@@ -11220,7 +11220,7 @@ Roo.extend(Roo.bootstrap.TableGrid.AbstractSelectionModel, Roo.util.Observable, 
     }
 });
 /**
- * @class Roo.bootstrap.TableGrid.ColumnModel
+ * @class Roo.bootstrap.Table.ColumnModel
  * @extends Roo.util.Observable
  * This is the default implementation of a ColumnModel used by the bootstrap table. It defines
  * the columns in the table.
@@ -11229,7 +11229,7 @@ Roo.extend(Roo.bootstrap.TableGrid.AbstractSelectionModel, Roo.util.Observable, 
  * @param {Object} config An Array of column config objects. See this class's
  * config objects for details.
 */
-Roo.bootstrap.TableGrid.ColumnModel = function(config){
+Roo.bootstrap.Table.ColumnModel = function(config){
 	/**
      * The config passed into the constructor
      */
@@ -11314,9 +11314,9 @@ Roo.bootstrap.TableGrid.ColumnModel = function(config){
          */
         "columnlockchange" : true
     });
-    Roo.bootstrap.TableGrid.ColumnModel.superclass.constructor.call(this);
+    Roo.bootstrap.Table.ColumnModel.superclass.constructor.call(this);
 };
-Roo.extend(Roo.bootstrap.TableGrid.ColumnModel, Roo.util.Observable, {
+Roo.extend(Roo.bootstrap.Table.ColumnModel, Roo.util.Observable, {
     /**
      * @cfg {String} header The header text to display in the Grid view.
      */
@@ -11507,7 +11507,7 @@ Roo.extend(Roo.bootstrap.TableGrid.ColumnModel, Roo.util.Observable, {
      */
     getRenderer : function(col){
         if(!this.config[col].renderer){
-            return Roo.bootstrap.TableGrid.ColumnModel.defaultRenderer;
+            return Roo.bootstrap.Table.ColumnModel.defaultRenderer;
         }
         return this.config[col].renderer;
     },
@@ -11702,7 +11702,7 @@ Roo.extend(Roo.bootstrap.TableGrid.ColumnModel, Roo.util.Observable, {
     }
 });
 
-Roo.bootstrap.TableGrid.ColumnModel.defaultRenderer = function(value){
+Roo.bootstrap.Table.ColumnModel.defaultRenderer = function(value){
 	if(typeof value == "string" && value.length < 1){
 	    return "&#160;";
 	}
@@ -11710,18 +11710,18 @@ Roo.bootstrap.TableGrid.ColumnModel.defaultRenderer = function(value){
 };
 
 // Alias for backwards compatibility
-Roo.bootstrap.TableGrid.DefaultColumnModel = Roo.bootstrap.TableGrid.ColumnModel;
+Roo.bootstrap.Table.DefaultColumnModel = Roo.bootstrap.Table.ColumnModel;
 
 /**
- * @extends Roo.bootstrap.TableGrid.AbstractSelectionModel
- * @class Roo.bootstrap.TableGrid.RowSelectionModel
- * The default SelectionModel used by {@link Roo.bootstrap.TableGrid}.
+ * @extends Roo.bootstrap.Table.AbstractSelectionModel
+ * @class Roo.bootstrap.Table.RowSelectionModel
+ * The default SelectionModel used by {@link Roo.bootstrap.Table}.
  * It supports multiple selections and keyboard selection/navigation. 
  * @constructor
  * @param {Object} config
  */
 
-Roo.bootstrap.TableGrid.RowSelectionModel = function(config){
+Roo.bootstrap.Table.RowSelectionModel = function(config){
     Roo.apply(this, config);
     this.selections = new Roo.util.MixedCollection(false, function(o){
         return o.id;
@@ -11767,11 +11767,11 @@ Roo.bootstrap.TableGrid.RowSelectionModel = function(config){
 	     */
         "rowdeselect" : true
     });
-    Roo.bootstrap.TableGrid.RowSelectionModel.superclass.constructor.call(this);
+    Roo.bootstrap.Table.RowSelectionModel.superclass.constructor.call(this);
     this.locked = false;
 };
 
-Roo.extend(Roo.bootstrap.TableGrid.RowSelectionModel, Roo.bootstrap.TableGrid.AbstractSelectionModel,  {
+Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSelectionModel,  {
     /**
      * @cfg {Boolean} singleSelect
      * True to allow selection of only one row at a time (defaults to false)
