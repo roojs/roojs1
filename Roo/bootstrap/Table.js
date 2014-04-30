@@ -26,6 +26,7 @@
  * @cfg {boolean} hover Add hover highlighting
  * @cfg {boolean} condensed Format condensed
  * @cfg {boolean} responsive Format condensed
+ * 
  
  
  
