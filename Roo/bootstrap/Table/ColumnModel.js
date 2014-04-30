@@ -36,6 +36,7 @@ Roo.bootstrap.Tabel.ColumnModel = function(config){
 //        if(c.editor && c.editor.isFormField){
 //            c.editor = new Roo.grid.GridEditor(c.editor);
 //        }
+
         this.lookup[c.id] = c;
     }
 
