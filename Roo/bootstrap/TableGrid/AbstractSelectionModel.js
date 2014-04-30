@@ -1,18 +1,18 @@
 
 /**
- * @class Roo.bootstrap.TableGrid.AbstractSelectionModel
+ * @class Roo.bootstrap.Table.AbstractSelectionModel
  * @extends Roo.util.Observable
  * Abstract base class for grid SelectionModels.  It provides the interface that should be
  * implemented by descendant classes.  This class should not be directly instantiated.
  * @constructor
  */
-Roo.bootstrap.TableGrid.AbstractSelectionModel = function(){
+Roo.bootstrap.Table.AbstractSelectionModel = function(){
     this.locked = false;
     Roo.bootstrap.Table.AbstractSelectionModel.superclass.constructor.call(this);
 };
 
 
-Roo.extend(Roo.bootstrap.TableGrid.AbstractSelectionModel, Roo.util.Observable,  {
+Roo.extend(Roo.bootstrap.Table.AbstractSelectionModel, Roo.util.Observable,  {
     /** @ignore Called by the grid automatically. Do not call directly. */
     init : function(grid){
         this.grid = grid;
