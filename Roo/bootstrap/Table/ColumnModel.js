@@ -1,6 +1,6 @@
 
 /**
- * @class Roo.bootstrap.Tabel.ColumnModel
+ * @class Roo.bootstrap.Table.ColumnModel
  * @extends Roo.util.Observable
  * This is the default implementation of a ColumnModel used by the bootstrap table. It defines
  * the columns in the table.
