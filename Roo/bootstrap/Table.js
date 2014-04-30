@@ -43,14 +43,14 @@ Roo.bootstrap.Table = function(config){
         this.sm = this.selModel;
         this.sm.xmodule = this.xmodule || false;
     }
-    if (typeof(this.colModel.config) == 'undefined') {
-        this.colModel = new Roo.grid.ColumnModel(this.colModel);
+    if (typeof(this.cm.config) == 'undefined') {
+        this.colModel = new Roo.bootstrap.Table.ColumnModel(this.cm);
         this.cm = this.colModel;
         this.cm.xmodule = this.xmodule || false;
     }
-    if (this.dataSource) {
-        this.dataSource= Roo.factory(this.dataSource, Roo.data);
-        this.ds = this.dataSource;
+    if (this.stroe) {
+        this.store= Roo.factory(this.store, Roo.data);
+        this.ds = this.store;
         this.ds.xmodule = this.xmodule || false;
          
     }
