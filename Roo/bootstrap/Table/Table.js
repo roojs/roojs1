@@ -76,7 +76,7 @@ Roo.extend(Roo.bootstrap.Table.Table, Roo.bootstrap.Component,  {
     responsive : false,
     
     getAutoCreate : function(){
-        var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
+        var cfg = Roo.apply({}, Roo.bootstrap.Table.Table.superclass.getAutoCreate.call(this));
         
         cfg = {
             tag: 'table',
