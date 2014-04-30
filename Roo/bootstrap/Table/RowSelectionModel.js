@@ -1,14 +1,14 @@
 
 /**
- * @extends Roo.bootstrap.Tabel.AbstractSelectionModel
- * @class Roo.bootstrap.Tabel.RowSelectionModel
- * The default SelectionModel used by {@link Roo.bootstrap.Tabel}.
+ * @extends Roo.bootstrap.Table.AbstractSelectionModel
+ * @class Roo.bootstrap.Table.RowSelectionModel
+ * The default SelectionModel used by {@link Roo.bootstrap.Table}.
  * It supports multiple selections and keyboard selection/navigation. 
  * @constructor
  * @param {Object} config
  */
 
-Roo.bootstrap.Tabel.RowSelectionModel = function(config){
+Roo.bootstrap.Table.RowSelectionModel = function(config){
     Roo.apply(this, config);
     this.selections = new Roo.util.MixedCollection(false, function(o){
         return o.id;
@@ -54,11 +54,11 @@ Roo.bootstrap.Tabel.RowSelectionModel = function(config){
 	     */
         "rowdeselect" : true
     });
-    Roo.bootstrap.Tabel.RowSelectionModel.superclass.constructor.call(this);
+    Roo.bootstrap.Table.RowSelectionModel.superclass.constructor.call(this);
     this.locked = false;
 };
 
-Roo.extend(Roo.bootstrap.Tabel.RowSelectionModel, Roo.bootstrap.Tabel.AbstractSelectionModel,  {
+Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSelectionModel,  {
     /**
      * @cfg {Boolean} singleSelect
      * True to allow selection of only one row at a time (defaults to false)
