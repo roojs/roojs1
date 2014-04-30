@@ -2268,7 +2268,7 @@ Roo.bootstrap.Table = function(config){
     Roo.bootstrap.Table.superclass.constructor.call(this, config);
     
     if (this.sm) {
-        this.selModel = Roo.factory(this.sm, Roo.bootstrap.Table.RowSelectionModel);
+        this.selModel = new Roo.bootstrap.Table.RowSelectionModel(this.sm);;
         this.sm = this.selModel;
         this.sm.xmodule = this.xmodule || false;
     }
