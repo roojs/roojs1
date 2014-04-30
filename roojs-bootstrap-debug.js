@@ -11167,19 +11167,19 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
 });
 
 /**
- * @class Roo.bootstrap.Tabel.AbstractSelectionModel
+ * @class Roo.bootstrap.Table.AbstractSelectionModel
  * @extends Roo.util.Observable
  * Abstract base class for grid SelectionModels.  It provides the interface that should be
  * implemented by descendant classes.  This class should not be directly instantiated.
  * @constructor
  */
-Roo.bootstrap.Tabel.AbstractSelectionModel = function(){
+Roo.bootstrap.Table.AbstractSelectionModel = function(){
     this.locked = false;
-    Roo.bootstrap.Tabel.AbstractSelectionModel.superclass.constructor.call(this);
+    Roo.bootstrap.Table.AbstractSelectionModel.superclass.constructor.call(this);
 };
 
 
-Roo.extend(Roo.bootstrap.Tabel.AbstractSelectionModel, Roo.util.Observable,  {
+Roo.extend(Roo.bootstrap.Table.AbstractSelectionModel, Roo.util.Observable,  {
     /** @ignore Called by the grid automatically. Do not call directly. */
     init : function(grid){
         this.grid = grid;
@@ -11209,7 +11209,7 @@ Roo.extend(Roo.bootstrap.Tabel.AbstractSelectionModel, Roo.util.Observable,  {
     }
 });
 /**
- * @class Roo.bootstrap.Tabel.ColumnModel
+ * @class Roo.bootstrap.Table.ColumnModel
  * @extends Roo.util.Observable
  * This is the default implementation of a ColumnModel used by the bootstrap table. It defines
  * the columns in the table.
@@ -11218,7 +11218,7 @@ Roo.extend(Roo.bootstrap.Tabel.AbstractSelectionModel, Roo.util.Observable,  {
  * @param {Object} config An Array of column config objects. See this class's
  * config objects for details.
 */
-Roo.bootstrap.Tabel.ColumnModel = function(config){
+Roo.bootstrap.Table.ColumnModel = function(config){
 	/**
      * The config passed into the constructor
      */
@@ -11303,9 +11303,9 @@ Roo.bootstrap.Tabel.ColumnModel = function(config){
          */
         "columnlockchange" : true
     });
-    Roo.bootstrap.Tabel.ColumnModel.superclass.constructor.call(this);
+    Roo.bootstrap.Table.ColumnModel.superclass.constructor.call(this);
 };
-Roo.extend(Roo.bootstrap.Tabel.ColumnModel, Roo.util.Observable, {
+Roo.extend(Roo.bootstrap.Table.ColumnModel, Roo.util.Observable, {
     /**
      * @cfg {String} header The header text to display in the Grid view.
      */
@@ -11691,7 +11691,7 @@ Roo.extend(Roo.bootstrap.Tabel.ColumnModel, Roo.util.Observable, {
     }
 });
 
-Roo.bootstrap.Tabel.ColumnModel.defaultRenderer = function(value){
+Roo.bootstrap.Table.ColumnModel.defaultRenderer = function(value){
 	if(typeof value == "string" && value.length < 1){
 	    return "&#160;";
 	}
@@ -11699,18 +11699,18 @@ Roo.bootstrap.Tabel.ColumnModel.defaultRenderer = function(value){
 };
 
 // Alias for backwards compatibility
-Roo.bootstrap.Tabel.DefaultColumnModel = Roo.bootstrap.Tabel.ColumnModel;
+Roo.bootstrap.Table.DefaultColumnModel = Roo.bootstrap.Table.ColumnModel;
 
 /**
- * @extends Roo.bootstrap.Tabel.AbstractSelectionModel
- * @class Roo.bootstrap.Tabel.RowSelectionModel
- * The default SelectionModel used by {@link Roo.bootstrap.Tabel}.
+ * @extends Roo.bootstrap.Table.AbstractSelectionModel
+ * @class Roo.bootstrap.Table.RowSelectionModel
+ * The default SelectionModel used by {@link Roo.bootstrap.Table}.
  * It supports multiple selections and keyboard selection/navigation. 
  * @constructor
  * @param {Object} config
  */
 
-Roo.bootstrap.Tabel.RowSelectionModel = function(config){
+Roo.bootstrap.Table.RowSelectionModel = function(config){
     Roo.apply(this, config);
     this.selections = new Roo.util.MixedCollection(false, function(o){
         return o.id;
@@ -11756,11 +11756,11 @@ Roo.bootstrap.Tabel.RowSelectionModel = function(config){
 	     */
         "rowdeselect" : true
     });
-    Roo.bootstrap.Tabel.RowSelectionModel.superclass.constructor.call(this);
+    Roo.bootstrap.Table.RowSelectionModel.superclass.constructor.call(this);
     this.locked = false;
 };
 
-Roo.extend(Roo.bootstrap.Tabel.RowSelectionModel, Roo.bootstrap.Tabel.AbstractSelectionModel,  {
+Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSelectionModel,  {
     /**
      * @cfg {Boolean} singleSelect
      * True to allow selection of only one row at a time (defaults to false)
