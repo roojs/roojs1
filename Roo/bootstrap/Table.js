@@ -158,7 +158,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         this.store.load();
         
-    },
+    }
    
 });
 
