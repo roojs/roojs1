@@ -74,6 +74,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     hover:  false,
     condensed : false,
     responsive : false,
+    sm : false,
+    cm : false,
+    store : false,
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
@@ -142,7 +145,20 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
 	
         return cfg;
-    }
+    },
+    
+    initEvents : function()
+    {   
+        if(!this.store && !this.cm && !this.sm){
+            return;
+        }
+        
+        this.store = Roo.factory(this.store, Roo.data);
+        this.store.on('load', this.onLoad, this);
+        
+        this.store.load();
+        
+    },
    
 });
 
