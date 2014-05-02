@@ -150,7 +150,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     initEvents : function()
     {   
         if(!this.store && !this.cm && !this.sm){
-            Roo.log('nono store!!!!!!!')
+            Roo.log('nono store!!!!!!!');
             return;
         }
         
