@@ -159,6 +159,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var colCount = this.cm.getColumnCount();
         
+        var header = this.renderHeaders();
+        
     }
    
 });
