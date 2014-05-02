@@ -151,7 +151,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     initTableGrid : function()
     {
+        var cfg = {};
         
+//        cfg.push({
+//            tag: 'thead',
+//            
+//        })
     },
     
     initEvents : function()
