@@ -153,10 +153,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             return;
         }
         
-        this.store = Roo.factory(this.store, Roo.data);
-        this.store.on('load', this.onLoad, this);
-        
-        this.store.load();
+        Roo.log('initEvents!!!!');
         
     }
    
