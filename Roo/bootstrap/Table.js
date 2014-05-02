@@ -161,6 +161,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var header = this.renderHeaders();
         
+    },
+    
+    renderHeaders : function()
+    {
+        
     }
    
 });
