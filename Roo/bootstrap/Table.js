@@ -157,7 +157,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         Roo.log('initEvents!!!!');
         Roo.log(this.cm);
         
-        var colCount = this.cm.getColumnCount();
+        var cm = this.cm;
+        var colCount = cm.getColumnCount();
         
         var header = this.renderHeaders();
         
