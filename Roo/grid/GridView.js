@@ -189,7 +189,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
             tpls.cell.disableFormats = true;
         }
         tpls.cell.compile();
-
+        Roo.log(tpls);
         this.templates = tpls;
     },
 
