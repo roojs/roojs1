@@ -149,6 +149,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         return cfg;
     },
     
+    initTableGrid : function()
+    {
+        
+    },
+    
     initEvents : function()
     {   
         if(!this.store && !this.cm && !this.sm){
