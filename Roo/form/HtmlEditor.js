@@ -359,6 +359,12 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             this.toolbars[i].onFirstFocus();
         }
         
+    },
+    
+    // private
+    syncValue : function()
+    {
+        this.editorcore.synValue();
     }
      
     
