@@ -7344,9 +7344,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             "tab" : function(e){
                 if(this.fireEvent("specialkey", this, e)){
                     this.onViewClick(false);
+                }else{
+                    this.collapse();
                 }
-//                
-//                this.fireEvent("specialkey", this, e);
+                
                 return true;
             },
 
