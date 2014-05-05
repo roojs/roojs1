@@ -105,7 +105,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     stylesheets: false,
     
     /**
-     * @cfg {Boolean} autosave Auto save the field as a file
+     * @cfg {Boolean} autosave Auto save the field as a file (default false)
      */
     
     autosave : false,
