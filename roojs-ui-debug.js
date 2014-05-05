@@ -26141,6 +26141,12 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             this.toolbars[i].onFirstFocus();
         }
         
+    },
+    
+    // private
+    syncValue : function()
+    {
+        this.editorcore.synValue();
     }
      
     
@@ -36243,8 +36249,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
             tpls.cell.disableFormats = true;
         }
         tpls.cell.compile();
-        Roo.log('templates!!!!!!');
-        Roo.log(tpls);
+
         this.templates = tpls;
     },
 
