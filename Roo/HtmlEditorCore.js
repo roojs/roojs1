@@ -104,6 +104,12 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      */
     stylesheets: false,
     
+    /**
+     * @cfg {String} autosave Auto save the field as a file
+     */
+    
+    autosave : false,
+    
     // id of frame..
     frameId: false,
     
