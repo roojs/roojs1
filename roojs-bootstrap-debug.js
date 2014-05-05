@@ -2371,20 +2371,42 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             cfg.width=this.width;
         }
         
+        if(this.store && this.cm && this.sm){
+            cfg.cn = this.initTableGrid();
+        }
         
-	
         return cfg;
+    },
+    
+    initTableGrid : function()
+    {
+        var cfg = {};
+        
+//        cfg.push({
+//            tag: 'thead',
+//            
+//        })
     },
     
     initEvents : function()
     {   
         if(!this.store && !this.cm && !this.sm){
-            Roo.log('nono store!!!!!!!');
             return;
         }
         
         Roo.log('initEvents!!!!');
-        Roo.log(this.cm);
+        Roo.log(this.sm);
+        
+        var cm = this.cm;
+        var colCount = cm.getColumnCount();
+        
+        var header = this.renderHeaders();
+        
+    },
+    
+    renderHeaders : function()
+    {
+        
     }
    
 });
