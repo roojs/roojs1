@@ -223,18 +223,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         }
         
         if(this.autosave){
-            var _this = this;
-            _this.autoSaveFn = setInterval(function(){
-                _this.syncValue();
-                if(!_this.isDirty()){
-                    Roo.log('not dirty');
-                    return;
-                }
-                Roo.log('dirty, auto save!');
-                _this.originalValue = _this.getValue();
-                
-                
-            }, 1000);
+            this.autoSaveFn = setInterval(this.autosave, 1000);
         }
     },
 
