@@ -43,6 +43,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     type: 'nav',
     arrangement: '',
     brand_href: false,
+    main : false,
     
     getAutoCreate : function(){
         var cfg = {
@@ -118,6 +119,11 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
                     ]
                 });
             }
+            
+            if(this.main){
+                cfg.cls += ' main-nav';
+            }
+            
             
             return cfg;
         
