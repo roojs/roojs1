@@ -24963,9 +24963,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         this.pushValue();
         
         if(this.autosave){
-            this.save = setInterval(function(){
-            this.syncValue();
-            if(!this.isDirty()){
+            var _this = this;
+            _this.save = setInterval(function(){
+            _this.syncValue();
+            if(!_this.isDirty()){
                 Roo.log('not dirty');
                 return;
             }
