@@ -26006,7 +26006,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         
         if(this.autosave){
             var _this = this;
-            _this.save = setInterval(function(){
+            _this.autoSaveFn = setInterval(function(){
                 _this.syncValue();
                 if(!_this.isDirty()){
                     Roo.log('not dirty');
