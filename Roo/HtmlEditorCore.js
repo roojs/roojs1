@@ -427,6 +427,19 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
         this.owner.fireEvent('initialize', this);
         this.pushValue();
+        
+        if(this.autosave){
+            this.save = setInterval(function(){
+            this.syncValue();
+            if(!this.isDirty()){
+                Roo.log('not dirty');
+                return;
+            }
+            Roo.log('dirty, auto save!');
+//
+//            _this.form.findField('body').originalValue = _this.form.findField('body').getValue();
+        }, 1000);
+        }
     },
 
     // private
