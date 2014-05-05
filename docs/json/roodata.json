@@ -18914,12 +18914,6 @@
      "type": "Array",
      "desc": "url of stylesheets. set to [] to disable stylesheets.",
      "memberOf": ""
-    },
-    {
-     "name": "autosave",
-     "type": "Boolean",
-     "desc": "Auto save the field as a file (default false)",
-     "memberOf": ""
     }
    ],
    "events": [
