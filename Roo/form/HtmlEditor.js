@@ -231,8 +231,9 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                     return;
                 }
                 Roo.log('dirty, auto save!');
-    //
-    //            _this.form.findField('body').originalValue = _this.form.findField('body').getValue();
+                _this.originalValue = _this.getValue();
+                
+                
             }, 1000);
         }
     },
