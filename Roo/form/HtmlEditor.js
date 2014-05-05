@@ -221,6 +221,20 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             this.resizeEl.resizeTo.defer(100, this.resizeEl,[ this.width,this.height ] );
             // should trigger onReize..
         }
+        
+        if(this.autosave){
+            var _this = this;
+            _this.save = setInterval(function(){
+            _this.syncValue();
+            if(!_this.isDirty()){
+                Roo.log('not dirty');
+                return;
+            }
+            Roo.log('dirty, auto save!');
+//
+//            _this.form.findField('body').originalValue = _this.form.findField('body').getValue();
+        }, 1000);
+        }
     },
 
     // private
