@@ -52,7 +52,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 	if (this.parent().parent().sidebar === true) {
 	    cfg = {
 		tag: 'li',
-		cls: 'nav-item',
+		cls: '',
 		cn: [
 		    {
 			tag: 'p',
@@ -91,7 +91,8 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 	}
 	
 	cfg = {
-	    tag: 'li'
+	    tag: 'li',
+            cls: 'nav-item'
 	}
         
         if (this.active) {
