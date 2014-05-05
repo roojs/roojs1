@@ -42461,7 +42461,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
     // private
     syncValue : function()
     {
-        this.editorcore.synValue();
+        this.editorcore.syncValue();
     }
      
     
