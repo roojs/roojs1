@@ -60,10 +60,6 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
      */
     stylesheets: false,
     
-    /**
-     * @cfg {Boolean} autosave Auto save the field as a file (default false)
-     */
-    
     autosave : false,
     
     // id of frame..
