@@ -1937,12 +1937,6 @@
      "memberOf": ""
     },
     {
-     "name": "autosave",
-     "type": "Boolean",
-     "desc": "Auto save the field as a file (default false)",
-     "memberOf": ""
-    },
-    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -18919,6 +18913,12 @@
      "name": "stylesheets",
      "type": "Array",
      "desc": "url of stylesheets. set to [] to disable stylesheets.",
+     "memberOf": ""
+    },
+    {
+     "name": "autosave",
+     "type": "Boolean",
+     "desc": "Auto save the field as a file (default false)",
      "memberOf": ""
     }
    ],
