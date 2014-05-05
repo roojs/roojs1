@@ -60,10 +60,6 @@
      */
     </span><span class="jsdoc-var">stylesheets</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
-    </span><span class="jsdoc-comment">/**
-     * @cfg {Boolean} autosave Auto save the field as a file (default false)
-     */
-    
     </span><span class="jsdoc-var">autosave </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-comment">// id of frame..
@@ -221,6 +217,10 @@
             </span><span class="jsdoc-var">this.resizeEl.resizeTo.defer</span><span class="jsdoc-syntax">(100, </span><span class="jsdoc-var">this.resizeEl</span><span class="jsdoc-syntax">,[ </span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.height </span><span class="jsdoc-syntax">] );
             </span><span class="jsdoc-comment">// should trigger onReize..
         </span><span class="jsdoc-syntax">}
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autosave</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.autoSaveFn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">setInterval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autosave</span><span class="jsdoc-syntax">, 1000);
+        }
     },
 
     </span><span class="jsdoc-comment">// private
