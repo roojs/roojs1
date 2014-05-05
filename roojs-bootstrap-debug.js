@@ -1524,6 +1524,7 @@ Roo.apply(Roo.bootstrap.Modal,  {
  * @cfg {Boolean} arrangement stacked | justified
  * @cfg {String} align (left | right) alignment
  * @cfg {String} brand_href href of the brand
+ * @cfg {Boolean} main (true|false) main nav bar? default false
  *
  * 
  * @constructor
@@ -1548,6 +1549,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     type: 'nav',
     arrangement: '',
     brand_href: false,
+    main : false,
     
     getAutoCreate : function(){
         var cfg = {
@@ -1623,6 +1625,11 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
                     ]
                 });
             }
+            
+            if(this.main){
+                cfg.cls += ' main-nav';
+            }
+            
             
             return cfg;
         
@@ -1867,7 +1874,8 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 	}
 	
 	cfg = {
-	    tag: 'li'
+	    tag: 'li',
+            cls: 'nav-item'
 	}
         
         if (this.active) {

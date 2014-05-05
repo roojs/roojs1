@@ -9392,6 +9392,12 @@
      "memberOf": ""
     },
     {
+     "name": "main",
+     "type": "Boolean",
+     "desc": "(true|false) main nav bar? default false",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
