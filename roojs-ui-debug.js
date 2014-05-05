@@ -25842,10 +25842,6 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
      */
     stylesheets: false,
     
-    /**
-     * @cfg {Boolean} autosave Auto save the field as a file (default false)
-     */
-    
     autosave : false,
     
     // id of frame..
@@ -26005,17 +26001,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         }
         
         if(this.autosave){
-            var _this = this;
-            _this.autoSaveFn = setInterval(function(){
-                _this.syncValue();
-                if(!_this.isDirty()){
-                    Roo.log('not dirty');
-                    return;
-                }
-                Roo.log('dirty, auto save!');
-    //
-    //            _this.form.findField('body').originalValue = _this.form.findField('body').getValue();
-            }, 1000);
+            this.autoSaveFn = setInterval(this.autosave, 1000);
         }
     },
 
