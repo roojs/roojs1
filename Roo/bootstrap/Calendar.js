@@ -732,13 +732,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
     onLoad: function () 
     {   
-        if(this.loadMask){
-            Roo.log('run load Mask?!!!');
-            this.maskEl.show();
-        }
-        
-        this.clearEvents();
-
         this.calevents = [];
         var cal = this;
         if(this.store.getCount() > 0){
@@ -759,6 +752,14 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         if(this.loadMask){
             this.maskEl.hide();
+        }
+    },
+    
+    onBeforeLoad: function()
+    {
+        if(this.loadMask){
+            Roo.log('run load Mask?!!!');
+            this.maskEl.show();
         }
     }
 });
