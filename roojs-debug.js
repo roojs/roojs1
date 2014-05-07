@@ -40918,13 +40918,7 @@ Roo.HtmlEditorCore = function(config){
          * Fires when on any editor (mouse up/down cursor movement etc.) - used for toolbar hooks.
          * @param {Roo.HtmlEditorCore} this
          */
-        editorevent: true,
-        /**
-        * @event focus
-        * Fires when on editor focus
-        * @param {HtmlEditor} this
-        */
-        focus: true
+        editorevent: true
     });
      
 };
@@ -40968,7 +40962,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     initialized : false,
     activated : false,
     sourceEditMode : false,
-//    onFocus : Roo.emptyFn,
+    onFocus : Roo.emptyFn,
     iframePad:3,
     hideMode:'offsets',
     
@@ -41269,7 +41263,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             'dblclick': this.onEditorEvent,
             'click': this.onEditorEvent,
             'keyup': this.onEditorEvent,
-            'focus': this.onFocus,
             buffer:100,
             scope: this
         });
@@ -41354,15 +41347,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
       //  this.updateToolbar();
         this.syncValue(); //we can not sync so often.. sync cleans, so this breaks stuff
     },
-    
-    // private
-    onFocus : function(e){
-        Roo.log('fire???');
-        Roo.log(this.owner);
-        this.owner.fireEvent('focus', this, e);
-         
-    },
-    
+
     insertTag : function(tg)
     {
         // could be a bit smarter... -> wrap the current selected tRoo..
@@ -42135,8 +42120,8 @@ Roo.form.HtmlEditor = function(config){
 };
 
 /**
- * @class Ext.form.HtmlEditor
- * @extends Ext.form.Field
+ * @class Roo.form.HtmlEditor
+ * @extends Roo.form.Field
  * Provides a lightweight HTML Editor component.
  *
  * This has been tested on Fireforx / Chrome.. IE may not be so great..
@@ -42183,7 +42168,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
     initialized : false,
     activated : false,
     
-//    onFocus : Roo.emptyFn,
+    onFocus : Roo.emptyFn,
     iframePad:3,
     hideMode:'offsets',
     
@@ -42257,13 +42242,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
              * Fires when on first focus - needed by toolbars..
              * @param {HtmlEditor} this
              */
-            firstfocus: true,
-            /**
-             * @event focus
-             * Fires when on editor focus
-             * @param {HtmlEditor} this
-             */
-            focus: true
+            firstfocus: true
         });
         this.defaultAutoCreate =  {
             tag: "textarea",
