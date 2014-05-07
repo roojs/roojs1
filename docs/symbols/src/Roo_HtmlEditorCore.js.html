@@ -414,6 +414,7 @@
             </span><span class="jsdoc-string">'dblclick'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onEditorEvent</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onEditorEvent</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-string">'keyup'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onEditorEvent</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-string">'focus'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onFocus</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">buffer</span><span class="jsdoc-syntax">:100,
             </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this
         </span><span class="jsdoc-syntax">});
@@ -498,7 +499,7 @@
       </span><span class="jsdoc-comment">//  this.updateToolbar();
         </span><span class="jsdoc-var">this.syncValue</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-comment">//we can not sync so often.. sync cleans, so this breaks stuff
     </span><span class="jsdoc-syntax">},
-
+    
     </span><span class="jsdoc-var">insertTag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tg</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-comment">// could be a bit smarter... -&gt; wrap the current selected tRoo..
