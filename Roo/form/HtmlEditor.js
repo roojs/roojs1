@@ -315,7 +315,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
     onFocus : function()
     {
         Roo.log('got!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
-    }
+    },
 
     /**
      * Overridden and disabled. The editor element does not support standard valid/invalid marking. @hide
