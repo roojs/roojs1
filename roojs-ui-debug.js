@@ -25805,8 +25805,8 @@ Roo.form.HtmlEditor = function(config){
 };
 
 /**
- * @class Roo.form.HtmlEditor
- * @extends Roo.form.Field
+ * @class Ext.form.HtmlEditor
+ * @extends Ext.form.Field
  * Provides a lightweight HTML Editor component.
  *
  * This has been tested on Fireforx / Chrome.. IE may not be so great..
@@ -25841,8 +25841,6 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
      * 
      */
     stylesheets: false,
-    
-    autosave : false,
     
     // id of frame..
     frameId: false,
@@ -26000,7 +25998,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             // should trigger onReize..
         }
         
-//        if(this.autosave){
+//        if(this.autosave && this.w){
 //            this.autoSaveFn = setInterval(this.autosave, 1000);
 //        }
     },
