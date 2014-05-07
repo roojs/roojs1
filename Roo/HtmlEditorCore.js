@@ -427,6 +427,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
         this.owner.fireEvent('initialize', this);
         this.pushValue();
+        
+        Roo.log(this);
+        
     },
 
     // private
