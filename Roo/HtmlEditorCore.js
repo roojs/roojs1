@@ -113,7 +113,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     initialized : false,
     activated : false,
     sourceEditMode : false,
-    onFocus : Roo.emptyFn,
+//    onFocus : Roo.emptyFn,
     iframePad:3,
     hideMode:'offsets',
     
