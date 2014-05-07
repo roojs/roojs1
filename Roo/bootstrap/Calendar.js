@@ -751,7 +751,9 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         this.renderEvents();
         
-        this.maskEl.hide();
+        if(this.loadMask){
+            this.maskEl.hide();
+        }
     }
 });
 
