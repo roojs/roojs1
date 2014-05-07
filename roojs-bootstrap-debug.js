@@ -8930,6 +8930,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             cn: [
                 {
                     tag: "div",
+                    style: "background-color:white",
                     cn: [
                         {
                             tag: "img",
