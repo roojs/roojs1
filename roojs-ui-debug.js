@@ -25853,7 +25853,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
     initialized : false,
     activated : false,
     
-    onFocus : Roo.emptyFn,
+//    onFocus : Roo.emptyFn,
     iframePad:3,
     hideMode:'offsets',
     
@@ -25927,7 +25927,13 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
              * Fires when on first focus - needed by toolbars..
              * @param {HtmlEditor} this
              */
-            firstfocus: true
+            firstfocus: true,
+            /**
+             * @event focus
+             * Fires when this field receives input focus.
+             * @param {HtmlEditor} this
+             */
+            focus : true
         });
         this.defaultAutoCreate =  {
             tag: "textarea",
@@ -25936,6 +25942,11 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         };
     },
 
+    onFocus : function()
+    {
+        Roo.log('onFocus!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
+    },
+    
     /**
      * Protected method that will not generally be called directly. It
      * is called when the editor creates its toolbar. Override this method if you need to
