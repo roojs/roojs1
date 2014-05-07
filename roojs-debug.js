@@ -41277,13 +41277,13 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         this.owner.fireEvent('initialize', this);
         this.pushValue();
         
-        this.win.on('focus', this.onFocus, this);
+        this.el.on('focus', this.onFocus, this);
         
     },
     
     onFocus : function()
     {
-        Roo.log('onFocus!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
+        Roo.log('onFocus!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!12');
     },
 
     // private
