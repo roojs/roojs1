@@ -60,8 +60,6 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
      */
     stylesheets: false,
     
-    autosave : false,
-    
     // id of frame..
     frameId: false,
     
