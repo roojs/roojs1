@@ -8921,7 +8921,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             throw "can not find store for calendar";
         }
         
-        this.maskEl = Roo.DomHelper.append(this.el, {tag: "div", cls:"x-dlg-mask"}, true);
+        this.maskEl = Roo.DomHelper.append(this.el.select('.fc-content', true).first(), {tag: "div", cls:"x-dlg-mask"}, true);
         this.maskEl.enableDisplayMode("block");
         this.maskEl.hide();
         
@@ -9394,8 +9394,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
     mask: function()
     {
-        var size = this.el.getViewSize();
-        var xy = this.el.getXY();
+        var size = this.el.select('.fc-content', true).first().getViewSize();
+//        var xy = this.el.getXY();
         
         this.el.addClass("x-body-masked");
         
