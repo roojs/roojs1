@@ -308,13 +308,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
 
     // private
     initEvents : function(){
-        this.el.on('focus', this.onFocus, this);
         this.originalValue = this.getValue();
-    },
-    
-    onFocus : function()
-    {
-        Roo.log('got!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
     },
 
     /**
