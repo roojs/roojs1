@@ -760,7 +760,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         this.clearEvents();
         
         if(this.loadMask){
-            Roo.log('run load Mask?!!!');
             this.maskEl.show();
         }
     }
