@@ -721,11 +721,12 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         this.store.load();
     },
     
-    onLoad: function () {
+    onLoad: function () 
+    {
+        this.mask();
         
         this.clearEvents();
-        //Roo.log('calendar onload');
-//        
+
         this.calevents = [];
         var cal = this;
         if(this.store.getCount() > 0){
