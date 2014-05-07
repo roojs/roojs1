@@ -41263,7 +41263,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             'dblclick': this.onEditorEvent,
             'click': this.onEditorEvent,
             'keyup': this.onEditorEvent,
-            'focus': this.onFocus,
             buffer:100,
             scope: this
         });
@@ -41277,6 +41276,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
         this.owner.fireEvent('initialize', this);
         this.pushValue();
+        
+        this.doc.on('focus', this.onFocus, this);
         
     },
     
