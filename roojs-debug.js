@@ -40962,7 +40962,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     initialized : false,
     activated : false,
     sourceEditMode : false,
-    onFocus : Roo.emptyFn,
+//    onFocus : Roo.emptyFn,
     iframePad:3,
     hideMode:'offsets',
     
@@ -41347,6 +41347,12 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         this.owner.fireEvent('editorevent', this, e);
       //  this.updateToolbar();
         this.syncValue(); //we can not sync so often.. sync cleans, so this breaks stuff
+    },
+    
+    // private
+    onFocus : function(e){
+        this.owner.fireEvent('focus', this, e);
+         
     },
     
     insertTag : function(tg)
@@ -42469,12 +42475,6 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             this.toolbars[i].onFirstFocus();
         }
         
-    },
-    
-    // private
-    onFocus : function(){
-        this.fireEvent('focus', this);
-         
     },
     
     // private
