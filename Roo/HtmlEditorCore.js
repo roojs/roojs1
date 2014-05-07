@@ -499,7 +499,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         this.syncValue(); //we can not sync so often.. sync cleans, so this breaks stuff
     },
     
-    onEditorEvent : function(e){
+    onFocus : function(e){
         this.owner.fireEvent('focus', this, e);
     },
 
