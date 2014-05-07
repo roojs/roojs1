@@ -731,9 +731,9 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
     onLoad: function () 
     {   
-        if(this.loadMask){
-            this.maskEl.show();
-        }
+//        if(this.loadMask){
+//            this.maskEl.show();
+//        }
         
         this.clearEvents();
 
@@ -755,9 +755,9 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         this.renderEvents();
         
-        if(this.loadMask){
-            this.maskEl.hide();
-        }
+//        if(this.loadMask){
+//            this.maskEl.hide();
+//        }
     }
 });
 
