@@ -9378,6 +9378,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     onLoad: function () 
     {   
         if(this.loadMask){
+            Roo.log('run load Mask?!!!');
             this.maskEl.show();
         }
         
