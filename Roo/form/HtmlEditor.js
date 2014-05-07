@@ -335,7 +335,6 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
 
     // doc'ed in Field
     focus : function(){
-        Roo.log('run???');
         this.editorcore.focus();
         
     },
