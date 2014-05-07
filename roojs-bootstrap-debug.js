@@ -8656,6 +8656,7 @@ Roo.bootstrap = Roo.bootstrap || {};
  * @class Roo.bootstrap.Calendar
  * @extends Roo.bootstrap.Component
  * Bootstrap Calendar class
+ * @cfg {Boolean} loadMask (true|false) default false
     
  * @constructor
  * Create a new Container
@@ -8714,6 +8715,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
      * Day index at which the week should begin, 0-based (defaults to 0, which is Sunday)
      */
     startDay : 0,
+    
+    loadMask : false,
       
     getAutoCreate : function(){
         
@@ -8922,8 +8925,13 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         }
         
         this.maskEl = Roo.DomHelper.append(this.el.select('.fc-content', true).first(), {tag: "div", cls:"x-dlg-mask"}, true);
+        
+        var size = this.el.select('.fc-content', true).first().getSize();
+        this.maskEl.setSize(size.width, size.height);
         this.maskEl.enableDisplayMode("block");
-        this.maskEl.hide();
+        if(!this.loadMask){
+            this.maskEl.hide();
+        }
         
         this.store = Roo.factory(this.store, Roo.data);
         this.store.on('load', this.onLoad, this);
@@ -9369,6 +9377,10 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
     onLoad: function () 
     {   
+        if(this.loadMask){
+            this.maskEl.show();
+        }
+        
         this.clearEvents();
 
         this.calevents = [];
@@ -9388,14 +9400,10 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         }
         
         this.renderEvents();
-    },
-    
-    mask: function()
-    {
-        var size = this.el.select('.fc-content', true).first().getViewSize();
         
-        this.maskEl.setSize(size.width, size.height);
-        this.maskEl.show();
+        if(this.loadMask){
+            this.maskEl.hide();
+        }
     }
 });
 
