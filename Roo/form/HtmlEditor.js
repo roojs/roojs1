@@ -160,6 +160,11 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         };
     },
 
+    onFocus : function()
+    {
+        Roo.log('onFocus!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
+    },
+    
     /**
      * Protected method that will not generally be called directly. It
      * is called when the editor creates its toolbar. Override this method if you need to
