@@ -71,7 +71,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
     initialized : false,
     activated : false,
     
-    onFocus : Roo.emptyFn,
+//    onFocus : Roo.emptyFn,
     iframePad:3,
     hideMode:'offsets',
     
@@ -365,6 +365,13 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             this.toolbars[i].onFirstFocus();
         }
         
+    },
+    
+    // private
+    onFocus : function(){
+        //Roo.log("onFocus");
+        this.editorcore.onFocus();
+         
     },
     
     // private
