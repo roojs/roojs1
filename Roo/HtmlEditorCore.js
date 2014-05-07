@@ -113,7 +113,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     initialized : false,
     activated : false,
     sourceEditMode : false,
-//    onFocus : Roo.emptyFn,
+    onFocus : Roo.emptyFn,
     iframePad:3,
     hideMode:'offsets',
     
@@ -427,12 +427,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
         this.owner.fireEvent('initialize', this);
         this.pushValue();
-        
-    },
-    
-    onFocus : function()
-    {
-        Roo.log('onFocus!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
     },
 
     // private
