@@ -434,7 +434,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     
     onFocus : function()
     {
-        Roo.log('onFocus!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
+        Roo.log('onFocus!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!12');
     },
 
     // private
