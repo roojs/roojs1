@@ -414,7 +414,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             'dblclick': this.onEditorEvent,
             'click': this.onEditorEvent,
             'keyup': this.onEditorEvent,
-            'focus': this.onFocus,
+            'focus': this.owner.onFocus,
             buffer:100,
             scope: this
         });
