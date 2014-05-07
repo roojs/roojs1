@@ -8929,8 +8929,14 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             cls:"x-dlg-mask",
             cn: [
                 {
-                    tag: "img",
-                    src: rootURL + '/roojs1/images/ux/lightbox/loading.gif'
+                    tag: "div",
+                    cn: [
+                        {
+                            tag: "img",
+                            src: rootURL + '/roojs1/images/ux/lightbox/loading.gif'
+                        }
+                        
+                    ]
                 }
             ]
         }
