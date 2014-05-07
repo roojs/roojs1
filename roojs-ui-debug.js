@@ -26005,6 +26005,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         }
         
         this.originalValue = this.getValue();
+        Roo.log('onRender : ' + this.getValue());
     },
 
     // private
