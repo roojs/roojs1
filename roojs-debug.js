@@ -40962,7 +40962,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     initialized : false,
     activated : false,
     sourceEditMode : false,
-    onFocus : Roo.emptyFn,
+//    onFocus : Roo.emptyFn,
     iframePad:3,
     hideMode:'offsets',
     
@@ -41263,6 +41263,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             'dblclick': this.onEditorEvent,
             'click': this.onEditorEvent,
             'keyup': this.onEditorEvent,
+            'focus': this.onFocus,
             buffer:100,
             scope: this
         });
@@ -41343,11 +41344,14 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     },
 
     onEditorEvent : function(e){
-        Roo.log('1!!!!!!!!!!!!!!!!!');
-        Roo.log(this.owner);
         this.owner.fireEvent('editorevent', this, e);
       //  this.updateToolbar();
         this.syncValue(); //we can not sync so often.. sync cleans, so this breaks stuff
+    },
+    
+    onFocus : function(e){
+        Roo.log('got here!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        this.owner.fireEvent('focus', this, e);
     },
 
     insertTag : function(tg)
@@ -42257,11 +42261,6 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             style:'width: ' + this.width + 'px;height: ' + this.height + 'px;',
             autocomplete: "off"
         };
-    },
-
-    onFocus : function()
-    {
-        Roo.log('onFocus!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
     },
     
     /**
