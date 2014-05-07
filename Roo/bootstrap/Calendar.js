@@ -748,7 +748,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
     mask: function()
     {
-        var cal = Roo.select('.fc-ltr', true).first().getViewSize();
+        var size = this.el.getViewSize();
         
         this.maskEl.setSize(size.width, size.height);
         this.maskEl.show();
