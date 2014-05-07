@@ -9395,12 +9395,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     mask: function()
     {
         var size = this.el.select('.fc-content', true).first().getViewSize();
-//        var xy = this.el.getXY();
-        
-        this.el.addClass("x-body-masked");
         
         this.maskEl.setSize(size.width, size.height);
-//        this.maskEl.setXY([0,0]);
         this.maskEl.show();
     }
 });
