@@ -41261,8 +41261,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             //'mousedown': this.onEditorEvent,
             'mouseup': this.onEditorEvent,
             'dblclick': this.onEditorEvent,
-            'click': this.onFocus,
+            'click': this.onEditorEvent,
             'keyup': this.onEditorEvent,
+            'focus': this.onFocus,
             buffer:100,
             scope: this
         });
@@ -41277,13 +41278,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         this.owner.fireEvent('initialize', this);
         this.pushValue();
         
-        this.el.on('focus', this.onFocus, this);
-        
     },
     
     onFocus : function()
     {
-        Roo.log('onFocus!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!12');
+        Roo.log('onFocus!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
     },
 
     // private
