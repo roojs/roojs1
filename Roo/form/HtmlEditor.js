@@ -215,6 +215,10 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             this.resizeEl.resizeTo.defer(100, this.resizeEl,[ this.width,this.height ] );
             // should trigger onReize..
         }
+        
+//        if(this.autosave && this.w){
+//            this.autoSaveFn = setInterval(this.autosave, 1000);
+//        }
     },
 
     // private
