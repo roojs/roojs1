@@ -8924,7 +8924,17 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             throw "can not find store for calendar";
         }
         
-        this.maskEl = Roo.DomHelper.append(this.el.select('.fc-content', true).first(), {tag: "div", cls:"x-dlg-mask"}, true);
+        var mark = {
+            tag: "div",
+            cls:"x-dlg-mask",
+            cn: [
+                {
+                    tag: "img",
+                    src: rootURL + 'roojs1/images/ux/lightbox/loading.gif'
+                }
+            ]
+        }
+        this.maskEl = Roo.DomHelper.append(this.el.select('.fc-content', true).first(), mark, true);
         
         var size = this.el.select('.fc-content', true).first().getSize();
         this.maskEl.setSize(size.width, size.height);
