@@ -308,6 +308,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
 
     // private
     initEvents : function(){
+        Roo.log('setting the originalValue???!!!');
         this.originalValue = this.getValue();
     },
 
