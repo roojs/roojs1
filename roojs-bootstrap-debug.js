@@ -9398,7 +9398,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var xy = this.el.getXY();
         
         this.maskEl.setSize(size.width, size.height);
-        this.maskEl.setXY(xy);
+        this.maskEl.setXY([0,0]);
         this.maskEl.show();
     }
 });
