@@ -501,6 +501,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     },
     
     onFocus : function(e){
+        Roo.log('got here!!!!!!!!!!!!!!!!!!!!!!!!!!');
         this.owner.fireEvent('focus', this, e);
     },
 
