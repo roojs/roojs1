@@ -8927,10 +8927,11 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var mark = {
             tag: "div",
             cls:"x-dlg-mask",
+            style: "text-align:center",
             cn: [
                 {
                     tag: "div",
-                    style: "background-color:white",
+                    style: "background-color:white,width:50%,margin:250 auto",
                     cn: [
                         {
                             tag: "img",
