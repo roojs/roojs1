@@ -23,8 +23,8 @@ Roo.form.HtmlEditor = function(config){
 };
 
 /**
- * @class Ext.form.HtmlEditor
- * @extends Ext.form.Field
+ * @class Roo.form.HtmlEditor
+ * @extends Roo.form.Field
  * Provides a lightweight HTML Editor component.
  *
  * This has been tested on Fireforx / Chrome.. IE may not be so great..
