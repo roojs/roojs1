@@ -24961,6 +24961,13 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
         this.owner.fireEvent('initialize', this);
         this.pushValue();
+        
+        this.win.on('focus', this.onFocus, this);
+    },
+
+    onFocus : function()
+    {
+        Roo.log('got here!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
     },
 
     // private
@@ -26090,13 +26097,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
 
     // private
     initEvents : function(){
-        this.el.on('focus', this.onFocus, this);
         this.originalValue = this.getValue();
-    },
-    
-    onFocus : function()
-    {
-        Roo.log('got!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
     },
 
     /**
