@@ -723,8 +723,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
     onLoad: function () 
     {
-        this.mask();
-        
         this.clearEvents();
 
         this.calevents = [];
