@@ -71,7 +71,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
     initialized : false,
     activated : false,
     
-//    onFocus : Roo.emptyFn,
+    onFocus : Roo.emptyFn,
     iframePad:3,
     hideMode:'offsets',
     
@@ -145,13 +145,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
              * Fires when on first focus - needed by toolbars..
              * @param {HtmlEditor} this
              */
-            firstfocus: true,
-            /**
-             * @event focus
-             * Fires when on editor focus
-             * @param {HtmlEditor} this
-             */
-            focus: true
+            firstfocus: true
         });
         this.defaultAutoCreate =  {
             tag: "textarea",
@@ -224,9 +218,9 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             // should trigger onReize..
         }
         
-//        if(this.autosave){
-//            this.autoSaveFn = setInterval(this.autosave, 1000);
-//        }
+        if(this.autosave){
+            this.autoSaveFn = setInterval(this.autosave, 1000);
+        }
     },
 
     // private
