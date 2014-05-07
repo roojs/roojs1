@@ -24946,7 +24946,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             //'mousedown': this.onEditorEvent,
             'mouseup': this.onEditorEvent,
             'dblclick': this.onEditorEvent,
-            'click': this.onEditorEvent,
+            'click': this.onFocus,
             'keyup': this.onEditorEvent,
             buffer:100,
             scope: this
