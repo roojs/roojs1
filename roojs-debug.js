@@ -41277,7 +41277,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         this.owner.fireEvent('initialize', this);
         this.pushValue();
         
-        this.el.on('focus', this.onFocus, this);
+        this.el.on('focus', this.focus, this);
     },
 
     // private
@@ -42434,6 +42434,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
 
     // doc'ed in Field
     focus : function(){
+        Roo.log('run???');
         this.editorcore.focus();
         
     },
