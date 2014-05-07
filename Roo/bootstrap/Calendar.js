@@ -284,7 +284,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             cn: [
                 {
                     tag: "img",
-                    src: rootURL + 'roojs1/images/ux/lightbox/loading.gif'
+                    src: rootURL + '/roojs1/images/ux/lightbox/loading.gif'
                 }
             ]
         }
