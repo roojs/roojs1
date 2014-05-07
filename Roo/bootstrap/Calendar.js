@@ -750,12 +750,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         }
         
         this.renderEvents();
-    },
-    
-    mask: function()
-    {
         
-        this.maskEl.show();
+        this.maskEl.hide();
     }
 });
 
