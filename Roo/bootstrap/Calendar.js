@@ -281,6 +281,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var mark = {
             tag: "div",
             cls:"x-dlg-mask",
+            style: "text-align:center",
             cn: [
                 {
                     tag: "div",
