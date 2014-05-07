@@ -751,6 +751,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var size = this.el.getViewSize();
         var xy = this.el.getXY();
         
+        this.el.addClass("x-body-masked");
+        
         this.maskEl.setSize(size.width, size.height);
         this.maskEl.setXY([0,0]);
         this.maskEl.show();
