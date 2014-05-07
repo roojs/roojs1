@@ -24603,13 +24603,7 @@ Roo.HtmlEditorCore = function(config){
          * Fires when on any editor (mouse up/down cursor movement etc.) - used for toolbar hooks.
          * @param {Roo.HtmlEditorCore} this
          */
-        editorevent: true,
-        /**
-         * @event focus
-         * Fires when this field receives input focus.
-         * @param {HtmlEditor} this
-         */
-        focus : true
+        editorevent: true
     });
      
 };
@@ -24653,7 +24647,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     initialized : false,
     activated : false,
     sourceEditMode : false,
-//    onFocus : Roo.emptyFn,
+    onFocus : Roo.emptyFn,
     iframePad:3,
     hideMode:'offsets',
     
@@ -24954,7 +24948,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             'dblclick': this.onEditorEvent,
             'click': this.onEditorEvent,
             'keyup': this.onEditorEvent,
-            'focus': this.onFocus,
             buffer:100,
             scope: this
         });
@@ -24968,6 +24961,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
         this.owner.fireEvent('initialize', this);
         this.pushValue();
+        
+        Roo.log(this);
+        
     },
 
     // private
@@ -25038,11 +25034,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         this.owner.fireEvent('editorevent', this, e);
       //  this.updateToolbar();
         this.syncValue(); //we can not sync so often.. sync cleans, so this breaks stuff
-    },
-    
-    onFocus : function(e){
-        Roo.log('got here!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        this.owner.fireEvent('focus', this, e);
     },
 
     insertTag : function(tg)
@@ -25865,7 +25856,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
     initialized : false,
     activated : false,
     
-//    onFocus : Roo.emptyFn,
+    onFocus : Roo.emptyFn,
     iframePad:3,
     hideMode:'offsets',
     
@@ -25939,13 +25930,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
              * Fires when on first focus - needed by toolbars..
              * @param {HtmlEditor} this
              */
-            firstfocus: true,
-            /**
-             * @event focus
-             * Fires when this field receives input focus.
-             * @param {HtmlEditor} this
-             */
-            focus : true
+            firstfocus: true
         });
         this.defaultAutoCreate =  {
             tag: "textarea",
@@ -25953,7 +25938,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             autocomplete: "off"
         };
     },
-    
+
     /**
      * Protected method that will not generally be called directly. It
      * is called when the editor creates its toolbar. Override this method if you need to
