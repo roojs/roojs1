@@ -71,7 +71,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
     initialized : false,
     activated : false,
     
-    onFocus : Roo.emptyFn,
+//    onFocus : Roo.emptyFn,
     iframePad:3,
     hideMode:'offsets',
     
