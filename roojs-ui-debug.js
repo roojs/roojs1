@@ -24948,7 +24948,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             'dblclick': this.onEditorEvent,
             'click': this.onEditorEvent,
             'keyup': this.onEditorEvent,
-            'focus': this.onEditorEvent,
+            'focus': this.onFocus,
             buffer:100,
             scope: this
         });
@@ -25033,7 +25033,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
       //  this.updateToolbar();
         this.syncValue(); //we can not sync so often.. sync cleans, so this breaks stuff
     },
-
+    
     insertTag : function(tg)
     {
         // could be a bit smarter... -> wrap the current selected tRoo..
@@ -25854,7 +25854,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
     initialized : false,
     activated : false,
     
-    onFocus : Roo.emptyFn,
+//    onFocus : Roo.emptyFn,
     iframePad:3,
     hideMode:'offsets',
     
@@ -25928,7 +25928,13 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
              * Fires when on first focus - needed by toolbars..
              * @param {HtmlEditor} this
              */
-            firstfocus: true
+            firstfocus: true,
+            /**
+             * @event focus
+             * Fires when on editor focus
+             * @param {HtmlEditor} this
+             */
+            focus: true
         });
         this.defaultAutoCreate =  {
             tag: "textarea",
@@ -26148,6 +26154,12 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             this.toolbars[i].onFirstFocus();
         }
         
+    },
+    
+    // private
+    onFocus : function(){
+        this.fireEvent('focus', this);
+         
     },
     
     // private
