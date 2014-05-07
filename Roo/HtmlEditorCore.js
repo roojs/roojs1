@@ -428,8 +428,13 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         this.owner.fireEvent('initialize', this);
         this.pushValue();
         
-        this.win.on('focus', this.onFocus, this)l
+        this.win.on('focus', this.onFocus, this);
     },
+
+    onFocus : function()
+    {
+        Roo.log('got here!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
+    }
 
     // private
     onDestroy : function(){
