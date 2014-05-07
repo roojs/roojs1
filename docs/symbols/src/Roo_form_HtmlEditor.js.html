@@ -23,8 +23,8 @@
 };
 
 </span><span class="jsdoc-comment">/**
- * @class Ext.form.HtmlEditor
- * @extends Ext.form.Field
+ * @class Roo.form.HtmlEditor
+ * @extends Roo.form.Field
  * Provides a lightweight HTML Editor component.
  *
  * This has been tested on Fireforx / Chrome.. IE may not be so great..
@@ -71,7 +71,7 @@
     </span><span class="jsdoc-var">initialized </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">activated </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
-</span><span class="jsdoc-comment">//    onFocus : Roo.emptyFn,
+    </span><span class="jsdoc-var">onFocus </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.emptyFn</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">iframePad</span><span class="jsdoc-syntax">:3,
     </span><span class="jsdoc-var">hideMode</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'offsets'</span><span class="jsdoc-syntax">,
     
@@ -145,13 +145,7 @@
              * Fires when on first focus - needed by toolbars..
              * @param {HtmlEditor} this
              */
-            </span><span class="jsdoc-var">firstfocus</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-comment">/**
-             * @event focus
-             * Fires when on editor focus
-             * @param {HtmlEditor} this
-             */
-            </span><span class="jsdoc-var">focus</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+            </span><span class="jsdoc-var">firstfocus</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
         </span><span class="jsdoc-syntax">});
         </span><span class="jsdoc-var">this.defaultAutoCreate </span><span class="jsdoc-syntax">=  {
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;textarea&quot;</span><span class="jsdoc-syntax">,
