@@ -500,6 +500,12 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         this.syncValue(); //we can not sync so often.. sync cleans, so this breaks stuff
     },
     
+    // private
+    onFocus : function(e){
+        this.owner.fireEvent('focus', this, e);
+         
+    },
+    
     insertTag : function(tg)
     {
         // could be a bit smarter... -> wrap the current selected tRoo..
