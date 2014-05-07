@@ -25999,13 +25999,6 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             this.resizeEl.resizeTo.defer(100, this.resizeEl,[ this.width,this.height ] );
             // should trigger onReize..
         }
-        
-        if(this.autosave){
-            this.autoSaveFn = setInterval(this.autosave, 1000);
-        }
-        
-        this.originalValue = this.getValue();
-        Roo.log('onRender : ' + this.getValue());
     },
 
     // private
@@ -26120,6 +26113,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
 
     // doc'ed in Field
     focus : function(){
+        Roo.log('focus ????????????????????????!!!!!!!!!!!!!!!!!!!!!!!!');
         this.editorcore.focus();
         
     },
