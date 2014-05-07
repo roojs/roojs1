@@ -24647,7 +24647,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     initialized : false,
     activated : false,
     sourceEditMode : false,
-//    onFocus : Roo.emptyFn,
+    onFocus : Roo.emptyFn,
     iframePad:3,
     hideMode:'offsets',
     
@@ -24961,14 +24961,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
         this.owner.fireEvent('initialize', this);
         this.pushValue();
-        
-        this.doc.on('focus', this.onFocus, this);
-        
-    },
-    
-    onFocus : function()
-    {
-        Roo.log('onFocus!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
     },
 
     // private
@@ -25861,7 +25853,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
     initialized : false,
     activated : false,
     
-//    onFocus : Roo.emptyFn,
+    onFocus : Roo.emptyFn,
     iframePad:3,
     hideMode:'offsets',
     
@@ -25944,10 +25936,6 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         };
     },
 
-    onFocus : function()
-    {
-        Roo.log('onFocus!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
-    },
     /**
      * Protected method that will not generally be called directly. It
      * is called when the editor creates its toolbar. Override this method if you need to
@@ -26102,7 +26090,13 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
 
     // private
     initEvents : function(){
+        this.el.on('focus', this.onFocus, this);
         this.originalValue = this.getValue();
+    },
+    
+    onFocus : function()
+    {
+        Roo.log('got!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
     },
 
     /**
