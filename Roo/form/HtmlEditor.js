@@ -221,9 +221,6 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         if(this.autosave){
             this.autoSaveFn = setInterval(this.autosave, 1000);
         }
-        
-        this.originalValue = this.getValue();
-        Roo.log('onRender : ' + this.getValue());
     },
 
     // private
