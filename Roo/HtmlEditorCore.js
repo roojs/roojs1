@@ -499,6 +499,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
       //  this.updateToolbar();
         this.syncValue(); //we can not sync so often.. sync cleans, so this breaks stuff
     },
+    
+    onFocus : function(e){
+        this.owner.fireEvent('focus', this, e);
+    },
 
     insertTag : function(tg)
     {
