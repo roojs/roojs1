@@ -5348,6 +5348,12 @@
   "Roo.bootstrap.Calendar": {
    "props": [
     {
+     "name": "loadMask",
+     "type": "Boolean",
+     "desc": "(true|false) default false",
+     "memberOf": ""
+    },
+    {
      "name": "startDay",
      "type": "Number",
      "desc": "Day index at which the week should begin, 0-based (defaults to 0, which is Sunday)",
@@ -18952,6 +18958,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires when on first focus - needed by toolbars.."
+    },
+    {
+     "name": "focus",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when on editor focus"
     },
     {
      "name": "initialize",
