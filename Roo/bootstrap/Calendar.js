@@ -10,6 +10,7 @@ Roo.bootstrap = Roo.bootstrap || {};
  * @class Roo.bootstrap.Calendar
  * @extends Roo.bootstrap.Component
  * Bootstrap Calendar class
+ * @cfg {Boolean} loadMask (true|false) default false
     
  * @constructor
  * Create a new Container
