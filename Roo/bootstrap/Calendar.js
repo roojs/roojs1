@@ -289,6 +289,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         this.store = Roo.factory(this.store, Roo.data);
         this.store.on('load', this.onLoad, this);
+        this.store.on('beforeload', this.onBeforeLoad, this);
         
         this.resize();
         
