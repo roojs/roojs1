@@ -71,7 +71,7 @@
     </span><span class="jsdoc-var">initialized </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">activated </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
-    </span><span class="jsdoc-var">onFocus </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.emptyFn</span><span class="jsdoc-syntax">,
+</span><span class="jsdoc-comment">//    onFocus : Roo.emptyFn,
     </span><span class="jsdoc-var">iframePad</span><span class="jsdoc-syntax">:3,
     </span><span class="jsdoc-var">hideMode</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'offsets'</span><span class="jsdoc-syntax">,
     
@@ -145,7 +145,13 @@
              * Fires when on first focus - needed by toolbars..
              * @param {HtmlEditor} this
              */
-            </span><span class="jsdoc-var">firstfocus</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+            </span><span class="jsdoc-var">firstfocus</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-comment">/**
+             * @event focus
+             * Fires when on editor focus
+             * @param {HtmlEditor} this
+             */
+            </span><span class="jsdoc-var">focus</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
         </span><span class="jsdoc-syntax">});
         </span><span class="jsdoc-var">this.defaultAutoCreate </span><span class="jsdoc-syntax">=  {
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;textarea&quot;</span><span class="jsdoc-syntax">,
@@ -218,10 +224,10 @@
             </span><span class="jsdoc-comment">// should trigger onReize..
         </span><span class="jsdoc-syntax">}
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autosave</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.autoSaveFn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">setInterval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autosave</span><span class="jsdoc-syntax">, 1000);
-        }
-    },
+</span><span class="jsdoc-comment">//        if(this.autosave){
+//            this.autoSaveFn = setInterval(this.autosave, 1000);
+//        }
+    </span><span class="jsdoc-syntax">},
 
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">onResize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">)
@@ -365,6 +371,12 @@
             </span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.onFirstFocus</span><span class="jsdoc-syntax">();
         }
         
+    },
+    
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onFocus </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'focus'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+         
     },
     
     </span><span class="jsdoc-comment">// private

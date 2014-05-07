@@ -10,6 +10,7 @@
  * @class Roo.bootstrap.Calendar
  * @extends Roo.bootstrap.Component
  * Bootstrap Calendar class
+ * @cfg {Boolean} loadMask (true|false) default false
     
  * @constructor
  * Create a new Container
@@ -68,6 +69,8 @@
      * Day index at which the week should begin, 0-based (defaults to 0, which is Sunday)
      */
     </span><span class="jsdoc-var">startDay </span><span class="jsdoc-syntax">: 0,
+    
+    </span><span class="jsdoc-var">loadMask </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
       
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         
@@ -275,8 +278,40 @@
             </span><span class="jsdoc-keyword">throw </span><span class="jsdoc-string">&quot;can not find store for calendar&quot;</span><span class="jsdoc-syntax">;
         }
         
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">mark </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;x-dlg-mask&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;text-align:center&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;background-color:white;width:50%;margin:250 auto&quot;</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                        {
+                            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;img&quot;</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">src</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rootURL </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'/roojs1/images/ux/lightbox/loading.gif'
+                        </span><span class="jsdoc-syntax">},
+                        {
+                            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;span&quot;</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Loading&quot;
+                        </span><span class="jsdoc-syntax">}
+                        
+                    ]
+                }
+            ]
+        }
+        </span><span class="jsdoc-var">this.maskEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomHelper.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-content'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">mark</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-content'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getSize</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.maskEl.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">size.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">size.height</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.maskEl.enableDisplayMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;block&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.loadMask</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.maskEl.hide</span><span class="jsdoc-syntax">();
+        }
+        
         </span><span class="jsdoc-var">this.store </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.data</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'load'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforeload'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onBeforeLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-var">this.resize</span><span class="jsdoc-syntax">();
         
@@ -717,11 +752,8 @@
         </span><span class="jsdoc-var">this.store.load</span><span class="jsdoc-syntax">();
     },
     
-    </span><span class="jsdoc-var">onLoad</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
-        
-        </span><span class="jsdoc-var">this.clearEvents</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-comment">//Roo.log('calendar onload');
-//        
+    </span><span class="jsdoc-var">onLoad</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() 
+    {   
         </span><span class="jsdoc-var">this.calevents </span><span class="jsdoc-syntax">= [];
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cal </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store.getCount</span><span class="jsdoc-syntax">() &gt; 0){
@@ -739,6 +771,19 @@
         }
         
         </span><span class="jsdoc-var">this.renderEvents</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.loadMask</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.maskEl.hide</span><span class="jsdoc-syntax">();
+        }
+    },
+    
+    </span><span class="jsdoc-var">onBeforeLoad</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.clearEvents</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.loadMask</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.maskEl.show</span><span class="jsdoc-syntax">();
+        }
     }
 });
 
