@@ -159,11 +159,6 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             autocomplete: "off"
         };
     },
-
-    onFocus : function()
-    {
-        Roo.log('onFocus!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
-    },
     
     /**
      * Protected method that will not generally be called directly. It
