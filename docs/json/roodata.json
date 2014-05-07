@@ -19098,6 +19098,12 @@
      "desc": "Fires when on first focus - needed by toolbars.."
     },
     {
+     "name": "focus",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when this field receives input focus."
+    },
+    {
      "name": "hide",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
