@@ -24603,7 +24603,13 @@ Roo.HtmlEditorCore = function(config){
          * Fires when on any editor (mouse up/down cursor movement etc.) - used for toolbar hooks.
          * @param {Roo.HtmlEditorCore} this
          */
-        editorevent: true
+        editorevent: true,
+        /**
+        * @event focus
+        * Fires when on editor focus
+        * @param {HtmlEditor} this
+        */
+        focus: true
     });
      
 };
@@ -25036,6 +25042,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     
     // private
     onFocus : function(e){
+        Roo.log('fire???');
+        Roo.log(this.owner);
         this.owner.fireEvent('focus', this, e);
          
     },
