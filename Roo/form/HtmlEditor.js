@@ -218,9 +218,9 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             // should trigger onReize..
         }
         
-        if(this.autosave){
-            this.autoSaveFn = setInterval(this.autosave, 1000);
-        }
+//        if(this.autosave){
+//            this.autoSaveFn = setInterval(this.autosave, 1000);
+//        }
     },
 
     // private
