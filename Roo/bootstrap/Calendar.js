@@ -284,7 +284,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             cn: [
                 {
                     tag: "div",
-                    style: "background-color:white",
+                    style: "background-color:white,width:50%,margin:250 auto",
                     cn: [
                         {
                             tag: "img",
