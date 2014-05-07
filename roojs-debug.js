@@ -41214,6 +41214,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
     // doc'ed in Field
     focus : function(){
+        Roo.log('core focus ????????????????????????!!!!!!!!!!!!!!!!!!!!!!!!');
         if(this.win && !this.sourceEditMode){
             this.win.focus();
         }else{
