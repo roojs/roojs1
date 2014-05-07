@@ -427,6 +427,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
         this.owner.fireEvent('initialize', this);
         this.pushValue();
+        
+        this.win.on('focus', this.onFocus, this)l
     },
 
     // private
