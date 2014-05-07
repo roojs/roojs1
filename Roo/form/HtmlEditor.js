@@ -368,9 +368,8 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
     },
     
     // private
-    onFocus : function(){
-        //Roo.log("onFocus");
-        this.editorcore.onFocus();
+    onFocus : function(e){
+        this.fireEvent('focus', this, e);
          
     },
     
