@@ -41351,6 +41351,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     
     // private
     onFocus : function(e){
+        Roo.log('fire???');
+        Roo.log(this.owner);
         this.owner.fireEvent('focus', this, e);
          
     },
