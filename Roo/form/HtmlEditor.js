@@ -308,8 +308,14 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
 
     // private
     initEvents : function(){
+        this.el.on('focus', this.onFocus, this);
         this.originalValue = this.getValue();
     },
+    
+    onFocus : function()
+    {
+        Roo.log('got!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
+    }
 
     /**
      * Overridden and disabled. The editor element does not support standard valid/invalid marking. @hide
