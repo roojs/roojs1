@@ -25931,7 +25931,13 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
              * Auto save the htmlEditor value as a file into Events
              * @param {HtmlEditor} this
              */
-            autosave: true
+            autosave: true,
+            /**
+             * @event savedpreview
+             * preview the saved version of htmlEditor
+             * @param {HtmlEditor} this
+             */
+            savedpreview: true
         });
         this.defaultAutoCreate =  {
             tag: "textarea",
