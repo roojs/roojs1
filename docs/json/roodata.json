@@ -19152,6 +19152,12 @@
      "desc": "Fires after the component is resized."
     },
     {
+     "name": "savedpreview",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "preview the saved version of htmlEditor"
+    },
+    {
      "name": "show",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
