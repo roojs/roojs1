@@ -143,7 +143,13 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
              * Fires when on first focus - needed by toolbars..
              * @param {HtmlEditor} this
              */
-            firstfocus: true
+            firstfocus: true,
+            /**
+             * @event autosave
+             * Auto save the htmlEditor value as a file into Events
+             * @param {HtmlEditor} this
+             */
+            autosave: true
         });
         this.defaultAutoCreate =  {
             tag: "textarea",
