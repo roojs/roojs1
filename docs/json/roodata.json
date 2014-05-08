@@ -19026,6 +19026,12 @@
      "desc": "Fires when the editor is first receives the focus. Any insertion must wait\nuntil after this event."
     },
     {
+     "name": "autosave",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Auto save the htmlEditor value as a file into Events"
+    },
+    {
      "name": "beforedestroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
