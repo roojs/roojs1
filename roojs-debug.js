@@ -42120,8 +42120,8 @@ Roo.form.HtmlEditor = function(config){
 };
 
 /**
- * @class Ext.form.HtmlEditor
- * @extends Ext.form.Field
+ * @class Roo.form.HtmlEditor
+ * @extends Roo.form.Field
  * Provides a lightweight HTML Editor component.
  *
  * This has been tested on Fireforx / Chrome.. IE may not be so great..
@@ -42240,7 +42240,13 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
              * Fires when on first focus - needed by toolbars..
              * @param {HtmlEditor} this
              */
-            firstfocus: true
+            firstfocus: true,
+            /**
+             * @event autosave
+             * Auto save the htmlEditor value as a file into Events
+             * @param {HtmlEditor} this
+             */
+            autosave: true
         });
         this.defaultAutoCreate =  {
             tag: "textarea",
