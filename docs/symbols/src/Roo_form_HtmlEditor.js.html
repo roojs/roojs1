@@ -60,8 +60,6 @@
      */
     </span><span class="jsdoc-var">stylesheets</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
-    </span><span class="jsdoc-var">autosave </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    
     </span><span class="jsdoc-comment">// id of frame..
     </span><span class="jsdoc-var">frameId</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
@@ -145,7 +143,13 @@
              * Fires when on first focus - needed by toolbars..
              * @param {HtmlEditor} this
              */
-            </span><span class="jsdoc-var">firstfocus</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+            </span><span class="jsdoc-var">firstfocus</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-comment">/**
+             * @event autosave
+             * Auto save the htmlEditor value as a file into Events
+             * @param {HtmlEditor} this
+             */
+            </span><span class="jsdoc-var">autosave</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
         </span><span class="jsdoc-syntax">});
         </span><span class="jsdoc-var">this.defaultAutoCreate </span><span class="jsdoc-syntax">=  {
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;textarea&quot;</span><span class="jsdoc-syntax">,
@@ -218,7 +222,7 @@
             </span><span class="jsdoc-comment">// should trigger onReize..
         </span><span class="jsdoc-syntax">}
         
-</span><span class="jsdoc-comment">//        if(this.autosave){
+</span><span class="jsdoc-comment">//        if(this.autosave &amp;&amp; this.w){
 //            this.autoSaveFn = setInterval(this.autosave, 1000);
 //        }
     </span><span class="jsdoc-syntax">},
