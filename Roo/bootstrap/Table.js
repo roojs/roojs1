@@ -257,22 +257,25 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 for(var i = 0, len = cm.getColumnCount(); i < len; i++){
                     var renderer = cm.getRenderer(i);
                     var value = '';
+                    var id = Roo.id();
+                    var renders = [];
                     
                     if(typeof(renderer) !== 'undefined'){
                         value = renderer(d.data[cm.getDataIndex(i)], false, d);
                     }
                     
                     if(typeof(value) === 'object'){
-                        row.cn.push({
-                            tag: 'td',
-                            cn: value
-                        })
-                    }else{
-                        row.cn.push({
-                            tag: 'td',
-                            html: value
+                        renders.push({
+                            id : id,
+                            cfg : value 
                         })
                     }
+                    
+                    row.cn.push({
+                        tag: 'td',
+                        html: (typeof(value) === 'object') ? '' : value
+                    })
+                   
                 }
                 
                 tbody.createChild(row);
