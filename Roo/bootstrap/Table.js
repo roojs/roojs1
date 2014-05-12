@@ -157,6 +157,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             tag: 'thead',
             cn : []
         })
+        
+        var cm = this.cm;
+        var colCount = cm.getColumnCount();
+        
+        
+        
     },
     
     initEvents : function()
