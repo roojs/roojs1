@@ -2392,7 +2392,18 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         var cfg = {};
         
+        var tpls = this.templates || {};
         
+        tpls.header = new Roo.Template(
+               '<table border="0" cellspacing="0" cellpadding="0">',
+               '<tbody><tr class="x-grid-hd-row">{cells}</tr></tbody>',
+               "</table>{splits}"
+            );
+        tpls.header.disableformats = true;
+        
+        tpls.header.compile();
+        
+        Roo.log(tpls.header);
 //        cfg.push({
 //            tag: 'thead',
 //            
@@ -2407,7 +2418,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         Roo.log('initEvents!!!!');
         
-        var tpls = this.templates || {};
+//        var tpls = this.templates || {};
         
         
 //        var cm = this.cm;

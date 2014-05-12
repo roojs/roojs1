@@ -163,6 +163,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         tpls.header.disableformats = true;
         
         tpls.header.compile();
+        
+        Roo.log(tpls.header);
 //        cfg.push({
 //            tag: 'thead',
 //            
