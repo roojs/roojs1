@@ -213,6 +213,26 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         }
         
         return header;
+    },
+    
+    renderBody : function()
+    {
+        var body = {
+            tag: 'tbody',
+            cn : []
+        };
+        
+        return body;
+    },
+    
+    renderFooter : function()
+    {
+        var footer = {
+            tag: 'tfoot',
+            cn : []
+        };
+        
+        return footer;
     }
    
 });
