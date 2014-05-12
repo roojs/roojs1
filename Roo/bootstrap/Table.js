@@ -230,6 +230,16 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         };
         
         return footer;
+    },
+    
+    onLoad : function()
+    {
+        Roo.log('ds onload');
+    },
+    
+    onBeforeLoad : function()
+    {
+        Roo.log('ds onBeforeLoad');
     }
    
 });
