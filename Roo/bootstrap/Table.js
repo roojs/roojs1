@@ -273,6 +273,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     
                     row.cn.push({
                         tag: 'td',
+                        id: id,
                         html: (typeof(value) === 'object') ? '' : value
                     })
                    
