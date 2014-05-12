@@ -3283,7 +3283,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             this.fireEvent('actioncomplete', this, action);
             
         }else{
-            
+            Roo.log('go into the fail??');
             // failure condition..
             // we have a scenario where updates need confirming.
             // eg. if a locking scenario exists..
