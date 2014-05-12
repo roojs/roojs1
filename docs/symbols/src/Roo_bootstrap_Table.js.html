@@ -259,8 +259,8 @@
                     
                     </span><span class="jsdoc-var">row.cn.push</span><span class="jsdoc-syntax">({
                         </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'td'</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">renderer</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.data</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cm.getDataIndex</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)], </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">)
-                    })
+                        </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">renderer</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">renderer</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.data</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cm.getDataIndex</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)], </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-string">''
+                    </span><span class="jsdoc-syntax">})
                 }
                 
                 </span><span class="jsdoc-var">tbody.createChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">);
