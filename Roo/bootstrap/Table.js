@@ -168,7 +168,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         Roo.log('initEvents!!!!');
         
-        var tpls = this.templates || {};
+//        var tpls = this.templates || {};
         
         
 //        var cm = this.cm;
