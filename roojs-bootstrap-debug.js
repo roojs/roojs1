@@ -2908,6 +2908,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         var method = this.getMethod();
         var isPost = method == 'POST';
         Roo.log(o);
+        Roo.log(this.form.isValid());
         if(o.clientValidation === false || this.form.isValid()){
             
             if (this.form.progressUrl) {
