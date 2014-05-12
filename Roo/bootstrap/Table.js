@@ -288,6 +288,13 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     clear : function()
     {
         this.el.select('tbody', true).first().dom.innerHTML = '';
+    },
+    
+    getSelectionModel : function(){
+        if(!this.selModel){
+            this.selModel = new Roo.grid.RowSelectionModel();
+        }
+        return this.selModel;
     }
    
 });
