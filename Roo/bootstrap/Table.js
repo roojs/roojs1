@@ -144,7 +144,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         }
         
         if(this.store || this.cm){
-            cfg.cn.push(this.renderHeaders());
+            cfg.cn.push(this.renderHeader());
             cfg.cn.push(this.renderBody());
             cfg.cn.push(this.renderFooter());
         }
@@ -197,7 +197,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
     },
     
-    renderHeaders : function()
+    renderHeader : function()
     {
         var header = {
             tag: 'thead',
