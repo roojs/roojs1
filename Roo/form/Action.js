@@ -212,10 +212,8 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         var o = this.options;
         var method = this.getMethod();
         var isPost = method == 'POST';
-        Roo.log(o);
-        Roo.log(this.form.isValid());
         if(o.clientValidation === false || this.form.isValid()){
-            Roo.log('got here');
+            
             if (this.form.progressUrl) {
                 this.form.findField('UPLOAD_IDENTIFIER').setValue(
                     (new Date() * 1) + '' + Math.random());
@@ -234,7 +232,6 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
             this.uploadProgress();
 
         }else if (o.clientValidation !== false){ // client validation failed
-            Roo.log('got fail??');
             this.failureType = Roo.form.Action.CLIENT_INVALID;
             this.form.afterAction(this, false);
         }

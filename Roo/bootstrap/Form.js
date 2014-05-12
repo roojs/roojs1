@@ -186,9 +186,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         if(typeof action == 'string'){
             action = new Roo.form.Action.ACTION_TYPES[action](this, options);
         }
-        Roo.log(action);
         if(this.fireEvent('beforeaction', this, action) !== false){
-            Roo.log('in!!!');
             this.beforeAction(action);
             action.run.defer(100, action);
         }
@@ -234,7 +232,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             this.fireEvent('actioncomplete', this, action);
             
         }else{
-            Roo.log('go into the fail??');
+            
             // failure condition..
             // we have a scenario where updates need confirming.
             // eg. if a locking scenario exists..
@@ -264,8 +262,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 
                 return;
             }
-            Roo.log(o.failure);
-            Roo.log(o.scope);
+            
             Roo.callback(o.failure, o.scope, [this, action]);
             // show an error message if no failed handler is set..
             if (!this.hasListener('actionfailed')) {
@@ -278,7 +275,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 );
                 */
             }
-            Roo.log('got the end??!!');
+            
             this.fireEvent('actionfailed', this, action);
         }
         
