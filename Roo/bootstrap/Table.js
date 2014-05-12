@@ -243,6 +243,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         Roo.log('ds onload');
         
+        
+        
+        
         if(this.loadMask){
             this.maskEl.hide();
         }
