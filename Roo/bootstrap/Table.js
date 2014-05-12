@@ -161,7 +161,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     initEvents : function()
     {   
-        if(!this.store && !this.cm && !this.sm){
+        if(!this.store || !this.cm){
             return;
         }
         
