@@ -2424,6 +2424,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         Roo.log('initEvents with ds!!!!');
         
+        this.maskEl = Roo.DomHelper.append(document.body, {tag: "div", cls:"x-dlg-mask"}, true);
+        this.maskEl.enableDisplayMode("block");
+        this.maskEl.hide();
+        
         this.store.on('load', this.onLoad, this);
         this.store.on('beforeload', this.onBeforeLoad, this);
         
@@ -2475,11 +2479,19 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     onLoad : function()
     {
         Roo.log('ds onload');
+        
+        if(this.loadMask){
+            this.maskEl.hide();
+        }
     },
     
     onBeforeLoad : function()
     {
         Roo.log('ds onBeforeLoad');
+        
+        if(this.loadMask){
+            this.maskEl.show();
+        }
     }
    
 });
