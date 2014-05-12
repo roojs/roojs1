@@ -2504,7 +2504,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     if(typeof(value) === 'object'){
                         var td = {
                             tag: 'td',
-                            cn: value
+                            cn: value.render()
                         }
                         
                         
