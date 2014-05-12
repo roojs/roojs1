@@ -31,7 +31,7 @@
     </span><span class="jsdoc-var">hdClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-grid-hd&quot;</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">splitClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-grid-hd-split&quot;</span><span class="jsdoc-syntax">,
     
-	</span><span class="jsdoc-var">init</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">grid</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">init</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">grid</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.grid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">grid</span><span class="jsdoc-syntax">;
 		</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.getGridEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.id</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.colSelector </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;#&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cid </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot; .&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.cellClass </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;-&quot;</span><span class="jsdoc-syntax">;
@@ -40,7 +40,7 @@
         </span><span class="jsdoc-var">this.splitSelector </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;#&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cid </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot; .&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.splitClass </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;-&quot;</span><span class="jsdoc-syntax">;
 	},
 	
-	</span><span class="jsdoc-var">getColumnRenderers </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+    </span><span class="jsdoc-var">getColumnRenderers </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
     	</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">renderers </span><span class="jsdoc-syntax">= [];
     	</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.colModel</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">colCount </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cm.getColumnCount</span><span class="jsdoc-syntax">();
