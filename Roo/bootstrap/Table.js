@@ -37,7 +37,7 @@
 
 Roo.bootstrap.Table = function(config){
     Roo.bootstrap.Table.superclass.constructor.call(this, config);
-    
+    Roo.log(this.sm);return;
     if (this.sm) {
         this.selModel = Roo.factory(this.sm, Roo.bootstrap.Table);
         this.sm = this.selModel;

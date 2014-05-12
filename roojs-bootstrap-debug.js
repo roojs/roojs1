@@ -2276,7 +2276,7 @@ Roo.extend(Roo.bootstrap.Slider, Roo.bootstrap.Component,  {
 
 Roo.bootstrap.Table = function(config){
     Roo.bootstrap.Table.superclass.constructor.call(this, config);
-    
+    Roo.log(this.sm);return;
     if (this.sm) {
         this.selModel = Roo.factory(this.sm, Roo.bootstrap.Table);
         this.sm = this.selModel;
@@ -2400,7 +2400,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     initEvents : function()
     {   
-        if(!this.store && !this.cm && !this.sm){
+        if(!this.store || !this.cm){
             return;
         }
         
@@ -2412,6 +2412,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var header = this.renderHeaders();
         
+//        if (!this.sm) {
+//            this.selModel = Roo.factory(this.sm, Roo.bootstrap.Table);
+//            this.sm = this.selModel;
+//            this.sm.xmodule = this.xmodule || false;
+//        }
+    
     },
     
     renderHeaders : function()
