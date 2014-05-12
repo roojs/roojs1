@@ -2383,10 +2383,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         }
         
         if(this.store || this.cm){
-            cfg.cn.push(this.renderHeaders());
+            cfg.cn.push(this.renderHeader());
+            cfg.cn.push(this.renderBody());
+            cfg.cn.push(this.renderFooter());
         }
-        
-        Roo.log(cfg);
         
         return cfg;
     },
@@ -2436,7 +2436,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
     },
     
-    renderHeaders : function()
+    renderHeader : function()
     {
         var header = {
             tag: 'thead',
@@ -2453,6 +2453,26 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         }
         
         return header;
+    },
+    
+    renderBody : function()
+    {
+        var body = {
+            tag: 'tbody',
+            cn : []
+        };
+        
+        return body;
+    },
+    
+    renderFooter : function()
+    {
+        var footer = {
+            tag: 'tfoot',
+            cn : []
+        };
+        
+        return footer;
     }
    
 });
