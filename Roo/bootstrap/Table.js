@@ -223,10 +223,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         var body = {
             tag: 'tbody',
-            cn : [{
-                    tag: 'td',
-                    html: 'test'
-            }]
+            cn : []
         };
         
         return body;
