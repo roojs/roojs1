@@ -3313,7 +3313,8 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                 
                 return;
             }
-            
+            Roo.log(o.failure);
+            Roo.log(o.scope);
             Roo.callback(o.failure, o.scope, [this, action]);
             // show an error message if no failed handler is set..
             if (!this.hasListener('actionfailed')) {
