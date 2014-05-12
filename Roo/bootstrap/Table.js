@@ -247,10 +247,14 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var tbody = this.el.select('tbody', true).first();
         if(this.store.getCount() > 0){
             this.store.data.each(function(d){
-                tbody.createChild({
+                var row = {
                     tag : 'tr',
                     cn : []
-                })
+                }
+                
+                tbody.createChild(row);
+                
+                
             });
         }
         
