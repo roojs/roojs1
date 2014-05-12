@@ -2322,7 +2322,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         cfg = {
             tag: 'table',
-            cls : 'table'
+            cls : 'table',
+            cn : []
         }
             
         if (this.striped) {
