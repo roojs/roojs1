@@ -2929,6 +2929,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
             this.uploadProgress();
 
         }else if (o.clientValidation !== false){ // client validation failed
+            Roo.log('got fail??');
             this.failureType = Roo.form.Action.CLIENT_INVALID;
             this.form.afterAction(this, false);
         }
