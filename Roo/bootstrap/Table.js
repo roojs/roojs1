@@ -254,10 +254,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 };
                 
                 for(var i = 0, len = cm.getColumnCount(); i < len; i++){
-                    row.cn.push({
-                        tag: 'td',
-                        html: (typeof(d.data[cm.getDataIndex(i)]) !== 'undefined') ? d[cm.getDataIndex(i)] : ''
-                    })
+//                    row.cn.push({
+//                        tag: 'td',
+//                        html: (typeof(d.data[cm.getDataIndex(i)]) !== 'undefined') ? d[cm.getDataIndex(i)] : ''
+//                    })
                 }
                 
                 tbody.createChild(row);
