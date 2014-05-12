@@ -145,9 +145,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         if(this.store || this.cm){
             cfg.cn.push(this.renderHeaders());
+            cfg.cn.push(this.renderBody());
         }
-        
-        Roo.log(cfg);
         
         return cfg;
     },
