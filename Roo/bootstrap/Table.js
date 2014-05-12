@@ -257,7 +257,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 for(var i = 0, len = cm.getColumnCount(); i < len; i++){
                     
                     var renderer = cm.getRenderer(i);
-                    
+                    Roo.log(renderer);
                     row.cn.push({
                         tag: 'td',
                         html: (typeof(d.data[cm.getDataIndex(i)]) !== 'undefined') ? renderer() : ''
