@@ -2422,17 +2422,13 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             return;
         }
         
-        Roo.log('initEvents!!!!');
+        Roo.log('initEvents with ds!!!!');
         
-//        var tpls = this.templates || {};
+        this.store.on('load', this.onLoad, this);
+        this.store.on('beforeload', this.onBeforeLoad, this);
         
         
-//        var cm = this.cm;
-//        var colCount = cm.getColumnCount();
-//        
-//        Roo.log(colCount);
-//        
-//        var header = this.renderHeaders();
+        
         
     },
     
@@ -2473,6 +2469,16 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         };
         
         return footer;
+    },
+    
+    onLoad : function()
+    {
+        Roo.log('ds onload');
+    },
+    
+    onBeforeLoad : function()
+    {
+        Roo.log('ds onBeforeLoad');
     }
    
 });
