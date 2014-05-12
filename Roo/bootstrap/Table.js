@@ -183,6 +183,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             return;
         }
         
+        this.store.on('load', this.onLoad, this);
+        
         Roo.log('initEvents!!!!');
         
         
