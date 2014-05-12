@@ -150,31 +150,31 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         return cfg;
     },
-    
-    initTableGrid : function()
-    {
-        var cfg = {};
-        
-        var header = {
-            tag: 'thead',
-            cn : []
-        };
-        
-        var cm = this.cm;
-        
-        for(var i = 0, len = cm.getColumnCount(); i < len; i++){
-            header.cn.push({
-                tag: 'th',
-                html: cm.getColumnHeader(i)
-            })
-        }
-        
-        cfg.push(header);
-        
-        return cfg;
-        
-        
-    },
+//    
+//    initTableGrid : function()
+//    {
+//        var cfg = {};
+//        
+//        var header = {
+//            tag: 'thead',
+//            cn : []
+//        };
+//        
+//        var cm = this.cm;
+//        
+//        for(var i = 0, len = cm.getColumnCount(); i < len; i++){
+//            header.cn.push({
+//                tag: 'th',
+//                html: cm.getColumnHeader(i)
+//            })
+//        }
+//        
+//        cfg.push(header);
+//        
+//        return cfg;
+//        
+//        
+//    },
     
     initEvents : function()
     {   
@@ -198,7 +198,19 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     renderHeaders : function()
     {
+        var header = {
+            tag: 'thead',
+            cn : []
+        };
         
+        var cm = this.cm;
+        
+        for(var i = 0, len = cm.getColumnCount(); i < len; i++){
+            header.cn.push({
+                tag: 'th',
+                html: cm.getColumnHeader(i)
+            })
+        }
     }
    
 });
