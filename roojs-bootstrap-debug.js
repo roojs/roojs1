@@ -2483,7 +2483,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         Roo.log('ds onload');
         
         var cm = this.cm;
-        Roo.log(cm);
+        
         var tbody = this.el.select('tbody', true).first();
         
         if(this.store.getCount() > 0){
@@ -2494,10 +2494,13 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 };
                 
                 for(var i = 0, len = cm.getColumnCount(); i < len; i++){
-//                    row.cn.push({
-//                        tag: 'td',
-//                        html: (typeof(d.data[cm.getDataIndex(i)]) !== 'undefined') ? d[cm.getDataIndex(i)] : ''
-//                    })
+                    
+                    var renderer = cm.getRenderer();
+                    
+                    row.cn.push({
+                        tag: 'td',
+                        html: (typeof(d.data[cm.getDataIndex(i)]) !== 'undefined') ? renderer() : ''
+                    })
                 }
                 
                 tbody.createChild(row);
