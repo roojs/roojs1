@@ -142,9 +142,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             cfg.width=this.width;
         }
         
-        if(this.store || this.cm){
-            cfg.cn = this.initTableGrid();
-        }
+//        if(this.store || this.cm){
+//            cfg.cn = this.initTableGrid();
+//        }
         
         return cfg;
     },
