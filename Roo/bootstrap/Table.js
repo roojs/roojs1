@@ -285,7 +285,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             });
         }
         
-        if()
+        if(renders.length){
+            Roo.log(renders);
+        }
 //        
 //        if(this.loadMask){
 //            this.maskEl.hide();
