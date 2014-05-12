@@ -2531,7 +2531,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     getSelectionModel : function(){
         if(!this.selModel){
-            this.selModel = new Roo.grid.RowSelectionModel();
+            this.selModel = new Roo.bootstrap.Table.RowSelectionModel();
         }
         return this.selModel;
     }
