@@ -247,6 +247,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var tbody = this.el.select('tbody', true).first();
         
+        var renders = [];
+        
         if(this.store.getCount() > 0){
             this.store.data.each(function(d){
                 var row = {
@@ -258,7 +260,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     var renderer = cm.getRenderer(i);
                     var value = '';
                     var id = Roo.id();
-                    var renders = [];
                     
                     if(typeof(renderer) !== 'undefined'){
                         value = renderer(d.data[cm.getDataIndex(i)], false, d);
@@ -284,6 +285,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             });
         }
         
+        if()
 //        
 //        if(this.loadMask){
 //            this.maskEl.hide();
