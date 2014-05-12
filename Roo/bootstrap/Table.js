@@ -244,6 +244,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         Roo.log('ds onload');
         
         var cm = this.cm;
+        Roo.log(cm);
         var tbody = this.el.select('tbody', true).first();
         
         if(this.store.getCount() > 0){
