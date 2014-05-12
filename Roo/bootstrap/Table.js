@@ -81,6 +81,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
         
+        if(this.store || this.cm){
+            return this.initTableGrid();
+        }
+
         cfg = {
             tag: 'table',
             cls : 'table'
