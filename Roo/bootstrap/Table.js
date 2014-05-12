@@ -287,7 +287,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         if(renders.length){
             Roo.each(renders, function(r){
-                Roo.log(r);
+                Roo.log(Roo.get(r.id));
                 
             })
         }
