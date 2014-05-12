@@ -3232,6 +3232,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         if(typeof action == 'string'){
             action = new Roo.form.Action.ACTION_TYPES[action](this, options);
         }
+        Roo.log(action);
         if(this.fireEvent('beforeaction', this, action) !== false){
             this.beforeAction(action);
             action.run.defer(100, action);
