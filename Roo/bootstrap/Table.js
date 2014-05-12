@@ -159,7 +159,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         })
         
         var cm = this.cm;
-        var colCount = cm.getColumnCount();
+        
+        for(var i = 0, len = cm.getColumnCount(); i < len; i++){
+            
+        }
         
         
         
