@@ -243,7 +243,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         Roo.log('ds onload');
         
-        
+        var _this = this;
+        if(this.store.getCount() > 0){
+            this.store.data.each(function(d){
+                Roo.log(d);
+            });
+        }
         
         
         if(this.loadMask){
