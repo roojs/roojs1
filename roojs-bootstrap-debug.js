@@ -2500,7 +2500,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     if(typeof(renderer) !== 'undefined'){
                         value = renderer(d.data[cm.getDataIndex(i)], false, d);
                     }
-                    
+                    Roo.log(value);
                     if(typeof(value) === 'object'){
                         row.cn.push({
                             tag: 'td',
