@@ -295,6 +295,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             this.selModel = new Roo.bootstrap.Table.RowSelectionModel();
         }
         return this.selModel;
+    },
+    
+    render : function()
+    {
+        Roo.log('render');
     }
    
 });
