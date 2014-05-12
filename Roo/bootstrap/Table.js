@@ -185,15 +185,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         Roo.log('initEvents!!!!');
         
-//        var tpls = this.templates || {};
-        
-        
-//        var cm = this.cm;
-//        var colCount = cm.getColumnCount();
-//        
-//        Roo.log(colCount);
-//        
-//        var header = this.renderHeaders();
         
     },
     
