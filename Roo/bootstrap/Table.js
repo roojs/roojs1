@@ -265,7 +265,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 
                 tbody.createChild(row);
                 
-                
             });
         }
         
