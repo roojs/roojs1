@@ -260,6 +260,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     row.cn.push({
                         tag: 'td',
                         html: (typeof(renderer) !== 'undefined') ? renderer(d.data[cm.getDataIndex(i)], false, d) : (typeof(d.data[cm.getDataIndex(i)]) !== 'undefined') ? d.data[cm.getDataIndex(i)] : ''
+                        
                     })
                 }
                 
