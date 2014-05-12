@@ -267,7 +267,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                             tag: 'td'
                         }
                         
-                        value.render(td);
+                        value.render();
                         
                         row.cn.push(td);
                     }else{
