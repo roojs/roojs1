@@ -286,7 +286,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         }
         
         if(renders.length){
-            Roo.log(renders);
+            Roo.each(renders, function(r){
+                Roo.log(r);
+                
+            })
         }
 //        
 //        if(this.loadMask){
