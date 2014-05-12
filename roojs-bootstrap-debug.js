@@ -2450,6 +2450,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 html: cm.getColumnHeader(i)
             })
         }
+        
+        return header;
     }
    
 });
