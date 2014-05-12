@@ -170,6 +170,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var cm = this.cm;
         var colCount = cm.getColumnCount();
         
+        Roo.log(colCount);
+        
         var header = this.renderHeaders();
         
     },
