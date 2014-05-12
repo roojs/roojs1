@@ -173,6 +173,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var header = this.renderHeaders();
         
+//        if (!this.sm) {
+//            this.selModel = Roo.factory(this.sm, Roo.bootstrap.Table);
+//            this.sm = this.selModel;
+//            this.sm.xmodule = this.xmodule || false;
+//        }
+    
     },
     
     renderHeaders : function()
