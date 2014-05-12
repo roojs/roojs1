@@ -261,7 +261,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     clear : function()
     {
-        Roo.log(this.el);
+        Roo.log(this.el.select('tbody', true).first());
     }
    
 });
