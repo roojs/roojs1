@@ -2495,7 +2495,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 
                 for(var i = 0, len = cm.getColumnCount(); i < len; i++){
                     
-                    var renderer = cm.getRenderer();
+                    var renderer = cm.getRenderer(i);
                     
                     row.cn.push({
                         tag: 'td',
