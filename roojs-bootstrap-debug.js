@@ -2320,6 +2320,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
         
+        if(this.store || this.cm){
+            return this.initTableGrid();
+        }
+
         cfg = {
             tag: 'table',
             cls : 'table'
@@ -2381,10 +2385,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             cfg.width=this.width;
         }
         
-        if(this.store || this.cm){
-            cfg.cn = this.initTableGrid();
-        }
-        
         return cfg;
     },
     
@@ -2406,12 +2406,15 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         Roo.log('initEvents!!!!');
         
-        var cm = this.cm;
-        var colCount = cm.getColumnCount();
+        var tpls = this.templates || {};
         
-        Roo.log(colCount);
         
-        var header = this.renderHeaders();
+//        var cm = this.cm;
+//        var colCount = cm.getColumnCount();
+//        
+//        Roo.log(colCount);
+//        
+//        var header = this.renderHeaders();
         
     },
     
