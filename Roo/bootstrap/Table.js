@@ -243,14 +243,15 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         Roo.log('ds onload');
         
-        var _this = this;
+//        var _this = this;
         var tbody = this.el.select('tbody', true).first();
         if(this.store.getCount() > 0){
             this.store.data.each(function(d){
                 var row = {
                     tag : 'tr',
                     cn : []
-                }
+                };
+                
                 
                 tbody.createChild(row);
                 
