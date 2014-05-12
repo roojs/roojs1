@@ -192,18 +192,18 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             cn: [
                 {
                     tag: "div",
-                    style: "background-color:white;width:50%;margin:250 auto",
-                    cn: [
-                        {
-                            tag: "img",
-                            src: rootURL + '/roojs1/images/ux/lightbox/loading.gif'
-                        },
-                        {
-                            tag: "span",
-                            html: "Loading"
-                        }
-                        
-                    ]
+                    style: "background-color:white;width:50%;margin:250 auto"
+//                    cn: [
+//                        {
+//                            tag: "img",
+//                            src: rootURL + '/roojs1/images/ux/lightbox/loading.gif'
+//                        },
+//                        {
+//                            tag: "span",
+//                            html: "Loading"
+//                        }
+//                        
+//                    ]
                 }
             ]
         }
