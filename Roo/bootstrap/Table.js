@@ -243,8 +243,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         Roo.log('ds onload');
         
-//        var _this = this;
+        var cm = this.cm;
         var tbody = this.el.select('tbody', true).first();
+        
         if(this.store.getCount() > 0){
             this.store.data.each(function(d){
                 var row = {
@@ -252,6 +253,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     cn : []
                 };
                 
+                for(var i = 0, len = cm.getColumnCount(); i < len; i++){
+                    row.cn.push({
+                        tag: 'td',
+                        html: (typeof(d.data[cm.getDataIndex(i)]) !== 'undefined') ? d[cm.getDataIndex(i)] : ''
+                    })
+                }
                 
                 tbody.createChild(row);
                 
