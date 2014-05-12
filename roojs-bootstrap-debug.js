@@ -2502,13 +2502,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     }
                     
                     if(typeof(value) === 'object'){
-                        var td = {
+                        row.cn.push({
                             tag: 'td',
-                            cn: value.render(tbody)
-                        }
-                        
-                        
-                        row.cn.push(td);
+                            html: value
+                        })
                     }else{
                         row.cn.push({
                             tag: 'td',
