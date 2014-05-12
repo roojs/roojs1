@@ -1945,11 +1945,11 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
             e.preventDefault();
         }
         
+        this.fireEvent('click', this, e);
+        
         if (['tabs','pills'].indexOf(this.parent().type)!==-1) {
             this.onTabsClick(e);
         } 
-        
-        this.fireEvent('click', this, e);
     },
     
     onTabsClick : function(e)
