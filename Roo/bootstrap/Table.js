@@ -153,7 +153,16 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         var cfg = {};
         
+        var tpls = this.templates || {};
         
+        tpls.header = new Roo.Template(
+               '<table border="0" cellspacing="0" cellpadding="0">',
+               '<tbody><tr class="x-grid-hd-row">{cells}</tr></tbody>',
+               "</table>{splits}"
+            );
+        tpls.header.disableformats = true;
+        
+        tpls.header.compile();
 //        cfg.push({
 //            tag: 'thead',
 //            
