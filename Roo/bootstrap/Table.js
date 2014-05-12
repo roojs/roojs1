@@ -143,7 +143,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         }
         
         if(this.store || this.cm){
-            cfg.cn = this.initTableGrid();
+            cfg.cn.push(this.renderHeader());
         }
         
         Roo.log(cfg);
