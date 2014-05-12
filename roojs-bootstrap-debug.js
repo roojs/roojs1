@@ -2498,7 +2498,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     
                     row.cn.push({
                         tag: 'td',
-                        html: (typeof(d.data[cm.getDataIndex(i)]) !== 'undefined') ? renderer(d.data[cm.getDataIndex(i)]) : ''
+                        html: (typeof(d.data[cm.getDataIndex(i)]) !== 'undefined') ? renderer(d.data[cm.getDataIndex(i)], false, d) : ''
                     })
                 }
                 
