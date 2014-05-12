@@ -3234,6 +3234,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         }
         Roo.log(action);
         if(this.fireEvent('beforeaction', this, action) !== false){
+            Roo.log('in!!!');
             this.beforeAction(action);
             action.run.defer(100, action);
         }
