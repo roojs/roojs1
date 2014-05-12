@@ -1941,8 +1941,6 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
     
     onClick : function(e)
     {
-        Roo.log('Item onClick');
-        
         if(this.preventDefault){
             e.preventDefault();
         }
@@ -1956,8 +1954,6 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
     
     onTabsClick : function(e)
     {
-        Roo.log('Item onTabsClick');
-        
         Roo.each(this.parent().el.select('.active',true).elements, function(v){
             v.removeClass('active');
         })
