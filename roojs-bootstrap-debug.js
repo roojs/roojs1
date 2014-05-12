@@ -2910,7 +2910,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         Roo.log(o);
         Roo.log(this.form.isValid());
         if(o.clientValidation === false || this.form.isValid()){
-            
+            Roo.log('got here');
             if (this.form.progressUrl) {
                 this.form.findField('UPLOAD_IDENTIFIER').setValue(
                     (new Date() * 1) + '' + Math.random());
