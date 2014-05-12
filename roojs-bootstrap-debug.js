@@ -2386,6 +2386,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             cfg.cn.push(this.renderHeader());
             cfg.cn.push(this.renderBody());
             cfg.cn.push(this.renderFooter());
+            
+            cfg.cls+=  ' TableGrid';
         }
         
         return cfg;
