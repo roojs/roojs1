@@ -146,6 +146,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             cfg.cn = this.initTableGrid();
         }
         
+        Roo.log(cfg);
+        
         return cfg;
     },
     

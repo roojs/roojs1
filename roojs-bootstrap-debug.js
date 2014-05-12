@@ -2385,6 +2385,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             cfg.cn = this.initTableGrid();
         }
         
+        Roo.log(cfg);
+        
         return cfg;
     },
     
@@ -2392,22 +2394,25 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         var cfg = {};
         
-        var tpls = this.templates || {};
+        var header = {
+            tag: 'thead',
+            cn : []
+        };
         
-        tpls.header = new Roo.Template(
-               '<table border="0" cellspacing="0" cellpadding="0">',
-               '<tbody><tr class="x-grid-hd-row">{cells}</tr></tbody>',
-               "</table>{splits}"
-            );
-        tpls.header.disableformats = true;
+        var cm = this.cm;
         
-        tpls.header.compile();
+        for(var i = 0, len = cm.getColumnCount(); i < len; i++){
+            header.cn.push({
+                tag: 'th',
+                html: cm.getColumnHeader(i)
+            })
+        }
         
-        Roo.log(tpls.header);
-//        cfg.push({
-//            tag: 'thead',
-//            
-//        })
+        cfg.push(header);
+        
+        return cfg;
+        
+        
     },
     
     initEvents : function()
