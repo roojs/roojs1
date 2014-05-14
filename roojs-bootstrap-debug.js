@@ -9114,7 +9114,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         this.on('monthchange', this.onMonthChange, this);
         
-        this.update(new Date().clearTime());
+//        this.update(new Date().clearTime());
     },
     
     resize : function() {
