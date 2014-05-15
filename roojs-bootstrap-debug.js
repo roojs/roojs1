@@ -12394,6 +12394,598 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
  * Fork - LGPL
  * <script type="text/javascript">
  */
+/**
+ * @class Roo.QuickTips
+ * Provides attractive and customizable tooltips for any element.
+ * @singleton
+ */
+Roo.QuickTips = function(){
+    var el, tipBody, tipBodyText, tipTitle, tm, cfg, close, tagEls = {}, esc, removeCls = null, bdLeft, bdRight;
+    var ce, bd, xy, dd;
+    var visible = false, disabled = true, inited = false;
+    var showProc = 1, hideProc = 1, dismissProc = 1, locks = [];
+    
+    var onOver = function(e){
+        if(disabled){
+            return;
+        }
+        var t = e.getTarget();
+        if(!t || t.nodeType !== 1 || t == document || t == document.body){
+            return;
+        }
+        if(ce && t == ce.el){
+            clearTimeout(hideProc);
+            return;
+        }
+        if(t && tagEls[t.id]){
+            tagEls[t.id].el = t;
+            showProc = show.defer(tm.showDelay, tm, [tagEls[t.id]]);
+            return;
+        }
+        var ttp, et = Roo.fly(t);
+        var ns = cfg.namespace;
+        if(tm.interceptTitles && t.title){
+            ttp = t.title;
+            t.qtip = ttp;
+            t.removeAttribute("title");
+            e.preventDefault();
+        }else{
+            ttp = t.qtip || et.getAttributeNS(ns, cfg.attribute);
+        }
+        if(ttp){
+            showProc = show.defer(tm.showDelay, tm, [{
+                el: t, 
+                text: ttp, 
+                width: et.getAttributeNS(ns, cfg.width),
+                autoHide: et.getAttributeNS(ns, cfg.hide) != "user",
+                title: et.getAttributeNS(ns, cfg.title),
+           	    cls: et.getAttributeNS(ns, cfg.cls)
+            }]);
+        }
+    };
+    
+    var onOut = function(e){
+        clearTimeout(showProc);
+        var t = e.getTarget();
+        if(t && ce && ce.el == t && (tm.autoHide && ce.autoHide !== false)){
+            hideProc = setTimeout(hide, tm.hideDelay);
+        }
+    };
+    
+    var onMove = function(e){
+        if(disabled){
+            return;
+        }
+        xy = e.getXY();
+        xy[1] += 18;
+        if(tm.trackMouse && ce){
+            el.setXY(xy);
+        }
+    };
+    
+    var onDown = function(e){
+        clearTimeout(showProc);
+        clearTimeout(hideProc);
+        if(!e.within(el)){
+            if(tm.hideOnClick){
+                hide();
+                tm.disable();
+                tm.enable.defer(100, tm);
+            }
+        }
+    };
+    
+    var getPad = function(){
+        return 2;//bdLeft.getPadding('l')+bdRight.getPadding('r');
+    };
+
+    var show = function(o){
+        if(disabled){
+            return;
+        }
+        clearTimeout(dismissProc);
+        ce = o;
+        if(removeCls){ // in case manually hidden
+            el.removeClass(removeCls);
+            removeCls = null;
+        }
+        if(ce.cls){
+            el.addClass(ce.cls);
+            removeCls = ce.cls;
+        }
+        if(ce.title){
+            tipTitle.update(ce.title);
+            tipTitle.show();
+        }else{
+            tipTitle.update('');
+            tipTitle.hide();
+        }
+        el.dom.style.width  = tm.maxWidth+'px';
+        //tipBody.dom.style.width = '';
+        tipBodyText.update(o.text);
+        var p = getPad(), w = ce.width;
+        if(!w){
+            var td = tipBodyText.dom;
+            var aw = Math.max(td.offsetWidth, td.clientWidth, td.scrollWidth);
+            if(aw > tm.maxWidth){
+                w = tm.maxWidth;
+            }else if(aw < tm.minWidth){
+                w = tm.minWidth;
+            }else{
+                w = aw;
+            }
+        }
+        //tipBody.setWidth(w);
+        el.setWidth(parseInt(w, 10) + p);
+        if(ce.autoHide === false){
+            close.setDisplayed(true);
+            if(dd){
+                dd.unlock();
+            }
+        }else{
+            close.setDisplayed(false);
+            if(dd){
+                dd.lock();
+            }
+        }
+        if(xy){
+            el.avoidY = xy[1]-18;
+            el.setXY(xy);
+        }
+        if(tm.animate){
+            el.setOpacity(.1);
+            el.setStyle("visibility", "visible");
+            el.fadeIn({callback: afterShow});
+        }else{
+            afterShow();
+        }
+    };
+    
+    var afterShow = function(){
+        if(ce){
+            el.show();
+            esc.enable();
+            if(tm.autoDismiss && ce.autoHide !== false){
+                dismissProc = setTimeout(hide, tm.autoDismissDelay);
+            }
+        }
+    };
+    
+    var hide = function(noanim){
+        clearTimeout(dismissProc);
+        clearTimeout(hideProc);
+        ce = null;
+        if(el.isVisible()){
+            esc.disable();
+            if(noanim !== true && tm.animate){
+                el.fadeOut({callback: afterHide});
+            }else{
+                afterHide();
+            } 
+        }
+    };
+    
+    var afterHide = function(){
+        el.hide();
+        if(removeCls){
+            el.removeClass(removeCls);
+            removeCls = null;
+        }
+    };
+    
+    return {
+        /**
+        * @cfg {Number} minWidth
+        * The minimum width of the quick tip (defaults to 40)
+        */
+       minWidth : 40,
+        /**
+        * @cfg {Number} maxWidth
+        * The maximum width of the quick tip (defaults to 300)
+        */
+       maxWidth : 300,
+        /**
+        * @cfg {Boolean} interceptTitles
+        * True to automatically use the element's DOM title value if available (defaults to false)
+        */
+       interceptTitles : false,
+        /**
+        * @cfg {Boolean} trackMouse
+        * True to have the quick tip follow the mouse as it moves over the target element (defaults to false)
+        */
+       trackMouse : false,
+        /**
+        * @cfg {Boolean} hideOnClick
+        * True to hide the quick tip if the user clicks anywhere in the document (defaults to true)
+        */
+       hideOnClick : true,
+        /**
+        * @cfg {Number} showDelay
+        * Delay in milliseconds before the quick tip displays after the mouse enters the target element (defaults to 500)
+        */
+       showDelay : 500,
+        /**
+        * @cfg {Number} hideDelay
+        * Delay in milliseconds before the quick tip hides when autoHide = true (defaults to 200)
+        */
+       hideDelay : 200,
+        /**
+        * @cfg {Boolean} autoHide
+        * True to automatically hide the quick tip after the mouse exits the target element (defaults to true).
+        * Used in conjunction with hideDelay.
+        */
+       autoHide : true,
+        /**
+        * @cfg {Boolean}
+        * True to automatically hide the quick tip after a set period of time, regardless of the user's actions
+        * (defaults to true).  Used in conjunction with autoDismissDelay.
+        */
+       autoDismiss : true,
+        /**
+        * @cfg {Number}
+        * Delay in milliseconds before the quick tip hides when autoDismiss = true (defaults to 5000)
+        */
+       autoDismissDelay : 5000,
+       /**
+        * @cfg {Boolean} animate
+        * True to turn on fade animation. Defaults to false (ClearType/scrollbar flicker issues in IE7).
+        */
+       animate : false,
+
+       /**
+        * @cfg {String} title
+        * Title text to display (defaults to '').  This can be any valid HTML markup.
+        */
+        title: '',
+       /**
+        * @cfg {String} text
+        * Body text to display (defaults to '').  This can be any valid HTML markup.
+        */
+        text : '',
+       /**
+        * @cfg {String} cls
+        * A CSS class to apply to the base quick tip element (defaults to '').
+        */
+        cls : '',
+       /**
+        * @cfg {Number} width
+        * Width in pixels of the quick tip (defaults to auto).  Width will be ignored if it exceeds the bounds of
+        * minWidth or maxWidth.
+        */
+        width : null,
+
+    /**
+     * Initialize and enable QuickTips for first use.  This should be called once before the first attempt to access
+     * or display QuickTips in a page.
+     */
+       init : function(){
+          tm = Roo.QuickTips;
+          cfg = tm.tagConfig;
+          if(!inited){
+              if(!Roo.isReady){ // allow calling of init() before onReady
+                  Roo.onReady(Roo.QuickTips.init, Roo.QuickTips);
+                  return;
+              }
+              el = new Roo.Layer({cls:"x-tip", shadow:"drop", shim: true, constrain:true, shadowOffset:4});
+              el.fxDefaults = {stopFx: true};
+              // maximum custom styling
+              //el.update('<div class="x-tip-top-left"><div class="x-tip-top-right"><div class="x-tip-top"></div></div></div><div class="x-tip-bd-left"><div class="x-tip-bd-right"><div class="x-tip-bd"><div class="x-tip-close"></div><h3></h3><div class="x-tip-bd-inner"></div><div class="x-clear"></div></div></div></div><div class="x-tip-ft-left"><div class="x-tip-ft-right"><div class="x-tip-ft"></div></div></div>');
+              el.update('<div class="x-tip-bd"><div class="x-tip-close"></div><h3></h3><div class="x-tip-bd-inner"></div><div class="x-clear"></div></div>');              
+              tipTitle = el.child('h3');
+              tipTitle.enableDisplayMode("block");
+              tipBody = el.child('div.x-tip-bd');
+              tipBodyText = el.child('div.x-tip-bd-inner');
+              //bdLeft = el.child('div.x-tip-bd-left');
+              //bdRight = el.child('div.x-tip-bd-right');
+              close = el.child('div.x-tip-close');
+              close.enableDisplayMode("block");
+              close.on("click", hide);
+              var d = Roo.get(document);
+              d.on("mousedown", onDown);
+              d.on("mouseover", onOver);
+              d.on("mouseout", onOut);
+              d.on("mousemove", onMove);
+              esc = d.addKeyListener(27, hide);
+              esc.disable();
+              if(Roo.dd.DD){
+                  dd = el.initDD("default", null, {
+                      onDrag : function(){
+                          el.sync();  
+                      }
+                  });
+                  dd.setHandleElId(tipTitle.id);
+                  dd.lock();
+              }
+              inited = true;
+          }
+          this.enable(); 
+       },
+
+    /**
+     * Configures a new quick tip instance and assigns it to a target element.  The following config options
+     * are supported:
+     * <pre>
+Property    Type                   Description
+----------  ---------------------  ------------------------------------------------------------------------
+target      Element/String/Array   An Element, id or array of ids that this quick tip should be tied to
+     * </ul>
+     * @param {Object} config The config object
+     */
+       register : function(config){
+           var cs = config instanceof Array ? config : arguments;
+           for(var i = 0, len = cs.length; i < len; i++) {
+               var c = cs[i];
+               var target = c.target;
+               if(target){
+                   if(target instanceof Array){
+                       for(var j = 0, jlen = target.length; j < jlen; j++){
+                           tagEls[target[j]] = c;
+                       }
+                   }else{
+                       tagEls[typeof target == 'string' ? target : Roo.id(target)] = c;
+                   }
+               }
+           }
+       },
+
+    /**
+     * Removes this quick tip from its element and destroys it.
+     * @param {String/HTMLElement/Element} el The element from which the quick tip is to be removed.
+     */
+       unregister : function(el){
+           delete tagEls[Roo.id(el)];
+       },
+
+    /**
+     * Enable this quick tip.
+     */
+       enable : function(){
+           if(inited && disabled){
+               locks.pop();
+               if(locks.length < 1){
+                   disabled = false;
+               }
+           }
+       },
+
+    /**
+     * Disable this quick tip.
+     */
+       disable : function(){
+          disabled = true;
+          clearTimeout(showProc);
+          clearTimeout(hideProc);
+          clearTimeout(dismissProc);
+          if(ce){
+              hide(true);
+          }
+          locks.push(1);
+       },
+
+    /**
+     * Returns true if the quick tip is enabled, else false.
+     */
+       isEnabled : function(){
+            return !disabled;
+       },
+
+        // private
+       tagConfig : {
+           namespace : "ext",
+           attribute : "qtip",
+           width : "width",
+           target : "target",
+           title : "qtitle",
+           hide : "hide",
+           cls : "qclass"
+       }
+   };
+}();
+
+// backwards compat
+Roo.QuickTips.tips = Roo.QuickTips.register;/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.bootstrap.SplitButton
+ * @extends Roo.bootstrap.Button
+ * A split button that provides a built-in dropdown arrow that can fire an event separately from the default
+ * click event of the button.  Typically this would be used to display a dropdown menu that provides additional
+ * options to the primary button action, but any custom handler can provide the arrowclick implementation.
+ * @cfg {Function} arrowHandler A function called when the arrow button is clicked (can be used instead of click event)
+ * @cfg {String} arrowTooltip The title attribute of the arrow
+ * @constructor
+ * Create a new menu button
+ * @param {String/HTMLElement/Element} renderTo The element to append the button to
+ * @param {Object} config The config object
+ */
+Roo.bootstrap.SplitButton = function(renderTo, config){
+    Roo.bootstrap.SplitButton.superclass.constructor.call(this, renderTo, config);
+    /**
+     * @event arrowclick
+     * Fires when this button's arrow is clicked
+     * @param {SplitButton} this
+     * @param {EventObject} e The click event
+     */
+    this.addEvents({"arrowclick":true});
+};
+
+Roo.extend(Roo.bootstrap.SplitButton, Roo.bootstrap.Button, {
+    render : function(renderTo){
+        // this is one sweet looking template!
+        var tpl = new Roo.Template(
+            '<table cellspacing="0" class="x-btn-menu-wrap x-btn"><tr><td>',
+            '<table cellspacing="0" class="x-btn-wrap x-btn-menu-text-wrap"><tbody>',
+            '<tr><td class="x-btn-left"><i>&#160;</i></td><td class="x-btn-center"><button class="x-btn-text" type="{1}">{0}</button></td></tr>',
+            "</tbody></table></td><td>",
+            '<table cellspacing="0" class="x-btn-wrap x-btn-menu-arrow-wrap"><tbody>',
+            '<tr><td class="x-btn-center"><button class="x-btn-menu-arrow-el" type="button">&#160;</button></td><td class="x-btn-right"><i>&#160;</i></td></tr>',
+            "</tbody></table></td></tr></table>"
+        );
+        var btn = tpl.append(renderTo, [this.text, this.type], true);
+        var btnEl = btn.child("button");
+        if(this.cls){
+            btn.addClass(this.cls);
+        }
+        if(this.icon){
+            btnEl.setStyle('background-image', 'url(' +this.icon +')');
+        }
+        if(this.iconCls){
+            btnEl.addClass(this.iconCls);
+            if(!this.cls){
+                btn.addClass(this.text ? 'x-btn-text-icon' : 'x-btn-icon');
+            }
+        }
+        this.el = btn;
+        if(this.handleMouseEvents){
+            btn.on("mouseover", this.onMouseOver, this);
+            btn.on("mouseout", this.onMouseOut, this);
+            btn.on("mousedown", this.onMouseDown, this);
+            btn.on("mouseup", this.onMouseUp, this);
+        }
+        btn.on(this.clickEvent, this.onClick, this);
+        if(this.tooltip){
+            if(typeof this.tooltip == 'object'){
+                Roo.QuickTips.tips(Roo.apply({
+                      target: btnEl.id
+                }, this.tooltip));
+            } else {
+                btnEl.dom[this.tooltipType] = this.tooltip;
+            }
+        }
+        if(this.arrowTooltip){
+            btn.child("button:nth(2)").dom[this.tooltipType] = this.arrowTooltip;
+        }
+        if(this.hidden){
+            this.hide();
+        }
+        if(this.disabled){
+            this.disable();
+        }
+        if(this.pressed){
+            this.el.addClass("x-btn-pressed");
+        }
+        if(Roo.isIE && !Roo.isIE7){
+            this.autoWidth.defer(1, this);
+        }else{
+            this.autoWidth();
+        }
+        if(this.menu){
+            this.menu.on("show", this.onMenuShow, this);
+            this.menu.on("hide", this.onMenuHide, this);
+        }
+        this.fireEvent('render', this);
+    },
+
+    // private
+    autoWidth : function(){
+        if(this.el){
+            var tbl = this.el.child("table:first");
+            var tbl2 = this.el.child("table:last");
+            this.el.setWidth("auto");
+            tbl.setWidth("auto");
+            if(Roo.isIE7 && Roo.isStrict){
+                var ib = this.el.child('button:first');
+                if(ib && ib.getWidth() > 20){
+                    ib.clip();
+                    ib.setWidth(Roo.util.TextMetrics.measure(ib, this.text).width+ib.getFrameWidth('lr'));
+                }
+            }
+            if(this.minWidth){
+                if(this.hidden){
+                    this.el.beginMeasure();
+                }
+                if((tbl.getWidth()+tbl2.getWidth()) < this.minWidth){
+                    tbl.setWidth(this.minWidth-tbl2.getWidth());
+                }
+                if(this.hidden){
+                    this.el.endMeasure();
+                }
+            }
+            this.el.setWidth(tbl.getWidth()+tbl2.getWidth());
+        } 
+    },
+    /**
+     * Sets this button's click handler
+     * @param {Function} handler The function to call when the button is clicked
+     * @param {Object} scope (optional) Scope for the function passed above
+     */
+    setHandler : function(handler, scope){
+        this.handler = handler;
+        this.scope = scope;  
+    },
+    
+    /**
+     * Sets this button's arrow click handler
+     * @param {Function} handler The function to call when the arrow is clicked
+     * @param {Object} scope (optional) Scope for the function passed above
+     */
+    setArrowHandler : function(handler, scope){
+        this.arrowHandler = handler;
+        this.scope = scope;  
+    },
+    
+    /**
+     * Focus the button
+     */
+    focus : function(){
+        if(this.el){
+            this.el.child("button:first").focus();
+        }
+    },
+
+    // private
+    onClick : function(e){
+        e.preventDefault();
+        if(!this.disabled){
+            if(e.getTarget(".x-btn-menu-arrow-wrap")){
+                if(this.menu && !this.menu.isVisible()){
+                    this.menu.show(this.el, this.menuAlign);
+                }
+                this.fireEvent("arrowclick", this, e);
+                if(this.arrowHandler){
+                    this.arrowHandler.call(this.scope || this, this, e);
+                }
+            }else{
+                this.fireEvent("click", this, e);
+                if(this.handler){
+                    this.handler.call(this.scope || this, this, e);
+                }
+            }
+        }
+    },
+    // private
+    onMouseDown : function(e){
+        if(!this.disabled){
+            Roo.fly(e.getTarget("table")).addClass("x-btn-click");
+        }
+    },
+    // private
+    onMouseUp : function(e){
+        Roo.fly(e.getTarget("table")).removeClass("x-btn-click");
+    }   
+});
+
+
+// backwards compat
+Roo.bootstrap.MenuButton = Roo.bootstrap.SplitButton;/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
 
 /**
  * @class Roo.bootstrap.Toolbar
