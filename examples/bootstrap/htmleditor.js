@@ -1,4 +1,4 @@
-
+var htmleditor;
 
 Roo.example = Roo.example || {};
 
@@ -46,7 +46,12 @@ Roo.example.calendar = new Roo.XComponent({
                                             xtype: 'HtmlEditor',
                                             xns: Roo.bootstrap,
                                             fieldLabel : "Editor",
-                                            name : "editor"
+                                            name : "editor",
+                                            listeners : {
+                                                render : function() {
+                                                    htmleditor = this;
+                                                }
+                                            }
                                             
                                         }
                                     ]
