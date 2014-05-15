@@ -185,7 +185,19 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
                  {
                     xtype: 'Button',
                     xns: Roo.bootstrap,
-                    glyphicon : 'underline'
+                    glyphicon : 'align-left'
+                    //html : 'submit'
+                 },
+                 {
+                    xtype: 'Button',
+                    xns: Roo.bootstrap,
+                    glyphicon : 'align-center'
+                    //html : 'submit'
+                 },
+                 {
+                    xtype: 'Button',
+                    xns: Roo.bootstrap,
+                    glyphicon : 'align-right'
                     //html : 'submit'
                  }
             ]
