@@ -141,9 +141,11 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
     iframePad:3,
     hideMode:'offsets',
     
-     
+    
+    tbContainer : false,
+    
     toobarContainer :function() {
-        return this.wrap;
+        return this.wrap.select('.x-html-editor-tb').first();
     },
 
     /**
