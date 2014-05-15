@@ -23,7 +23,7 @@ Roo.bootstrap.HtmlEditor = function(config){
 
 Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Input,  {
     
-    getAutoCreate : function()
+   /* getAutoCreate : function()
     {
 //        var cfg = {};
 //        
@@ -41,4 +41,5 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Input,  {
 //        return cfg;
         
     }
+    */
 });
