@@ -169,9 +169,12 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
 
      
     // private
-    initEvents : function(ct, position)
+    onRender : function(ct, position)
     {
+       // Roo.log("Call onRender: " + this.xtype);
         
+        Roo.bootstrap.HtmlEditor.superclass.onRender.call(this, ct, position);
+      
         this.wrap = this.el.wrap({
             cls:'x-html-editor-wrap', cn:{cls:'x-html-editor-tb'}
         });
