@@ -154,10 +154,10 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
      * add custom toolbar buttons.
      * @param {HtmlEditor} editor
      */
-    createToolbar : function(editor){
+    createToolbar : function(){
         
-        editor.toolbars = [ new Roo.bootstrap.HtmlEditor.ToolbarStandard({editor: this} ) ];
-        editor.toolbars[0].render(this.toolbarContainer());
+        this.toolbars = [ new Roo.bootstrap.HtmlEditor.ToolbarStandard({editor: this} ) ];
+        this.toolbars[0].render(this.toolbarContainer());
          
         Roo.log("create toolbars");
         return;
