@@ -145,7 +145,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
     tbContainer : false,
     
     toobarContainer :function() {
-        return this.wrap.select('.x-html-editor-tb').first();
+        return this.wrap.select('.x-html-editor-tb',true).first();
     },
 
     /**
