@@ -239,13 +239,14 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
             }
             if(typeof h == 'number'){
                 var tbh = 0;
-                for (var i =0; i < this.toolbars.length;i++) {
+                /*for (var i =0; i < this.toolbars.length;i++) {
                     // fixme - ask toolbars for heights?
                     tbh += this.toolbars[i].tb.el.getHeight();
                     if (this.toolbars[i].footer) {
                         tbh += this.toolbars[i].footer.el.getHeight();
                     }
                 }
+                */
                 
                 
                 
