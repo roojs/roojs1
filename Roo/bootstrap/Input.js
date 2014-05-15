@@ -329,6 +329,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         if (this.parentType === 'Navbar' && !this.parent().bar) {
            cfg.cls += ' navbar-form';
+           Roo.log(cfg);
         }
         
         return cfg;
