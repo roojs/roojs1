@@ -200,22 +200,16 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
                     ]
                 },
                 {
-                    
-                    xtype: 'Form',
-                    xns: Roo.bootstrap,
-                    items : [
-                        {
-                            xtype: 'Input',
-                            xns: Roo.bootstrap,
-                            name : 'testinput'
-                        },{
-                        
-                            xtype: 'Button',
-                            xns: Roo.bootstrap,
-                            html : 'submit'
-                        }
-                    ]
-                }
+                     xtype: 'Input',
+                     xns: Roo.bootstrap,
+                     name : 'testinput'
+                 },{
+                 
+                     xtype: 'Button',
+                     xns: Roo.bootstrap,
+                     html : 'submit'
+                 }
+
             ]
             
             
