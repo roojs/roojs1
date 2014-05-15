@@ -122,9 +122,9 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         if (this.theme==='default') {
             cfg.cls = 'btn roo-button';
             
-            if (this.parentType != 'Navbar') {
-                this.weight = this.weight.length ?  this.weight : 'default';
-            }
+            //if (this.parentType != 'Navbar') {
+            this.weight = this.weight.length ?  this.weight : 'default';
+            //}
             if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
                 
                 cfg.cls += ' btn-' + this.weight;
