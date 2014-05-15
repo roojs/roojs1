@@ -154,14 +154,14 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
         Roo.log("create toolbars");
         return;
         if (!editor.toolbars || !editor.toolbars.length) {
-            editor.toolbars = [ new Roo.form.HtmlEditor.ToolbarStandard() ]; // can be empty?
+            editor.toolbars = [ new Roo.bootstrap.HtmlEditor.ToolbarStandard() ]; // can be empty?
         }
         
         for (var i =0 ; i < editor.toolbars.length;i++) {
             editor.toolbars[i] = Roo.factory(
                     typeof(editor.toolbars[i]) == 'string' ?
                         { xtype: editor.toolbars[i]} : editor.toolbars[i],
-                Roo.form.HtmlEditor);
+                Roo.bootstrap.HtmlEditor);
             editor.toolbars[i].init(editor);
         }
          
@@ -219,7 +219,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
     onResize : function(w, h)
     {
         //Roo.log('resize: ' +w + ',' + h );
-        Roo.form.HtmlEditor.superclass.onResize.apply(this, arguments);
+        Roo.bootstrap.HtmlEditor.superclass.onResize.apply(this, arguments);
         var ew = false;
         var eh = false;
         
@@ -315,7 +315,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
     clearInvalid : Roo.emptyFn,
 
     setValue : function(v){
-        Roo.form.HtmlEditor.superclass.setValue.call(this, v);
+        Roo.bootstrap.HtmlEditor.superclass.setValue.call(this, v);
         this.editorcore.pushValue();
     },
 
