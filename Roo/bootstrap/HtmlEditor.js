@@ -224,7 +224,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
                     glyphicon : 'cog'
                     //html : 'submit'
                  }
-            ]
+         
             ]
             
             
