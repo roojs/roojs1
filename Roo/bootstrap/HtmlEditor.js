@@ -157,6 +157,64 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
         
         this.addxtypeChild({
             
+        
+            xtype: 'Navbar',
+            xns: Roo.bootstrap,
+            bar: true,
+            items : [
+                {
+                    xtype: 'NavGroup',
+                    xns: Roo.bootstrap,
+                    items : [
+                        {
+                            xtype: 'Item',
+                            xns: Roo.bootstrap.Navbar,
+                            html: "nav",
+                            href : 'http://roojs.com',
+                            
+                            menu:    {
+                                xtype: 'Menu',
+                                xns: Roo.bootstrap,
+                                items : [
+                                    {
+                                        xtype: 'MenuItem',
+                                        xns: Roo.bootstrap,
+                                        html: "hello",
+                                        href : 'http://roojs.com'
+                                    },
+                                    {
+                                        xtype: 'MenuSeparator',
+                                        xns: Roo.bootstrap,
+                                    },
+                                    {
+                                        xtype: 'MenuItem',
+                                        xns: Roo.bootstrap,
+                                        html: "hello",
+                                        href: 'http://roojs.com'
+                                    }   
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    
+                    xtype: 'Form',
+                    xns: Roo.bootstrap,
+                    items : [
+                        {
+                            xtype: 'Input',
+                            xns: Roo.bootstrap,
+                            name : 'testinput'
+                        },{
+                        
+                            xtype: 'Button',
+                            xns: Roo.bootstrap,
+                            html : 'submit'
+                        }
+                    ]
+                }
+            ]
             
             
         }, 'toolbarContainer')
