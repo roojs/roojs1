@@ -161,18 +161,33 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
             
         
             xtype: 'Navbar',
-            xns: Roo.bootstrap,
+             xns: Roo.bootstrap,
             bar: true,
             items : [
-               
                 {
-                 
                     xtype: 'Button',
                     xns: Roo.bootstrap,
                     glyphicon : 'bold'
                     //html : 'submit'
+                 },
+                {
+                    xtype: 'Button',
+                    xns: Roo.bootstrap,
+                    glyphicon : 'italic'
+                    //html : 'submit'
+                 },
+                 {
+                    xtype: 'Button',
+                    xns: Roo.bootstrap,
+                    glyphicon : 'italic'
+                    //html : 'submit'
+                 },
+                 {
+                    xtype: 'Button',
+                    xns: Roo.bootstrap,
+                    glyphicon : 'underline'
+                    //html : 'submit'
                  }
-
             ]
             
             
