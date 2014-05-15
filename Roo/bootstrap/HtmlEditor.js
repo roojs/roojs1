@@ -27,56 +27,7 @@ Roo.bootstrap.HtmlEditor = function(config){
 
 Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
     
-   /* getAutoCreate : function()
-    {
-//        var cfg = {};
-//        
-//        var toolbar = new Roo.bootstrap.ButtonGroup({
-//            toolbar: true,
-//            cn: [
-//                {
-//                    new Roo.bootstrap.Button({
-//                        
-//                    })
-//                }
-//            ]
-//        });
-//        
-//        return cfg;
-        
-    }
-    */
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   //<script type="text/javascript">
-
-/*
- * Ext JS Library 1.1.1
- * Copyright(c) 2006-2007, Ext JS, LLC.
- * Licence LGPL
- * 
- */
-  
-/**
- * @class Roo.form.HtmlEditor
- * @extends Roo.form.Field
- * Provides a lightweight HTML Editor component.
- *
- * This has been tested on Fireforx / Chrome.. IE may not be so great..
- * 
- * <br><br><b>Note: The focus/blur and validation marking functionality inherited from Ext.form.Field is NOT
- * supported by this editor.</b><br/><br/>
- * An Editor is a sensitive component that can't be used in all spots standard fields can be used. Putting an Editor within
- * any element that has display set to 'none' can cause problems in Safari and Firefox.<br/><br/>
- */
-Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
+    
       /**
      * @cfg {Array} toolbars Array of toolbars. - defaults to just the Standard one
      */
@@ -115,12 +66,8 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
     iframePad:3,
     hideMode:'offsets',
     
-    defaultAutoCreate : { // modified by initCompnoent..
-        tag: "textarea",
-        style:"width:500px;height:300px;",
-        autocomplete: "off"
-    },
-
+     
+   
     // private
     initComponent : function(){
         this.addEvents({
