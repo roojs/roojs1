@@ -314,7 +314,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         */
         if(this.pageSize){
+            Roo.log('create footer');
             this.footer = this.list.createChild({cls:cls+'-ft'});
+            Roo.log(this.footer);
             this.pageTb = new Roo.bootstrap.PagingToolbar(this.footer, this.store,
                     {pageSize: this.pageSize});
             
