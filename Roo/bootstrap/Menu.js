@@ -35,14 +35,14 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     
     getAutoCreate : function(){
 	 
-	//if (['right'].indexOf(this.align)!==-1) {
-	//    cfg.cn[1].cls += ' pull-right'
-	//}
-	var cfg = {
-	    tag : 'ul',
-	    cls : 'dropdown-menu' 
-	    
-	}
+        //if (['right'].indexOf(this.align)!==-1) {
+        //    cfg.cn[1].cls += ' pull-right'
+        //}
+        var cfg = {
+            tag : 'ul',
+            cls : 'dropdown-menu' 
+            
+        }
 	
 	if (this.type==='submenu') {
 	    cfg.cls='submenu active'
