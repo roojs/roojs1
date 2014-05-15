@@ -199,11 +199,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
                         }
                     ]
                 },
-                {
-                     xtype: 'Input',
-                     xns: Roo.bootstrap,
-                     name : 'testinput'
-                 },{
+                 {
                  
                      xtype: 'Button',
                      xns: Roo.bootstrap,
