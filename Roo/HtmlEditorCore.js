@@ -237,7 +237,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     // private
     onResize : function(w, h)
     {
-        //Roo.log('resize: ' +w + ',' + h );
+         Roo.log('resize: ' +w + ',' + h );
         //Roo.HtmlEditorCore.superclass.onResize.apply(this, arguments);
         if(!this.iframe){
             return;
