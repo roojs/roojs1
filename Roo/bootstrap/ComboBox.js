@@ -307,12 +307,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.innerList.on('mousemove', this.onViewMove, this);
         this.innerList.setWidth(lw - this.list.getFrameWidth('lr'));
         
+        */
         if(this.allowBlank && !this.pageSize && !this.disableClear){
             this.footer = this.list.createChild({cls:cls+'-ft'});
-            this.pageTb = new Roo.Toolbar(this.footer);
+            this.pageTb = new Roo.bootstrap.Toolbar(this.footer);
            
         }
-        */
+        
         if(this.pageSize){
             Roo.log('create footer');
             this.footer = this.list.createChild({cls:cls+'-ft'});
