@@ -316,7 +316,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
 
         } else {
             
-                   Roo.log(" no label && no align");
+                Roo.log(" no label && no align");
                 cfg.cn = [
                     
                         inputblock
@@ -325,6 +325,12 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 
                 
         };
+        Roo.log('input-parentType: ' + this.parentType);
+        
+        if (this.parentType === 'Navbar' &&  this.parent().bar) {
+           cfg.cls += ' navbar-form';
+           Roo.log(cfg);
+        }
         
         return cfg;
         
@@ -710,6 +716,27 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             this.setValue( event.shiftKey ?  cc : cc.toLowerCase());
             
         }
+    },
+    adjustWidth : function(tag, w){
+        tag = tag.toLowerCase();
+        if(typeof w == 'number' && Roo.isStrict && !Roo.isSafari){
+            if(Roo.isIE && (tag == 'input' || tag == 'textarea')){
+                if(tag == 'input'){
+                    return w + 2;
+                }
+                if(tag == 'textarea'){
+                    return w-2;
+                }
+            }else if(Roo.isOpera){
+                if(tag == 'input'){
+                    return w + 2;
+                }
+                if(tag == 'textarea'){
+                    return w-2;
+                }
+            }
+        }
+        return w;
     }
     
 });
