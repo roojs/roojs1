@@ -190,6 +190,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         var iframe = this.owner.wrap.createChild({
             tag: 'iframe',
+            cls: 'form-control', // bootstrap..
             id: this.frameId,
             name: this.frameId,
             frameBorder : 'no',
