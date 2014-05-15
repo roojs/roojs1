@@ -176,7 +176,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
         
         Roo.bootstrap.HtmlEditor.superclass.onRender.call(this, ct, position);
       
-        this.wrap = this.el.wrap({
+        this.wrap = this.inputEl().wrap({
             cls:'x-html-editor-wrap', cn:{cls:'x-html-editor-tb'}
         });
         
@@ -223,10 +223,10 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
         var ew = false;
         var eh = false;
         
-        if(this.el ){
+        if(this.inputEl() ){
             if(typeof w == 'number'){
                 var aw = w - this.wrap.getFrameWidth('lr');
-                this.el.setWidth(this.adjustWidth('textarea', aw));
+                this.inputEl().setWidth(this.adjustWidth('textarea', aw));
                 ew = aw;
             }
             if(typeof h == 'number'){
@@ -244,7 +244,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
                 
                 var ah = h - this.wrap.getFrameWidth('tb') - tbh;// this.tb.el.getHeight();
                 ah -= 5; // knock a few pixes off for look..
-                this.el.setHeight(this.adjustWidth('textarea', ah));
+                this.inputEl().setHeight(this.adjustWidth('textarea', ah));
                 var eh = ah;
             }
         }
@@ -267,17 +267,17 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
 //            Roo.log('in');
 //            Roo.log(this.syncValue());
             this.editorcore.syncValue();
-            this.el.removeClass('x-hidden');
-            this.el.dom.removeAttribute('tabIndex');
-            this.el.focus();
+            this.inputEl().removeClass('x-hidden');
+            this.inputEl().dom.removeAttribute('tabIndex');
+            this.inputEl().focus();
         }else{
             Roo.log('editor - hiding textarea');
 //            Roo.log('out')
 //            Roo.log(this.pushValue()); 
             this.editorcore.pushValue();
             
-            this.el.addClass('x-hidden');
-            this.el.dom.setAttribute('tabIndex', -1);
+            this.inputEl().addClass('x-hidden');
+            this.inputEl().dom.setAttribute('tabIndex', -1);
             //this.deferFocus();
         }
          
