@@ -203,7 +203,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
                  
                      xtype: 'Button',
                      xns: Roo.bootstrap,
-                     weight: 'default',
+                    
                      html : 'submit'
                  }
 
