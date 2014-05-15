@@ -7378,6 +7378,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             Roo.log(this.footer);
             this.pageTb = new Roo.bootstrap.PagingToolbar(this.footer, this.store,
                     {pageSize: this.pageSize});
+                    
+            Roo.log(this.pageTb);
             
         }
         
