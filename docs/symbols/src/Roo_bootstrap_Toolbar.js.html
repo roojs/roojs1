@@ -1,22 +1,22 @@
-<html><head><title>../roojs1/Roo/bootstrap/Toolbar.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty">
-<span class="jsdoc-comment">/*
- * - LGPL
+<html><head><title>../roojs1/Roo/bootstrap/Toolbar.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
  *
- * Toolbar
- * 
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
  */
 
 /**
  * @class Roo.bootstrap.Toolbar
- * 
- * Bootstrap Toolbar class
-
+ * Basic Toolbar class.
  * @constructor
- * Create a new Toolbar
- * @param {Object} config The config object
- */
-
-</span><span class="jsdoc-var">Roo.bootstrap.Toolbar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">buttons</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">)
+ * Creates a new Toolbar
+ * @param {Object} container The config object
+ */ 
+</span><span class="jsdoc-var">Roo.bootstarp.Toolbar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">buttons</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">)
 {
     </span><span class="jsdoc-comment">/// old consturctor format still supported..
     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">container </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Array</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// omit the container for later rendering
@@ -47,7 +47,7 @@
     
 };
 
-</span><span class="jsdoc-var">Roo.bootstrap.Toolbar.prototype </span><span class="jsdoc-syntax">= {
+</span><span class="jsdoc-var">Roo.bootstarp.Toolbar.prototype </span><span class="jsdoc-syntax">= {
     </span><span class="jsdoc-comment">/**
      * @cfg {Array} items
      * array of button configs or elements to add (will be converted to a MixedCollection)
@@ -82,11 +82,11 @@
      * arguments of mixed type and adds them to the toolbar.
      * @param {Mixed} arg1 The following types of arguments are all valid:&lt;br /&gt;
      * &lt;ul&gt;
-     * &lt;li&gt;{@link Roo.Toolbar.Button} config: A valid button config object (equivalent to {@link #addButton})&lt;/li&gt;
+     * &lt;li&gt;{@link Roo.bootstrap.Toolbar.Button} config: A valid button config object (equivalent to {@link #addButton})&lt;/li&gt;
      * &lt;li&gt;HtmlElement: Any standard HTML element (equivalent to {@link #addElement})&lt;/li&gt;
      * &lt;li&gt;Field: Any form field (equivalent to {@link #addField})&lt;/li&gt;
-     * &lt;li&gt;Item: Any subclass of {@link Roo.Toolbar.Item} (equivalent to {@link #addItem})&lt;/li&gt;
-     * &lt;li&gt;String: Any generic string (gets wrapped in a {@link Roo.Toolbar.TextItem}, equivalent to {@link #addText}).
+     * &lt;li&gt;Item: Any subclass of {@link Roo.bootstrap.Toolbar.Item} (equivalent to {@link #addItem})&lt;/li&gt;
+     * &lt;li&gt;String: Any generic string (gets wrapped in a {@link Roo.bootstrap.Toolbar.TextItem}, equivalent to {@link #addText}).
      * Note that there are a few special strings that are treated differently as explained nRoo.&lt;/li&gt;
      * &lt;li&gt;'separator' or '-': Creates a separator element (equivalent to {@link #addSeparator})&lt;/li&gt;
      * &lt;li&gt;' ': Creates a spacer element (equivalent to {@link #addSpacer})&lt;/li&gt;
@@ -105,7 +105,7 @@
     </span><span class="jsdoc-var">_add </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">) {
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.xtype</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Toolbar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">el.xtype</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.bootstrap </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.Toolbar</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Toolbar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">el.xtype</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.bootstrap.form </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.bootstrap.Toolbar</span><span class="jsdoc-syntax">);
         }
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.applyTo</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// some kind of form field
@@ -149,7 +149,7 @@
     
     </span><span class="jsdoc-comment">/**
      * Returns the Element for this toolbar.
-     * @return {Roo.Element}
+     * @return {Roo.bootstrap.Element}
      */
     </span><span class="jsdoc-var">getEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;  
@@ -219,7 +219,7 @@
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">buttons</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!(</span><span class="jsdoc-var">config </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Roo.Toolbar.Button</span><span class="jsdoc-syntax">)){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!(</span><span class="jsdoc-var">config </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Button</span><span class="jsdoc-syntax">)){
             </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.split </span><span class="jsdoc-syntax">?
                 </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.Toolbar.SplitButton</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">) :
                 </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Button</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
@@ -240,7 +240,7 @@
     },
     
     </span><span class="jsdoc-comment">/**
-     * Inserts any {@link Roo.Toolbar.Item}/{@link Roo.bootstrap.Toolbar.Button} at the specified index.
+     * Inserts any {@link Roo.Toolbar.Item}/{@link Roo.Toolbar.Button} at the specified index.
      * @param {Number} index The index where the item is to be inserted
      * @param {Object/Roo.bootstrap.Toolbar.Item/Roo.bootstrap.Toolbar.Button (may be Array)} item The button, or button config object to be inserted.
      * @return {Roo.bootstrap.Toolbar.Button/Item}
@@ -287,7 +287,7 @@
      * Adds a dynamically rendered Roo.form field (TextField, ComboBox, etc).
      * Note: the field should not have been rendered yet. For a field that has already been
      * rendered, use {@link #addElement}.
-     * @param {Roo.bootstrap.Input} field
+     * @param {Roo.bootstrap.form.Field} field
      * @return {Roo.bootstrap.ToolbarItem}
      */
      
@@ -467,7 +467,7 @@
 </span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Spacer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">);
     </span><span class="jsdoc-var">s.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;ytb-spacer&quot;</span><span class="jsdoc-syntax">;
-    </span><span class="jsdoc-var">Roo.Toolbar.Spacer.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Spacer.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">);
 };
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Spacer</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Item</span><span class="jsdoc-syntax">, {
     </span><span class="jsdoc-var">enable</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">Roo.emptyFn</span><span class="jsdoc-syntax">,
@@ -515,11 +515,11 @@
 
 </span><span class="jsdoc-comment">/**
  * @class Roo.bootstrap.Toolbar.Button
- * @extends Roo.bootstrap.Button
+ * @extends Roo.Button
  * A button that renders into a toolbar.
  * @constructor
  * Creates a new Button
- * @param {Object} config A standard {@link Roo.bootstrap.Button} config object
+ * @param {Object} config A standard {@link Roo.Button} config object
  */
 </span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Button </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Button.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);

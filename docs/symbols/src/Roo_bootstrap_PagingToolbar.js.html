@@ -1,0 +1,308 @@
+<html><head><title>../roojs1/Roo/bootstrap/PagingToolbar.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+ 
+/**
+ * @class Roo.bootstrap.PagingToolbar
+ * @extends Roo.bootstrap.Toolbar
+ * A specialized toolbar that is bound to a {@link Roo.data.Store} and provides automatic paging controls.
+ * @constructor
+ * Create a new PagingToolbar
+ * @param {Object} config The config object
+ */
+</span><span class="jsdoc-var">Roo.bootstrap.PagingToolbar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">)
+{
+    </span><span class="jsdoc-comment">// old args format still supported... - xtype is prefered..
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'object' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">el.xtype</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-comment">// created from xtype...
+        </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">ds </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.dataSource</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.container</span><span class="jsdoc-syntax">;
+    }
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">= [];
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.items</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.items</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">config.items </span><span class="jsdoc-syntax">= [];
+    }
+    
+    </span><span class="jsdoc-var">Roo.bootstrap.PagingToolbar.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.ds </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.cursor </span><span class="jsdoc-syntax">= 0;
+    </span><span class="jsdoc-var">this.renderButtons</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.bind</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">);
+    
+    </span><span class="jsdoc-comment">// supprot items array.
+   
+    </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">items</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">));
+    },</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.PagingToolbar</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Toolbar</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Roo.data.Store} dataSource
+     * The underlying data store providing the paged data
+     */
+    /**
+     * @cfg {String/HTMLElement/Element} container
+     * container The id or element that will contain the toolbar
+     */
+    /**
+     * @cfg {Boolean} displayInfo
+     * True to display the displayMsg (defaults to false)
+     */
+    /**
+     * @cfg {Number} pageSize
+     * The number of records to display per page (defaults to 20)
+     */
+    </span><span class="jsdoc-var">pageSize</span><span class="jsdoc-syntax">: 20,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} displayMsg
+     * The paging status message to display (defaults to &quot;Displaying {start} - {end} of {total}&quot;)
+     */
+    </span><span class="jsdoc-var">displayMsg </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Displaying {0} - {1} of {2}'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} emptyMsg
+     * The message to display when no records are found (defaults to &quot;No data to display&quot;)
+     */
+    </span><span class="jsdoc-var">emptyMsg </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'No data to display'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * Customizable piece of the default paging text (defaults to &quot;Page&quot;)
+     * @type String
+     */
+    </span><span class="jsdoc-var">beforePageText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Page&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * Customizable piece of the default paging text (defaults to &quot;of %0&quot;)
+     * @type String
+     */
+    </span><span class="jsdoc-var">afterPageText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;of {0}&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * Customizable piece of the default paging text (defaults to &quot;First Page&quot;)
+     * @type String
+     */
+    </span><span class="jsdoc-var">firstText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;First Page&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * Customizable piece of the default paging text (defaults to &quot;Previous Page&quot;)
+     * @type String
+     */
+    </span><span class="jsdoc-var">prevText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Previous Page&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * Customizable piece of the default paging text (defaults to &quot;Next Page&quot;)
+     * @type String
+     */
+    </span><span class="jsdoc-var">nextText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Next Page&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * Customizable piece of the default paging text (defaults to &quot;Last Page&quot;)
+     * @type String
+     */
+    </span><span class="jsdoc-var">lastText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Last Page&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * Customizable piece of the default paging text (defaults to &quot;Refresh&quot;)
+     * @type String
+     */
+    </span><span class="jsdoc-var">refreshText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Refresh&quot;</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">renderButtons </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">Roo.bootstrap.PagingToolbar.superclass.render.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.first </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.addButton</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">tooltip</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.firstText</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-btn-icon x-grid-page-first&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">disabled</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onClick.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-string">&quot;first&quot;</span><span class="jsdoc-syntax">])
+        });
+        </span><span class="jsdoc-var">this.prev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.addButton</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">tooltip</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.prevText</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-btn-icon x-grid-page-prev&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">disabled</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onClick.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-string">&quot;prev&quot;</span><span class="jsdoc-syntax">])
+        });
+        </span><span class="jsdoc-comment">//this.addSeparator();
+        </span><span class="jsdoc-var">this.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.beforePageText</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.field </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.addDom</span><span class="jsdoc-syntax">({
+           </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;input&quot;</span><span class="jsdoc-syntax">,
+           </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;text&quot;</span><span class="jsdoc-syntax">,
+           </span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;3&quot;</span><span class="jsdoc-syntax">,
+           </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;1&quot;</span><span class="jsdoc-syntax">,
+           </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-grid-page-number&quot;
+        </span><span class="jsdoc-syntax">})</span><span class="jsdoc-var">.el</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.field.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;keydown&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onPagingKeydown</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.field.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;focus&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){</span><span class="jsdoc-var">this.dom.select</span><span class="jsdoc-syntax">();});
+        </span><span class="jsdoc-var">this.afterTextEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.addText</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.afterPageText</span><span class="jsdoc-syntax">, 1));
+        </span><span class="jsdoc-var">this.field.setHeight</span><span class="jsdoc-syntax">(18);
+        </span><span class="jsdoc-comment">//this.addSeparator();
+        </span><span class="jsdoc-var">this.next </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.addButton</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">tooltip</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.nextText</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-btn-icon x-grid-page-next&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">disabled</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onClick.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-string">&quot;next&quot;</span><span class="jsdoc-syntax">])
+        });
+        </span><span class="jsdoc-var">this.last </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.addButton</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">tooltip</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.lastText</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-btn-icon x-grid-page-last&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">disabled</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onClick.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-string">&quot;last&quot;</span><span class="jsdoc-syntax">])
+        });
+        </span><span class="jsdoc-comment">//this.addSeparator();
+        </span><span class="jsdoc-var">this.loading </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.addButton</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">tooltip</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.refreshText</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-btn-icon x-grid-loading&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onClick.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-string">&quot;refresh&quot;</span><span class="jsdoc-syntax">])
+        });
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.displayInfo</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.displayEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom.firstChild</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.createChild</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'x-paging-info'</span><span class="jsdoc-syntax">});
+        }
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">updateInfo </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.displayEl</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">count </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.ds.getCount</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">msg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">count </span><span class="jsdoc-syntax">== 0 ?
+                </span><span class="jsdoc-var">this.emptyMsg </span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(
+                    </span><span class="jsdoc-var">this.displayMsg</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">this.cursor</span><span class="jsdoc-syntax">+1, </span><span class="jsdoc-var">this.cursor</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">count</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.ds.getTotalCount</span><span class="jsdoc-syntax">()    
+                );
+            </span><span class="jsdoc-var">this.displayEl.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">msg</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onLoad </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">){
+       </span><span class="jsdoc-var">this.cursor </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o.params </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">o.params.start </span><span class="jsdoc-syntax">: 0;
+       </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getPageData</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">ap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d.activePage</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ps </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d.pages</span><span class="jsdoc-syntax">;
+
+       </span><span class="jsdoc-var">this.afterTextEl.el.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.afterPageText</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d.pages</span><span class="jsdoc-syntax">);
+       </span><span class="jsdoc-var">this.field.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ap</span><span class="jsdoc-syntax">;
+       </span><span class="jsdoc-var">this.first.setDisabled</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ap </span><span class="jsdoc-syntax">== 1);
+       </span><span class="jsdoc-var">this.prev.setDisabled</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ap </span><span class="jsdoc-syntax">== 1);
+       </span><span class="jsdoc-var">this.next.setDisabled</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ap </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">ps</span><span class="jsdoc-syntax">);
+       </span><span class="jsdoc-var">this.last.setDisabled</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ap </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">ps</span><span class="jsdoc-syntax">);
+       </span><span class="jsdoc-var">this.loading.enable</span><span class="jsdoc-syntax">();
+       </span><span class="jsdoc-var">this.updateInfo</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">getPageData </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">total </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.ds.getTotalCount</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">total </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">total</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">activePage </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Math.ceil</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">this.cursor</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.pageSize</span><span class="jsdoc-syntax">)/</span><span class="jsdoc-var">this.pageSize</span><span class="jsdoc-syntax">),
+            </span><span class="jsdoc-var">pages </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">total </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.pageSize </span><span class="jsdoc-syntax">? 1 : </span><span class="jsdoc-var">Math.ceil</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">total</span><span class="jsdoc-syntax">/</span><span class="jsdoc-var">this.pageSize</span><span class="jsdoc-syntax">)
+        };
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onLoadError </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.loading.enable</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onPagingKeydown </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getKey</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getPageData</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.RETURN</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.field.dom.value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pageNum</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">isNaN</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pageNum </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">, 10))){
+                </span><span class="jsdoc-var">this.field.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d.activePage</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">pageNum </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(1, </span><span class="jsdoc-var">pageNum</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">d.pages</span><span class="jsdoc-syntax">) - 1;
+            </span><span class="jsdoc-var">this.ds.load</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">params</span><span class="jsdoc-syntax">:{</span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">pageNum </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">this.pageSize</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">limit</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.pageSize</span><span class="jsdoc-syntax">}});
+            </span><span class="jsdoc-var">e.stopEvent</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.HOME </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.UP </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">e.ctrlKey</span><span class="jsdoc-syntax">) || (</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.PAGEUP </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">e.ctrlKey</span><span class="jsdoc-syntax">) || (</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.RIGHT </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">e.ctrlKey</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.END </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.DOWN </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">e.ctrlKey</span><span class="jsdoc-syntax">) || (</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.LEFT </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">e.ctrlKey</span><span class="jsdoc-syntax">) || (</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.PAGEDOWN </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">e.ctrlKey</span><span class="jsdoc-syntax">))
+        {
+          </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pageNum </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.HOME </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.DOWN </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">e.ctrlKey</span><span class="jsdoc-syntax">) || (</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.LEFT </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">e.ctrlKey</span><span class="jsdoc-syntax">) || (</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.PAGEDOWN </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">e.ctrlKey</span><span class="jsdoc-syntax">)) ? 1 : </span><span class="jsdoc-var">d.pages</span><span class="jsdoc-syntax">;
+          </span><span class="jsdoc-var">this.field.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pageNum</span><span class="jsdoc-syntax">;
+          </span><span class="jsdoc-var">this.ds.load</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">params</span><span class="jsdoc-syntax">:{</span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">pageNum </span><span class="jsdoc-syntax">- 1) * </span><span class="jsdoc-var">this.pageSize</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">limit</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.pageSize</span><span class="jsdoc-syntax">}});
+          </span><span class="jsdoc-var">e.stopEvent</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.UP </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.RIGHT </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.PAGEUP </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.DOWN </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.LEFT </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.PAGEDOWN</span><span class="jsdoc-syntax">)
+        {
+          </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.field.dom.value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pageNum</span><span class="jsdoc-syntax">; 
+          </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">increment </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">e.shiftKey</span><span class="jsdoc-syntax">) ? 10 : 1;
+          </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.DOWN </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.LEFT </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.PAGEDOWN</span><span class="jsdoc-syntax">)
+            </span><span class="jsdoc-var">increment </span><span class="jsdoc-syntax">*= -1;
+          </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">isNaN</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pageNum </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">, 10))) {
+            </span><span class="jsdoc-var">this.field.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d.activePage</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+          }
+          </span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">, 10) + </span><span class="jsdoc-var">increment </span><span class="jsdoc-syntax">&gt;= 1 &amp; </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">, 10) + </span><span class="jsdoc-var">increment </span><span class="jsdoc-syntax">&lt;= </span><span class="jsdoc-var">d.pages</span><span class="jsdoc-syntax">)
+          {
+            </span><span class="jsdoc-var">this.field.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">, 10) + </span><span class="jsdoc-var">increment</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">pageNum </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(1, </span><span class="jsdoc-var">pageNum </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">increment</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">d.pages</span><span class="jsdoc-syntax">) - 1;
+            </span><span class="jsdoc-var">this.ds.load</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">params</span><span class="jsdoc-syntax">:{</span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">pageNum </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">this.pageSize</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">limit</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.pageSize</span><span class="jsdoc-syntax">}});
+          }
+          </span><span class="jsdoc-var">e.stopEvent</span><span class="jsdoc-syntax">();
+        }
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">beforeLoad </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.loading</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.loading.disable</span><span class="jsdoc-syntax">();
+        }
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">which</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ds </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.ds</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">which</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;first&quot;</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">ds.load</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">params</span><span class="jsdoc-syntax">:{</span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">: 0, </span><span class="jsdoc-var">limit</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.pageSize</span><span class="jsdoc-syntax">}});
+            </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;prev&quot;</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">ds.load</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">params</span><span class="jsdoc-syntax">:{</span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-var">this.cursor</span><span class="jsdoc-syntax">-</span><span class="jsdoc-var">this.pageSize</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">limit</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.pageSize</span><span class="jsdoc-syntax">}});
+            </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;next&quot;</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">ds.load</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">params</span><span class="jsdoc-syntax">:{</span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.cursor</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.pageSize</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">limit</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.pageSize</span><span class="jsdoc-syntax">}});
+            </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;last&quot;</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">total </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ds.getTotalCount</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">extra </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">total </span><span class="jsdoc-syntax">% </span><span class="jsdoc-var">this.pageSize</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lastStart </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">extra </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-var">total </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">extra</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">total</span><span class="jsdoc-syntax">-</span><span class="jsdoc-var">this.pageSize</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">ds.load</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">params</span><span class="jsdoc-syntax">:{</span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">lastStart</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">limit</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.pageSize</span><span class="jsdoc-syntax">}});
+            </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;refresh&quot;</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">ds.load</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">params</span><span class="jsdoc-syntax">:{</span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.cursor</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">limit</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.pageSize</span><span class="jsdoc-syntax">}});
+            </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Unbinds the paging toolbar from the specified {@link Roo.data.Store}
+     * @param {Roo.data.Store} store The data store to unbind
+     */
+    </span><span class="jsdoc-var">unbind </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">ds.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforeload&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.beforeLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">ds.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;load&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">ds.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;loadexception&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoadError</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">ds.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;remove&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.updateInfo</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">ds.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;add&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.updateInfo</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.ds </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Binds the paging toolbar to the specified {@link Roo.data.Store}
+     * @param {Roo.data.Store} store The data store to bind
+     */
+    </span><span class="jsdoc-var">bind </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">ds.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforeload&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.beforeLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">ds.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;load&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">ds.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;loadexception&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoadError</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">ds.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;remove&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.updateInfo</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">ds.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;add&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.updateInfo</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.ds </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">;
+    }
+});</span></code></body></html>

@@ -312,30 +312,31 @@
             this.pageTb = new Roo.Toolbar(this.footer);
            
         }
-        if(this.pageSize){
-            this.footer = this.list.createChild({cls:cls+'-ft'});
-            this.pageTb = new Roo.PagingToolbar(this.footer, this.store,
-                    {pageSize: this.pageSize});
+        */
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.pageSize</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.footer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.list.createChild</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'-ft'</span><span class="jsdoc-syntax">});
+            </span><span class="jsdoc-var">this.pageTb </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.PagingToolbar</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.footer</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">,
+                    {</span><span class="jsdoc-var">pageSize</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.pageSize</span><span class="jsdoc-syntax">});
             
         }
         
-        if (this.pageTb &amp;&amp; this.allowBlank &amp;&amp; !this.disableClear) {
-            var _this = this;
-            this.pageTb.add(new Roo.Toolbar.Fill(), {
-                cls: 'x-btn-icon x-btn-clear',
-                text: '&amp;#160;',
-                handler: function()
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.pageTb </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.allowBlank </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.disableClear</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.pageTb.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.Toolbar.Fill</span><span class="jsdoc-syntax">(), {
+                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-btn-icon x-btn-clear'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&amp;#160;'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
                 {
-                    _this.collapse();
-                    _this.clearValue();
-                    _this.onSelect(false, -1);
+                    </span><span class="jsdoc-var">_this.collapse</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-var">_this.clearValue</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-var">_this.onSelect</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, -1);
                 }
             });
         }
-        if (this.footer) {
-            this.assetHeight += this.footer.getHeight();
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.footer</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.assetHeight </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.footer.getHeight</span><span class="jsdoc-syntax">();
         }
-        */
+        
             
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.tpl</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.tpl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;li&gt;&lt;a href=&quot;#&quot;&gt;{' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.displayField </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'}&lt;/a&gt;&lt;/li&gt;'</span><span class="jsdoc-syntax">;

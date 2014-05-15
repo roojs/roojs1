@@ -4933,6 +4933,27 @@
    ],
    "events": []
   },
+  "Roo.bootstarp": {
+   "props": [],
+   "events": []
+  },
+  "Roo.bootstarp.Toolbar": {
+   "props": [
+    {
+     "name": "items",
+     "type": "Array",
+     "desc": "array of button configs or elements to add (will be converted to a MixedCollection)",
+     "memberOf": ""
+    },
+    {
+     "name": "container",
+     "type": "String/HTMLElement/Element",
+     "desc": "The id or element that will contain the toolbar",
+     "memberOf": ""
+    }
+   ],
+   "events": []
+  },
   "Roo.bootstrap": {
    "props": [],
    "events": []
@@ -10019,6 +10040,47 @@
     }
    ]
   },
+  "Roo.bootstrap.PagingToolbar": {
+   "props": [
+    {
+     "name": "dataSource",
+     "type": "Roo.data.Store",
+     "desc": "The underlying data store providing the paged data",
+     "memberOf": ""
+    },
+    {
+     "name": "container",
+     "type": "String/HTMLElement/Element",
+     "desc": "container The id or element that will contain the toolbar",
+     "memberOf": ""
+    },
+    {
+     "name": "displayInfo",
+     "type": "Boolean",
+     "desc": "True to display the displayMsg (defaults to false)",
+     "memberOf": ""
+    },
+    {
+     "name": "pageSize",
+     "type": "Number",
+     "desc": "The number of records to display per page (defaults to 20)",
+     "memberOf": ""
+    },
+    {
+     "name": "displayMsg",
+     "type": "String",
+     "desc": "The paging status message to display (defaults to \"Displaying {start} - {end} of {total}\")",
+     "memberOf": ""
+    },
+    {
+     "name": "emptyMsg",
+     "type": "String",
+     "desc": "The message to display when no records are found (defaults to \"No data to display\")",
+     "memberOf": ""
+    }
+   ],
+   "events": []
+  },
   "Roo.bootstrap.Popover": {
    "props": [
     {
@@ -12460,6 +12522,214 @@
      "desc": "Fires after the field has been validated with no errors."
     }
    ]
+  },
+  "Roo.bootstrap.Toolbar": {
+   "props": [],
+   "events": []
+  },
+  "Roo.bootstrap.Toolbar.Button": {
+   "props": [
+    {
+     "name": "text",
+     "type": "String",
+     "desc": "The button text",
+     "memberOf": "Roo.Button"
+    },
+    {
+     "name": "icon",
+     "type": "String",
+     "desc": "The path to an image to display in the button (the image will be set as the background-image\nCSS property of the button by default, so if you want a mixed icon/text button, set cls:\"x-btn-text-icon\")",
+     "memberOf": "Roo.Button"
+    },
+    {
+     "name": "handler",
+     "type": "Function",
+     "desc": "A function called when the button is clicked (can be used instead of click event)",
+     "memberOf": "Roo.Button"
+    },
+    {
+     "name": "scope",
+     "type": "Object",
+     "desc": "The scope of the handler",
+     "memberOf": "Roo.Button"
+    },
+    {
+     "name": "minWidth",
+     "type": "Number",
+     "desc": "The minimum width for this button (used to give a set of buttons a common width)",
+     "memberOf": "Roo.Button"
+    },
+    {
+     "name": "tooltip",
+     "type": "String/Object",
+     "desc": "The tooltip for the button - can be a string or QuickTips config object",
+     "memberOf": "Roo.Button"
+    },
+    {
+     "name": "hidden",
+     "type": "Boolean",
+     "desc": "True to start hidden (defaults to false)",
+     "memberOf": "Roo.Button"
+    },
+    {
+     "name": "disabled",
+     "type": "Boolean",
+     "desc": "True to start disabled (defaults to false)",
+     "memberOf": "Roo.Button"
+    },
+    {
+     "name": "pressed",
+     "type": "Boolean",
+     "desc": "True to start pressed (only if enableToggle = true)",
+     "memberOf": "Roo.Button"
+    },
+    {
+     "name": "toggleGroup",
+     "type": "String",
+     "desc": "The group this toggle button is a member of (only 1 per group can be pressed, only\n   applies if enableToggle = true)",
+     "memberOf": "Roo.Button"
+    },
+    {
+     "name": "renderTo",
+     "type": "String/HTMLElement/Element",
+     "desc": "The element to append the button to",
+     "memberOf": "Roo.Button"
+    },
+    {
+     "name": "repeat",
+     "type": "Boolean/Object",
+     "desc": "True to repeat fire the click event while the mouse is down. This can also be\n  an {@link Roo.util.ClickRepeater} config object (defaults to false).",
+     "memberOf": "Roo.Button"
+    },
+    {
+     "name": "cls",
+     "type": "String",
+     "desc": "A CSS class to apply to the button's main element.",
+     "memberOf": "Roo.Button"
+    },
+    {
+     "name": "tabIndex",
+     "type": "Number",
+     "desc": "The DOM tabIndex for this button (defaults to undefined)",
+     "memberOf": "Roo.Button"
+    },
+    {
+     "name": "enableToggle",
+     "type": "Boolean",
+     "desc": "True to enable pressed/not pressed toggling (defaults to false)",
+     "memberOf": "Roo.Button"
+    },
+    {
+     "name": "menu",
+     "type": "Mixed",
+     "desc": "Standard menu attribute consisting of a reference to a menu object, a menu id or a menu config blob (defaults to undefined).",
+     "memberOf": "Roo.Button"
+    },
+    {
+     "name": "menuAlign",
+     "type": "String",
+     "desc": "The position to align the menu to (see {@link Roo.Element#alignTo} for more details, defaults to 'tl-bl?').",
+     "memberOf": "Roo.Button"
+    },
+    {
+     "name": "iconCls",
+     "type": "String",
+     "desc": "A css class which sets a background image to be used as the icon for this button (defaults to undefined).",
+     "memberOf": "Roo.Button"
+    },
+    {
+     "name": "type",
+     "type": "String",
+     "desc": "The button's type, corresponding to the DOM input element type attribute.  Either \"submit,\" \"reset\" or \"button\" (default).",
+     "memberOf": "Roo.Button"
+    },
+    {
+     "name": "clickEvent",
+     "type": "String",
+     "desc": "The type of event to map to the button's event handler (defaults to 'click')",
+     "memberOf": "Roo.Button"
+    },
+    {
+     "name": "handleMouseEvents",
+     "type": "Boolean",
+     "desc": "False to disable visual cues on mouseover, mouseout and mousedown (defaults to true)",
+     "memberOf": "Roo.Button"
+    },
+    {
+     "name": "tooltipType",
+     "type": "String",
+     "desc": "The type of tooltip to use. Either \"qtip\" (default) for QuickTips or \"title\" for title attribute.",
+     "memberOf": "Roo.Button"
+    },
+    {
+     "name": "template",
+     "type": "Roo.Template",
+     "desc": "(Optional)\nAn {@link Roo.Template} with which to create the Button's main element. This Template must\ncontain numeric substitution parameter 0 if it is to display the tRoo property. Changing the template could\nrequire code modifications if required elements (e.g. a button) aren't present.",
+     "memberOf": "Roo.Button"
+    },
+    {
+     "name": "listeners",
+     "type": "Object",
+     "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+     "memberOf": "Roo.util.Observable"
+    }
+   ],
+   "events": [
+    {
+     "name": "click",
+     "sig": "function (_self, e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when this button is clicked"
+    },
+    {
+     "name": "mouseout",
+     "sig": "function (_self, e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the mouse exits the button"
+    },
+    {
+     "name": "mouseover",
+     "sig": "function (_self, e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the mouse hovers over the button"
+    },
+    {
+     "name": "render",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the button is rendered"
+    },
+    {
+     "name": "toggle",
+     "sig": "function (_self, pressed)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the \"pressed\" state of this button changes (only if enableToggle = true)"
+    }
+   ]
+  },
+  "Roo.bootstrap.Toolbar.Fill": {
+   "props": [],
+   "events": []
+  },
+  "Roo.bootstrap.Toolbar.Item": {
+   "props": [],
+   "events": []
+  },
+  "Roo.bootstrap.Toolbar.Separator": {
+   "props": [],
+   "events": []
+  },
+  "Roo.bootstrap.Toolbar.Spacer": {
+   "props": [],
+   "events": []
+  },
+  "Roo.bootstrap.Toolbar.SplitButton": {
+   "props": [],
+   "events": []
+  },
+  "Roo.bootstrap.Toolbar.TextItem": {
+   "props": [],
+   "events": []
   },
   "Roo.bootstrap.TriggerField": {
    "props": [

@@ -247,6 +247,8 @@
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tbody </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tbody'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">renders </span><span class="jsdoc-syntax">= [];
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store.getCount</span><span class="jsdoc-syntax">() &gt; 0){
             </span><span class="jsdoc-var">this.store.data.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">= {
@@ -256,11 +258,26 @@
                 
                 </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cm.getColumnCount</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
                     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">renderer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cm.getRenderer</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">();
+                    
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">renderer</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">renderer</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.data</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cm.getDataIndex</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)], </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">);
+                    }
+                    
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">) === </span><span class="jsdoc-string">'object'</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-var">renders.push</span><span class="jsdoc-syntax">({
+                            </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">value 
+                        </span><span class="jsdoc-syntax">})
+                    }
                     
                     </span><span class="jsdoc-var">row.cn.push</span><span class="jsdoc-syntax">({
                         </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'td'</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">renderer</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">renderer</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.data</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cm.getDataIndex</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)], </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-string">''
+                        </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">) === </span><span class="jsdoc-string">'object'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">value
                     </span><span class="jsdoc-syntax">})
+                   
                 }
                 
                 </span><span class="jsdoc-var">tbody.createChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">);
@@ -268,11 +285,16 @@
             });
         }
         
-        
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.loadMask</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.maskEl.hide</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">renders.length</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">renders</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">r.cfg.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.id</span><span class="jsdoc-syntax">));
+            })
         }
-    },
+</span><span class="jsdoc-comment">//        
+//        if(this.loadMask){
+//            this.maskEl.hide();
+//        }
+    </span><span class="jsdoc-syntax">},
     
     </span><span class="jsdoc-var">onBeforeLoad </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -280,10 +302,10 @@
         
         </span><span class="jsdoc-var">this.clear</span><span class="jsdoc-syntax">();
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.loadMask</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.maskEl.show</span><span class="jsdoc-syntax">();
-        }
-    },
+</span><span class="jsdoc-comment">//        if(this.loadMask){
+//            this.maskEl.show();
+//        }
+    </span><span class="jsdoc-syntax">},
     
     </span><span class="jsdoc-var">clear </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
