@@ -63,18 +63,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
  * Licence LGPL
  * 
  */
- 
- 
-Roo.form.HtmlEditor = function(config){
-    
-    
-    
-    Roo.form.HtmlEditor.superclass.constructor.call(this, config);
-    
-    i
-    
-};
-
+  
 /**
  * @class Roo.form.HtmlEditor
  * @extends Roo.form.Field
