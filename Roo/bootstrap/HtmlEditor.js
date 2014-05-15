@@ -205,6 +205,13 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
                     xns: Roo.bootstrap,
                     glyphicon : 'link'
                     //html : 'submit'
+                 ,
+                  },
+                 {
+                    xtype: 'Button',
+                    xns: Roo.bootstrap,
+                    glyphicon : 'list'
+                    //html : 'submit'
                  }
             ]
             
