@@ -267,7 +267,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
 //            Roo.log('in');
 //            Roo.log(this.syncValue());
             this.editorcore.syncValue();
-            this.inputEl().removeClass('x-hidden');
+            this.inputEl().removeClass('hide');
             this.inputEl().dom.removeAttribute('tabIndex');
             this.inputEl().focus();
         }else{
@@ -276,7 +276,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
 //            Roo.log(this.pushValue()); 
             this.editorcore.pushValue();
             
-            this.inputEl().addClass('x-hidden');
+            this.inputEl().addClass('hide');
             this.inputEl().dom.setAttribute('tabIndex', -1);
             //this.deferFocus();
         }
