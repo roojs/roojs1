@@ -76,6 +76,7 @@ Roo.bootstrap.Table.ColumnModel
 Roo.bootstrap.Table.RowSelectionModel
 
 
+Roo.QuickTips
 Roo.bootstrap.SplitButton
 Roo.bootstrap.Toolbar
 Roo.bootstrap.PagingToolbar
