@@ -316,7 +316,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
 
         } else {
             
-                   Roo.log(" no label && no align");
+                Roo.log(" no label && no align");
                 cfg.cn = [
                     
                         inputblock
@@ -325,7 +325,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 
                 
         };
-        Roo.log(this.parentType);
+        Roo.log('input-parentType: ' + this.parentType);
         
         if (this.parentType === 'Navbar' && !this.parent().bar) {
            cfg.cls += ' navbar-form';
