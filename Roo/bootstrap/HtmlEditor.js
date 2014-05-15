@@ -152,6 +152,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
      */
     createToolbar : function(editor){
         Roo.log("create toolbars");
+        return;
         if (!editor.toolbars || !editor.toolbars.length) {
             editor.toolbars = [ new Roo.form.HtmlEditor.ToolbarStandard() ]; // can be empty?
         }
