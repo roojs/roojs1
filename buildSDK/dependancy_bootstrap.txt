@@ -74,7 +74,3 @@ Roo.bootstrap.HtmlEditor
 Roo.bootstrap.Table.AbstractSelectionModel
 Roo.bootstrap.Table.ColumnModel
 Roo.bootstrap.Table.RowSelectionModel
-
-
-Roo.Toolbar
-Roo.PagingToolbar
