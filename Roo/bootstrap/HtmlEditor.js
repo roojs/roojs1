@@ -177,6 +177,11 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
                                 xtype: 'MenuItem',
                                  xns: Roo.bootstrap,
                                  html : '<H1>H1</H1>'
+                             },
+                              {
+                                xtype: 'MenuItem',
+                                 xns: Roo.bootstrap,
+                                 html : '<H2>H2</H2>'
                              }
                         ]
                         
