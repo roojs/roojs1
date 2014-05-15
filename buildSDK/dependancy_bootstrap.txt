@@ -77,4 +77,3 @@ Roo.bootstrap.Table.RowSelectionModel
 
 
 Roo.bootstrap.Toolbar
-Roo.bootstrap.PagingToolbar
