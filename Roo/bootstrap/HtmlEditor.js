@@ -238,7 +238,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
                 ew = aw;
             }
             if(typeof h == 'number'){
-                var tbh = 50;
+                var tbh = 50;  // fixme it needs to tool bar size!
                 /*for (var i =0; i < this.toolbars.length;i++) {
                     // fixme - ask toolbars for heights?
                     tbh += this.toolbars[i].tb.el.getHeight();
