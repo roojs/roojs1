@@ -161,7 +161,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
             
         
             xtype: 'Navbar',
-             xns: Roo.bootstrap,
+            xns: Roo.bootstrap,
             bar: true,
             items : [
                 {
