@@ -206,10 +206,6 @@ Roo.addBehaviors({
                 }
             };
             return function(sb, sp, overrides){
-                Roo.log('extend!!!!');
-                Roo.log(sb);
-                Roo.log(sp);
-                Roo.log(overrides);
                 if(typeof sp == 'object'){ // eg. prototype, rather than function constructor..
                     overrides = sp;
                     sp = sb;
