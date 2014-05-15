@@ -333,7 +333,6 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                     '-',
                     btn('sourceedit', true, function(btn){
                         Roo.log(this);
-                        btn.pressed = !btn.pressed;
                         this.toggleSourceEdit(btn.pressed);
                     })
                 );
