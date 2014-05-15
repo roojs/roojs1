@@ -206,6 +206,10 @@ Roo.addBehaviors({
                 }
             };
             return function(sb, sp, overrides){
+                Roo.log('extend!!!!');
+                Roo.log(sb);
+                Roo.log(sp);
+                Roo.log(overrides);
                 if(typeof sp == 'object'){ // eg. prototype, rather than function constructor..
                     overrides = sp;
                     sp = sb;
@@ -52107,7 +52111,7 @@ Roo.extend(Roo.grid.AbstractGridView, Roo.util.Observable, {
     hdClass : "x-grid-hd",
     splitClass : "x-grid-hd-split",
     
-	init: function(grid){
+    init: function(grid){
         this.grid = grid;
 		var cid = this.grid.getGridEl().id;
         this.colSelector = "#" + cid + " ." + this.cellClass + "-";
@@ -52116,7 +52120,7 @@ Roo.extend(Roo.grid.AbstractGridView, Roo.util.Observable, {
         this.splitSelector = "#" + cid + " ." + this.splitClass + "-";
 	},
 	
-	getColumnRenderers : function(){
+    getColumnRenderers : function(){
     	var renderers = [];
     	var cm = this.grid.colModel;
         var colCount = cm.getColumnCount();
