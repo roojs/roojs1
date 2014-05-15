@@ -175,7 +175,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         this.el.dom.style.border = '0 none';
         this.el.dom.setAttribute('tabIndex', -1);
-        this.el.addClass('x-hidden');
+        this.el.addClass('x-hidden hide');
         
         
         
@@ -265,7 +265,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         if(this.sourceEditMode){
  
-            this.iframe.className = 'x-hidden';     //FIXME - what's the BS styles for these
+            this.iframe.className = 'x-hidden hide';     //FIXME - what's the BS styles for these
             
         }else{
  
