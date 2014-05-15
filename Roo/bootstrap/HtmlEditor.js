@@ -238,15 +238,16 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
                 ew = aw;
             }
             if(typeof h == 'number'){
-                var tbh = 50;  // fixme it needs to tool bar size!
-                /*for (var i =0; i < this.toolbars.length;i++) {
+                this.toolbars[i].el.getHeight();
+                var tbh = 0;  // fixme it needs to tool bar size!
+                for (var i =0; i < this.toolbars.length;i++) {
                     // fixme - ask toolbars for heights?
-                    tbh += this.toolbars[i].tb.el.getHeight();
-                    if (this.toolbars[i].footer) {
-                        tbh += this.toolbars[i].footer.el.getHeight();
-                    }
+                    tbh += this.toolbars[i].el.getHeight();
+                    //if (this.toolbars[i].footer) {
+                    //    tbh += this.toolbars[i].footer.el.getHeight();
+                    //}
                 }
-                */
+              
                 
                 
                 
