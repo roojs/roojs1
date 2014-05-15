@@ -169,6 +169,11 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
                     xns: Roo.bootstrap,
                     glyphicon : 'font'
                     //html : 'submit'
+                    menu : {
+                        xtype: 'Menu',
+                        xns: Roo.bootstrap,
+                        glyphicon : 'font
+                    }
                  },
                 {
                     xtype: 'Button',
