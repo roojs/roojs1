@@ -182,7 +182,9 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             
             delete cfg.html;
             
-        } 
+        }
+        
+       cfg.cls = this.parentType === 'Navbar' ?  ' navbar-btn' : '';
         
         if (this.glyphicon) {
             cfg.html = ' ' + cfg.html;
