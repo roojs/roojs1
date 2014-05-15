@@ -164,6 +164,8 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
          
         //gsRoo.log(this.parentType);
         if (this.parentType === 'Navbar') {
+            Roo.log('changing to li?');
+            
             cfg.tag = 'li';
             
             cfg.cls = '';
