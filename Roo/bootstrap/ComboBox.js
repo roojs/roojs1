@@ -315,14 +315,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         */
         if(this.pageSize){
             this.footer = this.list.createChild({cls:cls+'-ft'});
-            this.pageTb = new Roo.PagingToolbar(this.footer, this.store,
+            this.pageTb = new Roo.bootstrap.PagingToolbar(this.footer, this.store,
                     {pageSize: this.pageSize});
             
         }
         
         if (this.pageTb && this.allowBlank && !this.disableClear) {
             var _this = this;
-            this.pageTb.add(new Roo.Toolbar.Fill(), {
+            this.pageTb.add(new Roo.bootstrap.Toolbar.Fill(), {
                 cls: 'x-btn-icon x-btn-clear',
                 text: '&#160;',
                 handler: function()
