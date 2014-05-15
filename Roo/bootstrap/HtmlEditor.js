@@ -21,7 +21,7 @@ Roo.bootstrap.HtmlEditor = function(config){
 };
 
 
-Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.Input,  {
     
     getAutoCreate : function()
     {
