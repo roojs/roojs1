@@ -307,27 +307,21 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.innerList.on('mousemove', this.onViewMove, this);
         this.innerList.setWidth(lw - this.list.getFrameWidth('lr'));
         
-        */
         if(this.allowBlank && !this.pageSize && !this.disableClear){
             this.footer = this.list.createChild({cls:cls+'-ft'});
-            this.pageTb = new Roo.bootstrap.Toolbar(this.footer);
+            this.pageTb = new Roo.Toolbar(this.footer);
            
         }
-        
         if(this.pageSize){
-            Roo.log('create footer');
             this.footer = this.list.createChild({cls:cls+'-ft'});
-            Roo.log(this.footer);
-            this.pageTb = new Roo.bootstrap.PagingToolbar(this.footer, this.store,
+            this.pageTb = new Roo.PagingToolbar(this.footer, this.store,
                     {pageSize: this.pageSize});
-                    
-            Roo.log(this.pageTb);
             
         }
         
         if (this.pageTb && this.allowBlank && !this.disableClear) {
             var _this = this;
-            this.pageTb.add(new Roo.bootstrap.Toolbar.Fill(), {
+            this.pageTb.add(new Roo.Toolbar.Fill(), {
                 cls: 'x-btn-icon x-btn-clear',
                 text: '&#160;',
                 handler: function()
@@ -341,7 +335,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if (this.footer) {
             this.assetHeight += this.footer.getHeight();
         }
-        
+        */
             
         if(!this.tpl){
             this.tpl = '<li><a href="#">{' + this.displayField + '}</a></li>';
