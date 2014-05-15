@@ -142,7 +142,9 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
     hideMode:'offsets',
     
      
-    
+     toobarContainer :function() {
+        return this.wrap;
+    }
 
     /**
      * Protected method that will not generally be called directly. It
@@ -151,6 +153,14 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
      * @param {HtmlEditor} editor
      */
     createToolbar : function(editor){
+        
+        
+        this.addxtypeChild({
+            
+            
+            
+        }, 'toolbarContainer')
+        
         Roo.log("create toolbars");
         return;
         if (!editor.toolbars || !editor.toolbars.length) {
