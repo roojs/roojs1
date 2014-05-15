@@ -142,9 +142,9 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
     hideMode:'offsets',
     
      
-     toobarContainer :function() {
+    toobarContainer :function() {
         return this.wrap;
-    }
+    },
 
     /**
      * Protected method that will not generally be called directly. It
