@@ -12402,7 +12402,7 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
  * Creates a new Toolbar
  * @param {Object} container The config object
  */ 
-Roo.bootstarp.Toolbar = function(container, buttons, config)
+Roo.bootstrap.Toolbar = function(container, buttons, config)
 {
     /// old consturctor format still supported..
     if(container instanceof Array){ // omit the container for later rendering
@@ -12433,7 +12433,7 @@ Roo.bootstarp.Toolbar = function(container, buttons, config)
     
 };
 
-Roo.bootstarp.Toolbar.prototype = {
+Roo.bootstrap.Toolbar.prototype = {
     /**
      * @cfg {Array} items
      * array of button configs or elements to add (will be converted to a MixedCollection)
