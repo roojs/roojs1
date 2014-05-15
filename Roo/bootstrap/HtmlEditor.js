@@ -21,56 +21,7 @@ Roo.bootstrap.HtmlEditor = function(config){
         this.toolbars = [];
     }
     this.editorcore = new Roo.HtmlEditorCore(Roo.apply({ owner : this} , config));
-    
-};
-
-
-Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
-    
-    
-      /**
-     * @cfg {Array} toolbars Array of toolbars. - defaults to just the Standard one
-     */
-    toolbars : false,
-   
-     /**
-     * @cfg {String} resizable  's' or 'se' or 'e' - wrapps the element in a
-     *                        Roo.resizable.
-     */
-    resizable : false,
-     /**
-     * @cfg {Number} height (in pixels)
-     */   
-    height: 300,
-   /**
-     * @cfg {Number} width (in pixels)
-     */   
-    width: 500,
-    
-    /**
-     * @cfg {Array} stylesheets url of stylesheets. set to [] to disable stylesheets.
-     * 
-     */
-    stylesheets: false,
-    
-    // id of frame..
-    frameId: false,
-    
-    // private properties
-    validationEvent : false,
-    deferHeight: true,
-    initialized : false,
-    activated : false,
-    
-    onFocus : Roo.emptyFn,
-    iframePad:3,
-    hideMode:'offsets',
-    
-     
-   
-    // private
-    initComponent : function(){
-        this.addEvents({
+    this.addEvents({
             /**
              * @event initialize
              * Fires when the editor is fully initialized (including the iframe)
@@ -146,6 +97,55 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
              */
             savedpreview: true
         });
+};
+
+
+Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
+    
+    
+      /**
+     * @cfg {Array} toolbars Array of toolbars. - defaults to just the Standard one
+     */
+    toolbars : false,
+   
+     /**
+     * @cfg {String} resizable  's' or 'se' or 'e' - wrapps the element in a
+     *                        Roo.resizable.
+     */
+    resizable : false,
+     /**
+     * @cfg {Number} height (in pixels)
+     */   
+    height: 300,
+   /**
+     * @cfg {Number} width (in pixels)
+     */   
+    width: 500,
+    
+    /**
+     * @cfg {Array} stylesheets url of stylesheets. set to [] to disable stylesheets.
+     * 
+     */
+    stylesheets: false,
+    
+    // id of frame..
+    frameId: false,
+    
+    // private properties
+    validationEvent : false,
+    deferHeight: true,
+    initialized : false,
+    activated : false,
+    
+    onFocus : Roo.emptyFn,
+    iframePad:3,
+    hideMode:'offsets',
+    
+     
+   
+    // private
+    initComponent : function(){
+        
         this.defaultAutoCreate =  {
             tag: "textarea",
             style:'width: ' + this.width + 'px;height: ' + this.height + 'px;',
