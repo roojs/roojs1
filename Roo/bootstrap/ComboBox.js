@@ -312,6 +312,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.pageTb = new Roo.Toolbar(this.footer);
            
         }
+        */
         if(this.pageSize){
             this.footer = this.list.createChild({cls:cls+'-ft'});
             this.pageTb = new Roo.PagingToolbar(this.footer, this.store,
@@ -335,7 +336,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if (this.footer) {
             this.assetHeight += this.footer.getHeight();
         }
-        */
+        
             
         if(!this.tpl){
             this.tpl = '<li><a href="#">{' + this.displayField + '}</a></li>';
