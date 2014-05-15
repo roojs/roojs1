@@ -164,41 +164,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
             xns: Roo.bootstrap,
             bar: true,
             items : [
-                {
-                    xtype: 'NavGroup',
-                    xns: Roo.bootstrap,
-                    items : [
-                        {
-                            xtype: 'Item',
-                            xns: Roo.bootstrap.Navbar,
-                            html: "nav",
-                            href : 'http://roojs.com',
-                            
-                            menu:    {
-                                xtype: 'Menu',
-                                xns: Roo.bootstrap,
-                                items : [
-                                    {
-                                        xtype: 'MenuItem',
-                                        xns: Roo.bootstrap,
-                                        html: "hello",
-                                        href : 'http://roojs.com'
-                                    },
-                                    {
-                                        xtype: 'MenuSeparator',
-                                        xns: Roo.bootstrap,
-                                    },
-                                    {
-                                        xtype: 'MenuItem',
-                                        xns: Roo.bootstrap,
-                                        html: "hello",
-                                        href: 'http://roojs.com'
-                                    }   
-                                ]
-                            }
-                        }
-                    ]
-                },
+               
                 {
                  
                     xtype: 'Button',
