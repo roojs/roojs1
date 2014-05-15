@@ -142,16 +142,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
     hideMode:'offsets',
     
      
-   
-    // private
-    initComponent : function(){
-        
-        this.defaultAutoCreate =  {
-            tag: "textarea",
-            style:'width: ' + this.width + 'px;height: ' + this.height + 'px;',
-            autocomplete: "off"
-        };
-    },
+    
 
     /**
      * Protected method that will not generally be called directly. It
@@ -420,8 +411,4 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
    
    
    
-   
-   
-   
-   
-});
+    
