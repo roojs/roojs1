@@ -325,9 +325,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 
                 
         };
-        if (this.parentType === 'Navbar') {
-            cfg.tag = 'li';
-        }
+      
         return cfg;
         
     },
