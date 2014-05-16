@@ -376,13 +376,21 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
 
     },
     
-    showSearch: function(showSearchInput) {
-        if (this.showSearchInput === showSearchInput) return;
-
-        this.showSearchInput = showSearchInput;
-
-        this.dropdown.select(".select2-search",true).first().toggleClass("select2-search-hidden", !showSearchInput);
-        this.dropdown.find(".select2-search").toggleClass("select2-offscreen", !showSearchInput);
+    showSearchBar: function() {
+        
+        if(!this.dropdown.select(".select2-search",true).first().hasClass("select2-search-hidden")){
+            this.dropdown.select(".select2-search",true).first().addClass("select2-search-hidden");
+        }
+        
+        if(!this.dropdown.select(".select2-search",true).first().hasClass("select2-offscreen")){
+            this.dropdown.select(".select2-search",true).first().addClass("select2-offscreen");
+        }
+        
+        if(!this.dropdown.hasClass("select2-with-searchbox")){
+            this.dropdown.select(".select2-search",true).first().addClass("select2-with-searchbox");
+        }
+        
+        
         //add "select2-with-searchbox" to the container if search box is shown
         $(this.dropdown, this.container).toggleClass("select2-with-searchbox", showSearchInput);
     },
