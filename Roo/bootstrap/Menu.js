@@ -321,6 +321,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     },
     getEl : function()
     {
+        Roo.log(this.el);
         return this.el;
     }
 });
