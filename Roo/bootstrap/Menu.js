@@ -115,6 +115,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         return cfg;
     },
     initEvents : function() {
+        
        // Roo.log("ADD event");
        // Roo.log(this.triggerEl.dom);
         //this.triggerEl.on('click', this.toggle, this);
