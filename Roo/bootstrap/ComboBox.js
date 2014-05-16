@@ -387,12 +387,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
         }
         
         if(!this.dropdown.hasClass("select2-with-searchbox")){
-            this.dropdown.select(".select2-search",true).first().addClass("select2-with-searchbox");
+            this.dropdown.addClass("select2-with-searchbox");
         }
         
+        if(!this.container.hasClass("select2-with-searchbox")){
+            this.container.addClass("select2-with-searchbox");
+        }
         
-        //add "select2-with-searchbox" to the container if search box is shown
-        $(this.dropdown, this.container).toggleClass("select2-with-searchbox", showSearchInput);
     },
     
     killEvent : function (event) {
