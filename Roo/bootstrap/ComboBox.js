@@ -18,7 +18,7 @@ Roo.bootstrap.ComboBox = function(config){
 
 Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
     
-    escapeMarkup: defaultEscapeMarkup,
+    escapeMarkup: this.defaultEscapeMarkup(),
     
     getAutoCreate : function()
     {
