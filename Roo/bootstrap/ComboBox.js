@@ -62,7 +62,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
             cls: 'select2-hidden-accessible'
         }
         
-        this.liveRegion = document.body.createChild(liveRegion);
+        this.liveRegion = Roo.get(document.body).createChild(liveRegion);
         
         Roo.log(this.liveRegion);
     },
