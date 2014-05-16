@@ -66,9 +66,9 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
     onClick : function(e)
     {
         Roo.log('item on click ');
-        if(this.preventDefault){
-            e.preventDefault();
-        }
+        //if(this.preventDefault){
+        //    e.preventDefault();
+        //}
         this.parent().hideMenuItems();
         
         this.fireEvent('click', this, e);
