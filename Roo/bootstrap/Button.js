@@ -272,6 +272,12 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         if(this.preventDefault){
             e.preventDefault();
         }
+        if (this.pressed === true || this.pressed === false) {
+            this.pressed = !this.pressed;
+            this[this.pressed ? 'addClass' : 'removeClass']('active');
+            this.fireEvent('toggle', this,e);
+        }
+        
         
         this.fireEvent('click', this, e);
     }
