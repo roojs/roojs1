@@ -51,6 +51,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
     initEvents : function()
     {
         Roo.log('initEvents');
+        Roo.log(this);
         var results, search, resultsSelector = ".select2-results";
         
     }
