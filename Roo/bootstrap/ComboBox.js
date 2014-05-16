@@ -88,8 +88,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Input, {
                 {
                     tag: 'select',
                     cls: 'select2-offscreen',
-                    tabindex: -1,
-                    multiple: true
+                    tabindex: -1
                 }
             ]
         };
