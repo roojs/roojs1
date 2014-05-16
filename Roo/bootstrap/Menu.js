@@ -20,7 +20,7 @@
 Roo.bootstrap.Menu = function(config){
     Roo.bootstrap.Menu.superclass.constructor.call(this, config);
     if (this.registerMenu) {
-        Roo.menu.MenuMgr.register(this);
+        Roo.bootstrap.MenuMgr.register(this);
     }
     this.addEvents({
         /**
