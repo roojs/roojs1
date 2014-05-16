@@ -225,7 +225,8 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
                                 autocorrect: 'off',
                                 autocapitalize: 'off',
                                 spellcheck: false,
-                                
+                                'aria-expanded': true,
+                                'aria-autocomplete': 'lsit'
                             },
                             
                         ]
