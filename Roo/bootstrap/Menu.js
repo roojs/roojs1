@@ -218,11 +218,13 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         }
         if(_e !== false){
             this.fireEvent("beforeshow", this);
-            xy = this.el.adjustForConstraints(xy);
+            
+            //xy = this.el.adjustForConstraints(xy);
         }
-        this.el.setXY(xy);
-        this.el.show();
+        //this.el.setXY(xy);
+        //this.el.show();
         this.hidden = false;
+        this.triggerEl.addClass('open');
         this.focus();
         this.fireEvent("show", this);
     },
