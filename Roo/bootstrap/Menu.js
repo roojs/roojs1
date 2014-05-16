@@ -302,8 +302,13 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
           //if (e.isDefaultPrevented()) return
            //$parent.removeClass('open').trigger('hidden.bs.dropdown', relatedTarget)
         })
+    },
+    addxtypeChild : function (tree, cntr) {
+        var comp= Roo.bootstrap.Component.superclass.addxtypeChild.call(this, tree, cntr);
+        this.menuitems.add(comp);
+        return comp;
+
     }
-    
    
 });
 
