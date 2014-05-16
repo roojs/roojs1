@@ -143,6 +143,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             return;
         }
         Roo.log(e);
+        /*
         if (Roo.isTouch && e.type == 'touchstart' && t.menu  && !t.disabled) {
             if(t == this.activeItem && t.shouldDeactivate(e)){
                 this.activeItem.deactivate();
@@ -156,7 +157,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             
             
         }
-        
+        */
         t.onClick(e);
         this.fireEvent("click", this, t, e);
     },
