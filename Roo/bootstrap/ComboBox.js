@@ -33,6 +33,64 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Input, {
             return cfg;
         }
         
+        var id = Roo.id();
+        
+        var cfg = {
+            tag: 'div',
+            cn: [
+                {
+                    tag: 'div',
+                    cls: 'select2-container',
+                    cn: [
+                        {
+                            tag: 'a',
+                            cls: 'select2-choice',
+                            tabindex: -1,
+                            cn: [
+                                {
+                                    tag: 'span',
+                                    cls: 'select2-chosen'
+                                },
+                                {
+                                    tag: 'abbr',
+                                    cls: 'select2-search-choice-close'
+                                },
+                                {
+                                    tag: 'span',
+                                    cls: 'select2-arrow',
+                                    role: 'presentation',
+                                    cn: [
+                                        {
+                                            tag: 'b',
+                                            role: 'presentation'
+                                        }
+                                    ]
+                                },
+                            ]
+                        },
+                        {
+                            tag: 'label',
+                            'for': id,
+                            cls: 'select2-offscreen'
+                        },
+                        {
+                            tag: 'input',
+                            cls: 'select2-focusser select2-offscreen',
+                            type: 'text',
+                            role: 'button',
+                            
+                        }
+                    ]
+
+                },
+                {
+                    tag: 'select',
+                    cls: 'select2-offscreen',
+                    tabindex: -1,
+                    multiple: true
+                }
+            ]
+        };
         
         
         return cfg;
