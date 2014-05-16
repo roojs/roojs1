@@ -265,9 +265,9 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
        
        //  .trigger('shown.bs.dropdown', relatedTarget)
  
-       this.triggerEl.focus();
+       //this.triggerEl.focus();
 //       Roo.log(e);
-       e.preventDefault(); 
+       //e.preventDefault(); 
         
         
     },
