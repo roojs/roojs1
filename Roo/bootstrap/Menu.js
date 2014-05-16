@@ -225,7 +225,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         }
         //this.el.setXY(xy);
         //this.el.show();
-        this.hideMenuItems(e);
+        this.hideMenuItems();
         this.hidden = false;
         this.triggerEl.addClass('open');
         this.focus();
@@ -255,7 +255,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
                 this.activeItem.deactivate();
                 this.activeItem = null;
             }
-            this.triggerEl.removeClass('open');
+            this.triggerEl.removeClass('open');;
             this.hidden = true;
             this.fireEvent("hide", this);
         }
