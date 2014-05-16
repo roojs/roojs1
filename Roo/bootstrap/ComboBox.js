@@ -19,6 +19,8 @@ Roo.bootstrap.ComboBox = function(config){
 Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Input, {
     
     
+    multiple: false,
+    
     getAutoCreate : function(){
         
         var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
@@ -27,38 +29,82 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Input, {
         
         var cfg = {
             tag: 'div',
-            cn: []
-        };
-        
-        cfg.cn.push({
-            tag: 'ul',
-            cls: 'select2-choice',
             cn: [
                 {
-                    tag: 'li',
-                    cls: 'select2-search-field',
+                    tag: 'div',
+                    cls: 'select2-container' + (this.multiple) ? ' select2-container-multiple' : '',
                     cn: [
                         {
-                            tag: 'label',
-                            'for': id,
-                            cls: 'select2-offscreen',
-                            html: 'Label here'
-                        },
-                        {
-                            tag: 'input',
-                            type: 'text',
-                            cls: 'select2-input',
-                            id: id,
-                            autocomplete: 'off',
-                            autocorrect: 'off',
-                            autocapitalize: 'off',
-                            spellcheck: false,
-                            tabindex: 0
+                            tag: 'ul',
+                            cls: 'select2-choice',
+                            cn: [
+                                {
+                                    tag: 'li',
+                                    cls: 'select2-search-field',
+                                    cn: [
+                                        {
+                                            tag: 'label',
+                                            'for': id,
+                                            cls: 'select2-offscreen',
+                                            html: 'Label here'
+                                        },
+                                        {
+                                            tag: 'input',
+                                            type: 'text',
+                                            cls: 'select2-input',
+                                            id: id,
+                                            autocomplete: 'off',
+                                            autocorrect: 'off',
+                                            autocapitalize: 'off',
+                                            spellcheck: false,
+                                            tabindex: 0
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
-                }
+
+                },
+                {
+                    tag: 'select',
+                    cls: 'select2-container',
+                    cn: [
+                        {
+                            tag: 'ul',
+                            cls: 'select2-choice',
+                            cn: [
+                                {
+                                    tag: 'li',
+                                    cls: 'select2-search-field',
+                                    cn: [
+                                        {
+                                            tag: 'label',
+                                            'for': id,
+                                            cls: 'select2-offscreen',
+                                            html: 'Label here'
+                                        },
+                                        {
+                                            tag: 'input',
+                                            type: 'text',
+                                            cls: 'select2-input',
+                                            id: id,
+                                            autocomplete: 'off',
+                                            autocorrect: 'off',
+                                            autocapitalize: 'off',
+                                            spellcheck: false,
+                                            tabindex: 0
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+
+                },
             ]
-        })
+        };
+        
         
         return cfg;
         
