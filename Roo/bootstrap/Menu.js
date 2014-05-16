@@ -161,7 +161,17 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         t.onClick(e);
         this.fireEvent("click", this, t, e);
     },
-    
+     onMouseOver : function(e){
+        var t;
+        /*
+        if(t = this.findTargetItem(e)){
+            if(t.canActivate && !t.disabled){
+                this.setActiveItem(t, true);
+            }
+        }
+        */
+        this.fireEvent("mouseover", this, e, t);
+    },
     
     toggle  : function(e)
     {
