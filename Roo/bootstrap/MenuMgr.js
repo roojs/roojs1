@@ -93,6 +93,8 @@ Roo.bootstrap.MenuMgr = function(){
         if(lastShow.getElapsed() > 50 && active.length > 0 && !e.getTarget(".x-menu")){
            hideAll();
         }
+        
+        
    }
 
    // private
