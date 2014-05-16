@@ -19,4 +19,49 @@ Roo.bootstrap.ComboBox = function(config){
 Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Input, {
     
     
+    getAutoCreate : function(){
+        
+        var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
+        
+        var id = Roo.id();
+        
+        var cfg = {
+            tag: 'div',
+            cn: []
+        };
+        
+        cfg.cn.push({
+            tag: 'ul',
+            cls: 'select2-choice',
+            cn: [
+                {
+                    tag: 'li',
+                    cls: 'select2-search-field',
+                    cn: [
+                        {
+                            tag: 'label',
+                            'for': id,
+                            cls: 'select2-offscreen',
+                            html: 'Label here'
+                        },
+                        {
+                            tag: 'input',
+                            type: 'text',
+                            cls: 'select2-input',
+                            id: id,
+                            autocomplete: 'off',
+                            autocorrect: 'off',
+                            autocapitalize: 'off',
+                            spellcheck: false,
+                            tabindex: 0
+                        }
+                    ]
+                }
+            ]
+        })
+        
+        return cfg;
+        
+    }
+    
 });
