@@ -113,6 +113,30 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
    
 });
 
-Roo.bootstrap.Menu.registry = []; 
+Roo.apply(Roo.bootstrap.Menu, {
+    
+    menus : [],
+    
+    register : function(menu)
+    {
+        if (!menus.length) {
+            Roo.get(document.body).on( 'click', Roo.bootstrap.Menu.onClick)
+            
+        }
+        this.menus.push(menu);
+        
+        
+    },
+    onClick : function(e)
+    {
+        Roo.log(e);
+        
+    }
+    
+    
+    
+    
+    
+}
 
  
