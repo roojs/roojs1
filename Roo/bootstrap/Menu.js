@@ -191,7 +191,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         this.fireEvent("mouseover", this, e, t);
     },
     isVisible : function(){
-        return this.triggerEl.hasClass('open')
+        return !this.hidden;
     },
      onMouseOut : function(e){
         var t  = this.findTargetItem(e);
