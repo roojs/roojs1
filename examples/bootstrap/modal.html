@@ -58,7 +58,7 @@
     <script type="text/javascript" src="../../Roo/form/VTypes.js"></script>
         
     <!-- test code -->
-    <script type="text/javascript" src="ComboBox.js"></script>
+    <script type="text/javascript" src="modal.js"></script>
   </head>
   
   <body id="body">
@@ -66,6 +66,9 @@
         var baseURL = '/web.eventmanager/demo.local.php';
       Roo.onReady(function() {
           Roo.XComponent.build();
+          Roo.XComponent.on('buildcomplete', function() {
+            Roo.example.modal.el.show();
+          });
       });
 
     </script>
