@@ -40,10 +40,17 @@ Roo.bootstrap.Button = function(config){
         // raw events
         /**
          * @event click
-         * The raw click event for the entire grid.
+         * When a butotn is pressed
          * @param {Roo.EventObject} e
          */
-        "click" : true
+        "click" : true,
+         /**
+         * @event toggle
+         * After the button has been toggles
+         * @param {Roo.EventObject} e
+         * @param {boolean} pressed (also available as button.pressed)
+         */
+        "toggle" : true
     });
 };
 
@@ -274,8 +281,8 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         }
         if (this.pressed === true || this.pressed === false) {
             this.pressed = !this.pressed;
-            this[this.pressed ? 'addClass' : 'removeClass']('active');
-            this.fireEvent('toggle', this,e);
+            this.el[this.pressed ? 'addClass' : 'removeClass']('active');
+            this.fireEvent('toggle', this, e, this.pressed);
         }
         
         
