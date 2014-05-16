@@ -176,33 +176,5 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
    
 });
 
-Roo.apply(Roo.bootstrap.Menu, {
-    
-    menus : [],
-    
-    register : function(menu)
-    {
-        if (!this.menus.length) {
-            Roo.get(document.body).on( 'click', Roo.bootstrap.Menu.onClick)
-            
-        }
-        this.menus.push(menu);
-        
-        
-    },
-    onClick : function(e)
-    {
-        Roo.log(e);
-        
-    },
-    show : function(menu) {
-        
-        
-        
-    }
-    
-
-    
-    
-});
+ 
  
