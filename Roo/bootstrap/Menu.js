@@ -19,6 +19,7 @@
 
 Roo.bootstrap.Menu = function(config){
     Roo.bootstrap.Menu.superclass.constructor.call(this, config);
+    Roo.bootstrap.Menu.register(this);
 };
 
 Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
@@ -112,6 +113,6 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
    
 });
 
- 
+Roo.bootstrap.Menu.registry = []; 
 
  
