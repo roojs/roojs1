@@ -45,7 +45,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
                 }
             ]
         };
-        Roo.log(cfg);
+       
         return cfg;
         
     },
