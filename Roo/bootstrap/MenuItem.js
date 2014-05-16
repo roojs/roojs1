@@ -69,7 +69,7 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
         //if(this.preventDefault){
         //    e.preventDefault();
         //}
-        this.parent().hideMenuItems();
+        //this.parent().hideMenuItems();
         
         this.fireEvent('click', this, e);
     },
