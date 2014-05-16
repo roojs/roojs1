@@ -93,6 +93,9 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
      */
     registerMenu : true,
     
+    
+    parentMenu : false,
+    
     getChildContainer : function() {
         return this.el;  
     },
@@ -197,7 +200,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
      */
     show : function(el, pos, parentMenu){
         this.parentMenu = parentMenu;
-        if(!this.el){
+        if(!tshis.el){
             this.render();
         }
         this.fireEvent("beforeshow", this);
