@@ -48,6 +48,7 @@ Roo.bootstrap.Button = function(config){
          * @event toggle
          * After the button has been toggles
          * @param {Roo.EventObject} e
+         * @param {boolean} pressed
          */
         "toggle" : true
     });
