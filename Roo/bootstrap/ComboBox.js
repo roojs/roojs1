@@ -44,8 +44,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
             ]
         };
         
-        
         return cfg;
         
+    },
+    
+    initEvent : function()
+    {
+        Roo.log('initEvent');
     }
 });
