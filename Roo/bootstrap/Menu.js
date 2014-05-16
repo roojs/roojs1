@@ -170,7 +170,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     },
      onMouseOver : function(e){
         var t  = this.findTargetItem(e);
-        
+        Roo.log(t);
         //if(t){
         //    if(t.canActivate && !t.disabled){
         //        this.setActiveItem(t, true);
