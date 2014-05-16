@@ -176,6 +176,59 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
                     {
                         tag: 'abbr',
                         cls: 'select2-search-choice-close'
+                    },
+                    {
+                        tag: 'span',
+                        cls: 'select2-arrow',
+                        role: 'presentation'
+                    },
+                    {
+                        tag: 'b',
+                        role: 'presentation'
+                    }
+                ]
+            });
+            
+            container.createChild({
+                tag: 'label',
+                'for': '',
+                cls: 'select2-offscreen'
+            });
+            
+            container.createChild({
+                tag: 'input',
+                type: 'text',
+                cls: 'select2-focusser select2-offscreen',
+                'aria-haspopup': true,
+                role: 'button'
+            });
+            
+            container.createChild({
+                tag: 'div',
+                cls: 'select2-drop select2-display-none',
+                cn: [
+                    {
+                        tag: 'div',
+                        cls: 'select2-search',
+                        cn: [
+                            {
+                                tag: 'label',
+                                'for': '',
+                                cls: 'select2-offscreen'
+                            },
+                            {
+                                tag: 'input',
+                                type: 'text',
+                                cls: 'select2-input',
+                                role: 'combobox',
+                                autocomplete: 'off',
+                                autocorrect: 'off',
+                                autocapitalize: 'off',
+                                spellcheck: false,
+                                
+                            },
+                            
+                        ]
                     }
                 ]
             });
