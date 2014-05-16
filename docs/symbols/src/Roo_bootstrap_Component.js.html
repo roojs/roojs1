@@ -129,7 +129,7 @@
         </span><span class="jsdoc-var">cn.parentType </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.xtype</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">//??
         </span><span class="jsdoc-var">cn.parentId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">;
         
-        </span><span class="jsdoc-var">cntr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cntr </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">'getChildContainer' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">cntr </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">'getChildContainer' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">has_flexy_each </span><span class="jsdoc-syntax">=  (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'flexy:foreach'</span><span class="jsdoc-syntax">]) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">);
         
@@ -179,8 +179,9 @@
     
     </span><span class="jsdoc-var">addxtypeChild </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">)
     {
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'addxtypeChild:' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">cntr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cntr </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">'getChildContainer' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">cntr </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">'getChildContainer' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">;
         
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">has_flexy </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'flexy:if'</span><span class="jsdoc-syntax">]) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) ||
@@ -233,7 +234,8 @@
                  
                 </span><span class="jsdoc-comment">// actually if flexy:foreach is found, we really want to create 
                 // multiple copies here...
-                
+                //Roo.log('render');
+                //Roo.log(this[cntr]());
                 </span><span class="jsdoc-var">cn.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">]());
              }
             </span><span class="jsdoc-comment">// then add the element..

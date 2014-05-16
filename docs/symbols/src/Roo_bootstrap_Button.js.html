@@ -40,10 +40,17 @@
         </span><span class="jsdoc-comment">// raw events
         /**
          * @event click
-         * The raw click event for the entire grid.
+         * When a butotn is pressed
          * @param {Roo.EventObject} e
          */
-        </span><span class="jsdoc-string">&quot;click&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-string">&quot;click&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+         </span><span class="jsdoc-comment">/**
+         * @event toggle
+         * After the button has been toggles
+         * @param {Roo.EventObject} e
+         * @param {boolean} pressed (also available as button.pressed)
+         */
+        </span><span class="jsdoc-string">&quot;toggle&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
     </span><span class="jsdoc-syntax">});
 };
 
@@ -70,6 +77,10 @@
     </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
+    
+    </span><span class="jsdoc-var">pressed </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+    
+    
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
@@ -86,7 +97,7 @@
         }
         </span><span class="jsdoc-var">cfg.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">cfg.html</span><span class="jsdoc-syntax">;
         
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toggle</span><span class="jsdoc-syntax">===</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toggle </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">={
                 </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'slider-frame roo-button'</span><span class="jsdoc-syntax">,
@@ -122,9 +133,9 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.theme</span><span class="jsdoc-syntax">===</span><span class="jsdoc-string">'default'</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'btn roo-button'</span><span class="jsdoc-syntax">;
             
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parentType </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'Navbar'</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">this.weight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.weight.length </span><span class="jsdoc-syntax">?  </span><span class="jsdoc-var">this.weight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'default'</span><span class="jsdoc-syntax">;
-            }
+            </span><span class="jsdoc-comment">//if (this.parentType != 'Navbar') {
+            </span><span class="jsdoc-var">this.weight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.weight.length </span><span class="jsdoc-syntax">?  </span><span class="jsdoc-var">this.weight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'default'</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-comment">//}
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'default'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'primary'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'success'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'info'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'warning'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'danger'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'link'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.weight</span><span class="jsdoc-syntax">) &gt; -1) {
                 
                 </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' btn-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.weight</span><span class="jsdoc-syntax">;
@@ -163,7 +174,9 @@
         </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.size.length </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-string">' btn-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.size</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
          
         </span><span class="jsdoc-comment">//gsRoo.log(this.parentType);
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parentType </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'Navbar'</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parentType </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'Navbar' </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.bar</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'changing to li?'</span><span class="jsdoc-syntax">);
+            
             </span><span class="jsdoc-var">cfg.tag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'li'</span><span class="jsdoc-syntax">;
             
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
@@ -180,7 +193,9 @@
             
             </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">cfg.html</span><span class="jsdoc-syntax">;
             
-        } 
+        }
+        
+       </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.parentType </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'Navbar' </span><span class="jsdoc-syntax">?  </span><span class="jsdoc-string">' navbar-btn' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.glyphicon</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cfg.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cfg.html</span><span class="jsdoc-syntax">;
@@ -264,6 +279,12 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.preventDefault</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
         }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.pressed </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.pressed </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.pressed </span><span class="jsdoc-syntax">= !</span><span class="jsdoc-var">this.pressed</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.pressed </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'addClass' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'removeClass'</span><span class="jsdoc-syntax">](</span><span class="jsdoc-string">'active'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'toggle'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.pressed</span><span class="jsdoc-syntax">);
+        }
+        
         
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
     }

@@ -170,12 +170,12 @@
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-comment">//Roo.HtmlEditorCore.superclass.onRender.call(this, ct, position);
-        </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.owner.el</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.owner.inputEl </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.owner.inputEl</span><span class="jsdoc-syntax">() : </span><span class="jsdoc-var">this.owner.el</span><span class="jsdoc-syntax">;
         
         
         </span><span class="jsdoc-var">this.el.dom.style.border </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'0 none'</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.el.dom.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tabIndex'</span><span class="jsdoc-syntax">, -1);
-        </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'x-hidden'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'x-hidden hide'</span><span class="jsdoc-syntax">);
         
         
         
@@ -190,6 +190,7 @@
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">iframe </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.owner.wrap.createChild</span><span class="jsdoc-syntax">({
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'iframe'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'form-control'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// bootstrap..
             </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.frameId</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.frameId</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">frameBorder </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'no'</span><span class="jsdoc-syntax">,
@@ -236,8 +237,8 @@
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">onResize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-comment">//Roo.log('resize: ' +w + ',' + h );
-        //Roo.HtmlEditorCore.superclass.onResize.apply(this, arguments);
+         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'resize: ' </span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">',' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">//Roo.HtmlEditorCore.superclass.onResize.apply(this, arguments);
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.iframe</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
@@ -265,11 +266,11 @@
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.sourceEditMode</span><span class="jsdoc-syntax">){
  
-            </span><span class="jsdoc-var">this.iframe.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'x-hidden'</span><span class="jsdoc-syntax">;     </span><span class="jsdoc-comment">//FIXME - what's the BS styles for these
+            </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.iframe</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'x-hidden'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'hide'</span><span class="jsdoc-syntax">]);     </span><span class="jsdoc-comment">//FIXME - what's the BS styles for these
             
         </span><span class="jsdoc-syntax">}</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
- 
-            </span><span class="jsdoc-var">this.iframe.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.iframe</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'x-hidden'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'hide'</span><span class="jsdoc-syntax">]);
+            </span><span class="jsdoc-comment">//this.iframe.className = '';
             </span><span class="jsdoc-var">this.deferFocus</span><span class="jsdoc-syntax">();
         }
         </span><span class="jsdoc-comment">//this.setSize(this.owner.wrap.getSize());

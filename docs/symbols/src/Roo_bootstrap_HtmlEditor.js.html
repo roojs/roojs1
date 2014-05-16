@@ -17,29 +17,409 @@
 
 </span><span class="jsdoc-var">Roo.bootstrap.HtmlEditor </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">Roo.bootstrap.HtmlEditor.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
-    
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.toolbars </span><span class="jsdoc-syntax">= [];
+    }
+    </span><span class="jsdoc-var">this.editorcore </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.HtmlEditorCore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">owner </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">} , </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">));
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-comment">/**
+             * @event initialize
+             * Fires when the editor is fully initialized (including the iframe)
+             * @param {HtmlEditor} this
+             */
+            </span><span class="jsdoc-var">initialize</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-comment">/**
+             * @event activate
+             * Fires when the editor is first receives the focus. Any insertion must wait
+             * until after this event.
+             * @param {HtmlEditor} this
+             */
+            </span><span class="jsdoc-var">activate</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+             </span><span class="jsdoc-comment">/**
+             * @event beforesync
+             * Fires before the textarea is updated with content from the editor iframe. Return false
+             * to cancel the sync.
+             * @param {HtmlEditor} this
+             * @param {String} html
+             */
+            </span><span class="jsdoc-var">beforesync</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+             </span><span class="jsdoc-comment">/**
+             * @event beforepush
+             * Fires before the iframe editor is updated with content from the textarea. Return false
+             * to cancel the push.
+             * @param {HtmlEditor} this
+             * @param {String} html
+             */
+            </span><span class="jsdoc-var">beforepush</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+             </span><span class="jsdoc-comment">/**
+             * @event sync
+             * Fires when the textarea is updated with content from the editor iframe.
+             * @param {HtmlEditor} this
+             * @param {String} html
+             */
+            </span><span class="jsdoc-var">sync</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+             </span><span class="jsdoc-comment">/**
+             * @event push
+             * Fires when the iframe editor is updated with content from the textarea.
+             * @param {HtmlEditor} this
+             * @param {String} html
+             */
+            </span><span class="jsdoc-var">push</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+             </span><span class="jsdoc-comment">/**
+             * @event editmodechange
+             * Fires when the editor switches edit modes
+             * @param {HtmlEditor} this
+             * @param {Boolean} sourceEdit True if source edit, false if standard editing.
+             */
+            </span><span class="jsdoc-var">editmodechange</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-comment">/**
+             * @event editorevent
+             * Fires when on any editor (mouse up/down cursor movement etc.) - used for toolbar hooks.
+             * @param {HtmlEditor} this
+             */
+            </span><span class="jsdoc-var">editorevent</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-comment">/**
+             * @event firstfocus
+             * Fires when on first focus - needed by toolbars..
+             * @param {HtmlEditor} this
+             */
+            </span><span class="jsdoc-var">firstfocus</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-comment">/**
+             * @event autosave
+             * Auto save the htmlEditor value as a file into Events
+             * @param {HtmlEditor} this
+             */
+            </span><span class="jsdoc-var">autosave</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-comment">/**
+             * @event savedpreview
+             * preview the saved version of htmlEditor
+             * @param {HtmlEditor} this
+             */
+            </span><span class="jsdoc-var">savedpreview</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-syntax">});
 };
 
 
-</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.HtmlEditor</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.HtmlEditor</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.TextArea</span><span class="jsdoc-syntax">,  {
     
-    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
-    {
-</span><span class="jsdoc-comment">//        var cfg = {};
-//        
-//        var toolbar = new Roo.bootstrap.ButtonGroup({
-//            toolbar: true,
-//            cn: [
-//                {
-//                    new Roo.bootstrap.Button({
-//                        
-//                    })
-//                }
-//            ]
-//        });
-//        
-//        return cfg;
+    
+      </span><span class="jsdoc-comment">/**
+     * @cfg {Array} toolbars Array of toolbars. - defaults to just the Standard one
+     */
+    </span><span class="jsdoc-var">toolbars </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+   
+     </span><span class="jsdoc-comment">/**
+     * @cfg {String} resizable  's' or 'se' or 'e' - wrapps the element in a
+     *                        Roo.resizable.
+     */
+    </span><span class="jsdoc-var">resizable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+     </span><span class="jsdoc-comment">/**
+     * @cfg {Number} height (in pixels)
+     */   
+    </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">: 300,
+   </span><span class="jsdoc-comment">/**
+     * @cfg {Number} width (in pixels)
+     */   
+    </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: 500,
+    
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Array} stylesheets url of stylesheets. set to [] to disable stylesheets.
+     * 
+     */
+    </span><span class="jsdoc-var">stylesheets</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-comment">// id of frame..
+    </span><span class="jsdoc-var">frameId</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-comment">// private properties
+    </span><span class="jsdoc-var">validationEvent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">deferHeight</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">initialized </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">activated </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">onFocus </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.emptyFn</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">iframePad</span><span class="jsdoc-syntax">:3,
+    </span><span class="jsdoc-var">hideMode</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'offsets'</span><span class="jsdoc-syntax">,
+    
+    
+    </span><span class="jsdoc-var">tbContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">toolbarContainer </span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.wrap.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.x-html-editor-tb'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Protected method that will not generally be called directly. It
+     * is called when the editor creates its toolbar. Override this method if you need to
+     * add custom toolbar buttons.
+     * @param {HtmlEditor} editor
+     */
+    </span><span class="jsdoc-var">createToolbar </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         
-    </span><span class="jsdoc-syntax">}
-});
-</span></code></body></html>
+        </span><span class="jsdoc-var">this.toolbars </span><span class="jsdoc-syntax">= [ </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.HtmlEditor.ToolbarStandard</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">} ) ];
+        </span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbarContainer</span><span class="jsdoc-syntax">());
+         
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;create toolbars&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">editor.toolbars </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">editor.toolbars.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">editor.toolbars </span><span class="jsdoc-syntax">= [ </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.HtmlEditor.ToolbarStandard</span><span class="jsdoc-syntax">() ]; </span><span class="jsdoc-comment">// can be empty?
+        </span><span class="jsdoc-syntax">}
+        
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0 ; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">editor.toolbars.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-var">editor.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(
+                    </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">editor.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'string' </span><span class="jsdoc-syntax">?
+                        { </span><span class="jsdoc-var">xtype</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">editor.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]} : </span><span class="jsdoc-var">editor.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">],
+                </span><span class="jsdoc-var">Roo.bootstrap.HtmlEditor</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">editor.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.init</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">);
+        }
+         
+        
+    },
+
+     
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">)
+    {
+       </span><span class="jsdoc-comment">// Roo.log(&quot;Call onRender: &quot; + this.xtype);
+        
+        </span><span class="jsdoc-var">Roo.bootstrap.HtmlEditor.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
+      
+        </span><span class="jsdoc-var">this.wrap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.wrap</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'x-html-editor-wrap'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">:{</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'x-html-editor-tb'</span><span class="jsdoc-syntax">}
+        });
+        
+        </span><span class="jsdoc-var">this.editorcore.onRender</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
+         
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resizable</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.resizeEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Resizable</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.wrap</span><span class="jsdoc-syntax">, {
+                </span><span class="jsdoc-var">pinned </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">wrap</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">dynamic </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">minHeight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.height</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.height</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">handles </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.resizable</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
+                    </span><span class="jsdoc-var">resize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-var">_t.onResize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// -something
+                    </span><span class="jsdoc-syntax">}
+                }
+            });
+            
+        }
+        </span><span class="jsdoc-var">this.createToolbar</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+       
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.wrap.getSize</span><span class="jsdoc-syntax">());
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resizeEl</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.resizeEl.resizeTo.defer</span><span class="jsdoc-syntax">(100, </span><span class="jsdoc-var">this.resizeEl</span><span class="jsdoc-syntax">,[ </span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.height </span><span class="jsdoc-syntax">] );
+            </span><span class="jsdoc-comment">// should trigger onReize..
+        </span><span class="jsdoc-syntax">}
+        
+</span><span class="jsdoc-comment">//        if(this.autosave &amp;&amp; this.w){
+//            this.autoSaveFn = setInterval(this.autosave, 1000);
+//        }
+    </span><span class="jsdoc-syntax">},
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onResize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'resize: ' </span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">',' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Roo.bootstrap.HtmlEditor.superclass.onResize.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ew </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">eh </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">() ){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'number'</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">aw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.wrap.getFrameWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'lr'</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.adjustWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'textarea'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">aw</span><span class="jsdoc-syntax">));
+                </span><span class="jsdoc-var">ew </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">aw</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'number'</span><span class="jsdoc-syntax">){
+                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tbh </span><span class="jsdoc-syntax">= -11;  </span><span class="jsdoc-comment">// fixme it needs to tool bar size!
+                </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.toolbars.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                    </span><span class="jsdoc-comment">// fixme - ask toolbars for heights?
+                    </span><span class="jsdoc-var">tbh </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.el.getHeight</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-comment">//if (this.toolbars[i].footer) {
+                    //    tbh += this.toolbars[i].footer.el.getHeight();
+                    //}
+                </span><span class="jsdoc-syntax">}
+              
+                
+                
+                
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ah </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.wrap.getFrameWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tb'</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">tbh</span><span class="jsdoc-syntax">;</span><span class="jsdoc-comment">// this.tb.el.getHeight();
+                </span><span class="jsdoc-var">ah </span><span class="jsdoc-syntax">-= 5; </span><span class="jsdoc-comment">// knock a few pixes off for look..
+                </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.adjustWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'textarea'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ah</span><span class="jsdoc-syntax">));
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">eh </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ah</span><span class="jsdoc-syntax">;
+            }
+        }
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'onResize:' </span><span class="jsdoc-syntax">+ [</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">ew</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">eh</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">','</span><span class="jsdoc-syntax">) );
+        </span><span class="jsdoc-var">this.editorcore.onResize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ew</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">eh</span><span class="jsdoc-syntax">);
+        
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Toggles the editor between standard and source edit mode.
+     * @param {Boolean} sourceEdit (optional) True for source edit, false for standard
+     */
+    </span><span class="jsdoc-var">toggleSourceEdit </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sourceEditMode</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.editorcore.toggleSourceEdit</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sourceEditMode</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.editorcore.sourceEditMode</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'editor - showing textarea'</span><span class="jsdoc-syntax">);
+            
+</span><span class="jsdoc-comment">//            Roo.log('in');
+//            Roo.log(this.syncValue());
+            </span><span class="jsdoc-var">this.editorcore.syncValue</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'hide'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tabIndex'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.focus</span><span class="jsdoc-syntax">();
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'editor - hiding textarea'</span><span class="jsdoc-syntax">);
+</span><span class="jsdoc-comment">//            Roo.log('out')
+//            Roo.log(this.pushValue()); 
+            </span><span class="jsdoc-var">this.editorcore.pushValue</span><span class="jsdoc-syntax">();
+            
+            </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'hide'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tabIndex'</span><span class="jsdoc-syntax">, -1);
+            </span><span class="jsdoc-comment">//this.deferFocus();
+        </span><span class="jsdoc-syntax">}
+         
+        </span><span class="jsdoc-var">this.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.wrap.getSize</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'editmodechange'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.editorcore.sourceEditMode</span><span class="jsdoc-syntax">);
+    },
+ 
+    </span><span class="jsdoc-comment">// private (for BoxComponent)
+    </span><span class="jsdoc-var">adjustSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.BoxComponent.prototype.adjustSize</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">// private (for BoxComponent)
+    </span><span class="jsdoc-var">getResizeEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.wrap</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">// private (for BoxComponent)
+    </span><span class="jsdoc-var">getPositionEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.wrap</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.originalValue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Overridden and disabled. The editor element does not support standard valid/invalid marking. @hide
+     * @method
+     */
+    </span><span class="jsdoc-var">markInvalid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.emptyFn</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * Overridden and disabled. The editor element does not support standard valid/invalid marking. @hide
+     * @method
+     */
+    </span><span class="jsdoc-var">clearInvalid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.emptyFn</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">setValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">Roo.bootstrap.HtmlEditor.superclass.setValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.editorcore.pushValue</span><span class="jsdoc-syntax">();
+    },
+
+     
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">deferFocus </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.focus.defer</span><span class="jsdoc-syntax">(10, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">// doc'ed in Field
+    </span><span class="jsdoc-var">focus </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.editorcore.focus</span><span class="jsdoc-syntax">();
+        
+    },
+      
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onDestroy </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        
+        
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.rendered</span><span class="jsdoc-syntax">){
+            
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.toolbars.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                </span><span class="jsdoc-comment">// fixme - ask toolbars for heights?
+                </span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.onDestroy</span><span class="jsdoc-syntax">();
+            }
+            
+            </span><span class="jsdoc-var">this.wrap.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.wrap.remove</span><span class="jsdoc-syntax">();
+        }
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onFirstFocus </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-comment">//Roo.log(&quot;onFirstFocus&quot;);
+        </span><span class="jsdoc-var">this.editorcore.onFirstFocus</span><span class="jsdoc-syntax">();
+         </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.toolbars.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.onFirstFocus</span><span class="jsdoc-syntax">();
+        }
+        
+    },
+    
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">syncValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.editorcore.syncValue</span><span class="jsdoc-syntax">();
+    }
+     
+    
+    </span><span class="jsdoc-comment">// hide stuff that is not compatible
+    /**
+     * @event blur
+     * @hide
+     */
+    /**
+     * @event change
+     * @hide
+     */
+    /**
+     * @event focus
+     * @hide
+     */
+    /**
+     * @event specialkey
+     * @hide
+     */
+    /**
+     * @cfg {String} fieldClass @hide
+     */
+    /**
+     * @cfg {String} focusClass @hide
+     */
+    /**
+     * @cfg {String} autoCreate @hide
+     */
+    /**
+     * @cfg {String} inputType @hide
+     */
+    /**
+     * @cfg {String} invalidClass @hide
+     */
+    /**
+     * @cfg {String} invalidText @hide
+     */
+    /**
+     * @cfg {String} msgFx @hide
+     */
+    /**
+     * @cfg {String} validateOnBlur @hide
+     */
+</span><span class="jsdoc-syntax">});
+ 
+    
+   
+   
+   
+    </span></code></body></html>
