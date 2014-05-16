@@ -70,6 +70,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
         
         this.container.attr("title", this.el.attr("title"));
         
+        this.container.attr("style", this.el.attr("style"));
+        
         
         
         
