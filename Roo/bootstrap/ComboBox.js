@@ -18,6 +18,8 @@ Roo.bootstrap.ComboBox = function(config){
 
 Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
     
+    resultsSelector : ".select2-results",
+    
     getAutoCreate : function()
     {
         var id = Roo.id();
@@ -51,9 +53,15 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
     initEvents : function()
     {
         Roo.log('initEvents');
-        var results, search, resultsSelector = ".select2-results";
+        
         this.container = Roo.bootstrap.ComboBox.SingleSelect2.createContainer();
-        Roo.log(this.container);
+        
+        this.liveRegion = $("<span>", {
+                    role: "status",
+                    "aria-live": "polite"
+                })
+                .addClass("select2-hidden-accessible")
+                .appendTo(document.body);
         
     },
     
