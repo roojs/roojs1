@@ -52,7 +52,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
     {
         Roo.log('initEvents');
         var results, search, resultsSelector = ".select2-results";
-        this.container = this.createContainer();
+        this.container = this.SingleSelect2.createContainer();
         Roo.log(this.container);
         
     },
