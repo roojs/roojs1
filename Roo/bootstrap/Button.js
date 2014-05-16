@@ -316,7 +316,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
      * If a state it passed, it becomes the pressed state otherwise the current state is toggled.
      * @param {Boolean} state (optional) Force a particular state
      */
-    toggleActive : function(v)
+    toggleActive : function()
     {
        var active = this.el.hasClass('active');
        this.setActive(!active);
