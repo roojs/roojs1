@@ -23,7 +23,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
         
         var cfg = {};
         
-        Roo.log(cfg);
+        
         return cfg;
         
     }
