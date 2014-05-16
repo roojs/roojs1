@@ -14,7 +14,7 @@
  * Provides a common registry of all menu items on a page so that they can be easily accessed by id.
  * @singleton
  */
-Roo.menu.MenuMgr = function(){
+Roo.bootstrap.MenuMgr = function(){
    var menus, active, groups = {}, attached = false, lastShow = new Date();
 
    // private - called when first menu is created
