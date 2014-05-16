@@ -396,6 +396,26 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
         
     },
     
+    hideSearchBar: function() {
+        
+        if(this.dropdown.select(".select2-search",true).first().hasClass("select2-search-hidden")){
+            this.dropdown.select(".select2-search",true).first().removeClass("select2-search-hidden");
+        }
+        
+        if(this.dropdown.select(".select2-search",true).first().hasClass("select2-offscreen")){
+            this.dropdown.select(".select2-search",true).first().removeClass("select2-offscreen");
+        }
+        
+        if(this.dropdown.hasClass("select2-with-searchbox")){
+            this.dropdown.removeClass("select2-with-searchbox");
+        }
+        
+        if(this.container.hasClass("select2-with-searchbox")){
+            this.container.removeClass("select2-with-searchbox");
+        }
+        
+    },
+    
     killEvent : function (event) {
         Roo.log('KILLEVENT');
         event.preventDefault();
