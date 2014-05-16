@@ -119,7 +119,7 @@ Roo.apply(Roo.bootstrap.Menu, {
     
     register : function(menu)
     {
-        if (!menus.length) {
+        if (!this.menus.length) {
             Roo.get(document.body).on( 'click', Roo.bootstrap.Menu.onClick)
             
         }
@@ -137,6 +137,5 @@ Roo.apply(Roo.bootstrap.Menu, {
     
     
     
-}
-
+});
  
