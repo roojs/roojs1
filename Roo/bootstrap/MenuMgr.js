@@ -54,7 +54,7 @@ Roo.bootstrap.MenuMgr = function(){
        lastShow = new Date();
        active.add(m);
        if(!attached){
-           Roo.get(document).on("mousedown", onMouseDown);
+          // Roo.get(document).on("mousedown", onMouseDown);
            
            attached = true;
        }
