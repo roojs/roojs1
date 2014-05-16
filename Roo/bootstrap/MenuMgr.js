@@ -59,10 +59,10 @@ Roo.bootstrap.MenuMgr = function(){
            attached = true;
        }
        if(m.parentMenu){
-          m.getEl().setZIndex(parseInt(m.parentMenu.getEl().getStyle("z-index"), 10) + 3);
+          //m.getEl().setZIndex(parseInt(m.parentMenu.getEl().getStyle("z-index"), 10) + 3);
           m.parentMenu.activeChild = m;
        }else if(last && last.isVisible()){
-          m.getEl().setZIndex(parseInt(last.getEl().getStyle("z-index"), 10) + 3);
+          //m.getEl().setZIndex(parseInt(last.getEl().getStyle("z-index"), 10) + 3);
        }
    }
 
