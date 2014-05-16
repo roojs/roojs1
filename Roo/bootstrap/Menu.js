@@ -79,7 +79,7 @@ Roo.bootstrap.Menu = function(config){
          */
         itemclick: true
     });
-    
+    this.menuitems = new Roo.util.MixedCollection();
 };
 
 Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
