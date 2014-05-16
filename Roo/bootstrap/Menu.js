@@ -233,6 +233,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     },
     
     focus : function(){
+        return;
         if(!this.hidden){
             this.doFocus.defer(50, this);
         }
