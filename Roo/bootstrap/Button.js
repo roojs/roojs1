@@ -309,12 +309,9 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     setActive : function(v) {
         
         this.el[v ? 'addClass' : 'removeClass']('active');
-        
-        
     },
      /**
-     * If a state it passed, it becomes the pressed state otherwise the current state is toggled.
-     * @param {Boolean} state (optional) Force a particular state
+     * toggles the current active state 
      */
     toggleActive : function()
     {
