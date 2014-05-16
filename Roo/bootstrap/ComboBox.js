@@ -25,24 +25,28 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Input, {
         
         var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
         
-        var id = Roo.id();
         
-        var select = {
-            tag: 'select',
-            cls: 'select2-offscreen',
-            tabindex: -1
-        };
+        var cfg = {};
         
         if(this.multiple){
-            select.multiple = true;
+            cfg = this.getAutoCreateMulitple();
         }
+        
+        
+        return cfg;
+        
+    },
+    
+    getAutoCreateMulitple : function()
+    {
+        var id = Roo.id();
         
         var cfg = {
             tag: 'div',
             cn: [
                 {
                     tag: 'div',
-                    cls: 'select2-container' + (this.multiple) ? ' select2-container-multiple' : '',
+                    cls: 'select2-container select2-container-multiple',
                     cn: [
                         {
                             tag: 'ul',
@@ -76,14 +80,16 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Input, {
                     ]
 
                 },
-                
-                select
+                {
+                    tag: 'select',
+                    cls: 'select2-offscreen',
+                    tabindex: -1,
+                    multiple: true
+                }
             ]
         };
         
-        
         return cfg;
-        
     }
     
 });
