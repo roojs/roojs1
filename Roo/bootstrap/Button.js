@@ -97,7 +97,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         }
         cfg.html = this.html || cfg.html;
         
-        if (this.toggle === true) {
+        if (this.toggle == true) {
             cfg={
                 tag: 'div',
                 cls: 'slider-frame roo-button',
@@ -302,9 +302,9 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         this.disabled = true;
         this.el.addClass('disabled');
     },
-    setDisabled : function(v) {
+    setActive : function(v) {
         
-        this[v ? 'disable' : 'enable']();
+        this[v ? 'addClass' : 'removeClass']('active');
         
         
     }
