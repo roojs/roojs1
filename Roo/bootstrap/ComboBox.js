@@ -56,13 +56,15 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
         
         this.container = Roo.bootstrap.ComboBox.SingleSelect2.createContainer();
         
-        this.liveRegion = new Roo.Element(do, forceNew)$("<span>", {
-                    role: "status",
-                    "aria-live": "polite"
-                })
-                .addClass("select2-hidden-accessible")
-                .appendTo(document.body);
+        var liveRegion = {
+            tag: 'span',
+            role: 'status',
+            cls: 'select2-hidden-accessible'
+        }
         
+        this.liveRegion = document.body.createChild(liveRegion);
+        
+        Roo.log(this.liveRegion);
     },
     
     populateResults: function(container, results, query) {
