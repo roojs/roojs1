@@ -80,7 +80,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Input, {
                             role: 'button',
                             id: id,
                             tabindex: 0
-                            
                         }
                     ]
 
