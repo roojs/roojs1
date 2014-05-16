@@ -150,6 +150,7 @@ Roo.bootstrap.MenuMgr = function(){
                return new Roo.bootstrap.Menu(menu);
            }
            */
+           return false;
        },
 
        // private
