@@ -63,7 +63,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
         }
         
         this.liveRegion = Roo.get(document.body).createChild(liveRegion);
+        
         this.containerId="s2id_"+(this.el.attr("id") || Roo.id());
+        
+        this.container.attr("id", "s2id_"+(this.el.attr("id") || Roo.id()));
+        
     },
     
     populateResults: function(container, results, query) {
