@@ -84,7 +84,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
                 node.addClass(this.formatResultCssClass(result));
                 node.attr("role", "presentation");
 
-                label=$(document.createElement("div"));
+                label=document.createElement("div");
                 label.addClass("select2-result-label");
                 label.attr("id", "select2-result-label-" + nextUid());
                 label.attr("role", "option");
