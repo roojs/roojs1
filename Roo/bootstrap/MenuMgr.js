@@ -144,9 +144,9 @@ Roo.bootstrap.MenuMgr = function(){
            }else if(menu.events){  // menu instance
                return menu;
            }else if(typeof menu.length == 'number'){ // array of menu items?
-               return new Roo.menu.Menu({items:menu});
+               return new Roo.bootstrap.Menu({items:menu});
            }else{ // otherwise, must be a config
-               return new Roo.menu.Menu(menu);
+               return new Roo.bootstrap.Menu(menu);
            }
        },
 
