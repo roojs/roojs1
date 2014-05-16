@@ -280,31 +280,6 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         } else {
             this.show(this.triggerEl, false, false);
         }
-        // if disabled.. ingore
-        //this.hideMenuItems(e); // hids any open sub-menus..
-        
-        
-        
-        //if ('ontouchstart' in document.documentElement && !$parent.closest('.navbar-nav').length) {
-         // if mobile we use a backdrop because click events don't delegate
-        // $('<div class="dropdown-backdrop"/>').insertAfter($(this)).on('click', clearMenus)
-        // }
- 
-       //var relatedTarget = { relatedTarget: this }
-       //$parent.trigger(e = $.Event('show.bs.dropdown', relatedTarget))
- 
-       //if (e.isDefaultPrevented()) return;
-        if (isActive) {
-            
-        }
-        
-       this.triggerEl[isActive ? 'removeClass' : 'addClass']('open');
-       
-       //  .trigger('shown.bs.dropdown', relatedTarget)
- 
-       //this.triggerEl.focus();
-//       Roo.log(e);
-       //e.preventDefault(); 
         
         
     },
