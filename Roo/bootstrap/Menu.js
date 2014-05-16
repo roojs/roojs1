@@ -19,7 +19,9 @@
 
 Roo.bootstrap.Menu = function(config){
     Roo.bootstrap.Menu.superclass.constructor.call(this, config);
-    Roo.bootstrap.Menu.register(this);
+    if (this.registerMenu) {
+        Roo.menu.MenuMgr.register(this);
+    }
 };
 
 Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
@@ -28,7 +30,10 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     //align : '',
     triggerEl : false,
     type: false,
-    
+    /**
+     * @cfg {Boolean} registerMenu True (default) - means that clicking on screen etc. hides it.
+     */
+    registerMenu : true,
     
     getChildContainer : function() {
         return this.el;  
