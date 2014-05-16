@@ -129,8 +129,10 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     },
     findTargetItem : function(e){
         var t = e.getTarget(".dropdown-menu-item", this.el,  true);
-        if(t && t.menuItemId){
-            return this.items.get(t.menuItemId);
+        if(t && t.id){
+            return Roo.Component.get(t.id)
+            
+            //return this.items.get(t.menuItemId);
         }
         return false;
     },
