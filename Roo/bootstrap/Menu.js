@@ -313,11 +313,8 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     hideMenuItems : function()
     {
         //$(backdrop).remove()
-        Roo.select('.dropdown-toggle',true).each(function(aa) {
-            if (!aa.hasClass('open')) {
-                return;
-            }
-            // triger close...
+        Roo.select('.open',true).each(function(aa) {
+            
             aa.removeClass('open');
           //var parent = getParent($(this))
           //var relatedTarget = { relatedTarget: this }
