@@ -93,6 +93,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
      */
     registerMenu : true,
     
+    menuItems :false, // stores the menu items..
     
     hidden:true,
     
