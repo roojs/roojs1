@@ -66,7 +66,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         }
         var isActive = this.triggerEl.hasClass('open');
         // if disabled.. ingore
-        this.clearMenus(e);
+        this.hideMenuItems(e);
         //if ('ontouchstart' in document.documentElement && !$parent.closest('.navbar-nav').length) {
          // if mobile we use a backdrop because click events don't delegate
         // $('<div class="dropdown-backdrop"/>').insertAfter($(this)).on('click', clearMenus)
@@ -87,7 +87,11 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
         
     },
-    clearMenus : function()
+    
+         
+       
+    
+    hideMenuItems : function()
     {
         //$(backdrop).remove()
         Roo.select('.dropdown-toggle',true).each(function(aa) {
