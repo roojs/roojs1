@@ -43,14 +43,15 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         var cfg= {
 	    tag: 'li',
+        cls: 'dropdown-menu-item',
 	    cn: [
-		{
-		    tag : 'a',
-		    href : '#',
-		    html : 'Link'
-		}
+            {
+                tag : 'a',
+                href : '#',
+                html : 'Link'
+            }
 	    ]
-        };
+    };
 	
         cfg.cn[0].href = this.href || cfg.cn[0].href ;
         cfg.cn[0].html = this.html || cfg.cn[0].html ;
