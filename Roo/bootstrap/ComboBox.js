@@ -54,6 +54,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
     {
         Roo.log('initEvents');
         var results, search, resultsSelector = ".select2-results";
+        this.container = this.createContainer();
         
     },
     
@@ -152,4 +153,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
         return matches + " results are available, use up and down arrow keys to navigate."; 
     }
     
+    
+});
+
+Roo.apply(Roo.bootstrap.ComboBox,  {
+        
 });
