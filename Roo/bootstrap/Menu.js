@@ -162,9 +162,9 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         this.fireEvent("click", this, t, e);
     },
      onMouseOver : function(e){
-        var t;
+        var t  = this.findTargetItem(e);
         
-        if(t = this.findTargetItem(e)){
+        if(t){
         //    if(t.canActivate && !t.disabled){
         //        this.setActiveItem(t, true);
         //    }
@@ -176,9 +176,9 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         return this.el.hasClass('open')
     },
      onMouseOut : function(e){
-        var t;
+        var t  = this.findTargetItem(e);
         
-        if(t = this.findTargetItem(e)){
+        if(t ){
         //    if(t == this.activeItem && t.shouldDeactivate(e)){
         //        this.activeItem.deactivate();
         //        delete this.activeItem;
