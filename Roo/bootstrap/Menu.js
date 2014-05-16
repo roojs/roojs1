@@ -213,7 +213,11 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         if (Roo.get(e.getTarget()).findParent('.dropdown-menu')) {
             return;
         }
-        var isActive = this.triggerEl.hasClass('open');
+        if (this.isVisible()) {
+            this.hide();
+        } else {
+            this.show();
+        }
         // if disabled.. ingore
         this.hideMenuItems(e); // hids any open sub-menus..
         
