@@ -127,6 +127,39 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
         
     },
+    findTargetItem : function(e){
+        var t = e.getTarget(".dropdown-menu-item", this.el,  true);
+        if(t && t.menuItemId){
+            return this.items.get(t.menuItemId);
+        }
+        return false;
+    },
+    onClick : function(e){
+        Roo.log("menu.onClick");
+        var t = this.findTargetItem(e);
+        if(!t){
+            return;
+        }
+        Roo.log(e);
+        if (Roo.isTouch && e.type == 'touchstart' && t.menu  && !t.disabled) {
+            if(t == this.activeItem && t.shouldDeactivate(e)){
+                this.activeItem.deactivate();
+                delete this.activeItem;
+                return;
+            }
+            if(t.canActivate){
+                this.setActiveItem(t, true);
+            }
+            return;
+            
+            
+        }
+        
+        t.onClick(e);
+        this.fireEvent("click", this, t, e);
+    },
+    
+    
     toggle  : function(e)
     {
         //Roo.log(e.getTarget());
