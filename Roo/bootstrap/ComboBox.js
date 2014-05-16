@@ -88,6 +88,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
         
         this.search = this.container.select("input.select2-input", true).first();
         
+        this.initContainer();
+        
     },
     
     populateResults: function(container, results, query) {
@@ -183,6 +185,206 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
     formatMatches: function (matches) 
     { 
         return matches + " results are available, use up and down arrow keys to navigate."; 
+    },
+    
+    initContainer: function () {
+
+        var selection,
+            container = this.container,
+            dropdown = this.dropdown,
+            idSuffix = Roo.id(),
+            elementLabel;
+
+        if (this.minimumResultsForSearch < 0) {
+            this.showSearch(false);
+        } else {
+            this.showSearch(true);
+        }
+
+        this.selection = selection = container.find(".select2-choice");
+
+        this.focusser = container.find(".select2-focusser");
+
+        // add aria associations
+        selection.find(".select2-chosen").attr("id", "select2-chosen-"+idSuffix);
+        this.focusser.attr("aria-labelledby", "select2-chosen-"+idSuffix);
+        this.results.attr("id", "select2-results-"+idSuffix);
+        this.search.attr("aria-owns", "select2-results-"+idSuffix);
+
+        // rewrite labels from original element to focusser
+        this.focusser.attr("id", "s2id_autogen"+idSuffix);
+
+        elementLabel = $("label[for='" + this.opts.element.attr("id") + "']");
+
+        this.focusser.prev()
+            .text(elementLabel.text())
+            .attr('for', this.focusser.attr('id'));
+
+        // Ensure the original element retains an accessible name
+        var originalTitle = this.opts.element.attr("title");
+        this.opts.element.attr("title", (originalTitle || elementLabel.text()));
+
+        this.focusser.attr("tabindex", this.elementTabIndex);
+
+        // write label for search field using the label from the focusser element
+        this.search.attr("id", this.focusser.attr('id') + '_search');
+
+        this.search.prev()
+            .text($("label[for='" + this.focusser.attr('id') + "']").text())
+            .attr('for', this.search.attr('id'));
+
+        this.search.on("keydown", this.bind(function (e) {
+            if (!this.isInterfaceEnabled()) return;
+
+            if (e.which === KEY.PAGE_UP || e.which === KEY.PAGE_DOWN) {
+                // prevent the page from scrolling
+                killEvent(e);
+                return;
+            }
+
+            switch (e.which) {
+                case KEY.UP:
+                case KEY.DOWN:
+                    this.moveHighlight((e.which === KEY.UP) ? -1 : 1);
+                    killEvent(e);
+                    return;
+                case KEY.ENTER:
+                    this.selectHighlighted();
+                    killEvent(e);
+                    return;
+                case KEY.TAB:
+                    this.selectHighlighted({noFocus: true});
+                    return;
+                case KEY.ESC:
+                    this.cancel(e);
+                    killEvent(e);
+                    return;
+            }
+        }));
+
+        this.search.on("blur", this.bind(function(e) {
+
+            // a workaround for chrome to keep the search field focussed when the scroll bar is used to scroll the dropdown.
+            // without this the search field loses focus which is annoying
+            if (document.activeElement === this.body.get(0)) {
+                window.setTimeout(this.bind(function() {
+                    if (this.opened()) {
+                        this.search.focus();
+                    }
+                }), 0);
+            }
+        }));
+
+        this.focusser.on("keydown", this.bind(function (e) {
+            console.log('focusser on keydown');
+            if (!this.isInterfaceEnabled()) return;
+
+            if (e.which === KEY.TAB || KEY.isControl(e) || KEY.isFunctionKey(e) || e.which === KEY.ESC) {
+                return;
+            }
+
+            if (this.opts.openOnEnter === false && e.which === KEY.ENTER) {
+                killEvent(e);
+                return;
+            }
+
+            if (e.which == KEY.DOWN || e.which == KEY.UP
+                || (e.which == KEY.ENTER && this.opts.openOnEnter)) {
+
+                if (e.altKey || e.ctrlKey || e.shiftKey || e.metaKey) return;
+
+                this.open();
+                killEvent(e);
+                return;
+            }
+
+            if (e.which == KEY.DELETE || e.which == KEY.BACKSPACE) {
+                if (this.opts.allowClear) {
+                    this.clear();
+                }
+                killEvent(e);
+                return;
+            }
+        }));
+
+
+        installKeyUpChangeEvent(this.focusser);
+        this.focusser.on("keyup-change input", this.bind(function(e) {
+            if (this.opts.minimumResultsForSearch >= 0) {
+                e.stopPropagation();
+                if (this.opened()) return;
+                this.open();
+            }
+        }));
+
+        selection.on("mousedown touchstart", "abbr", this.bind(function (e) {
+            if (!this.isInterfaceEnabled()) return;
+            this.clear();
+            killEventImmediately(e);
+            this.close();
+            this.selection.focus();
+        }));
+
+        selection.on("mousedown touchstart", this.bind(function (e) {
+            // Prevent IE from generating a click event on the body
+            reinsertElement(selection);
+
+            if (!this.container.hasClass("select2-container-active")) {
+                this.opts.element.trigger($.Event("select2-focus"));
+            }
+
+            if (this.opened()) {
+                this.close();
+            } else if (this.isInterfaceEnabled()) {
+                this.open();
+            }
+
+            killEvent(e);
+        }));
+
+        dropdown.on("mousedown touchstart", this.bind(function() {
+            if (this.opts.shouldFocusInput(this)) {
+                this.search.focus();
+            }
+        }));
+
+        selection.on("focus", this.bind(function(e) {
+            killEvent(e);
+        }));
+
+        this.focusser.on("focus", this.bind(function(){
+            if (!this.container.hasClass("select2-container-active")) {
+                this.opts.element.trigger($.Event("select2-focus"));
+            }
+            this.container.addClass("select2-container-active");
+        })).on("blur", this.bind(function() {
+            if (!this.opened()) {
+                this.container.removeClass("select2-container-active");
+                this.opts.element.trigger($.Event("select2-blur"));
+            }
+        }));
+        this.search.on("focus", this.bind(function(){
+            if (!this.container.hasClass("select2-container-active")) {
+                this.opts.element.trigger($.Event("select2-focus"));
+            }
+            this.container.addClass("select2-container-active");
+        }));
+
+        this.initContainerWidth();
+        this.opts.element.addClass("select2-offscreen");
+        this.setPlaceholder();
+
+    },
+    
+    showSearch: function(showSearchInput) {
+        if (this.showSearchInput === showSearchInput) return;
+
+        this.showSearchInput = showSearchInput;
+
+        this.dropdown.select(".select2-search",true).first().toggleClass("select2-search-hidden", !showSearchInput);
+        this.dropdown.find(".select2-search").toggleClass("select2-offscreen", !showSearchInput);
+        //add "select2-with-searchbox" to the container if search box is shown
+        $(this.dropdown, this.container).toggleClass("select2-with-searchbox", showSearchInput);
     },
     
     killEvent : function (event) {
