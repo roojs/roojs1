@@ -64,7 +64,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
         
         this.liveRegion = Roo.get(document.body).createChild(liveRegion);
         
-        Roo.log(this.liveRegion);
     },
     
     populateResults: function(container, results, query) {
